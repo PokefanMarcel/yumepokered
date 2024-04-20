@@ -37,6 +37,15 @@ _LavenderTownSuperNerdText::
 	cont "ROCKETs killed."
 	done
 
+_LavenderTownAgathaText::
+	text "Hi <PLAYER>."
+	line "How are you?"
+
+	para "Let's speak"
+	line "later."
+	cont "Bye."
+	done
+
 _LavenderTownSignText::
 	text "LAVENDER TOWN"
 	line "The Noble Purple"

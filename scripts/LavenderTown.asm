@@ -6,6 +6,7 @@ LavenderTown_TextPointers:
 	dw_const LavenderTownLittleGirlText,       TEXT_LAVENDERTOWN_LITTLE_GIRL
 	dw_const LavenderTownCooltrainerMText,     TEXT_LAVENDERTOWN_COOLTRAINER_M
 	dw_const LavenderTownSuperNerdText,        TEXT_LAVENDERTOWN_SUPER_NERD
+	dw_const LavenderTownAgathaText,           TEXT_LAVENDERTOWN_AGATHA
 	dw_const LavenderTownSignText,             TEXT_LAVENDERTOWN_SIGN
 	dw_const LavenderTownSilphScopeSignText,   TEXT_LAVENDERTOWN_SILPH_SCOPE_SIGN
 	dw_const MartSignText,                     TEXT_LAVENDERTOWN_MART_SIGN
@@ -45,6 +46,10 @@ LavenderTownCooltrainerMText:
 
 LavenderTownSuperNerdText:
 	text_far _LavenderTownSuperNerdText
+	text_end
+
+LavenderTownAgathaText:
+	text_far _LavenderTownAgathaText
 	text_end
 
 LavenderTownSignText:
