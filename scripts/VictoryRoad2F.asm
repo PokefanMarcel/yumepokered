@@ -70,7 +70,7 @@ VictoryRoad2FDefaultScript:
 
 VictoryRoad2F_TextPointers:
 	def_text_pointers
-	dw_const VictoryRoad2FHikerText,        TEXT_VICTORYROAD2F_HIKER
+	dw_const VictoryRoad2FBlackbeltText,    TEXT_VICTORYROAD2F_BLACKBELT
 	dw_const VictoryRoad2FSuperNerd1Text,   TEXT_VICTORYROAD2F_SUPER_NERD1
 	dw_const VictoryRoad2FCooltrainerMText, TEXT_VICTORYROAD2F_COOLTRAINER_M
 	dw_const VictoryRoad2FSuperNerd2Text,   TEXT_VICTORYROAD2F_SUPER_NERD2
@@ -87,7 +87,7 @@ VictoryRoad2F_TextPointers:
 VictoryRoad2TrainerHeaders:
 	def_trainers
 VictoryRoad2TrainerHeader0:
-	trainer EVENT_BEAT_VICTORY_ROAD_2_TRAINER_0, 4, VictoryRoad2FHikerBattleText, VictoryRoad2FHikerEndBattleText, VictoryRoad2FHikerAfterBattleText
+	trainer EVENT_BEAT_VICTORY_ROAD_2_TRAINER_0, 4, VictoryRoad2FBlackbeltBattleText, VictoryRoad2FBlackbeltEndBattleText, VictoryRoad2FBlackbeltAfterBattleText
 VictoryRoad2TrainerHeader1:
 	trainer EVENT_BEAT_VICTORY_ROAD_2_TRAINER_1, 3, VictoryRoad2FSuperNerd1BattleText, VictoryRoad2FSuperNerd1EndBattleText, VictoryRoad2FSuperNerd1AfterBattleText
 VictoryRoad2TrainerHeader2:
@@ -100,7 +100,7 @@ MoltresTrainerHeader:
 	trainer EVENT_BEAT_MOLTRES, 0, VictoryRoad2FMoltresBattleText, VictoryRoad2FMoltresBattleText, VictoryRoad2FMoltresBattleText
 	db -1 ; end
 
-VictoryRoad2FHikerText:
+VictoryRoad2FBlackbeltText:
 	text_asm
 	ld hl, VictoryRoad2TrainerHeader0
 	call TalkToTrainer
@@ -144,16 +144,16 @@ VictoryRoad2FMoltresBattleText:
 	call WaitForSoundToFinish
 	jp TextScriptEnd
 
-VictoryRoad2FHikerBattleText:
-	text_far _VictoryRoad2FHikerBattleText
+VictoryRoad2FBlackbeltBattleText:
+	text_far _VictoryRoad2FBlackbeltBattleText
 	text_end
 
-VictoryRoad2FHikerEndBattleText:
-	text_far _VictoryRoad2FHikerEndBattleText
+VictoryRoad2FBlackbeltEndBattleText:
+	text_far _VictoryRoad2FBlackbeltEndBattleText
 	text_end
 
-VictoryRoad2FHikerAfterBattleText:
-	text_far _VictoryRoad2FHikerAfterBattleText
+VictoryRoad2FBlackbeltAfterBattleText:
+	text_far _VictoryRoad2FBlackbeltAfterBattleText
 	text_end
 
 VictoryRoad2FSuperNerd1BattleText:

@@ -2,17 +2,17 @@ _VictoryRoad2FMoltresBattleText::
 	text "Gyaoo!@"
 	text_end
 
-_VictoryRoad2FHikerBattleText::
+_VictoryRoad2FBlackbeltBattleText::
 	text "VICTORY ROAD is"
 	line "the final test"
 	cont "for trainers!"
 	done
 
-_VictoryRoad2FHikerEndBattleText::
+_VictoryRoad2FBlackbeltEndBattleText::
 	text "Aiyah!"
 	prompt
 
-_VictoryRoad2FHikerAfterBattleText::
+_VictoryRoad2FBlackbeltAfterBattleText::
 	text "If you get stuck,"
 	line "try moving some"
 	cont "boulders around!"

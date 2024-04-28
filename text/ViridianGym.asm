@@ -101,17 +101,17 @@ _ViridianGymCooltrainerM1AfterBattleText::
 	cont "GYM LEADER!"
 	done
 
-_ViridianGymHiker1BattleText::
+_ViridianGymBlackbelt1BattleText::
 	text "Rrrroar! I'm"
 	line "working myself"
 	cont "into a rage!"
 	done
 
-_ViridianGymHiker1EndBattleText::
+_ViridianGymBlackbelt1EndBattleText::
 	text "Wargh!"
 	prompt
 
-_ViridianGymHiker1AfterBattleText::
+_ViridianGymBlackbelt1AfterBattleText::
 	text "I'm still not"
 	line "worthy!"
 	done
@@ -133,17 +133,17 @@ _ViridianGymRocker1AfterBattleText::
 	cont "GYM LEADER?"
 	done
 
-_ViridianGymHiker2BattleText::
+_ViridianGymBlackbelt2BattleText::
 	text "Karate is the"
 	line "ultimate form of"
 	cont "martial arts!"
 	done
 
-_ViridianGymHiker2EndBattleText::
+_ViridianGymBlackbelt2EndBattleText::
 	text "Atcho!"
 	prompt
 
-_ViridianGymHiker2AfterBattleText::
+_ViridianGymBlackbelt2AfterBattleText::
 	text "If my #MON"
 	line "were as good at"
 	cont "Karate as I..."
@@ -164,17 +164,17 @@ _ViridianGymCooltrainerM2AfterBattleText::
 	line "scold me!"
 	done
 
-_ViridianGymHiker3BattleText::
+_ViridianGymBlackbelt3BattleText::
 	text "I'm the KARATE"
 	line "KING! Your fate"
 	cont "rests with me!"
 	done
 
-_ViridianGymHiker3EndBattleText::
+_ViridianGymBlackbelt3EndBattleText::
 	text "Ayah!"
 	prompt
 
-_ViridianGymHiker3AfterBattleText::
+_ViridianGymBlackbelt3AfterBattleText::
 	text "#MON LEAGUE?"
 	line "You? Don't get"
 	cont "cocky!"
