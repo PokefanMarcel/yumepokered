@@ -351,6 +351,21 @@ CableClubOptionsText:
 	next "COLOSSEUM"
 	next "CANCEL@"
 
+VersionText:
+db " "
+IF DEF(_RED)
+	db "PFMarcel Red alpha"
+ENDC
+IF DEF(_BLUE)
+	db "PFMarcel Blue alpha"
+ENDC
+IF DEF(_GREEN)
+	db "PFMarcel Green alpha"
+ENDC
+;db " v"
+;INCLUDE "version_number.asm"
+;db "@"
+
 DisplayContinueGameInfo:
 	xor a
 	ldh [hAutoBGTransferEnabled], a

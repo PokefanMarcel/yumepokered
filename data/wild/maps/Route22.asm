@@ -12,7 +12,7 @@ IF DEF(_RED)
 	db  3, NIDORAN_F
 	db  4, NIDORAN_F
 ENDC
-IF DEF(_BLUE)
+IF (DEF(_BLUE) || DEF(_GREEN)) ; marcelnote: Green has same encounters as Blue for now
 	db  3, NIDORAN_F
 	db  4, RATTATA
 	db  4, NIDORAN_F

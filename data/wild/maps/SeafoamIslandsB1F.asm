@@ -12,7 +12,7 @@ IF DEF(_RED)
 	db 38, DEWGONG
 	db 37, SEADRA
 ENDC
-IF DEF(_BLUE)
+IF (DEF(_BLUE) || DEF(_GREEN)) ; marcelnote: Green has same encounters as Blue for now
 	db 30, SHELLDER
 	db 30, KRABBY
 	db 32, STARYU

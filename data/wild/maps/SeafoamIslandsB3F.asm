@@ -11,7 +11,7 @@ IF DEF(_RED)
 	db 29, SHELLDER
 	db 39, SEADRA
 ENDC
-IF DEF(_BLUE)
+IF (DEF(_BLUE) || DEF(_GREEN)) ; marcelnote: Green has same encounters as Blue for now
 	db 31, PSYDUCK
 	db 31, SEEL
 	db 33, PSYDUCK

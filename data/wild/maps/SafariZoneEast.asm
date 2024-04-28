@@ -12,7 +12,7 @@ IF DEF(_RED)
 	db 25, KANGASKHAN
 	db 28, SCYTHER
 ENDC
-IF DEF(_BLUE)
+IF (DEF(_BLUE) || DEF(_GREEN)) ; marcelnote: Green has same encounters as Blue for now
 	db 24, NIDORAN_F
 	db 26, DODUO
 	db 22, PARAS

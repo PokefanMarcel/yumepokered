@@ -10,7 +10,7 @@ IF DEF(_RED)
 	db  4, METAPOD
 	db  3, CATERPIE
 ENDC
-IF DEF(_BLUE)
+IF (DEF(_BLUE) || DEF(_GREEN)) ; marcelnote: Green has same encounters as Blue for now
 	db  4, CATERPIE
 	db  5, METAPOD
 	db  3, CATERPIE

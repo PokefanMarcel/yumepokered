@@ -9,7 +9,7 @@ CeruleanCaveB1FWildMons:
 IF DEF(_RED)
 	db 57, ARBOK
 ENDC
-IF DEF(_BLUE)
+IF (DEF(_BLUE) || DEF(_GREEN)) ; marcelnote: Green has same encounters as Blue for now
 	db 57, SANDSLASH
 ENDC
 	db 65, DITTO

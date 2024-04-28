@@ -3,7 +3,7 @@ Route23WildMons:
 IF DEF(_RED)
 	db 26, EKANS
 ENDC
-IF DEF(_BLUE)
+IF (DEF(_BLUE) || DEF(_GREEN)) ; marcelnote: Green has same encounters as Blue for now
 	db 26, SANDSHREW
 ENDC
 	db 33, DITTO
@@ -14,7 +14,7 @@ ENDC
 IF DEF(_RED)
 	db 41, ARBOK
 ENDC
-IF DEF(_BLUE)
+IF (DEF(_BLUE) || DEF(_GREEN)) ; marcelnote: Green has same encounters as Blue for now
 	db 41, SANDSLASH
 ENDC
 	db 43, DITTO

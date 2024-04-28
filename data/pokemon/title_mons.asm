@@ -36,3 +36,21 @@ IF DEF(_BLUE)
 	db GENGAR
 	db RAICHU
 ENDC
+IF DEF(_GREEN) ; PureRGBnote: GREENBUILD: the pokemon that appear on the start screen on green version.
+	db STARTER3
+	db STARTER1
+	db STARTER2
+	db DIGLETT
+	db FEAROW
+	db GRIMER
+	db KINGLER
+	db ZUBAT
+	db CATERPIE
+	db EEVEE
+	db VOLTORB
+	db STARYU
+	db NIDOKING
+	db SCYTHER
+	db HAUNTER
+	db EXEGGCUTE
+ENDC

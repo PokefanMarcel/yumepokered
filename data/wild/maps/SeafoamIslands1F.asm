@@ -12,7 +12,7 @@ IF DEF(_RED)
 	db 28, SHELLDER
 	db 38, GOLDUCK
 ENDC
-IF DEF(_BLUE)
+IF (DEF(_BLUE) || DEF(_GREEN)) ; marcelnote: Green has same encounters as Blue for now
 	db 30, PSYDUCK
 	db 30, STARYU
 	db 30, KRABBY

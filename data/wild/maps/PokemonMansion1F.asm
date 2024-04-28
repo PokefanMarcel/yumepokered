@@ -12,7 +12,7 @@ IF DEF(_RED)
 	db 37, WEEZING
 	db 39, MUK
 ENDC
-IF DEF(_BLUE)
+IF (DEF(_BLUE) || DEF(_GREEN)) ; marcelnote: Green has same encounters as Blue for now
 	db 32, GRIMER
 	db 30, GRIMER
 	db 34, PONYTA

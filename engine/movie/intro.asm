@@ -443,7 +443,7 @@ FightIntroBackMon:
 	ds 16, $00 ; blank tile
 FightIntroBackMonEnd:
 
-IF DEF(_RED)
+IF (DEF(_RED) || DEF(_GREEN)) ; PureRGBnote: GREENBUILD: pokemon green displays the nidorino intro
 FightIntroFrontMon:
 	INCBIN "gfx/intro/red_nidorino_1.2bpp"
 FightIntroFrontMon2:

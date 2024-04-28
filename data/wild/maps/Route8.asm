@@ -12,7 +12,7 @@ IF DEF(_RED)
 	db 15, GROWLITHE
 	db 18, GROWLITHE
 ENDC
-IF DEF(_BLUE)
+IF (DEF(_BLUE) || DEF(_GREEN)) ; marcelnote: Green has same encounters as Blue for now
 	db 18, MEOWTH
 	db 17, SANDSHREW
 	db 16, VULPIX

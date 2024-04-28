@@ -12,7 +12,7 @@ IF DEF(_RED)
 	db 14, MANKEY
 	db 16, MANKEY
 ENDC
-IF DEF(_BLUE)
+IF (DEF(_BLUE) || DEF(_GREEN)) ; marcelnote: Green has same encounters as Blue for now
 	db 13, BELLSPROUT
 	db 13, PIDGEY
 	db 15, PIDGEY

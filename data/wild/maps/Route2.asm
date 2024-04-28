@@ -12,7 +12,7 @@ IF DEF(_RED)
 	db  4, WEEDLE
 	db  5, WEEDLE
 ENDC
-IF DEF(_BLUE)
+IF (DEF(_BLUE) || DEF(_GREEN)) ; marcelnote: Green has same encounters as Blue for now
 	db  3, CATERPIE
 	db  2, RATTATA
 	db  5, RATTATA

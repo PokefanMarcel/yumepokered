@@ -9,7 +9,7 @@ IF DEF(_RED)
 	db 26, EXEGGCUTE
 	db 25, NIDORAN_F
 ENDC
-IF DEF(_BLUE)
+IF (DEF(_BLUE) || DEF(_GREEN)) ; marcelnote: Green has same encounters as Blue for now
 	db 25, NIDORAN_F
 	db 26, DODUO
 	db 23, VENONAT

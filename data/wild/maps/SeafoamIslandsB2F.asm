@@ -12,7 +12,7 @@ IF DEF(_RED)
 	db 30, GOLBAT
 	db 37, SLOWBRO
 ENDC
-IF DEF(_BLUE)
+IF (DEF(_BLUE) || DEF(_GREEN)) ; marcelnote: Green has same encounters as Blue for now
 	db 30, PSYDUCK
 	db 32, SEEL
 	db 32, PSYDUCK

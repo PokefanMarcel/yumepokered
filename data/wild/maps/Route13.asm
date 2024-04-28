@@ -12,7 +12,7 @@ IF DEF(_RED)
 	db 28, GLOOM
 	db 30, GLOOM
 ENDC
-IF DEF(_BLUE)
+IF (DEF(_BLUE) || DEF(_GREEN)) ; marcelnote: Green has same encounters as Blue for now
 	db 24, BELLSPROUT
 	db 25, PIDGEY
 	db 27, PIDGEY

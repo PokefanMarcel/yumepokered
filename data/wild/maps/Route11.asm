@@ -9,7 +9,7 @@ IF DEF(_RED)
 	db 13, DROWZEE
 	db 15, EKANS
 ENDC
-IF DEF(_BLUE)
+IF (DEF(_BLUE) || DEF(_GREEN)) ; marcelnote: Green has same encounters as Blue for now
 	db 14, SANDSHREW
 	db 15, SPEAROW
 	db 12, SANDSHREW

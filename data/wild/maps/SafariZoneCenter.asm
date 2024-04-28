@@ -11,7 +11,7 @@ IF DEF(_RED)
 	db 30, PARASECT
 	db 23, SCYTHER
 ENDC
-IF DEF(_BLUE)
+IF (DEF(_BLUE) || DEF(_GREEN)) ; marcelnote: Green has same encounters as Blue for now
 	db 22, NIDORAN_F
 	db 25, RHYHORN
 	db 22, VENONAT

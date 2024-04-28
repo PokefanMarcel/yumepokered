@@ -9,7 +9,7 @@ IF DEF(_RED)
 	db 27, EXEGGCUTE
 	db 30, NIDORINA
 ENDC
-IF DEF(_BLUE)
+IF (DEF(_BLUE) || DEF(_GREEN)) ; marcelnote: Green has same encounters as Blue for now
 	db 22, NIDORAN_F
 	db 26, RHYHORN
 	db 23, PARAS

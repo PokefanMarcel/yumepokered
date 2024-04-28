@@ -11,7 +11,7 @@ IF DEF(_RED)
 	db 29, SEEL
 	db 39, SLOWBRO
 ENDC
-IF DEF(_BLUE)
+IF (DEF(_BLUE) || DEF(_GREEN)) ; marcelnote: Green has same encounters as Blue for now
 	db 31, KRABBY
 	db 31, STARYU
 	db 33, KRABBY
