@@ -45,3 +45,10 @@ DefaultNamesRival:
 	next "GABE"
 	db   "@"
 ENDC
+
+DefaultNamesPlayerF: ; marcelnote - add female player
+ 	db   "NEW NAME"
+ 	next "GREEN"
+    next "LEAF"
+   	next "AMANDA"
+   	db   "@"

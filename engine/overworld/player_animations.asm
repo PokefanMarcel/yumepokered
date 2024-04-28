@@ -380,12 +380,32 @@ FishingAnim:
 	call DelayFrames
 	ld hl, wd736
 	set 6, [hl] ; reserve the last 4 OAM entries
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
+	ld a, [wPlayerGender]
+	bit 0, a	;check if girl
+	jr nz, .loadGirlSprite
 	ld de, RedSprite
-	ld hl, vNPCSprites tile $00
-	lb bc, BANK(RedSprite), 12
+	lb bc, BANK(RedSprite), $c
+	jr .nextSprites
+.loadGirlSprite
+	ld de, GreenSprite
+	ld bc, (BANK(GreenSprite) << 8) + $0c
+.nextSprites
+	ld hl, vNPCSprites
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	call CopyVideoData
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
+	ld a, [wPlayerGender]
+	bit 0, a	;check if girl
+	jr nz, .loadGirlTiles
 	ld a, $4
 	ld hl, RedFishingTiles
+	jr .nextTiles
+.loadGirlTiles
+	ld a, $4
+	ld hl, GreenFishingTiles
+.nextTiles
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	call LoadAnimSpriteGfx
 	ld a, [wSpritePlayerStateData1ImageIndex]
 	ld c, a
@@ -487,6 +507,12 @@ RedFishingTiles:
 	fishing_gfx RedFishingTilesBack,  2, $06
 	fishing_gfx RedFishingTilesSide,  2, $0a
 	fishing_gfx RedFishingRodTiles,   3, $fd
+
+GreenFishingTiles:
+	fishing_gfx GreenFishingTilesFront, 2, $02
+	fishing_gfx GreenFishingTilesBack,  2, $06
+	fishing_gfx GreenFishingTilesSide,  2, $0a
+	fishing_gfx RedFishingRodTiles,     3, $fd
 
 _HandleMidJump::
 	ld a, [wPlayerJumpingYScreenCoordsIndex]

@@ -1985,7 +1985,16 @@ RunMapScript::
 	ret
 
 LoadWalkingPlayerSpriteGraphics::
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
+	ld a, [wPlayerGender]
+	bit 0, a	;check if girl
+	jr nz, .loadGirlSprite
 	ld de, RedSprite
+	jr .nextSprites
+.loadGirlSprite
+	ld de, GreenSprite
+.nextSprites
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld hl, vNPCSprites
 	jr LoadPlayerSpriteGraphicsCommon
 
@@ -1995,7 +2004,16 @@ LoadSurfingPlayerSpriteGraphics::
 	jr LoadPlayerSpriteGraphicsCommon
 
 LoadBikePlayerSpriteGraphics::
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
+	ld a, [wPlayerGender]
+	bit 0, a	;check if girl
+	jr nz, .loadGirlBikeSprite
 	ld de, RedBikeSprite
+	jr .nextBikeSprites
+.loadGirlBikeSprite
+	ld de, GreenBikeSprite
+.nextBikeSprites
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld hl, vNPCSprites
 
 LoadPlayerSpriteGraphicsCommon::

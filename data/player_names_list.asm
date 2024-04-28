@@ -39,3 +39,9 @@ DefaultNamesRivalList:
 	db "GARY@"
 	db "GABE@"
 ENDC
+
+DefaultNamesPlayerListF: ; marcelnote - add female player
+ 	db "NEW NAME@"
+ 	db "GREEN@"
+ 	db "LEAF@"
+   	db "AMANDA@"

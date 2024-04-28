@@ -1752,6 +1752,11 @@ _OakSpeechText3::
 	cont "awaits! Let's go!"
 	done
 
+_BoyGirlText:: ;joenote - add female player
+	text "Are you a boy or"
+	line "a girl?"
+	done
+
 _DoYouWantToNicknameText::
 	text "Do you want to"
 	line "give a nickname"

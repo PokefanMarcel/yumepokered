@@ -64,6 +64,14 @@ OakSpeech:
 	ld a, [wd732]
 	bit BIT_DEBUG_MODE, a
 	jp nz, .skipSpeech
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
+	ld hl, BoyGirlText
+	call PrintText
+	call BoyGirlChoice
+	ld a, [wCurrentMenuItem]
+	ld [wPlayerGender], a ; 0 for boy, 1 for girl
+	call ClearScreen
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld de, ProfOakPic
 	lb bc, BANK(ProfOakPic), $00
 	call IntroDisplayPicCenteredOrUpperRight
@@ -83,8 +91,16 @@ OakSpeech:
 	call PrintText
 	call GBFadeOutToWhite
 	call ClearScreen
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
+	ld de, GreenPicFront
+	lb bc, BANK(GreenPicFront), $00
+	ld a, [wPlayerGender]
+	bit 0, a	;check if girl
+	jr nz, .donefemale_front
 	ld de, RedPicFront
 	lb bc, BANK(RedPicFront), $00
+.donefemale_front
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	call IntroDisplayPicCenteredOrUpperRight
 	call MovePicLeft
 	ld hl, IntroducePlayerText
@@ -102,8 +118,16 @@ OakSpeech:
 .skipSpeech
 	call GBFadeOutToWhite
 	call ClearScreen
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
+	ld de, GreenPicFront
+	lb bc, BANK(GreenPicFront), $00
+	ld a, [wPlayerGender]
+	bit 0, a	;check if girl
+	jr nz, .donefemale_front2
 	ld de, RedPicFront
 	lb bc, BANK(RedPicFront), $00
+.donefemale_front2
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	call IntroDisplayPicCenteredOrUpperRight
 	call GBFadeInFromWhite
 	ld a, [wd72d]
@@ -121,9 +145,17 @@ OakSpeech:
 	ld [MBC1RomBank], a
 	ld c, 4
 	call DelayFrames
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
+	ld de, GreenSprite
+	lb bc, BANK(GreenSprite), $0C
+	ld a, [wPlayerGender]
+	bit 0, a	;check if girl
+	jr nz, .donefemale_sprite
 	ld de, RedSprite
-	ld hl, vSprites
 	lb bc, BANK(RedSprite), $0C
+.donefemale_sprite
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	ld hl, vSprites
 	call CopyVideoData
 	ld de, ShrinkPic1
 	lb bc, BANK(ShrinkPic1), $00
@@ -177,6 +209,9 @@ IntroduceRivalText:
 	text_end
 OakSpeechText3:
 	text_far _OakSpeechText3
+	text_end
+BoyGirlText: ; marcelnote - add female player
+	text_far _BoyGirlText
 	text_end
 
 FadeInIntroPic:
@@ -240,3 +275,11 @@ IntroDisplayPicCenteredOrUpperRight:
 	xor a
 	ldh [hStartTileID], a
 	predef_jump CopyUncompressedPicToTilemap
+
+BoyGirlChoice::	;joenote - add female player
+	call SaveScreenTilesToBuffer1
+	ld a, BOY_GIRL_MENU
+	ld [wTwoOptionMenuID], a
+	coord hl, 13, 7
+	ld bc, $080E
+	jp DisplayYesNoChoice
