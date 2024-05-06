@@ -25,7 +25,7 @@ Route1Youngster1Text:
 	ld hl, .AlsoGotPokeballsText
 .done
 	call PrintText
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .MartSampleText:
 	text_far _Route1Youngster1MartSampleText

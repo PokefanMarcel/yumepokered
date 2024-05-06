@@ -288,7 +288,7 @@ RocketHideoutB2FRocketText:
 	text_asm
 	ld hl, RocketHideout2TrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 RocketHideoutB1FRocketBattleText:
 	text_far _RocketHideoutB1FRocketBattleText

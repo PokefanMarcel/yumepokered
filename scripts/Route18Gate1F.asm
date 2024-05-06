@@ -99,7 +99,7 @@ Route18Gate1FGuardText:
 	ld hl, .YouNeedABicycleText
 	call PrintText
 .text_script_end
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .YouNeedABicycleText:
 	text_far _Route18Gate1FGuardYouNeedABicycleText

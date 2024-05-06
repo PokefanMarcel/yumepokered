@@ -33,7 +33,7 @@ Route12SuperRodHouseFishingGuruText:
 	ld hl, .TryFishingText
 .done
 	call PrintText
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .DoYouLikeToFishText:
 	text_far _Route12SuperRodHouseFishingGuruDoYouLikeToFishText

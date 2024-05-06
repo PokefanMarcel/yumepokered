@@ -45,7 +45,7 @@ SSAnneBowSailor2Text:
 	text_asm
 	ld hl, SSAnne5TrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 SSAnneBowSailor2BattleText:
 	text_far _SSAnneBowSailor2BattleText
@@ -63,7 +63,7 @@ SSAnneBowSailor3Text:
 	text_asm
 	ld hl, SSAnne5TrainerHeader1
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 SSAnneBowSailor3BattleText:
 	text_far _SSAnneBowSailor3BattleText

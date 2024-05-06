@@ -35,7 +35,7 @@ PokemonFanClubPikachuFanText:
 	call PrintText
 	ResetEvent EVENT_PIKACHU_FAN_BOAST
 .done
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .NormalText:
 	text_far _PokemonFanClubPikachuFanNormalText
@@ -58,7 +58,7 @@ PokemonFanClubSeelFanText:
 	call PrintText
 	ResetEvent EVENT_SEEL_FAN_BOAST
 .done
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .NormalText:
 	text_far _PokemonFanClubSeelFanNormalText
@@ -75,7 +75,7 @@ PokemonFanClubPikachuText:
 	ld a, PIKACHU
 	call PlayCry
 	call WaitForSoundToFinish
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Text
 	text_far _PokemonFanClubPikachuText
@@ -88,7 +88,7 @@ PokemonFanClubSeelText:
 	ld a, SEEL
 	call PlayCry
 	call WaitForSoundToFinish
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Text:
 	text_far _PokemonFanClubSeelText
@@ -128,7 +128,7 @@ PokemonFanClubChairmanText:
 	ld hl, .FinalText
 	call PrintText
 .done
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .IntroText:
 	text_far _PokemonFanClubChairmanIntroText

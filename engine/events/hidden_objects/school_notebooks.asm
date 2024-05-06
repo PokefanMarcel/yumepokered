@@ -29,7 +29,7 @@ ViridianSchoolNotebook::
 	ld hl, ViridianSchoolNotebookText5
 	call PrintText
 .doneReading
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 TurnPageSchoolNotebook:
 	ld hl, TurnPageText

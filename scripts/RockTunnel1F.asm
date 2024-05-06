@@ -77,7 +77,7 @@ RockTunnel1FCooltrainerF3Text:
 	ld hl, RockTunnel1TrainerHeader6
 RockTunnel1FTalkToTrainer:
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 RockTunnel1FHiker1BattleText:
 	text_far _RockTunnel1FHiker1BattleText

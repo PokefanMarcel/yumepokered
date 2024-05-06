@@ -209,7 +209,7 @@ DaycareGentlemanText:
 
 .done
 	call PrintText
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .IntroText:
 	text_far _DaycareGentlemanIntroText

@@ -85,4 +85,4 @@ SilphCoElevatorElevatorText:
 	call SilphCoElevatorCopyWarpMapsScript
 	ld hl, SilphCoElevatorWarpMaps
 	predef DisplayElevatorFloorMenu
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd

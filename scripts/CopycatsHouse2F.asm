@@ -42,7 +42,7 @@ CopycatsHouse2FCopycatText:
 	ld hl, .TM31Explanation2Text
 	call PrintText
 .done
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .DoYouLikePokemonText:
 	text_far _CopycatsHouse2FCopycatDoYouLikePokemonText
@@ -90,7 +90,7 @@ CopycatsHouse2FPCText:
 	ld hl, .MySecretsText
 .notUp
 	call PrintText
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .MySecretsText:
 	text_far _CopycatsHouse2FPCMySecretsText

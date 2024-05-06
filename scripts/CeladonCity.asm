@@ -62,7 +62,7 @@ CeladonCityGramps3Text:
 	ld hl, .TM41ExplanationText
 	call PrintText
 .Done
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Text:
 	text_far _CeladonCityGramps3Text
@@ -90,7 +90,7 @@ CeladonCityPoliwrathText:
 	text_asm
 	ld a, POLIWRATH
 	call PlayCry
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 CeladonCityRocket1Text:
 	text_far _CeladonCityRocket1Text

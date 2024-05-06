@@ -144,7 +144,7 @@ RocketHideoutB3FRocket1Text:
 	text_asm
 	ld hl, RocketHideout3TrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 RocketHideoutB3FRocket1BattleText:
 	text_far _RocketHideoutB3FRocket1BattleText
@@ -162,7 +162,7 @@ RocketHideoutB3FRocket2Text:
 	text_asm
 	ld hl, RocketHideout3TrainerHeader1
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 RocketHideoutB3FRocket2BattleText:
 	text_far _RocketHideout3BattleTxt

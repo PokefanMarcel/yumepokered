@@ -311,7 +311,7 @@ SilphCo11FSilphPresidentText:
 	ld hl, .MasterBallDescriptionText
 	call PrintText
 .done
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Text:
 	text_far _SilphCo11FSilphPresidentText
@@ -350,7 +350,7 @@ SilphCo11FRocket1Text:
 	text_asm
 	ld hl, SilphCo11TrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 SilphCo11FRocket1BattleText:
 	text_far _SilphCo11FRocket1BattleText
@@ -368,7 +368,7 @@ SilphCo11FRocket2Text:
 	text_asm
 	ld hl, SilphCo11TrainerHeader1
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 SilphCo11FRocket2BattleText:
 	text_far _SilphCo11FRocket2BattleText
@@ -388,7 +388,7 @@ SilphCo10FPorygonText: ; unreferenced
 	call PrintText
 	ld a, PORYGON
 	call DisplayPokedex
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Text:
 	text_far _SilphCo10FPorygonText

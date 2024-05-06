@@ -12,7 +12,7 @@ ResetRivalScript:
 
 ChampionsRoom_ScriptPointers:
 	def_script_pointers
-	dw_const ChampionsRoomDefaultScript,                  SCRIPT_CHAMPIONSROOM_DEFAULT
+	dw_const DoRet,                                       SCRIPT_CHAMPIONSROOM_DEFAULT ; PureRGB - DoRet
 	dw_const ChampionsRoomPlayerEntersScript,             SCRIPT_CHAMPIONSROOM_PLAYER_ENTERS
 	dw_const ChampionsRoomRivalReadyToBattleScript,       SCRIPT_CHAMPIONSROOM_RIVAL_READY_TO_BATTLE
 	dw_const ChampionsRoomRivalDefeatedScript,            SCRIPT_CHAMPIONSROOM_RIVAL_DEFEATED
@@ -23,9 +23,6 @@ ChampionsRoom_ScriptPointers:
 	dw_const ChampionsRoomOakExitsScript,                 SCRIPT_CHAMPIONSROOM_OAK_EXITS
 	dw_const ChampionsRoomPlayerFollowsOakScript,         SCRIPT_CHAMPIONSROOM_PLAYER_FOLLOWS_OAK
 	dw_const ChampionsRoomCleanupScript,                  SCRIPT_CHAMPIONSROOM_CLEANUP_SCRIPT
-
-ChampionsRoomDefaultScript:
-	ret
 
 ChampionsRoomPlayerEntersScript:
 	ld a, A_BUTTON | B_BUTTON | SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
@@ -256,7 +253,7 @@ ChampionsRoomRivalText:
 	ld hl, ChampionsRoomRivalAfterBattleText
 .printText
 	call PrintText
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .IntroText:
 	text_far _ChampionsRoomRivalIntroText
@@ -285,7 +282,7 @@ ChampionsRoomOakCongratulatesPlayerText:
 	call GetMonName
 	ld hl, .Text
 	call PrintText
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Text:
 	text_far _ChampionsRoomOakCongratulatesPlayerText

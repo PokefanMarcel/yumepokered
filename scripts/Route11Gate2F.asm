@@ -14,7 +14,7 @@ Route11Gate2FYoungsterText:
 	ld [wWhichTrade], a
 	predef DoInGameTradeDialogue
 Route11Gate2FScriptEnd:
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route11Gate2FOaksAideText:
 	text_asm
@@ -57,7 +57,7 @@ Route11Gate2FLeftBinocularsText:
 	ld hl, .NoSnorlaxText
 .print
 	call PrintText
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .SnorlaxText:
 	text_far _Route11Gate2FLeftBinocularsSnorlaxText

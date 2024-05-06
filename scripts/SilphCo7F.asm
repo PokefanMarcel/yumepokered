@@ -323,7 +323,7 @@ SilphCo7FSilphWorkerM1Text:
 	ld hl, .SavedText
 	call PrintText
 .done
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .HaveThisPokemonText
 	text_far _SilphCo7FSilphWorkerM1HaveThisPokemonText
@@ -352,7 +352,7 @@ SilphCo7FSilphWorkerM2Text:
 	ld hl, .CancelledTheMasterBallText
 	call PrintText
 .done
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .AfterTheMasterBallText
 	text_far _SilphCo7FSilphWorkerM2AfterTheMasterBallText
@@ -373,7 +373,7 @@ SilphCo7FSilphWorkerM3Text:
 	ld hl, .YouChasedOffTeamRocketText
 	call PrintText
 .done
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .ItWouldBeBadText
 	text_far _SilphCo7FSilphWorkerM3ItWouldBeBadText
@@ -394,7 +394,7 @@ SilphCo7FSilphWorkerM4Text:
 	ld hl, .SafeAtLastText
 	call PrintText
 .done
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .ItsReallyDangerousHereText
 	text_far _SilphCo7FSilphWorkerM4ItsReallyDangerousHereText
@@ -408,7 +408,7 @@ SilphCo7FRocket1Text:
 	text_asm
 	ld hl, SilphCo7TrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 SilphCo7FRocket1BattleText:
 	text_far _SilphCo7FRocket1BattleText
@@ -426,7 +426,7 @@ SilphCo7FScientistText:
 	text_asm
 	ld hl, SilphCo7TrainerHeader1
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 SilphCo7FScientistBattleText:
 	text_far _SilphCo7FScientistBattleText
@@ -444,7 +444,7 @@ SilphCo7FRocket2Text:
 	text_asm
 	ld hl, SilphCo7TrainerHeader2
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 SilphCo7FRocket2BattleText:
 	text_far _SilphCo7FRocket2BattleText
@@ -462,7 +462,7 @@ SilphCo7FRocket3Text:
 	text_asm
 	ld hl, SilphCo7TrainerHeader3
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 SilphCo7FRocket3BattleText:
 	text_far _SilphCo7FRocket3BattleText
@@ -480,7 +480,7 @@ SilphCo7FRivalText:
 	text_asm
 	ld hl, .Text
 	call PrintText
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Text:
 	text_far _SilphCo7FRivalText

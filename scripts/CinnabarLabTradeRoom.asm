@@ -23,4 +23,4 @@ CinnabarLabTradeRoomBeautyText:
 	ld [wWhichTrade], a
 CinnabarLabTradeRoomDoTrade:
 	predef DoInGameTradeDialogue
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd

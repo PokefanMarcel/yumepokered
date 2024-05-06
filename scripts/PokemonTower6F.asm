@@ -120,19 +120,19 @@ PokemonTower6FChanneler1Text:
 	text_asm
 	ld hl, PokemonTower6TrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 PokemonTower6FChanneler2Text:
 	text_asm
 	ld hl, PokemonTower6TrainerHeader1
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 PokemonTower6FChanneler3Text:
 	text_asm
 	ld hl, PokemonTower6TrainerHeader2
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 PokemonTower6FMarowakDepartedText:
 	text_asm
@@ -145,7 +145,7 @@ PokemonTower6FMarowakDepartedText:
 	call DelayFrames
 	ld hl, PokemonTower6FSoulWasCalmedText
 	call PrintText
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 PokemonTower6FGhostWasCubonesMotherText:
 	text_far _PokemonTower6FGhostWasCubonesMotherText

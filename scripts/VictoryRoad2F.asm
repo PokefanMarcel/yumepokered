@@ -104,37 +104,37 @@ VictoryRoad2FBlackbeltText:
 	text_asm
 	ld hl, VictoryRoad2TrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 VictoryRoad2FSuperNerd1Text:
 	text_asm
 	ld hl, VictoryRoad2TrainerHeader1
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 VictoryRoad2FCooltrainerMText:
 	text_asm
 	ld hl, VictoryRoad2TrainerHeader2
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 VictoryRoad2FSuperNerd2Text:
 	text_asm
 	ld hl, VictoryRoad2TrainerHeader3
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 VictoryRoad2FSuperNerd3Text:
 	text_asm
 	ld hl, VictoryRoad2TrainerHeader4
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 VictoryRoad2FMoltresText:
 	text_asm
 	ld hl, MoltresTrainerHeader
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 VictoryRoad2FMoltresBattleText:
 	text_far _VictoryRoad2FMoltresBattleText
@@ -142,7 +142,7 @@ VictoryRoad2FMoltresBattleText:
 	ld a, MOLTRES
 	call PlayCry
 	call WaitForSoundToFinish
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 VictoryRoad2FBlackbeltBattleText:
 	text_far _VictoryRoad2FBlackbeltBattleText

@@ -75,7 +75,7 @@ NameRatersHouseNameRaterText:
 	ld hl, .PokemonHasBeenRenamedText
 .done
 	call PrintText
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .did_not_rename
 	ld hl, .ComeAnyTimeYouLikeText
 	jr .done

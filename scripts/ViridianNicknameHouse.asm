@@ -23,7 +23,7 @@ ViridianNicknameHouseSpearowText:
 	ld a, SPEAROW
 	call PlayCry
 	call WaitForSoundToFinish
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Text:
 	text_far _ViridianNicknameHouseSpearowText

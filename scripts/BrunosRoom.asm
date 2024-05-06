@@ -36,10 +36,7 @@ BrunosRoom_ScriptPointers:
 	dw_const DisplayEnemyTrainerTextAndStartBattle, SCRIPT_BRUNOSROOM_BRUNO_START_BATTLE
 	dw_const BrunosRoomBrunoEndBattleScript,        SCRIPT_BRUNOSROOM_BRUNO_END_BATTLE
 	dw_const BrunosRoomPlayerIsMovingScript,        SCRIPT_BRUNOSROOM_PLAYER_IS_MOVING
-	dw_const BrunosRoomNoopScript,                  SCRIPT_BRUNOSROOM_NOOP
-
-BrunosRoomNoopScript:
-	ret
+	dw_const DoRet,                                 SCRIPT_BRUNOSROOM_NOOP ; PureRGB - DoRet
 
 BrunoScriptWalkIntoRoom:
 ; Walk six steps upward.
@@ -129,7 +126,7 @@ BrunosRoomBrunoText:
 	text_asm
 	ld hl, BrunosRoomTrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 BrunoBeforeBattleText:
 	text_far _BrunoBeforeBattleText

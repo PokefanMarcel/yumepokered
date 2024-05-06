@@ -102,7 +102,7 @@ SilphCo5FSilphWorkerMText:
 	ld hl, .ThatsYouRightText
 	ld de, .YoureOurHeroText
 	call SilphCo6FBeatGiovanniPrintDEOrPrintHLScript
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .ThatsYouRightText:
 	text_far _SilphCo5FSilphWorkerMThatsYouRightText
@@ -116,7 +116,7 @@ SilphCo5FRocket1Text:
 	text_asm
 	ld hl, SilphCo5TrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 SilphCo5FRocket1BattleText:
 	text_far _SilphCo5FRocket1BattleText
@@ -134,7 +134,7 @@ SilphCo5FScientistText:
 	text_asm
 	ld hl, SilphCo5TrainerHeader1
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 SilphCo5FScientistBattleText:
 	text_far _SilphCo5FScientistBattleText
@@ -152,7 +152,7 @@ SilphCo5FRockerText:
 	text_asm
 	ld hl, SilphCo5TrainerHeader2
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 SilphCo5FRockerBattleText:
 	text_far _SilphCo5FRockerBattleText
@@ -170,7 +170,7 @@ SilphCo5FRocket2Text:
 	text_asm
 	ld hl, SilphCo5TrainerHeader3
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 SilphCo5FRocket2BattleText:
 	text_far _SilphCo5FRocket2BattleText

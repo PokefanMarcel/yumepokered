@@ -75,7 +75,7 @@ PokemonMansion2FSuperNerdText:
 	text_asm
 	ld hl, Mansion2TrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 PokemonMansion2FSuperNerdBattleText:
 	text_far _PokemonMansion2FSuperNerdBattleText
@@ -121,7 +121,7 @@ PokemonMansion2FSwitchText:
 	ld hl, .NotPressed
 	call PrintText
 .done
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Text:
 	text_far _PokemonMansion2FSwitchText

@@ -61,13 +61,13 @@ SilphCo10FRocketText:
 	text_asm
 	ld hl, SilphCo10TrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 SilphCo10FScientistText:
 	text_asm
 	ld hl, SilphCo10TrainerHeader1
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 SilphCo10FSilphWorkerFText:
 	text_asm
@@ -77,7 +77,7 @@ SilphCo10FSilphWorkerFText:
 	ld hl, .ImScaredText
 .beat_giovanni
 	call PrintText
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .ImScaredText:
 	text_far _SilphCo10FSilphWorkerFImScaredText

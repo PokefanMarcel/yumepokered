@@ -78,7 +78,7 @@ PokemonMansion1FScientistText:
 	text_asm
 	ld hl, Mansion1TrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 PokemonMansion1FScientistBattleText:
 	text_far _PokemonMansion1FScientistBattleText
@@ -116,7 +116,7 @@ PokemonMansion1FSwitchText:
 	ld hl, .NotPressedText
 	call PrintText
 .done
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Text:
 	text_far _PokemonMansion1FSwitchText

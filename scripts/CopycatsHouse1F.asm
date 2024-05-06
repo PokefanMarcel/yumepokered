@@ -20,4 +20,4 @@ CopycatsHouse1FChanseyText:
 	text_asm
 	ld a, CHANSEY
 	call PlayCry
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd

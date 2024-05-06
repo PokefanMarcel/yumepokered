@@ -207,7 +207,7 @@ CinnabarGymStartBattleScript:
 .not_blaine
 	ld [wCinnabarGymCurScript], a
 	ld [wCurMapScript], a
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 CinnabarGymBlaineText:
 	text_asm
@@ -217,11 +217,11 @@ CinnabarGymBlaineText:
 	jr nz, .afterBeat
 	call z, CinnabarGymReceiveTM38
 	call DisableWaitingAfterTextDisplay
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .afterBeat
 	ld hl, .PostBattleAdviceText
 	call PrintText
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .beforeBeat
 	ld hl, .PreBattleText
 	call PrintText
@@ -274,7 +274,7 @@ CinnabarGymSuperNerd1:
 .defeated
 	ld hl, .AfterBattleText
 	call PrintText
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .BattleText:
 	text_far _CinnabarGymSuperNerd1BattleText
@@ -302,7 +302,7 @@ CinnabarGymSuperNerd2:
 .defeated
 	ld hl, .AfterBattleText
 	call PrintText
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .BattleText:
 	text_far _CinnabarGymSuperNerd2BattleText
@@ -330,7 +330,7 @@ CinnabarGymSuperNerd3:
 .defeated
 	ld hl, .AfterBattleText
 	call PrintText
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .BattleText:
 	text_far _CinnabarGymSuperNerd3BattleText
@@ -358,7 +358,7 @@ CinnabarGymSuperNerd4:
 .defeated
 	ld hl, .AfterBattleText
 	call PrintText
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .BattleText:
 	text_far _CinnabarGymSuperNerd4BattleText
@@ -386,7 +386,7 @@ CinnabarGymSuperNerd5:
 .defeated
 	ld hl, .AfterBattleText
 	call PrintText
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .BattleText:
 	text_far _CinnabarGymSuperNerd5BattleText
@@ -414,7 +414,7 @@ CinnabarGymSuperNerd6:
 .defeated
 	ld hl, .AfterBattleText
 	call PrintText
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .BattleText:
 	text_far _CinnabarGymSuperNerd6BattleText
@@ -442,7 +442,7 @@ CinnabarGymSuperNerd7:
 .defeated
 	ld hl, .AfterBattleText
 	call PrintText
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .BattleText:
 	text_far _CinnabarGymSuperNerd7BattleText
@@ -466,7 +466,7 @@ CinnabarGymGymGuideText:
 	ld hl, .BeatBlaineText
 .done
 	call PrintText
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .ChampInMakingText:
 	text_far _CinnabarGymGymGuideChampInMakingText

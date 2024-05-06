@@ -208,19 +208,19 @@ PokemonTower7FRocket1Text:
 	text_asm
 	ld hl, PokemonTower7TrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 PokemonTower7FRocket2Text:
 	text_asm
 	ld hl, PokemonTower7TrainerHeader1
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 PokemonTower7FRocket3Text:
 	text_asm
 	ld hl, PokemonTower7TrainerHeader2
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 PokemonTower7FMrFujiText:
 	text_asm
@@ -240,7 +240,7 @@ PokemonTower7FMrFujiText:
 	ld a, SCRIPT_POKEMONTOWER7F_WARP_TO_MR_FUJI_HOUSE
 	ld [wPokemonTower7FCurScript], a
 	ld [wCurMapScript], a
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .RescueText:
 	text_far _PokemonTower7FMrFujiRescueText

@@ -36,7 +36,7 @@ Route4CooltrainerF2Text:
 	text_asm
 	ld hl, Route4TrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route4CooltrainerF2BattleText:
 	text_far _Route4CooltrainerF2BattleText

@@ -122,7 +122,7 @@ RocketHideoutB4FGiovanniText:
 	ld hl, RocketHideoutB4FGiovanniHopeWeMeetAgainText
 	call PrintText
 .done
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .ImpressedYouGotHereText:
 	text_far _RocketHideoutB4FGiovanniImpressedYouGotHereText
@@ -140,7 +140,7 @@ RocketHideoutB4FRocket1Text:
 	text_asm
 	ld hl, RocketHideout4TrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 RocketHideoutB4FGiovanniBattleText:
 	text_far _RocketHideoutB4FGiovanniBattleText
@@ -158,7 +158,7 @@ RocketHideoutB4FRocket2Text:
 	text_asm
 	ld hl, RocketHideout4TrainerHeader1
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 RocketHideoutB4FRocket1BattleText:
 	text_far _RocketHideoutB4FRocket1BattleText
@@ -176,7 +176,7 @@ RocketHideoutB4FRocket3Text:
 	text_asm
 	ld hl, RocketHideout4TrainerHeader2
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 RocketHideoutB4FRocket2BattleText:
 	text_far _RocketHideoutB4FRocket2BattleText
@@ -196,7 +196,7 @@ RocketHideoutB4FRocket2AfterBattleText:
 	ld [wMissableObjectIndex], a
 	predef ShowObject
 .done
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Text:
 	text_far _RocketHideoutB4FRocket2AfterBattleText

@@ -54,7 +54,7 @@ Route3Youngster1Text:
 	text_asm
 	ld hl, Route3TrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route3Youngster1BattleText:
 	text_far _Route3Youngster1BattleText
@@ -72,7 +72,7 @@ Route3Youngster2Text:
 	text_asm
 	ld hl, Route3TrainerHeader1
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route3Youngster2BattleText:
 	text_far _Route3Youngster2BattleText
@@ -90,7 +90,7 @@ Route3CooltrainerF1Text:
 	text_asm
 	ld hl, Route3TrainerHeader2
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route3CooltrainerF1BattleText:
 	text_far _Route3CooltrainerF1BattleText
@@ -108,7 +108,7 @@ Route3Youngster3Text:
 	text_asm
 	ld hl, Route3TrainerHeader3
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route3Youngster3BattleText:
 	text_far _Route3Youngster3BattleText
@@ -126,7 +126,7 @@ Route3CooltrainerF2Text:
 	text_asm
 	ld hl, Route3TrainerHeader4
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route3CooltrainerF2BattleText:
 	text_far _Route3CooltrainerF2BattleText
@@ -144,7 +144,7 @@ Route3Youngster4Text:
 	text_asm
 	ld hl, Route3TrainerHeader5
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route3Youngster4BattleText:
 	text_far _Route3Youngster4BattleText
@@ -162,7 +162,7 @@ Route3Youngster5Text:
 	text_asm
 	ld hl, Route3TrainerHeader6
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route3Youngster5BattleText:
 	text_far _Route3Youngster5BattleText
@@ -180,7 +180,7 @@ Route3CooltrainerF3Text:
 	text_asm
 	ld hl, Route3TrainerHeader7
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route3CooltrainerF3BattleText:
 	text_far _Route3CooltrainerF3BattleText

@@ -38,7 +38,7 @@ CeladonMansion3FGameDesignerText:
 	ld hl, .CompletedDexText
 .done
 	call PrintText
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Text:
 	text_far _CeladonMansion3FGameDesignerText
@@ -51,7 +51,7 @@ CeladonMansion3FGameDesignerText:
 	callfar DisplayDiploma
 	ld a, TRUE
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 CeladonMansion3FGameProgramPCText:
 	text_far _CeladonMansion3FGameProgramPCText

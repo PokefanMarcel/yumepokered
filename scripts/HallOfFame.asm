@@ -15,10 +15,7 @@ HallOfFame_ScriptPointers:
 	dw_const HallOfFameDefaultScript,            SCRIPT_HALLOFFAME_DEFAULT
 	dw_const HallOfFameOakCongratulationsScript, SCRIPT_HALLOFFAME_OAK_CONGRATULATIONS
 	dw_const HallOfFameResetEventsAndSaveScript, SCRIPT_HALLOFFAME_RESET_EVENTS_AND_SAVE
-	dw_const HallOfFameNoopScript,               SCRIPT_HALLOFFAME_NOOP
-
-HallOfFameNoopScript:
-	ret
+	dw_const DoRet,                              SCRIPT_HALLOFFAME_NOOP ; PureRGB - DoRet
 
 HallOfFameResetEventsAndSaveScript:
 	call Delay3

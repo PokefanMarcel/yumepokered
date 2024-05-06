@@ -26,7 +26,7 @@ LavenderTownLittleGirlText:
 	ld hl, .SoThereAreBelieversText
 .got_text
 	call PrintText
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .DoYouBelieveInGhostsText:
 	text_far _LavenderTownLittleGirlDoYouBelieveInGhostsText

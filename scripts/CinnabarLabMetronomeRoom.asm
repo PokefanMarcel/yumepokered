@@ -30,7 +30,7 @@ CinnabarLabMetronomeRoomScientist1Text:
 	ld hl, .TM35ExplanationText
 	call PrintText
 .done
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Text:
 	text_far _CinnabarLabMetronomeRoomScientist1Text

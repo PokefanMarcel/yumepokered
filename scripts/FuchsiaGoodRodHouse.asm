@@ -33,7 +33,7 @@ FuchsiaGoodRodHouseFishingGuruText:
 	ld hl, .HowAreTheFishText
 .done
 	call PrintText
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Text:
 	text_far _FuchsiaGoodRodHouseFishingGuruText

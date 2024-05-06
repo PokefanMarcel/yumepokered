@@ -112,7 +112,7 @@ Route12Fisher1Text:
 	text_asm
 	ld hl, Route12TrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route12Fisher1BattleText:
 	text_far _Route12Fisher1BattleText
@@ -130,7 +130,7 @@ Route12Fisher2Text:
 	text_asm
 	ld hl, Route12TrainerHeader1
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route12Fisher2BattleText:
 	text_far _Route12Fisher2BattleText
@@ -148,7 +148,7 @@ Route12CooltrainerMText:
 	text_asm
 	ld hl, Route12TrainerHeader2
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route12CooltrainerMBattleText:
 	text_far _Route12CooltrainerMBattleText
@@ -166,7 +166,7 @@ Route12SuperNerdText:
 	text_asm
 	ld hl, Route12TrainerHeader3
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route12SuperNerdBattleText:
 	text_far _Route12SuperNerdBattleText
@@ -184,7 +184,7 @@ Route12Fisher3Text:
 	text_asm
 	ld hl, Route12TrainerHeader4
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route12Fisher3BattleText:
 	text_far _Route12Fisher3BattleText
@@ -202,7 +202,7 @@ Route12Fisher4Text:
 	text_asm
 	ld hl, Route12TrainerHeader5
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route12Fisher4BattleText:
 	text_far _Route12Fisher4BattleText
@@ -220,7 +220,7 @@ Route12Fisher5Text:
 	text_asm
 	ld hl, Route12TrainerHeader6
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route12Fisher5BattleText:
 	text_far _Route12Fisher5BattleText

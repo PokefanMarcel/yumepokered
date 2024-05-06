@@ -22,7 +22,7 @@ MrFujisHouseSuperNerdText:
 	ld hl, .MrFujiHadBeenPrayingText
 	call PrintText
 .done
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .MrFujiIsntHereText:
 	text_far _MrFujisHouseSuperNerdMrFujiIsntHereText
@@ -43,7 +43,7 @@ MrFujisHouseLittleGirlText:
 	ld hl, .PokemonAreNiceToHugText
 	call PrintText
 .done
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .ThisIsMrFujisHouseText:
 	text_far _MrFujisHouseLittleGirlThisIsMrFujisHouseText
@@ -58,14 +58,14 @@ MrFujisHousePsyduckText:
 	text_asm
 	ld a, PSYDUCK
 	call PlayCry
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 MrFujisHouseNidorinoText:
 	text_far _MrFujisHouseNidorinoText
 	text_asm
 	ld a, NIDORINO
 	call PlayCry
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 MrFujisHouseMrFujiText:
 	text_asm
@@ -88,7 +88,7 @@ MrFujisHouseMrFujiText:
 	ld hl, .HasMyFluteHelpedYouText
 	call PrintText
 .done
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .IThinkThisMayHelpYourQuestText:
 	text_far _MrFujisHouseMrFujiIThinkThisMayHelpYourQuestText

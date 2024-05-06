@@ -23,7 +23,7 @@ Route16FlyHouseBrunetteGirlText:
 	ld hl, .HM02NoRoomText
 .got_item
 	call PrintText
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Text:
 	text_far _Route16FlyHouseBrunetteGirlText
@@ -49,7 +49,7 @@ Route16FlyHouseFearowText:
 	ld a, FEAROW
 	call PlayCry
 	call WaitForSoundToFinish
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Text:
 	text_far _Route16FlyHouseFearowText

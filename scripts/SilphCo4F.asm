@@ -117,7 +117,7 @@ SilphCo4FSilphWorkerMText:
 	ld hl, .ImHidingText
 	ld de, .TeamRocketIsGoneText
 	call SilphCo6FBeatGiovanniPrintDEOrPrintHLScript
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .ImHidingText:
 	text_far _SilphCo4FSilphWorkerMImHidingText
@@ -131,7 +131,7 @@ SilphCo4FRocket1Text:
 	text_asm
 	ld hl, SilphCo4TrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 SilphCo4FRocket1BattleText:
 	text_far _SilphCo4FRocket1BattleText
@@ -149,7 +149,7 @@ SilphCo4FScientistText:
 	text_asm
 	ld hl, SilphCo4TrainerHeader1
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 SilphCo4FScientistBattleText:
 	text_far _SilphCo4FScientistBattleText
@@ -167,7 +167,7 @@ SilphCo4FRocket2Text:
 	text_asm
 	ld hl, SilphCo4TrainerHeader2
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 SilphCo4FRocket2BattleText:
 	text_far _SilphCo4FRocket2BattleText

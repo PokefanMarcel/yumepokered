@@ -36,19 +36,19 @@ PokemonTower4FChanneler1Text:
 	text_asm
 	ld hl, PokemonTower4TrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 PokemonTower4FChanneler2Text:
 	text_asm
 	ld hl, PokemonTower4TrainerHeader1
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 PokemonTower4FChanneler3Text:
 	text_asm
 	ld hl, PokemonTower4TrainerHeader2
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 PokemonTower4FChanneler1BattleText:
 	text_far _PokemonTower4FChanneler1BattleText

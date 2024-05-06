@@ -22,7 +22,7 @@ LavenderMartCooltrainerMText:
 	ld hl, .NuggetText
 	call PrintText
 .done
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .ReviveText
 	text_far _LavenderMartCooltrainerMReviveText

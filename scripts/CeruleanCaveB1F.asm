@@ -29,7 +29,7 @@ CeruleanCaveB1FMewtwoText:
 	text_asm
 	ld hl, MewtwoTrainerHeader
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 MewtwoBattleText:
 	text_far _MewtwoBattleText
@@ -37,4 +37,4 @@ MewtwoBattleText:
 	ld a, MEWTWO
 	call PlayCry
 	call WaitForSoundToFinish
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd

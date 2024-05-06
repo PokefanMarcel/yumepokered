@@ -16,10 +16,7 @@ SSAnne2F_ScriptPointers:
 	dw_const SSAnne2FRivalStartBattleScript, SCRIPT_SSANNE2F_RIVAL_START_BATTLE
 	dw_const SSAnne2FRivalAfterBattleScript, SCRIPT_SSANNE2F_RIVAL_AFTER_BATTLE
 	dw_const SSAnne2FRivalExitScript,        SCRIPT_SSANNE2F_RIVAL_EXIT
-	dw_const SSAnne2FNoopScript,             SCRIPT_SSANNE2F_NOOP
-
-SSAnne2FNoopScript:
-	ret
+	dw_const DoRet,                          SCRIPT_SSANNE2F_NOOP ; PureRGB - DoRet
 
 SSAnne2FDefaultScript:
 	ld hl, .PlayerCoordinatesArray
@@ -197,7 +194,7 @@ SSAnne2FRivalText:
 	ld hl, SSAnne2FRivalDefeatedText
 	ld de, SSAnne2FRivalVictoryText
 	call SaveEndBattleTextPointers
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Text:
 	text_far _SSAnne2FRivalText

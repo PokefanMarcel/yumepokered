@@ -129,7 +129,7 @@ SilphCo2FSilphWorkerFText:
 	ld hl, .TM36ExplanationText
 .print_text
 	call PrintText
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .PleaseTakeThisText:
 	text_far SilphCo2FSilphWorkerFPleaseTakeThisText
@@ -152,25 +152,25 @@ SilphCo2FScientist1Text:
 	text_asm
 	ld hl, SilphCo2TrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 SilphCo2FScientist2Text:
 	text_asm
 	ld hl, SilphCo2TrainerHeader1
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 SilphCo2FRocket1Text:
 	text_asm
 	ld hl, SilphCo2TrainerHeader2
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 SilphCo2FRocket2Text:
 	text_asm
 	ld hl, SilphCo2TrainerHeader3
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 SilphCo2FScientist1BattleText:
 	text_far _SilphCo2FScientist1BattleText

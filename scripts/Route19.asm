@@ -55,61 +55,61 @@ Route19CooltrainerM1Text:
 	text_asm
 	ld hl, Route19TrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route19CooltrainerM2Text:
 	text_asm
 	ld hl, Route19TrainerHeader1
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route19Swimmer1Text:
 	text_asm
 	ld hl, Route19TrainerHeader2
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route19Swimmer2Text:
 	text_asm
 	ld hl, Route19TrainerHeader3
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route19Swimmer3Text:
 	text_asm
 	ld hl, Route19TrainerHeader4
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route19Swimmer4Text:
 	text_asm
 	ld hl, Route19TrainerHeader5
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route19Swimmer5Text:
 	text_asm
 	ld hl, Route19TrainerHeader6
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route19Swimmer6Text:
 	text_asm
 	ld hl, Route19TrainerHeader7
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route19Swimmer7Text:
 	text_asm
 	ld hl, Route19TrainerHeader8
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route19Swimmer8Text:
 	text_asm
 	ld hl, Route19TrainerHeader9
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route19CooltrainerM1BattleText:
 	text_far _Route19CooltrainerM1BattleText

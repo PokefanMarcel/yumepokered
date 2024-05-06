@@ -135,7 +135,7 @@ SaffronGymSabrinaText:
 	ld a, SCRIPT_SAFFRONGYM_SABRINA_POST_BATTLE
 	ld [wSaffronGymCurScript], a
 .done
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Text:
 	text_far _SaffronGymSabrinaText
@@ -169,43 +169,43 @@ SaffronGymChanneler1Text:
 	text_asm
 	ld hl, SaffronGymTrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 SaffronGymYoungster1Text:
 	text_asm
 	ld hl, SaffronGymTrainerHeader1
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 SaffronGymChanneler2Text:
 	text_asm
 	ld hl, SaffronGymTrainerHeader2
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 SaffronGymYoungster2Text:
 	text_asm
 	ld hl, SaffronGymTrainerHeader3
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 SaffronGymChanneler3Text:
 	text_asm
 	ld hl, SaffronGymTrainerHeader4
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 SaffronGymYoungster3Text:
 	text_asm
 	ld hl, SaffronGymTrainerHeader5
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 SaffronGymYoungster4Text:
 	text_asm
 	ld hl, SaffronGymTrainerHeader6
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 SaffronGymGymGuideText:
 	text_asm
@@ -218,7 +218,7 @@ SaffronGymGymGuideText:
 	ld hl, .BeatSabrinaText
 	call PrintText
 .done
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .ChampInMakingText:
 	text_far _SaffronGymGuideChampInMakingText

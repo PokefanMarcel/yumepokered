@@ -64,31 +64,31 @@ RocketHideoutB1FRocket1Text:
 	text_asm
 	ld hl, RocketHideout1TrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 RocketHideoutB1FRocket2Text:
 	text_asm
 	ld hl, RocketHideout1TrainerHeader1
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 RocketHideoutB1FRocket3Text:
 	text_asm
 	ld hl, RocketHideout1TrainerHeader2
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 RocketHideoutB1FRocket4Text:
 	text_asm
 	ld hl, RocketHideout1TrainerHeader3
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 RocketHideoutB1FRocket5Text:
 	text_asm
 	ld hl, RocketHideout1TrainerHeader4
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 RocketHideoutB1FRocket5EndBattleText:
 	text_far _RocketHideoutB1FRocket5EndBattleText

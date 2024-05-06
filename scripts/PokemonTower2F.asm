@@ -171,7 +171,7 @@ PokemonTower2FRivalText:
 	ld [wPokemonTower2FCurScript], a
 	ld [wCurMapScript], a
 .text_script_end
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .WhatBringsYouHereText:
 	text_far _PokemonTower2FRivalWhatBringsYouHereText

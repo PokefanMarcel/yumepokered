@@ -238,7 +238,7 @@ CeladonMartRoofLittleGirlText:
 	ld hl, .ImThirstyText
 	call PrintText
 .done
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .ImThirstyText:
 	text_far _CeladonMartRoofLittleGirlImThirstyText

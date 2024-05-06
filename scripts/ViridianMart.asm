@@ -23,7 +23,7 @@ ViridianMart_ScriptPointers:
 	def_script_pointers
 	dw_const ViridianMartDefaultScript,    SCRIPT_VIRIDIANMART_DEFAULT
 	dw_const ViridianMartOaksParcelScript, SCRIPT_VIRIDIANMART_OAKS_PARCEL
-	dw_const ViridianMartNoopScript,       SCRIPT_VIRIDIANMART_NOOP
+	dw_const DoRet,                        SCRIPT_VIRIDIANMART_NOOP ; PureRGB - DoRet
 
 ViridianMartDefaultScript:
 	call UpdateSprites
@@ -58,8 +58,6 @@ ViridianMartOaksParcelScript:
 	SetEvent EVENT_GOT_OAKS_PARCEL
 	ld a, SCRIPT_VIRIDIANMART_NOOP
 	ld [wViridianMartCurScript], a
-	; fallthrough
-ViridianMartNoopScript:
 	ret
 
 ViridianMart_TextPointers:

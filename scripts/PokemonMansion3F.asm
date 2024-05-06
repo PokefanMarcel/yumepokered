@@ -104,13 +104,13 @@ PokemonMansion3FSuperNerdText:
 	text_asm
 	ld hl, Mansion3TrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 PokemonMansion3FScientistText:
 	text_asm
 	ld hl, Mansion3TrainerHeader1
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 PokemonMansion3FSuperNerdBattleText:
 	text_far _PokemonMansion3FSuperNerdBattleText

@@ -11,7 +11,7 @@ CeladonMansion1F_TextPointers:
 
 CeladonMansion1_PlayCryScript:
 	call PlayCry
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 CeladonMansion1FMeowthText:
 	text_far _CeladonMansion1FMeowthText

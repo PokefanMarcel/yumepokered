@@ -55,7 +55,7 @@ Route14CooltrainerM1Text:
 	text_asm
 	ld hl, Route14TrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route14CooltrainerM1BattleText:
 	text_far _Route14CooltrainerM1BattleText
@@ -73,7 +73,7 @@ Route14CooltrainerM2Text:
 	text_asm
 	ld hl, Route14TrainerHeader1
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route14CooltrainerM2BattleText:
 	text_far _Route14CooltrainerM2BattleText
@@ -91,7 +91,7 @@ Route14CooltrainerM3Text:
 	text_asm
 	ld hl, Route14TrainerHeader2
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route14CooltrainerM3BattleText:
 	text_far _Route14CooltrainerM3BattleText
@@ -109,7 +109,7 @@ Route14CooltrainerM4Text:
 	text_asm
 	ld hl, Route14TrainerHeader3
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route14CooltrainerM4BattleText:
 	text_far _Route14CooltrainerM4BattleText
@@ -127,7 +127,7 @@ Route14CooltrainerM5Text:
 	text_asm
 	ld hl, Route14TrainerHeader4
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route14CooltrainerM5BattleText:
 	text_far _Route14CooltrainerM5BattleText
@@ -145,7 +145,7 @@ Route14CooltrainerM6Text:
 	text_asm
 	ld hl, Route14TrainerHeader5
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route14CooltrainerM6BattleText:
 	text_far _Route14CooltrainerM6BattleText
@@ -163,7 +163,7 @@ Route14Biker1Text:
 	text_asm
 	ld hl, Route14TrainerHeader6
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route14Biker1BattleText:
 	text_far _Route14Biker1BattleText
@@ -181,7 +181,7 @@ Route14Biker2Text:
 	text_asm
 	ld hl, Route14TrainerHeader7
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route14Biker2BattleText:
 	text_far _Route14Biker2BattleText
@@ -199,7 +199,7 @@ Route14Biker3Text:
 	text_asm
 	ld hl, Route14TrainerHeader8
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route14Biker3BattleText:
 	text_far _Route14Biker3BattleText
@@ -217,7 +217,7 @@ Route14Biker4Text:
 	text_asm
 	ld hl, Route14TrainerHeader9
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route14Biker4BattleText:
 	text_far _Route14Biker4BattleText

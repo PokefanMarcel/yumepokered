@@ -48,19 +48,19 @@ ViridianForestYoungster2Text:
 	text_asm
 	ld hl, ViridianForestTrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 ViridianForestYoungster3Text:
 	text_asm
 	ld hl, ViridianForestTrainerHeader1
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 ViridianForestYoungster4Text:
 	text_asm
 	ld hl, ViridianForestTrainerHeader2
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 ViridianForestYoungster2BattleText:
 	text_far _ViridianForestYoungster2BattleText

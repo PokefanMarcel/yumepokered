@@ -6,15 +6,12 @@ BillsHouse_Script:
 
 BillsHouse_ScriptPointers:
 	def_script_pointers
-	dw_const BillsHouseDefaultScript,              SCRIPT_BILLSHOUSE_DEFAULT
+	dw_const DoRet,                                SCRIPT_BILLSHOUSE_DEFAULT ; PureRGB - DoRet
 	dw_const BillsHousePokemonWalkToMachineScript, SCRIPT_BILLSHOUSE_POKEMON_WALK_TO_MACHINE
 	dw_const BillsHousePokemonEntersMachineScript, SCRIPT_BILLSHOUSE_POKEMON_ENTERS_MACHINE
 	dw_const BillsHouseBillExitsMachineScript,     SCRIPT_BILLSHOUSE_BILL_EXITS_MACHINE
 	dw_const BillsHouseCleanupScript,              SCRIPT_BILLSHOUSE_CLEANUP
 	dw_const BillsHousePCScript,                   SCRIPT_BILLSHOUSE_PC
-
-BillsHouseDefaultScript:
-	ret
 
 BillsHousePokemonWalkToMachineScript:
 	ld a, [wSpritePlayerStateData1FacingDirection]
@@ -145,7 +142,7 @@ BillsHouseBillPokemonText:
 	call PrintText
 	jr .use_machine
 .text_script_end
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .ImNotAPokemonText:
 	text_far _BillsHouseBillImNotAPokemonText
@@ -185,7 +182,7 @@ BillsHouseBillSSTicketText:
 	ld hl, .SSTicketNoRoomText
 	call PrintText
 .text_script_end
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .ThankYouText:
 	text_far _BillsHouseBillThankYouText
@@ -209,7 +206,7 @@ BillsHouseBillCheckOutMyRarePokemonText:
 	text_asm
 	ld hl, .Text
 	call PrintText
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Text:
 	text_far _BillsHouseBillCheckOutMyRarePokemonText

@@ -13,13 +13,12 @@ Route22_ScriptPointers:
 	dw_const Route22Rival2StartBattleScript, SCRIPT_ROUTE22_RIVAL2_START_BATTLE
 	dw_const Route22Rival2AfterBattleScript, SCRIPT_ROUTE22_RIVAL2_AFTER_BATTLE
 	dw_const Route22Rival2ExitScript,        SCRIPT_ROUTE22_RIVAL2_EXIT
-	dw_const Route22NoopScript,              SCRIPT_ROUTE22_NOOP
+	dw_const DoRet,                          SCRIPT_ROUTE22_NOOP ; PureRGB - DoRet
 
 Route22SetDefaultScript:
 	xor a ; SCRIPT_ROUTE22_DEFAULT
 	ld [wJoyIgnore], a
 	ld [wRoute22CurScript], a
-Route22NoopScript:
 	ret
 
 Route22GetRivalTrainerNoByStarterScript:
@@ -394,7 +393,7 @@ Route22Rival1Text:
 	ld hl, Route22RivalBeforeBattleText1
 	call PrintText
 .text_script_end
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route22Rival2Text:
 	text_asm
@@ -407,7 +406,7 @@ Route22Rival2Text:
 	ld hl, Route22RivalBeforeBattleText2
 	call PrintText
 .text_script_end
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route22RivalBeforeBattleText1:
 	text_far _Route22RivalBeforeBattleText1

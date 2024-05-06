@@ -46,10 +46,7 @@ LancesRoom_ScriptPointers:
 	dw_const DisplayEnemyTrainerTextAndStartBattle, SCRIPT_LANCESROOM_LANCE_START_BATTLE
 	dw_const LancesRoomLanceEndBattleScript,        SCRIPT_LANCESROOM_LANCE_END_BATTLE
 	dw_const LancesRoomPlayerIsMovingScript,        SCRIPT_LANCESROOM_PLAYER_IS_MOVING
-	dw_const LancesRoomNoopScript,                  SCRIPT_LANCESROOM_NOOP
-
-LancesRoomNoopScript:
-	ret
+	dw_const DoRet,                                 SCRIPT_LANCESROOM_NOOP ; PureRGB - DoRet
 
 LancesRoomDefaultScript:
 	CheckEvent EVENT_BEAT_LANCE
@@ -140,7 +137,7 @@ LancesRoomLanceText:
 	text_asm
 	ld hl, LancesRoomTrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 LancesRoomLanceBeforeBattleText:
 	text_far _LancesRoomLanceBeforeBattleText
@@ -154,4 +151,4 @@ LancesRoomLanceAfterBattleText:
 	text_far _LancesRoomLanceAfterBattleText
 	text_asm
 	SetEvent EVENT_BEAT_LANCE
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd

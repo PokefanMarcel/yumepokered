@@ -56,7 +56,7 @@ PowerPlantInitBattleScript:
 	call TalkToTrainer
 	ld a, [wCurMapScript]
 	ld [wPowerPlantCurScript], a
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 PowerPlantVoltorb1Text:
 	text_asm
@@ -113,4 +113,4 @@ PowerPlantZapdosBattleText:
 	ld a, ZAPDOS
 	call PlayCry
 	call WaitForSoundToFinish
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd

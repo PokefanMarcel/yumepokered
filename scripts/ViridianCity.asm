@@ -158,7 +158,7 @@ ViridianCityGambler1Text:
 	ld hl, .GymAlwaysClosedText
 .print_text
 	call PrintText
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .GymAlwaysClosedText:
 	text_far _ViridianCityGambler1GymAlwaysClosedText
@@ -183,7 +183,7 @@ ViridianCityYoungster2Text:
 	ld hl, .OkThenText
 	call PrintText
 .text_script_end
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .YouWantToKnowAboutText:
 	text_far _ViridianCityYoungster2YouWantToKnowAboutText
@@ -208,7 +208,7 @@ ViridianCityGirlText:
 	ld hl, .WhenIGoShopText
 	call PrintText
 .text_script_end
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .HasntHadHisCoffeeYetText:
 	text_far _ViridianCityGirlHasntHadHisCoffeeYetText
@@ -225,7 +225,7 @@ ViridianCityOldManSleepyText:
 	call ViridianCityMovePlayerDownScript
 	ld a, SCRIPT_VIRIDIANCITY_PLAYER_MOVING_DOWN
 	ld [wViridianCityCurScript], a
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .PrivatePropertyText:
 	text_far _ViridianCityOldManSleepyPrivatePropertyText
@@ -252,7 +252,7 @@ ViridianCityFisherText:
 	ld hl, .TM42ExplanationText
 	call PrintText
 .done
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .YouCanHaveThisText:
 	text_far ViridianCityFisherYouCanHaveThisText
@@ -290,7 +290,7 @@ ViridianCityOldManText:
 	ld hl, .TimeIsMoneyText
 	call PrintText
 .done
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .HadMyCoffeeNowText:
 	text_far _ViridianCityOldManHadMyCoffeeNowText

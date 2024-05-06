@@ -63,7 +63,7 @@ CinnabarLabFossilRoomScientist1Text:
 	ld hl, .NoFossilsText
 	call PrintText
 .done
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .check_done_reviving
 	CheckEventAfterBranchReuseA EVENT_LAB_STILL_REVIVING_FOSSIL, EVENT_GAVE_FOSSIL_TO_LAB
 	jr z, .done_reviving
@@ -104,7 +104,7 @@ CinnabarLabFossilRoomScientist2Text:
 	ld a, TRADE_FOR_SAILOR
 	ld [wWhichTrade], a
 	predef DoInGameTradeDialogue
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 LoadFossilItemAndMonNameBank1D:
 	farjp LoadFossilItemAndMonName

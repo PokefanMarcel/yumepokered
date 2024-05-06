@@ -12,7 +12,7 @@ Route18Gate2FYoungsterText:
 	ld a, TRADE_FOR_MARC
 	ld [wWhichTrade], a
 	predef DoInGameTradeDialogue
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route18Gate2FLeftBinocularsText:
 	text_asm

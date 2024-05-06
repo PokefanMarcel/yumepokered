@@ -35,7 +35,7 @@ Route18CooltrainerM1Text:
 	text_asm
 	ld hl, Route18TrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route18CooltrainerM1BattleText:
 	text_far _Route18CooltrainerM1BattleText
@@ -53,7 +53,7 @@ Route18CooltrainerM2Text:
 	text_asm
 	ld hl, Route18TrainerHeader1
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route18CooltrainerM2BattleText:
 	text_far _Route18CooltrainerM2BattleText
@@ -71,7 +71,7 @@ Route18CooltrainerM3Text:
 	text_asm
 	ld hl, Route18TrainerHeader2
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route18CooltrainerM3BattleText:
 	text_far _Route18CooltrainerM3BattleText

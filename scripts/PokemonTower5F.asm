@@ -79,7 +79,7 @@ PokemonTower5FChanneler2Text:
 	text_asm
 	ld hl, PokemonTower5TrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 PokemonTower5FChanneler2BattleText:
 	text_far _PokemonTower5FChanneler2BattleText
@@ -97,7 +97,7 @@ PokemonTower5FChanneler3Text:
 	text_asm
 	ld hl, PokemonTower5TrainerHeader1
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 PokemonTower5FChanneler3BattleText:
 	text_far _PokemonTower5FChanneler3BattleText
@@ -115,7 +115,7 @@ PokemonTower5FChanneler4Text:
 	text_asm
 	ld hl, PokemonTower5TrainerHeader2
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 PokemonTower5FChanneler4BattleText:
 	text_far _PokemonTower5FChanneler4BattleText
@@ -133,7 +133,7 @@ PokemonTower5FChanneler5Text:
 	text_asm
 	ld hl, PokemonTower5TrainerHeader3
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 PokemonTower5FChanneler5BattleText:
 	text_far _PokemonTower5FChanneler5BattleText

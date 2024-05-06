@@ -145,7 +145,7 @@ VermilionCityGambler1Text:
 	ld hl, .SSAnneDepartedText
 	call PrintText
 .text_script_end
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .DidYouSeeText:
 	text_far _VermilionCityGambler1DidYouSeeText
@@ -190,7 +190,7 @@ VermilionCitySailor1Text:
 	ld hl, .ShipSetSailText
 	call PrintText
 .end
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .inFrontOfOrBehindGuardCoords
 	dbmapcoord 19, 29 ; in front of guard

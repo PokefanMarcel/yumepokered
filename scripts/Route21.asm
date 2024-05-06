@@ -51,55 +51,55 @@ Route21Fisher1Text:
 	text_asm
 	ld hl, Route21TrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route21Fisher2Text:
 	text_asm
 	ld hl, Route21TrainerHeader1
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route21Swimmer1Text:
 	text_asm
 	ld hl, Route21TrainerHeader2
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route21Swimmer2Text:
 	text_asm
 	ld hl, Route21TrainerHeader3
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route21Swimmer3Text:
 	text_asm
 	ld hl, Route21TrainerHeader4
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route21Swimmer4Text:
 	text_asm
 	ld hl, Route21TrainerHeader5
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route21Swimmer5Text:
 	text_asm
 	ld hl, Route21TrainerHeader6
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route21Fisher3Text:
 	text_asm
 	ld hl, Route21TrainerHeader7
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route21Fisher4Text:
 	text_asm
 	ld hl, Route21TrainerHeader8
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route21Fisher1BattleText:
 	text_far _Route21Fisher1BattleText

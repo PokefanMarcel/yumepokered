@@ -158,7 +158,7 @@ SilphCo9FNurseText:
 	ld hl, .ThankYouText
 	call PrintText
 .text_script_end
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .YouLookTiredText:
 	text_far SilphCo9FNurseYouLookTiredText
@@ -176,19 +176,19 @@ SilphCo9FRocket1Text:
 	text_asm
 	ld hl, SilphCo9TrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 SilphCo9FScientistText:
 	text_asm
 	ld hl, SilphCo9TrainerHeader1
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 SilphCo9FRocket2Text:
 	text_asm
 	ld hl, SilphCo9TrainerHeader2
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 SilphCo9FRocket1BattleText:
 	text_far _SilphCo9FRocket1BattleText

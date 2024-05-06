@@ -79,7 +79,7 @@ SilphCo3FSilphWorkerMText:
 	ld hl, .WhatShouldIDoText
 .beat_giovanni
 	call PrintText
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .WhatShouldIDoText:
 	text_far _SilphCo3FSilphWorkerMWhatShouldIDoText
@@ -93,7 +93,7 @@ SilphCo3FRocketText:
 	text_asm
 	ld hl, SilphCo3TrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 SilphCo3FRocketBattleText:
 	text_far _SilphCo3FRocketBattleText
@@ -111,7 +111,7 @@ SilphCo3FScientistText:
 	text_asm
 	ld hl, SilphCo3TrainerHeader1
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 SilphCo3FScientistBattleText:
 	text_far _SilphCo3FScientistBattleText

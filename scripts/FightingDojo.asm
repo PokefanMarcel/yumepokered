@@ -133,7 +133,7 @@ FightingDojoKarateMasterText:
 	ld hl, .IWillGiveYouAPokemonText
 	call PrintText
 .end
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Text:
 	text_far _FightingDojoKarateMasterText
@@ -155,7 +155,7 @@ FightingDojoBlackbelt1Text:
 	text_asm
 	ld hl, FightingDojoTrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 FightingDojoBlackbelt1BattleText:
 	text_far _FightingDojoBlackbelt1BattleText
@@ -173,7 +173,7 @@ FightingDojoBlackbelt2Text:
 	text_asm
 	ld hl, FightingDojoTrainerHeader1
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 FightingDojoBlackbelt2BattleText:
 	text_far _FightingDojoBlackbelt2BattleText
@@ -191,7 +191,7 @@ FightingDojoBlackbelt3Text:
 	text_asm
 	ld hl, FightingDojoTrainerHeader2
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 FightingDojoBlackbelt3BattleText:
 	text_far _FightingDojoBlackbelt3BattleText
@@ -209,7 +209,7 @@ FightingDojoBlackbelt4Text:
 	text_asm
 	ld hl, FightingDojoTrainerHeader3
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 FightingDojoBlackbelt4BattleText:
 	text_far _FightingDojoBlackbelt4BattleText
@@ -251,7 +251,7 @@ FightingDojoHitmonleePokeBallText:
 	predef HideObject
 	SetEvents EVENT_GOT_HITMONLEE, EVENT_DEFEATED_FIGHTING_DOJO
 .done
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Text:
 	text_far _FightingDojoHitmonleePokeBallText
@@ -285,7 +285,7 @@ FightingDojoHitmonchanPokeBallText:
 	ld [wMissableObjectIndex], a
 	predef HideObject
 .done
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Text:
 	text_far _FightingDojoHitmonchanPokeBallText

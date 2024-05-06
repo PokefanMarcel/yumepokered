@@ -7,15 +7,12 @@ BluesHouse_Script:
 BluesHouse_ScriptPointers:
 	def_script_pointers
 	dw_const BluesHouseDefaultScript, SCRIPT_BLUESHOUSE_DEFAULT
-	dw_const BluesHouseNoopScript,    SCRIPT_BLUESHOUSE_NOOP
+	dw_const DoRet,                   SCRIPT_BLUESHOUSE_NOOP ; PureRGB - DoRet
 
 BluesHouseDefaultScript:
 	SetEvent EVENT_ENTERED_BLUES_HOUSE
 	ld a, SCRIPT_BLUESHOUSE_NOOP
 	ld [wBluesHouseCurScript], a
-	ret
-
-BluesHouseNoopScript:
 	ret
 
 BluesHouse_TextPointers:
@@ -57,7 +54,7 @@ BluesHouseDaisySittingText:
 	ld hl, BluesHouseDaisyBagFullText
 	call PrintText
 .done
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 BluesHouseDaisyRivalAtLabText:
 	text_far _BluesHouseDaisyRivalAtLabText

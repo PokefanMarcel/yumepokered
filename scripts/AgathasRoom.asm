@@ -36,10 +36,7 @@ AgathasRoom_ScriptPointers:
 	dw_const DisplayEnemyTrainerTextAndStartBattle, SCRIPT_AGATHASROOM_AGATHA_START_BATTLE
 	dw_const AgathasRoomAgathaEndBattleScript,      SCRIPT_AGATHASROOM_AGATHA_END_BATTLE
 	dw_const AgathasRoomPlayerIsMovingScript,       SCRIPT_AGATHASROOM_PLAYER_IS_MOVING
-	dw_const AgathasRoomNoopScript,                 SCRIPT_AGATHASROOM_NOOP
-
-AgathasRoomNoopScript:
-	ret
+	dw_const DoRet,                                 SCRIPT_AGATHASROOM_NOOP ; PureRGB - DoRet
 
 AgathaScriptWalkIntoRoom:
 ; Walk six steps upward.
@@ -132,7 +129,7 @@ AgathasRoomAgathaText:
 	text_asm
 	ld hl, AgathasRoomTrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 AgathaBeforeBattleText:
 	text_far _AgathaBeforeBattleText

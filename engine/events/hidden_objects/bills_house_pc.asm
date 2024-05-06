@@ -62,7 +62,7 @@ BillsHouseInitiatedText::
 	call WaitForSoundToFinish
 	ld c, 60
 	call DelayFrames
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 BillsHousePokemonList::
 	text_asm
@@ -116,7 +116,7 @@ BillsHousePokemonList::
 	ld hl, wd730
 	res 6, [hl]
 	call LoadScreenTilesFromBuffer2
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 BillsHousePokemonListText1:
 	text_far _BillsHousePokemonListText1

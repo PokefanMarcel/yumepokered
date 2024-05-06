@@ -36,10 +36,13 @@ SECTION "rst30", ROM0[$0030]
 
 	ds $38 - @, 0 ; unused
 
-SECTION "rst38", ROM0[$0038]
-	rst $38
-
-	ds $40 - @, 0 ; unused
+SECTION "rst38", ROM0[$0038] ; PureRGB - TextScriptEnd as rst, and DoRet
+    TextScriptEnd::
+        pop hl ; turn the rst call into a jp by popping off the return address
+    TextScriptEndNoPop::
+        ld hl, TextScriptEndingText
+    DoRet::
+        ret
 
 
 ; Game Boy hardware interrupts

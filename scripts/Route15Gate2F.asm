@@ -29,7 +29,7 @@ Route15Gate2FOaksAideText:
 	ld hl, .ExpAllText
 	call PrintText
 .no_item
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .ExpAllText:
 	text_far _Route15Gate2FOaksAideExpAllText

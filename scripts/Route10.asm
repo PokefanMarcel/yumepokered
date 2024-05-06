@@ -46,7 +46,7 @@ Route10SuperNerd1Text:
 	text_asm
 	ld hl, Route10TrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route10SuperNerd1BattleText:
 	text_far _Route10SuperNerd1BattleText
@@ -64,7 +64,7 @@ Route10Hiker1Text:
 	text_asm
 	ld hl, Route10TrainerHeader1
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route10Hiker1BattleText:
 	text_far _Route10Hiker1BattleText
@@ -82,7 +82,7 @@ Route10SuperNerd2Text:
 	text_asm
 	ld hl, Route10TrainerHeader2
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route10SuperNerd2BattleText:
 	text_far _Route10SuperNerd2BattleText
@@ -100,7 +100,7 @@ Route10CooltrainerF1Text:
 	text_asm
 	ld hl, Route10TrainerHeader3
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route10CooltrainerF1BattleText:
 	text_far _Route10CooltrainerF1BattleText
@@ -118,7 +118,7 @@ Route10Hiker2Text:
 	text_asm
 	ld hl, Route10TrainerHeader4
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route10Hiker2BattleText:
 	text_far _Route10Hiker2BattleText
@@ -136,7 +136,7 @@ Route10CooltrainerF2Text:
 	text_asm
 	ld hl, Route10TrainerHeader5
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route10CooltrainerF2BattleText:
 	text_far _Route10CooltrainerF2BattleText

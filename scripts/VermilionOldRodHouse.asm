@@ -33,7 +33,7 @@ VermilionOldRodHouseFishingGuruText:
 	ld hl, .HowAreTheFishBitingText
 .print_text
 	call PrintText
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .DoYouLikeToFishText:
 	text_far _VermilionOldRodHouseFishingGuruDoYouLikeToFishText

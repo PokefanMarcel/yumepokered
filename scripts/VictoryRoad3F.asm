@@ -104,25 +104,25 @@ VictoryRoad3FCooltrainerM1Text:
 	text_asm
 	ld hl, VictoryRoad3TrainerHeader0
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 VictoryRoad3FCooltrainerF1Text:
 	text_asm
 	ld hl, VictoryRoad3TrainerHeader1
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 VictoryRoad3FCooltrainerM2Text:
 	text_asm
 	ld hl, VictoryRoad3TrainerHeader2
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 VictoryRoad3FCooltrainerF2Text:
 	text_asm
 	ld hl, VictoryRoad3TrainerHeader3
 	call TalkToTrainer
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 VictoryRoad3FCooltrainerM1BattleText:
 	text_far _VictoryRoad3FCooltrainerM1BattleText

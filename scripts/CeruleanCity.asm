@@ -265,7 +265,7 @@ CeruleanCityRivalText:
 	ld hl, .PreBattleText
 	call PrintText
 .end
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .PreBattleText:
 	text_far _CeruleanCityRivalPreBattleText
@@ -301,7 +301,7 @@ CeruleanCityRocketText:
 	call InitBattleEnemyParameters
 	ld a, SCRIPT_CERULEANCITY_ROCKET_DEFEATED
 	ld [wCeruleanCityCurScript], a
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .beatRocketThief
 	ld hl, .IllReturnTheTMText
 	call PrintText
@@ -318,7 +318,7 @@ CeruleanCityRocketText:
 	call PrintText
 	farcall CeruleanHideRocket
 .Done
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Text:
 	text_far _CeruleanCityRocketText
@@ -378,7 +378,7 @@ CeruleanCityCooltrainerF1Text:
 	ld hl, .SlowbroWithdrawText
 	call PrintText
 .end
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .SlowbroUseSonicboomText:
 	text_far _CeruleanCityCooltrainerF1SlowbroUseSonicboomText
@@ -417,7 +417,7 @@ CeruleanCitySlowbroText:
 	ld hl, .IgnoredOrdersText
 	call PrintText
 .end
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .TookASnoozeText:
 	text_far _CeruleanCitySlowbroTookASnoozeText

@@ -208,7 +208,7 @@ SafariZoneGateSafariZoneWorker1WouldYouLikeToJoinText:
 	ld a, SCRIPT_SAFARIZONEGATE_PLAYER_MOVING_DOWN
 	ld [wSafariZoneGateCurScript], a
 .done
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .MakePaymentText
 	text_far _SafariZoneGateSafariZoneWorker1ThatllBe500PleaseText
@@ -255,7 +255,7 @@ SafariZoneGateSafariZoneWorker1LeavingEarlyText:
 .set_current_script
 	ld a, SCRIPT_SAFARIZONEGATE_SET_SCRIPT_AFTER_MOVE
 	ld [wSafariZoneGateCurScript], a
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .ReturnSafariBallsText
 	text_far _SafariZoneGateSafariZoneWorker1ReturnSafariBallsText
@@ -281,7 +281,7 @@ SafariZoneGateSafariZoneWorker2Text:
 	ld hl, .SafariZoneExplanationText
 .print_text
 	call PrintText
-	jp TextScriptEnd
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .FirstTimeHereText
 	text_far _SafariZoneGateSafariZoneWorker2FirstTimeHereText
