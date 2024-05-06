@@ -4,7 +4,7 @@ PromptUserToPlaySlots:
 	ld [wAutoTextBoxDrawingControl], a
 	ld b, a
 	ld hl, DisplayTextIDInit
-	call Bankswitch
+	rst _Bankswitch ; marcelnote - free space in Home bank, changed from call Bankswitch
 	ld hl, PlaySlotMachineText
 	call PrintText
 	call YesNoChoice

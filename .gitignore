@@ -32,3 +32,6 @@
 
 # macOS
 .DS_Store
+
+# DataSpell
+.idea/

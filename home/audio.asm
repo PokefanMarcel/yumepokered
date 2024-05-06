@@ -92,7 +92,7 @@ UpdateMusic6Times::
 .loop
 	push bc
 	push hl
-	call Bankswitch
+	rst _Bankswitch ; marcelnote - free space in Home bank, changed from call Bankswitch
 	pop hl
 	pop bc
 	dec c

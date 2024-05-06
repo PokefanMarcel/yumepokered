@@ -44,7 +44,7 @@ TextScript_GameCornerPrizeMenu::
 	ld b, BANK(CeladonPrizeMenu)
 	ld hl, CeladonPrizeMenu
 bankswitchAndContinue::
-	call Bankswitch
+	rst _Bankswitch ; marcelnote - free space in Home bank, changed from call Bankswitch
 	jp HoldTextDisplayOpen        ; continue to main text-engine function
 
 TextScript_PokemonCenterPC::
