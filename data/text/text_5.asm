@@ -25,10 +25,20 @@ _CurrentTooFastText::
 	line "much too fast!"
 	prompt
 
+_CurrentTooFastOverworldText:: ; marcelnote - HM overworld use
+	text "The current is"
+	line "too fast to SURF!"
+	done
+
 _CyclingIsFunText::
 	text "Cycling is fun!"
 	line "Forget SURFing!"
 	prompt
+
+_CyclingIsFunOverworldText:: ; marcelnote - HM overworld use
+	text "Cycling is fun!"
+	line "Forget SURFing!"
+	done
 
 _FlashLightsAreaText::
 	text "A blinding FLASH"

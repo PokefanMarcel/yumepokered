@@ -14,10 +14,6 @@ UsedStrengthText:
 	call Delay3
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-CanMoveBouldersText:
-	text_far _CanMoveBouldersText
-	text_end
-
 IsSurfingAllowed:
 ; Returns whether surfing is allowed in bit 1 of wd728.
 ; Surfing isn't allowed on the Cycling Road or in the lowest level of the

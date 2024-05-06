@@ -70,3 +70,15 @@ TextPredefs::
 	add_tx_pre BookOrSculptureText                  ; 40
 	add_tx_pre ElevatorText                         ; 41
 	add_tx_pre PokemonStuffText                     ; 42
+	add_tx_pre MonCouldSurfText                     ; 43 ; marcelnote - HM overworld use
+	add_tx_pre WantToSurfText                       ; 44 ; marcelnote - HM overworld use
+	add_tx_pre CyclingIsFunOverworldText            ; 45 ; marcelnote - HM overworld use
+	add_tx_pre CurrentTooFastOverworldText          ; 46 ; marcelnote - HM overworld use
+	add_tx_pre TreeCanBeCutText                     ; 47 ; marcelnote - HM overworld use
+	add_tx_pre WantToCutText                        ; 48 ; marcelnote - HM overworld use
+	add_tx_pre UsedCutText                          ; 49 : marcelnote - HM overworld use
+	add_tx_pre UsedFlashText                        ; 50 : marcelnote - HM overworld use
+	add_tx_pre ThisRequiresStrengthText             ; 51 ; marcelnote - HM overworld use
+	add_tx_pre WantToStrengthText                   ; 51 ; marcelnote - HM overworld use
+	add_tx_pre CanMoveBouldersText                  ; 52 ; marcelnote - HM overworld use
+

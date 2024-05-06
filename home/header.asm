@@ -44,6 +44,9 @@ SECTION "rst38", ROM0[$0038] ; PureRGB - TextScriptEnd as rst, and DoRet
     DoRet::
         ret
 
+    TextScriptEndingText:: ; moved from home/overworld_text.asm
+    	text_end
+
 
 ; Game Boy hardware interrupts
 
