@@ -27,6 +27,19 @@ _FuchsiaCityYoungster2Text::
 	cont "#MON."
 	done
 
+_FuchsiaCityCooltrainerMText:: ; marcelnote - new NPC
+    text "The passage in"
+    line "front was blocked"
+    cont "for years, but"
+    cont "PRIMEAPE and I"
+    cont "cleared it!"
+	done
+
+_FuchsiaCityPrimeapeText:: ; marcelnote - new NPC
+    text "PRIMEAPE: Grah!"
+    line "Raaah-ha!@"
+    text_end
+
 _FuchsiaCityPokemonText::
 	text "!"
 	done
