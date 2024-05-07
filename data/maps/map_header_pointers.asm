@@ -164,8 +164,8 @@ MapHeaderPointers::
 	dw SeafoamIslandsB2F_h
 	dw SeafoamIslandsB3F_h
 	dw SeafoamIslandsB4F_h
-	dw VermilionOldRodHouse_h
-	dw FuchsiaGoodRodHouse_h
+	dw VermilionGoodRodHouse_h ; marcelnote - from Old to Good Rod
+	dw FuchsiaSuperRodHouse_h ; marcelnote - from Good to Super Rod
 	dw PokemonMansion1F_h
 	dw CinnabarGym_h
 	dw CinnabarLab_h
@@ -190,7 +190,7 @@ MapHeaderPointers::
 	dw Route16Gate1F_h
 	dw Route16Gate2F_h
 	dw Route16FlyHouse_h
-	dw Route12SuperRodHouse_h
+	dw Route12FishingGuideHouse_h ; marcelnote - from Super Rod to Fishing Guide
 	dw Route18Gate1F_h
 	dw Route18Gate2F_h
 	dw SeafoamIslands1F_h
@@ -205,7 +205,8 @@ MapHeaderPointers::
 	dw RocketHideoutB3F_h
 	dw RocketHideoutB4F_h
 	dw RocketHideoutElevator_h
-	dw RocketHideoutElevator_h ; UNUSED_MAP_CC
+	dw Route22OldRodHouse_h ; $CC ; marcelnote - new location
+;	dw RocketHideoutElevator_h ; UNUSED_MAP_CC
 	dw RocketHideoutElevator_h ; UNUSED_MAP_CD
 	dw RocketHideoutElevator_h ; UNUSED_MAP_CE
 	dw SilphCo2F_h

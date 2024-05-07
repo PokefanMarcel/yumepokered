@@ -23,8 +23,8 @@ FuchsiaCity_Object:
 	warp_event 18,  3, SAFARI_ZONE_GATE, 1
 	warp_event  5, 27, FUCHSIA_GYM, 1
 	warp_event 22, 13, FUCHSIA_MEETING_ROOM, 1
-	warp_event 31, 27, FUCHSIA_GOOD_ROD_HOUSE, 2
-	warp_event 31, 24, FUCHSIA_GOOD_ROD_HOUSE, 1
+	warp_event 31, 27, FUCHSIA_SUPER_ROD_HOUSE, 2 ; marcelnote - from Good to Super Rod
+	warp_event 31, 24, FUCHSIA_SUPER_ROD_HOUSE, 1 ; marcelnote - from Good to Super Rod
 
 	def_bg_events
 	bg_event 15, 23, TEXT_FUCHSIACITY_SIGN1

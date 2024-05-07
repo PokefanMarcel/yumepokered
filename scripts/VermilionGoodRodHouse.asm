@@ -1,26 +1,27 @@
-VermilionOldRodHouse_Script:
+; marcelnote - from Old to Good Rod in Vermilion
+VermilionGoodRodHouse_Script:
 	jp EnableAutoTextBoxDrawing
 
-VermilionOldRodHouse_TextPointers:
+VermilionGoodRodHouse_TextPointers:
 	def_text_pointers
-	dw_const VermilionOldRodHouseFishingGuruText, TEXT_VERMILIONOLDRODHOUSE_FISHING_GURU
+	dw_const VermilionGoodRodHouseFishingGuruText, TEXT_VERMILIONGOODRODHOUSE_FISHING_GURU
 
-VermilionOldRodHouseFishingGuruText:
+VermilionGoodRodHouseFishingGuruText:
 	text_asm
 	ld a, [wd728]
-	bit 3, a ; got old rod?
-	jr nz, .got_old_rod
+	bit 4, a ; got good rod?
+	jr nz, .got_good_rod
 	ld hl, .DoYouLikeToFishText
 	call PrintText
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
 	jr nz, .refused
-	lb bc, OLD_ROD, 1
+	lb bc, GOOD_ROD, 1
 	call GiveItem
 	jr nc, .bag_full
 	ld hl, wd728
-	set 3, [hl] ; got old rod
+	set 4, [hl] ; got good rod
 	ld hl, .TakeThisText
 	jr .print_text
 .bag_full
@@ -29,30 +30,29 @@ VermilionOldRodHouseFishingGuruText:
 .refused
 	ld hl, .ThatsSoDisappointingText
 	jr .print_text
-.got_old_rod
+.got_good_rod
 	ld hl, .HowAreTheFishBitingText
 .print_text
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .DoYouLikeToFishText:
-	text_far _VermilionOldRodHouseFishingGuruDoYouLikeToFishText
+	text_far _VermilionGoodRodHouseFishingGuruDoYouLikeToFishText
 	text_end
 
 .TakeThisText:
-	text_far _VermilionOldRodHouseFishingGuruTakeThisText
+	text_far _VermilionGoodRodHouseFishingGuruTakeThisText
 	sound_get_item_1
-	text_far _VermilionOldRodHouseFishingGuruFishingIsAWayOfLifeText
 	text_end
 
 .ThatsSoDisappointingText:
-	text_far _VermilionOldRodHouseFishingGuruThatsSoDisappointingText
+	text_far _VermilionGoodRodHouseFishingGuruThatsSoDisappointingText
 	text_end
 
 .HowAreTheFishBitingText:
-	text_far _VermilionOldRodHouseFishingGuruHowAreTheFishBitingText
+	text_far _VermilionGoodRodHouseFishingGuruHowAreTheFishBitingText
 	text_end
 
 .NoRoomText:
-	text_far _VermilionOldRodHouseFishingGuruNoRoomText
+	text_far _VermilionGoodRodHouseFishingGuruNoRoomText
 	text_end

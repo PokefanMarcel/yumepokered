@@ -207,7 +207,7 @@ MapHSPointers:
 	dw RocketHideoutB3FHS
 	dw RocketHideoutB4FHS
 	dw NoHS
-	dw NoHS
+	dw NoHS ; $CC ; marcelnote - Route22OldRodHouse
 	dw NoHS
 	dw NoHS
 	dw SilphCo2FHS

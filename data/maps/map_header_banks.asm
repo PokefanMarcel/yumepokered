@@ -164,8 +164,8 @@ MapHeaderBanks::
 	db BANK(SeafoamIslandsB2F_h)
 	db BANK(SeafoamIslandsB3F_h)
 	db BANK(SeafoamIslandsB4F_h)
-	db BANK(VermilionOldRodHouse_h)
-	db BANK(FuchsiaGoodRodHouse_h)
+	db BANK(VermilionGoodRodHouse_h) ; marcelnote - from Old to Good Rod
+	db BANK(FuchsiaSuperRodHouse_h) ; marcelnote - from Good to Super Rod
 	db BANK(PokemonMansion1F_h)
 	db BANK(CinnabarGym_h)
 	db BANK(CinnabarLab_h)
@@ -190,7 +190,7 @@ MapHeaderBanks::
 	db BANK(Route16Gate1F_h)
 	db BANK(Route16Gate2F_h)
 	db BANK(Route16FlyHouse_h)
-	db BANK(Route12SuperRodHouse_h)
+	db BANK(Route12FishingGuideHouse_h) ; marcelnote - from Super Rod to Fishing Guide
 	db BANK(Route18Gate1F_h)
 	db BANK(Route18Gate2F_h)
 	db BANK(SeafoamIslands1F_h)
@@ -205,7 +205,8 @@ MapHeaderBanks::
 	db BANK(RocketHideoutB3F_h)
 	db BANK(RocketHideoutB4F_h)
 	db BANK(RocketHideoutElevator_h)
-	db $01 ; UNUSED_MAP_CC
+	db BANK(Route22OldRodHouse_h) ; $CC
+;	db $01 ; UNUSED_MAP_CC
 	db $01 ; UNUSED_MAP_CD
 	db $01 ; UNUSED_MAP_CE
 	db BANK(SilphCo2F_h)

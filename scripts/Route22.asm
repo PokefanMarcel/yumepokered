@@ -75,8 +75,8 @@ Route22DefaultScript:
 	ret
 
 .Route22RivalBattleCoords
-	dbmapcoord 29,  4
-	dbmapcoord 29,  5
+	dbmapcoord 29,  6 ; marcelnote - modified to accommodate Route22OldRodHouse
+	dbmapcoord 29,  7 ; marcelnote - idem
 	db -1 ; end
 
 Route22FirstRivalBattleScript:

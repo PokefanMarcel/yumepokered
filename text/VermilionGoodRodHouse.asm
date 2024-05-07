@@ -1,4 +1,5 @@
-_FuchsiaGoodRodHouseFishingGuruText::
+; marcelnote - from Old to Good Rod in Vermilion
+_VermilionGoodRodHouseFishingGuruDoYouLikeToFishText::
 	text "I'm the FISHING"
 	line "GURU's older"
 	cont "brother!"
@@ -10,7 +11,7 @@ _FuchsiaGoodRodHouseFishingGuruText::
 	line "fish?"
 	done
 
-_FuchsiaGoodRodHouseFishingGuruReceivedGoodRodText::
+_VermilionGoodRodHouseFishingGuruTakeThisText::
 	text "Grand! I like"
 	line "your style!"
 
@@ -18,17 +19,17 @@ _FuchsiaGoodRodHouseFishingGuruReceivedGoodRodText::
 	line "fish, young one!"
 
 	para "<PLAYER> received"
-	line "a @"
+	line "a @" ; marcelnote - changed 'an' to 'a'
 	text_ram wStringBuffer
 	text "!@"
 	text_end
 
-_FuchsiaGoodRodHouseFishingGuruThatsSoDisappointingText::
+_VermilionGoodRodHouseFishingGuruThatsSoDisappointingText::
 	text "Oh... That's so"
 	line "disappointing..."
 	done
 
-_FuchsiaGoodRodHouseFishingGuruHowAreTheFishText::
+_VermilionGoodRodHouseFishingGuruHowAreTheFishBitingText::
 	text "Hello there,"
 	line "<PLAYER>!"
 
@@ -36,7 +37,7 @@ _FuchsiaGoodRodHouseFishingGuruHowAreTheFishText::
 	line "biting?"
 	done
 
-_FuchsiaGoodRodHouseFishingGuruNoRoomText::
+_VermilionGoodRodHouseFishingGuruNoRoomText::
 	text "Oh no!"
 
 	para "You have no room"

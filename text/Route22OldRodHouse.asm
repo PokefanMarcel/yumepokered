@@ -1,4 +1,5 @@
-_VermilionOldRodHouseFishingGuruDoYouLikeToFishText::
+; marcelnote - new location
+_Route22OldRodHouseFishingGuruDoYouLikeToFishText::
 	text "I'm the FISHING"
 	line "GURU!"
 
@@ -9,7 +10,7 @@ _VermilionOldRodHouseFishingGuruDoYouLikeToFishText::
 	line "fish?"
 	done
 
-_VermilionOldRodHouseFishingGuruTakeThisText::
+_Route22OldRodHouseFishingGuruTakeThisText::
 	text "Grand! I like"
 	line "your style!"
 
@@ -22,7 +23,7 @@ _VermilionOldRodHouseFishingGuruTakeThisText::
 	text "!@"
 	text_end
 
-_VermilionOldRodHouseFishingGuruFishingIsAWayOfLifeText::
+_Route22OldRodHouseFishingGuruFishingIsAWayOfLifeText::
 	text_start
 
 	para "Fishing is a way"
@@ -34,12 +35,12 @@ _VermilionOldRodHouseFishingGuruFishingIsAWayOfLifeText::
 	cont "one, young one!"
 	done
 
-_VermilionOldRodHouseFishingGuruThatsSoDisappointingText::
+_Route22OldRodHouseFishingGuruThatsSoDisappointingText::
 	text "Oh... That's so"
 	line "disappointing..."
 	done
 
-_VermilionOldRodHouseFishingGuruHowAreTheFishBitingText::
+_Route22OldRodHouseFishingGuruHowAreTheFishBitingText::
 	text "Hello there,"
 	line "<PLAYER>!"
 
@@ -47,7 +48,7 @@ _VermilionOldRodHouseFishingGuruHowAreTheFishBitingText::
 	line "biting?"
 	done
 
-_VermilionOldRodHouseFishingGuruNoRoomText::
+_Route22OldRodHouseFishingGuruNoRoomText::
 	text "Oh no!"
 
 	para "You have no room"

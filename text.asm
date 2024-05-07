@@ -91,7 +91,7 @@ INCLUDE "text/Route11Gate2F.asm"
 INCLUDE "text/DiglettsCaveRoute11.asm"
 INCLUDE "text/Route12Gate1F.asm"
 INCLUDE "text/Route12Gate2F.asm"
-INCLUDE "text/Route12SuperRodHouse.asm"
+INCLUDE "text/Route12FishingGuideHouse.asm" ; marcelnote - from Super Rod to Fishing Guide
 INCLUDE "text/Route15Gate1F.asm"
 INCLUDE "text/Route15Gate2F.asm"
 INCLUDE "text/Route16Gate1F.asm"
@@ -149,6 +149,7 @@ INCLUDE "text/ViridianMart.asm"
 INCLUDE "text/ViridianSchoolHouse.asm"
 INCLUDE "text/ViridianNicknameHouse.asm"
 INCLUDE "text/ViridianGym.asm"
+INCLUDE "text/Route22OldRodHouse.asm" ; marcelnote - new location
 INCLUDE "text/Museum1F.asm"
 INCLUDE "text/Museum2F.asm"
 INCLUDE "text/PewterGym.asm"
@@ -191,7 +192,7 @@ SECTION "Text 8", ROMX
 INCLUDE "text/VermilionGym_2.asm"
 INCLUDE "text/VermilionPidgeyHouse.asm"
 INCLUDE "text/VermilionDock.asm"
-INCLUDE "text/VermilionOldRodHouse.asm"
+INCLUDE "text/VermilionGoodRodHouse.asm" ; marcelnote - from Old to Good Rod
 INCLUDE "text/CeladonMart1F.asm"
 INCLUDE "text/CeladonMart2F.asm"
 INCLUDE "text/CeladonMart3F.asm"
@@ -222,7 +223,7 @@ SECTION "Text 9", ROMX
 
 INCLUDE "text/FuchsiaGym_2.asm"
 INCLUDE "text/FuchsiaMeetingRoom.asm"
-INCLUDE "text/FuchsiaGoodRodHouse.asm"
+INCLUDE "text/FuchsiaSuperRodHouse.asm" ; marcelnote - from Good to Super Rod
 INCLUDE "text/PokemonMansion1F.asm"
 INCLUDE "text/CinnabarGym.asm"
 INCLUDE "text/CinnabarLab.asm"

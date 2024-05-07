@@ -1,6 +1,8 @@
-_Route12SuperRodHouseFishingGuruDoYouLikeToFishText::
+; marcelnote - from Good to Super Rod in Fuchsia
+_FuchsiaSuperRodHouseFishingGuruDoYouLikeToFishText::
 	text "I'm the FISHING"
-	line "GURU's brother!"
+	line "GURU's oldest" ; marcelnote - changed to oldest brother
+	cont "brother!"
 
 	para "I simply Looove"
 	line "fishing!"
@@ -9,7 +11,7 @@ _Route12SuperRodHouseFishingGuruDoYouLikeToFishText::
 	line "fish?"
 	done
 
-_Route12SuperRodHouseFishingGuruReceivedSuperRodText::
+_FuchsiaSuperRodHouseFishingGuruTakeThisText::
 	text "Grand! I like"
 	line "your style!"
 
@@ -22,7 +24,7 @@ _Route12SuperRodHouseFishingGuruReceivedSuperRodText::
 	text "!@"
 	text_end
 
-_Route12SuperRodHouseFishingGuruFishingWayOfLifeText::
+_FuchsiaSuperRodHouseFishingGuruFishingWayOfLifeText::
 	text_start
 
 	para "Fishing is a way"
@@ -34,12 +36,12 @@ _Route12SuperRodHouseFishingGuruFishingWayOfLifeText::
 	cont "one!"
 	done
 
-_Route12SuperRodHouseFishingGuruThatsDisappointingText::
+_FuchsiaSuperRodHouseFishingGuruThatsDisappointingText::
 	text "Oh... That's so"
 	line "disappointing..."
 	done
 
-_Route12SuperRodHouseFishingGuruTryFishingText::
+_FuchsiaSuperRodHouseFishingGuruTryFishingText::
 	text "Hello there,"
 	line "<PLAYER>!"
 
@@ -53,7 +55,7 @@ _Route12SuperRodHouseFishingGuruTryFishingText::
 	line "wherever you can!"
 	done
 
-_Route12SuperRodHouseFishingGuruNoRoomText::
+_FuchsiaSuperRodHouseFishingGuruNoRoomText::
 	text "Oh no!"
 
 	para "I had a gift for"

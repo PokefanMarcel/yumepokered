@@ -1,0 +1,11 @@
+; marcelnote - from Super Rod to Fishing Guide on Route 12
+Route12FishingGuideHouse_Script:
+	jp EnableAutoTextBoxDrawing
+
+Route12FishingGuideHouse_TextPointers:
+	def_text_pointers
+	dw_const Route12FishingGuideHouseFishingGuideText, TEXT_ROUTE12FISHINGGUIDEHOUSE_FISHING_GUIDE
+
+Route12FishingGuideHouseFishingGuideText:
+	text_far _Route12FishingGuideHouseFishingGuideText
+	text_end

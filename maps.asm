@@ -694,11 +694,11 @@ INCLUDE "data/maps/headers/Route21.asm"
 INCLUDE "data/maps/objects/Route21.asm"
 Route21_Blocks: INCBIN "maps/Route21.blk"
 
-VermilionOldRodHouse_Blocks:
-Route12SuperRodHouse_Blocks:
+VermilionGoodRodHouse_Blocks: ; marcelnote - from Old to Good Rod
+Route12FishingGuideHouse_Blocks:
 Daycare_Blocks: INCBIN "maps/Daycare.blk"
 
-FuchsiaGoodRodHouse_Blocks: INCBIN "maps/FuchsiaGoodRodHouse.blk"
+FuchsiaSuperRodHouse_Blocks: INCBIN "maps/FuchsiaSuperRodHouse.blk" ; marcelnote - from Good to Super Rod
 
 
 SECTION "Maps 12", ROMX
@@ -714,26 +714,26 @@ INCLUDE "scripts/Route17.asm"
 INCLUDE "scripts/Route19.asm"
 INCLUDE "scripts/Route21.asm"
 
-INCLUDE "data/maps/headers/VermilionOldRodHouse.asm"
-INCLUDE "scripts/VermilionOldRodHouse.asm"
-INCLUDE "data/maps/objects/VermilionOldRodHouse.asm"
+INCLUDE "data/maps/headers/VermilionGoodRodHouse.asm" ; marcelnote - from Old to Good Rod
+INCLUDE "scripts/VermilionGoodRodHouse.asm"
+INCLUDE "data/maps/objects/VermilionGoodRodHouse.asm"
 
 INCLUDE "data/maps/headers/CeladonMart2F.asm"
 INCLUDE "scripts/CeladonMart2F.asm"
 INCLUDE "data/maps/objects/CeladonMart2F.asm"
 CeladonMart2F_Blocks: INCBIN "maps/CeladonMart2F.blk"
 
-INCLUDE "data/maps/headers/FuchsiaGoodRodHouse.asm"
-INCLUDE "scripts/FuchsiaGoodRodHouse.asm"
-INCLUDE "data/maps/objects/FuchsiaGoodRodHouse.asm"
+INCLUDE "data/maps/headers/FuchsiaSuperRodHouse.asm" ; marcelnote - from Good to Super Rod
+INCLUDE "scripts/FuchsiaSuperRodHouse.asm"
+INCLUDE "data/maps/objects/FuchsiaSuperRodHouse.asm"
 
 INCLUDE "data/maps/headers/Daycare.asm"
 INCLUDE "scripts/Daycare.asm"
 INCLUDE "data/maps/objects/Daycare.asm"
 
-INCLUDE "data/maps/headers/Route12SuperRodHouse.asm"
-INCLUDE "scripts/Route12SuperRodHouse.asm"
-INCLUDE "data/maps/objects/Route12SuperRodHouse.asm"
+INCLUDE "data/maps/headers/Route12FishingGuideHouse.asm" ; marcelnote - from Super Rod to Fishing Guide
+INCLUDE "scripts/Route12FishingGuideHouse.asm"
+INCLUDE "data/maps/objects/Route12FishingGuideHouse.asm"
 
 INCLUDE "data/maps/headers/SilphCo8F.asm"
 INCLUDE "scripts/SilphCo8F.asm"
@@ -1219,3 +1219,8 @@ INCLUDE "data/maps/headers/AgathasRoom.asm"
 INCLUDE "scripts/AgathasRoom.asm"
 INCLUDE "data/maps/objects/AgathasRoom.asm"
 AgathasRoom_Blocks: INCBIN "maps/AgathasRoom.blk"
+
+INCLUDE "data/maps/headers/Route22OldRodHouse.asm"
+INCLUDE "scripts/Route22OldRodHouse.asm"
+INCLUDE "data/maps/objects/Route22OldRodHouse.asm"
+Route22OldRodHouse_Blocks:: INCBIN "maps/Route22OldRodHouse.blk"
