@@ -70,12 +70,13 @@ InternalMapEntries:
 	internal_map UNDERGROUND_PATH_ROUTE_7_COPY,  9,  5, Route7Name
 	internal_map UNDERGROUND_PATH_ROUTE_8,      11,  5, Route8Name
 	internal_map ROCK_TUNNEL_1F,                14,  3, RockTunnelName
-	internal_map POWER_PLANT,                   15,  4, PowerPlantName
+	internal_map POWER_PLANT,                   15,  3, PowerPlantName ; marcelnote - adjusted
 	internal_map ROUTE_11_GATE_2F,              13,  9, Route11Name
 	internal_map ROUTE_12_GATE_1F,              14,  7, Route12Name
 	internal_map BILLS_HOUSE,                   12,  0, SeaCottageName
 	internal_map VERMILION_DOCK,                10,  9, VermilionCityName
 	internal_map SS_ANNE_B1F_ROOMS,              9, 10, SSAnneName
+	internal_map UNUSED_MAP_6B,                  1, 15, CinnabarVolcanoName ; marcelnote - new location, until CINNABAR_VOLCANO_B1F
 	internal_map VICTORY_ROAD_1F,                0,  4, VictoryRoadName
 	internal_map HALL_OF_FAME,                   0,  2, PokemonLeagueName
 	internal_map UNDERGROUND_PATH_NORTH_SOUTH,  10,  5, UndergroundPathName

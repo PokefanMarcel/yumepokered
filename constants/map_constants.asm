@@ -24,7 +24,7 @@ ENDM
 	map_const VERMILION_CITY,                20, 18 ; $05
 	map_const CELADON_CITY,                  25, 18 ; $06
 	map_const FUCHSIA_CITY,                  20, 18 ; $07
-	map_const CINNABAR_ISLAND,               10,  9 ; $08
+	map_const CINNABAR_ISLAND,               14,  9 ; $08 ; marcelnote - added Cinnabar Volcano
 	map_const INDIGO_PLATEAU,                10,  9 ; $09
 	map_const SAFFRON_CITY,                  20, 18 ; $0A
 DEF NUM_CITY_MAPS EQU const_value
@@ -124,9 +124,9 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const SS_ANNE_1F_ROOMS,              12,  8 ; $66
 	map_const SS_ANNE_2F_ROOMS,              12,  8 ; $67
 	map_const SS_ANNE_B1F_ROOMS,             12,  8 ; $68
-	map_const UNUSED_MAP_69,                  0,  0 ; $69
-	map_const UNUSED_MAP_6A,                  0,  0 ; $6A
-	map_const UNUSED_MAP_6B,                  0,  0 ; $6B
+	map_const CINNABAR_VOLCANO_1F,            5,  5 ; $69 ; marcelnote - new location
+	map_const UNUSED_MAP_6A,                  0,  0 ; $6A ; for CINNABAR_VOLCANO_2F
+	map_const UNUSED_MAP_6B,                  0,  0 ; $6B ; for CINNABAR_VOLCANO_B1F
 	map_const VICTORY_ROAD_1F,               10,  9 ; $6C
 	map_const UNUSED_MAP_6D,                  0,  0 ; $6D
 	map_const UNUSED_MAP_6E,                  0,  0 ; $6E

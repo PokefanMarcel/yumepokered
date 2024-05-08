@@ -106,7 +106,7 @@ MapHeaderBanks::
 	db BANK(SSAnne1FRooms_h)
 	db BANK(SSAnne2FRooms_h)
 	db BANK(SSAnneB1FRooms_h)
-	db $1D ; UNUSED_MAP_69
+	db BANK(CinnabarVolcano1F_h) ; $69 ; marcelnote - new location
 	db $1D ; UNUSED_MAP_6A
 	db $1D ; UNUSED_MAP_6B
 	db BANK(VictoryRoad1F_h)
@@ -205,8 +205,7 @@ MapHeaderBanks::
 	db BANK(RocketHideoutB3F_h)
 	db BANK(RocketHideoutB4F_h)
 	db BANK(RocketHideoutElevator_h)
-	db BANK(Route22OldRodHouse_h) ; $CC
-;	db $01 ; UNUSED_MAP_CC
+	db BANK(Route22OldRodHouse_h) ; $CC ; marcelnote - new location
 	db $01 ; UNUSED_MAP_CD
 	db $01 ; UNUSED_MAP_CE
 	db BANK(SilphCo2F_h)

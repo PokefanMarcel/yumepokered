@@ -1220,7 +1220,12 @@ INCLUDE "scripts/AgathasRoom.asm"
 INCLUDE "data/maps/objects/AgathasRoom.asm"
 AgathasRoom_Blocks: INCBIN "maps/AgathasRoom.blk"
 
-INCLUDE "data/maps/headers/Route22OldRodHouse.asm"
+INCLUDE "data/maps/headers/Route22OldRodHouse.asm" ; marcelnote - new location
 INCLUDE "scripts/Route22OldRodHouse.asm"
 INCLUDE "data/maps/objects/Route22OldRodHouse.asm"
 Route22OldRodHouse_Blocks:: INCBIN "maps/Route22OldRodHouse.blk"
+
+INCLUDE "data/maps/headers/CinnabarVolcano1F.asm" ; marcelnote - new location
+INCLUDE "scripts/CinnabarVolcano1F.asm"
+INCLUDE "data/maps/objects/CinnabarVolcano1F.asm"
+CinnabarVolcano1F_Blocks:: INCBIN "maps/CinnabarVolcano1F.blk"

@@ -35,3 +35,7 @@ _CinnabarIslandGymSignText::
 	para "The Hot-Headed"
 	line "Quiz Master!"
 	done
+
+_CinnabarIslandVolcanoSignText:: ; marcelnote - Cinnabar Volcano
+	text "CINNABAR VOLCANO"
+	done

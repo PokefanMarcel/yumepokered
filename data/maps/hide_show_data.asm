@@ -108,9 +108,9 @@ MapHSPointers:
 	dw SSAnne1FRoomsHS
 	dw SSAnne2FRoomsHS
 	dw SSAnneB1FRoomsHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS ; $69 ; marcelnote - CinnabarVolcano1F
+	dw NoHS ; $6A ; marcelnote - CinnabarVolcano2F
+	dw NoHS ; $6B ; marcelnote - CinnabarVolcanoB1F
 	dw VictoryRoad1FHS
 	dw NoHS
 	dw NoHS

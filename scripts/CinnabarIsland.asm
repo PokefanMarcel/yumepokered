@@ -60,6 +60,7 @@ CinnabarIsland_TextPointers:
 	dw_const PokeCenterSignText,               TEXT_CINNABARISLAND_POKECENTER_SIGN
 	dw_const CinnabarIslandPokemonLabSignText, TEXT_CINNABARISLAND_POKEMONLAB_SIGN
 	dw_const CinnabarIslandGymSignText,        TEXT_CINNABARISLAND_GYM_SIGN
+	dw_const CinnabarIslandVolcanoSignText,    TEXT_CINNABARISLAND_VOLCANO_SIGN ; marcelnote - Cinnabar Volcano
 	dw_const CinnabarIslandDoorIsLockedText,   TEXT_CINNABARISLAND_DOOR_IS_LOCKED
 
 CinnabarIslandDoorIsLockedText:
@@ -84,4 +85,8 @@ CinnabarIslandPokemonLabSignText:
 
 CinnabarIslandGymSignText:
 	text_far _CinnabarIslandGymSignText
+	text_end
+
+CinnabarIslandVolcanoSignText: ; marcelnote - Cinnabar Volcano
+	text_far _CinnabarIslandVolcanoSignText
 	text_end

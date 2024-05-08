@@ -19,6 +19,7 @@ TownMapOrder:
 	db SS_ANNE_1F
 	db ROUTE_9
 	db ROCK_TUNNEL_POKECENTER
+	db POWER_PLANT ; marcelnote - adjusted order
 	db ROUTE_10
 	db LAVENDER_TOWN
 	db POKEMON_TOWER_2F
@@ -40,10 +41,10 @@ TownMapOrder:
 	db SEAFOAM_ISLANDS_B1F
 	db ROUTE_20
 	db CINNABAR_ISLAND
+	db CINNABAR_VOLCANO_1F ; marcelnote - new location
 	db ROUTE_21
 	db ROUTE_22
 	db ROUTE_23
 	db VICTORY_ROAD_3F
 	db INDIGO_PLATEAU
-	db POWER_PLANT
 TownMapOrderEnd:

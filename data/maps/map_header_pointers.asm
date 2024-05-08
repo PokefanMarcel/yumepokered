@@ -106,7 +106,7 @@ MapHeaderPointers::
 	dw SSAnne1FRooms_h
 	dw SSAnne2FRooms_h
 	dw SSAnneB1FRooms_h
-	dw LancesRoom_h ; UNUSED_MAP_69
+	dw CinnabarVolcano1F_h ; $69 ; marcelnote - new location
 	dw LancesRoom_h ; UNUSED_MAP_6A
 	dw LancesRoom_h ; UNUSED_MAP_6B
 	dw VictoryRoad1F_h
@@ -206,7 +206,6 @@ MapHeaderPointers::
 	dw RocketHideoutB4F_h
 	dw RocketHideoutElevator_h
 	dw Route22OldRodHouse_h ; $CC ; marcelnote - new location
-;	dw RocketHideoutElevator_h ; UNUSED_MAP_CC
 	dw RocketHideoutElevator_h ; UNUSED_MAP_CD
 	dw RocketHideoutElevator_h ; UNUSED_MAP_CE
 	dw SilphCo2F_h
