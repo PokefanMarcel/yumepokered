@@ -51,4 +51,5 @@ PokemonMansionName:  db "<PKMN> MANSION@"
 SafariZoneName:      db "SAFARI ZONE@"
 CeruleanCaveName:    db "CERULEAN CAVE@"
 PowerPlantName:      db "POWER PLANT@"
-CinnabarVolcanoName: db "CINNABAR VOLCANO@"
+CinnabarVolcanoName: db "CINNABAR VOLCANO@" ; marcelnote - new location
+MtMoonSquareName:    db "MT.MOON SQUARE@" ; marcelnote - new location

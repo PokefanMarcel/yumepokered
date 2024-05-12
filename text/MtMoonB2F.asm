@@ -123,3 +123,7 @@ _MtMoonB2FRocket4AfterBattleText::
 	line "here long before"
 	cont "people came."
 	done
+
+_MtMoonB2FMtMoonSquareSignText:: ; marcelnote - added Mt Moon Square
+	text "TO MT.MOON SQUARE"
+	done

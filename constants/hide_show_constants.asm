@@ -237,4 +237,7 @@ DEF SHOW EQU $15
 	const HS_SEAFOAM_ISLANDS_B4F_BOULDER_1 ; E1
 	const HS_SEAFOAM_ISLANDS_B4F_BOULDER_2 ; E2
 	const HS_ARTICUNO                      ; E3 X
+	const HS_MT_MOON_SQUARE_CLEFAIRY       ; E4 ; marcelnote - Clefairy
+	const HS_MT_MOON_SQUARE_ITEM_1         ; E5 ; marcelnote - Moon Stone
+	const HS_MT_MOON_SQUARE_ITEM_2         ; E6 ; marcelnote - Super Potion
 DEF NUM_HS_OBJECTS EQU const_value

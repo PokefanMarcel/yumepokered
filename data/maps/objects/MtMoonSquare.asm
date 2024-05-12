@@ -1,0 +1,28 @@
+; marcelnote - new location
+	object_const_def
+	const_export MTMOONSQUARE_COOLTRAINER_F
+	const_export MTMOONSQUARE_HIKER
+	const_export MTMOONSQUARE_GOLEM
+	const_export MTMOONSQUARE_CLEFAIRY
+	const_export MTMOONSQUARE_MOON_STONE
+	const_export MTMOONSQUARE_SUPER_POTION
+
+MtMoonSquare_Object:
+	db $2c ; border block
+
+	def_warp_events
+	warp_event 16,  3, MT_MOON_B1F, 10
+
+	def_bg_events
+	bg_event 13, 5, TEXT_MTMOONSQUARE_SIGN
+	bg_event  6, 3, TEXT_MTMOONSQUARE_EVOLUTION_ROCK
+
+	def_object_events
+	object_event 11,  5, SPRITE_COOLTRAINER_F, WALK, UP_DOWN, TEXT_MTMOONSQUARE_COOLTRAINER_F
+	object_event  7,  3, SPRITE_HIKER, STAY, LEFT, TEXT_MTMOONSQUARE_HIKER
+	object_event  6,  2, SPRITE_MONSTER, STAY, DOWN, TEXT_MTMOONSQUARE_GOLEM
+	object_event  3,  6, SPRITE_FAIRY, STAY, UP, TEXT_MTMOONSQUARE_CLEFAIRY
+	object_event  2,  6, SPRITE_POKE_BALL, STAY, NONE, TEXT_MTMOONSQUARE_MOON_STONE, MOON_STONE
+	object_event 20,  5, SPRITE_POKE_BALL, STAY, NONE, TEXT_MTMOONSQUARE_SUPER_POTION, SUPER_POTION
+
+	def_warps_to MT_MOON_SQUARE

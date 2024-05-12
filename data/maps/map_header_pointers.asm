@@ -107,7 +107,7 @@ MapHeaderPointers::
 	dw SSAnne2FRooms_h
 	dw SSAnneB1FRooms_h
 	dw CinnabarVolcano1F_h ; $69 ; marcelnote - new location
-	dw LancesRoom_h ; UNUSED_MAP_6A
+	dw CinnabarVolcano2F_h ; $6A ; marcelnote - new location
 	dw LancesRoom_h ; UNUSED_MAP_6B
 	dw VictoryRoad1F_h
 	dw LancesRoom_h ; UNUSED_MAP_6D
@@ -232,7 +232,7 @@ MapHeaderPointers::
 	dw CeruleanCave1F_h
 	dw NameRatersHouse_h
 	dw CeruleanBadgeHouse_h
-	dw Route16Gate1F_h ; UNUSED_MAP_E7
+	dw MtMoonSquare_h ; $E7 ; marcelnote - new location
 	dw RockTunnelB1F_h
 	dw SilphCo9F_h
 	dw SilphCo10F_h

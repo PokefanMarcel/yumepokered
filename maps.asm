@@ -1229,3 +1229,13 @@ INCLUDE "data/maps/headers/CinnabarVolcano1F.asm" ; marcelnote - new location
 INCLUDE "scripts/CinnabarVolcano1F.asm"
 INCLUDE "data/maps/objects/CinnabarVolcano1F.asm"
 CinnabarVolcano1F_Blocks:: INCBIN "maps/CinnabarVolcano1F.blk"
+
+INCLUDE "data/maps/headers/CinnabarVolcano2F.asm" ; marcelnote - new location
+INCLUDE "scripts/CinnabarVolcano2F.asm"
+INCLUDE "data/maps/objects/CinnabarVolcano2F.asm"
+CinnabarVolcano2F_Blocks:: INCBIN "maps/CinnabarVolcano2F.blk"
+
+INCLUDE "data/maps/headers/MtMoonSquare.asm" ; marcelnote - new location
+INCLUDE "scripts/MtMoonSquare.asm"
+INCLUDE "data/maps/objects/MtMoonSquare.asm"
+MtMoonSquare_Blocks:: INCBIN "maps/MtMoonSquare.blk"

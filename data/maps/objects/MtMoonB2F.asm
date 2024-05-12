@@ -17,8 +17,10 @@ MtMoonB2F_Object:
 	warp_event 21, 17, MT_MOON_B1F, 5
 	warp_event 15, 27, MT_MOON_B1F, 6
 	warp_event  5,  7, MT_MOON_B1F, 7
+	warp_event  3, 19, MT_MOON_B1F, 9 ; marcelnote - added Mt Moon Square
 
 	def_bg_events
+	bg_event  5, 29, TEXT_MTMOONB2F_MT_MOON_SQUARE_SIGN ; marcelnote - added Mt Moon Square
 
 	def_object_events
 	object_event 12,  8, SPRITE_SUPER_NERD, STAY, RIGHT, TEXT_MTMOONB2F_SUPER_NERD, OPP_SUPER_NERD, 2

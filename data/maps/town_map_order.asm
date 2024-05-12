@@ -8,6 +8,7 @@ TownMapOrder:
 	db PEWTER_CITY
 	db ROUTE_3
 	db MT_MOON_1F
+	db MT_MOON_SQUARE ; marcelnote - new location
 	db ROUTE_4
 	db CERULEAN_CITY
 	db ROUTE_24

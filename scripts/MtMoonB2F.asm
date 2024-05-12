@@ -167,6 +167,7 @@ MtMoonB2F_TextPointers:
 	dw_const PickUpItemText,                       TEXT_MTMOONB2F_HP_UP
 	dw_const PickUpItemText,                       TEXT_MTMOONB2F_TM_MEGA_PUNCH
 	dw_const MtMoonB2FSuperNerdThenThisIsMineText, TEXT_MTMOONB2F_SUPER_NERD_THEN_THIS_IS_MINE
+	dw_const MtMoonB2FMtMoonSquareSignText,        TEXT_MTMOONB2F_MT_MOON_SQUARE_SIGN ; marcelnote - added Mt Moon Square
 
 MtMoon3TrainerHeaders:
 	def_trainers 2
@@ -380,4 +381,8 @@ MtMoonB2FRocket4EndBattleText:
 
 MtMoonB2FRocket4AfterBattleText:
 	text_far _MtMoonB2FRocket4AfterBattleText
+	text_end
+
+MtMoonB2FMtMoonSquareSignText: ; marcelnote - added Mt Moon Square
+	text_far _MtMoonB2FMtMoonSquareSignText
 	text_end

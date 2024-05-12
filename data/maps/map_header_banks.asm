@@ -107,7 +107,7 @@ MapHeaderBanks::
 	db BANK(SSAnne2FRooms_h)
 	db BANK(SSAnneB1FRooms_h)
 	db BANK(CinnabarVolcano1F_h) ; $69 ; marcelnote - new location
-	db $1D ; UNUSED_MAP_6A
+	db BANK(CinnabarVolcano2F_h) ; $6A ; marcelnote - new location
 	db $1D ; UNUSED_MAP_6B
 	db BANK(VictoryRoad1F_h)
 	db $1D ; UNUSED_MAP_6D
@@ -232,7 +232,7 @@ MapHeaderBanks::
 	db BANK(CeruleanCave1F_h)
 	db BANK(NameRatersHouse_h)
 	db BANK(CeruleanBadgeHouse_h)
-	db $01 ; UNUSED_MAP_E7
+	db BANK(MtMoonSquare_h) ; $E7 ; marcelnote - new location
 	db BANK(RockTunnelB1F_h)
 	db BANK(SilphCo9F_h)
 	db BANK(SilphCo10F_h)
