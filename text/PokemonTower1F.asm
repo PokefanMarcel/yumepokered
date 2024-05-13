@@ -29,3 +29,11 @@ _PokemonTower1FChannelerText::
 	line "There are spirits"
 	cont "up to mischief!"
 	done
+
+_PokemonTower1FLittleGirlText:: ; marcelnote - added 7FChanneler
+	text "On the top floor"
+	line "I saw a lady who"
+	cont "was speaking"
+	cont "with GHOSTs..."
+	cont "Spooky!"
+	done

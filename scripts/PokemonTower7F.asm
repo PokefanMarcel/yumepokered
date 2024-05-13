@@ -189,10 +189,11 @@ PokemonTower7FRocket3ExitRightDownMovement:
 
 PokemonTower7F_TextPointers:
 	def_text_pointers
-	dw_const PokemonTower7FRocket1Text, TEXT_POKEMONTOWER7F_ROCKET1
-	dw_const PokemonTower7FRocket2Text, TEXT_POKEMONTOWER7F_ROCKET2
-	dw_const PokemonTower7FRocket3Text, TEXT_POKEMONTOWER7F_ROCKET3
-	dw_const PokemonTower7FMrFujiText,  TEXT_POKEMONTOWER7F_MR_FUJI
+	dw_const PokemonTower7FRocket1Text,   TEXT_POKEMONTOWER7F_ROCKET1
+	dw_const PokemonTower7FRocket2Text,   TEXT_POKEMONTOWER7F_ROCKET2
+	dw_const PokemonTower7FRocket3Text,   TEXT_POKEMONTOWER7F_ROCKET3
+	dw_const PokemonTower7FMrFujiText,    TEXT_POKEMONTOWER7F_MR_FUJI
+	dw_const PokemonTower7FChannelerText, TEXT_POKEMONTOWER7F_CHANNELER ; marcelnote - added High Channeler
 
 PokemonTower7TrainerHeaders:
 	def_trainers
@@ -281,3 +282,50 @@ PokemonTower7FRocket3EndBattleText:
 PokemonTower7FRocket3AfterBattleText:
 	text_far _PokemonTower7FRocket3AfterBattleText
 	text_end
+
+PokemonTower7FChannelerText:    ; marcelnote - added 7FChanneler
+	text_asm
+	call SaveScreenTilesToBuffer2
+	ld hl, .PokemonTower7FChannelerIntroText
+	call PrintText
+	ld d, HAUNTER
+	callfar IsMonInParty ; outputs [wWhichPokemon] = index of Graveler in party (0 to 5)
+	jr z, .done
+	ld hl, TextScriptPromptButton
+	call TextCommandProcessor
+	ld hl, .PokemonTower7FChannelerHarnessPowerText
+	call PrintText
+	ld a, $01
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr nz, .done
+	ld hl, .PokemonTower7FChannelerIncantationsText
+	call PrintText
+	ld a, HAUNTER
+	call PlayCry
+	call WaitForSoundToFinish
+	ld hl, .PokemonTower7FChannelerDotsText
+	call PrintText
+	callfar EvolveMonInteraction    ; actual evolution and map reloading
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+.PokemonTower7FChannelerIntroText
+	text_far _PokemonTower7FChannelerIntroText
+	text_end
+
+.PokemonTower7FChannelerHarnessPowerText:
+	text_far _PokemonTower7FChannelerHarnessPowerText
+	text_end
+
+.PokemonTower7FChannelerIncantationsText:
+	text_far _PokemonTower7FChannelerIncantationsText
+	text_end
+
+.PokemonTower7FChannelerDotsText:
+	text_far _PokemonTower7FChannelerDotsText
+	text_end
+
+.done
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
