@@ -79,7 +79,7 @@ MrFujisHouseMrFujiText:
 	ld hl, .ReceivedPokeFluteText
 	call PrintText
 	SetEvent EVENT_GOT_POKE_FLUTE
-	ld a, HS_POKEMON_TOWER_7F_CHANNELER ; marcelnote - added High Channeler
+	ld a, HS_POKEMON_TOWER_7F_CHANNELER ; marcelnote - added 7FChanneler
 	ld [wMissableObjectIndex], a
 	predef ShowObject
 	jr .done
