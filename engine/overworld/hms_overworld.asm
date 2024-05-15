@@ -47,7 +47,8 @@ CheckForCut::
 	ld a, [wCurMapTileset]
 	and a ; overworld
 	jr z, .overworld
-	;cp GYM
+	cp GYM
+	ret nz
 	;jr z, .gym
 	;cp CAVERN
 	;ld a, [wTileInFrontOfPlayer]
