@@ -206,8 +206,8 @@ MapHeaderBanks::
 	db BANK(RocketHideoutB4F_h)
 	db BANK(RocketHideoutElevator_h)
 	db BANK(Route22OldRodHouse_h) ; $CC ; marcelnote - new location
-	db $01 ; UNUSED_MAP_CD
-	db $01 ; UNUSED_MAP_CE
+	db BANK(PokemonAcademy1F2F_h) ; $CD ; marcelnote - new location
+	db BANK(PokemonAcademy3F4F_h) ; $CE ; marcelnote - new location
 	db BANK(SilphCo2F_h)
 	db BANK(SilphCo3F_h)
 	db BANK(SilphCo4F_h)

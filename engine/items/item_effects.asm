@@ -37,14 +37,14 @@ ItemUsePtrTable:
 	dw ItemUseMedicine   ; HYPER_POTION
 	dw ItemUseMedicine   ; SUPER_POTION
 	dw ItemUseMedicine   ; POTION
-	dw ItemUseBait       ; BOULDERBADGE
-	dw ItemUseRock       ; CASCADEBADGE
-	dw UnusableItem      ; THUNDERBADGE
-	dw UnusableItem      ; RAINBOWBADGE
-	dw UnusableItem      ; SOULBADGE
-	dw UnusableItem      ; MARSHBADGE
-	dw UnusableItem      ; VOLCANOBADGE
-	dw UnusableItem      ; EARTHBADGE
+	dw ItemUseBait       ; SAFARI_BAIT
+	dw ItemUseRock       ; SAFARI_ROCK
+	dw UnusableItem      ; ITEM_17
+	dw UnusableItem      ; ITEM_18
+	dw UnusableItem      ; ITEM_19
+	dw UnusableItem      ; ITEM_1A
+	dw UnusableItem      ; ITEM_1B
+	dw UnusableItem      ; ITEM_1C
 	dw ItemUseEscapeRope ; ESCAPE_ROPE
 	dw ItemUseRepel      ; REPEL
 	dw UnusableItem      ; OLD_AMBER
@@ -100,6 +100,7 @@ ItemUsePtrTable:
 	dw ItemUsePPRestore  ; MAX_ETHER
 	dw ItemUsePPRestore  ; ELIXER
 	dw ItemUsePPRestore  ; MAX_ELIXER
+	; marcelnote - should add Badges as UnusableItem to reflect new constants?
 
 ItemUseBall:
 

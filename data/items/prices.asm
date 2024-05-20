@@ -20,14 +20,14 @@ ItemPrices::
 	bcd3 1500  ; HYPER_POTION
 	bcd3 700   ; SUPER_POTION
 	bcd3 300   ; POTION
-	bcd3 0     ; BOULDERBADGE
-	bcd3 0     ; CASCADEBADGE
-	bcd3 0     ; THUNDERBADGE
-	bcd3 0     ; RAINBOWBADGE
-	bcd3 0     ; SOULBADGE
-	bcd3 0     ; MARSHBADGE
-	bcd3 0     ; VOLCANOBADGE
-	bcd3 0     ; EARTHBADGE
+	bcd3 0     ; BAIT
+	bcd3 0     ; ROCK
+	bcd3 0     ; ITEM_17
+	bcd3 0     ; ITEM_18
+	bcd3 0     ; ITEM_19
+	bcd3 0     ; ITEM_1A
+	bcd3 0     ; ITEM_1B
+	bcd3 0     ; ITEM_1C
 	bcd3 550   ; ESCAPE_ROPE
 	bcd3 350   ; REPEL
 	bcd3 0     ; OLD_AMBER
@@ -99,3 +99,30 @@ ItemPrices::
 	bcd3 0     ; FLOOR_11F
 	bcd3 0     ; FLOOR_B4F
 	assert_table_length NUM_ITEMS + NUM_FLOORS
+; marcelnote - adding types as items for Pokemon Academy Blackboard
+	bcd3 0     ; NORMAL_ITEM
+	bcd3 0     ; GRASS_ITEM
+	bcd3 0     ; FIRE_ITEM
+	bcd3 0     ; WATER_ITEM
+	bcd3 0     ; ELECTRIC_ITEM
+	bcd3 0     ; FIGHTING_ITEM
+	bcd3 0     ; POISON_ITEM
+	bcd3 0     ; GROUND_ITEM
+	bcd3 0     ; FLYING_ITEM
+	bcd3 0     ; BUG_ITEM
+	bcd3 0     ; ROCK_ITEM
+	bcd3 0     ; PSYCHIC_ITEM
+	bcd3 0     ; ICE_ITEM
+	bcd3 0     ; GHOST_ITEM
+	bcd3 0     ; DRAGON_ITEM
+	assert_table_length NUM_ITEMS + NUM_FLOORS + NUM_TYPES_ITEMS
+; marcelnote - cleaned Badges from Item list as in PureRGB
+	bcd3 0     ; BOULDERBADGE
+	bcd3 0     ; CASCADEBADGE
+	bcd3 0     ; THUNDERBADGE
+	bcd3 0     ; RAINBOWBADGE
+	bcd3 0     ; SOULBADGE
+	bcd3 0     ; MARSHBADGE
+	bcd3 0     ; VOLCANOBADGE
+	bcd3 0     ; EARTHBADGE
+	assert_table_length NUM_ITEMS + NUM_FLOORS + NUM_TYPES_ITEMS + NUM_BADGES

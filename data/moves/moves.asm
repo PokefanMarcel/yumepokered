@@ -23,15 +23,15 @@ Moves:
 	move SCRATCH,      NO_ADDITIONAL_EFFECT,        40, NORMAL,       100, 35
 	move VICEGRIP,     NO_ADDITIONAL_EFFECT,        55, NORMAL,       100, 30
 	move GUILLOTINE,   OHKO_EFFECT,                  1, NORMAL,        30,  5
-	move RAZOR_WIND,   CHARGE_EFFECT,               80, NORMAL,        75, 10
+	move RAZOR_WIND,   HYPER_BEAM_EFFECT,           80,    BUG,        90, 10 ; marcelnote - changed from NORMAL, CHARGE_EFFECT, acc 75
 	move SWORDS_DANCE, ATTACK_UP2_EFFECT,            0, NORMAL,       100, 30
-	move CUT,          NO_ADDITIONAL_EFFECT,        50, NORMAL,        95, 30
+	move CUT,          NO_ADDITIONAL_EFFECT,        50,    BUG,       100, 25 ; marcelnote - changed from NORMAL, acc 95, pp 30
 	move GUST,         NO_ADDITIONAL_EFFECT,        40, NORMAL,       100, 35
 	move WING_ATTACK,  NO_ADDITIONAL_EFFECT,        35, FLYING,       100, 35
 	move WHIRLWIND,    SWITCH_AND_TELEPORT_EFFECT,   0, NORMAL,        85, 20
 	move FLY,          FLY_EFFECT,                  70, FLYING,        95, 15
 	move BIND,         TRAPPING_EFFECT,             15, NORMAL,        75, 20
-	move SLAM,         NO_ADDITIONAL_EFFECT,        80, NORMAL,        75, 20
+	move SLAM,         NO_ADDITIONAL_EFFECT,        80, DRAGON,        90, 20 ; marcelnote - changed from NORMAL, acc 75
 	move VINE_WHIP,    NO_ADDITIONAL_EFFECT,        35, GRASS,        100, 10
 	move STOMP,        FLINCH_SIDE_EFFECT2,         65, NORMAL,       100, 20
 	move DOUBLE_KICK,  ATTACK_TWICE_EFFECT,         30, FIGHTING,     100, 30
@@ -81,12 +81,12 @@ Moves:
 	move COUNTER,      NO_ADDITIONAL_EFFECT,         1, FIGHTING,     100, 20
 	move SEISMIC_TOSS, SPECIAL_DAMAGE_EFFECT,        1, FIGHTING,     100, 20
 	move STRENGTH,     NO_ADDITIONAL_EFFECT,        80, NORMAL,       100, 15
-	move ABSORB,       DRAIN_HP_EFFECT,             20, GRASS,        100, 20
-	move MEGA_DRAIN,   DRAIN_HP_EFFECT,             40, GRASS,        100, 10
+	move ABSORB,       DRAIN_HP_EFFECT,             30, GRASS,        100, 20 ; marcelnote - changed from pwr 20
+	move MEGA_DRAIN,   DRAIN_HP_EFFECT,             60, GRASS,        100, 10 ; marcelnote - changed from pwr 40
 	move LEECH_SEED,   LEECH_SEED_EFFECT,            0, GRASS,         90, 10
 	move GROWTH,       SPECIAL_UP1_EFFECT,           0, NORMAL,       100, 40
 	move RAZOR_LEAF,   NO_ADDITIONAL_EFFECT,        55, GRASS,         95, 25
-	move SOLARBEAM,    CHARGE_EFFECT,              120, GRASS,        100, 10
+	move SOLARBEAM,    CHARGE_EFFECT,              140, GRASS,        100, 10 ; marcelnote - changed from pwr 120
 	move POISONPOWDER, POISON_EFFECT,                0, POISON,        75, 35
 	move STUN_SPORE,   PARALYZE_EFFECT,              0, GRASS,         75, 30
 	move SLEEP_POWDER, SLEEP_EFFECT,                 0, GRASS,         75, 15
@@ -98,10 +98,10 @@ Moves:
 	move THUNDERBOLT,  PARALYZE_SIDE_EFFECT1,       95, ELECTRIC,     100, 15
 	move THUNDER_WAVE, PARALYZE_EFFECT,              0, ELECTRIC,     100, 20
 	move THUNDER,      PARALYZE_SIDE_EFFECT1,      120, ELECTRIC,      70, 10
-	move ROCK_THROW,   NO_ADDITIONAL_EFFECT,        50, ROCK,          65, 15
+	move ROCK_THROW,   NO_ADDITIONAL_EFFECT,        50, ROCK,          85, 15 ; marcelnote - changed from acc 65
 	move EARTHQUAKE,   NO_ADDITIONAL_EFFECT,       100, GROUND,       100, 10
 	move FISSURE,      OHKO_EFFECT,                  1, GROUND,        30,  5
-	move DIG,          CHARGE_EFFECT,              100, GROUND,       100, 10
+	move DIG,          CHARGE_EFFECT,               70, GROUND,       100, 10 ; marcelnote - changed from pwr 100
 	move TOXIC,        POISON_EFFECT,                0, POISON,        85, 10
 	move CONFUSION,    CONFUSION_SIDE_EFFECT,       50, PSYCHIC_TYPE, 100, 25
 	move PSYCHIC_M,    SPECIAL_DOWN_SIDE_EFFECT,    90, PSYCHIC_TYPE, 100, 10
@@ -151,7 +151,7 @@ Moves:
 	move DREAM_EATER,  DREAM_EATER_EFFECT,         100, PSYCHIC_TYPE, 100, 15
 	move POISON_GAS,   POISON_EFFECT,                0, POISON,        55, 40
 	move BARRAGE,      TWO_TO_FIVE_ATTACKS_EFFECT,  15, NORMAL,        85, 20
-	move LEECH_LIFE,   DRAIN_HP_EFFECT,             20, BUG,          100, 15
+	move LEECH_LIFE,   DRAIN_HP_EFFECT,             30, BUG,          100, 15 ; marcelnote - changed from pwr 20
 	move LOVELY_KISS,  SLEEP_EFFECT,                 0, NORMAL,        75, 10
 	move SKY_ATTACK,   CHARGE_EFFECT,              140, FLYING,        90,  5
 	move TRANSFORM,    TRANSFORM_EFFECT,             0, NORMAL,       100, 10

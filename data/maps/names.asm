@@ -47,9 +47,10 @@ VictoryRoadName:     db "VICTORY ROAD@"
 DiglettsCaveName:    db "DIGLETT's CAVE@"
 RocketHQName:        db "ROCKET HQ@"
 SilphCoName:         db "SILPH CO.@"
-PokemonMansionName:  db "<PKMN> MANSION@"
+PokemonMansionName:  db "#MON MANSION@" ; marcelnote - changed from <PKMN> MANSION@
 SafariZoneName:      db "SAFARI ZONE@"
 CeruleanCaveName:    db "CERULEAN CAVE@"
 PowerPlantName:      db "POWER PLANT@"
 CinnabarVolcanoName: db "CINNABAR VOLCANO@" ; marcelnote - new location
 MtMoonSquareName:    db "MT.MOON SQUARE@" ; marcelnote - new location
+PokemonAcademyName:  db "#MON ACADEMY@" ; marcelnote - new location

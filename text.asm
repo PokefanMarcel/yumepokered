@@ -269,6 +269,8 @@ INCLUDE "data/text/text_6.asm"
 SECTION "Text 11", ROMX
 
 INCLUDE "data/text/text_7.asm"
+INCLUDE "text/PokemonAcademy1F2F.asm" ; marcelnote - new location
+INCLUDE "text/PokemonAcademy3F4F.asm" ; marcelnote - new location
 
 
 SECTION "Pokédex Text", ROMX

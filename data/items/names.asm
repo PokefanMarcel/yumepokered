@@ -6,7 +6,7 @@ ItemNames::
 	li "POKé BALL"
 	li "TOWN MAP"
 	li "BICYCLE"
-	li "?????" ; SURFBOARD
+	li "SURFBOARD" ; SURFBOARD
 	li "SAFARI BALL"
 	li "POKéDEX"
 	li "MOON STONE"
@@ -20,14 +20,14 @@ ItemNames::
 	li "HYPER POTION"
 	li "SUPER POTION"
 	li "POTION"
-	li "BOULDERBADGE"
-	li "CASCADEBADGE"
-	li "THUNDERBADGE"
-	li "RAINBOWBADGE"
-	li "SOULBADGE"
-	li "MARSHBADGE"
-	li "VOLCANOBADGE"
-	li "EARTHBADGE"
+	li "BAIT"    ; marcelnote - cleaned badges
+	li "ROCK"    ; marcelnote - cleaned badges
+	li "ITEM_17" ; marcelnote - cleaned badges
+	li "ITEM_18" ; marcelnote - cleaned badges
+	li "ITEM_19" ; marcelnote - cleaned badges
+	li "ITEM_1A" ; marcelnote - cleaned badges
+	li "ITEM_1B" ; marcelnote - cleaned badges
+	li "ITEM_1C" ; marcelnote - cleaned badges
 	li "ESCAPE ROPE"
 	li "REPEL"
 	li "OLD AMBER"
@@ -43,13 +43,13 @@ ItemNames::
 	li "DOME FOSSIL"
 	li "HELIX FOSSIL"
 	li "SECRET KEY"
-	li "?????" ; ITEM_2C
+	li "ITEM_2C" ; ITEM_2C
 	li "BIKE VOUCHER"
 	li "X ACCURACY"
 	li "LEAF STONE"
 	li "CARD KEY"
 	li "NUGGET"
-	li "PP UP" ; ITEM_32
+	li "ITEM_32" ; ITEM_32
 	li "POKé DOLL"
 	li "FULL HEAL"
 	li "REVIVE"
@@ -99,3 +99,31 @@ ItemNames::
 	li "11F"
 	li "B4F"
 	assert_list_length NUM_ITEMS + NUM_FLOORS
+; marcelnote - adding types as items for Pokemon Academy Blackboard
+    li "NORMAL"
+    li "GRASS"
+    li "FIRE"
+    li "WATER"
+    li "ELECTRIC"
+    li "FIGHTING"
+    li "POISON"
+    li "GROUND"
+    li "FLYING"
+    li "BUG"
+    li "ROCK"
+    li "PSYCHIC"
+    li "ICE"
+    li "GHOST"
+    li "DRAGON"
+	assert_list_length NUM_ITEMS + NUM_FLOORS + NUM_TYPES_ITEMS
+; marcelnote - cleaned Badges from Item list as in PureRGB
+	li "BOULDERBADGE"
+    li "CASCADEBADGE"
+    li "THUNDERBADGE"
+    li "RAINBOWBADGE"
+    li "SOULBADGE"
+    li "MARSHBADGE"
+    li "VOLCANOBADGE"
+    li "EARTHBADGE"
+    assert_list_length NUM_ITEMS + NUM_FLOORS + NUM_TYPES_ITEMS + NUM_BADGES
+

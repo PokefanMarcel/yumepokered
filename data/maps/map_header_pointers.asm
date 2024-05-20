@@ -206,8 +206,8 @@ MapHeaderPointers::
 	dw RocketHideoutB4F_h
 	dw RocketHideoutElevator_h
 	dw Route22OldRodHouse_h ; $CC ; marcelnote - new location
-	dw RocketHideoutElevator_h ; UNUSED_MAP_CD
-	dw RocketHideoutElevator_h ; UNUSED_MAP_CE
+	dw PokemonAcademy1F2F_h ; $CD ; marcelnote - new location
+	dw PokemonAcademy3F4F_h ; $CE ; marcelnote - new location
 	dw SilphCo2F_h
 	dw SilphCo3F_h
 	dw SilphCo4F_h

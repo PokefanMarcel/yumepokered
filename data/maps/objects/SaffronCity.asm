@@ -27,6 +27,7 @@ SaffronCity_Object:
 	warp_event 18, 21, SILPH_CO_1F, 1
 	warp_event  9, 29, SAFFRON_POKECENTER, 1
 	warp_event 29, 29, MR_PSYCHICS_HOUSE, 1
+	warp_event 32, 21, POKEMON_ACADEMY_1F2F, 1  ; marcelnote - added Pokemon Academy
 
 	def_bg_events
 	bg_event 17,  5, TEXT_SAFFRONCITY_SIGN
@@ -39,6 +40,7 @@ SaffronCity_Object:
 	bg_event 10, 29, TEXT_SAFFRONCITY_POKECENTER_SIGN
 	bg_event 27, 29, TEXT_SAFFRONCITY_MR_PSYCHICS_HOUSE_SIGN
 	bg_event  1, 19, TEXT_SAFFRONCITY_SILPH_CO_LATEST_PRODUCT_SIGN
+	bg_event 29, 21, TEXT_SAFFRONCITY_POKEMON_ACADEMY_SIGN  ; marcelnote - added Pokemon Academy
 
 	def_object_events
 	object_event  7,  6, SPRITE_ROCKET, STAY, NONE, TEXT_SAFFRONCITY_ROCKET1

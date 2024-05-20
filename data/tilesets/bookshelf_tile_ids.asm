@@ -22,4 +22,8 @@ BookshelfTileIDs:
 	bookshelf_tile LOBBY,        $50, PokemonStuffText
 	bookshelf_tile LOBBY,        $52, PokemonStuffText
 	bookshelf_tile SHIP,         $36, BookOrSculptureText
+	bookshelf_tile ACADEMY,      $32, BookOrSculptureText ; marcelnote - new tileset
+	bookshelf_tile ACADEMY,      $3A, BookOrSculptureText ; marcelnote - new tileset
+	bookshelf_tile ACADEMY,      $3C, BookOrSculptureText ; marcelnote - new tileset
+	bookshelf_tile ACADEMY,      $22, BookOrSculptureText ; marcelnote - new tileset
 	db -1 ; end

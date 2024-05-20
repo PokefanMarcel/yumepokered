@@ -68,3 +68,6 @@ Facility_Coll::
 
 Plateau_Coll::
 	coll_tiles $1b, $23, $2c, $2d, $3b, $45
+
+Academy_Coll::  ; marcelnote - new tileset
+	coll_tiles $01, $12, $14, $1A, $1C

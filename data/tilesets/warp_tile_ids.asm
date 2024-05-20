@@ -24,6 +24,7 @@ WarpTileIDPointers:
 	dw .ClubWarpTileIDs
 	dw .FacilityWarpTileIDs
 	dw .PlateauWarpTileIDs
+	dw .AcademyWarpTileIDs  ; marcelnote - new tileset
 	assert_table_length NUM_TILESETS
 
 MACRO warp_tiles
@@ -43,6 +44,7 @@ ENDM
 	; fallthrough
 .RedsHouse1WarpTileIDs:
 .RedsHouse2WarpTileIDs:
+.AcademyWarpTileIDs: ; marcelnote - new tileset
 	warp_tiles $1A, $1C
 
 .MartWarpTileIDs:

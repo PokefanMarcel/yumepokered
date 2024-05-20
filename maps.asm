@@ -1239,3 +1239,13 @@ INCLUDE "data/maps/headers/MtMoonSquare.asm" ; marcelnote - new location
 INCLUDE "scripts/MtMoonSquare.asm"
 INCLUDE "data/maps/objects/MtMoonSquare.asm"
 MtMoonSquare_Blocks:: INCBIN "maps/MtMoonSquare.blk"
+
+INCLUDE "data/maps/headers/PokemonAcademy1F2F.asm" ; marcelnote - new location
+INCLUDE "scripts/PokemonAcademy1F2F.asm"
+INCLUDE "data/maps/objects/PokemonAcademy1F2F.asm"
+PokemonAcademy1F2F_Blocks:: INCBIN "maps/PokemonAcademy1F2F.blk"
+
+INCLUDE "data/maps/headers/PokemonAcademy3F4F.asm" ; marcelnote - new location
+INCLUDE "scripts/PokemonAcademy3F4F.asm"
+INCLUDE "data/maps/objects/PokemonAcademy3F4F.asm"
+PokemonAcademy3F4F_Blocks:: INCBIN "maps/PokemonAcademy3F4F.blk"

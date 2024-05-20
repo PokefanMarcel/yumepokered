@@ -109,6 +109,7 @@ InternalMapEntries:
 	internal_map VICTORY_ROAD_3F,                0,  4, VictoryRoadName
 	internal_map ROCKET_HIDEOUT_ELEVATOR,        7,  5, RocketHQName ; marcelnote - adjusted
 	internal_map ROUTE_22_OLD_ROD_HOUSE,         1,  8, Route22Name ; marcelnote - new location
+	internal_map POKEMON_ACADEMY_3F4F,          10,  5, PokemonAcademyName ; marcelnote - new location
 	internal_map SILPH_CO_8F,                   10,  5, SilphCoName
 	internal_map POKEMON_MANSION_B1F,            2, 15, PokemonMansionName
 	internal_map SAFARI_ZONE_NORTH_REST_HOUSE,   8, 12, SafariZoneName

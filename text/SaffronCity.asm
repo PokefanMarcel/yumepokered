@@ -150,3 +150,7 @@ _SaffronCitySilphCoLatestProductSignText::
 	para "Release to be"
 	line "determined..."
 	done
+
+_SaffronCityPokemonAcademySignText::    ; marcelnote - added Pokemon Academy
+	text "#MON ACADEMY"
+	done

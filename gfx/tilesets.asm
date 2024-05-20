@@ -61,3 +61,7 @@ Club_GFX::          INCBIN "gfx/tilesets/club.2bpp"
 Club_Block::        INCBIN "gfx/blocksets/club.bst"
 Underground_GFX::   INCBIN "gfx/tilesets/underground.2bpp"
 Underground_Block:: INCBIN "gfx/blocksets/underground.bst"
+
+SECTION "Tilesets 4", ROMX  ; marcelnote - new tilesets
+Academy_GFX::       INCBIN "gfx/tilesets/academy.2bpp"
+Academy_Block::     INCBIN "gfx/blocksets/academy.bst"

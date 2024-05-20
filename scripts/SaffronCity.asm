@@ -28,6 +28,7 @@ SaffronCity_TextPointers:
 	dw_const PokeCenterSignText,                      TEXT_SAFFRONCITY_POKECENTER_SIGN
 	dw_const SaffronCityMrPsychicsHouseSignText,      TEXT_SAFFRONCITY_MR_PSYCHICS_HOUSE_SIGN
 	dw_const SaffronCitySilphCoLatestProductSignText, TEXT_SAFFRONCITY_SILPH_CO_LATEST_PRODUCT_SIGN
+	dw_const SaffronCityPokemonAcademySignText,       TEXT_SAFFRONCITY_POKEMON_ACADEMY_SIGN  ; marcelnote - added Pokemon Academy
 
 SaffronCityRocket1Text:
 	text_far _SaffronCityRocket1Text
@@ -120,4 +121,8 @@ SaffronCityMrPsychicsHouseSignText:
 
 SaffronCitySilphCoLatestProductSignText:
 	text_far _SaffronCitySilphCoLatestProductSignText
+	text_end
+
+SaffronCityPokemonAcademySignText:  ; marcelnote - added Pokemon Academy
+	text_far _SaffronCityPokemonAcademySignText
 	text_end

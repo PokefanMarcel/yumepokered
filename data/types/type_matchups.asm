@@ -67,7 +67,7 @@ TypeEffects:
 	db BUG,          FLYING,       NOT_VERY_EFFECTIVE
 	db BUG,          PSYCHIC_TYPE, SUPER_EFFECTIVE
 	db BUG,          GHOST,        NOT_VERY_EFFECTIVE
-	db BUG,          POISON,       SUPER_EFFECTIVE
+	db BUG,          POISON,       NOT_VERY_EFFECTIVE   ; marcelnote - changed from SUPER_EFFECTIVE
 	db ROCK,         FIRE,         SUPER_EFFECTIVE
 	db ROCK,         FIGHTING,     NOT_VERY_EFFECTIVE
 	db ROCK,         GROUND,       NOT_VERY_EFFECTIVE
@@ -75,7 +75,7 @@ TypeEffects:
 	db ROCK,         BUG,          SUPER_EFFECTIVE
 	db ROCK,         ICE,          SUPER_EFFECTIVE
 	db GHOST,        NORMAL,       NO_EFFECT
-	db GHOST,        PSYCHIC_TYPE, NO_EFFECT
+	db GHOST,        PSYCHIC_TYPE, SUPER_EFFECTIVE      ; marcelnote - changed from NO_EFFECT
 	db FIRE,         DRAGON,       NOT_VERY_EFFECTIVE
 	db WATER,        DRAGON,       NOT_VERY_EFFECTIVE
 	db ELECTRIC,     DRAGON,       NOT_VERY_EFFECTIVE

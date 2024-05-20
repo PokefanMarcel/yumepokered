@@ -1060,7 +1060,9 @@ wGymCityName:: ds 17
 
 wGymLeaderName:: ds NAME_LENGTH
 
-wItemList:: ds 16
+;UNION
+ds 16 ; PureRGBnote: CHANGED: used to be wItemList but now the item list for marts is expanded in size and reuses a bigger space in wMovesString
+;NEXTU
 
 wListPointer:: dw
 
@@ -1551,6 +1553,9 @@ wMoves:: ds NUM_MOVES
 
 wMoveNum:: db
 
+; PureRGBnote: MOVED: itemlist is a temp list for indicating what items appear in a mart, the size was expanded to allow for bigger mart stocks.
+; we reuse wMovesString for this expanded list since wMovesString is only used in battle.
+wItemList::
 wMovesString:: ds 56
 
 wUnusedD119:: db

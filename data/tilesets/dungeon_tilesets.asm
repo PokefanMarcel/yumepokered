@@ -10,4 +10,5 @@ DungeonTilesets:
 	db FACILITY
 	db CEMETERY
 	db GYM
+	db ACADEMY  ; marcelnote - new tileset
 	db -1 ; end

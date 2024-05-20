@@ -27,16 +27,14 @@
 	const HYPER_POTION  ; $12
 	const SUPER_POTION  ; $13
 	const POTION        ; $14
-	const BOULDERBADGE  ; $15
-DEF SAFARI_BAIT EQU BOULDERBADGE ; overload
-	const CASCADEBADGE  ; $16
-DEF SAFARI_ROCK EQU CASCADEBADGE ; overload
-	const THUNDERBADGE  ; $17
-	const RAINBOWBADGE  ; $18
-	const SOULBADGE     ; $19
-	const MARSHBADGE    ; $1A
-	const VOLCANOBADGE  ; $1B
-	const EARTHBADGE    ; $1C
+	const SAFARI_BAIT   ; $15 ; marcelnote - cleaned from BoulderBadge
+	const SAFARI_ROCK   ; $16 ; marcelnote - cleaned from CascadeBadge
+	const ITEM_17       ; $17 ; unused ; marcelnote - cleaned from ThunderBadge
+	const ITEM_18       ; $18 ; unused ; marcelnote - cleaned from RainbowBadge
+	const ITEM_19       ; $19 ; unused ; marcelnote - cleaned from SoulBadge
+	const ITEM_1A       ; $1A ; unused ; marcelnote - cleaned from MarshBadge
+	const ITEM_1B       ; $1B ; unused ; marcelnote - cleaned from VolcanoBadge
+	const ITEM_1C       ; $1C ; unused ; marcelnote - cleaned from EarthBadge
 	const ESCAPE_ROPE   ; $1D
 	const REPEL         ; $1E
 	const OLD_AMBER     ; $1F
@@ -110,6 +108,34 @@ DEF NUM_ITEMS EQU const_value - 1
 	const FLOOR_11F     ; $60
 	const FLOOR_B4F     ; $61
 DEF NUM_FLOORS EQU const_value - 1 - NUM_ITEMS
+
+; marcelnote - adding types as items for Pokemon Academy Blackboard
+	const NORMAL_ITEM   ; $62
+	const GRASS_ITEM    ; $63
+	const FIRE_ITEM     ; $64
+	const WATER_ITEM    ; $65
+	const ELECTRIC_ITEM ; $66
+	const FIGHTING_ITEM ; $67
+	const POISON_ITEM   ; $68
+	const GROUND_ITEM   ; $69
+	const FLYING_ITEM   ; $6A
+	const BUG_ITEM      ; $6B
+	const ROCK_ITEM     ; $6C
+	const PSYCHIC_ITEM  ; $6D
+	const ICE_ITEM      ; $6E
+	const GHOST_ITEM    ; $6F
+	const DRAGON_ITEM   ; $70
+DEF NUM_TYPES_ITEMS EQU const_value - 1 - NUM_ITEMS - NUM_FLOORS
+
+; marcelnote - cleaned Badges from Item list as in PureRGB
+	const BOULDERBADGE  ; $71
+	const CASCADEBADGE  ; $72
+	const THUNDERBADGE  ; $73
+	const RAINBOWBADGE  ; $74
+	const SOULBADGE     ; $75
+	const MARSHBADGE    ; $76
+	const VOLCANOBADGE  ; $77
+	const EARTHBADGE    ; $78
 
 	const_next $C4
 

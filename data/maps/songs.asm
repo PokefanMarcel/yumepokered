@@ -205,8 +205,8 @@ MapSongBanks::
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; ROCKET_HIDEOUT_B4F
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; ROCKET_HIDEOUT_ELEVATOR
 	db MUSIC_CITIES2, BANK(Music_Cities2) ; ROUTE_22_OLD_ROD_HOUSE ; marcelnote - new location
-	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; UNUSED_MAP_CD
-	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; UNUSED_MAP_CE
+	db MUSIC_CITIES1, BANK(Music_Cities1) ; CD ; POKEMON_ACADEMY_1F2F ; marcelnote - new location
+	db MUSIC_CITIES1, BANK(Music_Cities1) ; CE ; POKEMON_ACADEMY_3F4F ; marcelnote - new location
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_2F
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_3F
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_4F

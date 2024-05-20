@@ -10,6 +10,8 @@ DEF PHYSICAL EQU const_value
 	const ROCK         ; $05
 	const BIRD         ; $06
 	const BUG          ; $07
+
+DEF SPECIAL EQU const_value ; marcelnote - GHOST now SPECIAL (same constants to maintain trade compatibility)
 	const GHOST        ; $08
 
 DEF UNUSED_TYPES EQU const_value
@@ -23,6 +25,8 @@ DEF SPECIAL EQU const_value
 	const ELECTRIC     ; $17
 	const PSYCHIC_TYPE ; $18
 	const ICE          ; $19
+
+DEF PHYSICAL EQU const_value ; marcelnote - DRAGON now PHYSICAL (same constants to maintain trade compatibility)
 	const DRAGON       ; $1A
 
 DEF NUM_TYPES EQU const_value

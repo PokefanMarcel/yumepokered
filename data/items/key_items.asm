@@ -20,14 +20,14 @@ KeyItemFlags:
 	dbit FALSE ; HYPER_POTION
 	dbit FALSE ; SUPER_POTION
 	dbit FALSE ; POTION
-	dbit TRUE  ; BOULDERBADGE
-	dbit TRUE  ; CASCADEBADGE
-	dbit TRUE  ; THUNDERBADGE
-	dbit TRUE  ; RAINBOWBADGE
-	dbit TRUE  ; SOULBADGE
-	dbit TRUE  ; MARSHBADGE
-	dbit TRUE  ; VOLCANOBADGE
-	dbit TRUE  ; EARTHBADGE
+	dbit TRUE  ; SAFARI_BAIT ; marcelnote - cleaned badges
+	dbit TRUE  ; SAFARI_ROCK ; marcelnote - cleaned badges
+	dbit TRUE  ; ITEM_17     ; marcelnote - cleaned badges
+	dbit TRUE  ; ITEM_18     ; marcelnote - cleaned badges
+	dbit TRUE  ; ITEM_19     ; marcelnote - cleaned badges
+	dbit TRUE  ; ITEM_1A     ; marcelnote - cleaned badges
+	dbit TRUE  ; ITEM_1B     ; marcelnote - cleaned badges
+	dbit TRUE  ; ITEM_1C     ; marcelnote - cleaned badges
 	dbit FALSE ; ESCAPE_ROPE
 	dbit FALSE ; REPEL
 	dbit TRUE  ; OLD_AMBER
@@ -83,4 +83,5 @@ KeyItemFlags:
 	dbit FALSE ; MAX_ETHER
 	dbit FALSE ; ELIXER
 	dbit FALSE ; MAX_ELIXER
+; marcelnote - should add Badges as TRUE to reflect changed constants?
 	end_bit_array NUM_ITEMS

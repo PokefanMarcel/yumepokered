@@ -1027,28 +1027,28 @@ ChargeEffect:
 	ld hl, ChargeMoveEffectText
 	jp PrintText
 
-ChargeMoveEffectText:
+ChargeMoveEffectText:   ; marcelnote - replaced jr z, .gotText by ret z
 	text_far _ChargeMoveEffectText
 	text_asm
 	ld a, [wChargeMoveNum]
-	cp RAZOR_WIND
-	ld hl, MadeWhirlwindText
-	jr z, .gotText
+	;cp RAZOR_WIND  ; marcelnote - changed RAZOR WIND to HYPER_BEAM_EFFECT
+	;ld hl, MadeWhirlwindText
+	;ret z
 	cp SOLARBEAM
 	ld hl, TookInSunlightText
-	jr z, .gotText
+	ret z
 	cp SKULL_BASH
 	ld hl, LoweredItsHeadText
-	jr z, .gotText
+	ret z
 	cp SKY_ATTACK
 	ld hl, SkyAttackGlowingText
-	jr z, .gotText
+	ret z
 	cp FLY
 	ld hl, FlewUpHighText
-	jr z, .gotText
+	;jr z, .gotText
+	ret z
 	cp DIG
 	ld hl, DugAHoleText
-.gotText
 	ret
 
 MadeWhirlwindText:
