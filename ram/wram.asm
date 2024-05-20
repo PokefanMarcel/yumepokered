@@ -2052,9 +2052,9 @@ wPlayerGender:: ; marcelnote - add female player
 	ds 55
 
 
-wObtainedHiddenItemsFlags:: flag_array 112
+wObtainedHiddenItemsFlags:: flag_array MAX_HIDDEN_ITEMS
 
-wObtainedHiddenCoinsFlags:: flag_array 16
+wObtainedHiddenCoinsFlags:: flag_array MAX_HIDDEN_COINS
 
 ; $00 = walking
 ; $01 = biking
