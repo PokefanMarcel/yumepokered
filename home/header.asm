@@ -26,8 +26,9 @@ SECTION "rst20", ROM0[$0020]
 
 	ds $28 - @, 0 ; unused
 
-SECTION "rst28", ROM0[$0028]
-	rst $38
+SECTION "rst28", ROM0[$0028] ; PureRGB - PrintText as rst, replaces jp PrintText
+	_PrintText::
+    	jp PrintText
 
 	ds $30 - @, 0 ; unused
 
