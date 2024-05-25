@@ -163,7 +163,6 @@ INCLUDE "gfx/trainer_card.asm"
 INCLUDE "engine/items/tmhm.asm"
 INCLUDE "engine/battle/scale_sprites.asm"
 INCLUDE "engine/battle/move_effects/pay_day.asm"
-INCLUDE "engine/slots/game_corner_slots2.asm"
 
 
 SECTION "Battle Engine 6", ROMX
@@ -175,11 +174,10 @@ INCLUDE "engine/battle/move_effects/one_hit_ko.asm"
 SECTION "Slot Machines", ROMX
 
 INCLUDE "engine/movie/title2.asm"
-INCLUDE "engine/battle/link_battle_versus_text.asm"
 INCLUDE "engine/slots/slot_machine.asm"
-INCLUDE "engine/events/pewter_guys.asm"
 INCLUDE "engine/math/multiply_divide.asm"
 INCLUDE "engine/slots/game_corner_slots.asm"
+INCLUDE "engine/slots/game_corner_slots2.asm"    ; marcelnote - moved from Battle Engine 5
 
 
 SECTION "Battle Engine 7", ROMX
@@ -196,6 +194,7 @@ INCLUDE "engine/pokemon/evos_moves.asm"
 INCLUDE "engine/battle/move_effects/heal.asm"
 INCLUDE "engine/battle/move_effects/transform.asm"
 INCLUDE "engine/battle/move_effects/reflect_light_screen.asm"
+INCLUDE "engine/battle/link_battle_versus_text.asm"  ; marcelnote - moved from Slot Machines
 
 
 SECTION "Battle Core", ROMX
@@ -274,6 +273,7 @@ INCLUDE "engine/events/oaks_aide.asm"
 SECTION "Saffron Guards", ROMX
 
 INCLUDE "engine/events/saffron_guards.asm"
+INCLUDE "engine/events/pewter_guys.asm"     ; marcelnote - moved from Slot Machines
 
 
 SECTION "Starter Dex", ROMX
@@ -355,8 +355,7 @@ INCLUDE "data/moves/animations.asm"
 INCLUDE "data/battle_anims/subanimations.asm"
 INCLUDE "data/battle_anims/frame_blocks.asm"
 INCLUDE "engine/movie/evolution.asm"
+INCLUDE "engine/overworld/elevator.asm"
 
 
-SECTION "bank1F", ROMX ; marcelnote - new, moved stuff from bank1E
-
-INCLUDE "engine/overworld/elevator.asm" ; marcelnote - moved from bank1E
+;SECTION "bank1F", ROMX ; marcelnote - new, moved stuff from bank1E
