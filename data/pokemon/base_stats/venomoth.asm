@@ -10,7 +10,7 @@
 	INCBIN "gfx/pokemon/front/venomoth.pic", 0, 1 ; sprite dimensions
 	dw VenomothPicFront, VenomothPicBack
 
-	db TACKLE, DISABLE, POISONPOWDER, LEECH_LIFE ; level 1 learnset
+	db TACKLE, DISABLE, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed POISONPOWDER and LEECH_LIFE
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset

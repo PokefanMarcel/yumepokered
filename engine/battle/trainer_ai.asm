@@ -146,7 +146,7 @@ AIMoveChoiceModification1:
 	jr .nextMove
 
 StatusAilmentMoveEffects:
-	db EFFECT_01 ; unused sleep effect
+	db BURN_EFFECT ; marcelnote - replaces unused sleep effect EFFECT_01
 	db SLEEP_EFFECT
 	db POISON_EFFECT
 	db PARALYZE_EFFECT

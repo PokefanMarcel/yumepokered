@@ -10,13 +10,14 @@
 	INCBIN "gfx/pokemon/front/diglett.pic", 0, 1 ; sprite dimensions
 	dw DiglettPicFront, DiglettPicBack
 
-	db SCRATCH, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset
+	db SCRATCH, GROWL, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - added GROWL
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
+	; marcelnote - added CUT
 	tmhm TOXIC,        BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  RAGE,         \
 	     EARTHQUAKE,   FISSURE,      DIG,          MIMIC,        DOUBLE_TEAM,  \
-	     BIDE,         REST,         ROCK_SLIDE,   SUBSTITUTE
+	     BIDE,         REST,         ROCK_SLIDE,   SUBSTITUTE,   CUT
 	; end
 
 	db 0 ; padding

@@ -10,7 +10,7 @@
 	INCBIN "gfx/pokemon/front/seel.pic", 0, 1 ; sprite dimensions
 	dw SeelPicFront, SeelPicBack
 
-	db HEADBUTT, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset
+	db HORN_ATTACK, GROWL, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - changed from HEADBUTT, NO_MOVE, NO_MOVE, NO_MOVE
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset

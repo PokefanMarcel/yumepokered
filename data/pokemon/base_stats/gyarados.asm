@@ -10,15 +10,16 @@
 	INCBIN "gfx/pokemon/front/gyarados.pic", 0, 1 ; sprite dimensions
 	dw GyaradosPicFront, GyaradosPicBack
 
-	db BITE, DRAGON_RAGE, LEER, HYDRO_PUMP ; level 1 learnset
+	db BITE, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - changed from BITE, DRAGON_RAGE, LEER, HYDRO_PUMP
 	db GROWTH_SLOW ; growth rate
 
 	; tm/hm learnset
+	; marcelnote - added FLY
 	tmhm TOXIC,        BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  BUBBLEBEAM,   \
 	     WATER_GUN,    ICE_BEAM,     BLIZZARD,     HYPER_BEAM,   RAGE,         \
 	     DRAGON_RAGE,  THUNDERBOLT,  THUNDER,      MIMIC,        DOUBLE_TEAM,  \
 	     REFLECT,      BIDE,         FIRE_BLAST,   SKULL_BASH,   REST,         \
-	     SUBSTITUTE,   SURF,         STRENGTH
+	     SUBSTITUTE,   SURF,         STRENGTH,     FLY
 	; end
 
 	db 0 ; padding

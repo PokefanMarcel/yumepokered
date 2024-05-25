@@ -14,7 +14,8 @@
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
-	tmhm
+	; marcelnote - added TAKE_DOWN and DOUBLE_EDGE
+	tmhm TAKE_DOWN,    DOUBLE_EDGE
 	; end
 
 	db 0 ; padding

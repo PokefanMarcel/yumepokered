@@ -10,13 +10,15 @@
 	INCBIN "gfx/pokemon/front/dugtrio.pic", 0, 1 ; sprite dimensions
 	dw DugtrioPicFront, DugtrioPicBack
 
-	db SCRATCH, GROWL, DIG, NO_MOVE ; level 1 learnset
+	db SCRATCH, GROWL, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed DIG
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
+	; marcelnote - added CUT
 	tmhm TOXIC,        BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  HYPER_BEAM,   \
 	     RAGE,         EARTHQUAKE,   FISSURE,      DIG,          MIMIC,        \
-	     DOUBLE_TEAM,  BIDE,         REST,         ROCK_SLIDE,   SUBSTITUTE
+	     DOUBLE_TEAM,  BIDE,         REST,         ROCK_SLIDE,   SUBSTITUTE,   \
+	     CUT
 	; end
 
 	db 0 ; padding

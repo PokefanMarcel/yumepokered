@@ -299,6 +299,10 @@ FreezeBurnParalyzeEffect:
 	ld hl, FrozenText
 	jp PrintText
 
+PrintBurnedText:    ; marcelnote - new for BURN_EFFECT
+	ld hl, BurnedText
+	jp PrintText
+
 BurnedText:
 	text_far _BurnedText
 	text_end
@@ -1166,6 +1170,9 @@ ParalyzeEffect:
 SubstituteEffect:
 	jpfar SubstituteEffect_
 
+BurnEffect:    ; marcelnote - new BURN_EFFECT for WILL_O_WISP
+	jpfar BurnEffect_
+
 HyperBeamEffect:
 	ld hl, wPlayerBattleStatus2
 	ldh a, [hWhoseTurn]
@@ -1367,6 +1374,22 @@ DisableEffect:
 MoveWasDisabledText:
 	text_far _MoveWasDisabledText
 	text_end
+
+HexEffect:  ; marcelnote - new effect for HEX: gets to 90 base power if opponent has PAR/SLP/PSN/BRN/FRZ
+	ld hl, wEnemyMonStatus
+	ld de, wPlayerMovePower
+	ldh a, [hWhoseTurn]
+	and a
+	jr z, .hexEffect
+	ld hl, wBattleMonStatus
+	ld de, wEnemyMovePower
+.hexEffect
+	ld a, [hl]
+	and (1 << PAR) | (1 << PSN) | (1 << BRN) | (1 << FRZ) | SLP_MASK
+	ret z
+	ld a, 90
+	ld [de], a
+	ret
 
 PayDayEffect:
 	jpfar PayDayEffect_

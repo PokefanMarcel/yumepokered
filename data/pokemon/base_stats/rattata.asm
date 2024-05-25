@@ -14,10 +14,11 @@
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
+	; marcelnote - added SWORDS_DANCE, ICE_BEAM
 	tmhm TOXIC,        BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  BUBBLEBEAM,   \
-	     WATER_GUN,    BLIZZARD,     RAGE,         THUNDERBOLT,  THUNDER,      \
-	     DIG,          MIMIC,        DOUBLE_TEAM,  BIDE,         SWIFT,        \
-	     SKULL_BASH,   REST,         SUBSTITUTE
+	     WATER_GUN,    ICE_BEAM,     BLIZZARD,     RAGE,         THUNDERBOLT,  \
+	     THUNDER,      DIG,          MIMIC,        DOUBLE_TEAM,  BIDE,         \
+	     SWIFT,        SKULL_BASH,   REST,         SUBSTITUTE,   SWORDS_DANCE
 	; end
 
 	db 0 ; padding

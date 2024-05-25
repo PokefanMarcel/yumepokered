@@ -72,8 +72,8 @@ MoveEffectPointerTable:
 	dw StatModifierDownEffect    ; DEFENSE_DOWN_SIDE_EFFECT
 	dw StatModifierDownEffect    ; SPEED_DOWN_SIDE_EFFECT
 	dw StatModifierDownEffect    ; SPECIAL_DOWN_SIDE_EFFECT
-	dw StatModifierDownEffect    ; unused effect
-	dw StatModifierDownEffect    ; unused effect
+	dw BurnEffect                ; BURN_EFFECT ; marcelnote - new for WILL_O_WISP, replaces unused effect
+	dw HexEffect                 ; HEX_EFFECT ; marcelnote - new for HEX, replaces unused effect
 	dw StatModifierDownEffect    ; unused effect
 	dw StatModifierDownEffect    ; unused effect
 	dw ConfusionSideEffect       ; CONFUSION_SIDE_EFFECT

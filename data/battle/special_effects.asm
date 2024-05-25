@@ -21,4 +21,5 @@ SpecialEffectsCont:
 ; damaging moves whose effect is executed prior to damage calculation
 	db THRASH_PETAL_DANCE_EFFECT
 	db TRAPPING_EFFECT
+	db HEX_EFFECT   ; marcelnote - new, for HEX
 	db -1 ; end

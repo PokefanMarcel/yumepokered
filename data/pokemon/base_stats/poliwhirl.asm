@@ -10,7 +10,7 @@
 	INCBIN "gfx/pokemon/front/poliwhirl.pic", 0, 1 ; sprite dimensions
 	dw PoliwhirlPicFront, PoliwhirlPicBack
 
-	db BUBBLE, HYPNOSIS, WATER_GUN, NO_MOVE ; level 1 learnset
+	db POUND, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset; marcelnote - replaced BUBBLE, HYPNOSIS, WATER_GUN, NO_MOVE
 	db GROWTH_MEDIUM_SLOW ; growth rate
 
 	; tm/hm learnset

@@ -10,7 +10,7 @@
 	INCBIN "gfx/pokemon/front/kabutops.pic", 0, 1 ; sprite dimensions
 	dw KabutopsPicFront, KabutopsPicBack
 
-	db SCRATCH, HARDEN, ABSORB, NO_MOVE ; level 1 learnset
+	db SCRATCH, HARDEN, FURY_SWIPES, NO_MOVE ; level 1 learnset ; marcelnote - replaced ABSORB by FURY_SWIPES
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset

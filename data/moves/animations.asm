@@ -164,6 +164,9 @@ AttackAnimationPointers:
 	dw SuperFangAnim
 	dw SlashAnim
 	dw SubstituteAnim
+	dw ElectroBallAnim  ; marcelnote - new move
+	dw WillOWispAnim    ; marcelnote - new move
+	dw HexAnim          ; marcelnote - new move
 	dw StruggleAnim
 	assert_table_length NUM_ATTACKS
 	dw ShowPicAnim
@@ -182,9 +185,9 @@ AttackAnimationPointers:
 	dw XStatItemBlackAnim
 	dw ShrinkingSquareBlackAnim
 	dw ShrinkingSquareBlackAnim
-	dw UnusedAnim
-	dw UnusedAnim
-	dw ParalyzeAnim
+	dw ShrinkingSquareBlackAnim ; marcelnote - replaced UnusedAnim
+	dw ShrinkingSquareBlackAnim ; marcelnote - replaced UnusedAnim
+	dw BurnAnim ; marcelnote - new animation for BURN
 	dw ParalyzeAnim
 	dw PoisonAnim
 	dw PoisonAnim
@@ -1143,6 +1146,27 @@ SubstituteAnim:
 	battle_anim NO_MOVE, SE_SUBSTITUTE_MON
 	db -1 ; end
 
+ElectroBallAnim: ; marcelnote - new move
+	battle_anim ROCK_SLIDE, SE_DARK_SCREEN_PALETTE
+	battle_anim NO_MOVE, SUBANIM_1_CIRCLE_BLACK_TOSS, 1, 3
+	battle_anim NO_MOVE, SE_RESET_SCREEN_PALETTE
+	battle_anim THUNDERSHOCK, SUBANIM_1_LIGHTNING_BALL, 1, 2
+	db -1 ; end
+
+WillOWispAnim:  ; marcelnote - new move
+	battle_anim EMBER, SUBANIM_1_FLAME_COLUMN_1, 1, 6
+	battle_anim EMBER, SUBANIM_1_FLAME_COLUMN_2, 1, 6
+	battle_anim NO_MOVE, SUBANIM_1_FLAME_COLUMN_1, 1, 6
+	db -1 ; end
+
+HexAnim:    ; marcelnote - new move
+	battle_anim NO_MOVE, SE_DARK_SCREEN_PALETTE
+	battle_anim STRING_SHOT, SUBANIM_1_STAR_BIG, 1, 30
+	battle_anim STRING_SHOT, SUBANIM_1_STAR_BIG, 1, 30
+	battle_anim STRING_SHOT, SUBANIM_1_STAR_BIG, 1, 30
+	battle_anim NO_MOVE, SE_RESET_SCREEN_PALETTE
+	db -1 ; end
+
 BallTossAnim:
 	battle_anim NO_MOVE, SUBANIM_0_BALL_TOSS_HIGH, 0, 3
 	db -1 ; end
@@ -1223,15 +1247,20 @@ ShrinkingSquareBlackAnim:
 	battle_anim NO_MOVE, SE_RESET_SCREEN_PALETTE
 	db -1 ; end
 
-UnusedAnim:
-	battle_anim NO_MOVE, SE_LIGHT_SCREEN_PALETTE
-	battle_anim NO_MOVE, SE_SHOOT_MANY_BALLS_UPWARD
-	battle_anim NO_MOVE, SE_RESET_SCREEN_PALETTE
-	db -1 ; end
+;UnusedAnim: ; marcelnote - looks like FOCUS_POWER or stat increase
+;	battle_anim NO_MOVE, SE_LIGHT_SCREEN_PALETTE
+;	battle_anim NO_MOVE, SE_SHOOT_MANY_BALLS_UPWARD
+;	battle_anim NO_MOVE, SE_RESET_SCREEN_PALETTE
+;	db -1 ; end
 
 ParalyzeAnim:
 	battle_anim BIND, SUBANIM_0_STATUS_PARALYZED, 0, 4
 	battle_anim BIND, SUBANIM_0_STATUS_PARALYZED, 0, 4
+	db -1 ; end
+
+BurnAnim:
+	battle_anim EMBER, SUBANIM_1_STATUS_BURNED, 1, 6
+	battle_anim EMBER, SUBANIM_1_STATUS_BURNED, 1, 6
 	db -1 ; end
 
 PoisonAnim:

@@ -10,7 +10,7 @@
 	INCBIN "gfx/pokemon/front/marowak.pic", 0, 1 ; sprite dimensions
 	dw MarowakPicFront, MarowakPicBack
 
-	db BONE_CLUB, GROWL, LEER, FOCUS_ENERGY ; level 1 learnset
+	db GROWL, BONE_CLUB, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed LEER, FOCUS_ENERGY
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset

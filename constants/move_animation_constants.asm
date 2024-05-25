@@ -135,6 +135,7 @@ DEF FIRST_SE_ID EQU const_value
 	const SUBANIM_0_SAFARI_ROCK
 	const SUBANIM_0_SAFARI_BAIT
 	const SUBANIM_0_STAR_HIGH
+	const SUBANIM_1_STATUS_BURNED   ; marcelnote - new animation
 DEF NUM_SUBANIMS EQU const_value
 
 ; types of subanimations

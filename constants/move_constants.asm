@@ -170,7 +170,10 @@
 	const SUPER_FANG   ; a2
 	const SLASH        ; a3
 	const SUBSTITUTE   ; a4
-	const STRUGGLE     ; a5
+	const ELECTRO_BALL ; a5 ; marcelnote - new move
+	const WILL_O_WISP  ; a6 ; marcelnote - new move
+	const HEX          ; a7 ; marcelnote - new move
+	const STRUGGLE     ; a8
 DEF NUM_ATTACKS EQU const_value - 1
 
 	; Moves do double duty as animation identifiers.
@@ -193,9 +196,9 @@ DEF NUM_ATTACKS EQU const_value - 1
 	const ANIM_B5
 	const ANIM_B6
 	const ANIM_B7
-	const ANIM_B8
+	const BURN_ANIM ; marcelnote - new, replaces ANIM_B8
 	const ANIM_B9
-	const BURN_PSN_ANIM ; Plays when a monster is burned or poisoned
+	const PSN_ANIM ; Plays when a monster is burned or poisoned ; marcelnote - renamed from BURN_PSN_ANIM
 	const ANIM_BB
 	const SLP_PLAYER_ANIM
 	const SLP_ANIM ; sleeping monster

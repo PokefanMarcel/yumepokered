@@ -10,14 +10,15 @@
 	INCBIN "gfx/pokemon/front/growlithe.pic", 0, 1 ; sprite dimensions
 	dw GrowlithePicFront, GrowlithePicBack
 
-	db BITE, ROAR, NO_MOVE, NO_MOVE ; level 1 learnset
+	db TACKLE, GROWL, NO_MOVE, NO_MOVE ; level 1 learnset - marcelnote - replaced BITE, ROAR, NO_MOVE, NO_MOVE
 	db GROWTH_SLOW ; growth rate
 
 	; tm/hm learnset
+	; marcelnote - added FLASH
 	tmhm TOXIC,        BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  RAGE,         \
 	     DRAGON_RAGE,  DIG,          MIMIC,        DOUBLE_TEAM,  REFLECT,      \
 	     BIDE,         FIRE_BLAST,   SWIFT,        SKULL_BASH,   REST,         \
-	     SUBSTITUTE
+	     SUBSTITUTE,   FLASH
 	; end
 
 	db 0 ; padding

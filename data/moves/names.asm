@@ -164,5 +164,8 @@ MoveNames::
 	li "SUPER FANG"
 	li "SLASH"
 	li "SUBSTITUTE"
+	li "ELECTRO BALL" ; marcelnote - new move
+	li "WILL-O-WISP"  ; marcelnote - new move
+	li "HEX"          ; marcelnote - new move
 	li "STRUGGLE"
 	assert_list_length NUM_ATTACKS

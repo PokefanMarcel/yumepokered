@@ -125,5 +125,5 @@ _MtMoonB2FRocket4AfterBattleText::
 	done
 
 _MtMoonB2FMtMoonSquareSignText:: ; marcelnote - added Mt Moon Square
-	text "TO MT.MOON SQUARE"
+	text "To MT.MOON SQUARE"
 	done

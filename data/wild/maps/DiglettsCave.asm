@@ -1,3 +1,4 @@
+; marcelnote - decreased DUGTRIO levels
 DiglettsCaveWildMons:
 	def_grass_wildmons 20 ; encounter rate
 	db 18, DIGLETT
@@ -8,8 +9,8 @@ DiglettsCaveWildMons:
 	db 15, DIGLETT
 	db 21, DIGLETT
 	db 22, DIGLETT
-	db 29, DUGTRIO
-	db 31, DUGTRIO
+	db 24, DUGTRIO
+	db 26, DUGTRIO
 	end_grass_wildmons
 
 	def_water_wildmons 0 ; encounter rate

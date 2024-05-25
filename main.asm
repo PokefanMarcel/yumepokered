@@ -237,6 +237,7 @@ SECTION "Battle Engine 8", ROMX
 
 INCLUDE "engine/battle/init_battle_variables.asm"
 INCLUDE "engine/battle/move_effects/paralyze.asm"
+INCLUDE "engine/battle/move_effects/burn.asm"      ; marcelnote - new for WILL_O_WISP
 
 
 SECTION "Hidden Objects 2", ROMX
@@ -349,9 +350,18 @@ SECTION "bank1E", ROMX
 INCLUDE "engine/battle/animations.asm"
 INCLUDE "engine/overworld/cut2.asm"
 INCLUDE "engine/overworld/dust_smoke.asm"
-INCLUDE "gfx/fishing.asm"
+;INCLUDE "gfx/fishing.asm"
 INCLUDE "data/moves/animations.asm"
 INCLUDE "data/battle_anims/subanimations.asm"
 INCLUDE "data/battle_anims/frame_blocks.asm"
 INCLUDE "engine/movie/evolution.asm"
 INCLUDE "engine/overworld/elevator.asm"
+
+
+SECTION "bank1F", ROMX ; marcelnote - new, moved stuff from bank1E
+
+INCLUDE "gfx/fishing.asm" ; marcelnote - putting this here breaks the fishing animation
+;INCLUDE "data/moves/animations.asm"
+;INCLUDE "data/battle_anims/subanimations.asm"
+;INCLUDE "data/battle_anims/frame_blocks.asm"
+;INCLUDE "engine/movie/evolution.asm"

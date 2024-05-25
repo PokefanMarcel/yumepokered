@@ -10,7 +10,7 @@
 	INCBIN "gfx/pokemon/front/arbok.pic", 0, 1 ; sprite dimensions
 	dw ArbokPicFront, ArbokPicBack
 
-	db WRAP, LEER, POISON_STING, NO_MOVE ; level 1 learnset
+	db POISON_STING, LEER, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed WRAP
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset

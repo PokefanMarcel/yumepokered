@@ -10,7 +10,7 @@
 	INCBIN "gfx/pokemon/front/exeggutor.pic", 0, 1 ; sprite dimensions
 	dw ExeggutorPicFront, ExeggutorPicBack
 
-	db BARRAGE, HYPNOSIS, NO_MOVE, NO_MOVE ; level 1 learnset
+	db ABSORB, HYPNOSIS, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - replaced BARRAGE with ABSORB
 	db GROWTH_SLOW ; growth rate
 
 	; tm/hm learnset

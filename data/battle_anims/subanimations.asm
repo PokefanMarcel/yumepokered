@@ -86,6 +86,7 @@ SubanimationPointers:
 	dw Subanim_0SafariRock
 	dw Subanim_0SafariBait
 	dw Subanim_0StarHigh
+	dw Subanim_1StatusBurned    ; marcelnote - new animation
 	assert_table_length NUM_SUBANIMS
 
 ; format:
@@ -659,6 +660,12 @@ Subanim_0StatusPoisoned:
 	subanim SUBANIMTYPE_ENEMY, 2
 	db FRAMEBLOCK_54, BASECOORD_01, FRAMEBLOCKMODE_00
 	db FRAMEBLOCK_54, BASECOORD_2C, FRAMEBLOCKMODE_00
+
+Subanim_1StatusBurned:  ; marcelnote - new animation for BURN
+	subanim SUBANIMTYPE_ENEMY, 3
+	db FRAMEBLOCK_0C, BASECOORD_20, FRAMEBLOCKMODE_00
+	db FRAMEBLOCK_0C, BASECOORD_21, FRAMEBLOCKMODE_00
+	db FRAMEBLOCK_0C, BASECOORD_23, FRAMEBLOCKMODE_00
 
 Subanim_1Sand:
 	subanim SUBANIMTYPE_HVFLIP, 3

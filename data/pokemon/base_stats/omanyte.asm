@@ -10,7 +10,7 @@
 	INCBIN "gfx/pokemon/front/omanyte.pic", 0, 1 ; sprite dimensions
 	dw OmanytePicFront, OmanytePicBack
 
-	db WATER_GUN, WITHDRAW, NO_MOVE, NO_MOVE ; level 1 learnset
+	db CONSTRICT, WITHDRAW, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - replaced WATER_GUN by CONSTRICT
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset

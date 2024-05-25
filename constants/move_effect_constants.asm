@@ -76,9 +76,9 @@
 	const DEFENSE_DOWN_SIDE_EFFECT   ; $45
 	const SPEED_DOWN_SIDE_EFFECT     ; $46
 	const SPECIAL_DOWN_SIDE_EFFECT   ; $47
-	const_skip                       ; $48
-	const_skip                       ; $49
-	const_skip                       ; $4A
+	const BURN_EFFECT                ; $48 ; marcelnote - new for WILL-O-WISP, replaces const_skip
+	const HEX_EFFECT                 ; $49 ; marcelnote - new for HEX, replaces const_skip
+	const_skip                       ; $4A ; marcelnote - to be used for TRI_ATTACK_EFFECT
 	const_skip                       ; $4B
 	const CONFUSION_SIDE_EFFECT      ; $4C
 	const TWINEEDLE_EFFECT           ; $4D

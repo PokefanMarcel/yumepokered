@@ -22,12 +22,12 @@ ItemNames::
 	li "POTION"
 	li "BAIT"    ; marcelnote - cleaned badges
 	li "ROCK"    ; marcelnote - cleaned badges
-	li "ITEM_17" ; marcelnote - cleaned badges
-	li "ITEM_18" ; marcelnote - cleaned badges
-	li "ITEM_19" ; marcelnote - cleaned badges
-	li "ITEM_1A" ; marcelnote - cleaned badges
-	li "ITEM_1B" ; marcelnote - cleaned badges
-	li "ITEM_1C" ; marcelnote - cleaned badges
+	li "ITEM17"  ; marcelnote - cleaned badges
+	li "ITEM18"  ; marcelnote - cleaned badges
+	li "ITEM19"  ; marcelnote - cleaned badges
+	li "ITEM1A"  ; marcelnote - cleaned badges
+	li "ITEM1B"  ; marcelnote - cleaned badges
+	li "ITEM1C"  ; marcelnote - cleaned badges
 	li "ESCAPE ROPE"
 	li "REPEL"
 	li "OLD AMBER"
@@ -43,13 +43,13 @@ ItemNames::
 	li "DOME FOSSIL"
 	li "HELIX FOSSIL"
 	li "SECRET KEY"
-	li "ITEM_2C" ; ITEM_2C
+	li "ITEM2C"  ; ITEM_2C
 	li "BIKE VOUCHER"
 	li "X ACCURACY"
 	li "LEAF STONE"
 	li "CARD KEY"
 	li "NUGGET"
-	li "ITEM_32" ; ITEM_32
+	li "ITEM32"  ; ITEM_32
 	li "POKé DOLL"
 	li "FULL HEAL"
 	li "REVIVE"
