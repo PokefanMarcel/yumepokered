@@ -25,7 +25,8 @@
 	     SOFTBOILED,   DREAM_EATER,  SKY_ATTACK,   REST,         THUNDER_WAVE, \
 	     PSYWAVE,      EXPLOSION,    ROCK_SLIDE,   TRI_ATTACK,   SUBSTITUTE,   \
 	     CUT,          FLY,          SURF,         STRENGTH,     FLASH,        \
-	     UNUSED
+	     HEX
+	     ;UNUSED     ; marcelnote - HEX replaces the UNUSED TM definition
 	; end
 
 	db %11111111 ; padding

@@ -65,6 +65,7 @@ DEF SHOW EQU $15
 	const HS_CERULEAN_CAVE_1F_ITEM_1       ; 35 X
 	const HS_CERULEAN_CAVE_1F_ITEM_2       ; 36 X
 	const HS_CERULEAN_CAVE_1F_ITEM_3       ; 37 X
+	const HS_POKEMON_TOWER_1F_ITEM         ; 38a ; marcelnote - added TM51, testing
 	const HS_POKEMON_TOWER_2F_RIVAL        ; 38
 	const HS_POKEMON_TOWER_3F_ITEM         ; 39 X
 	const HS_POKEMON_TOWER_4F_ITEM_1       ; 3A X

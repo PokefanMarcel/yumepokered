@@ -177,7 +177,6 @@ Moves:
 	move SUBSTITUTE,   SUBSTITUTE_EFFECT,            0, NORMAL,       100, 10
 	move ELECTRO_BALL, NO_ADDITIONAL_EFFECT,        55, ELECTRIC,      95, 20 ; marcelnote - new move
 	move WILL_O_WISP,  BURN_EFFECT,                  0, FIRE,          70, 15 ; marcelnote - new move
-	move HEX,          HEX_EFFECT,                  60, GHOST,        100, 15 ; marcelnote - new move, testing effect
-	;candidates to learn HEX by TM: Ninetales line, Arbok line, Marowak line, Gengar line, Golbat line, Clefable line, Tentacool line
+	move HEX,          HEX_EFFECT,                  60, GHOST,        100, 15 ; marcelnote - new move
 	move STRUGGLE,     RECOIL_EFFECT,               50, BIRD,         100, 10 ; marcelnote - changed from NORMAL
 	assert_table_length NUM_ATTACKS

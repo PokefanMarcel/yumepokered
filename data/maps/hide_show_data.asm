@@ -145,7 +145,7 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw NoHS
-	dw NoHS
+	dw PokemonTower1FHS ; marcelnote - was NoHS, added TM51 for testing
 	dw PokemonTower2FHS
 	dw PokemonTower3FHS
 	dw PokemonTower4FHS
@@ -337,6 +337,8 @@ CeruleanCaveHS:
 	db CERULEAN_CAVE_1F, CERULEANCAVE1F_FULL_RESTORE, SHOW
 	db CERULEAN_CAVE_1F, CERULEANCAVE1F_MAX_ELIXER,   SHOW
 	db CERULEAN_CAVE_1F, CERULEANCAVE1F_NUGGET,       SHOW
+PokemonTower1FHS:
+	db POKEMON_TOWER_1F, POKEMONTOWER1F_TM_HEX, SHOW
 PokemonTower2FHS:
 	db POKEMON_TOWER_2F, POKEMONTOWER2F_RIVAL, SHOW
 PokemonTower3FHS:
