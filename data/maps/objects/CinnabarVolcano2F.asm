@@ -1,17 +1,21 @@
 ;marcelnote - new location
-	;object_const_def
-	;const_export MTMOON1F_HIKER
+	object_const_def
+	const_export CINNABARVOLCANO2F_MOLTRES
+	const_export CINNABARVOLCANO2F_BOULDER1
+	const_export CINNABARVOLCANO2F_BOULDER2
 
 CinnabarVolcano2F_Object:
 	db $2D ; border block
 
 	def_warp_events
-	warp_event 24,  5, CINNABAR_VOLCANO_1F, 7
+	warp_event 22,  7, CINNABAR_VOLCANO_1F, 7
 
 	def_bg_events
-	;bg_event 15, 23, TEXT_MTMOON1F_BEWARE_ZUBAT_SIGN
+	bg_event 14, 21, TEXT_CINNABARVOLCANO2F_SIGN
 
 	def_object_events
-	;object_event  5,  6, SPRITE_HIKER, STAY, DOWN, TEXT_MTMOON1F_HIKER, OPP_HIKER, 1
+	object_event 12,  8, SPRITE_BIRD, STAY, DOWN, TEXT_CINNABARVOLCANO2F_MOLTRES, MOLTRES, 50
+	object_event 26, 17, SPRITE_BOULDER, STAY, BOULDER_MOVEMENT_BYTE_2, TEXT_CINNABARVOLCANO2F_BOULDER1
+	object_event  2, 14, SPRITE_BOULDER, STAY, BOULDER_MOVEMENT_BYTE_2, TEXT_CINNABARVOLCANO2F_BOULDER2
 
 	def_warps_to CINNABAR_VOLCANO_2F

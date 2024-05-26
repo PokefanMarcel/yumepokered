@@ -190,6 +190,8 @@
 	const EVENT_GAVE_FOSSIL_TO_LAB
 	const EVENT_LAB_STILL_REVIVING_FOSSIL
 	const EVENT_LAB_HANDING_OVER_FOSSIL_MON
+	const_skip 6
+	const EVENT_BEAT_MOLTRES  ; marcelnote - Moltres at Cinnabar Volcano, must be bit 1
 
 ; Saffron City events
 	const_next $340
@@ -490,7 +492,7 @@
 	const EVENT_BEAT_VICTORY_ROAD_2_TRAINER_2
 	const EVENT_BEAT_VICTORY_ROAD_2_TRAINER_3
 	const EVENT_BEAT_VICTORY_ROAD_2_TRAINER_4
-	const EVENT_BEAT_MOLTRES
+	;const EVENT_BEAT_MOLTRES                      ; marcelnote - removed Moltres from Victory Road
 	const EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH2
 
 ; Route 24 events

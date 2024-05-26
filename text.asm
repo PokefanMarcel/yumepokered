@@ -234,6 +234,7 @@ INCLUDE "text/CinnabarLabFossilRoom.asm"
 INCLUDE "text/CinnabarPokecenter.asm"
 INCLUDE "text/CinnabarMart.asm"
 INCLUDE "text/CinnabarVolcano1F.asm" ; marcelnote - new location
+INCLUDE "text/CinnabarVolcano2F.asm" ; marcelnote - new location
 INCLUDE "text/IndigoPlateauLobby.asm"
 INCLUDE "text/CopycatsHouse1F.asm"
 INCLUDE "text/CopycatsHouse2F.asm"

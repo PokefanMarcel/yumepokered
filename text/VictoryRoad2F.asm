@@ -1,6 +1,6 @@
-_VictoryRoad2FMoltresBattleText::
-	text "Gyaoo!@"
-	text_end
+;_VictoryRoad2FMoltresBattleText:: ; marcelnote - removed Moltres from Victory Road
+;	text "Gyaoo!@"
+;	text_end
 
 _VictoryRoad2FBlackbeltBattleText::
 	text "VICTORY ROAD is"

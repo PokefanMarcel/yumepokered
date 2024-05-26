@@ -26,4 +26,5 @@
 	const FACILITY     ; 22
 	const PLATEAU      ; 23
 	const ACADEMY      ; 24 ; marcelnote - new Academy tileset
+	const MOUNTAIN     ; 25 ; marcelnote - new Mountain tileset
 DEF NUM_TILESETS EQU const_value

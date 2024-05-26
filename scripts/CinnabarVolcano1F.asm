@@ -9,3 +9,7 @@ CinnabarVolcano1F_TextPointers:
 CinnabarVolcano1FLavaSignText:
 	text_far _CinnabarVolcano1FLavaSignText
 	text_end
+
+CinnabarVolcano1FHolesCoords:
+	dbmapcoord 20, 13
+	db -1 ; end

@@ -34,4 +34,5 @@ Tilesets:
 	tileset Facility,    $12, -1, -1,  -1, TILEANIM_WATER
 	tileset Plateau,      -1, -1, -1, $45, TILEANIM_WATER
 	tileset Academy,      -1, -1, -1,  -1, TILEANIM_NONE    ; marcelnote - new tileset
+	tileset Mountain,     -1, -1, -1,  -1, TILEANIM_WATER   ; marcelnote - new tileset
 	assert_table_length NUM_TILESETS

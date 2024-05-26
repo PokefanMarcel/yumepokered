@@ -9,4 +9,5 @@ WaterTilesets:
 	db CAVERN
 	db FACILITY
 	db PLATEAU
+	db MOUNTAIN  ; marcelnote - new tileset
 	db -1 ; end

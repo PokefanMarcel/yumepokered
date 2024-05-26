@@ -25,6 +25,7 @@ WarpTileIDPointers:
 	dw .FacilityWarpTileIDs
 	dw .PlateauWarpTileIDs
 	dw .AcademyWarpTileIDs  ; marcelnote - new tileset
+	dw .MountainWarpTileIDs ; marcelnote - new tileset
 	assert_table_length NUM_TILESETS
 
 MACRO warp_tiles
@@ -87,6 +88,9 @@ ENDM
 	; fallthrough
 .UndergroundWarpTileIDs:
 	warp_tiles $13
+
+.MountainWarpTileIDs: ; marcelnote - new tileset
+	warp_tiles $24
 
 .PlateauWarpTileIDs:
 	db $1B, $3B

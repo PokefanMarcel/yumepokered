@@ -11,7 +11,7 @@ CinnabarVolcano1F_Object:
 	warp_event  2,  2, CINNABAR_VOLCANO_1F, 5
 	warp_event  3, 13, CINNABAR_VOLCANO_1F, 6
 	warp_event  2, 21, CINNABAR_VOLCANO_1F, 3
-	warp_event  3, 33, CINNABAR_VOLCANO_1F, 4
+	warp_event  3, 34, CINNABAR_VOLCANO_1F, 4
 	warp_event 26, 23, CINNABAR_VOLCANO_2F, 1
 
 	def_bg_events
@@ -21,3 +21,6 @@ CinnabarVolcano1F_Object:
 	;object_event 18, 12, SPRITE_BOULDER, STAY, DOWN, TEXT_MTMOON1F_HIKER, OPP_HIKER, 1
 
 	def_warps_to CINNABAR_VOLCANO_1F
+
+	; holes
+	warp_to 20, 13, CINNABAR_VOLCANO_1F_WIDTH

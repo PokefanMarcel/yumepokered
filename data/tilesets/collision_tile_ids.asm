@@ -47,7 +47,7 @@ Interior_Coll::
 	coll_tiles $04, $0f, $15, $1f, $3b, $45, $47, $55, $56
 
 Cavern_Coll::
-	coll_tiles $05, $15, $18, $1a, $20, $21, $22, $2a, $2d, $30
+	coll_tiles $05, $15, $18, $1a, $20, $21, $22, $2a, $2d, $30, $41   ; marcelnote - added $41 for elevation
 
 	coll_tiles ; unused
 
@@ -71,3 +71,6 @@ Plateau_Coll::
 
 Academy_Coll::  ; marcelnote - new tileset
 	coll_tiles $01, $12, $14, $1A, $1C
+
+Mountain_Coll::  ; marcelnote - new tileset
+	coll_tiles $40, $2E, $12, $20, $24

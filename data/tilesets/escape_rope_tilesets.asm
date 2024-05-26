@@ -4,4 +4,5 @@ EscapeRopeTilesets:
 	db CAVERN
 	db FACILITY
 	db INTERIOR
+	db MOUNTAIN ; marcelnote - new tileset
 	db -1 ; end

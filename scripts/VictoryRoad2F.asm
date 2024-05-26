@@ -75,7 +75,7 @@ VictoryRoad2F_TextPointers:
 	dw_const VictoryRoad2FCooltrainerMText, TEXT_VICTORYROAD2F_COOLTRAINER_M
 	dw_const VictoryRoad2FSuperNerd2Text,   TEXT_VICTORYROAD2F_SUPER_NERD2
 	dw_const VictoryRoad2FSuperNerd3Text,   TEXT_VICTORYROAD2F_SUPER_NERD3
-	dw_const VictoryRoad2FMoltresText,      TEXT_VICTORYROAD2F_MOLTRES
+	;dw_const VictoryRoad2FMoltresText,      TEXT_VICTORYROAD2F_MOLTRES ; marcelnote - removed Moltres from Victory Road
 	dw_const PickUpItemText,                TEXT_VICTORYROAD2F_TM_SUBMISSION
 	dw_const PickUpItemText,                TEXT_VICTORYROAD2F_FULL_HEAL
 	dw_const PickUpItemText,                TEXT_VICTORYROAD2F_TM_MEGA_KICK
@@ -96,8 +96,8 @@ VictoryRoad2TrainerHeader3:
 	trainer EVENT_BEAT_VICTORY_ROAD_2_TRAINER_3, 1, VictoryRoad2FSuperNerd2BattleText, VictoryRoad2FSuperNerd2EndBattleText, VictoryRoad2FSuperNerd2AfterBattleText
 VictoryRoad2TrainerHeader4:
 	trainer EVENT_BEAT_VICTORY_ROAD_2_TRAINER_4, 3, VictoryRoad2FSuperNerd3BattleText, VictoryRoad2FSuperNerd3EndBattleText, VictoryRoad2FSuperNerd3AfterBattleText
-MoltresTrainerHeader:
-	trainer EVENT_BEAT_MOLTRES, 0, VictoryRoad2FMoltresBattleText, VictoryRoad2FMoltresBattleText, VictoryRoad2FMoltresBattleText
+;MoltresTrainerHeader:   ; marcelnote - removed Moltres from Victory Road
+;	trainer EVENT_BEAT_MOLTRES, 0, VictoryRoad2FMoltresBattleText, VictoryRoad2FMoltresBattleText, VictoryRoad2FMoltresBattleText
 	db -1 ; end
 
 VictoryRoad2FBlackbeltText:
@@ -130,19 +130,20 @@ VictoryRoad2FSuperNerd3Text:
 	call TalkToTrainer
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-VictoryRoad2FMoltresText:
-	text_asm
-	ld hl, MoltresTrainerHeader
-	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+; marcelnote - removed Moltres from Victory Road
+;VictoryRoad2FMoltresText:
+;	text_asm
+;	ld hl, MoltresTrainerHeader
+;	call TalkToTrainer
+;	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-VictoryRoad2FMoltresBattleText:
-	text_far _VictoryRoad2FMoltresBattleText
-	text_asm
-	ld a, MOLTRES
-	call PlayCry
-	call WaitForSoundToFinish
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+;VictoryRoad2FMoltresBattleText:
+;	text_far _VictoryRoad2FMoltresBattleText
+;	text_asm
+;	ld a, MOLTRES
+;	call PlayCry
+;	call WaitForSoundToFinish
+;	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 VictoryRoad2FBlackbeltBattleText:
 	text_far _VictoryRoad2FBlackbeltBattleText

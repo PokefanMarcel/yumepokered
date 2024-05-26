@@ -49,8 +49,7 @@ SECTION "Tilesets 3", ROMX
 
 Cemetery_GFX::      INCBIN "gfx/tilesets/cemetery.2bpp"
 Cemetery_Block::    INCBIN "gfx/blocksets/cemetery.bst"
-Cavern_GFX::        INCBIN "gfx/tilesets/cavern.2bpp"
-Cavern_Block::      INCBIN "gfx/blocksets/cavern.bst"
+; marcelnote - CAVERN was here
 Lobby_GFX::         INCBIN "gfx/tilesets/lobby.2bpp"
 Lobby_Block::       INCBIN "gfx/blocksets/lobby.bst"
 Ship_GFX::          INCBIN "gfx/tilesets/ship.2bpp"
@@ -65,3 +64,7 @@ Underground_Block:: INCBIN "gfx/blocksets/underground.bst"
 SECTION "Tilesets 4", ROMX  ; marcelnote - new tilesets
 Academy_GFX::       INCBIN "gfx/tilesets/academy.2bpp"
 Academy_Block::     INCBIN "gfx/blocksets/academy.bst"
+Mountain_GFX::      INCBIN "gfx/tilesets/mountain.2bpp"
+Mountain_Block::    INCBIN "gfx/blocksets/mountain.bst"
+Cavern_GFX::        INCBIN "gfx/tilesets/cavern.2bpp"   ; marcelnote - moved CAVERN blockset
+Cavern_Block::      INCBIN "gfx/blocksets/cavern.bst"   ; marcelnote - moved CAVERN blockset

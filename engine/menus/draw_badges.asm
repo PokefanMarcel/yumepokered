@@ -41,7 +41,7 @@ DrawBadges:
 	ld hl, wBadgeNumberTile
 	ld a, $d8 ; [1]
 	ld [hli], a
-	ld [hl], $60 ; First name
+	;ld [hl], $60 ; First name
 
 	hlcoord 2, 11
 	ld de, wTempObtainedBadgesBooleans
@@ -64,19 +64,23 @@ DrawBadges:
 	ld [hli], a
 	inc a
 	ld [wBadgeNumberTile], a
-
-; Names aren't printed if the badge is owned.
-	ld a, [de]
-	and a
 	ld a, [wBadgeNameTile]
-	jr nz, .SkipName
-	call .PlaceTiles
-	jr .PlaceBadge
-
-.SkipName
 	inc a
 	inc a
 	inc hl
+
+; Names aren't printed if the badge is owned.
+;	ld a, [de]
+;	and a
+;	ld a, [wBadgeNameTile]
+;	jr nz, .SkipName
+;	call .PlaceTiles
+;	jr .PlaceBadge
+
+;.SkipName
+;	inc a
+;	inc a
+;	inc hl
 
 .PlaceBadge
 	ld [wBadgeNameTile], a

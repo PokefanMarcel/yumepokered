@@ -102,7 +102,7 @@ DEF SHOW EQU $15
 	const HS_POWER_PLANT_ITEM_3            ; 58 X
 	const HS_POWER_PLANT_ITEM_4            ; 59 X
 	const HS_POWER_PLANT_ITEM_5            ; 5A X
-	const HS_MOLTRES                       ; 5B X
+	;const HS_MOLTRES                      ; 5B X ; marcelnote - removed Moltres from Victory Road
 	const HS_VICTORY_ROAD_2F_ITEM_1        ; 5C X
 	const HS_VICTORY_ROAD_2F_ITEM_2        ; 5D X
 	const HS_VICTORY_ROAD_2F_ITEM_3        ; 5E X
@@ -242,4 +242,5 @@ DEF SHOW EQU $15
 	const HS_MT_MOON_SQUARE_CLEFAIRY       ; E4 ; marcelnote - Clefairy
 	const HS_MT_MOON_SQUARE_ITEM_1         ; E5 ; marcelnote - Moon Stone
 	const HS_MT_MOON_SQUARE_ITEM_2         ; E6 ; marcelnote - Super Potion
+	const HS_CINNABAR_VOLCANO_2F_MOLTRES   ; E7 ; marcelnote - Moltres
 DEF NUM_HS_OBJECTS EQU const_value
