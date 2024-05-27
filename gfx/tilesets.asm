@@ -41,8 +41,7 @@ Gate_Block::        INCBIN "gfx/blocksets/gate.bst"
 
 Forest_GFX::        INCBIN "gfx/tilesets/forest.2bpp"
 Forest_Block::      INCBIN "gfx/blocksets/forest.bst"
-Facility_GFX::      INCBIN "gfx/tilesets/facility.2bpp"
-Facility_Block::    INCBIN "gfx/blocksets/facility.bst"
+; marcelnote - FACILITY was here
 
 
 SECTION "Tilesets 3", ROMX
@@ -61,10 +60,13 @@ Club_Block::        INCBIN "gfx/blocksets/club.bst"
 Underground_GFX::   INCBIN "gfx/tilesets/underground.2bpp"
 Underground_Block:: INCBIN "gfx/blocksets/underground.bst"
 
-SECTION "Tilesets 4", ROMX  ; marcelnote - new tilesets
+SECTION "Tilesets 4", ROMX  ; marcelnote - new or moved tilesets
+
 Academy_GFX::       INCBIN "gfx/tilesets/academy.2bpp"
 Academy_Block::     INCBIN "gfx/blocksets/academy.bst"
 Mountain_GFX::      INCBIN "gfx/tilesets/mountain.2bpp"
 Mountain_Block::    INCBIN "gfx/blocksets/mountain.bst"
 Cavern_GFX::        INCBIN "gfx/tilesets/cavern.2bpp"   ; marcelnote - moved CAVERN blockset
 Cavern_Block::      INCBIN "gfx/blocksets/cavern.bst"   ; marcelnote - moved CAVERN blockset
+Facility_GFX::      INCBIN "gfx/tilesets/facility.2bpp" ; marcelnote - moved FACILITY blockset
+Facility_Block::    INCBIN "gfx/blocksets/facility.bst" ; marcelnote - moved FACILITY blockset
