@@ -262,7 +262,7 @@ SafariZoneNorthRestHouse_Blocks: INCBIN "maps/SafariZoneCenterRestHouse.blk"
 INCLUDE "scripts/LavenderTown.asm"
 
 
-SECTION "Maps 6", ROMX
+SECTION "Maps 6", ROMX   ; marcelnote - maps with dungeon warps (holes) need to be here
 
 INCLUDE "data/maps/headers/ViridianPokecenter.asm"
 INCLUDE "scripts/ViridianPokecenter.asm"
@@ -388,6 +388,16 @@ INCLUDE "data/maps/headers/SeafoamIslandsB4F.asm"
 INCLUDE "scripts/SeafoamIslandsB4F.asm"
 INCLUDE "data/maps/objects/SeafoamIslandsB4F.asm"
 SeafoamIslandsB4F_Blocks: INCBIN "maps/SeafoamIslandsB4F.blk"
+
+INCLUDE "data/maps/headers/CinnabarVolcano1F.asm" ; marcelnote - new location
+INCLUDE "scripts/CinnabarVolcano1F.asm"
+INCLUDE "data/maps/objects/CinnabarVolcano1F.asm"
+CinnabarVolcano1F_Blocks:: INCBIN "maps/CinnabarVolcano1F.blk"
+
+INCLUDE "data/maps/headers/CinnabarVolcano2F.asm" ; marcelnote - new location
+INCLUDE "scripts/CinnabarVolcano2F.asm"
+INCLUDE "data/maps/objects/CinnabarVolcano2F.asm"
+CinnabarVolcano2F_Blocks:: INCBIN "maps/CinnabarVolcano2F.blk"
 
 
 SECTION "Maps 7", ROMX
@@ -1224,16 +1234,6 @@ INCLUDE "data/maps/headers/Route22OldRodHouse.asm" ; marcelnote - new location
 INCLUDE "scripts/Route22OldRodHouse.asm"
 INCLUDE "data/maps/objects/Route22OldRodHouse.asm"
 Route22OldRodHouse_Blocks:: INCBIN "maps/Route22OldRodHouse.blk"
-
-INCLUDE "data/maps/headers/CinnabarVolcano1F.asm" ; marcelnote - new location
-INCLUDE "scripts/CinnabarVolcano1F.asm"
-INCLUDE "data/maps/objects/CinnabarVolcano1F.asm"
-CinnabarVolcano1F_Blocks:: INCBIN "maps/CinnabarVolcano1F.blk"
-
-INCLUDE "data/maps/headers/CinnabarVolcano2F.asm" ; marcelnote - new location
-INCLUDE "scripts/CinnabarVolcano2F.asm"
-INCLUDE "data/maps/objects/CinnabarVolcano2F.asm"
-CinnabarVolcano2F_Blocks:: INCBIN "maps/CinnabarVolcano2F.blk"
 
 INCLUDE "data/maps/headers/MtMoonSquare.asm" ; marcelnote - new location
 INCLUDE "scripts/MtMoonSquare.asm"

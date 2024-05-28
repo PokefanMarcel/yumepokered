@@ -1,4 +1,5 @@
 CinnabarIsland_Script:
+	call CinnabarIslandSetCinnabarVolcanoBoulders  ; marcelnote - new for Cinnabar Volcano
 	call EnableAutoTextBoxDrawing
 	ld hl, wCurrentMapScriptFlags
 	set 5, [hl]
@@ -7,6 +8,15 @@ CinnabarIsland_Script:
 	ld hl, CinnabarIsland_ScriptPointers
 	ld a, [wCinnabarIslandCurScript]
 	jp CallFunctionInTable
+
+CinnabarIslandSetCinnabarVolcanoBoulders:  ; marcelnote - new for Cinnabar Volcano (adapted from Route23)
+	ld hl, wCurrentMapScriptFlags
+	bit 6, [hl]  ; what is that for??
+	res 6, [hl]
+	ret z
+	ResetEvent EVENT_CINNABAR_VOLCANO_1F_BOULDER_ON_SWITCH
+	ResetEvents EVENT_CINNABAR_VOLCANO_2F_BOULDER1_ON_SWITCH, EVENT_CINNABAR_VOLCANO_2F_BOULDER2_ON_SWITCH
+	ret
 
 CinnabarIsland_ScriptPointers:
 	def_script_pointers

@@ -192,6 +192,9 @@
 	const EVENT_LAB_HANDING_OVER_FOSSIL_MON
 	const_skip 6
 	const EVENT_BEAT_MOLTRES  ; marcelnote - Moltres at Cinnabar Volcano, must be bit 1
+	const EVENT_CINNABAR_VOLCANO_1F_BOULDER_ON_SWITCH  ; testing
+	const EVENT_CINNABAR_VOLCANO_2F_BOULDER1_ON_SWITCH ; testing
+	const EVENT_CINNABAR_VOLCANO_2F_BOULDER2_ON_SWITCH ; testing
 
 ; Saffron City events
 	const_next $340

@@ -1,40 +1,40 @@
 ; marcelnote - new location
-; the script is adapted from VictoryRoad2F
-; it reuses a wram address and events for boulders
+; the script was adapted from VictoryRoad2F
+; boulder events are reset in CinnabarIsland map
 CinnabarVolcano2F_Script:
 	ld hl, wCurrentMapScriptFlags
-	bit 6, [hl]
+	bit 6, [hl] ; this is set upon entering the map
 	res 6, [hl]
-	call nz, CinnabarVolcano2FResetBoulderEventScript
+	call nz, CinnabarVolcano2FCheckBoulder1EventScript ; check first boulder upon entering
 	ld hl, wCurrentMapScriptFlags
-	bit 5, [hl]
+	bit 5, [hl] ; this is set upon entering the map
 	res 5, [hl]
-	call nz, CinnabarVolcano2FCheckBoulderEventScript
+	call nz, CinnabarVolcano2FCheckBouldersEventScript
 	call EnableAutoTextBoxDrawing
 	ld hl, CinnabarVolcano2FTrainerHeaders
 	ld de, CinnabarVolcano2F_ScriptPointers
-	ld a, [wVictoryRoad2FCurScript]
+	ld a, [wCinnabarVolcano2FCurScript]
 	call ExecuteCurMapScriptInTable
-	ld [wVictoryRoad2FCurScript], a  ; marcelnote - this reuses an address for VictoryRoad2F
+	ld [wCinnabarVolcano2FCurScript], a
 	ret
 
-CinnabarVolcano2FResetBoulderEventScript:
-	ResetEvent EVENT_VICTORY_ROAD_1_BOULDER_ON_SWITCH
-; fallthrough
-CinnabarVolcano2FCheckBoulderEventScript:
-	CheckEvent EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH1
-	jr z, .not_on_switch
-	push af
-	ld a, $26
+CinnabarVolcano2FCheckBoulder1EventScript:
+	CheckEvent EVENT_CINNABAR_VOLCANO_2F_BOULDER1_ON_SWITCH
+	ret z         ; boulder 2 event must be set after boulder 1 event
+	ld a, $26     ; first tile to replace
 	lb bc, 1, 11
-	call CinnabarVolcano2FReplaceTileBlockScript
-	pop af
-.not_on_switch
-	bit 7, a
-	ret z
-	ld a, $4D
+	jr CinnabarVolcano2FReplaceTileBlock
+
+CinnabarVolcano2FCheckBouldersEventScript:
+	CheckEvent EVENT_CINNABAR_VOLCANO_2F_BOULDER1_ON_SWITCH
+	ret z         ; boulder 2 event must be set after boulder 1 event
+	CheckEvent EVENT_CINNABAR_VOLCANO_2F_BOULDER2_ON_SWITCH
+	ld a, $26     ; by default, load the first tile to replace
+	lb bc, 1, 11
+	jr z, CinnabarVolcano2FReplaceTileBlock
+	ld a, $4D     ; if boulder 2 event is set, load second tile instead
 	lb bc, 9, 9
-CinnabarVolcano2FReplaceTileBlockScript:
+CinnabarVolcano2FReplaceTileBlock:
 	ld [wNewTileBlockID], a
 	predef ReplaceTileBlock
 	ret
@@ -48,18 +48,18 @@ CinnabarVolcano2F_ScriptPointers:
 CinnabarVolcano2FDefaultScript:
 	ld hl, .SwitchCoords
 	call CheckBoulderCoords
-	jp nc, CheckFightingMapTrainers
-	EventFlagAddress hl, EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH1
+	jp nc, CheckFightingMapTrainers   ; if boulder not on switch coordinates
+	EventFlagAddress hl, EVENT_CINNABAR_VOLCANO_2F_BOULDER1_ON_SWITCH
 	ld a, [wCoordIndex]
 	cp $2
 	jr z, .second_switch
-	CheckEventReuseHL EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH1
-	SetEventReuseHL EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH1
-	ret nz
+	CheckEventReuseHL EVENT_CINNABAR_VOLCANO_2F_BOULDER1_ON_SWITCH
+	SetEventReuseHL EVENT_CINNABAR_VOLCANO_2F_BOULDER1_ON_SWITCH
+	ret nz  ; event already set, no need to set flag
 	jr .set_script_flag
 .second_switch
-	CheckEventAfterBranchReuseHL EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH2, EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH1
-	SetEventReuseHL EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH2
+	CheckEventReuseHL EVENT_CINNABAR_VOLCANO_2F_BOULDER2_ON_SWITCH
+	SetEventReuseHL EVENT_CINNABAR_VOLCANO_2F_BOULDER2_ON_SWITCH
 	ret nz
 .set_script_flag
 	ld hl, wCurrentMapScriptFlags
@@ -80,13 +80,13 @@ CinnabarVolcano2F_TextPointers:
 
 CinnabarVolcano2FTrainerHeaders:
 	def_trainers
-Moltres2TrainerHeader:
+MoltresTrainerHeader:
 	trainer EVENT_BEAT_MOLTRES, 0, CinnabarVolcano2FMoltresBattleText, CinnabarVolcano2FMoltresBattleText, CinnabarVolcano2FMoltresBattleText
 	db -1 ; end
 
 CinnabarVolcano2FMoltresText:
 	text_asm
-	ld hl, Moltres2TrainerHeader
+	ld hl, MoltresTrainerHeader
 	call TalkToTrainer
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
