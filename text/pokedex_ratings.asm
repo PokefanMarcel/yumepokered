@@ -55,9 +55,9 @@ _DexRatingText_Own50To59::
 	cont "AIDE!"
 	done
 
-_DexRatingText_Own60To69::
-	text "Ho! This is geting"
-	line "even better!"
+_DexRatingText_Own60To69:: ; marcelnote - fixed typo 'geting'
+	text "Ho! This is gett-"
+	line "ing even better!"
 	done
 
 _DexRatingText_Own70To79::
