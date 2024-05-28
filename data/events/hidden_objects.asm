@@ -84,6 +84,7 @@ HiddenObjectMaps:
 	db VERMILION_CITY
 	db CERULEAN_CITY
 	db ROUTE_4
+	db CINNABAR_VOLCANO_2F ; marcelnote - new
 	db -1 ; end
 
 HiddenObjectPointers:
@@ -173,6 +174,7 @@ HiddenObjectPointers:
 	dw VermilionCityHiddenObjects
 	dw CeruleanCityHiddenObjects
 	dw Route4HiddenObjects
+	dw CinnabarVolcano2FHiddenObjects ; marcelnote - new
 
 MACRO hidden_object
 	db \2 ; y coord
@@ -665,4 +667,8 @@ CeruleanCityHiddenObjects:
 
 Route4HiddenObjects:
 	hidden_object 40,  3, GREAT_BALL, HiddenItems
+	db -1 ; end
+
+CinnabarVolcano2FHiddenObjects:  ; marcelnote - new
+	hidden_object 23,  5, MAX_ELIXER, HiddenItems
 	db -1 ; end

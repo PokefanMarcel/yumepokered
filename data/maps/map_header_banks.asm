@@ -106,8 +106,8 @@ MapHeaderBanks::
 	db BANK(SSAnne1FRooms_h)
 	db BANK(SSAnne2FRooms_h)
 	db BANK(SSAnneB1FRooms_h)
-	db BANK(CinnabarVolcano1F_h) ; $69 ; marcelnote - new location
-	db BANK(CinnabarVolcano2F_h) ; $6A ; marcelnote - new location
+	db BANK(CinnabarVolcano1FB1F_h) ; $69 ; marcelnote - new location
+	db BANK(CinnabarVolcano2F_h)    ; $6A ; marcelnote - new location
 	db $1D ; UNUSED_MAP_6B
 	db BANK(VictoryRoad1F_h)
 	db $1D ; UNUSED_MAP_6D

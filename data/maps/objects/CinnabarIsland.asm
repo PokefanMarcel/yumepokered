@@ -12,7 +12,7 @@ CinnabarIsland_Object:
 	warp_event 14,  9, CINNABAR_LAB, 1
 	warp_event 19, 11, CINNABAR_POKECENTER, 1
 	warp_event 23, 11, CINNABAR_MART, 1
-	warp_event  4, 11, CINNABAR_VOLCANO_1F, 1 ; marcelnote - new location
+	warp_event  4, 11, CINNABAR_VOLCANO_1FB1F, 1 ; marcelnote - new location
 
 	def_bg_events
 	bg_event 17,  5, TEXT_CINNABARISLAND_SIGN

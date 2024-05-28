@@ -41,7 +41,7 @@ TownMapOrder:
 	db SEAFOAM_ISLANDS_B1F
 	db ROUTE_20
 	db CINNABAR_ISLAND
-	db CINNABAR_VOLCANO_1F ; marcelnote - new location
+	db CINNABAR_VOLCANO_1FB1F ; marcelnote - new location
 	db ROUTE_21
 	db ROUTE_22
 	db ROUTE_23

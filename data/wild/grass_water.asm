@@ -105,9 +105,9 @@ WildDataPointers:
 	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons
-	dw CinnabarVolcano1FWildMons ; $69 ; marcelnote - CinnabarVolcano1F
-	dw NothingWildMons ; $6A ; marcelnote - CinnabarVolcano2F
-	dw NothingWildMons ; $6A ; marcelnote - CinnabarVolcanoB1F
+	dw CinnabarVolcano1FB1FWildMons ; $69 ; marcelnote - CinnabarVolcano1FB1F
+	dw CinnabarVolcano2FWildMons    ; $6A ; marcelnote - CinnabarVolcano2F
+	dw NothingWildMons
 	dw VictoryRoad1FWildMons
 	dw NothingWildMons
 	dw NothingWildMons
@@ -321,4 +321,5 @@ INCLUDE "data/wild/maps/VictoryRoad2F.asm"
 INCLUDE "data/wild/maps/VictoryRoad3F.asm"
 INCLUDE "data/wild/maps/VictoryRoad1F.asm"
 INCLUDE "data/wild/maps/DiglettsCave.asm"
-INCLUDE "data/wild/maps/CinnabarVolcano1F.asm" ; marcelnote - new location
+INCLUDE "data/wild/maps/CinnabarVolcano1FB1F.asm" ; marcelnote - new location
+INCLUDE "data/wild/maps/CinnabarVolcano2F.asm"    ; marcelnote - new location

@@ -255,6 +255,8 @@ HikerData:
 	db 19, GEODUDE, MACHOP, GEODUDE, GEODUDE, 0
 	db 20, ONIX, ONIX, GEODUDE, 0
 	db 21, GEODUDE, GRAVELER, 0
+; Cinnabar Volcano B1F   ; marcelnote - new location
+	db 42, ONIX, MACHOKE, GOLEM, 0
 
 BikerData:
 ; Route 13
@@ -302,6 +304,8 @@ BurglarData:
 	db 38, NINETALES, 0
 ; Mansion B1F
 	db 34, GROWLITHE, PONYTA, 0
+; Cinnabar Volcano 1F   ; marcelnote - new location
+	db 39, CHARMELEON, RAPIDASH, 0
 
 EngineerData:
 ; Unused
@@ -402,6 +406,8 @@ BeautyData:
 	db 29, STARYU, STARYU, STARYU, 0
 ; Route 20
 	db 30, SEADRA, HORSEA, SEADRA, 0
+; Cinnabar Volcano 1F   ; marcelnote - new location
+	db 39, POLIWHIRL, WIGGLYTUFF, STARMIE, 0
 
 PsychicData:
 ; Saffron Gym
@@ -532,6 +538,8 @@ ScientistData:
 	db 33, MAGNEMITE, MAGNETON, VOLTORB, 0
 ; Mansion B1F
 	db 34, MAGNEMITE, ELECTRODE, 0
+; Cinnabar Volcano B1F   ; marcelnote - new location
+	db 38, KOFFING, ELECTRODE, WEEZING, 0
 
 GiovanniData:
 ; Rocket Hideout B4F
@@ -621,6 +629,8 @@ CooltrainerMData:
 ; Viridian Gym
 	db 39, SANDSLASH, DUGTRIO, 0
 	db 43, RHYHORN, 0
+; Cinnabar Volcano 1F   ; marcelnote - new location
+	db 39, GLOOM, TANGELA, VICTREEBEL, 0
 
 CooltrainerFData:
 ; Celadon Gym
@@ -636,6 +646,8 @@ CooltrainerFData:
 	db 45, IVYSAUR, VENUSAUR, 0
 	db 45, NIDORINA, NIDOQUEEN, 0
 	db 43, PERSIAN, NINETALES, RAICHU, 0
+; Cinnabar Volcano B1F   ; marcelnote - new location
+	db 39, GROWLITHE, NINETALES, NIDOQUEEN, 0
 
 BrunoData:
 	db $FF, 53, ONIX, 55, HITMONCHAN, 55, HITMONLEE, 56, ONIX, 58, MACHAMP, 0
@@ -671,6 +683,10 @@ GentlemanData:
 	db 48, PRIMEAPE, 0
 ; SS Anne 2F Rooms
 	db 17, GROWLITHE, PONYTA, 0
+; SS Anne 2F Rooms
+	db 17, GROWLITHE, PONYTA, 0
+; Cinnabar Volcano 1F   ; marcelnote - new location
+	db 38, NIDORINO, RAICHU, POLIWRATH, 0
 
 Green2Data:
 ; SS Anne 2F

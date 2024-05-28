@@ -2042,9 +2042,9 @@ wSeafoamIslandsB3FCurScript:: db
 wRoute23CurScript:: db
 wSeafoamIslandsB4FCurScript:: db
 wRoute18Gate1FCurScript:: db
-wCinnabarVolcano1FCurScript:: db  ; marcelnote - new location
-wCinnabarVolcano2FCurScript:: db  ; marcelnote - new location
-	ds 76                         ; marcelnote - adjusted down
+wCinnabarVolcano1FB1FCurScript:: db  ; marcelnote - new location
+wCinnabarVolcano2FCurScript:: db     ; marcelnote - new location
+	ds 76                            ; marcelnote - adjusted down
 wGameProgressFlagsEnd::
 
 wPlayerGender:: ; marcelnote - add female player

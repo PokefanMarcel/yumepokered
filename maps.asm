@@ -389,10 +389,10 @@ INCLUDE "scripts/SeafoamIslandsB4F.asm"
 INCLUDE "data/maps/objects/SeafoamIslandsB4F.asm"
 SeafoamIslandsB4F_Blocks: INCBIN "maps/SeafoamIslandsB4F.blk"
 
-INCLUDE "data/maps/headers/CinnabarVolcano1F.asm" ; marcelnote - new location
-INCLUDE "scripts/CinnabarVolcano1F.asm"
-INCLUDE "data/maps/objects/CinnabarVolcano1F.asm"
-CinnabarVolcano1F_Blocks:: INCBIN "maps/CinnabarVolcano1F.blk"
+INCLUDE "data/maps/headers/CinnabarVolcano1FB1F.asm" ; marcelnote - new location
+INCLUDE "scripts/CinnabarVolcano1FB1F.asm"
+INCLUDE "data/maps/objects/CinnabarVolcano1FB1F.asm"
+CinnabarVolcano1FB1F_Blocks:: INCBIN "maps/CinnabarVolcano1FB1F.blk"
 
 INCLUDE "data/maps/headers/CinnabarVolcano2F.asm" ; marcelnote - new location
 INCLUDE "scripts/CinnabarVolcano2F.asm"

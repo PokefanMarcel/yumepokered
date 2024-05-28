@@ -1,4 +1,4 @@
-CinnabarVolcano1FWildMons:
+CinnabarVolcano1FB1FWildMons:
 	def_grass_wildmons 10 ; encounter rate
 	db 34, SANDSHREW
 	db 34, KOFFING

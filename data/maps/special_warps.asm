@@ -2,19 +2,19 @@
 ; 00: target map ID
 ; 01: which dungeon warp in the source map was used
 DungeonWarpList:
-	db SEAFOAM_ISLANDS_B1F, 1
-	db SEAFOAM_ISLANDS_B1F, 2
-	db SEAFOAM_ISLANDS_B2F, 1
-	db SEAFOAM_ISLANDS_B2F, 2
-	db SEAFOAM_ISLANDS_B3F, 1
-	db SEAFOAM_ISLANDS_B3F, 2
-	db SEAFOAM_ISLANDS_B4F, 1
-	db SEAFOAM_ISLANDS_B4F, 2
-	db VICTORY_ROAD_2F,     2
-	db POKEMON_MANSION_1F,  1
-	db POKEMON_MANSION_1F,  2
-	db POKEMON_MANSION_2F,  3
-	db CINNABAR_VOLCANO_1F, 1 ; marcelnote - new hole warp
+	db SEAFOAM_ISLANDS_B1F,    1
+	db SEAFOAM_ISLANDS_B1F,    2
+	db SEAFOAM_ISLANDS_B2F,    1
+	db SEAFOAM_ISLANDS_B2F,    2
+	db SEAFOAM_ISLANDS_B3F,    1
+	db SEAFOAM_ISLANDS_B3F,    2
+	db SEAFOAM_ISLANDS_B4F,    1
+	db SEAFOAM_ISLANDS_B4F,    2
+	db VICTORY_ROAD_2F,        2
+	db POKEMON_MANSION_1F,     1
+	db POKEMON_MANSION_1F,     2
+	db POKEMON_MANSION_2F,     3
+	db CINNABAR_VOLCANO_1FB1F, 1 ; marcelnote - new hole warp
 	db -1 ; end
 
 
@@ -25,19 +25,19 @@ MACRO fly_warp
 ENDM
 
 DungeonWarpData:
-	fly_warp SEAFOAM_ISLANDS_B1F, 18,  7
-	fly_warp SEAFOAM_ISLANDS_B1F, 23,  7
-	fly_warp SEAFOAM_ISLANDS_B2F, 19,  7
-	fly_warp SEAFOAM_ISLANDS_B2F, 22,  7
-	fly_warp SEAFOAM_ISLANDS_B3F, 18,  7
-	fly_warp SEAFOAM_ISLANDS_B3F, 19,  7
-	fly_warp SEAFOAM_ISLANDS_B4F,  4, 14
-	fly_warp SEAFOAM_ISLANDS_B4F,  5, 14
-	fly_warp VICTORY_ROAD_2F,     22, 16
-	fly_warp POKEMON_MANSION_1F,  16, 14
-	fly_warp POKEMON_MANSION_1F,  16, 14
-	fly_warp POKEMON_MANSION_2F,  18, 14
-	fly_warp CINNABAR_VOLCANO_1F, 21, 32 ; marcelnote - new hole warp
+	fly_warp SEAFOAM_ISLANDS_B1F,    18,  7
+	fly_warp SEAFOAM_ISLANDS_B1F,    23,  7
+	fly_warp SEAFOAM_ISLANDS_B2F,    19,  7
+	fly_warp SEAFOAM_ISLANDS_B2F,    22,  7
+	fly_warp SEAFOAM_ISLANDS_B3F,    18,  7
+	fly_warp SEAFOAM_ISLANDS_B3F,    19,  7
+	fly_warp SEAFOAM_ISLANDS_B4F,     4, 14
+	fly_warp SEAFOAM_ISLANDS_B4F,     5, 14
+	fly_warp VICTORY_ROAD_2F,        22, 16
+	fly_warp POKEMON_MANSION_1F,     16, 14
+	fly_warp POKEMON_MANSION_1F,     16, 14
+	fly_warp POKEMON_MANSION_2F,     18, 14
+	fly_warp CINNABAR_VOLCANO_1FB1F, 21, 32 ; marcelnote - new hole warp
 
 
 MACRO special_warp_spec

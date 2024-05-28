@@ -74,6 +74,9 @@ CinnabarVolcano2FDefaultScript:
 CinnabarVolcano2F_TextPointers:
 	def_text_pointers
 	dw_const CinnabarVolcano2FMoltresText,  TEXT_CINNABARVOLCANO2F_MOLTRES
+	dw_const PickUpItemText,                TEXT_CINNABARVOLCANO2F_FIRE_STONE
+	dw_const PickUpItemText,                TEXT_CINNABARVOLCANO2F_ULTRA_BALL
+	dw_const PickUpItemText,                TEXT_CINNABARVOLCANO2F_NUGGET
 	dw_const BoulderText,                   TEXT_CINNABARVOLCANO2F_BOULDER1
 	dw_const BoulderText,                   TEXT_CINNABARVOLCANO2F_BOULDER2
 	dw_const CinnabarVolcano2FSignText,     TEXT_CINNABARVOLCANO2F_SIGN
