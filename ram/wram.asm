@@ -1555,6 +1555,7 @@ wMoveNum:: db
 
 ; PureRGBnote: MOVED: itemlist is a temp list for indicating what items appear in a mart, the size was expanded to allow for bigger mart stocks.
 ; we reuse wMovesString for this expanded list since wMovesString is only used in battle.
+; marcelnote - not sure I removed elsewhere from the stack when I did this!
 wItemList::
 wMovesString:: ds 56
 

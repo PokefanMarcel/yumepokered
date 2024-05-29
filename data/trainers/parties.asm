@@ -131,6 +131,8 @@ LassData:
 ; Celadon Gym
 	db 23, BELLSPROUT, WEEPINBELL, 0
 	db 23, ODDISH, GLOOM, 0
+; Route 6 ; marcelnote - new trainers
+	db 16, RATTATA, PARAS, POLIWAG, 0
 
 SailorData:
 ; SS Anne Stern

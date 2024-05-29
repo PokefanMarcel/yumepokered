@@ -21,6 +21,7 @@ Route6_TextPointers:
 	dw_const Route6CooltrainerM2Text,       TEXT_ROUTE6_COOLTRAINER_M2
 	dw_const Route6CooltrainerF2Text,       TEXT_ROUTE6_COOLTRAINER_F2
 	dw_const Route6Youngster2Text,          TEXT_ROUTE6_YOUNGSTER2
+	dw_const Route6LassText,                TEXT_ROUTE6_LASS ; marcelnote - new trainer
 	dw_const Route6UndergroundPathSignText, TEXT_ROUTE6_UNDERGROUND_PATH_SIGN
 
 Route6TrainerHeaders:
@@ -37,6 +38,8 @@ Route6TrainerHeader4:
 	trainer EVENT_BEAT_ROUTE_6_TRAINER_4, 3, Route6CooltrainerF2BattleText, Route6CooltrainerF2EndBattleText, Route6CooltrainerF2AfterBattleText
 Route6TrainerHeader5:
 	trainer EVENT_BEAT_ROUTE_6_TRAINER_5, 3, Route6Youngster2BattleText, Route6Youngster2EndBattleText, Route6Youngster2AfterBattleText
+Route6TrainerHeader6:   ; marcelnote - new trainer
+	trainer EVENT_BEAT_ROUTE_6_TRAINER_6, 4, Route6LassBattleText, Route6LassEndBattleText, Route6LassAfterBattleText
 	db -1 ; end
 
 Route6CooltrainerM1Text:
@@ -141,6 +144,24 @@ Route6Youngster2EndBattleText:
 
 Route6Youngster2AfterBattleText:
 	text_far _Route6Youngster2AfterBattleText
+	text_end
+
+Route6LassText: ; marcelnote - new trainer
+	text_asm
+	ld hl, Route6TrainerHeader6
+	call TalkToTrainer
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+Route6LassBattleText: ; marcelnote - new trainer
+	text_far _Route6LassBattleText
+	text_end
+
+Route6LassEndBattleText: ; marcelnote - new trainer
+	text_far _Route6LassEndBattleText
+	text_end
+
+Route6LassAfterBattleText: ; marcelnote - new trainer
+	text_far _Route6LassAfterBattleText
 	text_end
 
 Route6UndergroundPathSignText:

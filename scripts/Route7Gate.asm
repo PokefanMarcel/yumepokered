@@ -70,6 +70,16 @@ Route7PlayerMovingScript:
 
 Route7Gate_TextPointers:
 	def_text_pointers
+	dw_const Route7GateCookText,               TEXT_ROUTE7GATE_COOK ; marcelnote - added 2nd floor
+	dw_const Route7GateGirlText,               TEXT_ROUTE7GATE_GIRL ; marcelnote - added 2nd floor
 	dw_const SaffronGateGuardText,             TEXT_ROUTE7GATE_GUARD
 	dw_const SaffronGateGuardGeeImThirstyText, TEXT_ROUTE7GATE_GUARD_GEE_IM_THIRSTY
 	dw_const SaffronGateGuardGiveDrinkText,    TEXT_ROUTE7GATE_GUARD_GIVE_DRINK
+
+Route7GateCookText: ; marcelnote - added 2nd floor
+	text_far _Route7GateCookText
+	text_end
+
+Route7GateGirlText: ; marcelnote - added 2nd floor
+	text_far _Route7GateGirlText
+	text_end

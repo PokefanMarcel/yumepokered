@@ -90,6 +90,23 @@ _Route6Youngster2AfterBattleText::
 	cont "just bad?"
 	done
 
+_Route6LassBattleText:: ; marcelnote - new trainer
+	text "The guard won't"
+	line "let anyone"
+	cont "through."
+	done
+
+_Route6LassEndBattleText:: ; marcelnote - new trainer
+	text "You"
+	line "scared PARAS!"
+	prompt
+
+_Route6LassAfterBattleText:: ; marcelnote - new trainer
+	text "Waiting upstairs"
+	line "is boring, so I'm"
+	cont "taking a break."
+	done
+
 _Route6UndergroundPathSignText::
 	text "UNDERGROUND PATH"
 	line "CERULEAN CITY -"

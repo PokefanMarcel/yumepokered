@@ -9,6 +9,8 @@ Route6Gate_Object:
 	warp_event  4,  5, LAST_MAP, 3
 	warp_event  3,  0, LAST_MAP, 2
 	warp_event  4,  0, LAST_MAP, 2
+	warp_event  6,  4, ROUTE_6_GATE, 6 ; marcelnote - added 2nd floor
+	warp_event 19,  5, ROUTE_6_GATE, 5 ; marcelnote - added 2nd floor
 
 	def_bg_events
 

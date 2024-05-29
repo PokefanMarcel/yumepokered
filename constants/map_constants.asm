@@ -89,16 +89,16 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const CERULEAN_MART,                  4,  4 ; $43
 	map_const MT_MOON_POKECENTER,             7,  4 ; $44
 	map_const CERULEAN_TRASHED_HOUSE_COPY,    4,  4 ; $45
-	map_const ROUTE_5_GATE,                   4,  3 ; $46
+	map_const ROUTE_5_GATE,                  10,  3 ; $46 ; marcelnote - added 2nd floor
 	map_const UNDERGROUND_PATH_ROUTE_5,       4,  4 ; $47
 	map_const DAYCARE,                        4,  4 ; $48
-	map_const ROUTE_6_GATE,                   4,  3 ; $49
+	map_const ROUTE_6_GATE,                  10,  3 ; $49 ; marcelnote - added 2nd floor
 	map_const UNDERGROUND_PATH_ROUTE_6,       4,  4 ; $4A
 	map_const UNDERGROUND_PATH_ROUTE_6_COPY,  4,  4 ; $4B
-	map_const ROUTE_7_GATE,                   3,  4 ; $4C
+	map_const ROUTE_7_GATE,                   3, 10 ; $4C ; marcelnote - added 2nd floor
 	map_const UNDERGROUND_PATH_ROUTE_7,       4,  4 ; $4D
 	map_const UNDERGROUND_PATH_ROUTE_7_COPY,  4,  4 ; $4E
-	map_const ROUTE_8_GATE,                   3,  4 ; $4F
+	map_const ROUTE_8_GATE,                   3, 10 ; $4F ; marcelnote - added 2nd floor
 	map_const UNDERGROUND_PATH_ROUTE_8,       4,  4 ; $50
 	map_const ROCK_TUNNEL_POKECENTER,         7,  4 ; $51
 	map_const ROCK_TUNNEL_1F,                20, 18 ; $52

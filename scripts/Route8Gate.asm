@@ -67,6 +67,21 @@ Route8GatePlayerMovingScript:
 
 Route8Gate_TextPointers:
 	def_text_pointers
+	dw_const Route8GateMiddleAgedWomanText,    TEXT_ROUTE8GATE_MIDDLE_AGED_WOMAN ; marcelnote - added 2nd floor
+	dw_const Route8GateBaldingGuyText,         TEXT_ROUTE8GATE_BALDING_GUY       ; marcelnote - added 2nd floor
+	dw_const Route8GateLittleGirlText,         TEXT_ROUTE8GATE_LITTLE_GIRL       ; marcelnote - added 2nd floor
 	dw_const SaffronGateGuardText,             TEXT_ROUTE8GATE_GUARD
 	dw_const SaffronGateGuardGeeImThirstyText, TEXT_ROUTE8GATE_GUARD_GEE_IM_THIRSTY
 	dw_const SaffronGateGuardGiveDrinkText,    TEXT_ROUTE8GATE_GUARD_GIVE_DRINK
+
+Route8GateMiddleAgedWomanText: ; marcelnote - added 2nd floor
+	text_far _Route8GateMiddleAgedWomanText
+	text_end
+
+Route8GateBaldingGuyText: ; marcelnote - added 2nd floor
+	text_far _Route8GateBaldingGuyText
+	text_end
+
+Route8GateLittleGirlText: ; marcelnote - added 2nd floor
+	text_far _Route8GateLittleGirlText
+	text_end
