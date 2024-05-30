@@ -108,7 +108,9 @@ INCLUDE "text/Route2.asm"
 INCLUDE "text/Route3.asm"
 INCLUDE "text/Route4.asm"
 INCLUDE "text/Route5.asm"
+INCLUDE "text/Route5Gate.asm" ; marcelnote - new, added 2nd floor
 INCLUDE "text/Route6.asm"
+INCLUDE "text/Route6Gate.asm" ; marcelnote - new, added 2nd floor
 INCLUDE "text/Route7.asm"
 INCLUDE "text/Route7Gate.asm" ; marcelnote - new, added 2nd floor
 INCLUDE "text/Route8.asm"

@@ -39,7 +39,7 @@ Route6TrainerHeader4:
 Route6TrainerHeader5:
 	trainer EVENT_BEAT_ROUTE_6_TRAINER_5, 3, Route6Youngster2BattleText, Route6Youngster2EndBattleText, Route6Youngster2AfterBattleText
 Route6TrainerHeader6:   ; marcelnote - new trainer
-	trainer EVENT_BEAT_ROUTE_6_TRAINER_6, 4, Route6LassBattleText, Route6LassEndBattleText, Route6LassAfterBattleText
+	trainer EVENT_BEAT_ROUTE_6_TRAINER_6, 5, Route6LassBattleText, Route6LassEndBattleText, Route6LassAfterBattleText
 	db -1 ; end
 
 Route6CooltrainerM1Text:

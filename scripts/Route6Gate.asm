@@ -68,6 +68,16 @@ Route6GateMovePlayerDownScript:
 
 Route6Gate_TextPointers:
 	def_text_pointers
+	dw_const Route6GateMiddleAgedWomanText,    TEXT_ROUTE6GATE_MIDDLE_AGED_WOMAN ; marcelnote - added 2nd floor
+	dw_const Route6GateYoungsterText,          TEXT_ROUTE6GATE_YOUNGSTER         ; marcelnote - added 2nd floor
 	dw_const SaffronGateGuardText,             TEXT_ROUTE6GATE_GUARD
 	dw_const SaffronGateGuardGeeImThirstyText, TEXT_ROUTE6GATE_GUARD_GEE_IM_THIRSTY
 	dw_const SaffronGateGuardGiveDrinkText,    TEXT_ROUTE6GATE_GUARD_GIVE_DRINK
+
+Route6GateMiddleAgedWomanText: ; marcelnote - added 2nd floor
+	text_far _Route6GateMiddleAgedWomanText
+	text_end
+
+Route6GateYoungsterText: ; marcelnote - added 2nd floor
+	text_far _Route6GateYoungsterText
+	text_end

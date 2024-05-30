@@ -1,4 +1,6 @@
 	object_const_def
+	const_export ROUTE6GATE_MIDDLE_AGED_WOMAN ; marcelnote - added 2nd floor
+	const_export ROUTE6GATE_YOUNGSTER         ; marcelnote - added 2nd floor
 	const_export ROUTE6GATE_GUARD
 
 Route6Gate_Object:
@@ -15,6 +17,8 @@ Route6Gate_Object:
 	def_bg_events
 
 	def_object_events
+	object_event 18,  2, SPRITE_MIDDLE_AGED_WOMAN, STAY, LEFT, TEXT_ROUTE6GATE_MIDDLE_AGED_WOMAN ; marcelnote - added 2nd floor
+	object_event 14,  3, SPRITE_YOUNGSTER, WALK, UP_DOWN, TEXT_ROUTE6GATE_YOUNGSTER              ; marcelnote - added 2nd floor
 	object_event  6,  2, SPRITE_GUARD, STAY, LEFT, TEXT_ROUTE6GATE_GUARD
 
 	def_warps_to ROUTE_6_GATE
