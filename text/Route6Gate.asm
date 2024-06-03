@@ -2,7 +2,7 @@
 _Route6GateMiddleAgedWomanText::
 	text "Have they started"
 	line "letting people"
-	cont "through again?"
+	cont "through yet?"
 	done
 
 _Route6GateYoungsterText::
