@@ -38,6 +38,7 @@ MapHeaderPointers::
 	dw Route23_h
 	dw Route24_h
 	dw Route25_h
+	dw Route28_h ; marcelnote - new location
 	dw RedsHouse1F_h
 	dw RedsHouse2F_h
 	dw BluesHouse_h

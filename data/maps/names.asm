@@ -34,6 +34,7 @@ Route22Name:         db "ROUTE 22@"
 Route23Name:         db "ROUTE 23@"
 Route24Name:         db "ROUTE 24@"
 Route25Name:         db "ROUTE 25@"
+Route28Name:         db "ROUTE 28@" ; marcelnote - new location
 ViridianForestName:  db "VIRIDIAN FOREST@"
 MountMoonName:       db "MT.MOON@"
 RockTunnelName:      db "ROCK TUNNEL@"

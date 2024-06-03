@@ -39,6 +39,7 @@ MapSpriteSets:
 	db SPRITESET_INDIGO          ; ROUTE_23
 	db SPRITESET_PEWTER_CERULEAN ; ROUTE_24
 	db SPRITESET_PEWTER_CERULEAN ; ROUTE_25
+	db SPRITESET_PEWTER_CERULEAN ; ROUTE_28 ; marcelnote - new location
 	assert_table_length FIRST_INDOOR_MAP
 
 ; Format:

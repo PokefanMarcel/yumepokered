@@ -142,6 +142,7 @@ SECTION "Text 6", ROMX
 
 INCLUDE "text/Route24_2.asm"
 INCLUDE "text/Route25.asm"
+INCLUDE "text/Route28.asm" ; marcelnote - new location
 
 INCLUDE "data/text/text_3.asm"
 

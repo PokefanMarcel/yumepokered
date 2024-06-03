@@ -38,6 +38,7 @@ MapHeaderBanks::
 	db BANK(Route23_h)
 	db BANK(Route24_h)
 	db BANK(Route25_h)
+	db BANK(Route28_h) ; marcelnote - new location
 	db BANK(RedsHouse1F_h)
 	db BANK(RedsHouse2F_h)
 	db BANK(BluesHouse_h)

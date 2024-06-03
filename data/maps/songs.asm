@@ -37,6 +37,7 @@ MapSongBanks::
 	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; ROUTE_23
 	db MUSIC_ROUTES2, BANK(Music_Routes2) ; ROUTE_24
 	db MUSIC_ROUTES2, BANK(Music_Routes2) ; ROUTE_25
+	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; ROUTE_28 ; marcelnote - new location
 	db MUSIC_PALLET_TOWN, BANK(Music_PalletTown) ; REDS_HOUSE_1F
 	db MUSIC_PALLET_TOWN, BANK(Music_PalletTown) ; REDS_HOUSE_2F
 	db MUSIC_PALLET_TOWN, BANK(Music_PalletTown) ; BLUES_HOUSE
@@ -193,7 +194,7 @@ MapSongBanks::
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; ROUTE_18_GATE_1F
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; ROUTE_18_GATE_2F
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; SEAFOAM_ISLANDS_1F
-	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; ROUTE_22_GATE
+	db MUSIC_GYM, BANK(Music_Gym) ; ROUTE_22_GATE ; marcelnote - changed from MUSIC_DUNGEON2
 	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) ; VICTORY_ROAD_2F
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; ROUTE_12_GATE_2F
 	db MUSIC_VERMILION, BANK(Music_Vermilion) ; VERMILION_TRADE_HOUSE

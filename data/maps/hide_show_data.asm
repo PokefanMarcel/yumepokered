@@ -40,6 +40,7 @@ MapHSPointers:
 	dw NoHS
 	dw Route24HS
 	dw Route25HS
+	dw NoHS ; marcelnote - new location, Route28
 	dw NoHS
 	dw NoHS
 	dw BluesHouseHS

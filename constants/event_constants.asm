@@ -487,6 +487,8 @@
 	const EVENT_BEAT_ROUTE22_RIVAL_1ST_BATTLE
 	const EVENT_BEAT_ROUTE22_RIVAL_2ND_BATTLE
 	const EVENT_ROUTE22_RIVAL_WANTS_BATTLE
+	const EVENT_ROUTE22GATE_PRESENTED_BOULDER_BADGE ; marcelnote - new for Route22Gate script
+	const EVENT_ROUTE22GATE_WELCOME_CHAMPION        ; marcelnote - new for Route22Gate script
 
 ; Route 23 events
 	const_next $530
@@ -752,8 +754,9 @@ DEF INDIGO_PLATEAU_EVENTS_START EQU const_value
 	const_skip
 	const EVENT_BEAT_CHAMPION_RIVAL
 	const_skip 5
-	const_skip
+	;const_skip ; marcelnote - removed to make space for EVENT_BECAME_CHAMPION
 DEF INDIGO_PLATEAU_EVENTS_END EQU const_value - 1
+	const EVENT_BECAME_CHAMPION ; marcelnote - for Route22Gate and later for other postgame stuff
 
 ; Victory Road 1F events
 	const_next $910

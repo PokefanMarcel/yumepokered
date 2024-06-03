@@ -1249,3 +1249,8 @@ INCLUDE "data/maps/headers/PokemonAcademy3F4F.asm" ; marcelnote - new location
 INCLUDE "scripts/PokemonAcademy3F4F.asm"
 INCLUDE "data/maps/objects/PokemonAcademy3F4F.asm"
 PokemonAcademy3F4F_Blocks:: INCBIN "maps/PokemonAcademy3F4F.blk"
+
+INCLUDE "data/maps/headers/Route28.asm" ; marcelnote - new location
+INCLUDE "scripts/Route28.asm"
+INCLUDE "data/maps/objects/Route28.asm"
+Route28_Blocks:: INCBIN "maps/Route28.blk"

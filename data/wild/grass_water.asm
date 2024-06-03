@@ -37,6 +37,7 @@ WildDataPointers:
 	dw Route23WildMons         ; ROUTE_23
 	dw Route24WildMons         ; ROUTE_24
 	dw Route25WildMons         ; ROUTE_25
+	dw Route28WildMons         ; ROUTE_28 ; marcelnote - new location
 	dw NothingWildMons         ; REDS_HOUSE_1F
 	dw NothingWildMons
 	dw NothingWildMons
@@ -323,3 +324,4 @@ INCLUDE "data/wild/maps/VictoryRoad1F.asm"
 INCLUDE "data/wild/maps/DiglettsCave.asm"
 INCLUDE "data/wild/maps/CinnabarVolcano1FB1F.asm" ; marcelnote - new location
 INCLUDE "data/wild/maps/CinnabarVolcano2F.asm"    ; marcelnote - new location
+INCLUDE "data/wild/maps/Route28.asm"              ; marcelnote - new location
