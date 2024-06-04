@@ -60,9 +60,9 @@ HiddenObjectMaps:
 	db UNUSED_MAP_6F
 	db BILLS_HOUSE
 	db VIRIDIAN_CITY
-	db SAFARI_ZONE_WEST_REST_HOUSE
-	db SAFARI_ZONE_EAST_REST_HOUSE
-	db SAFARI_ZONE_NORTH_REST_HOUSE
+	;db SAFARI_ZONE_WEST_REST_HOUSE ; marcelnote - inaccessible Hidden objects
+	;db SAFARI_ZONE_EAST_REST_HOUSE
+	;db SAFARI_ZONE_NORTH_REST_HOUSE
 	db ROUTE_15_GATE_2F
 	db MR_FUJIS_HOUSE
 	db CELADON_MANSION_ROOF_HOUSE
@@ -85,6 +85,7 @@ HiddenObjectMaps:
 	db CERULEAN_CITY
 	db ROUTE_4
 	db CINNABAR_VOLCANO_2F ; marcelnote - new
+	db POKEMON_ACADEMY_3F4F ; marcelnote - new
 	db -1 ; end
 
 HiddenObjectPointers:
@@ -150,9 +151,9 @@ HiddenObjectPointers:
 	dw Unused6FHiddenObjects
 	dw BillsHouseHiddenObjects
 	dw ViridianCityHiddenObjects
-	dw SafariZoneRestHouse2HiddenObjects
-	dw SafariZoneRestHouse3HiddenObjects
-	dw SafariZoneRestHouse4HiddenObjects
+	;dw SafariZoneRestHouse2HiddenObjects ; marcelnote - inaccessible Hidden objects
+	;dw SafariZoneRestHouse3HiddenObjects
+	;dw SafariZoneRestHouse4HiddenObjects
 	dw Route15GateUpstairsHiddenObjects
 	dw LavenderHouse1HiddenObjects
 	dw CeladonMansion5HiddenObjects
@@ -175,6 +176,7 @@ HiddenObjectPointers:
 	dw CeruleanCityHiddenObjects
 	dw Route4HiddenObjects
 	dw CinnabarVolcano2FHiddenObjects ; marcelnote - new
+	dw PokemonAcademy3F4FHiddenObjects ; marcelnote - new
 
 MACRO hidden_object
 	db \2 ; y coord
@@ -370,7 +372,7 @@ GameCornerHiddenObjects:
 	db -1 ; end
 
 CeladonHotelHiddenObjects:
-	hidden_object 13,  3, SPRITE_FACING_UP, OpenPokemonCenterPC
+	;hidden_object 13,  3, SPRITE_FACING_UP, OpenPokemonCenterPC ; marcelnote - removed invisible PC
 	hidden_object  0,  4, SPRITE_FACING_LEFT, PrintBenchGuyText
 	db -1 ; end
 
@@ -564,20 +566,20 @@ ViridianCityHiddenObjects:
 	hidden_object 14,  4, POTION, HiddenItems
 	db -1 ; end
 
-SafariZoneRestHouse2HiddenObjects:
-	hidden_object  0,  4, SPRITE_FACING_LEFT, PrintBenchGuyText
-	hidden_object 13,  3, SPRITE_FACING_UP, OpenPokemonCenterPC
-	db -1 ; end
+;SafariZoneRestHouse2HiddenObjects: ; marcelnote - inaccessible Hidden objects
+;	hidden_object  0,  4, SPRITE_FACING_LEFT, PrintBenchGuyText
+;	hidden_object 13,  3, SPRITE_FACING_UP, OpenPokemonCenterPC
+;	db -1 ; end
 
-SafariZoneRestHouse3HiddenObjects:
-	hidden_object  0,  4, SPRITE_FACING_LEFT, PrintBenchGuyText
-	hidden_object 13,  3, SPRITE_FACING_UP, OpenPokemonCenterPC
-	db -1 ; end
+;SafariZoneRestHouse3HiddenObjects:
+;	hidden_object  0,  4, SPRITE_FACING_LEFT, PrintBenchGuyText
+;	hidden_object 13,  3, SPRITE_FACING_UP, OpenPokemonCenterPC
+;	db -1 ; end
 
-SafariZoneRestHouse4HiddenObjects:
-	hidden_object  0,  4, SPRITE_FACING_LEFT, PrintBenchGuyText
-	hidden_object 13,  3, SPRITE_FACING_UP, OpenPokemonCenterPC
-	db -1 ; end
+;SafariZoneRestHouse4HiddenObjects:
+;	hidden_object  0,  4, SPRITE_FACING_LEFT, PrintBenchGuyText
+;	hidden_object 13,  3, SPRITE_FACING_UP, OpenPokemonCenterPC
+;	db -1 ; end
 
 Route15GateUpstairsHiddenObjects:
 	hidden_object  1,  2, SPRITE_FACING_UP, Route15GateLeftBinoculars
@@ -672,4 +674,8 @@ Route4HiddenObjects:
 
 CinnabarVolcano2FHiddenObjects:  ; marcelnote - new
 	hidden_object 23,  5, MAX_ELIXER, HiddenItems
+	db -1 ; end
+
+PokemonAcademy3F4FHiddenObjects:  ; marcelnote - new
+	hidden_object 24,  0, SPRITE_FACING_UP, OpenPokemonCenterPC
 	db -1 ; end
