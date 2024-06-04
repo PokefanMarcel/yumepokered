@@ -18,9 +18,9 @@ TownMapOrder:
 	db SS_ANNE_1F
 	db DIGLETTS_CAVE ; marcelnote - adjusted order
 	db ROUTE_9
+	db ROUTE_10 ; marcelnote - adjusted order
 	db ROCK_TUNNEL_POKECENTER
 	db POWER_PLANT ; marcelnote - adjusted order
-	db ROUTE_10
 	db LAVENDER_TOWN
 	db POKEMON_TOWER_2F
 	db ROUTE_8
