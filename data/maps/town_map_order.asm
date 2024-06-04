@@ -4,7 +4,6 @@ TownMapOrder:
 	db VIRIDIAN_CITY
 	db ROUTE_2
 	db VIRIDIAN_FOREST
-	db DIGLETTS_CAVE
 	db PEWTER_CITY
 	db ROUTE_3
 	db MT_MOON_1F
@@ -17,6 +16,7 @@ TownMapOrder:
 	db ROUTE_6
 	db VERMILION_CITY
 	db SS_ANNE_1F
+	db DIGLETTS_CAVE ; marcelnote - adjusted order
 	db ROUTE_9
 	db ROCK_TUNNEL_POKECENTER
 	db POWER_PLANT ; marcelnote - adjusted order

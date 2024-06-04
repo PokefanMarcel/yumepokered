@@ -112,9 +112,9 @@ Route22GateGuardGoRightAheadText:
 
 Route22GateGuard2Text: ; marcelnote - new guard
 	text_asm
-	;ld a, [wObtainedBadges]
-	;bit BIT_VOLCANOBADGE, a ; for testing purposes
-	CheckEvent EVENT_BECAME_CHAMPION
+	ld a, [wObtainedBadges]
+	bit BIT_VOLCANOBADGE, a ; for testing purposes
+	;CheckEvent EVENT_BECAME_CHAMPION
 	jr nz, .is_champion
 	ld hl, Route22GateGuard2ScaryStrongText
 	call PrintText
