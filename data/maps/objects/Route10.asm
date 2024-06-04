@@ -14,6 +14,7 @@ Route10_Object:
 	warp_event  8, 17, ROCK_TUNNEL_1F, 1
 	warp_event  8, 53, ROCK_TUNNEL_1F, 3
 	warp_event  6, 39, POWER_PLANT, 1
+	warp_event  3, 37, POWER_PLANT, 3 ; marcelnote - new western entrance
 
 	def_bg_events
 	bg_event  7, 19, TEXT_ROUTE10_ROCKTUNNEL_NORTH_SIGN

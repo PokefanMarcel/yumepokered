@@ -102,6 +102,7 @@ DEF SHOW EQU $15
 	const HS_POWER_PLANT_ITEM_3            ; 58 X
 	const HS_POWER_PLANT_ITEM_4            ; 59 X
 	const HS_POWER_PLANT_ITEM_5            ; 5A X
+	const HS_POWER_PLANT_ITEM_6            ; 5B X ; marcelnote - new ThunderStone
 	;const HS_MOLTRES                      ; 5B X ; marcelnote - removed Moltres from Victory Road
 	const HS_VICTORY_ROAD_2F_ITEM_1        ; 5C X
 	const HS_VICTORY_ROAD_2F_ITEM_2        ; 5D X
