@@ -338,36 +338,43 @@ _CinnabarGymQuizIntroText::
 	prompt
 
 _CinnabarQuizQuestionsText1::
-	text "CATERPIE evolves"
+	text "METAPOD evolves" ; marcelnote - changed from CATERPIE
 	line "into BUTTERFREE?"
 	done
 
-_CinnabarQuizQuestionsText2::
+_CinnabarQuizQuestionsText2:: ; marcelnote - new quiz question for 2nd trainer
+	text "VULPIX and"
+	line "NINETALES are"
+	cont "able to learn"
+	cont "WILL-O-WISP?"
+	done
+
+_CinnabarQuizQuestionsText3:: ; marcelnote - reindexed from 2
 	text "There are 9"
 	line "certified #MON"
 	cont "LEAGUE BADGEs?"
 	done
 
-_CinnabarQuizQuestionsText3::
+_CinnabarQuizQuestionsText4:: ; marcelnote - reindexed from 3
 	text "POLIWAG evolves 3"
 	line "times?"
 	done
 
-_CinnabarQuizQuestionsText4::
+_CinnabarQuizQuestionsText5:: ; marcelnote - reindexed from 4
 	text "Are thunder moves"
 	line "effective against"
 	cont "ground element-"
 	cont "type #MON?"
 	done
 
-_CinnabarQuizQuestionsText5::
+_CinnabarQuizQuestionsText6:: ; marcelnote - reindexed from 5
 	text "#MON of the"
 	line "same kind and"
 	cont "level are not"
 	cont "identical?"
 	done
 
-_CinnabarQuizQuestionsText6::
+_CinnabarQuizQuestionsText7:: ; marcelnote - reindexed from 6
 	text "TM28 contains"
 	line "TOMBSTONER?"
 	done

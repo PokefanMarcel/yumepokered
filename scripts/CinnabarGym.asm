@@ -121,7 +121,7 @@ CinnabarGymOpenGateScript:
 	EventFlagAddress hl, EVENT_BEAT_CINNABAR_GYM_TRAINER_0
 	call CinnabarGymFlagAction
 	ld a, [wTrainerHeaderFlagBit]
-	sub $2
+	sub $1 ; marcelnote - adjusted down from $2 for new quiz question
 	AdjustEventBit EVENT_CINNABAR_GYM_GATE0_UNLOCKED, 0
 	ld c, a
 	ld b, FLAG_SET

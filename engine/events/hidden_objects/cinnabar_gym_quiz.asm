@@ -41,34 +41,39 @@ CinnabarGymQuizIntroText:
 
 CinnabarQuizQuestions:
 	dw CinnabarQuizQuestionsText1
-	dw CinnabarQuizQuestionsText2
-	dw CinnabarQuizQuestionsText3
+	dw CinnabarQuizQuestionsText2 ; marcelnote - new quiz question
+	dw CinnabarQuizQuestionsText3 ; marcelnote - questions 2-6 reindexed as 3-7
 	dw CinnabarQuizQuestionsText4
 	dw CinnabarQuizQuestionsText5
 	dw CinnabarQuizQuestionsText6
+	dw CinnabarQuizQuestionsText7
 
 CinnabarQuizQuestionsText1:
 	text_far _CinnabarQuizQuestionsText1
 	text_end
 
-CinnabarQuizQuestionsText2:
+CinnabarQuizQuestionsText2: ; marcelnote - new quiz question
 	text_far _CinnabarQuizQuestionsText2
 	text_end
 
-CinnabarQuizQuestionsText3:
+CinnabarQuizQuestionsText3: ; marcelnote - reindexed from 2
 	text_far _CinnabarQuizQuestionsText3
 	text_end
 
-CinnabarQuizQuestionsText4:
+CinnabarQuizQuestionsText4: ; marcelnote - reindexed from 3
 	text_far _CinnabarQuizQuestionsText4
 	text_end
 
-CinnabarQuizQuestionsText5:
+CinnabarQuizQuestionsText5: ; marcelnote - reindexed from 4
 	text_far _CinnabarQuizQuestionsText5
 	text_end
 
-CinnabarQuizQuestionsText6:
+CinnabarQuizQuestionsText6: ; marcelnote - reindexed from 5
 	text_far _CinnabarQuizQuestionsText6
+	text_end
+
+CinnabarQuizQuestionsText7: ; marcelnote - reindexed from 6
+	text_far _CinnabarQuizQuestionsText7
 	text_end
 
 CinnabarGymGateFlagAction:
@@ -112,7 +117,7 @@ CinnabarGymQuiz_AskQuestion:
 	and a
 	ret nz
 	ldh a, [hGymGateIndex]
-	add $2
+	add $1 ; marcelnote - adjusted from $2 to accommodate new quiz question
 	ld [wOpponentAfterWrongAnswer], a
 	ret
 
@@ -129,11 +134,12 @@ CinnabarGymQuizCorrectText:
 	call CinnabarGymGateFlagAction
 	ld a, c
 	and a
-	jp nz, TextScriptEnd
+	jr nz, .done      ; PureRGB - rst TextScriptEnd
 	call WaitForSoundToFinish
 	ld a, SFX_GO_INSIDE
 	call PlaySound
 	call WaitForSoundToFinish
+.done                 ; PureRGB - rst TextScriptEnd
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 CinnabarGymQuizIncorrectText:
@@ -143,7 +149,7 @@ CinnabarGymQuizIncorrectText:
 UpdateCinnabarGymGateTileBlocks_::
 ; Update the overworld map with open floor blocks or locked gate blocks
 ; depending on event flags.
-	ld a, 6
+	ld a, 7 ; marcelnote - adjusted up from 6 to accommodate new quiz question
 	ldh [hGymGateIndex], a
 .loop
 	ldh a, [hGymGateIndex]
@@ -188,13 +194,14 @@ MACRO gym_gate_coord
 ENDM
 
 DEF HORIZONTAL_GATE_BLOCK EQU $54
-DEF VERTICAL_GATE_BLOCK   EQU $5f
+DEF VERTICAL_GATE_BLOCK   EQU $30 ; marcelnote - use block with gate on the left instead
 
 CinnabarGymGateCoords:
 	; x coord, y coord, block id
 	gym_gate_coord 9, 3, HORIZONTAL_GATE_BLOCK
+	gym_gate_coord 7, 1, VERTICAL_GATE_BLOCK ; marcelnote - new quiz question
 	gym_gate_coord 6, 3, HORIZONTAL_GATE_BLOCK
 	gym_gate_coord 6, 6, HORIZONTAL_GATE_BLOCK
-	gym_gate_coord 3, 8, VERTICAL_GATE_BLOCK
+	gym_gate_coord 4, 8, VERTICAL_GATE_BLOCK ; marcelnote - adjusted to use the same gate block
 	gym_gate_coord 2, 6, HORIZONTAL_GATE_BLOCK
 	gym_gate_coord 2, 3, HORIZONTAL_GATE_BLOCK

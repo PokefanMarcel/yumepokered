@@ -384,15 +384,16 @@ FuchsiaGymHiddenObjects:
 	hidden_object  6, 15, SPRITE_FACING_UP, GymStatues
 	db -1 ; end
 
-CinnabarGymHiddenObjects:
+CinnabarGymHiddenObjects: ; marcelnote - quiz questions 2-6 were reindexed as 3-7
 	hidden_object 17, 13, SPRITE_FACING_UP, GymStatues
 	; third param: ([hGymGateAnswer] << 4) | [hGymGateIndex]
 	hidden_object 15,  7, (FALSE << 4) | 1, PrintCinnabarQuiz
-	hidden_object 10,  1, (TRUE  << 4) | 2, PrintCinnabarQuiz
-	hidden_object  9,  7, (TRUE  << 4) | 3, PrintCinnabarQuiz
-	hidden_object  9, 13, (TRUE  << 4) | 4, PrintCinnabarQuiz
-	hidden_object  1, 13, (FALSE << 4) | 5, PrintCinnabarQuiz
-	hidden_object  1,  7, (TRUE  << 4) | 6, PrintCinnabarQuiz
+	hidden_object 15,  1, (FALSE << 4) | 2, PrintCinnabarQuiz ; marcelnote - new quiz question
+	hidden_object 10,  1, (TRUE  << 4) | 3, PrintCinnabarQuiz
+	hidden_object  9,  7, (TRUE  << 4) | 4, PrintCinnabarQuiz
+	hidden_object  9, 13, (TRUE  << 4) | 5, PrintCinnabarQuiz
+	hidden_object  1, 13, (FALSE << 4) | 6, PrintCinnabarQuiz
+	hidden_object  1,  7, (TRUE  << 4) | 7, PrintCinnabarQuiz
 	db -1 ; end
 
 CinnabarPokecenterHiddenObjects:
