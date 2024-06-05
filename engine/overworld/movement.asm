@@ -617,12 +617,14 @@ CanWalkOntoTile:
 	ld a, [hli]        ; x#SPRITESTATEDATA1_YPIXELS
 	add $4             ; align to blocks (Y pos is always 4 pixels off)
 	add d              ; add Y delta
-	cp $80             ; if value is >$80, the destination is off screen (either $81 or $FF underflow)
+	cp $81             ; if value is >$80, the destination is off screen (either $81 or $FF underflow)
+	                   ; marcelnote - fixed bug by changing to >$81
 	jr nc, .impassable ; don't walk off screen
 	inc l
 	ld a, [hl]         ; x#SPRITESTATEDATA1_XPIXELS
 	add e              ; add X delta
-	cp $90             ; if value is >$90, the destination is off screen (either $91 or $FF underflow)
+	cp $91             ; if value is >$90, the destination is off screen (either $91 or $FF underflow)
+	                   ; marcelnote - fixed bug by changing to >$91
 	jr nc, .impassable ; don't walk off screen
 	push de
 	push bc
