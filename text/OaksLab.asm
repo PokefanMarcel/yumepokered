@@ -137,7 +137,7 @@ _OaksLabGivePokeballsExplanationText::
 
 	para "Just throw a #"
 	line "BALL at it and try"
-	line "to catch it!"
+	cont "to catch it!" ; marcelnote - fixed from 'line'
 
 	para "This won't always"
 	line "work, though."
