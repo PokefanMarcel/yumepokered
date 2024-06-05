@@ -475,8 +475,8 @@ ItemUseBall:
 	ld hl, wEnemyBattleStatus3
 	bit TRANSFORMED, [hl]
 	jr z, .notTransformed
-	ld a, DITTO
-	ld [wEnemyMonSpecies2], a
+	;ld a, DITTO ; marcelnote - fixes bug above
+	;ld [wEnemyMonSpecies2], a
 	jr .skip6
 
 .notTransformed
