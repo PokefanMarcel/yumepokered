@@ -31,6 +31,7 @@ Route17_TextPointers:
 	dw_const Route17SignText,                TEXT_ROUTE17_SIGN
 	dw_const Route17NoticeSign2Text,         TEXT_ROUTE17_NOTICE_SIGN2
 	dw_const Route17CyclingRoadEndsSignText, TEXT_ROUTE17_CYCLING_ROAD_ENDS_SIGN
+	dw_const Route17Route16SignText,         TEXT_ROUTE17_ROUTE16SIGN ; marcelnote - fixed non-readable sign from Route 17
 
 Route17TrainerHeaders:
 	def_trainers
@@ -258,4 +259,8 @@ Route17NoticeSign2Text:
 
 Route17CyclingRoadEndsSignText:
 	text_far _Route17CyclingRoadEndsSignText
+	text_end
+
+Route17Route16SignText: ; marcelnote - fixed non-readable sign from Route 17
+	text_far _Route16SignText
 	text_end
