@@ -10,8 +10,7 @@ RedsHouse2_Block::  INCBIN "gfx/blocksets/reds_house.bst"
 
 House_GFX::         INCBIN "gfx/tilesets/house.2bpp"
 House_Block::       INCBIN "gfx/blocksets/house.bst"
-Mansion_GFX::       INCBIN "gfx/tilesets/mansion.2bpp"
-Mansion_Block::     INCBIN "gfx/blocksets/mansion.bst"
+; marcelnote - MANSION was here
 ShipPort_GFX::      INCBIN "gfx/tilesets/ship_port.2bpp"
 ShipPort_Block::    INCBIN "gfx/blocksets/ship_port.bst"
 Interior_GFX::      INCBIN "gfx/tilesets/interior.2bpp"
@@ -70,3 +69,5 @@ Cavern_GFX::        INCBIN "gfx/tilesets/cavern.2bpp"   ; marcelnote - moved CAV
 Cavern_Block::      INCBIN "gfx/blocksets/cavern.bst"   ; marcelnote - moved CAVERN blockset
 Facility_GFX::      INCBIN "gfx/tilesets/facility.2bpp" ; marcelnote - moved FACILITY blockset
 Facility_Block::    INCBIN "gfx/blocksets/facility.bst" ; marcelnote - moved FACILITY blockset
+Mansion_GFX::       INCBIN "gfx/tilesets/mansion.2bpp"  ; marcelnote - moved MANSION blockset
+Mansion_Block::     INCBIN "gfx/blocksets/mansion.bst"  ; marcelnote - moved MANSION blockset
