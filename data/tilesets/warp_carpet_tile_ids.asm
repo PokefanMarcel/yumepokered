@@ -18,7 +18,7 @@ ENDM
 	warp_carpet_tiles $01, $5C
 
 .FacingLeftWarpTiles:
-	warp_carpet_tiles $1A, $4B
+	warp_carpet_tiles $1A, $4B, $12, $17 ; marcelnote - test, added $12, $17
 
 .FacingRightWarpTiles:
-	warp_carpet_tiles $0F, $4E
+	warp_carpet_tiles $0F, $4E, $5C, $5A ; marcelnote - test, added $5C, $5A
