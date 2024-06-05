@@ -384,8 +384,11 @@ KogaAI:
 	ret nc
 	jp AIUseXAttack
 
-BlaineAI:
+BlaineAI: ; marcelnote - fixes potion use below 10% HP
 	cp 25 percent + 1
+	ret nc
+	ld a, 10
+	call AICheckIfHPBelowFraction
 	ret nc
 	jp AIUseSuperPotion
 
