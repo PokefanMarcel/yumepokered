@@ -15,9 +15,11 @@ HealEffect_:
 	        ; causes the move to miss if max HP is 255 or 511 points higher than the current HP
 	inc de
 	inc hl
+	jr nz, .passed ; marcelnote - fixes bug above
 	ld a, [de]
 	sbc [hl]
 	jp z, .failed ; no effect if user's HP is already at its maximum
+.passed ; marcelnote - fixes bug above
 	ld a, b
 	cp REST
 	jr nz, .healHP
