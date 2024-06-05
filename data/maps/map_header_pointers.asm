@@ -192,8 +192,8 @@ MapHeaderPointers::
 	dw Route16Gate2F_h
 	dw Route16FlyHouse_h
 	dw Route12FishingGuideHouse_h ; marcelnote - from Super Rod to Fishing Guide
-	dw Route18Gate1F_h
-	dw Route18Gate2F_h
+	dw Route18Gate_h ; marcelnote - merged Route18Gate floors
+	dw Route18Gate_h ; UNUSED_MAP_BF ; marcelnote - was Route18Gate2F_h, now unused
 	dw SeafoamIslands1F_h
 	dw Route22Gate_h
 	dw VictoryRoad2F_h

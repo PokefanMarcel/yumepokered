@@ -192,8 +192,8 @@ MapHeaderBanks::
 	db BANK(Route16Gate2F_h)
 	db BANK(Route16FlyHouse_h)
 	db BANK(Route12FishingGuideHouse_h) ; marcelnote - from Super Rod to Fishing Guide
-	db BANK(Route18Gate1F_h)
-	db BANK(Route18Gate2F_h)
+	db BANK(Route18Gate_h) ; marcelnote - merged Route18Gate floors
+	db $11 ; UNUSED_MAP_BF ; marcelnote - was Route18Gate2F_h, now unused
 	db BANK(SeafoamIslands1F_h)
 	db BANK(Route22Gate_h)
 	db BANK(VictoryRoad2F_h)

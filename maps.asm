@@ -410,11 +410,11 @@ CeladonPokecenter_Blocks:
 RockTunnelPokecenter_Blocks:
 MtMoonPokecenter_Blocks: INCBIN "maps/MtMoonPokecenter.blk"
 
-Route18Gate1F_Blocks:
+;Route18Gate1F_Blocks: ; marcelnote - leaving this to remember also merging others if possible
 Route15Gate1F_Blocks:
 Route11Gate1F_Blocks: INCBIN "maps/Route11Gate1F.blk"
 
-Route18Gate2F_Blocks:
+;Route18Gate2F_Blocks: ; marcelnote - leaving this to remember also merging others if possible
 Route16Gate2F_Blocks:
 Route15Gate2F_Blocks:
 Route12Gate2F_Blocks:
@@ -551,13 +551,10 @@ INCLUDE "data/maps/headers/Route16Gate2F.asm"
 INCLUDE "scripts/Route16Gate2F.asm"
 INCLUDE "data/maps/objects/Route16Gate2F.asm"
 
-INCLUDE "data/maps/headers/Route18Gate1F.asm"
-INCLUDE "scripts/Route18Gate1F.asm"
-INCLUDE "data/maps/objects/Route18Gate1F.asm"
-
-INCLUDE "data/maps/headers/Route18Gate2F.asm"
-INCLUDE "scripts/Route18Gate2F.asm"
-INCLUDE "data/maps/objects/Route18Gate2F.asm"
+INCLUDE "data/maps/headers/Route18Gate.asm"
+INCLUDE "scripts/Route18Gate.asm"
+INCLUDE "data/maps/objects/Route18Gate.asm"
+Route18Gate_Blocks: INCBIN "maps/Route18Gate.blk"
 
 INCLUDE "data/maps/headers/MtMoon1F.asm"
 INCLUDE "scripts/MtMoon1F.asm"

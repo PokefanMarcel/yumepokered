@@ -2042,7 +2042,7 @@ wSSAnne2FCurScript:: db
 wSeafoamIslandsB3FCurScript:: db
 wRoute23CurScript:: db
 wSeafoamIslandsB4FCurScript:: db
-wRoute18Gate1FCurScript:: db
+wRoute18GateCurScript:: db           ; marcelnote - renamed from wRoute18Gate1FCurScript (merging floors)
 wCinnabarVolcano1FB1FCurScript:: db  ; marcelnote - new location
 wCinnabarVolcano2FCurScript:: db     ; marcelnote - new location
 	ds 76                            ; marcelnote - adjusted down

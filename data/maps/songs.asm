@@ -191,8 +191,8 @@ MapSongBanks::
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; ROUTE_16_GATE_2F
 	db MUSIC_CELADON, BANK(Music_Celadon) ; ROUTE_16_FLY_HOUSE
 	db MUSIC_CELADON, BANK(Music_Celadon) ; ROUTE_12_FISHING_GUIDE_HOUSE ; marcelnote - from Super Rod to Fishing Guide
-	db MUSIC_CITIES1, BANK(Music_Cities1) ; ROUTE_18_GATE_1F
-	db MUSIC_CITIES1, BANK(Music_Cities1) ; ROUTE_18_GATE_2F
+	db MUSIC_CITIES1, BANK(Music_Cities1) ; ROUTE_18_GATE ; marcelnote - merged ROUTE_18_GATE floors
+	db MUSIC_CITIES1, BANK(Music_Cities1) ; UNUSED_MAP_BF ; marcelnote - was ROUTE_18_GATE_2F, now unused
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; SEAFOAM_ISLANDS_1F
 	db MUSIC_GYM, BANK(Music_Gym) ; ROUTE_22_GATE ; marcelnote - changed from MUSIC_DUNGEON2
 	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) ; VICTORY_ROAD_2F

@@ -101,7 +101,7 @@ InternalMapEntries:
 	internal_map ROUTE_15_GATE_2F,              10, 13, Route15Name
 	internal_map ROUTE_16_FLY_HOUSE,             5,  5, Route16Name
 	internal_map ROUTE_12_FISHING_GUIDE_HOUSE,  14, 10, Route12Name ; marcelnote - from Super Rod to Fishing Guide
-	internal_map ROUTE_18_GATE_2F,               8, 13, Route18Name
+	internal_map ROUTE_18_GATE,                  8, 13, Route18Name ; marcelnote - merged Route 18 Gate floors
 	internal_map SEAFOAM_ISLANDS_1F,             6, 15, SeafoamIslandsName
 	internal_map ROUTE_22_GATE,                  1,  7, Route22Name
 	internal_map VICTORY_ROAD_2F,                1,  4, VictoryRoadName
