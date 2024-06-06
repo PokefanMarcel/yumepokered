@@ -435,6 +435,7 @@
 	const EVENT_BEAT_ROUTE_18_TRAINER_0
 	const EVENT_BEAT_ROUTE_18_TRAINER_1
 	const EVENT_BEAT_ROUTE_18_TRAINER_2
+	const EVENT_BEAT_ROUTE_18_TRAINER_3 ; marcelnote - new trainer
 
 ; Route 19 events
 	const_next $4F0

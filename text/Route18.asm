@@ -45,6 +45,23 @@ _Route18CooltrainerM3AfterBattleText::
 	cont "area!"
 	done
 
+_Route18CooltrainerM4BattleText:: ; marcelnote - new trainer
+	text "You scared off"
+	line "that DODUO"
+	cont "I was watching!"
+	done
+
+_Route18CooltrainerM4EndBattleText:: ; marcelnote - new trainer
+	text "You"
+	line "got lucky!"
+	prompt
+
+_Route18CooltrainerM4AfterBattleText:: ; marcelnote - new trainer
+	text "This spot is"
+	line "perfect for"
+	cont "birdwatching."
+	done
+
 _Route18SignText::
 	text "ROUTE 18"
 	line "CELADON CITY -"

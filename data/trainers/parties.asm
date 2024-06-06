@@ -477,6 +477,9 @@ BirdKeeperData:
 	db 26, PIDGEY, SPEAROW, PIDGEY, FEAROW, 0
 	db 29, PIDGEOTTO, FEAROW, 0
 	db 28, SPEAROW, DODUO, FEAROW, 0
+; marcelnote - new trainers
+; Route 18
+	db 30, FARFETCHD, DODUO, FEAROW, 0
 
 BlackbeltData:
 ; Fighting Dojo
