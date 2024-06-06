@@ -29,8 +29,6 @@ Forest_Coll::
 House_Coll::
 	coll_tiles $01, $12, $14, $28, $32, $37, $44, $54, $5c
 
-ForestGate_Coll::
-Museum_Coll::
 Gate_Coll::
 	coll_tiles $01, $12, $14, $1a, $1c, $37, $38, $3b, $3c, $5e
 
@@ -48,8 +46,6 @@ Interior_Coll::
 
 Cavern_Coll::
 	coll_tiles $05, $15, $18, $1a, $20, $21, $22, $2a, $2d, $30, $41   ; marcelnote - added $41 for elevation
-
-	coll_tiles ; unused
 
 Lobby_Coll::
 	coll_tiles $14, $17, $1a, $1c, $20, $38, $45

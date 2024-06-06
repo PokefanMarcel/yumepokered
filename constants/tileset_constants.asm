@@ -10,8 +10,8 @@
 	const POKECENTER   ; 6
 	const GYM          ; 7
 	const HOUSE        ; 8
-	const FOREST_GATE  ; 9
-	const MUSEUM       ; 10
+	;const FOREST_GATE  ; 9  ; marcelnote - removed FOREST_GATE and MUSEUM tilesets
+	;const MUSEUM       ; 10 ;              because redundant with GATE
 	const UNDERGROUND  ; 11
 	const GATE         ; 12
 	const SHIP         ; 13

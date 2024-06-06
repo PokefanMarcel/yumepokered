@@ -31,11 +31,7 @@ Pokecenter_GFX::    INCBIN "gfx/tilesets/pokecenter.2bpp"
 Mart_Block::
 Pokecenter_Block::  INCBIN "gfx/blocksets/pokecenter.bst"
 
-ForestGate_GFX::
-Museum_GFX::
 Gate_GFX::          INCBIN "gfx/tilesets/gate.2bpp"
-ForestGate_Block::
-Museum_Block::
 Gate_Block::        INCBIN "gfx/blocksets/gate.bst"
 
 Forest_GFX::        INCBIN "gfx/tilesets/forest.2bpp"

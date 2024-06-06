@@ -9,8 +9,6 @@ WarpTileIDPointers:
 	dw .PokecenterWarpTileIDs
 	dw .GymWarpTileIDs
 	dw .HouseWarpTileIDs
-	dw .ForestGateWarpTileIDs
-	dw .MuseumWarpTileIDs
 	dw .UndergroundWarpTileIDs
 	dw .GateWarpTileIDs
 	dw .ShipWarpTileIDs
@@ -38,8 +36,6 @@ ENDM
 .OverworldWarpTileIDs:
 	warp_tiles $1B, $58
 
-.ForestGateWarpTileIDs:
-.MuseumWarpTileIDs:
 .GateWarpTileIDs:
 	db $3B
 	; fallthrough

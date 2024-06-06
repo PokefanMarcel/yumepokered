@@ -1,6 +1,5 @@
 DungeonTilesets:
 	db FOREST
-	db MUSEUM
 	db SHIP
 	db CAVERN
 	db LOBBY

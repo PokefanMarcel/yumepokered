@@ -3,9 +3,7 @@ DoorTileIDPointers:
 	dbw FOREST,      .ForestDoorTileIDs
 	dbw MART,        .MartDoorTileIDs
 	dbw HOUSE,       .HouseDoorTileIDs
-	dbw FOREST_GATE, .TilesetMuseumDoorTileIDs
-	dbw MUSEUM,      .TilesetMuseumDoorTileIDs
-	dbw GATE,        .TilesetMuseumDoorTileIDs
+	dbw GATE,        .GateDoorTileIDs ; marcelnote - changed from .TilesetMuseumDoorTileIDs
 	dbw SHIP,        .ShipDoorTileIDs
 	dbw LOBBY,       .LobbyDoorTileIDs
 	dbw MANSION,     .MansionDoorTileIDs
@@ -35,7 +33,7 @@ ENDM
 .HouseDoorTileIDs:
 	door_tiles $54
 
-.TilesetMuseumDoorTileIDs:
+.GateDoorTileIDs: ; marcelnote - changed from .TilesetMuseumDoorTileIDs
 	door_tiles $3b
 
 .ShipDoorTileIDs:
