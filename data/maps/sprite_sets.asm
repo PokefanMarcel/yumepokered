@@ -184,7 +184,7 @@ SpriteSets:
 	db SPRITE_SNORLAX
 
 ; SPRITESET_FUCHSIA
-	db SPRITE_BIRD
+	db SPRITE_BLACKBELT ; marcelnote - replaced SPRITE_BIRD for new Blackbelt trainers on Route 19
 	db SPRITE_COOLTRAINER_M
 	db SPRITE_FAIRY
 	db SPRITE_FISHER

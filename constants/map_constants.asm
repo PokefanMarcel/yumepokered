@@ -48,8 +48,8 @@ DEF FIRST_ROUTE_MAP EQU const_value
 	map_const ROUTE_16,                      20,  9 ; $1B
 	map_const ROUTE_17,                      10, 72 ; $1C
 	map_const ROUTE_18,                      25,  9 ; $1D
-	map_const ROUTE_19,                      10, 27 ; $1E
-	map_const ROUTE_20,                      50,  9 ; $1F
+	map_const ROUTE_19,                      15, 27 ; $1E ; marcelnote - adjusted for expanded Route 19
+	map_const ROUTE_20,                      45,  9 ; $1F ; marcelnote - adjusted for expanded Route 19
 	map_const ROUTE_21,                      10, 45 ; $20
 	map_const ROUTE_22,                      20, 10 ; $21 ; marcelnote - modified to accommodate Route22OldRodHouse
 	map_const ROUTE_23,                      10, 72 ; $22

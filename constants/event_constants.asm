@@ -450,6 +450,11 @@
 	const EVENT_BEAT_ROUTE_19_TRAINER_7
 	const EVENT_BEAT_ROUTE_19_TRAINER_8
 	const EVENT_BEAT_ROUTE_19_TRAINER_9
+	const EVENT_BEAT_ROUTE_19_TRAINER_10 ; marcelnote - new trainer, Swimmer9
+	const EVENT_BEAT_ROUTE_19_TRAINER_11 ; marcelnote - new trainer, Blackbelt1
+	const EVENT_BEAT_ROUTE_19_TRAINER_12 ; marcelnote - new trainer, Blackbelt2
+	const EVENT_BEAT_ROUTE_19_TRAINER_13 ; marcelnote - new trainer, Fisher1
+	; marcelnote - 1 spot left
 
 ; Route 20 events
 	const_next $500

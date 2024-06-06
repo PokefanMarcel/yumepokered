@@ -150,8 +150,78 @@ _Route19Swimmer8AfterBattleText::
 	cont "dry on water."
 	done
 
+_Route19Swimmer9BattleText:: ; marcelnote - new trainer, Swimmer9
+	text "The current"
+	line "carried me away"
+	cont "from my friends."
+	done
+
+_Route19Swimmer9EndBattleText:: ; marcelnote - new trainer, Swimmer9
+	text "Gulp!"
+	prompt
+
+_Route19Swimmer9AfterBattleText:: ; marcelnote - new trainer, Swimmer9
+	text "I'm too tired"
+	line "to keep up..."
+	done
+
+_Route19Blackbelt1BattleText:: ; marcelnote - new trainer, Blackbelt1
+	text "Practicing my"
+	line "stances on the"
+	cont "sand is tiring!"
+	done
+
+_Route19Blackbelt1EndBattleText:: ; marcelnote - new trainer, Blackbelt1
+	text "Saah!"
+	prompt
+
+_Route19Blackbelt1AfterBattleText:: ; marcelnote - new trainer, Blackbelt1
+	text "My brother trains"
+	line "on that pier"
+	cont "over there."
+	done
+
+_Route19Blackbelt2BattleText:: ; marcelnote - new trainer, Blackbelt2
+	text "The rhythm of the"
+	line "waves helps me"
+	cont "perfect my moves."
+	done
+
+_Route19Blackbelt2EndBattleText:: ; marcelnote - new trainer, Blackbelt2
+	text "Kyah!"
+	prompt
+
+_Route19Blackbelt2AfterBattleText:: ; marcelnote - new trainer, Blackbelt2
+	text "My brother trains"
+	line "back on the"
+	cont "beach."
+	done
+
+_Route19Fisher1BattleText:: ; marcelnote - new trainer, Fisher1
+	text "That guy's yells"
+	line "are scaring away"
+	cont "the fish!"
+	done
+
+_Route19Fisher1EndBattleText:: ; marcelnote - new trainer, Fisher1
+	text "No"
+	line "bite!"
+	prompt
+
+_Route19Fisher1AfterBattleText:: ; marcelnote - new trainer, Fisher1
+	text "I really need"
+	line "to find another"
+	cont "fishing spot."
+	done
+
 _Route19SignText::
 	text "SEA ROUTE 19"
 	line "FUCHSIA CITY -"
 	cont "SEAFOAM ISLANDS"
+	done
+
+_Route19BeachHouseSignText:: ; marcelnote - new trainer, Fisher1
+	text "BEACH HOUSE"
+	line "Closed for"
+	cont "repairs."
 	done

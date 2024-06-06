@@ -336,6 +336,9 @@ FisherData:
 	db 33, SEAKING, GOLDEEN, 0
 ; Route 12
 	db 24, MAGIKARP, MAGIKARP, 0
+; marcelnote - new trainers
+; Route 19
+	db 31, SHELLDER, TENTACRUEL, 0
 
 SwimmerData:
 ; Cerulean Gym
@@ -408,8 +411,11 @@ BeautyData:
 	db 29, STARYU, STARYU, STARYU, 0
 ; Route 20
 	db 30, SEADRA, HORSEA, SEADRA, 0
-; Cinnabar Volcano 1F   ; marcelnote - new location
+; marcelnote - new trainers
+; Cinnabar Volcano 1F
 	db 39, POLIWHIRL, WIGGLYTUFF, STARMIE, 0
+; Route 19
+	db 31, STARYU, SEEL, STARMIE, 0
 
 PsychicData:
 ; Saffron Gym
@@ -494,6 +500,10 @@ BlackbeltData:
 	db 38, MACHOKE, MACHOP, MACHOKE, 0
 ; Victory Road 2F
 	db 43, MACHOKE, MACHOP, MACHOKE, 0
+; marcelnote - new trainers
+; Route 19
+	db 30, MACHOP, PRIMEAPE, 0
+	db 30, MANKEY, MACHOKE, 0
 
 Green1Data:
 	db 5, SQUIRTLE, 0
