@@ -185,8 +185,8 @@ MapSongBanks::
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_1F
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; SAFFRON_POKECENTER
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; MR_PSYCHICS_HOUSE
-	db MUSIC_CITIES1, BANK(Music_Cities1) ; ROUTE_15_GATE_1F
-	db MUSIC_CITIES1, BANK(Music_Cities1) ; ROUTE_15_GATE_2F
+	db MUSIC_CITIES1, BANK(Music_Cities1) ; ROUTE_15_GATE ; marcelnote - merged ROUTE_18_GATE floors
+	db MUSIC_CITIES1, BANK(Music_Cities1) ; UNUSED_MAP_BF ; marcelnote - was ROUTE_15_GATE_2F, now unused
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; ROUTE_16_GATE_1F
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; ROUTE_16_GATE_2F
 	db MUSIC_CELADON, BANK(Music_Celadon) ; ROUTE_16_FLY_HOUSE

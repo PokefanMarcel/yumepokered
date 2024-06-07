@@ -63,7 +63,7 @@ HiddenObjectMaps:
 	;db SAFARI_ZONE_WEST_REST_HOUSE ; marcelnote - inaccessible Hidden objects
 	;db SAFARI_ZONE_EAST_REST_HOUSE
 	;db SAFARI_ZONE_NORTH_REST_HOUSE
-	db ROUTE_15_GATE_2F
+	db ROUTE_15_GATE ; marcelnote - merged ROUTE_15_GATE floors
 	db MR_FUJIS_HOUSE
 	db CELADON_MANSION_ROOF_HOUSE
 	db FIGHTING_DOJO
@@ -582,7 +582,7 @@ ViridianCityHiddenObjects:
 ;	db -1 ; end
 
 Route15GateUpstairsHiddenObjects:
-	hidden_object  1,  2, SPRITE_FACING_UP, Route15GateLeftBinoculars
+	hidden_object  1, 16, SPRITE_FACING_UP, Route15GateLeftBinoculars ; marcelnote - merged Route15Gate floors
 	db -1 ; end
 
 LavenderHouse1HiddenObjects:

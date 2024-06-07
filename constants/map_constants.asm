@@ -204,8 +204,8 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const SILPH_CO_1F,                   15,  9 ; $B5
 	map_const SAFFRON_POKECENTER,             7,  4 ; $B6
 	map_const MR_PSYCHICS_HOUSE,              4,  4 ; $B7
-	map_const ROUTE_15_GATE_1F,               4,  5 ; $B8
-	map_const ROUTE_15_GATE_2F,               4,  4 ; $B9
+	map_const ROUTE_15_GATE,                  4, 11 ; $B8 ; marcelnote - merged ROUTE_15_GATE floors
+	map_const UNUSED_MAP_B9,                  0,  0 ; $B9 ; marcelnote - was ROUTE_15_GATE_2F
 	map_const ROUTE_16_GATE_1F,               4,  7 ; $BA
 	map_const ROUTE_16_GATE_2F,               4,  4 ; $BB
 	map_const ROUTE_16_FLY_HOUSE,             4,  4 ; $BC

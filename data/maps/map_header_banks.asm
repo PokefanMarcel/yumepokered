@@ -186,8 +186,8 @@ MapHeaderBanks::
 	db BANK(SilphCo1F_h)
 	db BANK(SaffronPokecenter_h)
 	db BANK(MrPsychicsHouse_h)
-	db BANK(Route15Gate1F_h)
-	db BANK(Route15Gate2F_h)
+	db BANK(Route15Gate_h) ; marcelnote - merged Route15Gate floors
+	db $11 ; UNUSED_MAP_B9 ; marcelnote - was Route15Gate2F_h, now unused
 	db BANK(Route16Gate1F_h)
 	db BANK(Route16Gate2F_h)
 	db BANK(Route16FlyHouse_h)

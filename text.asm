@@ -93,8 +93,7 @@ INCLUDE "text/DiglettsCaveRoute11.asm"
 INCLUDE "text/Route12Gate1F.asm"
 INCLUDE "text/Route12Gate2F.asm"
 INCLUDE "text/Route12FishingGuideHouse.asm" ; marcelnote - from Super Rod to Fishing Guide
-INCLUDE "text/Route15Gate1F.asm"
-INCLUDE "text/Route15Gate2F.asm"
+INCLUDE "text/Route15Gate.asm" ; marcelnote - merged Route18Gate floors
 INCLUDE "text/Route16Gate1F.asm"
 INCLUDE "text/Route16Gate2F.asm"
 INCLUDE "text/Route16FlyHouse.asm"

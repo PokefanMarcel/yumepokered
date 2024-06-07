@@ -186,8 +186,8 @@ MapHeaderPointers::
 	dw SilphCo1F_h
 	dw SaffronPokecenter_h
 	dw MrPsychicsHouse_h
-	dw Route15Gate1F_h
-	dw Route15Gate2F_h
+	dw Route15Gate_h ; marcelnote - merged Route15Gate floors
+	dw Route15Gate_h ; UNUSED_MAP_B9 ; marcelnote - was Route15Gate2F_h, now unused
 	dw Route16Gate1F_h
 	dw Route16Gate2F_h
 	dw Route16FlyHouse_h
