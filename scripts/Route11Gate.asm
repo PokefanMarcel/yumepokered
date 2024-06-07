@@ -1,12 +1,20 @@
-Route11Gate2F_Script:
-	jp DisableAutoTextBoxDrawing
+; marcelnote - merged Route11Gate floors
+Route11Gate_Script:
+	jp EnableAutoTextBoxDrawing
+	; marcelnote - Route11Gate2F_Script used to be just:
+	; jp DisableAutoTextBoxDrawing
 
-Route11Gate2F_TextPointers:
+Route11Gate_TextPointers:
 	def_text_pointers
+	dw_const Route11Gate1FGuardText,           TEXT_ROUTE11GATE1F_GUARD
 	dw_const Route11Gate2FYoungsterText,       TEXT_ROUTE11GATE2F_YOUNGSTER
 	dw_const Route11Gate2FOaksAideText,        TEXT_ROUTE11GATE2F_OAKS_AIDE
 	dw_const Route11Gate2FLeftBinocularsText,  TEXT_ROUTE11GATE2F_LEFT_BINOCULARS
 	dw_const Route11Gate2FRightBinocularsText, TEXT_ROUTE11GATE2F_RIGHT_BINOCULARS
+
+Route11Gate1FGuardText:
+	text_far _Route11Gate1FGuardText
+	text_end
 
 Route11Gate2FYoungsterText:
 	text_asm

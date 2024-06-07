@@ -86,9 +86,9 @@ MapHeaderPointers::
 	dw RockTunnelPokecenter_h
 	dw RockTunnel1F_h
 	dw PowerPlant_h
-	dw Route11Gate1F_h
+	dw Route11Gate_h ; marcelnote - merged Route11Gate floors
 	dw DiglettsCaveRoute11_h
-	dw Route11Gate2F_h
+	dw Route11Gate_h ; UNUSED_MAP_56 ; marcelnote - was Route11Gate2F_h, now unused
 	dw Route12Gate1F_h
 	dw BillsHouse_h
 	dw VermilionPokecenter_h

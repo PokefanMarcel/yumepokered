@@ -412,13 +412,13 @@ MtMoonPokecenter_Blocks: INCBIN "maps/MtMoonPokecenter.blk"
 
 ;Route18Gate1F_Blocks: ; marcelnote - leaving this to remember also merging others if possible
 ;Route15Gate1F_Blocks:
-Route11Gate1F_Blocks: INCBIN "maps/Route11Gate1F.blk"
+;Route11Gate1F_Blocks: INCBIN "maps/Route11Gate1F.blk"
 
 ;Route18Gate2F_Blocks: ; marcelnote - leaving this to remember also merging others if possible
 Route16Gate2F_Blocks:
 ;Route15Gate2F_Blocks:
-Route12Gate2F_Blocks:
-Route11Gate2F_Blocks: INCBIN "maps/Route11Gate2F.blk"
+Route12Gate2F_Blocks: INCBIN "maps/Route12Gate2F.blk"
+;Route11Gate2F_Blocks: INCBIN "maps/Route11Gate2F.blk"
 
 
 SECTION "Maps 8", ROMX
@@ -517,13 +517,9 @@ INCLUDE "data/maps/headers/RockTunnelPokecenter.asm"
 INCLUDE "scripts/RockTunnelPokecenter.asm"
 INCLUDE "data/maps/objects/RockTunnelPokecenter.asm"
 
-INCLUDE "data/maps/headers/Route11Gate1F.asm"
-INCLUDE "scripts/Route11Gate1F.asm"
-INCLUDE "data/maps/objects/Route11Gate1F.asm"
-
-INCLUDE "data/maps/headers/Route11Gate2F.asm"
-INCLUDE "scripts/Route11Gate2F.asm"
-INCLUDE "data/maps/objects/Route11Gate2F.asm"
+INCLUDE "data/maps/headers/Route11Gate.asm"
+INCLUDE "scripts/Route11Gate.asm"
+INCLUDE "data/maps/objects/Route11Gate.asm"
 
 INCLUDE "data/maps/headers/Route12Gate1F.asm"
 INCLUDE "scripts/Route12Gate1F.asm"
@@ -551,6 +547,7 @@ INCLUDE "data/maps/headers/Route18Gate.asm"
 INCLUDE "scripts/Route18Gate.asm"
 INCLUDE "data/maps/objects/Route18Gate.asm"
 
+Route11Gate_Blocks:
 Route15Gate_Blocks:
 Route18Gate_Blocks: INCBIN "maps/Route18Gate.blk"
 
