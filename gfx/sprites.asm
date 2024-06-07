@@ -74,7 +74,7 @@ AgathaSprite::           INCBIN "gfx/sprites/agatha.2bpp"
 SeelSprite::             INCBIN "gfx/sprites/seel.2bpp"
 
 
-SECTION "NPC Sprites 3", ROMX
+SECTION "NPC Sprites 3", ROMX ; marcelnote - new sprites
 
 BrockSprite::            INCBIN "gfx/sprites/brock.2bpp"
 MistySprite::            INCBIN "gfx/sprites/misty.2bpp"
@@ -84,3 +84,4 @@ KogaSprite::             INCBIN "gfx/sprites/koga.2bpp"
 SabrinaSprite::          INCBIN "gfx/sprites/sabrina.2bpp"
 BlaineSprite::           INCBIN "gfx/sprites/blaine.2bpp"
 BrunoSprite::            INCBIN "gfx/sprites/bruno.2bpp"
+SwimmerFSprite::         INCBIN "gfx/sprites/swimmer_f.2bpp"

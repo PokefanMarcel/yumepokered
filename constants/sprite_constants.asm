@@ -61,25 +61,26 @@
 	const SPRITE_AGATHA                  ; $39
 	const SPRITE_BRUNO                   ; $3a
 	const SPRITE_LORELEI                 ; $3b
-	const SPRITE_BROCK                   ; $3c
-	const SPRITE_MISTY                   ; $3d
-	const SPRITE_LT_SURGE                ; $3e
-	const SPRITE_ERIKA                   ; $3f
-	const SPRITE_KOGA                    ; $40
-	const SPRITE_SABRINA                 ; $41
-	const SPRITE_BLAINE                  ; $42
-	const SPRITE_SEEL                    ; $43
+	const SPRITE_BROCK                   ; $3c ; marcelnote - new sprite
+	const SPRITE_MISTY                   ; $3d ; marcelnote - new sprite
+	const SPRITE_LT_SURGE                ; $3e ; marcelnote - new sprite
+	const SPRITE_ERIKA                   ; $3f ; marcelnote - new sprite
+	const SPRITE_KOGA                    ; $40 ; marcelnote - new sprite
+	const SPRITE_SABRINA                 ; $41 ; marcelnote - new sprite
+	const SPRITE_BLAINE                  ; $42 ; marcelnote - new sprite
+	const SPRITE_SWIMMER_F               ; $43 ; marcelnote - new sprite
+	const SPRITE_SEEL                    ; $44
 DEF FIRST_STILL_SPRITE EQU const_value
-	const SPRITE_POKE_BALL               ; $44
-	const SPRITE_FOSSIL                  ; $45
-	const SPRITE_BOULDER                 ; $46
-	const SPRITE_PAPER                   ; $47
-	const SPRITE_POKEDEX                 ; $48
-	const SPRITE_CLIPBOARD               ; $49
-	const SPRITE_SNORLAX                 ; $4a
-	const SPRITE_UNUSED_OLD_AMBER        ; $4b
-	const SPRITE_OLD_AMBER               ; $4c
-	const SPRITE_UNUSED_GAMBLER_ASLEEP_1 ; $4d
-	const SPRITE_UNUSED_GAMBLER_ASLEEP_2 ; $4e
-	const SPRITE_GAMBLER_ASLEEP          ; $4f
+	const SPRITE_POKE_BALL               ; $45
+	const SPRITE_FOSSIL                  ; $46
+	const SPRITE_BOULDER                 ; $47
+	const SPRITE_PAPER                   ; $48
+	const SPRITE_POKEDEX                 ; $49
+	const SPRITE_CLIPBOARD               ; $4a
+	const SPRITE_SNORLAX                 ; $4b
+	const SPRITE_UNUSED_OLD_AMBER        ; $4c
+	const SPRITE_OLD_AMBER               ; $4d
+	const SPRITE_UNUSED_GAMBLER_ASLEEP_1 ; $4e
+	const SPRITE_UNUSED_GAMBLER_ASLEEP_2 ; $4f
+	const SPRITE_GAMBLER_ASLEEP          ; $50
 DEF NUM_SPRITES EQU const_value - 1
