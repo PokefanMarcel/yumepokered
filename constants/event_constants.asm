@@ -339,7 +339,8 @@
 	const EVENT_BEAT_ROUTE_11_TRAINER_7
 	const EVENT_BEAT_ROUTE_11_TRAINER_8
 	const EVENT_BEAT_ROUTE_11_TRAINER_9
-	const_skip 4
+	const EVENT_BEAT_ROUTE_11_TRAINER_10 ; marcelnote - new trainer based on A.J.
+	const_skip 3                         ; marcelnote - adjusted down from 4
 	const EVENT_GOT_ITEMFINDER
 
 ; Route 12 events

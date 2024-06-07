@@ -25,6 +25,7 @@ Route11_TextPointers:
 	dw_const Route11Youngster3Text,       TEXT_ROUTE11_YOUNGSTER3
 	dw_const Route11SuperNerd2Text,       TEXT_ROUTE11_SUPER_NERD2
 	dw_const Route11Youngster4Text,       TEXT_ROUTE11_YOUNGSTER4
+	dw_const Route11Youngster5Text,       TEXT_ROUTE11_YOUNGSTER5 ; marcelnote - new trainer based on A.J.
 	dw_const Route11DiglettsCaveSignText, TEXT_ROUTE11_DIGLETTSCAVE_SIGN
 
 Route11TrainerHeaders:
@@ -49,6 +50,8 @@ Route11TrainerHeader8:
 	trainer EVENT_BEAT_ROUTE_11_TRAINER_8, 3, Route11SuperNerd2BattleText, Route11SuperNerd2EndBattleText, Route11SuperNerd2AfterBattleText
 Route11TrainerHeader9:
 	trainer EVENT_BEAT_ROUTE_11_TRAINER_9, 4, Route11Youngster4BattleText, Route11Youngster4EndBattleText, Route11Youngster4AfterBattleText
+Route11TrainerHeader10: ; marcelnote - new trainer based on A.J.
+	trainer EVENT_BEAT_ROUTE_11_TRAINER_10, 3, Route11Youngster5BattleText, Route11Youngster5EndBattleText, Route11Youngster5AfterBattleText
 	db -1 ; end
 
 Route11Gambler1Text:
@@ -229,6 +232,24 @@ Route11Youngster4EndBattleText:
 
 Route11Youngster4AfterBattleText:
 	text_far _Route11Youngster4AfterBattleText
+	text_end
+
+Route11Youngster5Text: ; marcelnote - new trainer based on A.J.
+	text_asm
+	ld hl, Route11TrainerHeader10
+	call TalkToTrainer
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+Route11Youngster5BattleText: ; marcelnote - new trainer based on A.J.
+	text_far _Route11Youngster5BattleText
+	text_end
+
+Route11Youngster5EndBattleText: ; marcelnote - new trainer based on A.J.
+	text_far _Route11Youngster5EndBattleText
+	text_end
+
+Route11Youngster5AfterBattleText: ; marcelnote - new trainer based on A.J.
+	text_far _Route11Youngster5AfterBattleText
 	text_end
 
 Route11DiglettsCaveSignText:

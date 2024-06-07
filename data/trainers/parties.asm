@@ -79,6 +79,9 @@ YoungsterData:
 	db 18, NIDORAN_M, NIDORINO, 0
 ; Unused
 	db 17, SPEAROW, RATTATA, RATTATA, SPEAROW, 0
+; marcelnote - new trainers
+; Route 11
+	db 23, SANDSHREW, 0 ; based on A.J.
 
 BugCatcherData:
 ; Viridian Forest

@@ -58,7 +58,7 @@ _Route22GateYoungsterText:: ; marcelnote - new NPC
 	cont "turned me down."
 
 	para "Looks like I need"
-	line "more badges."
+	line "more BADGEs."
 	done
 
 _Route22GateCooltrainerFText:: ; marcelnote - new NPC
@@ -73,7 +73,7 @@ _Route22GateCooltrainerFText:: ; marcelnote - new NPC
 _Route22GateReceptionistText:: ; marcelnote - new receptionist
 	text "I am sorry, but"
 	line "you need eight"
-	cont "badges to sign"
+	cont "BADGEs to sign"
 	cont "up for a battle."
 
 	para "Please come back"
