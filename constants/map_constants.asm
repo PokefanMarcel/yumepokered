@@ -142,10 +142,10 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const UNDERGROUND_PATH_NORTH_SOUTH,   4, 24 ; $77 ; UndergroundPathNorthSouth.blk is actually 4x23
 	map_const CHAMPIONS_ROOM,                 4,  4 ; $78
 	map_const UNDERGROUND_PATH_WEST_EAST,    25,  4 ; $79
-	map_const CELADON_MART_1F_2F_3F,         10, 18 ; $7A ; marcelnote - merged 1F 2F 3F
+	map_const CELADON_MART_1F2F3F,           10, 18 ; $7A ; marcelnote - merged 1F 2F 3F
 	map_const UNUSED_MAP_7B,                  0,  0 ; $7B ; marcelnote - was CELADON_MART_2F
 	map_const UNUSED_MAP_7C,                  0,  0 ; $7C ; marcelnote - was CELADON_MART_3F
-	map_const CELADON_MART_4F,               10,  4 ; $7D
+	map_const CELADON_MART_4F5F6F,           10, 18 ; $7D ; marcelnote - merged 4F 5F + new 6F
 	map_const CELADON_MART_ROOF,             10,  6 ; $7E ; marcelnote - expanded from y=4
 	map_const CELADON_MART_ELEVATOR,          2,  2 ; $7F
 	map_const CELADON_MANSION_1F,             4,  6 ; $80
@@ -156,7 +156,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const CELADON_POKECENTER,             7,  4 ; $85
 	map_const CELADON_GYM,                    5,  9 ; $86
 	map_const GAME_CORNER,                   10,  9 ; $87
-	map_const CELADON_MART_5F,               10,  4 ; $88
+	map_const UNUSED_MAP_88,                  0,  0 ; $88 ; marcelnote - was CELADON_MART_5F
 	map_const GAME_CORNER_PRIZE_ROOM,         5,  4 ; $89
 	map_const CELADON_DINER,                  5,  4 ; $8A
 	map_const CELADON_CHIEF_HOUSE,            4,  4 ; $8B

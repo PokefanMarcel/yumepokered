@@ -127,7 +127,7 @@ MapHeaderBanks::
 	db BANK(CeladonMart1F2F3F_h) ; marcelnote - merged 1F 2F 3F
 	db $1D ; UNUSED_MAP_7B ; marcelnote - was CeladonMart2F_h
 	db $1D ; UNUSED_MAP_7C ; marcelnote - was CeladonMart3F_h
-	db BANK(CeladonMart4F_h)
+	db BANK(CeladonMart4F5F6F_h) ; marcelnote - merged 4F 5F + new 6F
 	db BANK(CeladonMartRoof_h)
 	db BANK(CeladonMartElevator_h)
 	db BANK(CeladonMansion1F_h)
@@ -138,7 +138,7 @@ MapHeaderBanks::
 	db BANK(CeladonPokecenter_h)
 	db BANK(CeladonGym_h)
 	db BANK(GameCorner_h)
-	db BANK(CeladonMart5F_h)
+	db $1D ; UNUSED_MAP_7B ; marcelnote - was CeladonMart5F_h
 	db BANK(GameCornerPrizeRoom_h)
 	db BANK(CeladonDiner_h)
 	db BANK(CeladonChiefHouse_h)

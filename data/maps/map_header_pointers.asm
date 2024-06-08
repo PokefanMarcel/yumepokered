@@ -124,10 +124,10 @@ MapHeaderPointers::
 	dw UndergroundPathNorthSouth_h
 	dw ChampionsRoom_h
 	dw UndergroundPathWestEast_h
-	dw CeladonMart1F2F3F_h
+	dw CeladonMart1F2F3F_h ; marcelnote - merged 1F 2F 3F
 	dw CeladonMart1F2F3F_h ; UNUSED_MAP_7B ; marcelnote - was CeladonMart2F_h
 	dw CeladonMart1F2F3F_h ; UNUSED_MAP_7C ; marcelnote - was CeladonMart3F_h
-	dw CeladonMart4F_h
+	dw CeladonMart4F5F6F_h ; marcelnote - merged 4F 5F + new 6F
 	dw CeladonMartRoof_h
 	dw CeladonMartElevator_h
 	dw CeladonMansion1F_h
@@ -138,7 +138,7 @@ MapHeaderPointers::
 	dw CeladonPokecenter_h
 	dw CeladonGym_h
 	dw GameCorner_h
-	dw CeladonMart5F_h
+	dw CeladonMart4F5F6F_h ; UNUSED_MAP_88 ; marcelnote - was CeladonMart5F_h
 	dw GameCornerPrizeRoom_h
 	dw CeladonDiner_h
 	dw CeladonChiefHouse_h

@@ -40,24 +40,24 @@ CeladonMartElevatorCopyWarpMapsScript:
 	jp CopyData
 
 CeladonMartElevatorFloors:
-	db 5 ; #
+	db 6 ; #    ; marcelnote - 5 -> 6 floors
 	db FLOOR_1F
 	db FLOOR_2F
 	db FLOOR_3F
 	db FLOOR_4F
 	db FLOOR_5F
-	;db FLOOR_6F ; testing
+	db FLOOR_6F ; marcelnote - new 6th floor
 	db -1 ; end
 
 ; These specify where the player goes after getting out of the elevator.
 CeladonMartElevatorWarpMaps:
 	; warp number, map id
-	db  5, CELADON_MART_1F_2F_3F ; marcelnote - merged 1F 2F 3F
-	db  8, CELADON_MART_1F_2F_3F
-	db 11, CELADON_MART_1F_2F_3F
-	db  2, CELADON_MART_4F
-	db  2, CELADON_MART_5F
-	;db  2, CELADON_MART_6F ; testing
+	db  5, CELADON_MART_1F2F3F ; marcelnote - merged 1F 2F 3F
+	db  8, CELADON_MART_1F2F3F
+	db 11, CELADON_MART_1F2F3F
+	db  2, CELADON_MART_4F5F6F ; marcelnote - merged 4F 5F + new 6F
+	db  5, CELADON_MART_4F5F6F
+	db  8, CELADON_MART_4F5F6F ; marcelnote - new 6th floor
 .End:
 
 CeladonMartElevatorShakeScript:

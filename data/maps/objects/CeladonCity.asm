@@ -13,15 +13,15 @@ CeladonCity_Object:
 	db $f ; border block
 
 	def_warp_events
-	warp_event  8, 13, CELADON_MART_1F_2F_3F, 1 ; marcelnote - merged 1F 2F 3F
-	warp_event 10, 13, CELADON_MART_1F_2F_3F, 3 ; marcelnote - merged 1F 2F 3F
+	warp_event  8, 13, CELADON_MART_1F2F3F, 1 ; marcelnote - merged 1F 2F 3F
+	warp_event 10, 13, CELADON_MART_1F2F3F, 3 ; marcelnote - merged 1F 2F 3F
 	warp_event 24,  9, CELADON_MANSION_1F, 1
 	warp_event 24,  3, CELADON_MANSION_1F, 3
 	warp_event 25,  3, CELADON_MANSION_1F, 3
 	warp_event 41,  9, CELADON_POKECENTER, 1
 	warp_event 12, 27, CELADON_GYM, 1
 	warp_event 28, 19, GAME_CORNER, 1
-	warp_event 39, 19, CELADON_MART_5F, 1
+	warp_event 39, 19, CELADON_MART_4F5F6F, 1 ; marcelnote - was CELADON_MART_5F
 	warp_event 33, 19, GAME_CORNER_PRIZE_ROOM, 1
 	warp_event 31, 27, CELADON_DINER, 1
 	warp_event 35, 27, CELADON_CHIEF_HOUSE, 1

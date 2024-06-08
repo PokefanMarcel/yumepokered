@@ -6,7 +6,7 @@ CeladonMartRoof_Object:
 	db $42 ; border block
 
 	def_warp_events
-	warp_event 15,  2, CELADON_MART_5F, 1
+	warp_event 15,  2, CELADON_MART_4F5F6F, 8 ; marcelnote - merged 4F 5F + new 6F
 
 	def_bg_events
 	bg_event 10,  1, TEXT_CELADONMARTROOF_VENDING_MACHINE1
