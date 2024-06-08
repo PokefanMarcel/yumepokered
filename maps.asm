@@ -430,6 +430,17 @@ INCLUDE "scripts/RedsHouse1F.asm"
 INCLUDE "data/maps/objects/RedsHouse1F.asm"
 RedsHouse1F_Blocks: INCBIN "maps/RedsHouse1F.blk"
 
+INCLUDE "data/maps/headers/CeladonMart1F.asm"
+INCLUDE "scripts/CeladonMart1F.asm"
+INCLUDE "data/maps/objects/CeladonMart1F.asm"
+CeladonMart1F_Blocks: INCBIN "maps/CeladonMart1F.blk"
+
+INCLUDE "data/maps/headers/CeladonMart2F.asm"
+INCLUDE "scripts/CeladonMart2F.asm"
+INCLUDE "data/maps/objects/CeladonMart2F.asm"
+; marcelnote - not the same as CeladonMart5F_Blocks because of stairs
+CeladonMart2F_Blocks: INCBIN "maps/CeladonMart2F.blk"
+
 INCLUDE "data/maps/headers/CeladonMart3F.asm"
 INCLUDE "scripts/CeladonMart3F.asm"
 INCLUDE "data/maps/objects/CeladonMart3F.asm"
@@ -439,6 +450,11 @@ INCLUDE "data/maps/headers/CeladonMart4F.asm"
 INCLUDE "scripts/CeladonMart4F.asm"
 INCLUDE "data/maps/objects/CeladonMart4F.asm"
 CeladonMart4F_Blocks: INCBIN "maps/CeladonMart4F.blk"
+
+INCLUDE "data/maps/headers/CeladonMart5F.asm"
+INCLUDE "scripts/CeladonMart5F.asm"
+INCLUDE "data/maps/objects/CeladonMart5F.asm"
+CeladonMart5F_Blocks: INCBIN "maps/CeladonMart5F.blk"
 
 INCLUDE "data/maps/headers/CeladonMartRoof.asm"
 INCLUDE "scripts/CeladonMartRoof.asm"
@@ -483,11 +499,6 @@ INCLUDE "data/maps/headers/GameCorner.asm"
 INCLUDE "scripts/GameCorner.asm"
 INCLUDE "data/maps/objects/GameCorner.asm"
 GameCorner_Blocks: INCBIN "maps/GameCorner.blk"
-
-INCLUDE "data/maps/headers/CeladonMart5F.asm"
-INCLUDE "scripts/CeladonMart5F.asm"
-INCLUDE "data/maps/objects/CeladonMart5F.asm"
-CeladonMart5F_Blocks: INCBIN "maps/CeladonMart5F.blk"
 
 INCLUDE "data/maps/headers/GameCornerPrizeRoom.asm"
 INCLUDE "scripts/GameCornerPrizeRoom.asm"
@@ -719,11 +730,6 @@ INCLUDE "scripts/Route21.asm"
 INCLUDE "data/maps/headers/VermilionGoodRodHouse.asm" ; marcelnote - from Old to Good Rod
 INCLUDE "scripts/VermilionGoodRodHouse.asm"
 INCLUDE "data/maps/objects/VermilionGoodRodHouse.asm"
-
-INCLUDE "data/maps/headers/CeladonMart2F.asm"
-INCLUDE "scripts/CeladonMart2F.asm"
-INCLUDE "data/maps/objects/CeladonMart2F.asm"
-CeladonMart2F_Blocks: INCBIN "maps/CeladonMart2F.blk"
 
 INCLUDE "data/maps/headers/FuchsiaSuperRodHouse.asm" ; marcelnote - from Good to Super Rod
 INCLUDE "scripts/FuchsiaSuperRodHouse.asm"
@@ -1022,11 +1028,6 @@ INCLUDE "data/maps/headers/PokemonTower7F.asm"
 INCLUDE "scripts/PokemonTower7F.asm"
 INCLUDE "data/maps/objects/PokemonTower7F.asm"
 PokemonTower7F_Blocks: INCBIN "maps/PokemonTower7F.blk"
-
-INCLUDE "data/maps/headers/CeladonMart1F.asm"
-INCLUDE "scripts/CeladonMart1F.asm"
-INCLUDE "data/maps/objects/CeladonMart1F.asm"
-CeladonMart1F_Blocks: INCBIN "maps/CeladonMart1F.blk"
 
 
 SECTION "Maps 18", ROMX

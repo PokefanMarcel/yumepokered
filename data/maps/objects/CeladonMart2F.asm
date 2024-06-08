@@ -3,6 +3,7 @@
 	const_export CELADONMART2F_CLERK2
 	const_export CELADONMART2F_MIDDLE_AGED_MAN
 	const_export CELADONMART2F_GIRL
+	const_export CELADONMART2F_BRUNETTE_GIRL ; marcelnote - new NPC
 
 CeladonMart2F_Object:
 	db $f ; border block
@@ -20,5 +21,6 @@ CeladonMart2F_Object:
 	object_event  6,  3, SPRITE_CLERK, STAY, DOWN, TEXT_CELADONMART2F_CLERK2
 	object_event 19,  5, SPRITE_MIDDLE_AGED_MAN, STAY, NONE, TEXT_CELADONMART2F_MIDDLE_AGED_MAN
 	object_event 14,  4, SPRITE_GIRL, WALK, UP_DOWN, TEXT_CELADONMART2F_GIRL
+	object_event  6,  6, SPRITE_BRUNETTE_GIRL, WALK, LEFT_RIGHT, TEXT_CELADONMART2F_BRUNETTE_GIRL ; marcelnote - new NPC
 
 	def_warps_to CELADON_MART_2F

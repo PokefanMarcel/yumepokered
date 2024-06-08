@@ -13,6 +13,19 @@ _CeladonMart2FGirlText::
 	cont "REVIVE."
 	done
 
+_CeladonMart2FBrunetteGirlText:: ; marcelnote - new NPC
+	text "Here each BADGE"
+	line "allows you to"
+	cont "buy more TMs."
+
+	para "I want to teach"
+	line "BUBBLEBEAM to"
+	cont "WIGGLYTUFF, but"
+	cont "the clerk says"
+	cont "I need the"
+	cont "RAINBOW BADGE..."
+	done
+
 _CeladonMart2FCurrentFloorSignText::
 	text "Top Grade Items"
 	line "for Trainers!"
