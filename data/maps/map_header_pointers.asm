@@ -89,7 +89,7 @@ MapHeaderPointers::
 	dw Route11Gate_h ; marcelnote - merged Route11Gate floors
 	dw DiglettsCaveRoute11_h
 	dw Route11Gate_h ; UNUSED_MAP_56 ; marcelnote - was Route11Gate2F_h, now unused
-	dw Route12Gate1F_h
+	dw Route12Gate_h ; marcelnote - merged Route12Gate floors
 	dw BillsHouse_h
 	dw VermilionPokecenter_h
 	dw PokemonFanClub_h
@@ -197,7 +197,7 @@ MapHeaderPointers::
 	dw SeafoamIslands1F_h
 	dw Route22Gate_h
 	dw VictoryRoad2F_h
-	dw Route12Gate2F_h
+	dw Route12Gate_h ; UNUSED_MAP_C3 ; marcelnote - was Route12Gate2F_h, now unused
 	dw VermilionTradeHouse_h
 	dw DiglettsCave_h
 	dw VictoryRoad3F_h

@@ -107,7 +107,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const ROUTE_11_GATE,                  4, 11 ; $54 ; marcelnote - merged ROUTE_11_GATE floors
 	map_const DIGLETTS_CAVE_ROUTE_11,         4,  4 ; $55
 	map_const UNUSED_MAP_56,                  0,  0 ; $56 ; marcelnote - was ROUTE_11_GATE_2F
-	map_const ROUTE_12_GATE_1F,               5,  4 ; $57
+	map_const ROUTE_12_GATE,                 11,  4 ; $57 ; marcelnote - merged ROUTE_12_GATE floors
 	map_const BILLS_HOUSE,                    4,  4 ; $58
 	map_const VERMILION_POKECENTER,           7,  4 ; $59
 	map_const POKEMON_FAN_CLUB,               4,  4 ; $5A
@@ -215,7 +215,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const SEAFOAM_ISLANDS_1F,            15,  9 ; $C0
 	map_const ROUTE_22_GATE,                 18,  4 ; $C1 ; marcelnote - added 2nd floor
 	map_const VICTORY_ROAD_2F,               15,  9 ; $C2
-	map_const ROUTE_12_GATE_2F,               4,  4 ; $C3
+	map_const UNUSED_MAP_C3,                  0,  0 ; $C3 ; marcelnote - was ROUTE_12_GATE_2F
 	map_const VERMILION_TRADE_HOUSE,          4,  4 ; $C4
 	map_const DIGLETTS_CAVE,                 20, 18 ; $C5
 	map_const VICTORY_ROAD_3F,               15,  9 ; $C6

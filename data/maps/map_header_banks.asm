@@ -89,7 +89,7 @@ MapHeaderBanks::
 	db BANK(Route11Gate_h) ; marcelnote - merged Route11Gate floors
 	db BANK(DiglettsCaveRoute11_h)
 	db $1D ; UNUSED_MAP_56 ; marcelnote - was Route11Gate2F_h, now unused
-	db BANK(Route12Gate1F_h)
+	db BANK(Route12Gate_h) ; marcelnote - merged Route12Gate floors
 	db BANK(BillsHouse_h)
 	db BANK(VermilionPokecenter_h)
 	db BANK(PokemonFanClub_h)
@@ -197,7 +197,7 @@ MapHeaderBanks::
 	db BANK(SeafoamIslands1F_h)
 	db BANK(Route22Gate_h)
 	db BANK(VictoryRoad2F_h)
-	db BANK(Route12Gate2F_h)
+	db $11 ; UNUSED_MAP_C3 ; marcelnote - was Route12Gate2F_h, now unused
 	db BANK(VermilionTradeHouse_h)
 	db BANK(DiglettsCave_h)
 	db BANK(VictoryRoad3F_h)

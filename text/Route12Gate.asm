@@ -1,3 +1,9 @@
+; marcelnote - merged Route12gate floors
+_Route12Gate1FGuardText::
+	text "There's a lookout"
+	line "spot upstairs."
+	done
+
 _Route12Gate2FBrunetteGirlYouCanHaveThisText::
 	text "My #MON's"
 	line "ashes are stored"

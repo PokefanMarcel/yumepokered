@@ -88,7 +88,7 @@ MapSongBanks::
 	db MUSIC_VERMILION, BANK(Music_Vermilion) ; ROUTE_11_GATE ; marcelnote - merged ROUTE_11_GATE floors
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; DIGLETTS_CAVE_ROUTE_11
 	db MUSIC_VERMILION, BANK(Music_Vermilion) ; UNUSED_MAP_56 ; marcelnote - was ROUTE_11_GATE_2F, now unused
-	db MUSIC_CITIES1, BANK(Music_Cities1) ; ROUTE_12_GATE_1F
+	db MUSIC_CITIES1, BANK(Music_Cities1) ; ROUTE_12_GATE ; marcelnote - merged ROUTE_12_GATE floors
 	db MUSIC_CITIES2, BANK(Music_Cities2) ; BILLS_HOUSE
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; VERMILION_POKECENTER
 	db MUSIC_VERMILION, BANK(Music_Vermilion) ; POKEMON_FAN_CLUB
@@ -196,7 +196,7 @@ MapSongBanks::
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; SEAFOAM_ISLANDS_1F
 	db MUSIC_GYM, BANK(Music_Gym) ; ROUTE_22_GATE ; marcelnote - changed from MUSIC_DUNGEON2
 	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) ; VICTORY_ROAD_2F
-	db MUSIC_CITIES1, BANK(Music_Cities1) ; ROUTE_12_GATE_2F
+	db MUSIC_CITIES1, BANK(Music_Cities1) ; UNUSED_MAP_C3 ; marcelnote - was ROUTE_12_GATE_2F, now unused
 	db MUSIC_VERMILION, BANK(Music_Vermilion) ; VERMILION_TRADE_HOUSE
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; DIGLETTS_CAVE
 	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) ; VICTORY_ROAD_3F
