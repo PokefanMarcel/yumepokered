@@ -1,3 +1,73 @@
+_CeladonMart1FReceptionistText::
+	text "Hello! Welcome to"
+	line "CELADON DEPT."
+	cont "STORE."
+
+	para "The board on the"
+	line "right describes"
+	cont "the store layout."
+	done
+
+_CeladonMart1FDirectorySignText::
+	text "1F: SERVICE"
+	line "    COUNTER"
+
+	para "2F: TRAINER'S"
+	line "    MARKET"
+
+	para "3F: TV GAME SHOP"
+
+	para "4F: WISEMAN GIFTS"
+
+	para "5F: DRUG STORE"
+
+	para "6F: ???" ; marcelnote - new floor
+
+	para "ROOFTOP SQUARE:"
+	line "VENDING MACHINES"
+	done
+
+_CeladonMart1FCurrentFloorSignText::
+	text "1F: SERVICE"
+	line "    COUNTER"
+	done
+
+_CeladonMart2FMiddleAgedManText::
+	text "SUPER REPEL keeps"
+	line "weak #MON at"
+	cont "bay..."
+
+	para "Hmm, it's a more"
+	line "powerful REPEL!"
+	done
+
+_CeladonMart2FGirlText::
+	text "For long outings,"
+	line "you should buy"
+	cont "REVIVE."
+	done
+
+_CeladonMart2FBrunetteGirlText:: ; marcelnote - new NPC
+	text "Here each BADGE"
+	line "allows you to"
+	cont "buy more TMs."
+
+	para "I want to teach"
+	line "BUBBLEBEAM to"
+	cont "WIGGLYTUFF, but"
+	cont "the clerk says"
+	cont "I need the"
+	cont "RAINBOW BADGE..."
+	done
+
+_CeladonMart2FCurrentFloorSignText::
+	text "Top Grade Items"
+	line "for Trainers!"
+
+	para "2F: TRAINER'S"
+	line "    MARKET"
+	done
+
 _CeladonMart3FClerkTM18PreReceiveText::
 	text "Oh, hi! I finally"
 	line "finished #MON!"

@@ -13,8 +13,8 @@ CeladonCity_Object:
 	db $f ; border block
 
 	def_warp_events
-	warp_event  8, 13, CELADON_MART_1F, 1
-	warp_event 10, 13, CELADON_MART_1F, 3
+	warp_event  8, 13, CELADON_MART_1F_2F_3F, 1 ; marcelnote - merged 1F 2F 3F
+	warp_event 10, 13, CELADON_MART_1F_2F_3F, 3 ; marcelnote - merged 1F 2F 3F
 	warp_event 24,  9, CELADON_MANSION_1F, 1
 	warp_event 24,  3, CELADON_MANSION_1F, 3
 	warp_event 25,  3, CELADON_MANSION_1F, 3

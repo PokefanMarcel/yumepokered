@@ -124,9 +124,9 @@ MapHeaderBanks::
 	db BANK(UndergroundPathNorthSouth_h)
 	db BANK(ChampionsRoom_h)
 	db BANK(UndergroundPathWestEast_h)
-	db BANK(CeladonMart1F_h)
-	db BANK(CeladonMart2F_h)
-	db BANK(CeladonMart3F_h)
+	db BANK(CeladonMart1F2F3F_h) ; marcelnote - merged 1F 2F 3F
+	db $1D ; UNUSED_MAP_7B ; marcelnote - was CeladonMart2F_h
+	db $1D ; UNUSED_MAP_7C ; marcelnote - was CeladonMart3F_h
 	db BANK(CeladonMart4F_h)
 	db BANK(CeladonMartRoof_h)
 	db BANK(CeladonMartElevator_h)

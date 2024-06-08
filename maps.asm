@@ -430,21 +430,10 @@ INCLUDE "scripts/RedsHouse1F.asm"
 INCLUDE "data/maps/objects/RedsHouse1F.asm"
 RedsHouse1F_Blocks: INCBIN "maps/RedsHouse1F.blk"
 
-INCLUDE "data/maps/headers/CeladonMart1F.asm"
-INCLUDE "scripts/CeladonMart1F.asm"
-INCLUDE "data/maps/objects/CeladonMart1F.asm"
-CeladonMart1F_Blocks: INCBIN "maps/CeladonMart1F.blk"
-
-INCLUDE "data/maps/headers/CeladonMart2F.asm"
-INCLUDE "scripts/CeladonMart2F.asm"
-INCLUDE "data/maps/objects/CeladonMart2F.asm"
-; marcelnote - not the same as CeladonMart5F_Blocks because of stairs
-CeladonMart2F_Blocks: INCBIN "maps/CeladonMart2F.blk"
-
-INCLUDE "data/maps/headers/CeladonMart3F.asm"
-INCLUDE "scripts/CeladonMart3F.asm"
-INCLUDE "data/maps/objects/CeladonMart3F.asm"
-CeladonMart3F_Blocks: INCBIN "maps/CeladonMart3F.blk"
+INCLUDE "data/maps/headers/CeladonMart1F2F3F.asm"
+INCLUDE "scripts/CeladonMart1F2F3F.asm"
+INCLUDE "data/maps/objects/CeladonMart1F2F3F.asm"
+CeladonMart1F2F3F_Blocks: INCBIN "maps/CeladonMart1F2F3F.blk"
 
 INCLUDE "data/maps/headers/CeladonMart4F.asm"
 INCLUDE "scripts/CeladonMart4F.asm"

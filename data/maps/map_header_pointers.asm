@@ -124,9 +124,9 @@ MapHeaderPointers::
 	dw UndergroundPathNorthSouth_h
 	dw ChampionsRoom_h
 	dw UndergroundPathWestEast_h
-	dw CeladonMart1F_h
-	dw CeladonMart2F_h
-	dw CeladonMart3F_h
+	dw CeladonMart1F2F3F_h
+	dw CeladonMart1F2F3F_h ; UNUSED_MAP_7B ; marcelnote - was CeladonMart2F_h
+	dw CeladonMart1F2F3F_h ; UNUSED_MAP_7C ; marcelnote - was CeladonMart3F_h
 	dw CeladonMart4F_h
 	dw CeladonMartRoof_h
 	dw CeladonMartElevator_h

@@ -1,14 +1,49 @@
-CeladonMart2F_Script:
+; marcelnote - merged 1F 2F 3F
+CeladonMart1F2F3F_Script:
 	jp EnableAutoTextBoxDrawing
 
-CeladonMart2F_TextPointers:
+CeladonMart1F2F3F_TextPointers:
 	def_text_pointers
+	; object events
+	dw_const CeladonMart1FReceptionistText,     TEXT_CELADONMART1F_RECEPTIONIST
 	dw_const CeladonMart2FClerk1Text,           TEXT_CELADONMART2F_CLERK1
 	dw_const CeladonMart2FClerk2Text,           TEXT_CELADONMART2F_CLERK2
 	dw_const CeladonMart2FMiddleAgedManText,    TEXT_CELADONMART2F_MIDDLE_AGED_MAN
 	dw_const CeladonMart2FGirlText,             TEXT_CELADONMART2F_GIRL
 	dw_const CeladonMart2FBrunetteGirlText,     TEXT_CELADONMART2F_BRUNETTE_GIRL ; marcelnote - new NPC
+	dw_const CeladonMart3FClerkText,            TEXT_CELADONMART3F_CLERK
+	dw_const CeladonMart3FGameBoyKid1Text,      TEXT_CELADONMART3F_GAMEBOY_KID1
+	dw_const CeladonMart3FGameBoyKid2Text,      TEXT_CELADONMART3F_GAMEBOY_KID2
+	dw_const CeladonMart3FGameBoyKid3Text,      TEXT_CELADONMART3F_GAMEBOY_KID3
+	dw_const CeladonMart3FLittleBoyText,        TEXT_CELADONMART3F_LITTLE_BOY
+	; background events
+	dw_const CeladonMart1FDirectorySignText,    TEXT_CELADONMART1F_DIRECTORY_SIGN
+	dw_const CeladonMart1FCurrentFloorSignText, TEXT_CELADONMART1F_CURRENT_FLOOR_SIGN
 	dw_const CeladonMart2FCurrentFloorSignText, TEXT_CELADONMART2F_CURRENT_FLOOR_SIGN
+	dw_const CeladonMart3FSNESText,             TEXT_CELADONMART3F_SNES1
+	dw_const CeladonMart3FRPGText,              TEXT_CELADONMART3F_RPG
+	dw_const CeladonMart3FSNESText,             TEXT_CELADONMART3F_SNES2
+	dw_const CeladonMart3FSportsGameText,       TEXT_CELADONMART3F_SPORTS_GAME
+	dw_const CeladonMart3FSNESText,             TEXT_CELADONMART3F_SNES3
+	dw_const CeladonMart3FPuzzleGameText,       TEXT_CELADONMART3F_PUZZLE_GAME
+	dw_const CeladonMart3FSNESText,             TEXT_CELADONMART3F_SNES4
+	dw_const CeladonMart3FFightingGameText,     TEXT_CELADONMART3F_FIGHTING_GAME
+	dw_const CeladonMart3FCurrentFloorSignText, TEXT_CELADONMART3F_CURRENT_FLOOR_SIGN
+	dw_const CeladonMart3FPokemonPosterText,    TEXT_CELADONMART3F_POKEMON_POSTER1
+	dw_const CeladonMart3FPokemonPosterText,    TEXT_CELADONMART3F_POKEMON_POSTER2
+	dw_const CeladonMart3FPokemonPosterText,    TEXT_CELADONMART3F_POKEMON_POSTER3
+
+CeladonMart1FReceptionistText:
+	text_far _CeladonMart1FReceptionistText
+	text_end
+
+CeladonMart1FDirectorySignText:
+	text_far _CeladonMart1FDirectorySignText
+	text_end
+
+CeladonMart1FCurrentFloorSignText:
+	text_far _CeladonMart1FCurrentFloorSignText
+	text_end
 
 CeladonMart2FMiddleAgedManText:
 	text_far _CeladonMart2FMiddleAgedManText
@@ -30,6 +65,89 @@ CeladonMart2FClerk2Text: ; marcelnote - new text for dynamic list
 	text_asm
 	call MartTMClerkDialogue
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+CeladonMart3FClerkText:
+	text_asm
+	CheckEvent EVENT_GOT_TM18
+	jr nz, .got_item
+	ld hl, .TM18PreReceiveText
+	call PrintText
+	lb bc, TM_COUNTER, 1
+	call GiveItem
+	jr nc, .bag_full
+	SetEvent EVENT_GOT_TM18
+	ld hl, .ReceivedTM18Text
+	jr .done
+.bag_full
+	ld hl, .TM18NoRoomText
+	jr .done
+.got_item
+	ld hl, .TM18ExplanationText
+.done
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+.TM18PreReceiveText:
+	text_far _CeladonMart3FClerkTM18PreReceiveText
+	text_end
+
+.ReceivedTM18Text:
+	text_far _CeladonMart3FClerkReceivedTM18Text
+	sound_get_item_1
+	text_end
+
+.TM18ExplanationText:
+	text_far _CeladonMart3FClerkTM18ExplanationText
+	text_end
+
+.TM18NoRoomText:
+	text_far _CeladonMart3FClerkTM18NoRoomText
+	text_end
+
+CeladonMart3FGameBoyKid1Text:
+	text_far _CeladonMart3FGameBoyKid1Text
+	text_end
+
+CeladonMart3FGameBoyKid2Text:
+	text_far _CeladonMart3FGameBoyKid2Text
+	text_end
+
+CeladonMart3FGameBoyKid3Text:
+	text_far _CeladonMart3FGameBoyKid3Text
+	text_end
+
+CeladonMart3FLittleBoyText:
+	text_far _CeladonMart3FLittleBoyText
+	text_end
+
+CeladonMart3FSNESText:
+	text_far _CeladonMart3FSNESText
+	text_end
+
+CeladonMart3FRPGText:
+	text_far _CeladonMart3FRPGText
+	text_end
+
+CeladonMart3FSportsGameText:
+	text_far _CeladonMart3FSportsGameText
+	text_end
+
+CeladonMart3FPuzzleGameText:
+	text_far _CeladonMart3FPuzzleGameText
+	text_end
+
+CeladonMart3FFightingGameText:
+	text_far _CeladonMart3FFightingGameText
+	text_end
+
+CeladonMart3FCurrentFloorSignText:
+	text_far _CeladonMart3FCurrentFloorSignText
+	text_end
+
+CeladonMart3FPokemonPosterText:
+	text_far _CeladonMart3FPokemonPosterText
+	text_end
+
 
 MartTMClerkDialogue: ; marcelnote - this fills the TM seller list dynamically
 	ld a, 1
@@ -468,3 +586,4 @@ MartTMClerkDialogue: ; marcelnote - this fills the TM seller list dynamically
 	; TM_TRI_ATTACK   ; TM49 ; badge 7
 	; TM_SUBSTITUTE   ; TM50 ; elite 4
 	; TM_HEX          ; TM51 ; badge 7
+
