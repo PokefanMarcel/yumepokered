@@ -1,12 +1,15 @@
-Route16Gate1F_Script:
+; marcelnote - merged Route16Gate floors
+Route16Gate_Script:
 	ld hl, wd732
 	res 5, [hl]
 	call EnableAutoTextBoxDrawing
 	ld a, [wRoute16Gate1FCurScript]
-	ld hl, Route16Gate1F_ScriptPointers
+	ld hl, Route16Gate_ScriptPointers
 	jp CallFunctionInTable
+    ; marcelnote - Route16Gate2F_Script used to be just:
+	;jp DisableAutoTextBoxDrawing
 
-Route16Gate1F_ScriptPointers:
+Route16Gate_ScriptPointers:
 	def_script_pointers
 	dw_const Route16Gate1FDefaultScript,           SCRIPT_ROUTE16GATE1F_DEFAULT
 	dw_const Route16Gate1FPlayerMovingUpScript,    SCRIPT_ROUTE16GATE1F_PLAYER_MOVING_UP
@@ -57,6 +60,7 @@ Route16Gate1FPlayerMovingUpScript:
 	ret nz
 	ld a, D_RIGHT | D_LEFT | D_UP | D_DOWN
 	ld [wJoyIgnore], a
+	call UpdateSprites ; marcelnote - fix for Gambler showing on wall when stopped by guard (from pokered wiki)
 
 Route16Gate1FGuardScript:
 	ld a, TEXT_ROUTE16GATE1F_GUARD
@@ -87,11 +91,17 @@ Route16Gate1FIsBicycleInBagScript:
 	ld b, BICYCLE
 	jp IsItemInBag
 
-Route16Gate1F_TextPointers:
+Route16Gate_TextPointers:
 	def_text_pointers
-	dw_const Route16Gate1FGuardText,       TEXT_ROUTE16GATE1F_GUARD
-	dw_const Route16Gate1FGamblerText,     TEXT_ROUTE16GATE1F_GAMBLER
-	dw_const Route16Gate1FGuardWaitUpText, TEXT_ROUTE16GATE1F_GUARD_WAIT_UP
+	; object events
+	dw_const Route16Gate1FGuardText,           TEXT_ROUTE16GATE1F_GUARD
+	dw_const Route16Gate1FGamblerText,         TEXT_ROUTE16GATE1F_GAMBLER
+	dw_const Route16Gate2FLittleBoyText,       TEXT_ROUTE16GATE2F_LITTLE_BOY
+	dw_const Route16Gate2FLittleGirlText,      TEXT_ROUTE16GATE2F_LITTLE_GIRL
+	; background events
+	dw_const Route16Gate1FGuardWaitUpText,     TEXT_ROUTE16GATE1F_GUARD_WAIT_UP
+	dw_const Route16Gate2FLeftBinocularsText,  TEXT_ROUTE16GATE2F_LEFT_BINOCULARS
+	dw_const Route16Gate2FRightBinocularsText, TEXT_ROUTE16GATE2F_RIGHT_BINOCULARS
 
 Route16Gate1FGuardText:
 	text_asm
@@ -120,4 +130,42 @@ Route16Gate1FGuardWaitUpText:
 
 Route16Gate1FGamblerText:
 	text_far _Route16Gate1FGamblerText
+	text_end
+
+Route16Gate2FLittleBoyText:
+	text_asm
+	ld hl, .Text
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+.Text:
+	text_far _Route16Gate2FLittleBoyText
+	text_end
+
+Route16Gate2FLittleGirlText:
+	text_asm
+	ld hl, .Text
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+.Text:
+	text_far _Route16Gate2FLittleGirlText
+	text_end
+
+Route16Gate2FLeftBinocularsText:
+	text_asm
+	ld hl, .Text
+	jp GateUpstairsScript_PrintIfFacingUp
+
+.Text:
+	text_far _Route16Gate2FLeftBinocularsText
+	text_end
+
+Route16Gate2FRightBinocularsText:
+	text_asm
+	ld hl, .Text
+	jp GateUpstairsScript_PrintIfFacingUp
+
+.Text:
+	text_far _Route16Gate2FRightBinocularsText
 	text_end

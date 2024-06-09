@@ -188,8 +188,8 @@ MapHeaderBanks::
 	db BANK(MrPsychicsHouse_h)
 	db BANK(Route15Gate_h) ; marcelnote - merged Route15Gate floors
 	db $11 ; UNUSED_MAP_B9 ; marcelnote - was Route15Gate2F_h, now unused
-	db BANK(Route16Gate1F_h)
-	db BANK(Route16Gate2F_h)
+	db BANK(Route16Gate_h) ; marcelnote - merged Route16Gate floors
+	db $11 ; UNUSED_MAP_BB ; marcelnote - was Route16Gate2F_h, now unused
 	db BANK(Route16FlyHouse_h)
 	db BANK(Route12FishingGuideHouse_h) ; marcelnote - from Super Rod to Fishing Guide
 	db BANK(Route18Gate_h) ; marcelnote - merged Route18Gate floors

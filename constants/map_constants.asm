@@ -206,8 +206,8 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const MR_PSYCHICS_HOUSE,              4,  4 ; $B7
 	map_const ROUTE_15_GATE,                  4, 11 ; $B8 ; marcelnote - merged ROUTE_15_GATE floors
 	map_const UNUSED_MAP_B9,                  0,  0 ; $B9 ; marcelnote - was ROUTE_15_GATE_2F
-	map_const ROUTE_16_GATE_1F,               4,  7 ; $BA
-	map_const ROUTE_16_GATE_2F,               4,  4 ; $BB
+	map_const ROUTE_16_GATE,                  4, 13 ; $BA ; marcelnote - merged ROUTE_16_GATE floors
+	map_const UNUSED_MAP_BB,                  0,  0 ; $BB ; marcelnote - was ROUTE_15_GATE_2F
 	map_const ROUTE_16_FLY_HOUSE,             4,  4 ; $BC
 	map_const ROUTE_12_FISHING_GUIDE_HOUSE,   4,  4 ; $BD ; marcelnote - from Super Rod to Fishing Guide
 	map_const ROUTE_18_GATE,                  4, 11 ; $BE ; marcelnote - merged ROUTE_18_GATE floors

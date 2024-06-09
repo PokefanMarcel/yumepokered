@@ -188,8 +188,8 @@ MapHeaderPointers::
 	dw MrPsychicsHouse_h
 	dw Route15Gate_h ; marcelnote - merged Route15Gate floors
 	dw Route15Gate_h ; UNUSED_MAP_B9 ; marcelnote - was Route15Gate2F_h, now unused
-	dw Route16Gate1F_h
-	dw Route16Gate2F_h
+	dw Route16Gate_h ; marcelnote - merged Route16Gate floors
+	dw Route16Gate_h ; UNUSED_MAP_BB ; marcelnote - was Route16Gate2F_h, now unused
 	dw Route16FlyHouse_h
 	dw Route12FishingGuideHouse_h ; marcelnote - from Super Rod to Fishing Guide
 	dw Route18Gate_h ; marcelnote - merged Route18Gate floors

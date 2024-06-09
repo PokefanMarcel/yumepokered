@@ -1,8 +1,11 @@
+; marcelnote - merged Route16Gate floors
 	object_const_def
 	const_export ROUTE16GATE1F_GUARD
 	const_export ROUTE16GATE1F_GAMBLER
+	const_export ROUTE16GATE2F_LITTLE_BOY
+	const_export ROUTE16GATE2F_LITTLE_GIRL
 
-Route16Gate1F_Object:
+Route16Gate_Object:
 	db $a ; border block
 
 	def_warp_events
@@ -14,12 +17,17 @@ Route16Gate1F_Object:
 	warp_event  0,  3, LAST_MAP, 6
 	warp_event  7,  2, LAST_MAP, 7
 	warp_event  7,  3, LAST_MAP, 8
-	warp_event  6, 12, ROUTE_16_GATE_2F, 1
+	warp_event  6, 12, ROUTE_16_GATE, 10
+	warp_event  7, 25, ROUTE_16_GATE, 9
 
 	def_bg_events
+	bg_event  1, 20, TEXT_ROUTE16GATE2F_LEFT_BINOCULARS
+	bg_event  6, 20, TEXT_ROUTE16GATE2F_RIGHT_BINOCULARS
 
 	def_object_events
 	object_event  4,  5, SPRITE_GUARD, STAY, DOWN, TEXT_ROUTE16GATE1F_GUARD
 	object_event  4,  3, SPRITE_GAMBLER, STAY, NONE, TEXT_ROUTE16GATE1F_GAMBLER
+	object_event  4, 20, SPRITE_LITTLE_BOY, STAY, NONE, TEXT_ROUTE16GATE2F_LITTLE_BOY
+	object_event  2, 23, SPRITE_LITTLE_GIRL, WALK, LEFT_RIGHT, TEXT_ROUTE16GATE2F_LITTLE_GIRL
 
-	def_warps_to ROUTE_16_GATE_1F
+	def_warps_to ROUTE_16_GATE
