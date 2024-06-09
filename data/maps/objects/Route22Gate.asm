@@ -21,13 +21,15 @@ Route22Gate_Object:
 	warp_event 35,  7, ROUTE_22_GATE_3F, 1 ; marcelnote - added 3rd floor
 
 	def_bg_events
+	bg_event 26, 2, TEXT_ROUTE22GATE2F_LEFT_BINOCULARS ; marcelnote - added 2nd floor
+	bg_event 28, 2, TEXT_ROUTE22GATE2F_RIGHT_BINOCULARS ; marcelnote - added 2nd floor
 
 	def_object_events
 	object_event 14,  2, SPRITE_GUARD, STAY, LEFT, TEXT_ROUTE22GATE_GUARD  ; marcelnote - adjusted coords
 	object_event  3,  1, SPRITE_GUARD, STAY, DOWN, TEXT_ROUTE22GATE_GUARD2 ; marcelnote - new guard
 	object_event  8,  2, SPRITE_COOLTRAINER_M, WALK, UP_DOWN, TEXT_ROUTE22GATE_COOLTRAINER_M    ; marcelnote - new NPC
 	object_event 31,  3, SPRITE_COOLTRAINER_F, WALK, LEFT_RIGHT, TEXT_ROUTE22GATE_COOLTRAINER_F ; marcelnote - new NPC
-	object_event 26,  4, SPRITE_YOUNGSTER, STAY, RIGHT, TEXT_ROUTE22GATE_YOUNGSTER              ; marcelnote - new NPC
+	object_event 26,  5, SPRITE_YOUNGSTER, STAY, RIGHT, TEXT_ROUTE22GATE_YOUNGSTER              ; marcelnote - new NPC
 	object_event 34,  4, SPRITE_LINK_RECEPTIONIST, STAY, DOWN, TEXT_ROUTE22GATE_RECEPTIONIST    ; marcelnote - new NPC
 
 	def_warps_to ROUTE_22_GATE

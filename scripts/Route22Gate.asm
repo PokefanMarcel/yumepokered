@@ -67,12 +67,16 @@ Route22GatePlayerMovingScript:
 
 Route22Gate_TextPointers:
 	def_text_pointers
+	; object events
 	dw_const Route22GateGuardText,        TEXT_ROUTE22GATE_GUARD
 	dw_const Route22GateGuard2Text,       TEXT_ROUTE22GATE_GUARD2        ; marcelnote - new guard
 	dw_const Route22GateCooltrainerMText, TEXT_ROUTE22GATE_COOLTRAINER_M ; marcelnote - new NPC
 	dw_const Route22GateCooltrainerFText, TEXT_ROUTE22GATE_COOLTRAINER_F ; marcelnote - new NPC
 	dw_const Route22GateYoungsterText,    TEXT_ROUTE22GATE_YOUNGSTER     ; marcelnote - new NPC
 	dw_const Route22GateReceptionistText, TEXT_ROUTE22GATE_RECEPTIONIST  ; marcelnote - new receptionist
+	; background events
+	dw_const Route22Gate2FLeftBinocularsText,  TEXT_ROUTE22GATE2F_LEFT_BINOCULARS  ; marcelnote - new
+	dw_const Route22Gate2FRightBinocularsText, TEXT_ROUTE22GATE2F_RIGHT_BINOCULARS ; marcelnote - new
 
 Route22GateGuardText: ; marcelnote - adapted for additions to Route22Gate
 	text_asm
@@ -153,3 +157,10 @@ Route22GateReceptionistText: ; marcelnote - new receptionist
 	text_far _Route22GateReceptionistText
 	text_end
 
+Route22Gate2FLeftBinocularsText: ; marcelnote - new
+	text_far _Route22Gate2FLeftBinocularsText
+	text_end
+
+Route22Gate2FRightBinocularsText: ; marcelnote - new
+	text_far _Route22Gate2FRightBinocularsText
+	text_end

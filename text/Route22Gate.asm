@@ -80,3 +80,21 @@ _Route22GateReceptionistText:: ; marcelnote - new receptionist
 	line "when you have"
 	cont "them all!"
 	done
+
+_Route22Gate2FLeftBinocularsText:: ; marcelnote - new
+	text "Looked into the"
+	line "binoculars."
+
+	para "A remote mountain"
+	line "rises above"
+	cont "the horizon."
+	done
+
+_Route22Gate2FRightBinocularsText:: ; marcelnote - new
+	text "Looked into the"
+	line "binoculars."
+
+	para "A winding path"
+	line "leads to the"
+	cont "#MON LEAGUE."
+	done
