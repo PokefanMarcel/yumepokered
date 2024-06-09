@@ -96,6 +96,7 @@ INCLUDE "text/Route16Gate.asm" ; marcelnote - merged Route16Gate floors
 INCLUDE "text/Route16FlyHouse.asm"
 INCLUDE "text/Route18Gate.asm" ; marcelnote - merged Route18Gate floors
 INCLUDE "text/Route22Gate.asm"
+INCLUDE "text/Route22Gate3F.asm" ; marcelnote - new location
 INCLUDE "text/VictoryRoad2F.asm"
 INCLUDE "text/BillsHouse.asm"
 INCLUDE "text/Route1.asm"

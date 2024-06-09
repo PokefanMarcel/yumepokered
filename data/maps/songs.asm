@@ -196,7 +196,7 @@ MapSongBanks::
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; SEAFOAM_ISLANDS_1F
 	db MUSIC_GYM, BANK(Music_Gym) ; ROUTE_22_GATE ; marcelnote - changed from MUSIC_DUNGEON2
 	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) ; VICTORY_ROAD_2F
-	db MUSIC_CITIES1, BANK(Music_Cities1) ; UNUSED_MAP_C3 ; marcelnote - was ROUTE_12_GATE_2F, now unused
+	db MUSIC_GYM, BANK(Music_Gym) ; ROUTE_22_GATE_3F ; marcelnote - was ROUTE_12_GATE_2F
 	db MUSIC_VERMILION, BANK(Music_Vermilion) ; VERMILION_TRADE_HOUSE
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; DIGLETTS_CAVE
 	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) ; VICTORY_ROAD_3F

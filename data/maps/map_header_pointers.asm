@@ -197,7 +197,7 @@ MapHeaderPointers::
 	dw SeafoamIslands1F_h
 	dw Route22Gate_h
 	dw VictoryRoad2F_h
-	dw Route12Gate_h ; UNUSED_MAP_C3 ; marcelnote - was Route12Gate2F_h, now unused
+	dw Route22Gate3F_h ; ROUTE_22_GATE_3F ; marcelnote - was Route12Gate2F_h
 	dw VermilionTradeHouse_h
 	dw DiglettsCave_h
 	dw VictoryRoad3F_h

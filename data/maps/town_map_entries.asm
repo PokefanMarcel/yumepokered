@@ -105,7 +105,7 @@ InternalMapEntries:
 	internal_map SEAFOAM_ISLANDS_1F,             6, 15, SeafoamIslandsName
 	internal_map ROUTE_22_GATE,                  1,  7, Route22Name
 	internal_map VICTORY_ROAD_2F,                1,  4, VictoryRoadName
-	internal_map UNUSED_MAP_C3,                 14,  7, Route12Name ; marcelnote - merged Route12Gate floors
+	internal_map ROUTE_22_GATE_3F,               1,  7, Route22Name ; marcelnote - was ROUTE_12_GATE_2F
 	internal_map VERMILION_TRADE_HOUSE,         10,  9, VermilionCityName
 	internal_map DIGLETTS_CAVE,                 11,  8, DiglettsCaveName
 	internal_map VICTORY_ROAD_3F,                1,  4, VictoryRoadName

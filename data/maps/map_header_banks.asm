@@ -197,7 +197,7 @@ MapHeaderBanks::
 	db BANK(SeafoamIslands1F_h)
 	db BANK(Route22Gate_h)
 	db BANK(VictoryRoad2F_h)
-	db $11 ; UNUSED_MAP_C3 ; marcelnote - was Route12Gate2F_h, now unused
+	db BANK(Route22Gate3F_h) ; marcelnote - was Route12Gate2F_h
 	db BANK(VermilionTradeHouse_h)
 	db BANK(DiglettsCave_h)
 	db BANK(VictoryRoad3F_h)

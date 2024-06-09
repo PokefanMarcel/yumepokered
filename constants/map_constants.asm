@@ -215,7 +215,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const SEAFOAM_ISLANDS_1F,            15,  9 ; $C0
 	map_const ROUTE_22_GATE,                 18,  4 ; $C1 ; marcelnote - added 2nd floor
 	map_const VICTORY_ROAD_2F,               15,  9 ; $C2
-	map_const UNUSED_MAP_C3,                  0,  0 ; $C3 ; marcelnote - was ROUTE_12_GATE_2F
+	map_const ROUTE_22_GATE_3F,               6,  5 ; $C3 ; marcelnote - new location, was ROUTE_12_GATE_2F
 	map_const VERMILION_TRADE_HOUSE,          4,  4 ; $C4
 	map_const DIGLETTS_CAVE,                 20, 18 ; $C5
 	map_const VICTORY_ROAD_3F,               15,  9 ; $C6

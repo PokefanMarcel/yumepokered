@@ -46,6 +46,7 @@ ENDM
 
 .MartWarpTileIDs:
 .PokecenterWarpTileIDs:
+.ClubWarpTileIDs: ; marcelnote - added stairs for Route22Gate3F
 	warp_tiles $5E
 
 .ForestWarpTileIDs:
@@ -92,5 +93,4 @@ ENDM
 	db $1B, $3B
 	; fallthrough
 .ShipPortWarpTileIDs:
-.ClubWarpTileIDs:
 	warp_tiles ; end

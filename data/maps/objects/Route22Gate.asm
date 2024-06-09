@@ -18,6 +18,7 @@ Route22Gate_Object:
 	warp_event  0,  4, ROUTE_22, 4 ; marcelnote - added for Route 28
 	warp_event  7,  7, ROUTE_22_GATE, 8 ; marcelnote - added 2nd floor
 	warp_event 25,  7, ROUTE_22_GATE, 7 ; marcelnote - added 2nd floor
+	warp_event 35,  7, ROUTE_22_GATE_3F, 1 ; marcelnote - added 3rd floor
 
 	def_bg_events
 
