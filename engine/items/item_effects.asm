@@ -2823,8 +2823,6 @@ IsNextTileShoreOrWater:    ; marcelnote - modified to remove surfing on statues
 	jr z, .skipShoreTiles ; if it's the Vermilion Dock tileset
 	cp GYM ; Gym tileset
 	jr z, .skipShoreTiles
-	cp DOJO ; Dojo tileset
-	jr z, .skipShoreTiles
 	cp SHIP ; SS Anne tileset
 	jr z, .skipShoreTiles
 	ld hl, ShoreTiles

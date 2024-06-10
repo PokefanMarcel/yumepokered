@@ -5,7 +5,6 @@ WarpTileIDPointers:
 	dw .MartWarpTileIDs
 	dw .ForestWarpTileIDs
 	dw .RedsHouse2WarpTileIDs
-	dw .DojoWarpTileIDs
 	dw .PokecenterWarpTileIDs
 	dw .GymWarpTileIDs
 	dw .HouseWarpTileIDs
@@ -52,7 +51,6 @@ ENDM
 .ForestWarpTileIDs:
 	warp_tiles $5A, $5C, $3A
 
-.DojoWarpTileIDs:
 .GymWarpTileIDs:
 	warp_tiles $4A
 
