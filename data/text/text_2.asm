@@ -684,6 +684,8 @@ _ViridianBlackboardPrlzText::
 	text "Paralysis could"
 	line "make #MON"
 	cont "moves misfire!"
+	cont "It also reduces" ; marcelnote - added
+	cont "speed."
 
 	para "Paralysis remains"
 	line "after battles."
@@ -694,8 +696,9 @@ _ViridianBlackboardPrlzText::
 
 _ViridianBlackboardBurnText::
 	text "A burn reduces"
-	line "power and speed."
-	cont "It also causes"
+	;line "power and speed."
+	;cont "It also causes"
+	line "power and causes" ; marcelnote - added this line and removed two lines above
 	cont "ongoing damage."
 
 	para "Burns remain"
