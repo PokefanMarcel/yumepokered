@@ -53,6 +53,7 @@ Club_Block::        INCBIN "gfx/blocksets/club.bst"
 Underground_GFX::   INCBIN "gfx/tilesets/underground.2bpp"
 Underground_Block:: INCBIN "gfx/blocksets/underground.bst"
 
+
 SECTION "Tilesets 4", ROMX  ; marcelnote - new or moved tilesets
 
 Academy_GFX::       INCBIN "gfx/tilesets/academy.2bpp"
@@ -65,3 +66,9 @@ Facility_GFX::      INCBIN "gfx/tilesets/facility.2bpp" ; marcelnote - moved FAC
 Facility_Block::    INCBIN "gfx/blocksets/facility.bst" ; marcelnote - moved FACILITY blockset
 Mansion_GFX::       INCBIN "gfx/tilesets/mansion.2bpp"  ; marcelnote - moved MANSION blockset
 Mansion_Block::     INCBIN "gfx/blocksets/mansion.bst"  ; marcelnote - moved MANSION blockset
+
+
+SECTION "Tilesets 5", ROMX  ; marcelnote - new or moved tilesets
+
+Safari_GFX::        INCBIN "gfx/tilesets/safari.2bpp"
+Safari_Block::      INCBIN "gfx/blocksets/safari.bst"

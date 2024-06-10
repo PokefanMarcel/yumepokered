@@ -7,6 +7,7 @@
 	const FOREST       ; 3
 	const REDS_HOUSE_2 ; 4
 	;const DOJO         ; 5 ; marcelnote - removed DOJO tileset because redundant with GYM
+	const SAFARI       ; 5 ; marcelnote - new tileset to free space in FOREST
 	const POKECENTER   ; 6
 	const GYM          ; 7
 	const HOUSE        ; 8

@@ -1,5 +1,6 @@
 EscapeRopeTilesets:
 	db FOREST
+	db SAFARI ; marcelnote - new tileset from FOREST
 	db CEMETERY
 	db CAVERN
 	db FACILITY

@@ -2,6 +2,7 @@
 WaterTilesets:
 	db OVERWORLD
 	db FOREST
+	db SAFARI ; marcelnote - new tileset from FOREST
 	db GYM
 	db SHIP
 	db SHIP_PORT

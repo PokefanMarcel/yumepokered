@@ -1,6 +1,7 @@
 DoorTileIDPointers:
 	dbw OVERWORLD,   .OverworldDoorTileIDs
 	dbw FOREST,      .ForestDoorTileIDs
+	dbw SAFARI,      .SafariDoorTileIDs ; marcelnote - new tileset from FOREST
 	dbw MART,        .MartDoorTileIDs
 	dbw HOUSE,       .HouseDoorTileIDs
 	dbw GATE,        .GateDoorTileIDs ; marcelnote - changed from .TilesetMuseumDoorTileIDs
@@ -25,6 +26,7 @@ ENDM
 	door_tiles $1B, $58
 
 .ForestDoorTileIDs:
+.SafariDoorTileIDs: ; marcelnote - new tileset from FOREST
 	door_tiles $3a
 
 .MartDoorTileIDs:

@@ -1,5 +1,6 @@
 DungeonTilesets:
 	db FOREST
+	db SAFARI ; marcelnote - new tileset from FOREST
 	db SHIP
 	db CAVERN
 	db LOBBY

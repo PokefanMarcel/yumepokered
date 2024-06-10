@@ -5,6 +5,7 @@ WarpTileIDPointers:
 	dw .MartWarpTileIDs
 	dw .ForestWarpTileIDs
 	dw .RedsHouse2WarpTileIDs
+	dw .SafariWarpTileIDs ; marcelnote ; new tileset from FOREST
 	dw .PokecenterWarpTileIDs
 	dw .GymWarpTileIDs
 	dw .HouseWarpTileIDs
@@ -48,7 +49,7 @@ ENDM
 .ClubWarpTileIDs: ; marcelnote - added stairs for Route22Gate3F
 	warp_tiles $5E
 
-.ForestWarpTileIDs:
+.SafariWarpTileIDs: ; marcelnote - new tileset from FOREST
 	warp_tiles $5A, $5C, $3A
 
 .GymWarpTileIDs:
@@ -91,4 +92,5 @@ ENDM
 	db $1B, $3B
 	; fallthrough
 .ShipPortWarpTileIDs:
+.ForestWarpTileIDs: ; marcelnote - no need for warp tiles anymore
 	warp_tiles ; end
