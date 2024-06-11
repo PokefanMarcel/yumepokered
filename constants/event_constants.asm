@@ -555,6 +555,7 @@
 	const EVENT_BEAT_VIRIDIAN_FOREST_TRAINER_0
 	const EVENT_BEAT_VIRIDIAN_FOREST_TRAINER_1
 	const EVENT_BEAT_VIRIDIAN_FOREST_TRAINER_2
+	const EVENT_BEAT_VIRIDIAN_FOREST_TRAINER_3 ; marcelnote - new trainer based on Samurai
 
 ; Mt. Moon events
 	const_next $570

@@ -105,6 +105,9 @@ BugCatcherData:
 ; Route 9
 	db 19, BEEDRILL, BEEDRILL, 0
 	db 20, CATERPIE, WEEDLE, VENONAT, 0
+; marcelnote - new trainers
+; Viridian Forest
+	db 8, METAPOD, PINSIR, 0 ; based on Samurai
 
 LassData:
 ; Route 3

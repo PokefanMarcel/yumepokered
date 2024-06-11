@@ -62,6 +62,27 @@ _ViridianForestYoungster4AfterBattleText::
 	cont "dropped!"
 	done
 
+_ViridianForestYoungster6BattleText:: ; marcelnote - new trainer based on Samurai
+	text "Are you the"
+	line "#MON trainer"
+	cont "who comes from"
+	cont "PALLET?"
+	done
+	; Are you by chance the Pokmn trainer who comes from Pallet?
+	; Am I addressing the pokemon trainer who comes from pallet? I have found you at last
+
+_ViridianForestYoungster6EndBattleText:: ; marcelnote - new trainer based on Samurai
+	text "A"
+	line "fine battle."
+	prompt ; Clever, quite clever
+
+_ViridianForestYoungster6AfterBattleText:: ; marcelnote - new trainer based on Samurai
+	text "I was defeated by"
+	line "another trainer"
+	cont "from PALLET TOWN"
+	cont "earlier."
+	done
+
 _ViridianForestYoungster5Text::
 	text "I ran out of #"
 	line "BALLs to catch"

@@ -22,7 +22,9 @@ Pokecenter_Coll::
 Gym_Coll::
 	coll_tiles $11, $16, $19, $2b, $3c, $3d, $3f, $4a, $4c, $4d, $03
 
-Forest_Coll::
+Forest_Coll:: ; marcelnote - updated for revised tileset
+	coll_tiles $01, $0a, $0b, $20, $30, $34, $37, $40
+
 Safari_Coll:: ; marcelnote - new tileset from FOREST
 	coll_tiles $1e, $20, $2e, $30, $34, $37, $39, $3a, $40, $51, $52, $5a, $5c, $5e, $5f
 

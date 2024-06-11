@@ -19,6 +19,7 @@ ViridianForest_TextPointers:
 	dw_const ViridianForestYoungster2Text,      TEXT_VIRIDIANFOREST_YOUNGSTER2
 	dw_const ViridianForestYoungster3Text,      TEXT_VIRIDIANFOREST_YOUNGSTER3
 	dw_const ViridianForestYoungster4Text,      TEXT_VIRIDIANFOREST_YOUNGSTER4
+	dw_const ViridianForestYoungster6Text,      TEXT_VIRIDIANFOREST_YOUNGSTER6 ; marcelnote - new trainer based on Samurai
 	dw_const PickUpItemText,                    TEXT_VIRIDIANFOREST_ANTIDOTE
 	dw_const PickUpItemText,                    TEXT_VIRIDIANFOREST_POTION
 	dw_const PickUpItemText,                    TEXT_VIRIDIANFOREST_POKE_BALL
@@ -38,6 +39,8 @@ ViridianForestTrainerHeader1:
 	trainer EVENT_BEAT_VIRIDIAN_FOREST_TRAINER_1, 4, ViridianForestYoungster3BattleText, ViridianForestYoungster3EndBattleText, ViridianForestYoungster3AfterBattleText
 ViridianForestTrainerHeader2:
 	trainer EVENT_BEAT_VIRIDIAN_FOREST_TRAINER_2, 1, ViridianForestYoungster4BattleText, ViridianForestYoungster4EndBattleText, ViridianForestYoungster4AfterBattleText
+ViridianForestTrainerHeader3:
+	trainer EVENT_BEAT_VIRIDIAN_FOREST_TRAINER_3, 3, ViridianForestYoungster6BattleText, ViridianForestYoungster6EndBattleText, ViridianForestYoungster6AfterBattleText
 	db -1 ; end
 
 ViridianForestYoungster1Text:
@@ -59,6 +62,12 @@ ViridianForestYoungster3Text:
 ViridianForestYoungster4Text:
 	text_asm
 	ld hl, ViridianForestTrainerHeader2
+	call TalkToTrainer
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+ViridianForestYoungster6Text: ; marcelnote - new trainer based on Samurai
+	text_asm
+	ld hl, ViridianForestTrainerHeader3
 	call TalkToTrainer
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
@@ -96,6 +105,18 @@ ViridianForestYoungster4EndBattleText:
 
 ViridianForestYoungster4AfterBattleText:
 	text_far _ViridianForestYoungster4AfterBattleText
+	text_end
+
+ViridianForestYoungster6BattleText: ; marcelnote - new trainer based on Samurai
+	text_far _ViridianForestYoungster6BattleText
+	text_end
+
+ViridianForestYoungster6EndBattleText: ; marcelnote - new trainer based on Samurai
+	text_far _ViridianForestYoungster6EndBattleText
+	text_end
+
+ViridianForestYoungster6AfterBattleText: ; marcelnote - new trainer based on Samurai
+	text_far _ViridianForestYoungster6AfterBattleText
 	text_end
 
 ViridianForestYoungster5Text:
