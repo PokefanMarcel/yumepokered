@@ -2825,6 +2825,8 @@ IsNextTileShoreOrWater:    ; marcelnote - modified to remove surfing on statues
 	jr z, .skipShoreTiles
 	cp SHIP ; SS Anne tileset
 	jr z, .skipShoreTiles
+	cp FOREST ; Forest tileset ; marcelnote - now different from Safari Zone tileset
+	jr z, .skipShoreTiles
 	ld hl, ShoreTiles
 .skipShoreTiles
 	ld a, [wTileInFrontOfPlayer] ; tile in front of player
