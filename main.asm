@@ -358,4 +358,6 @@ INCLUDE "engine/movie/evolution.asm"
 INCLUDE "engine/overworld/elevator.asm"
 
 
-;SECTION "bank1F", ROMX ; marcelnote - new, moved stuff from bank1E
+SECTION "bank1F", ROMX ; marcelnote - new
+
+INCLUDE "engine/battle/exp_bar_print.asm"
