@@ -1,5 +1,7 @@
 ; mart inventories are below
 ; they are texts
+; marcelnote - this is not used anymore, inventories have been moved to their respective scripts,
+;              keeping it for now for reference
 
 ViridianMartClerkText::
 	script_mart POKE_BALL, ANTIDOTE, PARLYZ_HEAL, BURN_HEAL

@@ -49,3 +49,13 @@ CeladonMart6FClerkText: ; marcelnote - new floor, later to be put in marts.asm?
 CeladonMart6FCurrentFloorSignText: ; marcelnote - new floor
 	text_far _CeladonMart6FCurrentFloorSignText
 	text_end
+
+
+CeladonMart4FClerkText: ; marcelnote - moved Mart inventories
+	script_mart POKE_DOLL, FIRE_STONE, THUNDER_STONE, WATER_STONE, LEAF_STONE
+
+CeladonMart5FClerk1Text: ; marcelnote - moved Mart inventories
+	script_mart X_ACCURACY, GUARD_SPEC, DIRE_HIT, X_ATTACK, X_DEFEND, X_SPEED, X_SPECIAL
+
+CeladonMart5FClerk2Text: ; marcelnote - moved Mart inventories
+	script_mart HP_UP, PROTEIN, IRON, CARBOS, CALCIUM
