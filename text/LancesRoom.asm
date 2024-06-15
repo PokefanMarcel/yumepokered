@@ -62,3 +62,16 @@ _LancesRoomLanceAfterBattleText::
 	line "#MON LEAGUE"
 	cont "champion!@"
 	text_end
+
+_LancesRoomLanceRematchBeforeBattleText:: ; marcelnote - Agatha rematch text
+	text "Let's rematch!"
+	done
+
+_LancesRoomLanceRematchEndBattleText:: ; marcelnote - Agatha rematch text
+	text "Lost"
+	line "again!"
+	prompt
+
+_LancesRoomLanceRematchAfterBattleText:: ; marcelnote - Agatha rematch text
+	text "You win again!"
+	done

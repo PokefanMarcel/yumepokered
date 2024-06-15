@@ -128,3 +128,7 @@ _FightingDojoBetterNotGetGreedyText::
 	text "Better not get"
 	line "greedy..."
 	done
+
+_FightingDojoBrunoText:: ; marcelnote - postgame Bruno
+	text "You found me!"
+	prompt

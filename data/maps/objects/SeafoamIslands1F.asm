@@ -1,4 +1,5 @@
 	object_const_def
+	const_export SEAFOAMISLANDS1F_LORELEI ; marcelnote - postgame Lorelei
 	const_export SEAFOAMISLANDS1F_BOULDER1
 	const_export SEAFOAMISLANDS1F_BOULDER2
 
@@ -17,6 +18,7 @@ SeafoamIslands1F_Object:
 	def_bg_events
 
 	def_object_events
+	object_event  4, 13, SPRITE_LORELEI, STAY, NONE, TEXT_SEAFOAMISLANDS1F_LORELEI ; marcelnote - postgame Lorelei
 	object_event 18, 10, SPRITE_BOULDER, STAY, BOULDER_MOVEMENT_BYTE_2, TEXT_SEAFOAMISLANDS1F_BOULDER1
 	object_event 26,  7, SPRITE_BOULDER, STAY, BOULDER_MOVEMENT_BYTE_2, TEXT_SEAFOAMISLANDS1F_BOULDER2
 

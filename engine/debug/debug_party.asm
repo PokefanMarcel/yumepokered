@@ -19,13 +19,13 @@ DebugNewGameParty: ; unreferenced except in _DEBUG
 	; From https://web.archive.org/web/20000607152840/http://pocket.ign.com/news/14973.html
 	db EXEGGUTOR, 90
 IF DEF(_DEBUG)
-	db MEW, 5
+	db MEW, 65 ; marcelnote - increased from 5
 ELSE
 	db MEW, 20
 ENDC
-	db JOLTEON, 56
-	db DUGTRIO, 56
-	db ARTICUNO, 57
+	db JOLTEON, 80 ; marcelnote - increased from 56
+	db DUGTRIO, 66 ; marcelnote - increased from 56
+	db ARTICUNO, 67 ; marcelnote - increased from 57
 IF DEF(_DEBUG)
 	db PIKACHU, 5
 ENDC
@@ -66,6 +66,14 @@ IF DEF(_DEBUG)
 	ld [hli], a
 	ld [hl], a
 
+	; Mew gets Transform.
+	ld hl, wPartyMon2Moves
+	ld a, TRANSFORM
+	ld [hl], a
+	ld hl, wPartyMon2PP
+	ld a, 15
+	ld [hl], a
+
 	; Jolteon gets Thunderbolt.
 	ld hl, wPartyMon3Moves + 3
 	ld a, THUNDERBOLT
@@ -74,19 +82,40 @@ IF DEF(_DEBUG)
 	ld a, 15
 	ld [hl], a
 
+	; Articuno gets Ice Beam. ; marcelnote - added
+    ld hl, wPartyMon5Moves
+    ld a, ICE_BEAM
+    ld [hl], a
+    ld hl, wPartyMon5PP
+    ld a, 10
+    ld [hl], a
 	; Articuno gets Fly.
-	ld hl, wPartyMon5Moves
+	ld hl, wPartyMon5Moves + 3
 	ld a, FLY
 	ld [hl], a
-	ld hl, wPartyMon5PP
+	ld hl, wPartyMon5PP + 3
 	ld a, 15
 	ld [hl], a
 
-	; Pikachu gets Surf.
+	; Pikachu gets Surf and Flash.
 	ld hl, wPartyMon6Moves + 2
 	ld a, SURF
 	ld [hl], a
 	ld hl, wPartyMon6PP + 2
+	ld a, 15
+	ld [hl], a
+	ld hl, wPartyMon6Moves + 3
+	ld a, FLASH
+	ld [hl], a
+	ld hl, wPartyMon6PP + 3
+	ld a, 20
+	ld [hl], a
+
+	; Dugtrio gets Dig. ; marcelnote - added
+	ld hl, wPartyMon4Moves + 3
+	ld a, DIG
+	ld [hl], a
+	ld hl, wPartyMon4PP + 3
 	ld a, 15
 	ld [hl], a
 

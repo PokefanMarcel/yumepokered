@@ -37,3 +37,7 @@ _PokemonTower1FLittleBoyText:: ; marcelnote - added 7FChanneler
 	cont "with GHOSTs..."
 	cont "Spooky!"
 	done
+
+_PokemonTower1FAgathaText:: ; marcelnote - postgame Agatha
+	text "You found me!"
+	prompt

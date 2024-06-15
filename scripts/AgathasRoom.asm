@@ -14,7 +14,8 @@ AgathaShowOrHideExitBlock:
 	bit 5, [hl]
 	res 5, [hl]
 	ret z
-	CheckEvent EVENT_BEAT_AGATHAS_ROOM_TRAINER_0
+	;CheckEvent EVENT_BEAT_AGATHAS_ROOM_TRAINER_0 ; marcelnote - Agatha rematch
+	CheckEitherEventSet EVENT_BEAT_AGATHAS_ROOM_TRAINER_0, EVENT_BEAT_AGATHAS_ROOM_TRAINER_1
 	jr z, .blockExitToNextRoom
 	ld a, $e
 	jp .setExitBlock
@@ -107,7 +108,13 @@ AgathasRoomAgathaEndBattleScript:
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, ResetAgathaScript
+	;;;;;; marcelnote - added for Agatha rematch
+	CheckEvent EVENT_BECAME_CHAMPION
+	ld a, TEXT_AGATHASROOM_AGATHA_REMATCH
+	jr nz, .rematch
 	ld a, TEXT_AGATHASROOM_AGATHA
+.rematch
+	;;;;;;
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	ld a, SCRIPT_CHAMPIONSROOM_PLAYER_ENTERS
@@ -117,12 +124,15 @@ AgathasRoomAgathaEndBattleScript:
 AgathasRoom_TextPointers:
 	def_text_pointers
 	dw_const AgathasRoomAgathaText,            TEXT_AGATHASROOM_AGATHA
+	dw_const AgathasRoomAgathaRematchText,     TEXT_AGATHASROOM_AGATHA_REMATCH ; marcelnote - Agatha rematch
 	dw_const AgathasRoomAgathaDontRunAwayText, TEXT_AGATHASROOM_AGATHA_DONT_RUN_AWAY
 
 AgathasRoomTrainerHeaders:
 	def_trainers
-AgathasRoomTrainerHeader0:
-	trainer EVENT_BEAT_AGATHAS_ROOM_TRAINER_0, 0, AgathaBeforeBattleText, AgathaEndBattleText, AgathaAfterBattleText
+AgathasRoomTrainerHeader0: ; marcelnote - added map name to text labels
+	trainer EVENT_BEAT_AGATHAS_ROOM_TRAINER_0, 0, AgathasRoomAgathaBeforeBattleText, AgathasRoomAgathaEndBattleText, AgathasRoomAgathaAfterBattleText
+AgathasRoomTrainerHeader1: ; marcelnote - Agatha rematch
+	trainer EVENT_BEAT_AGATHAS_ROOM_TRAINER_1, 0, AgathasRoomAgathaRematchBeforeBattleText, AgathasRoomAgathaRematchEndBattleText, AgathasRoomAgathaRematchAfterBattleText
 	db -1 ; end
 
 AgathasRoomAgathaText:
@@ -131,18 +141,37 @@ AgathasRoomAgathaText:
 	call TalkToTrainer
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-AgathaBeforeBattleText:
-	text_far _AgathaBeforeBattleText
+AgathasRoomAgathaBeforeBattleText: ; marcelnote - added map name to text label
+	text_far _AgathasRoomAgathaBeforeBattleText
 	text_end
 
-AgathaEndBattleText:
-	text_far _AgathaEndBattleText
+AgathasRoomAgathaEndBattleText: ; marcelnote - added map name to text label
+	text_far _AgathasRoomAgathaEndBattleText
 	text_end
 
-AgathaAfterBattleText:
-	text_far _AgathaAfterBattleText
+AgathasRoomAgathaAfterBattleText: ; marcelnote - added map name to text label
+	text_far _AgathasRoomAgathaAfterBattleText
 	text_end
 
 AgathasRoomAgathaDontRunAwayText:
 	text_far _AgathasRoomAgathaDontRunAwayText
+	text_end
+
+; marcelnote - Agatha rematch texts
+AgathasRoomAgathaRematchText:
+	text_asm
+	ld hl, AgathasRoomTrainerHeader1
+	call TalkToTrainer
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+AgathasRoomAgathaRematchBeforeBattleText:
+	text_far _AgathasRoomAgathaRematchBeforeBattleText
+	text_end
+
+AgathasRoomAgathaRematchEndBattleText:
+	text_far _AgathasRoomAgathaRematchEndBattleText
+	text_end
+
+AgathasRoomAgathaRematchAfterBattleText:
+	text_far _AgathasRoomAgathaRematchAfterBattleText
 	text_end

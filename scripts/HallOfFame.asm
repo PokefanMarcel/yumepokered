@@ -13,7 +13,7 @@ HallofFameRoomClearScripts: ; unreferenced
 HallOfFame_ScriptPointers:
 	def_script_pointers
 	dw_const HallOfFameDefaultScript,            SCRIPT_HALLOFFAME_DEFAULT
-	dw_const HallOfFameOakCongratulationsScript, SCRIPT_HALLOFFAME_OAK_CONGRATULATIONS
+	dw_const HallOfFameCongratulationsScript,    SCRIPT_HALLOFFAME_CONGRATULATIONS
 	dw_const HallOfFameResetEventsAndSaveScript, SCRIPT_HALLOFFAME_RESET_EVENTS_AND_SAVE
 	dw_const DoRet,                              SCRIPT_HALLOFFAME_NOOP ; PureRGB - DoRet
 
@@ -39,6 +39,14 @@ HallOfFameResetEventsAndSaveScript:
 	ld [wHallOfFameCurScript], a
 	; Elite 4 events
 	ResetEventRange INDIGO_PLATEAU_EVENTS_START, INDIGO_PLATEAU_EVENTS_END, 1
+	;;;;;; marcelnote - switching Oak for Rival for rematches
+	ld a, HS_HALL_OF_FAME_OAK
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	ld a, HS_HALL_OF_FAME_RIVAL
+	ld [wMissableObjectIndex], a
+	predef ShowObject
+	;;;;;;
 	xor a
 	ld [wHallOfFameCurScript], a
 	ld a, PALLET_TOWN
@@ -62,7 +70,7 @@ HallOfFameDefaultScript:
 	dec a
 	ld [wSimulatedJoypadStatesIndex], a
 	call StartSimulatingJoypadStates
-	ld a, SCRIPT_HALLOFFAME_OAK_CONGRATULATIONS
+	ld a, SCRIPT_HALLOFFAME_CONGRATULATIONS
 	ld [wHallOfFameCurScript], a
 	ret
 
@@ -70,13 +78,19 @@ HallOfFameEntryMovement:
 	db D_UP, 5
 	db -1 ; end
 
-HallOfFameOakCongratulationsScript:
+HallOfFameCongratulationsScript:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
 	ld a, PLAYER_DIR_RIGHT
 	ld [wPlayerMovingDirection], a
+	;;;;;; marcelnote - added: load Rival instead of Oak for rematches
+	CheckEvent EVENT_BECAME_CHAMPION
+	ld a, HALLOFFAME_RIVAL
+	jr nz, .rematch
 	ld a, HALLOFFAME_OAK
+.rematch
+	;;;;;;
 	ldh [hSpriteIndex], a
 	call SetSpriteMovementBytesToFF
 	ld a, SPRITE_FACING_LEFT
@@ -87,22 +101,85 @@ HallOfFameOakCongratulationsScript:
 	ld [wJoyIgnore], a
 	inc a ; PLAYER_DIR_RIGHT
 	ld [wPlayerMovingDirection], a
+	;;;;;; marcelnote - added: load Rival instead of Oak for rematches
+	CheckEvent EVENT_BECAME_CHAMPION
+	ld a, TEXT_HALLOFFAME_RIVAL
+	jr nz, .rematch2
 	ld a, TEXT_HALLOFFAME_OAK
+.rematch2
+	;;;;;;
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	ld a, A_BUTTON | B_BUTTON | SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
 	ld [wJoyIgnore], a
+	CheckEvent EVENT_BECAME_CHAMPION
+	jp nz, .rematch3
+	; marcelnote - resetting events and hide/show items after first win
+	SetEvent EVENT_BECAME_CHAMPION ; marcelnote - new event which marks postgame
 	ld a, HS_CERULEAN_CAVE_GUY
 	ld [wMissableObjectIndex], a
 	predef HideObject
+	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL1 ; marcelnote - move girl to E4 entrance
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL2 ; marcelnote - move girl to E4 entrance
+	ld [wMissableObjectIndex], a
+	predef ShowObject
+	; marcelnote - make roaming E4 members appear
+	ld a, HS_SEAFOAM_ISLANDS_1F_LORELEI ; marcelnote - postgame Lorelei
+	ld [wMissableObjectIndex], a
+	predef ShowObject
+	ld a, HS_FIGHTING_DOJO_BRUNO ; marcelnote - postgame Bruno
+	ld [wMissableObjectIndex], a
+	predef ShowObject
+	ld a, HS_POKEMON_TOWER_1F_AGATHA ; marcelnote - postgame Agatha
+	ld [wMissableObjectIndex], a
+	predef ShowObject
+	ld a, HS_CINNABAR_VOLCANO_1F_LANCE ; marcelnote - postgame Lance
+	ld [wMissableObjectIndex], a
+	predef ShowObject
+	ld a, HS_OAKS_LAB_RIVAL ; marcelnote - postgame Rival
+	ld [wMissableObjectIndex], a
+	predef ShowObject
+	; marcelnote - switch E4 to their rematch counterparts
+	ld a, HS_LORELEIS_ROOM_LORELEI ; marcelnote - hide original Lorelei
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	ld a, HS_LORELEIS_ROOM_LORELEI_REMATCH ; marcelnote - show rematch Lorelei
+	ld [wMissableObjectIndex], a
+	predef ShowObject
+	ld a, HS_BRUNOS_ROOM_BRUNO ; marcelnote - hide original Bruno
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	ld a, HS_BRUNOS_ROOM_BRUNO_REMATCH ; marcelnote - show rematch Bruno
+	ld [wMissableObjectIndex], a
+	predef ShowObject
+	ld a, HS_AGATHAS_ROOM_AGATHA ; marcelnote - hide original Agatha
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	ld a, HS_AGATHAS_ROOM_AGATHA_REMATCH ; marcelnote - show rematch Agatha
+	ld [wMissableObjectIndex], a
+	predef ShowObject
+	ld a, HS_LANCES_ROOM_LANCE ; marcelnote - hide original Lance
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	ld a, HS_LANCES_ROOM_LANCE_REMATCH ; marcelnote - show rematch Lance
+	ld [wMissableObjectIndex], a
+	predef ShowObject
+.rematch3
 	ld a, SCRIPT_HALLOFFAME_RESET_EVENTS_AND_SAVE
 	ld [wHallOfFameCurScript], a
 	ret
 
 HallOfFame_TextPointers:
 	def_text_pointers
-	dw_const HallOfFameOakText, TEXT_HALLOFFAME_OAK
+	dw_const HallOfFameOakText,   TEXT_HALLOFFAME_OAK
+	dw_const HallOfFameRivalText, TEXT_HALLOFFAME_RIVAL ; marcelnote - Rival rematch
 
 HallOfFameOakText:
 	text_far _HallOfFameOakText
+	text_end
+
+HallOfFameRivalText: ; marcelnote - Rival rematch
+	text_far _HallOfFameRivalText
 	text_end

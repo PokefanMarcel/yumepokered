@@ -36,6 +36,19 @@ _LoreleisRoomLoreleiAfterBattleText::
 	cont "LEAGUE power!"
 	done
 
+_LoreleisRoomLoreleiRematchBeforeBattleText:: ; marcelnote - Lorelei rematch text
+	text "Let's rematch!"
+	done
+
+_LoreleisRoomLoreleiRematchEndBattleText:: ; marcelnote - Lorelei rematch text
+	text "Lost"
+	line "again!"
+	prompt
+
+_LoreleisRoomLoreleiRematchAfterBattleText:: ; marcelnote - Lorelei rematch text
+	text "You win again!"
+	done
+
 _LoreleisRoomLoreleiDontRunAwayText::
 	text "Someone's voice:"
 	line "Don't run away!"

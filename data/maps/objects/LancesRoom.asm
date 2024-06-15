@@ -1,5 +1,6 @@
 	object_const_def
 	const_export LANCESROOM_LANCE
+	const_export LANCESROOM_LANCE_REMATCH ; marcelnote - Lance rematch
 
 LancesRoom_Object:
 	db $3 ; border block
@@ -13,5 +14,6 @@ LancesRoom_Object:
 
 	def_object_events
 	object_event  6,  1, SPRITE_LANCE, STAY, DOWN, TEXT_LANCESROOM_LANCE, OPP_LANCE, 1
+	object_event  6,  1, SPRITE_LANCE, STAY, DOWN, TEXT_LANCESROOM_LANCE_REMATCH, OPP_LANCE, 2 ; marcelnote - Lance rematch
 
 	def_warps_to LANCES_ROOM

@@ -61,6 +61,7 @@ CinnabarVolcano1FB1F_TextPointers:
 	dw_const CinnabarVolcano1FBurglarText,       TEXT_CINNABARVOLCANO1F_BURGLAR
 	dw_const CinnabarVolcano1FGentlemanText,     TEXT_CINNABARVOLCANO1F_GENTLEMAN
 	dw_const CinnabarVolcano1FBeautyText,        TEXT_CINNABARVOLCANO1F_BEAUTY
+	dw_const CinnabarVolcano1FLanceText,         TEXT_CINNABARVOLCANO1F_LANCE
 	dw_const PickUpItemText,                     TEXT_CINNABARVOLCANOB1F_IRON
 	dw_const PickUpItemText,                     TEXT_CINNABARVOLCANOB1F_ICE_HEAL
 	dw_const PickUpItemText,                     TEXT_CINNABARVOLCANO1F_FULL_RESTORE
@@ -218,4 +219,32 @@ CinnabarVolcanoB1FLavaSignText:
 
 CinnabarVolcano1FBurnHealSignText:
 	text_far _CinnabarVolcano1FBurnHealSignText
+	text_end
+
+CinnabarVolcano1FLanceText: ; marcelnote - postgame Lance
+	text_asm
+	ld hl, .text
+	call PrintText
+	call GBFadeOutToBlack
+	ld a, HS_CINNABAR_VOLCANO_1F_LANCE
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	call UpdateSprites
+	call Delay3
+	SetEvent EVENT_POSTGAME_LANCE
+	CheckBothEventsSet EVENT_POSTGAME_LORELEI, EVENT_POSTGAME_BRUNO ; sets Z flag when events are set
+	jr nz, .end
+	CheckBothEventsSet EVENT_POSTGAME_AGATHA, EVENT_POSTGAME_RIVAL
+	jr nz, .end
+	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL1 ; marcelnote - remove girl from E4 entrance
+	ld [wMissableObjectIndex], a
+	predef ShowObject
+	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL2 ; marcelnote - remove girl from E4 entrance
+	ld [wMissableObjectIndex], a
+	predef HideObject
+.end
+	call GBFadeInFromBlack
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.text
+	text_far _CinnabarVolcano1FLanceText
 	text_end

@@ -26,3 +26,14 @@ _HallOfFameOakText::
 	cont "your #MON are"
 	cont "HALL OF FAMERs!"
 	done
+
+_HallOfFameRivalText:: ; marcelnote - new text for E4 rematches
+	text "<RIVAL>: Well,"
+	line "you know how this"
+	cont "works by now."
+
+	para "You and your"
+	line "#MON belong in"
+	cont "the HALL OF FAME,"
+	cont "<PLAYER>!"
+	done

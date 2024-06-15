@@ -762,6 +762,10 @@ OaksLab_TextPointers2:
 
 OaksLabRivalText:
 	text_asm
+	;;;;;; marcelnote - postgame Rival
+	CheckEvent EVENT_BECAME_CHAMPION
+	jp nz, OaksLabRivalPostgameText
+	;;;;;;
 	CheckEvent EVENT_FOLLOWED_OAK_INTO_LAB_2
 	jr nz, .beforeChooseMon
 	ld hl, .GrampsIsntAroundText
@@ -1226,4 +1230,31 @@ OaksLabScientistText:
 
 .Text:
 	text_far _OaksLabScientistText
+	text_end
+
+OaksLabRivalPostgameText: ; marcelnote - postgame Rival
+	ld hl, .text
+	call PrintText
+	call GBFadeOutToBlack
+	ld a, HS_OAKS_LAB_RIVAL
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	call UpdateSprites
+	call Delay3
+	SetEvent EVENT_POSTGAME_RIVAL
+	CheckBothEventsSet EVENT_POSTGAME_LORELEI, EVENT_POSTGAME_BRUNO ; sets Z flag when events are set
+	jr nz, .end
+	CheckBothEventsSet EVENT_POSTGAME_AGATHA, EVENT_POSTGAME_LANCE
+	jr nz, .end
+	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL1 ; marcelnote - remove girl from E4 entrance
+	ld [wMissableObjectIndex], a
+	predef ShowObject
+	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL2 ; marcelnote - remove girl from E4 entrance
+	ld [wMissableObjectIndex], a
+	predef HideObject
+.end
+	call GBFadeInFromBlack
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.text
+	text_far _PokemonTower1FAgathaText
 	text_end

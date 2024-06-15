@@ -16,7 +16,8 @@ LoreleiShowOrHideExitBlock:
 	ret z
 	ld hl, wBeatLorelei
 	set 1, [hl]
-	CheckEvent EVENT_BEAT_LORELEIS_ROOM_TRAINER_0
+	;CheckEvent EVENT_BEAT_LORELEIS_ROOM_TRAINER_0 ; marcelnote - Lorelei rematch
+	CheckEitherEventSet EVENT_BEAT_LORELEIS_ROOM_TRAINER_0, EVENT_BEAT_LORELEIS_ROOM_TRAINER_1
 	jr z, .blockExitToNextRoom
 	ld a, $5
 	jr .setExitBlock
@@ -109,19 +110,28 @@ LoreleisRoomLoreleiEndBattleScript:
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, ResetLoreleiScript
+	;;;;;; marcelnote - Lorelei rematch
+	CheckEvent EVENT_BECAME_CHAMPION
+	ld a, TEXT_LORELEISROOM_LORELEI_REMATCH
+	jr nz, .rematch
 	ld a, TEXT_LORELEISROOM_LORELEI
+.rematch
+	;;;;;;
 	ldh [hSpriteIndexOrTextID], a
 	jp DisplayTextID
 
 LoreleisRoom_TextPointers:
 	def_text_pointers
 	dw_const LoreleisRoomLoreleiText,            TEXT_LORELEISROOM_LORELEI
+	dw_const LoreleisRoomLoreleiRematchText,     TEXT_LORELEISROOM_LORELEI_REMATCH ; marcelnote - Lorelei rematch
 	dw_const LoreleisRoomLoreleiDontRunAwayText, TEXT_LORELEISROOM_DONT_RUN_AWAY
 
 LoreleisRoomTrainerHeaders:
 	def_trainers
 LoreleisRoomTrainerHeader0:
 	trainer EVENT_BEAT_LORELEIS_ROOM_TRAINER_0, 0, LoreleisRoomLoreleiBeforeBattleText, LoreleisRoomLoreleiEndBattleText, LoreleisRoomLoreleiAfterBattleText
+LoreleisRoomTrainerHeader1: ; marcelnote - Lorelei rematch
+	trainer EVENT_BEAT_LORELEIS_ROOM_TRAINER_1, 0, LoreleisRoomLoreleiRematchBeforeBattleText, LoreleisRoomLoreleiRematchEndBattleText, LoreleisRoomLoreleiRematchAfterBattleText
 	db -1 ; end
 
 LoreleisRoomLoreleiText:
@@ -144,4 +154,23 @@ LoreleisRoomLoreleiAfterBattleText:
 
 LoreleisRoomLoreleiDontRunAwayText:
 	text_far _LoreleisRoomLoreleiDontRunAwayText
+	text_end
+
+; marcelnote - Lorelei rematch texts
+LoreleisRoomLoreleiRematchText:
+	text_asm
+	ld hl, LoreleisRoomTrainerHeader1
+	call TalkToTrainer
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+LoreleisRoomLoreleiRematchBeforeBattleText:
+	text_far _LoreleisRoomLoreleiRematchBeforeBattleText
+	text_end
+
+LoreleisRoomLoreleiRematchEndBattleText:
+	text_far _LoreleisRoomLoreleiRematchEndBattleText
+	text_end
+
+LoreleisRoomLoreleiRematchAfterBattleText:
+	text_far _LoreleisRoomLoreleiRematchAfterBattleText
 	text_end

@@ -1,4 +1,4 @@
-_BrunoBeforeBattleText::
+_BrunosRoomBrunoBeforeBattleText:: ; marcelnote - added map name to label
 	text "I am BRUNO of"
 	line "the ELITE FOUR!"
 
@@ -20,15 +20,28 @@ _BrunoBeforeBattleText::
 	para "Hoo hah!"
 	done
 
-_BrunoEndBattleText::
+_BrunosRoomBrunoEndBattleText:: ; marcelnote - added map name to label
 	text "Why?"
 	line "How could I lose?"
 	prompt
 
-_BrunoAfterBattleText::
+_BrunosRoomBrunoAfterBattleText:: ; marcelnote - added map name to label
 	text "My job is done!"
 	line "Go face your next"
 	cont "challenge!"
+	done
+
+_BrunosRoomBrunoRematchBeforeBattleText:: ; marcelnote - Bruno rematch text
+	text "Let's rematch!"
+	done
+
+_BrunosRoomBrunoRematchEndBattleText:: ; marcelnote - Bruno rematch text
+	text "Lost"
+	line "again!"
+	prompt
+
+_BrunosRoomBrunoRematchAfterBattleText:: ; marcelnote - Bruno rematch text
+	text "You win again!"
 	done
 
 _BrunosRoomBrunoDontRunAwayText::

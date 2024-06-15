@@ -1,4 +1,4 @@
-_AgathaBeforeBattleText::
+_AgathasRoomAgathaBeforeBattleText:: ; marcelnote - added map name to label
 	text "I am AGATHA of"
 	line "the ELITE FOUR!"
 
@@ -22,13 +22,13 @@ _AgathaBeforeBattleText::
 	cont "trainer fights!"
 	done
 
-_AgathaEndBattleText::
+_AgathasRoomAgathaEndBattleText:: ; marcelnote - added map name to label
 	text "Oh ho!"
 	line "You're something"
 	cont "special, child!"
 	prompt
 
-_AgathaAfterBattleText::
+_AgathasRoomAgathaAfterBattleText:: ; marcelnote - added map name to label
 	text "You win! I see"
 	line "what the old duff"
 	cont "sees in you now!"
@@ -36,6 +36,19 @@ _AgathaAfterBattleText::
 	para "I have nothing"
 	line "else to say! Run"
 	cont "along now, child!"
+	done
+
+_AgathasRoomAgathaRematchBeforeBattleText:: ; marcelnote - Agatha rematch text
+	text "Let's rematch!"
+	done
+
+_AgathasRoomAgathaRematchEndBattleText:: ; marcelnote - Agatha rematch text
+	text "Lost"
+	line "again!"
+	prompt
+
+_AgathasRoomAgathaRematchAfterBattleText:: ; marcelnote - Agatha rematch text
+	text "You win again!"
 	done
 
 _AgathasRoomAgathaDontRunAwayText::

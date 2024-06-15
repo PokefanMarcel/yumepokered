@@ -66,6 +66,7 @@ DEF SHOW EQU $15
 	const HS_CERULEAN_CAVE_1F_ITEM_2       ; 36 X
 	const HS_CERULEAN_CAVE_1F_ITEM_3       ; 37 X
 	const HS_POKEMON_TOWER_1F_ITEM         ; 38a ; marcelnote - added TM51, testing
+	const HS_POKEMON_TOWER_1F_AGATHA       ; 38a ; marcelnote - postgame Agatha
 	const HS_POKEMON_TOWER_2F_RIVAL        ; 38
 	const HS_POKEMON_TOWER_3F_ITEM         ; 39 X
 	const HS_POKEMON_TOWER_4F_ITEM_1       ; 3A X
@@ -85,6 +86,7 @@ DEF SHOW EQU $15
 	const HS_WARDENS_HOUSE_ITEM            ; 47 X
 	const HS_POKEMON_MANSION_1F_ITEM_1     ; 48 X
 	const HS_POKEMON_MANSION_1F_ITEM_2     ; 49 X
+	const HS_FIGHTING_DOJO_BRUNO           ; 4Abis ; marcelnote - postgame Bruno
 	const HS_FIGHTING_DOJO_GIFT_1          ; 4A
 	const HS_FIGHTING_DOJO_GIFT_2          ; 4B
 	const HS_SILPH_CO_1F_RECEPTIONIST      ; 4C
@@ -149,7 +151,7 @@ DEF SHOW EQU $15
 	const HS_ROCKET_HIDEOUT_B4F_ITEM_3     ; 86 X
 	const HS_ROCKET_HIDEOUT_B4F_ITEM_4     ; 87
 	const HS_ROCKET_HIDEOUT_B4F_ITEM_5     ; 88
-	const HS_SILPH_CO_2F_1                 ; 89 XXX never (de)activated?
+	;const HS_SILPH_CO_2F_1                 ; 89 XXX never (de)activated? ; marcelnote - removed
 	const HS_SILPH_CO_2F_2                 ; 8A
 	const HS_SILPH_CO_2F_3                 ; 8B
 	const HS_SILPH_CO_2F_4                 ; 8C
@@ -182,7 +184,7 @@ DEF SHOW EQU $15
 	const HS_SILPH_CO_7F_RIVAL             ; A7
 	const HS_SILPH_CO_7F_ITEM_1            ; A8 X
 	const HS_SILPH_CO_7F_ITEM_2            ; A9 X
-	const HS_SILPH_CO_7F_8                 ; AA XXX sprite doesn't exist
+	;const HS_SILPH_CO_7F_8                 ; AA XXX sprite doesn't exist ; marcelnote - removed
 	const HS_SILPH_CO_8F_1                 ; AB
 	const HS_SILPH_CO_8F_2                 ; AC
 	const HS_SILPH_CO_8F_3                 ; AD
@@ -191,14 +193,14 @@ DEF SHOW EQU $15
 	const HS_SILPH_CO_9F_3                 ; B0
 	const HS_SILPH_CO_10F_1                ; B1
 	const HS_SILPH_CO_10F_2                ; B2
-	const HS_SILPH_CO_10F_3                ; B3 XXX never (de)activated?
+	;const HS_SILPH_CO_10F_3                ; B3 XXX never (de)activated? ; marcelnote - removed
 	const HS_SILPH_CO_10F_ITEM_1           ; B4 X
 	const HS_SILPH_CO_10F_ITEM_2           ; B5 X
 	const HS_SILPH_CO_10F_ITEM_3           ; B6 X
 	const HS_SILPH_CO_11F_1                ; B7
 	const HS_SILPH_CO_11F_2                ; B8
 	const HS_SILPH_CO_11F_3                ; B9
-	const HS_UNUSED_MAP_F4_1               ; BA XXX sprite doesn't exist
+	;const HS_UNUSED_MAP_F4_1               ; BA XXX sprite doesn't exist ; marcelnote - removed
 	const HS_POKEMON_MANSION_2F_ITEM       ; BB X
 	const HS_POKEMON_MANSION_3F_ITEM_1     ; BC X
 	const HS_POKEMON_MANSION_3F_ITEM_2     ; BD X
@@ -227,6 +229,8 @@ DEF SHOW EQU $15
 	const HS_VICTORY_ROAD_1F_ITEM_1        ; D4 X
 	const HS_VICTORY_ROAD_1F_ITEM_2        ; D5 X
 	const HS_CHAMPIONS_ROOM_OAK            ; D6
+	const HS_CHAMPIONS_ROOM_RIVAL          ; D6bis ; marcelnote - added for Rival rematch
+	const HS_SEAFOAM_ISLANDS_1F_LORELEI    ; D7 ; marcelnote - postgame Lorelei
 	const HS_SEAFOAM_ISLANDS_1F_BOULDER_1  ; D7
 	const HS_SEAFOAM_ISLANDS_1F_BOULDER_2  ; D8
 	const HS_SEAFOAM_ISLANDS_B1F_BOULDER_1 ; D9
@@ -243,11 +247,24 @@ DEF SHOW EQU $15
 	const HS_MT_MOON_SQUARE_CLEFAIRY       ; E4 ; marcelnote - Clefairy
 	const HS_MT_MOON_SQUARE_ITEM_1         ; E5 ; marcelnote - Moon Stone
 	const HS_MT_MOON_SQUARE_ITEM_2         ; E6 ; marcelnote - Super Potion
-	const HS_CINNABAR_VOLCANO_B1F_ITEM_1   ; E8 ; marcelnote - Iron
-	const HS_CINNABAR_VOLCANO_B1F_ITEM_2   ; E9 ; marcelnote - Ice Heal
-	const HS_CINNABAR_VOLCANO_1F_ITEM_1    ; EA ; marcelnote - Full Restore
-	const HS_CINNABAR_VOLCANO_2F_MOLTRES   ; E7 ; marcelnote - Moltres
-	const HS_CINNABAR_VOLCANO_2F_ITEM_1    ; EB ; marcelnote - Fire Stone
-    const HS_CINNABAR_VOLCANO_2F_ITEM_2    ; EC ; marcelnote - Ultra Ball
-    const HS_CINNABAR_VOLCANO_2F_ITEM_3    ; ED ; marcelnote - Nugget
+	const HS_CINNABAR_VOLCANO_B1F_ITEM_1   ; E7 ; marcelnote - Iron
+	const HS_CINNABAR_VOLCANO_B1F_ITEM_2   ; E8 ; marcelnote - Ice Heal
+	const HS_CINNABAR_VOLCANO_1F_ITEM_1    ; E9 ; marcelnote - Full Restore
+	const HS_CINNABAR_VOLCANO_1F_LANCE     ; EA ; marcelnote - postgame Lance 1F
+	const HS_CINNABAR_VOLCANO_2F_MOLTRES   ; EB ; marcelnote - Moltres
+	const HS_CINNABAR_VOLCANO_2F_ITEM_1    ; EC ; marcelnote - Fire Stone
+	const HS_CINNABAR_VOLCANO_2F_ITEM_2    ; ED ; marcelnote - Ultra Ball
+	const HS_CINNABAR_VOLCANO_2F_ITEM_3    ; EE ; marcelnote - Nugget
+	const HS_INDIGO_PLATEAU_LOBBY_GIRL1    ; EF ; marcelnote - now moves after first defeating E4
+	const HS_INDIGO_PLATEAU_LOBBY_GIRL2    ; F0 ; marcelnote - blocks way after first defeating E4
+	const HS_LORELEIS_ROOM_LORELEI         ; F1 ; marcelnote - added for Lorelei rematch
+	const HS_LORELEIS_ROOM_LORELEI_REMATCH ; F2 ; marcelnote - added for Lorelei rematch
+	const HS_BRUNOS_ROOM_BRUNO             ; F3 ; marcelnote - added for Bruno rematch
+	const HS_BRUNOS_ROOM_BRUNO_REMATCH     ; F4 ; marcelnote - added for Bruno rematch
+	const HS_AGATHAS_ROOM_AGATHA           ; F5 ; marcelnote - added for Agatha rematch
+	const HS_AGATHAS_ROOM_AGATHA_REMATCH   ; F6 ; marcelnote - added for Agatha rematch
+	const HS_LANCES_ROOM_LANCE             ; F7 ; marcelnote - added for Lance rematch
+	const HS_LANCES_ROOM_LANCE_REMATCH     ; F8 ; marcelnote - added for Lance rematch
+	const HS_HALL_OF_FAME_OAK              ; F9 ; marcelnote - first victory only
+	const HS_HALL_OF_FAME_RIVAL            ; FA ; marcelnote - for Rival rematches
 DEF NUM_HS_OBJECTS EQU const_value

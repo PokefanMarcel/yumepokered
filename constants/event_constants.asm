@@ -7,7 +7,7 @@
 	const EVENT_HALL_OF_FAME_DEX_RATING
 	const_skip 2
 	const EVENT_PALLET_AFTER_GETTING_POKEBALLS
-	const_skip 17
+	const_skip 9 ; marcelnote - adjusted down from 17
 	const EVENT_GOT_TOWN_MAP
 	const EVENT_ENTERED_BLUES_HOUSE
 	const EVENT_DAISY_WALKING
@@ -20,6 +20,8 @@
 	const EVENT_GOT_POKEDEX
 	const EVENT_PALLET_AFTER_GETTING_POKEBALLS_2
 	const EVENT_OAK_APPEARED_IN_PALLET
+	const_skip ; marcelnote - added
+	const EVENT_POSTGAME_RIVAL ; marcelnote - postgame Rival
 
 ; Viridian City events
 	const_next $28
@@ -96,6 +98,7 @@
 	const EVENT_RESCUED_MR_FUJI_2
 	const_skip 16
 	const EVENT_GOT_POKE_FLUTE
+	const EVENT_POSTGAME_AGATHA ; marcelnote - postgame Agatha
 
 ; Vermilion City events
 	const_next $150
@@ -204,6 +207,7 @@
 	const EVENT_BEAT_CINNABAR_VOLCANO_1F_TRAINER_1
 	const EVENT_BEAT_CINNABAR_VOLCANO_1F_TRAINER_2
 	const EVENT_BEAT_CINNABAR_VOLCANO_1F_TRAINER_3
+	const EVENT_POSTGAME_LANCE ; marcelnote - postgame Lance
 
 ; Saffron City events
 	const_next $340
@@ -217,7 +221,8 @@
 	const EVENT_BEAT_FIGHTING_DOJO_TRAINER_3
 	const EVENT_GOT_HITMONLEE
 	const EVENT_GOT_HITMONCHAN
-	const_skip 8
+	const EVENT_POSTGAME_BRUNO ; marcelnote - postgame Bruno
+	const_skip 7 ; marcelnote - adjusted
 	const EVENT_GOT_TM46
 	const EVENT_BEAT_SABRINA
 	const EVENT_BEAT_SAFFRON_GYM_TRAINER_0
@@ -745,19 +750,23 @@
 DEF INDIGO_PLATEAU_EVENTS_START EQU const_value
 	const_skip
 	const EVENT_BEAT_LORELEIS_ROOM_TRAINER_0
-	const_skip 4
+	const EVENT_BEAT_LORELEIS_ROOM_TRAINER_1 ; marcelnote - Lorelei rematch
+	const_skip 3                             ; marcelnote - adjusted down
 	const EVENT_AUTOWALKED_INTO_LORELEIS_ROOM
 	const_skip 2
 	const EVENT_BEAT_BRUNOS_ROOM_TRAINER_0
-	const_skip 4
+	const EVENT_BEAT_BRUNOS_ROOM_TRAINER_1 ; marcelnote - Bruno rematch
+	const_skip 3                           ; marcelnote - adjusted down
 	const EVENT_AUTOWALKED_INTO_BRUNOS_ROOM
 	const_skip 2
 	const EVENT_BEAT_AGATHAS_ROOM_TRAINER_0
-	const_skip 4
+	const EVENT_BEAT_AGATHAS_ROOM_TRAINER_1 ; marcelnote - Agatha rematch
+	const_skip 3                            ; marcelnote - adjusted down
 	const EVENT_AUTOWALKED_INTO_AGATHAS_ROOM
 	const_skip 2
 	const EVENT_BEAT_LANCES_ROOM_TRAINER_0
-	const_skip 4
+	const EVENT_BEAT_LANCES_ROOM_TRAINER_1 ; marcelnote - Lance rematch
+	const_skip 3                           ; marcelnote - adjusted down
 	const EVENT_BEAT_LANCE
 	const EVENT_LANCES_ROOM_LOCK_DOOR
 	const_skip
@@ -765,7 +774,7 @@ DEF INDIGO_PLATEAU_EVENTS_START EQU const_value
 	const_skip 5
 	;const_skip ; marcelnote - removed to make space for EVENT_BECAME_CHAMPION
 DEF INDIGO_PLATEAU_EVENTS_END EQU const_value - 1
-	const EVENT_BECAME_CHAMPION ; marcelnote - for Route22Gate and later for other postgame stuff
+	const EVENT_BECAME_CHAMPION ; marcelnote - new event to mark postgame
 
 ; Victory Road 1F events
 	const_next $910
@@ -799,6 +808,7 @@ DEF INDIGO_PLATEAU_EVENTS_END EQU const_value - 1
 	const EVENT_SEAFOAM4_BOULDER2_DOWN_HOLE
 	const_skip 8
 	const EVENT_BEAT_ARTICUNO
+	const EVENT_POSTGAME_LORELEI ; marcelnote - postgame Lorelei
 
 ; End of events
 	const_next $A00

@@ -81,6 +81,59 @@ _ChampionsRoomRivalAfterBattleText::
 	line "like to admit it."
 	done
 
+_ChampionsRoomRivalRematchIntroText:: ; marcelnote - new text for rematches
+	text "<RIVAL>: Hey,"
+	line "<PLAYER>!"
+
+	para "Back for another"
+	line "challenge, huh?"
+
+	para "I'm warning you,"
+	line "my #MON have"
+	cont "become a lot"
+	cont "stronger since"
+	cont "our last battle."
+
+	para "Let's see if you"
+	line "still have what"
+	cont "it takes!"
+	done
+
+_RivalRematchDefeatedText:: ; marcelnote - new text for rematches
+	text "No!"
+	line "How can you win"
+	cont "again?"
+
+	para "I trained my"
+	line "#MON to"
+	cont "perfection..."
+	prompt
+	; my comeback will be epic! ; keep this for when Blue agrees to take the Champion seat
+
+_RivalRematchVictoryText:: ; marcelnote - new text for rematches
+	text "Hahaha!"
+
+	para "I won, I won!"
+	line "Looks like"
+	cont "I finally got the"
+	cont "better of you,"
+	cont "<PLAYER>!"
+	prompt
+
+_ChampionsRoomRivalRematchAfterBattleText:: ; marcelnote - new text for rematches
+	text "I see how much"
+	line "you and your"
+	cont "#MON have"
+	cont "grown, <PLAYER>."
+
+	para "I'm starting to"
+	line "understand what"
+	cont "gramps meant."
+
+	para "Come on,"
+	line "follow me."
+	done
+
 _ChampionsRoomOakText::
 	text "OAK: <PLAYER>!"
 	done

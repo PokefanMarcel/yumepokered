@@ -137,3 +137,7 @@ _CinnabarVolcano1FBurnHealSignText::
 	line "heat? Stock up"
 	cont "on BURN HEALs!"
 	done
+
+_CinnabarVolcano1FLanceText:: ; marcelnote - postgame Lance
+	text "You found me!"
+	prompt

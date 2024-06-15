@@ -87,6 +87,7 @@ FightingDojo_TextPointers:
 	dw_const FightingDojoBlackbelt2Text,                            TEXT_FIGHTINGDOJO_BLACKBELT2
 	dw_const FightingDojoBlackbelt3Text,                            TEXT_FIGHTINGDOJO_BLACKBELT3
 	dw_const FightingDojoBlackbelt4Text,                            TEXT_FIGHTINGDOJO_BLACKBELT4
+	dw_const FightingDojoBrunoText,                                 TEXT_FIGHTINGDOJO_BRUNO ; marcelnote - postgame Bruno
 	dw_const FightingDojoHitmonleePokeBallText,                     TEXT_FIGHTINGDOJO_HITMONLEE_POKE_BALL
 	dw_const FightingDojoHitmonchanPokeBallText,                    TEXT_FIGHTINGDOJO_HITMONCHAN_POKE_BALL
 	dw_const FightingDojoKarateMasterText.IWillGiveYouAPokemonText, TEXT_FIGHTINGDOJO_KARATE_MASTER_I_WILL_GIVE_YOU_A_POKEMON
@@ -293,4 +294,32 @@ FightingDojoHitmonchanPokeBallText:
 
 FightingDojoBetterNotGetGreedyText:
 	text_far _FightingDojoBetterNotGetGreedyText
+	text_end
+
+FightingDojoBrunoText: ; marcelnote - postgame Bruno
+	text_asm
+	ld hl, .text
+	call PrintText
+	call GBFadeOutToBlack
+	ld a, HS_FIGHTING_DOJO_BRUNO
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	call UpdateSprites
+	call Delay3
+	SetEvent EVENT_POSTGAME_BRUNO
+	CheckBothEventsSet EVENT_POSTGAME_LORELEI, EVENT_POSTGAME_AGATHA ; sets Z flag when events are set
+	jr nz, .end
+	CheckBothEventsSet EVENT_POSTGAME_LANCE, EVENT_POSTGAME_RIVAL
+	jr nz, .end
+	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL1 ; marcelnote - remove girl from E4 entrance
+	ld [wMissableObjectIndex], a
+	predef ShowObject
+	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL2 ; marcelnote - remove girl from E4 entrance
+	ld [wMissableObjectIndex], a
+	predef HideObject
+.end
+	call GBFadeInFromBlack
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.text
+	text_far _FightingDojoBrunoText
 	text_end

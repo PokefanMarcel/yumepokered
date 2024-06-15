@@ -59,7 +59,13 @@ LancesRoomDefaultScript:
 	ld a, [wCoordIndex]
 	cp $3  ; Is player standing next to Lance's sprite?
 	jr nc, .notStandingNextToLance
+	;;;;;; marcelnote - added for Lance rematch
+	CheckEvent EVENT_BECAME_CHAMPION
+	ld a, TEXT_LANCESROOM_LANCE_REMATCH
+	jr nz, .rematch
 	ld a, TEXT_LANCESROOM_LANCE
+.rematch
+	;;;;;;
 	ldh [hSpriteIndexOrTextID], a
 	jp DisplayTextID
 .notStandingNextToLance
@@ -86,7 +92,13 @@ LancesRoomLanceEndBattleScript:
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, ResetLanceScript
+	;;;;;; marcelnote - added for Lance rematch
+	CheckEvent EVENT_BECAME_CHAMPION
+	ld a, TEXT_LANCESROOM_LANCE_REMATCH
+	jr nz, .rematch
 	ld a, TEXT_LANCESROOM_LANCE
+.rematch
+	;;;;;;
 	ldh [hSpriteIndexOrTextID], a
 	jp DisplayTextID
 
@@ -125,12 +137,15 @@ LancesRoomPlayerIsMovingScript:
 
 LancesRoom_TextPointers:
 	def_text_pointers
-	dw_const LancesRoomLanceText, TEXT_LANCESROOM_LANCE
+	dw_const LancesRoomLanceText,        TEXT_LANCESROOM_LANCE
+	dw_const LancesRoomLanceRematchText, TEXT_LANCESROOM_LANCE_REMATCH
 
 LancesRoomTrainerHeaders:
 	def_trainers
 LancesRoomTrainerHeader0:
 	trainer EVENT_BEAT_LANCES_ROOM_TRAINER_0, 0, LancesRoomLanceBeforeBattleText, LancesRoomLanceEndBattleText, LancesRoomLanceAfterBattleText
+LancesRoomTrainerHeader1: ; marcelnote - Lance rematch
+	trainer EVENT_BEAT_LANCES_ROOM_TRAINER_1, 0, LancesRoomLanceRematchBeforeBattleText, LancesRoomLanceRematchEndBattleText, LancesRoomLanceRematchAfterBattleText
 	db -1 ; end
 
 LancesRoomLanceText:
@@ -149,6 +164,27 @@ LancesRoomLanceEndBattleText:
 
 LancesRoomLanceAfterBattleText:
 	text_far _LancesRoomLanceAfterBattleText
+	text_asm
+	SetEvent EVENT_BEAT_LANCE
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+; marcelnote - Lance rematch texts
+LancesRoomLanceRematchText:
+	text_asm
+	ld hl, LancesRoomTrainerHeader1
+	call TalkToTrainer
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+LancesRoomLanceRematchBeforeBattleText:
+	text_far _LancesRoomLanceRematchBeforeBattleText
+	text_end
+
+LancesRoomLanceRematchEndBattleText:
+	text_far _LancesRoomLanceRematchEndBattleText
+	text_end
+
+LancesRoomLanceRematchAfterBattleText:
+	text_far _LancesRoomLanceRematchAfterBattleText
 	text_asm
 	SetEvent EVENT_BEAT_LANCE
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
