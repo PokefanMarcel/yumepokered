@@ -247,10 +247,12 @@ DEF SHOW EQU $15
 	const HS_MT_MOON_SQUARE_CLEFAIRY       ; E4 ; marcelnote - Clefairy
 	const HS_MT_MOON_SQUARE_ITEM_1         ; E5 ; marcelnote - Moon Stone
 	const HS_MT_MOON_SQUARE_ITEM_2         ; E6 ; marcelnote - Super Potion
+	const HS_CINNABAR_VOLCANO_B1F_CHARIZARD; E8 ; marcelnote - postgame Charizard
+	const HS_CINNABAR_VOLCANO_B1F_LANCE    ; E8 ; marcelnote - postgame Lance B1F
 	const HS_CINNABAR_VOLCANO_B1F_ITEM_1   ; E7 ; marcelnote - Iron
 	const HS_CINNABAR_VOLCANO_B1F_ITEM_2   ; E8 ; marcelnote - Ice Heal
-	const HS_CINNABAR_VOLCANO_1F_ITEM_1    ; E9 ; marcelnote - Full Restore
 	const HS_CINNABAR_VOLCANO_1F_LANCE     ; EA ; marcelnote - postgame Lance 1F
+	const HS_CINNABAR_VOLCANO_1F_ITEM_1    ; E9 ; marcelnote - Full Restore
 	const HS_CINNABAR_VOLCANO_2F_MOLTRES   ; EB ; marcelnote - Moltres
 	const HS_CINNABAR_VOLCANO_2F_ITEM_1    ; EC ; marcelnote - Fire Stone
 	const HS_CINNABAR_VOLCANO_2F_ITEM_2    ; ED ; marcelnote - Ultra Ball

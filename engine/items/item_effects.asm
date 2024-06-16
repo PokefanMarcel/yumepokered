@@ -168,6 +168,15 @@ ItemUseBall:
 ; If the player is fighting the ghost Marowak, set the value that indicates the
 ; Pokémon can't be caught and skip the capture calculations.
 	ld a, [wCurMap]
+;;;;;; marcelnote - added this to also work with Cinnabar Volcano event Charizard
+	cp CINNABAR_VOLCANO_1FB1F
+	jr nz, .checkRestlessSoul
+	ld a, [wEnemyMonSpecies2]
+	cp CHARIZARD
+	ld b, $10 ; can't be caught value
+	jp z, .setAnimData
+.checkRestlessSoul
+;;;;;;
 	cp POKEMON_TOWER_6F
 	jr nz, .loop
 	ld a, [wEnemyMonSpecies2]

@@ -63,15 +63,41 @@ _LancesRoomLanceAfterBattleText::
 	cont "champion!@"
 	text_end
 
-_LancesRoomLanceRematchBeforeBattleText:: ; marcelnote - Agatha rematch text
-	text "Let's rematch!"
+_LancesRoomLanceRematchBeforeBattleText:: ; marcelnote - Lance rematch text
+	text "Ah, <PLAYER>!"
+	line "I have been"
+	cont "expecting you."
+
+	para "My dragons and I"
+	line "have trained"
+	cont "relentlessly to"
+	cont "surpass our"
+	cont "limits."
+	; "My powers have doubled since the last time we met, Count."
+
+	para "Do you think you"
+	line "can still handle"
+	cont "their power?"
 	done
 
-_LancesRoomLanceRematchEndBattleText:: ; marcelnote - Agatha rematch text
-	text "Lost"
-	line "again!"
+_LancesRoomLanceRematchEndBattleText:: ; marcelnote - Lance rematch text
+	text "Truly"
+	line "astounding."
+
+	para "You've grown even"
+	line "stronger since"
+	cont "our last battle."
 	prompt
 
-_LancesRoomLanceRematchAfterBattleText:: ; marcelnote - Agatha rematch text
-	text "You win again!"
-	done
+_LancesRoomLanceRematchAfterBattleText:: ; marcelnote - Lance rematch text
+	text "I can hardly"
+	line "believe it!"
+
+	para "Not even my new"
+	line "team could stand"
+	cont "against you."
+
+	para "You truly are a"
+	line "champion,"
+	cont "<PLAYER>!@"
+	text_end

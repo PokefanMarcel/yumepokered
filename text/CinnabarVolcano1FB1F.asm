@@ -138,6 +138,69 @@ _CinnabarVolcano1FBurnHealSignText::
 	cont "on BURN HEALs!"
 	done
 
-_CinnabarVolcano1FLanceText:: ; marcelnote - postgame Lance
-	text "You found me!"
-	prompt
+_CinnabarVolcano1FLanceCameInHasteText::
+	text "Ah, <PLAYER>!"
+	line "Good to see you."
+
+	para "I came in haste"
+	line "after I heard of"
+	cont "a wild #MON"
+	cont "causing mayhem on"
+	cont "CINNABAR ISLAND."
+
+	para "As a member of the"
+	line "ELITE FOUR, it is"
+	cont "my duty to keep"
+	cont "the region safe."
+
+	para "I tracked the"
+	line "#MON here,"
+	cont "but it fled"
+	cont "deeper inside."
+
+	para "I could use your"
+	line "assistance,"
+	cont "champion."
+	done
+
+_CinnabarVolcanoB1FLanceTogetherText::
+	text "<PLAYER>!"
+
+	para "Let's handle"
+	line "this together!"
+	done
+
+_CinnabarVolcanoB1FLancePokeBallText::
+	text "LANCE: Here we go!"
+	line "POKé BALL!"
+	done
+
+_CinnabarVolcanoB1FCharizardCaughtText::
+	text "..."
+
+	para "..."
+
+	para "LANCE caught"
+	line "CHARIZARD!"
+	done
+
+_CinnabarVolcanoB1FLanceGreatJobText::
+	text "Great job,"
+	line "<PLAYER>."
+
+	para "This CHARIZARD was"
+	line "tough, but our"
+	cont "combined strength"
+	cont "prevailed."
+
+	para "Now I will ensure"
+	line "that it gets"
+	cont "proper training."
+
+	para "Until we meet"
+	line "again, champion!"
+	done
+
+_CinnabarVolcanoB1FCharizardText:: ; marcelnote - postgame Lance
+	text "Grraor!"
+	done
