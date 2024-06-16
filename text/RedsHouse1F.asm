@@ -1,6 +1,6 @@
 _RedsHouse1FMomWakeUpText::
 	text "MOM: Right."
-	line "All boys leave"
+	line "All kids leave" ; marcelnote - replaced 'boys' by 'kids'
 	cont "home some day."
 	cont "It said so on TV."
 
