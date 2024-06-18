@@ -2832,6 +2832,8 @@ IsNextTileShoreOrWater:    ; marcelnote - modified to remove surfing on statues
 	jr z, .skipShoreTiles ; if it's the Vermilion Dock tileset
 	cp GYM ; Gym tileset
 	jr z, .skipShoreTiles
+	cp FACILITY ; Facility tileset ; marcelnote - skip Shore tiles here as well
+    jr z, .skipShoreTiles
 	cp SHIP ; SS Anne tileset
 	jr z, .skipShoreTiles
 	cp FOREST ; Forest tileset ; marcelnote - now different from Safari Zone tileset
