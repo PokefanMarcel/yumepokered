@@ -32,16 +32,37 @@ _BrunosRoomBrunoAfterBattleText:: ; marcelnote - added map name to label
 	done
 
 _BrunosRoomBrunoRematchBeforeBattleText:: ; marcelnote - Bruno rematch text
-	text "Let's rematch!"
+	text "Ready for another"
+	line "round, champ?"
+
+	para "My #MON and I"
+	line "have kept to a"
+	cont "strict workout"
+	cont "and diet routine."
+
+	para "Face the results"
+	line "of our rigorous"
+	cont "training!"
+
+	para "Hoo hah!"
 	done
 
 _BrunosRoomBrunoRematchEndBattleText:: ; marcelnote - Bruno rematch text
-	text "Lost"
-	line "again!"
+	text "So my"
+	line "training is"
+	cont "still lacking..."
 	prompt
 
 _BrunosRoomBrunoRematchAfterBattleText:: ; marcelnote - Bruno rematch text
-	text "You win again!"
+	text "True discipline is"
+	line "not accomplished"
+	cont "in a day."
+
+	para "Constant training"
+	line "over time is key."
+
+	para "On to the next"
+	line "battle, champ!"
 	done
 
 _BrunosRoomBrunoDontRunAwayText::

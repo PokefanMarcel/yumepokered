@@ -182,7 +182,7 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw FightingDojoHS
-	dw NoHS
+	dw SaffronGymHS ; marcelnote - was NoHS
 	dw NoHS
 	dw NoHS
 	dw NoHS ; marcelnote - was SilphCo1FHS
@@ -578,6 +578,9 @@ MtMoonSquareHS:
 	db MT_MOON_SQUARE, MTMOONSQUARE_CLEFAIRY, HIDE
 	db MT_MOON_SQUARE, MTMOONSQUARE_MOON_STONE, HIDE
 	db MT_MOON_SQUARE, MTMOONSQUARE_SUPER_POTION, SHOW
+SaffronGymHS:
+	db SAFFRON_GYM, SAFFRONGYM_WILL, HIDE  ; marcelnote - postgame Bruno event
+	db SAFFRON_GYM, SAFFRONGYM_BRUNO, HIDE ; marcelnote - postgame Bruno event
 CinnabarVolcano1FB1FHS:
 	db CINNABAR_VOLCANO_1FB1F, CINNABARVOLCANOB1F_CHARIZARD, HIDE
 	db CINNABAR_VOLCANO_1FB1F, CINNABARVOLCANOB1F_LANCE, HIDE

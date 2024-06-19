@@ -73,5 +73,5 @@ SeafoamIslands1FLoreleiText: ; marcelnote - postgame Lorelei
 	call GBFadeInFromBlack
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .text
-	text_far _FightingDojoBrunoText
+	text_far _PokemonTower1FAgathaText
 	text_end

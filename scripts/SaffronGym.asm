@@ -35,6 +35,8 @@ SaffronGym_ScriptPointers:
 	dw_const DisplayEnemyTrainerTextAndStartBattle, SCRIPT_SAFFRONGYM_START_BATTLE
 	dw_const EndTrainerBattle,                      SCRIPT_SAFFRONGYM_END_BATTLE
 	dw_const SaffronGymSabrinaPostBattle,           SCRIPT_SAFFRONGYM_SABRINA_POST_BATTLE
+	dw_const SaffronGymBrunoArrivesScript,          SCRIPT_SAFFRONGYM_BRUNO_ARRIVES
+	dw_const SaffronGymBrunoInspiringScript,        SCRIPT_SAFFRONGYM_BRUNO_INSPIRING
 
 SaffronGymSabrinaPostBattle:
 	ld a, [wIsInBattle]
@@ -71,6 +73,109 @@ SaffronGymSabrinaReceiveTM46Script:
 
 	jp SaffronGymResetScripts
 
+SaffronGymBrunoArrivesScript: ; marcelnote - postgame Bruno event
+	ld a, [wIsInBattle]
+	cp $ff
+	jp z, CheckFightingMapTrainers
+	ld a, HS_SAFFRON_GYM_BRUNO
+	ld [wMissableObjectIndex], a
+	predef ShowObject
+	ld a, TEXT_SAFFRONGYM_BRUNO_ARRIVES
+	ldh [hSpriteIndexOrTextID], a
+	call DisplayTextID
+	ld a, A_BUTTON | B_BUTTON | SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
+	ld [wJoyIgnore], a
+	;ld a, SAFFRONGYM_WILL ; to change Will's facing direction - moved to when Bruno has finished moving
+	;ldh [hSpriteIndex], a
+	;ld a, [wXCoord]
+	;cp 10
+	;ld a, SPRITE_FACING_RIGHT
+	;jr z, .directionSet
+	;ld a, SPRITE_FACING_DOWN
+;.directionSet
+	;ldh [hSpriteFacingDirection], a
+	;call SetSpriteFacingDirectionAndDelay
+	ld de, .BrunoArrivesMovementRight
+	ld a, [wXCoord]
+	cp 10
+	jr z, .moveBruno ; if player on
+	ld de, .BrunoArrivesMovementBelow ; if player is on Will's right, Bruno arrives below
+.moveBruno
+	ld a, SAFFRONGYM_BRUNO
+	ldh [hSpriteIndex], a
+	call MoveSprite
+	ld a, SCRIPT_SAFFRONGYM_BRUNO_INSPIRING
+	ld [wSaffronGymCurScript], a
+	ld [wCurMapScript], a
+	ret
+
+.BrunoArrivesMovementRight:
+	db NPC_MOVEMENT_UP
+	db NPC_MOVEMENT_UP
+	db NPC_MOVEMENT_UP
+	db -1 ; end
+
+.BrunoArrivesMovementBelow:
+	db NPC_MOVEMENT_UP
+	db NPC_MOVEMENT_LEFT
+	db NPC_MOVEMENT_UP
+	db -1 ; end
+
+SaffronGymBrunoInspiringScript: ; marcelnote - postgame Bruno event
+	ld a, [wd730]
+	bit 0, a
+	ret nz
+	ld a, SAFFRONGYM_WILL ; make Will face the correct direction
+	ldh [hSpriteIndex], a
+	ld a, [wXCoord]
+	cp 10
+	ld a, SPRITE_FACING_RIGHT
+	jr z, .WillDirectionSet
+	ld a, SPRITE_FACING_DOWN
+.WillDirectionSet
+	ldh [hSpriteFacingDirection], a
+	call SetSpriteFacingDirectionAndDelay
+	ld a, [wXCoord]
+	cp 11
+	jr z, .BrunoSpeaks ; if player is on Will's right, no need to adjust Bruno's facing direction
+	ld a, SAFFRONGYM_BRUNO
+	ldh [hSpriteIndex], a
+	ld a, SPRITE_FACING_LEFT
+	ldh [hSpriteFacingDirection], a
+	call SetSpriteFacingDirectionAndDelay
+.BrunoSpeaks
+	xor a
+	ld [wJoyIgnore], a
+	ld a, TEXT_SAFFRONGYM_BRUNO_INSPIRING
+	ldh [hSpriteIndexOrTextID], a
+	call DisplayTextID
+	call GBFadeOutToBlack
+	ld a, HS_SAFFRON_GYM_BRUNO
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	call UpdateSprites
+	call Delay3
+	SetEvent EVENT_POSTGAME_BRUNO
+	ld a, HS_FIGHTING_DOJO_BRUNO
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	CheckBothEventsSet EVENT_POSTGAME_LORELEI, EVENT_POSTGAME_AGATHA ; sets Z flag when events are set
+	jr nz, .end
+	CheckBothEventsSet EVENT_POSTGAME_LANCE, EVENT_POSTGAME_RIVAL
+	jr nz, .end
+	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL1 ; marcelnote - remove girl from E4 entrance
+	ld [wMissableObjectIndex], a
+	predef ShowObject
+	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL2 ; marcelnote - remove girl from E4 entrance
+	ld [wMissableObjectIndex], a
+	predef HideObject
+.end
+	call GBFadeInFromBlack
+	ld a, SCRIPT_SAFFRONGYM_DEFAULT
+	ld [wSaffronGymCurScript], a
+	ld [wCurMapScript], a
+	ret
+
 SaffronGym_TextPointers:
 	def_text_pointers
 	dw_const SaffronGymSabrinaText,               TEXT_SAFFRONGYM_SABRINA
@@ -81,10 +186,13 @@ SaffronGym_TextPointers:
 	dw_const SaffronGymChanneler3Text,            TEXT_SAFFRONGYM_CHANNELER3
 	dw_const SaffronGymYoungster3Text,            TEXT_SAFFRONGYM_YOUNGSTER3
 	dw_const SaffronGymYoungster4Text,            TEXT_SAFFRONGYM_YOUNGSTER4
+	dw_const SaffronGymWillText,                  TEXT_SAFFRONGYM_WILL  ; marcelnote - postgame Bruno event
 	dw_const SaffronGymGymGuideText,              TEXT_SAFFRONGYM_GYM_GUIDE
+	dw_const SaffronGymBrunoInspiringText,        TEXT_SAFFRONGYM_BRUNO_INSPIRING  ; marcelnote - postgame Bruno event
 	dw_const SaffronGymSabrinaMarshBadgeInfoText, TEXT_SAFFRONGYM_SABRINA_MARSH_BADGE_INFO
 	dw_const SaffronGymSabrinaReceivedTM46Text,   TEXT_SAFFRONGYM_SABRINA_RECEIVED_TM46
 	dw_const SaffronGymSabrinaTM46NoRoomText,     TEXT_SAFFRONGYM_SABRINA_TM46_NO_ROOM
+	dw_const SaffronGymBrunoArrivesText,          TEXT_SAFFRONGYM_BRUNO_ARRIVES  ; marcelnote - postgame Bruno event
 
 SaffronGymTrainerHeaders:
 	def_trainers 2
@@ -310,4 +418,48 @@ SaffronGymYoungster4EndBattleText:
 
 SaffronGymYoungster4AfterBattleText:
 	text_far _SaffronGymYoungster4AfterBattleText
+	text_end
+
+SaffronGymWillText: ; marcelnote - postgame Will
+	text_asm
+	CheckHideShow HS_FIGHTING_DOJO_BRUNO
+	jr z, .battle
+	ld hl, .PostBattleText
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.battle
+	ld hl, .WelcomeText
+	call PrintText
+	ld hl, wd72d
+	set 6, [hl]
+	set 7, [hl]
+	ld hl, .DefeatedText
+	ld de, .DefeatedText
+	call SaveEndBattleTextPointers
+	ldh a, [hSpriteIndex]
+	ld [wSpriteIndex], a
+	call EngageMapTrainer
+	call InitBattleEnemyParameters
+	ld a, SCRIPT_SAFFRONGYM_BRUNO_ARRIVES
+	ld [wSaffronGymCurScript], a
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+.WelcomeText:
+	text_far _SaffronGymWillWelcomeText
+	text_end
+
+.DefeatedText:
+	text_far _SaffronGymWillDefeatedText
+	text_end
+
+.PostBattleText:
+	text_far _SaffronGymWillPostBattleText
+	text_end
+
+SaffronGymBrunoArrivesText: ; marcelnote - postgame Bruno
+	text_far _SaffronGymBrunoArrivesText
+	text_end
+
+SaffronGymBrunoInspiringText: ; marcelnote - postgame Bruno
+	text_far _SaffronGymBrunoInspiringText
 	text_end

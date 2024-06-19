@@ -429,6 +429,8 @@ PsychicData:
 	db 34, MR_MIME, KADABRA, 0
 	db 33, SLOWPOKE, SLOWPOKE, SLOWBRO, 0
 	db 38, SLOWBRO, 0
+; marcelnote - new trainers
+	db $FF, 54, SLOWBRO, 52, MR_MIME, 55, JYNX, 54, HYPNO, 56, EXEGGUTOR, 0 ; marcelnote - postgame Will
 
 RockerData:
 ; Vermilion Gym
@@ -779,6 +781,7 @@ LoreleiData:
 
 BrunoData:
 	db $FF, 53, ONIX, 55, HITMONCHAN, 55, HITMONLEE, 56, ONIX, 58, MACHAMP, 0
+	; put Poliwrath in original team as in Let's Go Pikachu?
 	; marcelnote - new rematch team
 	db $FF, 65, HITMONCHAN, 66, ONIX, 65, HITMONLEE, 66, POLIWRATH, 67, GOLEM, 68, MACHAMP, 0
 

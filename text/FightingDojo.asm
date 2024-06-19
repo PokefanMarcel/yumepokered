@@ -129,6 +129,53 @@ _FightingDojoBetterNotGetGreedyText::
 	line "greedy..."
 	done
 
-_FightingDojoBrunoText:: ; marcelnote - postgame Bruno
-	text "You found me!"
-	prompt
+_FightingDojoBrunoOhChampText:: ; marcelnote - postgame Bruno
+	text "Oh, champ!"
+
+	para "Didn't expect to"
+	line "find you here."
+
+	para "I'm here on ELITE"
+	line "FOUR business,"
+	cont "you see."
+
+	para "We're always on"
+	line "the lookout for"
+	cont "new talents."
+
+	para "SABRINA spoke"
+	line "highly of a"
+	cont "promising student"
+	cont "of hers, so"
+	cont "I came to witness"
+	cont "his potential"
+	cont "firsthand."
+
+	para "I know!"
+
+	para "<PLAYER>,"
+	line "why not test"
+	cont "this student"
+	cont "yourself?"
+
+	para "He is waiting at"
+	line "the SAFFRON GYM."
+	cont "Go see what he's"
+	cont "made of, champ!"
+	done
+
+_FightingDojoBrunoUsedToTrainHereText:: ; marcelnote - postgame Bruno
+	text "You know, I used"
+	line "to train in this"
+	cont "DOJO, back when"
+	cont "it was SAFFRON's"
+	cont "official GYM."
+
+	para "But city life"
+	line "was not for me."
+	cont "The fresh air and"
+	cont "rugged mountains"
+	cont "of the INDIGO"
+	cont "PLATEAU is where"
+	cont "I feel alive!"
+	done

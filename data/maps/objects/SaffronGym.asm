@@ -7,7 +7,9 @@
 	const_export SAFFRONGYM_CHANNELER3
 	const_export SAFFRONGYM_YOUNGSTER3
 	const_export SAFFRONGYM_YOUNGSTER4
+	const_export SAFFRONGYM_WILL  ; marcelnote - postgame Bruno event
 	const_export SAFFRONGYM_GYM_GUIDE
+	const_export SAFFRONGYM_BRUNO ; marcelnote - postgame Bruno event
 
 SaffronGym_Object:
 	db $2e ; border block
@@ -57,6 +59,8 @@ SaffronGym_Object:
 	object_event  3, 13, SPRITE_CHANNELER, STAY, DOWN, TEXT_SAFFRONGYM_CHANNELER3, OPP_CHANNELER, 24
 	object_event 17, 13, SPRITE_YOUNGSTER, STAY, DOWN, TEXT_SAFFRONGYM_YOUNGSTER3, OPP_PSYCHIC_TR, 3
 	object_event  3,  1, SPRITE_YOUNGSTER, STAY, DOWN, TEXT_SAFFRONGYM_YOUNGSTER4, OPP_PSYCHIC_TR, 4
+	object_event 10,  8, SPRITE_YOUNGSTER, STAY, DOWN, TEXT_SAFFRONGYM_WILL, OPP_PSYCHIC_TR, 5 ; marcelnote - postgame Bruno event
 	object_event 10, 15, SPRITE_GYM_GUIDE, STAY, DOWN, TEXT_SAFFRONGYM_GYM_GUIDE
+	object_event 11, 11, SPRITE_BRUNO, STAY, UP, TEXT_SAFFRONGYM_BRUNO_INSPIRING ; marcelnote - postgame Bruno event
 
 	def_warps_to SAFFRON_GYM
