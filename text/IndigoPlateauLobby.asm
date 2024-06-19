@@ -37,6 +37,6 @@ _IndigoPlateauLobbyCooltrainerFEliteFourAwayText:: ; marcelnote - new text
 _IndigoPlateauLobbyCooltrainerFAfterChampionText:: ; marcelnote - new text
 	text "Welcome, champ!"
 	line "The ELITE FOUR"
-	cont "are ready for"
-	cont "a rematch!"
+	cont "are back and rea-"
+	cont "dy for a rematch!"
 	done
