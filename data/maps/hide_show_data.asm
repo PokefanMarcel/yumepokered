@@ -262,6 +262,9 @@ MissableObjects:
 ; entries correspond to HS_* constants (see constants/hide_show_constants)
 	table_width 3, MissableObjects
 ; format: map id, object id, HIDE/SHOW
+; marcelnote - !!!WARNING!!!
+; the maps with items to pick up OR overworld map Pokémon to fight
+; MUST be in this first list! (basically all constants marked with X in hide_show_constants)
 
 PalletTownHS:
 	db PALLET_TOWN, PALLETTOWN_OAK, HIDE
@@ -551,9 +554,6 @@ CeruleanCaveB1FHS:
 VictoryRoad1FHS:
 	db VICTORY_ROAD_1F, VICTORYROAD1F_TM_SKY_ATTACK, SHOW
 	db VICTORY_ROAD_1F, VICTORYROAD1F_RARE_CANDY,    SHOW
-ChampionsRoomHS:
-	db CHAMPIONS_ROOM, CHAMPIONSROOM_OAK, HIDE
-	db CHAMPIONS_ROOM, CHAMPIONSROOM_RIVAL, SHOW ; marcelnote - added for Rival rematch
 SeafoamIslands1FHS:
 	db SEAFOAM_ISLANDS_1F, SEAFOAMISLANDS1F_LORELEI, HIDE ; marcelnote - postgame Lorelei
 	db SEAFOAM_ISLANDS_1F, SEAFOAMISLANDS1F_BOULDER1, SHOW
@@ -573,14 +573,11 @@ SeafoamIslandsB4FHS:
 	db SEAFOAM_ISLANDS_B4F, SEAFOAMISLANDSB4F_BOULDER1, HIDE
 	db SEAFOAM_ISLANDS_B4F, SEAFOAMISLANDSB4F_BOULDER2, HIDE
 	db SEAFOAM_ISLANDS_B4F, SEAFOAMISLANDSB4F_ARTICUNO, SHOW
-;;;;;;;;; marcelnote - new locations
+; marcelnote - new maps
 MtMoonSquareHS:
 	db MT_MOON_SQUARE, MTMOONSQUARE_CLEFAIRY, HIDE
 	db MT_MOON_SQUARE, MTMOONSQUARE_MOON_STONE, HIDE
 	db MT_MOON_SQUARE, MTMOONSQUARE_SUPER_POTION, SHOW
-SaffronGymHS:
-	db SAFFRON_GYM, SAFFRONGYM_WILL, HIDE  ; marcelnote - postgame Bruno event
-	db SAFFRON_GYM, SAFFRONGYM_BRUNO, HIDE ; marcelnote - postgame Bruno event
 CinnabarVolcano1FB1FHS:
 	db CINNABAR_VOLCANO_1FB1F, CINNABARVOLCANOB1F_CHARIZARD, HIDE
 	db CINNABAR_VOLCANO_1FB1F, CINNABARVOLCANOB1F_LANCE, HIDE
@@ -593,6 +590,19 @@ CinnabarVolcano2FHS:
 	db CINNABAR_VOLCANO_2F, CINNABARVOLCANO2F_FIRE_STONE, SHOW
 	db CINNABAR_VOLCANO_2F, CINNABARVOLCANO2F_ULTRA_BALL, SHOW
 	db CINNABAR_VOLCANO_2F, CINNABARVOLCANO2F_NUGGET, SHOW
+	db $FF, $01, SHOW ; end
+	assert_table_length NUM_HS_OBJECTS + 1
+
+
+; marcelnote - the list continues here to allow for more than 256 HideShow objects
+MissableObjectsCont:
+; entries correspond to HS_* constants (see constants/hide_show_constants)
+	table_width 3, MissableObjectsCont
+; format: map id, object id, HIDE/SHOW
+
+SaffronGymHS:
+	db SAFFRON_GYM, SAFFRONGYM_WILL, HIDE  ; marcelnote - postgame Bruno event
+	db SAFFRON_GYM, SAFFRONGYM_BRUNO, HIDE ; marcelnote - postgame Bruno event
 IndigoPlateauLobbyHS:
 	db INDIGO_PLATEAU_LOBBY, INDIGOPLATEAULOBBY_COOLTRAINER_F, SHOW
 	db INDIGO_PLATEAU_LOBBY, INDIGOPLATEAULOBBY_COOLTRAINER_F2, HIDE
@@ -608,8 +618,11 @@ AgathasRoomHS:
 LancesRoomHS:
 	db LANCES_ROOM, LANCESROOM_LANCE, SHOW
 	db LANCES_ROOM, LANCESROOM_LANCE_REMATCH, HIDE
+ChampionsRoomHS:
+	db CHAMPIONS_ROOM, CHAMPIONSROOM_OAK, HIDE
+	db CHAMPIONS_ROOM, CHAMPIONSROOM_RIVAL, SHOW ; marcelnote - added for Rival rematch
 HallOfFameHS:
 	db HALL_OF_FAME, HALLOFFAME_OAK, SHOW
 	db HALL_OF_FAME, HALLOFFAME_RIVAL, HIDE
 	db $FF, $01, SHOW ; end
-	assert_table_length NUM_HS_OBJECTS + 1
+	assert_table_length NUM_HS_OBJECTS_CONT + 1

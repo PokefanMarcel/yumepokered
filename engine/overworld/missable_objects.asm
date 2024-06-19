@@ -20,7 +20,18 @@ MarkTownVisitedAndLoadMissableObjects::
 LoadMissableObjects:
 	ld l, a
 	push hl
-	ld de, MissableObjects     ; calculate difference between out pointer and the base pointer
+;;;;;; marcelnote - this is adapted from PureRGB to deal with extended HideShow list
+	ld a, l
+	cp LOW(MissableObjectsCont)
+	ld a, h
+	sbc HIGH(MissableObjectsCont) ; sets carry flag if hl address is < MissableObjectsCont
+	ld de, MissableObjects
+	ResetEventA EVENT_USE_MISSABLE_OBJECTS_CONT_LIST
+	jr c, .useNormalList
+	ld de, MissableObjectsCont
+	SetEventA EVENT_USE_MISSABLE_OBJECTS_CONT_LIST
+.useNormalList
+;;;;;;
 	ld a, l
 	sub e
 	jr nc, .noCarry
@@ -78,13 +89,46 @@ InitializeMissableObjectsFlags:
 .missableObjectsLoop
 	ld a, [hli]
 	cp -1           ; end of list
-	ret z
+	;ret z
+	jp z, InitializeMissableObjectsFlagsCont ; marcelnote - continue with extended list instead
 	push hl
 	inc hl
 	ld a, [hl]
 	cp HIDE
 	jr nz, .skip
 	ld hl, wMissableObjectFlags
+	ld a, [wMissableObjectCounter]
+	ld c, a
+	ld b, FLAG_SET
+	call MissableObjectFlagAction ; set flag if Item is hidden
+.skip
+	ld hl, wMissableObjectCounter
+	inc [hl]
+	pop hl
+	inc hl
+	inc hl
+	jr .missableObjectsLoop
+
+InitializeMissableObjectsFlagsCont: ; marcelnote - replicates code above for extended list
+; TO DO: there is probably a way to merge the two functions into something shorter
+; by making the loop into its own function which is called twice
+	ld hl, wMissableObjectFlagsCont
+	ld bc, wMissableObjectFlagsContEnd - wMissableObjectFlagsCont
+	xor a
+	call FillMemory ; clear missable objects flags
+	ld hl, MissableObjectsCont
+	xor a
+	ld [wMissableObjectCounter], a
+.missableObjectsLoop
+	ld a, [hli]
+	cp -1           ; end of list
+	ret z
+	push hl
+	inc hl
+	ld a, [hl]
+	cp HIDE
+	jr nz, .skip
+	ld hl, wMissableObjectFlagsCont
 	ld a, [wMissableObjectCounter]
 	ld c, a
 	ld b, FLAG_SET
@@ -112,7 +156,13 @@ IsObjectHidden:
 	jr nz, .loop
 	ld c, a
 	ld b, FLAG_TEST
+;;;;;; marcelnote - adapted from PureRGB to deal with extended HideShow list
+	CheckEvent EVENT_USE_MISSABLE_OBJECTS_CONT_LIST
 	ld hl, wMissableObjectFlags
+	jr z, .useNormalList
+	ld hl, wMissableObjectFlagsCont
+.useNormalList
+;;;;;;
 	call MissableObjectFlagAction
 	ld a, c
 	and a
@@ -125,9 +175,16 @@ IsObjectHidden:
 
 ; adds missable object (items, leg. pokemon, etc.) to the map
 ; [wMissableObjectIndex]: index of the missable object to be added (global index)
+; marcelnote - adapted from PureRGB for extended HideShow list
 ShowObject:
-ShowObject2:
+;ShowObject2:
 	ld hl, wMissableObjectFlags
+	jr ShowObjectCommon
+
+ShowObjectCont:
+	ld hl, wMissableObjectFlagsCont
+	; fallthrough
+ShowObjectCommon:
 	ld a, [wMissableObjectIndex]
 	ld c, a
 	ld b, FLAG_RESET
@@ -136,8 +193,15 @@ ShowObject2:
 
 ; removes missable object (items, leg. pokemon, etc.) from the map
 ; [wMissableObjectIndex]: index of the missable object to be removed (global index)
+; marcelnote - adapted from PureRGB for extended HideShow list
 HideObject:
 	ld hl, wMissableObjectFlags
+	jr HideObjectCommon
+
+HideObjectCont:
+	ld hl, wMissableObjectFlagsCont
+	; fallthrough
+HideObjectCommon:
 	ld a, [wMissableObjectIndex]
 	ld c, a
 	ld b, FLAG_SET

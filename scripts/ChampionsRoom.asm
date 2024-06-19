@@ -157,7 +157,7 @@ ChampionsRoomOakArrivesScript:
 	call MoveSprite
 	ld a, HS_CHAMPIONS_ROOM_OAK
 	ld [wMissableObjectIndex], a
-	predef ShowObject
+	predef ShowObjectCont ; marcelnote - constant moved to second HideShow list
 	ld a, SCRIPT_CHAMPIONSROOM_OAK_CONGRATULATES_PLAYER
 	ld [wChampionsRoomCurScript], a
 	ret
@@ -235,7 +235,7 @@ ChampionsRoomOakExitsScript:
 	ret nz
 	ld a, HS_CHAMPIONS_ROOM_OAK
 	ld [wMissableObjectIndex], a
-	predef HideObject
+	predef HideObjectCont ; marcelnote - constant moved to second HideShow list
 	ld a, SCRIPT_CHAMPIONSROOM_PLAYER_FOLLOWS_OAK
 	ld [wChampionsRoomCurScript], a
 	ret
@@ -256,7 +256,7 @@ ChampionsRoomRivalExitsScript: ; marcelnote - Rival rematch
 	ret nz
 	ld a, HS_CHAMPIONS_ROOM_RIVAL
 	ld [wMissableObjectIndex], a
-	predef HideObject
+	predef HideObjectCont
 	ld a, SCRIPT_CHAMPIONSROOM_PLAYER_FOLLOWS_RIVAL
 	ld [wChampionsRoomCurScript], a
 	ret
@@ -304,10 +304,10 @@ ChampionsRoomCleanupScript:
 	ld [wJoyIgnore], a
 	ld a, SCRIPT_CHAMPIONSROOM_DEFAULT
 	ld [wChampionsRoomCurScript], a
-	;;;;; marcelnote - make Rival reappear since he walked out
+	;;;;; marcelnote - make Rival reappear since he walked out ; should be moved to Hall of Fame script?
 	ld a, HS_CHAMPIONS_ROOM_RIVAL
 	ld [wMissableObjectIndex], a
-	predef ShowObject
+	predef ShowObjectCont
 	;;;;;
 	ret
 

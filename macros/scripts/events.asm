@@ -145,6 +145,13 @@ MACRO SetEvent
 	set (\1) % 8, [hl]
 ENDM
 
+;\1 = event index
+MACRO SetEventA ; marcelnote - taken from PureRGB, uses a instead of hl
+	ld a, [wEventFlags + ((\1) / 8)]
+	set (\1) % 8, a
+	ld [wEventFlags + ((\1) / 8)], a
+ENDM
+
 
 ;\1 = event index
 MACRO SetEventReuseHL
@@ -195,6 +202,14 @@ MACRO ResetEvent
 	DEF event_byte = ((\1) / 8)
 	ld hl, wEventFlags + event_byte
 	res (\1) % 8, [hl]
+ENDM
+
+
+;\1 = event index
+MACRO ResetEventA ; marcelnote - taken from PureRGB, uses a instead of hl
+	ld a, [wEventFlags + ((\1) / 8)]
+	res (\1) % 8, a
+	ld [wEventFlags + ((\1) / 8)], a
 ENDM
 
 
@@ -455,6 +470,24 @@ ENDM
 MACRO CheckHideShow
 	DEF hideshow_byte = ((\1) / 8)
 	ld a, [wMissableObjectFlags + hideshow_byte]
+
+	IF _NARG > 1
+		IF ((\1) % 8) == 7
+			add a
+		ELSE
+			REPT ((\1) % 8) + 1
+				rrca
+			ENDR
+		ENDC
+	ELSE
+		bit (\1) % 8, a
+	ENDC
+ENDM
+
+; marcelnote - replicates macro above for second list of HideShow items
+MACRO CheckHideShowCont
+	DEF hideshow_byte = ((\1) / 8)
+	ld a, [wMissableObjectFlagsCont + hideshow_byte]
 
 	IF _NARG > 1
 		IF ((\1) % 8) == 7

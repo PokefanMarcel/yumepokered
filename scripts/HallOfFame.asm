@@ -42,10 +42,10 @@ HallOfFameResetEventsAndSaveScript:
 	;;;;;; marcelnote - switching Oak for Rival for rematches
 	ld a, HS_HALL_OF_FAME_OAK
 	ld [wMissableObjectIndex], a
-	predef HideObject
+	predef HideObjectCont
 	ld a, HS_HALL_OF_FAME_RIVAL
 	ld [wMissableObjectIndex], a
-	predef ShowObject
+	predef ShowObjectCont
 	;;;;;;
 	xor a
 	ld [wHallOfFameCurScript], a
@@ -115,57 +115,57 @@ HallOfFameCongratulationsScript:
 	CheckEvent EVENT_BECAME_CHAMPION
 	jp nz, .rematch3
 	; marcelnote - resetting events and hide/show items after first win
-	SetEvent EVENT_BECAME_CHAMPION ; marcelnote - new event which marks postgame
+	SetEvent EVENT_BECAME_CHAMPION ; new event which marks postgame
 	ld a, HS_CERULEAN_CAVE_GUY
 	ld [wMissableObjectIndex], a
 	predef HideObject
-	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL1 ; marcelnote - move girl to E4 entrance
+	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL1 ; move girl to E4 entrance
 	ld [wMissableObjectIndex], a
-	predef HideObject
-	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL2 ; marcelnote - move girl to E4 entrance
+	predef HideObjectCont
+	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL2 ; move girl to E4 entrance
 	ld [wMissableObjectIndex], a
-	predef ShowObject
+	predef ShowObjectCont
 	; marcelnote - make roaming E4 members appear
-	ld a, HS_SEAFOAM_ISLANDS_1F_LORELEI ; marcelnote - postgame Lorelei
+	ld a, HS_SEAFOAM_ISLANDS_1F_LORELEI ; postgame Lorelei
 	ld [wMissableObjectIndex], a
 	predef ShowObject
-	ld a, HS_FIGHTING_DOJO_BRUNO ; marcelnote - postgame Bruno
+	ld a, HS_FIGHTING_DOJO_BRUNO        ; postgame Bruno
 	ld [wMissableObjectIndex], a
 	predef ShowObject
-	ld a, HS_POKEMON_TOWER_1F_AGATHA ; marcelnote - postgame Agatha
+	ld a, HS_POKEMON_TOWER_1F_AGATHA    ; postgame Agatha
 	ld [wMissableObjectIndex], a
 	predef ShowObject
-	ld a, HS_CINNABAR_VOLCANO_1F_LANCE ; marcelnote - postgame Lance
+	ld a, HS_CINNABAR_VOLCANO_1F_LANCE  ; postgame Lance
 	ld [wMissableObjectIndex], a
 	predef ShowObject
-	ld a, HS_OAKS_LAB_RIVAL ; marcelnote - postgame Rival
+	ld a, HS_OAKS_LAB_RIVAL             ; postgame Rival
 	ld [wMissableObjectIndex], a
 	predef ShowObject
 	; marcelnote - switch E4 to their rematch counterparts
-	ld a, HS_LORELEIS_ROOM_LORELEI ; marcelnote - hide original Lorelei
+	ld a, HS_LORELEIS_ROOM_LORELEI         ; hide original Lorelei
 	ld [wMissableObjectIndex], a
-	predef HideObject
-	ld a, HS_LORELEIS_ROOM_LORELEI_REMATCH ; marcelnote - show rematch Lorelei
+	predef HideObjectCont
+	ld a, HS_LORELEIS_ROOM_LORELEI_REMATCH ; show rematch Lorelei
 	ld [wMissableObjectIndex], a
-	predef ShowObject
-	ld a, HS_BRUNOS_ROOM_BRUNO ; marcelnote - hide original Bruno
+	predef ShowObjectCont
+	ld a, HS_BRUNOS_ROOM_BRUNO             ; hide original Bruno
 	ld [wMissableObjectIndex], a
-	predef HideObject
-	ld a, HS_BRUNOS_ROOM_BRUNO_REMATCH ; marcelnote - show rematch Bruno
+	predef HideObjectCont
+	ld a, HS_BRUNOS_ROOM_BRUNO_REMATCH     ; show rematch Bruno
 	ld [wMissableObjectIndex], a
-	predef ShowObject
-	ld a, HS_AGATHAS_ROOM_AGATHA ; marcelnote - hide original Agatha
+	predef ShowObjectCont
+	ld a, HS_AGATHAS_ROOM_AGATHA           ; hide original Agatha
 	ld [wMissableObjectIndex], a
-	predef HideObject
-	ld a, HS_AGATHAS_ROOM_AGATHA_REMATCH ; marcelnote - show rematch Agatha
+	predef HideObjectCont
+	ld a, HS_AGATHAS_ROOM_AGATHA_REMATCH   ; show rematch Agatha
 	ld [wMissableObjectIndex], a
-	predef ShowObject
-	ld a, HS_LANCES_ROOM_LANCE ; marcelnote - hide original Lance
+	predef ShowObjectCont
+	ld a, HS_LANCES_ROOM_LANCE             ; hide original Lance
 	ld [wMissableObjectIndex], a
-	predef HideObject
-	ld a, HS_LANCES_ROOM_LANCE_REMATCH ; marcelnote - show rematch Lance
+	predef HideObjectCont
+	ld a, HS_LANCES_ROOM_LANCE_REMATCH     ; show rematch Lance
 	ld [wMissableObjectIndex], a
-	predef ShowObject
+	predef ShowObjectCont
 .rematch3
 	ld a, SCRIPT_HALLOFFAME_RESET_EVENTS_AND_SAVE
 	ld [wHallOfFameCurScript], a

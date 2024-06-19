@@ -251,10 +251,10 @@ CinnabarVolcanoB1FLanceGreatJobScript:
 	jr nz, .end
 	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL1 ; marcelnote - remove girl from E4 entrance
 	ld [wMissableObjectIndex], a
-	predef ShowObject
+	predef ShowObjectCont
 	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL2 ; marcelnote - remove girl from E4 entrance
 	ld [wMissableObjectIndex], a
-	predef HideObject
+	predef HideObjectCont
 .end
 	call GBFadeInFromBlack
 	xor a

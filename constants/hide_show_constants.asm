@@ -228,8 +228,6 @@ DEF SHOW EQU $15
 	const HS_CERULEAN_CAVE_B1F_ITEM_2      ; D3 X
 	const HS_VICTORY_ROAD_1F_ITEM_1        ; D4 X
 	const HS_VICTORY_ROAD_1F_ITEM_2        ; D5 X
-	const HS_CHAMPIONS_ROOM_OAK            ; D6
-	const HS_CHAMPIONS_ROOM_RIVAL          ; D7 ; marcelnote - added for Rival rematch
 	const HS_SEAFOAM_ISLANDS_1F_LORELEI    ; D8 ; marcelnote - postgame Lorelei
 	const HS_SEAFOAM_ISLANDS_1F_BOULDER_1  ; D9
 	const HS_SEAFOAM_ISLANDS_1F_BOULDER_2  ; DA
@@ -247,8 +245,6 @@ DEF SHOW EQU $15
 	const HS_MT_MOON_SQUARE_CLEFAIRY       ; E6 ; marcelnote - Clefairy
 	const HS_MT_MOON_SQUARE_ITEM_1         ; E7 ; marcelnote - Moon Stone
 	const HS_MT_MOON_SQUARE_ITEM_2         ; E8 ; marcelnote - Super Potion
-	const HS_SAFFRON_GYM_WILL              ; E9 ; marcelnote - postgame Will
-	const HS_SAFFRON_GYM_BRUNO             ; EA ; marcelnote - postgame Bruno
 	const HS_CINNABAR_VOLCANO_B1F_CHARIZARD; EB ; marcelnote - postgame Charizard
 	const HS_CINNABAR_VOLCANO_B1F_LANCE    ; EC ; marcelnote - postgame Lance B1F
 	const HS_CINNABAR_VOLCANO_B1F_ITEM_1   ; ED ; marcelnote - Iron
@@ -259,6 +255,14 @@ DEF SHOW EQU $15
 	const HS_CINNABAR_VOLCANO_2F_ITEM_1    ; F2 ; marcelnote - Fire Stone
 	const HS_CINNABAR_VOLCANO_2F_ITEM_2    ; F3 ; marcelnote - Ultra Ball
 	const HS_CINNABAR_VOLCANO_2F_ITEM_3    ; F4 ; marcelnote - Nugget
+DEF NUM_HS_OBJECTS EQU const_value
+	; max objects = 256
+	; current total = 257 - 11 - 5 (commented out) = 241
+
+; marcelnote - the list continues here to allow for more than 256 HideShow objects
+	const_def
+	const HS_SAFFRON_GYM_WILL              ; E9 ; marcelnote - postgame Will
+	const HS_SAFFRON_GYM_BRUNO             ; EA ; marcelnote - postgame Bruno
 	const HS_INDIGO_PLATEAU_LOBBY_GIRL1    ; F5 ; marcelnote - now moves after first defeating E4
 	const HS_INDIGO_PLATEAU_LOBBY_GIRL2    ; F6 ; marcelnote - blocks way after first defeating E4
 	const HS_LORELEIS_ROOM_LORELEI         ; F7 ; marcelnote - added for Lorelei rematch
@@ -269,6 +273,10 @@ DEF SHOW EQU $15
 	const HS_AGATHAS_ROOM_AGATHA_REMATCH   ; FC ; marcelnote - added for Agatha rematch
 	const HS_LANCES_ROOM_LANCE             ; FD ; marcelnote - added for Lance rematch
 	const HS_LANCES_ROOM_LANCE_REMATCH     ; FE ; marcelnote - added for Lance rematch
+	const HS_CHAMPIONS_ROOM_OAK            ; D6
+	const HS_CHAMPIONS_ROOM_RIVAL          ; D7 ; marcelnote - added for Rival rematch
 	const HS_HALL_OF_FAME_OAK              ; FF ; marcelnote - first victory only
 	const HS_HALL_OF_FAME_RIVAL            ; FF ; marcelnote - for Rival rematches
-DEF NUM_HS_OBJECTS EQU const_value
+DEF NUM_HS_OBJECTS_CONT EQU const_value
+	; max objects = 256
+	; current total = 279 - 264 = 15

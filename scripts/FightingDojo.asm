@@ -298,13 +298,13 @@ FightingDojoBetterNotGetGreedyText:
 
 FightingDojoBrunoText: ; marcelnote - postgame Bruno
 	text_asm
-	CheckHideShow HS_SAFFRON_GYM_WILL
+	CheckHideShowCont HS_SAFFRON_GYM_WILL
 	jr z, .alreadySpoke
 	ld hl, .OhChampText
 	call PrintText
 	ld a, HS_SAFFRON_GYM_WILL
 	ld [wMissableObjectIndex], a
-	predef ShowObject
+	predef ShowObjectCont
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .alreadySpoke
 	ld hl, .UsedToTrainHereText
@@ -318,31 +318,3 @@ FightingDojoBrunoText: ; marcelnote - postgame Bruno
 .UsedToTrainHereText
 	text_far _FightingDojoBrunoUsedToTrainHereText
 	text_end
-
-;FightingDojoBrunoText: ; marcelnote - postgame Bruno
-;	text_asm
-;	ld hl, .text
-;	call PrintText
-;	call GBFadeOutToBlack
-;	ld a, HS_FIGHTING_DOJO_BRUNO
-;	ld [wMissableObjectIndex], a
-;	predef HideObject
-;	call UpdateSprites
-;	call Delay3
-;	SetEvent EVENT_POSTGAME_BRUNO
-;	CheckBothEventsSet EVENT_POSTGAME_LORELEI, EVENT_POSTGAME_AGATHA ; sets Z flag when events are set
-;	jr nz, .end
-;	CheckBothEventsSet EVENT_POSTGAME_LANCE, EVENT_POSTGAME_RIVAL
-;	jr nz, .end
-;	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL1 ; marcelnote - remove girl from E4 entrance
-;	ld [wMissableObjectIndex], a
-;	predef ShowObject
-;	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL2 ; marcelnote - remove girl from E4 entrance
-;	ld [wMissableObjectIndex], a
-;	predef HideObject
-;.end
-;	call GBFadeInFromBlack
-;	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-;.text
-;	text_far _FightingDojoBrunoText
-;	text_end

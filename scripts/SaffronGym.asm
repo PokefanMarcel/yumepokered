@@ -79,7 +79,7 @@ SaffronGymBrunoArrivesScript: ; marcelnote - postgame Bruno event
 	jp z, CheckFightingMapTrainers
 	ld a, HS_SAFFRON_GYM_BRUNO
 	ld [wMissableObjectIndex], a
-	predef ShowObject
+	predef ShowObjectCont
 	ld a, TEXT_SAFFRONGYM_BRUNO_ARRIVES
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
@@ -152,7 +152,7 @@ SaffronGymBrunoInspiringScript: ; marcelnote - postgame Bruno event
 	call GBFadeOutToBlack
 	ld a, HS_SAFFRON_GYM_BRUNO
 	ld [wMissableObjectIndex], a
-	predef HideObject
+	predef HideObjectCont
 	call UpdateSprites
 	call Delay3
 	SetEvent EVENT_POSTGAME_BRUNO
@@ -165,10 +165,10 @@ SaffronGymBrunoInspiringScript: ; marcelnote - postgame Bruno event
 	jr nz, .end
 	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL1 ; marcelnote - remove girl from E4 entrance
 	ld [wMissableObjectIndex], a
-	predef ShowObject
+	predef ShowObjectCont
 	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL2 ; marcelnote - remove girl from E4 entrance
 	ld [wMissableObjectIndex], a
-	predef HideObject
+	predef HideObjectCont
 .end
 	call GBFadeInFromBlack
 	ld a, SCRIPT_SAFFRONGYM_DEFAULT

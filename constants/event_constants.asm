@@ -22,6 +22,7 @@
 	const EVENT_OAK_APPEARED_IN_PALLET
 	const_skip ; marcelnote - added
 	const EVENT_POSTGAME_RIVAL ; marcelnote - postgame Rival
+	const EVENT_USE_MISSABLE_OBJECTS_CONT_LIST ; marcelnote - to deal with extended HideShow list
 
 ; Viridian City events
 	const_next $28

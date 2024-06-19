@@ -1916,6 +1916,10 @@ wPlayerCoins:: dw ; BCD
 wMissableObjectFlags:: flag_array $100
 wMissableObjectFlagsEnd::
 
+; marcelnote - second MissableObject list, this is 32 bytes taken from unused below
+wMissableObjectFlagsCont:: flag_array $100
+wMissableObjectFlagsContEnd::
+
 	ds 7
 
 ; saved copy of SPRITESTATEDATA1_IMAGEINDEX (used for sprite facing/anim)
@@ -2052,7 +2056,7 @@ wPlayerGender:: ; marcelnote - add female player
 	ds 1	; $00 = male, $01 = female
 
 	; unused
-	ds 55
+	ds 23 ; marcelnote - 32 bytes allocated to wMissableObjectFlagsCont
 
 
 wObtainedHiddenItemsFlags:: flag_array MAX_HIDDEN_ITEMS
