@@ -69,6 +69,7 @@
 	const SPRITE_SABRINA                 ; $41 ; marcelnote - new sprite
 	const SPRITE_BLAINE                  ; $42 ; marcelnote - new sprite
 	const SPRITE_SWIMMER_F               ; $43 ; marcelnote - new sprite
+	const SPRITE_YELLOW                  ; $42 ; marcelnote - new sprite
 	const SPRITE_SEEL                    ; $44
 DEF FIRST_STILL_SPRITE EQU const_value
 	const SPRITE_POKE_BALL               ; $45
