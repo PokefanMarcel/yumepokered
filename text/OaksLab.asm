@@ -362,3 +362,140 @@ _OaksLabScientistText::
 	text "I study #MON as"
 	line "PROF.OAK's AIDE."
 	done
+
+_OaksLabRivalShowingDexText:: ; marcelnote - postgame Rival event
+	text "<RIVAL>: Yo,"
+	line "<PLAYER>!"
+
+	para "I was just show-"
+	line "ing my #DEX"
+	cont "to gramps."
+
+	para "I've recorded 146"
+	line "different kinds"
+	cont "of #MON!"
+	cont "Pretty impress-"
+	cont "ive, right?"
+
+	para "But gramps keeps"
+	line "going on about"
+	cont "these legendary"
+	cont "birds."
+
+	para "What about you,"
+	line "<PLAYER>?"
+	cont "Have you come"
+	cont "across any of"
+	cont "these legendary"
+	cont "#MON?"
+	prompt
+
+
+_OaksLabRivalSeenNoBirdText:: ; marcelnote - postgame Rival event
+	text "No? That's what"
+	line "I figured."
+
+	para "They're probably"
+	line "just stories for"
+	cont "kids."
+	done
+
+; marcelnote - there must be a smarter way to define these text variants
+;              by making use of string buffers like wcd6d (stores names) and wStringBuffer
+_OaksLabRivalSeenArticunoText:: ; marcelnote - postgame Rival event
+	text "So you've seen"
+	line "ARTICUNO, huh."
+
+	para "Maybe the stories"
+	line "are true after"
+	cont "all..."
+	done
+
+_OaksLabRivalSeenZapdosText:: ; marcelnote - postgame Rival event
+	text "So you've seen"
+	line "ZAPDOS, huh."
+
+	para "Maybe the stories"
+	line "are true after"
+	cont "all..."
+	done
+
+_OaksLabRivalSeenMoltresText:: ; marcelnote - postgame Rival event
+	text "So you've seen"
+	line "MOLTRES, huh."
+
+	para "Maybe the stories"
+	line "are true after"
+	cont "all..."
+	done
+
+_OaksLabRivalSeenArticunoZapdosText:: ; marcelnote - postgame Rival event
+	text "What? You've seen"
+	line "both ARTICUNO"
+	cont "and ZAPDOS?"
+
+	para "Could MOLTRES"
+	line "actually be real,"
+	cont "as well?"
+	done
+
+_OaksLabRivalSeenArticunoMoltresText:: ; marcelnote - postgame Rival event
+	text "What? You've seen"
+	line "both ARTICUNO"
+	cont "and MOLTRES?"
+
+	para "Could ZAPDOS"
+	line "actually be real,"
+	cont "as well?"
+	done
+
+_OaksLabRivalSeenZapdosMoltresText:: ; marcelnote - postgame Rival event
+	text "What? You've seen"
+	line "both ZAPDOS"
+	cont "and MOLTRES?"
+
+	para "Could ARTICUNO"
+	line "actually be real,"
+	cont "as well?"
+	done
+
+_OaksLabRivalSeenAllBirdsText:: ; marcelnote - postgame Rival event
+	text "Whoa, have you"
+	line "really seen all"
+	cont "three legendary"
+	cont "birds?"
+
+	para "ARTICUNO, ZAPDOS,"
+	line "and MOLTRES..."
+	cont "Unbelievable!"
+
+	para "You really are"
+	line "something else,"
+	cont "<PLAYER>!"
+	done
+
+_OaksLabRivalBackToIndigoText:: ; marcelnote - postgame Rival event
+	text "Alright, I'm off"
+	line "to train at the"
+	cont "INDIGO PLATEAU."
+
+	para "Oh, did you hear?"
+	line "GIOVANNI was"
+	cont "secretly the head"
+	cont "of TEAM ROCKET!"
+
+	para "With him gone,"
+	line "VIRIDIAN will"
+	cont "need a new"
+	cont "GYM LEADER."
+
+	para "Think it over,"
+	line "<PLAYER>!"
+	cont "A steady gig as"
+	cont "VIRIDIAN's GYM"
+	cont "LEADER sounds"
+	cont "like your style!"
+
+	para "<PLAYER>! Gramps!"
+	line "Smell you later!"
+	done

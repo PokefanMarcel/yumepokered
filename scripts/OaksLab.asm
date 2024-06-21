@@ -29,6 +29,8 @@ OaksLab_ScriptPointers:
 	dw_const OaksLabRivalArrivesAtOaksRequestScript, SCRIPT_OAKSLAB_RIVAL_ARRIVES_AT_OAKS_REQUEST
 	dw_const OaksLabOakGivesPokedexScript,           SCRIPT_OAKSLAB_OAK_GIVES_POKEDEX
 	dw_const OaksLabRivalLeavesWithPokedexScript,    SCRIPT_OAKSLAB_RIVAL_LEAVES_WITH_POKEDEX
+	dw_const OaksLabRivalBackToIndigoScript,         SCRIPT_OAKSLAB_RIVAL_BACK_TO_INDIGO    ; marcelnote - postgame Rival event
+	dw_const OaksLabRivalLeavesForIndigoScript,      SCRIPT_OAKSLAB_RIVAL_LEAVES_FOR_INDIGO ; marcelnote - postgame Rival event
 	dw_const DoRet,                                  SCRIPT_OAKSLAB_NOOP ; PureRGB - DoRet
 
 OaksLabDefaultScript:
@@ -717,6 +719,67 @@ OaksLabLoadTextPointers2Script:
 	ld [wCurMapTextPtr + 1], a
 	ret
 
+OaksLabRivalBackToIndigoScript: ; marcelnote - postgame Rival event
+	call EnableAutoTextBoxDrawing
+	ld a, TEXT_OAKSLAB_RIVAL_BACK_TO_INDIGO
+	ldh [hSpriteIndexOrTextID], a
+	call DisplayTextID
+	call Delay3
+	ld a, SFX_STOP_ALL_MUSIC
+	ld [wNewSoundID], a
+	call PlaySound
+	farcall Music_RivalAlternateStart
+	ld a, [wYCoord]
+	cp 4
+	ld a, OAKSLAB_RIVAL
+	ldh [hSpriteIndex], a
+	ld de, .RivalExitMovement
+	jr nz, .movementLoaded
+	ld de, .RivalExitMovementRight
+.movementLoaded
+	call MoveSprite
+	ld a, SCRIPT_OAKSLAB_RIVAL_LEAVES_FOR_INDIGO
+	ld [wOaksLabCurScript], a
+	ret
+
+.RivalExitMovementRight
+	db NPC_MOVEMENT_RIGHT
+.RivalExitMovement
+	db NPC_MOVEMENT_DOWN
+	db NPC_MOVEMENT_DOWN
+	db NPC_MOVEMENT_DOWN
+	db NPC_MOVEMENT_DOWN
+	db NPC_MOVEMENT_DOWN
+	db NPC_MOVEMENT_DOWN
+	db NPC_MOVEMENT_DOWN
+	db -1 ; end
+
+OaksLabRivalLeavesForIndigoScript: ; marcelnote - postgame Rival event
+	ld a, [wd730]
+	bit 0, a
+	ret nz
+	call PlayDefaultMusic
+	ld a, HS_OAKS_LAB_RIVAL
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	SetEvent EVENT_POSTGAME_RIVAL
+	CheckBothEventsSet EVENT_POSTGAME_LORELEI, EVENT_POSTGAME_BRUNO ; sets Z flag when events are set
+	jr nz, .end
+	CheckBothEventsSet EVENT_POSTGAME_AGATHA, EVENT_POSTGAME_LANCE
+	jr nz, .end
+	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL1 ; marcelnote - remove girl from E4 entrance
+	ld [wMissableObjectIndex], a
+	predef ShowObjectCont
+	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL2 ; marcelnote - remove girl from E4 entrance
+	ld [wMissableObjectIndex], a
+	predef HideObjectCont
+.end
+	xor a
+	ld [wJoyIgnore], a
+	ld a, SCRIPT_OAKSLAB_NOOP
+	ld [wOaksLabCurScript], a
+	ret
+
 OaksLab_TextPointers:
 	def_text_pointers
 	dw_const OaksLabRivalText,                    TEXT_OAKSLAB_RIVAL
@@ -746,6 +809,7 @@ OaksLab_TextPointers:
 	dw_const OaksLabOakGotPokedexText,            TEXT_OAKSLAB_OAK_GOT_POKEDEX
 	dw_const OaksLabOakThatWasMyDreamText,        TEXT_OAKSLAB_OAK_THAT_WAS_MY_DREAM
 	dw_const OaksLabRivalLeaveItAllToMeText,      TEXT_OAKSLAB_RIVAL_LEAVE_IT_ALL_TO_ME
+	dw_const OaksLabRivalBackToIndigoText,        TEXT_OAKSLAB_RIVAL_BACK_TO_INDIGO ; marcelnote - postgame Rival event
 
 OaksLab_TextPointers2:
 	dw OaksLabRivalText
@@ -762,7 +826,7 @@ OaksLab_TextPointers2:
 
 OaksLabRivalText:
 	text_asm
-	;;;;;; marcelnote - postgame Rival
+	;;;;;; marcelnote - postgame Rival event
 	CheckEvent EVENT_BECAME_CHAMPION
 	jp nz, OaksLabRivalPostgameText
 	;;;;;;
@@ -1232,29 +1296,99 @@ OaksLabScientistText:
 	text_far _OaksLabScientistText
 	text_end
 
-OaksLabRivalPostgameText: ; marcelnote - postgame Rival
-	ld hl, .text
+OaksLabRivalPostgameText: ; marcelnote - postgame Rival event
+	xor a
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	ld hl, OaksLabRivalShowingDexText
 	call PrintText
-	call GBFadeOutToBlack
-	ld a, HS_OAKS_LAB_RIVAL
-	ld [wMissableObjectIndex], a
-	predef HideObject
-	call UpdateSprites
 	call Delay3
-	SetEvent EVENT_POSTGAME_RIVAL
-	CheckBothEventsSet EVENT_POSTGAME_LORELEI, EVENT_POSTGAME_BRUNO ; sets Z flag when events are set
-	jr nz, .end
-	CheckBothEventsSet EVENT_POSTGAME_AGATHA, EVENT_POSTGAME_LANCE
-	jr nz, .end
-	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL1 ; marcelnote - remove girl from E4 entrance
-	ld [wMissableObjectIndex], a
-	predef ShowObjectCont
-	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL2 ; marcelnote - remove girl from E4 entrance
-	ld [wMissableObjectIndex], a
-	predef HideObjectCont
-.end
-	call GBFadeInFromBlack
+	CheckEvent EVENT_BEAT_ARTICUNO
+	jr z, .NoArticuno
+	CheckEvent EVENT_BEAT_ZAPDOS
+	jr z, .YesArticunoNoZapdos
+	CheckEvent EVENT_BEAT_MOLTRES
+	jr nz, .YesArticunoYesZapdosYesMoltres
+	ld hl, OaksLabRivalSeenArticunoZapdosText
+	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-.text
-	text_far _PokemonTower1FAgathaText
+.NoArticuno
+	CheckEvent EVENT_BEAT_ZAPDOS
+	jr z, .NoArticunoNoZapdos
+	CheckEvent EVENT_BEAT_MOLTRES
+	jr z, .NoArticunoYesZapdosNoMoltres
+	ld hl, OaksLabRivalSeenZapdosMoltresText
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.NoArticunoNoZapdos
+	CheckEvent EVENT_BEAT_MOLTRES
+	jr z, .NoArticunoNoZapdosNoMoltres
+	ld hl, OaksLabRivalSeenMoltresText
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.NoArticunoNoZapdosNoMoltres
+	ld hl, OaksLabRivalSeenNoBirdText
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.YesArticunoNoZapdos
+	CheckEvent EVENT_BEAT_MOLTRES
+	jr z, .YesArticunoNoZapdosNoMoltres
+	ld hl, OaksLabRivalSeenArticunoMoltresText
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.YesArticunoNoZapdosNoMoltres
+	ld hl, OaksLabRivalSeenArticunoText
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.NoArticunoYesZapdosNoMoltres
+	ld hl, OaksLabRivalSeenZapdosText
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.YesArticunoYesZapdosYesMoltres
+	ld hl, OaksLabRivalSeenAllBirdsText
+	call PrintText
+	ld a, SCRIPT_OAKSLAB_RIVAL_BACK_TO_INDIGO
+	ld [wOaksLabCurScript], a
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+
+OaksLabRivalShowingDexText: ; marcelnote - postgame Rival event
+	text_far _OaksLabRivalShowingDexText
 	text_end
+
+OaksLabRivalSeenNoBirdText: ; marcelnote - postgame Rival event
+	text_far _OaksLabRivalSeenNoBirdText
+	text_end
+
+OaksLabRivalSeenArticunoText: ; marcelnote - postgame Rival event
+	text_far _OaksLabRivalSeenArticunoText
+	text_end
+
+OaksLabRivalSeenZapdosText: ; marcelnote - postgame Rival event
+	text_far _OaksLabRivalSeenZapdosText
+	text_end
+
+OaksLabRivalSeenMoltresText: ; marcelnote - postgame Rival event
+	text_far _OaksLabRivalSeenMoltresText
+	text_end
+
+OaksLabRivalSeenArticunoZapdosText: ; marcelnote - postgame Rival event
+	text_far _OaksLabRivalSeenArticunoZapdosText
+	text_end
+
+OaksLabRivalSeenArticunoMoltresText: ; marcelnote - postgame Rival event
+	text_far _OaksLabRivalSeenArticunoMoltresText
+	text_end
+
+OaksLabRivalSeenZapdosMoltresText: ; marcelnote - postgame Rival event
+	text_far _OaksLabRivalSeenZapdosMoltresText
+	text_end
+
+OaksLabRivalSeenAllBirdsText: ; marcelnote - postgame Rival event
+	text_far _OaksLabRivalSeenAllBirdsText
+	sound_get_item_1
+	text_end
+
+OaksLabRivalBackToIndigoText: ; marcelnote - postgame Rival event
+	text_far _OaksLabRivalBackToIndigoText
+	text_end
+
