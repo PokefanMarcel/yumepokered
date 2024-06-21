@@ -22,6 +22,7 @@ IndigoPlateauLobby_TextPointers:
 	dw_const IndigoPlateauLobbyCooltrainerF2Text,    TEXT_INDIGOPLATEAULOBBY_COOLTRAINER_F2
 	dw_const IndigoPlateauLobbyClerkText,            TEXT_INDIGOPLATEAULOBBY_CLERK
 	dw_const IndigoPlateauLobbyLinkReceptionistText, TEXT_INDIGOPLATEAULOBBY_LINK_RECEPTIONIST
+	dw_const IndigoPlateauLobbyRivalText,            TEXT_INDIGOPLATEAULOBBY_RIVAL ; marcelnote - added
 
 IndigoPlateauLobbyNurseText:
 	script_pokecenter_nurse
@@ -57,3 +58,21 @@ IndigoPlateauLobbyLinkReceptionistText:
 
 IndigoPlateauLobbyClerkText: ; marcelnote - moved Mart inventories
 	script_mart ULTRA_BALL, GREAT_BALL, FULL_RESTORE, MAX_POTION, FULL_HEAL, REVIVE, MAX_REPEL
+
+IndigoPlateauLobbyRivalText: ; marcelnote - added, appears when E4 reopens
+	text_asm
+	ld a, $1
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	ld hl, .text
+	call PrintText
+	call GBFadeOutToBlack
+	ld a, HS_INDIGO_PLATEAU_LOBBY_RIVAL
+	ld [wMissableObjectIndex], a
+	predef HideObjectCont
+	call UpdateSprites
+	call Delay3
+	call GBFadeInFromBlack
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.text
+	text_far _IndigoPlateauLobbyRivalText
+	text_end

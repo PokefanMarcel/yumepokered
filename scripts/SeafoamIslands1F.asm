@@ -69,6 +69,9 @@ SeafoamIslands1FLoreleiText: ; marcelnote - postgame Lorelei
 	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL2 ; marcelnote - remove girl from E4 entrance
 	ld [wMissableObjectIndex], a
 	predef HideObjectCont
+	ld a, HS_INDIGO_PLATEAU_LOBBY_RIVAL ; marcelnote - show Rival
+	ld [wMissableObjectIndex], a
+	predef ShowObjectCont
 .end
 	call GBFadeInFromBlack
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd

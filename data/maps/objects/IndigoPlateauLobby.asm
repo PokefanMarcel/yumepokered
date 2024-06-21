@@ -5,6 +5,7 @@
 	const_export INDIGOPLATEAULOBBY_CLERK
 	const_export INDIGOPLATEAULOBBY_LINK_RECEPTIONIST
 	const_export INDIGOPLATEAULOBBY_COOLTRAINER_F2 ; marcelnote - added, blocks E4 entrance after 1st victory
+	const_export INDIGOPLATEAULOBBY_RIVAL ; marcelnote - added, appears when E4 reopens
 
 IndigoPlateauLobby_Object:
 	db $0 ; border block
@@ -24,5 +25,6 @@ IndigoPlateauLobby_Object:
 	object_event  0,  5, SPRITE_CLERK, STAY, RIGHT, TEXT_INDIGOPLATEAULOBBY_CLERK
 	object_event 13,  6, SPRITE_LINK_RECEPTIONIST, STAY, DOWN, TEXT_INDIGOPLATEAULOBBY_LINK_RECEPTIONIST
 	object_event  9,  1, SPRITE_COOLTRAINER_F, STAY, DOWN, TEXT_INDIGOPLATEAULOBBY_COOLTRAINER_F2 ; marcelnote - added
+	object_event  3,  2, SPRITE_BLUE, STAY, NONE, TEXT_INDIGOPLATEAULOBBY_RIVAL ; marcelnote - added
 
 	def_warps_to INDIGO_PLATEAU_LOBBY

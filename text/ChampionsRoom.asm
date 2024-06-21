@@ -85,19 +85,36 @@ _ChampionsRoomRivalRematchIntroText:: ; marcelnote - new text for rematches
 	text "<RIVAL>: Hey,"
 	line "<PLAYER>!"
 
-	para "Back for another"
-	line "challenge, huh?"
+	para "I've looked forward"
+	line "to our rematch."
 
-	para "I'm warning you,"
-	line "my #MON have"
-	cont "become a lot"
-	cont "stronger since"
-	cont "our last battle."
+	para "After facing"
+	line "challengers here,"
+	cont "my team is now"
+	cont "prepared for"
+	cont "any strategy."
 
-	para "Let's see if you"
-	line "still have what"
-	cont "it takes!"
+	para "Think you still"
+	line "have what it"
+	cont "takes to be"
+	cont "champion?"
+
+	para "My comeback will"
+	line "be epic!"
 	done
+
+	;para "Back for another"
+	;line "challenge, huh?"
+
+	;para "I'm warning you,"
+	;line "my #MON have"
+	;cont "become a lot"
+	;cont "stronger since"
+	;cont "our last battle."
+
+	;para "Let's see if you"
+	;line "still have what"
+	;cont "it takes!"
 
 _RivalRematchDefeatedText:: ; marcelnote - new text for rematches
 	text "No!"
@@ -108,7 +125,6 @@ _RivalRematchDefeatedText:: ; marcelnote - new text for rematches
 	line "#MON to"
 	cont "perfection..."
 	prompt
-	; my comeback will be epic! ; keep this for when Blue agrees to take the Champion seat
 
 _RivalRematchVictoryText:: ; marcelnote - new text for rematches
 	text "Hahaha!"
@@ -121,14 +137,16 @@ _RivalRematchVictoryText:: ; marcelnote - new text for rematches
 	prompt
 
 _ChampionsRoomRivalRematchAfterBattleText:: ; marcelnote - new text for rematches
-	text "I see how much"
-	line "you and your"
-	cont "#MON have"
-	cont "grown, <PLAYER>."
-
-	para "I'm starting to"
+	text "I'm starting to"
 	line "understand what"
 	cont "gramps meant."
+
+	para "The bond you"
+	line "share with"
+	cont "your #MON,"
+	cont "<PLAYER>..."
+	cont "It's something"
+	cont "special."
 
 	para "Come on,"
 	line "follow me."
