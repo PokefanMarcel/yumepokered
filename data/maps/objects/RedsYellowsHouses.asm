@@ -26,5 +26,6 @@ RedsYellowsHouses_Object:
 
 	def_object_events
 	object_event  5,  4, SPRITE_MOM, STAY, LEFT, TEXT_REDSHOUSE1F_MOM
+	object_event 42,  6, SPRITE_YELLOW_ASLEEP, STAY, NONE, TEXT_YELLOWSHOUSE2F_ASLEEP
 
 	def_warps_to REDS_YELLOWS_HOUSES

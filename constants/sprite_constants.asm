@@ -84,4 +84,5 @@ DEF FIRST_STILL_SPRITE EQU const_value
 	const SPRITE_UNUSED_GAMBLER_ASLEEP_1 ; $4e
 	const SPRITE_UNUSED_GAMBLER_ASLEEP_2 ; $4f
 	const SPRITE_GAMBLER_ASLEEP          ; $50
+	const SPRITE_YELLOW_ASLEEP           ; $51 ; marcelnote - new sprite
 DEF NUM_SPRITES EQU const_value - 1

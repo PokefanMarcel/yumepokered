@@ -44,9 +44,16 @@ _RedsHouse2FSNESText:: ; marcelnote - moved from hidden_objects
 	cont "It's time to go!"
 	done
 
+_YellowsHouse2FAsleepText:: ; marcelnote - new for Yellow's House
+	text "This kid is"
+	line "fast asleep."
+	cont "Better not"
+	cont "wake them up."
+	done
+
 _YellowsHouse2FGameboyText:: ; marcelnote - new for Yellow's House
 	text "It's a GAMEBOY!"
-	line "...but the"
+	line "...But the"
 	cont "battery's dead."
 	done
 

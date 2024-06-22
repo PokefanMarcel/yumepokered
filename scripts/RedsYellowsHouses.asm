@@ -24,6 +24,7 @@ RedsYellowsHousesDefaultScript:
 RedsYellowsHouses_TextPointers:
 	def_text_pointers
 	dw_const RedsHouse1FMomText,        TEXT_REDSHOUSE1F_MOM
+	dw_const YellowsHouse2FAsleepText,  TEXT_YELLOWSHOUSE2F_ASLEEP ; marcelnote - new for Yellow's bedroom
 	dw_const RedsHouse1FTVText,         TEXT_REDSHOUSE1F_TV
 	dw_const RedsHouse2FSNESText,       TEXT_REDSHOUSE2F_SNES ; marcelnote - moved from hidden_objects
 	dw_const YellowsHouse2FGameboyText, TEXT_YELLOWSHOUSE2F_GAMEBOY ; marcelnote - new for Yellow's bedroom
@@ -102,4 +103,8 @@ YellowsHouse2FGameboyText: ; marcelnote - new for Yellow's House
 
 YellowsHouse2FTVText: ; marcelnote - new for Yellow's House
 	text_far _YellowsHouse2FTVText
+	text_end
+
+YellowsHouse2FAsleepText: ; marcelnote - new for Yellow's House
+	text_far _YellowsHouse2FAsleepText
 	text_end
