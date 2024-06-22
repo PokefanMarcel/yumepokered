@@ -10,6 +10,8 @@ PalletTown_Object:
 	warp_event  5,  5, REDS_HOUSE_1F, 1
 	warp_event 13,  5, BLUES_HOUSE, 1
 	warp_event 12, 11, OAKS_LAB, 2
+	warp_event 21,  5, PALLET_HOUSES, 1 ; marcelnote - new houses
+	warp_event 21, 13, PALLET_HOUSES, 5 ; marcelnote - new houses
 
 	def_bg_events
 	bg_event 13, 13, TEXT_PALLETTOWN_OAKSLAB_SIGN

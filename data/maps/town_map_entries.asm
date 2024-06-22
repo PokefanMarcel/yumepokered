@@ -73,7 +73,7 @@ InternalMapEntries:
 	internal_map UNDERGROUND_PATH_ROUTE_8,      12,  5, Route8Name
 	internal_map ROCK_TUNNEL_1F,                14,  3, RockTunnelName
 	internal_map POWER_PLANT,                   15,  3, PowerPlantName
-	internal_map UNUSED_MAP_56,                 13,  9, Route11Name ; marcelnote - merged ROUTE_11_GATE floors
+	internal_map PALLET_HOUSES,                 13,  9, Route11Name ; marcelnote - merged ROUTE_11_GATE floors
 	internal_map ROUTE_12_GATE,                 14,  7, Route12Name ; marcelnote - merged ROUTE_12_GATE floors
 	internal_map BILLS_HOUSE,                   12,  0, SeaCottageName
 	internal_map VERMILION_DOCK,                10,  9, VermilionCityName

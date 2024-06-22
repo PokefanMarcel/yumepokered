@@ -88,7 +88,7 @@ MapHeaderPointers::
 	dw PowerPlant_h
 	dw Route11Gate_h ; marcelnote - merged Route11Gate floors
 	dw DiglettsCaveRoute11_h
-	dw Route11Gate_h ; UNUSED_MAP_56 ; marcelnote - was Route11Gate2F_h, now unused
+	dw PalletHouses_h ; UNUSED_MAP_56 ; marcelnote - was Route11Gate2F_h, now unused
 	dw Route12Gate_h ; marcelnote - merged Route12Gate floors
 	dw BillsHouse_h
 	dw VermilionPokecenter_h

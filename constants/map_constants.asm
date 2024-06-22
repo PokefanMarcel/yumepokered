@@ -106,7 +106,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const POWER_PLANT,                   20, 18 ; $53
 	map_const ROUTE_11_GATE,                  4, 11 ; $54 ; marcelnote - merged ROUTE_11_GATE floors
 	map_const DIGLETTS_CAVE_ROUTE_11,         4,  4 ; $55
-	map_const UNUSED_MAP_56,                  0,  0 ; $56 ; marcelnote - was ROUTE_11_GATE_2F
+	map_const PALLET_HOUSES,                 11,  4 ; $56 ; marcelnote - was ROUTE_11_GATE_2F
 	map_const ROUTE_12_GATE,                 11,  4 ; $57 ; marcelnote - merged ROUTE_12_GATE floors
 	map_const BILLS_HOUSE,                    4,  4 ; $58
 	map_const VERMILION_POKECENTER,           7,  4 ; $59

@@ -88,7 +88,7 @@ MapHeaderBanks::
 	db BANK(PowerPlant_h)
 	db BANK(Route11Gate_h) ; marcelnote - merged Route11Gate floors
 	db BANK(DiglettsCaveRoute11_h)
-	db $1D ; UNUSED_MAP_56 ; marcelnote - was Route11Gate2F_h, now unused
+	db BANK(PalletHouses_h) ; UNUSED_MAP_56 ; marcelnote - was Route11Gate2F_h, now unused
 	db BANK(Route12Gate_h) ; marcelnote - merged Route12Gate floors
 	db BANK(BillsHouse_h)
 	db BANK(VermilionPokecenter_h)
