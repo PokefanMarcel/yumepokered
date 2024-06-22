@@ -1,5 +1,5 @@
 HiddenObjectMaps:
-	db REDS_HOUSE_2F
+	db REDS_HOUSE ; marcelnote - merged RedsHouse floors
 	db BLUES_HOUSE
 	db OAKS_LAB
 	db VIRIDIAN_POKECENTER
@@ -90,7 +90,7 @@ HiddenObjectMaps:
 
 HiddenObjectPointers:
 ; each of these pointers is for the corresponding map in HiddenObjectMaps
-	dw RedsHouse2FHiddenObjects
+	dw RedsHouseHiddenObjects ; marcelnote - merged RedsHouse floors
 	dw BluesHouseHiddenObjects
 	dw OaksLabHiddenObjects
 	dw ViridianPokecenterHiddenObjects
@@ -207,9 +207,9 @@ ColosseumHiddenObjects:
 	hidden_object  4,  4, ANY_FACING, CableClubLeftGameboy
 	db -1 ; end
 
-RedsHouse2FHiddenObjects:
-	hidden_object  0,  1, SPRITE_FACING_UP, OpenRedsPC
-	hidden_object  3,  5, ANY_FACING, PrintRedSNESText
+RedsHouseHiddenObjects: ; marcelnote - merged RedsHouse floors
+	hidden_object 14,  1, SPRITE_FACING_UP, OpenRedsPC
+	hidden_object 17,  5, ANY_FACING, PrintRedSNESText
 	db -1 ; end
 
 BluesHouseHiddenObjects:

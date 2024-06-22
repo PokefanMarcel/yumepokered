@@ -1,7 +1,27 @@
-RedsHouse1F_Script:
-	jp EnableAutoTextBoxDrawing
+; marcelnote - merged RedsHouse floors
+RedsHouse_Script:
+	call EnableAutoTextBoxDrawing
+	ld hl, RedsHouse_ScriptPointers
+	ld a, [wRedsHouseCurScript]
+	jp CallFunctionInTable
+; marcelnote - merged RedsHouse floors, RedsHouse1F_Script was just:
+;	jp EnableAutoTextBoxDrawing
 
-RedsHouse1F_TextPointers:
+RedsHouse_ScriptPointers:
+	def_script_pointers
+	dw_const RedsHouseDefaultScript, SCRIPT_REDSHOUSE_DEFAULT
+	dw_const DoRet,                  SCRIPT_REDSHOUSE_NOOP ; PureRGB - DoRet
+
+RedsHouseDefaultScript:
+	xor a
+	ldh [hJoyHeld], a
+	ld a, PLAYER_DIR_UP
+	ld [wPlayerMovingDirection], a
+	ld a, SCRIPT_REDSHOUSE_NOOP
+	ld [wRedsHouseCurScript], a
+	ret
+
+RedsHouse_TextPointers:
 	def_text_pointers
 	dw_const RedsHouse1FMomText, TEXT_REDSHOUSE1F_MOM
 	dw_const RedsHouse1FTVText,  TEXT_REDSHOUSE1F_TV

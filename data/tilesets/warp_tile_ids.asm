@@ -1,10 +1,9 @@
 WarpTileIDPointers:
 	table_width 2, WarpTileIDPointers
 	dw .OverworldWarpTileIDs
-	dw .RedsHouse1WarpTileIDs
+	dw .BigHouseWarpTileIDs ; marcelnote - merged REDS_HOUSE tilesets
 	dw .MartWarpTileIDs
 	dw .ForestWarpTileIDs
-	dw .RedsHouse2WarpTileIDs
 	dw .SafariWarpTileIDs ; marcelnote ; new tileset from FOREST
 	dw .PokecenterWarpTileIDs
 	dw .GymWarpTileIDs
@@ -39,8 +38,7 @@ ENDM
 .GateWarpTileIDs:
 	db $3B
 	; fallthrough
-.RedsHouse1WarpTileIDs:
-.RedsHouse2WarpTileIDs:
+.BigHouseWarpTileIDs: ; marcelnote - merged REDS_HOUSE tilesets
 .AcademyWarpTileIDs: ; marcelnote - new tileset
 	warp_tiles $1A, $1C
 

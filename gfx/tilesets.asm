@@ -3,10 +3,8 @@ SECTION "Tilesets 1", ROMX
 Overworld_GFX::     INCBIN "gfx/tilesets/overworld.2bpp"
 Overworld_Block::   INCBIN "gfx/blocksets/overworld.bst"
 
-RedsHouse1_GFX::
-RedsHouse2_GFX::    INCBIN "gfx/tilesets/reds_house.2bpp"
-RedsHouse1_Block::
-RedsHouse2_Block::  INCBIN "gfx/blocksets/reds_house.bst"
+BigHouse_GFX::      INCBIN "gfx/tilesets/big_house.2bpp" ; marcelnote - removed REDS_HOUSE_2 tileset
+BigHouse_Block::    INCBIN "gfx/blocksets/big_house.bst" ;              and renamed REDS_HOUSE_1
 
 House_GFX::         INCBIN "gfx/tilesets/house.2bpp"
 House_Block::       INCBIN "gfx/blocksets/house.bst"

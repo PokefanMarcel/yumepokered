@@ -2,10 +2,10 @@
 ; Tilesets indexes (see data/tilesets/tileset_headers.asm)
 	const_def
 	const OVERWORLD    ; 0
-	const REDS_HOUSE_1 ; 1
+	const BIG_HOUSE    ; 1 ; marcelnote - renamed REDS_HOUSE_1
 	const MART         ; 2
 	const FOREST       ; 3
-	const REDS_HOUSE_2 ; 4
+	;const REDS_HOUSE_2 ; 4
 	;const DOJO         ; 5 ; marcelnote - removed DOJO tileset because redundant with GYM
 	const SAFARI       ; 5 ; marcelnote - new tileset to free space in FOREST
 	const POKECENTER   ; 6

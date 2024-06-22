@@ -11,8 +11,7 @@ Underground_Coll::
 Overworld_Coll::
 	coll_tiles $00, $10, $1b, $20, $21, $23, $2c, $2d, $2e, $30, $31, $33, $39, $3c, $3e, $52, $54, $58, $5b
 
-RedsHouse1_Coll::
-RedsHouse2_Coll::
+BigHouse_Coll::  ; marcelnote - merged REDS_HOUSE tilesets
 	coll_tiles $01, $02, $03, $11, $12, $13, $14, $1c, $1a
 
 Mart_Coll::

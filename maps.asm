@@ -425,10 +425,10 @@ SECTION "Maps 8", ROMX
 
 INCLUDE "scripts/Route7.asm"
 
-INCLUDE "data/maps/headers/RedsHouse1F.asm"
-INCLUDE "scripts/RedsHouse1F.asm"
-INCLUDE "data/maps/objects/RedsHouse1F.asm"
-RedsHouse1F_Blocks: INCBIN "maps/RedsHouse1F.blk"
+INCLUDE "data/maps/headers/RedsHouse.asm" ; marcelnote - merged RedsHouse floors
+INCLUDE "scripts/RedsHouse.asm"
+INCLUDE "data/maps/objects/RedsHouse.asm"
+RedsHouse_Blocks: INCBIN "maps/RedsHouse.blk"
 
 INCLUDE "data/maps/headers/CeladonMart1F2F3F.asm"
 INCLUDE "scripts/CeladonMart1F2F3F.asm"
@@ -811,8 +811,7 @@ LavenderMart_Blocks:
 CeruleanMart_Blocks:
 VermilionMart_Blocks: INCBIN "maps/VermilionMart.blk"
 
-CopycatsHouse2F_Blocks:
-RedsHouse2F_Blocks: INCBIN "maps/RedsHouse2F.blk"
+CopycatsHouse2F_Blocks: INCBIN "maps/CopycatsHouse2F.blk"
 
 Museum1F_Blocks: INCBIN "maps/Museum1F.blk"
 
@@ -831,10 +830,6 @@ UndergroundPathRoute5_Blocks: INCBIN "maps/UndergroundPathRoute5.blk"
 Route2Gate_Blocks:
 ViridianForestSouthGate_Blocks:
 ViridianForestNorthGate_Blocks: INCBIN "maps/ViridianForestNorthGate.blk"
-
-INCLUDE "data/maps/headers/RedsHouse2F.asm"
-INCLUDE "scripts/RedsHouse2F.asm"
-INCLUDE "data/maps/objects/RedsHouse2F.asm"
 
 
 SECTION "Maps 16", ROMX
