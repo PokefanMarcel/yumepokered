@@ -47,7 +47,7 @@ MACRO special_warp_spec
 ENDM
 
 NewGameWarp:
-	special_warp_spec REDS_HOUSE,   17, 6, BIG_HOUSE ; marcelnote - merged RedsHouse floors
+	special_warp_spec REDS_YELLOWS_HOUSES, 17, 6, BIG_HOUSE ; marcelnote - merged RedsHouse floors, added YellowsHouse
 TradeCenterPlayerWarp:
 	special_warp_spec TRADE_CENTER,  3, 4, CLUB
 TradeCenterFriendWarp:

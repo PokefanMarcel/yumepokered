@@ -142,7 +142,7 @@ INCLUDE "text/Route28.asm" ; marcelnote - new location
 
 INCLUDE "data/text/text_3.asm"
 
-INCLUDE "text/RedsHouse.asm" ; marcelnote - merged RedsHouse floors
+INCLUDE "text/RedsYellowsHouses.asm" ; marcelnote - merged RedsHouse floors, added YellowsHouse
 INCLUDE "text/BluesHouse.asm"
 INCLUDE "text/PalletHouses.asm" ; marcelnote - new location
 INCLUDE "text/OaksLab.asm"

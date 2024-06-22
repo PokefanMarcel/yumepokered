@@ -581,13 +581,6 @@ _IndigoPlateauHQText::
 	line "#MON LEAGUE HQ"
 	done
 
-_RedBedroomSNESText::
-	text "<PLAYER> is"
-	line "playing the SNES!"
-	cont "...Okay!"
-	cont "It's time to go!"
-	done
-
 _Route15UpstairsBinocularsText::
 	text "Looked into the"
 	line "binoculars..."

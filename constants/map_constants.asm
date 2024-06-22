@@ -57,7 +57,7 @@ DEF FIRST_ROUTE_MAP EQU const_value
 	map_const ROUTE_25,                      30,  9 ; $24
 	map_const ROUTE_28,                      39,  9 ; $24bis ; marcelnote - testing
 DEF FIRST_INDOOR_MAP EQU const_value
-	map_const REDS_HOUSE,                    11,  4 ; $25 ; marcelnote - merged RedsHouse floors
+	map_const REDS_YELLOWS_HOUSES,           25,  4 ; $25 ; marcelnote - merged RedsHouse floors, added YellowsHouse
 	map_const UNUSED_MAP_26,                  0,  0 ; $26 ; marcelnote - was REDS_HOUSE_2F
 	map_const BLUES_HOUSE,                    4,  4 ; $27
 	map_const OAKS_LAB,                       5,  6 ; $28

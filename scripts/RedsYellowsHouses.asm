@@ -1,30 +1,33 @@
 ; marcelnote - merged RedsHouse floors
-RedsHouse_Script:
+RedsYellowsHouses_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, RedsHouse_ScriptPointers
+	ld hl, RedsYellowsHouses_ScriptPointers
 	ld a, [wRedsHouseCurScript]
 	jp CallFunctionInTable
 ; marcelnote - merged RedsHouse floors, RedsHouse1F_Script was just:
 ;	jp EnableAutoTextBoxDrawing
 
-RedsHouse_ScriptPointers:
+RedsYellowsHouses_ScriptPointers:
 	def_script_pointers
-	dw_const RedsHouseDefaultScript, SCRIPT_REDSHOUSE_DEFAULT
-	dw_const DoRet,                  SCRIPT_REDSHOUSE_NOOP ; PureRGB - DoRet
+	dw_const RedsYellowsHousesDefaultScript, SCRIPT_REDSYELLOWSHOUSES_DEFAULT
+	dw_const DoRet,                          SCRIPT_REDSYELLOWSHOUSES_NOOP ; PureRGB - DoRet
 
-RedsHouseDefaultScript:
+RedsYellowsHousesDefaultScript:
 	xor a
 	ldh [hJoyHeld], a
 	ld a, PLAYER_DIR_UP
 	ld [wPlayerMovingDirection], a
-	ld a, SCRIPT_REDSHOUSE_NOOP
+	ld a, SCRIPT_REDSYELLOWSHOUSES_NOOP
 	ld [wRedsHouseCurScript], a
 	ret
 
-RedsHouse_TextPointers:
+RedsYellowsHouses_TextPointers:
 	def_text_pointers
-	dw_const RedsHouse1FMomText, TEXT_REDSHOUSE1F_MOM
-	dw_const RedsHouse1FTVText,  TEXT_REDSHOUSE1F_TV
+	dw_const RedsHouse1FMomText,        TEXT_REDSHOUSE1F_MOM
+	dw_const RedsHouse1FTVText,         TEXT_REDSHOUSE1F_TV
+	dw_const RedsHouse2FSNESText,       TEXT_REDSHOUSE2F_SNES ; marcelnote - moved from hidden_objects
+	dw_const YellowsHouse2FGameboyText, TEXT_YELLOWSHOUSE2F_GAMEBOY ; marcelnote - new for Yellow's bedroom
+	dw_const YellowsHouse2FTVText,      TEXT_YELLOWSHOUSE2F_TV ; marcelnote - new for Yellow's bedroom
 
 RedsHouse1FMomText:
 	text_asm
@@ -87,4 +90,16 @@ RedsHouse1FTVText:
 
 .WrongSideText:
 	text_far _RedsHouse1FTVWrongSideText
+	text_end
+
+RedsHouse2FSNESText: ; marcelnote - moved from hidden_objects
+	text_far _RedsHouse2FSNESText
+	text_end
+
+YellowsHouse2FGameboyText: ; marcelnote - new for Yellow's House
+	text_far _YellowsHouse2FGameboyText
+	text_end
+
+YellowsHouse2FTVText: ; marcelnote - new for Yellow's House
+	text_far _YellowsHouse2FTVText
 	text_end

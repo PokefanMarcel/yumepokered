@@ -425,10 +425,10 @@ SECTION "Maps 8", ROMX
 
 INCLUDE "scripts/Route7.asm"
 
-INCLUDE "data/maps/headers/RedsHouse.asm" ; marcelnote - merged RedsHouse floors
-INCLUDE "scripts/RedsHouse.asm"
-INCLUDE "data/maps/objects/RedsHouse.asm"
-RedsHouse_Blocks: INCBIN "maps/RedsHouse.blk"
+INCLUDE "data/maps/headers/RedsYellowsHouses.asm" ; marcelnote - merged RedsHouse floors,
+INCLUDE "scripts/RedsYellowsHouses.asm"           ;              added YellowsHouse
+INCLUDE "data/maps/objects/RedsYellowsHouses.asm"
+RedsYellowsHouses_Blocks: INCBIN "maps/RedsYellowsHouses.blk"
 
 INCLUDE "data/maps/headers/CeladonMart1F2F3F.asm"
 INCLUDE "scripts/CeladonMart1F2F3F.asm"

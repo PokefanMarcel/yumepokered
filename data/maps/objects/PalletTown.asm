@@ -7,10 +7,10 @@ PalletTown_Object:
 	db $b ; border block
 
 	def_warp_events
-	warp_event  5,  5, REDS_HOUSE, 1 ; marcelnote - merged RedsHouse floors
+	warp_event  5,  5, REDS_YELLOWS_HOUSES, 1 ; marcelnote - merged RedsHouse floors, added YellowsHouse
 	warp_event 13,  5, BLUES_HOUSE, 1
 	warp_event 12, 11, OAKS_LAB, 2
-	warp_event 21,  5, PALLET_HOUSES, 1 ; marcelnote - new houses
+	warp_event 21,  5, REDS_YELLOWS_HOUSES, 5 ; marcelnote - new houses
 	warp_event 21, 13, PALLET_HOUSES, 5 ; marcelnote - new houses
 
 	def_bg_events

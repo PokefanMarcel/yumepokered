@@ -1,3 +1,4 @@
+; marcelnote - merged RedsHouse floors and added YellowsHouse
 _RedsHouse1FMomWakeUpText::
 	text "MOM: Right."
 	line "All kids leave" ; marcelnote - replaced 'boys' by 'kids'
@@ -34,4 +35,23 @@ _RedsHouse1FTVStandByMeMovieText::
 
 _RedsHouse1FTVWrongSideText::
 	text "Oops, wrong side."
+	done
+
+_RedsHouse2FSNESText:: ; marcelnote - moved from hidden_objects
+	text "<PLAYER> is"
+	line "playing the SNES!"
+	cont "...Okay!"
+	cont "It's time to go!"
+	done
+
+_YellowsHouse2FGameboyText:: ; marcelnote - new for Yellow's House
+	text "It's a GAMEBOY!"
+	line "...but the"
+	cont "battery's dead."
+	done
+
+_YellowsHouse2FTVText:: ; marcelnote - new for Yellow's House
+	text "It looks like"
+	line "the TV has been"
+	cont "on all night."
 	done

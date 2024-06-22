@@ -39,8 +39,8 @@ MapHeaderPointers::
 	dw Route24_h
 	dw Route25_h
 	dw Route28_h ; marcelnote - new location
-	dw RedsHouse_h ; marcelnote - merged RedsHouse floors
-	dw RedsHouse_h ; UNUSED_MAP_26 ; marcelnote - was RedsHouse2F_h, now unused
+	dw RedsYellowsHouses_h ; marcelnote - merged RedsHouse floors, added YellowsHouse
+	dw RedsYellowsHouses_h ; UNUSED_MAP_26 ; marcelnote - was RedsHouse2F_h, now unused
 	dw BluesHouse_h
 	dw OaksLab_h
 	dw ViridianPokecenter_h

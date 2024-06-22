@@ -39,7 +39,7 @@ MapHeaderBanks::
 	db BANK(Route24_h)
 	db BANK(Route25_h)
 	db BANK(Route28_h) ; marcelnote - new location
-	db BANK(RedsHouse_h) ; marcelnote - merged RedsHouse floors
+	db BANK(RedsYellowsHouses_h) ; marcelnote - merged RedsHouse floors, added YellowsHouse
 	db $01 ; UNUSED_MAP_26 ; marcelnote - was RedsHouse2F_h
 	db BANK(BluesHouse_h)
 	db BANK(OaksLab_h)
