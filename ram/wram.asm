@@ -1961,7 +1961,7 @@ wSSAnne1FRoomsCurScript:: db
 wSSAnne2FRoomsCurScript:: db
 wRoute22CurScript:: db
 	ds 1
-wRedsHouseCurScript:: db ; marcelnote - merged RedsHose floors
+wRedsHouseCurScript:: db ; marcelnote - merged RedsHouse floors
 wViridianMartCurScript:: db
 wRoute22GateCurScript:: db
 wCeruleanCityCurScript:: db
