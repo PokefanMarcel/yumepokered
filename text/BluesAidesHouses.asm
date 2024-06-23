@@ -48,6 +48,6 @@ _AidesHouseMiddleAgedWomanText:: ; marcelnote - new Pallet house
 
 	para "It's rewarding"
 	line "work, but he's"
-	cont "often away to"
-	cont "study #MON."
+	cont "often away from"
+	cont "home."
 	done

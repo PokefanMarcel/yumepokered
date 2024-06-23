@@ -79,6 +79,6 @@ _YellowsHouse2FTVText:: ; marcelnote - new for Yellow's house
 	done
 
 _UnpackedBoxText:: ; marcelnote - new for Yellow's house
-	text "This box is"
-	line "still unpacked."
+	text "A moving box"
+	line "full of stuff."
 	done
