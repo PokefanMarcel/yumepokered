@@ -75,6 +75,7 @@ SpriteSheetPointerTable:
 	overworld_sprite BlaineSprite, 12           ; SPRITE_BLAINE
 	overworld_sprite SwimmerFSprite, 12         ; SPRITE_SWIMMER_F ; marcelnote - new sprite
 	overworld_sprite YellowSprite, 12           ; SPRITE_YELLOW    ; marcelnote - new sprite
+	overworld_sprite DadSprite, 12              ; SPRITE_DAD       ; marcelnote - new sprite from PureRGB
 	overworld_sprite SeelSprite, 12             ; SPRITE_SEEL
 	overworld_sprite PokeBallSprite, 4          ; SPRITE_POKE_BALL
 	overworld_sprite FossilSprite, 4            ; SPRITE_FOSSIL

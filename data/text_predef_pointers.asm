@@ -17,7 +17,7 @@ TextPredefs::
 	add_tx_pre KabutopsFossilText                   ; 0B
 	add_tx_pre GymStatueText1                       ; 0C
 	add_tx_pre GymStatueText2                       ; 0D
-	add_tx_pre BookcaseText                         ; 0E
+	;add_tx_pre BookcaseText                         ; 0E ; marcelnote - already handled by BookOrSculptureText
 	add_tx_pre ViridianCityPokecenterBenchGuyText   ; 0F
 	add_tx_pre PewterCityPokecenterBenchGuyText     ; 10
 	add_tx_pre CeruleanCityPokecenterBenchGuyText   ; 11
@@ -33,7 +33,7 @@ TextPredefs::
 	add_tx_pre UnusedBenchGuyText1                  ; 1B XXX unused
 	add_tx_pre UnusedBenchGuyText2                  ; 1C XXX unused
 	add_tx_pre UnusedBenchGuyText3                  ; 1D XXX unused
-	add_tx_pre UnusedPredefText                     ; 1E XXX unused
+	;add_tx_pre UnusedPredefText                     ; 1E XXX unused ; marcelnote - commented out
 	add_tx_pre PokemonCenterPCText                  ; 1F
 	add_tx_pre ViridianSchoolNotebook               ; 20
 	add_tx_pre ViridianSchoolBlackboard             ; 21

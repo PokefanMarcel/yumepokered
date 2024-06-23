@@ -41,7 +41,7 @@ MapHeaderPointers::
 	dw Route28_h ; marcelnote - new location
 	dw RedsYellowsHouses_h ; marcelnote - merged RedsHouse floors, added YellowsHouse
 	dw RedsYellowsHouses_h ; UNUSED_MAP_26 ; marcelnote - was RedsHouse2F_h, now unused
-	dw BluesHouse_h
+	dw BluesAidesHouses_h ; marcelnote - merged Blue's house with new Aide's house
 	dw OaksLab_h
 	dw ViridianPokecenter_h
 	dw ViridianMart_h
@@ -88,7 +88,7 @@ MapHeaderPointers::
 	dw PowerPlant_h
 	dw Route11Gate_h ; marcelnote - merged Route11Gate floors
 	dw DiglettsCaveRoute11_h
-	dw PalletHouses_h ; UNUSED_MAP_56 ; marcelnote - was Route11Gate2F_h, now unused
+	dw Route11Gate_h ; UNUSED_MAP_56 ; marcelnote - was Route11Gate2F_h, now unused
 	dw Route12Gate_h ; marcelnote - merged Route12Gate floors
 	dw BillsHouse_h
 	dw VermilionPokecenter_h

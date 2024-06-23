@@ -43,7 +43,7 @@ MapHSPointers:
 	dw NoHS ; marcelnote - new location, Route28
 	dw NoHS
 	dw NoHS
-	dw BluesHouseHS
+	dw BluesAidesHousesHS ; marcelnote - merged Blue's house with new Aide's house
 	dw OaksLabHS
 	dw NoHS
 	dw NoHS
@@ -319,10 +319,10 @@ Route24HS:
 	db ROUTE_24, ROUTE24_TM_THUNDER_WAVE, SHOW
 Route25HS:
 	db ROUTE_25, ROUTE25_TM_SEISMIC_TOSS, SHOW
-BluesHouseHS:
-	db BLUES_HOUSE, BLUESHOUSE_DAISY1,   SHOW
-	db BLUES_HOUSE, BLUESHOUSE_DAISY2,   HIDE
-	db BLUES_HOUSE, BLUESHOUSE_TOWN_MAP, SHOW
+BluesAidesHousesHS: ; marcelnote - merged Blue's house with new Aide's house
+	db BLUES_AIDES_HOUSES, BLUESHOUSE_DAISY1,   SHOW
+	db BLUES_AIDES_HOUSES, BLUESHOUSE_DAISY2,   HIDE
+	db BLUES_AIDES_HOUSES, BLUESHOUSE_TOWN_MAP, SHOW
 OaksLabHS:
 	db OAKS_LAB, OAKSLAB_RIVAL,                SHOW
 	db OAKS_LAB, OAKSLAB_CHARMANDER_POKE_BALL, SHOW

@@ -44,21 +44,41 @@ _RedsHouse2FSNESText:: ; marcelnote - moved from hidden_objects
 	cont "It's time to go!"
 	done
 
-_YellowsHouse2FAsleepText:: ; marcelnote - new for Yellow's House
+_YellowsHouse1FDadText:: ; marcelnote - new for Yellow's house
+	text "Sorry about the"
+	line "mess, we're"
+	cont "still unpacking."
+
+	para "Please stop by"
+	line "again later,"
+	cont "there'll be tea!"
+	done
+
+_YellowsHouse1FTVText:: ; marcelnote - new for Yellow's house
+	text "It's not even"
+	line "plugged in yet."
+	done
+
+_YellowsHouse2FAsleepText:: ; marcelnote - new for Yellow's house
 	text "This kid is"
 	line "fast asleep."
 	cont "Better not"
 	cont "wake them up."
 	done
 
-_YellowsHouse2FGameboyText:: ; marcelnote - new for Yellow's House
+_YellowsHouse2FGameboyText:: ; marcelnote - new for Yellow's house
 	text "It's a GAMEBOY!"
 	line "...But the"
 	cont "battery's dead."
 	done
 
-_YellowsHouse2FTVText:: ; marcelnote - new for Yellow's House
+_YellowsHouse2FTVText:: ; marcelnote - new for Yellow's house
 	text "It looks like"
 	line "the TV has been"
 	cont "on all night."
+	done
+
+_UnpackedBoxText:: ; marcelnote - new for Yellow's house
+	text "This box is"
+	line "still unpacked."
 	done

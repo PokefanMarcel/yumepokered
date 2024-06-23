@@ -1,25 +1,32 @@
-BluesHouse_Script:
+; marcelnote - merged Blue's house with new Aide's house
+BluesAidesHouses_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, BluesHouse_ScriptPointers
+	ld hl, BluesAidesHouses_ScriptPointers
 	ld a, [wBluesHouseCurScript]
 	jp CallFunctionInTable
 
-BluesHouse_ScriptPointers:
+BluesAidesHouses_ScriptPointers:
 	def_script_pointers
-	dw_const BluesHouseDefaultScript, SCRIPT_BLUESHOUSE_DEFAULT
-	dw_const DoRet,                   SCRIPT_BLUESHOUSE_NOOP ; PureRGB - DoRet
+	dw_const BluesAidesHousesDefaultScript, SCRIPT_BLUESAIDESHOUSES_DEFAULT
+	dw_const DoRet,                         SCRIPT_BLUESAIDESHOUSES_NOOP ; PureRGB - DoRet
 
-BluesHouseDefaultScript:
+BluesAidesHousesDefaultScript:
+;;;;;; marcelnote - adjusted for second house on same map
+	ld a, [wXCoord]
+	cp 14 ; marcelnote - start of second house on the map
+	ret nc ; if XCoord >= 14, player in Aide's house
+;;;;;;
 	SetEvent EVENT_ENTERED_BLUES_HOUSE
-	ld a, SCRIPT_BLUESHOUSE_NOOP
+	ld a, SCRIPT_BLUESAIDESHOUSES_NOOP
 	ld [wBluesHouseCurScript], a
 	ret
 
-BluesHouse_TextPointers:
+BluesAidesHouses_TextPointers:
 	def_text_pointers
-	dw_const BluesHouseDaisySittingText, TEXT_BLUESHOUSE_DAISY_SITTING
-	dw_const BluesHouseDaisyWalkingText, TEXT_BLUESHOUSE_DAISY_WALKING
-	dw_const BluesHouseTownMapText,      TEXT_BLUESHOUSE_TOWN_MAP
+	dw_const BluesHouseDaisySittingText,         TEXT_BLUESHOUSE_DAISY_SITTING
+	dw_const BluesHouseDaisyWalkingText,         TEXT_BLUESHOUSE_DAISY_WALKING
+	dw_const AidesHouseMiddleAgedWomanText,      TEXT_AIDESHOUSE_MIDDLE_AGED_WOMAN ; marcelnote - new Pallet house
+	dw_const BluesHouseTownMapText,              TEXT_BLUESHOUSE_TOWN_MAP
 
 BluesHouseDaisySittingText:
 	text_asm
@@ -83,4 +90,8 @@ BluesHouseDaisyWalkingText:
 
 BluesHouseTownMapText:
 	text_far _BluesHouseTownMapText
+	text_end
+
+AidesHouseMiddleAgedWomanText: ; marcelnote - new Pallet house
+	text_far _AidesHouseMiddleAgedWomanText
 	text_end

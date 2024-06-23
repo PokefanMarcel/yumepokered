@@ -54,3 +54,21 @@ _PalletTownPlayersHouseSignText::
 _PalletTownRivalsHouseSignText::
 	text "<RIVAL>'s house "
 	done
+
+_PalletTownCooltrainerFText:: ; marcelnote - new
+	text "Life is peaceful"
+	line "here in PALLET."
+
+	para "But the spirit of"
+	line "adventure is al-"
+	cont "ways in the air."
+	done
+
+_PalletTownYellowsHouseSignText:: ; marcelnote - added Yellow's house
+	text "..."
+
+	para "A new family just"
+	line "moved in."
+	cont "The sign is"
+	cont "still empty."
+	done

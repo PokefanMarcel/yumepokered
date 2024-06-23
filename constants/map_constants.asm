@@ -59,7 +59,7 @@ DEF FIRST_ROUTE_MAP EQU const_value
 DEF FIRST_INDOOR_MAP EQU const_value
 	map_const REDS_YELLOWS_HOUSES,           25,  4 ; $25 ; marcelnote - merged RedsHouse floors, added YellowsHouse
 	map_const UNUSED_MAP_26,                  0,  0 ; $26 ; marcelnote - was REDS_HOUSE_2F
-	map_const BLUES_HOUSE,                    4,  4 ; $27
+	map_const BLUES_AIDES_HOUSES,            11,  4 ; $27 ; marcelnote - added Aide's house
 	map_const OAKS_LAB,                       5,  6 ; $28
 	map_const VIRIDIAN_POKECENTER,            7,  4 ; $29
 	map_const VIRIDIAN_MART,                  4,  4 ; $2A

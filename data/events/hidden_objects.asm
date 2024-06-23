@@ -1,6 +1,6 @@
 HiddenObjectMaps:
 	db REDS_YELLOWS_HOUSES ; marcelnote - merged RedsHouse floors
-	db BLUES_HOUSE
+	;db BLUES_AIDES_HOUSES
 	db OAKS_LAB
 	db VIRIDIAN_POKECENTER
 	db VIRIDIAN_MART
@@ -91,7 +91,7 @@ HiddenObjectMaps:
 HiddenObjectPointers:
 ; each of these pointers is for the corresponding map in HiddenObjectMaps
 	dw RedsYellowsHousesHiddenObjects ; marcelnote - merged RedsHouse floors, added YellowsHouse
-	dw BluesHouseHiddenObjects
+	;dw BluesAidesHousesHiddenObjects ; marcelnote - hidden objects were redundant
 	dw OaksLabHiddenObjects
 	dw ViridianPokecenterHiddenObjects
 	dw ViridianMartHiddenObjects
@@ -211,11 +211,11 @@ RedsYellowsHousesHiddenObjects: ; marcelnote - merged RedsHouse floors
 	hidden_object 14,  1, SPRITE_FACING_UP, OpenRedsPC
 	db -1 ; end
 
-BluesHouseHiddenObjects:
-	hidden_object  0,  1, SPRITE_FACING_UP, PrintBookcaseText
-	hidden_object  1,  1, SPRITE_FACING_UP, PrintBookcaseText
-	hidden_object  7,  1, SPRITE_FACING_UP, PrintBookcaseText
-	db -1 ; end
+;BluesAidesHousesHiddenObjects: ; marcelnote - bookcase text is already handled by bookshelf_tile_ids
+;	hidden_object  0,  1, SPRITE_FACING_UP, PrintBookcaseText
+;	hidden_object  1,  1, SPRITE_FACING_UP, PrintBookcaseText
+;	hidden_object  7,  1, SPRITE_FACING_UP, PrintBookcaseText
+;	db -1 ; end
 
 OaksLabHiddenObjects:
 	hidden_object  4,  0, SPRITE_FACING_UP, DisplayOakLabLeftPoster

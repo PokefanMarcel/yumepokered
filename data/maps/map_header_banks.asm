@@ -41,7 +41,7 @@ MapHeaderBanks::
 	db BANK(Route28_h) ; marcelnote - new location
 	db BANK(RedsYellowsHouses_h) ; marcelnote - merged RedsHouse floors, added YellowsHouse
 	db $01 ; UNUSED_MAP_26 ; marcelnote - was RedsHouse2F_h
-	db BANK(BluesHouse_h)
+	db BANK(BluesAidesHouses_h) ; marcelnote - merged Blue's house with new Aide's house
 	db BANK(OaksLab_h)
 	db BANK(ViridianPokecenter_h)
 	db BANK(ViridianMart_h)
@@ -88,7 +88,7 @@ MapHeaderBanks::
 	db BANK(PowerPlant_h)
 	db BANK(Route11Gate_h) ; marcelnote - merged Route11Gate floors
 	db BANK(DiglettsCaveRoute11_h)
-	db BANK(PalletHouses_h) ; UNUSED_MAP_56 ; marcelnote - was Route11Gate2F_h, now unused
+	db $01 ; UNUSED_MAP_56 ; marcelnote - was Route11Gate2F_h, now unused
 	db BANK(Route12Gate_h) ; marcelnote - merged Route12Gate floors
 	db BANK(BillsHouse_h)
 	db BANK(VermilionPokecenter_h)

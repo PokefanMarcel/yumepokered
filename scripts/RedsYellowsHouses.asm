@@ -24,11 +24,14 @@ RedsYellowsHousesDefaultScript:
 RedsYellowsHouses_TextPointers:
 	def_text_pointers
 	dw_const RedsHouse1FMomText,        TEXT_REDSHOUSE1F_MOM
-	dw_const YellowsHouse2FAsleepText,  TEXT_YELLOWSHOUSE2F_ASLEEP ; marcelnote - new for Yellow's bedroom
+	dw_const YellowsHouse1FDadText,     TEXT_YELLOWSHOUSE1F_DAD        ; marcelnote - Yellow's dad
+	dw_const YellowsHouse2FAsleepText,  TEXT_YELLOWSHOUSE2F_ASLEEP     ; marcelnote - new for Yellow's bedroom
 	dw_const RedsHouse1FTVText,         TEXT_REDSHOUSE1F_TV
-	dw_const RedsHouse2FSNESText,       TEXT_REDSHOUSE2F_SNES ; marcelnote - moved from hidden_objects
-	dw_const YellowsHouse2FGameboyText, TEXT_YELLOWSHOUSE2F_GAMEBOY ; marcelnote - new for Yellow's bedroom
-	dw_const YellowsHouse2FTVText,      TEXT_YELLOWSHOUSE2F_TV ; marcelnote - new for Yellow's bedroom
+	dw_const RedsHouse2FSNESText,       TEXT_REDSHOUSE2F_SNES          ; marcelnote - moved from hidden_objects
+	dw_const YellowsHouse1FTVText,      TEXT_YELLOWSHOUSE1F_TV         ; marcelnote - new for Yellow's bedroom
+	dw_const YellowsHouse2FGameboyText, TEXT_YELLOWSHOUSE2F_GAMEBOY    ; marcelnote - new for Yellow's bedroom
+	dw_const YellowsHouse2FTVText,      TEXT_YELLOWSHOUSE2F_TV         ; marcelnote - new for Yellow's bedroom
+	dw_const UnpackedBoxText,           TEXT_YELLOWSHOUSE_UNPACKED_BOX ; marcelnote - new for Yellow's house
 
 RedsHouse1FMomText:
 	text_asm
@@ -101,10 +104,22 @@ YellowsHouse2FGameboyText: ; marcelnote - new for Yellow's House
 	text_far _YellowsHouse2FGameboyText
 	text_end
 
+YellowsHouse1FDadText: ; marcelnote - new for Yellow's House
+	text_far _YellowsHouse1FDadText
+	text_end
+
+YellowsHouse1FTVText: ; marcelnote - new for Yellow's House
+	text_far _YellowsHouse1FTVText
+	text_end
+
 YellowsHouse2FTVText: ; marcelnote - new for Yellow's House
 	text_far _YellowsHouse2FTVText
 	text_end
 
 YellowsHouse2FAsleepText: ; marcelnote - new for Yellow's House
 	text_far _YellowsHouse2FAsleepText
+	text_end
+
+UnpackedBoxText:: ; marcelnote - new
+	text_far _UnpackedBoxText
 	text_end

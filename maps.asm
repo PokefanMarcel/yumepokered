@@ -40,15 +40,10 @@ INCLUDE "scripts/VermilionCity.asm"
 INCLUDE "scripts/CeladonCity.asm"
 INCLUDE "scripts/FuchsiaCity.asm"
 
-INCLUDE "data/maps/headers/BluesHouse.asm"
-INCLUDE "scripts/BluesHouse.asm"
-INCLUDE "data/maps/objects/BluesHouse.asm"
-BluesHouse_Blocks: INCBIN "maps/BluesHouse.blk"
-
-INCLUDE "data/maps/headers/PalletHouses.asm"
-INCLUDE "scripts/PalletHouses.asm"
-INCLUDE "data/maps/objects/PalletHouses.asm"
-PalletHouses_Blocks: INCBIN "maps/PalletHouses.blk"
+INCLUDE "data/maps/headers/BluesAidesHouses.asm" ; marcelnote - merged Blue's house with new Aide's house
+INCLUDE "scripts/BluesAidesHouses.asm"
+INCLUDE "data/maps/objects/BluesAidesHouses.asm"
+BluesAidesHouses_Blocks: INCBIN "maps/BluesAidesHouses.blk"
 
 INCLUDE "data/maps/headers/VermilionTradeHouse.asm"
 INCLUDE "scripts/VermilionTradeHouse.asm"

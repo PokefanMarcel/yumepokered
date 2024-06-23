@@ -40,3 +40,14 @@ _BluesHouseTownMapText::
 	text "It's a big map!"
 	line "This is useful!"
 	done
+
+_AidesHouseMiddleAgedWomanText:: ; marcelnote - new Pallet house
+	text "My husband is a"
+	line "researcher at"
+	cont "PROF.OAK's LAB."
+
+	para "It's rewarding"
+	line "work, but he's"
+	cont "often away to"
+	cont "study #MON."
+	done

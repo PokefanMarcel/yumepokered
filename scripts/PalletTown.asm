@@ -153,10 +153,12 @@ PalletTown_TextPointers:
 	dw_const PalletTownOakText,              TEXT_PALLETTOWN_OAK
 	dw_const PalletTownGirlText,             TEXT_PALLETTOWN_GIRL
 	dw_const PalletTownFisherText,           TEXT_PALLETTOWN_FISHER
+	dw_const PalletTownCooltrainerFText,     TEXT_PALLETTOWN_COOLTRAINER_F ; marcelnote - new
 	dw_const PalletTownOaksLabSignText,      TEXT_PALLETTOWN_OAKSLAB_SIGN
 	dw_const PalletTownSignText,             TEXT_PALLETTOWN_SIGN
 	dw_const PalletTownPlayersHouseSignText, TEXT_PALLETTOWN_PLAYERSHOUSE_SIGN
 	dw_const PalletTownRivalsHouseSignText,  TEXT_PALLETTOWN_RIVALSHOUSE_SIGN
+	dw_const PalletTownYellowsHouseSignText, TEXT_PALLETTOWN_YELLOWSHOUSE_SIGN ; marcelnote - Yellow's house
 
 PalletTownOakText:
 	text_asm
@@ -198,6 +200,10 @@ PalletTownFisherText:
 	text_far _PalletTownFisherText
 	text_end
 
+PalletTownCooltrainerFText: ; marcelnote - new
+	text_far _PalletTownCooltrainerFText
+	text_end
+
 PalletTownOaksLabSignText:
 	text_far _PalletTownOaksLabSignText
 	text_end
@@ -212,4 +218,8 @@ PalletTownPlayersHouseSignText:
 
 PalletTownRivalsHouseSignText:
 	text_far _PalletTownRivalsHouseSignText
+	text_end
+
+PalletTownYellowsHouseSignText: ; marcelnote - added Yellow's house
+	text_far _PalletTownYellowsHouseSignText
 	text_end
