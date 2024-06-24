@@ -2,7 +2,9 @@
 
 ; Pallet Town events
 	const_def
-	const_skip 3 ; marcelnote - +1 for deleting EVENT_FOLLOWED_OAK_INTO_LAB
+	const EVENT_OAK_APPEARED_IN_PALLET
+	const_skip 2 ; marcelnote - +1 for deleting EVENT_FOLLOWED_OAK_INTO_LAB,
+	             ;              -1 for moving EVENT_OAK_APPEARED_IN_PALLET above
 	const EVENT_HALL_OF_FAME_DEX_RATING
 	const_skip 2
 	const EVENT_PALLET_AFTER_GETTING_POKEBALLS
@@ -16,8 +18,8 @@
 	const EVENT_BATTLED_RIVAL_IN_OAKS_LAB
 	const EVENT_GOT_POKEBALLS_FROM_OAK
 	const EVENT_GOT_POKEDEX
-	const EVENT_OAK_APPEARED_IN_PALLET
-	const_skip 2 ; marcelnote - added 1 padding, +1 for deleting EVENT_PALLET_AFTER_GETTING_POKEBALLS_2
+	const_skip 3 ; marcelnote - added 1 padding, +1 for deleting EVENT_PALLET_AFTER_GETTING_POKEBALLS_2,
+	             ;              +1 for moving EVENT_OAK_APPEARED_IN_PALLET above
 	const EVENT_POSTGAME_RIVAL ; marcelnote - postgame Rival
 	const EVENT_USE_MISSABLE_OBJECTS_CONT_LIST ; marcelnote - to deal with extended HideShow list
 
