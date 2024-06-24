@@ -261,6 +261,7 @@ DEF NUM_HS_OBJECTS EQU const_value
 
 ; marcelnote - the list continues here to allow for more than 256 HideShow objects
 	const_def
+	const HS_ROUTE_1_OAK                   ; E9 ; marcelnote - postgame Oak battle
 	const HS_SAFFRON_GYM_WILL              ; E9 ; marcelnote - postgame Will
 	const HS_SAFFRON_GYM_BRUNO             ; EA ; marcelnote - postgame Bruno
 	const HS_INDIGO_PLATEAU_LOBBY_GIRL1    ; F5 ; marcelnote - now moves after first defeating E4

@@ -69,10 +69,39 @@ IndigoPlateauLobbyRivalText: ; marcelnote - added, appears when E4 reopens
 	ld a, HS_INDIGO_PLATEAU_LOBBY_RIVAL
 	ld [wMissableObjectIndex], a
 	predef HideObjectCont
+	; set up Oak battle
+	ld a, HS_STARTER_BALL_1 ; hide all starter balls, maybe not efficient but happens only once
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	ld a, HS_STARTER_BALL_2
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	ld a, HS_STARTER_BALL_3
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	;ld a, [wPlayerStarter] ; this code to find the last ball instead
+	;cp STARTER1
+	;ld a, HS_STARTER_BALL_3
+	;jr z, .hideBall
+	;ld a, [wPlayerStarter]
+	;cp STARTER2
+	;ld a, HS_STARTER_BALL_1
+	;jr z, .hideBall
+	;ld a, HS_STARTER_BALL_2
+;.hideBall
+	;ld [wMissableObjectIndex], a
+	;predef HideObject
+	ld a, HS_OAKS_LAB_OAK_1
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	ld a, HS_ROUTE_1_OAK
+	ld [wMissableObjectIndex], a
+	predef ShowObjectCont
 	call UpdateSprites
 	call Delay3
 	call GBFadeInFromBlack
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
 .text
 	text_far _IndigoPlateauLobbyRivalText
 	text_end

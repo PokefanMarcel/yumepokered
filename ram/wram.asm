@@ -1936,7 +1936,8 @@ wMissableObjectList:: ds 16 * 2 + 1
 wGameProgressFlags::
 wOaksLabCurScript:: db
 wPalletTownCurScript:: db
-	ds 1
+wRoute1CurScript:: db ; marcelnote - added for postgame Oak battle, took ds 1 below
+	;ds 1
 wBluesHouseCurScript:: db
 wViridianCityCurScript:: db
 	ds 2

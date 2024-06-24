@@ -15,7 +15,7 @@ MapHSPointers:
 	dw NoHS
 	dw SaffronCityHS
 	dw NoHS
-	dw NoHS
+	dw Route1HS ; marcelnote - added for postgame Oak battle
 	dw Route2HS
 	dw NoHS
 	dw Route4HS
@@ -600,6 +600,8 @@ MissableObjectsCont:
 	table_width 3, MissableObjectsCont
 ; format: map id, object id, HIDE/SHOW
 
+Route1HS:
+	db ROUTE_1, ROUTE1_OAK, HIDE  ; marcelnote - postgame Oak battle
 SaffronGymHS:
 	db SAFFRON_GYM, SAFFRONGYM_WILL, HIDE  ; marcelnote - postgame Bruno event
 	db SAFFRON_GYM, SAFFRONGYM_BRUNO, HIDE ; marcelnote - postgame Bruno event

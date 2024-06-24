@@ -26,10 +26,9 @@ _Route22GateGuard2ScaryStrongText:: ; marcelnote - new guard
 	line "#MON live"
 	cont "out there."
 
-	para "Access is"
-	line "restricted to"
-	cont "the most elite"
-	cont "trainers only."
+	para "Access is granted"
+	line "only on PROF.OAK's"
+	cont "authorization."
 	done
 
 _Route22GateGuard2WelcomeChampionText:: ; marcelnote - new guard

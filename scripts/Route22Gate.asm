@@ -118,8 +118,8 @@ Route22GateGuard2Text: ; marcelnote - new guard
 	text_asm
 	ld a, [wObtainedBadges]
 	bit BIT_VOLCANOBADGE, a ; for testing purposes
-	;CheckEvent EVENT_BECAME_CHAMPION
-	jr nz, .is_champion
+	;CheckEvent EVENT_BEAT_ROUTE_1_OAK
+	jr nz, .beat_oak
 	ld hl, Route22GateGuard2ScaryStrongText
 	call PrintText
 	ld a, D_RIGHT
@@ -127,7 +127,7 @@ Route22GateGuard2Text: ; marcelnote - new guard
 	ld a, SCRIPT_ROUTE22GATE_PLAYER_MOVING
 	ld [wRoute22GateCurScript], a
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-.is_champion
+.beat_oak
 	ld hl, Route22GateGuard2WelcomeChampionText
 	call PrintText
 	SetEvent EVENT_ROUTE22GATE_WELCOME_CHAMPION
