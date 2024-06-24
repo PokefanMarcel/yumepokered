@@ -427,7 +427,7 @@ IF DEF(_GREEN) ; PureRGBnote: GREENBUILD: different title screen subtitle text f
 ENDC
 
 DebugNewGamePlayerName:
-	db "NINTEN@"
+	db "NINTEND@"
 
 DebugNewGameRivalName:
-	db "SONY@"
+	db "SONYINC@"
