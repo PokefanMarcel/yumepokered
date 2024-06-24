@@ -2284,6 +2284,7 @@ MewEvosMoves:
 	db 40, PSYCHIC_M
 	db 50, BARRIER
 	db 60, AMNESIA
+	db 70, RECOVER
 	db 0
 
 FossilKabutopsEvosMoves:
