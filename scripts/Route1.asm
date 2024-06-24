@@ -4,7 +4,6 @@ Route1_Script:
 	ld hl, Route1_ScriptPointers
 	ld a, [wRoute1CurScript]
 	jp CallFunctionInTable
-	ret
 
 Route1_ScriptPointers:
 	def_script_pointers
@@ -33,13 +32,11 @@ Route1OakPostBattleScript: ; marcelnote - postgame Oak battle
 	call MoveSprite
 	ld a, SCRIPT_ROUTE1_OAK_FALSE_START
 	ld [wRoute1CurScript], a
-	ld [wCurMapScript], a
 	ret
 
 .lost
 	ld a, SCRIPT_ROUTE1_DEFAULT
 	ld [wRoute1CurScript], a
-	ld [wCurMapScript], a
 	ret
 
 .OakMovementDown
@@ -81,7 +78,6 @@ Route1OakFalseStartScript: ; marcelnote - postgame Oak battle
 	call MoveSprite
 	ld a, SCRIPT_ROUTE1_OAK_EXITS
 	ld [wRoute1CurScript], a
-	ld [wCurMapScript], a
 	ret
 
 .OakExitMovement
@@ -110,7 +106,6 @@ Route1OakExitsScript: ; marcelnote - postgame Rival event
 	ld [wJoyIgnore], a
 	ld a, SCRIPT_ROUTE1_DEFAULT
 	ld [wRoute1CurScript], a
-	ld [wCurMapScript], a
 	ret
 
 Route1_TextPointers:
@@ -205,7 +200,6 @@ Route1OakText: ; marcelnote - postgame Oak fight
 	ldh [hJoyHeld], a
 	ld a, SCRIPT_ROUTE1_OAK_POST_BATTLE
 	ld [wRoute1CurScript], a
-	ld [wCurMapScript], a
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .refused
 	ld hl, Route1OakRefusedBattleText
