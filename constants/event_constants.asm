@@ -27,8 +27,7 @@
 	const_next $28
 	const EVENT_VIRIDIAN_GYM_OPEN
 	const EVENT_GOT_TM42
-	const_skip 14
-	const EVENT_OAK_GOT_PARCEL
+	const_skip 15 ; marcelnote - +1 for deleting EVENT_OAK_GOT_PARCEL
 	const EVENT_GOT_OAKS_PARCEL
 	const_skip 22
 	const EVENT_GOT_TM27

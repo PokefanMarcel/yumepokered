@@ -6,7 +6,7 @@ ViridianMart_Script:
 	jp CallFunctionInTable
 
 ViridianMartCheckParcelDeliveredScript:
-	CheckEvent EVENT_OAK_GOT_PARCEL
+	CheckEvent EVENT_GOT_POKEDEX ; marcelnote - deleted redundant event
 	jr nz, .delivered_parcel
 	ld hl, ViridianMart_TextPointers
 	jr .done
