@@ -22,7 +22,7 @@ PalletTown_Object:
 	bg_event 21,  5, TEXT_PALLETTOWN_YELLOWSHOUSE_SIGN
 
 	def_object_events
-	object_event  8,  5, SPRITE_OAK, STAY, NONE, TEXT_PALLETTOWN_OAK
+	object_event  9,  5, SPRITE_OAK, STAY, UP, TEXT_PALLETTOWN_OAK ; marcelnote - changed from x=8, NONE
 	object_event  3,  8, SPRITE_GIRL, WALK, ANY_DIR, TEXT_PALLETTOWN_GIRL
 	object_event 11, 14, SPRITE_FISHER, WALK, ANY_DIR, TEXT_PALLETTOWN_FISHER
 	object_event 23, 11, SPRITE_COOLTRAINER_F, WALK, LEFT_RIGHT, TEXT_PALLETTOWN_COOLTRAINER_F ; marcelnote - new
