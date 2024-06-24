@@ -19,8 +19,8 @@ PalletTown_ScriptPointers:
 	dw_const DoRet,                                SCRIPT_PALLETTOWN_NOOP ; PureRGB - DoRet
 
 PalletTownDefaultScript:
-	CheckEvent EVENT_FOLLOWED_OAK_INTO_LAB
-	ret nz
+	;CheckEvent EVENT_OAK_APPEARED_IN_PALLET ; marcelnote - this is not needed since the script
+	;ret nz                                  ;              moves on from the default one once triggered
 	ld a, [wYCoord]
 	cp 1 ; is player near north exit?
 	ret nz

@@ -1,10 +1,7 @@
 OaksLab_Script:
 	CheckEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS_2
 	call nz, OaksLabLoadTextPointers2Script
-	ld a, TRUE
-	ld [wAutoTextBoxDrawingControl], a
-	xor a
-	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	call DisableAutoTextBoxDrawing ; marcelnote - replaces code which did exactly this
 	ld hl, OaksLab_ScriptPointers
 	ld a, [wOaksLabCurScript]
 	jp CallFunctionInTable
@@ -111,7 +108,6 @@ OaksLabFollowedOakScript:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
-	SetEvent EVENT_FOLLOWED_OAK_INTO_LAB ; marcelnote - deleted redundant event
 	ld a, OAKSLAB_RIVAL
 	ldh [hSpriteIndex], a
 	ld a, SPRITE_FACING_UP
@@ -831,7 +827,7 @@ OaksLabRivalText:
 	CheckEvent EVENT_BECAME_CHAMPION
 	jp nz, OaksLabRivalPostgameText
 	;;;;;;
-	CheckEvent EVENT_FOLLOWED_OAK_INTO_LAB ; marcelnote - harmonized events
+	CheckEvent EVENT_OAK_APPEARED_IN_PALLET ; marcelnote - harmonized events
 	jr nz, .beforeChooseMon
 	ld hl, .GrampsIsntAroundText
 	call PrintText

@@ -2,14 +2,13 @@
 
 ; Pallet Town events
 	const_def
-	const EVENT_FOLLOWED_OAK_INTO_LAB
-	const_skip 2
+	const_skip 3 ; marcelnote - +1 for deleting EVENT_FOLLOWED_OAK_INTO_LAB
 	const EVENT_HALL_OF_FAME_DEX_RATING
 	const_skip 2
 	const EVENT_PALLET_AFTER_GETTING_POKEBALLS
 	const_skip 9 ; marcelnote - adjusted down from 17
 	const EVENT_GOT_TOWN_MAP
-	const_skip 1 ; marcelnote - replaced EVENT_ENTERED_BLUES_HOUSE
+	const_skip ; marcelnote - replaced EVENT_ENTERED_BLUES_HOUSE
 	const EVENT_DAISY_WALKING
 	const_skip 6 ; marcelnote - +1 for deleting EVENT_FOLLOWED_OAK_INTO_LAB_2
 	const EVENT_OAK_ASKED_TO_CHOOSE_MON
