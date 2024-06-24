@@ -111,8 +111,7 @@ OaksLabFollowedOakScript:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
-	SetEvent EVENT_FOLLOWED_OAK_INTO_LAB
-	SetEvent EVENT_FOLLOWED_OAK_INTO_LAB_2
+	SetEvent EVENT_FOLLOWED_OAK_INTO_LAB ; marcelnote - deleted redundant event
 	ld a, OAKSLAB_RIVAL
 	ldh [hSpriteIndex], a
 	ld a, SPRITE_FACING_UP
@@ -833,7 +832,7 @@ OaksLabRivalText:
 	CheckEvent EVENT_BECAME_CHAMPION
 	jp nz, OaksLabRivalPostgameText
 	;;;;;;
-	CheckEvent EVENT_FOLLOWED_OAK_INTO_LAB_2
+	CheckEvent EVENT_FOLLOWED_OAK_INTO_LAB ; marcelnote - harmonized events
 	jr nz, .beforeChooseMon
 	ld hl, .GrampsIsntAroundText
 	call PrintText
