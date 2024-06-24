@@ -257,10 +257,11 @@ DEF SHOW EQU $15
 	const HS_CINNABAR_VOLCANO_2F_ITEM_3    ; F4 ; marcelnote - Nugget
 DEF NUM_HS_OBJECTS EQU const_value
 	; max objects = 256
-	; current total = 257 - 11 - 5 (commented out) = 241
+	; current total = 257 – 11 – 5 (commented out) = 241
 
 ; marcelnote - the list continues here to allow for more than 256 HideShow objects
 	const_def
+	const HS_REDS_YELLOWS_HOUSES_ASLEEP    ; E9 ; marcelnote - Yellow asleep
 	const HS_ROUTE_1_OAK                   ; E9 ; marcelnote - postgame Oak battle
 	const HS_SAFFRON_GYM_WILL              ; E9 ; marcelnote - postgame Will
 	const HS_SAFFRON_GYM_BRUNO             ; EA ; marcelnote - postgame Bruno
@@ -281,4 +282,4 @@ DEF NUM_HS_OBJECTS EQU const_value
 	const HS_HALL_OF_FAME_RIVAL            ; FF ; marcelnote - for Rival rematches
 DEF NUM_HS_OBJECTS_CONT EQU const_value
 	; max objects = 256
-	; current total = 280 - 263 = 17
+	; current total = 282 – 263 = 19

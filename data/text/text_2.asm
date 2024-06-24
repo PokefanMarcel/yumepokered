@@ -155,6 +155,20 @@ _GymStatueText2::
 	cont "<PLAYER>"
 	done
 
+_GymStatueText3:: ; marcelnote - added for Yellow
+	text_ram wGymCityName
+	text_start
+	line "#MON GYM"
+	cont "LEADER: @"
+	text_ram wGymLeaderName
+	text_start
+
+	para "WINNING TRAINERS:"
+	line "<RIVAL>"
+	cont "<PLAYER>"
+	cont "YELLOW"
+	done
+
 _ViridianCityPokecenterGuyText::
 	text "#MON CENTERs"
 	line "heal your tired,"

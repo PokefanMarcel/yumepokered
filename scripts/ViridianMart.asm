@@ -56,6 +56,10 @@ ViridianMartOaksParcelScript:
 	lb bc, OAKS_PARCEL, 1
 	call GiveItem
 	SetEvent EVENT_GOT_OAKS_PARCEL
+	ld a, HS_REDS_YELLOWS_HOUSES_ASLEEP ; marcelnote - hide Yellow asleep
+	ld [wMissableObjectIndex], a
+	predef HideObjectCont
+	; should also switch her dad to still sprite with new dialogue
 	ld a, SCRIPT_VIRIDIANMART_NOOP
 	ld [wViridianMartCurScript], a
 	ret

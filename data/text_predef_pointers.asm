@@ -17,6 +17,7 @@ TextPredefs::
 	add_tx_pre KabutopsFossilText                   ; 0B
 	add_tx_pre GymStatueText1                       ; 0C
 	add_tx_pre GymStatueText2                       ; 0D
+	add_tx_pre GymStatueText3                       ; 0E ; marcelnote - added for Yellow
 	;add_tx_pre BookcaseText                         ; 0E ; marcelnote - already handled by BookOrSculptureText
 	add_tx_pre ViridianCityPokecenterBenchGuyText   ; 0F
 	add_tx_pre PewterCityPokecenterBenchGuyText     ; 10

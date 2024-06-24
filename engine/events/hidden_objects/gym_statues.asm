@@ -22,10 +22,19 @@ GymStatues:
 	ld a, [wBeatGymFlags]
 	and b
 	cp b
-	tx_pre_id GymStatueText2
-	jr z, .haveBadge
+;;;;;; marcelnote - modified this part to add Yellow
 	tx_pre_id GymStatueText1
-.haveBadge
+	jr nz, .print
+	CheckEvent EVENT_BECAME_CHAMPION ; if beaten Elite 4...
+	tx_pre_id GymStatueText2
+	jr z, .print
+	ld a, [wCurMap]
+	cp VIRIDIAN_GYM                  ; and not in Viridian Gym...
+	tx_pre_id GymStatueText2
+	jr z, .print
+	tx_pre_id GymStatueText3         ; then also print YELLOW
+.print
+;;;;;;
 	jp PrintPredefTextID
 
 INCLUDE "data/maps/badge_maps.asm"
@@ -36,4 +45,8 @@ GymStatueText1::
 
 GymStatueText2::
 	text_far _GymStatueText2
+	text_end
+
+GymStatueText3:: ; marcelnote - added for Yellow
+	text_far _GymStatueText3
 	text_end

@@ -41,7 +41,7 @@ MapHSPointers:
 	dw Route24HS
 	dw Route25HS
 	dw NoHS ; marcelnote - new location, Route28
-	dw NoHS
+	dw RedsYellowsHousesHS ; marcelnote - added to hide Yellow asleep
 	dw NoHS
 	dw BluesAidesHousesHS ; marcelnote - merged Blue's house with new Aide's house
 	dw OaksLabHS
@@ -600,6 +600,8 @@ MissableObjectsCont:
 	table_width 3, MissableObjectsCont
 ; format: map id, object id, HIDE/SHOW
 
+RedsYellowsHousesHS:
+	db REDS_YELLOWS_HOUSES, YELLOWSHOUSE2F_ASLEEP, SHOW  ; marcelnote - Yellow asleep
 Route1HS:
 	db ROUTE_1, ROUTE1_OAK, HIDE  ; marcelnote - postgame Oak battle
 SaffronGymHS:
