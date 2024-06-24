@@ -136,8 +136,8 @@ _OaksLabGivePokeballsExplanationText::
 	cont "it's fair game."
 
 	para "Just throw a #"
-	line "BALL at it and try"
-	cont "to catch it!" ; marcelnote - fixed from 'line'
+	line "BALL at it and" ; marcelnote - moved 'try' to next line
+	cont "try to catch it!" ; marcelnote - fixed 'line' to 'cont'
 
 	para "This won't always"
 	line "work, though."
