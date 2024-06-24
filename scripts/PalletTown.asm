@@ -143,9 +143,6 @@ PalletTownDaisyScript: ; marcelnote - this script runs forever, no return to def
 	ld [wMissableObjectIndex], a
 	predef_jump ShowObject
 .next
-	CheckEvent EVENT_GOT_POKEBALLS_FROM_OAK
-	ret z
-	SetEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS_2
 	ret
 
 PalletTown_TextPointers:

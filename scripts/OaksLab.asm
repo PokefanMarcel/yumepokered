@@ -1,5 +1,5 @@
 OaksLab_Script:
-	CheckEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS_2
+	CheckEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS
 	call nz, OaksLabLoadTextPointers2Script
 	call DisableAutoTextBoxDrawing ; marcelnote - replaces code which did exactly this
 	ld hl, OaksLab_ScriptPointers

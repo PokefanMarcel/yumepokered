@@ -16,9 +16,8 @@
 	const EVENT_BATTLED_RIVAL_IN_OAKS_LAB
 	const EVENT_GOT_POKEBALLS_FROM_OAK
 	const EVENT_GOT_POKEDEX
-	const EVENT_PALLET_AFTER_GETTING_POKEBALLS_2
 	const EVENT_OAK_APPEARED_IN_PALLET
-	const_skip ; marcelnote - added
+	const_skip 2 ; marcelnote - added 1 padding, +1 for deleting EVENT_PALLET_AFTER_GETTING_POKEBALLS_2
 	const EVENT_POSTGAME_RIVAL ; marcelnote - postgame Rival
 	const EVENT_USE_MISSABLE_OBJECTS_CONT_LIST ; marcelnote - to deal with extended HideShow list
 
