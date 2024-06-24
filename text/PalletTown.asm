@@ -69,6 +69,6 @@ _PalletTownYellowsHouseSignText:: ; marcelnote - added Yellow's house
 
 	para "A new family just"
 	line "moved in."
-	cont "The sign is"
-	cont "still empty."
+	cont "They didn't put up"
+	cont "their name yet."
 	done
