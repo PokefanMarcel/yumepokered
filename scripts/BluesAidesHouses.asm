@@ -1,25 +1,29 @@
 ; marcelnote - merged Blue's house with new Aide's house
 BluesAidesHouses_Script:
-	call EnableAutoTextBoxDrawing
-	ld hl, BluesAidesHouses_ScriptPointers
-	ld a, [wBluesHouseCurScript]
-	jp CallFunctionInTable
+	;call EnableAutoTextBoxDrawing
+	;ld hl, BluesAidesHouses_ScriptPointers
+	;ld a, [wBluesHouseCurScript]
+	;jp CallFunctionInTable
+	jp EnableAutoTextBoxDrawing
 
-BluesAidesHouses_ScriptPointers:
-	def_script_pointers
-	dw_const BluesAidesHousesDefaultScript, SCRIPT_BLUESAIDESHOUSES_DEFAULT
-	dw_const DoRet,                         SCRIPT_BLUESAIDESHOUSES_NOOP ; PureRGB - DoRet
+; marcelnote - Blue's house script was purely for setting up EVENT_ENTERED_BLUES_HOUSE,
+;              but this event was actually redundant with EVENT_GOT_TOWN_MAP
 
-BluesAidesHousesDefaultScript:
+;BluesAidesHouses_ScriptPointers:
+;	def_script_pointers
+;	dw_const BluesAidesHousesDefaultScript, SCRIPT_BLUESAIDESHOUSES_DEFAULT
+;	dw_const DoRet,                         SCRIPT_BLUESAIDESHOUSES_NOOP ; PureRGB - DoRet
+
+;BluesAidesHousesDefaultScript:
 ;;;;;; marcelnote - adjusted for second house on same map
-	ld a, [wXCoord]
-	cp 14 ; marcelnote - start of second house on the map
-	ret nc ; if XCoord >= 14, player in Aide's house
+;	ld a, [wXCoord]
+;	cp 14 ; marcelnote - start of second house on the map
+;	ret nc ; if XCoord >= 14, player in Aide's house
 ;;;;;;
-	SetEvent EVENT_ENTERED_BLUES_HOUSE
-	ld a, SCRIPT_BLUESAIDESHOUSES_NOOP
-	ld [wBluesHouseCurScript], a
-	ret
+;	SetEvent EVENT_ENTERED_BLUES_HOUSE
+;	ld a, SCRIPT_BLUESAIDESHOUSES_NOOP
+;	ld [wBluesHouseCurScript], a
+;	ret
 
 BluesAidesHouses_TextPointers:
 	def_text_pointers
