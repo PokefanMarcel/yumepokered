@@ -130,19 +130,18 @@ PalletTownPlayerFollowsOakScript:
 	ld [wPalletTownCurScript], a
 	ret
 
-PalletTownDaisyScript: ; marcelnote - this script runs forever, no return to default script
-	CheckEvent EVENT_DAISY_WALKING
-	jr nz, .next
-	CheckEvent EVENT_GOT_TOWN_MAP ; marcelnote - removed EVENT_ENTERED_BLUES_HOUSE
-	jr z, .next
-	SetEvent EVENT_DAISY_WALKING
+PalletTownDaisyScript: ; marcelnote - this was adjusted to move on to SCRIPT_PALLETTOWN_NOOP
+	CheckEvent EVENT_GOT_TOWN_MAP
+	ret z
 	ld a, HS_DAISY_SITTING
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	ld a, HS_DAISY_WALKING
 	ld [wMissableObjectIndex], a
 	predef_jump ShowObject
-.next
+
+	ld a, SCRIPT_PALLETTOWN_NOOP
+	ld [wPalletTownCurScript], a
 	ret
 
 PalletTown_TextPointers:

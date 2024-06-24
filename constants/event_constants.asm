@@ -11,8 +11,7 @@
 	const_skip 9 ; marcelnote - adjusted down from 17
 	const EVENT_GOT_TOWN_MAP
 	const_skip ; marcelnote - replaced EVENT_ENTERED_BLUES_HOUSE
-	const EVENT_DAISY_WALKING
-	const_skip 6 ; marcelnote - +1 for deleting EVENT_FOLLOWED_OAK_INTO_LAB_2
+	const_skip 7 ; marcelnote - +2 for deleting EVENT_FOLLOWED_OAK_INTO_LAB_2, EVENT_DAISY_WALKING
 	const EVENT_OAK_ASKED_TO_CHOOSE_MON
 	const EVENT_GOT_STARTER
 	const EVENT_BATTLED_RIVAL_IN_OAKS_LAB
