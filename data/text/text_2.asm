@@ -221,7 +221,7 @@ _UnusedBenchGuyText1::
 	line "catch #MON."
 	done
 
-_UnusedBenchGuyText2::
+_MandarinPokecenterBenchGuyText:: ; marcelnote - reused _UnusedBenchGuyText2
 	text "I'm tired from"
 	line "all the fun..."
 	done

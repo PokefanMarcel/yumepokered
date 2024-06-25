@@ -14,7 +14,8 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw SaffronCityHS
-	dw NoHS
+	dw NoHS ; MANDARIN_ISLAND ; marcelnote - new map
+	dw NoHS ; UNUSED_MAP_0B
 	dw Route1HS ; marcelnote - added for postgame Oak battle
 	dw Route2HS
 	dw NoHS

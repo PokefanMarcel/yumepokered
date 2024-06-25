@@ -1213,3 +1213,13 @@ INCLUDE "data/maps/headers/Route28.asm" ; marcelnote - new location
 INCLUDE "scripts/Route28.asm"
 INCLUDE "data/maps/objects/Route28.asm"
 Route28_Blocks:: INCBIN "maps/Route28.blk"
+
+INCLUDE "data/maps/headers/MandarinIsland.asm" ; marcelnote - new location
+INCLUDE "scripts/MandarinIsland.asm"
+INCLUDE "data/maps/objects/MandarinIsland.asm"
+MandarinIsland_Blocks:: INCBIN "maps/MandarinIsland.blk"
+
+INCLUDE "data/maps/headers/MandarinPokecenterMart.asm" ; marcelnote - new location
+INCLUDE "scripts/MandarinPokecenterMart.asm"
+INCLUDE "data/maps/objects/MandarinPokecenterMart.asm"
+MandarinPokecenterMart_Blocks:: INCBIN "maps/MandarinPokecenterMart.blk"

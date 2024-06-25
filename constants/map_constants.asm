@@ -27,6 +27,7 @@ ENDM
 	map_const CINNABAR_ISLAND,               14,  9 ; $08 ; marcelnote - added Cinnabar Volcano
 	map_const INDIGO_PLATEAU,                10,  9 ; $09
 	map_const SAFFRON_CITY,                  20, 18 ; $0A
+	map_const MANDARIN_ISLAND,               16, 15 ; $0Abis ; marcelnote - new map
 DEF NUM_CITY_MAPS EQU const_value
 	map_const UNUSED_MAP_0B,                  0,  0 ; $0B
 DEF FIRST_ROUTE_MAP EQU const_value
@@ -129,7 +130,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const CINNABAR_VOLCANO_2F,           17, 15 ; $6A ; marcelnote - new location
 	map_const UNUSED_MAP_6B,                  0,  0 ; $6B
 	map_const VICTORY_ROAD_1F,               10,  9 ; $6C
-	map_const UNUSED_MAP_6D,                  0,  0 ; $6D
+	map_const MANDARIN_POKECENTER_MART,      14,  4 ; $6D ; marcelnote - was UNUSED_MAP_6D
 	map_const UNUSED_MAP_6E,                  0,  0 ; $6E
 	map_const UNUSED_MAP_6F,                  0,  0 ; $6F
 	map_const UNUSED_MAP_70,                  0,  0 ; $70

@@ -47,12 +47,12 @@ RockTunnelPokecenterBenchGuyText::
 	text_far _RockTunnelPokecenterGuyText
 	text_end
 
-UnusedBenchGuyText1::
-	text_far _UnusedBenchGuyText1
+MandarinIslandPokecenterBenchGuyText::  ; marcelnote - new
+	text_far _MandarinPokecenterBenchGuyText
 	text_end
 
-UnusedBenchGuyText2::
-	text_far _UnusedBenchGuyText2
+UnusedBenchGuyText1::
+	text_far _UnusedBenchGuyText1
 	text_end
 
 UnusedBenchGuyText3::
@@ -95,4 +95,8 @@ SaffronCityPokecenterBenchGuyText2:
 
 CeladonCityHotelText::
 	text_far _CeladonCityHotelText
+	text_end
+
+MandarinPokecenterBenchGuyText:: ; marcelnote - new
+	text_far _MandarinPokecenterBenchGuyText
 	text_end

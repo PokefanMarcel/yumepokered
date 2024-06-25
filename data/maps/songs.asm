@@ -11,6 +11,7 @@ MapSongBanks::
 	db MUSIC_CINNABAR, BANK(Music_Cinnabar) ; CINNABAR_ISLAND
 	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; INDIGO_PLATEAU
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; SAFFRON_CITY
+	db MUSIC_CINNABAR, BANK(Music_Cinnabar) ; MANDARIN_ISLAND ; marcelnote - new map
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; UNUSED_MAP_0B
 	db MUSIC_ROUTES1, BANK(Music_Routes1) ; ROUTE_1
 	db MUSIC_ROUTES1, BANK(Music_Routes1) ; ROUTE_2
@@ -110,7 +111,7 @@ MapSongBanks::
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; CINNABAR_VOLCANO_2F    ; marcelnote - new location
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; UNUSED_MAP_6B
 	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) ; VICTORY_ROAD_1F
-	db MUSIC_POKEMON_TOWER, BANK(Music_PokemonTower) ; UNUSED_MAP_6D
+	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; MANDARIN_POKECENTER_MART ; marcelnote - new location, was MUSIC_POKEMON_TOWER
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; UNUSED_MAP_6E
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; UNUSED_MAP_6F
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; UNUSED_MAP_70

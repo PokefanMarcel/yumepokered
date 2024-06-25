@@ -12,6 +12,7 @@ MapHeaderPointers::
 	dw CinnabarIsland_h
 	dw IndigoPlateau_h
 	dw SaffronCity_h
+	dw MandarinIsland_h ; marcelnote - new location
 	dw SaffronCity_h ; UNUSED_MAP_0B
 	dw Route1_h
 	dw Route2_h
@@ -111,7 +112,7 @@ MapHeaderPointers::
 	dw CinnabarVolcano2F_h    ; $6A ; marcelnote - new location
 	dw LancesRoom_h ; UNUSED_MAP_6B
 	dw VictoryRoad1F_h
-	dw LancesRoom_h ; UNUSED_MAP_6D
+	dw MandarinPokecenterMart_h ; $6D ; marcelnote - new location, was UNUSED_MAP_6D
 	dw LancesRoom_h ; UNUSED_MAP_6E
 	dw LancesRoom_h ; UNUSED_MAP_6F
 	dw LancesRoom_h ; UNUSED_MAP_70

@@ -17,4 +17,5 @@ BenchGuyTextPointers:
 	bench_guy_text SAFFRON_POKECENTER,     SPRITE_FACING_LEFT, SaffronCityPokecenterBenchGuyText
 	bench_guy_text MT_MOON_POKECENTER,     SPRITE_FACING_LEFT, MtMoonPokecenterBenchGuyText
 	bench_guy_text ROCK_TUNNEL_POKECENTER, SPRITE_FACING_LEFT, RockTunnelPokecenterBenchGuyText
+	bench_guy_text MANDARIN_POKECENTER_MART, SPRITE_FACING_LEFT, MandarinIslandPokecenterBenchGuyText ; marcelnote - new
 	db -1 ; end

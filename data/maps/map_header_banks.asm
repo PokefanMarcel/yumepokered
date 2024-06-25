@@ -12,6 +12,7 @@ MapHeaderBanks::
 	db BANK(CinnabarIsland_h)
 	db BANK(IndigoPlateau_h)
 	db BANK(SaffronCity_h)
+	db BANK(MandarinIsland_h) ; marcelnote - new location
 	db $01 ; UNUSED_MAP_0B
 	db BANK(Route1_h)
 	db BANK(Route2_h)
@@ -111,7 +112,7 @@ MapHeaderBanks::
 	db BANK(CinnabarVolcano2F_h)    ; $6A ; marcelnote - new location
 	db $1D ; UNUSED_MAP_6B
 	db BANK(VictoryRoad1F_h)
-	db $1D ; UNUSED_MAP_6D
+	db BANK(MandarinPokecenterMart_h) ; $6D ; marcelnote - new location, was UNUSED_MAP_6D
 	db $1D ; UNUSED_MAP_6E
 	db $1D ; UNUSED_MAP_6F
 	db $1D ; UNUSED_MAP_70
