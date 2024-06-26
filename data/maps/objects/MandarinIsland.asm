@@ -8,6 +8,7 @@ MandarinIsland_Object:
 	def_warp_events
 	warp_event 21,  5, MANDARIN_POKECENTER_MART, 1
 	warp_event  5, 11, MANDARIN_POKECENTER_MART, 3
+	warp_event 21, 11, MANDARIN_SURF_SHOP, 1
 
 	def_bg_events
 	bg_event 19, 17, TEXT_MANDARINISLAND_SIGN

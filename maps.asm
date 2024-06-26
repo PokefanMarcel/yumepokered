@@ -1223,3 +1223,8 @@ INCLUDE "data/maps/headers/MandarinPokecenterMart.asm" ; marcelnote - new locati
 INCLUDE "scripts/MandarinPokecenterMart.asm"
 INCLUDE "data/maps/objects/MandarinPokecenterMart.asm"
 MandarinPokecenterMart_Blocks:: INCBIN "maps/MandarinPokecenterMart.blk"
+
+INCLUDE "data/maps/headers/MandarinSurfShop.asm" ; marcelnote - new location
+INCLUDE "scripts/MandarinSurfShop.asm"
+INCLUDE "data/maps/objects/MandarinSurfShop.asm"
+MandarinSurfShop_Blocks:: INCBIN "maps/MandarinSurfShop.blk"

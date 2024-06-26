@@ -113,7 +113,7 @@ MapHeaderBanks::
 	db $1D ; UNUSED_MAP_6B
 	db BANK(VictoryRoad1F_h)
 	db BANK(MandarinPokecenterMart_h) ; $6D ; marcelnote - new location, was UNUSED_MAP_6D
-	db $1D ; UNUSED_MAP_6E
+	db BANK(MandarinSurfShop_h)       ; $6E ; marcelnote - new location, was UNUSED_MAP_6E
 	db $1D ; UNUSED_MAP_6F
 	db $1D ; UNUSED_MAP_70
 	db BANK(LancesRoom_h)

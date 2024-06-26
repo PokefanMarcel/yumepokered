@@ -112,7 +112,7 @@ MapSongBanks::
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; UNUSED_MAP_6B
 	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) ; VICTORY_ROAD_1F
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; MANDARIN_POKECENTER_MART ; marcelnote - new location, was MUSIC_POKEMON_TOWER
-	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; UNUSED_MAP_6E
+	db MUSIC_CINNABAR, BANK(Music_Cinnabar) ; MANDARIN_SURF_SHOP ; marcelnote - new location, was MUSIC_DUNGEON1
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; UNUSED_MAP_6F
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; UNUSED_MAP_70
 	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; LANCES_ROOM

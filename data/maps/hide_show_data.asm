@@ -115,7 +115,7 @@ MapHSPointers:
 	dw NoHS
 	dw VictoryRoad1FHS
 	dw NoHS
-	dw NoHS
+	dw NoHS ; $6E ; marcelnote - MandarinSurfShop
 	dw NoHS
 	dw NoHS
 	dw LancesRoomHS ; $71 ; marcelnote - added for Lance rematch

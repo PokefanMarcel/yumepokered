@@ -62,6 +62,7 @@ TextPredefs::
 	add_tx_pre EnemiesOnEverySideText               ; 37
 	add_tx_pre WhatGoesAroundComesAroundText        ; 38
 	add_tx_pre NewBicycleText                       ; 39
+	add_tx_pre NewSurfboardText                     ; 39bis ; marcelnote - new for Mandarin Surf Shop
 	add_tx_pre IndigoPlateauStatues                 ; 3A
 	add_tx_pre VermilionGymTrashSuccessText1        ; 3B
 	add_tx_pre VermilionGymTrashSuccessText2        ; 3C XXX unused

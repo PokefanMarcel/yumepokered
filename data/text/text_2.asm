@@ -303,6 +303,11 @@ _NewBicycleText::
 	line "BICYCLE!"
 	done
 
+_NewSurfboardText::  ; marcelnote - new for Mandarin Surf Shop
+	text "A shiny new"
+	line "SURFBOARD!"
+	done
+
 _PushStartText::
 	text "Push START to"
 	line "open the MENU!"

@@ -113,7 +113,7 @@ MapHeaderPointers::
 	dw LancesRoom_h ; UNUSED_MAP_6B
 	dw VictoryRoad1F_h
 	dw MandarinPokecenterMart_h ; $6D ; marcelnote - new location, was UNUSED_MAP_6D
-	dw LancesRoom_h ; UNUSED_MAP_6E
+	dw MandarinSurfShop_h       ; $6E ; marcelnote - new location, was UNUSED_MAP_6E
 	dw LancesRoom_h ; UNUSED_MAP_6F
 	dw LancesRoom_h ; UNUSED_MAP_70
 	dw LancesRoom_h

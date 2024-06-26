@@ -87,6 +87,7 @@ HiddenObjectMaps:
 	db CINNABAR_VOLCANO_2F ; marcelnote - new
 	db POKEMON_ACADEMY_3F4F ; marcelnote - new
 	db MANDARIN_POKECENTER_MART ; marcelnote - new
+	db MANDARIN_SURF_SHOP ; marcelnote - new
 	db -1 ; end
 
 HiddenObjectPointers:
@@ -179,6 +180,7 @@ HiddenObjectPointers:
 	dw CinnabarVolcano2FHiddenObjects ; marcelnote - new
 	dw PokemonAcademy3F4FHiddenObjects ; marcelnote - new
 	dw MandarinPokecenterMartHiddenObjects ; marcelnote - new
+	dw MandarinSurfShopHiddenObjects ; marcelnote - new
 
 MACRO hidden_object
 	db \2 ; y coord
@@ -684,4 +686,12 @@ PokemonAcademy3F4FHiddenObjects:  ; marcelnote - new
 MandarinPokecenterMartHiddenObjects:  ; marcelnote - new
 	hidden_object  0,  4, SPRITE_FACING_UP, PrintBenchGuyText
 	hidden_object 13,  3, SPRITE_FACING_UP, OpenPokemonCenterPC
+	db -1 ; end
+
+MandarinSurfShopHiddenObjects:  ; marcelnote - new
+	hidden_object  1,  4, ANY_FACING, PrintNewSurfboardText
+	hidden_object  3,  1, ANY_FACING, PrintNewSurfboardText
+	hidden_object  1,  3, ANY_FACING, PrintNewSurfboardText
+	hidden_object  1,  5, ANY_FACING, PrintNewSurfboardText
+	hidden_object  7,  4, ANY_FACING, PrintNewSurfboardText
 	db -1 ; end
