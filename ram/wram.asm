@@ -1966,7 +1966,8 @@ wRedsHouseCurScript:: db ; marcelnote - merged RedsHouse floors
 wViridianMartCurScript:: db
 wRoute22GateCurScript:: db
 wCeruleanCityCurScript:: db
-	ds 7
+wMandarinHotelCurScript:: db ; marcelnote - added for Mandarin Hotel trainers, took 1 from padding below
+	ds 6
 wSSAnneBowCurScript:: db
 wViridianForestCurScript:: db
 wMuseum1FCurScript:: db

@@ -116,7 +116,7 @@ MapHSPointers:
 	dw VictoryRoad1FHS
 	dw NoHS
 	dw NoHS ; $6E ; marcelnote - MandarinSurfShop
-	dw NoHS
+	dw MandarinHotelHS ; $6F ; marcelnote - MandarinHotel
 	dw NoHS
 	dw LancesRoomHS ; $71 ; marcelnote - added for Lance rematch
 	dw NoHS
@@ -591,6 +591,8 @@ CinnabarVolcano2FHS:
 	db CINNABAR_VOLCANO_2F, CINNABARVOLCANO2F_FIRE_STONE, SHOW
 	db CINNABAR_VOLCANO_2F, CINNABARVOLCANO2F_ULTRA_BALL, SHOW
 	db CINNABAR_VOLCANO_2F, CINNABARVOLCANO2F_NUGGET, SHOW
+MandarinHotelHS:
+	db MANDARIN_HOTEL, MANDARINHOTEL2F_MAX_ELIXER, SHOW
 	db $FF, $01, SHOW ; end
 	assert_table_length NUM_HS_OBJECTS + 1
 

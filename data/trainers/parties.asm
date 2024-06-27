@@ -345,6 +345,8 @@ FisherData:
 ; marcelnote - new trainers
 ; Route 19
 	db 31, SHELLDER, TENTACRUEL, 0
+; Mandarin Hotel
+	db 42, SEAKING, SEADRA, 0
 
 SwimmerData:
 ; Cerulean Gym
@@ -393,6 +395,9 @@ GamblerData:
 	db 22, ONIX, GEODUDE, GRAVELER, 0
 ; Route 8
 	db 24, GROWLITHE, VULPIX, 0
+; marcelnote - new trainers
+; Mandarin Hotel
+	db 41, VULPIX, MAGNETON, WARTORTLE, 0
 
 BeautyData:
 ; Celadon Gym
@@ -711,6 +716,8 @@ GentlemanData:
 	db 17, GROWLITHE, PONYTA, 0
 ; Cinnabar Volcano 1F   ; marcelnote - new location
 	db 38, NIDORINO, RAICHU, POLIWRATH, 0
+; Mandarin Hotel        ; marcelnote - new location
+	db 40, GROWLITHE, PRIMEAPE, SCYTHER, 0
 
 Green2Data:
 ; SS Anne 2F

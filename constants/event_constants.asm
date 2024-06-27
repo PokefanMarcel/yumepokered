@@ -783,6 +783,13 @@ DEF INDIGO_PLATEAU_EVENTS_END EQU const_value - 1
 	const_skip 4
 	const EVENT_VICTORY_ROAD_1_BOULDER_ON_SWITCH
 
+; Mandarin Island events ; marcelnote - new
+	const_next $920
+	const_skip
+	const EVENT_BEAT_MANDARIN_HOTEL_TRAINER_0
+	const EVENT_BEAT_MANDARIN_HOTEL_TRAINER_1
+	const EVENT_BEAT_MANDARIN_HOTEL_TRAINER_2
+
 ; Rock Tunnel events
 	const_next $9B0
 	const_skip

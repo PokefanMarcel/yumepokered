@@ -255,9 +255,10 @@ DEF SHOW EQU $15
 	const HS_CINNABAR_VOLCANO_2F_ITEM_1    ; F2 ; marcelnote - Fire Stone
 	const HS_CINNABAR_VOLCANO_2F_ITEM_2    ; F3 ; marcelnote - Ultra Ball
 	const HS_CINNABAR_VOLCANO_2F_ITEM_3    ; F4 ; marcelnote - Nugget
+	const HS_MANDARIN_HOTEL_ITEM_1              ; marcelnote - Max Elixer
 DEF NUM_HS_OBJECTS EQU const_value
 	; max objects = 256
-	; current total = 257 – 11 – 5 (commented out) = 241
+	; current total = 258 – 11 – 5 (commented out) = 242
 
 ; marcelnote - the list continues here to allow for more than 256 HideShow objects
 	const_def
