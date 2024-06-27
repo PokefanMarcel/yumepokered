@@ -8,10 +8,10 @@ CeladonMansion3F_Object:
 	db $f ; border block
 
 	def_warp_events
-	warp_event  6,  1, CELADON_MANSION_2F, 1
-	warp_event  7,  1, CELADON_MANSION_ROOF, 1
-	warp_event  2,  1, CELADON_MANSION_ROOF, 2
-	warp_event  4,  1, CELADON_MANSION_2F, 4
+	warp_event  6,  0, CELADON_MANSION_2F, 1   ; marcelnote - moved from y=1
+	warp_event  7,  0, CELADON_MANSION_ROOF, 1 ; marcelnote - moved from y=1
+	warp_event  2,  0, CELADON_MANSION_ROOF, 2 ; marcelnote - moved from y=1
+	warp_event  4,  0, CELADON_MANSION_2F, 4   ; marcelnote - moved from y=1
 
 	def_bg_events
 	bg_event  1,  3, TEXT_CELADONMANSION3F_GAME_PROGRAM_PC

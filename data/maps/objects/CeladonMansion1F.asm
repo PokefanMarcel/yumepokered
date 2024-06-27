@@ -11,8 +11,8 @@ CeladonMansion1F_Object:
 	warp_event  4, 11, LAST_MAP, 3
 	warp_event  5, 11, LAST_MAP, 3
 	warp_event  4,  0, LAST_MAP, 5
-	warp_event  7,  1, CELADON_MANSION_2F, 2
-	warp_event  2,  1, CELADON_MANSION_2F, 3
+	warp_event  7,  0, CELADON_MANSION_2F, 2 ; marcelnote - moved from y=1
+	warp_event  2,  0, CELADON_MANSION_2F, 3 ; marcelnote - moved from y=1
 
 	def_bg_events
 	bg_event  4,  9, TEXT_CELADONMANSION1F_MANAGERS_SUITE_SIGN
