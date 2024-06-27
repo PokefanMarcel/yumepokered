@@ -25,7 +25,7 @@ Tilesets:
 	tileset Interior,     -1, -1, -1,  -1, TILEANIM_NONE
 	tileset Cavern,       -1, -1, -1,  -1, TILEANIM_WATER
 	tileset Lobby,       $15,$36, -1,  -1, TILEANIM_NONE
-	tileset Mansion,      -1, -1, -1,  -1, TILEANIM_NONE
+	tileset Mansion,     $16,$36, -1,  -1, TILEANIM_NONE    ; marcelnote - added counter tiles
 	tileset Lab,          -1, -1, -1,  -1, TILEANIM_NONE
 	tileset Club,        $07,$17, -1,  -1, TILEANIM_NONE
 	tileset Facility,    $12, -1, -1,  -1, TILEANIM_WATER

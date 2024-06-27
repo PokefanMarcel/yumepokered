@@ -1228,3 +1228,8 @@ INCLUDE "data/maps/headers/MandarinSurfShop.asm" ; marcelnote - new location
 INCLUDE "scripts/MandarinSurfShop.asm"
 INCLUDE "data/maps/objects/MandarinSurfShop.asm"
 MandarinSurfShop_Blocks:: INCBIN "maps/MandarinSurfShop.blk"
+
+INCLUDE "data/maps/headers/MandarinHotel.asm" ; marcelnote - new location
+INCLUDE "scripts/MandarinHotel.asm"
+INCLUDE "data/maps/objects/MandarinHotel.asm"
+MandarinHotel_Blocks:: INCBIN "maps/MandarinHotel.blk"

@@ -1,0 +1,36 @@
+; marcelnote - new location
+MandarinHotel_Script:
+	jp EnableAutoTextBoxDrawing
+
+MandarinHotel_TextPointers:
+	def_text_pointers
+	dw_const MandarinHotel1FWaiterText,     TEXT_MANDARINHOTEL1F_WAITER
+	dw_const MandarinHotel2FRoom11SignText, TEXT_MANDARINHOTEL2F_ROOM_11
+	dw_const MandarinHotel2FRoom12SignText, TEXT_MANDARINHOTEL2F_ROOM_12
+	dw_const MandarinHotel3FRoom21SignText, TEXT_MANDARINHOTEL3F_ROOM_21
+	dw_const MandarinHotel3FRoom22SignText, TEXT_MANDARINHOTEL3F_ROOM_22
+	dw_const MandarinHotel4FSuiteSignText,  TEXT_MANDARINHOTEL4F_SUITE
+
+MandarinHotel1FWaiterText:
+	text_far _MandarinHotel1FWaiterText
+	text_end
+
+MandarinHotel2FRoom11SignText:
+	text_far _MandarinHotel2FRoom11SignText
+	text_end
+
+MandarinHotel2FRoom12SignText:
+	text_far _MandarinHotel2FRoom12SignText
+	text_end
+
+MandarinHotel3FRoom21SignText:
+	text_far _MandarinHotel3FRoom21SignText
+	text_end
+
+MandarinHotel3FRoom22SignText:
+	text_far _MandarinHotel3FRoom22SignText
+	text_end
+
+MandarinHotel4FSuiteSignText:
+	text_far _MandarinHotel4FSuiteSignText
+	text_end

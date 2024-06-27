@@ -51,8 +51,8 @@ Cavern_Coll::  ; marcelnote - added $41 for elevation
 Lobby_Coll::
 	coll_tiles $14, $17, $1a, $1c, $20, $38, $45
 
-Mansion_Coll::
-	coll_tiles $01, $05, $11, $12, $14, $1a, $1c, $2c, $53
+Mansion_Coll:: ; marcelnote - added $59
+	coll_tiles $01, $05, $11, $12, $14, $1a, $1c, $2c, $53, $59
 
 Lab_Coll::
 	coll_tiles $0c, $26, $16, $1e, $34, $37
