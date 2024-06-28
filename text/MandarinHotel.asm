@@ -120,7 +120,7 @@ _MandarinHotel3FRoom22SignText::
 
 ; 4F
 
-_MandarinHotel4FCooltrainerMText::
+_MandarinHotel4FSilphWorkerMText::
 	text "We're touring the"
 	line "nearby islands."
 

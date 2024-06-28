@@ -25,7 +25,7 @@ MandarinHotel_TextPointers:
 	dw_const MandarinHotel1FBeautyText,       TEXT_MANDARINHOTEL1F_BEAUTY
 	dw_const MandarinHotel2FSilphWorkerMText, TEXT_MANDARINHOTEL2F_SILPH_WORKER_M
 	dw_const MandarinHotel3FLittleGirlText,   TEXT_MANDARINHOTEL3F_LITTLE_GIRL
-	dw_const MandarinHotel4FCooltrainerMText, TEXT_MANDARINHOTEL4F_COOLTRAINER_M
+	dw_const MandarinHotel4FSilphWorkerMText, TEXT_MANDARINHOTEL4F_SILPH_WORKER_M
 	dw_const MandarinHotel4FSilphWorkerFText, TEXT_MANDARINHOTEL4F_SILPH_WORKER_F
 	dw_const MandarinHotel4FRaichuText,       TEXT_MANDARINHOTEL4F_RAICHU
 	dw_const PickUpItemText,                  TEXT_MANDARINHOTEL2F_MAX_ELIXER
@@ -144,8 +144,8 @@ MandarinHotel3FRoom22SignText:
 
 ; 4F
 
-MandarinHotel4FCooltrainerMText:
-	text_far _MandarinHotel4FCooltrainerMText
+MandarinHotel4FSilphWorkerMText:
+	text_far _MandarinHotel4FSilphWorkerMText
 	text_end
 
 MandarinHotel4FSilphWorkerFText:
