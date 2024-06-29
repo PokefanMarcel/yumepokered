@@ -1233,3 +1233,8 @@ INCLUDE "data/maps/headers/MandarinHotel.asm" ; marcelnote - new location
 INCLUDE "scripts/MandarinHotel.asm"
 INCLUDE "data/maps/objects/MandarinHotel.asm"
 MandarinHotel_Blocks:: INCBIN "maps/MandarinHotel.blk"
+
+INCLUDE "data/maps/headers/MandarinSilphCo.asm" ; marcelnote - new location
+INCLUDE "scripts/MandarinSilphCo.asm"
+INCLUDE "data/maps/objects/MandarinSilphCo.asm"
+MandarinSilphCo_Blocks:: INCBIN "maps/MandarinSilphCo.blk"

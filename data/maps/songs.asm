@@ -114,7 +114,7 @@ MapSongBanks::
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; MANDARIN_POKECENTER_MART ; marcelnote - new location, was MUSIC_POKEMON_TOWER
 	db MUSIC_CINNABAR, BANK(Music_Cinnabar) ; MANDARIN_SURF_SHOP ; marcelnote - new location, was MUSIC_DUNGEON1
 	db MUSIC_CINNABAR, BANK(Music_Cinnabar) ; MANDARIN_HOTEL ; marcelnote - new location, was MUSIC_SILPH_CO
-	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; UNUSED_MAP_70
+	db MUSIC_CINNABAR, BANK(Music_Cinnabar) ; MANDARIN_SILPH_CO ; marcelnote - new location, was MUSIC_SILPH_CO
 	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; LANCES_ROOM
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne) ; UNUSED_MAP_72
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne) ; UNUSED_MAP_73

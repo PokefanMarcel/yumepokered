@@ -14,7 +14,7 @@
 	const_export MANDARINHOTEL2F_MAX_ELIXER
 
 MandarinHotel_Object:
-	db $f ; border block
+	db $0 ; border block
 
 	def_warp_events
 	; 1F

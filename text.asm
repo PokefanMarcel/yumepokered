@@ -274,6 +274,7 @@ INCLUDE "text/MandarinIsland.asm"         ; marcelnote - new location
 INCLUDE "text/MandarinPokecenterMart.asm" ; marcelnote - new location
 INCLUDE "text/MandarinSurfShop.asm"       ; marcelnote - new location
 INCLUDE "text/MandarinHotel.asm"          ; marcelnote - new location
+INCLUDE "text/MandarinSilphCo.asm"        ; marcelnote - new location
 
 
 SECTION "Pokédex Text", ROMX

@@ -5,7 +5,7 @@
 	const_export CELADONMANSION1F_NIDORANF
 
 CeladonMansion1F_Object:
-	db $f ; border block
+	db $0 ; border block ; marcelnote - chanegd from $f
 
 	def_warp_events
 	warp_event  4, 11, LAST_MAP, 3

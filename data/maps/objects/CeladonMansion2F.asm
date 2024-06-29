@@ -1,5 +1,5 @@
 CeladonMansion2F_Object:
-	db $f ; border block
+	db $0 ; border block ; marcelnote - chanegd from $f
 
 	def_warp_events
 	warp_event  6,  0, CELADON_MANSION_3F, 1 ; marcelnote - moved from y=1
