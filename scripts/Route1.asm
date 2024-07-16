@@ -47,8 +47,8 @@ Route1OakPostBattleScript: ; marcelnote - postgame Oak battle
 	db -1 ; end
 
 Route1OakFalseStartScript: ; marcelnote - postgame Oak battle
-	ld a, [wd730]
-	bit 0, a
+	ld a, [wStatusFlags5]
+	bit BIT_SCRIPTED_NPC_MOVEMENT, a
 	ret nz
 	ld a, ROUTE1_OAK
 	ld [wEmotionBubbleSpriteIndex], a
@@ -90,8 +90,8 @@ Route1OakFalseStartScript: ; marcelnote - postgame Oak battle
 	db -1 ; end
 
 Route1OakExitsScript: ; marcelnote - postgame Rival event
-	ld a, [wd730]
-	bit 0, a
+	ld a, [wStatusFlags5]
+	bit BIT_SCRIPTED_NPC_MOVEMENT, a
 	ret nz
 	call Delay3
 	SetEvent EVENT_BEAT_ROUTE_1_OAK
@@ -175,9 +175,9 @@ Route1OakText: ; marcelnote - postgame Oak fight
 	ld c, BANK(Music_MeetMaleTrainer)
 	ld a, MUSIC_MEET_MALE_TRAINER
 	call PlayMusic
-	ld hl, wd72d
-	set 6, [hl]
-	set 7, [hl]
+	ld hl, wStatusFlags3
+	set BIT_TALKED_TO_TRAINER, [hl]
+	set BIT_PRINT_END_BATTLE_TEXT, [hl]
 	ld hl, Route1OakDefeatText
 	ld de, Route1OakVictoryText
 	call SaveEndBattleTextPointers

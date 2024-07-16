@@ -8,8 +8,8 @@ FuchsiaSuperRodHouse_TextPointers:
 
 FuchsiaSuperRodHouseFishingGuruText:
 	text_asm
-	ld a, [wd728]
-	bit 5, a ; received super rod?
+	ld a, [wStatusFlags1]
+	bit BIT_GOT_SUPER_ROD, a ; received super rod?
 	jr nz, .got_super_rod
 	ld hl, .DoYouLikeToFishText
 	call PrintText
@@ -20,8 +20,8 @@ FuchsiaSuperRodHouseFishingGuruText:
 	lb bc, SUPER_ROD, 1
 	call GiveItem
 	jr nc, .bag_full
-	ld hl, wd728
-	set 5, [hl] ; received super rod
+	ld hl, wStatusFlags1
+	set BIT_GOT_SUPER_ROD, [hl] ; received super rod
 	ld hl, .TakeThisText
 	jr .print_text
 .bag_full

@@ -122,8 +122,8 @@ SaffronGymBrunoArrivesScript: ; marcelnote - postgame Bruno event
 	db -1 ; end
 
 SaffronGymBrunoInspiringScript: ; marcelnote - postgame Bruno event
-	ld a, [wd730]
-	bit 0, a
+	ld a, [wStatusFlags5]
+	bit BIT_SCRIPTED_NPC_MOVEMENT, a
 	ret nz
 	ld a, SAFFRONGYM_WILL ; make Will face the correct direction
 	ldh [hSpriteIndex], a
@@ -231,9 +231,9 @@ SaffronGymSabrinaText:
 .beforeBeat
 	ld hl, .Text
 	call PrintText
-	ld hl, wd72d
-	set 6, [hl]
-	set 7, [hl]
+	ld hl, wStatusFlags3
+	set BIT_TALKED_TO_TRAINER, [hl]
+	set BIT_PRINT_END_BATTLE_TEXT, [hl]
 	ld hl, .ReceivedMarshBadgeText
 	ld de, .ReceivedMarshBadgeText
 	call SaveEndBattleTextPointers
@@ -433,9 +433,9 @@ SaffronGymWillText: ; marcelnote - postgame Will
 .battle
 	ld hl, .WelcomeText
 	call PrintText
-	ld hl, wd72d
-	set 6, [hl]
-	set 7, [hl]
+	ld hl, wStatusFlags3
+	set BIT_TALKED_TO_TRAINER, [hl]
+	set BIT_PRINT_END_BATTLE_TEXT, [hl]
 	ld hl, .DefeatedText
 	ld de, .DefeatedText
 	call SaveEndBattleTextPointers

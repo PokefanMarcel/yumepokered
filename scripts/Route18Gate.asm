@@ -1,7 +1,7 @@
 ; marcelnote - merged Route18Gate floors
 Route18Gate_Script:
-	ld hl, wd732
-	res 5, [hl]
+	ld hl, wStatusFlags6
+	res BIT_ALWAYS_ON_BIKE, [hl]
 	call EnableAutoTextBoxDrawing
 	ld a, [wRoute18GateCurScript]
 	ld hl, Route18Gate_ScriptPointers
@@ -80,8 +80,8 @@ Route18GatePlayerMovingRightScript:
 	ret nz
 	xor a
 	ld [wJoyIgnore], a
-	ld hl, wd730
-	res 7, [hl]
+	ld hl, wStatusFlags5
+	res BIT_SCRIPTED_MOVEMENT_STATE, [hl]
 	ld a, SCRIPT_ROUTE18GATE_DEFAULT
 	ld [wRoute18GateCurScript], a
 	ret

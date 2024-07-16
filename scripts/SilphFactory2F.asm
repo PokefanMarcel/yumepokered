@@ -118,8 +118,8 @@ SilphFactory2FDefaultScript:
 	cp $ff
 	jp z, CheckFightingMapTrainers
 	call StartSimulatingJoypadStates
-	ld hl, wd736
-	set 7, [hl]
+	ld hl, wMovementFlags
+	set BIT_SPINNING, [hl]
 	ld a, SFX_ARROW_TILES
 	call PlaySound
 	ld a, A_BUTTON | B_BUTTON | SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
@@ -382,8 +382,8 @@ SilphFactory2FPlayerSpinningScript:
 	jr nz, .LoadSpinnerArrow
 	xor a
 	ld [wJoyIgnore], a
-	ld hl, wd736
-	res 7, [hl]
+	ld hl, wMovementFlags
+	res BIT_SPINNING, [hl]
 	ld a, SCRIPT_SILPHFACTORY2F_DEFAULT
 	ld [wCurMapScript], a
 	ret
@@ -410,8 +410,8 @@ SilphFactory2FLoreleiGoesUpstairsScript: ; marcelnote - adapted from PokemonTowe
 	db -1 ; end
 
 SilphFactory2FLoreleiHideScript:
-	ld a, [wd730]
-	bit 0, a
+	ld a, [wStatusFlags5]
+	bit BIT_SCRIPTED_NPC_MOVEMENT, a
 	ret nz
 	ld a, HS_SILPH_FACTORY_2F_LORELEI_1
 	ld [wMissableObjectIndex], a
@@ -495,8 +495,8 @@ SilphFactory2FRocketPostBattle:
 	db -1 ; end
 
 SilphFactory2FLoreleiAfterBattleScript:
-	ld a, [wd730]
-	bit 0, a
+	ld a, [wStatusFlags5]
+	bit BIT_SCRIPTED_NPC_MOVEMENT, a
 	ret nz
 	xor a
 	ld [wJoyIgnore], a
@@ -536,8 +536,8 @@ SilphFactory2FLoreleiAfterBattleScript:
 
 
 SilphFactory2FLoreleiLeavesScript:
-	ld a, [wd730]
-	bit 0, a
+	ld a, [wStatusFlags5]
+	bit BIT_SCRIPTED_NPC_MOVEMENT, a
 	ret nz
 	ld a, HS_SILPH_FACTORY_2F_LORELEI_2
 	ld [wMissableObjectIndex], a
@@ -590,9 +590,9 @@ SilphFactory2FRocket1Text:
 	text_asm
 	ld hl, .PreBattleText
 	call PrintText
-	ld hl, wd72d
-	set 6, [hl]
-	set 7, [hl]
+	ld hl, wStatusFlags3
+	set BIT_TALKED_TO_TRAINER, [hl]
+	set BIT_PRINT_END_BATTLE_TEXT, [hl]
 	ld hl, .EndBattleText
 	ld de, .EndBattleText
 	call SaveEndBattleTextPointers

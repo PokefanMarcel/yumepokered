@@ -1251,7 +1251,7 @@ _GrewLevelText::
 	text_ram wcd6d
 	text " grew"
 	line "to level @"
-	text_decimal wCurEnemyLVL, 1, 3
+	text_decimal wCurEnemyLevel, 1, 3
 	text "!@"
 	text_end
 
@@ -1457,7 +1457,7 @@ _RareCandyText::
 	text_ram wcd6d
 	text " grew"
 	line "to level @"
-	text_decimal wCurEnemyLVL, 1, 3
+	text_decimal wCurEnemyLevel, 1, 3
 	text "!@"
 	text_end
 

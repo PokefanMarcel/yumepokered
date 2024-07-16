@@ -48,8 +48,8 @@ BikeShopClerkText:
 	ld [wTopMenuItemY], a
 	ld a, $1
 	ld [wTopMenuItemX], a
-	ld hl, wd730
-	set 6, [hl]
+	ld hl, wStatusFlags5
+	set BIT_NO_TEXT_DELAY, [hl]
 	hlcoord 0, 0
 	ld b, 4
 	ld c, 15
@@ -63,13 +63,13 @@ BikeShopClerkText:
 	call PlaceString
 	ld hl, BikeShopClerkDoYouLikeItText
 	call PrintText
-	ld hl, wd730 ; marcelnote - moved code from below
-	res 6, [hl]
+	ld hl, wStatusFlags5 ; marcelnote - moved code from below
+	res BIT_NO_TEXT_DELAY, [hl]
 	call HandleMenuInput
 	bit BIT_B_BUTTON, a
 	jr nz, .cancel
-	;ld hl, wd730 ; marcelnote - moved above to fix instant text bug
-	;res 6, [hl]
+	;ld hl, wStatusFlags5 ; marcelnote - moved above to fix instant text bug
+	;res BIT_NO_TEXT_DELAY, [hl]
 	ld a, [wCurrentMenuItem]
 	and a
 	jr nz, .cancel

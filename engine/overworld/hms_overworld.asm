@@ -11,9 +11,9 @@ CheckForSurf:: ; marcelnote - could be improved if there is a wram bit which che
     ret c
 ; we have water in front of us
 	call IsSurfingAllowedOverworld
-	ld hl, wd728
-	bit 1, [hl]
-	res 1, [hl]
+	ld hl, wStatusFlags1
+	bit BIT_SURF_ALLOWED, [hl]
+	res BIT_SURF_ALLOWED, [hl]
 	ret z
 ; surfing is allowed
 	ld hl, TilePairCollisionsWater
@@ -31,8 +31,8 @@ CheckForSurf:: ; marcelnote - could be improved if there is a wram bit which che
 	jp nz, OverworldLoop
 	call LoadSurfingPlayerSpriteGraphics
 	callfar ItemUseSurfboard.makePlayerMoveForward
-	ld hl, wd730
-	set 7, [hl] ; wd730 bit 7: set if joypad states are being simulated in the overworld or an NPC's movement is being scripted
+	ld hl, wStatusFlags5
+	set BIT_SCRIPTED_MOVEMENT_STATE, [hl]
 	ld a, 2
 	ld [wWalkBikeSurfState], a ; change player state to surfing
 	call PlayDefaultMusic ; play surfing music
@@ -140,8 +140,8 @@ CheckForStrength:: ; marcelnote - this function is different from the others bec
 	bit BIT_RAINBOWBADGE, a
 	jr z, .fail
 ; we have the right badge
-	ld a, [wd728]
-	bit 0, a ; is Strength already activated?
+	ld a, [wStatusFlags1]
+	bit BIT_STRENGTH_ACTIVE, a ; is Strength already activated?
 	jr nz, .fail
 ; Strength not activated yet
 	ld d, STRENGTH
@@ -169,8 +169,8 @@ CheckForStrength:: ; marcelnote - this function is different from the others bec
 	ld a, [hl]
 	call PlayCry ; plays cry of Pokémon a
 	call WaitForSoundToFinish
-	ld hl, wd728
-	set 0, [hl]
+	ld hl, wStatusFlags1
+	set BIT_STRENGTH_ACTIVE, [hl]
 	ret
 .fail
 	ld hl, ThisRequiresStrengthText
@@ -182,13 +182,13 @@ CheckForStrength:: ; marcelnote - this function is different from the others bec
 
 
 IsSurfingAllowedOverworld:
-; Returns whether surfing is allowed in bit 1 of wd728.
+; Returns whether surfing is allowed in bit 1 of wStatusFlags1.
 ; Surfing isn't allowed on the Cycling Road or in the lowest level of the
 ; Seafoam Islands before the current has been slowed with boulders.
-	ld hl, wd728
-	set 1, [hl]
-	ld a, [wd732]
-	bit 5, a ; wd732 bit 5: currently being forced to ride bike (cycling road)
+	ld hl, wStatusFlags1
+	set BIT_SURF_ALLOWED, [hl]
+	ld a, [wStatusFlags6]
+	bit BIT_ALWAYS_ON_BIKE, a
 	jr nz, .forcedToRideBike
 	ld a, [wCurMap]
 	cp SEAFOAM_ISLANDS_B4F
@@ -198,14 +198,14 @@ IsSurfingAllowedOverworld:
 	ld hl, SeafoamIslandsB4FStairsOverworldCoords
 	call ArePlayerCoordsInArray
 	ret nc
-	ld hl, wd728
-	res 1, [hl]
+	ld hl, wStatusFlags1
+	res BIT_SURF_ALLOWED, [hl]
 	call EnableAutoTextBoxDrawing
 	tx_pre_jump CurrentTooFastOverworldText
 	ret
 .forcedToRideBike
-	ld hl, wd728
-	res 1, [hl]
+	ld hl, wStatusFlags1
+	res BIT_SURF_ALLOWED, [hl]
 	call EnableAutoTextBoxDrawing
 	tx_pre_jump CyclingIsFunOverworldText
 	ret

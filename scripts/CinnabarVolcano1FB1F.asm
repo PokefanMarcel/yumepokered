@@ -127,8 +127,8 @@ CinnabarVolcano1FLanceGoesInScript: ; marcelnote - adapted from PokemonTower2F r
 	db -1 ; end
 
 CinnabarVolcano1FLanceExitsScript:
-	ld a, [wd730]
-	bit 0, a
+	ld a, [wStatusFlags5]
+	bit BIT_SCRIPTED_NPC_MOVEMENT, a
 	ret nz
 	ld a, HS_CINNABAR_VOLCANO_1F_LANCE
 	ld [wMissableObjectIndex], a
@@ -190,7 +190,7 @@ CinnabarVolcanoB1FCharizardBattleStartsScript:
 	ld a, CHARIZARD
 	ld [wCurOpponent], a
 	ld a, 60
-	ld [wCurEnemyLVL], a
+	ld [wCurEnemyLevel], a
 	ld a, SCRIPT_CINNABARVOLCANOB1F_CHARIZARD_BATTLE
 	ld [wCinnabarVolcano1FB1FCurScript], a
 	ld [wCurMapScript], a
@@ -223,8 +223,8 @@ CinnabarVolcanoB1FCharizardBattleScript:
 	db -1 ; end
 
 CinnabarVolcanoB1FLanceGreatJobScript:
-	ld a, [wd730]
-	bit 0, a
+	ld a, [wStatusFlags5]
+	bit BIT_SCRIPTED_NPC_MOVEMENT, a
 	ret nz
 	ld a, PLAYER_DIR_RIGHT
 	ld [wPlayerMovingDirection], a
