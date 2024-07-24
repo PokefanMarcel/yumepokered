@@ -22,7 +22,7 @@ _CardKeyNeedsUpdateText:: ; marcelnote - added for SilphFactory2F
 	done
 
 _TrainerNameText::
-	text_ram wcd6d
+	text_ram wNameBuffer
 	text ": @"
 	text_end
 
