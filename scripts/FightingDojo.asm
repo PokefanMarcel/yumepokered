@@ -240,7 +240,7 @@ FightingDojoHitmonleePokeBallText:
 	ld a, [wCurrentMenuItem]
 	and a
 	jr nz, .done
-	ld a, [wcf91]
+	ld a, [wCurPartySpecies]
 	ld b, a
 	ld c, 30
 	call GivePokemon
@@ -274,7 +274,7 @@ FightingDojoHitmonchanPokeBallText:
 	ld a, [wCurrentMenuItem]
 	and a
 	jr nz, .done
-	ld a, [wcf91]
+	ld a, [wCurPartySpecies]
 	ld b, a
 	ld c, 30
 	call GivePokemon

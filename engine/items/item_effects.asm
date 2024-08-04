@@ -1,7 +1,7 @@
 UseItem_::
 	ld a, 1
 	ld [wActionResultOrTookBattleTurn], a ; initialise to success value
-	ld a, [wcf91] ;contains item_ID
+	ld a, [wCurItem]
 	cp HM01
 	jp nc, ItemUseTMHM
 	ld hl, ItemUsePtrTable
@@ -197,7 +197,7 @@ ItemUseBall:
 	ld b, a
 
 ; Get the item ID.
-	ld hl, wcf91
+	ld hl, wCurItem
 	ld a, [hl]
 
 ; The Master Ball always succeeds.
@@ -261,7 +261,7 @@ ItemUseBall:
 	call Multiply
 
 ; Determine BallFactor. It's 8 for Great Balls and 12 for the others.
-	ld a, [wcf91]
+	ld a, [wCurItem]
 	cp GREAT_BALL
 	ld a, 12
 	jr nz, .skip1
@@ -346,7 +346,7 @@ ItemUseBall:
 ; Poké Ball:         BallFactor2 = 255
 ; Great Ball:        BallFactor2 = 200
 ; Ultra/Safari Ball: BallFactor2 = 150
-	ld a, [wcf91]
+	ld a, [wCurItem]
 	ld b, 255
 	cp POKE_BALL
 	jr z, .skip4
@@ -438,11 +438,11 @@ ItemUseBall:
 	ld [wDamageMultipliers], a
 	ld a, [wWhichPokemon]
 	push af
-	ld a, [wcf91]
+	ld a, [wCurItem]
 	push af
 	predef MoveAnimation
 	pop af
-	ld [wcf91], a
+	ld [wCurItem], a
 	pop af
 	ld [wWhichPokemon], a
 
@@ -500,15 +500,15 @@ ItemUseBall:
 	ld [hl], a
 
 .skip6
-	ld a, [wcf91]
+	ld a, [wCurPartySpecies]
 	push af
 	ld a, [wEnemyMonSpecies2]
-	ld [wcf91], a
+	ld [wCurPartySpecies], a
 	ld a, [wEnemyMonLevel]
 	ld [wCurEnemyLevel], a
 	callfar LoadEnemyMonData
 	pop af
-	ld [wcf91], a
+	ld [wCurPartySpecies], a
 	pop hl
 	pop af
 	ld [hld], a
@@ -519,7 +519,7 @@ ItemUseBall:
 	ld [hl], a
 	ld a, [wEnemyMonSpecies]
 	ld [wCapturedMonSpecies], a
-	ld [wcf91], a
+	ld [wCurPartySpecies], a
 	ld [wd11e], a
 	ld a, [wBattleType]
 	dec a ; is this the old man battle?
@@ -768,7 +768,7 @@ ItemUseEvoStone:
 	jp nz, ItemUseNotTime
 	ld a, [wWhichPokemon]
 	push af
-	ld a, [wcf91]
+	ld a, [wCurItem]
 	ld [wEvoStoneItemID], a
 	push af
 	ld a, EVO_STONE_PARTY_MENU
@@ -779,7 +779,7 @@ ItemUseEvoStone:
 	pop bc
 	jr c, .canceledItemUse
 	ld a, b
-	ld [wcf91], a
+	ld [wCurPartySpecies], a
 	ld a, $01
 	ld [wForceEvolution], a
 	ld a, SFX_HEAL_AILMENT
@@ -814,7 +814,7 @@ ItemUseMedicine:
 	jp z, .emptyParty
 	ld a, [wWhichPokemon]
 	push af
-	ld a, [wcf91]
+	ld a, [wCurItem]
 	push af
 	ld a, USE_ITEM_PARTY_MENU
 	ld [wPartyMenuTypeOrMessageID], a
@@ -846,11 +846,11 @@ ItemUseMedicine:
 	ld a, [wWhichPokemon]
 	ld [wUsedItemOnWhichPokemon], a
 	ld d, a
-	ld a, [wcf91]
+	ld a, [wCurPartySpecies]
 	ld e, a
 	ld [wd0b5], a
 	pop af
-	ld [wcf91], a
+	ld [wCurItem], a
 	pop af
 	ld [wWhichPokemon], a
 	ld a, [wPseudoItemID]
@@ -861,7 +861,7 @@ ItemUseMedicine:
 	cp d ; is the pokemon trying to use softboiled on itself?
 	jr z, ItemUseMedicine ; if so, force another choice
 .checkItemType
-	ld a, [wcf91]
+	ld a, [wCurItem]
 	cp REVIVE
 	jr nc, .healHP ; if it's a Revive or Max Revive
 	cp FULL_HEAL
@@ -874,7 +874,7 @@ ItemUseMedicine:
 .cureStatusAilment
 	ld bc, wPartyMon1Status - wPartyMon1
 	add hl, bc ; hl now points to status
-	ld a, [wcf91]
+	ld a, [wCurItem]
 	lb bc, ANTIDOTE_MSG, 1 << PSN
 	cp ANTIDOTE
 	jr z, .checkMonStatus
@@ -928,7 +928,7 @@ ItemUseMedicine:
 	or b
 	jr nz, .notFainted
 .fainted
-	ld a, [wcf91]
+	ld a, [wCurItem]
 	cp REVIVE
 	jr z, .updateInBattleFaintedData
 	cp MAX_REVIVE
@@ -960,7 +960,7 @@ ItemUseMedicine:
 	pop hl
 	jr .compareCurrentHPToMaxHP
 .notFainted
-	ld a, [wcf91]
+	ld a, [wCurItem]
 	cp REVIVE
 	jp z, .healingItemNoEffect
 	cp MAX_REVIVE
@@ -980,7 +980,7 @@ ItemUseMedicine:
 	pop hl
 	jr nz, .notFullHP
 .fullHP ; if the pokemon's current HP equals its max HP
-	ld a, [wcf91]
+	ld a, [wCurItem]
 	cp FULL_RESTORE
 	jp nz, .healingItemNoEffect
 	inc hl
@@ -989,7 +989,7 @@ ItemUseMedicine:
 	and a ; does the pokemon have a status ailment?
 	jp z, .healingItemNoEffect
 	ld a, FULL_HEAL
-	ld [wcf91], a
+	ld [wCurItem], a
 	dec hl
 	dec hl
 	dec hl
@@ -1079,7 +1079,7 @@ ItemUseMedicine:
 	ld [hl], a
 	jr .addHealAmount
 .notUsingSoftboiled2
-	ld a, [wcf91]
+	ld a, [wCurItem]
 	cp SODA_POP
 	ld b, 60 ; Soda Pop heal amount
 	jr z, .addHealAmount
@@ -1114,7 +1114,7 @@ ItemUseMedicine:
 	ld e, l ; de now points to current HP
 	ld hl, (wPartyMon1MaxHP + 1) - (wPartyMon1HP + 1)
 	add hl, de ; hl now points to max HP
-	ld a, [wcf91]
+	ld a, [wCurItem]
 	cp REVIVE
 	jr z, .setCurrentHPToHalfMaxHP
 	ld a, [hld]
@@ -1126,7 +1126,7 @@ ItemUseMedicine:
 	ld a, [de]
 	sbc b
 	jr nc, .setCurrentHPToMaxHp ; if current HP exceeds max HP after healing
-	ld a, [wcf91]
+	ld a, [wCurItem]
 	cp HYPER_POTION
 	jr c, .setCurrentHPToMaxHp ; if using a Full Restore or Max Potion
 	cp MAX_REVIVE
@@ -1156,7 +1156,7 @@ ItemUseMedicine:
 	ld [wHPBarNewHP], a
 	dec de
 .doneHealingPartyHP ; done updating the pokemon's current HP in the party data structure
-	ld a, [wcf91]
+	ld a, [wCurItem]
 	cp FULL_RESTORE
 	jr nz, .updateInBattleData
 	ld bc, wPartyMon1Status - (wPartyMon1MaxHP + 1)
@@ -1175,7 +1175,7 @@ ItemUseMedicine:
 	ld [wBattleMonHP], a
 	ld a, [hld]
 	ld [wBattleMonHP + 1], a
-	ld a, [wcf91]
+	ld a, [wCurItem]
 	cp FULL_RESTORE
 	jr nz, .calculateHPBarCoords
 	xor a
@@ -1200,7 +1200,7 @@ ItemUseMedicine:
 	call RemoveUsedItem
 	pop hl
 .skipRemovingItem
-	ld a, [wcf91]
+	ld a, [wCurItem]
 	cp FULL_RESTORE
 	jr c, .playStatusAilmentCuringSound
 	cp FULL_HEAL
@@ -1218,7 +1218,7 @@ ItemUseMedicine:
 	ldh [hUILayoutFlags], a
 	ld a, REVIVE_MSG
 	ld [wPartyMenuTypeOrMessageID], a
-	ld a, [wcf91]
+	ld a, [wCurItem]
 	cp REVIVE
 	jr z, .showHealingItemMessage
 	cp MAX_REVIVE
@@ -1273,7 +1273,7 @@ ItemUseMedicine:
 	call GetPartyMonName
 	pop de
 	pop hl
-	ld a, [wcf91]
+	ld a, [wCurItem]
 	cp RARE_CANDY
 	jp z, .useRareCandy
 	push hl
@@ -1299,7 +1299,7 @@ ItemUseMedicine:
 	pop hl
 	call .recalculateStats
 	ld hl, VitaminStats
-	ld a, [wcf91]
+	ld a, [wCurItem]
 	sub HP_UP - 1
 	ld c, a
 .statNameLoop ; loop to get the address of the name of the stat the vitamin increases
@@ -1363,7 +1363,7 @@ ItemUseMedicine:
 	pop hl
 	ld a, [wWhichPokemon]
 	push af
-	ld a, [wcf91]
+	ld a, [wCurItem]
 	push af
 	push de
 	push hl
@@ -1418,7 +1418,7 @@ ItemUseMedicine:
 	ld a, $01
 	ld [wUpdateSpritesEnabled], a
 	pop af
-	ld [wcf91], a
+	ld [wCurItem], a
 	pop af
 	ld [wWhichPokemon], a
 	jp RemoveUsedItem
@@ -1656,7 +1656,7 @@ ItemUseXStat:
 	ld a, [hl]
 	push af ; save [wPlayerMoveEffect]
 	push hl
-	ld a, [wcf91]
+	ld a, [wCurItem]
 	sub X_ATTACK - ATTACK_UP1_EFFECT
 	ld [hl], a ; store player move effect
 	call PrintItemUseTextAndRemoveItem
@@ -1960,7 +1960,7 @@ ItemUsePPUp:
 ItemUsePPRestore:
 	ld a, [wWhichPokemon]
 	push af
-	ld a, [wcf91]
+	ld a, [wCurItem]
 	ld [wPPRestoreItem], a
 .chooseMon
 	xor a
@@ -2162,7 +2162,7 @@ ItemUseTMHM:
 	ld a, [wIsInBattle]
 	and a
 	jp nz, ItemUseNotTime
-	ld a, [wcf91]
+	ld a, [wCurItem]
 	sub TM01 ; underflows below 0 for HM items (before TM items)
 	push af
 	jr nc, .skipAdding
@@ -2197,7 +2197,7 @@ ItemUseTMHM:
 .useMachine
 	ld a, [wWhichPokemon]
 	push af
-	ld a, [wcf91]
+	ld a, [wCurItem]
 	push af
 .chooseMon
 	ld hl, wStringBuffer
@@ -2244,13 +2244,13 @@ ItemUseTMHM:
 	jr c, .chooseMon
 	predef LearnMove ; teach move
 	pop af
-	ld [wcf91], a
+	ld [wCurItem], a
 	pop af
 	ld [wWhichPokemon], a
 	ld a, b
 	and a
 	ret z
-	ld a, [wcf91]
+	ld a, [wCurItem]
 	call IsItemHM
 	ret c
 	jp RemoveUsedItem
@@ -2545,14 +2545,14 @@ GetSelectedMoveOffset2:
 ; confirms the item toss and then tosses the item
 ; INPUT:
 ; hl = address of inventory (either wNumBagItems or wNumBoxItems)
-; [wcf91] = item ID
+; [wCurItem] = item ID
 ; [wWhichPokemon] = index of item within inventory
 ; [wItemQuantity] = quantity to toss
 ; OUTPUT:
 ; clears carry flag if the item is tossed, sets carry flag if not
 TossItem_::
 	push hl
-	ld a, [wcf91]
+	ld a, [wCurItem]
 	call IsItemHM
 	pop hl
 	jr c, .tooImportantToToss
@@ -2563,7 +2563,7 @@ TossItem_::
 	and a
 	jr nz, .tooImportantToToss
 	push hl
-	ld a, [wcf91]
+	ld a, [wCurItem]
 	ld [wd11e], a
 	call GetItemName
 	call CopyToStringBuffer
@@ -2583,7 +2583,7 @@ TossItem_::
 	push hl
 	ld a, [wWhichPokemon]
 	call RemoveItemFromInventory
-	ld a, [wcf91]
+	ld a, [wCurItem]
 	ld [wd11e], a
 	call GetItemName
 	call CopyToStringBuffer
@@ -2614,7 +2614,7 @@ TooImportantToTossText:
 
 ; checks if an item is a key item
 ; INPUT:
-; [wcf91] = item ID
+; [wCurItem] = item ID
 ; OUTPUT:
 ; [wIsKeyItem] = result
 ; 00: item is not key item
@@ -2622,7 +2622,7 @@ TooImportantToTossText:
 IsKeyItem_::
 	ld a, $01
 	ld [wIsKeyItem], a
-	ld a, [wcf91]
+	ld a, [wCurItem]
 	cp HM01 ; is the item an HM or TM?
 	jr nc, .checkIfItemIsHM
 ; if the item is not an HM or TM
@@ -2642,7 +2642,7 @@ IsKeyItem_::
 	and a
 	ret nz
 .checkIfItemIsHM
-	ld a, [wcf91]
+	ld a, [wCurItem]
 	call IsItemHM
 	ret c
 	xor a
@@ -2656,7 +2656,7 @@ SendNewMonToBox:
 	ld a, [de]
 	inc a
 	ld [de], a
-	ld a, [wcf91]
+	ld a, [wCurPartySpecies]
 	ld [wd0b5], a
 	ld c, a
 .loop

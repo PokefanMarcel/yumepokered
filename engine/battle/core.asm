@@ -229,7 +229,7 @@ StartBattle:
 	ld b, 0
 	add hl, bc
 	ld a, [hl] ; species
-	ld [wcf91], a
+	ld [wCurPartySpecies], a
 	ld [wBattleMonSpecies2], a
 	call LoadScreenTilesFromBuffer1
 	hlcoord 1, 5
@@ -1361,7 +1361,7 @@ EnemySendOutFirstMon:
 	add hl, bc
 	ld a, [hl]
 	ld [wEnemyMonSpecies2], a
-	ld [wcf91], a
+	ld [wCurPartySpecies], a
 	call LoadEnemyMonData
 	ld hl, wEnemyMonHP
 	ld a, [hli]
@@ -1428,7 +1428,7 @@ EnemySendOutFirstMon:
 	ld hl, TrainerSentOutText
 	call PrintText
 	ld a, [wEnemyMonSpecies2]
-	ld [wcf91], a
+	ld [wCurPartySpecies], a
 	ld [wd0b5], a
 	call GetMonHeader
 	ld de, vFrontPic
@@ -1767,7 +1767,7 @@ SendOutMon:
 	call PlayMoveAnimation
 	hlcoord 4, 11
 	predef AnimateSendingOutMon
-	ld a, [wcf91]
+	ld a, [wCurPartySpecies]
 	call PlayCry
 	call PrintEmptyString
 	jp SaveScreenTilesToBuffer1
@@ -1850,7 +1850,7 @@ DrawPlayerHUDAndHPBar:
 	call PrintLevel
 .doNotPrintLevel
 	ld a, [wLoadedMonSpecies]
-	ld [wcf91], a
+	ld [wCurPartySpecies], a
 	hlcoord 10, 9
 	predef DrawHP
 	ld a, $1
@@ -2168,7 +2168,7 @@ DisplayBattleMenu::
 	jp LoadScreenTilesFromBuffer1 ; restore saved screen and return
 .throwSafariBallWasSelected
 	ld a, SAFARI_BALL
-	ld [wcf91], a
+	ld [wCurItem], a
 	jr UseBagItem
 
 .upperLeftMenuItemWasNotSelected ; a menu item other than the upper left item was selected
@@ -2193,7 +2193,7 @@ DisplayBattleMenu::
 
 ; bait was selected
 	ld a, SAFARI_BAIT
-	ld [wcf91], a
+	ld [wCurItem], a
 	jr UseBagItem
 
 BagWasSelected:
@@ -2245,7 +2245,7 @@ DisplayBagMenu:
 
 UseBagItem:
 	; either use an item from the bag or use a safari zone item
-	ld a, [wcf91]
+	ld a, [wCurItem]
 	ld [wd11e], a
 	call GetItemName
 	call CopyToStringBuffer
@@ -2314,7 +2314,7 @@ PartyMenuOrRockOrRun:
 	jr nz, .partyMenuWasSelected
 ; safari battle
 	ld a, SAFARI_ROCK
-	ld [wcf91], a
+	ld [wCurItem], a
 	jp UseBagItem
 .partyMenuWasSelected
 	call LoadScreenTilesFromBuffer1
@@ -2388,7 +2388,7 @@ PartyMenuOrRockOrRun:
 	jr nz, .doEnemyMonAnimation
 ; enemy mon is not minimised
 	ld a, [wEnemyMonSpecies]
-	ld [wcf91], a
+	ld [wCurPartySpecies], a
 	ld [wd0b5], a
 	call GetMonHeader
 	ld de, vFrontPic
@@ -6791,7 +6791,7 @@ InitBattle::
 
 InitOpponent:
 	ld a, [wCurOpponent]
-	ld [wcf91], a
+	ld [wCurPartySpecies], a
 	ld [wEnemyMonSpecies2], a
 	jr InitBattleCommon
 
@@ -6867,14 +6867,14 @@ InitWildBattle:
 	ld a, "T"
 	ld [hli], a
 	ld [hl], "@"
-	ld a, [wcf91]
+	ld a, [wCurPartySpecies]
 	push af
 	ld a, MON_GHOST
-	ld [wcf91], a
+	ld [wCurPartySpecies], a
 	ld de, vFrontPic
 	call LoadMonFrontSprite ; load ghost sprite
 	pop af
-	ld [wcf91], a
+	ld [wCurPartySpecies], a
 	jr .spriteLoaded
 .isNoGhost
 	ld de, vFrontPic
@@ -7050,7 +7050,7 @@ LoadMonBackPic:
 ; Assumes the monster's attributes have
 ; been loaded with GetMonHeader.
 	ld a, [wBattleMonSpecies2]
-	ld [wcf91], a
+	ld [wCurPartySpecies], a
 	hlcoord 1, 5
 	ld b, 7
 	ld c, 8
