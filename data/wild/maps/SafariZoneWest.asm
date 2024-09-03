@@ -18,7 +18,7 @@ IF (DEF(_BLUE) || DEF(_GREEN)) ; marcelnote: Green has same encounters as Blue f
 	db 26, EXEGGCUTE
 	db 25, NIDORAN_M
 ENDC
-	db 31, VENOMOTH
+	db 31, EXEGGUTOR ; marcelnote - was 31, VENOMOTH
 	db 26, TAUROS
 	db 28, KANGASKHAN
 	end_grass_wildmons

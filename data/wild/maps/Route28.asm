@@ -3,7 +3,7 @@ Route28WildMons:
 	def_grass_wildmons 15 ; encounter rate
 	db 46, RAPIDASH   ; 19.9%
 	db 46, DODRIO     ; 19.9%
-	db 48, RHYDON     ; 15.2%
+	db 48, PIDGEOTTO  ; 15.2%
 	db 47, VENUSAUR   ;  9.8%
 	db 47, CHARIZARD  ;  9.8%
 	db 47, BLASTOISE  ;  9.8%
@@ -18,7 +18,7 @@ ENDC
 	db 45, SNORLAX    ;  1.2%
 	end_grass_wildmons
 
-	def_water_wildmons 15 ; encounter rate
+	def_water_wildmons 20 ; encounter rate
 	db 45, GOLDUCK
 	db 45, POLIWHIRL
 	db 45, SLOWBRO
@@ -30,3 +30,5 @@ ENDC
 	db 42, DRAGONAIR
 	db 45, DRAGONAIR
 	end_water_wildmons
+
+; inside cave: RHYDON, HITMONS, MACHAMP, GOLEM

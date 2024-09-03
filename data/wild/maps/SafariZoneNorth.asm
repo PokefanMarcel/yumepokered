@@ -1,22 +1,22 @@
 SafariZoneNorthWildMons:
 	def_grass_wildmons 30 ; encounter rate
 IF DEF(_RED)
-	db 22, NIDORAN_M
+	db 22, NIDORAN_F ; marcelnote - was 22, NIDORAN_M
 	db 26, RHYHORN
 	db 23, PARAS
 	db 25, EXEGGCUTE
-	db 30, NIDORINO
+	db 30, NIDORINA  ; marcelnote - was 30, NIDORINO
 	db 27, EXEGGCUTE
-	db 30, NIDORINA
+	db 30, NIDORINO  ; marcelnote - was 30, NIDORINA
 ENDC
 IF (DEF(_BLUE) || DEF(_GREEN)) ; marcelnote: Green has same encounters as Blue for now
-	db 22, NIDORAN_F
+	db 22, NIDORAN_M ; marcelnote - was 22, NIDORAN_F
 	db 26, RHYHORN
 	db 23, PARAS
 	db 25, EXEGGCUTE
-	db 30, NIDORINA
+	db 30, NIDORINO  ; marcelnote - was 30, NIDORINA
 	db 27, EXEGGCUTE
-	db 30, NIDORINO
+	db 30, NIDORINA  ; marcelnote - was 30, NIDORINO
 ENDC
 	db 32, VENOMOTH
 	db 26, CHANSEY

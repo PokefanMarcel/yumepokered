@@ -1,8 +1,8 @@
 VictoryRoad3FWildMons:
 	def_grass_wildmons 15 ; encounter rate
-	db 24, MACHOP
-	db 26, GEODUDE
-	db 22, ZUBAT
+	db 30, MACHOP   ; marcelnote - was 24, MACHOP
+	db 32, GEODUDE  ; marcelnote - was 26, GEODUDE
+	db 39, GOLBAT   ; marcelnote - was 22, ZUBAT
 	db 42, ONIX
 	db 40, VENOMOTH
 	db 45, ONIX
