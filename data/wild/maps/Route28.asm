@@ -3,7 +3,7 @@ Route28WildMons:
 	def_grass_wildmons 15 ; encounter rate
 	db 46, RAPIDASH   ; 19.9%
 	db 46, DODRIO     ; 19.9%
-	db 48, PIDGEOTTO  ; 15.2%
+	db 48, PIDGEOT    ; 15.2%
 	db 47, VENUSAUR   ;  9.8%
 	db 47, CHARIZARD  ;  9.8%
 	db 47, BLASTOISE  ;  9.8%
