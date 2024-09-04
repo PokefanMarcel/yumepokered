@@ -152,3 +152,7 @@ _CeladonCityGameCornerSignText::
 	line "The playground"
 	cont "for grown-ups!"
 	done
+
+_CeladonCityCeladonGroveSignText:: ; marcelnote - for Celadon Grove
+	text "CELADON GROVE"
+	done

@@ -26,6 +26,7 @@ TownMapOrder:
 	db ROUTE_8
 	db ROUTE_7
 	db CELADON_CITY
+	db CELADON_GROVE ; marcelnote - new location
 	db SAFFRON_CITY
 	db ROUTE_11
 	db ROUTE_12

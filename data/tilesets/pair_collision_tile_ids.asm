@@ -15,6 +15,9 @@ TilePairCollisionsLand::
 	db SAFARI,   $20, $2E
 	db SAFARI,   $5E, $2E
 	db SAFARI,   $5F, $2E
+	db FOREST,   $5D, $30 ; marcelnote - platform to ground
+	db FOREST,   $4C, $30 ; marcelnote - platform to ground
+	db FOREST,   $1F, $01 ; marcelnote - stairs (roof) to grassy ground
 	db MOUNTAIN, $2E, $20 ; marcelnote - floors of different elevations
 	db MOUNTAIN, $24, $20 ; marcelnote - upper floor to cave door
 	db -1 ; end

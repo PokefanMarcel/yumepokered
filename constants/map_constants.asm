@@ -33,7 +33,7 @@ DEF NUM_CITY_MAPS EQU const_value
 DEF FIRST_ROUTE_MAP EQU const_value
 	map_const ROUTE_1,                       10, 18 ; $0C
 	map_const ROUTE_2,                       10, 36 ; $0D
-	map_const ROUTE_3,                       35,  9 ; $0E
+	map_const ROUTE_3,                       37,  9 ; $0E ; marcelnote - expanded from 35 for Celadon Grove
 	map_const ROUTE_4,                       45,  9 ; $0F
 	map_const ROUTE_5,                       10, 18 ; $10
 	map_const ROUTE_6,                       10, 18 ; $11
@@ -206,13 +206,13 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const SAFFRON_POKECENTER,             7,  4 ; $B6
 	map_const MR_PSYCHICS_HOUSE,              4,  4 ; $B7
 	map_const ROUTE_15_GATE,                  4, 11 ; $B8 ; marcelnote - merged ROUTE_15_GATE floors
-	map_const UNUSED_MAP_B9,                  0,  0 ; $B9 ; marcelnote - was ROUTE_15_GATE_2F
+	map_const CELADON_GROVE,                 22, 24 ; $B9 ; marcelnote - new location, was ROUTE_15_GATE_2F
 	map_const ROUTE_16_GATE,                  4, 13 ; $BA ; marcelnote - merged ROUTE_16_GATE floors
-	map_const UNUSED_MAP_BB,                  0,  0 ; $BB ; marcelnote - was ROUTE_15_GATE_2F
+	map_const CELADON_GROVE_SOUTH_GATE,       5,  4 ; $BB ; marcelnote - new location, was ROUTE_15_GATE_2F
 	map_const ROUTE_16_FLY_HOUSE,             4,  4 ; $BC
 	map_const ROUTE_12_FISHING_GUIDE_HOUSE,   4,  4 ; $BD ; marcelnote - from Super Rod to Fishing Guide
 	map_const ROUTE_18_GATE,                  4, 11 ; $BE ; marcelnote - merged ROUTE_18_GATE floors
-	map_const UNUSED_MAP_BF,                  0,  0 ; $BF ; marcelnote - was ROUTE_18_GATE_2F
+	map_const CELADON_GROVE_NORTH_GATE,       5,  4 ; $BF ; marcelnote - new location, was ROUTE_18_GATE_2F
 	map_const SEAFOAM_ISLANDS_1F,            15,  9 ; $C0
 	map_const ROUTE_22_GATE,                 18,  4 ; $C1 ; marcelnote - added 2nd floor
 	map_const VICTORY_ROAD_2F,               15,  9 ; $C2
@@ -258,7 +258,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const SILPH_CO_10F,                   8,  9 ; $EA
 	map_const SILPH_CO_11F,                   9,  9 ; $EB
 	map_const SILPH_CO_ELEVATOR,              2,  2 ; $EC
-	map_const UNUSED_MAP_ED,                  0,  0 ; $ED
+	map_const UNUSED_MAP_ED,                  0,  0 ; $ED ; marcelnote - used by SilphCoElevator_Object
 	map_const UNUSED_MAP_EE,                  0,  0 ; $EE
 	map_const TRADE_CENTER,                   5,  4 ; $EF
 	map_const COLOSSEUM,                      5,  4 ; $F0

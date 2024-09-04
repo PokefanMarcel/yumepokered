@@ -188,13 +188,13 @@ MapHeaderPointers::
 	dw SaffronPokecenter_h
 	dw MrPsychicsHouse_h
 	dw Route15Gate_h ; marcelnote - merged Route15Gate floors
-	dw Route15Gate_h ; UNUSED_MAP_B9 ; marcelnote - was Route15Gate2F_h, now unused
+	dw CeladonGrove_h ; $B9 ; CELADON_GROVE ; marcelnote - new location, was Route15Gate2F_h
 	dw Route16Gate_h ; marcelnote - merged Route16Gate floors
-	dw Route16Gate_h ; UNUSED_MAP_BB ; marcelnote - was Route16Gate2F_h, now unused
+	dw CeladonGroveSouthGate_h ; $BB ; CELADON_GROVE_SOUTH_GATE ; marcelnote - new location, was Route16Gate2F_h
 	dw Route16FlyHouse_h
 	dw Route12FishingGuideHouse_h ; marcelnote - from Super Rod to Fishing Guide
 	dw Route18Gate_h ; marcelnote - merged Route18Gate floors
-	dw Route18Gate_h ; UNUSED_MAP_BF ; marcelnote - was Route18Gate2F_h, now unused
+	dw CeladonGroveNorthGate_h ; $BF ; CELADON_GROVE_NORTH_GATE ; marcelnote - new location, was Route18Gate2F_h
 	dw SeafoamIslands1F_h
 	dw Route22Gate_h
 	dw VictoryRoad2F_h

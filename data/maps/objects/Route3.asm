@@ -13,6 +13,7 @@ Route3_Object:
 	db $2c ; border block
 
 	def_warp_events
+	warp_event 66, 13, CELADON_GROVE_NORTH_GATE, 1 ; marcelnote - new for Celadon Grove
 
 	def_bg_events
 	bg_event 59,  9, 10 ; Route3SignText

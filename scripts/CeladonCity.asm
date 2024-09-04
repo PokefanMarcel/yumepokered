@@ -24,6 +24,7 @@ CeladonCity_TextPointers:
 	dw_const CeladonCityTrainerTips2Text,      TEXT_CELADONCITY_TRAINER_TIPS2
 	dw_const CeladonCityPrizeExchangeSignText, TEXT_CELADONCITY_PRIZEEXCHANGE_SIGN
 	dw_const CeladonCityGameCornerSignText,    TEXT_CELADONCITY_GAMECORNER_SIGN
+	dw_const CeladonCityCeladonGroveSignText,  TEXT_CELADONCITY_CELADONGROVE_SIGN ; marcelnote - for Celadon Grove
 
 CeladonCityLittleGirlText:
 	text_far _CeladonCityLittleGirlText
@@ -130,4 +131,8 @@ CeladonCityPrizeExchangeSignText:
 
 CeladonCityGameCornerSignText:
 	text_far _CeladonCityGameCornerSignText
+	text_end
+
+CeladonCityCeladonGroveSignText: ; marcelnote - for Celadon Grove
+	text_far _CeladonCityCeladonGroveSignText
 	text_end

@@ -1238,3 +1238,18 @@ INCLUDE "data/maps/headers/MandarinSilphCo.asm" ; marcelnote - new location
 INCLUDE "scripts/MandarinSilphCo.asm"
 INCLUDE "data/maps/objects/MandarinSilphCo.asm"
 MandarinSilphCo_Blocks:: INCBIN "maps/MandarinSilphCo.blk"
+
+INCLUDE "data/maps/headers/CeladonGrove.asm" ; marcelnote - new location
+INCLUDE "scripts/CeladonGrove.asm"
+INCLUDE "data/maps/objects/CeladonGrove.asm"
+CeladonGrove_Blocks:: INCBIN "maps/CeladonGrove.blk"
+
+INCLUDE "data/maps/headers/CeladonGroveSouthGate.asm" ; marcelnote - new location
+INCLUDE "scripts/CeladonGroveSouthGate.asm"
+INCLUDE "data/maps/objects/CeladonGroveSouthGate.asm"
+CeladonGroveSouthGate_Blocks:: INCBIN "maps/ViridianForestSouthGate.blk"
+
+INCLUDE "data/maps/headers/CeladonGroveNorthGate.asm" ; marcelnote - new location
+INCLUDE "scripts/CeladonGroveNorthGate.asm"
+INCLUDE "data/maps/objects/CeladonGroveNorthGate.asm"
+CeladonGroveNorthGate_Blocks:: INCBIN "maps/ViridianForestSouthGate.blk"
