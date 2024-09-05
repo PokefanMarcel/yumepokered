@@ -108,6 +108,8 @@ BugCatcherData:
 ; marcelnote - new trainers
 ; Viridian Forest
 	db 8, METAPOD, PINSIR, 0 ; based on Samurai
+; Celadon Grove
+	db 24, VENONAT, BUTTERFREE, PARASECT, 0
 
 LassData:
 ; Route 3
@@ -221,6 +223,8 @@ PokemaniacData:
 	db 40, CHARMELEON, LAPRAS, LICKITUNG, 0
 ; Rock Tunnel 1F
 	db 23, CUBONE, SLOWPOKE, 0
+; Celadon Grove   ; marcelnote - new location
+	db 25, TANGELA, WARTORTLE, 0
 
 SuperNerdData:
 ; Mt. Moon 1F
@@ -747,8 +751,8 @@ Green3Data:
 	db $FF, 71, PIDGEOT, 69, ALAKAZAM, 71, RHYDON, 71, EXEGGUTOR, 73, GYARADOS, 75, CHARIZARD, 0
 
 ChannelerData:
-; Unused
-	db 22, GASTLY, 0
+; Unused ; marcelnote - first 4 previously unused, repurposed for Celadon Grove
+	db 23, GASTLY, HAUNTER, GASTLY, 0 ; marcelnote - modified
 	db 24, GASTLY, 0
 	db 23, GASTLY, GASTLY, 0
 	db 24, GASTLY, 0

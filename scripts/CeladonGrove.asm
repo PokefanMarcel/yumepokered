@@ -16,35 +16,124 @@ CeladonGrove_ScriptPointers:
 
 CeladonGrove_TextPointers:
 	def_text_pointers
-	;dw_const ViridianForestYoungster1Text,      TEXT_VIRIDIANFOREST_YOUNGSTER1
-	;dw_const PickUpItemText,                    TEXT_VIRIDIANFOREST_ANTIDOTE
-	;dw_const ViridianForestYoungster5Text,      TEXT_VIRIDIANFOREST_YOUNGSTER5
-	;dw_const ViridianForestTrainerTips1Text,    TEXT_VIRIDIANFOREST_TRAINER_TIPS1
+	dw_const CeladonGroveYoungsterText,         TEXT_CELADONGROVE_YOUNGSTER
+	dw_const CeladonGroveChanneler1Text,        TEXT_CELADONGROVE_CHANNELER1
+	dw_const CeladonGroveSuperNerdText,         TEXT_CELADONGROVE_SUPERNERD
+	dw_const CeladonGroveGrampsText,            TEXT_CELADONGROVE_GRAMPS
+	dw_const CeladonGroveChanneler2Text,        TEXT_CELADONGROVE_CHANNELER2
+	dw_const PickUpItemText,                    TEXT_VIRIDIANFOREST_LEAF_STONE
+    dw_const PickUpItemText,                    TEXT_VIRIDIANFOREST_GREAT_BALL
+    dw_const CeladonGroveEntranceSignText,      TEXT_CELADONGROVE_ENTRANCESIGN
+    dw_const CeladonGroveShrineSignText,        TEXT_CELADONGROVE_SHRINESIGN
 
 CeladonGroveTrainerHeaders:
-	def_trainers 2
-;ViridianForestTrainerHeader0:
-;	trainer EVENT_BEAT_VIRIDIAN_FOREST_TRAINER_0, 4, ViridianForestYoungster2BattleText, ViridianForestYoungster2EndBattleText, ViridianForestYoungster2AfterBattleText
+	def_trainers
+CeladonGroveTrainerHeader0:
+	trainer EVENT_BEAT_CELADON_GROVE_TRAINER_0, 3, CeladonGroveYoungsterBattleText, CeladonGroveYoungsterEndBattleText, CeladonGroveYoungsterAfterBattleText
+CeladonGroveTrainerHeader1:
+	trainer EVENT_BEAT_CELADON_GROVE_TRAINER_1, 4, CeladonGroveChanneler1BattleText, CeladonGroveChanneler1EndBattleText, CeladonGroveChanneler1AfterBattleText
+CeladonGroveTrainerHeader2:
+	trainer EVENT_BEAT_CELADON_GROVE_TRAINER_2, 4, CeladonGroveSuperNerdBattleText, CeladonGroveSuperNerdEndBattleText, CeladonGroveSuperNerdAfterBattleText
 	db -1 ; end
 
-;ViridianForestYoungster1Text:
-;	text_far _ViridianForestYoungster1Text
-;	text_end
+CeladonGroveGrampsText:
+	text_far _CeladonGroveGrampsText
+	text_end
 
-;ViridianForestYoungster2Text:
-;	text_asm
-;	ld hl, ViridianForestTrainerHeader0
-;	call TalkToTrainer
-;	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+CeladonGroveChanneler2Text:
+	text_asm
+	CheckEvent EVENT_GOT_TM51
+	jr nz, .already_have_tm
+	ld hl, .TakeThisText
+	call PrintText
+	lb bc, TM_HEX, 1
+	call GiveItem
+	ld hl, .TM51NoRoomText
+	jr nc, .print_text
+	SetEvent EVENT_GOT_TM51
+	ld hl, .ReceivedTM51Text
+	jr .print_text
+.already_have_tm
+	ld hl, .TM51ExplanationText
+.print_text
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-;ViridianForestYoungster2BattleText:
-;	text_far _ViridianForestYoungster2BattleText
-;	text_end
+.TakeThisText:
+	text_far _CeladonGroveChanneler2TakeThisText
+	text_end
 
-;ViridianForestYoungster2EndBattleText:
-;	text_far _ViridianForestYoungster2EndBattleText
-;	text_end
+.ReceivedTM51Text:
+	text_far _CeladonGroveChanneler2ReceivedTM51Text
+	sound_get_item_1
+	text_end
 
-;ViridianForestYoungster2AfterBattleText:
-;	text_far _ViridianForestYoungster2AfterBattleText
-;	text_end
+.TM51ExplanationText:
+	text_far _CeladonGroveChanneler2TM51ExplanationText
+	text_end
+
+.TM51NoRoomText:
+	text_far _CeladonGroveChanneler2TM51NoRoomText
+	text_end
+
+CeladonGroveYoungsterText:
+	text_asm
+	ld hl, CeladonGroveTrainerHeader0
+	call TalkToTrainer
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+CeladonGroveYoungsterBattleText:
+	text_far _CeladonGroveYoungsterBattleText
+	text_end
+
+CeladonGroveYoungsterEndBattleText:
+	text_far _CeladonGroveYoungsterEndBattleText
+	text_end
+
+CeladonGroveYoungsterAfterBattleText:
+	text_far _CeladonGroveYoungsterAfterBattleText
+	text_end
+
+CeladonGroveChanneler1Text:
+	text_asm
+	ld hl, CeladonGroveTrainerHeader1
+	call TalkToTrainer
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+CeladonGroveChanneler1BattleText:
+	text_far _CeladonGroveChanneler1BattleText
+	text_end
+
+CeladonGroveChanneler1EndBattleText:
+	text_far _CeladonGroveChanneler1EndBattleText
+	text_end
+
+CeladonGroveChanneler1AfterBattleText:
+	text_far _CeladonGroveChanneler1AfterBattleText
+	text_end
+
+CeladonGroveSuperNerdText:
+	text_asm
+	ld hl, CeladonGroveTrainerHeader2
+	call TalkToTrainer
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+CeladonGroveSuperNerdBattleText:
+	text_far _CeladonGroveSuperNerdBattleText
+	text_end
+
+CeladonGroveSuperNerdEndBattleText:
+	text_far _CeladonGroveSuperNerdEndBattleText
+	text_end
+
+CeladonGroveSuperNerdAfterBattleText:
+	text_far _CeladonGroveSuperNerdAfterBattleText
+	text_end
+
+CeladonGroveEntranceSignText:
+	text_far _CeladonGroveEntranceSignText
+	text_end
+
+CeladonGroveShrineSignText:
+	text_far _CeladonGroveShrineSignText
+	text_end

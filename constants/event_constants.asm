@@ -735,6 +735,14 @@
 	const EVENT_BEAT_MANSION_4_TRAINER_0
 	const EVENT_BEAT_MANSION_4_TRAINER_1
 
+; Celadon Grove events ; marcelnote - new location
+	const_next $840
+	const_skip
+	const EVENT_BEAT_CELADON_GROVE_TRAINER_0
+	const EVENT_BEAT_CELADON_GROVE_TRAINER_1
+	const EVENT_BEAT_CELADON_GROVE_TRAINER_2
+	const EVENT_GOT_TM51
+
 ; Safari Zone events
 	const_next $880
 	const EVENT_GOT_HM03

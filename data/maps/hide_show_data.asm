@@ -190,7 +190,7 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw NoHS
-	dw NoHS
+	dw CeladonGroveHS ; $B9 ; marcelnote - was NoHS
 	dw NoHS
 	dw NoHS
 	dw NoHS
@@ -593,6 +593,9 @@ CinnabarVolcano2FHS:
 	db CINNABAR_VOLCANO_2F, CINNABARVOLCANO2F_NUGGET, SHOW
 MandarinHotelHS:
 	db MANDARIN_HOTEL, MANDARINHOTEL2F_MAX_ELIXER, SHOW
+CeladonGroveHS:
+	db CELADON_GROVE, CELADONGROVE_LEAF_STONE, SHOW
+	db CELADON_GROVE, CELADONGROVE_GREAT_BALL, SHOW
 	db $FF, $01, SHOW ; end
 	assert_table_length NUM_HS_OBJECTS + 1
 

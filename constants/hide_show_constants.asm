@@ -256,9 +256,11 @@ DEF SHOW EQU $15
 	const HS_CINNABAR_VOLCANO_2F_ITEM_2    ; F3 ; marcelnote - Ultra Ball
 	const HS_CINNABAR_VOLCANO_2F_ITEM_3    ; F4 ; marcelnote - Nugget
 	const HS_MANDARIN_HOTEL_ITEM_1              ; marcelnote - Max Elixer
+	const HS_CELADON_GROVE_ITEM_1               ; marcelnote - Leaf Stone
+	const HS_CELADON_GROVE_ITEM_2               ; marcelnote - Great Ball
 DEF NUM_HS_OBJECTS EQU const_value
 	; max objects = 256
-	; current total = 258 – 11 – 5 (commented out) = 242
+	; current total = 260 – 11 – 5 (commented out) = 244
 
 ; marcelnote - the list continues here to allow for more than 256 HideShow objects
 	const_def
@@ -283,4 +285,4 @@ DEF NUM_HS_OBJECTS EQU const_value
 	const HS_HALL_OF_FAME_RIVAL            ; FF ; marcelnote - for Rival rematches
 DEF NUM_HS_OBJECTS_CONT EQU const_value
 	; max objects = 256
-	; current total = 282 – 263 = 19
+	; current total = 285 – 266 = 19
