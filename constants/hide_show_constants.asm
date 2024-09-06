@@ -65,7 +65,6 @@ DEF SHOW EQU $15
 	const HS_CERULEAN_CAVE_1F_ITEM_1       ; 35 X
 	const HS_CERULEAN_CAVE_1F_ITEM_2       ; 36 X
 	const HS_CERULEAN_CAVE_1F_ITEM_3       ; 37 X
-	const HS_POKEMON_TOWER_1F_ITEM         ; 38 ; marcelnote - added TM51, testing
 	const HS_POKEMON_TOWER_1F_AGATHA       ; 39 ; marcelnote - postgame Agatha
 	const HS_POKEMON_TOWER_2F_RIVAL        ; 3A
 	const HS_POKEMON_TOWER_3F_ITEM         ; 3B X
@@ -260,30 +259,30 @@ DEF SHOW EQU $15
 	const HS_CELADON_GROVE_ITEM_2               ; marcelnote - Great Ball
 DEF NUM_HS_OBJECTS EQU const_value
 	; max objects = 256
-	; current total = 260 – 11 – 5 (commented out) = 244
+	; current total = 259 – 11 – 5 (commented out) = 243
 
 ; marcelnote - the list continues here to allow for more than 256 HideShow objects
 	const_def
-	const HS_REDS_YELLOWS_HOUSES_ASLEEP      ; E9 ; marcelnote - Yellow asleep
-	const HS_ROUTE_1_OAK                     ; E9 ; marcelnote - postgame Oak battle
-	const HS_CELADON_GROVE_SOUTH_GATE_ROCKET ; E9 ; marcelnote - blocking the way
-	const HS_SAFFRON_GYM_WILL                ; E9 ; marcelnote - postgame Will
-	const HS_SAFFRON_GYM_BRUNO               ; EA ; marcelnote - postgame Bruno
-	const HS_INDIGO_PLATEAU_LOBBY_GIRL1      ; F5 ; marcelnote - now moves after first defeating E4
-	const HS_INDIGO_PLATEAU_LOBBY_GIRL2      ; F6 ; marcelnote - blocks way after first defeating E4
-	const HS_INDIGO_PLATEAU_LOBBY_RIVAL      ; F6 ; marcelnote - appears after E4 reopens
-	const HS_LORELEIS_ROOM_LORELEI           ; F7 ; marcelnote - added for Lorelei rematch
-	const HS_LORELEIS_ROOM_LORELEI_REMATCH   ; F8 ; marcelnote - added for Lorelei rematch
-	const HS_BRUNOS_ROOM_BRUNO               ; F9 ; marcelnote - added for Bruno rematch
-	const HS_BRUNOS_ROOM_BRUNO_REMATCH       ; FA ; marcelnote - added for Bruno rematch
-	const HS_AGATHAS_ROOM_AGATHA             ; FB ; marcelnote - added for Agatha rematch
-	const HS_AGATHAS_ROOM_AGATHA_REMATCH     ; FC ; marcelnote - added for Agatha rematch
-	const HS_LANCES_ROOM_LANCE               ; FD ; marcelnote - added for Lance rematch
-	const HS_LANCES_ROOM_LANCE_REMATCH       ; FE ; marcelnote - added for Lance rematch
-	const HS_CHAMPIONS_ROOM_OAK              ; D6
-	const HS_CHAMPIONS_ROOM_RIVAL            ; D7 ; marcelnote - added for Rival rematch
-	const HS_HALL_OF_FAME_OAK                ; FF ; marcelnote - first victory only
-	const HS_HALL_OF_FAME_RIVAL              ; FF ; marcelnote - for Rival rematches
+	const HS_REDS_YELLOWS_HOUSES_ASLEEP      ; Yellow asleep
+	const HS_ROUTE_1_OAK                     ; postgame Oak battle
+	const HS_CELADON_GROVE_SOUTH_GATE_ROCKET ; blocking the way
+	const HS_SAFFRON_GYM_WILL                ; postgame Will
+	const HS_SAFFRON_GYM_BRUNO               ; postgame Bruno
+	const HS_INDIGO_PLATEAU_LOBBY_GIRL1      ; now moves after first defeating E4
+	const HS_INDIGO_PLATEAU_LOBBY_GIRL2      ; blocks way after first defeating E4
+	const HS_INDIGO_PLATEAU_LOBBY_RIVAL      ; appears after E4 reopens
+	const HS_LORELEIS_ROOM_LORELEI           ; added for Lorelei rematch
+	const HS_LORELEIS_ROOM_LORELEI_REMATCH   ; added for Lorelei rematch
+	const HS_BRUNOS_ROOM_BRUNO               ; added for Bruno rematch
+	const HS_BRUNOS_ROOM_BRUNO_REMATCH       ; added for Bruno rematch
+	const HS_AGATHAS_ROOM_AGATHA             ; added for Agatha rematch
+	const HS_AGATHAS_ROOM_AGATHA_REMATCH     ; added for Agatha rematch
+	const HS_LANCES_ROOM_LANCE               ; added for Lance rematch
+	const HS_LANCES_ROOM_LANCE_REMATCH       ; added for Lance rematch
+	const HS_CHAMPIONS_ROOM_OAK              ;
+	const HS_CHAMPIONS_ROOM_RIVAL            ; added for Rival rematch
+	const HS_HALL_OF_FAME_OAK                ; first victory only
+	const HS_HALL_OF_FAME_RIVAL              ; for Rival rematches
 DEF NUM_HS_OBJECTS_CONT EQU const_value
 	; max objects = 256
-	; current total = 286 – 266 = 20
+	; current total = 285 – 265 = 20

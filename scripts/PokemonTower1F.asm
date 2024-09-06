@@ -10,7 +10,6 @@ PokemonTower1F_TextPointers:
 	dw_const PokemonTower1FChannelerText,       TEXT_POKEMONTOWER1F_CHANNELER
 	dw_const PokemonTower1FLittleBoyText,       TEXT_POKEMONTOWER1F_LITTLE_BOY   ; marcelnote - added 7FChanneler
 	dw_const PokemonTower1FAgathaText,          TEXT_POKEMONTOWER1F_AGATHA       ; marcelnote - postgame Agatha
-	dw_const PickUpItemText,                    TEXT_POKEMONTOWER1F_TM_HEX       ; marcelnote - testing
 
 PokemonTower1FReceptionistText:
 	text_far _PokemonTower1FReceptionistText

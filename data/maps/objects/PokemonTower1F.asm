@@ -6,7 +6,6 @@
 	const_export POKEMONTOWER1F_CHANNELER
 	const_export POKEMONTOWER1F_LITTLE_BOY  ; marcelnote - added 7FChanneler
 	const_export POKEMONTOWER1F_AGATHA      ; marcelnote - postgame Agatha
-	const_export POKEMONTOWER1F_TM_HEX      ; marcelnote - testing
 
 PokemonTower1F_Object:
 	db $1 ; border block
@@ -26,6 +25,5 @@ PokemonTower1F_Object:
 	object_event 17,  7, SPRITE_CHANNELER, STAY, LEFT, TEXT_POKEMONTOWER1F_CHANNELER
 	object_event  5,  8, SPRITE_LITTLE_BOY, STAY, DOWN, TEXT_POKEMONTOWER1F_LITTLE_BOY  ; marcelnote - added 7FChanneler
 	object_event 11, 13, SPRITE_AGATHA, STAY, NONE, TEXT_POKEMONTOWER1F_AGATHA  ; marcelnote - postgame Agatha
-	object_event  5, 10, SPRITE_POKE_BALL, STAY, NONE, TEXT_POKEMONTOWER1F_TM_HEX, TM_HEX ; marcelnote - testing
 
 	def_warps_to POKEMON_TOWER_1F
