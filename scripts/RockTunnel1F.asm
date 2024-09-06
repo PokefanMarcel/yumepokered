@@ -22,6 +22,7 @@ RockTunnel1F_TextPointers:
 	dw_const RockTunnel1FCooltrainerF1Text, TEXT_ROCKTUNNEL1F_COOLTRAINER_F1
 	dw_const RockTunnel1FCooltrainerF2Text, TEXT_ROCKTUNNEL1F_COOLTRAINER_F2
 	dw_const RockTunnel1FCooltrainerF3Text, TEXT_ROCKTUNNEL1F_COOLTRAINER_F3
+	dw_const RockTunnel1FBlackbeltText,     TEXT_ROCKTUNNEL1F_BLACKBELT ; marcelnote - added Blackbelt
 	dw_const RockTunnel1FSignText,          TEXT_ROCKTUNNEL1F_SIGN
 
 RockTunnel1TrainerHeaders:
@@ -165,4 +166,49 @@ RockTunnel1FCooltrainerF3AfterBattleText:
 
 RockTunnel1FSignText:
 	text_far _RockTunnel1FSignText
+	text_end
+
+RockTunnel1FBlackbeltText:    ; marcelnote - added Blackbelt
+	text_asm
+	call SaveScreenTilesToBuffer2
+	ld hl, .IntroText
+	call PrintText
+	ld d, MACHOKE
+	callfar IsMonInParty ; outputs [wWhichPokemon] = index of Machoke in party (0 to 5)
+	jr z, .done
+	ld hl, TextScriptPromptButton
+	call TextCommandProcessor
+	ld hl, .TruePotentialText
+	call PrintText
+	ld a, $01
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr nz, .done
+	ld hl, .TrainingText
+	call PrintText
+	ld a, MACHOKE
+	call PlayCry
+	call WaitForSoundToFinish
+	ld hl, .DotsText
+	call PrintText
+	callfar EvolveMonInteraction    ; actual evolution and map reloading
+.done
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+.IntroText
+	text_far _RockTunnel1FBlackbeltIntroText
+	text_end
+
+.TruePotentialText:
+	text_far _RockTunnel1FBlackbeltTruePotentialText
+	text_end
+
+.TrainingText:
+	text_far _RockTunnel1FBlackbeltTrainingText
+	text_end
+
+.DotsText:
+	text_far _RockTunnel1FBlackbeltDotsText
 	text_end

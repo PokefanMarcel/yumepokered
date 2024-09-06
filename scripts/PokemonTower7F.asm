@@ -289,14 +289,14 @@ PokemonTower7FRocket3AfterBattleText:
 PokemonTower7FChannelerText:    ; marcelnote - added 7FChanneler
 	text_asm
 	call SaveScreenTilesToBuffer2
-	ld hl, .PokemonTower7FChannelerIntroText
+	ld hl, .IntroText
 	call PrintText
 	ld d, HAUNTER
-	callfar IsMonInParty ; outputs [wWhichPokemon] = index of Graveler in party (0 to 5)
+	callfar IsMonInParty ; outputs [wWhichPokemon] = index of Haunter in party (0 to 5)
 	jr z, .done
 	ld hl, TextScriptPromptButton
 	call TextCommandProcessor
-	ld hl, .PokemonTower7FChannelerHarnessPowerText
+	ld hl, .HarnessPowerText
 	call PrintText
 	ld a, $01
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
@@ -304,31 +304,29 @@ PokemonTower7FChannelerText:    ; marcelnote - added 7FChanneler
 	ld a, [wCurrentMenuItem]
 	and a
 	jr nz, .done
-	ld hl, .PokemonTower7FChannelerIncantationsText
+	ld hl, .IncantationsText
 	call PrintText
 	ld a, HAUNTER
 	call PlayCry
 	call WaitForSoundToFinish
-	ld hl, .PokemonTower7FChannelerDotsText
+	ld hl, .DotsText
 	call PrintText
 	callfar EvolveMonInteraction    ; actual evolution and map reloading
+.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-.PokemonTower7FChannelerIntroText
+.IntroText
 	text_far _PokemonTower7FChannelerIntroText
 	text_end
 
-.PokemonTower7FChannelerHarnessPowerText:
+.HarnessPowerText:
 	text_far _PokemonTower7FChannelerHarnessPowerText
 	text_end
 
-.PokemonTower7FChannelerIncantationsText:
+.IncantationsText:
 	text_far _PokemonTower7FChannelerIncantationsText
 	text_end
 
-.PokemonTower7FChannelerDotsText:
+.DotsText:
 	text_far _PokemonTower7FChannelerDotsText
 	text_end
-
-.done
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd

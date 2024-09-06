@@ -70,14 +70,14 @@ MtMoonSquareSignText:
 MtMoonSquareEvolutionRockText:
 	text_asm
 	call SaveScreenTilesToBuffer2
-	ld hl, .MtMoonSquareThisRockVibratesText
+	ld hl, .ThisRockVibratesText
 	call PrintText
 	ld d, GRAVELER
 	callfar IsMonInParty ; outputs [wWhichPokemon] = index of Graveler in party (0 to 5)
 	jr z, .done
 	ld hl, TextScriptPromptButton
 	call TextCommandProcessor
-	ld hl, .MtMoonSquareShouldGravelerStrikeText
+	ld hl, .ShouldGravelerStrikeText
 	call PrintText
 	ld a, $01
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
@@ -85,7 +85,7 @@ MtMoonSquareEvolutionRockText:
 	ld a, [wCurrentMenuItem]
 	and a
 	jr nz, .done
-	ld hl, .MtMoonSquareGravelerGivesPunchText
+	ld hl, .GravelerGivesPunchText
 	call PrintText
 	;ld a, GRAVELER
 	;call PlayCry
@@ -93,26 +93,24 @@ MtMoonSquareEvolutionRockText:
 	ld a, SFX_PUSH_BOULDER
 	call PlaySound
 	call WaitForSoundToFinish
-	ld hl, .MtMoonSquareGravelerDotsText
+	ld hl, .DotsText
 	call PrintText
 	callfar EvolveMonInteraction    ; actual evolution and map reloading
+.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-.MtMoonSquareThisRockVibratesText
+.ThisRockVibratesText
 	text_far _MtMoonSquareThisRockVibratesText
 	text_end
 
-.MtMoonSquareShouldGravelerStrikeText:
+.ShouldGravelerStrikeText:
 	text_far _MtMoonSquareShouldGravelerStrikeText
 	text_end
 
-.MtMoonSquareGravelerGivesPunchText:
+.GravelerGivesPunchText:
 	text_far _MtMoonSquareGravelerGivesPunchText
 	text_end
 
-.MtMoonSquareGravelerDotsText:
+.DotsText:
 	text_far _MtMoonSquareGravelerDotsText
 	text_end
-
-.done
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd

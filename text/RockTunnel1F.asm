@@ -113,3 +113,40 @@ _RockTunnel1FSignText::
 	line "CERULEAN CITY -"
 	cont "LAVENDER TOWN"
 	done
+
+_RockTunnel1FBlackbeltIntroText::   ; marcelnote - added Blackbelt
+	text "Training in the"
+	line "dark sharpens a"
+	cont "warrior's instinct"
+	cont "and can unlock"
+	cont "the full strength"
+	cont "of FIGHTING-type"
+	cont "#MON."
+	done
+
+_RockTunnel1FBlackbeltTruePotentialText::   ; marcelnote - added Blackbelt
+	text "Ah! Your"
+	line "@"
+	text_ram wStringBuffer
+	text " has"
+	cont "a strong will."
+
+	para "With my training,"
+	line "it could reach"
+	cont "its true"
+	cont "potential."
+	done
+
+_RockTunnel1FBlackbeltTrainingText::   ; marcelnote - added Blackbelt
+	text "@"
+	text_ram wStringBuffer
+	text " pushes"
+	line "its limits,"
+	cont "training with"
+	cont "its eyes closed."
+	done
+
+_RockTunnel1FBlackbeltDotsText::    ; marcelnote - added Blackbelt
+	text "..."
+	line "..."
+	prompt
