@@ -577,14 +577,6 @@ ScientistData:
 ; Cinnabar Volcano B1F   ; marcelnote - new location
 	db 38, KOFFING, ELECTRODE, WEEZING, 0
 
-GiovanniData:
-; Rocket Hideout B4F
-	db $FF, 25, ONIX, 24, RHYHORN, 29, KANGASKHAN, 0
-; Silph Co. 11F
-	db $FF, 37, NIDORINO, 35, KANGASKHAN, 37, RHYHORN, 41, NIDOQUEEN, 0
-; Viridian Gym
-	db $FF, 45, RHYHORN, 42, DUGTRIO, 44, NIDOQUEEN, 45, NIDOKING, 50, RHYDON, 0
-
 RocketData:
 ; Mt. Moon B2F
 	db 13, RATTATA, ZUBAT, 0
@@ -685,27 +677,6 @@ CooltrainerFData:
 ; Cinnabar Volcano B1F   ; marcelnote - new location
 	db 39, GROWLITHE, NINETALES, NIDOQUEEN, 0
 
-BrockData:
-	db $FF, 12, GEODUDE, 14, ONIX, 0
-
-MistyData:
-	db $FF, 18, STARYU, 21, STARMIE, 0
-
-LtSurgeData:
-	db $FF, 21, VOLTORB, 18, PIKACHU, 24, RAICHU, 0
-
-ErikaData:
-	db $FF, 29, VICTREEBEL, 24, TANGELA, 29, VILEPLUME, 0
-
-KogaData:
-	db $FF, 37, KOFFING, 39, MUK, 37, KOFFING, 43, WEEZING, 0
-
-BlaineData:
-	db $FF, 42, GROWLITHE, 40, PONYTA, 42, RAPIDASH, 47, ARCANINE, 0
-
-SabrinaData:
-	db $FF, 38, KADABRA, 37, MR_MIME, 38, VENOMOTH, 43, ALAKAZAM, 0
-
 GentlemanData:
 ; SS Anne 1F Rooms
 	db 18, GROWLITHE, GROWLITHE, 0
@@ -751,7 +722,7 @@ Green3Data:
 	db $FF, 71, PIDGEOT, 69, ALAKAZAM, 71, RHYDON, 71, EXEGGUTOR, 73, GYARADOS, 75, CHARIZARD, 0
 
 ChannelerData:
-; Unused ; marcelnote - first 4 previously unused, repurposed for Celadon Grove
+; Unused ; marcelnote - now repurposed for Celadon Grove
 	db 23, GASTLY, HAUNTER, GASTLY, 0 ; marcelnote - modified
 	db 24, GASTLY, 0
 	db 23, GASTLY, GASTLY, 0
@@ -788,6 +759,37 @@ ChannelerData:
 	db 34, GASTLY, HAUNTER, 0
 	db 38, HAUNTER, 0
 	db 33, GASTLY, GASTLY, HAUNTER, 0
+
+BrockData:
+	db $FF, 12, GEODUDE, 14, ONIX, 0
+
+MistyData:
+	db $FF, 18, STARYU, 21, STARMIE, 0
+
+LtSurgeData:
+	db $FF, 21, VOLTORB, 18, PIKACHU, 24, RAICHU, 0
+
+ErikaData:
+	db $FF, 29, VICTREEBEL, 24, TANGELA, 29, VILEPLUME, 0
+
+KogaData:; marcelnote - adjusted
+	;db $FF, 37, KOFFING, 39, MUK, 37, KOFFING, 43, WEEZING, 0 ; original
+	db $FF, 37, KOFFING, 39, MUK, 37, GOLBAT, 43, WEEZING, 0 ; original
+
+SabrinaData:
+	db $FF, 38, KADABRA, 37, MR_MIME, 38, VENOMOTH, 43, ALAKAZAM, 0
+
+BlaineData: ; marcelnote - adjusted
+	;db $FF, 42, GROWLITHE, 40, PONYTA, 42, RAPIDASH, 47, ARCANINE, 0 ; original
+	db $FF, 42, GROWLITHE, 40, FLAREON, 42, RAPIDASH, 45, MAGMAR, 47, ARCANINE, 0
+
+GiovanniData:
+; Rocket Hideout B4F
+	db $FF, 25, ONIX, 24, RHYHORN, 29, KANGASKHAN, 0
+; Silph Co. 11F
+	db $FF, 37, NIDORINO, 35, KANGASKHAN, 37, RHYHORN, 41, NIDOQUEEN, 0
+; Viridian Gym
+	db $FF, 45, RHYHORN, 42, DUGTRIO, 44, NIDOQUEEN, 45, NIDOKING, 50, RHYDON, 0
 
 LoreleiData:
 	db $FF, 54, DEWGONG, 53, CLOYSTER, 54, SLOWBRO, 56, JYNX, 56, LAPRAS, 0
