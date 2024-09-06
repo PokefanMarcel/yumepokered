@@ -12,7 +12,7 @@
 	const_export CERULEANCITY_GUARD2
 
 CeruleanCity_Object:
-	db $f ; border block
+	db $a ; border block ; marcelnote - changed from $0f (trees)
 
 	def_warp_events
 	warp_event 27, 11, CERULEAN_TRASHED_HOUSE, 1
