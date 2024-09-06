@@ -14,6 +14,7 @@ MtMoonSquare_Script:
 
 MtMoonSquare_TextPointers:
 	def_text_pointers
+	dw_const MtMoonSquareEvolutionRockText, TEXT_MTMOONSQUARE_EVOLUTION_ROCK
 	dw_const MtMoonSquareCooltrainerFText,  TEXT_MTMOONSQUARE_COOLTRAINER_F
 	dw_const MtMoonSquareHikerText,         TEXT_MTMOONSQUARE_HIKER
 	dw_const MtMoonSquareGolemText,         TEXT_MTMOONSQUARE_GOLEM
@@ -21,7 +22,6 @@ MtMoonSquare_TextPointers:
 	dw_const PickUpItemText,                TEXT_MTMOONSQUARE_MOON_STONE
 	dw_const PickUpItemText,                TEXT_MTMOONSQUARE_SUPER_POTION
 	dw_const MtMoonSquareSignText,          TEXT_MTMOONSQUARE_SIGN
-	dw_const MtMoonSquareEvolutionRockText, TEXT_MTMOONSQUARE_EVOLUTION_ROCK
 
 MtMoonSquareCooltrainerFText:
 	text_far _MtMoonSquareCooltrainerFText

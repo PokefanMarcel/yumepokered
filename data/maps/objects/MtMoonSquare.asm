@@ -1,5 +1,6 @@
 ; marcelnote - new location
 	object_const_def
+	const_export MTMOONSQUARE_EVOLUTION_ROCK
 	const_export MTMOONSQUARE_COOLTRAINER_F
 	const_export MTMOONSQUARE_HIKER
 	const_export MTMOONSQUARE_GOLEM
@@ -15,9 +16,9 @@ MtMoonSquare_Object:
 
 	def_bg_events
 	bg_event 13, 5, TEXT_MTMOONSQUARE_SIGN
-	bg_event  6, 3, TEXT_MTMOONSQUARE_EVOLUTION_ROCK
 
 	def_object_events
+	object_event  6,  3, SPRITE_BOULDER, STAY, NONE, TEXT_MTMOONSQUARE_EVOLUTION_ROCK
 	object_event 11,  5, SPRITE_COOLTRAINER_F, WALK, UP_DOWN, TEXT_MTMOONSQUARE_COOLTRAINER_F
 	object_event  7,  3, SPRITE_HIKER, STAY, LEFT, TEXT_MTMOONSQUARE_HIKER
 	object_event  6,  2, SPRITE_MONSTER, STAY, DOWN, TEXT_MTMOONSQUARE_GOLEM
