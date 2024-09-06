@@ -4,8 +4,13 @@ CeladonGroveSouthGate_Script:
 
 CeladonGroveSouthGate_TextPointers:
 	def_text_pointers
-	;dw_const CeladonGroveSouthGateGirlText,       TEXT_VIRIDIANFORESTSOUTHGATE_GIRL
+	dw_const CeladonGroveSouthGateRocketText,    TEXT_CELADONGROVESOUTHGATE_ROCKET
+	dw_const CeladonGroveSouthGateChannelerText, TEXT_CELADONGROVESOUTHGATE_CHANNELER
 
-;CeladonGroveSouthGateGirlText:
-;	text_far _CeladonGroveSouthGateGirlText
-;	text_end
+CeladonGroveSouthGateRocketText:
+	text_far _CeladonGroveSouthGateRocketText
+	text_end
+
+CeladonGroveSouthGateChannelerText:
+	text_far _CeladonGroveSouthGateChannelerText
+	text_end

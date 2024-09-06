@@ -238,6 +238,9 @@ PokemonTower7FMrFujiText:
 	ld a, HS_SAFFRON_CITY_F
 	ld [wMissableObjectIndex], a
 	predef ShowObject
+	ld a, HS_CELADON_GROVE_SOUTH_GATE_ROCKET ; marcelnote - remove Rocket blocking Celadon Grove
+	ld [wMissableObjectIndex], a
+	predef HideObjectCont
 	ld a, SCRIPT_POKEMONTOWER7F_WARP_TO_MR_FUJI_HOUSE
 	ld [wPokemonTower7FCurScript], a
 	ld [wCurMapScript], a

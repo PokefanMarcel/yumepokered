@@ -192,7 +192,7 @@ MapHSPointers:
 	dw NoHS
 	dw CeladonGroveHS ; $B9 ; marcelnote - was NoHS
 	dw NoHS
-	dw NoHS
+	dw CeladonGroveSouthGateHS ; $BB ; marcelnote - was NoHS
 	dw NoHS
 	dw NoHS
 	dw NoHS
@@ -610,6 +610,8 @@ RedsYellowsHousesHS:
 	db REDS_YELLOWS_HOUSES, YELLOWSHOUSE2F_ASLEEP, SHOW  ; marcelnote - Yellow asleep
 Route1HS:
 	db ROUTE_1, ROUTE1_OAK, HIDE  ; marcelnote - postgame Oak battle
+CeladonGroveSouthGateHS:
+	db CELADON_GROVE_SOUTH_GATE, CELADONGROVESOUTHGATE_ROCKET, SHOW  ; marcelnote - blocking the way
 SaffronGymHS:
 	db SAFFRON_GYM, SAFFRONGYM_WILL, HIDE  ; marcelnote - postgame Bruno event
 	db SAFFRON_GYM, SAFFRONGYM_BRUNO, HIDE ; marcelnote - postgame Bruno event

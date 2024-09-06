@@ -1,6 +1,6 @@
 ; marcelnote - new location
 	object_const_def
-	;const_export VIRIDIANFORESTSOUTHGATE_GIRL
+	const_export CELADONGROVENORTHGATE_HIKER
 
 CeladonGroveNorthGate_Object:
 	db $a ; border block
@@ -13,6 +13,7 @@ CeladonGroveNorthGate_Object:
 	def_bg_events
 
 	def_object_events
-	;object_event  8,  4, SPRITE_GIRL, STAY, LEFT, TEXT_VIRIDIANFORESTSOUTHGATE_GIRL
+	object_event  2,  3, SPRITE_HIKER, WALK, LEFT_RIGHT, TEXT_CELADONGROVENORTHGATE_HIKER
+	; marcelnote - aybe add a new OAK AIDE with new item, e.g. VS SEEKER?
 
 	def_warps_to CELADON_GROVE_NORTH_GATE

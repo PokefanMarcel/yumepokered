@@ -1,6 +1,7 @@
 ; marcelnote - new location
 	object_const_def
-	;const_export VIRIDIANFORESTSOUTHGATE_GIRL
+	const_export CELADONGROVESOUTHGATE_ROCKET
+	const_export CELADONGROVESOUTHGATE_CHANNELER
 
 CeladonGroveSouthGate_Object:
 	db $a ; border block
@@ -13,6 +14,7 @@ CeladonGroveSouthGate_Object:
 	def_bg_events
 
 	def_object_events
-	;object_event  8,  4, SPRITE_GIRL, STAY, LEFT, TEXT_VIRIDIANFORESTSOUTHGATE_GIRL
+	object_event  5,  1, SPRITE_ROCKET, STAY, DOWN, TEXT_CELADONGROVESOUTHGATE_ROCKET
+	object_event  2,  4, SPRITE_CHANNELER, STAY, RIGHT, TEXT_CELADONGROVESOUTHGATE_CHANNELER
 
 	def_warps_to CELADON_GROVE_SOUTH_GATE

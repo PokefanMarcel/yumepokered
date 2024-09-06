@@ -4,8 +4,8 @@ CeladonGroveNorthGate_Script:
 
 CeladonGroveNorthGate_TextPointers:
 	def_text_pointers
-	;dw_const CeladonGroveSouthGateGirlText,       TEXT_VIRIDIANFORESTSOUTHGATE_GIRL
+	dw_const CeladonGroveNorthGateHikerText, TEXT_CELADONGROVENORTHGATE_HIKER
 
-;CeladonGroveSouthGateGirlText:
-;	text_far _CeladonGroveSouthGateGirlText
-;	text_end
+CeladonGroveNorthGateHikerText:
+	text_far _CeladonGroveNorthGateHikerText
+	text_end
