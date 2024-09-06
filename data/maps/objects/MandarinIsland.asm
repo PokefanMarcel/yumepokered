@@ -11,6 +11,7 @@ MandarinIsland_Object:
 	warp_event 21, 11, MANDARIN_SURF_SHOP, 1
 	warp_event 15, 13, MANDARIN_HOTEL, 1
 	warp_event  9,  5, MANDARIN_SILPH_CO, 1
+	warp_event 14,  5, MANDARIN_SILPH_FACTORY, 1
 
 	def_bg_events
 	bg_event 19, 17, TEXT_MANDARINISLAND_SIGN

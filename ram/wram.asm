@@ -2052,7 +2052,8 @@ wRoute18GateCurScript:: db           ; marcelnote - renamed from wRoute18Gate1FC
 wCinnabarVolcano1FB1FCurScript:: db  ; marcelnote - new location
 wCinnabarVolcano2FCurScript:: db     ; marcelnote - new location
 wCeladonGroveCurScript:: db          ; marcelnote - new location
-	ds 75                            ; marcelnote - adjusted down
+wMandarinSilphFactoryCurScript:: db  ; marcelnote - new location
+	ds 74                            ; marcelnote - adjusted down
 wGameProgressFlagsEnd::
 
 wPlayerGender:: ; marcelnote - add female player

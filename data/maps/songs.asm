@@ -116,7 +116,7 @@ MapSongBanks::
 	db MUSIC_CINNABAR, BANK(Music_Cinnabar) ; MANDARIN_HOTEL ; marcelnote - new location, was MUSIC_SILPH_CO
 	db MUSIC_CINNABAR, BANK(Music_Cinnabar) ; MANDARIN_SILPH_CO ; marcelnote - new location, was MUSIC_SILPH_CO
 	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; LANCES_ROOM
-	db MUSIC_SS_ANNE, BANK(Music_SSAnne) ; UNUSED_MAP_72
+	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; MANDARIN_SILPH_FACTORY ; marcelnote - new location, was MUSIC_SS_ANNE
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne) ; UNUSED_MAP_73
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne) ; UNUSED_MAP_74
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne) ; UNUSED_MAP_75

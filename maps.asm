@@ -1239,6 +1239,11 @@ INCLUDE "scripts/MandarinSilphCo.asm"
 INCLUDE "data/maps/objects/MandarinSilphCo.asm"
 MandarinSilphCo_Blocks:: INCBIN "maps/MandarinSilphCo.blk"
 
+INCLUDE "data/maps/headers/MandarinSilphFactory.asm" ; marcelnote - new location
+INCLUDE "scripts/MandarinSilphFactory.asm"
+INCLUDE "data/maps/objects/MandarinSilphFactory.asm"
+MandarinSilphFactory_Blocks:: INCBIN "maps/MandarinSilphFactory.blk"
+
 INCLUDE "data/maps/headers/CeladonGrove.asm" ; marcelnote - new location
 INCLUDE "scripts/CeladonGrove.asm"
 INCLUDE "data/maps/objects/CeladonGrove.asm"

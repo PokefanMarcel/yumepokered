@@ -117,7 +117,7 @@ MapHeaderBanks::
 	db BANK(MandarinHotel_h)          ; $6F ; marcelnote - new location, was UNUSED_MAP_6F
 	db BANK(MandarinSilphCo_h)        ; $70 ; marcelnote - new location, was UNUSED_MAP_70
 	db BANK(LancesRoom_h)
-	db $1D ; UNUSED_MAP_72
+	db BANK(MandarinSilphFactory_h)   ; $72 ; marcelnote - new location, was UNUSED_MAP_72
 	db $1D ; UNUSED_MAP_73
 	db $1D ; UNUSED_MAP_74
 	db $1D ; UNUSED_MAP_75
