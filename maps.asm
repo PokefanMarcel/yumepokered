@@ -1189,6 +1189,9 @@ INCLUDE "scripts/AgathasRoom.asm"
 INCLUDE "data/maps/objects/AgathasRoom.asm"
 AgathasRoom_Blocks: INCBIN "maps/AgathasRoom.blk"
 
+
+SECTION "Maps 22", ROMX ; marcelnote - new section
+
 INCLUDE "data/maps/headers/Route22OldRodHouse.asm" ; marcelnote - new location
 INCLUDE "scripts/Route22OldRodHouse.asm"
 INCLUDE "data/maps/objects/Route22OldRodHouse.asm"
@@ -1239,10 +1242,15 @@ INCLUDE "scripts/MandarinSilphCo.asm"
 INCLUDE "data/maps/objects/MandarinSilphCo.asm"
 MandarinSilphCo_Blocks:: INCBIN "maps/MandarinSilphCo.blk"
 
-INCLUDE "data/maps/headers/MandarinSilphFactory.asm" ; marcelnote - new location
-INCLUDE "scripts/MandarinSilphFactory.asm"
-INCLUDE "data/maps/objects/MandarinSilphFactory.asm"
-MandarinSilphFactory_Blocks:: INCBIN "maps/MandarinSilphFactory.blk"
+INCLUDE "data/maps/headers/SilphFactory1F.asm" ; marcelnote - new location
+INCLUDE "scripts/SilphFactory1F.asm"
+INCLUDE "data/maps/objects/SilphFactory1F.asm"
+SilphFactory1F_Blocks:: INCBIN "maps/SilphFactory1F.blk"
+
+INCLUDE "data/maps/headers/SilphFactory2F.asm" ; marcelnote - new location
+INCLUDE "scripts/SilphFactory2F.asm"
+INCLUDE "data/maps/objects/SilphFactory2F.asm"
+SilphFactory2F_Blocks:: INCBIN "maps/SilphFactory2F.blk"
 
 INCLUDE "data/maps/headers/CeladonGrove.asm" ; marcelnote - new location
 INCLUDE "scripts/CeladonGrove.asm"

@@ -275,7 +275,8 @@ INCLUDE "text/MandarinPokecenterMart.asm" ; marcelnote - new location
 INCLUDE "text/MandarinSurfShop.asm"       ; marcelnote - new location
 INCLUDE "text/MandarinHotel.asm"          ; marcelnote - new location
 INCLUDE "text/MandarinSilphCo.asm"        ; marcelnote - new location
-INCLUDE "text/MandarinSilphFactory.asm"   ; marcelnote - new location
+INCLUDE "text/SilphFactory1F.asm"         ; marcelnote - new location
+INCLUDE "text/SilphFactory2F.asm"         ; marcelnote - new location
 INCLUDE "text/CeladonGrove.asm"           ; marcelnote - new location
 INCLUDE "text/CeladonGroveSouthGate.asm"  ; marcelnote - new location
 INCLUDE "text/CeladonGroveNorthGate.asm"  ; marcelnote - new location

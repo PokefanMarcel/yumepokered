@@ -116,7 +116,7 @@ WildDataPointers:
 	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons
-	dw NothingWildMons
+	dw SilphFactory1FWildMons       ; $72 ; marcelnote - CinnabarVolcano1FB1F
 	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons
@@ -327,3 +327,4 @@ INCLUDE "data/wild/maps/CinnabarVolcano1FB1F.asm" ; marcelnote - new location
 INCLUDE "data/wild/maps/CinnabarVolcano2F.asm"    ; marcelnote - new location
 INCLUDE "data/wild/maps/Route28.asm"              ; marcelnote - new location
 INCLUDE "data/wild/maps/CeladonGrove.asm"         ; marcelnote - new location
+INCLUDE "data/wild/maps/SilphFactory1F.asm"       ; marcelnote - new location

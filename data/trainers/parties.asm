@@ -639,6 +639,16 @@ RocketData:
 ; Silph Co. 11F
 	db 25, RATTATA, RATTATA, ZUBAT, RATTATA, EKANS, 0
 	db 32, CUBONE, DROWZEE, MAROWAK, 0
+; marcelnote - new trainers
+; Silph Factory 2F
+	db $FF, 40, GOLBAT, 42, MAGMAR, 44, ELECTRODE, 45, WEEZING, 0 ; Archer
+; Silph Factory 1F
+	db 38, RATICATE, GRIMER, RATICATE, GOLBAT, RATICATE, 0
+	db 42, WEEZING, GOLBAT, 0
+	db 44, MACHOKE, HYPNO, 0
+	db 40, CUBONE, MAGNETON, MAROWAK, 0
+	db 42, RATICATE, KOFFING, SANDSLASH, 0
+	db 42, RATICATE, DIGLETT, ARBOK, 0
 
 CooltrainerMData:
 ; Viridian Gym

@@ -191,10 +191,6 @@ INCLUDE "engine/battle/trainer_ai.asm"
 INCLUDE "engine/battle/draw_hud_pokeball_gfx.asm"
 INCLUDE "gfx/trade.asm"
 INCLUDE "engine/pokemon/evos_moves.asm"
-INCLUDE "engine/battle/move_effects/heal.asm"
-INCLUDE "engine/battle/move_effects/transform.asm"
-INCLUDE "engine/battle/move_effects/reflect_light_screen.asm"
-INCLUDE "engine/battle/link_battle_versus_text.asm"  ; marcelnote - moved from Slot Machines
 
 
 SECTION "Battle Core", ROMX
@@ -237,6 +233,10 @@ SECTION "Battle Engine 8", ROMX
 INCLUDE "engine/battle/init_battle_variables.asm"
 INCLUDE "engine/battle/move_effects/paralyze.asm"
 INCLUDE "engine/battle/move_effects/burn.asm"      ; marcelnote - new for WILL_O_WISP
+INCLUDE "engine/battle/move_effects/heal.asm"                 ; marcelnote - moved from Battle Engine 7
+INCLUDE "engine/battle/move_effects/transform.asm"            ; marcelnote - moved from Battle Engine 7
+INCLUDE "engine/battle/move_effects/reflect_light_screen.asm" ; marcelnote - moved from Battle Engine 7
+INCLUDE "engine/battle/link_battle_versus_text.asm"  ; marcelnote - moved from Slot Machines
 
 
 SECTION "Hidden Objects 2", ROMX
@@ -341,7 +341,6 @@ INCLUDE "engine/events/vending_machine.asm"
 
 SECTION "Itemfinder 2", ROMX
 
-INCLUDE "engine/menus/league_pc.asm"
 INCLUDE "engine/events/hidden_items.asm"
 
 
@@ -361,3 +360,4 @@ INCLUDE "engine/overworld/elevator.asm"
 SECTION "bank1F", ROMX ; marcelnote - new
 
 INCLUDE "engine/battle/exp_bar_print.asm"
+INCLUDE "engine/menus/league_pc.asm" ; marcelnote - moved from SECTION "Itemfinder 2"

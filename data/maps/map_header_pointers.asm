@@ -117,8 +117,8 @@ MapHeaderPointers::
 	dw MandarinHotel_h          ; $6F ; marcelnote - new location, was UNUSED_MAP_6F
 	dw MandarinSilphCo_h        ; $70 ; marcelnote - new location, was UNUSED_MAP_70
 	dw LancesRoom_h
-	dw MandarinSilphFactory_h   ; $70 ; marcelnote - new location, was UNUSED_MAP_72
-	dw LancesRoom_h ; UNUSED_MAP_73
+	dw SilphFactory1F_h         ; $72 ; marcelnote - new location, was UNUSED_MAP_72
+	dw SilphFactory2F_h         ; $73 ; marcelnote - new location, was UNUSED_MAP_73
 	dw LancesRoom_h ; UNUSED_MAP_74
 	dw LancesRoom_h ; UNUSED_MAP_75
 	dw HallOfFame_h

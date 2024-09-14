@@ -60,8 +60,8 @@ Lab_Coll::
 Club_Coll:: ; marcelnote - changed $0f to $00, added $50, $51, $5e
 	coll_tiles $00, $1a, $1f, $26, $28, $29, $2c, $2d, $2e, $2f, $41, $50, $51, $5e
 
-Facility_Coll:: ; marcelnote - removed $22, $32
-	coll_tiles $01, $10, $11, $13, $1b, $20, $21, $30, $31, $42, $43, $48, $52, $55, $58, $5e
+Facility_Coll:: ; marcelnote - removed $22, $32, $48
+	coll_tiles $01, $10, $11, $13, $1b, $20, $21, $30, $31, $42, $43, $52, $55, $58, $5e
 
 Plateau_Coll::
 	coll_tiles $1b, $23, $2c, $2d, $3b, $45

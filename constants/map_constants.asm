@@ -135,8 +135,8 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const MANDARIN_HOTEL,                33,  6 ; $6F ; marcelnote - was UNUSED_MAP_6F
 	map_const MANDARIN_SILPH_CO,              4, 25 ; $70 ; marcelnote - was UNUSED_MAP_70
 	map_const LANCES_ROOM,                   13, 13 ; $71
-	map_const MANDARIN_SILPH_FACTORY,        15, 14 ; $72 ; marcelnote - was UNUSED_MAP_72
-	map_const UNUSED_MAP_73,                  0,  0 ; $73
+	map_const SILPH_FACTORY_1F,              14, 13 ; $72 ; marcelnote - was UNUSED_MAP_72
+	map_const SILPH_FACTORY_2F,              15, 14 ; $73 ; marcelnote - was UNUSED_MAP_73
 	map_const UNUSED_MAP_74,                  0,  0 ; $74
 	map_const UNUSED_MAP_75,                  0,  0 ; $75
 	map_const HALL_OF_FAME,                   5,  4 ; $76

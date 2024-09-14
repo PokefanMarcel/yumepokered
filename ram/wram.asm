@@ -2048,12 +2048,13 @@ wSSAnne2FCurScript:: db
 wSeafoamIslandsB3FCurScript:: db
 wRoute23CurScript:: db
 wSeafoamIslandsB4FCurScript:: db
-wRoute18GateCurScript:: db           ; marcelnote - renamed from wRoute18Gate1FCurScript (merging floors)
-wCinnabarVolcano1FB1FCurScript:: db  ; marcelnote - new location
-wCinnabarVolcano2FCurScript:: db     ; marcelnote - new location
-wCeladonGroveCurScript:: db          ; marcelnote - new location
-wMandarinSilphFactoryCurScript:: db  ; marcelnote - new location
-	ds 74                            ; marcelnote - adjusted down
+wRoute18GateCurScript:: db            ; marcelnote - renamed from wRoute18Gate1FCurScript (merging floors)
+wCinnabarVolcano1FB1FCurScript:: db   ; marcelnote - new location
+wCinnabarVolcano2FCurScript:: db      ; marcelnote - new location
+wCeladonGroveCurScript:: db           ; marcelnote - new location
+wSilphFactory1FCurScript:: db         ; marcelnote - new location
+wSilphFactory2FCurScript:: db         ; marcelnote - new location
+	ds 73                             ; marcelnote - adjusted down
 wGameProgressFlagsEnd::
 
 wPlayerGender:: ; marcelnote - add female player

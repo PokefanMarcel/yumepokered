@@ -19,7 +19,7 @@ PrepareOAMData::
 	ldh [hSpriteOffset2], a
 
 	ld d, HIGH(wSpriteStateData1)
-	ldh a, [hSpriteOffset2]
+	;ldh a, [hSpriteOffset2] ; marcelnote - value already in a
 	ld e, a
 	ld a, [de] ; [x#SPRITESTATEDATA1_PICTUREID]
 	and a
