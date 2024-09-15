@@ -13,6 +13,14 @@ _CardKeyFailText::
 	line "CARD KEY!"
 	done
 
+_CardKeyNeedsUpdateText:: ; marcelnote - added for SilphFactory2F
+	text "<PLAYER> used"
+	line "the CARD KEY."
+
+	para "Huh? Nothing"
+	line "happened."
+	done
+
 _TrainerNameText::
 	text_ram wcd6d
 	text ": @"

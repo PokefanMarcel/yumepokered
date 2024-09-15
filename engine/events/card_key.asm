@@ -25,6 +25,14 @@ PrintCardKeyText:
 	ld b, CARD_KEY
 	call IsItemInBag
 	jr z, .noCardKey
+	;;;;;;;; marcelnote - added for SilphFactory2F
+	ld a, [wCurMap]
+	cp SILPH_FACTORY_2F
+	jr nz, .notSilphFactory
+	CheckEvent EVENT_SILPH_FACTORY_2F_CARD_KEY_UPDATED
+	jr z, .cardKeyNeedsUpdate
+.notSilphFactory
+	;;;;;;;;
 	call GetCoordsInFrontOfPlayer
 	push de
 	tx_pre_id CardKeySuccessText
@@ -57,6 +65,10 @@ PrintCardKeyText:
 	tx_pre_id CardKeyFailText
 	ldh [hSpriteIndexOrTextID], a
 	jp PrintPredefTextID
+.cardKeyNeedsUpdate ; marcelnote - added for SilphFactory2F
+	tx_pre_id CardKeyNeedsUpdateText
+	ldh [hSpriteIndexOrTextID], a
+	jp PrintPredefTextID
 
 INCLUDE "data/events/card_key_maps.asm"
 
@@ -68,6 +80,10 @@ CardKeySuccessText::
 
 CardKeyFailText::
 	text_far _CardKeyFailText
+	text_end
+
+CardKeyNeedsUpdateText::
+	text_far _CardKeyNeedsUpdateText
 	text_end
 
 ; d = Y

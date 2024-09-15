@@ -1,5 +1,6 @@
 ; marcelnote - new location
 SilphFactory1F_Script:
+	call SilphFactory1FDoorCallbackScript
 	call EnableAutoTextBoxDrawing
 	ld hl, SilphFactory1FTrainerHeaders
 	ld de, SilphFactory1F_ScriptPointers
@@ -7,6 +8,28 @@ SilphFactory1F_Script:
 	call ExecuteCurMapScriptInTable
 	ld [wSilphFactory1FCurScript], a
 	ret
+
+SilphFactory1FDoorCallbackScript: ; marcelnote - adapted from RocketHideoutB4FDoorCallbackScript
+	ld hl, wCurrentMapScriptFlags
+	bit 5, [hl]
+	res 5, [hl]
+	ret z
+	CheckEvent EVENT_SILPH_FACTORY_1F_UNLOCKED_DOOR1
+	jr nz, .door_already_unlocked
+	CheckBothEventsSet EVENT_BEAT_SILPH_FACTORY_1F_TRAINER_4, EVENT_BEAT_SILPH_FACTORY_1F_TRAINER_5, 1
+	jr z, .unlock_door
+	ld a, $5f ; Door block
+	jr .set_block
+.unlock_door
+	ld a, SFX_GO_INSIDE
+	call PlaySound
+	SetEvent EVENT_ROCKET_HIDEOUT_4_DOOR_UNLOCKED
+.door_already_unlocked
+	ld a, $0e ; Floor block
+.set_block
+	ld [wNewTileBlockID], a
+	lb bc, 5, 5
+	predef_jump ReplaceTileBlock
 
 SilphFactory1F_ScriptPointers:
 	def_script_pointers

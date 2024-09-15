@@ -6,6 +6,7 @@ ENDM
 TextPredefs::
 	add_tx_pre CardKeySuccessText                   ; 01
 	add_tx_pre CardKeyFailText                      ; 02
+	add_tx_pre CardKeyNeedsUpdateText               ; 02bis ; marcelnote - added for SilphFactory2F
 	add_tx_pre RedBedroomPCText                     ; 03
 	;add_tx_pre RedBedroomSNESText                   ; 04
 	add_tx_pre PushStartText                        ; 05

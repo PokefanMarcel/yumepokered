@@ -73,20 +73,23 @@ _SilphFactory2FSilphWorkerMUpdateCardText::
 	line "CARD KEY so you"
 	cont "can access the"
 	cont "meeting room."
-	done
+	prompt
 
 _SilphFactory2FSilphWorkerMNoCardText::
-	text "You don't have"
-	line "your CARD KEY"
-	cont "with you."
+	text "Oh! You don't have"
+	line "your CARD KEY."
+	done
+
+_SilphFactory2FSilphWorkerMCardWasUpdatedText::
+	text "The CARD KEY"
+	line "was updated!"
 	done
 
 _SilphFactory2FSilphWorkerMHidHereText::
-	text "I hid here when"
-	line "TEAM ROCKET"
-	cont "took over."
+	text "I came here to"
+	line "hide when TEAM"
+	cont "ROCKET took over."
 
 	para "But now I can't"
-	line "figure out how"
-	cont "to get out!"
+	line "find the way out!"
 	done
