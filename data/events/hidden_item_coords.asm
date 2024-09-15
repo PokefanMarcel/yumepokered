@@ -59,5 +59,8 @@ HiddenItemCoords:
 	hidden_item CERULEAN_CITY,                 15,   8
 	hidden_item ROUTE_4,                       40,   3
 	hidden_item CINNABAR_VOLCANO_2F,           23,   5 ; marcelnote - new item
+	hidden_item SILPH_FACTORY_1F,              10,   4 ; marcelnote - new item
+	hidden_item SILPH_FACTORY_1F,              14,  12 ; marcelnote - new item
+	hidden_item SILPH_FACTORY_2F,              28,  14 ; marcelnote - new item
 	assert_max_table_length MAX_HIDDEN_ITEMS
 	db -1 ; end

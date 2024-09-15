@@ -344,5 +344,5 @@ SilphFactory2FScientist3Text:
 	text_end
 
 SilphFactory2FSilphWorkerMText:
-	text_far _SilphFactory2FSilphWorkerMText
+	text_far _SilphFactory2FSilphWorkerMUpdateCardText
 	text_end

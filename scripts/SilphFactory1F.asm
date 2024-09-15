@@ -22,7 +22,8 @@ SilphFactory1F_TextPointers:
 	dw_const SilphFactory1FRocket4Text, TEXT_SILPHFACTORY1F_ROCKET4
 	dw_const SilphFactory1FRocket5Text, TEXT_SILPHFACTORY1F_ROCKET5
 	dw_const SilphFactory1FRocket6Text, TEXT_SILPHFACTORY1F_ROCKET6
-	;dw_const PickUpItemText,              TEXT_ROCKETHIDEOUTB1F_ESCAPE_ROPE
+	dw_const PickUpItemText,            TEXT_SILPHFACTORY1F_RARE_CANDY
+	dw_const PickUpItemText,            TEXT_SILPHFACTORY1F_CARBOS
 
 SilphFactory1FTrainerHeaders:
 	def_trainers

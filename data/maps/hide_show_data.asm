@@ -119,7 +119,7 @@ MapHSPointers:
 	dw MandarinHotelHS ; $6F ; marcelnote - MandarinHotel
 	dw NoHS
 	dw LancesRoomHS ; $71 ; marcelnote - added for Lance rematch
-	dw NoHS
+	dw SilphFactory1FHS ; $72 ; marcelnote - SilphFactory1F
 	dw NoHS
 	dw NoHS
 	dw NoHS
@@ -595,6 +595,9 @@ MandarinHotelHS:
 CeladonGroveHS:
 	db CELADON_GROVE, CELADONGROVE_LEAF_STONE, SHOW
 	db CELADON_GROVE, CELADONGROVE_GREAT_BALL, SHOW
+SilphFactory1FHS:
+	db SILPH_FACTORY_1F, SILPHFACTORY1F_RARE_CANDY, SHOW
+	db SILPH_FACTORY_1F, SILPHFACTORY1F_CARBOS, SHOW
 	db $FF, $01, SHOW ; end
 	assert_table_length NUM_HS_OBJECTS + 1
 

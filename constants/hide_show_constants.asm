@@ -257,9 +257,11 @@ DEF SHOW EQU $15
 	const HS_MANDARIN_HOTEL_ITEM_1              ; marcelnote - Max Elixer
 	const HS_CELADON_GROVE_ITEM_1               ; marcelnote - Leaf Stone
 	const HS_CELADON_GROVE_ITEM_2               ; marcelnote - Great Ball
+	const HS_SILPH_FACTORY_1F_ITEM_1            ; marcelnote - Rare Candy
+	const HS_SILPH_FACTORY_1F_ITEM_2            ; marcelnote - Carbos
 DEF NUM_HS_OBJECTS EQU const_value
 	; max objects = 256
-	; current total = 259 – 11 – 5 (commented out) = 243
+	; current total = 261 – 11 – 5 (commented out) = 245
 
 ; marcelnote - the list continues here to allow for more than 256 HideShow objects
 	const_def

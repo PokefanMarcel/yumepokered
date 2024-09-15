@@ -87,6 +87,8 @@ HiddenObjectMaps:
 	db POKEMON_ACADEMY_3F4F ; marcelnote - new
 	db MANDARIN_POKECENTER_MART ; marcelnote - new
 	db MANDARIN_SURF_SHOP ; marcelnote - new
+	db SILPH_FACTORY_1F ; marcelnote - new
+	db SILPH_FACTORY_2F ; marcelnote - new
 	db -1 ; end
 
 HiddenObjectPointers:
@@ -179,6 +181,8 @@ HiddenObjectPointers:
 	dw PokemonAcademy3F4FHiddenObjects ; marcelnote - new
 	dw MandarinPokecenterMartHiddenObjects ; marcelnote - new
 	dw MandarinSurfShopHiddenObjects ; marcelnote - new
+	dw SilphFactory1FHiddenObjects ; marcelnote - new
+	dw SilphFactory2FHiddenObjects ; marcelnote - new
 
 MACRO hidden_object
 	db \2 ; y coord
@@ -688,4 +692,13 @@ MandarinSurfShopHiddenObjects:  ; marcelnote - new
 	hidden_object  1,  3, ANY_FACING, PrintNewSurfboardText
 	hidden_object  1,  5, ANY_FACING, PrintNewSurfboardText
 	hidden_object  7,  4, ANY_FACING, PrintNewSurfboardText
+	db -1 ; end
+
+SilphFactory1FHiddenObjects:  ; marcelnote - new
+	hidden_object 10,  4, MAX_ETHER, HiddenItems
+	hidden_object 12, 14, MAX_ELIXER, HiddenItems
+	db -1 ; end
+
+SilphFactory2FHiddenObjects:  ; marcelnote - new
+	hidden_object 28, 14, PP_UP, HiddenItems
 	db -1 ; end
