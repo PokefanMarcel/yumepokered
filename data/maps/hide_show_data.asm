@@ -120,7 +120,7 @@ MapHSPointers:
 	dw NoHS
 	dw LancesRoomHS ; $71 ; marcelnote - added for Lance rematch
 	dw SilphFactory1FHS ; $72 ; marcelnote - SilphFactory1F
-	dw NoHS
+	dw SilphFactory2FHS ; $73 ; marcelnote - SilphFactory2F
 	dw NoHS
 	dw NoHS
 	dw HallOfFameHS ; $76 ; marcelnote - added for Rival rematch
@@ -596,6 +596,10 @@ CeladonGroveHS:
 	db CELADON_GROVE, CELADONGROVE_LEAF_STONE, SHOW
 	db CELADON_GROVE, CELADONGROVE_GREAT_BALL, SHOW
 SilphFactory1FHS:
+	db SILPH_FACTORY_1F, SILPHFACTORY1F_ROCKET1, SHOW
+	db SILPH_FACTORY_1F, SILPHFACTORY1F_ROCKET2, SHOW
+	db SILPH_FACTORY_1F, SILPHFACTORY1F_ROCKET3, SHOW
+	db SILPH_FACTORY_1F, SILPHFACTORY1F_ROCKET4, SHOW
 	db SILPH_FACTORY_1F, SILPHFACTORY1F_RARE_CANDY, SHOW
 	db SILPH_FACTORY_1F, SILPHFACTORY1F_CARBOS, SHOW
 	db $FF, $01, SHOW ; end
@@ -617,6 +621,8 @@ CeladonGroveSouthGateHS:
 SaffronGymHS:
 	db SAFFRON_GYM, SAFFRONGYM_WILL, HIDE  ; marcelnote - postgame Bruno event
 	db SAFFRON_GYM, SAFFRONGYM_BRUNO, HIDE ; marcelnote - postgame Bruno event
+SilphFactory2FHS:
+	db SILPH_FACTORY_2F, SILPHFACTORY2F_ROCKET1, SHOW  ; marcelnote - Archer
 IndigoPlateauLobbyHS:
 	db INDIGO_PLATEAU_LOBBY, INDIGOPLATEAULOBBY_COOLTRAINER_F, SHOW
 	db INDIGO_PLATEAU_LOBBY, INDIGOPLATEAULOBBY_COOLTRAINER_F2, HIDE

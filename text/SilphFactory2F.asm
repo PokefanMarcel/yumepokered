@@ -33,9 +33,8 @@ _SilphFactory2FRocket1AfterBattleText::
 	line "be the end."
 
 	para "I will find"
-	line "GIOVANNI..."
-	cont "And I will"
-	cont "resurrect"
+	line "GIOVANNI... And"
+	cont "I will resurrect"
 	cont "TEAM ROCKET!"
 	done
 

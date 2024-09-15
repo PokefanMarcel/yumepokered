@@ -9,6 +9,13 @@ SilphFactory2F_Script:
 	ld [wSilphFactory2FCurScript], a
 	ret
 
+SilphFactory2FResetScripts:
+	xor a
+	ld [wJoyIgnore], a
+	ld [wSilphFactory2FCurScript], a
+	ld [wCurMapScript], a
+	ret
+
 SilphFactory2FGateCallbackScript: ; marcelnote - adapted from SilphCo9FGateCallbackScript
 	ld hl, wCurrentMapScriptFlags
 	bit 5, [hl]
@@ -94,6 +101,7 @@ SilphFactory2F_ScriptPointers:
 	dw_const SilphFactory2FDefaultScript,           SCRIPT_SILPHFACTORY2F_DEFAULT
 	dw_const DisplayEnemyTrainerTextAndStartBattle, SCRIPT_SILPHFACTORY2F_START_BATTLE
 	dw_const EndTrainerBattle,                      SCRIPT_SILPHFACTORY2F_END_BATTLE
+	dw_const SilphFactory2FRocketPostBattle,        SCRIPT_SILPHFACTORY2F_ROCKET_POST_BATTLE
 	dw_const SilphFactory2FPlayerSpinningScript,    SCRIPT_SILPHFACTORY2F_PLAYER_SPINNING
 
 SilphFactory2FDefaultScript:
@@ -378,6 +386,38 @@ SilphFactory2FPlayerSpinningScript:
 .LoadSpinnerArrow
 	farjp LoadSpinnerArrowTiles
 
+SilphFactory2FRocketPostBattle:
+	ld a, [wIsInBattle]
+	cp $ff
+	jr z, .lost
+	call UpdateSprites
+	ld a, TEXT_SILPHFACTORY2F_SILPH_ROCKET1_AFTER_BATTLE
+	ldh [hSpriteIndexOrTextID], a
+	call DisplayTextID
+	call Delay3
+	call GBFadeOutToBlack
+	SetEvent EVENT_BEAT_SILPH_FACTORY_2F_TRAINER_0
+	ld a, HS_SILPH_FACTORY_2F_ROCKET_1
+	ld [wMissableObjectIndex], a
+	predef HideObjectCont
+	ld a, HS_SILPH_FACTORY_1F_ROCKET_1
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	ld a, HS_SILPH_FACTORY_1F_ROCKET_2
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	ld a, HS_SILPH_FACTORY_1F_ROCKET_3
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	ld a, HS_SILPH_FACTORY_1F_ROCKET_4
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	call UpdateSprites
+	call Delay3
+	call GBFadeInFromBlack
+.lost
+	jp SilphFactory2FResetScripts
+
 
 SilphFactory2F_TextPointers:
 	def_text_pointers
@@ -387,24 +427,37 @@ SilphFactory2F_TextPointers:
 	dw_const SilphFactory2FScientist3Text,   TEXT_SILPHFACTORY2F_SCIENTIST3
 	dw_const SilphFactory2FSilphWorkerMText, TEXT_SILPHFACTORY2F_SILPH_WORKER_M
 	;dw_const PickUpItemText,                TEXT_ROCKETHIDEOUTB1F_ESCAPE_ROPE
+	dw_const SilphFactory2FRocket1AfterBattleText, TEXT_SILPHFACTORY2F_SILPH_ROCKET1_AFTER_BATTLE
 
 SilphFactory2FTrainerHeaders:
 	def_trainers
-SilphFactory2FTrainerHeader0:
-	trainer EVENT_BEAT_SILPH_FACTORY_2F_TRAINER_0, 0, SilphFactory2FRocket1BattleText, SilphFactory2FRocket1EndBattleText, SilphFactory2FRocket1AfterBattleText
+;SilphFactory2FTrainerHeader0:
+;	trainer EVENT_BEAT_SILPH_FACTORY_2F_TRAINER_0, 0, SilphFactory2FRocket1BattleText, SilphFactory2FRocket1EndBattleText, SilphFactory2FRocket1AfterBattleText
 	db -1 ; end
 
 SilphFactory2FRocket1Text:
 	text_asm
-	ld hl, SilphFactory2FTrainerHeader0
-	call TalkToTrainer
+	ld hl, .PreBattleText
+	call PrintText
+	ld hl, wd72d
+	set 6, [hl]
+	set 7, [hl]
+	ld hl, .EndBattleText
+	ld de, .EndBattleText
+	call SaveEndBattleTextPointers
+	ldh a, [hSpriteIndex]
+	ld [wSpriteIndex], a
+	call EngageMapTrainer
+	call InitBattleEnemyParameters
+	ld a, SCRIPT_SILPHFACTORY2F_ROCKET_POST_BATTLE
+	ld [wSilphFactory2FCurScript], a
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-SilphFactory2FRocket1BattleText:
+.PreBattleText:
 	text_far _SilphFactory2FRocket1BattleText
 	text_end
 
-SilphFactory2FRocket1EndBattleText:
+.EndBattleText:
 	text_far _SilphFactory2FRocket1EndBattleText
 	text_end
 

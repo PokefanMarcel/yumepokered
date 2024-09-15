@@ -257,11 +257,15 @@ DEF SHOW EQU $15
 	const HS_MANDARIN_HOTEL_ITEM_1              ; marcelnote - Max Elixer
 	const HS_CELADON_GROVE_ITEM_1               ; marcelnote - Leaf Stone
 	const HS_CELADON_GROVE_ITEM_2               ; marcelnote - Great Ball
+	const HS_SILPH_FACTORY_1F_ROCKET_1          ; marcelnote - Rocket 1
+	const HS_SILPH_FACTORY_1F_ROCKET_2          ; marcelnote - Rocket 2
+	const HS_SILPH_FACTORY_1F_ROCKET_3          ; marcelnote - Rocket 3
+	const HS_SILPH_FACTORY_1F_ROCKET_4          ; marcelnote - Rocket 4
 	const HS_SILPH_FACTORY_1F_ITEM_1            ; marcelnote - Rare Candy
 	const HS_SILPH_FACTORY_1F_ITEM_2            ; marcelnote - Carbos
 DEF NUM_HS_OBJECTS EQU const_value
 	; max objects = 256
-	; current total = 261 – 11 – 5 (commented out) = 245
+	; current total = 265 – 11 – 5 (end - start - commented out) = 249
 
 ; marcelnote - the list continues here to allow for more than 256 HideShow objects
 	const_def
@@ -270,6 +274,7 @@ DEF NUM_HS_OBJECTS EQU const_value
 	const HS_CELADON_GROVE_SOUTH_GATE_ROCKET ; blocking the way
 	const HS_SAFFRON_GYM_WILL                ; postgame Will
 	const HS_SAFFRON_GYM_BRUNO               ; postgame Bruno
+	const HS_SILPH_FACTORY_2F_ROCKET_1       ; Archer
 	const HS_INDIGO_PLATEAU_LOBBY_GIRL1      ; now moves after first defeating E4
 	const HS_INDIGO_PLATEAU_LOBBY_GIRL2      ; blocks way after first defeating E4
 	const HS_INDIGO_PLATEAU_LOBBY_RIVAL      ; appears after E4 reopens

@@ -151,7 +151,21 @@ SilphFactory1FRocket5EndBattleText:
 	text_end
 
 SilphFactory1FRocket5AfterBattleText:
+	text_asm
+	CheckEvent EVENT_BEAT_SILPH_FACTORY_2F_TRAINER_0
+	ld hl, .PostEventText
+	jr nz, .ArcherDefeated
+	ld hl, .AfterBattleText
+.ArcherDefeated
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+.AfterBattleText:
 	text_far _SilphFactory1FRocket5AfterBattleText
+	text_end
+
+.PostEventText:
+	text_far _SilphFactory1FRocket5PostEventText
 	text_end
 
 SilphFactory1FRocket6Text:
@@ -169,5 +183,19 @@ SilphFactory1FRocket6EndBattleText:
 	text_end
 
 SilphFactory1FRocket6AfterBattleText:
+	text_asm
+	CheckEvent EVENT_BEAT_SILPH_FACTORY_2F_TRAINER_0
+	ld hl, .PostEventText
+	jr nz, .ArcherDefeated
+	ld hl, .AfterBattleText
+.ArcherDefeated
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+.AfterBattleText:
 	text_far _SilphFactory1FRocket6AfterBattleText
+	text_end
+
+.PostEventText:
+	text_far _SilphFactory1FRocket6PostEventText
 	text_end

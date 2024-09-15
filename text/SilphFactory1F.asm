@@ -94,6 +94,16 @@ _SilphFactory1FRocket5AfterBattleText::
 	cont "the door!"
 	done
 
+_SilphFactory1FRocket5PostEventText::
+	text "Turns out the"
+	line "factory needed"
+	cont "workers, so they"
+	cont "hired us."
+
+	para "We'll even get new"
+	line "uniforms soon!"
+	done
+
 _SilphFactory1FRocket6BattleText::
 	text "You! You messed"
 	line "up our plans"
@@ -110,4 +120,12 @@ _SilphFactory1FRocket6AfterBattleText::
 	text "You cannot stop"
 	line "TEAM ROCKET's"
 	cont "plans!"
+	done
+
+_SilphFactory1FRocket6PostEventText::
+	text "I guess we're"
+	line "employees now..."
+
+	para "Crime was easier"
+	line "than this 9-to-5."
 	done
