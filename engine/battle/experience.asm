@@ -113,8 +113,8 @@ GainExperience:
 	ld b, 0
 	ld hl, wPartySpecies
 	add hl, bc
-	ld a, [hl] ; species
-	ld [wd0b5], a
+	ld a, [hl]
+	ld [wCurSpecies], a
 	call GetMonHeader
 	ld d, MAX_LEVEL
 	callfar CalcExperience ; get max exp
@@ -174,9 +174,9 @@ GainExperience:
 	ld [hl], a
 	ld bc, wPartyMon1Species - wPartyMon1Level
 	add hl, bc
-	ld a, [hl] ; species
-	ld [wd0b5], a
-	ld [wd11e], a
+	ld a, [hl]
+	ld [wCurSpecies], a
+	ld [wPokedexNum], a
 	call GetMonHeader
 	ld bc, (wPartyMon1MaxHP + 1) - wPartyMon1Species
 	add hl, bc
@@ -258,8 +258,8 @@ GainExperience:
 	call LoadScreenTilesFromBuffer1
 	xor a ; PLAYER_PARTY_DATA
 	ld [wMonDataLocation], a
-	ld a, [wd0b5]
-	ld [wd11e], a
+	ld a, [wCurSpecies]
+	ld [wPokedexNum], a
 	predef LearnMoveFromLevelUp
 	ld hl, wCanEvolveFlags
 	ld a, [wWhichPokemon]
@@ -313,7 +313,7 @@ DivideExpDataByNumMonsGainingExp:
 	jr nz, .countSetBitsLoop
 	cp $2
 	ret c ; return if only one mon is gaining exp
-	ld [wd11e], a ; store number of mons gaining exp
+	ld [wTempByteValue], a ; store number of mons gaining exp
 	ld hl, wEnemyMonBaseStats
 	ld c, wEnemyMonBaseExp + 1 - wEnemyMonBaseStats
 .divideLoop
@@ -321,7 +321,7 @@ DivideExpDataByNumMonsGainingExp:
 	ldh [hDividend], a
 	ld a, [hl]
 	ldh [hDividend + 1], a
-	ld a, [wd11e]
+	ld a, [wTempByteValue]
 	ldh [hDivisor], a
 	ld b, $2
 	call Divide ; divide value by number of mons gaining exp

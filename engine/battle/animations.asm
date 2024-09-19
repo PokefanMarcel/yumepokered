@@ -694,7 +694,7 @@ DoBallTossSpecialEffects:
 	ld a, [wIsInBattle]
 	cp 2 ; is it a trainer battle?
 	jr z, .isTrainerBattle
-	ld a, [wd11e]
+	ld a, [wPokeBallAnimData]
 	cp $10 ; is the enemy pokemon the Ghost Marowak?
 	ret nz
 ; if the enemy pokemon is the Ghost Marowak, make it dodge during the last 3 frames
@@ -2025,7 +2025,7 @@ ChangeMonPic:
 	jr z, .playerTurn
 	ld a, [wChangeMonPicEnemyTurnSpecies]
 	ld [wCurPartySpecies], a
-	ld [wd0b5], a
+	ld [wCurSpecies], a
 	xor a
 	ld [wSpriteFlipped], a
 	call GetMonHeader
@@ -2037,7 +2037,7 @@ ChangeMonPic:
 	push af
 	ld a, [wChangeMonPicPlayerTurnSpecies]
 	ld [wBattleMonSpecies2], a
-	ld [wd0b5], a
+	ld [wCurSpecies], a
 	call GetMonHeader
 	predef LoadMonBackPic
 	xor a ; TILEMAP_MON_PIC

@@ -1269,7 +1269,7 @@ MimicEffect:
 	add hl, bc
 	ld a, d
 	ld [hl], a
-	ld [wd11e], a
+	ld [wNamedObjectIndex], a
 	call GetMoveName
 	call PlayCurrentMoveAnimation
 	ld hl, MimicLearnedMoveText
@@ -1316,7 +1316,7 @@ DisableEffect:
 	pop hl
 	and a
 	jr z, .pickMoveToDisable ; loop until a non-00 move slot is found
-	ld [wd11e], a ; store move number
+	ld [wNamedObjectIndex], a ; store move number
 	push hl
 	ldh a, [hWhoseTurn]
 	and a
@@ -1361,7 +1361,7 @@ DisableEffect:
 	jr nz, .printDisableText
 	inc hl ; wEnemyDisabledMoveNumber
 .printDisableText
-	ld a, [wd11e] ; move number
+	ld a, [wNamedObjectIndex] ; move number
 	ld [hl], a
 	call GetMoveName
 	ld hl, MoveWasDisabledText
