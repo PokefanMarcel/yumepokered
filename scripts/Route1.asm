@@ -18,7 +18,7 @@ Route1OakPostBattleScript: ; marcelnote - postgame Oak battle
 	jr z, .lost
 	call UpdateSprites
 	ld a, TEXT_ROUTE1_OAK_POST_BATTLE
-	ldh [hSpriteIndexOrTextID], a
+	ldh [hTextID], a
 	call DisplayTextID
 	call Delay3
 	ld a, ROUTE1_OAK
@@ -69,7 +69,7 @@ Route1OakFalseStartScript: ; marcelnote - postgame Oak battle
 .turnSprites
 	call SetSpriteFacingDirectionAndDelay
 	ld a, TEXT_ROUTE1_OAK_ONE_MORE_THING
-	ldh [hSpriteIndexOrTextID], a
+	ldh [hTextID], a
 	call DisplayTextID
 	call Delay3
 	ld a, ROUTE1_OAK

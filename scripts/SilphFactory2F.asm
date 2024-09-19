@@ -429,7 +429,7 @@ SilphFactory2FRocketPostBattle:
 	jp z, SilphFactory2FResetScripts
 	call UpdateSprites
 	ld a, TEXT_SILPHFACTORY2F_SILPH_ROCKET1_AFTER_BATTLE
-	ldh [hSpriteIndexOrTextID], a
+	ldh [hTextID], a
 	call DisplayTextID
 	call Delay3
 	call GBFadeOutToBlack
@@ -454,7 +454,7 @@ SilphFactory2FRocketPostBattle:
 	call GBFadeInFromBlack
 	call Delay3
 	ld a, TEXT_SILPHFACTORY2F_LORELEI_ARRIVES
-	ldh [hSpriteIndexOrTextID], a
+	ldh [hTextID], a
 	call DisplayTextID
 	ld a, A_BUTTON | B_BUTTON | SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
 	ld [wJoyIgnore], a
@@ -501,7 +501,7 @@ SilphFactory2FLoreleiAfterBattleScript:
 	xor a
 	ld [wJoyIgnore], a
 	ld a, TEXT_SILPHFACTORY2F_LORELEI_TAKE_CARE
-	ldh [hSpriteIndexOrTextID], a
+	ldh [hTextID], a
 	call DisplayTextID
 	call Delay3
 	ld a, A_BUTTON | B_BUTTON | SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN

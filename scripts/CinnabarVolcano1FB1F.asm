@@ -95,7 +95,7 @@ CinnabarVolcano1FLanceGoesInScript: ; marcelnote - adapted from PokemonTower2F r
 	ldh [hSpriteFacingDirection], a
 	call SetSpriteFacingDirectionAndDelay
 	ld a, TEXT_CINNABARVOLCANO1F_LANCE_CAME_IN_HASTE
-	ldh [hSpriteIndexOrTextID], a
+	ldh [hTextID], a
 	call DisplayTextID
 	xor a
 	ldh [hJoyHeld], a
@@ -148,7 +148,7 @@ CinnabarVolcano1FLanceExitsScript:
 
 CinnabarVolcanoB1FLanceTogetherScript:
 	ld a, TEXT_CINNABARVOLCANOB1F_LANCE_TOGETHER
-	ldh [hSpriteIndexOrTextID], a
+	ldh [hTextID], a
 	call DisplayTextID
 	ld a, SCRIPT_CINNABARVOLCANOB1F_PLAYER_MOVES_TO_CHARIZARD
 	ld [wCinnabarVolcano1FB1FCurScript], a
@@ -186,7 +186,7 @@ CinnabarVolcanoB1FCharizardBattleStartsScript:
 	and a
 	ret nz
 	ld a, CINNABARVOLCANOB1F_CHARIZARD ; load the sprite ID so that it remains
-	ldh [hSpriteIndexOrTextID], a      ; during the pre-battle animation
+	ldh [hTextID], a      ; during the pre-battle animation
 	ld a, CHARIZARD
 	ld [wCurOpponent], a
 	ld a, 60
@@ -201,13 +201,13 @@ CinnabarVolcanoB1FCharizardBattleScript:
 	cp $ff
 	jp z, CinnabarVolcano1FB1FDefaultScript
 	ld a, TEXT_CINNABARVOLCANOB1F_LANCE_POKE_BALL
-	ldh [hSpriteIndexOrTextID], a
+	ldh [hTextID], a
 	call DisplayTextID
 	ld a, HS_CINNABAR_VOLCANO_B1F_CHARIZARD
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	ld a, TEXT_CINNABARVOLCANOB1F_CHARIZARD_CAUGHT
-	ldh [hSpriteIndexOrTextID], a
+	ldh [hTextID], a
 	call DisplayTextID
 	ld de, .LanceMovement
 	ld a, CINNABARVOLCANOB1F_LANCE
@@ -236,7 +236,7 @@ CinnabarVolcanoB1FLanceGreatJobScript:
 	xor a
 	ld [wJoyIgnore], a
 	ld a, TEXT_CINNABARVOLCANOB1F_LANCE_GREAT_JOB
-	ldh [hSpriteIndexOrTextID], a
+	ldh [hTextID], a
 	call DisplayTextID
 	call GBFadeOutToBlack
 	ld a, HS_CINNABAR_VOLCANO_B1F_LANCE

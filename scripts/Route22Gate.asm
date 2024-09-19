@@ -36,7 +36,7 @@ Route22GateDefaultScript: ; marcelnote - adapted for 2nd guard, will have to be 
 	ret nz
 	ld a, TEXT_ROUTE22GATE_GUARD2
 .loadTextID
-	ldh [hSpriteIndexOrTextID], a
+	ldh [hTextID], a
 	jp DisplayTextID
 
 Route22GateScriptCoords:

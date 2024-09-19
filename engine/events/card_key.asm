@@ -36,7 +36,7 @@ PrintCardKeyText:
 	call GetCoordsInFrontOfPlayer
 	push de
 	tx_pre_id CardKeySuccessText
-	ldh [hSpriteIndexOrTextID], a
+	ldh [hTextID], a
 	call PrintPredefTextID
 	pop de
 	srl d
@@ -63,11 +63,11 @@ PrintCardKeyText:
 	jp PlaySound
 .noCardKey
 	tx_pre_id CardKeyFailText
-	ldh [hSpriteIndexOrTextID], a
+	ldh [hTextID], a
 	jp PrintPredefTextID
 .cardKeyNeedsUpdate ; marcelnote - added for SilphFactory2F
 	tx_pre_id CardKeyNeedsUpdateText
-	ldh [hSpriteIndexOrTextID], a
+	ldh [hTextID], a
 	jp PrintPredefTextID
 
 INCLUDE "data/events/card_key_maps.asm"

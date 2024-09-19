@@ -23,7 +23,7 @@ Route16Gate1FDefaultScript:
 	call ArePlayerCoordsInArray
 	ret nc
 	ld a, TEXT_ROUTE16GATE1F_GUARD_WAIT_UP
-	ldh [hSpriteIndexOrTextID], a
+	ldh [hTextID], a
 	call DisplayTextID
 	xor a
 	ldh [hJoyHeld], a
@@ -64,7 +64,7 @@ Route16Gate1FPlayerMovingUpScript:
 
 Route16Gate1FGuardScript:
 	ld a, TEXT_ROUTE16GATE1F_GUARD
-	ldh [hSpriteIndexOrTextID], a
+	ldh [hTextID], a
 	call DisplayTextID
 	ld a, $1
 	ld [wSimulatedJoypadStatesIndex], a

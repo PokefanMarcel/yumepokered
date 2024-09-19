@@ -47,20 +47,20 @@ SaffronGymSabrinaPostBattle:
 
 SaffronGymSabrinaReceiveTM46Script:
 	ld a, TEXT_SAFFRONGYM_SABRINA_MARSH_BADGE_INFO
-	ldh [hSpriteIndexOrTextID], a
+	ldh [hTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_SABRINA
 	lb bc, TM_PSYWAVE, 1
 	call GiveItem
 	jr nc, .BagFull
 	ld a, TEXT_SAFFRONGYM_SABRINA_RECEIVED_TM46
-	ldh [hSpriteIndexOrTextID], a
+	ldh [hTextID], a
 	call DisplayTextID
 	SetEvent EVENT_GOT_TM46
 	jr .gymVictory
 .BagFull
 	ld a, TEXT_SAFFRONGYM_SABRINA_TM46_NO_ROOM
-	ldh [hSpriteIndexOrTextID], a
+	ldh [hTextID], a
 	call DisplayTextID
 .gymVictory
 	ld hl, wObtainedBadges
@@ -81,7 +81,7 @@ SaffronGymBrunoArrivesScript: ; marcelnote - postgame Bruno event
 	ld [wMissableObjectIndex], a
 	predef ShowObjectCont
 	ld a, TEXT_SAFFRONGYM_BRUNO_ARRIVES
-	ldh [hSpriteIndexOrTextID], a
+	ldh [hTextID], a
 	call DisplayTextID
 	ld a, A_BUTTON | B_BUTTON | SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
 	ld [wJoyIgnore], a
@@ -147,7 +147,7 @@ SaffronGymBrunoInspiringScript: ; marcelnote - postgame Bruno event
 	xor a
 	ld [wJoyIgnore], a
 	ld a, TEXT_SAFFRONGYM_BRUNO_INSPIRING
-	ldh [hSpriteIndexOrTextID], a
+	ldh [hTextID], a
 	call DisplayTextID
 	call GBFadeOutToBlack
 	ld a, HS_SAFFRON_GYM_BRUNO

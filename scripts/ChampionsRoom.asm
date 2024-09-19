@@ -62,7 +62,7 @@ ChampionsRoomRivalReadyToBattleScript:
 	ld a, TEXT_CHAMPIONSROOM_RIVAL
 .rematch
 	;;;;;;
-	ldh [hSpriteIndexOrTextID], a
+	ldh [hTextID], a
 	call DisplayTextID
 	call Delay3
 	ld hl, wStatusFlags3
@@ -79,7 +79,7 @@ ChampionsRoomRivalReadyToBattleScript:
 	;;;;;;
 	call SaveEndBattleTextPointers
 	ld a, TEXT_CHAMPIONSROOM_RIVAL ; marcelnote - have to reload the sprite ID so that it doesn't
-	ldh [hSpriteIndexOrTextID], a  ;              disappear during the pre-battle animation
+	ldh [hTextID], a  ;              disappear during the pre-battle animation
 	ld a, OPP_RIVAL3
 	ld [wCurOpponent], a
 
@@ -124,7 +124,7 @@ ChampionsRoomRivalDefeatedScript:
 	CheckEvent EVENT_BECAME_CHAMPION ; marcelnote - added for Rival rematch
 	jr nz, .rematch
 	ld a, TEXT_CHAMPIONSROOM_RIVAL
-	ldh [hSpriteIndexOrTextID], a
+	ldh [hTextID], a
 	call ChampionsRoom_DisplayTextID_AllowABSelectStart
 	ld a, CHAMPIONSROOM_RIVAL
 	ldh [hSpriteIndex], a
@@ -134,7 +134,7 @@ ChampionsRoomRivalDefeatedScript:
 	ret
 .rematch ; marcelnote - added for Rival rematch
 	ld a, TEXT_CHAMPIONSROOM_RIVAL_REMATCH
-	ldh [hSpriteIndexOrTextID], a
+	ldh [hTextID], a
 	call ChampionsRoom_DisplayTextID_AllowABSelectStart
 	ld a, CHAMPIONSROOM_RIVAL
 	ldh [hSpriteIndex], a
@@ -146,7 +146,7 @@ ChampionsRoomRivalDefeatedScript:
 ChampionsRoomOakArrivesScript:
 	farcall Music_Cities1AlternateTempo
 	ld a, TEXT_CHAMPIONSROOM_OAK
-	ldh [hSpriteIndexOrTextID], a
+	ldh [hTextID], a
 	call ChampionsRoom_DisplayTextID_AllowABSelectStart
 	ld a, CHAMPIONSROOM_OAK
 	ldh [hSpriteIndex], a
@@ -187,7 +187,7 @@ ChampionsRoomOakCongratulatesPlayerScript:
 	ldh [hSpriteFacingDirection], a
 	call SetSpriteFacingDirectionAndDelay
 	ld a, TEXT_CHAMPIONSROOM_OAK_CONGRATULATES_PLAYER
-	ldh [hSpriteIndexOrTextID], a
+	ldh [hTextID], a
 	call ChampionsRoom_DisplayTextID_AllowABSelectStart
 	ld a, SCRIPT_CHAMPIONSROOM_OAK_DISAPPOINTED_WITH_RIVAL
 	ld [wChampionsRoomCurScript], a
@@ -200,7 +200,7 @@ ChampionsRoomOakDisappointedWithRivalScript:
 	ldh [hSpriteFacingDirection], a
 	call SetSpriteFacingDirectionAndDelay
 	ld a, TEXT_CHAMPIONSROOM_OAK_DISAPPOINTED_WITH_RIVAL
-	ldh [hSpriteIndexOrTextID], a
+	ldh [hTextID], a
 	call ChampionsRoom_DisplayTextID_AllowABSelectStart
 	ld a, SCRIPT_CHAMPIONSROOM_OAK_COME_WITH_ME
 	ld [wChampionsRoomCurScript], a
@@ -213,7 +213,7 @@ ChampionsRoomOakComeWithMeScript:
 	ldh [hSpriteFacingDirection], a
 	call SetSpriteFacingDirectionAndDelay
 	ld a, TEXT_CHAMPIONSROOM_OAK_COME_WITH_ME
-	ldh [hSpriteIndexOrTextID], a
+	ldh [hTextID], a
 	call ChampionsRoom_DisplayTextID_AllowABSelectStart
 	ld de, OakExitChampionsRoomMovement
 	ld a, CHAMPIONSROOM_OAK

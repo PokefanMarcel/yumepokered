@@ -109,7 +109,7 @@ HallOfFameCongratulationsScript:
 	ld a, TEXT_HALLOFFAME_OAK
 .rematch2
 	;;;;;;
-	ldh [hSpriteIndexOrTextID], a
+	ldh [hTextID], a
 	call DisplayTextID
 	ld a, A_BUTTON | B_BUTTON | SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
 	ld [wJoyIgnore], a

@@ -1808,7 +1808,7 @@ _WillBeTradedText::
 	done
 
 _TextIDErrorText::
-	text_decimal hSpriteIndexOrTextID, 1, 2
+	text_decimal hTextID, 1, 2
 	text " ERROR."
 	done
 
