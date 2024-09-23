@@ -126,9 +126,12 @@ HallOfFameCongratulationsScript:
 	ld [wMissableObjectIndex], a
 	predef ShowObjectCont
 	; marcelnote - make roaming E4 members appear
-	ld a, HS_SEAFOAM_ISLANDS_1F_LORELEI ; postgame Lorelei
+	ld a, HS_SILPH_FACTORY_2F_LORELEI_1 ; postgame Lorelei
 	ld [wMissableObjectIndex], a
-	predef ShowObject
+	predef ShowObjectCont
+	ld a, HS_SILPH_FACTORY_2F_SCIENTIST_1 ; postgame Lorelei event, scientist blocking factory stairs
+	ld [wMissableObjectIndex], a
+	predef HideObjectCont
 	ld a, HS_FIGHTING_DOJO_BRUNO        ; postgame Bruno
 	ld [wMissableObjectIndex], a
 	predef ShowObject

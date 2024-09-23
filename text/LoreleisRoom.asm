@@ -37,16 +37,42 @@ _LoreleisRoomLoreleiAfterBattleText::
 	done
 
 _LoreleisRoomLoreleiRematchBeforeBattleText:: ; marcelnote - Lorelei rematch text
-	text "Let's rematch!"
+	text "Welcome back to"
+	line "#MON LEAGUE,"
+	cont "champion!"
+
+	para "After battling"
+	line "under the warm"
+	cont "island sun, my"
+	cont "#MON are eager"
+	cont "for a fresh new"
+	cont "challenge!"
+
+	para "Bundle up, it's"
+	line "about to get"
+	cont "freezing cold!"
 	done
 
 _LoreleisRoomLoreleiRematchEndBattleText:: ; marcelnote - Lorelei rematch text
-	text "Lost"
-	line "again!"
+	text "You've"
+	line "melted us worse"
+	cont "than a beach day!"
 	prompt
 
 _LoreleisRoomLoreleiRematchAfterBattleText:: ; marcelnote - Lorelei rematch text
-	text "You win again!"
+	text "Your dedication's"
+	line "inspired me to"
+	cont "rethink my path."
+
+	para "I will soon step"
+	line "back from the"
+	cont "ELITE FOUR, and"
+	cont "focus on helping"
+	cont "my home instead."
+
+	para "But while I am"
+	line "still here, I'll"
+	cont "give it my all!"
 	done
 
 _LoreleisRoomLoreleiDontRunAwayText::

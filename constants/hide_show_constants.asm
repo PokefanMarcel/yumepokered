@@ -227,7 +227,6 @@ DEF SHOW EQU $15
 	const HS_CERULEAN_CAVE_B1F_ITEM_2      ; D3 X
 	const HS_VICTORY_ROAD_1F_ITEM_1        ; D4 X
 	const HS_VICTORY_ROAD_1F_ITEM_2        ; D5 X
-	const HS_SEAFOAM_ISLANDS_1F_LORELEI    ; D8 ; marcelnote - postgame Lorelei
 	const HS_SEAFOAM_ISLANDS_1F_BOULDER_1  ; D9
 	const HS_SEAFOAM_ISLANDS_1F_BOULDER_2  ; DA
 	const HS_SEAFOAM_ISLANDS_B1F_BOULDER_1 ; DB
@@ -265,16 +264,20 @@ DEF SHOW EQU $15
 	const HS_SILPH_FACTORY_1F_ITEM_2            ; marcelnote - Carbos
 DEF NUM_HS_OBJECTS EQU const_value
 	; max objects = 256
-	; current total = 265 – 11 – 5 (end - start - commented out) = 249
+	; current total = 264 – 11 – 5 (end - start - commented out) = 248
 
 ; marcelnote - the list continues here to allow for more than 256 HideShow objects
+;              but cannot put items which can be picked up
 	const_def
 	const HS_REDS_YELLOWS_HOUSES_ASLEEP      ; Yellow asleep
 	const HS_ROUTE_1_OAK                     ; postgame Oak battle
 	const HS_CELADON_GROVE_SOUTH_GATE_ROCKET ; blocking the way
 	const HS_SAFFRON_GYM_WILL                ; postgame Will
 	const HS_SAFFRON_GYM_BRUNO               ; postgame Bruno
+	const HS_SILPH_FACTORY_2F_SCIENTIST_1    ; scientist blocking the way
+	const HS_SILPH_FACTORY_2F_LORELEI_1      ; postgame Lorelei
 	const HS_SILPH_FACTORY_2F_ROCKET_1       ; Archer
+	const HS_SILPH_FACTORY_2F_LORELEI_2      ; postgame Lorelei
 	const HS_INDIGO_PLATEAU_LOBBY_GIRL1      ; now moves after first defeating E4
 	const HS_INDIGO_PLATEAU_LOBBY_GIRL2      ; blocks way after first defeating E4
 	const HS_INDIGO_PLATEAU_LOBBY_RIVAL      ; appears after E4 reopens
@@ -292,4 +295,4 @@ DEF NUM_HS_OBJECTS EQU const_value
 	const HS_HALL_OF_FAME_RIVAL              ; for Rival rematches
 DEF NUM_HS_OBJECTS_CONT EQU const_value
 	; max objects = 256
-	; current total = 285 – 265 = 20
+	; current total = 294 – 270 = 24

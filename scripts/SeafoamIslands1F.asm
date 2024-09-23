@@ -44,37 +44,5 @@ Seafoam1HolesCoords:
 
 SeafoamIslands1F_TextPointers:
 	def_text_pointers
-	dw_const SeafoamIslands1FLoreleiText, TEXT_SEAFOAMISLANDS1F_LORELEI ; marcelnote - postgame Lorelei
 	dw_const BoulderText, TEXT_SEAFOAMISLANDS1F_BOULDER1
 	dw_const BoulderText, TEXT_SEAFOAMISLANDS1F_BOULDER2
-
-SeafoamIslands1FLoreleiText: ; marcelnote - postgame Lorelei
-	text_asm
-	ld hl, .text
-	call PrintText
-	call GBFadeOutToBlack
-	ld a, HS_SEAFOAM_ISLANDS_1F_LORELEI
-	ld [wMissableObjectIndex], a
-	predef HideObject
-	call UpdateSprites
-	call Delay3
-	SetEvent EVENT_POSTGAME_LORELEI
-	CheckBothEventsSet EVENT_POSTGAME_BRUNO, EVENT_POSTGAME_AGATHA ; sets Z flag when events are set
-	jr nz, .end
-	CheckBothEventsSet EVENT_POSTGAME_LANCE, EVENT_POSTGAME_RIVAL
-	jr nz, .end
-	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL1 ; marcelnote - remove girl from E4 entrance
-	ld [wMissableObjectIndex], a
-	predef ShowObjectCont
-	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL2 ; marcelnote - remove girl from E4 entrance
-	ld [wMissableObjectIndex], a
-	predef HideObjectCont
-	ld a, HS_INDIGO_PLATEAU_LOBBY_RIVAL ; marcelnote - show Rival
-	ld [wMissableObjectIndex], a
-	predef ShowObjectCont
-.end
-	call GBFadeInFromBlack
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-.text
-	text_far _PokemonTower1FAgathaText
-	text_end
