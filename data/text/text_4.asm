@@ -22,6 +22,10 @@ _RepelWoreOffText::
 	line "wore off."
 	done
 
+_RepelUseAnotherText:: ; marcelnote - added prompt to reuse repel
+	text "Use another?"
+	done
+
 _PokemartBuyingGreetingText::
 	text "Take your time."
 	done

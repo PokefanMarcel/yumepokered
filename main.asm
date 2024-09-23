@@ -361,3 +361,4 @@ SECTION "bank1F", ROMX ; marcelnote - new
 
 INCLUDE "engine/battle/exp_bar_print.asm"
 INCLUDE "engine/menus/league_pc.asm" ; marcelnote - moved from SECTION "Itemfinder 2"
+INCLUDE "engine/overworld/use_another_repel.asm" ; marcelnote - copied from PureRGB

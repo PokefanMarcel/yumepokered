@@ -11,7 +11,7 @@ This project draws a lot from other existing works, notably
 
 - pret's [pokered](https://github.com/pret/pokered) disassemby project and their many useful tutorials,
 - [Shinpokered](https://github.com/jojobear13/shinpokered): experience bar, many many bug fixes,
-- [PureRGB](https://github.com/Vortyne/pureRGB): overworld HM use, space management, many code snippets,
+- [PureRGB](https://github.com/Vortyne/pureRGB): overworld HM use, space management, repel reuse prompt, many code snippets,
 - [Extreme Yellow](https://github.com/RainbowMetalPigeon/ExtremeYellow): overworld HM use, dynamic TM seller,
 - [Yellow Legacy](https://github.com/cRz-Shadows/Pokemon_Yellow_Legacy): updated gym leader sprites, inspiration for some balance changes,
 - and many others...

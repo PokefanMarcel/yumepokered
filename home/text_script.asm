@@ -206,10 +206,12 @@ PlayerBlackedOutText::
 	text_end
 
 DisplayRepelWoreOffText::
-	ld hl, RepelWoreOffText
+	ld hl, .RepelWoreOffText
 	call PrintText
-	jp AfterDisplayingTextID
+	;jp AfterDisplayingTextID
+	callfar UseAnotherRepel ; PureRGBnote: ADDED: when repel wears off ask to use another if available
+	jp CloseTextDisplay
 
-RepelWoreOffText::
+.RepelWoreOffText:
 	text_far _RepelWoreOffText
 	text_end

@@ -28,18 +28,19 @@ PredefPointers::
 	add_predef InitPlayerData
 	add_predef FlagActionPredef
 	add_predef HideObject
-	add_predef HideObjectCont ; marcelnote - for extended HideShow list, testing
+	add_predef HideObjectCont ; marcelnote - for extended HideShow list
 	add_predef IsObjectHidden
 	add_predef ApplyOutOfBattlePoisonDamage
 	add_predef AnyPartyAlive
 	add_predef ShowObject
-	add_predef ShowObjectCont ; marcelnote - for extended HideShow list, testing
+	add_predef ShowObjectCont ; marcelnote - for extended HideShow list
 	add_predef ReplaceTileBlock
 	add_predef InitPlayerData2
 	add_predef LoadTilesetHeader
 	add_predef LearnMoveFromLevelUp
 	add_predef LearnMove
 	add_predef GetQuantityOfItemInBag
+	add_predef GetIndexOfItemInBag  ; marcelnote - copied from PureRGB
 	add_predef CheckForHiddenObjectOrBookshelfOrCardKeyDoor, $03 ; home bank
 	add_predef GiveItem, $03 ; home bank
 	add_predef ChangeBGPalColor0_4Frames
