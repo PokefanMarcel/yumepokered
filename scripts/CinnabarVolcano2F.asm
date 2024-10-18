@@ -3,12 +3,12 @@
 ; boulder events are reset in CinnabarIsland map
 CinnabarVolcano2F_Script:
 	ld hl, wCurrentMapScriptFlags
-	bit 6, [hl] ; this is set upon entering the map
-	res 6, [hl]
+	bit BIT_CUR_MAP_LOADED_2, [hl] ; this is set upon entering the map
+	res BIT_CUR_MAP_LOADED_2, [hl]
 	call nz, CinnabarVolcano2FCheckBoulder1EventScript ; check first boulder upon entering
 	ld hl, wCurrentMapScriptFlags
-	bit 5, [hl] ; this is set upon entering the map
-	res 5, [hl]
+	bit BIT_CUR_MAP_LOADED_1, [hl] ; this is set upon entering the map
+	res BIT_CUR_MAP_LOADED_1, [hl]
 	call nz, CinnabarVolcano2FCheckBouldersEventScript
 	call EnableAutoTextBoxDrawing
 	ld hl, CinnabarVolcano2FTrainerHeaders

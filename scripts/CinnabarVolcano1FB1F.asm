@@ -1,8 +1,8 @@
 ; marcelnote - new location
 CinnabarVolcano1FB1F_Script:
 	ld hl, wCurrentMapScriptFlags
-	bit 5, [hl] ; this is set upon entering the map
-	res 5, [hl]
+	bit BIT_CUR_MAP_LOADED_1, [hl] ; this is set upon entering the map
+	res BIT_CUR_MAP_LOADED_1, [hl]
 	call nz, CinnabarVolcano1FB1FCheckBoulderEventScript
 	call EnableAutoTextBoxDrawing
 	; new
