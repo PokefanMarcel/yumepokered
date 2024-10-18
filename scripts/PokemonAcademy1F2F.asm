@@ -307,7 +307,7 @@ PokemonAcademy2FBlackboard:
 	call DisplayListMenuID
 	jr c, .done
 	ld hl, PokemonAcademy2FBlackboardTypeTextPointers
-	ld a, [wcf91]
+	ld a, [wCurItem]
 	sub NORMAL_ITEM
 	add a
 	ld d, $0

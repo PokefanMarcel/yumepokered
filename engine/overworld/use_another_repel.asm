@@ -26,7 +26,7 @@ UseAnotherRepel::
 	and a
 	ret nz
 	ld a, b
-	ld [wcf91], a	;load item to be used
+	ld [wCurItem], a	;load item to be used
 	ld [wd11e], a	;load item so its name can be grabbed
 	predef GetIndexOfItemInBag
 	ld a, b
