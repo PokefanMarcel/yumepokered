@@ -257,11 +257,11 @@ UsedFlashText::
 
 
 ; marcelnote - adapted from shinpokered function
-; Searches for a specific move in the party and stores nickname of corresponding Pokémon in wcd6d
+; Searches for a specific move in the party and stores nickname of corresponding Pokémon in wNameBuffer
 ; input:  d = which move ID to look for (SURF, CUT...)
 ; output: z flag = whether the move was found (z = not found; nz = found)
 ;         a = location of the Pokémon with the move (0 = first mon, 1 = second mon..., 5 = sixth mon)
-;         [wcd6d] = nickname of Pokémon who has the move
+;         [wNameBuffer] = nickname of Pokémon who has the move
 IsMoveInParty::
 	ld a, [wPartyCount]
 	and a
@@ -294,7 +294,7 @@ IsMoveInParty::
     ld bc, wPartyMon2Nick - wPartyMon1Nick
     push af
     call AddNTimes ; brings hl to the address wPartyMon{1+a}Nick
-    ld de, wcd6d
+    ld de, wNameBuffer
     call CopyData ; copy bc bytes from hl to de
     pop af
     inc b ; sets nz since b=0 after CopyData

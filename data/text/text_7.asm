@@ -220,7 +220,7 @@ _WantToCutText::
 	done
 
 _UsedFlashText::
-	text_ram wcd6d
+	text_ram wNameBuffer
 	text " lights"
 	line "the area!"
 	prompt
