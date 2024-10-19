@@ -4,7 +4,7 @@ Based on the pokered disassembly.
 
 Two common criticisms of Pokémon Red and Blue is that the world can feel empty and underdeveloped, and that many Pokémon have very limited or non-ideal moves.
 This hack focuses on addressing these two issues by
-1. **adding new storyline events**, especially in the post-game, and **adding new locations**, in a way which maintains the authenticity of the Gen 1 experience;
+1. **adding new storyline events**, especially in the post-game, as well as **new locations**, in a way which maintains the authenticity of the Gen 1 experience;
 2. parsimoniously **rebalancing moves and learnsets**, making more Pokémon viable and thus giving more team-building options to the player.
 
 - [Move changes](docs/move_changes.md)
