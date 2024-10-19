@@ -4,6 +4,7 @@ Based on the pokered disassembly.
 
 More to come.
 
+- [Move changes](docs/move_changes.md)
 
 ## Credits
 
