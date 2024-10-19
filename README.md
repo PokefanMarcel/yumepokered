@@ -14,7 +14,7 @@ More to come.
 
 ## Credits
 
-This project draws a lot from other existing works, notably
+This project owes a lot to other existing works, notably
 
 - pret's [pokered](https://github.com/pret/pokered) disassemby project and their many useful tutorials,
 - [Shinpokered](https://github.com/jojobear13/shinpokered): experience bar, many many bug fixes,
