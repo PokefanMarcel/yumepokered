@@ -40,7 +40,7 @@ Move type changes are primarily meant to give STAB options to Mons who were lack
 
 ## Other changes
 
-Most other changes were made to make most moves at least somewhat viable, or to give them a niche.
+Most other changes were made to increase the viability of some subpar moves, or to give them a niche.
 In rare cases moves were nerfed, most notably DIG.
 
 
