@@ -1,23 +1,10 @@
 ViridianMart_Script:
-	call ViridianMartCheckParcelDeliveredScript
+	; marcelnote - deleted ViridianMartCheckParcelDeliveredScript to handle the event differently
+	;call ViridianMartCheckParcelDeliveredScript
 	call EnableAutoTextBoxDrawing
 	ld hl, ViridianMart_ScriptPointers
 	ld a, [wViridianMartCurScript]
 	jp CallFunctionInTable
-
-ViridianMartCheckParcelDeliveredScript:
-	CheckEvent EVENT_GOT_POKEDEX ; marcelnote - deleted redundant event
-	jr nz, .delivered_parcel
-	ld hl, ViridianMart_TextPointers
-	jr .done
-.delivered_parcel
-	ld hl, ViridianMart_TextPointers2
-.done
-	ld a, l
-	ld [wCurMapTextPtr], a
-	ld a, h
-	ld [wCurMapTextPtr+1], a
-	ret
 
 ViridianMart_ScriptPointers:
 	def_script_pointers
@@ -59,29 +46,18 @@ ViridianMartOaksParcelScript:
 	ld a, HS_REDS_YELLOWS_HOUSES_ASLEEP ; marcelnote - hide Yellow asleep
 	ld [wMissableObjectIndex], a
 	predef HideObjectCont
-	; should also switch her dad to still sprite with new dialogue
+	; should also switch Yellow's dad to a still sprite with new dialogue
 	ld a, SCRIPT_VIRIDIANMART_NOOP
 	ld [wViridianMartCurScript], a
 	ret
 
-ViridianMart_TextPointers:
-	dw ViridianMartClerkSayHiToOakText
-	dw ViridianMartYoungsterText
-	dw ViridianMartCooltrainerMText
-	const_def 4
+ViridianMart_TextPointers: ; marcelnote - merged ViridianMart_TextPointers and ViridianMart_TextPointers2
+	def_text_pointers
+	dw_const ViridianMartClerkText,                      TEXT_VIRIDIANMART_CLERK
+	dw_const ViridianMartYoungsterText,                  TEXT_VIRIDIANMART_YOUNGSTER
+	dw_const ViridianMartCooltrainerMText,               TEXT_VIRIDIANMART_COOLTRAINER_M
 	dw_const ViridianMartClerkYouCameFromPalletTownText, TEXT_VIRIDIANMART_CLERK_YOU_CAME_FROM_PALLET_TOWN
 	dw_const ViridianMartClerkParcelQuestText,           TEXT_VIRIDIANMART_CLERK_PARCEL_QUEST
-
-ViridianMart_TextPointers2:
-	; This becomes the primary text pointers table when Oak's parcel has been delivered.
-	def_text_pointers
-	dw_const ViridianMartClerkText,        TEXT_VIRIDIANMART_CLERK
-	dw_const ViridianMartYoungsterText,    TEXT_VIRIDIANMART_YOUNGSTER
-	dw_const ViridianMartCooltrainerMText, TEXT_VIRIDIANMART_COOLTRAINER_M
-
-ViridianMartClerkSayHiToOakText:
-	text_far _ViridianMartClerkSayHiToOakText
-	text_end
 
 ViridianMartClerkYouCameFromPalletTownText:
 	text_far _ViridianMartClerkYouCameFromPalletTownText
@@ -100,5 +76,49 @@ ViridianMartCooltrainerMText:
 	text_far _ViridianMartCooltrainerMText
 	text_end
 
+; marcelnote - remaking this to merge ViridianMart_TextPointers and ViridianMart_TextPointers2
 ViridianMartClerkText: ; marcelnote - moved Mart inventories
-	script_mart POKE_BALL, ANTIDOTE, PARLYZ_HEAL, BURN_HEAL
+	text_asm
+	CheckEvent EVENT_GOT_POKEDEX
+	jr z, .NoPokedex
+	call ViridianMartClerkDialogue
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.NoPokedex
+	ld hl, .SayHiToOakText
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+.SayHiToOakText:
+	text_far _ViridianMartClerkSayHiToOakText
+	text_end
+
+ViridianMartClerkDialogue:
+; marcelnote - recreating item list manually because I do not know
+;              how to integrate script_mart in text_asm
+	;script_mart POKE_BALL, ANTIDOTE, PARLYZ_HEAL, BURN_HEAL
+	ld a, 1
+	ld [wUpdateSpritesEnabled], a
+	ld de, wItemList
+	ld a, 4 ; 1st entry = total number of items in the list
+	ld [de], a
+	inc de
+	ld a, POKE_BALL
+	ld [de], a
+	inc de
+	ld a, ANTIDOTE
+	ld [de], a
+	inc de
+	ld a, PARLYZ_HEAL
+	ld [de], a
+	inc de
+	ld a, BURN_HEAL
+	ld [de], a
+	inc de
+	ld a, -1 ; ends the list
+	ld [de], a
+   	ld hl, PokemartGreetingText
+   	call PrintText
+   	ld a, PRICEDITEMLISTMENU
+   	ld [wListMenuID], a
+   	callfar DisplayPokemartDialogue_
+   	ret
