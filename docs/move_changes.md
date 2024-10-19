@@ -25,7 +25,7 @@ There are **three** new moves:
 
 Move type changes are primarily meant to give STAB options to Mons who were lacking them. Notably:
 - CUT becomes Bug-type, providing a viable early-game Bug-type move and a decent coverage option to check Psychic-types.
-- RAZOR WIND becomes a Bug-type weaker version of HYPER BEAM, which due to Gen 1 mechanics can skip the recharge turn if it KOes the opponent.
+- RAZOR WIND becomes a weaker Bug-type HYPER BEAM, which due to Gen 1 mechanics can skip the recharge turn if it KOes the opponent.
 - STRUGGLE becomes the unused Bird-type to ignore resistances and immunities to Normal-type moves.
 
 
