@@ -25,11 +25,43 @@ Move type changes were kept to a minimum, and are primarily meant to give STAB o
 - STRUGGLE becomes the unused Bird-type to ignore resistances and immunities to Normal-type moves.
 
 
-| Move         | Type                  | Power | Accuracy       | PP | Side effect                                                    |
-|--------------|-----------------------|-------|----------------|----|----------------------------------------------------------------|
-| CUT          | ~~Normal~~ **Bug**    | 50    | ~~95~~ **100** | ~~30~~ **25** |                                                     |
-| RAZOR WIND   | ~~Normal~~ **Bug**    | 80    | ~~75~~ **90**  | 15 | ~~Needs to charge one turn before attacking~~</br> **Needs to recharge one turn after attacking (same as HYPER BEAM)**  |
-| GUST         | ~~Normal~~ **Flying** | 40    | 100            | 35 |                                                                |
-| SLAM         | ~~Normal~~ **Dragon** | 80    | ~~75~~ **90**  | 20 |                                                                |
-| STRUGGLE     | ~~Normal~~ **Bird**   | 50    | 100            | 10 | Recoil                                                         |
+| Move         | Type                  | Power | Accuracy       | PP | Additional notes                                                            |
+|--------------|-----------------------|-------|----------------|----|-----------------------------------------------------------------------------|
+| CUT          | ~~Normal~~ **Bug**    | 50    | ~~95~~ **100** | ~~30~~ **25** |                                                                  |
+| RAZOR WIND   | ~~Normal~~ **Bug**    | 80    | ~~75~~ **90**  | 15 | **Now needs to recharge one turn after attacking (same as HYPER BEAM)**     |
+| GUST         | ~~Normal~~ **Flying** | 40    | 100            | 35 |                                                                             |
+| SLAM         | ~~Normal~~ **Dragon** | 80    | ~~75~~ **90**  | 20 |                                                                             |
+| STRUGGLE     | ~~Normal~~ **Bird**   | 50    | 100            | 10 | Bird-type allows STRUGGLE to ignore resistances and immunities              |
+
+
+## Other changes
+
+Most other changes were made to make most moves at least somewhat viable, or to give them a niche.
+In rare cases moves were nerfed (DIG).
+
+
+| Move         | Type     | Power            | Accuracy       | PP            | Additional notes                                               |
+|--------------|----------|------------------|----------------|---------------|----------------------------------------------------------------|
+| ABSORB       | Grass    | ~~20~~ **30**    | 100            | 20            |                                                                |
+| MEGA DRAIN   | Grass    | ~~40~~ **60**    | 100            | 10            |                                                                |
+| SOLARBEAM    | Grass    | ~~120~~ **140**  | 100            | 10            |                                                                |
+| LEECH LIFE   | Bug      | ~~20~~ **30**    | 100            | 15            |                                                                |
+| ROCK THROW   | Rock     | 50               | ~~65~~ **85**  | 15            |                                                                |
+| DIG          | Ground   | ~~100~~ **70**   | 100            | ~~10~~ **15** |                                                                |
+| WING ATTACK  | Flying   | ~~35~~ **60**    | 100            | ~~35~~ **25** |                                                                |
+| DOUBLE EDGE  | Normal   | ~~100~~ **120**  | 100            | ~~15~~ **10** |                                                                |
+| POISON STING | Poison   | ~~15~~ **25**    | 100            | 35            |                                                                |
+
+
+
+
+
+
+
+
+
+
+
+
+
 
