@@ -47,28 +47,20 @@ In rare cases moves were nerfed, most notably DIG.
 | SOLARBEAM    | Grass    | ~~120~~ **140**  | 100            | 10            | Power now on par with SKY ATTACK                               |
 | FIRE SPIN    | Fire     | 15               | ~~70~~ **75**  | 15            |                                                                |
 | WATERFALL    | Water    | 80               | 100            | 15            | **Now has a 10% chance to make the opponent flinch**           |
-
 | LEECH LIFE   | Bug      | ~~20~~ **30**    | 100            | 15            |                                                                |
 | TWINEEDLE    | Bug      | ~~25~~ **30**    | 100            | 20            |                                                                |
 | PIN MISSILE  | Bug      | ~~14~~ **20**    | ~~85~~ **95**  | ~~20~~ **15** |                                                                |
-
 | POISON STING | Poison   | ~~15~~ **25**    | 100            | 35            |                                                                |
 | SMOG         | Poison   | ~~20~~ **25**    | ~~70~~ **85**  | 20            |                                                                |
 | ACID         | Poison   | ~~40~~ **65**    | 100            | ~~30~~ **20** |                                                                |
 | SLUDGE       | Poison   | ~~65~~ **85**    | 100            | ~~20~~ **15** |                                                                |
-
 | ROCK THROW   | Rock     | 50               | ~~65~~ **85**  | 15            |                                                                |
-
 | BONEMERANG   | Ground   | ~~50~~ **60**    | 90             | 10            |                                                                |
 | DIG          | Ground   | ~~100~~ **70**   | 100            | ~~10~~ **15** |                                                                |
-
 | WING ATTACK  | Flying   | ~~35~~ **60**    | 100            | ~~35~~ **25** |                                                                |
 | SKY ATTACK   | Flying   | 140              | ~~90~~ **100** | ~~5~~ **10**  |                                                                |
-
 | KINESIS      | Psychic  | -                | 80             | 15            | ~~Lowers opponent's Accuracy~~ **Increases own Special**       |
-
 | LICK         | Ghost    | ~~20~~ **25**    | 100            | ~~30~~ **25** |                                                                |
-
 | FURY ATTACK  | Normal   | 15               | ~~85~~ **95**  | 20            |                                                                |
 | FURY SWIPES  | Normal   | 18               | ~~80~~ **90**  | 15            |                                                                |
 | DIZZY PUNCH  | Normal   | ~~70~~ **80**    | 100            | 10            | **Now has a 10% chance to confuse the opponent**               |
