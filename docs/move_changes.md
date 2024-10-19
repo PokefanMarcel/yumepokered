@@ -4,7 +4,7 @@ Moves have been rebalanced to enhance the viability of certain Pokémon and to o
 
 Feedback is encouraged, as long as it aligns with the goal of maintaining the classic Gen 1 feel!
 
-For more detailed information about moves in the game, [check this file](data/moves/moves.asm).
+For more detailed information about moves in the game, [check this file](./data/moves/moves.asm).
 
 
 ## New moves
