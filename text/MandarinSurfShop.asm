@@ -1,16 +1,16 @@
 ; marcelnote - new location
 ; text remains to be made to obtain SURFBOARD
 _MandarinSurfShopClerkWelcomeText::
-	text "Hi! Welcome to"
-	line "our BIKE SHOP."
+	text "Hi! Welcome to our"
+	line "SURFBOARD SHOP."
 
-	para "Have we got just"
-	line "the BIKE for you!"
+	para "Fancy a new"
+	line "SURFBOARD to ride"
+	cont "the waves?"
 	prompt
 
-_MandarinSurfShopClerkDoYouLikeItText::
-	text "It's a cool BIKE!"
-	line "Do you want it?"
+_MandarinSurfShopClerkDoYouWantItText::
+	text "Do you want it?"
 	done
 
 _MandarinSurfShopCantAffordText::
