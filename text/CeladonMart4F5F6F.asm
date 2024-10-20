@@ -55,7 +55,7 @@ _CeladonMart5FCurrentFloorSignText::
 	text "5F: DRUG STORE"
 	done
 
-_CeladonMart6FClerkText:: ; marcelnote - new floor
+_CeladonMart6FClerkNoInventoryText:: ; marcelnote - new floor
 	text "Sorry, our"
 	line "inventory is"
 	cont "empty for now."
