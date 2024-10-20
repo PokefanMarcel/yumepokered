@@ -29,7 +29,7 @@ ItemPrices::
 	bcd3 0     ; ITEM_1B
 	bcd3 0     ; ITEM_1C
 	bcd3 550   ; ESCAPE_ROPE
-	bcd3 350   ; REPEL
+	bcd3 150   ; REPEL          ; marcelnote - changed from 350
 	bcd3 0     ; OLD_AMBER
 	bcd3 2100  ; FIRE_STONE
 	bcd3 2100  ; THUNDER_STONE
@@ -55,8 +55,8 @@ ItemPrices::
 	bcd3 1500  ; REVIVE
 	bcd3 4000  ; MAX_REVIVE
 	bcd3 700   ; GUARD_SPEC
-	bcd3 500   ; SUPER_REPEL
-	bcd3 700   ; MAX_REPEL
+	bcd3 250   ; SUPER_REPEL   ; marcelnote - changed from 500
+	bcd3 400   ; MAX_REPEL     ; marcelnote - changed from 700
 	bcd3 650   ; DIRE_HIT
 	bcd3 10    ; COIN
 	bcd3 200   ; FRESH_WATER
@@ -67,7 +67,7 @@ ItemPrices::
 	bcd3 500   ; X_ATTACK
 	bcd3 550   ; X_DEFEND
 	bcd3 350   ; X_SPEED
-	bcd3 350   ; X_SPECIAL
+	bcd3 750   ; X_SPECIAL     ; marcelnote - changed from 350
 	bcd3 0     ; COIN_CASE
 	bcd3 0     ; OAKS_PARCEL
 	bcd3 0     ; ITEMFINDER
@@ -78,11 +78,11 @@ ItemPrices::
 	bcd3 0     ; OLD_ROD
 	bcd3 0     ; GOOD_ROD
 	bcd3 0     ; SUPER_ROD
-	bcd3 0     ; PP_UP
-	bcd3 0     ; ETHER
-	bcd3 0     ; MAX_ETHER
-	bcd3 0     ; ELIXER
-	bcd3 0     ; MAX_ELIXER
+	bcd3 9800  ; PP_UP      ; marcelnote - changed from 0
+	bcd3 400   ; ETHER      ; marcelnote - changed from 0
+	bcd3 1200  ; MAX_ETHER  ; marcelnote - changed from 0
+	bcd3 1000  ; ELIXER     ; marcelnote - changed from 0
+	bcd3 3000  ; MAX_ELIXER ; marcelnote - changed from 0
 	assert_table_length NUM_ITEMS
 	bcd3 0     ; FLOOR_B2F
 	bcd3 0     ; FLOOR_B1F
