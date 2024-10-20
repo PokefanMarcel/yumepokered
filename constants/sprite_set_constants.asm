@@ -12,7 +12,7 @@
 	const SPRITESET_SILENCE_BRIDGE  ; 08
 	const SPRITESET_CYCLING_ROAD    ; 09
 	const SPRITESET_FUCHSIA         ; 0a
-	const SPRITESET_CINNABAR        ; 0b ; marcelnote - new sprite set
+	const SPRITESET_MANDARIN        ; 0b ; marcelnote - new sprite set
 DEF NUM_SPRITE_SETS EQU const_value - 1
 
 ; split sprite set ids

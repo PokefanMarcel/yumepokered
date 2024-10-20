@@ -10,10 +10,10 @@ MapSpriteSets:
 	db SPRITESET_VERMILION       ; VERMILION_CITY
 	db SPRITESET_CELADON         ; CELADON_CITY
 	db SPRITESET_FUCHSIA         ; FUCHSIA_CITY
-	db SPRITESET_CINNABAR        ; CINNABAR_ISLAND ; marcelnote - new spriteset
+	db SPRITESET_PALLET_VIRIDIAN ; CINNABAR_ISLAND
 	db SPRITESET_INDIGO          ; INDIGO_PLATEAU
 	db SPRITESET_SAFFRON         ; SAFFRON_CITY
-	db SPRITESET_CINNABAR        ; MANDARIN_ISLAND ; marcelnote - new map
+	db SPRITESET_MANDARIN        ; MANDARIN_ISLAND ; marcelnote - new map
 	db SPRITESET_PALLET_VIRIDIAN ; UNUSED_MAP_0B
 	db SPRITESET_PALLET_VIRIDIAN ; ROUTE_1
 	db SPLITSET_ROUTE_2          ; ROUTE_2
@@ -33,14 +33,14 @@ MapSpriteSets:
 	db SPLITSET_ROUTE_16         ; ROUTE_16
 	db SPRITESET_CYCLING_ROAD    ; ROUTE_17
 	db SPLITSET_ROUTE_18         ; ROUTE_18
-	db SPRITESET_CINNABAR        ; ROUTE_19 ; marcelnote - new spriteset
+	db SPRITESET_FUCHSIA         ; ROUTE_19
 	db SPLITSET_ROUTE_20         ; ROUTE_20
 	db SPRITESET_PALLET_VIRIDIAN ; ROUTE_21
 	db SPRITESET_PALLET_VIRIDIAN ; ROUTE_22
 	db SPRITESET_INDIGO          ; ROUTE_23
 	db SPRITESET_PEWTER_CERULEAN ; ROUTE_24
 	db SPRITESET_PEWTER_CERULEAN ; ROUTE_25
-	db SPRITESET_PALLET_VIRIDIAN ; ROUTE_28 ; marcelnote - new location
+	db SPRITESET_PALLET_VIRIDIAN ; ROUTE_28 ; marcelnote - new map
 	assert_table_length FIRST_INDOOR_MAP
 
 ; Format:
@@ -75,7 +75,7 @@ SpriteSets:
 	db SPRITE_COOLTRAINER_M
 	db SPRITE_GAMBLER
 	;db SPRITE_SEEL
-	db SPRITE_COOLTRAINER_F ; marcelnote - replaced SPRITE_SEEL for new Pallet NPC
+	db SPRITE_SWIMMER_F ; marcelnote - replaced SPRITE_SEEL
 	db SPRITE_OAK
 	db SPRITE_SWIMMER
 	db SPRITE_POKE_BALL
@@ -186,7 +186,7 @@ SpriteSets:
 	db SPRITE_SNORLAX
 
 ; SPRITESET_FUCHSIA
-	db SPRITE_BIRD ; marcelnote - unused? (removed in pokeyellow)
+	;db SPRITE_BIRD ; marcelnote - unused? (removed in pokeyellow)
 	db SPRITE_COOLTRAINER_M
 	db SPRITE_FAIRY
 	db SPRITE_FISHER
@@ -195,10 +195,15 @@ SpriteSets:
 	db SPRITE_SEEL
 	db SPRITE_SWIMMER
 	db SPRITE_YOUNGSTER
+	db SPRITE_BLACKBELT ; marcelnote - replaces SPRITE_BIRD
+	; marcelnote - idea to add SPRITE_SWIMMER_F:
+	; replace GAMBLER in Fuchsia by COOLTRAINER_M,
+	; replace COOLTRAINER_M with the Primeape by BLACKBELT (fits with new trainers),
+	; replace SPRITE_GAMBLER by SPRITE_SWIMMER_F
 	db SPRITE_POKE_BALL
 	db SPRITE_FOSSIL
 
-; SPRITESET_CINNABAR ; marcelnote - new spriteset
+; SPRITESET_MANDARIN ; marcelnote - new spriteset
 	db SPRITE_GIRL
 	db SPRITE_GAMBLER
 	db SPRITE_SWIMMER

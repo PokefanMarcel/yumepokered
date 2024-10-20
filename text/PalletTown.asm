@@ -55,7 +55,7 @@ _PalletTownRivalsHouseSignText::
 	text "<RIVAL>'s house "
 	done
 
-_PalletTownCooltrainerFText:: ; marcelnote - new
+_PalletTownCooltrainerMText:: ; marcelnote - new
 	text "Life is peaceful"
 	line "here in PALLET."
 
