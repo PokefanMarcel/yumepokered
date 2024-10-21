@@ -2035,7 +2035,8 @@ wCinnabarVolcano2FCurScript:: db      ; marcelnote - new location
 wCeladonGroveCurScript:: db           ; marcelnote - new location
 wSilphFactory1FCurScript:: db         ; marcelnote - new location
 wSilphFactory2FCurScript:: db         ; marcelnote - new location
-	ds 73                             ; marcelnote - adjusted down
+wPokemonTower1FCurScript:: db         ; marcelnote - postgame Agatha event
+	ds 72                             ; marcelnote - adjusted down
 wGameProgressFlagsEnd::
 
 wPlayerGender:: ; marcelnote - add female player
