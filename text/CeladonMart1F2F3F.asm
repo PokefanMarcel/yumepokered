@@ -21,7 +21,7 @@ _CeladonMart1FDirectorySignText::
 
 	para "5F: DRUG STORE"
 
-	para "6F: ???" ; marcelnote - new floor
+	para "6F: ENERGY AISLE" ; marcelnote - new floor
 
 	para "ROOFTOP SQUARE:"
 	line "VENDING MACHINES"

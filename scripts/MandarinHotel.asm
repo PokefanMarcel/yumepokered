@@ -28,7 +28,7 @@ MandarinHotel_TextPointers:
 	dw_const MandarinHotel4FSilphWorkerMText, TEXT_MANDARINHOTEL4F_SILPH_WORKER_M
 	dw_const MandarinHotel4FSilphWorkerFText, TEXT_MANDARINHOTEL4F_SILPH_WORKER_F
 	dw_const MandarinHotel4FRaichuText,       TEXT_MANDARINHOTEL4F_RAICHU
-	dw_const PickUpItemText,                  TEXT_MANDARINHOTEL2F_MAX_ELIXER
+	dw_const PickUpItemText,                  TEXT_MANDARINHOTEL2F_MAX_ELIXIR
 	; bg_events
 	dw_const MandarinHotel2FRoom11SignText,   TEXT_MANDARINHOTEL2F_ROOM_11
 	dw_const MandarinHotel2FRoom12SignText,   TEXT_MANDARINHOTEL2F_ROOM_12

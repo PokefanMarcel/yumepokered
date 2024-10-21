@@ -7,7 +7,9 @@
 	const_export CELADONMART5F_SAILOR
 	const_export CELADONMART5F_CLERK1
 	const_export CELADONMART5F_CLERK2
-	const_export CELADONMART6F_CLERK ; marcelnote - new floor
+	const_export CELADONMART6F_CLERK             ; marcelnote - new floor
+	const_export CELADONMART6F_BEAUTY            ; marcelnote - new floor
+	const_export CELADONMART6F_MIDDLE_AGED_WOMAN ; marcelnote - new floor
 
 CeladonMart4F5F6F_Object:
 	db $f ; border block
@@ -36,6 +38,8 @@ CeladonMart4F5F6F_Object:
 	object_event  2, 20, SPRITE_SAILOR, STAY, NONE, TEXT_CELADONMART5F_SAILOR
 	object_event  5, 17, SPRITE_CLERK, STAY, DOWN, TEXT_CELADONMART5F_CLERK1
 	object_event  6, 17, SPRITE_CLERK, STAY, DOWN, TEXT_CELADONMART5F_CLERK2
-	object_event 10,  5, SPRITE_CLERK, STAY, RIGHT, TEXT_CELADONMART6F_CLERK ; marcelnote - new floor
+	object_event 10,  5, SPRITE_CLERK, STAY, RIGHT, TEXT_CELADONMART6F_CLERK                           ; marcelnote - new floor
+	object_event 15,  6, SPRITE_BEAUTY, STAY, UP, TEXT_CELADONMART6F_BEAUTY                            ; marcelnote - new floor
+	object_event  4,  4, SPRITE_MIDDLE_AGED_WOMAN, WALK, UP_DOWN, TEXT_CELADONMART6F_MIDDLE_AGED_WOMAN ; marcelnote - new floor
 
 	def_warps_to CELADON_MART_4F5F6F

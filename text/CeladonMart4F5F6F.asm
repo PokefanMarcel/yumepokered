@@ -56,11 +56,50 @@ _CeladonMart5FCurrentFloorSignText::
 	done
 
 _CeladonMart6FClerkNoInventoryText:: ; marcelnote - new floor
-	text "Sorry, our"
-	line "inventory is"
-	cont "empty for now."
+	text "Sorry, we're"
+	line "currently out of"
+	cont "stock."
+
+	para "It appears there"
+	line "is a problem with"
+	cont "our supplier on"
+	cont "MANDARIN ISLAND."
+	done
+
+_CeladonMart6FBeautyUsuallyStocksText:: ; marcelnote - new floor
+	text "This floor usually"
+	line "stocks ETHER and"
+	cont "other PP-related"
+	cont "items."
+
+	para "They even sell"
+	line "RARE CANDY!"
+	done
+
+_CeladonMart6FBeautyAlwaysComeHereText:: ; marcelnote - new floor
+	text "I always come"
+	line "here for ELIXIRs."
+	cont "They're great for"
+	cont "long journeys."
+	done
+
+_CeladonMart6FMiddleAgedWomanText:: ; marcelnote - new floor
+	text "Have you heard of"
+	line "MANDARIN ISLAND?"
+
+	para "My husband travels"
+	line "there often for"
+	cont "his work at"
+	cont "SILPH CO."
+
+	para "Their factory has"
+	line "been experiencing"
+	cont "delays lately."
 	done
 
 _CeladonMart6FCurrentFloorSignText:: ; marcelnote - new floor
-	text "6F: ???"
+	text "Recharge your"
+	line "team!"
+
+	para "6F: ENERGY AISLE"
 	done

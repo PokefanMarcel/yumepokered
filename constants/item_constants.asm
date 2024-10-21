@@ -88,8 +88,8 @@
 	const PP_UP         ; $4F
 	const ETHER         ; $50
 	const MAX_ETHER     ; $51
-	const ELIXER        ; $52
-	const MAX_ELIXER    ; $53
+	const ELIXIR        ; $52 ; marcelnote - renamed from ELIXER
+	const MAX_ELIXIR    ; $53 ; marcelnote - renamed from ELIXER
 DEF NUM_ITEMS EQU const_value - 1
 
 ; elevator floors use item IDs

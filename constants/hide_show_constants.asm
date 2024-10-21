@@ -253,7 +253,7 @@ DEF SHOW EQU $15
 	const HS_CINNABAR_VOLCANO_2F_ITEM_1    ; F2 ; marcelnote - Fire Stone
 	const HS_CINNABAR_VOLCANO_2F_ITEM_2    ; F3 ; marcelnote - Ultra Ball
 	const HS_CINNABAR_VOLCANO_2F_ITEM_3    ; F4 ; marcelnote - Nugget
-	const HS_MANDARIN_HOTEL_ITEM_1              ; marcelnote - Max Elixer
+	const HS_MANDARIN_HOTEL_ITEM_1              ; marcelnote - Max Elixir
 	const HS_CELADON_GROVE_ITEM_1               ; marcelnote - Leaf Stone
 	const HS_CELADON_GROVE_ITEM_2               ; marcelnote - Great Ball
 	const HS_SILPH_FACTORY_1F_ROCKET_1          ; marcelnote - Rocket 1
