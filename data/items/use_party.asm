@@ -34,6 +34,6 @@ UsableItems_PartyMenu:
 	db PP_UP
 	db ETHER
 	db MAX_ETHER
-	db ELIXER
-	db MAX_ELIXER
+	db ELIXIR
+	db MAX_ELIXIR
 	db -1 ; end

@@ -81,8 +81,8 @@ ItemNames::
 	li "PP UP"
 	li "ETHER"
 	li "MAX ETHER"
-	li "ELIXER"
-	li "MAX ELIXER"
+	li "ELIXIR"     ; marcelnote - renamed from ELIXER
+	li "MAX ELIXIR" ; marcelnote - renamed from ELIXER
 	assert_list_length NUM_ITEMS
 	li "B2F"
 	li "B1F"
