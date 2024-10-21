@@ -38,6 +38,10 @@ _PokemonTower1FLittleBoyText:: ; marcelnote - added 7FChanneler
 	cont "Spooky!"
 	done
 
-_PokemonTower1FAgathaText:: ; marcelnote - postgame Agatha
-	text "You found me!"
-	prompt
+_PokemonTower1FAgathaText:: ; marcelnote - postgame Agatha event
+	text "We are arguing!"
+	done
+
+_PokemonTower1FGentlemanText:: ; marcelnote - postgame Agatha event
+	text "Help me out!"
+	done
