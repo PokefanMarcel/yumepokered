@@ -25,6 +25,7 @@ CeladonCity_Object:
 	warp_event 33, 19, GAME_CORNER_PRIZE_ROOM, 1
 	warp_event 31, 27, CELADON_DINER, 1
 	warp_event 35, 27, CELADON_CHIEF_HOUSE, 1
+	warp_event 43, 27, CELADON_HOTEL, 1
 	warp_event  9,  3, CELADON_GROVE_SOUTH_GATE, 2 ; marcelnote - new for Celadon Grove
 
 	def_bg_events
