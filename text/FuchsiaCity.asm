@@ -27,13 +27,15 @@ _FuchsiaCityYoungster2Text::
 	cont "#MON."
 	done
 
-_FuchsiaCityCooltrainerMText:: ; marcelnote - new NPC
-    text "The passage in"
-    line "front was blocked"
-    cont "for years, but"
-    cont "PRIMEAPE and I"
-    cont "cleared it!"
-	done
+_FuchsiaCityBlackbeltText:: ; marcelnote - new NPC
+    text "People used to"
+    line "have to go all"
+    cont "around town to"
+    cont "get to the beach."
+
+    para "But PRIMEAPE and I"
+    line "cleared a path!"
+    done
 
 _FuchsiaCityPrimeapeText:: ; marcelnote - new NPC
     text "PRIMEAPE: Grah!"

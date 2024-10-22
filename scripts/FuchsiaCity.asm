@@ -7,8 +7,8 @@ FuchsiaCity_TextPointers:
 	dw_const FuchsiaCityGamblerText,         TEXT_FUCHSIACITY_GAMBLER
 	dw_const FuchsiaCityErikText,            TEXT_FUCHSIACITY_ERIK
 	dw_const FuchsiaCityYoungster2Text,      TEXT_FUCHSIACITY_YOUNGSTER2
-	dw_const FuchsiaCityCooltrainerMText,    TEXT_FUCHSIACITY_COOLTRAINER_M ; marcelnote - new NPC
-	dw_const FuchsiaCityPrimeapeText,        TEXT_FUCHSIACITY_PRIMEAPE ; marcelnote - new NPC
+	dw_const FuchsiaCityBlackbeltText,       TEXT_FUCHSIACITY_BLACKBELT ; marcelnote - new NPC
+	dw_const FuchsiaCityPrimeapeText,        TEXT_FUCHSIACITY_PRIMEAPE  ; marcelnote - new NPC
 	dw_const FuchsiaCityPokemonText,         TEXT_FUCHSIACITY_CHANSEY
 	dw_const FuchsiaCityPokemonText,         TEXT_FUCHSIACITY_VOLTORB
 	dw_const FuchsiaCityPokemonText,         TEXT_FUCHSIACITY_KANGASKHAN
@@ -45,8 +45,8 @@ FuchsiaCityYoungster2Text:
 	text_far _FuchsiaCityYoungster2Text
 	text_end
 
-FuchsiaCityCooltrainerMText: ; marcelnote - new NPC
-	text_far _FuchsiaCityCooltrainerMText
+FuchsiaCityBlackbeltText: ; marcelnote - new NPC
+	text_far _FuchsiaCityBlackbeltText
 	text_end
 
 FuchsiaCityPrimeapeText: ; marcelnote - new NPC
