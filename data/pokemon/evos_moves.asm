@@ -998,8 +998,8 @@ MankeyEvosMoves:
 	db 0
 ; Learnset
 	db 9, LOW_KICK
-	db 15, KARATE_CHOP
-	db 21, FURY_SWIPES
+	db 15, FURY_SWIPES ; marcelnote - switched FURY_SWIPES and KARATE_CHOP
+	db 21, KARATE_CHOP ;              since KARATE_CHOP now has STAB
 	db 27, FOCUS_ENERGY
 	db 33, SEISMIC_TOSS
 	db 39, THRASH
@@ -1011,8 +1011,8 @@ PrimeapeEvosMoves:
 	db 0
 ; Learnset
 	db 10, LOW_KICK
-	db 17, KARATE_CHOP
-	db 24, FURY_SWIPES
+	db 17, FURY_SWIPES ; marcelnote - switched FURY_SWIPES and KARATE_CHOP
+	db 24, KARATE_CHOP ;              since KARATE_CHOP now has STAB
 	db 27, FOCUS_ENERGY
 	db 37, SEISMIC_TOSS
 	db 43, THRASH
