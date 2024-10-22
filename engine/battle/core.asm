@@ -763,6 +763,7 @@ FaintEnemyPokemon:
 ; was congruent to 0 modulo 256.
 	xor a
 	ld [wPlayerBideAccumulatedDamage], a
+	ld [wPlayerBideAccumulatedDamage + 1], a ; marcelnote - fixes aforementioned bug (fix from pokered Wiki)
 	ld hl, wEnemyStatsToDouble ; clear enemy statuses
 	ld [hli], a
 	ld [hli], a
@@ -2377,6 +2378,8 @@ PartyMenuOrRockOrRun:
 	predef StatusScreen
 	predef StatusScreen2
 ; now we need to reload the enemy mon pic
+	ld a, 1                ; marcelnote - these two lines fix a visual bug
+	ldh [hWhoseTurn], a    ;              with Minimize and Substitute (pokered Wiki)
 	ld a, [wEnemyBattleStatus2]
 	bit HAS_SUBSTITUTE_UP, a ; does the enemy mon have a substitute?
 	ld hl, AnimationSubstitute
@@ -2751,7 +2754,7 @@ AnyMoveToSelect:
 	or c
 	jr .handleDisabledMovePPLoop
 .allMovesChecked
-	and $3f ; any PP left? ; marcelnote - fixed from 'and a'
+	and $3f ; any PP left? ; marcelnote - fixes Struggle not working correctly if any move has at least one PP Up (fix from pokered Wiki)
 	ret nz ; return if a move has PP left
 .noMovesLeft
 	ld hl, NoMovesLeftText
@@ -3463,8 +3466,11 @@ CheckPlayerStatusConditions:
 .MonHurtItselfOrFullyParalysed
 	ld hl, wPlayerBattleStatus1
 	ld a, [hl]
-	; clear bide, thrashing, charging up, and trapping moves such as warp (already cleared for confusion damage)
-	and ~((1 << STORING_ENERGY) | (1 << THRASHING_ABOUT) | (1 << CHARGING_UP) | (1 << USING_TRAPPING_MOVE))
+	;; clear bide, thrashing, charging up, and trapping moves such as warp (already cleared for confusion damage)
+	;and ~((1 << STORING_ENERGY) | (1 << THRASHING_ABOUT) | (1 << CHARGING_UP) | (1 << USING_TRAPPING_MOVE))
+	; marcelnote - fix for invulnerable status (FLY or DIG) not resetting properly (fix from pokered Wiki)
+	; clear bide, thrashing, charging up, trapping moves such as wrap (already cleared for confusion damage), and invulnerable moves
+	and ~((1 << STORING_ENERGY) | (1 << THRASHING_ABOUT) | (1 << CHARGING_UP) | (1 << USING_TRAPPING_MOVE) | (1 << INVULNERABLE))
 	ld [hl], a
 	ld a, [wPlayerMoveEffect]
 	cp FLY_EFFECT
@@ -4948,6 +4954,8 @@ ApplyAttackToPlayerPokemon:
 ; it's possible for the enemy to do 0 damage with Psywave, but the player always does at least 1 damage
 .loop
 	call BattleRandom
+	and a        ; marcelnote - these two lines fix a desync problem
+	jr z, .loop  ;              from PsyWave (fix from pokered Wiki)
 	cp b
 	jr nc, .loop
 	ld b, a
@@ -5313,6 +5321,23 @@ AdjustDamageForMoveType:
 	ld b, a
 	ld a, [hl] ; a = damage multiplier
 	ldh [hMultiplier], a
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - pokered Wiki tutorial to output correct type effectiveness message
+	and a  ; cp NO_EFFECT
+	jr z, .gotMultiplier
+	cp NOT_VERY_EFFECTIVE
+	jr nz, .notHalf
+	ld a, [wDamageMultipliers]
+	and $7f
+	srl a
+	jr .gotMultiplier
+.notHalf
+	cp SUPER_EFFECTIVE
+	jr nz, .gotMultiplier
+	ld a, [wDamageMultipliers]
+	and $7f
+	sla a
+.gotMultiplier
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	add b
 	ld [wDamageMultipliers], a
 	xor a
@@ -5417,6 +5442,7 @@ MoveHitTest:
 	jr z, .checkForDigOrFlyStatus
 ; The fix for Swift broke this code. It's supposed to prevent HP draining moves from working on Substitutes.
 ; Since CheckTargetSubstitute overwrites a with either $00 or $01, it never works.
+	ld a, [de]         ; marcelnote - fixes aforementioned bug (fix from pokered Wiki)
 	cp DRAIN_HP_EFFECT
 	jp z, .moveMissed
 	cp DREAM_EATER_EFFECT
@@ -6000,8 +6026,11 @@ CheckEnemyStatusConditions:
 .monHurtItselfOrFullyParalysed
 	ld hl, wEnemyBattleStatus1
 	ld a, [hl]
-	; clear bide, thrashing about, charging up, and multi-turn moves such as warp
-	and ~((1 << STORING_ENERGY) | (1 << THRASHING_ABOUT) | (1 << CHARGING_UP) | (1 << USING_TRAPPING_MOVE))
+	;; clear bide, thrashing about, charging up, and multi-turn moves such as warp
+	;and ~((1 << STORING_ENERGY) | (1 << THRASHING_ABOUT) | (1 << CHARGING_UP) | (1 << USING_TRAPPING_MOVE))
+	; marcelnote - fix for invulnerable status (FLY or DIG) not resetting properly (fix from pokered Wiki)
+	; clear bide, thrashing, charging up, trapping moves such as wrap (already cleared for confusion damage), and invulnerable moves
+	and ~((1 << STORING_ENERGY) | (1 << THRASHING_ABOUT) | (1 << CHARGING_UP) | (1 << USING_TRAPPING_MOVE) | (1 << INVULNERABLE))
 	ld [hl], a
 	ld a, [wEnemyMoveEffect]
 	cp FLY_EFFECT

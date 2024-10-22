@@ -266,6 +266,12 @@ _GetTileAndCoordsInFrontOfPlayer:
 	and a ; cp SPRITE_FACING_DOWN
 	jr nz, .notFacingDown
 ; facing down
+;;;;;;;;;;;;;;; marcelnote - prevents cut tree from returning
+	ld a, 8
+	ld [wTempColCoords], a
+	ld a, 11
+	ld [wTempColCoords + 1], a
+;;;;;;;;;;;;;;;
 	lda_coord 8, 11
 	inc d
 	jr .storeTile
@@ -273,6 +279,12 @@ _GetTileAndCoordsInFrontOfPlayer:
 	cp SPRITE_FACING_UP
 	jr nz, .notFacingUp
 ; facing up
+;;;;;;;;;;;;;;; marcelnote - prevents cut tree from returning (fix from pokered Wiki)
+	ld a, 8
+	ld [wTempColCoords], a
+	ld a, 7
+	ld [wTempColCoords + 1], a
+;;;;;;;;;;;;;;;
 	lda_coord 8, 7
 	dec d
 	jr .storeTile
@@ -280,6 +292,12 @@ _GetTileAndCoordsInFrontOfPlayer:
 	cp SPRITE_FACING_LEFT
 	jr nz, .notFacingLeft
 ; facing left
+;;;;;;;;;;;;;;; marcelnote - prevents cut tree from returning (fix from pokered Wiki)
+	ld a, 6
+	ld [wTempColCoords], a
+	ld a, 9
+	ld [wTempColCoords + 1], a
+;;;;;;;;;;;;;;;
 	lda_coord 6, 9
 	dec e
 	jr .storeTile
@@ -287,11 +305,76 @@ _GetTileAndCoordsInFrontOfPlayer:
 	cp SPRITE_FACING_RIGHT
 	jr nz, .storeTile
 ; facing right
+;;;;;;;;;;;;;;; marcelnote - prevents cut tree from returning (fix from pokered Wiki)
+	ld a, 10
+	ld [wTempColCoords], a
+	ld a, 9
+	ld [wTempColCoords + 1], a
+;;;;;;;;;;;;;;;
 	lda_coord 10, 9
 	inc e
 .storeTile
+;;;;;;;;;;;;;;; marcelnote - prevents cut tree from returning (fix from pokered Wiki)
+	cp $3d
+	call z, ReadTileFromVram
+;;;;;;;;;;;;;;;
 	ld c, a
 	ld [wTileInFrontOfPlayer], a
+	ret
+
+ReadTileFromVram:  ; marcelnote - new function prevents cut tree from returning (fix from pokered Wiki)
+	;b=X window offset
+	;c=Y window offset
+	push bc
+	ld a, [wTempColCoords]
+	ld b, a
+	ld a, [wTempColCoords + 1]
+	ld c, a
+	;get the x offset in vram
+	ld a, [rSCX]
+	call .div8
+	add b
+	cp $20
+	call nc, .sub20
+	ld b, a
+	;get the y offset in vram
+	ld a, [rSCY]
+	call .div8
+	add c
+	cp $20
+	call nc, .sub20
+	ld c, a
+	;set vram starting address
+	push hl
+	ld hl, $9800
+	;move to proper y coordinate
+	push de
+	ld de, $0020
+.loop
+	sub 1
+	jr c, .endloop
+	add hl, de
+	jr .loop
+.endloop
+	;move to proper x coordinate
+	ld d, $00
+	ld e, b
+	add hl, de
+	pop de
+.wait
+	ld a, [hl]
+	cp $ff
+	jr z, .wait
+	pop hl
+	pop bc
+	ret
+.div8
+	srl a
+	srl a
+	srl a
+	ret
+.sub20
+	sub $20
 	ret
 
 ; hPlayerFacing

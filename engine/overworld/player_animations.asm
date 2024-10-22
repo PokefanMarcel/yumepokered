@@ -88,6 +88,7 @@ PlayerSpinWhileMovingDown:
 	ld [hli], a ; wPlayerSpinWhileMovingUpOrDownAnimMaxY
 	call GetPlayerTeleportAnimFrameDelay
 	ld [hl], a ; wPlayerSpinWhileMovingUpOrDownAnimFrameDelay
+	ld hl, wFacingDirectionList ; marcelnote - DMG/SGB Escape Rope visual big (fix from pokered Wiki)
 	jp PlayerSpinWhileMovingUpOrDown
 
 _LeaveMapAnim::
@@ -108,6 +109,7 @@ _LeaveMapAnim::
 	ld [hli], a ; wPlayerSpinWhileMovingUpOrDownAnimMaxY
 	call GetPlayerTeleportAnimFrameDelay
 	ld [hl], a ; wPlayerSpinWhileMovingUpOrDownAnimFrameDelay
+	ld hl, wFacingDirectionList ; marcelnote - DMG/SGB Escape Rope visual big (fix from pokered Wiki)
 	call PlayerSpinWhileMovingUpOrDown
 	call IsPlayerStandingOnWarpPadOrHole
 	ld a, b

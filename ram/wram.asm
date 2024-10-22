@@ -571,6 +571,7 @@ wEnemyMonEvasionMod:: db
 wEnemyMonStatModsEnd::
 
 NEXTU
+wTempColCoords:: ; marcelnote - prevents cut tree from returning (fix from pokered Wiki)
 	ds 30
 wEngagedTrainerClass:: db
 wEngagedTrainerSet:: db
