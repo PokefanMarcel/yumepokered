@@ -139,7 +139,7 @@ MapHeaderPointers::
 	dw CeladonPokecenter_h
 	dw CeladonGym_h
 	dw GameCorner_h
-	dw CeladonMart4F5F6F_h ; UNUSED_MAP_88 ; marcelnote - was CeladonMart5F_h
+	dw FuchsiaMoveDeleterHouse_h ; FUCHSIA_MOVE_DELETER_HOUSE ; marcelnote - new location, was CeladonMart5F_h
 	dw GameCornerPrizeRoom_h
 	dw CeladonDiner_h
 	dw CeladonChiefHouse_h

@@ -1,0 +1,11 @@
+; marcelnote - new location
+FuchsiaMoveDeleterHouse_Script:
+	jp EnableAutoTextBoxDrawing
+
+FuchsiaMoveDeleterHouse_TextPointers:
+	def_text_pointers
+	dw_const FuchsiaMoveDeleterHouseMoveDeleterText, TEXT_FUCHSIAMOVEDELETERHOUSE_MOVE_DELETER
+
+FuchsiaMoveDeleterHouseMoveDeleterText:
+	text_far _FuchsiaMoveDeleterHouseMoveDeleterText
+	text_end

@@ -139,7 +139,7 @@ MapHeaderBanks::
 	db BANK(CeladonPokecenter_h)
 	db BANK(CeladonGym_h)
 	db BANK(GameCorner_h)
-	db $1D ; UNUSED_MAP_7B ; marcelnote - was CeladonMart5F_h
+	db BANK(FuchsiaMoveDeleterHouse_h) ; FUCHSIA_MOVE_DELETER_HOUSE ; marcelnote - new location, was CeladonMart5F_h
 	db BANK(GameCornerPrizeRoom_h)
 	db BANK(CeladonDiner_h)
 	db BANK(CeladonChiefHouse_h)
