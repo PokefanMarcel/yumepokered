@@ -42,12 +42,72 @@ ViridianCityYoungster2CaterpieAndWeedleDescriptionText::
 	line "POISON STING!"
 	done
 
-_ViridianCityGirlHasntHadHisCoffeeYetText::
-	text "Oh Grandpa! Don't"
-	line "be so mean!"
-	cont "He hasn't had his"
-	cont "coffee yet."
+;IF DEF(_GREEN) ; marcelnote - use translation of original Japanese dialogue
+
+_ViridianCityOldManSleepyPrivatePropertyText::
+	text "Wheee! Hic..."
+	line "W-wait up!"
+	cont "Lemme tell ya"
+	cont "somethin'!"
+
+	para "...Hey! Don't go!"
+	line "I told ya not to!"
 	done
+
+_ViridianCityOldManHadMyCoffeeNowText::
+	text "Ughhh... Guess"
+	line "I was pretty"
+	cont "drunk, huh?"
+
+	para "My head's"
+	line "killing me..."
+
+	para "Say, are you in a"
+	line "rush?"
+	done
+
+_ViridianCityGirlHasntHadHisCoffeeYetText::
+	text "Oh Grandpa!"
+	line "My goodness..."
+	cont "Sleeping here"
+	cont "of all places!"
+
+	para "Sorry, but we'll"
+	line "just have to wait"
+	cont "until he sobers"
+	cont "up."
+	done
+
+;ELSE ; marcelnote - localized dialogue
+;
+;_ViridianCityOldManSleepyPrivatePropertyText::
+;	text "You can't go"
+;	line "through here!"
+;
+;	para "This is private"
+;	line "property!"
+;	done
+;
+;_ViridianCityOldManHadMyCoffeeNowText::
+;	text "Ahh, I've had my"
+;	line "coffee now and I"
+;	cont "feel great!"
+;
+;	para "Sure you can go"
+;	line "through!"
+;
+;	para "Are you in a"
+;	line "hurry?"
+;	done
+;
+;_ViridianCityGirlHasntHadHisCoffeeYetText::
+;	text "Oh Grandpa! Don't"
+;	line "be so mean!"
+;	cont "He hasn't had his"
+;	cont "coffee yet."
+;	done
+;
+;ENDC
 
 _ViridianCityGirlWhenIGoShopText::
 	text "When I go shop in"
@@ -55,14 +115,6 @@ _ViridianCityGirlWhenIGoShopText::
 	cont "have to take the"
 	cont "winding trail in"
 	cont "VIRIDIAN FOREST."
-	done
-
-_ViridianCityOldManSleepyPrivatePropertyText::
-	text "You can't go"
-	line "through here!"
-
-	para "This is private"
-	line "property!"
 	done
 
 ViridianCityFisherYouCanHaveThisText::
@@ -96,18 +148,6 @@ _ViridianCityFisherTM42ExplanationText::
 _ViridianCityFisherTM42NoRoomText::
 	text "You have too much"
 	line "stuff already."
-	done
-
-_ViridianCityOldManHadMyCoffeeNowText::
-	text "Ahh, I've had my"
-	line "coffee now and I"
-	cont "feel great!"
-
-	para "Sure you can go"
-	line "through!"
-
-	para "Are you in a"
-	line "hurry?"
 	done
 
 _ViridianCityOldManKnowHowToCatchPokemonText::
