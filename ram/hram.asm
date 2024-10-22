@@ -384,7 +384,8 @@ hWhoseTurn:: db ; 0 on player's turn, 1 on enemy's turn
 
 hClearLetterPrintingDelayFlags:: db
 
-	ds 1
+;	ds 1
+hSkipOAMUpdates:: db  ; marcelnote - OAM updates can be interrupted by V-Blank (pokered Wiki)
 
 ; bit 0: draw HP fraction to the right of bar instead of below (for party menu)
 ; bit 1: menu is double spaced

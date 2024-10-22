@@ -116,6 +116,7 @@ OaksLabFollowedOakScript:
 	call UpdateSprites
 	ld hl, wStatusFlags7
 	res BIT_NO_MAP_MUSIC, [hl]
+	call DelayFrame  ; marcelnote - Prof. Oak's lab music sometimes plays with a channel cut off (fix from pokered Wiki)
 	call PlayDefaultMusic
 
 	ld a, SCRIPT_OAKSLAB_OAK_CHOOSE_MON_SPEECH

@@ -137,13 +137,19 @@ _Thanks2Text::
 	text "Thanks!"
 	done
 
-_AfterTrade2Text::
-	text "The @"
+_AfterTrade2Text:: ; marcelnote - dialogue changed to that of pokeyellow since RAICHU cannot evolve
+;	text "The @"
+;	text_ram wInGameTradeGiveMonName
+;	text " you"
+;	line "traded to me"
+;
+;	para "went and evolved!"
+;	done
+	text "Hello there! Your"
+	line "old @"
 	text_ram wInGameTradeGiveMonName
-	text " you"
-	line "traded to me"
-
-	para "went and evolved!"
+	text " is"
+	cont "magnificent!"
 	done
 
 _WannaTrade3Text::

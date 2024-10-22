@@ -1389,6 +1389,7 @@ DoduoEvosMoves:
 	db 34, TRI_ATTACK
 	db 40, MEGA_KICK
 	db 46, AGILITY
+	; DOUBLE_KICK?
 	db 0
 
 DodrioEvosMoves:
@@ -1402,6 +1403,7 @@ DodrioEvosMoves:
 	db 38, TRI_ATTACK
 	db 45, MEGA_KICK
 	db 51, AGILITY
+	; DOUBLE_KICK?
 	db 0
 
 SeelEvosMoves:
