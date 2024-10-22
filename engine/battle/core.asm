@@ -4610,6 +4610,8 @@ INCLUDE "data/battle/unused_critical_hit_moves.asm"
 ; determines if attack is a critical hit
 ; Azure Heights claims "the fastest pokémon (who are, not coincidentally,
 ; among the most popular) tend to CH about 20 to 25% of the time."
+; marcelnote - this function was changed according to the pokered Critical Hit tutorial
+;              to fix Focus Energy and Dire Hit while keeping the high base Critical Hit rate
 CriticalHitTest:
 	xor a
 	ld [wCriticalHitOrOHKO], a
@@ -4623,7 +4625,7 @@ CriticalHitTest:
 	call GetMonHeader
 	ld a, [wMonHBaseSpeed]
 	ld b, a
-	srl b                        ; (effective (base speed/2))
+	;srl b                        ; (effective (base speed/2)) ; marcelnote - removed
 	ldh a, [hWhoseTurn]
 	and a
 	ld hl, wPlayerMovePower
@@ -4637,17 +4639,7 @@ CriticalHitTest:
 	ret z                        ; do nothing if zero
 	dec hl
 	ld c, [hl]                   ; read move id
-	ld a, [de]
-	bit GETTING_PUMPED, a        ; test for focus energy
-	jr nz, .focusEnergyUsed      ; bug: using focus energy causes a shift to the right instead of left,
-	                             ; resulting in 1/4 the usual crit chance
-	sla b                        ; (effective (base speed/2)*2)
-	jr nc, .noFocusEnergyUsed
-	ld b, $ff                    ; cap at 255/256
-	jr .noFocusEnergyUsed
-.focusEnergyUsed
-	srl b
-.noFocusEnergyUsed
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - new code
 	ld hl, HighCriticalMoves     ; table of high critical hit moves
 .Loop
 	ld a, [hli]                  ; read move from move table
@@ -4655,17 +4647,54 @@ CriticalHitTest:
 	jr z, .HighCritical          ; if so, the move about to be used is a high critical hit ratio move
 	inc a                        ; move on to the next move, FF terminates loop
 	jr nz, .Loop                 ; check the next move in HighCriticalMoves
-	srl b                        ; /2 for regular move (effective (base speed / 2))
+	srl b                        ; /2 for regular move
 	jr .SkipHighCritical         ; continue as a normal move
 .HighCritical
 	sla b                        ; *2 for high critical hit moves
 	jr nc, .noCarry
 	ld b, $ff                    ; cap at 255/256
 .noCarry
-	sla b                        ; *4 for high critical move (effective (base speed/2)*8))
+	sla b                        ; *4 for high critical move
 	jr nc, .SkipHighCritical
 	ld b, $ff
 .SkipHighCritical
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	ld a, [de]
+	bit GETTING_PUMPED, a        ; test for focus energy
+	;jr nz, .focusEnergyUsed      ; bug: using focus energy causes a shift to the right instead of left,
+	;                             ; resulting in 1/4 the usual crit chance
+	jr z, .noFocusEnergyUsed     ; marcelnote - new code
+	sla b                        ; (effective (base speed/2)*2) ; marcelnote - now (effective (base speed*2))
+	;jr nc, .noFocusEnergyUsed    ; marcelnote - removed
+	jr nc, .focusEnergyUsed      ; marcelnote - new code
+	ld b, $ff                    ; cap at 255/256
+	jr .noFocusEnergyUsed
+.focusEnergyUsed
+	;srl b                       ; marcelnote - removed
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - new code
+	sla b                        ; (effective ((base speed*2)*2))
+	jr nc, .noFocusEnergyUsed
+	ld b, $ff                    ; cap at 255/256
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+.noFocusEnergyUsed ; marcelnote - removed a chunk of code below
+;	ld hl, HighCriticalMoves     ; table of high critical hit moves
+;.Loop
+;	ld a, [hli]                  ; read move from move table
+;	cp c                         ; does it match the move about to be used?
+;	jr z, .HighCritical          ; if so, the move about to be used is a high critical hit ratio move
+;	inc a                        ; move on to the next move, FF terminates loop
+;	jr nz, .Loop                 ; check the next move in HighCriticalMoves
+;	srl b                        ; /2 for regular move (effective (base speed / 2))
+;	jr .SkipHighCritical         ; continue as a normal move
+;.HighCritical
+;	sla b                        ; *2 for high critical hit moves
+;	jr nc, .noCarry
+;	ld b, $ff                    ; cap at 255/256
+;.noCarry
+;	sla b                        ; *4 for high critical move (effective (base speed/2)*8))
+;	jr nc, .SkipHighCritical
+;	ld b, $ff
+;.SkipHighCritical
 	call BattleRandom            ; generates a random value, in "a"
 	rlc a
 	rlc a
