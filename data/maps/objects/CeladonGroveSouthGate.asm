@@ -8,8 +8,8 @@ CeladonGroveSouthGate_Object:
 
 	def_warp_events
 	warp_event  5,  0, CELADON_GROVE, 1
-	warp_event  4,  7, CELADON_CITY, 13
-	warp_event  5,  7, CELADON_CITY, 13
+	warp_event  4,  7, CELADON_CITY, 14
+	warp_event  5,  7, CELADON_CITY, 14
 
 	def_bg_events
 
