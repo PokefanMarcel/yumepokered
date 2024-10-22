@@ -31,9 +31,9 @@ _PokemonTower1FChannelerText::
 	done
 
 _PokemonTower1FLittleBoyText:: ; marcelnote - added 7FChanneler
-	text "On the top floor"
-	line "I saw a lady who"
-	cont "was speaking"
+	text "I saw a lady on"
+	line "the top floor"
+	cont "who was speaking"
 	cont "with GHOSTs..."
 	cont "Spooky!"
 	done

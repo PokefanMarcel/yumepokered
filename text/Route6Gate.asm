@@ -6,8 +6,9 @@ _Route6GateMiddleAgedWomanText::
 	done
 
 _Route6GateYoungsterText::
-	text "I observed #MON"
-	line "on ROUTE 6 for a"
+	text "I'm observing"
+	line "wild #MON on"
+	cont "ROUTE 6 for a"
 	cont "class assignment."
 
 	para "I even saw a"
