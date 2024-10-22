@@ -25,10 +25,10 @@ FuchsiaCity_Object:
 	warp_event 22, 13, FUCHSIA_MEETING_ROOM, 1
 	warp_event 31, 27, FUCHSIA_SUPER_ROD_HOUSE, 2 ; marcelnote - from Good to Super Rod
 	warp_event 31, 24, FUCHSIA_SUPER_ROD_HOUSE, 1 ; marcelnote - from Good to Super Rod
+	warp_event 15, 27, FUCHSIA_MOVE_DELETER_HOUSE, 1 ; marcelnote - Move deleter house
 
 	def_bg_events
-	bg_event 15, 23, TEXT_FUCHSIACITY_SIGN1
-	bg_event 25, 15, TEXT_FUCHSIACITY_SIGN2
+	bg_event 25, 15, TEXT_FUCHSIACITY_SIGN  ; marcelnote - removed unused sign bg object
 	bg_event 17,  5, TEXT_FUCHSIACITY_SAFARI_GAME_SIGN
 	bg_event  6, 13, TEXT_FUCHSIACITY_MART_SIGN
 	bg_event 20, 27, TEXT_FUCHSIACITY_POKECENTER_SIGN

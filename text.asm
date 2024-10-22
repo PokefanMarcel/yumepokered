@@ -268,18 +268,19 @@ INCLUDE "data/text/text_6.asm"
 SECTION "Text 11", ROMX
 
 INCLUDE "data/text/text_7.asm"
-INCLUDE "text/PokemonAcademy1F2F.asm"     ; marcelnote - new location
-INCLUDE "text/PokemonAcademy3F4F.asm"     ; marcelnote - new location
-INCLUDE "text/MandarinIsland.asm"         ; marcelnote - new location
-INCLUDE "text/MandarinPokecenterMart.asm" ; marcelnote - new location
-INCLUDE "text/MandarinSurfShop.asm"       ; marcelnote - new location
-INCLUDE "text/MandarinHotel.asm"          ; marcelnote - new location
-INCLUDE "text/MandarinSilphCo.asm"        ; marcelnote - new location
-INCLUDE "text/SilphFactory1F.asm"         ; marcelnote - new location
-INCLUDE "text/SilphFactory2F.asm"         ; marcelnote - new location
-INCLUDE "text/CeladonGrove.asm"           ; marcelnote - new location
-INCLUDE "text/CeladonGroveSouthGate.asm"  ; marcelnote - new location
-INCLUDE "text/CeladonGroveNorthGate.asm"  ; marcelnote - new location
+INCLUDE "text/PokemonAcademy1F2F.asm"       ; marcelnote - new location
+INCLUDE "text/PokemonAcademy3F4F.asm"       ; marcelnote - new location
+INCLUDE "text/MandarinIsland.asm"           ; marcelnote - new location
+INCLUDE "text/MandarinPokecenterMart.asm"   ; marcelnote - new location
+INCLUDE "text/MandarinSurfShop.asm"         ; marcelnote - new location
+INCLUDE "text/MandarinHotel.asm"            ; marcelnote - new location
+INCLUDE "text/MandarinSilphCo.asm"          ; marcelnote - new location
+INCLUDE "text/SilphFactory1F.asm"           ; marcelnote - new location
+INCLUDE "text/SilphFactory2F.asm"           ; marcelnote - new location
+INCLUDE "text/CeladonGrove.asm"             ; marcelnote - new location
+INCLUDE "text/CeladonGroveSouthGate.asm"    ; marcelnote - new location
+INCLUDE "text/CeladonGroveNorthGate.asm"    ; marcelnote - new location
+INCLUDE "text/FuchsiaMoveDeleterHouse.asm"  ; marcelnote - new location
 
 
 SECTION "Pokédex Text", ROMX

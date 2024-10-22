@@ -44,6 +44,7 @@ TownMapOrder:
 	db CINNABAR_ISLAND
 	db CINNABAR_VOLCANO_1FB1F ; marcelnote - new location
 	db ROUTE_21
+	db MANDARIN_ISLAND ; marcelnote - new location
 	db ROUTE_22
 	db ROUTE_23
 	db VICTORY_ROAD_3F

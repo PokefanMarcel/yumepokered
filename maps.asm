@@ -96,6 +96,7 @@ LavenderCuboneHouse_Blocks:
 CeruleanTradeHouse_Blocks:
 PewterNidoranHouse_Blocks:
 PewterSpeechHouse_Blocks:
+FuchsiaMoveDeleterHouse_Blocks: ; marcelnote - new location
 ViridianNicknameHouse_Blocks: INCBIN "maps/ViridianNicknameHouse.blk"
 
 CeladonMansionRoofHouse_Blocks:
@@ -189,6 +190,10 @@ INCLUDE "data/maps/objects/SaffronPidgeyHouse.asm"
 INCLUDE "data/maps/headers/MrPsychicsHouse.asm"
 INCLUDE "scripts/MrPsychicsHouse.asm"
 INCLUDE "data/maps/objects/MrPsychicsHouse.asm"
+
+INCLUDE "data/maps/headers/FuchsiaMoveDeleterHouse.asm" ; marcelnote - new location
+INCLUDE "scripts/FuchsiaMoveDeleterHouse.asm"
+INCLUDE "data/maps/objects/FuchsiaMoveDeleterHouse.asm"
 
 INCLUDE "data/maps/headers/DiglettsCaveRoute2.asm"
 INCLUDE "scripts/DiglettsCaveRoute2.asm"
@@ -1266,3 +1271,4 @@ INCLUDE "data/maps/headers/CeladonGroveNorthGate.asm" ; marcelnote - new locatio
 INCLUDE "scripts/CeladonGroveNorthGate.asm"
 INCLUDE "data/maps/objects/CeladonGroveNorthGate.asm"
 CeladonGroveNorthGate_Blocks:: INCBIN "maps/ViridianForestSouthGate.blk"
+
