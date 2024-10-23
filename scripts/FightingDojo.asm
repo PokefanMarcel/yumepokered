@@ -98,10 +98,10 @@ FightingDojoTrainerHeader0:
 	trainer EVENT_BEAT_FIGHTING_DOJO_TRAINER_0, 4, FightingDojoBlackbelt1BattleText, FightingDojoBlackbelt1EndBattleText, FightingDojoBlackbelt1AfterBattleText
 FightingDojoTrainerHeader1:
 	trainer EVENT_BEAT_FIGHTING_DOJO_TRAINER_1, 4, FightingDojoBlackbelt2BattleText, FightingDojoBlackbelt2EndBattleText, FightingDojoBlackbelt2AfterBattleText
-FightingDojoTrainerHeader2:
-	trainer EVENT_BEAT_FIGHTING_DOJO_TRAINER_2, 3, FightingDojoBlackbelt3BattleText, FightingDojoBlackbelt3EndBattleText, FightingDojoBlackbelt3AfterBattleText
-FightingDojoTrainerHeader3:
-	trainer EVENT_BEAT_FIGHTING_DOJO_TRAINER_3, 3, FightingDojoBlackbelt4BattleText, FightingDojoBlackbelt4EndBattleText, FightingDojoBlackbelt4AfterBattleText
+FightingDojoTrainerHeader2:  ; marcelnote - increased sight from 3 to 4 since moved to the right
+	trainer EVENT_BEAT_FIGHTING_DOJO_TRAINER_2, 4, FightingDojoBlackbelt3BattleText, FightingDojoBlackbelt3EndBattleText, FightingDojoBlackbelt3AfterBattleText
+FightingDojoTrainerHeader3:  ; marcelnote - increased sight from 3 to 4 since moved to the right
+	trainer EVENT_BEAT_FIGHTING_DOJO_TRAINER_3, 4, FightingDojoBlackbelt4BattleText, FightingDojoBlackbelt4EndBattleText, FightingDojoBlackbelt4AfterBattleText
 	db -1 ; end
 
 FightingDojoKarateMasterText:
