@@ -326,6 +326,7 @@ WartortleEvosMoves:
 	db 27, WITHDRAW
 	db 32, SKULL_BASH
 	db 37, REST ; marcelnote - exclusive to SQUIRTLE and WARTORTLE
+	; ACID_ARMOR? would pair well with REST (TM) and better than WITHDRAW - but Blastoise weak to SPECIAL types
 	db 40, MIST
 	db 48, HYDRO_PUMP
 	db 0
@@ -1031,6 +1032,7 @@ GrowlitheEvosMoves:
 	db 27, TAKE_DOWN
 	db 33, AGILITY
 	db 40, FLAMETHROWER
+	; DOUBLE_EDGE
 	db 0
 
 ArcanineEvosMoves:
@@ -1044,6 +1046,7 @@ ArcanineEvosMoves:
 	db 30, TAKE_DOWN
 	db 37, AGILITY
 	db 45, FLAMETHROWER
+	; DOUBLE_EDGE
 	db 0
 
 PoliwagEvosMoves:
@@ -1916,7 +1919,7 @@ MrMimeEvosMoves:
 	db 24, DOUBLESLAP
 	db 29, REFLECT
 	db 34, PSYBEAM
-	db 39, MEDITATE
+	db 39, MIMIC
 	db 45, SUBSTITUTE
 	db 0
 
@@ -2177,6 +2180,7 @@ AerodactylEvosMoves:
 	db 39, TAKE_DOWN
 	db 45, ROCK_SLIDE
 	db 52, HYPER_BEAM
+	; SLAM?
 	db 0
 
 SnorlaxEvosMoves:

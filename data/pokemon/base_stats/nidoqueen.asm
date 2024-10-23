@@ -10,7 +10,8 @@
 	INCBIN "gfx/pokemon/front/nidoqueen.pic", 0, 1 ; sprite dimensions
 	dw NidoqueenPicFront, NidoqueenPicBack
 
-	db TACKLE, SCRATCH, TAIL_WHIP, BODY_SLAM ; level 1 learnset
+	;db TACKLE, SCRATCH, TAIL_WHIP, BODY_SLAM ; level 1 learnset
+	db TACKLE, GROWL, NONE, NONE ; level 1 learnset ; marcelnote - changed
 	db GROWTH_MEDIUM_SLOW ; growth rate
 
 	; tm/hm learnset

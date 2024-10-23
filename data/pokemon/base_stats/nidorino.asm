@@ -10,7 +10,7 @@
 	INCBIN "gfx/pokemon/front/nidorino.pic", 0, 1 ; sprite dimensions
 	dw NidorinoPicFront, NidorinoPicBack
 
-	db TACKLE, LEER, HORN_ATTACK, NO_MOVE ; level 1 learnset
+	db TACKLE, LEER, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed HORN_ATTACK
 	db GROWTH_MEDIUM_SLOW ; growth rate
 
 	; tm/hm learnset

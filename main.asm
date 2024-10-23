@@ -183,15 +183,18 @@ INCLUDE "engine/slots/game_corner_slots2.asm"    ; marcelnote - moved from Battl
 
 SECTION "Battle Engine 7", ROMX
 
-INCLUDE "data/moves/moves.asm"
-INCLUDE "data/pokemon/base_stats.asm"
-INCLUDE "data/pokemon/cries.asm"
 INCLUDE "engine/battle/unused_stats_functions.asm"
 INCLUDE "engine/battle/scroll_draw_trainer_pic.asm"
 INCLUDE "engine/battle/trainer_ai.asm"
 INCLUDE "engine/battle/draw_hud_pokeball_gfx.asm"
 INCLUDE "gfx/trade.asm"
 INCLUDE "engine/pokemon/evos_moves.asm"
+
+
+SECTION "Pokemon Data 1", ROMX    ; marcelnote - new, moved from Battle Engine 7
+INCLUDE "data/moves/moves.asm"
+INCLUDE "data/pokemon/base_stats.asm"
+INCLUDE "data/pokemon/cries.asm"
 
 
 SECTION "Battle Core", ROMX
