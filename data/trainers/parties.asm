@@ -773,33 +773,37 @@ ChannelerData:
 BrockData:
 	db $FF, 12, GEODUDE, 14, ONIX, 0
 
-MistyData:
-	db $FF, 18, STARYU, 21, STARMIE, 0
+MistyData:  ; marcelnote - adjusted
+	;db $FF, 18, STARYU, 21, STARMIE, 0 ; original
+	db $FF, 18, STARYU, 17, GOLDEEN, 21, STARMIE, 0 ; new
 
 LtSurgeData:
 	db $FF, 21, VOLTORB, 18, PIKACHU, 24, RAICHU, 0
 
-ErikaData:
-	db $FF, 29, VICTREEBEL, 24, TANGELA, 29, VILEPLUME, 0
+ErikaData:  ; marcelnote - adjusted
+	;db $FF, 29, VICTREEBEL, 24, TANGELA, 29, VILEPLUME, 0 ; original
+	db $FF, 31, VICTREEBEL, 29, TANGELA, 33, VILEPLUME, 0 ; new
 
-KogaData:; marcelnote - adjusted
+KogaData:  ; marcelnote - adjusted
 	;db $FF, 37, KOFFING, 39, MUK, 37, KOFFING, 43, WEEZING, 0 ; original
-	db $FF, 37, KOFFING, 39, MUK, 37, GOLBAT, 43, WEEZING, 0 ; original
+	db $FF, 41, WEEZING, 37, GOLBAT, 39, MUK, 43, VENOMOTH, 0 ; new
 
-SabrinaData:
-	db $FF, 38, KADABRA, 37, MR_MIME, 38, VENOMOTH, 43, ALAKAZAM, 0
+SabrinaData:  ; marcelnote - adjusted
+	;db $FF, 38, KADABRA, 37, MR_MIME, 38, VENOMOTH, 43, ALAKAZAM, 0 ; original
+	db $FF, 40, KADABRA, 39, MR_MIME, 42, BUTTERFREE, 45, ALAKAZAM, 0 ; new
 
-BlaineData: ; marcelnote - adjusted
+BlaineData:  ; marcelnote - adjusted
 	;db $FF, 42, GROWLITHE, 40, PONYTA, 42, RAPIDASH, 47, ARCANINE, 0 ; original
-	db $FF, 42, GROWLITHE, 40, FLAREON, 42, RAPIDASH, 45, MAGMAR, 47, ARCANINE, 0
+	db $FF, 44, GROWLITHE, 42, FLAREON, 44, RAPIDASH, 47, MAGMAR, 49, ARCANINE, 0 ; new
 
 GiovanniData:
 ; Rocket Hideout B4F
 	db $FF, 25, ONIX, 24, RHYHORN, 29, KANGASKHAN, 0
 ; Silph Co. 11F
 	db $FF, 37, NIDORINO, 35, KANGASKHAN, 37, RHYHORN, 41, NIDOQUEEN, 0
-; Viridian Gym
-	db $FF, 45, RHYHORN, 42, DUGTRIO, 44, NIDOQUEEN, 45, NIDOKING, 50, RHYDON, 0
+; Viridian Gym  ; marcelnote - adjusted
+	;db $FF, 45, RHYHORN, 42, DUGTRIO, 44, NIDOQUEEN, 45, NIDOKING, 50, RHYDON, 0 ; original
+	db $FF, 47, DUGTRIO, 49, NIDOQUEEN, 50, PERSIAN, 49, NIDOKING, 52, RHYDON, 0 ; new
 
 LoreleiData:
 	db $FF, 54, DEWGONG, 53, CLOYSTER, 54, SLOWBRO, 56, JYNX, 56, LAPRAS, 0
