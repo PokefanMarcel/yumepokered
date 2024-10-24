@@ -22,10 +22,49 @@ SpecialTrainerMoves:
 	db 2, 4, BIDE
 	db 0
 
+	db BROCK, 2  ; rematch
+	; Aerodactyl
+	db 1, 2, FLY
+	; Rhydon
+	db 2, 1, DOUBLE_EDGE
+	; Omastar
+	db 3, 1, BLIZZARD
+	db 3, 2, TOXIC
+	db 3, 4, SURF
+	; Golem
+	; nothing
+	; Kabutops
+	; nothing
+	; Onix
+	db 6, 2, FISSURE
+	db 0
+
 	db MISTY, 1
 	; Starmie
 	db 3, 1, SWIFT
 	db 3, 4, BUBBLEBEAM
+	db 0
+
+	db MISTY, 2  ; rematch
+	; Seaking
+	db 1, 1, AGILITY
+	db 1, 4, NO_MOVE
+	; Golduck
+	db 2, 1, HYPER_BEAM
+	db 2, 2, PSYCHIC_M
+	; Dragonair
+	db 3, 1, SURF
+	db 3, 3, BLIZZARD
+	; Seadra
+	db 4, 3, SMOKESCREEN
+	; Dewgong
+	db 5, 1, REST
+	db 5, 2, DOUBLE_EDGE
+	db 5, 4, SURF
+	; Starmie
+	db 6, 1, PSYCHIC_M
+	db 6, 2, RECOVER
+	db 6, 4, SURF
 	db 0
 
 	db LT_SURGE, 1
@@ -39,6 +78,26 @@ SpecialTrainerMoves:
 	db 3, 4, GROWL
 	db 0
 
+	db LT_SURGE, 2  ; rematch
+	; Magneton
+	db 1, 1, THUNDER_WAVE
+	db 1, 2, REFLECT
+	; Electabuzz
+	db 2, 1, THUNDERBOLT
+	db 2, 2, PSYCHIC_M
+	; Porygon
+	db 3, 1, THUNDERBOLT
+	db 3, 2, ICE_BEAM
+	; Electrode
+	db 4, 2, THUNDER_WAVE
+	; Jolteon
+	db 5, 2, REFLECT
+	db 5, 3, THUNDERBOLT
+	; Raichu
+	db 6, 2, THUNDER_WAVE
+	db 6, 4, SURF
+	db 0
+
 	db ERIKA, 1
 	; Victrebell
 	db 1, 2, RAZOR_LEAF
@@ -47,6 +106,26 @@ SpecialTrainerMoves:
 	db 2, 3, STUN_SPORE
 	; Vileplume
 	db 3, 4, PETAL_DANCE
+	db 0
+
+	db ERIKA, 2  ; rematch
+	; Victreebel
+	db 1, 3, TOXIC
+	; Parasect
+	db 2, 1, MEGA_DRAIN
+	db 2, 4, CUT
+	; Exeggutor
+	db 3, 1, SUBSTITUTE
+	db 3, 2, PSYCHIC_M
+	db 3, 3, MEGA_DRAIN
+	; Tangela
+	db 4, 2, BIND
+	db 4, 3, MEGA_DRAIN
+	; Venusaur
+	db 5, 3, ACID
+	db 5, 4, LEECH_SEED
+	; Vileplume
+	db 6, 2, SLEEP_POWDER
 	db 0
 
 	db KOGA, 1
@@ -62,6 +141,26 @@ SpecialTrainerMoves:
 	db 4, 1, RAZOR_WIND
 	db 4, 2, DOUBLE_TEAM
 	db 4, 4, TOXIC
+	db 0
+
+	db KOGA, 2  ; rematch
+	; Weezing
+	db 1, 1, TOXIC
+	db 1, 3, FIRE_BLAST
+	; Golbat
+	db 2, 1, MEGA_DRAIN
+	db 2, 2, HEX
+	db 2, 3, TOXIC
+	; Pinsir
+	db 3, 3, TOXIC
+	; Muk
+	db 4, 4, BIND
+	; Tentacruel
+	db 5, 2, TOXIC
+	db 5, 3, REFLECT
+	; Venomoth
+	db 6, 1, RAZOR_WIND
+	db 6, 2, DOUBLE_TEAM
 	db 0
 
 	db SABRINA, 1
@@ -80,6 +179,27 @@ SpecialTrainerMoves:
 	db 4, 2, PSYWAVE
 	db 0
 
+	db SABRINA, 2  ; rematch
+	; Kadabra
+	db 1, 1, THUNDER_WAVE
+	; Wigglytuff
+	db 2, 1, PSYCHIC_M
+	db 2, 2, ICE_BEAM
+	; Mr. Mime
+	db 3, 1, LIGHT_SCREEN
+	db 3, 2, PSYCHIC_M
+	; Gengar
+	db 4, 1, CONFUSE_RAY
+	db 4, 2, PSYCHIC_M
+	db 4, 4, THUNDERBOLT
+	; Butterfree
+	db 5, 1, MEGA_DRAIN
+	db 5, 2, PSYCHIC_M
+	db 5, 4, SLEEP_POWDER
+	; Alakazam
+	db 6, 1, HYPER_BEAM
+	db 0
+
 	db BLAINE, 1
 	; Growlithe
 	; no change
@@ -95,7 +215,62 @@ SpecialTrainerMoves:
 	db 5, 4, FIRE_BLAST
 	db 0
 
-	db GIOVANNI, 3
+	db BLAINE, 2  ; rematch
+	; Flareon
+	db 1, 2, REFLECT
+	db 1, 3, DOUBLE_EDGE
+	; Ninetales
+	db 2, 1, WILL_O_WISP
+	db 2, 2, FIRE_BLAST
+	; Rapidash
+	db 3, 1, FIRE_BLAST
+	db 3, 2, DOUBLE_EDGE
+	; Gyarados
+	db 4, 1, FIRE_BLAST
+	db 4, 2, THUNDERBOLT
+	db 4, 3, SURF
+	; Magmar
+	db 5, 1, SMOKESCREEN
+	db 5, 3, PSYCHIC_M
+	; Arcanine
+	db 6, 1, SOLARBEAM
+	db 6, 2, DOUBLE_EDGE
+	db 6, 4, FIRE_BLAST
+	db 0
+
+	db GIOVANNI, 1  ; Rocket hideout battle
+	; Onix
+	db 1, 2, TAKE_DOWN
+	db 1, 3, SCREECH
+	; Rhyhorn
+	db 2, 3, TAKE_DOWN
+	; Kangaskhan
+	; nothing
+	; Persian
+	db 4, 2, BUBBLEBEAM
+	db 0
+
+	db GIOVANNI, 2  ; Silph Co battle
+	; Nidorino
+	db 1, 3, TAKE_DOWN
+	db 1, 4, BUBBLEBEAM
+	; Rhyhorn
+	db 2, 1, STOMP
+	db 2, 2, DIG
+	; Kangaskhan
+	db 3, 1, SUBMISSION
+	db 3, 2, THUNDERBOLT
+	; Nidoqueen
+	db 4, 1, THUNDERBOLT
+	db 4, 3, TOXIC
+	db 4, 4, DIG
+	; Persian
+	db 5, 1, BUBBLEBEAM
+	db 5, 2, THUNDERBOLT
+	db 5, 3, DOUBLE_TEAM
+	db 0
+
+	db GIOVANNI, 3  ; gym battle
 	; Dugtrio
 	db 1, 1, FISSURE
 	; Nidoqueen
@@ -464,6 +639,30 @@ SpecialTrainerMoves:
 	db 6, 1, THUNDERBOLT
 	db 6, 2, HYPER_BEAM
 	db 6, 3, FIRE_BLAST
+	db 0
+
+	db YELLOW, 1
+	; Dodrio
+	db 1, 4, DOUBLE_TEAM
+	; Chansey
+	db 2, 1, SOFTBOILED
+	db 2, 2, MINIMIZE
+	db 2, 3, PSYCHIC_M
+	; Butterfree
+	db 3, 1, MEGA_DRAIN
+	db 3, 2, PSYCHIC_M
+	db 3, 4, SLEEP_POWDER
+	; Omastar
+	db 4, 1, TOXIC
+	db 4, 2, ROCK_SLIDE
+	db 4, 4, SURF
+	; Ninetales
+	db 5, 1, WILL_O_WISP
+	db 5, 2, CONFUSE_RAY
+	db 5, 3, HEX
+	; Pikachu
+	db 6, 2, SURF
+	db 6, 4, THUNDER_WAVE
 	db 0
 
 	db -1 ; end

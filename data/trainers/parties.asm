@@ -47,6 +47,7 @@ TrainerDataPointers:
 	dw ChannelerData
 	dw AgathaData
 	dw LanceData
+	dw YellowData  ; marcelnote - new trainer class
 	assert_table_length NUM_TRAINERS
 
 ; if first byte != $FF, then
@@ -57,6 +58,7 @@ TrainerDataPointers:
 	; first byte is $FF (obviously)
 	; every next two bytes are a level and species
 	; null-terminated
+	; marcelnote - in this case trainer can have Special Moves (special_moves.asm)
 
 YoungsterData:
 ; Route 3
@@ -772,36 +774,45 @@ ChannelerData:
 
 BrockData:
 	db $FF, 12, GEODUDE, 14, ONIX, 0
+	db $FF, 56, AERODACTYL, 60, RHYDON, 58, OMASTAR, 60, GOLEM, 58, KABUTOPS, 68, ONIX, 0 ; marcelnote - new rematch team
 
 MistyData:  ; marcelnote - adjusted
 	;db $FF, 18, STARYU, 21, STARMIE, 0 ; original
 	db $FF, 18, STARYU, 17, GOLDEEN, 21, STARMIE, 0 ; new
+	db $FF, 58, SEAKING, 56, GOLDUCK, 58, DRAGONAIR, 56, SEADRA, 58, DEWGONG, 62, STARMIE, 0 ; new rematch team ; VAPOREON if removed from Lorelei, BLASTOISE?
 
 LtSurgeData:
 	db $FF, 21, VOLTORB, 18, PIKACHU, 24, RAICHU, 0
+	db $FF, 57, MAGNETON, 55, ELECTABUZZ, 59, PORYGON, 57, ELECTRODE, 59, JOLTEON, 63, RAICHU, 0 ; new rematch team
 
 ErikaData:  ; marcelnote - adjusted
 	;db $FF, 29, VICTREEBEL, 24, TANGELA, 29, VILEPLUME, 0 ; original
 	db $FF, 31, VICTREEBEL, 29, TANGELA, 33, VILEPLUME, 0 ; new
+	db $FF, 56, VICTREEBEL, 58, PARASECT, 56, EXEGGUTOR, 60, TANGELA, 58, VENUSAUR, 62, VILEPLUME, 0 ; new rematch team
 
 KogaData:  ; marcelnote - adjusted
 	;db $FF, 37, KOFFING, 39, MUK, 37, KOFFING, 43, WEEZING, 0 ; original
 	db $FF, 41, WEEZING, 37, GOLBAT, 39, MUK, 43, VENOMOTH, 0 ; new
+	db $FF, 57, WEEZING, 59, GOLBAT, 61, PINSIR, 59, MUK, 57, TENTACRUEL, 63, VENOMOTH, 0 ; new rematch team
 
 SabrinaData:  ; marcelnote - adjusted
 	;db $FF, 38, KADABRA, 37, MR_MIME, 38, VENOMOTH, 43, ALAKAZAM, 0 ; original
 	db $FF, 40, KADABRA, 39, MR_MIME, 42, BUTTERFREE, 45, ALAKAZAM, 0 ; new
+	db $FF, 58, KADABRA, 58, WIGGLYTUFF, 60, MR_MIME, 58, GENGAR, 66, BUTTERFREE, 62, ALAKAZAM, 0 ; new rematch team ; STARMIE?
 
 BlaineData:  ; marcelnote - adjusted
 	;db $FF, 42, GROWLITHE, 40, PONYTA, 42, RAPIDASH, 47, ARCANINE, 0 ; original
 	db $FF, 44, GROWLITHE, 42, FLAREON, 44, RAPIDASH, 47, MAGMAR, 49, ARCANINE, 0 ; new
+	db $FF, 57, FLAREON, 59, NINETALES, 57, RAPIDASH, 59, GYARADOS, 61, MAGMAR, 63, ARCANINE, 0 ; new rematch team
 
-GiovanniData:
+GiovanniData:  ; marcelnote - adjusted
 ; Rocket Hideout B4F
-	db $FF, 25, ONIX, 24, RHYHORN, 29, KANGASKHAN, 0
+	;db $FF, 25, ONIX, 24, RHYHORN, 29, KANGASKHAN, 0 ; original
+	db $FF, 26, ONIX, 28, RHYHORN, 29, KANGASKHAN, 31, PERSIAN, 0 ; new
 ; Silph Co. 11F
-	db $FF, 37, NIDORINO, 35, KANGASKHAN, 37, RHYHORN, 41, NIDOQUEEN, 0
-; Viridian Gym  ; marcelnote - adjusted
+	;db $FF, 37, NIDORINO, 35, KANGASKHAN, 37, RHYHORN, 41, NIDOQUEEN, 0 ; original
+	db $FF, 39, NIDORINO, 41, RHYHORN, 39, KANGASKHAN, 41, NIDOQUEEN, 43, PERSIAN, 0 ; new
+; Viridian Gym
 	;db $FF, 45, RHYHORN, 42, DUGTRIO, 44, NIDOQUEEN, 45, NIDOKING, 50, RHYDON, 0 ; original
 	db $FF, 47, DUGTRIO, 49, NIDOQUEEN, 50, PERSIAN, 49, NIDOKING, 52, RHYDON, 0 ; new
 
@@ -825,3 +836,6 @@ LanceData:
 	db $FF, 58, GYARADOS, 56, DRAGONAIR, 56, DRAGONAIR, 60, AERODACTYL, 62, DRAGONITE, 0
 	; marcelnote - new rematch team
 	db $FF, 66, DRAGONITE, 68, GYARADOS, 70, KANGASKHAN, 68, CHARIZARD, 70, AERODACTYL, 72, DRAGONITE, 0
+
+YellowData:  ; marcelnote - new postgame battle
+	db $FF, 78, DODRIO, 80, CHANSEY, 88, BUTTERFREE, 78, OMASTAR, 78, NINETALES, 94, PIKACHU, 0

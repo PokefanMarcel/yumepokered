@@ -743,6 +743,11 @@
 	const EVENT_BEAT_CELADON_GROVE_TRAINER_2
 	const EVENT_GOT_TM51
 
+; Mt. Silver events ; marcelnote - new location
+	const_next $860
+	const_skip
+	;const EVENT_BEAT_ROUTE_28_TRAINER_0 ; testing only
+
 ; Safari Zone events
 	const_next $880
 	const EVENT_GOT_HM03

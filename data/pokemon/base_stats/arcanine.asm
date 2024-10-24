@@ -14,11 +14,11 @@
 	db GROWTH_SLOW ; growth rate
 
 	; tm/hm learnset
-	; marcelnote - added FLASH
+	; marcelnote - added FLASH, SOLARBEAM
 	tmhm TOXIC,        BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  HYPER_BEAM,   \
 	     RAGE,         DRAGON_RAGE,  DIG,          TELEPORT,     MIMIC,        \
 	     DOUBLE_TEAM,  REFLECT,      BIDE,         FIRE_BLAST,   SWIFT,        \
-	     SKULL_BASH,   REST,         SUBSTITUTE,   FLASH
+	     SKULL_BASH,   REST,         SUBSTITUTE,   FLASH,        SOLARBEAM
 	; end
 
 	db 0 ; padding

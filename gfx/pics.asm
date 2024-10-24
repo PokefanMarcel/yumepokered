@@ -374,3 +374,4 @@ LoreleiPic::       INCBIN "gfx/trainers/lorelei.pic"
 ChannelerPic::     INCBIN "gfx/trainers/channeler.pic"
 AgathaPic::        INCBIN "gfx/trainers/agatha.pic"
 LancePic::         INCBIN "gfx/trainers/lance.pic"
+YellowPic::        INCBIN "gfx/trainers/yellow.pic" ; marcelnote - new trainer class
