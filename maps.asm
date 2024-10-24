@@ -1282,3 +1282,7 @@ INCLUDE "scripts/MtSilver2F.asm"
 INCLUDE "data/maps/objects/MtSilver2F.asm"
 MtSilver2F_Blocks:: INCBIN "maps/MtSilver2F.blk"
 
+INCLUDE "data/maps/headers/MtSilver3F.asm" ; marcelnote - new location
+INCLUDE "scripts/MtSilver3F.asm"
+INCLUDE "data/maps/objects/MtSilver3F.asm"
+MtSilver3F_Blocks:: INCBIN "maps/MtSilver3F.blk"

@@ -1958,7 +1958,8 @@ wViridianMartCurScript:: db
 wRoute22GateCurScript:: db
 wCeruleanCityCurScript:: db
 wMandarinHotelCurScript:: db ; marcelnote - added for Mandarin Hotel trainers, took 1 from padding below
-	ds 6
+wMtSilver3FCurScript:: db ; marcelnote - added for Mt Silver 3F trainers, took 1 from padding below
+	ds 5
 wSSAnneBowCurScript:: db
 wViridianForestCurScript:: db
 wMuseum1FCurScript:: db

@@ -7,7 +7,7 @@ MtSilver2F_Object:
 
 	def_warp_events
 	warp_event 17, 29, MT_SILVER_1F, 3
-	;warp_event 11,  4, MT_SILVER_TOP, 1
+	warp_event 11,  4, MT_SILVER_3F, 1
 
 	def_bg_events
 	;bg_event 15, 23, TEXT_MTMOON1F_BEWARE_ZUBAT_SIGN

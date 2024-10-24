@@ -1,5 +1,7 @@
 ; marcelnote - new location
 MtSilver2F_Script:
+	;ld a, 0
+	;ld [wMuteAudioAndPauseMusic], a
 	jp EnableAutoTextBoxDrawing
 
 MtSilver2F_TextPointers:
