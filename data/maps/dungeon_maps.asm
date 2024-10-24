@@ -17,6 +17,7 @@ DungeonMaps1:
 	db POWER_PLANT
 	db DIGLETTS_CAVE
 	db CELADON_GROVE
+	db MT_SILVER_1F ; put in second list ultimately
 	db -1 ; end
 
 ; GetBattleTransitionID_IsDungeonMap checks if wCurMap

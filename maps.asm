@@ -1265,10 +1265,15 @@ CeladonGrove_Blocks:: INCBIN "maps/CeladonGrove.blk"
 INCLUDE "data/maps/headers/CeladonGroveSouthGate.asm" ; marcelnote - new location
 INCLUDE "scripts/CeladonGroveSouthGate.asm"
 INCLUDE "data/maps/objects/CeladonGroveSouthGate.asm"
-CeladonGroveSouthGate_Blocks:: INCBIN "maps/ViridianForestSouthGate.blk"
 
 INCLUDE "data/maps/headers/CeladonGroveNorthGate.asm" ; marcelnote - new location
 INCLUDE "scripts/CeladonGroveNorthGate.asm"
 INCLUDE "data/maps/objects/CeladonGroveNorthGate.asm"
+CeladonGroveSouthGate_Blocks:
 CeladonGroveNorthGate_Blocks:: INCBIN "maps/ViridianForestSouthGate.blk"
+
+INCLUDE "data/maps/headers/MtSilver1F.asm" ; marcelnote - new location
+INCLUDE "scripts/MtSilver1F.asm"
+INCLUDE "data/maps/objects/MtSilver1F.asm"
+MtSilver1F_Blocks:: INCBIN "maps/MtSilver1F.blk"
 

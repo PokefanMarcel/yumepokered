@@ -244,7 +244,7 @@ MapHeaderBanks::
 	db $11 ; UNUSED_MAP_EE
 	db BANK(TradeCenter_h)
 	db BANK(Colosseum_h)
-	db $11 ; UNUSED_MAP_F1
+	db BANK(MtSilver1F_h) ; $F1 ; marcelnote - new location
 	db $11 ; UNUSED_MAP_F2
 	db $11 ; UNUSED_MAP_F3
 	db $11 ; UNUSED_MAP_F4

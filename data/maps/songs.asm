@@ -243,7 +243,7 @@ MapSongBanks::
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; UNUSED_MAP_EE
 	db MUSIC_CELADON, BANK(Music_Celadon) ; TRADE_CENTER
 	db MUSIC_CELADON, BANK(Music_Celadon) ; COLOSSEUM
-	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; UNUSED_MAP_F1
+	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; $F1 ; marcelnote - new location
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; UNUSED_MAP_F2
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; UNUSED_MAP_F3
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; UNUSED_MAP_F4
