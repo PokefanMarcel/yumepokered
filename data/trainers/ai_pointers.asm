@@ -51,4 +51,5 @@ TrainerAIPointers:
 	dbw 3, GenericAI
 	dbw 2, AgathaAI ; agatha
 	dbw 1, LanceAI ; lance
+	dbw 2, Rival3AI ; Yellow ; marcelnote - new trainer class
 	assert_table_length NUM_TRAINERS
