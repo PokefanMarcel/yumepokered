@@ -70,4 +70,4 @@ Academy_Coll::  ; marcelnote - new tileset
 	coll_tiles $01, $12, $14, $1A, $1C
 
 Mountain_Coll::  ; marcelnote - new tileset
-	coll_tiles $40, $2E, $12, $20, $24
+	coll_tiles $40, $2E, $12, $20, $24, $53, $5A

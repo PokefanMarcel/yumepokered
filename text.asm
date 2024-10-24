@@ -283,6 +283,11 @@ INCLUDE "text/CeladonGroveNorthGate.asm"    ; marcelnote - new location
 INCLUDE "text/FuchsiaMoveDeleterHouse.asm"  ; marcelnote - new location
 
 
+SECTION "Text 12", ROMX ; marcelnote - new
+
+INCLUDE "text/MtSilver3F.asm"               ; marcelnote - new location
+
+
 SECTION "Pokédex Text", ROMX
 
 INCLUDE "data/pokemon/dex_text.asm"

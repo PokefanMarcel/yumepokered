@@ -17,8 +17,6 @@ DungeonMaps1:
 	db POWER_PLANT
 	db DIGLETTS_CAVE
 	db CELADON_GROVE
-	db MT_SILVER_1F ; put in second list ultimately
-	db MT_SILVER_2F ; put in second list ultimately
 	db -1 ; end
 
 ; GetBattleTransitionID_IsDungeonMap checks if wCurMap
@@ -40,4 +38,6 @@ DungeonMaps2: ; marcelnote - modified to fix aforementioned bug and account for 
 	db SILPH_CO_2F, CERULEAN_CAVE_1F
 	; SILPH_CO_[9-11]F
 	db SILPH_CO_9F, SILPH_CO_11F
+	; MT_SILVER_[1-3]F
+	db MT_SILVER_1F, MT_SILVER_3F
 	db -1 ; end

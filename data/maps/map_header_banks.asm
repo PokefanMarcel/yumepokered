@@ -246,7 +246,7 @@ MapHeaderBanks::
 	db BANK(Colosseum_h)
 	db BANK(MtSilver1F_h) ; $F1 ; marcelnote - new location
 	db BANK(MtSilver2F_h) ; $F2 ; marcelnote - new location
-	db $11 ; UNUSED_MAP_F3
+	db BANK(MtSilver3F_h) ; $F3 ; marcelnote - new location
 	db $11 ; UNUSED_MAP_F4
 	db BANK(LoreleisRoom_h)
 	db BANK(BrunosRoom_h)

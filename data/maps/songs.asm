@@ -245,7 +245,7 @@ MapSongBanks::
 	db MUSIC_CELADON, BANK(Music_Celadon) ; COLOSSEUM
 	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; MT_SILVER_1F ; marcelnote - new location
 	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; MT_SILVER_2F ; marcelnote - new location
-	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; UNUSED_MAP_F3
+	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; MT_SILVER_3F ; marcelnote - new location
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; UNUSED_MAP_F4
 	db MUSIC_GYM, BANK(Music_Gym) ; LORELEIS_ROOM
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; BRUNOS_ROOM

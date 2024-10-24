@@ -21,6 +21,8 @@ TilePairCollisionsLand::
 	db FOREST,   $1F, $01 ; marcelnote - stairs (roof) to grassy ground
 	db MOUNTAIN, $2E, $20 ; marcelnote - floors of different elevations
 	db MOUNTAIN, $24, $20 ; marcelnote - upper floor to cave door
+	db MOUNTAIN, $2E, $53 ; marcelnote - floors of different elevations
+	db MOUNTAIN, $5A, $2E ; marcelnote - new tileset
 	db -1 ; end
 
 TilePairCollisionsWater::

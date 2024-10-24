@@ -60,4 +60,4 @@ ENDM
 	door_tiles $1a, $1c
 
 .MountainDoorTileIDs:   ; marcelnote - new tileset
-	door_tiles $24
+	door_tiles $24, $5A
