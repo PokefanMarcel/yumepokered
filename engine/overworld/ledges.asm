@@ -3,8 +3,13 @@ HandleLedges::
 	bit BIT_LEDGE_OR_FISHING, a
 	ret nz
 	ld a, [wCurMapTileset]
+;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - modified to handle ledges in CAVERN tileset
+	cp CAVERN
+	jp z, .proceed
 	and a ; OVERWORLD
 	ret nz
+.proceed
+;;;;;;;;;;;;;;;;;;;;;;;;
 	predef GetTileAndCoordsInFrontOfPlayer
 	ld a, [wSpritePlayerStateData1FacingDirection]
 	ld b, a
@@ -13,6 +18,12 @@ HandleLedges::
 	ld a, [wTileInFrontOfPlayer]
 	ld d, a
 	ld hl, LedgeTiles
+;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - modified to handle ledges in CAVERN tileset
+	ld a, [wCurMapTileset]
+	and a
+	jp z, .loop ; if OVERWORLD, keep LedgeTiles
+	ld hl, LedgeTilesCavern
+;;;;;;;;;;;;;;;;;;;;;;;;
 .loop
 	ld a, [hli]
 	cp $ff

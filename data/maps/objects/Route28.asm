@@ -5,7 +5,7 @@ Route28_Object:
 	db $2c ; border block
 
 	def_warp_events
-	;warp_event 12,  9, DIGLETTS_CAVE_ROUTE_2, 1
+	warp_event 16,  1, MT_SILVER_1F, 1
 
 	def_bg_events
 	bg_event 69,  5, TEXT_ROUTE28_SIGN
