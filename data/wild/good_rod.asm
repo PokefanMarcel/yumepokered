@@ -39,6 +39,7 @@ GoodRodData:
 	dbw CERULEAN_CAVE_1F,    .Group6
 	dbw MT_MOON_SQUARE,      .Group1 ; marcelnote - new map
 	dbw CELADON_GROVE,       .Group6 ; marcelnote - new map
+	dbw MT_SILVER_2F,        .Group12 ; marcelnote - new map
 	db -1 ; end
 
 ; fishing groups
@@ -150,3 +151,10 @@ GoodRodData:
 	db 15, TENTACOOL
 	db 15, GRIMER
 	db 17, GRIMER
+
+.Group12: ; MT_SILVER_2F
+	db 4
+	db 15, OMANYTE
+	db 15, KABUTO
+	db 17, OMANYTE
+	db 17, KABUTO

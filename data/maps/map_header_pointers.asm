@@ -245,7 +245,7 @@ MapHeaderPointers::
 	dw TradeCenter_h
 	dw Colosseum_h
 	dw MtSilver1F_h ; $F1 ; marcelnote - new location
-	dw SilphCo2F_h ; UNUSED_MAP_F2
+	dw MtSilver2F_h ; $F2 ; marcelnote - new location
 	dw SilphCo2F_h ; UNUSED_MAP_F3
 	dw SilphCo2F_h ; UNUSED_MAP_F4
 	dw LoreleisRoom_h

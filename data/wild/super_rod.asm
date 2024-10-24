@@ -39,6 +39,7 @@ SuperRodData:
 	dbw CERULEAN_CAVE_1F,    .Group6
 	dbw MT_MOON_SQUARE,      .Group2 ; marcelnote - new map
 	dbw CELADON_GROVE,       .Group3 ; marcelnote - new map
+	dbw MT_SILVER_2F,        .Group13 ; marcelnote - new map
 	db -1 ; end
 
 ; fishing groups
@@ -158,3 +159,13 @@ SuperRodData:
 	db 25, GRIMER
 	db 27, GRIMER
 	db 31, MUK
+
+.Group13: ; MT_SILVER_2F
+	db 7
+	db 51, KABUTOPS
+	db 51, OMASTAR
+	db 54, KABUTOPS
+	db 54, OMASTAR
+	db 57, SEAKING
+	db 56, GOLDUCK
+	db 56, SLOWBRO
