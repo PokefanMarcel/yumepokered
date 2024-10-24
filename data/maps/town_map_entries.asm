@@ -128,6 +128,6 @@ InternalMapEntries:
 	internal_map MT_MOON_SQUARE,                 6,  2, MountMoonName ; marcelnote - new location
 	internal_map ROCK_TUNNEL_B1F,               14,  3, RockTunnelName
 	internal_map SILPH_CO_ELEVATOR,             10,  5, SilphCoName
-	internal_map MT_SILVER_1F,                   0,  7, MtSilverName ; marcelnote - new location
+	internal_map MT_SILVER_2F,                   0,  7, MtSilverName ; marcelnote - new location
 	internal_map AGATHAS_ROOM,                   1,  2, PokemonLeagueName
 	db -1 ; end

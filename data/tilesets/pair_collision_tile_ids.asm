@@ -6,6 +6,7 @@
 TilePairCollisionsLand::
 	db CAVERN,   $20, $05
 	db CAVERN,   $41, $05
+	db CAVERN,   $41, $20 ; marcelnote - new
 	db CAVERN,   $2A, $05
 	db CAVERN,   $05, $21
 	db SAFARI,   $30, $2E ; marcelnote - new tileset from FOREST

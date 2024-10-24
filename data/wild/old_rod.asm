@@ -39,6 +39,7 @@ OldRodData:
 	dbw CERULEAN_CAVE_1F,    .Group4
 	dbw MT_MOON_SQUARE,      .Group3 ; marcelnote - new map
 	dbw CELADON_GROVE,       .Group5 ; marcelnote - new map
+	dbw MT_SILVER_2F,        .Group6 ; marcelnote - new map
 	db -1 ; end
 
 ; fishing groups
@@ -80,7 +81,7 @@ OldRodData:
 	db 5, MAGIKARP
 	db 7, MAGIKARP
 
-.Group6: ; ROUTE_6, ROUTE_23, ROUTE_28, SAFARI_ZONE_*
+.Group6: ; ROUTE_6, ROUTE_23, ROUTE_28, SAFARI_ZONE_*, MT_SILVER_2F
 	db 6
 	db 5, POLIWAG
 	db 7, POLIWAG
