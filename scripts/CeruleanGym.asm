@@ -31,11 +31,11 @@ CeruleanGymResetScripts:
 
 CeruleanGym_ScriptPointers:
 	def_script_pointers
-	dw_const CheckFightingMapTrainers,              SCRIPT_CERULEANGYM_DEFAULT
-	dw_const DisplayEnemyTrainerTextAndStartBattle, SCRIPT_CERULEANGYM_START_BATTLE
-	dw_const EndTrainerBattle,                      SCRIPT_CERULEANGYM_END_BATTLE
-	dw_const CeruleanGymMistyPostBattleScript,      SCRIPT_CERULEANGYM_MISTY_POST_BATTLE
-	dw_const CeruleanGymMistyRematchPostBattle,     SCRIPT_CERULEANGYM_MISTY_REMATCH_POST_BATTLE ; marcelnote - Misty rematch
+	dw_const CheckFightingMapTrainers,                SCRIPT_CERULEANGYM_DEFAULT
+	dw_const DisplayEnemyTrainerTextAndStartBattle,   SCRIPT_CERULEANGYM_START_BATTLE
+	dw_const EndTrainerBattle,                        SCRIPT_CERULEANGYM_END_BATTLE
+	dw_const CeruleanGymMistyPostBattleScript,        SCRIPT_CERULEANGYM_MISTY_POST_BATTLE
+	dw_const CeruleanGymMistyRematchPostBattleScript, SCRIPT_CERULEANGYM_MISTY_REMATCH_POST_BATTLE ; marcelnote - Misty rematch
 
 CeruleanGymMistyPostBattleScript:
 	ld a, [wIsInBattle]
@@ -72,7 +72,7 @@ CeruleanGymReceiveTM11:
 
 	jp CeruleanGymResetScripts
 
-CeruleanGymMistyRematchPostBattle: ; marcelnote - Misty rematch
+CeruleanGymMistyRematchPostBattleScript: ; marcelnote - Misty rematch
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, CeruleanGymResetScripts

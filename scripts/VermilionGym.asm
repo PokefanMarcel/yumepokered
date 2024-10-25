@@ -50,11 +50,11 @@ VermilionGymResetScripts:
 
 VermilionGym_ScriptPointers:
 	def_script_pointers
-	dw_const CheckFightingMapTrainers,              SCRIPT_VERMILIONGYM_DEFAULT
-	dw_const DisplayEnemyTrainerTextAndStartBattle, SCRIPT_VERMILIONGYM_START_BATTLE
-	dw_const EndTrainerBattle,                      SCRIPT_VERMILIONGYM_END_BATTLE
-	dw_const VermilionGymLTSurgeAfterBattleScript,  SCRIPT_VERMILIONGYM_LT_SURGE_AFTER_BATTLE
-	dw_const VermilionGymLTSurgeRematchPostBattle,  SCRIPT_VERMILIONGYM_LT_SURGE_REMATCH_POST_BATTLE ; marcelnote - Lt.Surge rematch
+	dw_const CheckFightingMapTrainers,                   SCRIPT_VERMILIONGYM_DEFAULT
+	dw_const DisplayEnemyTrainerTextAndStartBattle,      SCRIPT_VERMILIONGYM_START_BATTLE
+	dw_const EndTrainerBattle,                           SCRIPT_VERMILIONGYM_END_BATTLE
+	dw_const VermilionGymLTSurgeAfterBattleScript,       SCRIPT_VERMILIONGYM_LT_SURGE_AFTER_BATTLE
+	dw_const VermilionGymLTSurgeRematchPostBattleScript, SCRIPT_VERMILIONGYM_LT_SURGE_REMATCH_POST_BATTLE ; marcelnote - Lt.Surge rematch
 
 VermilionGymLTSurgeAfterBattleScript:
 	ld a, [wIsInBattle]
@@ -91,7 +91,7 @@ VermilionGymLTSurgeReceiveTM24Script:
 
 	jp VermilionGymResetScripts
 
-VermilionGymLTSurgeRematchPostBattle: ; marcelnote - Lt.Surge rematch
+VermilionGymLTSurgeRematchPostBattleScript: ; marcelnote - Lt.Surge rematch
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, VermilionGymResetScripts
