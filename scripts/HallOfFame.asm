@@ -38,7 +38,7 @@ HallOfFameResetEventsAndSaveScript:
 	ld [hl], a ; wAgathasRoomCurScript
 	ld [wLancesRoomCurScript], a
 	ld [wHallOfFameCurScript], a
-	; Elite 4 events
+	; Elite 4 events ; marcelnote - now also resets Gym Leader's rematches
 	ResetEventRange INDIGO_PLATEAU_EVENTS_START, INDIGO_PLATEAU_EVENTS_END, 1
 	;;;;;; marcelnote - switching Oak for Rival for rematches
 	ld a, HS_HALL_OF_FAME_OAK
@@ -145,6 +145,49 @@ HallOfFameCongratulationsScript:
 	ld a, HS_OAKS_LAB_RIVAL             ; postgame Rival
 	ld [wMissableObjectIndex], a
 	predef ShowObject
+	; marcelnote - switch Gym Leaders to their rematch counterparts
+	ld a, HS_PEWTER_GYM_BROCK                ; hide original Brock
+	ld [wMissableObjectIndex], a
+	predef HideObjectCont
+	ld a, HS_PEWTER_GYM_BROCK_REMATCH        ; show rematch Brock
+	ld [wMissableObjectIndex], a
+	predef ShowObjectCont
+	;ld a, HS_CERULEAN_GYM_MISTY              ; hide original Misty
+	;ld [wMissableObjectIndex], a
+	;predef HideObjectCont
+	;ld a, HS_CERULEAN_GYM_MISTY_REMATCH      ; show rematch Misty
+	;ld [wMissableObjectIndex], a
+	;predef ShowObjectCont
+	;ld a, HS_VERMILION_GYM_LT_SURGE          ; hide original Lt.Surge
+	;ld [wMissableObjectIndex], a
+	;predef HideObjectCont
+	;ld a, HS_VERMILION_GYM_LT_SURGE_REMATCH  ; show rematch Lt.Surge
+	;ld [wMissableObjectIndex], a
+	;predef ShowObjectCont
+	;ld a, HS_CELADON_GYM_ERIKA               ; hide original Erika
+	;ld [wMissableObjectIndex], a
+	;predef HideObjectCont
+	;ld a, HS_CELADON_GYM_ERIKA_REMATCH       ; show rematch Erika
+	;ld [wMissableObjectIndex], a
+	;predef ShowObjectCont
+	;ld a, HS_FUCHSIA_GYM_KOGA                ; hide original Koga
+	;ld [wMissableObjectIndex], a
+	;predef HideObjectCont
+	;ld a, HS_FUCHSIA_GYM_KOGA_REMATCH        ; show rematch Koga
+	;ld [wMissableObjectIndex], a
+	;predef ShowObjectCont
+	;ld a, HS_SAFFRON_GYM_SABRINA             ; hide original Sabrina
+	;ld [wMissableObjectIndex], a
+	;predef HideObjectCont
+	;ld a, HS_SAFFRON_GYM_SABRINA_REMATCH     ; show rematch Sabrina
+	;ld [wMissableObjectIndex], a
+	;predef ShowObjectCont
+	;ld a, HS_CINNABAR_GYM_BLAINE             ; hide original Blaine
+	;ld [wMissableObjectIndex], a
+	;predef HideObjectCont
+	;ld a, HS_CINNABAR_GYM_BLAINE_REMATCH     ; show rematch Blaine
+	;ld [wMissableObjectIndex], a
+	;predef ShowObjectCont
 	; marcelnote - switch E4 to their rematch counterparts
 	ld a, HS_LORELEIS_ROOM_LORELEI         ; hide original Lorelei
 	ld [wMissableObjectIndex], a

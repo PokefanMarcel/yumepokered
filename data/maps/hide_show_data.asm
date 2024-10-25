@@ -59,7 +59,7 @@ MapHSPointers:
 	dw ViridianForestHS
 	dw Museum1FHS
 	dw NoHS
-	dw NoHS
+	dw PewterGymHS ; marcelnote - Brock rematch
 	dw NoHS
 	dw NoHS
 	dw NoHS
@@ -70,7 +70,7 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw NoHS
-	dw NoHS
+	dw NoHS ; CeruleanGymHS ; marcelnote - Misty rematch
 	dw NoHS
 	dw NoHS
 	dw NoHS
@@ -97,7 +97,7 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw NoHS
-	dw NoHS
+	dw NoHS ; VermilionGymHS ; marcelnote - Lt.Surge rematch
 	dw NoHS
 	dw NoHS
 	dw NoHS
@@ -139,7 +139,7 @@ MapHSPointers:
 	dw NoHS
 	dw CeladonMansionRoofHouseHS
 	dw NoHS
-	dw NoHS
+	dw NoHS ; CeladonGymHS ; marcelnote - Erika rematch
 	dw GameCornerHS
 	dw NoHS
 	dw NoHS
@@ -147,7 +147,7 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw NoHS
-	dw PokemonTower1FHS ; marcelnote - was NoHS, added TM51 for testing
+	dw PokemonTower1FHS ; marcelnote - postgame Agatha event
 	dw PokemonTower2FHS
 	dw PokemonTower3FHS
 	dw PokemonTower4FHS
@@ -162,7 +162,7 @@ MapHSPointers:
 	dw NoHS
 	dw WardensHouseHS
 	dw NoHS
-	dw NoHS
+	dw NoHS ; FuchsiaGymHS ; marcelnote - Koga rematch
 	dw NoHS
 	dw SeafoamIslandsB1FHS
 	dw SeafoamIslandsB2FHS
@@ -171,7 +171,7 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw PokemonMansion1FHS
-	dw NoHS
+	dw NoHS ; CinnabarGymHS ; marcelnote - Blaine rematch
 	dw NoHS
 	dw NoHS
 	dw NoHS
@@ -183,7 +183,7 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw FightingDojoHS
-	dw SaffronGymHS ; marcelnote - was NoHS
+	dw SaffronGymHS ; marcelnote - postgame Bruno event, Sabrina rematch
 	dw NoHS
 	dw NoHS
 	dw NoHS ; marcelnote - was SilphCo1FHS
@@ -615,11 +615,31 @@ RedsYellowsHousesHS:
 	db REDS_YELLOWS_HOUSES, YELLOWSHOUSE2F_ASLEEP, SHOW  ; marcelnote - Yellow asleep
 Route1HS:
 	db ROUTE_1, ROUTE1_OAK, HIDE  ; marcelnote - postgame Oak battle
+PewterGymHS:
+	db PEWTER_GYM, PEWTERGYM_BROCK, SHOW          ; marcelnote - default Brock
+	db PEWTER_GYM, PEWTERGYM_BROCK_REMATCH, HIDE  ; marcelnote - rematch Brock
+;CeruleanGymHS:
+;	db CERULEAN_GYM, CERULEANGYM_MISTY, SHOW          ; marcelnote - default Misty
+;	db CERULEAN_GYM, CERULEANGYM_MISTY_REMATCH, HIDE  ; marcelnote - rematch Misty
+;VermilionGymHS:
+;	db VERMILION_GYM, VERMILIONGYM_LT_SURGE, SHOW          ; marcelnote - default Lt.Surge
+;	db VERMILION_GYM, VERMILIONGYM_LT_SURGE_REMATCH, HIDE  ; marcelnote - rematch Lt.Surge
+;CeladonGymHS:
+;	db CELADON_GYM, CELADONGYM_ERIKA, SHOW          ; marcelnote - default Erika
+;	db CELADON_GYM, CELADONGYM_ERIKA_REMATCH, HIDE  ; marcelnote - rematch Erika
 CeladonGroveSouthGateHS:
 	db CELADON_GROVE_SOUTH_GATE, CELADONGROVESOUTHGATE_ROCKET, SHOW  ; marcelnote - blocking the way
+;FuchsiaGymHS:
+;	db FUCHSIA_GYM, FUCHSIAGYM_KOGA, SHOW          ; marcelnote - default Koga
+;	db FUCHSIA_GYM, FUCHSIAGYM_KOGA_REMATCH, HIDE  ; marcelnote - rematch Koga
 SaffronGymHS:
-	db SAFFRON_GYM, SAFFRONGYM_WILL, HIDE  ; marcelnote - postgame Bruno event
-	db SAFFRON_GYM, SAFFRONGYM_BRUNO, HIDE ; marcelnote - postgame Bruno event
+;	db SAFFRON_GYM, SAFFRONGYM_SABRINA, SHOW          ; marcelnote - default Sabrina
+;	db SAFFRON_GYM, SAFFRONGYM_SABRINA_REMATCH, HIDE  ; marcelnote - rematch Sabrina
+	db SAFFRON_GYM, SAFFRONGYM_WILL, HIDE             ; marcelnote - postgame Bruno event
+	db SAFFRON_GYM, SAFFRONGYM_BRUNO, HIDE            ; marcelnote - postgame Bruno event
+;CinnabarGymHS:
+;	db CINNABAR_GYM, CINNABARGYM_BLAINE, SHOW          ; marcelnote - default Blaine
+;	db CINNABAR_GYM, CINNABARGYM_BLAINE_REMATCH, HIDE  ; marcelnote - rematch Blaine
 SilphFactory2FHS:
 	db SILPH_FACTORY_2F, SILPHFACTORY2F_SCIENTIST1, SHOW  ; marcelnote - scientist blocking the way
 	db SILPH_FACTORY_2F, SILPHFACTORY2F_LORELEI1, HIDE    ; marcelnote - Lorelei at entrance
