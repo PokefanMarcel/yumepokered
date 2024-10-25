@@ -1,5 +1,6 @@
 	object_const_def
 	const_export CELADONGYM_ERIKA
+	const_export CELADONGYM_ERIKA_REMATCH ; marcelnote - Erika rematch
 	const_export CELADONGYM_COOLTRAINER_F1
 	const_export CELADONGYM_BEAUTY1
 	const_export CELADONGYM_COOLTRAINER_F2
@@ -19,6 +20,7 @@ CeladonGym_Object:
 
 	def_object_events
 	object_event  4,  3, SPRITE_ERIKA, STAY, DOWN, TEXT_CELADONGYM_ERIKA, OPP_ERIKA, 1
+	object_event  4,  3, SPRITE_ERIKA, STAY, DOWN, TEXT_CELADONGYM_ERIKA_REMATCH, OPP_ERIKA, 2 ; marcelnote - Erika rematch
 	object_event  2, 11, SPRITE_COOLTRAINER_F, STAY, RIGHT, TEXT_CELADONGYM_COOLTRAINER_F1, OPP_LASS, 17
 	object_event  7, 10, SPRITE_BEAUTY, STAY, LEFT, TEXT_CELADONGYM_BEAUTY1, OPP_BEAUTY, 1
 	object_event  9,  5, SPRITE_COOLTRAINER_F, STAY, DOWN, TEXT_CELADONGYM_COOLTRAINER_F2, OPP_JR_TRAINER_F, 11
