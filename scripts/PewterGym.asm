@@ -34,10 +34,10 @@ PewterGym_ScriptPointers:
 	dw_const CheckFightingMapTrainers,              SCRIPT_PEWTERGYM_DEFAULT
 	dw_const DisplayEnemyTrainerTextAndStartBattle, SCRIPT_PEWTERGYM_START_BATTLE
 	dw_const EndTrainerBattle,                      SCRIPT_PEWTERGYM_END_BATTLE
-	dw_const PewterGymBrockPostBattle,              SCRIPT_PEWTERGYM_BROCK_POST_BATTLE
-	dw_const PewterGymBrockRematchPostBattle,       SCRIPT_PEWTERGYM_BROCK_REMATCH_POST_BATTLE ; marcelnote - Brock rematch
+	dw_const PewterGymBrockPostBattleScript,        SCRIPT_PEWTERGYM_BROCK_POST_BATTLE
+	dw_const PewterGymBrockRematchPostBattleScript, SCRIPT_PEWTERGYM_BROCK_REMATCH_POST_BATTLE ; marcelnote - Brock rematch
 
-PewterGymBrockPostBattle:
+PewterGymBrockPostBattleScript:
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, PewterGymResetScripts
@@ -81,7 +81,7 @@ PewterGymScriptReceiveTM34:
 
 	jp PewterGymResetScripts
 
-PewterGymBrockRematchPostBattle: ; marcelnote - Brock rematch
+PewterGymBrockRematchPostBattleScript: ; marcelnote - Brock rematch
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, PewterGymResetScripts
