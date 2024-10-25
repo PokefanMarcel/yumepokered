@@ -793,7 +793,7 @@ ErikaData:  ; marcelnote - adjusted
 KogaData:  ; marcelnote - adjusted
 	;db $FF, 37, KOFFING, 39, MUK, 37, KOFFING, 43, WEEZING, 0 ; original
 	db $FF, 41, WEEZING, 37, GOLBAT, 39, MUK, 43, VENOMOTH, 0 ; new
-	db $FF, 57, WEEZING, 59, GOLBAT, 61, PINSIR, 59, MUK, 57, TENTACRUEL, 63, VENOMOTH, 0 ; new rematch team
+	db $FF, 57, WEEZING, 59, GOLBAT, 59, MUK, 61, PINSIR, 57, TENTACRUEL, 63, VENOMOTH, 0 ; new rematch team
 
 SabrinaData:  ; marcelnote - adjusted
 	;db $FF, 38, KADABRA, 37, MR_MIME, 38, VENOMOTH, 43, ALAKAZAM, 0 ; original
