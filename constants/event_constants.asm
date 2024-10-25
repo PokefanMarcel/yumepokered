@@ -108,10 +108,11 @@
 	const_skip 8
 	const EVENT_2ND_LOCK_OPENED
 	const EVENT_1ST_LOCK_OPENED
+	const_skip ; marcelnote - adjusted for Lt.Surge rematch
 	const EVENT_BEAT_VERMILION_GYM_TRAINER_0
 	const EVENT_BEAT_VERMILION_GYM_TRAINER_1
 	const EVENT_BEAT_VERMILION_GYM_TRAINER_2
-	const_skip
+	;const_skip ; marcelnote - adjusted for Lt.Surge rematch
 	const EVENT_GOT_TM24
 	const EVENT_BEAT_LT_SURGE
 
@@ -785,7 +786,7 @@ DEF INDIGO_PLATEAU_EVENTS_START EQU const_value
 	; marcelnote - 7 new events for Gym Leader rematches
 	const EVENT_BEAT_BROCK_REMATCH
 	const EVENT_BEAT_MISTY_REMATCH
-	const EVENT_BEAT_LTSURGE_REMATCH
+	const EVENT_BEAT_LT_SURGE_REMATCH
 	const EVENT_BEAT_ERIKA_REMATCH
 	const EVENT_BEAT_KOGA_REMATCH
 	const EVENT_BEAT_SABRINA_REMATCH
