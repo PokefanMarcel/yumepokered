@@ -273,8 +273,8 @@ DEF NUM_HS_OBJECTS EQU const_value
 	const HS_ROUTE_1_OAK                     ; postgame Oak battle
 	const HS_PEWTER_GYM_BROCK                ; default Brock
 	const HS_PEWTER_GYM_BROCK_REMATCH        ; rematch Brock
-	;const HS_CERULEAN_GYM_MISTY              ; default Misty
-	;const HS_CERULEAN_GYM_MISTY_REMATCH      ; rematch Misty
+	const HS_CERULEAN_GYM_MISTY              ; default Misty
+	const HS_CERULEAN_GYM_MISTY_REMATCH      ; rematch Misty
 	;const HS_VERMILION_GYM_LT_SURGE          ; default Lt.Surge
 	;const HS_VERMILION_GYM_LT_SURGE_REMATCH  ; rematch Lt.Surge
 	;const HS_CELADON_GYM_ERIKA               ; default Erika

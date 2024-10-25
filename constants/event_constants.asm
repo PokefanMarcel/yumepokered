@@ -55,10 +55,10 @@
 	const EVENT_BEAT_CERULEAN_RIVAL
 	const_skip 14
 	const EVENT_BEAT_CERULEAN_ROCKET_THIEF
-	const_skip 18
+	const_skip 19 ; marcelnote - adjusted for Misty rematch
 	const EVENT_BEAT_CERULEAN_GYM_TRAINER_0
 	const EVENT_BEAT_CERULEAN_GYM_TRAINER_1
-	const_skip 2
+	const_skip 1 ; marcelnote - adjusted for Misty rematch
 	const EVENT_GOT_TM11
 	const EVENT_BEAT_MISTY
 	const EVENT_GOT_BICYCLE

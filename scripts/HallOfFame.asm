@@ -152,12 +152,12 @@ HallOfFameCongratulationsScript:
 	ld a, HS_PEWTER_GYM_BROCK_REMATCH        ; show rematch Brock
 	ld [wMissableObjectIndex], a
 	predef ShowObjectCont
-	;ld a, HS_CERULEAN_GYM_MISTY              ; hide original Misty
-	;ld [wMissableObjectIndex], a
-	;predef HideObjectCont
-	;ld a, HS_CERULEAN_GYM_MISTY_REMATCH      ; show rematch Misty
-	;ld [wMissableObjectIndex], a
-	;predef ShowObjectCont
+	ld a, HS_CERULEAN_GYM_MISTY              ; hide original Misty
+	ld [wMissableObjectIndex], a
+	predef HideObjectCont
+	ld a, HS_CERULEAN_GYM_MISTY_REMATCH      ; show rematch Misty
+	ld [wMissableObjectIndex], a
+	predef ShowObjectCont
 	;ld a, HS_VERMILION_GYM_LT_SURGE          ; hide original Lt.Surge
 	;ld [wMissableObjectIndex], a
 	;predef HideObjectCont
