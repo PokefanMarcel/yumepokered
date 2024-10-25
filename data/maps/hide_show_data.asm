@@ -139,7 +139,7 @@ MapHSPointers:
 	dw NoHS
 	dw CeladonMansionRoofHouseHS
 	dw NoHS
-	dw NoHS ; CeladonGymHS ; marcelnote - Erika rematch
+	dw CeladonGymHS ; marcelnote - Erika rematch
 	dw GameCornerHS
 	dw NoHS
 	dw NoHS
@@ -624,9 +624,9 @@ CeruleanGymHS:
 VermilionGymHS:
 	db VERMILION_GYM, VERMILIONGYM_LT_SURGE, SHOW          ; marcelnote - default Lt.Surge
 	db VERMILION_GYM, VERMILIONGYM_LT_SURGE_REMATCH, HIDE  ; marcelnote - rematch Lt.Surge
-;CeladonGymHS:
-;	db CELADON_GYM, CELADONGYM_ERIKA, SHOW          ; marcelnote - default Erika
-;	db CELADON_GYM, CELADONGYM_ERIKA_REMATCH, HIDE  ; marcelnote - rematch Erika
+CeladonGymHS:
+	db CELADON_GYM, CELADONGYM_ERIKA, SHOW          ; marcelnote - default Erika
+	db CELADON_GYM, CELADONGYM_ERIKA_REMATCH, HIDE  ; marcelnote - rematch Erika
 CeladonGroveSouthGateHS:
 	db CELADON_GROVE_SOUTH_GATE, CELADONGROVESOUTHGATE_ROCKET, SHOW  ; marcelnote - blocking the way
 ;FuchsiaGymHS:

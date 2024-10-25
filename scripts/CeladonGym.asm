@@ -31,10 +31,11 @@ CeladonGymResetScripts:
 
 CeladonGym_ScriptPointers:
 	def_script_pointers
-	dw_const CheckFightingMapTrainers,              SCRIPT_CELADONGYM_DEFAULT
-	dw_const DisplayEnemyTrainerTextAndStartBattle, SCRIPT_CELADONGYM_START_BATTLE
-	dw_const EndTrainerBattle,                      SCRIPT_CELADONGYM_END_BATTLE
-	dw_const CeladonGymErikaPostBattleScript,       SCRIPT_CELADONGYM_ERIKA_POST_BATTLE
+	dw_const CheckFightingMapTrainers,               SCRIPT_CELADONGYM_DEFAULT
+	dw_const DisplayEnemyTrainerTextAndStartBattle,  SCRIPT_CELADONGYM_START_BATTLE
+	dw_const EndTrainerBattle,                       SCRIPT_CELADONGYM_END_BATTLE
+	dw_const CeladonGymErikaPostBattleScript,        SCRIPT_CELADONGYM_ERIKA_POST_BATTLE
+	dw_const CeladonGymErikaRematchPostBattleScript, SCRIPT_CELADONGYM_ERIKA_REMATCH_POST_BATTLE ; marcelnote - Erika rematch
 
 CeladonGymErikaPostBattleScript:
 	ld a, [wIsInBattle]
@@ -71,9 +72,22 @@ CeladonGymReceiveTM21:
 
 	jp CeladonGymResetScripts
 
+CeladonGymErikaRematchPostBattleScript: ; marcelnote - Erika rematch
+	ld a, [wIsInBattle]
+	cp $ff
+	jp z, CeladonGymResetScripts
+	ld a, D_RIGHT | D_LEFT | D_UP | D_DOWN
+	ld [wJoyIgnore], a
+	ld a, TEXT_CELADONGYM_AFTER_REMATCH
+	ldh [hTextID], a
+	call DisplayTextID
+	SetEvent EVENT_BEAT_ERIKA_REMATCH
+	jp CeladonGymResetScripts
+
 CeladonGym_TextPointers:
 	def_text_pointers
 	dw_const CeladonGymErikaText,            TEXT_CELADONGYM_ERIKA
+	dw_const CeladonGymErikaRematchText,     TEXT_CELADONGYM_ERIKA_REMATCH ; marcelnote - Erika rematch
 	dw_const CeladonGymCooltrainerF1Text,    TEXT_CELADONGYM_COOLTRAINER_F1
 	dw_const CeladonGymBeauty1Text,          TEXT_CELADONGYM_BEAUTY1
 	dw_const CeladonGymCooltrainerF2Text,    TEXT_CELADONGYM_COOLTRAINER_F2
@@ -84,9 +98,10 @@ CeladonGym_TextPointers:
 	dw_const CeladonGymRainbowBadgeInfoText, TEXT_CELADONGYM_RAINBOWBADGE_INFO
 	dw_const CeladonGymReceivedTM21Text,     TEXT_CELADONGYM_RECEIVED_TM21
 	dw_const CeladonGymTM21NoRoomText,       TEXT_CELADONGYM_TM21_NO_ROOM
+	dw_const CeladonGymAfterRematchText,     TEXT_CELADONGYM_AFTER_REMATCH ; marcelnote - Erika rematch
 
 CeladonGymTrainerHeaders:
-	def_trainers 2
+	def_trainers 3 ; marcelnote - added 1 to accomodate Erika rematch
 CeladonGymTrainerHeader0:
 	trainer EVENT_BEAT_CELADON_GYM_TRAINER_0, 2, CeladonGymBattleText2, CeladonGymEndBattleText2, CeladonGymAfterBattleText2
 CeladonGymTrainerHeader1:
@@ -287,4 +302,62 @@ CeladonGymEndBattleText8:
 
 CeladonGymAfterBattleText8:
 	text_far _CeladonGymAfterBattleText8
+	text_end
+
+
+CeladonGymErikaRematchText: ; marcelnote - Erika rematch
+	text_asm
+	CheckEvent EVENT_BEAT_ERIKA_REMATCH
+	jr z, .beforeBeat
+	ld hl, CeladonGymAfterRematchText
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.beforeBeat
+	ld hl, .PreBattleText
+	call PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr nz, .refused
+	ld hl, .AcceptBattleText
+	call PrintText
+	ld hl, wStatusFlags3
+	set BIT_TALKED_TO_TRAINER, [hl]
+	set BIT_PRINT_END_BATTLE_TEXT, [hl]
+	ld hl, .ErikaDefeatedText
+	ld de, .ErikaDefeatedText
+	call SaveEndBattleTextPointers
+	ldh a, [hSpriteIndex]
+	ld [wSpriteIndex], a
+	call EngageMapTrainer
+	call InitBattleEnemyParameters
+	xor a
+	ldh [hJoyHeld], a
+	ld a, SCRIPT_CELADONGYM_ERIKA_REMATCH_POST_BATTLE
+	ld [wCeladonGymCurScript], a
+	ld [wCurMapScript], a
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.refused
+	ld hl, .RefusedBattleText
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+.PreBattleText:
+	text_far _CeladonGymErikaRematchPreBattleText
+	text_end
+
+.AcceptBattleText:
+	text_far _CeladonGymErikaRematchAcceptBattleText
+	text_end
+
+.RefusedBattleText:
+	text_far _CeladonGymErikaRematchRefusedBattleText
+	text_end
+
+.ErikaDefeatedText:
+	text_far _CeladonGymErikaRematchDefeatedText
+	text_end
+
+CeladonGymAfterRematchText: ; marcelnote - Erika rematch
+	text_far _CeladonGymAfterRematchText
 	text_end

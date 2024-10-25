@@ -277,8 +277,8 @@ DEF NUM_HS_OBJECTS EQU const_value
 	const HS_CERULEAN_GYM_MISTY_REMATCH      ; rematch Misty
 	const HS_VERMILION_GYM_LT_SURGE          ; default Lt.Surge
 	const HS_VERMILION_GYM_LT_SURGE_REMATCH  ; rematch Lt.Surge
-	;const HS_CELADON_GYM_ERIKA               ; default Erika
-	;const HS_CELADON_GYM_ERIKA_REMATCH       ; rematch Erika
+	const HS_CELADON_GYM_ERIKA               ; default Erika
+	const HS_CELADON_GYM_ERIKA_REMATCH       ; rematch Erika
 	;const HS_FUCHSIA_GYM_KOGA                ; default Koga
 	;const HS_FUCHSIA_GYM_KOGA_REMATCH        ; rematch Koga
 	;const HS_SAFFRON_GYM_SABRINA             ; default Sabrina

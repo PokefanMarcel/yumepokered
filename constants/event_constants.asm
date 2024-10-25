@@ -127,6 +127,7 @@
 	const_skip 24
 	const EVENT_GOT_TM21
 	const EVENT_BEAT_ERIKA
+	const_skip 1 ; marcelnote - adjusted for Erika rematch
 	const EVENT_BEAT_CELADON_GYM_TRAINER_0
 	const EVENT_BEAT_CELADON_GYM_TRAINER_1
 	const EVENT_BEAT_CELADON_GYM_TRAINER_2
@@ -134,8 +135,8 @@
 	const EVENT_BEAT_CELADON_GYM_TRAINER_4
 	const EVENT_BEAT_CELADON_GYM_TRAINER_5
 	const EVENT_BEAT_CELADON_GYM_TRAINER_6
-	const_skip 7
-	const EVENT_1B8 ; ???
+	const_skip 6 ; marcelnote - adjusted for Erika rematch
+	const EVENT_1B8 ; ??? ; marcelnote - adjusted for Erika rematch
 	const EVENT_FOUND_ROCKET_HIDEOUT
 	const EVENT_GOT_10_COINS
 	const EVENT_GOT_20_COINS
