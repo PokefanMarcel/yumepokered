@@ -97,7 +97,7 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw NoHS
-	dw NoHS ; VermilionGymHS ; marcelnote - Lt.Surge rematch
+	dw VermilionGymHS ; marcelnote - Lt.Surge rematch
 	dw NoHS
 	dw NoHS
 	dw NoHS
@@ -621,9 +621,9 @@ PewterGymHS:
 CeruleanGymHS:
 	db CERULEAN_GYM, CERULEANGYM_MISTY, SHOW          ; marcelnote - default Misty
 	db CERULEAN_GYM, CERULEANGYM_MISTY_REMATCH, HIDE  ; marcelnote - rematch Misty
-;VermilionGymHS:
-;	db VERMILION_GYM, VERMILIONGYM_LT_SURGE, SHOW          ; marcelnote - default Lt.Surge
-;	db VERMILION_GYM, VERMILIONGYM_LT_SURGE_REMATCH, HIDE  ; marcelnote - rematch Lt.Surge
+VermilionGymHS:
+	db VERMILION_GYM, VERMILIONGYM_LT_SURGE, SHOW          ; marcelnote - default Lt.Surge
+	db VERMILION_GYM, VERMILIONGYM_LT_SURGE_REMATCH, HIDE  ; marcelnote - rematch Lt.Surge
 ;CeladonGymHS:
 ;	db CELADON_GYM, CELADONGYM_ERIKA, SHOW          ; marcelnote - default Erika
 ;	db CELADON_GYM, CELADONGYM_ERIKA_REMATCH, HIDE  ; marcelnote - rematch Erika

@@ -143,3 +143,39 @@ _VermilionGymGymGuideBeatLTSurgeText::
 	text "Whew! That match"
 	line "was electric!"
 	done
+
+_VermilionGymLTSurgeRematchPreBattleText:: ; marcelnote - Lt.Surge rematch
+	text "Welcome back,"
+	line "<PLAYER>."
+
+	para "How about a"
+	line "friendly rematch?"
+
+	para "I won't hold back"
+	line "this time."
+	done
+
+_VermilionGymLTSurgeRematchRefusedBattleText:: ; marcelnote - Lt.Surge rematch
+	text "Very well. Come"
+	line "back anytime."
+	done
+
+_VermilionGymLTSurgeRematchAcceptBattleText:: ; marcelnote - Lt.Surge rematch
+	text "Ten-hut! Get"
+	line "ready to amp it"
+	cont "up, kid!"
+	done
+
+_VermilionGymLTSurgeRematchDefeatedText:: ; marcelnote - Lt.Surge rematch
+	text "No"
+	line "shame in losing"
+	cont "to a champion!"
+	prompt
+
+_VermilionGymAfterRematchText:: ; marcelnote - Lt.Surge rematch
+	text "I'm all out of"
+	line "juice, kid."
+
+	para "Let's do this"
+	line "again soon!"
+	done
