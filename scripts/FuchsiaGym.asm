@@ -37,6 +37,7 @@ FuchsiaGym_ScriptPointers:
 	dw_const DisplayEnemyTrainerTextAndStartBattle, SCRIPT_FUCHSIAGYM_START_BATTLE
 	dw_const EndTrainerBattle,                      SCRIPT_FUCHSIAGYM_END_BATTLE
 	dw_const FuchsiaGymKogaPostBattleScript,        SCRIPT_FUCHSIAGYM_KOGA_POST_BATTLE
+	dw_const FuchsiaGymKogaRematchPostBattleScript, SCRIPT_FUCHSIAGYM_KOGA_REMATCH_POST_BATTLE ; marcelnote - Koga rematch
 
 FuchsiaGymKogaPostBattleScript:
 	ld a, [wIsInBattle]
@@ -73,9 +74,22 @@ FuchsiaGymReceiveTM06:
 
 	jp FuchsiaGymResetScripts
 
+FuchsiaGymKogaRematchPostBattleScript: ; marcelnote - Koga rematch
+	ld a, [wIsInBattle]
+	cp $ff
+	jp z, FuchsiaGymResetScripts
+	ld a, D_RIGHT | D_LEFT | D_UP | D_DOWN
+	ld [wJoyIgnore], a
+	ld a, TEXT_FUCHSIAGYM_AFTER_REMATCH
+	ldh [hTextID], a
+	call DisplayTextID
+	SetEvent EVENT_BEAT_KOGA_REMATCH
+	jp FuchsiaGymResetScripts
+
 FuchsiaGym_TextPointers:
 	def_text_pointers
 	dw_const FuchsiaGymKogaText,              TEXT_FUCHSIAGYM_KOGA
+	dw_const FuchsiaGymKogaRematchText,       TEXT_FUCHSIAGYM_KOGA_REMATCH ; marcelnote - Koga rematch
 	dw_const FuchsiaGymRocker1Text,           TEXT_FUCHSIAGYM_ROCKER1
 	dw_const FuchsiaGymRocker2Text,           TEXT_FUCHSIAGYM_ROCKER2
 	dw_const FuchsiaGymRocker3Text,           TEXT_FUCHSIAGYM_ROCKER3
@@ -86,9 +100,10 @@ FuchsiaGym_TextPointers:
 	dw_const FuchsiaGymKogaSoulBadgeInfoText, TEXT_FUCHSIAGYM_KOGA_SOUL_BADGE_INFO
 	dw_const FuchsiaGymKogaReceivedTM06Text,  TEXT_FUCHSIAGYM_KOGA_RECEIVED_TM06
 	dw_const FuchsiaGymKogaTM06NoRoomText,    TEXT_FUCHSIAGYM_KOGA_TM06_NO_ROOM
+	dw_const FuchsiaGymAfterRematchText,      TEXT_FUCHSIAGYM_AFTER_REMATCH ; marcelnote - Koga rematch
 
 FuchsiaGymTrainerHeaders:
-	def_trainers 2
+	def_trainers 3 ; marcelnote - added 1 to accomodate Koga rematch
 FuchsiaGymTrainerHeader0:
 	trainer EVENT_BEAT_FUCHSIA_GYM_TRAINER_0, 2, FuchsiaGymRocker1BattleText, FuchsiaGymRocker1EndBattleText, FuchsiaGymRocker1AfterBattleText
 FuchsiaGymTrainerHeader1:
@@ -288,4 +303,62 @@ FuchsiaGymGymGuideText:
 
 .BeatKogaText:
 	text_far _FuchsiaGymGymGuideBeatKogaText
+	text_end
+
+
+FuchsiaGymKogaRematchText: ; marcelnote - Koga rematch
+	text_asm
+	CheckEvent EVENT_BEAT_KOGA_REMATCH
+	jr z, .beforeBeat
+	ld hl, FuchsiaGymAfterRematchText
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.beforeBeat
+	ld hl, .PreBattleText
+	call PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr nz, .refused
+	ld hl, .AcceptBattleText
+	call PrintText
+	ld hl, wStatusFlags3
+	set BIT_TALKED_TO_TRAINER, [hl]
+	set BIT_PRINT_END_BATTLE_TEXT, [hl]
+	ld hl, .KogaDefeatedText
+	ld de, .KogaDefeatedText
+	call SaveEndBattleTextPointers
+	ldh a, [hSpriteIndex]
+	ld [wSpriteIndex], a
+	call EngageMapTrainer
+	call InitBattleEnemyParameters
+	xor a
+	ldh [hJoyHeld], a
+	ld a, SCRIPT_FUCHSIAGYM_KOGA_REMATCH_POST_BATTLE
+	ld [wFuchsiaGymCurScript], a
+	ld [wCurMapScript], a
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.refused
+	ld hl, .RefusedBattleText
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+.PreBattleText:
+	text_far _FuchsiaGymKogaRematchPreBattleText
+	text_end
+
+.AcceptBattleText:
+	text_far _FuchsiaGymKogaRematchAcceptBattleText
+	text_end
+
+.RefusedBattleText:
+	text_far _FuchsiaGymKogaRematchRefusedBattleText
+	text_end
+
+.KogaDefeatedText:
+	text_far _FuchsiaGymKogaRematchDefeatedText
+	text_end
+
+FuchsiaGymAfterRematchText: ; marcelnote - Koga rematch
+	text_far _FuchsiaGymAfterRematchText
 	text_end

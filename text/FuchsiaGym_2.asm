@@ -192,3 +192,38 @@ _FuchsiaGymGymGuideBeatKogaText::
 	line "ninja can terrify"
 	cont "even now!"
 	done
+
+_FuchsiaGymKogaRematchPreBattleText:: ; marcelnote - Koga rematch
+	text "Welcome back,"
+	line "<PLAYER>."
+
+	para "How about a"
+	line "friendly rematch?"
+
+	para "I won't hold back"
+	line "this time."
+	done
+
+_FuchsiaGymKogaRematchRefusedBattleText:: ; marcelnote - Koga rematch
+	text "Very well. Come"
+	line "back anytime."
+	done
+
+_FuchsiaGymKogaRematchAcceptBattleText:: ; marcelnote - Koga rematch
+	text "Fwahahaha! Face"
+    line "my new ninja"
+	cont "techniques!"
+	done
+
+_FuchsiaGymKogaRematchDefeatedText:: ; marcelnote - Koga rematch
+	text "I must keep"
+	line "honing my skills." ; from Let's Go Pikachu
+	prompt
+
+_FuchsiaGymAfterRematchText:: ; marcelnote - Koga rematch
+	text "Perfecting my arts"
+	line "takes practice."
+
+	para "Let's do this"
+	line "again soon!"
+	done

@@ -279,15 +279,15 @@ DEF NUM_HS_OBJECTS EQU const_value
 	const HS_VERMILION_GYM_LT_SURGE_REMATCH  ; rematch Lt.Surge
 	const HS_CELADON_GYM_ERIKA               ; default Erika
 	const HS_CELADON_GYM_ERIKA_REMATCH       ; rematch Erika
-	;const HS_FUCHSIA_GYM_KOGA                ; default Koga
-	;const HS_FUCHSIA_GYM_KOGA_REMATCH        ; rematch Koga
+	const HS_CELADON_GROVE_SOUTH_GATE_ROCKET ; blocking the way
+	const HS_FUCHSIA_GYM_KOGA                ; default Koga
+	const HS_FUCHSIA_GYM_KOGA_REMATCH        ; rematch Koga
 	;const HS_SAFFRON_GYM_SABRINA             ; default Sabrina
 	;const HS_SAFFRON_GYM_SABRINA_REMATCH     ; rematch Sabrina
-	;const HS_CINNABAR_GYM_BLAINE             ; default Blaine
-	;const HS_CINNABAR_GYM_BLAINE_REMATCH     ; rematch Blaine
-	const HS_CELADON_GROVE_SOUTH_GATE_ROCKET ; blocking the way
 	const HS_SAFFRON_GYM_WILL                ; postgame Will
 	const HS_SAFFRON_GYM_BRUNO               ; postgame Bruno
+	;const HS_CINNABAR_GYM_BLAINE             ; default Blaine
+	;const HS_CINNABAR_GYM_BLAINE_REMATCH     ; rematch Blaine
 	const HS_SILPH_FACTORY_2F_SCIENTIST_1    ; scientist blocking the way
 	const HS_SILPH_FACTORY_2F_LORELEI_1      ; postgame Lorelei
 	const HS_SILPH_FACTORY_2F_ROCKET_1       ; Archer
