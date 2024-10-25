@@ -168,16 +168,16 @@ _PewterGymBrockRematchAcceptBattleText:: ; marcelnote - Brock rematch
 	done
 
 _PewterGymBrockRematchDefeatedText:: ; marcelnote - Brock rematch
-	text "No"
-	line "shame in losing"
-	cont "to a champion!"
+	text "I knew"
+	line "you were strong,"
+	cont "but this..." ; text from Let's Go Pikachu
 	prompt
 
 _PewterGymAfterRematchText:: ; marcelnote - Brock rematch
 	text "That was tough!"
 	line "ONIX and I need"
-	cont "a rest."
+	cont "a rest now."
 
-	para "But let's do this"
+	para "Let's do this"
 	line "again soon!"
 	done

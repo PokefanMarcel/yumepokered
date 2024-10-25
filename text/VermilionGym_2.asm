@@ -167,9 +167,8 @@ _VermilionGymLTSurgeRematchAcceptBattleText:: ; marcelnote - Lt.Surge rematch
 	done
 
 _VermilionGymLTSurgeRematchDefeatedText:: ; marcelnote - Lt.Surge rematch
-	text "No"
-	line "shame in losing"
-	cont "to a champion!"
+	text "Abso-"
+	line "lutely shocking!" ; text from Let's Go Pikachu
 	prompt
 
 _VermilionGymAfterRematchText:: ; marcelnote - Lt.Surge rematch

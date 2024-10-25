@@ -152,18 +152,17 @@ _CeruleanGymMistyRematchAcceptBattleText:: ; marcelnote - Misty rematch
 	text "Good! Let's see how"
 	line "the champ handles"
 	cont "my all-out style!"
-	done
+	done ; The ultimate offense of Water-type Pokémon! I hope you're ready! (LGP)
 
 _CeruleanGymMistyRematchDefeatedText:: ; marcelnote - Misty rematch
-	text "No"
-	line "shame in losing"
-	cont "to a champion!"
+	text "Hmph!"
+	line "How annoying!" ; text from Let's Go Pikachu
 	prompt
 
 _CeruleanGymAfterRematchText:: ; marcelnote - Misty rematch
 	text "My #MON and I"
 	line "will take a swim"
-	cont "to cool off!"
+	cont "to cool off."
 
 	para "Let's do this"
 	line "again soon!"
