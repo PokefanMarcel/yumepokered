@@ -145,7 +145,7 @@ _PewterGymGuidePostBattleText::
 	cont "champ material!"
 	done
 
-_PewterGymBrockRematchPreBattleText::
+_PewterGymBrockRematchPreBattleText:: ; marcelnote - Brock rematch
 	text "Welcome back,"
 	line "<PLAYER>."
 
@@ -156,24 +156,24 @@ _PewterGymBrockRematchPreBattleText::
 	line "this time."
 	done
 
-_PewterGymBrockRematchRefusedBattleText::
+_PewterGymBrockRematchRefusedBattleText:: ; marcelnote - Brock rematch
 	text "Very well. Come"
 	line "back anytime."
 	done
 
-_PewterGymBrockRematchAcceptBattleText::
+_PewterGymBrockRematchAcceptBattleText:: ; marcelnote - Brock rematch
 	text "My rock #MON"
 	line "are ready! Show"
 	cont "us your best!"
 	done
 
-_PewterGymBrockRematchDefeatedText::
+_PewterGymBrockRematchDefeatedText:: ; marcelnote - Brock rematch
 	text "No"
 	line "shame in losing"
 	cont "to a champion!"
 	prompt
 
-_PewterGymAfterRematchText::
+_PewterGymAfterRematchText:: ; marcelnote - Brock rematch
 	text "That was tough!"
 	line "ONIX and I need"
 	cont "a rest."

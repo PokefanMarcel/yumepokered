@@ -131,3 +131,40 @@ _CeruleanGymGymGuideBeatMistyText::
 	line "we make a pretty"
 	cont "darn good team!"
 	done
+
+_CeruleanGymMistyRematchPreBattleText:: ; marcelnote - Misty rematch
+	text "Welcome back,"
+	line "<PLAYER>."
+
+	para "How about a"
+	line "friendly rematch?"
+
+	para "I won't hold back"
+	line "this time."
+	done
+
+_CeruleanGymMistyRematchRefusedBattleText:: ; marcelnote - Misty rematch
+	text "Very well. Come"
+	line "back anytime."
+	done
+
+_CeruleanGymMistyRematchAcceptBattleText:: ; marcelnote - Misty rematch
+	text "Good! Let's see how"
+	line "the champ handles"
+	cont "my all-out style!"
+	done
+
+_CeruleanGymMistyRematchDefeatedText:: ; marcelnote - Misty rematch
+	text "No"
+	line "shame in losing"
+	cont "to a champion!"
+	prompt
+
+_CeruleanGymAfterRematchText:: ; marcelnote - Misty rematch
+	text "My #MON and I"
+	line "will take a swim"
+	cont "to cool off!"
+
+	para "Let's do this"
+	line "again soon!"
+	done

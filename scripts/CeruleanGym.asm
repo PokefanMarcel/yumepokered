@@ -35,6 +35,7 @@ CeruleanGym_ScriptPointers:
 	dw_const DisplayEnemyTrainerTextAndStartBattle, SCRIPT_CERULEANGYM_START_BATTLE
 	dw_const EndTrainerBattle,                      SCRIPT_CERULEANGYM_END_BATTLE
 	dw_const CeruleanGymMistyPostBattleScript,      SCRIPT_CERULEANGYM_MISTY_POST_BATTLE
+	dw_const CeruleanGymMistyRematchPostBattle,     SCRIPT_CERULEANGYM_MISTY_REMATCH_POST_BATTLE ; marcelnote - Misty rematch
 
 CeruleanGymMistyPostBattleScript:
 	ld a, [wIsInBattle]
@@ -71,18 +72,32 @@ CeruleanGymReceiveTM11:
 
 	jp CeruleanGymResetScripts
 
+CeruleanGymMistyRematchPostBattle: ; marcelnote - Misty rematch
+	ld a, [wIsInBattle]
+	cp $ff
+	jp z, CeruleanGymResetScripts
+	ld a, D_RIGHT | D_LEFT | D_UP | D_DOWN
+	ld [wJoyIgnore], a
+	ld a, TEXT_CERULEANGYM_AFTER_REMATCH
+	ldh [hTextID], a
+	call DisplayTextID
+	SetEvent EVENT_BEAT_MISTY_REMATCH
+	jp CeruleanGymResetScripts
+
 CeruleanGym_TextPointers:
 	def_text_pointers
 	dw_const CeruleanGymMistyText,                 TEXT_CERULEANGYM_MISTY
+	dw_const CeruleanGymMistyRematchText,          TEXT_CERULEANGYM_MISTY_REMATCH ; marcelnote - Misty rematch
 	dw_const CeruleanGymCooltrainerFText,          TEXT_CERULEANGYM_COOLTRAINER_F
 	dw_const CeruleanGymSwimmerText,               TEXT_CERULEANGYM_SWIMMER
 	dw_const CeruleanGymGymGuideText,              TEXT_CERULEANGYM_GYM_GUIDE
 	dw_const CeruleanGymMistyCascadeBadgeInfoText, TEXT_CERULEANGYM_MISTY_CASCADE_BADGE_INFO
 	dw_const CeruleanGymMistyReceivedTM11Text,     TEXT_CERULEANGYM_MISTY_RECEIVED_TM11
 	dw_const CeruleanGymMistyTM11NoRoomText,       TEXT_CERULEANGYM_MISTY_TM11_NO_ROOM
+	dw_const CeruleanGymAfterRematchText,          TEXT_CERULEANGYM_AFTER_REMATCH ; marcelnote - Misty rematch
 
 CeruleanGymTrainerHeaders:
-	def_trainers 2
+	def_trainers 3 ; marcelnote - added 1 to accomodate Misty rematch
 CeruleanGymTrainerHeader0:
 	trainer EVENT_BEAT_CERULEAN_GYM_TRAINER_0, 3, CeruleanGymBattleText1, CeruleanGymEndBattleText1, CeruleanGymAfterBattleText1
 CeruleanGymTrainerHeader1:
@@ -206,4 +221,62 @@ CeruleanGymGymGuideText:
 
 .BeatMistyText:
 	text_far _CeruleanGymGymGuideBeatMistyText
+	text_end
+
+
+CeruleanGymMistyRematchText: ; marcelnote - Misty rematch
+	text_asm
+	CheckEvent EVENT_BEAT_MISTY_REMATCH
+	jr z, .beforeBeat
+	ld hl, CeruleanGymAfterRematchText
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.beforeBeat
+	ld hl, .PreBattleText
+	call PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr nz, .refused
+	ld hl, .AcceptBattleText
+	call PrintText
+	ld hl, wStatusFlags3
+	set BIT_TALKED_TO_TRAINER, [hl]
+	set BIT_PRINT_END_BATTLE_TEXT, [hl]
+	ld hl, .MistyDefeatedText
+	ld de, .MistyDefeatedText
+	call SaveEndBattleTextPointers
+	ldh a, [hSpriteIndex]
+	ld [wSpriteIndex], a
+	call EngageMapTrainer
+	call InitBattleEnemyParameters
+	xor a
+	ldh [hJoyHeld], a
+	ld a, SCRIPT_CERULEANGYM_MISTY_REMATCH_POST_BATTLE
+	ld [wCeruleanGymCurScript], a
+	ld [wCurMapScript], a
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.refused
+	ld hl, .RefusedBattleText
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+.PreBattleText:
+	text_far _CeruleanGymMistyRematchPreBattleText
+	text_end
+
+.AcceptBattleText:
+	text_far _CeruleanGymMistyRematchAcceptBattleText
+	text_end
+
+.RefusedBattleText:
+	text_far _CeruleanGymMistyRematchRefusedBattleText
+	text_end
+
+.MistyDefeatedText:
+	text_far _CeruleanGymMistyRematchDefeatedText
+	text_end
+
+CeruleanGymAfterRematchText: ; marcelnote - Misty rematch
+	text_far _CeruleanGymAfterRematchText
 	text_end
