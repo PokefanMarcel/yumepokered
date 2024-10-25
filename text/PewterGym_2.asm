@@ -144,3 +144,40 @@ _PewterGymGuidePostBattleText::
 	line "You're #MON"
 	cont "champ material!"
 	done
+
+_PewterGymBrockRematchPreBattleText::
+	text "Welcome back,"
+	line "<PLAYER>."
+
+	para "How about a"
+	line "friendly rematch?"
+
+	para "I won't hold back"
+	line "this time."
+	done
+
+_PewterGymBrockRematchRefusedBattleText::
+	text "Very well. Come"
+	line "back anytime."
+	done
+
+_PewterGymBrockRematchAcceptBattleText::
+	text "My rock #MON"
+	line "are ready! Show"
+	cont "us your best!"
+	done
+
+_PewterGymBrockRematchDefeatedText::
+	text "No"
+	line "shame in losing"
+	cont "to a champion!"
+	prompt
+
+_PewterGymAfterRematchText::
+	text "That was tough!"
+	line "ONIX and I need"
+	cont "a rest."
+
+	para "But let's do this"
+	line "again soon!"
+	done

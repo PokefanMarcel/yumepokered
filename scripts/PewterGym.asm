@@ -35,6 +35,7 @@ PewterGym_ScriptPointers:
 	dw_const DisplayEnemyTrainerTextAndStartBattle, SCRIPT_PEWTERGYM_START_BATTLE
 	dw_const EndTrainerBattle,                      SCRIPT_PEWTERGYM_END_BATTLE
 	dw_const PewterGymBrockPostBattle,              SCRIPT_PEWTERGYM_BROCK_POST_BATTLE
+	dw_const PewterGymBrockRematchPostBattle,       SCRIPT_PEWTERGYM_BROCK_REMATCH_POST_BATTLE ; marcelnote - Brock rematch
 
 PewterGymBrockPostBattle:
 	ld a, [wIsInBattle]
@@ -80,17 +81,31 @@ PewterGymScriptReceiveTM34:
 
 	jp PewterGymResetScripts
 
+PewterGymBrockRematchPostBattle: ; marcelnote - Brock rematch
+	ld a, [wIsInBattle]
+	cp $ff
+	jp z, PewterGymResetScripts
+	ld a, D_RIGHT | D_LEFT | D_UP | D_DOWN
+	ld [wJoyIgnore], a
+	ld a, TEXT_PEWTERGYM_AFTER_REMATCH
+	ldh [hTextID], a
+	call DisplayTextID
+	SetEvent EVENT_BEAT_BROCK_REMATCH
+	jp PewterGymResetScripts
+
 PewterGym_TextPointers:
 	def_text_pointers
 	dw_const PewterGymBrockText,             TEXT_PEWTERGYM_BROCK
+	dw_const PewterGymBrockRematchText,      TEXT_PEWTERGYM_BROCK_REMATCH
 	dw_const PewterGymCooltrainerMText,      TEXT_PEWTERGYM_COOLTRAINER_M
 	dw_const PewterGymGuideText,             TEXT_PEWTERGYM_GYM_GUIDE
 	dw_const PewterGymBrockWaitTakeThisText, TEXT_PEWTERGYM_BROCK_WAIT_TAKE_THIS
 	dw_const PewterGymReceivedTM34Text,      TEXT_PEWTERGYM_RECEIVED_TM34
 	dw_const PewterGymTM34NoRoomText,        TEXT_PEWTERGYM_TM34_NO_ROOM
+	dw_const PewterGymAfterRematchText,      TEXT_PEWTERGYM_AFTER_REMATCH ; marcelnote - Brock rematch
 
 PewterGymTrainerHeaders:
-	def_trainers 2
+	def_trainers 3 ; marcelnote - added 1 to accomodate Brock rematch
 PewterGymTrainerHeader0:
 	trainer EVENT_BEAT_PEWTER_GYM_TRAINER_0, 5, PewterGymCooltrainerMBattleText, PewterGymCooltrainerMEndBattleText, PewterGymCooltrainerMAfterBattleText
 	db -1 ; end
@@ -222,4 +237,62 @@ PewterGymGuideFreeServiceText:
 
 PewterGymGuidePostBattleText:
 	text_far _PewterGymGuidePostBattleText
+	text_end
+
+
+PewterGymBrockRematchText: ; marcelnote - Brock rematch
+	text_asm
+	CheckEvent EVENT_BEAT_BROCK_REMATCH
+	jr z, .beforeBeat
+	ld hl, PewterGymAfterRematchText
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.beforeBeat
+	ld hl, .PreBattleText
+	call PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr nz, .refused
+	ld hl, .AcceptBattleText
+	call PrintText
+	ld hl, wStatusFlags3
+	set BIT_TALKED_TO_TRAINER, [hl]
+	set BIT_PRINT_END_BATTLE_TEXT, [hl]
+	ld hl, .BrockDefeatedText
+	ld de, .BrockDefeatedText
+	call SaveEndBattleTextPointers
+	ldh a, [hSpriteIndex]
+	ld [wSpriteIndex], a
+	call EngageMapTrainer
+	call InitBattleEnemyParameters
+	xor a
+	ldh [hJoyHeld], a
+	ld a, SCRIPT_PEWTERGYM_BROCK_REMATCH_POST_BATTLE
+	ld [wPewterGymCurScript], a
+	ld [wCurMapScript], a
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.refused
+	ld hl, .RefusedBattleText
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+.PreBattleText:
+	text_far _PewterGymBrockRematchPreBattleText
+	text_end
+
+.AcceptBattleText:
+	text_far _PewterGymBrockRematchAcceptBattleText
+	text_end
+
+.RefusedBattleText:
+	text_far _PewterGymBrockRematchRefusedBattleText
+	text_end
+
+.BrockDefeatedText:
+	text_far _PewterGymBrockRematchDefeatedText
+	text_end
+
+PewterGymAfterRematchText: ; marcelnote - Brock rematch
+	text_far _PewterGymAfterRematchText
 	text_end

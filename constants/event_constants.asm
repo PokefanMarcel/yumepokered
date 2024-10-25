@@ -44,9 +44,9 @@
 	const_next $68
 	const EVENT_BOUGHT_MUSEUM_TICKET
 	const EVENT_GOT_OLD_AMBER
-	const_skip 8
+	const_skip 9 ; marcelnote - adjusted for Brock rematch
 	const EVENT_BEAT_PEWTER_GYM_TRAINER_0
-	const_skip 3
+	const_skip 2 ; marcelnote - adjusted for Brock rematch
 	const EVENT_GOT_TM34
 	const EVENT_BEAT_BROCK
 
@@ -778,13 +778,18 @@ DEF INDIGO_PLATEAU_EVENTS_START EQU const_value
 	const_skip 2
 	const EVENT_BEAT_LANCES_ROOM_TRAINER_0
 	const EVENT_BEAT_LANCES_ROOM_TRAINER_1 ; marcelnote - Lance rematch
-	const_skip 3                           ; marcelnote - adjusted down
+	const_skip 2                           ; marcelnote - adjusted down
 	const EVENT_BEAT_LANCE
 	const EVENT_LANCES_ROOM_LOCK_DOOR
-	const_skip
 	const EVENT_BEAT_CHAMPION_RIVAL
-	const_skip 5
-	;const_skip ; marcelnote - removed to make space for EVENT_BECAME_CHAMPION
+	; marcelnote - 7 new events for Gym Leader rematches
+	const EVENT_BEAT_BROCK_REMATCH
+	const EVENT_BEAT_MISTY_REMATCH
+	const EVENT_BEAT_LTSURGE_REMATCH
+	const EVENT_BEAT_ERIKA_REMATCH
+	const EVENT_BEAT_KOGA_REMATCH
+	const EVENT_BEAT_SABRINA_REMATCH
+	const EVENT_BEAT_BLAINE_REMATCH
 DEF INDIGO_PLATEAU_EVENTS_END EQU const_value - 1
 	const EVENT_BECAME_CHAMPION ; marcelnote - new event to mark postgame
 

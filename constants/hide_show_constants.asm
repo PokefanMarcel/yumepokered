@@ -271,6 +271,20 @@ DEF NUM_HS_OBJECTS EQU const_value
 	const_def
 	const HS_REDS_YELLOWS_HOUSES_ASLEEP      ; Yellow asleep
 	const HS_ROUTE_1_OAK                     ; postgame Oak battle
+	const HS_PEWTER_GYM_BROCK                ; default Brock
+	const HS_PEWTER_GYM_BROCK_REMATCH        ; rematch Brock
+	;const HS_CERULEAN_GYM_MISTY              ; default Misty
+	;const HS_CERULEAN_GYM_MISTY_REMATCH      ; rematch Misty
+	;const HS_VERMILION_GYM_LT_SURGE          ; default Lt.Surge
+	;const HS_VERMILION_GYM_LT_SURGE_REMATCH  ; rematch Lt.Surge
+	;const HS_CELADON_GYM_ERIKA               ; default Erika
+	;const HS_CELADON_GYM_ERIKA_REMATCH       ; rematch Erika
+	;const HS_FUCHSIA_GYM_KOGA                ; default Koga
+	;const HS_FUCHSIA_GYM_KOGA_REMATCH        ; rematch Koga
+	;const HS_SAFFRON_GYM_SABRINA             ; default Sabrina
+	;const HS_SAFFRON_GYM_SABRINA_REMATCH     ; rematch Sabrina
+	;const HS_CINNABAR_GYM_BLAINE             ; default Blaine
+	;const HS_CINNABAR_GYM_BLAINE_REMATCH     ; rematch Blaine
 	const HS_CELADON_GROVE_SOUTH_GATE_ROCKET ; blocking the way
 	const HS_SAFFRON_GYM_WILL                ; postgame Will
 	const HS_SAFFRON_GYM_BRUNO               ; postgame Bruno
@@ -295,4 +309,4 @@ DEF NUM_HS_OBJECTS EQU const_value
 	const HS_HALL_OF_FAME_RIVAL              ; for Rival rematches
 DEF NUM_HS_OBJECTS_CONT EQU const_value
 	; max objects = 256
-	; current total = 294 – 270 = 24
+	; current total = 297 – 270 = 27
