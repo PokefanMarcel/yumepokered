@@ -162,7 +162,7 @@ MapHSPointers:
 	dw NoHS
 	dw WardensHouseHS
 	dw NoHS
-	dw NoHS ; FuchsiaGymHS ; marcelnote - Koga rematch
+	dw FuchsiaGymHS ; marcelnote - Koga rematch
 	dw NoHS
 	dw SeafoamIslandsB1FHS
 	dw SeafoamIslandsB2FHS
@@ -629,9 +629,9 @@ CeladonGymHS:
 	db CELADON_GYM, CELADONGYM_ERIKA_REMATCH, HIDE  ; marcelnote - rematch Erika
 CeladonGroveSouthGateHS:
 	db CELADON_GROVE_SOUTH_GATE, CELADONGROVESOUTHGATE_ROCKET, SHOW  ; marcelnote - blocking the way
-;FuchsiaGymHS:
-;	db FUCHSIA_GYM, FUCHSIAGYM_KOGA, SHOW          ; marcelnote - default Koga
-;	db FUCHSIA_GYM, FUCHSIAGYM_KOGA_REMATCH, HIDE  ; marcelnote - rematch Koga
+FuchsiaGymHS:
+	db FUCHSIA_GYM, FUCHSIAGYM_KOGA, SHOW          ; marcelnote - default Koga
+	db FUCHSIA_GYM, FUCHSIAGYM_KOGA_REMATCH, HIDE  ; marcelnote - rematch Koga
 SaffronGymHS:
 ;	db SAFFRON_GYM, SAFFRONGYM_SABRINA, SHOW          ; marcelnote - default Sabrina
 ;	db SAFFRON_GYM, SAFFRONGYM_SABRINA_REMATCH, HIDE  ; marcelnote - rematch Sabrina

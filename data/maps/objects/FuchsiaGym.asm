@@ -1,5 +1,6 @@
 	object_const_def
 	const_export FUCHSIAGYM_KOGA
+	const_export FUCHSIAGYM_KOGA_REMATCH ; marcelnote - Koga rematch
 	const_export FUCHSIAGYM_ROCKER1
 	const_export FUCHSIAGYM_ROCKER2
 	const_export FUCHSIAGYM_ROCKER3
@@ -19,6 +20,7 @@ FuchsiaGym_Object:
 
 	def_object_events
 	object_event  4, 10, SPRITE_KOGA, STAY, DOWN, TEXT_FUCHSIAGYM_KOGA, OPP_KOGA, 1
+	object_event  4, 10, SPRITE_KOGA, STAY, DOWN, TEXT_FUCHSIAGYM_KOGA_REMATCH, OPP_KOGA, 2 ; marcelnote - Koga rematch
 	object_event  8, 13, SPRITE_ROCKER, STAY, DOWN, TEXT_FUCHSIAGYM_ROCKER1, OPP_JUGGLER, 7
 	object_event  7,  8, SPRITE_ROCKER, STAY, RIGHT, TEXT_FUCHSIAGYM_ROCKER2, OPP_JUGGLER, 3
 	object_event  1, 12, SPRITE_ROCKER, STAY, DOWN, TEXT_FUCHSIAGYM_ROCKER3, OPP_JUGGLER, 8

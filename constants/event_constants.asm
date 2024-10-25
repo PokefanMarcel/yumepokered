@@ -150,12 +150,13 @@
 	const_next $238
 	const EVENT_GOT_HM04
 	const EVENT_GAVE_GOLD_TEETH
-	const_skip 20
+	const_skip 12 ; marcelnote - adjusted for Koga rematch
 	const EVENT_SAFARI_GAME_OVER
 	const EVENT_IN_SAFARI_ZONE
 	const_skip 8
 	const EVENT_GOT_TM06
 	const EVENT_BEAT_KOGA
+	const_skip 1 ; marcelnote - adjusted for Koga rematch
 	const EVENT_BEAT_FUCHSIA_GYM_TRAINER_0
 	const EVENT_BEAT_FUCHSIA_GYM_TRAINER_1
 	const EVENT_BEAT_FUCHSIA_GYM_TRAINER_2
