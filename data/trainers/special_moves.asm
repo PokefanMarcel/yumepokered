@@ -151,10 +151,10 @@ SpecialTrainerMoves:
 	db 2, 1, MEGA_DRAIN
 	db 2, 2, HEX
 	db 2, 3, TOXIC
-	; Pinsir
-	db 3, 3, TOXIC
 	; Muk
-	db 4, 4, BIND
+	db 3, 4, BIND
+	; Pinsir
+	db 4, 3, TOXIC
 	; Tentacruel
 	db 5, 2, TOXIC
 	db 5, 3, REFLECT
