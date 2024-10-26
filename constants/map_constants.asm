@@ -265,7 +265,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const TRADE_CENTER,                   5,  4 ; $EF
 	map_const COLOSSEUM,                      5,  4 ; $F0
 	map_const MT_SILVER_1F,                  12, 18 ; $F1 ; marcelnote - new location
-	map_const MT_SILVER_2F,                  15, 17 ; $F2 ; marcelnote - new location
+	map_const MT_SILVER_2F,                  15, 22 ; $F2 ; marcelnote - new location
 	map_const MT_SILVER_3F,                  10, 18 ; $F3 ; marcelnote - new location
 	map_const UNUSED_MAP_F4,                  0,  0 ; $F4
 	map_const LORELEIS_ROOM,                  5,  6 ; $F5
