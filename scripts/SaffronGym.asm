@@ -31,12 +31,13 @@ SaffronGymResetScripts:
 
 SaffronGym_ScriptPointers:
 	def_script_pointers
-	dw_const CheckFightingMapTrainers,              SCRIPT_SAFFRONGYM_DEFAULT
-	dw_const DisplayEnemyTrainerTextAndStartBattle, SCRIPT_SAFFRONGYM_START_BATTLE
-	dw_const EndTrainerBattle,                      SCRIPT_SAFFRONGYM_END_BATTLE
-	dw_const SaffronGymSabrinaPostBattle,           SCRIPT_SAFFRONGYM_SABRINA_POST_BATTLE
-	dw_const SaffronGymBrunoArrivesScript,          SCRIPT_SAFFRONGYM_BRUNO_ARRIVES
-	dw_const SaffronGymBrunoInspiringScript,        SCRIPT_SAFFRONGYM_BRUNO_INSPIRING
+	dw_const CheckFightingMapTrainers,                 SCRIPT_SAFFRONGYM_DEFAULT
+	dw_const DisplayEnemyTrainerTextAndStartBattle,    SCRIPT_SAFFRONGYM_START_BATTLE
+	dw_const EndTrainerBattle,                         SCRIPT_SAFFRONGYM_END_BATTLE
+	dw_const SaffronGymSabrinaPostBattle,              SCRIPT_SAFFRONGYM_SABRINA_POST_BATTLE
+	dw_const SaffronGymBrunoArrivesScript,             SCRIPT_SAFFRONGYM_BRUNO_ARRIVES   ; marcelnote - postgame Bruno event
+	dw_const SaffronGymBrunoInspiringScript,           SCRIPT_SAFFRONGYM_BRUNO_INSPIRING ; marcelnote - postgame Bruno event
+	dw_const SaffronGymSabrinaRematchPostBattleScript, SCRIPT_SAFFRONGYM_SABRINA_REMATCH_POST_BATTLE ; marcelnote - Sabrina rematch
 
 SaffronGymSabrinaPostBattle:
 	ld a, [wIsInBattle]
@@ -71,6 +72,18 @@ SaffronGymSabrinaReceiveTM46Script:
 	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_SAFFRON_GYM_TRAINER_0, EVENT_BEAT_SAFFRON_GYM_TRAINER_6
 
+	jp SaffronGymResetScripts
+
+SaffronGymSabrinaRematchPostBattleScript: ; marcelnote - Sabrina rematch
+	ld a, [wIsInBattle]
+	cp $ff
+	jp z, SaffronGymResetScripts
+	ld a, D_RIGHT | D_LEFT | D_UP | D_DOWN
+	ld [wJoyIgnore], a
+	ld a, TEXT_SAFFRONGYM_AFTER_REMATCH
+	ldh [hTextID], a
+	call DisplayTextID
+	SetEvent EVENT_BEAT_SABRINA_REMATCH
 	jp SaffronGymResetScripts
 
 SaffronGymBrunoArrivesScript: ; marcelnote - postgame Bruno event
@@ -182,6 +195,7 @@ SaffronGymBrunoInspiringScript: ; marcelnote - postgame Bruno event
 SaffronGym_TextPointers:
 	def_text_pointers
 	dw_const SaffronGymSabrinaText,               TEXT_SAFFRONGYM_SABRINA
+	dw_const SaffronGymSabrinaRematchText,        TEXT_SAFFRONGYM_SABRINA_REMATCH ; marcelnote - Sabrina rematch
 	dw_const SaffronGymChanneler1Text,            TEXT_SAFFRONGYM_CHANNELER1
 	dw_const SaffronGymYoungster1Text,            TEXT_SAFFRONGYM_YOUNGSTER1
 	dw_const SaffronGymChanneler2Text,            TEXT_SAFFRONGYM_CHANNELER2
@@ -196,9 +210,10 @@ SaffronGym_TextPointers:
 	dw_const SaffronGymSabrinaReceivedTM46Text,   TEXT_SAFFRONGYM_SABRINA_RECEIVED_TM46
 	dw_const SaffronGymSabrinaTM46NoRoomText,     TEXT_SAFFRONGYM_SABRINA_TM46_NO_ROOM
 	dw_const SaffronGymBrunoArrivesText,          TEXT_SAFFRONGYM_BRUNO_ARRIVES  ; marcelnote - postgame Bruno event
+	dw_const SaffronGymAfterRematchText,          TEXT_SAFFRONGYM_AFTER_REMATCH ; marcelnote - Sabrina rematch
 
 SaffronGymTrainerHeaders:
-	def_trainers 2
+	def_trainers 3 ; marcelnote - added 1 to accomodate Sabrina rematch
 SaffronGymTrainerHeader0:
 	trainer EVENT_BEAT_SAFFRON_GYM_TRAINER_0, 3, SaffronGymChanneler1BattleText, SaffronGymChanneler1EndBattleText, SaffronGymChanneler1AfterBattleText
 SaffronGymTrainerHeader1:
@@ -465,4 +480,61 @@ SaffronGymBrunoArrivesText: ; marcelnote - postgame Bruno
 
 SaffronGymBrunoInspiringText: ; marcelnote - postgame Bruno
 	text_far _SaffronGymBrunoInspiringText
+	text_end
+
+SaffronGymSabrinaRematchText: ; marcelnote - Sabrina rematch
+	text_asm
+	CheckEvent EVENT_BEAT_SABRINA_REMATCH
+	jr z, .beforeBeat
+	ld hl, SaffronGymAfterRematchText
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.beforeBeat
+	ld hl, .PreBattleText
+	call PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr nz, .refused
+	ld hl, .AcceptBattleText
+	call PrintText
+	ld hl, wStatusFlags3
+	set BIT_TALKED_TO_TRAINER, [hl]
+	set BIT_PRINT_END_BATTLE_TEXT, [hl]
+	ld hl, .SabrinaDefeatedText
+	ld de, .SabrinaDefeatedText
+	call SaveEndBattleTextPointers
+	ldh a, [hSpriteIndex]
+	ld [wSpriteIndex], a
+	call EngageMapTrainer
+	call InitBattleEnemyParameters
+	xor a
+	ldh [hJoyHeld], a
+	ld a, SCRIPT_SAFFRONGYM_SABRINA_REMATCH_POST_BATTLE
+	ld [wSaffronGymCurScript], a
+	ld [wCurMapScript], a
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.refused
+	ld hl, .RefusedBattleText
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+.PreBattleText:
+	text_far _SaffronGymSabrinaRematchPreBattleText
+	text_end
+
+.AcceptBattleText:
+	text_far _SaffronGymSabrinaRematchAcceptBattleText
+	text_end
+
+.RefusedBattleText:
+	text_far _SaffronGymSabrinaRematchRefusedBattleText
+	text_end
+
+.SabrinaDefeatedText:
+	text_far _SaffronGymSabrinaRematchDefeatedText
+	text_end
+
+SaffronGymAfterRematchText: ; marcelnote - Erika rematch
+	text_far _SaffronGymAfterRematchText
 	text_end

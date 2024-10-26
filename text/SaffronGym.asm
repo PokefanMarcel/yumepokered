@@ -320,3 +320,39 @@ _SaffronGymBrunoInspiringText:: ; marcelnote - postgame Bruno
 	line "until our paths"
 	cont "cross again!"
 	done
+
+_SaffronGymSabrinaRematchPreBattleText:: ; marcelnote - Sabrina rematch
+	text "Welcome back,"
+	line "<PLAYER>."
+
+	para "How about a"
+	line "friendly rematch?"
+
+	para "I won't hold back"
+	line "this time."
+	done
+
+_SaffronGymSabrinaRematchRefusedBattleText:: ; marcelnote - Sabrina rematch
+	text "Very well. Come"
+	line "back anytime."
+	done
+
+_SaffronGymSabrinaRematchAcceptBattleText:: ; marcelnote - Sabrina rematch
+	text "I foresaw our"
+    line "battle. Let's find"
+	cont "out together"
+	cont "who will prevail."
+	done
+
+_SaffronGymSabrinaRematchDefeatedText:: ; marcelnote - Sabrina rematch
+	text "I'm no"
+	line "longer surprised."
+	prompt
+
+_SaffronGymAfterRematchText:: ; marcelnote - Sabrina rematch
+	text "Your free spirit"
+	line "inspires me."
+
+	para "Let's do this"
+	line "again soon!"
+	done

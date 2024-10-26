@@ -282,8 +282,8 @@ DEF NUM_HS_OBJECTS EQU const_value
 	const HS_CELADON_GROVE_SOUTH_GATE_ROCKET ; blocking the way
 	const HS_FUCHSIA_GYM_KOGA                ; default Koga
 	const HS_FUCHSIA_GYM_KOGA_REMATCH        ; rematch Koga
-	;const HS_SAFFRON_GYM_SABRINA             ; default Sabrina
-	;const HS_SAFFRON_GYM_SABRINA_REMATCH     ; rematch Sabrina
+	const HS_SAFFRON_GYM_SABRINA             ; default Sabrina
+	const HS_SAFFRON_GYM_SABRINA_REMATCH     ; rematch Sabrina
 	const HS_SAFFRON_GYM_WILL                ; postgame Will
 	const HS_SAFFRON_GYM_BRUNO               ; postgame Bruno
 	;const HS_CINNABAR_GYM_BLAINE             ; default Blaine
