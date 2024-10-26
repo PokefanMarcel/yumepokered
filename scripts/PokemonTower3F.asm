@@ -7,18 +7,111 @@ PokemonTower3F_Script:
 	ld [wPokemonTower3FCurScript], a
 	ret
 
+PokemonTower3FSetDefaultScript:
+	xor a
+	ld [wJoyIgnore], a
+	ld [wPokemonTower3FCurScript], a
+	ld [wCurMapScript], a
+	ret
+
 PokemonTower3F_ScriptPointers:
 	def_script_pointers
-	dw_const CheckFightingMapTrainers,              SCRIPT_POKEMONTOWER3F_DEFAULT
+	dw_const PokemonTower3FDefaultScript,           SCRIPT_POKEMONTOWER3F_DEFAULT ; marcelnote - was CheckFightingMapTrainers
 	dw_const DisplayEnemyTrainerTextAndStartBattle, SCRIPT_POKEMONTOWER3F_START_BATTLE
 	dw_const EndTrainerBattle,                      SCRIPT_POKEMONTOWER3F_END_BATTLE
+	dw_const PokemonTower3FGhostBattleScript,       SCRIPT_POKEMONTOWER3F_GHOST_BATTLE  ; marcelnote - postgame Agatha event
+	dw_const PokemonTower3FPlayerMovingScript,      SCRIPT_POKEMONTOWER3F_PLAYER_MOVING ; marcelnote - postgame Agatha event
+
+PokemonTower3FDefaultScript: ; marcelnote - postgame Agatha event
+;IF DEF(_DEBUG)
+;	call DebugPressedOrHeldB
+;	ret nz
+;ENDC
+	CheckHideShow HS_POKEMON_TOWER_6F_AGATHA ; marcelnote - postgame Agatha event
+	;ret nz
+	jp nz, CheckFightingMapTrainers
+	CheckEvent EVENT_BEAT_GHOST_3F
+	ret nz
+	ld hl, PokemonTower3FGhostBattleCoords
+	call ArePlayerCoordsInArray
+	ret nc
+	xor a
+	ldh [hJoyHeld], a
+	ld a, TEXT_POKEMONTOWER3F_GHOST_BATTLE
+	ldh [hTextID], a
+	call DisplayTextID
+	ld a, GHOST_PRIMEAPE
+	ld [wCurOpponent], a
+	ld a, 60
+	ld [wCurEnemyLevel], a
+	ld a, SCRIPT_POKEMONTOWER3F_GHOST_BATTLE
+	ld [wPokemonTower3FCurScript], a
+	ld [wCurMapScript], a
+	ret
+
+PokemonTower3FGhostBattleCoords: ; marcelnote - postgame Agatha event
+	dbmapcoord 16,  6
+	dbmapcoord 14, 13
+	db -1 ; end
+
+PokemonTower3FGhostBattleScript: ; marcelnote - postgame Agatha event
+	ld a, [wIsInBattle]
+	cp $ff
+	jp z, PokemonTower2FSetDefaultScript
+	ld a, A_BUTTON | B_BUTTON | SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
+	ld [wJoyIgnore], a
+	ld a, [wStatusFlags3]
+	bit BIT_TALKED_TO_TRAINER, a
+	ret nz
+	call UpdateSprites
+	ld a, D_RIGHT | D_LEFT | D_UP | D_DOWN
+	ld [wJoyIgnore], a
+	ld a, [wBattleResult]
+	and a
+	jr nz, .did_not_defeat
+	SetEvent EVENT_BEAT_GHOST_3F
+	ld a, TEXT_POKEMONTOWER3F_GHOST_DEPARTED
+	ldh [hTextID], a
+	call DisplayTextID
+	xor a
+	ld [wJoyIgnore], a
+	ld a, SCRIPT_POKEMONTOWER3F_DEFAULT
+	ld [wPokemonTower3FCurScript], a
+	ld [wCurMapScript], a
+	ret
+.did_not_defeat
+	ld a, $1
+	ld [wSimulatedJoypadStatesIndex], a
+	ld a, D_LEFT
+	ld [wSimulatedJoypadStatesEnd], a
+	xor a
+	ld [wSpritePlayerStateData2MovementByte1], a
+	ld [wOverrideSimulatedJoypadStatesMask], a
+	ld hl, wStatusFlags5
+	set BIT_SCRIPTED_MOVEMENT_STATE, [hl]
+	ld a, SCRIPT_POKEMONTOWER3F_PLAYER_MOVING
+	ld [wPokemonTower3FCurScript], a
+	ld [wCurMapScript], a
+	ret
+
+PokemonTower3FPlayerMovingScript: ; marcelnote - postgame Agatha event
+	ld a, [wSimulatedJoypadStatesIndex]
+	and a
+	ret nz
+	call Delay3
+	xor a
+	ld [wPokemonTower3FCurScript], a
+	ld [wCurMapScript], a
+	ret
 
 PokemonTower3F_TextPointers:
 	def_text_pointers
-	dw_const PokemonTower3FChanneler1Text, TEXT_POKEMONTOWER3F_CHANNELER1
-	dw_const PokemonTower3FChanneler2Text, TEXT_POKEMONTOWER3F_CHANNELER2
-	dw_const PokemonTower3FChanneler3Text, TEXT_POKEMONTOWER3F_CHANNELER3
-	dw_const PickUpItemText,               TEXT_POKEMONTOWER3F_ESCAPE_ROPE
+	dw_const PokemonTower3FChanneler1Text,    TEXT_POKEMONTOWER3F_CHANNELER1
+	dw_const PokemonTower3FChanneler2Text,    TEXT_POKEMONTOWER3F_CHANNELER2
+	dw_const PokemonTower3FChanneler3Text,    TEXT_POKEMONTOWER3F_CHANNELER3
+	dw_const PickUpItemText,                  TEXT_POKEMONTOWER3F_ESCAPE_ROPE
+	dw_const PokemonTower3FGhostBattleText,   TEXT_POKEMONTOWER3F_GHOST_BATTLE   ; marcelnote - postgame Agatha event
+	dw_const PokemonTower3FGhostDepartedText, TEXT_POKEMONTOWER3F_GHOST_DEPARTED ; marcelnote - postgame Agatha event
 
 PokemonTower3TrainerHeaders:
 	def_trainers
@@ -82,4 +175,12 @@ PokemonTower3FChanneler3EndBattleText:
 
 PokemonTower3FChanneler3AfterBattleText:
 	text_far _PokemonTower3FChanneler3AfterBattleText
+	text_end
+
+PokemonTower3FGhostBattleText: ; marcelnote - postgame Agatha event
+	text_far _PokemonTower3FGhostBattleText
+	text_end
+
+PokemonTower3FGhostDepartedText: ; marcelnote - postgame Agatha event
+	text_far _PokemonTower3FGhostDepartedText
 	text_end
