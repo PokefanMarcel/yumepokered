@@ -21,13 +21,14 @@ PokemonTower6F_ScriptPointers:
 	dw_const EndTrainerBattle,                      SCRIPT_POKEMONTOWER6F_END_BATTLE
 	dw_const PokemonTower6FPlayerMovingScript,      SCRIPT_POKEMONTOWER6F_PLAYER_MOVING
 	dw_const PokemonTower6FMarowakBattleScript,     SCRIPT_POKEMONTOWER6F_MAROWAK_BATTLE
+	dw_const PokemonTower6FGhostBattleScript,       SCRIPT_POKEMONTOWER6F_GHOST_BATTLE  ; marcelnote - postgame Agatha event
 
 PokemonTower6FDefaultScript:
 	CheckEvent EVENT_BEAT_GHOST_MAROWAK
-	jp nz, CheckFightingMapTrainers
+	jp nz, PokemonTower6FCheckGhostEncounterScript ; marcelnote - postgame Agatha event, was jp nz, CheckFightingMapTrainers
 	ld hl, PokemonTower6FMarowakCoords
 	call ArePlayerCoordsInArray
-	jp nc, CheckFightingMapTrainers
+	jp nc, PokemonTower6FCheckGhostEncounterScript ; marcelnote - postgame Agatha event, was jp nc, CheckFightingMapTrainers
 	xor a
 	ldh [hJoyHeld], a
 	ld a, TEXT_POKEMONTOWER6F_BEGONE
@@ -96,6 +97,70 @@ PokemonTower6FPlayerMovingScript:
 	ld [wCurMapScript], a
 	ret
 
+PokemonTower6FCheckGhostEncounterScript: ; marcelnote - postgame Agatha event
+	CheckEvent EVENT_BEAT_GHOST_6F
+	jp nz, CheckFightingMapTrainers
+	ld hl, PokemonTower6FGhostBattleCoords
+	call ArePlayerCoordsInArray
+	jp nc, CheckFightingMapTrainers
+	xor a
+	ldh [hJoyHeld], a
+	ld a, TEXT_POKEMONTOWER6F_GHOST_BATTLE
+	ldh [hTextID], a
+	call DisplayTextID
+	ld a, GHOST_GENGAR
+	ld [wCurOpponent], a
+	ld a, 60
+	ld [wCurEnemyLevel], a
+	ld a, SCRIPT_POKEMONTOWER6F_GHOST_BATTLE
+	ld [wPokemonTower6FCurScript], a
+	ld [wCurMapScript], a
+	ret
+
+PokemonTower6FGhostBattleCoords: ; marcelnote - postgame Agatha event
+	dbmapcoord  6,  8
+	db -1 ; end
+
+PokemonTower6FGhostBattleScript: ; marcelnote - postgame Agatha event
+	ld a, [wIsInBattle]
+	cp $ff
+	jp z, PokemonTower6FSetDefaultScript
+	ld a, A_BUTTON | B_BUTTON | SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
+	ld [wJoyIgnore], a
+	ld a, [wStatusFlags3]
+	bit BIT_TALKED_TO_TRAINER, a
+	ret nz
+	call UpdateSprites
+	ld a, D_RIGHT | D_LEFT | D_UP | D_DOWN
+	ld [wJoyIgnore], a
+	ld a, [wBattleResult]
+	and a
+	jr nz, .did_not_defeat
+	SetEvent EVENT_BEAT_GHOST_6F
+	ld a, TEXT_POKEMONTOWER6F_GHOST_DEPARTED
+	ldh [hTextID], a
+	call DisplayTextID
+	xor a
+	ld [wJoyIgnore], a
+	ld a, SCRIPT_POKEMONTOWER6F_DEFAULT
+	ld [wPokemonTower6FCurScript], a
+	ld [wCurMapScript], a
+	ret
+.did_not_defeat
+	ld a, $1
+	ld [wSimulatedJoypadStatesIndex], a
+	ld a, D_UP
+	ld [wSimulatedJoypadStatesEnd], a
+	xor a
+	ld [wSpritePlayerStateData2MovementByte1], a
+	ld [wOverrideSimulatedJoypadStatesMask], a
+	ld hl, wStatusFlags5
+	set BIT_SCRIPTED_MOVEMENT_STATE, [hl]
+	ld a, SCRIPT_POKEMONTOWER6F_PLAYER_MOVING
+	ld [wPokemonTower6FCurScript], a
+	ld [wCurMapScript], a
+	ret
+
 PokemonTower6F_TextPointers:
 	def_text_pointers
 	dw_const PokemonTower6FChanneler1Text,      TEXT_POKEMONTOWER6F_CHANNELER1
@@ -106,6 +171,8 @@ PokemonTower6F_TextPointers:
 	dw_const PickUpItemText,                    TEXT_POKEMONTOWER6F_X_ACCURACY
 	dw_const PokemonTower6FBeGoneText,          TEXT_POKEMONTOWER6F_BEGONE
 	dw_const PokemonTower6FMarowakDepartedText, TEXT_POKEMONTOWER6F_MAROWAK_DEPARTED
+	dw_const PokemonTower6FGhostBattleText,     TEXT_POKEMONTOWER6F_GHOST_BATTLE   ; marcelnote - postgame Agatha event
+	dw_const PokemonTower6FGhostDepartedText,   TEXT_POKEMONTOWER6F_GHOST_DEPARTED ; marcelnote - postgame Agatha event
 
 PokemonTower6TrainerHeaders:
 	def_trainers
@@ -230,4 +297,12 @@ PokemonTower6FAgathaText: ; marcelnote - postgame Agatha event
 
 .text
 	text_far _PokemonTower6FAgathaText
+	text_end
+
+PokemonTower6FGhostBattleText: ; marcelnote - postgame Agatha event
+	text_far _PokemonTower6FGhostBattleText
+	text_end
+
+PokemonTower6FGhostDepartedText: ; marcelnote - postgame Agatha event
+	text_far _PokemonTower6FGhostDepartedText
 	text_end

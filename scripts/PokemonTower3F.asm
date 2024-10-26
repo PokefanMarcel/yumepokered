@@ -23,18 +23,13 @@ PokemonTower3F_ScriptPointers:
 	dw_const PokemonTower3FPlayerMovingScript,      SCRIPT_POKEMONTOWER3F_PLAYER_MOVING ; marcelnote - postgame Agatha event
 
 PokemonTower3FDefaultScript: ; marcelnote - postgame Agatha event
-;IF DEF(_DEBUG)
-;	call DebugPressedOrHeldB
-;	ret nz
-;ENDC
-	CheckHideShow HS_POKEMON_TOWER_6F_AGATHA ; marcelnote - postgame Agatha event
-	;ret nz
+	CheckHideShow HS_POKEMON_TOWER_6F_AGATHA
 	jp nz, CheckFightingMapTrainers
 	CheckEvent EVENT_BEAT_GHOST_3F
-	ret nz
+	jp nz, CheckFightingMapTrainers
 	ld hl, PokemonTower3FGhostBattleCoords
 	call ArePlayerCoordsInArray
-	ret nc
+	jp nc, CheckFightingMapTrainers
 	xor a
 	ldh [hJoyHeld], a
 	ld a, TEXT_POKEMONTOWER3F_GHOST_BATTLE

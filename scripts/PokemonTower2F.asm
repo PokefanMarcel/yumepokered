@@ -17,7 +17,6 @@ PokemonTower2F_ScriptPointers:
 	dw_const PokemonTower2FDefeatedRivalScript, SCRIPT_POKEMONTOWER2F_DEFEATED_RIVAL
 	dw_const PokemonTower2FRivalExitsScript,    SCRIPT_POKEMONTOWER2F_RIVAL_EXITS
 	dw_const PokemonTower2FGhostBattleScript,   SCRIPT_POKEMONTOWER2F_GHOST_BATTLE  ; marcelnote - postgame Agatha event
-	;dw_const PokemonTower2FAgathaEventScript,   SCRIPT_POKEMONTOWER2F_AGATHA_EVENT  ; marcelnote - postgame Agatha event
 	dw_const PokemonTower2FPlayerMovingScript,  SCRIPT_POKEMONTOWER2F_PLAYER_MOVING ; marcelnote - postgame Agatha event
 
 PokemonTower2FDefaultScript:
@@ -131,7 +130,7 @@ PokemonTower2FRivalExitsScript:
 	ret
 
 PokemonTower2FCheckGhostEncounterScript: ; marcelnote - postgame Agatha event
-	CheckHideShow HS_POKEMON_TOWER_6F_AGATHA ; marcelnote - postgame Agatha event
+	CheckHideShow HS_POKEMON_TOWER_6F_AGATHA
 	jp nz, PokemonTower2FSetDefaultScript
 	CheckEvent EVENT_BEAT_GHOST_2F
 	jp nz, PokemonTower2FSetDefaultScript

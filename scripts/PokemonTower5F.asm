@@ -20,7 +20,7 @@ PokemonTower5F_ScriptPointers:
 	dw_const DisplayEnemyTrainerTextAndStartBattle, SCRIPT_POKEMONTOWER5F_START_BATTLE
 	dw_const EndTrainerBattle,                      SCRIPT_POKEMONTOWER5F_END_BATTLE
 	dw_const PokemonTower5FGhostBattleScript,       SCRIPT_POKEMONTOWER5F_GHOST_BATTLE  ; marcelnote - postgame Agatha event
-    dw_const PokemonTower5FPlayerMovingScript,      SCRIPT_POKEMONTOWER5F_PLAYER_MOVING ; marcelnote - postgame Agatha event
+	dw_const PokemonTower5FPlayerMovingScript,      SCRIPT_POKEMONTOWER5F_PLAYER_MOVING ; marcelnote - postgame Agatha event
 
 PokemonTower5FDefaultScript:
 	ld hl, PokemonTower5FPurifiedZoneCoords
@@ -29,9 +29,7 @@ PokemonTower5FDefaultScript:
 	ld hl, wStatusFlags4
 	res BIT_NO_BATTLES, [hl]
 	ResetEvent EVENT_IN_PURIFIED_ZONE
-	CheckHideShow HS_POKEMON_TOWER_6F_AGATHA ; marcelnote - postgame Agatha event
-	jp z, PokemonTower5FAgathaEventScript
-	jp CheckFightingMapTrainers
+	jp PokemonTower5FCheckGhostEncounterScript ; marcelnote - postgame Agatha event, was jp CheckFightingMapTrainers
 .in_purified_zone
 	CheckAndSetEvent EVENT_IN_PURIFIED_ZONE
 	ret nz
@@ -60,12 +58,14 @@ PokemonTower5FPurifiedZoneCoords:
 	dbmapcoord 11,  9
 	db -1 ; end
 
-PokemonTower5FAgathaEventScript: ; marcelnote - postgame Agatha event
+PokemonTower5FCheckGhostEncounterScript: ; marcelnote - postgame Agatha event
+	CheckHideShow HS_POKEMON_TOWER_6F_AGATHA
+	jp nz, CheckFightingMapTrainers
 	CheckEvent EVENT_BEAT_GHOST_5F
 	jp nz, CheckFightingMapTrainers
 	ld hl, PokemonTower5FGhostBattleCoords
 	call ArePlayerCoordsInArray
-	ret nc
+	jp nc, CheckFightingMapTrainers
 	xor a
 	ldh [hJoyHeld], a
 	ld a, TEXT_POKEMONTOWER5F_GHOST_BATTLE
@@ -81,7 +81,8 @@ PokemonTower5FAgathaEventScript: ; marcelnote - postgame Agatha event
 	ret
 
 PokemonTower5FGhostBattleCoords: ; marcelnote - postgame Agatha event
-	dbmapcoord 17,  7
+	dbmapcoord 15,  6
+	dbmapcoord 14,  7
 	dbmapcoord 13, 11
 	dbmapcoord 13, 12
 	db -1 ; end
@@ -241,9 +242,9 @@ PokemonTower5FPurifiedZoneText:
 	text_end
 
 PokemonTower5FGhostBattleText: ; marcelnote - postgame Agatha event
-	text_far _PokemonTower2FGhostBattleText
+	text_far _PokemonTower5FGhostBattleText
 	text_end
 
 PokemonTower5FGhostDepartedText: ; marcelnote - postgame Agatha event
-	text_far _PokemonTower2FGhostDepartedText
+	text_far _PokemonTower5FGhostDepartedText
 	text_end

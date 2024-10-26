@@ -168,12 +168,48 @@ ItemUseBall:
 ; If the player is fighting the ghost Marowak, set the value that indicates the
 ; Pokémon can't be caught and skip the capture calculations.
 	ld a, [wCurMap]
-;;;;;; marcelnote - added this to also work with Cinnabar Volcano event Charizard
+	ld b, $10 ; can't be caught value ; marcelnote - this is overwritten if .loop is entered
+;;;;;; marcelnote - added this to also work with Cinnabar Volcano event Charizard and Pokemon Tower special ghosts
 	cp CINNABAR_VOLCANO_1FB1F
-	jr nz, .checkRestlessSoul
+	jr nz, .checkGhostRaticate
 	ld a, [wEnemyMonSpecies2]
 	cp CHARIZARD
-	ld b, $10 ; can't be caught value
+	;ld b, $10 ; can't be caught value
+	jp z, .setAnimData
+.checkGhostRaticate
+	cp POKEMON_TOWER_2F
+	jr nz, .checkGhostPrimeape
+	ld a, [wEnemyMonSpecies2]
+	cp RATICATE
+	;ld b, $10 ; can't be caught value
+	jp z, .setAnimData
+.checkGhostPrimeape
+	cp POKEMON_TOWER_3F
+	jr nz, .checkGhostJolteon
+	ld a, [wEnemyMonSpecies2]
+	cp PRIMEAPE
+	;ld b, $10 ; can't be caught value
+	jp z, .setAnimData
+.checkGhostJolteon
+	cp POKEMON_TOWER_4F
+	jr nz, .checkGhostNinetales
+	ld a, [wEnemyMonSpecies2]
+	cp JOLTEON
+	;ld b, $10 ; can't be caught value
+	jp z, .setAnimData
+.checkGhostNinetales
+	cp POKEMON_TOWER_5F
+	jr nz, .checkGhostGengar
+	ld a, [wEnemyMonSpecies2]
+	cp NINETALES
+	;ld b, $10 ; can't be caught value
+	jp z, .setAnimData
+.checkGhostGengar
+	cp POKEMON_TOWER_6F
+	jr nz, .checkRestlessSoul
+	ld a, [wEnemyMonSpecies2]
+	cp GENGAR
+	;ld b, $10 ; can't be caught value
 	jp z, .setAnimData
 .checkRestlessSoul
 ;;;;;;
