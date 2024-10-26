@@ -106,7 +106,21 @@ PokemonTower1FAgathaText: ; marcelnote - postgame Agatha event
 	text_end
 
 PokemonTower1FGentlemanText: ; marcelnote - postgame Agatha event
-	text_far _PokemonTower1FGentlemanText
+	text_asm
+	CheckEvent EVENT_POSTGAME_AGATHA
+	ld hl, .PostEventText
+	jr nz, .textLoaded
+	ld hl, .PreEventText
+.textLoaded
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+.PreEventText
+	text_far _PokemonTower1FGentlemanPreEventText
+	text_end
+
+.PostEventText
+	text_far _PokemonTower1FGentlemanPostEventText
 	text_end
 
 PokemonTower1FAgathaText2: ; marcelnote - postgame Agatha

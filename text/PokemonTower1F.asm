@@ -42,6 +42,10 @@ _PokemonTower1FAgathaText:: ; marcelnote - postgame Agatha event
 	text "We are arguing!"
 	done
 
-_PokemonTower1FGentlemanText:: ; marcelnote - postgame Agatha event
+_PokemonTower1FGentlemanPreEventText:: ; marcelnote - postgame Agatha event
 	text "Help me out!"
+	done
+
+_PokemonTower1FGentlemanPostEventText:: ; marcelnote - postgame Agatha event
+	text "It is done."
 	done
