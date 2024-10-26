@@ -107,12 +107,14 @@ PokemonTower4FPlayerMovingScript: ; marcelnote - postgame Agatha event
 
 PokemonTower4F_TextPointers:
 	def_text_pointers
-	dw_const PokemonTower4FChanneler1Text, TEXT_POKEMONTOWER4F_CHANNELER1
-	dw_const PokemonTower4FChanneler2Text, TEXT_POKEMONTOWER4F_CHANNELER2
-	dw_const PokemonTower4FChanneler3Text, TEXT_POKEMONTOWER4F_CHANNELER3
-	dw_const PickUpItemText,               TEXT_POKEMONTOWER4F_ELIXIR
-	dw_const PickUpItemText,               TEXT_POKEMONTOWER4F_AWAKENING
-	dw_const PickUpItemText,               TEXT_POKEMONTOWER4F_HP_UP
+	dw_const PokemonTower4FChanneler1Text,    TEXT_POKEMONTOWER4F_CHANNELER1
+	dw_const PokemonTower4FChanneler2Text,    TEXT_POKEMONTOWER4F_CHANNELER2
+	dw_const PokemonTower4FChanneler3Text,    TEXT_POKEMONTOWER4F_CHANNELER3
+	dw_const PickUpItemText,                  TEXT_POKEMONTOWER4F_ELIXIR
+	dw_const PickUpItemText,                  TEXT_POKEMONTOWER4F_AWAKENING
+	dw_const PickUpItemText,                  TEXT_POKEMONTOWER4F_HP_UP
+	dw_const PokemonTower4FGhostBattleText,   TEXT_POKEMONTOWER4F_GHOST_BATTLE   ; marcelnote - postgame Agatha event
+	dw_const PokemonTower4FGhostDepartedText, TEXT_POKEMONTOWER4F_GHOST_DEPARTED ; marcelnote - postgame Agatha event
 
 PokemonTower4TrainerHeaders:
 	def_trainers
@@ -176,4 +178,12 @@ PokemonTower4FChanneler3EndBattleText:
 
 PokemonTower4FChanneler3AfterBattleText:
 	text_far _PokemonTower4FChanneler3AfterBattleText
+	text_end
+
+PokemonTower4FGhostBattleText: ; marcelnote - postgame Agatha event
+	text_far _PokemonTower4FGhostBattleText
+	text_end
+
+PokemonTower4FGhostDepartedText: ; marcelnote - postgame Agatha event
+	text_far _PokemonTower4FGhostDepartedText
 	text_end
