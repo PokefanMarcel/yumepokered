@@ -69,3 +69,16 @@ _PokemonTower5FPurifiedZoneText::
 	para "<PLAYER>'s #MON"
 	line "are fully healed!"
 	done
+
+_PokemonTower5FGhostBattleText:: ; marcelnote - postgame Agatha event
+	text "Be gone..."
+	line "Intruders..."
+	done
+
+_PokemonTower5FGhostDepartedText:: ; marcelnote - postgame Agatha event
+	text "The mother's soul"
+	line "was calmed."
+
+	para "It departed to"
+	line "the afterlife!"
+	done

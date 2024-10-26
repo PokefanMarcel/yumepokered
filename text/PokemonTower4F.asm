@@ -43,3 +43,16 @@ _PokemonTower4FChanneler3AfterBattleText::
 	line "souls of #MON"
 	cont "rest in peace..."
 	done
+
+_PokemonTower4FGhostBattleText:: ; marcelnote - postgame Agatha event
+	text "Be gone..."
+	line "Intruders..."
+	done
+
+_PokemonTower4FGhostDepartedText:: ; marcelnote - postgame Agatha event
+	text "The mother's soul"
+	line "was calmed."
+
+	para "It departed to"
+	line "the afterlife!"
+	done
