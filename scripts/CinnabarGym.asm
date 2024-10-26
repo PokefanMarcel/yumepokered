@@ -44,10 +44,11 @@ CinnabarGymSetTrainerHeader:
 
 CinnabarGym_ScriptPointers:
 	def_script_pointers
-	dw_const CinnabarGymDefaultScript,          SCRIPT_CINNABARGYM_DEFAULT
-	dw_const CinnabarGymGetOpponentTextScript,  SCRIPT_CINNABARGYM_GET_OPPONENT_TEXT
-	dw_const CinnabarGymOpenGateScript,         SCRIPT_CINNABARGYM_OPEN_GATE
-	dw_const CinnabarGymBlainePostBattleScript, SCRIPT_CINNABARGYM_BLAINE_POST_BATTLE
+	dw_const CinnabarGymDefaultScript,                 SCRIPT_CINNABARGYM_DEFAULT
+	dw_const CinnabarGymGetOpponentTextScript,         SCRIPT_CINNABARGYM_GET_OPPONENT_TEXT
+	dw_const CinnabarGymOpenGateScript,                SCRIPT_CINNABARGYM_OPEN_GATE
+	dw_const CinnabarGymBlainePostBattleScript,        SCRIPT_CINNABARGYM_BLAINE_POST_BATTLE
+	dw_const CinnabarGymBlaineRematchPostBattleScript, SCRIPT_CINNABARGYM_BLAINE_REMATCH_POST_BATTLE ; marcelnote - Blaine rematch
 
 CinnabarGymDefaultScript:
 	ld a, [wOpponentAfterWrongAnswer]
@@ -174,6 +175,18 @@ CinnabarGymReceiveTM38:
 
 	jp CinnabarGymResetScripts
 
+CinnabarGymBlaineRematchPostBattleScript: ; marcelnote - Blaine rematch
+	ld a, [wIsInBattle]
+	cp $ff
+	jp z, CinnabarGymResetScripts
+	ld a, D_RIGHT | D_LEFT | D_UP | D_DOWN
+	ld [wJoyIgnore], a
+	ld a, TEXT_CINNABARGYM_AFTER_REMATCH
+	ldh [hTextID], a
+	call DisplayTextID
+	SetEvent EVENT_BEAT_BLAINE_REMATCH
+	jp CinnabarGymResetScripts
+
 CinnabarGym_TextPointers:
 	def_text_pointers
 	dw_const CinnabarGymBlaineText,                 TEXT_CINNABARGYM_BLAINE
@@ -184,10 +197,12 @@ CinnabarGym_TextPointers:
 	dw_const CinnabarGymSuperNerd5,                 TEXT_CINNABARGYM_SUPER_NERD5
 	dw_const CinnabarGymSuperNerd6,                 TEXT_CINNABARGYM_SUPER_NERD6
 	dw_const CinnabarGymSuperNerd7,                 TEXT_CINNABARGYM_SUPER_NERD7
+	dw_const CinnabarGymBlaineRematchText,          TEXT_CINNABARGYM_BLAINE_REMATCH ; marcelnote - Blaine rematch
 	dw_const CinnabarGymGymGuideText,               TEXT_CINNABARGYM_GYM_GUIDE
 	dw_const CinnabarGymBlaineVolcanoBadgeInfoText, TEXT_CINNABARGYM_BLAINE_VOLCANO_BADGE_INFO
 	dw_const CinnabarGymBlaineReceivedTM38Text,     TEXT_CINNABARGYM_BLAINE_RECEIVED_TM38
 	dw_const CinnabarGymBlaineTM38NoRoomText,       TEXT_CINNABARGYM_BLAINE_TM38_NO_ROOM
+	dw_const CinnabarGymAfterRematchText,           TEXT_CINNABARGYM_AFTER_REMATCH ; marcelnote - Blaine rematch
 
 CinnabarGymStartBattleScript:
 	ldh a, [hSpriteIndex]
@@ -474,4 +489,62 @@ CinnabarGymGymGuideText:
 
 .BeatBlaineText:
 	text_far _CinnabarGymGymGuideBeatBlaineText
+	text_end
+
+
+CinnabarGymBlaineRematchText: ; marcelnote - Blaine rematch
+	text_asm
+	CheckEvent EVENT_BEAT_BLAINE_REMATCH
+	jr z, .beforeBeat
+	ld hl, CinnabarGymAfterRematchText
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.beforeBeat
+	ld hl, .PreBattleText
+	call PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr nz, .refused
+	ld hl, .AcceptBattleText
+	call PrintText
+	ld hl, wStatusFlags3
+	set BIT_TALKED_TO_TRAINER, [hl]
+	set BIT_PRINT_END_BATTLE_TEXT, [hl]
+	ld hl, .BlaineDefeatedText
+	ld de, .BlaineDefeatedText
+	call SaveEndBattleTextPointers
+	ldh a, [hSpriteIndex]
+	ld [wSpriteIndex], a
+	call EngageMapTrainer
+	call InitBattleEnemyParameters
+	xor a
+	ldh [hJoyHeld], a
+	ld a, SCRIPT_CINNABARGYM_BLAINE_REMATCH_POST_BATTLE
+	ld [wCinnabarGymCurScript], a
+	ld [wCurMapScript], a
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.refused
+	ld hl, .RefusedBattleText
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+.PreBattleText:
+	text_far _CinnabarGymBlaineRematchPreBattleText
+	text_end
+
+.AcceptBattleText:
+	text_far _CinnabarGymBlaineRematchAcceptBattleText
+	text_end
+
+.RefusedBattleText:
+	text_far _CinnabarGymBlaineRematchRefusedBattleText
+	text_end
+
+.BlaineDefeatedText:
+	text_far _CinnabarGymBlaineRematchDefeatedText
+	text_end
+
+CinnabarGymAfterRematchText: ; marcelnote - Blaine rematch
+	text_far _CinnabarGymAfterRematchText
 	text_end
