@@ -62,6 +62,9 @@ MtSilver3F_TextPointers:
 
 MtSilver3FYellowText:
 	text_asm
+	ld hl, wOptions
+	set BIT_BATTLE_SHIFT, [hl]     ; force SET battle mode
+	res BIT_BATTLE_ANIMATION, [hl] ; force battle animations
 	ld hl, .PreBattleText
 	call PrintText
 	ld hl, wStatusFlags3
