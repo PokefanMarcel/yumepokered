@@ -518,6 +518,8 @@ CinnabarGymBlaineRematchText: ; marcelnote - Blaine rematch
 	ld [wSpriteIndex], a
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
+	ld a, $7
+	ld [wGymLeaderNo], a
 	xor a
 	ldh [hJoyHeld], a
 	ld a, SCRIPT_CINNABARGYM_BLAINE_REMATCH_POST_BATTLE

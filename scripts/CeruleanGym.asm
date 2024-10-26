@@ -250,6 +250,8 @@ CeruleanGymMistyRematchText: ; marcelnote - Misty rematch
 	ld [wSpriteIndex], a
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
+	ld a, $2
+	ld [wGymLeaderNo], a
 	xor a
 	ldh [hJoyHeld], a
 	ld a, SCRIPT_CERULEANGYM_MISTY_REMATCH_POST_BATTLE
