@@ -7,11 +7,103 @@ PokemonTower4F_Script:
 	ld [wPokemonTower4FCurScript], a
 	ret
 
+PokemonTower4FSetDefaultScript:
+	xor a
+	ld [wJoyIgnore], a
+	ld [wPokemonTower4FCurScript], a
+	ld [wCurMapScript], a
+	ret
+
 PokemonTower4F_ScriptPointers:
 	def_script_pointers
-	dw_const CheckFightingMapTrainers,              SCRIPT_POKEMONTOWER4F_DEFAULT
+	dw_const PokemonTower4FDefaultScript,           SCRIPT_POKEMONTOWER4F_DEFAULT ; marcelnote - was CheckFightingMapTrainers
 	dw_const DisplayEnemyTrainerTextAndStartBattle, SCRIPT_POKEMONTOWER4F_START_BATTLE
 	dw_const EndTrainerBattle,                      SCRIPT_POKEMONTOWER4F_END_BATTLE
+	dw_const PokemonTower4FGhostBattleScript,       SCRIPT_POKEMONTOWER4F_GHOST_BATTLE  ; marcelnote - postgame Agatha event
+	dw_const PokemonTower4FPlayerMovingScript,      SCRIPT_POKEMONTOWER4F_PLAYER_MOVING ; marcelnote - postgame Agatha event
+
+PokemonTower4FDefaultScript: ; marcelnote - postgame Agatha event
+;IF DEF(_DEBUG)
+;	call DebugPressedOrHeldB
+;	ret nz
+;ENDC
+	CheckHideShow HS_POKEMON_TOWER_6F_AGATHA ; marcelnote - postgame Agatha event
+	;ret nz
+	jp nz, CheckFightingMapTrainers
+	CheckEvent EVENT_BEAT_GHOST_4F
+	ret nz
+	ld hl, PokemonTower4FGhostBattleCoords
+	call ArePlayerCoordsInArray
+	ret nc
+	xor a
+	ldh [hJoyHeld], a
+	ld a, TEXT_POKEMONTOWER4F_GHOST_BATTLE
+	ldh [hTextID], a
+	call DisplayTextID
+	ld a, GHOST_JOLTEON
+	ld [wCurOpponent], a
+	ld a, 60
+	ld [wCurEnemyLevel], a
+	ld a, SCRIPT_POKEMONTOWER4F_GHOST_BATTLE
+	ld [wPokemonTower4FCurScript], a
+	ld [wCurMapScript], a
+	ret
+
+PokemonTower4FGhostBattleCoords: ; marcelnote - postgame Agatha event
+	dbmapcoord 13,  6
+	dbmapcoord 13,  8
+	dbmapcoord 14, 12
+	db -1 ; end
+
+PokemonTower4FGhostBattleScript: ; marcelnote - postgame Agatha event
+	ld a, [wIsInBattle]
+	cp $ff
+	jp z, PokemonTower4FSetDefaultScript
+	ld a, A_BUTTON | B_BUTTON | SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
+	ld [wJoyIgnore], a
+	ld a, [wStatusFlags3]
+	bit BIT_TALKED_TO_TRAINER, a
+	ret nz
+	call UpdateSprites
+	ld a, D_RIGHT | D_LEFT | D_UP | D_DOWN
+	ld [wJoyIgnore], a
+	ld a, [wBattleResult]
+	and a
+	jr nz, .did_not_defeat
+	SetEvent EVENT_BEAT_GHOST_4F
+	ld a, TEXT_POKEMONTOWER4F_GHOST_DEPARTED
+	ldh [hTextID], a
+	call DisplayTextID
+	xor a
+	ld [wJoyIgnore], a
+	ld a, SCRIPT_POKEMONTOWER4F_DEFAULT
+	ld [wPokemonTower4FCurScript], a
+	ld [wCurMapScript], a
+	ret
+.did_not_defeat
+	ld a, $1
+	ld [wSimulatedJoypadStatesIndex], a
+	ld a, D_LEFT
+	ld [wSimulatedJoypadStatesEnd], a
+	xor a
+	ld [wSpritePlayerStateData2MovementByte1], a
+	ld [wOverrideSimulatedJoypadStatesMask], a
+	ld hl, wStatusFlags5
+	set BIT_SCRIPTED_MOVEMENT_STATE, [hl]
+	ld a, SCRIPT_POKEMONTOWER4F_PLAYER_MOVING
+	ld [wPokemonTower4FCurScript], a
+	ld [wCurMapScript], a
+	ret
+
+PokemonTower4FPlayerMovingScript: ; marcelnote - postgame Agatha event
+	ld a, [wSimulatedJoypadStatesIndex]
+	and a
+	ret nz
+	call Delay3
+	xor a
+	ld [wPokemonTower4FCurScript], a
+	ld [wCurMapScript], a
+	ret
 
 PokemonTower4F_TextPointers:
 	def_text_pointers
