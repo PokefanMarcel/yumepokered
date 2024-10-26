@@ -237,7 +237,7 @@ _CeladonGymErikaRematchRefusedBattleText:: ; marcelnote - Erika rematch
 
 _CeladonGymErikaRematchAcceptBattleText:: ; marcelnote - Erika rematch
 	text "Such a wonderful"
-    line "day for a battle."
+	line "day for a battle."
 	cont "Shall we begin?"
 	done
 
