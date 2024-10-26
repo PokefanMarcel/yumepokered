@@ -176,12 +176,12 @@ HallOfFameCongratulationsScript:
 	ld a, HS_FUCHSIA_GYM_KOGA_REMATCH        ; show rematch Koga
 	ld [wMissableObjectIndex], a
 	predef ShowObjectCont
-	;ld a, HS_SAFFRON_GYM_SABRINA             ; hide original Sabrina
-	;ld [wMissableObjectIndex], a
-	;predef HideObjectCont
-	;ld a, HS_SAFFRON_GYM_SABRINA_REMATCH     ; show rematch Sabrina
-	;ld [wMissableObjectIndex], a
-	;predef ShowObjectCont
+	ld a, HS_SAFFRON_GYM_SABRINA             ; hide original Sabrina
+	ld [wMissableObjectIndex], a
+	predef HideObjectCont
+	ld a, HS_SAFFRON_GYM_SABRINA_REMATCH     ; show rematch Sabrina
+	ld [wMissableObjectIndex], a
+	predef ShowObjectCont
 	;ld a, HS_CINNABAR_GYM_BLAINE             ; hide original Blaine
 	;ld [wMissableObjectIndex], a
 	;predef HideObjectCont

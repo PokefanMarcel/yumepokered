@@ -633,8 +633,8 @@ FuchsiaGymHS:
 	db FUCHSIA_GYM, FUCHSIAGYM_KOGA, SHOW          ; marcelnote - default Koga
 	db FUCHSIA_GYM, FUCHSIAGYM_KOGA_REMATCH, HIDE  ; marcelnote - rematch Koga
 SaffronGymHS:
-;	db SAFFRON_GYM, SAFFRONGYM_SABRINA, SHOW          ; marcelnote - default Sabrina
-;	db SAFFRON_GYM, SAFFRONGYM_SABRINA_REMATCH, HIDE  ; marcelnote - rematch Sabrina
+	db SAFFRON_GYM, SAFFRONGYM_SABRINA, SHOW          ; marcelnote - default Sabrina
+	db SAFFRON_GYM, SAFFRONGYM_SABRINA_REMATCH, HIDE  ; marcelnote - rematch Sabrina
 	db SAFFRON_GYM, SAFFRONGYM_WILL, HIDE             ; marcelnote - postgame Bruno event
 	db SAFFRON_GYM, SAFFRONGYM_BRUNO, HIDE            ; marcelnote - postgame Bruno event
 ;CinnabarGymHS:
