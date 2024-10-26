@@ -307,6 +307,7 @@ DEF NUM_HS_OBJECTS EQU const_value
 	const HS_CHAMPIONS_ROOM_RIVAL            ; added for Rival rematch
 	const HS_HALL_OF_FAME_OAK                ; first victory only
 	const HS_HALL_OF_FAME_RIVAL              ; for Rival rematches
+	const HS_MT_SILVER_3F_YELLOW             ; for Yellow battle
 DEF NUM_HS_OBJECTS_CONT EQU const_value
 	; max objects = 256
 	; current total = 297 – 270 = 27

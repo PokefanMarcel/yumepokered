@@ -1,6 +1,6 @@
 ; marcelnote - new location
 	object_const_def
-	;const_export MTMOON1F_HIKER
+	const_export MTSILVER3F_YELLOW
 
 MtSilver3F_Object:
 	db $66 ; border block

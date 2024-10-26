@@ -47,12 +47,12 @@ _MtSilver3FYellowBattleText::
 	cont "ever was?"
 	done
 
-_MtSilver3FYellowEndBattleText::
+_MtSilver3FYellowDefeatedText::
 	text "Wow!"
 	line "Shocked again!"
 	prompt
 
-_MtSilver3FYellowAfterBattleText::
+_MtSilver3FYellowPostBattleText::
 	text "Kids like you"
 	line "shouldn't be"
 	cont "here!"
