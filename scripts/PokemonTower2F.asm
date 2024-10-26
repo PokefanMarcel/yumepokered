@@ -152,7 +152,7 @@ PokemonTower2FAgathaEventScript: ; marcelnote - postgame Agatha event
 	ld [wCurMapScript], a
 	ret
 
-PokemonTower2FGhostBattleCoords:
+PokemonTower2FGhostBattleCoords: ; marcelnote - postgame Agatha event
 	dbmapcoord  7,  5
 	db -1 ; end
 
@@ -196,7 +196,7 @@ PokemonTower2FGhostBattleScript: ; marcelnote - postgame Agatha event
 	ld [wCurMapScript], a
 	ret
 
-PokemonTower2FPlayerMovingScript:
+PokemonTower2FPlayerMovingScript: ; marcelnote - postgame Agatha event
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz

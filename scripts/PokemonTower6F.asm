@@ -74,7 +74,7 @@ PokemonTower6FMarowakBattleScript:
 .did_not_defeat
 	ld a, $1
 	ld [wSimulatedJoypadStatesIndex], a
-	ld a, $10
+	ld a, D_RIGHT ; marcelnote - replaced $10
 	ld [wSimulatedJoypadStatesEnd], a
 	xor a
 	ld [wSpritePlayerStateData2MovementByte1], a
