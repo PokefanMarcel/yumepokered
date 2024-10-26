@@ -840,4 +840,4 @@ LanceData:
 
 YellowData:  ; marcelnote - new postgame battle
 	db $FF, 78, DODRIO, 80, CHANSEY, 88, BUTTERFREE, 78, OMASTAR, 78, NINETALES, 94, PIKACHU, 0
-	db $FF, 5, PIKACHU, 0 ; testing
+	db $FF, 5, CATERPIE, 5, PIKACHU, 0 ; testing
