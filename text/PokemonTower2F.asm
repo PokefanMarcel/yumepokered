@@ -55,3 +55,16 @@ _PokemonTower2FChannelerText::
 	line "might be able to"
 	cont "unmask them."
 	done
+
+_PokemonTower2FGhostBattleText:: ; marcelnote - postgame Agatha event
+	text "Be gone..."
+	line "Intruders..."
+	done
+
+_PokemonTower2FGhostDepartedText:: ; marcelnote - postgame Agatha event
+	text "The mother's soul"
+	line "was calmed."
+
+	para "It departed to"
+	line "the afterlife!"
+	done

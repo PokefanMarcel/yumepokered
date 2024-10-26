@@ -4,7 +4,7 @@ PokemonTower2F_Script:
 	ld a, [wPokemonTower2FCurScript]
 	jp CallFunctionInTable
 
-PokemonTower2FResetRivalEncounter:
+PokemonTower2FSetDefaultScript: ; marcelnote - was PokemonTower2FResetRivalEncounter:
 	xor a ; SCRIPT_POKEMONTOWER2F_DEFAULT
 	ld [wJoyIgnore], a
 	ld [wPokemonTower2FCurScript], a
@@ -16,8 +16,13 @@ PokemonTower2F_ScriptPointers:
 	dw_const PokemonTower2FDefaultScript,       SCRIPT_POKEMONTOWER2F_DEFAULT
 	dw_const PokemonTower2FDefeatedRivalScript, SCRIPT_POKEMONTOWER2F_DEFEATED_RIVAL
 	dw_const PokemonTower2FRivalExitsScript,    SCRIPT_POKEMONTOWER2F_RIVAL_EXITS
+	dw_const PokemonTower2FGhostBattleScript,   SCRIPT_POKEMONTOWER2F_GHOST_BATTLE  ; marcelnote - postgame Agatha event
+	dw_const PokemonTower2FAgathaEventScript,   SCRIPT_POKEMONTOWER2F_AGATHA_EVENT  ; marcelnote - postgame Agatha event
+	dw_const PokemonTower2FPlayerMovingScript,  SCRIPT_POKEMONTOWER2F_PLAYER_MOVING ; marcelnote - postgame Agatha event
 
 PokemonTower2FDefaultScript:
+	CheckHideShow HS_POKEMON_TOWER_6F_AGATHA ; marcelnote - postgame Agatha event
+	jp z, PokemonTower2FAgathaEventScript
 IF DEF(_DEBUG)
 	call DebugPressedOrHeldB
 	ret nz
@@ -66,7 +71,7 @@ PokemonTower2FRivalEncounterEventCoords:
 PokemonTower2FDefeatedRivalScript:
 	ld a, [wIsInBattle]
 	cp $ff
-	jp z, PokemonTower2FResetRivalEncounter
+	jp z, PokemonTower2FSetDefaultScript ; marcelnote - was PokemonTower2FResetRivalEncounter
 	ld a, D_RIGHT | D_LEFT | D_UP | D_DOWN
 	ld [wJoyIgnore], a
 	SetEvent EVENT_BEAT_POKEMON_TOWER_RIVAL
@@ -127,10 +132,86 @@ PokemonTower2FRivalExitsScript:
 	ld [wCurMapScript], a
 	ret
 
+PokemonTower2FAgathaEventScript: ; marcelnote - postgame Agatha event
+	CheckEvent EVENT_BEAT_GHOST_2F
+	ret nz
+	ld hl, PokemonTower2FGhostBattleCoords
+	call ArePlayerCoordsInArray
+	ret nc
+	xor a
+	ldh [hJoyHeld], a
+	ld a, TEXT_POKEMONTOWER2F_GHOST_BATTLE
+	ldh [hTextID], a
+	call DisplayTextID
+	ld a, GHOST_RATICATE
+	ld [wCurOpponent], a
+	ld a, 60
+	ld [wCurEnemyLevel], a
+	ld a, SCRIPT_POKEMONTOWER2F_GHOST_BATTLE
+	ld [wPokemonTower2FCurScript], a
+	ld [wCurMapScript], a
+	ret
+
+PokemonTower2FGhostBattleCoords:
+	dbmapcoord  7,  5
+	db -1 ; end
+
+PokemonTower2FGhostBattleScript: ; marcelnote - postgame Agatha event
+	ld a, [wIsInBattle]
+	cp $ff
+	jp z, PokemonTower2FSetDefaultScript
+	ld a, A_BUTTON | B_BUTTON | SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
+	ld [wJoyIgnore], a
+	ld a, [wStatusFlags3]
+	bit BIT_TALKED_TO_TRAINER, a
+	ret nz
+	call UpdateSprites
+	ld a, D_RIGHT | D_LEFT | D_UP | D_DOWN
+	ld [wJoyIgnore], a
+	ld a, [wBattleResult]
+	and a
+	jr nz, .did_not_defeat
+	SetEvent EVENT_BEAT_GHOST_2F
+	ld a, TEXT_POKEMONTOWER2F_GHOST_DEPARTED
+	ldh [hTextID], a
+	call DisplayTextID
+	xor a
+	ld [wJoyIgnore], a
+	ld a, SCRIPT_POKEMONTOWER2F_DEFAULT
+	ld [wPokemonTower2FCurScript], a
+	ld [wCurMapScript], a
+	ret
+.did_not_defeat
+	ld a, $1
+	ld [wSimulatedJoypadStatesIndex], a
+	ld a, $10
+	ld [wSimulatedJoypadStatesEnd], a
+	xor a
+	ld [wSpritePlayerStateData2MovementByte1], a
+	ld [wOverrideSimulatedJoypadStatesMask], a
+	ld hl, wStatusFlags5
+	set BIT_SCRIPTED_MOVEMENT_STATE, [hl]
+	ld a, SCRIPT_POKEMONTOWER2F_PLAYER_MOVING
+	ld [wPokemonTower2FCurScript], a
+	ld [wCurMapScript], a
+	ret
+
+PokemonTower2FPlayerMovingScript:
+	ld a, [wSimulatedJoypadStatesIndex]
+	and a
+	ret nz
+	call Delay3
+	xor a
+	ld [wPokemonTower2FCurScript], a
+	ld [wCurMapScript], a
+	ret
+
 PokemonTower2F_TextPointers:
 	def_text_pointers
-	dw_const PokemonTower2FRivalText,     TEXT_POKEMONTOWER2F_RIVAL
-	dw_const PokemonTower2FChannelerText, TEXT_POKEMONTOWER2F_CHANNELER
+	dw_const PokemonTower2FRivalText,         TEXT_POKEMONTOWER2F_RIVAL
+	dw_const PokemonTower2FChannelerText,     TEXT_POKEMONTOWER2F_CHANNELER
+	dw_const PokemonTower2FGhostBattleText,   TEXT_POKEMONTOWER2F_GHOST_BATTLE   ; marcelnote - postgame Agatha event
+	dw_const PokemonTower2FGhostDepartedText, TEXT_POKEMONTOWER2F_GHOST_DEPARTED ; marcelnote - postgame Agatha event
 
 PokemonTower2FRivalText:
 	text_asm
@@ -191,4 +272,12 @@ PokemonTower2FRivalText:
 
 PokemonTower2FChannelerText:
 	text_far _PokemonTower2FChannelerText
+	text_end
+
+PokemonTower2FGhostBattleText: ; marcelnote - postgame Agatha event
+	text_far _PokemonTower2FGhostBattleText
+	text_end
+
+PokemonTower2FGhostDepartedText: ; marcelnote - postgame Agatha event
+	text_far _PokemonTower2FGhostDepartedText
 	text_end
