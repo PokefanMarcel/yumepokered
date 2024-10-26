@@ -57,7 +57,7 @@ PokemonTower3FGhostBattleCoords: ; marcelnote - postgame Agatha event
 PokemonTower3FGhostBattleScript: ; marcelnote - postgame Agatha event
 	ld a, [wIsInBattle]
 	cp $ff
-	jp z, PokemonTower2FSetDefaultScript
+	jp z, PokemonTower3FSetDefaultScript
 	ld a, A_BUTTON | B_BUTTON | SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
 	ld [wJoyIgnore], a
 	ld a, [wStatusFlags3]
