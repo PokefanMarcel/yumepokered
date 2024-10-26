@@ -211,7 +211,7 @@ _FuchsiaGymKogaRematchRefusedBattleText:: ; marcelnote - Koga rematch
 
 _FuchsiaGymKogaRematchAcceptBattleText:: ; marcelnote - Koga rematch
 	text "Fwahahaha! Face"
-    line "my new ninja"
+	line "my new ninja"
 	cont "techniques!"
 	done
 

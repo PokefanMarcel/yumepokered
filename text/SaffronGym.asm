@@ -339,7 +339,7 @@ _SaffronGymSabrinaRematchRefusedBattleText:: ; marcelnote - Sabrina rematch
 
 _SaffronGymSabrinaRematchAcceptBattleText:: ; marcelnote - Sabrina rematch
 	text "I foresaw our"
-    line "battle. Let's find"
+	line "battle. Let's find"
 	cont "out together"
 	cont "who will prevail."
 	done

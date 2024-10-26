@@ -229,7 +229,7 @@ _CinnabarGymBlaineRematchRefusedBattleText:: ; marcelnote - Blaine rematch
 
 _CinnabarGymBlaineRematchAcceptBattleText:: ; marcelnote - Blaine rematch
 	text "Careful, my"
-    line "#MON have been"
+	line "#MON have been"
 	cont "burning for"
 	cont "this rematch!"
 	done
