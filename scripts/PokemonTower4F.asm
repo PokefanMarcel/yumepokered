@@ -50,9 +50,9 @@ PokemonTower4FDefaultScript: ; marcelnote - postgame Agatha event
 	ret
 
 PokemonTower4FGhostBattleCoords: ; marcelnote - postgame Agatha event
-	dbmapcoord 13,  6
-	dbmapcoord 13,  8
-	dbmapcoord 14, 12
+	dbmapcoord  9,  3
+	dbmapcoord  8, 12
+	dbmapcoord  7, 14
 	db -1 ; end
 
 PokemonTower4FGhostBattleScript: ; marcelnote - postgame Agatha event
@@ -83,7 +83,7 @@ PokemonTower4FGhostBattleScript: ; marcelnote - postgame Agatha event
 .did_not_defeat
 	ld a, $1
 	ld [wSimulatedJoypadStatesIndex], a
-	ld a, D_LEFT
+	ld a, D_RIGHT
 	ld [wSimulatedJoypadStatesEnd], a
 	xor a
 	ld [wSpritePlayerStateData2MovementByte1], a

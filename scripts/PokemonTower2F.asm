@@ -17,21 +17,19 @@ PokemonTower2F_ScriptPointers:
 	dw_const PokemonTower2FDefeatedRivalScript, SCRIPT_POKEMONTOWER2F_DEFEATED_RIVAL
 	dw_const PokemonTower2FRivalExitsScript,    SCRIPT_POKEMONTOWER2F_RIVAL_EXITS
 	dw_const PokemonTower2FGhostBattleScript,   SCRIPT_POKEMONTOWER2F_GHOST_BATTLE  ; marcelnote - postgame Agatha event
-	dw_const PokemonTower2FAgathaEventScript,   SCRIPT_POKEMONTOWER2F_AGATHA_EVENT  ; marcelnote - postgame Agatha event
+	;dw_const PokemonTower2FAgathaEventScript,   SCRIPT_POKEMONTOWER2F_AGATHA_EVENT  ; marcelnote - postgame Agatha event
 	dw_const PokemonTower2FPlayerMovingScript,  SCRIPT_POKEMONTOWER2F_PLAYER_MOVING ; marcelnote - postgame Agatha event
 
 PokemonTower2FDefaultScript:
-	CheckHideShow HS_POKEMON_TOWER_6F_AGATHA ; marcelnote - postgame Agatha event
-	jp z, PokemonTower2FAgathaEventScript
 IF DEF(_DEBUG)
 	call DebugPressedOrHeldB
 	ret nz
 ENDC
 	CheckEvent EVENT_BEAT_POKEMON_TOWER_RIVAL
-	ret nz
+	jp nz, PokemonTower2FCheckGhostEncounterScript ; marcelnote - postgame Agatha event, was ret nz
 	ld hl, PokemonTower2FRivalEncounterEventCoords
 	call ArePlayerCoordsInArray
-	ret nc
+	jp nc, PokemonTower2FCheckGhostEncounterScript ; marcelnote - postgame Agatha event, was ret nc
 	ld a, SFX_STOP_ALL_MUSIC
 	ld [wNewSoundID], a
 	call PlaySound
@@ -132,9 +130,11 @@ PokemonTower2FRivalExitsScript:
 	ld [wCurMapScript], a
 	ret
 
-PokemonTower2FAgathaEventScript: ; marcelnote - postgame Agatha event
+PokemonTower2FCheckGhostEncounterScript: ; marcelnote - postgame Agatha event
+	CheckHideShow HS_POKEMON_TOWER_6F_AGATHA ; marcelnote - postgame Agatha event
+	jp nz, PokemonTower2FSetDefaultScript
 	CheckEvent EVENT_BEAT_GHOST_2F
-	ret nz
+	jp nz, PokemonTower2FSetDefaultScript
 	ld hl, PokemonTower2FGhostBattleCoords
 	call ArePlayerCoordsInArray
 	ret nc
@@ -184,7 +184,7 @@ PokemonTower2FGhostBattleScript: ; marcelnote - postgame Agatha event
 .did_not_defeat
 	ld a, $1
 	ld [wSimulatedJoypadStatesIndex], a
-	ld a, $10
+	ld a, D_RIGHT
 	ld [wSimulatedJoypadStatesEnd], a
 	xor a
 	ld [wSpritePlayerStateData2MovementByte1], a
