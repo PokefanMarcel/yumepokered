@@ -286,8 +286,8 @@ DEF NUM_HS_OBJECTS EQU const_value
 	const HS_SAFFRON_GYM_SABRINA_REMATCH     ; rematch Sabrina
 	const HS_SAFFRON_GYM_WILL                ; postgame Will
 	const HS_SAFFRON_GYM_BRUNO               ; postgame Bruno
-	;const HS_CINNABAR_GYM_BLAINE             ; default Blaine
-	;const HS_CINNABAR_GYM_BLAINE_REMATCH     ; rematch Blaine
+	const HS_CINNABAR_GYM_BLAINE             ; default Blaine
+	const HS_CINNABAR_GYM_BLAINE_REMATCH     ; rematch Blaine
 	const HS_SILPH_FACTORY_2F_SCIENTIST_1    ; scientist blocking the way
 	const HS_SILPH_FACTORY_2F_LORELEI_1      ; postgame Lorelei
 	const HS_SILPH_FACTORY_2F_ROCKET_1       ; Archer

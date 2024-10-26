@@ -182,12 +182,12 @@ HallOfFameCongratulationsScript:
 	ld a, HS_SAFFRON_GYM_SABRINA_REMATCH     ; show rematch Sabrina
 	ld [wMissableObjectIndex], a
 	predef ShowObjectCont
-	;ld a, HS_CINNABAR_GYM_BLAINE             ; hide original Blaine
-	;ld [wMissableObjectIndex], a
-	;predef HideObjectCont
-	;ld a, HS_CINNABAR_GYM_BLAINE_REMATCH     ; show rematch Blaine
-	;ld [wMissableObjectIndex], a
-	;predef ShowObjectCont
+	ld a, HS_CINNABAR_GYM_BLAINE             ; hide original Blaine
+	ld [wMissableObjectIndex], a
+	predef HideObjectCont
+	ld a, HS_CINNABAR_GYM_BLAINE_REMATCH     ; show rematch Blaine
+	ld [wMissableObjectIndex], a
+	predef ShowObjectCont
 	; marcelnote - switch E4 to their rematch counterparts
 	ld a, HS_LORELEIS_ROOM_LORELEI         ; hide original Lorelei
 	ld [wMissableObjectIndex], a

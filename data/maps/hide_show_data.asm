@@ -171,7 +171,7 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw PokemonMansion1FHS
-	dw NoHS ; CinnabarGymHS ; marcelnote - Blaine rematch
+	dw CinnabarGymHS ; marcelnote - Blaine rematch
 	dw NoHS
 	dw NoHS
 	dw NoHS
@@ -637,9 +637,9 @@ SaffronGymHS:
 	db SAFFRON_GYM, SAFFRONGYM_SABRINA_REMATCH, HIDE  ; marcelnote - rematch Sabrina
 	db SAFFRON_GYM, SAFFRONGYM_WILL, HIDE             ; marcelnote - postgame Bruno event
 	db SAFFRON_GYM, SAFFRONGYM_BRUNO, HIDE            ; marcelnote - postgame Bruno event
-;CinnabarGymHS:
-;	db CINNABAR_GYM, CINNABARGYM_BLAINE, SHOW          ; marcelnote - default Blaine
-;	db CINNABAR_GYM, CINNABARGYM_BLAINE_REMATCH, HIDE  ; marcelnote - rematch Blaine
+CinnabarGymHS:
+	db CINNABAR_GYM, CINNABARGYM_BLAINE, SHOW          ; marcelnote - default Blaine
+	db CINNABAR_GYM, CINNABARGYM_BLAINE_REMATCH, HIDE  ; marcelnote - rematch Blaine
 SilphFactory2FHS:
 	db SILPH_FACTORY_2F, SILPHFACTORY2F_SCIENTIST1, SHOW  ; marcelnote - scientist blocking the way
 	db SILPH_FACTORY_2F, SILPHFACTORY2F_LORELEI1, HIDE    ; marcelnote - Lorelei at entrance

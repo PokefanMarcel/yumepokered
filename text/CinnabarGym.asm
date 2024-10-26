@@ -210,3 +210,39 @@ _CinnabarGymGymGuideBeatBlaineText::
 	text "<PLAYER>! You beat"
 	line "that fire brand!"
 	done
+
+_CinnabarGymBlaineRematchPreBattleText:: ; marcelnote - Blaine rematch
+	text "Welcome back,"
+	line "<PLAYER>."
+
+	para "How about a"
+	line "friendly rematch?"
+
+	para "I won't hold back"
+	line "this time."
+	done
+
+_CinnabarGymBlaineRematchRefusedBattleText:: ; marcelnote - Blaine rematch
+	text "Very well. Come"
+	line "back anytime."
+	done
+
+_CinnabarGymBlaineRematchAcceptBattleText:: ; marcelnote - Blaine rematch
+	text "Careful, my"
+    line "#MON have been"
+	cont "burning for"
+	cont "this rematch!"
+	done
+
+_CinnabarGymBlaineRematchDefeatedText:: ; marcelnote - Blaine rematch
+	text "Hah!"
+	line "I'm all fired up!" ; text from Let's Go Pikachu
+	prompt
+
+_CinnabarGymAfterRematchText:: ; marcelnote - Blaine rematch
+	text "Time for a hot"
+	line "springs bath!"
+
+	para "Let's do this"
+	line "again soon!"
+	done
