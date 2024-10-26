@@ -59,3 +59,8 @@ _PokemonTower6FBeGoneText::
 	text "Be gone..."
 	line "Intruders..."
 	done
+
+_PokemonTower6FAgathaText:: ; marcelnote - postgame Agatha event
+	text "My #MON"
+	line "are here."
+	done

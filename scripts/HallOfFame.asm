@@ -139,6 +139,9 @@ HallOfFameCongratulationsScript:
 	ld a, HS_POKEMON_TOWER_1F_AGATHA    ; postgame Agatha
 	ld [wMissableObjectIndex], a
 	predef ShowObject
+	ld a, HS_POKEMON_TOWER_1F_GENTLEMAN    ; postgame Agatha event, director of Pokemon radio
+	ld [wMissableObjectIndex], a
+	predef ShowObject
 	ld a, HS_CINNABAR_VOLCANO_1F_LANCE  ; postgame Lance
 	ld [wMissableObjectIndex], a
 	predef ShowObject

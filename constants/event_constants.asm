@@ -94,9 +94,14 @@
 	const EVENT_BEAT_POKEMONTOWER_7_TRAINER_2
 	const_skip 3
 	const EVENT_RESCUED_MR_FUJI_2
-	const_skip 16
+	const_skip 8 ; marcelnote - adjusted down
 	const EVENT_GOT_POKE_FLUTE
 	const EVENT_POSTGAME_AGATHA ; marcelnote - postgame Agatha
+	const EVENT_BEAT_GHOST_2F   ; marcelnote - postgame Agatha
+	const EVENT_BEAT_GHOST_3F   ; marcelnote - postgame Agatha
+	const EVENT_BEAT_GHOST_4F   ; marcelnote - postgame Agatha
+	const EVENT_BEAT_GHOST_5F   ; marcelnote - postgame Agatha
+	const EVENT_BEAT_GHOST_6F   ; marcelnote - postgame Agatha
 
 ; Vermilion City events
 	const_next $150
