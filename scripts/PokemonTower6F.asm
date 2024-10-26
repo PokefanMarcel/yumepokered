@@ -101,6 +101,7 @@ PokemonTower6F_TextPointers:
 	dw_const PokemonTower6FChanneler1Text,      TEXT_POKEMONTOWER6F_CHANNELER1
 	dw_const PokemonTower6FChanneler2Text,      TEXT_POKEMONTOWER6F_CHANNELER2
 	dw_const PokemonTower6FChanneler3Text,      TEXT_POKEMONTOWER6F_CHANNELER3
+	dw_const PokemonTower6FAgathaText,          TEXT_POKEMONTOWER6F_AGATHA ; marcelnote - postgame Agatha event
 	dw_const PickUpItemText,                    TEXT_POKEMONTOWER6F_RARE_CANDY
 	dw_const PickUpItemText,                    TEXT_POKEMONTOWER6F_X_ACCURACY
 	dw_const PokemonTower6FBeGoneText,          TEXT_POKEMONTOWER6F_BEGONE
@@ -193,4 +194,40 @@ PokemonTower6FChanneler3AfterBattleText:
 
 PokemonTower6FBeGoneText:
 	text_far _PokemonTower6FBeGoneText
+	text_end
+
+PokemonTower6FAgathaText: ; marcelnote - postgame Agatha event
+	text_asm
+	ld hl, .text
+	call PrintText
+	call Delay3
+	call GBFadeOutToBlack
+	ld a, HS_POKEMON_TOWER_6F_AGATHA
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	call UpdateSprites
+	call Delay3
+	SetEvent EVENT_POSTGAME_AGATHA
+	CheckBothEventsSet EVENT_POSTGAME_LORELEI, EVENT_POSTGAME_BRUNO ; sets Z flag when events are set
+	jr nz, .end
+	CheckBothEventsSet EVENT_POSTGAME_LANCE, EVENT_POSTGAME_RIVAL
+	jr nz, .end
+	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL1 ; marcelnote - remove girl from E4 entrance
+	ld [wMissableObjectIndex], a
+	predef ShowObjectCont
+	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL2 ; marcelnote - remove girl from E4 entrance
+	ld [wMissableObjectIndex], a
+	predef HideObjectCont
+	ld a, HS_INDIGO_PLATEAU_LOBBY_RIVAL ; marcelnote - show Rival
+	ld [wMissableObjectIndex], a
+	predef ShowObjectCont
+.end
+	call GBFadeInFromBlack
+	ld a, SCRIPT_POKEMONTOWER6F_DEFAULT
+	ld [wPokemonTower6FCurScript], a
+	ld [wCurMapScript], a
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+.text
+	text_far _PokemonTower6FAgathaText
 	text_end

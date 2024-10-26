@@ -66,12 +66,14 @@ DEF SHOW EQU $15
 	const HS_CERULEAN_CAVE_1F_ITEM_2       ; 36 X
 	const HS_CERULEAN_CAVE_1F_ITEM_3       ; 37 X
 	const HS_POKEMON_TOWER_1F_AGATHA       ; 39 ; marcelnote - postgame Agatha
+	const HS_POKEMON_TOWER_1F_GENTLEMAN    ; 39bis ; marcelnote - postgame Agatha
 	const HS_POKEMON_TOWER_2F_RIVAL        ; 3A
 	const HS_POKEMON_TOWER_3F_ITEM         ; 3B X
 	const HS_POKEMON_TOWER_4F_ITEM_1       ; 3C X
 	const HS_POKEMON_TOWER_4F_ITEM_2       ; 3D X
 	const HS_POKEMON_TOWER_4F_ITEM_3       ; 3E X
 	const HS_POKEMON_TOWER_5F_ITEM         ; 3F X
+	const HS_POKEMON_TOWER_6F_AGATHA       ; 3Fbis X ; marcelnote - postgame Agatha
 	const HS_POKEMON_TOWER_6F_ITEM_1       ; 40 X
 	const HS_POKEMON_TOWER_6F_ITEM_2       ; 41 X
 	const HS_POKEMON_TOWER_7F_ROCKET_1     ; 42 X

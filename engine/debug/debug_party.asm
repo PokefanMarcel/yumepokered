@@ -176,6 +176,7 @@ DebugItemsList:
 	db CARD_KEY, 1
 	db S_S_TICKET, 1
 	db LIFT_KEY, 1
+	db SILPH_SCOPE, 1 ; marcelnote - added
 	db -1 ; end
 
 DebugUnusedList:

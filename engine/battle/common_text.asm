@@ -35,6 +35,8 @@ PrintBeginningBattleText:
 	ld [wCurPartySpecies], a
 	cp RESTLESS_SOUL
 	jr z, .isMarowak
+	;cp GHOST_NINETALES ; marcelnote - postgame Agatha event
+	;jr z, .isMarowak   ; marcelnote - postgame Agatha event
 	ld a, b
 	and a
 	jr z, .noSilphScope
