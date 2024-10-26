@@ -281,6 +281,9 @@ hVBlankOccurred:: db
 ; 0 = no animations (breaks Surf)
 ; 1 = water tile $14 is animated
 ; 2 = water tile $14 and flower tile $03 are animated
+; marcelnote - those below are new
+; 3 = water tile $14 and water bollard tile $5e are animated
+; 4 = water tile $14 and flower tile $03 and water bollard tile $5e are animated
 hTileAnimations:: db
 
 hMovingBGTilesCounter1:: db

@@ -21,3 +21,6 @@ DEF MAP_BORDER EQU 3
 	const TILEANIM_NONE          ; 0
 	const TILEANIM_WATER         ; 1
 	const TILEANIM_WATER_FLOWER  ; 2
+	; marcelnote - below are new
+	const TILEANIM_WATER_WBOLLARD         ; 3
+	const TILEANIM_WATER_FLOWER_WBOLLARD  ; 4
