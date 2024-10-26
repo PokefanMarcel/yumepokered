@@ -9,7 +9,7 @@ ENDM
 Tilesets:
 	table_width 12, Tilesets
 	; name, 3 counter tiles, grass tile, animations
-	tileset Overworld,    -1, -1, -1, $52, TILEANIM_WATER_FLOWER
+	tileset Overworld,    -1, -1, -1, $52, TILEANIM_WATER_FLOWER ; marcelnote - will change to TILEANIM_WATER_FLOWER_WBOLLARD
 	tileset BigHouse,     -1, -1, -1,  -1, TILEANIM_NONE  ; marcelnote - renamed REDS_HOUSE_1 tileset
 	tileset Mart,        $18,$19,$1E,  -1, TILEANIM_NONE
 	tileset Forest,       -1, -1, -1, $20, TILEANIM_WATER
@@ -20,7 +20,7 @@ Tilesets:
 	tileset Underground,  -1, -1, -1,  -1, TILEANIM_NONE
 	tileset Gate,        $17,$32, -1,  -1, TILEANIM_NONE
 	tileset Ship,         -1, -1, -1,  -1, TILEANIM_WATER
-	tileset ShipPort,     -1, -1, -1,  -1, TILEANIM_WATER
+	tileset ShipPort,     -1, -1, -1,  -1, TILEANIM_WATER ; marcelnote - will change to TILEANIM_WATER_WBOLLARD
 	tileset Cemetery,    $12, -1, -1,  -1, TILEANIM_NONE
 	tileset Interior,     -1, -1, -1,  -1, TILEANIM_NONE
 	tileset Cavern,       -1, -1, -1,  -1, TILEANIM_WATER
