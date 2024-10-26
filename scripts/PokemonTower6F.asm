@@ -265,6 +265,8 @@ PokemonTower6FBeGoneText:
 
 PokemonTower6FAgathaText: ; marcelnote - postgame Agatha event
 	text_asm
+	ld a, $1
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	ld hl, .text
 	call PrintText
 	call Delay3
@@ -297,6 +299,7 @@ PokemonTower6FAgathaText: ; marcelnote - postgame Agatha event
 
 .text
 	text_far _PokemonTower6FAgathaText
+	text_waitbutton
 	text_end
 
 PokemonTower6FGhostBattleText: ; marcelnote - postgame Agatha event
