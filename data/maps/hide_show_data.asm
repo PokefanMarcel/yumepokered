@@ -248,8 +248,8 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw NoHS
-	dw NoHS
-	dw NoHS           ; marcelnote - was UnusedMapF4HS
+	dw MtSilver3FHS   ; $F3 ; marcelnote - added for Yellow battle
+	dw NoHS           ; $F4 ; marcelnote - was UnusedMapF4HS
 	dw LoreleisRoomHS ; $F5 ; marcelnote - added for Lorelei rematch
 	dw BrunosRoomHS   ; $F6 ; marcelnote - added for Bruno rematch
 	dw AgathasRoomHS  ; $F7 ; marcelnote - added for Agatha rematch
@@ -667,5 +667,7 @@ ChampionsRoomHS:
 HallOfFameHS:
 	db HALL_OF_FAME, HALLOFFAME_OAK, SHOW
 	db HALL_OF_FAME, HALLOFFAME_RIVAL, HIDE
+MtSilver3FHS:
+	db MT_SILVER_3F, MTSILVER3F_YELLOW, SHOW ; marcelnote - Yellow battle
 	db $FF, $01, SHOW ; end
 	assert_table_length NUM_HS_OBJECTS_CONT + 1

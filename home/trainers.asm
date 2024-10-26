@@ -404,6 +404,8 @@ PlayTrainerMusic::
 	ret z
 	cp OPP_RIVAL3
 	ret z
+	cp OPP_YELLOW ; marcelnote - no EngagedTrainer music for Yellow
+	ret z
 	ld a, [wGymLeaderNo]
 	and a
 	ret nz
