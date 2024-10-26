@@ -331,6 +331,8 @@ CeladonGymErikaRematchText: ; marcelnote - Erika rematch
 	ld [wSpriteIndex], a
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
+	ld a, $4
+	ld [wGymLeaderNo], a
 	xor a
 	ldh [hJoyHeld], a
 	ld a, SCRIPT_CELADONGYM_ERIKA_REMATCH_POST_BATTLE

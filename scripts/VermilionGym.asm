@@ -290,6 +290,8 @@ VermilionGymLTSurgeRematchText: ; marcelnote - Lt.Surge rematch
 	ld [wSpriteIndex], a
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
+	ld a, $3
+	ld [wGymLeaderNo], a
 	xor a
 	ldh [hJoyHeld], a
 	ld a, SCRIPT_VERMILIONGYM_LT_SURGE_REMATCH_POST_BATTLE

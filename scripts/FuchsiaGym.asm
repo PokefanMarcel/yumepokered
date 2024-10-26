@@ -332,6 +332,8 @@ FuchsiaGymKogaRematchText: ; marcelnote - Koga rematch
 	ld [wSpriteIndex], a
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
+	ld a, $5
+	ld [wGymLeaderNo], a
 	xor a
 	ldh [hJoyHeld], a
 	ld a, SCRIPT_FUCHSIAGYM_KOGA_REMATCH_POST_BATTLE
