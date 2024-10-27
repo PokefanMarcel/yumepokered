@@ -50,6 +50,11 @@ MainMenu:
 	ld de, NewGameText
 	call PlaceString
 .next2
+;;;;;;;;;;;;; joenote - print the game version
+	coord hl, $00, $11
+	ld de, VersionText
+	call PlaceString
+;;;;;;;;;;;;;
 	ld hl, wStatusFlags5
 	res BIT_NO_TEXT_DELAY, [hl]
 	call UpdateSprites
@@ -355,16 +360,15 @@ CableClubOptionsText:
 	next "CANCEL@"
 
 VersionText:
-db " "
+	db "  <PKMN>"
 IF DEF(_RED)
-	db "PFMarcel Red alpha"
+	db "YumeRed "
+ELIF DEF(_BLUE)
+	db "YumeBlue "
+ELIF DEF(_GREEN)
+	db "YumeGreen "
 ENDC
-IF DEF(_BLUE)
-	db "PFMarcel Blue alpha"
-ENDC
-IF DEF(_GREEN)
-	db "PFMarcel Green alpha"
-ENDC
+	db "v0.9@"
 ;db " v"
 ;INCLUDE "version_number.asm"
 ;db "@"
@@ -457,28 +461,32 @@ SaveScreenInfoText:
 
 DisplayOptionMenu:
 	hlcoord 0, 0
-	ld b, 3
+	;ld b, 3
+	ld b, 13
 	ld c, 18
-	call TextBoxBorder
-	hlcoord 0, 5
-	ld b, 3
-	ld c, 18
-	call TextBoxBorder
-	hlcoord 0, 10
-	ld b, 3
-	ld c, 18
-	call TextBoxBorder
+	call TextBoxBorder ; marcelnote - draw only one big box instead of 3 small ones
+	;hlcoord 0, 5
+	;ld b, 3
+	;ld c, 18
+	;call TextBoxBorder
+	;hlcoord 0, 10
+	;ld b, 3
+	;ld c, 18
+	;call TextBoxBorder
 	hlcoord 1, 1
 	ld de, TextSpeedOptionText
 	call PlaceString
-	hlcoord 1, 6
+	hlcoord 1, 6 ; marcelnote - could be 1, 5
 	ld de, BattleAnimationOptionText
 	call PlaceString
-	hlcoord 1, 11
+	hlcoord 1, 11 ; marcelnote - could be 1, 9
 	ld de, BattleStyleOptionText
 	call PlaceString
 	hlcoord 2, 16
 	ld de, OptionMenuCancelText
+	call PlaceString
+	hlcoord 0, 17  ; marcelnote - added to hide version number from menu in intro screen
+	ld de, EmptyMenuLineText
 	call PlaceString
 	xor a
 	ld [wCurrentMenuItem], a
@@ -609,19 +617,22 @@ DisplayOptionMenu:
 	jp .eraseOldMenuCursor
 
 TextSpeedOptionText:
-	db   "TEXT SPEED"
+	db   "TEXT SPEED:"
 	next " FAST  MEDIUM SLOW@"
 
 BattleAnimationOptionText:
-	db   "BATTLE ANIMATION"
+	db   "BATTLE ANIMATION:"
 	next " ON       OFF@"
 
 BattleStyleOptionText:
-	db   "BATTLE STYLE"
+	db   "BATTLE STYLE:"
 	next " SHIFT    SET@"
 
 OptionMenuCancelText:
 	db "DONE@"  ; marcelnote - changed from CANCEL@
+
+EmptyMenuLineText:  ; marcelnote - added to hide version number from menu in intro screen
+	db "                    @"
 
 ; sets the options variable according to the current placement of the menu cursors in the options menu
 SetOptionsFromCursorPositions:
