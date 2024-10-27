@@ -14,7 +14,7 @@ _ViridianSchoolHouseCooltrainerFText::
 
 _ViridianSchoolHouseYoungsterText:: ; marcelnote - new NPC
     text "If I study hard,"
-    line "I can attend the"
+    line "I could enter the"
     cont "#MON ACADEMY"
     cont "in SAFFRON CITY!"
     done
