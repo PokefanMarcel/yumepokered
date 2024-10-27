@@ -332,7 +332,7 @@ _PokemonAcademy2FSuperNerdText::
 	done
 
 _PokemonAcademy2FSuperNerd2Text::
-	text "Two status"
+	text "Two STATUS"
 	line "conditions also"
 	cont "affect #MON's"
 	cont "stats during"

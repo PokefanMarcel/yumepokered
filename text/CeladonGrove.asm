@@ -35,8 +35,9 @@ _CeladonGroveChanneler2TM51ExplanationText::
 
 	para "This GHOST move"
 	line "hits harder when"
-	cont "the foe has a"
-	cont "status condition."
+	cont "the foe is"
+	cont "affected by a"
+	cont "STATUS condition."
 	done
 
 _CeladonGroveChanneler2TM51NoRoomText::
