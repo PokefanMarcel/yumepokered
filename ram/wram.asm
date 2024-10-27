@@ -503,7 +503,14 @@ wLowHealthAlarmDisabled:: db
 
 wPlayerMonMinimized:: db
 
-	ds 13
+; joenote - exp bar wram values
+wEXPBarPixelLength::  ds 1
+wEXPBarBaseEXP::      ds 3
+wEXPBarCurEXP::       ds 3
+wEXPBarNeededEXP::    ds 3
+wEXPBarKeepFullFlag:: ds 1
+
+	ds 2 ; marcelnote - was 13, EXPBar takes 11
 
 UNION
 ; the amount of damage accumulated by the enemy while biding
@@ -2262,13 +2269,6 @@ ENDR
 wBoxMonNicksEnd::
 
 wBoxDataEnd::
-
-; joenote - exp bar wram values
-wEXPBarPixelLength::  ds 1
-wEXPBarBaseEXP::      ds 3
-wEXPBarCurEXP::       ds 3
-wEXPBarNeededEXP::    ds 3
-wEXPBarKeepFullFlag:: ds 1
 
 
 SECTION "Stack", WRAM0
