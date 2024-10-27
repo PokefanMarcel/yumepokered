@@ -2505,9 +2505,11 @@ MoveSelectionMenu:
 	   ; so it is necessary to put the di ei block to not cause tearing
 	call TextBoxBorder
 	hlcoord 4, 12
-	ld [hl], "─"
+	ld [hl], "┘"  ; marcelnote - inverted the two for new box size
+	;ld [hl], "─"
 	hlcoord 10, 12
-	ld [hl], "┘"
+	ld [hl], "─"
+	;ld [hl], "┘"
 	ei
 	hlcoord 6, 13
 	call .writemoves
@@ -2844,12 +2846,13 @@ SwapMovesInMenu:
 	ld [wMenuItemToSwap], a ; select the current menu item for swapping
 	jp MoveSelectionMenu
 
-PrintMenuItem:
+PrintMenuItem: ; marcelnote - this menu was revamped to also show power and accuracy
 	xor a
 	ldh [hAutoBGTransferEnabled], a
-	hlcoord 0, 8
-	ld b, 3
-	ld c, 9
+	; marcelnote - changed the location and size of the box (taller, narrower)
+	hlcoord 0, 7 ; marcelnote - was 0, 8
+	ld b, 4 ; marcelnote - was 3
+	ld c, 8 ; marcelnote - was 9
 	call TextBoxBorder
 	ld a, [wPlayerDisabledMove]
 	and a
@@ -2863,7 +2866,7 @@ PrintMenuItem:
 	hlcoord 1, 10
 	ld de, DisabledText
 	call PlaceString
-	jr .moveDisabled
+	jp .moveDisabled ; marcelnote - was jr
 .notDisabled
 	ld hl, wCurrentMenuItem
 	dec [hl]
@@ -2891,24 +2894,71 @@ PrintMenuItem:
 	ld a, [hl]
 	and $3f
 	ld [wBattleMenuCurrentPP], a
-; print TYPE/<type> and <curPP>/<maxPP>
+
+; marcelnote - from ExtremeYellow to update move power and accuracy ; maybe some parts redundant with above?
+	ld de, wPlayerMoveNum
+	ld a, [wPlayerSelectedMove]
+	dec a
+	ld hl, Moves
+	ld bc, MOVE_LENGTH
+	call AddNTimes ; adds bc to hl a times
+	ld a, BANK(Moves)
+	call FarCopyData ; copies bc bytes from a:hl to de
+
+; print TYPE/<type> and <curPP>/<maxPP> ; marcelnote - changed the contents, now also Power and Accuracy
 	hlcoord 1, 9
-	ld de, TypeText
+	ld de, PowerText
 	call PlaceString
-	hlcoord 7, 11
+	hlcoord 1, 10
+	ld de, AccuracyText
+	call PlaceString
+	hlcoord 1, 11
+	ld de, PPText
+	call PlaceString
+	hlcoord 6, 11
 	ld [hl], "/"
-	hlcoord 5, 9
-	ld [hl], "/"
-	hlcoord 5, 11
+	; current PP
+	hlcoord 4, 11
 	ld de, wBattleMenuCurrentPP
 	lb bc, 1, 2
 	call PrintNumber
-	hlcoord 8, 11
+	; max PP
+	hlcoord 7, 11
 	ld de, wMaxPP
 	lb bc, 1, 2
 	call PrintNumber
+	; power
+	ld a, [wPlayerMovePower]
+	cp 2 ; if power 0 or 1, print text "-@"
+	jr c, .noPower
+	hlcoord 6, 9
+	ld de, wPlayerMovePower
+	lb bc, 1, 3
+	call PrintNumber
+	jr .accuracy
+.noPower
+	hlcoord 8, 9
+	ld de, NoPowerText
+	call PlaceString
+.accuracy
+	; accuracy
+	ld a, [wPlayerMoveAccuracy] ; this is a 0-255 value, need to get 0-100
+	ld hl, 0
+	ld b, 0
+	ld c, a
+	ld a, 100
+	call AddNTimes ; add bc to hl a times
+	ld bc, 255
+	add hl, bc     ; add 255 for rounding correctly
+	ld a, h        ; effectively divides hl by 256
+	ld [wStringBuffer], a
+	hlcoord 6, 10
+	ld de, wStringBuffer
+	lb bc, 1, 3
+	call PrintNumber
+	; move type
 	call GetCurrentMove
-	hlcoord 2, 10
+	hlcoord 1, 8
 	predef PrintMoveType
 .moveDisabled
 	ld a, $1
@@ -2920,6 +2970,18 @@ DisabledText:
 
 TypeText:
 	db "TYPE@"
+
+PowerText:
+	db "PWR@"
+
+AccuracyText:
+	db "ACC@"
+
+PPText:
+	db "PP@"
+
+NoPowerText:
+	db "-@"
 
 SelectEnemyMove:
 	ld a, [wLinkState]
