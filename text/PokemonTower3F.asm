@@ -45,14 +45,11 @@ _PokemonTower3FChanneler3AfterBattleText::
 	done
 
 _PokemonTower3FGhostBattleText:: ; marcelnote - postgame Agatha event
-	text "Be gone..."
-	line "Intruders..."
+	text "This presence..."
+	line "Angers us..."
 	done
 
-_PokemonTower3FGhostDepartedText:: ; marcelnote - postgame Agatha event
-	text "The mother's soul"
-	line "was calmed."
-
-	para "It departed to"
-	line "the afterlife!"
+_PokemonTower3FGhostVanishedText:: ; marcelnote - postgame Agatha event
+	text "The ghost"
+	line "vanished..."
 	done
