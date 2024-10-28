@@ -37,7 +37,7 @@ PokemonTower4FDefaultScript: ; marcelnote - postgame Agatha event
 	call DisplayTextID
 	ld a, GHOST_JOLTEON
 	ld [wCurOpponent], a
-	ld a, 60
+	ld a, 62
 	ld [wCurEnemyLevel], a
 	ld a, SCRIPT_POKEMONTOWER4F_GHOST_BATTLE
 	ld [wPokemonTower4FCurScript], a
@@ -66,7 +66,7 @@ PokemonTower4FGhostBattleScript: ; marcelnote - postgame Agatha event
 	and a
 	jr nz, .did_not_defeat
 	SetEvent EVENT_BEAT_GHOST_4F
-	ld a, TEXT_POKEMONTOWER4F_GHOST_DEPARTED
+	ld a, TEXT_POKEMONTOWER4F_GHOST_VANISHED
 	ldh [hTextID], a
 	call DisplayTextID
 	xor a
@@ -109,7 +109,7 @@ PokemonTower4F_TextPointers:
 	dw_const PickUpItemText,                  TEXT_POKEMONTOWER4F_AWAKENING
 	dw_const PickUpItemText,                  TEXT_POKEMONTOWER4F_HP_UP
 	dw_const PokemonTower4FGhostBattleText,   TEXT_POKEMONTOWER4F_GHOST_BATTLE   ; marcelnote - postgame Agatha event
-	dw_const PokemonTower4FGhostDepartedText, TEXT_POKEMONTOWER4F_GHOST_DEPARTED ; marcelnote - postgame Agatha event
+	dw_const PokemonTower4FGhostVanishedText, TEXT_POKEMONTOWER4F_GHOST_VANISHED ; marcelnote - postgame Agatha event
 
 PokemonTower4TrainerHeaders:
 	def_trainers
@@ -179,6 +179,6 @@ PokemonTower4FGhostBattleText: ; marcelnote - postgame Agatha event
 	text_far _PokemonTower4FGhostBattleText
 	text_end
 
-PokemonTower4FGhostDepartedText: ; marcelnote - postgame Agatha event
-	text_far _PokemonTower4FGhostDepartedText
+PokemonTower4FGhostVanishedText: ; marcelnote - postgame Agatha event
+	text_far _PokemonTower4FGhostVanishedText
 	text_end

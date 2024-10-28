@@ -57,14 +57,11 @@ _PokemonTower2FChannelerText::
 	done
 
 _PokemonTower2FGhostBattleText:: ; marcelnote - postgame Agatha event
-	text "Be gone..."
-	line "Intruders..."
+	text "Intruders..."
+	line "In our home..."
 	done
 
-_PokemonTower2FGhostDepartedText:: ; marcelnote - postgame Agatha event
-	text "The mother's soul"
-	line "was calmed."
-
-	para "It departed to"
-	line "the afterlife!"
+_PokemonTower2FGhostVanishedText:: ; marcelnote - postgame Agatha event
+	text "The ghost"
+	line "vanished..."
 	done

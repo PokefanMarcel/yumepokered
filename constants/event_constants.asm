@@ -96,12 +96,13 @@
 	const EVENT_RESCUED_MR_FUJI_2
 	const_skip 8 ; marcelnote - adjusted down
 	const EVENT_GOT_POKE_FLUTE
-	const EVENT_POSTGAME_AGATHA ; marcelnote - postgame Agatha
-	const EVENT_BEAT_GHOST_2F   ; marcelnote - postgame Agatha
-	const EVENT_BEAT_GHOST_3F   ; marcelnote - postgame Agatha
-	const EVENT_BEAT_GHOST_4F   ; marcelnote - postgame Agatha
-	const EVENT_BEAT_GHOST_5F   ; marcelnote - postgame Agatha
-	const EVENT_BEAT_GHOST_6F   ; marcelnote - postgame Agatha
+	const EVENT_POSTGAME_AGATHA ; marcelnote - postgame Agatha event
+	const EVENT_SPOKE_DIRECTOR  ; marcelnote - postgame Agatha event
+	const EVENT_BEAT_GHOST_2F   ; marcelnote - postgame Agatha event
+	const EVENT_BEAT_GHOST_3F   ; marcelnote - postgame Agatha event
+	const EVENT_BEAT_GHOST_4F   ; marcelnote - postgame Agatha event
+	const EVENT_BEAT_GHOST_5F   ; marcelnote - postgame Agatha event
+	const EVENT_BEAT_GHOST_6F   ; marcelnote - postgame Agatha event
 
 ; Vermilion City events
 	const_next $150

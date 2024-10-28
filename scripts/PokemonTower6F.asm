@@ -98,6 +98,8 @@ PokemonTower6FPlayerMovingScript:
 	ret
 
 PokemonTower6FCheckGhostEncounterScript: ; marcelnote - postgame Agatha event
+	CheckHideShow HS_POKEMON_TOWER_6F_AGATHA
+	jp nz, CheckFightingMapTrainers
 	CheckEvent EVENT_BEAT_GHOST_6F
 	jp nz, CheckFightingMapTrainers
 	ld hl, PokemonTower6FGhostBattleCoords
@@ -108,9 +110,9 @@ PokemonTower6FCheckGhostEncounterScript: ; marcelnote - postgame Agatha event
 	ld a, TEXT_POKEMONTOWER6F_GHOST_BATTLE
 	ldh [hTextID], a
 	call DisplayTextID
-	ld a, GHOST_GENGAR
+	ld a, GHOST_NINETALES
 	ld [wCurOpponent], a
-	ld a, 60
+	ld a, 64
 	ld [wCurEnemyLevel], a
 	ld a, SCRIPT_POKEMONTOWER6F_GHOST_BATTLE
 	ld [wPokemonTower6FCurScript], a
@@ -137,7 +139,7 @@ PokemonTower6FGhostBattleScript: ; marcelnote - postgame Agatha event
 	and a
 	jr nz, .did_not_defeat
 	SetEvent EVENT_BEAT_GHOST_6F
-	ld a, TEXT_POKEMONTOWER6F_GHOST_DEPARTED
+	ld a, TEXT_POKEMONTOWER6F_GHOST_VANISHED
 	ldh [hTextID], a
 	call DisplayTextID
 	xor a
@@ -169,10 +171,11 @@ PokemonTower6F_TextPointers:
 	dw_const PokemonTower6FAgathaText,          TEXT_POKEMONTOWER6F_AGATHA ; marcelnote - postgame Agatha event
 	dw_const PickUpItemText,                    TEXT_POKEMONTOWER6F_RARE_CANDY
 	dw_const PickUpItemText,                    TEXT_POKEMONTOWER6F_X_ACCURACY
+	dw_const PokemonTower6FTombText,            TEXT_POKEMONTOWER6F_TOMB ; marcelnote - postgame Agatha event
 	dw_const PokemonTower6FBeGoneText,          TEXT_POKEMONTOWER6F_BEGONE
 	dw_const PokemonTower6FMarowakDepartedText, TEXT_POKEMONTOWER6F_MAROWAK_DEPARTED
 	dw_const PokemonTower6FGhostBattleText,     TEXT_POKEMONTOWER6F_GHOST_BATTLE   ; marcelnote - postgame Agatha event
-	dw_const PokemonTower6FGhostDepartedText,   TEXT_POKEMONTOWER6F_GHOST_DEPARTED ; marcelnote - postgame Agatha event
+	dw_const PokemonTower6FGhostVanishedText,   TEXT_POKEMONTOWER6F_GHOST_VANISHED ; marcelnote - postgame Agatha event
 
 PokemonTower6TrainerHeaders:
 	def_trainers
@@ -306,6 +309,10 @@ PokemonTower6FGhostBattleText: ; marcelnote - postgame Agatha event
 	text_far _PokemonTower6FGhostBattleText
 	text_end
 
-PokemonTower6FGhostDepartedText: ; marcelnote - postgame Agatha event
-	text_far _PokemonTower6FGhostDepartedText
+PokemonTower6FGhostVanishedText: ; marcelnote - postgame Agatha event
+	text_far _PokemonTower6FGhostVanishedText
+	text_end
+
+PokemonTower6FTombText: ; marcelnote - postgame Agatha event
+	text_far _PokemonTower6FTombText
 	text_end

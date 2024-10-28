@@ -189,7 +189,7 @@ CinnabarVolcanoB1FCharizardBattleStartsScript:
 	ldh [hTextID], a      ; during the pre-battle animation
 	ld a, CHARIZARD
 	ld [wCurOpponent], a
-	ld a, 60
+	ld a, 65
 	ld [wCurEnemyLevel], a
 	ld a, SCRIPT_CINNABARVOLCANOB1F_CHARIZARD_BATTLE
 	ld [wCinnabarVolcano1FB1FCurScript], a

@@ -65,7 +65,7 @@ PokemonTower3FGhostBattleScript: ; marcelnote - postgame Agatha event
 	and a
 	jr nz, .did_not_defeat
 	SetEvent EVENT_BEAT_GHOST_3F
-	ld a, TEXT_POKEMONTOWER3F_GHOST_DEPARTED
+	ld a, TEXT_POKEMONTOWER3F_GHOST_VANISHED
 	ldh [hTextID], a
 	call DisplayTextID
 	xor a
@@ -106,7 +106,7 @@ PokemonTower3F_TextPointers:
 	dw_const PokemonTower3FChanneler3Text,    TEXT_POKEMONTOWER3F_CHANNELER3
 	dw_const PickUpItemText,                  TEXT_POKEMONTOWER3F_ESCAPE_ROPE
 	dw_const PokemonTower3FGhostBattleText,   TEXT_POKEMONTOWER3F_GHOST_BATTLE   ; marcelnote - postgame Agatha event
-	dw_const PokemonTower3FGhostDepartedText, TEXT_POKEMONTOWER3F_GHOST_DEPARTED ; marcelnote - postgame Agatha event
+	dw_const PokemonTower3FGhostVanishedText, TEXT_POKEMONTOWER3F_GHOST_VANISHED ; marcelnote - postgame Agatha event
 
 PokemonTower3TrainerHeaders:
 	def_trainers
@@ -176,6 +176,6 @@ PokemonTower3FGhostBattleText: ; marcelnote - postgame Agatha event
 	text_far _PokemonTower3FGhostBattleText
 	text_end
 
-PokemonTower3FGhostDepartedText: ; marcelnote - postgame Agatha event
-	text_far _PokemonTower3FGhostDepartedText
+PokemonTower3FGhostVanishedText: ; marcelnote - postgame Agatha event
+	text_far _PokemonTower3FGhostVanishedText
 	text_end

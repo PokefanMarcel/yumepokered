@@ -61,19 +61,62 @@ _PokemonTower6FBeGoneText::
 	done
 
 _PokemonTower6FAgathaText:: ; marcelnote - postgame Agatha event
-	text "My #MON"
-	line "are here."
+	text "So, you made it"
+	line "past the spirits."
+	cont "They seem calmer"
+	cont "now."
+
+	para "Don't judge an"
+	line "old lady too"
+	cont "harshly for"
+	cont "clinging to her"
+	cont "past, child."
+	; When you're as old as me, you too will cherish what was.
+
+	para "This place..."
+	line "It holds the"
+	cont "memories of my"
+	cont "old friends."
+
+	para "But if #MON"
+	line "can accept"
+	cont "change, then"
+	cont "maybe so must I."
+
+	para "MR.FUJI will see"
+	line "that the tombs"
+	cont "are moved with"
+	cont "care. He, at"
+	cont "least, still"
+	cont "honors what was."
+
+	para "You may stay."
+	line "I will go to"
+	cont "light incense"
+	cont "for my old"
+	cont "companions."
 	done
 
 _PokemonTower6FGhostBattleText:: ; marcelnote - postgame Agatha event
-	text "Be gone..."
-	line "Intruders..."
+	text "Change..."
+	line "Inevitable..."
 	done
 
-_PokemonTower6FGhostDepartedText:: ; marcelnote - postgame Agatha event
-	text "The mother's soul"
-	line "was calmed."
+_PokemonTower6FGhostVanishedText:: ; marcelnote - postgame Agatha event
+	text "The spirit seems"
+	line "to find peace..."
+	done
 
-	para "It departed to"
-	line "the afterlife!"
+_PokemonTower6FTombText:: ; marcelnote - postgame Agatha event
+	text "Something is"
+	line "written."
+
+	para "Here lies a"
+	line "loyal companion,"
+	cont "forever at peace."
+
+	para "A faded photo"
+	line "shows a young"
+	cont "girl beside her"
+	cont "NINETALES."
 	done

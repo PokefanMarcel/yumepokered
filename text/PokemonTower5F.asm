@@ -71,14 +71,11 @@ _PokemonTower5FPurifiedZoneText::
 	done
 
 _PokemonTower5FGhostBattleText:: ; marcelnote - postgame Agatha event
-	text "Be gone..."
-	line "Intruders..."
+	text "Heh heh..."
+	line "All must fade..."
 	done
 
-_PokemonTower5FGhostDepartedText:: ; marcelnote - postgame Agatha event
-	text "The mother's soul"
-	line "was calmed."
-
-	para "It departed to"
-	line "the afterlife!"
+_PokemonTower5FGhostVanishedText:: ; marcelnote - postgame Agatha event
+	text "The ghost"
+	line "vanished..."
 	done

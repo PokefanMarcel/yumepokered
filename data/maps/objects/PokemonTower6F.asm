@@ -14,6 +14,7 @@ PokemonTower6F_Object:
 	warp_event  9, 16, POKEMON_TOWER_7F, 1
 
 	def_bg_events
+	bg_event  4,  9, TEXT_POKEMONTOWER6F_TOMB ; marcelnote - postgame Agatha event
 
 	def_object_events
 	object_event 12, 10, SPRITE_CHANNELER, STAY, RIGHT, TEXT_POKEMONTOWER6F_CHANNELER1, OPP_CHANNELER, 19

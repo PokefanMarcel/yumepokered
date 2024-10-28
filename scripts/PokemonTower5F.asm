@@ -71,7 +71,7 @@ PokemonTower5FCheckGhostEncounterScript: ; marcelnote - postgame Agatha event
 	ld a, TEXT_POKEMONTOWER5F_GHOST_BATTLE
 	ldh [hTextID], a
 	call DisplayTextID
-	ld a, GHOST_NINETALES
+	ld a, GHOST_GENGAR
 	ld [wCurOpponent], a
 	ld a, 60
 	ld [wCurEnemyLevel], a
@@ -103,7 +103,7 @@ PokemonTower5FGhostBattleScript: ; marcelnote - postgame Agatha event
 	and a
 	jr nz, .did_not_defeat
 	SetEvent EVENT_BEAT_GHOST_5F
-	ld a, TEXT_POKEMONTOWER5F_GHOST_DEPARTED
+	ld a, TEXT_POKEMONTOWER5F_GHOST_VANISHED
 	ldh [hTextID], a
 	call DisplayTextID
 	xor a
@@ -147,7 +147,7 @@ PokemonTower5F_TextPointers:
 	dw_const PickUpItemText,                  TEXT_POKEMONTOWER5F_NUGGET
 	dw_const PokemonTower5FPurifiedZoneText,  TEXT_POKEMONTOWER5F_PURIFIEDZONE
 	dw_const PokemonTower5FGhostBattleText,   TEXT_POKEMONTOWER5F_GHOST_BATTLE   ; marcelnote - postgame Agatha event
-	dw_const PokemonTower5FGhostDepartedText, TEXT_POKEMONTOWER5F_GHOST_DEPARTED ; marcelnote - postgame Agatha event
+	dw_const PokemonTower5FGhostVanishedText, TEXT_POKEMONTOWER5F_GHOST_VANISHED ; marcelnote - postgame Agatha event
 
 PokemonTower5TrainerHeaders:
 	def_trainers 2
@@ -245,6 +245,6 @@ PokemonTower5FGhostBattleText: ; marcelnote - postgame Agatha event
 	text_far _PokemonTower5FGhostBattleText
 	text_end
 
-PokemonTower5FGhostDepartedText: ; marcelnote - postgame Agatha event
-	text_far _PokemonTower5FGhostDepartedText
+PokemonTower5FGhostVanishedText: ; marcelnote - postgame Agatha event
+	text_far _PokemonTower5FGhostVanishedText
 	text_end

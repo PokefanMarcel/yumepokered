@@ -144,7 +144,7 @@ PokemonTower2FCheckGhostEncounterScript: ; marcelnote - postgame Agatha event
 	call DisplayTextID
 	ld a, GHOST_RATICATE
 	ld [wCurOpponent], a
-	ld a, 60
+	ld a, 62
 	ld [wCurEnemyLevel], a
 	ld a, SCRIPT_POKEMONTOWER2F_GHOST_BATTLE
 	ld [wPokemonTower2FCurScript], a
@@ -171,7 +171,7 @@ PokemonTower2FGhostBattleScript: ; marcelnote - postgame Agatha event
 	and a
 	jr nz, .did_not_defeat
 	SetEvent EVENT_BEAT_GHOST_2F
-	ld a, TEXT_POKEMONTOWER2F_GHOST_DEPARTED
+	ld a, TEXT_POKEMONTOWER2F_GHOST_VANISHED
 	ldh [hTextID], a
 	call DisplayTextID
 	xor a
@@ -210,7 +210,7 @@ PokemonTower2F_TextPointers:
 	dw_const PokemonTower2FRivalText,         TEXT_POKEMONTOWER2F_RIVAL
 	dw_const PokemonTower2FChannelerText,     TEXT_POKEMONTOWER2F_CHANNELER
 	dw_const PokemonTower2FGhostBattleText,   TEXT_POKEMONTOWER2F_GHOST_BATTLE   ; marcelnote - postgame Agatha event
-	dw_const PokemonTower2FGhostDepartedText, TEXT_POKEMONTOWER2F_GHOST_DEPARTED ; marcelnote - postgame Agatha event
+	dw_const PokemonTower2FGhostVanishedText, TEXT_POKEMONTOWER2F_GHOST_VANISHED ; marcelnote - postgame Agatha event
 
 PokemonTower2FRivalText:
 	text_asm
@@ -277,6 +277,6 @@ PokemonTower2FGhostBattleText: ; marcelnote - postgame Agatha event
 	text_far _PokemonTower2FGhostBattleText
 	text_end
 
-PokemonTower2FGhostDepartedText: ; marcelnote - postgame Agatha event
-	text_far _PokemonTower2FGhostDepartedText
+PokemonTower2FGhostVanishedText: ; marcelnote - postgame Agatha event
+	text_far _PokemonTower2FGhostVanishedText
 	text_end
