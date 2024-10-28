@@ -978,7 +978,8 @@ AmnesiaAnim:
 	db -1 ; end
 
 KinesisAnim:
-	battle_anim KINESIS, SUBANIM_0_STAR_TWICE, 0, 8
+	;battle_anim KINESIS, SUBANIM_0_STAR_TWICE, 0, 8
+	battle_anim FOCUS_ENERGY, SE_SPIRAL_BALLS_INWARD ; marcelnote - changed for new effect
 	db -1 ; end
 
 SoftboiledAnim:
