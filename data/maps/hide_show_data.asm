@@ -611,6 +611,8 @@ MissableObjectsCont:
 ; format: map id, object id, HIDE/SHOW
 
 RedsYellowsHousesHS:
+	db REDS_YELLOWS_HOUSES, YELLOWSHOUSE1F_DAD1, SHOW    ; marcelnote - Dad unpacking
+	db REDS_YELLOWS_HOUSES, YELLOWSHOUSE1F_DAD2, HIDE    ; marcelnote - Dad sitting
 	db REDS_YELLOWS_HOUSES, YELLOWSHOUSE2F_ASLEEP, SHOW  ; marcelnote - Yellow asleep
 Route1HS:
 	db ROUTE_1, ROUTE1_OAK, HIDE  ; marcelnote - postgame Oak battle

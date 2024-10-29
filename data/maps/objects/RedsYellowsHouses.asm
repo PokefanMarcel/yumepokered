@@ -1,7 +1,8 @@
 ; marcelnote - merged RedsHouse floors, added Yellow's
 	object_const_def
 	const_export REDSHOUSE1F_MOM
-	const_export YELLOWSHOUSE1F_DAD ; marcelnote - Yellow's dad
+	const_export YELLOWSHOUSE1F_DAD1 ; marcelnote - Yellow's dad unpacking
+	const_export YELLOWSHOUSE1F_DAD2 ; marcelnote - Yellow's dad sitting
 	const_export YELLOWSHOUSE2F_ASLEEP ; marcelnote - Yellow asleep
 
 RedsYellowsHouses_Object:
@@ -35,7 +36,8 @@ RedsYellowsHouses_Object:
 
 	def_object_events
 	object_event  5,  4, SPRITE_MOM, STAY, LEFT, TEXT_REDSHOUSE1F_MOM
-	object_event 29,  3, SPRITE_DAD, WALK, UP_DOWN, TEXT_YELLOWSHOUSE1F_DAD ; marcelnote - Yellow's dad
+	object_event 29,  3, SPRITE_DAD, WALK, UP_DOWN, TEXT_YELLOWSHOUSE1F_DAD_UNPACKING ; marcelnote - Yellow's dad
+	object_event 33,  4, SPRITE_DAD, STAY, LEFT, TEXT_YELLOWSHOUSE1F_DAD_SITTING      ; marcelnote - Yellow's dad
 	object_event 42,  6, SPRITE_YELLOW_ASLEEP, STAY, NONE, TEXT_YELLOWSHOUSE2F_ASLEEP ; marcelnote - Yellow asleep
 
 	def_warps_to REDS_YELLOWS_HOUSES

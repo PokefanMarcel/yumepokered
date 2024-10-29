@@ -44,14 +44,39 @@ _RedsHouse2FSNESText:: ; marcelnote - moved from hidden_objects
 	cont "It's time to go!"
 	done
 
-_YellowsHouse1FDadText:: ; marcelnote - new for Yellow's house
+_YellowsHouse1FDadUnpackingText:: ; marcelnote - new for Yellow's house
 	text "Sorry about the"
 	line "mess, we're"
 	cont "still unpacking."
 
 	para "Please stop by"
 	line "again later,"
-	cont "there'll be tea!"
+	cont "I'll make tea!"
+	done
+
+_YellowsHouse1FDadJustMissedHerText:: ; marcelnote - new for Yellow's house
+	text "Oh, you just"
+	line "missed her!"
+
+	para "My daughter ran"
+	line "off to get her"
+	cont "first #MON"
+	cont "from PROF.OAK."
+
+	para "The excitment"
+	line "kept her up half"
+	cont "the night, and"
+	cont "she overslept!"
+	done
+
+_YellowsHouse1FDadJustRunIntoHerText:: ; marcelnote - new for Yellow's house
+	text "My daughter is"
+	line "always looking"
+	cont "for adventure!"
+
+	para "I'm sure you'll"
+	line "run into her"
+	cont "before long."
 	done
 
 _YellowsHouse1FTVText:: ; marcelnote - new for Yellow's house

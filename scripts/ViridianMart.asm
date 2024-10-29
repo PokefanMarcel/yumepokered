@@ -46,7 +46,12 @@ ViridianMartOaksParcelScript:
 	ld a, HS_REDS_YELLOWS_HOUSES_ASLEEP ; marcelnote - hide Yellow asleep
 	ld [wMissableObjectIndex], a
 	predef HideObjectCont
-	; should also switch Yellow's dad to a still sprite with new dialogue
+	ld a, HS_REDS_YELLOWS_HOUSES_DAD1 ; marcelnote - hide Yellow's dad unpacking
+	ld [wMissableObjectIndex], a
+	predef HideObjectCont
+	ld a, HS_REDS_YELLOWS_HOUSES_DAD2 ; marcelnote - show Yellow's dad sitting
+	ld [wMissableObjectIndex], a
+	predef ShowObjectCont
 	ld a, SCRIPT_VIRIDIANMART_NOOP
 	ld [wViridianMartCurScript], a
 	ret

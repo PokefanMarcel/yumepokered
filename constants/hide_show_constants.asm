@@ -261,11 +261,13 @@ DEF SHOW EQU $15
 	const HS_MT_SILVER_2F_FULL_RESTORE          ; marcelnote - Full Restore
 DEF NUM_HS_OBJECTS EQU const_value
 	; max objects = 256
-	; current total = 252 – 11 – 5 (end - start - commented out) = 236
+	; current total = 261 – 11 – 5 (end - start - commented out) = 245
 
 ; marcelnote - the list continues here to allow for more than 256 HideShow objects
 ;              but cannot put items which can be picked up
 	const_def
+	const HS_REDS_YELLOWS_HOUSES_DAD1        ; Dad unpacking
+	const HS_REDS_YELLOWS_HOUSES_DAD2        ; Dad sitting
 	const HS_REDS_YELLOWS_HOUSES_ASLEEP      ; Yellow asleep
 	const HS_ROUTE_1_OAK                     ; postgame Oak battle
 	const HS_PEWTER_GYM_BROCK                ; default Brock
@@ -322,4 +324,4 @@ DEF NUM_HS_OBJECTS EQU const_value
 	const HS_MT_SILVER_3F_YELLOW             ; for Yellow battle
 DEF NUM_HS_OBJECTS_CONT EQU const_value
 	; max objects = 256
-	; current total = 313 – 259 = 54
+	; current total = 324 – 268 = 56

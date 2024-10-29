@@ -217,5 +217,19 @@ PalletTownRivalsHouseSignText:
 	text_end
 
 PalletTownYellowsHouseSignText: ; marcelnote - added Yellow's house
+	text_asm
+	ld hl, .YellowsHouseText
+	CheckEvent EVENT_BEAT_MISTY
+	jr nz, .textLoaded
+	ld hl, .JustMovedInText
+.textLoaded
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+.YellowsHouseText:
 	text_far _PalletTownYellowsHouseSignText
+	text_end
+
+.JustMovedInText:
+	text_far _PalletTownYellowsHouseSignJustMovedInText
 	text_end
