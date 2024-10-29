@@ -118,7 +118,7 @@ Route22GateGuard2Text: ; marcelnote - new guard
 	text_asm
 	ld a, [wObtainedBadges]
 	bit BIT_VOLCANOBADGE, a ; for testing purposes
-	;CheckEvent EVENT_BEAT_ROUTE_1_OAK
+	;CheckEvent EVENT_BEAT_ROUTE_1_OAK ; this is the real condition
 	jr nz, .beat_oak
 	ld hl, Route22GateGuard2ScaryStrongText
 	call PrintText

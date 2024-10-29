@@ -2,11 +2,11 @@
 PrintBookshelfText::
 	ld a, [wSpritePlayerStateData1FacingDirection]
 	cp SPRITE_FACING_UP
-	jr nz, .noMatch
+	jr nz, .checkFacingDown ; was .noMatch
 ; facing up
 	ld a, [wCurMapTileset]
 	ld b, a
-	lda_coord 8, 7
+	lda_coord 8, 7 ; tile above the player, lower left
 	ld c, a
 	ld hl, BookshelfTileIDs
 .loop
@@ -35,5 +35,15 @@ PrintBookshelfText::
 	ld a, $ff
 	ldh [hInteractedWithBookshelf], a
 	farjp PrintCardKeyText
+
+.checkFacingDown ; marcelnote - new for facing down bookshelf tiles
+	cp SPRITE_FACING_DOWN
+	jr nz, .noMatch
+	ld a, [wCurMapTileset]
+	ld b, a
+	lda_coord 8, 11 ; tile below the player, lower left
+	ld c, a
+	ld hl, BookshelfTileFacingDownIDs
+	jr .loop
 
 INCLUDE "data/tilesets/bookshelf_tile_ids.asm"

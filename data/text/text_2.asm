@@ -824,9 +824,15 @@ _PokemonBooksText::
 	line "#MON books!"
 	done
 
-_DiglettSculptureText::
-	text "It's a sculpture"
-	line "of DIGLETT."
+_DiglettSculptureText:: ; marcelnote - modified
+	;text "It's a sculpture" ; original Red/Blue
+	;line "of DIGLETT."
+	;text "It's a statue of" ; translation from shinpokered of original Japanese
+	;line "a fat Buddha."
+	text "It's an altar with" ; new version
+	line "a small statue."
+	;text "An altar with a" ; variant
+	;line "peaceful statue."
 	done
 
 _ElevatorText::
@@ -841,6 +847,16 @@ _TownMapText::
 _PokemonStuffText::
 	text "Wow! Tons of"
 	line "#MON stuff!"
+	done
+
+_HotSnacksText:: ; marcelnote - new for Marts
+	text "A sale on hot"
+	line "snacks! Yummy!"
+	done
+
+_ColdDrinksText:: ; marcelnote - new for Marts
+	text "Cold drinks, all"
+	line "neatly arranged!"
 	done
 
 _OutOfSafariBallsText::
