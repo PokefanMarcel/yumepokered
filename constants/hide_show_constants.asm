@@ -233,6 +233,7 @@ DEF SHOW EQU $15
 	const HS_SEAFOAM_ISLANDS_1F_BOULDER_2  ; DA
 	const HS_SEAFOAM_ISLANDS_B1F_BOULDER_1 ; DB
 	const HS_SEAFOAM_ISLANDS_B1F_BOULDER_2 ; DC
+	const HS_SEAFOAM_ISLANDS_B2F_WATER_STONE ; DC bis ; marcelnote - new
 	const HS_SEAFOAM_ISLANDS_B2F_BOULDER_1 ; DD
 	const HS_SEAFOAM_ISLANDS_B2F_BOULDER_2 ; DE
 	const HS_SEAFOAM_ISLANDS_B3F_BOULDER_1 ; DF
@@ -266,7 +267,7 @@ DEF SHOW EQU $15
 	const HS_SILPH_FACTORY_1F_ITEM_2            ; marcelnote - Carbos
 DEF NUM_HS_OBJECTS EQU const_value
 	; max objects = 256
-	; current total = 264 – 11 – 5 (end - start - commented out) = 248
+	; current total = 267 – 11 – 5 (end - start - commented out) = 251
 
 ; marcelnote - the list continues here to allow for more than 256 HideShow objects
 ;              but cannot put items which can be picked up
