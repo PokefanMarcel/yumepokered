@@ -4,8 +4,11 @@ MtSilver1F_Script:
 
 MtSilver1F_TextPointers:
 	def_text_pointers
-	;dw_const MtMoon1FYoungster3Text,    TEXT_MTMOON1F_YOUNGSTER3
-	;dw_const PickUpItemText,            TEXT_MTMOON1F_TM_WATER_GUN
+	dw_const PickUpItemText, TEXT_MTSILVER1F_PROTEIN
+	dw_const PickUpItemText, TEXT_MTSILVER1F_ESCAPE_ROPE
+	dw_const PickUpItemText, TEXT_MTSILVER1F_ULTRA_BALL
+	dw_const PickUpItemText, TEXT_MTSILVER1F_MAX_ELIXIR
+	; bg
 	;dw_const MtMoon1FBewareZubatSign,   TEXT_MTMOON1F_BEWARE_ZUBAT_SIGN
 
 ;MtMoon1FBewareZubatSign:

@@ -250,6 +250,15 @@ DEF SHOW EQU $15
 	const HS_SILPH_FACTORY_1F_ROCKET_4          ; marcelnote - Rocket 4
 	const HS_SILPH_FACTORY_1F_ITEM_1            ; marcelnote - Rare Candy
 	const HS_SILPH_FACTORY_1F_ITEM_2            ; marcelnote - Carbos
+	const HS_MT_SILVER_1F_PROTEIN               ; marcelnote - Protein
+	const HS_MT_SILVER_1F_ESCAPE_ROPE           ; marcelnote - Escape Rope
+	const HS_MT_SILVER_1F_ULTRA_BALL            ; marcelnote - Ultra Ball
+	const HS_MT_SILVER_1F_MAX_ELIXIR            ; marcelnote - Max Elixir
+	const HS_MT_SILVER_2F_PP_UP                 ; marcelnote - PP Up
+	const HS_MT_SILVER_2F_CALCIUM               ; marcelnote - Calcium
+	const HS_MT_SILVER_2F_ULTRA_BALL            ; marcelnote - Ultra Ball
+	const HS_MT_SILVER_2F_MAX_REVIVE            ; marcelnote - Max Revive
+	const HS_MT_SILVER_2F_FULL_RESTORE          ; marcelnote - Full Restore
 DEF NUM_HS_OBJECTS EQU const_value
 	; max objects = 256
 	; current total = 252 – 11 – 5 (end - start - commented out) = 236
