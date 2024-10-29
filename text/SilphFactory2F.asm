@@ -75,8 +75,8 @@ _SilphFactory2FScientist3AfterEventText::
 	text "LORELEI promised"
 	line "she would help"
 	cont "us repair the"
-	cont "damage that TEAM"
-	cont "ROCKET has done."
+	cont "damage done by"
+	cont "TEAM ROCKET."
 	done
 
 _SilphFactory2FSilphWorkerMUpdateCardText::
@@ -115,14 +115,12 @@ _SilphFactory2FLoreleiGladToSeeYouText::
 
 	para "Someone's pushing"
 	line "this factory too"
-	cont "hard, and now"
-	cont "its waste is"
-	cont "spilling into"
+	cont "hard, spilling"
+	cont "waste into"
 	cont "the sea."
 
-	para "I can't let this"
-	line "continue on my"
-	cont "home island."
+	para "I can't let that"
+	line "happen."
 
 	para "<PLAYER>, will you"
 	line "help me get to"
@@ -135,39 +133,25 @@ _SilphFactory2FLoreleiArrivesText::
 	done
 
 _SilphFactory2FLoreleiTakeCareText::
-	text "So, TEAM ROCKET"
-	line "was behind this."
+	text "So it was TEAM"
+	line "ROCKET behind"
+	cont "this mess. We're"
+	cont "lucky you were"
+	cont "again here to"
+	cont "stop them."
 
-	para "We're lucky you"
-	line "could stop them."
+	para "But I'm afraid the"
+	line "damage is done..."
+	cont "Cleaning the sea"
+	cont "of this pollution"
+	cont "will take time."
 
-	para "But it will take"
-	line "time to undo the"
-	cont "pollution they"
-	cont "caused."
-
-	para "Maybe my help is"
-	line "needed here."
-	cont "I wonder..."
-
-	para "Is my real duty"
-	line "to the ELITE FOUR"
-	cont "or to my home?"
-
-	;para "Maybe it's time"
-	;line "for me to step"
-	;cont "back from the ELITE FOUR"
-	;cont "and focus on"
-	;cont "helping my home"
-	;cont "instead."
-
-	;para "I've been away"
-	;line "from home for too long."
-
-	;para "Maybe I should"
-	;line "focus on helping"
-	;cont "my home and its"
-	;cont "people instead."
+	para "This island is"
+	line "my home. If not"
+	cont "for my duty to"
+    cont "the ELITE FOUR,"
+    cont "I could stay"
+    cont "to help..."
 
 	para "For now, take"
 	line "care. We'll meet"

@@ -520,7 +520,7 @@ EkansEvosMoves:
 	db 31, SCREECH
 	db 37, HYPER_FANG
 	db 42, HAZE
-	; SLAM (TM?), ACID_ARMOR, HYPNOSIS?
+	; SLAM, ACID_ARMOR, HYPNOSIS
 	db 0
 
 ArbokEvosMoves:
@@ -534,7 +534,7 @@ ArbokEvosMoves:
 	db 35, SCREECH
 	db 41, HYPER_FANG
 	db 47, HAZE
-	; SLAM (TM?), ACID_ARMOR, HYPNOSIS?
+	; SLAM, ACID_ARMOR, HYPNOSIS
 	db 0
 
 PikachuEvosMoves:

@@ -41,9 +41,8 @@ _LoreleisRoomLoreleiRematchBeforeBattleText:: ; marcelnote - Lorelei rematch tex
 	line "#MON LEAGUE,"
 	cont "champion!"
 
-	para "After battling"
-	line "under the warm"
-	cont "island sun, my"
+	para "After our stay in"
+	line "the sun, my"
 	cont "#MON are eager"
 	cont "for a fresh new"
 	cont "challenge!"
@@ -60,17 +59,16 @@ _LoreleisRoomLoreleiRematchEndBattleText:: ; marcelnote - Lorelei rematch text
 	prompt
 
 _LoreleisRoomLoreleiRematchAfterBattleText:: ; marcelnote - Lorelei rematch text
-	text "Your dedication's"
-	line "inspired me to"
-	cont "rethink my path."
+	text "Your freedom is"
+	line "inspiring,"
+	cont "<PLAYER>..."
 
-	para "I will soon step"
-	line "back from the"
-	cont "ELITE FOUR, and"
-	cont "focus on helping"
-	cont "my home instead."
+	para "Now that my home"
+	line "needs help, I"
+	cont "may soon follow"
+	cont "your example." ; maybe not explicit enough?
 
-	para "But while I am"
+	para "But while I'm"
 	line "still here, I'll"
 	cont "give it my all!"
 	done
