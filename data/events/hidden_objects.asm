@@ -83,12 +83,14 @@ HiddenObjectMaps:
 	db VERMILION_CITY
 	db CERULEAN_CITY
 	db ROUTE_4
-	db CINNABAR_VOLCANO_2F ; marcelnote - new
-	db POKEMON_ACADEMY_3F4F ; marcelnote - new
-	db MANDARIN_POKECENTER_MART ; marcelnote - new
-	db MANDARIN_SURF_SHOP ; marcelnote - new
-	db SILPH_FACTORY_1F ; marcelnote - new
-	db SILPH_FACTORY_2F ; marcelnote - new
+	db CINNABAR_VOLCANO_2F       ; marcelnote - new
+	db POKEMON_ACADEMY_3F4F      ; marcelnote - new
+	db MANDARIN_POKECENTER_MART  ; marcelnote - new
+	db MANDARIN_SURF_SHOP        ; marcelnote - new
+	db SILPH_FACTORY_1F          ; marcelnote - new
+	db SILPH_FACTORY_2F          ; marcelnote - new
+	db MT_SILVER_1F              ; marcelnote - new
+	db MT_SILVER_2F              ; marcelnote - new
 	db -1 ; end
 
 HiddenObjectPointers:
@@ -177,12 +179,14 @@ HiddenObjectPointers:
 	dw VermilionCityHiddenObjects
 	dw CeruleanCityHiddenObjects
 	dw Route4HiddenObjects
-	dw CinnabarVolcano2FHiddenObjects ; marcelnote - new
-	dw PokemonAcademy3F4FHiddenObjects ; marcelnote - new
+	dw CinnabarVolcano2FHiddenObjects      ; marcelnote - new
+	dw PokemonAcademy3F4FHiddenObjects     ; marcelnote - new
 	dw MandarinPokecenterMartHiddenObjects ; marcelnote - new
-	dw MandarinSurfShopHiddenObjects ; marcelnote - new
-	dw SilphFactory1FHiddenObjects ; marcelnote - new
-	dw SilphFactory2FHiddenObjects ; marcelnote - new
+	dw MandarinSurfShopHiddenObjects       ; marcelnote - new
+	dw SilphFactory1FHiddenObjects         ; marcelnote - new
+	dw SilphFactory2FHiddenObjects         ; marcelnote - new
+	dw MtSilver1FHiddenObjects             ; marcelnote - new
+	dw MtSilver2FHiddenObjects             ; marcelnote - new
 
 MACRO hidden_object
 	db \2 ; y coord
@@ -701,4 +705,12 @@ SilphFactory1FHiddenObjects:  ; marcelnote - new
 
 SilphFactory2FHiddenObjects:  ; marcelnote - new
 	hidden_object 28, 14, PP_UP, HiddenItems
+	db -1 ; end
+
+MtSilver1FHiddenObjects:  ; marcelnote - new
+	hidden_object 19, 13, ULTRA_BALL, HiddenItems
+	hidden_object 18, 23, DIRE_HIT, HiddenItems
+
+MtSilver2FHiddenObjects:  ; marcelnote - new
+	hidden_object 14, 29, MAX_POTION, HiddenItems
 	db -1 ; end

@@ -246,8 +246,8 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw MtSilver1FHS   ; $F1 ; marcelnote - added for items
+	dw MtSilver2FHS   ; $F2 ; marcelnote - added for items
 	dw MtSilver3FHS   ; $F3 ; marcelnote - added for Yellow battle
 	dw NoHS           ; $F4 ; marcelnote - was UnusedMapF4HS
 	dw LoreleisRoomHS ; $F5 ; marcelnote - added for Lorelei rematch
@@ -588,6 +588,17 @@ SilphFactory1FHS:
 	db SILPH_FACTORY_1F, SILPHFACTORY1F_ROCKET4, SHOW
 	db SILPH_FACTORY_1F, SILPHFACTORY1F_RARE_CANDY, SHOW
 	db SILPH_FACTORY_1F, SILPHFACTORY1F_CARBOS, SHOW
+MtSilver1FHS:
+	db MT_SILVER_1F, MTSILVER1F_PROTEIN, SHOW
+	db MT_SILVER_1F, MTSILVER1F_ESCAPE_ROPE, SHOW
+	db MT_SILVER_1F, MTSILVER1F_ULTRA_BALL, SHOW
+	db MT_SILVER_1F, MTSILVER1F_MAX_ELIXIR, SHOW
+MtSilver2FHS:
+	db MT_SILVER_2F, MTSILVER2F_PP_UP, SHOW
+	db MT_SILVER_2F, MTSILVER2F_CALCIUM, SHOW
+	db MT_SILVER_2F, MTSILVER2F_ULTRA_BALL, SHOW
+	db MT_SILVER_2F, MTSILVER2F_MAX_REVIVE, SHOW
+	db MT_SILVER_2F, MTSILVER2F_FULL_RESTORE, SHOW
 	db $FF, $01, SHOW ; end
 	assert_table_length NUM_HS_OBJECTS + 1
 

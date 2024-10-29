@@ -62,5 +62,8 @@ HiddenItemCoords:
 	hidden_item SILPH_FACTORY_1F,              10,   4 ; marcelnote - new item
 	hidden_item SILPH_FACTORY_1F,              14,  12 ; marcelnote - new item
 	hidden_item SILPH_FACTORY_2F,              28,  14 ; marcelnote - new item
+	hidden_item MT_SILVER_1F,                  19,  13 ; marcelnote - new, Ultra Ball
+	hidden_item MT_SILVER_1F,                  18,  23 ; marcelnote - new, Dire Hit
+	hidden_item MT_SILVER_2F,                  14,  29 ; marcelnote - new, Max Potion
 	assert_max_table_length MAX_HIDDEN_ITEMS
 	db -1 ; end
