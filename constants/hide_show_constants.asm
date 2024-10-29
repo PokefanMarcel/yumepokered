@@ -252,7 +252,7 @@ DEF SHOW EQU $15
 	const HS_SILPH_FACTORY_1F_ITEM_2            ; marcelnote - Carbos
 DEF NUM_HS_OBJECTS EQU const_value
 	; max objects = 256
-	; current total = 253 – 11 – 5 (end - start - commented out) = 237
+	; current total = 252 – 11 – 5 (end - start - commented out) = 236
 
 ; marcelnote - the list continues here to allow for more than 256 HideShow objects
 ;              but cannot put items which can be picked up
