@@ -64,11 +64,15 @@ _PalletTownCooltrainerMText:: ; marcelnote - new
 	cont "ways in the air."
 	done
 
-_PalletTownYellowsHouseSignText:: ; marcelnote - added Yellow's house
+_PalletTownYellowsHouseSignJustMovedInText:: ; marcelnote - added Yellow's house
 	text "..."
 
 	para "A new family just"
 	line "moved in."
 	cont "They didn't put up"
 	cont "their name yet."
+	done
+
+_PalletTownYellowsHouseSignText:: ; marcelnote - added Yellow's house
+	text "YELLOW's house"
 	done
