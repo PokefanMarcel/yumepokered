@@ -39,16 +39,40 @@ _AgathasRoomAgathaAfterBattleText:: ; marcelnote - added map name to label
 	done
 
 _AgathasRoomAgathaRematchBeforeBattleText:: ; marcelnote - Agatha rematch text
-	text "Let's rematch!"
+	text "Back so soon,"
+	line "are you?"
+
+	para "Time has a way"
+	line "of moving past"
+	cont "us all... But"
+	cont "know that I won't"
+	cont "fade quietly!"
+
+	para "Show me you are"
+	line "worthy of"
+	cont "carrying our"
+	cont "spirit forward,"
+	cont "child!"
 	done
 
 _AgathasRoomAgathaRematchEndBattleText:: ; marcelnote - Agatha rematch text
-	text "Lost"
-	line "again!"
+	text "Ah! Like"
+	line "that old duff"
+	;text "Oh ho! You"
+	;line "remind me of OAK"
+	cont "in his prime!"
 	prompt
 
 _AgathasRoomAgathaRematchAfterBattleText:: ; marcelnote - Agatha rematch text
-	text "You win again!"
+	text "With you as"
+	line "champion, our"
+	cont "legacy is in"
+	cont "good hands."
+
+	para "Now, off you go."
+	line "Go teach that"
+	cont "pompous dragon"
+	cont "master a lesson!"
 	done
 
 _AgathasRoomAgathaDontRunAwayText::

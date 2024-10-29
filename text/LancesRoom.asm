@@ -100,4 +100,4 @@ _LancesRoomLanceRematchAfterBattleText:: ; marcelnote - Lance rematch text
 	para "You truly are a"
 	line "champion,"
 	cont "<PLAYER>!@"
-	text_end
+	text_end ; why not done?
