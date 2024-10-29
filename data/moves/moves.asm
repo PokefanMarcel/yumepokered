@@ -25,7 +25,7 @@ Moves:
 	move GUILLOTINE,   OHKO_EFFECT,                  1, NORMAL,        30,  5
 	move RAZOR_WIND,   HYPER_BEAM_EFFECT,           80,    BUG,        90, 10 ; marcelnote - changed from NORMAL, CHARGE_EFFECT, acc 75
 	move SWORDS_DANCE, ATTACK_UP2_EFFECT,            0, NORMAL,       100, 30
-	move CUT,          NO_ADDITIONAL_EFFECT,        50,    BUG,       100, 25 ; marcelnote - changed from NORMAL, acc 95, pp 30
+	move CUT,          NO_ADDITIONAL_EFFECT,        50,    BUG,        95, 25 ; marcelnote - changed from NORMAL, pp 30
 	move GUST,         NO_ADDITIONAL_EFFECT,        40, FLYING,       100, 35 ; marcelnote - changed from NORMAL
 	move WING_ATTACK,  NO_ADDITIONAL_EFFECT,        60, FLYING,       100, 25 ; marcelnote - changed from pwr 35, pp 35
 	move WHIRLWIND,    SWITCH_AND_TELEPORT_EFFECT,   0, NORMAL,        85, 20

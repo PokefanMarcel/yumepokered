@@ -29,14 +29,14 @@ Move type changes are primarily meant to give STAB options to Mons who were lack
 - STRUGGLE takes the unused Bird type to ignore resistances and immunities to Normal-type moves.
 
 
-| Move         | Type                    | Power | Accuracy        | PP | Additional notes                                                            |
-|--------------|-------------------------|-------|-----------------|----|-----------------------------------------------------------------------------|
-| CUT          | ~~Normal~~ **Bug**      | 50    | ~~95~~ **100**  | ~~30~~ **25** |                                                                  |
-| RAZOR WIND   | ~~Normal~~ **Bug**      | 80    | ~~75~~ **90**   | 15 | **Now needs to recharge one turn after attacking instead of charging before (same as HYPER BEAM)**     |
-| GUST         | ~~Normal~~ **Flying**   | 40    | 100             | 35 |                                                                             |
-| KARATE CHOP  | ~~Normal~~ **Fighting** | 50    | ~~100~~ **95**  | 25 |                                                                             |
-| SLAM         | ~~Normal~~ **Dragon**   | 80    | ~~75~~ **90**   | 20 |                                                                             |
-| STRUGGLE     | ~~Normal~~ **Bird**     | 50    | 100             | 10 | Bird-type allows STRUGGLE to ignore resistances and immunities              |
+| Move         | Type                    | Power | Accuracy       | PP | Additional notes                                                            |
+|--------------|-------------------------|-------|----------------|----|-----------------------------------------------------------------------------|
+| CUT          | ~~Normal~~ **Bug**      | 50    | 95             | ~~30~~ **25** |                                                                  |
+| RAZOR WIND   | ~~Normal~~ **Bug**      | 80    | ~~75~~ **90**  | 15 | **Now needs to recharge one turn after attacking instead of charging before (same as HYPER BEAM)**     |
+| GUST         | ~~Normal~~ **Flying**   | 40    | 100            | 35 |                                                                             |
+| KARATE CHOP  | ~~Normal~~ **Fighting** | 50    | ~~100~~ **95** | 25 |                                                                             |
+| SLAM         | ~~Normal~~ **Dragon**   | 80    | ~~75~~ **90**  | 20 |                                                                             |
+| STRUGGLE     | ~~Normal~~ **Bird**     | 50    | 100            | 10 | Bird-type allows STRUGGLE to ignore resistances and immunities              |
 
 
 ## Other changes
