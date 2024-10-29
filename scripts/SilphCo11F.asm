@@ -86,12 +86,24 @@ SilphCo11FTeamRocketLeavesScript:
 .show_loop
 	ld a, [hli]
 	cp -1
+	jr z, .done_showing ; marcelnote - was ret z, now need to deal with second hiding list
+	push hl
+	ld [wMissableObjectIndex], a
+	predef ShowObjectCont ; marcelnote - changed from ShowObject because moved to second list
+	pop hl
+	jr .show_loop
+; marcelnote - this new code below deals with second Hide list
+.done_showing
+	ld hl, .HideMissableObjectIDsCont
+.hide_loop_again
+	ld a, [hli]
+	cp -1
 	ret z
 	push hl
 	ld [wMissableObjectIndex], a
-	predef ShowObject
+	predef HideObjectCont ; marcelnote - changed from ShowObject because moved to second list
 	pop hl
-	jr .show_loop
+	jr .hide_loop_again
 
 .ShowMissableObjectIDs:
 	db HS_SAFFRON_CITY_8
@@ -103,15 +115,6 @@ SilphCo11FTeamRocketLeavesScript:
 	db -1 ; end
 
 .HideMissableObjectIDs:
-	db HS_SAFFRON_CITY_1
-	db HS_SAFFRON_CITY_2
-	db HS_SAFFRON_CITY_3
-	db HS_SAFFRON_CITY_4
-	db HS_SAFFRON_CITY_5
-	db HS_SAFFRON_CITY_6
-	db HS_SAFFRON_CITY_7
-	db HS_SAFFRON_CITY_E
-	db HS_SAFFRON_CITY_F
 	db HS_SILPH_CO_2F_2
 	db HS_SILPH_CO_2F_3
 	db HS_SILPH_CO_2F_4
@@ -143,6 +146,18 @@ SilphCo11FTeamRocketLeavesScript:
 	db HS_SILPH_CO_11F_1
 	db HS_SILPH_CO_11F_2
 	db HS_SILPH_CO_11F_3
+	db -1 ; end
+
+.HideMissableObjectIDsCont: ; marcelnote - new, these objects belong to the second list so use a different function
+	db HS_SAFFRON_CITY_1
+	db HS_SAFFRON_CITY_2
+	db HS_SAFFRON_CITY_3
+	db HS_SAFFRON_CITY_4
+	db HS_SAFFRON_CITY_5
+	db HS_SAFFRON_CITY_6
+	db HS_SAFFRON_CITY_7
+	db HS_SAFFRON_CITY_E
+	db HS_SAFFRON_CITY_F
 	db -1 ; end
 
 SilphCo11FResetCurScript:
