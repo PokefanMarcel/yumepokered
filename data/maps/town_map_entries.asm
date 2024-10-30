@@ -81,6 +81,9 @@ InternalMapEntries:
 	internal_map SS_ANNE_B1F_ROOMS,              9, 10, SSAnneName
 	internal_map UNUSED_MAP_6B,                  2, 15, CinnabarVolcanoName ; marcelnote - new location, until CINNABAR_VOLCANO_B1F
 	internal_map VICTORY_ROAD_1F,                1,  4, VictoryRoadName
+	internal_map MANDARIN_SILPH_CO,             15, 15, MandarinIslandName ; marcelnote - new map
+	internal_map LANCES_ROOM,                    1,  2, PokemonLeagueName
+	internal_map SILPH_FACTORY_2F,              15, 15, SilphFactoryName ; marcelnote - new map
 	internal_map HALL_OF_FAME,                   1,  2, PokemonLeagueName
 	internal_map UNDERGROUND_PATH_NORTH_SOUTH,  10,  5, UndergroundPathName
 	internal_map CHAMPIONS_ROOM,                 1,  2, PokemonLeagueName

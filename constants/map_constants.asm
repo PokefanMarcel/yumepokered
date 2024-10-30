@@ -29,7 +29,7 @@ ENDM
 	; marcelnote - MANDARIN_ISLAND should be here
 	map_const INDIGO_PLATEAU,                10,  9 ; $09
 	map_const SAFFRON_CITY,                  20, 18 ; $0A
-	map_const MANDARIN_ISLAND,               16, 15 ; $0Abis ; marcelnote - new map
+	map_const MANDARIN_ISLAND,               17, 16 ; $0Abis ; marcelnote - new map
 DEF NUM_CITY_MAPS EQU const_value
 	map_const UNUSED_MAP_0B,                  0,  0 ; $0B
 DEF FIRST_ROUTE_MAP EQU const_value

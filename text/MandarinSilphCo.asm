@@ -37,21 +37,21 @@ _MandarinSilphCo3FScientistText::
 _MandarinSilphCo4FManagerText::
 	text "Hello!"
 	line "I am the manager"
-	cont "of SILPH CO's"
+	cont "of SILPH CO.'s"
 	cont "MANDARIN branch."
 	done
 
 _MandarinSilphCo2FSalesSignText::
-	text "SILPH CO"
+	text "SILPH CO."
 	line "Sales"
 	done
 
 _MandarinSilphCo3FMeetingRoomSignText::
-	text "SILPH CO"
+	text "SILPH CO."
 	line "Meeting room"
 	done
 
 _MandarinSilphCo4FRegionalManagerSignText::
-	text "SILPH CO"
+	text "SILPH CO."
 	line "Regional manager"
 	done

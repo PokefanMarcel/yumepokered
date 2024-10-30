@@ -6,11 +6,9 @@ _MandarinHotel1FWaiterText::
 	text "Welcome to the"
 	line "MANDARIN HOTEL."
 
-	para "We are fully"
-	line "booked right now,"
-	cont "but feel free to"
-	cont "visit our guests"
-	cont "upstairs!"
+	para "Are you here to"
+	line "visit one of our"
+	cont "guests upstairs?"
 	done
 
 _MandarinHotel1FWaiter2Text::

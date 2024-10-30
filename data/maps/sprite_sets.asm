@@ -74,7 +74,6 @@ SpriteSets:
 	db SPRITE_FISHER
 	db SPRITE_COOLTRAINER_M
 	db SPRITE_GAMBLER
-	;db SPRITE_SEEL
 	db SPRITE_SWIMMER_F ; marcelnote - replaced SPRITE_SEEL
 	db SPRITE_OAK
 	db SPRITE_SWIMMER
@@ -198,22 +197,21 @@ SpriteSets:
 	db SPRITE_BLACKBELT ; marcelnote - replaces SPRITE_BIRD
 	; marcelnote - idea to add SPRITE_SWIMMER_F:
 	; replace GAMBLER in Fuchsia by COOLTRAINER_M,
-	; replace COOLTRAINER_M with the Primeape by BLACKBELT (fits with new trainers),
 	; replace SPRITE_GAMBLER by SPRITE_SWIMMER_F
 	db SPRITE_POKE_BALL
 	db SPRITE_FOSSIL
 
 ; SPRITESET_MANDARIN ; marcelnote - new spriteset
 	db SPRITE_GIRL
-	db SPRITE_GAMBLER
+	db SPRITE_SAILOR
 	db SPRITE_SWIMMER
 	db SPRITE_SWIMMER_F
 	db SPRITE_FISHER
 	db SPRITE_COOLTRAINER_M
-	db SPRITE_BLACKBELT
-	db SPRITE_BIKER ; unused
-	db SPRITE_MIDDLE_AGED_MAN ; unused
-	db SPRITE_POKE_BALL
-	db SPRITE_UNUSED_GAMBLER_ASLEEP_2
+	db SPRITE_LITTLE_GIRL
+	db SPRITE_ROCKER
+	db SPRITE_SILPH_WORKER_F
+	db SPRITE_POKE_BALL ; unused
+	db SPRITE_UNUSED_GAMBLER_ASLEEP_2 ; unused
 
 	assert_table_length NUM_SPRITE_SETS
