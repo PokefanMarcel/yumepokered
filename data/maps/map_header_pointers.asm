@@ -144,7 +144,7 @@ MapHeaderPointers::
 	dw CeladonDiner_h
 	dw CeladonChiefHouse_h
 	dw CeladonHotel_h
-	dw LavenderPokecenter_h
+	dw LavenderPokecenterMart_h ; marcelnote - merged Lavender Pokecenter and Mart
 	dw PokemonTower1F_h
 	dw PokemonTower2F_h
 	dw PokemonTower3F_h
@@ -153,7 +153,7 @@ MapHeaderPointers::
 	dw PokemonTower6F_h
 	dw PokemonTower7F_h
 	dw MrFujisHouse_h
-	dw LavenderMart_h
+	dw LavenderPokecenterMart_h ; $96 ; marcelnote - was LAVENDER_MART, now unused
 	dw LavenderCuboneHouse_h
 	dw FuchsiaMart_h
 	dw FuchsiaBillsGrandpasHouse_h

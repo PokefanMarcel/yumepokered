@@ -29,7 +29,7 @@ DungeonMaps2: ; marcelnote - modified to fix aforementioned bug and account for 
 	; LANCES_ROOM, both SILPH_FACTORY maps, and HALL_OF_FAME
 	db LANCES_ROOM, HALL_OF_FAME
 	; all POKEMON_TOWER maps and Lavender Town buildings
-	db LAVENDER_POKECENTER, LAVENDER_CUBONE_HOUSE
+	db LAVENDER_POKECENTER_MART, LAVENDER_CUBONE_HOUSE
 	; SEAFOAM_ISLANDS_[B1F-B4F]
 	db SEAFOAM_ISLANDS_B1F, SEAFOAM_ISLANDS_B4F
 	; all ROCKET_HIDEOUT maps
