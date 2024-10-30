@@ -91,7 +91,7 @@ InternalMapEntries:
 	internal_map GAME_CORNER,                    7,  5, CeladonCityName
 	internal_map FUCHSIA_MOVE_DELETER_HOUSE,     9, 13, FuchsiaCityName
 	internal_map CELADON_HOTEL,                  7,  5, CeladonCityName
-	internal_map LAVENDER_POKECENTER,           14,  5, LavenderTownName
+	internal_map LAVENDER_POKECENTER_MART,      14,  5, LavenderTownName ; marcelnote - merged Lavender Pokecenter and Mart
 	internal_map POKEMON_TOWER_7F,              15,  5, PokemonTowerName
 	internal_map LAVENDER_CUBONE_HOUSE,         14,  5, LavenderTownName
 	internal_map WARDENS_HOUSE,                  9, 13, FuchsiaCityName

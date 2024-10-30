@@ -164,7 +164,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const CELADON_DINER,                  5,  4 ; $8A
 	map_const CELADON_CHIEF_HOUSE,            4,  4 ; $8B
 	map_const CELADON_HOTEL,                  7,  4 ; $8C
-	map_const LAVENDER_POKECENTER,            7,  4 ; $8D
+	map_const LAVENDER_POKECENTER_MART,      14,  4 ; $8D ; marcelnote - merged Lavender Pokecenter and Mart
 	map_const POKEMON_TOWER_1F,              10,  9 ; $8E
 	map_const POKEMON_TOWER_2F,              10,  9 ; $8F
 	map_const POKEMON_TOWER_3F,              10,  9 ; $90
@@ -173,7 +173,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const POKEMON_TOWER_6F,              10,  9 ; $93
 	map_const POKEMON_TOWER_7F,              10,  9 ; $94
 	map_const MR_FUJIS_HOUSE,                 4,  4 ; $95
-	map_const LAVENDER_MART,                  4,  4 ; $96
+	map_const UNUSED_MAP_96,                  4,  4 ; $96 ; marcelnote - was LAVENDER_MART, now unused
 	map_const LAVENDER_CUBONE_HOUSE,          4,  4 ; $97
 	map_const FUCHSIA_MART,                   4,  4 ; $98
 	map_const FUCHSIA_BILLS_GRANDPAS_HOUSE,   4,  4 ; $99

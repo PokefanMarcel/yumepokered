@@ -144,7 +144,7 @@ MapHeaderBanks::
 	db BANK(CeladonDiner_h)
 	db BANK(CeladonChiefHouse_h)
 	db BANK(CeladonHotel_h)
-	db BANK(LavenderPokecenter_h)
+	db BANK(LavenderPokecenterMart_h); marcelnote - merged Lavender Pokecenter and Mart
 	db BANK(PokemonTower1F_h)
 	db BANK(PokemonTower2F_h)
 	db BANK(PokemonTower3F_h)
@@ -153,7 +153,7 @@ MapHeaderBanks::
 	db BANK(PokemonTower6F_h)
 	db BANK(PokemonTower7F_h)
 	db BANK(MrFujisHouse_h)
-	db BANK(LavenderMart_h)
+	db BANK(LavenderPokecenterMart_h) ; $96 ; marcelnote - was LAVENDER_MART, now unused
 	db BANK(LavenderCuboneHouse_h)
 	db BANK(FuchsiaMart_h)
 	db BANK(FuchsiaBillsGrandpasHouse_h)

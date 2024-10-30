@@ -13,7 +13,7 @@ HiddenObjectMaps:
 	db CERULEAN_POKECENTER
 	db CERULEAN_GYM
 	db CERULEAN_MART
-	db LAVENDER_POKECENTER
+	db LAVENDER_POKECENTER_MART ; marcelnote - merged Lavender Pokecenter and Mart
 	db VERMILION_POKECENTER
 	db VERMILION_GYM
 	db CELADON_MANSION_2F
@@ -109,7 +109,7 @@ HiddenObjectPointers:
 	dw CeruleanPokecenterHiddenObjects
 	dw CeruleanGymHiddenObjects
 	dw CeruleanMartHiddenObjects
-	dw LavenderPokecenterHiddenObjects
+	dw LavenderPokecenterMartHiddenObjects ; marcelnote - merged Lavender Pokecenter and Mart
 	dw VermilionPokecenterHiddenObjects
 	dw VermilionGymHiddenObjects
 	dw CeladonMansion2HiddenObjects
@@ -283,7 +283,7 @@ CeruleanGymHiddenObjects:
 CeruleanMartHiddenObjects:
 	db -1 ; end
 
-LavenderPokecenterHiddenObjects:
+LavenderPokecenterMartHiddenObjects:
 	hidden_object  0,  4, SPRITE_FACING_LEFT, PrintBenchGuyText
 	hidden_object 13,  3, SPRITE_FACING_UP, OpenPokemonCenterPC
 	db -1 ; end
