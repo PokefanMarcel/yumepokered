@@ -1,16 +1,16 @@
 ; marcelnote - new location
-; text remains to be made to obtain SURFBOARD
+; text remains to be made around event to obtain SURFBOARD
 _MandarinSurfShopClerkWelcomeText::
-	text "Hi! Welcome to our"
-	line "SURFBOARD SHOP."
+	text "Aloha! Welcome"
+	line "to WAVE CRAZE."
 
-	para "Fancy a new"
-	line "SURFBOARD to ride"
-	cont "the waves?"
+	para "Only the best"
+	line "SURFBOARDs here!"
 	prompt
 
 _MandarinSurfShopClerkDoYouWantItText::
-	text "Do you want it?"
+	text "A new SURFBOARD!"
+	line "Do you want it?"
 	done
 
 _MandarinSurfShopCantAffordText::
@@ -51,7 +51,7 @@ _MandarinSurfShopBagFullText::
 	line "room for this!"
 	done
 
-_MandarinSurfShopBrunetteGirlText::
+_MandarinSurfShopBrunetteGirlText:: ; that's not great, to update later
 	text "They even offer"
 	line "free SURFBOARD"
 	cont "repairs here!"
@@ -59,6 +59,7 @@ _MandarinSurfShopBrunetteGirlText::
 
 _MandarinSurfShopGirlText::
 	text "The owner's brother"
-	line "runs the BIKE"
-	cont "SHOP in CERULEAN!"
+	line "runs the MIRACLE"
+	cont "CYCLE store in"
+	cont "CERULEAN!"
 	done

@@ -221,9 +221,12 @@ _UnusedBenchGuyText1::
 	line "catch #MON."
 	done
 
-_MandarinPokecenterBenchGuyText:: ; marcelnote - reused _UnusedBenchGuyText2
-	text "I'm tired from"
-	line "all the fun..."
+_MandarinPokecenterBenchGuyText:: ; marcelnote - new for Mandarin Pokecenter
+	text "MANDARIN ISLAND"
+	line "is just one of"
+	cont "many in the"
+	cont "ORANGE ISLANDS"
+	cont "archipelago!"
 	done
 
 _UnusedBenchGuyText3::

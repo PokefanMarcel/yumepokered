@@ -54,8 +54,8 @@ SafariZoneName:      db "SAFARI ZONE@"
 CeruleanCaveName:    db "CERULEAN CAVE@"
 PowerPlantName:      db "POWER PLANT@"
 CinnabarVolcanoName: db "CINNABAR VOLCANO@" ; marcelnote - new location
-MtMoonSquareName:    db "MT.MOON SQUARE@" ; marcelnote - new location
-PokemonAcademyName:  db "#MON ACADEMY@" ; marcelnote - new location
-CeladonGroveName:    db "CELADON GROVE@" ; marcelnote - new location
-SilphFactoryName:    db "SILPH CO. FACTORY@" ; marcelnote - new location
-MtSilverName:        db "MT.SILVER@" ; marcelnote - new location
+MtMoonSquareName:    db "MT.MOON SQUARE@"   ; marcelnote - new location
+PokemonAcademyName:  db "#MON ACADEMY@"     ; marcelnote - new location
+CeladonGroveName:    db "CELADON GROVE@"    ; marcelnote - new location
+SilphFactoryName:    db "SILPH CO.FACTORY@" ; marcelnote - new location
+MtSilverName:        db "MT.SILVER@"        ; marcelnote - new location

@@ -90,6 +90,6 @@ FlyWarpDataPtr:
 .CinnabarIsland: fly_warp CINNABAR_ISLAND, 19, 12 ; marcelnote - modified to accommodate Cinnabar Volcano
 .IndigoPlateau:  fly_warp INDIGO_PLATEAU,   9,  6
 .SaffronCity:    fly_warp SAFFRON_CITY,     9, 30
-.MandarinIsland: fly_warp MANDARIN_ISLAND, 21,  6 ; marcelnote - new location
+.MandarinIsland: fly_warp MANDARIN_ISLAND, 23,  6 ; marcelnote - new location
 .Route4:         fly_warp ROUTE_4,         11,  6
 .Route10:        fly_warp ROUTE_10,        11, 20

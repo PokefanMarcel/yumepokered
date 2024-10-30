@@ -222,7 +222,8 @@ _CeruleanCityTrainerTipsText::
 _CeruleanCityBikeShopSign::
 	text "Grass and caves"
 	line "handled easily!"
-	cont "BIKE SHOP"
+	;cont "BIKE SHOP"
+	cont "MIRACLE CYCLE" ; marcelnote - Japanese name
 	done
 
 _CeruleanCityGymSign::
