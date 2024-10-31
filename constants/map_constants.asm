@@ -4,6 +4,9 @@ MACRO map_const
 	DEF \1_HEIGHT EQU \3
 ENDM
 
+; marcelnote - other files which rely on map order:
+; - ItemUseBall.notOldManBattle (item_effects.asm) to identify PokemonTower maps
+
 ; map ids
 ; indexes for:
 ; - MapHeaderBanks (see data/maps/map_header_banks.asm)
