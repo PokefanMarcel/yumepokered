@@ -27,7 +27,7 @@ TilePairCollisionsLand::
 
 TilePairCollisionsWater::
 	db SAFARI,   $14, $2E ; marcelnote - new tileset from FOREST
-	db SAFARI,   $48, $2E
+	db SAFARI,   $48, $2E ; $48 is a shore tile
 	db CAVERN,   $14, $05
 	db CAVERN,   $14, $41 ; marcelnote - collision with elevation tile
 	db MOUNTAIN, $14, $2E ; marcelnote - new tileset

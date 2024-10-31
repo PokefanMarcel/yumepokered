@@ -66,6 +66,7 @@ INCLUDE "engine/movie/oak_speech/init_player_data.asm"
 INCLUDE "engine/items/get_bag_item_quantity.asm"
 INCLUDE "engine/overworld/pathfinding.asm"
 INCLUDE "engine/gfx/hp_bar.asm"
+INCLUDE "engine/overworld/hms_overworld.asm" ; marcelnote - must be in the same bank as item_effects ?
 
 
 SECTION "Font Graphics", ROMX
@@ -327,7 +328,6 @@ INCLUDE "engine/events/in_game_trades.asm"
 INCLUDE "engine/gfx/palettes.asm"
 INCLUDE "engine/menus/save.asm"
 INCLUDE "engine/items/tm_prices.asm"
-INCLUDE "engine/overworld/hms_overworld.asm" ; new, testing
 
 
 SECTION "Itemfinder 1", ROMX
