@@ -57,11 +57,10 @@ _MandarinIslandCooltrainerMText::
 	done
 
 _MandarinIslandSilphWorkerFText::
-	text "The factory brings"
-	line "jobs, but at"
-	cont "what cost?"
-
-	para "I used to see"
+	;text "The factory brings"
+	;line "jobs, but at"
+	;cont "what cost?"
+	text "I used to see"
 	line "lots of MAGIKARP"
 	cont "splashing here."
 
