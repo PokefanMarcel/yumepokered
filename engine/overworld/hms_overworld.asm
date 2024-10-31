@@ -18,7 +18,7 @@ CheckForSurf:: ; marcelnote - could be improved if there is a wram bit which che
 ; surfing is allowed
 	ld hl, TilePairCollisionsWater
 	call CheckForTilePairCollisions
-	jp c, SurfingAttemptFailed
+	ret z
 ; there is no blocking tile
 	ld d, SURF
 	call IsMoveInParty ; output: z flag = whether the move was found (z = not found; nz = found)
