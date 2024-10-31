@@ -87,8 +87,9 @@ _YellowsHouse1FTVText:: ; marcelnote - new for Yellow's house
 _YellowsHouse2FAsleepText:: ; marcelnote - new for Yellow's house
 	text "This kid is"
 	line "fast asleep."
-	cont "Better not"
-	cont "wake them up."
+
+	para "Better not"
+	line "wake them up."
 	done
 
 _YellowsHouse2FGameboyText:: ; marcelnote - new for Yellow's house
