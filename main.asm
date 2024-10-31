@@ -159,7 +159,6 @@ INCLUDE "engine/battle/move_effects/leech_seed.asm"
 SECTION "Battle Engine 5", ROMX
 
 INCLUDE "engine/battle/display_effectiveness.asm"
-INCLUDE "gfx/trainer_card.asm"
 INCLUDE "engine/items/tmhm.asm"
 INCLUDE "engine/battle/scale_sprites.asm"
 INCLUDE "engine/battle/move_effects/pay_day.asm"
@@ -259,6 +258,7 @@ INCLUDE "engine/battle/experience.asm"
 SECTION "Diploma", ROMX
 
 INCLUDE "engine/events/diploma.asm"
+INCLUDE "gfx/trainer_card.asm" ; marcelnote - moved from Battle Engine 5
 
 
 SECTION "Trainer Sight", ROMX
