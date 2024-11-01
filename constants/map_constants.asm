@@ -154,9 +154,9 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const CELADON_MART_4F5F6F,           10, 18 ; $7D ; marcelnote - merged 4F 5F + new 6F
 	map_const CELADON_MART_ROOF,             10,  6 ; $7E ; marcelnote - expanded from y=4
 	map_const CELADON_MART_ELEVATOR,          2,  2 ; $7F
-	map_const CELADON_MANSION_1F,             4,  6 ; $80
-	map_const CELADON_MANSION_2F,             4,  6 ; $81
-	map_const CELADON_MANSION_3F,             4,  6 ; $82
+	map_const UNUSED_MAP_80,                  0,  0 ; $80 ; marcelnote - was CELADON_MANSION_1F, now unused
+	map_const UNUSED_MAP_81,                  0,  0 ; $81 ; marcelnote - was CELADON_MANSION_2F, now unused
+	map_const CELADON_MANSION,                4, 33 ; $82 ; marcelnote - merged Celadon Mansion floors, added 4F
 	map_const CELADON_MANSION_ROOF,           4,  8 ; $83 ; marcelnote - expanded from y=6
 	map_const CELADON_MANSION_ROOF_HOUSE,     4,  4 ; $84
 	map_const CELADON_POKECENTER,             7,  4 ; $85

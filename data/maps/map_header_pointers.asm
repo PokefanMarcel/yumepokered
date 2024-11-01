@@ -131,9 +131,9 @@ MapHeaderPointers::
 	dw CeladonMart4F5F6F_h ; marcelnote - merged 4F 5F + new 6F
 	dw CeladonMartRoof_h
 	dw CeladonMartElevator_h
-	dw CeladonMansion1F_h
-	dw CeladonMansion2F_h
-	dw CeladonMansion3F_h
+	dw CeladonMansion_h ; $80 ; marcelnote - was CELADON_MANSION_1F, now unused
+	dw CeladonMansion_h ; $81 ; marcelnote - was CELADON_MANSION_2F, now unused
+	dw CeladonMansion_h ; $82 ; marcelnote - merged Celadon Mansion floors, added 4F
 	dw CeladonMansionRoof_h
 	dw CeladonMansionRoofHouse_h
 	dw CeladonPokecenter_h
