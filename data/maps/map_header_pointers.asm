@@ -10,9 +10,9 @@ MapHeaderPointers::
 	dw CeladonCity_h
 	dw FuchsiaCity_h
 	dw CinnabarIsland_h
+	dw MandarinIsland_h ; marcelnote - new location
 	dw IndigoPlateau_h
 	dw SaffronCity_h
-	dw MandarinIsland_h ; marcelnote - new location
 	dw SaffronCity_h ; UNUSED_MAP_0B
 	dw Route1_h
 	dw Route2_h
