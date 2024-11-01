@@ -3,20 +3,20 @@
 MapHSPointers:
 ; entries correspond to map ids
 	table_width 2, MapHSPointers
-	dw PalletTownHS
-	dw ViridianCityHS
-	dw PewterCityHS
-	dw CeruleanCityHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw SaffronCityHS
-	dw NoHS ; MANDARIN_ISLAND ; marcelnote - new map
-	dw NoHS ; UNUSED_MAP_0B
-	dw Route1HS ; marcelnote - added for postgame Oak battle
+	dw PalletTownHS    ; PALLET_TOWN
+	dw ViridianCityHS  ; VIRIDIAN_CITY
+	dw PewterCityHS    ; PEWTER_CITY
+	dw CeruleanCityHS  ; CERULEAN_CITY
+	dw NoHS            ; LAVENDER_TOWN
+	dw NoHS            ; VERMILION_CITY
+	dw NoHS            ; CELADON_CITY
+	dw NoHS            ; FUCHSIA_CITY
+	dw NoHS            ; CINNABAR_ISLAND
+	dw NoHS            ; MANDARIN_ISLAND ; marcelnote - new map
+	dw NoHS            ; INDIGO_PLATEAU
+	dw SaffronCityHS   ; SAFFRON_CITY
+	dw NoHS            ; UNUSED_MAP_0B
+	dw Route1HS        ; ROUTE_1 ; marcelnote - added for postgame Oak battle
 	dw Route2HS
 	dw NoHS
 	dw Route4HS

@@ -10,9 +10,9 @@ MapHeaderBanks::
 	db BANK(CeladonCity_h)
 	db BANK(FuchsiaCity_h)
 	db BANK(CinnabarIsland_h)
+	db BANK(MandarinIsland_h) ; marcelnote - new location
 	db BANK(IndigoPlateau_h)
 	db BANK(SaffronCity_h)
-	db BANK(MandarinIsland_h) ; marcelnote - new location
 	db $01 ; UNUSED_MAP_0B
 	db BANK(Route1_h)
 	db BANK(Route2_h)
