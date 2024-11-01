@@ -36,5 +36,5 @@ MandarinMartCooltrainerFText:
 	text_far _MandarinMartCooltrainerFText
 	text_end
 
-MandarinMartClerkText: ; marcelnote - same as Cinnabar for now
-	script_mart ULTRA_BALL, GREAT_BALL, HYPER_POTION, MAX_REPEL, ESCAPE_ROPE, FULL_HEAL, REVIVE
+MandarinMartClerkText:
+	script_mart ULTRA_BALL, HYPER_POTION, MAX_REPEL, ICE_HEAL, ETHER, ELIXIR

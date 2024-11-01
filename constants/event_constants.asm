@@ -817,6 +817,7 @@ DEF INDIGO_PLATEAU_EVENTS_END EQU const_value - 1
 	const EVENT_BEAT_MANDARIN_HOTEL_TRAINER_0
 	const EVENT_BEAT_MANDARIN_HOTEL_TRAINER_1
 	const EVENT_BEAT_MANDARIN_HOTEL_TRAINER_2
+	const EVENT_GOT_MANDARIN_SILPH_DIRECTOR_NUGGET
 
 ; Silph Factory events ; marcelnote - new
 	const_next $930
@@ -833,6 +834,7 @@ DEF INDIGO_PLATEAU_EVENTS_END EQU const_value - 1
 	const EVENT_SILPH_FACTORY_2F_CARD_KEY_UPDATED
 	const EVENT_SILPH_FACTORY_2F_UNLOCKED_DOOR1
 	const EVENT_SILPH_FACTORY_2F_UNLOCKED_DOOR2
+	const EVENT_POSTGAME_LORELEI ; marcelnote - postgame Lorelei
 
 ; Rock Tunnel events
 	const_next $9B0
@@ -858,7 +860,6 @@ DEF INDIGO_PLATEAU_EVENTS_END EQU const_value - 1
 	const EVENT_SEAFOAM4_BOULDER2_DOWN_HOLE
 	const_skip 8
 	const EVENT_BEAT_ARTICUNO
-	const EVENT_POSTGAME_LORELEI ; marcelnote - postgame Lorelei
 
 ; End of events
 	const_next $A00

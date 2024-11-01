@@ -32,8 +32,8 @@ _MandarinMartCookText::
 	done
 
 _MandarinMartCooltrainerFText::
-	text "Ouch! Careful, I"
-	line "got a sunburn!"
+	text "Ouch! Careful,"
+	line "I got a sunburn!"
 
 	para "Where's a BURN"
 	line "HEAL when you"
