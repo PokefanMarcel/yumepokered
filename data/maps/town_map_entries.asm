@@ -79,10 +79,9 @@ InternalMapEntries:
 	internal_map BILLS_HOUSE,                   12,  0, SeaCottageName
 	internal_map VERMILION_DOCK,                10,  9, VermilionCityName
 	internal_map SS_ANNE_B1F_ROOMS,              9, 10, SSAnneName
-	internal_map UNUSED_MAP_6B,                  2, 15, CinnabarVolcanoName ; marcelnote - new location, until CINNABAR_VOLCANO_B1F
-	internal_map VICTORY_ROAD_1F,                1,  4, VictoryRoadName
-	internal_map MANDARIN_SILPH_CO,             15, 15, MandarinIslandName ; marcelnote - new map
-	internal_map SILPH_FACTORY_2F,              15, 15, SilphFactoryName ; marcelnote - new map
+	internal_map CINNABAR_VOLCANO_2F,            2, 15, CinnabarVolcanoName ; marcelnote - new location
+	internal_map MANDARIN_SILPH_CO,             15, 15, MandarinIslandName  ; marcelnote - new map
+	internal_map SILPH_FACTORY_2F,              15, 15, SilphFactoryName    ; marcelnote - new map
 	internal_map UNDERGROUND_PATH_WEST_EAST,    10,  5, UndergroundPathName
 	internal_map GAME_CORNER,                    7,  5, CeladonCityName
 	internal_map FUCHSIA_MOVE_DELETER_HOUSE,     9, 13, FuchsiaCityName
@@ -108,12 +107,9 @@ InternalMapEntries:
 	internal_map ROUTE_18_GATE,                  7, 13, Route18Name ; marcelnote - merged Route18Gate floors
 	internal_map CELADON_GROVE_NORTH_GATE,       6,  3, Route3Name ; marcelnote - new location
 	internal_map SEAFOAM_ISLANDS_1F,             6, 15, SeafoamIslandsName
-	internal_map ROUTE_22_GATE,                  1,  7, Route22Name
-	internal_map VICTORY_ROAD_2F,                1,  4, VictoryRoadName
 	internal_map ROUTE_22_GATE_3F,               1,  7, Route22Name ; marcelnote - was ROUTE_12_GATE_2F
 	internal_map VERMILION_TRADE_HOUSE,         10,  9, VermilionCityName
 	internal_map DIGLETTS_CAVE,                 11,  8, DiglettsCaveName
-	internal_map VICTORY_ROAD_3F,                1,  4, VictoryRoadName
 	internal_map ROCKET_HIDEOUT_ELEVATOR,        7,  5, RocketHQName ; marcelnote - adjusted
 	internal_map ROUTE_22_OLD_ROD_HOUSE,         2,  8, Route22Name ; marcelnote - new location
 	internal_map POKEMON_ACADEMY_3F4F,          10,  5, PokemonAcademyName ; marcelnote - new location
@@ -122,10 +118,11 @@ InternalMapEntries:
 	internal_map CERULEAN_CAVE_1F,               9,  1, CeruleanCaveName
 	internal_map NAME_RATERS_HOUSE,             14,  5, LavenderTownName
 	internal_map CERULEAN_BADGE_HOUSE,          10,  2, CeruleanCityName
-	internal_map MT_MOON_SQUARE,                 6,  2, MountMoonName ; marcelnote - new location
+	internal_map MT_MOON_SQUARE,                 6,  2, MountMoonName     ; marcelnote - new location
 	internal_map ROCK_TUNNEL_B1F,               14,  3, RockTunnelName
 	internal_map SILPH_CO_ELEVATOR,             10,  5, SilphCoName
-	internal_map MT_SILVER_3F,                   0,  7, MtSilverName ; marcelnote - new location
+	internal_map MT_SILVER_3F,                   0,  7, MtSilverName      ; marcelnote - new location
+	internal_map VICTORY_ROAD_3F,                1,  4, VictoryRoadName
 	internal_map INDIGO_PLATEAU_LOBBY,           1,  2, IndigoPlateauName
 	internal_map HALL_OF_FAME,                   1,  2, PokemonLeagueName
 	internal_map COLOSSEUM,                      0,  0, PokemonLeagueName ; marcelnote - not supposed to see this

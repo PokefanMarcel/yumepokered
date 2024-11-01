@@ -105,28 +105,20 @@ WildDataPointers:
 	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons
-	dw CinnabarVolcano1FB1FWildMons ; $69 ; marcelnote - CinnabarVolcano1FB1F
-	dw CinnabarVolcano2FWildMons    ; $6A ; marcelnote - CinnabarVolcano2F
-	dw NothingWildMons
-	dw VictoryRoad1FWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw SilphFactory1FWildMons       ; $72 ; marcelnote - CinnabarVolcano1FB1F
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
+	dw CinnabarVolcano1FB1FWildMons ; CINNABAR_VOLCANO_1FB1F       ; marcelnote - new location
+	dw CinnabarVolcano2FWildMons    ; CINNABAR_VOLCANO_2F          ; marcelnote - new location
+	dw NothingWildMons              ; MANDARIN_POKECENTER_MART     ; marcelnote - new location
+	dw NothingWildMons              ; MANDARIN_SURF_SHOP           ; marcelnote - new location
+	dw NothingWildMons              ; MANDARIN_HOTEL               ; marcelnote - new location
+	dw NothingWildMons              ; MANDARIN_SILPH_CO            ; marcelnote - new location
+	dw SilphFactory1FWildMons       ; SILPH_FACTORY_1F             ; marcelnote - new location
+	dw NothingWildMons              ; SILPH_FACTORY_2F             ; marcelnote - new location
+	dw NothingWildMons              ; UNDERGROUND_PATH_NORTH_SOUTH
+	dw NothingWildMons              ; UNDERGROUND_PATH_WEST_EAST
+	dw NothingWildMons              ; CELADON_MART_1F2F3F
+	dw NothingWildMons              ; CELADON_MART_4F5F6F
+	dw NothingWildMons              ; CELADON_MART_ROOF
+	dw NothingWildMons              ; CELADON_MART_ELEVATOR
 	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons
@@ -189,11 +181,9 @@ WildDataPointers:
 	dw NothingWildMons
 	dw SeafoamIslands1FWildMons
 	dw NothingWildMons
-	dw VictoryRoad2FWildMons
 	dw NothingWildMons
 	dw NothingWildMons
 	dw DiglettsCaveWildMons
-	dw VictoryRoad3FWildMons
 	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons
@@ -233,9 +223,12 @@ WildDataPointers:
 	dw NothingWildMons           ; SILPH_CO_10F
 	dw NothingWildMons           ; SILPH_CO_11F
 	dw NothingWildMons           ; SILPH_CO_ELEVATOR
-	dw MtSilver1FWildMons        ; MT_SILVER_1F ; marcelnote - new location
-	dw MtSilver2FWildMons        ; MT_SILVER_2F ; marcelnote - new location
-	dw NothingWildMons           ; MT_SILVER_3F ; marcelnote - new location
+	dw MtSilver1FWildMons        ; MT_SILVER_1F          ; marcelnote - new location
+	dw MtSilver2FWildMons        ; MT_SILVER_2F          ; marcelnote - new location
+	dw NothingWildMons           ; MT_SILVER_3F          ; marcelnote - new location
+	dw VictoryRoad1FWildMons     ; VICTORY_ROAD_1F
+	dw VictoryRoad2FWildMons     ; VICTORY_ROAD_2F
+	dw VictoryRoad3FWildMons     ; VICTORY_ROAD_3F
 	dw NothingWildMons           ; INDIGO_PLATEAU_LOBBY
 	dw NothingWildMons           ; LORELEIS_ROOM
 	dw NothingWildMons           ; BRUNOS_ROOM
