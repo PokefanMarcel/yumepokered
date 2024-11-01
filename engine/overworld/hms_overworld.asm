@@ -20,6 +20,9 @@ CheckForSurf:: ; marcelnote - could be improved if there is a wram bit which che
 	call CheckForTilePairCollisions
 	ret z
 ; there is no blocking tile
+;;;;;;
+; marcelnote - here should first check if SURFBOARD in bag
+;;;;;;
 	ld d, SURF
 	call IsMoveInParty ; output: z flag = whether the move was found (z = not found; nz = found)
 	jr z, .noSurfInParty
@@ -48,24 +51,16 @@ CheckForCut::
 	bit BIT_CASCADEBADGE, a
 	ret z
 ; we have the right badge
-	ld a, [wCurMapTileset]
+	ld a, [wCurMapTileset] ; cut trees in OVERWORLD and GYM
 	and a ; overworld
 	jr z, .overworld
 	cp GYM
 	ret nz
-	;jr z, .gym
-	;cp CAVERN
-	;ld a, [wTileInFrontOfPlayer]
-	;cp $54 ; cavern cut tree
-	;jr nz, .fail
-	;jr .cuttableTile
-;.gym
 	ld a, [wTileInFrontOfPlayer]
 	cp $50 ; gym cut tree
 	ret nz
 	jr .cuttableTile
 .overworld
-	;dec a
 	ld a, [wTileInFrontOfPlayer]
 	cp $3d  ; overworld cut tree
 	ret nz  ; we don't check for grass, differently from vanilla
@@ -182,6 +177,9 @@ CheckForStrength:: ; marcelnote - this function is different from the others bec
 
 
 IsSurfingAllowedOverworld:
+; marcelnote - this is essentially a copy of IsSurfingAllowed which
+;              uses call EnableAutoTextBoxDrawing, tx_pre_jump, ret
+;              instead of jp PrintText ; there's probably a way to merge both
 ; Returns whether surfing is allowed in bit 1 of wStatusFlags1.
 ; Surfing isn't allowed on the Cycling Road or in the lowest level of the
 ; Seafoam Islands before the current has been slowed with boulders.
@@ -227,8 +225,6 @@ WantToSurfText::
 	jr nz, .saidNo
 	ld hl, SurfingGotOnText
 	call PrintText
-	;call TextScriptEnd
-	;ret nz
 .saidNo
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
@@ -243,8 +239,6 @@ WantToCutText::
 	jr nz, .saidNo
 	ld hl, UsedCutText
 	call PrintText
-	;call TextScriptEnd
-	;ret
 .saidNo
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
