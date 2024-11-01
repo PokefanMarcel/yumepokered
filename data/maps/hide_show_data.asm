@@ -110,14 +110,6 @@ MapHSPointers:
 	dw SSAnne1FRoomsHS
 	dw SSAnne2FRoomsHS
 	dw SSAnneB1FRoomsHS
-	dw CinnabarVolcano1FB1FHS ; $69 ; marcelnote - CinnabarVolcano1FB1F
-	dw CinnabarVolcano2FHS    ; $6A ; marcelnote - CinnabarVolcano2F
-	dw NoHS
-	dw NoHS                ; $6E ; marcelnote - MandarinSurfShop
-	dw MandarinHotelHS     ; $6F ; marcelnote - MandarinHotel
-	dw MandarinSilphCoHS   ; $70 ; marcelnote - MandarinSilphCo
-	dw SilphFactory1FHS    ; $72 ; marcelnote - SilphFactory1F
-	dw SilphFactory2FHS    ; $73 ; marcelnote - SilphFactory2F
 	dw NoHS
 	dw NoHS
 	dw NoHS
@@ -135,7 +127,6 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw NoHS
-	dw NoHS
 	dw PokemonTower1FHS ; marcelnote - postgame Agatha event
 	dw PokemonTower2FHS
 	dw PokemonTower3FHS
@@ -146,25 +137,11 @@ MapHSPointers:
 	dw MrFujisHouseHS
 	dw NoHS
 	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw WardensHouseHS
-	dw NoHS
-	dw FuchsiaGymHS ; marcelnote - Koga rematch
-	dw NoHS
 	dw SeafoamIslands1FHS
 	dw SeafoamIslandsB1FHS
 	dw SeafoamIslandsB2FHS
 	dw SeafoamIslandsB3FHS
 	dw SeafoamIslandsB4FHS
-	dw NoHS
-	dw NoHS
-	dw CinnabarGymHS ; marcelnote - Blaine rematch
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
 	dw NoHS
 	dw NoHS
 	dw NoHS
@@ -191,54 +168,77 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw NoHS
-	dw PokemonMansion1FHS
-	dw PokemonMansion2FHS
-	dw PokemonMansion3FHS
-	dw PokemonMansionB1FHS
-	dw SafariZoneEastHS
-	dw SafariZoneNorthHS
-	dw SafariZoneWestHS
-	dw SafariZoneCenterHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
 	dw CeruleanCave2FHS
 	dw CeruleanCaveB1FHS
 	dw CeruleanCaveHS
 	dw NoHS
 	dw NoHS
-	dw NoHS                 ; SILPH_CO_1F ; marcelnote - was SilphCo1FHS, need to restore hide/show
-	dw SilphCo2FHS          ; SILPH_CO_2F
-	dw SilphCo3FHS          ; SILPH_CO_3F
-	dw SilphCo4FHS          ; SILPH_CO_4F
-	dw SilphCo5FHS          ; SILPH_CO_5F
-	dw SilphCo6FHS          ; SILPH_CO_6F
-	dw SilphCo7FHS          ; SILPH_CO_7F
-	dw SilphCo8FHS          ; SILPH_CO_8F
-	dw SilphCo9FHS          ; SILPH_CO_9F
-	dw SilphCo10FHS         ; SILPH_CO_10F
-	dw SilphCo11FHS         ; SILPH_CO_11F
-	dw NoHS                 ; SILPH_CO_ELEVATOR
-	dw NoHS                 ; ROUTE_22_OLD_ROD_HOUSE
-	dw NoHS                 ; ROUTE_22_GATE
-	dw NoHS                 ; ROUTE_22_GATE_3F
-	dw MtSilver1FHS         ; MT_SILVER_1F         ; marcelnote - added for items
-	dw MtSilver2FHS         ; MT_SILVER_2F         ; marcelnote - added for items
-	dw MtSilver3FHS         ; MT_SILVER_3F         ; marcelnote - added for Yellow battle
-	dw VictoryRoad1FHS      ; VICTORY_ROAD_1F
-	dw VictoryRoad2FHS      ; VICTORY_ROAD_2F
-	dw VictoryRoad3FHS      ; VICTORY_ROAD_3F
-	dw IndigoPlateauLobbyHS ; INDIGO_PLATEAU_LOBBY ; marcelnote - added for girl blocking E4 entrance
-	dw LoreleisRoomHS       ; LORELEIS_ROOM        ; marcelnote - added for Lorelei rematch
-	dw BrunosRoomHS         ; BRUNOS_ROOM          ; marcelnote - added for Bruno rematch
-	dw AgathasRoomHS        ; AGATHAS_ROOM         ; marcelnote - added for Agatha rematch
-	dw LancesRoomHS         ; LANCES_ROOM          ; marcelnote - added for Lance rematch
-	dw ChampionsRoomHS      ; CHAMPIONS_ROOM
-	dw HallOfFameHS         ; HALL_OF_FAME         ; marcelnote - added for Rival rematch
-	dw NoHS                 ; TRADE_CENTER
-	dw NoHS                 ; COLOSSEUM
+	dw NoHS                   ; SILPH_CO_1F ; marcelnote - was SilphCo1FHS, need to restore hide/show
+	dw SilphCo2FHS            ; SILPH_CO_2F
+	dw SilphCo3FHS            ; SILPH_CO_3F
+	dw SilphCo4FHS            ; SILPH_CO_4F
+	dw SilphCo5FHS            ; SILPH_CO_5F
+	dw SilphCo6FHS            ; SILPH_CO_6F
+	dw SilphCo7FHS            ; SILPH_CO_7F
+	dw SilphCo8FHS            ; SILPH_CO_8F
+	dw SilphCo9FHS            ; SILPH_CO_9F
+	dw SilphCo10FHS           ; SILPH_CO_10F
+	dw SilphCo11FHS           ; SILPH_CO_11F
+	dw NoHS                   ; SILPH_CO_ELEVATOR
+	dw NoHS                   ; FUCHSIA_POKECENTER
+	dw NoHS                   ; FUCHSIA_MART
+	dw NoHS                   ; FUCHSIA_BILLS_GRANDPAS_HOUSE
+	dw WardensHouseHS         ; WARDENS_HOUSE
+	dw NoHS                   ; FUCHSIA_MEETING_ROOM
+	dw NoHS                   ; FUCHSIA_SUPER_ROD_HOUSE
+	dw NoHS                   ; FUCHSIA_MOVE_DELETER_HOUSE
+	dw FuchsiaGymHS           ; FUCHSIA_GYM
+	dw NoHS                   ; SAFARI_ZONE_GATE
+	dw SafariZoneEastHS       ; SAFARI_ZONE_EAST
+	dw SafariZoneNorthHS      ; SAFARI_ZONE_NORTH
+	dw SafariZoneWestHS       ; SAFARI_ZONE_WEST
+	dw SafariZoneCenterHS     ; SAFARI_ZONE_CENTER
+	dw NoHS                   ; SAFARI_ZONE_CENTER_REST_HOUSE
+	dw NoHS                   ; SAFARI_ZONE_SECRET_HOUSE
+	dw NoHS                   ; SAFARI_ZONE_WEST_REST_HOUSE
+	dw NoHS                   ; SAFARI_ZONE_EAST_REST_HOUSE
+	dw NoHS                   ; SAFARI_ZONE_NORTH_REST_HOUSE
+	dw NoHS                   ; CINNABAR_POKECENTER_MART
+	dw NoHS                   ; CINNABAR_LAB
+	dw NoHS                   ; CINNABAR_LAB_TRADE_ROOM
+	dw NoHS                   ; CINNABAR_LAB_METRONOME_ROOM
+	dw NoHS                   ; CINNABAR_LAB_FOSSIL_ROOM
+	dw CinnabarGymHS          ; CINNABAR_GYM         ; marcelnote - Blaine rematch
+	dw PokemonMansion1FHS     ; POKEMON_MANSION_1F
+	dw PokemonMansion2FHS     ; POKEMON_MANSION_2F
+	dw PokemonMansion3FHS     ; POKEMON_MANSION_3F
+	dw PokemonMansionB1FHS    ; POKEMON_MANSION_B1F
+	dw CinnabarVolcano1FB1FHS ; CINNABAR_VOLCANO_1FB1F
+	dw CinnabarVolcano2FHS    ; CINNABAR_VOLCANO_2F
+	dw NoHS                   ; MANDARIN_POKECENTER_MART
+	dw NoHS                   ; MANDARIN_SURF_SHOP
+	dw MandarinHotelHS        ; MANDARIN_HOTEL
+	dw MandarinSilphCoHS      ; MANDARIN_SILPH_CO
+	dw SilphFactory1FHS       ; SILPH_FACTORY_1F
+	dw SilphFactory2FHS       ; SILPH_FACTORY_2F
+	dw NoHS                   ; ROUTE_22_OLD_ROD_HOUSE
+	dw NoHS                   ; ROUTE_22_GATE
+	dw NoHS                   ; ROUTE_22_GATE_3F
+	dw MtSilver1FHS           ; MT_SILVER_1F         ; marcelnote - added for items
+	dw MtSilver2FHS           ; MT_SILVER_2F         ; marcelnote - added for items
+	dw MtSilver3FHS           ; MT_SILVER_3F         ; marcelnote - added for Yellow battle
+	dw VictoryRoad1FHS        ; VICTORY_ROAD_1F
+	dw VictoryRoad2FHS        ; VICTORY_ROAD_2F
+	dw VictoryRoad3FHS        ; VICTORY_ROAD_3F
+	dw IndigoPlateauLobbyHS   ; INDIGO_PLATEAU_LOBBY ; marcelnote - added for girl blocking E4 entrance
+	dw LoreleisRoomHS         ; LORELEIS_ROOM        ; marcelnote - added for Lorelei rematch
+	dw BrunosRoomHS           ; BRUNOS_ROOM          ; marcelnote - added for Bruno rematch
+	dw AgathasRoomHS          ; AGATHAS_ROOM         ; marcelnote - added for Agatha rematch
+	dw LancesRoomHS           ; LANCES_ROOM          ; marcelnote - added for Lance rematch
+	dw ChampionsRoomHS        ; CHAMPIONS_ROOM
+	dw HallOfFameHS           ; HALL_OF_FAME         ; marcelnote - added for Rival rematch
+	dw NoHS                   ; TRADE_CENTER
+	dw NoHS                   ; COLOSSEUM
 	assert_table_length NUM_MAPS
 	dw -1 ; end
 
