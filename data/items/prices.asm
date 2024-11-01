@@ -29,7 +29,7 @@ ItemPrices::
 	bcd3 0     ; ITEM_1B
 	bcd3 0     ; ITEM_1C
 	bcd3 550   ; ESCAPE_ROPE
-	bcd3 200   ; REPEL          ; marcelnote - changed from 350
+	bcd3 200   ; REPEL          ; marcelnote - changed from 350, 100/200 = .50 step per ¥
 	bcd3 0     ; OLD_AMBER
 	bcd3 2100  ; FIRE_STONE
 	bcd3 2100  ; THUNDER_STONE
@@ -55,8 +55,8 @@ ItemPrices::
 	bcd3 1500  ; REVIVE
 	bcd3 4000  ; MAX_REVIVE
 	bcd3 700   ; GUARD_SPEC
-	bcd3 350   ; SUPER_REPEL   ; marcelnote - changed from 500
-	bcd3 400   ; MAX_REPEL     ; marcelnote - changed from 700
+	bcd3 350   ; SUPER_REPEL   ; marcelnote - changed from 500, 200/350 = .57 step per ¥
+	bcd3 400   ; MAX_REPEL     ; marcelnote - changed from 700, 250/400 = .63 step per ¥
 	bcd3 650   ; DIRE_HIT
 	bcd3 10    ; COIN
 	bcd3 200   ; FRESH_WATER
