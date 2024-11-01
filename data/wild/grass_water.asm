@@ -52,7 +52,6 @@ WildDataPointers:
 	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons
-	dw NothingWildMons
 	dw ViridianForestWildMons ; ViridianForest
 	dw NothingWildMons
 	dw NothingWildMons
@@ -106,12 +105,10 @@ WildDataPointers:
 	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons
-	dw NothingWildMons
 	dw CinnabarVolcano1FB1FWildMons ; $69 ; marcelnote - CinnabarVolcano1FB1F
 	dw CinnabarVolcano2FWildMons    ; $6A ; marcelnote - CinnabarVolcano2F
 	dw NothingWildMons
 	dw VictoryRoad1FWildMons
-	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons
@@ -247,9 +244,10 @@ WildDataPointers:
 	dw MtSilver2FWildMons ; $F2 ; marcelnote - new location
 	dw NothingWildMons
 	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
+	dw NothingWildMons ; LORELEIS_ROOM
+	dw NothingWildMons ; BRUNOS_ROOM
+	dw NothingWildMons ; AGATHAS_ROOM
+	dw NothingWildMons ; LANCES_ROOM
 	assert_table_length NUM_MAPS
 	dw -1 ; end
 

@@ -63,7 +63,6 @@ DEF FIRST_ROUTE_MAP EQU const_value
 	map_const ROUTE_28,                      39,  9 ; $24bis ; marcelnote - testing
 DEF FIRST_INDOOR_MAP EQU const_value
 	map_const REDS_YELLOWS_HOUSES,           25,  4 ; $25 ; marcelnote - merged RedsHouse floors, added YellowsHouse
-	map_const UNUSED_MAP_26,                  0,  0 ; $26 ; marcelnote - was REDS_HOUSE_2F
 	map_const BLUES_AIDES_HOUSES,            11,  4 ; $27 ; marcelnote - added Aide's house
 	map_const OAKS_LAB,                       5,  6 ; $28
 	map_const VIRIDIAN_POKECENTER,            7,  4 ; $29
@@ -111,7 +110,6 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const POWER_PLANT,                   20, 18 ; $53
 	map_const ROUTE_11_GATE,                  4, 11 ; $54 ; marcelnote - merged ROUTE_11_GATE floors
 	map_const DIGLETTS_CAVE_ROUTE_11,         4,  4 ; $55
-	map_const PALLET_HOUSES,                 11,  4 ; $56 ; marcelnote - was ROUTE_11_GATE_2F
 	map_const ROUTE_12_GATE,                 11,  4 ; $57 ; marcelnote - merged ROUTE_12_GATE floors
 	map_const BILLS_HOUSE,                    4,  4 ; $58
 	map_const VERMILION_POKECENTER,           7,  4 ; $59
@@ -138,7 +136,6 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const MANDARIN_SURF_SHOP,             4,  4 ; $6E ; marcelnote - was UNUSED_MAP_6E
 	map_const MANDARIN_HOTEL,                33,  6 ; $6F ; marcelnote - was UNUSED_MAP_6F
 	map_const MANDARIN_SILPH_CO,              4, 25 ; $70 ; marcelnote - was UNUSED_MAP_70
-	map_const LANCES_ROOM,                   13, 13 ; $71
 	map_const SILPH_FACTORY_1F,              14, 13 ; $72 ; marcelnote - was UNUSED_MAP_72
 	map_const SILPH_FACTORY_2F,              15, 14 ; $73 ; marcelnote - was UNUSED_MAP_73
 	map_const UNUSED_MAP_74,                  0,  0 ; $74
@@ -273,6 +270,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const LORELEIS_ROOM,                  5,  6 ; $F5
 	map_const BRUNOS_ROOM,                    5,  6 ; $F6
 	map_const AGATHAS_ROOM,                   5,  6 ; $F7
+	map_const LANCES_ROOM,                   13, 13 ; $71
 DEF NUM_MAPS EQU const_value
 
 ; Indoor maps, such as houses, use this as the Map ID in their exit warps
