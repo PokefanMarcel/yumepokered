@@ -84,6 +84,7 @@ MapSongBanks::
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; UNDERGROUND_PATH_ROUTE_8
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; ROCK_TUNNEL_POKECENTER
 	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) ; ROCK_TUNNEL_1F
+	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) ; ROCK_TUNNEL_B1F
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; POWER_PLANT
 	db MUSIC_VERMILION, BANK(Music_Vermilion) ; ROUTE_11_GATE ; marcelnote - merged ROUTE_11_GATE floors
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; DIGLETTS_CAVE_ROUTE_11
@@ -148,21 +149,19 @@ MapSongBanks::
 	db MUSIC_CITIES2, BANK(Music_Cities2) ; SAFARI_ZONE_GATE
 	db MUSIC_GYM, BANK(Music_Gym) ; FUCHSIA_GYM
 	db MUSIC_CITIES2, BANK(Music_Cities2) ; FUCHSIA_MEETING_ROOM
+	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; SEAFOAM_ISLANDS_1F
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; SEAFOAM_ISLANDS_B1F
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; SEAFOAM_ISLANDS_B2F
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; SEAFOAM_ISLANDS_B3F
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; SEAFOAM_ISLANDS_B4F
 	db MUSIC_CITIES2, BANK(Music_Cities2) ; VERMILION_GOOD_ROD_HOUSE ; marcelnote - from Old to Good Rod
 	db MUSIC_CITIES2, BANK(Music_Cities2) ; FUCHSIA_SUPER_ROD_HOUSE ; marcelnote - from Good to Super Rod
-	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; POKEMON_MANSION_1F
 	db MUSIC_GYM, BANK(Music_Gym) ; CINNABAR_GYM
 	db MUSIC_CINNABAR, BANK(Music_Cinnabar) ; CINNABAR_LAB
 	db MUSIC_CINNABAR, BANK(Music_Cinnabar) ; CINNABAR_LAB_TRADE_ROOM
 	db MUSIC_CINNABAR, BANK(Music_Cinnabar) ; CINNABAR_LAB_METRONOME_ROOM
 	db MUSIC_CINNABAR, BANK(Music_Cinnabar) ; CINNABAR_LAB_FOSSIL_ROOM
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; CINNABAR_POKECENTER_MART ; marcelnote - merged Cinnabar Pokecenter and Mart
-	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; $AC ; marcelnote - was CINNABAR_MART, now unused
-	db MUSIC_CINNABAR, BANK(Music_Cinnabar) ; $AD ; marcelnote - was CINNABAR_MART_COPY, now unused
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; COPYCATS_HOUSE_1F
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; COPYCATS_HOUSE_2F
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; FIGHTING_DOJO
@@ -179,9 +178,6 @@ MapSongBanks::
 	db MUSIC_CELADON, BANK(Music_Celadon) ; ROUTE_12_FISHING_GUIDE_HOUSE ; marcelnote - from Super Rod to Fishing Guide
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; ROUTE_18_GATE ; marcelnote - merged ROUTE_18_GATE floors
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; $BF ; CELADON_GROVE_NORTH_GATE ; marcelnote - was ROUTE_18_GATE_2F
-	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; SEAFOAM_ISLANDS_1F
-	db MUSIC_GYM, BANK(Music_Gym) ; ROUTE_22_GATE ; marcelnote - changed from MUSIC_DUNGEON2
-	db MUSIC_GYM, BANK(Music_Gym) ; ROUTE_22_GATE_3F ; marcelnote - was ROUTE_12_GATE_2F
 	db MUSIC_VERMILION, BANK(Music_Vermilion) ; VERMILION_TRADE_HOUSE
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; DIGLETTS_CAVE
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; ROCKET_HIDEOUT_B1F
@@ -189,9 +185,9 @@ MapSongBanks::
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; ROCKET_HIDEOUT_B3F
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; ROCKET_HIDEOUT_B4F
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; ROCKET_HIDEOUT_ELEVATOR
-	db MUSIC_CITIES2, BANK(Music_Cities2) ; ROUTE_22_OLD_ROD_HOUSE ; marcelnote - new location
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; CD ; POKEMON_ACADEMY_1F2F ; marcelnote - new location
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; CE ; POKEMON_ACADEMY_3F4F ; marcelnote - new location
+	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; POKEMON_MANSION_1F
 	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; POKEMON_MANSION_2F
 	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; POKEMON_MANSION_3F
 	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; POKEMON_MANSION_B1F
@@ -210,7 +206,6 @@ MapSongBanks::
 	db MUSIC_CITIES2, BANK(Music_Cities2) ; NAME_RATERS_HOUSE
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; CERULEAN_BADGE_HOUSE
 	db MUSIC_ROUTES3, BANK(Music_Routes3) ; MT_MOON_SQUARE ; marcelnote - new location
-	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) ; ROCK_TUNNEL_B1F
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_1F
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_2F
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_3F
@@ -223,9 +218,12 @@ MapSongBanks::
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_10F
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_11F
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_ELEVATOR
-	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; MT_SILVER_1F ; marcelnote - new location
-	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; MT_SILVER_2F ; marcelnote - new location
-	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; MT_SILVER_3F ; marcelnote - new location
+	db MUSIC_CITIES2, BANK(Music_Cities2)              ; ROUTE_22_OLD_ROD_HOUSE ; marcelnote - new location
+	db MUSIC_GYM, BANK(Music_Gym)                      ; ROUTE_22_GATE          ; marcelnote - changed from MUSIC_DUNGEON2
+	db MUSIC_GYM, BANK(Music_Gym)                      ; ROUTE_22_GATE_3F       ; marcelnote - was ROUTE_12_GATE_2F
+	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; MT_SILVER_1F           ; marcelnote - new location
+	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; MT_SILVER_2F           ; marcelnote - new location
+	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; MT_SILVER_3F           ; marcelnote - new location
 	db MUSIC_DUNGEON3, BANK(Music_Dungeon3)            ; VICTORY_ROAD_1F
 	db MUSIC_DUNGEON3, BANK(Music_Dungeon3)            ; VICTORY_ROAD_2F
 	db MUSIC_DUNGEON3, BANK(Music_Dungeon3)            ; VICTORY_ROAD_3F

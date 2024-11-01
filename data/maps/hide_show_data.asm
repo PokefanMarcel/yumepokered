@@ -85,8 +85,9 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS              ; ROCK_TUNNEL_POKECENTER
+	dw NoHS              ; ROCK_TUNNEL_1F
+	dw NoHS              ; ROCK_TUNNEL_B1F
 	dw PowerPlantHS
 	dw NoHS
 	dw NoHS
@@ -151,16 +152,14 @@ MapHSPointers:
 	dw NoHS
 	dw FuchsiaGymHS ; marcelnote - Koga rematch
 	dw NoHS
+	dw SeafoamIslands1FHS
 	dw SeafoamIslandsB1FHS
 	dw SeafoamIslandsB2FHS
 	dw SeafoamIslandsB3FHS
 	dw SeafoamIslandsB4FHS
 	dw NoHS
 	dw NoHS
-	dw PokemonMansion1FHS
 	dw CinnabarGymHS ; marcelnote - Blaine rematch
-	dw NoHS
-	dw NoHS
 	dw NoHS
 	dw NoHS
 	dw NoHS
@@ -182,9 +181,6 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw NoHS
-	dw SeafoamIslands1FHS
-	dw NoHS
-	dw NoHS
 	dw NoHS
 	dw NoHS
 	dw RocketHideoutB1FHS
@@ -192,9 +188,9 @@ MapHSPointers:
 	dw RocketHideoutB3FHS
 	dw RocketHideoutB4FHS
 	dw NoHS
-	dw NoHS ; $CC ; marcelnote - Route22OldRodHouse
 	dw NoHS
 	dw NoHS
+	dw PokemonMansion1FHS
 	dw PokemonMansion2FHS
 	dw PokemonMansion3FHS
 	dw PokemonMansionB1FHS
@@ -212,8 +208,7 @@ MapHSPointers:
 	dw CeruleanCaveHS
 	dw NoHS
 	dw NoHS
-	dw MtMoonSquareHS ; $E7 ; marcelnote - MtMoonSquare
-	dw NoHS
+	dw MtMoonSquareHS       ; $E7 ; marcelnote - MtMoonSquare
 	dw NoHS                 ; SILPH_CO_1F ; marcelnote - was SilphCo1FHS, need to restore hide/show
 	dw SilphCo2FHS          ; SILPH_CO_2F
 	dw SilphCo3FHS          ; SILPH_CO_3F
@@ -226,6 +221,9 @@ MapHSPointers:
 	dw SilphCo10FHS         ; SILPH_CO_10F
 	dw SilphCo11FHS         ; SILPH_CO_11F
 	dw NoHS                 ; SILPH_CO_ELEVATOR
+	dw NoHS                 ; ROUTE_22_OLD_ROD_HOUSE
+	dw NoHS                 ; ROUTE_22_GATE
+	dw NoHS                 ; ROUTE_22_GATE_3F
 	dw MtSilver1FHS         ; MT_SILVER_1F         ; marcelnote - added for items
 	dw MtSilver2FHS         ; MT_SILVER_2F         ; marcelnote - added for items
 	dw MtSilver3FHS         ; MT_SILVER_3F         ; marcelnote - added for Yellow battle

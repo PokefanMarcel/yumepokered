@@ -72,7 +72,7 @@ InternalMapEntries:
 	internal_map UNDERGROUND_PATH_ROUTE_6_COPY, 10,  7, Route6Name
 	internal_map UNDERGROUND_PATH_ROUTE_7_COPY,  8,  5, Route7Name
 	internal_map UNDERGROUND_PATH_ROUTE_8,      12,  5, Route8Name
-	internal_map ROCK_TUNNEL_1F,                14,  3, RockTunnelName
+	internal_map ROCK_TUNNEL_B1F,               14,  3, RockTunnelName
 	internal_map POWER_PLANT,                   15,  3, PowerPlantName
 	internal_map DIGLETTS_CAVE_ROUTE_11,        13,  9, Route11Name ; marcelnote - merged ROUTE_11_GATE floors
 	internal_map ROUTE_12_GATE,                 14,  7, Route12Name ; marcelnote - merged ROUTE_12_GATE floors
@@ -95,7 +95,6 @@ InternalMapEntries:
 	internal_map SEAFOAM_ISLANDS_B4F,            6, 15, SeafoamIslandsName
 	internal_map VERMILION_GOOD_ROD_HOUSE,      10,  9, VermilionCityName ; marcelnote - from Old to Good Rod
 	internal_map FUCHSIA_SUPER_ROD_HOUSE,        9, 13, FuchsiaCityName ; marcelnote - from Good to Super Rod
-	internal_map POKEMON_MANSION_1F,             3, 15, PokemonMansionName
 	internal_map CINNABAR_POKECENTER_MART,       3, 15, CinnabarIslandName ; marcelnote - merged Cinnabar Pokecenter and Mart
 	internal_map MR_PSYCHICS_HOUSE,             10,  5, SaffronCityName
 	internal_map ROUTE_15_GATE,                 10, 13, Route15Name ; marcelnote - merged Route15Gate floors
@@ -106,12 +105,9 @@ InternalMapEntries:
 	internal_map ROUTE_12_FISHING_GUIDE_HOUSE,  14, 10, Route12Name ; marcelnote - from Super Rod to Fishing Guide
 	internal_map ROUTE_18_GATE,                  7, 13, Route18Name ; marcelnote - merged Route18Gate floors
 	internal_map CELADON_GROVE_NORTH_GATE,       6,  3, Route3Name ; marcelnote - new location
-	internal_map SEAFOAM_ISLANDS_1F,             6, 15, SeafoamIslandsName
-	internal_map ROUTE_22_GATE_3F,               1,  7, Route22Name ; marcelnote - was ROUTE_12_GATE_2F
 	internal_map VERMILION_TRADE_HOUSE,         10,  9, VermilionCityName
 	internal_map DIGLETTS_CAVE,                 11,  8, DiglettsCaveName
 	internal_map ROCKET_HIDEOUT_ELEVATOR,        7,  5, RocketHQName ; marcelnote - adjusted
-	internal_map ROUTE_22_OLD_ROD_HOUSE,         2,  8, Route22Name ; marcelnote - new location
 	internal_map POKEMON_ACADEMY_3F4F,          10,  5, PokemonAcademyName ; marcelnote - new location
 	internal_map POKEMON_MANSION_B1F,            3, 15, PokemonMansionName
 	internal_map SAFARI_ZONE_NORTH_REST_HOUSE,   9, 12, SafariZoneName
@@ -119,8 +115,9 @@ InternalMapEntries:
 	internal_map NAME_RATERS_HOUSE,             14,  5, LavenderTownName
 	internal_map CERULEAN_BADGE_HOUSE,          10,  2, CeruleanCityName
 	internal_map MT_MOON_SQUARE,                 6,  2, MountMoonName     ; marcelnote - new location
-	internal_map ROCK_TUNNEL_B1F,               14,  3, RockTunnelName
 	internal_map SILPH_CO_ELEVATOR,             10,  5, SilphCoName
+	internal_map ROUTE_22_OLD_ROD_HOUSE,         2,  8, Route22Name       ; marcelnote - new location
+	internal_map ROUTE_22_GATE_3F,               1,  7, Route22Name       ; marcelnote - new location
 	internal_map MT_SILVER_3F,                   0,  7, MtSilverName      ; marcelnote - new location
 	internal_map VICTORY_ROAD_3F,                1,  4, VictoryRoadName
 	internal_map INDIGO_PLATEAU_LOBBY,           1,  2, IndigoPlateauName
