@@ -56,7 +56,7 @@ ItemPrices::
 	bcd3 4000  ; MAX_REVIVE
 	bcd3 700   ; GUARD_SPEC
 	bcd3 350   ; SUPER_REPEL   ; marcelnote - changed from 500
-	bcd3 450   ; MAX_REPEL     ; marcelnote - changed from 700
+	bcd3 400   ; MAX_REPEL     ; marcelnote - changed from 700
 	bcd3 650   ; DIRE_HIT
 	bcd3 10    ; COIN
 	bcd3 200   ; FRESH_WATER
