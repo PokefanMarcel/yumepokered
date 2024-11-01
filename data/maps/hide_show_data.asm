@@ -10,11 +10,11 @@ MapHSPointers:
 	dw NoHS            ; LAVENDER_TOWN
 	dw NoHS            ; VERMILION_CITY
 	dw NoHS            ; CELADON_CITY
+	dw SaffronCityHS   ; SAFFRON_CITY
 	dw NoHS            ; FUCHSIA_CITY
 	dw NoHS            ; CINNABAR_ISLAND
 	dw NoHS            ; MANDARIN_ISLAND ; marcelnote - new map
 	dw NoHS            ; INDIGO_PLATEAU
-	dw SaffronCityHS   ; SAFFRON_CITY
 	dw NoHS            ; UNUSED_MAP_0B
 	dw Route1HS        ; ROUTE_1 ; marcelnote - added for postgame Oak battle
 	dw Route2HS
