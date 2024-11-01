@@ -1059,12 +1059,10 @@ SECTION "Maps 19", ROMX
 
 CopycatsHouse1F_Blocks: INCBIN "maps/CopycatsHouse1F.blk"
 
-;CinnabarMart_Blocks:
 PewterMart_Blocks: INCBIN "maps/PewterMart.blk"
 
 FuchsiaBillsGrandpasHouse_Blocks: INCBIN "maps/FuchsiaBillsGrandpasHouse.blk"
 
-;CinnabarPokecenter_Blocks:
 FuchsiaPokecenter_Blocks: INCBIN "maps/FuchsiaPokecenter.blk"
 
 CinnabarPokecenterMart_Blocks: INCBIN "maps/CinnabarPokecenterMart.blk"
