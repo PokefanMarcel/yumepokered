@@ -130,14 +130,6 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const SS_ANNE_1F_ROOMS,              12,  8 ; $66
 	map_const SS_ANNE_2F_ROOMS,              12,  8 ; $67
 	map_const SS_ANNE_B1F_ROOMS,             12,  8 ; $68
-	map_const CINNABAR_VOLCANO_1FB1F,        14, 18 ; $69 ; marcelnote - new location
-	map_const CINNABAR_VOLCANO_2F,           17, 15 ; $6A ; marcelnote - new location
-	map_const MANDARIN_POKECENTER_MART,      14,  4 ; $6D ; marcelnote - was UNUSED_MAP_6D
-	map_const MANDARIN_SURF_SHOP,             4,  4 ; $6E ; marcelnote - was UNUSED_MAP_6E
-	map_const MANDARIN_HOTEL,                33,  6 ; $6F ; marcelnote - was UNUSED_MAP_6F
-	map_const MANDARIN_SILPH_CO,              4, 25 ; $70 ; marcelnote - was UNUSED_MAP_70
-	map_const SILPH_FACTORY_1F,              14, 13 ; $72 ; marcelnote - was UNUSED_MAP_72
-	map_const SILPH_FACTORY_2F,              15, 14 ; $73 ; marcelnote - was UNUSED_MAP_73
 	map_const UNDERGROUND_PATH_NORTH_SOUTH,   4, 24 ; $77 ; UndergroundPathNorthSouth.blk is actually 4x23
 	map_const UNDERGROUND_PATH_WEST_EAST,    25,  4 ; $79
 	map_const CELADON_MART_1F2F3F,           10, 18 ; $7A ; marcelnote - merged 1F 2F 3F
@@ -150,7 +142,6 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const CELADON_POKECENTER,             7,  4 ; $85
 	map_const CELADON_GYM,                    5,  9 ; $86
 	map_const GAME_CORNER,                   10,  9 ; $87
-	map_const FUCHSIA_MOVE_DELETER_HOUSE,     4,  4 ; $88 ; marcelnote - new location, was CELADON_MART_5F
 	map_const GAME_CORNER_PRIZE_ROOM,         5,  4 ; $89
 	map_const CELADON_DINER,                  5,  4 ; $8A
 	map_const CELADON_CHIEF_HOUSE,            4,  4 ; $8B
@@ -166,26 +157,13 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const MR_FUJIS_HOUSE,                 4,  4 ; $95
 	map_const UNUSED_MAP_96,                  4,  4 ; $96 ; marcelnote - was LAVENDER_MART, now unused
 	map_const LAVENDER_CUBONE_HOUSE,          4,  4 ; $97
-	map_const FUCHSIA_MART,                   4,  4 ; $98
-	map_const FUCHSIA_BILLS_GRANDPAS_HOUSE,   4,  4 ; $99
-	map_const FUCHSIA_POKECENTER,             7,  4 ; $9A
-	map_const WARDENS_HOUSE,                  5,  4 ; $9B
-	map_const SAFARI_ZONE_GATE,               4,  3 ; $9C
-	map_const FUCHSIA_GYM,                    5,  9 ; $9D
-	map_const FUCHSIA_MEETING_ROOM,           7,  4 ; $9E
+	;map_const SAFARI_ZONE_GATE,               4,  3 ; $9C
 	map_const SEAFOAM_ISLANDS_1F,            15,  9 ; $C0
 	map_const SEAFOAM_ISLANDS_B1F,           15,  9 ; $9F
 	map_const SEAFOAM_ISLANDS_B2F,           15,  9 ; $A0
 	map_const SEAFOAM_ISLANDS_B3F,           15,  9 ; $A1
 	map_const SEAFOAM_ISLANDS_B4F,           15,  9 ; $A2
 	map_const VERMILION_GOOD_ROD_HOUSE,       4,  4 ; $A3 ; marcelnote - from Old to Good Rod
-	map_const FUCHSIA_SUPER_ROD_HOUSE,        4,  4 ; $A4 ; marcelnote - from Good to Super Rod
-	map_const CINNABAR_GYM,                  10,  9 ; $A6
-	map_const CINNABAR_LAB,                   9,  4 ; $A7
-	map_const CINNABAR_LAB_TRADE_ROOM,        4,  4 ; $A8
-	map_const CINNABAR_LAB_METRONOME_ROOM,    4,  4 ; $A9
-	map_const CINNABAR_LAB_FOSSIL_ROOM,       4,  4 ; $AA
-	map_const CINNABAR_POKECENTER_MART,      14,  4 ; $AB ; marcelnote - merged Cinnabar Pokecenter and Mart
 	map_const COPYCATS_HOUSE_1F,              4,  4 ; $AF
 	map_const COPYCATS_HOUSE_2F,              4,  4 ; $B0
 	map_const FIGHTING_DOJO,                  5,  6 ; $B1
@@ -211,25 +189,11 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const ROCKET_HIDEOUT_ELEVATOR,        3,  4 ; $CB
 	map_const POKEMON_ACADEMY_1F2F,          19,  6 ; $CD ; marcelnote - new location
 	map_const POKEMON_ACADEMY_3F4F,          19,  6 ; $CE ; marcelnote - new location
-	map_const POKEMON_MANSION_1F,            15, 14 ; $A5
-	map_const POKEMON_MANSION_2F,            15, 14 ; $D6
-	map_const POKEMON_MANSION_3F,            15,  9 ; $D7
-	map_const POKEMON_MANSION_B1F,           15, 14 ; $D8
-	map_const SAFARI_ZONE_EAST,              15, 13 ; $D9
-	map_const SAFARI_ZONE_NORTH,             20, 18 ; $DA
-	map_const SAFARI_ZONE_WEST,              15, 13 ; $DB
-	map_const SAFARI_ZONE_CENTER,            15, 13 ; $DC
-	map_const SAFARI_ZONE_CENTER_REST_HOUSE,  4,  4 ; $DD
-	map_const SAFARI_ZONE_SECRET_HOUSE,       4,  4 ; $DE
-	map_const SAFARI_ZONE_WEST_REST_HOUSE,    4,  4 ; $DF
-	map_const SAFARI_ZONE_EAST_REST_HOUSE,    4,  4 ; $E0
-	map_const SAFARI_ZONE_NORTH_REST_HOUSE,   4,  4 ; $E1
 	map_const CERULEAN_CAVE_2F,              15,  9 ; $E2
 	map_const CERULEAN_CAVE_B1F,             15,  9 ; $E3
 	map_const CERULEAN_CAVE_1F,              15,  9 ; $E4
 	map_const NAME_RATERS_HOUSE,              4,  4 ; $E5
 	map_const CERULEAN_BADGE_HOUSE,           4,  4 ; $E6
-	;map_const MT_MOON_SQUARE,                12,  6 ; $E7 ; marcelnote - new location
 	map_const SILPH_CO_1F,                   15,  9 ; $B5
 	map_const SILPH_CO_2F,                   15,  9 ; $CF
 	map_const SILPH_CO_3F,                   15,  9 ; $D0
@@ -242,6 +206,42 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const SILPH_CO_10F,                   8,  9 ; $EA
 	map_const SILPH_CO_11F,                   9,  9 ; $EB
 	map_const SILPH_CO_ELEVATOR,              2,  2 ; $EC
+	map_const FUCHSIA_POKECENTER,             7,  4 ; $9A
+	map_const FUCHSIA_MART,                   4,  4 ; $98
+	map_const FUCHSIA_BILLS_GRANDPAS_HOUSE,   4,  4 ; $99
+	map_const WARDENS_HOUSE,                  5,  4 ; $9B
+	map_const FUCHSIA_MEETING_ROOM,           7,  4 ; $9E
+	map_const FUCHSIA_SUPER_ROD_HOUSE,        4,  4 ; $A4 ; marcelnote - from Good to Super Rod
+	map_const FUCHSIA_MOVE_DELETER_HOUSE,     4,  4 ; $88 ; marcelnote - new location, was CELADON_MART_5F
+	map_const FUCHSIA_GYM,                    5,  9 ; $9D
+	map_const SAFARI_ZONE_GATE,               4,  3 ; $9C
+	map_const SAFARI_ZONE_EAST,              15, 13 ; $D9
+	map_const SAFARI_ZONE_NORTH,             20, 18 ; $DA
+	map_const SAFARI_ZONE_WEST,              15, 13 ; $DB
+	map_const SAFARI_ZONE_CENTER,            15, 13 ; $DC
+	map_const SAFARI_ZONE_CENTER_REST_HOUSE,  4,  4 ; $DD
+	map_const SAFARI_ZONE_SECRET_HOUSE,       4,  4 ; $DE
+	map_const SAFARI_ZONE_WEST_REST_HOUSE,    4,  4 ; $DF
+	map_const SAFARI_ZONE_EAST_REST_HOUSE,    4,  4 ; $E0
+	map_const SAFARI_ZONE_NORTH_REST_HOUSE,   4,  4 ; $E1
+	map_const CINNABAR_POKECENTER_MART,      14,  4 ; $AB ; marcelnote - merged Cinnabar Pokecenter and Mart
+	map_const CINNABAR_LAB,                   9,  4 ; $A7
+	map_const CINNABAR_LAB_TRADE_ROOM,        4,  4 ; $A8
+	map_const CINNABAR_LAB_METRONOME_ROOM,    4,  4 ; $A9
+	map_const CINNABAR_LAB_FOSSIL_ROOM,       4,  4 ; $AA
+	map_const CINNABAR_GYM,                  10,  9 ; $A6
+	map_const POKEMON_MANSION_1F,            15, 14 ; $A5
+	map_const POKEMON_MANSION_2F,            15, 14 ; $D6
+	map_const POKEMON_MANSION_3F,            15,  9 ; $D7
+	map_const POKEMON_MANSION_B1F,           15, 14 ; $D8
+	map_const CINNABAR_VOLCANO_1FB1F,        14, 18 ; $69 ; marcelnote - new location
+	map_const CINNABAR_VOLCANO_2F,           17, 15 ; $6A ; marcelnote - new location
+	map_const MANDARIN_POKECENTER_MART,      14,  4 ; $6D ; marcelnote - new location
+	map_const MANDARIN_SURF_SHOP,             4,  4 ; $6E ; marcelnote - new location
+	map_const MANDARIN_HOTEL,                33,  6 ; $6F ; marcelnote - new location
+	map_const MANDARIN_SILPH_CO,              4, 25 ; $70 ; marcelnote - new location
+	map_const SILPH_FACTORY_1F,              14, 13 ; $72 ; marcelnote - new location
+	map_const SILPH_FACTORY_2F,              15, 14 ; $73 ; marcelnote - new location
 	map_const ROUTE_22_OLD_ROD_HOUSE,         4,  4 ; $CC ; marcelnote - new location
 	map_const ROUTE_22_GATE,                 18,  4 ; $C1 ; marcelnote - added 2nd floor
 	map_const ROUTE_22_GATE_3F,               6,  5 ; $C3 ; marcelnote - new location, was ROUTE_12_GATE_2F

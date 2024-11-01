@@ -107,14 +107,6 @@ MapSongBanks::
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne) ; SS_ANNE_1F_ROOMS
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne) ; SS_ANNE_2F_ROOMS
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne) ; SS_ANNE_B1F_ROOMS
-	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; CINNABAR_VOLCANO_1FB1F ; marcelnote - new location
-	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; CINNABAR_VOLCANO_2F    ; marcelnote - new location
-	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; MANDARIN_POKECENTER_MART ; marcelnote - new location, was MUSIC_POKEMON_TOWER
-	db MUSIC_CINNABAR, BANK(Music_Cinnabar) ; MANDARIN_SURF_SHOP ; marcelnote - new location, was MUSIC_DUNGEON1
-	db MUSIC_CINNABAR, BANK(Music_Cinnabar) ; MANDARIN_HOTEL ; marcelnote - new location, was MUSIC_SILPH_CO
-	db MUSIC_CINNABAR, BANK(Music_Cinnabar) ; MANDARIN_SILPH_CO ; marcelnote - new location, was MUSIC_SILPH_CO
-	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; SILPH_FACTORY_1F ; marcelnote - new location, was MUSIC_SS_ANNE
-	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; SILPH_FACTORY_2F ; marcelnote - new location, was MUSIC_SS_ANNE
 	db MUSIC_ROUTES1, BANK(Music_Routes1) ; UNDERGROUND_PATH_NORTH_SOUTH
 	db MUSIC_ROUTES1, BANK(Music_Routes1) ; UNDERGROUND_PATH_WEST_EAST
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; CELADON_MART_1F2F3F ; marcelnote - merged 1F 2F 3F
@@ -127,7 +119,6 @@ MapSongBanks::
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; CELADON_POKECENTER
 	db MUSIC_GYM, BANK(Music_Gym) ; CELADON_GYM
 	db MUSIC_GAME_CORNER, BANK(Music_GameCorner) ; GAME_CORNER
-	db MUSIC_CITIES2, BANK(Music_Cities2) ; FUCHSIA_MOVE_DELETER_HOUSE ; marcelnote - new location, was CELADON_MART_5F
 	db MUSIC_CELADON, BANK(Music_Celadon) ; GAME_CORNER_PRIZE_ROOM
 	db MUSIC_CELADON, BANK(Music_Celadon) ; CELADON_DINER
 	db MUSIC_CELADON, BANK(Music_Celadon) ; CELADON_CHIEF_HOUSE
@@ -143,26 +134,12 @@ MapSongBanks::
 	db MUSIC_LAVENDER, BANK(Music_Lavender) ; MR_FUJIS_HOUSE
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; UNUSED_MAP_96 ; $96 ; marcelnote - was LAVENDER_MART, now unused
 	db MUSIC_LAVENDER, BANK(Music_Lavender) ; LAVENDER_CUBONE_HOUSE
-	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; FUCHSIA_MART
-	db MUSIC_CITIES2, BANK(Music_Cities2) ; FUCHSIA_BILLS_GRANDPAS_HOUSE
-	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; FUCHSIA_POKECENTER
-	db MUSIC_CITIES2, BANK(Music_Cities2) ; WARDENS_HOUSE
-	db MUSIC_CITIES2, BANK(Music_Cities2) ; SAFARI_ZONE_GATE
-	db MUSIC_GYM, BANK(Music_Gym) ; FUCHSIA_GYM
-	db MUSIC_CITIES2, BANK(Music_Cities2) ; FUCHSIA_MEETING_ROOM
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; SEAFOAM_ISLANDS_1F
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; SEAFOAM_ISLANDS_B1F
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; SEAFOAM_ISLANDS_B2F
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; SEAFOAM_ISLANDS_B3F
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; SEAFOAM_ISLANDS_B4F
 	db MUSIC_CITIES2, BANK(Music_Cities2) ; VERMILION_GOOD_ROD_HOUSE ; marcelnote - from Old to Good Rod
-	db MUSIC_CITIES2, BANK(Music_Cities2) ; FUCHSIA_SUPER_ROD_HOUSE ; marcelnote - from Good to Super Rod
-	db MUSIC_GYM, BANK(Music_Gym) ; CINNABAR_GYM
-	db MUSIC_CINNABAR, BANK(Music_Cinnabar) ; CINNABAR_LAB
-	db MUSIC_CINNABAR, BANK(Music_Cinnabar) ; CINNABAR_LAB_TRADE_ROOM
-	db MUSIC_CINNABAR, BANK(Music_Cinnabar) ; CINNABAR_LAB_METRONOME_ROOM
-	db MUSIC_CINNABAR, BANK(Music_Cinnabar) ; CINNABAR_LAB_FOSSIL_ROOM
-	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; CINNABAR_POKECENTER_MART ; marcelnote - merged Cinnabar Pokecenter and Mart
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; COPYCATS_HOUSE_1F
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; COPYCATS_HOUSE_2F
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; FIGHTING_DOJO
@@ -188,52 +165,75 @@ MapSongBanks::
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; ROCKET_HIDEOUT_ELEVATOR
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; CD ; POKEMON_ACADEMY_1F2F ; marcelnote - new location
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; CE ; POKEMON_ACADEMY_3F4F ; marcelnote - new location
-	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; POKEMON_MANSION_1F
-	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; POKEMON_MANSION_2F
-	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; POKEMON_MANSION_3F
-	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; POKEMON_MANSION_B1F
-	db MUSIC_SAFARI_ZONE, BANK(Music_SafariZone) ; SAFARI_ZONE_EAST
-	db MUSIC_SAFARI_ZONE, BANK(Music_SafariZone) ; SAFARI_ZONE_NORTH
-	db MUSIC_SAFARI_ZONE, BANK(Music_SafariZone) ; SAFARI_ZONE_WEST
-	db MUSIC_SAFARI_ZONE, BANK(Music_SafariZone) ; SAFARI_ZONE_CENTER
-	db MUSIC_SAFARI_ZONE, BANK(Music_SafariZone) ; SAFARI_ZONE_CENTER_REST_HOUSE
-	db MUSIC_SAFARI_ZONE, BANK(Music_SafariZone) ; SAFARI_ZONE_SECRET_HOUSE
-	db MUSIC_SAFARI_ZONE, BANK(Music_SafariZone) ; SAFARI_ZONE_WEST_REST_HOUSE
-	db MUSIC_SAFARI_ZONE, BANK(Music_SafariZone) ; SAFARI_ZONE_EAST_REST_HOUSE
-	db MUSIC_SAFARI_ZONE, BANK(Music_SafariZone) ; SAFARI_ZONE_NORTH_REST_HOUSE
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; CERULEAN_CAVE_2F
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; CERULEAN_CAVE_B1F
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; CERULEAN_CAVE_1F
 	db MUSIC_CITIES2, BANK(Music_Cities2) ; NAME_RATERS_HOUSE
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; CERULEAN_BADGE_HOUSE
-	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_1F
-	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_2F
-	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_3F
-	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_4F
-	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_5F
-	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_6F
-	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_7F
-	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_8F
-	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_9F
-	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_10F
-	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_11F
-	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_ELEVATOR
-	db MUSIC_CITIES2, BANK(Music_Cities2)              ; ROUTE_22_OLD_ROD_HOUSE ; marcelnote - new location
-	db MUSIC_GYM, BANK(Music_Gym)                      ; ROUTE_22_GATE          ; marcelnote - changed from MUSIC_DUNGEON2
-	db MUSIC_GYM, BANK(Music_Gym)                      ; ROUTE_22_GATE_3F       ; marcelnote - was ROUTE_12_GATE_2F
-	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; MT_SILVER_1F           ; marcelnote - new location
-	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; MT_SILVER_2F           ; marcelnote - new location
-	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; MT_SILVER_3F           ; marcelnote - new location
-	db MUSIC_DUNGEON3, BANK(Music_Dungeon3)            ; VICTORY_ROAD_1F
-	db MUSIC_DUNGEON3, BANK(Music_Dungeon3)            ; VICTORY_ROAD_2F
-	db MUSIC_DUNGEON3, BANK(Music_Dungeon3)            ; VICTORY_ROAD_3F
-	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; INDIGO_PLATEAU_LOBBY
-	db MUSIC_GYM, BANK(Music_Gym)                      ; LORELEIS_ROOM
-	db MUSIC_DUNGEON1, BANK(Music_Dungeon1)            ; BRUNOS_ROOM
-	db MUSIC_POKEMON_TOWER, BANK(Music_PokemonTower)   ; AGATHAS_ROOM
-	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; LANCES_ROOM
-	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; CHAMPIONS_ROOM
-	db MUSIC_PALLET_TOWN, BANK(Music_PalletTown)       ; HALL_OF_FAME
-	db MUSIC_CELADON, BANK(Music_Celadon)              ; TRADE_CENTER
-	db MUSIC_CELADON, BANK(Music_Celadon)              ; COLOSSEUM
+	db MUSIC_SILPH_CO, BANK(Music_SilphCo)                 ; SILPH_CO_1F
+	db MUSIC_SILPH_CO, BANK(Music_SilphCo)                 ; SILPH_CO_2F
+	db MUSIC_SILPH_CO, BANK(Music_SilphCo)                 ; SILPH_CO_3F
+	db MUSIC_SILPH_CO, BANK(Music_SilphCo)                 ; SILPH_CO_4F
+	db MUSIC_SILPH_CO, BANK(Music_SilphCo)                 ; SILPH_CO_5F
+	db MUSIC_SILPH_CO, BANK(Music_SilphCo)                 ; SILPH_CO_6F
+	db MUSIC_SILPH_CO, BANK(Music_SilphCo)                 ; SILPH_CO_7F
+	db MUSIC_SILPH_CO, BANK(Music_SilphCo)                 ; SILPH_CO_8F
+	db MUSIC_SILPH_CO, BANK(Music_SilphCo)                 ; SILPH_CO_9F
+	db MUSIC_SILPH_CO, BANK(Music_SilphCo)                 ; SILPH_CO_10F
+	db MUSIC_SILPH_CO, BANK(Music_SilphCo)                 ; SILPH_CO_11F
+	db MUSIC_SILPH_CO, BANK(Music_SilphCo)                 ; SILPH_CO_ELEVATOR
+	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; FUCHSIA_POKECENTER
+	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; FUCHSIA_MART
+	db MUSIC_CITIES2, BANK(Music_Cities2)                  ; FUCHSIA_BILLS_GRANDPAS_HOUSE
+	db MUSIC_CITIES2, BANK(Music_Cities2)                  ; WARDENS_HOUSE
+	db MUSIC_CITIES2, BANK(Music_Cities2)                  ; FUCHSIA_MEETING_ROOM
+	db MUSIC_CITIES2, BANK(Music_Cities2)                  ; FUCHSIA_SUPER_ROD_HOUSE    ; marcelnote - from Good to Super Rod
+	db MUSIC_CITIES2, BANK(Music_Cities2)                  ; FUCHSIA_MOVE_DELETER_HOUSE ; marcelnote - new location
+	db MUSIC_GYM, BANK(Music_Gym)                          ; FUCHSIA_GYM
+	db MUSIC_CITIES2, BANK(Music_Cities2)                  ; SAFARI_ZONE_GATE
+	db MUSIC_SAFARI_ZONE, BANK(Music_SafariZone)           ; SAFARI_ZONE_EAST
+	db MUSIC_SAFARI_ZONE, BANK(Music_SafariZone)           ; SAFARI_ZONE_NORTH
+	db MUSIC_SAFARI_ZONE, BANK(Music_SafariZone)           ; SAFARI_ZONE_WEST
+	db MUSIC_SAFARI_ZONE, BANK(Music_SafariZone)           ; SAFARI_ZONE_CENTER
+	db MUSIC_SAFARI_ZONE, BANK(Music_SafariZone)           ; SAFARI_ZONE_CENTER_REST_HOUSE
+	db MUSIC_SAFARI_ZONE, BANK(Music_SafariZone)           ; SAFARI_ZONE_SECRET_HOUSE
+	db MUSIC_SAFARI_ZONE, BANK(Music_SafariZone)           ; SAFARI_ZONE_WEST_REST_HOUSE
+	db MUSIC_SAFARI_ZONE, BANK(Music_SafariZone)           ; SAFARI_ZONE_EAST_REST_HOUSE
+	db MUSIC_SAFARI_ZONE, BANK(Music_SafariZone)           ; SAFARI_ZONE_NORTH_REST_HOUSE
+	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; CINNABAR_POKECENTER_MART   ; marcelnote - merged Cinnabar Pokecenter and Mart
+	db MUSIC_CINNABAR, BANK(Music_Cinnabar)                ; CINNABAR_LAB
+	db MUSIC_CINNABAR, BANK(Music_Cinnabar)                ; CINNABAR_LAB_TRADE_ROOM
+	db MUSIC_CINNABAR, BANK(Music_Cinnabar)                ; CINNABAR_LAB_METRONOME_ROOM
+	db MUSIC_CINNABAR, BANK(Music_Cinnabar)                ; CINNABAR_LAB_FOSSIL_ROOM
+	db MUSIC_GYM, BANK(Music_Gym)                          ; CINNABAR_GYM
+	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; POKEMON_MANSION_1F
+	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; POKEMON_MANSION_2F
+	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; POKEMON_MANSION_3F
+	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; POKEMON_MANSION_B1F
+	db MUSIC_DUNGEON2, BANK(Music_Dungeon2)                ; CINNABAR_VOLCANO_1FB1F   ; marcelnote - new location
+	db MUSIC_DUNGEON2, BANK(Music_Dungeon2)                ; CINNABAR_VOLCANO_2F      ; marcelnote - new location
+	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; MANDARIN_POKECENTER_MART ; marcelnote - new location
+	db MUSIC_CINNABAR, BANK(Music_Cinnabar)                ; MANDARIN_SURF_SHOP       ; marcelnote - new location
+	db MUSIC_CINNABAR, BANK(Music_Cinnabar)                ; MANDARIN_HOTEL           ; marcelnote - new location
+	db MUSIC_CINNABAR, BANK(Music_Cinnabar)                ; MANDARIN_SILPH_CO        ; marcelnote - new location
+	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; SILPH_FACTORY_1F         ; marcelnote - new location
+	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; SILPH_FACTORY_2F         ; marcelnote - new location
+	db MUSIC_CITIES2, BANK(Music_Cities2)                  ; ROUTE_22_OLD_ROD_HOUSE   ; marcelnote - new location
+	db MUSIC_GYM, BANK(Music_Gym)                          ; ROUTE_22_GATE            ; marcelnote - changed from MUSIC_DUNGEON2
+	db MUSIC_GYM, BANK(Music_Gym)                          ; ROUTE_22_GATE_3F         ; marcelnote - was ROUTE_12_GATE_2F
+	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau)     ; MT_SILVER_1F             ; marcelnote - new location
+	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau)     ; MT_SILVER_2F             ; marcelnote - new location
+	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau)     ; MT_SILVER_3F             ; marcelnote - new location
+	db MUSIC_DUNGEON3, BANK(Music_Dungeon3)                ; VICTORY_ROAD_1F
+	db MUSIC_DUNGEON3, BANK(Music_Dungeon3)                ; VICTORY_ROAD_2F
+	db MUSIC_DUNGEON3, BANK(Music_Dungeon3)                ; VICTORY_ROAD_3F
+	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau)     ; INDIGO_PLATEAU_LOBBY
+	db MUSIC_GYM, BANK(Music_Gym)                          ; LORELEIS_ROOM
+	db MUSIC_DUNGEON1, BANK(Music_Dungeon1)                ; BRUNOS_ROOM
+	db MUSIC_POKEMON_TOWER, BANK(Music_PokemonTower)       ; AGATHAS_ROOM
+	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau)     ; LANCES_ROOM
+	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau)     ; CHAMPIONS_ROOM
+	db MUSIC_PALLET_TOWN, BANK(Music_PalletTown)           ; HALL_OF_FAME
+	db MUSIC_CELADON, BANK(Music_Celadon)                  ; TRADE_CENTER
+	db MUSIC_CELADON, BANK(Music_Celadon)                  ; COLOSSEUM
 	assert_table_length NUM_MAPS
