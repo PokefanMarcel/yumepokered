@@ -120,9 +120,7 @@ MapHSPointers:
 	dw SilphFactory2FHS    ; $73 ; marcelnote - SilphFactory2F
 	dw NoHS
 	dw NoHS
-	dw HallOfFameHS ; $76 ; marcelnote - added for Rival rematch
 	dw NoHS
-	dw ChampionsRoomHS
 	dw NoHS
 	dw NoHS
 	dw NoHS
@@ -176,7 +174,6 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw NoHS
-	dw IndigoPlateauLobbyHS ; $AE ; marcelnote - added for girl blocking E4 entrance
 	dw NoHS
 	dw NoHS
 	dw FightingDojoHS
@@ -247,10 +244,13 @@ MapHSPointers:
 	dw MtSilver2FHS   ; $F2 ; marcelnote - added for items
 	dw MtSilver3FHS   ; $F3 ; marcelnote - added for Yellow battle
 	dw NoHS           ; $F4 ; marcelnote - was UnusedMapF4HS
-	dw LoreleisRoomHS ; $F5 ; marcelnote - added for Lorelei rematch
-	dw BrunosRoomHS   ; $F6 ; marcelnote - added for Bruno rematch
-	dw AgathasRoomHS  ; $F7 ; marcelnote - added for Agatha rematch
-	dw LancesRoomHS        ; $71 ; marcelnote - added for Lance rematch
+	dw IndigoPlateauLobbyHS ; $AE ; marcelnote - added for girl blocking E4 entrance
+	dw LoreleisRoomHS       ; $F5 ; marcelnote - added for Lorelei rematch
+	dw BrunosRoomHS         ; $F6 ; marcelnote - added for Bruno rematch
+	dw AgathasRoomHS        ; $F7 ; marcelnote - added for Agatha rematch
+	dw LancesRoomHS         ; $71 ; marcelnote - added for Lance rematch
+	dw ChampionsRoomHS
+	dw HallOfFameHS         ; $76 ; marcelnote - added for Rival rematch
 	assert_table_length NUM_MAPS
 	dw -1 ; end
 

@@ -139,8 +139,6 @@ WildDataPointers:
 	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
 	dw PokemonTower1FWildMons
 	dw PokemonTower2FWildMons
 	dw PokemonTower3FWildMons
@@ -165,7 +163,6 @@ WildDataPointers:
 	dw NothingWildMons
 	dw NothingWildMons
 	dw PokemonMansion1FWildMons
-	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons
@@ -244,10 +241,13 @@ WildDataPointers:
 	dw MtSilver2FWildMons ; $F2 ; marcelnote - new location
 	dw NothingWildMons
 	dw NothingWildMons
+	dw NothingWildMons ; INDIGO_PLATEAU_LOBBY
 	dw NothingWildMons ; LORELEIS_ROOM
 	dw NothingWildMons ; BRUNOS_ROOM
 	dw NothingWildMons ; AGATHAS_ROOM
 	dw NothingWildMons ; LANCES_ROOM
+	dw NothingWildMons ; CHAMPIONS_ROOM
+	dw NothingWildMons ; HALL_OF_FAME
 	assert_table_length NUM_MAPS
 	dw -1 ; end
 

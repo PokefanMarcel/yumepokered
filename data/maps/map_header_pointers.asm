@@ -118,9 +118,7 @@ MapHeaderPointers::
 	dw SilphFactory2F_h         ; $73 ; marcelnote - new location, was UNUSED_MAP_73
 	dw LancesRoom_h ; UNUSED_MAP_74
 	dw LancesRoom_h ; UNUSED_MAP_75
-	dw HallOfFame_h
 	dw UndergroundPathNorthSouth_h
-	dw ChampionsRoom_h
 	dw UndergroundPathWestEast_h
 	dw CeladonMart1F2F3F_h ; marcelnote - merged 1F 2F 3F
 	dw CeladonMart1F2F3F_h ; UNUSED_MAP_7B ; marcelnote - was CeladonMart2F_h
@@ -174,7 +172,6 @@ MapHeaderPointers::
 	dw CinnabarPokecenterMart_h ; $AB ; marcelnote - merged Cinnabar Pokecenter and Mart
 	dw CinnabarPokecenterMart_h ; $AC ; marcelnote - was CINNABAR_MART, now unused
 	dw CinnabarPokecenterMart_h ; $AD ; marcelnote - was CINNABAR_MART_COPY, now unused
-	dw IndigoPlateauLobby_h
 	dw CopycatsHouse1F_h
 	dw CopycatsHouse2F_h
 	dw FightingDojo_h
@@ -245,8 +242,11 @@ MapHeaderPointers::
 	dw MtSilver2F_h ; $F2 ; marcelnote - new location
 	dw MtSilver3F_h ; $F3 ; marcelnote - new location
 	dw SilphCo2F_h ; UNUSED_MAP_F4
+	dw IndigoPlateauLobby_h
 	dw LoreleisRoom_h
 	dw BrunosRoom_h
 	dw AgathasRoom_h
 	dw LancesRoom_h
+	dw ChampionsRoom_h
+	dw HallOfFame_h
 	assert_table_length NUM_MAPS
