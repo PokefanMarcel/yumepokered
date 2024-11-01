@@ -178,7 +178,6 @@ MapHeaderPointers::
 	dw SaffronGym_h
 	dw SaffronPidgeyHouse_h
 	dw SaffronMart_h
-	dw SilphCo1F_h
 	dw SaffronPokecenter_h
 	dw MrPsychicsHouse_h
 	dw Route15Gate_h ; marcelnote - merged Route15Gate floors
@@ -204,13 +203,6 @@ MapHeaderPointers::
 	dw Route22OldRodHouse_h ; $CC ; marcelnote - new location
 	dw PokemonAcademy1F2F_h ; $CD ; marcelnote - new location
 	dw PokemonAcademy3F4F_h ; $CE ; marcelnote - new location
-	dw SilphCo2F_h
-	dw SilphCo3F_h
-	dw SilphCo4F_h
-	dw SilphCo5F_h
-	dw SilphCo6F_h
-	dw SilphCo7F_h
-	dw SilphCo8F_h
 	dw PokemonMansion2F_h
 	dw PokemonMansion3F_h
 	dw PokemonMansionB1F_h
@@ -230,18 +222,21 @@ MapHeaderPointers::
 	dw CeruleanBadgeHouse_h
 	dw MtMoonSquare_h ; $E7 ; marcelnote - new location
 	dw RockTunnelB1F_h
+	dw SilphCo1F_h
+	dw SilphCo2F_h
+	dw SilphCo3F_h
+	dw SilphCo4F_h
+	dw SilphCo5F_h
+	dw SilphCo6F_h
+	dw SilphCo7F_h
+	dw SilphCo8F_h
 	dw SilphCo9F_h
 	dw SilphCo10F_h
 	dw SilphCo11F_h
 	dw SilphCoElevator_h
-	dw SilphCo2F_h ; UNUSED_MAP_ED
-	dw SilphCo2F_h ; UNUSED_MAP_EE
-	dw TradeCenter_h
-	dw Colosseum_h
 	dw MtSilver1F_h ; $F1 ; marcelnote - new location
 	dw MtSilver2F_h ; $F2 ; marcelnote - new location
 	dw MtSilver3F_h ; $F3 ; marcelnote - new location
-	dw SilphCo2F_h ; UNUSED_MAP_F4
 	dw IndigoPlateauLobby_h
 	dw LoreleisRoom_h
 	dw BrunosRoom_h
@@ -249,4 +244,6 @@ MapHeaderPointers::
 	dw LancesRoom_h
 	dw ChampionsRoom_h
 	dw HallOfFame_h
+	dw TradeCenter_h
+	dw Colosseum_h
 	assert_table_length NUM_MAPS

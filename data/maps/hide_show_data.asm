@@ -180,7 +180,6 @@ MapHSPointers:
 	dw SaffronGymHS ; marcelnote - postgame Bruno event, Sabrina rematch
 	dw NoHS
 	dw NoHS
-	dw NoHS ; marcelnote - was SilphCo1FHS
 	dw NoHS
 	dw NoHS
 	dw NoHS
@@ -206,13 +205,6 @@ MapHSPointers:
 	dw NoHS ; $CC ; marcelnote - Route22OldRodHouse
 	dw NoHS
 	dw NoHS
-	dw SilphCo2FHS
-	dw SilphCo3FHS
-	dw SilphCo4FHS
-	dw SilphCo5FHS
-	dw SilphCo6FHS
-	dw SilphCo7FHS
-	dw SilphCo8FHS
 	dw PokemonMansion2FHS
 	dw PokemonMansion3FHS
 	dw PokemonMansionB1FHS
@@ -232,25 +224,30 @@ MapHSPointers:
 	dw NoHS
 	dw MtMoonSquareHS ; $E7 ; marcelnote - MtMoonSquare
 	dw NoHS
-	dw SilphCo9FHS
-	dw SilphCo10FHS
-	dw SilphCo11FHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw MtSilver1FHS   ; $F1 ; marcelnote - added for items
-	dw MtSilver2FHS   ; $F2 ; marcelnote - added for items
-	dw MtSilver3FHS   ; $F3 ; marcelnote - added for Yellow battle
-	dw NoHS           ; $F4 ; marcelnote - was UnusedMapF4HS
-	dw IndigoPlateauLobbyHS ; $AE ; marcelnote - added for girl blocking E4 entrance
-	dw LoreleisRoomHS       ; $F5 ; marcelnote - added for Lorelei rematch
-	dw BrunosRoomHS         ; $F6 ; marcelnote - added for Bruno rematch
-	dw AgathasRoomHS        ; $F7 ; marcelnote - added for Agatha rematch
-	dw LancesRoomHS         ; $71 ; marcelnote - added for Lance rematch
-	dw ChampionsRoomHS
-	dw HallOfFameHS         ; $76 ; marcelnote - added for Rival rematch
+	dw NoHS                 ; SILPH_CO_1F ; marcelnote - was SilphCo1FHS, need to restore hide/show
+	dw SilphCo2FHS          ; SILPH_CO_2F
+	dw SilphCo3FHS          ; SILPH_CO_3F
+	dw SilphCo4FHS          ; SILPH_CO_4F
+	dw SilphCo5FHS          ; SILPH_CO_5F
+	dw SilphCo6FHS          ; SILPH_CO_6F
+	dw SilphCo7FHS          ; SILPH_CO_7F
+	dw SilphCo8FHS          ; SILPH_CO_8F
+	dw SilphCo9FHS          ; SILPH_CO_9F
+	dw SilphCo10FHS         ; SILPH_CO_10F
+	dw SilphCo11FHS         ; SILPH_CO_11F
+	dw NoHS                 ; SILPH_CO_ELEVATOR
+	dw MtSilver1FHS         ; MT_SILVER_1F         ; marcelnote - added for items
+	dw MtSilver2FHS         ; MT_SILVER_2F         ; marcelnote - added for items
+	dw MtSilver3FHS         ; MT_SILVER_3F         ; marcelnote - added for Yellow battle
+	dw IndigoPlateauLobbyHS ; INDIGO_PLATEAU_LOBBY ; marcelnote - added for girl blocking E4 entrance
+	dw LoreleisRoomHS       ; LORELEIS_ROOM        ; marcelnote - added for Lorelei rematch
+	dw BrunosRoomHS         ; BRUNOS_ROOM          ; marcelnote - added for Bruno rematch
+	dw AgathasRoomHS        ; AGATHAS_ROOM         ; marcelnote - added for Agatha rematch
+	dw LancesRoomHS         ; LANCES_ROOM          ; marcelnote - added for Lance rematch
+	dw ChampionsRoomHS      ; CHAMPIONS_ROOM
+	dw HallOfFameHS         ; HALL_OF_FAME         ; marcelnote - added for Rival rematch
+	dw NoHS                 ; TRADE_CENTER
+	dw NoHS                 ; COLOSSEUM
 	assert_table_length NUM_MAPS
 	dw -1 ; end
 
@@ -363,7 +360,7 @@ FightingDojoHS:
 	db FIGHTING_DOJO, FIGHTINGDOJO_HITMONLEE_POKE_BALL,  SHOW
 	db FIGHTING_DOJO, FIGHTINGDOJO_HITMONCHAN_POKE_BALL, SHOW
 ;SilphCo1FHS:
-;	db SILPH_CO_1F, SILPHCO1F_LINK_RECEPTIONIST, HIDE ; marcelnote - removed
+;	db SILPH_CO_1F, SILPHCO1F_LINK_RECEPTIONIST, HIDE ; marcelnote - removed, but why? was supposed to appear
 PowerPlantHS:
 	db POWER_PLANT, POWERPLANT_VOLTORB1,      SHOW
 	db POWER_PLANT, POWERPLANT_VOLTORB2,      SHOW

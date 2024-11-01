@@ -117,7 +117,6 @@ InternalMapEntries:
 	internal_map ROCKET_HIDEOUT_ELEVATOR,        7,  5, RocketHQName ; marcelnote - adjusted
 	internal_map ROUTE_22_OLD_ROD_HOUSE,         2,  8, Route22Name ; marcelnote - new location
 	internal_map POKEMON_ACADEMY_3F4F,          10,  5, PokemonAcademyName ; marcelnote - new location
-	internal_map SILPH_CO_8F,                   10,  5, SilphCoName
 	internal_map POKEMON_MANSION_B1F,            3, 15, PokemonMansionName
 	internal_map SAFARI_ZONE_NORTH_REST_HOUSE,   9, 12, SafariZoneName
 	internal_map CERULEAN_CAVE_1F,               9,  1, CeruleanCaveName
@@ -129,4 +128,5 @@ InternalMapEntries:
 	internal_map MT_SILVER_3F,                   0,  7, MtSilverName ; marcelnote - new location
 	internal_map INDIGO_PLATEAU_LOBBY,           1,  2, IndigoPlateauName
 	internal_map HALL_OF_FAME,                   1,  2, PokemonLeagueName
+	internal_map COLOSSEUM,                      0,  0, PokemonLeagueName ; marcelnote - not supposed to see this
 	db -1 ; end
