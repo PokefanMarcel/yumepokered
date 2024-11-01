@@ -178,7 +178,6 @@ MapHeaderBanks::
 	db BANK(SaffronGym_h)
 	db BANK(SaffronPidgeyHouse_h)
 	db BANK(SaffronMart_h)
-	db BANK(SilphCo1F_h)
 	db BANK(SaffronPokecenter_h)
 	db BANK(MrPsychicsHouse_h)
 	db BANK(Route15Gate_h) ; marcelnote - merged Route15Gate floors
@@ -204,13 +203,6 @@ MapHeaderBanks::
 	db BANK(Route22OldRodHouse_h) ; $CC ; marcelnote - new location
 	db BANK(PokemonAcademy1F2F_h) ; $CD ; marcelnote - new location
 	db BANK(PokemonAcademy3F4F_h) ; $CE ; marcelnote - new location
-	db BANK(SilphCo2F_h)
-	db BANK(SilphCo3F_h)
-	db BANK(SilphCo4F_h)
-	db BANK(SilphCo5F_h)
-	db BANK(SilphCo6F_h)
-	db BANK(SilphCo7F_h)
-	db BANK(SilphCo8F_h)
 	db BANK(PokemonMansion2F_h)
 	db BANK(PokemonMansion3F_h)
 	db BANK(PokemonMansionB1F_h)
@@ -230,18 +222,21 @@ MapHeaderBanks::
 	db BANK(CeruleanBadgeHouse_h)
 	db BANK(MtMoonSquare_h) ; $E7 ; marcelnote - new location
 	db BANK(RockTunnelB1F_h)
+	db BANK(SilphCo1F_h)
+	db BANK(SilphCo2F_h)
+	db BANK(SilphCo3F_h)
+	db BANK(SilphCo4F_h)
+	db BANK(SilphCo5F_h)
+	db BANK(SilphCo6F_h)
+	db BANK(SilphCo7F_h)
+	db BANK(SilphCo8F_h)
 	db BANK(SilphCo9F_h)
 	db BANK(SilphCo10F_h)
 	db BANK(SilphCo11F_h)
 	db BANK(SilphCoElevator_h)
-	db $11 ; UNUSED_MAP_ED
-	db $11 ; UNUSED_MAP_EE
-	db BANK(TradeCenter_h)
-	db BANK(Colosseum_h)
 	db BANK(MtSilver1F_h) ; $F1 ; marcelnote - new location
 	db BANK(MtSilver2F_h) ; $F2 ; marcelnote - new location
 	db BANK(MtSilver3F_h) ; $F3 ; marcelnote - new location
-	db $11 ; UNUSED_MAP_F4
 	db BANK(IndigoPlateauLobby_h)
 	db BANK(LoreleisRoom_h)
 	db BANK(BrunosRoom_h)
@@ -249,4 +244,6 @@ MapHeaderBanks::
 	db BANK(LancesRoom_h)
 	db BANK(ChampionsRoom_h)
 	db BANK(HallOfFame_h)
+	db BANK(TradeCenter_h)
+	db BANK(Colosseum_h)
 	assert_table_length NUM_MAPS
