@@ -194,14 +194,12 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const CINNABAR_POKECENTER_MART,      14,  4 ; $AB ; marcelnote - merged Cinnabar Pokecenter and Mart
 	map_const UNUSED_MAP_AC,                  0,  0 ; $AC ; marcelnote - was CINNABAR_MART, now unused
 	map_const UNUSED_MAP_AD,                  0,  0 ; $AD ; marcelnote - was CINNABAR_MART_COPY, now unused
-	;map_const INDIGO_PLATEAU_LOBBY,           8,  6 ; $AE
 	map_const COPYCATS_HOUSE_1F,              4,  4 ; $AF
 	map_const COPYCATS_HOUSE_2F,              4,  4 ; $B0
 	map_const FIGHTING_DOJO,                  5,  6 ; $B1
 	map_const SAFFRON_GYM,                   10,  9 ; $B2
 	map_const SAFFRON_PIDGEY_HOUSE,           4,  4 ; $B3
 	map_const SAFFRON_MART,                   4,  4 ; $B4
-	map_const SILPH_CO_1F,                   15,  9 ; $B5
 	map_const SAFFRON_POKECENTER,             7,  4 ; $B6
 	map_const MR_PSYCHICS_HOUSE,              4,  4 ; $B7
 	map_const ROUTE_15_GATE,                  4, 11 ; $B8 ; marcelnote - merged ROUTE_15_GATE floors
@@ -227,13 +225,6 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const ROUTE_22_OLD_ROD_HOUSE,         4,  4 ; $CC ; marcelnote - new location
 	map_const POKEMON_ACADEMY_1F2F,          19,  6 ; $CD ; marcelnote - new location
 	map_const POKEMON_ACADEMY_3F4F,          19,  6 ; $CE ; marcelnote - new location
-	map_const SILPH_CO_2F,                   15,  9 ; $CF
-	map_const SILPH_CO_3F,                   15,  9 ; $D0
-	map_const SILPH_CO_4F,                   15,  9 ; $D1
-	map_const SILPH_CO_5F,                   15,  9 ; $D2
-	map_const SILPH_CO_6F,                   13,  9 ; $D3
-	map_const SILPH_CO_7F,                   13,  9 ; $D4
-	map_const SILPH_CO_8F,                   13,  9 ; $D5
 	map_const POKEMON_MANSION_2F,            15, 14 ; $D6
 	map_const POKEMON_MANSION_3F,            15,  9 ; $D7
 	map_const POKEMON_MANSION_B1F,           15, 14 ; $D8
@@ -253,18 +244,21 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const CERULEAN_BADGE_HOUSE,           4,  4 ; $E6
 	map_const MT_MOON_SQUARE,                12,  6 ; $E7 ; marcelnote - new location
 	map_const ROCK_TUNNEL_B1F,               20, 18 ; $E8
+	map_const SILPH_CO_1F,                   15,  9 ; $B5
+	map_const SILPH_CO_2F,                   15,  9 ; $CF
+	map_const SILPH_CO_3F,                   15,  9 ; $D0
+	map_const SILPH_CO_4F,                   15,  9 ; $D1
+	map_const SILPH_CO_5F,                   15,  9 ; $D2
+	map_const SILPH_CO_6F,                   13,  9 ; $D3
+	map_const SILPH_CO_7F,                   13,  9 ; $D4
+	map_const SILPH_CO_8F,                   13,  9 ; $D5
 	map_const SILPH_CO_9F,                   13,  9 ; $E9
 	map_const SILPH_CO_10F,                   8,  9 ; $EA
 	map_const SILPH_CO_11F,                   9,  9 ; $EB
 	map_const SILPH_CO_ELEVATOR,              2,  2 ; $EC
-	map_const UNUSED_MAP_ED,                  0,  0 ; $ED ; marcelnote - used by SilphCoElevator_Object
-	map_const UNUSED_MAP_EE,                  0,  0 ; $EE
-	map_const TRADE_CENTER,                   5,  4 ; $EF
-	map_const COLOSSEUM,                      5,  4 ; $F0
 	map_const MT_SILVER_1F,                  12, 18 ; $F1 ; marcelnote - new location
 	map_const MT_SILVER_2F,                  15, 22 ; $F2 ; marcelnote - new location
 	map_const MT_SILVER_3F,                  10, 18 ; $F3 ; marcelnote - new location
-	map_const UNUSED_MAP_F4,                  0,  0 ; $F4
 	map_const INDIGO_PLATEAU_LOBBY,           8,  6 ; $AE
 	map_const LORELEIS_ROOM,                  5,  6 ; $F5
 	map_const BRUNOS_ROOM,                    5,  6 ; $F6
@@ -272,6 +266,8 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const LANCES_ROOM,                   13, 13 ; $71
 	map_const CHAMPIONS_ROOM,                 4,  4 ; $78
 	map_const HALL_OF_FAME,                   5,  4 ; $76
+	map_const TRADE_CENTER,                   5,  4 ; $EF
+	map_const COLOSSEUM,                      5,  4 ; $F0
 DEF NUM_MAPS EQU const_value
 
 ; Indoor maps, such as houses, use this as the Map ID in their exit warps

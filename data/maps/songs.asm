@@ -177,7 +177,6 @@ MapSongBanks::
 	db MUSIC_GYM, BANK(Music_Gym) ; SAFFRON_GYM
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; SAFFRON_PIDGEY_HOUSE
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; SAFFRON_MART
-	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_1F
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; SAFFRON_POKECENTER
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; MR_PSYCHICS_HOUSE
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; ROUTE_15_GATE ; marcelnote - merged ROUTE_15_GATE floors
@@ -203,13 +202,6 @@ MapSongBanks::
 	db MUSIC_CITIES2, BANK(Music_Cities2) ; ROUTE_22_OLD_ROD_HOUSE ; marcelnote - new location
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; CD ; POKEMON_ACADEMY_1F2F ; marcelnote - new location
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; CE ; POKEMON_ACADEMY_3F4F ; marcelnote - new location
-	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_2F
-	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_3F
-	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_4F
-	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_5F
-	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_6F
-	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_7F
-	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_8F
 	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; POKEMON_MANSION_2F
 	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; POKEMON_MANSION_3F
 	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; POKEMON_MANSION_B1F
@@ -229,18 +221,21 @@ MapSongBanks::
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; CERULEAN_BADGE_HOUSE
 	db MUSIC_ROUTES3, BANK(Music_Routes3) ; MT_MOON_SQUARE ; marcelnote - new location
 	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) ; ROCK_TUNNEL_B1F
+	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_1F
+	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_2F
+	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_3F
+	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_4F
+	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_5F
+	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_6F
+	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_7F
+	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_8F
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_9F
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_10F
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_11F
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; SILPH_CO_ELEVATOR
-	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; UNUSED_MAP_ED
-	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; UNUSED_MAP_EE
-	db MUSIC_CELADON, BANK(Music_Celadon) ; TRADE_CENTER
-	db MUSIC_CELADON, BANK(Music_Celadon) ; COLOSSEUM
 	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; MT_SILVER_1F ; marcelnote - new location
 	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; MT_SILVER_2F ; marcelnote - new location
 	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; MT_SILVER_3F ; marcelnote - new location
-	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; UNUSED_MAP_F4
 	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; INDIGO_PLATEAU_LOBBY
 	db MUSIC_GYM, BANK(Music_Gym)                      ; LORELEIS_ROOM
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1)            ; BRUNOS_ROOM
@@ -248,4 +243,6 @@ MapSongBanks::
 	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; LANCES_ROOM
 	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; CHAMPIONS_ROOM
 	db MUSIC_PALLET_TOWN, BANK(Music_PalletTown)       ; HALL_OF_FAME
+	db MUSIC_CELADON, BANK(Music_Celadon)              ; TRADE_CENTER
+	db MUSIC_CELADON, BANK(Music_Celadon)              ; COLOSSEUM
 	assert_table_length NUM_MAPS
