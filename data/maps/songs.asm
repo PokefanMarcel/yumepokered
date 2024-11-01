@@ -107,26 +107,18 @@ MapSongBanks::
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne) ; SS_ANNE_B1F_ROOMS
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; CINNABAR_VOLCANO_1FB1F ; marcelnote - new location
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; CINNABAR_VOLCANO_2F    ; marcelnote - new location
-	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; UNUSED_MAP_6B
-	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) ; VICTORY_ROAD_1F
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; MANDARIN_POKECENTER_MART ; marcelnote - new location, was MUSIC_POKEMON_TOWER
 	db MUSIC_CINNABAR, BANK(Music_Cinnabar) ; MANDARIN_SURF_SHOP ; marcelnote - new location, was MUSIC_DUNGEON1
 	db MUSIC_CINNABAR, BANK(Music_Cinnabar) ; MANDARIN_HOTEL ; marcelnote - new location, was MUSIC_SILPH_CO
 	db MUSIC_CINNABAR, BANK(Music_Cinnabar) ; MANDARIN_SILPH_CO ; marcelnote - new location, was MUSIC_SILPH_CO
 	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; SILPH_FACTORY_1F ; marcelnote - new location, was MUSIC_SS_ANNE
 	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; SILPH_FACTORY_2F ; marcelnote - new location, was MUSIC_SS_ANNE
-	db MUSIC_SS_ANNE, BANK(Music_SSAnne) ; UNUSED_MAP_74
-	db MUSIC_SS_ANNE, BANK(Music_SSAnne) ; UNUSED_MAP_75
 	db MUSIC_ROUTES1, BANK(Music_Routes1) ; UNDERGROUND_PATH_NORTH_SOUTH
 	db MUSIC_ROUTES1, BANK(Music_Routes1) ; UNDERGROUND_PATH_WEST_EAST
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; CELADON_MART_1F2F3F ; marcelnote - merged 1F 2F 3F
-	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; UNUSED_MAP_7B ; marcelnote - was CELADON_MART_2F
-	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; UNUSED_MAP_7C ; marcelnote - was CELADON_MART_3F
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; CELADON_MART_4F5F6F ; marcelnote - merged 4F 5F + new 6F
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; CELADON_MART_ROOF
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; CELADON_MART_ELEVATOR
-	db MUSIC_CELADON, BANK(Music_Celadon) ; UNUSED_MAP_80 ; marcelnote - was CELADON_MANSION_1F, now unused
-	db MUSIC_CELADON, BANK(Music_Celadon) ; UNUSED_MAP_81 ; marcelnote - was CELADON_MANSION_2F, now unused
 	db MUSIC_CELADON, BANK(Music_Celadon) ; CELADON_MANSION ; marcelnote - merged Celadon Mansion floors, added 4F
 	db MUSIC_CELADON, BANK(Music_Celadon) ; CELADON_MANSION_ROOF
 	db MUSIC_CELADON, BANK(Music_Celadon) ; CELADON_MANSION_ROOF_HOUSE
@@ -189,11 +181,9 @@ MapSongBanks::
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; $BF ; CELADON_GROVE_NORTH_GATE ; marcelnote - was ROUTE_18_GATE_2F
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; SEAFOAM_ISLANDS_1F
 	db MUSIC_GYM, BANK(Music_Gym) ; ROUTE_22_GATE ; marcelnote - changed from MUSIC_DUNGEON2
-	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) ; VICTORY_ROAD_2F
 	db MUSIC_GYM, BANK(Music_Gym) ; ROUTE_22_GATE_3F ; marcelnote - was ROUTE_12_GATE_2F
 	db MUSIC_VERMILION, BANK(Music_Vermilion) ; VERMILION_TRADE_HOUSE
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; DIGLETTS_CAVE
-	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) ; VICTORY_ROAD_3F
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; ROCKET_HIDEOUT_B1F
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; ROCKET_HIDEOUT_B2F
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; ROCKET_HIDEOUT_B3F
@@ -236,6 +226,9 @@ MapSongBanks::
 	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; MT_SILVER_1F ; marcelnote - new location
 	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; MT_SILVER_2F ; marcelnote - new location
 	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; MT_SILVER_3F ; marcelnote - new location
+	db MUSIC_DUNGEON3, BANK(Music_Dungeon3)            ; VICTORY_ROAD_1F
+	db MUSIC_DUNGEON3, BANK(Music_Dungeon3)            ; VICTORY_ROAD_2F
+	db MUSIC_DUNGEON3, BANK(Music_Dungeon3)            ; VICTORY_ROAD_3F
 	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; INDIGO_PLATEAU_LOBBY
 	db MUSIC_GYM, BANK(Music_Gym)                      ; LORELEIS_ROOM
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1)            ; BRUNOS_ROOM
