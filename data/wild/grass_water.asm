@@ -82,9 +82,10 @@ WildDataPointers:
 	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons
-	dw NothingWildMons
-	dw RockTunnel1FWildMons
-	dw PowerPlantWildMons
+	dw NothingWildMons               ; ROCK_TUNNEL_POKECENTER
+	dw RockTunnel1FWildMons          ; ROCK_TUNNEL_1F
+	dw RockTunnelB1FWildMons         ; ROCK_TUNNEL_B1F
+	dw PowerPlantWildMons            ; POWER_PLANT
 	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons
@@ -148,13 +149,11 @@ WildDataPointers:
 	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons
+	dw SeafoamIslands1FWildMons
 	dw SeafoamIslandsB1FWildMons
 	dw SeafoamIslandsB2FWildMons
 	dw SeafoamIslandsB3FWildMons
 	dw SeafoamIslandsB4FWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw PokemonMansion1FWildMons
 	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons
@@ -179,9 +178,6 @@ WildDataPointers:
 	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons
-	dw SeafoamIslands1FWildMons
-	dw NothingWildMons
-	dw NothingWildMons
 	dw NothingWildMons
 	dw DiglettsCaveWildMons
 	dw NothingWildMons
@@ -191,7 +187,7 @@ WildDataPointers:
 	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons
-	dw NothingWildMons
+	dw PokemonMansion1FWildMons
 	dw PokemonMansion2FWildMons
 	dw PokemonMansion3FWildMons
 	dw PokemonMansionB1FWildMons
@@ -210,7 +206,6 @@ WildDataPointers:
 	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons
-	dw RockTunnelB1FWildMons
 	dw NothingWildMons           ; SILPH_CO_1F
 	dw NothingWildMons           ; SILPH_CO_2F
 	dw NothingWildMons           ; SILPH_CO_3F
@@ -223,6 +218,9 @@ WildDataPointers:
 	dw NothingWildMons           ; SILPH_CO_10F
 	dw NothingWildMons           ; SILPH_CO_11F
 	dw NothingWildMons           ; SILPH_CO_ELEVATOR
+	dw NothingWildMons           ; ROUTE_22_OLD_ROD_HOUSE
+	dw NothingWildMons           ; ROUTE_22_GATE
+	dw NothingWildMons           ; ROUTE_22_GATE_3F
 	dw MtSilver1FWildMons        ; MT_SILVER_1F          ; marcelnote - new location
 	dw MtSilver2FWildMons        ; MT_SILVER_2F          ; marcelnote - new location
 	dw NothingWildMons           ; MT_SILVER_3F          ; marcelnote - new location
