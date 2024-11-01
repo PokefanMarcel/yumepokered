@@ -61,16 +61,17 @@ MapHeaderPointers::
 	dw PewterMart_h
 	dw PewterSpeechHouse_h
 	dw PewterPokecenter_h
+	dw MtMoonPokecenter_h
 	dw MtMoon1F_h
 	dw MtMoonB1F_h
 	dw MtMoonB2F_h
+	dw MtMoonSquare_h ; $E7 ; marcelnote - new location
 	dw CeruleanTrashedHouse_h
 	dw CeruleanTradeHouse_h
 	dw CeruleanPokecenter_h
 	dw CeruleanGym_h
 	dw BikeShop_h
 	dw CeruleanMart_h
-	dw MtMoonPokecenter_h
 	dw CeruleanTrashedHouse_h ; CERULEAN_TRASHED_HOUSE_COPY
 	dw Route5Gate_h
 	dw UndergroundPathRoute5_h
@@ -206,7 +207,6 @@ MapHeaderPointers::
 	dw CeruleanCave1F_h
 	dw NameRatersHouse_h
 	dw CeruleanBadgeHouse_h
-	dw MtMoonSquare_h ; $E7 ; marcelnote - new location
 	dw SilphCo1F_h
 	dw SilphCo2F_h
 	dw SilphCo3F_h

@@ -60,10 +60,11 @@ WildDataPointers:
 	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons
-	dw MtMoon1FWildMons
-	dw MtMoonB1FWildMons
-	dw MtMoonB2FWildMons
-	dw NothingWildMons
+	dw NothingWildMons                 ; MT_MOON_POKECENTER
+	dw MtMoon1FWildMons                ; MT_MOON_1F
+	dw MtMoonB1FWildMons               ; MT_MOON_B1F
+	dw MtMoonB2FWildMons               ; MT_MOON_B2F
+	dw NothingWildMons                 ; MT_MOON_SQUARE
 	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons
@@ -203,7 +204,6 @@ WildDataPointers:
 	dw CeruleanCave2FWildMons
 	dw CeruleanCaveB1FWildMons
 	dw CeruleanCave1FWildMons
-	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons           ; SILPH_CO_1F
