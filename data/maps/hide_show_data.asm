@@ -115,12 +115,12 @@ MapHSPointers:
 	dw NoHS
 	dw VictoryRoad1FHS
 	dw NoHS
-	dw NoHS ; $6E ; marcelnote - MandarinSurfShop
-	dw MandarinHotelHS ; $6F ; marcelnote - MandarinHotel
-	dw NoHS
-	dw LancesRoomHS ; $71 ; marcelnote - added for Lance rematch
-	dw SilphFactory1FHS ; $72 ; marcelnote - SilphFactory1F
-	dw SilphFactory2FHS ; $73 ; marcelnote - SilphFactory2F
+	dw NoHS                ; $6E ; marcelnote - MandarinSurfShop
+	dw MandarinHotelHS     ; $6F ; marcelnote - MandarinHotel
+	dw MandarinSilphCoHS   ; $70 ; marcelnote - MandarinSilphCo
+	dw LancesRoomHS        ; $71 ; marcelnote - added for Lance rematch
+	dw SilphFactory1FHS    ; $72 ; marcelnote - SilphFactory1F
+	dw SilphFactory2FHS    ; $73 ; marcelnote - SilphFactory2F
 	dw NoHS
 	dw NoHS
 	dw HallOfFameHS ; $76 ; marcelnote - added for Rival rematch
@@ -657,6 +657,8 @@ SaffronGymHS:
 CinnabarGymHS:
 	db CINNABAR_GYM, CINNABARGYM_BLAINE, SHOW          ; marcelnote - default Blaine
 	db CINNABAR_GYM, CINNABARGYM_BLAINE_REMATCH, HIDE  ; marcelnote - rematch Blaine
+MandarinSilphCoHS:
+	db MANDARIN_SILPH_CO, MANDARINSILPHCO_SCIENTIST, SHOW  ; marcelnote - worried Scientist
 SilphFactory2FHS:
 	db SILPH_FACTORY_2F, SILPHFACTORY2F_SCIENTIST1, SHOW  ; marcelnote - scientist blocking the way
 	db SILPH_FACTORY_2F, SILPHFACTORY2F_LORELEI1, HIDE    ; marcelnote - Lorelei at entrance

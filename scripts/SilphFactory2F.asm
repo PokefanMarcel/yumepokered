@@ -416,6 +416,9 @@ SilphFactory2FLoreleiHideScript:
 	ld a, HS_SILPH_FACTORY_2F_LORELEI_1
 	ld [wMissableObjectIndex], a
 	predef HideObjectCont
+	ld a, HS_MANDARIN_SILPH_CO_SCIENTIST ; also hide the worried Scientist in Mandarin Silph Co meeting room
+	ld [wMissableObjectIndex], a
+	predef HideObjectCont
 	xor a
 	ld [wJoyIgnore], a
 	ld a, SCRIPT_SILPHFACTORY2F_DEFAULT

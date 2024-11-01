@@ -1,43 +1,88 @@
 ; marcelnote - new location
 
-; PLACEHOLDER TEXT FOR NOW
 _MandarinSilphCo1FReceptionistText::
-	text "Welcome to the"
+	text "Welcome to our"
 	line "MANDARIN ISLAND"
-	cont "branch of"
+	cont "branch!"
+	done
+
+_MandarinSilphCo2FSilphWorkerFText::
+	text "I moved from"
+	line "SAFFRON when"
 	cont "SILPH CO."
+	cont "expanded here."
+
+	para "Busy streets for"
+	line "sand beaches?"
+	cont "No regrets!"
 	done
 
-_MandarinSilphCo2FWorkerFText::
-	text "What is a kid"
-	line "doing here?"
+_MandarinSilphCo2FSilphWorkerMText::
+	text "Office life can"
+	line "be fun if you"
+	cont "know how to keep"
+	cont "things lively."
+
+	para "Ever put a VOLTORB"
+	line "in someone's desk?"
 	done
 
-_MandarinSilphCo2FWorkerMText::
-	text "So much work"
-	line "these days."
-	done
+_MandarinSilphCo2FCooltrainerMText::
+	text "Someone keeps"
+	line "hiding my pen!"
 
-_MandarinSilphCo2FAssistantText::
-	text "I am the assistant"
-	line "regional manager!"
+	para "Totally messing"
+	line "with my workflow!"
 	done
 
 _MandarinSilphCo3FScientistText::
-	text "I am waiting for"
-	line "a meeting with"
-	cont "the regional"
-	cont "manager to"
-	cont "discuss current"
-	cont "issues at the"
-	cont "factory."
+	text "There's trouble"
+	line "at the factory!"
+
+	para "Why won't the"
+	line "director see me?"
 	done
 
-_MandarinSilphCo4FManagerText::
-	text "Hello!"
-	line "I am the manager"
-	cont "of SILPH CO.'s"
-	cont "MANDARIN branch."
+_MandarinSilphCo4FDirectorBusyText::
+	text "Sorry, I'm busy!"
+	line "HQ wanted this"
+	cont "report done"
+	cont "yesterday!"
+
+	para "Meetings? Maybe"
+	line "next month!"
+	done
+
+_MandarinSilphCo4FDirectorPleaseTakeThisText::
+	text "You saved the day!"
+	line "TEAM ROCKET's gone"
+	cont "thanks to you."
+
+	para "Please accept this"
+	line "as a token of our"
+	cont "gratitude."
+	prompt
+
+_MandarinSilphCo4FDirectorReceivedNuggetText::
+	text "<PLAYER> received"
+	line "a @"
+	text_ram wStringBuffer
+	text "!@"
+	text_end
+
+_MandarinSilphCo4FDirectorNoRoomText::
+	text "You don't have any"
+	line "room for this."
+	done
+
+_MandarinSilphCo4FDirectorFromNowOnText::
+	text "I guess reports"
+	line "can wait."
+
+	para "From now on, I'll"
+	line "step away from"
+	cont "my desk and be"
+	cont "more involved!"
 	done
 
 _MandarinSilphCo2FSalesSignText::
@@ -50,20 +95,7 @@ _MandarinSilphCo3FMeetingRoomSignText::
 	line "Meeting room"
 	done
 
-_MandarinSilphCo4FRegionalManagerSignText::
+_MandarinSilphCo4FRegionalDirectorSignText::
 	text "SILPH CO."
-	line "Regional manager"
+	line "Regional director"
 	done
-
-; Enthusiastic Trainer Outside Silph Co.
-;text "I hear SILPH CO. is"
- ;line "developing something"
- ;cont "cool!"
- ;para "Maybe it'll help me"
- ;line "catch rare POKéMON!"
-
- ; Mysterious Stranger in Town ; for worker in Silph Co branch
- ;text "Have you heard any"
- ;line "rumors?"
- ;para "Some say trouble's"
- ;line "brewing at the factory..."
