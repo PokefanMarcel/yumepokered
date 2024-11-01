@@ -107,6 +107,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const UNDERGROUND_PATH_ROUTE_8,       4,  4 ; $50
 	map_const ROCK_TUNNEL_POKECENTER,         7,  4 ; $51
 	map_const ROCK_TUNNEL_1F,                20, 18 ; $52
+	map_const ROCK_TUNNEL_B1F,               20, 18 ; $E8
 	map_const POWER_PLANT,                   20, 18 ; $53
 	map_const ROUTE_11_GATE,                  4, 11 ; $54 ; marcelnote - merged ROUTE_11_GATE floors
 	map_const DIGLETTS_CAVE_ROUTE_11,         4,  4 ; $55
@@ -171,21 +172,19 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const SAFARI_ZONE_GATE,               4,  3 ; $9C
 	map_const FUCHSIA_GYM,                    5,  9 ; $9D
 	map_const FUCHSIA_MEETING_ROOM,           7,  4 ; $9E
+	map_const SEAFOAM_ISLANDS_1F,            15,  9 ; $C0
 	map_const SEAFOAM_ISLANDS_B1F,           15,  9 ; $9F
 	map_const SEAFOAM_ISLANDS_B2F,           15,  9 ; $A0
 	map_const SEAFOAM_ISLANDS_B3F,           15,  9 ; $A1
 	map_const SEAFOAM_ISLANDS_B4F,           15,  9 ; $A2
 	map_const VERMILION_GOOD_ROD_HOUSE,       4,  4 ; $A3 ; marcelnote - from Old to Good Rod
 	map_const FUCHSIA_SUPER_ROD_HOUSE,        4,  4 ; $A4 ; marcelnote - from Good to Super Rod
-	map_const POKEMON_MANSION_1F,            15, 14 ; $A5
 	map_const CINNABAR_GYM,                  10,  9 ; $A6
 	map_const CINNABAR_LAB,                   9,  4 ; $A7
 	map_const CINNABAR_LAB_TRADE_ROOM,        4,  4 ; $A8
 	map_const CINNABAR_LAB_METRONOME_ROOM,    4,  4 ; $A9
 	map_const CINNABAR_LAB_FOSSIL_ROOM,       4,  4 ; $AA
 	map_const CINNABAR_POKECENTER_MART,      14,  4 ; $AB ; marcelnote - merged Cinnabar Pokecenter and Mart
-	map_const UNUSED_MAP_AC,                  0,  0 ; $AC ; marcelnote - was CINNABAR_MART, now unused
-	map_const UNUSED_MAP_AD,                  0,  0 ; $AD ; marcelnote - was CINNABAR_MART_COPY, now unused
 	map_const COPYCATS_HOUSE_1F,              4,  4 ; $AF
 	map_const COPYCATS_HOUSE_2F,              4,  4 ; $B0
 	map_const FIGHTING_DOJO,                  5,  6 ; $B1
@@ -202,9 +201,6 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const ROUTE_12_FISHING_GUIDE_HOUSE,   4,  4 ; $BD ; marcelnote - from Super Rod to Fishing Guide
 	map_const ROUTE_18_GATE,                  4, 11 ; $BE ; marcelnote - merged ROUTE_18_GATE floors
 	map_const CELADON_GROVE_NORTH_GATE,       5,  4 ; $BF ; marcelnote - new location, was ROUTE_18_GATE_2F
-	map_const SEAFOAM_ISLANDS_1F,            15,  9 ; $C0
-	map_const ROUTE_22_GATE,                 18,  4 ; $C1 ; marcelnote - added 2nd floor
-	map_const ROUTE_22_GATE_3F,               6,  5 ; $C3 ; marcelnote - new location, was ROUTE_12_GATE_2F
 	map_const VERMILION_TRADE_HOUSE,          4,  4 ; $C4
 	map_const DIGLETTS_CAVE,                 20, 18 ; $C5
 	map_const ROCKET_HIDEOUT_B1F,            15, 14 ; $C7
@@ -212,9 +208,9 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const ROCKET_HIDEOUT_B3F,            15, 14 ; $C9
 	map_const ROCKET_HIDEOUT_B4F,            15, 12 ; $CA
 	map_const ROCKET_HIDEOUT_ELEVATOR,        3,  4 ; $CB
-	map_const ROUTE_22_OLD_ROD_HOUSE,         4,  4 ; $CC ; marcelnote - new location
 	map_const POKEMON_ACADEMY_1F2F,          19,  6 ; $CD ; marcelnote - new location
 	map_const POKEMON_ACADEMY_3F4F,          19,  6 ; $CE ; marcelnote - new location
+	map_const POKEMON_MANSION_1F,            15, 14 ; $A5
 	map_const POKEMON_MANSION_2F,            15, 14 ; $D6
 	map_const POKEMON_MANSION_3F,            15,  9 ; $D7
 	map_const POKEMON_MANSION_B1F,           15, 14 ; $D8
@@ -233,7 +229,6 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const NAME_RATERS_HOUSE,              4,  4 ; $E5
 	map_const CERULEAN_BADGE_HOUSE,           4,  4 ; $E6
 	map_const MT_MOON_SQUARE,                12,  6 ; $E7 ; marcelnote - new location
-	map_const ROCK_TUNNEL_B1F,               20, 18 ; $E8
 	map_const SILPH_CO_1F,                   15,  9 ; $B5
 	map_const SILPH_CO_2F,                   15,  9 ; $CF
 	map_const SILPH_CO_3F,                   15,  9 ; $D0
@@ -246,6 +241,9 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const SILPH_CO_10F,                   8,  9 ; $EA
 	map_const SILPH_CO_11F,                   9,  9 ; $EB
 	map_const SILPH_CO_ELEVATOR,              2,  2 ; $EC
+	map_const ROUTE_22_OLD_ROD_HOUSE,         4,  4 ; $CC ; marcelnote - new location
+	map_const ROUTE_22_GATE,                 18,  4 ; $C1 ; marcelnote - added 2nd floor
+	map_const ROUTE_22_GATE_3F,               6,  5 ; $C3 ; marcelnote - new location, was ROUTE_12_GATE_2F
 	map_const MT_SILVER_1F,                  12, 18 ; $F1 ; marcelnote - new location
 	map_const MT_SILVER_2F,                  15, 22 ; $F2 ; marcelnote - new location
 	map_const MT_SILVER_3F,                  10, 18 ; $F3 ; marcelnote - new location
