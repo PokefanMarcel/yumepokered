@@ -100,3 +100,24 @@ _CeladonMansion3FDevRoomSignText::
 	text "GAME FREAK"
 	line "Development Room"
 	done
+
+
+_CeladonMansion4FHackerText::
+	text "I'm the hacker!"
+	line "I made changes"
+	cont "to the original"
+	cont "game."
+
+	para "Let me know if you"
+	line "find any bugs!"
+	done
+
+_CeladonMansion4FExeggutorSurfPCText::
+    text "An EXEGGUTOR who"
+    line "can SURF?!"
+	done
+
+_CeladonMansion4FYumeLabsSignText::
+	text "YUME LABS"
+	line "Home office"
+	done
