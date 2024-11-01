@@ -1059,13 +1059,15 @@ SECTION "Maps 19", ROMX
 
 CopycatsHouse1F_Blocks: INCBIN "maps/CopycatsHouse1F.blk"
 
-CinnabarMart_Blocks:
+;CinnabarMart_Blocks:
 PewterMart_Blocks: INCBIN "maps/PewterMart.blk"
 
 FuchsiaBillsGrandpasHouse_Blocks: INCBIN "maps/FuchsiaBillsGrandpasHouse.blk"
 
-CinnabarPokecenter_Blocks:
+;CinnabarPokecenter_Blocks:
 FuchsiaPokecenter_Blocks: INCBIN "maps/FuchsiaPokecenter.blk"
+
+CinnabarPokecenterMart_Blocks: INCBIN "maps/CinnabarPokecenterMart.blk"
 
 CeruleanBadgeHouse_Blocks: INCBIN "maps/CeruleanBadgeHouse.blk"
 
@@ -1148,13 +1150,9 @@ INCLUDE "scripts/CinnabarLabFossilRoom.asm"
 INCLUDE "data/maps/objects/CinnabarLabFossilRoom.asm"
 CinnabarLabFossilRoom_Blocks: INCBIN "maps/CinnabarLabFossilRoom.blk"
 
-INCLUDE "data/maps/headers/CinnabarPokecenter.asm"
-INCLUDE "scripts/CinnabarPokecenter.asm"
-INCLUDE "data/maps/objects/CinnabarPokecenter.asm"
-
-INCLUDE "data/maps/headers/CinnabarMart.asm"
-INCLUDE "scripts/CinnabarMart.asm"
-INCLUDE "data/maps/objects/CinnabarMart.asm"
+INCLUDE "data/maps/headers/CinnabarPokecenterMart.asm" ; marcelnote - merged Cinnabar Pokecenter and Mart
+INCLUDE "scripts/CinnabarPokecenterMart.asm"
+INCLUDE "data/maps/objects/CinnabarPokecenterMart.asm"
 
 INCLUDE "data/maps/headers/CopycatsHouse1F.asm"
 INCLUDE "scripts/CopycatsHouse1F.asm"

@@ -101,7 +101,7 @@ InternalMapEntries:
 	internal_map VERMILION_GOOD_ROD_HOUSE,      10,  9, VermilionCityName ; marcelnote - from Old to Good Rod
 	internal_map FUCHSIA_SUPER_ROD_HOUSE,        9, 13, FuchsiaCityName ; marcelnote - from Good to Super Rod
 	internal_map POKEMON_MANSION_1F,             3, 15, PokemonMansionName
-	internal_map CINNABAR_MART_COPY,             3, 15, CinnabarIslandName
+	internal_map CINNABAR_POKECENTER_MART,       3, 15, CinnabarIslandName ; marcelnote - merged Cinnabar Pokecenter and Mart
 	internal_map INDIGO_PLATEAU_LOBBY,           1,  2, IndigoPlateauName
 	internal_map MR_PSYCHICS_HOUSE,             10,  5, SaffronCityName
 	internal_map ROUTE_15_GATE,                 10, 13, Route15Name ; marcelnote - merged Route15Gate floors

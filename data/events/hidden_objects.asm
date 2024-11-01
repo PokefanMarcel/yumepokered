@@ -24,7 +24,7 @@ HiddenObjectMaps:
 	db FUCHSIA_POKECENTER
 	db FUCHSIA_GYM
 	db CINNABAR_GYM
-	db CINNABAR_POKECENTER
+	db CINNABAR_POKECENTER_MART
 	db SAFFRON_GYM
 	db MT_MOON_POKECENTER
 	db ROCK_TUNNEL_POKECENTER
@@ -120,7 +120,7 @@ HiddenObjectPointers:
 	dw FuchsiaPokecenterHiddenObjects
 	dw FuchsiaGymHiddenObjects
 	dw CinnabarGymHiddenObjects
-	dw CinnabarPokecenterHiddenObjects
+	dw CinnabarPokecenterMartHiddenObjects ; marcelnote - merged Cinnabar Pokecenter and Mart
 	dw SaffronGymHiddenObjects
 	dw MtMoonPokecenterHiddenObjects
 	dw RockTunnelPokecenterHiddenObjects
@@ -407,7 +407,7 @@ CinnabarGymHiddenObjects: ; marcelnote - quiz questions 2-6 were reindexed as 3-
 	hidden_object  1,  7, (TRUE  << 4) | 7, PrintCinnabarQuiz
 	db -1 ; end
 
-CinnabarPokecenterHiddenObjects:
+CinnabarPokecenterMartHiddenObjects: ; marcelnote - merged Cinnabar Pokecenter and Mart
 	hidden_object  0,  4, SPRITE_FACING_UP, PrintBenchGuyText
 	hidden_object 13,  3, SPRITE_FACING_UP, OpenPokemonCenterPC
 	db -1 ; end

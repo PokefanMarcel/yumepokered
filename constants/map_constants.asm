@@ -197,9 +197,9 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const CINNABAR_LAB_TRADE_ROOM,        4,  4 ; $A8
 	map_const CINNABAR_LAB_METRONOME_ROOM,    4,  4 ; $A9
 	map_const CINNABAR_LAB_FOSSIL_ROOM,       4,  4 ; $AA
-	map_const CINNABAR_POKECENTER,            7,  4 ; $AB
-	map_const CINNABAR_MART,                  4,  4 ; $AC
-	map_const CINNABAR_MART_COPY,             4,  4 ; $AD
+	map_const CINNABAR_POKECENTER_MART,      14,  4 ; $AB ; marcelnote - merged Cinnabar Pokecenter and Mart
+	map_const UNUSED_MAP_AC,                  0,  0 ; $AC ; marcelnote - was CINNABAR_MART, now unused
+	map_const UNUSED_MAP_AD,                  0,  0 ; $AD ; marcelnote - was CINNABAR_MART_COPY, now unused
 	map_const INDIGO_PLATEAU_LOBBY,           8,  6 ; $AE
 	map_const COPYCATS_HOUSE_1F,              4,  4 ; $AF
 	map_const COPYCATS_HOUSE_2F,              4,  4 ; $B0

@@ -226,8 +226,7 @@ INCLUDE "text/CinnabarLab.asm"
 INCLUDE "text/CinnabarLabTradeRoom.asm"
 INCLUDE "text/CinnabarLabMetronomeRoom.asm"
 INCLUDE "text/CinnabarLabFossilRoom.asm"
-INCLUDE "text/CinnabarPokecenter.asm"
-INCLUDE "text/CinnabarMart.asm"
+INCLUDE "text/CinnabarPokecenterMart.asm" ; marcelnote - merged Cinnabar Pokecenter and Mart
 INCLUDE "text/CinnabarVolcano1FB1F.asm" ; marcelnote - new location
 INCLUDE "text/CinnabarVolcano2F.asm" ; marcelnote - new location
 INCLUDE "text/IndigoPlateauLobby.asm"

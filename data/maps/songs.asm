@@ -173,9 +173,9 @@ MapSongBanks::
 	db MUSIC_CINNABAR, BANK(Music_Cinnabar) ; CINNABAR_LAB_TRADE_ROOM
 	db MUSIC_CINNABAR, BANK(Music_Cinnabar) ; CINNABAR_LAB_METRONOME_ROOM
 	db MUSIC_CINNABAR, BANK(Music_Cinnabar) ; CINNABAR_LAB_FOSSIL_ROOM
-	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; CINNABAR_POKECENTER
-	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; CINNABAR_MART
-	db MUSIC_CINNABAR, BANK(Music_Cinnabar) ; CINNABAR_MART_COPY
+	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; CINNABAR_POKECENTER_MART ; marcelnote - merged Cinnabar Pokecenter and Mart
+	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; $AC ; marcelnote - was CINNABAR_MART, now unused
+	db MUSIC_CINNABAR, BANK(Music_Cinnabar) ; $AD ; marcelnote - was CINNABAR_MART_COPY, now unused
 	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; INDIGO_PLATEAU_LOBBY
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; COPYCATS_HOUSE_1F
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; COPYCATS_HOUSE_2F
