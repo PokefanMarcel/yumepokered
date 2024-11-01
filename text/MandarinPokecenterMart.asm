@@ -58,16 +58,3 @@ _MandarinMartCooltrainerFText::
 ;line "waters all my life."
 ;para "They're changing..."
 ;line "and not just the tides."
-
-; Mysterious Stranger in Town ; for worker in Silph Co branch
-;text "Have you heard any"
-;line "rumors?"
-;para "Some say trouble's"
-;line "brewing at the factory..."
-
-; Enthusiastic Trainer Outside Silph Co.
-;text "I hear SILPH CO. is"
- ;line "developing something"
- ;cont "cool!"
- ;para "Maybe it'll help me"
- ;line "catch rare POKéMON!"
