@@ -111,19 +111,11 @@ MapHSPointers:
 	dw CinnabarVolcano1FB1FHS ; $69 ; marcelnote - CinnabarVolcano1FB1F
 	dw CinnabarVolcano2FHS    ; $6A ; marcelnote - CinnabarVolcano2F
 	dw NoHS
-	dw VictoryRoad1FHS
-	dw NoHS
 	dw NoHS                ; $6E ; marcelnote - MandarinSurfShop
 	dw MandarinHotelHS     ; $6F ; marcelnote - MandarinHotel
 	dw MandarinSilphCoHS   ; $70 ; marcelnote - MandarinSilphCo
 	dw SilphFactory1FHS    ; $72 ; marcelnote - SilphFactory1F
 	dw SilphFactory2FHS    ; $73 ; marcelnote - SilphFactory2F
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
 	dw NoHS
 	dw NoHS
 	dw NoHS
@@ -192,11 +184,9 @@ MapHSPointers:
 	dw NoHS
 	dw SeafoamIslands1FHS
 	dw NoHS
-	dw VictoryRoad2FHS
 	dw NoHS
 	dw NoHS
 	dw NoHS
-	dw VictoryRoad3FHS
 	dw RocketHideoutB1FHS
 	dw RocketHideoutB2FHS
 	dw RocketHideoutB3FHS
@@ -239,6 +229,9 @@ MapHSPointers:
 	dw MtSilver1FHS         ; MT_SILVER_1F         ; marcelnote - added for items
 	dw MtSilver2FHS         ; MT_SILVER_2F         ; marcelnote - added for items
 	dw MtSilver3FHS         ; MT_SILVER_3F         ; marcelnote - added for Yellow battle
+	dw VictoryRoad1FHS      ; VICTORY_ROAD_1F
+	dw VictoryRoad2FHS      ; VICTORY_ROAD_2F
+	dw VictoryRoad3FHS      ; VICTORY_ROAD_3F
 	dw IndigoPlateauLobbyHS ; INDIGO_PLATEAU_LOBBY ; marcelnote - added for girl blocking E4 entrance
 	dw LoreleisRoomHS       ; LORELEIS_ROOM        ; marcelnote - added for Lorelei rematch
 	dw BrunosRoomHS         ; BRUNOS_ROOM          ; marcelnote - added for Bruno rematch

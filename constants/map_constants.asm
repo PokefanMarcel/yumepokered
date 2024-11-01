@@ -130,26 +130,18 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const SS_ANNE_B1F_ROOMS,             12,  8 ; $68
 	map_const CINNABAR_VOLCANO_1FB1F,        14, 18 ; $69 ; marcelnote - new location
 	map_const CINNABAR_VOLCANO_2F,           17, 15 ; $6A ; marcelnote - new location
-	map_const UNUSED_MAP_6B,                  0,  0 ; $6B
-	map_const VICTORY_ROAD_1F,               10,  9 ; $6C
 	map_const MANDARIN_POKECENTER_MART,      14,  4 ; $6D ; marcelnote - was UNUSED_MAP_6D
 	map_const MANDARIN_SURF_SHOP,             4,  4 ; $6E ; marcelnote - was UNUSED_MAP_6E
 	map_const MANDARIN_HOTEL,                33,  6 ; $6F ; marcelnote - was UNUSED_MAP_6F
 	map_const MANDARIN_SILPH_CO,              4, 25 ; $70 ; marcelnote - was UNUSED_MAP_70
 	map_const SILPH_FACTORY_1F,              14, 13 ; $72 ; marcelnote - was UNUSED_MAP_72
 	map_const SILPH_FACTORY_2F,              15, 14 ; $73 ; marcelnote - was UNUSED_MAP_73
-	map_const UNUSED_MAP_74,                  0,  0 ; $74
-	map_const UNUSED_MAP_75,                  0,  0 ; $75
 	map_const UNDERGROUND_PATH_NORTH_SOUTH,   4, 24 ; $77 ; UndergroundPathNorthSouth.blk is actually 4x23
 	map_const UNDERGROUND_PATH_WEST_EAST,    25,  4 ; $79
 	map_const CELADON_MART_1F2F3F,           10, 18 ; $7A ; marcelnote - merged 1F 2F 3F
-	map_const UNUSED_MAP_7B,                  0,  0 ; $7B ; marcelnote - was CELADON_MART_2F
-	map_const UNUSED_MAP_7C,                  0,  0 ; $7C ; marcelnote - was CELADON_MART_3F
 	map_const CELADON_MART_4F5F6F,           10, 18 ; $7D ; marcelnote - merged 4F 5F + new 6F
 	map_const CELADON_MART_ROOF,             10,  6 ; $7E ; marcelnote - expanded from y=4
 	map_const CELADON_MART_ELEVATOR,          2,  2 ; $7F
-	map_const UNUSED_MAP_80,                  0,  0 ; $80 ; marcelnote - was CELADON_MANSION_1F, now unused
-	map_const UNUSED_MAP_81,                  0,  0 ; $81 ; marcelnote - was CELADON_MANSION_2F, now unused
 	map_const CELADON_MANSION,                4, 33 ; $82 ; marcelnote - merged Celadon Mansion floors, added 4F
 	map_const CELADON_MANSION_ROOF,           4,  8 ; $83 ; marcelnote - expanded from y=6
 	map_const CELADON_MANSION_ROOF_HOUSE,     4,  4 ; $84
@@ -212,11 +204,9 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const CELADON_GROVE_NORTH_GATE,       5,  4 ; $BF ; marcelnote - new location, was ROUTE_18_GATE_2F
 	map_const SEAFOAM_ISLANDS_1F,            15,  9 ; $C0
 	map_const ROUTE_22_GATE,                 18,  4 ; $C1 ; marcelnote - added 2nd floor
-	map_const VICTORY_ROAD_2F,               15,  9 ; $C2
 	map_const ROUTE_22_GATE_3F,               6,  5 ; $C3 ; marcelnote - new location, was ROUTE_12_GATE_2F
 	map_const VERMILION_TRADE_HOUSE,          4,  4 ; $C4
 	map_const DIGLETTS_CAVE,                 20, 18 ; $C5
-	map_const VICTORY_ROAD_3F,               15,  9 ; $C6
 	map_const ROCKET_HIDEOUT_B1F,            15, 14 ; $C7
 	map_const ROCKET_HIDEOUT_B2F,            15, 14 ; $C8
 	map_const ROCKET_HIDEOUT_B3F,            15, 14 ; $C9
@@ -259,6 +249,9 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const MT_SILVER_1F,                  12, 18 ; $F1 ; marcelnote - new location
 	map_const MT_SILVER_2F,                  15, 22 ; $F2 ; marcelnote - new location
 	map_const MT_SILVER_3F,                  10, 18 ; $F3 ; marcelnote - new location
+	map_const VICTORY_ROAD_1F,               10,  9 ; $6C
+	map_const VICTORY_ROAD_2F,               15,  9 ; $C2
+	map_const VICTORY_ROAD_3F,               15,  9 ; $C6
 	map_const INDIGO_PLATEAU_LOBBY,           8,  6 ; $AE
 	map_const LORELEIS_ROOM,                  5,  6 ; $F5
 	map_const BRUNOS_ROOM,                    5,  6 ; $F6
