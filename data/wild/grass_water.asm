@@ -180,7 +180,6 @@ WildDataPointers:
 	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons
-	dw NothingWildMons
 	dw CeladonGroveWildMons ; $B9 ; marcelnote - Celadon Grove
 	dw NothingWildMons
 	dw NothingWildMons
@@ -195,13 +194,6 @@ WildDataPointers:
 	dw NothingWildMons
 	dw DiglettsCaveWildMons
 	dw VictoryRoad3FWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons
@@ -229,25 +221,30 @@ WildDataPointers:
 	dw NothingWildMons
 	dw NothingWildMons
 	dw RockTunnelB1FWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw MtSilver1FWildMons ; $F1 ; marcelnote - new location
-	dw MtSilver2FWildMons ; $F2 ; marcelnote - new location
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons ; INDIGO_PLATEAU_LOBBY
-	dw NothingWildMons ; LORELEIS_ROOM
-	dw NothingWildMons ; BRUNOS_ROOM
-	dw NothingWildMons ; AGATHAS_ROOM
-	dw NothingWildMons ; LANCES_ROOM
-	dw NothingWildMons ; CHAMPIONS_ROOM
-	dw NothingWildMons ; HALL_OF_FAME
+	dw NothingWildMons           ; SILPH_CO_1F
+	dw NothingWildMons           ; SILPH_CO_2F
+	dw NothingWildMons           ; SILPH_CO_3F
+	dw NothingWildMons           ; SILPH_CO_4F
+	dw NothingWildMons           ; SILPH_CO_5F
+	dw NothingWildMons           ; SILPH_CO_6F
+	dw NothingWildMons           ; SILPH_CO_7F
+	dw NothingWildMons           ; SILPH_CO_8F
+	dw NothingWildMons           ; SILPH_CO_9F
+	dw NothingWildMons           ; SILPH_CO_10F
+	dw NothingWildMons           ; SILPH_CO_11F
+	dw NothingWildMons           ; SILPH_CO_ELEVATOR
+	dw MtSilver1FWildMons        ; MT_SILVER_1F ; marcelnote - new location
+	dw MtSilver2FWildMons        ; MT_SILVER_2F ; marcelnote - new location
+	dw NothingWildMons           ; MT_SILVER_3F ; marcelnote - new location
+	dw NothingWildMons           ; INDIGO_PLATEAU_LOBBY
+	dw NothingWildMons           ; LORELEIS_ROOM
+	dw NothingWildMons           ; BRUNOS_ROOM
+	dw NothingWildMons           ; AGATHAS_ROOM
+	dw NothingWildMons           ; LANCES_ROOM
+	dw NothingWildMons           ; CHAMPIONS_ROOM
+	dw NothingWildMons           ; HALL_OF_FAME
+	dw NothingWildMons           ; TRADE_CENTER
+	dw NothingWildMons           ; COLOSSEUM
 	assert_table_length NUM_MAPS
 	dw -1 ; end
 
