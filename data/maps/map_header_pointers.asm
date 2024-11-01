@@ -41,7 +41,6 @@ MapHeaderPointers::
 	dw Route25_h
 	dw Route28_h ; marcelnote - new location
 	dw RedsYellowsHouses_h ; marcelnote - merged RedsHouse floors, added YellowsHouse
-	dw RedsYellowsHouses_h ; UNUSED_MAP_26 ; marcelnote - was RedsHouse2F_h, now unused
 	dw BluesAidesHouses_h ; marcelnote - merged Blue's house with new Aide's house
 	dw OaksLab_h
 	dw ViridianPokecenter_h
@@ -89,7 +88,6 @@ MapHeaderPointers::
 	dw PowerPlant_h
 	dw Route11Gate_h ; marcelnote - merged Route11Gate floors
 	dw DiglettsCaveRoute11_h
-	dw Route11Gate_h ; UNUSED_MAP_56 ; marcelnote - was Route11Gate2F_h, now unused
 	dw Route12Gate_h ; marcelnote - merged Route12Gate floors
 	dw BillsHouse_h
 	dw VermilionPokecenter_h
@@ -116,7 +114,6 @@ MapHeaderPointers::
 	dw MandarinSurfShop_h       ; $6E ; marcelnote - new location, was UNUSED_MAP_6E
 	dw MandarinHotel_h          ; $6F ; marcelnote - new location, was UNUSED_MAP_6F
 	dw MandarinSilphCo_h        ; $70 ; marcelnote - new location, was UNUSED_MAP_70
-	dw LancesRoom_h
 	dw SilphFactory1F_h         ; $72 ; marcelnote - new location, was UNUSED_MAP_72
 	dw SilphFactory2F_h         ; $73 ; marcelnote - new location, was UNUSED_MAP_73
 	dw LancesRoom_h ; UNUSED_MAP_74
@@ -251,4 +248,5 @@ MapHeaderPointers::
 	dw LoreleisRoom_h
 	dw BrunosRoom_h
 	dw AgathasRoom_h
+	dw LancesRoom_h
 	assert_table_length NUM_MAPS
