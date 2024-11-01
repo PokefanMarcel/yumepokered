@@ -118,9 +118,7 @@ MapHeaderBanks::
 	db BANK(SilphFactory2F_h)         ; $73 ; marcelnote - new location, was UNUSED_MAP_73
 	db $1D ; UNUSED_MAP_74
 	db $1D ; UNUSED_MAP_75
-	db BANK(HallOfFame_h)
 	db BANK(UndergroundPathNorthSouth_h)
-	db BANK(ChampionsRoom_h)
 	db BANK(UndergroundPathWestEast_h)
 	db BANK(CeladonMart1F2F3F_h) ; marcelnote - merged 1F 2F 3F
 	db $1D ; UNUSED_MAP_7B ; marcelnote - was CeladonMart2F_h
@@ -174,7 +172,6 @@ MapHeaderBanks::
 	db BANK(CinnabarPokecenterMart_h) ; $AB ; marcelnote - merged Cinnabar Pokecenter and Mart
 	db BANK(CinnabarPokecenterMart_h) ; $AC ; marcelnote - was CINNABAR_MART, now unused
 	db BANK(CinnabarPokecenterMart_h) ; $AD ; marcelnote - was CINNABAR_MART_COPY, now unused
-	db BANK(IndigoPlateauLobby_h)
 	db BANK(CopycatsHouse1F_h)
 	db BANK(CopycatsHouse2F_h)
 	db BANK(FightingDojo_h)
@@ -245,8 +242,11 @@ MapHeaderBanks::
 	db BANK(MtSilver2F_h) ; $F2 ; marcelnote - new location
 	db BANK(MtSilver3F_h) ; $F3 ; marcelnote - new location
 	db $11 ; UNUSED_MAP_F4
+	db BANK(IndigoPlateauLobby_h)
 	db BANK(LoreleisRoom_h)
 	db BANK(BrunosRoom_h)
 	db BANK(AgathasRoom_h)
 	db BANK(LancesRoom_h)
+	db BANK(ChampionsRoom_h)
+	db BANK(HallOfFame_h)
 	assert_table_length NUM_MAPS

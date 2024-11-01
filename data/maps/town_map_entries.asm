@@ -83,9 +83,6 @@ InternalMapEntries:
 	internal_map VICTORY_ROAD_1F,                1,  4, VictoryRoadName
 	internal_map MANDARIN_SILPH_CO,             15, 15, MandarinIslandName ; marcelnote - new map
 	internal_map SILPH_FACTORY_2F,              15, 15, SilphFactoryName ; marcelnote - new map
-	internal_map HALL_OF_FAME,                   1,  2, PokemonLeagueName
-	internal_map UNDERGROUND_PATH_NORTH_SOUTH,  10,  5, UndergroundPathName
-	internal_map CHAMPIONS_ROOM,                 1,  2, PokemonLeagueName
 	internal_map UNDERGROUND_PATH_WEST_EAST,    10,  5, UndergroundPathName
 	internal_map GAME_CORNER,                    7,  5, CeladonCityName
 	internal_map FUCHSIA_MOVE_DELETER_HOUSE,     9, 13, FuchsiaCityName
@@ -101,7 +98,6 @@ InternalMapEntries:
 	internal_map FUCHSIA_SUPER_ROD_HOUSE,        9, 13, FuchsiaCityName ; marcelnote - from Good to Super Rod
 	internal_map POKEMON_MANSION_1F,             3, 15, PokemonMansionName
 	internal_map CINNABAR_POKECENTER_MART,       3, 15, CinnabarIslandName ; marcelnote - merged Cinnabar Pokecenter and Mart
-	internal_map INDIGO_PLATEAU_LOBBY,           1,  2, IndigoPlateauName
 	internal_map MR_PSYCHICS_HOUSE,             10,  5, SaffronCityName
 	internal_map ROUTE_15_GATE,                 10, 13, Route15Name ; marcelnote - merged Route15Gate floors
 	internal_map CELADON_GROVE,                  7,  4, CeladonGroveName ; marcelnote - new location
@@ -131,5 +127,6 @@ InternalMapEntries:
 	internal_map ROCK_TUNNEL_B1F,               14,  3, RockTunnelName
 	internal_map SILPH_CO_ELEVATOR,             10,  5, SilphCoName
 	internal_map MT_SILVER_3F,                   0,  7, MtSilverName ; marcelnote - new location
-	internal_map LANCES_ROOM,                    1,  2, PokemonLeagueName
+	internal_map INDIGO_PLATEAU_LOBBY,           1,  2, IndigoPlateauName
+	internal_map HALL_OF_FAME,                   1,  2, PokemonLeagueName
 	db -1 ; end
