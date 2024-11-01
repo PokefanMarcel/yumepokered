@@ -6,6 +6,7 @@ ENDM
 
 ; marcelnote - other files which rely on map order:
 ; - ItemUseBall.notOldManBattle (item_effects.asm) to identify PokemonTower maps
+; - DungeonMaps2 (dungeon_maps.asm) uses map intervals
 
 ; map ids
 ; indexes for:
@@ -26,13 +27,11 @@ ENDM
 	map_const LAVENDER_TOWN,                 10,  9 ; $04
 	map_const VERMILION_CITY,                20, 18 ; $05
 	map_const CELADON_CITY,                  25, 18 ; $06
-	; marcelnote - SAFFRON should be here
+	map_const SAFFRON_CITY,                  20, 18 ; $0A
 	map_const FUCHSIA_CITY,                  20, 18 ; $07
 	map_const CINNABAR_ISLAND,               14,  9 ; $08 ; marcelnote - added Cinnabar Volcano
-	; marcelnote - MANDARIN_ISLAND should be here
-	map_const INDIGO_PLATEAU,                10,  9 ; $09
-	map_const SAFFRON_CITY,                  20, 18 ; $0A
 	map_const MANDARIN_ISLAND,               17, 16 ; $0Abis ; marcelnote - new map
+	map_const INDIGO_PLATEAU,                10,  9 ; $09
 DEF NUM_CITY_MAPS EQU const_value
 	map_const UNUSED_MAP_0B,                  0,  0 ; $0B
 DEF FIRST_ROUTE_MAP EQU const_value
