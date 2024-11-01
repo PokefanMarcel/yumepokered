@@ -140,9 +140,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const SILPH_FACTORY_2F,              15, 14 ; $73 ; marcelnote - was UNUSED_MAP_73
 	map_const UNUSED_MAP_74,                  0,  0 ; $74
 	map_const UNUSED_MAP_75,                  0,  0 ; $75
-	map_const HALL_OF_FAME,                   5,  4 ; $76
 	map_const UNDERGROUND_PATH_NORTH_SOUTH,   4, 24 ; $77 ; UndergroundPathNorthSouth.blk is actually 4x23
-	map_const CHAMPIONS_ROOM,                 4,  4 ; $78
 	map_const UNDERGROUND_PATH_WEST_EAST,    25,  4 ; $79
 	map_const CELADON_MART_1F2F3F,           10, 18 ; $7A ; marcelnote - merged 1F 2F 3F
 	map_const UNUSED_MAP_7B,                  0,  0 ; $7B ; marcelnote - was CELADON_MART_2F
@@ -196,7 +194,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const CINNABAR_POKECENTER_MART,      14,  4 ; $AB ; marcelnote - merged Cinnabar Pokecenter and Mart
 	map_const UNUSED_MAP_AC,                  0,  0 ; $AC ; marcelnote - was CINNABAR_MART, now unused
 	map_const UNUSED_MAP_AD,                  0,  0 ; $AD ; marcelnote - was CINNABAR_MART_COPY, now unused
-	map_const INDIGO_PLATEAU_LOBBY,           8,  6 ; $AE
+	;map_const INDIGO_PLATEAU_LOBBY,           8,  6 ; $AE
 	map_const COPYCATS_HOUSE_1F,              4,  4 ; $AF
 	map_const COPYCATS_HOUSE_2F,              4,  4 ; $B0
 	map_const FIGHTING_DOJO,                  5,  6 ; $B1
@@ -267,10 +265,13 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const MT_SILVER_2F,                  15, 22 ; $F2 ; marcelnote - new location
 	map_const MT_SILVER_3F,                  10, 18 ; $F3 ; marcelnote - new location
 	map_const UNUSED_MAP_F4,                  0,  0 ; $F4
+	map_const INDIGO_PLATEAU_LOBBY,           8,  6 ; $AE
 	map_const LORELEIS_ROOM,                  5,  6 ; $F5
 	map_const BRUNOS_ROOM,                    5,  6 ; $F6
 	map_const AGATHAS_ROOM,                   5,  6 ; $F7
 	map_const LANCES_ROOM,                   13, 13 ; $71
+	map_const CHAMPIONS_ROOM,                 4,  4 ; $78
+	map_const HALL_OF_FAME,                   5,  4 ; $76
 DEF NUM_MAPS EQU const_value
 
 ; Indoor maps, such as houses, use this as the Map ID in their exit warps
