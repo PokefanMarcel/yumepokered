@@ -85,6 +85,7 @@ MapHeaderBanks::
 	db BANK(UndergroundPathRoute8_h)
 	db BANK(RockTunnelPokecenter_h)
 	db BANK(RockTunnel1F_h)
+	db BANK(RockTunnelB1F_h)
 	db BANK(PowerPlant_h)
 	db BANK(Route11Gate_h) ; marcelnote - merged Route11Gate floors
 	db BANK(DiglettsCaveRoute11_h)
@@ -149,21 +150,19 @@ MapHeaderBanks::
 	db BANK(SafariZoneGate_h)
 	db BANK(FuchsiaGym_h)
 	db BANK(FuchsiaMeetingRoom_h)
+	db BANK(SeafoamIslands1F_h)
 	db BANK(SeafoamIslandsB1F_h)
 	db BANK(SeafoamIslandsB2F_h)
 	db BANK(SeafoamIslandsB3F_h)
 	db BANK(SeafoamIslandsB4F_h)
 	db BANK(VermilionGoodRodHouse_h) ; marcelnote - from Old to Good Rod
 	db BANK(FuchsiaSuperRodHouse_h) ; marcelnote - from Good to Super Rod
-	db BANK(PokemonMansion1F_h)
 	db BANK(CinnabarGym_h)
 	db BANK(CinnabarLab_h)
 	db BANK(CinnabarLabTradeRoom_h)
 	db BANK(CinnabarLabMetronomeRoom_h)
 	db BANK(CinnabarLabFossilRoom_h)
 	db BANK(CinnabarPokecenterMart_h) ; $AB ; marcelnote - merged Cinnabar Pokecenter and Mart
-	db BANK(CinnabarPokecenterMart_h) ; $AC ; marcelnote - was CINNABAR_MART, now unused
-	db BANK(CinnabarPokecenterMart_h) ; $AD ; marcelnote - was CINNABAR_MART_COPY, now unused
 	db BANK(CopycatsHouse1F_h)
 	db BANK(CopycatsHouse2F_h)
 	db BANK(FightingDojo_h)
@@ -180,9 +179,6 @@ MapHeaderBanks::
 	db BANK(Route12FishingGuideHouse_h) ; marcelnote - from Super Rod to Fishing Guide
 	db BANK(Route18Gate_h) ; marcelnote - merged Route18Gate floors
 	db BANK(CeladonGroveNorthGate_h) ; $BF ; CELADON_GROVE_NORTH_GATE ; marcelnote - new location, was Route18Gate2F_h
-	db BANK(SeafoamIslands1F_h)
-	db BANK(Route22Gate_h)
-	db BANK(Route22Gate3F_h) ; marcelnote - was Route12Gate2F_h
 	db BANK(VermilionTradeHouse_h)
 	db BANK(DiglettsCave_h)
 	db BANK(RocketHideoutB1F_h)
@@ -190,9 +186,9 @@ MapHeaderBanks::
 	db BANK(RocketHideoutB3F_h)
 	db BANK(RocketHideoutB4F_h)
 	db BANK(RocketHideoutElevator_h)
-	db BANK(Route22OldRodHouse_h) ; $CC ; marcelnote - new location
 	db BANK(PokemonAcademy1F2F_h) ; $CD ; marcelnote - new location
 	db BANK(PokemonAcademy3F4F_h) ; $CE ; marcelnote - new location
+	db BANK(PokemonMansion1F_h)
 	db BANK(PokemonMansion2F_h)
 	db BANK(PokemonMansion3F_h)
 	db BANK(PokemonMansionB1F_h)
@@ -211,7 +207,6 @@ MapHeaderBanks::
 	db BANK(NameRatersHouse_h)
 	db BANK(CeruleanBadgeHouse_h)
 	db BANK(MtMoonSquare_h) ; $E7 ; marcelnote - new location
-	db BANK(RockTunnelB1F_h)
 	db BANK(SilphCo1F_h)
 	db BANK(SilphCo2F_h)
 	db BANK(SilphCo3F_h)
@@ -224,6 +219,9 @@ MapHeaderBanks::
 	db BANK(SilphCo10F_h)
 	db BANK(SilphCo11F_h)
 	db BANK(SilphCoElevator_h)
+	db BANK(Route22OldRodHouse_h) ; $CC ; marcelnote - new location
+	db BANK(Route22Gate_h)
+	db BANK(Route22Gate3F_h) ; marcelnote - was Route12Gate2F_h
 	db BANK(MtSilver1F_h) ; $F1 ; marcelnote - new location
 	db BANK(MtSilver2F_h) ; $F2 ; marcelnote - new location
 	db BANK(MtSilver3F_h) ; $F3 ; marcelnote - new location

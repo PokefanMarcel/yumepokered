@@ -85,6 +85,7 @@ MapHeaderPointers::
 	dw UndergroundPathRoute8_h
 	dw RockTunnelPokecenter_h
 	dw RockTunnel1F_h
+	dw RockTunnelB1F_h
 	dw PowerPlant_h
 	dw Route11Gate_h ; marcelnote - merged Route11Gate floors
 	dw DiglettsCaveRoute11_h
@@ -149,21 +150,19 @@ MapHeaderPointers::
 	dw SafariZoneGate_h
 	dw FuchsiaGym_h
 	dw FuchsiaMeetingRoom_h
+	dw SeafoamIslands1F_h
 	dw SeafoamIslandsB1F_h
 	dw SeafoamIslandsB2F_h
 	dw SeafoamIslandsB3F_h
 	dw SeafoamIslandsB4F_h
 	dw VermilionGoodRodHouse_h ; marcelnote - from Old to Good Rod
 	dw FuchsiaSuperRodHouse_h ; marcelnote - from Good to Super Rod
-	dw PokemonMansion1F_h
 	dw CinnabarGym_h
 	dw CinnabarLab_h
 	dw CinnabarLabTradeRoom_h
 	dw CinnabarLabMetronomeRoom_h
 	dw CinnabarLabFossilRoom_h
 	dw CinnabarPokecenterMart_h ; $AB ; marcelnote - merged Cinnabar Pokecenter and Mart
-	dw CinnabarPokecenterMart_h ; $AC ; marcelnote - was CINNABAR_MART, now unused
-	dw CinnabarPokecenterMart_h ; $AD ; marcelnote - was CINNABAR_MART_COPY, now unused
 	dw CopycatsHouse1F_h
 	dw CopycatsHouse2F_h
 	dw FightingDojo_h
@@ -180,9 +179,6 @@ MapHeaderPointers::
 	dw Route12FishingGuideHouse_h ; marcelnote - from Super Rod to Fishing Guide
 	dw Route18Gate_h ; marcelnote - merged Route18Gate floors
 	dw CeladonGroveNorthGate_h ; $BF ; CELADON_GROVE_NORTH_GATE ; marcelnote - new location, was Route18Gate2F_h
-	dw SeafoamIslands1F_h
-	dw Route22Gate_h
-	dw Route22Gate3F_h ; ROUTE_22_GATE_3F ; marcelnote - was Route12Gate2F_h
 	dw VermilionTradeHouse_h
 	dw DiglettsCave_h
 	dw RocketHideoutB1F_h
@@ -190,9 +186,9 @@ MapHeaderPointers::
 	dw RocketHideoutB3F_h
 	dw RocketHideoutB4F_h
 	dw RocketHideoutElevator_h
-	dw Route22OldRodHouse_h ; $CC ; marcelnote - new location
 	dw PokemonAcademy1F2F_h ; $CD ; marcelnote - new location
 	dw PokemonAcademy3F4F_h ; $CE ; marcelnote - new location
+	dw PokemonMansion1F_h
 	dw PokemonMansion2F_h
 	dw PokemonMansion3F_h
 	dw PokemonMansionB1F_h
@@ -211,7 +207,6 @@ MapHeaderPointers::
 	dw NameRatersHouse_h
 	dw CeruleanBadgeHouse_h
 	dw MtMoonSquare_h ; $E7 ; marcelnote - new location
-	dw RockTunnelB1F_h
 	dw SilphCo1F_h
 	dw SilphCo2F_h
 	dw SilphCo3F_h
@@ -224,6 +219,9 @@ MapHeaderPointers::
 	dw SilphCo10F_h
 	dw SilphCo11F_h
 	dw SilphCoElevator_h
+	dw Route22OldRodHouse_h ; $CC ; marcelnote - new location
+	dw Route22Gate_h
+	dw Route22Gate3F_h ; ROUTE_22_GATE_3F ; marcelnote - was Route12Gate2F_h
 	dw MtSilver1F_h ; $F1 ; marcelnote - new location
 	dw MtSilver2F_h ; $F2 ; marcelnote - new location
 	dw MtSilver3F_h ; $F3 ; marcelnote - new location
