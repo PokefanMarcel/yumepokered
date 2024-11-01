@@ -83,16 +83,17 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const PEWTER_MART,                    4,  4 ; $38
 	map_const PEWTER_SPEECH_HOUSE,            4,  4 ; $39
 	map_const PEWTER_POKECENTER,              7,  4 ; $3A
+	map_const MT_MOON_POKECENTER,             7,  4 ; $44
 	map_const MT_MOON_1F,                    20, 18 ; $3B
 	map_const MT_MOON_B1F,                   14, 14 ; $3C
 	map_const MT_MOON_B2F,                   20, 18 ; $3D
+	map_const MT_MOON_SQUARE,                12,  6 ; $E7 ; marcelnote - new location
 	map_const CERULEAN_TRASHED_HOUSE,         4,  4 ; $3E
 	map_const CERULEAN_TRADE_HOUSE,           4,  4 ; $3F
 	map_const CERULEAN_POKECENTER,            7,  4 ; $40
 	map_const CERULEAN_GYM,                   5,  7 ; $41
 	map_const BIKE_SHOP,                      4,  4 ; $42
 	map_const CERULEAN_MART,                  4,  4 ; $43
-	map_const MT_MOON_POKECENTER,             7,  4 ; $44
 	map_const CERULEAN_TRASHED_HOUSE_COPY,    4,  4 ; $45
 	map_const ROUTE_5_GATE,                  10,  3 ; $46 ; marcelnote - added 2nd floor
 	map_const UNDERGROUND_PATH_ROUTE_5,       4,  4 ; $47
@@ -228,7 +229,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const CERULEAN_CAVE_1F,              15,  9 ; $E4
 	map_const NAME_RATERS_HOUSE,              4,  4 ; $E5
 	map_const CERULEAN_BADGE_HOUSE,           4,  4 ; $E6
-	map_const MT_MOON_SQUARE,                12,  6 ; $E7 ; marcelnote - new location
+	;map_const MT_MOON_SQUARE,                12,  6 ; $E7 ; marcelnote - new location
 	map_const SILPH_CO_1F,                   15,  9 ; $B5
 	map_const SILPH_CO_2F,                   15,  9 ; $CF
 	map_const SILPH_CO_3F,                   15,  9 ; $D0

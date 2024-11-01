@@ -64,15 +64,16 @@ InternalMapEntries:
 	internal_map VIRIDIAN_FOREST_SOUTH_GATE,     3,  6, Route2Name
 	internal_map VIRIDIAN_FOREST,                3,  5, ViridianForestName
 	internal_map PEWTER_POKECENTER,              3,  3, PewterCityName
-	internal_map MT_MOON_B2F,                    6,  2, MountMoonName
-	internal_map CERULEAN_MART,                 10,  2, CeruleanCityName
 	internal_map MT_MOON_POKECENTER,             5,  2, Route4Name
+	internal_map MT_MOON_B2F,                    6,  2, MountMoonName
+	internal_map MT_MOON_SQUARE,                 6,  2, MtMoonSquareName ; marcelnote - new location
+	internal_map CERULEAN_MART,                 10,  2, CeruleanCityName
 	internal_map CERULEAN_TRASHED_HOUSE_COPY,   10,  2, CeruleanCityName
 	internal_map DAYCARE,                       10,  4, Route5Name
 	internal_map UNDERGROUND_PATH_ROUTE_6_COPY, 10,  7, Route6Name
 	internal_map UNDERGROUND_PATH_ROUTE_7_COPY,  8,  5, Route7Name
 	internal_map UNDERGROUND_PATH_ROUTE_8,      12,  5, Route8Name
-	internal_map ROCK_TUNNEL_B1F,               14,  3, RockTunnelName
+	internal_map ROCK_TUNNEL_B1F,               14,  3, RockTunnelName ; marcelnote - differentiate PokeCenter?
 	internal_map POWER_PLANT,                   15,  3, PowerPlantName
 	internal_map DIGLETTS_CAVE_ROUTE_11,        13,  9, Route11Name ; marcelnote - merged ROUTE_11_GATE floors
 	internal_map ROUTE_12_GATE,                 14,  7, Route12Name ; marcelnote - merged ROUTE_12_GATE floors
@@ -114,7 +115,6 @@ InternalMapEntries:
 	internal_map CERULEAN_CAVE_1F,               9,  1, CeruleanCaveName
 	internal_map NAME_RATERS_HOUSE,             14,  5, LavenderTownName
 	internal_map CERULEAN_BADGE_HOUSE,          10,  2, CeruleanCityName
-	internal_map MT_MOON_SQUARE,                 6,  2, MountMoonName     ; marcelnote - new location
 	internal_map SILPH_CO_ELEVATOR,             10,  5, SilphCoName
 	internal_map ROUTE_22_OLD_ROD_HOUSE,         2,  8, Route22Name       ; marcelnote - new location
 	internal_map ROUTE_22_GATE_3F,               1,  7, Route22Name       ; marcelnote - new location

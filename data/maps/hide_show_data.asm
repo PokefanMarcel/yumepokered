@@ -63,14 +63,15 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw NoHS
-	dw MtMoon1FHS
-	dw NoHS
-	dw MtMoonB2FHS
+	dw NoHS                 ; MT_MOON_POKECENTER
+	dw MtMoon1FHS           ; MT_MOON_1F
+	dw NoHS                 ; MT_MOON_B1F
+	dw MtMoonB2FHS          ; MT_MOON_B2F
+	dw MtMoonSquareHS       ; MT_MOON_SQUARE ; marcelnote - new location
 	dw NoHS
 	dw NoHS
 	dw NoHS
 	dw CeruleanGymHS ; marcelnote - Misty rematch
-	dw NoHS
 	dw NoHS
 	dw NoHS
 	dw NoHS
@@ -208,7 +209,6 @@ MapHSPointers:
 	dw CeruleanCaveHS
 	dw NoHS
 	dw NoHS
-	dw MtMoonSquareHS       ; $E7 ; marcelnote - MtMoonSquare
 	dw NoHS                 ; SILPH_CO_1F ; marcelnote - was SilphCo1FHS, need to restore hide/show
 	dw SilphCo2FHS          ; SILPH_CO_2F
 	dw SilphCo3FHS          ; SILPH_CO_3F
