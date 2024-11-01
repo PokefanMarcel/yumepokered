@@ -131,9 +131,9 @@ MapHeaderBanks::
 	db BANK(CeladonMart4F5F6F_h) ; marcelnote - merged 4F 5F + new 6F
 	db BANK(CeladonMartRoof_h)
 	db BANK(CeladonMartElevator_h)
-	db BANK(CeladonMansion1F_h)
-	db BANK(CeladonMansion2F_h)
-	db BANK(CeladonMansion3F_h)
+	db BANK(CeladonMansion_h) ; UNUSED_MAP_80 ; marcelnote - was CELADON_MANSION_1F, now unused
+	db BANK(CeladonMansion_h) ; UNUSED_MAP_81 ; marcelnote - was CELADON_MANSION_2F, now unused
+	db BANK(CeladonMansion_h) ; CELADON_MANSION ; marcelnote - merged Celadon Mansion floors, added 4F
 	db BANK(CeladonMansionRoof_h)
 	db BANK(CeladonMansionRoofHouse_h)
 	db BANK(CeladonPokecenter_h)

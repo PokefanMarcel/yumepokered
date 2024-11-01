@@ -197,9 +197,7 @@ INCLUDE "text/VermilionGoodRodHouse.asm" ; marcelnote - from Old to Good Rod
 INCLUDE "text/CeladonMart1F2F3F.asm" ; marcelnote - merged 1F 2F 3F
 INCLUDE "text/CeladonMart4F5F6F.asm" ; marcelnote - merged 4F 5F + new 6F
 INCLUDE "text/CeladonMartRoof.asm"
-INCLUDE "text/CeladonMansion1F.asm"
-INCLUDE "text/CeladonMansion2F.asm"
-INCLUDE "text/CeladonMansion3F.asm"
+INCLUDE "text/CeladonMansion.asm" ; marcelnote - merged Celadon Mansion floors
 INCLUDE "text/CeladonMansionRoof.asm"
 INCLUDE "text/CeladonMansionRoofHouse.asm"
 INCLUDE "text/CeladonPokecenter.asm"

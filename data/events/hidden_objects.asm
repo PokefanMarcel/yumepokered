@@ -16,7 +16,7 @@ HiddenObjectMaps:
 	db LAVENDER_POKECENTER_MART ; marcelnote - merged Lavender Pokecenter and Mart
 	db VERMILION_POKECENTER
 	db VERMILION_GYM
-	db CELADON_MANSION_2F
+	db CELADON_MANSION ; marcelnote - merged Celadon Mansion floors
 	db CELADON_POKECENTER
 	db CELADON_GYM
 	db GAME_CORNER
@@ -112,7 +112,7 @@ HiddenObjectPointers:
 	dw LavenderPokecenterMartHiddenObjects ; marcelnote - merged Lavender Pokecenter and Mart
 	dw VermilionPokecenterHiddenObjects
 	dw VermilionGymHiddenObjects
-	dw CeladonMansion2HiddenObjects
+	dw CeladonMansionHiddenObjects ; marcelnote - merged Celadon Mansion floors, added 4F
 	dw CeladonPokecenterHiddenObjects
 	dw CeladonGymHiddenObjects
 	dw GameCornerHiddenObjects
@@ -160,7 +160,7 @@ HiddenObjectPointers:
 	;dw SafariZoneRestHouse4HiddenObjects
 	dw Route15GateUpstairsHiddenObjects
 	dw LavenderHouse1HiddenObjects
-	dw CeladonMansion5HiddenObjects
+	dw CeladonMansionRoofHouseHiddenObjects
 	dw FightingDojoHiddenObjects
 	dw Route10HiddenObjects
 	dw IndigoPlateauLobbyHiddenObjects
@@ -315,8 +315,8 @@ VermilionGymHiddenObjects:
 	hidden_object  9, 11, 14, GymTrashScript
 	db -1 ; end
 
-CeladonMansion2HiddenObjects:
-	hidden_object  0,  5, SPRITE_FACING_UP, OpenPokemonCenterPC
+CeladonMansionHiddenObjects:
+	hidden_object  0, 39, SPRITE_FACING_UP, OpenPokemonCenterPC ; marcelnote - merged Celadon Mansion floors
 	db -1 ; end
 
 CeladonPokecenterHiddenObjects:
@@ -596,7 +596,7 @@ LavenderHouse1HiddenObjects:
 	hidden_object  7,  1, SPRITE_FACING_DOWN, PrintMagazinesText
 	db -1 ; end
 
-CeladonMansion5HiddenObjects:
+CeladonMansionRoofHouseHiddenObjects:
 	hidden_text_predef  3,  0, LinkCableHelp, PrintBlackboardLinkCableText
 	hidden_text_predef  4,  0, LinkCableHelp, PrintBlackboardLinkCableText
 	hidden_text_predef  3,  4, TMNotebook, PrintNotebookText

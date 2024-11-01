@@ -15,9 +15,9 @@ CeladonCity_Object:
 	def_warp_events
 	warp_event  8, 13, CELADON_MART_1F2F3F, 1 ; marcelnote - merged 1F 2F 3F
 	warp_event 10, 13, CELADON_MART_1F2F3F, 3 ; marcelnote - merged 1F 2F 3F
-	warp_event 24,  9, CELADON_MANSION_1F, 1
-	warp_event 24,  3, CELADON_MANSION_1F, 3
-	warp_event 25,  3, CELADON_MANSION_1F, 3
+	warp_event 24,  9, CELADON_MANSION, 1 ; marcelnote - merged Celadon Mansion floors
+	warp_event 24,  3, CELADON_MANSION, 3 ; marcelnote - merged Celadon Mansion floors
+	warp_event 25,  3, CELADON_MANSION, 3 ; marcelnote - merged Celadon Mansion floors
 	warp_event 41,  9, CELADON_POKECENTER, 1
 	warp_event 12, 27, CELADON_GYM, 1
 	warp_event 28, 19, GAME_CORNER, 1

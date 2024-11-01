@@ -130,9 +130,9 @@ MapSongBanks::
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; CELADON_MART_4F5F6F ; marcelnote - merged 4F 5F + new 6F
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; CELADON_MART_ROOF
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; CELADON_MART_ELEVATOR
-	db MUSIC_CELADON, BANK(Music_Celadon) ; CELADON_MANSION_1F
-	db MUSIC_CELADON, BANK(Music_Celadon) ; CELADON_MANSION_2F
-	db MUSIC_CELADON, BANK(Music_Celadon) ; CELADON_MANSION_3F
+	db MUSIC_CELADON, BANK(Music_Celadon) ; UNUSED_MAP_80 ; marcelnote - was CELADON_MANSION_1F, now unused
+	db MUSIC_CELADON, BANK(Music_Celadon) ; UNUSED_MAP_81 ; marcelnote - was CELADON_MANSION_2F, now unused
+	db MUSIC_CELADON, BANK(Music_Celadon) ; CELADON_MANSION ; marcelnote - merged Celadon Mansion floors, added 4F
 	db MUSIC_CELADON, BANK(Music_Celadon) ; CELADON_MANSION_ROOF
 	db MUSIC_CELADON, BANK(Music_Celadon) ; CELADON_MANSION_ROOF_HOUSE
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; CELADON_POKECENTER

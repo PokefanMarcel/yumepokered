@@ -1,16 +1,72 @@
-CeladonMansion3F_Script:
+CeladonMansion_Script:
 	jp EnableAutoTextBoxDrawing
 
-CeladonMansion3F_TextPointers:
+CeladonMansion_TextPointers:
 	def_text_pointers
+	; objects
+	; 1F
+	dw_const CeladonMansion1FMeowthText,            TEXT_CELADONMANSION1F_MEOWTH
+	dw_const CeladonMansion1FGrannyText,            TEXT_CELADONMANSION1F_GRANNY
+	dw_const CeladonMansion1FClefairyText,          TEXT_CELADONMANSION1F_CLEFAIRY
+	dw_const CeladonMansion1FNidoranFText,          TEXT_CELADONMANSION1F_NIDORANF
+	; 2F
+	; nothing
+	; 3F
 	dw_const CeladonMansion3FProgrammerText,     TEXT_CELADONMANSION3F_PROGRAMMER
 	dw_const CeladonMansion3FGraphicArtistText,  TEXT_CELADONMANSION3F_GRAPHIC_ARTIST
 	dw_const CeladonMansion3FWriterText,         TEXT_CELADONMANSION3F_WRITER
 	dw_const CeladonMansion3FGameDesignerText,   TEXT_CELADONMANSION3F_GAME_DESIGNER
+	; 4F
+	; nothing
+	; bg
+	; 1F
+	dw_const CeladonMansion1FManagersSuiteSignText, TEXT_CELADONMANSION1F_MANAGERS_SUITE_SIGN
+	; 2F
+	dw_const CeladonMansion2FMeetingRoomSignText, TEXT_CELADONMANSION2F_MEETING_ROOM_SIGN
+	; 3F
 	dw_const CeladonMansion3FGameProgramPCText,  TEXT_CELADONMANSION3F_GAME_PROGRAM_PC
 	dw_const CeladonMansion3FPlayingGamePCText,  TEXT_CELADONMANSION3F_PLAYING_GAME_PC
 	dw_const CeladonMansion3FGameScriptPCText,   TEXT_CELADONMANSION3F_GAME_SCRIPT_PC
 	dw_const CeladonMansion3FDevRoomSignText,    TEXT_CELADONMANSION3F_DEV_ROOM_SIGN
+	; 4F
+	; nothing
+
+
+CeladonMansion_PlayCryScript:
+	call PlayCry
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+CeladonMansion1FMeowthText:
+	text_far _CeladonMansion1FMeowthText
+	text_asm
+	ld a, MEOWTH
+	jp CeladonMansion_PlayCryScript
+
+CeladonMansion1FGrannyText:
+	text_far _CeladonMansion1FGrannyText
+	text_end
+
+CeladonMansion1FClefairyText:
+	text_far _CeladonMansion1FClefairyText
+	text_asm
+	ld a, CLEFAIRY
+	jp CeladonMansion_PlayCryScript
+
+CeladonMansion1FNidoranFText:
+	text_far _CeladonMansion1FNidoranFText
+	text_asm
+	ld a, NIDORAN_F
+	jp CeladonMansion_PlayCryScript
+
+CeladonMansion1FManagersSuiteSignText:
+	text_far _CeladonMansion1FManagersSuiteSignText
+	text_end
+
+
+CeladonMansion2FMeetingRoomSignText:
+	text_far _CeladonMansion2FMeetingRoomSignText
+	text_end
+
 
 CeladonMansion3FProgrammerText:
 	text_far _CeladonMansion3FProgrammerText
