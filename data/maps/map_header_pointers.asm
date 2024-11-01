@@ -108,14 +108,6 @@ MapHeaderPointers::
 	dw SSAnne1FRooms_h
 	dw SSAnne2FRooms_h
 	dw SSAnneB1FRooms_h
-	dw CinnabarVolcano1FB1F_h ; $69 ; marcelnote - new location
-	dw CinnabarVolcano2F_h    ; $6A ; marcelnote - new location
-	dw MandarinPokecenterMart_h ; $6D ; marcelnote - new location, was UNUSED_MAP_6D
-	dw MandarinSurfShop_h       ; $6E ; marcelnote - new location, was UNUSED_MAP_6E
-	dw MandarinHotel_h          ; $6F ; marcelnote - new location, was UNUSED_MAP_6F
-	dw MandarinSilphCo_h        ; $70 ; marcelnote - new location, was UNUSED_MAP_70
-	dw SilphFactory1F_h         ; $72 ; marcelnote - new location, was UNUSED_MAP_72
-	dw SilphFactory2F_h         ; $73 ; marcelnote - new location, was UNUSED_MAP_73
 	dw UndergroundPathNorthSouth_h
 	dw UndergroundPathWestEast_h
 	dw CeladonMart1F2F3F_h ; marcelnote - merged 1F 2F 3F
@@ -128,7 +120,6 @@ MapHeaderPointers::
 	dw CeladonPokecenter_h
 	dw CeladonGym_h
 	dw GameCorner_h
-	dw FuchsiaMoveDeleterHouse_h ; FUCHSIA_MOVE_DELETER_HOUSE ; marcelnote - new location, was CeladonMart5F_h
 	dw GameCornerPrizeRoom_h
 	dw CeladonDiner_h
 	dw CeladonChiefHouse_h
@@ -144,26 +135,12 @@ MapHeaderPointers::
 	dw MrFujisHouse_h
 	dw LavenderPokecenterMart_h ; $96 ; marcelnote - was LAVENDER_MART, now unused
 	dw LavenderCuboneHouse_h
-	dw FuchsiaMart_h
-	dw FuchsiaBillsGrandpasHouse_h
-	dw FuchsiaPokecenter_h
-	dw WardensHouse_h
-	dw SafariZoneGate_h
-	dw FuchsiaGym_h
-	dw FuchsiaMeetingRoom_h
 	dw SeafoamIslands1F_h
 	dw SeafoamIslandsB1F_h
 	dw SeafoamIslandsB2F_h
 	dw SeafoamIslandsB3F_h
 	dw SeafoamIslandsB4F_h
 	dw VermilionGoodRodHouse_h ; marcelnote - from Old to Good Rod
-	dw FuchsiaSuperRodHouse_h ; marcelnote - from Good to Super Rod
-	dw CinnabarGym_h
-	dw CinnabarLab_h
-	dw CinnabarLabTradeRoom_h
-	dw CinnabarLabMetronomeRoom_h
-	dw CinnabarLabFossilRoom_h
-	dw CinnabarPokecenterMart_h ; $AB ; marcelnote - merged Cinnabar Pokecenter and Mart
 	dw CopycatsHouse1F_h
 	dw CopycatsHouse2F_h
 	dw FightingDojo_h
@@ -189,19 +166,6 @@ MapHeaderPointers::
 	dw RocketHideoutElevator_h
 	dw PokemonAcademy1F2F_h ; $CD ; marcelnote - new location
 	dw PokemonAcademy3F4F_h ; $CE ; marcelnote - new location
-	dw PokemonMansion1F_h
-	dw PokemonMansion2F_h
-	dw PokemonMansion3F_h
-	dw PokemonMansionB1F_h
-	dw SafariZoneEast_h
-	dw SafariZoneNorth_h
-	dw SafariZoneWest_h
-	dw SafariZoneCenter_h
-	dw SafariZoneCenterRestHouse_h
-	dw SafariZoneSecretHouse_h
-	dw SafariZoneWestRestHouse_h
-	dw SafariZoneEastRestHouse_h
-	dw SafariZoneNorthRestHouse_h
 	dw CeruleanCave2F_h
 	dw CeruleanCaveB1F_h
 	dw CeruleanCave1F_h
@@ -219,12 +183,48 @@ MapHeaderPointers::
 	dw SilphCo10F_h
 	dw SilphCo11F_h
 	dw SilphCoElevator_h
-	dw Route22OldRodHouse_h ; $CC ; marcelnote - new location
+	dw FuchsiaPokecenter_h
+	dw FuchsiaMart_h
+	dw FuchsiaBillsGrandpasHouse_h
+	dw WardensHouse_h
+	dw FuchsiaMeetingRoom_h
+	dw FuchsiaSuperRodHouse_h    ; marcelnote - from Good to Super Rod
+	dw FuchsiaMoveDeleterHouse_h ; marcelnote - new location
+	dw FuchsiaGym_h
+	dw SafariZoneGate_h
+	dw SafariZoneEast_h
+	dw SafariZoneNorth_h
+	dw SafariZoneWest_h
+	dw SafariZoneCenter_h
+	dw SafariZoneCenterRestHouse_h
+	dw SafariZoneSecretHouse_h
+	dw SafariZoneWestRestHouse_h
+	dw SafariZoneEastRestHouse_h
+	dw SafariZoneNorthRestHouse_h
+	dw CinnabarPokecenterMart_h  ; marcelnote - merged Cinnabar Pokecenter and Mart
+	dw CinnabarLab_h
+	dw CinnabarLabTradeRoom_h
+	dw CinnabarLabMetronomeRoom_h
+	dw CinnabarLabFossilRoom_h
+	dw CinnabarGym_h
+	dw PokemonMansion1F_h
+	dw PokemonMansion2F_h
+	dw PokemonMansion3F_h
+	dw PokemonMansionB1F_h
+	dw CinnabarVolcano1FB1F_h    ; marcelnote - new location
+	dw CinnabarVolcano2F_h       ; marcelnote - new location
+	dw MandarinPokecenterMart_h  ; marcelnote - new location
+	dw MandarinSurfShop_h        ; marcelnote - new location
+	dw MandarinHotel_h           ; marcelnote - new location
+	dw MandarinSilphCo_h         ; marcelnote - new location
+	dw SilphFactory1F_h          ; marcelnote - new location
+	dw SilphFactory2F_h          ; marcelnote - new location
+	dw Route22OldRodHouse_h      ; marcelnote - new location
 	dw Route22Gate_h
-	dw Route22Gate3F_h ; ROUTE_22_GATE_3F ; marcelnote - was Route12Gate2F_h
-	dw MtSilver1F_h ; $F1 ; marcelnote - new location
-	dw MtSilver2F_h ; $F2 ; marcelnote - new location
-	dw MtSilver3F_h ; $F3 ; marcelnote - new location
+	dw Route22Gate3F_h           ; marcelnote - was Route12Gate2F_h
+	dw MtSilver1F_h              ; marcelnote - new location
+	dw MtSilver2F_h              ; marcelnote - new location
+	dw MtSilver3F_h              ; marcelnote - new location
 	dw VictoryRoad1F_h
 	dw VictoryRoad2F_h
 	dw VictoryRoad3F_h
