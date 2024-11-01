@@ -108,26 +108,18 @@ MapHeaderBanks::
 	db BANK(SSAnneB1FRooms_h)
 	db BANK(CinnabarVolcano1FB1F_h) ; $69 ; marcelnote - new location
 	db BANK(CinnabarVolcano2F_h)    ; $6A ; marcelnote - new location
-	db $1D ; UNUSED_MAP_6B
-	db BANK(VictoryRoad1F_h)
 	db BANK(MandarinPokecenterMart_h) ; $6D ; marcelnote - new location, was UNUSED_MAP_6D
 	db BANK(MandarinSurfShop_h)       ; $6E ; marcelnote - new location, was UNUSED_MAP_6E
 	db BANK(MandarinHotel_h)          ; $6F ; marcelnote - new location, was UNUSED_MAP_6F
 	db BANK(MandarinSilphCo_h)        ; $70 ; marcelnote - new location, was UNUSED_MAP_70
 	db BANK(SilphFactory1F_h)         ; $72 ; marcelnote - new location, was UNUSED_MAP_72
 	db BANK(SilphFactory2F_h)         ; $73 ; marcelnote - new location, was UNUSED_MAP_73
-	db $1D ; UNUSED_MAP_74
-	db $1D ; UNUSED_MAP_75
 	db BANK(UndergroundPathNorthSouth_h)
 	db BANK(UndergroundPathWestEast_h)
 	db BANK(CeladonMart1F2F3F_h) ; marcelnote - merged 1F 2F 3F
-	db $1D ; UNUSED_MAP_7B ; marcelnote - was CeladonMart2F_h
-	db $1D ; UNUSED_MAP_7C ; marcelnote - was CeladonMart3F_h
 	db BANK(CeladonMart4F5F6F_h) ; marcelnote - merged 4F 5F + new 6F
 	db BANK(CeladonMartRoof_h)
 	db BANK(CeladonMartElevator_h)
-	db BANK(CeladonMansion_h) ; UNUSED_MAP_80 ; marcelnote - was CELADON_MANSION_1F, now unused
-	db BANK(CeladonMansion_h) ; UNUSED_MAP_81 ; marcelnote - was CELADON_MANSION_2F, now unused
 	db BANK(CeladonMansion_h) ; CELADON_MANSION ; marcelnote - merged Celadon Mansion floors, added 4F
 	db BANK(CeladonMansionRoof_h)
 	db BANK(CeladonMansionRoofHouse_h)
@@ -190,11 +182,9 @@ MapHeaderBanks::
 	db BANK(CeladonGroveNorthGate_h) ; $BF ; CELADON_GROVE_NORTH_GATE ; marcelnote - new location, was Route18Gate2F_h
 	db BANK(SeafoamIslands1F_h)
 	db BANK(Route22Gate_h)
-	db BANK(VictoryRoad2F_h)
 	db BANK(Route22Gate3F_h) ; marcelnote - was Route12Gate2F_h
 	db BANK(VermilionTradeHouse_h)
 	db BANK(DiglettsCave_h)
-	db BANK(VictoryRoad3F_h)
 	db BANK(RocketHideoutB1F_h)
 	db BANK(RocketHideoutB2F_h)
 	db BANK(RocketHideoutB3F_h)
@@ -237,6 +227,9 @@ MapHeaderBanks::
 	db BANK(MtSilver1F_h) ; $F1 ; marcelnote - new location
 	db BANK(MtSilver2F_h) ; $F2 ; marcelnote - new location
 	db BANK(MtSilver3F_h) ; $F3 ; marcelnote - new location
+	db BANK(VictoryRoad1F_h)
+	db BANK(VictoryRoad2F_h)
+	db BANK(VictoryRoad3F_h)
 	db BANK(IndigoPlateauLobby_h)
 	db BANK(LoreleisRoom_h)
 	db BANK(BrunosRoom_h)
