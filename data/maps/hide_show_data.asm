@@ -43,7 +43,6 @@ MapHSPointers:
 	dw Route25HS
 	dw NoHS ; marcelnote - new location, Route28
 	dw RedsYellowsHousesHS ; marcelnote - added to hide Yellow asleep
-	dw NoHS
 	dw BluesAidesHousesHS ; marcelnote - merged Blue's house with new Aide's house
 	dw OaksLabHS
 	dw NoHS
@@ -92,7 +91,6 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw NoHS
-	dw NoHS
 	dw BillsHouseHS
 	dw NoHS
 	dw NoHS
@@ -118,7 +116,6 @@ MapHSPointers:
 	dw NoHS                ; $6E ; marcelnote - MandarinSurfShop
 	dw MandarinHotelHS     ; $6F ; marcelnote - MandarinHotel
 	dw MandarinSilphCoHS   ; $70 ; marcelnote - MandarinSilphCo
-	dw LancesRoomHS        ; $71 ; marcelnote - added for Lance rematch
 	dw SilphFactory1FHS    ; $72 ; marcelnote - SilphFactory1F
 	dw SilphFactory2FHS    ; $73 ; marcelnote - SilphFactory2F
 	dw NoHS
@@ -253,6 +250,7 @@ MapHSPointers:
 	dw LoreleisRoomHS ; $F5 ; marcelnote - added for Lorelei rematch
 	dw BrunosRoomHS   ; $F6 ; marcelnote - added for Bruno rematch
 	dw AgathasRoomHS  ; $F7 ; marcelnote - added for Agatha rematch
+	dw LancesRoomHS        ; $71 ; marcelnote - added for Lance rematch
 	assert_table_length NUM_MAPS
 	dw -1 ; end
 

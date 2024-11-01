@@ -40,7 +40,6 @@ MapSongBanks::
 	db MUSIC_ROUTES2, BANK(Music_Routes2) ; ROUTE_25
 	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; ROUTE_28 ; marcelnote - new location
 	db MUSIC_PALLET_TOWN, BANK(Music_PalletTown) ; REDS_YELLOWS_HOUSES ; marcelnote - was REDS_HOUSE_1F
-	db MUSIC_PALLET_TOWN, BANK(Music_PalletTown) ; UNUSED_MAP_26 ; marcelnote - was REDS_HOUSE_2F
 	db MUSIC_PALLET_TOWN, BANK(Music_PalletTown) ; BLUES_HOUSE
 	db MUSIC_OAKS_LAB, BANK(Music_OaksLab) ; OAKS_LAB
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; VIRIDIAN_POKECENTER
@@ -88,7 +87,6 @@ MapSongBanks::
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; POWER_PLANT
 	db MUSIC_VERMILION, BANK(Music_Vermilion) ; ROUTE_11_GATE ; marcelnote - merged ROUTE_11_GATE floors
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; DIGLETTS_CAVE_ROUTE_11
-	db MUSIC_VERMILION, BANK(Music_Vermilion) ; UNUSED_MAP_56 ; marcelnote - was ROUTE_11_GATE_2F, now unused
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; ROUTE_12_GATE ; marcelnote - merged ROUTE_12_GATE floors
 	db MUSIC_CITIES2, BANK(Music_Cities2) ; BILLS_HOUSE
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; VERMILION_POKECENTER
@@ -115,7 +113,6 @@ MapSongBanks::
 	db MUSIC_CINNABAR, BANK(Music_Cinnabar) ; MANDARIN_SURF_SHOP ; marcelnote - new location, was MUSIC_DUNGEON1
 	db MUSIC_CINNABAR, BANK(Music_Cinnabar) ; MANDARIN_HOTEL ; marcelnote - new location, was MUSIC_SILPH_CO
 	db MUSIC_CINNABAR, BANK(Music_Cinnabar) ; MANDARIN_SILPH_CO ; marcelnote - new location, was MUSIC_SILPH_CO
-	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; LANCES_ROOM
 	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; SILPH_FACTORY_1F ; marcelnote - new location, was MUSIC_SS_ANNE
 	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; SILPH_FACTORY_2F ; marcelnote - new location, was MUSIC_SS_ANNE
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne) ; UNUSED_MAP_74
@@ -250,4 +247,5 @@ MapSongBanks::
 	db MUSIC_GYM, BANK(Music_Gym) ; LORELEIS_ROOM
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; BRUNOS_ROOM
 	db MUSIC_POKEMON_TOWER, BANK(Music_PokemonTower) ; AGATHAS_ROOM
+	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; LANCES_ROOM
 	assert_table_length NUM_MAPS

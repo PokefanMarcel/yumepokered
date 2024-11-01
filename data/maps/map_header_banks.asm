@@ -41,7 +41,6 @@ MapHeaderBanks::
 	db BANK(Route25_h)
 	db BANK(Route28_h) ; marcelnote - new location
 	db BANK(RedsYellowsHouses_h) ; marcelnote - merged RedsHouse floors, added YellowsHouse
-	db $01 ; UNUSED_MAP_26 ; marcelnote - was RedsHouse2F_h
 	db BANK(BluesAidesHouses_h) ; marcelnote - merged Blue's house with new Aide's house
 	db BANK(OaksLab_h)
 	db BANK(ViridianPokecenter_h)
@@ -89,7 +88,6 @@ MapHeaderBanks::
 	db BANK(PowerPlant_h)
 	db BANK(Route11Gate_h) ; marcelnote - merged Route11Gate floors
 	db BANK(DiglettsCaveRoute11_h)
-	db $01 ; UNUSED_MAP_56 ; marcelnote - was Route11Gate2F_h, now unused
 	db BANK(Route12Gate_h) ; marcelnote - merged Route12Gate floors
 	db BANK(BillsHouse_h)
 	db BANK(VermilionPokecenter_h)
@@ -116,7 +114,6 @@ MapHeaderBanks::
 	db BANK(MandarinSurfShop_h)       ; $6E ; marcelnote - new location, was UNUSED_MAP_6E
 	db BANK(MandarinHotel_h)          ; $6F ; marcelnote - new location, was UNUSED_MAP_6F
 	db BANK(MandarinSilphCo_h)        ; $70 ; marcelnote - new location, was UNUSED_MAP_70
-	db BANK(LancesRoom_h)
 	db BANK(SilphFactory1F_h)         ; $72 ; marcelnote - new location, was UNUSED_MAP_72
 	db BANK(SilphFactory2F_h)         ; $73 ; marcelnote - new location, was UNUSED_MAP_73
 	db $1D ; UNUSED_MAP_74
@@ -251,4 +248,5 @@ MapHeaderBanks::
 	db BANK(LoreleisRoom_h)
 	db BANK(BrunosRoom_h)
 	db BANK(AgathasRoom_h)
+	db BANK(LancesRoom_h)
 	assert_table_length NUM_MAPS
