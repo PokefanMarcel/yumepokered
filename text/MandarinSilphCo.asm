@@ -33,7 +33,6 @@ _MandarinSilphCo3FScientistText::
 	cont "factory."
 	done
 
-
 _MandarinSilphCo4FManagerText::
 	text "Hello!"
 	line "I am the manager"
@@ -55,3 +54,16 @@ _MandarinSilphCo4FRegionalManagerSignText::
 	text "SILPH CO."
 	line "Regional manager"
 	done
+
+; Enthusiastic Trainer Outside Silph Co.
+;text "I hear SILPH CO. is"
+ ;line "developing something"
+ ;cont "cool!"
+ ;para "Maybe it'll help me"
+ ;line "catch rare POKéMON!"
+
+ ; Mysterious Stranger in Town ; for worker in Silph Co branch
+ ;text "Have you heard any"
+ ;line "rumors?"
+ ;para "Some say trouble's"
+ ;line "brewing at the factory..."
