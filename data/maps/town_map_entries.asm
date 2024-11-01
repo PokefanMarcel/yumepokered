@@ -15,11 +15,11 @@ ExternalMapEntries:
 	external_map 14,  5, LavenderTownName
 	external_map 10,  9, VermilionCityName
 	external_map  7,  5, CeladonCityName
+	external_map 10,  5, SaffronCityName
 	external_map  9, 13, FuchsiaCityName
 	external_map  3, 15, CinnabarIslandName
-	external_map  1,  2, IndigoPlateauName
-	external_map 10,  5, SaffronCityName
 	external_map 15, 15, MandarinIslandName ; marcelnote - new map
+	external_map  1,  2, IndigoPlateauName
 	external_map  0,  0, PalletTownName ; unused
 	external_map  3, 10, Route1Name
 	external_map  3,  6, Route2Name
