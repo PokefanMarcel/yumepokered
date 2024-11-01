@@ -174,9 +174,9 @@ MapHeaderBanks::
 	db BANK(CinnabarLabTradeRoom_h)
 	db BANK(CinnabarLabMetronomeRoom_h)
 	db BANK(CinnabarLabFossilRoom_h)
-	db BANK(CinnabarPokecenter_h)
-	db BANK(CinnabarMart_h)
-	db BANK(CinnabarMart_h)
+	db BANK(CinnabarPokecenterMart_h) ; $AB ; marcelnote - merged Cinnabar Pokecenter and Mart
+	db BANK(CinnabarPokecenterMart_h) ; $AC ; marcelnote - was CINNABAR_MART, now unused
+	db BANK(CinnabarPokecenterMart_h) ; $AD ; marcelnote - was CINNABAR_MART_COPY, now unused
 	db BANK(IndigoPlateauLobby_h)
 	db BANK(CopycatsHouse1F_h)
 	db BANK(CopycatsHouse2F_h)

@@ -174,9 +174,9 @@ MapHeaderPointers::
 	dw CinnabarLabTradeRoom_h
 	dw CinnabarLabMetronomeRoom_h
 	dw CinnabarLabFossilRoom_h
-	dw CinnabarPokecenter_h
-	dw CinnabarMart_h
-	dw CinnabarMart_h ; CINNABAR_MART_COPY
+	dw CinnabarPokecenterMart_h ; $AB ; marcelnote - merged Cinnabar Pokecenter and Mart
+	dw CinnabarPokecenterMart_h ; $AC ; marcelnote - was CINNABAR_MART, now unused
+	dw CinnabarPokecenterMart_h ; $AD ; marcelnote - was CINNABAR_MART_COPY, now unused
 	dw IndigoPlateauLobby_h
 	dw CopycatsHouse1F_h
 	dw CopycatsHouse2F_h

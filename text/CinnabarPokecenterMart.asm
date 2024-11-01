@@ -1,3 +1,4 @@
+; marcelnote - merged Cinnabar Pokecenter and Mart
 _CinnabarPokecenterCooltrainerFText::
 	text "You can cancel"
 	line "evolution."
@@ -18,4 +19,15 @@ _CinnabarPokecenterGentlemanText::
 
 	para "I think it's"
 	line "worth a try!"
+	done
+
+_CinnabarMartSilphWorkerFText::
+	text "Don't they have X"
+	line "ATTACK? It's good"
+	cont "for battles!"
+	done
+
+_CinnabarMartScientistText::
+	text "It never hurts to"
+	line "have extra items!"
 	done
