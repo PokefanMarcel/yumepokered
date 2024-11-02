@@ -136,7 +136,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const SS_ANNE_2F_ROOMS,              12,  8 ; $67
 	map_const SS_ANNE_B1F_ROOMS,             12,  8 ; $68
 	map_const DIGLETTS_CAVE,                 20, 18 ; $C5
-	map_const UNDERGROUND_PATH_NORTH_SOUTH,   4, 24 ; $77 ; UndergroundPathNorthSouth.blk is actually 4x23
+	map_const UNDERGROUND_PATH_NORTH_SOUTH,   4, 23 ; $77 ; marcelnote - fixed from y=24
 	map_const UNDERGROUND_PATH_WEST_EAST,    25,  4 ; $79
 	map_const CELADON_MART_1F2F3F,           10, 18 ; $7A ; marcelnote - merged 1F 2F 3F
 	map_const CELADON_MART_4F5F6F,           10, 18 ; $7D ; marcelnote - merged 4F 5F + new 6F
