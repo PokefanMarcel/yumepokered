@@ -54,13 +54,13 @@ MapHeaderPointers::
 	dw ViridianForestNorthGate_h
 	dw Route2TradeHouse_h
 	dw DiglettsCaveRoute2_h
+	dw PewterPokecenter_h
 	dw Museum1F_h
 	dw Museum2F_h
-	dw PewterGym_h
 	dw PewterNidoranHouse_h
 	dw PewterMart_h
 	dw PewterSpeechHouse_h
-	dw PewterPokecenter_h
+	dw PewterGym_h
 	dw MtMoonPokecenter_h
 	dw MtMoon1F_h
 	dw MtMoonB1F_h
