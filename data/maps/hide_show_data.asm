@@ -67,14 +67,17 @@ MapHSPointers:
 	dw MtMoon1FHS           ; MT_MOON_1F
 	dw NoHS                 ; MT_MOON_B1F
 	dw MtMoonB2FHS          ; MT_MOON_B2F
-	dw MtMoonSquareHS       ; MT_MOON_SQUARE ; marcelnote - new location
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw CeruleanGymHS ; marcelnote - Misty rematch
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw MtMoonSquareHS       ; MT_MOON_SQUARE          ; marcelnote - new location
+	dw NoHS                 ; CERULEAN_TRASHED_HOUSE
+	dw NoHS                 ; CERULEAN_TRADE_HOUSE
+	dw NoHS                 ; CERULEAN_BADGE_HOUSE
+	dw NoHS                 ; CERULEAN_POKECENTER
+	dw CeruleanGymHS        ; CERULEAN_GYM            ; marcelnote - Misty rematch
+	dw NoHS                 ; BIKE_SHOP
+	dw NoHS                 ; CERULEAN_MART
+	dw CeruleanCave1FHS     ; CERULEAN_CAVE_1F
+	dw CeruleanCave2FHS     ; CERULEAN_CAVE_2F
+	dw CeruleanCaveB1FHS    ; CERULEAN_CAVE_B1F
 	dw NoHS
 	dw NoHS
 	dw NoHS
@@ -126,7 +129,10 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw NoHS
-	dw NoHS
+	dw NoHS                   ; LAVENDER_POKECENTER_MART
+	dw MrFujisHouseHS         ; MR_FUJIS_HOUSE
+	dw NoHS                   ; NAME_RATERS_HOUSE
+	dw NoHS                   ; LAVENDER_CUBONE_HOUSE
 	dw PokemonTower1FHS ; marcelnote - postgame Agatha event
 	dw PokemonTower2FHS
 	dw PokemonTower3FHS
@@ -134,22 +140,11 @@ MapHSPointers:
 	dw PokemonTower5FHS
 	dw PokemonTower6FHS
 	dw PokemonTower7FHS
-	dw MrFujisHouseHS
-	dw NoHS
-	dw NoHS
 	dw SeafoamIslands1FHS
 	dw SeafoamIslandsB1FHS
 	dw SeafoamIslandsB2FHS
 	dw SeafoamIslandsB3FHS
 	dw SeafoamIslandsB4FHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw FightingDojoHS
-	dw SaffronGymHS ; marcelnote - postgame Bruno event, Sabrina rematch
-	dw NoHS
-	dw NoHS
-	dw NoHS
 	dw NoHS
 	dw NoHS
 	dw CeladonGroveHS ; $B9 ; marcelnote - was NoHS
@@ -166,14 +161,17 @@ MapHSPointers:
 	dw RocketHideoutB3FHS
 	dw RocketHideoutB4FHS
 	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw CeruleanCave2FHS
-	dw CeruleanCaveB1FHS
-	dw CeruleanCaveHS
-	dw NoHS
-	dw NoHS
-	dw NoHS                   ; SILPH_CO_1F ; marcelnote - was SilphCo1FHS, need to restore hide/show
+	dw NoHS                   ; SAFFRON_POKECENTER
+	dw NoHS                   ; COPYCATS_HOUSE_1F
+	dw NoHS                   ; COPYCATS_HOUSE_2F
+	dw FightingDojoHS         ; FIGHTING_DOJO
+	dw NoHS                   ; SAFFRON_PIDGEY_HOUSE
+	dw NoHS                   ; SAFFRON_MART
+	dw NoHS                   ; MR_PSYCHICS_HOUSE
+	dw SaffronGymHS           ; SAFFRON_GYM ; marcelnote - postgame Bruno event, Sabrina rematch
+	dw NoHS                   ; POKEMON_ACADEMY_1F2F
+	dw NoHS                   ; POKEMON_ACADEMY_3F4F
+	dw NoHS                   ; SILPH_CO_1F ; marcelnote - was SilphCo1FHS, but need to restore hide/show
 	dw SilphCo2FHS            ; SILPH_CO_2F
 	dw SilphCo3FHS            ; SILPH_CO_3F
 	dw SilphCo4FHS            ; SILPH_CO_4F
@@ -308,7 +306,7 @@ ViridianGymHS:
 	db VIRIDIAN_GYM, VIRIDIANGYM_REVIVE,   SHOW
 Museum1FHS:
 	db MUSEUM_1F, MUSEUM1F_OLD_AMBER, SHOW
-CeruleanCaveHS:
+CeruleanCave1FHS:
 	db CERULEAN_CAVE_1F, CERULEANCAVE1F_FULL_RESTORE, SHOW
 	db CERULEAN_CAVE_1F, CERULEANCAVE1F_MAX_ELIXIR,   SHOW
 	db CERULEAN_CAVE_1F, CERULEANCAVE1F_NUGGET,       SHOW

@@ -65,28 +65,31 @@ WildDataPointers:
 	dw MtMoonB1FWildMons               ; MT_MOON_B1F
 	dw MtMoonB2FWildMons               ; MT_MOON_B2F
 	dw NothingWildMons                 ; MT_MOON_SQUARE
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons               ; ROCK_TUNNEL_POKECENTER
-	dw RockTunnel1FWildMons          ; ROCK_TUNNEL_1F
-	dw RockTunnelB1FWildMons         ; ROCK_TUNNEL_B1F
-	dw PowerPlantWildMons            ; POWER_PLANT
+	dw NothingWildMons                 ; CERULEAN_TRASHED_HOUSE
+	dw NothingWildMons                 ; CERULEAN_TRADE_HOUSE
+	dw NothingWildMons                 ; CERULEAN_BADGE_HOUSE
+	dw NothingWildMons                 ; CERULEAN_POKECENTER
+	dw NothingWildMons                 ; CERULEAN_GYM
+	dw NothingWildMons                 ; BIKE_SHOP
+	dw NothingWildMons                 ; CERULEAN_MART
+	dw CeruleanCave1FWildMons          ; CERULEAN_CAVE_1F
+	dw CeruleanCave2FWildMons          ; CERULEAN_CAVE_2F
+	dw CeruleanCaveB1FWildMons         ; CERULEAN_CAVE_B1F
+	dw NothingWildMons                 ; ROUTE_5_GATE
+	dw NothingWildMons                 ; UNDERGROUND_PATH_ROUTE_5
+	dw NothingWildMons                 ; DAYCARE
+	dw NothingWildMons                 ; ROUTE_6_GATE
+	dw NothingWildMons                 ; UNDERGROUND_PATH_ROUTE_6
+	dw NothingWildMons                 ; UNDERGROUND_PATH_ROUTE_6_COPY
+	dw NothingWildMons                 ; ROUTE_7_GATE
+	dw NothingWildMons                 ; UNDERGROUND_PATH_ROUTE_7
+	dw NothingWildMons                 ; UNDERGROUND_PATH_ROUTE_7_COPY
+	dw NothingWildMons                 ; ROUTE_8_GATE
+	dw NothingWildMons                 ; UNDERGROUND_PATH_ROUTE_8
+	dw NothingWildMons                 ; ROCK_TUNNEL_POKECENTER
+	dw RockTunnel1FWildMons            ; ROCK_TUNNEL_1F
+	dw RockTunnelB1FWildMons           ; ROCK_TUNNEL_B1F
+	dw PowerPlantWildMons              ; POWER_PLANT
 	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons
@@ -123,7 +126,10 @@ WildDataPointers:
 	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons
-	dw NothingWildMons
+	dw NothingWildMons              ; LAVENDER_POKECENTER_MART
+	dw NothingWildMons              ; MR_FUJIS_HOUSE
+	dw NothingWildMons              ; NAME_RATERS_HOUSE
+	dw NothingWildMons              ; LAVENDER_CUBONE_HOUSE
 	dw PokemonTower1FWildMons
 	dw PokemonTower2FWildMons
 	dw PokemonTower3FWildMons
@@ -131,22 +137,11 @@ WildDataPointers:
 	dw PokemonTower5FWildMons
 	dw PokemonTower6FWildMons
 	dw PokemonTower7FWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
 	dw SeafoamIslands1FWildMons
 	dw SeafoamIslandsB1FWildMons
 	dw SeafoamIslandsB2FWildMons
 	dw SeafoamIslandsB3FWildMons
 	dw SeafoamIslandsB4FWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons
 	dw CeladonGroveWildMons ; $B9 ; marcelnote - Celadon Grove
@@ -163,13 +158,16 @@ WildDataPointers:
 	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw CeruleanCave2FWildMons
-	dw CeruleanCaveB1FWildMons
-	dw CeruleanCave1FWildMons
-	dw NothingWildMons
-	dw NothingWildMons
+	dw NothingWildMons              ; SAFFRON_POKECENTER
+	dw NothingWildMons              ; COPYCATS_HOUSE_1F
+	dw NothingWildMons              ; COPYCATS_HOUSE_2F
+	dw NothingWildMons              ; FIGHTING_DOJO
+	dw NothingWildMons              ; SAFFRON_PIDGEY_HOUSE
+	dw NothingWildMons              ; SAFFRON_MART
+	dw NothingWildMons              ; MR_PSYCHICS_HOUSE
+	dw NothingWildMons              ; SAFFRON_GYM
+	dw NothingWildMons              ; POKEMON_ACADEMY_1F2F
+	dw NothingWildMons              ; POKEMON_ACADEMY_3F4F
 	dw NothingWildMons              ; SILPH_CO_1F
 	dw NothingWildMons              ; SILPH_CO_2F
 	dw NothingWildMons              ; SILPH_CO_3F
