@@ -53,13 +53,13 @@ WildDataPointers:
 	dw NothingWildMons         ; VIRIDIAN_FOREST_NORTH_GATE
 	dw NothingWildMons         ; ROUTE_2_TRADE_HOUSE
 	dw NothingWildMons         ; DIGLETTS_CAVE_ROUTE_2
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
+	dw NothingWildMons         ; PEWTER_POKECENTER
+	dw NothingWildMons         ; MUSEUM_1F
+	dw NothingWildMons         ; MUSEUM_2F
+	dw NothingWildMons         ; PEWTER_NIDORAN_HOUSE
+	dw NothingWildMons         ; PEWTER_MART
+	dw NothingWildMons         ; PEWTER_SPEECH_HOUSE
+	dw NothingWildMons         ; PEWTER_GYM
 	dw NothingWildMons                 ; MT_MOON_POKECENTER
 	dw MtMoon1FWildMons                ; MT_MOON_1F
 	dw MtMoonB1FWildMons               ; MT_MOON_B1F

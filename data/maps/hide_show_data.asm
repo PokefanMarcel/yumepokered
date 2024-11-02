@@ -56,13 +56,13 @@ MapHSPointers:
 	dw NoHS                 ; VIRIDIAN_FOREST_NORTH_GATE
 	dw NoHS                 ; ROUTE_2_TRADE_HOUSE
 	dw NoHS                 ; DIGLETTS_CAVE_ROUTE_2
-	dw Museum1FHS
-	dw NoHS
-	dw PewterGymHS ; marcelnote - Brock rematch
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS                 ; PEWTER_POKECENTER
+	dw Museum1FHS           ; MUSEUM_1F
+	dw NoHS                 ; MUSEUM_2F
+	dw NoHS                 ; PEWTER_NIDORAN_HOUSE
+	dw NoHS                 ; PEWTER_MART
+	dw NoHS                 ; PEWTER_SPEECH_HOUSE
+	dw PewterGymHS          ; PEWTER_GYM              ; marcelnote - Brock rematch
 	dw NoHS                 ; MT_MOON_POKECENTER
 	dw MtMoon1FHS           ; MT_MOON_1F
 	dw NoHS                 ; MT_MOON_B1F
