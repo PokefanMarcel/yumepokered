@@ -23,7 +23,7 @@ ExternalMapEntries:
 	external_map  0,  0, PalletTownName ; unused
 	external_map  3, 10, Route1Name
 	external_map  3,  6, Route2Name
-	external_map  4,  3, Route3Name
+	external_map  5,  3, Route3Name
 	external_map  8,  2, Route4Name
 	external_map 10,  3, Route5Name
 	external_map 10,  7, Route6Name
@@ -66,9 +66,10 @@ InternalMapEntries:
 	internal_map ROUTE_2_TRADE_HOUSE,            3,  4, Route2Name
 	internal_map DIGLETTS_CAVE_ROUTE_2,          4,  4, DiglettsCaveName
 	internal_map PEWTER_GYM,                     3,  3, PewterCityName
-	internal_map MT_MOON_POKECENTER,             5,  2, Route4Name
-	internal_map MT_MOON_B2F,                    6,  2, MountMoonName
-	internal_map MT_MOON_SQUARE,                 6,  2, MtMoonSquareName ; marcelnote - new location
+	internal_map CELADON_GROVE_NORTH_GATE,       6,  3, Route3Name ; marcelnote - new location
+	internal_map MT_MOON_POKECENTER,             6,  2, Route4Name
+	internal_map MT_MOON_B2F,                    7,  2, MountMoonName
+	internal_map MT_MOON_SQUARE,                 7,  2, MtMoonSquareName ; marcelnote - new location
 	internal_map CERULEAN_GYM,                  10,  2, CeruleanCityName
 	internal_map CERULEAN_CAVE_B1F,              9,  1, CeruleanCaveName
 	internal_map BILLS_HOUSE,                   12,  0, SeaCottageName
@@ -87,22 +88,20 @@ InternalMapEntries:
 	internal_map ROUTE_12_GATE,                 14,  7, Route12Name ; marcelnote - merged ROUTE_12_GATE floors
 	internal_map LAVENDER_CUBONE_HOUSE,         14,  5, LavenderTownName
 	internal_map POKEMON_TOWER_7F,              15,  5, PokemonTowerName
-	internal_map CELADON_HOTEL,                  7,  5, CeladonCityName
-	internal_map SEAFOAM_ISLANDS_B4F,            6, 15, SeafoamIslandsName
-	internal_map ROUTE_15_GATE,                 10, 13, Route15Name ; marcelnote - merged Route15Gate floors
+	internal_map CELADON_GYM,                    7,  5, CeladonCityName
+	internal_map ROCKET_HIDEOUT_ELEVATOR,        7,  5, RocketHQName     ; marcelnote - adjusted
 	internal_map CELADON_GROVE,                  7,  4, CeladonGroveName ; marcelnote - new location
+	internal_map ROUTE_15_GATE,                 10, 13, Route15Name      ; marcelnote - merged Route15Gate floors
 	internal_map ROUTE_16_GATE,                  5,  5, Route16Name
-	internal_map CELADON_GROVE_SOUTH_GATE,       7,  5, CeladonCityName ; marcelnote - new location
 	internal_map ROUTE_16_FLY_HOUSE,             5,  5, Route16Name
 	internal_map ROUTE_12_FISHING_GUIDE_HOUSE,  14, 10, Route12Name ; marcelnote - from Super Rod to Fishing Guide
 	internal_map ROUTE_18_GATE,                  7, 13, Route18Name ; marcelnote - merged Route18Gate floors
-	internal_map CELADON_GROVE_NORTH_GATE,       6,  3, Route3Name ; marcelnote - new location
-	internal_map ROCKET_HIDEOUT_ELEVATOR,        7,  5, RocketHQName ; marcelnote - adjusted
 	internal_map SAFFRON_GYM,                   10,  5, SaffronCityName
 	internal_map POKEMON_ACADEMY_3F4F,          10,  5, PokemonAcademyName  ; marcelnote - new location
 	internal_map SILPH_CO_ELEVATOR,             10,  5, SilphCoName
 	internal_map FUCHSIA_GYM,                    9, 13, FuchsiaCityName
 	internal_map SAFARI_ZONE_NORTH_REST_HOUSE,   9, 12, SafariZoneName
+	internal_map SEAFOAM_ISLANDS_B4F,            6, 15, SeafoamIslandsName
 	internal_map CINNABAR_GYM,                   3, 15, CinnabarIslandName
 	internal_map POKEMON_MANSION_B1F,            3, 15, PokemonMansionName
 	internal_map CINNABAR_VOLCANO_2F,            2, 15, CinnabarVolcanoName ; marcelnote - new location
