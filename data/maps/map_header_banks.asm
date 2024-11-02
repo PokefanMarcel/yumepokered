@@ -76,17 +76,18 @@ MapHeaderBanks::
 	db BANK(CeruleanCave1F_h)
 	db BANK(CeruleanCave2F_h)
 	db BANK(CeruleanCaveB1F_h)
+	db BANK(BillsHouse_h)
 	db BANK(Route5Gate_h)
 	db BANK(UndergroundPathRoute5_h)
 	db BANK(Daycare_h)
 	db BANK(Route6Gate_h)
 	db BANK(UndergroundPathRoute6_h)
-	db BANK(UndergroundPathRoute6_h) ; UNDERGROUND_PATH_ROUTE_6_COPY
 	db BANK(Route7Gate_h)
 	db BANK(UndergroundPathRoute7_h)
-	db BANK(UndergroundPathRoute7Copy_h)
 	db BANK(Route8Gate_h)
 	db BANK(UndergroundPathRoute8_h)
+	db BANK(UndergroundPathNorthSouth_h)
+	db BANK(UndergroundPathWestEast_h)
 	db BANK(RockTunnelPokecenter_h)
 	db BANK(RockTunnel1F_h)
 	db BANK(RockTunnelB1F_h)
@@ -94,7 +95,6 @@ MapHeaderBanks::
 	db BANK(Route11Gate_h) ; marcelnote - merged Route11Gate floors
 	db BANK(DiglettsCaveRoute11_h)
 	db BANK(Route12Gate_h) ; marcelnote - merged Route12Gate floors
-	db BANK(BillsHouse_h)
 	db BANK(VermilionPokecenter_h)
 	db BANK(VermilionGoodRodHouse_h) ; marcelnote - from Old to Good Rod
 	db BANK(PokemonFanClub_h)
@@ -114,8 +114,6 @@ MapHeaderBanks::
 	db BANK(SSAnne2FRooms_h)
 	db BANK(SSAnneB1FRooms_h)
 	db BANK(DiglettsCave_h)
-	db BANK(UndergroundPathNorthSouth_h)
-	db BANK(UndergroundPathWestEast_h)
 	db BANK(CeladonMart1F2F3F_h) ; marcelnote - merged 1F 2F 3F
 	db BANK(CeladonMart4F5F6F_h) ; marcelnote - merged 4F 5F + new 6F
 	db BANK(CeladonMartRoof_h)

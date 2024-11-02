@@ -71,19 +71,19 @@ InternalMapEntries:
 	internal_map MT_MOON_SQUARE,                 6,  2, MtMoonSquareName ; marcelnote - new location
 	internal_map CERULEAN_GYM,                  10,  2, CeruleanCityName
 	internal_map CERULEAN_CAVE_B1F,              9,  1, CeruleanCaveName
+	internal_map BILLS_HOUSE,                   12,  0, SeaCottageName
 	internal_map DAYCARE,                       10,  4, Route5Name
-	internal_map UNDERGROUND_PATH_ROUTE_6_COPY, 10,  7, Route6Name
-	internal_map UNDERGROUND_PATH_ROUTE_7_COPY,  8,  5, Route7Name
+	internal_map UNDERGROUND_PATH_ROUTE_6,      10,  7, Route6Name
+	internal_map UNDERGROUND_PATH_ROUTE_7,       8,  5, Route7Name
 	internal_map UNDERGROUND_PATH_ROUTE_8,      12,  5, Route8Name
+	internal_map UNDERGROUND_PATH_WEST_EAST,    10,  5, UndergroundPathName
 	internal_map ROCK_TUNNEL_B1F,               14,  3, RockTunnelName ; marcelnote - differentiate PokeCenter?
 	internal_map POWER_PLANT,                   15,  3, PowerPlantName
 	internal_map DIGLETTS_CAVE_ROUTE_11,        13,  9, Route11Name ; marcelnote - merged ROUTE_11_GATE floors
 	internal_map ROUTE_12_GATE,                 14,  7, Route12Name ; marcelnote - merged ROUTE_12_GATE floors
-	internal_map BILLS_HOUSE,                   12,  0, SeaCottageName
 	internal_map VERMILION_GYM,                 10,  9, VermilionCityName
 	internal_map SS_ANNE_B1F_ROOMS,              9, 10, SSAnneName
 	internal_map DIGLETTS_CAVE,                 11,  8, DiglettsCaveName
-	internal_map UNDERGROUND_PATH_WEST_EAST,    10,  5, UndergroundPathName
 	internal_map GAME_CORNER,                    7,  5, CeladonCityName
 	internal_map CELADON_HOTEL,                  7,  5, CeladonCityName
 	internal_map LAVENDER_CUBONE_HOUSE,         14,  5, LavenderTownName ; marcelnote - merged Lavender Pokecenter and Mart

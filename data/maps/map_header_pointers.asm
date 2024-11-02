@@ -76,17 +76,18 @@ MapHeaderPointers::
 	dw CeruleanCave1F_h
 	dw CeruleanCave2F_h
 	dw CeruleanCaveB1F_h
+	dw BillsHouse_h
 	dw Route5Gate_h
 	dw UndergroundPathRoute5_h
 	dw Daycare_h
 	dw Route6Gate_h
 	dw UndergroundPathRoute6_h
-	dw UndergroundPathRoute6_h ; UNDERGROUND_PATH_ROUTE_6_COPY
 	dw Route7Gate_h
 	dw UndergroundPathRoute7_h
-	dw UndergroundPathRoute7Copy_h
 	dw Route8Gate_h
 	dw UndergroundPathRoute8_h
+	dw UndergroundPathNorthSouth_h
+	dw UndergroundPathWestEast_h
 	dw RockTunnelPokecenter_h
 	dw RockTunnel1F_h
 	dw RockTunnelB1F_h
@@ -94,7 +95,6 @@ MapHeaderPointers::
 	dw Route11Gate_h ; marcelnote - merged Route11Gate floors
 	dw DiglettsCaveRoute11_h
 	dw Route12Gate_h ; marcelnote - merged Route12Gate floors
-	dw BillsHouse_h
 	dw VermilionPokecenter_h
 	dw VermilionGoodRodHouse_h ; marcelnote - from Old to Good Rod
 	dw PokemonFanClub_h
@@ -114,8 +114,6 @@ MapHeaderPointers::
 	dw SSAnne2FRooms_h
 	dw SSAnneB1FRooms_h
 	dw DiglettsCave_h
-	dw UndergroundPathNorthSouth_h
-	dw UndergroundPathWestEast_h
 	dw CeladonMart1F2F3F_h ; marcelnote - merged 1F 2F 3F
 	dw CeladonMart4F5F6F_h ; marcelnote - merged 4F 5F + new 6F
 	dw CeladonMartRoof_h
