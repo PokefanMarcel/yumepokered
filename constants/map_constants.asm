@@ -110,13 +110,6 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const UNDERGROUND_PATH_ROUTE_8,       4,  4 ; $50
 	map_const UNDERGROUND_PATH_NORTH_SOUTH,   4, 23 ; $77 ; marcelnote - fixed from y=24
 	map_const UNDERGROUND_PATH_WEST_EAST,    25,  4 ; $79
-	map_const ROCK_TUNNEL_POKECENTER,         7,  4 ; $51
-	map_const ROCK_TUNNEL_1F,                20, 18 ; $52
-	map_const ROCK_TUNNEL_B1F,               20, 18 ; $E8
-	map_const POWER_PLANT,                   20, 18 ; $53
-	map_const ROUTE_11_GATE,                  4, 11 ; $54 ; marcelnote - merged ROUTE_11_GATE floors
-	map_const DIGLETTS_CAVE_ROUTE_11,         4,  4 ; $55
-	map_const ROUTE_12_GATE,                 11,  4 ; $57 ; marcelnote - merged ROUTE_12_GATE floors
 	map_const VERMILION_POKECENTER,           7,  4 ; $59
 	map_const VERMILION_GOOD_ROD_HOUSE,       4,  4 ; $A3 ; marcelnote - from Old to Good Rod
 	map_const POKEMON_FAN_CLUB,               4,  4 ; $5A
@@ -136,8 +129,24 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const SS_ANNE_2F_ROOMS,              12,  8 ; $67
 	map_const SS_ANNE_B1F_ROOMS,             12,  8 ; $68
 	map_const DIGLETTS_CAVE,                 20, 18 ; $C5
-	;map_const UNDERGROUND_PATH_NORTH_SOUTH,   4, 23 ; $77 ; marcelnote - fixed from y=24
-	;map_const UNDERGROUND_PATH_WEST_EAST,    25,  4 ; $79
+	map_const DIGLETTS_CAVE_ROUTE_11,         4,  4 ; $55
+	map_const ROUTE_11_GATE,                  4, 11 ; $54 ; marcelnote - merged ROUTE_11_GATE floors
+	map_const ROCK_TUNNEL_POKECENTER,         7,  4 ; $51
+	map_const ROCK_TUNNEL_1F,                20, 18 ; $52
+	map_const ROCK_TUNNEL_B1F,               20, 18 ; $E8
+	map_const POWER_PLANT,                   20, 18 ; $53
+	map_const LAVENDER_POKECENTER_MART,      14,  4 ; $8D ; marcelnote - merged Lavender Pokecenter and Mart
+	map_const MR_FUJIS_HOUSE,                 4,  4 ; $95
+	map_const NAME_RATERS_HOUSE,              4,  4 ; $E5
+	map_const LAVENDER_CUBONE_HOUSE,          4,  4 ; $97
+	map_const POKEMON_TOWER_1F,              10,  9 ; $8E
+	map_const POKEMON_TOWER_2F,              10,  9 ; $8F
+	map_const POKEMON_TOWER_3F,              10,  9 ; $90
+	map_const POKEMON_TOWER_4F,              10,  9 ; $91
+	map_const POKEMON_TOWER_5F,              10,  9 ; $92
+	map_const POKEMON_TOWER_6F,              10,  9 ; $93
+	map_const POKEMON_TOWER_7F,              10,  9 ; $94
+	map_const ROUTE_12_GATE,                 11,  4 ; $57 ; marcelnote - merged ROUTE_12_GATE floors
 	map_const CELADON_MART_1F2F3F,           10, 18 ; $7A ; marcelnote - merged 1F 2F 3F
 	map_const CELADON_MART_4F5F6F,           10, 18 ; $7D ; marcelnote - merged 4F 5F + new 6F
 	map_const CELADON_MART_ROOF,             10,  6 ; $7E ; marcelnote - expanded from y=4
@@ -152,17 +161,6 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const CELADON_DINER,                  5,  4 ; $8A
 	map_const CELADON_CHIEF_HOUSE,            4,  4 ; $8B
 	map_const CELADON_HOTEL,                  7,  4 ; $8C
-	map_const LAVENDER_POKECENTER_MART,      14,  4 ; $8D ; marcelnote - merged Lavender Pokecenter and Mart
-	map_const MR_FUJIS_HOUSE,                 4,  4 ; $95
-	map_const NAME_RATERS_HOUSE,              4,  4 ; $E5
-	map_const LAVENDER_CUBONE_HOUSE,          4,  4 ; $97
-	map_const POKEMON_TOWER_1F,              10,  9 ; $8E
-	map_const POKEMON_TOWER_2F,              10,  9 ; $8F
-	map_const POKEMON_TOWER_3F,              10,  9 ; $90
-	map_const POKEMON_TOWER_4F,              10,  9 ; $91
-	map_const POKEMON_TOWER_5F,              10,  9 ; $92
-	map_const POKEMON_TOWER_6F,              10,  9 ; $93
-	map_const POKEMON_TOWER_7F,              10,  9 ; $94
 	map_const SEAFOAM_ISLANDS_1F,            15,  9 ; $C0
 	map_const SEAFOAM_ISLANDS_B1F,           15,  9 ; $9F
 	map_const SEAFOAM_ISLANDS_B2F,           15,  9 ; $A0

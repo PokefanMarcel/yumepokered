@@ -17,224 +17,224 @@ MapHSPointers:
 	dw NoHS            ; INDIGO_PLATEAU
 	dw NoHS            ; UNUSED_MAP_0B
 	dw Route1HS        ; ROUTE_1 ; marcelnote - added for postgame Oak battle
-	dw Route2HS
-	dw NoHS
-	dw Route4HS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw Route9HS
-	dw NoHS
-	dw NoHS
-	dw Route12HS
-	dw NoHS
-	dw NoHS
-	dw Route15HS
-	dw Route16HS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw Route22HS
-	dw NoHS
-	dw Route24HS
-	dw Route25HS
-	dw NoHS ; marcelnote - new location, Route28
-	dw RedsYellowsHousesHS ; marcelnote - added to hide Yellow asleep
-	dw BluesAidesHousesHS ; marcelnote - merged Blue's house with new Aide's house
-	dw OaksLabHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw ViridianGymHS
-	dw NoHS                 ; VIRIDIAN_FOREST_SOUTH_GATE
-	dw NoHS                 ; ROUTE_2_GATE
-	dw ViridianForestHS     ; VIRIDIAN_FOREST
-	dw NoHS                 ; VIRIDIAN_FOREST_NORTH_GATE
-	dw NoHS                 ; ROUTE_2_TRADE_HOUSE
-	dw NoHS                 ; DIGLETTS_CAVE_ROUTE_2
-	dw NoHS                 ; PEWTER_POKECENTER
-	dw Museum1FHS           ; MUSEUM_1F
-	dw NoHS                 ; MUSEUM_2F
-	dw NoHS                 ; PEWTER_NIDORAN_HOUSE
-	dw NoHS                 ; PEWTER_MART
-	dw NoHS                 ; PEWTER_SPEECH_HOUSE
-	dw PewterGymHS          ; PEWTER_GYM              ; marcelnote - Brock rematch
-	dw NoHS                 ; MT_MOON_POKECENTER
-	dw MtMoon1FHS           ; MT_MOON_1F
-	dw NoHS                 ; MT_MOON_B1F
-	dw MtMoonB2FHS          ; MT_MOON_B2F
-	dw MtMoonSquareHS       ; MT_MOON_SQUARE          ; marcelnote - new location
-	dw NoHS                 ; CERULEAN_POKECENTER
-	dw NoHS                 ; CERULEAN_TRASHED_HOUSE
-	dw NoHS                 ; CERULEAN_TRADE_HOUSE
-	dw NoHS                 ; CERULEAN_BADGE_HOUSE
-	dw NoHS                 ; BIKE_SHOP
-	dw NoHS                 ; CERULEAN_MART
-	dw CeruleanGymHS        ; CERULEAN_GYM            ; marcelnote - Misty rematch
-	dw CeruleanCave1FHS     ; CERULEAN_CAVE_1F
-	dw CeruleanCave2FHS     ; CERULEAN_CAVE_2F
-	dw CeruleanCaveB1FHS    ; CERULEAN_CAVE_B1F
-	dw BillsHouseHS         ; BILLS_HOUSE
-	dw NoHS              ; ROUTE_5_GATE
-	dw NoHS              ; UNDERGROUND_PATH_ROUTE_5
-	dw NoHS              ; DAYCARE
-	dw NoHS              ; ROUTE_6_GATE
-	dw NoHS              ; UNDERGROUND_PATH_ROUTE_6
-	dw NoHS              ; ROUTE_7_GATE
-	dw NoHS              ; UNDERGROUND_PATH_ROUTE_7
-	dw NoHS              ; ROUTE_8_GATE
-	dw NoHS              ; UNDERGROUND_PATH_ROUTE_8
-	dw NoHS              ; UNDERGROUND_PATH_NORTH_SOUTH
-	dw NoHS              ; UNDERGROUND_PATH_WEST_EAST
-	dw NoHS              ; ROCK_TUNNEL_POKECENTER
-	dw NoHS              ; ROCK_TUNNEL_1F
-	dw NoHS              ; ROCK_TUNNEL_B1F
-	dw PowerPlantHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS              ; VERMILION_POKECENTER
-	dw NoHS              ; VERMILION_GOOD_ROD_HOUSE
-	dw NoHS              ; POKEMON_FAN_CLUB
-	dw NoHS              ; VERMILION_MART
-	dw NoHS              ; VERMILION_PIDGEY_HOUSE
-	dw NoHS              ; VERMILION_TRADE_HOUSE
-	dw VermilionGymHS    ; VERMILION_GYM ; marcelnote - Lt.Surge rematch
-	dw NoHS              ; VERMILION_DOCK
-	dw NoHS              ; SS_ANNE_1F
-	dw SSAnne2FHS        ; SS_ANNE_2F
-	dw NoHS              ; SS_ANNE_3F
-	dw NoHS              ; SS_ANNE_B1F
-	dw NoHS              ; SS_ANNE_BOW
-	dw NoHS              ; SS_ANNE_KITCHEN
-	dw NoHS              ; SS_ANNE_CAPTAINS_ROOM
-	dw SSAnne1FRoomsHS   ; SS_ANNE_1F_ROOMS
-	dw SSAnne2FRoomsHS   ; SS_ANNE_2F_ROOMS
-	dw SSAnneB1FRoomsHS  ; SS_ANNE_B1F_ROOMS
-	dw NoHS              ; DIGLETTS_CAVE
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw CeladonMansionRoofHouseHS
-	dw NoHS
-	dw CeladonGymHS ; marcelnote - Erika rematch
-	dw GameCornerHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS                   ; LAVENDER_POKECENTER_MART
-	dw MrFujisHouseHS         ; MR_FUJIS_HOUSE
-	dw NoHS                   ; NAME_RATERS_HOUSE
-	dw NoHS                   ; LAVENDER_CUBONE_HOUSE
-	dw PokemonTower1FHS ; marcelnote - postgame Agatha event
-	dw PokemonTower2FHS
-	dw PokemonTower3FHS
-	dw PokemonTower4FHS
-	dw PokemonTower5FHS
-	dw PokemonTower6FHS
-	dw PokemonTower7FHS
-	dw SeafoamIslands1FHS
-	dw SeafoamIslandsB1FHS
-	dw SeafoamIslandsB2FHS
-	dw SeafoamIslandsB3FHS
-	dw SeafoamIslandsB4FHS
-	dw NoHS
-	dw CeladonGroveHS ; $B9 ; marcelnote - was NoHS
-	dw NoHS
-	dw CeladonGroveSouthGateHS ; $BB ; marcelnote - was NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw RocketHideoutB1FHS
-	dw RocketHideoutB2FHS
-	dw RocketHideoutB3FHS
-	dw RocketHideoutB4FHS
-	dw NoHS
-	dw NoHS                   ; SAFFRON_POKECENTER
-	dw NoHS                   ; COPYCATS_HOUSE_1F
-	dw NoHS                   ; COPYCATS_HOUSE_2F
-	dw FightingDojoHS         ; FIGHTING_DOJO
-	dw NoHS                   ; SAFFRON_PIDGEY_HOUSE
-	dw NoHS                   ; SAFFRON_MART
-	dw NoHS                   ; MR_PSYCHICS_HOUSE
-	dw SaffronGymHS           ; SAFFRON_GYM ; marcelnote - postgame Bruno event, Sabrina rematch
-	dw NoHS                   ; POKEMON_ACADEMY_1F2F
-	dw NoHS                   ; POKEMON_ACADEMY_3F4F
-	dw NoHS                   ; SILPH_CO_1F ; marcelnote - was SilphCo1FHS, but need to restore hide/show
-	dw SilphCo2FHS            ; SILPH_CO_2F
-	dw SilphCo3FHS            ; SILPH_CO_3F
-	dw SilphCo4FHS            ; SILPH_CO_4F
-	dw SilphCo5FHS            ; SILPH_CO_5F
-	dw SilphCo6FHS            ; SILPH_CO_6F
-	dw SilphCo7FHS            ; SILPH_CO_7F
-	dw SilphCo8FHS            ; SILPH_CO_8F
-	dw SilphCo9FHS            ; SILPH_CO_9F
-	dw SilphCo10FHS           ; SILPH_CO_10F
-	dw SilphCo11FHS           ; SILPH_CO_11F
-	dw NoHS                   ; SILPH_CO_ELEVATOR
-	dw NoHS                   ; FUCHSIA_POKECENTER
-	dw NoHS                   ; FUCHSIA_MART
-	dw NoHS                   ; FUCHSIA_BILLS_GRANDPAS_HOUSE
-	dw WardensHouseHS         ; WARDENS_HOUSE
-	dw NoHS                   ; FUCHSIA_MEETING_ROOM
-	dw NoHS                   ; FUCHSIA_SUPER_ROD_HOUSE
-	dw NoHS                   ; FUCHSIA_MOVE_DELETER_HOUSE
-	dw FuchsiaGymHS           ; FUCHSIA_GYM
-	dw NoHS                   ; SAFARI_ZONE_GATE
-	dw SafariZoneEastHS       ; SAFARI_ZONE_EAST
-	dw SafariZoneNorthHS      ; SAFARI_ZONE_NORTH
-	dw SafariZoneWestHS       ; SAFARI_ZONE_WEST
-	dw SafariZoneCenterHS     ; SAFARI_ZONE_CENTER
-	dw NoHS                   ; SAFARI_ZONE_CENTER_REST_HOUSE
-	dw NoHS                   ; SAFARI_ZONE_SECRET_HOUSE
-	dw NoHS                   ; SAFARI_ZONE_WEST_REST_HOUSE
-	dw NoHS                   ; SAFARI_ZONE_EAST_REST_HOUSE
-	dw NoHS                   ; SAFARI_ZONE_NORTH_REST_HOUSE
-	dw NoHS                   ; CINNABAR_POKECENTER_MART
-	dw NoHS                   ; CINNABAR_LAB
-	dw NoHS                   ; CINNABAR_LAB_TRADE_ROOM
-	dw NoHS                   ; CINNABAR_LAB_METRONOME_ROOM
-	dw NoHS                   ; CINNABAR_LAB_FOSSIL_ROOM
-	dw CinnabarGymHS          ; CINNABAR_GYM         ; marcelnote - Blaine rematch
-	dw PokemonMansion1FHS     ; POKEMON_MANSION_1F
-	dw PokemonMansion2FHS     ; POKEMON_MANSION_2F
-	dw PokemonMansion3FHS     ; POKEMON_MANSION_3F
-	dw PokemonMansionB1FHS    ; POKEMON_MANSION_B1F
-	dw CinnabarVolcano1FB1FHS ; CINNABAR_VOLCANO_1FB1F
-	dw CinnabarVolcano2FHS    ; CINNABAR_VOLCANO_2F
-	dw NoHS                   ; MANDARIN_POKECENTER_MART
-	dw NoHS                   ; MANDARIN_SURF_SHOP
-	dw MandarinHotelHS        ; MANDARIN_HOTEL
-	dw MandarinSilphCoHS      ; MANDARIN_SILPH_CO
-	dw SilphFactory1FHS       ; SILPH_FACTORY_1F
-	dw SilphFactory2FHS       ; SILPH_FACTORY_2F
-	dw NoHS                   ; ROUTE_22_OLD_ROD_HOUSE
-	dw NoHS                   ; ROUTE_22_GATE
-	dw NoHS                   ; ROUTE_22_GATE_3F
-	dw MtSilver1FHS           ; MT_SILVER_1F         ; marcelnote - added for items
-	dw MtSilver2FHS           ; MT_SILVER_2F         ; marcelnote - added for items
-	dw MtSilver3FHS           ; MT_SILVER_3F         ; marcelnote - added for Yellow battle
-	dw VictoryRoad1FHS        ; VICTORY_ROAD_1F
-	dw VictoryRoad2FHS        ; VICTORY_ROAD_2F
-	dw VictoryRoad3FHS        ; VICTORY_ROAD_3F
-	dw IndigoPlateauLobbyHS   ; INDIGO_PLATEAU_LOBBY ; marcelnote - added for girl blocking E4 entrance
-	dw LoreleisRoomHS         ; LORELEIS_ROOM        ; marcelnote - added for Lorelei rematch
-	dw BrunosRoomHS           ; BRUNOS_ROOM          ; marcelnote - added for Bruno rematch
-	dw AgathasRoomHS          ; AGATHAS_ROOM         ; marcelnote - added for Agatha rematch
-	dw LancesRoomHS           ; LANCES_ROOM          ; marcelnote - added for Lance rematch
-	dw ChampionsRoomHS        ; CHAMPIONS_ROOM
-	dw HallOfFameHS           ; HALL_OF_FAME         ; marcelnote - added for Rival rematch
-	dw NoHS                   ; TRADE_CENTER
-	dw NoHS                   ; COLOSSEUM
+	dw Route2HS        ; ROUTE_2
+	dw NoHS            ; ROUTE_3
+	dw Route4HS        ; ROUTE_4
+	dw NoHS            ; ROUTE_5
+	dw NoHS            ; ROUTE_6
+	dw NoHS            ; ROUTE_7
+	dw NoHS            ; ROUTE_8
+	dw Route9HS        ; ROUTE_9
+	dw NoHS            ; ROUTE_10
+	dw NoHS            ; ROUTE_11
+	dw Route12HS       ; ROUTE_12
+	dw NoHS            ; ROUTE_13
+	dw NoHS            ; ROUTE_14
+	dw Route15HS       ; ROUTE_15
+	dw Route16HS       ; ROUTE_16
+	dw NoHS            ; ROUTE_17
+	dw NoHS            ; ROUTE_18
+	dw NoHS            ; ROUTE_19
+	dw NoHS            ; ROUTE_20
+	dw NoHS            ; ROUTE_21
+	dw Route22HS       ; ROUTE_22
+	dw NoHS            ; ROUTE_23
+	dw Route24HS       ; ROUTE_24
+	dw Route25HS       ; ROUTE_25
+	dw NoHS            ; ROUTE_28 ; marcelnote - new location
+	dw RedsYellowsHousesHS         ; REDS_YELLOWS_HOUSES ; marcelnote - added to hide Yellow asleep
+	dw BluesAidesHousesHS          ; BLUES_AIDES_HOUSES ;marcelnote - merged Blue's house with new Aide's house
+	dw OaksLabHS                   ; OAKS_LAB
+	dw NoHS                        ; VIRIDIAN_POKECENTER
+	dw NoHS                        ; VIRIDIAN_MART
+	dw NoHS                        ; VIRIDIAN_SCHOOL_HOUSE
+	dw NoHS                        ; VIRIDIAN_NICKNAME_HOUSE
+	dw ViridianGymHS               ; VIRIDIAN_GYM
+	dw NoHS                        ; VIRIDIAN_FOREST_SOUTH_GATE
+	dw NoHS                        ; ROUTE_2_GATE
+	dw ViridianForestHS            ; VIRIDIAN_FOREST
+	dw NoHS                        ; VIRIDIAN_FOREST_NORTH_GATE
+	dw NoHS                        ; ROUTE_2_TRADE_HOUSE
+	dw NoHS                        ; DIGLETTS_CAVE_ROUTE_2
+	dw NoHS                        ; PEWTER_POKECENTER
+	dw Museum1FHS                  ; MUSEUM_1F
+	dw NoHS                        ; MUSEUM_2F
+	dw NoHS                        ; PEWTER_NIDORAN_HOUSE
+	dw NoHS                        ; PEWTER_MART
+	dw NoHS                        ; PEWTER_SPEECH_HOUSE
+	dw PewterGymHS                 ; PEWTER_GYM              ; marcelnote - Brock rematch
+	dw NoHS                        ; MT_MOON_POKECENTER
+	dw MtMoon1FHS                  ; MT_MOON_1F
+	dw NoHS                        ; MT_MOON_B1F
+	dw MtMoonB2FHS                 ; MT_MOON_B2F
+	dw MtMoonSquareHS              ; MT_MOON_SQUARE          ; marcelnote - new location
+	dw NoHS                        ; CERULEAN_POKECENTER
+	dw NoHS                        ; CERULEAN_TRASHED_HOUSE
+	dw NoHS                        ; CERULEAN_TRADE_HOUSE
+	dw NoHS                        ; CERULEAN_BADGE_HOUSE
+	dw NoHS                        ; BIKE_SHOP
+	dw NoHS                        ; CERULEAN_MART
+	dw CeruleanGymHS               ; CERULEAN_GYM            ; marcelnote - Misty rematch
+	dw CeruleanCave1FHS            ; CERULEAN_CAVE_1F
+	dw CeruleanCave2FHS            ; CERULEAN_CAVE_2F
+	dw CeruleanCaveB1FHS           ; CERULEAN_CAVE_B1F
+	dw BillsHouseHS                ; BILLS_HOUSE
+	dw NoHS                        ; ROUTE_5_GATE
+	dw NoHS                        ; UNDERGROUND_PATH_ROUTE_5
+	dw NoHS                        ; DAYCARE
+	dw NoHS                        ; ROUTE_6_GATE
+	dw NoHS                        ; UNDERGROUND_PATH_ROUTE_6
+	dw NoHS                        ; ROUTE_7_GATE
+	dw NoHS                        ; UNDERGROUND_PATH_ROUTE_7
+	dw NoHS                        ; ROUTE_8_GATE
+	dw NoHS                        ; UNDERGROUND_PATH_ROUTE_8
+	dw NoHS                        ; UNDERGROUND_PATH_NORTH_SOUTH
+	dw NoHS                        ; UNDERGROUND_PATH_WEST_EAST
+	dw NoHS                        ; VERMILION_POKECENTER
+	dw NoHS                        ; VERMILION_GOOD_ROD_HOUSE
+	dw NoHS                        ; POKEMON_FAN_CLUB
+	dw NoHS                        ; VERMILION_MART
+	dw NoHS                        ; VERMILION_PIDGEY_HOUSE
+	dw NoHS                        ; VERMILION_TRADE_HOUSE
+	dw VermilionGymHS              ; VERMILION_GYM ; marcelnote - Lt.Surge rematch
+	dw NoHS                        ; VERMILION_DOCK
+	dw NoHS                        ; SS_ANNE_1F
+	dw SSAnne2FHS                  ; SS_ANNE_2F
+	dw NoHS                        ; SS_ANNE_3F
+	dw NoHS                        ; SS_ANNE_B1F
+	dw NoHS                        ; SS_ANNE_BOW
+	dw NoHS                        ; SS_ANNE_KITCHEN
+	dw NoHS                        ; SS_ANNE_CAPTAINS_ROOM
+	dw SSAnne1FRoomsHS             ; SS_ANNE_1F_ROOMS
+	dw SSAnne2FRoomsHS             ; SS_ANNE_2F_ROOMS
+	dw SSAnneB1FRoomsHS            ; SS_ANNE_B1F_ROOMS
+	dw NoHS                        ; DIGLETTS_CAVE
+	dw NoHS                        ; DIGLETTS_CAVE_ROUTE_11
+	dw NoHS                        ; ROUTE_11_GATE
+	dw NoHS                        ; ROCK_TUNNEL_POKECENTER
+	dw NoHS                        ; ROCK_TUNNEL_1F
+	dw NoHS                        ; ROCK_TUNNEL_B1F
+	dw PowerPlantHS                ; POWER_PLANT
+	dw NoHS                        ; LAVENDER_POKECENTER_MART
+	dw MrFujisHouseHS              ; MR_FUJIS_HOUSE
+	dw NoHS                        ; NAME_RATERS_HOUSE
+	dw NoHS                        ; LAVENDER_CUBONE_HOUSE
+	dw PokemonTower1FHS            ; POKEMON_TOWER_1F ;marcelnote - postgame Agatha event
+	dw PokemonTower2FHS            ; POKEMON_TOWER_2F
+	dw PokemonTower3FHS            ; POKEMON_TOWER_3F
+	dw PokemonTower4FHS            ; POKEMON_TOWER_4F
+	dw PokemonTower5FHS            ; POKEMON_TOWER_5F
+	dw PokemonTower6FHS            ; POKEMON_TOWER_6F
+	dw PokemonTower7FHS            ; POKEMON_TOWER_7F
+	dw NoHS                        ; ROUTE_12_GATE
+	dw NoHS                        ; CELADON_MART_1F2F3F
+	dw NoHS                        ; CELADON_MART_4F5F6F
+	dw NoHS                        ; CELADON_MART_ROOF
+	dw NoHS                        ; CELADON_MART_ELEVATOR
+	dw NoHS                        ; CELADON_MANSION
+	dw NoHS                        ; CELADON_MANSION_ROOF
+	dw CeladonMansionRoofHouseHS   ; CELADON_MANSION_ROOF_HOUSE
+	dw NoHS                        ; CELADON_POKECENTER
+	dw CeladonGymHS                ; CELADON_GYM ; marcelnote - Erika rematch
+	dw GameCornerHS                ; GAME_CORNER
+	dw NoHS                        ; GAME_CORNER_PRIZE_ROOM
+	dw NoHS                        ; CELADON_DINER
+	dw NoHS                        ; CELADON_CHIEF_HOUSE
+	dw NoHS                        ; CELADON_HOTEL
+	dw SeafoamIslands1FHS          ; SEAFOAM_ISLANDS_1F
+	dw SeafoamIslandsB1FHS         ; SEAFOAM_ISLANDS_B1F
+	dw SeafoamIslandsB2FHS         ; SEAFOAM_ISLANDS_B2F
+	dw SeafoamIslandsB3FHS         ; SEAFOAM_ISLANDS_B3F
+	dw SeafoamIslandsB4FHS         ; SEAFOAM_ISLANDS_B4F
+	dw NoHS                        ; ROUTE_15_GATE
+	dw CeladonGroveHS              ; CELADON_GROVE ; marcelnote - was NoHS
+	dw NoHS                        ; ROUTE_16_GATE
+	dw CeladonGroveSouthGateHS     ; CELADON_GROVE_SOUTH_GATE ; marcelnote - was NoHS
+	dw NoHS                        ; ROUTE_16_FLY_HOUSE
+	dw NoHS                        ; ROUTE_12_FISHING_GUIDE_HOUSE
+	dw NoHS                        ; ROUTE_18_GATE
+	dw NoHS                        ; CELADON_GROVE_NORTH_GATE
+	dw RocketHideoutB1FHS          ; ROCKET_HIDEOUT_B1F
+	dw RocketHideoutB2FHS          ; ROCKET_HIDEOUT_B2F
+	dw RocketHideoutB3FHS          ; ROCKET_HIDEOUT_B3F
+	dw RocketHideoutB4FHS          ; ROCKET_HIDEOUT_B4F
+	dw NoHS                        ; ROCKET_HIDEOUT_ELEVATOR
+	dw NoHS                        ; SAFFRON_POKECENTER
+	dw NoHS                        ; COPYCATS_HOUSE_1F
+	dw NoHS                        ; COPYCATS_HOUSE_2F
+	dw FightingDojoHS              ; FIGHTING_DOJO
+	dw NoHS                        ; SAFFRON_PIDGEY_HOUSE
+	dw NoHS                        ; SAFFRON_MART
+	dw NoHS                        ; MR_PSYCHICS_HOUSE
+	dw SaffronGymHS                ; SAFFRON_GYM ; marcelnote - postgame Bruno event, Sabrina rematch
+	dw NoHS                        ; POKEMON_ACADEMY_1F2F
+	dw NoHS                        ; POKEMON_ACADEMY_3F4F
+	dw NoHS                        ; SILPH_CO_1F ; marcelnote - was SilphCo1FHS, but need to restore hide/show
+	dw SilphCo2FHS                 ; SILPH_CO_2F
+	dw SilphCo3FHS                 ; SILPH_CO_3F
+	dw SilphCo4FHS                 ; SILPH_CO_4F
+	dw SilphCo5FHS                 ; SILPH_CO_5F
+	dw SilphCo6FHS                 ; SILPH_CO_6F
+	dw SilphCo7FHS                 ; SILPH_CO_7F
+	dw SilphCo8FHS                 ; SILPH_CO_8F
+	dw SilphCo9FHS                 ; SILPH_CO_9F
+	dw SilphCo10FHS                ; SILPH_CO_10F
+	dw SilphCo11FHS                ; SILPH_CO_11F
+	dw NoHS                        ; SILPH_CO_ELEVATOR
+	dw NoHS                        ; FUCHSIA_POKECENTER
+	dw NoHS                        ; FUCHSIA_MART
+	dw NoHS                        ; FUCHSIA_BILLS_GRANDPAS_HOUSE
+	dw WardensHouseHS              ; WARDENS_HOUSE
+	dw NoHS                        ; FUCHSIA_MEETING_ROOM
+	dw NoHS                        ; FUCHSIA_SUPER_ROD_HOUSE
+	dw NoHS                        ; FUCHSIA_MOVE_DELETER_HOUSE
+	dw FuchsiaGymHS                ; FUCHSIA_GYM
+	dw NoHS                        ; SAFARI_ZONE_GATE
+	dw SafariZoneEastHS            ; SAFARI_ZONE_EAST
+	dw SafariZoneNorthHS           ; SAFARI_ZONE_NORTH
+	dw SafariZoneWestHS            ; SAFARI_ZONE_WEST
+	dw SafariZoneCenterHS          ; SAFARI_ZONE_CENTER
+	dw NoHS                        ; SAFARI_ZONE_CENTER_REST_HOUSE
+	dw NoHS                        ; SAFARI_ZONE_SECRET_HOUSE
+	dw NoHS                        ; SAFARI_ZONE_WEST_REST_HOUSE
+	dw NoHS                        ; SAFARI_ZONE_EAST_REST_HOUSE
+	dw NoHS                        ; SAFARI_ZONE_NORTH_REST_HOUSE
+	dw NoHS                        ; CINNABAR_POKECENTER_MART
+	dw NoHS                        ; CINNABAR_LAB
+	dw NoHS                        ; CINNABAR_LAB_TRADE_ROOM
+	dw NoHS                        ; CINNABAR_LAB_METRONOME_ROOM
+	dw NoHS                        ; CINNABAR_LAB_FOSSIL_ROOM
+	dw CinnabarGymHS               ; CINNABAR_GYM         ; marcelnote - Blaine rematch
+	dw PokemonMansion1FHS          ; POKEMON_MANSION_1F
+	dw PokemonMansion2FHS          ; POKEMON_MANSION_2F
+	dw PokemonMansion3FHS          ; POKEMON_MANSION_3F
+	dw PokemonMansionB1FHS         ; POKEMON_MANSION_B1F
+	dw CinnabarVolcano1FB1FHS      ; CINNABAR_VOLCANO_1FB1F
+	dw CinnabarVolcano2FHS         ; CINNABAR_VOLCANO_2F
+	dw NoHS                        ; MANDARIN_POKECENTER_MART
+	dw NoHS                        ; MANDARIN_SURF_SHOP
+	dw MandarinHotelHS             ; MANDARIN_HOTEL
+	dw MandarinSilphCoHS           ; MANDARIN_SILPH_CO
+	dw SilphFactory1FHS            ; SILPH_FACTORY_1F
+	dw SilphFactory2FHS            ; SILPH_FACTORY_2F
+	dw NoHS                        ; ROUTE_22_OLD_ROD_HOUSE
+	dw NoHS                        ; ROUTE_22_GATE
+	dw NoHS                        ; ROUTE_22_GATE_3F
+	dw MtSilver1FHS                ; MT_SILVER_1F         ; marcelnote - added for items
+	dw MtSilver2FHS                ; MT_SILVER_2F         ; marcelnote - added for items
+	dw MtSilver3FHS                ; MT_SILVER_3F         ; marcelnote - added for Yellow battle
+	dw VictoryRoad1FHS             ; VICTORY_ROAD_1F
+	dw VictoryRoad2FHS             ; VICTORY_ROAD_2F
+	dw VictoryRoad3FHS             ; VICTORY_ROAD_3F
+	dw IndigoPlateauLobbyHS        ; INDIGO_PLATEAU_LOBBY ; marcelnote - added for girl blocking E4 entrance
+	dw LoreleisRoomHS              ; LORELEIS_ROOM        ; marcelnote - added for Lorelei rematch
+	dw BrunosRoomHS                ; BRUNOS_ROOM          ; marcelnote - added for Bruno rematch
+	dw AgathasRoomHS               ; AGATHAS_ROOM         ; marcelnote - added for Agatha rematch
+	dw LancesRoomHS                ; LANCES_ROOM          ; marcelnote - added for Lance rematch
+	dw ChampionsRoomHS             ; CHAMPIONS_ROOM
+	dw HallOfFameHS                ; HALL_OF_FAME         ; marcelnote - added for Rival rematch
+	dw NoHS                        ; TRADE_CENTER
+	dw NoHS                        ; COLOSSEUM
 	assert_table_length NUM_MAPS
 	dw -1 ; end
 

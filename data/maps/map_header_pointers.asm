@@ -88,13 +88,6 @@ MapHeaderPointers::
 	dw UndergroundPathRoute8_h
 	dw UndergroundPathNorthSouth_h
 	dw UndergroundPathWestEast_h
-	dw RockTunnelPokecenter_h
-	dw RockTunnel1F_h
-	dw RockTunnelB1F_h
-	dw PowerPlant_h
-	dw Route11Gate_h ; marcelnote - merged Route11Gate floors
-	dw DiglettsCaveRoute11_h
-	dw Route12Gate_h ; marcelnote - merged Route12Gate floors
 	dw VermilionPokecenter_h
 	dw VermilionGoodRodHouse_h ; marcelnote - from Old to Good Rod
 	dw PokemonFanClub_h
@@ -114,6 +107,24 @@ MapHeaderPointers::
 	dw SSAnne2FRooms_h
 	dw SSAnneB1FRooms_h
 	dw DiglettsCave_h
+	dw DiglettsCaveRoute11_h
+	dw Route11Gate_h ; marcelnote - merged Route11Gate floors
+	dw RockTunnelPokecenter_h
+	dw RockTunnel1F_h
+	dw RockTunnelB1F_h
+	dw PowerPlant_h
+	dw LavenderPokecenterMart_h ; marcelnote - merged Lavender Pokecenter and Mart
+	dw MrFujisHouse_h
+	dw NameRatersHouse_h
+	dw LavenderCuboneHouse_h
+	dw PokemonTower1F_h
+	dw PokemonTower2F_h
+	dw PokemonTower3F_h
+	dw PokemonTower4F_h
+	dw PokemonTower5F_h
+	dw PokemonTower6F_h
+	dw PokemonTower7F_h
+	dw Route12Gate_h ; marcelnote - merged Route12Gate floors
 	dw CeladonMart1F2F3F_h ; marcelnote - merged 1F 2F 3F
 	dw CeladonMart4F5F6F_h ; marcelnote - merged 4F 5F + new 6F
 	dw CeladonMartRoof_h
@@ -128,17 +139,6 @@ MapHeaderPointers::
 	dw CeladonDiner_h
 	dw CeladonChiefHouse_h
 	dw CeladonHotel_h
-	dw LavenderPokecenterMart_h ; marcelnote - merged Lavender Pokecenter and Mart
-	dw MrFujisHouse_h
-	dw NameRatersHouse_h
-	dw LavenderCuboneHouse_h
-	dw PokemonTower1F_h
-	dw PokemonTower2F_h
-	dw PokemonTower3F_h
-	dw PokemonTower4F_h
-	dw PokemonTower5F_h
-	dw PokemonTower6F_h
-	dw PokemonTower7F_h
 	dw SeafoamIslands1F_h
 	dw SeafoamIslandsB1F_h
 	dw SeafoamIslandsB2F_h

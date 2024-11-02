@@ -77,17 +77,17 @@ InternalMapEntries:
 	internal_map UNDERGROUND_PATH_ROUTE_7,       8,  5, Route7Name
 	internal_map UNDERGROUND_PATH_ROUTE_8,      12,  5, Route8Name
 	internal_map UNDERGROUND_PATH_WEST_EAST,    10,  5, UndergroundPathName
-	internal_map ROCK_TUNNEL_B1F,               14,  3, RockTunnelName ; marcelnote - differentiate PokeCenter?
-	internal_map POWER_PLANT,                   15,  3, PowerPlantName
-	internal_map DIGLETTS_CAVE_ROUTE_11,        13,  9, Route11Name ; marcelnote - merged ROUTE_11_GATE floors
-	internal_map ROUTE_12_GATE,                 14,  7, Route12Name ; marcelnote - merged ROUTE_12_GATE floors
 	internal_map VERMILION_GYM,                 10,  9, VermilionCityName
 	internal_map SS_ANNE_B1F_ROOMS,              9, 10, SSAnneName
-	internal_map DIGLETTS_CAVE,                 11,  8, DiglettsCaveName
-	internal_map GAME_CORNER,                    7,  5, CeladonCityName
-	internal_map CELADON_HOTEL,                  7,  5, CeladonCityName
-	internal_map LAVENDER_CUBONE_HOUSE,         14,  5, LavenderTownName ; marcelnote - merged Lavender Pokecenter and Mart
+	internal_map DIGLETTS_CAVE_ROUTE_11,        11,  8, DiglettsCaveName
+	internal_map ROUTE_11_GATE,                 13,  9, Route11Name ; marcelnote - merged ROUTE_11_GATE floors
+	internal_map ROCK_TUNNEL_POKECENTER,        14,  2, Route10Name
+	internal_map ROCK_TUNNEL_B1F,               14,  3, RockTunnelName
+	internal_map POWER_PLANT,                   15,  3, PowerPlantName
+	internal_map ROUTE_12_GATE,                 14,  7, Route12Name ; marcelnote - merged ROUTE_12_GATE floors
+	internal_map LAVENDER_CUBONE_HOUSE,         14,  5, LavenderTownName
 	internal_map POKEMON_TOWER_7F,              15,  5, PokemonTowerName
+	internal_map CELADON_HOTEL,                  7,  5, CeladonCityName
 	internal_map SEAFOAM_ISLANDS_B4F,            6, 15, SeafoamIslandsName
 	internal_map ROUTE_15_GATE,                 10, 13, Route15Name ; marcelnote - merged Route15Gate floors
 	internal_map CELADON_GROVE,                  7,  4, CeladonGroveName ; marcelnote - new location
