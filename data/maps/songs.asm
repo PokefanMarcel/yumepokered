@@ -67,11 +67,14 @@ MapSongBanks::
 	db MUSIC_ROUTES3, BANK(Music_Routes3) ; MT_MOON_SQUARE ; marcelnote - new location
 	db MUSIC_CITIES2, BANK(Music_Cities2) ; CERULEAN_TRASHED_HOUSE
 	db MUSIC_CITIES2, BANK(Music_Cities2) ; CERULEAN_TRADE_HOUSE
+	db MUSIC_CITIES1, BANK(Music_Cities1)               ; CERULEAN_BADGE_HOUSE
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; CERULEAN_POKECENTER
 	db MUSIC_GYM, BANK(Music_Gym) ; CERULEAN_GYM
 	db MUSIC_CITIES2, BANK(Music_Cities2) ; BIKE_SHOP
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; CERULEAN_MART
-	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) ; CERULEAN_TRASHED_HOUSE_COPY
+	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; CERULEAN_CAVE_1F
+	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; CERULEAN_CAVE_2F
+	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; CERULEAN_CAVE_B1F
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; ROUTE_5_GATE
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; UNDERGROUND_PATH_ROUTE_5
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; DAYCARE
@@ -124,6 +127,9 @@ MapSongBanks::
 	db MUSIC_CELADON, BANK(Music_Celadon) ; CELADON_CHIEF_HOUSE
 	db MUSIC_CELADON, BANK(Music_Celadon) ; CELADON_HOTEL
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; LAVENDER_POKECENTER_MART ; marcelnote - merged Lavender Pokecenter and Mart
+	db MUSIC_LAVENDER, BANK(Music_Lavender) ; MR_FUJIS_HOUSE
+	db MUSIC_CITIES2, BANK(Music_Cities2)   ; NAME_RATERS_HOUSE
+	db MUSIC_LAVENDER, BANK(Music_Lavender) ; LAVENDER_CUBONE_HOUSE
 	db MUSIC_POKEMON_TOWER, BANK(Music_PokemonTower) ; POKEMON_TOWER_1F
 	db MUSIC_POKEMON_TOWER, BANK(Music_PokemonTower) ; POKEMON_TOWER_2F
 	db MUSIC_POKEMON_TOWER, BANK(Music_PokemonTower) ; POKEMON_TOWER_3F
@@ -131,23 +137,12 @@ MapSongBanks::
 	db MUSIC_POKEMON_TOWER, BANK(Music_PokemonTower) ; POKEMON_TOWER_5F
 	db MUSIC_POKEMON_TOWER, BANK(Music_PokemonTower) ; POKEMON_TOWER_6F
 	db MUSIC_POKEMON_TOWER, BANK(Music_PokemonTower) ; POKEMON_TOWER_7F
-	db MUSIC_LAVENDER, BANK(Music_Lavender) ; MR_FUJIS_HOUSE
-	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; UNUSED_MAP_96 ; $96 ; marcelnote - was LAVENDER_MART, now unused
-	db MUSIC_LAVENDER, BANK(Music_Lavender) ; LAVENDER_CUBONE_HOUSE
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; SEAFOAM_ISLANDS_1F
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; SEAFOAM_ISLANDS_B1F
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; SEAFOAM_ISLANDS_B2F
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; SEAFOAM_ISLANDS_B3F
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; SEAFOAM_ISLANDS_B4F
 	db MUSIC_CITIES2, BANK(Music_Cities2) ; VERMILION_GOOD_ROD_HOUSE ; marcelnote - from Old to Good Rod
-	db MUSIC_CITIES1, BANK(Music_Cities1) ; COPYCATS_HOUSE_1F
-	db MUSIC_CITIES1, BANK(Music_Cities1) ; COPYCATS_HOUSE_2F
-	db MUSIC_CITIES1, BANK(Music_Cities1) ; FIGHTING_DOJO
-	db MUSIC_GYM, BANK(Music_Gym) ; SAFFRON_GYM
-	db MUSIC_CITIES1, BANK(Music_Cities1) ; SAFFRON_PIDGEY_HOUSE
-	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; SAFFRON_MART
-	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; SAFFRON_POKECENTER
-	db MUSIC_CITIES1, BANK(Music_Cities1) ; MR_PSYCHICS_HOUSE
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; ROUTE_15_GATE ; marcelnote - merged ROUTE_15_GATE floors
 	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) ; CELADON_GROVE ; marcelnote - new location, was ROUTE_15_GATE_2F
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; ROUTE_16_GATE ; marcelnote - merged ROUTE_16_GATE floors
@@ -163,13 +158,16 @@ MapSongBanks::
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; ROCKET_HIDEOUT_B3F
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; ROCKET_HIDEOUT_B4F
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; ROCKET_HIDEOUT_ELEVATOR
-	db MUSIC_CITIES1, BANK(Music_Cities1) ; CD ; POKEMON_ACADEMY_1F2F ; marcelnote - new location
-	db MUSIC_CITIES1, BANK(Music_Cities1) ; CE ; POKEMON_ACADEMY_3F4F ; marcelnote - new location
-	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; CERULEAN_CAVE_2F
-	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; CERULEAN_CAVE_B1F
-	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; CERULEAN_CAVE_1F
-	db MUSIC_CITIES2, BANK(Music_Cities2) ; NAME_RATERS_HOUSE
-	db MUSIC_CITIES1, BANK(Music_Cities1) ; CERULEAN_BADGE_HOUSE
+	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; SAFFRON_POKECENTER
+	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; COPYCATS_HOUSE_1F
+	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; COPYCATS_HOUSE_2F
+	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; FIGHTING_DOJO
+	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; SAFFRON_PIDGEY_HOUSE
+	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; SAFFRON_MART
+	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; MR_PSYCHICS_HOUSE
+	db MUSIC_GYM, BANK(Music_Gym)                          ; SAFFRON_GYM
+	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; POKEMON_ACADEMY_1F2F ; marcelnote - new location
+	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; POKEMON_ACADEMY_3F4F ; marcelnote - new location
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo)                 ; SILPH_CO_1F
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo)                 ; SILPH_CO_2F
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo)                 ; SILPH_CO_3F
