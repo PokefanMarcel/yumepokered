@@ -126,6 +126,7 @@ MapHeaderPointers::
 	dw PokemonTower6F_h
 	dw PokemonTower7F_h
 	dw Route12Gate_h ; marcelnote - merged Route12Gate floors
+	dw Route12FishingGuideHouse_h ; marcelnote - from Super Rod to Fishing Guide
 	dw CeladonPokecenter_h
 	dw CeladonMart1F2F3F_h ; marcelnote - merged 1F 2F 3F
 	dw CeladonMart4F5F6F_h ; marcelnote - merged 4F 5F + new 6F
@@ -150,7 +151,6 @@ MapHeaderPointers::
 	dw Route15Gate_h ; marcelnote - merged Route15Gate floors
 	dw Route16Gate_h ; marcelnote - merged Route16Gate floors
 	dw Route16FlyHouse_h
-	dw Route12FishingGuideHouse_h ; marcelnote - from Super Rod to Fishing Guide
 	dw Route18Gate_h ; marcelnote - merged Route18Gate floors
 	dw SaffronPokecenter_h
 	dw CopycatsHouse1F_h

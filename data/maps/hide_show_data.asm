@@ -128,6 +128,7 @@ MapHSPointers:
 	dw PokemonTower6FHS            ; POKEMON_TOWER_6F
 	dw PokemonTower7FHS            ; POKEMON_TOWER_7F
 	dw NoHS                        ; ROUTE_12_GATE
+	dw NoHS                        ; ROUTE_12_FISHING_GUIDE_HOUSE
 	dw NoHS                        ; CELADON_POKECENTER
 	dw NoHS                        ; CELADON_MART_1F2F3F
 	dw NoHS                        ; CELADON_MART_4F5F6F
@@ -152,7 +153,6 @@ MapHSPointers:
 	dw NoHS                        ; ROUTE_15_GATE
 	dw NoHS                        ; ROUTE_16_GATE
 	dw NoHS                        ; ROUTE_16_FLY_HOUSE
-	dw NoHS                        ; ROUTE_12_FISHING_GUIDE_HOUSE
 	dw NoHS                        ; ROUTE_18_GATE
 	dw NoHS                        ; SAFFRON_POKECENTER
 	dw NoHS                        ; COPYCATS_HOUSE_1F

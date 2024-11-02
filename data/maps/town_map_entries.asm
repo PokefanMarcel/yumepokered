@@ -85,16 +85,16 @@ InternalMapEntries:
 	internal_map ROCK_TUNNEL_POKECENTER,        14,  2, Route10Name
 	internal_map ROCK_TUNNEL_B1F,               14,  3, RockTunnelName
 	internal_map POWER_PLANT,                   15,  3, PowerPlantName
-	internal_map ROUTE_12_GATE,                 14,  7, Route12Name ; marcelnote - merged ROUTE_12_GATE floors
 	internal_map LAVENDER_CUBONE_HOUSE,         14,  5, LavenderTownName
 	internal_map POKEMON_TOWER_7F,              15,  5, PokemonTowerName
+	internal_map ROUTE_12_GATE,                 14,  7, Route12Name ; marcelnote - merged ROUTE_12_GATE floors
+	internal_map ROUTE_12_FISHING_GUIDE_HOUSE,  14, 10, Route12Name ; marcelnote - from Super Rod to Fishing Guide
 	internal_map CELADON_GYM,                    7,  5, CeladonCityName
 	internal_map ROCKET_HIDEOUT_ELEVATOR,        7,  5, RocketHQName     ; marcelnote - adjusted
 	internal_map CELADON_GROVE,                  7,  4, CeladonGroveName ; marcelnote - new location
 	internal_map ROUTE_15_GATE,                 10, 13, Route15Name      ; marcelnote - merged Route15Gate floors
-	internal_map ROUTE_16_GATE,                  5,  5, Route16Name
+	internal_map ROUTE_16_GATE,                  6,  5, Route16Name
 	internal_map ROUTE_16_FLY_HOUSE,             5,  5, Route16Name
-	internal_map ROUTE_12_FISHING_GUIDE_HOUSE,  14, 10, Route12Name ; marcelnote - from Super Rod to Fishing Guide
 	internal_map ROUTE_18_GATE,                  7, 13, Route18Name ; marcelnote - merged Route18Gate floors
 	internal_map SAFFRON_GYM,                   10,  5, SaffronCityName
 	internal_map POKEMON_ACADEMY_3F4F,          10,  5, PokemonAcademyName  ; marcelnote - new location
