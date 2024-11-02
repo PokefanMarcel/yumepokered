@@ -50,12 +50,12 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw ViridianGymHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw ViridianForestHS
+	dw NoHS                 ; VIRIDIAN_FOREST_SOUTH_GATE
+	dw NoHS                 ; ROUTE_2_GATE
+	dw ViridianForestHS     ; VIRIDIAN_FOREST
+	dw NoHS                 ; VIRIDIAN_FOREST_NORTH_GATE
+	dw NoHS                 ; ROUTE_2_TRADE_HOUSE
+	dw NoHS                 ; DIGLETTS_CAVE_ROUTE_2
 	dw Museum1FHS
 	dw NoHS
 	dw PewterGymHS ; marcelnote - Brock rematch
