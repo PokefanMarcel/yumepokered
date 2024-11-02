@@ -66,13 +66,13 @@ MapHeaderPointers::
 	dw MtMoonB1F_h
 	dw MtMoonB2F_h
 	dw MtMoonSquare_h ; $E7 ; marcelnote - new location
+	dw CeruleanPokecenter_h
 	dw CeruleanTrashedHouse_h
 	dw CeruleanTradeHouse_h
 	dw CeruleanBadgeHouse_h
-	dw CeruleanPokecenter_h
-	dw CeruleanGym_h
 	dw BikeShop_h
 	dw CeruleanMart_h
+	dw CeruleanGym_h
 	dw CeruleanCave1F_h
 	dw CeruleanCave2F_h
 	dw CeruleanCaveB1F_h
@@ -96,10 +96,12 @@ MapHeaderPointers::
 	dw Route12Gate_h ; marcelnote - merged Route12Gate floors
 	dw BillsHouse_h
 	dw VermilionPokecenter_h
+	dw VermilionGoodRodHouse_h ; marcelnote - from Old to Good Rod
 	dw PokemonFanClub_h
 	dw VermilionMart_h
-	dw VermilionGym_h
 	dw VermilionPidgeyHouse_h
+	dw VermilionTradeHouse_h
+	dw VermilionGym_h
 	dw VermilionDock_h
 	dw SSAnne1F_h
 	dw SSAnne2F_h
@@ -111,6 +113,7 @@ MapHeaderPointers::
 	dw SSAnne1FRooms_h
 	dw SSAnne2FRooms_h
 	dw SSAnneB1FRooms_h
+	dw DiglettsCave_h
 	dw UndergroundPathNorthSouth_h
 	dw UndergroundPathWestEast_h
 	dw CeladonMart1F2F3F_h ; marcelnote - merged 1F 2F 3F
@@ -143,7 +146,6 @@ MapHeaderPointers::
 	dw SeafoamIslandsB2F_h
 	dw SeafoamIslandsB3F_h
 	dw SeafoamIslandsB4F_h
-	dw VermilionGoodRodHouse_h ; marcelnote - from Old to Good Rod
 	dw Route15Gate_h ; marcelnote - merged Route15Gate floors
 	dw CeladonGrove_h ; $B9 ; CELADON_GROVE ; marcelnote - new location, was Route15Gate2F_h
 	dw Route16Gate_h ; marcelnote - merged Route16Gate floors
@@ -152,8 +154,6 @@ MapHeaderPointers::
 	dw Route12FishingGuideHouse_h ; marcelnote - from Super Rod to Fishing Guide
 	dw Route18Gate_h ; marcelnote - merged Route18Gate floors
 	dw CeladonGroveNorthGate_h ; $BF ; CELADON_GROVE_NORTH_GATE ; marcelnote - new location, was Route18Gate2F_h
-	dw VermilionTradeHouse_h
-	dw DiglettsCave_h
 	dw RocketHideoutB1F_h
 	dw RocketHideoutB2F_h
 	dw RocketHideoutB3F_h

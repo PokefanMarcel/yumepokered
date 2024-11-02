@@ -88,13 +88,13 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const MT_MOON_B1F,                   14, 14 ; $3C
 	map_const MT_MOON_B2F,                   20, 18 ; $3D
 	map_const MT_MOON_SQUARE,                12,  6 ; $E7 ; marcelnote - new location
+	map_const CERULEAN_POKECENTER,            7,  4 ; $40
 	map_const CERULEAN_TRASHED_HOUSE,         4,  4 ; $3E
 	map_const CERULEAN_TRADE_HOUSE,           4,  4 ; $3F
 	map_const CERULEAN_BADGE_HOUSE,           4,  4 ; $E6
-	map_const CERULEAN_POKECENTER,            7,  4 ; $40
-	map_const CERULEAN_GYM,                   5,  7 ; $41
 	map_const BIKE_SHOP,                      4,  4 ; $42
 	map_const CERULEAN_MART,                  4,  4 ; $43
+	map_const CERULEAN_GYM,                   5,  7 ; $41
 	map_const CERULEAN_CAVE_1F,              15,  9 ; $E4
 	map_const CERULEAN_CAVE_2F,              15,  9 ; $E2
 	map_const CERULEAN_CAVE_B1F,             15,  9 ; $E3
@@ -118,10 +118,12 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const ROUTE_12_GATE,                 11,  4 ; $57 ; marcelnote - merged ROUTE_12_GATE floors
 	map_const BILLS_HOUSE,                    4,  4 ; $58
 	map_const VERMILION_POKECENTER,           7,  4 ; $59
+	map_const VERMILION_GOOD_ROD_HOUSE,       4,  4 ; $A3 ; marcelnote - from Old to Good Rod
 	map_const POKEMON_FAN_CLUB,               4,  4 ; $5A
 	map_const VERMILION_MART,                 4,  4 ; $5B
-	map_const VERMILION_GYM,                  5,  9 ; $5C
 	map_const VERMILION_PIDGEY_HOUSE,         4,  4 ; $5D
+	map_const VERMILION_TRADE_HOUSE,          4,  4 ; $C4
+	map_const VERMILION_GYM,                  5,  9 ; $5C
 	map_const VERMILION_DOCK,                14,  6 ; $5E
 	map_const SS_ANNE_1F,                    20,  9 ; $5F
 	map_const SS_ANNE_2F,                    20,  9 ; $60
@@ -133,6 +135,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const SS_ANNE_1F_ROOMS,              12,  8 ; $66
 	map_const SS_ANNE_2F_ROOMS,              12,  8 ; $67
 	map_const SS_ANNE_B1F_ROOMS,             12,  8 ; $68
+	map_const DIGLETTS_CAVE,                 20, 18 ; $C5
 	map_const UNDERGROUND_PATH_NORTH_SOUTH,   4, 24 ; $77 ; UndergroundPathNorthSouth.blk is actually 4x23
 	map_const UNDERGROUND_PATH_WEST_EAST,    25,  4 ; $79
 	map_const CELADON_MART_1F2F3F,           10, 18 ; $7A ; marcelnote - merged 1F 2F 3F
@@ -165,7 +168,6 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const SEAFOAM_ISLANDS_B2F,           15,  9 ; $A0
 	map_const SEAFOAM_ISLANDS_B3F,           15,  9 ; $A1
 	map_const SEAFOAM_ISLANDS_B4F,           15,  9 ; $A2
-	map_const VERMILION_GOOD_ROD_HOUSE,       4,  4 ; $A3 ; marcelnote - from Old to Good Rod
 	map_const ROUTE_15_GATE,                  4, 11 ; $B8 ; marcelnote - merged ROUTE_15_GATE floors
 	map_const CELADON_GROVE,                 22, 24 ; $B9 ; marcelnote - new location, was ROUTE_15_GATE_2F
 	map_const ROUTE_16_GATE,                  4, 13 ; $BA ; marcelnote - merged ROUTE_16_GATE floors
@@ -174,8 +176,6 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const ROUTE_12_FISHING_GUIDE_HOUSE,   4,  4 ; $BD ; marcelnote - from Super Rod to Fishing Guide
 	map_const ROUTE_18_GATE,                  4, 11 ; $BE ; marcelnote - merged ROUTE_18_GATE floors
 	map_const CELADON_GROVE_NORTH_GATE,       5,  4 ; $BF ; marcelnote - new location, was ROUTE_18_GATE_2F
-	map_const VERMILION_TRADE_HOUSE,          4,  4 ; $C4
-	map_const DIGLETTS_CAVE,                 20, 18 ; $C5
 	map_const ROCKET_HIDEOUT_B1F,            15, 14 ; $C7
 	map_const ROCKET_HIDEOUT_B2F,            15, 14 ; $C8
 	map_const ROCKET_HIDEOUT_B3F,            15, 14 ; $C9
