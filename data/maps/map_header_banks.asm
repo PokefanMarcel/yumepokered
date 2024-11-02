@@ -61,11 +61,12 @@ MapHeaderBanks::
 	db BANK(PewterMart_h)
 	db BANK(PewterSpeechHouse_h)
 	db BANK(PewterGym_h)
+	db BANK(CeladonGroveNorthGate_h) ; marcelnote - new location
 	db BANK(MtMoonPokecenter_h)
 	db BANK(MtMoon1F_h)
 	db BANK(MtMoonB1F_h)
 	db BANK(MtMoonB2F_h)
-	db BANK(MtMoonSquare_h) ; $E7 ; marcelnote - new location
+	db BANK(MtMoonSquare_h) ; marcelnote - new location
 	db BANK(CeruleanPokecenter_h)
 	db BANK(CeruleanTrashedHouse_h)
 	db BANK(CeruleanTradeHouse_h)
@@ -125,6 +126,7 @@ MapHeaderBanks::
 	db BANK(PokemonTower6F_h)
 	db BANK(PokemonTower7F_h)
 	db BANK(Route12Gate_h) ; marcelnote - merged Route12Gate floors
+	db BANK(CeladonPokecenter_h)
 	db BANK(CeladonMart1F2F3F_h) ; marcelnote - merged 1F 2F 3F
 	db BANK(CeladonMart4F5F6F_h) ; marcelnote - merged 4F 5F + new 6F
 	db BANK(CeladonMartRoof_h)
@@ -132,31 +134,24 @@ MapHeaderBanks::
 	db BANK(CeladonMansion_h) ; CELADON_MANSION ; marcelnote - merged Celadon Mansion floors, added 4F
 	db BANK(CeladonMansionRoof_h)
 	db BANK(CeladonMansionRoofHouse_h)
-	db BANK(CeladonPokecenter_h)
-	db BANK(CeladonGym_h)
 	db BANK(GameCorner_h)
 	db BANK(GameCornerPrizeRoom_h)
 	db BANK(CeladonDiner_h)
 	db BANK(CeladonChiefHouse_h)
 	db BANK(CeladonHotel_h)
-	db BANK(SeafoamIslands1F_h)
-	db BANK(SeafoamIslandsB1F_h)
-	db BANK(SeafoamIslandsB2F_h)
-	db BANK(SeafoamIslandsB3F_h)
-	db BANK(SeafoamIslandsB4F_h)
-	db BANK(Route15Gate_h) ; marcelnote - merged Route15Gate floors
-	db BANK(CeladonGrove_h) ; $B9 ; CELADON_GROVE ; marcelnote - new location, was Route15Gate2F_h
-	db BANK(Route16Gate_h) ; marcelnote - merged Route16Gate floors
 	db BANK(CeladonGroveSouthGate_h) ; $BB ; CELADON_GROVE_SOUTH_GATE ; marcelnote - new location, was Route16Gate2F_h
-	db BANK(Route16FlyHouse_h)
-	db BANK(Route12FishingGuideHouse_h) ; marcelnote - from Super Rod to Fishing Guide
-	db BANK(Route18Gate_h) ; marcelnote - merged Route18Gate floors
-	db BANK(CeladonGroveNorthGate_h) ; $BF ; CELADON_GROVE_NORTH_GATE ; marcelnote - new location, was Route18Gate2F_h
+	db BANK(CeladonGym_h)
 	db BANK(RocketHideoutB1F_h)
 	db BANK(RocketHideoutB2F_h)
 	db BANK(RocketHideoutB3F_h)
 	db BANK(RocketHideoutB4F_h)
 	db BANK(RocketHideoutElevator_h)
+	db BANK(CeladonGrove_h) ; $B9 ; CELADON_GROVE ; marcelnote - new location, was Route15Gate2F_h
+	db BANK(Route15Gate_h) ; marcelnote - merged Route15Gate floors
+	db BANK(Route16Gate_h) ; marcelnote - merged Route16Gate floors
+	db BANK(Route16FlyHouse_h)
+	db BANK(Route12FishingGuideHouse_h) ; marcelnote - from Super Rod to Fishing Guide
+	db BANK(Route18Gate_h) ; marcelnote - merged Route18Gate floors
 	db BANK(SaffronPokecenter_h)
 	db BANK(CopycatsHouse1F_h)
 	db BANK(CopycatsHouse2F_h)
@@ -197,6 +192,11 @@ MapHeaderBanks::
 	db BANK(SafariZoneWestRestHouse_h)
 	db BANK(SafariZoneEastRestHouse_h)
 	db BANK(SafariZoneNorthRestHouse_h)
+	db BANK(SeafoamIslands1F_h)
+	db BANK(SeafoamIslandsB1F_h)
+	db BANK(SeafoamIslandsB2F_h)
+	db BANK(SeafoamIslandsB3F_h)
+	db BANK(SeafoamIslandsB4F_h)
 	db BANK(CinnabarPokecenterMart_h)   ; marcelnote - merged Cinnabar Pokecenter and Mart
 	db BANK(CinnabarLab_h)
 	db BANK(CinnabarLabTradeRoom_h)

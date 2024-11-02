@@ -61,6 +61,7 @@ MapHeaderPointers::
 	dw PewterMart_h
 	dw PewterSpeechHouse_h
 	dw PewterGym_h
+	dw CeladonGroveNorthGate_h ; marcelnote - new location
 	dw MtMoonPokecenter_h
 	dw MtMoon1F_h
 	dw MtMoonB1F_h
@@ -125,38 +126,32 @@ MapHeaderPointers::
 	dw PokemonTower6F_h
 	dw PokemonTower7F_h
 	dw Route12Gate_h ; marcelnote - merged Route12Gate floors
+	dw CeladonPokecenter_h
 	dw CeladonMart1F2F3F_h ; marcelnote - merged 1F 2F 3F
 	dw CeladonMart4F5F6F_h ; marcelnote - merged 4F 5F + new 6F
 	dw CeladonMartRoof_h
 	dw CeladonMartElevator_h
-	dw CeladonMansion_h ; $82 ; marcelnote - merged Celadon Mansion floors, added 4F
+	dw CeladonMansion_h          ; marcelnote - merged Celadon Mansion floors, added 4F
 	dw CeladonMansionRoof_h
 	dw CeladonMansionRoofHouse_h
-	dw CeladonPokecenter_h
-	dw CeladonGym_h
 	dw GameCorner_h
 	dw GameCornerPrizeRoom_h
 	dw CeladonDiner_h
 	dw CeladonChiefHouse_h
 	dw CeladonHotel_h
-	dw SeafoamIslands1F_h
-	dw SeafoamIslandsB1F_h
-	dw SeafoamIslandsB2F_h
-	dw SeafoamIslandsB3F_h
-	dw SeafoamIslandsB4F_h
-	dw Route15Gate_h ; marcelnote - merged Route15Gate floors
-	dw CeladonGrove_h ; $B9 ; CELADON_GROVE ; marcelnote - new location, was Route15Gate2F_h
-	dw Route16Gate_h ; marcelnote - merged Route16Gate floors
-	dw CeladonGroveSouthGate_h ; $BB ; CELADON_GROVE_SOUTH_GATE ; marcelnote - new location, was Route16Gate2F_h
-	dw Route16FlyHouse_h
-	dw Route12FishingGuideHouse_h ; marcelnote - from Super Rod to Fishing Guide
-	dw Route18Gate_h ; marcelnote - merged Route18Gate floors
-	dw CeladonGroveNorthGate_h ; $BF ; CELADON_GROVE_NORTH_GATE ; marcelnote - new location, was Route18Gate2F_h
+	dw CeladonGroveSouthGate_h   ; marcelnote - new location, was Route16Gate2F_h
+	dw CeladonGym_h
 	dw RocketHideoutB1F_h
 	dw RocketHideoutB2F_h
 	dw RocketHideoutB3F_h
 	dw RocketHideoutB4F_h
 	dw RocketHideoutElevator_h
+	dw CeladonGrove_h            ; marcelnote - new location
+	dw Route15Gate_h ; marcelnote - merged Route15Gate floors
+	dw Route16Gate_h ; marcelnote - merged Route16Gate floors
+	dw Route16FlyHouse_h
+	dw Route12FishingGuideHouse_h ; marcelnote - from Super Rod to Fishing Guide
+	dw Route18Gate_h ; marcelnote - merged Route18Gate floors
 	dw SaffronPokecenter_h
 	dw CopycatsHouse1F_h
 	dw CopycatsHouse2F_h
@@ -197,6 +192,11 @@ MapHeaderPointers::
 	dw SafariZoneWestRestHouse_h
 	dw SafariZoneEastRestHouse_h
 	dw SafariZoneNorthRestHouse_h
+	dw SeafoamIslands1F_h
+	dw SeafoamIslandsB1F_h
+	dw SeafoamIslandsB2F_h
+	dw SeafoamIslandsB3F_h
+	dw SeafoamIslandsB4F_h
 	dw CinnabarPokecenterMart_h  ; marcelnote - merged Cinnabar Pokecenter and Mart
 	dw CinnabarLab_h
 	dw CinnabarLabTradeRoom_h
