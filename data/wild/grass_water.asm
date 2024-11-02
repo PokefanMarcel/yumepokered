@@ -75,17 +75,18 @@ WildDataPointers:
 	dw CeruleanCave1FWildMons          ; CERULEAN_CAVE_1F
 	dw CeruleanCave2FWildMons          ; CERULEAN_CAVE_2F
 	dw CeruleanCaveB1FWildMons         ; CERULEAN_CAVE_B1F
+	dw NothingWildMons                 ; BILLS_HOUSE
 	dw NothingWildMons                 ; ROUTE_5_GATE
 	dw NothingWildMons                 ; UNDERGROUND_PATH_ROUTE_5
 	dw NothingWildMons                 ; DAYCARE
 	dw NothingWildMons                 ; ROUTE_6_GATE
 	dw NothingWildMons                 ; UNDERGROUND_PATH_ROUTE_6
-	dw NothingWildMons                 ; UNDERGROUND_PATH_ROUTE_6_COPY
 	dw NothingWildMons                 ; ROUTE_7_GATE
 	dw NothingWildMons                 ; UNDERGROUND_PATH_ROUTE_7
-	dw NothingWildMons                 ; UNDERGROUND_PATH_ROUTE_7_COPY
 	dw NothingWildMons                 ; ROUTE_8_GATE
 	dw NothingWildMons                 ; UNDERGROUND_PATH_ROUTE_8
+	dw NothingWildMons                 ; UNDERGROUND_PATH_NORTH_SOUTH
+	dw NothingWildMons                 ; UNDERGROUND_PATH_WEST_EAST
 	dw NothingWildMons                 ; ROCK_TUNNEL_POKECENTER
 	dw RockTunnel1FWildMons            ; ROCK_TUNNEL_1F
 	dw RockTunnelB1FWildMons           ; ROCK_TUNNEL_B1F
@@ -93,7 +94,6 @@ WildDataPointers:
 	dw NothingWildMons                 ; ROUTE_11_GATE
 	dw NothingWildMons                 ; DIGLETTS_CAVE_ROUTE_11
 	dw NothingWildMons                 ; ROUTE_12_GATE
-	dw NothingWildMons                 ; BILLS_HOUSE
 	dw NothingWildMons                 ; VERMILION_POKECENTER
 	dw NothingWildMons                 ; VERMILION_GOOD_ROD_HOUSE
 	dw NothingWildMons                 ; POKEMON_FAN_CLUB
@@ -113,8 +113,6 @@ WildDataPointers:
 	dw NothingWildMons                 ; SS_ANNE_2F_ROOMS
 	dw NothingWildMons                 ; SS_ANNE_B1F_ROOMS
 	dw DiglettsCaveWildMons            ; DIGLETTS_CAVE
-	dw NothingWildMons                 ; UNDERGROUND_PATH_NORTH_SOUTH
-	dw NothingWildMons                 ; UNDERGROUND_PATH_WEST_EAST
 	dw NothingWildMons                 ; CELADON_MART_1F2F3F
 	dw NothingWildMons                 ; CELADON_MART_4F5F6F
 	dw NothingWildMons                 ; CELADON_MART_ROOF

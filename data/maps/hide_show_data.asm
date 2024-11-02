@@ -78,17 +78,18 @@ MapHSPointers:
 	dw CeruleanCave1FHS     ; CERULEAN_CAVE_1F
 	dw CeruleanCave2FHS     ; CERULEAN_CAVE_2F
 	dw CeruleanCaveB1FHS    ; CERULEAN_CAVE_B1F
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw BillsHouseHS         ; BILLS_HOUSE
+	dw NoHS              ; ROUTE_5_GATE
+	dw NoHS              ; UNDERGROUND_PATH_ROUTE_5
+	dw NoHS              ; DAYCARE
+	dw NoHS              ; ROUTE_6_GATE
+	dw NoHS              ; UNDERGROUND_PATH_ROUTE_6
+	dw NoHS              ; ROUTE_7_GATE
+	dw NoHS              ; UNDERGROUND_PATH_ROUTE_7
+	dw NoHS              ; ROUTE_8_GATE
+	dw NoHS              ; UNDERGROUND_PATH_ROUTE_8
+	dw NoHS              ; UNDERGROUND_PATH_NORTH_SOUTH
+	dw NoHS              ; UNDERGROUND_PATH_WEST_EAST
 	dw NoHS              ; ROCK_TUNNEL_POKECENTER
 	dw NoHS              ; ROCK_TUNNEL_1F
 	dw NoHS              ; ROCK_TUNNEL_B1F
@@ -96,7 +97,6 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw NoHS
-	dw BillsHouseHS
 	dw NoHS              ; VERMILION_POKECENTER
 	dw NoHS              ; VERMILION_GOOD_ROD_HOUSE
 	dw NoHS              ; POKEMON_FAN_CLUB
@@ -116,8 +116,6 @@ MapHSPointers:
 	dw SSAnne2FRoomsHS   ; SS_ANNE_2F_ROOMS
 	dw SSAnneB1FRoomsHS  ; SS_ANNE_B1F_ROOMS
 	dw NoHS              ; DIGLETTS_CAVE
-	dw NoHS              ; UNDERGROUND_PATH_NORTH_SOUTH
-	dw NoHS              ; UNDERGROUND_PATH_WEST_EAST
 	dw NoHS
 	dw NoHS
 	dw NoHS
