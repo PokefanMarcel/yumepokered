@@ -68,13 +68,13 @@ MapHSPointers:
 	dw NoHS                 ; MT_MOON_B1F
 	dw MtMoonB2FHS          ; MT_MOON_B2F
 	dw MtMoonSquareHS       ; MT_MOON_SQUARE          ; marcelnote - new location
+	dw NoHS                 ; CERULEAN_POKECENTER
 	dw NoHS                 ; CERULEAN_TRASHED_HOUSE
 	dw NoHS                 ; CERULEAN_TRADE_HOUSE
 	dw NoHS                 ; CERULEAN_BADGE_HOUSE
-	dw NoHS                 ; CERULEAN_POKECENTER
-	dw CeruleanGymHS        ; CERULEAN_GYM            ; marcelnote - Misty rematch
 	dw NoHS                 ; BIKE_SHOP
 	dw NoHS                 ; CERULEAN_MART
+	dw CeruleanGymHS        ; CERULEAN_GYM            ; marcelnote - Misty rematch
 	dw CeruleanCave1FHS     ; CERULEAN_CAVE_1F
 	dw CeruleanCave2FHS     ; CERULEAN_CAVE_2F
 	dw CeruleanCaveB1FHS    ; CERULEAN_CAVE_B1F
@@ -97,24 +97,27 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw BillsHouseHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw VermilionGymHS ; marcelnote - Lt.Surge rematch
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw SSAnne2FHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw SSAnne1FRoomsHS
-	dw SSAnne2FRoomsHS
-	dw SSAnneB1FRoomsHS
-	dw NoHS
-	dw NoHS
+	dw NoHS              ; VERMILION_POKECENTER
+	dw NoHS              ; VERMILION_GOOD_ROD_HOUSE
+	dw NoHS              ; POKEMON_FAN_CLUB
+	dw NoHS              ; VERMILION_MART
+	dw NoHS              ; VERMILION_PIDGEY_HOUSE
+	dw NoHS              ; VERMILION_TRADE_HOUSE
+	dw VermilionGymHS    ; VERMILION_GYM ; marcelnote - Lt.Surge rematch
+	dw NoHS              ; VERMILION_DOCK
+	dw NoHS              ; SS_ANNE_1F
+	dw SSAnne2FHS        ; SS_ANNE_2F
+	dw NoHS              ; SS_ANNE_3F
+	dw NoHS              ; SS_ANNE_B1F
+	dw NoHS              ; SS_ANNE_BOW
+	dw NoHS              ; SS_ANNE_KITCHEN
+	dw NoHS              ; SS_ANNE_CAPTAINS_ROOM
+	dw SSAnne1FRoomsHS   ; SS_ANNE_1F_ROOMS
+	dw SSAnne2FRoomsHS   ; SS_ANNE_2F_ROOMS
+	dw SSAnneB1FRoomsHS  ; SS_ANNE_B1F_ROOMS
+	dw NoHS              ; DIGLETTS_CAVE
+	dw NoHS              ; UNDERGROUND_PATH_NORTH_SOUTH
+	dw NoHS              ; UNDERGROUND_PATH_WEST_EAST
 	dw NoHS
 	dw NoHS
 	dw NoHS
@@ -146,12 +149,9 @@ MapHSPointers:
 	dw SeafoamIslandsB3FHS
 	dw SeafoamIslandsB4FHS
 	dw NoHS
-	dw NoHS
 	dw CeladonGroveHS ; $B9 ; marcelnote - was NoHS
 	dw NoHS
 	dw CeladonGroveSouthGateHS ; $BB ; marcelnote - was NoHS
-	dw NoHS
-	dw NoHS
 	dw NoHS
 	dw NoHS
 	dw NoHS
