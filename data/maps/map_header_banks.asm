@@ -66,13 +66,13 @@ MapHeaderBanks::
 	db BANK(MtMoonB1F_h)
 	db BANK(MtMoonB2F_h)
 	db BANK(MtMoonSquare_h) ; $E7 ; marcelnote - new location
+	db BANK(CeruleanPokecenter_h)
 	db BANK(CeruleanTrashedHouse_h)
 	db BANK(CeruleanTradeHouse_h)
 	db BANK(CeruleanBadgeHouse_h)
-	db BANK(CeruleanPokecenter_h)
-	db BANK(CeruleanGym_h)
 	db BANK(BikeShop_h)
 	db BANK(CeruleanMart_h)
+	db BANK(CeruleanGym_h)
 	db BANK(CeruleanCave1F_h)
 	db BANK(CeruleanCave2F_h)
 	db BANK(CeruleanCaveB1F_h)
@@ -96,10 +96,12 @@ MapHeaderBanks::
 	db BANK(Route12Gate_h) ; marcelnote - merged Route12Gate floors
 	db BANK(BillsHouse_h)
 	db BANK(VermilionPokecenter_h)
+	db BANK(VermilionGoodRodHouse_h) ; marcelnote - from Old to Good Rod
 	db BANK(PokemonFanClub_h)
 	db BANK(VermilionMart_h)
-	db BANK(VermilionGym_h)
 	db BANK(VermilionPidgeyHouse_h)
+	db BANK(VermilionTradeHouse_h)
+	db BANK(VermilionGym_h)
 	db BANK(VermilionDock_h)
 	db BANK(SSAnne1F_h)
 	db BANK(SSAnne2F_h)
@@ -111,6 +113,7 @@ MapHeaderBanks::
 	db BANK(SSAnne1FRooms_h)
 	db BANK(SSAnne2FRooms_h)
 	db BANK(SSAnneB1FRooms_h)
+	db BANK(DiglettsCave_h)
 	db BANK(UndergroundPathNorthSouth_h)
 	db BANK(UndergroundPathWestEast_h)
 	db BANK(CeladonMart1F2F3F_h) ; marcelnote - merged 1F 2F 3F
@@ -143,7 +146,6 @@ MapHeaderBanks::
 	db BANK(SeafoamIslandsB2F_h)
 	db BANK(SeafoamIslandsB3F_h)
 	db BANK(SeafoamIslandsB4F_h)
-	db BANK(VermilionGoodRodHouse_h) ; marcelnote - from Old to Good Rod
 	db BANK(Route15Gate_h) ; marcelnote - merged Route15Gate floors
 	db BANK(CeladonGrove_h) ; $B9 ; CELADON_GROVE ; marcelnote - new location, was Route15Gate2F_h
 	db BANK(Route16Gate_h) ; marcelnote - merged Route16Gate floors
@@ -152,8 +154,6 @@ MapHeaderBanks::
 	db BANK(Route12FishingGuideHouse_h) ; marcelnote - from Super Rod to Fishing Guide
 	db BANK(Route18Gate_h) ; marcelnote - merged Route18Gate floors
 	db BANK(CeladonGroveNorthGate_h) ; $BF ; CELADON_GROVE_NORTH_GATE ; marcelnote - new location, was Route18Gate2F_h
-	db BANK(VermilionTradeHouse_h)
-	db BANK(DiglettsCave_h)
 	db BANK(RocketHideoutB1F_h)
 	db BANK(RocketHideoutB2F_h)
 	db BANK(RocketHideoutB3F_h)
