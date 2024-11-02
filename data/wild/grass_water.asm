@@ -60,6 +60,7 @@ WildDataPointers:
 	dw NothingWildMons                 ; PEWTER_MART
 	dw NothingWildMons                 ; PEWTER_SPEECH_HOUSE
 	dw NothingWildMons                 ; PEWTER_GYM
+	dw NothingWildMons                 ; CELADON_GROVE_NORTH_GATE
 	dw NothingWildMons                 ; MT_MOON_POKECENTER
 	dw MtMoon1FWildMons                ; MT_MOON_1F
 	dw MtMoonB1FWildMons               ; MT_MOON_B1F
@@ -124,6 +125,7 @@ WildDataPointers:
 	dw PokemonTower6FWildMons          ; POKEMON_TOWER_6F
 	dw PokemonTower7FWildMons          ; POKEMON_TOWER_7F
 	dw NothingWildMons                 ; ROUTE_12_GATE
+	dw NothingWildMons                 ; CELADON_POKECENTER
 	dw NothingWildMons                 ; CELADON_MART_1F2F3F
 	dw NothingWildMons                 ; CELADON_MART_4F5F6F
 	dw NothingWildMons                 ; CELADON_MART_ROOF
@@ -131,31 +133,24 @@ WildDataPointers:
 	dw NothingWildMons                 ; CELADON_MANSION
 	dw NothingWildMons                 ; CELADON_MANSION_ROOF
 	dw NothingWildMons                 ; CELADON_MANSION_ROOF_HOUSE
-	dw NothingWildMons                 ; CELADON_POKECENTER
-	dw NothingWildMons                 ; CELADON_GYM
 	dw NothingWildMons                 ; GAME_CORNER
 	dw NothingWildMons                 ; GAME_CORNER_PRIZE_ROOM
 	dw NothingWildMons                 ; CELADON_DINER
 	dw NothingWildMons                 ; CELADON_CHIEF_HOUSE
 	dw NothingWildMons                 ; CELADON_HOTEL
-	dw SeafoamIslands1FWildMons        ; SEAFOAM_ISLANDS_1F
-	dw SeafoamIslandsB1FWildMons       ; SEAFOAM_ISLANDS_B1F
-	dw SeafoamIslandsB2FWildMons       ; SEAFOAM_ISLANDS_B2F
-	dw SeafoamIslandsB3FWildMons       ; SEAFOAM_ISLANDS_B3F
-	dw SeafoamIslandsB4FWildMons       ; SEAFOAM_ISLANDS_B4F
-	dw NothingWildMons                 ; ROUTE_15_GATE
-	dw CeladonGroveWildMons            ; CELADON_GROVE ; marcelnote - new location
-	dw NothingWildMons                 ; ROUTE_16_GATE
 	dw NothingWildMons                 ; CELADON_GROVE_SOUTH_GATE
-	dw NothingWildMons                 ; ROUTE_16_FLY_HOUSE
-	dw NothingWildMons                 ; ROUTE_12_FISHING_GUIDE_HOUSE
-	dw NothingWildMons                 ; ROUTE_18_GATE
-	dw NothingWildMons                 ; CELADON_GROVE_NORTH_GATE
+	dw NothingWildMons                 ; CELADON_GYM
 	dw NothingWildMons                 ; ROCKET_HIDEOUT_B1F
 	dw NothingWildMons                 ; ROCKET_HIDEOUT_B2F
 	dw NothingWildMons                 ; ROCKET_HIDEOUT_B3F
 	dw NothingWildMons                 ; ROCKET_HIDEOUT_B4F
 	dw NothingWildMons                 ; ROCKET_HIDEOUT_ELEVATOR
+	dw CeladonGroveWildMons            ; CELADON_GROVE ; marcelnote - new location
+	dw NothingWildMons                 ; ROUTE_15_GATE
+	dw NothingWildMons                 ; ROUTE_16_GATE
+	dw NothingWildMons                 ; ROUTE_16_FLY_HOUSE
+	dw NothingWildMons                 ; ROUTE_12_FISHING_GUIDE_HOUSE
+	dw NothingWildMons                 ; ROUTE_18_GATE
 	dw NothingWildMons                 ; SAFFRON_POKECENTER
 	dw NothingWildMons                 ; COPYCATS_HOUSE_1F
 	dw NothingWildMons                 ; COPYCATS_HOUSE_2F
@@ -196,6 +191,11 @@ WildDataPointers:
 	dw NothingWildMons                 ; SAFARI_ZONE_WEST_REST_HOUSE
 	dw NothingWildMons                 ; SAFARI_ZONE_EAST_REST_HOUSE
 	dw NothingWildMons                 ; SAFARI_ZONE_NORTH_REST_HOUSE
+	dw SeafoamIslands1FWildMons        ; SEAFOAM_ISLANDS_1F
+	dw SeafoamIslandsB1FWildMons       ; SEAFOAM_ISLANDS_B1F
+	dw SeafoamIslandsB2FWildMons       ; SEAFOAM_ISLANDS_B2F
+	dw SeafoamIslandsB3FWildMons       ; SEAFOAM_ISLANDS_B3F
+	dw SeafoamIslandsB4FWildMons       ; SEAFOAM_ISLANDS_B4F
 	dw NothingWildMons                 ; CINNABAR_POKECENTER_MART
 	dw NothingWildMons                 ; CINNABAR_LAB
 	dw NothingWildMons                 ; CINNABAR_LAB_TRADE_ROOM

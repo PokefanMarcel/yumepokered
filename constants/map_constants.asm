@@ -83,6 +83,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const PEWTER_MART,                    4,  4 ; $38
 	map_const PEWTER_SPEECH_HOUSE,            4,  4 ; $39
 	map_const PEWTER_GYM,                     5,  7 ; $36
+	map_const CELADON_GROVE_NORTH_GATE,       5,  4 ; $BF ; marcelnote - new location
 	map_const MT_MOON_POKECENTER,             7,  4 ; $44
 	map_const MT_MOON_1F,                    20, 18 ; $3B
 	map_const MT_MOON_B1F,                   14, 14 ; $3C
@@ -147,6 +148,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const POKEMON_TOWER_6F,              10,  9 ; $93
 	map_const POKEMON_TOWER_7F,              10,  9 ; $94
 	map_const ROUTE_12_GATE,                 11,  4 ; $57 ; marcelnote - merged ROUTE_12_GATE floors
+	map_const CELADON_POKECENTER,             7,  4 ; $85
 	map_const CELADON_MART_1F2F3F,           10, 18 ; $7A ; marcelnote - merged 1F 2F 3F
 	map_const CELADON_MART_4F5F6F,           10, 18 ; $7D ; marcelnote - merged 4F 5F + new 6F
 	map_const CELADON_MART_ROOF,             10,  6 ; $7E ; marcelnote - expanded from y=4
@@ -154,31 +156,24 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const CELADON_MANSION,                4, 33 ; $82 ; marcelnote - merged Celadon Mansion floors, added 4F
 	map_const CELADON_MANSION_ROOF,           4,  8 ; $83 ; marcelnote - expanded from y=6
 	map_const CELADON_MANSION_ROOF_HOUSE,     4,  4 ; $84
-	map_const CELADON_POKECENTER,             7,  4 ; $85
-	map_const CELADON_GYM,                    5,  9 ; $86
 	map_const GAME_CORNER,                   10,  9 ; $87
 	map_const GAME_CORNER_PRIZE_ROOM,         5,  4 ; $89
 	map_const CELADON_DINER,                  5,  4 ; $8A
 	map_const CELADON_CHIEF_HOUSE,            4,  4 ; $8B
 	map_const CELADON_HOTEL,                  7,  4 ; $8C
-	map_const SEAFOAM_ISLANDS_1F,            15,  9 ; $C0
-	map_const SEAFOAM_ISLANDS_B1F,           15,  9 ; $9F
-	map_const SEAFOAM_ISLANDS_B2F,           15,  9 ; $A0
-	map_const SEAFOAM_ISLANDS_B3F,           15,  9 ; $A1
-	map_const SEAFOAM_ISLANDS_B4F,           15,  9 ; $A2
-	map_const ROUTE_15_GATE,                  4, 11 ; $B8 ; marcelnote - merged ROUTE_15_GATE floors
-	map_const CELADON_GROVE,                 22, 24 ; $B9 ; marcelnote - new location, was ROUTE_15_GATE_2F
-	map_const ROUTE_16_GATE,                  4, 13 ; $BA ; marcelnote - merged ROUTE_16_GATE floors
 	map_const CELADON_GROVE_SOUTH_GATE,       5,  4 ; $BB ; marcelnote - new location, was ROUTE_15_GATE_2F
-	map_const ROUTE_16_FLY_HOUSE,             4,  4 ; $BC
-	map_const ROUTE_12_FISHING_GUIDE_HOUSE,   4,  4 ; $BD ; marcelnote - from Super Rod to Fishing Guide
-	map_const ROUTE_18_GATE,                  4, 11 ; $BE ; marcelnote - merged ROUTE_18_GATE floors
-	map_const CELADON_GROVE_NORTH_GATE,       5,  4 ; $BF ; marcelnote - new location, was ROUTE_18_GATE_2F
+	map_const CELADON_GYM,                    5,  9 ; $86
 	map_const ROCKET_HIDEOUT_B1F,            15, 14 ; $C7
 	map_const ROCKET_HIDEOUT_B2F,            15, 14 ; $C8
 	map_const ROCKET_HIDEOUT_B3F,            15, 14 ; $C9
 	map_const ROCKET_HIDEOUT_B4F,            15, 12 ; $CA
 	map_const ROCKET_HIDEOUT_ELEVATOR,        3,  4 ; $CB
+	map_const CELADON_GROVE,                 22, 24 ; $B9 ; marcelnote - new location, was ROUTE_15_GATE_2F
+	map_const ROUTE_15_GATE,                  4, 11 ; $B8 ; marcelnote - merged ROUTE_15_GATE floors
+	map_const ROUTE_16_GATE,                  4, 13 ; $BA ; marcelnote - merged ROUTE_16_GATE floors
+	map_const ROUTE_16_FLY_HOUSE,             4,  4 ; $BC
+	map_const ROUTE_12_FISHING_GUIDE_HOUSE,   4,  4 ; $BD ; marcelnote - from Super Rod to Fishing Guide
+	map_const ROUTE_18_GATE,                  4, 11 ; $BE ; marcelnote - merged ROUTE_18_GATE floors
 	map_const SAFFRON_POKECENTER,             7,  4 ; $B6
 	map_const COPYCATS_HOUSE_1F,              4,  4 ; $AF
 	map_const COPYCATS_HOUSE_2F,              4,  4 ; $B0
@@ -219,6 +214,11 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const SAFARI_ZONE_WEST_REST_HOUSE,    4,  4 ; $DF
 	map_const SAFARI_ZONE_EAST_REST_HOUSE,    4,  4 ; $E0
 	map_const SAFARI_ZONE_NORTH_REST_HOUSE,   4,  4 ; $E1
+	map_const SEAFOAM_ISLANDS_1F,            15,  9 ; $C0
+	map_const SEAFOAM_ISLANDS_B1F,           15,  9 ; $9F
+	map_const SEAFOAM_ISLANDS_B2F,           15,  9 ; $A0
+	map_const SEAFOAM_ISLANDS_B3F,           15,  9 ; $A1
+	map_const SEAFOAM_ISLANDS_B4F,           15,  9 ; $A2
 	map_const CINNABAR_POKECENTER_MART,      14,  4 ; $AB ; marcelnote - merged Cinnabar Pokecenter and Mart
 	map_const CINNABAR_LAB,                   9,  4 ; $A7
 	map_const CINNABAR_LAB_TRADE_ROOM,        4,  4 ; $A8
