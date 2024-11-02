@@ -63,6 +63,7 @@ MapHSPointers:
 	dw NoHS                        ; PEWTER_MART
 	dw NoHS                        ; PEWTER_SPEECH_HOUSE
 	dw PewterGymHS                 ; PEWTER_GYM              ; marcelnote - Brock rematch
+	dw NoHS                        ; CELADON_GROVE_NORTH_GATE
 	dw NoHS                        ; MT_MOON_POKECENTER
 	dw MtMoon1FHS                  ; MT_MOON_1F
 	dw NoHS                        ; MT_MOON_B1F
@@ -127,6 +128,7 @@ MapHSPointers:
 	dw PokemonTower6FHS            ; POKEMON_TOWER_6F
 	dw PokemonTower7FHS            ; POKEMON_TOWER_7F
 	dw NoHS                        ; ROUTE_12_GATE
+	dw NoHS                        ; CELADON_POKECENTER
 	dw NoHS                        ; CELADON_MART_1F2F3F
 	dw NoHS                        ; CELADON_MART_4F5F6F
 	dw NoHS                        ; CELADON_MART_ROOF
@@ -134,31 +136,24 @@ MapHSPointers:
 	dw NoHS                        ; CELADON_MANSION
 	dw NoHS                        ; CELADON_MANSION_ROOF
 	dw CeladonMansionRoofHouseHS   ; CELADON_MANSION_ROOF_HOUSE
-	dw NoHS                        ; CELADON_POKECENTER
-	dw CeladonGymHS                ; CELADON_GYM ; marcelnote - Erika rematch
 	dw GameCornerHS                ; GAME_CORNER
 	dw NoHS                        ; GAME_CORNER_PRIZE_ROOM
 	dw NoHS                        ; CELADON_DINER
 	dw NoHS                        ; CELADON_CHIEF_HOUSE
 	dw NoHS                        ; CELADON_HOTEL
-	dw SeafoamIslands1FHS          ; SEAFOAM_ISLANDS_1F
-	dw SeafoamIslandsB1FHS         ; SEAFOAM_ISLANDS_B1F
-	dw SeafoamIslandsB2FHS         ; SEAFOAM_ISLANDS_B2F
-	dw SeafoamIslandsB3FHS         ; SEAFOAM_ISLANDS_B3F
-	dw SeafoamIslandsB4FHS         ; SEAFOAM_ISLANDS_B4F
-	dw NoHS                        ; ROUTE_15_GATE
-	dw CeladonGroveHS              ; CELADON_GROVE ; marcelnote - was NoHS
-	dw NoHS                        ; ROUTE_16_GATE
 	dw CeladonGroveSouthGateHS     ; CELADON_GROVE_SOUTH_GATE ; marcelnote - was NoHS
-	dw NoHS                        ; ROUTE_16_FLY_HOUSE
-	dw NoHS                        ; ROUTE_12_FISHING_GUIDE_HOUSE
-	dw NoHS                        ; ROUTE_18_GATE
-	dw NoHS                        ; CELADON_GROVE_NORTH_GATE
+	dw CeladonGymHS                ; CELADON_GYM              ; marcelnote - Erika rematch
 	dw RocketHideoutB1FHS          ; ROCKET_HIDEOUT_B1F
 	dw RocketHideoutB2FHS          ; ROCKET_HIDEOUT_B2F
 	dw RocketHideoutB3FHS          ; ROCKET_HIDEOUT_B3F
 	dw RocketHideoutB4FHS          ; ROCKET_HIDEOUT_B4F
 	dw NoHS                        ; ROCKET_HIDEOUT_ELEVATOR
+	dw CeladonGroveHS              ; CELADON_GROVE            ; marcelnote - was NoHS
+	dw NoHS                        ; ROUTE_15_GATE
+	dw NoHS                        ; ROUTE_16_GATE
+	dw NoHS                        ; ROUTE_16_FLY_HOUSE
+	dw NoHS                        ; ROUTE_12_FISHING_GUIDE_HOUSE
+	dw NoHS                        ; ROUTE_18_GATE
 	dw NoHS                        ; SAFFRON_POKECENTER
 	dw NoHS                        ; COPYCATS_HOUSE_1F
 	dw NoHS                        ; COPYCATS_HOUSE_2F
@@ -199,6 +194,11 @@ MapHSPointers:
 	dw NoHS                        ; SAFARI_ZONE_WEST_REST_HOUSE
 	dw NoHS                        ; SAFARI_ZONE_EAST_REST_HOUSE
 	dw NoHS                        ; SAFARI_ZONE_NORTH_REST_HOUSE
+	dw SeafoamIslands1FHS          ; SEAFOAM_ISLANDS_1F
+	dw SeafoamIslandsB1FHS         ; SEAFOAM_ISLANDS_B1F
+	dw SeafoamIslandsB2FHS         ; SEAFOAM_ISLANDS_B2F
+	dw SeafoamIslandsB3FHS         ; SEAFOAM_ISLANDS_B3F
+	dw SeafoamIslandsB4FHS         ; SEAFOAM_ISLANDS_B4F
 	dw NoHS                        ; CINNABAR_POKECENTER_MART
 	dw NoHS                        ; CINNABAR_LAB
 	dw NoHS                        ; CINNABAR_LAB_TRADE_ROOM

@@ -3,11 +3,12 @@
 ; POKEMON_MANSION_1F, SEAFOAM_ISLANDS_[B1F-B4F], POWER_PLANT,
 ; DIGLETTS_CAVE, and SILPH_CO_[9-11]F as dungeon maps
 
+; marcelnote - this was extensively changed with new map constants order
+
 ; GetBattleTransitionID_IsDungeonMap checks if wCurMap
 ; is equal to one of these maps
 DungeonMaps1:
 	db VIRIDIAN_FOREST
-	; marcelnote - fix for aforementioned bug and adding new maps
 	db CELADON_GROVE
 	db -1 ; end
 

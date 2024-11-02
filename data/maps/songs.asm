@@ -64,6 +64,7 @@ MapSongBanks::
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; PEWTER_MART
 	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; PEWTER_SPEECH_HOUSE
 	db MUSIC_GYM, BANK(Music_Gym)                          ; PEWTER_GYM
+	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; CELADON_GROVE_NORTH_GATE  ; marcelnote - new location
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; MT_MOON_POKECENTER
 	db MUSIC_DUNGEON3, BANK(Music_Dungeon3)                ; MT_MOON_1F
 	db MUSIC_DUNGEON3, BANK(Music_Dungeon3)                ; MT_MOON_B1F
@@ -111,7 +112,7 @@ MapSongBanks::
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne)                   ; SS_ANNE_B1F_ROOMS
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2)                ; DIGLETTS_CAVE
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2)                ; DIGLETTS_CAVE_ROUTE_11
-	db MUSIC_VERMILION, BANK(Music_Vermilion)              ; ROUTE_11_GATE ; marcelnote - merged ROUTE_11_GATE floors
+	db MUSIC_VERMILION, BANK(Music_Vermilion)              ; ROUTE_11_GATE            ; marcelnote - merged ROUTE_11_GATE floors
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; ROCK_TUNNEL_POKECENTER
 	db MUSIC_DUNGEON3, BANK(Music_Dungeon3)                ; ROCK_TUNNEL_1F
 	db MUSIC_DUNGEON3, BANK(Music_Dungeon3)                ; ROCK_TUNNEL_B1F
@@ -127,39 +128,33 @@ MapSongBanks::
 	db MUSIC_POKEMON_TOWER, BANK(Music_PokemonTower)       ; POKEMON_TOWER_5F
 	db MUSIC_POKEMON_TOWER, BANK(Music_PokemonTower)       ; POKEMON_TOWER_6F
 	db MUSIC_POKEMON_TOWER, BANK(Music_PokemonTower)       ; POKEMON_TOWER_7F
-	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; ROUTE_12_GATE ; marcelnote - merged ROUTE_12_GATE floors
-	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; CELADON_MART_1F2F3F ; marcelnote - merged 1F 2F 3F
-	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; CELADON_MART_4F5F6F ; marcelnote - merged 4F 5F + new 6F
+	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; ROUTE_12_GATE                ; marcelnote - merged ROUTE_12_GATE floors
+	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; CELADON_POKECENTER
+	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; CELADON_MART_1F2F3F          ; marcelnote - merged 1F 2F 3F
+	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; CELADON_MART_4F5F6F          ; marcelnote - merged 4F 5F + new 6F
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; CELADON_MART_ROOF
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; CELADON_MART_ELEVATOR
-	db MUSIC_CELADON, BANK(Music_Celadon)                  ; CELADON_MANSION ; marcelnote - merged Celadon Mansion floors, added 4F
+	db MUSIC_CELADON, BANK(Music_Celadon)                  ; CELADON_MANSION              ; marcelnote - merged Celadon Mansion floors, added 4F
 	db MUSIC_CELADON, BANK(Music_Celadon)                  ; CELADON_MANSION_ROOF
 	db MUSIC_CELADON, BANK(Music_Celadon)                  ; CELADON_MANSION_ROOF_HOUSE
-	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; CELADON_POKECENTER
-	db MUSIC_GYM, BANK(Music_Gym)                          ; CELADON_GYM
 	db MUSIC_GAME_CORNER, BANK(Music_GameCorner)           ; GAME_CORNER
 	db MUSIC_CELADON, BANK(Music_Celadon)                  ; GAME_CORNER_PRIZE_ROOM
 	db MUSIC_CELADON, BANK(Music_Celadon)                  ; CELADON_DINER
 	db MUSIC_CELADON, BANK(Music_Celadon)                  ; CELADON_CHIEF_HOUSE
 	db MUSIC_CELADON, BANK(Music_Celadon)                  ; CELADON_HOTEL
-	db MUSIC_DUNGEON2, BANK(Music_Dungeon2)                ; SEAFOAM_ISLANDS_1F
-	db MUSIC_DUNGEON2, BANK(Music_Dungeon2)                ; SEAFOAM_ISLANDS_B1F
-	db MUSIC_DUNGEON2, BANK(Music_Dungeon2)                ; SEAFOAM_ISLANDS_B2F
-	db MUSIC_DUNGEON2, BANK(Music_Dungeon2)                ; SEAFOAM_ISLANDS_B3F
-	db MUSIC_DUNGEON2, BANK(Music_Dungeon2)                ; SEAFOAM_ISLANDS_B4F
-	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; ROUTE_15_GATE ; marcelnote - merged ROUTE_15_GATE floors
-	db MUSIC_DUNGEON3, BANK(Music_Dungeon3)                ; CELADON_GROVE ; marcelnote - new location, was ROUTE_15_GATE_2F
-	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; ROUTE_16_GATE ; marcelnote - merged ROUTE_16_GATE floors
-	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; $BB ; CELADON_GROVE_SOUTH_GATE ; marcelnote - was ROUTE_16_GATE_2F
-	db MUSIC_CELADON, BANK(Music_Celadon)                  ; ROUTE_16_FLY_HOUSE
-	db MUSIC_CELADON, BANK(Music_Celadon)                  ; ROUTE_12_FISHING_GUIDE_HOUSE ; marcelnote - from Super Rod to Fishing Guide
-	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; ROUTE_18_GATE ; marcelnote - merged ROUTE_18_GATE floors
-	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; $BF ; CELADON_GROVE_NORTH_GATE ; marcelnote - was ROUTE_18_GATE_2F
+	db MUSIC_CELADON, BANK(Music_Celadon)                  ; CELADON_GROVE_SOUTH_GATE     ; marcelnote - was ROUTE_16_GATE_2F
+	db MUSIC_GYM, BANK(Music_Gym)                          ; CELADON_GYM
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1)                ; ROCKET_HIDEOUT_B1F
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1)                ; ROCKET_HIDEOUT_B2F
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1)                ; ROCKET_HIDEOUT_B3F
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1)                ; ROCKET_HIDEOUT_B4F
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1)                ; ROCKET_HIDEOUT_ELEVATOR
+	db MUSIC_DUNGEON3, BANK(Music_Dungeon3)                ; CELADON_GROVE                ; marcelnote - new location
+	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; ROUTE_15_GATE                ; marcelnote - merged ROUTE_15_GATE floors
+	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; ROUTE_16_GATE                ; marcelnote - merged ROUTE_16_GATE floors
+	db MUSIC_CELADON, BANK(Music_Celadon)                  ; ROUTE_16_FLY_HOUSE
+	db MUSIC_CELADON, BANK(Music_Celadon)                  ; ROUTE_12_FISHING_GUIDE_HOUSE ; marcelnote - from Super Rod to Fishing Guide
+	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; ROUTE_18_GATE                ; marcelnote - merged ROUTE_18_GATE floors
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; SAFFRON_POKECENTER
 	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; COPYCATS_HOUSE_1F
 	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; COPYCATS_HOUSE_2F
@@ -200,6 +195,11 @@ MapSongBanks::
 	db MUSIC_SAFARI_ZONE, BANK(Music_SafariZone)           ; SAFARI_ZONE_WEST_REST_HOUSE
 	db MUSIC_SAFARI_ZONE, BANK(Music_SafariZone)           ; SAFARI_ZONE_EAST_REST_HOUSE
 	db MUSIC_SAFARI_ZONE, BANK(Music_SafariZone)           ; SAFARI_ZONE_NORTH_REST_HOUSE
+	db MUSIC_DUNGEON2, BANK(Music_Dungeon2)                ; SEAFOAM_ISLANDS_1F
+	db MUSIC_DUNGEON2, BANK(Music_Dungeon2)                ; SEAFOAM_ISLANDS_B1F
+	db MUSIC_DUNGEON2, BANK(Music_Dungeon2)                ; SEAFOAM_ISLANDS_B2F
+	db MUSIC_DUNGEON2, BANK(Music_Dungeon2)                ; SEAFOAM_ISLANDS_B3F
+	db MUSIC_DUNGEON2, BANK(Music_Dungeon2)                ; SEAFOAM_ISLANDS_B4F
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; CINNABAR_POKECENTER_MART   ; marcelnote - merged Cinnabar Pokecenter and Mart
 	db MUSIC_CINNABAR, BANK(Music_Cinnabar)                ; CINNABAR_LAB
 	db MUSIC_CINNABAR, BANK(Music_Cinnabar)                ; CINNABAR_LAB_TRADE_ROOM
