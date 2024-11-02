@@ -125,6 +125,7 @@ WildDataPointers:
 	dw PokemonTower6FWildMons          ; POKEMON_TOWER_6F
 	dw PokemonTower7FWildMons          ; POKEMON_TOWER_7F
 	dw NothingWildMons                 ; ROUTE_12_GATE
+	dw NothingWildMons                 ; ROUTE_12_FISHING_GUIDE_HOUSE
 	dw NothingWildMons                 ; CELADON_POKECENTER
 	dw NothingWildMons                 ; CELADON_MART_1F2F3F
 	dw NothingWildMons                 ; CELADON_MART_4F5F6F
@@ -149,7 +150,6 @@ WildDataPointers:
 	dw NothingWildMons                 ; ROUTE_15_GATE
 	dw NothingWildMons                 ; ROUTE_16_GATE
 	dw NothingWildMons                 ; ROUTE_16_FLY_HOUSE
-	dw NothingWildMons                 ; ROUTE_12_FISHING_GUIDE_HOUSE
 	dw NothingWildMons                 ; ROUTE_18_GATE
 	dw NothingWildMons                 ; SAFFRON_POKECENTER
 	dw NothingWildMons                 ; COPYCATS_HOUSE_1F

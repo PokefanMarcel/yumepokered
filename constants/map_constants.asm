@@ -27,11 +27,11 @@ ENDM
 	map_const LAVENDER_TOWN,                 10,  9 ; $04
 	map_const VERMILION_CITY,                20, 18 ; $05
 	map_const CELADON_CITY,                  25, 18 ; $06
-	map_const SAFFRON_CITY,                  20, 18 ; $0A
-	map_const FUCHSIA_CITY,                  20, 18 ; $07
-	map_const CINNABAR_ISLAND,               14,  9 ; $08 ; marcelnote - added Cinnabar Volcano
-	map_const MANDARIN_ISLAND,               17, 16 ; $0Abis ; marcelnote - new map
-	map_const INDIGO_PLATEAU,                10,  9 ; $09
+	map_const SAFFRON_CITY,                  20, 18 ; $07
+	map_const FUCHSIA_CITY,                  20, 18 ; $08
+	map_const CINNABAR_ISLAND,               14,  9 ; $09 ; marcelnote - added Cinnabar Volcano
+	map_const MANDARIN_ISLAND,               17, 16 ; $0A ; marcelnote - new map
+	map_const INDIGO_PLATEAU,                10,  9 ; $0B
 DEF NUM_CITY_MAPS EQU const_value
 	map_const UNUSED_MAP_0B,                  0,  0 ; $0B
 DEF FIRST_ROUTE_MAP EQU const_value
@@ -148,6 +148,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const POKEMON_TOWER_6F,              10,  9 ; $93
 	map_const POKEMON_TOWER_7F,              10,  9 ; $94
 	map_const ROUTE_12_GATE,                 11,  4 ; $57 ; marcelnote - merged ROUTE_12_GATE floors
+	map_const ROUTE_12_FISHING_GUIDE_HOUSE,   4,  4 ; $BD ; marcelnote - from Super Rod to Fishing Guide
 	map_const CELADON_POKECENTER,             7,  4 ; $85
 	map_const CELADON_MART_1F2F3F,           10, 18 ; $7A ; marcelnote - merged 1F 2F 3F
 	map_const CELADON_MART_4F5F6F,           10, 18 ; $7D ; marcelnote - merged 4F 5F + new 6F
@@ -172,7 +173,6 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const ROUTE_15_GATE,                  4, 11 ; $B8 ; marcelnote - merged ROUTE_15_GATE floors
 	map_const ROUTE_16_GATE,                  4, 13 ; $BA ; marcelnote - merged ROUTE_16_GATE floors
 	map_const ROUTE_16_FLY_HOUSE,             4,  4 ; $BC
-	map_const ROUTE_12_FISHING_GUIDE_HOUSE,   4,  4 ; $BD ; marcelnote - from Super Rod to Fishing Guide
 	map_const ROUTE_18_GATE,                  4, 11 ; $BE ; marcelnote - merged ROUTE_18_GATE floors
 	map_const SAFFRON_POKECENTER,             7,  4 ; $B6
 	map_const COPYCATS_HOUSE_1F,              4,  4 ; $AF
