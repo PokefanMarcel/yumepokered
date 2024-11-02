@@ -61,8 +61,10 @@ InternalMapEntries:
 	; maximum map id subject to this rule, x, y, name
 	internal_map OAKS_LAB,                       3, 11, PalletTownName
 	internal_map VIRIDIAN_GYM,                   3,  8, ViridianCityName
-	internal_map VIRIDIAN_FOREST_SOUTH_GATE,     3,  6, Route2Name
+	internal_map ROUTE_2_GATE,                   3,  6, Route2Name
 	internal_map VIRIDIAN_FOREST,                3,  5, ViridianForestName
+	internal_map ROUTE_2_TRADE_HOUSE,            3,  4, Route2Name
+	internal_map DIGLETTS_CAVE_ROUTE_2,          4,  4, DiglettsCaveName
 	internal_map PEWTER_POKECENTER,              3,  3, PewterCityName
 	internal_map MT_MOON_POKECENTER,             5,  2, Route4Name
 	internal_map MT_MOON_B2F,                    6,  2, MountMoonName

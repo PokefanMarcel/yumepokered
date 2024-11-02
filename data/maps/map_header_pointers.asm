@@ -48,12 +48,12 @@ MapHeaderPointers::
 	dw ViridianSchoolHouse_h
 	dw ViridianNicknameHouse_h
 	dw ViridianGym_h
-	dw DiglettsCaveRoute2_h
+	dw ViridianForestSouthGate_h
+	dw Route2Gate_h
+	dw ViridianForest_h
 	dw ViridianForestNorthGate_h
 	dw Route2TradeHouse_h
-	dw Route2Gate_h
-	dw ViridianForestSouthGate_h
-	dw ViridianForest_h
+	dw DiglettsCaveRoute2_h
 	dw Museum1F_h
 	dw Museum2F_h
 	dw PewterGym_h

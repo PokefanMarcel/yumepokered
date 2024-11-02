@@ -44,27 +44,27 @@ MapSongBanks::
 	db MUSIC_OAKS_LAB, BANK(Music_OaksLab) ; OAKS_LAB
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; VIRIDIAN_POKECENTER
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; VIRIDIAN_MART
-	db MUSIC_CITIES1, BANK(Music_Cities1) ; VIRIDIAN_SCHOOL_HOUSE
-	db MUSIC_CITIES1, BANK(Music_Cities1) ; VIRIDIAN_NICKNAME_HOUSE
-	db MUSIC_GYM, BANK(Music_Gym) ; VIRIDIAN_GYM
-	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; DIGLETTS_CAVE_ROUTE_2
-	db MUSIC_CITIES1, BANK(Music_Cities1) ; VIRIDIAN_FOREST_NORTH_GATE
-	db MUSIC_CITIES1, BANK(Music_Cities1) ; ROUTE_2_TRADE_HOUSE
-	db MUSIC_CITIES1, BANK(Music_Cities1) ; ROUTE_2_GATE
-	db MUSIC_CITIES1, BANK(Music_Cities1) ; VIRIDIAN_FOREST_SOUTH_GATE
-	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; VIRIDIAN_FOREST
-	db MUSIC_CITIES1, BANK(Music_Cities1) ; MUSEUM_1F
-	db MUSIC_CITIES1, BANK(Music_Cities1) ; MUSEUM_2F
-	db MUSIC_GYM, BANK(Music_Gym) ; PEWTER_GYM
-	db MUSIC_CITIES1, BANK(Music_Cities1) ; PEWTER_NIDORAN_HOUSE
-	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; PEWTER_MART
-	db MUSIC_CITIES1, BANK(Music_Cities1) ; PEWTER_SPEECH_HOUSE
-	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; PEWTER_POKECENTER
-	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; MT_MOON_POKECENTER
-	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) ; MT_MOON_1F
-	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) ; MT_MOON_B1F
-	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) ; MT_MOON_B2F
-	db MUSIC_ROUTES3, BANK(Music_Routes3) ; MT_MOON_SQUARE ; marcelnote - new location
+	db MUSIC_CITIES1, BANK(Music_Cities1)                   ; VIRIDIAN_SCHOOL_HOUSE
+	db MUSIC_CITIES1, BANK(Music_Cities1)                   ; VIRIDIAN_NICKNAME_HOUSE
+	db MUSIC_GYM, BANK(Music_Gym)                           ; VIRIDIAN_GYM
+	db MUSIC_CITIES1, BANK(Music_Cities1)                   ; VIRIDIAN_FOREST_SOUTH_GATE
+	db MUSIC_CITIES1, BANK(Music_Cities1)                   ; ROUTE_2_GATE
+	db MUSIC_DUNGEON2, BANK(Music_Dungeon2)                 ; VIRIDIAN_FOREST
+	db MUSIC_CITIES1, BANK(Music_Cities1)                   ; VIRIDIAN_FOREST_NORTH_GATE
+	db MUSIC_CITIES1, BANK(Music_Cities1)                   ; ROUTE_2_TRADE_HOUSE
+	db MUSIC_DUNGEON2, BANK(Music_Dungeon2)                 ; DIGLETTS_CAVE_ROUTE_2
+	db MUSIC_CITIES1, BANK(Music_Cities1)                   ; MUSEUM_1F
+	db MUSIC_CITIES1, BANK(Music_Cities1)                   ; MUSEUM_2F
+	db MUSIC_GYM, BANK(Music_Gym)                           ; PEWTER_GYM
+	db MUSIC_CITIES1, BANK(Music_Cities1)                   ; PEWTER_NIDORAN_HOUSE
+	db MUSIC_POKECENTER, BANK(Music_Pokecenter)             ; PEWTER_MART
+	db MUSIC_CITIES1, BANK(Music_Cities1)                   ; PEWTER_SPEECH_HOUSE
+	db MUSIC_POKECENTER, BANK(Music_Pokecenter)             ; PEWTER_POKECENTER
+	db MUSIC_POKECENTER, BANK(Music_Pokecenter)             ; MT_MOON_POKECENTER
+	db MUSIC_DUNGEON3, BANK(Music_Dungeon3)                 ; MT_MOON_1F
+	db MUSIC_DUNGEON3, BANK(Music_Dungeon3)                 ; MT_MOON_B1F
+	db MUSIC_DUNGEON3, BANK(Music_Dungeon3)                 ; MT_MOON_B2F
+	db MUSIC_ROUTES3, BANK(Music_Routes3)                   ; MT_MOON_SQUARE ; marcelnote - new location
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; CERULEAN_POKECENTER
 	db MUSIC_CITIES2, BANK(Music_Cities2) ; CERULEAN_TRASHED_HOUSE
 	db MUSIC_CITIES2, BANK(Music_Cities2) ; CERULEAN_TRADE_HOUSE
