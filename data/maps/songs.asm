@@ -73,7 +73,7 @@ MapSongBanks::
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; CERULEAN_POKECENTER
 	db MUSIC_CITIES2, BANK(Music_Cities2)                  ; CERULEAN_TRASHED_HOUSE
 	db MUSIC_CITIES2, BANK(Music_Cities2)                  ; CERULEAN_TRADE_HOUSE
-	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; CERULEAN_BADGE_HOUSE
+	db MUSIC_CITIES2, BANK(Music_Cities2)                  ; CERULEAN_BADGE_HOUSE ; marcelnote - changed from MUSIC_CITIES1
 	db MUSIC_CITIES2, BANK(Music_Cities2)                  ; BIKE_SHOP
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; CERULEAN_MART
 	db MUSIC_GYM, BANK(Music_Gym)                          ; CERULEAN_GYM
@@ -129,7 +129,7 @@ MapSongBanks::
 	db MUSIC_POKEMON_TOWER, BANK(Music_PokemonTower)       ; POKEMON_TOWER_6F
 	db MUSIC_POKEMON_TOWER, BANK(Music_PokemonTower)       ; POKEMON_TOWER_7F
 	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; ROUTE_12_GATE                ; marcelnote - merged ROUTE_12_GATE floors
-	db MUSIC_CITIES2, BANK(Music_Cities2)                  ; ROUTE_12_FISHING_GUIDE_HOUSE ; marcelnote - from Super Rod to Fishing Guide
+	db MUSIC_CITIES2, BANK(Music_Cities2)                  ; ROUTE_12_FISHING_GUIDE_HOUSE ; marcelnote - from Super Rod to Fishing Guide, chanegd from MUSIC_CELADON
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; CELADON_POKECENTER
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; CELADON_MART_1F2F3F          ; marcelnote - merged 1F 2F 3F
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; CELADON_MART_4F5F6F          ; marcelnote - merged 4F 5F + new 6F
