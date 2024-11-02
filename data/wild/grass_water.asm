@@ -39,27 +39,27 @@ WildDataPointers:
 	dw Route24WildMons         ; ROUTE_24
 	dw Route25WildMons         ; ROUTE_25
 	dw Route28WildMons         ; ROUTE_28 ; marcelnote - new location
-	dw NothingWildMons         ; REDS_YELLOWS_HOUSE
-	dw NothingWildMons         ; BLUES_AIDES_HOUSES
-	dw NothingWildMons         ; OAKS_LAB
-	dw NothingWildMons         ; VIRIDIAN_POKECENTER
-	dw NothingWildMons         ; VIRIDIAN_MART
-	dw NothingWildMons         ; VIRIDIAN_SCHOOL_HOUSE
-	dw NothingWildMons         ; VIRIDIAN_NICKNAME_HOUSE
-	dw NothingWildMons         ; VIRIDIAN_GYM
-	dw NothingWildMons         ; VIRIDIAN_FOREST_SOUTH_GATE
-	dw NothingWildMons         ; ROUTE_2_GATE
-	dw ViridianForestWildMons  ; VIRIDIAN_FOREST
-	dw NothingWildMons         ; VIRIDIAN_FOREST_NORTH_GATE
-	dw NothingWildMons         ; ROUTE_2_TRADE_HOUSE
-	dw NothingWildMons         ; DIGLETTS_CAVE_ROUTE_2
-	dw NothingWildMons         ; PEWTER_POKECENTER
-	dw NothingWildMons         ; MUSEUM_1F
-	dw NothingWildMons         ; MUSEUM_2F
-	dw NothingWildMons         ; PEWTER_NIDORAN_HOUSE
-	dw NothingWildMons         ; PEWTER_MART
-	dw NothingWildMons         ; PEWTER_SPEECH_HOUSE
-	dw NothingWildMons         ; PEWTER_GYM
+	dw NothingWildMons                 ; REDS_YELLOWS_HOUSE
+	dw NothingWildMons                 ; BLUES_AIDES_HOUSES
+	dw NothingWildMons                 ; OAKS_LAB
+	dw NothingWildMons                 ; VIRIDIAN_POKECENTER
+	dw NothingWildMons                 ; VIRIDIAN_MART
+	dw NothingWildMons                 ; VIRIDIAN_SCHOOL_HOUSE
+	dw NothingWildMons                 ; VIRIDIAN_NICKNAME_HOUSE
+	dw NothingWildMons                 ; VIRIDIAN_GYM
+	dw NothingWildMons                 ; VIRIDIAN_FOREST_SOUTH_GATE
+	dw NothingWildMons                 ; ROUTE_2_GATE
+	dw ViridianForestWildMons          ; VIRIDIAN_FOREST
+	dw NothingWildMons                 ; VIRIDIAN_FOREST_NORTH_GATE
+	dw NothingWildMons                 ; ROUTE_2_TRADE_HOUSE
+	dw NothingWildMons                 ; DIGLETTS_CAVE_ROUTE_2
+	dw NothingWildMons                 ; PEWTER_POKECENTER
+	dw NothingWildMons                 ; MUSEUM_1F
+	dw NothingWildMons                 ; MUSEUM_2F
+	dw NothingWildMons                 ; PEWTER_NIDORAN_HOUSE
+	dw NothingWildMons                 ; PEWTER_MART
+	dw NothingWildMons                 ; PEWTER_SPEECH_HOUSE
+	dw NothingWildMons                 ; PEWTER_GYM
 	dw NothingWildMons                 ; MT_MOON_POKECENTER
 	dw MtMoon1FWildMons                ; MT_MOON_1F
 	dw MtMoonB1FWildMons               ; MT_MOON_B1F
@@ -87,13 +87,6 @@ WildDataPointers:
 	dw NothingWildMons                 ; UNDERGROUND_PATH_ROUTE_8
 	dw NothingWildMons                 ; UNDERGROUND_PATH_NORTH_SOUTH
 	dw NothingWildMons                 ; UNDERGROUND_PATH_WEST_EAST
-	dw NothingWildMons                 ; ROCK_TUNNEL_POKECENTER
-	dw RockTunnel1FWildMons            ; ROCK_TUNNEL_1F
-	dw RockTunnelB1FWildMons           ; ROCK_TUNNEL_B1F
-	dw PowerPlantWildMons              ; POWER_PLANT
-	dw NothingWildMons                 ; ROUTE_11_GATE
-	dw NothingWildMons                 ; DIGLETTS_CAVE_ROUTE_11
-	dw NothingWildMons                 ; ROUTE_12_GATE
 	dw NothingWildMons                 ; VERMILION_POKECENTER
 	dw NothingWildMons                 ; VERMILION_GOOD_ROD_HOUSE
 	dw NothingWildMons                 ; POKEMON_FAN_CLUB
@@ -113,125 +106,132 @@ WildDataPointers:
 	dw NothingWildMons                 ; SS_ANNE_2F_ROOMS
 	dw NothingWildMons                 ; SS_ANNE_B1F_ROOMS
 	dw DiglettsCaveWildMons            ; DIGLETTS_CAVE
+	dw NothingWildMons                 ; DIGLETTS_CAVE_ROUTE_11
+	dw NothingWildMons                 ; ROUTE_11_GATE
+	dw NothingWildMons                 ; ROCK_TUNNEL_POKECENTER
+	dw RockTunnel1FWildMons            ; ROCK_TUNNEL_1F
+	dw RockTunnelB1FWildMons           ; ROCK_TUNNEL_B1F
+	dw PowerPlantWildMons              ; POWER_PLANT
+	dw NothingWildMons                 ; LAVENDER_POKECENTER_MART
+	dw NothingWildMons                 ; MR_FUJIS_HOUSE
+	dw NothingWildMons                 ; NAME_RATERS_HOUSE
+	dw NothingWildMons                 ; LAVENDER_CUBONE_HOUSE
+	dw PokemonTower1FWildMons          ; POKEMON_TOWER_1F ; marcelnote - to replace with NothingWildMons?
+	dw PokemonTower2FWildMons          ; POKEMON_TOWER_2F
+	dw PokemonTower3FWildMons          ; POKEMON_TOWER_3F
+	dw PokemonTower4FWildMons          ; POKEMON_TOWER_4F
+	dw PokemonTower5FWildMons          ; POKEMON_TOWER_5F
+	dw PokemonTower6FWildMons          ; POKEMON_TOWER_6F
+	dw PokemonTower7FWildMons          ; POKEMON_TOWER_7F
+	dw NothingWildMons                 ; ROUTE_12_GATE
 	dw NothingWildMons                 ; CELADON_MART_1F2F3F
 	dw NothingWildMons                 ; CELADON_MART_4F5F6F
 	dw NothingWildMons                 ; CELADON_MART_ROOF
 	dw NothingWildMons                 ; CELADON_MART_ELEVATOR
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons              ; LAVENDER_POKECENTER_MART
-	dw NothingWildMons              ; MR_FUJIS_HOUSE
-	dw NothingWildMons              ; NAME_RATERS_HOUSE
-	dw NothingWildMons              ; LAVENDER_CUBONE_HOUSE
-	dw PokemonTower1FWildMons
-	dw PokemonTower2FWildMons
-	dw PokemonTower3FWildMons
-	dw PokemonTower4FWildMons
-	dw PokemonTower5FWildMons
-	dw PokemonTower6FWildMons
-	dw PokemonTower7FWildMons
-	dw SeafoamIslands1FWildMons
-	dw SeafoamIslandsB1FWildMons
-	dw SeafoamIslandsB2FWildMons
-	dw SeafoamIslandsB3FWildMons
-	dw SeafoamIslandsB4FWildMons
-	dw NothingWildMons
-	dw CeladonGroveWildMons ; $B9 ; marcelnote - Celadon Grove
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons              ; SAFFRON_POKECENTER
-	dw NothingWildMons              ; COPYCATS_HOUSE_1F
-	dw NothingWildMons              ; COPYCATS_HOUSE_2F
-	dw NothingWildMons              ; FIGHTING_DOJO
-	dw NothingWildMons              ; SAFFRON_PIDGEY_HOUSE
-	dw NothingWildMons              ; SAFFRON_MART
-	dw NothingWildMons              ; MR_PSYCHICS_HOUSE
-	dw NothingWildMons              ; SAFFRON_GYM
-	dw NothingWildMons              ; POKEMON_ACADEMY_1F2F
-	dw NothingWildMons              ; POKEMON_ACADEMY_3F4F
-	dw NothingWildMons              ; SILPH_CO_1F
-	dw NothingWildMons              ; SILPH_CO_2F
-	dw NothingWildMons              ; SILPH_CO_3F
-	dw NothingWildMons              ; SILPH_CO_4F
-	dw NothingWildMons              ; SILPH_CO_5F
-	dw NothingWildMons              ; SILPH_CO_6F
-	dw NothingWildMons              ; SILPH_CO_7F
-	dw NothingWildMons              ; SILPH_CO_8F
-	dw NothingWildMons              ; SILPH_CO_9F
-	dw NothingWildMons              ; SILPH_CO_10F
-	dw NothingWildMons              ; SILPH_CO_11F
-	dw NothingWildMons              ; SILPH_CO_ELEVATOR
-	dw NothingWildMons              ; FUCHSIA_POKECENTER
-	dw NothingWildMons              ; FUCHSIA_MART
-	dw NothingWildMons              ; FUCHSIA_BILLS_GRANDPAS_HOUSE
-	dw NothingWildMons              ; WARDENS_HOUSE
-	dw NothingWildMons              ; FUCHSIA_MEETING_ROOM
-	dw NothingWildMons              ; FUCHSIA_SUPER_ROD_HOUSE
-	dw NothingWildMons              ; FUCHSIA_MOVE_DELETER_HOUSE
-	dw NothingWildMons              ; FUCHSIA_GYM
-	dw NothingWildMons              ; SAFARI_ZONE_GATE
-	dw SafariZoneEastWildMons       ; SAFARI_ZONE_EAST
-	dw SafariZoneNorthWildMons      ; SAFARI_ZONE_NORTH
-	dw SafariZoneWestWildMons       ; SAFARI_ZONE_WEST
-	dw SafariZoneCenterWildMons     ; SAFARI_ZONE_CENTER
-	dw NothingWildMons              ; SAFARI_ZONE_CENTER_REST_HOUSE
-	dw NothingWildMons              ; SAFARI_ZONE_SECRET_HOUSE
-	dw NothingWildMons              ; SAFARI_ZONE_WEST_REST_HOUSE
-	dw NothingWildMons              ; SAFARI_ZONE_EAST_REST_HOUSE
-	dw NothingWildMons              ; SAFARI_ZONE_NORTH_REST_HOUSE
-	dw NothingWildMons              ; CINNABAR_POKECENTER_MART
-	dw NothingWildMons              ; CINNABAR_LAB
-	dw NothingWildMons              ; CINNABAR_LAB_TRADE_ROOM
-	dw NothingWildMons              ; CINNABAR_LAB_METRONOME_ROOM
-	dw NothingWildMons              ; CINNABAR_LAB_FOSSIL_ROOM
-	dw NothingWildMons              ; CINNABAR_GYM
-	dw PokemonMansion1FWildMons     ; POKEMON_MANSION_1F
-	dw PokemonMansion2FWildMons     ; POKEMON_MANSION_2F
-	dw PokemonMansion3FWildMons     ; POKEMON_MANSION_3F
-	dw PokemonMansionB1FWildMons    ; POKEMON_MANSION_B1F
-	dw CinnabarVolcano1FB1FWildMons ; CINNABAR_VOLCANO_1FB1F       ; marcelnote - new location
-	dw CinnabarVolcano2FWildMons    ; CINNABAR_VOLCANO_2F          ; marcelnote - new location
-	dw NothingWildMons              ; MANDARIN_POKECENTER_MART     ; marcelnote - new location
-	dw NothingWildMons              ; MANDARIN_SURF_SHOP           ; marcelnote - new location
-	dw NothingWildMons              ; MANDARIN_HOTEL               ; marcelnote - new location
-	dw NothingWildMons              ; MANDARIN_SILPH_CO            ; marcelnote - new location
-	dw SilphFactory1FWildMons       ; SILPH_FACTORY_1F             ; marcelnote - new location
-	dw NothingWildMons              ; SILPH_FACTORY_2F             ; marcelnote - new location
-	dw NothingWildMons              ; ROUTE_22_OLD_ROD_HOUSE
-	dw NothingWildMons              ; ROUTE_22_GATE
-	dw NothingWildMons              ; ROUTE_22_GATE_3F
-	dw MtSilver1FWildMons           ; MT_SILVER_1F          ; marcelnote - new location
-	dw MtSilver2FWildMons           ; MT_SILVER_2F          ; marcelnote - new location
-	dw NothingWildMons              ; MT_SILVER_3F          ; marcelnote - new location
-	dw VictoryRoad1FWildMons        ; VICTORY_ROAD_1F
-	dw VictoryRoad2FWildMons        ; VICTORY_ROAD_2F
-	dw VictoryRoad3FWildMons        ; VICTORY_ROAD_3F
-	dw NothingWildMons              ; INDIGO_PLATEAU_LOBBY
-	dw NothingWildMons              ; LORELEIS_ROOM
-	dw NothingWildMons              ; BRUNOS_ROOM
-	dw NothingWildMons              ; AGATHAS_ROOM
-	dw NothingWildMons              ; LANCES_ROOM
-	dw NothingWildMons              ; CHAMPIONS_ROOM
-	dw NothingWildMons              ; HALL_OF_FAME
-	dw NothingWildMons              ; TRADE_CENTER
-	dw NothingWildMons              ; COLOSSEUM
+	dw NothingWildMons                 ; CELADON_MANSION
+	dw NothingWildMons                 ; CELADON_MANSION_ROOF
+	dw NothingWildMons                 ; CELADON_MANSION_ROOF_HOUSE
+	dw NothingWildMons                 ; CELADON_POKECENTER
+	dw NothingWildMons                 ; CELADON_GYM
+	dw NothingWildMons                 ; GAME_CORNER
+	dw NothingWildMons                 ; GAME_CORNER_PRIZE_ROOM
+	dw NothingWildMons                 ; CELADON_DINER
+	dw NothingWildMons                 ; CELADON_CHIEF_HOUSE
+	dw NothingWildMons                 ; CELADON_HOTEL
+	dw SeafoamIslands1FWildMons        ; SEAFOAM_ISLANDS_1F
+	dw SeafoamIslandsB1FWildMons       ; SEAFOAM_ISLANDS_B1F
+	dw SeafoamIslandsB2FWildMons       ; SEAFOAM_ISLANDS_B2F
+	dw SeafoamIslandsB3FWildMons       ; SEAFOAM_ISLANDS_B3F
+	dw SeafoamIslandsB4FWildMons       ; SEAFOAM_ISLANDS_B4F
+	dw NothingWildMons                 ; ROUTE_15_GATE
+	dw CeladonGroveWildMons            ; CELADON_GROVE ; marcelnote - new location
+	dw NothingWildMons                 ; ROUTE_16_GATE
+	dw NothingWildMons                 ; CELADON_GROVE_SOUTH_GATE
+	dw NothingWildMons                 ; ROUTE_16_FLY_HOUSE
+	dw NothingWildMons                 ; ROUTE_12_FISHING_GUIDE_HOUSE
+	dw NothingWildMons                 ; ROUTE_18_GATE
+	dw NothingWildMons                 ; CELADON_GROVE_NORTH_GATE
+	dw NothingWildMons                 ; ROCKET_HIDEOUT_B1F
+	dw NothingWildMons                 ; ROCKET_HIDEOUT_B2F
+	dw NothingWildMons                 ; ROCKET_HIDEOUT_B3F
+	dw NothingWildMons                 ; ROCKET_HIDEOUT_B4F
+	dw NothingWildMons                 ; ROCKET_HIDEOUT_ELEVATOR
+	dw NothingWildMons                 ; SAFFRON_POKECENTER
+	dw NothingWildMons                 ; COPYCATS_HOUSE_1F
+	dw NothingWildMons                 ; COPYCATS_HOUSE_2F
+	dw NothingWildMons                 ; FIGHTING_DOJO
+	dw NothingWildMons                 ; SAFFRON_PIDGEY_HOUSE
+	dw NothingWildMons                 ; SAFFRON_MART
+	dw NothingWildMons                 ; MR_PSYCHICS_HOUSE
+	dw NothingWildMons                 ; SAFFRON_GYM
+	dw NothingWildMons                 ; POKEMON_ACADEMY_1F2F
+	dw NothingWildMons                 ; POKEMON_ACADEMY_3F4F
+	dw NothingWildMons                 ; SILPH_CO_1F
+	dw NothingWildMons                 ; SILPH_CO_2F
+	dw NothingWildMons                 ; SILPH_CO_3F
+	dw NothingWildMons                 ; SILPH_CO_4F
+	dw NothingWildMons                 ; SILPH_CO_5F
+	dw NothingWildMons                 ; SILPH_CO_6F
+	dw NothingWildMons                 ; SILPH_CO_7F
+	dw NothingWildMons                 ; SILPH_CO_8F
+	dw NothingWildMons                 ; SILPH_CO_9F
+	dw NothingWildMons                 ; SILPH_CO_10F
+	dw NothingWildMons                 ; SILPH_CO_11F
+	dw NothingWildMons                 ; SILPH_CO_ELEVATOR
+	dw NothingWildMons                 ; FUCHSIA_POKECENTER
+	dw NothingWildMons                 ; FUCHSIA_MART
+	dw NothingWildMons                 ; FUCHSIA_BILLS_GRANDPAS_HOUSE
+	dw NothingWildMons                 ; WARDENS_HOUSE
+	dw NothingWildMons                 ; FUCHSIA_MEETING_ROOM
+	dw NothingWildMons                 ; FUCHSIA_SUPER_ROD_HOUSE
+	dw NothingWildMons                 ; FUCHSIA_MOVE_DELETER_HOUSE
+	dw NothingWildMons                 ; FUCHSIA_GYM
+	dw NothingWildMons                 ; SAFARI_ZONE_GATE
+	dw SafariZoneEastWildMons          ; SAFARI_ZONE_EAST
+	dw SafariZoneNorthWildMons         ; SAFARI_ZONE_NORTH
+	dw SafariZoneWestWildMons          ; SAFARI_ZONE_WEST
+	dw SafariZoneCenterWildMons        ; SAFARI_ZONE_CENTER
+	dw NothingWildMons                 ; SAFARI_ZONE_CENTER_REST_HOUSE
+	dw NothingWildMons                 ; SAFARI_ZONE_SECRET_HOUSE
+	dw NothingWildMons                 ; SAFARI_ZONE_WEST_REST_HOUSE
+	dw NothingWildMons                 ; SAFARI_ZONE_EAST_REST_HOUSE
+	dw NothingWildMons                 ; SAFARI_ZONE_NORTH_REST_HOUSE
+	dw NothingWildMons                 ; CINNABAR_POKECENTER_MART
+	dw NothingWildMons                 ; CINNABAR_LAB
+	dw NothingWildMons                 ; CINNABAR_LAB_TRADE_ROOM
+	dw NothingWildMons                 ; CINNABAR_LAB_METRONOME_ROOM
+	dw NothingWildMons                 ; CINNABAR_LAB_FOSSIL_ROOM
+	dw NothingWildMons                 ; CINNABAR_GYM
+	dw PokemonMansion1FWildMons        ; POKEMON_MANSION_1F
+	dw PokemonMansion2FWildMons        ; POKEMON_MANSION_2F
+	dw PokemonMansion3FWildMons        ; POKEMON_MANSION_3F
+	dw PokemonMansionB1FWildMons       ; POKEMON_MANSION_B1F
+	dw CinnabarVolcano1FB1FWildMons    ; CINNABAR_VOLCANO_1FB1F       ; marcelnote - new location
+	dw CinnabarVolcano2FWildMons       ; CINNABAR_VOLCANO_2F          ; marcelnote - new location
+	dw NothingWildMons                 ; MANDARIN_POKECENTER_MART     ; marcelnote - new location
+	dw NothingWildMons                 ; MANDARIN_SURF_SHOP           ; marcelnote - new location
+	dw NothingWildMons                 ; MANDARIN_HOTEL               ; marcelnote - new location
+	dw NothingWildMons                 ; MANDARIN_SILPH_CO            ; marcelnote - new location
+	dw SilphFactory1FWildMons          ; SILPH_FACTORY_1F             ; marcelnote - new location
+	dw NothingWildMons                 ; SILPH_FACTORY_2F             ; marcelnote - new location
+	dw NothingWildMons                 ; ROUTE_22_OLD_ROD_HOUSE
+	dw NothingWildMons                 ; ROUTE_22_GATE
+	dw NothingWildMons                 ; ROUTE_22_GATE_3F
+	dw MtSilver1FWildMons              ; MT_SILVER_1F          ; marcelnote - new location
+	dw MtSilver2FWildMons              ; MT_SILVER_2F          ; marcelnote - new location
+	dw NothingWildMons                 ; MT_SILVER_3F          ; marcelnote - new location
+	dw VictoryRoad1FWildMons           ; VICTORY_ROAD_1F
+	dw VictoryRoad2FWildMons           ; VICTORY_ROAD_2F
+	dw VictoryRoad3FWildMons           ; VICTORY_ROAD_3F
+	dw NothingWildMons                 ; INDIGO_PLATEAU_LOBBY
+	dw NothingWildMons                 ; LORELEIS_ROOM
+	dw NothingWildMons                 ; BRUNOS_ROOM
+	dw NothingWildMons                 ; AGATHAS_ROOM
+	dw NothingWildMons                 ; LANCES_ROOM
+	dw NothingWildMons                 ; CHAMPIONS_ROOM
+	dw NothingWildMons                 ; HALL_OF_FAME
+	dw NothingWildMons                 ; TRADE_CENTER
+	dw NothingWildMons                 ; COLOSSEUM
 	assert_table_length NUM_MAPS
 	dw -1 ; end
 
