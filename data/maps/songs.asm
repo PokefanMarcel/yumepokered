@@ -42,7 +42,7 @@ MapSongBanks::
 	db MUSIC_ROUTES2, BANK(Music_Routes2)              ; ROUTE_24
 	db MUSIC_ROUTES2, BANK(Music_Routes2)              ; ROUTE_25
 	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; ROUTE_28 ; marcelnote - new location
-	; Internal maps
+	; Indoor maps
 	db MUSIC_PALLET_TOWN, BANK(Music_PalletTown)           ; REDS_YELLOWS_HOUSES ; marcelnote - was REDS_HOUSE_1F
 	db MUSIC_PALLET_TOWN, BANK(Music_PalletTown)           ; BLUES_HOUSE
 	db MUSIC_OAKS_LAB, BANK(Music_OaksLab)                 ; OAKS_LAB
@@ -129,6 +129,7 @@ MapSongBanks::
 	db MUSIC_POKEMON_TOWER, BANK(Music_PokemonTower)       ; POKEMON_TOWER_6F
 	db MUSIC_POKEMON_TOWER, BANK(Music_PokemonTower)       ; POKEMON_TOWER_7F
 	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; ROUTE_12_GATE                ; marcelnote - merged ROUTE_12_GATE floors
+	db MUSIC_CITIES2, BANK(Music_Cities2)                  ; ROUTE_12_FISHING_GUIDE_HOUSE ; marcelnote - from Super Rod to Fishing Guide
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; CELADON_POKECENTER
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; CELADON_MART_1F2F3F          ; marcelnote - merged 1F 2F 3F
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; CELADON_MART_4F5F6F          ; marcelnote - merged 4F 5F + new 6F
@@ -153,7 +154,6 @@ MapSongBanks::
 	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; ROUTE_15_GATE                ; marcelnote - merged ROUTE_15_GATE floors
 	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; ROUTE_16_GATE                ; marcelnote - merged ROUTE_16_GATE floors
 	db MUSIC_CELADON, BANK(Music_Celadon)                  ; ROUTE_16_FLY_HOUSE
-	db MUSIC_CELADON, BANK(Music_Celadon)                  ; ROUTE_12_FISHING_GUIDE_HOUSE ; marcelnote - from Super Rod to Fishing Guide
 	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; ROUTE_18_GATE                ; marcelnote - merged ROUTE_18_GATE floors
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; SAFFRON_POKECENTER
 	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; COPYCATS_HOUSE_1F
