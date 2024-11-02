@@ -88,13 +88,6 @@ MapHeaderBanks::
 	db BANK(UndergroundPathRoute8_h)
 	db BANK(UndergroundPathNorthSouth_h)
 	db BANK(UndergroundPathWestEast_h)
-	db BANK(RockTunnelPokecenter_h)
-	db BANK(RockTunnel1F_h)
-	db BANK(RockTunnelB1F_h)
-	db BANK(PowerPlant_h)
-	db BANK(Route11Gate_h) ; marcelnote - merged Route11Gate floors
-	db BANK(DiglettsCaveRoute11_h)
-	db BANK(Route12Gate_h) ; marcelnote - merged Route12Gate floors
 	db BANK(VermilionPokecenter_h)
 	db BANK(VermilionGoodRodHouse_h) ; marcelnote - from Old to Good Rod
 	db BANK(PokemonFanClub_h)
@@ -114,6 +107,24 @@ MapHeaderBanks::
 	db BANK(SSAnne2FRooms_h)
 	db BANK(SSAnneB1FRooms_h)
 	db BANK(DiglettsCave_h)
+	db BANK(DiglettsCaveRoute11_h)
+	db BANK(Route11Gate_h) ; marcelnote - merged Route11Gate floors
+	db BANK(RockTunnelPokecenter_h)
+	db BANK(RockTunnel1F_h)
+	db BANK(RockTunnelB1F_h)
+	db BANK(PowerPlant_h)
+	db BANK(LavenderPokecenterMart_h); marcelnote - merged Lavender Pokecenter and Mart
+	db BANK(MrFujisHouse_h)
+	db BANK(NameRatersHouse_h)
+	db BANK(LavenderCuboneHouse_h)
+	db BANK(PokemonTower1F_h)
+	db BANK(PokemonTower2F_h)
+	db BANK(PokemonTower3F_h)
+	db BANK(PokemonTower4F_h)
+	db BANK(PokemonTower5F_h)
+	db BANK(PokemonTower6F_h)
+	db BANK(PokemonTower7F_h)
+	db BANK(Route12Gate_h) ; marcelnote - merged Route12Gate floors
 	db BANK(CeladonMart1F2F3F_h) ; marcelnote - merged 1F 2F 3F
 	db BANK(CeladonMart4F5F6F_h) ; marcelnote - merged 4F 5F + new 6F
 	db BANK(CeladonMartRoof_h)
@@ -128,17 +139,6 @@ MapHeaderBanks::
 	db BANK(CeladonDiner_h)
 	db BANK(CeladonChiefHouse_h)
 	db BANK(CeladonHotel_h)
-	db BANK(LavenderPokecenterMart_h); marcelnote - merged Lavender Pokecenter and Mart
-	db BANK(MrFujisHouse_h)
-	db BANK(NameRatersHouse_h)
-	db BANK(LavenderCuboneHouse_h)
-	db BANK(PokemonTower1F_h)
-	db BANK(PokemonTower2F_h)
-	db BANK(PokemonTower3F_h)
-	db BANK(PokemonTower4F_h)
-	db BANK(PokemonTower5F_h)
-	db BANK(PokemonTower6F_h)
-	db BANK(PokemonTower7F_h)
 	db BANK(SeafoamIslands1F_h)
 	db BANK(SeafoamIslandsB1F_h)
 	db BANK(SeafoamIslandsB2F_h)
