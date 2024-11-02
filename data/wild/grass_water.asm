@@ -65,13 +65,13 @@ WildDataPointers:
 	dw MtMoonB1FWildMons               ; MT_MOON_B1F
 	dw MtMoonB2FWildMons               ; MT_MOON_B2F
 	dw NothingWildMons                 ; MT_MOON_SQUARE
+	dw NothingWildMons                 ; CERULEAN_POKECENTER
 	dw NothingWildMons                 ; CERULEAN_TRASHED_HOUSE
 	dw NothingWildMons                 ; CERULEAN_TRADE_HOUSE
 	dw NothingWildMons                 ; CERULEAN_BADGE_HOUSE
-	dw NothingWildMons                 ; CERULEAN_POKECENTER
-	dw NothingWildMons                 ; CERULEAN_GYM
 	dw NothingWildMons                 ; BIKE_SHOP
 	dw NothingWildMons                 ; CERULEAN_MART
+	dw NothingWildMons                 ; CERULEAN_GYM
 	dw CeruleanCave1FWildMons          ; CERULEAN_CAVE_1F
 	dw CeruleanCave2FWildMons          ; CERULEAN_CAVE_2F
 	dw CeruleanCaveB1FWildMons         ; CERULEAN_CAVE_B1F
@@ -90,32 +90,35 @@ WildDataPointers:
 	dw RockTunnel1FWildMons            ; ROCK_TUNNEL_1F
 	dw RockTunnelB1FWildMons           ; ROCK_TUNNEL_B1F
 	dw PowerPlantWildMons              ; POWER_PLANT
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons              ; UNDERGROUND_PATH_NORTH_SOUTH
-	dw NothingWildMons              ; UNDERGROUND_PATH_WEST_EAST
-	dw NothingWildMons              ; CELADON_MART_1F2F3F
-	dw NothingWildMons              ; CELADON_MART_4F5F6F
-	dw NothingWildMons              ; CELADON_MART_ROOF
-	dw NothingWildMons              ; CELADON_MART_ELEVATOR
+	dw NothingWildMons                 ; ROUTE_11_GATE
+	dw NothingWildMons                 ; DIGLETTS_CAVE_ROUTE_11
+	dw NothingWildMons                 ; ROUTE_12_GATE
+	dw NothingWildMons                 ; BILLS_HOUSE
+	dw NothingWildMons                 ; VERMILION_POKECENTER
+	dw NothingWildMons                 ; VERMILION_GOOD_ROD_HOUSE
+	dw NothingWildMons                 ; POKEMON_FAN_CLUB
+	dw NothingWildMons                 ; VERMILION_MART
+	dw NothingWildMons                 ; VERMILION_PIDGEY_HOUSE
+	dw NothingWildMons                 ; VERMILION_TRADE_HOUSE
+	dw NothingWildMons                 ; VERMILION_GYM
+	dw NothingWildMons                 ; VERMILION_DOCK
+	dw NothingWildMons                 ; SS_ANNE_1F
+	dw NothingWildMons                 ; SS_ANNE_2F
+	dw NothingWildMons                 ; SS_ANNE_3F
+	dw NothingWildMons                 ; SS_ANNE_B1F
+	dw NothingWildMons                 ; SS_ANNE_BOW
+	dw NothingWildMons                 ; SS_ANNE_KITCHEN
+	dw NothingWildMons                 ; SS_ANNE_CAPTAINS_ROOM
+	dw NothingWildMons                 ; SS_ANNE_1F_ROOMS
+	dw NothingWildMons                 ; SS_ANNE_2F_ROOMS
+	dw NothingWildMons                 ; SS_ANNE_B1F_ROOMS
+	dw DiglettsCaveWildMons            ; DIGLETTS_CAVE
+	dw NothingWildMons                 ; UNDERGROUND_PATH_NORTH_SOUTH
+	dw NothingWildMons                 ; UNDERGROUND_PATH_WEST_EAST
+	dw NothingWildMons                 ; CELADON_MART_1F2F3F
+	dw NothingWildMons                 ; CELADON_MART_4F5F6F
+	dw NothingWildMons                 ; CELADON_MART_ROOF
+	dw NothingWildMons                 ; CELADON_MART_ELEVATOR
 	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons
@@ -143,7 +146,6 @@ WildDataPointers:
 	dw SeafoamIslandsB3FWildMons
 	dw SeafoamIslandsB4FWildMons
 	dw NothingWildMons
-	dw NothingWildMons
 	dw CeladonGroveWildMons ; $B9 ; marcelnote - Celadon Grove
 	dw NothingWildMons
 	dw NothingWildMons
@@ -151,8 +153,6 @@ WildDataPointers:
 	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons
-	dw NothingWildMons
-	dw DiglettsCaveWildMons
 	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons

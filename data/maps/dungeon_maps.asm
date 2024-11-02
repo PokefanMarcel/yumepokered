@@ -8,7 +8,6 @@
 DungeonMaps1:
 	db VIRIDIAN_FOREST
 	; marcelnote - fix for aforementioned bug and adding new maps
-	db DIGLETTS_CAVE
 	db CELADON_GROVE
 	db -1 ; end
 
@@ -17,8 +16,8 @@ DungeonMaps1:
 DungeonMaps2: ; marcelnote - modified to fix aforementioned bug and account for new maps
 	; all MT_MOON maps
 	db MT_MOON_1F, MT_MOON_B2F
-	; all SS_ANNE maps
-	db SS_ANNE_1F, SS_ANNE_B1F_ROOMS
+	; all SS_ANNE maps, DIGLETTS_CAVE
+	db SS_ANNE_1F, DIGLETTS_CAVE
 	; LANCES_ROOM, CHAMPIONS_ROOM, and HALL_OF_FAME
 	db LANCES_ROOM, HALL_OF_FAME
 	; all POKEMON_TOWER maps and Lavender Town buildings
