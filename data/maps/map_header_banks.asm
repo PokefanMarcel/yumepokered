@@ -126,6 +126,7 @@ MapHeaderBanks::
 	db BANK(PokemonTower6F_h)
 	db BANK(PokemonTower7F_h)
 	db BANK(Route12Gate_h) ; marcelnote - merged Route12Gate floors
+	db BANK(Route12FishingGuideHouse_h) ; marcelnote - from Super Rod to Fishing Guide
 	db BANK(CeladonPokecenter_h)
 	db BANK(CeladonMart1F2F3F_h) ; marcelnote - merged 1F 2F 3F
 	db BANK(CeladonMart4F5F6F_h) ; marcelnote - merged 4F 5F + new 6F
@@ -150,7 +151,6 @@ MapHeaderBanks::
 	db BANK(Route15Gate_h) ; marcelnote - merged Route15Gate floors
 	db BANK(Route16Gate_h) ; marcelnote - merged Route16Gate floors
 	db BANK(Route16FlyHouse_h)
-	db BANK(Route12FishingGuideHouse_h) ; marcelnote - from Super Rod to Fishing Guide
 	db BANK(Route18Gate_h) ; marcelnote - merged Route18Gate floors
 	db BANK(SaffronPokecenter_h)
 	db BANK(CopycatsHouse1F_h)
