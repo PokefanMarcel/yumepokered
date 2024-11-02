@@ -22,7 +22,7 @@ DungeonMaps2: ; marcelnote - modified to fix aforementioned bug and account for 
 	; LANCES_ROOM, CHAMPIONS_ROOM, and HALL_OF_FAME
 	db LANCES_ROOM, HALL_OF_FAME
 	; all POKEMON_TOWER maps and Lavender Town buildings
-	db LAVENDER_POKECENTER_MART, LAVENDER_CUBONE_HOUSE
+	db LAVENDER_POKECENTER_MART, POKEMON_TOWER_7F
 	; all SEAFOAM_ISLANDS maps
 	db SEAFOAM_ISLANDS_1F, SEAFOAM_ISLANDS_B4F
 	; all ROCKET_HIDEOUT maps except ELEVATOR
@@ -30,7 +30,7 @@ DungeonMaps2: ; marcelnote - modified to fix aforementioned bug and account for 
 	; all SAFARI_ZONE outdoor maps
 	db SAFARI_ZONE_EAST, SAFARI_ZONE_CENTER
 	; all CERULEAN_CAVE maps
-	db CERULEAN_CAVE_2F, CERULEAN_CAVE_1F
+	db CERULEAN_CAVE_1F, CERULEAN_CAVE_B1F
 	; all POKEMON_MANSION and CINNABAR_VOLCANO maps
 	db POKEMON_MANSION_1F, CINNABAR_VOLCANO_2F
 	; all SILPH_CO maps except ELEVATOR and 1F ; why not include 1F?

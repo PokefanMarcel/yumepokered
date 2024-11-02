@@ -68,11 +68,14 @@ MapHeaderPointers::
 	dw MtMoonSquare_h ; $E7 ; marcelnote - new location
 	dw CeruleanTrashedHouse_h
 	dw CeruleanTradeHouse_h
+	dw CeruleanBadgeHouse_h
 	dw CeruleanPokecenter_h
 	dw CeruleanGym_h
 	dw BikeShop_h
 	dw CeruleanMart_h
-	dw CeruleanTrashedHouse_h ; CERULEAN_TRASHED_HOUSE_COPY
+	dw CeruleanCave1F_h
+	dw CeruleanCave2F_h
+	dw CeruleanCaveB1F_h
 	dw Route5Gate_h
 	dw UndergroundPathRoute5_h
 	dw Daycare_h
@@ -125,6 +128,9 @@ MapHeaderPointers::
 	dw CeladonChiefHouse_h
 	dw CeladonHotel_h
 	dw LavenderPokecenterMart_h ; marcelnote - merged Lavender Pokecenter and Mart
+	dw MrFujisHouse_h
+	dw NameRatersHouse_h
+	dw LavenderCuboneHouse_h
 	dw PokemonTower1F_h
 	dw PokemonTower2F_h
 	dw PokemonTower3F_h
@@ -132,23 +138,12 @@ MapHeaderPointers::
 	dw PokemonTower5F_h
 	dw PokemonTower6F_h
 	dw PokemonTower7F_h
-	dw MrFujisHouse_h
-	dw LavenderPokecenterMart_h ; $96 ; marcelnote - was LAVENDER_MART, now unused
-	dw LavenderCuboneHouse_h
 	dw SeafoamIslands1F_h
 	dw SeafoamIslandsB1F_h
 	dw SeafoamIslandsB2F_h
 	dw SeafoamIslandsB3F_h
 	dw SeafoamIslandsB4F_h
 	dw VermilionGoodRodHouse_h ; marcelnote - from Old to Good Rod
-	dw CopycatsHouse1F_h
-	dw CopycatsHouse2F_h
-	dw FightingDojo_h
-	dw SaffronGym_h
-	dw SaffronPidgeyHouse_h
-	dw SaffronMart_h
-	dw SaffronPokecenter_h
-	dw MrPsychicsHouse_h
 	dw Route15Gate_h ; marcelnote - merged Route15Gate floors
 	dw CeladonGrove_h ; $B9 ; CELADON_GROVE ; marcelnote - new location, was Route15Gate2F_h
 	dw Route16Gate_h ; marcelnote - merged Route16Gate floors
@@ -164,13 +159,16 @@ MapHeaderPointers::
 	dw RocketHideoutB3F_h
 	dw RocketHideoutB4F_h
 	dw RocketHideoutElevator_h
+	dw SaffronPokecenter_h
+	dw CopycatsHouse1F_h
+	dw CopycatsHouse2F_h
+	dw FightingDojo_h
+	dw SaffronPidgeyHouse_h
+	dw SaffronMart_h
+	dw MrPsychicsHouse_h
+	dw SaffronGym_h
 	dw PokemonAcademy1F2F_h ; $CD ; marcelnote - new location
 	dw PokemonAcademy3F4F_h ; $CE ; marcelnote - new location
-	dw CeruleanCave2F_h
-	dw CeruleanCaveB1F_h
-	dw CeruleanCave1F_h
-	dw NameRatersHouse_h
-	dw CeruleanBadgeHouse_h
 	dw SilphCo1F_h
 	dw SilphCo2F_h
 	dw SilphCo3F_h

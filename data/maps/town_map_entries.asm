@@ -68,7 +68,7 @@ InternalMapEntries:
 	internal_map MT_MOON_B2F,                    6,  2, MountMoonName
 	internal_map MT_MOON_SQUARE,                 6,  2, MtMoonSquareName ; marcelnote - new location
 	internal_map CERULEAN_MART,                 10,  2, CeruleanCityName
-	internal_map CERULEAN_TRASHED_HOUSE_COPY,   10,  2, CeruleanCityName
+	internal_map CERULEAN_CAVE_B1F,              9,  1, CeruleanCaveName
 	internal_map DAYCARE,                       10,  4, Route5Name
 	internal_map UNDERGROUND_PATH_ROUTE_6_COPY, 10,  7, Route6Name
 	internal_map UNDERGROUND_PATH_ROUTE_7_COPY,  8,  5, Route7Name
@@ -83,12 +83,10 @@ InternalMapEntries:
 	internal_map UNDERGROUND_PATH_WEST_EAST,    10,  5, UndergroundPathName
 	internal_map GAME_CORNER,                    7,  5, CeladonCityName
 	internal_map CELADON_HOTEL,                  7,  5, CeladonCityName
-	internal_map LAVENDER_POKECENTER_MART,      14,  5, LavenderTownName ; marcelnote - merged Lavender Pokecenter and Mart
+	internal_map LAVENDER_CUBONE_HOUSE,         14,  5, LavenderTownName ; marcelnote - merged Lavender Pokecenter and Mart
 	internal_map POKEMON_TOWER_7F,              15,  5, PokemonTowerName
-	internal_map LAVENDER_CUBONE_HOUSE,         14,  5, LavenderTownName
 	internal_map SEAFOAM_ISLANDS_B4F,            6, 15, SeafoamIslandsName
 	internal_map VERMILION_GOOD_ROD_HOUSE,      10,  9, VermilionCityName ; marcelnote - from Old to Good Rod
-	internal_map MR_PSYCHICS_HOUSE,             10,  5, SaffronCityName
 	internal_map ROUTE_15_GATE,                 10, 13, Route15Name ; marcelnote - merged Route15Gate floors
 	internal_map CELADON_GROVE,                  7,  4, CeladonGroveName ; marcelnote - new location
 	internal_map ROUTE_16_GATE,                  5,  5, Route16Name
@@ -100,10 +98,8 @@ InternalMapEntries:
 	internal_map VERMILION_TRADE_HOUSE,         10,  9, VermilionCityName
 	internal_map DIGLETTS_CAVE,                 11,  8, DiglettsCaveName
 	internal_map ROCKET_HIDEOUT_ELEVATOR,        7,  5, RocketHQName ; marcelnote - adjusted
-	internal_map POKEMON_ACADEMY_3F4F,          10,  5, PokemonAcademyName ; marcelnote - new location
-	internal_map CERULEAN_CAVE_1F,               9,  1, CeruleanCaveName
-	internal_map NAME_RATERS_HOUSE,             14,  5, LavenderTownName
-	internal_map CERULEAN_BADGE_HOUSE,          10,  2, CeruleanCityName
+	internal_map SAFFRON_GYM,                   10,  5, SaffronCityName
+	internal_map POKEMON_ACADEMY_3F4F,          10,  5, PokemonAcademyName  ; marcelnote - new location
 	internal_map SILPH_CO_ELEVATOR,             10,  5, SilphCoName
 	internal_map FUCHSIA_GYM,                    9, 13, FuchsiaCityName
 	internal_map SAFARI_ZONE_NORTH_REST_HOUSE,   9, 12, SafariZoneName

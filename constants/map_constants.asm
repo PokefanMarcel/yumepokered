@@ -90,11 +90,14 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const MT_MOON_SQUARE,                12,  6 ; $E7 ; marcelnote - new location
 	map_const CERULEAN_TRASHED_HOUSE,         4,  4 ; $3E
 	map_const CERULEAN_TRADE_HOUSE,           4,  4 ; $3F
+	map_const CERULEAN_BADGE_HOUSE,           4,  4 ; $E6
 	map_const CERULEAN_POKECENTER,            7,  4 ; $40
 	map_const CERULEAN_GYM,                   5,  7 ; $41
 	map_const BIKE_SHOP,                      4,  4 ; $42
 	map_const CERULEAN_MART,                  4,  4 ; $43
-	map_const CERULEAN_TRASHED_HOUSE_COPY,    4,  4 ; $45
+	map_const CERULEAN_CAVE_1F,              15,  9 ; $E4
+	map_const CERULEAN_CAVE_2F,              15,  9 ; $E2
+	map_const CERULEAN_CAVE_B1F,             15,  9 ; $E3
 	map_const ROUTE_5_GATE,                  10,  3 ; $46 ; marcelnote - added 2nd floor
 	map_const UNDERGROUND_PATH_ROUTE_5,       4,  4 ; $47
 	map_const DAYCARE,                        4,  4 ; $48
@@ -147,6 +150,9 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const CELADON_CHIEF_HOUSE,            4,  4 ; $8B
 	map_const CELADON_HOTEL,                  7,  4 ; $8C
 	map_const LAVENDER_POKECENTER_MART,      14,  4 ; $8D ; marcelnote - merged Lavender Pokecenter and Mart
+	map_const MR_FUJIS_HOUSE,                 4,  4 ; $95
+	map_const NAME_RATERS_HOUSE,              4,  4 ; $E5
+	map_const LAVENDER_CUBONE_HOUSE,          4,  4 ; $97
 	map_const POKEMON_TOWER_1F,              10,  9 ; $8E
 	map_const POKEMON_TOWER_2F,              10,  9 ; $8F
 	map_const POKEMON_TOWER_3F,              10,  9 ; $90
@@ -154,24 +160,12 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const POKEMON_TOWER_5F,              10,  9 ; $92
 	map_const POKEMON_TOWER_6F,              10,  9 ; $93
 	map_const POKEMON_TOWER_7F,              10,  9 ; $94
-	map_const MR_FUJIS_HOUSE,                 4,  4 ; $95
-	map_const UNUSED_MAP_96,                  4,  4 ; $96 ; marcelnote - was LAVENDER_MART, now unused
-	map_const LAVENDER_CUBONE_HOUSE,          4,  4 ; $97
-	;map_const SAFARI_ZONE_GATE,               4,  3 ; $9C
 	map_const SEAFOAM_ISLANDS_1F,            15,  9 ; $C0
 	map_const SEAFOAM_ISLANDS_B1F,           15,  9 ; $9F
 	map_const SEAFOAM_ISLANDS_B2F,           15,  9 ; $A0
 	map_const SEAFOAM_ISLANDS_B3F,           15,  9 ; $A1
 	map_const SEAFOAM_ISLANDS_B4F,           15,  9 ; $A2
 	map_const VERMILION_GOOD_ROD_HOUSE,       4,  4 ; $A3 ; marcelnote - from Old to Good Rod
-	map_const COPYCATS_HOUSE_1F,              4,  4 ; $AF
-	map_const COPYCATS_HOUSE_2F,              4,  4 ; $B0
-	map_const FIGHTING_DOJO,                  5,  6 ; $B1
-	map_const SAFFRON_GYM,                   10,  9 ; $B2
-	map_const SAFFRON_PIDGEY_HOUSE,           4,  4 ; $B3
-	map_const SAFFRON_MART,                   4,  4 ; $B4
-	map_const SAFFRON_POKECENTER,             7,  4 ; $B6
-	map_const MR_PSYCHICS_HOUSE,              4,  4 ; $B7
 	map_const ROUTE_15_GATE,                  4, 11 ; $B8 ; marcelnote - merged ROUTE_15_GATE floors
 	map_const CELADON_GROVE,                 22, 24 ; $B9 ; marcelnote - new location, was ROUTE_15_GATE_2F
 	map_const ROUTE_16_GATE,                  4, 13 ; $BA ; marcelnote - merged ROUTE_16_GATE floors
@@ -187,13 +181,16 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const ROCKET_HIDEOUT_B3F,            15, 14 ; $C9
 	map_const ROCKET_HIDEOUT_B4F,            15, 12 ; $CA
 	map_const ROCKET_HIDEOUT_ELEVATOR,        3,  4 ; $CB
+	map_const SAFFRON_POKECENTER,             7,  4 ; $B6
+	map_const COPYCATS_HOUSE_1F,              4,  4 ; $AF
+	map_const COPYCATS_HOUSE_2F,              4,  4 ; $B0
+	map_const FIGHTING_DOJO,                  5,  6 ; $B1
+	map_const SAFFRON_PIDGEY_HOUSE,           4,  4 ; $B3
+	map_const SAFFRON_MART,                   4,  4 ; $B4
+	map_const MR_PSYCHICS_HOUSE,              4,  4 ; $B7
+	map_const SAFFRON_GYM,                   10,  9 ; $B2
 	map_const POKEMON_ACADEMY_1F2F,          19,  6 ; $CD ; marcelnote - new location
 	map_const POKEMON_ACADEMY_3F4F,          19,  6 ; $CE ; marcelnote - new location
-	map_const CERULEAN_CAVE_2F,              15,  9 ; $E2
-	map_const CERULEAN_CAVE_B1F,             15,  9 ; $E3
-	map_const CERULEAN_CAVE_1F,              15,  9 ; $E4
-	map_const NAME_RATERS_HOUSE,              4,  4 ; $E5
-	map_const CERULEAN_BADGE_HOUSE,           4,  4 ; $E6
 	map_const SILPH_CO_1F,                   15,  9 ; $B5
 	map_const SILPH_CO_2F,                   15,  9 ; $CF
 	map_const SILPH_CO_3F,                   15,  9 ; $D0
