@@ -283,7 +283,7 @@ ChampionsRoomPlayerFollowsRivalScript: ; marcelnote - added for Rival rematch
 	ld a, A_BUTTON | B_BUTTON | SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
 	ld [wJoyIgnore], a
 	ld hl, wSimulatedJoypadStatesEnd
-	ld de, WalkToHallOfFameFollowRival_RLEMovement
+	ld de, WalkToHallOfFame_RLEMovement
 	call DecodeRLEList
 	dec a
 	ld [wSimulatedJoypadStatesIndex], a
@@ -291,10 +291,6 @@ ChampionsRoomPlayerFollowsRivalScript: ; marcelnote - added for Rival rematch
 	ld a, SCRIPT_CHAMPIONSROOM_CLEANUP_SCRIPT
 	ld [wChampionsRoomCurScript], a
 	ret
-
-WalkToHallOfFameFollowRival_RLEMovement: ; marcelnote - added for Rival rematch
-	db D_UP, 4
-	db -1 ; end
 
 ChampionsRoomCleanupScript:
 	ld a, [wSimulatedJoypadStatesIndex]
