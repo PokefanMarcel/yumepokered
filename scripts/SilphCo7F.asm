@@ -120,6 +120,10 @@ SilphCo7F_ScriptPointers:
 	dw_const SilphCo7FRivalExitScript,              SCRIPT_SILPHCO7F_RIVAL_EXIT
 
 SilphCo7FDefaultScript:
+IF DEF(_DEBUG) ; marcelnote - added to skip in debug mode
+	call DebugPressedOrHeldB
+	ret nz
+ENDC
 	CheckEvent EVENT_BEAT_SILPH_CO_RIVAL
 	jp nz, CheckFightingMapTrainers
 	ld hl, .RivalEncounterCoordinates

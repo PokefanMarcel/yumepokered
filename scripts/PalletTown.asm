@@ -21,6 +21,10 @@ PalletTown_ScriptPointers:
 PalletTownDefaultScript:
 	;CheckEvent EVENT_OAK_APPEARED_IN_PALLET ; marcelnote - this is not needed since the script
 	;ret nz                                  ;              moves on from the default one once triggered
+IF DEF(_DEBUG) ; marcelnote - added to skip in debug mode
+	call DebugPressedOrHeldB
+	ret nz
+ENDC
 	ld a, [wYCoord]
 	cp 1 ; is player near north exit?
 	ret nz
