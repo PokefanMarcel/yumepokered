@@ -76,7 +76,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const DIGLETTS_CAVE_ROUTE_2,          4,  4
 	map_const PEWTER_POKECENTER,              7,  4
 	map_const MUSEUM_1F,                     10,  4
-	map_const MUSEUM_2F,                      7,  4
+	map_const MUSEUM_2F,                      7,  4 ; to merge ?
 	map_const PEWTER_NIDORAN_HOUSE,           4,  4
 	map_const PEWTER_MART,                    4,  4 ; to merge
 	map_const PEWTER_SPEECH_HOUSE,            4,  4
