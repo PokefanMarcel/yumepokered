@@ -137,7 +137,7 @@ DEF SHOW EQU $15
 	const HS_ROCKET_HIDEOUT_B4F_ITEM_3     ; 8A X
 	const HS_ROCKET_HIDEOUT_B4F_ITEM_4     ; 8B
 	const HS_ROCKET_HIDEOUT_B4F_ITEM_5     ; 8C
-	;const HS_SILPH_CO_2F_1                 ; 8C XXX never (de)activated? ; marcelnote - removed
+	;const HS_SILPH_CO_2F_1                 ; 8C XXX never (de)activated? ; marcelnote - removed (TM_SELFDESTRUCT woman)
 	const HS_SILPH_CO_2F_2                 ; 8D
 	const HS_SILPH_CO_2F_3                 ; 8E
 	const HS_SILPH_CO_2F_4                 ; 8F

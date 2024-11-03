@@ -164,7 +164,7 @@ MapHSPointers:
 	dw SaffronGymHS                ; SAFFRON_GYM ; marcelnote - postgame Bruno event, Sabrina rematch
 	dw NoHS                        ; POKEMON_ACADEMY_1F2F
 	dw NoHS                        ; POKEMON_ACADEMY_3F4F
-	dw NoHS                        ; SILPH_CO_1F ; marcelnote - was SilphCo1FHS, but need to restore hide/show
+	dw SilphCo1FHS                 ; SILPH_CO_1F
 	dw SilphCo2FHS                 ; SILPH_CO_2F
 	dw SilphCo3FHS                 ; SILPH_CO_3F
 	dw SilphCo4FHS                 ; SILPH_CO_4F
@@ -346,8 +346,8 @@ FightingDojoHS:
 	db FIGHTING_DOJO, FIGHTINGDOJO_BRUNO,                HIDE ; marcelnote - postgame Bruno
 	db FIGHTING_DOJO, FIGHTINGDOJO_HITMONLEE_POKE_BALL,  SHOW
 	db FIGHTING_DOJO, FIGHTINGDOJO_HITMONCHAN_POKE_BALL, SHOW
-;SilphCo1FHS:
-;	db SILPH_CO_1F, SILPHCO1F_LINK_RECEPTIONIST, HIDE ; marcelnote - removed, but why? was supposed to appear
+SilphCo1FHS:
+	db SILPH_CO_1F, SILPHCO1F_LINK_RECEPTIONIST, HIDE
 PowerPlantHS:
 	db POWER_PLANT, POWERPLANT_VOLTORB1,      SHOW
 	db POWER_PLANT, POWERPLANT_VOLTORB2,      SHOW
@@ -425,7 +425,7 @@ RocketHideoutB4FHS:
 	db ROCKET_HIDEOUT_B4F, ROCKETHIDEOUTB4F_SILPH_SCOPE,   HIDE
 	db ROCKET_HIDEOUT_B4F, ROCKETHIDEOUTB4F_LIFT_KEY,      HIDE
 SilphCo2FHS:
-	db SILPH_CO_2F, SILPHCO2F_SILPH_WORKER_F, SHOW
+	;db SILPH_CO_2F, SILPHCO2F_SILPH_WORKER_F, SHOW ; marcelnote - not used (TM_SELFDESTRUCT woman)
 	db SILPH_CO_2F, SILPHCO2F_SCIENTIST1,     SHOW
 	db SILPH_CO_2F, SILPHCO2F_SCIENTIST2,     SHOW
 	db SILPH_CO_2F, SILPHCO2F_ROCKET1,        SHOW
