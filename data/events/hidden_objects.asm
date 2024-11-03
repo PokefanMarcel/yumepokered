@@ -40,7 +40,7 @@ HiddenObjectMaps:
 	db ROCKET_HIDEOUT_B1F
 	db ROCKET_HIDEOUT_B3F
 	db ROCKET_HIDEOUT_B4F
-	db SAFFRON_POKECENTER
+	db SAFFRON_POKECENTER_MART ; marcelnote - merged Saffron Pokecenter and Mart
 	db POKEMON_TOWER_5F
 	db ROUTE_13
 	db SAFARI_ZONE_GATE

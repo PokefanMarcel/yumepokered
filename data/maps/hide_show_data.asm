@@ -153,12 +153,11 @@ MapHSPointers:
 	dw NoHS                        ; ROUTE_16_GATE
 	dw NoHS                        ; ROUTE_16_FLY_HOUSE
 	dw NoHS                        ; ROUTE_18_GATE
-	dw NoHS                        ; SAFFRON_POKECENTER
+	dw NoHS                        ; SAFFRON_POKECENTER_MART ; marcelnote - merged Saffron Pokecenter and Mart
 	dw NoHS                        ; COPYCATS_HOUSE_1F
 	dw NoHS                        ; COPYCATS_HOUSE_2F
 	dw FightingDojoHS              ; FIGHTING_DOJO
 	dw NoHS                        ; SAFFRON_PIDGEY_HOUSE
-	dw NoHS                        ; SAFFRON_MART
 	dw NoHS                        ; MR_PSYCHICS_HOUSE
 	dw SaffronGymHS                ; SAFFRON_GYM ; marcelnote - postgame Bruno event, Sabrina rematch
 	dw NoHS                        ; POKEMON_ACADEMY_1F2F

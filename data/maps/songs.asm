@@ -153,12 +153,11 @@ MapSongBanks::
 	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; ROUTE_16_GATE                ; marcelnote - merged ROUTE_16_GATE floors
 	db MUSIC_CELADON, BANK(Music_Celadon)                  ; ROUTE_16_FLY_HOUSE
 	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; ROUTE_18_GATE                ; marcelnote - merged ROUTE_18_GATE floors
-	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; SAFFRON_POKECENTER
+	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; SAFFRON_POKECENTER_MART      ; marcelnote - merged Saffron Pokecenter and Mart
 	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; COPYCATS_HOUSE_1F
 	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; COPYCATS_HOUSE_2F
 	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; FIGHTING_DOJO
 	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; SAFFRON_PIDGEY_HOUSE
-	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; SAFFRON_MART
 	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; MR_PSYCHICS_HOUSE
 	db MUSIC_GYM, BANK(Music_Gym)                          ; SAFFRON_GYM
 	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; POKEMON_ACADEMY_1F2F ; marcelnote - new location
