@@ -64,7 +64,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const BLUES_AIDES_HOUSES,            11,  4 ; marcelnote - added Aide's house
 	map_const OAKS_LAB,                       5,  6
 	map_const VIRIDIAN_POKECENTER,            7,  4
-	map_const VIRIDIAN_MART,                  4,  4
+	map_const VIRIDIAN_MART,                  4,  4 ; to merge
 	map_const VIRIDIAN_SCHOOL_HOUSE,          4,  4
 	map_const VIRIDIAN_NICKNAME_HOUSE,        4,  4
 	map_const VIRIDIAN_GYM,                  10,  9
@@ -78,7 +78,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const MUSEUM_1F,                     10,  4
 	map_const MUSEUM_2F,                      7,  4
 	map_const PEWTER_NIDORAN_HOUSE,           4,  4
-	map_const PEWTER_MART,                    4,  4
+	map_const PEWTER_MART,                    4,  4 ; to merge
 	map_const PEWTER_SPEECH_HOUSE,            4,  4
 	map_const PEWTER_GYM,                     5,  7
 	map_const CELADON_GROVE_NORTH_GATE,       5,  4 ; marcelnote - new map
@@ -92,7 +92,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const CERULEAN_TRADE_HOUSE,           4,  4
 	map_const CERULEAN_BADGE_HOUSE,           4,  4
 	map_const BIKE_SHOP,                      4,  4
-	map_const CERULEAN_MART,                  4,  4
+	map_const CERULEAN_MART,                  4,  4 ; to merge
 	map_const CERULEAN_GYM,                   5,  7
 	map_const CERULEAN_CAVE_1F,              15,  9
 	map_const CERULEAN_CAVE_2F,              15,  9
@@ -112,7 +112,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const VERMILION_POKECENTER,           7,  4
 	map_const VERMILION_GOOD_ROD_HOUSE,       4,  4 ; marcelnote - Old -> Good Rod
 	map_const POKEMON_FAN_CLUB,               4,  4
-	map_const VERMILION_MART,                 4,  4
+	map_const VERMILION_MART,                 4,  4 ; to merge
 	map_const VERMILION_PIDGEY_HOUSE,         4,  4
 	map_const VERMILION_TRADE_HOUSE,          4,  4
 	map_const VERMILION_GYM,                  5,  9
@@ -177,7 +177,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const COPYCATS_HOUSE_2F,              4,  4
 	map_const FIGHTING_DOJO,                  5,  6
 	map_const SAFFRON_PIDGEY_HOUSE,           4,  4
-	map_const SAFFRON_MART,                   4,  4
+	map_const SAFFRON_MART,                   4,  4 ; to merge
 	map_const MR_PSYCHICS_HOUSE,              4,  4
 	map_const SAFFRON_GYM,                   10,  9
 	map_const POKEMON_ACADEMY_1F2F,          19,  6 ; marcelnote - new map
@@ -195,7 +195,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const SILPH_CO_11F,                   9,  9
 	map_const SILPH_CO_ELEVATOR,              2,  2
 	map_const FUCHSIA_POKECENTER,             7,  4
-	map_const FUCHSIA_MART,                   4,  4
+	map_const FUCHSIA_MART,                   4,  4 ; to merge
 	map_const FUCHSIA_BILLS_GRANDPAS_HOUSE,   4,  4
 	map_const WARDENS_HOUSE,                  5,  4
 	map_const FUCHSIA_MEETING_ROOM,           7,  4
