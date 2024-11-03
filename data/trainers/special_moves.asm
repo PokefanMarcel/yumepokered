@@ -294,7 +294,7 @@ SpecialTrainerMoves:
 	; Cloyster
 	db 2, 1, BLIZZARD
 	; Slowbro
-	db 3, 1, BLIZZARD
+	db 3, 1, ICE_BEAM
 	db 3, 2, SURF
 	; Jynx
 	db 4, 1, LOVELY_KISS
