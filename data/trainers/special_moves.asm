@@ -2,7 +2,7 @@
 ; Yellow entry format:
 ;	db trainerclass, trainerid
 ;	repeat { db partymon location, partymon move, move id }
-;	db 0
+;	db 0 ; marcelnote - changed terminator 0 to $ff to avoid bugs with NO_MOVE (=0) entries
 
 ; TO DO: rematches for Gym Leaders, other special trainers
 ; e.g. Otoshi (Marowak), Anthony (Hitmonchan), Melvin (Exeggcute), Giselle (Academy)
@@ -12,7 +12,7 @@ SpecialTrainerMoves:
 	db YOUNGSTER, 14  ; based on A.J.
 	; Sandshrew
 	db 1, 4, FISSURE
-	db 0
+	db $ff
 
 	db BROCK, 1
 	; Geodude
@@ -20,7 +20,7 @@ SpecialTrainerMoves:
 	; Onix
 	db 2, 3, BIND
 	db 2, 4, BIDE
-	db 0
+	db $ff
 
 	db BROCK, 2  ; rematch
 	; Aerodactyl
@@ -37,13 +37,13 @@ SpecialTrainerMoves:
 	; nothing
 	; Onix
 	db 6, 2, FISSURE
-	db 0
+	db $ff
 
 	db MISTY, 1
 	; Starmie
 	db 3, 1, SWIFT
 	db 3, 4, BUBBLEBEAM
-	db 0
+	db $ff
 
 	db MISTY, 2  ; rematch
 	; Seaking
@@ -65,7 +65,7 @@ SpecialTrainerMoves:
 	db 6, 1, PSYCHIC_M
 	db 6, 2, RECOVER
 	db 6, 4, SURF
-	db 0
+	db $ff
 
 	db LT_SURGE, 1
 	; Voltorb
@@ -76,7 +76,7 @@ SpecialTrainerMoves:
 	db 3, 2, THUNDERBOLT
 	db 3, 3, MEGA_PUNCH
 	db 3, 4, GROWL
-	db 0
+	db $ff
 
 	db LT_SURGE, 2  ; rematch
 	; Magneton
@@ -96,7 +96,7 @@ SpecialTrainerMoves:
 	; Raichu
 	db 6, 2, THUNDER_WAVE
 	db 6, 4, SURF
-	db 0
+	db $ff
 
 	db ERIKA, 1
 	; Victrebell
@@ -106,7 +106,7 @@ SpecialTrainerMoves:
 	db 2, 3, STUN_SPORE
 	; Vileplume
 	db 3, 4, PETAL_DANCE
-	db 0
+	db $ff
 
 	db ERIKA, 2  ; rematch
 	; Victreebel
@@ -126,7 +126,7 @@ SpecialTrainerMoves:
 	db 5, 4, LEECH_SEED
 	; Vileplume
 	db 6, 2, SLEEP_POWDER
-	db 0
+	db $ff
 
 	db KOGA, 1
 	; Weezing
@@ -141,7 +141,7 @@ SpecialTrainerMoves:
 	db 4, 1, RAZOR_WIND
 	db 4, 2, DOUBLE_TEAM
 	db 4, 4, TOXIC
-	db 0
+	db $ff
 
 	db KOGA, 2  ; rematch
 	; Weezing
@@ -161,7 +161,7 @@ SpecialTrainerMoves:
 	; Venomoth
 	db 6, 1, RAZOR_WIND
 	db 6, 2, DOUBLE_TEAM
-	db 0
+	db $ff
 
 	db SABRINA, 1
 	; Kadabra
@@ -177,7 +177,7 @@ SpecialTrainerMoves:
 	; Alakazam
 	db 4, 1, REFLECT
 	db 4, 2, PSYWAVE
-	db 0
+	db $ff
 
 	db SABRINA, 2  ; rematch
 	; Kadabra
@@ -198,7 +198,7 @@ SpecialTrainerMoves:
 	db 5, 4, SLEEP_POWDER
 	; Alakazam
 	db 6, 1, HYPER_BEAM
-	db 0
+	db $ff
 
 	db BLAINE, 1
 	; Growlithe
@@ -213,7 +213,7 @@ SpecialTrainerMoves:
 	db 5, 1, REFLECT
 	db 5, 2, DOUBLE_EDGE
 	db 5, 4, FIRE_BLAST
-	db 0
+	db $ff
 
 	db BLAINE, 2  ; rematch
 	; Flareon
@@ -236,7 +236,7 @@ SpecialTrainerMoves:
 	db 6, 1, SOLARBEAM
 	db 6, 2, DOUBLE_EDGE
 	db 6, 4, FIRE_BLAST
-	db 0
+	db $ff
 
 	db GIOVANNI, 1  ; Rocket hideout battle
 	; Onix
@@ -248,7 +248,7 @@ SpecialTrainerMoves:
 	; nothing
 	; Persian
 	db 4, 2, BUBBLEBEAM
-	db 0
+	db $ff
 
 	db GIOVANNI, 2  ; Silph Co battle
 	; Nidorino
@@ -268,7 +268,7 @@ SpecialTrainerMoves:
 	db 5, 1, BUBBLEBEAM
 	db 5, 2, THUNDERBOLT
 	db 5, 3, DOUBLE_TEAM
-	db 0
+	db $ff
 
 	db GIOVANNI, 3  ; gym battle
 	; Dugtrio
@@ -285,7 +285,7 @@ SpecialTrainerMoves:
 	db 5, 1, FIRE_BLAST
 	db 5, 2, SURF
 	db 5, 4, EARTHQUAKE
-	db 0
+	db $ff
 
 	db LORELEI, 1  ; first battle
 	; Dewgong
@@ -301,7 +301,7 @@ SpecialTrainerMoves:
 	db 4, 3, PSYCHIC_M
 	; Lapras
 	db 5, 2, BODY_SLAM
-	db 0
+	db $ff
 
 	db LORELEI, 2  ; rematches
 	; Dewgong
@@ -326,7 +326,7 @@ SpecialTrainerMoves:
 	; Lapras
 	db 6, 2, THUNDERBOLT
 	db 6, 3, SURF
-	db 0
+	db $ff
 
 	db BRUNO, 1  ; first battle
 	; Onix
@@ -341,7 +341,7 @@ SpecialTrainerMoves:
 	; Machamp
 	db 5, 2, ROCK_SLIDE
 	db 5, 4, EARTHQUAKE
-	db 0
+	db $ff
 
 	db BRUNO, 2  ; rematches
 	; Hitmonchan
@@ -359,7 +359,7 @@ SpecialTrainerMoves:
 	db 6, 2, ROCK_SLIDE
 	db 6, 3, EARTHQUAKE
 	db 6, 4, FOCUS_ENERGY
-	db 0
+	db $ff
 
 	db AGATHA, 1  ; first battle
 	; Gengar
@@ -378,7 +378,7 @@ SpecialTrainerMoves:
 	; Gengar
 	db 5, 2, PSYCHIC_M
 	db 5, 4, TOXIC
-	db 0
+	db $ff
 
 	db AGATHA, 2  ; rematches
 	; Haunter
@@ -403,7 +403,7 @@ SpecialTrainerMoves:
 	db 6, 1, PSYCHIC_M
 	db 6, 2, THUNDERBOLT
 	db 6, 4, TOXIC
-	db 0
+	db $ff
 
 	db LANCE, 1  ; first battle
 	; Gyarados
@@ -419,7 +419,7 @@ SpecialTrainerMoves:
 	; Dragonite
 	db 5, 2, FIRE_BLAST
 	db 5, 3, THUNDER
-	db 0
+	db $ff
 
 	db LANCE, 2  ; rematches
 	; Dragonite
@@ -441,7 +441,7 @@ SpecialTrainerMoves:
 	; Dragonite
 	db 6, 2, FIRE_BLAST
 	db 6, 3, THUNDER
-	db 0
+	db $ff
 
 	db RIVAL3, 1  ; first battle
 	; Pidgeot
@@ -460,7 +460,7 @@ SpecialTrainerMoves:
 	; Blastoise
 	db 6, 1, EARTHQUAKE
 	db 6, 3, BLIZZARD
-	db 0
+	db $ff
 
 	db RIVAL3, 2  ; first battle
 	; Pidgeot
@@ -478,7 +478,7 @@ SpecialTrainerMoves:
 	db 5, 2, DOUBLE_EDGE
 	; Venusaur
 	db 6, 4, GROWTH
-	db 0
+	db $ff
 
 	db RIVAL3, 3  ; first battle
 	; Pidgeot
@@ -495,7 +495,7 @@ SpecialTrainerMoves:
 	; nothing
 	; Charizard
 	db 6, 2, FIRE_BLAST
-	db 0
+	db $ff
 
 	db RIVAL3, 4  ; rematches
 	; Pidgeot
@@ -517,7 +517,7 @@ SpecialTrainerMoves:
 	db 6, 1, EARTHQUAKE
 	db 6, 2, HYPER_BEAM
 	db 6, 3, BLIZZARD
-	db 0
+	db $ff
 
 	db RIVAL3, 5  ; rematches
 	; Pidgeot
@@ -538,7 +538,7 @@ SpecialTrainerMoves:
 	db 6, 1, RAZOR_LEAF
 	db 6, 3, HYPER_BEAM
 	db 6, 4, CUT
-	db 0
+	db $ff
 
 	db RIVAL3, 6  ; rematches
 	; Pidgeot
@@ -559,7 +559,7 @@ SpecialTrainerMoves:
 	db 6, 1, HYPER_BEAM
 	db 6, 2, FIRE_BLAST
 	db 6, 3, EARTHQUAKE
-	db 0
+	db $ff
 
 	db PSYCHIC_TR, 5  ; postgame Will
 	; Slowbro
@@ -577,7 +577,7 @@ SpecialTrainerMoves:
 	; Exeggutor
 	db 5, 2, PSYCHIC_M
 	db 5, 3, MEGA_DRAIN
-	db 0
+	db $ff
 
 	db PROF_OAK, 1
 	; Tauros
@@ -598,7 +598,7 @@ SpecialTrainerMoves:
 	db 6, 1, SURF
 	db 6, 2, HYPER_BEAM
 	db 6, 3, BLIZZARD
-	db 0
+	db $ff
 
 	db PROF_OAK, 2
 	; Tauros
@@ -619,7 +619,7 @@ SpecialTrainerMoves:
 	db 6, 1, ICE_BEAM
 	db 6, 2, HYPER_BEAM
 	db 6, 3, THUNDER
-	db 0
+	db $ff
 
 	db PROF_OAK, 3
 	; Tauros
@@ -639,7 +639,7 @@ SpecialTrainerMoves:
 	db 6, 1, THUNDERBOLT
 	db 6, 2, HYPER_BEAM
 	db 6, 3, FIRE_BLAST
-	db 0
+	db $ff
 
 	db YELLOW, 1
 	; Dodrio
@@ -663,6 +663,6 @@ SpecialTrainerMoves:
 	; Pikachu
 	db 6, 2, SURF
 	db 6, 4, THUNDER_WAVE
-	db 0
+	db $ff
 
 	db -1 ; end

@@ -55,10 +55,10 @@ ReadTrainer:
 .LoopTrainerData
 	ld a, [hli]
 	and a ; have we reached the end of the trainer data?
-	jp z, .AddAdditionalMoveData
+	jp z, .AddSpecialMoveData
 	ld [wCurPartySpecies], a
 	ld a, ENEMY_PARTY_DATA
-	ld [wMonDataLocation], a
+	ld [wMonDataLocation], a ; if this is 1, added to Enemy party, else Player's
 	push hl
 	call AddPartyMon
 	pop hl
@@ -70,7 +70,7 @@ ReadTrainer:
 ; - if [wLoneAttackNo] != 0, one pokemon on the team has a special move
 	ld a, [hli]
 	and a ; have we reached the end of the trainer data?
-	jr z, .AddAdditionalMoveData
+	jr z, .AddSpecialMoveData
 	ld [wCurEnemyLevel], a
 	ld a, [hli]
 	ld [wCurPartySpecies], a
@@ -80,28 +80,30 @@ ReadTrainer:
 	call AddPartyMon
 	pop hl
 	jr .SpecialTrainer
-.AddAdditionalMoveData
-; does the trainer have additional move data?
+.AddSpecialMoveData
+; does the trainer have special move data?
 	ld a, [wTrainerClass]
-	ld b, a
+	ld b, a    ; b has trainer class (e.g. 2 for BUG_CATCHER, 0 is NOBODY)
 	ld a, [wTrainerNo]
-	ld c, a
+	ld c, a    ; c has trainer number (starts at 1)
 	ld hl, SpecialTrainerMoves
-.loopAdditionalMoveData
+.loopSpecialMoveData
+; check if the first two elements of the SpecialTrainerMoves entry match b and c, if not skip that entry
 	ld a, [hli]
 	cp $ff
 	jr z, .FinishUp
 	cp b
-	jr nz, .asm_39c46
+	jr nz, .loopSkipTrainer
 	ld a, [hli]
 	cp c
-	jr nz, .asm_39c46
+	jr nz, .loopSkipTrainer
 	ld d, h
 	ld e, l
-.writeAdditionalMoveDataLoop
+.writeSpecialMoveDataLoop
 	ld a, [de]
 	inc de
-	and a
+	;and a
+	cp $ff ; marcelnote - new terminator to prevent issues with NO_MOVE
 	jp z, .FinishUp
 	dec a
 	ld hl, wEnemyMon1Moves
@@ -116,12 +118,13 @@ ReadTrainer:
 	ld a, [de]
 	inc de
 	ld [hl], a
-	jr .writeAdditionalMoveDataLoop
-.asm_39c46
+	jr .writeSpecialMoveDataLoop
+.loopSkipTrainer
 	ld a, [hli]
-	and a
-	jr nz, .asm_39c46
-	jr .loopAdditionalMoveData
+	;and a
+	cp $ff ; marcelnote - new terminator to prevent issues with NO_MOVE
+	jr nz, .loopSkipTrainer
+	jr .loopSpecialMoveData
 .FinishUp
 ; clear wAmountMoneyWon addresses
 	xor a

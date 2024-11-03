@@ -58,7 +58,7 @@ TrainerDataPointers:
 	; first byte is $FF (obviously)
 	; every next two bytes are a level and species
 	; null-terminated
-	; marcelnote - in this case trainer can have Special Moves (special_moves.asm)
+; marcelnote - both types can have special moves (special_moves.asm)
 
 YoungsterData:
 ; Route 3
