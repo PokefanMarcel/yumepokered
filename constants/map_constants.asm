@@ -33,8 +33,6 @@ ENDM
 	map_const MANDARIN_ISLAND,               17, 16 ; $0A ; marcelnote - new map
 	map_const INDIGO_PLATEAU,                10,  9 ; $0B
 DEF NUM_CITY_MAPS EQU const_value
-	map_const UNUSED_MAP_0B,                  0,  0 ; $0B
-DEF FIRST_ROUTE_MAP EQU const_value
 	map_const ROUTE_1,                       10, 18 ; $0C
 	map_const ROUTE_2,                       10, 36 ; $0D
 	map_const ROUTE_3,                       37,  9 ; $0E ; marcelnote - expanded from 35 for Celadon Grove

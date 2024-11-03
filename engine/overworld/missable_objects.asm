@@ -1,6 +1,6 @@
 MarkTownVisitedAndLoadMissableObjects::
 	ld a, [wCurMap]
-	cp FIRST_ROUTE_MAP
+	cp NUM_CITY_MAPS + 1 ; marcelnote - replaced FIRST_ROUTE_MAP
 	jr nc, .notInTown
 	ld c, a
 	ld b, FLAG_SET

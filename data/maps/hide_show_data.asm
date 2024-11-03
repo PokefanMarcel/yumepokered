@@ -15,7 +15,6 @@ MapHSPointers:
 	dw NoHS            ; CINNABAR_ISLAND
 	dw NoHS            ; MANDARIN_ISLAND ; marcelnote - new map
 	dw NoHS            ; INDIGO_PLATEAU
-	dw NoHS            ; UNUSED_MAP_0B
 	dw Route1HS        ; ROUTE_1 ; marcelnote - added for postgame Oak battle
 	dw Route2HS        ; ROUTE_2
 	dw NoHS            ; ROUTE_3

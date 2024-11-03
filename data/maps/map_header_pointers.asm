@@ -13,7 +13,6 @@ MapHeaderPointers::
 	dw CinnabarIsland_h
 	dw MandarinIsland_h ; marcelnote - new location
 	dw IndigoPlateau_h
-	dw SaffronCity_h ; UNUSED_MAP_0B
 	dw Route1_h
 	dw Route2_h
 	dw Route3_h

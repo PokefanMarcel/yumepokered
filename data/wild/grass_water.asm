@@ -12,7 +12,6 @@ WildDataPointers:
 	dw NothingWildMons         ; CINNABAR_ISLAND
 	dw NothingWildMons         ; MANDARIN_ISLAND ; marcelnote - new location
 	dw NothingWildMons         ; INDIGO_PLATEAU
-	dw NothingWildMons         ; unused
 	dw Route1WildMons          ; ROUTE_1
 	dw Route2WildMons          ; ROUTE_2
 	dw Route3WildMons          ; ROUTE_3

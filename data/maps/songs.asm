@@ -1,7 +1,7 @@
 MapSongBanks::
 	table_width 2, MapSongBanks
 	; Cities
-	db MUSIC_PALLET_TOWN, BANK(Music_PalletTown) ; PALLET_TOWN
+	db MUSIC_PALLET_TOWN, BANK(Music_PalletTown)       ; PALLET_TOWN
 	db MUSIC_CITIES1, BANK(Music_Cities1)              ; VIRIDIAN_CITY
 	db MUSIC_CITIES1, BANK(Music_Cities1)              ; PEWTER_CITY
 	db MUSIC_CITIES2, BANK(Music_Cities2)              ; CERULEAN_CITY
@@ -13,8 +13,6 @@ MapSongBanks::
 	db MUSIC_CINNABAR, BANK(Music_Cinnabar)            ; CINNABAR_ISLAND
 	db MUSIC_CINNABAR, BANK(Music_Cinnabar)            ; MANDARIN_ISLAND ; marcelnote - new map
 	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; INDIGO_PLATEAU
-	; Unused
-	db MUSIC_CITIES1, BANK(Music_Cities1)              ; UNUSED_MAP_0B
 	; Routes
 	db MUSIC_ROUTES1, BANK(Music_Routes1)              ; ROUTE_1
 	db MUSIC_ROUTES1, BANK(Music_Routes1)              ; ROUTE_2
