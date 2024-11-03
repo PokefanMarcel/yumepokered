@@ -5,7 +5,7 @@ MACRO map_const
 ENDM
 
 ; marcelnote - other files which rely on map order:
-; - ItemUseBall.notOldManBattle (item_effects.asm) to identify PokemonTower maps
+; - ItemUseBall.notOldManBattle (item_effects.asm) to identify PokemonTower maps (relies on contiguous 1F-7F)
 ; - DungeonMaps2 (dungeon_maps.asm) uses map intervals
 
 ; map ids
