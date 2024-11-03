@@ -151,12 +151,11 @@ MapHeaderBanks::
 	db BANK(Route16Gate_h) ; marcelnote - merged Route16Gate floors
 	db BANK(Route16FlyHouse_h)
 	db BANK(Route18Gate_h) ; marcelnote - merged Route18Gate floors
-	db BANK(SaffronPokecenter_h)
+	db BANK(SaffronPokecenterMart_h) ; marcelnote - merged Saffron Pokecenter and Mart
 	db BANK(CopycatsHouse1F_h)
 	db BANK(CopycatsHouse2F_h)
 	db BANK(FightingDojo_h)
 	db BANK(SaffronPidgeyHouse_h)
-	db BANK(SaffronMart_h)
 	db BANK(MrPsychicsHouse_h)
 	db BANK(SaffronGym_h)
 	db BANK(PokemonAcademy1F2F_h) ; $CD ; marcelnote - new location

@@ -234,9 +234,8 @@ INCLUDE "text/CopycatsHouse2F.asm"
 INCLUDE "text/FightingDojo.asm"
 INCLUDE "text/SaffronGym.asm"
 INCLUDE "text/SaffronPidgeyHouse.asm"
-INCLUDE "text/SaffronMart.asm"
 INCLUDE "text/SilphCo1F.asm"
-INCLUDE "text/SaffronPokecenter.asm"
+INCLUDE "text/SaffronPokecenterMart.asm" ; marcelnote - merged Saffron Pokecenter and Mart
 INCLUDE "text/MrPsychicsHouse.asm"
 
 INCLUDE "data/text/text_4.asm"

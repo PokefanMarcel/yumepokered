@@ -172,12 +172,11 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const ROUTE_16_GATE,                  4, 13 ; marcelnote - merged Route16Gate floors
 	map_const ROUTE_16_FLY_HOUSE,             4,  4
 	map_const ROUTE_18_GATE,                  4, 11 ; marcelnote - merged Route18Gate floors
-	map_const SAFFRON_POKECENTER,             7,  4
+	map_const SAFFRON_POKECENTER_MART,       14,  4 ; marcelnote - merged Saffron Pokecenter and Mart
 	map_const COPYCATS_HOUSE_1F,              4,  4
 	map_const COPYCATS_HOUSE_2F,              4,  4
 	map_const FIGHTING_DOJO,                  5,  6
 	map_const SAFFRON_PIDGEY_HOUSE,           4,  4
-	map_const SAFFRON_MART,                   4,  4 ; to merge
 	map_const MR_PSYCHICS_HOUSE,              4,  4
 	map_const SAFFRON_GYM,                   10,  9
 	map_const POKEMON_ACADEMY_1F2F,          19,  6 ; marcelnote - new map
@@ -255,7 +254,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const COLOSSEUM,                      5,  4
 DEF NUM_MAPS EQU const_value
 
-; marcelnote - current NUM_MAPS = 255 - 22 - 2 (last - start - extra lines) = 231
+; marcelnote - current NUM_MAPS = 254 - 22 - 2 (last - start - extra lines) = 230
 
 ; Indoor maps, such as houses, use this as the Map ID in their exit warps
 ; This map ID takes the player back to the last outdoor map they were on, stored in wLastMap
