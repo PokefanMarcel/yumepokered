@@ -19,7 +19,7 @@ DebugNewGameParty: ; unreferenced except in _DEBUG
 	; From https://web.archive.org/web/20000607152840/http://pocket.ign.com/news/14973.html
 	db EXEGGUTOR, 90
 IF DEF(_DEBUG)
-	db MEW, 95 ; marcelnote - increased from 5
+	db MEW, 90 ; marcelnote - increased from 5
 ELSE
 	db MEW, 20
 ENDC
