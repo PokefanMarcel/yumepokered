@@ -2203,6 +2203,7 @@ ArticunoEvosMoves:
 	db 55, AGILITY
 	db 60, REFLECT
 	db 65, DOUBLE_TEAM
+	; 71, TRI_ATTACK ?
 	db 0
 
 ZapdosEvosMoves:
@@ -2214,6 +2215,7 @@ ZapdosEvosMoves:
 	db 55, AGILITY
 	db 60, LIGHT_SCREEN
 	db 65, DOUBLE_TEAM
+	; 71, TRI_ATTACK ?
 	db 0
 
 MoltresEvosMoves:
@@ -2223,8 +2225,9 @@ MoltresEvosMoves:
 	db 25, SCREECH
 	db 51, SKY_ATTACK
 	db 55, AGILITY
-	db 60, FLAMETHROWER
+	db 60, FLAMETHROWER ; BARRIER?
 	db 65, DOUBLE_TEAM
+	; 71, TRI_ATTACK ?
 	db 0
 
 DratiniEvosMoves:
