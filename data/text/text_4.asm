@@ -163,8 +163,10 @@ _HMCantDeleteText::
 _PokemonCenterWelcomeText::
 	text "Welcome to our"
 	line "#MON CENTER!"
+	prompt
 
-	para "We heal your"
+_PokemonCenterPerfectHealthText:: ; marcelnote - broke down WelcomeText to skip this
+	text "We heal your"
 	line "#MON back to"
 	cont "perfect health!"
 	prompt

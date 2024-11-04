@@ -4,12 +4,13 @@ DisplayPokemonCenterDialogue_::
 	call PrintText
 	ld hl, wStatusFlags4
 	bit BIT_USED_POKECENTER, [hl]
-	set BIT_UNKNOWN_4_1, [hl]
-	set BIT_USED_POKECENTER, [hl]
-	jr nz, .skipShallWeHealYourPokemon
+	set BIT_UNKNOWN_4_1, [hl] ; marcelnote - never checked?
+	jr nz, .skipPerfectHealthText ; marcelnote - used to skip ShallWeHealYourPokemonText
+	ld hl, PokemonCenterPerfectHealthText
+	call PrintText
+.skipPerfectHealthText
 	ld hl, ShallWeHealYourPokemonText
 	call PrintText
-.skipShallWeHealYourPokemon
 	call YesNoChoicePokeCenter ; yes/no menu
 	ld a, [wCurrentMenuItem]
 	and a
@@ -31,8 +32,13 @@ DisplayPokemonCenterDialogue_::
 	ld [wLastMusicSoundID], a
 	ld [wNewSoundID], a
 	call PlaySound
+	ld hl, wStatusFlags4 ; marcelnote - now also skip PokemonFightingFitText
+	bit BIT_USED_POKECENTER, [hl]
+	jr nz, .skipFightingFitText
+	set BIT_USED_POKECENTER, [hl]
 	ld hl, PokemonFightingFitText
 	call PrintText
+.skipFightingFitText
 	ld a, $14
 	ld [wSprite01StateData1ImageIndex], a ; make the nurse bow
 	ld c, a
@@ -40,13 +46,23 @@ DisplayPokemonCenterDialogue_::
 	jr .done
 .declinedHealing
 	call LoadScreenTilesFromBuffer1 ; restore screen
-.done
+.done ; marcelnote - now we reset the bit once in a while to have the long text pop up sometimes
+	call Random
+	cp 31       ; 32/256 = 1/8 chance to reset text
+	jp nc, .dontReset
+	ld hl, wStatusFlags4
+	res BIT_USED_POKECENTER, [hl]
+.dontReset
 	ld hl, PokemonCenterFarewellText
 	call PrintText
 	jp UpdateSprites
 
 PokemonCenterWelcomeText:
 	text_far _PokemonCenterWelcomeText
+	text_end
+
+PokemonCenterPerfectHealthText: ; marcelnote - broke down PokemonCenterWelcomeText
+	text_far _PokemonCenterPerfectHealthText
 	text_end
 
 ShallWeHealYourPokemonText:
