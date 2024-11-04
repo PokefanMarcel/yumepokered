@@ -60,8 +60,8 @@ _CeladonMart6FClerkNoInventoryText:: ; marcelnote - new floor
 	line "currently out of"
 	cont "stock."
 
-	para "It appears there"
-	line "is a problem with"
+	para "We're waiting"
+	line "to hear from"
 	cont "our supplier on"
 	cont "MANDARIN ISLAND."
 	done
