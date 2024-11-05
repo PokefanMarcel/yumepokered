@@ -27,10 +27,10 @@ LoadMissableObjects:
 	sbc HIGH(MissableObjectsCont) ; sets carry flag if hl address is < MissableObjectsCont
 	ld de, MissableObjects
 	ResetEventA EVENT_USE_MISSABLE_OBJECTS_CONT_LIST
-	jr c, .useNormalList
+	jr c, .listLoaded
 	ld de, MissableObjectsCont
 	SetEventA EVENT_USE_MISSABLE_OBJECTS_CONT_LIST
-.useNormalList
+.listLoaded
 ;;;;;;
 	ld a, l
 	sub e
