@@ -5,7 +5,7 @@ ChampionsRoom_Script:
 	jp CallFunctionInTable
 
 ResetRivalScript:
-	xor a ; SCENE_CHAMPIONSROOM_DEFAULT
+	xor a ; SCRIPT_CHAMPIONSROOM_DEFAULT
 	ld [wJoyIgnore], a
 	ld [wChampionsRoomCurScript], a
 	ret
@@ -78,19 +78,12 @@ ChampionsRoomRivalReadyToBattleScript:
 .rematch2
 	;;;;;;
 	call SaveEndBattleTextPointers
-	ld a, TEXT_CHAMPIONSROOM_RIVAL ; marcelnote - have to reload the sprite ID so that it doesn't
+	ld a, TEXT_CHAMPIONSROOM_RIVAL ; marcelnote - have to reload the text ID so that it doesn't
 	ldh [hTextID], a  ;              disappear during the pre-battle animation
 	ld a, OPP_RIVAL3
 	ld [wCurOpponent], a
 
 	; select which team to use during the encounter
-;;;;;; marcelnote - if rematch, use team 4, 5 or 6
-	ld b, 3
-	CheckEvent EVENT_BECAME_CHAMPION
-	jr nz, .rematch3
-	ld b, 0
-.rematch3
-;;;;;;
 	ld a, [wRivalStarter]
 	cp STARTER2
 	jr nz, .NotStarter2
@@ -104,7 +97,13 @@ ChampionsRoomRivalReadyToBattleScript:
 .NotStarter3
 	ld a, $3
 .saveTrainerId
-	add b ; marcelnote - add 3 to team number if rematch
+;;;;;; marcelnote - if rematch, use team 4, 5 or 6
+	CheckEvent EVENT_BECAME_CHAMPION
+	jr z, .loadTrainerNo
+	ld b, 3
+	add b
+.loadTrainerNo
+;;;;;;
 	ld [wTrainerNo], a
 
 	xor a
