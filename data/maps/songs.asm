@@ -89,10 +89,9 @@ MapSongBanks::
 	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; UNDERGROUND_PATH_ROUTE_8
 	db MUSIC_ROUTES1, BANK(Music_Routes1)                  ; UNDERGROUND_PATH_NORTH_SOUTH
 	db MUSIC_ROUTES1, BANK(Music_Routes1)                  ; UNDERGROUND_PATH_WEST_EAST
-	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; VERMILION_POKECENTER
+	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; VERMILION_POKECENTER_MART ; marcelnote - merged Vermilion Pokecenter and Mart
 	db MUSIC_CITIES2, BANK(Music_Cities2)                  ; VERMILION_GOOD_ROD_HOUSE ; marcelnote - from Old to Good Rod
 	db MUSIC_VERMILION, BANK(Music_Vermilion)              ; POKEMON_FAN_CLUB
-	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; VERMILION_MART
 	db MUSIC_VERMILION, BANK(Music_Vermilion)              ; VERMILION_PIDGEY_HOUSE
 	db MUSIC_VERMILION, BANK(Music_Vermilion)              ; VERMILION_TRADE_HOUSE
 	db MUSIC_GYM, BANK(Music_Gym)                          ; VERMILION_GYM

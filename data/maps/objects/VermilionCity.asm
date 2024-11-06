@@ -10,9 +10,9 @@ VermilionCity_Object:
 	db $43 ; border block
 
 	def_warp_events
-	warp_event 11,  3, VERMILION_POKECENTER, 1
+	warp_event 11,  3, VERMILION_POKECENTER_MART, 1 ; marcelnote - merged Vermilion Pokecenter and Mart
 	warp_event  9, 13, POKEMON_FAN_CLUB, 1
-	warp_event 23, 13, VERMILION_MART, 1
+	warp_event 23, 13, VERMILION_POKECENTER_MART, 3 ; marcelnote - merged Vermilion Pokecenter and Mart
 	warp_event 12, 19, VERMILION_GYM, 1
 	warp_event 23, 19, VERMILION_PIDGEY_HOUSE, 1
 	warp_event 18, 31, VERMILION_DOCK, 1

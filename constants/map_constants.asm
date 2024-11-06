@@ -108,10 +108,9 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const UNDERGROUND_PATH_ROUTE_8,       4,  4
 	map_const UNDERGROUND_PATH_NORTH_SOUTH,   4, 23 ; marcelnote - fixed from y=24
 	map_const UNDERGROUND_PATH_WEST_EAST,    25,  4
-	map_const VERMILION_POKECENTER,           7,  4
+	map_const VERMILION_POKECENTER_MART,     14,  4 ; marcelnote - merged Vermilion Pokecenter and Mart
 	map_const VERMILION_GOOD_ROD_HOUSE,       4,  4 ; marcelnote - Old -> Good Rod
 	map_const POKEMON_FAN_CLUB,               4,  4
-	map_const VERMILION_MART,                 4,  4 ; to merge
 	map_const VERMILION_PIDGEY_HOUSE,         4,  4
 	map_const VERMILION_TRADE_HOUSE,          4,  4
 	map_const VERMILION_GYM,                  5,  9

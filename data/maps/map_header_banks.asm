@@ -87,10 +87,9 @@ MapHeaderBanks::
 	db BANK(UndergroundPathRoute8_h)
 	db BANK(UndergroundPathNorthSouth_h)
 	db BANK(UndergroundPathWestEast_h)
-	db BANK(VermilionPokecenter_h)
+	db BANK(VermilionPokecenterMart_h) ; marcelnote - merged Vermilion Pokecenter and Mart
 	db BANK(VermilionGoodRodHouse_h) ; marcelnote - from Old to Good Rod
 	db BANK(PokemonFanClub_h)
-	db BANK(VermilionMart_h)
 	db BANK(VermilionPidgeyHouse_h)
 	db BANK(VermilionTradeHouse_h)
 	db BANK(VermilionGym_h)

@@ -89,10 +89,9 @@ MapHSPointers:
 	dw NoHS                        ; UNDERGROUND_PATH_ROUTE_8
 	dw NoHS                        ; UNDERGROUND_PATH_NORTH_SOUTH
 	dw NoHS                        ; UNDERGROUND_PATH_WEST_EAST
-	dw NoHS                        ; VERMILION_POKECENTER
+	dw NoHS                        ; VERMILION_POKECENTER_MART ; marcelnote - merged Vermilion Pokecenter and Mart
 	dw NoHS                        ; VERMILION_GOOD_ROD_HOUSE
 	dw NoHS                        ; POKEMON_FAN_CLUB
-	dw NoHS                        ; VERMILION_MART
 	dw NoHS                        ; VERMILION_PIDGEY_HOUSE
 	dw NoHS                        ; VERMILION_TRADE_HOUSE
 	dw VermilionGymHS              ; VERMILION_GYM ; marcelnote - Lt.Surge rematch

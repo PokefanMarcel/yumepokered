@@ -796,19 +796,17 @@ HallOfFame_Blocks: INCBIN "maps/HallOfFame.blk"
 
 SECTION "Maps 15", ROMX
 
-VermilionMart_Blocks: INCBIN "maps/VermilionMart.blk"
-
 CopycatsHouse2F_Blocks: INCBIN "maps/CopycatsHouse2F.blk"
 
 Museum1F_Blocks: INCBIN "maps/Museum1F.blk"
 
 Museum2F_Blocks: INCBIN "maps/Museum2F.blk"
 
-VermilionPokecenter_Blocks:
 PewterPokecenter_Blocks: INCBIN "maps/PewterPokecenter.blk"
 
-CeruleanPokecenterMart_Blocks: ; marcelnote - merged Cerulean Pokecenter and Mart
-SaffronPokecenterMart_Blocks:  ; marcelnote - merged Saffron Pokecenter and Mart
+CeruleanPokecenterMart_Blocks:  ; marcelnote - merged Cerulean Pokecenter and Mart
+VermilionPokecenterMart_Blocks: ; marcelnote - merged Vermilion Pokecenter and Mart
+SaffronPokecenterMart_Blocks:   ; marcelnote - merged Saffron Pokecenter and Mart
 LavenderPokecenterMart_Blocks: INCBIN "maps/LavenderPokecenterMart.blk" ; marcelnote - merged Lavender Pokecenter and Mart
 
 UndergroundPathRoute7_Blocks:
@@ -852,13 +850,9 @@ INCLUDE "data/maps/headers/LavenderPokecenterMart.asm"
 INCLUDE "scripts/LavenderPokecenterMart.asm"
 INCLUDE "data/maps/objects/LavenderPokecenterMart.asm"
 
-INCLUDE "data/maps/headers/VermilionPokecenter.asm"
-INCLUDE "scripts/VermilionPokecenter.asm"
-INCLUDE "data/maps/objects/VermilionPokecenter.asm"
-
-INCLUDE "data/maps/headers/VermilionMart.asm"
-INCLUDE "scripts/VermilionMart.asm"
-INCLUDE "data/maps/objects/VermilionMart.asm"
+INCLUDE "data/maps/headers/VermilionPokecenterMart.asm" ; marcelnote - merged Vermilion Pokecenter and Mart
+INCLUDE "scripts/VermilionPokecenterMart.asm"
+INCLUDE "data/maps/objects/VermilionPokecenterMart.asm"
 
 INCLUDE "data/maps/headers/VermilionGym.asm"
 INCLUDE "scripts/VermilionGym.asm"

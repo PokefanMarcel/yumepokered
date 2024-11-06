@@ -87,10 +87,9 @@ MapHeaderPointers::
 	dw UndergroundPathRoute8_h
 	dw UndergroundPathNorthSouth_h
 	dw UndergroundPathWestEast_h
-	dw VermilionPokecenter_h
+	dw VermilionPokecenterMart_h ; marcelnote - merged Vermilion Pokecenter and Mart
 	dw VermilionGoodRodHouse_h ; marcelnote - from Old to Good Rod
 	dw PokemonFanClub_h
-	dw VermilionMart_h
 	dw VermilionPidgeyHouse_h
 	dw VermilionTradeHouse_h
 	dw VermilionGym_h
