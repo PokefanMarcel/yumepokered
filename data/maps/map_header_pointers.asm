@@ -53,11 +53,10 @@ MapHeaderPointers::
 	dw ViridianForestNorthGate_h
 	dw Route2TradeHouse_h
 	dw DiglettsCaveRoute2_h
-	dw PewterPokecenter_h
+	dw PewterPokecenterMart_h ; marcelnote - merged Pewter Pokecenter and Mart
 	dw Museum1F_h
 	dw Museum2F_h
 	dw PewterNidoranHouse_h
-	dw PewterMart_h
 	dw PewterSpeechHouse_h
 	dw PewterGym_h
 	dw CeladonGroveNorthGate_h ; marcelnote - new location

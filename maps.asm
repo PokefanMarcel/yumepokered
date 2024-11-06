@@ -802,8 +802,7 @@ Museum1F_Blocks: INCBIN "maps/Museum1F.blk"
 
 Museum2F_Blocks: INCBIN "maps/Museum2F.blk"
 
-PewterPokecenter_Blocks: INCBIN "maps/PewterPokecenter.blk"
-
+PewterPokecenterMart_Blocks:    ; marcelnote - merged Pewter Pokecenter and Mart
 CeruleanPokecenterMart_Blocks:  ; marcelnote - merged Cerulean Pokecenter and Mart
 VermilionPokecenterMart_Blocks: ; marcelnote - merged Vermilion Pokecenter and Mart
 SaffronPokecenterMart_Blocks:   ; marcelnote - merged Saffron Pokecenter and Mart
@@ -833,9 +832,9 @@ INCLUDE "scripts/PewterGym.asm"
 INCLUDE "data/maps/objects/PewterGym.asm"
 PewterGym_Blocks: INCBIN "maps/PewterGym.blk"
 
-INCLUDE "data/maps/headers/PewterPokecenter.asm"
-INCLUDE "scripts/PewterPokecenter.asm"
-INCLUDE "data/maps/objects/PewterPokecenter.asm"
+INCLUDE "data/maps/headers/PewterPokecenterMart.asm" ; marcelnote - merged Pewter Pokecenter and Mart
+INCLUDE "scripts/PewterPokecenterMart.asm"
+INCLUDE "data/maps/objects/PewterPokecenterMart.asm"
 
 INCLUDE "data/maps/headers/CeruleanPokecenterMart.asm" ; marcelnote - merged Cerulean Pokecenter and Mart
 INCLUDE "scripts/CeruleanPokecenterMart.asm"
@@ -1038,8 +1037,6 @@ SECTION "Maps 19", ROMX
 
 CopycatsHouse1F_Blocks: INCBIN "maps/CopycatsHouse1F.blk"
 
-PewterMart_Blocks: INCBIN "maps/PewterMart.blk"
-
 FuchsiaBillsGrandpasHouse_Blocks: INCBIN "maps/FuchsiaBillsGrandpasHouse.blk"
 
 FuchsiaPokecenter_Blocks: INCBIN "maps/FuchsiaPokecenter.blk"
@@ -1057,10 +1054,6 @@ INCLUDE "data/maps/headers/ViridianGym.asm"
 INCLUDE "scripts/ViridianGym.asm"
 INCLUDE "data/maps/objects/ViridianGym.asm"
 ViridianGym_Blocks: INCBIN "maps/ViridianGym.blk"
-
-INCLUDE "data/maps/headers/PewterMart.asm"
-INCLUDE "scripts/PewterMart.asm"
-INCLUDE "data/maps/objects/PewterMart.asm"
 
 INCLUDE "data/maps/headers/CeruleanCave1F.asm"
 INCLUDE "scripts/CeruleanCave1F.asm"

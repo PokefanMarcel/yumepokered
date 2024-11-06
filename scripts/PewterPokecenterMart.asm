@@ -1,13 +1,19 @@
-PewterPokecenter_Script:
+; marcelnote - merged Pewter Pokecenter and Mart
+PewterPokecenterMart_Script:
 	call Serial_TryEstablishingExternallyClockedConnection
 	jp EnableAutoTextBoxDrawing
 
-PewterPokecenter_TextPointers:
+PewterPokecenterMart_TextPointers:
 	def_text_pointers
+	; Pokecenter
 	dw_const PewterPokecenterNurseText,            TEXT_PEWTERPOKECENTER_NURSE
 	dw_const PewterPokecenterGentlemanText,        TEXT_PEWTERPOKECENTER_GENTLEMAN
 	dw_const PewterPokecenterJigglypuffText,       TEXT_PEWTERPOKECENTER_JIGGLYPUFF
 	dw_const PewterPokecenterLinkReceptionistText, TEXT_PEWTERPOKECENTER_LINK_RECEPTIONIST
+	; Mart
+	dw_const PewterMartClerkText,     TEXT_PEWTERMART_CLERK
+	dw_const PewterMartYoungsterText, TEXT_PEWTERMART_YOUNGSTER
+	dw_const PewterMartSuperNerdText, TEXT_PEWTERMART_SUPER_NERD
 
 PewterPokecenterNurseText:
 	script_pokecenter_nurse
@@ -85,3 +91,27 @@ PewterPokecenterJigglypuffText:
 
 PewterPokecenterLinkReceptionistText:
 	script_cable_club_receptionist
+
+PewterMartYoungsterText:
+;	text_asm
+;	ld hl, .Text
+;	call PrintText
+;	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+;
+;.Text:
+	text_far _PewterMartYoungsterText
+	text_end
+
+PewterMartSuperNerdText:
+;	text_asm
+;	ld hl, .Text
+;	call PrintText
+;	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+;
+;.Text:
+	text_far _PewterMartSuperNerdText
+	text_end
+
+PewterMartClerkText: ; marcelnote - moved Mart inventories
+	script_mart POKE_BALL, POTION, ESCAPE_ROPE, ANTIDOTE, BURN_HEAL, AWAKENING, PARLYZ_HEAL
+

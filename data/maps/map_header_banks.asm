@@ -53,11 +53,10 @@ MapHeaderBanks::
 	db BANK(ViridianForestNorthGate_h)
 	db BANK(Route2TradeHouse_h)
 	db BANK(DiglettsCaveRoute2_h)
-	db BANK(PewterPokecenter_h)
+	db BANK(PewterPokecenterMart_h) ; marcelnote - merged Pewter Pokecenter and Mart
 	db BANK(Museum1F_h)
 	db BANK(Museum2F_h)
 	db BANK(PewterNidoranHouse_h)
-	db BANK(PewterMart_h)
 	db BANK(PewterSpeechHouse_h)
 	db BANK(PewterGym_h)
 	db BANK(CeladonGroveNorthGate_h) ; marcelnote - new location
