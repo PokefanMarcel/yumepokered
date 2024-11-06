@@ -249,6 +249,7 @@ BillsHouse_Blocks: INCBIN "maps/BillsHouse.blk"
 SECTION "Maps 5", ROMX
 
 INCLUDE "data/maps/headers/LavenderTown.asm"
+INCLUDE "scripts/LavenderTown.asm"
 INCLUDE "data/maps/objects/LavenderTown.asm"
 LavenderTown_Blocks: INCBIN "maps/LavenderTown.blk"
 
@@ -256,8 +257,6 @@ SafariZoneCenterRestHouse_Blocks:
 SafariZoneWestRestHouse_Blocks:
 SafariZoneEastRestHouse_Blocks:
 SafariZoneNorthRestHouse_Blocks: INCBIN "maps/SafariZoneCenterRestHouse.blk"
-
-INCLUDE "scripts/LavenderTown.asm"
 
 
 SECTION "Maps 6", ROMX   ; marcelnote - maps with dungeon warps (holes) need to be here
