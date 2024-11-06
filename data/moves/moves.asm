@@ -50,7 +50,7 @@ Moves:
 	move THRASH,       THRASH_PETAL_DANCE_EFFECT,   90, NORMAL,       100, 20
 	move DOUBLE_EDGE,  RECOIL_EFFECT,              120, NORMAL,       100, 10 ; marcelnote - changed from pwr 100, pp 15
 	move TAIL_WHIP,    DEFENSE_DOWN1_EFFECT,         0, NORMAL,       100, 30
-	move POISON_STING, POISON_SIDE_EFFECT1,         25, POISON,       100, 35 ; marcelnote - changed from pwr 15
+	move POISON_STING, POISON_SIDE_EFFECT1,         20, POISON,       100, 35 ; marcelnote - changed from pwr 15
 	move TWINEEDLE,    TWINEEDLE_EFFECT,            30, BUG,          100, 20 ; marcelnote - changed from pwr 25
 	move PIN_MISSILE,  TWO_TO_FIVE_ATTACKS_EFFECT,  20, BUG,           95, 15 ; marcelnote - changed from pwr 14, acc 85, pp 20
 	move LEER,         DEFENSE_DOWN1_EFFECT,         0, NORMAL,       100, 30
@@ -133,7 +133,7 @@ Moves:
 	move SELFDESTRUCT, EXPLODE_EFFECT,             130, NORMAL,       100,  5
 	move EGG_BOMB,     NO_ADDITIONAL_EFFECT,       100, NORMAL,        75, 10
 	move LICK,         PARALYZE_SIDE_EFFECT2,       25, GHOST,        100, 25 ; marcelnote - changed from pwr 20, pp 30
-	move SMOG,         POISON_SIDE_EFFECT2,         25, POISON,        85, 20 ; marcelnote - changed from pwr 20, acc 70
+	move SMOG,         POISON_SIDE_EFFECT2,         30, POISON,        85, 20 ; marcelnote - changed from pwr 20, acc 70
 	move SLUDGE,       POISON_SIDE_EFFECT2,         85, POISON,       100, 15 ; marcelnote - changed from pwr 65, pp 20
 	move BONE_CLUB,    FLINCH_SIDE_EFFECT1,         65, GROUND,        85, 20
 	move FIRE_BLAST,   BURN_SIDE_EFFECT2,          120, FIRE,          85,  5
