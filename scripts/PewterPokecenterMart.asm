@@ -92,23 +92,11 @@ PewterPokecenterJigglypuffText:
 PewterPokecenterLinkReceptionistText:
 	script_cable_club_receptionist
 
-PewterMartYoungsterText:
-;	text_asm
-;	ld hl, .Text
-;	call PrintText
-;	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-;
-;.Text:
+PewterMartYoungsterText: ; marcelnote - simplified code
 	text_far _PewterMartYoungsterText
 	text_end
 
-PewterMartSuperNerdText:
-;	text_asm
-;	ld hl, .Text
-;	call PrintText
-;	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-;
-;.Text:
+PewterMartSuperNerdText: ; marcelnote - simplified code
 	text_far _PewterMartSuperNerdText
 	text_end
 
