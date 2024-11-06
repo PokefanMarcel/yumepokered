@@ -114,7 +114,7 @@ _CeladonMansion4FHackerText::
 
 _CeladonMansion4FExeggutorSurfPCText::
     text "An EXEGGUTOR who"
-    line "can SURF?!"
+    line "can FLY?!"
 	done
 
 _CeladonMansion4FYumeLabsSignText::
