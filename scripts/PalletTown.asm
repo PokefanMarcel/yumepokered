@@ -151,9 +151,9 @@ PalletTownDaisyScript: ; marcelnote - this was adjusted to move on to SCRIPT_PAL
 PalletTown_TextPointers:
 	def_text_pointers
 	dw_const PalletTownOakText,              TEXT_PALLETTOWN_OAK
-	dw_const PalletTownGirlText,             TEXT_PALLETTOWN_GIRL
+	dw_const PalletTownGirl1Text,            TEXT_PALLETTOWN_GIRL1
 	dw_const PalletTownFisherText,           TEXT_PALLETTOWN_FISHER
-	dw_const PalletTownCooltrainerMText,     TEXT_PALLETTOWN_COOLTRAINER_M ; marcelnote - new
+	dw_const PalletTownGirl2Text,            TEXT_PALLETTOWN_GIRL2 ; marcelnote - new
 	dw_const PalletTownOaksLabSignText,      TEXT_PALLETTOWN_OAKSLAB_SIGN
 	dw_const PalletTownSignText,             TEXT_PALLETTOWN_SIGN
 	dw_const PalletTownPlayersHouseSignText, TEXT_PALLETTOWN_PLAYERSHOUSE_SIGN
@@ -192,16 +192,16 @@ PalletTownOakText:
 	text_far _PalletTownOakItsUnsafeText
 	text_end
 
-PalletTownGirlText:
-	text_far _PalletTownGirlText
+PalletTownGirl1Text:
+	text_far _PalletTownGirl1Text
 	text_end
 
 PalletTownFisherText:
 	text_far _PalletTownFisherText
 	text_end
 
-PalletTownCooltrainerMText: ; marcelnote - new
-	text_far _PalletTownCooltrainerMText
+PalletTownGirl2Text: ; marcelnote - new
+	text_far _PalletTownGirl2Text
 	text_end
 
 PalletTownOaksLabSignText:

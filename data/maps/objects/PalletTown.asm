@@ -1,8 +1,8 @@
 	object_const_def
 	const_export PALLETTOWN_OAK
-	const_export PALLETTOWN_GIRL
+	const_export PALLETTOWN_GIRL1
 	const_export PALLETTOWN_FISHER
-	const_export PALLETTOWN_COOLTRAINER_M ; marcelnote - new
+	const_export PALLETTOWN_GIRL2 ; marcelnote - new
 
 PalletTown_Object:
 	db $b ; border block
@@ -23,8 +23,8 @@ PalletTown_Object:
 
 	def_object_events
 	object_event  9,  5, SPRITE_OAK, STAY, UP, TEXT_PALLETTOWN_OAK ; marcelnote - changed from x=8, NONE
-	object_event  3,  8, SPRITE_GIRL, WALK, ANY_DIR, TEXT_PALLETTOWN_GIRL
+	object_event  3,  8, SPRITE_GIRL, WALK, ANY_DIR, TEXT_PALLETTOWN_GIRL1
 	object_event 11, 14, SPRITE_FISHER, WALK, ANY_DIR, TEXT_PALLETTOWN_FISHER
-	object_event 23, 11, SPRITE_COOLTRAINER_M, WALK, LEFT_RIGHT, TEXT_PALLETTOWN_COOLTRAINER_M ; marcelnote - new
+	object_event 23, 11, SPRITE_GIRL, WALK, LEFT_RIGHT, TEXT_PALLETTOWN_GIRL2 ; marcelnote - new
 
 	def_warps_to PALLET_TOWN
