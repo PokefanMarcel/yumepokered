@@ -41,8 +41,7 @@ WildDataPointers:
 	dw NothingWildMons                 ; REDS_YELLOWS_HOUSE
 	dw NothingWildMons                 ; BLUES_AIDES_HOUSES
 	dw NothingWildMons                 ; OAKS_LAB
-	dw NothingWildMons                 ; VIRIDIAN_POKECENTER
-	dw NothingWildMons                 ; VIRIDIAN_MART
+	dw NothingWildMons                 ; VIRIDIAN_POKECENTER_MART ; marcelnote - merged Viridian Pokecenter and Mart
 	dw NothingWildMons                 ; VIRIDIAN_SCHOOL_HOUSE
 	dw NothingWildMons                 ; VIRIDIAN_NICKNAME_HOUSE
 	dw NothingWildMons                 ; VIRIDIAN_GYM

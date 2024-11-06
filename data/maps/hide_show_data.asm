@@ -42,10 +42,9 @@ MapHSPointers:
 	dw Route25HS       ; ROUTE_25
 	dw NoHS            ; ROUTE_28 ; marcelnote - new location
 	dw RedsYellowsHousesHS         ; REDS_YELLOWS_HOUSES ; marcelnote - added to hide Yellow asleep
-	dw BluesAidesHousesHS          ; BLUES_AIDES_HOUSES ;marcelnote - merged Blue's house with new Aide's house
+	dw BluesAidesHousesHS          ; BLUES_AIDES_HOUSES  ; marcelnote - merged Blue's house with new Aide's house
 	dw OaksLabHS                   ; OAKS_LAB
-	dw NoHS                        ; VIRIDIAN_POKECENTER
-	dw NoHS                        ; VIRIDIAN_MART
+	dw NoHS                        ; VIRIDIAN_POKECENTER_MART ; marcelnote - merged Viridian Pokecenter and Mart
 	dw NoHS                        ; VIRIDIAN_SCHOOL_HOUSE
 	dw NoHS                        ; VIRIDIAN_NICKNAME_HOUSE
 	dw ViridianGymHS               ; VIRIDIAN_GYM

@@ -1,3 +1,21 @@
+; marcelnote - merged Viridian Pokecenter and Mart
+_ViridianPokecenterGentlemanText::
+	text "You can use that"
+	line "PC in the corner."
+
+	para "The receptionist"
+	line "told me. So kind!"
+	done
+
+_ViridianPokecenterCooltrainerMText::
+	text "There's a #MON"
+	line "CENTER in every"
+	cont "town ahead."
+
+	para "They don't charge"
+	line "any money either!"
+	done
+
 _ViridianMartClerkSayHiToOakText::
 	text "Okay! Say hi to"
 	line "PROF.OAK for me!"
