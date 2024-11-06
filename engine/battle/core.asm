@@ -2863,7 +2863,7 @@ PrintMenuItem: ; marcelnote - this menu was revamped to also show power and accu
 	ld a, [wCurrentMenuItem]
 	cp b
 	jr nz, .notDisabled
-	hlcoord 1, 10
+	hlcoord 1, 9 ; marcelnote - was y=10
 	ld de, DisabledText
 	call PlaceString
 	jp .moveDisabled ; marcelnote - was jr
@@ -3003,7 +3003,7 @@ PrintMenuItem: ; marcelnote - this menu was revamped to also show power and accu
 	jp Delay3
 
 DisabledText:
-	db "disabled!@"
+	db "disabled@" ; marcelnote - was "disabled!@", removed ! since box is now narrower
 
 TypeText:
 	db "TYPE@"
