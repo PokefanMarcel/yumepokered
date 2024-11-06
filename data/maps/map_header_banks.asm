@@ -66,12 +66,11 @@ MapHeaderBanks::
 	db BANK(MtMoonB1F_h)
 	db BANK(MtMoonB2F_h)
 	db BANK(MtMoonSquare_h) ; marcelnote - new location
-	db BANK(CeruleanPokecenter_h)
+	db BANK(CeruleanPokecenterMart_h) ; marcelnote - merged Cerulean Pokecenter and Mart
 	db BANK(CeruleanTrashedHouse_h)
 	db BANK(CeruleanTradeHouse_h)
 	db BANK(CeruleanBadgeHouse_h)
 	db BANK(BikeShop_h)
-	db BANK(CeruleanMart_h)
 	db BANK(CeruleanGym_h)
 	db BANK(CeruleanCave1F_h)
 	db BANK(CeruleanCave2F_h)

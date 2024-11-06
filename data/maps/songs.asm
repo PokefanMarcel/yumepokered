@@ -68,12 +68,11 @@ MapSongBanks::
 	db MUSIC_DUNGEON3, BANK(Music_Dungeon3)                ; MT_MOON_B1F
 	db MUSIC_DUNGEON3, BANK(Music_Dungeon3)                ; MT_MOON_B2F
 	db MUSIC_ROUTES3, BANK(Music_Routes3)                  ; MT_MOON_SQUARE ; marcelnote - new location
-	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; CERULEAN_POKECENTER
+	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; CERULEAN_POKECENTER_MART  ; marcelnote - merged Cerulean Pokecenter and Mart
 	db MUSIC_CITIES2, BANK(Music_Cities2)                  ; CERULEAN_TRASHED_HOUSE
 	db MUSIC_CITIES2, BANK(Music_Cities2)                  ; CERULEAN_TRADE_HOUSE
 	db MUSIC_CITIES2, BANK(Music_Cities2)                  ; CERULEAN_BADGE_HOUSE ; marcelnote - changed from MUSIC_CITIES1
 	db MUSIC_CITIES2, BANK(Music_Cities2)                  ; BIKE_SHOP
-	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; CERULEAN_MART
 	db MUSIC_GYM, BANK(Music_Gym)                          ; CERULEAN_GYM
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1)                ; CERULEAN_CAVE_1F
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1)                ; CERULEAN_CAVE_2F

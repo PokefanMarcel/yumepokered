@@ -68,12 +68,11 @@ MapHSPointers:
 	dw NoHS                        ; MT_MOON_B1F
 	dw MtMoonB2FHS                 ; MT_MOON_B2F
 	dw MtMoonSquareHS              ; MT_MOON_SQUARE          ; marcelnote - new location
-	dw NoHS                        ; CERULEAN_POKECENTER
+	dw NoHS                        ; CERULEAN_POKECENTER_MART  ; marcelnote - merged Cerulean Pokecenter and Mart
 	dw NoHS                        ; CERULEAN_TRASHED_HOUSE
 	dw NoHS                        ; CERULEAN_TRADE_HOUSE
 	dw NoHS                        ; CERULEAN_BADGE_HOUSE
 	dw NoHS                        ; BIKE_SHOP
-	dw NoHS                        ; CERULEAN_MART
 	dw CeruleanGymHS               ; CERULEAN_GYM            ; marcelnote - Misty rematch
 	dw CeruleanCave1FHS            ; CERULEAN_CAVE_1F
 	dw CeruleanCave2FHS            ; CERULEAN_CAVE_2F

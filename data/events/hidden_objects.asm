@@ -10,9 +10,8 @@ HiddenObjectMaps:
 	db PEWTER_GYM
 	db PEWTER_MART
 	db PEWTER_POKECENTER
-	db CERULEAN_POKECENTER
+	db CERULEAN_POKECENTER_MART ; marcelnote - merged Cerulean Pokecenter and Mart
 	db CERULEAN_GYM
-	db CERULEAN_MART
 	db LAVENDER_POKECENTER_MART ; marcelnote - merged Lavender Pokecenter and Mart
 	db VERMILION_POKECENTER
 	db VERMILION_GYM
@@ -106,9 +105,8 @@ HiddenObjectPointers:
 	dw PewterGymHiddenObjects
 	dw PewterMartHiddenObjects
 	dw PewterPokecenterHiddenObjects
-	dw CeruleanPokecenterHiddenObjects
+	dw CeruleanPokecenterMartHiddenObjects ; marcelnote - merged Cerulean Pokecenter and Mart
 	dw CeruleanGymHiddenObjects
-	dw CeruleanMartHiddenObjects
 	dw LavenderPokecenterMartHiddenObjects ; marcelnote - merged Lavender Pokecenter and Mart
 	dw VermilionPokecenterHiddenObjects
 	dw VermilionGymHiddenObjects
@@ -270,7 +268,7 @@ PewterPokecenterHiddenObjects:
 	hidden_object 13,  3, SPRITE_FACING_UP, OpenPokemonCenterPC
 	db -1 ; end
 
-CeruleanPokecenterHiddenObjects:
+CeruleanPokecenterMartHiddenObjects: ; marcelnote - merged Cerulean Pokecenter and Mart
 	hidden_object  0,  4, SPRITE_FACING_LEFT, PrintBenchGuyText
 	hidden_object 13,  3, SPRITE_FACING_UP, OpenPokemonCenterPC
 	db -1 ; end
@@ -278,9 +276,6 @@ CeruleanPokecenterHiddenObjects:
 CeruleanGymHiddenObjects:
 	hidden_object  3, 11, SPRITE_FACING_UP, GymStatues
 	hidden_object  6, 11, SPRITE_FACING_UP, GymStatues
-	db -1 ; end
-
-CeruleanMartHiddenObjects:
 	db -1 ; end
 
 LavenderPokecenterMartHiddenObjects:

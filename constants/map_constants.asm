@@ -87,12 +87,11 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const MT_MOON_B1F,                   14, 14
 	map_const MT_MOON_B2F,                   20, 18
 	map_const MT_MOON_SQUARE,                12,  6 ; marcelnote - new map
-	map_const CERULEAN_POKECENTER,            7,  4
+	map_const CERULEAN_POKECENTER_MART,      14,  4 ; marcelnote - merged Cerulean Pokecenter and Mart
 	map_const CERULEAN_TRASHED_HOUSE,         4,  4
 	map_const CERULEAN_TRADE_HOUSE,           4,  4
 	map_const CERULEAN_BADGE_HOUSE,           4,  4
 	map_const BIKE_SHOP,                      4,  4
-	map_const CERULEAN_MART,                  4,  4 ; to merge
 	map_const CERULEAN_GYM,                   5,  7
 	map_const CERULEAN_CAVE_1F,              15,  9
 	map_const CERULEAN_CAVE_2F,              15,  9

@@ -165,10 +165,9 @@ INCLUDE "text/PewterSpeechHouse.asm"
 INCLUDE "text/PewterPokecenter.asm"
 INCLUDE "text/CeruleanTrashedHouse.asm"
 INCLUDE "text/CeruleanTradeHouse.asm"
-INCLUDE "text/CeruleanPokecenter.asm"
+INCLUDE "text/CeruleanPokecenterMart.asm" ; marcelnote - merged Cerulean Pokecenter and Mart
 INCLUDE "text/CeruleanGym.asm"
 INCLUDE "text/BikeShop.asm"
-INCLUDE "text/CeruleanMart.asm"
 INCLUDE "text/CeruleanBadgeHouse.asm"
 INCLUDE "text/LavenderPokecenterMart.asm" ; marcelnote - merged Lavender Pokecenter and Mart
 INCLUDE "text/PokemonTower1F.asm"
