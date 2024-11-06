@@ -150,8 +150,7 @@ INCLUDE "text/ViridianSchoolHouse.asm"
 INCLUDE "text/ViridianNicknameHouse.asm"
 INCLUDE "text/ViridianGym.asm"
 INCLUDE "text/Route22OldRodHouse.asm" ; marcelnote - new location
-INCLUDE "text/Museum1F.asm"
-INCLUDE "text/Museum2F.asm"
+INCLUDE "text/PewterMuseum.asm" ; marcelnote - merged Pewter Museum floors
 INCLUDE "text/PewterGym.asm"
 
 

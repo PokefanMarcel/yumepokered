@@ -5,7 +5,7 @@ HiddenObjectMaps:
 	db VIRIDIAN_POKECENTER_MART ; marcelnote - merged Viridian Pokecenter and Mart
 	db VIRIDIAN_SCHOOL_HOUSE
 	db VIRIDIAN_GYM
-	db MUSEUM_1F
+	db PEWTER_MUSEUM ; marcelnote - merged Pewter Museum floors
 	db PEWTER_GYM
 	db PEWTER_POKECENTER_MART    ; marcelnote - merged Pewter Pokecenter and Mart
 	db CERULEAN_POKECENTER_MART  ; marcelnote - merged Cerulean Pokecenter and Mart
@@ -98,7 +98,7 @@ HiddenObjectPointers:
 	dw ViridianPokecenterMartHiddenObjects ; marcelnote - merged Viridian Pokecenter and Mart
 	dw ViridianSchoolHiddenObjects
 	dw ViridianGymHiddenObjects
-	dw Museum1FHiddenObjects
+	dw PewterMuseumHiddenObjects ; marcelnote - merged Pewter Museum floors - to change in bg objects like on 2F?
 	dw PewterGymHiddenObjects
 	dw PewterPokecenterMartHiddenObjects    ; marcelnote - merged Pewter Pokecenter and Mart
 	dw CeruleanPokecenterMartHiddenObjects  ; marcelnote - merged Cerulean Pokecenter and Mart
@@ -243,9 +243,9 @@ ViridianGymHiddenObjects:
 	hidden_object 18, 15, SPRITE_FACING_UP, GymStatues
 	db -1 ; end
 
-Museum1FHiddenObjects:
-	hidden_object  2,  3, SPRITE_FACING_UP, AerodactylFossil
-	hidden_object  2,  6, SPRITE_FACING_UP, KabutopsFossil
+PewterMuseumHiddenObjects: ; marcelnote - merged Pewter Museum floors
+	hidden_object  2, 15, SPRITE_FACING_UP, AerodactylFossil
+	hidden_object  2, 18, SPRITE_FACING_UP, KabutopsFossil
 	db -1 ; end
 
 PewterGymHiddenObjects:

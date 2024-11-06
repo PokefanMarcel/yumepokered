@@ -781,9 +781,7 @@ SECTION "Maps 15", ROMX
 
 CopycatsHouse2F_Blocks: INCBIN "maps/CopycatsHouse2F.blk"
 
-Museum1F_Blocks: INCBIN "maps/Museum1F.blk"
-
-Museum2F_Blocks: INCBIN "maps/Museum2F.blk"
+PewterMuseum_Blocks: INCBIN "maps/PewterMuseum.blk" ; marcelnote - merged Pewter Museum floors
 
 ViridianPokecenterMart_Blocks:  ; marcelnote - merged Viridian Pokecenter and Mart
 PewterPokecenterMart_Blocks:    ; marcelnote - merged Pewter Pokecenter and Mart
@@ -807,13 +805,9 @@ INCLUDE "data/maps/headers/ViridianPokecenterMart.asm" ; marcelnote - merged Vir
 INCLUDE "scripts/ViridianPokecenterMart.asm"
 INCLUDE "data/maps/objects/ViridianPokecenterMart.asm"
 
-INCLUDE "data/maps/headers/Museum1F.asm"
-INCLUDE "scripts/Museum1F.asm"
-INCLUDE "data/maps/objects/Museum1F.asm"
-
-INCLUDE "data/maps/headers/Museum2F.asm"
-INCLUDE "scripts/Museum2F.asm"
-INCLUDE "data/maps/objects/Museum2F.asm"
+INCLUDE "data/maps/headers/PewterMuseum.asm" ; marcelnote - merged Pewter Museum floors
+INCLUDE "scripts/PewterMuseum.asm"
+INCLUDE "data/maps/objects/PewterMuseum.asm"
 
 INCLUDE "data/maps/headers/PewterGym.asm"
 INCLUDE "scripts/PewterGym.asm"

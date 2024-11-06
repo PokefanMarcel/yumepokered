@@ -9,8 +9,8 @@ PewterCity_Object:
 	db $a ; border block
 
 	def_warp_events
-	warp_event 14,  7, MUSEUM_1F, 1
-	warp_event 19,  5, MUSEUM_1F, 3
+	warp_event 14,  7, PEWTER_MUSEUM, 1 ; marcelnote - merged Pewter Museum floors
+	warp_event 19,  5, PEWTER_MUSEUM, 3 ; marcelnote - merged Pewter Museum floors
 	warp_event 16, 17, PEWTER_GYM, 1
 	warp_event 29, 13, PEWTER_NIDORAN_HOUSE, 1
 	warp_event 23, 17, PEWTER_POKECENTER_MART, 3 ; marcelnote - merged Pewter Pokecenter and Mart

@@ -1968,7 +1968,7 @@ wMtSilver3FCurScript:: db ; marcelnote - added for Mt Silver 3F trainers, took 1
 	ds 5
 wSSAnneBowCurScript:: db
 wViridianForestCurScript:: db
-wMuseum1FCurScript:: db
+wPewterMuseumCurScript:: db ; marcelnote - merged Pewter Museum floors
 wRoute13CurScript:: db
 wRoute14CurScript:: db
 wRoute17CurScript:: db
