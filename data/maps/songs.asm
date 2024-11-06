@@ -55,8 +55,7 @@ MapSongBanks::
 	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; ROUTE_2_TRADE_HOUSE
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2)                ; DIGLETTS_CAVE_ROUTE_2
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; PEWTER_POKECENTER_MART ; marcelnote - merged Pewter Pokecenter and Mart
-	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; MUSEUM_1F
-	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; MUSEUM_2F
+	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; PEWTER_MUSEUM ; marcelnote - merged Pewter Museum floors
 	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; PEWTER_NIDORAN_HOUSE
 	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; PEWTER_SPEECH_HOUSE
 	db MUSIC_GYM, BANK(Music_Gym)                          ; PEWTER_GYM

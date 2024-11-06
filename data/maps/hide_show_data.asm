@@ -55,8 +55,7 @@ MapHSPointers:
 	dw NoHS                        ; ROUTE_2_TRADE_HOUSE
 	dw NoHS                        ; DIGLETTS_CAVE_ROUTE_2
 	dw NoHS                        ; PEWTER_POKECENTER_MART ; marcelnote - merged Pewter Pokecenter and Mart
-	dw Museum1FHS                  ; MUSEUM_1F
-	dw NoHS                        ; MUSEUM_2F
+	dw PewterMuseumHS              ; PEWTER_MUSEUM ; marcelnote - merged Pewter Museum floors
 	dw NoHS                        ; PEWTER_NIDORAN_HOUSE
 	dw NoHS                        ; PEWTER_SPEECH_HOUSE
 	dw PewterGymHS                 ; PEWTER_GYM              ; marcelnote - Brock rematch
@@ -295,8 +294,8 @@ OaksLabHS:
 ViridianGymHS:
 	db VIRIDIAN_GYM, VIRIDIANGYM_GIOVANNI, SHOW
 	db VIRIDIAN_GYM, VIRIDIANGYM_REVIVE,   SHOW
-Museum1FHS:
-	db MUSEUM_1F, MUSEUM1F_OLD_AMBER, SHOW
+PewterMuseumHS:
+	db PEWTER_MUSEUM, PEWTERMUSEUM1F_OLD_AMBER, SHOW
 CeruleanCave1FHS:
 	db CERULEAN_CAVE_1F, CERULEANCAVE1F_FULL_RESTORE, SHOW
 	db CERULEAN_CAVE_1F, CERULEANCAVE1F_MAX_ELIXIR,   SHOW

@@ -74,8 +74,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const ROUTE_2_TRADE_HOUSE,            4,  4
 	map_const DIGLETTS_CAVE_ROUTE_2,          4,  4
 	map_const PEWTER_POKECENTER_MART,        14,  4 ; marcelnote - merged Pewter Pokecenter and Mart
-	map_const MUSEUM_1F,                     10,  4
-	map_const MUSEUM_2F,                      7,  4 ; to merge ?
+	map_const PEWTER_MUSEUM,                 10, 10 ; marcelnote - merged Pewter Museum floors
 	map_const PEWTER_NIDORAN_HOUSE,           4,  4
 	map_const PEWTER_SPEECH_HOUSE,            4,  4
 	map_const PEWTER_GYM,                     5,  7

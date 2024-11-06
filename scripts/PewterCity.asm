@@ -16,7 +16,7 @@ PewterCity_ScriptPointers:
 
 PewterCityDefaultScript:
 	xor a
-	ld [wMuseum1FCurScript], a
+	ld [wPewterMuseumCurScript], a ; marcelnote - merged Pewter Museum floors
 	ResetEvent EVENT_BOUGHT_MUSEUM_TICKET
 	call PewterCityCheckPlayerLeavingEastScript
 	ret
