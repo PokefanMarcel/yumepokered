@@ -86,10 +86,9 @@ WildDataPointers:
 	dw NothingWildMons                 ; UNDERGROUND_PATH_ROUTE_8
 	dw NothingWildMons                 ; UNDERGROUND_PATH_NORTH_SOUTH
 	dw NothingWildMons                 ; UNDERGROUND_PATH_WEST_EAST
-	dw NothingWildMons                 ; VERMILION_POKECENTER
+	dw NothingWildMons                 ; VERMILION_POKECENTER_MART ; marcelnote - merged Vermilion Pokecenter and Mart
 	dw NothingWildMons                 ; VERMILION_GOOD_ROD_HOUSE
 	dw NothingWildMons                 ; POKEMON_FAN_CLUB
-	dw NothingWildMons                 ; VERMILION_MART
 	dw NothingWildMons                 ; VERMILION_PIDGEY_HOUSE
 	dw NothingWildMons                 ; VERMILION_TRADE_HOUSE
 	dw NothingWildMons                 ; VERMILION_GYM

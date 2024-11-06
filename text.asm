@@ -180,9 +180,8 @@ INCLUDE "text/PokemonTower7F.asm"
 INCLUDE "text/MrFujisHouse.asm"
 INCLUDE "text/LavenderCuboneHouse.asm"
 INCLUDE "text/NameRatersHouse.asm"
-INCLUDE "text/VermilionPokecenter.asm"
+INCLUDE "text/VermilionPokecenterMart.asm" ; marcelnote - merged Vermilion Pokecenter and Mart
 INCLUDE "text/PokemonFanClub.asm"
-INCLUDE "text/VermilionMart.asm"
 INCLUDE "text/VermilionGym.asm"
 
 
