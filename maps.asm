@@ -178,11 +178,6 @@ INCLUDE "data/maps/headers/CeladonMansionRoofHouse.asm"
 INCLUDE "scripts/CeladonMansionRoofHouse.asm"
 INCLUDE "data/maps/objects/CeladonMansionRoofHouse.asm"
 
-INCLUDE "data/maps/headers/FuchsiaMart.asm"
-INCLUDE "scripts/FuchsiaMart.asm"
-INCLUDE "data/maps/objects/FuchsiaMart.asm"
-FuchsiaMart_Blocks: INCBIN "maps/FuchsiaMart.blk"
-
 INCLUDE "data/maps/headers/SaffronPidgeyHouse.asm"
 INCLUDE "scripts/SaffronPidgeyHouse.asm"
 INCLUDE "data/maps/objects/SaffronPidgeyHouse.asm"
@@ -1039,8 +1034,7 @@ CopycatsHouse1F_Blocks: INCBIN "maps/CopycatsHouse1F.blk"
 
 FuchsiaBillsGrandpasHouse_Blocks: INCBIN "maps/FuchsiaBillsGrandpasHouse.blk"
 
-FuchsiaPokecenter_Blocks: INCBIN "maps/FuchsiaPokecenter.blk"
-
+FuchsiaPokecenterMart_Blocks: ; marcelnote - merged Fuchsia Pokecenter and Mart
 CinnabarPokecenterMart_Blocks: INCBIN "maps/CinnabarPokecenterMart.blk"
 
 CeruleanBadgeHouse_Blocks: INCBIN "maps/CeruleanBadgeHouse.blk"
@@ -1071,9 +1065,9 @@ INCLUDE "data/maps/headers/FuchsiaBillsGrandpasHouse.asm"
 INCLUDE "scripts/FuchsiaBillsGrandpasHouse.asm"
 INCLUDE "data/maps/objects/FuchsiaBillsGrandpasHouse.asm"
 
-INCLUDE "data/maps/headers/FuchsiaPokecenter.asm"
-INCLUDE "scripts/FuchsiaPokecenter.asm"
-INCLUDE "data/maps/objects/FuchsiaPokecenter.asm"
+INCLUDE "data/maps/headers/FuchsiaPokecenterMart.asm" ; marcelnote - merged Fuchsia Pokecenter and Mart
+INCLUDE "scripts/FuchsiaPokecenterMart.asm"
+INCLUDE "data/maps/objects/FuchsiaPokecenterMart.asm"
 
 INCLUDE "data/maps/headers/WardensHouse.asm"
 INCLUDE "scripts/WardensHouse.asm"

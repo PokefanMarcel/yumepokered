@@ -168,8 +168,7 @@ WildDataPointers:
 	dw NothingWildMons                 ; SILPH_CO_10F
 	dw NothingWildMons                 ; SILPH_CO_11F
 	dw NothingWildMons                 ; SILPH_CO_ELEVATOR
-	dw NothingWildMons                 ; FUCHSIA_POKECENTER
-	dw NothingWildMons                 ; FUCHSIA_MART
+	dw NothingWildMons                 ; FUCHSIA_POKECENTER_MART ; marcelnote - merged Fuchsia Pokecenter and Mart
 	dw NothingWildMons                 ; FUCHSIA_BILLS_GRANDPAS_HOUSE
 	dw NothingWildMons                 ; WARDENS_HOUSE
 	dw NothingWildMons                 ; FUCHSIA_MEETING_ROOM

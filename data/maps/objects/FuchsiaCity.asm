@@ -16,9 +16,9 @@ FuchsiaCity_Object:
 	db $f ; border block
 
 	def_warp_events
-	warp_event  5, 13, FUCHSIA_MART, 1
+	warp_event  5, 13, FUCHSIA_POKECENTER_MART, 3 ; marcelnote - merged Fuchsia Pokecenter and Mart
 	warp_event 11, 27, FUCHSIA_BILLS_GRANDPAS_HOUSE, 1
-	warp_event 19, 27, FUCHSIA_POKECENTER, 1
+	warp_event 19, 27, FUCHSIA_POKECENTER_MART, 1 ; marcelnote - merged Fuchsia Pokecenter and Mart
 	warp_event 27, 27, WARDENS_HOUSE, 1
 	warp_event 18,  3, SAFARI_ZONE_GATE, 1
 	warp_event  5, 27, FUCHSIA_GYM, 1

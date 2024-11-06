@@ -171,8 +171,7 @@ MapHSPointers:
 	dw SilphCo10FHS                ; SILPH_CO_10F
 	dw SilphCo11FHS                ; SILPH_CO_11F
 	dw NoHS                        ; SILPH_CO_ELEVATOR
-	dw NoHS                        ; FUCHSIA_POKECENTER
-	dw NoHS                        ; FUCHSIA_MART
+	dw NoHS                        ; FUCHSIA_POKECENTER_MART ; marcelnote - merged Fuchsia Pokecenter and Mart
 	dw NoHS                        ; FUCHSIA_BILLS_GRANDPAS_HOUSE
 	dw WardensHouseHS              ; WARDENS_HOUSE
 	dw NoHS                        ; FUCHSIA_MEETING_ROOM

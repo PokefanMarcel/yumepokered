@@ -12,7 +12,7 @@ BenchGuyTextPointers:
 	bench_guy_text VERMILION_POKECENTER_MART, SPRITE_FACING_LEFT, VermilionCityPokecenterBenchGuyText  ; marcelnote - merged Vermilion Pokecenter and Mart
 	bench_guy_text CELADON_POKECENTER,        SPRITE_FACING_LEFT, CeladonCityPokecenterBenchGuyText
 	bench_guy_text CELADON_HOTEL,             SPRITE_FACING_LEFT, CeladonCityHotelText
-	bench_guy_text FUCHSIA_POKECENTER,        SPRITE_FACING_LEFT, FuchsiaCityPokecenterBenchGuyText
+	bench_guy_text FUCHSIA_POKECENTER_MART,   SPRITE_FACING_LEFT, FuchsiaCityPokecenterBenchGuyText    ; marcelnote - merged Fuchsia Pokecenter and Mart
 	bench_guy_text CINNABAR_POKECENTER_MART,  SPRITE_FACING_LEFT, CinnabarIslandPokecenterBenchGuyText ; marcelnote - merged Cinnabar Pokecenter and Mart
 	bench_guy_text SAFFRON_POKECENTER_MART,   SPRITE_FACING_LEFT, SaffronCityPokecenterBenchGuyText    ; marcelnote - merged Saffron Pokecenter and Mart
 	bench_guy_text MT_MOON_POKECENTER,        SPRITE_FACING_LEFT, MtMoonPokecenterBenchGuyText
