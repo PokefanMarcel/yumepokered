@@ -169,8 +169,7 @@ MapHeaderPointers::
 	dw SilphCo10F_h
 	dw SilphCo11F_h
 	dw SilphCoElevator_h
-	dw FuchsiaPokecenter_h
-	dw FuchsiaMart_h
+	dw FuchsiaPokecenterMart_h ; marcelnote - merged Fuchsia Pokecenter and Mart
 	dw FuchsiaBillsGrandpasHouse_h
 	dw WardensHouse_h
 	dw FuchsiaMeetingRoom_h

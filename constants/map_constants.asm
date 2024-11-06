@@ -190,8 +190,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const SILPH_CO_10F,                   8,  9
 	map_const SILPH_CO_11F,                   9,  9
 	map_const SILPH_CO_ELEVATOR,              2,  2
-	map_const FUCHSIA_POKECENTER,             7,  4
-	map_const FUCHSIA_MART,                   4,  4 ; to merge
+	map_const FUCHSIA_POKECENTER_MART,       14,  4 ; marcelnote - merged Fuchsia Pokecenter and Mart
 	map_const FUCHSIA_BILLS_GRANDPAS_HOUSE,   4,  4
 	map_const WARDENS_HOUSE,                  5,  4
 	map_const FUCHSIA_MEETING_ROOM,           7,  4

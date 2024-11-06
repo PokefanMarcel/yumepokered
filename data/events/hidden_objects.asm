@@ -19,7 +19,7 @@ HiddenObjectMaps:
 	db CELADON_GYM
 	db GAME_CORNER
 	db CELADON_HOTEL
-	db FUCHSIA_POKECENTER
+	db FUCHSIA_POKECENTER_MART ; marcelnote - merged Fuchsia Pokecenter and Mart
 	db FUCHSIA_GYM
 	db CINNABAR_GYM
 	db CINNABAR_POKECENTER_MART
@@ -113,7 +113,7 @@ HiddenObjectPointers:
 	dw CeladonGymHiddenObjects
 	dw GameCornerHiddenObjects
 	dw CeladonHotelHiddenObjects
-	dw FuchsiaPokecenterHiddenObjects
+	dw FuchsiaPokecenterMartHiddenObjects ; marcelnote - merged Fuchsia Pokecenter and Mart
 	dw FuchsiaGymHiddenObjects
 	dw CinnabarGymHiddenObjects
 	dw CinnabarPokecenterMartHiddenObjects ; marcelnote - merged Cinnabar Pokecenter and Mart
@@ -375,7 +375,7 @@ CeladonHotelHiddenObjects:
 	hidden_object  0,  4, SPRITE_FACING_LEFT, PrintBenchGuyText
 	db -1 ; end
 
-FuchsiaPokecenterHiddenObjects:
+FuchsiaPokecenterMartHiddenObjects: ; marcelnote - merged Fuchsia Pokecenter and Mart
 	hidden_object 13,  3, SPRITE_FACING_UP, OpenPokemonCenterPC
 	hidden_object  0,  4, SPRITE_FACING_UP, PrintBenchGuyText
 	db -1 ; end

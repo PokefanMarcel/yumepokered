@@ -171,8 +171,7 @@ MapSongBanks::
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo)                 ; SILPH_CO_10F
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo)                 ; SILPH_CO_11F
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo)                 ; SILPH_CO_ELEVATOR
-	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; FUCHSIA_POKECENTER
-	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; FUCHSIA_MART
+	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; FUCHSIA_POKECENTER_MART ; marcelnote - merged Fuchsia Pokecenter and Mart
 	db MUSIC_CITIES2, BANK(Music_Cities2)                  ; FUCHSIA_BILLS_GRANDPAS_HOUSE
 	db MUSIC_CITIES2, BANK(Music_Cities2)                  ; WARDENS_HOUSE
 	db MUSIC_CITIES2, BANK(Music_Cities2)                  ; FUCHSIA_MEETING_ROOM

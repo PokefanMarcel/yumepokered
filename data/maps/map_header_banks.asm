@@ -169,8 +169,7 @@ MapHeaderBanks::
 	db BANK(SilphCo10F_h)
 	db BANK(SilphCo11F_h)
 	db BANK(SilphCoElevator_h)
-	db BANK(FuchsiaPokecenter_h)
-	db BANK(FuchsiaMart_h)
+	db BANK(FuchsiaPokecenterMart_h) ; marcelnote - merged Fuchsia Pokecenter and Mart
 	db BANK(FuchsiaBillsGrandpasHouse_h)
 	db BANK(WardensHouse_h)
 	db BANK(FuchsiaMeetingRoom_h)
