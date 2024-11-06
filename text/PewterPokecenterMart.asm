@@ -1,3 +1,19 @@
+; marcelnote - merged Pewter Pokecenter and Mart
+_PewterPokecenterGentlemanText::
+	text "What!?"
+
+	para "TEAM ROCKET is"
+	line "at MT.MOON? Huh?"
+	cont "I'm on the phone!"
+
+	para "Scram!"
+	done
+
+_PewterPokecenterJigglypuffText::
+	text "JIGGLYPUFF: Puu"
+	line "pupuu!"
+	done
+
 _PewterMartYoungsterText::
 	text "A shady, old man"
 	line "got me to buy"

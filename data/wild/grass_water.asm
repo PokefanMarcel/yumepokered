@@ -52,11 +52,10 @@ WildDataPointers:
 	dw NothingWildMons                 ; VIRIDIAN_FOREST_NORTH_GATE
 	dw NothingWildMons                 ; ROUTE_2_TRADE_HOUSE
 	dw NothingWildMons                 ; DIGLETTS_CAVE_ROUTE_2
-	dw NothingWildMons                 ; PEWTER_POKECENTER
+	dw NothingWildMons                 ; PEWTER_POKECENTER_MART ; marcelnote - merged Pewter Pokecenter and Mart
 	dw NothingWildMons                 ; MUSEUM_1F
 	dw NothingWildMons                 ; MUSEUM_2F
 	dw NothingWildMons                 ; PEWTER_NIDORAN_HOUSE
-	dw NothingWildMons                 ; PEWTER_MART
 	dw NothingWildMons                 ; PEWTER_SPEECH_HOUSE
 	dw NothingWildMons                 ; PEWTER_GYM
 	dw NothingWildMons                 ; CELADON_GROVE_NORTH_GATE

@@ -160,9 +160,8 @@ SECTION "Text 7", ROMX
 
 INCLUDE "text/PewterGym_2.asm"
 INCLUDE "text/PewterNidoranHouse.asm"
-INCLUDE "text/PewterMart.asm"
 INCLUDE "text/PewterSpeechHouse.asm"
-INCLUDE "text/PewterPokecenter.asm"
+INCLUDE "text/PewterPokecenterMart.asm" ; marcelnote - merged Vermilion Pokecenter and Mart
 INCLUDE "text/CeruleanTrashedHouse.asm"
 INCLUDE "text/CeruleanTradeHouse.asm"
 INCLUDE "text/CeruleanPokecenterMart.asm" ; marcelnote - merged Cerulean Pokecenter and Mart

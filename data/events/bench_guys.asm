@@ -6,7 +6,7 @@ ENDM
 BenchGuyTextPointers:
 	; map id, player facing direction, predef text
 	bench_guy_text VIRIDIAN_POKECENTER,       SPRITE_FACING_LEFT, ViridianCityPokecenterBenchGuyText
-	bench_guy_text PEWTER_POKECENTER,         SPRITE_FACING_LEFT, PewterCityPokecenterBenchGuyText
+	bench_guy_text PEWTER_POKECENTER_MART,    SPRITE_FACING_LEFT, PewterCityPokecenterBenchGuyText     ; marcelnote - merged Pewter Pokecenter and Mart
 	bench_guy_text CERULEAN_POKECENTER_MART,  SPRITE_FACING_LEFT, CeruleanCityPokecenterBenchGuyText   ; marcelnote - merged Cerulean Pokecenter and Mart
 	bench_guy_text LAVENDER_POKECENTER_MART,  SPRITE_FACING_LEFT, LavenderCityPokecenterBenchGuyText   ; marcelnote - merged Lavender Pokecenter and Mart
 	bench_guy_text VERMILION_POKECENTER_MART, SPRITE_FACING_LEFT, VermilionCityPokecenterBenchGuyText  ; marcelnote - merged Vermilion Pokecenter and Mart
