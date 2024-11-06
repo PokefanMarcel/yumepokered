@@ -251,7 +251,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const COLOSSEUM,                      5,  4
 DEF NUM_MAPS EQU const_value
 
-; marcelnote - current NUM_MAPS = 254 - 22 - 2 (last - start - extra lines) = 230
+; marcelnote - current NUM_MAPS = 251 - 22 - 2 (last - start - extra lines) = 227
 
 ; Indoor maps, such as houses, use this as the Map ID in their exit warps
 ; This map ID takes the player back to the last outdoor map they were on, stored in wLastMap
