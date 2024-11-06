@@ -66,12 +66,11 @@ MapHeaderPointers::
 	dw MtMoonB1F_h
 	dw MtMoonB2F_h
 	dw MtMoonSquare_h ; $E7 ; marcelnote - new location
-	dw CeruleanPokecenter_h
+	dw CeruleanPokecenterMart_h ; marcelnote - merged Cerulean Pokecenter and Mart
 	dw CeruleanTrashedHouse_h
 	dw CeruleanTradeHouse_h
 	dw CeruleanBadgeHouse_h
 	dw BikeShop_h
-	dw CeruleanMart_h
 	dw CeruleanGym_h
 	dw CeruleanCave1F_h
 	dw CeruleanCave2F_h

@@ -65,12 +65,11 @@ WildDataPointers:
 	dw MtMoonB1FWildMons               ; MT_MOON_B1F
 	dw MtMoonB2FWildMons               ; MT_MOON_B2F
 	dw NothingWildMons                 ; MT_MOON_SQUARE
-	dw NothingWildMons                 ; CERULEAN_POKECENTER
+	dw NothingWildMons                 ; CERULEAN_POKECENTER_MART ; marcelnote - merged Cerulean Pokecenter and Mart
 	dw NothingWildMons                 ; CERULEAN_TRASHED_HOUSE
 	dw NothingWildMons                 ; CERULEAN_TRADE_HOUSE
 	dw NothingWildMons                 ; CERULEAN_BADGE_HOUSE
 	dw NothingWildMons                 ; BIKE_SHOP
-	dw NothingWildMons                 ; CERULEAN_MART
 	dw NothingWildMons                 ; CERULEAN_GYM
 	dw CeruleanCave1FWildMons          ; CERULEAN_CAVE_1F
 	dw CeruleanCave2FWildMons          ; CERULEAN_CAVE_2F
