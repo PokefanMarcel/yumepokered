@@ -2,8 +2,7 @@ HiddenObjectMaps:
 	db REDS_YELLOWS_HOUSES ; marcelnote - merged RedsHouse floors
 	;db BLUES_AIDES_HOUSES
 	db OAKS_LAB
-	db VIRIDIAN_POKECENTER
-	db VIRIDIAN_MART
+	db VIRIDIAN_POKECENTER_MART ; marcelnote - merged Viridian Pokecenter and Mart
 	db VIRIDIAN_SCHOOL_HOUSE
 	db VIRIDIAN_GYM
 	db MUSEUM_1F
@@ -96,8 +95,7 @@ HiddenObjectPointers:
 	dw RedsYellowsHousesHiddenObjects ; marcelnote - merged RedsHouse floors, added YellowsHouse
 	;dw BluesAidesHousesHiddenObjects ; marcelnote - hidden objects were redundant
 	dw OaksLabHiddenObjects
-	dw ViridianPokecenterHiddenObjects
-	dw ViridianMartHiddenObjects
+	dw ViridianPokecenterMartHiddenObjects ; marcelnote - merged Viridian Pokecenter and Mart
 	dw ViridianSchoolHiddenObjects
 	dw ViridianGymHiddenObjects
 	dw Museum1FHiddenObjects
@@ -230,12 +228,9 @@ OaksLabHiddenObjects:
 	hidden_object  1,  1, SPRITE_FACING_UP, DisplayOakLabEmailText
 	db -1 ; end
 
-ViridianPokecenterHiddenObjects:
+ViridianPokecenterMartHiddenObjects:
 	hidden_object  0,  4, SPRITE_FACING_LEFT, PrintBenchGuyText
 	hidden_object 13,  3, SPRITE_FACING_UP, OpenPokemonCenterPC
-	db -1 ; end
-
-ViridianMartHiddenObjects:
 	db -1 ; end
 
 ViridianSchoolHiddenObjects:

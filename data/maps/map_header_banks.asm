@@ -42,8 +42,7 @@ MapHeaderBanks::
 	db BANK(RedsYellowsHouses_h) ; marcelnote - merged RedsHouse floors, added YellowsHouse
 	db BANK(BluesAidesHouses_h) ; marcelnote - merged Blue's house with new Aide's house
 	db BANK(OaksLab_h)
-	db BANK(ViridianPokecenter_h)
-	db BANK(ViridianMart_h)
+	db BANK(ViridianPokecenterMart_h) ; marcelnote - merged Viridian Pokecenter and Mart
 	db BANK(ViridianSchoolHouse_h)
 	db BANK(ViridianNicknameHouse_h)
 	db BANK(ViridianGym_h)

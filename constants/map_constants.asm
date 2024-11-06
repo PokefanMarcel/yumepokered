@@ -63,8 +63,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const REDS_YELLOWS_HOUSES,           25,  4 ; marcelnote - merged RedsHouse floors, added YellowsHouse
 	map_const BLUES_AIDES_HOUSES,            11,  4 ; marcelnote - added Aide's house
 	map_const OAKS_LAB,                       5,  6
-	map_const VIRIDIAN_POKECENTER,            7,  4
-	map_const VIRIDIAN_MART,                  4,  4 ; to merge
+	map_const VIRIDIAN_POKECENTER_MART,      14,  4 ; marcelnote - merged Viridian Pokecenter and Mart
 	map_const VIRIDIAN_SCHOOL_HOUSE,          4,  4
 	map_const VIRIDIAN_NICKNAME_HOUSE,        4,  4
 	map_const VIRIDIAN_GYM,                  10,  9
@@ -250,7 +249,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const COLOSSEUM,                      5,  4
 DEF NUM_MAPS EQU const_value
 
-; marcelnote - current NUM_MAPS = 251 - 22 - 2 (last - start - extra lines) = 227
+; marcelnote - current NUM_MAPS = 249 - 22 - 2 (last - start - extra lines) = 225
 
 ; Indoor maps, such as houses, use this as the Map ID in their exit warps
 ; This map ID takes the player back to the last outdoor map they were on, stored in wLastMap

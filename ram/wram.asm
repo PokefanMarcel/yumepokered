@@ -1960,7 +1960,7 @@ wSSAnne2FRoomsCurScript:: db
 wRoute22CurScript:: db
 	ds 1
 wRedsHouseCurScript:: db ; marcelnote - merged RedsHouse floors
-wViridianMartCurScript:: db
+wViridianPokecenterMartCurScript:: db ; marcelnote - merged Viridian Pokecenter and Mart
 wRoute22GateCurScript:: db
 wCeruleanCityCurScript:: db
 wMandarinHotelCurScript:: db ; marcelnote - added for Mandarin Hotel trainers, took 1 from padding below

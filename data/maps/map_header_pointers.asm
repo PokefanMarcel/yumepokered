@@ -42,8 +42,7 @@ MapHeaderPointers::
 	dw RedsYellowsHouses_h ; marcelnote - merged RedsHouse floors, added YellowsHouse
 	dw BluesAidesHouses_h ; marcelnote - merged Blue's house with new Aide's house
 	dw OaksLab_h
-	dw ViridianPokecenter_h
-	dw ViridianMart_h
+	dw ViridianPokecenterMart_h ; marcelnote - merged Viridian Pokecenter and Mart
 	dw ViridianSchoolHouse_h
 	dw ViridianNicknameHouse_h
 	dw ViridianGym_h

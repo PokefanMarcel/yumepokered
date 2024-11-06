@@ -44,8 +44,7 @@ MapSongBanks::
 	db MUSIC_PALLET_TOWN, BANK(Music_PalletTown)           ; REDS_YELLOWS_HOUSES ; marcelnote - was REDS_HOUSE_1F
 	db MUSIC_PALLET_TOWN, BANK(Music_PalletTown)           ; BLUES_HOUSE
 	db MUSIC_OAKS_LAB, BANK(Music_OaksLab)                 ; OAKS_LAB
-	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; VIRIDIAN_POKECENTER
-	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; VIRIDIAN_MART
+	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; VIRIDIAN_POKECENTER_MART ; marcelnote - merged Viridian Pokecenter and Mart
 	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; VIRIDIAN_SCHOOL_HOUSE
 	db MUSIC_CITIES1, BANK(Music_Cities1)                  ; VIRIDIAN_NICKNAME_HOUSE
 	db MUSIC_GYM, BANK(Music_Gym)                          ; VIRIDIAN_GYM

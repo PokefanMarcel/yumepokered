@@ -145,8 +145,7 @@ INCLUDE "text/RedsYellowsHouses.asm" ; marcelnote - merged RedsHouse floors, add
 INCLUDE "text/BluesAidesHouses.asm" ; marcelnote - merged Blue's house with new Aide's house
 INCLUDE "text/OaksLab.asm"
 INCLUDE "text/pokedex_ratings.asm"
-INCLUDE "text/ViridianPokecenter.asm"
-INCLUDE "text/ViridianMart.asm"
+INCLUDE "text/ViridianPokecenterMart.asm" ; marcelnote - merged Viridian Pokecenter and Mart
 INCLUDE "text/ViridianSchoolHouse.asm"
 INCLUDE "text/ViridianNicknameHouse.asm"
 INCLUDE "text/ViridianGym.asm"

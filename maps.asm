@@ -118,11 +118,6 @@ INCLUDE "data/maps/headers/OaksLab.asm"
 INCLUDE "scripts/OaksLab.asm"
 INCLUDE "data/maps/objects/OaksLab.asm"
 
-INCLUDE "data/maps/headers/ViridianMart.asm"
-INCLUDE "scripts/ViridianMart.asm"
-INCLUDE "data/maps/objects/ViridianMart.asm"
-ViridianMart_Blocks: INCBIN "maps/ViridianMart.blk"
-
 INCLUDE "data/maps/headers/ViridianSchoolHouse.asm"
 INCLUDE "scripts/ViridianSchoolHouse.asm"
 INCLUDE "data/maps/objects/ViridianSchoolHouse.asm"
@@ -257,8 +252,6 @@ INCLUDE "data/maps/headers/LavenderTown.asm"
 INCLUDE "data/maps/objects/LavenderTown.asm"
 LavenderTown_Blocks: INCBIN "maps/LavenderTown.blk"
 
-ViridianPokecenter_Blocks: INCBIN "maps/ViridianPokecenter.blk"
-
 SafariZoneCenterRestHouse_Blocks:
 SafariZoneWestRestHouse_Blocks:
 SafariZoneEastRestHouse_Blocks:
@@ -268,10 +261,6 @@ INCLUDE "scripts/LavenderTown.asm"
 
 
 SECTION "Maps 6", ROMX   ; marcelnote - maps with dungeon warps (holes) need to be here
-
-INCLUDE "data/maps/headers/ViridianPokecenter.asm"
-INCLUDE "scripts/ViridianPokecenter.asm"
-INCLUDE "data/maps/objects/ViridianPokecenter.asm"
 
 INCLUDE "data/maps/headers/PokemonMansion1F.asm"
 INCLUDE "scripts/PokemonMansion1F.asm"
@@ -797,6 +786,7 @@ Museum1F_Blocks: INCBIN "maps/Museum1F.blk"
 
 Museum2F_Blocks: INCBIN "maps/Museum2F.blk"
 
+ViridianPokecenterMart_Blocks:  ; marcelnote - merged Viridian Pokecenter and Mart
 PewterPokecenterMart_Blocks:    ; marcelnote - merged Pewter Pokecenter and Mart
 CeruleanPokecenterMart_Blocks:  ; marcelnote - merged Cerulean Pokecenter and Mart
 VermilionPokecenterMart_Blocks: ; marcelnote - merged Vermilion Pokecenter and Mart
@@ -813,6 +803,10 @@ ViridianForestNorthGate_Blocks: INCBIN "maps/ViridianForestNorthGate.blk"
 
 
 SECTION "Maps 16", ROMX
+
+INCLUDE "data/maps/headers/ViridianPokecenterMart.asm" ; marcelnote - merged Viridian Pokecenter and Mart, was in Maps 4
+INCLUDE "scripts/ViridianPokecenterMart.asm"
+INCLUDE "data/maps/objects/ViridianPokecenterMart.asm"
 
 INCLUDE "data/maps/headers/Museum1F.asm"
 INCLUDE "scripts/Museum1F.asm"
