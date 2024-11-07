@@ -2,7 +2,6 @@ WarpTileIDPointers:
 	table_width 2, WarpTileIDPointers
 	dw .OverworldWarpTileIDs
 	dw .BigHouseWarpTileIDs ; marcelnote - merged REDS_HOUSE tilesets
-	dw .MartWarpTileIDs
 	dw .ForestWarpTileIDs
 	dw .SafariWarpTileIDs ; marcelnote ; new tileset from FOREST
 	dw .PokecenterWarpTileIDs
@@ -42,7 +41,6 @@ ENDM
 .AcademyWarpTileIDs: ; marcelnote - new tileset
 	warp_tiles $1A, $1C
 
-.MartWarpTileIDs:
 .PokecenterWarpTileIDs:
 .ClubWarpTileIDs: ; marcelnote - added stairs for Route22Gate3F
 	warp_tiles $5E
