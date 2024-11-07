@@ -11,7 +11,6 @@ Tilesets:
 	; name, 3 counter tiles, grass tile, animations
 	tileset Overworld,    -1, -1, -1, $52, TILEANIM_WATER_FLOWER ; marcelnote - will change to TILEANIM_WATER_FLOWER_WBOLLARD
 	tileset BigHouse,     -1, -1, -1,  -1, TILEANIM_NONE  ; marcelnote - renamed REDS_HOUSE_1 tileset
-	tileset Mart,        $18,$19,$1E,  -1, TILEANIM_NONE
 	tileset Forest,       -1, -1, -1, $20, TILEANIM_WATER
 	tileset Safari,       -1, -1, -1, $20, TILEANIM_WATER   ; marcelnote - new tileset from FOREST
 	tileset Pokecenter,  $18,$19,$1E,  -1, TILEANIM_NONE

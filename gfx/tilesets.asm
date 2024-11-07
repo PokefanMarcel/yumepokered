@@ -22,9 +22,7 @@ SECTION "Tilesets 2", ROMX
 Gym_GFX::           INCBIN "gfx/tilesets/gym.2bpp"
 Gym_Block::         INCBIN "gfx/blocksets/gym.bst"
 
-Mart_GFX::
-Pokecenter_GFX::    INCBIN "gfx/tilesets/pokecenter.2bpp"
-Mart_Block::
+Pokecenter_GFX::    INCBIN "gfx/tilesets/pokecenter.2bpp" ; marcelnote - removed MART tileset
 Pokecenter_Block::  INCBIN "gfx/blocksets/pokecenter.bst"
 
 Gate_GFX::          INCBIN "gfx/tilesets/gate.2bpp"
