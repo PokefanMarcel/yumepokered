@@ -172,6 +172,7 @@ DebugItemsList:
 	db MASTER_BALL, 99
 	db MAX_ELIXIR, 99 ; marcelnote - added
 	db TOWN_MAP, 1
+	db POKE_FLUTE, 1 ; marcelnote - added
 	db SECRET_KEY, 1
 	db CARD_KEY, 1
 	db S_S_TICKET, 1

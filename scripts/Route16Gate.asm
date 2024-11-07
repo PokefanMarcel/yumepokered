@@ -3,21 +3,22 @@ Route16Gate_Script:
 	ld hl, wStatusFlags6
 	res BIT_ALWAYS_ON_BIKE, [hl]
 	call EnableAutoTextBoxDrawing
-	ld a, [wRoute16Gate1FCurScript]
+	ld a, [wRoute16GateCurScript]
 	ld hl, Route16Gate_ScriptPointers
 	jp CallFunctionInTable
     ; marcelnote - Route16Gate2F_Script used to be just:
-	;jp DisableAutoTextBoxDrawing
+	; jp DisableAutoTextBoxDrawing ; to avoid text box from showing up when looking at binoculars from the side
 
 Route16Gate_ScriptPointers:
 	def_script_pointers
-	dw_const Route16Gate1FDefaultScript,           SCRIPT_ROUTE16GATE1F_DEFAULT
-	dw_const Route16Gate1FPlayerMovingUpScript,    SCRIPT_ROUTE16GATE1F_PLAYER_MOVING_UP
-	dw_const Route16Gate1FGuardScript,             SCRIPT_ROUTE16GATE1F_GUARD
-	dw_const Route16Gate1FPlayerMovingRightScript, SCRIPT_ROUTE16GATE1F_PLAYER_MOVING_RIGHT
+	dw_const Route16GateDefaultScript,           SCRIPT_ROUTE16GATE_DEFAULT
+	dw_const Route16GatePlayerMovingUpScript,    SCRIPT_ROUTE16GATE_PLAYER_MOVING_UP
+	dw_const Route16GateGuardScript,             SCRIPT_ROUTE16GATE_GUARD
+	dw_const Route16GatePlayerMovingRightScript, SCRIPT_ROUTE16GATE_PLAYER_MOVING_RIGHT
 
-Route16Gate1FDefaultScript:
-	call Route16Gate1FIsBicycleInBagScript
+Route16GateDefaultScript:
+	ld b, BICYCLE
+	call IsItemInBag
 	ret nz
 	ld hl, .StopsPlayerCoords
 	call ArePlayerCoordsInArray
@@ -39,12 +40,12 @@ Route16Gate1FDefaultScript:
 	ld hl, wSimulatedJoypadStatesEnd
 	call FillMemory
 	call StartSimulatingJoypadStates
-	ld a, SCRIPT_ROUTE16GATE1F_PLAYER_MOVING_UP
-	ld [wRoute16Gate1FCurScript], a
+	ld a, SCRIPT_ROUTE16GATE_PLAYER_MOVING_UP
+	ld [wRoute16GateCurScript], a
 	ret
 .next_to_counter
-	ld a, SCRIPT_ROUTE16GATE1F_GUARD
-	ld [wRoute16Gate1FCurScript], a
+	ld a, SCRIPT_ROUTE16GATE_GUARD
+	ld [wRoute16GateCurScript], a
 	ret
 
 .StopsPlayerCoords:
@@ -54,7 +55,7 @@ Route16Gate1FDefaultScript:
 	dbmapcoord  4, 10
 	db -1 ; end
 
-Route16Gate1FPlayerMovingUpScript:
+Route16GatePlayerMovingUpScript:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
@@ -62,7 +63,7 @@ Route16Gate1FPlayerMovingUpScript:
 	ld [wJoyIgnore], a
 	call UpdateSprites ; marcelnote - fix for Gambler showing on wall when stopped by guard (from pokered wiki)
 
-Route16Gate1FGuardScript:
+Route16GateGuardScript:
 	ld a, TEXT_ROUTE16GATE1F_GUARD
 	ldh [hTextID], a
 	call DisplayTextID
@@ -71,11 +72,11 @@ Route16Gate1FGuardScript:
 	ld a, D_RIGHT
 	ld [wSimulatedJoypadStatesEnd], a
 	call StartSimulatingJoypadStates
-	ld a, SCRIPT_ROUTE16GATE1F_PLAYER_MOVING_RIGHT
-	ld [wRoute16Gate1FCurScript], a
+	ld a, SCRIPT_ROUTE16GATE_PLAYER_MOVING_RIGHT
+	ld [wRoute16GateCurScript], a
 	ret
 
-Route16Gate1FPlayerMovingRightScript:
+Route16GatePlayerMovingRightScript:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
@@ -83,37 +84,27 @@ Route16Gate1FPlayerMovingRightScript:
 	ld [wJoyIgnore], a
 	ld hl, wStatusFlags5
 	res BIT_SCRIPTED_MOVEMENT_STATE, [hl]
-	ld a, SCRIPT_ROUTE16GATE1F_DEFAULT
-	ld [wRoute16Gate1FCurScript], a
+	ld a, SCRIPT_ROUTE16GATE_DEFAULT
+	ld [wRoute16GateCurScript], a
 	ret
-
-Route16Gate1FIsBicycleInBagScript:
-	ld b, BICYCLE
-	jp IsItemInBag
 
 Route16Gate_TextPointers:
 	def_text_pointers
-	; object events
 	dw_const Route16Gate1FGuardText,           TEXT_ROUTE16GATE1F_GUARD
 	dw_const Route16Gate1FGamblerText,         TEXT_ROUTE16GATE1F_GAMBLER
 	dw_const Route16Gate2FLittleBoyText,       TEXT_ROUTE16GATE2F_LITTLE_BOY
 	dw_const Route16Gate2FLittleGirlText,      TEXT_ROUTE16GATE2F_LITTLE_GIRL
-	; background events
 	dw_const Route16Gate1FGuardWaitUpText,     TEXT_ROUTE16GATE1F_GUARD_WAIT_UP
-	dw_const Route16Gate2FLeftBinocularsText,  TEXT_ROUTE16GATE2F_LEFT_BINOCULARS
-	dw_const Route16Gate2FRightBinocularsText, TEXT_ROUTE16GATE2F_RIGHT_BINOCULARS
 
-Route16Gate1FGuardText:
+Route16Gate1FGuardText: ; marcelnote - optimized
 	text_asm
-	call Route16Gate1FIsBicycleInBagScript
-	jr z, .no_bike
-	ld hl, .CyclingRoadExplanationText
-	call PrintText
-	jr .text_script_end
-.no_bike
+	ld b, BICYCLE
+	call IsItemInBag
 	ld hl, .NoPedestriansAllowedText
+	jr z, .got_text
+	ld hl, .CyclingRoadExplanationText
+.got_text
 	call PrintText
-.text_script_end
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .NoPedestriansAllowedText:
@@ -133,39 +124,9 @@ Route16Gate1FGamblerText:
 	text_end
 
 Route16Gate2FLittleBoyText:
-	text_asm
-	ld hl, .Text
-	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-
-.Text:
 	text_far _Route16Gate2FLittleBoyText
 	text_end
 
 Route16Gate2FLittleGirlText:
-	text_asm
-	ld hl, .Text
-	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-
-.Text:
 	text_far _Route16Gate2FLittleGirlText
-	text_end
-
-Route16Gate2FLeftBinocularsText:
-	text_asm
-	ld hl, .Text
-	jp GateUpstairsScript_PrintIfFacingUp
-
-.Text:
-	text_far _Route16Gate2FLeftBinocularsText
-	text_end
-
-Route16Gate2FRightBinocularsText:
-	text_asm
-	ld hl, .Text
-	jp GateUpstairsScript_PrintIfFacingUp
-
-.Text:
-	text_far _Route16Gate2FRightBinocularsText
 	text_end

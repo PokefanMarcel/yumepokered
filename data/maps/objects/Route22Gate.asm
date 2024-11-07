@@ -21,8 +21,7 @@ Route22Gate_Object:
 	warp_event 35,  7, ROUTE_22_GATE_3F, 1 ; marcelnote - added 3rd floor
 
 	def_bg_events
-	bg_event 26, 2, TEXT_ROUTE22GATE2F_LEFT_BINOCULARS ; marcelnote - added 2nd floor
-	bg_event 28, 2, TEXT_ROUTE22GATE2F_RIGHT_BINOCULARS ; marcelnote - added 2nd floor
+	; marcelnote - binoculars are handled as hidden object
 
 	def_object_events
 	object_event 14,  2, SPRITE_GUARD, STAY, LEFT, TEXT_ROUTE22GATE_GUARD  ; marcelnote - adjusted coords

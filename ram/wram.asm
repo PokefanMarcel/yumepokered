@@ -2036,7 +2036,7 @@ wSaffronGymCurScript:: db
 	ds 1
 wCinnabarGymCurScript:: db
 wGameCornerCurScript:: db
-wRoute16Gate1FCurScript:: db
+wRoute16GateCurScript:: db            ; marcelnote - renamed from wRoute16Gate1FCurScript (merged floors)
 wBillsHouseCurScript:: db
 wRoute5GateCurScript:: db
 wPowerPlantCurScript:: ; overload
@@ -2046,7 +2046,7 @@ wSSAnne2FCurScript:: db
 wSeafoamIslandsB3FCurScript:: db
 wRoute23CurScript:: db
 wSeafoamIslandsB4FCurScript:: db
-wRoute18GateCurScript:: db            ; marcelnote - renamed from wRoute18Gate1FCurScript (merging floors)
+wRoute18GateCurScript:: db            ; marcelnote - renamed from wRoute18Gate1FCurScript (merged floors)
 wCinnabarVolcano1FB1FCurScript:: db   ; marcelnote - new location
 wCinnabarVolcano2FCurScript:: db      ; marcelnote - new location
 wCeladonGroveCurScript:: db           ; marcelnote - new location

@@ -7,7 +7,7 @@ Route18Gate_Script:
 	ld hl, Route18Gate_ScriptPointers
 	jp CallFunctionInTable
 	; marcelnote - Route18Gate2F_Script used to be just:
-	; jp DisableAutoTextBoxDrawing
+	; jp DisableAutoTextBoxDrawing ; to avoid text box from showing up when looking at binoculars from the side
 
 Route18Gate_ScriptPointers:
 	def_script_pointers
@@ -17,7 +17,8 @@ Route18Gate_ScriptPointers:
 	dw_const Route18GatePlayerMovingRightScript, SCRIPT_ROUTE18GATE_PLAYER_MOVING_RIGHT
 
 Route18GateDefaultScript:
-	call Route16Gate1FIsBicycleInBagScript
+	ld b, BICYCLE
+	call IsItemInBag
 	ret nz
 	ld hl, .StopsPlayerCoords
 	call ArePlayerCoordsInArray
@@ -91,20 +92,16 @@ Route18Gate_TextPointers:
 	dw_const Route18Gate1FGuardText,           TEXT_ROUTE18GATE1F_GUARD
 	dw_const Route18Gate2FYoungsterText,       TEXT_ROUTE18GATE2F_YOUNGSTER        ; marcelnote - merged 2nd floor
 	dw_const Route18Gate1FGuardExcuseMeText,   TEXT_ROUTE18GATE1F_GUARD_EXCUSE_ME
-	dw_const Route18Gate2FLeftBinocularsText,  TEXT_ROUTE18GATE2F_LEFT_BINOCULARS  ; marcelnote - merged 2nd floor
-	dw_const Route18Gate2FRightBinocularsText, TEXT_ROUTE18GATE2F_RIGHT_BINOCULARS ; marcelnote - merged 2nd floor
 
-Route18Gate1FGuardText:
+Route18Gate1FGuardText: ; marcelnote - optimized
 	text_asm
-	call Route16Gate1FIsBicycleInBagScript
-	jr z, .no_bike
-	ld hl, .CyclingRoadUphillText
-	call PrintText
-	jr .text_script_end
-.no_bike
+	ld b, BICYCLE
+	call IsItemInBag
 	ld hl, .YouNeedABicycleText
+	jr z, .got_text
+	ld hl, .CyclingRoadUphillText
+.got_text
 	call PrintText
-.text_script_end
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .YouNeedABicycleText:
@@ -125,21 +122,3 @@ Route18Gate2FYoungsterText:
 	ld [wWhichTrade], a
 	predef DoInGameTradeDialogue
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-
-Route18Gate2FLeftBinocularsText:
-	text_asm
-	ld hl, .Text
-	jp GateUpstairsScript_PrintIfFacingUp
-
-.Text:
-	text_far _Route18Gate2FLeftBinocularsText
-	text_end
-
-Route18Gate2FRightBinocularsText:
-	text_asm
-	ld hl, .Text
-	jp GateUpstairsScript_PrintIfFacingUp
-
-.Text:
-	text_far _Route18Gate2FRightBinocularsText
-	text_end

@@ -289,7 +289,7 @@ SECTION "Hidden Objects 3", ROMX
 
 INCLUDE "engine/pokemon/set_types.asm"
 INCLUDE "engine/events/hidden_objects/reds_room.asm"
-INCLUDE "engine/events/hidden_objects/route_15_binoculars.asm"
+INCLUDE "engine/events/hidden_objects/binoculars.asm" ; marcelnote - all binoculars now hidden objects
 INCLUDE "engine/events/hidden_objects/museum_fossils.asm"
 INCLUDE "engine/events/hidden_objects/school_blackboard.asm"
 INCLUDE "engine/events/hidden_objects/vermilion_gym_trash.asm"

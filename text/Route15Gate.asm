@@ -23,11 +23,3 @@ _Route15Gate2FOaksAideExpAllText::
 	line "it, you should "
 	cont "store it via PC."
 	done
-
-_Route15Gate2FRightBinocularsText::
-	text "Looked into the"
-	line "binoculars."
-
-	para "It looks like a"
-	line "small island!"
-	done

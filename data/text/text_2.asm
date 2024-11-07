@@ -603,13 +603,112 @@ _IndigoPlateauHQText::
 	line "#MON LEAGUE HQ"
 	done
 
-_Route15UpstairsBinocularsText::
+_Route11GateLeftBinocularsSnorlaxText::
+	text "Looked into the"
+	line "binoculars."
+
+	para "A big #MON is"
+	line "asleep on a road!"
+	done
+
+_Route11GateLeftBinocularsNoSnorlaxText::
+	text "Looked into the"
+	line "binoculars."
+
+	para "It's a beautiful"
+	line "view!"
+	done
+
+_Route11GateRightBinocularsText::
+	text "Looked into the"
+	line "binoculars."
+
+	para "The only way to"
+	line "get from CERULEAN"
+	cont "CITY to LAVENDER"
+	cont "is by way of the"
+	cont "ROCK TUNNEL."
+	done
+
+_Route12GateLeftBinocularsText::
+	text "Looked into the"
+	line "binoculars."
+
+	para "A man fishing!"
+	done
+
+_Route12GateRightBinocularsText::
+	text "Looked into the"
+	line "binoculars."
+
+	para "It's #MON TOWER!"
+	done
+
+_Route15GateLeftBinocularsText::
 	text "Looked into the"
 	line "binoculars..."
 
 	para "A large, shining"
 	line "bird is flying"
 	cont "toward the sea."
+	done
+
+_Route15GateRightBinocularsText::
+	text "Looked into the"
+	line "binoculars."
+
+	para "It looks like a"
+	line "small island!"
+	done
+
+_Route16GateLeftBinocularsText::
+	text "Looked into the"
+	line "binoculars."
+
+	para "It's CELADON DEPT."
+	line "STORE!"
+	done
+
+_Route16GateRightBinocularsText::
+	text "Looked into the"
+	line "binoculars."
+
+	para "There's a long"
+	line "path over water!"
+	done
+
+_Route18GateLeftBinocularsText::
+	text "Looked into the"
+	line "binoculars."
+
+	para "PALLET TOWN is in"
+	line "the west!"
+	done
+
+_Route18GateRightBinocularsText::
+	text "Looked into the"
+	line "binoculars."
+
+	para "There are people"
+	line "swimming!"
+	done
+
+_Route22GateLeftBinocularsText:: ; marcelnote - new
+	text "Looked into the"
+	line "binoculars."
+
+	para "A remote mountain"
+	line "rises above"
+	cont "the horizon."
+	done
+
+_Route22GateRightBinocularsText:: ; marcelnote - new
+	text "Looked into the"
+	line "binoculars."
+
+	para "A winding path"
+	line "leads to the"
+	cont "#MON LEAGUE."
 	done
 
 _AerodactylFossilText::

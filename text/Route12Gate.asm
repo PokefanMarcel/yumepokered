@@ -33,17 +33,3 @@ _Route12Gate2FBrunetteGirlTM39NoRoomText::
 	text "You don't have"
 	line "room for this."
 	done
-
-_Route12Gate2FLeftBinocularsText::
-	text "Looked into the"
-	line "binoculars."
-
-	para "A man fishing!"
-	done
-
-_Route12Gate2FRightBinocularsText::
-	text "Looked into the"
-	line "binoculars."
-
-	para "It's #MON TOWER!"
-	done

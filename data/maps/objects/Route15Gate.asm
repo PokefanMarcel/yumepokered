@@ -15,8 +15,7 @@ Route15Gate_Object:
 	warp_event  7, 21, ROUTE_15_GATE, 5
 
 	def_bg_events
-	; marcelnote - Left binoculars (seeing Articuno) are handled as hidden object
-	bg_event  6, 16, TEXT_ROUTE15GATE2F_RIGHT_BINOCULARS
+	; marcelnote - binoculars are handled as hidden object
 
 	def_object_events
 	object_event  4,  1, SPRITE_GUARD, STAY, NONE, TEXT_ROUTE15GATE1F_GUARD
