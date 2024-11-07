@@ -59,7 +59,12 @@ HiddenObjectMaps:
 	;db SAFARI_ZONE_WEST_REST_HOUSE ; marcelnote - inaccessible Hidden objects
 	;db SAFARI_ZONE_EAST_REST_HOUSE
 	;db SAFARI_ZONE_NORTH_REST_HOUSE
+	db ROUTE_11_GATE ; marcelnote - binoculars now hidden objects
+	db ROUTE_12_GATE ; marcelnote - binoculars now hidden objects
 	db ROUTE_15_GATE ; marcelnote - merged ROUTE_15_GATE floors
+	db ROUTE_16_GATE ; marcelnote - binoculars now hidden objects
+	db ROUTE_18_GATE ; marcelnote - binoculars now hidden objects
+	db ROUTE_22_GATE ; marcelnote - binoculars now hidden objects
 	db MR_FUJIS_HOUSE
 	db CELADON_MANSION_ROOF_HOUSE
 	db FIGHTING_DOJO
@@ -152,7 +157,12 @@ HiddenObjectPointers:
 	;dw SafariZoneRestHouse2HiddenObjects ; marcelnote - inaccessible Hidden objects
 	;dw SafariZoneRestHouse3HiddenObjects
 	;dw SafariZoneRestHouse4HiddenObjects
-	dw Route15GateUpstairsHiddenObjects
+	dw Route11GateHiddenObjects ; marcelnote - new, binoculars now hidden objects
+	dw Route12GateHiddenObjects ; marcelnote - new, binoculars now hidden objects
+	dw Route15GateHiddenObjects
+	dw Route16GateHiddenObjects ; marcelnote - new, binoculars now hidden objects
+	dw Route18GateHiddenObjects ; marcelnote - new, binoculars now hidden objects
+	dw Route22GateHiddenObjects ; marcelnote - new, binoculars now hidden objects
 	dw LavenderHouse1HiddenObjects
 	dw CeladonMansionRoofHouseHiddenObjects
 	dw FightingDojoHiddenObjects
@@ -571,8 +581,34 @@ ViridianCityHiddenObjects:
 ;	hidden_object 13,  3, SPRITE_FACING_UP, OpenPokemonCenterPC
 ;	db -1 ; end
 
-Route15GateUpstairsHiddenObjects:
-	hidden_object  1, 16, SPRITE_FACING_UP, Route15GateLeftBinoculars ; marcelnote - merged Route15Gate floors
+Route11GateHiddenObjects: ; marcelnote - new, binoculars now hidden objects
+	hidden_object  1, 16, SPRITE_FACING_UP, Route11GateLeftBinoculars
+	hidden_object  6, 16, SPRITE_FACING_UP, Route11GateRightBinoculars
+	db -1 ; end
+
+Route12GateHiddenObjects: ; marcelnote - new, binoculars now hidden objects
+	hidden_object 15,  2, SPRITE_FACING_UP, Route12GateLeftBinoculars
+	hidden_object 20,  2, SPRITE_FACING_UP, Route12GateRightBinoculars
+	db -1 ; end
+
+Route15GateHiddenObjects: ; marcelnote - merged Route15Gate floors, binoculars now hidden objects
+	hidden_object  1, 16, SPRITE_FACING_UP, Route15GateLeftBinoculars
+	hidden_object  6, 16, SPRITE_FACING_UP, Route15GateRightBinoculars
+	db -1 ; end
+
+Route16GateHiddenObjects: ; marcelnote - new, binoculars now hidden objects
+	hidden_object  1, 20, SPRITE_FACING_UP, Route16GateLeftBinoculars
+	hidden_object  6, 20, SPRITE_FACING_UP, Route16GateRightBinoculars
+	db -1 ; end
+
+Route18GateHiddenObjects: ; marcelnote - new, binoculars now hidden objects
+	hidden_object  1, 16, SPRITE_FACING_UP, Route18GateLeftBinoculars
+	hidden_object  6, 16, SPRITE_FACING_UP, Route18GateRightBinoculars
+	db -1 ; end
+
+Route22GateHiddenObjects: ; marcelnote - new, binoculars now hidden objects
+	hidden_object 26,  2, SPRITE_FACING_UP, Route22GateLeftBinoculars
+	hidden_object 28,  2, SPRITE_FACING_UP, Route22GateRightBinoculars
 	db -1 ; end
 
 LavenderHouse1HiddenObjects:

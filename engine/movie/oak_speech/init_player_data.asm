@@ -21,7 +21,11 @@ InitPlayerData2:
 	ld hl, wNumBoxItems
 	call InitializeEmptyList
 
+IF DEF(_DEBUG) ; marcelnote - added
+DEF START_MONEY EQU $9000
+ELSE
 DEF START_MONEY EQU $3000
+ENDC
 	ld hl, wPlayerMoney + 1
 	ld a, HIGH(START_MONEY)
 	ld [hld], a

@@ -21,8 +21,7 @@ Route16Gate_Object:
 	warp_event  7, 25, ROUTE_16_GATE, 9
 
 	def_bg_events
-	bg_event  1, 20, TEXT_ROUTE16GATE2F_LEFT_BINOCULARS
-	bg_event  6, 20, TEXT_ROUTE16GATE2F_RIGHT_BINOCULARS
+	; marcelnote - binoculars are handled as hidden object
 
 	def_object_events
 	object_event  4,  5, SPRITE_GUARD, STAY, DOWN, TEXT_ROUTE16GATE1F_GUARD

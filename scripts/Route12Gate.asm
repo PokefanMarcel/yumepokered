@@ -2,40 +2,32 @@
 Route12Gate_Script:
 	jp EnableAutoTextBoxDrawing
 	; marcelnote - Route12Gate2F_Script used to be just:
-	;jp DisableAutoTextBoxDrawing
+	; jp DisableAutoTextBoxDrawing ; to avoid text box from showing up when looking at binoculars from the side
 
 Route12Gate_TextPointers:
 	def_text_pointers
 	dw_const Route12Gate1FGuardText,           TEXT_ROUTE12GATE1F_GUARD
 	dw_const Route12Gate2FBrunetteGirlText,    TEXT_ROUTE12GATE2F_BRUNETTE_GIRL
-	dw_const Route12Gate2FLeftBinocularsText,  TEXT_ROUTE12GATE2F_LEFT_BINOCULARS
-	dw_const Route12Gate2FRightBinocularsText, TEXT_ROUTE12GATE2F_RIGHT_BINOCULARS
 
 Route12Gate1FGuardText:
 	text_far _Route12Gate1FGuardText
 	text_end
 
-Route12Gate2FBrunetteGirlText:
+Route12Gate2FBrunetteGirlText: ; marcelnote - optimized
 	text_asm
-	CheckEvent EVENT_GOT_TM39, 1
-	jr c, .got_item
+	CheckEvent EVENT_GOT_TM39
+	ld hl, .TM39ExplanationText
+	jr nz, .got_text
 	ld hl, .YouCanHaveThisText
 	call PrintText
 	lb bc, TM_SWIFT, 1
 	call GiveItem
-	jr nc, .bag_full
-	ld hl, .ReceivedTM39Text
-	call PrintText
-	SetEvent EVENT_GOT_TM39
-	jr .done
-.bag_full
 	ld hl, .TM39NoRoomText
+	jr nc, .got_text
+	SetEvent EVENT_GOT_TM39
+	ld hl, .ReceivedTM39Text
+.got_text
 	call PrintText
-	jr .done
-.got_item
-	ld hl, .TM39ExplanationText
-	call PrintText
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .YouCanHaveThisText:
@@ -54,34 +46,3 @@ Route12Gate2FBrunetteGirlText:
 .TM39NoRoomText:
 	text_far _Route12Gate2FBrunetteGirlTM39NoRoomText
 	text_end
-
-Route12Gate2FLeftBinocularsText:
-	text_asm
-	ld hl, .Text
-	jp GateUpstairsScript_PrintIfFacingUp
-
-.Text:
-	text_far _Route12Gate2FLeftBinocularsText
-	text_end
-
-Route12Gate2FRightBinocularsText:
-	text_asm
-	ld hl, .Text
-	jp GateUpstairsScript_PrintIfFacingUp
-
-.Text:
-	text_far _Route12Gate2FRightBinocularsText
-	text_end
-
-GateUpstairsScript_PrintIfFacingUp:
-	ld a, [wSpritePlayerStateData1FacingDirection]
-	cp SPRITE_FACING_UP
-	jr z, .up
-	ld a, TRUE
-	jr .done
-.up
-	call PrintText
-	xor a
-.done
-	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd

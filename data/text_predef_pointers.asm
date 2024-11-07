@@ -14,7 +14,19 @@ TextPredefs::
 	add_tx_pre StrengthsAndWeaknessesText           ; 07
 	add_tx_pre OakLabEmailText                      ; 08
 	add_tx_pre AerodactylFossilText                 ; 09
-	add_tx_pre Route15UpstairsBinocularsText        ; 0A
+	add_tx_pre Route11GateLeftBinocularsSnorlaxText   ; 0A ; marcelnote - binoculars now hidden objects
+	add_tx_pre Route11GateLeftBinocularsNoSnorlaxText ; 0A ; marcelnote - binoculars now hidden objects
+	add_tx_pre Route11GateRightBinocularsText       ; 0A ; marcelnote - binoculars now hidden objects
+	add_tx_pre Route12GateLeftBinocularsText        ; 0A ; marcelnote - binoculars now hidden objects
+	add_tx_pre Route12GateRightBinocularsText       ; 0A ; marcelnote - binoculars now hidden objects
+	add_tx_pre Route15GateLeftBinocularsText        ; 0A
+	add_tx_pre Route15GateRightBinocularsText       ; 0A ; marcelnote - binoculars now hidden objects
+	add_tx_pre Route16GateLeftBinocularsText        ; 0A ; marcelnote - binoculars now hidden objects
+	add_tx_pre Route16GateRightBinocularsText       ; 0A ; marcelnote - binoculars now hidden objects
+	add_tx_pre Route18GateLeftBinocularsText        ; 0A ; marcelnote - binoculars now hidden objects
+	add_tx_pre Route18GateRightBinocularsText       ; 0A ; marcelnote - binoculars now hidden objects
+	add_tx_pre Route22GateLeftBinocularsText        ; 0A ; marcelnote - binoculars now hidden objects
+	add_tx_pre Route22GateRightBinocularsText       ; 0A ; marcelnote - binoculars now hidden objects
 	add_tx_pre KabutopsFossilText                   ; 0B
 	add_tx_pre GymStatueText1                       ; 0C
 	add_tx_pre GymStatueText2                       ; 0D

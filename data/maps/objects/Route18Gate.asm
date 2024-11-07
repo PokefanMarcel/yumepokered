@@ -15,8 +15,7 @@ Route18Gate_Object:
 	warp_event  7, 21, ROUTE_18_GATE, 5 ; marcelnote - merged 2nd floor
 
 	def_bg_events
-	bg_event  1, 16, TEXT_ROUTE18GATE2F_LEFT_BINOCULARS  ; marcelnote - merged 2nd floor
-	bg_event  6, 16, TEXT_ROUTE18GATE2F_RIGHT_BINOCULARS ; marcelnote - merged 2nd floor
+	; marcelnote - binoculars are handled as hidden object
 
 	def_object_events
 	object_event  4,  1, SPRITE_GUARD, STAY, DOWN, TEXT_ROUTE18GATE1F_GUARD
