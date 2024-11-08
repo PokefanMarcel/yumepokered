@@ -40,10 +40,10 @@ DEF SHOW EQU $15
 	const HS_STARTER_BALL_1                ; 2B
 	const HS_STARTER_BALL_2                ; 2C
 	const HS_STARTER_BALL_3                ; 2D
-	const HS_OAKS_LAB_OAK_1                ; 2E
+	const HS_OAKS_LAB_OAK                  ; 2E
 	const HS_POKEDEX_1                     ; 2F
 	const HS_POKEDEX_2                     ; 30
-	const HS_OAKS_LAB_OAK_2                ; 31
+	const HS_OAKS_LAB_OAK_WALKING          ; 31
 	const HS_VIRIDIAN_GYM_GIOVANNI         ; 32
 	const HS_VIRIDIAN_GYM_ITEM             ; 33 X
 	const HS_OLD_AMBER                     ; 34

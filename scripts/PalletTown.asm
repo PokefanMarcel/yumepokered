@@ -1,8 +1,11 @@
-PalletTown_Script:
+PalletTown_Script: ; marcelnote - now also sets EVENT_PALLET_AFTER_GETTING_POKEDEX
+	CheckEvent EVENT_GOT_POKEDEX
+	jr z, .skip
+	SetEvent EVENT_PALLET_AFTER_GETTING_POKEDEX
 	CheckEvent EVENT_GOT_POKEBALLS_FROM_OAK
-	jr z, .next
+	jr z, .skip
 	SetEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS
-.next
+.skip
 	call EnableAutoTextBoxDrawing
 	ld hl, PalletTown_ScriptPointers
 	ld a, [wPalletTownCurScript]
