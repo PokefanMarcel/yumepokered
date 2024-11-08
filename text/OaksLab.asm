@@ -60,27 +60,27 @@ _OaksLabLastMonText::
 	line "last #MON!"
 	done
 
-_OaksLabOak1WhichPokemonDoYouWantText::
+_OaksLabOakWhichPokemonDoYouWantText::
 	text "OAK: Now, <PLAYER>,"
 	line "which #MON do"
 	cont "you want?"
 	done
 
-_OaksLabOak1YourPokemonCanFightText::
+_OaksLabOakYourPokemonCanFightText::
 	text "OAK: If a wild"
 	line "#MON appears,"
 	cont "your #MON can"
 	cont "fight against it!"
 	done
 
-_OaksLabOak1RaiseYourYoungPokemonText::
+_OaksLabOakRaiseYourYoungPokemonText::
 	text "OAK: <PLAYER>,"
 	line "raise your young"
 	cont "#MON by making"
 	cont "it fight!"
 	done
 
-_OaksLabOak1DeliverParcelText::
+_OaksLabOakDeliverParcelText::
 	text "OAK: Oh, <PLAYER>!"
 
 	para "How is my old"
@@ -100,7 +100,7 @@ _OaksLabOak1DeliverParcelText::
 	line "OAK's PARCEL.@"
 	text_end
 
-_OaksLabOak1ParcelThanksText::
+_OaksLabOakParcelThanksText::
 	text_start
 	para "Ah! This is the"
 	line "custom # BALL"
@@ -108,13 +108,13 @@ _OaksLabOak1ParcelThanksText::
 	cont "Thank you!"
 	done
 
-_OaksLabOak1PokemonAroundTheWorldText::
+_OaksLabOakPokemonAroundTheWorldText::
 	text "#MON around the"
 	line "world wait for"
 	cont "you, <PLAYER>!"
 	done
 
-_OaksLabOak1ReceivedPokeballsText::
+_OaksLabOakReceivedPokeballsText::
 	text "OAK: You can't get"
 	line "detailed data on"
 	cont "#MON by just"
@@ -147,7 +147,7 @@ _OaksLabGivePokeballsExplanationText::
 	cont "have to be lucky!"
 	done
 
-_OaksLabOak1ComeSeeMeSometimesText::
+_OaksLabOakComeSeeMeSometimesText::
 	text "OAK: Come see me"
 	line "sometimes."
 
@@ -156,7 +156,7 @@ _OaksLabOak1ComeSeeMeSometimesText::
 	cont "coming along."
 	done
 
-_OaksLabOak1HowIsYourPokedexComingText::
+_OaksLabOakHowIsYourPokedexComingText::
 	text "OAK: Good to see "
 	line "you! How is your "
 	cont "#DEX coming? "
@@ -170,7 +170,7 @@ _OaksLabPokedexText::
 	cont "pages are blank!"
 	done
 
-_OaksLabOak2Text::
+_OaksLabOakWalkingText:: ; marcelnote - this is not seen since this Oak is just for the walking animation
 	text "?"
 	done
 

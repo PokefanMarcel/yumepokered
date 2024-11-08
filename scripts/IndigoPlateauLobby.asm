@@ -91,7 +91,7 @@ IndigoPlateauLobbyRivalText: ; marcelnote - added, appears when E4 reopens
 ;.hideBall
 	;ld [wMissableObjectIndex], a
 	;predef HideObject
-	ld a, HS_OAKS_LAB_OAK_1
+	ld a, HS_OAKS_LAB_OAK
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	ld a, HS_ROUTE_1_OAK     ; Oak appears once E4 reopens after talking to rival

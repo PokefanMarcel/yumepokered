@@ -6,7 +6,8 @@
 	const_skip 2 ; marcelnote - +1 for deleting EVENT_FOLLOWED_OAK_INTO_LAB,
 	             ;              -1 for moving EVENT_OAK_APPEARED_IN_PALLET above
 	const EVENT_HALL_OF_FAME_DEX_RATING
-	const_skip 2
+	const_skip 1 ; marcelnote - -1 for creating EVENT_PALLET_AFTER_GETTING_POKEDEX
+	const EVENT_PALLET_AFTER_GETTING_POKEDEX ; marcelnote - new for Oak dialogue
 	const EVENT_PALLET_AFTER_GETTING_POKEBALLS
 	const_skip 9 ; marcelnote - adjusted down from 17
 	const EVENT_GOT_TOWN_MAP
