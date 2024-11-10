@@ -1927,14 +1927,14 @@ ScytherEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 16, WING_ATTACK
+	db 16, SHARPEN
 	db 20, FOCUS_ENERGY
-	db 24, SHARPEN
-	db 29, SLASH
-	db 34, RAZOR_WIND
-	db 39, AGILITY
-	db 44, DOUBLE_TEAM
-	db 49, SWORDS_DANCE
+	db 24, SLASH
+	db 29, DOUBLE_TEAM
+	db 34, WING_ATTACK
+	db 39, SWORDS_DANCE
+	db 44, RAZOR_WIND
+	db 49, AGILITY
 	db 0
 
 JynxEvosMoves:
@@ -1989,6 +1989,7 @@ PinsirEvosMoves:
 	db 39, PIN_MISSILE
 	db 44, SUBMISSION
 	db 49, SWORDS_DANCE
+	; BIND
 	db 0
 
 TaurosEvosMoves:
