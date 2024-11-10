@@ -3,17 +3,13 @@ UndergroundPathRoute5_Script:
 	ld [wLastMap], a
 	ret
 
-UndergroundPathEntranceRoute5_TextScriptEndingText:
-	text_end
-
 UndergroundPathRoute5_TextPointers:
 	def_text_pointers
 	dw_const UndergroundPathRoute5LittleGirlText, TEXT_UNDERGROUNDPATHROUTE5_LITTLE_GIRL
 
-UndergroundPathRoute5LittleGirlText:
+UndergroundPathRoute5LittleGirlText: ; marcelnote - optimized
 	text_asm
 	ld a, TRADE_FOR_SPOT
 	ld [wWhichTrade], a
 	predef DoInGameTradeDialogue
-	ld hl, UndergroundPathEntranceRoute5_TextScriptEndingText
-	ret
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
