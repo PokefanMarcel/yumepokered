@@ -47,7 +47,14 @@ VermilionCityDefaultScript:
 	ret nc
 	xor a
 	ldh [hJoyHeld], a
-	ld [wSavedCoordIndex], a ; unnecessary
+	;ld [wSavedCoordIndex], a ; unnecessary ; marcelnote - removed
+	;;;;;;;;;; marcelnote - Sailor now turns towars the player
+	ld a, VERMILIONCITY_SAILOR1
+	ldh [hSpriteIndex], a
+	ld a, SPRITE_FACING_LEFT
+	ldh [hSpriteFacingDirection], a
+	;;;;;;;;;; marcelnote - Sailor now turns towars the player
+	call SetSpriteFacingDirectionAndDelay
 	ld a, TEXT_VERMILIONCITY_SAILOR1
 	ldh [hTextID], a
 	call DisplayTextID
