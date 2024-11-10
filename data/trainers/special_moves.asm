@@ -40,9 +40,11 @@ SpecialTrainerMoves:
 	db $ff
 
 	db MISTY, 1
+	; Psyduck
+	db 2, 2, WATER_GUN
 	; Starmie
 	db 3, 1, SWIFT
-	db 3, 4, BUBBLEBEAM
+	db 3, 3, BUBBLEBEAM
 	db $ff
 
 	db MISTY, 2  ; rematch
