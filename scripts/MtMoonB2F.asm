@@ -128,7 +128,7 @@ MtMoon3FSuperNerdMoveUpMovementData:
 	db NPC_MOVEMENT_UP
 	db -1 ; end
 
-MtMoonB2FSuperNerdTakesOtherFossilScript:
+MtMoonB2FSuperNerdTakesOtherFossilScript: ; marcelnote - optimized
 	ld a, [wStatusFlags5]
 	bit BIT_SCRIPTED_NPC_MOVEMENT, a
 	ret nz
@@ -140,11 +140,9 @@ MtMoonB2FSuperNerdTakesOtherFossilScript:
 	ldh [hTextID], a
 	call DisplayTextID
 	CheckEvent EVENT_GOT_DOME_FOSSIL
-	jr z, .got_dome_fossil
-	ld a, HS_MT_MOON_B2F_FOSSIL_2
-	jr .continue
-.got_dome_fossil
 	ld a, HS_MT_MOON_B2F_FOSSIL_1
+	jr z, .continue
+	ld a, HS_MT_MOON_B2F_FOSSIL_2
 .continue
 	ld [wMissableObjectIndex], a
 	predef HideObject
