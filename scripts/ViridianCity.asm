@@ -168,21 +168,18 @@ ViridianCityGambler1Text:
 	text_far _ViridianCityGambler1GymLeaderReturnedText
 	text_end
 
-ViridianCityYoungster2Text:
+ViridianCityYoungster2Text: ; marcelnote - optimized
 	text_asm
 	ld hl, .YouWantToKnowAboutText
 	call PrintText
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
+	ld hl, .OkThenText
 	jr nz, .no
 	ld hl, .CaterpieAndWeedleDescriptionText
-	call PrintText
-	jr .text_script_end
 .no
-	ld hl, .OkThenText
 	call PrintText
-.text_script_end
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .YouWantToKnowAboutText:
