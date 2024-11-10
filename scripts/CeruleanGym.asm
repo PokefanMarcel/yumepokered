@@ -202,17 +202,14 @@ CeruleanGymAfterBattleText2:
 	text_far _CeruleanGymAfterBattleText2
 	text_end
 
-CeruleanGymGymGuideText:
+CeruleanGymGymGuideText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_BEAT_MISTY
-	jr nz, .afterBeat
-	ld hl, .ChampInMakingText
-	call PrintText
-	jr .done
-.afterBeat
 	ld hl, .BeatMistyText
+	jr nz, .beat_misty
+	ld hl, .ChampInMakingText
+.beat_misty
 	call PrintText
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .ChampInMakingText:

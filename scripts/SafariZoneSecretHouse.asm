@@ -5,27 +5,21 @@ SafariZoneSecretHouse_TextPointers:
 	def_text_pointers
 	dw_const SafariZoneSecretHouseFishingGuruText, TEXT_SAFARIZONESECRETHOUSE_FISHING_GURU
 
-SafariZoneSecretHouseFishingGuruText:
+SafariZoneSecretHouseFishingGuruText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_HM03
-	jr nz, .got_item
+	ld hl, .HM03ExplanationText
+	jr nz, .print_text
 	ld hl, .YouHaveWonText
 	call PrintText
 	lb bc, HM_SURF, 1
 	call GiveItem
-	jr nc, .bag_full
-	ld hl, .ReceivedHM03Text
-	call PrintText
-	SetEvent EVENT_GOT_HM03
-	jr .done
-.bag_full
 	ld hl, .HM03NoRoomText
+	jr nc, .print_text
+	SetEvent EVENT_GOT_HM03
+	ld hl, .ReceivedHM03Text
+.print_text
 	call PrintText
-	jr .done
-.got_item
-	ld hl, .HM03ExplanationText
-	call PrintText
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .YouHaveWonText:

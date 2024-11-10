@@ -33,8 +33,8 @@ IndigoPlateauLobbyGymGuideText:
 
 IndigoPlateauLobbyCooltrainerFText: ; marcelnote - modified to say something different after becoming champion
 	text_asm
-	ld hl, .AfterChampionText
 	CheckEvent EVENT_BECAME_CHAMPION
+	ld hl, .AfterChampionText
     jr nz, .is_champion
 	ld hl, .BeforeChampionText
 .is_champion

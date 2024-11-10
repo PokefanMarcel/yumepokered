@@ -471,15 +471,13 @@ CinnabarGymSuperNerd7:
 	text_far _CinnabarGymSuperNerd7AfterBattleText
 	text_end
 
-CinnabarGymGymGuideText:
+CinnabarGymGymGuideText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_BEAT_BLAINE
-	jr nz, .afterBeat
-	ld hl, .ChampInMakingText
-	jr .done
-.afterBeat
 	ld hl, .BeatBlaineText
-.done
+	jr nz, .beat_blaine
+	ld hl, .ChampInMakingText
+.beat_blaine
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 

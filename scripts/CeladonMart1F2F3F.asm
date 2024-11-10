@@ -66,24 +66,20 @@ CeladonMart2FClerk2Text: ; marcelnote - new text for dynamic list
 	call MartTMClerkDialogue
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-CeladonMart3FClerkText:
+CeladonMart3FClerkText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_TM18
-	jr nz, .got_item
+	ld hl, .TM18ExplanationText
+	jr nz, .print_text
 	ld hl, .TM18PreReceiveText
 	call PrintText
 	lb bc, TM_COUNTER, 1
 	call GiveItem
-	jr nc, .bag_full
+	ld hl, .TM18NoRoomText
+	jr nc, .print_text
 	SetEvent EVENT_GOT_TM18
 	ld hl, .ReceivedTM18Text
-	jr .done
-.bag_full
-	ld hl, .TM18NoRoomText
-	jr .done
-.got_item
-	ld hl, .TM18ExplanationText
-.done
+.print_text
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 

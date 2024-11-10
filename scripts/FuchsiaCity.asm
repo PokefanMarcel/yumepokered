@@ -140,7 +140,7 @@ FuchsiaCityLaprasSignText:
 	text_far _FuchsiaCityLaprasSignText
 	text_end
 
-FuchsiaCityFossilSignText:
+FuchsiaCityFossilSignText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_DOME_FOSSIL
 	jr nz, .got_dome_fossil
@@ -148,7 +148,7 @@ FuchsiaCityFossilSignText:
 	jr nz, .got_helix_fossil
 	ld hl, .UndeterminedText
 	call PrintText
-	jr .done
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .got_dome_fossil
 	ld hl, .OmanyteText
 	call PrintText
@@ -160,7 +160,6 @@ FuchsiaCityFossilSignText:
 	ld a, KABUTO
 .display
 	call DisplayPokedex
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .OmanyteText:

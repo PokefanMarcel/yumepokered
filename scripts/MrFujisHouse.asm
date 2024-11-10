@@ -11,17 +11,14 @@ MrFujisHouse_TextPointers:
 	dw_const MrFujisHouseMrFujiText,        TEXT_MRFUJISHOUSE_MR_FUJI
 	dw_const MrFujisHouseMrFujiPokedexText, TEXT_MRFUJISHOUSE_POKEDEX
 
-MrFujisHouseSuperNerdText:
+MrFujisHouseSuperNerdText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_RESCUED_MR_FUJI
+	ld hl, .MrFujiHadBeenPrayingText
 	jr nz, .rescued_mr_fuji
 	ld hl, .MrFujiIsntHereText
-	call PrintText
-	jr .done
 .rescued_mr_fuji
-	ld hl, .MrFujiHadBeenPrayingText
 	call PrintText
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .MrFujiIsntHereText:
@@ -32,17 +29,14 @@ MrFujisHouseSuperNerdText:
 	text_far _MrFujisHouseSuperNerdMrFujiHadBeenPrayingText
 	text_end
 
-MrFujisHouseLittleGirlText:
+MrFujisHouseLittleGirlText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_RESCUED_MR_FUJI
+	ld hl, .PokemonAreNiceToHugText
 	jr nz, .rescued_mr_fuji
 	ld hl, .ThisIsMrFujisHouseText
-	call PrintText
-	jr .done
 .rescued_mr_fuji
-	ld hl, .PokemonAreNiceToHugText
 	call PrintText
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .ThisIsMrFujisHouseText:
@@ -67,30 +61,24 @@ MrFujisHouseNidorinoText:
 	call PlayCry
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-MrFujisHouseMrFujiText:
+MrFujisHouseMrFujiText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_POKE_FLUTE
-	jr nz, .got_item
+	ld hl, .HasMyFluteHelpedYouText
+	jr nz, .print_text
 	ld hl, .IThinkThisMayHelpYourQuestText
 	call PrintText
 	lb bc, POKE_FLUTE, 1
 	call GiveItem
-	jr nc, .bag_full
+	ld hl, .PokeFluteNoRoomText
+	jr nc, .print_text
 	ld hl, .ReceivedPokeFluteText
-	call PrintText
 	SetEvent EVENT_GOT_POKE_FLUTE
 	ld a, HS_POKEMON_TOWER_7F_CHANNELER ; marcelnote - added 7FChanneler
 	ld [wMissableObjectIndex], a
 	predef ShowObject
-	jr .done
-.bag_full
-	ld hl, .PokeFluteNoRoomText
+.print_text
 	call PrintText
-	jr .done
-.got_item
-	ld hl, .HasMyFluteHelpedYouText
-	call PrintText
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .IThinkThisMayHelpYourQuestText:

@@ -117,23 +117,20 @@ Route1_TextPointers:
 	dw_const Route1OakPostBattleText,   TEXT_ROUTE1_OAK_POST_BATTLE ; marcelnote - postgame Oak battle
 	dw_const Route1OakOneMoreThingText, TEXT_ROUTE1_OAK_ONE_MORE_THING ; marcelnote - postgame Oak battle
 
-Route1Youngster1Text:
+Route1Youngster1Text: ; marcelnote - optimized
 	text_asm
-	CheckAndSetEvent EVENT_GOT_POTION_SAMPLE
-	jr nz, .got_item
+	CheckEvent EVENT_GOT_POTION_SAMPLE
+	ld hl, .AlsoGotPokeballsText
+	jr nz, .print_text
 	ld hl, .MartSampleText
 	call PrintText
 	lb bc, POTION, 1
 	call GiveItem
-	jr nc, .bag_full
-	ld hl, .GotPotionText
-	jr .done
-.bag_full
 	ld hl, .NoRoomText
-	jr .done
-.got_item
-	ld hl, .AlsoGotPokeballsText
-.done
+	jr nc, .print_text
+	SetEvent EVENT_GOT_POTION_SAMPLE
+	ld hl, .GotPotionText
+.print_text
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 

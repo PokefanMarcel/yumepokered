@@ -287,13 +287,13 @@ FuchsiaGymRocker6AfterBattleText:
 	text_far _FuchsiaGymRocker6AfterBattleText
 	text_end
 
-FuchsiaGymGymGuideText:
+FuchsiaGymGymGuideText: ; marcelnote - adjusted
 	text_asm
 	CheckEvent EVENT_BEAT_KOGA
 	ld hl, .BeatKogaText
-	jr nz, .afterBeat
+	jr nz, .beat_koga
 	ld hl, .ChampInMakingText
-.afterBeat
+.beat_koga
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 

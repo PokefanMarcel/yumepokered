@@ -228,27 +228,21 @@ ViridianCityOldManSleepyText:
 	text_far _ViridianCityOldManSleepyPrivatePropertyText
 	text_end
 
-ViridianCityFisherText:
+ViridianCityFisherText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_TM42
-	jr nz, .got_item
+	ld hl, .TM42ExplanationText
+	jr nz, .print_text
 	ld hl, .YouCanHaveThisText
 	call PrintText
 	lb bc, TM_DREAM_EATER, 1
 	call GiveItem
-	jr nc, .bag_full
-	ld hl, .ReceivedTM42Text
-	call PrintText
-	SetEvent EVENT_GOT_TM42
-	jr .done
-.bag_full
 	ld hl, .TM42NoRoomText
+	jr nc, .print_text
+	SetEvent EVENT_GOT_TM42
+	ld hl, .ReceivedTM42Text
+.print_text
 	call PrintText
-	jr .done
-.got_item
-	ld hl, .TM42ExplanationText
-	call PrintText
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .YouCanHaveThisText:
@@ -268,7 +262,7 @@ ViridianCityFisherText:
 	text_far _ViridianCityFisherTM42NoRoomText
 	text_end
 
-ViridianCityOldManText:
+ViridianCityOldManText: ; marcelnote - optimized
 	text_asm
 	ld hl, .HadMyCoffeeNowText
 	call PrintText
@@ -277,16 +271,13 @@ ViridianCityOldManText:
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr z, .refused
+	ld hl, .TimeIsMoneyText
+	jr z, .saidNo
 	ld hl, .KnowHowToCatchPokemonText
-	call PrintText
 	ld a, SCRIPT_VIRIDIANCITY_OLD_MAN_START_CATCH_TRAINING
 	ld [wViridianCityCurScript], a
-	jr .done
-.refused
-	ld hl, .TimeIsMoneyText
+.saidNo
 	call PrintText
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .HadMyCoffeeNowText:

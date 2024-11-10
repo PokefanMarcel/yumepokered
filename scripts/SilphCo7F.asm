@@ -345,17 +345,14 @@ SilphCo7FSilphWorkerM1Text:
 	text_far _SilphCo7FSilphWorkerM1SavedText
 	text_end
 
-SilphCo7FSilphWorkerM2Text:
+SilphCo7FSilphWorkerM2Text: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
+	ld hl, .CancelledTheMasterBallText
 	jr nz, .saved_silph
 	ld hl, .AfterTheMasterBallText
-	call PrintText
-	jr .done
 .saved_silph
-	ld hl, .CancelledTheMasterBallText
 	call PrintText
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .AfterTheMasterBallText

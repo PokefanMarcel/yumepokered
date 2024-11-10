@@ -305,27 +305,21 @@ SilphCo11TrainerHeader1:
 	trainer EVENT_BEAT_SILPH_CO_11F_TRAINER_1, 3, SilphCo11FRocket2BattleText, SilphCo11FRocket2EndBattleText, SilphCo11FRocket2AfterBattleText
 	db -1 ; end
 
-SilphCo11FSilphPresidentText:
+SilphCo11FSilphPresidentText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_MASTER_BALL
-	jp nz, .got_item
+	ld hl, .MasterBallDescriptionText
+	jp nz, .print_text
 	ld hl, .Text
 	call PrintText
 	lb bc, MASTER_BALL, 1
 	call GiveItem
-	jr nc, .bag_full
-	ld hl, .ReceivedMasterBallText
-	call PrintText
-	SetEvent EVENT_GOT_MASTER_BALL
-	jr .done
-.bag_full
 	ld hl, .NoRoomText
+	jr nc, .print_text
+	SetEvent EVENT_GOT_MASTER_BALL
+	ld hl, .ReceivedMasterBallText
+.print_text
 	call PrintText
-	jr .done
-.got_item
-	ld hl, .MasterBallDescriptionText
-	call PrintText
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Text:

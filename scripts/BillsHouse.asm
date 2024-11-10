@@ -156,17 +156,17 @@ BillsHouseBillPokemonText:
 	text_far _BillsHouseBillNoYouGottaHelpText
 	text_end
 
-BillsHouseBillSSTicketText:
+BillsHouseBillSSTicketText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_SS_TICKET
-	jr nz, .got_ss_ticket
+	ld hl, .WhyDontYouGoInsteadOfMeText
+	jr nz, .print_text
 	ld hl, .ThankYouText
 	call PrintText
 	lb bc, S_S_TICKET, 1
 	call GiveItem
-	jr nc, .bag_full
-	ld hl, .SSTicketReceivedText
-	call PrintText
+	ld hl, .SSTicketNoRoomText
+	jr nc, .print_text
 	SetEvent EVENT_GOT_SS_TICKET
 	ld a, HS_CERULEAN_GUARD_1
 	ld [wMissableObjectIndex], a
@@ -174,14 +174,9 @@ BillsHouseBillSSTicketText:
 	ld a, HS_CERULEAN_GUARD_2
 	ld [wMissableObjectIndex], a
 	predef HideObject
-.got_ss_ticket
-	ld hl, .WhyDontYouGoInsteadOfMeText
+	ld hl, .SSTicketReceivedText
+.print_text
 	call PrintText
-	jr .text_script_end
-.bag_full
-	ld hl, .SSTicketNoRoomText
-	call PrintText
-.text_script_end
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .ThankYouText:

@@ -15,10 +15,11 @@ SSAnneCaptainsRoom_TextPointers:
 	dw_const SSAnneCaptainsRoomTrashText,       TEXT_SSANNECAPTAINSROOM_TRASH
 	dw_const SSAnneCaptainsRoomSeasickBookText, TEXT_SSANNECAPTAINSROOM_SEASICK_BOOK
 
-SSAnneCaptainsRoomCaptainText:
+SSAnneCaptainsRoomCaptainText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_HM01
-	jr nz, .got_item
+	ld hl, SSAnneCaptainsRoomCaptainNotSickAnymoreText
+	jr nz, .print_text
 	ld hl, SSAnneCaptainsRoomRubCaptainsBackText
 	call PrintText
 	ld hl, SSAnneCaptainsRoomCaptainIFeelMuchBetterText
@@ -26,20 +27,17 @@ SSAnneCaptainsRoomCaptainText:
 	lb bc, HM_CUT, 1
 	call GiveItem
 	jr nc, .bag_full
-	ld hl, SSAnneCaptainsRoomCaptainReceivedHM01Text
-	call PrintText
 	SetEvent EVENT_GOT_HM01
-	jr .done
+	ld hl, SSAnneCaptainsRoomCaptainReceivedHM01Text
+	jr nz, .print_text
 .bag_full
 	ld hl, SSAnneCaptainsRoomCaptainHM01NoRoomText
 	call PrintText
 	ld hl, wStatusFlags3
 	set BIT_NO_NPC_FACE_PLAYER, [hl]
-	jr .done
-.got_item
-	ld hl, SSAnneCaptainsRoomCaptainNotSickAnymoreText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.print_text
 	call PrintText
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 SSAnneCaptainsRoomRubCaptainsBackText:

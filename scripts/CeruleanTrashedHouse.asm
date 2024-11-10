@@ -8,19 +8,16 @@ CeruleanTrashedHouse_TextPointers:
 	dw_const CeruleanTrashedHouseGirlText,        TEXT_CERULEANTRASHEDHOUSE_GIRL
 	dw_const CeruleanTrashedHouseWallHoleText,    TEXT_CERULEANTRASHEDHOUSE_WALL_HOLE
 
-CeruleanTrashedHouseFishingGuruText:
+CeruleanTrashedHouseFishingGuruText: ; marcelnote - optimized
 	text_asm
 	ld b, TM_DIG
 	predef GetQuantityOfItemInBag
 	and b
+	ld hl, .TheyStoleATMText
 	jr z, .no_dig_tm
 	ld hl, .WhatsLostIsLostText
-	call PrintText
-	jr .done
 .no_dig_tm
-	ld hl, .TheyStoleATMText
 	call PrintText
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .TheyStoleATMText:

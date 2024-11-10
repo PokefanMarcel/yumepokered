@@ -5,27 +5,21 @@ MrPsychicsHouse_TextPointers:
 	def_text_pointers
 	dw_const MrPsychicsHouseMrPsychicText, TEXT_MRPSYCHICSHOUSE_MR_PSYCHIC
 
-MrPsychicsHouseMrPsychicText:
+MrPsychicsHouseMrPsychicText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_TM29
-	jr nz, .got_item
+	ld hl, .TM29ExplanationText
+	jr nz, .print_text
 	ld hl, .YouWantedThisText
 	call PrintText
 	lb bc, TM_PSYCHIC_M, 1
 	call GiveItem
-	jr nc, .bag_full
-	ld hl, .ReceivedTM29Text
-	call PrintText
-	SetEvent EVENT_GOT_TM29
-	jr .done
-.bag_full
 	ld hl, .TM29NoRoomText
+	jr nc, .print_text
+	SetEvent EVENT_GOT_TM29
+	ld hl, .ReceivedTM29Text
+.print_text
 	call PrintText
-	jr .done
-.got_item
-	ld hl, .TM29ExplanationText
-	call PrintText
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .YouWantedThisText:

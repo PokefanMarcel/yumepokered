@@ -26,27 +26,21 @@ CeladonDinerFisherText:
 	text_far _CeladonDinerFisherText
 	text_end
 
-CeladonDinerGymGuideText:
+CeladonDinerGymGuideText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_COIN_CASE
-	jr nz, .got_item
+	ld hl, .WinItBackText
+	jr nz, .print_text
 	ld hl, .ImFlatOutBustedText
 	call PrintText
 	lb bc, COIN_CASE, 1
 	call GiveItem
-	jr nc, .bag_full
+	ld hl, .CoinCaseNoRoomText
+	jr nc, .print_text
 	SetEvent EVENT_GOT_COIN_CASE
 	ld hl, .ReceivedCoinCaseText
+.print_text
 	call PrintText
-	jr .done
-.bag_full
-	ld hl, .CoinCaseNoRoomText
-	call PrintText
-	jr .done
-.got_item
-	ld hl, .WinItBackText
-	call PrintText
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .ImFlatOutBustedText:

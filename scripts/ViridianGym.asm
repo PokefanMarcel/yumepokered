@@ -135,24 +135,20 @@ ViridianGymGiovanniPostBattle:
 	ld a, D_RIGHT | D_LEFT | D_UP | D_DOWN
 	ld [wJoyIgnore], a
 ; fallthrough
-ViridianGymReceiveTM27:
+ViridianGymReceiveTM27: ; marcelnote - optimized
 	ld a, TEXT_VIRIDIANGYM_GIOVANNI_EARTH_BADGE_INFO
 	ldh [hTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_VIRIDIAN_GYM_GIOVANNI
 	lb bc, TM_FISSURE, 1
 	call GiveItem
-	jr nc, .bag_full
-	ld a, TEXT_VIRIDIANGYM_GIOVANNI_RECEIVED_TM27
-	ldh [hTextID], a
-	call DisplayTextID
-	SetEvent EVENT_GOT_TM27
-	jr .gym_victory
-.bag_full
 	ld a, TEXT_VIRIDIANGYM_GIOVANNI_TM27_NO_ROOM
+	jr nc, .bag_full
+	SetEvent EVENT_GOT_TM27
+	ld a, TEXT_VIRIDIANGYM_GIOVANNI_RECEIVED_TM27
+.bag_full
 	ldh [hTextID], a
 	call DisplayTextID
-.gym_victory
 	ld hl, wObtainedBadges
 	set BIT_EARTHBADGE, [hl]
 	ld hl, wBeatGymFlags
@@ -420,17 +416,14 @@ ViridianGymCooltrainerM3AfterBattleText:
 	text_far _ViridianGymCooltrainerM3AfterBattleText
 	text_end
 
-ViridianGymGymGuideText:
+ViridianGymGymGuideText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_BEAT_VIRIDIAN_GYM_GIOVANNI
+	ld hl, ViridianGymGuidePostBattleText
 	jr nz, .afterBeat
 	ld hl, ViridianGymGuidePreBattleText
-	call PrintText
-	jr .done
 .afterBeat
-	ld hl, ViridianGymGuidePostBattleText
 	call PrintText
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 ViridianGymGuidePreBattleText:
