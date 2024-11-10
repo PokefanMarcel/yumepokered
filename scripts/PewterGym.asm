@@ -192,31 +192,24 @@ PewterGymCooltrainerMAfterBattleText:
 	text_far _PewterGymCooltrainerMAfterBattleText
 	text_end
 
-PewterGymGuideText:
+PewterGymGuideText: ; marcelnote - optimized
 	text_asm
-	ld a, [wBeatGymFlags]
-	bit BIT_BOULDERBADGE, a
-	jr nz, .afterBeat
+	CheckEvent EVENT_BEAT_BROCK
+	ld hl, PewterGymGuidePostBattleText
+	jr nz, .beat_brock
 	ld hl, PewterGymGuidePreAdviceText
 	call PrintText
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .PewterGymGuideBeginAdviceText
-	ld hl, PewterGymGuideBeginAdviceText
-	call PrintText
-	jr .PewterGymGuideAdviceText
-.PewterGymGuideBeginAdviceText
 	ld hl, PewterGymGuideFreeServiceText
+	jr nz, .saidNo
+	ld hl, PewterGymGuideBeginAdviceText
+.saidNo
 	call PrintText
-.PewterGymGuideAdviceText
 	ld hl, PewterGymGuideAdviceText
+.beat_brock
 	call PrintText
-	jr .done
-.afterBeat
-	ld hl, PewterGymGuidePostBattleText
-	call PrintText
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 PewterGymGuidePreAdviceText:

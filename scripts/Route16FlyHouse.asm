@@ -6,22 +6,20 @@ Route16FlyHouse_TextPointers:
 	dw_const Route16FlyHouseBrunetteGirlText, TEXT_ROUTE16FLYHOUSE_BRUNETTE_GIRL
 	dw_const Route16FlyHouseFearowText,       TEXT_ROUTE16FLYHOUSE_FEAROW
 
-Route16FlyHouseBrunetteGirlText:
+Route16FlyHouseBrunetteGirlText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_HM02
 	ld hl, .HM02ExplanationText
-	jr nz, .got_item
+	jr nz, .print_text
 	ld hl, .Text
 	call PrintText
 	lb bc, HM_FLY, 1
 	call GiveItem
-	jr nc, .bag_full
+	ld hl, .HM02NoRoomText
+	jr nc, .print_text
 	SetEvent EVENT_GOT_HM02
 	ld hl, .ReceivedHM02Text
-	jr .got_item
-.bag_full
-	ld hl, .HM02NoRoomText
-.got_item
+.print_text
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 

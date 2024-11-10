@@ -22,19 +22,15 @@ PokemonFanClub_TextPointers:
 	dw_const PokemonFanClubSign1Text,        TEXT_POKEMONFANCLUB_SIGN_1
 	dw_const PokemonFanClubSign2Text,        TEXT_POKEMONFANCLUB_SIGN_2
 
-PokemonFanClubPikachuFanText:
+PokemonFanClubPikachuFanText: ; marcelnote - optimized
 	text_asm
-	CheckEvent EVENT_PIKACHU_FAN_BOAST
-	jr nz, .mineisbetter
-	ld hl, .NormalText
-	call PrintText
-	SetEvent EVENT_SEEL_FAN_BOAST
-	jr .done
-.mineisbetter
+	CheckAndResetEvent EVENT_PIKACHU_FAN_BOAST
 	ld hl, .BetterText
+	jr nz, .mine_is_better
+	ld hl, .NormalText
+	SetEvent EVENT_SEEL_FAN_BOAST
+.mine_is_better
 	call PrintText
-	ResetEvent EVENT_PIKACHU_FAN_BOAST
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .NormalText:
@@ -45,19 +41,15 @@ PokemonFanClubPikachuFanText:
 	text_far _PokemonFanClubPikachuFanBetterText
 	text_end
 
-PokemonFanClubSeelFanText:
+PokemonFanClubSeelFanText: ; marcelnote - optimized
 	text_asm
-	CheckEvent EVENT_SEEL_FAN_BOAST
-	jr nz, .mineisbetter
-	ld hl, .NormalText
-	call PrintText
-	SetEvent EVENT_PIKACHU_FAN_BOAST
-	jr .done
-.mineisbetter
+	CheckAndResetEvent EVENT_SEEL_FAN_BOAST
 	ld hl, .BetterText
+	jr nz, .mine_is_better
+	ld hl, .NormalText
+	SetEvent EVENT_PIKACHU_FAN_BOAST
+.mine_is_better
 	call PrintText
-	ResetEvent EVENT_SEEL_FAN_BOAST
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .NormalText:
@@ -94,40 +86,33 @@ PokemonFanClubSeelText:
 	text_far _PokemonFanClubSeelText
 	text_end
 
-PokemonFanClubChairmanText:
+PokemonFanClubChairmanText: ; marcelnote - optimized
 	text_asm
 	call PokemonFanClub_CheckBikeInBag
-	jr nz, .nothingleft
+	ld hl, .FinalText
+	jr nz, .print_text
 
 	ld hl, .IntroText
 	call PrintText
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .nothanks
+	ld hl, .NoStoryText
+	jr nz, .print_text
 
 	; tell the story
 	ld hl, .StoryText
 	call PrintText
 	lb bc, BIKE_VOUCHER, 1
 	call GiveItem
-	jr nc, .bag_full
-	ld hl, .BikeVoucherText
-	call PrintText
-	SetEvent EVENT_GOT_BIKE_VOUCHER
-	jr .done
-.bag_full
 	ld hl, .BagFullText
+	jr nc, .print_text
+	ld hl, .BikeVoucherText
+	SetEvent EVENT_GOT_BIKE_VOUCHER
 	call PrintText
-	jr .done
-.nothanks
-	ld hl, .NoStoryText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.print_text
 	call PrintText
-	jr .done
-.nothingleft
-	ld hl, .FinalText
-	call PrintText
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .IntroText:

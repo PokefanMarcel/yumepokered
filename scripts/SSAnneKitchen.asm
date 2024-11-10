@@ -36,23 +36,19 @@ SSAnneKitchenCook6Text:
 	text_far _SSAnneKitchenCook6Text
 	text_end
 
-SSAnneKitchenCook7Text:
+SSAnneKitchenCook7Text: ; marcelnote - optimized
 	text_asm
 	ld hl, .MainCourseIsText
 	call PrintText
 	ldh a, [hRandomAdd]
 	bit 7, a
-	jr z, .not_dialog_1
 	ld hl, .SalmonDuSaladText
-	jr .done
-.not_dialog_1
+	jr nz, .print_text
 	bit 4, a
-	jr z, .not_dialog_2
 	ld hl, .EelsAuBarbecueText
-	jr .done
-.not_dialog_2
+	jr nz, .print_text
 	ld hl, .PrimeBeefSteakText
-.done
+.print_text
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 

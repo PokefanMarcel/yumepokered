@@ -6,32 +6,26 @@ FuchsiaSuperRodHouse_TextPointers:
 	def_text_pointers
 	dw_const FuchsiaSuperRodHouseFishingGuruText, TEXT_FUCHSIASUPERRODHOUSE_FISHING_GURU
 
-FuchsiaSuperRodHouseFishingGuruText:
+FuchsiaSuperRodHouseFishingGuruText: ; marcelnote - optimized
 	text_asm
 	ld a, [wStatusFlags1]
 	bit BIT_GOT_SUPER_ROD, a ; received super rod?
-	jr nz, .got_super_rod
+	ld hl, .TryFishingText
+	jr nz, .print_text
 	ld hl, .DoYouLikeToFishText
 	call PrintText
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .refused
+	ld hl, .ThatsDisappointingText
+	jr nz, .print_text
 	lb bc, SUPER_ROD, 1
 	call GiveItem
-	jr nc, .bag_full
+	ld hl, .NoRoomText
+	jr nc, .print_text
 	ld hl, wStatusFlags1
 	set BIT_GOT_SUPER_ROD, [hl] ; received super rod
 	ld hl, .TakeThisText
-	jr .print_text
-.bag_full
-	ld hl, .NoRoomText
-	jr .print_text
-.refused
-	ld hl, .ThatsDisappointingText
-	jr .print_text
-.got_super_rod
-	ld hl, .TryFishingText
 .print_text
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd

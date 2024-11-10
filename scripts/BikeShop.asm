@@ -7,14 +7,12 @@ BikeShop_TextPointers:
 	dw_const BikeShopMiddleAgedWomanText,   TEXT_BIKESHOP_MIDDLE_AGED_WOMAN
 	dw_const BikeShopYoungsterText,         TEXT_BIKESHOP_YOUNGSTER
 
-BikeShopClerkText:
+BikeShopClerkText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_BICYCLE
-	jr z, .dontHaveBike
 	ld hl, BikeShopClerkHowDoYouLikeYourBicycleText
-	call PrintText
-	jp .Done
-.dontHaveBike
+	jr nz, .print_text
+; don't have bike
 	ld b, BIKE_VOUCHER
 	call IsItemInBag
 	jr z, .dontHaveVoucher
@@ -22,18 +20,16 @@ BikeShopClerkText:
 	call PrintText
 	lb bc, BICYCLE, 1
 	call GiveItem
-	jr nc, .BagFull
+	ld hl, BikeShopBagFullText
+	jr nc, .print_text
 	ld a, BIKE_VOUCHER
 	ldh [hItemToRemoveID], a
 	farcall RemoveItemByID
 	SetEvent EVENT_GOT_BICYCLE
 	ld hl, BikeShopExchangedVoucherText
+.print_text
 	call PrintText
-	jr .Done
-.BagFull
-	ld hl, BikeShopBagFullText
-	call PrintText
-	jr .Done
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .dontHaveVoucher
 	ld hl, BikeShopClerkWelcomeText
 	call PrintText
@@ -66,20 +62,16 @@ BikeShopClerkText:
 	ld hl, wStatusFlags5 ; marcelnote - moved code from below
 	res BIT_NO_TEXT_DELAY, [hl]
 	call HandleMenuInput
+	ld hl, BikeShopComeAgainText
 	bit BIT_B_BUTTON, a
-	jr nz, .cancel
+	jr nz, .print_text
 	;ld hl, wStatusFlags5 ; marcelnote - moved above to fix instant text bug
 	;res BIT_NO_TEXT_DELAY, [hl]
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .cancel
+	jr nz, .print_text
 	ld hl, BikeShopCantAffordText
-	call PrintText
-.cancel
-	ld hl, BikeShopComeAgainText
-	call PrintText
-.Done
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	jr .print_text
 
 BikeShopMenuText:
 	db   "BICYCLE"

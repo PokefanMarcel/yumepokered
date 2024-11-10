@@ -9,27 +9,21 @@ CinnabarLabMetronomeRoom_TextPointers:
 	dw_const CinnabarLabMetronomeRoomPCText,         TEXT_CINNABARLABMETRONOMEROOM_PC_MONITOR
 	dw_const CinnabarLabMetronomeRoomAmberPipeText,  TEXT_CINNABARLABMETRONOMEROOM_AMBER_PIPE
 
-CinnabarLabMetronomeRoomScientist1Text:
+CinnabarLabMetronomeRoomScientist1Text: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_TM35
-	jr nz, .got_item
+	ld hl, .TM35ExplanationText
+	jr nz, .print_text
 	ld hl, .Text
 	call PrintText
 	lb bc, TM_METRONOME, 1
 	call GiveItem
-	jr nc, .bag_full
-	ld hl, .ReceivedTM35Text
-	call PrintText
-	SetEvent EVENT_GOT_TM35
-	jr .done
-.bag_full
 	ld hl, .TM35NoRoomText
+	jr nc, .print_text
+	SetEvent EVENT_GOT_TM35
+	ld hl, .ReceivedTM35Text
+.print_text
 	call PrintText
-	jr .done
-.got_item
-	ld hl, .TM35ExplanationText
-	call PrintText
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Text:

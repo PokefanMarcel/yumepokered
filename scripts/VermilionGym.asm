@@ -63,24 +63,20 @@ VermilionGymLTSurgeAfterBattleScript:
 	ld a, D_RIGHT | D_LEFT | D_UP | D_DOWN
 	ld [wJoyIgnore], a
 
-VermilionGymLTSurgeReceiveTM24Script:
+VermilionGymLTSurgeReceiveTM24Script: ; marcelnote - optimized
 	ld a, TEXT_VERMILIONGYM_LT_SURGE_THUNDER_BADGE_INFO
 	ldh [hTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_LT_SURGE
 	lb bc, TM_THUNDERBOLT, 1
 	call GiveItem
-	jr nc, .bag_full
-	ld a, TEXT_VERMILIONGYM_LT_SURGE_RECEIVED_TM24
-	ldh [hTextID], a
-	call DisplayTextID
-	SetEvent EVENT_GOT_TM24
-	jr .gym_victory
-.bag_full
 	ld a, TEXT_VERMILIONGYM_LT_SURGE_TM24_NO_ROOM
+	jr nc, .bag_full
+	SetEvent EVENT_GOT_TM24
+	ld a, TEXT_VERMILIONGYM_LT_SURGE_RECEIVED_TM24
+.bag_full
 	ldh [hTextID], a
 	call DisplayTextID
-.gym_victory
 	ld hl, wObtainedBadges
 	set BIT_THUNDERBADGE, [hl]
 	ld hl, wBeatGymFlags
@@ -126,7 +122,7 @@ VermilionGymTrainerHeader2:
 	trainer EVENT_BEAT_VERMILION_GYM_TRAINER_2, 3, VermilionGymSailorBattleText, VermilionGymSailorEndBattleText, VermilionGymSailorAfterBattleText
 	db -1 ; end
 
-VermilionGymLTSurgeText:
+VermilionGymLTSurgeText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_BEAT_LT_SURGE
 	jr z, .before_beat
@@ -134,11 +130,11 @@ VermilionGymLTSurgeText:
 	jr nz, .got_tm24_already
 	call z, VermilionGymLTSurgeReceiveTM24Script
 	call DisableWaitingAfterTextDisplay
-	jr .text_script_end
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .got_tm24_already
 	ld hl, .PostBattleAdviceText
 	call PrintText
-	jr .text_script_end
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .before_beat
 	ld hl, .PreBattleText
 	call PrintText
@@ -159,7 +155,6 @@ VermilionGymLTSurgeText:
 	ld a, SCRIPT_VERMILIONGYM_LT_SURGE_AFTER_BATTLE
 	ld [wVermilionGymCurScript], a
 	ld [wCurMapScript], a
-.text_script_end
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .PreBattleText:
@@ -242,18 +237,14 @@ VermilionGymSailorAfterBattleText:
 	text_far _VermilionGymSailorAfterBattleText
 	text_end
 
-VermilionGymGymGuideText:
+VermilionGymGymGuideText: ; marcelnote - optimized
 	text_asm
-	ld a, [wBeatGymFlags]
-	bit BIT_THUNDERBADGE, a
-	jr nz, .got_thunderbadge
-	ld hl, .ChampInMakingText
-	call PrintText
-	jr .text_script_end
-.got_thunderbadge
+	CheckEvent EVENT_BEAT_LT_SURGE
 	ld hl, .BeatLTSurgeText
+	jr nz, .beat_lt_surge
+	ld hl, .ChampInMakingText
+.beat_lt_surge
 	call PrintText
-.text_script_end
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .ChampInMakingText:

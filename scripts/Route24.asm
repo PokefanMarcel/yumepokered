@@ -104,11 +104,12 @@ Route24TrainerHeader5:
 	trainer EVENT_BEAT_ROUTE_24_TRAINER_5, 1, Route24Youngster2BattleText, Route24Youngster2EndBattleText, Route24Youngster2AfterBattleText
 	db -1 ; end
 
-Route24CooltrainerM1Text:
+Route24CooltrainerM1Text: ; marcelnote - optimized
 	text_asm
 	ResetEvent EVENT_NUGGET_REWARD_AVAILABLE
 	CheckEvent EVENT_GOT_NUGGET
-	jr nz, .got_item
+	ld hl, .YouCouldBecomeATopLeaderText
+	jr nz, .print_text
 	ld hl, .YouBeatOurContestText
 	call PrintText
 	lb bc, NUGGET, 1
@@ -135,14 +136,11 @@ Route24CooltrainerM1Text:
 	ld [wRoute24CurScript], a
 	ld [wCurMapScript], a
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-.got_item
-	ld hl, .YouCouldBecomeATopLeaderText
-	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .bag_full
-	ld hl, .NoRoomText
-	call PrintText
 	SetEvent EVENT_NUGGET_REWARD_AVAILABLE
+	ld hl, .NoRoomText
+.print_text
+	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .YouBeatOurContestText:

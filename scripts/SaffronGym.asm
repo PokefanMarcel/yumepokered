@@ -238,11 +238,11 @@ SaffronGymSabrinaText:
 	jr nz, .afterBeat
 	call z, SaffronGymSabrinaReceiveTM46Script
 	call DisableWaitingAfterTextDisplay
-	jr .done
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .afterBeat
 	ld hl, .PostBattleAdviceText
 	call PrintText
-	jr .done
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .beforeBeat
 	ld hl, .Text
 	call PrintText
@@ -260,7 +260,6 @@ SaffronGymSabrinaText:
 	ld [wGymLeaderNo], a
 	ld a, SCRIPT_SAFFRONGYM_SABRINA_POST_BATTLE
 	ld [wSaffronGymCurScript], a
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Text:
@@ -333,17 +332,14 @@ SaffronGymYoungster4Text:
 	call TalkToTrainer
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-SaffronGymGymGuideText:
+SaffronGymGymGuideText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_BEAT_SABRINA
-	jr nz, .afterBeat
-	ld hl, .ChampInMakingText
-	call PrintText
-	jr .done
-.afterBeat
 	ld hl, .BeatSabrinaText
+	jr nz, .beat_sabrina
+	ld hl, .ChampInMakingText
+.beat_sabrina
 	call PrintText
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .ChampInMakingText:

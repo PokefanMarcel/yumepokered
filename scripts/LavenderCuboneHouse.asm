@@ -14,17 +14,14 @@ LavenderCuboneHouseCuboneText:
 	call PlayCry
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-LavenderCuboneHouseBrunetteGirlText:
+LavenderCuboneHouseBrunetteGirlText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_RESCUED_MR_FUJI
+	ld hl, .TheGhostIsGoneText
 	jr nz, .rescued_mr_fuji
 	ld hl, .PoorCubonesMotherText
-	call PrintText
-	jr .done
 .rescued_mr_fuji
-	ld hl, .TheGhostIsGoneText
 	call PrintText
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .PoorCubonesMotherText:

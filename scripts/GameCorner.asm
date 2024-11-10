@@ -289,13 +289,13 @@ GameCornerMiddleAgedWomanText:
 	text_far _GameCornerMiddleAgedWomanText
 	text_end
 
-GameCornerGymGuideText:
+GameCornerGymGuideText: ; marcelnote - adjusted
 	text_asm
 	CheckEvent EVENT_BEAT_ERIKA
-	ld hl, GameCornerGymGuideChampInMakingText
-	jr z, .not_defeated
 	ld hl, GameCornerGymGuideTheyOfferRarePokemonText
-.not_defeated
+	jr nz, .beat_erika
+	ld hl, GameCornerGymGuideChampInMakingText
+.beat_erika
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 

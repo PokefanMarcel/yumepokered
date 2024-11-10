@@ -6,32 +6,26 @@ Route22OldRodHouse_TextPointers:
 	def_text_pointers
 	dw_const Route22OldRodHouseFishingGuruText, TEXT_ROUTE22OLDRODHOUSE_FISHING_GURU
 
-Route22OldRodHouseFishingGuruText:
+Route22OldRodHouseFishingGuruText: ; marcelnote - optimized
 	text_asm
 	ld a, [wStatusFlags1]
 	bit BIT_GOT_OLD_ROD, a
-	jr nz, .got_old_rod
+	ld hl, .HowAreTheFishBitingText
+	jr nz, .print_text
 	ld hl, .DoYouLikeToFishText
 	call PrintText
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .refused
+	ld hl, .ThatsSoDisappointingText
+	jr nz, .print_text
 	lb bc, OLD_ROD, 1
 	call GiveItem
-	jr nc, .bag_full
+	ld hl, .NoRoomText
+	jr nc, .print_text
 	ld hl, wStatusFlags1
 	set BIT_GOT_OLD_ROD, [hl]
 	ld hl, .TakeThisText
-	jr .print_text
-.bag_full
-	ld hl, .NoRoomText
-	jr .print_text
-.refused
-	ld hl, .ThatsSoDisappointingText
-	jr .print_text
-.got_old_rod
-	ld hl, .HowAreTheFishBitingText
 .print_text
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd

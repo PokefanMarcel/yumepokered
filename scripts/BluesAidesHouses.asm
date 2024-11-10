@@ -32,39 +32,27 @@ BluesAidesHouses_TextPointers:
 	dw_const AidesHouseMiddleAgedWomanText,      TEXT_AIDESHOUSE_MIDDLE_AGED_WOMAN ; marcelnote - new Pallet house
 	dw_const BluesHouseTownMapText,              TEXT_BLUESHOUSE_TOWN_MAP
 
-BluesHouseDaisySittingText:
+BluesHouseDaisySittingText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_TOWN_MAP
-	jr nz, .got_town_map
+	ld hl, BluesHouseDaisyUseMapText
+	jr nz, .print_text
 	CheckEvent EVENT_GOT_POKEDEX
-	jr nz, .give_town_map
 	ld hl, BluesHouseDaisyRivalAtLabText
-	call PrintText
-	jr .done
-
-.give_town_map
+	jr z, .print_text
 	ld hl, BluesHouseDaisyOfferMapText
 	call PrintText
 	lb bc, TOWN_MAP, 1
 	call GiveItem
-	jr nc, .bag_full
+	ld hl, BluesHouseDaisyBagFullText
+	jr nc, .print_text
+	SetEvent EVENT_GOT_TOWN_MAP
 	ld a, HS_TOWN_MAP
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	ld hl, GotMapText
+.print_text
 	call PrintText
-	SetEvent EVENT_GOT_TOWN_MAP
-	jr .done
-
-.got_town_map
-	ld hl, BluesHouseDaisyUseMapText
-	call PrintText
-	jr .done
-
-.bag_full
-	ld hl, BluesHouseDaisyBagFullText
-	call PrintText
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 BluesHouseDaisyRivalAtLabText:

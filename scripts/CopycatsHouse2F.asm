@@ -11,10 +11,11 @@ CopycatsHouse2F_TextPointers:
 	dw_const CopycatsHouse2FSNESText,         TEXT_COPYCATSHOUSE2F_SNES
 	dw_const CopycatsHouse2FPCText,           TEXT_COPYCATSHOUSE2F_PC
 
-CopycatsHouse2FCopycatText:
+CopycatsHouse2FCopycatText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_TM31
-	jr nz, .got_item
+	ld hl, .TM31Explanation2Text
+	jr nz, .print_text
 	ld a, TRUE
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	ld hl, .DoYouLikePokemonText
@@ -26,20 +27,14 @@ CopycatsHouse2FCopycatText:
 	call PrintText
 	lb bc, TM_MIMIC, 1
 	call GiveItem
-	jr nc, .bag_full
-	ld hl, .ReceivedTM31Text
-	call PrintText
+	ld hl, .TM31NoRoomText
+	jr nc, .print_text
 	ld a, POKE_DOLL
 	ldh [hItemToRemoveID], a
 	farcall RemoveItemByID
 	SetEvent EVENT_GOT_TM31
-	jr .done
-.bag_full
-	ld hl, .TM31NoRoomText
-	call PrintText
-	jr .done
-.got_item
-	ld hl, .TM31Explanation2Text
+	ld hl, .ReceivedTM31Text
+.print_text
 	call PrintText
 .done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd

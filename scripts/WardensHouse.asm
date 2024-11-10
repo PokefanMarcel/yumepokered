@@ -9,10 +9,11 @@ WardensHouse_TextPointers:
 	dw_const WardensHouseDisplayText, TEXT_WARDENSHOUSE_DISPLAY_LEFT
 	dw_const WardensHouseDisplayText, TEXT_WARDENSHOUSE_DISPLAY_RIGHT
 
-WardensHouseWardenText:
+WardensHouseWardenText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_HM04
-	jr nz, .got_item
+	ld hl, .HM04ExplanationText
+	jr nz, .print_text
 	ld b, GOLD_TEETH
 	call IsItemInBag
 	jr nz, .have_gold_teeth
@@ -24,11 +25,8 @@ WardensHouseWardenText:
 	ld a, [wCurrentMenuItem]
 	and a
 	ld hl, .Gibberish3Text
-	jr nz, .refused
+	jr nz, .print_text
 	ld hl, .Gibberish2Text
-.refused
-	call PrintText
-	jr .done
 .have_gold_teeth
 	ld hl, .GaveTheGoldTeethText
 	call PrintText
@@ -41,19 +39,12 @@ WardensHouseWardenText:
 	call PrintText
 	lb bc, HM_STRENGTH, 1
 	call GiveItem
-	jr nc, .bag_full
-	ld hl, .ReceivedHM04Text
-	call PrintText
-	SetEvent EVENT_GOT_HM04
-	jr .done
-.got_item
-	ld hl, .HM04ExplanationText
-	call PrintText
-	jr .done
-.bag_full
 	ld hl, .HM04NoRoomText
+	jr nc, .print_text
+	SetEvent EVENT_GOT_HM04
+	ld hl, .ReceivedHM04Text
+.print_text
 	call PrintText
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Gibberish1Text:
