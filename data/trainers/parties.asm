@@ -706,6 +706,8 @@ GentlemanData:
 	db 38, NIDORINO, RAICHU, POLIWRATH, 0
 ; Mandarin Hotel        ; marcelnote - new location
 	db 40, GROWLITHE, PRIMEAPE, SCYTHER, 0
+; S.S. Maria Rooms      ; marcelnote - new location
+	db 39, NIDORINA, PONYTA, VICTREEBEL, 0
 
 Green2Data:
 ; SS Anne 2F
@@ -779,7 +781,7 @@ BrockData:
 
 MistyData:  ; marcelnote - adjusted
 	;db $FF, 18, STARYU, 21, STARMIE, 0 ; original
-	db $FF, 18, STARYU, 17, GOLDEEN, 21, STARMIE, 0 ; new
+	db $FF, 18, STARYU, 17, PSYDUCK, 21, STARMIE, 0 ; new, GOLDEEN?
 	db $FF, 58, SEAKING, 56, GOLDUCK, 58, DRAGONAIR, 56, SEADRA, 58, DEWGONG, 62, STARMIE, 0 ; new rematch team ; VAPOREON if removed from Lorelei, BLASTOISE?
 
 LtSurgeData:
