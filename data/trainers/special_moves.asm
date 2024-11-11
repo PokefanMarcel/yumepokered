@@ -107,6 +107,7 @@ SpecialTrainerMoves:
 	db 2, 1, MEGA_DRAIN
 	db 2, 3, STUN_SPORE
 	; Vileplume
+	db 3, 1, MEGA_DRAIN
 	db 3, 4, PETAL_DANCE
 	db $ff
 
