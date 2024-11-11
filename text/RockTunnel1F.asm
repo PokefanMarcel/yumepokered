@@ -115,21 +115,23 @@ _RockTunnel1FSignText::
 	done
 
 _RockTunnel1FBlackbeltIntroText::   ; marcelnote - added Blackbelt
-	text "Training in the"
-	line "dark sharpens a"
-	cont "warrior's instinct"
-	cont "and can unlock"
-	cont "the full strength"
-	cont "of FIGHTING-type"
-	cont "#MON."
+	text "Training in dark-"
+	line "ness sharpens a"
+	cont "warrior's"
+	cont "instinct!"
+
+	para "My FIGHTING-type"
+	line "#MON have"
+	cont "reached new"
+	cont "heights here."
 	done
 
 _RockTunnel1FBlackbeltTruePotentialText::   ; marcelnote - added Blackbelt
 	text "Ah! Your"
 	line "@"
 	text_ram wStringBuffer
-	text " has"
-	cont "a strong will."
+	text " seems"
+	cont "eager to learn."
 
 	para "With my training,"
 	line "it could reach"
@@ -137,13 +139,25 @@ _RockTunnel1FBlackbeltTruePotentialText::   ; marcelnote - added Blackbelt
 	cont "potential."
 	done
 
+_RockTunnel1FBlackbeltFlashOnText::   ; marcelnote - added Blackbelt
+	text "Ah! Your"
+	line "@"
+	text_ram wStringBuffer
+	text " seems"
+	cont "eager to learn."
+
+	para "But I can't train"
+	line "it properly with"
+	cont "this FLASH on."
+	done
+
 _RockTunnel1FBlackbeltTrainingText::   ; marcelnote - added Blackbelt
 	text "@"
 	text_ram wStringBuffer
-	text " pushes"
-	line "its limits,"
-	cont "training with"
-	cont "its eyes closed."
+	text " shuts"
+	line "its eyes and"
+	cont "focuses on its"
+	cont "inner power."
 	done
 
 _RockTunnel1FBlackbeltDotsText::    ; marcelnote - added Blackbelt
