@@ -16,4 +16,5 @@ TradeMons:
 	db RAICHU,     ELECTRODE, TRADE_DIALOGSET_EVOLUTION, "DORIS@@@@@@"
 	db VENONAT,    TANGELA,   TRADE_DIALOGSET_HAPPY,     "CRINKLES@@@"
 	db NIDORAN_M,  NIDORAN_F, TRADE_DIALOGSET_HAPPY,     "SPOT@@@@@@@"
+	db GOLDUCK,    RHYDON,    TRADE_DIALOGSET_CASUAL,    "BUFFY@@@@@@" ; marcelnote - taken from Yellow for ferry
 	assert_table_length NUM_NPC_TRADES

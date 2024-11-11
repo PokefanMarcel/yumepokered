@@ -143,6 +143,8 @@ LassData:
 	db 23, ODDISH, GLOOM, 0
 ; Route 6 ; marcelnote - new trainers
 	db 16, RATTATA, PARAS, POLIWAG, 0
+; Orange Ferry Rooms    ; marcelnote - new location
+	db 42, GLOOM, WIGGLYTUFF, 0
 
 SailorData:
 ; SS Anne Stern
@@ -272,6 +274,8 @@ HikerData:
 	db 21, GEODUDE, GRAVELER, 0
 ; Cinnabar Volcano B1F   ; marcelnote - new location
 	db 42, ONIX, MACHOKE, GOLEM, 0
+; Orange Ferry Rooms    ; marcelnote - new location
+	db 40, RHYHORN, PARASECT, GRAVELER, 0
 
 BikerData:
 ; Route 13

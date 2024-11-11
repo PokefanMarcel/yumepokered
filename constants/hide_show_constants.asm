@@ -305,6 +305,7 @@ DEF NUM_HS_OBJECTS EQU const_value
 	const HS_CINNABAR_GYM_BLAINE_REMATCH     ; rematch Blaine
 	const HS_MANDARIN_SILPH_CO_SCIENTIST     ; worried Scientist
 	const HS_MANDARIN_DOCK_SAILOR            ; sailor at Ferry entrance
+	const HS_ORANGE_FERRY_ROOMS_FOSSIL       ; Dome or Helix fossil
 	const HS_SILPH_FACTORY_2F_SCIENTIST_1    ; scientist blocking the way
 	const HS_SILPH_FACTORY_2F_LORELEI_1      ; postgame Lorelei
 	const HS_SILPH_FACTORY_2F_ROCKET_1       ; Archer
@@ -327,4 +328,4 @@ DEF NUM_HS_OBJECTS EQU const_value
 	const HS_MT_SILVER_3F_YELLOW             ; for Yellow battle
 DEF NUM_HS_OBJECTS_CONT EQU const_value
 	; max objects = 256
-	; current total = 324 – 268 = 56
+	; current total = 328 – 268 = 60
