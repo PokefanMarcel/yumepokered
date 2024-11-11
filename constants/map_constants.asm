@@ -7,6 +7,7 @@ ENDM
 ; marcelnote - other files which rely on map order:
 ; - ItemUseBall.notOldManBattle (item_effects.asm) to identify PokemonTower maps (relies on contiguous 1F-7F)
 ; - DungeonMaps2 (dungeon_maps.asm) uses map intervals
+; - palette_constants.asm and sgb_palettes.asm
 
 ; map ids
 ; indexes for:
