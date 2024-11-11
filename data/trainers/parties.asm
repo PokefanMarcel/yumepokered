@@ -177,7 +177,7 @@ JrTrainerMData:
 
 JrTrainerFData:
 ; Cerulean Gym
-	db 19, GOLDEEN, 0
+	db 19, POLIWAG, 0 ; marcelnote - changed from GOLDEEN since Misty now has it
 ; Route 6
 	db 16, RATTATA, PIKACHU, 0
 	db 16, PIDGEY, PIDGEY, PIDGEY, 0
@@ -781,7 +781,7 @@ BrockData:
 
 MistyData:  ; marcelnote - adjusted
 	;db $FF, 18, STARYU, 21, STARMIE, 0 ; original
-	db $FF, 18, STARYU, 17, PSYDUCK, 21, STARMIE, 0 ; new, GOLDEEN?
+	db $FF, 18, STARYU, 17, GOLDEEN, 21, STARMIE, 0 ; new, PSYDUCK?
 	db $FF, 58, SEAKING, 56, GOLDUCK, 58, DRAGONAIR, 56, SEADRA, 58, DEWGONG, 62, STARMIE, 0 ; new rematch team ; VAPOREON if removed from Lorelei, BLASTOISE?
 
 LtSurgeData:

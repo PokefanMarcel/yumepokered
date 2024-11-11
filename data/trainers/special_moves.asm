@@ -40,7 +40,8 @@ SpecialTrainerMoves:
 	db $ff
 
 	db MISTY, 1
-	; Psyduck
+	; Goldeen
+	db 2, 1, PECK
 	db 2, 2, WATER_GUN
 	; Starmie
 	db 3, 1, SWIFT
