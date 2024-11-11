@@ -51,11 +51,11 @@
 	const SPRITE_FISHER                  ; $2f
 	const SPRITE_BLACKBELT               ; $30
 	const SPRITE_GUARD                   ; $31
-	const SPRITE_UNUSED_GUARD            ; $32
+	;const SPRITE_UNUSED_GUARD            ; $32
 	const SPRITE_MOM                     ; $33
 	const SPRITE_BALDING_GUY             ; $34
 	const SPRITE_LITTLE_BOY              ; $35
-	const SPRITE_UNUSED_GAMEBOY_KID      ; $36
+	;const SPRITE_UNUSED_GAMEBOY_KID      ; $36
 	const SPRITE_GAMEBOY_KID             ; $37
 	const SPRITE_FAIRY                   ; $38
 	const SPRITE_AGATHA                  ; $39
@@ -70,7 +70,7 @@
 	const SPRITE_BLAINE                  ; $42 ; marcelnote - new sprite
 	const SPRITE_SWIMMER_F               ; $43 ; marcelnote - new sprite
 	const SPRITE_YELLOW                  ; $42 ; marcelnote - new sprite
-	const SPRITE_DAD                     ; $42 ; marcelnote - new sprite from PureRGB
+	const SPRITE_DAD                     ; $42 ; marcelnote - new sprite
 	const SPRITE_SEEL                    ; $44
 DEF FIRST_STILL_SPRITE EQU const_value
 	const SPRITE_POKE_BALL               ; $45
@@ -80,10 +80,10 @@ DEF FIRST_STILL_SPRITE EQU const_value
 	const SPRITE_POKEDEX                 ; $49
 	const SPRITE_CLIPBOARD               ; $4a
 	const SPRITE_SNORLAX                 ; $4b
-	const SPRITE_UNUSED_OLD_AMBER        ; $4c
+	;const SPRITE_UNUSED_OLD_AMBER        ; $4c
 	const SPRITE_OLD_AMBER               ; $4d
-	const SPRITE_UNUSED_GAMBLER_ASLEEP_1 ; $4e
-	const SPRITE_UNUSED_GAMBLER_ASLEEP_2 ; $4f
+	;const SPRITE_UNUSED_GAMBLER_ASLEEP_1 ; $4e
+	;const SPRITE_UNUSED_GAMBLER_ASLEEP_2 ; $4f
 	const SPRITE_GAMBLER_ASLEEP          ; $50
 	const SPRITE_YELLOW_ASLEEP           ; $51 ; marcelnote - new sprite
 DEF NUM_SPRITES EQU const_value - 1
