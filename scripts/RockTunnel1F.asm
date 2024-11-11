@@ -178,6 +178,10 @@ RockTunnel1FBlackbeltText:    ; marcelnote - added Blackbelt
 	jr z, .done
 	ld hl, TextScriptPromptButton
 	call TextCommandProcessor
+	ld a, [wMapPalOffset] ; this checks that FLASH is not active
+	and a
+	ld hl, .FlashOnText
+	jr z, .flash_on
 	ld hl, .TruePotentialText
 	call PrintText
 	ld a, $01
@@ -197,7 +201,11 @@ RockTunnel1FBlackbeltText:    ; marcelnote - added Blackbelt
 .done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-.IntroText
+.flash_on
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+.IntroText:
 	text_far _RockTunnel1FBlackbeltIntroText
 	text_end
 
@@ -211,4 +219,8 @@ RockTunnel1FBlackbeltText:    ; marcelnote - added Blackbelt
 
 .DotsText:
 	text_far _RockTunnel1FBlackbeltDotsText
+	text_end
+
+.FlashOnText:
+	text_far _RockTunnel1FBlackbeltFlashOnText
 	text_end

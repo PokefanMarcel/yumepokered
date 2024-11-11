@@ -87,9 +87,8 @@ OverworldLoopLessDelay::
 	jp nz, .noDirectionButtonsPressed
 	call IsPlayerCharacterBeingControlledByGame
 	jr nz, .checkForOpponent
-	callfar CheckForFlash ; jp OverworldLoop if succeeds
-	callfar CheckForCut ; jp OverworldLoop if succeeds
 	call CheckForHiddenObjectOrBookshelfOrCardKeyDoor
+	callfar CheckForCut ; jp OverworldLoop if succeeds ; this needs to be exactly here for Viridian tree
 	ldh a, [hItemAlreadyFound] ; a = $ff if not found, = 0 if found
 	and a
 	jp z, OverworldLoop ; jump if a hidden object or bookshelf was found, but not if a card key door was found
@@ -98,6 +97,7 @@ OverworldLoopLessDelay::
 	and a
 	jr nz, .displayDialogue ; checks for Strength via BoulderText
 	callfar CheckForSurf ; jp OverworldLoop if succeeds
+	callfar CheckForFlash ; jp OverworldLoop if succeeds
 	jp OverworldLoop
 .displayDialogue
 	predef GetTileAndCoordsInFrontOfPlayer
