@@ -1371,13 +1371,14 @@ FarfetchdEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 5, SAND_ATTACK
 	db 9, LEER
 	db 14, FURY_ATTACK
-	db 19, WING_ATTACK
-	db 24, SWORDS_DANCE
+	db 19, SWORDS_DANCE
+	db 24, WING_ATTACK
 	db 30, AGILITY
 	db 37, SLASH
-	db 45, FOCUS_ENERGY
+	db 45, AGILITY
 	db 0
 
 DoduoEvosMoves:
@@ -1386,27 +1387,29 @@ DoduoEvosMoves:
 	db 0
 ; Learnset
 	db 15, FURY_ATTACK
-	db 20, RAGE
-	db 25, HI_JUMP_KICK
+	db 19, RAGE
+	db 24, JUMP_KICK
 	db 29, DRILL_PECK
 	db 34, TRI_ATTACK
-	db 40, MEGA_KICK
-	db 46, AGILITY
-	; DOUBLE_KICK?
+	db 39, MEGA_KICK
+	db 44, AGILITY
+	db 50, HI_JUMP_KICK
+	; DOUBLE_KICK, SHARPEN?
 	db 0
 
 DodrioEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 16, FURY_ATTACK
-	db 22, RAGE
-	db 28, HI_JUMP_KICK
+	db 17, FURY_ATTACK
+	db 21, RAGE
+	db 27, JUMP_KICK
 	db 32, DRILL_PECK
 	db 38, TRI_ATTACK
-	db 45, MEGA_KICK
-	db 51, AGILITY
-	; DOUBLE_KICK?
+	db 43, MEGA_KICK
+	db 49, AGILITY
+	db 55, HI_JUMP_KICK
+	; DOUBLE_KICK, SHARPEN?
 	db 0
 
 SeelEvosMoves:
