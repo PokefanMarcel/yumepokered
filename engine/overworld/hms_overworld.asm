@@ -20,13 +20,15 @@ CheckForSurf:: ; marcelnote - could be improved if there is a wram bit which che
 	call CheckForTilePairCollisions
 	ret z
 ; there is no blocking tile
-;;;;;;
-; marcelnote - here should first check if SURFBOARD in bag
-;;;;;;
+;	ld b, SURFBOARD ; marcelnote - to do
+;	call IsItemInBag
+;	jr nz, .canSurf
+; we have the Surfboard
 	ld d, SURF
 	call IsMoveInParty ; output: z flag = whether the move was found (z = not found; nz = found)
 	jr z, .noSurfInParty
 ; we have a Pokemon with SURF in the party
+;.canSurf
 	call EnableAutoTextBoxDrawing
 	tx_pre WantToSurfText
 	ld a, [wCurrentMenuItem]
