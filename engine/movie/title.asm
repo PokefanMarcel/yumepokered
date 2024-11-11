@@ -254,7 +254,8 @@ ENDC
 	ld a, HIGH(vBGMap1)
 	call TitleScreenCopyTileMapToVRAM
 	call Delay3
-	call LoadGBPal
+	;call LoadGBPal
+	call GBPalNormal ; marcelnote - fix for title screen when saving in Rock Tunnel
 	ldh a, [hJoyHeld]
 	ld b, a
 	and D_UP | SELECT | B_BUTTON
