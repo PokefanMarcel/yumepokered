@@ -19,7 +19,7 @@ VermilionDockSSAnneDefaultScript:
 	CheckEventReuseHL EVENT_GOT_HM01
 	ret z
 	ld a, [wDestinationWarpID]
-	cp 3 ; marcelnote - changed from 1 since new warps for Ferry
+	cp 3 ; marcelnote - changed from cp 1 since new warps for Ferry
 	ret nz
 	CheckEventReuseHL EVENT_SS_ANNE_LEFT
 	jp z, VermilionDockSSAnneLeavesScript
