@@ -29,7 +29,7 @@ SSAnneCaptainsRoomCaptainText: ; marcelnote - optimized
 	jr nc, .bag_full
 	SetEvent EVENT_GOT_HM01
 	ld hl, SSAnneCaptainsRoomCaptainReceivedHM01Text
-	jr nz, .print_text
+	jr .print_text
 .bag_full
 	ld hl, SSAnneCaptainsRoomCaptainHM01NoRoomText
 	call PrintText
