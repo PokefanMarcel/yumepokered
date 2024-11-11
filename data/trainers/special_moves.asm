@@ -77,7 +77,7 @@ SpecialTrainerMoves:
 	db 2, 4, THUNDERSHOCK
 	; Raichu
 	db 3, 2, THUNDERBOLT
-	db 3, 3, MEGA_PUNCH
+	db 3, 3, BODY_SLAM ; if too strong, MEGA_PUNCH
 	db 3, 4, GROWL
 	db $ff
 
