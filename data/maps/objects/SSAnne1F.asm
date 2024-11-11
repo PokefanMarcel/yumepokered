@@ -6,8 +6,8 @@ SSAnne1F_Object:
 	db $c ; border block
 
 	def_warp_events
-	warp_event 26,  0, VERMILION_DOCK, 2
-	warp_event 27,  0, VERMILION_DOCK, 2
+	warp_event 26,  0, VERMILION_DOCK, 4 ; marcelnote - changed for ORANGE_FERRY warps
+	warp_event 27,  0, VERMILION_DOCK, 4 ; marcelnote - changed for ORANGE_FERRY warps
 	warp_event 31,  8, SS_ANNE_1F_ROOMS, 1
 	warp_event 23,  8, SS_ANNE_1F_ROOMS, 2
 	warp_event 19,  8, SS_ANNE_1F_ROOMS, 3

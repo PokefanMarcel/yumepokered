@@ -1964,8 +1964,13 @@ wViridianPokecenterMartCurScript:: db ; marcelnote - merged Viridian Pokecenter 
 wRoute22GateCurScript:: db
 wCeruleanCityCurScript:: db
 wMandarinHotelCurScript:: db ; marcelnote - added for Mandarin Hotel trainers, took 1 from padding below
+wMandarinDockCurScript:: db ; marcelnote - added for Ferry entrance, took 1 from padding below
+wVermilionDockCurScript:: db ; marcelnote - added for Ferry entrance, took 1 from padding below
+wOrangeFerryDeckCurScript:: db ; marcelnote - added for Ferry exit, took 1 from padding below
+wOrangeFerryRoomsCurScript:: db ; marcelnote - added for Ferry Rooms trainers, took 1 from padding below
+wOrangeFerryOutsideCurScript:: db ; marcelnote - added for Ferry Outside trainers, took 1 from padding below
 wMtSilver3FCurScript:: db ; marcelnote - added for Mt Silver 3F trainers, took 1 from padding below
-	ds 5
+;	ds 1
 wSSAnneBowCurScript:: db
 wViridianForestCurScript:: db
 wPewterMuseumCurScript:: db ; marcelnote - merged Pewter Museum floors
@@ -2050,10 +2055,11 @@ wRoute18GateCurScript:: db            ; marcelnote - renamed from wRoute18Gate1F
 wCinnabarVolcano1FB1FCurScript:: db   ; marcelnote - new location
 wCinnabarVolcano2FCurScript:: db      ; marcelnote - new location
 wCeladonGroveCurScript:: db           ; marcelnote - new location
+wMandarinIslandCurScript:: db         ; marcelnote - new location
 wSilphFactory1FCurScript:: db         ; marcelnote - new location
 wSilphFactory2FCurScript:: db         ; marcelnote - new location
 wPokemonTower1FCurScript:: db         ; marcelnote - postgame Agatha event
-	ds 72                             ; marcelnote - adjusted down
+	ds 71                             ; marcelnote - adjusted down
 wGameProgressFlagsEnd::
 
 wPlayerGender:: ; marcelnote - add female player

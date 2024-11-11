@@ -8,6 +8,7 @@
 	const_export MANDARINISLAND_COOLTRAINER_M
 	const_export MANDARINISLAND_SILPH_WORKER_F
 	const_export MANDARINISLAND_SILPH_GIRL
+	const_export MANDARINISLAND_SAILOR_FERRIES
 
 MandarinIsland_Object:
 	db $43 ; border block
@@ -19,6 +20,8 @@ MandarinIsland_Object:
 	warp_event 17, 13, MANDARIN_HOTEL, 1
 	warp_event 11,  5, MANDARIN_SILPH_CO, 1
 	warp_event 16,  5, SILPH_FACTORY_2F, 1
+	warp_event 26, 27, MANDARIN_DOCK, 1
+	warp_event 27, 27, MANDARIN_DOCK, 1
 
 	def_bg_events
 	bg_event 21, 17, TEXT_MANDARINISLAND_SIGN
@@ -37,5 +40,6 @@ MandarinIsland_Object:
 	object_event 27,  7, SPRITE_COOLTRAINER_M, WALK, LEFT_RIGHT, TEXT_MANDARINISLAND_COOLTRAINER_M
 	object_event  9,  7, SPRITE_SILPH_WORKER_F, WALK, LEFT_RIGHT, TEXT_MANDARINISLAND_SILPH_WORKER_F
 	object_event  6, 14, SPRITE_GIRL, STAY, NONE, TEXT_MANDARINISLAND_GIRL
+	object_event 27, 26, SPRITE_SAILOR, STAY, UP, TEXT_MANDARINISLAND_SAILOR_FERRIES
 
 	def_warps_to MANDARIN_ISLAND

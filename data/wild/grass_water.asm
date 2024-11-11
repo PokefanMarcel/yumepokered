@@ -204,6 +204,10 @@ WildDataPointers:
 	dw NothingWildMons                 ; MANDARIN_SURF_SHOP           ; marcelnote - new location
 	dw NothingWildMons                 ; MANDARIN_HOTEL               ; marcelnote - new location
 	dw NothingWildMons                 ; MANDARIN_SILPH_CO            ; marcelnote - new location
+	dw NothingWildMons                 ; MANDARIN_DOCK                ; marcelnote - new location
+	dw NothingWildMons                 ; ORANGE_FERRY_DECK            ; marcelnote - new location
+	dw NothingWildMons                 ; ORANGE_FERRY_OUTSIDE         ; marcelnote - new location
+	dw NothingWildMons                 ; ORANGE_FERRY_ROOMS           ; marcelnote - new location
 	dw SilphFactory1FWildMons          ; SILPH_FACTORY_1F             ; marcelnote - new location
 	dw NothingWildMons                 ; SILPH_FACTORY_2F             ; marcelnote - new location
 	dw NothingWildMons                 ; ROUTE_22_OLD_ROD_HOUSE

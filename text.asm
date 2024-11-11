@@ -274,6 +274,10 @@ INCLUDE "text/CeladonGroveSouthGate.asm"    ; marcelnote - new location
 INCLUDE "text/CeladonGroveNorthGate.asm"    ; marcelnote - new location
 INCLUDE "text/FuchsiaMoveDeleterHouse.asm"  ; marcelnote - new location
 INCLUDE "text/MtSilver3F.asm"               ; marcelnote - new location
+INCLUDE "text/MandarinDock.asm"             ; marcelnote - new location
+INCLUDE "text/OrangeFerryDeck.asm"          ; marcelnote - new location
+INCLUDE "text/OrangeFerryOutside.asm"       ; marcelnote - new location
+INCLUDE "text/OrangeFerryRooms.asm"         ; marcelnote - new location
 
 
 SECTION "Pokédex Text", ROMX

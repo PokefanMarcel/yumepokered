@@ -1,10 +1,77 @@
 ; marcelnote - new location
 MandarinIsland_Script:
-	jp EnableAutoTextBoxDrawing
+	call EnableAutoTextBoxDrawing
+	ld hl, MandarinIsland_ScriptPointers
+	ld a, [wMandarinIslandCurScript]
+	jp CallFunctionInTable
 
-;MandarinIsland_ScriptPointers:
-;	def_script_pointers
-;	dw_const MandarinIslandDefaultScript,      SCRIPT_MANDARINISLAND_DEFAULT
+MandarinIsland_ScriptPointers:
+	def_script_pointers
+	dw_const MandarinIslandDefaultScript,             SCRIPT_MANDARINISLAND_DEFAULT
+	dw_const MandarinIslandPlayerMovingUpScript,      SCRIPT_MANDARINISLAND_PLAYER_MOVING_UP
+	dw_const MandarinIslandPlayerAllowedToPassScript, SCRIPT_MANDARINISLAND_PLAYER_ALLOWED_TO_PASS
+
+MandarinIslandDefaultScript:
+	CheckEvent EVENT_FERRY_ARRIVED
+	jr z, .FerryAlreadyReset
+	ResetEvent EVENT_FERRY_ARRIVED
+	; also reset EVENT_BEAT_ trainers...
+	ld a, HS_VERMILION_DOCK_SAILOR
+	ld [wMissableObjectIndex], a
+	predef ShowObjectCont
+	ld a, HS_MANDARIN_DOCK_SAILOR
+	ld [wMissableObjectIndex], a
+	predef ShowObjectCont
+.FerryAlreadyReset
+	ld a, [wSpritePlayerStateData1FacingDirection]
+	and a ; cp SPRITE_FACING_DOWN
+	ret nz
+	ld hl, MandarinIslandTicketCheckCoords
+	call ArePlayerCoordsInArray
+	ret nc
+	xor a
+	ldh [hJoyHeld], a
+	ld a, SPRITE_FACING_LEFT
+	ldh [hSpriteFacingDirection], a
+	ld a, MANDARINISLAND_SAILOR_FERRIES
+	ldh [hSpriteIndex], a
+	call SetSpriteFacingDirectionAndDelay
+	ld a, TEXT_MANDARINISLAND_SAILOR_FERRIES
+	ldh [hTextID], a
+	call DisplayTextID
+	ld b, ORANGE_PASS
+	call IsItemInBag
+	ret nz
+	ld a, D_UP
+	ld [wSimulatedJoypadStatesEnd], a
+	ld a, $1
+	ld [wSimulatedJoypadStatesIndex], a
+	call StartSimulatingJoypadStates
+	ld a, SCRIPT_MANDARINISLAND_PLAYER_MOVING_UP
+	ld [wMandarinIslandCurScript], a
+	ret
+
+MandarinIslandTicketCheckCoords:
+	dbmapcoord 26, 26
+	db -1 ; end
+
+MandarinIslandPlayerAllowedToPassScript:
+	ld hl, MandarinIslandTicketCheckCoords
+	call ArePlayerCoordsInArray
+	ret c ; could do lighter with      ld a, [wYCoord]     cp 26      ret nc
+	ld a, SCRIPT_MANDARINISLAND_DEFAULT
+	ld [wMandarinIslandCurScript], a
+	ret
+
+MandarinIslandPlayerMovingUpScript:
+	ld a, [wSimulatedJoypadStatesIndex]
+	and a
+	ret nz
+	ld c, 10
+	call DelayFrames
+	ld a, SCRIPT_MANDARINISLAND_DEFAULT
+	ld [wMandarinIslandCurScript], a
+	ret
 
 MandarinIsland_TextPointers:
 	def_text_pointers
@@ -17,6 +84,7 @@ MandarinIsland_TextPointers:
 	dw_const MandarinIslandCooltrainerMText,   TEXT_MANDARINISLAND_COOLTRAINER_M
 	dw_const MandarinIslandSilphWorkerFText,   TEXT_MANDARINISLAND_SILPH_WORKER_F
 	dw_const MandarinIslandGirlText,           TEXT_MANDARINISLAND_GIRL
+	dw_const MandarinIslandSailorFerriesText,  TEXT_MANDARINISLAND_SAILOR_FERRIES
 	; bg
 	dw_const MandarinIslandSignText,           TEXT_MANDARINISLAND_SIGN
 	dw_const MartSignText,                     TEXT_MANDARINISLAND_MART_SIGN
@@ -72,4 +140,41 @@ MandarinIslandSilphCoSignText:
 
 MandarinIslandHotelSignText:
 	text_far _MandarinIslandHotelSignText
+	text_end
+
+MandarinIslandSailorFerriesText:
+	text_asm
+	ld hl, .inFrontOfOrBehindGuardCoords
+	call ArePlayerCoordsInArray
+	ld hl, .WelcomeToFerriesText
+	jr c, .print_text
+	ld a, [wSpritePlayerStateData1FacingDirection]
+	cp SPRITE_FACING_RIGHT
+	jr z, .print_text
+	ld b, ORANGE_PASS
+	call IsItemInBag
+	ld hl, .YouNeedPassText
+	jr z, .print_text
+	ld hl, .ShowedPassText
+	ld a, SCRIPT_MANDARINISLAND_PLAYER_ALLOWED_TO_PASS
+	ld [wMandarinIslandCurScript], a
+.print_text
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+.inFrontOfOrBehindGuardCoords
+	dbmapcoord 27, 25 ; in front of guard
+	dbmapcoord 27, 27 ; behind guard
+	db -1 ; end
+
+.WelcomeToFerriesText:
+	text_far _VermilionCitySailor3WelcomeToFerriesText
+	text_end
+
+.YouNeedPassText:
+	text_far _VermilionCitySailor3YouNeedPassText
+	text_end
+
+.ShowedPassText:
+	text_far _VermilionCitySailor3ShowedPassText
 	text_end

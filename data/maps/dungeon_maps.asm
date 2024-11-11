@@ -26,6 +26,6 @@ DungeonMaps2: ; marcelnote - modified to fix above comment and account for new m
 	db SAFARI_ZONE_EAST, SAFARI_ZONE_CENTER     ; all SAFARI_ZONE outdoor maps
 	db SEAFOAM_ISLANDS_1F, SEAFOAM_ISLANDS_B4F  ; all SEAFOAM_ISLANDS maps
 	db POKEMON_MANSION_1F, CINNABAR_VOLCANO_2F  ; all POKEMON_MANSION and CINNABAR_VOLCANO maps
-	db SILPH_FACTORY_1F, SILPH_FACTORY_2F       ; all SILPH_FACTORY maps
+	db ORANGE_FERRY_DECK, SILPH_FACTORY_2F      ; all ORANGE_FERRY and SILPH_FACTORY maps
 	db MT_SILVER_1F, VICTORY_ROAD_3F            ; all MT_SILVER and VICTORY_ROAD maps
 	db -1 ; end

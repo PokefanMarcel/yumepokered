@@ -596,30 +596,36 @@
 	const_skip 4
 	const EVENT_BEAT_SS_ANNE_5_TRAINER_0
 	const EVENT_BEAT_SS_ANNE_5_TRAINER_1
-	const_skip 26
+	const_skip 2 ; marcelnote - minus 24
 	const EVENT_GOT_HM01
 	const EVENT_RUBBED_CAPTAINS_BACK
 	const EVENT_SS_ANNE_LEFT
 	const EVENT_WALKED_PAST_GUARD_AFTER_SS_ANNE_LEFT
 	const EVENT_STARTED_WALKING_OUT_OF_DOCK
 	const EVENT_WALKED_OUT_OF_DOCK
-	const_skip 11
+	const_skip 3 ; marcelnote - minus 8
 	const EVENT_BEAT_SS_ANNE_8_TRAINER_0
 	const EVENT_BEAT_SS_ANNE_8_TRAINER_1
 	const EVENT_BEAT_SS_ANNE_8_TRAINER_2
 	const EVENT_BEAT_SS_ANNE_8_TRAINER_3
-	const_skip 12
+	const_skip 4 ; marcelnote - minus 8
 	const EVENT_BEAT_SS_ANNE_9_TRAINER_0
 	const EVENT_BEAT_SS_ANNE_9_TRAINER_1
 	const EVENT_BEAT_SS_ANNE_9_TRAINER_2
 	const EVENT_BEAT_SS_ANNE_9_TRAINER_3
-	const_skip 12
+	const_skip 4 ; marcelnote - minus 8
 	const EVENT_BEAT_SS_ANNE_10_TRAINER_0
 	const EVENT_BEAT_SS_ANNE_10_TRAINER_1
 	const EVENT_BEAT_SS_ANNE_10_TRAINER_2
 	const EVENT_BEAT_SS_ANNE_10_TRAINER_3
 	const EVENT_BEAT_SS_ANNE_10_TRAINER_4
 	const EVENT_BEAT_SS_ANNE_10_TRAINER_5
+
+; Orange Ferries events ; marcelnote - new location
+	const_next $610
+	const EVENT_FERRY_ARRIVED
+	const EVENT_BEAT_ORANGE_FERRY_ROOMS_TRAINER_0
+	const EVENT_BEAT_ORANGE_FERRY_ROOMS_TRAINER_1
 
 ; Victory Road 3F events
 	const_next $660

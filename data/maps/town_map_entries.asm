@@ -77,7 +77,7 @@ InternalMapEntries:
 	internal_map UNDERGROUND_PATH_ROUTE_7,       8,  5, Route7Name
 	internal_map UNDERGROUND_PATH_ROUTE_8,      12,  5, Route8Name
 	internal_map UNDERGROUND_PATH_WEST_EAST,    10,  5, UndergroundPathName
-	internal_map VERMILION_GYM,                 10,  9, VermilionCityName
+	internal_map VERMILION_DOCK,                10,  9, VermilionCityName
 	internal_map SS_ANNE_B1F_ROOMS,              9, 10, SSAnneName
 	internal_map DIGLETTS_CAVE_ROUTE_11,        11,  8, DiglettsCaveName
 	internal_map ROUTE_11_GATE,                 13,  9, Route11Name ; marcelnote - merged ROUTE_11_GATE floors
@@ -104,7 +104,8 @@ InternalMapEntries:
 	internal_map CINNABAR_GYM,                   3, 15, CinnabarIslandName
 	internal_map POKEMON_MANSION_B1F,            3, 15, PokemonMansionName
 	internal_map CINNABAR_VOLCANO_2F,            2, 15, CinnabarVolcanoName ; marcelnote - new location
-	internal_map MANDARIN_SILPH_CO,             15, 15, MandarinIslandName  ; marcelnote - new location
+	internal_map MANDARIN_DOCK,                 15, 15, MandarinIslandName  ; marcelnote - new location
+	internal_map ORANGE_FERRY_ROOMS,            12, 15, OrangeFerryName     ; marcelnote - new location
 	internal_map SILPH_FACTORY_2F,              15, 15, SilphFactoryName    ; marcelnote - new location
 	internal_map ROUTE_22_OLD_ROD_HOUSE,         2,  8, Route22Name         ; marcelnote - new location
 	internal_map ROUTE_22_GATE_3F,               1,  7, Route22Name         ; marcelnote - new location
