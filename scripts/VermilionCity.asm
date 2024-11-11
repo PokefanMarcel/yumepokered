@@ -39,33 +39,57 @@ VermilionCity_ScriptPointers:
 	dw_const VermilionCityPlayerAllowedToPassScript, SCRIPT_VERMILIONCITY_PLAYER_ALLOWED_TO_PASS
 
 VermilionCityDefaultScript:
+	CheckEvent EVENT_FERRY_ARRIVED
+	jr z, .FerryAlreadyReset
+	ResetEvent EVENT_FERRY_ARRIVED
+	; also reset EVENT_BEAT_ trainers...
+	ld a, HS_VERMILION_DOCK_SAILOR
+	ld [wMissableObjectIndex], a
+	predef ShowObjectCont
+	ld a, HS_MANDARIN_DOCK_SAILOR
+	ld [wMissableObjectIndex], a
+	predef ShowObjectCont
+.FerryAlreadyReset
 	ld a, [wSpritePlayerStateData1FacingDirection]
 	and a ; cp SPRITE_FACING_DOWN
 	ret nz
-	ld hl, SSAnneTicketCheckCoords
+	ld hl, VermilionCityTicketCheckCoords
 	call ArePlayerCoordsInArray
 	ret nc
-	xor a
-	ldh [hJoyHeld], a
-	;ld [wSavedCoordIndex], a ; unnecessary ; marcelnote - removed
-	;;;;;;;;;; marcelnote - Sailor now turns towars the player
-	ld a, VERMILIONCITY_SAILOR1
-	ldh [hSpriteIndex], a
 	ld a, SPRITE_FACING_LEFT
 	ldh [hSpriteFacingDirection], a
-	;;;;;;;;;; marcelnote - Sailor now turns towars the player
+	ld a, [wCoordIndex] ; 1 if S.S.Anne entrance, 2 if ferries
+	dec a
+	jr nz, .atFerries
+	ldh [hJoyHeld], a ; a is 0 here since fell through jr nz check
+	ld a, VERMILIONCITY_SAILOR1
+	ldh [hSpriteIndex], a
 	call SetSpriteFacingDirectionAndDelay
 	ld a, TEXT_VERMILIONCITY_SAILOR1
 	ldh [hTextID], a
 	call DisplayTextID
 	CheckEvent EVENT_SS_ANNE_LEFT
-	jr nz, .ship_departed
+	jr nz, .cannot_enter
 	ld b, S_S_TICKET
-	predef GetQuantityOfItemInBag
-	ld a, b
-	and a
+	;predef GetQuantityOfItemInBag
+	;ld a, b
+	;and a
+	call IsItemInBag
 	ret nz
-.ship_departed
+	jr .cannot_enter
+.atFerries
+	dec a ; a was 1
+	ldh [hJoyHeld], a
+	ld a, VERMILIONCITY_SAILOR3
+	ldh [hSpriteIndex], a
+	call SetSpriteFacingDirectionAndDelay
+	ld a, TEXT_VERMILIONCITY_SAILOR3
+	ldh [hTextID], a
+	call DisplayTextID
+	ld b, ORANGE_PASS
+	call IsItemInBag
+	ret nz
+.cannot_enter
 	ld a, D_UP
 	ld [wSimulatedJoypadStatesEnd], a
 	ld a, $1
@@ -75,12 +99,13 @@ VermilionCityDefaultScript:
 	ld [wVermilionCityCurScript], a
 	ret
 
-SSAnneTicketCheckCoords:
+VermilionCityTicketCheckCoords:
 	dbmapcoord 18, 30
+	dbmapcoord 32, 30 ; marcelnote - now also check Ferry entrance
 	db -1 ; end
 
 VermilionCityPlayerAllowedToPassScript:
-	ld hl, SSAnneTicketCheckCoords
+	ld hl, VermilionCityTicketCheckCoords
 	call ArePlayerCoordsInArray
 	ret c
 	ld a, SCRIPT_VERMILIONCITY_DEFAULT
@@ -129,6 +154,7 @@ VermilionCity_TextPointers:
 	dw_const VermilionCityGambler2Text,           TEXT_VERMILIONCITY_GAMBLER2
 	dw_const VermilionCityMachopText,             TEXT_VERMILIONCITY_MACHOP
 	dw_const VermilionCitySailor2Text,            TEXT_VERMILIONCITY_SAILOR2
+	dw_const VermilionCitySailor3Text,            TEXT_VERMILIONCITY_SAILOR3 ; marcelnote - new for ferry
 	dw_const VermilionCitySignText,               TEXT_VERMILIONCITY_SIGN
 	dw_const VermilionCityNoticeSignText,         TEXT_VERMILIONCITY_NOTICE_SIGN
 	dw_const MartSignText,                        TEXT_VERMILIONCITY_MART_SIGN
@@ -144,14 +170,11 @@ VermilionCityBeautyText:
 VermilionCityGambler1Text:
 	text_asm
 	CheckEvent EVENT_SS_ANNE_LEFT
-	jr nz, .ship_departed
-	ld hl, .DidYouSeeText
-	call PrintText
-	jr .text_script_end
-.ship_departed
 	ld hl, .SSAnneDepartedText
+	jr nz, .print_text
+	ld hl, .DidYouSeeText
+.print_text
 	call PrintText
-.text_script_end
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .DidYouSeeText:
@@ -162,41 +185,29 @@ VermilionCityGambler1Text:
 	text_far _VermilionCityGambler1SSAnneDepartedText
 	text_end
 
-VermilionCitySailor1Text:
+VermilionCitySailor1Text: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_SS_ANNE_LEFT
-	jr nz, .ship_departed
-	ld a, [wSpritePlayerStateData1FacingDirection]
-	cp SPRITE_FACING_RIGHT
-	jr z, .greet_player
+	ld hl, .ShipSetSailText
+	jr nz, .print_text
 	ld hl, .inFrontOfOrBehindGuardCoords
 	call ArePlayerCoordsInArray
-	jr nc, .greet_player_and_check_ticket
-.greet_player
 	ld hl, .WelcomeToSSAnneText
-	call PrintText
-	jr .end
-.greet_player_and_check_ticket
+	jr c, .print_text
+	ld a, [wSpritePlayerStateData1FacingDirection]
+	cp SPRITE_FACING_RIGHT
+	jr z, .print_text
 	ld hl, .DoYouHaveATicketText
 	call PrintText
 	ld b, S_S_TICKET
-	predef GetQuantityOfItemInBag
-	ld a, b
-	and a
-	jr nz, .player_has_ticket
+	call IsItemInBag
 	ld hl, .YouNeedATicketText
-	call PrintText
-	jr .end
-.player_has_ticket
+	jr z, .print_text
 	ld hl, .FlashedTicketText
-	call PrintText
 	ld a, SCRIPT_VERMILIONCITY_PLAYER_ALLOWED_TO_PASS
 	ld [wVermilionCityCurScript], a
-	jr .end
-.ship_departed
-	ld hl, .ShipSetSailText
+.print_text
 	call PrintText
-.end
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .inFrontOfOrBehindGuardCoords
@@ -263,4 +274,41 @@ VermilionCityGymSignText:
 
 VermilionCityHarborSignText:
 	text_far _VermilionCityHarborSignText
+	text_end
+
+VermilionCitySailor3Text: ; marcelnote - new for ferry
+	text_asm
+	ld hl, .inFrontOfOrBehindGuardCoords
+	call ArePlayerCoordsInArray
+	ld hl, .WelcomeToFerriesText
+	jr c, .print_text
+	ld a, [wSpritePlayerStateData1FacingDirection]
+	cp SPRITE_FACING_RIGHT
+	jr z, .print_text
+	ld b, ORANGE_PASS
+	call IsItemInBag
+	ld hl, .YouNeedPassText
+	jr z, .print_text
+	ld hl, .ShowedPassText
+	ld a, SCRIPT_VERMILIONCITY_PLAYER_ALLOWED_TO_PASS
+	ld [wVermilionCityCurScript], a
+.print_text
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+.inFrontOfOrBehindGuardCoords
+	dbmapcoord 33, 29 ; in front of guard
+	dbmapcoord 33, 31 ; behind guard
+	db -1 ; end
+
+.WelcomeToFerriesText:
+	text_far _MandarinIslandSailorWelcomeToFerriesText
+	text_end
+
+.YouNeedPassText:
+	text_far _MandarinIslandSailorYouNeedPassText
+	text_end
+
+.ShowedPassText:
+	text_far _MandarinIslandSailorShowedPassText
 	text_end

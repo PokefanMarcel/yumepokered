@@ -276,6 +276,7 @@ DEF NUM_HS_OBJECTS EQU const_value
 	const HS_CERULEAN_GYM_MISTY_REMATCH      ; rematch Misty
 	const HS_VERMILION_GYM_LT_SURGE          ; default Lt.Surge
 	const HS_VERMILION_GYM_LT_SURGE_REMATCH  ; rematch Lt.Surge
+	const HS_VERMILION_DOCK_SAILOR           ; sailor at Ferry entrance
 	const HS_CELADON_GYM_ERIKA               ; default Erika
 	const HS_CELADON_GYM_ERIKA_REMATCH       ; rematch Erika
 	const HS_CELADON_GROVE_SOUTH_GATE_ROCKET ; blocking the way
@@ -303,6 +304,7 @@ DEF NUM_HS_OBJECTS EQU const_value
 	const HS_CINNABAR_GYM_BLAINE             ; default Blaine
 	const HS_CINNABAR_GYM_BLAINE_REMATCH     ; rematch Blaine
 	const HS_MANDARIN_SILPH_CO_SCIENTIST     ; worried Scientist
+	const HS_MANDARIN_DOCK_SAILOR            ; sailor at Ferry entrance
 	const HS_SILPH_FACTORY_2F_SCIENTIST_1    ; scientist blocking the way
 	const HS_SILPH_FACTORY_2F_LORELEI_1      ; postgame Lorelei
 	const HS_SILPH_FACTORY_2F_ROCKET_1       ; Archer

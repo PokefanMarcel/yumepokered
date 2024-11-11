@@ -197,6 +197,7 @@ SpriteSets:
 	; marcelnote - idea to add SPRITE_SWIMMER_F:
 	; replace GAMBLER in Fuchsia by COOLTRAINER_M,
 	; replace SPRITE_GAMBLER by SPRITE_SWIMMER_F
+	; or: cut off Zoo from the rest
 	db SPRITE_POKE_BALL
 	db SPRITE_FOSSIL
 

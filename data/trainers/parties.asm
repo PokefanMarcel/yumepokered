@@ -706,7 +706,7 @@ GentlemanData:
 	db 38, NIDORINO, RAICHU, POLIWRATH, 0
 ; Mandarin Hotel        ; marcelnote - new location
 	db 40, GROWLITHE, PRIMEAPE, SCYTHER, 0
-; S.S. Maria Rooms      ; marcelnote - new location
+; Orange Ferry Rooms    ; marcelnote - new location
 	db 39, NIDORINA, PONYTA, VICTREEBEL, 0
 
 Green2Data:

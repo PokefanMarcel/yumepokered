@@ -92,7 +92,7 @@ MapHSPointers:
 	dw NoHS                        ; VERMILION_PIDGEY_HOUSE
 	dw NoHS                        ; VERMILION_TRADE_HOUSE
 	dw VermilionGymHS              ; VERMILION_GYM ; marcelnote - Lt.Surge rematch
-	dw NoHS                        ; VERMILION_DOCK
+	dw VermilionDockHS             ; VERMILION_DOCK ; marcelnote - new for Ferry entrance
 	dw NoHS                        ; SS_ANNE_1F
 	dw SSAnne2FHS                  ; SS_ANNE_2F
 	dw NoHS                        ; SS_ANNE_3F
@@ -207,6 +207,10 @@ MapHSPointers:
 	dw NoHS                        ; MANDARIN_SURF_SHOP
 	dw MandarinHotelHS             ; MANDARIN_HOTEL
 	dw MandarinSilphCoHS           ; MANDARIN_SILPH_CO
+	dw MandarinDockHS              ; MANDARIN_DOCK
+	dw NoHS                        ; ORANGE_FERRY_DECK
+	dw NoHS                        ; ORANGE_FERRY_OUTSIDE
+	dw NoHS                        ; ORANGE_FERRY_ROOMS
 	dw SilphFactory1FHS            ; SILPH_FACTORY_1F
 	dw SilphFactory2FHS            ; SILPH_FACTORY_2F
 	dw NoHS                        ; ROUTE_22_OLD_ROD_HOUSE
@@ -599,6 +603,8 @@ CeruleanGymHS:
 VermilionGymHS:
 	db VERMILION_GYM, VERMILIONGYM_LT_SURGE, SHOW          ; marcelnote - default Lt.Surge
 	db VERMILION_GYM, VERMILIONGYM_LT_SURGE_REMATCH, HIDE  ; marcelnote - rematch Lt.Surge
+VermilionDockHS:
+	db VERMILION_DOCK, VERMILIONDOCK_SAILOR, SHOW          ; marcelnote - sailor at Ferry entrance
 CeladonGymHS:
 	db CELADON_GYM, CELADONGYM_ERIKA, SHOW          ; marcelnote - default Erika
 	db CELADON_GYM, CELADONGYM_ERIKA_REMATCH, HIDE  ; marcelnote - rematch Erika
@@ -633,6 +639,8 @@ CinnabarGymHS:
 	db CINNABAR_GYM, CINNABARGYM_BLAINE_REMATCH, HIDE  ; marcelnote - rematch Blaine
 MandarinSilphCoHS:
 	db MANDARIN_SILPH_CO, MANDARINSILPHCO_SCIENTIST, SHOW  ; marcelnote - worried Scientist
+MandarinDockHS:
+	db MANDARIN_DOCK, MANDARINDOCK_SAILOR, SHOW           ; marcelnote - sailor at Ferry entrance
 SilphFactory2FHS:
 	db SILPH_FACTORY_2F, SILPHFACTORY2F_SCIENTIST1, SHOW  ; marcelnote - scientist blocking the way
 	db SILPH_FACTORY_2F, SILPHFACTORY2F_LORELEI1, HIDE    ; marcelnote - Lorelei at entrance

@@ -169,6 +169,11 @@ INCLUDE "scripts/VermilionDock.asm"
 INCLUDE "data/maps/objects/VermilionDock.asm"
 VermilionDock_Blocks: INCBIN "maps/VermilionDock.blk"
 
+INCLUDE "data/maps/headers/MandarinDock.asm" ; marcelnote - new location
+INCLUDE "scripts/MandarinDock.asm"
+INCLUDE "data/maps/objects/MandarinDock.asm"
+MandarinDock_Blocks:: INCBIN "maps/MandarinDock.blk"
+
 INCLUDE "data/maps/headers/CeladonMansionRoofHouse.asm"
 INCLUDE "scripts/CeladonMansionRoofHouse.asm"
 INCLUDE "data/maps/objects/CeladonMansionRoofHouse.asm"
@@ -906,8 +911,8 @@ UndergroundPathWestEast_Blocks: INCBIN "maps/UndergroundPathWestEast.blk"
 
 	INCBIN "maps/UnusedDiglettsCaveCopy.blk"
 
-SSAnneB1FRooms_Blocks:
-SSAnne2FRooms_Blocks: INCBIN "maps/SSAnne2FRooms.blk"
+SSAnne2FRooms_Blocks:
+SSAnneB1FRooms_Blocks: INCBIN "maps/SSAnneB1FRooms.blk" ; marcelnote - added bunk beds
 
 INCLUDE "data/maps/headers/PokemonTower1F.asm"
 INCLUDE "scripts/PokemonTower1F.asm"
@@ -1181,6 +1186,21 @@ INCLUDE "data/maps/headers/MandarinSilphCo.asm" ; marcelnote - new location
 INCLUDE "scripts/MandarinSilphCo.asm"
 INCLUDE "data/maps/objects/MandarinSilphCo.asm"
 MandarinSilphCo_Blocks:: INCBIN "maps/MandarinSilphCo.blk"
+
+INCLUDE "data/maps/headers/OrangeFerryDeck.asm" ; marcelnote - new location
+INCLUDE "scripts/OrangeFerryDeck.asm"
+INCLUDE "data/maps/objects/OrangeFerryDeck.asm"
+OrangeFerryDeck_Blocks:: INCBIN "maps/OrangeFerryDeck.blk"
+
+INCLUDE "data/maps/headers/OrangeFerryOutside.asm" ; marcelnote - new location
+INCLUDE "scripts/OrangeFerryOutside.asm"
+INCLUDE "data/maps/objects/OrangeFerryOutside.asm"
+OrangeFerryOutside_Blocks:: INCBIN "maps/OrangeFerryOutside.blk"
+
+INCLUDE "data/maps/headers/OrangeFerryRooms.asm" ; marcelnote - new location
+INCLUDE "scripts/OrangeFerryRooms.asm"
+INCLUDE "data/maps/objects/OrangeFerryRooms.asm"
+OrangeFerryRooms_Blocks:: INCBIN "maps/OrangeFerryRooms.blk"
 
 INCLUDE "data/maps/headers/SilphFactory1F.asm" ; marcelnote - new location
 INCLUDE "scripts/SilphFactory1F.asm"

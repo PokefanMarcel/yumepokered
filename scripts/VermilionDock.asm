@@ -1,11 +1,25 @@
+; marcelnote - this was modified for new Ferry
 VermilionDock_Script:
 	call EnableAutoTextBoxDrawing
+	ld hl, VermilionDock_ScriptPointers
+	ld a, [wVermilionDockCurScript]
+	jp CallFunctionInTable
+
+VermilionDock_ScriptPointers:
+	def_script_pointers
+	dw_const VermilionDockSSAnneDefaultScript,    SCRIPT_VERMILIONDOCK_DEFAULT
+	dw_const VermilionDockAllAboardScript,        SCRIPT_VERMILIONDOCK_ALL_ABOARD
+	dw_const VermilionDockPlayerMovingDownScript, SCRIPT_VERMILIONDOCK_PLAYER_MOVING_DOWN
+
+VermilionDockSSAnneDefaultScript:
+	CheckEvent EVENT_WALKED_OUT_OF_DOCK
+	ret nz
 	CheckEventHL EVENT_STARTED_WALKING_OUT_OF_DOCK
 	jr nz, .walking_out_of_dock
 	CheckEventReuseHL EVENT_GOT_HM01
 	ret z
 	ld a, [wDestinationWarpID]
-	cp $1
+	cp 3 ; marcelnote - changed from 1 since new warps for Ferry
 	ret nz
 	CheckEventReuseHL EVENT_SS_ANNE_LEFT
 	jp z, VermilionDockSSAnneLeavesScript
@@ -208,10 +222,70 @@ VermilionDock_EraseSSAnne:
 	call DelayFrames
 	ret
 
+VermilionDockAllAboardScript:
+	xor a
+	ldh [hJoyHeld], a
+	ld a, VERMILIONDOCK_SAILOR
+	ldh [hSpriteIndex], a
+	ld a, SPRITE_FACING_DOWN
+	ldh [hSpriteFacingDirection], a
+	call SetSpriteFacingDirectionAndDelay
+	call UpdateSprites
+	ld c, 30
+	call DelayFrames
+	ld a, HS_VERMILION_DOCK_SAILOR
+	ld [wMissableObjectIndex], a
+	predef HideObjectCont
+	ld a, HS_MANDARIN_DOCK_SAILOR
+	ld [wMissableObjectIndex], a
+	predef HideObjectCont
+	ld a, D_DOWN
+	ld [wSimulatedJoypadStatesEnd], a
+	ld [wSimulatedJoypadStatesEnd+1], a
+	ld a, 2
+	ld [wSimulatedJoypadStatesIndex], a
+	ld a, SCRIPT_VERMILIONDOCK_PLAYER_MOVING_DOWN
+	ld [wVermilionDockCurScript], a
+	call StartSimulatingJoypadStates
+	ret
+
+VermilionDockPlayerMovingDownScript:
+	ld a, [wSimulatedJoypadStatesIndex]
+	and a
+	ret nz
+	ld c, 10
+	call DelayFrames
+	ld a, SCRIPT_VERMILIONDOCK_DEFAULT
+	ld [wVermilionDockCurScript], a
+	ret
+
 VermilionDock_TextPointers:
 	def_text_pointers
-	dw_const VermilionDockUnusedText, TEXT_VERMILIONDOCK_UNUSED
+	dw_const VermilionDockSailorText, TEXT_VERMILIONDOCK_SAILOR
 
-VermilionDockUnusedText:
-	text_far _VermilionDockUnusedText
+VermilionDockSailorText:
+	text_asm
+	ld hl, .AreYouReadyText
+	call PrintText
+	ld a, $01
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr nz, .no
+	ld a, MANDARIN_DOCK
+	ld [wLastMap], a
+	ld a, SCRIPT_VERMILIONDOCK_ALL_ABOARD
+	ld [wVermilionDockCurScript], a
+	ld hl, .AllAboardText
+	call PrintText
+.no
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+.AreYouReadyText:
+	text_far _VermilionDockSailorAreYouReadyText
+	text_end
+
+.AllAboardText:
+	text_far _VermilionDockSailorAllAboardText
 	text_end

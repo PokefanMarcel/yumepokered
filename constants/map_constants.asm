@@ -112,17 +112,17 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const VERMILION_PIDGEY_HOUSE,         4,  4
 	map_const VERMILION_TRADE_HOUSE,          4,  4
 	map_const VERMILION_GYM,                  5,  9
-	map_const VERMILION_DOCK,                14,  6
-	map_const SS_ANNE_1F,                    20,  9
-	map_const SS_ANNE_2F,                    20,  9
-	map_const SS_ANNE_3F,                    10,  3
-	map_const SS_ANNE_B1F,                   15,  4
-	map_const SS_ANNE_BOW,                   10,  7
-	map_const SS_ANNE_KITCHEN,                7,  8
-	map_const SS_ANNE_CAPTAINS_ROOM,          3,  4
-	map_const SS_ANNE_1F_ROOMS,              12,  8
-	map_const SS_ANNE_2F_ROOMS,              12,  8
-	map_const SS_ANNE_B1F_ROOMS,             12,  8
+	map_const VERMILION_DOCK,                25,  6 ; marcelnote - expanded for new dock
+	map_const SS_ANNE_1F,                    20,  9 ; merge?
+	map_const SS_ANNE_2F,                    20,  9 ; merge?
+	map_const SS_ANNE_3F,                    10,  3 ; merge?
+	map_const SS_ANNE_B1F,                   15,  4 ; merge?
+	map_const SS_ANNE_BOW,                   10,  7 ; merge?
+	map_const SS_ANNE_KITCHEN,                7,  8 ; merge?
+	map_const SS_ANNE_CAPTAINS_ROOM,          3,  4 ; merge?
+	map_const SS_ANNE_1F_ROOMS,              12,  8 ; merge?
+	map_const SS_ANNE_2F_ROOMS,              12,  8 ; merge?
+	map_const SS_ANNE_B1F_ROOMS,             12,  8 ; merge?
 	map_const DIGLETTS_CAVE,                 20, 18
 	map_const DIGLETTS_CAVE_ROUTE_11,         4,  4
 	map_const ROUTE_11_GATE,                  4, 11 ; marcelnote - merged Route11Gate floors
@@ -227,6 +227,10 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const MANDARIN_SURF_SHOP,             4,  4 ; marcelnote - new map
 	map_const MANDARIN_HOTEL,                33,  6 ; marcelnote - new map
 	map_const MANDARIN_SILPH_CO,              4, 25 ; marcelnote - new map
+	map_const MANDARIN_DOCK,                 11,  6 ; marcelnote - new map
+	map_const ORANGE_FERRY_DECK,             14,  4 ; marcelnote - new map
+	map_const ORANGE_FERRY_OUTSIDE,          13,  6 ; marcelnote - new map
+	map_const ORANGE_FERRY_ROOMS,            24,  6 ; marcelnote - new map
 	map_const SILPH_FACTORY_1F,              14, 13 ; marcelnote - new map
 	map_const SILPH_FACTORY_2F,              15, 14 ; marcelnote - new map
 	map_const ROUTE_22_OLD_ROD_HOUSE,         4,  4 ; marcelnote - new map
@@ -249,7 +253,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const COLOSSEUM,                      5,  4
 DEF NUM_MAPS EQU const_value
 
-; marcelnote - current NUM_MAPS = 249 - 22 - 2 (last - start - extra lines) = 225
+; marcelnote - current NUM_MAPS = 253 - 22 - 2 (last - start - extra lines) = 229
 
 ; Indoor maps, such as houses, use this as the Map ID in their exit warps
 ; This map ID takes the player back to the last outdoor map they were on, stored in wLastMap

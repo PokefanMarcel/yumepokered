@@ -53,6 +53,31 @@ _VermilionCitySailor1YouNeedATicketText::
 	line "to get aboard."
 	done
 
+_VermilionCitySailor3WelcomeToFerriesText:: ; marcelnote - new for ferry
+	text "Welcome to"
+	line "ORANGE FERRIES!"
+	done
+
+_VermilionCitySailor3ShowedPassText:: ; marcelnote - new for ferry
+	text "Welcome to"
+	line "ORANGE FERRIES!"
+
+	para "<PLAYER> showed"
+	line "the ORANGE PASS."
+
+	para "Perfect! Right"
+	line "this way, please."
+	done
+
+_VermilionCitySailor3YouNeedPassText:: ; marcelnote - new for ferry
+	text "Welcome to"
+	line "ORANGE FERRIES!"
+
+	para "I'm sorry, you"
+	line "need an ORANGE"
+	cont "PASS to board."
+	done
+
 _VermilionCitySailor1ShipSetSailText::
 	text "The ship set sail."
 	done

@@ -81,6 +81,31 @@ _MandarinIslandGirlText::
 	cont "pass time."
 	done
 
+_MandarinIslandSailorWelcomeToFerriesText::
+	text "Welcome to"
+	line "ORANGE FERRIES!"
+	done
+
+_MandarinIslandSailorShowedPassText::
+	text "Welcome to"
+	line "ORANGE FERRIES!"
+
+	para "<PLAYER> showed"
+	line "the ORANGE PASS."
+
+	para "Perfect! Right"
+	line "this way, please."
+	done
+
+_MandarinIslandSailorYouNeedPassText::
+	text "Welcome to"
+	line "ORANGE FERRIES!"
+
+	para "I'm sorry, you"
+	line "need an ORANGE"
+	cont "PASS to board."
+	done
+
 _MandarinIslandSignText::
 	text "MANDARIN ISLAND"
 	line "The Prosperous"

@@ -205,6 +205,10 @@ MapHeaderPointers::
 	dw MandarinSurfShop_h        ; marcelnote - new location
 	dw MandarinHotel_h           ; marcelnote - new location
 	dw MandarinSilphCo_h         ; marcelnote - new location
+	dw MandarinDock_h            ; marcelnote - new location
+	dw OrangeFerryDeck_h         ; marcelnote - new location
+	dw OrangeFerryOutside_h      ; marcelnote - new location
+	dw OrangeFerryRooms_h        ; marcelnote - new location
 	dw SilphFactory1F_h          ; marcelnote - new location
 	dw SilphFactory2F_h          ; marcelnote - new location
 	dw Route22OldRodHouse_h      ; marcelnote - new location

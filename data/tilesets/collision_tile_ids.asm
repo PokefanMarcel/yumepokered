@@ -37,7 +37,7 @@ Ship_Coll::
 	coll_tiles $04, $0d, $17, $1d, $1e, $23, $34, $37, $39, $4a
 
 ShipPort_Coll::
-	coll_tiles $0a, $1a, $32, $3b
+	coll_tiles $0a, $32, $3b ; marcelnote - removed $1a (mooring tile)
 
 Cemetery_Coll::
 	coll_tiles $01, $10, $13, $1b, $22, $42, $52
