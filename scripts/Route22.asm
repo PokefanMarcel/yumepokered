@@ -382,30 +382,24 @@ Route22_TextPointers:
 	dw_const Route22Rival2Text,            TEXT_ROUTE22_RIVAL2
 	dw_const Route22PokemonLeagueSignText, TEXT_ROUTE22_POKEMON_LEAGUE_SIGN
 
-Route22Rival1Text:
+Route22Rival1Text: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_BEAT_ROUTE22_RIVAL_1ST_BATTLE
-	jr z, .before_battle
-	ld hl, Route22RivalAfterBattleText1
-	call PrintText
-	jr .text_script_end
-.before_battle
 	ld hl, Route22RivalBeforeBattleText1
+	jr z, .print_text
+	ld hl, Route22RivalAfterBattleText1
+.print_text
 	call PrintText
-.text_script_end
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-Route22Rival2Text:
+Route22Rival2Text: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_BEAT_ROUTE22_RIVAL_2ND_BATTLE
-	jr z, .before_battle
-	ld hl, Route22RivalAfterBattleText2
-	call PrintText
-	jr .text_script_end
-.before_battle
 	ld hl, Route22RivalBeforeBattleText2
+	jr z, .print_text
+	ld hl, Route22RivalAfterBattleText2
+.print_text
 	call PrintText
-.text_script_end
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 Route22RivalBeforeBattleText1:
