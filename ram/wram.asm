@@ -2030,13 +2030,6 @@ wOrangeFerryRoomsCurScript:: db ; marcelnote - added for Ferry Rooms trainers, t
 wOrangeFerryOutsideCurScript:: db ; marcelnote - added for Ferry Outside trainers, took 1 from padding below
 wSilphFactory1FCurScript:: db         ; marcelnote - new location
 wSilphFactory2FCurScript:: db         ; marcelnote - new location
-wRoute5GateCurScript:: db
-wRoute6GateCurScript:: db
-wRoute7GateCurScript:: db
-wRoute8GateCurScript:: db
-wRoute16GateCurScript:: db            ; marcelnote - renamed from wRoute16Gate1FCurScript (merged floors)
-wRoute18GateCurScript:: db            ; marcelnote - renamed from wRoute18Gate1FCurScript (merged floors)
-wRoute22GateCurScript:: db
 wMtSilver3FCurScript:: db ; marcelnote - added for Mt Silver 3F trainers, took 1 from padding below
 wVictoryRoad1FCurScript:: db
 wVictoryRoad2FCurScript:: db
@@ -2047,15 +2040,17 @@ wAgathasRoomCurScript:: db
 wLancesRoomCurScript:: db
 wChampionsRoomCurScript:: db
 wHallOfFameCurScript:: db
+wRoute5GateCurScript:: db
+wRoute6GateCurScript:: db
+wRoute7GateCurScript:: db
+wRoute8GateCurScript:: db
+wRoute16GateCurScript:: db            ; marcelnote - renamed from wRoute16Gate1FCurScript (merged floors)
+wRoute18GateCurScript:: db            ; marcelnote - renamed from wRoute18Gate1FCurScript (merged floors)
+wRoute22GateCurScript:: db
 wGameProgressFlagsEnd::
 
-wPlayerGender:: ; marcelnote - add female player
-	ds 1	; $00 = male, $01 = female
-
-	ds 87                             ; marcelnote - adjusted down
-
 	; unused
-	ds 23 ; marcelnote - 32 bytes allocated to wMissableObjectFlagsCont
+	ds 101
 
 
 wObtainedHiddenItemsFlags:: flag_array MAX_HIDDEN_ITEMS
@@ -2117,8 +2112,9 @@ wUnusedCardKeyGateID:: db
 
 	ds 8
 
+; $00 = male, $01 = female
+wPlayerGender:: db ; marcelnote - add female player
 wStatusFlags1:: db
-	ds 1
 wBeatGymFlags:: db ; redundant because it matches wObtainedBadges
 	ds 1
 wStatusFlags2:: db
