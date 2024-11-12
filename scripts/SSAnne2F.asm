@@ -103,18 +103,15 @@ SSAnne2FRivalStartBattleScript:
 
 	; select which team to use during the encounter
 	ld a, [wRivalStarter]
-	cp STARTER2
-	jr nz, .NotSquirtle
-	ld a, $1
-	jr .done
-.NotSquirtle
-	cp STARTER3
-	jr nz, .Charmander
-	ld a, $2
-	jr .done
-.Charmander
-	ld a, $3
-.done
+	ld b, $1 ; squirtle team ; marcelnote - optimized team choice code by using register b
+	cp STARTER2 ; squirtle
+	jr z, .got_team
+	inc b ; b=2, bulbasaur team
+	cp STARTER3 ; bulbasaur
+	jr z, .got_team
+	inc b ; b=3, charmander team
+.got_team
+	ld a, b
 	ld [wTrainerNo], a
 
 	call SSAnne2FSetFacingDirectionScript

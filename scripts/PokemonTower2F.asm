@@ -233,18 +233,15 @@ PokemonTower2FRivalText:
 
 	; select which team to use during the encounter
 	ld a, [wRivalStarter]
-	cp STARTER2
-	jr nz, .NotSquirtle
-	ld a, $4
-	jr .done
-.NotSquirtle
-	cp STARTER3
-	jr nz, .Charmander
-	ld a, $5
-	jr .done
-.Charmander
-	ld a, $6
-.done
+	ld b, $4 ; squirtle team ; marcelnote - optimized team choice code by using register b
+	cp STARTER2 ; squirtle
+	jr z, .got_team
+	inc b ; b=5, bulbasaur team
+	cp STARTER3 ; bulbasaur
+	jr z, .got_team
+	inc b ; b=6, charmander team
+.got_team
+	ld a, b
 	ld [wTrainerNo], a
 
 	ld a, SCRIPT_POKEMONTOWER2F_DEFEATED_RIVAL
