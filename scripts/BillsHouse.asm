@@ -123,25 +123,21 @@ BillsHouse_TextPointers:
 BillsHouseActivatePCScript:
 	script_bills_pc
 
-BillsHouseBillPokemonText:
+BillsHouseBillPokemonText: ; marcelnote - optimized
 	text_asm
 	ld hl, .ImNotAPokemonText
 	call PrintText
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .answered_no
-.use_machine
+	jr z, .answered_yes
+	ld hl, .NoYouGottaHelpText
+	call PrintText
+.answered_yes
 	ld hl, .UseSeparationSystemText
 	call PrintText
 	ld a, SCRIPT_BILLSHOUSE_POKEMON_WALK_TO_MACHINE
 	ld [wBillsHouseCurScript], a
-	jr .text_script_end
-.answered_no
-	ld hl, .NoYouGottaHelpText
-	call PrintText
-	jr .use_machine
-.text_script_end
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .ImNotAPokemonText:
@@ -197,12 +193,6 @@ BillsHouseBillSSTicketText: ; marcelnote - optimized
 	text_far _BillsHouseBillWhyDontYouGoInsteadOfMeText
 	text_end
 
-BillsHouseBillCheckOutMyRarePokemonText:
-	text_asm
-	ld hl, .Text
-	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-
-.Text:
+BillsHouseBillCheckOutMyRarePokemonText: ; marcelnote - optimized
 	text_far _BillsHouseBillCheckOutMyRarePokemonText
 	text_end

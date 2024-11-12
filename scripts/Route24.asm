@@ -23,6 +23,10 @@ Route24_ScriptPointers:
 	dw_const Route24PlayerMovingScript,             SCRIPT_ROUTE24_PLAYER_MOVING
 
 Route24DefaultScript:
+IF DEF(_DEBUG) ; marcelnote - added for debug
+	call DebugPressedOrHeldB
+	ret nz
+ENDC
 	CheckEvent EVENT_GOT_NUGGET
 	jp nz, CheckFightingMapTrainers
 	ld hl, .PlayerCoordsArray
