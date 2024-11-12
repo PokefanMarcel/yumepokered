@@ -84,3 +84,7 @@ _VictoryRoad2FSuperNerd3AfterBattleText::
 	line "up the challenge"
 	cont "here."
 	done
+
+_VictoryRoad2FPaperText:: ; marcelnote - new
+	text "Test paper."
+	done
