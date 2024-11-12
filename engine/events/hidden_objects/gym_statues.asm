@@ -19,13 +19,13 @@ GymStatues:
 	jr .loop
 .match
 	ld b, [hl]
-	ld a, [wBeatGymFlags]
+	ld a, [wObtainedBadges] ; marcelnote - removed redundant wBeatGymFlags
 	and b
 	cp b
 ;;;;;; marcelnote - modified this part to add Yellow
 	tx_pre_id GymStatueText1
 	jr nz, .print
-	CheckEvent EVENT_BECAME_CHAMPION ; if beaten Elite 4...
+	CheckEvent EVENT_BECAME_CHAMPION ; if became champion...
 	tx_pre_id GymStatueText2
 	jr z, .print
 	ld a, [wCurMap]

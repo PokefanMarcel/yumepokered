@@ -64,7 +64,7 @@ ItemUsePtrTable:
 	dw UnusableItem      ; BIKE_VOUCHER
 	dw ItemUseXAccuracy  ; X_ACCURACY
 	dw ItemUseEvoStone   ; LEAF_STONE
-	dw ItemUseCardKey    ; CARD_KEY
+	dw UnusableItem      ; CARD_KEY ; marcelnote - was ItemUseCardKey but not used because didn't work
 	dw UnusableItem      ; NUGGET
 	dw UnusableItem      ; ITEM_32
 	dw ItemUsePokeDoll   ; POKE_DOLL
@@ -1574,55 +1574,55 @@ ItemUseXAccuracy:
 
 ; This function is bugged and never works. It always jumps to ItemUseNotTime.
 ; The Card Key is handled in a different way.
-ItemUseCardKey:
-	xor a
-	ld [wUnusedCardKeyGateID], a
-	call GetTileAndCoordsInFrontOfPlayer
-	ld a, [GetTileAndCoordsInFrontOfPlayer]
-	cp $18
-	jr nz, .next0
-	ld hl, CardKeyTable1
-	jr .next1
-.next0
-	cp $24
-	jr nz, .next2
-	ld hl, CardKeyTable2
-	jr .next1
-.next2
-	cp $5e
-	jp nz, ItemUseNotTime
-	ld hl, CardKeyTable3
-.next1
-	ld a, [wCurMap]
-	ld b, a
-.loop
-	ld a, [hli]
-	cp -1
-	jp z, ItemUseNotTime
-	cp b
-	jr nz, .nextEntry1
-	ld a, [hli]
-	cp d
-	jr nz, .nextEntry2
-	ld a, [hli]
-	cp e
-	jr nz, .nextEntry3
-	ld a, [hl]
-	ld [wUnusedCardKeyGateID], a
-	jr .done
-.nextEntry1
-	inc hl
-.nextEntry2
-	inc hl
-.nextEntry3
-	inc hl
-	jr .loop
-.done
-	ld hl, ItemUseText00
-	call PrintText
-	ld hl, wStatusFlags1
-	set BIT_UNUSED_CARD_KEY, [hl] ; never checked
-	ret
+;ItemUseCardKey: ; marcelnote - removed
+;	xor a
+;	ld [wUnusedCardKeyGateID], a
+;	call GetTileAndCoordsInFrontOfPlayer
+;	ld a, [GetTileAndCoordsInFrontOfPlayer]
+;	cp $18
+;	jr nz, .next0
+;	ld hl, CardKeyTable1
+;	jr .next1
+;.next0
+;	cp $24
+;	jr nz, .next2
+;	ld hl, CardKeyTable2
+;	jr .next1
+;.next2
+;	cp $5e
+;	jp nz, ItemUseNotTime
+;	ld hl, CardKeyTable3
+;.next1
+;	ld a, [wCurMap]
+;	ld b, a
+;.loop
+;	ld a, [hli]
+;	cp -1
+;	jp z, ItemUseNotTime
+;	cp b
+;	jr nz, .nextEntry1
+;	ld a, [hli]
+;	cp d
+;	jr nz, .nextEntry2
+;	ld a, [hli]
+;	cp e
+;	jr nz, .nextEntry3
+;	ld a, [hl]
+;	ld [wUnusedCardKeyGateID], a
+;	jr .done
+;.nextEntry1
+;	inc hl
+;.nextEntry2
+;	inc hl
+;.nextEntry3
+;	inc hl
+;	jr .loop
+;.done
+;	ld hl, ItemUseText00
+;	call PrintText
+;	ld hl, wStatusFlags1
+;	set BIT_UNUSED_CARD_KEY, [hl] ; never checked
+;	ret
 
 INCLUDE "data/events/card_key_coords.asm"
 
