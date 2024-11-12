@@ -1,15 +1,15 @@
 PokemonFanClub_Script:
 	jp EnableAutoTextBoxDrawing
 
-PokemonFanClub_CheckBikeInBag:
+;PokemonFanClub_CheckBikeInBag: ; marcelnote - seems useless
 ; check if any bike paraphernalia in bag
-	CheckEvent EVENT_GOT_BIKE_VOUCHER
-	ret nz
-	ld b, BICYCLE
-	call IsItemInBag
-	ret nz
-	ld b, BIKE_VOUCHER
-	jp IsItemInBag
+;	CheckEvent EVENT_GOT_BIKE_VOUCHER
+;	ret nz
+;	ld b, BICYCLE
+;	call IsItemInBag
+;	ret nz
+;	ld b, BIKE_VOUCHER
+;	jp IsItemInBag
 
 PokemonFanClub_TextPointers:
 	def_text_pointers
@@ -27,8 +27,8 @@ PokemonFanClubPikachuFanText: ; marcelnote - optimized
 	CheckAndResetEvent EVENT_PIKACHU_FAN_BOAST
 	ld hl, .BetterText
 	jr nz, .mine_is_better
-	ld hl, .NormalText
 	SetEvent EVENT_SEEL_FAN_BOAST
+	ld hl, .NormalText
 .mine_is_better
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
@@ -46,8 +46,8 @@ PokemonFanClubSeelFanText: ; marcelnote - optimized
 	CheckAndResetEvent EVENT_SEEL_FAN_BOAST
 	ld hl, .BetterText
 	jr nz, .mine_is_better
-	ld hl, .NormalText
 	SetEvent EVENT_PIKACHU_FAN_BOAST
+	ld hl, .NormalText
 .mine_is_better
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
@@ -88,10 +88,10 @@ PokemonFanClubSeelText:
 
 PokemonFanClubChairmanText: ; marcelnote - optimized
 	text_asm
-	call PokemonFanClub_CheckBikeInBag
+	;call PokemonFanClub_CheckBikeInBag ; marcelnote - seems useless
+	CheckEvent EVENT_GOT_BIKE_VOUCHER
 	ld hl, .FinalText
 	jr nz, .print_text
-
 	ld hl, .IntroText
 	call PrintText
 	call YesNoChoice
@@ -99,7 +99,6 @@ PokemonFanClubChairmanText: ; marcelnote - optimized
 	and a
 	ld hl, .NoStoryText
 	jr nz, .print_text
-
 	; tell the story
 	ld hl, .StoryText
 	call PrintText
@@ -109,8 +108,6 @@ PokemonFanClubChairmanText: ; marcelnote - optimized
 	jr nc, .print_text
 	ld hl, .BikeVoucherText
 	SetEvent EVENT_GOT_BIKE_VOUCHER
-	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .print_text
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
