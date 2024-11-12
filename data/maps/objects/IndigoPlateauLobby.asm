@@ -15,7 +15,7 @@ IndigoPlateauLobby_Object:
 	warp_event  8, 11, LAST_MAP, 2
 	warp_event  8,  0, LORELEIS_ROOM, 1
 IF DEF(_DEBUG) ; marcelnote - added for debug
-	warp_event  4,  0, CHAMPIONS_ROOM, 1
+	warp_event  4,  0, CHAMPIONS_ROOM, 1 ; testing, remove stairs on .blk!
 ENDC
 
 	def_bg_events
