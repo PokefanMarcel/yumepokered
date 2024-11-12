@@ -14,7 +14,9 @@ IndigoPlateauLobby_Object:
 	warp_event  7, 11, LAST_MAP, 1
 	warp_event  8, 11, LAST_MAP, 2
 	warp_event  8,  0, LORELEIS_ROOM, 1
-	warp_event  4,  0, CHAMPIONS_ROOM, 1 ; marcelnote - purely for testing, to remove
+IF DEF(_DEBUG) ; marcelnote - added for debug
+	warp_event  4,  0, CHAMPIONS_ROOM, 1
+ENDC
 
 	def_bg_events
 
@@ -24,7 +26,11 @@ IndigoPlateauLobby_Object:
 	object_event  5,  1, SPRITE_COOLTRAINER_F, STAY, DOWN, TEXT_INDIGOPLATEAULOBBY_COOLTRAINER_F
 	object_event  0,  5, SPRITE_CLERK, STAY, RIGHT, TEXT_INDIGOPLATEAULOBBY_CLERK
 	object_event 13,  6, SPRITE_LINK_RECEPTIONIST, STAY, DOWN, TEXT_INDIGOPLATEAULOBBY_LINK_RECEPTIONIST
+IF DEF(_DEBUG) ; marcelnote - added for debug
 	object_event  9,  1, SPRITE_COOLTRAINER_F, STAY, DOWN, TEXT_INDIGOPLATEAULOBBY_COOLTRAINER_F2 ; marcelnote - added
+ELSE
+	object_event  8,  1, SPRITE_COOLTRAINER_F, STAY, DOWN, TEXT_INDIGOPLATEAULOBBY_COOLTRAINER_F2 ; marcelnote - added
+ENDC
 	object_event  3,  2, SPRITE_BLUE, STAY, NONE, TEXT_INDIGOPLATEAULOBBY_RIVAL ; marcelnote - added
 
 	def_warps_to INDIGO_PLATEAU_LOBBY
