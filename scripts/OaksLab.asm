@@ -378,23 +378,19 @@ OaksLabRivalStartBattleScript:
 	ld a, [wStatusFlags5]
 	bit BIT_SCRIPTED_NPC_MOVEMENT, a
 	ret nz
-
-	; define which team rival uses, and fight it
 	ld a, OPP_RIVAL1
 	ld [wCurOpponent], a
+	; select which team to use during the encounter
 	ld a, [wRivalStarter]
-	cp STARTER2
-	jr nz, .not_squirtle
-	ld a, $1
-	jr .done
-.not_squirtle
-	cp STARTER3
-	jr nz, .not_bulbasaur
-	ld a, $2
-	jr .done
-.not_bulbasaur
-	ld a, $3
-.done
+	ld b, $1 ; squirtle team ; marcelnote - optimized team choice code by using register b
+	cp STARTER2 ; squirtle
+	jr z, .got_team
+	inc b ; b=2, bulbasaur team
+	cp STARTER3 ; bulbasaur
+	jr z, .got_team
+	inc b ; b=3, charmander team
+.got_team
+	ld a, b
 	ld [wTrainerNo], a
 	ld a, OAKSLAB_RIVAL
 	ld [wSpriteIndex], a

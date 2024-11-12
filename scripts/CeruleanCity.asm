@@ -144,18 +144,15 @@ CeruleanCityRivalBattleScript:
 
 	; select which team to use during the encounter
 	ld a, [wRivalStarter]
-	cp STARTER2
-	jr nz, .NotSquirtle
-	ld a, $7
-	jr .done
-.NotSquirtle
-	cp STARTER3
-	jr nz, .Charmander
-	ld a, $8
-	jr .done
-.Charmander
-	ld a, $9
-.done
+	ld b, $7 ; squirtle team ; marcelnote - optimized team choice code by using register b
+	cp STARTER2 ; squirtle
+	jr z, .got_team
+	inc b ; b=8, bulbasaur team
+	cp STARTER3 ; bulbasaur
+	jr z, .got_team
+	inc b ; b=9, charmander team
+.got_team
+	ld a, b
 	ld [wTrainerNo], a
 
 	xor a

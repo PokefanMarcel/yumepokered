@@ -190,20 +190,20 @@ SilphCo7FRivalStartBattleScript:
 	call SaveEndBattleTextPointers
 	ld a, OPP_RIVAL2
 	ld [wCurOpponent], a
+
+	; select which team to use during the encounter
 	ld a, [wRivalStarter]
-	cp STARTER2
-	jr nz, .not_starter_2
-	ld a, $7
-	jr .set_trainer_no
-.not_starter_2
-	cp STARTER3
-	jr nz, .no_starter_3
-	ld a, $8
-	jr .set_trainer_no
-.no_starter_3
-	ld a, $9
-.set_trainer_no
+	ld b, $7 ; squirtle team ; marcelnote - optimized team choice code by using register b
+	cp STARTER2 ; squirtle
+	jr z, .got_team
+	inc b ; b=8, bulbasaur team
+	cp STARTER3 ; bulbasaur
+	jr z, .got_team
+	inc b ; b=9, charmander team
+.got_team
+	ld a, b
 	ld [wTrainerNo], a
+
 	ld a, SCRIPT_SILPHCO7F_RIVAL_AFTER_BATTLE
 	jp SilphCo7FSetCurScript
 
