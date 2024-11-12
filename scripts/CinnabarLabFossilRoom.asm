@@ -46,7 +46,7 @@ FossilsList:
 	db OLD_AMBER
 	db 0 ; end
 
-CinnabarLabFossilRoomScientist1Text:
+CinnabarLabFossilRoomScientist1Text: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GAVE_FOSSIL_TO_LAB
 	jr nz, .check_done_reviving
@@ -55,20 +55,18 @@ CinnabarLabFossilRoomScientist1Text:
 	call Lab4Script_GetFossilsInBag
 	ld a, [wFilteredBagItemsCount]
 	and a
-	jr z, .no_fossils
-	farcall GiveFossilToCinnabarLab
-	jr .done
-.no_fossils
 	ld hl, .NoFossilsText
-	call PrintText
-.done
+	jr z, .print_text
+	farcall GiveFossilToCinnabarLab
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .check_done_reviving
 	CheckEventAfterBranchReuseA EVENT_LAB_STILL_REVIVING_FOSSIL, EVENT_GAVE_FOSSIL_TO_LAB
 	jr z, .done_reviving
 	ld hl, .GoForAWalkText
+.print_text
 	call PrintText
-	jr .done
+.text_script_end
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .done_reviving
 	call LoadFossilItemAndMonNameBank1D
 	ld hl, .FossilIsBackToLifeText
@@ -78,9 +76,9 @@ CinnabarLabFossilRoomScientist1Text:
 	ld b, a
 	ld c, 30
 	call GivePokemon
-	jr nc, .done
+	jr nc, .text_script_end
 	ResetEvents EVENT_GAVE_FOSSIL_TO_LAB, EVENT_LAB_STILL_REVIVING_FOSSIL, EVENT_LAB_HANDING_OVER_FOSSIL_MON
-	jr .done
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Text:
 	text_far _CinnabarLabFossilRoomScientist1Text

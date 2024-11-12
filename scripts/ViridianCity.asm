@@ -194,17 +194,14 @@ ViridianCityYoungster2Text: ; marcelnote - optimized
 	text_far ViridianCityYoungster2CaterpieAndWeedleDescriptionText
 	text_end
 
-ViridianCityGirlText:
+ViridianCityGirlText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_POKEDEX
+	ld hl, .WhenIGoShopText
 	jr nz, .got_pokedex
 	ld hl, .HasntHadHisCoffeeYetText
-	call PrintText
-	jr .text_script_end
 .got_pokedex
-	ld hl, .WhenIGoShopText
 	call PrintText
-.text_script_end
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .HasntHadHisCoffeeYetText:

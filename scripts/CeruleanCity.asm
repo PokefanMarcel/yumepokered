@@ -355,25 +355,19 @@ CeruleanCityGuardText:
 	text_far _CeruleanCityGuardText
 	text_end
 
-CeruleanCityCooltrainerF1Text:
+CeruleanCityCooltrainerF1Text: ; marcelnote - optimized and modified probs slightly
 	text_asm
 	ldh a, [hRandomAdd]
-	cp 180 ; 76/256 chance of 1st dialogue
-	jr c, .notFirstText
 	ld hl, .SlowbroUseSonicboomText
-	call PrintText
-	jr .end
-.notFirstText
-	cp 100 ; 80/256 chance of 2nd dialogue
-	jr c, .notSecondText
+	cp 85 ; 85/256 chance of 1st dialogue, was 76/256
+	jr c, .print_text
 	ld hl, .SlowbroPunchText
-	call PrintText
-	jr .end
-.notSecondText
-	; 100/256 chance of 3rd dialogue
+	cp 170 ; 85/256 chance of 2nd dialogue, was 80/256
+	jr c, .print_text
+	; 86/256 chance of 3rd dialogue, was 100/256
 	ld hl, .SlowbroWithdrawText
+.print_text
 	call PrintText
-.end
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .SlowbroUseSonicboomText:
@@ -388,31 +382,22 @@ CeruleanCityCooltrainerF1Text:
 	text_far _CeruleanCityCooltrainerF1SlowbroWithdrawText
 	text_end
 
-CeruleanCitySlowbroText:
+CeruleanCitySlowbroText: ; marcelnote - optimized and modified probs slightly
 	text_asm
 	ldh a, [hRandomAdd]
-	cp 180 ; 76/256 chance of 1st dialogue
-	jr c, .notFirstText
 	ld hl, .TookASnoozeText
-	call PrintText
-	jr .end
-.notFirstText
-	cp 120 ; 60/256 chance of 2nd dialogue
-	jr c, .notSecondText
+	cp 64 ; 64/256 chance of 1st dialogue, was 76/256
+	jr c, .print_text
 	ld hl, .IsLoafingAroundText
-	call PrintText
-	jr .end
-.notSecondText
-	cp 60 ; 60/256 chance of 3rd dialogue
-	jr c, .notThirdText
+	cp 128 ; 64/256 chance of 2nd dialogue, was 60/256
+	jr c, .print_text
 	ld hl, .TurnedAwayText
-	call PrintText
-	jr .end
-.notThirdText
-	; 60/256 chance of 4th dialogue
+	cp 192 ; 64/256 chance of 3rd dialogue, was 60/256
+	jr c, .print_text
+	; 64/256 chance of 4th dialogue, was 60/256
 	ld hl, .IgnoredOrdersText
+.print_text
 	call PrintText
-.end
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .TookASnoozeText:

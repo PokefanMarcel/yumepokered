@@ -379,17 +379,14 @@ SilphCo7FSilphWorkerM3Text: ; marcelnote - optimized
 	text_far _SilphCo7FSilphWorkerM3YouChasedOffTeamRocketText
 	text_end
 
-SilphCo7FSilphWorkerM4Text:
+SilphCo7FSilphWorkerM4Text: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
+	ld hl, .SafeAtLastText
 	jr nz, .saved_silph
 	ld hl, .ItsReallyDangerousHereText
-	call PrintText
-	jr .done
 .saved_silph
-	ld hl, .SafeAtLastText
 	call PrintText
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .ItsReallyDangerousHereText
@@ -472,13 +469,7 @@ SilphCo7FRocket3AfterBattleText:
 	text_far _SilphCo7FRocket3AfterBattleText
 	text_end
 
-SilphCo7FRivalText:
-	text_asm
-	ld hl, .Text
-	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-
-.Text:
+SilphCo7FRivalText: ; marcelnote - optimized
 	text_far _SilphCo7FRivalText
 	text_end
 
