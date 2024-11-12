@@ -9,8 +9,8 @@ InitPlayerData2:
 	ldh a, [hRandomAdd]
 	ld [wPlayerID + 1], a
 
-	ld a, $ff
-	ld [wUnusedPlayerDataByte], a
+	;ld a, $ff
+	;ld [wUnusedPlayerDataByte], a ; marcelnote - removed wUnusedPlayerDataByte
 
 	ld hl, wPartyCount
 	call InitializeEmptyList
@@ -37,8 +37,8 @@ ENDC
 	ld [wMonDataLocation], a
 
 	ld hl, wObtainedBadges
-	ld [hli], a
-	assert wObtainedBadges + 1 == wUnusedObtainedBadges
+	;ld [hli], a
+	;assert wObtainedBadges + 1 == wUnusedObtainedBadges ; marcelnote - removed wUnusedObtainedBadges
 	ld [hl], a
 
 	ld hl, wPlayerCoins

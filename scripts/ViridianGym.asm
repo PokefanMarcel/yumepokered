@@ -151,8 +151,8 @@ ViridianGymReceiveTM27: ; marcelnote - optimized
 	call DisplayTextID
 	ld hl, wObtainedBadges
 	set BIT_EARTHBADGE, [hl]
-	ld hl, wBeatGymFlags
-	set BIT_EARTHBADGE, [hl]
+	;ld hl, wBeatGymFlags     ; marcelnote - removed redundant wBeatGymFlags
+	;set BIT_EARTHBADGE, [hl]
 
 	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_VIRIDIAN_GYM_TRAINER_0, EVENT_BEAT_VIRIDIAN_GYM_TRAINER_7

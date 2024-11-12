@@ -18,17 +18,11 @@ DebugNewGameParty: ; unreferenced except in _DEBUG
 	; always using this character while I was debugging the program."
 	; From https://web.archive.org/web/20000607152840/http://pocket.ign.com/news/14973.html
 	db EXEGGUTOR, 90
-IF DEF(_DEBUG)
 	db MEW, 90 ; marcelnote - increased from 5
-ELSE
-	db MEW, 20
-ENDC
 	db JOLTEON, 80 ; marcelnote - increased from 56
 	db DUGTRIO, 66 ; marcelnote - increased from 56
 	db ARTICUNO, 67 ; marcelnote - increased from 57
-IF DEF(_DEBUG)
 	db PIKACHU, 5
-ENDC
 	db -1 ; end
 
 PrepareNewGameDebug: ; dummy except in _DEBUG

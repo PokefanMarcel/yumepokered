@@ -64,8 +64,8 @@ PewterGymScriptReceiveTM34:
 .gymVictory
 	ld hl, wObtainedBadges
 	set BIT_BOULDERBADGE, [hl]
-	ld hl, wBeatGymFlags
-	set BIT_BOULDERBADGE, [hl]
+	;ld hl, wBeatGymFlags     ; marcelnote - removed redundant wBeatGymFlags
+	;set BIT_BOULDERBADGE, [hl]
 
 	ld a, HS_GYM_GUY
 	ld [wMissableObjectIndex], a

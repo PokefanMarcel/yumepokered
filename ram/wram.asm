@@ -1760,7 +1760,21 @@ wNumBagItems:: db
 ; item, quantity
 wBagItems:: ds BAG_ITEM_CAPACITY * 2 + 1
 
+;wNumBagKeyItems:: db ; marcelnote - for Key Items pocket
+; item (no need to store quantity since only one of each)
+;wBagKeyItems:: ds BAG_KEY_ITEM_CAPACITY + 1
+
+wNumBoxItems:: db
+; item, quantity
+wBoxItems:: ds PC_ITEM_CAPACITY * 2 + 1
+
+; bits 0-6: box number
+; bit 7: whether the player has changed boxes before
+wCurrentBoxNum:: db
+
 wPlayerMoney:: ds 3 ; BCD
+
+wPlayerCoins:: dw ; BCD
 
 wRivalName:: ds NAME_LENGTH
 
@@ -1768,7 +1782,11 @@ wOptions:: db
 
 wObtainedBadges:: flag_array NUM_BADGES
 
-wUnusedObtainedBadges:: db
+; number of HOF teams
+wNumHoFTeams:: db
+
+;wUnusedMapVariable:: db
+;wUnusedObtainedBadges:: db ; marcelnote - removed
 
 wLetterPrintingDelayFlags:: db
 
@@ -1795,7 +1813,7 @@ wYBlockCoord:: db
 wXBlockCoord:: db
 
 wLastMap:: db
-wUnusedLastMapWidth:: db
+;wUnusedLastMapWidth:: db ; marcelnote - removed
 
 wCurMapHeader::
 wCurMapTileset:: db
@@ -1816,6 +1834,9 @@ wEastConnectionHeader::  map_connection_struct wEast
 wSpriteSet:: ds 11
 ; sprite set ID for the current map
 wSpriteSetID:: db
+
+; saved copy of SPRITESTATEDATA1_IMAGEINDEX (used for sprite facing/anim)
+wSavedSpriteImageIndex:: db
 
 wObjectDataPointerTemp:: dw
 
@@ -1890,25 +1911,6 @@ wTilesetTalkingOverTiles:: ds 3
 
 wGrassTile:: db
 
-	ds 4
-
-wNumBoxItems:: db
-; item, quantity
-wBoxItems:: ds PC_ITEM_CAPACITY * 2 + 1
-
-; bits 0-6: box number
-; bit 7: whether the player has changed boxes before
-wCurrentBoxNum:: db
-
-	ds 1
-
-; number of HOF teams
-wNumHoFTeams:: db
-
-wUnusedMapVariable:: db
-
-wPlayerCoins:: dw ; BCD
-
 ; bit array of missable objects. set = removed
 wMissableObjectFlags:: flag_array $100
 wMissableObjectFlagsEnd::
@@ -1917,10 +1919,7 @@ wMissableObjectFlagsEnd::
 wMissableObjectFlagsCont:: flag_array $100
 wMissableObjectFlagsContEnd::
 
-	ds 7
-
-; saved copy of SPRITESTATEDATA1_IMAGEINDEX (used for sprite facing/anim)
-wSavedSpriteImageIndex:: db
+	ds 11
 
 ; each entry consists of 2 bytes
 ; * the sprite ID (depending on the current map)
@@ -1931,6 +1930,8 @@ wMissableObjectList:: ds 16 * 2 + 1
 	ds 1
 
 wGameProgressFlags::
+; marcelnote - space can be gained by overloading maps which always default back to 0
+;              on the same address
 ; towns/cities
 wPalletTownCurScript:: db
 wViridianCityCurScript:: db
@@ -2096,7 +2097,7 @@ wLastBlackoutMap:: db
 wDestinationMap:: db
 
 ; initialized to $ff, but nothing ever reads it
-wUnusedPlayerDataByte:: db
+;wUnusedPlayerDataByte:: db ; marcelnote - removed
 
 ; used to store the tile in front of the boulder when trying to push a boulder
 ; also used to store the result of the collision check ($ff for a collision and $00 for no collision)
@@ -2108,27 +2109,28 @@ wDungeonWarpDestinationMap:: db
 ; which dungeon warp within the source map was used
 wWhichDungeonWarp:: db
 
-wUnusedCardKeyGateID:: db
+;wUnusedCardKeyGateID:: db ; marcelnote - removed
 
 	ds 8
 
-; $00 = male, $01 = female
+; $00 = male
+; $01 = female
 wPlayerGender:: db ; marcelnote - add female player
+
 wStatusFlags1:: db
-wBeatGymFlags:: db ; redundant because it matches wObtainedBadges
-	ds 1
 wStatusFlags2:: db
 wCableClubDestinationMap::
 wStatusFlags3:: db
 wStatusFlags4:: db
-	ds 1
 wStatusFlags5:: db
-	ds 1
 wStatusFlags6:: db
 wStatusFlags7:: db
 wElite4Flags:: db
-	ds 1
+
+;wBeatGymFlags:: db ; redundant because it matches wObtainedBadges ; marcelnote - removed
+
 wMovementFlags:: db
+	ds 4
 
 wCompletedInGameTradeFlags:: dw
 
