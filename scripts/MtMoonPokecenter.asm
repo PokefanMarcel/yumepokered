@@ -22,10 +22,11 @@ MtMoonPokecenterGentlemanText:
 	text_far _MtMoonPokecenterGentlemanText
 	text_end
 
-MtMoonPokecenterMagikarpSalesmanText:
+MtMoonPokecenterMagikarpSalesmanText: ; marcelnote - optimized
 	text_asm
-	CheckEvent EVENT_BOUGHT_MAGIKARP, 1
-	jp c, .alreadyBoughtMagikarp
+	CheckEvent EVENT_BOUGHT_MAGIKARP
+	ld hl, .NoRefundsText
+	jr nz, .print_text
 	ld hl, .IGotADealText
 	call PrintText
 	ld a, MONEY_BOX
@@ -34,16 +35,15 @@ MtMoonPokecenterMagikarpSalesmanText:
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jp nz, .choseNo
+	ld hl, .NoText
+	jr nz, .print_text
 	ldh [hMoney], a
 	ldh [hMoney + 2], a
 	ld a, $5
 	ldh [hMoney + 1], a
 	call HasEnoughMoney
-	jr nc, .enoughMoney
 	ld hl, .NoMoneyText
-	jr .printText
-.enoughMoney
+	jr c, .print_text
 	lb bc, MAGIKARP, 5
 	call GivePokemon
 	jr nc, .done
@@ -60,15 +60,10 @@ MtMoonPokecenterMagikarpSalesmanText:
 	ld [wTextBoxID], a
 	call DisplayTextBoxID
 	SetEvent EVENT_BOUGHT_MAGIKARP
-	jr .done
-.choseNo
-	ld hl, .NoText
-	jr .printText
-.alreadyBoughtMagikarp
-	ld hl, .NoRefundsText
-.printText
-	call PrintText
 .done
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.print_text
+	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .IGotADealText

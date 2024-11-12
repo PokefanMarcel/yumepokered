@@ -206,7 +206,7 @@ PewterCityCooltrainerMText:
 	text_far _PewterCityCooltrainerMText
 	text_end
 
-PewterCitySuperNerd1Text:
+PewterCitySuperNerd1Text: ; marcelnote - optimized
 	text_asm
 	ld hl, .DidYouCheckOutMuseumText
 	call PrintText
@@ -216,7 +216,7 @@ PewterCitySuperNerd1Text:
 	jr nz, .playerDidNotGoIntoMuseum
 	ld hl, .WerentThoseFossilsAmazingText
 	call PrintText
-	jr .done
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .playerDidNotGoIntoMuseum
 	ld hl, .YouHaveToGoText
 	call PrintText
@@ -233,7 +233,6 @@ PewterCitySuperNerd1Text:
 	call GetSpritePosition2
 	ld a, SCRIPT_PEWTERCITY_SUPER_NERD1_SHOWS_PLAYER_MUSEUM
 	ld [wPewterCityCurScript], a
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .DidYouCheckOutMuseumText:
@@ -252,21 +251,18 @@ PewterCitySuperNerd1ItsRightHereText:
 	text_far _PewterCitySuperNerd1ItsRightHereText
 	text_end
 
-PewterCitySuperNerd2Text:
+PewterCitySuperNerd2Text: ; marcelnote - optimized
 	text_asm
 	ld hl, .DoYouKnowWhatImDoingText
 	call PrintText
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
-	cp $0
-	jr nz, .playerDoesNotKnow
-	ld hl, .ThatsRightText
-	call PrintText
-	jr .done
-.playerDoesNotKnow
+	cp 0
 	ld hl, .ImSprayingRepelText
+	jr nz, .answered_no
+	ld hl, .ThatsRightText
+.answered_no
 	call PrintText
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .DoYouKnowWhatImDoingText:

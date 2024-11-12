@@ -179,16 +179,18 @@ MtMoon3TrainerHeader3:
 	trainer EVENT_BEAT_MT_MOON_3_TRAINER_3, 4, MtMoonB2FRocket4BattleText, MtMoonB2FRocket4EndBattleText, MtMoonB2FRocket4AfterBattleText
 	db -1 ; end
 
-MtMoonB2FSuperNerdText:
+MtMoonB2FSuperNerdText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_BEAT_MT_MOON_EXIT_SUPER_NERD
 	jr z, .beat_super_nerd
 	; CheckEitherEventSetReuseA EVENT_GOT_DOME_FOSSIL, EVENT_GOT_HELIX_FOSSIL
 	and (1 << (EVENT_GOT_DOME_FOSSIL % 8)) | (1 << (EVENT_GOT_HELIX_FOSSIL % 8))
+	ld hl, MtMoonB2FSuperNerdTheresAPokemonLabText
 	jr nz, .got_a_fossil
 	ld hl, MtMoonB2fSuperNerdEachTakeOneText
+.got_a_fossil
 	call PrintText
-	jr .done
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .beat_super_nerd
 	ld hl, MtMoonB2FSuperNerdTheyreBothMineText
 	call PrintText
@@ -205,11 +207,6 @@ MtMoonB2FSuperNerdText:
 	ld a, SCRIPT_MTMOONB2F_DEFEATED_SUPER_NERD
 	ld [wMtMoonB2FCurScript], a
 	ld [wCurMapScript], a
-	jr .done
-.got_a_fossil
-	ld hl, MtMoonB2FSuperNerdTheresAPokemonLabText
-	call PrintText
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 MtMoonB2FRocket1Text:

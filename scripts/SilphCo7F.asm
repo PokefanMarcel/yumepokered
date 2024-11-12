@@ -297,17 +297,19 @@ SilphCo7TrainerHeader3:
 	trainer EVENT_BEAT_SILPH_CO_7F_TRAINER_3, 4, SilphCo7FRocket3BattleText, SilphCo7FRocket3EndBattleText, SilphCo7FRocket3AfterBattleText
 	db -1 ; end
 
-SilphCo7FSilphWorkerM1Text:
+SilphCo7FSilphWorkerM1Text: ; marcelnote - optimized
 ; lapras guy
 	text_asm
 	ld a, [wStatusFlags4]
 	bit BIT_GOT_LAPRAS, a
 	jr z, .give_lapras
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
+	ld hl, .SavedText
 	jr nz, .saved_silph
 	ld hl, .IsOurPresidentOkText
+.saved_silph
 	call PrintText
-	jr .done
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .give_lapras
 	ld hl, .HaveThisPokemonText
 	call PrintText
@@ -322,10 +324,6 @@ SilphCo7FSilphWorkerM1Text:
 	call PrintText
 	ld hl, wStatusFlags4
 	set BIT_GOT_LAPRAS, [hl]
-	jr .done
-.saved_silph
-	ld hl, .SavedText
-	call PrintText
 .done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
@@ -363,17 +361,14 @@ SilphCo7FSilphWorkerM2Text: ; marcelnote - optimized
 	text_far _SilphCo7FSilphWorkerM2CancelledMasterBallText
 	text_end
 
-SilphCo7FSilphWorkerM3Text:
+SilphCo7FSilphWorkerM3Text: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
+	ld hl, .YouChasedOffTeamRocketText
 	jr nz, .saved_silph
 	ld hl, .ItWouldBeBadText
-	call PrintText
-	jr .done
 .saved_silph
-	ld hl, .YouChasedOffTeamRocketText
 	call PrintText
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .ItWouldBeBadText
