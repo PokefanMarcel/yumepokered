@@ -1931,90 +1931,77 @@ wMissableObjectList:: ds 16 * 2 + 1
 	ds 1
 
 wGameProgressFlags::
-wOaksLabCurScript:: db
+; towns/cities
 wPalletTownCurScript:: db
-wRoute1CurScript:: db ; marcelnote - added for postgame Oak battle, took ds 1 below
-	;ds 1
-wBluesHouseCurScript:: db
 wViridianCityCurScript:: db
-	ds 2
 wPewterCityCurScript:: db
+wCeruleanCityCurScript:: db
+wVermilionCityCurScript:: db
+wCinnabarIslandCurScript:: db
+wMandarinIslandCurScript:: db         ; marcelnote - new location
+; routes
+wRoute1CurScript:: db ; marcelnote - added for postgame Oak battle, took ds 1 below
 wRoute3CurScript:: db
 wRoute4CurScript:: db
-	ds 1
-wViridianGymCurScript:: db
-wPewterGymCurScript:: db
-wCeruleanGymCurScript:: db
-wVermilionGymCurScript:: db
-wCeladonGymCurScript:: db
 wRoute6CurScript:: db
 wRoute8CurScript:: db
-wRoute24CurScript:: db
-wRoute25CurScript:: db
 wRoute9CurScript:: db
 wRoute10CurScript:: db
-wMtMoon1FCurScript:: db
-wMtMoonB2FCurScript:: db
-wSSAnne1FRoomsCurScript:: db
-wSSAnne2FRoomsCurScript:: db
-wRoute22CurScript:: db
-	ds 1
-wRedsHouseCurScript:: db ; marcelnote - merged RedsHouse floors
-wViridianPokecenterMartCurScript:: db ; marcelnote - merged Viridian Pokecenter and Mart
-wRoute22GateCurScript:: db
-wCeruleanCityCurScript:: db
-wMandarinHotelCurScript:: db ; marcelnote - added for Mandarin Hotel trainers, took 1 from padding below
-wMandarinDockCurScript:: db ; marcelnote - added for Ferry entrance, took 1 from padding below
-wVermilionDockCurScript:: db ; marcelnote - added for Ferry entrance, took 1 from padding below
-wOrangeFerryDeckCurScript:: db ; marcelnote - added for Ferry exit, took 1 from padding below
-wOrangeFerryRoomsCurScript:: db ; marcelnote - added for Ferry Rooms trainers, took 1 from padding below
-wOrangeFerryOutsideCurScript:: db ; marcelnote - added for Ferry Outside trainers, took 1 from padding below
-wMtSilver3FCurScript:: db ; marcelnote - added for Mt Silver 3F trainers, took 1 from padding below
-;	ds 1
-wSSAnneBowCurScript:: db
-wViridianForestCurScript:: db
-wPewterMuseumCurScript:: db ; marcelnote - merged Pewter Museum floors
-wRoute13CurScript:: db
-wRoute14CurScript:: db
-wRoute17CurScript:: db
-wRoute19CurScript:: db
-wRoute21CurScript:: db
-wSafariZoneGateCurScript:: db
-wRockTunnelB1FCurScript:: db
-wRockTunnel1FCurScript:: db
-	ds 1
 wRoute11CurScript:: db
 wRoute12CurScript:: db
+wRoute13CurScript:: db
+wRoute14CurScript:: db
 wRoute15CurScript:: db
 wRoute16CurScript:: db
+wRoute17CurScript:: db
 wRoute18CurScript:: db
+wRoute19CurScript:: db
 wRoute20CurScript:: db
+wRoute21CurScript:: db
+wRoute22CurScript:: db
+wRoute23CurScript:: db
+wRoute24CurScript:: db
+wRoute25CurScript:: db
+; indoor maps
+wRedsHouseCurScript:: db ; marcelnote - merged RedsHouse floors
+wOaksLabCurScript:: db
+wBluesHouseCurScript:: db
+wViridianPokecenterMartCurScript:: db ; marcelnote - merged Viridian Pokecenter and Mart
+wViridianGymCurScript:: db
+wViridianForestCurScript:: db
+wPewterMuseumCurScript:: db ; marcelnote - merged Pewter Museum floors
+wPewterGymCurScript:: db
+wMtMoon1FCurScript:: db
+wMtMoonB2FCurScript:: db
+wCeruleanGymCurScript:: db
+wCeruleanCaveB1FCurScript:: db
+wBillsHouseCurScript:: db
+wVermilionGymCurScript:: db
+wVermilionDockCurScript:: db ; marcelnote - added for Ferry entrance, took 1 from padding below
+wSSAnne2FCurScript:: db
+wSSAnne1FRoomsCurScript:: db
+wSSAnne2FRoomsCurScript:: db
 wSSAnneB1FRoomsCurScript:: db
-wVermilionCityCurScript:: db
+wSSAnneBowCurScript:: db
+wCeladonGymCurScript:: db
+wRockTunnel1FCurScript:: db
+wRockTunnelB1FCurScript:: db
+wPowerPlantCurScript:: db
+wPokemonTower1FCurScript:: db         ; marcelnote - postgame Agatha event
 wPokemonTower2FCurScript:: db
 wPokemonTower3FCurScript:: db
 wPokemonTower4FCurScript:: db
 wPokemonTower5FCurScript:: db
 wPokemonTower6FCurScript:: db
 wPokemonTower7FCurScript:: db
+wGameCornerCurScript:: db
 wRocketHideoutB1FCurScript:: db
 wRocketHideoutB2FCurScript:: db
 wRocketHideoutB3FCurScript:: db
 wRocketHideoutB4FCurScript:: db
-	ds 1
-wRoute6GateCurScript:: db
-wRoute8GateCurScript:: db
-	ds 1
-wCinnabarIslandCurScript:: db
-wPokemonMansion1FCurScript:: db
-	ds 1
-wPokemonMansion2FCurScript:: db
-wPokemonMansion3FCurScript:: db
-wPokemonMansionB1FCurScript:: db
-wVictoryRoad2FCurScript:: db
-wVictoryRoad3FCurScript:: db
-	ds 1
+wCeladonGroveCurScript:: db           ; marcelnote - new location
 wFightingDojoCurScript:: db
+wSaffronGymCurScript:: db
 wSilphCo2FCurScript:: db
 wSilphCo3FCurScript:: db
 wSilphCo4FCurScript:: db
@@ -2023,47 +2010,49 @@ wSilphCo6FCurScript:: db
 wSilphCo7FCurScript:: db
 wSilphCo8FCurScript:: db
 wSilphCo9FCurScript:: db
-wHallOfFameCurScript:: db
-wChampionsRoomCurScript:: db
+wSilphCo10FCurScript:: db
+wSilphCo11FCurScript:: db
+wFuchsiaGymCurScript:: db
+wSafariZoneGateCurScript:: db
+wSeafoamIslandsB3FCurScript:: db
+wSeafoamIslandsB4FCurScript:: db
+wCinnabarGymCurScript:: db
+wCinnabarVolcano1FB1FCurScript:: db   ; marcelnote - new location
+wCinnabarVolcano2FCurScript:: db      ; marcelnote - new location
+wPokemonMansion1FCurScript:: db
+wPokemonMansion2FCurScript:: db
+wPokemonMansion3FCurScript:: db
+wPokemonMansionB1FCurScript:: db
+wMandarinHotelCurScript:: db ; marcelnote - added for Mandarin Hotel trainers, took 1 from padding below
+wMandarinDockCurScript:: db ; marcelnote - added for Ferry entrance, took 1 from padding below
+wOrangeFerryDeckCurScript:: db ; marcelnote - added for Ferry exit, took 1 from padding below
+wOrangeFerryRoomsCurScript:: db ; marcelnote - added for Ferry Rooms trainers, took 1 from padding below
+wOrangeFerryOutsideCurScript:: db ; marcelnote - added for Ferry Outside trainers, took 1 from padding below
+wSilphFactory1FCurScript:: db         ; marcelnote - new location
+wSilphFactory2FCurScript:: db         ; marcelnote - new location
+wRoute5GateCurScript:: db
+wRoute6GateCurScript:: db
+wRoute7GateCurScript:: db
+wRoute8GateCurScript:: db
+wRoute16GateCurScript:: db            ; marcelnote - renamed from wRoute16Gate1FCurScript (merged floors)
+wRoute18GateCurScript:: db            ; marcelnote - renamed from wRoute18Gate1FCurScript (merged floors)
+wRoute22GateCurScript:: db
+wMtSilver3FCurScript:: db ; marcelnote - added for Mt Silver 3F trainers, took 1 from padding below
+wVictoryRoad1FCurScript:: db
+wVictoryRoad2FCurScript:: db
+wVictoryRoad3FCurScript:: db
 wLoreleisRoomCurScript:: db
 wBrunosRoomCurScript:: db
 wAgathasRoomCurScript:: db
-wCeruleanCaveB1FCurScript:: db
-wVictoryRoad1FCurScript:: db
-	ds 1
 wLancesRoomCurScript:: db
-	ds 4
-wSilphCo10FCurScript:: db
-wSilphCo11FCurScript:: db
-	ds 1
-wFuchsiaGymCurScript:: db
-wSaffronGymCurScript:: db
-	ds 1
-wCinnabarGymCurScript:: db
-wGameCornerCurScript:: db
-wRoute16GateCurScript:: db            ; marcelnote - renamed from wRoute16Gate1FCurScript (merged floors)
-wBillsHouseCurScript:: db
-wRoute5GateCurScript:: db
-wPowerPlantCurScript:: ; overload
-wRoute7GateCurScript:: db
-	ds 1
-wSSAnne2FCurScript:: db
-wSeafoamIslandsB3FCurScript:: db
-wRoute23CurScript:: db
-wSeafoamIslandsB4FCurScript:: db
-wRoute18GateCurScript:: db            ; marcelnote - renamed from wRoute18Gate1FCurScript (merged floors)
-wCinnabarVolcano1FB1FCurScript:: db   ; marcelnote - new location
-wCinnabarVolcano2FCurScript:: db      ; marcelnote - new location
-wCeladonGroveCurScript:: db           ; marcelnote - new location
-wMandarinIslandCurScript:: db         ; marcelnote - new location
-wSilphFactory1FCurScript:: db         ; marcelnote - new location
-wSilphFactory2FCurScript:: db         ; marcelnote - new location
-wPokemonTower1FCurScript:: db         ; marcelnote - postgame Agatha event
-	ds 71                             ; marcelnote - adjusted down
+wChampionsRoomCurScript:: db
+wHallOfFameCurScript:: db
 wGameProgressFlagsEnd::
 
 wPlayerGender:: ; marcelnote - add female player
 	ds 1	; $00 = male, $01 = female
+
+	ds 87                             ; marcelnote - adjusted down
 
 	; unused
 	ds 23 ; marcelnote - 32 bytes allocated to wMissableObjectFlagsCont
