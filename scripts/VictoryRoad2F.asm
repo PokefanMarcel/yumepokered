@@ -76,6 +76,7 @@ VictoryRoad2F_TextPointers:
 	dw_const VictoryRoad2FSuperNerd2Text,   TEXT_VICTORYROAD2F_SUPER_NERD2
 	dw_const VictoryRoad2FSuperNerd3Text,   TEXT_VICTORYROAD2F_SUPER_NERD3
 	;dw_const VictoryRoad2FMoltresText,      TEXT_VICTORYROAD2F_MOLTRES ; marcelnote - removed Moltres from Victory Road
+	;dw_const VictoryRoad2FPaperText,        TEXT_VICTORYROAD2F_PAPER ; marcelnote - added
 	dw_const PickUpItemText,                TEXT_VICTORYROAD2F_TM_SUBMISSION
 	dw_const PickUpItemText,                TEXT_VICTORYROAD2F_FULL_HEAL
 	dw_const PickUpItemText,                TEXT_VICTORYROAD2F_TM_MEGA_KICK
@@ -203,4 +204,8 @@ VictoryRoad2FSuperNerd3EndBattleText:
 
 VictoryRoad2FSuperNerd3AfterBattleText:
 	text_far _VictoryRoad2FSuperNerd3AfterBattleText
+	text_end
+
+VictoryRoad2FPaperText: ; marcelnote - new
+	text_far _VictoryRoad2FPaperText
 	text_end
