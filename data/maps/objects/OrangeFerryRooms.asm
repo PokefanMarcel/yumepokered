@@ -20,7 +20,7 @@ OrangeFerryRooms_Object:
 	warp_event 12, 11, ORANGE_FERRY_DECK, 7
 	warp_event 21, 11, ORANGE_FERRY_DECK, 8
 	warp_event 22, 11, ORANGE_FERRY_DECK, 8
-	warp_event  0,  0, ORANGE_FERRY_DECK, 9 ; bottom rooms
+	warp_event  0,  0, ORANGE_FERRY_DECK, 9  ; bottom rooms
 	warp_event 10,  0, ORANGE_FERRY_DECK, 10
 	warp_event 20,  0, ORANGE_FERRY_DECK, 11
 
