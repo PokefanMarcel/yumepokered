@@ -113,8 +113,11 @@ Route22GateGuardGoRightAheadText:
 Route22GateGuard2Text: ; marcelnote - new guard
 	text_asm
 	ld a, [wObtainedBadges]
-	bit BIT_VOLCANOBADGE, a ; for testing purposes
-	;CheckEvent EVENT_BEAT_ROUTE_1_OAK ; this is the real condition
+IF DEF(_DEBUG) ; marcelnote - added for debug
+	bit BIT_VOLCANOBADGE, a
+ELSE
+	CheckEvent EVENT_BEAT_ROUTE_1_OAK ; real condition
+ENDC
 	jr nz, .beat_oak
 	ld hl, Route22GateGuard2ScaryStrongText
 	call PrintText
