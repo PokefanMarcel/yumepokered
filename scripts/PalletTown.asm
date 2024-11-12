@@ -163,18 +163,16 @@ PalletTown_TextPointers:
 	dw_const PalletTownRivalsHouseSignText,  TEXT_PALLETTOWN_RIVALSHOUSE_SIGN
 	dw_const PalletTownYellowsHouseSignText, TEXT_PALLETTOWN_YELLOWSHOUSE_SIGN ; marcelnote - Yellow's house
 
-PalletTownOakText:
+PalletTownOakText: ; marcelnote - optimized
 	text_asm
 	ld a, [wOakWalkedToPlayer]
 	and a
-	jr nz, .next
+	ld hl, .ItsUnsafeText
+	jr nz, .print_text
 	ld a, 1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	ld hl, .HeyWaitDontGoOutText
-	jr .done
-.next
-	ld hl, .ItsUnsafeText
-.done
+.print_text
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 

@@ -111,11 +111,11 @@ PokemonMansion1FSwitchText:
 	CheckAndSetEvent EVENT_MANSION_SWITCH_ON
 	jr z, .done
 	ResetEventReuseHL EVENT_MANSION_SWITCH_ON
-	jr .done
+.done
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .not_pressed
 	ld hl, .NotPressedText
 	call PrintText
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Text:

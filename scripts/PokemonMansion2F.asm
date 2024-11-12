@@ -97,7 +97,7 @@ PokemonMansion2FDiary2Text:
 	text_far _PokemonMansion2FDiary2Text
 	text_end
 
-PokemonMansion2FSwitchText:
+PokemonMansion2FSwitchText: ; marcelnote - optimized
 	text_asm
 	ld hl, .Text
 	call PrintText
@@ -116,11 +116,11 @@ PokemonMansion2FSwitchText:
 	CheckAndSetEvent EVENT_MANSION_SWITCH_ON
 	jr z, .done
 	ResetEventReuseHL EVENT_MANSION_SWITCH_ON
-	jr .done
+.done
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .not_pressed
 	ld hl, .NotPressed
 	call PrintText
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Text:
