@@ -218,7 +218,7 @@ PokemonTower2FRivalText:
 	jr z, .do_battle
 	ld hl, .HowsYourDexText
 	call PrintText
-	jr .text_script_end
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .do_battle
 	ld hl, .WhatBringsYouHereText
 	call PrintText
@@ -247,7 +247,6 @@ PokemonTower2FRivalText:
 	ld a, SCRIPT_POKEMONTOWER2F_DEFEATED_RIVAL
 	ld [wPokemonTower2FCurScript], a
 	ld [wCurMapScript], a
-.text_script_end
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .WhatBringsYouHereText:

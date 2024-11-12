@@ -232,13 +232,13 @@ CeladonMartRoofLittleGirlText:
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .done
+	jr nz, .text_script_end
 	call CeladonMartRoofScript_GiveDrinkToGirl
-	jr .done
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .noDrinksInBag
 	ld hl, .ImThirstyText
 	call PrintText
-.done
+.text_script_end
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .ImThirstyText:

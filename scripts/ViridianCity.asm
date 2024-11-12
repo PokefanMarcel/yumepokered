@@ -176,9 +176,9 @@ ViridianCityYoungster2Text: ; marcelnote - optimized
 	ld a, [wCurrentMenuItem]
 	and a
 	ld hl, .OkThenText
-	jr nz, .no
+	jr nz, .answered_no
 	ld hl, .CaterpieAndWeedleDescriptionText
-.no
+.answered_no
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 

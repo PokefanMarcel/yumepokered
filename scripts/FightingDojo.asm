@@ -230,7 +230,7 @@ FightingDojoHitmonleePokeBallText:
 	jr z, .GetMon
 	ld hl, FightingDojoBetterNotGetGreedyText
 	call PrintText
-	jr .done
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .GetMon
 	ld a, HITMONLEE
 	call DisplayPokedex
@@ -239,19 +239,19 @@ FightingDojoHitmonleePokeBallText:
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .done
+	jr nz, .text_script_end
 	ld a, [wCurPartySpecies]
 	ld b, a
 	ld c, 30
 	call GivePokemon
-	jr nc, .done
+	jr nc, .text_script_end
 
 	; once Poké Ball is taken, hide sprite
 	ld a, HS_FIGHTING_DOJO_GIFT_1
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	SetEvents EVENT_GOT_HITMONLEE, EVENT_DEFEATED_FIGHTING_DOJO
-.done
+.text_script_end
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Text:
@@ -264,7 +264,7 @@ FightingDojoHitmonchanPokeBallText:
 	jr z, .GetMon
 	ld hl, FightingDojoBetterNotGetGreedyText
 	call PrintText
-	jr .done
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .GetMon
 	ld a, HITMONCHAN
 	call DisplayPokedex

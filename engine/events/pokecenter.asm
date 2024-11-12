@@ -43,10 +43,10 @@ DisplayPokemonCenterDialogue_::
 	ld [wSprite01StateData1ImageIndex], a ; make the nurse bow
 	ld c, a
 	call DelayFrames
-	jr .done
+	jr .checkReset
 .declinedHealing
 	call LoadScreenTilesFromBuffer1 ; restore screen
-.done ; marcelnote - now we reset the bit once in a while to have the long text pop up sometimes
+.checkReset ; marcelnote - now we reset the bit once in a while to have the long text pop up sometimes
 	call Random
 	cp 31       ; 32/256 = 1/8 chance to reset text
 	jp nc, .dontReset

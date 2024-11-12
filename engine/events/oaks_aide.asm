@@ -4,7 +4,7 @@ OaksAideScript:
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .choseNo
+	jr nz, .answered_no
 	ld hl, wPokedexOwned
 	ld b, wPokedexOwnedEnd - wPokedexOwned
 	call CountSetBits
@@ -26,22 +26,22 @@ OaksAideScript:
 	ld hl, OaksAideGotItemText
 	call PrintText
 	ld a, OAKS_AIDE_GOT_ITEM
-	jr .done
+	jr .loadNextScript
 .bagFull
 	ld hl, OaksAideNoRoomText
 	call PrintText
 	xor a ; OAKS_AIDE_BAG_FULL
-	jr .done
+	jr .loadNextScript
 .notEnoughOwnedMons
 	ld hl, OaksAideUhOhText
 	call PrintText
 	ld a, OAKS_AIDE_NOT_ENOUGH_MONS
-	jr .done
-.choseNo
+	jr .loadNextScript
+.answered_no
 	ld hl, OaksAideComeBackText
 	call PrintText
 	ld a, OAKS_AIDE_REFUSED
-.done
+.loadNextScript
 	ldh [hOaksAideResult], a
 	ret
 

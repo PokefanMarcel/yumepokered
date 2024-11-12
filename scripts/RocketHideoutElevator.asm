@@ -72,11 +72,10 @@ RocketHideoutElevatorText:
 	call RocketHideoutElevatorScript
 	ld hl, RocketHideoutElevatorWarpMaps
 	predef DisplayElevatorFloorMenu
-	jr .text_script_end
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .no_key
 	ld hl, .AppearsToNeedKeyText
 	call PrintText
-.text_script_end
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .AppearsToNeedKeyText:

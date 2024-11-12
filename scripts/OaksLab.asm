@@ -672,7 +672,7 @@ OaksLabCalcRivalMovementScript:
 	ld [wNPCMovementDirections2Index], a
 	ld a, $30
 	ld b, 11
-	jr .done
+	jr .got_coords
 .not_below_oak
 	cp 1
 	jr nz, .not_above_oak
@@ -680,7 +680,7 @@ OaksLabCalcRivalMovementScript:
 	ld [wNPCMovementDirections2Index], a
 	ld a, $30
 	ld b, 9
-	jr .done
+	jr .got_coords
 .not_above_oak
 	ld a, $3
 	ld [wNPCMovementDirections2Index], a
@@ -689,10 +689,10 @@ OaksLabCalcRivalMovementScript:
 	cp 4
 	jr nz, .not_left_of_oak
 	ld a, $40
-	jr .done
+	jr .got_coords
 .not_left_of_oak
 	ld a, $20
-.done
+.got_coords
 	ldh [hSpriteScreenXCoord], a
 	ld a, b
 	ldh [hSpriteMapYCoord], a
