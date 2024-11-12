@@ -304,17 +304,16 @@ CeruleanCityRocketText:
 	call PrintText
 	lb bc, TM_DIG, 1
 	call GiveItem
-	jr c, .success
+	jr c, .item_received
 	ld hl, .TM28NoRoomText
 	call PrintText
-	jr .done
-.success
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.item_received
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	ld hl, .ReceivedTM28Text
 	call PrintText
 	farcall CeruleanHideRocket
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Text:

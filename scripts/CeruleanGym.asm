@@ -112,11 +112,11 @@ CeruleanGymMistyText:
 	jr nz, .afterBeat
 	call z, CeruleanGymReceiveTM11
 	call DisableWaitingAfterTextDisplay
-	jr .done
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .afterBeat
 	ld hl, .TM11ExplanationText
 	call PrintText
-	jr .done
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .beforeBeat
 	ld hl, .PreBattleText
 	call PrintText
@@ -136,7 +136,6 @@ CeruleanGymMistyText:
 	ldh [hJoyHeld], a
 	ld a, SCRIPT_CERULEANGYM_MISTY_POST_BATTLE
 	ld [wCeruleanGymCurScript], a
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .PreBattleText:

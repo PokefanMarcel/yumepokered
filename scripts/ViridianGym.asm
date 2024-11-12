@@ -208,7 +208,7 @@ ViridianGymGiovanniText:
 	jr nz, .afterBeat
 	call z, ViridianGymReceiveTM27
 	call DisableWaitingAfterTextDisplay
-	jr .text_script_end
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .afterBeat
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
@@ -221,7 +221,7 @@ ViridianGymGiovanniText:
 	call UpdateSprites
 	call Delay3
 	call GBFadeInFromBlack
-	jr .text_script_end
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .beforeBeat
 	ld hl, .PreBattleText
 	call PrintText
@@ -239,7 +239,6 @@ ViridianGymGiovanniText:
 	ld [wGymLeaderNo], a
 	ld a, SCRIPT_VIRIDIANGYM_GIOVANNI_POST_BATTLE
 	ld [wViridianGymCurScript], a
-.text_script_end
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .PreBattleText:

@@ -41,10 +41,9 @@ RedsHouse1FMomText:
 	jr nz, .heal
 	ld hl, .WakeUpText
 	call PrintText
-	jr .done
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .heal
 	call RedsHouse1FMomHealScript
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .WakeUpText:

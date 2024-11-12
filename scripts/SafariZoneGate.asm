@@ -196,7 +196,7 @@ SafariZoneGateSafariZoneWorker1WouldYouLikeToJoinText:
 	ResetEventReuseHL EVENT_SAFARI_GAME_OVER
 	ld a, SCRIPT_SAFARIZONEGATE_PLAYER_MOVING
 	ld [wSafariZoneGateCurScript], a
-	jr .done
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .PleaseComeAgain
 	ld hl, .PleaseComeAgainText
@@ -207,7 +207,6 @@ SafariZoneGateSafariZoneWorker1WouldYouLikeToJoinText:
 	call SafariZoneEntranceAutoWalk
 	ld a, SCRIPT_SAFARIZONEGATE_PLAYER_MOVING_DOWN
 	ld [wSafariZoneGateCurScript], a
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .MakePaymentText

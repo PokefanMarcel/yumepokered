@@ -47,22 +47,22 @@ TryPushingBoulder::
 	bit BIT_D_DOWN, b
 	ret z
 	ld de, PushBoulderDownMovementData
-	jr .done
+	jr .moveBoulder
 .pushBoulderUp
 	bit BIT_D_UP, b
 	ret z
 	ld de, PushBoulderUpMovementData
-	jr .done
+	jr .moveBoulder
 .pushBoulderLeft
 	bit BIT_D_LEFT, b
 	ret z
 	ld de, PushBoulderLeftMovementData
-	jr .done
+	jr .moveBoulder
 .pushBoulderRight
 	bit BIT_D_RIGHT, b
 	ret z
 	ld de, PushBoulderRightMovementData
-.done
+.moveBoulder
 	call MoveSprite
 	ld a, SFX_PUSH_BOULDER
 	call PlaySound

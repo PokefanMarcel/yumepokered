@@ -64,7 +64,7 @@ NameRatersHouseNameRaterText:
 	call GetPartyMonName2
 	call NameRatersHouseCheckMonOTScript
 	ld hl, .ATrulyImpeccableNameText
-	jr c, .done
+	jr c, .print_text
 	ld hl, .GiveItANiceNameText
 	call NameRatersHouseYesNoScript
 	jr nz, .did_not_rename
@@ -73,12 +73,12 @@ NameRatersHouseNameRaterText:
 	farcall DisplayNameRaterScreen
 	jr c, .did_not_rename
 	ld hl, .PokemonHasBeenRenamedText
-.done
+.print_text
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .did_not_rename
 	ld hl, .ComeAnyTimeYouLikeText
-	jr .done
+	jr .print_text
 
 .WantMeToRateText:
 	text_far _NameRatersHouseNameRaterWantMeToRateText

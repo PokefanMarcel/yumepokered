@@ -539,12 +539,12 @@ CheckSpriteAvailability:
 	ld l, a
 	ld [hl], $ff       ; x#SPRITESTATEDATA1_IMAGEINDEX
 	scf
-	jr .done
+	ret
 .spriteVisible
 	ld c, a
 	ld a, [wWalkCounter]
 	and a
-	jr nz, .done           ; if player is currently walking, we're done
+	ret nz           ; if player is currently walking, we're done
 	call UpdateSpriteImage
 	inc h
 	ldh a, [hCurrentSpriteOffset]
@@ -558,7 +558,6 @@ CheckSpriteAvailability:
 .notInGrass
 	ld [hl], a       ; x#SPRITESTATEDATA2_GRASSPRIORITY
 	and a
-.done
 	ret
 
 UpdateSpriteImage:

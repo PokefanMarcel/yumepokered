@@ -126,11 +126,11 @@ CeladonGymErikaText:
 	jr nz, .afterBeat
 	call z, CeladonGymReceiveTM21
 	call DisableWaitingAfterTextDisplay
-	jr .done
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .afterBeat
 	ld hl, .PostBattleAdviceText
 	call PrintText
-	jr .done
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .beforeBeat
 	ld hl, .PreBattleText
 	call PrintText
@@ -149,7 +149,6 @@ CeladonGymErikaText:
 	ld a, SCRIPT_CELADONGYM_ERIKA_POST_BATTLE
 	ld [wCeladonGymCurScript], a
 	ld [wCurMapScript], a
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .PreBattleText:

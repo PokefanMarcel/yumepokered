@@ -17,11 +17,11 @@ DaycareGentlemanText:
 	ld a, [wCurrentMenuItem]
 	and a
 	ld hl, .ComeAgainText
-	jp nz, .done
+	jp nz, .print_text
 	ld a, [wPartyCount]
 	dec a
 	ld hl, .OnlyHaveOneMonText
-	jp z, .done
+	jp z, .print_text
 	ld hl, .WhichMonText
 	call PrintText
 	xor a
@@ -35,10 +35,10 @@ DaycareGentlemanText:
 	call LoadGBPal
 	pop af
 	ld hl, .AllRightThenText
-	jp c, .done
+	jp c, .print_text
 	callfar KnowsHMMove
 	ld hl, .CantAcceptMonWithHMText
-	jp c, .done
+	jp c, .print_text
 	xor a
 	ld [wPartyAndBillsPCSavedMenuItem], a
 	ld a, [wWhichPokemon]
@@ -57,7 +57,7 @@ DaycareGentlemanText:
 	ld a, [wCurPartySpecies]
 	call PlayCry
 	ld hl, .ComeSeeMeInAWhileText
-	jp .done
+	jp .print_text
 
 .daycareInUse
 	xor a
@@ -201,13 +201,13 @@ DaycareGentlemanText:
 	ld a, [wCurPartySpecies]
 	call PlayCry
 	ld hl, .GotMonBackText
-	jr .done
+	jr .print_text
 
 .leaveMonInDayCare
 	ld a, [wDayCareStartLevel]
 	ld [wDayCareMonBoxLevel], a
 
-.done
+.print_text
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 

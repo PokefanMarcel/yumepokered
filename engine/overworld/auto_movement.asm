@@ -51,7 +51,7 @@ PalletMovementScriptPointerTable::
 	dw PalletMovementScript_WalkToLab
 	dw PalletMovementScript_Done
 
-PalletMovementScript_OakMoveLeft:
+PalletMovementScript_OakMoveLeft: ; marcelnote - optimized
 	ld a, [wXCoord]
 	sub $a
 	ld [wNumStepsToTake], a
@@ -70,15 +70,14 @@ PalletMovementScript_OakMoveLeft:
 	ld de, wNPCMovementDirections2
 	call MoveSprite
 	ld a, $1
-	ld [wNPCMovementScriptFunctionNum], a
-	jr .done
+	jr .gotScriptNum
 ; The player is on the left tile of the northern path out of Pallet Town and
 ; Prof. Oak is below.
 ; Prof. Oak is already where he needs to be.
 .playerOnLeftTile
 	ld a, $3
+.gotScriptNum
 	ld [wNPCMovementScriptFunctionNum], a
-.done
 	ld hl, wStatusFlags7
 	set BIT_NO_MAP_MUSIC, [hl]
 	ld a, SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN

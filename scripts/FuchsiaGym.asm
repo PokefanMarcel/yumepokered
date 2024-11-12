@@ -126,11 +126,11 @@ FuchsiaGymKogaText:
 	jr nz, .afterBeat
 	call z, FuchsiaGymReceiveTM06
 	call DisableWaitingAfterTextDisplay
-	jr .done
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .afterBeat
 	ld hl, .PostBattleAdviceText
 	call PrintText
-	jr .done
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .beforeBeat
 	ld hl, .BeforeBattleText
 	call PrintText
@@ -150,7 +150,6 @@ FuchsiaGymKogaText:
 	ldh [hJoyHeld], a
 	ld a, SCRIPT_FUCHSIAGYM_KOGA_POST_BATTLE
 	ld [wFuchsiaGymCurScript], a
-.done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .BeforeBattleText:
