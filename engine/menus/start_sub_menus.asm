@@ -308,12 +308,24 @@ StartMenu_Item::
 	jr .exitMenu
 .notInCableClubRoom
 	ld bc, wNumBagItems
+	;;;;;;;;;; marcelnote - check which pocket we were last in, new for bag pockets
+;	ld a, [wCurBagPocket]
+;	and a
+;	jr z, .gotBagPocket
+;	ld bc, wNumBagKeyItems
+;.gotBagPocket
+	;;;;;;;;;;
 	ld hl, wListPointer
 	ld a, c
 	ld [hli], a
 	ld [hl], b ; store item bag pointer in wListPointer (for DisplayListMenuID)
 	xor a
 	ld [wPrintItemPrices], a
+	;;;;;;;;;; marcelnote - diplay bag info box, new for bag pockets
+;	ld a, BAG_INFO_BOX
+;	ld [wTextBoxID], a
+;	call DisplayTextBoxID
+	;;;;;;;;;;
 	ld a, ITEMLISTMENU
 	ld [wListMenuID], a
 	ld a, [wBagSavedMenuItem]

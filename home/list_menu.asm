@@ -9,6 +9,7 @@ DisplayListMenuID::
 	ld a, [wBattleType]
 	and a ; is it the Old Man battle?
 	jr nz, .specialBattleType
+	;call PrintBagInfoText ; marcelnote - new for bag pockets
 	ld a, $01 ; hardcoded bank
 	jr .bankswitch
 .specialBattleType ; Old Man battle
@@ -19,7 +20,7 @@ DisplayListMenuID::
 	set BIT_NO_TEXT_DELAY, [hl]
 	xor a
 	ld [wMenuItemToSwap], a ; 0 means no item is currently being swapped
-	ld [wListCount], a
+	;ld [wListCount], a ; marcelnote - deleted, this is overwitten just below
 	ld a, [wListPointer]
 	ld l, a
 	ld a, [wListPointer + 1]
@@ -30,14 +31,14 @@ DisplayListMenuID::
 	ld [wTextBoxID], a
 	call DisplayTextBoxID ; draw the menu text box
 	call UpdateSprites ; disable sprites behind the text box
-; the code up to .skipMovingSprites appears to be useless
-	hlcoord 4, 2 ; coordinates of upper left corner of menu text box
-	lb de, 9, 14 ; height and width of menu text box
-	ld a, [wListMenuID]
-	and a ; PCPOKEMONLISTMENU?
-	jr nz, .skipMovingSprites
-	call UpdateSprites
-.skipMovingSprites
+; the code up to .skipMovingSprites appears to be useless            ; marcelnote - removed it
+;	hlcoord 4, 2 ; coordinates of upper left corner of menu text box
+;	lb de, 9, 14 ; height and width of menu text box
+;	ld a, [wListMenuID]
+;	and a ; PCPOKEMONLISTMENU?
+;	jr nz, .skipMovingSprites
+;	call UpdateSprites
+;.skipMovingSprites
 	ld a, 1 ; max menu item ID is 1 if the list has less than 2 entries
 	ld [wMenuWatchMovingOutOfBounds], a
 	ld a, [wListCount]
@@ -50,7 +51,7 @@ DisplayListMenuID::
 	ld [wTopMenuItemY], a
 	ld a, 5
 	ld [wTopMenuItemX], a
-	ld a, A_BUTTON | B_BUTTON | SELECT
+	ld a, A_BUTTON | B_BUTTON | SELECT ; | D_RIGHT ; marcelnote - added D_RIGHT for bag pockets
 	ld [wMenuWatchedKeys], a
 	ld c, 10
 	call DelayFrames
@@ -82,6 +83,7 @@ DisplayListMenuIDLoop::
 	call LoadGBPal
 	call HandleMenuInput
 	push af
+	;call PrintBagInfoText ; marcelnote - should be placed around here if expect to display TM moves
 	call PlaceMenuCursor
 	pop af
 	bit BIT_A_BUTTON, a
@@ -90,10 +92,10 @@ DisplayListMenuIDLoop::
 	ld a, [wCurrentMenuItem]
 	call PlaceUnfilledArrowMenuCursor
 
-; pointless because both values are overwritten before they are read
-	ld a, $01
-	ld [wMenuExitMethod], a
-	ld [wChosenMenuItem], a
+; pointless because both values are overwritten before they are read ; marcelnote - removed
+	;ld a, $01
+	;ld [wMenuExitMethod], a
+	;ld [wChosenMenuItem], a
 
 	xor a
 	ld [wMenuWatchMovingOutOfBounds], a
@@ -180,12 +182,15 @@ DisplayListMenuIDLoop::
 	jp nz, ExitListMenu ; if so, exit the menu
 	bit BIT_SELECT, a
 	jp nz, HandleItemListSwapping ; if so, allow the player to swap menu entries
-	ld b, a
-	bit BIT_D_DOWN, b
+	;bit BIT_D_RIGHT, a
+	;jr nz, .switchBagPocket
+	;ld b, a
+	bit BIT_D_DOWN, a ; marcelnote - changed from bit BIT_D_DOWN, b (no point in using b)
 	ld hl, wListScrollOffset
+	ld a, [hl] ; marcelnote - moved from below since unconditional
 	jr z, .upPressed
 .downPressed
-	ld a, [hl]
+	;ld a, [hl]
 	add 3
 	ld b, a
 	ld a, [wListCount]
@@ -194,11 +199,30 @@ DisplayListMenuIDLoop::
 	inc [hl] ; if not, go down
 	jp DisplayListMenuIDLoop
 .upPressed
-	ld a, [hl]
+	;ld a, [hl]
 	and a
 	jp z, DisplayListMenuIDLoop
 	dec [hl]
 	jp DisplayListMenuIDLoop
+;.switchBagPocket ; marcelnote - new for bag pockets
+;	ld a, [wListMenuID]
+;	cp ITEMLISTMENU
+;	jp nz, DisplayListMenuIDLoop
+;	ld bc, wNumBagItems
+;	ld a, [wCurBagPocket]
+;	xor a, 1 ; if a=1, this becomes 0 ; should use a mask here if using a wStatusFlags
+;	jr z, .switchToMainPocket
+;	ld bc, wNumBagKeyItems
+;.switchToMainPocket
+;	ld [wCurBagPocket], a
+;	ld a, c
+;	ld hl, wListPointer
+;	ld [hli], a
+;	ld [hl], b ; store item bag pointer in wListPointer (for DisplayListMenuID)
+;	xor a
+;	ld [wCurrentMenuItem], a
+;	ld [wListScrollOffset], a
+;	jp DisplayListMenuID
 
 DisplayChooseQuantityMenu::
 ; text box dimensions/coordinates for just quantity
@@ -530,5 +554,29 @@ PrintListMenuEntries::
 	ld de, ListMenuCancelText
 	jp PlaceString
 
+
+;PrintBagInfoText: ; marcelnote - new for bag pockets
+;	hlcoord 6, 14
+;	ld de, BagItemsText
+;	ld a, [wCurBagPocket]
+;	and a
+;	jr z, .mainPocket
+;	ld de, BagKeyItemsText
+;.mainPocket
+;	;ld a, [wCurListMenuItem]
+;	;cp $ff
+;	;ret z
+;	;cp TM_MEGA_PUNCH ; first TM (TMs are last items)
+;	;jp c, .notTM
+;	;ld de, IsTMText
+;;.notTM
+;	jp PlaceString
+
 ListMenuCancelText::
 	db "CANCEL@"
+
+BagItemsText:
+	db "ITEMS    @"
+
+BagKeyItemsText:
+	db "KEY ITEMS@"

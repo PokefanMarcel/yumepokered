@@ -129,6 +129,22 @@ IF DEF(_DEBUG)
 	jr .items_loop
 .items_end
 
+	; Get some more debug items. ; marcelnote - new for Key items pocket
+	ld hl, wNumBagKeyItems
+	ld de, DebugKeyItemsList
+.key_items_loop
+	ld a, [de]
+	cp -1
+	jr z, .key_items_end
+	ld [wCurItem], a
+	inc de
+	ld a, [de]
+	inc de
+	ld [wItemQuantity], a
+	call AddItemToInventory
+	jr .key_items_loop
+.key_items_end
+
 	; Complete the Pokédex.
 	ld hl, wPokedexOwned
 	call DebugSetPokedexEntries
@@ -166,7 +182,6 @@ DebugItemsList:
 	db MASTER_BALL, 99
 	db MAX_ELIXIR, 99 ; marcelnote - added
 	db TOWN_MAP, 1
-	db POKE_FLUTE, 1 ; marcelnote - added
 	db SECRET_KEY, 1
 	db CARD_KEY, 1
 	db S_S_TICKET, 1
@@ -174,6 +189,10 @@ DebugItemsList:
 	db SILPH_SCOPE, 1 ; marcelnote - added
 	db ORANGE_PASS, 1 ; marcelnote - added
 	;db SURFBOARD, 1 ; marcelnote - added
+	db -1 ; end
+
+DebugKeyItemsList:    ; marcelnote - new for Key Items pocket
+	db POKE_FLUTE, 1
 	db -1 ; end
 
 DebugUnusedList:
