@@ -1760,9 +1760,12 @@ wNumBagItems:: db
 ; item, quantity
 wBagItems:: ds BAG_ITEM_CAPACITY * 2 + 1
 
-;wNumBagKeyItems:: db ; marcelnote - for Key Items pocket
-; item (no need to store quantity since only one of each)
-;wBagKeyItems:: ds BAG_KEY_ITEM_CAPACITY + 1
+wNumBagKeyItems:: db ; marcelnote - for Key Items pocket
+; item, quantity (but quantity will always be 1 so could look into decreasing it)
+wBagKeyItems:: ds BAG_KEY_ITEM_CAPACITY * 2 + 1
+
+; 0 = Items, 1 = Key items ; marcelnote - added for bag pockets,
+wCurBagPocket:: db         ;              could be just a bit in a wStatusFlags with only 2 pockets
 
 wNumBoxItems:: db
 ; item, quantity
@@ -1854,7 +1857,7 @@ wWarpEntries:: ds 32 * 4 ; Y, X, warp ID, map ID
 ; if $ff, the player's coordinates are not updated when entering the map
 wDestinationWarpID:: db
 
-	ds 128
+	ds 66
 
 ; number of signs in the current map (up to 16)
 wNumSigns:: db
