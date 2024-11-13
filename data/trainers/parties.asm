@@ -158,6 +158,8 @@ SailorData:
 	db 20, MACHOP, 0
 ; Vermilion Gym
 	db 21, PIKACHU, PIKACHU, 0
+; Orange Ferry Outside ; marcelnote - new trainers
+	db 43, SEADRA, MAGNETON, 0
 
 JrTrainerMData:
 ; Pewter Gym

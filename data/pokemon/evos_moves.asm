@@ -1348,8 +1348,8 @@ MagnemiteEvosMoves:
 	db 18, SONICBOOM
 	db 24, THUNDER_WAVE
 	db 30, SWIFT
-	db 36, SCREECH
-	db 42, TRI_ATTACK
+	db 36, TRI_ATTACK
+	db 42, SCREECH
 	db 48, THUNDER
 	db 0
 
@@ -1362,8 +1362,8 @@ MagnetonEvosMoves:
 	db 20, SONICBOOM
 	db 27, THUNDER_WAVE
 	db 33, SWIFT
-	db 40, SCREECH
-	db 47, TRI_ATTACK
+	db 40, TRI_ATTACK
+	db 47, SCREECH
 	db 53, THUNDER
 	db 0
 
