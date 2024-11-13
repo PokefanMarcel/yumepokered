@@ -36,6 +36,7 @@ VBlank::
 	ldh [hLoadedROMBank], a
 	ld [MBC1RomBank], a
 	call PrepareOAMData
+	;call hDMARoutine ; marcelnote - move call here to fix wobbly sprites (but issue with sprites at the top of the screen)
 .skipOAM ; marcelnote - OAM updates can be interrupted by V-Blank (pokered Wiki)
 
 	; VBlank-sensitive operations end.
