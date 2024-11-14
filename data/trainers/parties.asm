@@ -12,7 +12,6 @@ TrainerDataPointers:
 	dw BikerData
 	dw BurglarData
 	dw EngineerData
-	dw UnusedJugglerData
 	dw FisherData
 	dw SwimmerData
 	dw CueBallData
@@ -334,9 +333,6 @@ EngineerData:
 ; Route 11
 	db 21, MAGNEMITE, 0
 	db 18, MAGNEMITE, MAGNEMITE, MAGNETON, 0
-
-UnusedJugglerData:
-; none
 ; marcelnote - new trainers
 ; Orange Ferry Outside
 	db 41, VOLTORB, DUGTRIO, ELECTRODE, 0
