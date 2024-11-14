@@ -1,6 +1,7 @@
 ; marcelnote - new location
 	object_const_def
 	const_export ORANGEFERRYOUTSIDE_SAILOR1
+	const_export ORANGEFERRYOUTSIDE_COOLTRAINER_M
 
 OrangeFerryOutside_Object:
 	db $23 ; border block
@@ -13,5 +14,6 @@ OrangeFerryOutside_Object:
 
 	def_object_events
 	object_event  4,  3, SPRITE_SAILOR, STAY, DOWN, TEXT_ORANGEFERRYOUTSIDE_SAILOR1, OPP_SAILOR, 9
+	object_event 23,  9, SPRITE_COOLTRAINER_M, STAY, UP, TEXT_ORANGEFERRYOUTSIDE_COOLTRAINER_M, OPP_ENGINEER, 4
 
 	def_warps_to ORANGE_FERRY_OUTSIDE

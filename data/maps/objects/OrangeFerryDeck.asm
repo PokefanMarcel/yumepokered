@@ -1,6 +1,5 @@
 ; marcelnote - new location
 	object_const_def
-	;const_export ORANGEFERRYDECK_WAITER
 	const_export ORANGEFERRYDECK_SAILOR
 
 OrangeFerryDeck_Object:
@@ -20,9 +19,10 @@ OrangeFerryDeck_Object:
 	warp_event 17,  6, ORANGE_FERRY_ROOMS, 10
 
 	def_bg_events
+	bg_event 21,  4, TEXT_ORANGEFERRYDECK_VENDING_MACHINE
 
 	def_object_events
-	;object_event  4,  6, SPRITE_WAITER, WALK, LEFT_RIGHT, TEXT_ORANGEFERRYDECK_WAITER
 	object_event 13,  1, SPRITE_SAILOR, STAY, DOWN, TEXT_ORANGEFERRYDECK_SAILOR
+	;object_event  4,  6, SPRITE_WAITER, WALK, LEFT_RIGHT, TEXT_ORANGEFERRYDECK_WAITER
 
 	def_warps_to ORANGE_FERRY_DECK

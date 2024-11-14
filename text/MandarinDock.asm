@@ -8,5 +8,6 @@ _MandarinDockSailorAreYouReadyText::
 	done
 
 _MandarinDockSailorAllAboardText::
-	text "All aboard!"
+	text "Aye aye, hop on!"
+	line "All aboard!"
 	prompt

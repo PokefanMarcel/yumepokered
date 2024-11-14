@@ -17,4 +17,23 @@ _OrangeFerryOutsideSailor1AfterBattleText::
 	cont "storms!"
 	done
 
+_OrangeFerryOutsideCooltrainerMBattleText::
+	text "Easy now! One"
+	line "wrong slip and"
+	cont "my wrenches go"
+	cont "overboard!"
+	done
+
+_OrangeFerryOutsideCooltrainerMEndBattleText::
+	text "Wrenched"
+	line "and wrecked!"
+	prompt
+
+_OrangeFerryOutsideCooltrainerMAfterBattleText::
+	text "I know every bolt"
+	line "and wire on this"
+	cont "ship! Isn't she"
+	cont "a beauty?"
+	done
+
 ; ferry crash in Japan in 90's

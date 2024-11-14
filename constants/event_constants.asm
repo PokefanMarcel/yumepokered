@@ -629,6 +629,7 @@
 	const EVENT_GOT_FERRY_FOSSIL
 	const_skip 4
 	const EVENT_BEAT_ORANGE_FERRY_OUTSIDE_TRAINER_0
+	const EVENT_BEAT_ORANGE_FERRY_OUTSIDE_TRAINER_1
 
 ; Victory Road 3F events
 	const_next $660
