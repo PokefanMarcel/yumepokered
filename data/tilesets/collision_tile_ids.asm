@@ -14,7 +14,6 @@ Overworld_Coll::
 BigHouse_Coll::  ; marcelnote - merged REDS_HOUSE tilesets, added $04 (carpet)
 	coll_tiles $01, $02, $03, $04, $11, $12, $13, $14, $1c, $1a
 
-Mart_Coll::
 Pokecenter_Coll::
 	coll_tiles $11, $1a, $1c, $3c, $5e
 
@@ -40,7 +39,7 @@ ShipPort_Coll::
 	coll_tiles $0a, $32, $3b ; marcelnote - removed $1a (mooring tile)
 
 Cemetery_Coll::
-	coll_tiles $01, $10, $13, $1b, $22, $42, $52
+	coll_tiles $01, $13, $1b, $22 ; marcelnote - removed $10, $42, $52
 
 Interior_Coll::
 	coll_tiles $04, $0f, $15, $1f, $3b, $45, $47, $55, $56

@@ -93,8 +93,7 @@
 	const EVENT_BEAT_POKEMONTOWER_7_TRAINER_0
 	const EVENT_BEAT_POKEMONTOWER_7_TRAINER_1
 	const EVENT_BEAT_POKEMONTOWER_7_TRAINER_2
-	const_skip 3
-	const EVENT_RESCUED_MR_FUJI_2
+	const_skip 4 ; marcelnote - removed EVENT_RESCUED_MR_FUJI_2
 	const_skip 8 ; marcelnote - adjusted down
 	const EVENT_GOT_POKE_FLUTE
 	const EVENT_POSTGAME_AGATHA ; marcelnote - postgame Agatha event

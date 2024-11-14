@@ -227,8 +227,7 @@ PokemonTower7FMrFujiText:
 	text_asm
 	ld hl, .RescueText
 	call PrintText
-	SetEvent EVENT_RESCUED_MR_FUJI
-	SetEvent EVENT_RESCUED_MR_FUJI_2
+	SetEvent EVENT_RESCUED_MR_FUJI ; marcelnote - removed EVENT_RESCUED_MR_FUJI_2
 	ld a, HS_MR_FUJIS_HOUSE_MR_FUJI
 	ld [wMissableObjectIndex], a
 	predef ShowObject
