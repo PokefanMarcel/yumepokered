@@ -234,10 +234,10 @@ PokemonTower7FMrFujiText:
 	predef ShowObject
 	ld a, HS_SAFFRON_CITY_E
 	ld [wMissableObjectIndex], a
-	predef HideObject
+	predef HideObjectCont ; marcelnote - changed from HideObject because moved to second list
 	ld a, HS_SAFFRON_CITY_F
 	ld [wMissableObjectIndex], a
-	predef ShowObject
+	predef ShowObjectCont ; marcelnote - changed from ShowObject because moved to second list
 	ld a, HS_CELADON_GROVE_SOUTH_GATE_ROCKET ; marcelnote - remove Rocket blocking Celadon Grove
 	ld [wMissableObjectIndex], a
 	predef HideObjectCont

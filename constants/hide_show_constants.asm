@@ -295,8 +295,8 @@ DEF NUM_HS_OBJECTS EQU const_value
 	const HS_SAFFRON_CITY_B                ; 14
 	const HS_SAFFRON_CITY_C                ; 15
 	const HS_SAFFRON_CITY_D                ; 16
-	const HS_SAFFRON_CITY_E                ; 17
-	const HS_SAFFRON_CITY_F                ; 18
+	const HS_SAFFRON_CITY_E                ; 17 ; Silph Co guard
+	const HS_SAFFRON_CITY_F                ; 18 ; Silph Co guard asleep
 	const HS_SAFFRON_GYM_SABRINA             ; default Sabrina
 	const HS_SAFFRON_GYM_SABRINA_REMATCH     ; rematch Sabrina
 	const HS_SAFFRON_GYM_WILL                ; postgame Will

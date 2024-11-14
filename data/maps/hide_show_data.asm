@@ -627,8 +627,8 @@ SaffronCityHS: ; marcelnote - moved from previous list
 	db SAFFRON_CITY, SAFFRONCITY_GENTLEMAN,      HIDE
 	db SAFFRON_CITY, SAFFRONCITY_PIDGEOT,        HIDE
 	db SAFFRON_CITY, SAFFRONCITY_ROCKER,         HIDE
-	db SAFFRON_CITY, SAFFRONCITY_ROCKET8,        SHOW
-	db SAFFRON_CITY, SAFFRONCITY_ROCKET9,        HIDE
+	db SAFFRON_CITY, SAFFRONCITY_ROCKET8,        SHOW ; Silph Co guard
+	db SAFFRON_CITY, SAFFRONCITY_ROCKET9,        HIDE ; Silph Co guard asleep
 SaffronGymHS:
 	db SAFFRON_GYM, SAFFRONGYM_SABRINA, SHOW          ; marcelnote - default Sabrina
 	db SAFFRON_GYM, SAFFRONGYM_SABRINA_REMATCH, HIDE  ; marcelnote - rematch Sabrina
