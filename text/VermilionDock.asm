@@ -8,5 +8,6 @@ _VermilionDockSailorAreYouReadyText::
 	done
 
 _VermilionDockSailorAllAboardText::
-	text "All aboard!"
+	text "Aye aye, hop on!"
+	line "All aboard!"
 	prompt

@@ -76,19 +76,20 @@ OrangeFerryDeck_TextPointers:
 	def_text_pointers
 	;dw_const OrangeFerryDeckWaiterText,         TEXT_ORANGEFERRYDECK_WAITER
 	dw_const OrangeFerryDeckSailorText,         TEXT_ORANGEFERRYDECK_SAILOR
+	dw_const OrangeFerryDeckVendingMachineText, TEXT_ORANGEFERRYDECK_VENDING_MACHINE
 	dw_const OrangeFerryDeckSailorSorryText,    TEXT_ORANGEFERRYDECK_SAILOR_SORRY
 	dw_const OrangeFerryDeckSpeakerWelcomeText, TEXT_ORANGEFERRYROOMS_SPEAKER_LEFT
-
-OrangeFerryDeckWaiterText:
-	text_far _OrangeFerryDeckWaiterText
-	text_end
 
 OrangeFerryDeckSailorText:
 	text_asm
 	CheckEvent EVENT_FERRY_ARRIVED
 	ld hl, .EnjoyYourTripText
 	jr z, .print_text
-	ld hl, .WeveArrivedText
+	ld a, [wLastMap]
+	cp VERMILION_DOCK
+	ld hl, .EndOfTheLineVermilionText
+	jr z, .print_text
+	ld hl, .EndOfTheLineMandarinText
 .print_text
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
@@ -97,8 +98,12 @@ OrangeFerryDeckSailorText:
 	text_far _OrangeFerryDeckSailorEnjoyYourTripText
 	text_end
 
-.WeveArrivedText:
-	text_far _OrangeFerryDeckSailorWeveArrivedText
+.EndOfTheLineVermilionText:
+	text_far _OrangeFerryDeckSailorEndOfTheLineVermilionText
+	text_end
+
+.EndOfTheLineMandarinText:
+	text_far _OrangeFerryDeckSailorEndOfTheLineMandarinText
 	text_end
 
 OrangeFerryDeckSailorSorryText:
@@ -108,3 +113,6 @@ OrangeFerryDeckSailorSorryText:
 OrangeFerryDeckSpeakerWelcomeText:
 	text_far _OrangeFerryDeckSpeakerWelcomeText
 	text_end
+
+OrangeFerryDeckVendingMachineText:
+	script_vending_machine
