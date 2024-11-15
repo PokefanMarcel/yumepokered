@@ -6,7 +6,7 @@
 	const_export YELLOWSHOUSE2F_ASLEEP ; marcelnote - Yellow asleep
 
 RedsYellowsHouses_Object:
-	db $a ; border block
+	db $0 ; border block
 
 	def_warp_events
 	; Red's house
