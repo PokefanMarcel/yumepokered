@@ -385,8 +385,10 @@ DisplayWildLocations:
 	call LoadTownMapEntry
 	pop hl
 	ld a, [de]
-	cp $19 ; Cerulean Cave's coordinates
+	cp $19 ; Cerulean Cave's town map coordinates (x=9, y=1 in hexadecimal)
 	jr z, .nextEntry ; skip Cerulean Cave
+	cp $70 ;  marcelnote - new, Route 28 and Mt Silver's town map coordinates (x=0, y=7)
+	jr z, .nextEntry ; skip Route 28 and Mt Silver
 	call TownMapCoordsToOAMCoords
 	ld a, $4 ; nest icon tile no.
 	ld [hli], a
