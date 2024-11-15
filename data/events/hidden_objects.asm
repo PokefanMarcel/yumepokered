@@ -44,7 +44,7 @@ HiddenObjectMaps:
 	db SAFARI_ZONE_WEST
 	db SILPH_CO_5F
 	db SILPH_CO_9F
-	db COPYCATS_HOUSE_2F
+	db COPYCATS_HOUSE ; marcelnote - merged Copycat's house floors
 	db CERULEAN_CAVE_1F
 	db CERULEAN_CAVE_B1F
 	db POWER_PLANT
@@ -142,7 +142,7 @@ HiddenObjectPointers:
 	dw SafariZoneWestHiddenObjects
 	dw SilphCo5FHiddenObjects
 	dw SilphCo9FHiddenObjects
-	dw CopycatsHouse2FHiddenObjects
+	dw CopycatsHouseHiddenObjects ; marcelnote - merged Copycat's house floors
 	dw CeruleanCave1HiddenObjects
 	dw CeruleanCave3HiddenObjects
 	dw PowerPlantHiddenObjects
@@ -502,8 +502,8 @@ SilphCo9FHiddenObjects:
 	hidden_object  2, 15, MAX_POTION, HiddenItems
 	db -1 ; end
 
-CopycatsHouse2FHiddenObjects:
-	hidden_object  1,  1, NUGGET, HiddenItems
+CopycatsHouseHiddenObjects: ; marcelnote - merged Copycat's house floors
+	hidden_object 15,  1, NUGGET, HiddenItems
 	db -1 ; end
 
 CeruleanCave1HiddenObjects:

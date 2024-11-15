@@ -169,8 +169,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const ROUTE_16_FLY_HOUSE,             4,  4
 	map_const ROUTE_18_GATE,                  4, 11 ; marcelnote - merged Route18Gate floors
 	map_const SAFFRON_POKECENTER_MART,       14,  4 ; marcelnote - merged Saffron Pokecenter and Mart
-	map_const COPYCATS_HOUSE_1F,              4,  4
-	map_const COPYCATS_HOUSE_2F,              4,  4
+	map_const COPYCATS_HOUSE,                11,  4 ; marcelnote - merged Copycat's house floors
 	map_const FIGHTING_DOJO,                  5,  6
 	map_const SAFFRON_PIDGEY_HOUSE,           4,  4
 	map_const MR_PSYCHICS_HOUSE,              4,  4

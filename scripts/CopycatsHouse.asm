@@ -1,8 +1,14 @@
-CopycatsHouse2F_Script:
+; marcelnote - merged Copycat's house floors
+CopycatsHouse_Script:
 	jp EnableAutoTextBoxDrawing
 
-CopycatsHouse2F_TextPointers:
+CopycatsHouse_TextPointers:
 	def_text_pointers
+	; 1F
+	dw_const CopycatsHouse1FMiddleAgedWomanText, TEXT_COPYCATSHOUSE1F_MIDDLE_AGED_WOMAN
+	dw_const CopycatsHouse1FMiddleAgedManText,   TEXT_COPYCATSHOUSE1F_MIDDLE_AGED_MAN
+	dw_const CopycatsHouse1FChanseyText,         TEXT_COPYCATSHOUSE1F_CHANSEY
+	; 2F
 	dw_const CopycatsHouse2FCopycatText,      TEXT_COPYCATSHOUSE2F_COPYCAT
 	dw_const CopycatsHouse2FDoduoText,        TEXT_COPYCATSHOUSE2F_DODUO
 	dw_const CopycatsHouse2FRareDollText,     TEXT_COPYCATSHOUSE2F_MONSTER
@@ -10,6 +16,22 @@ CopycatsHouse2F_TextPointers:
 	dw_const CopycatsHouse2FRareDollText,     TEXT_COPYCATSHOUSE2F_FAIRY
 	dw_const CopycatsHouse2FSNESText,         TEXT_COPYCATSHOUSE2F_SNES
 	dw_const CopycatsHouse2FPCText,           TEXT_COPYCATSHOUSE2F_PC
+
+CopycatsHouse1FMiddleAgedWomanText:
+	text_far _CopycatsHouse1FMiddleAgedWomanText
+	text_end
+
+CopycatsHouse1FMiddleAgedManText:
+	text_far _CopycatsHouse1FMiddleAgedManText
+	text_end
+
+CopycatsHouse1FChanseyText:
+	text_far _CopycatsHouse1FChanseyText
+	text_asm
+	ld a, CHANSEY
+	call PlayCry
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
 
 CopycatsHouse2FCopycatText: ; marcelnote - optimized
 	text_asm
@@ -22,7 +44,7 @@ CopycatsHouse2FCopycatText: ; marcelnote - optimized
 	call PrintText
 	ld b, POKE_DOLL
 	call IsItemInBag
-	jr z, .done
+	jr z, .text_script_end
 	ld hl, .TM31PreReceiveText
 	call PrintText
 	lb bc, TM_MIMIC, 1
@@ -36,7 +58,7 @@ CopycatsHouse2FCopycatText: ; marcelnote - optimized
 	ld hl, .ReceivedTM31Text
 .print_text
 	call PrintText
-.done
+.text_script_end
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .DoYouLikePokemonText:
@@ -76,21 +98,23 @@ CopycatsHouse2FSNESText:
 	text_far _CopycatsHouse2FSNESText
 	text_end
 
-CopycatsHouse2FPCText:
-	text_asm
-	ld a, [wSpritePlayerStateData1FacingDirection]
-	cp SPRITE_FACING_UP
-	ld hl, .CantSeeText
-	jr nz, .notUp
-	ld hl, .MySecretsText
-.notUp
-	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-
-.MySecretsText:
+CopycatsHouse2FPCText: ; marcelnote - simplified because can only be seen from below anyway
 	text_far _CopycatsHouse2FPCMySecretsText
 	text_end
+;	text_asm
+;	ld a, [wSpritePlayerStateData1FacingDirection]
+;	cp SPRITE_FACING_UP
+;	ld hl, .CantSeeText
+;	jr nz, .notUp
+;	ld hl, .MySecretsText
+;.notUp
+;	call PrintText
+;	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-.CantSeeText:
-	text_far _CopycatsHouse2FPCCantSeeText
-	text_end
+;.MySecretsText:
+;	text_far _CopycatsHouse2FPCMySecretsText
+;	text_end
+
+;.CantSeeText:
+;	text_far _CopycatsHouse2FPCCantSeeText
+;	text_end

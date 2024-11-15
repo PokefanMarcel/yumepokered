@@ -1,0 +1,42 @@
+; marcelnote - merged Copycat's house floors
+	object_const_def
+	; 1F
+	const_export COPYCATSHOUSE1F_MIDDLE_AGED_WOMAN
+	const_export COPYCATSHOUSE1F_MIDDLE_AGED_MAN
+	const_export COPYCATSHOUSE1F_CHANSEY
+	; 2F
+	const_export COPYCATSHOUSE2F_COPYCAT
+	const_export COPYCATSHOUSE2F_DODUO
+	const_export COPYCATSHOUSE2F_MONSTER
+	const_export COPYCATSHOUSE2F_BIRD
+	const_export COPYCATSHOUSE2F_FAIRY
+
+CopycatsHouse_Object:
+	db $0 ; border block
+
+	def_warp_events
+	; 1F
+	warp_event  2,  7, LAST_MAP, 1
+	warp_event  3,  7, LAST_MAP, 1
+	warp_event  7,  1, COPYCATS_HOUSE, 4
+	; 2F
+	warp_event 21,  1, COPYCATS_HOUSE, 3
+
+	def_bg_events
+	; 2F
+	bg_event 17,  5, TEXT_COPYCATSHOUSE2F_SNES
+	bg_event 14,  1, TEXT_COPYCATSHOUSE2F_PC
+
+	def_object_events
+	; 1F
+	object_event  2,  2, SPRITE_MIDDLE_AGED_WOMAN, STAY, DOWN, TEXT_COPYCATSHOUSE1F_MIDDLE_AGED_WOMAN
+	object_event  5,  4, SPRITE_MIDDLE_AGED_MAN, STAY, LEFT, TEXT_COPYCATSHOUSE1F_MIDDLE_AGED_MAN
+	object_event  1,  4, SPRITE_FAIRY, WALK, UP_DOWN, TEXT_COPYCATSHOUSE1F_CHANSEY
+	; 2F
+	object_event 18,  3, SPRITE_BRUNETTE_GIRL, WALK, ANY_DIR, TEXT_COPYCATSHOUSE2F_COPYCAT
+	object_event 18,  6, SPRITE_BIRD, WALK, LEFT_RIGHT, TEXT_COPYCATSHOUSE2F_DODUO
+	object_event 19,  1, SPRITE_MONSTER, STAY, DOWN, TEXT_COPYCATSHOUSE2F_MONSTER
+	object_event 16,  0, SPRITE_BIRD, STAY, DOWN, TEXT_COPYCATSHOUSE2F_BIRD
+	object_event 15,  6, SPRITE_FAIRY, STAY, RIGHT, TEXT_COPYCATSHOUSE2F_FAIRY
+
+	def_warps_to COPYCATS_HOUSE
