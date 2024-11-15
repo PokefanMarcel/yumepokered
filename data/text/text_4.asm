@@ -20,7 +20,7 @@ _PlayerBlackedOutText::
 _RepelWoreOffText::
 	text "REPEL's effect"
 	line "wore off."
-	done
+	prompt ; marcelnote - changed from done for UseAnotherRepel
 
 _RepelUseAnotherText:: ; marcelnote - added prompt to reuse repel
 	text "Use another?"
