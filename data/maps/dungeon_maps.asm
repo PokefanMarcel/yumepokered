@@ -23,7 +23,7 @@ DungeonMaps2: ; marcelnote - modified to fix above comment and account for new m
 	db POKEMON_TOWER_1F, POKEMON_TOWER_7F       ; all POKEMON_TOWER maps
 	db ROCKET_HIDEOUT_B1F, CELADON_GROVE        ; all ROCKET_HIDEOUT maps and CELADON_GROVE
 	db SILPH_CO_2F, SILPH_CO_11F                ; all SILPH_CO maps except ELEVATOR and 1F
-	db SAFARI_ZONE_EAST, SAFARI_ZONE_CENTER     ; all SAFARI_ZONE outdoor maps
+	;db SAFARI_ZONE_EAST, SAFARI_ZONE_CENTER     ; all SAFARI_ZONE outdoor maps ; marcelnote - removed those because it shouldn't feel like a dungeon
 	db SEAFOAM_ISLANDS_1F, SEAFOAM_ISLANDS_B4F  ; all SEAFOAM_ISLANDS maps
 	db POKEMON_MANSION_1F, CINNABAR_VOLCANO_2F  ; all POKEMON_MANSION and CINNABAR_VOLCANO maps
 	db ORANGE_FERRY_DECK, SILPH_FACTORY_2F      ; all ORANGE_FERRY and SILPH_FACTORY maps
