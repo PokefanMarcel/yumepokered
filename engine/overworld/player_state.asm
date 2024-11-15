@@ -235,7 +235,7 @@ PrintSafariZoneSteps::
 	ld a, [wCurMap]
 	cp SAFARI_ZONE_EAST
 	ret c
-	cp CERULEAN_CAVE_2F
+	cp SEAFOAM_ISLANDS_1F ; marcelnote - was CERULEAN_CAVE_2F, changed to account for new map_constants order
 	ret nc
 	hlcoord 0, 0
 	ld b, 3
