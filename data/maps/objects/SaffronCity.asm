@@ -19,7 +19,7 @@ SaffronCity_Object:
 	db $f ; border block
 
 	def_warp_events
-	warp_event  7,  5, COPYCATS_HOUSE_1F, 1
+	warp_event  7,  5, COPYCATS_HOUSE, 1 ; marcelnote - merged Copycat's house floors
 	warp_event 26,  3, FIGHTING_DOJO, 1
 	warp_event 34,  3, SAFFRON_GYM, 1
 	warp_event 13, 11, SAFFRON_PIDGEY_HOUSE, 1

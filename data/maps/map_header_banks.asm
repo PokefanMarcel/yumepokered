@@ -126,7 +126,7 @@ MapHeaderBanks::
 	db BANK(CeladonMart4F5F6F_h) ; marcelnote - merged 4F 5F + new 6F
 	db BANK(CeladonMartRoof_h)
 	db BANK(CeladonMartElevator_h)
-	db BANK(CeladonMansion_h) ; CELADON_MANSION ; marcelnote - merged Celadon Mansion floors, added 4F
+	db BANK(CeladonMansion_h)        ; marcelnote - merged Celadon Mansion floors, added 4F
 	db BANK(CeladonMansionRoof_h)
 	db BANK(CeladonMansionRoofHouse_h)
 	db BANK(GameCorner_h)
@@ -134,21 +134,20 @@ MapHeaderBanks::
 	db BANK(CeladonDiner_h)
 	db BANK(CeladonChiefHouse_h)
 	db BANK(CeladonHotel_h)
-	db BANK(CeladonGroveSouthGate_h) ; $BB ; CELADON_GROVE_SOUTH_GATE ; marcelnote - new location, was Route16Gate2F_h
+	db BANK(CeladonGroveSouthGate_h) ; marcelnote - new location, was Route16Gate2F_h
 	db BANK(CeladonGym_h)
 	db BANK(RocketHideoutB1F_h)
 	db BANK(RocketHideoutB2F_h)
 	db BANK(RocketHideoutB3F_h)
 	db BANK(RocketHideoutB4F_h)
 	db BANK(RocketHideoutElevator_h)
-	db BANK(CeladonGrove_h) ; $B9 ; CELADON_GROVE ; marcelnote - new location, was Route15Gate2F_h
-	db BANK(Route15Gate_h) ; marcelnote - merged Route15Gate floors
-	db BANK(Route16Gate_h) ; marcelnote - merged Route16Gate floors
+	db BANK(CeladonGrove_h)          ; marcelnote - new location
+	db BANK(Route15Gate_h)           ; marcelnote - merged Route15Gate floors
+	db BANK(Route16Gate_h)           ; marcelnote - merged Route16Gate floors
 	db BANK(Route16FlyHouse_h)
-	db BANK(Route18Gate_h) ; marcelnote - merged Route18Gate floors
+	db BANK(Route18Gate_h)           ; marcelnote - merged Route18Gate floors
 	db BANK(SaffronPokecenterMart_h) ; marcelnote - merged Saffron Pokecenter and Mart
-	db BANK(CopycatsHouse1F_h)
-	db BANK(CopycatsHouse2F_h)
+	db BANK(CopycatsHouse_h)         ; marcelnote - merged Copycat's house floors
 	db BANK(FightingDojo_h)
 	db BANK(SaffronPidgeyHouse_h)
 	db BANK(MrPsychicsHouse_h)

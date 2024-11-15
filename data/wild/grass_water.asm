@@ -146,8 +146,7 @@ WildDataPointers:
 	dw NothingWildMons                 ; ROUTE_16_FLY_HOUSE
 	dw NothingWildMons                 ; ROUTE_18_GATE
 	dw NothingWildMons                 ; SAFFRON_POKECENTER_MART ; marcelnote - merged Saffron Pokecenter and Mart
-	dw NothingWildMons                 ; COPYCATS_HOUSE_1F
-	dw NothingWildMons                 ; COPYCATS_HOUSE_2F
+	dw NothingWildMons                 ; COPYCATS_HOUSE ; marcelnote - merged Copycat's house floors
 	dw NothingWildMons                 ; FIGHTING_DOJO
 	dw NothingWildMons                 ; SAFFRON_PIDGEY_HOUSE
 	dw NothingWildMons                 ; MR_PSYCHICS_HOUSE

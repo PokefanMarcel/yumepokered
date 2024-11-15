@@ -147,8 +147,7 @@ MapHeaderPointers::
 	dw Route16FlyHouse_h
 	dw Route18Gate_h ; marcelnote - merged Route18Gate floors
 	dw SaffronPokecenterMart_h ; marcelnote - merged Saffron Pokecenter and Mart
-	dw CopycatsHouse1F_h
-	dw CopycatsHouse2F_h
+	dw CopycatsHouse_h         ; marcelnote - merged Copycat's house floors
 	dw FightingDojo_h
 	dw SaffronPidgeyHouse_h
 	dw MrPsychicsHouse_h

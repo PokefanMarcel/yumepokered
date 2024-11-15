@@ -784,8 +784,6 @@ HallOfFame_Blocks: INCBIN "maps/HallOfFame.blk"
 
 SECTION "Maps 15", ROMX
 
-CopycatsHouse2F_Blocks: INCBIN "maps/CopycatsHouse2F.blk"
-
 PewterMuseum_Blocks: INCBIN "maps/PewterMuseum.blk" ; marcelnote - merged Pewter Museum floors
 
 ViridianPokecenterMart_Blocks:  ; marcelnote - merged Viridian Pokecenter and Mart
@@ -844,10 +842,6 @@ INCLUDE "data/maps/headers/VermilionGym.asm"
 INCLUDE "scripts/VermilionGym.asm"
 INCLUDE "data/maps/objects/VermilionGym.asm"
 VermilionGym_Blocks: INCBIN "maps/VermilionGym.blk"
-
-INCLUDE "data/maps/headers/CopycatsHouse2F.asm"
-INCLUDE "scripts/CopycatsHouse2F.asm"
-INCLUDE "data/maps/objects/CopycatsHouse2F.asm"
 
 INCLUDE "data/maps/headers/FightingDojo.asm"
 INCLUDE "scripts/FightingDojo.asm"
@@ -1022,7 +1016,7 @@ SilphCo11F_Blocks: INCBIN "maps/SilphCo11F.blk"
 
 SECTION "Maps 19", ROMX
 
-CopycatsHouse1F_Blocks: INCBIN "maps/CopycatsHouse1F.blk"
+CopycatsHouse_Blocks: INCBIN "maps/CopycatsHouse.blk"
 
 FuchsiaBillsGrandpasHouse_Blocks: INCBIN "maps/FuchsiaBillsGrandpasHouse.blk"
 
@@ -1110,9 +1104,9 @@ INCLUDE "data/maps/headers/CinnabarPokecenterMart.asm" ; marcelnote - merged Cin
 INCLUDE "scripts/CinnabarPokecenterMart.asm"
 INCLUDE "data/maps/objects/CinnabarPokecenterMart.asm"
 
-INCLUDE "data/maps/headers/CopycatsHouse1F.asm"
-INCLUDE "scripts/CopycatsHouse1F.asm"
-INCLUDE "data/maps/objects/CopycatsHouse1F.asm"
+INCLUDE "data/maps/headers/CopycatsHouse.asm"
+INCLUDE "scripts/CopycatsHouse.asm"
+INCLUDE "data/maps/objects/CopycatsHouse.asm"
 
 INCLUDE "data/maps/headers/ChampionsRoom.asm"
 INCLUDE "scripts/ChampionsRoom.asm"

@@ -223,8 +223,7 @@ INCLUDE "text/CinnabarPokecenterMart.asm" ; marcelnote - merged Cinnabar Pokecen
 INCLUDE "text/CinnabarVolcano1FB1F.asm" ; marcelnote - new location
 INCLUDE "text/CinnabarVolcano2F.asm" ; marcelnote - new location
 INCLUDE "text/IndigoPlateauLobby.asm"
-INCLUDE "text/CopycatsHouse1F.asm"
-INCLUDE "text/CopycatsHouse2F.asm"
+INCLUDE "text/CopycatsHouse.asm" ; marcelnote - merged Copycat's house floors
 INCLUDE "text/FightingDojo.asm"
 INCLUDE "text/SaffronGym.asm"
 INCLUDE "text/SaffronPidgeyHouse.asm"

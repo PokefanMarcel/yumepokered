@@ -149,8 +149,7 @@ MapHSPointers:
 	dw NoHS                        ; ROUTE_16_FLY_HOUSE
 	dw NoHS                        ; ROUTE_18_GATE
 	dw NoHS                        ; SAFFRON_POKECENTER_MART ; marcelnote - merged Saffron Pokecenter and Mart
-	dw NoHS                        ; COPYCATS_HOUSE_1F
-	dw NoHS                        ; COPYCATS_HOUSE_2F
+	dw NoHS                        ; COPYCATS_HOUSE ; marcelnote - merged Copycat's house floors
 	dw FightingDojoHS              ; FIGHTING_DOJO
 	dw NoHS                        ; SAFFRON_PIDGEY_HOUSE
 	dw NoHS                        ; MR_PSYCHICS_HOUSE
