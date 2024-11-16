@@ -268,7 +268,11 @@ _ContText::
 	pop de
 	ld a, " "
 	ldcoord_a 18, 16
+	jr _ContTextNoPause.nodelay
 _ContTextNoPause::
+	ld c, 30			; joenote - added a frame delay when just doing auto-continue
+	call DelayFrames
+.nodelay
 	push de
 	call ScrollTextUpOneLine
 	call ScrollTextUpOneLine

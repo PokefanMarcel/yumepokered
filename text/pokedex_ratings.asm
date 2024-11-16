@@ -113,5 +113,5 @@ _DexRatingText_Own140To149::
 _DexRatingText_Own150To151::
 	text "Your #DEX is"
 	line "entirely complete!"
-	cont "Congratulations!"
+	auto "Congratulations!" ; marcelnote - use new command to auto-scroll (from shinpokered)
 	done

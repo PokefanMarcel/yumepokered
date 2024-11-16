@@ -3,6 +3,7 @@ DEF next   EQUS "db \"<NEXT>\","  ; Move a line down.
 DEF line   EQUS "db \"<LINE>\","  ; Start writing at the bottom line.
 DEF para   EQUS "db \"<PARA>\","  ; Start a new paragraph.
 DEF cont   EQUS "db \"<CONT>\","  ; Scroll to the next line.
+DEF auto   EQUS "db \"<SCROLL>\","  ; Auto-scroll to the next line. ; marcelnote - new, from shinpokered
 DEF done   EQUS "db \"<DONE>\""   ; End a text box.
 DEF prompt EQUS "db \"<PROMPT>\"" ; Prompt the player to end a text box (initiating some other event).
 
