@@ -70,7 +70,7 @@ HiddenObjectMaps:
 	db FIGHTING_DOJO
 	db ROUTE_10
 	db INDIGO_PLATEAU_LOBBY
-	db CINNABAR_LAB_FOSSIL_ROOM
+	db CINNABAR_LAB ; marcelnote - merged Cinnabar Lab maps
 	db BIKE_SHOP
 	db ROUTE_11
 	db ROUTE_12
@@ -168,7 +168,7 @@ HiddenObjectPointers:
 	dw FightingDojoHiddenObjects
 	dw Route10HiddenObjects
 	dw IndigoPlateauLobbyHiddenObjects
-	dw CinnabarLab4HiddenObjects
+	dw CinnabarLabHiddenObjects ; marcelnote - merged Cinnabar Lab maps
 	dw BikeShopHiddenObjects
 	dw Route11HiddenObjects
 	dw Route12HiddenObjects
@@ -634,9 +634,9 @@ IndigoPlateauLobbyHiddenObjects:
 	hidden_object 15,  7, SPRITE_FACING_UP, OpenPokemonCenterPC
 	db -1 ; end
 
-CinnabarLab4HiddenObjects:
-	hidden_object  0,  4, SPRITE_FACING_UP, OpenPokemonCenterPC
-	hidden_object  2,  4, SPRITE_FACING_UP, OpenPokemonCenterPC
+CinnabarLabHiddenObjects: ; marcelnote - merged Cinnabar Lab maps
+	hidden_object 52,  4, SPRITE_FACING_UP, OpenPokemonCenterPC
+	hidden_object 54,  4, SPRITE_FACING_UP, OpenPokemonCenterPC
 	db -1 ; end
 
 BikeShopHiddenObjects:

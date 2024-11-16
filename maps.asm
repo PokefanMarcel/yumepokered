@@ -1085,21 +1085,6 @@ INCLUDE "scripts/CinnabarLab.asm"
 INCLUDE "data/maps/objects/CinnabarLab.asm"
 CinnabarLab_Blocks: INCBIN "maps/CinnabarLab.blk"
 
-INCLUDE "data/maps/headers/CinnabarLabTradeRoom.asm"
-INCLUDE "scripts/CinnabarLabTradeRoom.asm"
-INCLUDE "data/maps/objects/CinnabarLabTradeRoom.asm"
-CinnabarLabTradeRoom_Blocks: INCBIN "maps/CinnabarLabTradeRoom.blk"
-
-INCLUDE "data/maps/headers/CinnabarLabMetronomeRoom.asm"
-INCLUDE "scripts/CinnabarLabMetronomeRoom.asm"
-INCLUDE "data/maps/objects/CinnabarLabMetronomeRoom.asm"
-CinnabarLabMetronomeRoom_Blocks: INCBIN "maps/CinnabarLabMetronomeRoom.blk"
-
-INCLUDE "data/maps/headers/CinnabarLabFossilRoom.asm"
-INCLUDE "scripts/CinnabarLabFossilRoom.asm"
-INCLUDE "data/maps/objects/CinnabarLabFossilRoom.asm"
-CinnabarLabFossilRoom_Blocks: INCBIN "maps/CinnabarLabFossilRoom.blk"
-
 INCLUDE "data/maps/headers/CinnabarPokecenterMart.asm" ; marcelnote - merged Cinnabar Pokecenter and Mart
 INCLUDE "scripts/CinnabarPokecenterMart.asm"
 INCLUDE "data/maps/objects/CinnabarPokecenterMart.asm"

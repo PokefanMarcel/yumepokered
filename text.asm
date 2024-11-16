@@ -215,10 +215,7 @@ INCLUDE "text/FuchsiaMeetingRoom.asm"
 INCLUDE "text/FuchsiaSuperRodHouse.asm" ; marcelnote - from Good to Super Rod
 INCLUDE "text/PokemonMansion1F.asm"
 INCLUDE "text/CinnabarGym.asm"
-INCLUDE "text/CinnabarLab.asm"
-INCLUDE "text/CinnabarLabTradeRoom.asm"
-INCLUDE "text/CinnabarLabMetronomeRoom.asm"
-INCLUDE "text/CinnabarLabFossilRoom.asm"
+INCLUDE "text/CinnabarLab.asm" ; marcelnote - merged Cinnabar Lab maps
 INCLUDE "text/CinnabarPokecenterMart.asm" ; marcelnote - merged Cinnabar Pokecenter and Mart
 INCLUDE "text/CinnabarVolcano1FB1F.asm" ; marcelnote - new location
 INCLUDE "text/CinnabarVolcano2F.asm" ; marcelnote - new location

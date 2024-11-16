@@ -191,10 +191,7 @@ MapHSPointers:
 	dw SeafoamIslandsB3FHS         ; SEAFOAM_ISLANDS_B3F
 	dw SeafoamIslandsB4FHS         ; SEAFOAM_ISLANDS_B4F
 	dw NoHS                        ; CINNABAR_POKECENTER_MART
-	dw NoHS                        ; CINNABAR_LAB
-	dw NoHS                        ; CINNABAR_LAB_TRADE_ROOM
-	dw NoHS                        ; CINNABAR_LAB_METRONOME_ROOM
-	dw NoHS                        ; CINNABAR_LAB_FOSSIL_ROOM
+	dw NoHS                        ; CINNABAR_LAB         ; marcelnote - merged Cinnabar Lab maps
 	dw CinnabarGymHS               ; CINNABAR_GYM         ; marcelnote - Blaine rematch
 	dw PokemonMansion1FHS          ; POKEMON_MANSION_1F
 	dw PokemonMansion2FHS          ; POKEMON_MANSION_2F

@@ -189,10 +189,7 @@ MapHeaderPointers::
 	dw SeafoamIslandsB3F_h
 	dw SeafoamIslandsB4F_h
 	dw CinnabarPokecenterMart_h  ; marcelnote - merged Cinnabar Pokecenter and Mart
-	dw CinnabarLab_h
-	dw CinnabarLabTradeRoom_h
-	dw CinnabarLabMetronomeRoom_h
-	dw CinnabarLabFossilRoom_h
+	dw CinnabarLab_h             ; marcelnote - merged Cinnabar Lab maps
 	dw CinnabarGym_h
 	dw PokemonMansion1F_h
 	dw PokemonMansion2F_h

@@ -188,10 +188,7 @@ WildDataPointers:
 	dw SeafoamIslandsB3FWildMons       ; SEAFOAM_ISLANDS_B3F
 	dw SeafoamIslandsB4FWildMons       ; SEAFOAM_ISLANDS_B4F
 	dw NothingWildMons                 ; CINNABAR_POKECENTER_MART
-	dw NothingWildMons                 ; CINNABAR_LAB
-	dw NothingWildMons                 ; CINNABAR_LAB_TRADE_ROOM
-	dw NothingWildMons                 ; CINNABAR_LAB_METRONOME_ROOM
-	dw NothingWildMons                 ; CINNABAR_LAB_FOSSIL_ROOM
+	dw NothingWildMons                 ; CINNABAR_LAB ; marcelnote - merged Cinnabar Lab maps
 	dw NothingWildMons                 ; CINNABAR_GYM
 	dw PokemonMansion1FWildMons        ; POKEMON_MANSION_1F
 	dw PokemonMansion2FWildMons        ; POKEMON_MANSION_2F
