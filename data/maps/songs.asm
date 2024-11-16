@@ -96,13 +96,12 @@ MapSongBanks::
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne)                   ; SS_ANNE_1F
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne)                   ; SS_ANNE_2F
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne)                   ; SS_ANNE_3F
-	db MUSIC_SS_ANNE, BANK(Music_SSAnne)                   ; SS_ANNE_B1F
+	db MUSIC_SS_ANNE, BANK(Music_SSAnne)                   ; SS_ANNE_B1F ; marcelnote - merged SS Anne B1F and B1FRooms
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne)                   ; SS_ANNE_BOW
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne)                   ; SS_ANNE_KITCHEN
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne)                   ; SS_ANNE_CAPTAINS_ROOM
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne)                   ; SS_ANNE_1F_ROOMS
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne)                   ; SS_ANNE_2F_ROOMS
-	db MUSIC_SS_ANNE, BANK(Music_SSAnne)                   ; SS_ANNE_B1F_ROOMS
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2)                ; DIGLETTS_CAVE
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2)                ; DIGLETTS_CAVE_ROUTE_11
 	db MUSIC_VERMILION, BANK(Music_Vermilion)              ; ROUTE_11_GATE            ; marcelnote - merged ROUTE_11_GATE floors

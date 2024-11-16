@@ -33,7 +33,7 @@ HiddenObjectMaps:
 	db ROUTE_25
 	db ROUTE_9
 	db SS_ANNE_KITCHEN
-	db SS_ANNE_B1F_ROOMS
+	db SS_ANNE_B1F ; marcelnote - merged SS Anne B1F and B1FRooms
 	db ROCKET_HIDEOUT_B1F
 	db ROCKET_HIDEOUT_B3F
 	db ROCKET_HIDEOUT_B4F
@@ -131,7 +131,7 @@ HiddenObjectPointers:
 	dw Route25HiddenObjects
 	dw Route9HiddenObjects
 	dw SSAnneKitchenHiddenObjects
-	dw SSAnneB1FRoomsHiddenObjects
+	dw SSAnneB1FHiddenObjects ; marcelnote - merged SS Anne B1F and B1FRooms
 	dw RocketHideoutB1FHiddenObjects
 	dw RocketHideoutB3FHiddenObjects
 	dw RocketHideoutB4FHiddenObjects
@@ -451,8 +451,8 @@ SSAnneKitchenHiddenObjects:
 	hidden_object 13,  9, GREAT_BALL, HiddenItems
 	db -1 ; end
 
-SSAnneB1FRoomsHiddenObjects:
-	hidden_object  3,  1, HYPER_POTION, HiddenItems
+SSAnneB1FHiddenObjects:
+	hidden_object 37,  1, HYPER_POTION, HiddenItems ; marcelnote - merged SS Anne B1F and B1FRooms
 	db -1 ; end
 
 Route10HiddenObjects:

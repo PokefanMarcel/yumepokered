@@ -116,13 +116,12 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const SS_ANNE_1F,                    20,  9 ; merge?
 	map_const SS_ANNE_2F,                    20,  9 ; merge?
 	map_const SS_ANNE_3F,                    10,  3 ; merge?
-	map_const SS_ANNE_B1F,                   15,  4 ; merge?
-	map_const SS_ANNE_BOW,                   10,  7 ; merge?
+	map_const SS_ANNE_B1F,                   39,  3 ; marcelnote - merged SS Anne B1F and B1FRooms
+	map_const SS_ANNE_BOW,                   10,  7
 	map_const SS_ANNE_KITCHEN,                7,  8 ; merge?
 	map_const SS_ANNE_CAPTAINS_ROOM,          3,  4 ; merge?
 	map_const SS_ANNE_1F_ROOMS,              12,  8 ; merge?
 	map_const SS_ANNE_2F_ROOMS,              12,  8 ; merge?
-	map_const SS_ANNE_B1F_ROOMS,             12,  8 ; merge?
 	map_const DIGLETTS_CAVE,                 20, 18
 	map_const DIGLETTS_CAVE_ROUTE_11,         4,  4
 	map_const ROUTE_11_GATE,                  4, 11 ; marcelnote - merged Route11Gate floors
@@ -249,7 +248,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const COLOSSEUM,                      5,  4
 DEF NUM_MAPS EQU const_value
 
-; marcelnote - current NUM_MAPS = 249 - 23 - 2 (last - start - extra lines) = 224
+; marcelnote - current NUM_MAPS = 248 - 23 - 2 (last - start - extra lines) = 223
 
 ; Indoor maps, such as houses, use this as the Map ID in their exit warps
 ; This map ID takes the player back to the last outdoor map they were on, stored in wLastMap

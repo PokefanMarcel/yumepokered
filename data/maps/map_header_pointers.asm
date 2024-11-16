@@ -94,13 +94,12 @@ MapHeaderPointers::
 	dw SSAnne1F_h
 	dw SSAnne2F_h
 	dw SSAnne3F_h
-	dw SSAnneB1F_h
+	dw SSAnneB1F_h ; marcelnote - merged SS Anne B1F and B1FRooms
 	dw SSAnneBow_h
 	dw SSAnneKitchen_h
 	dw SSAnneCaptainsRoom_h
 	dw SSAnne1FRooms_h
 	dw SSAnne2FRooms_h
-	dw SSAnneB1FRooms_h
 	dw DiglettsCave_h
 	dw DiglettsCaveRoute11_h
 	dw Route11Gate_h ; marcelnote - merged Route11Gate floors

@@ -94,13 +94,12 @@ MapHeaderBanks::
 	db BANK(SSAnne1F_h)
 	db BANK(SSAnne2F_h)
 	db BANK(SSAnne3F_h)
-	db BANK(SSAnneB1F_h)
+	db BANK(SSAnneB1F_h) ; marcelnote - merged SS Anne B1F and B1FRooms
 	db BANK(SSAnneBow_h)
 	db BANK(SSAnneKitchen_h)
 	db BANK(SSAnneCaptainsRoom_h)
 	db BANK(SSAnne1FRooms_h)
 	db BANK(SSAnne2FRooms_h)
-	db BANK(SSAnneB1FRooms_h)
 	db BANK(DiglettsCave_h)
 	db BANK(DiglettsCaveRoute11_h)
 	db BANK(Route11Gate_h) ; marcelnote - merged Route11Gate floors

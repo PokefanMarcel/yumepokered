@@ -1985,7 +1985,7 @@ wVermilionDockCurScript:: db ; marcelnote - added for Ferry entrance, took 1 fro
 wSSAnne2FCurScript:: db
 wSSAnne1FRoomsCurScript:: db
 wSSAnne2FRoomsCurScript:: db
-wSSAnneB1FRoomsCurScript:: db
+wSSAnneB1FCurScript:: db ; marcelnote - merged SS Anne B1F and B1FRooms
 wSSAnneBowCurScript:: db
 wCeladonGymCurScript:: db
 wRockTunnel1FCurScript:: db

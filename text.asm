@@ -10,12 +10,12 @@ INCLUDE "text/MtMoonSquare.asm" ; marcelnote - new location
 INCLUDE "text/SSAnne1F.asm"
 INCLUDE "text/SSAnne2F.asm"
 INCLUDE "text/SSAnne3F.asm"
+INCLUDE "text/SSAnneB1F.asm" ; marcelnote - merged SS Anne B1F and B1FRooms
 INCLUDE "text/SSAnneBow.asm"
 INCLUDE "text/SSAnneKitchen.asm"
 INCLUDE "text/SSAnneCaptainsRoom.asm"
 INCLUDE "text/SSAnne1FRooms.asm"
 INCLUDE "text/SSAnne2FRooms.asm"
-INCLUDE "text/SSAnneB1FRooms.asm"
 INCLUDE "text/VictoryRoad3F.asm"
 INCLUDE "text/RocketHideoutB1F.asm"
 INCLUDE "text/RocketHideoutB2F.asm"
