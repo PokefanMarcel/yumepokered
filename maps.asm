@@ -905,8 +905,7 @@ UndergroundPathWestEast_Blocks: INCBIN "maps/UndergroundPathWestEast.blk"
 
 	INCBIN "maps/UnusedDiglettsCaveCopy.blk"
 
-SSAnne2FRooms_Blocks:
-SSAnneB1FRooms_Blocks: INCBIN "maps/SSAnneB1FRooms.blk" ; marcelnote - added bunk beds
+SSAnne2FRooms_Blocks: INCBIN "maps/SSAnne2FRooms.blk" ; marcelnote - added bunk beds
 
 INCLUDE "data/maps/headers/PokemonTower1F.asm"
 INCLUDE "scripts/PokemonTower1F.asm"
@@ -990,10 +989,6 @@ SSAnne1FRooms_Blocks: INCBIN "maps/SSAnne1FRooms.blk"
 INCLUDE "data/maps/headers/SSAnne2FRooms.asm"
 INCLUDE "scripts/SSAnne2FRooms.asm"
 INCLUDE "data/maps/objects/SSAnne2FRooms.asm"
-
-INCLUDE "data/maps/headers/SSAnneB1FRooms.asm"
-INCLUDE "scripts/SSAnneB1FRooms.asm"
-INCLUDE "data/maps/objects/SSAnneB1FRooms.asm"
 
 INCLUDE "data/maps/headers/UndergroundPathNorthSouth.asm"
 INCLUDE "scripts/UndergroundPathNorthSouth.asm"

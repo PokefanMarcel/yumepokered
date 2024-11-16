@@ -96,13 +96,12 @@ MapHSPointers:
 	dw NoHS                        ; SS_ANNE_1F
 	dw SSAnne2FHS                  ; SS_ANNE_2F
 	dw NoHS                        ; SS_ANNE_3F
-	dw NoHS                        ; SS_ANNE_B1F
+	dw SSAnneB1FHS                 ; SS_ANNE_B1F ; marcelnote - merged SS Anne B1F and B1FRooms
 	dw NoHS                        ; SS_ANNE_BOW
 	dw NoHS                        ; SS_ANNE_KITCHEN
 	dw NoHS                        ; SS_ANNE_CAPTAINS_ROOM
 	dw SSAnne1FRoomsHS             ; SS_ANNE_1F_ROOMS
 	dw SSAnne2FRoomsHS             ; SS_ANNE_2F_ROOMS
-	dw SSAnneB1FRoomsHS            ; SS_ANNE_B1F_ROOMS
 	dw NoHS                        ; DIGLETTS_CAVE
 	dw NoHS                        ; DIGLETTS_CAVE_ROUTE_11
 	dw NoHS                        ; ROUTE_11_GATE
@@ -390,10 +389,10 @@ SSAnne1FRoomsHS:
 SSAnne2FRoomsHS:
 	db SS_ANNE_2F_ROOMS, SSANNE2FROOMS_MAX_ETHER,  SHOW
 	db SS_ANNE_2F_ROOMS, SSANNE2FROOMS_RARE_CANDY, SHOW
-SSAnneB1FRoomsHS:
-	db SS_ANNE_B1F_ROOMS, SSANNEB1FROOMS_ETHER,      SHOW
-	db SS_ANNE_B1F_ROOMS, SSANNEB1FROOMS_TM_REST,    SHOW
-	db SS_ANNE_B1F_ROOMS, SSANNEB1FROOMS_MAX_POTION, SHOW
+SSAnneB1FHS: ; marcelnote - merged SS Anne B1F and B1FRooms
+	db SS_ANNE_B1F, SSANNEB1FROOMS_ETHER,      SHOW
+	db SS_ANNE_B1F, SSANNEB1FROOMS_TM_REST,    SHOW
+	db SS_ANNE_B1F, SSANNEB1FROOMS_MAX_POTION, SHOW
 VictoryRoad3FHS:
 	db VICTORY_ROAD_3F, VICTORYROAD3F_MAX_REVIVE,   SHOW
 	db VICTORY_ROAD_3F, VICTORYROAD3F_TM_EXPLOSION, SHOW

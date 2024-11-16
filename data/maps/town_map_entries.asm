@@ -78,7 +78,7 @@ InternalMapEntries:
 	internal_map UNDERGROUND_PATH_ROUTE_8,      12,  5, Route8Name
 	internal_map UNDERGROUND_PATH_WEST_EAST,    10,  5, UndergroundPathName
 	internal_map VERMILION_DOCK,                10,  9, VermilionCityName
-	internal_map SS_ANNE_B1F_ROOMS,              9, 10, SSAnneName
+	internal_map SS_ANNE_2F_ROOMS,               9, 10, SSAnneName
 	internal_map DIGLETTS_CAVE_ROUTE_11,        11,  8, DiglettsCaveName
 	internal_map ROUTE_11_GATE,                 13,  9, Route11Name ; marcelnote - merged ROUTE_11_GATE floors
 	internal_map ROCK_TUNNEL_POKECENTER,        14,  2, Route10Name

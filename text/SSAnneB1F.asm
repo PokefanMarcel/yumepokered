@@ -1,3 +1,4 @@
+; marcelnote - merged SS Anne B1F and B1FRooms
 _SSAnneB1FRoomsMachokeText::
 	text "MACHOKE: Gwoh!"
 	line "Goggoh!@"

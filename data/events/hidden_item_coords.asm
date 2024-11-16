@@ -11,7 +11,7 @@ HiddenItemCoords:
 	hidden_item ROUTE_25,                      38,   3
 	hidden_item ROUTE_9,                       14,   7
 	hidden_item SS_ANNE_KITCHEN,               13,   9
-	hidden_item SS_ANNE_B1F_ROOMS,              3,   1
+	hidden_item SS_ANNE_B1F,                   37,   1 ; marcelnote - merged SS Anne B1F and B1FRooms
 	hidden_item ROUTE_10,                       9,  17
 	hidden_item ROUTE_10,                      16,  53
 	hidden_item ROCKET_HIDEOUT_B1F,            21,  15

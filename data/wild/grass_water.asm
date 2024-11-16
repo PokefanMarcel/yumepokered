@@ -93,13 +93,12 @@ WildDataPointers:
 	dw NothingWildMons                 ; SS_ANNE_1F
 	dw NothingWildMons                 ; SS_ANNE_2F
 	dw NothingWildMons                 ; SS_ANNE_3F
-	dw NothingWildMons                 ; SS_ANNE_B1F
+	dw NothingWildMons                 ; SS_ANNE_B1F ; marcelnote - merged SS Anne B1F and B1FRooms
 	dw NothingWildMons                 ; SS_ANNE_BOW
 	dw NothingWildMons                 ; SS_ANNE_KITCHEN
 	dw NothingWildMons                 ; SS_ANNE_CAPTAINS_ROOM
 	dw NothingWildMons                 ; SS_ANNE_1F_ROOMS
 	dw NothingWildMons                 ; SS_ANNE_2F_ROOMS
-	dw NothingWildMons                 ; SS_ANNE_B1F_ROOMS
 	dw DiglettsCaveWildMons            ; DIGLETTS_CAVE
 	dw NothingWildMons                 ; DIGLETTS_CAVE_ROUTE_11
 	dw NothingWildMons                 ; ROUTE_11_GATE
