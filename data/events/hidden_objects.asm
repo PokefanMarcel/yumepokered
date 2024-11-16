@@ -51,7 +51,9 @@ HiddenObjectMaps:
 	db SEAFOAM_ISLANDS_B2F
 	db SEAFOAM_ISLANDS_B4F
 	db POKEMON_MANSION_1F
+	db POKEMON_MANSION_2F
 	db POKEMON_MANSION_3F
+	db POKEMON_MANSION_B1F
 	db ROUTE_23
 	db VICTORY_ROAD_2F
 	db BILLS_HOUSE
@@ -74,8 +76,6 @@ HiddenObjectMaps:
 	db BIKE_SHOP
 	db ROUTE_11
 	db ROUTE_12
-	db POKEMON_MANSION_2F
-	db POKEMON_MANSION_B1F
 	db SILPH_CO_11F
 	db ROUTE_17
 	db UNDERGROUND_PATH_NORTH_SOUTH
@@ -148,8 +148,10 @@ HiddenObjectPointers:
 	dw PowerPlantHiddenObjects
 	dw SeafoamIslands3HiddenObjects
 	dw SeafoamIslands5HiddenObjects
-	dw Mansion1HiddenObjects
-	dw Mansion3HiddenObjects
+	dw PokemonMansion1FHiddenObjects
+	dw PokemonMansion2FHiddenObjects
+	dw PokemonMansion3FHiddenObjects
+	dw PokemonMansionB1FHiddenObjects
 	dw Route23HiddenObjects
 	dw VictoryRoad2HiddenObjects
 	dw BillsHouseHiddenObjects
@@ -172,8 +174,6 @@ HiddenObjectPointers:
 	dw BikeShopHiddenObjects
 	dw Route11HiddenObjects
 	dw Route12HiddenObjects
-	dw Mansion2HiddenObjects
-	dw Mansion4HiddenObjects
 	dw SilphCo11FHiddenObjects
 	dw Route17HiddenObjects
 	dw UndergroundPathNsHiddenObjects
@@ -527,24 +527,24 @@ SeafoamIslands5HiddenObjects:
 	hidden_object 25, 17, ULTRA_BALL, HiddenItems
 	db -1 ; end
 
-Mansion1HiddenObjects:
+PokemonMansion1FHiddenObjects:
 	hidden_object  8, 16, MOON_STONE, HiddenItems
-	hidden_object  2,  5, SPRITE_FACING_UP, Mansion1Script_Switches
+	hidden_object  2,  5, SPRITE_FACING_UP, PokemonMansion1FScript_Switches
 	db -1 ; end
 
-Mansion2HiddenObjects:
-	hidden_object  2, 11, SPRITE_FACING_UP, Mansion2Script_Switches
+PokemonMansion2FHiddenObjects:
+	hidden_object  2, 11, SPRITE_FACING_UP, PokemonMansion2FScript_Switches
 	db -1 ; end
 
-Mansion3HiddenObjects:
+PokemonMansion3FHiddenObjects:
 	hidden_object  1,  9, MAX_REVIVE, HiddenItems
-	hidden_object 10,  5, SPRITE_FACING_UP, Mansion3Script_Switches
+	hidden_object 10,  5, SPRITE_FACING_UP, PokemonMansion3FScript_Switches
 	db -1 ; end
 
-Mansion4HiddenObjects:
+PokemonMansionB1FHiddenObjects:
 	hidden_object  1,  9, RARE_CANDY, HiddenItems
-	hidden_object 20,  3, SPRITE_FACING_UP, Mansion4Script_Switches
-	hidden_object 18, 25, SPRITE_FACING_UP, Mansion4Script_Switches
+	hidden_object 20,  3, SPRITE_FACING_UP, PokemonMansionB1FScript_Switches
+	hidden_object 18, 25, SPRITE_FACING_UP, PokemonMansionB1FScript_Switches
 	db -1 ; end
 
 Route23HiddenObjects:

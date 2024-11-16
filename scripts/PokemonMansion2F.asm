@@ -41,7 +41,7 @@ Mansion2ReplaceBlock:
 	ld [wNewTileBlockID], a
 	predef_jump ReplaceTileBlock
 
-Mansion2Script_Switches::
+PokemonMansion2FScript_Switches::
 	ld a, [wSpritePlayerStateData1FacingDirection]
 	cp SPRITE_FACING_UP
 	ret nz
