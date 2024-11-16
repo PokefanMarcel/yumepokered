@@ -439,6 +439,8 @@ BeautyData:
 	db 39, POLIWHIRL, WIGGLYTUFF, STARMIE, 0
 ; Route 19
 	db 31, STARYU, SEEL, STARMIE, 0
+; Orange Ferry Outside
+	db 39, CLEFAIRY, WEEPINBELL, SEAKING, VILEPLUME, 0
 
 PsychicData:
 ; Saffron Gym
