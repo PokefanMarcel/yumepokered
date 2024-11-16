@@ -45,7 +45,7 @@ Mansion1ReplaceBlock:
 	predef ReplaceTileBlock
 	ret
 
-Mansion1Script_Switches::
+PokemonMansion1FScript_Switches::
 	ld a, [wSpritePlayerStateData1FacingDirection]
 	cp SPRITE_FACING_UP
 	ret nz

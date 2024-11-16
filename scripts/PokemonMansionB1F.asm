@@ -43,7 +43,7 @@ MansionB1FCheckReplaceSwitchDoorBlocks:
 	call Mansion2ReplaceBlock
 	ret
 
-Mansion4Script_Switches::
+PokemonMansionB1FScript_Switches::
 	ld a, [wSpritePlayerStateData1FacingDirection]
 	cp SPRITE_FACING_UP
 	ret nz

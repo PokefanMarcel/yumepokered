@@ -73,7 +73,7 @@ PokemonMansion3FDefaultScript:
 	set BIT_DUNGEON_WARP, [hl]
 	ret
 
-Mansion3Script_Switches::
+PokemonMansion3FScript_Switches::
 	ld a, [wSpritePlayerStateData1FacingDirection]
 	cp SPRITE_FACING_UP
 	ret nz
