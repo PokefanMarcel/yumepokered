@@ -44,11 +44,13 @@ HiddenObjectMaps:
 	db SAFARI_ZONE_WEST
 	db SILPH_CO_5F
 	db SILPH_CO_9F
+	db SILPH_CO_11F
 	db COPYCATS_HOUSE ; marcelnote - merged Copycat's house floors
 	db CERULEAN_CAVE_1F
 	db CERULEAN_CAVE_B1F
 	db POWER_PLANT
 	db SEAFOAM_ISLANDS_B2F
+	db SEAFOAM_ISLANDS_B3F
 	db SEAFOAM_ISLANDS_B4F
 	db POKEMON_MANSION_1F
 	db POKEMON_MANSION_2F
@@ -76,12 +78,10 @@ HiddenObjectMaps:
 	db BIKE_SHOP
 	db ROUTE_11
 	db ROUTE_12
-	db SILPH_CO_11F
 	db ROUTE_17
 	db UNDERGROUND_PATH_NORTH_SOUTH
 	db UNDERGROUND_PATH_WEST_EAST
 	db CELADON_CITY
-	db SEAFOAM_ISLANDS_B3F
 	db VERMILION_CITY
 	db CERULEAN_CITY
 	db ROUTE_4
@@ -126,34 +126,36 @@ HiddenObjectPointers:
 	dw TradeCenterHiddenObjects
 	dw ColosseumHiddenObjects
 	dw ViridianForestHiddenObjects
-	dw MtMoon3HiddenObjects
+	dw MtMoonB2FHiddenObjects
 	dw IndigoPlateauHiddenObjects
 	dw Route25HiddenObjects
 	dw Route9HiddenObjects
-	dw SSAnne6HiddenObjects
-	dw SSAnne10HiddenObjects
-	dw RocketHideout1HiddenObjects
-	dw RocketHideout3HiddenObjects
-	dw RocketHideout4HiddenObjects
+	dw SSAnneKitchenHiddenObjects
+	dw SSAnneB1FRoomsHiddenObjects
+	dw RocketHideoutB1FHiddenObjects
+	dw RocketHideoutB3FHiddenObjects
+	dw RocketHideoutB4FHiddenObjects
 	dw SaffronPokecenterHiddenObjects
-	dw PokemonTower5HiddenObjects
+	dw PokemonTower5FHiddenObjects
 	dw Route13HiddenObjects
 	dw SafariZoneEntranceHiddenObjects
 	dw SafariZoneWestHiddenObjects
 	dw SilphCo5FHiddenObjects
 	dw SilphCo9FHiddenObjects
+	dw SilphCo11FHiddenObjects
 	dw CopycatsHouseHiddenObjects ; marcelnote - merged Copycat's house floors
-	dw CeruleanCave1HiddenObjects
-	dw CeruleanCave3HiddenObjects
+	dw CeruleanCave1FHiddenObjects
+	dw CeruleanCaveB1FHiddenObjects
 	dw PowerPlantHiddenObjects
-	dw SeafoamIslands3HiddenObjects
-	dw SeafoamIslands5HiddenObjects
+	dw SeafoamIslandsB2FHiddenObjects
+	dw SeafoamIslandsB3FHiddenObjects
+	dw SeafoamIslandsB4FHiddenObjects
 	dw PokemonMansion1FHiddenObjects
 	dw PokemonMansion2FHiddenObjects
 	dw PokemonMansion3FHiddenObjects
 	dw PokemonMansionB1FHiddenObjects
 	dw Route23HiddenObjects
-	dw VictoryRoad2HiddenObjects
+	dw VictoryRoad2FHiddenObjects
 	dw BillsHouseHiddenObjects
 	dw ViridianCityHiddenObjects
 	;dw SafariZoneRestHouse2HiddenObjects ; marcelnote - inaccessible Hidden objects
@@ -165,7 +167,7 @@ HiddenObjectPointers:
 	dw Route16GateHiddenObjects ; marcelnote - new, binoculars now hidden objects
 	dw Route18GateHiddenObjects ; marcelnote - new, binoculars now hidden objects
 	dw Route22GateHiddenObjects ; marcelnote - new, binoculars now hidden objects
-	dw LavenderHouse1HiddenObjects
+	dw MrFujisHouseHiddenObjects
 	dw CeladonMansionRoofHouseHiddenObjects
 	dw FightingDojoHiddenObjects
 	dw Route10HiddenObjects
@@ -174,12 +176,10 @@ HiddenObjectPointers:
 	dw BikeShopHiddenObjects
 	dw Route11HiddenObjects
 	dw Route12HiddenObjects
-	dw SilphCo11FHiddenObjects
 	dw Route17HiddenObjects
 	dw UndergroundPathNsHiddenObjects
 	dw UndergroundPathWeHiddenObjects
 	dw CeladonCityHiddenObjects
-	dw SeafoamIslands4HiddenObjects
 	dw VermilionCityHiddenObjects
 	dw CeruleanCityHiddenObjects
 	dw Route4HiddenObjects
@@ -426,7 +426,7 @@ ViridianForestHiddenObjects:
 	hidden_object 16, 42, ANTIDOTE, HiddenItems
 	db -1 ; end
 
-MtMoon3HiddenObjects:
+MtMoonB2FHiddenObjects:
 	hidden_object 18, 12, MOON_STONE, HiddenItems
 	hidden_object 33,  9, ETHER, HiddenItems
 	db -1 ; end
@@ -445,13 +445,13 @@ Route9HiddenObjects:
 	hidden_object 14,  7, ETHER, HiddenItems
 	db -1 ; end
 
-SSAnne6HiddenObjects:
+SSAnneKitchenHiddenObjects:
 	hidden_object 13,  5, SPRITE_FACING_DOWN, PrintTrashText
 	hidden_object 13,  7, SPRITE_FACING_DOWN, PrintTrashText
 	hidden_object 13,  9, GREAT_BALL, HiddenItems
 	db -1 ; end
 
-SSAnne10HiddenObjects:
+SSAnneB1FRoomsHiddenObjects:
 	hidden_object  3,  1, HYPER_POTION, HiddenItems
 	db -1 ; end
 
@@ -460,15 +460,15 @@ Route10HiddenObjects:
 	hidden_object 16, 53, MAX_ETHER, HiddenItems
 	db -1 ; end
 
-RocketHideout1HiddenObjects:
+RocketHideoutB1FHiddenObjects:
 	hidden_object 21, 15, PP_UP, HiddenItems
 	db -1 ; end
 
-RocketHideout3HiddenObjects:
+RocketHideoutB3FHiddenObjects:
 	hidden_object 27, 17, NUGGET, HiddenItems
 	db -1 ; end
 
-RocketHideout4HiddenObjects:
+RocketHideoutB4FHiddenObjects:
 	hidden_object 25,  1, SUPER_POTION, HiddenItems
 	db -1 ; end
 
@@ -477,7 +477,7 @@ SaffronPokecenterHiddenObjects:
 	hidden_object 13,  3, SPRITE_FACING_UP, OpenPokemonCenterPC
 	db -1 ; end
 
-PokemonTower5HiddenObjects:
+PokemonTower5FHiddenObjects:
 	hidden_object  4, 12, ELIXIR, HiddenItems
 	db -1 ; end
 
@@ -502,15 +502,19 @@ SilphCo9FHiddenObjects:
 	hidden_object  2, 15, MAX_POTION, HiddenItems
 	db -1 ; end
 
+SilphCo11FHiddenObjects:
+	hidden_object 10, 12, SPRITE_FACING_UP, OpenPokemonCenterPC
+	db -1 ; end
+
 CopycatsHouseHiddenObjects: ; marcelnote - merged Copycat's house floors
 	hidden_object 15,  1, NUGGET, HiddenItems
 	db -1 ; end
 
-CeruleanCave1HiddenObjects:
+CeruleanCave1FHiddenObjects:
 	hidden_object 14, 11, RARE_CANDY, HiddenItems
 	db -1 ; end
 
-CeruleanCave3HiddenObjects:
+CeruleanCaveB1FHiddenObjects:
 	hidden_object 27,  3, ULTRA_BALL, HiddenItems
 	db -1 ; end
 
@@ -519,11 +523,15 @@ PowerPlantHiddenObjects:
 	hidden_object 12,  1, PP_UP, HiddenItems
 	db -1 ; end
 
-SeafoamIslands3HiddenObjects:
+SeafoamIslandsB2FHiddenObjects:
 	hidden_object 15, 15, NUGGET, HiddenItems
 	db -1 ; end
 
-SeafoamIslands5HiddenObjects:
+SeafoamIslandsB3FHiddenObjects:
+	hidden_object  9, 16, MAX_ELIXIR, HiddenItems
+	db -1 ; end
+
+SeafoamIslandsB4FHiddenObjects:
 	hidden_object 25, 17, ULTRA_BALL, HiddenItems
 	db -1 ; end
 
@@ -553,7 +561,7 @@ Route23HiddenObjects:
 	hidden_object  8, 90, MAX_ETHER, HiddenItems
 	db -1 ; end
 
-VictoryRoad2HiddenObjects:
+VictoryRoad2FHiddenObjects:
 	hidden_object  5,  2, ULTRA_BALL, HiddenItems
 	hidden_object 26,  7, FULL_RESTORE, HiddenItems
 	db -1 ; end
@@ -611,7 +619,7 @@ Route22GateHiddenObjects: ; marcelnote - new, binoculars now hidden objects
 	hidden_object 28,  2, SPRITE_FACING_UP, Route22GateRightBinoculars
 	db -1 ; end
 
-LavenderHouse1HiddenObjects:
+MrFujisHouseHiddenObjects:
 	hidden_object  0,  1, SPRITE_FACING_DOWN, PrintMagazinesText
 	hidden_object  1,  1, SPRITE_FACING_DOWN, PrintMagazinesText
 	hidden_object  7,  1, SPRITE_FACING_DOWN, PrintMagazinesText
@@ -656,10 +664,6 @@ Route12HiddenObjects:
 	hidden_object  2, 63, HYPER_POTION, HiddenItems
 	db -1 ; end
 
-SilphCo11FHiddenObjects:
-	hidden_object 10, 12, SPRITE_FACING_UP, OpenPokemonCenterPC
-	db -1 ; end
-
 Route17HiddenObjects:
 	hidden_object 15,  14, RARE_CANDY, HiddenItems
 	hidden_object  8,  45, FULL_RESTORE, HiddenItems
@@ -680,10 +684,6 @@ UndergroundPathWeHiddenObjects:
 
 CeladonCityHiddenObjects:
 	hidden_object 48, 15, PP_UP, HiddenItems
-	db -1 ; end
-
-SeafoamIslands4HiddenObjects:
-	hidden_object  9, 16, MAX_ELIXIR, HiddenItems
 	db -1 ; end
 
 VermilionCityHiddenObjects:
