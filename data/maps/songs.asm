@@ -191,10 +191,7 @@ MapSongBanks::
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2)                ; SEAFOAM_ISLANDS_B3F
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2)                ; SEAFOAM_ISLANDS_B4F
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter)            ; CINNABAR_POKECENTER_MART   ; marcelnote - merged Cinnabar Pokecenter and Mart
-	db MUSIC_CINNABAR, BANK(Music_Cinnabar)                ; CINNABAR_LAB
-	db MUSIC_CINNABAR, BANK(Music_Cinnabar)                ; CINNABAR_LAB_TRADE_ROOM
-	db MUSIC_CINNABAR, BANK(Music_Cinnabar)                ; CINNABAR_LAB_METRONOME_ROOM
-	db MUSIC_CINNABAR, BANK(Music_Cinnabar)                ; CINNABAR_LAB_FOSSIL_ROOM
+	db MUSIC_CINNABAR, BANK(Music_Cinnabar)                ; CINNABAR_LAB               ; marcelnote - merged Cinnabar Lab maps
 	db MUSIC_GYM, BANK(Music_Gym)                          ; CINNABAR_GYM
 	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; POKEMON_MANSION_1F
 	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; POKEMON_MANSION_2F

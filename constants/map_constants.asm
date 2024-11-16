@@ -211,10 +211,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const SEAFOAM_ISLANDS_B3F,           15,  9
 	map_const SEAFOAM_ISLANDS_B4F,           15,  9
 	map_const CINNABAR_POKECENTER_MART,      14,  4 ; marcelnote - merged Cinnabar Pokecenter and Mart
-	map_const CINNABAR_LAB,                   9,  4 ; to merge ?
-	map_const CINNABAR_LAB_TRADE_ROOM,        4,  4 ; to merge ?
-	map_const CINNABAR_LAB_METRONOME_ROOM,    4,  4 ; to merge ?
-	map_const CINNABAR_LAB_FOSSIL_ROOM,       4,  4 ; to merge ?
+	map_const CINNABAR_LAB,                  30,  4 ; marcelnote - merged Cinnabar Lab maps
 	map_const CINNABAR_GYM,                  10,  9
 	map_const POKEMON_MANSION_1F,            15, 14
 	map_const POKEMON_MANSION_2F,            15, 14
@@ -252,7 +249,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const COLOSSEUM,                      5,  4
 DEF NUM_MAPS EQU const_value
 
-; marcelnote - current NUM_MAPS = 253 - 22 - 2 (last - start - extra lines) = 229
+; marcelnote - current NUM_MAPS = 249 - 23 - 2 (last - start - extra lines) = 224
 
 ; Indoor maps, such as houses, use this as the Map ID in their exit warps
 ; This map ID takes the player back to the last outdoor map they were on, stored in wLastMap

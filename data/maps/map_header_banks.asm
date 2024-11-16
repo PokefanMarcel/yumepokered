@@ -189,10 +189,7 @@ MapHeaderBanks::
 	db BANK(SeafoamIslandsB3F_h)
 	db BANK(SeafoamIslandsB4F_h)
 	db BANK(CinnabarPokecenterMart_h)   ; marcelnote - merged Cinnabar Pokecenter and Mart
-	db BANK(CinnabarLab_h)
-	db BANK(CinnabarLabTradeRoom_h)
-	db BANK(CinnabarLabMetronomeRoom_h)
-	db BANK(CinnabarLabFossilRoom_h)
+	db BANK(CinnabarLab_h)              ; marcelnote - merged Cinnabar Lab maps
 	db BANK(CinnabarGym_h)
 	db BANK(PokemonMansion1F_h)
 	db BANK(PokemonMansion2F_h)
