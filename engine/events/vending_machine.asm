@@ -1,4 +1,10 @@
 VendingMachineMenu::
+	;;;;;;;;;; marcelnote - new
+	ld a, [wSpritePlayerStateData1FacingDirection]
+	cp SPRITE_FACING_UP
+	ld hl, VendingMachineWrongSideText
+	jp nz, PrintText
+	;;;;;;;;;;
 	ld hl, VendingMachineText1
 	call PrintText
 	ld a, MONEY_BOX
@@ -110,6 +116,10 @@ VendingMachineText6:
 
 VendingMachineText7:
 	text_far _VendingMachineText7
+	text_end
+
+VendingMachineWrongSideText: ; marcelnote - new
+	text_far _VendingMachineWrongSideText
 	text_end
 
 LoadVendingMachineItem:

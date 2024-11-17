@@ -14,7 +14,7 @@ _CeladonMartRoofLittleGirlYayFreshWaterText::
 	line "from me!@"
 	text_end
 
-_CeladonMartRoofLittleGirlReceivedTM13Text::
+_CeladonMartRoofLittleGirlReceivedTMText:: ; marcelnote - now common to all 3 TMs
 	text "<PLAYER> received"
 	line "@"
 	text_ram wStringBuffer
@@ -44,12 +44,12 @@ _CeladonMartRoofLittleGirlYaySodaPopText::
 	line "from me!@"
 	text_end
 
-_CeladonMartRoofLittleGirlReceivedTM48Text::
-	text "<PLAYER> received"
-	line "@"
-	text_ram wStringBuffer
-	text "!@"
-	text_end
+;_CeladonMartRoofLittleGirlReceivedTM48Text:: ; marcelnote - now use text common to all 3 TMs
+;	text "<PLAYER> received"
+;	line "@"
+;	text_ram wStringBuffer
+;	text "!@"
+;	text_end
 
 _CeladonMartRoofLittleGirlTM48ExplanationText::
 	text_start
@@ -74,10 +74,10 @@ _CeladonMartRoofLittleGirlYayLemonadeText::
 	line "from me!@"
 	text_end
 
-_CeladonMartRoofLittleGirlReceivedTM49Text::
-	text "<PLAYER> received"
-	line "TM49!@"
-	text_end
+;_CeladonMartRoofLittleGirlReceivedTM49Text:: ; marcelnote - now use text common to all 3 TMs
+;	text "<PLAYER> received"
+;	line "TM49!@"
+;	text_end
 
 _CeladonMartRoofLittleGirlTM49ExplanationText::
 	text_start
@@ -149,4 +149,8 @@ _VendingMachineText6::
 
 _VendingMachineText7::
 	text "Not thirsty!"
+	done
+
+_VendingMachineWrongSideText:: ; marcelnote - new
+	text "Wrong side!"
 	done

@@ -144,7 +144,7 @@ CeladonMartRoofLittleGirlYayFreshWaterText:
 	text_end
 
 CeladonMartRoofLittleGirlReceivedTM13Text:
-	text_far _CeladonMartRoofLittleGirlReceivedTM13Text
+	text_far _CeladonMartRoofLittleGirlReceivedTMText ; marcelnote - made common to all 3 TMs
 	sound_get_item_1
 	text_far _CeladonMartRoofLittleGirlTM13ExplanationText
 	text_waitbutton
@@ -156,7 +156,7 @@ CeladonMartRoofLittleGirlYaySodaPopText:
 	text_end
 
 CeladonMartRoofLittleGirlReceivedTM48Text:
-	text_far _CeladonMartRoofLittleGirlReceivedTM48Text
+	text_far _CeladonMartRoofLittleGirlReceivedTMText ; marcelnote - made common to all 3 TMs
 	sound_get_item_1
 	text_far _CeladonMartRoofLittleGirlTM48ExplanationText
 	text_waitbutton
@@ -168,7 +168,7 @@ CeladonMartRoofLittleGirlYayLemonadeText:
 	text_end
 
 CeladonMartRoofLittleGirlReceivedTM49Text:
-	text_far _CeladonMartRoofLittleGirlReceivedTM49Text
+	text_far _CeladonMartRoofLittleGirlReceivedTMText ; marcelnote - made common to all 3 TMs
 	sound_get_item_1
 	text_far _CeladonMartRoofLittleGirlTM49ExplanationText
 	text_waitbutton
