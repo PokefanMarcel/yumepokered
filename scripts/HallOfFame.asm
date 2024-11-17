@@ -35,8 +35,8 @@ HallOfFameResetEventsAndSaveScript:
 	ld hl, wLoreleisRoomCurScript
 	ld [hli], a ; wLoreleisRoomCurScript
 	ld [hli], a ; wBrunosRoomCurScript
-	ld [hl], a ; wAgathasRoomCurScript
-	ld [wLancesRoomCurScript], a
+	ld [hli], a ; wAgathasRoomCurScript
+	ld [hl], a  ; wLancesRoomCurScript
 	ld [wHallOfFameCurScript], a
 	; Elite 4 events ; marcelnote - now also resets Gym Leader's rematches
 	ResetEventRange INDIGO_PLATEAU_EVENTS_START, INDIGO_PLATEAU_EVENTS_END, 1
