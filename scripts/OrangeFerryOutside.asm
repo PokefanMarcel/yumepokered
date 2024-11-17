@@ -19,7 +19,9 @@ OrangeFerryOutside_TextPointers:
 	dw_const OrangeFerryOutsideSailor1Text,      TEXT_ORANGEFERRYOUTSIDE_SAILOR1
 	dw_const OrangeFerryOutsideCooltrainerMText, TEXT_ORANGEFERRYOUTSIDE_COOLTRAINER_M
 	dw_const OrangeFerryOutsideBeautyText,       TEXT_ORANGEFERRYOUTSIDE_BEAUTY
+	dw_const OrangeFerryOutsideCooltrainerFText, TEXT_ORANGEFERRYOUTSIDE_COOLTRAINER_F
 	dw_const OrangeFerryOutsideGrampsText,       TEXT_ORANGEFERRYOUTSIDE_GRAMPS
+	dw_const OrangeFerryOutsideGirlText,         TEXT_ORANGEFERRYOUTSIDE_GIRL
 
 OrangeFerryOutsideTrainerHeaders:
 	def_trainers
@@ -29,6 +31,8 @@ OrangeFerryOutsideTrainerHeader1:
 	trainer EVENT_BEAT_ORANGE_FERRY_OUTSIDE_TRAINER_1, 2, OrangeFerryOutsideCooltrainerMBattleText, OrangeFerryOutsideCooltrainerMEndBattleText, OrangeFerryOutsideCooltrainerMAfterBattleText
 OrangeFerryOutsideTrainerHeader2:
 	trainer EVENT_BEAT_ORANGE_FERRY_OUTSIDE_TRAINER_2, 1, OrangeFerryOutsideBeautyBattleText, OrangeFerryOutsideBeautyEndBattleText, OrangeFerryOutsideBeautyAfterBattleText
+OrangeFerryOutsideTrainerHeader3:
+	trainer EVENT_BEAT_ORANGE_FERRY_OUTSIDE_TRAINER_3, 4, OrangeFerryOutsideCooltrainerFBattleText, OrangeFerryOutsideCooltrainerFEndBattleText, OrangeFerryOutsideCooltrainerFAfterBattleText
 	db -1 ; end
 
 OrangeFerryOutsideSailor1Text:
@@ -85,6 +89,24 @@ OrangeFerryOutsideBeautyAfterBattleText:
 	text_far _OrangeFerryOutsideBeautyAfterBattleText
 	text_end
 
+OrangeFerryOutsideCooltrainerFText:
+	text_asm
+	ld hl, OrangeFerryOutsideTrainerHeader3
+	call TalkToTrainer
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+OrangeFerryOutsideCooltrainerFBattleText:
+	text_far _OrangeFerryOutsideCooltrainerFBattleText
+	text_end
+
+OrangeFerryOutsideCooltrainerFEndBattleText:
+	text_far _OrangeFerryOutsideCooltrainerFEndBattleText
+	text_end
+
+OrangeFerryOutsideCooltrainerFAfterBattleText:
+	text_far _OrangeFerryOutsideCooltrainerFAfterBattleText
+	text_end
+
 OrangeFerryOutsideGrampsText:
 	text_asm
 	ld hl, .DoYouKnowText
@@ -109,4 +131,8 @@ OrangeFerryOutsideGrampsText:
 
 .NotEasilyToldText:
 	text_far _OrangeFerryOutsideGrampsNotEasilyToldText
+	text_end
+
+OrangeFerryOutsideGirlText:
+	text_far _OrangeFerryOutsideGirlText
 	text_end

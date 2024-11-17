@@ -28,3 +28,14 @@ _OrangeFerryDeckSpeakerWelcomeText::
 	para "We hope you have a"
 	line "pleasant journey!"
 	done
+
+_OrangeFerryDeckSailor2Text::
+	text "Boats used to"
+	line "follow migrating"
+	cont "TENTACOOL to"
+	cont "reach their"
+	cont "destination."
+
+	para "Now we have maps"
+	line "and engines!"
+	done

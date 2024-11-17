@@ -16,10 +16,25 @@ OrangeFerryRooms_ScriptPointers:
 	dw_const OrangeFerryRoomsCheckIfArrivedScript,  SCRIPT_ORANGEFERRYROOMS_CHECK_IF_ARRIVED
 
 OrangeFerryRoomsCheckIfArrivedScript:
-	; check first if has already travelled to Mandarin Island, in which case skip the need to battle
-	CheckEvent EVENT_BEAT_ORANGE_FERRY_ROOMS_TRAINER_0
+	ld a, [wTownVisitedFlag + (MANDARIN_ISLAND / 8)]
+	bit (MANDARIN_ISLAND % 8), a
+	jr nz, .skipBattleChecks ; if already travelled to Mandarin Island, skip the battle checks
+	CheckEvent EVENT_BEAT_ORANGE_FERRY_ROOMS_TRAINER_0 ; need to make CheckAllEventsRange!!
 	jr z, .notArrived
-	SetEvent EVENT_FERRY_ARRIVED
+	CheckEvent EVENT_BEAT_ORANGE_FERRY_ROOMS_TRAINER_1
+	jr z, .notArrived
+	CheckEvent EVENT_BEAT_ORANGE_FERRY_ROOMS_TRAINER_2
+	jr z, .notArrived
+	CheckEvent EVENT_BEAT_ORANGE_FERRY_OUTSIDE_TRAINER_0
+	jr z, .notArrived
+	CheckEvent EVENT_BEAT_ORANGE_FERRY_OUTSIDE_TRAINER_1
+	jr z, .notArrived
+	CheckEvent EVENT_BEAT_ORANGE_FERRY_OUTSIDE_TRAINER_2
+	jr z, .notArrived
+	CheckEvent EVENT_BEAT_ORANGE_FERRY_OUTSIDE_TRAINER_3
+	jr z, .notArrived
+.skipBattleChecks
+	SetEventRange EVENT_FERRY_ARRIVED, EVENT_BEAT_ORANGE_FERRY_OUTSIDE_TRAINER_3
 	call Delay3
 	farcall ShakeElevator
 	ld a, TEXT_ORANGEFERRYROOMS_SPEAKER_ARRIVED
@@ -37,10 +52,12 @@ OrangeFerryRooms_TextPointers:
 	dw_const OrangeFerryRoomsHikerText,           TEXT_ORANGEFERRYROOMS_HIKER
 	dw_const OrangeFerryRoomsCooltrainerFText,    TEXT_ORANGEFERRYROOMS_COOLTRAINER_F
 	dw_const OrangeFerryRoomsCaptainText,         TEXT_ORANGEFERRYROOMS_CAPTAIN
+	dw_const OrangeFerryRoomsBlastoiseText,       TEXT_ORANGEFERRYROOMS_BLASTOISE
 	dw_const OrangeFerryRoomsNurseText,           TEXT_ORANGEFERRYROOMS_NURSE
 	dw_const OrangeFerryRoomsGrampsText,          TEXT_ORANGEFERRYROOMS_GRAMPS
 	dw_const OrangeFerryRoomsScientistText,       TEXT_ORANGEFERRYROOMS_SCIENTIST
 	dw_const OrangeFerryRoomsFossilText,          TEXT_ORANGEFERRYROOMS_FOSSIL
+	dw_const OrangeFerryRoomsCaptainsBookText,    TEXT_ORANGEFERRYROOMS_CAPTAINS_BOOK
 	dw_const OrangeFerryRoomsSpeakerArrivedText,  TEXT_ORANGEFERRYROOMS_SPEAKER_ARRIVED
 
 OrangeFerryRoomsTrainerHeaders:
@@ -204,4 +221,15 @@ OrangeFerryRoomsFossilText:
 
 OrangeFerryRoomsCaptainText:
 	text_far _OrangeFerryRoomsCaptainText
+	text_end
+
+OrangeFerryRoomsBlastoiseText:
+	text_far _OrangeFerryRoomsBlastoiseText
+	text_asm
+	ld a, BLASTOISE
+	call PlayCry
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+OrangeFerryRoomsCaptainsBookText:
+	text_far _OrangeFerryRoomsCaptainsBookText
 	text_end
