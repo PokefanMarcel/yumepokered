@@ -423,6 +423,22 @@ MACRO CheckBothEventsSet
 ENDM
 
 
+; marcelnote - new to check event range (WIP, need to adapt ResetEventRange)
+; returns whether all events in range are set in Z flag
+; Sets the Z flag if any event in the range is not set.
+;\1 = event index 1
+;\2 = event index 2
+;\3 = try to reuse a (optional)
+;MACRO CheckAllEventsRange
+;	DEF event_start_byte = ((\1) / 8)
+;	DEF event_end_byte = ((\2) / 8)
+;
+;	IF event_end_byte < event_start_byte
+;		FAIL "Incorrect argument order in CheckAllEventsRange."
+;	ENDC
+;ENDM
+
+
 ; returns the complement of whether either event is set in Z flag
 ;\1 = event index 1
 ;\2 = event index 2
