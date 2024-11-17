@@ -14,8 +14,7 @@ MandarinIsland_ScriptPointers:
 MandarinIslandDefaultScript:
 	CheckEvent EVENT_FERRY_ARRIVED
 	jr z, .FerryAlreadyReset
-	ResetEvent EVENT_FERRY_ARRIVED
-	; also reset EVENT_BEAT_ trainers...
+	ResetEventRange EVENT_FERRY_ARRIVED, EVENT_BEAT_ORANGE_FERRY_OUTSIDE_TRAINER_3
 	ld a, HS_VERMILION_DOCK_SAILOR
 	ld [wMissableObjectIndex], a
 	predef ShowObjectCont

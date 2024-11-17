@@ -30,7 +30,7 @@ OrangeFerryDeckDefaultScript:
 	ret nz
 	xor a
 	ldh [hJoyHeld], a
-	ld a, ORANGEFERRYDECK_SAILOR
+	ld a, ORANGEFERRYDECK_SAILOR1
 	ldh [hSpriteIndex], a
 	ld a, SPRITE_FACING_LEFT
 	ldh [hSpriteFacingDirection], a
@@ -74,13 +74,13 @@ OrangeFerryDeckEntranceScript:
 
 OrangeFerryDeck_TextPointers:
 	def_text_pointers
-	;dw_const OrangeFerryDeckWaiterText,         TEXT_ORANGEFERRYDECK_WAITER
-	dw_const OrangeFerryDeckSailorText,         TEXT_ORANGEFERRYDECK_SAILOR
+	dw_const OrangeFerryDeckSailor1Text,        TEXT_ORANGEFERRYDECK_SAILOR1
+	dw_const OrangeFerryDeckSailor2Text,        TEXT_ORANGEFERRYDECK_SAILOR2
 	dw_const OrangeFerryDeckVendingMachineText, TEXT_ORANGEFERRYDECK_VENDING_MACHINE
 	dw_const OrangeFerryDeckSailorSorryText,    TEXT_ORANGEFERRYDECK_SAILOR_SORRY
 	dw_const OrangeFerryDeckSpeakerWelcomeText, TEXT_ORANGEFERRYROOMS_SPEAKER_LEFT
 
-OrangeFerryDeckSailorText:
+OrangeFerryDeckSailor1Text:
 	text_asm
 	CheckEvent EVENT_FERRY_ARRIVED
 	ld hl, .EnjoyYourTripText
@@ -104,6 +104,10 @@ OrangeFerryDeckSailorText:
 
 .EndOfTheLineMandarinText:
 	text_far _OrangeFerryDeckSailorEndOfTheLineMandarinText
+	text_end
+
+OrangeFerryDeckSailor2Text:
+	text_far _OrangeFerryDeckSailor2Text
 	text_end
 
 OrangeFerryDeckSailorSorryText:

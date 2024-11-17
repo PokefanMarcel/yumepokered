@@ -1,9 +1,4 @@
 ; marcelnote - new location
-;_SSAnne1FRoomsWigglytuffText::
-;	text "WIGGLYTUFF: Puup"
-;	line "pupuu!@"
-;	text_end
-
 _OrangeFerryRoomsGentlemanBattleText::
 	text "Traveling by sea"
 	line "is so delightful!"
@@ -149,6 +144,25 @@ _OrangeFerryRoomsFossilText::
 	done
 
 _OrangeFerryRoomsCaptainText::
-	text "Captain's text"
+	text "A fine ocean"
+	line "breeze and clear"
+	cont "skies ahead!"
+
+	para "Looks like it'll"
+	line "be smooth sailing"
+	cont "today!"
 	done
 
+_OrangeFerryRoomsBlastoiseText::
+	text "BLASTOISE: Baaaoh!"
+	line "Hffft...@"
+	text_end
+
+_OrangeFerryRoomsCaptainsBookText::
+	text "SAFETY NOTES."
+	line "In an emergency,"
+	cont "BLASTOISE can"
+	cont "carry passengers"
+	cont "to safety on its"
+	cont "shell."
+	done

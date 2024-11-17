@@ -671,8 +671,11 @@ CooltrainerFData:
 	db 45, IVYSAUR, VENUSAUR, 0
 	db 45, NIDORINA, NIDOQUEEN, 0
 	db 43, PERSIAN, NINETALES, RAICHU, 0
-; Cinnabar Volcano B1F   ; marcelnote - new location
+; marcelnote - new trainers
+; Cinnabar Volcano B1F
 	db 39, GROWLITHE, NINETALES, NIDOQUEEN, 0
+; Orange Ferry Outside
+	db 41, IVYSAUR, NIDORINA, VENUSAUR, 0
 
 GentlemanData:
 ; SS Anne 1F Rooms
