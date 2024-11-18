@@ -196,6 +196,7 @@ DEF SHOW EQU $15
 	const HS_POKEMON_MANSION_B1F_ITEM_4    ; C1 X
 	const HS_POKEMON_MANSION_B1F_ITEM_5    ; C2 X
 	const HS_POKEMON_MANSION_B1F_FUJIS_NOTES ; marcelnote - new
+	const HS_POKEMON_MANSION_B1F_HP_UP     ; marcelnote - new
 	const HS_SAFARI_ZONE_EAST_ITEM_1       ; C3 X
 	const HS_SAFARI_ZONE_EAST_ITEM_2       ; C4 X
 	const HS_SAFARI_ZONE_EAST_ITEM_3       ; C5 X
@@ -262,7 +263,7 @@ DEF SHOW EQU $15
 	const HS_MT_SILVER_2F_FULL_RESTORE          ; marcelnote - Full Restore
 DEF NUM_HS_OBJECTS EQU const_value
 	; max objects = 256
-	; current total = 262 – 11 – 5 (end - start - commented out) = 246
+	; current total = 263 – 11 – 5 (end - start - commented out) = 247
 
 ; marcelnote - the list continues here to allow for more than 256 HideShow objects
 ;              but cannot put items which can be picked up

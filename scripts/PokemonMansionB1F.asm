@@ -61,16 +61,22 @@ PokemonMansionB1F_ScriptPointers:
 
 PokemonMansionB1F_TextPointers:
 	def_text_pointers
-	dw_const PokemonMansionB1FBurglarText,   TEXT_POKEMONMANSIONB1F_BURGLAR
-	dw_const PokemonMansionB1FScientistText, TEXT_POKEMONMANSIONB1F_SCIENTIST
-	dw_const PickUpItemText,                 TEXT_POKEMONMANSIONB1F_RARE_CANDY
-	dw_const PickUpItemText,                 TEXT_POKEMONMANSIONB1F_FULL_RESTORE
-	dw_const PickUpItemText,                 TEXT_POKEMONMANSIONB1F_TM_BLIZZARD
-	dw_const PickUpItemText,                 TEXT_POKEMONMANSIONB1F_TM_SOLARBEAM
-	dw_const PokemonMansionB1FDiaryText,     TEXT_POKEMONMANSIONB1F_DIARY
-	dw_const PickUpItemText,                 TEXT_POKEMONMANSIONB1F_SECRET_KEY
-	dw_const PickUpItemText,                 TEXT_POKEMONMANSIONB1F_FUJIS_NOTES ; marcelnote - new
-	dw_const PokemonMansion2FSwitchText,     TEXT_POKEMONMANSIONB1F_SWITCH ; This switch uses the text script from the 2F.
+	; objects
+	dw_const PokemonMansionB1FBurglarText,    TEXT_POKEMONMANSIONB1F_BURGLAR
+	dw_const PokemonMansionB1FScientistText,  TEXT_POKEMONMANSIONB1F_SCIENTIST
+	dw_const PickUpItemText,                  TEXT_POKEMONMANSIONB1F_RARE_CANDY
+	dw_const PickUpItemText,                  TEXT_POKEMONMANSIONB1F_FULL_RESTORE
+	dw_const PickUpItemText,                  TEXT_POKEMONMANSIONB1F_TM_BLIZZARD
+	dw_const PickUpItemText,                  TEXT_POKEMONMANSIONB1F_TM_SOLARBEAM
+	dw_const PokemonMansionB1FDiarySept1Text, TEXT_POKEMONMANSIONB1F_DIARY_SEPT1
+	dw_const PickUpItemText,                  TEXT_POKEMONMANSIONB1F_SECRET_KEY
+	dw_const PickUpItemText,                  TEXT_POKEMONMANSIONB1F_FUJIS_NOTES ; marcelnote - new
+	dw_const PickUpItemText,                  TEXT_POKEMONMANSIONB1F_HP_UP       ; marcelnote - new
+	dw_const PokemonMansionB1FDiaryMay24Text, TEXT_POKEMONMANSIONB1F_DIARY_MAY24 ; marcelnote - new
+	; bg
+	dw_const PokemonMansionB1FScreenText,     TEXT_POKEMONMANSIONB1F_SCREEN      ; marcelnote - new
+	; other
+	dw_const PokemonMansion2FSwitchText,      TEXT_POKEMONMANSIONB1F_SWITCH ; This switch uses the text script from the 2F.
 
 Mansion4TrainerHeaders:
 	def_trainers
@@ -116,6 +122,14 @@ PokemonMansionB1FScientistAfterBattleText:
 	text_far _PokemonMansionB1FScientistAfterBattleText
 	text_end
 
-PokemonMansionB1FDiaryText:
-	text_far _PokemonMansionB1FDiaryText
+PokemonMansionB1FDiarySept1Text:
+	text_far _PokemonMansionB1FDiarySept1Text
+	text_end
+
+PokemonMansionB1FDiaryMay24Text: ; marcelnote - new
+	text_far _PokemonMansionB1FDiaryMay24Text
+	text_end
+
+PokemonMansionB1FScreenText: ; marcelnote - new
+	text_far _PokemonMansionB1FScreenText
 	text_end
