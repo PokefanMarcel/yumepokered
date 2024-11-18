@@ -43,13 +43,13 @@ KeyItemFlags:
 	dbit TRUE  ; DOME_FOSSIL
 	dbit TRUE  ; HELIX_FOSSIL
 	dbit TRUE  ; SECRET_KEY
-	dbit TRUE  ; ORANGE_PASS ; marcelnote - new, was ITEM_2C
+	dbit TRUE  ; ORANGE_PASS ; marcelnote - new, was ITEM_2C (unused)
 	dbit TRUE  ; BIKE_VOUCHER
 	dbit FALSE ; X_ACCURACY
 	dbit FALSE ; LEAF_STONE
 	dbit TRUE  ; CARD_KEY
 	dbit FALSE ; NUGGET
-	dbit FALSE ; ITEM_32
+	dbit TRUE  ; FUJIS_NOTES ; marcelnote - new, was ITEM_32 (unused)
 	dbit FALSE ; POKE_DOLL
 	dbit FALSE ; FULL_HEAL
 	dbit FALSE ; REVIVE

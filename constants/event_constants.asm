@@ -96,6 +96,7 @@
 	const_skip 4 ; marcelnote - removed EVENT_RESCUED_MR_FUJI_2
 	const_skip 8 ; marcelnote - adjusted down
 	const EVENT_GOT_POKE_FLUTE
+	const EVENT_GOT_ORANGE_PASS ; marcelnote - new
 	const EVENT_POSTGAME_AGATHA ; marcelnote - postgame Agatha event
 	const EVENT_SPOKE_DIRECTOR  ; marcelnote - postgame Agatha event
 	const EVENT_BEAT_GHOST_2F   ; marcelnote - postgame Agatha event

@@ -69,6 +69,7 @@ PokemonMansionB1F_TextPointers:
 	dw_const PickUpItemText,                 TEXT_POKEMONMANSIONB1F_TM_SOLARBEAM
 	dw_const PokemonMansionB1FDiaryText,     TEXT_POKEMONMANSIONB1F_DIARY
 	dw_const PickUpItemText,                 TEXT_POKEMONMANSIONB1F_SECRET_KEY
+	dw_const PickUpItemText,                 TEXT_POKEMONMANSIONB1F_FUJIS_NOTES ; marcelnote - new
 	dw_const PokemonMansion2FSwitchText,     TEXT_POKEMONMANSIONB1F_SWITCH ; This switch uses the text script from the 2F.
 
 Mansion4TrainerHeaders:
