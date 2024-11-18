@@ -40,6 +40,7 @@ MapSongBanks::
 	db MUSIC_ROUTES2, BANK(Music_Routes2)              ; ROUTE_24
 	db MUSIC_ROUTES2, BANK(Music_Routes2)              ; ROUTE_25
 	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; ROUTE_28 ; marcelnote - new location
+	db MUSIC_ROUTES3, BANK(Music_Routes3)              ; ORANGE_ROUTE_1 ; marcelnote - new location
 	; Indoor maps
 	db MUSIC_PALLET_TOWN, BANK(Music_PalletTown)           ; REDS_YELLOWS_HOUSES ; marcelnote - was REDS_HOUSE_1F
 	db MUSIC_PALLET_TOWN, BANK(Music_PalletTown)           ; BLUES_HOUSE

@@ -38,6 +38,7 @@ WildDataPointers:
 	dw Route24WildMons         ; ROUTE_24
 	dw Route25WildMons         ; ROUTE_25
 	dw Route28WildMons         ; ROUTE_28 ; marcelnote - new location
+	dw NothingWildMons         ; ORANGE_ROUTE_1 ; marcelnote - new location
 	dw NothingWildMons                 ; REDS_YELLOWS_HOUSE
 	dw NothingWildMons                 ; BLUES_AIDES_HOUSES
 	dw NothingWildMons                 ; OAKS_LAB
