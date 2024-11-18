@@ -66,7 +66,7 @@ ItemUsePtrTable:
 	dw ItemUseEvoStone   ; LEAF_STONE
 	dw UnusableItem      ; CARD_KEY ; marcelnote - was ItemUseCardKey but not used because didn't work
 	dw UnusableItem      ; NUGGET
-	dw UnusableItem      ; ITEM_32
+	dw UnusableItem      ; FUJIS_NOTES ; marcelnote - new, was ITEM_32
 	dw ItemUsePokeDoll   ; POKE_DOLL
 	dw ItemUseMedicine   ; FULL_HEAL
 	dw ItemUseMedicine   ; REVIVE

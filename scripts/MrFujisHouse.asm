@@ -2,6 +2,26 @@ MrFujisHouse_Script:
 	call EnableAutoTextBoxDrawing
 	ret
 
+MrFujisHouseScript_RemoveFujisNotes: ; marcelnote - new
+	ld hl, wBagItems
+	ld bc, 0
+.loop
+	ld a, [hli]
+	cp $ff
+	ret z
+	cp FUJIS_NOTES
+	jr z, .foundNotes
+	inc hl
+	inc c
+	jr .loop
+.foundNotes
+	ld hl, wNumBagItems
+	ld a, c
+	ld [wWhichPokemon], a
+	ld a, 1
+	ld [wItemQuantity], a
+	jp RemoveItemFromInventory
+
 MrFujisHouse_TextPointers:
 	def_text_pointers
 	dw_const MrFujisHouseSuperNerdText,     TEXT_MRFUJISHOUSE_SUPER_NERD
@@ -63,6 +83,23 @@ MrFujisHouseNidorinoText:
 
 MrFujisHouseMrFujiText: ; marcelnote - optimized
 	text_asm
+	CheckEvent EVENT_GOT_ORANGE_PASS
+	ld hl, .GoodLuckText
+	jr nz, .print_text
+	ld b, FUJIS_NOTES
+	call IsItemInBag
+	jr z, .no_fujis_notes
+	call MrFujisHouseScript_RemoveFujisNotes ; add text to say that player handed notes?
+	ld hl, .HereIsThePassText
+	call PrintText
+	lb bc, ORANGE_PASS, 1
+	call GiveItem
+	ld hl, .MakeRoomText
+	jr nc, .print_text
+	SetEvent EVENT_GOT_ORANGE_PASS
+	ld hl, .ReceivedOrangePassText
+	jr .print_text
+.no_fujis_notes
 	CheckEvent EVENT_GOT_POKE_FLUTE
 	ld hl, .HasMyFluteHelpedYouText
 	jr nz, .print_text
@@ -70,13 +107,13 @@ MrFujisHouseMrFujiText: ; marcelnote - optimized
 	call PrintText
 	lb bc, POKE_FLUTE, 1
 	call GiveItem
-	ld hl, .PokeFluteNoRoomText
+	ld hl, .MakeRoomText
 	jr nc, .print_text
-	ld hl, .ReceivedPokeFluteText
-	SetEvent EVENT_GOT_POKE_FLUTE
 	ld a, HS_POKEMON_TOWER_7F_CHANNELER ; marcelnote - added 7FChanneler
 	ld [wMissableObjectIndex], a
 	predef ShowObject
+	SetEvent EVENT_GOT_POKE_FLUTE
+	ld hl, .ReceivedPokeFluteText
 .print_text
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
@@ -91,12 +128,26 @@ MrFujisHouseMrFujiText: ; marcelnote - optimized
 	text_far _MrFujisHouseMrFujiPokeFluteExplanationText
 	text_end
 
-.PokeFluteNoRoomText:
-	text_far _MrFujisHouseMrFujiPokeFluteNoRoomText
+.HereIsThePassText: ; marcelnote - new
+	text_far _MrFujisHouseMrFujiHereIsThePassText
+	text_end
+
+.ReceivedOrangePassText: ; marcelnote - new
+	text_far _MrFujisHouseMrFujiReceivedOrangePassText
+	sound_get_key_item
+	text_far _MrFujisHouseMrFujiOrangePassExplanationText
+	text_end
+
+.MakeRoomText:
+	text_far _MrFujisHouseMrFujiMakeRoomText
 	text_end
 
 .HasMyFluteHelpedYouText:
 	text_far _MrFujisHouseMrFujiHasMyFluteHelpedYouText
+	text_end
+
+.GoodLuckText: ; marcelnote - new
+	text_far _MrFujisHouseMrFujiGoodLuckText
 	text_end
 
 MrFujisHouseMrFujiPokedexText:

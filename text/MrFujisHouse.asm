@@ -66,7 +66,7 @@ _MrFujisHouseMrFujiPokeFluteExplanationText::
 	line "sleeping #MON."
 	done
 
-_MrFujisHouseMrFujiPokeFluteNoRoomText::
+_MrFujisHouseMrFujiMakeRoomText::
 	text "You must make"
 	line "room for this!"
 	done
@@ -86,4 +86,29 @@ _MrFujisHouseMrFujiPokedexText::
 
 	para "Gone! It's been"
 	line "clipped out!"
+	done
+
+_MrFujisHouseMrFujiHereIsThePassText:: ; marcelnote - new
+	text "MR.FUJI: <PLAYER>."
+
+	para "Here is the"
+	line "ORANGE PASS."
+	prompt
+
+_MrFujisHouseMrFujiReceivedOrangePassText:: ; marcelnote - new
+	text "<PLAYER> received"
+	line "an @"
+	text_ram wStringBuffer
+	text "!@"
+	text_end
+
+_MrFujisHouseMrFujiOrangePassExplanationText:: ; marcelnote - new
+	text_start
+
+	para "Travel with this"
+	line "ORANGE PASS!"
+	done
+
+_MrFujisHouseMrFujiGoodLuckText:: ; marcelnote - new
+	text "Good luck!"
 	done
