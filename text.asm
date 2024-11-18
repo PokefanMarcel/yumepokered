@@ -261,6 +261,7 @@ INCLUDE "text/MandarinHotel.asm"            ; marcelnote - new location
 INCLUDE "text/MandarinSilphCo.asm"          ; marcelnote - new location
 INCLUDE "text/SilphFactory1F.asm"           ; marcelnote - new location
 INCLUDE "text/SilphFactory2F.asm"           ; marcelnote - new location
+INCLUDE "text/OrangeRoute1.asm"           ; marcelnote - new location
 
 
 SECTION "Text 12", ROMX ; marcelnote - new

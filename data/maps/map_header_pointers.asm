@@ -39,6 +39,7 @@ MapHeaderPointers::
 	dw Route24_h
 	dw Route25_h
 	dw Route28_h ; marcelnote - new location
+	dw OrangeRoute1_h ; marcelnote - new location
 	dw RedsYellowsHouses_h ; marcelnote - merged RedsHouse floors, added YellowsHouse
 	dw BluesAidesHouses_h ; marcelnote - merged Blue's house with new Aide's house
 	dw OaksLab_h

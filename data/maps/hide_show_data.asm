@@ -41,6 +41,7 @@ MapHSPointers:
 	dw Route24HS       ; ROUTE_24
 	dw Route25HS       ; ROUTE_25
 	dw NoHS            ; ROUTE_28 ; marcelnote - new location
+	dw NoHS            ; ORANGE_ROUTE_1 ; marcelnote - new location
 	dw RedsYellowsHousesHS         ; REDS_YELLOWS_HOUSES ; marcelnote - added to hide Yellow asleep
 	dw BluesAidesHousesHS          ; BLUES_AIDES_HOUSES  ; marcelnote - merged Blue's house with new Aide's house
 	dw OaksLabHS                   ; OAKS_LAB

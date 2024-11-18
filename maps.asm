@@ -1141,6 +1141,11 @@ INCLUDE "scripts/MandarinIsland.asm"
 INCLUDE "data/maps/objects/MandarinIsland.asm"
 MandarinIsland_Blocks:: INCBIN "maps/MandarinIsland.blk"
 
+INCLUDE "data/maps/headers/OrangeRoute1.asm" ; marcelnote - new location
+INCLUDE "scripts/OrangeRoute1.asm"
+INCLUDE "data/maps/objects/OrangeRoute1.asm"
+OrangeRoute1_Blocks:: INCBIN "maps/OrangeRoute1.blk"
+
 INCLUDE "data/maps/headers/MandarinPokecenterMart.asm" ; marcelnote - new location
 INCLUDE "scripts/MandarinPokecenterMart.asm"
 INCLUDE "data/maps/objects/MandarinPokecenterMart.asm"

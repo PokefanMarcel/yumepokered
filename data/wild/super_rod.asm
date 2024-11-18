@@ -26,6 +26,7 @@ SuperRodData:
 	dbw ROUTE_24,            .Group2
 	dbw ROUTE_25,            .Group7
 	dbw ROUTE_28,            .Group8 ; marcelnote - new route
+	dbw ORANGE_ROUTE_1,      .Group1 ; marcelnote - new route
 	dbw CERULEAN_GYM,        .Group9
 	dbw VERMILION_DOCK,      .Group1
 	dbw SEAFOAM_ISLANDS_B3F, .Group10

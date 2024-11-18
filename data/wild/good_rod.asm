@@ -26,6 +26,7 @@ GoodRodData:
 	dbw ROUTE_24,            .Group1
 	dbw ROUTE_25,            .Group8
 	dbw ROUTE_28,            .Group9 ; marcelnote - new route
+	dbw ORANGE_ROUTE_1,      .Group4 ; marcelnote - new route
 	dbw CERULEAN_GYM,        .Group2
 	dbw VERMILION_DOCK,      .Group3
 	dbw SEAFOAM_ISLANDS_B3F, .Group10

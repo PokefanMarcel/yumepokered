@@ -46,6 +46,7 @@ ExternalMapEntries:
 	external_map 10,  1, Route24Name
 	external_map 11,  0, Route25Name
 	external_map  0,  7, Route28Name ; marcelnote - new location
+	external_map 15, 15, MandarinIslandName ; OrangeRoute1 ; marcelnote - new location
 	assert_table_length FIRST_INDOOR_MAP
 
 

@@ -26,6 +26,7 @@ OldRodData:
 	dbw ROUTE_24,            .Group3
 	dbw ROUTE_25,            .Group4
 	dbw ROUTE_28,            .Group6 ; marcelnote - new route
+	dbw ORANGE_ROUTE_1,      .Group4 ; marcelnote - new route
 	dbw CERULEAN_GYM,        .Group2
 	dbw VERMILION_DOCK,      .Group4
 	dbw SEAFOAM_ISLANDS_B3F, .Group4

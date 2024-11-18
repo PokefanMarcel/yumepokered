@@ -39,6 +39,7 @@ MapHeaderBanks::
 	db BANK(Route24_h)
 	db BANK(Route25_h)
 	db BANK(Route28_h) ; marcelnote - new location
+	db BANK(OrangeRoute1_h) ; marcelnote - new location
 	db BANK(RedsYellowsHouses_h) ; marcelnote - merged RedsHouse floors, added YellowsHouse
 	db BANK(BluesAidesHouses_h) ; marcelnote - merged Blue's house with new Aide's house
 	db BANK(OaksLab_h)

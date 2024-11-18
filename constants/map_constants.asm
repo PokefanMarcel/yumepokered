@@ -15,9 +15,9 @@ ENDM
 ; - MapHeaderPointers (see data/maps/map_header_pointers.asm)
 ; - MapSongBanks (see data/maps/songs.asm)
 ; - MapHSPointers (see data/maps/hide_show_data.asm)
-; - MapSpriteSets (see data/maps/sprite_sets.asm)
-; - ExternalMapEntries (see data/maps/town_map_entries.asm)
 ; - WildDataPointers (see data/wild/grass_water.asm)
+; - ExternalMapEntries (see data/maps/town_map_entries.asm)
+; - MapSpriteSets (see data/maps/sprite_sets.asm)
 ; Each map also has associated data in maps.asm.
 ; Order: towns/cities, then routes, then indoor/dungeon maps
 	const_def
@@ -31,7 +31,7 @@ ENDM
 	map_const SAFFRON_CITY,                  20, 18
 	map_const FUCHSIA_CITY,                  20, 18
 	map_const CINNABAR_ISLAND,               14,  9 ; marcelnote - expanded for Cinnabar Volcano
-	map_const MANDARIN_ISLAND,               17, 16 ; marcelnote - new map
+	map_const MANDARIN_ISLAND,               19, 16 ; marcelnote - new map
 	map_const INDIGO_PLATEAU,                10,  9
 DEF NUM_CITY_MAPS EQU const_value
 	map_const ROUTE_1,                       10, 18
@@ -60,6 +60,7 @@ DEF NUM_CITY_MAPS EQU const_value
 	map_const ROUTE_24,                      10, 18
 	map_const ROUTE_25,                      30,  9
 	map_const ROUTE_28,                      39,  9 ; marcelnote - new map
+	map_const ORANGE_ROUTE_1,                 9, 11 ; marcelnote - new map
 DEF FIRST_INDOOR_MAP EQU const_value
 	map_const REDS_YELLOWS_HOUSES,           25,  4 ; marcelnote - merged RedsHouse floors, added YellowsHouse
 	map_const BLUES_AIDES_HOUSES,            11,  4 ; marcelnote - added Aide's house
