@@ -223,6 +223,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const MANDARIN_SURF_SHOP,             4,  4 ; marcelnote - new map
 	map_const MANDARIN_HOTEL,                33,  6 ; marcelnote - new map
 	map_const MANDARIN_SILPH_CO,              4, 25 ; marcelnote - new map
+	map_const DR_SEBASTIANS_LAB,              6,  4 ; marcelnote - new map
 	map_const MANDARIN_DOCK,                 11,  6 ; marcelnote - new map
 	map_const ORANGE_FERRY_DECK,             12,  4 ; marcelnote - new map
 	map_const ORANGE_FERRY_OUTSIDE,          13,  6 ; marcelnote - new map
@@ -249,7 +250,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const COLOSSEUM,                      5,  4
 DEF NUM_MAPS EQU const_value
 
-; marcelnote - current NUM_MAPS = 248 - 23 - 2 (last - start - extra lines) = 223
+; marcelnote - current NUM_MAPS = 250 - 23 - 2 (last - start - extra lines) = 225
 
 ; Indoor maps, such as houses, use this as the Map ID in their exit warps
 ; This map ID takes the player back to the last outdoor map they were on, stored in wLastMap

@@ -201,6 +201,7 @@ MapHeaderBanks::
 	db BANK(MandarinSurfShop_h)         ; marcelnote - new location
 	db BANK(MandarinHotel_h)            ; marcelnote - new location
 	db BANK(MandarinSilphCo_h)          ; marcelnote - new location
+	db BANK(DrSebastiansLab_h)          ; marcelnote - new location
 	db BANK(MandarinDock_h)             ; marcelnote - new location
 	db BANK(OrangeFerryDeck_h)          ; marcelnote - new location
 	db BANK(OrangeFerryOutside_h)       ; marcelnote - new location
