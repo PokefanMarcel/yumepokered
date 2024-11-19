@@ -203,6 +203,7 @@ MapHSPointers:
 	dw NoHS                        ; MANDARIN_SURF_SHOP
 	dw MandarinHotelHS             ; MANDARIN_HOTEL
 	dw MandarinSilphCoHS           ; MANDARIN_SILPH_CO
+	dw NoHS                        ; DR_SEBASTIANS_LAB
 	dw MandarinDockHS              ; MANDARIN_DOCK
 	dw NoHS                        ; ORANGE_FERRY_DECK
 	dw NoHS                        ; ORANGE_FERRY_OUTSIDE

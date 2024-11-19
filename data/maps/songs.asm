@@ -203,6 +203,7 @@ MapSongBanks::
 	db MUSIC_CINNABAR, BANK(Music_Cinnabar)                ; MANDARIN_SURF_SHOP       ; marcelnote - new location
 	db MUSIC_CINNABAR, BANK(Music_Cinnabar)                ; MANDARIN_HOTEL           ; marcelnote - new location
 	db MUSIC_CINNABAR, BANK(Music_Cinnabar)                ; MANDARIN_SILPH_CO        ; marcelnote - new location
+	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; DR_SEBASTIANS_LAB        ; marcelnote - new location
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne)                   ; MANDARIN_DOCK            ; marcelnote - new location
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne)                   ; ORANGE_FERRY_DECK        ; marcelnote - new location
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne)                   ; ORANGE_FERRY_OUTSIDE     ; marcelnote - new location
