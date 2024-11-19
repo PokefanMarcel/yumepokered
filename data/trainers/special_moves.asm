@@ -157,8 +157,8 @@ SpecialTrainerMoves:
 	db 2, 3, TOXIC
 	; Muk
 	db 3, 4, BIND
-	; Pinsir
-	db 4, 3, TOXIC
+	; Pinsir - TOXIC, PIN_MISSILE, SUBMISSION, SWORDS_DANCE
+	db 4, 1, TOXIC
 	; Tentacruel
 	db 5, 2, TOXIC
 	db 5, 3, REFLECT
@@ -646,25 +646,26 @@ SpecialTrainerMoves:
 	db $ff
 
 	db YELLOW, 1
-	; Dodrio
-	db 1, 4, DOUBLE_TEAM
-	; Chansey
+	; Dodrio - DRILL_PECK, MEGA_KICK, DOUBLE_TEAM, HI_JUMP_KICK
+	db 1, 1, DRILL_PECK
+	db 1, 3, DOUBLE_TEAM
+	; Chansey - SOFTBOILED, MINIMIZE, PSYCHIC_M, DOUBLE_EDGE
 	db 2, 1, SOFTBOILED
 	db 2, 2, MINIMIZE
 	db 2, 3, PSYCHIC_M
-	; Butterfree
+	; Butterfree - MEGA_DRAIN, PSYCHIC_M, RAZOR_WIND, SLEEP_POWDER
 	db 3, 1, MEGA_DRAIN
 	db 3, 2, PSYCHIC_M
 	db 3, 4, SLEEP_POWDER
-	; Omastar
+	; Omastar - TOXIC, ROCK_SLIDE, CLAMP, SURF
 	db 4, 1, TOXIC
 	db 4, 2, ROCK_SLIDE
 	db 4, 4, SURF
-	; Ninetales
+	; Ninetales - WILL_O_WISP, CONFUSE_RAY, HEX, FIRE_SPIN
 	db 5, 1, WILL_O_WISP
 	db 5, 2, CONFUSE_RAY
 	db 5, 3, HEX
-	; Pikachu
+	; Pikachu - THUNDERBOLT, SURF, THUNDER, THUNDER_WAVE
 	db 6, 2, SURF
 	db 6, 4, THUNDER_WAVE
 	db $ff
