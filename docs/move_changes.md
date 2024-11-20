@@ -1,6 +1,6 @@
 # Move changes
 
-Moves have been rebalanced to enhance the viability of certain Pokémon and to offer players a broader range of strategic options overall. The changes are deliberately minimalistic, ensuring that they remain true to the original Gen 1 experience. No mechanics from later generations have been introduced—meaning no new types, no physical/special split, no weather effects, no damaging moves that alter stats, etc.
+Moves have been rebalanced to enhance the viability of certain Pokémon and to offer players a broader range of strategic options overall. The changes are deliberately minimalistic, ensuring that they remain true to the original Gen 1 experience. No mechanics from later generations have been introduced—meaning no new types, no physical/special split, no weather effects, etc.
 
 Feedback is welcome, as long as it aligns with the goal of maintaining the classic Gen 1 feel!
 
