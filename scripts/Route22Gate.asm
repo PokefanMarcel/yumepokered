@@ -3,15 +3,7 @@ Route22Gate_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, Route22Gate_ScriptPointers
 	ld a, [wRoute22GateCurScript]
-	call CallFunctionInTable
-	ld a, [wYCoord]
-	cp 4
-	ld a, ROUTE_23
-	jr c, .set_last_map
-	ld a, ROUTE_22
-.set_last_map
-	ld [wLastMap], a
-	ret
+	jp CallFunctionInTable ; marcelnote - removed y-coord check to update [wLastMap]
 
 Route22Gate_ScriptPointers:
 	def_script_pointers

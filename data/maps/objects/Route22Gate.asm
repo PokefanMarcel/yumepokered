@@ -10,10 +10,10 @@ Route22Gate_Object:
 	db $a ; border block
 
 	def_warp_events
-	warp_event 12,  7, LAST_MAP, 1 ; marcelnote - adjusted coords
-	warp_event 13,  7, LAST_MAP, 1 ; marcelnote - adjusted coords
-	warp_event 12,  0, LAST_MAP, 1 ; marcelnote - adjusted coords
-	warp_event 13,  0, LAST_MAP, 2 ; marcelnote - adjusted coords
+	warp_event 12,  7, ROUTE_22, 1 ; marcelnote - adjusted coords, was LAST_MAP
+	warp_event 13,  7, ROUTE_22, 1 ; marcelnote - adjusted coords, was LAST_MAP
+	warp_event 12,  0, ROUTE_23, 1 ; marcelnote - adjusted coords, was LAST_MAP
+	warp_event 13,  0, ROUTE_23, 2 ; marcelnote - adjusted coords, was LAST_MAP
 	warp_event  0,  3, ROUTE_22, 3 ; marcelnote - added for Route 28
 	warp_event  0,  4, ROUTE_22, 4 ; marcelnote - added for Route 28
 	warp_event  7,  7, ROUTE_22_GATE, 8 ; marcelnote - added 2nd floor
