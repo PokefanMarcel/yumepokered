@@ -11,10 +11,11 @@ _PokemonAcademy3FTeacherPresentationText::
 	cont "about #MON."
 	prompt
 
-_PokemonAcademy3FTeacherComeBackWhenText::
-	text "Come back when"
-	line "you have passed"
-	cont "the Junior test."
+_PokemonAcademy3FTeacherComeBackToSeeMeText::
+	text "Come back to see"
+	line "me after you"
+	cont "have passed the"
+	cont "Junior test."
 	done
 
 _PokemonAcademy3FTeacherTakeTestText::

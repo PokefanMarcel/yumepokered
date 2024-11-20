@@ -231,24 +231,25 @@ _PokemonAcademy2FYoungsterText::
 	cont "at battling!"
 	done
 
-_PokemonAcademy2FCriticalHitsIntroText::
+_PokemonAcademy2FCriticalHitsIntroText:: ; should also add that crits ignore stat changes, maybe advanced class?
 	text "Looked at the"
 	line "class notes!"
 
-	para "CRITICAL HITS."
+	para "CRITICAL HITS." ; CRITICAL HITS BASICS?
 	prompt
 
 _PokemonAcademy2FCriticalSpeedText::
 	text "A critical hit's"
-	line "chance depends"
-	cont "on the #MON's"
-	cont "SPEED stat."
+	line "chance depends on"
+	cont "the natural SPEED"
+	cont "of a #MON's"
+	cont "species."
 
 	para "The faster the"
-	line "#MON, the"
-	cont "higher the chance"
-	cont "to land critical"
-	cont "hits."
+	line "#MON species,"
+	cont "the higher the"
+	cont "chance to land"
+	cont "critical hits."
 	cont "Be quick!"
 	prompt
 
@@ -377,7 +378,60 @@ _PokemonAcademy2FLightScreenText::
 	para "Moves like WATER"
 	line "GUN or PSYBEAM"
 	cont "will do less"
-	cont "damage!@"
+	cont "damage!"
+	prompt
+
+_PokemonAcademy2FReflectLightScreenEndText::
+	text "Be careful!"
+	line "When the #MON"
+	cont "that set up LIGHT"
+	cont "SCREEN or REFLECT"
+	cont "switches out or"
+	cont "faints, the"
+	cont "effect ends.@"
+	text_waitbutton
+	text_end
+
+_PokemonAcademy2FSetDamageMovesIntroText::
+	text "Looked at the"
+	line "class notes!"
+
+	para "SET DAMAGE MOVES."
+	prompt
+
+_PokemonAcademy2FDragonRageSonicboomText::
+	text "Some moves do not"
+	line "rely on #MON's"
+	cont "stats to inflict"
+	cont "damage."
+
+	para "For instance,"
+	line "DRAGON RAGE and"
+	cont "SONICBOOM always"
+	cont "have the same"
+	cont "effect, no matter"
+	cont "how strong the"
+	cont "#MON using"
+	cont "them is."
+	prompt
+
+_PokemonAcademy2FNightShadeSeismicTossPsywaveText::
+	text "SEISMIC TOSS and"
+	line "NIGHT SHADE deal"
+	cont "damage based on"
+	cont "the user's level."
+
+	para "Finally, PSYWAVE"
+	line "also scales with"
+	cont "the user's level,"
+	cont "but its damage is"
+	cont "unpredictable."
+
+	para "At its strongest,"
+	line "it can be 3 times"
+	cont "more powerful"
+	cont "than at its"
+	cont "weakest!@"
 	text_waitbutton
 	text_end
 

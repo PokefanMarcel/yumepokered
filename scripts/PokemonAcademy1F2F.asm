@@ -21,6 +21,7 @@ PokemonAcademy1F2F_TextPointers:
 	dw_const PokemonAcademy2FCriticalHitsNotes,       TEXT_POKEMONACADEMY2F_CRITICAL_HITS_NOTES
 	dw_const PokemonAcademy2FSTABNotes,               TEXT_POKEMONACADEMY2F_STAB_NOTES
 	dw_const PokemonAcademy2FReflectLightScreenNotes, TEXT_POKEMONACADEMY2F_REFLECT_LIGHT_SCREEN_NOTES
+	dw_const PokemonAcademy2FSetDamageMovesNotes,     TEXT_POKEMONACADEMY2F_SET_DAMAGE_MOVES_NOTES
 	dw_const PokemonAcademy2FBlackboard,              TEXT_POKEMONACADEMY2F_BLACKBOARD
 
 PokemonAcademy1FReceptionistText:
@@ -79,20 +80,23 @@ PokemonAcademy2FTeacherText:
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .fail
+	jr z, .fail
 	SetEvent EVENT_PASSED_JUNIOR_TEST
+	ld a, SFX_GET_ITEM_1
+	call PlaySound
+	call WaitForSoundToFinish
 .passed
 	ld hl, .WellDone
-    call PrintText
-    rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+    jr .print_text
 .fail
 	ld a, SFX_DENIED
-	call PlaySound
+	call PlaySoundWaitForCurrent
 	call WaitForSoundToFinish
 	ld hl, .WrongAnswer
 	call PrintText
 .refused
 	ld hl, .ComeBackWhenReady
+.print_text
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
@@ -158,36 +162,36 @@ PokemonAcademy2FPhysicalSpecialNotes:
 	text_asm
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-	ld hl, .PokemonAcademy2FPhysicalSpecialIntroText
+	ld hl, .PhysicalSpecialIntroText
 	call PrintText
 	call KeepReadingNotes
 	jr nz, .doneReading
-	ld hl, .PokemonAcademy2FPhysicalSpecialTypesText
+	ld hl, .PhysicalSpecialTypesText
 	call PrintText
 	call KeepReadingNotes
 	jr nz, .doneReading
-	ld hl, .PokemonAcademy2FPhysicalTypesText
+	ld hl, .PhysicalTypesText
 	call PrintText
 	call KeepReadingNotes
 	jr nz, .doneReading
-	ld hl, .PokemonAcademy2FSpecialTypesText
+	ld hl, .SpecialTypesText
 	call PrintText
 .doneReading
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-.PokemonAcademy2FPhysicalSpecialIntroText:
+.PhysicalSpecialIntroText:
 	text_far _PokemonAcademy2FPhysicalSpecialIntroText
 	text_end
 
-.PokemonAcademy2FPhysicalSpecialTypesText:
+.PhysicalSpecialTypesText:
 	text_far _PokemonAcademy2FPhysicalSpecialTypesText
 	text_end
 
-.PokemonAcademy2FPhysicalTypesText:
+.PhysicalTypesText:
 	text_far _PokemonAcademy2FPhysicalTypesText
 	text_end
 
-.PokemonAcademy2FSpecialTypesText:
+.SpecialTypesText:
 	text_far _PokemonAcademy2FSpecialTypesText
 	text_end
 
@@ -196,36 +200,36 @@ PokemonAcademy2FCriticalHitsNotes:
 	text_asm
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-	ld hl, .PokemonAcademy2FCriticalHitsIntroText
+	ld hl, .CriticalHitsIntroText
 	call PrintText
 	call KeepReadingNotes
 	jr nz, .doneReading
-	ld hl, .PokemonAcademy2FCriticalSpeedText
+	ld hl, .CriticalSpeedText
 	call PrintText
 	call KeepReadingNotes
 	jr nz, .doneReading
-	ld hl, .PokemonAcademy2FIncreaseCritText
+	ld hl, .IncreaseCritText
 	call PrintText
 	call KeepReadingNotes
 	jr nz, .doneReading
-	ld hl, .PokemonAcademy2FHighCritMovesText
+	ld hl, .HighCritMovesText
 	call PrintText
 .doneReading
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-.PokemonAcademy2FCriticalHitsIntroText:
+.CriticalHitsIntroText:
 	text_far _PokemonAcademy2FCriticalHitsIntroText
 	text_end
 
-.PokemonAcademy2FCriticalSpeedText:
+.CriticalSpeedText:
 	text_far _PokemonAcademy2FCriticalSpeedText
 	text_end
 
-.PokemonAcademy2FIncreaseCritText:
+.IncreaseCritText:
 	text_far _PokemonAcademy2FIncreaseCritText
 	text_end
 
-.PokemonAcademy2FHighCritMovesText:
+.HighCritMovesText:
 	text_far _PokemonAcademy2FHighCritMovesText
 	text_end
 
@@ -234,29 +238,67 @@ PokemonAcademy2FReflectLightScreenNotes:
 	text_asm
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-	ld hl, .PokemonAcademy2FReflectLightScreenIntroText
+	ld hl, .ReflectLightScreenIntroText
 	call PrintText
 	call KeepReadingNotes
 	jr nz, .doneReading
-	ld hl, .PokemonAcademy2FReflectText
+	ld hl, .ReflectText
 	call PrintText
 	call KeepReadingNotes
 	jr nz, .doneReading
-	ld hl, .PokemonAcademy2FLightScreenText
+	ld hl, .LightScreenText
+	call PrintText
+	call KeepReadingNotes
+	jr nz, .doneReading
+	ld hl, .ReflectLightScreenEndText
 	call PrintText
 .doneReading
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-.PokemonAcademy2FReflectLightScreenIntroText:
+.ReflectLightScreenIntroText:
 	text_far _PokemonAcademy2FReflectLightScreenIntroText
 	text_end
 
-.PokemonAcademy2FReflectText:
+.ReflectText:
 	text_far _PokemonAcademy2FReflectText
 	text_end
 
-.PokemonAcademy2FLightScreenText:
+.LightScreenText:
 	text_far _PokemonAcademy2FLightScreenText
+	text_end
+
+.ReflectLightScreenEndText:
+	text_far _PokemonAcademy2FReflectLightScreenEndText
+	text_end
+
+
+PokemonAcademy2FSetDamageMovesNotes:
+	text_asm
+	ld a, $1
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	ld hl, .SetDamageMovesIntroText
+	call PrintText
+	call KeepReadingNotes
+	jr nz, .doneReading
+	ld hl, .DragonRageSonicboomText
+	call PrintText
+	call KeepReadingNotes
+	jr nz, .doneReading
+	ld hl, .NightShadeSeismicTossPsywaveText
+	call PrintText
+.doneReading
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+.SetDamageMovesIntroText:
+	text_far _PokemonAcademy2FSetDamageMovesIntroText
+	text_end
+
+.DragonRageSonicboomText:
+	text_far _PokemonAcademy2FDragonRageSonicboomText
+	text_end
+
+.NightShadeSeismicTossPsywaveText:
+	text_far _PokemonAcademy2FNightShadeSeismicTossPsywaveText
 	text_end
 
 
@@ -264,20 +306,20 @@ PokemonAcademy2FSTABNotes:
 	text_asm
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-	ld hl, .PokemonAcademy2FSTABIntroText
+	ld hl, .STABIntroText
 	call PrintText
 	call KeepReadingNotes
 	jr nz, .doneReading
-	ld hl, .PokemonAcademy2FSTABExplanationText
+	ld hl, .STABExplanationText
 	call PrintText
 .doneReading
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-.PokemonAcademy2FSTABIntroText:
+.STABIntroText:
 	text_far _PokemonAcademy2FSTABIntroText
 	text_end
 
-.PokemonAcademy2FSTABExplanationText:
+.STABExplanationText:
 	text_far _PokemonAcademy2FSTABExplanationText
 	text_end
 

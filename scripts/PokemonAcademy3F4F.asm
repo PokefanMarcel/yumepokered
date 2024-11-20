@@ -31,7 +31,8 @@ PokemonAcademy3FTeacherText:
 	ld hl, .Presentation
 	call PrintText
 	CheckEvent EVENT_PASSED_JUNIOR_TEST
-    jr z, .passJunior
+	ld hl, .ComeBackToSeeMe
+    jr z, .print_text
 	ld hl, .DoYouWantToTakeTheTest
 	call PrintText
 	call YesNoChoice
@@ -69,31 +70,30 @@ PokemonAcademy3FTeacherText:
 	and a
 	jr z, .fail
 	SetEvent EVENT_PASSED_SENIOR_TEST
+	ld a, SFX_GET_ITEM_1
+	call PlaySound
+	call WaitForSoundToFinish
 .passed
 	ld hl, .WellDone
-    call PrintText
-    rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-.passJunior
-	ld hl, .ComeBackWhen
-	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+    jr .print_text
 .fail
 	ld a, SFX_DENIED
-	call PlaySound
+	call PlaySoundWaitForCurrent
 	call WaitForSoundToFinish
 	ld hl, .WrongAnswer
 	call PrintText
 .refused
 	ld hl, .ComeBackWhenReady
-	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.print_text
+    call PrintText
+    rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Presentation
 	text_far _PokemonAcademy3FTeacherPresentationText
 	text_end
 
-.ComeBackWhen
-	text_far _PokemonAcademy3FTeacherComeBackWhenText
+.ComeBackToSeeMe
+	text_far _PokemonAcademy3FTeacherComeBackToSeeMeText
 	text_end
 
 .DoYouWantToTakeTheTest
@@ -162,28 +162,28 @@ PokemonAcademy3FDVsNotes:
 	text_asm
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-	ld hl, .PokemonAcademy3FDVsIntroText
+	ld hl, .DVsIntroText
 	call PrintText
 	call KeepReadingNotes
 	jr nz, .doneReading
-	ld hl, .PokemonAcademy3FDVsExplanationText
+	ld hl, .DVsExplanationText
 	call PrintText
 	call KeepReadingNotes
 	jr nz, .doneReading
-	ld hl, .PokemonAcademy3FDVsGrowthText
+	ld hl, .DVsGrowthText
 	call PrintText
 .doneReading
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-.PokemonAcademy3FDVsIntroText:
+.DVsIntroText:
 	text_far _PokemonAcademy3FDVsIntroText
 	text_end
 
-.PokemonAcademy3FDVsExplanationText:
+.DVsExplanationText:
 	text_far _PokemonAcademy3FDVsExplanationText
 	text_end
 
-.PokemonAcademy3FDVsGrowthText:
+.DVsGrowthText:
 	text_far _PokemonAcademy3FDVsGrowthText
 	text_end
 
@@ -192,28 +192,28 @@ PokemonAcademy3FMistHazeNotes:
 	text_asm
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-	ld hl, .PokemonAcademy3FMistHazeIntroText
+	ld hl, .MistHazeIntroText
 	call PrintText
 	call KeepReadingNotes
 	jr nz, .doneReading
-	ld hl, .PokemonAcademy3FMistText
+	ld hl, .MistText
 	call PrintText
 	call KeepReadingNotes
 	jr nz, .doneReading
-	ld hl, .PokemonAcademy3FHazeText
+	ld hl, .HazeText
 	call PrintText
 .doneReading
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-.PokemonAcademy3FMistHazeIntroText:
+.MistHazeIntroText:
 	text_far _PokemonAcademy3FMistHazeIntroText
 	text_end
 
-.PokemonAcademy3FMistText:
+.MistText:
 	text_far _PokemonAcademy3FMistText
 	text_end
 
-.PokemonAcademy3FHazeText:
+.HazeText:
 	text_far _PokemonAcademy3FHazeText
 	text_end
 
@@ -222,20 +222,20 @@ PokemonAcademy3FHyperBeamNotes:
 	text_asm
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-	ld hl, .PokemonAcademy3FHyperBeamIntroText
+	ld hl, .HyperBeamIntroText
 	call PrintText
 	call KeepReadingNotes
 	jr nz, .doneReading
-	ld hl, .PokemonAcademy3FHyperBeamExplanationText
+	ld hl, .HyperBeamExplanationText
 	call PrintText
 .doneReading
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-.PokemonAcademy3FHyperBeamIntroText:
+.HyperBeamIntroText:
 	text_far _PokemonAcademy3FHyperBeamIntroText
 	text_end
 
-.PokemonAcademy3FHyperBeamExplanationText:
+.HyperBeamExplanationText:
 	text_far _PokemonAcademy3FHyperBeamExplanationText
 	text_end
 
@@ -244,44 +244,44 @@ PokemonAcademy3FStatExpNotes:
 	text_asm
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-	ld hl, .PokemonAcademy3FStatExpIntroText
+	ld hl, .StatExpIntroText
 	call PrintText
 	call KeepReadingNotes
 	jr nz, .doneReading
-	ld hl, .PokemonAcademy3FStatExpBattleText
+	ld hl, .StatExpBattleText
 	call PrintText
 	call KeepReadingNotes
 	jr nz, .doneReading
-	ld hl, .PokemonAcademy3FStatExpGainText
+	ld hl, .StatExpGainText
 	call PrintText
 	call KeepReadingNotes
 	jr nz, .doneReading
-	ld hl, .PokemonAcademy3FStatExpUseText
+	ld hl, .StatExpUseText
 	call PrintText
 	call KeepReadingNotes
 	jr nz, .doneReading
-	ld hl, .PokemonAcademy3FStatExpMaxText
+	ld hl, .StatExpMaxText
 	call PrintText
 .doneReading
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-.PokemonAcademy3FStatExpIntroText:
+.StatExpIntroText:
 	text_far _PokemonAcademy3FStatExpIntroText
 	text_end
 
-.PokemonAcademy3FStatExpBattleText:
+.StatExpBattleText:
 	text_far _PokemonAcademy3FStatExpBattleText
 	text_end
 
-.PokemonAcademy3FStatExpGainText:
+.StatExpGainText:
 	text_far _PokemonAcademy3FStatExpGainText
 	text_end
 
-.PokemonAcademy3FStatExpUseText:
+.StatExpUseText:
 	text_far _PokemonAcademy3FStatExpUseText
 	text_end
 
-.PokemonAcademy3FStatExpMaxText:
+.StatExpMaxText:
 	text_far _PokemonAcademy3FStatExpMaxText
 	text_end
 
@@ -303,20 +303,20 @@ PokemonAcademy4FGameboyKid2Text:
 PokemonAcademy4FGrannyText:
 	text_asm
 	call SaveScreenTilesToBuffer2
-	ld hl, .PokemonAcademy4FGrannyIntroText
+	ld hl, .IntroText
 	call PrintText
 	;ld hl, TextScriptPromptButton
 	;call TextCommandProcessor
 	CheckEvent EVENT_PASSED_SENIOR_TEST
 	jr z, .notPassed
-	ld hl, .PokemonAcademy4FGrannyPassedTestsText
+	ld hl, .PassedTestsText
 	call PrintText
 	ld d, KADABRA
 	callfar IsMonInParty ; outputs [wWhichPokemon] = index of Kadabra in party (0 to 5)
 	jr z, .done
 	ld hl, TextScriptPromptButton
 	call TextCommandProcessor
-	ld hl, .PokemonAcademy4FGrannyKadabraCapableText
+	ld hl, .KadabraCapableText
 	call PrintText
 	ld a, $01
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
@@ -324,7 +324,7 @@ PokemonAcademy4FGrannyText:
 	ld a, [wCurrentMenuItem]
 	and a
 	jr nz, .done
-	ld hl, .PokemonAcademy4FGrannyGetToWorkText
+	ld hl, .GetToWorkText
 	call PrintText
 	ld a, KADABRA
 	call PlayCry
@@ -334,37 +334,37 @@ PokemonAcademy4FGrannyText:
 	call Delay3
 	call Delay3
 	call GBFadeInFromBlack
-	ld hl, .PokemonAcademy4FGrannyGoodProgressText
+	ld hl, .GoodProgressText
 	call PrintText
 	callfar EvolveMonInteraction    ; actual evolution and map reloading
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .notPassed
-	ld hl, .PokemonAcademy4FGrannyBitBusyText
+	ld hl, .BitBusyText
 	call PrintText
 .done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-.PokemonAcademy4FGrannyIntroText
+.IntroText
 	text_far _PokemonAcademy4FGrannyIntroText
 	text_end
 
-.PokemonAcademy4FGrannyBitBusyText:
+.BitBusyText:
 	text_far _PokemonAcademy4FGrannyBitBusyText
 	text_end
 
-.PokemonAcademy4FGrannyPassedTestsText:
+.PassedTestsText:
 	text_far _PokemonAcademy4FGrannyPassedTestsText
 	text_end
 
-.PokemonAcademy4FGrannyKadabraCapableText:
+.KadabraCapableText:
 	text_far _PokemonAcademy4FGrannyKadabraCapableText
 	text_end
 
-.PokemonAcademy4FGrannyGetToWorkText:
+.GetToWorkText:
 	text_far _PokemonAcademy4FGrannyGetToWorkText
 	text_end
 
-.PokemonAcademy4FGrannyGoodProgressText:
+.GoodProgressText:
 	text_far _PokemonAcademy4FGrannyGoodProgressText
 	text_end
 
