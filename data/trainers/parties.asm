@@ -760,7 +760,7 @@ KogaData:  ; marcelnote - adjusted
 
 SabrinaData:  ; marcelnote - adjusted
 	;db $FF, 38, KADABRA, 37, MR_MIME, 38, VENOMOTH, 43, ALAKAZAM, 0 ; original
-	db $FF, 40, KADABRA, 39, MR_MIME, 42, BUTTERFREE, 45, ALAKAZAM, 0 ; new
+	db $FF, 40, KADABRA, 39, MR_MIME, 43, BUTTERFREE, 45, ALAKAZAM, 0 ; new
 	db $FF, 58, KADABRA, 58, WIGGLYTUFF, 60, MR_MIME, 58, GENGAR, 66, BUTTERFREE, 62, ALAKAZAM, 0 ; new rematch team ; STARMIE?
 
 BlaineData:  ; marcelnote - adjusted

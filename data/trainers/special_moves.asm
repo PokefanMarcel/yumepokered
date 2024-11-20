@@ -168,17 +168,17 @@ SpecialTrainerMoves:
 	db $ff
 
 	db SABRINA, 1
-	; Kadabra
+	; Kadabra - DISABLE, PSYWAVE, RECOVER, PSYCHIC_M
 	db 1, 2, PSYWAVE
-	; Mr. Mime
+	; Mr. Mime -  SUBSTITUTE, LIGHT_SCREEN, PSYBEAM, MIMIC
 	db 2, 1, SUBSTITUTE
 	db 2, 2, LIGHT_SCREEN
 	db 2, 4, MIMIC
-	; Butterfree
+	; Butterfree - SLEEP_POWDER, PSYCHIC_M, RAZOR_WIND, PSYWAVE
 	db 3, 1, SLEEP_POWDER
 	db 3, 2, PSYCHIC_M
 	db 3, 4, PSYWAVE
-	; Alakazam
+	; Alakazam - REFLECT, PSYWAVE, RECOVER, PSYCHIC_M
 	db 4, 1, REFLECT
 	db 4, 2, PSYWAVE
 	db $ff
