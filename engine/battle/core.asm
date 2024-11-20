@@ -4910,8 +4910,9 @@ ApplyAttackToEnemyPokemon:
 	jr ApplyDamageToEnemyPokemon
 .specialDamage
 	ld hl, wBattleMonLevel
-	ld a, [hl]
-	ld b, a ; Seismic Toss deals damage equal to the user's level
+	;ld a, [hl]
+	;ld b, a ; Seismic Toss deals damage equal to the user's level
+	ld b, [hl] ; marcelnote - optimized
 	ld a, [wPlayerMoveNum]
 	cp SEISMIC_TOSS
 	jr z, .storeDamage
@@ -4923,26 +4924,29 @@ ApplyAttackToEnemyPokemon:
 	ld b, DRAGON_RAGE_DAMAGE ; 40
 	cp DRAGON_RAGE
 	jr z, .storeDamage
-; Psywave
+; Psywave ; marcelnote - damage now in [.5*lvl, 1.5*lvl) instead of [1, 1.5*lvl)
 	ld a, [hl]
 	ld b, a
-	srl a
+	srl b  ; b = level * 0.5
 	add b
-	ld b, a ; b = level * 1.5
-; loop until a random number in the range [1, b) is found
+	ld c, a ; c = level * 1.5
+; loop until a random number in the range [1, b) is found ; marcelnote - now [b, c), excluding 0
 .loop
 	call BattleRandom
 	and a
-	jr z, .loop
+	jr z, .loop  ; if a=0, loop
 	cp b
-	jr nc, .loop
+	jr c, .loop  ; if a<b, loop
+	cp c
+	jr nc, .loop ; if a>=c, loop
 	ld b, a
 .storeDamage ; store damage value at b
 	ld hl, wDamage
 	xor a
 	ld [hli], a
-	ld a, b
-	ld [hl], a
+	;ld a, b
+	;ld [hl], a
+	ld [hl], b ; marcelnote - optimized
 
 ApplyDamageToEnemyPokemon:
 	ld hl, wDamage
@@ -4962,8 +4966,9 @@ ApplyDamageToEnemyPokemon:
 	ld [wHPBarOldHP], a
 	sub b
 	ld [wEnemyMonHP + 1], a
-	ld a, [hl]
-	ld b, a
+	;ld a, [hl]
+	;ld b, a
+	ld b, [hl] ; marcelnote - optimized
 	ld a, [wEnemyMonHP]
 	ld [wHPBarOldHP+1], a
 	sbc b
@@ -5029,8 +5034,9 @@ ApplyAttackToPlayerPokemon:
 	jr ApplyDamageToPlayerPokemon
 .specialDamage
 	ld hl, wEnemyMonLevel
-	ld a, [hl]
-	ld b, a
+	;ld a, [hl]
+	;ld b, a
+	ld b, [hl] ; marcelnote - optimized
 	ld a, [wEnemyMoveNum]
 	cp SEISMIC_TOSS
 	jr z, .storeDamage
@@ -5042,28 +5048,32 @@ ApplyAttackToPlayerPokemon:
 	ld b, DRAGON_RAGE_DAMAGE
 	cp DRAGON_RAGE
 	jr z, .storeDamage
-; Psywave
+; Psywave ; marcelnote - damage now in [.5*lvl, 1.5*lvl) instead of [1, 1.5*lvl)
 	ld a, [hl]
 	ld b, a
-	srl a
+	srl b  ; b = attacker's level * 0.5
 	add b
-	ld b, a ; b = attacker's level * 1.5
+	ld c, a ; c = attacker's level * 1.5
 ; loop until a random number in the range [0, b) is found
 ; this differs from the range when the player attacks, which is [1, b)
 ; it's possible for the enemy to do 0 damage with Psywave, but the player always does at least 1 damage
+; marcelnote - fixed this desync issue by adding check for a=0, along with new damage range
 .loop
 	call BattleRandom
-	and a        ; marcelnote - these two lines fix a desync problem
-	jr z, .loop  ;              from PsyWave (fix from pokered Wiki)
+	and a
+	jr z, .loop  ; if a=0, loop
 	cp b
-	jr nc, .loop
+	jr c, .loop ; if a<b, loop
+	cp c
+	jr nc, .loop ; if a>=c, loop
 	ld b, a
 .storeDamage
 	ld hl, wDamage
 	xor a
 	ld [hli], a
-	ld a, b
-	ld [hl], a
+	;ld a, b
+	;ld [hl], a
+	ld [hl], b ; marcelnote - optimized
 
 ApplyDamageToPlayerPokemon:
 	ld hl, wDamage

@@ -159,7 +159,7 @@ Moves:
 	move DIZZY_PUNCH,  CONFUSION_SIDE_EFFECT,       80, NORMAL,       100, 10 ; marcelnote - changed from NO_ADDITIONAL_EFFECT, pwr 70
 	move SPORE,        SLEEP_EFFECT,                 0, GRASS,        100, 15
 	move FLASH,        ACCURACY_DOWN1_EFFECT,        0, NORMAL,        70, 20
-	move PSYWAVE,      SPECIAL_DAMAGE_EFFECT,        1, PSYCHIC_TYPE,  80, 15
+	move PSYWAVE,      SPECIAL_DAMAGE_EFFECT,        1, PSYCHIC_TYPE, 100, 15 ; marcelnote - changed from acc 80
 	move SPLASH,       SPLASH_EFFECT,                0, NORMAL,       100, 40
 	move ACID_ARMOR,   DEFENSE_UP2_EFFECT,           0, POISON,       100, 40
 	move CRABHAMMER,   NO_ADDITIONAL_EFFECT,        90, WATER,         85, 10
