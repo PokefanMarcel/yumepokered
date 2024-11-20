@@ -4,8 +4,8 @@ OrangeRoute1_Script:
 
 OrangeRoute1_TextPointers:
 	def_text_pointers
-	;dw_const Route28SignText, TEXT_ROUTE28_SIGN
+	dw_const OrangeRoute1SignLabText, TEXT_ORANGEROUTE1_SIGN_LAB
 
-;Route28SignText:
-;	text_far _Route28SignText
-;	text_end
+OrangeRoute1SignLabText:
+	text_far _OrangeRoute1SignLabText
+	text_end

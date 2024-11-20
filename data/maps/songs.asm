@@ -203,13 +203,13 @@ MapSongBanks::
 	db MUSIC_CINNABAR, BANK(Music_Cinnabar)                ; MANDARIN_SURF_SHOP       ; marcelnote - new location
 	db MUSIC_CINNABAR, BANK(Music_Cinnabar)                ; MANDARIN_HOTEL           ; marcelnote - new location
 	db MUSIC_CINNABAR, BANK(Music_Cinnabar)                ; MANDARIN_SILPH_CO        ; marcelnote - new location
-	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; DR_SEBASTIANS_LAB        ; marcelnote - new location
+	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; DR_JABARAS_LAB           ; marcelnote - new location
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne)                   ; MANDARIN_DOCK            ; marcelnote - new location
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne)                   ; ORANGE_FERRY_DECK        ; marcelnote - new location
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne)                   ; ORANGE_FERRY_OUTSIDE     ; marcelnote - new location
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne)                   ; ORANGE_FERRY_ROOMS       ; marcelnote - new location
-	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; SILPH_FACTORY_1F         ; marcelnote - new location
-	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; SILPH_FACTORY_2F         ; marcelnote - new location
+	db MUSIC_SILPH_CO, BANK(Music_SilphCo)                 ; SILPH_FACTORY_1F         ; marcelnote - new location
+	db MUSIC_SILPH_CO, BANK(Music_SilphCo)                 ; SILPH_FACTORY_2F         ; marcelnote - new location
 	db MUSIC_CITIES2, BANK(Music_Cities2)                  ; ROUTE_22_OLD_ROD_HOUSE   ; marcelnote - new location
 	db MUSIC_GYM, BANK(Music_Gym)                          ; ROUTE_22_GATE            ; marcelnote - changed from MUSIC_DUNGEON2
 	db MUSIC_GYM, BANK(Music_Gym)                          ; ROUTE_22_GATE_3F         ; marcelnote - was ROUTE_12_GATE_2F
