@@ -1,4 +1,4 @@
 ; marcelnote - new location
-;_Route28SignText::
-;	text "ROUTE 28"
-;	done
+_OrangeRoute1SignLabText::
+	text "DR.JABARA's LAB"
+	done

@@ -223,7 +223,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const MANDARIN_SURF_SHOP,             4,  4 ; marcelnote - new map
 	map_const MANDARIN_HOTEL,                33,  6 ; marcelnote - new map
 	map_const MANDARIN_SILPH_CO,              4, 25 ; marcelnote - new map
-	map_const DR_SEBASTIANS_LAB,              6,  4 ; marcelnote - new map
+	map_const DR_JABARAS_LAB,                 6,  4 ; marcelnote - new map
 	map_const MANDARIN_DOCK,                 11,  6 ; marcelnote - new map
 	map_const ORANGE_FERRY_DECK,             12,  4 ; marcelnote - new map
 	map_const ORANGE_FERRY_OUTSIDE,          13,  6 ; marcelnote - new map

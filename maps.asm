@@ -1191,10 +1191,10 @@ INCLUDE "scripts/SilphFactory2F.asm"
 INCLUDE "data/maps/objects/SilphFactory2F.asm"
 SilphFactory2F_Blocks:: INCBIN "maps/SilphFactory2F.blk"
 
-INCLUDE "data/maps/headers/DrSebastiansLab.asm" ; marcelnote - new location
-INCLUDE "scripts/DrSebastiansLab.asm"
-INCLUDE "data/maps/objects/DrSebastiansLab.asm"
-DrSebastiansLab_Blocks:: INCBIN "maps/DrSebastiansLab.blk"
+INCLUDE "data/maps/headers/DrJabarasLab.asm" ; marcelnote - new location
+INCLUDE "scripts/DrJabarasLab.asm"
+INCLUDE "data/maps/objects/DrJabarasLab.asm"
+DrJabarasLab_Blocks:: INCBIN "maps/DrJabarasLab.blk"
 
 INCLUDE "data/maps/headers/CeladonGrove.asm" ; marcelnote - new location
 INCLUDE "scripts/CeladonGrove.asm"

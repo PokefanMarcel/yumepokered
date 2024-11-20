@@ -200,7 +200,7 @@ WildDataPointers:
 	dw NothingWildMons                 ; MANDARIN_SURF_SHOP           ; marcelnote - new location
 	dw NothingWildMons                 ; MANDARIN_HOTEL               ; marcelnote - new location
 	dw NothingWildMons                 ; MANDARIN_SILPH_CO            ; marcelnote - new location
-	dw NothingWildMons                 ; DR_SEBASTIANS_LAB            ; marcelnote - new location
+	dw NothingWildMons                 ; DR_JABARAS_LAB               ; marcelnote - new location
 	dw NothingWildMons                 ; MANDARIN_DOCK                ; marcelnote - new location
 	dw NothingWildMons                 ; ORANGE_FERRY_DECK            ; marcelnote - new location
 	dw NothingWildMons                 ; ORANGE_FERRY_OUTSIDE         ; marcelnote - new location
