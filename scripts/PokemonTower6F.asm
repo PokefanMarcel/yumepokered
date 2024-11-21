@@ -24,6 +24,10 @@ PokemonTower6F_ScriptPointers:
 	dw_const PokemonTower6FGhostBattleScript,       SCRIPT_POKEMONTOWER6F_GHOST_BATTLE  ; marcelnote - postgame Agatha event
 
 PokemonTower6FDefaultScript:
+IF DEF(_DEBUG) ; marcelnote - added to skip in debug mode
+	call DebugPressedOrHeldB
+	ret nz
+ENDC
 	CheckEvent EVENT_BEAT_GHOST_MAROWAK
 	jp nz, PokemonTower6FCheckGhostEncounterScript ; marcelnote - postgame Agatha event, was jp nz, CheckFightingMapTrainers
 	ld hl, PokemonTower6FMarowakCoords
