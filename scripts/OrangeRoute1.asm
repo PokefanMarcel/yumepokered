@@ -1,5 +1,6 @@
 ; marcelnote - new location
 OrangeRoute1_Script:
+	ResetEvent EVENT_JABARA_RUNNING_TESTS
 	jp EnableAutoTextBoxDrawing
 
 OrangeRoute1_TextPointers:

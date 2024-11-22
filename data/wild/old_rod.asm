@@ -41,6 +41,7 @@ OldRodData:
 	dbw MT_MOON_SQUARE,      .Group3 ; marcelnote - new map
 	dbw CELADON_GROVE,       .Group5 ; marcelnote - new map
 	dbw MT_SILVER_2F,        .Group6 ; marcelnote - new map
+	dbw DR_JABARAS_LAB,      .Group7 ; marcelnote - new map
 	db -1 ; end
 
 ; fishing groups
@@ -88,5 +89,11 @@ OldRodData:
 	db 7, POLIWAG
 	db 5, GOLDEEN
 	db 7, GOLDEEN
+	db 5, MAGIKARP
+	db 7, MAGIKARP
+
+.Group7: ; DR_JABARAS_LAB
+	db 3
+	db 3, MAGIKARP
 	db 5, MAGIKARP
 	db 7, MAGIKARP

@@ -88,6 +88,28 @@ _MrFujisHouseMrFujiPokedexText::
 	line "clipped out!"
 	done
 
+;_OaksLabOakDeliverParcelText:: ; example of structure for Oak parcel delivery
+;	text "OAK: Oh, <PLAYER>!"
+
+;	para "How is my old"
+;	line "#MON?"
+
+;	para "Well, it seems to"
+;	line "like you a lot."
+
+;	para "You must be"
+;	line "talented as a"
+;	cont "#MON trainer!"
+
+;	para "What? You have"
+;	line "something for me?"
+
+;	para "<PLAYER> delivered"
+;	line "OAK's PARCEL.@"
+;	text_end
+
+; <PLAYER> hands over FUJI's NOTES.
+
 _MrFujisHouseMrFujiHereIsThePassText:: ; marcelnote - new
 	text "MR.FUJI: <PLAYER>."
 
