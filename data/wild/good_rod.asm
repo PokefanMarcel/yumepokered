@@ -67,7 +67,7 @@ GoodRodData:
 	db 13, GOLDEEN
 	db 15, GOLDEEN
 	db 13, HORSEA
-	db 13, PSYDUCK
+	db 13, SEEL ; early access to Seel (there in anime)
 
 .Group3: ; PALLET_TOWN, VERMILION_CITY, ROUTE_11, VERMILION_DOCK
 	db 6
