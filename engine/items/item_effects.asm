@@ -66,7 +66,7 @@ ItemUsePtrTable:
 	dw ItemUseEvoStone   ; LEAF_STONE
 	dw UnusableItem      ; CARD_KEY ; marcelnote - was ItemUseCardKey but not used because didn't work
 	dw UnusableItem      ; NUGGET
-	dw UnusableItem      ; FUJIS_NOTES ; marcelnote - new, was ITEM_32
+	dw ItemUseFujisNotes ; FUJIS_NOTES ; marcelnote - new, was ITEM_32
 	dw ItemUsePokeDoll   ; POKE_DOLL
 	dw ItemUseMedicine   ; FULL_HEAL
 	dw ItemUseMedicine   ; REVIVE
@@ -1691,7 +1691,7 @@ ItemUseXStat:
 	ld [hl], a ; restore [wPlayerMoveNum]
 	ret
 
-ItemUsePokeFlute:
+ItemUsePokeFlute: ; marcelnote - added Mew
 	ld a, [wIsInBattle]
 	and a
 	jr nz, .inBattle
@@ -1723,7 +1723,23 @@ ItemUsePokeFlute:
 	call PrintText
 	SetEvent EVENT_FIGHT_ROUTE16_SNORLAX
 	ret
-.noSnorlaxToWakeUp
+.noSnorlaxToWakeUp ; marcelnote - now we also check for Mew
+	cp CELADON_GROVE
+	jr nz, .noMewToCall
+	;CheckEvent EVENT_JABARA_RETURNED_FLUTE ; could remove this to make it accessible earlier
+	;jr nz, .noMewToCall
+	CheckEvent EVENT_BEAT_MEW
+	jr nz, .noMewToCall
+	CheckHideShow HS_CELADON_GROVE_MEW
+	jr z, .noMewToCall
+	ld hl, CeladonGroveMewFluteCoords
+	call ArePlayerCoordsInArray
+	jr nc, .noMewToCall
+	ld hl, PlayedFluteHadEffectText
+	call PrintText
+	callfar CeladonGroveMewAppearsScript
+	ret
+.noMewToCall
 	ld hl, PlayedFluteNoEffectText
 	jp PrintText
 .inBattle
@@ -1801,9 +1817,16 @@ Route12SnorlaxFluteCoords:
 	dbmapcoord 11, 62 ; one space East of Snorlax
 	db -1 ; end
 
-Route16SnorlaxFluteCoords:
-	dbmapcoord 27, 10 ; one space East of Snorlax
-	dbmapcoord 25, 10 ; one space West of Snorlax
+Route16SnorlaxFluteCoords: ; marcelnote - was changed for new map size
+	dbmapcoord 31, 12 ; one space West of Snorlax ; was 25, 10
+	dbmapcoord 29, 12 ; one space East of Snorlax ; was 27, 10
+	db -1 ; end
+
+CeladonGroveMewFluteCoords: ; marcelnote - new
+	dbmapcoord  8, 41
+	dbmapcoord  9, 41
+	dbmapcoord  8, 42
+	dbmapcoord  9, 42
 	db -1 ; end
 
 PlayedFluteNoEffectText:
@@ -2292,6 +2315,10 @@ ItemUseNotYoursToUse:
 	ld hl, ItemUseNotYoursToUseText
 	jr ItemUseFailed
 
+ItemUseFujisNotes:
+	ld hl, ItemUseFujisNotesText
+	jr ItemUseFailed
+
 ThrowBallAtTrainerMon:
 	call RunDefaultPaletteCommand
 	call LoadScreenTilesFromBuffer1 ; restore saved screen
@@ -2327,6 +2354,10 @@ ItemUseNotTimeText:
 
 ItemUseNotYoursToUseText:
 	text_far _ItemUseNotYoursToUseText
+	text_end
+
+ItemUseFujisNotesText: ; marcelnote - new
+	text_far _ItemUseFujisNotesText
 	text_end
 
 ItemUseNoEffectText:

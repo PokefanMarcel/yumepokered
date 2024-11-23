@@ -114,6 +114,15 @@ _CeladonGroveShrineSignText::
 	line "SHRINE"
 	done
 
+_CeladonGroveMelodyEchoesText::
+	text "The melody echoes"
+	line "in the grove."
+	prompt
+
+_MewBattleText::
+	text "Mew!@"
+	text_end
+
 ;	text "You can take"
 ;	line "was built to"
 ;	cont "honor"
