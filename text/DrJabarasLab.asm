@@ -60,9 +60,9 @@ _DrJabarasLabNeedTimeText::
 	done
 
 _DrJabarasLabExperimentsOverText::
-	;text "Oh, it's you!"
-	text "My tests were a"
-	line "complete success!"
+	text "Oh, it's you!"
+	line "My tests were a"
+	cont "complete success!"
 
 	para "Thanks to your"
 	line "# FLUTE, I've"
