@@ -81,21 +81,26 @@ MrFujisHouseNidorinoText:
 	call PlayCry
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-MrFujisHouseMrFujiText: ; marcelnote - optimized
+MrFujisHouseMrFujiText: ; marcelnote - optimized and added Orange pass dialogue
 	text_asm
 	CheckEvent EVENT_GOT_ORANGE_PASS
-	ld hl, .GoodLuckText
+	ld hl, .BeCarefulText
 	jr nz, .print_text
+	CheckEvent EVENT_GAVE_FUJIS_NOTES
+	ld hl, .TakeThisText
+	jr nz, .gaveFujisNotes ; this jump should never happen because giving the Notes frees up one spot in the bag
 	ld b, FUJIS_NOTES
 	call IsItemInBag
 	jr z, .no_fujis_notes
 	call MrFujisHouseScript_RemoveFujisNotes ; add text to say that player handed notes?
-	ld hl, .HereIsThePassText
+	SetEvent EVENT_GAVE_FUJIS_NOTES
+	ld hl, .PlayerGaveNotesText
+.gaveFujisNotes
 	call PrintText
 	lb bc, ORANGE_PASS, 1
 	call GiveItem
 	ld hl, .MakeRoomText
-	jr nc, .print_text
+	jr nc, .print_text ; should never happen either
 	SetEvent EVENT_GOT_ORANGE_PASS
 	ld hl, .ReceivedOrangePassText
 	jr .print_text
@@ -128,16 +133,6 @@ MrFujisHouseMrFujiText: ; marcelnote - optimized
 	text_far _MrFujisHouseMrFujiPokeFluteExplanationText
 	text_end
 
-.HereIsThePassText: ; marcelnote - new
-	text_far _MrFujisHouseMrFujiHereIsThePassText
-	text_end
-
-.ReceivedOrangePassText: ; marcelnote - new
-	text_far _MrFujisHouseMrFujiReceivedOrangePassText
-	sound_get_key_item
-	text_far _MrFujisHouseMrFujiOrangePassExplanationText
-	text_end
-
 .MakeRoomText:
 	text_far _MrFujisHouseMrFujiMakeRoomText
 	text_end
@@ -146,8 +141,24 @@ MrFujisHouseMrFujiText: ; marcelnote - optimized
 	text_far _MrFujisHouseMrFujiHasMyFluteHelpedYouText
 	text_end
 
-.GoodLuckText: ; marcelnote - new
-	text_far _MrFujisHouseMrFujiGoodLuckText
+.PlayerGaveNotesText: ; marcelnote - new
+	text_far _MrFujisHouseMrFujiPlayerGaveNotesText
+	sound_get_item_1
+	text_far _MrFujisHouseMrFujiThankYouText
+	text_end
+
+.TakeThisText: ; marcelnote - new
+	text_far _MrFujisHouseMrFujiTakeThisText
+	text_end
+
+.ReceivedOrangePassText: ; marcelnote - new
+	text_far _MrFujisHouseMrFujiReceivedOrangePassText
+	sound_get_key_item
+	text_far _MrFujisHouseMrFujiOrangePassExplanationText
+	text_end
+
+.BeCarefulText: ; marcelnote - new
+	text_far _MrFujisHouseMrFujiBeCarefulText
 	text_end
 
 MrFujisHouseMrFujiPokedexText:

@@ -88,33 +88,54 @@ _MrFujisHouseMrFujiPokedexText::
 	line "clipped out!"
 	done
 
-;_OaksLabOakDeliverParcelText:: ; example of structure for Oak parcel delivery
-;	text "OAK: Oh, <PLAYER>!"
+_MrFujisHouseMrFujiPlayerGaveNotesText:: ; marcelnote - new
+	text "MR.FUJI: <PLAYER>,"
+	line "is your quest"
+	cont "going well?"
 
-;	para "How is my old"
-;	line "#MON?"
+	para "Hmm? You found"
+	line "something?"
 
-;	para "Well, it seems to"
-;	line "like you a lot."
+	para "<PLAYER> gave"
+	line "FUJI's NOTES.@"
+	text_end
 
-;	para "You must be"
-;	line "talented as a"
-;	cont "#MON trainer!"
+_MrFujisHouseMrFujiThankYouText:: ; marcelnote - new
+	text_start
+	para "My research notes!"
+	line "I thought they"
+	cont "were destroyed."
 
-;	para "What? You have"
-;	line "something for me?"
+	para "Thank you for"
+	line "bringing them"
+	cont "back. They could"
+	cont "have fallen into"
+	cont "the wrong hands."
 
-;	para "<PLAYER> delivered"
-;	line "OAK's PARCEL.@"
-;	text_end
+	para "You know about"
+	line "CINNABAR, then?"
 
-; <PLAYER> hands over FUJI's NOTES.
+	para "What happened"
+	line "there... I would"
+	cont "rather leave it"
+	cont "in the past."
 
-_MrFujisHouseMrFujiHereIsThePassText:: ; marcelnote - new
-	text "MR.FUJI: <PLAYER>."
+	para "I do not have the"
+	line "answers you seek,"
+	cont "but I know some-"
+	cont "one who might."
 
-	para "Here is the"
-	line "ORANGE PASS."
+	para "DR.JABARA was part"
+	line "of my research"
+	cont "team on CINNABAR."
+
+	para "I've heard he set"
+	line "up a new lab on"
+	cont "MANDARIN ISLAND."
+	; fallthrough
+_MrFujisHouseMrFujiTakeThisText:: ; marcelnote - new
+	para "Here, take this."
+	line "You will need it."
 	prompt
 
 _MrFujisHouseMrFujiReceivedOrangePassText:: ; marcelnote - new
@@ -127,10 +148,24 @@ _MrFujisHouseMrFujiReceivedOrangePassText:: ; marcelnote - new
 _MrFujisHouseMrFujiOrangePassExplanationText:: ; marcelnote - new
 	text_start
 
-	para "Travel with this"
-	line "ORANGE PASS!"
+	para "This pass lets you"
+	line "board the ferry"
+	cont "from VERMILION to"
+	cont "MANDARIN ISLAND."
+
+	para "You should find"
+	line "DR.JABARA there."
 	done
 
-_MrFujisHouseMrFujiGoodLuckText:: ; marcelnote - new
-	text "Good luck!"
+_MrFujisHouseMrFujiBeCarefulText:: ; marcelnote - new
+	text "MR.FUJI: DR.JABARA"
+	line "might have some"
+	cont "answers for you."
+
+	para "But be careful."
+	line "Although he is a"
+	cont "gifted scientist,"
+	cont "his methods can"
+	cont "sometimes be"
+	cont "questionable..."
 	done
