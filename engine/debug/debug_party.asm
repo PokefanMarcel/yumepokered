@@ -189,6 +189,7 @@ DebugItemsList:
 	db SILPH_SCOPE, 1 ; marcelnote - added
 	db ORANGE_PASS, 1 ; marcelnote - added
 	;db SURFBOARD, 1 ; marcelnote - added
+	db POKE_FLUTE, 1 ; marcelnote - added
 	db -1 ; end
 
 DebugKeyItemsList:    ; marcelnote - new for Key Items pocket

@@ -244,6 +244,7 @@ DEF SHOW EQU $15
 	const HS_CINNABAR_VOLCANO_2F_ITEM_2    ; F3 ; marcelnote - Ultra Ball
 	const HS_CINNABAR_VOLCANO_2F_ITEM_3    ; F4 ; marcelnote - Nugget
 	const HS_MANDARIN_HOTEL_ITEM_1              ; marcelnote - Max Elixir
+	const HS_CELADON_GROVE_MEW                  ; marcelnote - Mew
 	const HS_CELADON_GROVE_ITEM_1               ; marcelnote - Leaf Stone
 	const HS_CELADON_GROVE_ITEM_2               ; marcelnote - Great Ball
 	const HS_SILPH_FACTORY_1F_ROCKET_1          ; marcelnote - Rocket 1
@@ -263,7 +264,7 @@ DEF SHOW EQU $15
 	const HS_MT_SILVER_2F_FULL_RESTORE          ; marcelnote - Full Restore
 DEF NUM_HS_OBJECTS EQU const_value
 	; max objects = 256
-	; current total = 263 – 11 – 5 (end - start - commented out) = 247
+	; current total = 264 – 11 – 5 (end - start - commented out) = 248
 
 ; marcelnote - the list continues here to allow for more than 256 HideShow objects
 ;              but cannot put items which can be picked up

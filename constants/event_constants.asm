@@ -765,6 +765,7 @@
 	const EVENT_BEAT_CELADON_GROVE_TRAINER_0
 	const EVENT_BEAT_CELADON_GROVE_TRAINER_1
 	const EVENT_BEAT_CELADON_GROVE_TRAINER_2
+	const EVENT_BEAT_MEW
 	const EVENT_GOT_TM51
 
 ; Mt. Silver events ; marcelnote - new location

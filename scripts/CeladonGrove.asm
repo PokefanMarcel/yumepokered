@@ -8,6 +8,22 @@ CeladonGrove_Script:
 	ld [wCeladonGroveCurScript], a
 	ret
 
+CeladonGroveMewAppearsScript:: ; called in ItemUsePokeFlute
+	ld a, $1
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	ld a, TEXT_CELADONGROVE_MELODY_ECHOES
+	ldh [hTextID], a
+	call DisplayTextID
+	call GBFadeOutToWhite
+	ld a, HS_CELADON_GROVE_MEW
+	ld [wMissableObjectIndex], a
+	predef ShowObject
+	call UpdateSprites
+	ld c, 12
+	call DelayFrames
+	call GBFadeInFromWhite
+	ret
+
 CeladonGrove_ScriptPointers:
 	def_script_pointers
 	dw_const CheckFightingMapTrainers,              SCRIPT_CELADONGROVE_DEFAULT
@@ -19,12 +35,14 @@ CeladonGrove_TextPointers:
 	dw_const CeladonGroveYoungsterText,         TEXT_CELADONGROVE_YOUNGSTER
 	dw_const CeladonGroveChanneler1Text,        TEXT_CELADONGROVE_CHANNELER1
 	dw_const CeladonGroveSuperNerdText,         TEXT_CELADONGROVE_SUPERNERD
+	dw_const CeladonGroveMewText,               TEXT_CELADONGROVE_MEW
 	dw_const CeladonGroveGrampsText,            TEXT_CELADONGROVE_GRAMPS
 	dw_const CeladonGroveChanneler2Text,        TEXT_CELADONGROVE_CHANNELER2
 	dw_const PickUpItemText,                    TEXT_VIRIDIANFOREST_LEAF_STONE
-    dw_const PickUpItemText,                    TEXT_VIRIDIANFOREST_GREAT_BALL
-    dw_const CeladonGroveEntranceSignText,      TEXT_CELADONGROVE_ENTRANCESIGN
-    dw_const CeladonGroveShrineSignText,        TEXT_CELADONGROVE_SHRINESIGN
+	dw_const PickUpItemText,                    TEXT_VIRIDIANFOREST_GREAT_BALL
+	dw_const CeladonGroveEntranceSignText,      TEXT_CELADONGROVE_ENTRANCESIGN
+	dw_const CeladonGroveShrineSignText,        TEXT_CELADONGROVE_SHRINESIGN
+	dw_const CeladonGroveMelodyEchoesText,      TEXT_CELADONGROVE_MELODY_ECHOES
 
 CeladonGroveTrainerHeaders:
 	def_trainers
@@ -34,6 +52,8 @@ CeladonGroveTrainerHeader1:
 	trainer EVENT_BEAT_CELADON_GROVE_TRAINER_1, 4, CeladonGroveChanneler1BattleText, CeladonGroveChanneler1EndBattleText, CeladonGroveChanneler1AfterBattleText
 CeladonGroveTrainerHeader2:
 	trainer EVENT_BEAT_CELADON_GROVE_TRAINER_2, 4, CeladonGroveSuperNerdBattleText, CeladonGroveSuperNerdEndBattleText, CeladonGroveSuperNerdAfterBattleText
+MewTrainerHeader:
+	trainer EVENT_BEAT_MEW, 0, MewBattleText, MewBattleText, MewBattleText
 	db -1 ; end
 
 CeladonGroveGrampsText:
@@ -137,3 +157,21 @@ CeladonGroveEntranceSignText:
 CeladonGroveShrineSignText:
 	text_far _CeladonGroveShrineSignText
 	text_end
+
+CeladonGroveMelodyEchoesText:
+	text_far _CeladonGroveMelodyEchoesText
+	text_end
+
+CeladonGroveMewText:
+	text_asm
+	ld hl, MewTrainerHeader
+	call TalkToTrainer
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+MewBattleText:
+	text_far _MewBattleText
+	text_asm
+	ld a, MEW
+	call PlayCry
+	call WaitForSoundToFinish
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd

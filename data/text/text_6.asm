@@ -198,6 +198,11 @@ _ItemUseNotYoursToUseText::
 	line "to use!"
 	prompt
 
+_ItemUseFujisNotesText:: ; marcelnote - new
+	text "It's filled with"
+	line "complex formulas."
+	prompt
+
 _ItemUseNoEffectText::
 	text "It won't have any"
 	line "effect."

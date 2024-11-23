@@ -104,34 +104,33 @@ _MrFujisHouseMrFujiThankYouText:: ; marcelnote - new
 	text_start
 	para "My research notes!"
 	line "I thought they"
-	cont "were destroyed."
+	cont "had been lost." ; maybe they were stolen before he left the project?
 
-	para "Thank you for"
-	line "bringing them"
-	cont "back. They could"
-	cont "have fallen into"
-	cont "the wrong hands."
+	;para "Thank you for"
+	;line "bringing them"
+	;cont "back. They could"
+	;cont "have fallen into"
+	;cont "the wrong hands."
 
-	para "You know about"
+	para "So, you know about"
 	line "CINNABAR, then?"
 
-	para "What happened"
-	line "there... I would"
-	cont "rather leave it"
-	cont "in the past."
+	;para "What happened"
+	;line "there... I would"
+	;cont "rather leave it"
+	;cont "in the past."
 
-	para "I do not have the"
+	para "I do not have the" ; FUJI left before MEWTWO escaped
 	line "answers you seek,"
 	cont "but I know some-"
 	cont "one who might."
 
 	para "DR.JABARA was part"
-	line "of my research"
+	line "of the research"
 	cont "team on CINNABAR."
 
-	para "I've heard he set"
-	line "up a new lab on"
-	cont "MANDARIN ISLAND."
+	para "Now he works on"
+	line "MANDARIN ISLAND."
 	; fallthrough
 _MrFujisHouseMrFujiTakeThisText:: ; marcelnote - new
 	para "Here, take this."
@@ -159,13 +158,12 @@ _MrFujisHouseMrFujiOrangePassExplanationText:: ; marcelnote - new
 
 _MrFujisHouseMrFujiBeCarefulText:: ; marcelnote - new
 	text "MR.FUJI: DR.JABARA"
-	line "might have some"
-	cont "answers for you."
+	line "might have the"
+	cont "answers you seek,"
+	cont "but be careful."
 
-	para "But be careful."
-	line "Although he is a"
-	cont "gifted scientist,"
+	para "Although he is a"
+	line "gifted scientist,"
 	cont "his methods can"
-	cont "sometimes be"
-	cont "questionable..."
+	cont "be questionable."
 	done

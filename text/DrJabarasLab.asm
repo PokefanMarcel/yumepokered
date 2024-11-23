@@ -7,11 +7,11 @@ _DrJabarasLabJabaraIntroText::
 	line "you belong in"
 	cont "a lab."
 
-	para "So, FUJI sent you?"
+	para "Oh, FUJI sent you?"
 	line "That old fool..."
 	cont "A sharp mind, but"
 	cont "he never dared to" ; lacking the will to
-	cont "to dream big."
+	cont "dream big enough."
 
 	para "Anyway, our work"
 	line "on CINNABAR is"
@@ -87,19 +87,55 @@ _DrJabarasLabReturnedFluteText::
 	text_end
 
 _DrJabarasLabJabaraFinalText::
-	text "You should try" ; You're still here? Ah, yes, you want info on...
-	line "playing the FLUTE"
-	cont "in the MANSION."
+	text "Still here?"
+
+	para "Well, I suppose"
+	line "you've earned"
+	cont "some answers."
+
+	para "Creating MEWTWO"
+	line "was our greatest"
+	cont "achievement, but"
+	cont "its power quickly"
+	cont "grew beyond our"
+	cont "control."
+
+	para "The day it escaped"
+	line "was chaos. In the"
+	cont "confusion, MEW"
+	cont "vanished as well."
+
+	para "I left CINNABAR"
+	line "not long after."
+	cont "No one has seen"
+	cont "MEWTWO since."
+
+	para "As for MEW, rumors"
+	line "claim that it was"
+	cont "seen in CELADON."
+
+	para "Maybe it found"
+	line "refuge in a"
+	cont "secluded place"
+	cont "nearby."
+
+	para "MEW was always"
+	line "fascinated by"
+	cont "FUJI's POKE FLUTE."
+	cont "Perhaps if you"
+	cont "play yours in"
+	cont "the right spot,"
+	cont "it might show"
+	cont "itself."
 	done
 
 _DrJabarasLabNotesText::
-	text "It's DR.JABARA's"
+	text "DR.JABARA's"
 	line "research notes."
 
-	para "Pages filled with"
-	line "complex graphs"
-	cont "about MAGIKARP"
-	cont "behavior."
+	para "It's full of"
+	line "complicated data"
+	cont "about MAGIKARP."
 	done
 
 _DrJabarasLabReceivedEmailText::
