@@ -86,7 +86,7 @@ ItemUsePtrTable:
 	dw ItemUseXStat      ; X_SPEED
 	dw ItemUseXStat      ; X_SPECIAL
 	dw ItemUseCoinCase   ; COIN_CASE
-	dw ItemUseOaksParcel ; OAKS_PARCEL
+	dw ItemUseNotYoursToUse ; OAKS_PARCEL ; marcelnote - replaced ItemUseOaksParcel
 	dw ItemUseItemfinder ; ITEMFINDER
 	dw UnusableItem      ; SILPH_SCOPE
 	dw ItemUsePokeFlute  ; POKE_FLUTE
@@ -1940,8 +1940,8 @@ FishingInit:
 	scf ; can't fish when surfing
 	ret
 
-ItemUseOaksParcel:
-	jp ItemUseNotYoursToUse
+;ItemUseOaksParcel: ; marcelnote - put ItemUseNotYoursToUse directly
+;	jp ItemUseNotYoursToUse
 
 ItemUseItemfinder:
 	ld a, [wIsInBattle]
