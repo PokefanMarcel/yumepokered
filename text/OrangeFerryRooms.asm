@@ -2,9 +2,6 @@
 _OrangeFerryRoomsGentlemanBattleText::
 	text "Traveling by sea"
 	line "is so delightful!"
-
-	para "Care for a quick"
-	line "match?"
 	done
 
 _OrangeFerryRoomsGentlemanEndBattleText::
@@ -52,9 +49,8 @@ _OrangeFerryRoomsCooltrainerFEndBattleText::
 	prompt
 
 _OrangeFerryRoomsCooltrainerFAfterBattleText::
-	text "You sure know how"
-	line "to make a trip"
-	cont "exciting!"
+	text "The sea gives so"
+	line "much, doesn't it?"
 	done
 
 ;_OrangeFerryRoomsSailor1BattleText::

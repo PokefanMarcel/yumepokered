@@ -150,3 +150,13 @@ _VermilionCityGymSignText::
 _VermilionCityHarborSignText::
 	text "VERMILION HARBOR"
 	done
+
+_VermilionCityCooltrainerFText::
+	text "The S.S.ANNE party"
+	line "was amazing!"
+
+	para "I'm heading next to"
+	line "MANDARIN ISLAND."
+	cont "The ferry runs"
+	cont "there regularly."
+	done

@@ -8,7 +8,7 @@ MapHSPointers:
 	dw PewterCityHS    ; PEWTER_CITY
 	dw CeruleanCityHS  ; CERULEAN_CITY
 	dw NoHS            ; LAVENDER_TOWN
-	dw NoHS            ; VERMILION_CITY
+	dw VermilionCityHS ; VERMILION_CITY ; marcelnote - new for Sailor who disappears
 	dw NoHS            ; CELADON_CITY
 	dw SaffronCityHS   ; SAFFRON_CITY
 	dw NoHS            ; FUCHSIA_CITY
@@ -600,6 +600,9 @@ PewterGymHS:
 CeruleanGymHS:
 	db CERULEAN_GYM, CERULEANGYM_MISTY, SHOW          ; marcelnote - default Misty
 	db CERULEAN_GYM, CERULEANGYM_MISTY_REMATCH, HIDE  ; marcelnote - rematch Misty
+VermilionCityHS:
+	db VERMILION_CITY, VERMILIONCITY_SAILOR2, SHOW          ; marcelnote - SS Anne sailor who disappears
+	db VERMILION_CITY, VERMILIONCITY_COOLTRAINER_F, HIDE    ; marcelnote - girl who mentions Mandarin
 VermilionGymHS:
 	db VERMILION_GYM, VERMILIONGYM_LT_SURGE, SHOW          ; marcelnote - default Lt.Surge
 	db VERMILION_GYM, VERMILIONGYM_LT_SURGE_REMATCH, HIDE  ; marcelnote - rematch Lt.Surge

@@ -277,6 +277,8 @@ DEF NUM_HS_OBJECTS EQU const_value
 	const HS_PEWTER_GYM_BROCK_REMATCH        ; rematch Brock
 	const HS_CERULEAN_GYM_MISTY              ; default Misty
 	const HS_CERULEAN_GYM_MISTY_REMATCH      ; rematch Misty
+	const HS_VERMILION_CITY_SAILOR2          ; SS Anne sailor who disappears
+	const HS_VERMILION_CITY_COOLTRAINER_F    ; girl on harbor who mentions Mandarin
 	const HS_VERMILION_GYM_LT_SURGE          ; default Lt.Surge
 	const HS_VERMILION_GYM_LT_SURGE_REMATCH  ; rematch Lt.Surge
 	const HS_VERMILION_DOCK_SAILOR           ; sailor at Ferry entrance
@@ -331,4 +333,4 @@ DEF NUM_HS_OBJECTS EQU const_value
 	const HS_MT_SILVER_3F_YELLOW             ; for Yellow battle
 DEF NUM_HS_OBJECTS_CONT EQU const_value
 	; max objects = 256
-	; current total = 328 – 268 = 60
+	; current total = 333 – 271 = 62
