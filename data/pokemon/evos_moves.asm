@@ -1388,13 +1388,13 @@ DoduoEvosMoves:
 ; Learnset
 	db 15, FURY_ATTACK
 	db 19, RAGE
-	db 24, JUMP_KICK
+	db 24, SHARPEN
 	db 29, DRILL_PECK
-	db 34, TRI_ATTACK
-	db 39, MEGA_KICK
+	db 34, JUMP_KICK
+	db 39, TRI_ATTACK
 	db 44, AGILITY
-	db 50, HI_JUMP_KICK
-	; DOUBLE_KICK, SHARPEN?
+	db 50, MEGA_KICK
+	; DOUBLE_KICK, HI_JUMP_KICK?
 	db 0
 
 DodrioEvosMoves:
@@ -1403,13 +1403,13 @@ DodrioEvosMoves:
 ; Learnset
 	db 17, FURY_ATTACK
 	db 21, RAGE
-	db 27, JUMP_KICK
+	db 27, SHARPEN
 	db 32, DRILL_PECK
-	db 38, TRI_ATTACK
-	db 43, MEGA_KICK
+	db 38, JUMP_KICK
+	db 43, TRI_ATTACK
 	db 49, AGILITY
-	db 55, HI_JUMP_KICK
-	; DOUBLE_KICK, SHARPEN?
+	db 55, MEGA_KICK
+	; DOUBLE_KICK, HI_JUMP_KICK?
 	db 0
 
 SeelEvosMoves:
