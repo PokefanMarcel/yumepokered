@@ -64,9 +64,9 @@ _YellowsHouse1FDadJustMissedHerText:: ; marcelnote - new for Yellow's house
 	cont "from PROF.OAK."
 
 	para "The excitment"
-	line "kept her up half"
-	cont "the night, and"
-	cont "she overslept!"
+	line "kept her up all"
+	cont "night, so she"
+	cont "overslept!"
 	done
 
 _YellowsHouse1FDadJustRunIntoHerText:: ; marcelnote - new for Yellow's house
