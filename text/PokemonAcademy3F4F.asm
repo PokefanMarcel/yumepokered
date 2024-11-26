@@ -354,7 +354,7 @@ _PokemonAcademy3FSuperNerdText::
 _PokemonAcademy3FBeautyText::
 	text "My BUTTERFREE"
 	line "learnt a strong"
-	cont "BUG move called"
+	cont "bug move called"
 	cont "RAZOR WIND."
 
     para "It's not quite"
@@ -444,7 +444,7 @@ _PokemonAcademy4FGrannyPassedTestsText::
 	cont "signals a few"
 	cont "weeks ago."
 
-	para "A PSYCHIC #MON"
+	para "A psychic #MON"
 	line "could decipher"
 	cont "them."
 	done
