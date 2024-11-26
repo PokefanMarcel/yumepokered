@@ -640,26 +640,6 @@ OaksLabRivalLeavesWithPokedexScript:
 	ld [wOaksLabCurScript], a
 	ret
 
-OaksLabScript_RemoveParcel:
-	ld hl, wBagItems
-	ld bc, 0
-.loop
-	ld a, [hli]
-	cp $ff
-	ret z
-	cp OAKS_PARCEL
-	jr z, .foundParcel
-	inc hl
-	inc c
-	jr .loop
-.foundParcel
-	ld hl, wNumBagItems
-	ld a, c
-	ld [wWhichPokemon], a
-	ld a, 1
-	ld [wItemQuantity], a
-	jp RemoveItemFromInventory
-
 OaksLabCalcRivalMovementScript:
 	ld a, $7c
 	ldh [hSpriteScreenYCoord], a
@@ -1138,7 +1118,9 @@ OaksLabOakText: ; marcelnote - this was changed to make Balls more accessible
 .got_parcel
 	ld hl, .DeliverParcelText
 	call PrintText
-	call OaksLabScript_RemoveParcel
+	ld a, OAKS_PARCEL
+	ldh [hItemToRemoveID], a
+	farcall RemoveItemByID ; marcelnote - this replaces a dedicated script previously
 	ld a, SCRIPT_OAKSLAB_RIVAL_ARRIVES_AT_OAKS_REQUEST
 	ld [wOaksLabCurScript], a
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
