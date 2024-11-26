@@ -37,16 +37,16 @@ DisplayPokemartDialogue_::
 	jp z, .done
 .sellMenu
 
-; the same variables are set again below, so this code has no effect ; marcelnote - removed
-;	xor a
-;	ld [wPrintItemPrices], a
-;	ld a, INIT_BAG_ITEM_LIST
-;	ld [wInitListType], a
-;	callfar InitList
+; the same variables are set again below, so this code has no effect
+	;xor a
+	;ld [wPrintItemPrices], a ; marcelnote - removed those
+	ld a, INIT_BAG_ITEM_LIST  ; but those lines seem to prevent a bug when computing selling prices
+	ld [wInitListType], a
+	callfar InitList
 
 	ld a, [wNumBagItems]
 	and a
-	jp z, .bagEmpty
+	jp z, .bagEmpty ; marcelnote - not checking that Key Items pocket is not empty since cannot sell them
 	ld hl, PokemonSellingGreetingText
 	call PrintText
 	call SaveScreenTilesToBuffer1 ; save screen
