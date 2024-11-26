@@ -173,27 +173,32 @@ DebugSetPokedexEntries:
 	ld [hl], %01111111
 	ret
 
-DebugItemsList:
-	db BICYCLE, 1
+DebugItemsList: ; marcelnote - moved some to key items pocket
+	;db BICYCLE, 1
 	db FULL_RESTORE, 99
 	db FULL_HEAL, 99
 	db ESCAPE_ROPE, 99
 	db RARE_CANDY, 99
 	db MASTER_BALL, 99
 	db MAX_ELIXIR, 99 ; marcelnote - added
-	db TOWN_MAP, 1
-	db SECRET_KEY, 1
-	db CARD_KEY, 1
-	db S_S_TICKET, 1
-	db LIFT_KEY, 1
-	db SILPH_SCOPE, 1 ; marcelnote - added
-	db ORANGE_PASS, 1 ; marcelnote - added
-	;db SURFBOARD, 1 ; marcelnote - added
-	db POKE_FLUTE, 1 ; marcelnote - added
+	;db TOWN_MAP, 1
+	;db SECRET_KEY, 1
+	;db CARD_KEY, 1
+	;db S_S_TICKET, 1
+	;db LIFT_KEY, 1
 	db -1 ; end
 
 DebugKeyItemsList:    ; marcelnote - new for Key Items pocket
-	db POKE_FLUTE, 1
+	db BICYCLE, 1
+	db TOWN_MAP, 1
+	;db SECRET_KEY, 1
+	;db CARD_KEY, 1
+	db S_S_TICKET, 1
+	;db LIFT_KEY, 1
+	;db SILPH_SCOPE, 1 ; marcelnote - added
+	db ORANGE_PASS, 1 ; marcelnote - added
+	;db SURFBOARD, 1 ; marcelnote - added
+	;db POKE_FLUTE, 1 ; marcelnote - added
 	db -1 ; end
 
 DebugUnusedList:

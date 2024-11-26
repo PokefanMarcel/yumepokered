@@ -3,6 +3,15 @@ GetQuantityOfItemInBag:
 ; Out: b = how many of that item are in the bag
 	call GetPredefRegisters
 	ld hl, wNumBagItems
+	;;;;;;;;;; marcelnote - new for bag pockets
+	ld a, b
+	ld [wCurItem], a
+	call IsKeyItem
+	ld a, [wIsKeyItem]
+	and a
+	jr z, .loop
+	ld hl, wNumBagKeyItems
+	;;;;;;;;;;
 .loop
 	inc hl
 	ld a, [hli]
@@ -24,6 +33,15 @@ GetIndexOfItemInBag:
 ; Out: b = index of item in bag (FF if not)
 	call GetPredefRegisters
 	ld hl, wBagItems - 1
+	;;;;;;;;;; marcelnote - new for bag pockets
+	ld a, b
+	ld [wCurItem], a
+	call IsKeyItem
+	ld a, [wIsKeyItem]
+	and a
+	jr z, .loop
+	ld hl, wBagKeyItems - 1
+	;;;;;;;;;;
 	ld c, -1
 .loop
 	inc c

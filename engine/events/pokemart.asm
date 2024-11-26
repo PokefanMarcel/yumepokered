@@ -37,12 +37,12 @@ DisplayPokemartDialogue_::
 	jp z, .done
 .sellMenu
 
-; the same variables are set again below, so this code has no effect
-	xor a
-	ld [wPrintItemPrices], a
-	ld a, INIT_BAG_ITEM_LIST
-	ld [wInitListType], a
-	callfar InitList
+; the same variables are set again below, so this code has no effect ; marcelnote - removed
+;	xor a
+;	ld [wPrintItemPrices], a
+;	ld a, INIT_BAG_ITEM_LIST
+;	ld [wInitListType], a
+;	callfar InitList
 
 	ld a, [wNumBagItems]
 	and a
@@ -56,6 +56,13 @@ DisplayPokemartDialogue_::
 	ld [wTextBoxID], a
 	call DisplayTextBoxID ; draw money text box
 	ld hl, wNumBagItems
+	;;;;;;;;;; marcelnote - check which pocket we were last in, new for bag pockets
+	ld a, [wBagPocketsFlags]
+	bit BIT_KEY_ITEMS_POCKET, a
+	jr z, .gotBagPocket
+	ld hl, wNumBagKeyItems
+.gotBagPocket
+	;;;;;;;;;;
 	ld a, l
 	ld [wListPointer], a
 	ld a, h
@@ -68,13 +75,13 @@ DisplayPokemartDialogue_::
 	call DisplayListMenuID
 	jp c, .returnToMainPokemartMenu ; if the player closed the menu
 .confirmItemSale ; if the player is trying to sell a specific item
-	call IsKeyItem
+	call IsKeyItem ; item already loaded in [wCurItem]?
 	ld a, [wIsKeyItem]
 	and a
 	jr nz, .unsellableItem
-	ld a, [wCurItem]
-	call IsItemHM
-	jr c, .unsellableItem
+	;ld a, [wCurItem] ; marcelnote - removed, IsKeyItem already recognizes HMs as Key items
+	;call IsItemHM
+	;jr c, .unsellableItem
 	ld a, PRICEDITEMLISTMENU
 	ld [wListMenuID], a
 	ldh [hHalveItemPrices], a ; halve prices when selling

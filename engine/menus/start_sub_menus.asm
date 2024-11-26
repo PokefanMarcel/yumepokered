@@ -309,11 +309,11 @@ StartMenu_Item::
 .notInCableClubRoom
 	ld bc, wNumBagItems
 	;;;;;;;;;; marcelnote - check which pocket we were last in, new for bag pockets
-;	ld a, [wCurBagPocket]
-;	and a
-;	jr z, .gotBagPocket
-;	ld bc, wNumBagKeyItems
-;.gotBagPocket
+	ld a, [wBagPocketsFlags]
+	bit BIT_KEY_ITEMS_POCKET, a
+	jr z, .gotBagPocket
+	ld bc, wNumBagKeyItems
+.gotBagPocket
 	;;;;;;;;;;
 	ld hl, wListPointer
 	ld a, c
@@ -321,10 +321,12 @@ StartMenu_Item::
 	ld [hl], b ; store item bag pointer in wListPointer (for DisplayListMenuID)
 	xor a
 	ld [wPrintItemPrices], a
-	;;;;;;;;;; marcelnote - diplay bag info box, new for bag pockets
-;	ld a, BAG_INFO_BOX
-;	ld [wTextBoxID], a
-;	call DisplayTextBoxID
+	;;;;;;;;;; marcelnote - display bag info box, new for bag pockets
+	ld hl, wBagPocketsFlags ; marcelnote - don't display the Info box in the PC, new for bag pockets
+	set BIT_PRINT_INFO_BOX, [hl]
+	ld a, BAG_INFO_BOX
+	ld [wTextBoxID], a
+	call DisplayTextBoxID
 	;;;;;;;;;;
 	ld a, ITEMLISTMENU
 	ld [wListMenuID], a
@@ -335,6 +337,10 @@ StartMenu_Item::
 	ld [wBagSavedMenuItem], a
 	jr nc, .choseItem
 .exitMenu
+	;;;;;;;;;; marcelnote - display bag info box, new for bag pockets
+	ld hl, wBagPocketsFlags ; marcelnote - stop showing the Info box, new for bag pockets
+	res BIT_PRINT_INFO_BOX, [hl]
+	;;;;;;;;;;
 	call LoadScreenTilesFromBuffer2 ; restore saved screen
 	call LoadTextBoxTilePatterns
 	call UpdateSprites
@@ -416,6 +422,10 @@ StartMenu_Item::
 	ld a, [wActionResultOrTookBattleTurn]
 	and a
 	jp z, ItemMenuLoop
+	;;;;;;;;;; marcelnote - display bag info box, new for bag pockets
+	ld hl, wBagPocketsFlags ; marcelnote - don't display the Info box in the PC, new for bag pockets
+	res BIT_PRINT_INFO_BOX, [hl]
+	;;;;;;;;;;
 	jp CloseStartMenu
 .useItem_partyMenu
 	ld a, [wUpdateSpritesEnabled]

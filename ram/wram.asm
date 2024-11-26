@@ -1764,8 +1764,8 @@ wNumBagKeyItems:: db ; marcelnote - for Key Items pocket
 ; item, quantity (but quantity will always be 1 so could look into decreasing it)
 wBagKeyItems:: ds BAG_KEY_ITEM_CAPACITY * 2 + 1
 
-; 0 = Items, 1 = Key items ; marcelnote - added for bag pockets,
-wCurBagPocket:: db         ;              could be just a bit in a wStatusFlags with only 2 pockets
+; bits related to bag pockets (see ram_constants.asm) ; marcelnote - new for bag pockets
+wBagPocketsFlags:: db
 
 wNumBoxItems:: db
 ; item, quantity
@@ -2127,7 +2127,7 @@ wStatusFlags3:: db
 wStatusFlags4:: db
 wStatusFlags5:: db
 wStatusFlags6:: db
-wStatusFlags7:: db
+wStatusFlags7:: db ; marcelnote - must be right before wElite4Flags
 wElite4Flags:: db
 
 ;wBeatGymFlags:: db ; redundant because it matches wObtainedBadges ; marcelnote - removed

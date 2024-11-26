@@ -9,7 +9,7 @@ DisplayListMenuID::
 	ld a, [wBattleType]
 	and a ; is it the Old Man battle?
 	jr nz, .specialBattleType
-	;call PrintBagInfoText ; marcelnote - new for bag pockets
+	call PrintBagInfoText ; marcelnote - new for bag pockets
 	ld a, $01 ; hardcoded bank
 	jr .bankswitch
 .specialBattleType ; Old Man battle
@@ -51,7 +51,7 @@ DisplayListMenuID::
 	ld [wTopMenuItemY], a
 	ld a, 5
 	ld [wTopMenuItemX], a
-	ld a, A_BUTTON | B_BUTTON | SELECT ; | D_RIGHT ; marcelnote - added D_RIGHT for bag pockets
+	ld a, A_BUTTON | B_BUTTON | SELECT | D_RIGHT ; marcelnote - added D_RIGHT for bag pockets
 	ld [wMenuWatchedKeys], a
 	ld c, 10
 	call DelayFrames
@@ -83,7 +83,7 @@ DisplayListMenuIDLoop::
 	call LoadGBPal
 	call HandleMenuInput
 	push af
-	;call PrintBagInfoText ; marcelnote - should be placed around here if expect to display TM moves
+	;call PrintBagInfoText ; marcelnote - new for bag pockets, should be placed around here if expect to display TM moves
 	call PlaceMenuCursor
 	pop af
 	bit BIT_A_BUTTON, a
@@ -182,8 +182,10 @@ DisplayListMenuIDLoop::
 	jp nz, ExitListMenu ; if so, exit the menu
 	bit BIT_SELECT, a
 	jp nz, HandleItemListSwapping ; if so, allow the player to swap menu entries
-	;bit BIT_D_RIGHT, a
-	;jr nz, .switchBagPocket
+	;;;;;;;;;; marcelnote - for bag pockets
+	bit BIT_D_RIGHT, a
+	jr nz, .switchBagPocket
+	;;;;;;;;;;
 	;ld b, a
 	bit BIT_D_DOWN, a ; marcelnote - changed from bit BIT_D_DOWN, b (no point in using b)
 	ld hl, wListScrollOffset
@@ -204,25 +206,30 @@ DisplayListMenuIDLoop::
 	jp z, DisplayListMenuIDLoop
 	dec [hl]
 	jp DisplayListMenuIDLoop
-;.switchBagPocket ; marcelnote - new for bag pockets
-;	ld a, [wListMenuID]
-;	cp ITEMLISTMENU
-;	jp nz, DisplayListMenuIDLoop
-;	ld bc, wNumBagItems
-;	ld a, [wCurBagPocket]
-;	xor a, 1 ; if a=1, this becomes 0 ; should use a mask here if using a wStatusFlags
-;	jr z, .switchToMainPocket
-;	ld bc, wNumBagKeyItems
-;.switchToMainPocket
-;	ld [wCurBagPocket], a
-;	ld a, c
-;	ld hl, wListPointer
-;	ld [hli], a
-;	ld [hl], b ; store item bag pointer in wListPointer (for DisplayListMenuID)
-;	xor a
-;	ld [wCurrentMenuItem], a
-;	ld [wListScrollOffset], a
-;	jp DisplayListMenuID
+.switchBagPocket ; marcelnote - new for bag pockets
+	ld a, [wListMenuID]
+	cp ITEMLISTMENU
+	jp nz, DisplayListMenuIDLoop
+	ld hl, wBagPocketsFlags
+	bit BIT_PC_WITHDRAWING, [hl] ; if withdrawing from PC then cannot switch pocket
+	jp nz, DisplayListMenuIDLoop
+	ld bc, wNumBagItems
+	ld a, [wBagPocketsFlags]
+	bit BIT_KEY_ITEMS_POCKET, a
+	jr nz, .switchToMainPocket
+	ld bc, wNumBagKeyItems
+.switchToMainPocket
+	xor (1 << BIT_KEY_ITEMS_POCKET) ; this switches bit BIT_KEY_ITEMS_POCKET of a
+	ld [wBagPocketsFlags], a
+	ld a, c
+	ld hl, wListPointer
+	ld [hli], a
+	ld [hl], b ; store item bag pointer in wListPointer (for DisplayListMenuID)
+	xor a
+	ld [wCurrentMenuItem], a
+	ld [wListScrollOffset], a
+	call ExitListMenu ; this is to prevent an issue with BankswitchHome in DisplayListMenuID
+	jp DisplayListMenuID
 
 DisplayChooseQuantityMenu::
 ; text box dimensions/coordinates for just quantity
@@ -555,28 +562,31 @@ PrintListMenuEntries::
 	jp PlaceString
 
 
-;PrintBagInfoText: ; marcelnote - new for bag pockets
-;	hlcoord 6, 14
-;	ld de, BagItemsText
-;	ld a, [wCurBagPocket]
-;	and a
-;	jr z, .mainPocket
-;	ld de, BagKeyItemsText
-;.mainPocket
-;	;ld a, [wCurListMenuItem]
-;	;cp $ff
-;	;ret z
-;	;cp TM_MEGA_PUNCH ; first TM (TMs are last items)
-;	;jp c, .notTM
-;	;ld de, IsTMText
-;;.notTM
-;	jp PlaceString
+PrintBagInfoText: ; marcelnote - new for bag pockets
+	ld hl, wBagPocketsFlags
+	bit BIT_PRINT_INFO_BOX, [hl]
+	ret z ; do not display the info box
+	hlcoord 6, 14
+	ld de, BagItemsText
+	ld a, [wBagPocketsFlags]
+	bit BIT_KEY_ITEMS_POCKET, a
+	jr z, .mainPocket
+	ld de, BagKeyItemsText
+.mainPocket
+	;ld a, [wCurListMenuItem]
+	;cp $ff
+	;ret z
+	;cp TM_MEGA_PUNCH ; first TM (TMs are last items)
+	;jp c, .notTM
+	;ld de, IsTMText
+;.notTM
+	jp PlaceString
 
 ListMenuCancelText::
 	db "CANCEL@"
 
 BagItemsText:
-	db "ITEMS    @"
+	db "ITEMS      ▶@"
 
 BagKeyItemsText:
-	db "KEY ITEMS@"
+	db "KEY ITEMS  ▶@" ; ▶

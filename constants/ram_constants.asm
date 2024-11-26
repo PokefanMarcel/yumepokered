@@ -90,7 +90,7 @@ DEF NUM_BADGES EQU const_value
 
 ; wStatusFlags4
 	const_def
-	const BIT_GOT_LAPRAS              ; 0
+	const BIT_GOT_LAPRAS              ; 0 ; marcelnote - this should be an event
 	const BIT_UNKNOWN_4_1             ; 1
 	const BIT_USED_POKECENTER         ; 2
 	const BIT_GOT_STARTER             ; 3
@@ -143,6 +143,14 @@ DEF NUM_BADGES EQU const_value
 	const_skip 3               ; 3-5 ; unused
 	const BIT_LEDGE_OR_FISHING ; 6
 	const BIT_SPINNING         ; 7
+
+; wBagPocketsFlags ; marcelnote - new for bag pockets
+	const_def
+	const BIT_KEY_ITEMS_POCKET   ; 0 ; is 1 if currently in Key Items pocket
+	const_skip                   ; 1 ; unused, leave space for a possible TM pocket
+	const BIT_PRINT_INFO_BOX     ; 2 ; to know whether to print Item info box (i.e. only in start menu bag and battle)
+	const BIT_PC_WITHDRAWING     ; 3 ; to prevent switching pockets when withdrawing from PC
+	const_skip                   ; 4-7 ; unused
 
 ; hFindPathFlags
 	const_def

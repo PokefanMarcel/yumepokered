@@ -117,6 +117,14 @@ AccessedMyPCText:
 ; removes one of the specified item ID [hItemToRemoveID] from bag (if existent)
 RemoveItemByID::
 	ld hl, wBagItems
+	;;;;;;;;;; marcelnote - new for bag pockets
+	call IsKeyItem ; item already loaded in [wCurItem]?
+	ld a, [wIsKeyItem]
+	and a
+	jr z, .notKeyItem
+	ld hl, wBagKeyItems
+.notKeyItem
+	;;;;;;;;;;
 	ldh a, [hItemToRemoveID]
 	ld b, a
 	xor a
@@ -138,4 +146,11 @@ RemoveItemByID::
 	ldh a, [hItemToRemoveIndex]
 	ld [wWhichPokemon], a
 	ld hl, wNumBagItems
+	;;;;;;;;;; marcelnote - new for bag pockets
+	ld a, [wIsKeyItem]
+	and a
+	jr z, .notKeyItem2
+	ld hl, wNumBagKeyItems
+.notKeyItem2
+	;;;;;;;;;;
 	jp RemoveItemFromInventory
