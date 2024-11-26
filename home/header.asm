@@ -6,8 +6,9 @@ SECTION "rst0", ROM0[$0000]
 
 	ds $08 - @, 0 ; unused
 
-SECTION "rst8", ROM0[$0008]
-	rst $38
+SECTION "rst8", ROM0[$0008] ; PureRGB - Predef as rst, replaces call Predef
+	_Predef::
+		jp Predef
 
 	ds $10 - @, 0 ; unused
 
@@ -26,7 +27,7 @@ SECTION "rst20", ROM0[$0020]
 
 	ds $28 - @, 0 ; unused
 
-SECTION "rst28", ROM0[$0028] ; PureRGB - PrintText as rst, replaces jp PrintText
+SECTION "rst28", ROM0[$0028] ; PureRGB - PrintText as rst, replaces call PrintText
 	_PrintText::
     	jp PrintText
 
