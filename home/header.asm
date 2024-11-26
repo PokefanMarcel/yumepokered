@@ -1,6 +1,6 @@
 ; rst vectors (unused)
 
-SECTION "rst0", ROM0[$0000]
+SECTION "rst0", ROM0[$0000] ; PureRGB - Bankswitch as rst, replaces call Bankswitch
     _Bankswitch::
         jp Bankswitch
 
