@@ -8,6 +8,7 @@
 	const_export CELADONCITY_POLIWRATH
 	const_export CELADONCITY_ROCKET1
 	const_export CELADONCITY_ROCKET2
+	const_export CELADONCITY_COOLTRAINER_F ; marcelnote -new NPC who mentions Celadon Grove
 
 CeladonCity_Object:
 	db $f ; border block
@@ -50,5 +51,6 @@ CeladonCity_Object:
 	object_event 30, 12, SPRITE_MONSTER, STAY, RIGHT, TEXT_CELADONCITY_POLIWRATH
 	object_event 32, 29, SPRITE_ROCKET, WALK, LEFT_RIGHT, TEXT_CELADONCITY_ROCKET1
 	object_event 42, 14, SPRITE_ROCKET, WALK, LEFT_RIGHT, TEXT_CELADONCITY_ROCKET2
+	object_event 17, 10, SPRITE_COOLTRAINER_F, WALK, LEFT_RIGHT, TEXT_CELADONCITY_COOLTRAINER_F ; marcelnote -new NPC who mentions Celadon Grove
 
 	def_warps_to CELADON_CITY
