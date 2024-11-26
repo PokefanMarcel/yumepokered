@@ -46,7 +46,7 @@ _CeladonGroveChanneler2TM51NoRoomText::
 	done
 
 _CeladonGroveYoungsterBattleText::
-	text "GRASS-type #MON"
+	text "Grass #MON"
 	line "everywhere..."
 
 	para "My bugs are having"

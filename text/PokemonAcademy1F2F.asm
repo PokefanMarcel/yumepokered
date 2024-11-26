@@ -16,9 +16,9 @@ _PokemonAcademy1FCooltrainerFText::
 	line "type match-ups."
 
 	para "Did you know"
-	line "GHOST moves"
+	line "ghost moves"
 	cont "are good against"
-	cont "PSYCHIC types?"
+	cont "psychic types?"
 
 	para "And BUG moves"
 	line "are not effective"
@@ -32,10 +32,10 @@ _PokemonAcademy1FYoungsterText::
 	cont "the move SLAM."
 
 	para "I thought it was"
-	line "NORMAL, but my"
+	line "normal, but my"
 	cont "teacher said it's"
 	cont "actually a"
-	cont "DRAGON move!"
+	cont "dragon move!"
 	done
 
 _PokemonAcademy1FSignText::
@@ -67,9 +67,9 @@ _PokemonAcademy2FTeacherQuestion1Text::
 	line "Let's start then."
 
 	para "Question 1:"
-	line "ICE moves are"
+	line "Ice moves are"
 	cont "very effective"
-	cont "against FIRE."
+	cont "against fire."
 	done
 
 _PokemonAcademy2FTeacherQuestion2Text::
@@ -146,7 +146,7 @@ _PokemonAcademy2FBrunetteGirlText::
 
 	para "I always forget"
 	line "which one"
-	cont "DRAGON is!"
+	cont "dragon is!"
 	done
 
 _PokemonAcademy2FPhysicalSpecialIntroText::
@@ -283,13 +283,13 @@ _PokemonAcademy2FHighCritMovesText::
 _PokemonAcademy2FBeautyText::
 	text "I taught my"
 	line "POLIWAG four"
-	cont "WATER moves to"
+	cont "water moves to"
 	cont "make the most of"
 	cont "the same-type"
 	cont "attack bonus."
 
 	para "But I keep losing"
-	line "against GRASS"
+	line "against grass"
 	cont "#MON..."
 	done
 
@@ -309,9 +309,9 @@ _PokemonAcademy2FSTABExplanationText::
 	cont "is more powerful."
 
 	para "For example,"
-	line "a FIRE move"
+	line "a fire move"
 	cont "is stronger when"
-	cont "used by a FIRE"
+	cont "used by a fire-"
 	cont "type #MON."
 
 	para "Remember this"
