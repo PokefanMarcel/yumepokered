@@ -13,13 +13,15 @@ ENDM
 MACRO farjp
 	ld b, BANK(\1)
 	ld hl, \1
-	jp Bankswitch
+	rst _Bankswitch ; PureRGB: Bankswitch as rst
+	ret
 ENDM
 
 MACRO jpfar
 	ld hl, \1
 	ld b, BANK(\1)
-	jp Bankswitch
+	rst _Bankswitch ; PureRGB: Bankswitch as rst
+	ret
 ENDM
 
 MACRO homecall
