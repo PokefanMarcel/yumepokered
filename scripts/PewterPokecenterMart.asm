@@ -100,6 +100,6 @@ PewterMartSuperNerdText: ; marcelnote - simplified code
 	text_far _PewterMartSuperNerdText
 	text_end
 
-PewterMartClerkText: ; marcelnote - moved Mart inventories
-	script_mart POKE_BALL, POTION, ESCAPE_ROPE, ANTIDOTE, BURN_HEAL, AWAKENING, PARLYZ_HEAL
+PewterMartClerkText: ; marcelnote - moved Mart inventories, added REPEL
+	script_mart POKE_BALL, POTION, REPEL, ESCAPE_ROPE, ANTIDOTE, BURN_HEAL, AWAKENING, PARLYZ_HEAL
 
