@@ -15,6 +15,7 @@ CeladonCity_TextPointers:
 	dw_const CeladonCityPoliwrathText,         TEXT_CELADONCITY_POLIWRATH
 	dw_const CeladonCityRocket1Text,           TEXT_CELADONCITY_ROCKET1
 	dw_const CeladonCityRocket2Text,           TEXT_CELADONCITY_ROCKET2
+	dw_const CeladonCityCooltrainerFText,      TEXT_CELADONCITY_COOLTRAINER_F ; marcelnote -new NPC who mentions Celadon Grove
 	dw_const CeladonCityTrainerTips1Text,      TEXT_CELADONCITY_TRAINER_TIPS1
 	dw_const CeladonCitySignText,              TEXT_CELADONCITY_SIGN
 	dw_const PokeCenterSignText,               TEXT_CELADONCITY_POKECENTER_SIGN
@@ -129,4 +130,8 @@ CeladonCityGameCornerSignText:
 
 CeladonCityCeladonGroveSignText: ; marcelnote - for Celadon Grove
 	text_far _CeladonCityCeladonGroveSignText
+	text_end
+
+CeladonCityCooltrainerFText: ; marcelnote -new NPC who mentions Celadon Grove
+	text_far _CeladonCityCooltrainerFText
 	text_end

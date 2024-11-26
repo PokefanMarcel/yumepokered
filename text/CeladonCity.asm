@@ -156,3 +156,12 @@ _CeladonCityGameCornerSignText::
 _CeladonCityCeladonGroveSignText:: ; marcelnote - for Celadon Grove
 	text "CELADON GROVE"
 	done
+
+_CeladonCityCooltrainerFText:: ; marcelnote - new NPC who mentions Celadon Grove
+    text "I made a wish"
+    line "at the old shrine"
+    cont "in CELADON GROVE."
+
+    para "I hope it"
+    line "comes true!"
+	done

@@ -124,10 +124,10 @@ SpriteSets:
 	db SPRITE_LITTLE_BOY
 	db SPRITE_GIRL
 	db SPRITE_FISHER
-	db SPRITE_MIDDLE_AGED_MAN
+	db SPRITE_MIDDLE_AGED_MAN ; marcelnote - unused?
 	db SPRITE_GRAMPS
 	db SPRITE_MONSTER
-	db SPRITE_GUARD ; marcelnote - unused? (removed in pokeyellow)
+	db SPRITE_COOLTRAINER_F ; marcelnote - was SPRITE_GUARD
 	db SPRITE_ROCKET
 	db SPRITE_POKE_BALL
 	db SPRITE_SNORLAX
