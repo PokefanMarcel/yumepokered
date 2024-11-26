@@ -232,7 +232,7 @@ MoveReminderText:
 	push bc
 	ld hl, PrepareRelearnableMoveList
 	ld b, Bank(PrepareRelearnableMoveList)
-	call Bankswitch
+	rst _Bankswitch ; marcelnote - free space in Home bank, changed from call Bankswitch
 	ld a, [wMoveBuffer]
 	and a
 	jr nz, .chooseMove
