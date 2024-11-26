@@ -2,26 +2,6 @@ MrFujisHouse_Script:
 	call EnableAutoTextBoxDrawing
 	ret
 
-MrFujisHouseScript_RemoveFujisNotes: ; marcelnote - new
-	ld hl, wBagItems
-	ld bc, 0
-.loop
-	ld a, [hli]
-	cp $ff
-	ret z
-	cp FUJIS_NOTES
-	jr z, .foundNotes
-	inc hl
-	inc c
-	jr .loop
-.foundNotes
-	ld hl, wNumBagItems
-	ld a, c
-	ld [wWhichPokemon], a
-	ld a, 1
-	ld [wItemQuantity], a
-	jp RemoveItemFromInventory
-
 MrFujisHouse_TextPointers:
 	def_text_pointers
 	dw_const MrFujisHouseSuperNerdText,     TEXT_MRFUJISHOUSE_SUPER_NERD
@@ -92,7 +72,9 @@ MrFujisHouseMrFujiText: ; marcelnote - optimized and added Orange pass dialogue
 	ld b, FUJIS_NOTES
 	call IsItemInBag
 	jr z, .no_fujis_notes
-	call MrFujisHouseScript_RemoveFujisNotes ; add text to say that player handed notes?
+	ld a, FUJIS_NOTES
+	ldh [hItemToRemoveID], a
+	farcall RemoveItemByID
 	SetEvent EVENT_GAVE_FUJIS_NOTES
 	ld hl, .PlayerGaveNotesText
 .gaveFujisNotes
