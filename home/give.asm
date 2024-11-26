@@ -8,6 +8,14 @@ GiveItem::
 	ld a, c
 	ld [wItemQuantity], a
 	ld hl, wNumBagItems
+	;;;;;;;;;; marcelnote - new for bag pockets
+	call IsKeyItem ; b already loaded in [wCurItem]
+	ld a, [wIsKeyItem]
+	and a
+	jr z, .notKeyItem
+	ld hl, wNumBagKeyItems
+.notKeyItem
+	;;;;;;;;;;
 	call AddItemToInventory
 	ret nc
 	call GetItemName

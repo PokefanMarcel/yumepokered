@@ -2170,7 +2170,7 @@ DisplayBattleMenu::
 .throwSafariBallWasSelected
 	ld a, SAFARI_BALL
 	ld [wCurItem], a
-	jr UseBagItem
+	jp UseBagItem ; marcelnote - was jr but added stuff below
 
 .upperLeftMenuItemWasNotSelected ; a menu item other than the upper left item was selected
 	cp $2
@@ -2224,6 +2224,13 @@ OldManItemList:
 DisplayPlayerBag:
 	; get the pointer to player's bag when in a normal battle
 	ld hl, wNumBagItems
+	;;;;;;;;;; marcelnote - check which pocket we were last in, new for bag pockets
+	ld a, [wBagPocketsFlags]
+	bit BIT_KEY_ITEMS_POCKET, a
+	jr z, .gotBagPocket
+	ld hl, wNumBagKeyItems
+.gotBagPocket
+	;;;;;;;;;;
 	ld a, l
 	ld [wListPointer], a
 	ld a, h
@@ -2232,6 +2239,13 @@ DisplayPlayerBag:
 DisplayBagMenu:
 	xor a
 	ld [wPrintItemPrices], a
+	;;;;;;;;;; marcelnote - display bag info box, new for bag pockets
+	ld hl, wBagPocketsFlags
+	set BIT_PRINT_INFO_BOX, [hl] ; set bit before displaying list
+	ld a, BAG_INFO_BOX
+	ld [wTextBoxID], a
+	call DisplayTextBoxID
+	;;;;;;;;;;
 	ld a, ITEMLISTMENU
 	ld [wListMenuID], a
 	ld a, [wBagSavedMenuItem]
@@ -2242,6 +2256,10 @@ DisplayBagMenu:
 	ld a, $0
 	ld [wMenuWatchMovingOutOfBounds], a
 	ld [wMenuItemToSwap], a
+	;;;;;;;;;; marcelnote - display bag info box, new for bag pockets
+	ld hl, wBagPocketsFlags
+	res BIT_PRINT_INFO_BOX, [hl] ; reset bit when using item or exiting menu
+	;;;;;;;;;;
 	jp c, DisplayBattleMenu ; go back to battle menu if an item was not selected
 
 UseBagItem:
