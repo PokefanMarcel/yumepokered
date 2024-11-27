@@ -13,6 +13,9 @@ PalletTown_Object:
 	warp_event 12, 11, OAKS_LAB, 2
 	warp_event 23,  5, REDS_YELLOWS_HOUSES, 5 ; marcelnote - new houses
 	warp_event 21, 13, BLUES_AIDES_HOUSES, 3 ; marcelnote - new Aide's house
+IF DEF(_DEBUG) ; marcelnote - added for debug
+	warp_event 12,  7, CHAMPIONS_ROOM, 1
+ENDC
 
 	def_bg_events
 	bg_event 13, 13, TEXT_PALLETTOWN_OAKSLAB_SIGN
