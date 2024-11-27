@@ -639,7 +639,7 @@ FightingDojoHiddenObjects:
 	db -1 ; end
 
 IndigoPlateauLobbyHiddenObjects:
-	hidden_object 15,  7, SPRITE_FACING_UP, OpenPokemonCenterPC
+	hidden_object 19,  7, SPRITE_FACING_UP, OpenPokemonCenterPC ; marcelnote - expanded map, was x=15
 	db -1 ; end
 
 CinnabarLabHiddenObjects: ; marcelnote - merged Cinnabar Lab maps

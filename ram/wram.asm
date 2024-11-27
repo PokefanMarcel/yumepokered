@@ -2038,6 +2038,7 @@ wMtSilver3FCurScript:: db ; marcelnote - added for Mt Silver 3F trainers, took 1
 wVictoryRoad1FCurScript:: db
 wVictoryRoad2FCurScript:: db
 wVictoryRoad3FCurScript:: db
+wIndigoPlateauLobbyCurScript:: db ; marcelnote - new for postgame Rival
 wLoreleisRoomCurScript:: db
 wBrunosRoomCurScript:: db
 wAgathasRoomCurScript:: db
