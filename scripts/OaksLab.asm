@@ -828,33 +828,33 @@ OaksLabRivalText: ; marcelnote - optimized and added postgame dialogue
 	CheckEvent EVENT_BEAT_MOLTRES
 	jr nz, .YesArticunoYesZapdosYesMoltres
 	ld hl, .SeenArticunoZapdosText
-	jr z, .got_text
+	jr .got_text
 .NoArticuno
 	CheckEvent EVENT_BEAT_ZAPDOS
 	jr z, .NoArticunoNoZapdos
 	CheckEvent EVENT_BEAT_MOLTRES
 	jr z, .NoArticunoYesZapdosNoMoltres
 	ld hl, .SeenZapdosMoltresText
-	jr z, .got_text
+	jr .got_text
 .NoArticunoNoZapdos
 	CheckEvent EVENT_BEAT_MOLTRES
 	jr z, .NoArticunoNoZapdosNoMoltres
 	ld hl, .SeenMoltresText
-	jr z, .got_text
+	jr .got_text
 .NoArticunoNoZapdosNoMoltres
 	ld hl, .SeenNoBirdText
-	jr z, .got_text
+	jr .got_text
 .YesArticunoNoZapdos
 	CheckEvent EVENT_BEAT_MOLTRES
 	jr z, .YesArticunoNoZapdosNoMoltres
 	ld hl, .SeenArticunoMoltresText
-	jr z, .got_text
+	jr .got_text
 .YesArticunoNoZapdosNoMoltres
 	ld hl, .SeenArticunoText
-	jr z, .got_text
+	jr .got_text
 .NoArticunoYesZapdosNoMoltres
 	ld hl, .SeenZapdosText
-	jr z, .got_text
+	jr .got_text
 .YesArticunoYesZapdosYesMoltres
 	ld a, SCRIPT_OAKSLAB_RIVAL_BACK_TO_INDIGO
 	ld [wOaksLabCurScript], a

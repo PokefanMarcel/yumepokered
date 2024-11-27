@@ -239,7 +239,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const VICTORY_ROAD_1F,               10,  9
 	map_const VICTORY_ROAD_2F,               15,  9
 	map_const VICTORY_ROAD_3F,               15,  9
-	map_const INDIGO_PLATEAU_LOBBY,           8,  6
+	map_const INDIGO_PLATEAU_LOBBY,          10,  6 ; marcelnote - expanded from x=8
 	map_const LORELEIS_ROOM,                  5,  6
 	map_const BRUNOS_ROOM,                    5,  6
 	map_const AGATHAS_ROOM,                   5,  6
