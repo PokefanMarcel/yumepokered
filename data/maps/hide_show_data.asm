@@ -339,8 +339,6 @@ FightingDojoHS:
 	db FIGHTING_DOJO, FIGHTINGDOJO_BRUNO,                HIDE ; marcelnote - postgame Bruno
 	db FIGHTING_DOJO, FIGHTINGDOJO_HITMONLEE_POKE_BALL,  SHOW
 	db FIGHTING_DOJO, FIGHTINGDOJO_HITMONCHAN_POKE_BALL, SHOW
-SilphCo1FHS:
-	db SILPH_CO_1F, SILPHCO1F_LINK_RECEPTIONIST, HIDE
 PowerPlantHS:
 	db POWER_PLANT, POWERPLANT_VOLTORB1,      SHOW
 	db POWER_PLANT, POWERPLANT_VOLTORB2,      SHOW
@@ -637,6 +635,8 @@ SaffronGymHS:
 	db SAFFRON_GYM, SAFFRONGYM_SABRINA_REMATCH, HIDE  ; marcelnote - rematch Sabrina
 	db SAFFRON_GYM, SAFFRONGYM_WILL, HIDE             ; marcelnote - postgame Bruno event
 	db SAFFRON_GYM, SAFFRONGYM_BRUNO, HIDE            ; marcelnote - postgame Bruno event
+SilphCo1FHS:
+	db SILPH_CO_1F, SILPHCO1F_LINK_RECEPTIONIST, HIDE
 CinnabarGymHS:
 	db CINNABAR_GYM, CINNABARGYM_BLAINE, SHOW          ; marcelnote - default Blaine
 	db CINNABAR_GYM, CINNABARGYM_BLAINE_REMATCH, HIDE  ; marcelnote - rematch Blaine
