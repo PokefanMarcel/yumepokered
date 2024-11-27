@@ -241,8 +241,7 @@
 	const EVENT_BEAT_SAFFRON_GYM_TRAINER_4
 	const EVENT_BEAT_SAFFRON_GYM_TRAINER_5
 	const EVENT_BEAT_SAFFRON_GYM_TRAINER_6
-	const_skip 46
-	const EVENT_SILPH_CO_RECEPTIONIST_AT_DESK
+	const_skip 47
 	const EVENT_PASSED_JUNIOR_TEST ; marcelnote - new event at Pokemon Academy
 	const EVENT_PASSED_SENIOR_TEST ; marcelnote - new event at Pokemon Academy
 	const_skip 22                  ; marcelnote - adjusted

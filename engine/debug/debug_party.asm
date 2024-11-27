@@ -192,7 +192,7 @@ DebugKeyItemsList:    ; marcelnote - new for Key Items pocket
 	db BICYCLE, 1
 	db TOWN_MAP, 1
 	;db SECRET_KEY, 1
-	;db CARD_KEY, 1
+	db CARD_KEY, 1
 	db S_S_TICKET, 1
 	;db LIFT_KEY, 1
 	;db SILPH_SCOPE, 1 ; marcelnote - added

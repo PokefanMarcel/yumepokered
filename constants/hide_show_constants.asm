@@ -75,7 +75,6 @@ DEF SHOW EQU $15
 	const HS_FIGHTING_DOJO_BRUNO           ; 4D ; marcelnote - postgame Bruno
 	const HS_FIGHTING_DOJO_GIFT_1          ; 4E
 	const HS_FIGHTING_DOJO_GIFT_2          ; 4F
-	const HS_SILPH_CO_1F_RECEPTIONIST      ; 50
 	const HS_VOLTORB_1                     ; 51 X
 	const HS_VOLTORB_2                     ; 52 X
 	const HS_VOLTORB_3                     ; 53 X
@@ -306,6 +305,7 @@ DEF NUM_HS_OBJECTS EQU const_value
 	const HS_SAFFRON_GYM_SABRINA_REMATCH     ; rematch Sabrina
 	const HS_SAFFRON_GYM_WILL                ; postgame Will
 	const HS_SAFFRON_GYM_BRUNO               ; postgame Bruno
+	const HS_SILPH_CO_1F_RECEPTIONIST        ; Silph Co 1F receptionist
 	const HS_CINNABAR_GYM_BLAINE             ; default Blaine
 	const HS_CINNABAR_GYM_BLAINE_REMATCH     ; rematch Blaine
 	const HS_MANDARIN_SILPH_CO_SCIENTIST     ; worried Scientist

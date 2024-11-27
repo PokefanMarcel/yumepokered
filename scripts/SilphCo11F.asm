@@ -112,6 +112,7 @@ SilphCo11FTeamRocketLeavesScript:
 	db HS_SAFFRON_CITY_B
 	db HS_SAFFRON_CITY_C
 	db HS_SAFFRON_CITY_D
+	db HS_SILPH_CO_1F_RECEPTIONIST ; marcelnote - moved here from Silph Co 1F script
 	db -1 ; end
 
 .HideMissableObjectIDs:
