@@ -300,8 +300,7 @@ SilphCo7TrainerHeader3:
 SilphCo7FSilphWorkerM1Text: ; marcelnote - optimized
 ; lapras guy
 	text_asm
-	ld a, [wStatusFlags4]
-	bit BIT_GOT_LAPRAS, a
+	CheckEvent EVENT_GOT_LAPRAS ; marcelnote - now event instead of bit check
 	jr z, .give_lapras
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
 	ld hl, .SavedText
@@ -322,8 +321,7 @@ SilphCo7FSilphWorkerM1Text: ; marcelnote - optimized
 	call EnableAutoTextBoxDrawing
 	ld hl, .LaprasDescriptionText
 	call PrintText
-	ld hl, wStatusFlags4
-	set BIT_GOT_LAPRAS, [hl]
+	SetEvent EVENT_GOT_LAPRAS ; marcelnote - now event instead of bit check
 .done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
