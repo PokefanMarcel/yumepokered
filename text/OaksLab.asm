@@ -363,6 +363,11 @@ _OaksLabScientistText::
 	line "PROF.OAK's AIDE."
 	done
 
+_OaksLabScientistOakWentForWalkText:: ; marcelnote - new for Oak battle
+	text "PROF.OAK went out"
+	line "for a walk."
+	done
+
 _OaksLabRivalShowingDexText:: ; marcelnote - postgame Rival event
 	text "<RIVAL>: Yo,"
 	line "<PLAYER>!"

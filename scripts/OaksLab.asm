@@ -1342,10 +1342,18 @@ OaksLabRivalLeaveItAllToMeText:
 
 OaksLabScientistText: ; marcelnote - text_asm to work around DisableAutoTextBoxDrawing
 	text_asm
+	CheckHideShowCont HS_ROUTE_1_OAK
 	ld hl, .Text
+	jr nz, .print_text
+	ld hl, .OakWentForWalkText ; marcelnote - new for Oak battle
+.print_text
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Text:
 	text_far _OaksLabScientistText
+	text_end
+
+.OakWentForWalkText:
+	text_far _OaksLabScientistOakWentForWalkText
 	text_end
