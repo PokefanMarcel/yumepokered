@@ -263,7 +263,7 @@ DEF SHOW EQU $15
 	const HS_MT_SILVER_2F_FULL_RESTORE          ; marcelnote - Full Restore
 DEF NUM_HS_OBJECTS EQU const_value
 	; max objects = 256
-	; current total = 264 – 11 – 5 (end - start - commented out) = 248
+	; current total = 263 – 11 – 5 (end - start - commented out) = 247
 
 ; marcelnote - the list continues here to allow for more than 256 HideShow objects
 ;              but cannot put items which can be picked up
@@ -333,4 +333,4 @@ DEF NUM_HS_OBJECTS EQU const_value
 	const HS_MT_SILVER_3F_YELLOW             ; for Yellow battle
 DEF NUM_HS_OBJECTS_CONT EQU const_value
 	; max objects = 256
-	; current total = 333 – 271 = 62
+	; current total = 333 – 270 = 63
