@@ -4,9 +4,13 @@ GetQuantityOfItemInBag:
 	call GetPredefRegisters
 	ld hl, wNumBagItems
 	;;;;;;;;;; marcelnote - new for bag pockets
+	ld a, [wCurItem]
+	ld c, a ; store current content of [wCurItem] in c
 	ld a, b
 	ld [wCurItem], a
 	call IsKeyItem
+	ld a, c
+	ld [wCurItem], a ; restore [wCurItem], else issues with wild Silph Scope encounters
 	ld a, [wIsKeyItem]
 	and a
 	jr z, .loop
