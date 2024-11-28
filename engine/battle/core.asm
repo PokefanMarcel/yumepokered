@@ -3430,7 +3430,7 @@ GetOutText:
 	text_far _GetOutText
 	text_end
 
-IsGhostBattle:
+IsGhostBattle: ; marcelnote - sets z flag if Ghost battle
 	ld a, [wIsInBattle]
 	dec a
 	ret nz
@@ -3441,10 +3441,10 @@ IsGhostBattle:
 	jr nc, .next
 	ld b, SILPH_SCOPE
 	call IsItemInBag
-	ret z
+	ret ; was ret z but no need
 .next
 	ld a, 1
-	and a
+	and a ; resets z flag so not ghost battle
 	ret
 
 ; checks for various status conditions affecting the player mon
