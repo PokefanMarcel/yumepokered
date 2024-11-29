@@ -1,8 +1,8 @@
-_CeladonMartRoofLittleGirlImThirstyText::
+_CeladonMartRoofLittleGirlImThirstyText:: ; marcelnote - there was another similar text with "Give her a drink?"
 	text "I'm thirsty!"
 	line "I want something"
 	cont "to drink!"
-	prompt
+	prompt ; marcelnote - was 'done'
 
 _CeladonMartRoofLittleGirlGiveHerADrinkText:: ; marcelnote - simplified
 	text "Give her a drink?" ; marcelnote - was "Give her which drink?"
