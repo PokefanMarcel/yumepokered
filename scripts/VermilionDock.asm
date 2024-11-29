@@ -54,9 +54,9 @@ VermilionDockSSAnneLeavesScript:
 	SetEventForceReuseHL EVENT_SS_ANNE_LEFT
 	ld a, SFX_STOP_ALL_MUSIC
 	ld [wJoyIgnore], a
-	ld [wNewSoundID], a
+;	ld [wNewSoundID], a
 	call PlaySound
-	ld c, BANK(Music_Surfing)
+	ld c, 0 ; BANK(Music_Surfing)
 	ld a, MUSIC_SURFING
 	call PlayMusic
 	farcall LoadSmokeTileFourTimes
