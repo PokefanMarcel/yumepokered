@@ -46,35 +46,36 @@ Most other changes were made to increase the viability of some subpar moves, or 
 In rare cases moves were nerfed, most notably DIG.
 
 
-| Move         | Type     | Power           | Accuracy       | PP            | Additional notes                                         |
-|--------------|----------|-----------------|----------------|---------------|----------------------------------------------------------|
-| ABSORB       | Grass    | ~~20~~ **30**   | 100            | 20            |                                                          |
-| MEGA DRAIN   | Grass    | ~~40~~ **60**   | 100            | 10            |                                                          |
-| SOLARBEAM    | Grass    | ~~120~~ **140** | 100            | 10            | Power now on par with SKY ATTACK                         |
-| FIRE SPIN    | Fire     | 15              | ~~70~~ **75**  | 15            |                                                          |
-| WATERFALL    | Water    | 80              | 100            | 15            | **Now has a 10% chance to make the opponent flinch**     |
-| LEECH LIFE   | Bug      | ~~20~~ **30**   | 100            | 15            |                                                          |
-| TWINEEDLE    | Bug      | ~~25~~ **30**   | 100            | 20            |                                                          |
-| PIN MISSILE  | Bug      | ~~14~~ **20**   | ~~85~~ **95**  | ~~20~~ **15** |                                                          |
-| POISON STING | Poison   | ~~15~~ **20**   | 100            | 35            |                                                          |
-| SMOG         | Poison   | ~~20~~ **30**   | ~~70~~ **85**  | 20            |                                                          |
-| ACID         | Poison   | ~~40~~ **65**   | 100            | ~~30~~ **20** |                                                          |
-| SLUDGE       | Poison   | ~~65~~ **85**   | 100            | ~~20~~ **15** |                                                          |
-| ROCK THROW   | Rock     | 50              | ~~65~~ **85**  | 15            |                                                          |
-| BONEMERANG   | Ground   | ~~50~~ **60**   | 90             | 10            |                                                          |
-| DIG          | Ground   | ~~100~~ **70**  | 100            | ~~10~~ **15** |                                                          |
-| WING ATTACK  | Flying   | ~~35~~ **60**   | 100            | ~~35~~ **25** |                                                          |
-| SKY ATTACK   | Flying   | 140             | ~~90~~ **100** | ~~5~~ **10**  |                                                          |
-| PSYWAVE      | Psychic  | -               | ~~80~~ **100** | 15            | **Damage now between 50% and 150% of user's level**      |
-| KINESIS      | Psychic  | -               | 80             | 15            | ~~Lowers opponent's Accuracy~~ **Increases own Special** |
-| LICK         | Ghost    | ~~20~~ **25**   | 100            | ~~30~~ **25** |                                                          |
-| FURY ATTACK  | Normal   | 15              | ~~85~~ **95**  | 20            |                                                          |
-| FURY SWIPES  | Normal   | 18              | ~~80~~ **90**  | 15            |                                                          |
-| DIZZY PUNCH  | Normal   | ~~70~~ **80**   | 100            | 10            | **Now has a 10% chance to confuse the opponent**         |
-| SKULL BASH   | Normal   | ~~100~~ **120** | 100            | 15            |                                                          |
-| DOUBLE EDGE  | Normal   | ~~100~~ **120** | 100            | ~~15~~ **10** |                                                          |
-| MEGA KICK    | Normal   | 120             | ~~75~~ **85**  | 5             |                                                          |
-| ROAR         | Normal   | -               | ~~100~~ **85** | 20            |                                                          |
+| Move         | Type     | Power           | Accuracy       | PP            | Additional notes                                                            |
+|--------------|----------|-----------------|----------------|---------------|-----------------------------------------------------------------------------|
+| ABSORB       | Grass    | ~~20~~ **30**   | 100            | 20            |                                                                             |
+| MEGA DRAIN   | Grass    | ~~40~~ **60**   | 100            | 10            |                                                                             |
+| SOLARBEAM    | Grass    | ~~120~~ **140** | 100            | 10            | Power now on par with SKY ATTACK                                            |
+| FIRE SPIN    | Fire     | 15              | ~~70~~ **75**  | 15            |                                                                             |
+| WATERFALL    | Water    | 80              | 100            | 15            | **Now has a 10% chance to make the target flinch**                          |
+| LEECH LIFE   | Bug      | ~~20~~ **30**   | 100            | 15            |                                                                             |
+| TWINEEDLE    | Bug      | ~~25~~ **30**   | 100            | 20            |                                                                             |
+| PIN MISSILE  | Bug      | ~~14~~ **20**   | ~~85~~ **95**  | ~~20~~ **15** |                                                                             |
+| POISON STING | Poison   | ~~15~~ **20**   | 100            | 35            |                                                                             |
+| SMOG         | Poison   | ~~20~~ **30**   | ~~70~~ **85**  | 20            |                                                                             |
+| ACID         | Poison   | ~~40~~ **65**   | 100            | ~~30~~ **20** |                                                                             |
+| SLUDGE       | Poison   | ~~65~~ **85**   | 100            | ~~20~~ **15** |                                                                             |
+| ROCK THROW   | Rock     | 50              | ~~65~~ **85**  | 15            |                                                                             |
+| BONEMERANG   | Ground   | ~~50~~ **60**   | 90             | 10            |                                                                             |
+| DIG          | Ground   | ~~100~~ **70**  | 100            | ~~10~~ **15** |                                                                             |
+| WING ATTACK  | Flying   | ~~35~~ **60**   | 100            | ~~35~~ **25** |                                                                             |
+| SKY ATTACK   | Flying   | 140             | ~~90~~ **100** | ~~5~~ **10**  |                                                                             |
+| PSYWAVE      | Psychic  | -               | ~~80~~ **100** | 15            | **Damage now between 50% and 150% of user's level**                         |
+| KINESIS      | Psychic  | -               | 80             | 15            | ~~Lowers opponent's Accuracy~~ **Now increases own Special**                |
+| LICK         | Ghost    | ~~20~~ **25**   | 100            | ~~30~~ **25** |                                                                             |
+| FURY ATTACK  | Normal   | 15              | ~~85~~ **95**  | 20            |                                                                             |
+| FURY SWIPES  | Normal   | 18              | ~~80~~ **90**  | 15            |                                                                             |
+| DIZZY PUNCH  | Normal   | ~~70~~ **80**   | 100            | 10            | **Now has a 10% chance to confuse the target**                              |
+| SKULL BASH   | Normal   | ~~100~~ **120** | 100            | 15            |                                                                             |
+| DOUBLE EDGE  | Normal   | ~~100~~ **120** | 100            | ~~15~~ **10** |                                                                             |
+| MEGA KICK    | Normal   | 120             | ~~75~~ **85**  | 5             |                                                                             |
+| TRI ATTACK   | Normal   | 80              | 100            | 10            | **Now has a 20% chance to paralyze, freeze, or burn (6.6% chance of each)** |
+| ROAR         | Normal   | -               | ~~100~~ **85** | 20            |                                                                             |
 
 
 

@@ -308,6 +308,10 @@ BurnedText:
 	text_far _BurnedText
 	text_end
 
+PrintFrozenText:    ; marcelnote - new for TRI_ATTACK_EFFECT
+	ld hl, FrozenText
+	jp PrintText
+
 FrozenText:
 	text_far _FrozenText
 	text_end
@@ -1391,6 +1395,87 @@ HexEffect:  ; marcelnote - new effect for HEX: gets to 90 base power if opponent
 	ld a, 90
 	ld [de], a
 	ret
+
+TriAttackEffect:  ; marcelnote - new effect for TRI_ATTACK: 20% chance of PAR/BRN/FRZ (6.6% each)
+	xor a
+	ld [wAnimationType], a
+	callfar CheckTargetSubstitute
+	ret nz ; can't cause a status on a substitute
+	ld bc, wEnemyMonStatus
+	ld hl, wEnemyMonStatus + 1
+	ldh a, [hWhoseTurn]
+	and a
+	jr z, .next
+	ld bc, wBattleMonStatus
+	ld hl, wBattleMonStatus + 1
+.next
+	ld a, [bc]
+	and a ; does the target already have a status ailment?
+	ret nz
+	call BattleRandom ; generates a random number in a
+
+.burn
+	cp 17 ; 17/256 chance of result being 0-16 (6.6%)
+	jr nc, .freeze
+; check if the target is immune due to types
+	ld a, [hli]
+	cp FIRE
+	ret z
+	ld a, [hl]
+	cp FIRE
+	ret z
+	ld a, (1 << BRN)
+	ld [bc], a
+	callfar HalveAttackDueToBurn
+	ldh a, [hWhoseTurn]
+	and a
+	jr nz, .skipBurnAnim
+	ld a, ENEMY_HUD_SHAKE_ANIM
+	call PlayBattleAnimation
+.skipBurnAnim
+	jp PrintBurnedText
+
+.freeze
+	cp 34 ; 17/256 chance of result being 17-33 (6.6%)
+	jr nc, .paralyze
+; check if the target is immune due to types
+	ld a, [hli]
+	cp ICE
+	ret z
+	ld a, [hl]
+	cp ICE
+	ret z
+	ld a, (1 << FRZ)
+	ld [bc], a
+	callfar ClearHyperBeam
+	ldh a, [hWhoseTurn]
+	and a
+	jr nz, .skipFreezeAnim
+	ld a, ENEMY_HUD_SHAKE_ANIM
+	call PlayBattleAnimation
+.skipFreezeAnim
+	jp PrintFrozenText
+
+.paralyze
+	cp 51 ; 17/256 chance of result being 34-50 (6.6%)
+	ret nc
+; check if the target is immune due to types
+	ld a, [hli]
+	cp GROUND
+	ret z
+	ld a, [hl]
+	cp GROUND
+	ret z
+	ld a, (1 << PAR)
+	ld [bc], a
+	callfar QuarterSpeedDueToParalysis
+	ldh a, [hWhoseTurn]
+	and a
+	jr nz, .skipParalyzeAnim
+	ld a, ENEMY_HUD_SHAKE_ANIM
+	call PlayBattleAnimation
+.skipParalyzeAnim
+	jp PrintMayNotAttackText
 
 PayDayEffect:
 	jpfar PayDayEffect_
