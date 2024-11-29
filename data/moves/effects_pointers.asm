@@ -72,9 +72,9 @@ MoveEffectPointerTable:
 	dw StatModifierDownEffect    ; DEFENSE_DOWN_SIDE_EFFECT
 	dw StatModifierDownEffect    ; SPEED_DOWN_SIDE_EFFECT
 	dw StatModifierDownEffect    ; SPECIAL_DOWN_SIDE_EFFECT
-	dw BurnEffect                ; BURN_EFFECT ; marcelnote - new for WILL_O_WISP, replaces unused effect
-	dw HexEffect                 ; HEX_EFFECT ; marcelnote - new for HEX, replaces unused effect
-	dw StatModifierDownEffect    ; unused effect
+	dw BurnEffect                ; BURN_EFFECT       ; marcelnote - new for WILL_O_WISP, was unused
+	dw HexEffect                 ; HEX_EFFECT        ; marcelnote - new for HEX, was unused
+	dw TriAttackEffect           ; TRI_ATTACK_EFFECT ; marcelnote - new for TRI_ATTACK, was unused
 	dw StatModifierDownEffect    ; unused effect
 	dw ConfusionSideEffect       ; CONFUSION_SIDE_EFFECT
 	dw TwoToFiveAttacksEffect    ; TWINEEDLE_EFFECT

@@ -235,7 +235,7 @@ SECTION "Battle Engine 8", ROMX
 
 INCLUDE "engine/battle/init_battle_variables.asm"
 INCLUDE "engine/battle/move_effects/paralyze.asm"
-INCLUDE "engine/battle/move_effects/burn.asm"      ; marcelnote - new for WILL_O_WISP
+INCLUDE "engine/battle/move_effects/burn.asm"                 ; marcelnote - new for WILL_O_WISP
 INCLUDE "engine/battle/move_effects/heal.asm"                 ; marcelnote - moved from Battle Engine 7
 INCLUDE "engine/battle/move_effects/transform.asm"            ; marcelnote - moved from Battle Engine 7
 INCLUDE "engine/battle/move_effects/reflect_light_screen.asm" ; marcelnote - moved from Battle Engine 7

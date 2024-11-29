@@ -83,7 +83,12 @@ _CeladonMartRoofLittleGirlTM49ExplanationText::
 	text_start
 
 	para "TM49 contains"
-	line "TRI ATTACK!@"
+	line "TRI ATTACK!"
+
+	para "It can paralyze," ; marcelnote - new explanation for new TRI_ATTACK_EFFECT
+	line "freeze or burn"
+	cont "the target!@"
+	text_end
 	text_end
 
 _CeladonMartRoofLittleGirlNoRoomText::
