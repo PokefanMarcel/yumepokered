@@ -44,7 +44,7 @@ CeladonMartRoofDrinkList:
 CeladonMartRoofScript_GiveDrinkToGirl:
 	ld hl, wStatusFlags5
 	set BIT_NO_TEXT_DELAY, [hl]
-	ld hl, CeladonMartRoofLittleGirlGiveHerWhichDrinkText
+	ld hl, CeladonMartRoofLittleGirlGiveHerADrinkText ; marcelnote - was GiveHerWhichDrink
 	call PrintText
 	xor a
 	ld [wCurrentMenuItem], a
@@ -94,10 +94,9 @@ CeladonMartRoofScript_GiveDrinkToGirl:
 	lb bc, TM_TRI_ATTACK, 1
 	call GiveItem
 	jr nc, .bagFull
-	ld hl, CeladonMartRoofLittleGirlReceivedTM49Text
-	call PrintText
 	SetEvent EVENT_GOT_TM49
-	ret
+	ld hl, CeladonMartRoofLittleGirlReceivedTM49Text
+	jp PrintText ; marcelnote - was call followed by ret
 .gaveSodaPop
 	CheckEvent EVENT_GOT_TM48
 	jr nz, .alreadyGaveDrink
@@ -107,10 +106,9 @@ CeladonMartRoofScript_GiveDrinkToGirl:
 	lb bc, TM_ROCK_SLIDE, 1
 	call GiveItem
 	jr nc, .bagFull
-	ld hl, CeladonMartRoofLittleGirlReceivedTM48Text
-	call PrintText
 	SetEvent EVENT_GOT_TM48
-	ret
+	ld hl, CeladonMartRoofLittleGirlReceivedTM48Text
+	jp PrintText ; marcelnote - was call followed by ret
 .gaveFreshWater
 	CheckEvent EVENT_GOT_TM13
 	jr nz, .alreadyGaveDrink
@@ -120,10 +118,9 @@ CeladonMartRoofScript_GiveDrinkToGirl:
 	lb bc, TM_ICE_BEAM, 1
 	call GiveItem
 	jr nc, .bagFull
-	ld hl, CeladonMartRoofLittleGirlReceivedTM13Text
-	call PrintText
 	SetEvent EVENT_GOT_TM13
-	ret
+	ld hl, CeladonMartRoofLittleGirlReceivedTM13Text
+	jp PrintText ; marcelnote - was call followed by ret
 .bagFull
 	ld hl, CeladonMartRoofLittleGirlNoRoomText
 	jp PrintText
@@ -134,8 +131,8 @@ CeladonMartRoofScript_GiveDrinkToGirl:
 RemoveItemByIDBank12:
 	farjp RemoveItemByID
 
-CeladonMartRoofLittleGirlGiveHerWhichDrinkText:
-	text_far _CeladonMartRoofLittleGirlGiveHerWhichDrinkText
+CeladonMartRoofLittleGirlGiveHerADrinkText: ; marcelnote - was GiveHerWhichDrink
+	text_far _CeladonMartRoofLittleGirlGiveHerADrinkText
 	text_end
 
 CeladonMartRoofLittleGirlYayFreshWaterText:
@@ -219,34 +216,20 @@ CeladonMartRoofSuperNerdText:
 	text_far _CeladonMartRoofSuperNerdText
 	text_end
 
-CeladonMartRoofLittleGirlText:
+CeladonMartRoofLittleGirlText: ; marcelnote - simplified
 	text_asm
+	ld a, 1
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	ld hl, .ImThirstyText
+	call PrintText
 	call CeladonMartRoofScript_GetDrinksInBag
 	ld a, [wFilteredBagItemsCount]
 	and a
-	jr z, .noDrinksInBag
-	ld a, 1
-	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-	ld hl, .GiveHerADrinkText
-	call PrintText
-	call YesNoChoice
-	ld a, [wCurrentMenuItem]
-	and a
-	jr nz, .text_script_end
-	call CeladonMartRoofScript_GiveDrinkToGirl
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-.noDrinksInBag
-	ld hl, .ImThirstyText
-	call PrintText
-.text_script_end
+	call nz, CeladonMartRoofScript_GiveDrinkToGirl
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .ImThirstyText:
 	text_far _CeladonMartRoofLittleGirlImThirstyText
-	text_end
-
-.GiveHerADrinkText:
-	text_far _CeladonMartRoofLittleGirlGiveHerADrinkText
 	text_end
 
 CeladonMartRoofVendingMachineText:
