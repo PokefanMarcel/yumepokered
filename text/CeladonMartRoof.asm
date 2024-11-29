@@ -1,6 +1,11 @@
-_CeladonMartRoofLittleGirlGiveHerWhichDrinkText::
-	text "Give her which"
-	line "drink?"
+_CeladonMartRoofLittleGirlImThirstyText::
+	text "I'm thirsty!"
+	line "I want something"
+	cont "to drink!"
+	prompt
+
+_CeladonMartRoofLittleGirlGiveHerADrinkText:: ; marcelnote - simplified
+	text "Give her a drink?" ; marcelnote - was "Give her which drink?"
 	done
 
 _CeladonMartRoofLittleGirlYayFreshWaterText::
@@ -12,13 +17,6 @@ _CeladonMartRoofLittleGirlYayFreshWaterText::
 
 	para "You can have this"
 	line "from me!@"
-	text_end
-
-_CeladonMartRoofLittleGirlReceivedTMText:: ; marcelnote - now common to all 3 TMs
-	text "<PLAYER> received"
-	line "@"
-	text_ram wStringBuffer
-	text "!@"
 	text_end
 
 _CeladonMartRoofLittleGirlTM13ExplanationText::
@@ -44,13 +42,6 @@ _CeladonMartRoofLittleGirlYaySodaPopText::
 	line "from me!@"
 	text_end
 
-;_CeladonMartRoofLittleGirlReceivedTM48Text:: ; marcelnote - now use text common to all 3 TMs
-;	text "<PLAYER> received"
-;	line "@"
-;	text_ram wStringBuffer
-;	text "!@"
-;	text_end
-
 _CeladonMartRoofLittleGirlTM48ExplanationText::
 	text_start
 
@@ -74,11 +65,6 @@ _CeladonMartRoofLittleGirlYayLemonadeText::
 	line "from me!@"
 	text_end
 
-;_CeladonMartRoofLittleGirlReceivedTM49Text:: ; marcelnote - now use text common to all 3 TMs
-;	text "<PLAYER> received"
-;	line "TM49!@"
-;	text_end
-
 _CeladonMartRoofLittleGirlTM49ExplanationText::
 	text_start
 
@@ -89,6 +75,12 @@ _CeladonMartRoofLittleGirlTM49ExplanationText::
 	line "freeze or burn"
 	cont "the target!@"
 	text_end
+
+_CeladonMartRoofLittleGirlReceivedTMText:: ; marcelnote - now common to all 3 TMs
+	text "<PLAYER> received"
+	line "@"
+	text_ram wStringBuffer
+	text "!@"
 	text_end
 
 _CeladonMartRoofLittleGirlNoRoomText::
@@ -110,20 +102,6 @@ _CeladonMartRoofSuperNerdText::
 	para "But, she's so"
 	line "immature, she"
 	cont "drives me nuts!"
-	done
-
-_CeladonMartRoofLittleGirlImThirstyText::
-	text "I'm thirsty!"
-	line "I want something"
-	cont "to drink!"
-	done
-
-_CeladonMartRoofLittleGirlGiveHerADrinkText::
-	text "I'm thirsty!"
-	line "I want something"
-	cont "to drink!"
-
-	para "Give her a drink?"
 	done
 
 _CeladonMartRoofCurrentFloorSignText::
