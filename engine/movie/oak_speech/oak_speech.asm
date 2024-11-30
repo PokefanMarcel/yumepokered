@@ -70,7 +70,7 @@ OakSpeech:
 	call BoyGirlChoice
 	ld a, [wCurrentMenuItem] ; 0 = boy, 1 = girl
 	and a
-	ld hl, [wStatusFlags4]
+	ld hl, wStatusFlags4
 	res BIT_IS_GIRL, [hl]
 	jr z, .genderIsSet
 	set BIT_IS_GIRL, [hl]
@@ -128,10 +128,10 @@ OakSpeech:
 	bit BIT_IS_GIRL, a
 	ld de, RedPicFront
 	lb bc, BANK(RedPicFront), $00
-	jr z, .gotPicFront
+	jr z, .gotPicFront2
 	ld de, GreenPicFront
 	lb bc, BANK(GreenPicFront), $00
-.gotPicFront
+.gotPicFront2
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	call IntroDisplayPicCenteredOrUpperRight
 	call GBFadeInFromWhite

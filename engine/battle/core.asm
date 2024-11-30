@@ -6529,10 +6529,10 @@ LoadPlayerBackPic:
     bit BIT_IS_GIRL, a
     ld de, RedPicBack
     ld a, BANK(RedPicBack)
-    jr z, .gotPicBack
+    jr z, .next
     ld de, GreenPicBack
     ld a, BANK(GreenPicBack)
-.gotPicBack
+.next
     ASSERT BANK(GreenPicBack) == BANK(OldManPicBack)
     ASSERT BANK(RedPicBack) == BANK(OldManPicBack)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
