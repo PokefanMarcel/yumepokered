@@ -1,5 +1,7 @@
 ; See song sections in audio.asm.
 
+; marcelnote - THIS IS FOR CRYSTAL
+
 Music:
 ; entries correspond to MUSIC_* constants
 	table_width 3, Music
