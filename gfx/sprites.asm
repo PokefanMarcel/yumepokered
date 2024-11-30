@@ -27,15 +27,16 @@ ClipboardSprite::        INCBIN "gfx/sprites/clipboard.2bpp"
 SnorlaxSprite::          INCBIN "gfx/sprites/snorlax.2bpp"
 OldAmberSprite::         INCBIN "gfx/sprites/old_amber.2bpp"
 GamblerAsleepSprite::    INCBIN "gfx/sprites/gambler_asleep.2bpp"
-LoreleiSprite::          INCBIN "gfx/sprites/lorelei.2bpp"
 
 
 SECTION "NPC Sprites 2", ROMX
 
 RedBikeSprite::          INCBIN "gfx/sprites/red_bike.2bpp"
 RedSprite::              INCBIN "gfx/sprites/red.2bpp"
-GreenBikeSprite::        INCBIN "gfx/sprites/green_bike.2bpp"
-GreenSprite::            INCBIN "gfx/sprites/green.2bpp"
+RedSurfSprite::          INCBIN "gfx/sprites/red_surf.2bpp"   ; marcelnote - new
+GreenBikeSprite::        INCBIN "gfx/sprites/green_bike.2bpp" ; marcelnote - new
+GreenSprite::            INCBIN "gfx/sprites/green.2bpp"      ; marcelnote - new
+GreenSurfSprite::        INCBIN "gfx/sprites/green_surf.2bpp" ; marcelnote - new
 BlueSprite::             INCBIN "gfx/sprites/blue.2bpp"
 OakSprite::              INCBIN "gfx/sprites/oak.2bpp"
 YoungsterSprite::        INCBIN "gfx/sprites/youngster.2bpp"
@@ -64,13 +65,11 @@ WaiterSprite::           INCBIN "gfx/sprites/waiter.2bpp"
 SilphWorkerFSprite::     INCBIN "gfx/sprites/silph_worker_f.2bpp"
 MiddleAgedWomanSprite::  INCBIN "gfx/sprites/middle_aged_woman.2bpp"
 BrunetteGirlSprite::     INCBIN "gfx/sprites/brunette_girl.2bpp"
-LanceSprite::            INCBIN "gfx/sprites/lance.2bpp"
 MomSprite::              INCBIN "gfx/sprites/mom.2bpp"
 BaldingGuySprite::       INCBIN "gfx/sprites/balding_guy.2bpp"
 LittleBoySprite::        INCBIN "gfx/sprites/little_boy.2bpp"
 GameboyKidSprite::       INCBIN "gfx/sprites/gameboy_kid.2bpp"
 FairySprite::            INCBIN "gfx/sprites/fairy.2bpp"
-AgathaSprite::           INCBIN "gfx/sprites/agatha.2bpp"
 SeelSprite::             INCBIN "gfx/sprites/seel.2bpp"
 
 
@@ -83,7 +82,10 @@ ErikaSprite::            INCBIN "gfx/sprites/erika.2bpp"
 KogaSprite::             INCBIN "gfx/sprites/koga.2bpp"
 SabrinaSprite::          INCBIN "gfx/sprites/sabrina.2bpp"
 BlaineSprite::           INCBIN "gfx/sprites/blaine.2bpp"
+LoreleiSprite::          INCBIN "gfx/sprites/lorelei.2bpp"
 BrunoSprite::            INCBIN "gfx/sprites/bruno.2bpp"
+AgathaSprite::           INCBIN "gfx/sprites/agatha.2bpp"
+LanceSprite::            INCBIN "gfx/sprites/lance.2bpp"
 SwimmerFSprite::         INCBIN "gfx/sprites/swimmer_f.2bpp"
 YellowSprite::           INCBIN "gfx/sprites/yellow.2bpp"
 YellowAsleepSprite::     INCBIN "gfx/sprites/yellow_asleep.2bpp"
