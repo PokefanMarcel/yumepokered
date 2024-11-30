@@ -321,19 +321,17 @@ ScrollTitleScreenGameVersion:
 	jr z, .wait2
 	ret
 
-;joenote - add support for female player
-DrawPlayerCharacter_F:
-	ld hl, FPlayerCharacterTitleGraphics
+DrawPlayerCharacter: ; marcelnote - add support for female player
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
 	ld de, vSprites
-	ld bc, FPlayerCharacterTitleGraphicsEnd - FPlayerCharacterTitleGraphics
-	ld a, BANK(FPlayerCharacterTitleGraphics)
-	jr DrawPlayerCharacter.copy
-
-DrawPlayerCharacter:
 	ld hl, PlayerCharacterTitleGraphics
-	ld de, vSprites
 	ld bc, PlayerCharacterTitleGraphicsEnd - PlayerCharacterTitleGraphics
 	ld a, BANK(PlayerCharacterTitleGraphics)
+	jr z, .copy
+	ld hl, FPlayerCharacterTitleGraphics
+	ld bc, FPlayerCharacterTitleGraphicsEnd - FPlayerCharacterTitleGraphics
+	ld a, BANK(FPlayerCharacterTitleGraphics)
 .copy
 	call FarCopyData2
 	call ClearSprites

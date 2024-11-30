@@ -41,16 +41,6 @@ DisplayDiploma::
 	call PlaceString
 	farcall DrawPlayerCharacter
 
-;joenote - add female player
-	ld a, [wPlayerGender]
-	bit 0, a	;check if girl
-	jr nz, .isGirl
-	farcall DrawPlayerCharacter
-	jr .isGirl_end
-.isGirl
-	farcall DrawPlayerCharacter_F
-.isGirl_end
-
 ; Move the player 33 pixels right and set the priority bit so he appears
 ; behind the background layer.
 	ld hl, wShadowOAMSprite00XCoord

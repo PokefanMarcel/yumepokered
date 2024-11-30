@@ -383,30 +383,25 @@ FishingAnim:
 	ld hl, wMovementFlags
 	set BIT_LEDGE_OR_FISHING, [hl] ; reserve the last 4 OAM entries
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
-	ld a, [wPlayerGender]
-	bit 0, a	;check if girl
-	jr nz, .loadGirlSprite
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
 	ld de, RedSprite
 	lb bc, BANK(RedSprite), $c
-	jr .nextSprites
-.loadGirlSprite
+	jr z, .gotSprite
 	ld de, GreenSprite
 	ld bc, (BANK(GreenSprite) << 8) + $0c
-.nextSprites
+.gotSprite
 	ld hl, vNPCSprites
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	call CopyVideoData
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
-	ld a, [wPlayerGender]
-	bit 0, a	;check if girl
-	jr nz, .loadGirlTiles
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
 	ld a, $4
 	ld hl, RedFishingTiles
-	jr .nextTiles
-.loadGirlTiles
-	ld a, $4
+	jr z, .gotFishingTiles
 	ld hl, GreenFishingTiles
-.nextTiles
+.gotFishingTiles
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	call LoadAnimSpriteGfx
 	ld a, [wSpritePlayerStateData1ImageIndex]

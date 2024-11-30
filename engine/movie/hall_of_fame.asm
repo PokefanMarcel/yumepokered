@@ -183,18 +183,16 @@ HoFMonInfoText:
 	next "TYPE2/@"
 
 HoFLoadPlayerPics:
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
-	ld a, [wPlayerGender]
-	bit 0, a	;check if girl
-	jr nz, .loadGirlFront
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
 	ld de, RedPicFront
 	ld a, BANK(RedPicFront)
-	jr .next
-.loadGirlFront
+	jr z, .gotPicFront
 	ld de, GreenPicFront
 	ld a, BANK(GreenPicFront)
-.next
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+.gotPicFront
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	call UncompressSpriteFromDE
 	ld hl, sSpriteBuffer1
 	ld de, sSpriteBuffer0
@@ -202,18 +200,16 @@ HoFLoadPlayerPics:
 	call CopyData
 	ld de, vFrontPic
 	call InterlaceMergeSpriteBuffers
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
-	ld a, [wPlayerGender]
-	bit 0, a	;check if girl
-	jr nz, .loadGirlBack
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
 	ld de, RedPicBack
 	ld a, BANK(RedPicBack)
-	jr .finish
-.loadGirlBack
+	jr z, .gotPicBack
 	ld de, GreenPicBack
 	ld a, BANK(GreenPicBack)
-.finish
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+.gotPicBack
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	call UncompressSpriteFromDE
 	predef ScaleSpriteByTwo
 	ld de, vBackPic
