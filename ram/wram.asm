@@ -337,9 +337,6 @@ UNION
 wVermilionDockTileMapBuffer:: ds 5 * BG_MAP_WIDTH + SCREEN_WIDTH
 wVermilionDockTileMapBufferEnd::
 
-;NEXTU
-;wOaksAideRewardItemName:: ds ITEM_NAME_LENGTH
-
 NEXTU
 wElevatorWarpMaps:: ds 11 * 2
 
