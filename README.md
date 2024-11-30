@@ -20,6 +20,7 @@ This project owes a lot to other existing works, notably
 - [PureRGB](https://github.com/Vortyne/pureRGB): overworld HM use, space management, repel reuse prompt, many code snippets,
 - [Extreme Yellow](https://github.com/RainbowMetalPigeon/ExtremeYellow): overworld HM use, dynamic TM seller,
 - [Yellow Legacy](https://github.com/cRz-Shadows/Pokemon_Yellow_Legacy): updated gym leader sprites, inspiration for some balance changes,
+- [pokered-crysaudio](https://github.com/dannye/pokered-crysaudio/tree/1edc6019fb8630bccd94f0b0e7dd4082cf7f4245): updated sound engine,
 - and others...
 
 If you think your work should be credited here, don't hesitate to reach out to me on the pokered Discord!
