@@ -89,7 +89,7 @@ _OaksAideHiText::
 	cont "I'm supposed to"
 	cont "give you an"
 	cont "@"
-	text_ram wOaksAideRewardItemName
+	text_ram wNameBuffer ; marcelnote - was wOaksAideRewardItemName
 	text "!"
 
 	para "So, <PLAYER>! Have"
@@ -113,7 +113,7 @@ _OaksAideUhOhText::
 	text " kinds"
 	line "if you want the"
 	cont "@"
-	text_ram wOaksAideRewardItemName
+	text_ram wNameBuffer ; marcelnote - was wOaksAideRewardItemName
 	text "."
 	done
 
@@ -125,7 +125,7 @@ _OaksAideComeBackText::
 	text_start
 	line "kinds, come back"
 	cont "for @"
-	text_ram wOaksAideRewardItemName
+	text_ram wNameBuffer ; marcelnote - was wOaksAideRewardItemName
 	text "."
 	done
 
@@ -143,15 +143,15 @@ _OaksAideHereYouGoText::
 _OaksAideGotItemText::
 	text "<PLAYER> got the"
 	line "@"
-	text_ram wOaksAideRewardItemName
+	text_ram wNameBuffer ; marcelnote - was wOaksAideRewardItemName
 	text "!@"
-	text_end
+	prompt ; marcelnote - was text_end
 
 _OaksAideNoRoomText::
 	text "Oh! I see you"
 	line "don't have any"
 	cont "room for the"
 	cont "@"
-	text_ram wOaksAideRewardItemName
+	text_ram wNameBuffer ; marcelnote - was wOaksAideRewardItemName
 	text "."
 	done
