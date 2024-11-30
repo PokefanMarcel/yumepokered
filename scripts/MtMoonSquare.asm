@@ -6,7 +6,7 @@ MtMoonSquare_Script:
 	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
 	call Random
-	cp 25 ; prob_spawning = (n+1)/256
+	cp 26 ; carry when a is 0-25 so prob_spawning = 26/256 = 10.1%
 	ret nc
 	ld a, HS_MT_MOON_SQUARE_CLEFAIRY
 	ld [wMissableObjectIndex], a
@@ -32,18 +32,16 @@ MtMoonSquareClefairyText:
 	text_asm
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-	;ld hl, .text
-	;call PrintText
 	ld a, CLEFAIRY
 	call PlayCry
 	call GBFadeOutToWhite
 	ld a, SFX_TELEPORT_EXIT_1
 	ld [wNewSoundID], a
 	call PlaySound
-	ld a, HS_MT_MOON_SQUARE_CLEFAIRY    ; hide Clefairy
+	ld a, HS_MT_MOON_SQUARE_CLEFAIRY
 	ld [wMissableObjectIndex], a
 	predef HideObject
-	ld a, HS_MT_MOON_SQUARE_ITEM_1  ; show Moon Stone
+	ld a, HS_MT_MOON_SQUARE_ITEM_1 ; show Moon Stone
 	ld [wMissableObjectIndex], a
 	predef ShowObject
 	call UpdateSprites
