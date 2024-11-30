@@ -145,7 +145,7 @@ _OaksAideGotItemText::
 	line "@"
 	text_ram wNameBuffer ; marcelnote - was wOaksAideRewardItemName
 	text "!@"
-	prompt ; marcelnote - was text_end
+	text_end
 
 _OaksAideNoRoomText::
 	text "Oh! I see you"
