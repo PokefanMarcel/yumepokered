@@ -2001,8 +2001,16 @@ LoadWalkingPlayerSpriteGraphics::
 	ld hl, vNPCSprites
 	jr LoadPlayerSpriteGraphicsCommon
 
-LoadSurfingPlayerSpriteGraphics::
-	ld de, SeelSprite
+LoadSurfingPlayerSpriteGraphics:: ; marcelnote - new surfing sprites
+	;ld de, SeelSprite
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld de, RedSurfSprite
+	jr z, .gotSprite
+	ld de, GreenSurfSprite
+.gotSprite
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld hl, vNPCSprites
 	jr LoadPlayerSpriteGraphicsCommon
 
