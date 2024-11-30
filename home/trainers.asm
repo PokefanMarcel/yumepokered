@@ -440,7 +440,6 @@ PlayTrainerMusic::
 .maleTrainer
 	ld a, MUSIC_MEET_MALE_TRAINER
 .PlaySound
-;	ld [wNewSoundID], a
 	jp PlayMusic
 
 INCLUDE "data/trainers/encounter_types.asm"

@@ -68,8 +68,8 @@ OakSpeech:
 	ld hl, BoyGirlText
 	call PrintText
 	call BoyGirlChoice
-	ld a, [wCurrentMenuItem]
-	ld [wPlayerGender], a ; 0 for boy, 1 for girl
+	ld a, [wCurrentMenuItem] ; 0 for boy, 1 for girl
+	ld [wStatusFlags4], a ; this is ok because all status flags are initially 0
 	call ClearScreen
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld de, ProfOakPic
@@ -92,14 +92,14 @@ OakSpeech:
 	call GBFadeOutToWhite
 	call ClearScreen
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
-	ld de, GreenPicFront
-	lb bc, BANK(GreenPicFront), $00
-	ld a, [wPlayerGender]
-	bit 0, a	;check if girl
-	jr nz, .donefemale_front
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a	; check if girl
 	ld de, RedPicFront
 	lb bc, BANK(RedPicFront), $00
-.donefemale_front
+	jr z, .gotPicFront
+	ld de, GreenPicFront
+	lb bc, BANK(GreenPicFront), $00
+.gotPicFront
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	call IntroDisplayPicCenteredOrUpperRight
 	call MovePicLeft
@@ -119,14 +119,14 @@ OakSpeech:
 	call GBFadeOutToWhite
 	call ClearScreen
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
-	ld de, GreenPicFront
-	lb bc, BANK(GreenPicFront), $00
-	ld a, [wPlayerGender]
-	bit 0, a	;check if girl
-	jr nz, .donefemale_front2
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a	; check if girl
 	ld de, RedPicFront
 	lb bc, BANK(RedPicFront), $00
-.donefemale_front2
+	jr z, .gotPicFront2
+	ld de, GreenPicFront
+	lb bc, BANK(GreenPicFront), $00
+.gotPicFront2
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	call IntroDisplayPicCenteredOrUpperRight
 	call GBFadeInFromWhite
@@ -146,14 +146,14 @@ OakSpeech:
 	ld c, 4
 	call DelayFrames
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
-	ld de, GreenSprite
-	lb bc, BANK(GreenSprite), $0C
-	ld a, [wPlayerGender]
-	bit 0, a	;check if girl
-	jr nz, .donefemale_sprite
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a	; check if girl
 	ld de, RedSprite
 	lb bc, BANK(RedSprite), $0C
-.donefemale_sprite
+	jr z, .gotSprite
+	ld de, GreenSprite
+	lb bc, BANK(GreenSprite), $0C
+.gotSprite
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld hl, vSprites
 	call CopyVideoData

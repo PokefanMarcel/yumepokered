@@ -499,8 +499,8 @@ StartMenu_TrainerInfo::
 ; loads tile patterns and draws everything except for gym leader faces / badges
 DrawTrainerInfo:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
-	ld a, [wPlayerGender]
-	bit 0, a	;check if girl
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a	; check if girl
 	jr nz, .isGirl
 	ld de, RedPicFront
 	lb bc, BANK(RedPicFront), $01

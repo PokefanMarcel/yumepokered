@@ -220,7 +220,6 @@ ENDC
 	call Delay3
 	call WaitForSoundToFinish
 	ld a, MUSIC_TITLE_SCREEN
-;	ld [wNewSoundID], a
 	call PlayMusic
 	xor a
 	ld [wUnusedFlag], a
@@ -321,19 +320,18 @@ ScrollTitleScreenGameVersion:
 	jr z, .wait2
 	ret
 
-;joenote - add support for female player
-DrawPlayerCharacter_F:
-	ld hl, FPlayerCharacterTitleGraphics
+; marcelnote - add support for female player
+DrawPlayerCharacter:
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, PlayerCharacterTitleGraphics
+	ld bc, PlayerCharacterTitleGraphicsEnd - PlayerCharacterTitleGraphics
 	ld de, vSprites
+	ld a, BANK(PlayerCharacterTitleGraphics)
+	jr z, .copy
+	ld hl, FPlayerCharacterTitleGraphics
 	ld bc, FPlayerCharacterTitleGraphicsEnd - FPlayerCharacterTitleGraphics
 	ld a, BANK(FPlayerCharacterTitleGraphics)
-	jr DrawPlayerCharacter.copy
-
-DrawPlayerCharacter:
-	ld hl, PlayerCharacterTitleGraphics
-	ld de, vSprites
-	ld bc, PlayerCharacterTitleGraphicsEnd - PlayerCharacterTitleGraphics
-	ld a, BANK(PlayerCharacterTitleGraphics)
 .copy
 	call FarCopyData2
 	call ClearSprites

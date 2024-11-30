@@ -52,7 +52,6 @@ IndigoPlateauLobbyDefaultScript:
 	ldh [hTextID], a
 	call DisplayTextID
 	ld a, SFX_STOP_ALL_MUSIC
-	ld [wNewSoundID], a
 	call PlaySound
 	farcall Music_RivalAlternateStart
 	xor a

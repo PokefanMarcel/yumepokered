@@ -1,31 +1,29 @@
 ChoosePlayerName:
 	call OakSpeechSlidePicRight
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
-	ld a, [wPlayerGender]
-	bit 0, a	;check if girl
-	jr nz, .isGirl
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a	; check if girl
 	ld de, DefaultNamesPlayer
-	call DisplayIntroNameTextBox
-	ld a, [wCurrentMenuItem]
-	and a
-	jr z, .customName
-	ld hl, DefaultNamesPlayerList
-	call GetDefaultName
-	ld de, wPlayerName
-	call OakSpeechSlidePicLeft
-	jr .done
-.isGirl
+	jr z, .gotDefaultNames
 	ld de, DefaultNamesPlayerF
+.gotDefaultNames
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	call DisplayIntroNameTextBox
 	ld a, [wCurrentMenuItem]
 	and a
 	jr z, .customName
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a	; check if girl
+	ld hl, DefaultNamesPlayerList
+	jr z, .gotDefaultNamesList
 	ld hl, DefaultNamesPlayerListF
+.gotDefaultNamesList
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	call GetDefaultName
 	ld de, wPlayerName
 	call OakSpeechSlidePicLeft
 	jr .done
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .customName
 	ld hl, wPlayerName
 	xor a ; NAME_PLAYER_SCREEN
@@ -37,16 +35,14 @@ ChoosePlayerName:
 	call ClearScreen
 	call Delay3
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
-	ld a, [wPlayerGender]
-	bit 0, a	;check if girl
-	jr nz, .isGirl2
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a	; check if girl
 	ld de, RedPicFront
 	ld b, BANK(RedPicFront)
-	call IntroDisplayPicCenteredOrUpperRight
-	jr .done
-.isGirl2
+	jr z, .gotPic
 	ld de, GreenPicFront
 	ld b, BANK(GreenPicFront)
+.gotPic
 	call IntroDisplayPicCenteredOrUpperRight
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .done

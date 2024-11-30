@@ -92,7 +92,7 @@ _AddPartyMon::
 	ld hl, wPokedexOwned
 	call FlagAction
 	ld a, c ; whether the mon was already flagged as owned
-	ld [wUnusedAlreadyOwnedFlag], a
+	;ld [wUnusedAlreadyOwnedFlag], a
 	ld a, [wPokedexNum]
 	dec a
 	ld c, a

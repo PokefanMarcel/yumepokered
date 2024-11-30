@@ -30,7 +30,6 @@ ENDC
 	call ArePlayerCoordsInArray
 	jp nc, PokemonTower2FCheckGhostEncounterScript ; marcelnote - postgame Agatha event, was ret nc
 	ld a, SFX_STOP_ALL_MUSIC
-;	ld [wNewSoundID], a
 	call PlaySound
 	ld c, 0 ; BANK(Music_MeetRival)
 	ld a, MUSIC_MEET_RIVAL
@@ -84,7 +83,6 @@ PokemonTower2FDefeatedRivalScript:
 	ldh [hSpriteIndex], a
 	call MoveSprite
 	ld a, SFX_STOP_ALL_MUSIC
-;	ld [wNewSoundID], a
 	call PlaySound
 	farcall Music_RivalAlternateStart
 	ld a, SCRIPT_POKEMONTOWER2F_RIVAL_EXITS

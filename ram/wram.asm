@@ -1,7 +1,6 @@
 SECTION "Audio RAM", WRAM0
 
-wUnusedMusicByte:: db
-; crysaudio start
+; crysaudio start ; marcelnote - wram was reorganized from crysaudio
 
 ; nonzero if playing
 wMusicPlaying:: db
@@ -12,73 +11,83 @@ wChannel2:: channel_struct wChannel2
 wChannel3:: channel_struct wChannel3
 wChannel4:: channel_struct wChannel4
 
-	ds 1
+wChannel5:: channel_struct wChannel5
+wChannel6:: channel_struct wChannel6
+wChannel7:: channel_struct wChannel7
+wChannel8:: channel_struct wChannel8
 
 wCurTrackDuty:: db
 wCurTrackVolumeEnvelope:: db
 wCurTrackFrequency:: dw
-wUnusedBCDNumber:: db ; BCD value, dummied out
 wCurNoteDuration:: db ; used in MusicE0 and LoadNote
 
 wCurMusicByte:: db
 wCurChannel:: db
-wVolume::
+
 ; corresponds to rNR50
 ; Channel control / ON-OFF / Volume (R/W)
 ;   bit 7 - Vin->SO2 ON/OFF
 ;   bit 6-4 - SO2 output level (volume) (# 0-7)
 ;   bit 3 - Vin->SO1 ON/OFF
 ;   bit 2-0 - SO1 output level (volume) (# 0-7)
-	db
-wSoundOutput::
+wVolume:: db
+
 ; corresponds to rNR51
 ; bit 4-7: ch1-4 so2 on/off
 ; bit 0-3: ch1-4 so1 on/off
-	db
-wPitchSweep::
+wSoundOutput:: db
+
 ; corresponds to rNR10
 ; bit 7:   unused
 ; bit 4-6: sweep time
 ; bit 3:   sweep direction
 ; but 0-2: sweep shift
-	db
+wPitchSweep:: db
 
 wMusicID:: dw
 wMusicBank:: db
 wNoiseSampleAddress:: dw
 wNoiseSampleDelay:: db
-	ds 1
 wMusicNoiseSampleSet:: db
 wSFXNoiseSampleSet:: db
 
-wLowHealthAlarm::
+wMapMusicSoundID:: db
+wMapMusicROMBank:: db
+
+; sound ID during battle animations
+wAnimSoundID:: db
+
+; This is used to determine whether the default music is already playing when
+; attempting to play the default music (in order to avoid restarting the same
+; music) and whether the music has already been stopped when attempting to
+; fade out the current music (so that the new music can be begin immediately
+; instead of waiting).
+; It sometimes contains the sound ID of the last music played, but it may also
+; contain $ff (if the music has been stopped) or 0 (because some routines zero
+; it in order to prevent assumptions from being made about the current state of
+; the music).
+wLastMusicSoundID:: db
+
 ; bit 7: on/off
 ; bit 4: pitch
 ; bit 0-3: counter
-	db
+wLowHealthAlarm:: db
 
-wMusicFade::
 ; fades volume over x frames
 ; bit 7: fade in/out
 ; bit 0-5: number of frames for each volume level
 ; $00 = none (default)
-	db
+wMusicFade:: db
 wMusicFadeCount:: db
 wMusicFadeID:: dw
-
-	ds 5
 
 wCryPitch:: dw
 wCryLength:: dw
 
 wLastVolume:: db
-wUnusedMusicF9Flag:: db
 
-wSFXPriority::
 ; if nonzero, turn off music when playing sfx
-	db
-
-	ds 1
+wSFXPriority:: db
 
 wChannel1JumpCondition:: db
 wChannel2JumpCondition:: db
@@ -87,15 +96,14 @@ wChannel4JumpCondition:: db
 
 wStereoPanningMask:: db
 
-wCryTracks::
 ; plays only in left or right track depending on what side the monster is on
 ; both tracks active outside of battle
-	db
+wCryTracks:: db
 
 wSFXDuration:: db
-wCurSFX::
+
 ; id of sfx currently playing
-	db
+wCurSFX:: db
 
 wSFXDontWait:: ds 1
 
@@ -338,8 +346,6 @@ wMenuWrappingEnabled:: db
 ; whether to check for 180-degree turn (0 = don't, 1 = do)
 wCheckFor180DegreeTurn:: db
 
-	ds 1
-
 wMissableObjectIndex:: db
 
 wPredefID:: db
@@ -349,16 +355,12 @@ wPredefBC:: dw
 
 wTrainerHeaderFlagBit:: db
 
-	ds 1
-
 ; which NPC movement script pointer is being used
 ; 0 if an NPC movement script is not running
 wNPCMovementScriptPointerTableNum:: db
 
 ; ROM bank of current NPC movement script
 wNPCMovementScriptBank:: db
-
-	ds 2
 
 ; This union spans 180 bytes.
 UNION
@@ -1006,9 +1008,6 @@ wAIItem:: db
 wUsedItemOnWhichPokemon:: db
 ENDU
 
-; sound ID during battle animations
-wAnimSoundID:: db
-
 ; used as a storage value for the bank to return to after a BankswitchHome (bankswitch in homebank)
 wBankswitchHomeSavedROMBank:: db
 
@@ -1114,7 +1113,7 @@ wGymCityName:: ds 17
 wGymLeaderName:: ds NAME_LENGTH
 
 ;UNION
-ds 16 ; PureRGBnote: CHANGED: used to be wItemList but now the item list for marts is expanded in size and reuses a bigger space in wMovesString
+;ds 16 ; PureRGBnote: CHANGED: used to be wItemList but now the item list for marts is expanded in size and reuses a bigger space in wMovesString
 ;NEXTU
 
 wListPointer:: dw
@@ -1170,32 +1169,6 @@ wWalkCounter:: db
 
 ; background tile number in front of the player (either 1 or 2 steps ahead)
 wTileInFrontOfPlayer:: db
-
-; The desired fade counter reload value is stored here prior to calling
-; PlaySound in order to cause the current music to fade out before the new
-; music begins playing. Storing 0 causes no fade out to occur and the new music
-; to begin immediately.
-; This variable has another use related to fade-out, as well. PlaySound stores
-; the sound ID of the music that should be played after the fade-out is finished
-; in this variable. FadeOutAudio checks if it's non-zero every V-Blank and
-; fades out the current audio if it is. Once it has finished fading out the
-; audio, it zeroes this variable and starts playing the sound ID stored in it.
-wAudioFadeOutControl:: db
-
-wAudioFadeOutCounterReloadValue:: db
-
-wAudioFadeOutCounter:: db
-
-; This is used to determine whether the default music is already playing when
-; attempting to play the default music (in order to avoid restarting the same
-; music) and whether the music has already been stopped when attempting to
-; fade out the current music (so that the new music can be begin immediately
-; instead of waiting).
-; It sometimes contains the sound ID of the last music played, but it may also
-; contain $ff (if the music has been stopped) or 0 (because some routines zero
-; it in order to prevent assumptions from being made about the current state of
-; the music).
-wLastMusicSoundID:: db
 
 ; $00 = causes sprites to be hidden and the value to change to $ff
 ; $01 = enabled
@@ -1694,8 +1667,6 @@ wSavedSpriteMapX:: db
 
 	ds 5
 
-wWhichPrize:: db
-
 ; counts downward each frame
 ; when it hits 0, BIT_DISABLE_JOYPAD of wStatusFlags5 is reset
 wIgnoreInputCounter:: db
@@ -1705,6 +1676,8 @@ wStepCounter:: db
 
 ; after a battle, you have at least 3 steps before a random battle can occur
 wNumberOfNoRandomBattleStepsLeft:: db
+
+wWhichPrize:: db
 
 wPrize1:: db
 wPrize2:: db
@@ -1733,10 +1706,6 @@ wSerialPlayerDataBlock:: ; ds $1a8
 ; For example, out-of-battle Dig is executed using a fake Escape Rope item. In
 ; that case, this would be ESCAPE_ROPE.
 wPseudoItemID:: db
-
-wUnusedAlreadyOwnedFlag:: db
-
-	ds 2
 
 wEvoStoneItemID:: db
 
@@ -1823,9 +1792,6 @@ wLetterPrintingDelayFlags:: db
 
 wPlayerID:: dw
 
-wMapMusicSoundID:: db
-wMapMusicROMBank:: db
-
 ; offset subtracted from FadePal4 to get the background and object palettes for the current map
 ; normally, it is 0. it is 6 when Flash is needed, causing FadePal2 to be used instead of FadePal4
 wMapPalOffset:: db
@@ -1884,13 +1850,6 @@ wWarpEntries:: ds 32 * 4 ; Y, X, warp ID, map ID
 
 ; if $ff, the player's coordinates are not updated when entering the map
 wDestinationWarpID:: db
-
-UNION
-	ds 128
-NEXTU
-wChannel5:: channel_struct wChannel5
-wChannel6:: channel_struct wChannel6
-ENDU
 
 ; number of signs in the current map (up to 16)
 wNumSigns:: db
@@ -1954,8 +1913,6 @@ wMissableObjectFlagsEnd::
 ; marcelnote - second MissableObject list, this is 32 bytes taken from unused below
 wMissableObjectFlagsCont:: flag_array $100
 wMissableObjectFlagsContEnd::
-
-	ds 11
 
 ; each entry consists of 2 bytes
 ; * the sprite ID (depending on the current map)
@@ -2087,16 +2044,6 @@ wRoute18GateCurScript:: db            ; marcelnote - renamed from wRoute18Gate1F
 wRoute22GateCurScript:: db
 wGameProgressFlagsEnd::
 
-	; unused
-	ds 101
-
-UNION
-	ds 128
-NEXTU
-wChannel7:: channel_struct wChannel7
-wChannel8:: channel_struct wChannel8
-ENDU
-
 wObtainedHiddenItemsFlags:: flag_array MAX_HIDDEN_ITEMS
 
 wObtainedHiddenCoinsFlags:: flag_array MAX_HIDDEN_COINS
@@ -2105,8 +2052,6 @@ wObtainedHiddenCoinsFlags:: flag_array MAX_HIDDEN_COINS
 ; $01 = biking
 ; $02 = surfing
 wWalkBikeSurfState:: db
-
-	ds 10
 
 wTownVisitedFlag:: flag_array NUM_CITY_MAPS
 
@@ -2118,16 +2063,12 @@ wFossilItem:: db
 ; mon that will result from the item
 wFossilMon:: db
 
-	ds 2
-
 ; trainer classes start at OPP_ID_OFFSET
 wEnemyMonOrTrainerClass:: db
 
 wPlayerJumpingYScreenCoordsIndex:: db
 
 wRivalStarter:: db
-
-	ds 1
 
 wPlayerStarter:: db
 
@@ -2152,14 +2093,6 @@ wDungeonWarpDestinationMap:: db
 ; which dungeon warp within the source map was used
 wWhichDungeonWarp:: db
 
-;wUnusedCardKeyGateID:: db ; marcelnote - removed
-
-	ds 8
-
-; $00 = male
-; $01 = female
-wPlayerGender:: db ; marcelnote - add female player
-
 wStatusFlags1:: db
 wStatusFlags2:: db
 wCableClubDestinationMap::
@@ -2170,29 +2103,18 @@ wStatusFlags6:: db
 wStatusFlags7:: db ; marcelnote - must be right before wElite4Flags
 wElite4Flags:: db
 
-;wBeatGymFlags:: db ; redundant because it matches wObtainedBadges ; marcelnote - removed
-
 wMovementFlags:: db
-	ds 4
 
 wCompletedInGameTradeFlags:: dw
-
-	ds 2
 
 wWarpedFromWhichWarp:: db
 wWarpedFromWhichMap:: db
 
-	ds 2
-
 wCardKeyDoorY:: db
 wCardKeyDoorX:: db
 
-	ds 2
-
 wFirstLockTrashCanIndex:: db
 wSecondLockTrashCanIndex:: db
-
-	ds 2
 
 wEventFlags:: flag_array NUM_EVENTS
 
@@ -2242,8 +2164,6 @@ ENDU
 
 wTrainerHeaderPtr:: dw
 
-	ds 6
-
 ; the trainer the player must face after getting a wrong answer in the Cinnabar
 ; gym quiz
 wOpponentAfterWrongAnswer:: db
@@ -2251,8 +2171,6 @@ wOpponentAfterWrongAnswer:: db
 ; index of current map script, mostly used as index for function pointer array
 ; mostly copied from map-specific map script pointer and written back later
 wCurMapScript:: db
-
-	ds 7
 
 wPlayTimeHours:: db
 wPlayTimeMaxed:: db

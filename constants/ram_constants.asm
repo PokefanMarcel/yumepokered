@@ -90,7 +90,7 @@ DEF NUM_BADGES EQU const_value
 
 ; wStatusFlags4
 	const_def
-	const_skip                        ; 0 ; unused ; marcelnote - was BIT_GOT_LAPRAS
+	const BIT_IS_GIRL                 ; 0 ; marcelnote - for player gender, was BIT_GOT_LAPRAS
 	const BIT_UNKNOWN_4_1             ; 1
 	const BIT_USED_POKECENTER         ; 2
 	const BIT_GOT_STARTER             ; 3
@@ -151,6 +151,11 @@ DEF NUM_BADGES EQU const_value
 	const BIT_PRINT_INFO_BOX     ; 2 ; to know whether to print Item info box (i.e. only in start menu bag and battle)
 	const BIT_PC_WITHDRAWING     ; 3 ; to prevent switching pockets when withdrawing from PC
 	const_skip                   ; 4-7 ; unused
+
+; wLowHealthAlarm
+DEF BIT_LOW_HEALTH_ALARM EQU 7
+;DEF LOW_HEALTH_TIMER_MASK EQU %01111111
+DEF DISABLE_LOW_HEALTH_ALARM EQU $ff
 
 ; hFindPathFlags
 	const_def

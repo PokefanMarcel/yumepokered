@@ -977,7 +977,6 @@ TrainerDefeatedText:
 PlayBattleVictoryMusic:
 	push af
 	ld a, SFX_STOP_ALL_MUSIC
-;	ld [wNewSoundID], a
 	call PlaySoundWaitForCurrent
 	ld c, BANK(Music_DefeatedTrainer)
 	pop af
@@ -6534,9 +6533,9 @@ LoadPlayerBackPic:
 	ld de, OldManPicBack
     ld a, BANK(RedPicBack) ; Default Red back sprite will be used as a means to load in the Old Man back sprite
     jr z, .next
-    ld a, [wPlayerGender]
-	bit 0, a	;check if girl
-	jr nz, .loadGirl
+    ld a, [wStatusFlags4]
+    bit BIT_IS_GIRL, a	; check if girl
+    jr nz, .loadGirl
     ld de, RedPicBack
     ld a, BANK(RedPicBack)
     jr .next

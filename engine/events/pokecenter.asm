@@ -30,7 +30,6 @@ DisplayPokemonCenterDialogue_::
 ;	ld [wAudioROMBank], a
 	ld a, [wMapMusicSoundID]
 	ld [wLastMusicSoundID], a
-	;ld [wNewSoundID], a
 	call PlayMusic
 	ld hl, wStatusFlags4 ; marcelnote - now also skip PokemonFightingFitText
 	bit BIT_USED_POKECENTER, [hl]

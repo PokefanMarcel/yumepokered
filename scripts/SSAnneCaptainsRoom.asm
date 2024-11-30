@@ -54,13 +54,11 @@ SSAnneCaptainsRoomRubCaptainsBackText:
 ;	ld [wAudioSavedROMBank], a
 ;	jr nz, .not_audio_engine_3
 ;	ld a, SFX_STOP_ALL_MUSIC
-;	ld [wNewSoundID], a
 ;	call PlaySound
 ;	ld a, 0 ; BANK(Music_PkmnHealed)
 ;	ld [wAudioROMBank], a
 ;.not_audio_engine_3
 	ld a, MUSIC_PKMN_HEALED
-;	ld [wNewSoundID], a
 	call PlayMusic
 
 	call WaitForSongToFinish

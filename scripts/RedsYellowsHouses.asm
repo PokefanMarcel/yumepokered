@@ -50,22 +50,16 @@ RedsHouse1FMomText:
 	text_far _RedsHouse1FMomWakeUpText
 	text_end
 
-RedsHouse1FMomHealScript:
+RedsHouse1FMomHealScript: ; marcelnote - simplified for crysaudio
 	ld hl, RedsHouse1FMomYouShouldRestText
 	call PrintText
 	call GBFadeOutToWhite
 	call ReloadMapData
 	predef HealParty
 	ld a, MUSIC_PKMN_HEALED
-	ld [wNewSoundID], a
-	call PlaySound
-.next
-	ld a, [wChannelSoundIDs]
-	cp MUSIC_PKMN_HEALED
-	jr z, .next
+	call PlayMusic
 	ld a, [wMapMusicSoundID]
-	ld [wNewSoundID], a
-	call PlaySound
+	call PlayMusic
 	call GBFadeInFromWhite
 	ld hl, RedsHouse1FMomLookingGreatText
 	jp PrintText

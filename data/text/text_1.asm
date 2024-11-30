@@ -89,7 +89,7 @@ _OaksAideHiText::
 	cont "I'm supposed to"
 	cont "give you an"
 	cont "@"
-	text_ram wOaksAideRewardItemName
+	text_ram wNameBuffer ; wOaksAideRewardItemName ; could be wNameBuffer?
 	text "!"
 
 	para "So, <PLAYER>! Have"
