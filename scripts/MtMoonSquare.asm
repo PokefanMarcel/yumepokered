@@ -28,16 +28,18 @@ MtMoonSquareCooltrainerFText:
 	text_end
 
 MtMoonSquareClefairyText:
+	text_far _MtMoonSquareClefairyText
 	text_asm
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-	ld hl, .text
-	call PrintText
+	;ld hl, .text
+	;call PrintText
 	ld a, CLEFAIRY
 	call PlayCry
 	call GBFadeOutToWhite
-	;ld a, SFX_TELEPORT_EXIT_1
-	;call PlaySound
+	ld a, SFX_TELEPORT_EXIT_1
+	ld [wNewSoundID], a
+	call PlaySound
 	ld a, HS_MT_MOON_SQUARE_CLEFAIRY    ; hide Clefairy
 	ld [wMissableObjectIndex], a
 	predef HideObject
@@ -45,12 +47,10 @@ MtMoonSquareClefairyText:
 	ld [wMissableObjectIndex], a
 	predef ShowObject
 	call UpdateSprites
-	call Delay3
+	ld c, 20
+	call DelayFrames
 	call GBFadeInFromWhite
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-.text
-	text_far _MtMoonSquareClefairyText
-	text_end
 
 MtMoonSquareHikerText:
 	text_far _MtMoonSquareHikerText
