@@ -2115,11 +2115,7 @@ wWhichDungeonWarp:: db
 
 ;wUnusedCardKeyGateID:: db ; marcelnote - removed
 
-	ds 8
-
-; $00 = male
-; $01 = female
-wPlayerGender:: db ; marcelnote - add female player
+	ds 9
 
 wStatusFlags1:: db
 wStatusFlags2:: db

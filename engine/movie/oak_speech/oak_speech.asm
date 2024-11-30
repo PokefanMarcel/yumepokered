@@ -64,14 +64,19 @@ OakSpeech:
 	ld a, [wStatusFlags6]
 	bit BIT_DEBUG_MODE, a
 	jp nz, .skipSpeech
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
 	ld hl, BoyGirlText
 	call PrintText
 	call BoyGirlChoice
-	ld a, [wCurrentMenuItem]
-	ld [wPlayerGender], a ; 0 for boy, 1 for girl
+	ld a, [wCurrentMenuItem] ; 0 = boy, 1 = girl
+	and a
+	ld hl, [wStatusFlags4]
+	res BIT_IS_GIRL, [hl]
+	jr z, .genderIsSet
+	set BIT_IS_GIRL, [hl]
+.genderIsSet
 	call ClearScreen
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld de, ProfOakPic
 	lb bc, BANK(ProfOakPic), $00
 	call IntroDisplayPicCenteredOrUpperRight
@@ -91,16 +96,16 @@ OakSpeech:
 	call PrintText
 	call GBFadeOutToWhite
 	call ClearScreen
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
-	ld de, GreenPicFront
-	lb bc, BANK(GreenPicFront), $00
-	ld a, [wPlayerGender]
-	bit 0, a	;check if girl
-	jr nz, .donefemale_front
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
 	ld de, RedPicFront
 	lb bc, BANK(RedPicFront), $00
-.donefemale_front
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	jr z, .gotPicFront
+	ld de, GreenPicFront
+	lb bc, BANK(GreenPicFront), $00
+.gotPicFront
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	call IntroDisplayPicCenteredOrUpperRight
 	call MovePicLeft
 	ld hl, IntroducePlayerText
@@ -118,16 +123,16 @@ OakSpeech:
 .skipSpeech
 	call GBFadeOutToWhite
 	call ClearScreen
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
-	ld de, GreenPicFront
-	lb bc, BANK(GreenPicFront), $00
-	ld a, [wPlayerGender]
-	bit 0, a	;check if girl
-	jr nz, .donefemale_front2
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
 	ld de, RedPicFront
 	lb bc, BANK(RedPicFront), $00
-.donefemale_front2
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	jr z, .gotPicFront
+	ld de, GreenPicFront
+	lb bc, BANK(GreenPicFront), $00
+.gotPicFront
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	call IntroDisplayPicCenteredOrUpperRight
 	call GBFadeInFromWhite
 	ld a, [wStatusFlags3]
@@ -145,16 +150,16 @@ OakSpeech:
 	ld [MBC1RomBank], a
 	ld c, 4
 	call DelayFrames
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
-	ld de, GreenSprite
-	lb bc, BANK(GreenSprite), $0C
-	ld a, [wPlayerGender]
-	bit 0, a	;check if girl
-	jr nz, .donefemale_sprite
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
 	ld de, RedSprite
 	lb bc, BANK(RedSprite), $0C
-.donefemale_sprite
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	jr z, .gotSprite
+	ld de, GreenSprite
+	lb bc, BANK(GreenSprite), $0C
+.gotSprite
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld hl, vSprites
 	call CopyVideoData
 	ld de, ShrinkPic1

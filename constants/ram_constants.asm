@@ -90,7 +90,7 @@ DEF NUM_BADGES EQU const_value
 
 ; wStatusFlags4
 	const_def
-	const_skip                        ; 0 ; unused ; marcelnote - was BIT_GOT_LAPRAS
+	const BIT_IS_GIRL                 ; 0 ; marcelnote - for player gender, was BIT_GOT_LAPRAS
 	const BIT_UNKNOWN_4_1             ; 1
 	const BIT_USED_POKECENTER         ; 2
 	const BIT_GOT_STARTER             ; 3

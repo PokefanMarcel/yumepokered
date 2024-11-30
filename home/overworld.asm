@@ -1991,14 +1991,12 @@ RunMapScript::
 
 LoadWalkingPlayerSpriteGraphics::
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
-	ld a, [wPlayerGender]
-	bit 0, a	;check if girl
-	jr nz, .loadGirlSprite
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
 	ld de, RedSprite
-	jr .nextSprites
-.loadGirlSprite
+	jr z, .gotSprite
 	ld de, GreenSprite
-.nextSprites
+.gotSprite
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld hl, vNPCSprites
 	jr LoadPlayerSpriteGraphicsCommon
@@ -2010,18 +2008,16 @@ LoadSurfingPlayerSpriteGraphics::
 
 LoadBikePlayerSpriteGraphics::
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
-	ld a, [wPlayerGender]
-	bit 0, a	;check if girl
-	jr nz, .loadGirlBikeSprite
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
 	ld de, RedBikeSprite
-	jr .nextBikeSprites
-.loadGirlBikeSprite
+	jr z, .gotBikeSprite
 	ld de, GreenBikeSprite
-.nextBikeSprites
+.gotBikeSprite
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld hl, vNPCSprites
 
-LoadPlayerSpriteGraphicsCommon::
+LoadPlayerSpriteGraphicsCommon:: ; marcelnote - this does not differentiate Red/Green?
 	push de
 	push hl
 	lb bc, BANK(RedSprite), $0c

@@ -6525,16 +6525,14 @@ LoadPlayerBackPic:
 	ld de, OldManPicBack
     ld a, BANK(RedPicBack) ; Default Red back sprite will be used as a means to load in the Old Man back sprite
     jr z, .next
-    ld a, [wPlayerGender]
-	bit 0, a	;check if girl
-	jr nz, .loadGirl
+    ld a, [wStatusFlags4]
+    bit BIT_IS_GIRL, a
     ld de, RedPicBack
     ld a, BANK(RedPicBack)
-    jr .next
-.loadGirl
+    jr z, .gotPicBack
     ld de, GreenPicBack
     ld a, BANK(GreenPicBack)
-.next
+.gotPicBack
     ASSERT BANK(GreenPicBack) == BANK(OldManPicBack)
     ASSERT BANK(RedPicBack) == BANK(OldManPicBack)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
