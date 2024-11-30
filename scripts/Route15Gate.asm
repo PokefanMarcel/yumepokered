@@ -13,7 +13,7 @@ Route15Gate1FGuardText:
 	text_far _Route15Gate1FGuardText
 	text_end
 
-Route15Gate2FOaksAideText:
+Route15Gate2FOaksAideText: ; marcelnote - simplified by using wNameBuffer in text
 	text_asm
 	CheckEvent EVENT_GOT_EXP_ALL
 	jr nz, .got_item
@@ -22,14 +22,10 @@ Route15Gate2FOaksAideText:
 	ld a, EXP_ALL
 	ldh [hOaksAideRewardItem], a
 	ld [wNamedObjectIndex], a
-	call GetItemName
-	ld hl, wNameBuffer
-	ld de, wOaksAideRewardItemName
-	ld bc, ITEM_NAME_LENGTH
-	call CopyData
+	call GetItemName ; stores name in wNameBuffer
 	predef OaksAideScript
 	ldh a, [hOaksAideResult]
-	cp OAKS_AIDE_GOT_ITEM
+	dec a ; OAKS_AIDE_GOT_ITEM?
 	jr nz, .no_item
 	SetEvent EVENT_GOT_EXP_ALL
 .got_item

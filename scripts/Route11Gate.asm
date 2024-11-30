@@ -21,7 +21,7 @@ Route11Gate2FYoungsterText:
 	predef DoInGameTradeDialogue
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-Route11Gate2FOaksAideText:
+Route11Gate2FOaksAideText: ; marcelnote - simplified by using wNameBuffer in text
 	text_asm
 	CheckEvent EVENT_GOT_ITEMFINDER
 	jr nz, .got_item
@@ -30,12 +30,7 @@ Route11Gate2FOaksAideText:
 	ld a, ITEMFINDER
 	ldh [hOaksAideRewardItem], a
 	ld [wNamedObjectIndex], a
-	call GetItemName
-	ld h, d
-	ld l, e
-	ld de, wOaksAideRewardItemName
-	ld bc, ITEM_NAME_LENGTH
-	call CopyData
+	call GetItemName ; stores name in wNameBuffer
 	predef OaksAideScript
 	ldh a, [hOaksAideResult]
 	dec a ; OAKS_AIDE_GOT_ITEM?

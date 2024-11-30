@@ -6,7 +6,7 @@ Route2Gate_TextPointers:
 	dw_const Route2GateOaksAideText,  TEXT_ROUTE2GATE_OAKS_AIDE
 	dw_const Route2GateYoungsterText, TEXT_ROUTE2GATE_YOUNGSTER
 
-Route2GateOaksAideText:
+Route2GateOaksAideText: ; marcelnote - simplified by using wNameBuffer in text
 	text_asm
 	CheckEvent EVENT_GOT_HM05
 	jr nz, .got_item
@@ -15,14 +15,10 @@ Route2GateOaksAideText:
 	ld a, HM_FLASH
 	ldh [hOaksAideRewardItem], a
 	ld [wNamedObjectIndex], a
-	call GetItemName
-	ld hl, wNameBuffer
-	ld de, wOaksAideRewardItemName
-	ld bc, ITEM_NAME_LENGTH
-	call CopyData
+	call GetItemName ; stores name in wNameBuffer
 	predef OaksAideScript
 	ldh a, [hOaksAideResult]
-	cp OAKS_AIDE_GOT_ITEM
+	dec a ; OAKS_AIDE_GOT_ITEM?
 	jr nz, .no_item
 	SetEvent EVENT_GOT_HM05
 .got_item
