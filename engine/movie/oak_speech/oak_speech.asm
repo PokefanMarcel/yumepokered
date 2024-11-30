@@ -61,9 +61,6 @@ OakSpeech:
 	call PrepareForSpecialWarp
 	xor a
 	ldh [hTileAnimations], a
-	ld a, [wStatusFlags6]
-	bit BIT_DEBUG_MODE, a
-	jp nz, .skipSpeech
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
 	ld hl, BoyGirlText
 	call PrintText
@@ -77,6 +74,9 @@ OakSpeech:
 .genderIsSet
 	call ClearScreen
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	ld a, [wStatusFlags6]
+	bit BIT_DEBUG_MODE, a
+	jp nz, .skipSpeech
 	ld de, ProfOakPic
 	lb bc, BANK(ProfOakPic), $00
 	call IntroDisplayPicCenteredOrUpperRight
