@@ -1083,7 +1083,7 @@ wGymCityName:: ds 17
 wGymLeaderName:: ds NAME_LENGTH
 
 ;UNION
-ds 16 ; PureRGBnote: CHANGED: used to be wItemList but now the item list for marts is expanded in size and reuses a bigger space in wMovesString
+;ds 16 ; PureRGBnote: CHANGED: used to be wItemList but now the item list for marts is expanded in size and reuses a bigger space in wMovesString
 ;NEXTU
 
 wListPointer:: dw
@@ -1447,6 +1447,7 @@ wPartyMenuAnimMonEnabled::
 ; the town selection cursor will blink regardless of what this value is
 wTownMapSpriteBlinkingEnabled::
 ;wUnusedMoveAnimByte:: db ; marcelnote - removed
+	db
 
 ; current destination address in OAM for frame blocks (big endian)
 wFBDestAddr:: dw
