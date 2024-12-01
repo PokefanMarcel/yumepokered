@@ -147,10 +147,14 @@ SetPal_Overworld:
 	ld a, [wCurMap]
 	cp FIRST_INDOOR_MAP
 	jr c, .townOrRoute
-	cp CERULEAN_CAVE_2F
-	jr c, .normalDungeonOrBuilding
-	cp CERULEAN_CAVE_1F + 1
-	jr c, .caveOrBruno
+	cp VIRIDIAN_FOREST
+	jr z, .ViridianForest
+	cp CELADON_GROVE
+	jr z, .CeladonGrove
+	cp CELADON_GROVE_NORTH_GATE
+	jr z, .townOrRoute ; indoor map is treated as Route
+	cp CELADON_GROVE_SOUTH_GATE
+	jr z, .townOrRoute ; indoor map is treated as Route
 	cp LORELEIS_ROOM
 	jr z, .Lorelei
 	cp BRUNOS_ROOM
@@ -172,11 +176,17 @@ SetPal_Overworld:
 .PokemonTowerOrAgatha
 	ld a, PAL_GREYMON - 1
 	jr .town
+.ViridianForest
+	ld a, PAL_VIRIDIAN - 1
+	jr .town
+.CeladonGrove
+	ld a, PAL_CELADON - 1
+	jr .town
 .caveOrBruno
 	ld a, PAL_CAVE - 1
 	jr .town
 .Lorelei
-	xor a
+	xor a ; PAL_PALLET - 1
 	jr .town
 
 ; used when a Pokemon is the only thing on the screen
