@@ -31,7 +31,8 @@ DEF BIT_FONT_LOADED EQU 0
 
 ; wOptions
 DEF TEXT_DELAY_MASK EQU %111
-	const_def 6
+	const_def 5
+	const BIT_60_FPS           ; 5 ; marcelnote - new 60fps option
 	const BIT_BATTLE_SHIFT     ; 6
 	const BIT_BATTLE_ANIMATION ; 7
 
