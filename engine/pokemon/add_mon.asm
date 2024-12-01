@@ -91,8 +91,8 @@ _AddPartyMon::
 	ld b, FLAG_TEST
 	ld hl, wPokedexOwned
 	call FlagAction
-	ld a, c ; whether the mon was already flagged as owned
-	ld [wUnusedAlreadyOwnedFlag], a
+	;ld a, c ; whether the mon was already flagged as owned
+	;ld [wUnusedAlreadyOwnedFlag], a
 	ld a, [wPokedexNum]
 	dec a
 	ld c, a

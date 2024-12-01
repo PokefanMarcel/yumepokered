@@ -17,7 +17,7 @@ PlayerStepOutFromDoor::
 	ret
 .notStandingOnDoor
 	xor a
-	ld [wUnusedOverrideSimulatedJoypadStatesIndex], a
+	;ld [wUnusedOverrideSimulatedJoypadStatesIndex], a
 	ld [wSimulatedJoypadStatesIndex], a
 	ld [wSimulatedJoypadStatesEnd], a
 	ld hl, wMovementFlags
@@ -39,7 +39,7 @@ _EndNPCMovementScript::
 	ld [wNPCMovementScriptSpriteOffset], a
 	ld [wNPCMovementScriptPointerTableNum], a
 	ld [wNPCMovementScriptFunctionNum], a
-	ld [wUnusedOverrideSimulatedJoypadStatesIndex], a
+	;ld [wUnusedOverrideSimulatedJoypadStatesIndex], a
 	ld [wSimulatedJoypadStatesIndex], a
 	ld [wSimulatedJoypadStatesEnd], a
 	ret

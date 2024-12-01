@@ -87,10 +87,10 @@ GetName::
 	ld bc, NAME_BUFFER_LENGTH
 	call CopyData
 .gotPtr
-	ld a, e
-	ld [wUnusedNamePointer], a
-	ld a, d
-	ld [wUnusedNamePointer + 1], a
+	;ld a, e
+	;ld [wUnusedNamePointer], a
+	;ld a, d
+	;ld [wUnusedNamePointer + 1], a
 	pop de
 	pop bc
 	pop hl
