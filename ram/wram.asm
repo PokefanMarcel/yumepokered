@@ -1,6 +1,6 @@
 SECTION "Audio RAM", WRAM0
 
-wUnusedMusicByte:: db
+;wUnusedMusicByte:: db ; marcelnote - removed
 
 wSoundID:: db
 
@@ -405,7 +405,7 @@ NEXTU
 wSimulatedJoypadStatesEnd::
 
 NEXTU
-wUnusedFlag::
+;wUnusedFlag:: ; marcelnote - removed
 wBoostExpByExpAll:: db
 
 	ds 59
@@ -584,7 +584,7 @@ ENDU
 	ds 1
 
 wNPCMovementDirections2Index::
-wUnusedLinkMenuByte::
+;wUnusedLinkMenuByte:: ; marcelnote - removed
 ; number of items in wFilteredBagItems list
 wFilteredBagItemsCount:: db
 
@@ -592,9 +592,9 @@ wFilteredBagItemsCount:: db
 ; 0 if the joypad state is not being simulated
 wSimulatedJoypadStatesIndex:: db
 ; written to but nothing ever reads it
-wUnusedSimulatedJoypadStatesMask:: db
+;wUnusedSimulatedJoypadStatesMask:: db ; marcelnote - removed
 ; written to but nothing ever reads it
-wUnusedOverrideSimulatedJoypadStatesIndex:: db
+;wUnusedOverrideSimulatedJoypadStatesIndex:: db ; marcelnote - removed
 ; mask indicating which real button presses can override simulated ones
 ; XXX is it ever not 0?
 wOverrideSimulatedJoypadStatesMask:: db
@@ -800,7 +800,7 @@ wBadgeOrFaceTiles:: ds NUM_BADGES + 1
 wTempObtainedBadgesBooleans:: ds NUM_BADGES
 
 NEXTU
-wUnusedCreditsByte:: db
+;wUnusedCreditsByte:: db ; marcelnote - removed
 ; the number of credits mons that have been displayed so far
 wNumCreditsMonsDisplayed:: db
 
@@ -1089,7 +1089,7 @@ ds 16 ; PureRGBnote: CHANGED: used to be wItemList but now the item list for mar
 wListPointer:: dw
 
 ; used to store pointers, but never read
-wUnusedNamePointer:: dw
+;wUnusedNamePointer:: dw ; marcelnote - removed
 
 wItemPrices:: dw
 
@@ -1401,7 +1401,7 @@ wOptionsInitialized::
 wNewSlotMachineBallTile::
 ; how much to add to the X/Y coord
 wCoordAdjustmentAmount::
-wUnusedWaterDropletsByte::
+;wUnusedWaterDropletsByte:: ; marcelnote - removed
 	db
 
 wSlideMonDelay::
@@ -1446,7 +1446,7 @@ wPartyMenuAnimMonEnabled::
 ; non-zero when enabled. causes nest locations to blink on and off.
 ; the town selection cursor will blink regardless of what this value is
 wTownMapSpriteBlinkingEnabled::
-wUnusedMoveAnimByte:: db
+;wUnusedMoveAnimByte:: db ; marcelnote - removed
 
 ; current destination address in OAM for frame blocks (big endian)
 wFBDestAddr:: dw
@@ -1562,7 +1562,7 @@ wMoveNum:: db
 wItemList::
 wMovesString:: ds 56
 
-wUnusedCurMapTilesetCopy:: db
+;wUnusedCurMapTilesetCopy:: db ; marcelnote - removed
 
 ; wWalkBikeSurfState is sometimes copied here, but it doesn't seem to be used for anything
 wWalkBikeSurfStateCopy:: db
@@ -1703,7 +1703,7 @@ wSerialPlayerDataBlock:: ; ds $1a8
 ; that case, this would be ESCAPE_ROPE.
 wPseudoItemID:: db
 
-wUnusedAlreadyOwnedFlag:: db
+;wUnusedAlreadyOwnedFlag:: db ; marcelnote - removed
 
 	ds 2
 

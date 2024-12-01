@@ -766,9 +766,10 @@ ItemUseSurfboard:
 .storeSimulatedButtonPress
 	ld a, b
 	ld [wSimulatedJoypadStatesEnd], a
-	xor a
-	ld [wUnusedSimulatedJoypadStatesMask], a
-	inc a
+	;xor a
+	;ld [wUnusedSimulatedJoypadStatesMask], a
+	;inc a
+	ld a, 1 ; marcelnote - replaces commented code above
 	ld [wSimulatedJoypadStatesIndex], a
 	ret
 

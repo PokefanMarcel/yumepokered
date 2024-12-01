@@ -155,7 +155,7 @@ LinkMenu:
 	ld de, CableClubOptionsText
 	call PlaceString
 	xor a
-	ld [wUnusedLinkMenuByte], a
+	;ld [wUnusedLinkMenuByte], a
 	ld [wCableClubDestinationMap], a
 	ld hl, wTopMenuItemY
 	ld a, 7

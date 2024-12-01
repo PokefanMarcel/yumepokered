@@ -1881,7 +1881,7 @@ JoypadOverworld::
 ; if done simulating button presses
 .doneSimulating
 	xor a
-	ld [wUnusedOverrideSimulatedJoypadStatesIndex], a
+	;ld [wUnusedOverrideSimulatedJoypadStatesIndex], a
 	ld [wSimulatedJoypadStatesIndex], a
 	ld [wSimulatedJoypadStatesEnd], a
 	ld [wJoyIgnore], a
@@ -2045,8 +2045,8 @@ LoadPlayerSpriteGraphicsCommon:: ; marcelnote - this does not differentiate Red/
 ; function to load data from the map header
 LoadMapHeader::
 	farcall MarkTownVisitedAndLoadMissableObjects
-	ld a, [wCurMapTileset]
-	ld [wUnusedCurMapTilesetCopy], a
+	;ld a, [wCurMapTileset]
+	;ld [wUnusedCurMapTilesetCopy], a
 	ld a, [wCurMap]
 	call SwitchToMapRomBank
 	ld a, [wCurMapTileset]
@@ -2343,7 +2343,7 @@ LoadMapData::
 	ldh [hSCY], a
 	ldh [hSCX], a
 	ld [wWalkCounter], a
-	ld [wUnusedCurMapTilesetCopy], a
+	;ld [wUnusedCurMapTilesetCopy], a
 	ld [wWalkBikeSurfStateCopy], a
 	ld [wSpriteSetID], a
 	call LoadTextBoxTilePatterns
