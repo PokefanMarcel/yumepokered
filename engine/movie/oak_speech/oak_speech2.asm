@@ -13,8 +13,8 @@ ChoosePlayerName:
 	and a
 	jr z, .customName
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
-	ld a, [wStatusFlags4]
-	bit BIT_IS_GIRL, a
+	ld hl, wStatusFlags4 ; use hl because a = [wCurrentMenuItem] is reused in GetDefaultName
+	bit BIT_IS_GIRL, [hl]
 	ld hl, DefaultNamesPlayerList
 	jr z, .gotList
 	ld hl, DefaultNamesPlayerListF
