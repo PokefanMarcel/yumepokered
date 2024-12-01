@@ -1,19 +1,34 @@
 SuperPalettes:
 ; entries correspond to PAL_* constants
 	table_width 2 * 4, SuperPalettes
+	; marcelnote -
+	; Town palettes were changed to reflect Japanese names more.
+	; When the RGB color is too dark, I added the same constant to all three RGB elements.
 	RGB 31,29,31, 21,28,11, 20,26,31, 03,02,02 ; PAL_ROUTE
-	RGB 31,29,31, 25,28,27, 20,26,31, 03,02,02 ; PAL_PALLET
-	RGB 31,29,31, 17,26,03, 20,26,31, 03,02,02 ; PAL_VIRIDIAN
-	RGB 31,29,31, 23,25,16, 20,26,31, 03,02,02 ; PAL_PEWTER
-	RGB 31,29,31, 17,20,30, 20,26,31, 03,02,02 ; PAL_CERULEAN
-	RGB 31,29,31, 27,20,27, 20,26,31, 03,02,02 ; PAL_LAVENDER
-	RGB 31,29,31, 30,18,00, 20,26,31, 03,02,02 ; PAL_VERMILION
-	RGB 31,29,31, 16,30,22, 20,26,31, 03,02,02 ; PAL_CELADON
-	RGB 31,29,31, 27,27,03, 20,26,31, 03,02,02 ; PAL_SAFFRON ; marcelnote - changed order to reflect new map constants
-	RGB 31,29,31, 31,15,22, 20,26,31, 03,02,02 ; PAL_FUCHSIA
-	RGB 31,29,31, 26,10,06, 20,26,31, 03,02,02 ; PAL_CINNABAR
-	RGB 31,29,31, 30,18,00, 20,26,31, 03,02,02 ; PAL_MANDARIN ; marcelnote - new for Mandarin Island
-	RGB 31,29,31, 22,14,24, 20,26,31, 03,02,02 ; PAL_INDIGO
+	; Pallet is Massara/Masshiro (pure white) but left as is
+	RGB 31,29,31, 25,28,27, 20,26,31, 03,02,02 ; PAL_PALLET    ; was 25,28,27
+	; Viridian is Tokiwa-iro (RGB 0,123,67) but too dark, so add 80
+	RGB 31,29,31, 10,25,18, 20,26,31, 03,02,02 ; PAL_VIRIDIAN  ; was 17,26,03
+	; Pewter is Nibi-iro (RGB 114,113,113) but too dark, so add 70
+	RGB 31,29,31, 23,22,22, 20,26,31, 03,02,02 ; PAL_PEWTER    ; was 23,25,16
+	; Cerulean is Hanada-iro (RGB 4,79,103) but too dark, so add 100
+	RGB 31,29,31, 13,22,25, 20,26,31, 03,02,02 ; PAL_CERULEAN  ; was 17,20,30
+	; Lavender is Shion-iro (RGB 151,110,154) but too dark, so add 50
+	RGB 31,29,31, 25,20,25, 20,26,31, 03,02,02 ; PAL_LAVENDER  ; was 27,20,27
+	; Vermilion is Kuchiba-iro (RGB 213,120,53)
+	RGB 31,29,31, 26,15,06, 20,26,31, 03,02,02 ; PAL_VERMILION ; was 30,18,00
+	; Celadon is Tamamushi-iro (RGB 32,96,79 ???) but too dark, so add 100
+	RGB 31,29,31, 16,24,22, 20,26,31, 03,02,02 ; PAL_CELADON   ; was 16,30,22
+	; Saffron is Yamabuki-iro (RGB 255,164,0) but too orange, so instead use Saffron (RGB 244,196,48)
+	RGB 31,29,31, 30,24,06, 20,26,31, 03,02,02 ; PAL_SAFFRON   ; was 27,27,03
+	; Fuchsia is Sekichiku-iro (RGB 229,171,190) but too dull, add 20
+	RGB 31,29,31, 31,23,26, 20,26,31, 03,02,02 ; PAL_FUCHSIA   ; was 31,15,22
+	; Cinnabar is Guren-iro (RGB 173,0,45) but too dark, add 50
+	RGB 31,29,31, 27,06,11, 20,26,31, 03,02,02 ; PAL_CINNABAR  ; was 26,10,06
+	; Mandarin is Kinkan/Kumquat (RGB 251,153,18)
+	RGB 31,29,31, 30,19,02, 20,26,31, 03,02,02 ; PAL_MANDARIN  ; new
+	; Indigo is Sekiei/Quartz (RGB 81,72,79) but too black, so instead use Indigo (RGB 75,0,130)+100
+	RGB 31,29,31, 21,12,28, 20,26,31, 03,02,02 ; PAL_INDIGO    ; was 22,14,24
 	RGB 31,29,31, 20,26,31, 17,23,10, 03,02,02 ; PAL_TOWNMAP
 IF DEF(_RED)
 	RGB 31,29,31, 30,30,17, 17,23,10, 21,00,04 ; PAL_LOGO1
