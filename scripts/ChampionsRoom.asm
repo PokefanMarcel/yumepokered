@@ -98,10 +98,9 @@ ChampionsRoomRivalReadyToBattleScript:
 	ld a, $3
 .saveTrainerId
 ;;;;;; marcelnote - if rematch, use team 4, 5 or 6
-	CheckEvent EVENT_BECAME_CHAMPION
+	CheckEventHL EVENT_BECAME_CHAMPION ; use hl to not overwrite a
 	jr z, .loadTrainerNo
-	ld b, 3
-	add b
+	add 3
 .loadTrainerNo
 ;;;;;;
 	ld [wTrainerNo], a
