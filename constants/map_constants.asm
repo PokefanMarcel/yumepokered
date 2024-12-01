@@ -22,7 +22,7 @@ ENDM
 ; Order: towns/cities, then routes, then indoor/dungeon maps
 	const_def
 	map_const PALLET_TOWN,                   14,  9 ; marcelnote - expanded for new houses
-	map_const VIRIDIAN_CITY,                 20, 18
+	map_const VIRIDIAN_CITY,                 20, 18 ; marcelnote - could be x=18 (remove columns of trees to the right)
 	map_const PEWTER_CITY,                   20, 18
 	map_const CERULEAN_CITY,                 20, 18
 	map_const LAVENDER_TOWN,                 10,  9
