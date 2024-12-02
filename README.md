@@ -1,4 +1,4 @@
-# PokéfanMarcel's Red and Blue project
+# Pokémon Yume 夢 Red/Green/Blue
 
 Based on the pokered disassembly.
 
