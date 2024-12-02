@@ -29,7 +29,7 @@ PrepareOakSpeech:
 	call z, InitOptions
 	; These debug names are used for StartNewGameDebug.
 	; TestBattle uses the debug names from DebugMenu.
-	; A variant of this process is performed in PrepareTitleScreen.
+	; A variant of this process is performed in PrepareTitleScreen. ; marcelnote - removed it from there
 	ld hl, DebugNewGamePlayerName
 	ld de, wPlayerName
 	ld bc, NAME_LENGTH
