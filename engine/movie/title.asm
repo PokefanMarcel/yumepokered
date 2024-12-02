@@ -1,17 +1,17 @@
-CopyDebugName: ; unused
-	ld bc, NAME_LENGTH
-	jp CopyData
+;CopyDebugName: ; unused ; marcelnote - removed
+;	ld bc, NAME_LENGTH
+;	jp CopyData
 
 PrepareTitleScreen::
 	; These debug names are already copied later in PrepareOakSpeech.
 	; Removing the unused copies below has no apparent impact.
 	; CopyDebugName can also be safely deleted afterwards.
-	ld hl, DebugNewGamePlayerName
-	ld de, wPlayerName
-	call CopyDebugName
-	ld hl, DebugNewGameRivalName
-	ld de, wRivalName
-	call CopyDebugName
+	;ld hl, DebugNewGamePlayerName ; marcelnote - removed
+	;ld de, wPlayerName
+	;call CopyDebugName
+	;ld hl, DebugNewGameRivalName
+	;ld de, wRivalName
+	;call CopyDebugName
 	xor a
 	ldh [hWY], a
 	ld [wLetterPrintingDelayFlags], a
@@ -51,14 +51,15 @@ DisplayTitleScreen:
 	call FarCopyData2
 	ld hl, PokemonLogoGraphics
 	ld de, vTitleLogo
-	ld bc, $60 tiles
+	;ld bc, $60 tiles
+	ld bc, $70 tiles ; marcelnote - copy all tiles of the logo together
 	ld a, BANK(PokemonLogoGraphics)
-	call FarCopyData2          ; first chunk
-	ld hl, PokemonLogoGraphics tile $60
-	ld de, vTitleLogo2
-	ld bc, $10 tiles
-	ld a, BANK(PokemonLogoGraphics)
-	call FarCopyData2          ; second chunk
+	call FarCopyData2          ; first chunk ; marcelnote - copy all tiles of the logo together
+	;ld hl, PokemonLogoGraphics tile $60
+	;ld de, vTitleLogo2
+	;ld bc, $10 tiles
+	;ld a, BANK(PokemonLogoGraphics)
+	;call FarCopyData2          ; second chunk
 	ld hl, Version_GFX
 	ld de, vChars2 tile $60 + (10 tiles - (Version_GFXEnd - Version_GFX) * 2) / 2
 	ld bc, Version_GFXEnd - Version_GFX
@@ -66,11 +67,11 @@ DisplayTitleScreen:
 	call FarCopyDataDouble
 	call ClearBothBGMaps
 
-; place tiles for pokemon logo (except for the last row)
+; place tiles for pokemon logo (except for the last row) ; marcelnote - copy all tiles of the logo together
 	hlcoord 2, 1
 	ld a, $80
 	ld de, SCREEN_WIDTH
-	ld c, 6
+	ld c, 7 ; marcelnote - was 6 for first 6 rows only
 .pokemonLogoTileLoop
 	ld b, $10
 	push hl
@@ -85,14 +86,14 @@ DisplayTitleScreen:
 	jr nz, .pokemonLogoTileLoop
 
 ; place tiles for the last row of the pokemon logo
-	hlcoord 2, 7
-	ld a, $31
-	ld b, $10
-.pokemonLogoLastTileRowLoop
-	ld [hli], a
-	inc a
-	dec b
-	jr nz, .pokemonLogoLastTileRowLoop
+;	hlcoord 2, 7
+;	ld a, $31
+;	ld b, $10
+;.pokemonLogoLastTileRowLoop
+;	ld [hli], a
+;	inc a
+;	dec b
+;	jr nz, .pokemonLogoLastTileRowLoop
 
 	call DrawPlayerCharacter
 
@@ -400,10 +401,12 @@ INCLUDE "data/pokemon/title_mons.asm"
 
 ; prints version text (red, blue)
 PrintGameVersionOnTitleScreen:
-	IF DEF(_GREEN) ; PureRGBnote: GREENBUILD: version text needs to be slightly moved to the left due to the larger length
+	IF DEF(_RED)
 		hlcoord 6, 8
-	ELSE
-		hlcoord 7, 8
+	ELIF DEF(_GREEN)
+		hlcoord 6, 8
+	ELIF DEF(_BLUE)
+		hlcoord 6, 8
 	ENDC
 	ld de, VersionOnTitleScreenText
 	jp PlaceString
@@ -411,13 +414,13 @@ PrintGameVersionOnTitleScreen:
 ; these point to special tiles specifically loaded for that purpose and are not usual text
 VersionOnTitleScreenText:
 IF DEF(_RED)
-	db $60,$61,$7F,$65,$66,$67,$68,$69,"@" ; "Red Version"
-ENDC
-IF DEF(_BLUE)
-	db $61,$62,$63,$64,$65,$66,$67,$68,"@" ; "Blue Version"
-ENDC
-IF DEF(_GREEN) ; PureRGBnote: GREENBUILD: different title screen subtitle text for green version
-	db $62,$63,$64,$7F,$65,$66,$67,$68,$69,"@" ; "Green Version"
+	;db $60,$61,$7F,$65,$66,$67,$68,$69,"@" ; "Red Version" ; marcelnote - for original png file
+	db $61,$62,$63,$64,$65,$66,$67,$68,"@" ; "Red Version"
+ELIF DEF(_GREEN)
+	;db $62,$63,$64,$7F,$65,$66,$67,$68,$69,"@" ; "Green Version" ; marcelnote - for original png file
+	db $60,$61,$62,$63,$64,$65,$66,$67,$68,"@" ; "Green Version"
+ELIF DEF(_BLUE)
+	db $61,$62,$63,$64,$65,$66,$67,$68,"@" ; "Blue Version" ; marcelnote - this one is unchanged
 ENDC
 
 DebugNewGamePlayerName:
