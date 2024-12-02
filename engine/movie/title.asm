@@ -321,18 +321,11 @@ ScrollTitleScreenGameVersion:
 	jr z, .wait2
 	ret
 
-DrawPlayerCharacter: ; marcelnote - add support for female player
-	ld a, [wStatusFlags4]
-	bit BIT_IS_GIRL, a
+DrawPlayerCharacter: ; marcelnote - this always draws the boy (used in title screen and diploma)
 	ld de, vSprites
 	ld hl, PlayerCharacterTitleGraphics
 	ld bc, PlayerCharacterTitleGraphicsEnd - PlayerCharacterTitleGraphics
 	ld a, BANK(PlayerCharacterTitleGraphics)
-	jr z, .copy
-	ld hl, FPlayerCharacterTitleGraphics
-	ld bc, FPlayerCharacterTitleGraphicsEnd - FPlayerCharacterTitleGraphics
-	ld a, BANK(FPlayerCharacterTitleGraphics)
-.copy
 	call FarCopyData2
 	call ClearSprites
 	xor a
