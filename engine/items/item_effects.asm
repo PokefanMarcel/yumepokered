@@ -1874,22 +1874,23 @@ ItemUseOldRod:
 	call FishingInit
 	jp c, ItemUseNotTime
 	call ReadOldRodData
-	ld a, e
+	;ld a, e
 	jr RodResponse
 
 ItemUseGoodRod:
 	call FishingInit
 	jp c, ItemUseNotTime
 	call ReadGoodRodData
-	ld a, e
+	;ld a, e
 	jr RodResponse
 
 ItemUseSuperRod:
 	call FishingInit
 	jp c, ItemUseNotTime
 	call ReadSuperRodData
-	ld a, e
+	;ld a, e
 RodResponse:
+	ld a, e ; marcelnote - moved after jr
 	ld [wRodResponse], a
 
 	dec a ; is there a bite?
@@ -2394,7 +2395,7 @@ ItemUseText00:
 GotOnBicycleText:
 	text_far _GotOnBicycleText1
 	text_low
-	text_far _GotOnBicycleText2
+	text_far _GotOnSurfboardText
 	text_end
 
 GotOffBicycleText:
