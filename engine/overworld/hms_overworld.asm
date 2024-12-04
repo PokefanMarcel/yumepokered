@@ -20,14 +20,15 @@ CheckForSurf:: ; marcelnote - could be improved if there is a wram bit which che
 	call CheckForTilePairCollisions
 	ret z
 ; there is no blocking tile
-;	ld b, SURFBOARD ; marcelnote - to do
-;	call IsItemInBag
-;	jr nz, .canSurf
-; we have the Surfboard
 	ld d, SURF
 	call IsMoveInParty ; output: z flag = whether the move was found (z = not found; nz = found)
+; marcelnote - the code below can be uncommented to use the SURFBOARD
+;	jr nz, .canSurf
+; we don't have a Pokemon with SURF in the party
+;	ld b, SURFBOARD
+;	call IsItemInBag
 	jr z, .noSurfInParty
-; we have a Pokemon with SURF in the party
+;; we have the Surfboard
 ;.canSurf
 	call EnableAutoTextBoxDrawing
 	tx_pre WantToSurfText
@@ -225,10 +226,21 @@ WantToSurfText::
 	ld a, [wCurrentMenuItem]
 	and a
 	jr nz, .saidNo
+;	ld a, SURF ; marcelnote - code here can be uncommented for SURFBOARD
+;	call IsMoveInParty
 	ld hl, SurfingGotOnText
+;	jr nz, .got_text
+;	ld hl, GotOnSurfboardText
+;.got_text
 	call PrintText
 .saidNo
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+;GotOnSurfboardText: ; marcelnote - for SURFBOARD
+;	text_far _GotOnBicycleText1
+;	text_low
+;	text_far _GotOnSurfboardText
+;	text_end
 
 WantToCutText::
 	text_far _WantToCutText
