@@ -16,6 +16,10 @@ _GotOnBicycleText2::
 	text "!"
 	prompt
 
+;_GotOnSurfboardText:: ; marcelnote - for SURFBOARD
+;	text "SURFBOARD!"
+;	prompt
+
 _GotOffBicycleText1::
 	text "<PLAYER> got off@"
 	text_end
