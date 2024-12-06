@@ -14,11 +14,11 @@ There are **three** new moves:
 - ELECTRO BALL is a signature move for the Voltorb line which has a high crit rate. Given Electrode's speed and how critical hits are computed in Gen 1, it essentially becomes the best Electric move in the game.
 - WILL-O-WISP is a signature move for the Vulpix line. Ninetales suffers in comparison to Arcanine in Gen 1, and this provides it with a much-needed buff (WILL-O-WISP also pairs nicely with HEX).
 
-| Move         | Type     | Power | Accuracy | PP | Side effect                                                    |
-|--------------|----------|-------|----------|----|----------------------------------------------------------------|
-| HEX          | Ghost    | 60    | 100      | 15 | Deals 50% more damage if the opponent has a status condition   |
-| ELECTRO BALL | Electric | 55    | 95       | 20 | High critical hit rate (RAZOR LEAF clone)                      |
-| WILL-O-WISP  | Fire     | -     | 70       | 15 | Inflicts BURN                                                  |
+| Move         | Type     | Power | Accuracy | PP | Side effect                                                |
+|--------------|----------|-------|----------|----|------------------------------------------------------------|
+| HEX          | Ghost    | 60    | 100      | 15 | Deals 50% more damage if the target has a status condition |
+| ELECTRO BALL | Electric | 55    | 95       | 20 | High critical hit rate (RAZOR LEAF clone)                  |
+| WILL-O-WISP  | Fire     | -     | 70       | 15 | Inflicts BURN                                              |
 
 
 ## Type changes
