@@ -2,7 +2,7 @@
 
 This is a rom hack of Pokémon Red and Blue based on the [pokered disassembly](https://github.com/pret/pokered).
 
-夢 (yume) is the Japanese kanji for *dream*, underlining the intent to provide a reimagined version of these classic games.
+夢 (yume) is the Japanese kanji for *dream* – the intent being to provide a reimagined version of these classic games.
 
 Pokémon Yume Red/Blue/Green aims to improve the original games in terms of gameplay balance, story content, and Pokémon accessibility, all while trying to stay faithful to the authentic Gen 1 experience.
 To do this, inspiration was loosely taken from the anime, later Pokémon generations, or the manga..
