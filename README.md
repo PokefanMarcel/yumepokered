@@ -5,7 +5,7 @@ This is a rom hack of Pokémon Red and Blue based on the [pokered disassembly](h
 夢 (yume) is the Japanese kanji for *dream* – the intent being to provide a reimagined version of these classic games.
 
 Pokémon Yume Red/Blue/Green aims to improve the original games in terms of gameplay balance, story content, and Pokémon accessibility, all the while trying to stay faithful to the authentic Gen 1 experience.
-To do this, inspiration was loosely taken from the anime, later Pokémon generations, or the manga..
+To do this, inspiration was loosely taken from the anime, later Pokémon generations, or the manga.
 In some small ways it is also a 'relocalization' effort: it tries to highlight the games' Japanese influence through some new visuals and dialogue.
 The name is also an homage to [shinpokered](https://github.com/jojobear13/shinpokered), a groundbreaking hack which provided the initial inspiration for this project.
 
@@ -17,7 +17,7 @@ The name is also an homage to [shinpokered](https://github.com/jojobear13/shinpo
 - New areas: Saffron Pokémon Academy, Cinnabar Volcano, Mt. Moon square, Celadon Grove, and much more...
 - ... and even a brand-new town: Mandarin Island.
 - Postgame: new events involving the Elite 4 members, Gen 2 tie-ins, a restored Oak battle, and more!
-- New storyline leading to Mew encounter.
+- New storyline leading to Mew.
 - Many popular QoL changes: running shoes, more item space, easier HM use, experience bar...
 
 ### Gameplay updates
@@ -37,16 +37,17 @@ The name is also an homage to [shinpokered](https://github.com/jojobear13/shinpo
 - Gym leaders' and Elite 4 members' Pokémon have better moves overall.
 - Several Gym leader teams were slightly modified (but trying to keep their theme intact!).
 - New trainers to fight in new and existing areas. (You may recognize some from the anime!)
-- Rematches for Gym leaders and the Elite 4, with stronger teams!
+- Rematches for Gym leaders and the Elite 4 with stronger teams!
 
 **Wild encounters**
-- Wild encounters have been reworked, mostly making Pokemon available earlier.
-- The locations of the Rods was changed – in particular, the Old Rod is now available very early in the game.
-- Fishing encounters were completely reworked – see the files for the [Old rod](data/wild/old_rod.asm), [Good rod](data/wild/good_rod.asm) and [Super rod](data/wild/super_rod.asm).
+- Wild encounters have been reworked to increase diversity and make many Pokémon available earlier.
+- The locations of the Rods was changed – in particular, the Old Rod is now available very early on.
+- Fishing encounters were completely reworked in terms of levels and Pokémon diversity.
+- For full details (spoilers!), see the files for the [Old rod](data/wild/old_rod.asm), [Good rod](data/wild/good_rod.asm) and [Super rod](data/wild/super_rod.asm).
 
 ### Visual updates
 
-- Several tilesets have been reworked, most notably for Viridian Forest and the Pokemon Tower.
+- Several tilesets have been reworked, most notably for Viridian Forest and the Pokémon Tower.
 - Gym leaders have their own sprites.
 - New character sprites when surfing.
 - In SuperGameBoy mode, the town palettes have been modified to better reflect the original Japanese town names.
