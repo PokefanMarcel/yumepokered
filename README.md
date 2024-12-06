@@ -4,10 +4,10 @@ This is a rom hack of Pokémon Red and Blue based on the [pokered disassembly](h
 
 夢 (yume) is the Japanese kanji for *dream* – the intent being to provide a reimagined version of these classic games.
 
-Pokémon Yume Red/Blue/Green aims to improve the original games in terms of gameplay balance, story content, and Pokémon accessibility, all the while trying to stay faithful to the authentic Gen 1 experience.
+Pokémon Yume Red/Blue/Green aims to improve the original games in terms of gameplay balance, story content, and Pokémon accessibility, all the while trying to stay faithful to the Gen 1 experience.
 To do this, inspiration was loosely taken from the anime, later Pokémon generations, or the manga.
 In some small ways it is also a 'relocalization' effort: it tries to highlight the games' Japanese influence through some new visuals and dialogue.
-The name is also an homage to [shinpokered](https://github.com/jojobear13/shinpokered), a groundbreaking hack which provided the initial inspiration for this project.
+Its kanji name 夢 is also an homage to [shinpokered](https://github.com/jojobear13/shinpokered), a groundbreaking hack which provided the initial inspiration for this project.
 
 
 ### Main features
@@ -69,9 +69,9 @@ There are also many other smaller tweaks to the original game!
 
 ## Credits
 
-This project owes a lot to other existing works, and above all to the pret's [pokered](https://github.com/pret/pokered) disassemby project (without which my project wouldn't exist), but also:
+This project owes a lot to existing works, and above all to the pret's [pokered](https://github.com/pret/pokered) disassemby project (without which my project wouldn't exist), but also:
 
-- [Shinpokered](https://github.com/jojobear13/shinpokered): experience bar, many many bug fixes,
+- [Shinpokered](https://github.com/jojobear13/shinpokered): playing as girl, experience bar, many many bug fixes,
 - [PureRGB](https://github.com/Vortyne/pureRGB): overworld HM use, ROM space management, repel reuse prompt, many other code snippets,
 - [Extreme Yellow](https://github.com/RainbowMetalPigeon/ExtremeYellow): overworld HM use, dynamic TM seller,
 - [Yellow Legacy](https://github.com/cRz-Shadows/Pokemon_Yellow_Legacy): inspiration for some balance changes,
