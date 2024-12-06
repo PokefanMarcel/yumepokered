@@ -1,9 +1,14 @@
 # Pokémon Yume 夢 Red/Green/Blue
 
-Based on the pokered disassembly.
+This is a rom hack of Pokémon Red and Blue based on the [pokered disassembly](https://github.com/pret/pokered).
 
-Two common criticisms of Pokémon Red and Blue is that the world can feel empty and underdeveloped, and that many Pokémon have very limited or non-ideal moves.
-This hack focuses on addressing these two issues by (1) **adding new storyline events**, especially in the post-game, as well as **new locations**, in a way which maintains the authenticity of the Gen 1 experience; and (2) parsimoniously **rebalancing moves and learnsets**, making more Pokémon viable and thus giving more team-building options to the player.
+夢 (yume) is the Japanese kanji for *dream*, underlining the intent to provide a reimagined version of these classic games.
+
+Pokémon Yume Red/Blue/Green aims to improve the original games in terms of gameplay balance, story content, and Pokémon accessibility, all while trying to stay faithful to the authentic Gen 1 experience.
+To do this, inspiration was loosely taken from the anime, later Pokémon generations, or the manga..
+In some small ways it is also a 'relocalization' effort, in the sense that it tries to highlight the games' Japanese influence through some new visuals and dialogue.
+The name is also an homage to [shinpokered](https://github.com/jojobear13/shinpokered), a groundbreaking hack which provided the initial inspiration for this project.
+
 
 ### Main features
 
@@ -11,21 +16,20 @@ This hack focuses on addressing these two issues by (1) **adding new storyline e
 - Choose to play as a girl or boy.
 - New areas: Saffron Pokémon Academy, Cinnabar Volcano, Mt. Moon square, Celadon Grove, and much more...
 - ... and even a brand-new town: Mandarin Island.
-- Postgame: new events involving the Elite 4 members, Gen2 tie-ins, a restored Oak battle, and more!
+- Postgame: new events involving the Elite 4 members, Gen 2 tie-ins, a restored Oak battle, and more!
 - New storyline leading to Mew encounter.
 - Many popular QoL changes: running shoes, more item space, easier HM use, experience bar...
 
 ### Gameplay updates
 
 **Moves**
-- Several moves have been parsimoniously reworked in order to increase their viability while trying to maintain the original feeling of the game.
-- Three new moves have been added.
+- Several moves have been parsimoniously reworked in order to increase their viability while trying to maintain the original feeling of the game. Three new moves have been added.
 - Consult the [complete list of move changes](docs/move_changes.md) for more info!
 - Ghost is now a Special type, and Dragon a Physical type.
 - Fix for Focus energy and Dire hit. (Quadruple critical hit rate instead of dividing it by 4.)
 
 **Learnsets**
-- Pokémon learnsets have been revamped in the same spirit: to give more options while trying to maintain Gen1 authenticity.
+- Pokémon learnsets have been revamped in the same spirit: to give more options while trying to maintain Gen 1 authenticity.
 - The new learnsets can be consulted in this [file](data/pokemon/evos_moves.asm).
 - Stone and trade evolutions keep learning moves.
 
@@ -59,6 +63,8 @@ This hack focuses on addressing these two issues by (1) **adding new storyline e
 - Experience bar in battle.
 - All TMs can be bought at the Celadon Mart after getting the right badge.
 - New Celadon Mart floor where you can buy PP-related items in the postgame (Ether, Elixir, PP Up...).
+
+There are also many other smaller tweaks to the original game!
 
 ## Credits
 
