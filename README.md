@@ -5,12 +5,12 @@ Based on the pokered disassembly.
 Two common criticisms of Pokémon Red and Blue is that the world can feel empty and underdeveloped, and that many Pokémon have very limited or non-ideal moves.
 This hack focuses on addressing these two issues by (1) **adding new storyline events**, especially in the post-game, as well as **new locations**, in a way which maintains the authenticity of the Gen 1 experience; and (2) parsimoniously **rebalancing moves and learnsets**, making more Pokémon viable and thus giving more team-building options to the player.
 
-## Main features
+### Main features
 
 - Catch all 151 Pokémon!
 - Choose to play as a girl or boy.
 - New areas: Saffron Pokémon Academy, Cinnabar Volcano, Mt. Moon square, Celadon Grove, and much more...
-- ... and even a brand-new town: Mandarin Island!
+- ... and even a brand-new town: Mandarin Island.
 - Postgame: new events involving the Elite 4 members, Gen2 tie-ins, a restored Oak battle, and more!
 - New storyline leading to Mew encounter.
 - Many popular QoL changes: running shoes, more item space, easier HM use, experience bar...
