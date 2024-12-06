@@ -15,27 +15,27 @@ This hack focuses on addressing these two issues by (1) **adding new storyline e
 - New storyline leading to Mew encounter.
 - Many popular QoL changes: running shoes, more item space, easier HM use, experience bar...
 
-## Gameplay updates
+### Gameplay updates
 
-**Moves.**
+**Moves**
 - Several moves have been parsimoniously reworked in order to increase their viability while trying to maintain the original feeling of the game.
 - Three new moves have been added.
 - Consult the [complete list of move changes](docs/move_changes.md) for more info!
 - Ghost is now a Special type, and Dragon a Physical type.
 - Fix for Focus energy and Dire hit. (Quadruple critical hit rate instead of dividing it by 4.)
 
-**Learnsets.**
+**Learnsets**
 - Pokémon learnsets have been revamped in the same spirit: to give more options while trying to maintain Gen1 authenticity.
 - The new learnsets can be consulted in this [file](data/pokemon/evos_moves.asm).
 - Stone and trade evolutions keep learning moves.
 
-**Battles.**
+**Battles**
 - Gym leaders' and Elite 4 members' Pokémon have better moves overall.
 - Several Gym leader teams were slightly modified (but trying to keep their theme intact!).
 - New trainers to fight in new and existing areas. (You may recognize some from the anime!)
 - Rematches for Gym leaders and the Elite 4, with stronger teams!
 
-**Wild encounters.**
+**Wild encounters**
 - Wild encounters have been reworked, mostly making Pokemon available earlier.
 - The locations of the Rods was changed – in particular, the Old Rod is now available very early in the game.
 - Fishing encounters were completely reworked – see the files for the [Old rod](data/wild/old_rod.asm), [Good rod](data/wild/good_rod.asm) and [Super rod](data/wild/super_rod.asm).
