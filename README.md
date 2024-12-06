@@ -4,9 +4,9 @@ This is a rom hack of Pokémon Red and Blue based on the [pokered disassembly](h
 
 夢 (yume) is the Japanese kanji for *dream* – the intent being to provide a reimagined version of these classic games.
 
-Pokémon Yume Red/Blue/Green aims to improve the original games in terms of gameplay balance, story content, and Pokémon accessibility, all while trying to stay faithful to the authentic Gen 1 experience.
+Pokémon Yume Red/Blue/Green aims to improve the original games in terms of gameplay balance, story content, and Pokémon accessibility, all the while trying to stay faithful to the authentic Gen 1 experience.
 To do this, inspiration was loosely taken from the anime, later Pokémon generations, or the manga..
-In some small ways it is also a 'relocalization' effort, in the sense that it tries to highlight the games' Japanese influence through some new visuals and dialogue.
+In some small ways it is also a 'relocalization' effort: it tries to highlight the games' Japanese influence through some new visuals and dialogue.
 The name is also an homage to [shinpokered](https://github.com/jojobear13/shinpokered), a groundbreaking hack which provided the initial inspiration for this project.
 
 
