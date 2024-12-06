@@ -25,4 +25,4 @@ This project owes a lot to other existing works, notably
 - and others...
 
 I try my best to keep track of all references, but I'm most likely forgetting some.
-If you think I should credit your work here, I'll be happy to add it – just reach out to me on the pokered Discord!
+If you think I should credit your work here, I'll be happy to add you to the list – just reach out to me on the pokered Discord!
