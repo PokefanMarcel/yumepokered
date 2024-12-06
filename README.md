@@ -62,10 +62,31 @@ Its kanji name 夢 is also an homage to [shinpokered](https://github.com/jojobea
 - Haunter, Graveler, Kadabra and Machoke can evolve by interacting with new dedicated NPCs.
 - Move deleter and Move reminder in Fuchsia.
 - Experience bar in battle.
+- Improved move info box in battle.
 - All TMs can be bought at the Celadon Mart after getting the right badge.
 - New Celadon Mart floor where you can buy PP-related items in the postgame (Ether, Elixir, PP Up...).
 
-There are also many other smaller tweaks to the original game!
+There are also many other smaller tweaks to the original game, and still more to come!
+
+## Screenshots
+
+![green_titlescreen](/docs/screenshots/green_titlescreen.png?raw=true)
+![pokemon_tower](/docs/screenshots/pokemon_tower.png?raw=true)
+![battle_infobox](/docs/screenshots/battle_infobox.png?raw=true)
+
+![cut_tree](/docs/screenshots/cut_tree.png?raw=true)
+![pokemon_academy](/docs/screenshots/pokemon_academy.png?raw=true)
+![new_family](/docs/screenshots/new_family.png?raw=true)
+
+![key_items](/docs/screenshots/key_items.png?raw=true)
+![cinnabar_island](/docs/screenshots/cinnabar_island.png?raw=true)
+![fuchsia](/docs/screenshots/fuchsia.png?raw=true)
+
+![mandarin_island](/docs/screenshots/mandarin_island.png?raw=true)
+![celadon_grove](/docs/screenshots/celadon_grove.png?raw=true)
+![town_map](/docs/screenshots/town_map.png?raw=true)
+
+Note: colors are only available in SGB mode for now.
 
 ## Credits
 
