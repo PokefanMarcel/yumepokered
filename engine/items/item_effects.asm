@@ -2395,7 +2395,7 @@ ItemUseText00:
 GotOnBicycleText:
 	text_far _GotOnBicycleText1
 	text_low
-	text_far _GotOnSurfboardText
+	text_far _GotOnBicycleText2
 	text_end
 
 GotOffBicycleText:
