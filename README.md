@@ -5,7 +5,7 @@ Based on the pokered disassembly.
 Two common criticisms of Pokémon Red and Blue is that the world can feel empty and underdeveloped, and that many Pokémon have very limited or non-ideal moves.
 This hack focuses on addressing these two issues by (1) **adding new storyline events**, especially in the post-game, as well as **new locations**, in a way which maintains the authenticity of the Gen 1 experience; and (2) parsimoniously **rebalancing moves and learnsets**, making more Pokémon viable and thus giving more team-building options to the player.
 
-# Main features
+## Main features
 
 - Catch all 151 Pokémon!
 - Choose to play as a girl or boy.
@@ -40,7 +40,7 @@ This hack focuses on addressing these two issues by (1) **adding new storyline e
 - The locations of the Rods was changed – in particular, the Old Rod is now available very early in the game.
 - Fishing encounters were completely reworked – see the files for the [Old rod](data/wild/old_rod.asm), [Good rod](data/wild/good_rod.asm) and [Super rod](data/wild/super_rod.asm).
 
-## Visual updates
+### Visual updates
 
 - Several tilesets have been reworked, most notably for Viridian Forest and the Pokemon Tower.
 - Gym leaders have their own sprites.
@@ -48,7 +48,7 @@ This hack focuses on addressing these two issues by (1) **adding new storyline e
 - In SuperGameBoy mode, the town palettes have been modified to better reflect the original Japanese town names.
 - Many visual bug fixes.
 
-## QoL updates
+### QoL updates
 
 - Run by pressing B.
 - Use Cut, Surf, Strength, and Flash just by pressing A on the map. 
@@ -60,7 +60,7 @@ This hack focuses on addressing these two issues by (1) **adding new storyline e
 - All TMs can be bought at the Celadon Mart after getting the right badge.
 - New Celadon Mart floor where you can buy PP-related items in the postgame (Ether, Elixir, PP Up...).
 
-# Credits
+## Credits
 
 This project owes a lot to other existing works, and above all to the pret's [pokered](https://github.com/pret/pokered) disassemby project (without which my project wouldn't exist), but also:
 
