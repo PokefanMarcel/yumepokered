@@ -23,4 +23,5 @@ This project owes a lot to other existing works, notably
 - [pokered-crysaudio](https://github.com/dannye/pokered-crysaudio/tree/1edc6019fb8630bccd94f0b0e7dd4082cf7f4245): updated sound engine,
 - and others...
 
-If you think your work should be credited here, don't hesitate to reach out to me on the pokered Discord!
+I try my best to keep track of all references, but I'm most likely forgetting some.
+If you think I should credit your work here, I'll be happy to add it – just reach out to me on the pokered Discord!
