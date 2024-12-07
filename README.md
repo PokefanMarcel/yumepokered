@@ -1,6 +1,6 @@
 # Pokémon Yume 夢 Red/Green/Blue
 
-This is a rom hack of Pokémon Red and Blue based on the [pokered disassembly](https://github.com/pret/pokered).
+This is an enhancement rom hack of Pokémon Red and Blue based on the [pokered disassembly](https://github.com/pret/pokered).
 
 夢 (yume) is the Japanese kanji for *dream* – the intent being to provide a reimagined version of these classic games.
 
@@ -8,7 +8,6 @@ Pokémon Yume Red/Blue/Green aims to improve the original games in terms of game
 To do this, inspiration was loosely taken from the anime, later Pokémon generations, or the manga.
 In some small ways it is also a 'relocalization' effort: it tries to highlight the games' Japanese influence through some new visuals and dialogue.
 Its kanji name 夢 is also an homage to [shinpokered](https://github.com/jojobear13/shinpokered), a groundbreaking hack which provided the initial inspiration for this project.
-
 
 ### Main features
 
@@ -90,7 +89,7 @@ Note: colors are only available in SGB mode for now.
 
 ## Credits
 
-This project owes a lot to existing works, and above all to the pret's [pokered](https://github.com/pret/pokered) disassemby project (without which my project wouldn't exist), but also:
+This project owes a lot to existing works, and above all to the pret's [pokered](https://github.com/pret/pokered) disassemby project (without which this wouldn't exist), but also:
 
 - [Shinpokered](https://github.com/jojobear13/shinpokered): playing as girl, experience bar, many many bug fixes,
 - [PureRGB](https://github.com/Vortyne/pureRGB): overworld HM use, ROM space management, repel reuse prompt, many other code snippets,
