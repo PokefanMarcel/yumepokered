@@ -73,7 +73,7 @@ OverworldLoopLessDelay::
 	ldh a, [hJoyPressed]
 .checkIfStartIsPressed
 	bit BIT_START, a
-	jr z, checkIfAIsPressed ; replace with .checkIfSelectIsPressed
+	jr z, .checkIfAIsPressed ; replace with .checkIfSelectIsPressed
 ; if START is pressed
 	xor a ; TEXT_START_MENU
 	ldh [hTextID], a
