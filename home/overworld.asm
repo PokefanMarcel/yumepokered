@@ -73,12 +73,24 @@ OverworldLoopLessDelay::
 	ldh a, [hJoyPressed]
 .checkIfStartIsPressed
 	bit BIT_START, a
-	jr z, .startButtonNotPressed
+	jr z, checkIfAIsPressed ; replace with .checkIfSelectIsPressed
 ; if START is pressed
 	xor a ; TEXT_START_MENU
 	ldh [hTextID], a
 	jp .displayDialogue
-.startButtonNotPressed
+;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - use SELECT for key items
+;.checkIfSelectIsPressed
+;	bit BIT_SELECT, a
+;	jr z, .checkIfAIsPressed
+;; if SELECT is pressed
+;	ld a, OLD_ROD ; should be [wSelectButtonItem], options are BICYCLE, TOWN_MAP, *_ROD, ITEMFINDER, POKE_FLUTE
+;	and a
+;	jp z, OverworldLoop ; if NO_ITEM associated with Select (default), do nothing
+;	ld [wCurItem], a
+;	callfar UseItem_
+;	jp OverworldLoop
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+.checkIfAIsPressed
 	bit BIT_A_BUTTON, a
 	jp z, .checkIfDownButtonIsPressed
 ; if A is pressed
