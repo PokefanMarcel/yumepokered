@@ -136,9 +136,9 @@ ENDC
 	ld a, PLAYER_DIR_DOWN
 	ld [wPlayerMovingDirection], a
 	ld a, SFX_STOP_ALL_MUSIC
-	ld [wNewSoundID], a
+;	ld [wNewSoundID], a
 	call PlaySound
-	ld c, BANK(Music_MeetRival)
+	ld c, 0 ; BANK(Music_MeetRival)
 	ld a, MUSIC_MEET_RIVAL
 	call PlayMusic
 	ld a, TEXT_SILPHCO7F_RIVAL
@@ -225,7 +225,7 @@ SilphCo7FRivalAfterBattleScript:
 	ldh [hTextID], a
 	call DisplayTextID
 	ld a, SFX_STOP_ALL_MUSIC
-	ld [wNewSoundID], a
+;	ld [wNewSoundID], a
 	call PlaySound
 	farcall Music_RivalAlternateStart
 	ld de, .RivalWalkAroundPlayerMovement

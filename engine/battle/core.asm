@@ -785,15 +785,24 @@ FaintEnemyPokemon:
 	ld a, [wIsInBattle]
 	dec a
 	jr z, .wild_win
-	xor a
-	ld [wFrequencyModifier], a
-	ld [wTempoModifier], a
+
+	call WaitForSoundToFinish
+	ld bc, $00
+	ld de, $80
 	ld a, SFX_FAINT_FALL
-	call PlaySoundWaitForCurrent
-.sfxwait
-	ld a, [wChannelSoundIDs + CHAN5]
-	cp SFX_FAINT_FALL
-	jr z, .sfxwait
+	call PlayBattleSound
+;	xor a
+;	ld [wFrequencyModifier], a
+;	ld [wTempoModifier], a
+;	ld a, SFX_FAINT_FALL
+;	call PlaySoundWaitForCurrent
+
+	call WaitForSoundToFinish
+;.sfxwait
+;	ld a, [wChannelSoundIDs + CHAN5]
+;	cp SFX_FAINT_FALL
+;	jr z, .sfxwait
+
 	ld a, SFX_FAINT_THUD
 	call PlaySound
 	call WaitForSoundToFinish
@@ -875,7 +884,7 @@ EndLowHealthAlarm:
 ; the low health alarm and prevents it from reactivating until the next battle.
 	xor a
 	ld [wLowHealthAlarm], a ; turn off low health alarm
-	ld [wChannelSoundIDs + CHAN5], a
+;	ld [wChannelSoundIDs + CHAN5], a
 	inc a
 	ld [wLowHealthAlarmDisabled], a ; prevent it from reactivating
 	ret
@@ -968,9 +977,9 @@ TrainerDefeatedText:
 PlayBattleVictoryMusic:
 	push af
 	ld a, SFX_STOP_ALL_MUSIC
-	ld [wNewSoundID], a
+;	ld [wNewSoundID], a
 	call PlaySoundWaitForCurrent
-	ld c, BANK(Music_DefeatedTrainer)
+	ld c, 0 ; BANK(Music_DefeatedTrainer)
 	pop af
 	call PlayMusic
 	jp Delay3
@@ -1018,9 +1027,9 @@ RemoveFaintedPlayerMon:
 	ld hl, wEnemyBattleStatus1
 	res ATTACKING_MULTIPLE_TIMES, [hl]
 	ld a, [wLowHealthAlarm]
-	bit BIT_LOW_HEALTH_ALARM, a
+	bit 7, a
 	jr z, .skipWaitForSound
-	ld a, DISABLE_LOW_HEALTH_ALARM
+	ld a, $ff
 	ld [wLowHealthAlarm], a
 	call WaitForSoundToFinish
 .skipWaitForSound
@@ -1870,15 +1879,15 @@ DrawPlayerHUDAndHPBar:
 	jr z, .setLowHealthAlarm
 .fainted
 	ld hl, wLowHealthAlarm
-	bit BIT_LOW_HEALTH_ALARM, [hl]
+	bit 7, [hl]
 	ld [hl], 0
 	ret z
 	xor a
-	ld [wChannelSoundIDs + CHAN5], a
+;	ld [wChannelSoundIDs + CHAN5], a
 	ret
 .setLowHealthAlarm
 	ld hl, wLowHealthAlarm
-	set BIT_LOW_HEALTH_ALARM, [hl]
+	set 7, [hl]
 	ret
 
 DrawEnemyHUDAndHPBar:
@@ -7131,8 +7140,8 @@ _LoadTrainerPic:
 ; unreferenced
 ResetCryModifiers:
 	xor a
-	ld [wFrequencyModifier], a
-	ld [wTempoModifier], a
+;	ld [wFrequencyModifier], a
+;	ld [wTempoModifier], a
 	jp PlaySound
 
 ; animates the mon "growing" out of the pokeball

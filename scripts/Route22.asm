@@ -89,10 +89,10 @@ Route22FirstRivalBattleScript:
 	and a
 	jr z, .walking
 	ld a, SFX_STOP_ALL_MUSIC
-	ld [wNewSoundID], a
+;	ld [wNewSoundID], a
 	call PlaySound
 .walking
-	ld c, BANK(Music_MeetRival)
+	ld c, 0 ; BANK(Music_MeetRival)
 	ld a, MUSIC_MEET_RIVAL
 	call PlayMusic
 	ld a, ROUTE22_RIVAL1
@@ -168,7 +168,7 @@ Route22Rival1AfterBattleScript:
 	ldh [hTextID], a
 	call DisplayTextID
 	ld a, SFX_STOP_ALL_MUSIC
-	ld [wNewSoundID], a
+;	ld [wNewSoundID], a
 	call PlaySound
 	farcall Music_RivalAlternateStart
 	ld a, [wSavedCoordIndex]
@@ -242,11 +242,11 @@ Route22SecondRivalBattleScript:
 	and a
 	jr z, .walking
 	ld a, SFX_STOP_ALL_MUSIC
-	ld [wNewSoundID], a
+;	ld [wNewSoundID], a
 	call PlaySound
 .walking
 	ld a, SFX_STOP_ALL_MUSIC
-	ld [wNewSoundID], a
+;	ld [wNewSoundID], a
 	call PlaySound
 	farcall Music_RivalAlternateTempo
 	ld a, ROUTE22_RIVAL2
@@ -327,7 +327,7 @@ Route22Rival2AfterBattleScript:
 	ldh [hTextID], a
 	call DisplayTextID
 	ld a, SFX_STOP_ALL_MUSIC
-	ld [wNewSoundID], a
+;	ld [wNewSoundID], a
 	call PlaySound
 	farcall Music_RivalAlternateStartAndTempo
 	ld a, [wSavedCoordIndex]

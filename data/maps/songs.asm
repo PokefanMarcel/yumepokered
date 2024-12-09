@@ -1,23 +1,23 @@
 MapSongBanks::
 	table_width 2, MapSongBanks
 	; Cities
-	db MUSIC_PALLET_TOWN, BANK(Music_PalletTown)       ; PALLET_TOWN
-	db MUSIC_CITIES1, BANK(Music_Cities1)              ; VIRIDIAN_CITY
-	db MUSIC_CITIES1, BANK(Music_Cities1)              ; PEWTER_CITY
-	db MUSIC_CITIES2, BANK(Music_Cities2)              ; CERULEAN_CITY
-	db MUSIC_LAVENDER, BANK(Music_Lavender)            ; LAVENDER_TOWN
-	db MUSIC_VERMILION, BANK(Music_Vermilion)          ; VERMILION_CITY
-	db MUSIC_CELADON, BANK(Music_Celadon)              ; CELADON_CITY
-	db MUSIC_CITIES1, BANK(Music_Cities1)              ; SAFFRON_CITY
-	db MUSIC_CITIES2, BANK(Music_Cities2)              ; FUCHSIA_CITY
-	db MUSIC_CINNABAR, BANK(Music_Cinnabar)            ; CINNABAR_ISLAND
-	db MUSIC_CINNABAR, BANK(Music_Cinnabar)            ; MANDARIN_ISLAND ; marcelnote - new map
-	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; INDIGO_PLATEAU
+	db MUSIC_PALLET_TOWN, 0       ; PALLET_TOWN
+	db MUSIC_CITIES1, 0              ; VIRIDIAN_CITY
+	db MUSIC_CITIES1, 0              ; PEWTER_CITY
+	db MUSIC_CITIES2, 0              ; CERULEAN_CITY
+	db MUSIC_LAVENDER, 0            ; LAVENDER_TOWN
+	db MUSIC_VERMILION, 0          ; VERMILION_CITY
+	db MUSIC_CELADON, 0              ; CELADON_CITY
+	db MUSIC_CITIES1, 0              ; SAFFRON_CITY
+	db MUSIC_CITIES2, 0              ; FUCHSIA_CITY
+	db MUSIC_CINNABAR, 0            ; CINNABAR_ISLAND
+	db MUSIC_CINNABAR, 0            ; MANDARIN_ISLAND ; marcelnote - new map
+	db MUSIC_INDIGO_PLATEAU, 0 ; INDIGO_PLATEAU
 	; Routes
-	db MUSIC_ROUTES1, BANK(Music_Routes1)              ; ROUTE_1
-	db MUSIC_ROUTES1, BANK(Music_Routes1)              ; ROUTE_2
-	db MUSIC_ROUTES3, BANK(Music_Routes3)              ; ROUTE_3
-	db MUSIC_ROUTES3, BANK(Music_Routes3)              ; ROUTE_4
+	db MUSIC_ROUTES1, 0              ; ROUTE_1
+	db MUSIC_ROUTES1, 0              ; ROUTE_2
+	db MUSIC_ROUTES3, 0              ; ROUTE_3
+	db MUSIC_ROUTES3, 0              ; ROUTE_4
 	db MUSIC_ROUTES3, BANK(Music_Routes3)              ; ROUTE_5
 	db MUSIC_ROUTES3, BANK(Music_Routes3)              ; ROUTE_6
 	db MUSIC_ROUTES3, BANK(Music_Routes3)              ; ROUTE_7

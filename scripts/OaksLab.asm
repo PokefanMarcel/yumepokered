@@ -349,7 +349,7 @@ OaksLabRivalChallengesPlayerScript:
 	call SetSpriteFacingDirectionAndDelay
 	ld a, PLAYER_DIR_UP
 	ld [wPlayerMovingDirection], a
-	ld c, BANK(Music_MeetRival)
+	ld c, 0 ; BANK(Music_MeetRival)
 	ld a, MUSIC_MEET_RIVAL
 	call PlayMusic
 	ld a, TEXT_OAKSLAB_RIVAL_ILL_TAKE_YOU_ON
@@ -505,7 +505,7 @@ OaksLabRivalArrivesAtOaksRequestScript:
 	ldh [hJoyHeld], a
 	call EnableAutoTextBoxDrawing
 	ld a, SFX_STOP_ALL_MUSIC
-	ld [wNewSoundID], a
+;	ld [wNewSoundID], a
 	call PlaySound
 	farcall Music_RivalAlternateStart
 	ld a, TEXT_OAKSLAB_RIVAL_GRAMPS
@@ -605,7 +605,7 @@ OaksLabOakGivesPokedexScript:
 	call FillMemory
 	ld [hl], $ff
 	ld a, SFX_STOP_ALL_MUSIC
-	ld [wNewSoundID], a
+;	ld [wNewSoundID], a
 	call PlaySound
 	farcall Music_RivalAlternateStart
 	ld a, OAKSLAB_RIVAL
