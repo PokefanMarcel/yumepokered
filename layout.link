@@ -180,7 +180,7 @@ ROMX $2D
 	"Pics 6"
 WRAM0
 	"Audio RAM"
-	org $c100
+	org $c200
 	"Sprite State Data"
 	"OAM Buffer"
 	"Tilemap"

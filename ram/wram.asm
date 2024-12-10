@@ -11,6 +11,12 @@ wChannel2:: channel_struct wChannel2
 wChannel3:: channel_struct wChannel3
 wChannel4:: channel_struct wChannel4
 
+wChannel5:: channel_struct wChannel5
+wChannel6:: channel_struct wChannel6
+
+wChannel7:: channel_struct wChannel7
+wChannel8:: channel_struct wChannel8
+
 	ds 1
 
 wCurTrackDuty:: db
@@ -1882,12 +1888,12 @@ wWarpEntries:: ds 32 * 4 ; Y, X, warp ID, map ID
 ; if $ff, the player's coordinates are not updated when entering the map
 wDestinationWarpID:: db
 
-UNION
-	ds 128
-NEXTU
-wChannel5:: channel_struct wChannel5
-wChannel6:: channel_struct wChannel6
-ENDU
+;UNION
+;	ds 128
+;NEXTU
+;wChannel5:: channel_struct wChannel5
+;wChannel6:: channel_struct wChannel6
+;ENDU
 
 ; number of signs in the current map (up to 16)
 wNumSigns:: db
@@ -2084,12 +2090,12 @@ wRoute18GateCurScript:: db            ; marcelnote - renamed from wRoute18Gate1F
 wRoute22GateCurScript:: db
 wGameProgressFlagsEnd::
 
-UNION
-	ds 128
-NEXTU
-wChannel7:: channel_struct wChannel7
-wChannel8:: channel_struct wChannel8
-ENDU
+;UNION
+;	ds 128
+;NEXTU
+;wChannel7:: channel_struct wChannel7
+;wChannel8:: channel_struct wChannel8
+;ENDU
 
 wObtainedHiddenItemsFlags:: flag_array MAX_HIDDEN_ITEMS
 
@@ -2148,7 +2154,7 @@ wWhichDungeonWarp:: db
 
 ;wUnusedCardKeyGateID:: db ; marcelnote - removed
 
-	ds 9
+;	ds 9
 
 wStatusFlags1:: db
 wStatusFlags2:: db
@@ -2163,26 +2169,26 @@ wElite4Flags:: db
 ;wBeatGymFlags:: db ; redundant because it matches wObtainedBadges ; marcelnote - removed
 
 wMovementFlags:: db
-	ds 4
+;	ds 4
 
 wCompletedInGameTradeFlags:: dw
 
-	ds 2
+;	ds 2
 
 wWarpedFromWhichWarp:: db
 wWarpedFromWhichMap:: db
 
-	ds 2
+;	ds 2
 
 wCardKeyDoorY:: db
 wCardKeyDoorX:: db
 
-	ds 2
+;	ds 2
 
 wFirstLockTrashCanIndex:: db
 wSecondLockTrashCanIndex:: db
 
-	ds 2
+;	ds 2
 
 wEventFlags:: flag_array NUM_EVENTS
 
@@ -2191,7 +2197,7 @@ UNION
 wGrassRate:: db
 wGrassMons:: ds 10 * 2
 
-	ds 8
+;	ds 8
 
 wWaterRate:: db
 wWaterMons:: ds 10 * 2
@@ -2200,11 +2206,11 @@ NEXTU
 ; linked game's trainer name
 wLinkEnemyTrainerName:: ds NAME_LENGTH
 
-	ds 1
+;	ds 1
 
 wSerialEnemyDataBlock:: ; ds $1a8
 
-	ds 9
+;	ds 9
 
 wEnemyPartyCount:: db
 wEnemyPartySpecies:: ds PARTY_LENGTH + 1
@@ -2232,7 +2238,7 @@ ENDU
 
 wTrainerHeaderPtr:: dw
 
-	ds 6
+;	ds 6
 
 ; the trainer the player must face after getting a wrong answer in the Cinnabar
 ; gym quiz
@@ -2242,7 +2248,7 @@ wOpponentAfterWrongAnswer:: db
 ; mostly copied from map-specific map script pointer and written back later
 wCurMapScript:: db
 
-	ds 7
+;	ds 7
 
 wPlayTimeHours:: db
 wPlayTimeMaxed:: db

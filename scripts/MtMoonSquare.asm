@@ -36,7 +36,7 @@ MtMoonSquareClefairyText:
 	call PlayCry
 	call GBFadeOutToWhite
 	ld a, SFX_TELEPORT_EXIT_1
-	ld [wNewSoundID], a
+	;ld [wNewSoundID], a
 	call PlaySound
 	ld a, HS_MT_MOON_SQUARE_CLEFAIRY
 	ld [wMissableObjectIndex], a

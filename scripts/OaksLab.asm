@@ -696,7 +696,7 @@ OaksLabRivalBackToIndigoScript: ; marcelnote - postgame Rival event
 	call DisplayTextID
 	call Delay3
 	ld a, SFX_STOP_ALL_MUSIC
-	ld [wNewSoundID], a
+	; ld [wNewSoundID], a
 	call PlaySound
 	farcall Music_RivalAlternateStart
 	ld a, [wYCoord]
