@@ -21,7 +21,7 @@ PlayBattleMusic::
 	cp OPP_PROF_OAK ; marcelnote - new
 	jr z, .finalBattle ; to be replace with .ProfOakBattle
 	cp OPP_YELLOW ; marcelnote - new
-	jr z, .finalBattle ; to be replace with .YellowBattle
+	jr z, .YellowBattle ; marcelnote - new
 	cp OPP_LANCE
 	jr nz, .normalTrainerBattle
 	ld a, MUSIC_GYM_LEADER_BATTLE ; lance also plays gym leader theme
@@ -35,9 +35,9 @@ PlayBattleMusic::
 ;.ProfOakBattle ; marcelnote - prepare for special Prof Oak theme
 ;	ld a, MUSIC_PROF_OAK_BATTLE
 ;	jr .playSong
-;.YellowBattle ; marcelnote - prepare for special Yellow theme
-;	ld a, MUSIC_YELLOW_BATTLE
-;	jr .playSong
+.YellowBattle ; marcelnote - prepare for special Yellow theme
+	ld a, MUSIC_YELLOW_BATTLE
+	jr .playSong
 .wildBattle
 	ld a, MUSIC_WILD_BATTLE
 .playSong

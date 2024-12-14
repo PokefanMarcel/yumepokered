@@ -5,6 +5,8 @@
 ;	DEF \1 EQUS "((\2 - SFX_Headers_1) / 3)"
 ;ENDM
 
+; marcelnote - see also music_pointers.asm
+
 	const_def 1
 
 	const MUSIC_PALLET_TOWN
@@ -32,6 +34,7 @@
 	const MUSIC_TRAINER_BATTLE
 	const MUSIC_WILD_BATTLE
 	const MUSIC_FINAL_BATTLE
+	const MUSIC_YELLOW_BATTLE ; marcelnote - new song
 	const MUSIC_DEFEATED_TRAINER
 	const MUSIC_DEFEATED_WILD_MON
 	const MUSIC_DEFEATED_GYM_LEADER

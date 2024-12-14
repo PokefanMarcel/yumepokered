@@ -28,6 +28,7 @@ Music:
 	dba Music_TrainerBattle
 	dba Music_WildBattle
 	dba Music_FinalBattle
+	dba Music_UntitledSong ; Music_YellowBattle ; marcelnote - new song
 	dba Music_DefeatedTrainer
 	dba Music_DefeatedWildMon
 	dba Music_DefeatedGymLeader

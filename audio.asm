@@ -338,6 +338,7 @@ INCLUDE "crysaudio/music/RBY/gymleaderbattle.asm"
 INCLUDE "crysaudio/music/RBY/trainerbattle.asm"
 INCLUDE "crysaudio/music/RBY/wildbattle.asm"
 INCLUDE "crysaudio/music/RBY/finalbattle.asm"
+INCLUDE "crysaudio/music/RBY/NewSong.asm" ; marcelnote - new song
 INCLUDE "crysaudio/music/RBY/defeatedtrainer.asm"
 INCLUDE "crysaudio/music/RBY/defeatedwildmon.asm"
 INCLUDE "crysaudio/music/RBY/defeatedgymleader.asm"
