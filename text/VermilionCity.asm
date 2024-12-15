@@ -55,15 +55,15 @@ _VermilionCitySailor1YouNeedATicketText::
 
 _VermilionCitySailor3WelcomeToFerriesText:: ; marcelnote - new for ferry
 	text "Welcome to"
-	line "ORANGE FERRIES!"
+	line "CITRUS FERRIES!"
 	done
 
 _VermilionCitySailor3ShowedPassText:: ; marcelnote - new for ferry
 	text "Welcome to"
-	line "ORANGE FERRIES!"
+	line "CITRUS FERRIES!"
 
 	para "<PLAYER> showed"
-	line "the ORANGE PASS."
+	line "the CITRUS PASS."
 
 	para "Perfect! Right"
 	line "this way, please."
@@ -71,10 +71,10 @@ _VermilionCitySailor3ShowedPassText:: ; marcelnote - new for ferry
 
 _VermilionCitySailor3YouNeedPassText:: ; marcelnote - new for ferry
 	text "Welcome to"
-	line "ORANGE FERRIES!"
+	line "CITRUS FERRIES!"
 
 	para "I'm sorry, you"
-	line "need an ORANGE"
+	line "need an CITRUS"
 	cont "PASS to board."
 	done
 

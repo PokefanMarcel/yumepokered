@@ -143,7 +143,7 @@ LassData:
 	db 23, ODDISH, GLOOM, 0
 ; Route 6 ; marcelnote - new trainers
 	db 16, RATTATA, PARAS, POLIWAG, 0
-; Orange Ferry Rooms    ; marcelnote - new location
+; Citrus Ferry Rooms    ; marcelnote - new location
 	db 42, GLOOM, WIGGLYTUFF, 0
 
 SailorData:
@@ -158,7 +158,7 @@ SailorData:
 	db 20, MACHOP, 0
 ; Vermilion Gym
 	db 21, PIKACHU, PIKACHU, 0
-; Orange Ferry Outside ; marcelnote - new trainers
+; Citrus Ferry Outside ; marcelnote - new trainers
 	db 43, SEADRA, MAGNETON, 0
 
 JrTrainerMData:
@@ -276,7 +276,7 @@ HikerData:
 	db 21, GEODUDE, GRAVELER, 0
 ; Cinnabar Volcano B1F   ; marcelnote - new location
 	db 42, ONIX, MACHOKE, GOLEM, 0
-; Orange Ferry Rooms    ; marcelnote - new location
+; Citrus Ferry Rooms    ; marcelnote - new location
 	db 40, RHYHORN, PARASECT, GRAVELER, 0
 
 BikerData:
@@ -335,7 +335,7 @@ EngineerData:
 	db 21, MAGNEMITE, 0
 	db 18, MAGNEMITE, MAGNEMITE, MAGNETON, 0
 ; marcelnote - new trainers
-; Orange Ferry Outside
+; Citrus Ferry Outside
 	db 41, VOLTORB, DUGTRIO, ELECTRODE, 0
 
 FisherData:
@@ -440,7 +440,7 @@ BeautyData:
 	db 39, POLIWHIRL, WIGGLYTUFF, STARMIE, 0
 ; Route 19
 	db 31, STARYU, SEEL, STARMIE, 0
-; Orange Ferry Outside
+; Citrus Ferry Outside
 	db 39, CLEFAIRY, WEEPINBELL, SEAKING, VILEPLUME, 0
 
 PsychicData:
@@ -673,7 +673,7 @@ CooltrainerFData:
 ; marcelnote - new trainers
 ; Cinnabar Volcano B1F
 	db 39, GROWLITHE, NINETALES, NIDOQUEEN, 0
-; Orange Ferry Outside
+; Citrus Ferry Outside
 	db 41, IVYSAUR, NIDORINA, VENUSAUR, 0
 
 GentlemanData:
@@ -692,7 +692,7 @@ GentlemanData:
 	db 38, NIDORINO, RAICHU, POLIWRATH, 0
 ; Mandarin Hotel        ; marcelnote - new location
 	db 40, GROWLITHE, PRIMEAPE, SCYTHER, 0
-; Orange Ferry Rooms    ; marcelnote - new location
+; Citrus Ferry Rooms    ; marcelnote - new location
 	db 39, NIDORINA, PONYTA, VICTREEBEL, 0
 
 ChannelerData:

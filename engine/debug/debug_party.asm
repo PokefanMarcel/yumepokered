@@ -196,7 +196,7 @@ DebugKeyItemsList:    ; marcelnote - new for Key Items pocket
 	db S_S_TICKET, 1
 	db LIFT_KEY, 1
 	db SILPH_SCOPE, 1 ; marcelnote - added
-	db ORANGE_PASS, 1 ; marcelnote - added
+	db CITRUS_PASS, 1 ; marcelnote - added
 	;db SURFBOARD, 1 ; marcelnote - added
 	;db POKE_FLUTE, 1 ; marcelnote - added
 	db -1 ; end

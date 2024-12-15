@@ -1,27 +1,27 @@
 ; marcelnote - new location
-_OrangeFerryDeckSailorEnjoyYourTripText::
+_CitrusFerryDeckSailorEnjoyYourTripText::
 	text "Enjoy your trip!"
 	done
 
-_OrangeFerryDeckSailorEndOfTheLineVermilionText::
+_CitrusFerryDeckSailorEndOfTheLineVermilionText::
 	text "End of the line!"
 	line "Welcome to"
 	cont "VERMILION CITY!"
 	done
 
-_OrangeFerryDeckSailorEndOfTheLineMandarinText::
+_CitrusFerryDeckSailorEndOfTheLineMandarinText::
 	text "End of the line!"
 	line "Welcome to"
 	cont "MANDARIN ISLAND!"
 	done
 
-_OrangeFerryDeckSailorSorryText::
+_CitrusFerryDeckSailorSorryText::
 	text "Sorry, you cannot"
 	line "exit the ferry"
 	cont "before we arrive!"
 	done
 
-_OrangeFerryDeckSpeakerWelcomeText::
+_CitrusFerryDeckSpeakerWelcomeText::
 	text "SPEAKER: Welcome"
 	line "on our FERRIES!"
 
@@ -29,7 +29,7 @@ _OrangeFerryDeckSpeakerWelcomeText::
 	line "pleasant journey!"
 	done
 
-_OrangeFerryDeckSailor2Text::
+_CitrusFerryDeckSailor2Text::
 	text "Boats used to"
 	line "follow migrating"
 	cont "TENTACOOL to"

@@ -83,15 +83,15 @@ _MandarinIslandGirlText::
 
 _MandarinIslandSailorWelcomeToFerriesText::
 	text "Welcome to"
-	line "ORANGE FERRIES!"
+	line "CITRUS FERRIES!"
 	done
 
 _MandarinIslandSailorShowedPassText::
 	text "Welcome to"
-	line "ORANGE FERRIES!"
+	line "CITRUS FERRIES!"
 
 	para "<PLAYER> showed"
-	line "the ORANGE PASS."
+	line "the CITRUS PASS."
 
 	para "Perfect! Right"
 	line "this way, please."
@@ -99,10 +99,10 @@ _MandarinIslandSailorShowedPassText::
 
 _MandarinIslandSailorYouNeedPassText::
 	text "Welcome to"
-	line "ORANGE FERRIES!"
+	line "CITRUS FERRIES!"
 
 	para "I'm sorry, you"
-	line "need an ORANGE"
+	line "need a CITRUS"
 	cont "PASS to board."
 	done
 

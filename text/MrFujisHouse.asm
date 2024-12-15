@@ -137,14 +137,14 @@ _MrFujisHouseMrFujiTakeThisText:: ; marcelnote - new
 	line "You will need it."
 	prompt
 
-_MrFujisHouseMrFujiReceivedOrangePassText:: ; marcelnote - new
+_MrFujisHouseMrFujiReceivedCitrusPassText:: ; marcelnote - new
 	text "<PLAYER> received"
 	line "an @"
 	text_ram wStringBuffer
 	text "!@"
 	text_end
 
-_MrFujisHouseMrFujiOrangePassExplanationText:: ; marcelnote - new
+_MrFujisHouseMrFujiCitrusPassExplanationText:: ; marcelnote - new
 	text_start
 
 	para "This pass lets you"

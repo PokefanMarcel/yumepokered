@@ -43,7 +43,7 @@ KeyItemFlags:
 	dbit TRUE  ; DOME_FOSSIL
 	dbit TRUE  ; HELIX_FOSSIL
 	dbit TRUE  ; SECRET_KEY
-	dbit TRUE  ; ORANGE_PASS ; marcelnote - new, was ITEM_2C (unused)
+	dbit TRUE  ; CITRUS_PASS ; marcelnote - new, was ITEM_2C (unused)
 	dbit TRUE  ; BIKE_VOUCHER
 	dbit FALSE ; X_ACCURACY
 	dbit FALSE ; LEAF_STONE

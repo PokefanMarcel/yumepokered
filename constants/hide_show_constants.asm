@@ -310,7 +310,7 @@ DEF NUM_HS_OBJECTS EQU const_value
 	const HS_CINNABAR_GYM_BLAINE_REMATCH     ; rematch Blaine
 	const HS_MANDARIN_SILPH_CO_SCIENTIST     ; worried Scientist
 	const HS_MANDARIN_DOCK_SAILOR            ; sailor at Ferry entrance
-	const HS_ORANGE_FERRY_ROOMS_FOSSIL       ; Dome or Helix fossil
+	const HS_CITRUS_FERRY_ROOMS_FOSSIL       ; Dome or Helix fossil
 	const HS_SILPH_FACTORY_2F_SCIENTIST_1    ; scientist blocking the way
 	const HS_SILPH_FACTORY_2F_LORELEI_1      ; postgame Lorelei
 	const HS_SILPH_FACTORY_2F_ROCKET_1       ; Archer

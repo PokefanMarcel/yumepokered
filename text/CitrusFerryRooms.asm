@@ -1,32 +1,32 @@
 ; marcelnote - new location
-_OrangeFerryRoomsGentlemanBattleText::
+_CitrusFerryRoomsGentlemanBattleText::
 	text "Traveling by sea"
 	line "is so delightful!"
 	done
 
-_OrangeFerryRoomsGentlemanEndBattleText::
+_CitrusFerryRoomsGentlemanEndBattleText::
 	text "You"
 	line "have talent!"
 	prompt
 
-_OrangeFerryRoomsGentlemanAfterBattleText::
+_CitrusFerryRoomsGentlemanAfterBattleText::
 	text "Perhaps we'll"
 	line "battle again"
 	cont "someday!"
 	done
 
-_OrangeFerryRoomsHikerBattleText::
+_CitrusFerryRoomsHikerBattleText::
 	text "I travel around"
 	line "the world to find"
 	cont "the best hikes!"
 	done
 
-_OrangeFerryRoomsHikerEndBattleText::
+_CitrusFerryRoomsHikerEndBattleText::
 	text "You've got"
 	line "a hiker's grit!"
 	prompt
 
-_OrangeFerryRoomsHikerAfterBattleText::
+_CitrusFerryRoomsHikerAfterBattleText::
 	text "My best memory?"
 	line "MT.MOON SQUARE"
 	cont "under the stars!"
@@ -36,55 +36,55 @@ _OrangeFerryRoomsHikerAfterBattleText::
 ;	cont "under my feet!"
 ;	done
 
-_OrangeFerryRoomsCooltrainerFBattleText::
+_CitrusFerryRoomsCooltrainerFBattleText::
 	text "Did you know the"
 	line "ocean produces"
 	cont "most of our"
 	cont "oxygen?"
 	done
 
-_OrangeFerryRoomsCooltrainerFEndBattleText::
+_CitrusFerryRoomsCooltrainerFEndBattleText::
 	text "Wow!"
 	line "Breath-taking!"
 	prompt
 
-_OrangeFerryRoomsCooltrainerFAfterBattleText::
+_CitrusFerryRoomsCooltrainerFAfterBattleText::
 	text "The sea gives so"
 	line "much, doesn't it?"
 	done
 
-;_OrangeFerryRoomsSailor1BattleText::
+;_CitrusFerryRoomsSailor1BattleText::
 ;	text "Ahoy there!"
 ;	line "Fancy a battle?"
 ;	done
 
-;_OrangeFerryRoomsSailor1EndBattleText::
+;_CitrusFerryRoomsSailor1EndBattleText::
 ;	text "You're a"
 ;	line "strong one!"
 ;	prompt
 
-;_OrangeFerryRoomsSailor1AfterBattleText::
+;_CitrusFerryRoomsSailor1AfterBattleText::
 ;	text "The sea's vast,"
 ;	line "but your skills"
 ;	cont "are deeper!"
 ;	done
 
-_OrangeFerryRoomsNurseYouLookTiredText::
+_CitrusFerryRoomsNurseYouLookTiredText::
 	text "You look tired!"
 	line "You should take a"
 	cont "quick nap!"
 	prompt
 
-_OrangeFerryRoomsNurseTakeCareText::
+_CitrusFerryRoomsNurseTakeCareText::
 	text "Take care!"
 	done
 
-_OrangeFerryRoomsNurseGoodLuckText::
+_CitrusFerryRoomsNurseGoodLuckText::
 	text "Good luck for"
 	line "your travels!"
 	done
 
-_OrangeFerryRoomsSpeakerArrivedText::
+_CitrusFerryRoomsSpeakerArrivedText::
 	text "SPEAKER: Attention"
 	line "all passengers!"
 
@@ -95,7 +95,7 @@ _OrangeFerryRoomsSpeakerArrivedText::
 	line "you again soon!"
 	done
 
-_OrangeFerryRoomsScientistTakeThisText::
+_CitrusFerryRoomsScientistTakeThisText::
 	text "This is a fossil"
 	line "of a #MON that"
 	cont "lived in the sea"
@@ -112,34 +112,34 @@ _OrangeFerryRoomsScientistTakeThisText::
 	line "you take it?"
 	prompt
 
-_OrangeFerryRoomsScientistReceivedDomeFossilText::
+_CitrusFerryRoomsScientistReceivedDomeFossilText::
 	text "<PLAYER> received"
 	line "DOME FOSSIL!@"
 	text_end
 
-_OrangeFerryRoomsScientistReceivedHelixFossilText::
+_CitrusFerryRoomsScientistReceivedHelixFossilText::
 	text "<PLAYER> received"
 	line "HELIX FOSSIL!@"
 	text_end
 
-_OrangeFerryRoomsScientistSoMuchToLearnText::
+_CitrusFerryRoomsScientistSoMuchToLearnText::
 	text "We still have"
 	line "so much to learn"
 	cont "about ancient"
 	cont "#MON!"
 	done
 
-_OrangeFerryRoomsScientistYouDontHaveSpaceText::
+_CitrusFerryRoomsScientistYouDontHaveSpaceText::
 	text "You don't have"
 	line "space for this!"
 	done
 
-_OrangeFerryRoomsFossilText::
+_CitrusFerryRoomsFossilText::
 	text "It's a #MON"
 	line "fossil!"
 	done
 
-_OrangeFerryRoomsCaptainText::
+_CitrusFerryRoomsCaptainText::
 	text "A fine ocean"
 	line "breeze and clear"
 	cont "skies ahead!"
@@ -149,12 +149,12 @@ _OrangeFerryRoomsCaptainText::
 	cont "today!"
 	done
 
-_OrangeFerryRoomsBlastoiseText::
+_CitrusFerryRoomsBlastoiseText::
 	text "BLASTOISE: Baaaoh!"
 	line "Hffft...@"
 	text_end
 
-_OrangeFerryRoomsCaptainsBookText::
+_CitrusFerryRoomsCaptainsBookText::
 	text "SAFETY NOTES."
 	line "In an emergency,"
 	cont "BLASTOISE can"

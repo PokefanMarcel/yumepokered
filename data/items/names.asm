@@ -43,7 +43,7 @@ ItemNames::
 	li "DOME FOSSIL"
 	li "HELIX FOSSIL"
 	li "SECRET KEY"
-	li "ORANGE PASS"  ; marcelnote - new, was ITEM_2C
+	li "CITRUS PASS"  ; marcelnote - new, was ITEM_2C
 	li "BIKE VOUCHER"
 	li "X ACCURACY"
 	li "LEAF STONE"

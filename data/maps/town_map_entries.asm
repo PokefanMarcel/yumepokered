@@ -106,7 +106,7 @@ InternalMapEntries:
 	internal_map POKEMON_MANSION_B1F,            3, 15, PokemonMansionName
 	internal_map CINNABAR_VOLCANO_2F,            2, 15, CinnabarVolcanoName ; marcelnote - new location
 	internal_map MANDARIN_DOCK,                 15, 15, MandarinIslandName  ; marcelnote - new location
-	internal_map ORANGE_FERRY_ROOMS,            12, 15, OrangeFerryName     ; marcelnote - new location
+	internal_map CITRUS_FERRY_ROOMS,            12, 15, CitrusFerryName     ; marcelnote - new location
 	internal_map SILPH_FACTORY_2F,              15, 15, SilphFactoryName    ; marcelnote - new location
 	internal_map ROUTE_22_OLD_ROD_HOUSE,         2,  8, Route22Name         ; marcelnote - new location
 	internal_map ROUTE_22_GATE_3F,               1,  7, Route22Name         ; marcelnote - new location

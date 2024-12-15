@@ -7,7 +7,7 @@ MandarinDock_Object:
 
 	def_warp_events
 	warp_event 10,  0, MANDARIN_ISLAND, 7
-	warp_event 10,  3, ORANGE_FERRY_DECK, 1
+	warp_event 10,  3, CITRUS_FERRY_DECK, 1
 
 	def_bg_events
 

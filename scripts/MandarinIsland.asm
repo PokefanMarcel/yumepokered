@@ -14,7 +14,7 @@ MandarinIsland_ScriptPointers:
 MandarinIslandDefaultScript:
 	CheckEvent EVENT_FERRY_ARRIVED
 	jr z, .FerryAlreadyReset
-	ResetEventRange EVENT_FERRY_ARRIVED, EVENT_BEAT_ORANGE_FERRY_OUTSIDE_TRAINER_3
+	ResetEventRange EVENT_FERRY_ARRIVED, EVENT_BEAT_CITRUS_FERRY_OUTSIDE_TRAINER_3
 	ld a, HS_VERMILION_DOCK_SAILOR
 	ld [wMissableObjectIndex], a
 	predef ShowObjectCont
@@ -38,7 +38,7 @@ MandarinIslandDefaultScript:
 	ld a, TEXT_MANDARINISLAND_SAILOR_FERRIES
 	ldh [hTextID], a
 	call DisplayTextID
-	ld b, ORANGE_PASS
+	ld b, CITRUS_PASS
 	call IsItemInBag
 	ret nz
 	ld a, D_UP
@@ -150,7 +150,7 @@ MandarinIslandSailorFerriesText:
 	ld a, [wSpritePlayerStateData1FacingDirection]
 	cp SPRITE_FACING_RIGHT
 	jr z, .print_text
-	ld b, ORANGE_PASS
+	ld b, CITRUS_PASS
 	call IsItemInBag
 	ld hl, .YouNeedPassText
 	jr z, .print_text

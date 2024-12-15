@@ -96,7 +96,7 @@
 	const_skip 4 ; marcelnote - removed EVENT_RESCUED_MR_FUJI_2
 	const EVENT_GOT_POKE_FLUTE
 	const EVENT_GAVE_FUJIS_NOTES ; marcelnote - new
-	const EVENT_GOT_ORANGE_PASS  ; marcelnote - new
+	const EVENT_GOT_CITRUS_PASS  ; marcelnote - new
 	const EVENT_POSTGAME_AGATHA  ; marcelnote - postgame Agatha event
 	const EVENT_SPOKE_DIRECTOR   ; marcelnote - postgame Agatha event
 	const EVENT_BEAT_GHOST_2F    ; marcelnote - postgame Agatha event
@@ -620,17 +620,17 @@
 	const EVENT_BEAT_SS_ANNE_B1F_TRAINER_4
 	const EVENT_BEAT_SS_ANNE_B1F_TRAINER_5
 
-; Orange Ferries events ; marcelnote - new location
+; Citrus Ferries events ; marcelnote - new location
 	const_next $610
 	const EVENT_FERRY_ARRIVED
-	const EVENT_BEAT_ORANGE_FERRY_ROOMS_TRAINER_0
-	const EVENT_BEAT_ORANGE_FERRY_ROOMS_TRAINER_1
-	const EVENT_BEAT_ORANGE_FERRY_ROOMS_TRAINER_2
+	const EVENT_BEAT_CITRUS_FERRY_ROOMS_TRAINER_0
+	const EVENT_BEAT_CITRUS_FERRY_ROOMS_TRAINER_1
+	const EVENT_BEAT_CITRUS_FERRY_ROOMS_TRAINER_2
 	const_skip 5 ; no events here in order to use Range functions on trainer events
-	const EVENT_BEAT_ORANGE_FERRY_OUTSIDE_TRAINER_0
-	const EVENT_BEAT_ORANGE_FERRY_OUTSIDE_TRAINER_1
-	const EVENT_BEAT_ORANGE_FERRY_OUTSIDE_TRAINER_2
-	const EVENT_BEAT_ORANGE_FERRY_OUTSIDE_TRAINER_3
+	const EVENT_BEAT_CITRUS_FERRY_OUTSIDE_TRAINER_0
+	const EVENT_BEAT_CITRUS_FERRY_OUTSIDE_TRAINER_1
+	const EVENT_BEAT_CITRUS_FERRY_OUTSIDE_TRAINER_2
+	const EVENT_BEAT_CITRUS_FERRY_OUTSIDE_TRAINER_3
 	const EVENT_GOT_FERRY_FOSSIL
 
 ; Victory Road 3F events

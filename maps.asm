@@ -1166,20 +1166,20 @@ INCLUDE "scripts/MandarinSilphCo.asm"
 INCLUDE "data/maps/objects/MandarinSilphCo.asm"
 MandarinSilphCo_Blocks:: INCBIN "maps/MandarinSilphCo.blk"
 
-INCLUDE "data/maps/headers/OrangeFerryDeck.asm" ; marcelnote - new location
-INCLUDE "scripts/OrangeFerryDeck.asm"
-INCLUDE "data/maps/objects/OrangeFerryDeck.asm"
-OrangeFerryDeck_Blocks:: INCBIN "maps/OrangeFerryDeck.blk"
+INCLUDE "data/maps/headers/CitrusFerryDeck.asm" ; marcelnote - new location
+INCLUDE "scripts/CitrusFerryDeck.asm"
+INCLUDE "data/maps/objects/CitrusFerryDeck.asm"
+CitrusFerryDeck_Blocks:: INCBIN "maps/CitrusFerryDeck.blk"
 
-INCLUDE "data/maps/headers/OrangeFerryOutside.asm" ; marcelnote - new location
-INCLUDE "scripts/OrangeFerryOutside.asm"
-INCLUDE "data/maps/objects/OrangeFerryOutside.asm"
-OrangeFerryOutside_Blocks:: INCBIN "maps/OrangeFerryOutside.blk"
+INCLUDE "data/maps/headers/CitrusFerryOutside.asm" ; marcelnote - new location
+INCLUDE "scripts/CitrusFerryOutside.asm"
+INCLUDE "data/maps/objects/CitrusFerryOutside.asm"
+CitrusFerryOutside_Blocks:: INCBIN "maps/CitrusFerryOutside.blk"
 
-INCLUDE "data/maps/headers/OrangeFerryRooms.asm" ; marcelnote - new location
-INCLUDE "scripts/OrangeFerryRooms.asm"
-INCLUDE "data/maps/objects/OrangeFerryRooms.asm"
-OrangeFerryRooms_Blocks:: INCBIN "maps/OrangeFerryRooms.blk"
+INCLUDE "data/maps/headers/CitrusFerryRooms.asm" ; marcelnote - new location
+INCLUDE "scripts/CitrusFerryRooms.asm"
+INCLUDE "data/maps/objects/CitrusFerryRooms.asm"
+CitrusFerryRooms_Blocks:: INCBIN "maps/CitrusFerryRooms.blk"
 
 INCLUDE "data/maps/headers/SilphFactory1F.asm" ; marcelnote - new location
 INCLUDE "scripts/SilphFactory1F.asm"

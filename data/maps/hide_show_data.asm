@@ -205,9 +205,9 @@ MapHSPointers:
 	dw MandarinSilphCoHS           ; MANDARIN_SILPH_CO
 	dw NoHS                        ; DR_JABARAS_LAB
 	dw MandarinDockHS              ; MANDARIN_DOCK
-	dw NoHS                        ; ORANGE_FERRY_DECK
-	dw NoHS                        ; ORANGE_FERRY_OUTSIDE
-	dw OrangeFerryRoomsHS          ; ORANGE_FERRY_ROOMS   ; marcelnote - for fossil
+	dw NoHS                        ; CITRUS_FERRY_DECK
+	dw NoHS                        ; CITRUS_FERRY_OUTSIDE
+	dw CitrusFerryRoomsHS          ; CITRUS_FERRY_ROOMS   ; marcelnote - for fossil
 	dw SilphFactory1FHS            ; SILPH_FACTORY_1F
 	dw SilphFactory2FHS            ; SILPH_FACTORY_2F
 	dw NoHS                        ; ROUTE_22_OLD_ROD_HOUSE
@@ -644,8 +644,8 @@ MandarinSilphCoHS:
 	db MANDARIN_SILPH_CO, MANDARINSILPHCO_SCIENTIST, SHOW  ; marcelnote - worried Scientist
 MandarinDockHS:
 	db MANDARIN_DOCK, MANDARINDOCK_SAILOR, SHOW           ; marcelnote - sailor at Ferry entrance
-OrangeFerryRoomsHS:
-	db ORANGE_FERRY_ROOMS, ORANGEFERRYROOMS_FOSSIL, SHOW ; marcelnote - sailor at Ferry entrance
+CitrusFerryRoomsHS:
+	db CITRUS_FERRY_ROOMS, CITRUSFERRYROOMS_FOSSIL, SHOW ; marcelnote - sailor at Ferry entrance
 SilphFactory2FHS:
 	db SILPH_FACTORY_2F, SILPHFACTORY2F_SCIENTIST1, SHOW  ; marcelnote - scientist blocking the way
 	db SILPH_FACTORY_2F, SILPHFACTORY2F_LORELEI1, HIDE    ; marcelnote - Lorelei at entrance

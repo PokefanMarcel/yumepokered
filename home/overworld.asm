@@ -743,7 +743,7 @@ ExtraWarpCheck::
 	ld a, [wCurMap]
 	cp SS_ANNE_3F
 	jr z, .useFunction1
-	cp ORANGE_FERRY_DECK
+	cp CITRUS_FERRY_DECK
 	jr z, .useFunction1
 	cp ROCKET_HIDEOUT_B1F
 	jr z, .useFunction2

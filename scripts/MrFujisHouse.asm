@@ -61,9 +61,9 @@ MrFujisHouseNidorinoText:
 	call PlayCry
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-MrFujisHouseMrFujiText: ; marcelnote - optimized and added Orange pass dialogue
+MrFujisHouseMrFujiText: ; marcelnote - optimized and added Citrus pass dialogue
 	text_asm
-	CheckEvent EVENT_GOT_ORANGE_PASS
+	CheckEvent EVENT_GOT_CITRUS_PASS
 	ld hl, .BeCarefulText
 	jr nz, .print_text
 	CheckEvent EVENT_GAVE_FUJIS_NOTES
@@ -79,12 +79,12 @@ MrFujisHouseMrFujiText: ; marcelnote - optimized and added Orange pass dialogue
 	ld hl, .PlayerGaveNotesText
 .gaveFujisNotes
 	call PrintText
-	lb bc, ORANGE_PASS, 1
+	lb bc, CITRUS_PASS, 1
 	call GiveItem
 	ld hl, .MakeRoomText
 	jr nc, .print_text ; should never happen either
-	SetEvent EVENT_GOT_ORANGE_PASS
-	ld hl, .ReceivedOrangePassText
+	SetEvent EVENT_GOT_CITRUS_PASS
+	ld hl, .ReceivedCitrusPassText
 	jr .print_text
 .no_fujis_notes
 	CheckEvent EVENT_GOT_POKE_FLUTE
@@ -133,10 +133,10 @@ MrFujisHouseMrFujiText: ; marcelnote - optimized and added Orange pass dialogue
 	text_far _MrFujisHouseMrFujiTakeThisText
 	text_end
 
-.ReceivedOrangePassText: ; marcelnote - new
-	text_far _MrFujisHouseMrFujiReceivedOrangePassText
+.ReceivedCitrusPassText: ; marcelnote - new
+	text_far _MrFujisHouseMrFujiReceivedCitrusPassText
 	sound_get_key_item
-	text_far _MrFujisHouseMrFujiOrangePassExplanationText
+	text_far _MrFujisHouseMrFujiCitrusPassExplanationText
 	text_end
 
 .BeCarefulText: ; marcelnote - new

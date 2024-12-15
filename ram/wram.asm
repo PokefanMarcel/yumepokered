@@ -2065,9 +2065,9 @@ wPokemonMansion3FCurScript:: db
 wPokemonMansionB1FCurScript:: db
 wMandarinHotelCurScript:: db ; marcelnote - added for Mandarin Hotel trainers, took 1 from padding below
 wMandarinDockCurScript:: db ; marcelnote - added for Ferry entrance, took 1 from padding below
-wOrangeFerryDeckCurScript:: db ; marcelnote - added for Ferry exit, took 1 from padding below
-wOrangeFerryRoomsCurScript:: db ; marcelnote - added for Ferry Rooms trainers, took 1 from padding below
-wOrangeFerryOutsideCurScript:: db ; marcelnote - added for Ferry Outside trainers, took 1 from padding below
+wCitrusFerryDeckCurScript:: db ; marcelnote - added for Ferry exit, took 1 from padding below
+wCitrusFerryRoomsCurScript:: db ; marcelnote - added for Ferry Rooms trainers, took 1 from padding below
+wCitrusFerryOutsideCurScript:: db ; marcelnote - added for Ferry Outside trainers, took 1 from padding below
 wSilphFactory1FCurScript:: db         ; marcelnote - new location
 wSilphFactory2FCurScript:: db         ; marcelnote - new location
 wMtSilver3FCurScript:: db ; marcelnote - added for Mt Silver 3F trainers, took 1 from padding below

@@ -205,9 +205,9 @@ MapSongBanks::
 	db MUSIC_CINNABAR, 0          ; MANDARIN_SILPH_CO        ; marcelnote - new location
 	db MUSIC_CINNABAR_MANSION, 0  ; DR_JABARAS_LAB           ; marcelnote - new location
 	db MUSIC_SS_ANNE, 0           ; MANDARIN_DOCK            ; marcelnote - new location
-	db MUSIC_SS_ANNE, 0           ; ORANGE_FERRY_DECK        ; marcelnote - new location
-	db MUSIC_SS_ANNE, 0           ; ORANGE_FERRY_OUTSIDE     ; marcelnote - new location
-	db MUSIC_SS_ANNE, 0           ; ORANGE_FERRY_ROOMS       ; marcelnote - new location
+	db MUSIC_SS_ANNE, 0           ; CITRUS_FERRY_DECK        ; marcelnote - new location
+	db MUSIC_SS_ANNE, 0           ; CITRUS_FERRY_OUTSIDE     ; marcelnote - new location
+	db MUSIC_SS_ANNE, 0           ; CITRUS_FERRY_ROOMS       ; marcelnote - new location
 	db MUSIC_SILPH_CO, 0          ; SILPH_FACTORY_1F         ; marcelnote - new location
 	db MUSIC_SILPH_CO, 0          ; SILPH_FACTORY_2F         ; marcelnote - new location
 	db MUSIC_CITIES2, 0           ; ROUTE_22_OLD_ROD_HOUSE   ; marcelnote - new location

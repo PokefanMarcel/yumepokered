@@ -225,9 +225,9 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const MANDARIN_SILPH_CO,              4, 25 ; marcelnote - new map
 	map_const DR_JABARAS_LAB,                 6,  4 ; marcelnote - new map
 	map_const MANDARIN_DOCK,                 11,  6 ; marcelnote - new map
-	map_const ORANGE_FERRY_DECK,             12,  4 ; marcelnote - new map
-	map_const ORANGE_FERRY_OUTSIDE,          13,  6 ; marcelnote - new map
-	map_const ORANGE_FERRY_ROOMS,            19,  6 ; marcelnote - new map
+	map_const CITRUS_FERRY_DECK,             12,  4 ; marcelnote - new map
+	map_const CITRUS_FERRY_OUTSIDE,          13,  6 ; marcelnote - new map
+	map_const CITRUS_FERRY_ROOMS,            19,  6 ; marcelnote - new map
 	map_const SILPH_FACTORY_1F,              14, 13 ; marcelnote - new map
 	map_const SILPH_FACTORY_2F,              15, 14 ; marcelnote - new map
 	map_const ROUTE_22_OLD_ROD_HOUSE,         4,  4 ; marcelnote - new map

@@ -157,7 +157,7 @@ IsWarpTileInFrontOfPlayer::
 	ld a, [wCurMap]
 	cp SS_ANNE_BOW
 	jr z, IsSSAnneBowWarpTileInFrontOfPlayer
-	cp ORANGE_FERRY_OUTSIDE                        ; marcelnote - new for Ferry
+	cp CITRUS_FERRY_OUTSIDE                        ; marcelnote - new for Ferry
 	jr z, IsFerryOutsideWarpTileInFrontOfPlayer    ;
 	ld a, [wSpritePlayerStateData1FacingDirection]
 	srl a
@@ -189,7 +189,7 @@ IsSSAnneBowWarpTileInFrontOfPlayer:
 	and a
 	jr IsWarpTileInFrontOfPlayer.done
 
-IsFerryOutsideWarpTileInFrontOfPlayer: ; marcelnote - new for ORANGE_FERRY_OUTSIDE
+IsFerryOutsideWarpTileInFrontOfPlayer: ; marcelnote - new for CITRUS_FERRY_OUTSIDE
 	ld a, [wTileInFrontOfPlayer]
 	cp $01 ; black tile (when facing left)
 	jr z, .FerryOutsideWarp

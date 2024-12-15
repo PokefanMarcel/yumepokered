@@ -203,9 +203,9 @@ MapHeaderBanks::
 	db BANK(MandarinSilphCo_h)          ; marcelnote - new location
 	db BANK(DrJabarasLab_h)             ; marcelnote - new location
 	db BANK(MandarinDock_h)             ; marcelnote - new location
-	db BANK(OrangeFerryDeck_h)          ; marcelnote - new location
-	db BANK(OrangeFerryOutside_h)       ; marcelnote - new location
-	db BANK(OrangeFerryRooms_h)         ; marcelnote - new location
+	db BANK(CitrusFerryDeck_h)          ; marcelnote - new location
+	db BANK(CitrusFerryOutside_h)       ; marcelnote - new location
+	db BANK(CitrusFerryRooms_h)         ; marcelnote - new location
 	db BANK(SilphFactory1F_h)           ; marcelnote - new location
 	db BANK(SilphFactory2F_h)           ; marcelnote - new location
 	db BANK(Route22OldRodHouse_h)       ; marcelnote - new location
