@@ -19,7 +19,7 @@ PlayBattleMusic::
 	cp OPP_RIVAL3
 	jr z, .finalBattle
 	cp OPP_PROF_OAK ; marcelnote - new
-	jr z, .finalBattle ; to be replace with .ProfOakBattle
+	jr z, .finalBattle ; to be replaced with .ProfOakBattle
 	cp OPP_YELLOW ; marcelnote - new
 	jr z, .YellowBattle ; marcelnote - new
 	cp OPP_LANCE
