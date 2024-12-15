@@ -2088,6 +2088,7 @@ wRoute8GateCurScript:: db
 wRoute16GateCurScript:: db            ; marcelnote - renamed from wRoute16Gate1FCurScript (merged floors)
 wRoute18GateCurScript:: db            ; marcelnote - renamed from wRoute18Gate1FCurScript (merged floors)
 wRoute22GateCurScript:: db
+wRoute22Gate3FCurScript:: db ; marcelnote - new for Battle hall
 wGameProgressFlagsEnd::
 
 ;UNION

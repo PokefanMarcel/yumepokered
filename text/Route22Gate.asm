@@ -69,7 +69,18 @@ _Route22GateCooltrainerFText:: ; marcelnote - new NPC
 	cont "is tough!"
 	done
 
-_Route22GateReceptionistText:: ; marcelnote - new receptionist
+_Route22GateReceptionistWelcomeText:: ; marcelnote - new receptionist
+	text "Welcome to our"
+	line "battle hall!"
+	prompt
+
+_Route22GateReceptionistPleaseStepAroundText:: ; marcelnote - new receptionist
+	text "Please step around"
+	line "the counter to"
+	cont "register."
+	done
+
+_Route22GateReceptionistSorryText:: ; marcelnote - new receptionist
 	text "I am sorry, but"
 	line "you need eight"
 	cont "BADGEs to sign"
@@ -78,4 +89,28 @@ _Route22GateReceptionistText:: ; marcelnote - new receptionist
 	para "Please come back"
 	line "when you have"
 	cont "them all!"
+	done
+
+_Route22GateReceptionistWantToBattleText:: ; marcelnote - new receptionist
+	text "We have a"
+	line "challenger ready."
+
+	para "Would you like"
+	line "to face them?"
+	done
+
+_Route22GateReceptionistFantasticText:: ; marcelnote - new receptionist
+	text "Fantastic!"
+	prompt
+
+_Route22GateReceptionistOpponentWaitingForYouText:: ; marcelnote - new receptionist
+	text "Your opponent is"
+	line "waiting for you"
+	cont "upstairs."
+
+	para "Good luck!"
+	done
+
+_Route22GateReceptionistComeBackAnytimeText:: ; marcelnote - new receptionist
+	text "Come back anytime!"
 	done

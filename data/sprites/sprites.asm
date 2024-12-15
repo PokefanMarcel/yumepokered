@@ -8,6 +8,7 @@ SpriteSheetPointerTable:
 	table_width 4, SpriteSheetPointerTable
 	; graphics, tile count
 	overworld_sprite RedSprite, 12              ; SPRITE_RED
+	overworld_sprite GreenSprite, 12            ; SPRITE_GREEN ; marcelnote - new sprite
 	overworld_sprite BlueSprite, 12             ; SPRITE_BLUE
 	overworld_sprite OakSprite, 12              ; SPRITE_OAK
 	overworld_sprite YoungsterSprite, 12        ; SPRITE_YOUNGSTER

@@ -212,7 +212,7 @@ MapHSPointers:
 	dw SilphFactory2FHS            ; SILPH_FACTORY_2F
 	dw NoHS                        ; ROUTE_22_OLD_ROD_HOUSE
 	dw NoHS                        ; ROUTE_22_GATE
-	dw NoHS                        ; ROUTE_22_GATE_3F
+	dw Route22Gate3FHS             ; ROUTE_22_GATE_3F     ; marcelnote - for battle hall opponent Red/Green
 	dw MtSilver1FHS                ; MT_SILVER_1F         ; marcelnote - added for items
 	dw MtSilver2FHS                ; MT_SILVER_2F         ; marcelnote - added for items
 	dw MtSilver3FHS                ; MT_SILVER_3F         ; marcelnote - added for Yellow battle
@@ -651,6 +651,9 @@ SilphFactory2FHS:
 	db SILPH_FACTORY_2F, SILPHFACTORY2F_LORELEI1, HIDE    ; marcelnote - Lorelei at entrance
 	db SILPH_FACTORY_2F, SILPHFACTORY2F_ROCKET1, SHOW     ; marcelnote - Archer
 	db SILPH_FACTORY_2F, SILPHFACTORY2F_LORELEI2, HIDE    ; marcelnote - Lorelei after beating Archer
+Route22Gate3FHS:
+	db ROUTE_22_GATE_3F, ROUTE22GATE3F_RED, HIDE    ; marcelnote - battle hall Red
+	db ROUTE_22_GATE_3F, ROUTE22GATE3F_GREEN, HIDE  ; marcelnote - battle hall Green
 IndigoPlateauLobbyHS:
 	db INDIGO_PLATEAU_LOBBY, INDIGOPLATEAULOBBY_COOLTRAINER_F, SHOW
 	db INDIGO_PLATEAU_LOBBY, INDIGOPLATEAULOBBY_COOLTRAINER_F2, HIDE

@@ -3,6 +3,7 @@
 	const_def
 	const SPRITE_NONE                    ; $00
 	const SPRITE_RED                     ; $01
+	const SPRITE_GREEN                   ; $01 ; marcelnote - new sprite
 	const SPRITE_BLUE                    ; $02
 	const SPRITE_OAK                     ; $03
 	const SPRITE_YOUNGSTER               ; $04
