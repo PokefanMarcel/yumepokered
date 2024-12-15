@@ -565,7 +565,7 @@ SpecialTrainerMoves:
 	db 6, 3, EARTHQUAKE
 	db $ff
 
-	db PSYCHIC_TR, 5  ; postgame Will
+	db WILL, 1  ; postgame Will
 	; Slowbro
 	db 1, 1, EARTHQUAKE
 	db 1, 2, SURF

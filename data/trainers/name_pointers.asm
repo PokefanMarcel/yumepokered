@@ -50,6 +50,7 @@ TrainerNamePointers:
 	dw wTrainerName
 	dw wTrainerName
 	dw wTrainerName ; Yellow ; marcelnote - new trainer class
+	dw wTrainerName ; Will   ; marcelnote - new trainer class
 	assert_table_length NUM_TRAINERS
 
 .YoungsterName:     db "YOUNGSTER@"

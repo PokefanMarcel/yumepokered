@@ -47,4 +47,5 @@ TrainerNames::
 	li "AGATHA"
 	li "LANCE"
 	li "YELLOW"  ; marcelnote - new trainer class
+	li "WILL"    ; marcelnote - new trainer class
 	assert_list_length NUM_TRAINERS

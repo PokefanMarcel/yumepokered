@@ -371,6 +371,10 @@ ChannelerPic::     INCBIN "gfx/trainers/channeler.pic"
 AgathaPic::        INCBIN "gfx/trainers/agatha.pic"
 LancePic::         INCBIN "gfx/trainers/lance.pic"
 YellowPic::        INCBIN "gfx/trainers/yellow.pic" ; marcelnote - new trainer class
+WillPic::          INCBIN "gfx/trainers/will.pic"   ; marcelnote - new trainer class
+
+
+SECTION "Pics 7", ROMX ; marcelnote - new section
 
 RedPicBack::           INCBIN "gfx/player/redb.pic"
 GreenPicBack::         INCBIN "gfx/player/greenb.pic"

@@ -47,6 +47,7 @@ TrainerDataPointers:
 	dw AgathaData
 	dw LanceData
 	dw YellowData  ; marcelnote - new trainer class
+	dw WillData    ; marcelnote - new trainer class
 	assert_table_length NUM_TRAINERS
 
 ; if first byte != $FF, then
@@ -448,8 +449,6 @@ PsychicData:
 	db 34, MR_MIME, KADABRA, 0
 	db 33, SLOWPOKE, SLOWPOKE, SLOWBRO, 0
 	db 38, SLOWBRO, 0
-; marcelnote - new trainers
-	db $FF, 54, SLOWBRO, 52, MR_MIME, 55, JYNX, 54, HYPNO, 56, EXEGGUTOR, 0 ; marcelnote - postgame Will
 
 RockerData:
 ; Vermilion Gym
@@ -853,3 +852,6 @@ ProfOakData: ; marcelnote - adapted unused teams for postgame Oak battle
 YellowData:  ; marcelnote - new postgame battle
 	db $FF, 78, DODRIO, 80, CHANSEY, 88, BUTTERFREE, 78, OMASTAR, 78, NINETALES, 94, PIKACHU, 0
 	;db $FF, 5, CATERPIE, 5, PIKACHU, 0 ; testing
+
+WillData:  ; marcelnote - new postgame battle
+	db $FF, 54, SLOWBRO, 52, MR_MIME, 55, JYNX, 54, HYPNO, 56, EXEGGUTOR, 0

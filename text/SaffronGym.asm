@@ -280,7 +280,7 @@ _SaffronGymWillPostBattleText:: ; marcelnote - postgame Will
 	para "I will travel the"
 	line "world to discover"
 	cont "the secrets"
-	cont "that PSYCHIC"
+	cont "that psychic"
 	cont "#MON hold!"
 	done
 

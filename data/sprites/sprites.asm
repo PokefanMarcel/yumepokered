@@ -77,6 +77,7 @@ SpriteSheetPointerTable:
 	overworld_sprite YellowSprite, 12           ; SPRITE_YELLOW    ; marcelnote - new sprite
 	overworld_sprite DadSprite, 12              ; SPRITE_DAD       ; marcelnote - new sprite
 	overworld_sprite JabaraSprite, 12           ; SPRITE_JABARA    ; marcelnote - new sprite
+	overworld_sprite WillSprite, 12             ; SPRITE_WILL      ; marcelnote - new sprite
 	overworld_sprite SeelSprite, 12             ; SPRITE_SEEL
 	; marcelnote - still sprites
 	overworld_sprite PokeBallSprite, 4          ; SPRITE_POKE_BALL
