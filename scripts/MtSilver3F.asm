@@ -45,12 +45,8 @@ MtSilver3FYellowPostBattleScript:
 	predef EmotionBubble
 	ld c, 100
 	call DelayFrames
-	xor a
-	ld [wMtSilver3FCurScript], a ; SCRIPT_MTSILVER3F_DEFAULT
-	ld [wCurMapScript], a
-	ret
 .lost
-	ld a, SCRIPT_MTSILVER3F_DEFAULT
+	xor a ; SCRIPT_MTSILVER3F_DEFAULT
 	ld [wMtSilver3FCurScript], a
 	ld [wCurMapScript], a
 	ret
