@@ -47,7 +47,7 @@ _PokemonTower1FAgathaHowDareYouText:: ; marcelnote - postgame Agatha event
 	para "You would turn"
 	line "the resting place"
 	cont "of #MON into"
-	cont "a noisy station?!"
+	cont "a noisy station!?"
 
 	para "DIRECTOR: But"
 	line "progress must"

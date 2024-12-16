@@ -147,14 +147,15 @@ ViridianCityYoungster1Text:
 	text_far _ViridianCityYoungster1Text
 	text_end
 
-ViridianCityGambler1Text:
+ViridianCityGambler1Text: ; marcelnote - reorganized for new text
 	text_asm
+	CheckEvent EVENT_BEAT_VIRIDIAN_GYM_GIOVANNI
+	ld hl, .GymLeaderWasBossText
+	jr nz, .print_text
 	ld a, [wObtainedBadges]
-	cp ~(1 << BIT_EARTHBADGE)
+	cp ~(1 << BIT_EARTHBADGE) ; checks whether got all other badges
 	ld hl, .GymLeaderReturnedText
 	jr z, .print_text
-	CheckEvent EVENT_BEAT_VIRIDIAN_GYM_GIOVANNI
-	jr nz, .print_text
 	ld hl, .GymAlwaysClosedText
 .print_text
 	call PrintText
@@ -166,6 +167,10 @@ ViridianCityGambler1Text:
 
 .GymLeaderReturnedText:
 	text_far _ViridianCityGambler1GymLeaderReturnedText
+	text_end
+
+.GymLeaderWasBossText: ; marcelnote - new
+	text_far _ViridianCityGambler1GymLeaderWasBossText
 	text_end
 
 ViridianCityYoungster2Text: ; marcelnote - optimized

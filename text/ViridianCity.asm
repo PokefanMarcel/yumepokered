@@ -22,6 +22,12 @@ _ViridianCityGambler1GymLeaderReturnedText::
 	line "LEADER returned!"
 	done
 
+_ViridianCityGambler1GymLeaderWasBossText:: ; marcelnote - new
+	text "The GYM LEADER"
+	line "was the boss of"
+	cont "TEAM ROCKET!?"
+	done
+
 _ViridianCityYoungster2YouWantToKnowAboutText::
 	text "You want to know"
 	line "about the 2 kinds"
