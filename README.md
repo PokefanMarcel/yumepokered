@@ -37,6 +37,7 @@ Its kanji name 夢 is also an homage to [shinpokered](https://github.com/jojobea
 - Several Gym leader teams were slightly modified (but trying to keep their theme intact!).
 - New trainers to fight in new and existing areas. (You may recognize some from the anime!)
 - Rematches for Gym leaders and the Elite 4 with stronger teams!
+- A new Battle Hall with random 3vs3 battles.
 
 **Wild encounters**
 - Wild encounters have been reworked to increase diversity and make many Pokémon available earlier.
