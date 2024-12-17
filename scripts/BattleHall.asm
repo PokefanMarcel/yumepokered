@@ -85,11 +85,8 @@ BattleHallStartBattleScript:
 	ret
 
 BattleHallPostBattleScript:
-	ld a, [wIsInBattle]
-	cp $ff
-	jr z, .lost
-	SetEvent EVENT_BEAT_BATTLE_HALL_TRAINER
-.lost
+	predef HealParty
+	SetEvent EVENT_BATTLED_BATTLE_HALL_TRAINER
 	xor a ; SCRIPT_BATTLEHALL_DEFAULT
 	ld [wBattleHallCurScript], a
 	ld [wCurMapScript], a
@@ -103,7 +100,7 @@ BattleHall_TextPointers:
 
 BattleHallReceptionistText:
 	text_asm
-	CheckEvent EVENT_BEAT_BATTLE_HALL_TRAINER
+	CheckEvent EVENT_BATTLED_BATTLE_HALL_TRAINER
 	ld hl, .WhatABattleText
 	jr nz, .print_text
 	ld a, [wPartyCount]
@@ -129,7 +126,7 @@ BattleHallReceptionistText:
 
 BattleHallTrainerText:
 	text_asm
-	CheckEvent EVENT_BEAT_BATTLE_HALL_TRAINER
+	CheckEvent EVENT_BATTLED_BATTLE_HALL_TRAINER
 	jr z, .beforeBeat
 	ld hl, .PostBattleText
 	call PrintText

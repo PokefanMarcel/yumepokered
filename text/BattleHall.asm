@@ -31,3 +31,8 @@ _BattleHallTrainerDefeatedText::
 _BattleHallTrainerPostBattleText::
 	text "...!"
 	done
+
+_BattleHallTrainerWinText:: ; marcelnote - this is used in HandlePlayerBlackOut
+	text_ram wTrainerName
+	text ": ..."
+	prompt

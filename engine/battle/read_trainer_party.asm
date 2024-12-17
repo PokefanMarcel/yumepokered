@@ -63,11 +63,66 @@ ReadTrainer:
 	call AddPartyMon
 	pop hl
 	jr .LoopTrainerData
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - new for Battle Hall
+.BattleHallTrainer
+	ld hl, wPartyMon1Level
+	ld bc, wPartyMon2 - wPartyMon1
+	ld a, [hl]
+	ld d, 2 ; need to check 2 more Mons
+.findMaxPartyLevelLoop
+	add hl, bc
+	ld e, [hl]
+	cp e
+	jr nc, .notHigher
+	ld a, e
+.notHigher
+	dec d
+	jr nz, .findMaxPartyLevelLoop
+	ld [wCurEnemyLevel], a ; now a is max level of party Mons
+
+	CheckEvent EVENT_BEAT_YELLOW
+	ld hl, BattleHallMonsBeatYellowStart
+	ld de, BattleHallMonsEnd - BattleHallMonsBeatYellowStart
+	jr nz, .gotList
+	CheckEvent EVENT_BECAME_CHAMPION
+	ld hl, BattleHallMonsBeatChampionStart
+	ld de, BattleHallMonsEnd - BattleHallMonsBeatChampionStart
+	jr nz, .gotList
+	ld hl, BattleHallMonsDefaultStart
+	ld de, BattleHallMonsEnd - BattleHallMonsDefaultStart
+.gotList
+	; here e holds the number of Mons in the list
+	ld d, 3 ; need to load 3 Mons
+	ld b, 0 ; we'll need to add c to hl
+.FillBattleHallTeamLoop
+	call Random ; random number 0-255 in a
+	cp e        ; we need a < e
+	jr nc, .FillBattleHallTeamLoop ; a is too large, draw another
+	; could also check if Mon already in team?
+	ld c, a
+	push hl
+	add hl, bc
+	ld a, [hl]
+	pop hl
+	ld [wCurPartySpecies], a
+	ld a, ENEMY_PARTY_DATA
+	ld [wMonDataLocation], a ; if this is 1, added to Enemy party, else Player's
+	call AddPartyMon
+	dec d
+	ret z ; no need to .FinishUp since no money in Battle Hall
+	jr .FillBattleHallTeamLoop
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .SpecialTrainer
+	;;;;;;;;;;;;;;; marcelnote - new for Battle Hall
+	ld a, [wTrainerClass]
+	cp RED
+	jr nc, .BattleHallTrainer
+	;;;;;;;;;;;;;;;
 ; if this code is being run:
 ; - each pokemon has a specific level
 ;      (as opposed to the whole team being of the same level)
 ; - if [wLoneAttackNo] != 0, one pokemon on the team has a special move
+.SpecialTrainerLoop
 	ld a, [hli]
 	and a ; have we reached the end of the trainer data?
 	jr z, .AddSpecialMoveData
@@ -79,7 +134,7 @@ ReadTrainer:
 	push hl
 	call AddPartyMon
 	pop hl
-	jr .SpecialTrainer
+	jr .SpecialTrainerLoop
 .AddSpecialMoveData
 ; does the trainer have special move data?
 	ld a, [wTrainerClass]
@@ -148,3 +203,179 @@ ReadTrainer:
 	dec b
 	jr nz, .LastLoop ; repeat wCurEnemyLevel times
 	ret
+
+; marcelnote -
+; These are the lists of Mons for random battles.
+; Becoming champion or beating Yellow unlocks new Mons to fight against.
+BattleHallMonsBeatYellowStart:
+	db ARTICUNO
+	db ZAPDOS
+	db MOLTRES
+	db MEWTWO
+	db MEW
+BattleHallMonsBeatChampionStart:
+	db VENUSAUR
+	db CHARIZARD
+	db BLASTOISE
+	db ALAKAZAM
+	db MACHAMP
+	db GOLEM
+	db GENGAR
+	db LAPRAS
+	db OMASTAR
+	db KABUTOPS
+	db AERODACTYL
+	db DRAGONITE
+BattleHallMonsDefaultStart:
+	;db BULBASAUR
+	db IVYSAUR
+	;db VENUSAUR
+	;db CHARMANDER
+	db CHARMELEON
+	;db CHARIZARD
+	;db SQUIRTLE
+	db WARTORTLE
+	;db BLASTOISE
+	;db CATERPIE
+	;db METAPOD
+	db BUTTERFREE
+	;db WEEDLE
+	;db KAKUNA
+	db BEEDRILL
+	;db PIDGEY
+	;db PIDGEOTTO
+	db PIDGEOT
+	;db RATTATA
+	db RATICATE
+	;db SPEAROW
+	db FEAROW
+	;db EKANS
+	db ARBOK
+	;db PIKACHU
+	db RAICHU
+	;db SANDSHREW
+	db SANDSLASH
+	;db NIDORAN_F
+	db NIDORINA
+	db NIDOQUEEN
+	;db NIDORAN_M
+	db NIDORINO
+	db NIDOKING
+	;db CLEFAIRY
+	db CLEFABLE
+	;db VULPIX
+	db NINETALES
+	;db JIGGLYPUFF
+	db WIGGLYTUFF
+	;db ZUBAT
+	db GOLBAT
+	;db ODDISH
+	db GLOOM
+	db VILEPLUME
+	;db PARAS
+	db PARASECT
+	;db VENONAT
+	db VENOMOTH
+	;db DIGLETT
+	db DUGTRIO
+	;db MEOWTH
+	db PERSIAN
+	;db PSYDUCK
+	db GOLDUCK
+	;db MANKEY
+	db PRIMEAPE
+	;db GROWLITHE
+	db ARCANINE
+	;db POLIWAG
+	db POLIWHIRL
+	db POLIWRATH
+	;db ABRA
+	db KADABRA
+	;db ALAKAZAM
+	;db MACHOP
+	db MACHOKE
+	;db MACHAMP
+	;db BELLSPROUT
+	db WEEPINBELL
+	db VICTREEBEL
+	;db TENTACOOL
+	db TENTACRUEL
+	;db GEODUDE
+	db GRAVELER
+	;db GOLEM
+	;db PONYTA
+	db RAPIDASH
+	;db SLOWPOKE
+	db SLOWBRO
+	;db MAGNEMITE
+	db MAGNETON
+	db FARFETCHD
+	;db DODUO
+	db DODRIO
+	;db SEEL
+	db DEWGONG
+	;db GRIMER
+	db MUK
+	;db SHELLDER
+	db CLOYSTER
+	;db GASTLY
+	db HAUNTER
+	;db GENGAR
+	db ONIX
+	;db DROWZEE
+	db HYPNO
+	;db KRABBY
+	db KINGLER
+	;db VOLTORB
+	db ELECTRODE
+	;db EXEGGCUTE
+	db EXEGGUTOR
+	;db CUBONE
+	db MAROWAK
+	db HITMONLEE
+	db HITMONCHAN
+	db LICKITUNG
+	;db KOFFING
+	db WEEZING
+	;db RHYHORN
+	db RHYDON
+	db CHANSEY
+	db TANGELA
+	db KANGASKHAN
+	;db HORSEA
+	db SEADRA
+	;db GOLDEEN
+	db SEAKING
+	;db STARYU
+	db STARMIE
+	db MR_MIME
+	db SCYTHER
+	db JYNX
+	db ELECTABUZZ
+	db MAGMAR
+	db PINSIR
+	db TAUROS
+	;db MAGIKARP
+	db GYARADOS
+	;db LAPRAS
+	db DITTO
+	db EEVEE
+	db VAPOREON
+	db JOLTEON
+	db FLAREON
+	db PORYGON
+	;db OMANYTE
+	;db OMASTAR
+	;db KABUTO
+	;db KABUTOPS
+	;db AERODACTYL
+	db SNORLAX
+	;db ARTICUNO
+	;db ZAPDOS
+	;db MOLTRES
+	;db DRATINI
+	db DRAGONAIR
+	;db DRAGONITE
+	;db MEWTWO
+	;db MEW
+BattleHallMonsEnd:

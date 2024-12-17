@@ -219,7 +219,7 @@ ENDC
 	ld a, [wCurrentMenuItem]
 	and a
 	jr nz, .saidNo
-	ResetEvent EVENT_BEAT_BATTLE_HALL_TRAINER
+	ResetEvent EVENT_BATTLED_BATTLE_HALL_TRAINER
 	ld hl, .FantasticText
 	call PrintText
 	call YesNoChoice

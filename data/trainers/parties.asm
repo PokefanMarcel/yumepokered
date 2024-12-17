@@ -858,6 +858,6 @@ YellowData:  ; marcelnote - new postgame battle
 WillData:  ; marcelnote - new postgame battle
 	db $FF, 54, SLOWBRO, 52, MR_MIME, 55, JYNX, 54, HYPNO, 56, EXEGGUTOR, 0
 
-RedData: ; marcelnote - new
-GreenData:
-	db 50, IVYSAUR, CHARMELEON, WARTORTLE, 0
+RedData:   ; marcelnote - new for Battle Hall,
+GreenData: ;  empty because it is filled randomly in read_trainer_party.asm
+	db $FF, 0

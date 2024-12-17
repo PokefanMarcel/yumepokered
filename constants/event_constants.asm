@@ -511,7 +511,7 @@
 	const EVENT_ROUTE22_RIVAL_WANTS_BATTLE
 	const EVENT_ROUTE22GATE_PRESENTED_BOULDER_BADGE ; marcelnote - new for Route22Gate script
 	const EVENT_ROUTE22GATE_WELCOME_CHAMPION        ; marcelnote - new for Route22Gate script
-	const EVENT_BEAT_BATTLE_HALL_TRAINER            ; marcelnote - new for Route22Gate script
+	const EVENT_BATTLED_BATTLE_HALL_TRAINER         ; marcelnote - new for Route22Gate script
 
 ; Route 23 events
 	const_next $530

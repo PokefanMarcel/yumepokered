@@ -1156,6 +1156,8 @@ HandlePlayerBlackOut:
 	cp LINK_STATE_BATTLING
 	jr z, .notRival1Battle
 	ld a, [wCurOpponent]
+	cp OPP_RED ; marcelnote - new for Battle Hall
+	jr nc, .BattleHall
 	cp OPP_RIVAL1
 	jr nz, .notRival1Battle
 	hlcoord 0, 0  ; rival 1 battle
@@ -1169,6 +1171,18 @@ HandlePlayerBlackOut:
 	ld a, [wCurMap]
 	cp OAKS_LAB
 	ret z            ; starter battle in oak's lab: don't black out
+.BattleHall ; marcelnote - new for Battle Hall
+	hlcoord 0, 0
+	lb bc, 8, 21
+	call ClearScreenArea
+	call ScrollTrainerPicAfterBattle
+	ld c, 40
+	call DelayFrames
+	ld hl, BattleHallTrainerWinText
+	call PrintText
+	scf ; set carry flag
+	ccf ; complement (here clear) carry flag
+	ret
 .notRival1Battle
 	ld b, SET_PAL_BATTLE_BLACK
 	call RunPaletteCommand
@@ -1188,6 +1202,10 @@ HandlePlayerBlackOut:
 
 Rival1WinText:
 	text_far _Rival1WinText
+	text_end
+
+BattleHallTrainerWinText: ; marcelnote - new for Battle Hall
+	text_far _BattleHallTrainerWinText
 	text_end
 
 PlayerBlackedOutText2:
