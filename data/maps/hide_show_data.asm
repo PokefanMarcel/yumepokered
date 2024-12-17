@@ -590,6 +590,7 @@ RedsYellowsHousesHS:
 	db REDS_YELLOWS_HOUSES, YELLOWSHOUSE1F_DAD1, SHOW    ; marcelnote - Dad unpacking
 	db REDS_YELLOWS_HOUSES, YELLOWSHOUSE1F_DAD2, HIDE    ; marcelnote - Dad sitting
 	db REDS_YELLOWS_HOUSES, YELLOWSHOUSE2F_ASLEEP, SHOW  ; marcelnote - Yellow asleep
+	db REDS_YELLOWS_HOUSES, YELLOWSHOUSE2F_YELLOW, HIDE  ; marcelnote - Yellow
 Route1HS:
 	db ROUTE_1, ROUTE1_OAK, HIDE  ; marcelnote - postgame Oak battle
 PewterGymHS:

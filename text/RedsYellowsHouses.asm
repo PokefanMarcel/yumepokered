@@ -79,6 +79,21 @@ _YellowsHouse1FDadJustRunIntoHerText:: ; marcelnote - new for Yellow's house
 	cont "before long."
 	done
 
+_YellowsHouse1FDadYellowIsBackText:: ; marcelnote - new for Yellow's house
+	text "It's wonderful to"
+	line "have YELLOW home"
+	cont "again!"
+
+	para "Seeing the kind-"
+	line "ness that guides"
+	cont "you both, it"
+	cont "warms my heart."
+
+	para "I've made some tea!"
+	line "Please, stay here"
+	cont "a little while."
+	done
+
 _YellowsHouse1FTVText:: ; marcelnote - new for Yellow's house
 	text "It's not even"
 	line "plugged in yet."
@@ -90,6 +105,19 @@ _YellowsHouse2FAsleepText:: ; marcelnote - new for Yellow's house
 
 	para "Better not"
 	line "wake them up."
+	done
+
+_YellowsHouse2FYellowText:: ; marcelnote - new for Yellow's house
+	text "Oh, <PLAYER>!"
+	line "I came back home"
+	cont "to spend some"
+	cont "time with dad."
+
+	para "I thought he might"
+	line "like a little"
+	cont "company, and"
+	cont "honestly..."
+	cont "I missed him too!"
 	done
 
 _YellowsHouse2FGameboyText:: ; marcelnote - new for Yellow's house

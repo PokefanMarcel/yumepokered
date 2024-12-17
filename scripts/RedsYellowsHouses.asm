@@ -27,6 +27,7 @@ RedsYellowsHouses_TextPointers:
 	dw_const YellowsHouse1FDadUnpackingText, TEXT_YELLOWSHOUSE1F_DAD_UNPACKING ; marcelnote - Yellow's dad
 	dw_const YellowsHouse1FDadSittingText,   TEXT_YELLOWSHOUSE1F_DAD_SITTING   ; marcelnote - Yellow's dad
 	dw_const YellowsHouse2FAsleepText,       TEXT_YELLOWSHOUSE2F_ASLEEP        ; marcelnote - new for Yellow's bedroom
+	dw_const YellowsHouse2FYellowText,       TEXT_YELLOWSHOUSE2F_YELLOW        ; marcelnote - Yellow
 	dw_const RedsHouse1FTVText,              TEXT_REDSHOUSE1F_TV
 	dw_const RedsHouse2FSNESText,            TEXT_REDSHOUSE2F_SNES          ; marcelnote - moved from hidden_objects
 	dw_const YellowsHouse1FTVText,           TEXT_YELLOWSHOUSE1F_TV         ; marcelnote - new for Yellow's bedroom
@@ -110,11 +111,14 @@ YellowsHouse1FDadUnpackingText: ; marcelnote - new for Yellow's House
 
 YellowsHouse1FDadSittingText: ; marcelnote - new for Yellow's House
 	text_asm
-	ld hl, .RunIntoHerText
+	CheckEvent EVENT_BEAT_YELLOW
+	ld hl, .YellowIsBackText
+	jr nz, .print_text
 	CheckEvent EVENT_BEAT_BROCK
-	jr nz, .textLoaded
+	ld hl, .RunIntoHerText
+	jr nz, .print_text
 	ld hl, .JustMissedHerText
-.textLoaded
+.print_text
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
@@ -124,6 +128,10 @@ YellowsHouse1FDadSittingText: ; marcelnote - new for Yellow's House
 
 .RunIntoHerText:
 	text_far _YellowsHouse1FDadJustRunIntoHerText
+	text_end
+
+.YellowIsBackText:
+	text_far _YellowsHouse1FDadYellowIsBackText
 	text_end
 
 YellowsHouse1FTVText: ; marcelnote - new for Yellow's House
@@ -136,6 +144,10 @@ YellowsHouse2FTVText: ; marcelnote - new for Yellow's House
 
 YellowsHouse2FAsleepText: ; marcelnote - new for Yellow's House
 	text_far _YellowsHouse2FAsleepText
+	text_end
+
+YellowsHouse2FYellowText: ; marcelnote - new for Yellow's House
+	text_far _YellowsHouse2FYellowText
 	text_end
 
 UnpackedBoxText:: ; marcelnote - new

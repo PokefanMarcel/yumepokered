@@ -271,6 +271,7 @@ DEF NUM_HS_OBJECTS EQU const_value
 	const HS_REDS_YELLOWS_HOUSES_DAD1        ; Dad unpacking
 	const HS_REDS_YELLOWS_HOUSES_DAD2        ; Dad sitting
 	const HS_REDS_YELLOWS_HOUSES_ASLEEP      ; Yellow asleep
+	const HS_REDS_YELLOWS_HOUSES_YELLOW      ; Yellow
 	const HS_ROUTE_1_OAK                     ; postgame Oak battle
 	const HS_PEWTER_GYM_BROCK                ; default Brock
 	const HS_PEWTER_GYM_BROCK_REMATCH        ; rematch Brock
@@ -335,4 +336,4 @@ DEF NUM_HS_OBJECTS EQU const_value
 	const HS_MT_SILVER_3F_YELLOW             ; for Yellow battle
 DEF NUM_HS_OBJECTS_CONT EQU const_value
 	; max objects = 256
-	; current total = 335 – 270 = 65
+	; current total = 336 – 270 = 66
