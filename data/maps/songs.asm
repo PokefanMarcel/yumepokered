@@ -212,7 +212,7 @@ MapSongBanks::
 	db MUSIC_SILPH_CO, 0          ; SILPH_FACTORY_2F         ; marcelnote - new location
 	db MUSIC_CITIES2, 0           ; ROUTE_22_OLD_ROD_HOUSE   ; marcelnote - new location
 	db MUSIC_GYM, 0               ; ROUTE_22_GATE            ; marcelnote - changed from MUSIC_DUNGEON2
-	db MUSIC_GYM, 0               ; ROUTE_22_GATE_3F         ; marcelnote - was ROUTE_12_GATE_2F
+	db MUSIC_GYM, 0               ; BATTLE_HALL              ; marcelnote - was ROUTE_12_GATE_2F
 	db MUSIC_INDIGO_PLATEAU, 0    ; MT_SILVER_1F             ; marcelnote - new location
 	db MUSIC_INDIGO_PLATEAU, 0    ; MT_SILVER_2F             ; marcelnote - new location
 	db MUSIC_INDIGO_PLATEAU, 0    ; MT_SILVER_3F             ; marcelnote - new location

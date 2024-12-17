@@ -42,7 +42,7 @@ ENDM
 	warp_tiles $1A, $1C
 
 .PokecenterWarpTileIDs:
-.ClubWarpTileIDs: ; marcelnote - added stairs for Route22Gate3F
+.ClubWarpTileIDs: ; marcelnote - added stairs for BattleHall
 	warp_tiles $5E
 
 .SafariWarpTileIDs: ; marcelnote - new tileset from FOREST

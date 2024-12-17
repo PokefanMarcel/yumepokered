@@ -315,8 +315,8 @@ DEF NUM_HS_OBJECTS EQU const_value
 	const HS_SILPH_FACTORY_2F_LORELEI_1      ; postgame Lorelei
 	const HS_SILPH_FACTORY_2F_ROCKET_1       ; Archer
 	const HS_SILPH_FACTORY_2F_LORELEI_2      ; postgame Lorelei
-	const HS_ROUTE_22_GATE_3F_RED            ; battle hall Red
-	const HS_ROUTE_22_GATE_3F_GREEN          ; battle hall Green
+	const HS_BATTLE_HALL_RED                 ; battle hall Red
+	const HS_BATTLE_HALL_GREEN               ; battle hall Green
 	const HS_INDIGO_PLATEAU_LOBBY_GIRL1      ; now moves after first defeating E4
 	const HS_INDIGO_PLATEAU_LOBBY_GIRL2      ; blocks way after first defeating E4
 	const HS_INDIGO_PLATEAU_LOBBY_RIVAL      ; appears after E4 reopens

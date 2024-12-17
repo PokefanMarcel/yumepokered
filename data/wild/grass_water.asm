@@ -209,7 +209,7 @@ WildDataPointers:
 	dw NothingWildMons                 ; SILPH_FACTORY_2F             ; marcelnote - new location
 	dw NothingWildMons                 ; ROUTE_22_OLD_ROD_HOUSE
 	dw NothingWildMons                 ; ROUTE_22_GATE
-	dw NothingWildMons                 ; ROUTE_22_GATE_3F
+	dw NothingWildMons                 ; BATTLE_HALL
 	dw MtSilver1FWildMons              ; MT_SILVER_1F          ; marcelnote - new location
 	dw MtSilver2FWildMons              ; MT_SILVER_2F          ; marcelnote - new location
 	dw NothingWildMons                 ; MT_SILVER_3F          ; marcelnote - new location

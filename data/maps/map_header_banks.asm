@@ -210,7 +210,7 @@ MapHeaderBanks::
 	db BANK(SilphFactory2F_h)           ; marcelnote - new location
 	db BANK(Route22OldRodHouse_h)       ; marcelnote - new location
 	db BANK(Route22Gate_h)
-	db BANK(Route22Gate3F_h)            ; marcelnote - was Route12Gate2F_h
+	db BANK(BattleHall_h)               ; marcelnote - was Route12Gate2F_h
 	db BANK(MtSilver1F_h)               ; marcelnote - new location
 	db BANK(MtSilver2F_h)               ; marcelnote - new location
 	db BANK(MtSilver3F_h)               ; marcelnote - new location

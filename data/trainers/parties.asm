@@ -46,8 +46,10 @@ TrainerDataPointers:
 	dw ChannelerData
 	dw AgathaData
 	dw LanceData
-	dw YellowData  ; marcelnote - new trainer class
-	dw WillData    ; marcelnote - new trainer class
+	dw YellowData   ; marcelnote - new trainer class
+	dw WillData     ; marcelnote - new trainer class
+	dw RedData      ; marcelnote - new trainer class, but useless here because will be random
+	dw GreenData    ; marcelnote - new trainer class, but useless here because will be random
 	assert_table_length NUM_TRAINERS
 
 ; if first byte != $FF, then
@@ -855,3 +857,7 @@ YellowData:  ; marcelnote - new postgame battle
 
 WillData:  ; marcelnote - new postgame battle
 	db $FF, 54, SLOWBRO, 52, MR_MIME, 55, JYNX, 54, HYPNO, 56, EXEGGUTOR, 0
+
+RedData: ; marcelnote - new
+GreenData:
+	db 50, IVYSAUR, CHARMELEON, WARTORTLE, 0

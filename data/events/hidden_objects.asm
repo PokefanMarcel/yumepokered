@@ -93,6 +93,7 @@ HiddenObjectMaps:
 	db SILPH_FACTORY_2F          ; marcelnote - new
 	db MT_SILVER_1F              ; marcelnote - new
 	db MT_SILVER_2F              ; marcelnote - new
+	db BATTLE_HALL               ; marcelnote - new
 	db -1 ; end
 
 HiddenObjectPointers:
@@ -191,6 +192,7 @@ HiddenObjectPointers:
 	dw SilphFactory2FHiddenObjects         ; marcelnote - new
 	dw MtSilver1FHiddenObjects             ; marcelnote - new
 	dw MtSilver2FHiddenObjects             ; marcelnote - new
+	dw BattleHallHiddenObjects             ; marcelnote - new
 
 MACRO hidden_object
 	db \2 ; y coord
@@ -731,7 +733,12 @@ SilphFactory2FHiddenObjects:  ; marcelnote - new
 MtSilver1FHiddenObjects:  ; marcelnote - new
 	hidden_object 19, 13, ULTRA_BALL, HiddenItems
 	hidden_object 18, 23, DIRE_HIT, HiddenItems
+	db -1 ; end
 
 MtSilver2FHiddenObjects:  ; marcelnote - new
 	hidden_object 14, 29, MAX_POTION, HiddenItems
+	db -1 ; end
+
+BattleHallHiddenObjects:  ; marcelnote - new
+	hidden_object 11,  4, SPRITE_FACING_UP, OpenPokemonCenterPC
 	db -1 ; end

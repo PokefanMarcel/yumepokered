@@ -109,7 +109,7 @@ InternalMapEntries:
 	internal_map CITRUS_FERRY_ROOMS,            12, 15, CitrusFerryName     ; marcelnote - new location
 	internal_map SILPH_FACTORY_2F,              15, 15, SilphFactoryName    ; marcelnote - new location
 	internal_map ROUTE_22_OLD_ROD_HOUSE,         2,  8, Route22Name         ; marcelnote - new location
-	internal_map ROUTE_22_GATE_3F,               1,  7, Route22Name         ; marcelnote - new location
+	internal_map BATTLE_HALL,                    1,  7, Route22Name         ; marcelnote - new location
 	internal_map MT_SILVER_3F,                   0,  7, MtSilverName        ; marcelnote - new location
 	internal_map VICTORY_ROAD_3F,                1,  4, VictoryRoadName
 	internal_map INDIGO_PLATEAU_LOBBY,           1,  2, IndigoPlateauName

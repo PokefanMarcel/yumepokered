@@ -232,7 +232,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const SILPH_FACTORY_2F,              15, 14 ; marcelnote - new map
 	map_const ROUTE_22_OLD_ROD_HOUSE,         4,  4 ; marcelnote - new map
 	map_const ROUTE_22_GATE,                 18,  4 ; marcelnote - expanded for 2nd floor
-	map_const ROUTE_22_GATE_3F,               6,  5 ; marcelnote - new map
+	map_const BATTLE_HALL,                    6,  5 ; marcelnote - new map
 	map_const MT_SILVER_1F,                  12, 18 ; marcelnote - new map
 	map_const MT_SILVER_2F,                  15, 22 ; marcelnote - new map
 	map_const MT_SILVER_3F,                  10, 18 ; marcelnote - new map

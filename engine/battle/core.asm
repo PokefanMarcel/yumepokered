@@ -958,6 +958,10 @@ TrainerBattleVictory:
 	ld c, 40
 	call DelayFrames
 	call PrintEndBattleText
+; marcelnote - no money if Battle Hall battle
+	ld a, [wTrainerClass]
+	cp RED
+	ret nc
 ; win money
 	ld hl, MoneyForWinningText
 	call PrintText
@@ -1392,6 +1396,10 @@ EnemySendOutFirstMon:
 	ld a, [wOptions]
 	bit BIT_BATTLE_SHIFT, a
 	jr nz, .next4
+; marcelnote - SET mode in Battle hall
+	ld a, [wTrainerClass]
+	cp RED
+	jr nc, .next4
 	ld hl, TrainerAboutToUseText
 	call PrintText
 	hlcoord 0, 7
@@ -2186,16 +2194,22 @@ DisplayBattleMenu::
 	jp nz, PartyMenuOrRockOrRun
 
 ; either the bag (normal battle) or bait (safari battle) was selected
+; marcelnote - this was modified to prevent using items in Battle hall
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
-	jr nz, .notLinkBattle
+	jr z, .noItems
 
+	ld a, [wTrainerClass]
+	cp RED
+	jr c, .canUseItems
+
+.noItems
 ; can't use items in link battles
 	ld hl, ItemsCantBeUsedHereText
 	call PrintText
 	jp DisplayBattleMenu
 
-.notLinkBattle
+.canUseItems
 	call SaveScreenTilesToBuffer2
 	ld a, [wBattleType]
 	cp BATTLE_TYPE_SAFARI
@@ -7120,22 +7134,27 @@ _InitBattleCommon:
 .emptyString
 	db "@"
 
-_LoadTrainerPic:
+_LoadTrainerPic: ; marcelnote - modified to manage Red/Green battle
 	ld a, [wTrainerPicPointer]
 	ld e, a
 	ld a, [wTrainerPicPointer + 1]
 	ld d, a ; de contains pointer to trainer pic
 	ld a, [wLinkState]
 	and a
+	jr nz, .loadRedPicBank
+	ld a, [wTrainerClass]
+	cp RED
+	jr nc, .loadRedPicBank
 	ld a, BANK("Pics 6") ; this is where all the trainer pics are (not counting Red's)
-	jr z, .loadSprite
-	ld a, BANK(RedPicFront)
 .loadSprite
 	call UncompressSpriteFromDE
 	ld de, vFrontPic
 	ld a, $77
 	ld c, a
 	jp LoadUncompressedSpriteData
+.loadRedPicBank
+	ld a, BANK(RedPicFront)
+	jr .loadSprite
 
 ; unreferenced
 ResetCryModifiers:

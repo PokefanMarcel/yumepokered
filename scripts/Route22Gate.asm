@@ -14,9 +14,9 @@ Route22Gate_ScriptPointers:
 Route22GateShowRedOrGreenScript: ; marcelnote - runs only on first entrance in Route22Gate
 	ld a, [wStatusFlags4]
 	bit BIT_IS_GIRL, a
-	ld a, HS_ROUTE_22_GATE_3F_RED
+	ld a, HS_BATTLE_HALL_RED
 	jr nz, .isGirl
-	ld a, HS_ROUTE_22_GATE_3F_GREEN
+	ld a, HS_BATTLE_HALL_GREEN
 .isGirl
 	ld [wMissableObjectIndex], a
 	predef ShowObjectCont
@@ -222,6 +222,13 @@ ENDC
 	ResetEvent EVENT_BEAT_BATTLE_HALL_TRAINER
 	ld hl, .FantasticText
 	call PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr z, .skipRules
+	ld hl, .RulesText
+	call PrintText
+.skipRules
 	ld hl, Route22GateReceptionistOpponentWaitingForYouText
 	call PrintText
 	ld a, D_RIGHT
@@ -247,6 +254,10 @@ ENDC
 
 .FantasticText:
 	text_far _Route22GateReceptionistFantasticText
+	text_end
+
+.RulesText:
+	text_far _Route22GateReceptionistRulesText
 	text_end
 
 .ComeBackAnytimeText:

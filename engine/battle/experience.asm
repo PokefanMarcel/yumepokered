@@ -2,6 +2,10 @@ GainExperience:
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
 	ret z ; return if link battle
+; marcelnote - no exp if Battle Hall battle
+	ld a, [wTrainerClass]
+	cp RED
+	ret nc
 	call DivideExpDataByNumMonsGainingExp
 	ld hl, wPartyMon1
 	xor a

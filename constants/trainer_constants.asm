@@ -64,4 +64,6 @@ ENDM
 	trainer_const LANCE          ; $2F
 	trainer_const YELLOW         ; $30 ; marcelnote - new trainer class
 	trainer_const WILL           ; $30 ; marcelnote - new trainer class
+	trainer_const RED            ; $30 ; marcelnote - new trainer class
+	trainer_const GREEN          ; $30 ; marcelnote - new trainer class
 DEF NUM_TRAINERS EQU const_value - 1

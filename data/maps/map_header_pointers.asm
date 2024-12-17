@@ -210,7 +210,7 @@ MapHeaderPointers::
 	dw SilphFactory2F_h          ; marcelnote - new location
 	dw Route22OldRodHouse_h      ; marcelnote - new location
 	dw Route22Gate_h
-	dw Route22Gate3F_h           ; marcelnote - was Route12Gate2F_h
+	dw BattleHall_h              ; marcelnote - was Route12Gate2F_h
 	dw MtSilver1F_h              ; marcelnote - new location
 	dw MtSilver2F_h              ; marcelnote - new location
 	dw MtSilver3F_h              ; marcelnote - new location

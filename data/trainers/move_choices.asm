@@ -58,4 +58,6 @@ TrainerClassMoveChoiceModifications:
 	move_choices 1, 3    ; LANCE
 	move_choices 1, 3    ; YELLOW ; marcelnote - new trainer class
 	move_choices 1, 3    ; WILL   ; marcelnote - new trainer class
+	move_choices 1, 3    ; RED    ; marcelnote - new trainer class
+	move_choices 1, 3    ; GREEN  ; marcelnote - new trainer class
 	assert_list_length NUM_TRAINERS

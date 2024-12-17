@@ -52,4 +52,6 @@ TrainerAIPointers:
 	dbw 1, LanceAI ; lance
 	dbw 2, Rival3AI       ; Yellow ; marcelnote - new trainer class
 	dbw 2, CooltrainerMAI ; Will   ; marcelnote - new trainer class
+	dbw 2, Rival3AI       ; Red    ; marcelnote - new trainer class
+	dbw 2, Rival3AI       ; Green  ; marcelnote - new trainer class
 	assert_table_length NUM_TRAINERS

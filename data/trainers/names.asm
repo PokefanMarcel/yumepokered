@@ -48,4 +48,6 @@ TrainerNames::
 	li "LANCE"
 	li "YELLOW"  ; marcelnote - new trainer class
 	li "WILL"    ; marcelnote - new trainer class
+	li "<PKMN>TRAINER"    ; Red   ; marcelnote - new trainer class
+	li "<PKMN>TRAINER"    ; Green ; marcelnote - new trainer class
 	assert_list_length NUM_TRAINERS

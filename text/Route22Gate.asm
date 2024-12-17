@@ -45,8 +45,9 @@ _Route22GateGuard2WelcomeChampionText:: ; marcelnote - new guard
 
 _Route22GateCooltrainerMText:: ; marcelnote - new NPC
 	text "Trainers practice"
-	line "upstairs to get"
-	cont "ready for the"
+	text "at the BATTLE"
+	cont "HALL upstairs to"
+	cont "get ready for the"
 	cont "#MON LEAGUE."
 	done
 
@@ -71,7 +72,7 @@ _Route22GateCooltrainerFText:: ; marcelnote - new NPC
 
 _Route22GateReceptionistWelcomeText:: ; marcelnote - new receptionist
 	text "Welcome to our"
-	line "battle hall!"
+	line "BATTLE HALL!"
 	prompt
 
 _Route22GateReceptionistPleaseStepAroundText:: ; marcelnote - new receptionist
@@ -100,7 +101,29 @@ _Route22GateReceptionistWantToBattleText:: ; marcelnote - new receptionist
 	done
 
 _Route22GateReceptionistFantasticText:: ; marcelnote - new receptionist
-	text "Fantastic!"
+	text "Fantastic! Do you"
+	line "know the BATTLE"
+	cont "HALL rules?"
+	done
+
+_Route22GateReceptionistRulesText:: ; marcelnote - new receptionist
+	text "In the BATTLE"
+	line "HALL, trainers"
+	cont "compete using"
+	cont "teams of three"
+	cont "#MON."
+
+	para "A PC is available"
+	line "upstairs if you"
+	cont "need to adjust"
+	cont "your #MON."
+
+	para "Choose your team"
+	line "carefully!"
+
+	para "Oh, and items"
+	line "are not allowed"
+	cont "in battle."
 	prompt
 
 _Route22GateReceptionistOpponentWaitingForYouText:: ; marcelnote - new receptionist
