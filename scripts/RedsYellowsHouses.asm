@@ -51,7 +51,7 @@ RedsHouse1FMomText:
 	text_far _RedsHouse1FMomWakeUpText
 	text_end
 
-RedsHouse1FMomHealScript: ; marcelnote - this was modified for crysaudio
+RedsHouse1FMomHealScript: ; marcelnote - modified for crysaudio
 	ld hl, RedsHouse1FMomYouShouldRestText
 	call PrintText
 	call GBFadeOutToWhite
