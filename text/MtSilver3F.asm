@@ -41,8 +41,9 @@ _MtSilver3FYellowBattleText::
 
 	para "So show me,"
 	line "<PLAYER>."
-	cont "Are you really"
-	cont "the very best,"
+
+	para "Are you really"
+	line "the very best,"
 	cont "like no one"
 	cont "ever was?"
 	done
