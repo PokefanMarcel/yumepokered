@@ -1880,6 +1880,8 @@ AnimationWavyScreen:
 	ld c, $ff
 	ld hl, WavyScreenLineOffsets
 .loop
+	ld a, [hl]     ; pokered tutorial - Psychic/Psywave/Night Shade's animation doesn't wiggle the top 3 screen lines
+	ldh [hSCX], a  ; pokered tutorial - Psychic/Psywave/Night Shade's animation doesn't wiggle the top 3 screen lines
 	push hl
 .innerLoop
 	call WavyScreen_SetSCX
@@ -1896,6 +1898,7 @@ AnimationWavyScreen:
 	dec c
 	jr nz, .loop
 	xor a
+	ldh [hSCX], a  ; pokered tutorial - Psychic/Psywave/Night Shade's animation doesn't wiggle the top 3 screen lines
 	ldh [hWY], a
 	call SaveScreenTilesToBuffer2
 	call ClearScreen
