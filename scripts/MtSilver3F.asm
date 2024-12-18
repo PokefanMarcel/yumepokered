@@ -29,9 +29,6 @@ MtSilver3FYellowPostBattleScript:
 	call UpdateSprites
 	call Delay3
 	SetEvent EVENT_BEAT_YELLOW
-	;ld a, HS_REDS_YELLOWS_HOUSES_YELLOW
-	;ld [wMissableObjectIndex], a
-	;predef ShowObjectCont
 	call GBFadeInFromBlack
 	ld c, 50
 	call DelayFrames
