@@ -45,7 +45,7 @@ _Route22GateGuard2WelcomeChampionText:: ; marcelnote - new guard
 
 _Route22GateCooltrainerMText:: ; marcelnote - new NPC
 	text "Trainers practice"
-	text "at the BATTLE"
+	line "at the BATTLE"
 	cont "HALL upstairs to"
 	cont "get ready for the"
 	cont "#MON LEAGUE."
