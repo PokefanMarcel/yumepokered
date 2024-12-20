@@ -833,8 +833,10 @@ FaintEnemyPokemon:
 	call SaveScreenTilesToBuffer1
 	xor a
 	ld [wBattleResult], a
-	ld b, EXP_ALL
-	call IsItemInBag
+	;ld b, EXP_ALL
+	;call IsItemInBag
+	ld hl, wStatusFlags1    ; marcelnote - ExpAll can be activated/deactivated
+	bit BIT_EXP_ALL_ACTIVE, [hl]
 	push af
 	jr z, .giveExpToMonsThatFought ; if no exp all, then jump
 
@@ -854,16 +856,18 @@ FaintEnemyPokemon:
 ; if exp all is in the bag, this will be only be half of the stat exp and normal exp, due to the above loop
 .giveExpToMonsThatFought
 	xor a
-	ld [wBoostExpByExpAll], a
+	;ld [wBoostExpByExpAll], a ; marcelnote - shortened ExpAll messages
 	callfar GainExperience
 	pop af
 	ret z ; return if no exp all
 
 ; the player has exp all
 ; now, set the gain exp flag for every party member
-; half of the total stat exp and normal exp will divided evenly amongst every party member
-	ld a, TRUE
-	ld [wBoostExpByExpAll], a
+; half of the total stat exp and normal exp will be divided evenly amongst every party member
+	ld hl, ExpAllIsOnText ; marcelnote - new, shortened ExpAll messages
+	call PrintText
+	;ld a, TRUE
+	;ld [wBoostExpByExpAll], a ; marcelnote - shortened ExpAll messages
 	ld a, [wPartyCount]
 	ld b, 0
 .gainExpFlagsLoop
@@ -877,6 +881,10 @@ FaintEnemyPokemon:
 
 EnemyMonFaintedText:
 	text_far _EnemyMonFaintedText
+	text_end
+
+ExpAllIsOnText: ; marcelnote - shortened ExpAll messages
+	text_far _ExpAllIsOnText
 	text_end
 
 EndLowHealthAlarm:
@@ -1778,7 +1786,7 @@ SendOutMon:
 	ld hl, wBattleAndStartSavedMenuItem
 	ld [hli], a
 	ld [hl], a
-	ld [wBoostExpByExpAll], a
+	ld [wAnimationType], a  ; marcelnote - shortened ExpAll messages, was wBoostExpByExpAll
 	ld [wDamageMultipliers], a
 	ld [wPlayerMoveNum], a
 	ld hl, wPlayerUsedMove

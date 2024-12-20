@@ -91,7 +91,7 @@ ItemUsePtrTable:
 	dw UnusableItem      ; SILPH_SCOPE
 	dw ItemUsePokeFlute  ; POKE_FLUTE
 	dw UnusableItem      ; LIFT_KEY
-	dw UnusableItem      ; EXP_ALL
+	dw ItemUseExpAll     ; EXP_ALL ; marcelnote - ExpAll can be activated/deactivated
 	dw ItemUseOldRod     ; OLD_ROD
 	dw ItemUseGoodRod    ; GOOD_ROD
 	dw ItemUseSuperRod   ; SUPER_ROD
@@ -1976,6 +1976,28 @@ ItemfinderFoundItemText:
 
 ItemfinderFoundNothingText:
 	text_far _ItemfinderFoundNothingText
+	text_end
+
+ItemUseExpAll:    ; marcelnote - ExpAll can be activated/deactivated
+	ld a, [wIsInBattle]
+	and a
+	jp nz, ItemUseNotTime
+	ld a, [wStatusFlags1]
+	bit BIT_EXP_ALL_ACTIVE, a
+	ld hl, .ActivatedText
+	jr z, .got_text
+	ld hl, .DeactivatedText
+.got_text
+	xor 1 << BIT_EXP_ALL_ACTIVE
+	ld [wStatusFlags1], a
+	jp PrintText
+
+.ActivatedText:
+	text_far _ExpAllActivatedText
+	text_end
+
+.DeactivatedText:
+	text_far _ExpAllDeactivatedText
 	text_end
 
 ItemUsePPUp:

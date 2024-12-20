@@ -1350,10 +1350,14 @@ _GainedText::
 	line "@"
 	text_end
 
-_WithExpAllText::
-	text "with EXP.ALL,"
-	cont "@"
-	text_end
+;_WithExpAllText:: ; marcelnote - shortened ExpAll messages
+;	text "with EXP.ALL,"
+;	cont "@"
+;	text_end
+
+_ExpAllIsOnText:: ; marcelnote - shortened ExpAll messages
+	text "EXP.ALL is on!"
+	prompt
 
 _BoostedText::
 	text "a boosted"

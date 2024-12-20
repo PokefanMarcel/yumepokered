@@ -67,7 +67,7 @@ DEF NUM_BADGES EQU const_value
 	const_def
 	const BIT_STRENGTH_ACTIVE           ; 0
 	const BIT_SURF_ALLOWED              ; 1
-	const_skip                          ; 2 ; unused
+	const BIT_EXP_ALL_ACTIVE            ; 2 ; marcelnote - ExpAll can be activated/deactivated (was unused bit)
 	const BIT_GOT_OLD_ROD               ; 3
 	const BIT_GOT_GOOD_ROD              ; 4
 	const BIT_GOT_SUPER_ROD             ; 5

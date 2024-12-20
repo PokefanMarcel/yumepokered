@@ -127,6 +127,16 @@ _ItemfinderFoundNothingText::
 	line "isn't responding."
 	prompt
 
+_ExpAllActivatedText:: ; marcelnote - ExpAll can be activated/deactivated
+	text "<PLAYER> switched"
+	line "on EXP.ALL."
+	prompt
+
+_ExpAllDeactivatedText:: ; marcelnote - ExpAll can be activated/deactivated
+	text "<PLAYER> switched"
+	line "off EXP.ALL."
+	prompt
+
 _RaisePPWhichTechniqueText::
 	text "Raise PP of which"
 	line "technique?"

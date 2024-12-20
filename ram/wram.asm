@@ -439,9 +439,9 @@ wSimulatedJoypadStatesEnd::
 
 NEXTU
 ;wUnusedFlag:: ; marcelnote - removed
-wBoostExpByExpAll:: db
+;wBoostExpByExpAll:: db ; marcelnote - removed, shortened ExpAll messages
 
-	ds 59
+	ds 60
 
 wNPCMovementDirections2:: ds 10
 ; used in Pallet Town scripted movement

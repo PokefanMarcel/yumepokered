@@ -19,7 +19,11 @@ _Route15Gate2FOaksAideExpAllText::
 	cont "of EXP for each"
 	cont "#MON."
 
-	para "If you don't need"
-	line "it, you should "
-	cont "store it via PC."
+	;para "If you don't need"
+	;line "it, you should "
+	;cont "store it via PC."
+
+	para "Switch it off"    ; marcelnote - ExpAll can be activated/deactivated
+	line "if you don't"
+	cont "need it."
 	done
