@@ -855,7 +855,7 @@ FaintEnemyPokemon:
 ; give exp (divided evenly) to the mons that actually fought in battle against the enemy mon that has fainted
 ; if exp all is in the bag, this will be only be half of the stat exp and normal exp, due to the above loop
 .giveExpToMonsThatFought
-	xor a
+	;xor a
 	;ld [wBoostExpByExpAll], a ; marcelnote - shortened ExpAll messages
 	callfar GainExperience
 	pop af
