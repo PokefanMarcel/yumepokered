@@ -48,6 +48,8 @@ CableClubNPC::
 	call DelayFrame
 	jr .establishConnectionLoop
 .establishedConnection
+	call IsNewMoveInParty ; marcelnote - check for Hex, Electro Ball or Will-O-Wisp
+	jr nz, .newMoveInParty
 	call Serial_SendZeroByte
 	call DelayFrame
 	call Serial_SendZeroByte
@@ -101,6 +103,9 @@ CableClubNPC::
 	ld hl, CableClubNPCAreaReservedFor2FriendsLinkedByCableText
 	call PrintText
 	jr .didNotConnect
+.newMoveInParty ; marcelnote - new, no Mons with Hex, Electro Ball or Will-O-Wisp allowed
+	ld hl, CableClubNPCNewMovesNotAllowedText
+	call PrintText
 .choseNo
 	call CloseLinkConnection
 	ld hl, CableClubNPCPleaseComeAgainText
@@ -150,6 +155,10 @@ CableClubNPCMakingPreparationsText:
 	text_far _CableClubNPCMakingPreparationsText
 	text_end
 
+CableClubNPCNewMovesNotAllowedText: ; marcelnote - ban new moves from Cable Club
+	text_far _CableClubNPCNewMovesNotAllowedText
+	text_end
+
 CloseLinkConnection:
 	call Delay3
 	ld a, CONNECTION_NOT_ESTABLISHED
@@ -160,4 +169,15 @@ CloseLinkConnection:
 	ldh [hSerialReceiveData], a
 	ld a, START_TRANSFER_EXTERNAL_CLOCK
 	ldh [rSC], a
+	ret
+
+IsNewMoveInParty: ; marcelnote - new, nz if new move in party
+	ld d, HEX
+	call IsMoveInParty
+	ret nz
+	ld d, ELECTRO_BALL
+	call IsMoveInParty
+	ret nz
+	ld d, WILL_O_WISP
+	call IsMoveInParty
 	ret

@@ -8,6 +8,14 @@ _CableClubNPCMakingPreparationsText::
 	cont "Please wait."
 	done
 
+_CableClubNPCNewMovesNotAllowedText:: ; marcelnote - ban new moves from Cable Club
+	text "I'm sorry, #MON"
+	line "with the moves"
+	cont "HEX, ELECRO BALL"
+	cont "or WILL-O-WISP"
+	cont "are not allowed."
+	prompt
+
 _UsedStrengthText::
 	text_ram wNameBuffer
 	text " used"

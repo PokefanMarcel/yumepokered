@@ -4348,9 +4348,18 @@ GetDamageVarsForPlayerAttack:
 	and a
 	ld d, a ; d = move power
 	ret z ; return if move power is zero
-	ld a, [hl] ; a = [wPlayerMoveType]
-	cp SPECIAL ; types >= SPECIAL are all special
-	jr nc, .specialAttack
+	;;;;;;;;;;;;;;; marcelnote - Physical / Special types now checked with new list
+	;ld a, [hl] ; a = [wPlayerMoveType]
+	;cp SPECIAL ; types >= SPECIAL are all special
+	;jr nc, .specialAttack
+	ld c, [hl] ; c = [wPlayerMoveType]
+	ld b, 0
+	ld hl, SpecialTypesList
+	add hl, bc
+	ld a, [hl]
+	and a ; TRUE if Special, FALSE if Physical
+	jr nz, .specialAttack
+	;;;;;;;;;;;;;;;
 .physicalAttack
 	ld hl, wEnemyMonDefense
 	ld a, [hli]
@@ -4450,6 +4459,8 @@ GetDamageVarsForPlayerAttack:
 	and a
 	ret
 
+INCLUDE "data/battle/special_types_list.asm" ; marcelnote - new list to handle Physical / Special types
+
 ; sets b, c, d, and e for the CalculateDamage routine in the case of an attack by the enemy mon
 GetDamageVarsForEnemyAttack:
 	ld hl, wDamage ; damage to eventually inflict, initialise to zero
@@ -4461,9 +4472,18 @@ GetDamageVarsForEnemyAttack:
 	ld d, a ; d = move power
 	and a
 	ret z ; return if move power is zero
-	ld a, [hl] ; a = [wEnemyMoveType]
-	cp SPECIAL ; types >= SPECIAL are all special
-	jr nc, .specialAttack
+	;;;;;;;;;;;;;;; marcelnote - Physical / Special types now checked with new list
+	;ld a, [hl] ; a = [wEnemyMoveType]
+	;cp SPECIAL ; types >= SPECIAL are all special
+	;jr nc, .specialAttack
+	ld c, [hl] ; c = [wEnemyMoveType]
+	ld b, 0
+	ld hl, SpecialTypesList
+	add hl, bc
+	ld a, [hl]
+	and a ; TRUE if Special, FALSE if Physical
+	jr nz, .specialAttack
+	;;;;;;;;;;;;;;;
 .physicalAttack
 	ld hl, wBattleMonDefense
 	ld a, [hli]
