@@ -10,7 +10,7 @@ DEF PC_ITEM_CAPACITY  EQU 50
 	const FIELD_MOVE_MON_MENU               ; $04
 	const JP_MOCHIMONO_MENU_TEMPLATE        ; $05
 	const USE_TOSS_MENU_TEMPLATE            ; $06
-	const MENU_TEMPLATE_07                  ; $07 unused
+	const MENU_TEMPLATE_07                  ; $07 unused ; could be USE_SLCT_MENU_TEMPLATE
 	const JP_SAVE_MESSAGE_MENU_TEMPLATE     ; $08
 	const JP_SPEED_OPTIONS_MENU_TEMPLATE    ; $09
 	const_skip                              ; $0a
