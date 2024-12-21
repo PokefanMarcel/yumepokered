@@ -302,38 +302,70 @@ TrainerAI:
 	ld hl, TrainerAIPointers
 	add hl, bc
 	add hl, bc
-	add hl, bc
-	ld a, [wAICount]
+	add hl, bc ; now hl points to the trainer dbw entry
+	ld a, [wAICount] ; wAICount is initialized at -1
 	and a
-	ret z ; if no AI uses left, we're done here
-	inc hl
-	inc a
-	jr nz, .getpointer
-	dec hl
-	ld a, [hli]
+	ret z  ; if no AI uses left, we're done here
+	;inc hl ; now hl points to the trainer AI
+	inc a  ; cp -1
+	jr nz, .getpointer ; on the first run, load Trainer AI count in wAICount
+	;dec hl
+	;ld a, [hli]
+	ld a, [hl]
 	ld [wAICount], a
 .getpointer
+	inc hl ; now hl points to the trainer AI pointer
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	call Random
-	jp hl
+	jp hl ; now hl is the Trainer AI pointer
 
 INCLUDE "data/trainers/ai_pointers.asm"
+
+JrTrainerAI: ; marcelnote - new
+	cp 25 percent + 1
+	ret nc
+	ld a, 5
+	call AICheckIfHPBelowFraction
+	ret nc
+	jp AIUsePotion
+
+BikerAI: ; marcelnote - new
+	cp 13 percent - 1
+	ret nc
+	jp AIUseXSpeed
+
+EngineerAI: ; marcelnote - new
+	cp 13 percent - 1
+	ret nc
+	jp AIUseXDefend
+
+PsychicAI: ; marcelnote - new
+	cp 13 percent - 1
+	ret nc
+	jp AIUseXSpecial
 
 JugglerAI:
 	cp 25 percent + 1
 	ret nc
 	jp AISwitchIfEnoughMons
 
+TamerAI: ; marcelnote - new
+	cp 13 percent - 1
+	ret nc
+	jp AIUseXAccuracy
+
 BlackbeltAI:
 	cp 13 percent - 1
 	ret nc
 	jp AIUseXAttack
 
-GiovanniAI:
-	cp 25 percent + 1
+GiovanniAI: ; marcelnote - was 25% chance of using GuardSpec
+	cp 38 percent - 1
 	ret nc
+	cp 25 percent + 1
+	jp nc, AIUseXSpecial ; now also 13% chance to use XSpecial
 	jp AIUseGuardSpec
 
 CooltrainerMAI:
@@ -374,7 +406,7 @@ LtSurgeAI:
 ErikaAI:
 	cp 50 percent + 1
 	ret nc
-	ld a, 10
+	ld a, 5 ; marcelnote - modified, 1/5 HP instead of 1/10
 	call AICheckIfHPBelowFraction
 	ret nc
 	jp AIUseSuperPotion
@@ -384,34 +416,41 @@ KogaAI:
 	ret nc
 	jp AIUseXAttack
 
-BlaineAI: ; marcelnote - fixes potion use below 10% HP
-	cp 25 percent + 1
-	ret nc
-	ld a, 10
-	call AICheckIfHPBelowFraction
-	ret nc
-	jp AIUseSuperPotion
-
+BlaineAI:
 SabrinaAI:
-	cp 25 percent + 1
+	cp 50 percent + 1 ; marcelnote - modified, 50% chance instead of 25%
 	ret nc
-	ld a, 10
+	ld a, 5 ; marcelnote - modified, 1/5 HP instead of 1/10
 	call AICheckIfHPBelowFraction
 	ret nc
 	jp AIUseHyperPotion
 
+;BlaineAI: ; marcelnote - fix for potion use threshold
+;	cp 50 percent + 1 ; marcelnote - modified, 50% chance instead of 25%
+;	ret nc
+;	ld a, 5 ; marcelnote - modified, 1/5 HP instead of 1/10
+;	call AICheckIfHPBelowFraction
+;	ret nc
+;	jp AIUseHyperPotion ; marcelnote - changed from Super Potion
+
 Rival2AI:
-	cp 13 percent - 1
+	cp 25 percent + 1 ; marcelnote - modified, 25% chance instead of 13%
 	ret nc
 	ld a, 5
 	call AICheckIfHPBelowFraction
 	ret nc
 	jp AIUsePotion
 
-Rival3AI:
-	cp 13 percent - 1
+Rival3AI: ; marcelnote - modified, was 13% chance of Full Restore if HP < 1/5 HPMax
+	cp 50 percent + 1
 	ret nc
-	ld a, 5
+	cp 25 percent + 1
+	jr nc, .checkHP ; 25% chance to heal status condition
+	ld a, [wEnemyMonStatus]
+	and a
+	jp nz, AIUseFullRestore
+.checkHP
+	ld a, 3
 	call AICheckIfHPBelowFraction
 	ret nc
 	jp AIUseFullRestore
@@ -419,15 +458,21 @@ Rival3AI:
 LoreleiAI:
 	cp 50 percent + 1
 	ret nc
-	ld a, 5
+	ld a, 3 ; marcelnote - modified, 1/3 HP instead of 1/5
 	call AICheckIfHPBelowFraction
 	ret nc
-	jp AIUseSuperPotion
+	jp AIUseHyperPotion ; marcelnote - modified from Super Potion
 
-BrunoAI:
-	cp 25 percent + 1
+BrunoAI: ; marcelnote - modified, was 25% chance of using XDefend
+	cp 50 percent + 1
 	ret nc
-	jp AIUseXDefend
+	ld a, 3
+	call AICheckIfHPBelowFraction
+	jp c, AIUseHyperPotion
+	call Random
+	cp 50 percent + 1
+	ret nc
+	jp AIUseDireHit
 
 AgathaAI:
 	cp 8 percent
@@ -437,15 +482,21 @@ AgathaAI:
 	ld a, 4
 	call AICheckIfHPBelowFraction
 	ret nc
-	jp AIUseSuperPotion
+	jp AIUseHyperPotion ; marcelnote - changed to Hyper Potion
 
-LanceAI:
+LanceAI: ; marcelnote - now also chance to use Full Heal
 	cp 50 percent + 1
 	ret nc
-	ld a, 5
+	ld a, 3
 	call AICheckIfHPBelowFraction
+	jp c, AIUseHyperPotion
+	call Random
+	cp 50 percent + 1
 	ret nc
-	jp AIUseHyperPotion
+	ld a, [wEnemyMonStatus]
+	and a
+	ret z
+	jp AIUseFullHeal
 
 GenericAI:
 	and a ; clear carry
@@ -456,7 +507,7 @@ GenericAI:
 DecrementAICount:
 	ld hl, wAICount
 	dec [hl]
-	scf
+	scf ; set carry flag to indicate that AI took action
 	ret
 
 AIPlayRestoringSFX:
@@ -638,24 +689,30 @@ AICureStatus:
 	res BADLY_POISONED, [hl]
 	ret
 
-AIUseXAccuracy: ; unused
+AIUseXAccuracy: ; marcelnote - was unused, now used by Tamer
 	call AIPlayRestoringSFX
 	ld hl, wEnemyBattleStatus2
 	set USING_X_ACCURACY, [hl]
 	ld a, X_ACCURACY
 	jp AIPrintItemUse
 
-AIUseGuardSpec:
-	call AIPlayRestoringSFX
+AIUseGuardSpec: ; marcelnote - modified
+	and a ; clear carry flag in case no action taken
 	ld hl, wEnemyBattleStatus2
+	bit PROTECTED_BY_MIST, [hl] ; now checks if Mon already protected, if yes don't use it
+	ret nz
 	set PROTECTED_BY_MIST, [hl]
+	call AIPlayRestoringSFX
 	ld a, GUARD_SPEC
 	jp AIPrintItemUse
 
-AIUseDireHit: ; unused
-	call AIPlayRestoringSFX
+AIUseDireHit: ; marcelnote - was unused, now modified and used by Bruno
+	and a ; clear carry flag in case no action taken
 	ld hl, wEnemyBattleStatus2
+	bit GETTING_PUMPED, [hl] ; now checks if Mon already pumped, if yes don't use it
+	ret nz
 	set GETTING_PUMPED, [hl]
+	call AIPlayRestoringSFX
 	ld a, DIRE_HIT
 	jp AIPrintItemUse
 
