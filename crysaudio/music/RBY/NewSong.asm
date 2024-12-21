@@ -11,7 +11,9 @@ Music_UntitledSong_Ch1:
 .mainLoop:
 	rest 1
 	octave 1
-	volume_envelope 3, 8
+	volume_envelope 11, 3
+	vibrato 8, 3, 4
+	duty_cycle 3
 	note G_, 14
 	note D_, 1
 	note F_, 1
@@ -156,6 +158,9 @@ Music_UntitledSong_Ch1:
 	note D_, 1
 	sound_call .sub1
 	octave 1
+	volume_envelope 11, 3
+	vibrato 8, 3, 4
+	duty_cycle 3
 	note A#, 1
 	note A#, 1
 	octave 2
@@ -170,7 +175,9 @@ Music_UntitledSong_Ch1:
 	note A#, 1
 	octave 2
 	sound_call .sub1
-	note_type 12, 3, 8
+	note_type 12, 11, 3
+	vibrato 8, 3, 4
+	duty_cycle 3
 	note F_, 1
 	note F_, 1
 	octave 3
@@ -337,6 +344,9 @@ Music_UntitledSong_Ch1:
 	sound_loop 0, .mainLoop
 
 .sub1:
+	volume_envelope 11, 3
+	vibrato 8, 3, 4
+	duty_cycle 3
 	note D#, 1
 	note D#, 1
 	octave 3
@@ -355,7 +365,9 @@ Music_UntitledSong_Ch2:
 	note_type 12, 15, 8
 .mainLoop:
 	octave 3
-	volume_envelope 3, 8
+	vibrato 8, 2, 5
+	duty_cycle 3
+	volume_envelope 6, 5
 	note G_, 3
 	octave 4
 	note D_, 1
@@ -475,6 +487,7 @@ Music_UntitledSong_Ch2:
 	rest 5
 	note_type 12, 3, 8
 	rest 2
+	volume_envelope 6, 5
 	note C_, 1
 	rest 6
 	note D_, 2
@@ -492,8 +505,9 @@ Music_UntitledSong_Ch3:
 	note_type 12, 1, 0
 .mainLoop:
 	octave 4
+	vibrato 0, 2, 0
+	volume_envelope 1, 3
 	note A#, 3
-	volume_envelope 1, 0
 	note G_, 1
 	note G_, 1
 	note G_, 1
@@ -682,7 +696,7 @@ Music_UntitledSong_Ch3:
 	note G_, 1
 	note F_, 1
 	note F_, 5
-	note_type 12, 1, 0
+	note_type 12, 1, 3
 	note D#, 1
 	note A#, 2
 	note A#, 2
