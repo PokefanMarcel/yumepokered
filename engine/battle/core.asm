@@ -938,21 +938,25 @@ ReplaceFaintedEnemyMon:
 	inc a ; reset Z flag
 	ret
 
-TrainerBattleVictory:
+TrainerBattleVictory: ; marcelnote - music choice code was optimized, and added Yellow and Prof.Oak
 	call EndLowHealthAlarm
 	ld b, MUSIC_DEFEATED_GYM_LEADER
 	ld a, [wGymLeaderNo]
 	and a
-	jr nz, .gymleader
-	ld b, MUSIC_DEFEATED_TRAINER
-.gymleader
+	jr nz, .got_music
 	ld a, [wTrainerClass]
-	cp RIVAL3 ; final battle against rival
-	jr nz, .notrival
-	ld b, MUSIC_DEFEATED_GYM_LEADER
+	cp YELLOW
+	jr z, .got_music
+	cp PROF_OAK
+	jr z, .got_music
+	cp RIVAL3
+	jr z, .turnOffMapMusic
+	ld b, MUSIC_DEFEATED_TRAINER
+	jr .got_music
+.turnOffMapMusic
 	ld hl, wStatusFlags7
 	set BIT_NO_MAP_MUSIC, [hl]
-.notrival
+.got_music
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
 	ld a, b
