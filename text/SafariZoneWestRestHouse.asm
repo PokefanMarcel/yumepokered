@@ -6,10 +6,12 @@ _SafariZoneWestRestHouseScientistText::
 	cont "easier to catch."
 	done
 
-_SafariZoneWestRestHouseCooltrainerMText::
+_SafariZoneWestRestHouseCooltrainerMText:: ; marcelnote - modified to better explain BAIT
 	text "Using BAIT will"
-	line "make #MON"
-	cont "easier to catch."
+	line "make #MON less"
+	cont "likely to flee,"
+	cont "but they'll be"
+	cont "harder to catch."
 	done
 
 _SafariZoneWestRestHouseSilphWorkerFText::
