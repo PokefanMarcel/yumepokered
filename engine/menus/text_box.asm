@@ -578,8 +578,11 @@ GetMonFieldMoves: ; marcelnote - modified for temporary field moves, from shinpo
 
 	push hl
 	ld a, [hl]
+	and a ; is it NO_MOVE?
+	jr z, .no_move
 	ld [wMoveNum], a
 	callfar CheckIfMoveIsKnown ; maybe move has already been counted if Mon knows it as a battle move
+.no_move
 	pop hl
 	jr c, .done
 
