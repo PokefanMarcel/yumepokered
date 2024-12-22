@@ -65,6 +65,14 @@ DontAbandonLearning:
 	ld a, [wPlayerMonNumber]
 	cp b
 	jp nz, PrintLearnedMove
+
+	; joenote - do not update active mon moves if it is transformed
+	ld b, a
+	ld a, [wPlayerBattleStatus3]
+	bit TRANSFORMED, a ; is the mon transformed?
+	ld a, b
+	jp nz, PrintLearnedMove
+
 	ld h, d
 	ld l, e
 	ld de, wBattleMonMoves
@@ -138,6 +146,12 @@ TryingToLearn:
 	ld b, 4
 	ld c, 14
 	call TextBoxBorder
+
+	; joenote - disable sprites behind the text box
+	;ld a, [wFlags_D733] ; marcelnote - what is wFlags_D733?
+	;bit 6, a
+	;call nz, UpdateSprites
+
 	hlcoord 6, 8
 	ld de, wMovesString
 	ldh a, [hUILayoutFlags]
