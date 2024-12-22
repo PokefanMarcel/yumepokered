@@ -1183,6 +1183,7 @@ HandlePlayerBlackOut:
 	ld a, [wCurMap]
 	cp OAKS_LAB
 	ret z            ; starter battle in oak's lab: don't black out
+	jr .notRival1Battle ; if Route 22 battle, black out
 .BattleHall ; marcelnote - new for Battle Hall
 	hlcoord 0, 0
 	lb bc, 8, 21
