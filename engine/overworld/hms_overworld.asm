@@ -294,8 +294,19 @@ IsMoveInParty::
 	jr nz, .nextMove
 	ld a, e
 	or a ; if e = 0 then results in 0
-	jr z, .done
+	jr z, .checkFieldMoves
 	jr .nextPoke
+.checkFieldMoves ; here e = 0, we will reincrease it up to PARTY_LENGTH
+	ld hl, wTempFieldMoves
+.nextFieldMoveSlot
+	ld a, [hli]
+	cp d ; is it the specified move?
+	jr z, .foundMove
+	inc e
+	ld a, e
+	cp PARTY_LENGTH	; stop if e = PARTY_LENGTH
+	jr z, .done
+	jr .nextFieldMoveSlot
 .foundMove
 	ld a, e
     ld hl, wPartyMon1Nick

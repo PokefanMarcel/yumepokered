@@ -13,6 +13,10 @@ DontAbandonLearning:
 	ld bc, wPartyMon2Moves - wPartyMon1Moves
 	ld a, [wWhichPokemon]
 	call AddNTimes
+
+	jp LearnAsFieldMove ; marcelnote - for temporary field moves
+.back
+
 	ld d, h
 	ld e, l
 	ld b, NUM_MOVES
@@ -89,10 +93,20 @@ AbandonLearning:
 	ld b, 0
 	ret
 
-PrintLearnedMove:
+;PrintLearnedMove:
+;	ld hl, LearnedMove1Text
+;	call PrintText
+;	ld b, 1
+;	ret
+PrintLearnedMove: ; marcelnote - for temporary field moves
 	ld hl, LearnedMove1Text
 	call PrintText
-	ld b, 1
+	ld bc, $0100
+	ret
+PrintLearnedFieldMove:
+	ld hl, LearnedMove1Text
+	call PrintText
+	ld bc, $0101	;make c=1 to indicate the move was learned as a field move
 	ret
 
 TryingToLearn:
@@ -224,3 +238,84 @@ ForgotAndText:
 HMCantDeleteText:
 	text_far _HMCantDeleteText
 	text_end
+
+; marcelnote - for temporary field moves, adapted from shinpokered
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+LearnAsFieldMove:
+;return z flag if not executed
+;return nz flag if field move slot was learned
+	push hl
+
+	ld a, [wIsInBattle]
+	and a
+	jr nz, .return_fail	; do not allow the learning of a temporary field move in battle
+
+	ld a, [wMoveNum]
+	ld hl, FieldMovesList ; array to search
+	ld de, $0001         ; size of array entries
+	call IsInArray ; sets carry if a is in array
+	jr nc, .return_fail
+
+	ld hl, TeachFieldMoveText
+	call PrintText
+	;call LearnMoveYesNo ; marcelnote - why this and not YesNoChoice?
+	;ld a, [wCurrentMenuItem]
+	;rra ; rotate register a right through carry
+	;jr c, .return_fail	; exit if No is chosen
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr nz, .return_fail	; exit if No is chosen
+
+	; move to the correct field move slot
+	ld hl, wTempFieldMoves
+	ld a, [wWhichPokemon]
+	ld c, a
+	ld b, 0
+	add hl, bc
+
+	; exit if a move is already in that slot
+	ld a, [hl]
+	and a
+	jr z, .next
+	ld hl, AlreadyKnowsFieldMoveText
+	call PrintText
+	jr .return_occupied
+.next
+
+	;fill the slot with the move
+	ld a, [wMoveNum]
+	ld [hl], a
+
+.return_success
+	xor a
+	add 1
+	pop hl
+	jp PrintLearnedFieldMove
+.return_fail
+	xor a
+	pop hl
+	jp DontAbandonLearning.back
+.return_occupied
+	xor a
+	pop hl
+	jp AbandonLearning
+
+TeachFieldMoveText:
+	text_far _TeachFieldMoveText
+	text_end
+
+AlreadyKnowsFieldMoveText:
+	text_far _AlreadyKnowsFieldMoveText
+	text_end
+
+FieldMovesList: ; marcelnote - for temporary field moves
+	db CUT
+	db FLY
+	db SURF
+	db STRENGTH
+	db FLASH
+	db DIG
+	db TELEPORT
+	db SOFTBOILED
+	db -1

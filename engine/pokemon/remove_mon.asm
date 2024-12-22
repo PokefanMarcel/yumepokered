@@ -1,4 +1,6 @@
 _RemovePokemon::
+	call ClearTempFieldMove	; marcelnote - for temporary field moves
+
 	ld hl, wPartyCount
 	ld a, [wRemoveMonFromBox]
 	and a
@@ -93,3 +95,30 @@ _RemovePokemon::
 	ld bc, wBoxMonNicksEnd
 .copyUntilPartyMonNicksEnd
 	jp CopyDataUntil
+
+; marcelnote - for temporary field moves, adapted from shinpokered
+ClearTempFieldMove: ; handles removing Mon from party
+	ld a, [wRemoveMonFromBox]
+	and a
+	ret nz
+
+	ld a, [wWhichPokemon] ; between 0-5
+	ld hl, wTempFieldMoves
+	ld c, a
+	ld b, 0
+	add hl, bc ; hl now points to field move of removed Mon
+
+.loop
+	cp PARTY_LENGTH - 1 ; are we at the last Mon?
+	jr z, .finish
+
+	inc hl
+	ld a, [hld]
+	ld [hli], a
+	inc c
+	ld a, c
+	jr .loop
+
+.finish
+	ld [hl], 0
+	ret

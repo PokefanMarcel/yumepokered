@@ -32,10 +32,10 @@ StartMenu_Pokemon::
 	call SaveScreenTilesToBuffer1
 	ld a, FIELD_MOVE_MON_MENU
 	ld [wTextBoxID], a
-	call DisplayTextBoxID ; display pokemon menu options
+	call DisplayTextBoxID ; display pokemon menu options - this fills wFieldMoves
 	ld hl, wFieldMoves
 	lb bc, 2, 12 ; max menu item ID, top menu item Y
-	ld e, 5
+	ld e, 6 ; marcelnote - was 5, modified for temporary field moves
 .adjustMenuVariablesLoop
 	dec e
 	jr z, .storeMenuVariables
@@ -752,6 +752,7 @@ SwitchPartyMon_InitVarOrSwapData:
 .swappingDifferentMons
 	ld a, b
 	ld [wMenuItemToSwap], a
+	call SwapTempFieldMoves ; marcelnote - for temporary field moves
 	push hl
 	push de
 	ld hl, wPartySpecies
@@ -837,5 +838,36 @@ SwitchPartyMon_InitVarOrSwapData:
 	ld [wMenuItemToSwap], a
 	ld [wPartyMenuTypeOrMessageID], a
 	pop de
+	pop hl
+	ret
+
+; marcelnote - for temporary field moves, adapted from shinpokered
+SwapTempFieldMoves:	; handles swapping Mons in party
+	push hl
+	push bc
+	push de
+
+	ld a, [wCurrentMenuItem]
+	ld c, a
+	ld b, 0
+	ld hl, wTempFieldMoves
+	add hl, bc
+	ld d, h
+	ld e, l ; de points to field move of first Mon
+
+	ld a, [wMenuItemToSwap]
+	ld c, a
+	;ld b, 0 ; b = 0 already
+	ld hl, wTempFieldMoves
+	add hl, bc ; hl points to field move of second Mon
+
+	ld a, [de]
+	ld b, a
+	ld a, [hl]
+	ld [de], a
+	ld [hl], b
+
+	pop de
+	pop bc
 	pop hl
 	ret

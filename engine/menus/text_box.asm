@@ -386,6 +386,7 @@ DisplayFieldMoveMonMenu:
 	ld [hli], a ; wFieldMoves + 1
 	ld [hli], a ; wFieldMoves + 2
 	ld [hli], a ; wFieldMoves + 3
+	ld [hli], a ; wFieldMoves + 4 ; marcelnote - for temporary field moves
 	ld [hli], a ; wNumFieldMoves
 	ld [hl], 12 ; wFieldMovesLeftmostXCoord
 	call GetMonFieldMoves
@@ -422,7 +423,7 @@ DisplayFieldMoveMonMenu:
 	ld c, a
 	pop af
 
-; For each field move, move the top of the text box up 2 rows while the leaving
+; For each field move, move the top of the text box up 2 rows while leaving
 ; the bottom of the text box at the bottom of the screen.
 	ld de, -SCREEN_WIDTH * 2
 .textBoxHeightLoop
@@ -506,7 +507,7 @@ PokemonMenuEntries:
 	next "SWITCH"
 	next "CANCEL@"
 
-GetMonFieldMoves:
+GetMonFieldMoves: ; marcelnote - modified for temporary field moves, from shinpokered
 	ld a, [wWhichPokemon]
 	ld hl, wPartyMon1Moves
 	ld bc, wPartyMon2 - wPartyMon1
@@ -518,18 +519,20 @@ GetMonFieldMoves:
 .loop
 	push hl
 .nextMove
-	dec c
-	jr z, .done
+	dec c ; did we check 4 moves already?
+	;jr z, .done
+	jr z, .tempFieldMove ; marcelnote - for temporary field moves
 	ld a, [de] ; move ID
-	and a
-	jr z, .done
+	and a ; is the move slot empty (NO_MOVE)?
+	;jr z, .done
+	jr z, .tempFieldMove ; marcelnote - for temporary field moves
 	ld b, a
 	inc de
 	ld hl, FieldMoveDisplayData
 .fieldMoveLoop
 	ld a, [hli]
 	cp $ff
-	jr z, .nextMove ; if the move is not a field move
+	jr z, .nextMove ; move b was not found in the field moves list
 	cp b
 	jr z, .foundFieldMove
 	inc hl
@@ -538,7 +541,7 @@ GetMonFieldMoves:
 .foundFieldMove
 	ld a, b
 	ld [wLastFieldMoveID], a
-	ld a, [hli] ; field move name index
+	ld a, [hli] ; field move name index (in FieldMoveDisplayData: 1,2,..)
 	ld b, [hl] ; field move leftmost X coordinate
 	pop hl
 	ld [hli], a ; store name index in wFieldMoves
@@ -557,5 +560,34 @@ GetMonFieldMoves:
 .done
 	pop hl
 	ret
+
+.tempFieldMove	; marcelnote - for temporary field moves, adapted from shinpokered
+	ld a, d ; de points to wPartyMon<n>Moves
+	cp $FF
+	jr z, .done
+
+	;ld a, [wNumFieldMoves] ; this prevents to display more than 4 field moves
+	;cp NUM_MOVES
+	;jr nc, .done
+
+	ld a, [wWhichPokemon]
+	ld c, a
+	ld b, 0
+	ld hl, wTempFieldMoves
+	add hl, bc
+
+	push hl
+	ld a, [hl]
+	ld [wMoveNum], a
+	callfar CheckIfMoveIsKnown ; maybe move has already been counted if Mon knows it as a battle move
+	pop hl
+	jr c, .done
+
+	ld a, [hl]
+	ld b, a ; a = temporary field move
+	ld c, 1
+	ld d, $FF
+	ld hl, FieldMoveDisplayData
+	jr .fieldMoveLoop
 
 INCLUDE "data/moves/field_moves.asm"

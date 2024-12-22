@@ -160,3 +160,15 @@ _VermilionCityCooltrainerFText::
 	cont "The ferry runs"
 	cont "there regularly."
 	done
+
+_VermilionCityCooltrainerMText:: ; marcelnote - to explain temporary field moves
+	text "If you won't use"
+	line "an HM in battle,"
+	cont "teach a #MON"
+	cont "to use it only"
+	cont "outside battles!"
+
+	para "It also works for"
+	line "moves like DIG or"
+	cont "TELEPORT."
+	done

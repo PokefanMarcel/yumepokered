@@ -662,7 +662,7 @@ wPriceTemp:: ds 3 ; BCD
 
 NEXTU
 ; the current mon's field moves
-wFieldMoves:: ds NUM_MOVES
+wFieldMoves:: ds NUM_MOVES + 1 ; marcelnote - +1 spot for temporary field move
 wNumFieldMoves:: db
 wFieldMovesLeftmostXCoord:: db
 wLastFieldMoveID:: db ; unused
@@ -2107,7 +2107,10 @@ wObtainedHiddenCoinsFlags:: flag_array MAX_HIDDEN_COINS
 ; $02 = surfing
 wWalkBikeSurfState:: db
 
-	ds 10
+; marcelnote - for temporary field moves
+wTempFieldMoves:: ds PARTY_LENGTH
+
+	ds 4
 
 wTownVisitedFlag:: flag_array NUM_CITY_MAPS
 

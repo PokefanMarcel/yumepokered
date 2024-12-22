@@ -7,6 +7,7 @@
 	const_export VERMILIONCITY_SAILOR2 ; marcelnote - now hidden after SS Anne leaves
 	const_export VERMILIONCITY_SAILOR3 ; marcelnote - new for Ferry
 	const_export VERMILIONCITY_COOLTRAINER_F ; marcelnote - now shows up after SS Anne leaves
+	const_export VERMILIONCITY_COOLTRAINER_M ; marcelnote - new, explains field moves
 
 VermilionCity_Object:
 	db $43 ; border block
@@ -42,5 +43,6 @@ VermilionCity_Object:
 	object_event 25, 27, SPRITE_SAILOR, WALK, LEFT_RIGHT, TEXT_VERMILIONCITY_SAILOR2
 	object_event 33, 30, SPRITE_SAILOR, STAY, UP, TEXT_VERMILIONCITY_SAILOR3 ; marcelnote - new for Ferry
 	object_event 26, 26, SPRITE_COOLTRAINER_F, WALK, LEFT_RIGHT, TEXT_VERMILIONCITY_COOLTRAINER_F ; marcelnote - new
+	object_event  9, 21, SPRITE_COOLTRAINER_M, WALK, UP_DOWN, TEXT_VERMILIONCITY_COOLTRAINER_M ; marcelnote - new
 
 	def_warps_to VERMILION_CITY

@@ -1,5 +1,5 @@
 ; checks if the mon in [wWhichPokemon] already knows the move in [wMoveNum]
-CheckIfMoveIsKnown:
+CheckIfMoveIsKnown:: ; marcelnote - can now be used with callfar
 	ld a, [wWhichPokemon]
 	ld hl, wPartyMon1Moves
 	ld bc, wPartyMon2 - wPartyMon1

@@ -56,7 +56,8 @@ Its kanji name 夢 is also an homage to [shinpokered](https://github.com/jojobea
 ### QoL updates
 
 - Run by pressing B.
-- Use Cut, Surf, Strength, and Flash just by pressing A on the map. 
+- Use Cut, Surf, Strength, and Flash just by pressing A on the map.
+- HMs and other field moves can be taught without taking a move slot.
 - Bag space expanded to 30 item slots, and a new dedicated bag pocket for key items.
 - Prompt to reuse Repel after finishing one.
 - Haunter, Graveler, Kadabra and Machoke can evolve by interacting with new dedicated NPCs.
@@ -93,7 +94,7 @@ Note: colors are only available in SGB mode for now.
 
 This project owes a lot to existing works, and above all to the pret's [pokered](https://github.com/pret/pokered) disassemby project (without which this wouldn't exist), but also:
 
-- [Shinpokered](https://github.com/jojobear13/shinpokered): playing as girl, experience bar, many many bug fixes,
+- [Shinpokered](https://github.com/jojobear13/shinpokered): playing as girl, experience bar, temporary field moves, many bug fixes,
 - [PureRGB](https://github.com/Vortyne/pureRGB): overworld HM use, ROM space management, repel reuse prompt, many other code snippets,
 - [Extreme Yellow](https://github.com/RainbowMetalPigeon/ExtremeYellow): overworld HM use, dynamic TM seller,
 - [Yellow Legacy](https://github.com/cRz-Shadows/Pokemon_Yellow_Legacy): inspiration for some balance changes,

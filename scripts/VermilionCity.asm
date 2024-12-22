@@ -155,6 +155,7 @@ VermilionCity_TextPointers:
 	dw_const VermilionCitySailor2Text,            TEXT_VERMILIONCITY_SAILOR2
 	dw_const VermilionCitySailor3Text,            TEXT_VERMILIONCITY_SAILOR3 ; marcelnote - new for ferry
 	dw_const VermilionCityCooltrainerFText,       TEXT_VERMILIONCITY_COOLTRAINER_F ; marcelnote - new
+	dw_const VermilionCityCooltrainerMText,       TEXT_VERMILIONCITY_COOLTRAINER_M ; marcelnote - new
 	dw_const VermilionCitySignText,               TEXT_VERMILIONCITY_SIGN
 	dw_const VermilionCityNoticeSignText,         TEXT_VERMILIONCITY_NOTICE_SIGN
 	dw_const MartSignText,                        TEXT_VERMILIONCITY_MART_SIGN
@@ -315,4 +316,8 @@ VermilionCitySailor3Text: ; marcelnote - new for ferry
 
 VermilionCityCooltrainerFText: ; marcelnote - new
 	text_far _VermilionCityCooltrainerFText
+	text_end
+
+VermilionCityCooltrainerMText: ; marcelnote - new
+	text_far _VermilionCityCooltrainerMText
 	text_end
