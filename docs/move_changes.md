@@ -75,6 +75,7 @@ In rare cases moves were nerfed, most notably DIG.
 | DOUBLE EDGE  | Normal   | ~~100~~ **120** | 100            | ~~15~~ **10** |                                                                             |
 | MEGA KICK    | Normal   | 120             | ~~75~~ **85**  | 5             |                                                                             |
 | TRI ATTACK   | Normal   | 80              | 100            | 10            | **Now has a 20% chance to paralyze, freeze, or burn (6.6% chance of each)** |
+| FOCUS ENERGY | Normal   | -               | 100            | 30            | **Now quadruples critical hit rate (instead of dividing it by 4)**          |
 | ROAR         | Normal   | -               | ~~100~~ **85** | 20            |                                                                             |
 
 
