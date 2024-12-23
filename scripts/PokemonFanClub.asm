@@ -106,8 +106,8 @@ PokemonFanClubChairmanText: ; marcelnote - optimized
 	call GiveItem
 	ld hl, .BagFullText
 	jr nc, .print_text
-	ld hl, .BikeVoucherText
 	SetEvent EVENT_GOT_BIKE_VOUCHER
+	ld hl, .BikeVoucherText
 .print_text
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
