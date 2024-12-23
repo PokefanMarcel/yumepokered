@@ -2951,17 +2951,15 @@ ReadSuperRodData:
 	ld e, $0 ; no bite yet
 
 .RandomLoop
+	; marcelnote - check two bits instead of srl, and 75% chance of battle (50% before)
 	call Random
-	srl a
-	;ret c ; 50% chance of no battle
-	; marcelnote - modified for only 25% chance of no battle
-	jr nc, .continue
-	srl a
-	ret c
+	bit 7, a
+	jr nz, .gotBite
+	bit 6, a
+	ret z ; no bite if both bits 6 and 7 are 0
 
-.continue
-	;and %11 ; 2-bit random number
-	and %111 ; marcelnote - changed to 3-bit to have up to 8 different encounters
+.gotBite
+	and %111 ; marcelnote - changed from 2-bit to 3-bit to have up to 8 different encounters
 	cp b
 	jr nc, .RandomLoop ; if a is greater than the number of mons, regenerate
 
