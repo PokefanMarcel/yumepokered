@@ -5528,14 +5528,14 @@ AdjustDamageForMoveType:
 	cp NOT_VERY_EFFECTIVE
 	jr nz, .notHalf
 	ld a, [wDamageMultipliers]
-	and $7f
+	and EFFECTIVENESS_MASK
 	srl a
 	jr .gotMultiplier
 .notHalf
 	cp SUPER_EFFECTIVE
 	jr nz, .gotMultiplier
 	ld a, [wDamageMultipliers]
-	and $7f
+	and EFFECTIVENESS_MASK
 	sla a
 .gotMultiplier
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
