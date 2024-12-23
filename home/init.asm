@@ -51,6 +51,24 @@ DEF rLCDC_DEFAULT EQU (1 << rLCDC_ENABLE) | (1 << rLCDC_WINDOW_TILEMAP) | (1 << 
 	or c
 	jr nz, .loop
 
+;;;;;;;;;;;;;;;;;;;; marcelnote - shinpokered xorshift RNG
+;joenote - implement xorshift RNG
+;Initialize the RNG state. It can be initialized to anything but zero; this is just a simple way of doing it.
+;Initialize with whatever random garbage is in hram to get an initial seed.
+	ld a, [hJoyLast]
+	and a
+	push af
+	ld a, [hFrameCounter]
+	and a
+	push af
+	ld a, [hDividend2]
+	and a
+	push af
+	ld a, [hSpriteAnimFrameCounter]
+	and a
+	push af
+;;;;;;;;;;;;;;;;;;;;
+
 	call ClearVram
 
 	ld hl, STARTOF(HRAM)
@@ -58,6 +76,28 @@ DEF rLCDC_DEFAULT EQU (1 << rLCDC_ENABLE) | (1 << rLCDC_WINDOW_TILEMAP) | (1 << 
 	call FillMemory
 
 	call ClearSprites
+
+;;;;;;;;;;;;;;;;;;;; marcelnote - shinpokered xorshift RNG
+;finish initializing RNG
+;joenote - added lines to save the RNG seed
+	ld hl, wRandomSeed ; $DEF0 in shinpokered
+	pop af
+	call z, .inc_a
+	ld [hRandomAdd], a
+	ld [hli], a
+	pop af
+	call z, .inc_a
+	ld [hRandomSub], a
+	ld [hli], a
+	pop af
+	call z, .inc_a
+	ld [hRandomLast], a
+	ld [hli], a
+	pop af
+	call z, .inc_a
+	ld [hRandomLast + 1], a
+	ld [hli], a
+;;;;;;;;;;;;;;;;;;;;
 
 	ld a, BANK(WriteDMACodeToHRAM)
 	ldh [hLoadedROMBank], a
@@ -117,6 +157,10 @@ DEF rLCDC_DEFAULT EQU (1 << rLCDC_ENABLE) | (1 << rLCDC_WINDOW_TILEMAP) | (1 << 
 	ldh [rLCDC], a
 
 	jp PrepareTitleScreen
+
+.inc_a ; marcelnote - shinpokered xorshift RNG
+	inc a
+	ret
 
 ClearVram::
 	ld hl, STARTOF(VRAM)

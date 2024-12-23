@@ -2110,7 +2110,8 @@ wWalkBikeSurfState:: db
 ; marcelnote - for temporary field moves
 wTempFieldMoves:: ds PARTY_LENGTH
 
-	ds 4
+; marcelnote - shinpokered xorshift RNG
+wRandomSeed:: ds 4
 
 wTownVisitedFlag:: flag_array NUM_CITY_MAPS
 

@@ -381,7 +381,9 @@ hSavedMapTextPtr:: dw
 	ds 1
 ENDU
 
-	ds 4
+hRandomLast:: ds 2 ; marcelnote - shinpokered xorshift RNG
+
+	ds 2
 
 hWhoseTurn:: db ; 0 on player's turn, 1 on enemy's turn
 
