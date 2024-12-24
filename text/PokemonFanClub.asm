@@ -69,7 +69,7 @@ _PokemonFanClubChairmanStoryText::
 	cont "love it!"
 
 	para "Hug it...when..."
-	cont "sleeping...warm"
+	line "sleeping...warm" ; marcelnote - fixed from was cont
 	cont "and cuddly..."
 	cont "spectacular..."
 	cont "ravishing..."
