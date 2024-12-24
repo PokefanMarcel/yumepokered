@@ -1,11 +1,15 @@
 roms := \
-	pokered.gbc \
-	pokeblue.gbc \
-	pokegreen.gbc \
-	pokeblue_debug.gbc
+	yumepokered.gb \
+	yumepokeblue.gb \
+	yumepokegreen.gb \
+	yumepokeblue_debug.gb \
+	yumepokerouge.gb \
+	yumepokeverte.gb \
+	yumepokebleue.gb \
+	yumepokebleue_debug.gb
 patches := \
-	pokered.patch \
-	pokeblue.patch
+	yumepokered.patch \
+	yumepokeblue.patch
 
 rom_obj := \
 	audio.o \
@@ -18,12 +22,16 @@ rom_obj := \
 	gfx/sprites.o \
 	gfx/tilesets.o
 
-pokered_obj        := $(rom_obj:.o=_red.o)
-pokeblue_obj       := $(rom_obj:.o=_blue.o)
-pokegreen_obj       := $(rom_obj:.o=_green.o)
-pokeblue_debug_obj := $(rom_obj:.o=_blue_debug.o)
-pokered_vc_obj     := $(rom_obj:.o=_red_vc.o)
-pokeblue_vc_obj    := $(rom_obj:.o=_blue_vc.o)
+yumepokered_obj         := $(rom_obj:.o=_red.o)
+yumepokeblue_obj        := $(rom_obj:.o=_blue.o)
+yumepokegreen_obj       := $(rom_obj:.o=_green.o)
+yumepokeblue_debug_obj  := $(rom_obj:.o=_blue_debug.o)
+yumepokered_vc_obj      := $(rom_obj:.o=_red_vc.o)
+yumepokeblue_vc_obj     := $(rom_obj:.o=_blue_vc.o)
+yumepokerouge_obj       := $(rom_obj:.o=_rouge.o)
+yumepokeverte_obj       := $(rom_obj:.o=_verte.o)
+yumepokebleue_obj       := $(rom_obj:.o=_bleue.o)
+yumepokebleue_debug_obj := $(rom_obj:.o=_bleue_debug.o)
 
 
 ### Build tools
@@ -50,12 +58,16 @@ RGBLINK ?= $(RGBDS)rgblink
 .PHONY: all red blue blue_debug clean tidy compare tools
 
 all: $(roms)
-red:        pokered.gbc
-blue:       pokeblue.gbc
-green:      pokegreen.gbc
-blue_debug: pokeblue_debug.gbc
-red_vc:     pokered.patch
-blue_vc:    pokeblue.patch
+red:         yumepokered.gb
+blue:        yumepokeblue.gb
+green:       yumepokegreen.gb
+blue_debug:  yumepokeblue_debug.gb
+red_vc:      yumepokered.patch
+blue_vc:     yumepokeblue.patch
+rouge:       yumepokerouge.gb
+verte:       yumepokeverte.gb
+bleue:       yumepokebleue.gb
+bleue_debug: yumepokebleue.gb
 
 clean: tidy
 	find gfx \
@@ -66,19 +78,23 @@ clean: tidy
 
 tidy:
 	$(RM) $(roms) \
-	      $(roms:.gbc=.sym) \
-	      $(roms:.gbc=.map) \
+	      $(roms:.gb=.sym) \
+	      $(roms:.gb=.map) \
 	      $(patches) \
-	      $(patches:.patch=_vc.gbc) \
+	      $(patches:.patch=_vc.gb) \
 	      $(patches:.patch=_vc.sym) \
 	      $(patches:.patch=_vc.map) \
 	      $(patches:%.patch=vc/%.constants.sym) \
-	      $(pokered_obj) \
-	      $(pokeblue_obj) \
-	      $(pokegreen_obj) \
-	      $(pokered_vc_obj) \
-	      $(pokeblue_vc_obj) \
-	      $(pokeblue_debug_obj) \
+	      $(yumepokered_obj) \
+	      $(yumepokeblue_obj) \
+	      $(yumepokegreen_obj) \
+	      $(yumepokered_vc_obj) \
+	      $(yumepokeblue_vc_obj) \
+	      $(yumepokeblue_debug_obj) \
+	      $(yumepokerouge_obj) \
+	      $(yumepokeverte_obj) \
+	      $(yumepokebleue_obj) \
+	      $(yumepokebleue_debug_obj) \
 	      rgbdscheck.o
 	$(MAKE) clean -C tools/
 
@@ -95,14 +111,18 @@ ifeq ($(DEBUG),1)
 RGBASMFLAGS += -E
 endif
 
-$(pokered_obj):        RGBASMFLAGS += -D _RED
-$(pokeblue_obj):       RGBASMFLAGS += -D _BLUE
-$(pokegreen_obj):      RGBASMFLAGS += -D _GREEN
-$(pokeblue_debug_obj): RGBASMFLAGS += -D _BLUE -D _DEBUG
-$(pokered_vc_obj):     RGBASMFLAGS += -D _RED -D _RED_VC
-$(pokeblue_vc_obj):    RGBASMFLAGS += -D _BLUE -D _BLUE_VC
+$(yumepokered_obj):         RGBASMFLAGS += -D _RED
+$(yumepokegreen_obj):       RGBASMFLAGS += -D _GREEN
+$(yumepokeblue_obj):        RGBASMFLAGS += -D _BLUE
+$(yumepokeblue_debug_obj):  RGBASMFLAGS += -D _BLUE -D _DEBUG
+$(yumepokered_vc_obj):      RGBASMFLAGS += -D _RED -D _RED_VC
+$(yumepokeblue_vc_obj):     RGBASMFLAGS += -D _BLUE -D _BLUE_VC
+$(yumepokerouge_obj):       RGBASMFLAGS += -D _RED -D _FRA
+$(yumepokeverte_obj):       RGBASMFLAGS += -D _GREEN -D _FRA
+$(yumepokebleue_obj):       RGBASMFLAGS += -D _BLUE -D _FRA
+$(yumepokebleue_debug_obj): RGBASMFLAGS += -D _BLUE -D _FRA -D _DEBUG
 
-%.patch: vc/%.constants.sym %_vc.gbc %.gbc vc/%.patch.template
+%.patch: vc/%.constants.sym %_vc.gb %.gb vc/%.patch.template
 	tools/make_patch $*_vc.sym $^ $@
 
 rgbdscheck.o: rgbdscheck.asm
@@ -124,12 +144,16 @@ $1: $2 $$(shell tools/scan_includes $2) $(preinclude_deps) | rgbdscheck.o
 endef
 
 # Dependencies for objects (drop _red and _blue from asm file basenames)
-$(foreach obj, $(pokered_obj), $(eval $(call DEP,$(obj),$(obj:_red.o=.asm))))
-$(foreach obj, $(pokeblue_obj), $(eval $(call DEP,$(obj),$(obj:_blue.o=.asm))))
-$(foreach obj, $(pokegreen_obj), $(eval $(call DEP,$(obj),$(obj:_green.o=.asm))))
-$(foreach obj, $(pokeblue_debug_obj), $(eval $(call DEP,$(obj),$(obj:_blue_debug.o=.asm))))
-$(foreach obj, $(pokered_vc_obj), $(eval $(call DEP,$(obj),$(obj:_red_vc.o=.asm))))
-$(foreach obj, $(pokeblue_vc_obj), $(eval $(call DEP,$(obj),$(obj:_blue_vc.o=.asm))))
+$(foreach obj, $(yumepokered_obj), $(eval $(call DEP,$(obj),$(obj:_red.o=.asm))))
+$(foreach obj, $(yumepokeblue_obj), $(eval $(call DEP,$(obj),$(obj:_blue.o=.asm))))
+$(foreach obj, $(yumepokegreen_obj), $(eval $(call DEP,$(obj),$(obj:_green.o=.asm))))
+$(foreach obj, $(yumepokeblue_debug_obj), $(eval $(call DEP,$(obj),$(obj:_blue_debug.o=.asm))))
+$(foreach obj, $(yumepokered_vc_obj), $(eval $(call DEP,$(obj),$(obj:_red_vc.o=.asm))))
+$(foreach obj, $(yumepokeblue_vc_obj), $(eval $(call DEP,$(obj),$(obj:_blue_vc.o=.asm))))
+$(foreach obj, $(yumepokerouge_obj), $(eval $(call DEP,$(obj),$(obj:_rouge.o=.asm))))
+$(foreach obj, $(yumepokeverte_obj), $(eval $(call DEP,$(obj),$(obj:_verte.o=.asm))))
+$(foreach obj, $(yumepokebleue_obj), $(eval $(call DEP,$(obj),$(obj:_bleue.o=.asm))))
+$(foreach obj, $(yumepokebleue_debug_obj), $(eval $(call DEP,$(obj),$(obj:_bleue_debug.o=.asm))))
 
 # Dependencies for VC files that need to run scan_includes
 %.constants.sym: %.constants.asm $(shell tools/scan_includes %.constants.asm) $(preinclude_deps) | rgbdscheck.o
@@ -141,21 +165,29 @@ endif
 %.asm: ;
 
 
-pokered_pad        = 0x00
-pokeblue_pad       = 0x00
-pokegreen_pad      = 0x00
-pokered_vc_pad     = 0x00
-pokeblue_vc_pad    = 0x00
-pokeblue_debug_pad = 0xff
+yumepokered_pad         = 0x00
+yumepokeblue_pad        = 0x00
+yumepokegreen_pad       = 0x00
+yumepokered_vc_pad      = 0x00
+yumepokeblue_vc_pad     = 0x00
+yumepokeblue_debug_pad  = 0xff
+yumepokerouge_pad       = 0x00
+yumepokeverte_pad       = 0x00
+yumepokebleue_pad       = 0x00
+yumepokebleue_debug_pad = 0xff
 
-pokered_opt        = -jsv -n 0 -k 01 -l 0x33 -m 0x13 -r 03 -t "POKEMON RED"
-pokeblue_opt       = -jsv -n 0 -k 01 -l 0x33 -m 0x13 -r 03 -t "POKEMON BLUE"
-pokegreen_opt      = -jsv -n 0 -k 01 -l 0x33 -m 0x13 -r 03 -t "POKEMON GREEN"
-pokeblue_debug_opt = -jsv -n 0 -k 01 -l 0x33 -m 0x13 -r 03 -t "POKEMON BLUE"
-pokered_vc_opt     = -jsv -n 0 -k 01 -l 0x33 -m 0x13 -r 03 -t "POKEMON RED"
-pokeblue_vc_opt    = -jsv -n 0 -k 01 -l 0x33 -m 0x13 -r 03 -t "POKEMON BLUE"
+yumepokered_opt         = -jsv -n 0 -k 01 -l 0x33 -m 0x13 -r 03 -t "POKEMON RED"
+yumepokegreen_opt       = -jsv -n 0 -k 01 -l 0x33 -m 0x13 -r 03 -t "POKEMON GREEN"
+yumepokeblue_opt        = -jsv -n 0 -k 01 -l 0x33 -m 0x13 -r 03 -t "POKEMON BLUE"
+yumepokeblue_debug_opt  = -jsv -n 0 -k 01 -l 0x33 -m 0x13 -r 03 -t "POKEMON BLUE"
+yumepokered_vc_opt      = -jsv -n 0 -k 01 -l 0x33 -m 0x13 -r 03 -t "POKEMON RED"
+yumepokeblue_vc_opt     = -jsv -n 0 -k 01 -l 0x33 -m 0x13 -r 03 -t "POKEMON BLUE"
+yumepokerouge_opt       = -jsv -n 0 -k 01 -l 0x33 -m 0x13 -r 03 -t "POKEMON RED"
+yumepokeverte_opt       = -jsv -n 0 -k 01 -l 0x33 -m 0x13 -r 03 -t "POKEMON GREEN"
+yumepokebleue_opt       = -jsv -n 0 -k 01 -l 0x33 -m 0x13 -r 03 -t "POKEMON BLUE"
+yumepokebleue_debug_opt = -jsv -n 0 -k 01 -l 0x33 -m 0x13 -r 03 -t "POKEMON BLUE"
 
-%.gbc: $$(%_obj) layout.link
+%.gb: $$(%_obj) layout.link
 	$(RGBLINK) -p $($*_pad) -d -m $*.map -n $*.sym -l layout.link -o $@ $(filter %.o,$^)
 	$(RGBFIX) -p $($*_pad) $($*_opt) $@
 

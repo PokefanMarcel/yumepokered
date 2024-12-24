@@ -235,7 +235,12 @@ SECTION "Text 10", ROMX
 
 INCLUDE "data/text/text_5.asm"
 
-INCLUDE "text/PalletTown.asm"
+IF DEF(_FRA)
+	INCLUDE "text/text-fr/PalletTown-fr.asm"
+ELSE
+	INCLUDE "text/PalletTown.asm"
+ENDC
+
 INCLUDE "text/ViridianCity.asm"
 INCLUDE "text/PewterCity.asm"
 INCLUDE "text/CeruleanCity.asm"
