@@ -9,7 +9,7 @@ TypeNames:
 	dw .Rock
 	dw .Bird
 	dw .Bug
-	dw .Dragon ; marcelnote - switched GHOST and DRAGON
+	dw .Ghost
 
 REPT UNUSED_TYPES_END - UNUSED_TYPES
 	dw .Normal
@@ -21,7 +21,7 @@ ENDR
 	dw .Electric
 	dw .Psychic
 	dw .Ice
-	dw .Ghost ; marcelnote - switched GHOST and DRAGON
+	dw .Dragon
 
 	assert_table_length NUM_TYPES
 
