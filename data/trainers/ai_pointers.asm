@@ -9,25 +9,25 @@ TrainerAIPointers:
 	dbw 3, GenericAI      ; Bug Catcher
 	dbw 3, GenericAI      ; Lass
 	dbw 3, GenericAI      ; Sailor
-	dbw 3, JrTrainerAI    ; JrTrainerM     ; 25% chance of Potion if HP < 1/5 HPMax
-	dbw 3, JrTrainerAI    ; JrTrainerF     ; 25% chance of Potion if HP < 1/5 HPMax
+	dbw 1, JrTrainerAI    ; JrTrainerM     ; 25% chance of Potion if HP < 1/5 HPMax
+	dbw 1, JrTrainerAI    ; JrTrainerF     ; 25% chance of Potion if HP < 1/5 HPMax
 	dbw 3, GenericAI      ; Pokemaniac
 	dbw 3, GenericAI      ; Supernerd
 	dbw 3, GenericAI      ; Hiker
-	dbw 3, BikerAI        ; Biker     ; 13% chance of XSpeed
+	dbw 1, BikerAI        ; Biker     ; 13% chance of XSpeed
 	dbw 3, GenericAI      ; Burglar
-	dbw 3, EngineerAI     ; Engineer  ; 13% chance of XDefend
+	dbw 1, EngineerAI     ; Engineer  ; 13% chance of XDefend
 	dbw 3, GenericAI      ; Fisher
 	dbw 3, GenericAI      ; Swimmer
 	dbw 3, GenericAI      ; Cue Ball
 	dbw 3, GenericAI      ; Gambler
 	dbw 3, GenericAI      ; Beauty
-	dbw 3, PsychicAI      ; Psychic   ; 13% chance of XSpecial
+	dbw 1, PsychicAI      ; Psychic   ; 13% chance of XSpecial
 	dbw 3, GenericAI      ; Rocker
 	dbw 3, JugglerAI      ; Juggler   ; 25% chance to switch Mon
-	dbw 3, TamerAI        ; Tamer     ; 13% chance of XAccuracy
+	dbw 1, TamerAI        ; Tamer     ; 13% chance of XAccuracy
 	dbw 3, GenericAI      ; Bird Keeper
-	dbw 2, BlackbeltAI    ; Blackbelt ; 13% chance of XAttack
+	dbw 1, BlackbeltAI    ; Blackbelt ; 13% chance of XAttack, was 2
 	dbw 3, GenericAI      ; Rival1
 	dbw 1, Rival3AI       ; Prof.Oak  ; marcelnote - was 3, GenericAI
 	dbw 1, GenericAI      ; Chief
