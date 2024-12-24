@@ -22,8 +22,7 @@ IF DEF(_RED)
 	db ONIX
 	db PONYTA
 	db MAGIKARP
-ENDC
-IF DEF(_BLUE)
+ELIF DEF(_BLUE)
 	db STARTER2
 	db STARTER1
 	db STARTER3
@@ -40,8 +39,7 @@ IF DEF(_BLUE)
 	db PORYGON
 	db GENGAR
 	db RAICHU
-ENDC
-IF DEF(_GREEN) ; PureRGBnote: GREENBUILD: the pokemon that appear on the start screen on green version.
+ELIF DEF(_GREEN) ; PureRGBnote: GREENBUILD: the pokemon that appear on the start screen on green version.
 	db STARTER3
 	db STARTER1
 	db STARTER2

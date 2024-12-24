@@ -70,11 +70,9 @@ CreditsTextPointers:
 CredVersion:
 IF DEF(_RED)
 	db -8, "RED VERSION STAFF@"
-ENDC
-IF DEF(_BLUE)
+ELIF DEF(_BLUE)
 	db -8, "BLUE VERSION STAFF@"
-ENDC
-IF DEF(_GREEN)
+ELIF DEF(_GREEN)
 	db -8, "GREEN VERSION STAFF@" ; PureRGBnote: GREENBUILD:
 ENDC
 CredTajiri:

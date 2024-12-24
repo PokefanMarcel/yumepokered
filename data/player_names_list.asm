@@ -1,4 +1,5 @@
 IF DEF(_RED)
+
 DefaultNamesPlayerList:
 	db "NEW NAME@"
 	db "RED@"
@@ -10,9 +11,9 @@ DefaultNamesRivalList:
 	db "BLUE@"
 	db "GARY@"
 	db "JOHN@"
-ENDC
 
-IF DEF(_BLUE)
+ELIF DEF(_BLUE)
+
 DefaultNamesPlayerList:
 	db "NEW NAME@"
 	db "BLUE@"
@@ -24,9 +25,9 @@ DefaultNamesRivalList:
 	db "RED@"
 	db "ASH@"
 	db "JACK@"
-ENDC
 
-IF DEF(_GREEN) ; PureRGBnote: GREENBUILD: default names specific to pokemon green
+ELIF DEF(_GREEN) ; PureRGBnote: GREENBUILD: default names specific to pokemon green
+
 DefaultNamesPlayerList:
 	db "NEW NAME@"
 	db "GREEN@"
@@ -38,6 +39,7 @@ DefaultNamesRivalList:
 	db "BLUE@"
 	db "GARY@"
 	db "GABE@"
+
 ENDC
 
 DefaultNamesPlayerListF: ; marcelnote - add female player
