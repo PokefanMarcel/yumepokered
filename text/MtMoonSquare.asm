@@ -2,9 +2,10 @@
 _MtMoonSquareCooltrainerFText::
 	text "CLEFAIRY comes"
 	line "to the pond"
-	cont "sometimes. You"
-	cont "might spot one"
-	cont "if you're lucky!"
+	cont "sometimes."
+
+	para "You might spot one"
+	line "if you're lucky!"
 	done
 
 _MtMoonSquareClefairyText::
