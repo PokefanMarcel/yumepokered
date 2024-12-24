@@ -3043,7 +3043,7 @@ PrintMenuItem: ; marcelnote - this menu was revamped to also show power and accu
 	jr c, .4spaces ; ROCK, BIRD
 	jr z, .5spaces ; BUG
 	cp FIRE
-	jr c, .2spaces ; DRAGON
+	jr c, .3spaces ; GHOST
 	jr z, .4spaces ; FIRE
 	cp ELECTRIC
 	jr c, .3spaces ; WATER, GRASS
@@ -3051,7 +3051,7 @@ PrintMenuItem: ; marcelnote - this menu was revamped to also show power and accu
 	cp ICE
 	jr c, .1space ; PSYCHIC
 	jr z, .5spaces ; ICE
-	jr .3spaces ; GHOST
+	jr .2spaces ; DRAGON
 .1space
 	hlcoord 2, 8
 	jr .printMoveType
