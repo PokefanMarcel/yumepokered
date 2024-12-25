@@ -2180,10 +2180,11 @@ AerodactylEvosMoves:
 ; Learnset
 	db 20, SUPERSONIC
 	db 27, BITE
-	db 33, SCREECH
-	db 39, TAKE_DOWN
-	db 45, ROCK_SLIDE
-	db 52, HYPER_BEAM
+	db 33, ROCK_THROW
+	db 37, TAKE_DOWN
+	db 42, ROCK_SLIDE
+	db 48, SCREECH
+	db 54, HYPER_BEAM
 	; SLAM?
 	db 0
 
