@@ -12,6 +12,6 @@ _SafariZoneEastTrainerTipsText::
 	done
 
 _SafariZoneEastSignText::
-	text "EAST AREA" ; marcelnote - corrected from CENTER AREA
+	text "EAST AREA"         ; marcelnote - corrected from CENTER AREA
 	line "WEST: CENTER AREA" ; marcelnote - was NORTH: AREA 2
 	done
