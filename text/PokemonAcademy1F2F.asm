@@ -20,9 +20,9 @@ _PokemonAcademy1FCooltrainerFText::
 	cont "are good against"
 	cont "psychic types?"
 
-	para "And BUG moves"
+	para "And bug moves"
 	line "are not effective"
-	cont "against POISON"
+	cont "against poison"
 	cont "types."
 	done
 
