@@ -279,9 +279,9 @@ ItemUseBall:
 
 ; Determine BallFactor. It's 8 for Great Balls and 12 for the others.
 	ld a, [wCurItem]
-	cp GREAT_BALL
-	ld a, 12
-	jr nz, .skip1
+	cp SAFARI_BALL  ; joenote - Great balls now have factor of 12 and Safari balls a factor of 8
+	ld a, 12		; This is because a lower ball factor helps catch pokemon that have fuller HP
+	jr nz, .skip1	; So this was probably intended for the safari zone since pokemon there can't be weakened
 	ld a, 8
 
 .skip1
@@ -363,6 +363,7 @@ ItemUseBall:
 ; Poké Ball:         BallFactor2 = 255
 ; Great Ball:        BallFactor2 = 200
 ; Ultra/Safari Ball: BallFactor2 = 150
+; marcelnote - Safari ball now 125
 	ld a, [wCurItem]
 	ld b, 255
 	cp POKE_BALL
@@ -373,6 +374,7 @@ ItemUseBall:
 	ld b, 150
 	cp ULTRA_BALL
 	jr z, .skip4
+	ld b, 125 ; marcelnote - for Safari balls
 
 .skip4
 ; Let Y = (CatchRate * 100) / BallFactor2. Calculate Y.
