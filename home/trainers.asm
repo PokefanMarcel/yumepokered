@@ -149,7 +149,7 @@ ENDC
 	xor a ; EXCLAMATION_BUBBLE
 	ld [wWhichEmotionBubble], a
 	predef EmotionBubble
-	ld a, D_RIGHT | D_LEFT | D_UP | D_DOWN
+	ld a, D_RIGHT | D_LEFT | D_UP | D_DOWN | A_BUTTON ; marcelnote - added A_BUTTON (otherwise can Surf/Cut if trainer starts to talk)
 	ld [wJoyIgnore], a
 	xor a
 	ldh [hJoyHeld], a
