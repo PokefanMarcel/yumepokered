@@ -27,6 +27,7 @@ WardensHouseWardenText: ; marcelnote - optimized
 	ld hl, .Gibberish3Text
 	jr nz, .print_text
 	ld hl, .Gibberish2Text
+	jr .print_text
 .have_gold_teeth
 	ld hl, .GaveTheGoldTeethText
 	call PrintText
