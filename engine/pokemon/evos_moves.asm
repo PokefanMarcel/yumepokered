@@ -137,7 +137,7 @@ Evolution_PartyMonLoop: ; loop over party mons
 	ld a, [hl]
 	ld [wCurSpecies], a
 	ld [wLoadedMonSpecies], a
-	ld [wEvoNewSpecies], a
+	ld [wEvoNewSpecies], a  ; marcelnote - this two line seems redundant because already loaded above
 	ld a, MONSTER_NAME
 	ld [wNameListType], a
 	ld a, BANK(TrainerNames) ; bank is not used for monster names
