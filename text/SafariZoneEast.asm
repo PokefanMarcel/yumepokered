@@ -1,5 +1,6 @@
 _SafariZoneEastRestHouseSignText::
 	text "REST HOUSE"
+	line "EAST ZONE" ; marcelnote - added
 	done
 
 _SafariZoneEastTrainerTipsText::
@@ -11,6 +12,6 @@ _SafariZoneEastTrainerTipsText::
 	done
 
 _SafariZoneEastSignText::
-	text "CENTER AREA"
-	line "NORTH: AREA 2"
+	text "EAST AREA" ; marcelnote - corrected from CENTER AREA
+	line "WEST: CENTER AREA" ; marcelnote - was NORTH: AREA 2
 	done
