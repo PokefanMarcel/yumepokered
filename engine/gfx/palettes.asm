@@ -139,11 +139,14 @@ SetPal_Overworld:
 	ld de, wPalPacket
 	ld bc, $10
 	call CopyData
+	; marcelnote - cases were added here, maybe could deal with it with a list instead
 	ld a, [wCurMapTileset]
 	cp CEMETERY
 	jr z, .PokemonTowerOrAgatha
 	cp CAVERN
 	jr z, .caveOrBruno
+	cp SAFARI
+	jr z, .SafariZone
 	ld a, [wCurMap]
 	cp FIRST_INDOOR_MAP
 	jr c, .townOrRoute
@@ -154,7 +157,7 @@ SetPal_Overworld:
 	cp CELADON_GROVE_NORTH_GATE
 	jr z, .townOrRoute ; indoor map is treated as Route
 	cp CELADON_GROVE_SOUTH_GATE
-	jr z, .townOrRoute ; indoor map is treated as Route
+	jr z, .CeladonGrove
 	cp LORELEIS_ROOM
 	jr z, .Lorelei
 	cp BRUNOS_ROOM
@@ -187,6 +190,9 @@ SetPal_Overworld:
 	jr .town
 .Lorelei
 	xor a ; PAL_PALLET - 1
+	jr .town
+.SafariZone
+	ld a, PAL_ROUTE - 1
 	jr .town
 
 ; used when a Pokemon is the only thing on the screen
