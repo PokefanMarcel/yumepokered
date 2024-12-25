@@ -28,9 +28,9 @@ Route15Gate2FOaksAideText: ; marcelnote - simplified by using wNameBuffer in tex
 	dec a ; OAKS_AIDE_GOT_ITEM?
 	jr nz, .no_item
 	SetEvent EVENT_GOT_EXP_ALL
-.got_item
 	ld hl, wStatusFlags1      ; marcelnote - ExpAll can be activated/deactivated
 	set BIT_EXP_ALL_ACTIVE, [hl]
+.got_item
 	ld hl, .ExpAllText
 	call PrintText
 .no_item
