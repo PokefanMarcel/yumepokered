@@ -1,5 +1,6 @@
 _SafariZoneWestRestHouseSignText::
 	text "REST HOUSE"
+	line "WEST AREA"
 	done
 
 _SafariZoneWestFindWardensTeethSignText::
@@ -26,6 +27,6 @@ _SafariZoneWestTrainerTipsText::
 	done
 
 _SafariZoneWestSignText::
-	text "AREA 3"
+	text "WEST AREA" ; marcelnote - was AREA 3
 	line "EAST: CENTER AREA"
 	done
