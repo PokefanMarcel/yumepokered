@@ -121,7 +121,7 @@ _YellowsHouse2FYellowText:: ; marcelnote - new for Yellow's house
 	done
 
 _YellowsHouse2FGameboyText:: ; marcelnote - new for Yellow's house
-	text "It's a GAMEBOY!"
+	text "It's a GAME BOY!"
 	line "...But the"
 	cont "battery's dead."
 	done
