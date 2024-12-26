@@ -147,6 +147,10 @@ SetPal_Overworld:
 	jr z, .caveOrBruno
 	cp SAFARI
 	jr z, .SafariZone
+	cp SHIP
+	jr z, .shipOrPort
+	cp SHIP_PORT
+	jr z, .shipOrPort
 	ld a, [wCurMap]
 	cp FIRST_INDOOR_MAP
 	jr c, .townOrRoute
@@ -193,6 +197,9 @@ SetPal_Overworld:
 	jr .town
 .SafariZone
 	ld a, PAL_ROUTE - 1
+	jr .town
+.shipOrPort
+	ld a, PAL_VERMILION - 1
 	jr .town
 
 ; used when a Pokemon is the only thing on the screen
