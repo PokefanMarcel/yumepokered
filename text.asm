@@ -290,4 +290,8 @@ INCLUDE "data/pokemon/dex_text.asm"
 
 SECTION "Move Names", ROMX
 
+IF DEF(_FRA)
+INCLUDE "translation/fra/names-fra.asm"
+ELSE
 INCLUDE "data/moves/names.asm"
+ENDC
