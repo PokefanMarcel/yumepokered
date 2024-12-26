@@ -139,7 +139,7 @@ _MrFujisHouseMrFujiTakeThisText:: ; marcelnote - new
 
 _MrFujisHouseMrFujiReceivedCitrusPassText:: ; marcelnote - new
 	text "<PLAYER> received"
-	line "an @"
+	line "a @"
 	text_ram wStringBuffer
 	text "!@"
 	text_end
