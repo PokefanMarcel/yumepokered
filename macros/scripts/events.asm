@@ -439,7 +439,7 @@ ENDM
 ;ENDM
 
 
-; returns the complement of whether either event is set in Z flag
+; sets Z flag if no event is set
 ;\1 = event index 1
 ;\2 = event index 2
 ;\3 = try to reuse a (optional)
