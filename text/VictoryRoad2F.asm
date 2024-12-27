@@ -85,6 +85,53 @@ _VictoryRoad2FSuperNerd3AfterBattleText::
 	cont "here."
 	done
 
-_VictoryRoad2FPaperText:: ; marcelnote - new
-	text "Test paper."
+_VictoryRoad2FGrampsIntroText:: ; marcelnote - new
+	text "The journey of a"
+	line "#MON trainer"
+	cont "is a quest for"
+	cont "harmony."
+	prompt
+
+_VictoryRoad2FGrampsHaveYouTestedText:: ; marcelnote - new
+	text "Have you tested"
+	line "your skills at"
+	cont "the FIGHTING DOJO"
+	cont "in SAFFRON?"
+
+	para "Prove yourself"
+	line "there, and I will"
+	cont "help you find"
+	cont "balance."
+	done
+
+_VictoryRoad2FGrampsGiveHimonleeText:: ; marcelnote - new
+	text "I see you've chosen"
+	line "defense and"
+	cont "fortitude before."
+
+	para "To balance your"
+	line "training, I offer"
+	cont "you this agile"
+	cont "warrior."
+	prompt
+
+_VictoryRoad2FGrampsGiveHimonchanText:: ; marcelnote - new
+	text "I see you've chosen"
+	line "offense and"
+	cont "speed before."
+
+	para "To balance your"
+	line "training, I offer"
+	cont "this steadfast"
+	cont "fighter."
+	prompt
+
+_VictoryRoad2FGrampsGreatFirebirdText:: ; marcelnote - new
+	text "A great firebird"
+	line "once took refuge"
+	cont "in this cave."
+
+	para "I train strong"
+	line "#MON here to"
+	cont "honor its legacy."
 	done
