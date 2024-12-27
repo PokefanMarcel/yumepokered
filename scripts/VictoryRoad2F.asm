@@ -76,7 +76,7 @@ VictoryRoad2F_TextPointers:
 	dw_const VictoryRoad2FSuperNerd2Text,   TEXT_VICTORYROAD2F_SUPER_NERD2
 	dw_const VictoryRoad2FSuperNerd3Text,   TEXT_VICTORYROAD2F_SUPER_NERD3
 	;dw_const VictoryRoad2FMoltresText,      TEXT_VICTORYROAD2F_MOLTRES ; marcelnote - removed Moltres from Victory Road
-	;dw_const VictoryRoad2FPaperText,        TEXT_VICTORYROAD2F_PAPER ; marcelnote - added
+	dw_const VictoryRoad2FGrampsText,       TEXT_VICTORYROAD2F_GRAMPS ; marcelnote - added
 	dw_const PickUpItemText,                TEXT_VICTORYROAD2F_TM_SUBMISSION
 	dw_const PickUpItemText,                TEXT_VICTORYROAD2F_FULL_HEAL
 	dw_const PickUpItemText,                TEXT_VICTORYROAD2F_TM_MEGA_KICK
@@ -206,6 +206,57 @@ VictoryRoad2FSuperNerd3AfterBattleText:
 	text_far _VictoryRoad2FSuperNerd3AfterBattleText
 	text_end
 
-VictoryRoad2FPaperText: ; marcelnote - new
-	text_far _VictoryRoad2FPaperText
+VictoryRoad2FGrampsText: ; marcelnote - new, adapted from Silph Co Lapras guy
+	text_asm
+	CheckEvent EVENT_VICTORY_ROAD_2F_GOT_HITMON
+	ld hl, .GreatFirebirdText
+	jr nz, .print_text
+	ld hl, .IntroText
+	call PrintText
+	CheckEitherEventSet EVENT_GOT_HITMONLEE, EVENT_GOT_HITMONCHAN
+	ld hl, .HaveYouTestedText
+	jr nz, .give_hitmon
+.print_text
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.give_hitmon
+	CheckEvent EVENT_GOT_HITMONCHAN
+	ld c, 40
+	ld b, HITMONLEE
+	ld hl, .GiveHitmonleeText
+	jr nz, .got_text_and_mon
+	ld b, HITMONCHAN
+	ld hl, .GiveHitmonchanText
+.got_text_and_mon
+	push bc ; save Mon and level info
+	call PrintText
+	pop bc
+	call GivePokemon
+	jr nc, .done
+	;ld a, [wSimulatedJoypadStatesEnd]
+	;and a
+	;call z, WaitForTextScrollButtonPress
+	;call EnableAutoTextBoxDrawing
+	SetEvent EVENT_VICTORY_ROAD_2F_GOT_HITMON
+.done
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+.IntroText:
+	text_far _VictoryRoad2FGrampsIntroText
+	text_end
+
+.HaveYouTestedText:
+	text_far _VictoryRoad2FGrampsHaveYouTestedText
+	text_end
+
+.GiveHitmonchanText:
+	text_far _VictoryRoad2FGrampsGiveHimonchanText
+	text_end
+
+.GiveHitmonleeText:
+	text_far _VictoryRoad2FGrampsGiveHimonleeText
+	text_end
+
+.GreatFirebirdText:
+	text_far _VictoryRoad2FGrampsGreatFirebirdText
 	text_end

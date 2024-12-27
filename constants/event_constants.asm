@@ -531,6 +531,7 @@
 	const EVENT_BEAT_VICTORY_ROAD_2_TRAINER_4
 	;const EVENT_BEAT_MOLTRES                      ; marcelnote - removed Moltres from Victory Road
 	const EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH2
+	const EVENT_VICTORY_ROAD_2F_GOT_HITMON ; marcelnote - new
 
 ; Route 24 events
 	const_next $540
