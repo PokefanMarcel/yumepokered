@@ -126,7 +126,7 @@ _RockTunnel1FBlackbeltIntroText::   ; marcelnote - added Blackbelt
 	cont "heights here."
 	done
 
-_RockTunnel1FBlackbeltTruePotentialText::   ; marcelnote - added Blackbelt
+_RockTunnel1FBlackbeltTruePotentialText::   ; marcelnote - added Blackbelt, could be KARATE KING
 	text "Ah! Your"
 	line "@"
 	text_ram wStringBuffer
