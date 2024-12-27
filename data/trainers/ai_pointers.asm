@@ -49,10 +49,10 @@ TrainerAIPointers:
 	dbw 1, Rival3AI       ; Rival3    ; 50% chance of Full Restore if HP < 1/3 HPMax, otherwise 25% if status condition
 	dbw 1, LoreleiAI      ; Lorelei   ; 50% chance of Hyper Potion if HP < 1/3 HPMax
 	dbw 3, GenericAI      ; Channeler
-	dbw 2, AgathaAI       ; Agatha    ; 8% chance to switch, 42% chance of Hyper Potion if HP < 1/4 HPMax
+	dbw 1, AgathaAI       ; Agatha    ; 8% chance to switch, 42% chance of Hyper Potion if HP < 1/4 HPMax
 	dbw 1, LanceAI        ; Lance     ; 50% chance of Hyper Potion if HP < 1/3 HPMax, otherwise 25% of Full Heal if status condition
 	dbw 1, Rival3AI       ; Yellow ; marcelnote - new trainer class
-	dbw 2, LoreleiAI      ; Will   ; marcelnote - new trainer class
+	dbw 1, LoreleiAI      ; Will   ; marcelnote - new trainer class
 	dbw 3, GenericAI      ; Red    ; marcelnote - new trainer class
 	dbw 3, GenericAI      ; Green  ; marcelnote - new trainer class
 	assert_table_length NUM_TRAINERS
