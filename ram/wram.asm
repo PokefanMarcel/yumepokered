@@ -902,7 +902,10 @@ wRightGBMonSpecies:: db
 
 wMiscFlags:: db
 
-	ds 9
+; marcelnote - use SELECT for key items
+wSelectButtonItem:: db
+
+	ds 8
 
 ; This has overlapping related uses.
 ; When the player tries to use an item or use certain field moves, 0 is stored
