@@ -2297,9 +2297,12 @@ ItemUseTMHM:
 	ld [wCurItem], a
 	pop af
 	ld [wWhichPokemon], a
-	ld a, b
+	ld a, b ; b=1 if move was learnt
 	and a
 	ret z
+	xor a    ; marcelnote - for temporary field moves
+	cp c     ; c=1 if move was learnt as field move
+	ret c    ; joenote - treat learning a field move from a TM the same as a HM
 	ld a, [wCurItem]
 	call IsItemHM
 	ret c

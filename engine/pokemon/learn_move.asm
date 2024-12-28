@@ -109,12 +109,12 @@ AbandonLearning:
 PrintLearnedMove: ; marcelnote - for temporary field moves
 	ld hl, LearnedMove1Text
 	call PrintText
-	ld bc, $0100
+	ld bc, $0100 ; marcelnote - b=1 to indicate move was learnt
 	ret
 PrintLearnedFieldMove:
 	ld hl, LearnedMove1Text
 	call PrintText
-	ld bc, $0101	;make c=1 to indicate the move was learned as a field move
+	ld bc, $0101 ; marcelnote - b=1 to indicate move was learnt, c=1 to indicate as field move
 	ret
 
 TryingToLearn:
