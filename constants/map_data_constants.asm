@@ -21,10 +21,12 @@ DEF MAP_BORDER EQU 3
 	const BIT_ANIM_WATER      ; bit 0 = water tile $14 is animated
 	const BIT_ANIM_FLOWER     ; bit 1 = flower tile $03 is animated
 	const BIT_ANIM_WBOLLARD   ; bit 2 = bollard tile $5e is animated
+	const BIT_ANIM_LANTERN    ; bit 3 = lantern tiles $3A and $3B are animated
 
 	DEF TILEANIM_NONE                     EQU %00000000 ; = 0
 	DEF TILEANIM_WATER                    EQU %00000001 ; = 1
 	DEF TILEANIM_WATER_FLOWER             EQU %00000011 ; = 3
 	DEF TILEANIM_WATER_WBOLLARD           EQU %00000101 ; = 5
 	DEF TILEANIM_WATER_FLOWER_WBOLLARD    EQU %00000111 ; = 7
-	; still need to add lamps and lava
+	DEF TILEANIM_LANTERN                  EQU %00001000 ; = 8
+	; still need to add lava, waterfall

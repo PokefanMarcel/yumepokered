@@ -10,19 +10,26 @@ AnimateTiles::
 	cp 20
 	ret c
 	cp 21
-	jp z, AnimateFlowerTile
+	jp z, AnimateFlowerOrLanternTile ; if h-counter is 21 (will never happen if animating water only)
+
+	ld a, [wMovingBGTilesCounter2] ; increment w-counter when not animating flower, lantern, etc
+	inc a
+	and 7 ; %00000111 ; a modulo 8, 8 is the period of the animation
+	ld [wMovingBGTilesCounter2], a
 	call AnimateWaterTile
 	call AnimateWaterBollardTile
 
 	ldh a, [hTileAnimations]
 	bit BIT_ANIM_FLOWER, a
 	ret nz
+	bit BIT_ANIM_LANTERN, a
+	ret nz
 
 	xor a
-	ldh [hMovingBGTilesCounter1], a
+	ldh [hMovingBGTilesCounter1], a ; reset h-counter if not animating flower, lantern, etc
 	ret
 
-;AnimateWaterTile: ; marcelnote - original function scrolled tile left and right
+;AnimateWaterTile: ; marcelnote - original function, scrolled water tile left and right
 ;	ld hl, vTileset tile $14
 ;	ld c, $10
 ;
@@ -36,6 +43,10 @@ AnimateTiles::
 ;	jp ScrollTileLeft     ; scroll left when counter is 4 5 6 7
 
 AnimateWaterTile: ; marcelnote - modified this function to synchronize with water bollards
+	ldh a, [hTileAnimations]
+	bit BIT_ANIM_WATER, a
+	ret z
+
 	ld hl, WaterTilesTable
 	ld a, [wCurMapTileset]
 	cp SHIP_PORT
@@ -44,36 +55,15 @@ AnimateWaterTile: ; marcelnote - modified this function to synchronize with wate
 .got_table
 
 	ld a, [wMovingBGTilesCounter2]
-	inc a
-	and 7 ; %00000111 ; a modulo 8
-	ld [wMovingBGTilesCounter2], a
-
-	cp 5 ; a >= 5 ?
-	jr c, .noReverse ; have to transform 0 1 2 3 4 5 6 7 -> 0 1 2 3 4 3 2 1
-	sub 4
+	cp 5 ; a < 5 ?
+	jr c, .noReverse ; need to transform 0 1 2 3 4 5 6 7 into 0 1 2 3 4 3 2 1
 	ld b, a
-	ld a, 4
-	sub b
+	ld a, 8
+	sub b ; a <- 8 - a
 .noReverse
 
 	ld de, vTileset tile $14 ; water tile
 	jp AnimateFindPointerInTable
-
-AnimateFlowerTile:
-	xor a ; reset the counter to loop back to the start of tile animation timer
-	ldh [hMovingBGTilesCounter1], a
-
-	ld a, [wMovingBGTilesCounter2]
-	and 3 ; = %00000011 ; a modulo 4
-	cp 2
-	ld hl, FlowerTile1
-	jr c, .copy        ; if counter is 0 or 1, use FlowerTile1
-	ld hl, FlowerTile2
-	jr z, .copy        ; if counter is 2, use FlowerTile2
-	ld hl, FlowerTile3 ; if counter is 3, use FlowerTile3
-.copy
-	ld de, vTileset tile $03
-	jp AnimateCopyTile
 
 AnimateWaterBollardTile:
 	ldh a, [hTileAnimations]
@@ -88,15 +78,63 @@ AnimateWaterBollardTile:
 .got_table
 
 	ld a, [wMovingBGTilesCounter2]
-	cp 5 ; a >= 4 ?
-	jr c, .noReverse ; have to transform 0 1 2 3 4 5 6 7 -> 0 1 2 3 4 3 2 1
-	sub 4
+	cp 5 ; a < 5 ?
+	jr c, .noReverse ; need to transform 0 1 2 3 4 5 6 7 into 0 1 2 3 4 3 2 1
 	ld b, a
-	ld a, 4
-	sub b
+	ld a, 8
+	sub b ; a <- 8 - a
 .noReverse
 	ld de, vTileset tile $5e ; water bollard tile
 	jp AnimateFindPointerInTable
+
+
+AnimateFlowerOrLanternTile:
+	xor a ; reset the counter to loop back to the start of tile animation timer
+	ldh [hMovingBGTilesCounter1], a
+
+	ldh a, [hTileAnimations]
+	bit BIT_ANIM_FLOWER, a
+	jp nz, AnimateFlowerTile ; because of this, cannot animate flower and lantern on the same map
+	jp AnimateLanternTiles
+
+AnimateFlowerTile:
+	ld a, [wMovingBGTilesCounter2]
+	and 3 ; = %00000011 ; a modulo 4
+	cp 2
+	ld hl, FlowerTile1
+	jr c, .copy        ; if counter is 0 or 1, use FlowerTile1
+	ld hl, FlowerTile2
+	jr z, .copy        ; if counter is 2, use FlowerTile2
+	ld hl, FlowerTile3 ; if counter is 3, use FlowerTile3
+.copy
+	ld de, vTileset tile $03
+	jp AnimateCopyTile
+
+AnimateLanternTiles:
+	; left tile
+	ld a, [wMovingBGTilesCounter2]
+	;and 7 ; = %00000111 ; a modulo 8
+	cp 5
+	ld hl, LanternLeftTile1
+	jr c, .copyLeftTile     ; if counter is 0 1 2 3 4, use LanternLeftTile1
+	cp 7
+	ld hl, LanternLeftTile2
+	jr c, .copyLeftTile     ; if counter is 5 6, use LanternLeftTile2
+	ld hl, LanternLeftTile1 ; if counter is 7, use LanternLeftTile1
+.copyLeftTile
+	ld de, vTileset tile $3A
+	call AnimateCopyTile
+
+	; right tile
+	ld a, [wMovingBGTilesCounter2]
+	;and 7 ; = %00000111 ; a modulo 8
+	cp 6
+	ld hl, LanternRightTile1
+	jr c, .copyRightTile     ; if counter is 0 1 2 3 4 5, use LanternRightTile1
+	ld hl, LanternRightTile2 ; if counter is 6 7, use LanternRightTile2
+.copyRightTile
+	ld de, vTileset tile $3B
+	jp AnimateCopyTile
 
 
 AnimateFindPointerInTable:
@@ -118,7 +156,6 @@ AnimateCopyTile:
 	dec c
 	jr nz, .loop
 	ret
-
 
 ;ScrollTileRight: ; marcelnote - was used in original AnimateWaterTile
 ;	ld c, $10
@@ -220,3 +257,10 @@ WaterBollardAltTile5: INCBIN "gfx/tilesets/water_bollard_alt/water_bollard_alt5.
 ;WaterBollardAltTile6: INCBIN "gfx/tilesets/water_bollard_alt/water_bollard_alt6.2bpp" ; unused
 ;WaterBollardAltTile7: INCBIN "gfx/tilesets/water_bollard_alt/water_bollard_alt7.2bpp" ; unused
 ;WaterBollardAltTile8: INCBIN "gfx/tilesets/water_bollard_alt/water_bollard_alt8.2bpp" ; unused
+
+LanternLeftTile1:  INCBIN "gfx/tilesets/lantern/lantern_left1.2bpp"  ; medium light
+LanternLeftTile2:  INCBIN "gfx/tilesets/lantern/lantern_left2.2bpp"  ; strong light
+;LanternLeftTile3:  INCBIN "gfx/tilesets/lantern/lantern_left3.2bpp"  ; low light ; unused
+LanternRightTile1: INCBIN "gfx/tilesets/lantern/lantern_right1.2bpp" ; medium light
+LanternRightTile2: INCBIN "gfx/tilesets/lantern/lantern_right2.2bpp" ; strong light
+;LanternRightTile3: INCBIN "gfx/tilesets/lantern/lantern_right3.2bpp" ; low light ; unused
