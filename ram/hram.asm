@@ -284,6 +284,10 @@ hVBlankOccurred:: db
 ; marcelnote - those below are new
 ; 3 = water tile $14 and water bollard tile $5e are animated
 ; 4 = water tile $14 and flower tile $03 and water bollard tile $5e are animated
+; marcelnote - new coding
+; bit 0 = water tile $14 is animated
+; bit 1 = flower tile $03 is animated
+; bit 2 = bollard tile $5e is animated
 hTileAnimations:: db
 
 hMovingBGTilesCounter1:: db

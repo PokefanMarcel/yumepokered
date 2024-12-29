@@ -16,11 +16,15 @@ DEF MAP_BORDER EQU 3
 	shift_const SOUTH  ; 4
 	shift_const NORTH  ; 8
 
-; flower and water tile animations
+; flower and water tile animations ; marcelnote - redid this with bits
 	const_def
-	const TILEANIM_NONE          ; 0
-	const TILEANIM_WATER         ; 1
-	const TILEANIM_WATER_FLOWER  ; 2
-	; marcelnote - below are new
-	const TILEANIM_WATER_WBOLLARD         ; 3
-	const TILEANIM_WATER_FLOWER_WBOLLARD  ; 4
+	const BIT_ANIM_WATER      ; bit 0 = water tile $14 is animated
+	const BIT_ANIM_FLOWER     ; bit 1 = flower tile $03 is animated
+	const BIT_ANIM_WBOLLARD   ; bit 2 = bollard tile $5e is animated
+
+	DEF TILEANIM_NONE                     EQU %00000000 ; = 0
+	DEF TILEANIM_WATER                    EQU %00000001 ; = 1
+	DEF TILEANIM_WATER_FLOWER             EQU %00000011 ; = 3
+	DEF TILEANIM_WATER_WBOLLARD           EQU %00000101 ; = 5
+	DEF TILEANIM_WATER_FLOWER_WBOLLARD    EQU %00000111 ; = 7
+	; still need to add lamps and lava
