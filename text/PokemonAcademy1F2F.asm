@@ -584,6 +584,9 @@ _PokemonAcademy2FBlackboardGhostText::
 
 	para "Not very eff.:"
 	line "None."
+
+	para "No effect:"
+	line "NORMAL."
 	prompt
 
 _PokemonAcademy2FBlackboardDragonText::
