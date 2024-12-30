@@ -54,7 +54,7 @@ IF DEF(_DEBUG)
 	ld hl, wPartyMon1PP
 	ld a, 15
 	ld [hli], a
-	ld a, 30
+	ld a, 25 ; marcelnote - CUT now has 25PP
 	ld [hli], a
 	ld a, 15
 	ld [hli], a
