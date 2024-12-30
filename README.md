@@ -70,6 +70,7 @@ Its kanji name 夢 is also an homage to [shinpokered](https://github.com/jojobea
 - All TMs can be bought at the Celadon Mart after getting the right badge.
 - New Celadon Mart floor where you can buy PP-related items in the postgame (Ether, Elixir, PP Up...).
 - Turn Exp.All on and off from the bag.
+- Faster dialogue to buy coins at the Game Corner.
 
 There are also many other smaller tweaks to the original game, and still more to come!
 
