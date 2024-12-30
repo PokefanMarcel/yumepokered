@@ -41,7 +41,7 @@ Its kanji name 夢 is also an homage to [shinpokered](https://github.com/jojobea
 - A new Battle Hall with random 3vs3 battles.
 
 **Wild encounters**
-- Wild encounters have been reworked to increase diversity and make many Pokémon available earlier.
+- Wild encounters have been reworked to increase diversity and make many Pokémon available earlier (see files [here](data/wild/maps)).
 - The locations of the Rods was changed – in particular, the Old Rod is now available very early on.
 - Fishing encounters were completely reworked in terms of levels and Pokémon diversity.
 - For full details (spoilers!), see the files for the [Old rod](data/wild/old_rod.asm), [Good rod](data/wild/good_rod.asm) and [Super rod](data/wild/super_rod.asm).
