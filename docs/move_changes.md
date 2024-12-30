@@ -70,6 +70,7 @@ In rare cases moves were nerfed, most notably DIG.
 | LICK         | Ghost    | ~~20~~ **25**   | 100            | ~~30~~ **25** |                                                                             |
 | FURY ATTACK  | Normal   | 15              | ~~85~~ **95**  | 20            |                                                                             |
 | FURY SWIPES  | Normal   | 18              | ~~80~~ **90**  | 15            |                                                                             |
+| CONSTRICT    | Normal   | ~~10~~ **30**   | 100            | ~~35~~ **25** |                                                                             |
 | DIZZY PUNCH  | Normal   | ~~70~~ **80**   | 100            | 10            | **Now has a 10% chance to confuse the target**                              |
 | SKULL BASH   | Normal   | ~~100~~ **120** | 100            | 15            |                                                                             |
 | DOUBLE EDGE  | Normal   | ~~100~~ **120** | 100            | ~~15~~ **10** |                                                                             |

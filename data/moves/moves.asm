@@ -142,7 +142,7 @@ Moves:
 	move SWIFT,        SWIFT_EFFECT,                60, NORMAL,       100, 20
 	move SKULL_BASH,   CHARGE_EFFECT,              120, NORMAL,       100, 15 ; marcelnote - changed from pwr 100
 	move SPIKE_CANNON, TWO_TO_FIVE_ATTACKS_EFFECT,  20, NORMAL,       100, 15
-	move CONSTRICT,    SPEED_DOWN_SIDE_EFFECT,      10, NORMAL,       100, 35
+	move CONSTRICT,    SPEED_DOWN_SIDE_EFFECT,      30, NORMAL,       100, 25 ; marcelnote - changed from pwr 10, pp 35
 	move AMNESIA,      SPECIAL_UP2_EFFECT,           0, PSYCHIC_TYPE, 100, 20
 	move KINESIS,      SPECIAL_UP1_EFFECT,           0, PSYCHIC_TYPE,  80, 15 ; marcelnote - changed from ACCURACY_DOWN1_EFFECT
 	move SOFTBOILED,   HEAL_EFFECT,                  0, NORMAL,       100, 10
