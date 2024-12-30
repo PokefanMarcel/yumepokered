@@ -28,6 +28,11 @@ DisplayTextID::
 	dict TEXT_BLACKED_OUT,      DisplayPlayerBlackedOutText
 	dict TEXT_REPEL_WORE_OFF,   DisplayRepelWoreOffText
 
+	; joenote - close if $FF is the textID or sprite index
+	; marcelnote - used for using items with Select
+	cp $FF
+	jp z, CloseTextDisplay
+
 	ld a, [wNumSprites]
 	ld e, a
 	ldh a, [hSpriteIndex] ; sprite ID

@@ -191,6 +191,9 @@ DebugItemsList: ; marcelnote - moved some to key items pocket
 DebugKeyItemsList:    ; marcelnote - new for Key Items pocket
 	db BICYCLE, 1
 	db TOWN_MAP, 1
+	db OLD_ROD, 1
+	db ITEMFINDER, 1
+	db POKE_FLUTE, 1
 	db SECRET_KEY, 1
 	db CARD_KEY, 1
 	db S_S_TICKET, 1
@@ -198,7 +201,6 @@ DebugKeyItemsList:    ; marcelnote - new for Key Items pocket
 	db SILPH_SCOPE, 1 ; marcelnote - added
 	db CITRUS_PASS, 1 ; marcelnote - added
 	;db SURFBOARD, 1 ; marcelnote - added
-	;db POKE_FLUTE, 1 ; marcelnote - added
 	;db HM_CUT, 1 ; marcelnote - added
 	;db HM_FLY, 1 ; marcelnote - added
 	;db HM_SURF, 1 ; marcelnote - added

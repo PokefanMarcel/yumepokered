@@ -357,9 +357,15 @@ StartMenu_Item::
 	ld [wMenuItemToSwap], a
 	ld a, [wCurItem]
 	cp BICYCLE
-	jp z, .useOrTossItem
+	jp z, .useOrTossOrSelectItem ; marcelnote - added SLCT option
 .notBicycle1
+;;;;;;;;;;;;;;;;;;;;; marcelnote - use items with Select
+	callfar CheckIfSelectItem ; sets carry if item can be assigned to Select
 	ld a, USE_TOSS_MENU_TEMPLATE
+	jr nc, .notSelectItem
+	ld a, USE_SLCT_MENU_TEMPLATE
+.notSelectItem
+;;;;;;;;;;;;;;;;;;;;;
 	ld [wTextBoxID], a
 	call DisplayTextBoxID
 	ld hl, wTopMenuItemY
@@ -379,9 +385,10 @@ StartMenu_Item::
 	call HandleMenuInput
 	call PlaceUnfilledArrowMenuCursor
 	bit BIT_B_BUTTON, a
-	jr z, .useOrTossItem
+	jr z, .useOrTossOrSelectItem
 	jp ItemMenuLoop
-.useOrTossItem ; if the player made the choice to use or toss the item
+.useOrTossOrSelectItem ; marcelnote - added SLCT option
+; if the player made the choice to use or toss the item
 	ld a, [wCurItem]
 	ld [wNamedObjectIndex], a
 	call GetItemName
@@ -398,7 +405,7 @@ StartMenu_Item::
 .notBicycle2
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .tossItem
+	jr nz, .tossOrSelectItem ; marcelnote - added SLCT option
 ; use item
 	ld [wPseudoItemID], a ; a must be 0 due to above conditional jump
 	ld a, [wCurItem]
@@ -443,7 +450,13 @@ StartMenu_Item::
 	pop af
 	ld [wUpdateSpritesEnabled], a
 	jp ItemMenuLoop
-.tossItem
+.tossOrSelectItem ; marcelnote - added SLCT option
+;;;;;;;;;;;;;;;;;;;;; marcelnote - use items with Select
+	ld a, [wCurItem]
+	callfar CheckIfSelectItem ; sets carry if item can be assigned to Select
+	jr c, .assignItemToSelect
+;;;;;;;;;;;;;;;;;;;;;
+	; toss item
 	call IsKeyItem
 	ld a, [wIsKeyItem]
 	and a
@@ -459,6 +472,15 @@ StartMenu_Item::
 	call TossItem
 .tossZeroItems
 	jp ItemMenuLoop
+.assignItemToSelect ; marcelnote - use items with Select
+	ld a, [wCurItem]
+	ld [wSelectButtonItem], a ; assign item to Select button
+	ld [wNamedObjectIndex], a
+	call GetItemName
+	call CopyToStringBuffer
+	ld hl, ItemWasAssignedToSelectText
+	call PrintText
+	jp ItemMenuLoop
 
 CannotUseItemsHereText:
 	text_far _CannotUseItemsHereText
@@ -466,6 +488,10 @@ CannotUseItemsHereText:
 
 CannotGetOffHereText:
 	text_far _CannotGetOffHereText
+	text_end
+
+ItemWasAssignedToSelectText: ; marcelnote - use items with Select
+	text_far _ItemWasAssignedToSelectText
 	text_end
 
 INCLUDE "data/items/use_party.asm"
