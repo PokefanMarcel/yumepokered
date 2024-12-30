@@ -137,6 +137,7 @@ ViridianCity_TextPointers:
 	dw_const ViridianCitySignText,                           TEXT_VIRIDIANCITY_SIGN
 	dw_const ViridianCityTrainerTips1Text,                   TEXT_VIRIDIANCITY_TRAINER_TIPS1
 	dw_const ViridianCityTrainerTips2Text,                   TEXT_VIRIDIANCITY_TRAINER_TIPS2
+	dw_const ViridianCityTrainerTips3Text,                   TEXT_VIRIDIANCITY_TRAINER_TIPS3 ; marcelnote - new
 	dw_const MartSignText,                                   TEXT_VIRIDIANCITY_MART_SIGN
 	dw_const PokeCenterSignText,                             TEXT_VIRIDIANCITY_POKECENTER_SIGN
 	dw_const ViridianCityGymSignText,                        TEXT_VIRIDIANCITY_GYM_SIGN
@@ -308,6 +309,10 @@ ViridianCityTrainerTips1Text:
 
 ViridianCityTrainerTips2Text:
 	text_far _ViridianCityTrainerTips2Text
+	text_end
+
+ViridianCityTrainerTips3Text: ; marcelnote - new
+	text_far _ViridianCityTrainerTips3Text
 	text_end
 
 ViridianCityGymSignText:

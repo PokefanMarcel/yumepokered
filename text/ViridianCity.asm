@@ -216,6 +216,13 @@ _ViridianCityTrainerTips2Text::
 	cont "#MON CENTER!"
 	done
 
+_ViridianCityTrainerTips3Text:: ; marcelnote - new
+	text "TRAINER TIPS"
+
+	para "Press the B"
+	line "Button to run!"
+	done
+
 _ViridianCityGymSignText::
 	text "VIRIDIAN CITY"
 	line "#MON GYM"
