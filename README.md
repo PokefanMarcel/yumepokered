@@ -53,7 +53,7 @@ Its kanji name 夢 is also an homage to [shinpokered](https://github.com/jojobea
 - Several tilesets have been reworked, most notably for Viridian Forest and the Pokémon Tower.
 - Gym leaders have their own sprites.
 - New character sprites when surfing.
-- In SuperGameBoy mode, the town palettes have been modified to better reflect the original Japanese town names.
+- In SuperGameBoy mode, the town color palettes have been modified to better reflect the original Japanese town names.
 - Many visual bug fixes.
 
 ### QoL updates
@@ -96,7 +96,7 @@ Note: colors are only available in SGB mode for now.
 
 ## Credits
 
-This project owes a lot to existing works, and above all to the pret's [pokered](https://github.com/pret/pokered) disassemby project (without which this wouldn't exist), but also:
+This project owes a lot to existing works, and above all to the pret's [pokered](https://github.com/pret/pokered) disassemby project, but also:
 
 - [Shinpokered](https://github.com/jojobear13/shinpokered): playing as girl, experience bar, temporary field moves, many bug fixes,
 - [PureRGB](https://github.com/Vortyne/pureRGB): overworld HM use, ROM space management, repel reuse prompt, many other code snippets,
