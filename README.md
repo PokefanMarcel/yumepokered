@@ -62,6 +62,7 @@ Its kanji name 夢 is also an homage to [shinpokered](https://github.com/jojobea
 - Use Cut, Surf, Strength, and Flash just by pressing A on the map.
 - HMs and other field moves can be taught without taking a move slot.
 - Bag space expanded to 30 item slots, and a new dedicated bag pocket for key items.
+- Assign key items like Bicycle, Fishing rods, or Itemfinder to the Select button.
 - Prompt to reuse Repel after finishing one.
 - Haunter, Graveler, Kadabra and Machoke can evolve by interacting with new dedicated NPCs.
 - Move deleter and Move reminder in Fuchsia.
