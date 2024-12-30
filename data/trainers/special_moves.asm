@@ -4,10 +4,9 @@
 ;	repeat { db partymon location, partymon move, move id }
 ;	db 0 ; marcelnote - changed terminator 0 to $ff to avoid bugs with NO_MOVE (=0) entries
 
-; TO DO: rematches for Gym Leaders, other special trainers
+; TO DO: other special trainers
 ; e.g. Otoshi (Marowak), Anthony (Hitmonchan), Melvin (Exeggcute), Giselle (Academy)
 
-; marcelnote - lots of modifications below
 SpecialTrainerMoves:
 	db YOUNGSTER, 14  ; based on A.J.
 	; Sandshrew
@@ -23,19 +22,19 @@ SpecialTrainerMoves:
 	db $ff
 
 	db BROCK, 2  ; rematch
-	; Aerodactyl
-	db 1, 2, FLY
-	; Rhydon
+	; Aerodactyl - FLY, ROCK_SLIDE, SCREECH, HYPER_BEAM
+	db 1, 1, FLY
+	; Rhydon - DOUBLE_EDGE, ROCK_SLIDE, HORN_DRILL, EARTHQUAKE
 	db 2, 1, DOUBLE_EDGE
-	; Omastar
+	; Omastar - BLIZZARD, TOXIC, CLAMP, SURF
 	db 3, 1, BLIZZARD
 	db 3, 2, TOXIC
 	db 3, 4, SURF
-	; Golem
-	; nothing
-	; Kabutops
-	; nothing
-	; Onix
+	; Golem - FOCUS_ENERGY, ROCK_SLIDE, EARTHQUAKE, EXPLOSION
+	; no change
+	; Kabutops - SLASH, SWORDS_DANCE, ROCK_SLIDE, HYDRO_PUMP
+	; no change
+	; Onix - BIND, FISSURE, ROCK_SLIDE, AGILITY
 	db 6, 2, FISSURE
 	db $ff
 
@@ -208,9 +207,9 @@ SpecialTrainerMoves:
 	; Growlithe
 	; no change
 	; Flareon
-	; nothing
+	; no change
 	; Rapidash
-	; nothing
+	; no change
 	; Magmar
 	db 4, 2, FIRE_BLAST
 	; Arcanine
@@ -249,7 +248,7 @@ SpecialTrainerMoves:
 	; Rhyhorn
 	db 2, 3, TAKE_DOWN
 	; Kangaskhan
-	; nothing
+	; no change
 	; Persian
 	db 4, 2, BUBBLEBEAM
 	db $ff
@@ -308,26 +307,25 @@ SpecialTrainerMoves:
 	db $ff
 
 	db LORELEI, 2  ; rematches
-	; Dewgong
+	; Dewgong - REST, SURF, ICE_BEAM, BLIZZARD
 	db 1, 1, REST
 	db 1, 2, SURF
 	db 1, 4, BLIZZARD
-	; Jynx
+	; Jynx - LOVELY_KISS, BLIZZARD, PSYCHIC_M
 	db 2, 1, LOVELY_KISS
 	db 2, 2, BLIZZARD
 	db 2, 3, PSYCHIC_M
 	db 2, 4, NO_MOVE
-	; Vaporeon
+	; Vaporeon - BLIZZARD, SURF, ICE_BEAM, HYDRO_PUMP
 	db 3, 1, BLIZZARD
 	db 3, 2, SURF
 	db 3, 3, ICE_BEAM
-	; Cloyster
+	; Cloyster - TOXIC, CLAMP, BLIZZARD, HYDRO_PUMP
 	db 4, 1, TOXIC
 	db 4, 3, BLIZZARD
-	; Clefable
+	; Clefable - BLIZZARD, BODY_SLAM, LIGHT_SCREEN, LOVELY_KISS	; PSYCHIC_M?
 	db 5, 1, BLIZZARD
-	; PSYCHIC_M?
-	; Lapras
+	; Lapras - CONFUSE_RAY, THUNDERBOLT, SURF, BLIZZARD
 	db 6, 2, THUNDERBOLT
 	db 6, 3, SURF
 	db $ff
@@ -336,7 +334,7 @@ SpecialTrainerMoves:
 	; Onix
 	db 1, 4, DIG
 	; Hitmonchan
-	; nothing
+	; no change
 	; Hitmonlee
 	db 3, 1, MEDITATE
 	db 3, 2, FOCUS_ENERGY
@@ -348,18 +346,18 @@ SpecialTrainerMoves:
 	db $ff
 
 	db BRUNO, 2  ; rematches
-	; Hitmonchan
+	; Hitmonchan - SUBMISSION, THUNDERPUNCH, DIZZY_PUNCH, COUNTER
 	db 1, 1, SUBMISSION
-	; Onix
+	; Onix - BIND, EARTHQUAKE, ROCK_SLIDE, AGILITY
 	db 2, 2, EARTHQUAKE
-	; Hitmonlee
+	; Hitmonlee - MEDITATE, FOCUS_ENERGY, HI_JUMP_KICK, MEGA_KICK
 	db 3, 1, MEDITATE
 	db 3, 2, FOCUS_ENERGY
-	; Poliwrath
+	; Poliwrath - ICE_BEAM, BODY_SLAM, KARATE_CHOP, HYDRO_PUMP
 	db 4, 1, ICE_BEAM
-	; Golem
-	; nothing
-	; Machamp
+	; Golem - FOCUS_ENERGY, ROCK_SLIDE, EARTHQUAKE, EXPLOSION
+	; no change
+	; Machamp - KARATE_CHOP, ROCK_SLIDE, EARTHQUAKE, FOCUS_ENERGY
 	db 6, 2, ROCK_SLIDE
 	db 6, 3, EARTHQUAKE
 	db 6, 4, FOCUS_ENERGY
@@ -385,64 +383,65 @@ SpecialTrainerMoves:
 	db $ff
 
 	db AGATHA, 2  ; rematches
-	; Haunter
+	; Haunter - CONFUSE_RAY, MEGA_DRAIN, HEX, TOXIC
 	db 1, 1, CONFUSE_RAY
 	db 1, 2, MEGA_DRAIN
 	db 1, 4, TOXIC
-	; Golbat
+	; Golbat - CONFUSE_RAY, ACID, TOXIC, HEX
 	db 2, 1, CONFUSE_RAY
 	db 2, 3, TOXIC
 	db 2, 4, HEX
-	; Marowak
+	; Marowak - HEX, BODY_SLAM, DOUBLE_TEAM, BONEMERANG
 	db 3, 1, HEX
+	db 3, 2, BODY_SLAM
 	db 3, 3, DOUBLE_TEAM
-	; Arbok
+	; Arbok - ACID, WRAP, HYPER_FANG, GLARE
 	db 4, 2, WRAP
 	db 4, 4, GLARE
-	; Ninetales
+	; Ninetales - HEX, FIRE_BLAST, WILL_O_WISP, FIRE_SPIN
 	db 5, 1, HEX
 	db 5, 2, FIRE_BLAST
 	db 5, 3, WILL_O_WISP
-	; Gengar
+	; Gengar - PSYCHIC_M, THUNDERBOLT, HEX, TOXIC
 	db 6, 1, PSYCHIC_M
 	db 6, 2, THUNDERBOLT
 	db 6, 4, TOXIC
 	db $ff
 
 	db LANCE, 1  ; first battle
-	; Gyarados
-	; nothing
-	; Dragonair
+	; Gyarados - THRASH, HYDRO_PUMP, SLAM, HYPER_BEAM
+	; no change
+	; Dragonair - THUNDERBOLT, SLAM, THUNDER_WAVE, HYPER_BEAM
 	db 2, 1, THUNDERBOLT
 	db 2, 3, THUNDER_WAVE
-	; Dragonair
+	; Dragonair - ICE_BEAM, SLAM, BUBBLEBEAM, HYPER_BEAM
 	db 3, 1, ICE_BEAM
 	db 3, 3, BUBBLEBEAM
-	; Aerodactyl
-	db 4, 2, WING_ATTACK
-	; Dragonite
+	; Aerodactyl - WING_ATTACK, ROCK_SLIDE, SCREECH, HYPER_BEAM
+	db 4, 1, WING_ATTACK
+	; Dragonite - SLAM, FIRE_BLAST, THUNDER, HYPER_BEAM
 	db 5, 2, FIRE_BLAST
 	db 5, 3, THUNDER
 	db $ff
 
 	db LANCE, 2  ; rematches
-	; Dragonite
+	; Dragonite - SLAM, ICE_BEAM, THUNDERBOLT, HYPER_BEAM
 	db 1, 2, ICE_BEAM
 	db 1, 3, THUNDERBOLT
-	; Gyarados
+	; Gyarados - EARTHQUAKE, HYDRO_PUMP, THUNDERBOLT, HYPER_BEAM
 	db 2, 1, EARTHQUAKE
 	db 2, 3, THUNDERBOLT
-	; Kangaskhan
+	; Kangaskhan - DIZZY_PUNCH, HYPER_BEAM, SLAM, ROCK_SLIDE
 	db 3, 2, HYPER_BEAM
 	db 3, 4, ROCK_SLIDE
-	; Charizard
+	; Charizard - HYPER_BEAM, FIRE_BLAST, SLAM, EARTHQUAKE
 	db 4, 1, HYPER_BEAM
 	db 4, 2, FIRE_BLAST
 	db 4, 4, EARTHQUAKE
-	; Aerodactyl
+	; Aerodactyl - FIRE_BLAST, ROCK_SLIDE, SKY_ATTACK, HYPER_BEAM
 	db 5, 1, FIRE_BLAST
-	db 5, 2, SKY_ATTACK
-	; Dragonite
+	db 5, 3, SKY_ATTACK
+	; Dragonite - SLAM, FIRE_BLAST, THUNDER, HYPER_BEAM
 	db 6, 2, FIRE_BLAST
 	db 6, 3, THUNDER
 	db $ff
@@ -476,7 +475,7 @@ SpecialTrainerMoves:
 	; Rhydon
 	db 3, 1, SURF
 	; Gyarados
-	; nothing
+	; no change
 	; Arcanine
 	db 5, 1, FIRE_BLAST
 	db 5, 2, DOUBLE_EDGE
@@ -496,7 +495,7 @@ SpecialTrainerMoves:
 	; Exeggutor
 	db 4, 2, PSYCHIC_M
 	; Gyarados
-	; nothing
+	; no change
 	; Charizard
 	db 6, 2, FIRE_BLAST
 	db $ff
