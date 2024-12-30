@@ -120,7 +120,7 @@ _RockTunnel1FBlackbeltIntroText::   ; marcelnote - added Blackbelt
 	cont "warrior's"
 	cont "instinct!"
 
-	para "My FIGHTING-type"
+	para "My fighting-type"
 	line "#MON have"
 	cont "reached new"
 	cont "heights here."
