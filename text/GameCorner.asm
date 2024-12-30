@@ -22,6 +22,11 @@ _GameCornerClerk1DoYouNeedSomeGameCoinsText::
 _GameCornerClerk1ThanksHereAre50CoinsText::
 	text "Thanks! Here are"
 	line "your 50 coins!"
+	prompt ; marcelnote - for buying coins faster, was 'done'
+
+_GameCornerClerk1WantMoreCoinsText:: ; marcelnote - new for buying coins faster
+	text "More? It's ¥1000"
+	line "for 50 coins."
 	done
 
 _GameCornerClerk1PleaseComePlaySometimeText::
