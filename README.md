@@ -35,8 +35,9 @@ Its kanji name 夢 is also an homage to [shinpokered](https://github.com/jojobea
 **Battles**
 - Gym leaders' and Elite 4 members' Pokémon have better moves overall.
 - Several Gym leader teams were slightly modified (but trying to keep their theme intact!).
+- The rival's different teams now include a more diverse roster, to better reflect his storyline.
 - New trainers to fight in new and existing areas. (You may recognize some from the anime!)
-- Rematches for Gym leaders and the Elite 4 with stronger teams!
+- Rematches for Gym leaders and the Elite 4 with stronger teams and movesets!
 - A new Battle Hall with random 3vs3 battles.
 
 **Wild encounters**
