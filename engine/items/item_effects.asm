@@ -1735,7 +1735,7 @@ ItemUsePokeFlute: ; marcelnote - added Mew
 .noSnorlaxToWakeUp ; marcelnote - now we also check for Mew
 	cp CELADON_GROVE
 	jr nz, .noMewToCall
-	;CheckEvent EVENT_JABARA_RETURNED_FLUTE ; could remove this to make it accessible earlier
+	;CheckEvent EVENT_JABARA_RETURNED_FLUTE
 	;jr nz, .noMewToCall
 	CheckEvent EVENT_BEAT_MEW
 	jr nz, .noMewToCall
@@ -1746,7 +1746,9 @@ ItemUsePokeFlute: ; marcelnote - added Mew
 	jr nc, .noMewToCall
 	ld hl, PlayedFluteHadEffectText
 	call PrintText
-	callfar CeladonGroveMewAppearsScript
+	ld a, 3 ; SCRIPT_CELADONGROVE_MEW_APPEARS
+	ld [wCeladonGroveCurScript], a
+	ld [wCurMapScript], a
 	ret
 .noMewToCall
 	ld hl, PlayedFluteNoEffectText

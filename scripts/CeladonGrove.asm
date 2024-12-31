@@ -8,7 +8,7 @@ CeladonGrove_Script:
 	ld [wCeladonGroveCurScript], a
 	ret
 
-CeladonGroveMewAppearsScript:: ; called in ItemUsePokeFlute
+CeladonGroveMewAppearsScript:: ; used in ItemUsePokeFlute
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	ld a, TEXT_CELADONGROVE_MELODY_ECHOES
@@ -22,6 +22,9 @@ CeladonGroveMewAppearsScript:: ; called in ItemUsePokeFlute
 	ld c, 12
 	call DelayFrames
 	call GBFadeInFromWhite
+	ld a, SCRIPT_CELADONGROVE_DEFAULT
+	ld [wCeladonGroveCurScript], a
+	ld [wCurMapScript], a
 	ret
 
 CeladonGrove_ScriptPointers:
@@ -29,6 +32,7 @@ CeladonGrove_ScriptPointers:
 	dw_const CheckFightingMapTrainers,              SCRIPT_CELADONGROVE_DEFAULT
 	dw_const DisplayEnemyTrainerTextAndStartBattle, SCRIPT_CELADONGROVE_START_BATTLE
 	dw_const EndTrainerBattle,                      SCRIPT_CELADONGROVE_END_BATTLE
+	dw_const CeladonGroveMewAppearsScript,          SCRIPT_CELADONGROVE_MEW_APPEARS
 
 CeladonGrove_TextPointers:
 	def_text_pointers
