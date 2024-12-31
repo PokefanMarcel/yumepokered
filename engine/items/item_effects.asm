@@ -668,6 +668,12 @@ ItemUseBicycle:
 	ld a, [wIsInBattle]
 	and a
 	jp nz, ItemUseNotTime
+	;;;;;;;;;; marcelnote - moved this here from StartMenu_Item
+	ld a, [wStatusFlags6]
+	bit BIT_ALWAYS_ON_BIKE, a
+	ld hl, CannotGetOffHereText
+	jp nz, ItemUseFailed
+	;;;;;;;;;;
 	ld a, [wWalkBikeSurfState]
 	ld [wWalkBikeSurfStateCopy], a
 	cp 2 ; is the player surfing?
@@ -680,7 +686,7 @@ ItemUseBicycle:
 	ld [wWalkBikeSurfState], a ; change player state to walking
 	call PlayDefaultMusic ; play walking music
 	ld hl, GotOffBicycleText
-	jr .printText
+	jr .print_text
 .tryToGetOnBike
 	call IsBikeRidingAllowed
 	jp nc, NoCyclingAllowedHere
@@ -689,9 +695,9 @@ ItemUseBicycle:
 	ldh [hJoyHeld], a ; current joypad state
 	inc a
 	ld [wWalkBikeSurfState], a ; change player state to bicycling
-	ld hl, GotOnBicycleText
 	call PlayDefaultMusic ; play bike riding music
-.printText
+	ld hl, GotOnBicycleText
+.print_text
 	jp PrintText
 
 ; indirectly used by SURF in StartMenu_Pokemon.surf
@@ -2434,6 +2440,10 @@ GotOffBicycleText:
 	text_far _GotOffBicycleText1
 	text_low
 	text_far _GotOffBicycleText2
+	text_end
+
+CannotGetOffHereText: ; marcelnote - moved from start_sub_menus.asm
+	text_far _CannotGetOffHereText
 	text_end
 
 ; restores bonus PP (from PP Ups) when healing at a pokemon center

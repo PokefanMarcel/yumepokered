@@ -902,10 +902,7 @@ wRightGBMonSpecies:: db
 
 wMiscFlags:: db
 
-; marcelnote - use SELECT for key items
-wSelectButtonItem:: db
-
-	ds 8
+	ds 9
 
 ; This has overlapping related uses.
 ; When the player tries to use an item or use certain field moves, 0 is stored
@@ -1877,7 +1874,10 @@ wSavedSpriteImageIndex:: db
 
 wObjectDataPointerTemp:: dw
 
-	ds 2
+; marcelnote - use SELECT for key items
+wSelectButtonItem:: db
+
+	ds 1
 
 ; the tile shown outside the boundaries of the map
 wMapBackgroundTile:: db
