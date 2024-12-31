@@ -851,7 +851,7 @@ LoadPlayerSpriteGraphics::
 .ridingBike
 	; If the bike can't be used,
 	; start walking instead.
-	call IsBikeRidingAllowed
+	call IsBikingAllowed
 	jr c, .determineGraphics
 
 .startWalking
@@ -870,32 +870,13 @@ LoadPlayerSpriteGraphics::
 	jp z, LoadSurfingPlayerSpriteGraphics
 	jp LoadWalkingPlayerSpriteGraphics
 
-IsBikeRidingAllowed::
-; The bike can be used on Route 23 and Indigo Plateau,
-; or maps with tilesets in BikeRidingTilesets.
+IsBikingAllowed:: ; marcelnote - simplified
+; The bike can be used on maps with tilesets in BikeRidingTilesets.
 ; Return carry if biking is allowed.
-
-	ld a, [wCurMap]
-	cp ROUTE_23
-	jr z, .allowed
-	cp INDIGO_PLATEAU
-	jr z, .allowed
-
 	ld a, [wCurMapTileset]
-	ld b, a
 	ld hl, BikeRidingTilesets
-.loop
-	ld a, [hli]
-	cp b
-	jr z, .allowed
-	inc a
-	jr nz, .loop
-	and a
-	ret
-
-.allowed
-	scf
-	ret
+	ld de, 1 ; size of array entries
+	jp IsInArray ; returns carry if found
 
 INCLUDE "data/tilesets/bike_riding_tilesets.asm"
 

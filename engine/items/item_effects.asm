@@ -688,7 +688,7 @@ ItemUseBicycle:
 	ld hl, GotOffBicycleText
 	jr .print_text
 .tryToGetOnBike
-	call IsBikeRidingAllowed
+	call IsBikingAllowed
 	jp nc, NoCyclingAllowedHere
 	call ItemUseReloadOverworldData
 	xor a ; no keys pressed
