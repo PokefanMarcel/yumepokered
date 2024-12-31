@@ -190,7 +190,11 @@ SetPal_Overworld:
 	ld a, PAL_CELADON - 1
 	jr .town
 .caveOrBruno
+	ld a, [wCurMap]
+	cp CINNABAR_VOLCANO_1FB1F
 	ld a, PAL_CAVE - 1
+	jr nz, .town
+	ld a, PAL_VOLCANO - 1
 	jr .town
 .Lorelei
 	xor a ; PAL_PALLET - 1

@@ -22,7 +22,7 @@ Tilesets:
 	tileset ShipPort,     -1, -1, -1,  -1, TILEANIM_WATER_WBOLLARD ; marcelnote - was TILEANIM_WATER
 	tileset Cemetery,    $12, -1, -1,  -1, TILEANIM_LANTERN ; marcelnote - was TILEANIM_NONE
 	tileset Interior,     -1, -1, -1,  -1, TILEANIM_NONE
-	tileset Cavern,       -1, -1, -1,  -1, TILEANIM_WATER
+	tileset Cavern,       -1, -1, -1,  -1, TILEANIM_WATER_LAVA ; marcelnote - was TILEANIM_WATER
 	tileset Lobby,       $15,$36, -1,  -1, TILEANIM_NONE
 	tileset Mansion,     $16,$36, -1,  -1, TILEANIM_NONE    ; marcelnote - added counter tiles
 	tileset Lab,          -1, -1, -1,  -1, TILEANIM_NONE
