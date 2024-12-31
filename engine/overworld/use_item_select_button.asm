@@ -33,7 +33,7 @@ CheckIfSelectItem:: ; sets z flag if item in [wCurItem] cannot be associated wit
 	jp IsInArray ; return carry if found
 
 SelectItemsList:
-	;db BICYCLE
+	db BICYCLE
 	db TOWN_MAP
 	db OLD_ROD
 	db GOOD_ROD

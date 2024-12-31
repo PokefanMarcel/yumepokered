@@ -299,7 +299,7 @@ ItemMenuLoop:
 	call LoadScreenTilesFromBuffer2DisableBGTransfer ; restore saved screen
 	call RunDefaultPaletteCommand
 
-StartMenu_Item::
+StartMenu_Item:: ; marcelnote - BICYCLE does not have special handling anymore
 	ld a, [wLinkState]
 	dec a ; is the player in the Colosseum or Trade Centre?
 	jr nz, .notInCableClubRoom
@@ -355,16 +355,12 @@ StartMenu_Item::
 	call PlaceUnfilledArrowMenuCursor
 	xor a
 	ld [wMenuItemToSwap], a
-	ld a, [wCurItem]
-	cp BICYCLE
-	jp z, .useOrTossOrSelectItem ; marcelnote - added SLCT option
-.notBicycle1
 ;;;;;;;;;;;;;;;;;;;;; marcelnote - use items with Select
 	callfar CheckIfSelectItem ; sets carry if item can be assigned to Select
 	ld a, USE_TOSS_MENU_TEMPLATE
-	jr nc, .notSelectItem
+	jr nc, .cannotAssignToSelect
 	ld a, USE_SLCT_MENU_TEMPLATE
-.notSelectItem
+.cannotAssignToSelect
 ;;;;;;;;;;;;;;;;;;;;;
 	ld [wTextBoxID], a
 	call DisplayTextBoxID
@@ -385,24 +381,12 @@ StartMenu_Item::
 	call HandleMenuInput
 	call PlaceUnfilledArrowMenuCursor
 	bit BIT_B_BUTTON, a
-	jr z, .useOrTossOrSelectItem
-	jp ItemMenuLoop
-.useOrTossOrSelectItem ; marcelnote - added SLCT option
-; if the player made the choice to use or toss the item
+	jp nz, ItemMenuLoop
+; if the player made the choice to use / toss / select the item
 	ld a, [wCurItem]
 	ld [wNamedObjectIndex], a
 	call GetItemName
 	call CopyToStringBuffer
-	ld a, [wCurItem]
-	cp BICYCLE
-	jr nz, .notBicycle2
-	ld a, [wStatusFlags6]
-	bit BIT_ALWAYS_ON_BIKE, a
-	jr z, .useItem_closeMenu
-	ld hl, CannotGetOffHereText
-	call PrintText
-	jp ItemMenuLoop
-.notBicycle2
 	ld a, [wCurrentMenuItem]
 	and a
 	jr nz, .tossOrSelectItem ; marcelnote - added SLCT option
@@ -475,19 +459,12 @@ StartMenu_Item::
 .assignItemToSelect ; marcelnote - use items with Select
 	ld a, [wCurItem]
 	ld [wSelectButtonItem], a ; assign item to Select button
-	ld [wNamedObjectIndex], a
-	call GetItemName
-	call CopyToStringBuffer
 	ld hl, ItemWasAssignedToSelectText
 	call PrintText
 	jp ItemMenuLoop
 
 CannotUseItemsHereText:
 	text_far _CannotUseItemsHereText
-	text_end
-
-CannotGetOffHereText:
-	text_far _CannotGetOffHereText
 	text_end
 
 ItemWasAssignedToSelectText: ; marcelnote - use items with Select
