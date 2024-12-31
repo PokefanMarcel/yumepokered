@@ -142,7 +142,11 @@ INCLUDE "text/Route28.asm" ; marcelnote - new location
 INCLUDE "data/text/text_3.asm"
 
 INCLUDE "text/RedsYellowsHouses.asm" ; marcelnote - merged RedsHouse floors, added YellowsHouse
-INCLUDE "text/BluesAidesHouses.asm" ; marcelnote - merged Blue's house with new Aide's house
+IF DEF(_FRA)
+	INCLUDE "translation/fra/text/BluesAidesHouses-fra.asm"
+ELSE
+	INCLUDE "text/BluesAidesHouses.asm" ; marcelnote - merged Blue's house with new Aide's house
+ENDC
 INCLUDE "text/OaksLab.asm"
 INCLUDE "text/pokedex_ratings.asm"
 INCLUDE "text/ViridianPokecenterMart.asm" ; marcelnote - merged Viridian Pokecenter and Mart
@@ -236,7 +240,7 @@ SECTION "Text 10", ROMX
 INCLUDE "data/text/text_5.asm"
 
 IF DEF(_FRA)
-	INCLUDE "text/text-fr/PalletTown-fr.asm"
+	INCLUDE "translation/fra/text/PalletTown-fra.asm"
 ELSE
 	INCLUDE "text/PalletTown.asm"
 ENDC
@@ -291,7 +295,7 @@ INCLUDE "data/pokemon/dex_text.asm"
 SECTION "Move Names", ROMX
 
 IF DEF(_FRA)
-INCLUDE "translation/fra/names-fra.asm"
+INCLUDE "translation/fra/data/moves/names-fra.asm"
 ELSE
 INCLUDE "data/moves/names.asm"
 ENDC

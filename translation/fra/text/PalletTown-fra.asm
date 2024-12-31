@@ -62,23 +62,27 @@ _PalletTownRivalsHouseSignText::
 	done
 
 _PalletTownGirl2Text:: ; marcelnote - new
-	text "Life is peaceful"
-	line "here in PALLET."
+	text "C'est une vie"
+	line "paisible ici, à"
+	cont "BOURG PALETTE."
 
-	para "But the spirit of"
-	line "adventure is al-"
-	cont "ways in the air."
+	para "Mais un souffle"
+	line "d'aventure plane"
+	cont "toujours dans"
+	cont "l'air."
 	done
 
 _PalletTownYellowsHouseSignJustMovedInText:: ; marcelnote - added Yellow's house
 	text "..."
 
-	para "A new family just"
-	line "moved in."
-	cont "They didn't put up"
-	cont "their name yet."
+	para "Une famille vient"
+	line "d'emménager."
+	cont "Ils n'ont pas"
+	cont "encore écrit"
+	cont "leur nom."
 	done
 
 _PalletTownYellowsHouseSignText:: ; marcelnote - added Yellow's house
-	text "YELLOW's house"
+	text "Maison de"
+	line "YELLOW"
 	done

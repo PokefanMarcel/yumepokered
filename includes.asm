@@ -13,7 +13,11 @@ INCLUDE "macros/scripts/maps.asm"
 INCLUDE "macros/scripts/events.asm"
 INCLUDE "macros/scripts/text.asm"
 
+IF DEF(_FRA)
+INCLUDE "translation/fra/charmap-fra.asm"
+ELSE
 INCLUDE "constants/charmap.asm"
+ENDC
 INCLUDE "constants/hardware_constants.asm"
 INCLUDE "constants/oam_constants.asm"
 INCLUDE "constants/ram_constants.asm"
