@@ -48,8 +48,10 @@ _DexRatingText_Own40To49::
 	done
 
 _DexRatingText_Own50To59::
-	text "You finally got at"
-	line "least 50 species!"
+	;text "You finally got at"
+	;line "least 50 species!"
+	text "You finally got" ; marcelnote - adjusted
+	line "to 50 species!"
 	cont "Be sure to get"
 	cont "EXP.ALL from my"
 	cont "AIDE!"
@@ -79,8 +81,10 @@ _DexRatingText_Own90To99::
 	done
 
 _DexRatingText_Own100To109::
-	text "You finally got at"
-	line "least 100 species!"
+	;text "You finally got at"
+	;line "least 100 species!"
+	text "You finally got" ; marcelnote - adjusted
+	line "to 100 species!"
 	cont "I can't believe"
 	cont "how good you are!"
 	done
