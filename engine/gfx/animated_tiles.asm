@@ -10,7 +10,8 @@ AnimateTiles::
 	cp 20
 	ret c
 	cp 21
-	jp z, AnimateFlowerOrLanternTile ; if h-counter is 21 (will never happen if animating water only)
+	; jump if h-counter is 21 (will never happen if animating water only)
+	jp z, AnimateFlowerOrLanternOrLavaBubbleTile
 
 	ld a, [wMovingBGTilesCounter2] ; increment w-counter when not animating flower, lantern, etc
 	inc a
@@ -18,11 +19,14 @@ AnimateTiles::
 	ld [wMovingBGTilesCounter2], a
 	call AnimateWaterTile
 	call AnimateWaterBollardTile
+	call AnimateLavaTile
 
 	ldh a, [hTileAnimations]
 	bit BIT_ANIM_FLOWER, a
 	ret nz
 	bit BIT_ANIM_LANTERN, a
+	ret nz
+	bit BIT_ANIM_LAVA, a
 	ret nz
 
 	xor a
@@ -42,6 +46,18 @@ AnimateTiles::
 ;	jp z, ScrollTileRight ; scroll right when counter is 0 1 2 3
 ;	jp ScrollTileLeft     ; scroll left when counter is 4 5 6 7
 
+; marcelnote - MANY FUNCTIONS COULD BE SIMPLIFIED BY USING LISTS E.G.
+
+;AnimateWaterTileSequence:
+;	db 1 ; tile 1
+;	db 2 ; tile 2
+;	db 3 ; tile 3
+;	db 4 ; tile 4
+;	db 5 ; tile 5
+;	db 4 ; tile 4
+;	db 3 ; tile 3
+;	db 2 ; tile 2
+
 AnimateWaterTile: ; marcelnote - modified this function to synchronize with water bollards
 	ldh a, [hTileAnimations]
 	bit BIT_ANIM_WATER, a
@@ -49,9 +65,9 @@ AnimateWaterTile: ; marcelnote - modified this function to synchronize with wate
 
 	ld hl, WaterTilesTable
 	ld a, [wCurMapTileset]
-	cp SHIP_PORT
-	jr nz, .got_table
-	ld hl, WaterAltTilesTable ; SHIP_PORT has different water tiles
+	and a ; OVERWORLD?
+	jr z, .got_table
+	ld hl, WaterAltTilesTable ; other tilesets have different water tiles
 .got_table
 
 	ld a, [wMovingBGTilesCounter2]
@@ -72,9 +88,9 @@ AnimateWaterBollardTile:
 
 	ld hl, WaterBollardTilesTable
 	ld a, [wCurMapTileset]
-	cp SHIP_PORT
-	jr nz, .got_table
-	ld hl, WaterBollardAltTilesTable ; SHIP_PORT has different water tiles
+	and a ; OVERWORLD?
+	jr z, .got_table
+	ld hl, WaterBollardAltTilesTable ; other tilesets have different water tiles
 .got_table
 
 	ld a, [wMovingBGTilesCounter2]
@@ -87,27 +103,81 @@ AnimateWaterBollardTile:
 	ld de, vTileset tile $5e ; water bollard tile
 	jp AnimateFindPointerInTable
 
+AnimateLavaTile: ; marcelnote - reuse function initially used for water
+	ldh a, [hTileAnimations]
+	bit BIT_ANIM_LAVA, a
+	ret z
 
-AnimateFlowerOrLanternTile:
+	ld hl, vTileset tile $48 ; lava tile
+	ld c, $10
+
+	ld a, [wMovingBGTilesCounter2]
+	bit 0, a ; don't animate if counter is odd
+	ret nz
+	and 4 ; %00000100 ; a >= 4 ?
+	jp z, ScrollTileRight ; scroll right when counter is 0 1 2 3
+	jp ScrollTileLeft     ; scroll left when counter is 4 5 6 7
+
+
+AnimateFlowerOrLanternOrLavaBubbleTile:
 	xor a ; reset the counter to loop back to the start of tile animation timer
 	ldh [hMovingBGTilesCounter1], a
 
+	; these animations are currently mutually exclusive
 	ldh a, [hTileAnimations]
 	bit BIT_ANIM_FLOWER, a
-	jp nz, AnimateFlowerTile ; because of this, cannot animate flower and lantern on the same map
+	jp nz, AnimateFlowerTile
+	bit BIT_ANIM_LAVA, a
+	jp nz, AnimateLavaBubbleTiles
 	jp AnimateLanternTiles
 
 AnimateFlowerTile:
 	ld a, [wMovingBGTilesCounter2]
 	and 3 ; = %00000011 ; a modulo 4
 	cp 2
-	ld hl, FlowerTile1
-	jr c, .copy        ; if counter is 0 or 1, use FlowerTile1
-	ld hl, FlowerTile2
-	jr z, .copy        ; if counter is 2, use FlowerTile2
-	ld hl, FlowerTile3 ; if counter is 3, use FlowerTile3
+	ld hl, FlowerTile1 ; if counter is 0 or 1
+	jr c, .copy
+	ld hl, FlowerTile2 ; if counter is 2
+	jr z, .copy
+	ld hl, FlowerTile3 ; if counter is 3
 .copy
-	ld de, vTileset tile $03
+	ld de, vTileset tile $03 ; flower tile
+	jp AnimateCopyTile
+
+AnimateLavaBubbleTiles:
+	; first tile
+	ld a, [wMovingBGTilesCounter2]
+	cp 2
+	ld hl, LavaTile1 ; if counter is 0 1
+	jr c, .copy1
+	cp 4
+	ld hl, LavaTile2 ; if counter is 2 3
+	jr c, .copy1
+	cp 6
+	ld hl, LavaTile3 ; if counter is 4 5
+	jr c, .copy1
+	ld hl, LavaTile4 ; if counter is 6 7
+.copy1
+	ld de, vTileset tile $4A ; first lava bubble tile
+	call AnimateCopyTile
+
+	; second tile
+	ld a, [wMovingBGTilesCounter2]
+	cp 1
+	ld hl, LavaTile3 ; if counter is 0
+	jr c, .copy2
+	cp 3
+	ld hl, LavaTile4 ; if counter is 1 2
+	jr c, .copy2
+	cp 5
+	ld hl, LavaTile1 ; if counter is 3 4
+	jr c, .copy2
+	cp 7
+	ld hl, LavaTile2 ; if counter is 5 6
+	jr c, .copy2
+	ld hl, LavaTile3 ; if counter is 7
+.copy2
+	ld de, vTileset tile $49 ; second lava bubble tile
 	jp AnimateCopyTile
 
 AnimateLanternTiles:
@@ -115,25 +185,25 @@ AnimateLanternTiles:
 	ld a, [wMovingBGTilesCounter2]
 	;and 7 ; = %00000111 ; a modulo 8
 	cp 5
-	ld hl, LanternLeftTile1
-	jr c, .copyLeftTile     ; if counter is 0 1 2 3 4, use LanternLeftTile1
+	ld hl, LanternLeftTile1 ; if counter is 0 1 2 3 4
+	jr c, .copyLeftTile
 	cp 7
-	ld hl, LanternLeftTile2
-	jr c, .copyLeftTile     ; if counter is 5 6, use LanternLeftTile2
-	ld hl, LanternLeftTile1 ; if counter is 7, use LanternLeftTile1
+	ld hl, LanternLeftTile2 ; if counter is 5 6
+	jr c, .copyLeftTile
+	ld hl, LanternLeftTile1 ; if counter is 7
 .copyLeftTile
-	ld de, vTileset tile $3A
+	ld de, vTileset tile $3A ; left lantern tile
 	call AnimateCopyTile
 
 	; right tile
 	ld a, [wMovingBGTilesCounter2]
 	;and 7 ; = %00000111 ; a modulo 8
 	cp 6
-	ld hl, LanternRightTile1
-	jr c, .copyRightTile     ; if counter is 0 1 2 3 4 5, use LanternRightTile1
-	ld hl, LanternRightTile2 ; if counter is 6 7, use LanternRightTile2
+	ld hl, LanternRightTile1 ; if counter is 0 1 2 3 4 5
+	jr c, .copyRightTile
+	ld hl, LanternRightTile2 ; if counter is 6 7
 .copyRightTile
-	ld de, vTileset tile $3B
+	ld de, vTileset tile $3B ; right lantern tile
 	jp AnimateCopyTile
 
 
@@ -157,25 +227,25 @@ AnimateCopyTile:
 	jr nz, .loop
 	ret
 
-;ScrollTileRight: ; marcelnote - was used in original AnimateWaterTile
-;	ld c, $10
-;.right
-;	ld a, [hl]
-;	rrca
-;	ld [hli], a
-;	dec c
-;	jr nz, .right
-;	ret
+ScrollTileRight: ; marcelnote - was used in original AnimateWaterTile
+	ld c, $10
+.right
+	ld a, [hl]
+	rrca
+	ld [hli], a
+	dec c
+	jr nz, .right
+	ret
 
-;ScrollTileLeft: ; marcelnote - was used in original AnimateWaterTile
-;	ld c, $10
-;.left
-;	ld a, [hl]
-;	rlca
-;	ld [hli], a
-;	dec c
-;	jr nz, .left
-;	ret
+ScrollTileLeft: ; marcelnote - was used in original AnimateWaterTile
+	ld c, $10
+.left
+	ld a, [hl]
+	rlca
+	ld [hli], a
+	dec c
+	jr nz, .left
+	ret
 
 
 WaterTilesTable:
@@ -264,3 +334,8 @@ LanternLeftTile2:  INCBIN "gfx/tilesets/lantern/lantern_left2.2bpp"  ; strong li
 LanternRightTile1: INCBIN "gfx/tilesets/lantern/lantern_right1.2bpp" ; medium light
 LanternRightTile2: INCBIN "gfx/tilesets/lantern/lantern_right2.2bpp" ; strong light
 ;LanternRightTile3: INCBIN "gfx/tilesets/lantern/lantern_right3.2bpp" ; low light ; unused
+
+LavaTile1:  INCBIN "gfx/tilesets/lava/lava1.2bpp"
+LavaTile2:  INCBIN "gfx/tilesets/lava/lava2.2bpp"
+LavaTile3:  INCBIN "gfx/tilesets/lava/lava3.2bpp"
+LavaTile4:  INCBIN "gfx/tilesets/lava/lava4.2bpp"
