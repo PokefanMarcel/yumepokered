@@ -156,7 +156,7 @@ SailorData:
 	db 21, SHELLDER, 0
 	db 17, HORSEA, SHELLDER, TENTACOOL, 0
 	db 18, TENTACOOL, STARYU, 0
-	db 17, HORSEA, HORSEA, HORSEA, 0
+	db 17, KRABBY, HORSEA, KRABBY, 0 ; marcelnote - replaced first and last HORSEA with KRABBY
 	db 20, MACHOP, 0
 ; Vermilion Gym
 	db 21, PIKACHU, PIKACHU, 0
@@ -342,12 +342,12 @@ EngineerData:
 
 FisherData:
 ; SS Anne 2F Rooms
-	db 17, GOLDEEN, TENTACOOL, GOLDEEN, 0
+	db 17, GOLDEEN, TENTACOOL, KRABBY, 0 ; marcelnote - replaced last GOLDEEN with KRABBY
 ; SS Anne B1F Rooms
 	db 17, TENTACOOL, STARYU, SHELLDER, 0
 ; Route 12
 	db 22, GOLDEEN, POLIWAG, GOLDEEN, 0
-	db 24, TENTACOOL, GOLDEEN, 0
+	db 24, TENTACOOL, KRABBY, 0 ; marcelnote - replaced last GOLDEEN with KRABBY
 	db 27, GOLDEEN, 0
 	db 21, POLIWAG, SHELLDER, GOLDEEN, HORSEA, 0
 ; Route 21
@@ -372,7 +372,7 @@ SwimmerData:
 	db 30, POLIWAG, POLIWHIRL, 0
 	db 27, HORSEA, TENTACOOL, TENTACOOL, GOLDEEN, 0
 	db 29, GOLDEEN, SHELLDER, SEAKING, 0
-	db 30, HORSEA, HORSEA, 0
+	db 30, HORSEA, KRABBY, 0 ; marcelnote - replaced last HORSEA with KRABBY
 	db 27, TENTACOOL, TENTACOOL, STARYU, HORSEA, TENTACRUEL, 0
 ; Route 20
 	db 31, SHELLDER, CLOYSTER, 0
@@ -424,7 +424,7 @@ BeautyData:
 	db 29, CLEFAIRY, MEOWTH, 0
 ; Route 20
 	db 35, SEAKING, 0
-	db 30, SHELLDER, SHELLDER, CLOYSTER, 0
+	db 30, SHELLDER, SEEL, CLOYSTER, 0 ; marcelnote - replaced second SHELLDER with SEEL
 	db 31, POLIWAG, SEAKING, 0
 ; Route 15
 	db 29, PIDGEOTTO, WIGGLYTUFF, 0
@@ -434,7 +434,7 @@ BeautyData:
 ; Route 19
 	db 27, POLIWAG, GOLDEEN, SEAKING, GOLDEEN, POLIWAG, 0
 	db 30, GOLDEEN, SEAKING, 0
-	db 29, STARYU, STARYU, STARYU, 0
+	db 29, STARYU, KRABBY, STARYU, 0 ; marcelnote - replaced second STARYU with KRABBY
 ; Route 20
 	db 30, SEADRA, HORSEA, SEADRA, 0
 ; marcelnote - new trainers
