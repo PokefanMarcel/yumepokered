@@ -297,11 +297,11 @@ OverworldLoopLessDelay::
 	dec a ; riding a bike?
 	jr z, .speedUp
 	ldh a, [hJoyHeld]
-    and B_BUTTON
-    jr nz, .speedUp
+	and B_BUTTON
+	jr nz, .speedUp
 	jr .normalPlayerSpriteAdvancement
 .speedUp ; marcelnote - cases of speeding are redirected here
-    call DoBikeSpeedup
+	call DoBikeSpeedup
 .normalPlayerSpriteAdvancement
 	call AdvancePlayerSprite
 	ld a, [wWalkCounter]
