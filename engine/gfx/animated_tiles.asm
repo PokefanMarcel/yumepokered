@@ -7,23 +7,25 @@ AnimateTiles::
 	ldh a, [hMovingBGTilesCounter1]
 	inc a
 	ldh [hMovingBGTilesCounter1], a
-	cp 14
+	cp 13
 	ret c
 	jp z, AnimateWaterTile
-	cp 15
+	cp 14
 	jp z, AnimateWaterBollardTile
-	cp 16
+	cp 15
 	jp z, AnimateFlowerTile
-	cp 17
+	cp 16
 	jp z, AnimateLanternLeftTile
-	cp 18
+	cp 17
 	jp z, AnimateLanternRightTile
-	cp 19
+	cp 18
 	jp z, AnimateLavaTile
-	cp 20
+	cp 19
 	jp z, AnimateLavaBubble1Tile
-	cp 21
+	cp 20
 	jp z, AnimateLavaBubble2Tile
+	cp 21
+	jp z, AnimateWaterfallTile
 	; fallthrough at 22 (maintain an h-period of 22 to keep original speed)
 
 	ld a, [wMovingBGTilesCounter2] ; increment w-counter
@@ -110,13 +112,21 @@ AnimateLavaTile: ; marcelnote - reuse function initially used for water
 	bit BIT_ANIM_LAVA, a
 	ret z
 
-	ld hl, vTileset tile $48 ; lava tile
+	ld hl, vTileset tile $4B ; lava tile
 	ld a, [wMovingBGTilesCounter2]
 	rra   ; rotate bit 0 into carry
 	ret c ; don't animate if counter is odd
 	and 2 ; %00000010 ; a >= 2 ?
 	jp z, ScrollTileRight ; scroll right when counter is 0 1 2 3
 	jp ScrollTileLeft     ; scroll left when counter is 4 5 6 7
+
+AnimateWaterfallTile:
+	ldh a, [hTileAnimations]
+	bit BIT_ANIM_WATERFALL, a
+	ret z
+
+	ld hl, vTileset tile $48 ; waterfall tile
+	jp ScrollTileDown
 
 AnimateFlowerTile:
 	ldh a, [hTileAnimations]
@@ -236,7 +246,7 @@ AnimateCopyTile:
 	jr nz, .loop
 	ret
 
-ScrollTileRight: ; marcelnote - was used in original AnimateWaterTile
+ScrollTileRight: ; marcelnote - part of original water animation
 	ld c, $10
 .right
 	ld a, [hl]
@@ -246,7 +256,7 @@ ScrollTileRight: ; marcelnote - was used in original AnimateWaterTile
 	jr nz, .right
 	ret
 
-ScrollTileLeft: ; marcelnote - was used in original AnimateWaterTile
+ScrollTileLeft: ; marcelnote - part of original water animation
 	ld c, $10
 .left
 	ld a, [hl]
@@ -254,6 +264,32 @@ ScrollTileLeft: ; marcelnote - was used in original AnimateWaterTile
 	ld [hli], a
 	dec c
 	jr nz, .left
+	ret
+
+ScrollTileDown: ; marcelnote - from pokecrystal
+	ld de, 16 - 2 ; 16 bytes per tile, first two bytes are read right away
+	push hl
+	add hl, de
+	ld d, [hl]
+	inc hl
+	ld e, [hl]
+	pop hl
+	ld a, 16 / 4 ; 16 bytes per tile, loop does 4 bytes per go
+.loop
+	ld b, [hl]
+	ld [hl], d
+	inc hl
+	ld c, [hl]
+	ld [hl], e
+	inc hl
+	ld d, [hl]
+	ld [hl], b
+	inc hl
+	ld e, [hl]
+	ld [hl], c
+	inc hl
+	dec a
+	jr nz, .loop
 	ret
 
 

@@ -67,8 +67,17 @@ TryDoWildEncounter:
 	ld c, [hl]
 	ld hl, wGrassMons
 	lda_coord 8, 9
+; marcelnote - this check was modified for waterfall tiles and to fix shore encounters
 	cp $14 ; is the bottom left tile (8,9) of the half-block we're standing in a water tile?
-	jr nz, .gotWildEncounterType ; else, it's treated as a grass tile by default
+	jr z, .loadWaterMons ; if yes, load water encounters
+	cp $32 ; is it a left shore tile?
+	jr z, .loadWaterMons ; if yes, load water encounters
+	cp $48 ; is it a waterfall tile?
+	jr nz, .gotWildEncounterType ; if not, use grass encounters
+	ld a, [wCurMapTileset] ; else check if Cavern tileset
+	cp CAVERN
+	jr nz, .gotWildEncounterType ; if not, use grass encounters
+.loadWaterMons
 	ld hl, wWaterMons
 ; since the bottom right tile of a "left shore" half-block is $14 but the bottom left tile is not,
 ; "left shore" half-blocks (such as the one in the east coast of Cinnabar) load grass encounters.
