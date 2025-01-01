@@ -399,14 +399,27 @@ DoBikeSpeedup::
 	ld a, [wNPCMovementScriptPointerTableNum]
 	and a
 	ret nz
+	; marcelnote - added new checks to prevent speed up when going up waterfalls
 	ld a, [wCurMap]
 	cp ROUTE_17 ; Cycling Road
+	jr z, .checkRoute17
+	cp MT_SILVER_2F
+	jr z, .checkMtSilver2F
+.goFaster
+	jp AdvancePlayerSprite
+.checkRoute17
+	ldh a, [hJoyHeld]
+	and D_UP | D_LEFT | D_RIGHT
+	ret nz
+	jr .goFaster
+.checkMtSilver2F
+	ld a, [wTileInFrontOfPlayer] ; tile in front of player
+	cp $48 ; waterfall tile
 	jr nz, .goFaster
 	ldh a, [hJoyHeld]
 	and D_UP | D_LEFT | D_RIGHT
 	ret nz
-.goFaster
-	jp AdvancePlayerSprite
+	jr .goFaster
 
 ; check if the player has stepped onto a warp after having not collided
 CheckWarpsNoCollision::
@@ -1847,9 +1860,18 @@ JoypadOverworld::
 	ld a, [wStatusFlags7]
 	bit BIT_TRAINER_BATTLE, a
 	jr nz, .notForcedDownwards
+	; marcelnote - added new checks to force downwards on waterfalls
 	ld a, [wCurMap]
 	cp ROUTE_17 ; Cycling Road
+	jr z, .checkButtonPress
+	cp MT_SILVER_2F ; for now only map with waterfall
+	jr z, .checkOnWaterfall
+	jr .notForcedDownwards
+.checkOnWaterfall
+	ld a, [wTileInFrontOfPlayer] ; tile in front of player
+	cp $48 ; waterfall tile
 	jr nz, .notForcedDownwards
+.checkButtonPress
 	ldh a, [hJoyHeld]
 	and D_DOWN | D_UP | D_LEFT | D_RIGHT | B_BUTTON | A_BUTTON
 	jr nz, .notForcedDownwards
@@ -1928,7 +1950,7 @@ CollisionCheckOnWater::
 	jr z, .noCollision ; keep surfing if it's a water tile
 	cp $32 ; either the left tile of the S.S. Anne boarding platform or the tile on eastern coastlines (depending on the current tileset)
 	jr z, .checkIfVermilionDockTileset
-	cp $48 ; tile on right on coast lines in Safari Zone
+	cp $48 ; tile on right on coast lines in Safari Zone ; marcelnote - now also waterfall
 	jr z, .noCollision ; keep surfing
 ; check if the [land] tile in front of the player is passable
 .checkIfNextTileIsPassable

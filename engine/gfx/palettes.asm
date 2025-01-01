@@ -166,6 +166,8 @@ SetPal_Overworld:
 	jr z, .Lorelei
 	cp BRUNOS_ROOM
 	jr z, .caveOrBruno
+	cp MT_SILVER_3F
+	jr z, .MtSilver3F
 .normalDungeonOrBuilding
 	ld a, [wLastMap] ; town or route that current dungeon or building is located
 .townOrRoute
@@ -204,6 +206,9 @@ SetPal_Overworld:
 	jr .town
 .shipOrPort
 	ld a, PAL_VERMILION - 1
+	jr .town
+.MtSilver3F
+	ld a, PAL_SAFFRON - 1
 	jr .town
 
 ; used when a Pokemon is the only thing on the screen

@@ -51,7 +51,7 @@ Its kanji name 夢 is also an homage to [shinpokered](https://github.com/jojobea
 
 ### Visual updates
 
-- Several tilesets have been reworked, most notably for Viridian Forest and the Pokémon Tower.
+- Several tilesets have been updated with new graphics and new animations.
 - Gym leaders have their own sprites.
 - New character sprites when surfing.
 - In SuperGameBoy mode, the town color palettes have been modified to better reflect the original Japanese town names.
