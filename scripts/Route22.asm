@@ -86,7 +86,7 @@ Route22FirstRivalBattleScript:
 	ld [wWhichEmotionBubble], a
 	predef EmotionBubble
 	ld a, [wWalkBikeSurfState]
-	and a
+	and a ; WALKING
 	jr z, .walking
 	ld a, SFX_STOP_ALL_MUSIC
 ;	ld [wNewSoundID], a
@@ -238,8 +238,8 @@ Route22SecondRivalBattleScript:
 	xor a ; EXCLAMATION_BUBBLE
 	ld [wWhichEmotionBubble], a
 	predef EmotionBubble
-	ld a, [wWalkBikeSurfState]
-	and a
+	ld a, [wWalkBikeSurfState] ; marcelnote - what's this for? maybe for before crysaudio?
+	and a ; WALKING?
 	jr z, .walking
 	ld a, SFX_STOP_ALL_MUSIC
 ;	ld [wNewSoundID], a

@@ -20,9 +20,9 @@ PlayDefaultMusicFadeOutCurrent::
 
 PlayDefaultMusicCommon::
 	ld a, [wWalkBikeSurfState]
-	and a
+	and a ; WALKING?
 	jr z, .walking
-	cp $2
+	cp SURFING
 	jr z, .surfing
 	ld a, MUSIC_BIKE_RIDING
 	jr .next

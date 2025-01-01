@@ -39,8 +39,8 @@ CheckForSurf:: ; marcelnote - could be improved if there is a wram bit which che
 	callfar ItemUseSurfboard.makePlayerMoveForward
 	ld hl, wStatusFlags5
 	set BIT_SCRIPTED_MOVEMENT_STATE, [hl]
-	ld a, 2
-	ld [wWalkBikeSurfState], a ; change player state to surfing
+	ld a, SURFING
+	ld [wWalkBikeSurfState], a
 	call PlayDefaultMusic ; play surfing music
 	jp OverworldLoop
 .noSurfInParty

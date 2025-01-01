@@ -66,7 +66,7 @@ CheckForceBikeOrSurf::
 	jr z, .forceSurfing
 	ld hl, wStatusFlags6
 	set BIT_ALWAYS_ON_BIKE, [hl]
-	ld a, $1
+	ld a, BIKING
 	ld [wWalkBikeSurfState], a
 	ld [wWalkBikeSurfStateCopy], a
 	jp ForceBikeOrSurf
@@ -76,7 +76,7 @@ CheckForceBikeOrSurf::
 	inc hl
 	jr .loop
 .forceSurfing
-	ld a, $2
+	ld a, SURFING
 	ld [wWalkBikeSurfState], a
 	ld [wWalkBikeSurfStateCopy], a
 	jp ForceBikeOrSurf

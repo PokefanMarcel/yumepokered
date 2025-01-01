@@ -676,13 +676,13 @@ ItemUseBicycle:
 	;;;;;;;;;;
 	ld a, [wWalkBikeSurfState]
 	ld [wWalkBikeSurfStateCopy], a
-	cp 2 ; is the player surfing?
+	cp SURFING
 	jp z, ItemUseNotTime
-	dec a ; is player already bicycling?
+	dec a ; BIKING?
 	jr nz, .tryToGetOnBike
 .getOffBike
 	call ItemUseReloadOverworldData
-	xor a
+	xor a ; WALKING
 	ld [wWalkBikeSurfState], a ; change player state to walking
 	call PlayDefaultMusic ; play walking music
 	ld hl, GotOffBicycleText
@@ -693,8 +693,8 @@ ItemUseBicycle:
 	call ItemUseReloadOverworldData
 	xor a ; no keys pressed
 	ldh [hJoyHeld], a ; current joypad state
-	inc a
-	ld [wWalkBikeSurfState], a ; change player state to bicycling
+	inc a ; BIKING
+	ld [wWalkBikeSurfState], a ; change player state to biking
 	call PlayDefaultMusic ; play bike riding music
 	ld hl, GotOnBicycleText
 .print_text
@@ -704,7 +704,7 @@ ItemUseBicycle:
 ItemUseSurfboard:
 	ld a, [wWalkBikeSurfState]
 	ld [wWalkBikeSurfStateCopy], a
-	cp 2 ; is the player already surfing?
+	cp SURFING
 	jr z, .tryToStopSurfing
 .tryToSurf
 	call IsNextTileShoreOrWater
@@ -716,8 +716,8 @@ ItemUseSurfboard:
 	call .makePlayerMoveForward
 	ld hl, wStatusFlags5
 	set BIT_SCRIPTED_MOVEMENT_STATE, [hl]
-	ld a, 2
-	ld [wWalkBikeSurfState], a ; change player state to surfing
+	ld a, SURFING
+	ld [wWalkBikeSurfState], a
 	call PlayDefaultMusic ; play surfing music
 	ld hl, SurfingGotOnText
 	jp PrintText
@@ -752,9 +752,9 @@ ItemUseSurfboard:
 	call .makePlayerMoveForward
 	ld hl, wStatusFlags5
 	set BIT_SCRIPTED_MOVEMENT_STATE, [hl]
-	xor a
+	xor a ; WALKING
 	ld [wWalkBikeSurfState], a ; change player state to walking
-	dec a
+	dec a ; $FF
 	ld [wJoyIgnore], a
 	call PlayDefaultMusic ; play walking music
 	jp LoadWalkingPlayerSpriteGraphics
@@ -1919,7 +1919,7 @@ RodResponse:
 	ld [wCurOpponent], a
 
 .next
-	ld hl, wWalkBikeSurfState
+	ld hl, wWalkBikeSurfState ; marcelnote - could use wWalkBikeSurfStateCopy instead?
 	ld a, [hl] ; store the value in a
 	push af
 	push hl
@@ -1942,7 +1942,7 @@ FishingInit:
 	call IsNextTileShoreOrWater
 	ret c
 	ld a, [wWalkBikeSurfState]
-	cp 2 ; Surfing?
+	cp SURFING
 	jr z, .surfing
 	call ItemUseReloadOverworldData
 	ld hl, ItemUseText00

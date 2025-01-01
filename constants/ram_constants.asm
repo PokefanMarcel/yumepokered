@@ -145,6 +145,12 @@ DEF NUM_BADGES EQU const_value
 	const BIT_LEDGE_OR_FISHING ; 6
 	const BIT_SPINNING         ; 7
 
+; wWalkBikeSurfState
+	const_def
+	const WALKING              ; 0
+	const BIKING               ; 1
+	const SURFING              ; 2
+
 ; wBagPocketsFlags ; marcelnote - new for bag pockets
 	const_def
 	const BIT_KEY_ITEMS_POCKET   ; 0 ; is 1 if currently in Key Items pocket

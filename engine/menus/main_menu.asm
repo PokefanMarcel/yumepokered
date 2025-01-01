@@ -264,7 +264,7 @@ LinkMenu:
 	ld a, [wCurrentMenuItem]
 	cp $2
 	jr z, .choseCancel
-	xor a
+	xor a ; WALKING
 	ld [wWalkBikeSurfState], a ; start walking
 	ld a, [wCurrentMenuItem]
 	and a

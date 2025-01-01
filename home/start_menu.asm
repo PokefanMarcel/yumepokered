@@ -2,7 +2,7 @@ DisplayStartMenu::
 	ld a, BANK(StartMenu_Pokedex)
 	ldh [hLoadedROMBank], a
 	ld [MBC1RomBank], a
-	ld a, [wWalkBikeSurfState] ; walking/biking/surfing
+	ld a, [wWalkBikeSurfState]
 	ld [wWalkBikeSurfStateCopy], a
 	ld a, SFX_START_MENU
 	call PlaySound
