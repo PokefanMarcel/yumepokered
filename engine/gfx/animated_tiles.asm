@@ -7,27 +7,29 @@ AnimateTiles::
 	ldh a, [hMovingBGTilesCounter1]
 	inc a
 	ldh [hMovingBGTilesCounter1], a
-	cp 20
+	cp 14
 	ret c
+	jp z, AnimateWaterTile
+	cp 15
+	jp z, AnimateWaterBollardTile
+	cp 16
+	jp z, AnimateFlowerTile
+	cp 17
+	jp z, AnimateLanternLeftTile
+	cp 18
+	jp z, AnimateLanternRightTile
+	cp 19
+	jp z, AnimateLavaTile
+	cp 20
+	jp z, AnimateLavaBubble1Tile
 	cp 21
-	; jump if h-counter is 21 (will never happen if animating water only)
-	jp z, AnimateFlowerOrLanternOrLavaBubbleTile
+	jp z, AnimateLavaBubble2Tile
+	; fallthrough at 22 (maintain an h-period of 22 to keep original speed)
 
-	ld a, [wMovingBGTilesCounter2] ; increment w-counter when not animating flower, lantern, etc
+	ld a, [wMovingBGTilesCounter2] ; increment w-counter
 	inc a
-	and 7 ; %00000111 ; a modulo 8, 8 is the period of the animation
+	and 7 ; %00000111 ; a modulo 8, 8 is the period of the animations
 	ld [wMovingBGTilesCounter2], a
-	call AnimateWaterTile
-	call AnimateWaterBollardTile
-	call AnimateLavaTile
-
-	ldh a, [hTileAnimations]
-	bit BIT_ANIM_FLOWER, a
-	ret nz
-	bit BIT_ANIM_LANTERN, a
-	ret nz
-	bit BIT_ANIM_LAVA, a
-	ret nz
 
 	xor a
 	ldh [hMovingBGTilesCounter1], a ; reset h-counter if not animating flower, lantern, etc
@@ -109,29 +111,18 @@ AnimateLavaTile: ; marcelnote - reuse function initially used for water
 	ret z
 
 	ld hl, vTileset tile $48 ; lava tile
-	ld c, $10
-
 	ld a, [wMovingBGTilesCounter2]
-	bit 0, a ; don't animate if counter is odd
-	ret nz
-	and 4 ; %00000100 ; a >= 4 ?
+	rra   ; rotate bit 0 into carry
+	ret c ; don't animate if counter is odd
+	and 2 ; %00000010 ; a >= 2 ?
 	jp z, ScrollTileRight ; scroll right when counter is 0 1 2 3
 	jp ScrollTileLeft     ; scroll left when counter is 4 5 6 7
 
-
-AnimateFlowerOrLanternOrLavaBubbleTile:
-	xor a ; reset the counter to loop back to the start of tile animation timer
-	ldh [hMovingBGTilesCounter1], a
-
-	; these animations are currently mutually exclusive
+AnimateFlowerTile:
 	ldh a, [hTileAnimations]
 	bit BIT_ANIM_FLOWER, a
-	jp nz, AnimateFlowerTile
-	bit BIT_ANIM_LAVA, a
-	jp nz, AnimateLavaBubbleTiles
-	jp AnimateLanternTiles
+	ret z
 
-AnimateFlowerTile:
 	ld a, [wMovingBGTilesCounter2]
 	and 3 ; = %00000011 ; a modulo 4
 	cp 2
@@ -144,65 +135,83 @@ AnimateFlowerTile:
 	ld de, vTileset tile $03 ; flower tile
 	jp AnimateCopyTile
 
-AnimateLavaBubbleTiles:
+AnimateLavaBubble1Tile:
+	ldh a, [hTileAnimations]
+	bit BIT_ANIM_LAVA, a
+	ret z
+
 	; first tile
 	ld a, [wMovingBGTilesCounter2]
 	cp 2
-	ld hl, LavaTile1 ; if counter is 0 1
-	jr c, .copy1
+	ld hl, LavaBubbleTile1 ; if counter is 0 1
+	jr c, .copy
 	cp 4
-	ld hl, LavaTile2 ; if counter is 2 3
-	jr c, .copy1
+	ld hl, LavaBubbleTile2 ; if counter is 2 3
+	jr c, .copy
 	cp 6
-	ld hl, LavaTile3 ; if counter is 4 5
-	jr c, .copy1
-	ld hl, LavaTile4 ; if counter is 6 7
-.copy1
+	ld hl, LavaBubbleTile3 ; if counter is 4 5
+	jr c, .copy
+	ld hl, LavaBubbleTile4 ; if counter is 6 7
+.copy
 	ld de, vTileset tile $4A ; first lava bubble tile
-	call AnimateCopyTile
+	jp AnimateCopyTile
+
+AnimateLavaBubble2Tile:
+	ldh a, [hTileAnimations]
+	bit BIT_ANIM_LAVA, a
+	ret z
 
 	; second tile
 	ld a, [wMovingBGTilesCounter2]
 	cp 1
-	ld hl, LavaTile3 ; if counter is 0
-	jr c, .copy2
+	ld hl, LavaBubbleTile3 ; if counter is 0
+	jr c, .copy
 	cp 3
-	ld hl, LavaTile4 ; if counter is 1 2
-	jr c, .copy2
+	ld hl, LavaBubbleTile4 ; if counter is 1 2
+	jr c, .copy
 	cp 5
-	ld hl, LavaTile1 ; if counter is 3 4
-	jr c, .copy2
+	ld hl, LavaBubbleTile1 ; if counter is 3 4
+	jr c, .copy
 	cp 7
-	ld hl, LavaTile2 ; if counter is 5 6
-	jr c, .copy2
-	ld hl, LavaTile3 ; if counter is 7
-.copy2
+	ld hl, LavaBubbleTile2 ; if counter is 5 6
+	jr c, .copy
+	ld hl, LavaBubbleTile3 ; if counter is 7
+.copy
 	ld de, vTileset tile $49 ; second lava bubble tile
 	jp AnimateCopyTile
 
-AnimateLanternTiles:
+AnimateLanternLeftTile:
+	ldh a, [hTileAnimations]
+	bit BIT_ANIM_LANTERN, a
+	ret z
+
 	; left tile
 	ld a, [wMovingBGTilesCounter2]
 	;and 7 ; = %00000111 ; a modulo 8
 	cp 5
 	ld hl, LanternLeftTile1 ; if counter is 0 1 2 3 4
-	jr c, .copyLeftTile
+	jr c, .copy
 	cp 7
 	ld hl, LanternLeftTile2 ; if counter is 5 6
-	jr c, .copyLeftTile
+	jr c, .copy
 	ld hl, LanternLeftTile1 ; if counter is 7
-.copyLeftTile
+.copy
 	ld de, vTileset tile $3A ; left lantern tile
-	call AnimateCopyTile
+	jp AnimateCopyTile
+
+AnimateLanternRightTile:
+	ldh a, [hTileAnimations]
+	bit BIT_ANIM_LANTERN, a
+	ret z
 
 	; right tile
 	ld a, [wMovingBGTilesCounter2]
 	;and 7 ; = %00000111 ; a modulo 8
 	cp 6
 	ld hl, LanternRightTile1 ; if counter is 0 1 2 3 4 5
-	jr c, .copyRightTile
+	jr c, .copy
 	ld hl, LanternRightTile2 ; if counter is 6 7
-.copyRightTile
+.copy
 	ld de, vTileset tile $3B ; right lantern tile
 	jp AnimateCopyTile
 
@@ -335,7 +344,7 @@ LanternRightTile1: INCBIN "gfx/tilesets/lantern/lantern_right1.2bpp" ; medium li
 LanternRightTile2: INCBIN "gfx/tilesets/lantern/lantern_right2.2bpp" ; strong light
 ;LanternRightTile3: INCBIN "gfx/tilesets/lantern/lantern_right3.2bpp" ; low light ; unused
 
-LavaTile1:  INCBIN "gfx/tilesets/lava/lava1.2bpp"
-LavaTile2:  INCBIN "gfx/tilesets/lava/lava2.2bpp"
-LavaTile3:  INCBIN "gfx/tilesets/lava/lava3.2bpp"
-LavaTile4:  INCBIN "gfx/tilesets/lava/lava4.2bpp"
+LavaBubbleTile1:  INCBIN "gfx/tilesets/lava_bubble/lava_bubble1.2bpp"
+LavaBubbleTile2:  INCBIN "gfx/tilesets/lava_bubble/lava_bubble2.2bpp"
+LavaBubbleTile3:  INCBIN "gfx/tilesets/lava_bubble/lava_bubble3.2bpp"
+LavaBubbleTile4:  INCBIN "gfx/tilesets/lava_bubble/lava_bubble4.2bpp"
