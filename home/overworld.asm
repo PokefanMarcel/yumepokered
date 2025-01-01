@@ -250,7 +250,7 @@ OverworldLoopLessDelay::
 	ld [wPlayerMovingDirection], a ; save direction
 	call UpdateSprites
 	ld a, [wWalkBikeSurfState]
-	cp $02 ; surfing
+	cp SURFING
 	jr z, .surfing
 ; not surfing
 	call CollisionCheckOnLand
@@ -294,7 +294,7 @@ OverworldLoopLessDelay::
 	bit BIT_SPINNING, a ; spinning?
     jr nz, .speedUp
 	ld a, [wWalkBikeSurfState]
-	dec a ; riding a bike?
+	dec a ; BIKING ?
 	jr z, .speedUp
 	ldh a, [hJoyHeld]
 	and B_BUTTON
@@ -829,7 +829,7 @@ HandleFlyWarpOrDungeonWarp::
 	call Delay3
 	xor a
 	ld [wBattleResult], a
-	ld [wWalkBikeSurfState], a
+	ld [wWalkBikeSurfState], a ; WALKING
 	ld [wIsInBattle], a
 	ld [wMapPalOffset], a
 	ld hl, wStatusFlags6
@@ -853,12 +853,12 @@ LoadPlayerSpriteGraphics::
 	; 2: surfing
 
 	ld a, [wWalkBikeSurfState]
-	dec a
+	dec a ; BIKING?
 	jr z, .ridingBike
 
 	ldh a, [hTileAnimations]
 	and a
-	jr nz, .determineGraphics
+	jr nz, .determineGraphics ; if no animation then no water to surf on
 	jr .startWalking
 
 .ridingBike
@@ -868,20 +868,20 @@ LoadPlayerSpriteGraphics::
 	jr c, .determineGraphics
 
 .startWalking
-	xor a
+	xor a ; WALKING
 	ld [wWalkBikeSurfState], a
 	ld [wWalkBikeSurfStateCopy], a
 	jp LoadWalkingPlayerSpriteGraphics
 
 .determineGraphics
 	ld a, [wWalkBikeSurfState]
-	and a
+	and a ; WALKING?
 	jp z, LoadWalkingPlayerSpriteGraphics
-	dec a
+	dec a ; BIKING?
 	jp z, LoadBikePlayerSpriteGraphics
-	dec a
+	dec a ; SURFING?
 	jp z, LoadSurfingPlayerSpriteGraphics
-	jp LoadWalkingPlayerSpriteGraphics
+	jp LoadWalkingPlayerSpriteGraphics ; by default, walk
 
 IsBikingAllowed:: ; marcelnote - simplified
 ; The bike can be used on maps with tilesets in BikeRidingTilesets.
@@ -2060,7 +2060,7 @@ LoadBikePlayerSpriteGraphics::
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld hl, vNPCSprites
 
-LoadPlayerSpriteGraphicsCommon:: ; marcelnote - this does not differentiate Red/Green?
+LoadPlayerSpriteGraphicsCommon::
 	push de
 	push hl
 	lb bc, BANK(RedSprite), $0c

@@ -67,7 +67,7 @@ ENDC
 	call ArePlayerCoordsInArray
 	ret nc
 	ld a, [wWalkBikeSurfState]
-	and a
+	and a ; WALKING?
 	jr z, .walking
 	ld a, SFX_STOP_ALL_MUSIC
 ;	ld [wNewSoundID], a

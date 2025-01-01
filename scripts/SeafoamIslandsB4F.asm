@@ -127,7 +127,7 @@ SeafoamIslandsB4FObjectMoving2Script:
 	ret
 
 .doneForcedSurfMovement:
-	xor a
+	xor a ; WALKING
 	ld [wWalkBikeSurfState], a
 	ld [wWalkBikeSurfStateCopy], a
 	jp ForceBikeOrSurf

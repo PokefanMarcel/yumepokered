@@ -2,7 +2,7 @@ ResetStatusAndHalveMoneyOnBlackout::
 ; Reset player status on blackout.
 	xor a
 	ld [wBattleResult], a
-	ld [wWalkBikeSurfState], a
+	ld [wWalkBikeSurfState], a ; WALKING
 	ld [wIsInBattle], a
 	ld [wMapPalOffset], a
 	ld [wNPCMovementScriptFunctionNum], a
