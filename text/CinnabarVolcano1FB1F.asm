@@ -28,9 +28,8 @@ _CinnabarVolcanoB1FHikerEndBattleText::
 	prompt
 
 _CinnabarVolcanoB1FHikerAfterBattleText::
-	text "BLAINE often"
-	line "comes here"
-	cont "to train."
+	text "BLAINE often comes"
+	line "here to train."
 	done
 
 _CinnabarVolcanoB1FCooltrainerFBattleText::
