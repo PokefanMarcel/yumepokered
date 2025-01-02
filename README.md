@@ -9,11 +9,11 @@ To do this, inspiration was loosely taken from the anime, later Pokémon generat
 In some small ways it is also a 'relocalization' effort: it tries to highlight the games' Japanese influence through some new visuals and dialogue.
 Its kanji name 夢 is also an homage to [shinpokered](https://github.com/jojobear13/shinpokered), a groundbreaking hack which provided the initial inspiration for this project.
 
-### Main features
+### Overview
 
 - Catch all 151 Pokémon!
-- Choose to play as a girl or boy.
-- New areas: Saffron Pokémon Academy, Cinnabar Volcano, Mt. Moon square, Celadon Grove, and much more...
+- Play as a girl or a boy.
+- New areas: Cinnabar Volcano, Saffron Pokémon Academy, Mt. Moon square, Celadon Grove, and much more...
 - ... and even a brand-new town: Mandarin Island.
 - Postgame: new events involving the Elite 4 members, Gen 2 tie-ins, a restored Oak battle, and more!
 - New storyline leading to Mew.
@@ -35,34 +35,34 @@ Its kanji name 夢 is also an homage to [shinpokered](https://github.com/jojobea
 **Battles**
 - Gym leaders' and Elite 4 members' Pokémon have better moves overall.
 - Several Gym leader teams were slightly modified (but trying to keep their theme intact!).
-- The rival's different teams now include a more diverse roster, to better reflect his storyline.
+- The rival's teams now include a more diverse roster to better reflect his storyline.
 - New trainers to fight in new and existing areas. (You may recognize some from the anime!)
 - Rematches for Gym leaders and the Elite 4 with stronger teams and movesets!
 - A new Battle Hall with random 3vs3 battles.
 
 **Wild encounters**
-- Wild encounters have been reworked to increase diversity and make many Pokémon available earlier.
-- For full details, see the files for [wild encounters on each map](data/wild/maps) and their [probabilities](data/wild/probabilities.asm).
-- The locations of the Rods was changed – in particular, the Old Rod is now available very early on.
+- Wild encounters have been reworked to increase diversity and make many Pokémon available earlier in the game.
+- For full details (spoilers!), see the files for [wild encounters on each map](data/wild/maps) and their [probabilities](data/wild/probabilities.asm).
+- Every fishing rod is available earlier than it was in the original game.
 - Fishing encounters were completely reworked in terms of levels and Pokémon diversity.
 - For full details (spoilers!), see the files for the [Old rod](data/wild/old_rod.asm), [Good rod](data/wild/good_rod.asm) and [Super rod](data/wild/super_rod.asm).
-- A new NPC gives either the Helix or Dome fossil later in the game, depending on which one was chosen earlier.
-- Either Hitmonlee or Hitmonchan is also obtainable through a later NPC.
+- A new NPC gives either the Helix or Dome fossil later in the game, depending on which one was chosen in Mt. Moon.
+- Either Hitmonlee or Hitmonchan is also obtainable through a new NPC before the Elite 4.
 
 ### Visual updates
 
 - Several tilesets have been updated with new graphics and new animations.
 - Gym leaders have their own sprites.
-- New character sprites when surfing.
-- In SuperGameBoy mode, the town color palettes have been modified to better reflect the original Japanese town names.
+- New character sprites when surfing or running.
+- In SuperGameBoy mode, the town color palettes have been adjusted to better reflect the original Japanese town names.
 - Many visual bug fixes.
 
 ### QoL updates
 
 - Run by pressing B.
-- Use Cut, Surf, Strength, and Flash just by pressing A on the map.
+- Use Cut, Surf, Strength, and Flash just by pressing A on the overworld.
 - HMs and other field moves can be taught without taking a move slot.
-- Bag space expanded to 30 item slots, and a new dedicated bag pocket for key items.
+- Bag space expanded to 30 item slots, and key items have a new dedicated bag pocket.
 - Assign key items like Bicycle, Fishing rods, or Itemfinder to the Select button.
 - Prompt to reuse Repel after finishing one.
 - Haunter, Graveler, Kadabra and Machoke can evolve by interacting with new dedicated NPCs.
@@ -75,6 +75,8 @@ Its kanji name 夢 is also an homage to [shinpokered](https://github.com/jojobea
 - Faster dialogue to buy coins at the Game Corner.
 
 There are also many other smaller tweaks to the original game, and still more to come!
+
+Link cable functionalities have not been tested yet – try it at your own risk!
 
 ## Screenshots
 
@@ -105,9 +107,9 @@ This project owes a lot to existing works, and above all to the pret's [pokered]
 - [Extreme Yellow](https://github.com/RainbowMetalPigeon/ExtremeYellow): overworld HM use, dynamic TM seller,
 - [Yellow Legacy](https://github.com/cRz-Shadows/Pokemon_Yellow_Legacy): inspiration for some balance changes,
 - [pokered-crysaudio](https://github.com/dannye/pokered-crysaudio/tree/1edc6019fb8630bccd94f0b0e7dd4082cf7f4245): updated sound engine,
-- new sprites have been adapted from Madame Frog/Hatuntun (retrieved [here](https://www.deviantart.com/ghost-missingno/art/Blue-Sprites-for-R-G-B-Y-339796334)), LouLilie ([here](https://www.deviantart.com/loulilie/art/PokemonSpecial-Sprites-Yellow-302559354)), Corra and Mauve (from the pokered discord),
+- some new sprites have been provided by or adapted from Madame Frog/Hatuntun (retrieved [here](https://www.deviantart.com/ghost-missingno/art/Blue-Sprites-for-R-G-B-Y-339796334)), LouLilie ([here](https://www.deviantart.com/loulilie/art/PokemonSpecial-Sprites-Yellow-302559354)), Corra, Mauve and FrenchOrange (from the pokered discord),
 - the invaluable help from the amazing people on the pokered Discord,
 - and many others...
 
-I try my best to keep track of all references, but I'm without a doubt forgetting some.
-If you think I should credit your work here, I'll be happy to add you to the list – just reach out to me on the pokered Discord!
+I try my best to keep track of all references, but I'm most likely forgetting some.
+If you think I should credit your work here, I'll be happy to do so – just reach out to me on the pokered Discord!
