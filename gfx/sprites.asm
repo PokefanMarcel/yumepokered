@@ -38,7 +38,7 @@ RedRunSprite::           INCBIN "gfx/sprites/red_run.2bpp"    ; marcelnote - new
 GreenBikeSprite::        INCBIN "gfx/sprites/green_bike.2bpp" ; marcelnote - new
 GreenSprite::            INCBIN "gfx/sprites/green.2bpp"      ; marcelnote - new
 GreenSurfSprite::        INCBIN "gfx/sprites/green_surf.2bpp" ; marcelnote - new
-GreenRunSprite::        INCBIN "gfx/sprites/green_run.2bpp"   ; marcelnote - new
+GreenRunSprite::         INCBIN "gfx/sprites/green_run.2bpp"  ; marcelnote - new
 BlueSprite::             INCBIN "gfx/sprites/blue.2bpp"
 OakSprite::              INCBIN "gfx/sprites/oak.2bpp"
 YoungsterSprite::        INCBIN "gfx/sprites/youngster.2bpp"
