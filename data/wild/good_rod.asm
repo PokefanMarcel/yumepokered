@@ -27,19 +27,20 @@ GoodRodData:
 	dbw ROUTE_25,            .Group8
 	dbw ROUTE_28,            .Group9 ; marcelnote - new route
 	dbw ORANGE_ROUTE_1,      .Group4 ; marcelnote - new route
+	dbw MT_MOON_SQUARE,      .Group1 ; marcelnote - new map
 	dbw CERULEAN_GYM,        .Group2
 	dbw VERMILION_DOCK,      .Group3
-	dbw SEAFOAM_ISLANDS_B3F, .Group10
-	dbw SEAFOAM_ISLANDS_B4F, .Group10
+	dbw CELADON_GROVE,       .Group6 ; marcelnote - new map
 	dbw SAFARI_ZONE_EAST,    .Group9
 	dbw SAFARI_ZONE_NORTH,   .Group9
 	dbw SAFARI_ZONE_WEST,    .Group9
 	dbw SAFARI_ZONE_CENTER,  .Group9
-	dbw CERULEAN_CAVE_2F,    .Group6
+	dbw SEAFOAM_ISLANDS_B3F, .Group10
+	dbw SEAFOAM_ISLANDS_B4F, .Group10
+	dbw CINNABAR_VOLCANO_2F, .Group4  ; marcelnote - new map
+	dbw MANDARIN_DOCK,       .Group11 ; marcelnote - new map
 	dbw CERULEAN_CAVE_B1F,   .Group6
 	dbw CERULEAN_CAVE_1F,    .Group6
-	dbw MT_MOON_SQUARE,      .Group1 ; marcelnote - new map
-	dbw CELADON_GROVE,       .Group6 ; marcelnote - new map
 	dbw MT_SILVER_2F,        .Group12 ; marcelnote - new map
 	db -1 ; end
 
@@ -79,6 +80,7 @@ GoodRodData:
 	db 17, HORSEA
 
 .Group4: ; CINNABAR_ISLAND, ROUTE_12, ROUTE_13, ROUTE_17, ROUTE_18, ROUTE_19, ROUTE_20, ROUTE_21
+         ; CINNABAR_VOLCANO_2F
 	db 8
 	db 15, MAGIKARP
 	db 15, GOLDEEN
