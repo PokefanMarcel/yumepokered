@@ -43,7 +43,7 @@ Its kanji name 夢 is also an homage to [shinpokered](https://github.com/jojobea
 **Wild encounters**
 - Wild encounters have been reworked to increase diversity and make many Pokémon available earlier in the game.
 - For full details (spoilers!), see the files for [wild encounters on each map](data/wild/maps) and their [probabilities](data/wild/probabilities.asm).
-- Every fishing rod is available earlier than it was in the original game.
+- Every fishing rod is available earlier than it was in the original games.
 - Fishing encounters were completely reworked in terms of levels and Pokémon diversity.
 - For full details (spoilers!), see the files for the [Old rod](data/wild/old_rod.asm), [Good rod](data/wild/good_rod.asm) and [Super rod](data/wild/super_rod.asm).
 - A new NPC gives either the Helix or Dome fossil later in the game, depending on which one was chosen in Mt. Moon.

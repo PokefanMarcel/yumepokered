@@ -27,19 +27,20 @@ SuperRodData:
 	dbw ROUTE_25,            .Group7
 	dbw ROUTE_28,            .Group8 ; marcelnote - new route
 	dbw ORANGE_ROUTE_1,      .Group1 ; marcelnote - new route
+	dbw MT_MOON_SQUARE,      .Group2 ; marcelnote - new map
 	dbw CERULEAN_GYM,        .Group9
 	dbw VERMILION_DOCK,      .Group1
-	dbw SEAFOAM_ISLANDS_B3F, .Group10
-	dbw SEAFOAM_ISLANDS_B4F, .Group10
+	dbw CELADON_GROVE,       .Group3  ; marcelnote - new map
 	dbw SAFARI_ZONE_EAST,    .Group11
 	dbw SAFARI_ZONE_NORTH,   .Group11
 	dbw SAFARI_ZONE_WEST,    .Group11
 	dbw SAFARI_ZONE_CENTER,  .Group11
-	dbw CERULEAN_CAVE_2F,    .Group6
+	dbw SEAFOAM_ISLANDS_B3F, .Group10
+	dbw SEAFOAM_ISLANDS_B4F, .Group10
+	dbw CINNABAR_VOLCANO_2F, .Group1  ; marcelnote - new map
+	dbw MANDARIN_DOCK,       .Group12 ; marcelnote - new map
 	dbw CERULEAN_CAVE_B1F,   .Group6
 	dbw CERULEAN_CAVE_1F,    .Group6
-	dbw MT_MOON_SQUARE,      .Group2 ; marcelnote - new map
-	dbw CELADON_GROVE,       .Group3 ; marcelnote - new map
 	dbw MT_SILVER_2F,        .Group13 ; marcelnote - new map
 	db -1 ; end
 
@@ -53,7 +54,7 @@ SuperRodData:
 
 .Group1: ; PALLET_TOWN, VERMILION_CITY, CINNABAR_ISLAND,
          ; ROUTE_11, ROUTE_12, ROUTE_13, ROUTE_17, ROUTE_18, ROUTE_19, ROUTE_20, ROUTE_21,
-         ; VERMILION_DOCK
+         ; VERMILION_DOCK, CINNABAR_VOLCANO_2F
 	db 8
 	db 27, KRABBY
 	db 27, HORSEA
@@ -154,7 +155,7 @@ SuperRodData:
 	db 25, PSYDUCK
 	db 25, SLOWPOKE
 
-.Group12: ; MANDARIN_ISLAND
+.Group12: ; MANDARIN_ISLAND, MANDARIN_DOCK
 	db 4
 	db 25, TENTACOOL
 	db 25, GRIMER

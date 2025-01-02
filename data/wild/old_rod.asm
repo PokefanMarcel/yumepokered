@@ -27,21 +27,22 @@ OldRodData:
 	dbw ROUTE_25,            .Group4
 	dbw ROUTE_28,            .Group6 ; marcelnote - new route
 	dbw ORANGE_ROUTE_1,      .Group4 ; marcelnote - new route
+	dbw MT_MOON_SQUARE,      .Group3 ; marcelnote - new map
 	dbw CERULEAN_GYM,        .Group2
 	dbw VERMILION_DOCK,      .Group4
-	dbw SEAFOAM_ISLANDS_B3F, .Group4
-	dbw SEAFOAM_ISLANDS_B4F, .Group4
+	dbw CELADON_GROVE,       .Group5 ; marcelnote - new map
 	dbw SAFARI_ZONE_EAST,    .Group6
 	dbw SAFARI_ZONE_NORTH,   .Group6
 	dbw SAFARI_ZONE_WEST,    .Group6
 	dbw SAFARI_ZONE_CENTER,  .Group6
-	dbw CERULEAN_CAVE_2F,    .Group4
+	dbw SEAFOAM_ISLANDS_B3F, .Group4
+	dbw SEAFOAM_ISLANDS_B4F, .Group4
+	dbw CINNABAR_VOLCANO_2F, .Group4 ; marcelnote - new map
+	dbw MANDARIN_DOCK,       .Group4 ; marcelnote - new map
 	dbw CERULEAN_CAVE_B1F,   .Group4
 	dbw CERULEAN_CAVE_1F,    .Group4
-	dbw MT_MOON_SQUARE,      .Group3 ; marcelnote - new map
-	dbw CELADON_GROVE,       .Group5 ; marcelnote - new map
 	dbw MT_SILVER_2F,        .Group6 ; marcelnote - new map
-	dbw DR_JABARAS_LAB,      .Group7 ; marcelnote - new map
+	dbw DR_JABARAS_LAB,      .Group7 ; marcelnote - new map, encounters for old rod only
 	db -1 ; end
 
 ; fishing groups
@@ -69,7 +70,7 @@ OldRodData:
 
 .Group4: ; VERMILION_CITY, CINNABAR_ISLAND, MANDARIN_ISLAND, ROUTE_10, ROUTE_11, ROUTE_12,
          ; ROUTE_13, ROUTE_17, ROUTE_18, ROUTE_19, ROUTE_20, ROUTE_21, ROUTE_25, VERMILION_DOCK,
-         ; SEAFOAM_ISLANDS_*, CERULEAN_CAVE_*
+         ; SEAFOAM_ISLANDS_*, CINNABAR_VOLCANO_2F, CERULEAN_CAVE_*
 	db 4
 	db 5, GOLDEEN
 	db 7, GOLDEEN
