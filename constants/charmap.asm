@@ -28,31 +28,34 @@
 
 ; Actual characters (from gfx/font/font_extra.png)
 
-	charmap "<BOLD_A>",  $60 ; unused
-	charmap "<BOLD_B>",  $61 ; unused
-	charmap "<BOLD_C>",  $62 ; unused
-	charmap "<BOLD_D>",  $63 ; unused
-	charmap "<BOLD_E>",  $64 ; unused
-	charmap "<BOLD_F>",  $65 ; unused
-	charmap "<BOLD_G>",  $66 ; unused
-	charmap "<BOLD_H>",  $67 ; unused
-	charmap "<BOLD_I>",  $68 ; unused
-	charmap "<BOLD_V>",  $69
-	charmap "<BOLD_S>",  $6a
-	charmap "<BOLD_L>",  $6b ; unused
-	charmap "<BOLD_M>",  $6c ; unused
-	charmap "<COLON>",   $6d ; colon with tinier dots than ":"
-	charmap "ぃ",         $6e ; hiragana small i, unused
-	charmap "ぅ",         $6f ; hiragana small u, unused
-	charmap "‘",         $70 ; opening single quote
-	charmap "’",         $71 ; closing single quote
-	charmap "“",         $72 ; opening quote
-	charmap "”",         $73 ; closing quote
-	charmap "·",         $74 ; middle dot, unused
-	charmap "…",         $75 ; ellipsis
-	charmap "ぁ",         $76 ; hiragana small a, unused
-	charmap "ぇ",         $77 ; hiragana small e, unused
-	charmap "ぉ",         $78 ; hiragana small o, unused
+	;charmap "<BOLD_A>",  $60 ; unused
+	;charmap "<BOLD_B>",  $61 ; unused
+	;charmap "<BOLD_C>",  $62 ; unused
+	;charmap "<BOLD_D>",  $63 ; unused
+	;charmap "<BOLD_E>",  $64 ; unused
+	;charmap "<BOLD_F>",  $65 ; unused
+	;charmap "<BOLD_G>",  $66 ; unused
+	;charmap "<BOLD_H>",  $67 ; unused
+	;charmap "<BOLD_I>",  $68 ; unused
+	;charmap "<BOLD_V>",  $69
+	;charmap "<BOLD_S>",  $6a
+	;charmap "<BOLD_L>",  $6b ; unused
+	;charmap "<BOLD_M>",  $6c ; unused
+	;charmap "<COLON>",   $6d ; colon with tinier dots than ":"
+	;charmap "ぃ",         $6e ; hiragana small i, unused
+	;charmap "ぅ",         $6f ; hiragana small u, unused
+	;charmap "‘",         $70 ; opening single quote
+	;charmap "’",         $71 ; closing single quote
+	;charmap "“",         $72 ; opening quote
+	;charmap "”",         $73 ; closing quote
+	;charmap "·",         $74 ; middle dot, unused
+	;charmap "…",         $75 ; ellipsis
+	;charmap "ぁ",         $76 ; hiragana small a, unused
+	;charmap "ぇ",         $77 ; hiragana small e, unused
+	;charmap "ぉ",         $78 ; hiragana small o, unused
+
+	charmap "<BOLD_V>",  $77
+	charmap "<BOLD_S>",  $78
 
 	charmap "┌",         $79
 	charmap "─",         $7a
@@ -181,7 +184,8 @@
 
 	charmap "ァ",         $e9 ; katakana small a, unused
 	charmap "ゥ",         $ea ; katakana small u, unused
-	charmap "ェ",         $eb ; katakana small e, unused
+	;charmap "ェ",         $eb ; katakana small e, unused
+	charmap "<COLON>",   $eb ; colon with tinier dots than ":"
 
 	charmap "▷",         $ec
 	charmap "▶",         $ed
