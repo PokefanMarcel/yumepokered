@@ -543,18 +543,18 @@ DrawTrainerInfo:
 	ld bc, 8 * 8 tiles
 	ld a, BANK(GymLeaderFaceAndBadgeTileGraphics)
 	call FarCopyData2
-	ld hl, TextBoxGraphics
-	ld de, 13 tiles
-	add hl, de ; hl = colon tile pattern
-	ld de, vChars1 tile $56
+	;ld hl, TextBoxGraphics ; marcelnote - this colon tile is already loaded
+	;ld de, 13 tiles
+	;add hl, de ; hl = colon tile pattern
+	;ld de, vChars1 tile $56
 	ld bc, 1 tiles
-	ld a, BANK(TextBoxGraphics)
-	push bc
-	call FarCopyData2
-	pop bc
+	;ld a, BANK(TextBoxGraphics)
+	;push bc
+	;call FarCopyData2
+	;pop bc
 	ld hl, TrainerInfoTextBoxTileGraphics tile 8  ; background tile pattern
 	ld de, vChars1 tile $57
-	call TrainerInfo_FarCopyData
+	call TrainerInfo_FarCopyData ; this function loads the right bank in a
 	call EnableLCD
 	ld hl, wTrainerInfoTextBoxWidthPlus1
 	ld a, 18 + 1
@@ -594,7 +594,7 @@ DrawTrainerInfo:
 	ld de, wPlayTimeHours ; hours
 	lb bc, LEFT_ALIGN | 1, 3
 	call PrintNumber
-	ld [hl], $d6 ; colon tile ID
+	ld [hl], "<COLON>" ; colon with tinier dots than ":"
 	inc hl
 	ld de, wPlayTimeMinutes ; minutes
 	lb bc, LEADING_ZEROES | 1, 2
