@@ -85,18 +85,7 @@ StatusScreen:
 	call ClearScreen
 	call UpdateSprites
 	call LoadHpBarAndStatusTilePatterns
-	ld de, BattleHudTiles1  ; source
-	ld hl, vChars2 tile $6d ; dest
-	lb bc, BANK(BattleHudTiles1), 3
-	call CopyVideoDataDouble ; ·│ :L and halfarrow line end
-	ld de, BattleHudTiles2
-	ld hl, vChars2 tile $78
-	lb bc, BANK(BattleHudTiles2), 1
-	call CopyVideoDataDouble ; │
-	ld de, BattleHudTiles3
-	ld hl, vChars2 tile $76
-	lb bc, BANK(BattleHudTiles3), 2
-	call CopyVideoDataDouble ; ─ ┘
+	; marcelnote - reorganized Battle HUD tiles, no need to load tiles here anymore
 	ldh a, [hTileAnimations]
 	push af
 	xor a
@@ -226,18 +215,18 @@ OKText:
 DrawLineBox:
 	ld de, SCREEN_WIDTH ; New line
 .PrintVerticalLine
-	ld [hl], $78 ; │
+	ld [hl], "<HUD_VERTI_BAR>" ; │
 	add hl, de
 	dec b
 	jr nz, .PrintVerticalLine
-	ld [hl], $77 ; ┘
+	ld [hl], "<RIGHT_CORNER>" ; ┘
 	dec hl
 .PrintHorizLine
-	ld [hl], $76 ; ─
+	ld [hl], "<HUD_HORIZ_BAR>" ; ─
 	dec hl
 	dec c
 	jr nz, .PrintHorizLine
-	ld [hl], $6f ; ← (halfarrow ending)
+	ld [hl], "<LEFT_TRIANGLE>" ; ← (halfarrow ending)
 	ret
 
 PrintStatsBox:
@@ -307,7 +296,7 @@ StatusScreen2:
 	lb bc, 5, 10
 	call ClearScreenArea ; Clear under name
 	hlcoord 19, 3
-	ld [hl], $78
+	ld [hl], "<HUD_VERTI_BAR>"
 	hlcoord 0, 8
 	ld b, 8
 	ld c, 18

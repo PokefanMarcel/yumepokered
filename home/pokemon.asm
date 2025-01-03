@@ -8,15 +8,15 @@ DrawHPBar::
 	push bc
 
 	; Left
-	ld a, $71 ; "HP:"
+	ld a, "<HP>"
 	ld [hli], a
-	ld a, $62
+	inc a ; a = $63, end of the P, colon, and left tip of the HP bar
 	ld [hli], a
 
 	push hl
 
 	; Middle
-	ld a, $63 ; empty
+	inc a ; a = $64, empty HP bar tile
 .draw
 	ld [hli], a
 	dec d
@@ -25,10 +25,10 @@ DrawHPBar::
 	; Right
 	ld a, [wHPBarType]
 	dec a
-	ld a, $6d ; status screen and battle
-	jr z, .ok
-	dec a ; pokemon menu
-.ok
+	ld a, $6e ; HP bar tip with vertical bar ; for status screen, and for player Mon in battle
+	jr z, .got_rightmost_tile
+	dec a ; a = $6d, HP bar tip without vertical bar ; for pokemon menu, and for enemy Mon in battle
+.got_rightmost_tile
 	ld [hl], a
 
 	pop hl
@@ -48,7 +48,7 @@ DrawHPBar::
 	sub 8
 	jr c, .partial
 	ld e, a
-	ld a, $6b ; full
+	ld a, $6c ; full HP bar tile
 	ld [hli], a
 	ld a, e
 	and a
@@ -57,7 +57,7 @@ DrawHPBar::
 
 .partial
 	; Fill remaining pixels at the end if necessary.
-	ld a, $63 ; empty
+	ld a, $64 ; empty HP bar tile
 	add e
 	ld [hl], a
 .done
