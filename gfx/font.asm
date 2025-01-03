@@ -6,8 +6,6 @@ FontGraphics:: INCBIN "gfx/font/font.1bpp"
 ENDC
 FontGraphicsEnd::
 
-ABTiles: INCBIN "gfx/font/AB.2bpp"
-
 HpBarAndStatusGraphics:: INCBIN "gfx/font/font_battle_extra.2bpp"
 HpBarAndStatusGraphicsEnd::
 
