@@ -64,13 +64,29 @@
 
 ; Actual characters (from gfx/font/font_battle_extra.png)
 
-	charmap "<LV>",      $6e
+	charmap "<HP>",      $62
 
-	charmap "<to>",      $70 ; narrow "to"
+	charmap "<HUD_VERTI_BAR>",  $6f ; HUD vertical bar tile
 
-	charmap "<BOLD_P>",  $72 ; Japanese opening quote, unused ; marcelnote - bold P tutorial
-	charmap "<ID>",      $73
-	charmap "№",         $74
+	charmap "<LV>",             $70 ; :L
+
+	charmap "<LEFT_TRIANGLE>",  $71 ; HUD lower-left triangle tile
+	charmap "<HUD_HORIZ_BAR>",  $72 ; HUD horizontal bar tile
+	charmap "<RIGHT_CORNER>",   $73 ; HUD lower-right corner tile
+
+	charmap "<BOLD_P>", $74 ; Japanese opening quote, unused ; marcelnote - bold P tutorial
+	charmap "<ID>",     $75
+	charmap "№",        $76
+	charmap "<to>",     $77 ; narrow "to"
+
+	; loaded in battle (from gfx/battle/battle_hud.png)
+	charmap "<LEFT_CORNER>",    $74 ; HUD lower-left corner tile
+	charmap "<RIGHT_TRIANGLE>", $75 ; HUD lower-right triangle tile
+
+	; loaded in naming screem (see engine/menus/naming_screen.asm, from gfx/font/naming_screen.png)
+	charmap "<ED>",                $74
+	charmap "<UNDERSCORE>",        $75
+	charmap "<UNDERSCORE_RAISED>", $76
 
 ; Actual characters (from other graphics files)
 
@@ -81,9 +97,6 @@
 
 	; needed for LoadTownMap_Fly (see engine/items/town_map.asm)
 	charmap "▲",         $ed ; gfx/town_map/up_arrow.1bpp
-
-	; needed for PrintAlphabet (see engine/menus/naming_screen.asm)
-	charmap "<ED>",      $f0 ; gfx/font/ED.1bpp
 
 ; Actual characters (from gfx/font/font.png)
 

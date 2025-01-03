@@ -127,9 +127,9 @@ PlacePlayerHUDTiles:
 
 PlayerBattleHUDGraphicsTiles:
 ; The tile numbers for specific parts of the battle display for the player's pokemon
-	db $73 ; unused ($73 is hardcoded into the routine that uses these bytes)
-	db $77 ; lower-right corner tile of the HUD
-	db $6F ; lower-left triangle tile of the HUD
+	db "<HUD_VERTI_BAR>" ; unused (hardcoded into the routine that uses these bytes)
+	db "<RIGHT_CORNER>"  ; lower-right corner tile of the HUD
+	db "<LEFT_TRIANGLE>" ; lower-left triangle tile of the HUD
 
 PlaceEnemyHUDTiles:
 	ld hl, EnemyBattleHUDGraphicsTiles
@@ -142,12 +142,12 @@ PlaceEnemyHUDTiles:
 
 EnemyBattleHUDGraphicsTiles:
 ; The tile numbers for specific parts of the battle display for the enemy
-	db $73 ; unused ($73 is hardcoded in the routine that uses these bytes)
-	db $74 ; lower-left corner tile of the HUD
-	db $78 ; lower-right triangle tile of the HUD
+	db "<HUD_VERTI_BAR>"  ; unused (hardcoded in the routine that uses these bytes)
+	db "<LEFT_CORNER>"    ; lower-left corner tile of the HUD
+	db "<RIGHT_TRIANGLE>" ; lower-right triangle tile of the HUD
 
 PlaceHUDTiles:
-	ld [hl], $73
+	ld [hl], "<HUD_VERTI_BAR>"
 	ld bc, SCREEN_WIDTH
 	add hl, bc
 	ld a, [wHUDGraphicsTiles + 1] ; leftmost tile
@@ -155,7 +155,7 @@ PlaceHUDTiles:
 	ld a, 8
 .loop
 	add hl, de
-	ld [hl], $76
+	ld [hl], "<HUD_HORIZ_BAR>"
 	dec a
 	jr nz, .loop
 	add hl, de

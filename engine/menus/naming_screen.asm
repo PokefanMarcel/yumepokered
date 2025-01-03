@@ -91,7 +91,7 @@ DisplayNamingScreen:
 	ld b, SET_PAL_GENERIC
 	call RunPaletteCommand
 	call LoadHpBarAndStatusTilePatterns
-	call LoadEDTile
+	call LoadNamingScreenTiles ; marcelnote - reorganized Naming screen tiles
 	farcall LoadMonPartySpriteGfx
 	hlcoord 0, 4
 	ld b, 9
@@ -323,16 +323,11 @@ DisplayNamingScreen:
 	ld [wTopMenuItemX], a
 	jp EraseMenuCursor
 
-LoadEDTile:
-	ld de, ED_Tile
-	ld hl, vFont tile $70
-	; BUG: BANK("Home") should be BANK(ED_Tile), although it coincidentally works as-is
-	lb bc, BANK("Home"), (ED_TileEnd - ED_Tile) / $8
+LoadNamingScreenTiles:
+	ld de, NamingScreenTiles
+	ld hl, vChars2 tile $74
+	lb bc, BANK(NamingScreenTiles), (NamingScreenTilesEnd - NamingScreenTiles) / $8
 	jp CopyVideoDataDouble
-
-ED_Tile:
-	INCBIN "gfx/font/ED.1bpp"
-ED_TileEnd:
 
 PrintAlphabet:
 	xor a
@@ -379,13 +374,11 @@ PrintNicknameAndUnderscores:
 	hlcoord 10, 3
 	ld a, [wNamingScreenType]
 	cp NAME_MON_SCREEN
-	jr nc, .pokemon1
-	ld b, 7 ; player or rival max name length
-	jr .playerOrRival1
-.pokemon1
 	ld b, 10 ; pokemon max name length
-.playerOrRival1
-	ld a, $76 ; underscore tile id
+	jr nc, .got_max_length
+	ld b, 7 ; player or rival max name length
+.got_max_length
+	ld a, "<UNDERSCORE>" ; underscore tile id
 .placeUnderscoreLoop
 	ld [hli], a
 	dec b
@@ -409,15 +402,14 @@ PrintNicknameAndUnderscores:
 	ld a, [wNamingScreenType]
 	cp NAME_MON_SCREEN
 	ld a, 9 ; keep the last underscore raised
-	jr nc, .pokemon3
+	jr nc, .emptySpacesRemaining
 	ld a, 6 ; keep the last underscore raised
-.pokemon3
 .emptySpacesRemaining
 	ld c, a
 	ld b, $0
 	hlcoord 10, 3
 	add hl, bc
-	ld [hl], $77 ; raised underscore tile id
+	ld [hl], "<UNDERSCORE_RAISED>"
 	ret
 
 DakutensAndHandakutens:
