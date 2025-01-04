@@ -48,19 +48,15 @@ IsInRestOfArray::
 
 
 IsInList:: ; marcelnote - simpler, uses e only, for arrays with entry size 1
-; Search a list at hl for the value in a.
-; Sets z flag if not found.
-; Returns hl the address at which a was found.
+; Search the list at hl for the value in a.
+; Returns carry if found.
+; If found, then also returns hl the address at which a was found.
 	ld e, a
 .loop
 	ld a, [hl]
 	cp -1
-	ret z ; not found
+	jr z, IsInRestOfArray.notfound
 	cp e
-	jr z, .found
+	jr z, IsInRestOfArray.found
 	inc hl
 	jr .loop
-
-.found
-	inc a ; a cannot be -1 else would set z flag
-	ret

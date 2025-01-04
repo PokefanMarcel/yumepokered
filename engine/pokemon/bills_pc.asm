@@ -370,11 +370,12 @@ KnowsHMMove::
 .loop
 	ld a, [hli]
 	push hl
-	push bc
-	ld hl, HMMoveArray
-	ld de, 1
-	call IsInArray
-	pop bc
+	;push bc
+	;ld hl, HMMoveArray
+	;ld de, 1
+	;call IsInArray
+	call IsMoveHM ; this is in Home
+	;pop bc
 	pop hl
 	ret c
 	dec b
@@ -382,8 +383,7 @@ KnowsHMMove::
 	and a
 	ret
 
-HMMoveArray:
-INCLUDE "data/moves/hm_moves.asm"
+;HMMoveArray: INCLUDE "data/moves/hm_moves.asm"
 
 DisplayDepositWithdrawMenu:
 	hlcoord 9, 10

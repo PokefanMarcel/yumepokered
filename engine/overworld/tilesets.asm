@@ -31,8 +31,8 @@ LoadTilesetHeader:
 	push hl
 	push de
 	ld hl, DungeonTilesets
-	ld de, $1
-	call IsInArray
+	;ld de, $1
+	call IsInList
 	pop de
 	pop hl
 	jr c, .dungeon

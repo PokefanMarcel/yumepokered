@@ -192,10 +192,10 @@ TryingToLearn:
 	add hl, bc
 	ld a, [hl]
 	push af
-	push bc
+	;push bc
 	call IsMoveHM
-	pop bc
-	pop de
+	;pop bc
+	pop de ; pop af into de to not affect z and c flags
 	ld a, d
 	jr c, .hm
 	pop hl

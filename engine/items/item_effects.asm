@@ -2897,8 +2897,8 @@ SendNewMonToBox:
 IsNextTileShoreOrWater:    ; marcelnote - modified to remove surfing on statues
 	ld a, [wCurMapTileset]
 	ld hl, WaterTilesets
-	ld de, 1
-	call IsInArray
+	;ld de, 1
+	call IsInList
 	jr nc, .notShoreOrWater
 	ld hl, WaterTile
 	ld a, [wCurMapTileset]
@@ -2915,8 +2915,8 @@ IsNextTileShoreOrWater:    ; marcelnote - modified to remove surfing on statues
 	ld hl, ShoreTiles
 .skipShoreTiles
 	ld a, [wTileInFrontOfPlayer] ; tile in front of player
-	ld de, 1
-	call IsInArray
+	;ld de, 1
+	call IsInList
 	jr c, .shoreOrWater
 .notShoreOrWater
 	scf
