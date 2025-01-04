@@ -20,4 +20,6 @@
 	     REST,         SUBSTITUTE,   SURF,         STRENGTH
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(SeelPicFront)
+	assert BANK(SeelPicFront) == BANK(SeelPicBack)

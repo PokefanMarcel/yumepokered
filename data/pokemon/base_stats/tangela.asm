@@ -20,4 +20,6 @@
 	     CUT
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(TangelaPicFront)
+	assert BANK(TangelaPicFront) == BANK(TangelaPicBack)

@@ -20,4 +20,6 @@
 	     SWIFT,        REST,         PSYWAVE,      SUBSTITUTE
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(VenomothPicFront)
+	assert BANK(VenomothPicFront) == BANK(VenomothPicBack)

@@ -21,4 +21,6 @@
 	     CUT,          STRENGTH
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(SandslashPicFront)
+	assert BANK(SandslashPicFront) == BANK(SandslashPicBack)

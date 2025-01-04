@@ -20,4 +20,6 @@
 	     REST,         EXPLOSION,    TRI_ATTACK,   SUBSTITUTE,   SURF
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(ShellderPicFront)
+	assert BANK(ShellderPicFront) == BANK(ShellderPicBack)

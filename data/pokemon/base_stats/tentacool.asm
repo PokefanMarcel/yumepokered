@@ -21,4 +21,6 @@
 	     REST,         SUBSTITUTE,   CUT,          SURF,         HEX
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(TentacoolPicFront)
+	assert BANK(TentacoolPicFront) == BANK(TentacoolPicBack)

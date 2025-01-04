@@ -20,4 +20,6 @@
 	     REST,         THUNDER_WAVE, SUBSTITUTE,   FLY,          FLASH
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(ZapdosPicFront)
+	assert BANK(ZapdosPicFront) == BANK(ZapdosPicBack)

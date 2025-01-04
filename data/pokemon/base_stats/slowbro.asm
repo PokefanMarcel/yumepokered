@@ -24,4 +24,6 @@
 	     FLASH
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(SlowbroPicFront)
+	assert BANK(SlowbroPicFront) == BANK(SlowbroPicBack)

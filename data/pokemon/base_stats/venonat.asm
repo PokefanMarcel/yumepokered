@@ -19,4 +19,6 @@
 	     BIDE,         REST,         PSYWAVE,      SUBSTITUTE
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(VenonatPicFront)
+	assert BANK(VenonatPicFront) == BANK(VenonatPicBack)

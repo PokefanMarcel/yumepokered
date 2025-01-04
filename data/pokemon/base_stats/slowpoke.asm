@@ -22,4 +22,6 @@
 	     TRI_ATTACK,   SUBSTITUTE,   SURF,         STRENGTH,     FLASH
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(SlowpokePicFront)
+	assert BANK(SlowpokePicFront) == BANK(SlowpokePicBack)

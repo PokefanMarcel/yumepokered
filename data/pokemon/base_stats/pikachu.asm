@@ -22,4 +22,6 @@
 	     SUBSTITUTE,   FLASH,        SURF
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(PikachuPicFront)
+	assert BANK(PikachuPicFront) == BANK(PikachuPicBack)
