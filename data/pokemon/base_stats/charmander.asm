@@ -22,4 +22,6 @@
 	     REST,         SUBSTITUTE,   CUT,          STRENGTH,     FLASH
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(CharmanderPicFront)
+	assert BANK(CharmanderPicFront) == BANK(CharmanderPicBack)
