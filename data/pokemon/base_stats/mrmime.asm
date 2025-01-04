@@ -22,4 +22,6 @@
 	     SUBSTITUTE,   FLASH
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(MrMimePicFront)
+	assert BANK(MrMimePicFront) == BANK(MrMimePicBack)

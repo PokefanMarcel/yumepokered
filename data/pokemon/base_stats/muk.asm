@@ -21,4 +21,6 @@
 	     STRENGTH,     HEX
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(MukPicFront)
+	assert BANK(MukPicFront) == BANK(MukPicBack)

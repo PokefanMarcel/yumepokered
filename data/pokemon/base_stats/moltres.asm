@@ -20,4 +20,6 @@
 	     SUBSTITUTE,   FLY
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(MoltresPicFront)
+	assert BANK(MoltresPicFront) == BANK(MoltresPicBack)

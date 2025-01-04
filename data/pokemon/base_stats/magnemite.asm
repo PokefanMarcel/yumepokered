@@ -21,4 +21,6 @@
 	     FLASH,        TRI_ATTACK
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(MagnemitePicFront)
+	assert BANK(MagnemitePicFront) == BANK(MagnemitePicBack)

@@ -29,4 +29,6 @@
 	     ;UNUSED     ; marcelnote - HEX replaces the UNUSED TM definition
 	; end
 
-	db %11111111 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(MewPicFront)
+	assert BANK(MewPicFront) == BANK(MewPicBack)
