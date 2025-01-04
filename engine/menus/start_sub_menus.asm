@@ -523,39 +523,22 @@ DrawTrainerInfo:
 	ld bc, $1c tiles
 	call CopyData
 	ld hl, TrainerInfoTextBoxTileGraphics ; trainer info text box tile patterns
-	ld de, vChars2 tile $77
-	ld bc, 8 tiles
-	push bc
+	ld de, vChars2 tile $75
+	ld bc, 10 tiles
 	call TrainerInfo_FarCopyData
 	ld hl, LeaderNames ; marcelnote - restored for printing leader names in Trainer card
 	ld de, vChars2 tile $60
 	ld bc, $15 tiles
 	call TrainerInfo_FarCopyData
-	ld hl, CircleTile
-	ld de, vChars2 tile $76
-	ld bc, 1 tiles
-	call TrainerInfo_FarCopyData
-	pop bc
 	ld hl, BadgeNumbersTileGraphics  ; badge number tile patterns
 	ld de, vChars1 tile $58
+	ld bc, 10 tiles
 	call TrainerInfo_FarCopyData
 	ld hl, GymLeaderFaceAndBadgeTileGraphics  ; gym leader face and badge tile patterns
 	ld de, vChars2 tile $20
 	ld bc, 8 * 8 tiles
 	ld a, BANK(GymLeaderFaceAndBadgeTileGraphics)
 	call FarCopyData2
-	;ld hl, TextBoxGraphics ; marcelnote - this colon tile is already loaded
-	;ld de, 13 tiles
-	;add hl, de ; hl = colon tile pattern
-	;ld de, vChars1 tile $56
-	ld bc, 1 tiles
-	;ld a, BANK(TextBoxGraphics)
-	;push bc
-	;call FarCopyData2
-	;pop bc
-	ld hl, TrainerInfoTextBoxTileGraphics tile 8  ; background tile pattern
-	ld de, vChars1 tile $57
-	call TrainerInfo_FarCopyData ; this function loads the right bank in a
 	call EnableLCD
 	ld hl, wTrainerInfoTextBoxWidthPlus1
 	ld a, 18 + 1
@@ -574,7 +557,7 @@ DrawTrainerInfo:
 	hlcoord 1, 10
 	call TrainerInfo_DrawTextBox
 	hlcoord 0, 10
-	ld a, $d7
+	ld a, $7e ; background tile
 	call TrainerInfo_DrawVerticalLine
 	hlcoord 19, 10
 	call TrainerInfo_DrawVerticalLine
@@ -610,9 +593,9 @@ TrainerInfo_NameMoneyTimeText:
 	next "MONEY/"
 	next "TIME/@"
 
-; $76 is a circle tile
+; $75 is a circle tile
 TrainerInfo_BadgesText:
-	db $76,"BADGES",$76,"@"
+	db $75,"BADGES",$75,"@"
 
 ; draws a text box on the trainer info screen
 ; height is always 6
@@ -622,8 +605,8 @@ TrainerInfo_BadgesText:
 ; [wTrainerInfoTextBoxWidth] = width - 1
 ; [wTrainerInfoTextBoxNextRowOffset] = distance from the end of a text box row to the start of the next
 TrainerInfo_DrawTextBox:
-	ld a, $79 ; upper left corner tile ID
-	lb de, $7a, $7b ; top edge and upper right corner tile ID's
+	ld a, $78 ; upper left corner tile ID
+	lb de, $79, $7a ; top edge and upper right corner tile ID's
 	call TrainerInfo_DrawHorizontalEdge ; draw top edge
 	call TrainerInfo_NextTextBoxRow
 	ld a, [wTrainerInfoTextBoxWidthPlus1]
@@ -631,14 +614,14 @@ TrainerInfo_DrawTextBox:
 	ld d, 0
 	ld c, 6 ; height of the text box
 .loop
-	ld [hl], $7c ; left edge tile ID
+	ld [hl], $7b ; left edge tile ID
 	add hl, de
-	ld [hl], $78 ; right edge tile ID
+	ld [hl], $77 ; right edge tile ID
 	call TrainerInfo_NextTextBoxRow
 	dec c
 	jr nz, .loop
-	ld a, $7d ; lower left corner tile ID
-	lb de, $77, $7e ; bottom edge and lower right corner tile ID's
+	ld a, $7c ; lower left corner tile ID
+	lb de, $76, $7d ; bottom edge and lower right corner tile ID's
 
 TrainerInfo_DrawHorizontalEdge:
 	ld [hli], a ; place left corner tile
