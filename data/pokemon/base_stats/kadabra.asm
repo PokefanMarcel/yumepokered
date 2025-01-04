@@ -21,4 +21,6 @@
 	     THUNDER_WAVE, PSYWAVE,      TRI_ATTACK,   SUBSTITUTE,   FLASH
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(KadabraPicFront)
+	assert BANK(KadabraPicFront) == BANK(KadabraPicBack)
