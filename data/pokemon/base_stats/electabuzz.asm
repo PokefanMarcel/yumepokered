@@ -22,4 +22,6 @@
 	     SUBSTITUTE,   STRENGTH,     FLASH
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(ElectabuzzPicFront)
+	assert BANK(ElectabuzzPicFront) == BANK(ElectabuzzPicBack)
