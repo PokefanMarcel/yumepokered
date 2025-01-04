@@ -17,4 +17,6 @@
 	tmhm
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(DittoPicFront)
+	assert BANK(DittoPicFront) == BANK(DittoPicBack)

@@ -22,4 +22,6 @@
 	     THUNDER_WAVE, SUBSTITUTE,   SURF,         TRI_ATTACK
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(DratiniPicFront)
+	assert BANK(DratiniPicFront) == BANK(DratiniPicBack)

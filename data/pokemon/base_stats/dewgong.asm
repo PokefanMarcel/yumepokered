@@ -20,4 +20,6 @@
 	     SKULL_BASH,   REST,         SUBSTITUTE,   SURF,         STRENGTH
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(DewgongPicFront)
+	assert BANK(DewgongPicFront) == BANK(DewgongPicBack)

@@ -23,4 +23,6 @@
 	     SURF,         STRENGTH,     FLY,          TRI_ATTACK
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(DragonitePicFront)
+	assert BANK(DragonitePicFront) == BANK(DragonitePicBack)

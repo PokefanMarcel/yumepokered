@@ -21,4 +21,6 @@
 	     SUBSTITUTE,   FLY,          MEGA_KICK
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(DodrioPicFront)
+	assert BANK(DodrioPicFront) == BANK(DodrioPicBack)
