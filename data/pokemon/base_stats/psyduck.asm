@@ -23,4 +23,6 @@
 	     PSYCHIC_M
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(PsyduckPicFront)
+	assert BANK(PsyduckPicFront) == BANK(PsyduckPicBack)

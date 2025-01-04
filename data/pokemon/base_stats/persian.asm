@@ -21,4 +21,6 @@
 	     SKULL_BASH,   REST,         SUBSTITUTE,   CUT
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(PersianPicFront)
+	assert BANK(PersianPicFront) == BANK(PersianPicBack)

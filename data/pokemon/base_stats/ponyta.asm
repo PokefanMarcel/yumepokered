@@ -19,4 +19,6 @@
 	     FIRE_BLAST,   SWIFT,        SKULL_BASH,   REST,         SUBSTITUTE
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(PonytaPicFront)
+	assert BANK(PonytaPicFront) == BANK(PonytaPicBack)

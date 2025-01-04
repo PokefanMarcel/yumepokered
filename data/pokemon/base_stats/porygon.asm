@@ -22,4 +22,6 @@
 	     TRI_ATTACK,   SUBSTITUTE,   FLASH,        FIRE_BLAST
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(PorygonPicFront)
+	assert BANK(PorygonPicFront) == BANK(PorygonPicBack)
