@@ -21,4 +21,6 @@
 	     FIRE_BLAST,   SKULL_BASH,   REST,         SUBSTITUTE,   STRENGTH
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(CubonePicFront)
+	assert BANK(CubonePicFront) == BANK(CubonePicBack)
