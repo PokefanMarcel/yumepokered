@@ -328,15 +328,15 @@ BillsPCChangeBox:
 	jp BillsPCMenu
 
 DisplayMonListMenu:
-	ld a, l
+	ld a, l  ; e.g. hl -> wBoxCount
 	ld [wListPointer], a
 	ld a, h
 	ld [wListPointer + 1], a
 	xor a
 	ld [wPrintItemPrices], a
-	ld [wListMenuID], a
-	inc a                ; MONSTER_NAME
-	ld [wNameListType], a
+	ld [wListMenuID], a ; PCPOKEMONLISTMENU
+	inc a
+	ld [wNameListType], a ; MONSTER_NAME
 	ld a, [wPartyAndBillsPCSavedMenuItem]
 	ld [wCurrentMenuItem], a
 	call DisplayListMenuID
