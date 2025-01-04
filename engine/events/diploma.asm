@@ -1,4 +1,4 @@
-DEF CIRCLE_TILE_ID EQU $70
+DEF CIRCLE_TILE_ID EQU $75
 
 DisplayDiploma::
 	call SaveScreenTilesToBuffer2
@@ -9,14 +9,9 @@ DisplayDiploma::
 	ld hl, wStatusFlags5
 	set BIT_NO_TEXT_DELAY, [hl]
 	call DisableLCD
-	ld hl, CircleTile
-	ld de, vChars2 tile CIRCLE_TILE_ID
-	ld bc, $10
-	ld a, BANK(CircleTile)
-	call FarCopyData2
 	hlcoord 0, 0
 	lb bc, 16, 18
-	predef Diploma_TextBoxBorder
+	predef Diploma_TextBoxBorder ; loads the border and circle tiles
 
 	ld hl, DiplomaTextPointersAndCoords
 	ld c, $5
