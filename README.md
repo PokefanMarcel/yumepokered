@@ -55,6 +55,7 @@ Its kanji name 夢 is also an homage to [shinpokered](https://github.com/jojobea
 - Gym leaders have their own sprites.
 - New character sprites when surfing or running.
 - In SuperGameBoy mode, the town color palettes have been adjusted to better reflect the original Japanese town names.
+- Restored gym leader names in trainer card.
 - Many visual bug fixes.
 
 ### QoL updates
