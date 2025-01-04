@@ -20,4 +20,6 @@
 	     BIDE,         SKULL_BASH,   REST,         SUBSTITUTE,   DIG
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(NidorinoPicFront)
+	assert BANK(NidorinoPicFront) == BANK(NidorinoPicBack)

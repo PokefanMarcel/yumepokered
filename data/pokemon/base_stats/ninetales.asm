@@ -21,4 +21,6 @@
 	     SUBSTITUTE,   FLASH,        HEX
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(NinetalesPicFront)
+	assert BANK(NinetalesPicFront) == BANK(NinetalesPicBack)
