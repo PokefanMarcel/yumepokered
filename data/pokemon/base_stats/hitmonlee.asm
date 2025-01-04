@@ -20,4 +20,6 @@
 	     SKULL_BASH,   REST,         SUBSTITUTE,   STRENGTH
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(HitmonleePicFront)
+	assert BANK(HitmonleePicFront) == BANK(HitmonleePicBack)
