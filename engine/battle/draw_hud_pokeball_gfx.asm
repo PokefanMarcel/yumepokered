@@ -17,7 +17,7 @@ LoadPartyPokeballGfx:
 	jp CopyVideoData
 
 SetupOwnPartyPokeballs:
-	call PlacePlayerHUDTiles
+	call PlacePlayerPokeballsHUDTiles
 	ld hl, wPartyMon1
 	ld de, wPartyCount
 	call SetupPokeballs
@@ -116,25 +116,33 @@ WritePokeballOAMData:
 	jr nz, .loop
 	ret
 
-PlacePlayerHUDTiles:
-	ld hl, PlayerBattleHUDGraphicsTiles
+PlacePlayerPokeballsHUDTiles:
+	ld hl, PlayerBattlePokeballsHUDGraphicsTiles
+	jr PlacePlayerMonHUDTiles.got_tiles
+PlacePlayerMonHUDTiles:
+	ld hl, PlayerBattleMonHUDGraphicsTiles
+.got_tiles
 	ld de, wHUDGraphicsTiles
-	ld bc, $3
+	ld bc, 2
 	call CopyData
 	hlcoord 18, 10
 	ld de, -1
 	jr PlaceHUDTiles
 
-PlayerBattleHUDGraphicsTiles:
+PlayerBattlePokeballsHUDGraphicsTiles:
 ; The tile numbers for specific parts of the battle display for the player's pokemon
-	db "<HUD_VERTI_BAR>" ; unused (hardcoded into the routine that uses these bytes)
 	db "<RIGHT_CORNER>"  ; lower-right corner tile of the HUD
+	db "<LEFT_TRIANGLE>" ; lower-left triangle tile of the HUD
+
+PlayerBattleMonHUDGraphicsTiles:
+; The tile numbers for specific parts of the battle display for the player's pokemon
+	db $76  ; lower-right corner tile of the HUD with small bump for Exp Bar
 	db "<LEFT_TRIANGLE>" ; lower-left triangle tile of the HUD
 
 PlaceEnemyHUDTiles:
 	ld hl, EnemyBattleHUDGraphicsTiles
 	ld de, wHUDGraphicsTiles
-	ld bc, $3
+	ld bc, 2
 	call CopyData
 	hlcoord 1, 2
 	ld de, $1
@@ -142,7 +150,6 @@ PlaceEnemyHUDTiles:
 
 EnemyBattleHUDGraphicsTiles:
 ; The tile numbers for specific parts of the battle display for the enemy
-	db "<HUD_VERTI_BAR>"  ; unused (hardcoded in the routine that uses these bytes)
 	db "<LEFT_CORNER>"    ; lower-left corner tile of the HUD
 	db "<RIGHT_TRIANGLE>" ; lower-right triangle tile of the HUD
 
@@ -150,7 +157,7 @@ PlaceHUDTiles:
 	ld [hl], "<HUD_VERTI_BAR>"
 	ld bc, SCREEN_WIDTH
 	add hl, bc
-	ld a, [wHUDGraphicsTiles + 1] ; leftmost tile
+	ld a, [wHUDGraphicsTiles] ; leftmost tile
 	ld [hl], a
 	ld a, 8
 .loop
@@ -159,7 +166,7 @@ PlaceHUDTiles:
 	dec a
 	jr nz, .loop
 	add hl, de
-	ld a, [wHUDGraphicsTiles + 2] ; rightmost tile
+	ld a, [wHUDGraphicsTiles + 1] ; rightmost tile
 	ld [hl], a
 	ret
 
@@ -187,6 +194,5 @@ SetupPlayerAndEnemyPokeballs:
 	jp WritePokeballOAMData
 
 ; four tiles: pokeball, black pokeball (status ailment), crossed out pokeball (fainted) and pokeball slot (no mon)
-PokeballTileGraphics::
-	INCBIN "gfx/battle/balls.2bpp"
+PokeballTileGraphics:: INCBIN "gfx/battle/balls.2bpp"
 PokeballTileGraphicsEnd:

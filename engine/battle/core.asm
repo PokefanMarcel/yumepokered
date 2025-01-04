@@ -1873,7 +1873,7 @@ DrawPlayerHUDAndHPBar:
 	hlcoord 9, 7
 	lb bc, 5, 11
 	call ClearScreenArea
-	callfar PlacePlayerHUDTiles
+	callfar PlacePlayerMonHUDTiles
 	hlcoord 18, 9
 	ld [hl], $73
 	ld de, wBattleMonNick
@@ -6916,14 +6916,14 @@ LoadHudTilePatterns:
 .lcdDisabled
 	; marcelnote - reorganized Battle HUD tiles
 	ld hl, BattleHudTiles
-	ld de, vChars2 tile $73
+	ld de, vChars2 tile $74
 	ld bc, BattleHudTilesEnd - BattleHudTiles
 	ld a, BANK(BattleHudTiles)
 	jp FarCopyDataDouble
 .lcdEnabled
 	; marcelnote - reorganized Battle HUD tiles
 	ld de, BattleHudTiles
-	ld hl, vChars2 tile $73
+	ld hl, vChars2 tile $74
 	lb bc, BANK(BattleHudTiles), (BattleHudTilesEnd - BattleHudTiles) / $8
 	jp CopyVideoDataDouble
 
