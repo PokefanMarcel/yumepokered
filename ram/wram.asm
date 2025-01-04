@@ -826,11 +826,17 @@ wBadgeNameTile:: db
 ; a list of the first tile IDs of each badge or face (depending on whether the
 ; badge is owned) to be drawn on the trainer screen
 ; the byte after the list gets read when shifting back one byte
-wBadgeOrFaceTiles:: ds NUM_BADGES + 1
-	ds 1
+; marcelnote - was NUM_BADGES + 1 but it's ok if it reads next one
+wBadgeOrFaceTiles:: ds NUM_BADGES
+; marcelnote - new, for printing leader names in Trainer card
+; a list of the first tile IDs of each gym leader name to be drawn on the trainer screen
+; the byte after the list gets read when shifting back one byte
+wLeaderNameTiles:: ds NUM_BADGES
+; marcelnote - below was useful only if removing names once badges are obtained
+;	ds 1
 ; temporary list created when displaying the badges on the trainer screen
 ; one byte for each badge; 0 = not obtained, 1 = obtained
-wTempObtainedBadgesBooleans:: ds NUM_BADGES
+;wTempObtainedBadgesBooleans:: ds NUM_BADGES
 
 NEXTU
 ;wUnusedCreditsByte:: db ; marcelnote - removed
