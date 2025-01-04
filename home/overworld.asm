@@ -95,8 +95,8 @@ OverworldLoopLessDelay::
 	jp nz, .noDirectionButtonsPressed
 	call IsPlayerCharacterBeingControlledByGame
 	jr nz, .checkForOpponent
+	callfar CheckForCut ; jp OverworldLoop if succeeds ; this causes to cut before finding potion in Viridian
 	call CheckForHiddenObjectOrBookshelfOrCardKeyDoor
-	callfar CheckForCut ; jp OverworldLoop if succeeds ; this needs to be exactly here for Viridian tree
 	ldh a, [hItemAlreadyFound] ; a = $ff if not found, = 0 if found
 	and a
 	jp z, OverworldLoop ; jump if a hidden object or bookshelf was found, but not if a card key door was found
