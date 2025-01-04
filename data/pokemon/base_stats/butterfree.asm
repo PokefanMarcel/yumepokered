@@ -21,4 +21,6 @@
 	     SWIFT,        REST,         PSYWAVE,      SUBSTITUTE,   FLASH
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(ButterfreePicFront)
+	assert BANK(ButterfreePicFront) == BANK(ButterfreePicBack)

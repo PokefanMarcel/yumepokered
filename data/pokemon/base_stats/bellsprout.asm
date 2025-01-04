@@ -19,4 +19,6 @@
 	     BIDE,         REST,         SUBSTITUTE,   CUT
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(BellsproutPicFront)
+	assert BANK(BellsproutPicFront) == BANK(BellsproutPicBack)

@@ -20,4 +20,6 @@
 	     SWIFT,        SKY_ATTACK,   REST,         SUBSTITUTE,   FLY
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(ArticunoPicFront)
+	assert BANK(ArticunoPicFront) == BANK(ArticunoPicBack)
