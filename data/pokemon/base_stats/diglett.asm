@@ -20,4 +20,6 @@
 	     BIDE,         REST,         ROCK_SLIDE,   SUBSTITUTE,   CUT
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(DiglettPicFront)
+	assert BANK(DiglettPicFront) == BANK(DiglettPicBack)
