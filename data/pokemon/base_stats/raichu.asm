@@ -22,4 +22,6 @@
 	     THUNDER_WAVE, SUBSTITUTE,   FLASH,        SURF
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(RaichuPicFront)
+	assert BANK(RaichuPicFront) == BANK(RaichuPicBack)
