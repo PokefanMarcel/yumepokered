@@ -21,4 +21,6 @@
 	     ROCK_SLIDE,   SUBSTITUTE,   STRENGTH
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(MachopPicFront)
+	assert BANK(MachopPicFront) == BANK(MachopPicBack)
