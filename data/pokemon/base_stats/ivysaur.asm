@@ -19,4 +19,6 @@
 	     REFLECT,      BIDE,         REST,         SUBSTITUTE,   CUT
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(IvysaurPicFront)
+	assert BANK(IvysaurPicFront) == BANK(IvysaurPicBack)
