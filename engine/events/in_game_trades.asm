@@ -120,9 +120,19 @@ InGameTrade_DoTrade:
 	push af
 	ld a, [wCurEnemyLevel]
 	push af
+	;;;;;;;;;; marcelnote - for trades on maps with animated tilesets
+	ldh a, [hTileAnimations]
+	push af
+	xor a
+	ldh [hTileAnimations], a
+	;;;;;;;;;;
 	call LoadHpBarAndStatusTilePatterns
 	call InGameTrade_PrepareTradeData
 	predef InternalClockTradeAnim
+	;;;;;;;;;; marcelnote - for trades on maps with animated tilesets
+	pop af
+	ldh [hTileAnimations], a
+	;;;;;;;;;;
 	pop af
 	ld [wCurEnemyLevel], a
 	pop af
