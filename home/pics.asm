@@ -24,6 +24,9 @@ UncompressMonSprite::
 .GotBank
 	jp UncompressSpriteData
 
+assert BANK(FossilKabutopsPic) == BANK(FossilAerodactylPic)
+assert BANK(FossilKabutopsPic) == BANK(GhostPic)
+
 ; de: destination location
 LoadMonFrontSprite::
 	push de
