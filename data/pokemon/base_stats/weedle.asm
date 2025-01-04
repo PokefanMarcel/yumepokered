@@ -18,4 +18,6 @@
 	tmhm TAKE_DOWN,    DOUBLE_EDGE
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(WeedlePicFront)
+	assert BANK(WeedlePicFront) == BANK(WeedlePicBack)

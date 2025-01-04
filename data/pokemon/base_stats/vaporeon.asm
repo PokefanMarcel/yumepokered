@@ -20,4 +20,6 @@
 	     SKULL_BASH,   REST,         SUBSTITUTE,   SURF
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(VaporeonPicFront)
+	assert BANK(VaporeonPicFront) == BANK(VaporeonPicBack)

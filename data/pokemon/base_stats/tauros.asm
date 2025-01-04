@@ -21,4 +21,6 @@
 	     STRENGTH
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(TaurosPicFront)
+	assert BANK(TaurosPicFront) == BANK(TaurosPicBack)

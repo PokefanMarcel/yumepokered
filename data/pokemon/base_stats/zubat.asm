@@ -19,4 +19,6 @@
 	     SWIFT,        REST,         SUBSTITUTE
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(ZubatPicFront)
+	assert BANK(ZubatPicFront) == BANK(ZubatPicBack)

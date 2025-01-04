@@ -20,4 +20,6 @@
 	     REST,         EXPLOSION,    SUBSTITUTE,   DOUBLE_EDGE
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(WeezingPicFront)
+	assert BANK(WeezingPicFront) == BANK(WeezingPicBack)

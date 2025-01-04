@@ -23,4 +23,6 @@
 	     SUBSTITUTE,   STRENGTH,     FLASH
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(WigglytuffPicFront)
+	assert BANK(WigglytuffPicFront) == BANK(WigglytuffPicBack)
