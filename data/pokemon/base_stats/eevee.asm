@@ -20,4 +20,6 @@
 	     SKULL_BASH,   REST,         SUBSTITUTE,   TRI_ATTACK
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(EeveePicFront)
+	assert BANK(EeveePicFront) == BANK(EeveePicBack)
