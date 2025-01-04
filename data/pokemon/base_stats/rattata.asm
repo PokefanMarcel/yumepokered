@@ -21,4 +21,6 @@
 	     SWIFT,        SKULL_BASH,   REST,         SUBSTITUTE,   SWORDS_DANCE
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(RattataPicFront)
+	assert BANK(RattataPicFront) == BANK(RattataPicBack)
