@@ -527,14 +527,22 @@ ShowPokedexDataInternal:
 	hlcoord 12, 6
 	lb bc, 1, 2
 	call PrintNumber ; print feet (height)
+IF DEF(_FRA) ; marcelnote - temporary solution to unmapped character
+	ld a, "’"
+ELSE
 	ld a, "′"
+ENDC
 	ld [hl], a
 	inc de
 	inc de ; de = address of inches (height)
 	hlcoord 15, 6
 	lb bc, LEADING_ZEROES | 1, 2
 	call PrintNumber ; print inches (height)
+IF DEF(_FRA) ; marcelnote - temporary solution to unmapped character
+	ld a, "”"
+ELSE
 	ld a, "″"
+ENDC
 	ld [hl], a
 ; now print the weight (note that weight is stored in tenths of pounds internally)
 	inc de
@@ -599,7 +607,11 @@ ShowPokedexDataInternal:
 	ret
 
 HeightWeightText:
+IF DEF(_FRA)
+	db   "HT  ?’??”"
+ELSE
 	db   "HT  ?′??″"
+ENDC
 	next "WT   ???lb@"
 
 ; XXX does anything point to this?
