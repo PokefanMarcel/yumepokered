@@ -20,4 +20,6 @@
 	     REST,         SUBSTITUTE,   FLY,          ROCK_SLIDE
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(AerodactylPicFront)
+	assert BANK(AerodactylPicFront) == BANK(AerodactylPicBack)

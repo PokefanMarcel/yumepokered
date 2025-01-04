@@ -21,4 +21,6 @@
 	     SKULL_BASH,   REST,         SUBSTITUTE,   FLASH,        SOLARBEAM
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(ArcaninePicFront)
+	assert BANK(ArcaninePicFront) == BANK(ArcaninePicBack)
