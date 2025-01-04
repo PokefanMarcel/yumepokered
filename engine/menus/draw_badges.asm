@@ -65,13 +65,13 @@ DrawBadges:
 	push hl
 	ld a, b ; b is the current badge number, counting downwards
 	ld hl, .TwoTilesNames
-	call IsInList ; sets z flag if leader name uses three tiles
+	call IsInList ; returns carry if leader name uses only two tiles
 	pop hl
 
 ; Names are printed using two or three tiles.
 	ld a, [wBadgeNameTile]
-	call nz, .PlaceTwoTiles
-	call z, .PlaceThreeTiles
+	call c, .PlaceTwoTiles
+	call nz, .PlaceThreeTiles
 	ld [wBadgeNameTile], a ; store next tile index for next badge
 
 	add hl, de ; add SCREEN_WIDTH - 1 or SCREEN_WIDTH - 2 to go to the next line

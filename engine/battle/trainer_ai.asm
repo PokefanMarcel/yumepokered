@@ -132,11 +132,11 @@ AIMoveChoiceModification1:
 	ld a, [wEnemyMoveEffect]
 	push hl
 	push de
-	push bc
+	;push bc
 	ld hl, StatusAilmentMoveEffects
-	ld de, 1
-	call IsInArray
-	pop bc
+	;ld de, 1
+	call IsInList
+	;pop bc
 	pop de
 	pop hl
 	jr nc, .nextMove

@@ -918,8 +918,8 @@ IsBikingAllowed:: ; marcelnote - simplified
 ; Return carry if biking is allowed.
 	ld a, [wCurMapTileset]
 	ld hl, BikeRidingTilesets
-	ld de, 1 ; size of array entries
-	jp IsInArray ; returns carry if found
+	;ld de, 1 ; size of array entries
+	jp IsInList ; returns carry if found
 
 INCLUDE "data/tilesets/bike_riding_tilesets.asm"
 

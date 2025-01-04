@@ -120,11 +120,10 @@ IsItemHM::
 ; Input: a = move ID
 IsMoveHM::
 	ld hl, HMMoves
-	ld de, 1
-	jp IsInArray
+	;ld de, 1
+	jp IsInList
 
-HMMoves::
-INCLUDE "data/moves/hm_moves.asm"
+HMMoves:: INCLUDE "data/moves/hm_moves.asm"
 
 GetMoveName::
 	push hl

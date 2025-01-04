@@ -27,8 +27,8 @@ UseSelectButtonItem::
 CheckIfSelectItem:: ; sets z flag if item in [wCurItem] cannot be associated with Select button
 	ld hl, SelectItemsList
 	ld a, [wCurItem]
-	ld de, 1 ; size of array entries
-	jp IsInArray ; return carry if found
+	;ld de, 1 ; size of array entries
+	jp IsInList ; returns carry if found
 
 SelectItemsList:
 	db BICYCLE
