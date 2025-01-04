@@ -22,4 +22,6 @@
 	     SUBSTITUTE,   SURF,         STRENGTH,     FLY
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(GyaradosPicFront)
+	assert BANK(GyaradosPicFront) == BANK(GyaradosPicBack)

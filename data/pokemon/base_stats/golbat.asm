@@ -20,4 +20,6 @@
 	     BIDE,         SWIFT,        REST,         SUBSTITUTE,   HEX
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(GolbatPicFront)
+	assert BANK(GolbatPicFront) == BANK(GolbatPicBack)

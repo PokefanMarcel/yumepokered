@@ -23,4 +23,6 @@
 	     STRENGTH,     PSYCHIC_M
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(GolduckPicFront)
+	assert BANK(GolduckPicFront) == BANK(GolduckPicBack)

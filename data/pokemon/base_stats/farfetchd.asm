@@ -21,4 +21,6 @@
 	     SUBSTITUTE,   CUT,          FLY,          SKY_ATTACK
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(FarfetchdPicFront)
+	assert BANK(FarfetchdPicFront) == BANK(FarfetchdPicBack)

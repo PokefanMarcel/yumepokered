@@ -21,4 +21,6 @@
 	     REST,         EXPLOSION,    ROCK_SLIDE,   SUBSTITUTE,   STRENGTH
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(GolemPicFront)
+	assert BANK(GolemPicFront) == BANK(GolemPicBack)
