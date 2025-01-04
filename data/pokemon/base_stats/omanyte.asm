@@ -20,4 +20,6 @@
 	     SURF
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(OmanytePicFront)
+	assert BANK(OmanytePicFront) == BANK(OmanytePicBack)

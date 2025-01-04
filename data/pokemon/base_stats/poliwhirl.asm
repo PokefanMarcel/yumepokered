@@ -22,4 +22,6 @@
 	     SURF,         STRENGTH
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(PoliwhirlPicFront)
+	assert BANK(PoliwhirlPicFront) == BANK(PoliwhirlPicBack)
