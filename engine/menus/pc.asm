@@ -75,20 +75,20 @@ BillsPC:
 	call PlaySound
 	call WaitForSoundToFinish
 	CheckEvent EVENT_MET_BILL
-	jr nz, .billsPC ;if you've met bill, use that bill's instead of someone's
-	ld hl, AccessedSomeonesPCText
-	jr .printText
-.billsPC
 	ld hl, AccessedBillsPCText
-.printText
+	jr nz, .got_text ; if you've met bill, use "Bill's" instead of "Someone's"
+	ld hl, AccessedSomeonesPCText
+.got_text
 	call PrintText
 	farcall BillsPC_
+	; fallthrough
 ReloadMainMenu:
 	xor a
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	call ReloadMapData
 	call UpdateSprites
 	jp PCMainMenu
+
 LogOff:
 	ld a, SFX_TURN_OFF_PC
 	call PlaySound

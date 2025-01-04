@@ -137,7 +137,7 @@ DisplayListMenuIDLoop::
 	pop hl
 	ld a, [wListMenuID]
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - pokered Move Deleter/Relearner tutorial
-	cp a, MOVESLISTMENU
+	cp MOVESLISTMENU
 	jr z, .skipStoringItemName
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	cp ITEMLISTMENU
@@ -411,7 +411,7 @@ PrintListMenuEntries::
 	push de
 	push hl
 	push hl
-	push de
+	push de ; de = list entries
 	ld a, [wListMenuID]
 	and a ; PCPOKEMONLISTMENU?
 	jr z, .pokemonPCMenu
@@ -421,7 +421,7 @@ PrintListMenuEntries::
 	call GetItemName
 	jr .placeNameString
 .pokemonPCMenu
-	push hl
+	push hl ; hl coordinates
 	ld hl, wPartyCount
 	ld a, [wListPointer]
 	cp l ; is it a list of party pokemon or box pokemon?
@@ -437,7 +437,7 @@ PrintListMenuEntries::
 	ld a, [wListScrollOffset]
 	add b
 	call GetPartyMonName
-	pop hl
+	pop hl ; hl coordinates
 	jr .placeNameString
 .movesMenu
 	call GetMoveName
