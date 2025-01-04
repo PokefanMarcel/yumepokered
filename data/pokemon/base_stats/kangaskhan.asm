@@ -22,4 +22,6 @@
 	     ROCK_SLIDE,   SUBSTITUTE,   SURF,         STRENGTH
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(KangaskhanPicFront)
+	assert BANK(KangaskhanPicFront) == BANK(KangaskhanPicBack)

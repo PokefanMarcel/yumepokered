@@ -20,4 +20,6 @@
 	     SUBSTITUTE,   CUT,          SURF,         STRENGTH
 	; end
 
-	db 0 ; padding
+	; marcelnote - improve Pokemon picture system tutorial
+	db BANK(KinglerPicFront)
+	assert BANK(KinglerPicFront) == BANK(KinglerPicBack)
