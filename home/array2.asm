@@ -23,7 +23,7 @@ CallFunctionInTable::
 IsInArray::
 ; Search an array at hl for the value in a.
 ; Entry size is de bytes.
-; Return count b and carry if found.
+; Return index b and carry if found.
 	ld b, 0
 
 IsInRestOfArray::
@@ -44,4 +44,23 @@ IsInRestOfArray::
 
 .found
 	scf
+	ret
+
+
+IsInList:: ; marcelnote - simpler, uses e only, for arrays with entry size 1
+; Search a list at hl for the value in a.
+; Sets z flag if not found.
+; Returns hl the address at which a was found.
+	ld e, a
+.loop
+	ld a, [hl]
+	cp -1
+	ret z ; not found
+	cp e
+	jr z, .found
+	inc hl
+	jr .loop
+
+.found
+	inc a ; a cannot be -1 else would set z flag
 	ret

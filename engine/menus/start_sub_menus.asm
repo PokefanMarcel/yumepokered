@@ -527,9 +527,10 @@ DrawTrainerInfo:
 	ld bc, 8 tiles
 	push bc
 	call TrainerInfo_FarCopyData
-	;ld hl, BlankLeaderNames
-	;ld de, vChars2 tile $60
-	;ld bc, $17 tiles
+	ld hl, LeaderNames ; marcelnote - restored for printing leader names in Trainer card
+	ld de, vChars2 tile $60
+	ld bc, $15 tiles
+	call TrainerInfo_FarCopyData
 	ld hl, CircleTile
 	ld de, vChars2 tile $76
 	ld bc, 1 tiles
