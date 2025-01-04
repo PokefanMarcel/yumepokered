@@ -96,7 +96,7 @@ PlaceNextChar::
 	dict "<TM>",      TMChar
 	dict "<TRAINER>", TrainerChar
 	dict "<CONT>",    ContText
-	dict "<……>",      SixDotsChar
+;	dict "<……>",      SixDotsChar ; marcelnote - unused, removed
 	dict "<DONE>",    DoneText
 	dict "<PROMPT>",  PromptText
 	dict "<PKMN>",    PlacePKMN
@@ -141,7 +141,7 @@ TMChar::      print_name TMCharText
 PCChar::      print_name PCCharText
 RocketChar::  print_name RocketCharText
 PlacePOKe::   print_name PlacePOKeText
-SixDotsChar:: print_name SixDotsCharText
+;SixDotsChar:: print_name SixDotsCharText ; marcelnote - unused, removed
 PlacePKMN::   print_name PlacePKMNText
 
 PlaceMoveTargetsName::
@@ -181,7 +181,7 @@ TrainerCharText:: db "TRAINER@"
 PCCharText::      db "PC@"
 RocketCharText::  db "ROCKET@"
 PlacePOKeText::   db "POKé@"
-SixDotsCharText:: db "……@"
+;SixDotsCharText:: db "……@" ; marcelnote - unused, removed
 EnemyText::       db "Enemy @"
 PlacePKMNText::   db "<PK><MN>@"
 
@@ -558,34 +558,34 @@ TextCommandSounds::
 	db TX_SOUND_CRY_PIDGEOT,          PIDGEOT  ; used in SaffronCityPidgeotText
 	db TX_SOUND_CRY_DEWGONG,          DEWGONG  ; unused
 
-TextCommand_DOTS::
-; wait for button press or 30 frames while printing "…"s
-	pop hl
-	ld a, [hli]
-	ld d, a
-	push hl
-	ld h, b
-	ld l, c
-
-.loop
-	ld a, "…"
-	ld [hli], a
-	push de
-	call Joypad
-	pop de
-	ldh a, [hJoyHeld] ; joypad state
-	and A_BUTTON | B_BUTTON
-	jr nz, .next ; if so, skip the delay
-	ld c, 10
-	call DelayFrames
-.next
-	dec d
-	jr nz, .loop
-
-	ld b, h
-	ld c, l
-	pop hl
-	jp NextTextCommand
+;TextCommand_DOTS:: ; marcelnote - unused, removed
+;; wait for button press or 30 frames while printing "…"s
+;	pop hl
+;	ld a, [hli]
+;	ld d, a
+;	push hl
+;	ld h, b
+;	ld l, c
+;
+;.loop
+;	ld a, "…"
+;	ld [hli], a
+;	push de
+;	call Joypad
+;	pop de
+;	ldh a, [hJoyHeld] ; joypad state
+;	and A_BUTTON | B_BUTTON
+;	jr nz, .next ; if so, skip the delay
+;	ld c, 10
+;	call DelayFrames
+;.next
+;	dec d
+;	jr nz, .loop
+;
+;	ld b, h
+;	ld c, l
+;	pop hl
+;	jp NextTextCommand
 
 TextCommand_WAIT_BUTTON::
 ; wait for button press; don't show arrow
@@ -639,6 +639,6 @@ ENDC
 	dw TextCommand_NUM           ; TX_NUM
 	dw TextCommand_PAUSE         ; TX_PAUSE
 	dw TextCommand_SOUND         ; TX_SOUND_GET_ITEM_1 (also handles other TX_SOUND_* commands)
-	dw TextCommand_DOTS          ; TX_DOTS
+	;dw TextCommand_DOTS          ; TX_DOTS ; marcelnote - unused, removed
 	dw TextCommand_WAIT_BUTTON   ; TX_WAIT_BUTTON
 	; greater TX_* constants are handled directly by NextTextCommand

@@ -87,11 +87,11 @@ ENDM
 DEF TX_SOUND_LEVEL_UP EQU TX_SOUND_GET_ITEM_1
 DEF sound_level_up EQUS "sound_get_item_1"
 
-	const TX_DOTS ; $0c
-MACRO text_dots
-	db TX_DOTS
-	db \1 ; number of ellipses to draw
-ENDM
+;	const TX_DOTS ; $0c ; marcelnote - unused, removed
+;MACRO text_dots
+;	db TX_DOTS
+;	db \1 ; number of ellipses to draw
+;ENDM
 
 	const TX_WAIT_BUTTON ; $0d
 MACRO text_waitbutton
