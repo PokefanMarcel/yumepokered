@@ -372,6 +372,7 @@ WillPic::          INCBIN "gfx/trainers/will.pic"   ; marcelnote - new trainer c
 
 SECTION "Pics 7", ROMX ; marcelnote - new section
 
+; these three must stay in the same section
 RedPicBack::           INCBIN "gfx/player/redb.pic"
 GreenPicBack::         INCBIN "gfx/player/greenb.pic"
 OldManPicBack::        INCBIN "gfx/battle/oldmanb.pic"
