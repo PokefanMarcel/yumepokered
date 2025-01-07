@@ -305,7 +305,7 @@ OverworldLoopLessDelay::
 	ld a, [wWalkBikeSurfState]
 	and a ; WALKING?
 	jr nz, .normalPlayerSpriteAdvancement ; if not walking, no need to update sprites
-	ld hl, wMovementFlags
+	ld hl, wStatusFlags6
 	bit BIT_RUNNING, [hl]
 	jr z, .normalPlayerSpriteAdvancement ; if wasn't running, no need to update sprites
 	res BIT_RUNNING, [hl]
@@ -315,7 +315,7 @@ OverworldLoopLessDelay::
 	ld a, [wWalkBikeSurfState]
 	and a ; WALKING?
 	jr nz, .speedUp ; if not walking, no need to update sprites
-	ld hl, wMovementFlags
+	ld hl, wStatusFlags6
 	bit BIT_RUNNING, [hl]
 	jr nz, .speedUp ; if already running, no need to update sprites
 	set BIT_RUNNING, [hl]
@@ -907,7 +907,7 @@ SwitchRunningToWalkingSprites: ; marcelnote - running sprites
 	ld a, [wWalkBikeSurfState]
 	and a ; WALKING?
 	ret nz ; if not walking, do nothing
-	ld hl, wMovementFlags
+	ld hl, wStatusFlags6
 	bit BIT_RUNNING, [hl]
 	ret z ; if wasn't running, do nothing
 	res BIT_RUNNING, [hl]
