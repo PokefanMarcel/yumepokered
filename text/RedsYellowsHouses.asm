@@ -40,8 +40,9 @@ _RedsHouse1FTVWrongSideText::
 _RedsHouse2FSNESText:: ; marcelnote - moved from hidden_objects
 	text "<PLAYER> is"
 	line "playing the SNES!"
-	cont "...Okay!"
-	cont "It's time to go!"
+
+	para "...Okay!" ; marcelnote - added paragraph break
+	line "It's time to go!"
 	done
 
 _YellowsHouse1FDadUnpackingText:: ; marcelnote - new for Yellow's house
