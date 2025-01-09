@@ -77,9 +77,8 @@ _WannaTrade1Text::
 	line "@"
 	text_ram wInGameTradeGiveMonName
 	text "! Wanna"
-
-	para "trade one for"
-	line "@"
+	cont "trade one for"
+	cont "@"
 	text_ram wInGameTradeReceiveMonName
 	text "? "
 	done
@@ -113,11 +112,10 @@ _AfterTrade1Text::
 _WannaTrade2Text::
 	text "Hello there! Do"
 	line "you want to trade"
-
-	para "your @"
+	cont "your @"
 	text_ram wInGameTradeGiveMonName
 	text_start
-	line "for @"
+	cont "for @"
 	text_ram wInGameTradeReceiveMonName
 	text "?"
 	done
