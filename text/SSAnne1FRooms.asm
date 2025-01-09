@@ -75,8 +75,14 @@ _SSAnne1FRoomsCooltrainerFAfterBattleText::
 	cont "#MON CENTER!"
 	done
 
-_SSAnne1FRoomsGirl1Text::
+_SSAnne1FRoomsGirl1WaiterText::
 	text "Waiter, I would"
+	line "like a cherry pie"
+	cont "please!"
+	done
+
+_SSAnne1FRoomsGirl1WaitressText:: ; marcelnote - new for girl player
+	text "Waitress, I would"
 	line "like a cherry pie"
 	cont "please!"
 	done
