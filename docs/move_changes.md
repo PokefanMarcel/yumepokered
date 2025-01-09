@@ -49,6 +49,7 @@ In rare cases moves were nerfed, most notably DIG.
 | Move         | Type     | Power           | Accuracy       | PP            | Additional notes                                                            |
 |--------------|----------|-----------------|----------------|---------------|-----------------------------------------------------------------------------|
 | ABSORB       | Grass    | ~~20~~ **30**   | 100            | 20            |                                                                             |
+| VINE WHIP    | Grass    | 35              | 100            | ~~10~~ **20** |                                                                             |
 | MEGA DRAIN   | Grass    | ~~40~~ **60**   | 100            | 10            |                                                                             |
 | SOLARBEAM    | Grass    | ~~120~~ **140** | 100            | 10            | Power now on par with SKY ATTACK                                            |
 | FIRE SPIN    | Fire     | 15              | ~~70~~ **75**  | 15            |                                                                             |
