@@ -61,5 +61,5 @@ _MandarinSurfShopGirlText::
 	text "The owner's brother"
 	line "runs the MIRACLE"
 	cont "CYCLE store in"
-	cont "CERULEAN!"
+	cont "CERULEAN CITY."
 	done
