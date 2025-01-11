@@ -5,7 +5,7 @@ _CeladonGroveNorthGateHikerText::
 	cont "from CELADON to"
 	cont "MT.MOON."
 
-	para "But my ROCK"
+	para "But my rock"
 	line "#MON really"
 	cont "had a rough time"
 	cont "getting through!"
