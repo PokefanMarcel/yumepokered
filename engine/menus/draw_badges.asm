@@ -71,7 +71,7 @@ DrawBadges:
 ; Names are printed using two or three tiles.
 	ld a, [wBadgeNameTile]
 	call c, .PlaceTwoTiles
-	call nz, .PlaceThreeTiles
+	call nc, .PlaceThreeTiles
 	ld [wBadgeNameTile], a ; store next tile index for next badge
 
 	add hl, de ; add SCREEN_WIDTH - 1 or SCREEN_WIDTH - 2 to go to the next line
