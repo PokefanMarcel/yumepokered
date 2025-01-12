@@ -117,16 +117,17 @@ AccessedMyPCText:
 ; removes one of the specified item ID [hItemToRemoveID] from bag (if existent)
 RemoveItemByID::
 	ld hl, wBagItems
+	ldh a, [hItemToRemoveID]
+	ld b, a
 	;;;;;;;;;; marcelnote - new for bag pockets
-	call IsKeyItem ; item already loaded in [wCurItem]?
+	ld [wCurItem], a ; should we save what's in wCurItem before?
+	call IsKeyItem
 	ld a, [wIsKeyItem]
 	and a
 	jr z, .notKeyItem
 	ld hl, wBagKeyItems
 .notKeyItem
 	;;;;;;;;;;
-	ldh a, [hItemToRemoveID]
-	ld b, a
 	xor a
 	ldh [hItemToRemoveIndex], a
 .loop
