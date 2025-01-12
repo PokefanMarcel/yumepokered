@@ -756,13 +756,10 @@ PlayMapChangeSound::
 	ret nz
 	jp GBFadeOutToBlack
 
-CheckIfInOutsideMap:: ; marcelnote - added more outside maps
-; If the player is in an outside map (a town or route), set the z flag
-	ld a, [wCurMapTileset]
-	and a ; most towns/routes have tileset 0 (OVERWORLD)
+CheckIfInFlyMap:: ; marcelnote - added more FLY maps
+	call CheckIfInOutsideMap
 	ret z
-	cp PLATEAU  ; Route 23, Indigo Plateau
-	ret z
+	; a = [wCurMapTileset]
 	cp MOUNTAIN ; Cinnabar Volcano 2F, Mt Silver 3F
 	ret z
 ;	cp FOREST   ; Viridian Forest, Celadon Grove
@@ -771,6 +768,14 @@ CheckIfInOutsideMap:: ; marcelnote - added more outside maps
 	cp CELADON_MANSION_ROOF
 	ret z
 	cp CELADON_MART_ROOF
+	ret
+
+CheckIfInOutsideMap::
+; If the player is in an outside map (a town or route), set the z flag
+	ld a, [wCurMapTileset]
+	and a ; most towns/routes have tileset 0 (OVERWORLD)
+	ret z
+	cp PLATEAU ; Route 23 / Indigo Plateau
 	ret
 
 ; this function is an extra check that sometimes has to pass in order to warp, beyond just standing on a warp
