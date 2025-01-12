@@ -2716,7 +2716,6 @@ IsKeyItem_::
 	and a
 	ret nz
 .checkIfItemIsHM
-	ld a, [wCurItem]
 	call IsItemHM
 	ret c
 	xor a

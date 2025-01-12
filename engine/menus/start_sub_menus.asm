@@ -436,8 +436,7 @@ StartMenu_Item:: ; marcelnote - BICYCLE does not have special handling anymore
 	jp ItemMenuLoop
 .tossOrSelectItem ; marcelnote - added SLCT option
 ;;;;;;;;;;;;;;;;;;;;; marcelnote - use items with Select
-	ld a, [wCurItem]
-	callfar CheckIfSelectItem ; sets carry if item can be assigned to Select
+	callfar CheckIfSelectItem ; uses [wCurItem], sets carry if item can be assigned to Select
 	jr c, .assignItemToSelect
 ;;;;;;;;;;;;;;;;;;;;;
 	; toss item
@@ -445,9 +444,6 @@ StartMenu_Item:: ; marcelnote - BICYCLE does not have special handling anymore
 	ld a, [wIsKeyItem]
 	and a
 	jr nz, .skipAskingQuantity
-	ld a, [wCurItem]
-	call IsItemHM
-	jr c, .skipAskingQuantity
 	call DisplayChooseQuantityMenu
 	inc a
 	jr z, .tossZeroItems

@@ -61,7 +61,6 @@ GiveFossilToCinnabarLab::
 	ld hl, .ScientistTakesFossilText
 	call PrintText
 	ld a, [wFossilItem]
-	ld [wCurItem], a ; marcelnote - making sure RemoveItemByID works
 	ldh [hItemToRemoveID], a
 	farcall RemoveItemByID
 	ld hl, .GoForAWalkText

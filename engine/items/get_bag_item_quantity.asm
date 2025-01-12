@@ -37,6 +37,7 @@ GetIndexOfItemInBag:
 ; Out: b = index of item in bag (FF if not)
 	call GetPredefRegisters
 	ld hl, wBagItems - 1
+	ld c, -1
 	;;;;;;;;;; marcelnote - new for bag pockets
 	ld a, b
 	ld [wCurItem], a
@@ -46,7 +47,6 @@ GetIndexOfItemInBag:
 	jr z, .loop
 	ld hl, wBagKeyItems - 1
 	;;;;;;;;;;
-	ld c, -1
 .loop
 	inc c
 	inc hl
