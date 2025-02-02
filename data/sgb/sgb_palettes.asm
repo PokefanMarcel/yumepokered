@@ -1,6 +1,6 @@
 SuperPalettes:
 ; entries correspond to PAL_* constants
-	table_width 2 * 4, SuperPalettes
+	table_width 2 * 4
 	; marcelnote -
 	; Town palettes were changed to reflect Japanese names more.
 	; When the RGB color is too dark, I added the same constant to all three RGB elements.

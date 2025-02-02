@@ -189,10 +189,24 @@ SECTION "Tilemap", WRAM0
 ; buffer for tiles that are visible on screen (20 columns by 18 rows)
 wTileMap:: ds SCREEN_WIDTH * SCREEN_HEIGHT
 
+; This union spans 480 bytes.
 UNION
 ; buffer for temporarily saving and restoring current screen's tiles
 ; (e.g. if menus are drawn on top)
 wTileMapBackup:: ds SCREEN_WIDTH * SCREEN_HEIGHT
+
+NEXTU
+; buffer for the blocks surrounding the player (6 columns by 5 rows of 4x4-tile blocks)
+wSurroundingTiles:: ds SURROUNDING_WIDTH * SURROUNDING_HEIGHT
+
+NEXTU
+; buffer for temporarily saving and restoring shadow OAM
+wShadowOAMBackup::
+; wShadowOAMBackupSprite00 - wShadowOAMBackupSprite39
+FOR n, NUM_SPRITE_OAM_STRUCTS
+wShadowOAMBackupSprite{02d:n}:: sprite_oam_struct wShadowOAMBackupSprite{02d:n}
+ENDR
+wShadowOAMBackupEnd::
 
 NEXTU
 ; list of indexes to patch with SERIAL_NO_DATA_BYTE after transfer
@@ -201,8 +215,6 @@ wSerialPartyMonsPatchList:: ds 200
 ; list of indexes to patch with SERIAL_NO_DATA_BYTE after transfer
 wSerialEnemyMonsPatchList:: ds 200
 ENDU
-
-	ds 80
 
 
 SECTION "Overworld Map", WRAM0
@@ -1070,7 +1082,8 @@ wScriptedNPCWalkCounter:: db
 
 	ds 1
 
-wGBC:: db
+; always 0 since full CGB support was not implemented
+wOnCGB:: db
 
 ; if running on SGB, it's 1, else it's 0
 wOnSGB:: db

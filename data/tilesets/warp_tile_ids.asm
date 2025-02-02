@@ -1,5 +1,5 @@
 WarpTileIDPointers:
-	table_width 2, WarpTileIDPointers
+	table_width 2
 	dw .OverworldWarpTileIDs
 	dw .BigHouseWarpTileIDs ; marcelnote - merged REDS_HOUSE tilesets
 	dw .ForestWarpTileIDs

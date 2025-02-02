@@ -2073,6 +2073,7 @@ DisplayBattleMenu::
 	call DisplayTextBoxID
  ; handle menu input if it's not the old man tutorial
 	ld a, [wBattleType]
+	ASSERT BATTLE_TYPE_OLD_MAN == 1
 	dec a
 	jp nz, .handleBattleMenuInput
 ; the following happens for the old man tutorial
@@ -4653,7 +4654,7 @@ CalculateDamage:
 ; Multi-hit attacks may or may not have 0 bp.
 	cp TWO_TO_FIVE_ATTACKS_EFFECT
 	jr z, .skipbp
-	cp $1e
+	cp EFFECT_1E
 	jr z, .skipbp
 
 ; Calculate OHKO damage based on remaining HP.
@@ -5403,7 +5404,7 @@ MetronomePickMove:
 	and a
 	jr z, .pickMoveLoop
 	cp STRUGGLE
-	assert NUM_ATTACKS == STRUGGLE ; random numbers greater than STRUGGLE are not moves
+	ASSERT NUM_ATTACKS == STRUGGLE ; random numbers greater than STRUGGLE are not moves
 	jr nc, .pickMoveLoop
 	cp METRONOME
 	jr z, .pickMoveLoop
@@ -7024,7 +7025,7 @@ HandleExplodingAnimation:
 	ret nz
 	ld a, ANIMATIONTYPE_SHAKE_SCREEN_HORIZONTALLY_LIGHT
 	ld [wAnimationType], a
-	assert ANIMATIONTYPE_SHAKE_SCREEN_HORIZONTALLY_LIGHT == MEGA_PUNCH
+	ASSERT ANIMATIONTYPE_SHAKE_SCREEN_HORIZONTALLY_LIGHT == MEGA_PUNCH
 	; ld a, MEGA_PUNCH
 ; fallthrough
 PlayMoveAnimation:
