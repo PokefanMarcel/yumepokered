@@ -282,6 +282,7 @@ AutoTextBoxDrawingCommon::
 
 PrintText::
 ; Print text hl at (1, 14).
+	call CheckStackOverflow ; marcelnote - to detect stack overflow
 	push hl
 	ld a, MESSAGE_BOX
 	ld [wTextBoxID], a
