@@ -2313,13 +2313,16 @@ wBoxMon{d:n}Nick:: ds NAME_LENGTH
 ENDR
 wBoxMonNicksEnd::
 
-wBoxDataEnd::
+wBoxDataEnd:: ; $deff
 
-
+; marcelnote - Stack section was changed to detect stack overflow
 SECTION "Stack", WRAM0
 
+wStackOverflowCheck:: dw ; 2 bytes
+
 ; the stack grows downward
-	ds $100 - 1
-wStack:: db
+    ;ds $100 - 1
+    ds $100 - 3 ; reserve two bytes to detect stack overflow
+wStack:: db ; $dfff
 
 ENDSECTION

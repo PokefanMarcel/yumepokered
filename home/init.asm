@@ -77,6 +77,14 @@ DEF rLCDC_DEFAULT EQU (1 << rLCDC_ENABLE) | (1 << rLCDC_WINDOW_TILEMAP) | (1 << 
 
 	call ClearSprites
 
+;;;;;;;;;;;;;;;;;;;; marcelnote - to detect stack overflow
+	ld hl, wStackOverflowCheck
+	ld a, CONTROL_VALUE1
+	ld [hli], a
+	ld a, CONTROL_VALUE2
+	ld [hl], a
+;;;;;;;;;;;;;;;;;;;;
+
 ;;;;;;;;;;;;;;;;;;;; marcelnote - shinpokered xorshift RNG
 ;finish initializing RNG
 ;joenote - added lines to save the RNG seed
