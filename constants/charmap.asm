@@ -190,7 +190,7 @@
 	charmap "▷",         $ec
 	charmap "▶",         $ed
 	charmap "▼",         $ee
-	charmap "♂",         $ef
+	;charmap "♂",         $ef ; marcelnote - empty for now
 	charmap "¥",         $f0
 	charmap "×",         $f1
 	charmap "<DOT>",     $f2 ; decimal point; same as "." in English
