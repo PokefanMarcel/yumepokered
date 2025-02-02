@@ -40,7 +40,7 @@ ENDC
 
 	ld hl, wObtainedBadges
 	;ld [hli], a
-	;assert wObtainedBadges + 1 == wUnusedObtainedBadges ; marcelnote - removed wUnusedObtainedBadges
+	;ASSERT wObtainedBadges + 1 == wUnusedObtainedBadges
 	ld [hl], a
 
 	ld hl, wPlayerCoins

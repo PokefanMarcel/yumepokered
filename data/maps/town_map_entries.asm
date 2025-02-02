@@ -6,7 +6,7 @@ ENDM
 ; the appearance of towns and routes in the town map
 ; marcelnote - many entries were adjusted for the new town map
 ExternalMapEntries:
-	table_width 3, ExternalMapEntries
+	table_width 3
 	; x, y, name
 	external_map  3, 11, PalletTownName
 	external_map  3,  8, ViridianCityName

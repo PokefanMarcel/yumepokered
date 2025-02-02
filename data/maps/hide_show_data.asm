@@ -2,7 +2,7 @@
 
 MapHSPointers:
 ; entries correspond to map ids
-	table_width 2, MapHSPointers
+	table_width 2
 	dw PalletTownHS    ; PALLET_TOWN
 	dw ViridianCityHS  ; VIRIDIAN_CITY
 	dw PewterCityHS    ; PEWTER_CITY
@@ -236,7 +236,7 @@ NoHS:
 
 MissableObjects:
 ; entries correspond to HS_* constants (see constants/hide_show_constants)
-	table_width 3, MissableObjects
+	table_width 3
 ; format: map id, object id, HIDE/SHOW
 ; marcelnote - !!!WARNING!!!
 ; the maps with items to pick up OR overworld map Pokémon to fight

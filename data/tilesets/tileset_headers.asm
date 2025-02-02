@@ -7,7 +7,7 @@ MACRO tileset
 ENDM
 
 Tilesets:
-	table_width 12, Tilesets
+	table_width 12
 	; name, 3 counter tiles, grass tile, animations
 	tileset Overworld,    -1, -1, -1, $52, TILEANIM_WATER_FLOWER_WBOLLARD ; marcelnote - was TILEANIM_WATER_FLOWER
 	tileset BigHouse,     -1, -1, -1,  -1, TILEANIM_NONE  ; marcelnote - renamed REDS_HOUSE_1 tileset
