@@ -70,7 +70,7 @@ Its kanji name 夢 is also an homage to [shinpokered](https://github.com/jojobea
 - Move deleter and Move reminder in Fuchsia.
 - Experience bar in battle.
 - Improved move info box in battle.
-- All TMs can be bought at the Celadon Mart after getting the right badge.
+- Each badge unlocks new TMs to buy at the Celadon Mart. All TMs become available after beating the Elite Four.
 - New Celadon Mart floor where you can buy PP-related items in the postgame (Ether, Elixir, PP Up...).
 - Turn Exp.All on and off from the bag.
 - Faster dialogue to buy coins at the Game Corner.
