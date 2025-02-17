@@ -112,7 +112,7 @@ PrintLearnedMove: ; marcelnote - for temporary field moves
 	ld bc, $0100 ; marcelnote - b=1 to indicate move was learnt
 	ret
 PrintLearnedFieldMove:
-	ld hl, LearnedMove1Text
+	ld hl, CanUseMoveText
 	call PrintText
 	ld bc, $0101 ; marcelnote - b=1 to indicate move was learnt, c=1 to indicate as field move
 	ret
@@ -214,6 +214,12 @@ TryingToLearn:
 LearnedMove1Text:
 	text_far _LearnedMove1Text
 	sound_get_item_1 ; plays SFX_GET_ITEM_1 in the party menu (rare candy) and plays SFX_LEVEL_UP in battle
+	text_promptbutton
+	text_end
+
+CanUseMoveText: ; marcelnote - for temporary field moves
+	text_far _CanUseMoveText
+	sound_get_item_1
 	text_promptbutton
 	text_end
 
