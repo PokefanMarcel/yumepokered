@@ -26,6 +26,7 @@ SSAnne1FRooms_TextPointers:
 	dw_const SSAnne1FRoomsGirl2Text,         TEXT_SSANNE1FROOMS_GIRL2
 	dw_const PickUpItemText,                 TEXT_SSANNE1FROOMS_TM_BODY_SLAM
 	dw_const SSAnne1FRoomsGentleman3Text,    TEXT_SSANNE1FROOMS_GENTLEMAN3
+	dw_const SSAnne1FRoomsNurseText,         TEXT_SSANNE1FROOMS_NURSE ; marcelnote - new nurse room
 
 SSAnne8TrainerHeaders:
 	def_trainers
@@ -151,4 +152,24 @@ SSAnne1FRoomsGirl2Text:
 
 SSAnne1FRoomsGentleman3Text:
 	text_far _SSAnne1FRoomsGentleman3Text
+	text_end
+
+SSAnne1FRoomsNurseText: ; marcelnote - new nurse room
+	text_asm
+	ld hl, .AreYouTiredText
+	call PrintText
+	predef HealParty
+	call GBFadeOutToWhite
+	call Delay3
+	call GBFadeInFromWhite
+	ld hl, .EnjoyThePartyText
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+.AreYouTiredText:
+	text_far _SSAnne1FRoomsNurseAreYouTiredText
+	text_end
+
+.EnjoyThePartyText:
+	text_far _SSAnne1FRoomsNurseEnjoyThePartyText
 	text_end

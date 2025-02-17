@@ -109,3 +109,13 @@ _SSAnne1FRoomsGentleman3Text::
 	para "I'm on the trail"
 	line "of TEAM ROCKET!"
 	done
+
+_SSAnne1FRoomsNurseAreYouTiredText:: ; marcelnote - new nurse room
+	text "Are you tired?"
+	line "You can rest"
+	cont "here for a bit!"
+	prompt
+
+_SSAnne1FRoomsNurseEnjoyThePartyText:: ; marcelnote - new nurse room
+	text "Enjoy the party!"
+	done

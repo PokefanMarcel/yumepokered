@@ -2,6 +2,7 @@ MACRO hidden_item
 	db \1, \3, \2
 ENDM
 
+; marcelnote - see also hidden_objects.asm
 HiddenItemCoords:
 	table_width 3
 	; map id, x, y

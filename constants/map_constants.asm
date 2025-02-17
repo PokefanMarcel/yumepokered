@@ -121,7 +121,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const SS_ANNE_BOW,                   10,  7
 	map_const SS_ANNE_KITCHEN,                7,  8 ; merge?
 	map_const SS_ANNE_CAPTAINS_ROOM,          3,  4 ; merge?
-	map_const SS_ANNE_1F_ROOMS,              12,  8 ; merge?
+	map_const SS_ANNE_1F_ROOMS,              32,  3 ; marcelnote - reorganized, added nurse room ; merge?
 	map_const SS_ANNE_2F_ROOMS,              12,  8 ; merge?
 	map_const DIGLETTS_CAVE,                 20, 18
 	map_const DIGLETTS_CAVE_ROUTE_11,         4,  4
