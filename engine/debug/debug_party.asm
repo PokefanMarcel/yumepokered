@@ -202,7 +202,7 @@ DebugKeyItemsList:    ; marcelnote - new for Key Items pocket
 	db SILPH_SCOPE, 1 ; marcelnote - added
 	db CITRUS_PASS, 1 ; marcelnote - added
 	;db SURFBOARD, 1 ; marcelnote - added
-	;db HM_CUT, 1 ; marcelnote - added
+	db HM_CUT, 1 ; marcelnote - added
 	;db HM_FLY, 1 ; marcelnote - added
 	;db HM_SURF, 1 ; marcelnote - added
 	;db HM_STRENGTH, 1 ; marcelnote - added
