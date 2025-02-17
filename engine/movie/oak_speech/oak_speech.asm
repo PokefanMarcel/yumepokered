@@ -286,6 +286,6 @@ BoyGirlChoice::	;joenote - add female player
 	call SaveScreenTilesToBuffer1
 	ld a, BOY_GIRL_MENU
 	ld [wTwoOptionMenuID], a
-	coord hl, 13, 7
-	ld bc, $080E
+	coord hl,  6, 5
+	ld bc, $0607 ; marcelnote - yx cursor position
 	jp DisplayYesNoChoice
