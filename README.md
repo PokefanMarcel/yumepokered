@@ -74,6 +74,7 @@ Its kanji name 夢 is also an homage to [shinpokered](https://github.com/jojobea
 - New Celadon Mart floor where you can buy PP-related items in the postgame (Ether, Elixir, PP Up...).
 - Turn Exp.All on and off from the bag.
 - Faster dialogue to buy coins at the Game Corner.
+- New room with a nurse in the SS.Anne.
 
 There are also many other smaller tweaks to the original game, and still more to come!
 
