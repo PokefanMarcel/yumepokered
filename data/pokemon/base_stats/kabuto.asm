@@ -13,11 +13,11 @@
 	db SCRATCH, HARDEN, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_MEDIUM_FAST ; growth rate
 
-	; tm/hm learnset
+	; tm/hm learnset ; marcelnote - added CUT and MEGA_DRAIN
 	tmhm TOXIC,        BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  BUBBLEBEAM,   \
 	     WATER_GUN,    ICE_BEAM,     BLIZZARD,     RAGE,         MIMIC,        \
 	     DOUBLE_TEAM,  REFLECT,      BIDE,         REST,         SUBSTITUTE,   \
-	     SURF
+	     SURF,         CUT,          MEGA_DRAIN
 	; end
 
 	; marcelnote - improve Pokemon picture system tutorial
