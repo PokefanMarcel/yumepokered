@@ -13,12 +13,12 @@
 	db SCRATCH, HARDEN, FURY_SWIPES, NO_MOVE ; level 1 learnset ; marcelnote - replaced ABSORB by FURY_SWIPES
 	db GROWTH_MEDIUM_FAST ; growth rate
 
-	; tm/hm learnset
-	tmhm RAZOR_WIND,   SWORDS_DANCE, MEGA_KICK,    TOXIC,        BODY_SLAM,    \
+	; tm/hm learnset ; marcelnote - added CUT and MEGA_DRAIN, removed RAZOR_WIND
+	tmhm MEGA_DRAIN,   SWORDS_DANCE, MEGA_KICK,    TOXIC,        BODY_SLAM,    \
 	     TAKE_DOWN,    DOUBLE_EDGE,  BUBBLEBEAM,   WATER_GUN,    ICE_BEAM,     \
 	     BLIZZARD,     HYPER_BEAM,   SUBMISSION,   SEISMIC_TOSS, RAGE,         \
 	     MIMIC,        DOUBLE_TEAM,  REFLECT,      BIDE,         SKULL_BASH,   \
-	     REST,         SUBSTITUTE,   SURF
+	     REST,         SUBSTITUTE,   SURF,         CUT
 	; end
 
 	; marcelnote - improve Pokemon picture system tutorial
