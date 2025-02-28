@@ -46,8 +46,8 @@ Its kanji name 夢 is also an homage to [shinpokered](https://github.com/jojobea
 - Every fishing rod is available earlier than it was in the original games.
 - Fishing encounters were completely reworked in terms of levels and Pokémon diversity.
 - For full details (spoilers!), see the files for the [Old rod](data/wild/old_rod.asm), [Good rod](data/wild/good_rod.asm) and [Super rod](data/wild/super_rod.asm).
-- A new NPC gives either the Helix or Dome fossil later in the game, depending on which one was chosen in Mt. Moon.
-- Either Hitmonlee or Hitmonchan is also obtainable through a new NPC before the Elite 4.
+- A new NPC gives the fossil you didn't choose in Mt. Moon later in the game.
+- Either Hitmonlee or Hitmonchan is also obtainable from a new NPC before the Elite 4.
 
 ### Visual updates
 
