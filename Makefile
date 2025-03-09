@@ -36,7 +36,7 @@ yumepokebleue_debug_obj := $(rom_obj:.o=_bleue_debug.o)
 
 ### Build tools
 
-ifeq (,$(shell which sha1sum))
+ifeq (,$(shell command -v sha1sum 2>/dev/null))
 SHA1 := shasum
 else
 SHA1 := sha1sum
