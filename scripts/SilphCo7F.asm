@@ -312,7 +312,7 @@ SilphCo7FSilphWorkerM1Text: ; marcelnote - optimized
 .give_lapras
 	ld hl, .HaveThisPokemonText
 	call PrintText
-	lb bc, LAPRAS, 15
+	lb bc, LAPRAS, 25 ; marcelnote - changed from 15 to 25
 	call GivePokemon
 	jr nc, .done
 	ld a, [wAddedToParty]
