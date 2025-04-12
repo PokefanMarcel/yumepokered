@@ -22,7 +22,7 @@ _CeladonMansion1FNidoranFText::
 	text_end
 
 _CeladonMansion1FManagersSuiteSignText::
-	text "CELADON MANSION"
+	text "CELADON CONDOS" ; marcelnote - changed from CELADON MANSION
 	line "Manager's Suite"
 	done
 
