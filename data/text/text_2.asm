@@ -504,7 +504,7 @@ TMNotebookText::
 
 	para "..."
 
-	para "There are 50 TMs"
+	para "There are 51 TMs" ; marcelnote - changed from 50 TMs
 	line "in all."
 
 	para "There are also 5"
