@@ -118,7 +118,7 @@ _CeladonCityGymSignText::
 	done
 
 _CeladonCityMansionSignText::
-	text "CELADON MANSION"
+	text "CELADON CONDOS" ; marcelnote - changed from CELADON MANSION
 	done
 
 _CeladonCityDeptStoreSignText::
