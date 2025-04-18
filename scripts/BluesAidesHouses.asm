@@ -87,3 +87,19 @@ BluesHouseTownMapText:
 AidesHouseMiddleAgedWomanText: ; marcelnote - new Pallet house
 	text_far _AidesHouseMiddleAgedWomanText
 	text_end
+; marcelnote - this is code to make her give rare candy instead
+;	text_asm
+;	ld hl, TakeThisRareCandyText
+;	call PrintText
+;	lb bc, RARE_CANDY, 5
+;	call GiveItem
+;	ld hl, BluesHouseDaisyBagFullText
+;	jr nc, .print_text
+;	ld hl, GotMapText
+;.print_text
+;	call PrintText
+;	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+;TakeThisRareCandyText:
+;	text_far _TakeThisRareCandyText
+;	text_end

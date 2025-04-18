@@ -51,3 +51,7 @@ _AidesHouseMiddleAgedWomanText:: ; marcelnote - new Pallet house
 	cont "away from home"
 	cont "a lot."
 	done
+
+;_TakeThisRareCandyText:: ; marcelnote - make woman give rare candy
+;	text "Take this!"
+;	done
