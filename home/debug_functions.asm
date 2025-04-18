@@ -2,8 +2,8 @@
 ; Two control byte values are loaded at wStackOverflowCheck in Init.
 ; The function is called in PrintText to overwrite the intended text with an error message.
 
-DEF CONTROL_VALUE1 EQU %01010101
-DEF CONTROL_VALUE2 EQU %10110110
+DEF CONTROL_VALUE1 EQU %01010101 ; = $55
+DEF CONTROL_VALUE2 EQU %10110110 ; = $B6
 
 CheckStackOverflow::
 	push af
