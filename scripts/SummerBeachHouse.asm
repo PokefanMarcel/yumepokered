@@ -42,6 +42,8 @@ SummerBeachHouseSurfinDudeText:
 ;	farcall SurfingPikachuMinigame
 ;	ld hl, wd492
 ;	set 1, [hl]
+	ld hl, .SummerBeachHouseSurfinDudeNotReadyYetText
+	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .SummerBeachHouseSurfinDudeDogsBurgersText
@@ -58,6 +60,10 @@ SummerBeachHouseSurfinDudeText:
 
 .SummerBeachHouseSurfinDudeComeAnytimeText
 	text_far _SummerBeachHouseSurfinDudeComeAnytimeText
+	text_end
+
+.SummerBeachHouseSurfinDudeNotReadyYetText ; marcelnote - temporary until minigame works
+	text_far _SummerBeachHouseSurfinDudeNotReadyYetText
 	text_end
 
 ; pokeyellow original
@@ -126,58 +132,44 @@ SummerBeachHousePikachuText:
 	call WaitForSoundToFinish
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-SummerBeachHousePoster1Text:
+SummerBeachHousePoster1Text: ; marcelnote - shuffled poster texts
+	text_far _SummerBeachHousePoster30YearsOfWavesText
+	text_end
+
+SummerBeachHousePoster2Text: ; marcelnote - shuffled poster texts
 	text_asm
 	callfar IsSurfingPikachuInParty
-	ld hl, .SummerBeachHousePoster1Text1
-	jr nz, .print_text
-	ld hl, .SummerBeachHousePoster1Text2
+	ld hl, .ScribblesText
+	jr z, .print_text
+	ld hl, .SurfingTip1Text
 .print_text
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-.SummerBeachHousePoster1Text1
-	text_far _SummerBeachHousePoster1Text1
+.ScribblesText
+	text_far _SummerBeachHousePosterScribblesText
 	text_end
 
-.SummerBeachHousePoster1Text2
-	text_far _SummerBeachHousePoster1Text2
+.SurfingTip1Text
+	text_far _SummerBeachHousePosterSurfingTip1Text
 	text_end
 
-SummerBeachHousePoster2Text:
+SummerBeachHousePoster3Text: ; marcelnote - shuffled poster texts
 	text_asm
 	callfar IsSurfingPikachuInParty
-	ld hl, .SummerBeachHousePoster2Text1
-	jr nz, .print_text
-	ld hl, .SummerBeachHousePoster2Text2
+	ld hl, .SeaUnitesAllText
+	jr z, .print_text
+	ld hl, .SurfingTip2Text
 .print_text
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-.SummerBeachHousePoster2Text1
-	text_far _SummerBeachHousePoster2Text1
+.SeaUnitesAllText
+	text_far _SummerBeachHousePosterSeaUnitesAllText
 	text_end
 
-.SummerBeachHousePoster2Text2
-	text_far _SummerBeachHousePoster2Text2
-	text_end
-
-SummerBeachHousePoster3Text:
-	text_asm
-	callfar IsSurfingPikachuInParty
-	ld hl, .SummerBeachHousePoster3Text1
-	jr nz, .print_text
-	ld hl, .SummerBeachHousePoster3Text2
-.print_text
-	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-
-.SummerBeachHousePoster3Text1
-	text_far _SummerBeachHousePoster3Text1
-	text_end
-
-.SummerBeachHousePoster3Text2
-	text_far _SummerBeachHousePoster3Text2
+.SurfingTip2Text
+	text_far _SummerBeachHousePosterSurfingTip2Text
 	text_end
 
 ;SummerBeachHousePrinterText:

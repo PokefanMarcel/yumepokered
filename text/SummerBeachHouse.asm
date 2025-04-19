@@ -1,16 +1,29 @@
 ; marcelnote - new location from pokeyellow
 _SummerBeachHouseSurfinDudeWhoaText::
-	text "Whoa!"
+;	text "Whoa!"
+;
+;	para "Your PIKACHU knows"
+;	line "how to SURF! So,"
+;	cont "I'm not alone..."
+;
+;	para "Great! You earned"
+;	line "the right to SURF"
+;	cont "with the DUDE!"
+;
+;	para "Give it a go?"
+	text "Wait... Your"
+	line "PIKACHU knows"
+	cont "how to SURF!"
 
-	para "Your PIKACHU knows"
-	line "how to SURF! So,"
-	cont "I'm not alone..."
+	para "So I'm not the"
+	line "only one..."
+	cont "Alright then!"
 
-	para "Great! You earned"
-	line "the right to SURF"
-	cont "with the DUDE!"
+	para "Just for you, I'll"
+	line "arrange a special"
+	cont "SURF session."
 
-	para "Give it a go?"
+	para "What do you say?"
 	done
 
 _SummerBeachHouseSurfinDudeComeAnytimeText::
@@ -27,49 +40,70 @@ _SummerBeachHouseSurfinDudeDogsBurgersText::
 	line "on special today!"
 	done
 
+_SummerBeachHouseSurfinDudeNotReadyYetText:: ; marcelnote - temporary until minigame works
+	text "Actually, I'm not"
+	line "ready yet..."
+	done
+
 _SummerBeachHousePikachuText::
 	text "PIKACHU: Pikaa!" ; marcelnote - added "!"
 	done
 
-_SummerBeachHousePoster1Text1::
-	text "SURFIN' DUDE's"
+_SummerBeachHousePoster30YearsOfWavesText::
+	text "30 years of waves!"
+	line "SURFING MASTER"
+	done
+
+_SummerBeachHousePosterScribblesText::
+	;text "SURFIN' DUDE's"
+	;line "scribbles..."
+
+	;para "When I shoot the"
+	;line "tube, the tunes"
+	;cont "hit the groove!"
+	text "SURFING MASTER's"
 	line "scribbles..."
 
-	para "When I shoot the"
-	line "tube, the tunes"
-	cont "hit the groove!"
+	para "Speed up, and"
+	line "the tunes crank"
+	cont "up too! Groovy!"
 	done
 
-_SummerBeachHousePoster1Text2::
-	text "30 years of waves!"
-	line "SURFIN' DUDE"
+_SummerBeachHousePosterSeaUnitesAllText::
+	;text "The sea unites"
+	;line "all in surfdom!"
+
+	; marcelnote - from Japanese: The sea is pure romance!
+	text "The sea is the"
+	line "soul's horizon!"
 	done
 
-_SummerBeachHousePoster2Text1::
+_SummerBeachHousePosterSurfingTip1Text::
 	text "SURFING TIP 1!"
 
-	para "After flips, line"
-	line "the board up with"
-	cont "a wave for a cool"
-	cont "effect!"
+;	para "After flips, line"
+;	line "the board up with"
+;	cont "a wave for a cool"
+;	cont "effect!"
+
+	; marcelnote - from Japanese: After a spin, land your board flat on the water for a stylish finish!
+	para "After a flip, land"
+	line "the board flat on"
+	cont "the water for a"
+	cont "stylish finish!"
 	done
 
-_SummerBeachHousePoster2Text2::
-	text "SUMMER BEACH HOUSE"
-	line "#MON welcome!"
-	done
-
-_SummerBeachHousePoster3Text1::
+_SummerBeachHousePosterSurfingTip2Text::
 	text "SURFING TIP 2!"
 
-	para "Pulling flips in"
-	line "a jump is totally"
-	cont "rad!"
-	done
+;	para "Pulling flips in"
+;	line "a jump is totally"
+;	cont "rad!"
 
-_SummerBeachHousePoster3Text2::
-	text "The sea unites"
-	line "all in surfdom!"
+	; marcelnote - from Japanese: Spin repeatedly during a jump—it looks super cool!
+	para "Pull flips during"
+	line "jumps, it looks"
+	cont "super cool!"
 	done
 
 _SummerBeachHousePrinterText1::

@@ -220,8 +220,9 @@ _Route19SignText::
 	cont "SEAFOAM ISLANDS"
 	done
 
-_Route19BeachHouseSignText:: ; marcelnote - new trainer, Fisher1
+_Route19BeachHouseSignText:: ; marcelnote - new sign for Beach house from pokeyellow
 	text "BEACH HOUSE"
-	line "Closed for"
-	cont "repairs."
+	line "#MON welcome!"
+	;line "Closed for"
+	;cont "repairs."
 	done
