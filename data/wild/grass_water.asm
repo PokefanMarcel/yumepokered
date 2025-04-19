@@ -182,6 +182,7 @@ WildDataPointers:
 	dw NothingWildMons                 ; SAFARI_ZONE_WEST_REST_HOUSE
 	dw NothingWildMons                 ; SAFARI_ZONE_EAST_REST_HOUSE
 	dw NothingWildMons                 ; SAFARI_ZONE_NORTH_REST_HOUSE
+	dw NothingWildMons                 ; SUMMER_BEACH_HOUSE ; marcelnote - new location from pokeyellow
 	dw SeafoamIslands1FWildMons        ; SEAFOAM_ISLANDS_1F
 	dw SeafoamIslandsB1FWildMons       ; SEAFOAM_ISLANDS_B1F
 	dw SeafoamIslandsB2FWildMons       ; SEAFOAM_ISLANDS_B2F

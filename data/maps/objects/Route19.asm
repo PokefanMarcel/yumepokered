@@ -19,6 +19,7 @@ Route19_Object:
 	db $43 ; border block
 
 	def_warp_events
+	warp_event 11,  7, SUMMER_BEACH_HOUSE, 1 ; marcelnote - added from pokeyellow
 
 	def_bg_events
 	bg_event 21,  9, TEXT_ROUTE19_SIGN

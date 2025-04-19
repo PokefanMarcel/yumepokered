@@ -285,6 +285,7 @@ INCLUDE "text/MandarinDock.asm"             ; marcelnote - new location
 INCLUDE "text/CitrusFerryDeck.asm"          ; marcelnote - new location
 INCLUDE "text/CitrusFerryOutside.asm"       ; marcelnote - new location
 INCLUDE "text/CitrusFerryRooms.asm"         ; marcelnote - new location
+INCLUDE "text/SummerBeachHouse.asm"         ; marcelnote - new location from pokeyellow
 
 
 SECTION "Pokédex Text", ROMX

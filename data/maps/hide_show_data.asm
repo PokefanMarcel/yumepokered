@@ -185,6 +185,7 @@ MapHSPointers:
 	dw NoHS                        ; SAFARI_ZONE_WEST_REST_HOUSE
 	dw NoHS                        ; SAFARI_ZONE_EAST_REST_HOUSE
 	dw NoHS                        ; SAFARI_ZONE_NORTH_REST_HOUSE
+	dw NoHS                        ; SUMMER_BEACH_HOUSE   ; marcelnote - new location from pokeyellow
 	dw SeafoamIslands1FHS          ; SEAFOAM_ISLANDS_1F
 	dw SeafoamIslandsB1FHS         ; SEAFOAM_ISLANDS_B1F
 	dw SeafoamIslandsB2FHS         ; SEAFOAM_ISLANDS_B2F

@@ -1225,3 +1225,8 @@ INCLUDE "data/maps/headers/MtSilver3F.asm" ; marcelnote - new location
 INCLUDE "scripts/MtSilver3F.asm"
 INCLUDE "data/maps/objects/MtSilver3F.asm"
 MtSilver3F_Blocks:: INCBIN "maps/MtSilver3F.blk"
+
+INCLUDE "data/maps/headers/SummerBeachHouse.asm" ; marcelnote - new location from pokeyellow
+INCLUDE "scripts/SummerBeachHouse.asm"
+INCLUDE "data/maps/objects/SummerBeachHouse.asm"
+SummerBeachHouse_Blocks:: INCBIN "maps/SummerBeachHouse.blk"

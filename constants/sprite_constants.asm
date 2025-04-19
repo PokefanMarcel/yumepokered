@@ -74,6 +74,7 @@
 	const SPRITE_DAD                     ; $42 ; marcelnote - new sprite
 	const SPRITE_JABARA                  ; $42 ; marcelnote - new sprite
 	const SPRITE_WILL                    ; $42 ; marcelnote - new sprite
+	const SPRITE_PIKACHU                 ; $42 ; marcelnote - new sprite from pokeyellow
 	const SPRITE_SEEL                    ; $44
 DEF FIRST_STILL_SPRITE EQU const_value
 	const SPRITE_POKE_BALL               ; $45

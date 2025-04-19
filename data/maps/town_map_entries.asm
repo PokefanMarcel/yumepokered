@@ -101,6 +101,7 @@ InternalMapEntries:
 	internal_map SILPH_CO_ELEVATOR,             10,  5, SilphCoName
 	internal_map FUCHSIA_GYM,                    9, 13, FuchsiaCityName
 	internal_map SAFARI_ZONE_NORTH_REST_HOUSE,   9, 12, SafariZoneName
+	internal_map SUMMER_BEACH_HOUSE,             8, 15, Route19Name ; marcelnote - new location from pokeyellow
 	internal_map SEAFOAM_ISLANDS_B4F,            6, 15, SeafoamIslandsName
 	internal_map CINNABAR_GYM,                   3, 15, CinnabarIslandName
 	internal_map POKEMON_MANSION_B1F,            3, 15, PokemonMansionName
