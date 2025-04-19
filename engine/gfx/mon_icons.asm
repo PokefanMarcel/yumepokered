@@ -91,7 +91,7 @@ PartyMonSpeeds:
 LoadMonPartySpriteGfx:
 ; Load mon party sprite tile patterns into VRAM during V-blank.
 	ld hl, MonPartySpritePointers
-	ld a, $1c
+	ld a, $1e ; marcelnote - added Pikachu icon, was $1c
 
 LoadAnimSpriteGfx:
 ; Load animated sprite tile patterns into VRAM during V-blank. hl is the address
@@ -130,7 +130,7 @@ LoadMonPartySpriteGfxWithLCDDisabled:
 ; LCD.
 	call DisableLCD
 	ld hl, MonPartySpritePointers
-	ld a, $1c
+	ld a, $1e ; marcelnote - added Pikachu icon, was $1c
 	ld bc, $0
 .loop
 	push af
@@ -204,7 +204,7 @@ UnusedPartyMonSpriteFunction:
 	ld hl, vSprites tile $00
 	call .LoadTilePatterns
 	pop af
-	add $54
+	add $5a ; marcelnote - added Pikachu icon, was $54
 	ld hl, vSprites tile $04
 	call .LoadTilePatterns
 	xor a
