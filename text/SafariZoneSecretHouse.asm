@@ -48,6 +48,5 @@ _SafariZoneSecretHousePosterText:: ; marcelnote - new
 	text "SURF lovers, come"
 	line "visit our shop on"
 	cont "MANDARIN ISLAND!"
-
-	para "WAVE CRAZE"
+	cont "WAVE CRAZE"
 	done
