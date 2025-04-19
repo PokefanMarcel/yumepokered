@@ -43,3 +43,11 @@ _SafariZoneSecretHouseFishingGuruHM03NoRoomText::
 	line "room for this"
 	cont "fabulous prize!"
 	done
+
+_SafariZoneSecretHousePosterText:: ; marcelnote - new
+	text "SURF lovers, come"
+	line "visit our shop on"
+	cont "MANDARIN ISLAND!"
+
+	para "WAVE CRAZE"
+	done

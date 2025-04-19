@@ -4,6 +4,7 @@ SafariZoneSecretHouse_Script:
 SafariZoneSecretHouse_TextPointers:
 	def_text_pointers
 	dw_const SafariZoneSecretHouseFishingGuruText, TEXT_SAFARIZONESECRETHOUSE_FISHING_GURU
+	dw_const SafariZoneSecretHousePosterText,      TEXT_SAFARIZONESECRETHOUSE_POSTER ; marcelnote - new
 
 SafariZoneSecretHouseFishingGuruText: ; marcelnote - optimized
 	text_asm
@@ -37,4 +38,8 @@ SafariZoneSecretHouseFishingGuruText: ; marcelnote - optimized
 
 .HM03NoRoomText:
 	text_far _SafariZoneSecretHouseFishingGuruHM03NoRoomText
+	text_end
+
+SafariZoneSecretHousePosterText: ; marcelnote - new
+	text_far _SafariZoneSecretHousePosterText
 	text_end
