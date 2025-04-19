@@ -454,7 +454,7 @@
 
 ; Route 19 events
 	const_next $4F0
-	const_skip
+	const EVENT_SURFIN_DUDE_WHOA        ; marcelnote - new, was const_skip
 	const EVENT_BEAT_ROUTE_19_TRAINER_0
 	const EVENT_BEAT_ROUTE_19_TRAINER_1
 	const EVENT_BEAT_ROUTE_19_TRAINER_2

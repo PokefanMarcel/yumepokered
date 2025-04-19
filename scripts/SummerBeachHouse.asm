@@ -7,16 +7,63 @@ SummerBeachHouse_Script:
 
 SummerBeachHouse_TextPointers:
 	def_text_pointers
-	;dw_const SummerBeachHouseSurfinDudeText, TEXT_SUMMERBEACHHOUSE_SURFINDUDE
-	dw_const SummerBeachHousePikachuText,    TEXT_SUMMERBEACHHOUSE_PIKACHU
-	dw_const SummerBeachHousePoster1Text,    TEXT_SUMMERBEACHHOUSE_POSTER1
-	dw_const SummerBeachHousePoster2Text,    TEXT_SUMMERBEACHHOUSE_POSTER2
-	dw_const SummerBeachHousePoster3Text,    TEXT_SUMMERBEACHHOUSE_POSTER3
-	;dw_const SummerBeachHousePrinterText,    TEXT_SUMMERBEACHHOUSE_PRINTER
+	dw_const SummerBeachHouseSurfinDudeText,          TEXT_SUMMERBEACHHOUSE_SURFINDUDE
+	dw_const SummerBeachHousePikachuText,             TEXT_SUMMERBEACHHOUSE_PIKACHU
+	dw_const SummerBeachHousePoster1Text,             TEXT_SUMMERBEACHHOUSE_POSTER1
+	dw_const SummerBeachHousePoster2Text,             TEXT_SUMMERBEACHHOUSE_POSTER2
+	dw_const SummerBeachHousePoster3Text,             TEXT_SUMMERBEACHHOUSE_POSTER3
+	dw_const SummerBeachHousePokemonSurfboardText,    TEXT_SUMMERBEACHHOUSE_POKEMON_SURFBOARD
+	;dw_const SummerBeachHousePrinterText,             TEXT_SUMMERBEACHHOUSE_PRINTER
 
+SummerBeachHouseSurfinDudeText:
+	text_asm
+	callfar IsSurfingPikachuInParty
+	ld hl, .SummerBeachHouseSurfinDudeDogsBurgersText
+	jr z, .print_text
+	CheckEvent EVENT_SURFIN_DUDE_WHOA
+	ld hl, .SummerBeachHouseSurfinDudeWannaGoSurfText
+	jr nz, .alreadySawSurfinPikachu
+	SetEvent EVENT_SURFIN_DUDE_WHOA
+	ld hl, .SummerBeachHouseSurfinDudeWhoaText
+.alreadySawSurfinPikachu
+	call PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr z, .StartSurfingPikachuMinigame
+	ld hl, .SummerBeachHouseSurfinDudeComeAnytimeText
+.print_text
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+.StartSurfingPikachuMinigame
+;	ld a, 1
+;	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+;	farcall SurfingPikachuMinigame
+;	ld hl, wd492
+;	set 1, [hl]
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+.SummerBeachHouseSurfinDudeDogsBurgersText
+	text_far _SummerBeachHouseSurfinDudeDogsBurgersText
+	text_end
+
+.SummerBeachHouseSurfinDudeWhoaText
+	text_far _SummerBeachHouseSurfinDudeWhoaText
+	text_end
+
+.SummerBeachHouseSurfinDudeWannaGoSurfText
+	text_far _SummerBeachHouseSurfinDudeWannaGoSurfText
+	text_end
+
+.SummerBeachHouseSurfinDudeComeAnytimeText
+	text_far _SummerBeachHouseSurfinDudeComeAnytimeText
+	text_end
+
+; pokeyellow original
 ;SummerBeachHouseSurfinDudeText:
 ;	text_asm
-;	ld a, [wd471]
+;	ld a, [wd471] ; bit 6 of wd471 is supposed to be set if there is a surfing pikachu in the party
 ;	vc_patch Bypass_need_Pikachu_with_Surf_for_minigame
 ;IF DEF (_YELLOW_VC)
 ;	bit 7, a
@@ -208,3 +255,7 @@ SummerBeachHousePoster3Text:
 ;.SummerBeachHousePrinterText4
 ;	text_far _SummerBeachHousePrinterText4
 ;	text_end
+
+SummerBeachHousePokemonSurfboardText: ; marcelnote - new text
+	text_far _SummerBeachHousePokemonSurfboardText
+	text_end
