@@ -36,7 +36,7 @@ _SummerBeachHouseSurfinDudeWannaGoSurfText::
 	done
 
 _SummerBeachHouseSurfinDudeDogsBurgersText::
-	text "Dogs and burgers"
+	text "Dogs and burgers" ; marcelnote - ramen and yakisoba in Japanese
 	line "on special today!"
 	done
 
