@@ -135,7 +135,7 @@ TryingToLearn:
 	push hl
 	ld de, wMoves
 	ld bc, NUM_MOVES
-	call CopyData
+	call CopyData ; copy bc bytes from hl to de.
 	callfar FormatMovesString
 	pop hl
 .loop
@@ -272,8 +272,7 @@ LearnAsFieldMove:
 
 	ld a, [wMoveNum]
 	ld hl, FieldMovesList ; array to search
-	ld de, $0001         ; size of array entries
-	call IsInArray ; sets carry if a is in array
+	call IsInList ; sets carry if a is in list
 	jr nc, .return_fail
 
 	ld hl, TeachFieldMoveText
