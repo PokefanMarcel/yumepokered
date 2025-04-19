@@ -20,8 +20,9 @@ WarpTileIDPointers:
 	dw .ClubWarpTileIDs
 	dw .FacilityWarpTileIDs
 	dw .PlateauWarpTileIDs
-	dw .AcademyWarpTileIDs  ; marcelnote - new tileset
-	dw .MountainWarpTileIDs ; marcelnote - new tileset
+	dw .AcademyWarpTileIDs    ; marcelnote - new tileset
+	dw .MountainWarpTileIDs   ; marcelnote - new tileset
+	dw .BeachHouseWarpTileIDs ; marcelnote - new tileset
 	assert_table_length NUM_TILESETS
 
 MACRO warp_tiles
@@ -89,4 +90,5 @@ ENDM
 	; fallthrough
 .ShipPortWarpTileIDs:
 .ForestWarpTileIDs: ; marcelnote - no need for warp tiles anymore
+.BeachHouseWarpTileIDs: ; marcelnote - new tileset from pokeyellow
 	warp_tiles ; end

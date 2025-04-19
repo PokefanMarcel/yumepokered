@@ -28,4 +28,5 @@
 	const PLATEAU      ; 23
 	const ACADEMY      ; 24 ; marcelnote - new Academy tileset
 	const MOUNTAIN     ; 25 ; marcelnote - new Mountain tileset
+	const BEACH_HOUSE  ; 24 ; marcelnote - new Beach House tileset from pokeyellow
 DEF NUM_TILESETS EQU const_value

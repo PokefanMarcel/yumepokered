@@ -322,3 +322,37 @@ IsMoveInParty::
 	pop hl
 	pop de
 	ret
+
+
+; marcelnote - new function adapted from pokeyellow
+IsSurfingPikachuInParty::
+; sets nz if Pikachu with Surf in party
+	ld a, [wPartyCount]
+	and a
+	ret z	; if party count is 0
+	ld c, a ; = party count
+	ld hl, wPartyMon1
+.loop
+	ld a, [hl]
+	cp PIKACHU
+	jr nz, .notPikachu
+	push hl
+	ld de, wPartyMon1Moves - wPartyMon1
+	add hl, de
+	ld b, NUM_MOVES
+.nextMove
+	ld a, [hli]
+	cp SURF ; does pikachu have surf as one of its moves
+	jr z, .hasSurf
+	dec b
+	jr nz, .nextMove
+	pop hl
+.notPikachu
+	ld de, wPartyMon2 - wPartyMon1
+	add hl, de
+	dec c
+	jr nz, .loop
+	ret
+.hasSurf
+	or 1 ; clear z flag
+	ret

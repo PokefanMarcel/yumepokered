@@ -68,3 +68,5 @@ SECTION "Tilesets 5", ROMX  ; marcelnote - new or moved tilesets
 
 Safari_GFX::        INCBIN "gfx/tilesets/safari.2bpp"
 Safari_Block::      INCBIN "gfx/blocksets/safari.bst"
+BeachHouse_GFX::    INCBIN "gfx/tilesets/beach_house.2bpp" ; marcelnote - new tileset from pokeyellow
+BeachHouse_Block::  INCBIN "gfx/blocksets/beach_house.bst" ; marcelnote - new tileset from pokeyellow

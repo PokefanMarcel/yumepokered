@@ -183,6 +183,7 @@ MapHeaderBanks::
 	db BANK(SafariZoneWestRestHouse_h)
 	db BANK(SafariZoneEastRestHouse_h)
 	db BANK(SafariZoneNorthRestHouse_h)
+	db BANK(SummerBeachHouse_h)         ; marcelnote - new location from pokeyellow
 	db BANK(SeafoamIslands1F_h)
 	db BANK(SeafoamIslandsB1F_h)
 	db BANK(SeafoamIslandsB2F_h)
