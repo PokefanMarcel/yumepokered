@@ -1,5 +1,5 @@
 ; marcelnote - new location from pokeyellow
-_SummerBeachHouseSurfinDudeText1::
+_SummerBeachHouseSurfinDudeWhoaText::
 	text "Whoa!"
 
 	para "Your PIKACHU knows"
@@ -13,22 +13,22 @@ _SummerBeachHouseSurfinDudeText1::
 	para "Give it a go?"
 	done
 
-_SummerBeachHouseSurfinDudeText2::
+_SummerBeachHouseSurfinDudeComeAnytimeText::
 	text "Come SURF anytime,"
 	line "my friend!"
 	done
 
-_SummerBeachHouseSurfinDudeText3::
+_SummerBeachHouseSurfinDudeWannaGoSurfText::
 	text "Wanna go SURF?"
 	done
 
-_SummerBeachHouseSurfinDudeText4::
+_SummerBeachHouseSurfinDudeDogsBurgersText::
 	text "Dogs and burgers"
 	line "on special today!"
 	done
 
 _SummerBeachHousePikachuText::
-	text "PIKACHU: Pikaa!" ; marcelnote - added !
+	text "PIKACHU: Pikaa!" ; marcelnote - added "!"
 	done
 
 _SummerBeachHousePoster1Text1::
@@ -106,3 +106,8 @@ _SummerBeachHousePrinterText5::
 _SummerBeachHousePrinterText6::
 	text "PRINT error!@"
 	text_end
+
+_SummerBeachHousePokemonSurfboardText::
+	text "It's a PIKACHU-"
+	line "sized SURFBOARD!"
+	done
