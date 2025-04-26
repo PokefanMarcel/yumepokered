@@ -162,7 +162,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const ROCKET_HIDEOUT_B2F,            15, 14
 	map_const ROCKET_HIDEOUT_B3F,            15, 14
 	map_const ROCKET_HIDEOUT_B4F,            15, 12
-	map_const ROCKET_HIDEOUT_ELEVATOR,        3,  4
+	map_const ROCKET_HIDEOUT_ELEVATOR,        2,  3 ; marcelnote - modified, was 3, 4
 	map_const CELADON_GROVE,                 22, 24 ; marcelnote - new map
 	map_const ROUTE_15_GATE,                  4, 11 ; marcelnote - merged Route15Gate floors
 	map_const ROUTE_16_GATE,                  4, 13 ; marcelnote - merged Route16Gate floors
