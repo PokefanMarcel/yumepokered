@@ -18,7 +18,7 @@ GiveItem::
 	;;;;;;;;;;
 	call AddItemToInventory
 	ret nc
-	call GetItemName
+	call GetItemName ; stores name at de -> wNameBuffer
 	call CopyToStringBuffer
 	scf
 	ret

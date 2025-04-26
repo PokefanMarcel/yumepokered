@@ -150,7 +150,7 @@ DisplayListMenuIDLoop::
 	ld [wNameListIndex], a
 	ld a, BANK(ItemNames)
 	ld [wPredefBank], a
-	call GetName
+	call GetName ; stores name in wNameBuffer
 	jr .storeChosenEntry
 .pokemonList
 	ASSERT wCurListMenuItem == wCurPartySpecies
@@ -162,7 +162,7 @@ DisplayListMenuIDLoop::
 	ld hl, wBoxMonNicks ; box pokemon names
 .getPokemonName
 	ld a, [wWhichPokemon]
-	call GetPartyMonName
+	call GetPartyMonName ; stores name in wNameBuffer
 .storeChosenEntry ; store the menu entry that the player chose and return
 	ld de, wNameBuffer
 	call CopyToStringBuffer

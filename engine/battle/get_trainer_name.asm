@@ -16,7 +16,7 @@ GetTrainerName_::
 	ld [wNameListType], a
 	ld a, BANK(TrainerNames)
 	ld [wPredefBank], a
-	call GetName
+	call GetName ; stores name in wNameBuffer
 	ld hl, wNameBuffer
 .foundName
 	ld de, wTrainerName
