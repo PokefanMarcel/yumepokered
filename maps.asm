@@ -13,7 +13,6 @@ INCLUDE "data/maps/objects/ViridianCity.asm"
 ViridianCity_Blocks: INCBIN "maps/ViridianCity.blk"
 
 INCLUDE "data/maps/headers/PewterCity.asm"
-	ds 1
 INCLUDE "data/maps/objects/PewterCity.asm"
 PewterCity_Blocks: INCBIN "maps/PewterCity.blk"
 
@@ -123,7 +122,6 @@ INCLUDE "scripts/ViridianSchoolHouse.asm"
 INCLUDE "data/maps/objects/ViridianSchoolHouse.asm"
 
 INCLUDE "data/maps/headers/ViridianNicknameHouse.asm"
-	ds 1
 INCLUDE "scripts/ViridianNicknameHouse.asm"
 INCLUDE "data/maps/objects/ViridianNicknameHouse.asm"
 
