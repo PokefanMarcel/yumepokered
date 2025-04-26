@@ -737,8 +737,6 @@ INCLUDE "data/maps/headers/Route18.asm"
 INCLUDE "data/maps/objects/Route18.asm"
 Route18_Blocks: INCBIN "maps/Route18.blk"
 
-	INCBIN "maps/UnusedPokecenterCopy.blk"
-
 
 SECTION "Maps 14", ROMX
 
@@ -903,8 +901,6 @@ ViridianForest_Blocks: INCBIN "maps/ViridianForest.blk"
 UndergroundPathNorthSouth_Blocks: INCBIN "maps/UndergroundPathNorthSouth.blk"
 UndergroundPathWestEast_Blocks: INCBIN "maps/UndergroundPathWestEast.blk"
 
-	INCBIN "maps/UnusedDiglettsCaveCopy.blk"
-
 SSAnne2FRooms_Blocks: INCBIN "maps/SSAnne2FRooms.blk" ; marcelnote - added bunk beds
 
 INCLUDE "data/maps/headers/PokemonTower1F.asm"
@@ -936,8 +932,6 @@ INCLUDE "data/maps/headers/PokemonTower6F.asm"
 INCLUDE "scripts/PokemonTower6F.asm"
 INCLUDE "data/maps/objects/PokemonTower6F.asm"
 PokemonTower6F_Blocks: INCBIN "maps/PokemonTower6F.blk"
-
-	INCBIN "maps/UnusedEmptyMap.blk"
 
 INCLUDE "data/maps/headers/PokemonTower7F.asm"
 INCLUDE "scripts/PokemonTower7F.asm"
