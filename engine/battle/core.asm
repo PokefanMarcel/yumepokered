@@ -5896,7 +5896,7 @@ EnemyCanExecuteChargingMove:
 	ld [wPredefBank], a
 	ld a, MOVE_NAME
 	ld [wNameListType], a
-	call GetName
+	call GetName ; stores name in wNameBuffer
 	ld de, wNameBuffer
 	call CopyToStringBuffer
 EnemyCanExecuteMove:
@@ -6379,7 +6379,7 @@ GetCurrentMove:
 	ld [wPredefBank], a
 	ld a, MOVE_NAME
 	ld [wNameListType], a
-	call GetName
+	call GetName ; stores name in wNameBuffer
 	ld de, wNameBuffer
 	jp CopyToStringBuffer
 

@@ -13,7 +13,7 @@ FormatMovesString:
 	ld [wPredefBank], a
 	ld a, MOVE_NAME
 	ld [wNameListType], a
-	call GetName
+	call GetName ; stores name in wNameBuffer
 	ld hl, wNameBuffer
 .copyNameLoop
 	ld a, [hli]

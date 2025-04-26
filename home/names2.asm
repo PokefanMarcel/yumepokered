@@ -14,7 +14,7 @@ GetName::
 ; [wNameListType] = which list
 ; [wPredefBank] = bank of list
 ;
-; returns pointer to name in de
+; stores name in wNameBuffer
 	ld a, [wNameListIndex]
 	ld [wNamedObjectIndex], a
 
@@ -36,15 +36,15 @@ GetName::
 	push de
 	ld a, [wNameListType]
 	dec a
-	jr nz, .otherEntries
+	jr nz, .notMonsterName
 	; 1 = MONSTER_NAME
 	call GetMonName
-	ld hl, NAME_LENGTH
-	add hl, de
-	ld e, l
-	ld d, h
-	jr .gotPtr
-.otherEntries
+	;ld hl, NAME_LENGTH
+	;add hl, de
+	;ld e, l
+	;ld d, h
+	jr .finish
+.notMonsterName
 	; 2-7 = other names
 	ld a, [wPredefBank]
 	ldh [hLoadedROMBank], a
@@ -86,7 +86,7 @@ GetName::
 	ld de, wNameBuffer
 	ld bc, NAME_BUFFER_LENGTH
 	call CopyData
-.gotPtr
+.finish
 	;ld a, e
 	;ld [wUnusedNamePointer], a
 	;ld a, d
@@ -98,3 +98,58 @@ GetName::
 	ldh [hLoadedROMBank], a
 	ld [MBC1RomBank], a
 	ret
+
+
+GetMachineName::
+; copies the name of the TM/HM in [wNamedObjectIndex] to wNameBuffer
+	push hl
+	push de
+	push bc
+	ld a, [wNamedObjectIndex]
+	push af
+	cp TM01 ; is this a TM? [not HM]
+	ld hl, TechnicalPrefix ; points to "TM"
+	jr nc, .WriteMachinePrefix
+; if HM, then write "HM" and add NUM_HMS to the item ID,
+; so we can reuse the TM printing code
+	add NUM_HMS
+	ld [wNamedObjectIndex], a
+	ld hl, HiddenPrefix ; points to "HM"
+.WriteMachinePrefix
+	ld bc, 2
+	ld de, wNameBuffer
+	call CopyData
+
+; now get the machine number and convert it to text
+	ld a, [wNamedObjectIndex]
+	sub TM01 - 1
+	ld b, "0"
+.FirstDigit
+	sub 10
+	jr c, .SecondDigit
+	inc b
+	jr .FirstDigit
+.SecondDigit
+	add 10 ; a is equal to second digit of TM name
+	push af ; save a
+	ld a, b ; first digit
+	ld [de], a ; write first digit in wNameBuffer after "TM" or "HM"
+	inc de
+	pop af
+	ld b, "0"
+	add b
+	ld [de], a
+	inc de
+	ld a, "@"
+	ld [de], a
+	pop af
+	ld [wNamedObjectIndex], a
+	pop bc
+	pop de
+	pop hl
+	ret
+
+TechnicalPrefix::
+	db "TM"
+HiddenPrefix::
+	db "HM"

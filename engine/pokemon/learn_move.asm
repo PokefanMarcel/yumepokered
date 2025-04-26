@@ -2,7 +2,7 @@ LearnMove:
 	call SaveScreenTilesToBuffer1
 	ld a, [wWhichPokemon]
 	ld hl, wPartyMonNicks
-	call GetPartyMonName
+	call GetPartyMonName ; stores name in wNameBuffer
 	ld hl, wNameBuffer
 	ld de, wLearnMoveMonName
 	ld bc, NAME_LENGTH

@@ -142,11 +142,11 @@ Evolution_PartyMonLoop: ; loop over party mons
 	ld [wEvoNewSpecies], a  ; marcelnote - this two line seems redundant because already loaded above
 	ld a, MONSTER_NAME
 	ld [wNameListType], a
-	ld a, BANK(TrainerNames) ; bank is not used for monster names
+	ld a, BANK(MonsterNames) ; bank is not used for monster names ; marcelnote - changed from TrainerNames
 	ld [wPredefBank], a
-	call GetName
+	call GetName ; stores name in wNameBuffer for IntoText
 	push hl
-	ld hl, IntoText
+	ld hl, IntoText ; uses wNameBuffer
 	call PrintText_NoCreatingTextBox
 	ld a, SFX_GET_ITEM_2
 	call PlaySoundWaitForCurrent
@@ -267,7 +267,7 @@ RenameEvolvedMon:
 	push af
 	ld a, [wMonHIndex]
 	ld [wNameListIndex], a
-	call GetName
+	call GetName ; stores name in wNameBuffer
 	pop af
 	ld [wCurSpecies], a
 	ld hl, wNameBuffer
@@ -285,7 +285,7 @@ RenameEvolvedMon:
 	ld hl, wPartyMonNicks
 	call AddNTimes
 	push hl
-	call GetName
+	call GetName ; stores name in wNameBuffer
 	ld hl, wNameBuffer
 	pop de
 	jp CopyData
