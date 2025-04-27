@@ -31,6 +31,7 @@ BluesAidesHouses_TextPointers:
 	dw_const BluesHouseDaisyWalkingText,         TEXT_BLUESHOUSE_DAISY_WALKING
 	dw_const AidesHouseMiddleAgedWomanText,      TEXT_AIDESHOUSE_MIDDLE_AGED_WOMAN ; marcelnote - new Pallet house
 	dw_const BluesHouseTownMapText,              TEXT_BLUESHOUSE_TOWN_MAP
+	dw_const AidesHouseMemoText,                 TEXT_AIDESHOUSE_MEMO ; marcelnote - new Pallet house
 
 BluesHouseDaisySittingText: ; marcelnote - optimized
 	text_asm
@@ -103,3 +104,7 @@ AidesHouseMiddleAgedWomanText: ; marcelnote - new Pallet house
 ;TakeThisRareCandyText:
 ;	text_far _TakeThisRareCandyText
 ;	text_end
+
+AidesHouseMemoText: ; marcelnote - new Pallet house
+	text_far _AidesHouseMemoText
+	text_end

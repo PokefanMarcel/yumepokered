@@ -57,3 +57,16 @@ _AidesHouseMiddleAgedWomanText:: ; marcelnote - new Pallet house
 ;_TakeThisRareCandyText:: ; marcelnote - make woman give rare candy
 ;	text "Take this!"
 ;	done
+
+_AidesHouseMemoText:: ; marcelnote - new Pallet house
+	text "Un mémo écrit par"
+	line "l'ASSISTANT du"
+	line "PROF. CHEN."
+
+	para "..."
+
+	para "Aide aux dresseurs"
+	line "sur ROUTE 2,"
+	cont "ROUTE 11,"
+	cont "ROUTE 15."
+	done

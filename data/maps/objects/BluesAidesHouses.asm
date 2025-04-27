@@ -4,6 +4,7 @@
 	const_export BLUESHOUSE_DAISY2
 	const_export AIDESHOUSE_MIDDLE_AGED_WOMAN ; marcelnote - new Pallet house
 	const_export BLUESHOUSE_TOWN_MAP
+	const_export AIDESHOUSE_MEMO ; marcelnote - new Pallet house
 
 BluesAidesHouses_Object:
 	db $a ; border block
@@ -23,5 +24,6 @@ BluesAidesHouses_Object:
 	object_event  6,  4, SPRITE_DAISY, WALK, UP_DOWN, TEXT_BLUESHOUSE_DAISY_WALKING, 0
 	object_event 18,  3, SPRITE_MIDDLE_AGED_WOMAN, STAY, RIGHT, TEXT_AIDESHOUSE_MIDDLE_AGED_WOMAN, 0 ; marcelnote - new Pallet house
 	object_event  3,  3, SPRITE_POKEDEX, STAY, NONE, TEXT_BLUESHOUSE_TOWN_MAP, 0
+	object_event 20,  4, SPRITE_PAPER, STAY, NONE, TEXT_AIDESHOUSE_MEMO, 0 ; marcelnote - new Pallet house
 
 	def_warps_to BLUES_AIDES_HOUSES

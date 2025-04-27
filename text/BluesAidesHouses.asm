@@ -55,3 +55,15 @@ _AidesHouseMiddleAgedWomanText:: ; marcelnote - new Pallet house
 ;_TakeThisRareCandyText:: ; marcelnote - make woman give rare candy
 ;	text "Take this!"
 ;	done
+
+_AidesHouseMemoText:: ; marcelnote - new Pallet house
+	text "It's a memo from"
+	line "PROF.OAK's AIDE."
+
+	para "..."
+
+	para "Assist trainers at"
+	line "ROUTE 2,"
+	cont "ROUTE 11,"
+	cont "ROUTE 15."
+	done
