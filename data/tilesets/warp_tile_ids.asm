@@ -53,7 +53,7 @@ ENDM
 	warp_tiles $4A
 
 .HouseWarpTileIDs:
-	warp_tiles $54, $5C, $32
+	warp_tiles $54 ; marcelnote - removed unused stairs $5C, $32
 
 .ShipWarpTileIDs:
 	warp_tiles $37, $39, $1E, $4A
