@@ -74,7 +74,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const VIRIDIAN_FOREST,               17, 24
 	map_const VIRIDIAN_FOREST_NORTH_GATE,     5,  4
 	map_const ROUTE_2_TRADE_HOUSE,            4,  4
-	map_const DIGLETTS_CAVE_ROUTE_2,          4,  4
+	map_const DIGLETTS_CAVE_ROUTE_2,          3,  3 ; marcelnote - was 4, 4
 	map_const PEWTER_POKECENTER_MART,        14,  4 ; marcelnote - merged Pewter Pokecenter and Mart
 	map_const PEWTER_MUSEUM,                 10, 10 ; marcelnote - merged Pewter Museum floors
 	map_const PEWTER_NIDORAN_HOUSE,           4,  4
@@ -124,7 +124,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const SS_ANNE_1F_ROOMS,              32,  3 ; marcelnote - reorganized, added nurse room ; merge?
 	map_const SS_ANNE_2F_ROOMS,              12,  8 ; merge?
 	map_const DIGLETTS_CAVE,                 20, 18
-	map_const DIGLETTS_CAVE_ROUTE_11,         4,  4
+	map_const DIGLETTS_CAVE_ROUTE_11,         3,  3 ; marcelnote - was 4, 4
 	map_const ROUTE_11_GATE,                  4, 11 ; marcelnote - merged Route11Gate floors
 	map_const ROCK_TUNNEL_POKECENTER,         7,  4
 	map_const ROCK_TUNNEL_1F,                20, 18
