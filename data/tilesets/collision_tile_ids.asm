@@ -27,7 +27,7 @@ Safari_Coll:: ; marcelnote - new tileset from FOREST
 	coll_tiles $1e, $20, $2e, $30, $34, $37, $39, $3a, $40, $51, $52, $5a, $5c, $5e, $5f
 
 House_Coll::
-	coll_tiles $01, $12, $14, $28, $32, $37, $44, $54, $5c
+	coll_tiles $01, $12, $14, $28, $37, $44, $54 ; marcelnote - removed unused stairs $32, $5c
 
 Gate_Coll::
 	coll_tiles $01, $12, $14, $1a, $1c, $37, $38, $3b, $3c, $5e
