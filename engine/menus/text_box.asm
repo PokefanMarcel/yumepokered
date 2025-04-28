@@ -576,15 +576,12 @@ GetMonFieldMoves: ; marcelnote - modified for temporary field moves, from shinpo
 	ld hl, wTempFieldMoves
 	add hl, bc
 
-	; marcelnote - without this there will be duplicate entries if a Mon
-	; knows a move both as normal and field move
-	; to fix this check how shinpokered modified the CheckIfMoveIsKnown function
-	;push hl
-	;ld a, [hl]
-	;ld [wMoveNum], a
-	;callfar CheckIfMoveIsKnown ; maybe move has already been counted if Mon knows it as a battle move
-	;pop hl
-	;jr c, .done
+	push hl
+	ld a, [hl]
+	ld [wMoveNum], a
+	callfar CheckIfMoveIsKnown ; maybe move has already been counted if Mon knows it as a battle move
+	pop hl
+	jr c, .done
 
 	ld a, [hl]
 	ld b, a ; a = temporary field move
