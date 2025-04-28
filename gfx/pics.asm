@@ -198,6 +198,8 @@ KakunaPicFront::      INCBIN "gfx/pokemon/front/kakuna.pic"
 KakunaPicBack::       INCBIN "gfx/pokemon/back/kakunab.pic"
 BeedrillPicFront::    INCBIN "gfx/pokemon/front/beedrill.pic"
 BeedrillPicBack::     INCBIN "gfx/pokemon/back/beedrillb.pic"
+MewPicFront::         INCBIN "gfx/pokemon/front/mew.pic"
+MewPicBack::          INCBIN "gfx/pokemon/back/mewb.pic"
 
 
 SECTION "Pics 4", ROMX
