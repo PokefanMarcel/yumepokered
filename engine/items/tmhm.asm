@@ -16,11 +16,5 @@ CheckIfMoveIsKnown:: ; marcelnote - can now be used with callfar
 	and a
 	ret
 .alreadyKnown
-	ld hl, AlreadyKnowsText
-	call PrintText
 	scf
 	ret
-
-AlreadyKnowsText:
-	text_far _AlreadyKnowsText
-	text_end

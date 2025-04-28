@@ -2299,7 +2299,11 @@ ItemUseTMHM:
 	jr .chooseMon
 .checkIfAlreadyLearnedMove
 	callfar CheckIfMoveIsKnown ; check if the pokemon already knows the move
-	jr c, .chooseMon
+	jr nc, .learnMove
+	ld hl, AlreadyKnowsText
+	call PrintText
+	jr .chooseMon
+.learnMove
 	predef LearnMove ; teach move
 	pop af
 	ld [wCurItem], a
@@ -2330,6 +2334,10 @@ TeachMachineMoveText:
 
 MonCannotLearnMachineMoveText:
 	text_far _MonCannotLearnMachineMoveText
+	text_end
+
+AlreadyKnowsText:
+	text_far _AlreadyKnowsText
 	text_end
 
 PrintItemUseTextAndRemoveItem:
