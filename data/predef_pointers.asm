@@ -108,6 +108,5 @@ PredefPointers::
 	add_predef PrintMoveType
 	add_predef LoadMovePPs
 	add_predef DrawHP
-	add_predef DrawHP2
 	add_predef DisplayElevatorFloorMenu
 	add_predef OaksAideScript

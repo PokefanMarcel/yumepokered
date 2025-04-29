@@ -73,7 +73,9 @@ RedrawPartyMenu_::
 	set BIT_PARTY_MENU_HP_BAR, a
 	ldh [hUILayoutFlags], a
 	add hl, bc
-	predef DrawHP2 ; draw HP bar and prints current / max HP
+	xor a ; no vertical bar on right tip
+	ld [wHPBarType], a
+	predef DrawHP ; draw HP bar and prints current / max HP
 	ldh a, [hUILayoutFlags]
 	res BIT_PARTY_MENU_HP_BAR, a
 	ldh [hUILayoutFlags], a

@@ -1900,6 +1900,8 @@ DrawPlayerHUDAndHPBar:
 .doNotPrintLevel
 	ld a, [wLoadedMonSpecies]
 	ld [wCurPartySpecies], a
+	ld a, $1 ; vertical bar on right tip
+	ld [wHPBarType], a
 	hlcoord 10, 9
 	predef DrawHP
 	ld a, $1
@@ -2011,7 +2013,7 @@ DrawEnemyHUDAndHPBar:
 	ld d, a
 	ld c, a
 .drawHPBar
-	xor a
+	xor a ; no vertical bar on right tip
 	ld [wHPBarType], a
 	hlcoord 2, 2
 	call DrawHPBar
