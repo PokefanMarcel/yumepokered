@@ -1,68 +1,3 @@
-DrawHP:
-; Draws the HP bar in the stats screen
-	call GetPredefRegisters
-	ld a, $1
-	jr DrawHP_
-
-DrawHP2:
-; Draws the HP bar in the party screen
-	call GetPredefRegisters
-	ld a, $2
-
-DrawHP_:
-	ld [wHPBarType], a
-	push hl
-	ld a, [wLoadedMonHP]
-	ld b, a
-	ld a, [wLoadedMonHP + 1]
-	ld c, a
-	or b
-	jr nz, .nonzeroHP
-	xor a
-	ld c, a
-	ld e, a
-	ld a, $6
-	ld d, a
-	jp .drawHPBarAndPrintFraction
-.nonzeroHP
-	ld a, [wLoadedMonMaxHP]
-	ld d, a
-	ld a, [wLoadedMonMaxHP + 1]
-	ld e, a
-	predef HPBarLength
-	ld a, $6
-	ld d, a
-	ld c, a
-.drawHPBarAndPrintFraction
-	pop hl
-	push de
-	push hl
-	push hl
-	call DrawHPBar
-	pop hl
-	ldh a, [hUILayoutFlags]
-	bit BIT_PARTY_MENU_HP_BAR, a
-	jr z, .printFractionBelowBar
-	ld bc, $9 ; right of bar
-	jr .printFraction
-.printFractionBelowBar
-	ld bc, SCREEN_WIDTH + 1 ; below bar
-.printFraction
-	add hl, bc
-	ld de, wLoadedMonHP
-	lb bc, 2, 3
-	call PrintNumber
-	ld a, "/"
-	ld [hli], a
-	ld de, wLoadedMonMaxHP
-	lb bc, 2, 3
-	call PrintNumber
-	pop hl
-	pop de
-	ret
-
-
-; Predef 0x37
 StatusScreen:
 	call LoadMonData
 	ld a, [wMonDataLocation]
@@ -104,12 +39,6 @@ StatusScreen:
 	hlcoord 10, 9
 	ld de, Type1Text
 	call PlaceString ; "TYPE1/"
-	hlcoord 11, 3
-	predef DrawHP
-	ld hl, wStatusScreenHPBarColor
-	call GetHealthBarColor
-	ld b, SET_PAL_STATUS_SCREEN
-	call RunPaletteCommand
 	hlcoord 16, 6
 	ld de, wLoadedMonStatus
 	call PrintStatusCondition
@@ -139,6 +68,14 @@ StatusScreen:
 	ld e, l
 	hlcoord 9, 1
 	call PlaceString ; Pokémon name
+	xor a ; no vertical bar on right tip
+	ld [wHPBarType], a
+	hlcoord 10, 3
+	predef DrawHP
+	ld hl, wStatusScreenHPBarColor
+	call GetHealthBarColor
+	ld b, SET_PAL_STATUS_SCREEN
+	call RunPaletteCommand ; Pokémon HP bar
 	ld hl, OTPointers
 	call .GetStringPointer
 	ld d, h
@@ -449,6 +386,62 @@ CalcExpToLevelUp:
 StatusScreenExpText:
 	db   "EXP POINTS"
 	next "LEVEL UP@"
+
+DrawHP:
+; Draws the HP bar in the stats screen, party screen, and battle screen
+	call GetPredefRegisters
+	;ld a, $2
+	;ld [wHPBarType], a
+	push hl
+	ld a, [wLoadedMonHP]
+	ld b, a
+	ld a, [wLoadedMonHP + 1]
+	ld c, a
+	or b
+	jr nz, .nonzeroHP
+	xor a
+	ld c, a
+	ld e, a
+	ld a, $6
+	ld d, a
+	jp .drawHPBarAndPrintFraction
+.nonzeroHP
+	ld a, [wLoadedMonMaxHP]
+	ld d, a
+	ld a, [wLoadedMonMaxHP + 1]
+	ld e, a
+	predef HPBarLength
+	ld a, $6
+	ld d, a
+	ld c, a
+.drawHPBarAndPrintFraction
+	pop hl
+	push de
+	push hl
+	push hl
+	call DrawHPBar ; [wHPBarType] set before calling DrawHP
+	pop hl
+	ldh a, [hUILayoutFlags]
+	bit BIT_PARTY_MENU_HP_BAR, a
+	jr z, .printFractionBelowBar
+	ld bc, $9 ; right of bar
+	jr .printFraction
+.printFractionBelowBar
+	ld bc, SCREEN_WIDTH + 1 ; below bar
+.printFraction
+	add hl, bc
+	ld de, wLoadedMonHP
+	lb bc, 2, 3
+	call PrintNumber
+	ld a, "/"
+	ld [hli], a
+	ld de, wLoadedMonMaxHP
+	lb bc, 2, 3
+	call PrintNumber
+	pop hl
+	pop de
+	ret
+
 
 StatusScreen_ClearName:
 	ld bc, 10
