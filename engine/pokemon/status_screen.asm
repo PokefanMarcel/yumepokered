@@ -146,7 +146,7 @@ StatusScreenStatsPage:
 
 ;.checkIfLastMon
 ;	ld a, [wWhichPokemon]
-;	cp 5 ; here need to account for team size, or number of Mons in box...
+;	cp 5 ; here need to account for team size wPartyCount, or number of Mons in box...
 ;	jr z, .waitButtonPress
 ;	inc a
 ;	ld [wWhichPokemon], a
