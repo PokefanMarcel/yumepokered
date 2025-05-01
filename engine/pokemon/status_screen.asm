@@ -41,15 +41,6 @@ StatusScreen:
 	ld [hl], "№"
 	inc hl
 	ld [hl], "<DOT>"
-
-	ld a, [wMonHIndex]
-	ld [wPokedexNum], a
-	ld [wCurSpecies], a
-	predef IndexToPokedex
-	hlcoord 4, 7
-	ld de, wPokedexNum
-	lb bc, LEADING_ZEROES | 1, 3
-	call PrintNumber ; Pokémon no.
 	; fallthrough
 
 
@@ -58,6 +49,17 @@ StatusScreenStatsPage:
 	hlcoord 19, 0
 	ld a, "▶"
 	ld [hl], a
+
+	; this could in principle be outside, but for some reason doing this bugs the Pokemon species and exp
+	; maybe something reuses the modified wPokedexNum later
+	ld a, [wMonHIndex]
+	ld [wPokedexNum], a
+	ld [wCurSpecies], a ; commenting this line out triggers the bug
+	predef IndexToPokedex
+	hlcoord 4, 7
+	ld de, wPokedexNum
+	lb bc, LEADING_ZEROES | 1, 3
+	call PrintNumber ; Pokémon no.
 
 	ld hl, NamePointers2
 	call .GetStringPointer
@@ -479,7 +481,7 @@ DrawHP:
 	ld c, a
 .drawHPBarAndPrintFraction
 	;pop hl
-	;push de
+	push de
 	;push hl
 	push hl
 	call DrawHPBar ; [wHPBarType] set before calling DrawHP
@@ -502,7 +504,7 @@ DrawHP:
 	lb bc, 2, 3
 	call PrintNumber
 	;pop hl
-	;pop de
+	pop de ; e is used to determine bar color in SGB
 	ret
 
 
