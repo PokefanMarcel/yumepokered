@@ -78,6 +78,7 @@ DEF NUM_BADGES EQU const_value
 	const_def
 	const BIT_WILD_ENCOUNTER_COOLDOWN ; 0
 	const BIT_NO_AUDIO_FADE_OUT       ; 1
+	const BIT_PLAYED_CRY              ; 2 ; marcelnote - Pokémon cry has been played in status screen
 
 ; wStatusFlags3
 	const_def

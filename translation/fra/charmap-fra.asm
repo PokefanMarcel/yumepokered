@@ -77,7 +77,7 @@
 	charmap "<BOLD_P>", $74 ; Japanese opening quote, unused ; marcelnote - bold P tutorial
 	charmap "<ID>",     $75
 	charmap "№",        $76
-	charmap "<to>",     $77 ; narrow "to"
+	;charmap "<to>",     $77 ; marcelnote - was narrow "to", now unused
 
 	; loaded in battle (from gfx/battle/battle_hud.png)
 	charmap "<LEFT_CORNER>",    $74 ; HUD lower-left corner tile
@@ -213,6 +213,7 @@
 	charmap "▷",         $ec
 	charmap "▶",         $ed
 	charmap "▼",         $ee
+	charmap "◀",         $ef ; marcelnote - duplicate for now
 	charmap "♂",         $ef
 	charmap "¥",         $f0
 	charmap "×",         $f1

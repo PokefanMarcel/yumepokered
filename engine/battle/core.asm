@@ -2449,9 +2449,8 @@ PartyMenuOrRockOrRun:
 	ld [wMonDataLocation], a
 	ld hl, wPartyMon1
 	call ClearSprites
-; display the two status screens
+; display the status screen
 	predef StatusScreen
-	predef StatusScreen2
 ; now we need to reload the enemy mon pic
 	ld a, 1                ; marcelnote - these two lines fix a visual bug
 	ldh [hWhoseTurn], a    ;              with Minimize and Substitute (pokered Wiki)
