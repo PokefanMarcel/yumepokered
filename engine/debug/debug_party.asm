@@ -187,6 +187,9 @@ DebugNewGameItemsList: ; marcelnote - moved some to key items pocket
 	;db CARD_KEY, 1
 	;db S_S_TICKET, 1
 	;db LIFT_KEY, 1
+	db TM_TELEPORT, 1
+	db TM_DIG, 1
+	db TM_SOFTBOILED, 1
 	db -1 ; end
 
 DebugKeyItemsList:    ; marcelnote - new for Key Items pocket
@@ -203,10 +206,10 @@ DebugKeyItemsList:    ; marcelnote - new for Key Items pocket
 	db CITRUS_PASS, 1 ; marcelnote - added
 	;db SURFBOARD, 1 ; marcelnote - added
 	db HM_CUT, 1 ; marcelnote - added
-	;db HM_FLY, 1 ; marcelnote - added
-	;db HM_SURF, 1 ; marcelnote - added
-	;db HM_STRENGTH, 1 ; marcelnote - added
-	;db HM_FLASH, 1 ; marcelnote - added
+	db HM_FLY, 1 ; marcelnote - added
+	db HM_SURF, 1 ; marcelnote - added
+	db HM_STRENGTH, 1 ; marcelnote - added
+	db HM_FLASH, 1 ; marcelnote - added
 	db -1 ; end
 
 ;DebugUnusedList:
