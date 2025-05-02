@@ -28,13 +28,13 @@ HandleLedges::
 	ld a, [hli]
 	cp $ff
 	ret z
-	cp b
+	cp b ; b = facing direction
 	jr nz, .nextLedgeTile1
 	ld a, [hli]
-	cp c
+	cp c ; c = tile player standing on
 	jr nz, .nextLedgeTile2
 	ld a, [hli]
-	cp d
+	cp d ; d =  tile in front of player
 	jr nz, .nextLedgeTile3
 	ld a, [hl]
 	ld e, a
