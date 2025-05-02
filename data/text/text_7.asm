@@ -239,16 +239,20 @@ _WantToStrengthText::
 	done
 
 _TeachFieldMoveText:: ; marcelnote - for temporary field moves, adapted from shinpokered
-	text "Teach it for use"
+	;text "Teach it for use"
+	;line "outside battle?"
+	text "Teach as a SKILL"
 	line "outside battle?"
 	done
 
 _AlreadyKnowsFieldMoveText:: ; marcelnote - for temporary field moves, adapted from shinpokered
+	;text "This #MON knows"
+	;line "an outside-battle"
+	;cont "move already!"
 	text "This #MON knows"
-	line "an outside-battle"
-	cont "move already!"
+	line "a SKILL already!"
 
 	para "To teach it a new"
-	line "move, store it in"
+	line "one, store it in"
 	cont "the PC first."
 	prompt

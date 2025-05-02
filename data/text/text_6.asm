@@ -172,7 +172,7 @@ _BootedUpHMText::
 	prompt
 
 _TeachMachineMoveText::
-	text "It contained"
+	text "It contained" ; marcelnote - this could be removed when TM names show when hovering
 	line "@"
 	text_ram wStringBuffer
 	text "!"
