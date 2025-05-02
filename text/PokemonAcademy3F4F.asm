@@ -11,9 +11,9 @@ _PokemonAcademy3FTeacherPresentationText::
 	cont "about #MON."
 	prompt
 
-_PokemonAcademy3FTeacherComeBackToSeeMeText::
-	text "Come back to see"
-	line "me after you"
+_PokemonAcademy3FTeacherComeBackAfterJuniorText::
+	text "You should come"
+	line "back after you"
 	cont "have passed the"
 	cont "Junior test."
 	done
@@ -92,18 +92,36 @@ _PokemonAcademy3FTeacherWrongAnswerText::
 	line "a wrong answer!"
 	prompt
 
-_PokemonAcademy3FTeacherWellDoneText::
+_PokemonAcademy3FTeacherCongratulationsText::
 	text "Congratulations!"
 	line "You passed the"
 	cont "Senior test!"
 
-	para "We have nothing"
-	line "else to teach"
-	cont "you for now."
-	cont "Come back anytime"
-	cont "to brush up on"
+	para "From now on, you'll"
+	line "be able to notice"
+	cont "extra info about"
+	cont "your #MON."
+
+	para "Take a look at"
+	line "their STATS page!"
+	done
+
+_PokemonAcademy3FTeacherComeBackAnytimeText::
+	;text "We have nothing"
+	;line "else to teach"
+	;cont "you for now."
+	text "Come back anytime"
+	line "to brush up on"
 	cont "your #MON"
 	cont "knowledge!"
+
+	para "If you have time,"
+	line "head upstairs to"
+	cont "meet the dean."
+
+	para "She's always eager"
+	line "to meet talented"
+	cont "students."
 	done
 
 _PokemonAcademy3FComeBackWhenReadyText::

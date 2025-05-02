@@ -27,19 +27,19 @@ PokemonAcademy3F4F_TextPointers:
 PokemonAcademy3FTeacherText:
 	text_asm
 	CheckEvent EVENT_PASSED_SENIOR_TEST
-    jr nz, .passed
+    jp nz, .passed
 	ld hl, .Presentation
 	call PrintText
 	CheckEvent EVENT_PASSED_JUNIOR_TEST
-	ld hl, .ComeBackToSeeMe
-    jr z, .print_text
+	ld hl, .ComeBackAfterJunior
+    jp z, .print_text
 	ld hl, .DoYouWantToTakeTheTest
 	call PrintText
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
 	jr nz, .refused
-	ld hl, .Question1
+	ld hl, .Question1 ; this could be a loop, but need QuestionPointers and AnswerPointers
 	call PrintText
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
@@ -73,8 +73,13 @@ PokemonAcademy3FTeacherText:
 	ld a, SFX_GET_ITEM_1
 	call PlaySound
 	call WaitForSoundToFinish
+	ld hl, .Congratulations
+    call PrintText
+   	ld a, SFX_GET_ITEM_2
+   	call PlaySound
+   	call WaitForSoundToFinish
 .passed
-	ld hl, .WellDone
+	ld hl, .ComeBackAnytime
     jr .print_text
 .fail
 	ld a, SFX_DENIED
@@ -92,8 +97,8 @@ PokemonAcademy3FTeacherText:
 	text_far _PokemonAcademy3FTeacherPresentationText
 	text_end
 
-.ComeBackToSeeMe
-	text_far _PokemonAcademy3FTeacherComeBackToSeeMeText
+.ComeBackAfterJunior
+	text_far _PokemonAcademy3FTeacherComeBackAfterJuniorText
 	text_end
 
 .DoYouWantToTakeTheTest
@@ -124,8 +129,12 @@ PokemonAcademy3FTeacherText:
 	text_far _PokemonAcademy3FTeacherWrongAnswerText
 	text_end
 
-.WellDone
-	text_far _PokemonAcademy3FTeacherWellDoneText
+.Congratulations
+	text_far _PokemonAcademy3FTeacherCongratulationsText
+	text_end
+
+.ComeBackAnytime
+	text_far _PokemonAcademy3FTeacherComeBackAnytimeText
 	text_end
 
 .ComeBackWhenReady
