@@ -8,7 +8,6 @@ StatusScreen:
 	;call ClearScreen
 	;call UpdateSprites
 	;call LoadHpBarAndStatusTilePatterns ; marcelnote - reorganized Battle HUD tiles, no need to load tiles here anymore
-	call LoadStatusScreenTilePatterns
 	ldh a, [hTileAnimations]
 	push af
 	xor a
@@ -659,7 +658,7 @@ PlaceShowStartAndStatsGraphics:
 	call PlaceString ; "SHOW/"
 
 	hlcoord 16, 16
-	ld a, $d0 ; "<START>"
+	ld a, "<ST>" ; left of [START▶] button
 	ld b, 3 ; 3 tiles long
 .loop
 	ld [hli], a

@@ -15,9 +15,6 @@ BattleHudTilesEnd:
 NamingScreenTiles: INCBIN "gfx/font/naming_screen.1bpp" ; marcelnote - reorganized Naming screen tiles
 NamingScreenTilesEnd:
 
-StatusScreenGraphics:: INCBIN "gfx/font/status_screen.2bpp" ; marcelnote - new gfx for status screen
-StatusScreenGraphicsEnd::
-
 NintendoCopyrightLogoGraphics: INCBIN "gfx/splash/copyright.2bpp"
 
 GameFreakLogoGraphics: INCBIN "gfx/title/gamefreak_inc.2bpp"

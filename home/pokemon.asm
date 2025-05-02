@@ -25,9 +25,9 @@ DrawHPBar::
 	; Right
 	ld a, [wHPBarType]
 	dec a
-	ld a, $6e ; HP bar tip with vertical bar ; for player Mon in battle
+	ld a, "<HUD_VERTI_BAR_HP_TIP>" ; HP bar tip with vertical bar ; for player Mon in battle
 	jr z, .got_rightmost_tile
-	dec a ; a = $6d, HP bar tip without vertical bar ; for pokemon menu, status screen, and for enemy Mon in battle
+	ld a, $6d ; HP bar tip without vertical bar ; for pokemon menu, status screen, and for enemy Mon in battle
 .got_rightmost_tile
 	ld [hl], a
 
