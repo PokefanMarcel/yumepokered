@@ -88,6 +88,7 @@
 	charmap "<RIGHT_TRIANGLE>",        $75 ; HUD lower-right triangle tile
 	charmap "<RIGHT_EXP_BAR>",         $76 ; HUD right side of Exp bar
 	charmap "<HUD_VERTI_BAR_HP_TIP>",  $77 ; HUD vertical bar tile
+	;charmap "",                       $78 ; space for one more
 
 	; loaded in naming screem (see engine/menus/naming_screen.asm, from gfx/font/naming_screen.png)
 	charmap "<ED>",                $74

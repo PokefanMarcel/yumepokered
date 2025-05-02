@@ -3077,7 +3077,7 @@ PrintMenuItem: ; marcelnote - this menu was revamped to also show power and accu
 	jp Delay3
 
 DisabledText:
-	db "disabled@" ; marcelnote - was "disabled!@", removed ! since box is now narrower
+	db "disabled@" ; marcelnote - was "disabled!@", removed "!" since box is now narrower
 
 TypeText:
 	db "TYPE@"
