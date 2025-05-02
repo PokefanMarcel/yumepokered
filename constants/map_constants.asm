@@ -175,7 +175,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const MR_PSYCHICS_HOUSE,              4,  4
 	map_const SAFFRON_GYM,                   10,  9
 	map_const POKEMON_ACADEMY_1F2F,          19,  6 ; marcelnote - new map
-	map_const POKEMON_ACADEMY_3F4F,          19,  6 ; marcelnote - new map
+	map_const POKEMON_ACADEMY_3F4F,          17,  6 ; marcelnote - new map
 	map_const SILPH_CO_1F,                   15,  9
 	map_const SILPH_CO_2F,                   15,  9
 	map_const SILPH_CO_3F,                   15,  9

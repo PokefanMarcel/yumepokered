@@ -8,6 +8,7 @@ StatusScreen:
 	;call ClearScreen
 	;call UpdateSprites
 	;call LoadHpBarAndStatusTilePatterns ; marcelnote - reorganized Battle HUD tiles, no need to load tiles here anymore
+	call LoadStatusScreenTilePatterns
 	ldh a, [hTileAnimations]
 	push af
 	xor a
@@ -116,9 +117,9 @@ StatusScreenStatsPage:
 	lb bc, LEADING_ZEROES | 2, 5
 	call PrintNumber ; ID Number
 
-	;hlcoord 11, 16
-	;ld de, StatusScreenSlctDVsText
-	;call PlaceString ; "SLCT▶DVs" ; this could be a reward, e.g. Pokémon Academy
+	CheckEvent EVENT_PASSED_SENIOR_TEST ; only visible after passing Senior test at Pokémon Academy
+	hlcoord 11, 16
+	call nz, PlaceStartDVsGraphics
 
 	ld d, $0 ; d=0 for status screen, d=1 for level up
 	call PrintStatsBox
@@ -139,11 +140,37 @@ StatusScreenStatsPage:
 	ldh a, [hJoy5]
 	bit BIT_B_BUTTON, a
 	jp nz, StatusScreenExit
-	;bit BIT_SELECT, a ; marcelnote - for DVs?
+	bit BIT_START, a ; marcelnote - switch between Stats and DVs
+	jr nz, .switchStatsDVs
 	;bit BIT_D_DOWN, a ; marcelnote - for switching up and down
 	;jr nz, .checkIfLastMon
 	and A_BUTTON | D_RIGHT
 	jr nz, StatusScreenMovesPage
+	jr .waitButtonPress
+
+.switchStatsDVs
+	CheckEvent EVENT_PASSED_SENIOR_TEST
+	jr z, .waitButtonPress ; only visible after passing Senior test at Pokémon Academy
+	hlcoord 15, 16
+	ld a, [hl]
+	hlcoord 6, 10 ; first number
+	cp $d4 ; is the icon currently saying 'DVs'?
+	jr z, .switchToDVs
+	cp $d8 ; is the icon currently saying 'Stat.Exp'?
+	jr z, .switchToStatExp
+	; if neither then switch to Stats
+	call SwitchToStats
+	call PlaceDVsGraphics ; DVs is next in line
+	jr .waitButtonPress
+
+.switchToDVs
+	call SwitchToDVs
+	call PlaceStatExpGraphics ; Stat.Exp is next in line
+	jr .waitButtonPress
+
+.switchToStatExp
+	call SwitchToStatExp
+	call PlaceStatsGraphics ; Stats is next in line
 	jr .waitButtonPress
 
 ;.checkIfLastMon
@@ -435,6 +462,7 @@ StatusScreenClearScreen:
 	ld [hl], a
 	ret
 
+
 ; Draws a line starting from hl high b and wide c
 DrawLineBox:
 	ld de, SCREEN_WIDTH ; New line
@@ -508,6 +536,152 @@ DrawHP:
 	ret
 
 
+PrintStatsBox:
+	ld a, d
+	and a ; a is 0 for the status screen
+	jr nz, .LevelUpBox
+	hlcoord 0, 8
+	ld b, 8 ; y
+	ld c, 8 ; x
+	call TextBoxBorder ; Draws the box
+	hlcoord 1, 9 ; Start printing stats from here
+	ld bc, $19 ; Number offset
+	jr .PrintStatsNames
+.LevelUpBox
+	hlcoord 9, 2
+	ld b, 8 ; y
+	ld c, 9 ; x
+	call TextBoxBorder
+	hlcoord 11, 3
+	ld bc, $18
+.PrintStatsNames
+	push bc
+	push hl
+	ld de, StatsText
+	call PlaceString
+	pop hl
+	pop bc
+	add hl, bc
+.PrintStats
+	lb bc, 2, 3
+	ld de, wLoadedMonAttack
+	call PrintStat
+	ld de, wLoadedMonDefense
+	call PrintStat
+	ld de, wLoadedMonSpeed
+	call PrintStat
+	ld de, wLoadedMonSpecial
+	jp PrintNumber
+PrintStat:
+	push hl
+	call PrintNumber
+	pop hl
+	ld de, SCREEN_WIDTH * 2
+	add hl, de
+	ret
+
+StatsText:
+	db   "ATTACK"
+	next "DEFENSE"
+	next "SPEED"
+	next "SPECIAL@"
+
+
+SwitchToStats:
+	call ClearStatsLines
+	jr PrintStatsBox.PrintStats
+
+
+SwitchToDVs: ; we'll use wTempByteValue to store DVs
+	call ClearStatsLines
+	lb bc, 1, 3 ; for PrintNumber, b = 1 byte and c = 3 digits
+
+	ld de, wTempByteValue
+	ld a, [wLoadedMonDVs]
+	swap a
+	and %00001111
+	ld [de], a
+	call PrintStat ; ATTACK
+
+	ld de, wTempByteValue
+	ld a, [wLoadedMonDVs]
+	and %00001111
+	ld [de], a
+	call PrintStat ; DEFENSE
+
+	ld de, wTempByteValue
+	ld a, [wLoadedMonDVs+1]
+	swap a
+	and %00001111
+	ld [de], a
+	call PrintStat ; SPEED
+
+	ld de, wTempByteValue
+	ld a, [wLoadedMonDVs+1]
+	and %00001111
+	ld [de], a
+	jp PrintNumber ; SPECIAL
+
+
+SwitchToStatExp:
+	call ClearStatsLines
+	lb bc, 2, 3 ; for PrintNumber, b = 1 byte and c = 3 digits
+	ld de, wLoadedMonAttackExp
+	call PrintStat
+	ld de, wLoadedMonDefenseExp
+	call PrintStat
+	ld de, wLoadedMonSpeedExp
+	call PrintStat
+	ld de, wLoadedMonSpecialExp
+	jp PrintNumber
+
+
+ClearStatsLines:
+	push hl
+	ld bc, 2*SCREEN_WIDTH - 2
+	ld e, 4
+	ld a, " "
+.loop
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	add hl, bc
+	dec e
+	jr nz, .loop
+	pop hl
+	ret
+
+
+PlaceStartDVsGraphics:
+	ld b, 6
+	ld a, $d0 ; first tile
+.loop
+	ld [hli], a
+	inc a
+	dec b
+	jr nz, .loop
+	ret
+
+PlaceDVsGraphics:
+	hlcoord 13, 16
+	ld b, 3
+	ld a, $d2 ; first tile
+	jr PlaceStartDVsGraphics.loop
+
+PlaceStatExpGraphics:
+	hlcoord 13, 16
+	ld b, 4
+	ld a, $d6 ; first tile
+	jr PlaceStartDVsGraphics.loop
+
+PlaceStatsGraphics:
+	hlcoord 15, 16
+	ld a, $da ; first tile
+	ld [hli], a
+	ld [hl], $d5
+	ret
+
+
 CalcExpToLevelUp:
 	ld a, [wLoadedMonLevel]
 	cp MAX_LEVEL
@@ -533,56 +707,6 @@ CalcExpToLevelUp:
 	ld [hli], a
 	ld [hl], a
 	ret
-
-
-PrintStatsBox:
-	ld a, d
-	and a ; a is 0 for the status screen
-	jr nz, .LevelUpBox
-	hlcoord 0, 8
-	ld b, 8 ; y
-	ld c, 8 ; x
-	call TextBoxBorder ; Draws the box
-	hlcoord 1, 9 ; Start printing stats from here
-	ld bc, $19 ; Number offset
-	jr .PrintStats
-.LevelUpBox
-	hlcoord 9, 2
-	ld b, 8 ; y
-	ld c, 9 ; x
-	call TextBoxBorder
-	hlcoord 11, 3
-	ld bc, $18
-.PrintStats
-	push bc
-	push hl
-	ld de, StatsText
-	call PlaceString
-	pop hl
-	pop bc
-	add hl, bc
-	ld de, wLoadedMonAttack
-	lb bc, 2, 3
-	call PrintStat
-	ld de, wLoadedMonDefense
-	call PrintStat
-	ld de, wLoadedMonSpeed
-	call PrintStat
-	ld de, wLoadedMonSpecial
-	jp PrintNumber
-PrintStat:
-	push hl
-	call PrintNumber
-	pop hl
-	ld de, SCREEN_WIDTH * 2
-	add hl, de
-	ret
-
-StatsText:
-	db   "ATTACK"
-	next "DEFENSE"
-	next "SPEED"
-	next "SPECIAL@"
 
 
 StatusScreen_PrintPP:

@@ -9,13 +9,14 @@ FontGraphicsEnd::
 HpBarAndStatusGraphics:: INCBIN "gfx/font/font_battle_extra.2bpp"
 HpBarAndStatusGraphicsEnd::
 
-; marcelnote - reorganized Battle HUD tiles
-BattleHudTiles: INCBIN "gfx/battle/battle_hud.1bpp"
+BattleHudTiles: INCBIN "gfx/battle/battle_hud.1bpp" ; marcelnote - reorganized Battle HUD tiles
 BattleHudTilesEnd:
 
-; marcelnote - reorganized Naming screen tiles
-NamingScreenTiles: INCBIN "gfx/font/naming_screen.1bpp"
+NamingScreenTiles: INCBIN "gfx/font/naming_screen.1bpp" ; marcelnote - reorganized Naming screen tiles
 NamingScreenTilesEnd:
+
+StatusScreenGraphics:: INCBIN "gfx/font/status_screen.2bpp" ; marcelnote - new gfx for status screen
+StatusScreenGraphicsEnd::
 
 NintendoCopyrightLogoGraphics: INCBIN "gfx/splash/copyright.2bpp"
 
