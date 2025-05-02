@@ -136,7 +136,7 @@ PlayerBattlePokeballsHUDGraphicsTiles:
 
 PlayerBattleMonHUDGraphicsTiles:
 ; The tile numbers for specific parts of the battle display for the player's pokemon
-	db $76  ; lower-right corner tile of the HUD with small bump for Exp Bar
+	db "<RIGHT_EXP_BAR>" ; lower-right corner tile of the HUD with small bump for Exp Bar
 	db "<LEFT_TRIANGLE>" ; lower-left triangle tile of the HUD
 
 PlaceEnemyHUDTiles:

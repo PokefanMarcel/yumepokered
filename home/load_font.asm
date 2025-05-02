@@ -58,19 +58,3 @@ LoadHpBarAndStatusTilePatterns::
 	ld hl, vChars1 tile $40
 	lb bc, BANK(EXPBarGraphics), (EXPBarGraphicsEnd - EXPBarGraphics) / $10
 	jp CopyVideoData
-
-LoadStatusScreenTilePatterns::
-	ldh a, [rLCDC]
-	bit rLCDC_ENABLE, a
-	jr nz, .on
-.off
-	ld hl, StatusScreenGraphics
-	ld de, vChars1 tile $50
-	ld bc, StatusScreenGraphicsEnd - StatusScreenGraphics
-	ld a, BANK(StatusScreenGraphics)
-	jp FarCopyData2
-.on
-	ld de, StatusScreenGraphics
-	ld hl, vChars1 tile $50
-	lb bc, BANK(StatusScreenGraphics), (StatusScreenGraphicsEnd - StatusScreenGraphics) / $10
-	jp CopyVideoData ; if LCD is on, transfer during V-blank
