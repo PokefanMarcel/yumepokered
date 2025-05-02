@@ -118,8 +118,7 @@ StatusScreenStatsPage:
 	call PrintNumber ; ID Number
 
 	CheckEvent EVENT_PASSED_SENIOR_TEST ; only visible after passing Senior test at Pokémon Academy
-	hlcoord 11, 16
-	call nz, PlaceStartDVsGraphics
+	call nz, PlaceShowStartAndStatsGraphics ; for switching between stats displayed
 
 	ld d, $0 ; d=0 for status screen, d=1 for level up
 	call PrintStatsBox
@@ -141,37 +140,24 @@ StatusScreenStatsPage:
 	bit BIT_B_BUTTON, a
 	jp nz, StatusScreenExit
 	bit BIT_START, a ; marcelnote - switch between Stats and DVs
-	jr nz, .switchStatsDVs
+	jr nz, .switchStatsDVsStatExp
 	;bit BIT_D_DOWN, a ; marcelnote - for switching up and down
 	;jr nz, .checkIfLastMon
 	and A_BUTTON | D_RIGHT
 	jr nz, StatusScreenMovesPage
 	jr .waitButtonPress
 
-.switchStatsDVs
+.switchStatsDVsStatExp
 	CheckEvent EVENT_PASSED_SENIOR_TEST
 	jr z, .waitButtonPress ; only visible after passing Senior test at Pokémon Academy
-	hlcoord 15, 16
+	hlcoord 16, 17 ; fifth letter of current text
 	ld a, [hl]
-	hlcoord 6, 10 ; first number
-	cp $d4 ; is the icon currently saying 'DVs'?
-	jr z, .switchToDVs
-	cp $d8 ; is the icon currently saying 'Stat.Exp'?
-	jr z, .switchToStatExp
+	cp "S" ; text currently saying "STATS"?
+	jp z, SwitchToDVs ; if yes, switch to DVs
+	cp " " ; text currently saying "DVS"?
+	jp z, SwitchToStatExp ; if yes, switch to StatExp
 	; if neither then switch to Stats
-	call SwitchToStats
-	call PlaceDVsGraphics ; DVs is next in line
-	jr .waitButtonPress
-
-.switchToDVs
-	call SwitchToDVs
-	call PlaceStatExpGraphics ; Stat.Exp is next in line
-	jr .waitButtonPress
-
-.switchToStatExp
-	call SwitchToStatExp
-	call PlaceStatsGraphics ; Stats is next in line
-	jr .waitButtonPress
+	jp SwitchToStats
 
 ;.checkIfLastMon
 ;	ld a, [wWhichPokemon]
@@ -424,14 +410,17 @@ StatusScreenOTText:
 StatusScreenIDNoText:
 	db "<ID>№<DOT>@"
 
-;StatusScreenSlctDVsText:
-;	db "SLCT▶DVs@"
+StatusScreenShowText:
+	db "SHOW/@"
 
-;StatusScreenSlctStatsText:
-;	db "SLCT▶STATS@"
+StatusScreenStatsText:
+	db "STATS   @"
 
-;StatusScreenStartStatsText:
-;	db "START▶STATS@"
+StatusScreenDVsText:
+	db "DVS     @"
+
+StatusScreenStatExpText:
+	db "STAT.EXP@"
 
 StatusScreenExpText:
 	db   "EXP.POINTS"
@@ -589,7 +578,10 @@ StatsText:
 
 SwitchToStats:
 	call ClearStatsLines
-	jr PrintStatsBox.PrintStats
+	call PrintStatsBox.PrintStats
+	ld de, StatusScreenStatsText ; "STATS"
+	call PlaceStatsDVsOrStatExpText
+	jp StatusScreenStatsPage.waitButtonPress
 
 
 SwitchToDVs: ; we'll use wTempByteValue to store DVs
@@ -620,7 +612,11 @@ SwitchToDVs: ; we'll use wTempByteValue to store DVs
 	ld a, [wLoadedMonDVs+1]
 	and %00001111
 	ld [de], a
-	jp PrintNumber ; SPECIAL
+	call PrintNumber ; SPECIAL
+
+	ld de, StatusScreenDVsText ; "DVs"
+	call PlaceStatsDVsOrStatExpText
+	jp StatusScreenStatsPage.waitButtonPress
 
 
 SwitchToStatExp:
@@ -633,10 +629,15 @@ SwitchToStatExp:
 	ld de, wLoadedMonSpeedExp
 	call PrintStat
 	ld de, wLoadedMonSpecialExp
-	jp PrintNumber
+	call PrintNumber
+
+	ld de, StatusScreenStatExpText ; "STAT.EXP"
+	call PlaceStatsDVsOrStatExpText
+	jp StatusScreenStatsPage.waitButtonPress
 
 
 ClearStatsLines:
+	hlcoord 6, 10 ; first number
 	push hl
 	ld bc, 2*SCREEN_WIDTH - 2
 	ld e, 4
@@ -652,34 +653,26 @@ ClearStatsLines:
 	ret
 
 
-PlaceStartDVsGraphics:
-	ld b, 6
-	ld a, $d0 ; first tile
+PlaceShowStartAndStatsGraphics:
+	hlcoord 11, 16
+	ld de, StatusScreenShowText
+	call PlaceString ; "SHOW/"
+
+	hlcoord 16, 16
+	ld a, $d0 ; "<START>"
+	ld b, 3 ; 3 tiles long
 .loop
 	ld [hli], a
 	inc a
 	dec b
 	jr nz, .loop
-	ret
 
-PlaceDVsGraphics:
-	hlcoord 13, 16
-	ld b, 3
-	ld a, $d2 ; first tile
-	jr PlaceStartDVsGraphics.loop
+	ld de, StatusScreenStatsText ; "STATS"
+	; fallthrough
 
-PlaceStatExpGraphics:
-	hlcoord 13, 16
-	ld b, 4
-	ld a, $d6 ; first tile
-	jr PlaceStartDVsGraphics.loop
-
-PlaceStatsGraphics:
-	hlcoord 15, 16
-	ld a, $da ; first tile
-	ld [hli], a
-	ld [hl], $d5
-	ret
+PlaceStatsDVsOrStatExpText:
+	hlcoord 12, 17
+	jp PlaceString ; "STATS" or "DVS" or "STAT.EXP"
 
 
 CalcExpToLevelUp:
