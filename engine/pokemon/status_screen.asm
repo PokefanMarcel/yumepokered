@@ -711,7 +711,7 @@ StatusScreen_PrintPP:
 	ret
 
 
-PlaceStringWithHyphen: ; to print field moves with hyphen after 4 letters
+PlaceStringWithHyphen: ; to print field moves with hyphen after 4 letters (won't work for other languages)
 	ld b, 4
 .placeNextChar
 	ld a, [de]
