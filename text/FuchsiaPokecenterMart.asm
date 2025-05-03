@@ -20,6 +20,27 @@ _FuchsiaPokecenterCooltrainerFText::
 	cont "all trainers."
 	done
 
+_FuchsiaPokecenterBenchGuyText:: ; marcelnote - BenchGuy has a sprite
+	text "If you're studying"
+	line "#MON, visit"
+	cont "the SAFARI ZONE."
+
+	para "It has all sorts"
+	line "of rare #MON."
+	done
+
+;_UnusedBenchGuyText1::
+;	text "I wish I could"
+;	line "catch #MON."
+;	done
+
+;_UnusedBenchGuyText3::
+;	text "SILPH's manager"
+;	line "is hiding in the"
+;	cont "SAFARI ZONE."
+;	done
+
+
 _FuchsiaMartMiddleAgedManText::
 	text "Do you have a"
 	line "SAFARI ZONE flag?"

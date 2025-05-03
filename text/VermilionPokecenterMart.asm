@@ -19,6 +19,23 @@ _VermilionPokecenterSailorText::
 	cont "were walking!"
 	done
 
+_VermilionPokecenterBenchGuyText:: ; marcelnote - BenchGuy has a sprite
+	text "It is true that a"
+	line "higher level"
+	cont "#MON will be"
+	cont "more powerful..."
+
+	para "But, all #MON"
+	line "will have weak"
+	cont "points against"
+	cont "specific types."
+
+	para "So, there is no"
+	line "universally"
+	cont "strong #MON."
+	done
+
+
 _VermilionMartCooltrainerMText::
 	text "There are evil"
 	line "people who will"

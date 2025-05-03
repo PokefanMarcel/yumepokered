@@ -14,6 +14,18 @@ _PewterPokecenterJigglypuffText::
 	line "pupuu!"
 	done
 
+_PewterPokecenterBenchGuyText:: ; marcelnote - BenchGuy has a sprite
+	text "Yawn!"
+
+	para "When JIGGLYPUFF"
+	line "sings, #MON"
+	cont "get drowsy..."
+
+	para "...Me too..."
+	line "Snore..."
+	done
+
+
 _PewterMartYoungsterText::
 	text "A shady, old man"
 	line "got me to buy"

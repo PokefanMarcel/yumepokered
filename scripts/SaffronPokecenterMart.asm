@@ -10,6 +10,7 @@ SaffronPokecenterMart_TextPointers:
 	dw_const SaffronPokecenterBeautyText,           TEXT_SAFFRONPOKECENTER_BEAUTY
 	dw_const SaffronPokecenterGentlemanText,        TEXT_SAFFRONPOKECENTER_GENTLEMAN
 	dw_const SaffronPokecenterLinkReceptionistText, TEXT_SAFFRONPOKECENTER_LINK_RECEPTIONIST
+	dw_const SaffronPokecenterBenchGuyText,         TEXT_SAFFRONPOKECENTER_BENCH_GUY ; marcelnote - BenchGuy has a sprite
 	; Mart
 	dw_const SaffronMartClerkText,        TEXT_SAFFRONMART_CLERK
 	dw_const SaffronMartSuperNerdText,    TEXT_SAFFRONMART_SUPER_NERD
@@ -28,6 +29,24 @@ SaffronPokecenterGentlemanText:
 
 SaffronPokecenterLinkReceptionistText:
 	script_cable_club_receptionist
+
+SaffronPokecenterBenchGuyText: ; marcelnote - BenchGuy has a sprite
+	text_asm
+	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
+	ld hl, .GoOutAgainText
+	jr nz, .print_text
+	ld hl, .WouldBeGreatText
+.print_text
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+.WouldBeGreatText:
+	text_far _SaffronPokecenterBenchGuyWouldBeGreatText
+	text_end
+
+.GoOutAgainText:
+	text_far _SaffronPokecenterBenchGuyGoOutAgainText
+	text_end
 
 
 SaffronMartSuperNerdText:

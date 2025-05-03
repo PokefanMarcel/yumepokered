@@ -10,6 +10,7 @@ MtMoonPokecenter_TextPointers:
 	dw_const MtMoonPokecenterMagikarpSalesmanText, TEXT_MTMOONPOKECENTER_MAGIKARP_SALESMAN
 	dw_const MtMoonPokecenterClipboardText,        TEXT_MTMOONPOKECENTER_CLIPBOARD
 	dw_const MtMoonPokecenterLinkReceptionistText, TEXT_MTMOONPOKECENTER_LINK_RECEPTIONIST
+	dw_const MtMoonPokecenterBenchGuyText,         TEXT_MTMOONPOKECENTER_BENCH_GUY ; marcelnote - BenchGuy has a sprite
 
 MtMoonPokecenterNurseText:
 	script_pokecenter_nurse
@@ -88,3 +89,7 @@ MtMoonPokecenterClipboardText:
 
 MtMoonPokecenterLinkReceptionistText:
 	script_cable_club_receptionist
+
+MtMoonPokecenterBenchGuyText: ; marcelnote - BenchGuy has a sprite
+	text_far _MtMoonPokecenterBenchGuyText
+	text_end

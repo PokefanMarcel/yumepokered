@@ -12,6 +12,14 @@ _LavenderPokecenterLittleGirlText::
 	cont "TEAM ROCKET!"
 	done
 
+_LavenderPokecenterBenchGuyText:: ; marcelnote - BenchGuy has a sprite
+	text "CUBONEs wear"
+	line "skulls, right?"
+
+	para "People will pay a"
+	line "lot for one!"
+	done
+
 
 _LavenderMartBaldingGuyText::
 	text "I'm searching for"

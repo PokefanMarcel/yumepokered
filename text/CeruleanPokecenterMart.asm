@@ -24,6 +24,15 @@ _CeruleanPokecenterGentlemanText::
 	cont "their #MON?"
 	done
 
+_CeruleanPokecenterBenchGuyText:: ; marcelnote - BenchGuy has a sprite
+	text "BILL has lots of"
+	line "#MON!"
+
+	para "He collects rare"
+	line "ones too!"
+	done
+
+
 _CeruleanMartCooltrainerMText::
 	text "Use REPEL to keep"
 	line "bugs and weak"

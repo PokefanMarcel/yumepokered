@@ -22,6 +22,15 @@ _MandarinPokecenterCooltrainerFText::
     line "less expensive..."
 	done
 
+_MandarinPokecenterBenchGuyText::
+	text "MANDARIN ISLAND"
+	line "is just one of"
+	cont "many in the"
+	cont "ORANGE ISLANDS"
+	cont "archipelago!"
+	done
+
+
 _MandarinMartCookText::
 	text "Tonight's special"
 	line "at the hotel:"

@@ -5,10 +5,13 @@ MandarinPokecenterMart_Script:
 
 MandarinPokecenterMart_TextPointers:
 	def_text_pointers
+	; Pokecenter
 	dw_const MandarinPokecenterNurseText,            TEXT_MANDARINPOKECENTER_NURSE
 	dw_const MandarinPokecenterLinkReceptionistText, TEXT_MANDARINPOKECENTER_LINK_RECEPTIONIST
 	dw_const MandarinPokecenterSuperNerdText,        TEXT_MANDARINPOKECENTER_SUPER_NERD
 	dw_const MandarinPokecenterCooltrainerFText,     TEXT_MANDARINPOKECENTER_COOLTRAINER_F
+	dw_const MandarinPokecenterBenchGuyText,         TEXT_MANDARINPOKECENTER_BENCH_GUY ; marcelnote - BenchGuy has a sprite
+	; Mart
 	dw_const MandarinMartClerkText,                  TEXT_MANDARINMART_CLERK
 	dw_const MandarinMartCookText,                   TEXT_MANDARINMART_COOK
 	dw_const MandarinMartCooltrainerFText,           TEXT_MANDARINMART_COOLTRAINER_F
@@ -26,6 +29,10 @@ MandarinPokecenterCooltrainerFText:
 
 MandarinPokecenterLinkReceptionistText:
 	script_cable_club_receptionist
+
+MandarinPokecenterBenchGuyText: ; marcelnote - BenchGuy has a sprite
+	text_far _MandarinPokecenterBenchGuyText
+	text_end
 
 
 MandarinMartCookText:
