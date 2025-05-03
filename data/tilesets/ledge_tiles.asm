@@ -6,8 +6,8 @@ LedgeTiles:
 	db SPRITE_FACING_LEFT,  $2C, $27, D_LEFT
 	db SPRITE_FACING_LEFT,  $39, $27, D_LEFT
 	db SPRITE_FACING_RIGHT, $2C, $0D, D_RIGHT
-	db SPRITE_FACING_RIGHT, $2C, $1D, D_RIGHT
 	db SPRITE_FACING_RIGHT, $39, $0D, D_RIGHT
+	;db SPRITE_FACING_RIGHT, $2C, $1D, D_RIGHT ; marcelnote - freed tile
 	db -1 ; end
 
 LedgeTilesCavern: ; marcelnote - new for Cavern ledges
