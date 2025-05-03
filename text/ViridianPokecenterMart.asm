@@ -16,6 +16,14 @@ _ViridianPokecenterCooltrainerMText::
 	line "any money either!"
 	done
 
+_ViridianPokecenterBenchGuyText:: ; marcelnote - BenchGuy has a sprite
+	text "#MON CENTERs"
+	line "heal your tired,"
+	cont "hurt or fainted"
+	cont "#MON!"
+	done
+
+
 _ViridianMartClerkSayHiToOakText::
 	text "Okay! Say hi to"
 	line "PROF.OAK for me!"

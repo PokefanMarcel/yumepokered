@@ -10,6 +10,7 @@ LavenderPokecenterMart_TextPointers:
 	dw_const LavenderPokecenterGentlemanText,        TEXT_LAVENDERPOKECENTER_GENTLEMAN
 	dw_const LavenderPokecenterLittleGirlText,       TEXT_LAVENDERPOKECENTER_LITTLE_GIRL
 	dw_const LavenderPokecenterLinkReceptionistText, TEXT_LAVENDERPOKECENTER_LINK_RECEPTIONIST
+	dw_const LavenderPokecenterBenchGuyText,         TEXT_LAVENDERPOKECENTER_BENCH_GUY ; marcelnote - BenchGuy has a sprite
 	; Mart
 	dw_const LavenderMartClerkText,        TEXT_LAVENDERMART_CLERK
 	dw_const LavenderMartBaldingGuyText,   TEXT_LAVENDERMART_BALDING_GUY
@@ -27,6 +28,10 @@ LavenderPokecenterGentlemanText:
 
 LavenderPokecenterLittleGirlText:
 	text_far _LavenderPokecenterLittleGirlText
+	text_end
+
+LavenderPokecenterBenchGuyText: ; marcelnote - BenchGuy has a sprite
+	text_far _LavenderPokecenterBenchGuyText
 	text_end
 
 

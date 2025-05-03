@@ -70,6 +70,7 @@ ViridianPokecenterMart_TextPointers: ; marcelnote - merged ViridianMart_TextPoin
 	dw_const ViridianPokecenterGentlemanText,        TEXT_VIRIDIANPOKECENTER_GENTLEMAN
 	dw_const ViridianPokecenterCooltrainerMText,     TEXT_VIRIDIANPOKECENTER_COOLTRAINER_M
 	dw_const ViridianPokecenterLinkReceptionistText, TEXT_VIRIDIANPOKECENTER_LINK_RECEPTIONIST
+	dw_const ViridianPokecenterBenchGuyText,         TEXT_VIRIDIANPOKECENTER_BENCH_GUY ; marcelnote - BenchGuy has a sprite
 	; Mart
 	dw_const ViridianMartClerkText,                      TEXT_VIRIDIANMART_CLERK
 	dw_const ViridianMartYoungsterText,                  TEXT_VIRIDIANMART_YOUNGSTER
@@ -108,6 +109,11 @@ ViridianMartYoungsterText:
 ViridianMartCooltrainerMText:
 	text_far _ViridianMartCooltrainerMText
 	text_end
+
+ViridianPokecenterBenchGuyText: ; marcelnote - BenchGuy has a sprite
+	text_far _ViridianPokecenterBenchGuyText
+	text_end
+
 
 ; marcelnote - remaking this to merge ViridianMart_TextPointers and ViridianMart_TextPointers2
 ViridianMartClerkText: ; marcelnote - moved Mart inventories

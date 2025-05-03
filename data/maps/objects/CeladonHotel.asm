@@ -2,6 +2,7 @@
 	const_export CELADONHOTEL_GRANNY
 	const_export CELADONHOTEL_BEAUTY
 	const_export CELADONHOTEL_SUPER_NERD
+	const_export CELADONHOTEL_BENCH_GUY ; marcelnote - BenchGuy has a sprite
 
 CeladonHotel_Object:
 	db $0 ; border block
@@ -16,5 +17,6 @@ CeladonHotel_Object:
 	object_event  3,  1, SPRITE_GRANNY, STAY, DOWN, TEXT_CELADONHOTEL_GRANNY
 	object_event  2,  4, SPRITE_BEAUTY, STAY, NONE, TEXT_CELADONHOTEL_BEAUTY
 	object_event  8,  4, SPRITE_SUPER_NERD, WALK, LEFT_RIGHT, TEXT_CELADONHOTEL_SUPER_NERD
+	object_event  0,  5, SPRITE_BENCH_GUY, STAY, RIGHT, TEXT_CELADONHOTEL_BENCH_GUY ; marcelnote - BenchGuy has a sprite
 
 	def_warps_to CELADON_HOTEL

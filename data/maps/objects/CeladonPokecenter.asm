@@ -3,6 +3,7 @@
 	const_export CELADONPOKECENTER_GENTLEMAN
 	const_export CELADONPOKECENTER_BEAUTY
 	const_export CELADONPOKECENTER_LINK_RECEPTIONIST
+	const_export CELADONPOKECENTER_BENCH_GUY ; marcelnote - BenchGuy has a sprite
 
 CeladonPokecenter_Object:
 	db $0 ; border block
@@ -18,5 +19,6 @@ CeladonPokecenter_Object:
 	object_event  7,  3, SPRITE_GENTLEMAN, WALK, LEFT_RIGHT, TEXT_CELADONPOKECENTER_GENTLEMAN
 	object_event 10,  5, SPRITE_BEAUTY, WALK, ANY_DIR, TEXT_CELADONPOKECENTER_BEAUTY
 	object_event 11,  2, SPRITE_LINK_RECEPTIONIST, STAY, DOWN, TEXT_CELADONPOKECENTER_LINK_RECEPTIONIST
+	object_event  0,  5, SPRITE_BENCH_GUY, STAY, RIGHT, TEXT_CELADONPOKECENTER_BENCH_GUY ; marcelnote - BenchGuy has a sprite
 
 	def_warps_to CELADON_POKECENTER

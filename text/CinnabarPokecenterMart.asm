@@ -21,6 +21,18 @@ _CinnabarPokecenterGentlemanText::
 	line "worth a try!"
 	done
 
+_CinnabarPokecenterBenchGuyText:: ; marcelnote - BenchGuy has a sprite
+	text "#MON can still"
+	line "learn techniques"
+	cont "after canceling"
+	cont "evolution."
+
+	para "Evolution can wait"
+	line "until new moves"
+	cont "have been learned."
+	done
+
+
 _CinnabarMartSilphWorkerFText::
 	text "Don't they have X"
 	line "ATTACK? It's good"

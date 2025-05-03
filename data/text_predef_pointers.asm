@@ -4,6 +4,7 @@ MACRO add_tx_pre
 ENDM
 
 TextPredefs::
+	; marcelnote - removed Pokecenter bench guys who now have sprites
 	add_tx_pre CardKeySuccessText                   ; 01
 	add_tx_pre CardKeyFailText                      ; 02
 	add_tx_pre CardKeyNeedsUpdateText               ; 02bis ; marcelnote - added for SilphFactory2F
@@ -32,21 +33,6 @@ TextPredefs::
 	add_tx_pre GymStatueText2                       ; 0D
 	add_tx_pre GymStatueText3                       ; 0E ; marcelnote - added for Yellow
 	;add_tx_pre BookcaseText                         ; 0E ; marcelnote - already handled by BookOrSculptureText
-	add_tx_pre ViridianCityPokecenterBenchGuyText   ; 0F
-	add_tx_pre PewterCityPokecenterBenchGuyText     ; 10
-	add_tx_pre CeruleanCityPokecenterBenchGuyText   ; 11
-	add_tx_pre LavenderCityPokecenterBenchGuyText   ; 12
-	add_tx_pre VermilionCityPokecenterBenchGuyText  ; 13
-	add_tx_pre CeladonCityPokecenterBenchGuyText    ; 14
-	add_tx_pre CeladonCityHotelText                 ; 15
-	add_tx_pre FuchsiaCityPokecenterBenchGuyText    ; 16
-	add_tx_pre CinnabarIslandPokecenterBenchGuyText ; 17
-	add_tx_pre SaffronCityPokecenterBenchGuyText    ; 18
-	add_tx_pre MtMoonPokecenterBenchGuyText         ; 19
-	add_tx_pre RockTunnelPokecenterBenchGuyText     ; 1A
-	add_tx_pre MandarinIslandPokecenterBenchGuyText ; 1A ; marcelnote - new
-	add_tx_pre UnusedBenchGuyText1                  ; 1B XXX unused
-	add_tx_pre UnusedBenchGuyText3                  ; 1D XXX unused
 	;add_tx_pre UnusedPredefText                     ; 1E XXX unused ; marcelnote - commented out
 	add_tx_pre PokemonCenterPCText                  ; 1F
 	add_tx_pre ViridianSchoolNotebook               ; 20

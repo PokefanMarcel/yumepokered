@@ -10,6 +10,7 @@ PewterPokecenterMart_TextPointers:
 	dw_const PewterPokecenterGentlemanText,        TEXT_PEWTERPOKECENTER_GENTLEMAN
 	dw_const PewterPokecenterJigglypuffText,       TEXT_PEWTERPOKECENTER_JIGGLYPUFF
 	dw_const PewterPokecenterLinkReceptionistText, TEXT_PEWTERPOKECENTER_LINK_RECEPTIONIST
+	dw_const PewterPokecenterBenchGuyText,         TEXT_PEWTERPOKECENTER_BENCH_GUY ; marcelnote - BenchGuy has a sprite
 	; Mart
 	dw_const PewterMartClerkText,     TEXT_PEWTERMART_CLERK
 	dw_const PewterMartYoungsterText, TEXT_PEWTERMART_YOUNGSTER
@@ -96,6 +97,11 @@ PewterPokecenterJigglypuffText:
 
 PewterPokecenterLinkReceptionistText:
 	script_cable_club_receptionist
+
+PewterPokecenterBenchGuyText: ; marcelnote - BenchGuy has a sprite
+	text_far _PewterPokecenterBenchGuyText
+	text_end
+
 
 PewterMartYoungsterText: ; marcelnote - simplified code
 	text_far _PewterMartYoungsterText
