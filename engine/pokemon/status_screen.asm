@@ -117,7 +117,7 @@ StatusScreenStatsPage:
 	call PrintNumber ; ID Number
 
 	CheckEvent EVENT_PASSED_SENIOR_TEST ; only visible after passing Senior test at Pokémon Academy
-	call nz, PlaceShowStartAndStatsGraphics ; for switching between stats displayed
+	call nz, PlaceInfoStartAndStatsGraphics ; for switching between stats displayed
 
 	ld d, $0 ; d=0 for status screen, d=1 for level up
 	call PrintStatsBox
@@ -409,8 +409,8 @@ StatusScreenOTText:
 StatusScreenIDNoText:
 	db "<ID>№<DOT>@"
 
-StatusScreenShowText:
-	db "SHOW/@"
+StatusScreenInfoText:
+	db "INFO/@"
 
 StatusScreenStatsText:
 	db "STATS   @"
@@ -652,10 +652,10 @@ ClearStatsLines:
 	ret
 
 
-PlaceShowStartAndStatsGraphics:
+PlaceInfoStartAndStatsGraphics:
 	hlcoord 11, 16
-	ld de, StatusScreenShowText
-	call PlaceString ; "SHOW/"
+	ld de, StatusScreenInfoText
+	call PlaceString ; "INFO/"
 
 	hlcoord 16, 16
 	ld a, "<ST>" ; left of [START▶] button
