@@ -95,4 +95,5 @@ SpriteSheetPointerTable:
 	;overworld_sprite GamblerAsleepSprite, 4     ; SPRITE_UNUSED_GAMBLER_ASLEEP_2
 	overworld_sprite GamblerAsleepSprite, 4     ; SPRITE_GAMBLER_ASLEEP
 	overworld_sprite YellowAsleepSprite, 4      ; SPRITE_YELLOW_ASLEEP ; marcelnote - new sprite
+	overworld_sprite BenchGuySprite, 4          ; SPRITE_BENCH_GUY ; marcelnote - replace from tileset
 	assert_table_length NUM_SPRITES
