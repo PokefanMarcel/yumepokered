@@ -1662,7 +1662,8 @@ wEvolutionOccurred:: db
 
 wVBlankSavedROMBank:: db
 
-	ds 1
+wDelayFrameBank:: db ; joenote - added for bank backing-up during DelayFrame
+;	ds 1
 
 wIsKeyItem:: db
 
