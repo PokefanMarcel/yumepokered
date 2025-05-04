@@ -8,6 +8,14 @@ VBlank::
 	ldh a, [hLoadedROMBank]
 	ld [wVBlankSavedROMBank], a
 
+	; joenote - set the correct backed-up bank if vblank happened during a DelayFrame function
+	ld a, [wDelayFrameBank]
+	and a
+	jr z, .no_delay_bank
+	ld [hLoadedROMBank], a
+	ld [MBC1RomBank], a
+.no_delay_bank
+
 	ldh a, [hSCX]
 	ldh [rSCX], a
 	ldh a, [hSCY]
@@ -29,15 +37,13 @@ VBlank::
 ;;;;;;;;;;;;;;;; marcelnote - OAM updates can be interrupted by V-Blank (pokered Wiki)
 	ld a, [hSkipOAMUpdates]
 	bit 0, a
-	jr nz, .skipOAM
+	call z, hDMARoutine
 ;;;;;;;;;;;;;;;;
-	call hDMARoutine
-	ld a, BANK(PrepareOAMData)
-	ldh [hLoadedROMBank], a
-	ld [MBC1RomBank], a
-	call PrepareOAMData
-	;call hDMARoutine ; marcelnote - move call here to fix wobbly sprites (but issue with sprites at the top of the screen)
-.skipOAM ; marcelnote - OAM updates can be interrupted by V-Blank (pokered Wiki)
+	;call hDMARoutine
+	;ld a, BANK(PrepareOAMData)
+	;ldh [hLoadedROMBank], a
+	;ld [MBC1RomBank], a
+	;call PrepareOAMData
 
 	; VBlank-sensitive operations end.
 
@@ -105,9 +111,49 @@ DEF NOT_VBLANKED EQU 1
 
 	ld a, NOT_VBLANKED
 	ldh [hVBlankOccurred], a
+
+	ldh a, [hLoadedROMBank]
+	ld [wDelayFrameBank], a
+
+	call home_PrepareOAMData
+
+	xor a
+	ld [wDelayFrameBank], a
+
+	ldh a, [rLCDC]
+	bit rLCDC_ENABLE, a
+	jp z, VBlank ;You will never enter the vblank interrupt if the LCD is disabled, so call it manually
+
 .halt
 	halt
+	nop	; joenote - due to a processor bug, nop after halt is best practice
 	ldh a, [hVBlankOccurred]
 	and a
 	jr nz, .halt
+	ret
+
+
+;joenote - optimize PrepareOAMData so that overworld sprites don't wobble
+home_PrepareOAMData::
+	push bc
+	push de
+	push hl
+	ld hl, hSkipOAMUpdates
+	bit 0, [hl] ; is OAM skip enabled?
+	jr nz, .skipOAM
+; if disabled, then enable it for now
+; This is so DMA transfer is skipped in case vblank triggers while PrepareOAMData is running.
+	set 0, [hl]
+	farcall PrepareOAMData
+	ld hl, hSkipOAMUpdates
+	res 0, [hl] ; disable the OAM skip flag
+.skipOAM
+	pop hl
+	pop de
+	pop bc
+;Notes:
+; - A good place to test this is the row of four trainers on route 8.
+; - There may be a rare 1-frame flicker due to instances where DMA transfer gets skipped for 1 frame.
+; --> But trying to do DMA transfer here is worse because audio noise gets injected when drawing the screen.
+; --> A real gameboy's TFT screen might be able to hide this.
 	ret
