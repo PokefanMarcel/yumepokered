@@ -236,11 +236,11 @@ CinnabarPokecenterMartHiddenObjects:
 MandarinPokecenterMartHiddenObjects:  ; marcelnote - new
 MtMoonPokecenterHiddenObjects:
 RockTunnelPokecenterHiddenObjects:
-	hidden_object 13,  3, SPRITE_FACING_UP, OpenPokemonCenterPC
+	hidden_object  5,  2, SPRITE_FACING_UP, OpenPokemonCenterPC
 	db -1 ; end
 
 IndigoPlateauLobbyHiddenObjects:
-	hidden_object 19,  7, SPRITE_FACING_UP, OpenPokemonCenterPC ; marcelnote - expanded map, was x=15
+	hidden_object  9,  6, SPRITE_FACING_UP, OpenPokemonCenterPC ; marcelnote - modified map
 	db -1 ; end
 
 RedsYellowsHousesHiddenObjects: ; marcelnote - merged RedsHouse floors

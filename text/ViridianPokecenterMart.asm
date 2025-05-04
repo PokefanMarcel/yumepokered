@@ -1,7 +1,8 @@
 ; marcelnote - merged Viridian Pokecenter and Mart
 _ViridianPokecenterGentlemanText::
 	text "You can use that"
-	line "PC in the corner."
+	;line "PC in the corner."
+	line "PC at the desk." ; marcelnote - for new layout
 
 	para "The receptionist"
 	line "told me. So kind!"
