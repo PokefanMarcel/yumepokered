@@ -17,7 +17,7 @@ ViridianPokecenterMart_ScriptPointers:
 ViridianMartDefaultScript:
 	;;;;;; marcelnote - this new part checks if we entered the Pokecenter or Mart
 	ld a, [wXCoord]
-	cp 23 ; x-coordinate of the Mart entrance
+	cp 19 ; x-coordinate of the Mart entrance
 	ret nz
 	;;;;;;
 	call UpdateSprites

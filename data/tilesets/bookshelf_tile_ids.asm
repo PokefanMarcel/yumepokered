@@ -14,10 +14,10 @@ BookshelfTileIDs:
 	bookshelf_tile LOBBY,        $16, ElevatorText
 	bookshelf_tile GYM,          $1D, BookOrSculptureText
 	bookshelf_tile GATE,         $22, BookOrSculptureText
-	bookshelf_tile POKECENTER,   $54, PokemonStuffText
-	bookshelf_tile POKECENTER,   $55, PokemonStuffText
+	bookshelf_tile POKECENTER,   $52, PokemonStuffText  ; marcelnote - modified tileset
+	bookshelf_tile POKECENTER,   $53, PokemonStuffText  ; marcelnote - modified tileset
 	bookshelf_tile POKECENTER,   $3E, ColdDrinksText    ; marcelnote - new for Marts
-	bookshelf_tile POKECENTER,   $17, HotSnacksText     ; marcelnote - new for Marts
+	bookshelf_tile POKECENTER,   $1C, HotSnacksText     ; marcelnote - new for Marts
 	bookshelf_tile LOBBY,        $50, PokemonStuffText
 	bookshelf_tile LOBBY,        $52, PokemonStuffText
 	bookshelf_tile SHIP,         $36, BookOrSculptureText
@@ -31,6 +31,6 @@ BookshelfTileFacingDownIDs: ; marcelnote - new for SPRITE_FACING_DOWN
 	; tileset id, bookshelf tile id, text id
 	bookshelf_tile LOBBY,        $3A, PokemonStuffText
 	bookshelf_tile LOBBY,        $3C, PokemonStuffText
-	bookshelf_tile POKECENTER,   $50, PokemonStuffText
-	bookshelf_tile POKECENTER,   $51, PokemonStuffText
+	bookshelf_tile POKECENTER,   $32, PokemonStuffText
+	bookshelf_tile POKECENTER,   $33, PokemonStuffText
 	db -1 ; end

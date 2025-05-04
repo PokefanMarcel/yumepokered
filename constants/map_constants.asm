@@ -65,7 +65,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const REDS_YELLOWS_HOUSES,           25,  4 ; marcelnote - merged RedsHouse floors, added YellowsHouse
 	map_const BLUES_AIDES_HOUSES,            11,  4 ; marcelnote - added Aide's house
 	map_const OAKS_LAB,                       5,  6
-	map_const VIRIDIAN_POKECENTER_MART,      14,  4 ; marcelnote - merged Viridian Pokecenter and Mart
+	map_const VIRIDIAN_POKECENTER_MART,      12,  4 ; marcelnote - merged Viridian Pokecenter and Mart
 	map_const VIRIDIAN_SCHOOL_HOUSE,          4,  4
 	map_const VIRIDIAN_NICKNAME_HOUSE,        4,  4
 	map_const VIRIDIAN_GYM,                  10,  9
@@ -75,18 +75,18 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const VIRIDIAN_FOREST_NORTH_GATE,     5,  4
 	map_const ROUTE_2_TRADE_HOUSE,            4,  4
 	map_const DIGLETTS_CAVE_ROUTE_2,          3,  3 ; marcelnote - was 4, 4
-	map_const PEWTER_POKECENTER_MART,        14,  4 ; marcelnote - merged Pewter Pokecenter and Mart
+	map_const PEWTER_POKECENTER_MART,        12,  4 ; marcelnote - merged Pewter Pokecenter and Mart
 	map_const PEWTER_MUSEUM,                 10, 10 ; marcelnote - merged Pewter Museum floors
 	map_const PEWTER_NIDORAN_HOUSE,           4,  4
 	map_const PEWTER_SPEECH_HOUSE,            4,  4
 	map_const PEWTER_GYM,                     5,  7
 	map_const CELADON_GROVE_NORTH_GATE,       5,  4 ; marcelnote - new map
-	map_const MT_MOON_POKECENTER,             7,  4
+	map_const MT_MOON_POKECENTER,            12,  4 ; marcelnote - use same blk as other Pokecenters
 	map_const MT_MOON_1F,                    20, 18
 	map_const MT_MOON_B1F,                   14, 14
 	map_const MT_MOON_B2F,                   20, 18
 	map_const MT_MOON_SQUARE,                12,  6 ; marcelnote - new map
-	map_const CERULEAN_POKECENTER_MART,      14,  4 ; marcelnote - merged Cerulean Pokecenter and Mart
+	map_const CERULEAN_POKECENTER_MART,      12,  4 ; marcelnote - merged Cerulean Pokecenter and Mart
 	map_const CERULEAN_TRASHED_HOUSE,         4,  4
 	map_const CERULEAN_TRADE_HOUSE,           4,  4
 	map_const CERULEAN_BADGE_HOUSE,           4,  4
@@ -107,7 +107,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const UNDERGROUND_PATH_ROUTE_8,       4,  4
 	map_const UNDERGROUND_PATH_NORTH_SOUTH,   4, 23 ; marcelnote - fixed from y=24
 	map_const UNDERGROUND_PATH_WEST_EAST,    25,  4
-	map_const VERMILION_POKECENTER_MART,     14,  4 ; marcelnote - merged Vermilion Pokecenter and Mart
+	map_const VERMILION_POKECENTER_MART,     12,  4 ; marcelnote - merged Vermilion Pokecenter and Mart
 	map_const VERMILION_GOOD_ROD_HOUSE,       4,  4 ; marcelnote - Old -> Good Rod
 	map_const POKEMON_FAN_CLUB,               4,  4
 	map_const VERMILION_PIDGEY_HOUSE,         4,  4
@@ -126,11 +126,11 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const DIGLETTS_CAVE,                 20, 18
 	map_const DIGLETTS_CAVE_ROUTE_11,         3,  3 ; marcelnote - was 4, 4
 	map_const ROUTE_11_GATE,                  4, 11 ; marcelnote - merged Route11Gate floors
-	map_const ROCK_TUNNEL_POKECENTER,         7,  4
+	map_const ROCK_TUNNEL_POKECENTER,        12,  4 ; marcelnote - use same blk as other Pokecenters
 	map_const ROCK_TUNNEL_1F,                20, 18
 	map_const ROCK_TUNNEL_B1F,               20, 18
 	map_const POWER_PLANT,                   20, 18
-	map_const LAVENDER_POKECENTER_MART,      14,  4 ; marcelnote - merged Lavender Pokecenter and Mart
+	map_const LAVENDER_POKECENTER_MART,      12,  4 ; marcelnote - merged Lavender Pokecenter and Mart
 	map_const MR_FUJIS_HOUSE,                 4,  4
 	map_const NAME_RATERS_HOUSE,              4,  4
 	map_const LAVENDER_CUBONE_HOUSE,          4,  4
@@ -143,7 +143,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const POKEMON_TOWER_7F,              10,  9
 	map_const ROUTE_12_GATE,                 11,  4 ; marcelnote - merged Route12Gate floors
 	map_const ROUTE_12_FISHING_GUIDE_HOUSE,   4,  4 ; marcelnote - Super Rod -> Fishing Guide
-	map_const CELADON_POKECENTER,             7,  4
+	map_const CELADON_POKECENTER,            12,  4 ; marcelnote - use same blk as other Pokecenters
 	map_const CELADON_MART_1F2F3F,           10, 18 ; marcelnote - merged 1F 2F 3F
 	map_const CELADON_MART_4F5F6F,           10, 18 ; marcelnote - merged 4F 5F + new 6F
 	map_const CELADON_MART_ROOF,             10,  6 ; marcelnote - expanded from y=4 for building front
@@ -168,7 +168,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const ROUTE_16_GATE,                  4, 13 ; marcelnote - merged Route16Gate floors
 	map_const ROUTE_16_FLY_HOUSE,             4,  4
 	map_const ROUTE_18_GATE,                  4, 11 ; marcelnote - merged Route18Gate floors
-	map_const SAFFRON_POKECENTER_MART,       14,  4 ; marcelnote - merged Saffron Pokecenter and Mart
+	map_const SAFFRON_POKECENTER_MART,       12,  4 ; marcelnote - merged Saffron Pokecenter and Mart
 	map_const COPYCATS_HOUSE,                11,  4 ; marcelnote - merged Copycat's house floors
 	map_const FIGHTING_DOJO,                  5,  6
 	map_const SAFFRON_PIDGEY_HOUSE,           4,  4
@@ -188,7 +188,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const SILPH_CO_10F,                   8,  9
 	map_const SILPH_CO_11F,                   9,  9
 	map_const SILPH_CO_ELEVATOR,              2,  2
-	map_const FUCHSIA_POKECENTER_MART,       14,  4 ; marcelnote - merged Fuchsia Pokecenter and Mart
+	map_const FUCHSIA_POKECENTER_MART,       12,  4 ; marcelnote - merged Fuchsia Pokecenter and Mart
 	map_const FUCHSIA_BILLS_GRANDPAS_HOUSE,   4,  4
 	map_const WARDENS_HOUSE,                  5,  4
 	map_const FUCHSIA_MEETING_ROOM,           7,  4
@@ -211,7 +211,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const SEAFOAM_ISLANDS_B2F,           15,  9
 	map_const SEAFOAM_ISLANDS_B3F,           15,  9
 	map_const SEAFOAM_ISLANDS_B4F,           15,  9
-	map_const CINNABAR_POKECENTER_MART,      14,  4 ; marcelnote - merged Cinnabar Pokecenter and Mart
+	map_const CINNABAR_POKECENTER_MART,      12,  4 ; marcelnote - merged Cinnabar Pokecenter and Mart
 	map_const CINNABAR_LAB,                  30,  4 ; marcelnote - merged Cinnabar Lab maps
 	map_const CINNABAR_GYM,                  10,  9
 	map_const POKEMON_MANSION_1F,            15, 14
@@ -220,7 +220,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const POKEMON_MANSION_B1F,           15, 14
 	map_const CINNABAR_VOLCANO_1FB1F,        14, 18 ; marcelnote - new map
 	map_const CINNABAR_VOLCANO_2F,           17, 15 ; marcelnote - new map
-	map_const MANDARIN_POKECENTER_MART,      14,  4 ; marcelnote - new map
+	map_const MANDARIN_POKECENTER_MART,      12,  4 ; marcelnote - new map
 	map_const MANDARIN_SURF_SHOP,             4,  4 ; marcelnote - new map
 	map_const MANDARIN_HOTEL,                33,  6 ; marcelnote - new map
 	map_const MANDARIN_SILPH_CO,              4, 25 ; marcelnote - new map

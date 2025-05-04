@@ -14,8 +14,8 @@ Overworld_Coll::
 BigHouse_Coll::  ; marcelnote - merged REDS_HOUSE tilesets, added $04 (carpet)
 	coll_tiles $01, $02, $03, $04, $11, $12, $13, $14, $1c, $1a
 
-Pokecenter_Coll::
-	coll_tiles $11, $1a, $1c, $3c, $5e
+Pokecenter_Coll::  ; marcelnote - modified tileset
+	coll_tiles $10, $11, $14, $5c, $5e
 
 Gym_Coll::
 	coll_tiles $11, $16, $19, $2b, $3c, $3d, $3f, $4a, $4c, $4d, $03
