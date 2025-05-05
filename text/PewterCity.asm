@@ -115,3 +115,10 @@ _PewterCitySignText::
 	line "A Stone Gray"
 	cont "City"
 	done
+
+_PewterCityPhoneText:: ; marcelnote - new pay phones
+	text "A pay phone?"
+
+	para "It doesn't seem"
+	line "to be working..."
+	done
