@@ -195,6 +195,7 @@ PewterCity_TextPointers:
 	dw_const PewterCityMuseumSignText,             TEXT_PEWTERCITY_MUSEUM_SIGN
 	dw_const PewterCityGymSignText,                TEXT_PEWTERCITY_GYM_SIGN
 	dw_const PewterCitySignText,                   TEXT_PEWTERCITY_SIGN
+	dw_const PewterCityPhoneText,                  TEXT_PEWTERCITY_PHONE ; marcelnote - new pay phones
 	dw_const PewterCitySuperNerd1ItsRightHereText, TEXT_PEWTERCITY_SUPER_NERD1_ITS_RIGHT_HERE
 	dw_const PewterCityYoungsterGoTakeOnBrockText, TEXT_PEWTERCITY_YOUNGSTER_GO_TAKE_ON_BROCK
 
@@ -321,4 +322,8 @@ PewterCityGymSignText:
 
 PewterCitySignText:
 	text_far _PewterCitySignText
+	text_end
+
+PewterCityPhoneText: ; marcelnote - new pay phones
+	text_far _PewterCityPhoneText
 	text_end

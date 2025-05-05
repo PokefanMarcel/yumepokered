@@ -6,7 +6,7 @@
 	const_export PEWTERCITY_YOUNGSTER
 
 PewterCity_Object:
-	db $a ; border block
+	db $2c ; border block
 
 	def_warp_events
 	warp_event 14,  7, PEWTER_MUSEUM, 1 ; marcelnote - merged Pewter Museum floors
@@ -25,6 +25,7 @@ PewterCity_Object:
 	bg_event 15,  9, TEXT_PEWTERCITY_MUSEUM_SIGN
 	bg_event 11, 17, TEXT_PEWTERCITY_GYM_SIGN
 	bg_event 25, 23, TEXT_PEWTERCITY_SIGN
+	bg_event 10, 23, TEXT_PEWTERCITY_PHONE ; marcelnote - new pay phones
 
 	def_object_events
 	object_event  8, 15, SPRITE_COOLTRAINER_F, STAY, NONE, TEXT_PEWTERCITY_COOLTRAINER_F
