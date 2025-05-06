@@ -3,7 +3,6 @@ WarpTileIDPointers:
 	dw .OverworldWarpTileIDs
 	dw .BigHouseWarpTileIDs ; marcelnote - merged REDS_HOUSE tilesets
 	dw .ForestWarpTileIDs
-	dw .SafariWarpTileIDs ; marcelnote ; new tileset from FOREST
 	dw .SafariWarpTileIDs ; marcelnote - new tileset from FOREST
 	dw .PokecenterWarpTileIDs
 	dw .GymWarpTileIDs
