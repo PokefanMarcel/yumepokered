@@ -3,7 +3,7 @@
 	const_export CELADONMARTROOF_LITTLE_GIRL
 
 CeladonMartRoof_Object:
-	db $42 ; border block
+	db $1b ; border block
 
 	def_warp_events
 	warp_event 15,  2, CELADON_MART_4F5F6F, 8 ; marcelnote - merged 4F 5F + new 6F

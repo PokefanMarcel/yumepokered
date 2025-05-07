@@ -1,2 +1,2 @@
-	map_header CeladonMartRoof, CELADON_MART_ROOF, LOBBY, 0
+	map_header CeladonMartRoof, CELADON_MART_ROOF, GAME, 0 ; marcelnote - changed tileset
 	end_map_header
