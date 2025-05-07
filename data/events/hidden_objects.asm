@@ -317,7 +317,7 @@ CeladonGymHiddenObjects:
 	hidden_object  6, 15, SPRITE_FACING_UP, GymStatues
 	db -1 ; end
 
-GameCornerHiddenObjects:
+GameCornerHiddenObjects: ; marcelnote - adjusted for new map size
 	hidden_object 18, 11, ANY_FACING, StartSlotMachine
 	hidden_object 18, 10, ANY_FACING, StartSlotMachine
 	hidden_object 18,  9, ANY_FACING, StartSlotMachine
@@ -355,6 +355,7 @@ GameCornerHiddenObjects:
 	hidden_object  1, 10, ANY_FACING, StartSlotMachine
 	hidden_object  1, 11, ANY_FACING, StartSlotMachine
 
+	; marcelnote - see also data/events/hidden_coins.asm
 	hidden_object  0,  4, COIN+10, HiddenCoins
 	hidden_object  1, 12, COIN+10, HiddenCoins
 	hidden_object  3,  7, COIN+20, HiddenCoins
