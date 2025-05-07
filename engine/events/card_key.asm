@@ -50,11 +50,9 @@ PrintCardKeyText:
 	ld [wCardKeyDoorX], a
 	ld a, [wCurMap]
 	cp SILPH_CO_11F
-	jr nz, .notSilphCo11F
-	ld a, $3
-	jr .replaceCardKeyDoorTileBlock
-.notSilphCo11F
 	ld a, $e
+	jr nz, .replaceCardKeyDoorTileBlock
+	ld a, $3 ; Silph Co 11F uses different tileset
 .replaceCardKeyDoorTileBlock
 	ld [wNewTileBlockID], a
 	predef ReplaceTileBlock
