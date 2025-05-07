@@ -240,14 +240,17 @@ GameCornerBeauty2Text:
 GameCornerFishingGuruText:
 	text_asm
 	CheckEvent EVENT_GOT_10_COINS
-	jr nz, .alreadyGotNpcCoins
+	ld hl, .WinsComeAndGoText
+	jr nz, .print_text ; already got coins
 	ld hl, .WantToPlayText
 	call PrintText
 	ld b, COIN_CASE
 	call IsItemInBag
-	jr z, .dontHaveCoinCase
+	ld hl, GameCornerOopsForgotCoinCaseText
+	jr z, .print_text ; don't have coin case
 	call Has9990Coins
-	jr nc, .coinCaseFull
+	ld hl, .DontNeedMyCoinsText ; coin case full
+	jr nc, .print_text
 	xor a
 	ldh [hUnusedCoinsByte], a
 	ldh [hCoins], a
@@ -261,16 +264,7 @@ GameCornerFishingGuruText:
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	ld hl, .Received10CoinsText
-	jr .print_ret
-.alreadyGotNpcCoins
-	ld hl, .WinsComeAndGoText
-	jr .print_ret
-.coinCaseFull
-	ld hl, .DontNeedMyCoinsText
-	jr .print_ret
-.dontHaveCoinCase
-	ld hl, GameCornerOopsForgotCoinCaseText
-.print_ret
+.print_text
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
@@ -320,14 +314,17 @@ GameCornerGamblerText:
 GameCornerClerk2Text:
 	text_asm
 	CheckEvent EVENT_GOT_20_COINS_2
-	jr nz, .alreadyGotNpcCoins
+	ld hl, .INeedMoreCoinsText
+	jr nz, .print_text ; already got coins
 	ld hl, .WantSomeCoinsText
 	call PrintText
 	ld b, COIN_CASE
 	call IsItemInBag
-	jr z, .dontHaveCoinCase
+	ld hl, GameCornerOopsForgotCoinCaseText
+	jr z, .print_text ; don't have coin case
 	call Has9990Coins
-	jr nc, .coinCaseFull
+	ld hl, .YouHaveLotsOfCoinsText
+	jr nc, .print_text ; coin case full
 	xor a
 	ldh [hUnusedCoinsByte], a
 	ldh [hCoins], a
@@ -339,16 +336,7 @@ GameCornerClerk2Text:
 	predef AddBCDPredef
 	SetEvent EVENT_GOT_20_COINS_2
 	ld hl, .Received20CoinsText
-	jr .print_ret
-.alreadyGotNpcCoins
-	ld hl, .INeedMoreCoinsText
-	jr .print_ret
-.coinCaseFull
-	ld hl, .YouHaveLotsOfCoinsText
-	jr .print_ret
-.dontHaveCoinCase
-	ld hl, GameCornerOopsForgotCoinCaseText
-.print_ret
+.print_text
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
@@ -372,14 +360,17 @@ GameCornerClerk2Text:
 GameCornerGentlemanText:
 	text_asm
 	CheckEvent EVENT_GOT_20_COINS
-	jr nz, .alreadyGotNpcCoins
+	ld hl, .CloselyWatchTheReelsText
+	jr nz, .print_text ; already got coins
 	ld hl, .ThrowingMeOffText
 	call PrintText
 	ld b, COIN_CASE
 	call IsItemInBag
-	jr z, .dontHaveCoinCase
+	ld hl, GameCornerOopsForgotCoinCaseText
+	jr z, .print_text ; don't have coin case
 	call Has9990Coins
-	jr z, .coinCaseFull
+	ld hl, .YouGotYourOwnCoinsText
+	jr z, .print_text ; coin case full
 	xor a
 	ldh [hUnusedCoinsByte], a
 	ldh [hCoins], a
@@ -391,16 +382,7 @@ GameCornerGentlemanText:
 	predef AddBCDPredef
 	SetEvent EVENT_GOT_20_COINS
 	ld hl, .Received20CoinsText
-	jr .print_ret
-.alreadyGotNpcCoins
-	ld hl, .CloselyWatchTheReelsText
-	jr .print_ret
-.coinCaseFull
-	ld hl, .YouGotYourOwnCoinsText
-	jr .print_ret
-.dontHaveCoinCase
-	ld hl, GameCornerOopsForgotCoinCaseText
-.print_ret
+.print_text
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
