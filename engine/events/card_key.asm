@@ -5,7 +5,8 @@ PrintCardKeyText:
 .silphCoMapListLoop
 	ld a, [hli]
 	cp -1
-	ret z
+	;ret z
+	jp z, PrintLiveWaterText ; marcelnote - new for Power Plant
 	cp b
 	jr nz, .silphCoMapListLoop
 	predef GetTileAndCoordsInFrontOfPlayer
@@ -85,6 +86,24 @@ CardKeyFailText::
 CardKeyNeedsUpdateText::
 	text_far _CardKeyNeedsUpdateText
 	text_end
+
+
+PrintLiveWaterText: ; marcelnote - new for Power Plant
+	ld a, [wCurMapTileset]
+	cp PLANT
+	ret nz
+	predef GetTileAndCoordsInFrontOfPlayer
+	ld a, [wTileInFrontOfPlayer]
+	cp $04
+	ret nz
+	tx_pre_id LiveWaterText
+	ldh [hTextID], a
+	jp PrintPredefTextID
+
+LiveWaterText:: ; marcelnote - for new Power Plant
+	text_far _PowerPlantLiveWaterText
+	text_end
+
 
 ; d = Y
 ; e = X

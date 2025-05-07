@@ -105,7 +105,7 @@ Note: colors are only available in SGB mode for now.
 This project owes a lot to existing works, and above all to the pret's [pokered](https://github.com/pret/pokered) disassemby project, but also:
 
 - [Shinpokered](https://github.com/jojobear13/shinpokered): playing as girl, experience bar, temporary field moves, many bug fixes,
-- [PureRGB](https://github.com/Vortyne/pureRGB): overworld HM use, ROM space management, repel reuse prompt, use items with Select, lava graphics, many other code snippets,
+- [PureRGB](https://github.com/Vortyne/pureRGB): overworld HM use, ROM space management, repel reuse prompt, use items with Select, lava and barrel graphics, many other code snippets,
 - [Extreme Yellow](https://github.com/RainbowMetalPigeon/ExtremeYellow): overworld HM use, dynamic TM seller,
 - [Yellow Legacy](https://github.com/cRz-Shadows/Pokemon_Yellow_Legacy): inspiration for some balance changes,
 - [pokered-crysaudio](https://github.com/dannye/pokered-crysaudio/tree/1edc6019fb8630bccd94f0b0e7dd4082cf7f4245): updated sound engine,

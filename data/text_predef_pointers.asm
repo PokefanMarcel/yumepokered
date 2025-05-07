@@ -73,6 +73,7 @@ TextPredefs::
 	add_tx_pre PokemonStuffText                     ; 42
 	add_tx_pre HotSnacksText                        ; marcelnote - new for Marts
 	add_tx_pre ColdDrinksText                       ; marcelnote - new for Marts
+	add_tx_pre LiveWaterText                        ; marcelnote - new for Power Plant
 	add_tx_pre MonCouldSurfText                     ; 43 ; marcelnote - HM overworld use
 	add_tx_pre WantToSurfText                       ; 44 ; marcelnote - HM overworld use
 	add_tx_pre CyclingIsFunOverworldText            ; 45 ; marcelnote - HM overworld use

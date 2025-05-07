@@ -23,6 +23,7 @@ WarpTileIDPointers:
 	dw .AcademyWarpTileIDs    ; marcelnote - new tileset
 	dw .MountainWarpTileIDs   ; marcelnote - new tileset
 	dw .BeachHouseWarpTileIDs ; marcelnote - new tileset
+	dw .PlantWarpTileIDs      ; marcelnote - new tileset for Power Plant
 	assert_table_length NUM_TILESETS
 
 MACRO warp_tiles
@@ -89,6 +90,7 @@ ENDM
 	db $1B, $3B
 	; fallthrough
 .ShipPortWarpTileIDs:
-.ForestWarpTileIDs: ; marcelnote - no need for warp tiles anymore
+.ForestWarpTileIDs:     ; marcelnote - no need for warp tiles anymore
 .BeachHouseWarpTileIDs: ; marcelnote - new tileset from pokeyellow
+.PlantWarpTileIDs:      ; marcelnote - new tileset for Power Plant
 	warp_tiles ; end

@@ -73,3 +73,6 @@ Mountain_Coll::  ; marcelnote - new tileset
 
 BeachHouse_Coll::  ; marcelnote - new tileset from pokeyellow
 	coll_tiles $01, $11, $12, $14
+
+Plant_Coll:: ; marcelnote - new tileset for Power Plant
+	coll_tiles $01, $10, $11
