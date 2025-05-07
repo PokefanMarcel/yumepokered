@@ -4,9 +4,9 @@ UpdateCinnabarGymGateTileBlocks::
 CheckForHiddenObjectOrBookshelfOrCardKeyDoor::
 	ldh a, [hLoadedROMBank]
 	push af
-	ldh a, [hJoyHeld]
-	bit BIT_A_BUTTON, a
-	jr z, .nothingFound
+	;ldh a, [hJoyHeld] ; marcelnote - button is already checked before calling the function
+	;bit BIT_A_BUTTON, a
+	;jr z, .nothingFound
 ; A button is pressed
 	ld a, BANK(CheckForHiddenObject)
 	ld [MBC1RomBank], a
@@ -29,7 +29,7 @@ CheckForHiddenObjectOrBookshelfOrCardKeyDoor::
 	ldh a, [hInteractedWithBookshelf]
 	and a
 	jr z, .done
-.nothingFound
+;.nothingFound
 	ld a, $ff
 .done
 	ldh [hItemAlreadyFound], a
