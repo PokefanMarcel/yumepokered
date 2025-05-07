@@ -151,7 +151,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const CELADON_MANSION,                4, 33 ; marcelnote - merged CeladonMansion floors, added 4F
 	map_const CELADON_MANSION_ROOF,           4,  8 ; marcelnote - expanded from y=6 for building front
 	map_const CELADON_MANSION_ROOF_HOUSE,     4,  4
-	map_const GAME_CORNER,                   10,  9
+	map_const GAME_CORNER,                   10,  7 ; marcelnote - reduced from 10, 9 (unused blocks)
 	map_const GAME_CORNER_PRIZE_ROOM,         5,  4
 	map_const CELADON_DINER,                  5,  4
 	map_const CELADON_CHIEF_HOUSE,            4,  4

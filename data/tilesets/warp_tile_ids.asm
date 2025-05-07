@@ -24,6 +24,7 @@ WarpTileIDPointers:
 	dw .MountainWarpTileIDs   ; marcelnote - new tileset
 	dw .BeachHouseWarpTileIDs ; marcelnote - new tileset
 	dw .PlantWarpTileIDs      ; marcelnote - new tileset for Power Plant
+	dw .GameWarpTileIDs       ; marcelnote - new tileset for Power Plant
 	assert_table_length NUM_TILESETS
 
 MACRO warp_tiles
@@ -44,6 +45,7 @@ ENDM
 	warp_tiles $1A, $1C
 
 .PokecenterWarpTileIDs:
+.GameWarpTileIDs: ; marcelnote - new tileset from Lobby
 .ClubWarpTileIDs: ; marcelnote - added stairs for BattleHall
 	warp_tiles $5E
 

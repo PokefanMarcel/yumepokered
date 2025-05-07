@@ -11,6 +11,8 @@ ENDM
 ; data/tilesets/collision_tile_ids.asm
 ; data/tilesets/pair_collision_tile_ids.asm
 ; data/tilesets/bookshelf_tile_ids.asm
+; data/tilesets/dungeon_tilesets.asm
+; data/tilesets/door_tile_ids.asm
 
 Tilesets:
 	table_width 12
@@ -39,4 +41,5 @@ Tilesets:
 	tileset Mountain,     -1, -1, -1,  -1, TILEANIM_WATER   ; marcelnote - new tileset
 	tileset BeachHouse,   -1, -1, -1,  -1, TILEANIM_NONE    ; marcelnote - new tileset from pokeyellow
 	tileset Plant,        -1, -1, -1,  -1, TILEANIM_PLANT   ; marcelnote - new tileset for Power Plant
+	tileset Game,        $46,$57, -1,  -1, TILEANIM_NONE    ; marcelnote - new tileset for Power Plant
 	assert_table_length NUM_TILESETS

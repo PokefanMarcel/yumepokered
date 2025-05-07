@@ -13,6 +13,7 @@ DoorTileIDPointers:
 	dbw PLATEAU,     .PlateauDoorTileIDs
 	dbw ACADEMY,     .AcademyDoorTileIDs    ; marcelnote - new tileset
 	dbw MOUNTAIN,    .MountainDoorTileIDs   ; marcelnote - new tileset
+	dbw GAME,        .GameDoorTileIDs       ; marcelnote - new tileset
 	db -1 ; end
 
 MACRO door_tiles
@@ -29,6 +30,7 @@ ENDM
 .SafariDoorTileIDs: ; marcelnote - new tileset from FOREST
 	door_tiles $3a
 
+.GameDoorTileIDs:
 .PokecenterDoorTileIDs: ; marcelnote - was MartDoorTileIDs, replaced
 	door_tiles $5e
 

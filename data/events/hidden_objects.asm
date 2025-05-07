@@ -318,54 +318,55 @@ CeladonGymHiddenObjects:
 	db -1 ; end
 
 GameCornerHiddenObjects:
-	hidden_object 18, 15, ANY_FACING, StartSlotMachine
-	hidden_object 18, 14, ANY_FACING, StartSlotMachine
-	hidden_object 18, 13, ANY_FACING, StartSlotMachine
-	hidden_object 18, 12, ANY_FACING, StartSlotMachine
 	hidden_object 18, 11, ANY_FACING, StartSlotMachine
-	hidden_object 18, 10, SLOTS_SOMEONESKEYS, StartSlotMachine
+	hidden_object 18, 10, ANY_FACING, StartSlotMachine
+	hidden_object 18,  9, ANY_FACING, StartSlotMachine
+	hidden_object 18,  8, ANY_FACING, StartSlotMachine
+	hidden_object 18,  7, ANY_FACING, StartSlotMachine
+	hidden_object 18,  6, SLOTS_SOMEONESKEYS, StartSlotMachine
+	hidden_object 13,  6, ANY_FACING, StartSlotMachine
+	hidden_object 13,  7, ANY_FACING, StartSlotMachine
+	hidden_object 13,  8, SLOTS_OUTTOLUNCH, StartSlotMachine
+	hidden_object 13,  9, ANY_FACING, StartSlotMachine
 	hidden_object 13, 10, ANY_FACING, StartSlotMachine
 	hidden_object 13, 11, ANY_FACING, StartSlotMachine
-	hidden_object 13, 12, SLOTS_OUTTOLUNCH, StartSlotMachine
-	hidden_object 13, 13, ANY_FACING, StartSlotMachine
-	hidden_object 13, 14, ANY_FACING, StartSlotMachine
-	hidden_object 13, 15, ANY_FACING, StartSlotMachine
-	hidden_object 12, 15, ANY_FACING, StartSlotMachine
-	hidden_object 12, 14, ANY_FACING, StartSlotMachine
-	hidden_object 12, 13, ANY_FACING, StartSlotMachine
-	hidden_object 12, 12, ANY_FACING, StartSlotMachine
 	hidden_object 12, 11, ANY_FACING, StartSlotMachine
 	hidden_object 12, 10, ANY_FACING, StartSlotMachine
+	hidden_object 12,  9, ANY_FACING, StartSlotMachine
+	hidden_object 12,  8, ANY_FACING, StartSlotMachine
+	hidden_object 12,  7, ANY_FACING, StartSlotMachine
+	hidden_object 12,  6, ANY_FACING, StartSlotMachine
+	hidden_object  7,  6, ANY_FACING, StartSlotMachine
+	hidden_object  7,  7, ANY_FACING, StartSlotMachine
+	hidden_object  7,  8, ANY_FACING, StartSlotMachine
+	hidden_object  7,  9, ANY_FACING, StartSlotMachine
 	hidden_object  7, 10, ANY_FACING, StartSlotMachine
 	hidden_object  7, 11, ANY_FACING, StartSlotMachine
-	hidden_object  7, 12, ANY_FACING, StartSlotMachine
-	hidden_object  7, 13, ANY_FACING, StartSlotMachine
-	hidden_object  7, 14, ANY_FACING, StartSlotMachine
-	hidden_object  7, 15, ANY_FACING, StartSlotMachine
-	hidden_object  6, 15, ANY_FACING, StartSlotMachine
-	hidden_object  6, 14, ANY_FACING, StartSlotMachine
-	hidden_object  6, 13, ANY_FACING, StartSlotMachine
-	hidden_object  6, 12, SLOTS_OUTOFORDER, StartSlotMachine
 	hidden_object  6, 11, ANY_FACING, StartSlotMachine
 	hidden_object  6, 10, ANY_FACING, StartSlotMachine
+	hidden_object  6,  9, ANY_FACING, StartSlotMachine
+	hidden_object  6,  8, SLOTS_OUTOFORDER, StartSlotMachine
+	hidden_object  6,  7, ANY_FACING, StartSlotMachine
+	hidden_object  6,  6, ANY_FACING, StartSlotMachine
+	hidden_object  1,  6, ANY_FACING, StartSlotMachine
+	hidden_object  1,  7, ANY_FACING, StartSlotMachine
+	hidden_object  1,  8, ANY_FACING, StartSlotMachine
+	hidden_object  1,  9, ANY_FACING, StartSlotMachine
 	hidden_object  1, 10, ANY_FACING, StartSlotMachine
 	hidden_object  1, 11, ANY_FACING, StartSlotMachine
-	hidden_object  1, 12, ANY_FACING, StartSlotMachine
-	hidden_object  1, 13, ANY_FACING, StartSlotMachine
-	hidden_object  1, 14, ANY_FACING, StartSlotMachine
-	hidden_object  1, 15, ANY_FACING, StartSlotMachine
-	hidden_object  0,  8, COIN+10, HiddenCoins
-	hidden_object  1, 16, COIN+10, HiddenCoins
-	hidden_object  3, 11, COIN+20, HiddenCoins
-	hidden_object  3, 14, COIN+10, HiddenCoins
-	hidden_object  4, 12, COIN+10, HiddenCoins
-	hidden_object  9, 12, COIN+20, HiddenCoins
-	hidden_object  9, 15, COIN+10, HiddenCoins
-	hidden_object 16, 14, COIN+10, HiddenCoins
-	hidden_object 10, 16, COIN+10, HiddenCoins
-	hidden_object 11,  7, COIN+40, HiddenCoins
-	hidden_object 15,  8, COIN+100, HiddenCoins
-	hidden_object 12, 15, COIN+10, HiddenCoins
+
+	hidden_object  0,  4, COIN+10, HiddenCoins
+	hidden_object  1, 12, COIN+10, HiddenCoins
+	hidden_object  3,  7, COIN+20, HiddenCoins
+	hidden_object  3, 10, COIN+10, HiddenCoins
+	hidden_object  4,  8, COIN+10, HiddenCoins
+	hidden_object  9,  8, COIN+20, HiddenCoins
+	hidden_object  9, 11, COIN+10, HiddenCoins
+	hidden_object 16, 10, COIN+10, HiddenCoins
+	hidden_object 10, 12, COIN+10, HiddenCoins
+	hidden_object 11,  3, COIN+40, HiddenCoins
+	hidden_object 15,  4, COIN+100, HiddenCoins
+	hidden_object 12, 11, COIN+10, HiddenCoins
 	db -1 ; end
 
 FuchsiaGymHiddenObjects:
@@ -481,7 +482,7 @@ CeruleanCaveB1FHiddenObjects:
 	hidden_object 27,  3, ULTRA_BALL, HiddenItems
 	db -1 ; end
 
-PowerPlantHiddenObjects:
+PowerPlantHiddenObjects: ; put 1 item here if adding new Electrode
 	hidden_object 17, 16, MAX_ELIXIR, HiddenItems
 	hidden_object 12,  1, PP_UP, HiddenItems
 	db -1 ; end

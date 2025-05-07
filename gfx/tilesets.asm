@@ -72,3 +72,5 @@ BeachHouse_GFX::    INCBIN "gfx/tilesets/beach_house.2bpp" ; marcelnote - new ti
 BeachHouse_Block::  INCBIN "gfx/blocksets/beach_house.bst" ; marcelnote - new tileset from pokeyellow
 Plant_GFX::         INCBIN "gfx/tilesets/plant.2bpp"       ; marcelnote - new for Power Plant
 Plant_Block::       INCBIN "gfx/blocksets/plant.bst"       ; marcelnote - new for Power Plant
+Game_GFX::          INCBIN "gfx/tilesets/game.2bpp"        ; marcelnote - new for Game Corner
+Game_Block::        INCBIN "gfx/blocksets/game.bst"        ; marcelnote - new for Game Corner

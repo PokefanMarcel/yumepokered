@@ -30,9 +30,9 @@ GameCornerSetRocketHideoutDoorTile:
 	ret z
 	CheckEvent EVENT_FOUND_ROCKET_HIDEOUT
 	ret nz
-	ld a, $2a
+	ld a, $15 ; marcelnote - changed blockset
 	ld [wNewTileBlockID], a
-	lb bc, 2, 8
+	lb bc, 0, 8 ; marcelnote - reduced map size
 	predef_jump ReplaceTileBlock
 
 GameCornerReenterMapAfterPlayerLoss:
@@ -466,9 +466,9 @@ GameCornerPosterText:
 	call PlaySound
 	call WaitForSoundToFinish
 	SetEvent EVENT_FOUND_ROCKET_HIDEOUT
-	ld a, $43
+	ld a, $16 ; marcelnote - changed blockset
 	ld [wNewTileBlockID], a
-	lb bc, 2, 8
+	lb bc, 0, 8 ; marcelnote - reduced map size
 	predef ReplaceTileBlock
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
