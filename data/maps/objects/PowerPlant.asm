@@ -16,7 +16,7 @@
 	const_export POWERPLANT_THUNDER_STONE ; marcelnote - new
 
 PowerPlant_Object:
-	db $2e ; border block
+	db $0 ; border block ; marcelnote - changed for new tileset
 
 	def_warp_events
 	warp_event  4, 35, LAST_MAP, 4
@@ -24,6 +24,8 @@ PowerPlant_Object:
 	warp_event  0, 11, LAST_MAP, 5 ; marcelnote - exit now leads to western entrance
 
 	def_bg_events
+	bg_event 19, 18, TEXT_POWERPLANT_COMPUTER1
+	bg_event 27, 18, TEXT_POWERPLANT_COMPUTER2
 
 	def_object_events
 	object_event  9, 20, SPRITE_POKE_BALL, STAY, NONE, TEXT_POWERPLANT_VOLTORB1, VOLTORB, 40

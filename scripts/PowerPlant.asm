@@ -5,7 +5,83 @@ PowerPlant_Script:
 	ld a, [wPowerPlantCurScript]
 	call ExecuteCurMapScriptInTable
 	ld [wPowerPlantCurScript], a
+	call PowerPlantSetWaterBlocksScript
 	ret
+
+PowerPlantSetWaterBlocksScript:
+	ld hl, wCurrentMapScriptFlags
+	bit BIT_CUR_MAP_LOADED_1, [hl]
+	res BIT_CUR_MAP_LOADED_1, [hl]
+	ret z
+	CheckEvent EVENT_BEAT_POWER_PLANT_VOLTORB_0
+	ld hl, .coordsVoltorb1
+	call z, .switchBlocks
+	CheckEvent EVENT_BEAT_POWER_PLANT_VOLTORB_2
+	ld hl, .coordsVoltorb3
+	call z, .switchBlocks
+	CheckEvent EVENT_BEAT_POWER_PLANT_VOLTORB_3
+	ld hl, .coordsElectrode1
+	call z, .switchBlocks
+	CheckEvent EVENT_BEAT_POWER_PLANT_VOLTORB_4
+	ld hl, .coordsVoltorb4
+	call z, .switchBlocks
+	CheckEvent EVENT_BEAT_POWER_PLANT_VOLTORB_5
+	ld hl, .coordsVoltorb5
+	call z, .switchBlocks
+	CheckEvent EVENT_BEAT_POWER_PLANT_VOLTORB_7
+	ld hl, .coordsVoltorb6
+	call z, .switchBlocks
+	ret
+
+.switchBlocks
+	ld a, [hli]
+	cp -1
+	ret z
+	ld [wNewTileBlockID], a
+	ld a, [hli]
+	ld b, a
+	ld a, [hli]
+	ld c, a
+	push hl
+	predef ReplaceTileBlock
+	pop hl
+	jr .switchBlocks
+
+.coordsVoltorb1 ; #block, y, x
+	db $25, 10,  3
+	db $27, 10,  4
+	db $29, 11,  4
+	db $2b, 11,  5
+	db -1
+
+.coordsVoltorb3 ; #block, y, x
+	db $31, 12,  8
+	db $2d, 12, 10
+	db $25, 14, 11
+	db -1
+
+.coordsElectrode1 ; #block, y, x
+	db $35,  8, 12
+	db $1f,  9, 12
+	db -1
+
+.coordsVoltorb4 ; #block, y, x
+	db $21, 16, 10
+	db $23, 17, 11
+	db -1
+
+.coordsVoltorb5 ; #block, y, x
+	db $3b, 14, 13
+	db $19, 15, 13
+	db $1d, 16, 13
+	db -1
+
+.coordsVoltorb6 ; #block, y, x
+	db $31, 13, 16
+	db $37, 13, 17
+	db $39, 16, 18
+	db -1
+
 
 PowerPlant_ScriptPointers:
 	def_script_pointers
@@ -30,6 +106,8 @@ PowerPlant_TextPointers:
 	dw_const PickUpItemText,           TEXT_POWERPLANT_TM_THUNDER
 	dw_const PickUpItemText,           TEXT_POWERPLANT_TM_REFLECT
 	dw_const PickUpItemText,           TEXT_POWERPLANT_THUNDER_STONE ; marcelnote - new ThunderStone
+	dw_const PowerPlantComputerText,   TEXT_POWERPLANT_COMPUTER1 ; marcelnote - new
+	dw_const PowerPlantComputerText,   TEXT_POWERPLANT_COMPUTER2 ; marcelnote - new
 
 PowerPlantTrainerHeaders:
 	def_trainers
@@ -115,3 +193,7 @@ PowerPlantZapdosBattleText:
 	call PlayCry
 	call WaitForSoundToFinish
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+PowerPlantComputerText: ; marcelnote - new
+	text_far _PowerPlantComputerText
+	text_end

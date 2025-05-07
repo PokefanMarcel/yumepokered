@@ -7,23 +7,27 @@ AnimateTiles::
 	ldh a, [hMovingBGTilesCounter1]
 	inc a
 	ldh [hMovingBGTilesCounter1], a
-	cp 13
+	cp 11
 	ret c
 	jp z, AnimateWaterTile
-	cp 14
+	cp 12
 	jp z, AnimateWaterBollardTile
-	cp 15
+	cp 13
 	jp z, AnimateFlowerTile
-	cp 16
+	cp 14
 	jp z, AnimateLanternLeftTile
-	cp 17
+	cp 15
 	jp z, AnimateLanternRightTile
-	cp 18
+	cp 16
 	jp z, AnimateLavaTile
-	cp 19
+	cp 17
 	jp z, AnimateLavaBubble1Tile
-	cp 20
+	cp 18
 	jp z, AnimateLavaBubble2Tile
+	cp 19
+	jp z, AnimateSlowWaterTile
+	cp 20
+	jp z, AnimateLiveWaterTile
 	cp 21
 	jp z, AnimateWaterfallTile
 	; fallthrough at 22 (maintain an h-period of 22 to keep original speed)
@@ -107,12 +111,20 @@ AnimateWaterBollardTile:
 	ld de, vTileset tile $5e ; water bollard tile
 	jp AnimateFindPointerInTable
 
+AnimateSlowWaterTile:
+	ldh a, [hTileAnimations]
+	bit BIT_ANIM_LIVEWATER, a
+	ret z
+	ld hl, vTileset tile $14 ; water tile
+	jr AnimateLavaTile.got_tile
+
 AnimateLavaTile: ; marcelnote - reuse function initially used for water
 	ldh a, [hTileAnimations]
 	bit BIT_ANIM_LAVA, a
 	ret z
 
 	ld hl, vTileset tile $4B ; lava tile
+.got_tile
 	ld a, [wMovingBGTilesCounter2]
 	rra   ; rotate bit 0 into carry
 	ret c ; don't animate if counter is odd
@@ -223,6 +235,35 @@ AnimateLanternRightTile:
 	ld hl, LanternRightTile2 ; if counter is 6 7
 .copy
 	ld de, vTileset tile $3B ; right lantern tile
+	jp AnimateCopyTile
+
+AnimateLiveWaterTile:
+	ldh a, [hTileAnimations]
+	bit BIT_ANIM_LIVEWATER, a
+	ret z
+
+	ld a, [wMovingBGTilesCounter2]
+	cp 1
+	ld hl, LiveWaterTile1 ; if counter is 0
+	jr c, .copy
+	cp 2
+	ld hl, LiveWaterTile2 ; if counter is 1
+	jr c, .copy
+	cp 3
+	ld hl, LiveWaterTile3 ; if counter is 2
+	jr c, .copy
+	cp 4
+	ld hl, LiveWaterTile4 ; if counter is 3
+	jr c, .copy
+	cp 5
+	ld hl, LiveWaterTile5 ; if counter is 4
+	jr c, .copy
+	cp 6
+	ld hl, LiveWaterTile6 ; if counter is 5
+	jr c, .copy
+	ld hl, LiveWaterTile7 ; if counter is 6 7
+.copy
+	ld de, vTileset tile $15 ; livewater tile
 	jp AnimateCopyTile
 
 
@@ -384,3 +425,11 @@ LavaBubbleTile1:  INCBIN "gfx/tilesets/lava_bubble/lava_bubble1.2bpp"
 LavaBubbleTile2:  INCBIN "gfx/tilesets/lava_bubble/lava_bubble2.2bpp"
 LavaBubbleTile3:  INCBIN "gfx/tilesets/lava_bubble/lava_bubble3.2bpp"
 LavaBubbleTile4:  INCBIN "gfx/tilesets/lava_bubble/lava_bubble4.2bpp"
+
+LiveWaterTile1:  INCBIN "gfx/tilesets/live_water/live_water1.2bpp"
+LiveWaterTile2:  INCBIN "gfx/tilesets/live_water/live_water2.2bpp"
+LiveWaterTile3:  INCBIN "gfx/tilesets/live_water/live_water3.2bpp"
+LiveWaterTile4:  INCBIN "gfx/tilesets/live_water/live_water4.2bpp"
+LiveWaterTile5:  INCBIN "gfx/tilesets/live_water/live_water5.2bpp"
+LiveWaterTile6:  INCBIN "gfx/tilesets/live_water/live_water6.2bpp"
+LiveWaterTile7:  INCBIN "gfx/tilesets/live_water/live_water7.2bpp"

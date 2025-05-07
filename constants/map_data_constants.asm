@@ -24,6 +24,7 @@ DEF MAP_BORDER EQU 3
 	const BIT_ANIM_LANTERN    ; bit 3 = lantern tiles $3A and $3B are animated
 	const BIT_ANIM_LAVA       ; bit 4 = lava tiles $49, $4A, $4B are animated
 	const BIT_ANIM_WATERFALL  ; bit 5 = waterfall tile $48 is animated
+	const BIT_ANIM_LIVEWATER  ; bit 6 = water tile $14 (slowly) and live water tile $15 are animated
 
 	DEF TILEANIM_NONE                     EQU %00000000 ; = 0
 	DEF TILEANIM_WATER                    EQU %00000001 ; = 1
@@ -32,5 +33,6 @@ DEF MAP_BORDER EQU 3
 	DEF TILEANIM_WATER_FLOWER_WBOLLARD    EQU %00000111 ; = 7
 	DEF TILEANIM_LANTERN                  EQU %00001000 ; = 8
 	DEF TILEANIM_CAVERN                   EQU %00110001 ; = 49
+	DEF TILEANIM_PLANT                    EQU (1 << BIT_ANIM_WATERFALL) | (1 << BIT_ANIM_LIVEWATER)
 	; need to change definitions using (1 << BIT_ANIM_WATER) | (1 << BIT_ANIM_FLOWER) | ...
 	; and rename constants according to relevant tileset e.g. TILEANIM_OVERWORLD
