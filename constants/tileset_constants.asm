@@ -30,4 +30,5 @@
 	const MOUNTAIN     ; 25 ; marcelnote - new Mountain tileset
 	const BEACH_HOUSE  ; 24 ; marcelnote - new Beach House tileset from pokeyellow
 	const PLANT        ; 24 ; marcelnote - new tileset for Power Plant
+	const GAME         ; 24 ; marcelnote - new tileset for Game Corner
 DEF NUM_TILESETS EQU const_value

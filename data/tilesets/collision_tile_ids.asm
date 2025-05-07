@@ -76,3 +76,6 @@ BeachHouse_Coll::  ; marcelnote - new tileset from pokeyellow
 
 Plant_Coll:: ; marcelnote - new tileset for Power Plant
 	coll_tiles $01, $10, $11
+
+Game_Coll:: ; marcelnote - new tileset from Lobby
+	coll_tiles $00, $14, $34, $5E
