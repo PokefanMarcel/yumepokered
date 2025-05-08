@@ -6,7 +6,7 @@
 	const_export CELADONDINER_GYM_GUIDE
 
 CeladonDiner_Object:
-	db $f ; border block
+	db $0 ; border block
 
 	def_warp_events
 	warp_event  3,  7, LAST_MAP, 11
