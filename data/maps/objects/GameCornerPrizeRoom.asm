@@ -3,7 +3,7 @@
 	const_export GAMECORNERPRIZEROOM_GAMBLER
 
 GameCornerPrizeRoom_Object:
-	db $f ; border block
+	db $0 ; border block
 
 	def_warp_events
 	warp_event  4,  7, LAST_MAP, 10
