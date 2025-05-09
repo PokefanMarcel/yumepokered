@@ -437,7 +437,7 @@ MakeNPCFacePlayer:
 	ld c, SPRITE_FACING_LEFT
 .facingDirectionDetermined
 	ldh a, [hCurrentSpriteOffset]
-	add $9
+	add SPRITESTATEDATA1_FACINGDIRECTION ; = $9
 	ld l, a
 	ld [hl], c              ; [x#SPRITESTATEDATA1_FACINGDIRECTION]: set facing direction
 	jr notYetMoving
@@ -563,7 +563,7 @@ CheckSpriteAvailability:
 UpdateSpriteImage:
 	ld h, HIGH(wSpriteStateData1)
 	ldh a, [hCurrentSpriteOffset]
-	add $8
+	add SPRITESTATEDATA1_ANIMFRAMECOUNTER ; = $8
 	ld l, a
 	ld a, [hli]        ; x#SPRITESTATEDATA1_ANIMFRAMECOUNTER
 	ld b, a
@@ -574,7 +574,7 @@ UpdateSpriteImage:
 	add b
 	ld b, a
 	ldh a, [hCurrentSpriteOffset]
-	add $2
+	add SPRITESTATEDATA1_IMAGEINDEX ; = $2
 	ld l, a
 	ld [hl], b         ; x#SPRITESTATEDATA1_IMAGEINDEX
 	ret

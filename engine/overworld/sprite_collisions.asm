@@ -1,6 +1,5 @@
 _UpdateSprites::
-	ld h, HIGH(wSpriteStateData1)
-	inc h
+	ld h, HIGH(wSpriteStateData2) ; marcelnote - was HIGH(wSpriteStateData1), inc h
 	ld a, SPRITESTATEDATA2_IMAGEBASEOFFSET
 .spriteLoop
 	ld l, a
