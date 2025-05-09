@@ -42,11 +42,11 @@ DisplayTextID::
 .spriteHandling
 ; get the text ID of the sprite
 	push hl
-	push de
+	;push de ; marcelnote - UpdateSpriteFacingOffsetAndDelayMovement doesn't use de
 	push bc
 	farcall UpdateSpriteFacingOffsetAndDelayMovement ; update the graphics of the sprite the player is talking to (to face the right direction)
 	pop bc
-	pop de
+	;pop de
 	ld hl, wMapSpriteData ; NPC text entries
 	ldh a, [hSpriteIndex]
 	dec a
