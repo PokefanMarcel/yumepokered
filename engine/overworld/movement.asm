@@ -357,7 +357,7 @@ UpdateSpriteInWalkingAnimation:
 .initNextMovementCounter
 	call Random
 	ldh a, [hCurrentSpriteOffset]
-	add $8
+	add SPRITESTATEDATA2_MOVEMENTDELAY ; = $8
 	ld l, a
 	ldh a, [hRandomAdd]
 	and $7f
