@@ -66,15 +66,13 @@ UpdatePlayerSprite:
 	ldh a, [hCurrentSpriteOffset]
 	add SPRITESTATEDATA1_INTRAANIMFRAMECOUNTER ; = $7
 	ld l, a
+	inc [hl]          ; [x#SPRITESTATEDATA1_INTRAANIMFRAMECOUNTER]++
 	ld a, [hl]
-	inc a
-	ld [hl], a
 	cp $4
 	jr nz, .calcImageIndex
 	xor a
-	ld [hl], a
-	inc hl
-	ld a, [hl]
+	ld [hli], a       ; [x#SPRITESTATEDATA1_INTRAANIMFRAMECOUNTER] = 0
+	ld a, [hl]        ; x#SPRITESTATEDATA1_ANIMFRAMECOUNTER
 	inc a
 	and $3
 	ld [hl], a
@@ -273,8 +271,8 @@ TryWalking:
 	add SPRITESTATEDATA1_FACINGDIRECTION ; = $9
 	ld l, a
 	ld [hl], c          ; x#SPRITESTATEDATA1_FACINGDIRECTION
-	ldh a, [hCurrentSpriteOffset]
-	add $3
+	sub SPRITESTATEDATA1_FACINGDIRECTION - SPRITESTATEDATA1_YSTEPVECTOR
+	assert SPRITESTATEDATA1_FACINGDIRECTION > SPRITESTATEDATA1_YSTEPVECTOR
 	ld l, a
 	ld [hl], d          ; x#SPRITESTATEDATA1_YSTEPVECTOR
 	inc l
@@ -309,14 +307,12 @@ UpdateSpriteInWalkingAnimation:
 	ldh a, [hCurrentSpriteOffset]
 	add SPRITESTATEDATA1_INTRAANIMFRAMECOUNTER ; = $7
 	ld l, a
-	ld a, [hl]                       ; x#SPRITESTATEDATA1_INTRAANIMFRAMECOUNTER
-	inc a
-	ld [hl], a                       ; [x#SPRITESTATEDATA1_INTRAANIMFRAMECOUNTER]++
+	inc [hl]                         ; [x#SPRITESTATEDATA1_INTRAANIMFRAMECOUNTER]++
+	ld a, [hl]
 	cp $4
 	jr nz, .noNextAnimationFrame
 	xor a
-	ld [hl], a                       ; [x#SPRITESTATEDATA1_INTRAANIMFRAMECOUNTER] = 0
-	inc l
+	ld [hli], a                      ; [x#SPRITESTATEDATA1_INTRAANIMFRAMECOUNTER] = 0
 	ld a, [hl]                       ; x#SPRITESTATEDATA1_ANIMFRAMECOUNTER
 	inc a
 	and $3
@@ -385,8 +381,7 @@ UpdateSpriteMovementDelay:
 	ldh a, [hCurrentSpriteOffset]
 	add SPRITESTATEDATA2_MOVEMENTBYTE1 ; = $6
 	ld l, a
-	ld a, [hl]              ; x#SPRITESTATEDATA2_MOVEMENTBYTE1
-	inc l
+	ld a, [hli]             ; x#SPRITESTATEDATA2_MOVEMENTBYTE1
 	inc l
 	cp WALK
 	jr nc, .tickMoveCounter ; values WALK or STAY
@@ -546,7 +541,7 @@ CheckSpriteAvailability:
 	and a
 	ret nz           ; if player is currently walking, we're done
 	call UpdateSpriteImage
-	inc h
+	inc h ; HIGH(wSpriteStateData2)
 	ldh a, [hCurrentSpriteOffset]
 	add SPRITESTATEDATA2_GRASSPRIORITY ; = $7
 	ld l, a
@@ -689,14 +684,14 @@ CanWalkOntoTile:
 	ld [hli], a        ; [x#SPRITESTATEDATA1_YSTEPVECTOR] = 0
 	inc l
 	ld [hl], a         ; [x#SPRITESTATEDATA1_XSTEPVECTOR] = 0
-	inc h
+	inc h              ; HIGH(wSpriteStateData2)
 	ldh a, [hCurrentSpriteOffset]
 	add SPRITESTATEDATA2_MOVEMENTDELAY ; = $8
 	ld l, a
 	call Random
 	ldh a, [hRandomAdd]
 	and $7f
-	ld [hl], a         ; x#SPRITESTATEDATA2_MOVEMENTDELAY: set to a random value in [0,$7f] (again with delay $100 if value is 0)
+	ld [hl], a         ; [x#SPRITESTATEDATA2_MOVEMENTDELAY] = random value in [0,$7f] (again with delay $100 if value is 0)
 	scf                ; set carry (marking failure to walk)
 	ret
 
@@ -800,8 +795,7 @@ DoScriptedNPCMovement:
 	ldh a, [hCurrentSpriteOffset]
 	add SPRITESTATEDATA1_FACINGDIRECTION ; = $9
 	ld l, a
-	ld a, c
-	ld [hl], a ; facing direction
+	ld [hl], c    ; x#SPRITESTATEDATA1_FACINGDIRECTION
 	call AnimScriptedNPCMovement
 	ld hl, wScriptedNPCWalkCounter
 	dec [hl]
@@ -879,15 +873,13 @@ AdvanceScriptedNPCAnimFrameCounter:
 	ldh a, [hCurrentSpriteOffset]
 	add SPRITESTATEDATA1_INTRAANIMFRAMECOUNTER ; = $7
 	ld l, a
-	ld a, [hl] ; intra-animation frame counter
-	inc a
-	ld [hl], a
+	inc [hl]             ; [x#SPRITESTATEDATA1_INTRAANIMFRAMECOUNTER]++
+	ld a, [hl]
 	cp $4
 	ret nz
 	xor a
-	ld [hl], a ; reset intra-animation frame counter
-	inc l
-	ld a, [hl] ; animation frame counter
+	ld [hli], a          ; [x#SPRITESTATEDATA1_INTRAANIMFRAMECOUNTER] = 0
+	ld a, [hl]           ; x#SPRITESTATEDATA1_ANIMFRAMECOUNTER
 	inc a
 	and $3
 	ld [hl], a
