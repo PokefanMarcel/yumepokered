@@ -43,13 +43,13 @@ IF DEF(_DEBUG)
 
 	; Exeggutor gets four HM moves.
 	ld hl, wPartyMon1Moves
-	ld a, FLY
+	ld a, SLEEP_POWDER
 	ld [hli], a
-	ld a, CUT
+	ld a, POISONPOWDER
 	ld [hli], a
-	ld a, SURF
+	ld a, STUN_SPORE
 	ld [hli], a
-	ld a, STRENGTH
+	ld a, WILL_O_WISP
 	ld [hl], a
 	ld hl, wPartyMon1PP
 	ld a, 15

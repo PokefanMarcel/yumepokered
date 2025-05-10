@@ -43,7 +43,7 @@ MoveEffectPointerTable:
 	dw NULL                      ; SUPER_FANG_EFFECT
 	dw NULL                      ; SPECIAL_DAMAGE_EFFECT
 	dw TrappingEffect            ; TRAPPING_EFFECT
-	dw ChargeEffect              ; FLY_EFFECT
+;	dw ChargeEffect              ; FLY_EFFECT ; marcelnote - replaced by CHARGE_EFFECT
 	dw TwoToFiveAttacksEffect    ; ATTACK_TWICE_EFFECT
 	dw NULL                      ; JUMP_KICK_EFFECT
 	dw MistEffect                ; MIST_EFFECT

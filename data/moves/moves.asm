@@ -29,7 +29,7 @@ Moves:
 	move GUST,         NO_ADDITIONAL_EFFECT,        40, FLYING,       100, 35 ; marcelnote - changed from NORMAL
 	move WING_ATTACK,  NO_ADDITIONAL_EFFECT,        60, FLYING,       100, 25 ; marcelnote - changed from pwr 35, pp 35
 	move WHIRLWIND,    SWITCH_AND_TELEPORT_EFFECT,   0, NORMAL,        85, 20
-	move FLY,          FLY_EFFECT,                  70, FLYING,        95, 15
+	move FLY,          CHARGE_EFFECT,               70, FLYING,        95, 15 ; marcelnote - changed from FLY_EFFECT
 	move BIND,         TRAPPING_EFFECT,             15, NORMAL,        75, 20
 	move SLAM,         NO_ADDITIONAL_EFFECT,        80, DRAGON,        90, 20 ; marcelnote - changed from NORMAL, acc 75
 	move VINE_WHIP,    NO_ADDITIONAL_EFFECT,        35, GRASS,        100, 20 ; marcelnote - changed from pp 10

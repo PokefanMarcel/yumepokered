@@ -1004,31 +1004,28 @@ FlinchSideEffect:
 OneHitKOEffect:
 	jpfar OneHitKOEffect_
 
-ChargeEffect:
+ChargeEffect: ; marcelnote - adjusted for removing FLY_EFFECT
 	ld hl, wPlayerBattleStatus1
-	ld de, wPlayerMoveEffect
+	ld de, wPlayerMoveNum
+	ld b, XSTATITEM_ANIM
 	ldh a, [hWhoseTurn]
 	and a
-	ld b, XSTATITEM_ANIM
-	jr z, .chargeEffect
+	jr z, .gotPointers
 	ld hl, wEnemyBattleStatus1
-	ld de, wEnemyMoveEffect
-	ld b, XSTATITEM_DUPLICATE_ANIM
-.chargeEffect
+	ld de, wEnemyMoveNum
+.gotPointers
 	set CHARGING_UP, [hl]
 	ld a, [de]
-	dec de ; de contains enemy or player MOVENUM
-	cp FLY_EFFECT
+	cp FLY
 	jr nz, .notFly
 	set INVULNERABLE, [hl] ; mon is now invulnerable to typical attacks (fly/dig)
 	ld b, TELEPORT ; load Teleport's animation
 .notFly
-	ld a, [de]
 	cp DIG
-	jr nz, .notDigOrFly
+	jr nz, .notDig
 	set INVULNERABLE, [hl] ; mon is now invulnerable to typical attacks (fly/dig)
 	ld b, SLIDE_DOWN_ANIM
-.notDigOrFly
+.notDig
 	xor a
 	ld [wAnimationType], a
 	ld a, b
@@ -1042,24 +1039,23 @@ ChargeMoveEffectText:   ; marcelnote - replaced jr z, .gotText by ret z
 	text_far _ChargeMoveEffectText
 	text_asm
 	ld a, [wChargeMoveNum]
-	;cp RAZOR_WIND  ; marcelnote - changed RAZOR WIND to HYPER_BEAM_EFFECT
-	;ld hl, MadeWhirlwindText
-	;ret z
+	cp DIG
+	ld hl, DugAHoleText
+	ret z
+	cp FLY
+	ld hl, FlewUpHighText
+	ret z
 	cp SOLARBEAM
 	ld hl, TookInSunlightText
-	ret z
-	cp SKULL_BASH
-	ld hl, LoweredItsHeadText
 	ret z
 	cp SKY_ATTACK
 	ld hl, SkyAttackGlowingText
 	ret z
-	cp FLY
-	ld hl, FlewUpHighText
-	;jr z, .gotText
-	ret z
-	cp DIG
-	ld hl, DugAHoleText
+;	cp RAZOR_WIND  ; marcelnote - changed RAZOR WIND to HYPER_BEAM_EFFECT
+;	ld hl, MadeWhirlwindText
+;	ret z
+	; SKULL_BASH
+	ld hl, LoweredItsHeadText
 	ret
 
 MadeWhirlwindText:
