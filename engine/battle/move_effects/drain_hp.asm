@@ -1,78 +1,67 @@
-DrainHPEffect_:
-	ld hl, wDamage
-	ld a, [hl]
-	srl a ; divide damage by 2
-	ld [hli], a
-	ld a, [hl]
-	rr a
-	ld [hld], a
-	or [hl] ; is damage 0?
+DrainHPEffect_: ; marcelnote - optimized
+	ld hl, wDamage ; wDamage takes two bytes: wDamage is high byte and wDamage + 1 is low byte
+	srl [hl]       ; divide high byte by 2
+	ld a, [hli]    ; store high byte and move hl to low byte
+	rr [hl]        ; divide low byte by 2 (accounting for srl carry)
+	or [hl]        ; is total damage 0?
 	jr nz, .getAttackerHP
 ; if damage is 0, increase to 1 so that the attacker gains at least 1 HP
-	inc hl
 	inc [hl]
 .getAttackerHP
 	ld hl, wBattleMonHP
 	ld de, wBattleMonMaxHP
 	ldh a, [hWhoseTurn]
 	and a
-	jp z, .addDamageToAttackerHP
+	jr z, .addDamageToAttackerHP
 	ld hl, wEnemyMonHP
 	ld de, wEnemyMonMaxHP
 .addDamageToAttackerHP
 	ld bc, wHPBarOldHP+1
 ; copy current HP to wHPBarOldHP
 	ld a, [hli]
-	ld [bc], a
+	ld [bc], a  ; [wHPBarOldHP + 1] <- current HP (high byte)
+	dec bc
 	ld a, [hl]
-	dec bc
-	ld [bc], a
+	ld [bc], a  ; [wHPBarOldHP] <- current HP (low byte)
 ; copy max HP to wHPBarMaxHP
-	ld a, [de]
 	dec bc
-	ld [bc], a
+	ld a, [de]
+	ld [bc], a  ; [wHPBarMaxHP + 1] <- max HP (high byte)
 	inc de
-	ld a, [de]
 	dec bc
-	ld [bc], a
+	ld a, [de]
+	ld [bc], a  ; [wHPBarMaxHP] <- max HP (low byte)
 ; add damage to attacker's HP and copy new HP to wHPBarNewHP
-	ld a, [wDamage + 1]
-	ld b, [hl]
-	add b
+	ld a, [wDamage+1]
+	add [hl] ; hl: current HP (low byte)
 	ld [hld], a
 	ld [wHPBarNewHP], a
 	ld a, [wDamage]
-	ld b, [hl]
-	adc b
+	adc [hl] ; hl: current HP (high byte)
 	ld [hli], a
 	ld [wHPBarNewHP+1], a
-	jr c, .capToMaxHP ; if HP > 65,535, cap to max HP
+	jr c, .capToMaxHP ; if HP > 65,535 = $FFFF, cap to max HP
 ; compare HP with max HP
-	ld a, [hld]
-	ld b, a
-	ld a, [de]
+	ld a, [de]  ; max HP (high byte)
+	cp [hl]     ; current HP (high byte)
 	dec de
-	sub b
-	ld a, [hli]
-	ld b, a
-	ld a, [de]
-	inc de
-	sbc b
-	jr nc, .next
+	dec hl
+	ld a, [de]  ; max HP (low byte)
+	sbc [hl]    ; current HP (low byte)
+	jr nc, .next ; current HP ≤ max HP ?
 .capToMaxHP
 	ld a, [de]
-	ld [hld], a
-	ld [wHPBarNewHP], a
-	dec de
-	ld a, [de]
 	ld [hli], a
 	ld [wHPBarNewHP+1], a
 	inc de
+	ld a, [de]
+	ld [hl], a
+	ld [wHPBarNewHP], a
 .next
 	ldh a, [hWhoseTurn]
 	and a
 	hlcoord 10, 9
-	ld a, $1
+	ld a, $1 ; HP Bar with vertical right tip
 	jr z, .next2
 	hlcoord 2, 2
 	xor a
