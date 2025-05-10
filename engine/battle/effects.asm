@@ -325,7 +325,7 @@ CheckDefrost:
 	ldh a, [hWhoseTurn]
 	and a
 	jr nz, .opponent
-	;player [attacker]
+	; player [attacker]
 	ld a, [wPlayerMoveType]
 	sub FIRE
 	ret nz ; return if type of move used isn't fire
@@ -333,10 +333,6 @@ CheckDefrost:
 	ld hl, wEnemyMon1Status
 	ld a, [wEnemyMonPartyPos]
 	ld bc, wEnemyMon2 - wEnemyMon1
-	call AddNTimes
-	xor a
-	ld [hl], a ; clear status in roster
-	ld hl, FireDefrostedText
 	jr .common
 .opponent
 	ld a, [wEnemyMoveType] ; same as above with addresses swapped
@@ -346,11 +342,11 @@ CheckDefrost:
 	ld hl, wPartyMon1Status
 	ld a, [wPlayerMonNumber]
 	ld bc, wPartyMon2 - wPartyMon1
+.common
 	call AddNTimes
 	xor a
-	ld [hl], a
+	ld [hl], a ; clear status in roster
 	ld hl, FireDefrostedText
-.common
 	jp PrintText
 
 FireDefrostedText:
