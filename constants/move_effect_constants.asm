@@ -47,7 +47,7 @@
 	const SUPER_FANG_EFFECT          ; $28
 	const SPECIAL_DAMAGE_EFFECT      ; $29 Seismic Toss, Night Shade, Sonic Boom, Dragon Rage, Psywave
 	const TRAPPING_EFFECT            ; $2A moves like Wrap
-	const FLY_EFFECT                 ; $2B
+;	const FLY_EFFECT                 ; $2B ; marcelnote - replaced by CHARGE_EFFECT
 	const ATTACK_TWICE_EFFECT        ; $2C
 	const JUMP_KICK_EFFECT           ; $2D Jump Kick and Hi Jump Kick effect
 	const MIST_EFFECT                ; $2E

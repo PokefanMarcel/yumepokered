@@ -3283,8 +3283,8 @@ CheckIfPlayerNeedsToChargeUp:
 	ld a, [wPlayerMoveEffect]
 	cp CHARGE_EFFECT
 	jp z, JumpMoveEffect
-	cp FLY_EFFECT
-	jp z, JumpMoveEffect
+;	cp FLY_EFFECT ; marcelnote - replaced by CHARGE_EFFECT
+;	jp z, JumpMoveEffect
 	jr PlayerCanExecuteMove
 
 ; in-battle stuff
@@ -3365,8 +3365,8 @@ playerCheckIfFlyOrChargeEffect:
 	ld c, 30
 	call DelayFrames
 	ld a, [wPlayerMoveEffect]
-	cp FLY_EFFECT
-	jr z, .playAnim
+;	cp FLY_EFFECT ; marcelnote - replaced by CHARGE_EFFECT
+;	jr z, .playAnim
 	cp CHARGE_EFFECT
 	jr z, .playAnim
 	jr MirrorMoveCheck
@@ -3646,8 +3646,8 @@ CheckPlayerStatusConditions:
 	and ~((1 << STORING_ENERGY) | (1 << THRASHING_ABOUT) | (1 << CHARGING_UP) | (1 << USING_TRAPPING_MOVE) | (1 << INVULNERABLE))
 	ld [hl], a
 	ld a, [wPlayerMoveEffect]
-	cp FLY_EFFECT
-	jr z, .FlyOrChargeEffect
+;	cp FLY_EFFECT ; marcelnote - replaced by CHARGE_EFFECT
+;	jr z, .FlyOrChargeEffect
 	cp CHARGE_EFFECT
 	jr z, .FlyOrChargeEffect
 	jr .NotFlyOrChargeEffect
@@ -5884,8 +5884,8 @@ CheckIfEnemyNeedsToChargeUp:
 	ld a, [wEnemyMoveEffect]
 	cp CHARGE_EFFECT
 	jp z, JumpMoveEffect
-	cp FLY_EFFECT
-	jp z, JumpMoveEffect
+;	cp FLY_EFFECT ; marcelnote - replaced by CHARGE_EFFECT
+;	jp z, JumpMoveEffect
 	jr EnemyCanExecuteMove
 EnemyCanExecuteChargingMove:
 	ld hl, wEnemyBattleStatus1
@@ -5980,8 +5980,8 @@ EnemyCheckIfFlyOrChargeEffect:
 	ld c, 30
 	call DelayFrames
 	ld a, [wEnemyMoveEffect]
-	cp FLY_EFFECT
-	jr z, .playAnim
+;	cp FLY_EFFECT ; marcelnote - replaced by CHARGE_EFFECT
+;	jr z, .playAnim
 	cp CHARGE_EFFECT
 	jr z, .playAnim
 	jr EnemyCheckIfMirrorMoveEffect
@@ -6236,8 +6236,8 @@ CheckEnemyStatusConditions:
 	and ~((1 << STORING_ENERGY) | (1 << THRASHING_ABOUT) | (1 << CHARGING_UP) | (1 << USING_TRAPPING_MOVE) | (1 << INVULNERABLE))
 	ld [hl], a
 	ld a, [wEnemyMoveEffect]
-	cp FLY_EFFECT
-	jr z, .flyOrChargeEffect
+;	cp FLY_EFFECT ; marcelnote - replaced by CHARGE_EFFECT
+;	jr z, .flyOrChargeEffect
 	cp CHARGE_EFFECT
 	jr z, .flyOrChargeEffect
 	jr .notFlyOrChargeEffect
