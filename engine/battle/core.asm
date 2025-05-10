@@ -4655,8 +4655,8 @@ CalculateDamage:
 ; Multi-hit attacks may or may not have 0 bp.
 	cp TWO_TO_FIVE_ATTACKS_EFFECT
 	jr z, .skipbp
-	cp EFFECT_1E
-	jr z, .skipbp
+;	cp EFFECT_1E
+;	jr z, .skipbp
 
 ; Calculate OHKO damage based on remaining HP.
 	cp OHKO_EFFECT
