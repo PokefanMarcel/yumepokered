@@ -81,34 +81,34 @@ AlreadyAsleepText:
 	text_far _AlreadyAsleepText
 	text_end
 
-PoisonEffect:
+PoisonEffect: ; marcelnote - optimized
 	ld hl, wEnemyMonStatus
 	ld de, wPlayerMoveEffect
 	ldh a, [hWhoseTurn]
 	and a
-	jr z, .poisonEffect
+	jr z, .gotPointers
 	ld hl, wBattleMonStatus
 	ld de, wEnemyMoveEffect
-.poisonEffect
+.gotPointers
 	call CheckTargetSubstitute
 	jr nz, .noEffect ; can't poison a substitute target
-	ld a, [hli]
-	ld b, a
+	ld a, [hli] ; a = [w<>MonStatus]
 	and a
-	jr nz, .noEffect ; miss if target is already statused
-	ld a, [hli]
+	jr nz, .noEffect ; can't affect a mon that is already statused
+	ld a, [hli] ; a = [w<>MonType1]
 	cp POISON ; can't poison a poison-type target
 	jr z, .noEffect
-	ld a, [hld]
+	ld a, [hld] ; a = [w<>MonType2]
 	cp POISON ; can't poison a poison-type target
 	jr z, .noEffect
-	ld a, [de]
+	ld a, [de] ; a = [w<>MoveEffect]
 	cp POISON_SIDE_EFFECT1
 	ld b, 20 percent + 1 ; chance of poisoning
 	jr z, .sideEffectTest
 	cp POISON_SIDE_EFFECT2
 	ld b, 40 percent + 1 ; chance of poisoning
 	jr z, .sideEffectTest
+	; main effect
 	push hl
 	push de
 	call MoveHitTest ; apply accuracy tests
@@ -116,53 +116,58 @@ PoisonEffect:
 	pop hl
 	ld a, [wMoveMissed]
 	and a
-	jr nz, .didntAffect
-	jr .inflictPoison
+	jr z, .inflictPoison ; marcelnote - was nz, .didntAffect
+	ld c, 50
+	call DelayFrames
+	jp PrintButItFailedText_
+
 .sideEffectTest
 	call BattleRandom
 	cp b ; was side effect successful?
 	ret nc
 .inflictPoison
-	dec hl
+	dec hl ; hl = w<>MonStatus
 	set PSN, [hl]
-	push de
-	dec de
+	ld a, [de]
+	ld c, a ; c = [w<>MoveEffect]
+	dec de ; de = w<>MoveNum
 	ldh a, [hWhoseTurn]
 	and a
+	ld a, [de] ; a = [w<>MoveNum]
 	ld b, SHAKE_SCREEN_ANIM
 	ld hl, wPlayerBattleStatus3
-	ld a, [de]
 	ld de, wPlayerToxicCounter
-	jr nz, .ok
+	jr nz, .enemyTurn
 	ld b, ENEMY_HUD_SHAKE_ANIM
 	ld hl, wEnemyBattleStatus3
 	ld de, wEnemyToxicCounter
-.ok
+.enemyTurn
 	cp TOXIC
-	jr nz, .normalPoison ; done if move is not Toxic
-	set BADLY_POISONED, [hl] ; else set Toxic battstatus
+	jr nz, .normalPoison ; if move is not Toxic
+	set BADLY_POISONED, [hl] ; else set Toxic battle status
 	xor a
-	ld [de], a
+	ld [de], a ; initialize Toxic counter
 	ld hl, BadlyPoisonedText
-	jr .continue
+	jr .chooseAnimation
 .normalPoison
 	ld hl, PoisonedText
-.continue
-	pop de
-	ld a, [de]
+.chooseAnimation
+	ld a, c ; a = [w<>MoveEffect]
 	cp POISON_EFFECT
 	jr z, .regularPoisonEffect
-	ld a, b
-	call PlayBattleAnimation2
+	; side effect
+	ld a, b ; a = SHAKE_SCREEN_ANIM or ENEMY_HUD_SHAKE_ANIM
+	call PlayBattleAnimation2 ; just play shake animation
 	jp PrintText
+
 .regularPoisonEffect
 	call PlayCurrentMoveAnimation2
 	jp PrintText
+
 .noEffect
 	ld a, [de]
 	cp POISON_EFFECT
-	ret nz
-.didntAffect
+	ret nz ; don't print if Poison is only side effect
 	ld c, 50
 	call DelayFrames
 	jp PrintDidntAffectText
