@@ -202,26 +202,35 @@ ExplodeEffect:
 	ld [de], a
 	ret
 
-FreezeBurnParalyzeEffect:
+FreezeBurnParalyzeEffect: ; only side effects ; marcelnote - optimized
 	xor a
 	ld [wAnimationType], a
 	call CheckTargetSubstitute
-	ret nz ; return if they have a substitute, can't effect them
+	ret nz ; can't affect a substitute
 	ldh a, [hWhoseTurn]
 	and a
-	jp nz, .opponentAttacker
-	ld a, [wEnemyMonStatus]
+	ld hl, wBattleMonStatus
+	ld de, wEnemyMoveType
+	jr nz, .opponentTurn
+	ld hl, wEnemyMonStatus
+	ld de, wPlayerMoveType
+.opponentTurn
+	ld a, [hli] ; a = [w<>MonStatus]
 	and a
 	jp nz, CheckDefrost ; can't inflict status if opponent is already statused
-	ld a, [wPlayerMoveType]
-	ld b, a
-	ld a, [wEnemyMonType1]
-	cp b ; do target type 1 and move type match?
-	ret z  ; return if they match (an ice move can't freeze an ice-type, body slam can't paralyze a normal-type, etc.)
-	ld a, [wEnemyMonType2]
-	cp b ; do target type 2 and move type match?
-	ret z  ; return if they match
-	ld a, [wPlayerMoveEffect]
+	ld a, [de]
+	ld b, a     ; b = [w<>MoveType]
+	ld a, [hli] ; a = [w<>MonType1]
+	cp b        ; do target type 1 and move type match?
+	ret z       ; if yes, return (ice beam can't freeze an ice-type, body slam can't paralyze a normal-type, etc.)
+	ld a, [hld] ; a = [w<>MonType2]
+	cp b        ; do target type 2 and move type match?
+	ret z       ; if yes, return
+	dec de
+	dec de      ; de = w<>MoveEffect
+	ASSERT wPlayerMoveType - 2 == wPlayerMoveEffect
+	ASSERT wEnemyMoveType - 2 == wEnemyMoveEffect
+	ld a, [de]  ; a = [w<>MoveEffect]
 	cp PARALYZE_SIDE_EFFECT1 + 1
 	ld b, 10 percent + 1
 	jr c, .regular_effectiveness
@@ -229,87 +238,39 @@ FreezeBurnParalyzeEffect:
 	ld b, 30 percent + 1
 	ASSERT PARALYZE_SIDE_EFFECT2 - PARALYZE_SIDE_EFFECT1 == BURN_SIDE_EFFECT2 - BURN_SIDE_EFFECT1
 	ASSERT PARALYZE_SIDE_EFFECT2 - PARALYZE_SIDE_EFFECT1 == FREEZE_SIDE_EFFECT2 - FREEZE_SIDE_EFFECT1
-	sub PARALYZE_SIDE_EFFECT2 - PARALYZE_SIDE_EFFECT1 ; treat extra effective as regular from now on
+	sub PARALYZE_SIDE_EFFECT2 - PARALYZE_SIDE_EFFECT1
+	ld [de], a ; treat extra effective as regular from now on
 .regular_effectiveness
-	push af
-	call BattleRandom ; get random 8bit value for probability test
+	call BattleRandom ; preserves all 16-bit registers
 	cp b
-	pop bc
-	ret nc ; do nothing if random value is >= 1A or 4D [no status applied]
-	ld a, b ; what type of effect is this?
-	cp BURN_SIDE_EFFECT1
-	jr z, .burn1
-	cp FREEZE_SIDE_EFFECT1
-	jr z, .freeze1
-; .paralyze1
-	ld a, 1 << PAR
-	ld [wEnemyMonStatus], a
-	call QuarterSpeedDueToParalysis ; quarter speed of affected mon
-	ld a, ENEMY_HUD_SHAKE_ANIM
-	call PlayBattleAnimation
-	jp PrintMayNotAttackText ; print paralysis text
-.burn1
-	ld a, 1 << BRN
-	ld [wEnemyMonStatus], a
-	call HalveAttackDueToBurn ; halve attack of affected mon
-	ld a, ENEMY_HUD_SHAKE_ANIM
-	call PlayBattleAnimation
-	ld hl, BurnedText
-	jp PrintText
-.freeze1
-	call ClearHyperBeam ; resets hyper beam (recharge) condition from target
-	ld a, 1 << FRZ
-	ld [wEnemyMonStatus], a
-	ld a, ENEMY_HUD_SHAKE_ANIM
-	call PlayBattleAnimation
-	ld hl, FrozenText
-	jp PrintText
-.opponentAttacker
-	ld a, [wBattleMonStatus] ; mostly same as above with addresses swapped for opponent
+	ret nc     ; do nothing if random value is >= 1A or 4D [no status applied]
+	dec hl     ; hl = w<>MonStatus
+	ldh a, [hWhoseTurn]
 	and a
-	jp nz, CheckDefrost
-	ld a, [wEnemyMoveType]
-	ld b, a
-	ld a, [wBattleMonType1]
-	cp b
-	ret z
-	ld a, [wBattleMonType2]
-	cp b
-	ret z
-	ld a, [wEnemyMoveEffect]
-	cp PARALYZE_SIDE_EFFECT1 + 1
-	ld b, 10 percent + 1
-	jr c, .regular_effectiveness2
-; extra effectiveness
-	ld b, 30 percent + 1
-	sub BURN_SIDE_EFFECT2 - BURN_SIDE_EFFECT1 ; treat extra effective as regular from now on
-.regular_effectiveness2
-	push af
-	call BattleRandom
-	cp b
-	pop bc
-	ret nc
-	ld a, b
+	jr nz, .skipAnimation ; no animation if opponent's turn
+	ld a, ENEMY_HUD_SHAKE_ANIM
+	call PlayBattleAnimation ; preserves all 16-bit registers
+.skipAnimation
+	ld a, [de] ; a = [w<>MoveEffect]
 	cp BURN_SIDE_EFFECT1
-	jr z, .burn2
+	jr z, .burn
 	cp FREEZE_SIDE_EFFECT1
-	jr z, .freeze2
-; .paralyze2
-	ld a, 1 << PAR
-	ld [wBattleMonStatus], a
-	call QuarterSpeedDueToParalysis
-	jp PrintMayNotAttackText
-.burn2
-	ld a, 1 << BRN
-	ld [wBattleMonStatus], a
-	call HalveAttackDueToBurn
+	jr z, .freeze
+; paralyze
+	ld [hl], 1 << PAR
+	call QuarterSpeedDueToParalysis ; quarter speed of affected mon
+	ld hl, ParalyzedMayNotAttackText
+	jp PrintText
+
+.burn
+	ld [hl], 1 << BRN
+	call HalveAttackDueToBurn ; halve attack of affected mon
 	ld hl, BurnedText
 	jp PrintText
-.freeze2
-; hyper beam bits aren't reseted for opponent's side
-	call ClearHyperBeam ; marcelnote - fixes aforementioned bug (fix from pokered Wiki)
-	ld a, 1 << FRZ
-	ld [wBattleMonStatus], a
+
+.freeze
+	ld [hl], 1 << FRZ
+	call ClearHyperBeam ; resets hyper beam recharge from target
 	ld hl, FrozenText
 	jp PrintText
 
@@ -332,11 +293,11 @@ FrozenText:
 CheckDefrost:
 ; any fire-type move that has a chance inflict burn (all but Fire Spin) will defrost a frozen target
 	and 1 << FRZ ; are they frozen?
-	ret z ; return if so
+	ret z ; return if not
 	ldh a, [hWhoseTurn]
 	and a
-	jr nz, .opponent
-	; player [attacker]
+	jr nz, .opponentTurn
+	; player turn
 	ld a, [wPlayerMoveType]
 	sub FIRE
 	ret nz ; return if type of move used isn't fire
@@ -345,7 +306,7 @@ CheckDefrost:
 	ld a, [wEnemyMonPartyPos]
 	ld bc, wEnemyMon2 - wEnemyMon1
 	jr .common
-.opponent
+.opponentTurn
 	ld a, [wEnemyMoveType] ; same as above with addresses swapped
 	sub FIRE
 	ret nz
