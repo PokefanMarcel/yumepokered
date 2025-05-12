@@ -42,7 +42,8 @@ SleepEffect:
 	jp PrintText
 
 .didntAffect
-	jp PrintDidntAffectText
+	ld hl, DidntAffectText
+	jp PrintText
 
 .alreadyAsleep
 	ld hl, AlreadyAsleepText
