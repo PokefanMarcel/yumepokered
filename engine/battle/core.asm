@@ -6684,47 +6684,30 @@ ApplyBurnAndParalysisPenalties:
 	call QuarterSpeedDueToParalysis
 	jp HalveAttackDueToBurn
 
-QuarterSpeedDueToParalysis:
+QuarterSpeedDueToParalysis: ; marcelnote - optimized
 	ldh a, [hWhoseTurn]
 	and a
-	jr z, .playerTurn
-.enemyTurn ; quarter the player's speed
 	ld a, [wBattleMonStatus]
-	and 1 << PAR
-	ret z ; return if player not paralysed
 	ld hl, wBattleMonSpeed + 1
-	ld a, [hld]
-	ld b, a
-	ld a, [hl]
-	srl a
-	rr b
-	srl a
-	rr b
-	ld [hli], a
-	or b
-	jr nz, .storePlayerSpeed
-	ld b, 1 ; give the player a minimum of at least one speed point
-.storePlayerSpeed
-	ld [hl], b
-	ret
-.playerTurn ; quarter the enemy's speed
+	jr nz, .gotPointers ; if opponent's turn
 	ld a, [wEnemyMonStatus]
-	and 1 << PAR
-	ret z ; return if enemy not paralysed
 	ld hl, wEnemyMonSpeed + 1
+.gotPointers
+	and 1 << PAR
+	ret z ; return if target not paralysed
 	ld a, [hld]
-	ld b, a
-	ld a, [hl]
+	ld b, a     ; b = [w<>MonSpeed + 1]  (low byte)
+	ld a, [hl]  ; a = [w<>MonSpeed]      (high byte)
 	srl a
 	rr b
 	srl a
 	rr b
-	ld [hli], a
+	ld [hli], a ; [w<>MonSpeed] (high byte)
 	or b
-	jr nz, .storeEnemySpeed
-	ld b, 1 ; give the enemy a minimum of at least one speed point
-.storeEnemySpeed
-	ld [hl], b
+	jr nz, .storeSpeed
+	inc b       ; give at least one speed point
+.storeSpeed
+	ld [hl], b  ; [w<>MonSpeed + 1] (low byte)
 	ret
 
 HalveAttackDueToBurn:
