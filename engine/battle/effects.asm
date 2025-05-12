@@ -180,6 +180,67 @@ BadlyPoisonedText:
 	text_far _BadlyPoisonedText
 	text_end
 
+
+ParalyzeEffect: ; for Thunder Wave, Glare, Stun Spore ; marcelnote - optimized
+	ldh a, [hWhoseTurn]
+	and a
+	ld hl, wEnemyMonStatus
+	ld de, wPlayerMoveType
+	jr z, .playerTurn
+	ld hl, wBattleMonStatus
+	ld de, wEnemyMoveType
+.playerTurn
+	call CheckTargetSubstitute ; marcelnote - added substitute check
+	jr nz, .didntAffect  ; can't paralyze a substitute target
+	ld a, [hli]          ; hl = w<>MonType1
+	and a                ; does the target already have a status ailment?
+	jr nz, .didntAffect
+	; check if the target is immune due to types
+	ld a, [de]
+	cp ELECTRIC          ; is the move Electric-type?
+	jr nz, .hitTest      ; if not, proceed
+	; else check if the target is Ground-type
+	ld a, [hli]          ; a = [w<>MonType1]
+	cp GROUND
+	jr z, .doesntAffect
+	ld a, [hld]          ; a = [w<>MonType2],  hl = w<>MonType1
+	cp GROUND
+	jr z, .doesntAffect
+.hitTest
+	push hl ; save hl = w<>MonType1
+	call MoveHitTest
+	pop hl
+	ld a, [wMoveMissed]
+	and a
+	jr nz, .failed
+	dec hl ; hl = w<>MonStatus
+	set PAR, [hl]
+	call QuarterSpeedDueToParalysis
+	;ld c, 30
+	;call DelayFrames   ; marcelnote - removed pause before attack animation
+	call PlayCurrentMoveAnimation
+	ld hl, ParalyzedMayNotAttackText
+	jp PrintText
+
+.didntAffect
+	ld c, 50
+	call DelayFrames
+	ld hl, DidntAffectText
+	jp PrintText
+
+.doesntAffect
+	ld c, 50
+	call DelayFrames
+	ld hl, DoesntAffectMonText
+	jp PrintText
+
+.failed
+	ld c, 50
+	call DelayFrames
+	ld hl, ButItFailedText
+	jp PrintText
+
+
 DrainHPEffect:
 	jpfar DrainHPEffect_
 
@@ -1107,9 +1168,6 @@ ConfusionEffectFailed:
 	ld c, 50
 	call DelayFrames
 	jp ConditionalPrintButItFailed
-
-ParalyzeEffect:
-	jpfar ParalyzeEffect_
 
 SubstituteEffect:
 	jpfar SubstituteEffect_
