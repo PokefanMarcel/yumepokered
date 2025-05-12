@@ -6595,22 +6595,22 @@ SwapPlayerAndEnemyLevels:
 ; also writes OAM data and loads tile patterns for the Red or Old Man back sprite's head
 ; (for use when scrolling the player sprite and enemy's silhouettes on screen)
 LoadPlayerBackPic:
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; marcelnote - changed to add female player and not always load OldManPicBack
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld de, RedPicBack
+	jr z, .testOldMan
+	ld de, GreenPicBack
+.testOldMan
 	ld a, [wBattleType]
 	dec a ; is it the old man tutorial?
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
+	jr nz, .gotPicPointer
 	ld de, OldManPicBack
-    ld a, BANK(RedPicBack) ; Default Red back sprite will be used as a means to load in the Old Man back sprite
-    jr z, .next
-    ld a, [wStatusFlags4]
-    bit BIT_IS_GIRL, a
-    ld de, RedPicBack
-    ld a, BANK(RedPicBack)
-    jr z, .next
-    ld de, GreenPicBack
-    ld a, BANK(GreenPicBack)
-.next
-    ASSERT BANK(GreenPicBack) == BANK(OldManPicBack)
-    ASSERT BANK(RedPicBack) == BANK(OldManPicBack)
+.gotPicPointer
+	ld a, BANK(RedPicBack)
+	ASSERT BANK(RedPicBack) == BANK(GreenPicBack)
+	ASSERT BANK(RedPicBack) == BANK(OldManPicBack)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	call UncompressSpriteFromDE
 	predef ScaleSpriteByTwo
