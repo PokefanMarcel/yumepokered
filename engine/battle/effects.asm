@@ -170,7 +170,8 @@ PoisonEffect: ; marcelnote - optimized
 	ret nz ; don't print if Poison is only side effect
 	ld c, 50
 	call DelayFrames
-	jp PrintDidntAffectText
+	ld hl, DidntAffectText
+	jp PrintText
 
 PoisonedText:
 	text_far _PoisonedText
@@ -845,6 +846,7 @@ ThrashPetalDanceEffect:
 	add SHRINKING_SQUARE_ANIM
 	jp PlayBattleAnimation2
 
+
 SwitchAndTeleportEffect: ; marcelnote - optimized
 	ldh a, [hWhoseTurn]
 	and a
@@ -933,6 +935,7 @@ WasBlownAwayText:
 	text_far _WasBlownAwayText
 	text_end
 
+
 TwoToFiveAttacksEffect:
 	ld hl, wPlayerBattleStatus1
 	ld de, wPlayerNumAttacksLeft
@@ -982,10 +985,10 @@ TwoToFiveAttacksEffect:
 FlinchSideEffect:
 	call CheckTargetSubstitute
 	ret nz
-	ld hl, wEnemyBattleStatus1
-	ld de, wPlayerMoveEffect
 	ldh a, [hWhoseTurn]
 	and a
+	ld hl, wEnemyBattleStatus1
+	ld de, wPlayerMoveEffect
 	jr z, .flinchSideEffect
 	ld hl, wPlayerBattleStatus1
 	ld de, wEnemyMoveEffect
@@ -1006,12 +1009,13 @@ FlinchSideEffect:
 OneHitKOEffect:
 	jpfar OneHitKOEffect_
 
+
 ChargeEffect: ; marcelnote - adjusted for removing FLY_EFFECT
-	ld hl, wPlayerBattleStatus1
-	ld de, wPlayerMoveNum
 	ld b, XSTATITEM_ANIM
 	ldh a, [hWhoseTurn]
 	and a
+	ld hl, wPlayerBattleStatus1
+	ld de, wPlayerMoveNum
 	jr z, .gotPointers
 	ld hl, wEnemyBattleStatus1
 	ld de, wEnemyMoveNum
@@ -1083,6 +1087,7 @@ FlewUpHighText:
 DugAHoleText:
 	text_far _DugAHoleText
 	text_end
+
 
 TrappingEffect:
 	ld hl, wPlayerBattleStatus1
