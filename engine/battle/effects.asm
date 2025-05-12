@@ -1111,14 +1111,6 @@ IsUnaffectedText:
 	text_far _IsUnaffectedText
 	text_end
 
-PrintMayNotAttackText:
-	ld hl, ParalyzedMayNotAttackText
-	jp PrintText
-
-ParalyzedMayNotAttackText:
-	text_far _ParalyzedMayNotAttackText
-	text_end
-
 CheckTargetSubstitute:
 	push hl
 	ld hl, wEnemyBattleStatus2

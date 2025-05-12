@@ -48,14 +48,6 @@ SleepEffect:
 	ld hl, AlreadyAsleepText
 	jp PrintText
 
-FellAsleepText:
-	text_far _FellAsleepText
-	text_end
-
-AlreadyAsleepText:
-	text_far _AlreadyAsleepText
-	text_end
-
 
 PoisonEffect: ; marcelnote - optimized
 	ld hl, wEnemyMonStatus
@@ -148,14 +140,6 @@ PoisonEffect: ; marcelnote - optimized
 	call DelayFrames
 	ld hl, DidntAffectText
 	jp PrintText
-
-PoisonedText:
-	text_far _PoisonedText
-	text_end
-
-BadlyPoisonedText:
-	text_far _BadlyPoisonedText
-	text_end
 
 
 ParalyzeEffect: ; for Thunder Wave, Glare, Stun Spore ; marcelnote - optimized
@@ -270,10 +254,6 @@ BurnEffect: ; marcelnote - for WILL-O-WISP, similar to ParalyzeEffect
 	ld hl, ButItFailedText
 	jp PrintText
 
-BurnedText:
-	text_far _BurnedText
-	text_end
-
 
 FreezeBurnParalyzeEffect: ; only side effects ; marcelnote - optimized
 	xor a
@@ -347,9 +327,6 @@ FreezeBurnParalyzeEffect: ; only side effects ; marcelnote - optimized
 	ld hl, FrozenText
 	jp PrintText
 
-FrozenText:
-	text_far _FrozenText
-	text_end
 
 CheckDefrost:
 ; any fire-type move that has a chance inflict burn (all but Fire Spin) will defrost a frozen target
@@ -381,10 +358,6 @@ CheckDefrost:
 	ld [hl], a ; clear status in roster
 	ld hl, FireDefrostedText
 	jp PrintText
-
-FireDefrostedText:
-	text_far _FireDefrostedText
-	text_end
 
 
 TriAttackEffect:  ; marcelnote - new effect for TRI_ATTACK: 20% chance of PAR/BRN/FRZ (6.6% each)
@@ -465,3 +438,37 @@ TriAttackEffect:  ; marcelnote - new effect for TRI_ATTACK: 20% chance of PAR/BR
 	call PlayBattleAnimation ; preserves hl
 .print_text
 	jp PrintText
+
+
+
+FellAsleepText:
+	text_far _FellAsleepText
+	text_end
+
+AlreadyAsleepText:
+	text_far _AlreadyAsleepText
+	text_end
+
+PoisonedText:
+	text_far _PoisonedText
+	text_end
+
+BadlyPoisonedText:
+	text_far _BadlyPoisonedText
+	text_end
+
+ParalyzedMayNotAttackText:
+	text_far _ParalyzedMayNotAttackText
+	text_end
+
+FrozenText:
+	text_far _FrozenText
+	text_end
+
+BurnedText:
+	text_far _BurnedText
+	text_end
+
+FireDefrostedText:
+	text_far _FireDefrostedText
+	text_end
