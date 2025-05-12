@@ -390,10 +390,7 @@ TriAttackEffect:  ; marcelnote - new effect for TRI_ATTACK: 20% chance of PAR/BR
 	ld [hl], 1 << BRN
 	call HalveAttackDueToBurn
 	ld hl, BurnedText
-	ldh a, [hWhoseTurn]
-	and a
-	jr z, .playEnemyHUDAnim
-	jr .print_text
+	jr .playAnimPrintText
 
 .freeze
 	cp 34 ; 17/256 chance of result being 17-33 (6.6%)
@@ -409,10 +406,7 @@ TriAttackEffect:  ; marcelnote - new effect for TRI_ATTACK: 20% chance of PAR/BR
 	ld [hl], 1 << FRZ
 	call ClearHyperBeam
 	ld hl, FrozenText
-	ldh a, [hWhoseTurn]
-	and a
-	jr z, .playEnemyHUDAnim
-	jr .print_text
+	jr .playAnimPrintText
 
 .paralyze
 	cp 51 ; 17/256 chance of result being 34-50 (6.6%)
@@ -428,15 +422,15 @@ TriAttackEffect:  ; marcelnote - new effect for TRI_ATTACK: 20% chance of PAR/BR
 	ld [hl], 1 << PAR
 	call QuarterSpeedDueToParalysis
 	ld hl, ParalyzedMayNotAttackText
-	ldh a, [hWhoseTurn]
-	and a
-	jr nz, .print_text
 	; fallthrough
 
-.playEnemyHUDAnim
+.playAnimPrintText
+	ldh a, [hWhoseTurn]
+	and a
+	jr nz, .skipAnimation ; skip animation on opponent's turn
 	ld a, ENEMY_HUD_SHAKE_ANIM
 	call PlayBattleAnimation ; preserves hl
-.print_text
+.skipAnimation
 	jp PrintText
 
 
