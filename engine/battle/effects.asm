@@ -27,20 +27,21 @@ INCLUDE "data/moves/effects_pointers.asm"
 DrainHPEffect:
 	jpfar DrainHPEffect_
 
+
 ExplodeEffect:
 	ldh a, [hWhoseTurn]
 	and a
 	ld hl, wBattleMonHP
 	ld de, wPlayerBattleStatus2
-	jr z, .faintUser
+	jr z, .playerTurn
 	ld hl, wEnemyMonHP
 	ld de, wEnemyBattleStatus2
-.faintUser
+.playerTurn
 	xor a
 	ld [hli], a ; set the mon's HP to 0
 	ld [hli], a
-	inc hl
-	ld [hl], a ; set mon's status to 0
+	inc hl      ; hl = w<>MonStatus
+	ld [hl], a  ; set mon's status to 0
 	ld a, [de]
 	res SEEDED, a ; clear mon's leech seed status
 	ld [de], a
