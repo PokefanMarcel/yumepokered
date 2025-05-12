@@ -957,10 +957,10 @@ DisableEffect:
 	ld a, [wMoveMissed]
 	and a
 	jr nz, .moveMissed
-	ld de, wEnemyDisabledMove
-	ld hl, wEnemyMonMoves
 	ldh a, [hWhoseTurn]
 	and a
+	ld de, wEnemyDisabledMove
+	ld hl, wEnemyMonMoves
 	jr z, .disableEffect
 	ld de, wPlayerDisabledMove
 	ld hl, wBattleMonMoves
