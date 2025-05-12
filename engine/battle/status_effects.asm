@@ -248,7 +248,7 @@ BurnEffect: ; marcelnote - for WILL-O-WISP, similar to ParalyzeEffect
 	dec hl ; hl = w<>MonStatus
 	set BRN, [hl]
 	call HalveAttackDueToBurn
-	callfar PlayCurrentMoveAnimation
+	call PlayCurrentMoveAnimation
 	ld hl, BurnedText
 	jp PrintText
 
