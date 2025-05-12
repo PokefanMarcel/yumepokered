@@ -6710,43 +6710,29 @@ QuarterSpeedDueToParalysis: ; marcelnote - optimized
 	ld [hl], b  ; [w<>MonSpeed + 1] (low byte)
 	ret
 
-HalveAttackDueToBurn:
+HalveAttackDueToBurn: ; marcelnote - optimized
 	ldh a, [hWhoseTurn]
 	and a
-	jr z, .playerTurn
-.enemyTurn ; halve the player's attack
 	ld a, [wBattleMonStatus]
-	and 1 << BRN
-	ret z ; return if player not burnt
 	ld hl, wBattleMonAttack + 1
-	ld a, [hld]
-	ld b, a
-	ld a, [hl]
-	srl a
-	rr b
-	ld [hli], a
-	or b
-	jr nz, .storePlayerAttack
-	ld b, 1 ; give the player a minimum of at least one attack point
-.storePlayerAttack
-	ld [hl], b
-	ret
-.playerTurn ; halve the enemy's attack
+	jr nz, .gotPointers ; if opponent's turn
 	ld a, [wEnemyMonStatus]
-	and 1 << BRN
-	ret z ; return if enemy not burnt
 	ld hl, wEnemyMonAttack + 1
+.gotPointers
+	and 1 << BRN
+	ret z ; return if target not burnt
 	ld a, [hld]
-	ld b, a
-	ld a, [hl]
+	ld b, a     ; b = [w<>MonAttack + 1]  (low byte)
+	ld a, [hl]  ; a = [w<>MonAttack]      (high byte)
+	; here could even jump into QuarterSpeedDueToParalysis routine
 	srl a
 	rr b
-	ld [hli], a
+	ld [hli], a ; [w<>MonAttack] (high byte)
 	or b
-	jr nz, .storeEnemyAttack
-	ld b, 1 ; give the enemy a minimum of at least one attack point
-.storeEnemyAttack
-	ld [hl], b
+	jr nz, .storeAttack
+	inc b ; give at least one attack point
+.storeAttack
+	ld [hl], b  ; [w<>MonAttack + 1] (low byte)
 	ret
 
 CalculateModifiedStats:
