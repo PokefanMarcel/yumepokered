@@ -242,6 +242,59 @@ ParalyzeEffect: ; for Thunder Wave, Glare, Stun Spore ; marcelnote - optimized
 	jp PrintText
 
 
+BurnEffect: ; marcelnote - for WILL-O-WISP, similar to ParalyzeEffect
+	ldh a, [hWhoseTurn]
+	and a
+	ld hl, wEnemyMonStatus
+	jr z, .playerTurn
+	ld hl, wBattleMonStatus
+.playerTurn
+	call CheckTargetSubstitute
+	jr nz, .didntAffect  ; can't burn a substitute target
+	ld a, [hli]          ; hl = w<>MonType1
+	and a                ; does the target already have a status ailment?
+	jr nz, .didntAffect
+	; check if the target is immune due to types
+	ld a, [hli]          ; a = [w<>MonType1]
+	cp FIRE
+	jr z, .doesntAffect
+	inc bc
+	ld a, [hld]          ; a = [w<>MonType2],  hl = w<>MonType1
+	cp FIRE
+	jr z, .doesntAffect
+.hitTest
+	push hl
+	call MoveHitTest
+	pop hl
+	ld a, [wMoveMissed]
+	and a
+	jr nz, .failed
+	dec hl ; hl = w<>MonStatus
+	set BRN, [hl]
+	call HalveAttackDueToBurn
+	callfar PlayCurrentMoveAnimation
+	ld hl, BurnedText
+	jp PrintText
+
+.didntAffect
+	ld c, 50
+	call DelayFrames
+	ld hl, DidntAffectText
+	jp PrintText
+
+.doesntAffect
+	ld c, 50
+	call DelayFrames
+	ld hl, DoesntAffectMonText
+	jp PrintText
+
+.failed
+	ld c, 50
+	call DelayFrames
+	ld hl, ButItFailedText
+	jp PrintText
+
+
 DrainHPEffect:
 	jpfar DrainHPEffect_
 
