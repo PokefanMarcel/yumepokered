@@ -85,9 +85,8 @@ PoisonEffect: ; marcelnote - optimized
 	ld a, [wMoveMissed]
 	and a
 	jr z, .inflictPoison ; marcelnote - was nz, .didntAffect
-	ld c, 50
-	call DelayFrames
-	jp PrintButItFailedText_
+	ld hl, ButItFailedText
+	jp Delay50AndPrintText
 
 .sideEffectTest
 	call BattleRandom
@@ -136,10 +135,8 @@ PoisonEffect: ; marcelnote - optimized
 	ld a, [de]
 	cp POISON_EFFECT
 	ret nz ; don't print if Poison is only side effect
-	ld c, 50
-	call DelayFrames
 	ld hl, DidntAffectText
-	jp PrintText
+	jp Delay50AndPrintText
 
 
 ParalyzeEffect: ; for Thunder Wave, Glare, Stun Spore ; marcelnote - optimized
@@ -184,22 +181,16 @@ ParalyzeEffect: ; for Thunder Wave, Glare, Stun Spore ; marcelnote - optimized
 	jp PrintText
 
 .didntAffect
-	ld c, 50
-	call DelayFrames
 	ld hl, DidntAffectText
-	jp PrintText
+	jp Delay50AndPrintText
 
 .doesntAffect
-	ld c, 50
-	call DelayFrames
 	ld hl, DoesntAffectMonText
-	jp PrintText
+	jp Delay50AndPrintText
 
 .failed
-	ld c, 50
-	call DelayFrames
 	ld hl, ButItFailedText
-	jp PrintText
+	jp Delay50AndPrintText
 
 
 BurnEffect: ; marcelnote - for WILL-O-WISP, similar to ParalyzeEffect
@@ -237,22 +228,16 @@ BurnEffect: ; marcelnote - for WILL-O-WISP, similar to ParalyzeEffect
 	jp PrintText
 
 .didntAffect
-	ld c, 50
-	call DelayFrames
 	ld hl, DidntAffectText
-	jp PrintText
+	jp Delay50AndPrintText
 
 .doesntAffect
-	ld c, 50
-	call DelayFrames
 	ld hl, DoesntAffectMonText
-	jp PrintText
+	jp Delay50AndPrintText
 
 .failed
-	ld c, 50
-	call DelayFrames
 	ld hl, ButItFailedText
-	jp PrintText
+	jp Delay50AndPrintText
 
 
 FreezeBurnParalyzeEffect: ; only side effects ; marcelnote - optimized
@@ -433,6 +418,12 @@ TriAttackEffect:  ; marcelnote - new effect for TRI_ATTACK: 20% chance of PAR/BR
 .skipAnimation
 	jp PrintText
 
+
+
+Delay50AndPrintText: ; marcelnote - new for optimization
+	ld c, 50
+	call DelayFrames
+	jp PrintText
 
 
 FellAsleepText:
