@@ -299,10 +299,10 @@ DrainHPEffect:
 	jpfar DrainHPEffect_
 
 ExplodeEffect:
-	ld hl, wBattleMonHP
-	ld de, wPlayerBattleStatus2
 	ldh a, [hWhoseTurn]
 	and a
+	ld hl, wBattleMonHP
+	ld de, wPlayerBattleStatus2
 	jr z, .faintUser
 	ld hl, wEnemyMonHP
 	ld de, wEnemyBattleStatus2
