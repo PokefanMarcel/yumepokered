@@ -1230,9 +1230,6 @@ ConfusionEffectFailed:
 SubstituteEffect:
 	jpfar SubstituteEffect_
 
-BurnEffect:    ; marcelnote - new BURN_EFFECT for WILL_O_WISP
-	jpfar BurnEffect_
-
 HyperBeamEffect:
 	ld hl, wPlayerBattleStatus2
 	ldh a, [hWhoseTurn]
