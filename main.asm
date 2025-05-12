@@ -207,6 +207,7 @@ SECTION "Battle Core", ROMX
 
 INCLUDE "engine/battle/core.asm"
 INCLUDE "engine/battle/effects.asm"
+INCLUDE "engine/battle/status_effects.asm" ; marcelnote - moved some functions for clarity
 
 
 SECTION "bank10", ROMX
