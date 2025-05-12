@@ -22,7 +22,7 @@ Its kanji name 夢 is also an homage to [shinpokered](https://github.com/jojobea
 ### Gameplay updates
 
 **Moves**
-- Several moves have been parsimoniously reworked in order to increase their viability while trying to maintain the original feeling of the game. Three new moves have been added.
+- Several moves have been parsimoniously reworked in order to increase their viability while trying to maintain the original feeling of the game. Three moves from later generations have been added.
 - Consult the [complete list of move changes](docs/move_changes.md) for more info!
 - Ghost is now a Special type, and Dragon a Physical type.
 - Fix for Focus energy and Dire hit. (Quadruple critical hit rate instead of dividing it by 4.)
@@ -51,7 +51,7 @@ Its kanji name 夢 is also an homage to [shinpokered](https://github.com/jojobea
 
 ### Visual updates
 
-- Several tilesets have been updated with new graphics and new animations.
+- Several maps have updated graphics and new animations.
 - Gym leaders have their own sprites.
 - New character sprites when surfing or running.
 - In SuperGameBoy mode, the town color palettes have been adjusted to better reflect the original Japanese town names.
@@ -74,7 +74,7 @@ Its kanji name 夢 is also an homage to [shinpokered](https://github.com/jojobea
 - New Celadon Mart floor where you can buy PP-related items in the postgame (Ether, Elixir, PP Up...).
 - Turn Exp.All on and off from the bag.
 - Faster dialogue to buy coins at the Game Corner.
-- New room with a nurse in the SS.Anne.
+- New nurse room in the SS.Anne.
 
 There are also many other smaller tweaks to the original game, and still more to come!
 
