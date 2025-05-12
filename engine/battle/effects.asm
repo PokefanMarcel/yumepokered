@@ -1040,19 +1040,18 @@ MoveWasDisabledText:
 	text_end
 
 HexEffect:  ; marcelnote - new effect for HEX: gets to 90 base power if opponent has PAR/SLP/PSN/BRN/FRZ
-	ld hl, wEnemyMonStatus
-	ld de, wPlayerMovePower
 	ldh a, [hWhoseTurn]
 	and a
-	jr z, .hexEffect
-	ld hl, wBattleMonStatus
-	ld de, wEnemyMovePower
-.hexEffect
-	ld a, [hl]
-	and (1 << PAR) | (1 << PSN) | (1 << BRN) | (1 << FRZ) | SLP_MASK
+	ld de, wEnemyMonStatus
+	ld hl, wPlayerMovePower
+	jr z, .playerTurn
+	ld de, wBattleMonStatus
+	ld hl, wEnemyMovePower
+.playerTurn
+	ld a, [de]
+	and a ; does the target have a status ailment?
 	ret z
-	ld a, 90
-	ld [de], a
+	ld [hl], 90 ; if yes, change Hex base power from 60 to 90
 	ret
 
 
