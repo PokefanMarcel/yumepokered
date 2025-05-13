@@ -48,166 +48,166 @@ ExplodeEffect:
 	ret
 
 
-StatModifierUpEffect:
-	ld hl, wPlayerMonStatMods
-	ld de, wPlayerMoveEffect
+StatModifierUpEffect: ; marcelnote - optimized
 	ldh a, [hWhoseTurn]
 	and a
-	jr z, .statModifierUpEffect
-	ld hl, wEnemyMonStatMods
+	ld hl, wPlayerMonStatMods ; stat mod between 1 and 13 (-6 to +6)
+	ld de, wPlayerMoveEffect
+	jr z, .playerTurn
+	ld hl, wEnemyMonStatMods  ; stat mod between 1 and 13 (-6 to +6)
 	ld de, wEnemyMoveEffect
-.statModifierUpEffect
+.playerTurn
+	ld a, [de]  ; a = w<>MoveEffect
+	sub ATTACK_UP2_EFFECT                     ; a = stat offset for +2 effects
+	jr nc, .gotStatOffset                     ; +2 effects are after +1 effects
+	add ATTACK_UP2_EFFECT - ATTACK_UP1_EFFECT ; a = stat offset for +1 effects
+.gotStatOffset
+	ld c, a    ; c = offset for stat to increase: 0=Attack, 1=Defense, 2=Speed,
+	ld b, $0   ;                                  3=Special, 4=Accuracy, 5=Evasion
+	add hl, bc ; hl = w<User>Mon<Stat>Mod
+	ld b, [hl]                     ; b = [w<User>Mon<Stat>Mod], current stat modifier
+	ld a, $d - 1                   ; can't raise stat mod past +6 ($d or 13)
+	cp b                           ; is b ≥ $d already?
+	jp c, PrintNothingHappenedText ; if yes, do nothing
+	inc b                          ; else +1
+	cp b                           ; is b ≥ $d now?
+	jr c, .doneIncreasing          ; if yes, stop
 	ld a, [de]
-	sub ATTACK_UP1_EFFECT
-	cp EVASION_UP1_EFFECT + $3 - ATTACK_UP1_EFFECT ; covers all +1 effects
-	jr c, .incrementStatMod
-	sub ATTACK_UP2_EFFECT - ATTACK_UP1_EFFECT ; map +2 effects to equivalent +1 effect
-.incrementStatMod
-	ld c, a
-	ld b, $0
-	add hl, bc
-	ld b, [hl]
-	inc b ; increment corresponding stat mod
-	ld a, $d
-	cp b ; can't raise stat past +6 ($d or 13)
-	jp c, PrintNothingHappenedText
-	ld a, [de]
-	cp ATTACK_UP1_EFFECT + $8 ; is it a +2 effect?
-	jr c, .ok
-	inc b ; if so, increment stat mod again
-	ld a, $d
-	cp b ; unless it's already +6
-	jr nc, .ok
-	ld b, a
-.ok
-	ld [hl], b
-	ld a, c
+	cp ATTACK_UP2_EFFECT           ; else, is it a +2 effect?
+	jr c, .doneIncreasing
+	inc b                          ; if yes, +1 again
+.doneIncreasing
+	ld [hl], b ; [w<User>Mon<Stat>Mod] = updated stat mod
+	ld a, c    ; a = stat offset
 	cp $4
-	jr nc, UpdateStatDone ; jump if mod affected is evasion/accuracy
-	push hl
+	jr nc, UpdateStatDone ; jump if stat affected is Accuracy/Evasion
+;	push hl ; save hl = w<User>Mon<Stat>Mod (for RestoreOriginalStatModifier)
+	ldh a, [hWhoseTurn]
+	and a
 	ld hl, wBattleMonAttack + 1
 	ld de, wPlayerMonUnmodifiedAttack
-	ldh a, [hWhoseTurn]
-	and a
 	jr z, .pointToStats
 	ld hl, wEnemyMonAttack + 1
 	ld de, wEnemyMonUnmodifiedAttack
 .pointToStats
-	push bc
-	sla c
+	push bc    ; save b = stat mod, c = stat offset
+	sla c      ; multiply c by 2
 	ld b, $0
-	add hl, bc ; hl = modified stat
-	ld a, c
+	add hl, bc ; hl = w<User>Mon<Stat> + 1
+	ld a, c    ; the next lines effectively do 'add de, bc' (not an actual command)
 	add e
 	ld e, a
-	jr nc, .checkIf999
-	inc d ; de = unmodified (original) stat
-.checkIf999
-	pop bc
-	; check if stat is already 999
+	adc d
+	sub e
+	ld d, a    ; de = w<User>MonUnmodified<Stat>
+	pop bc     ; restore b = stat mod, c = stat offset
+	; check if stat is already 999 = $03E7
 	ld a, [hld]
 	sub LOW(MAX_STAT_VALUE)
-	jr nz, .recalculateStat
+	jr nz, .recalculateStat ; if low byte is different, must be less than 999
 	ld a, [hl]
-	sbc HIGH(MAX_STAT_VALUE)
-	jp z, RestoreOriginalStatModifier
+	sbc HIGH(MAX_STAT_VALUE) ; note that carry must be 0 here
+;	jp z, RestoreOriginalStatModifier ; used to do -1 on stat mod here
+	jp z, PrintNothingHappenedText    ; if both bytes equal, jump
 .recalculateStat ; recalculate affected stat
                  ; paralysis and burn penalties, as well as badge boosts are ignored
-	push hl
-	push bc
+	push hl    ; save hl = w<User>Mon<Stat>
+	ld a, c    ; store a = stat offset
 	ld hl, StatModifierRatios
-	dec b
-	sla b
+	dec b      ; b in [0, 12] for the pointer table
+	sla b      ; multiply it by 2 (table size = 2)
 	ld c, b
 	ld b, $0
-	add hl, bc
-	pop bc
+	add hl, bc ; hl points to the numerator
+	ld c, a    ; restore c = stat offset
 	xor a
 	ldh [hMultiplicand], a
-	ld a, [de]
+	ld a, [de]    ; a = [w<User>MonUnmodified<Stat>]
 	ldh [hMultiplicand + 1], a
 	inc de
-	ld a, [de]
+	ld a, [de]    ; a = [w<User>MonUnmodified<Stat> + 1]
 	ldh [hMultiplicand + 2], a
-	ld a, [hli]
+	ld a, [hli]   ; a = numerator to multiply with
 	ldh [hMultiplier], a
-	call Multiply
-	ld a, [hl]
+	call Multiply ; preserves all 16-bit registers
+	ld a, [hl]    ; a = denominator to divide with
 	ldh [hDivisor], a
-	ld b, $4
-	call Divide
-	pop hl
+	ld b, $4      ; number of bytes in the dividend
+	call Divide   ; preserves all 16-bit registers
+	pop hl        ; restore hl = w<User>Mon<Stat>
 ; cap at MAX_STAT_VALUE (999)
 	ldh a, [hProduct + 3]
 	sub LOW(MAX_STAT_VALUE)
 	ldh a, [hProduct + 2]
 	sbc HIGH(MAX_STAT_VALUE)
-	jp c, UpdateStat
+	jr c, UpdateStat
 	ld a, HIGH(MAX_STAT_VALUE)
-	ldh [hMultiplicand + 1], a
+	ldh [hProduct + 2], a
 	ld a, LOW(MAX_STAT_VALUE)
-	ldh [hMultiplicand + 2], a
+	ldh [hProduct + 3], a
+	; fallthrough
 
 UpdateStat:
 	ldh a, [hProduct + 2]
-	ld [hli], a
+	ld [hli], a  ; hl = w<User>Mon<Stat>
 	ldh a, [hProduct + 3]
-	ld [hl], a
-	pop hl
+	ld [hl], a   ; hl = w<User>Mon<Stat> + 1
+;	pop hl       ; restore hl = w<User>Mon<Stat>Mod (for RestoreOriginalStatModifier)
+	; fallthrough
 UpdateStatDone:
-	ld b, c
-	inc b
-	call PrintStatText
+;	ld b, c ; b = stat offset
+;	inc b   ; prepare b for list search
+	inc c   ; c = stat offset + 1 for list search
+	call PrintStatText ; uses c as counter
+	ldh a, [hWhoseTurn]
+	and a
 	ld hl, wPlayerBattleStatus2
 	ld de, wPlayerMoveNum
 	ld bc, wPlayerMonMinimized
-	ldh a, [hWhoseTurn]
-	and a
 	jr z, .playerTurn
 	ld hl, wEnemyBattleStatus2
 	ld de, wEnemyMoveNum
 	ld bc, wEnemyMonMinimized
 .playerTurn
-	ld a, [de]
+	ld a, [de] ; a = [w<User>MoveNum]
 	cp MINIMIZE
 	jr nz, .notMinimize
  ; if a substitute is up, slide off the substitute and show the mon pic before
  ; playing the minimize animation
 	bit HAS_SUBSTITUTE_UP, [hl]
-	push af
-	push bc
+	push af  ; save z flag for substitute
+	push bc  ; save bc = w<>MonMinimized
 	ld hl, HideSubstituteShowMonAnim
 	ld b, BANK(HideSubstituteShowMonAnim)
-	push de
-	call nz, Bankswitch
-	pop de
-.notMinimize
-	call PlayCurrentMoveAnimation
-	ld a, [de]
-	cp MINIMIZE
-	jr nz, .applyBadgeBoostsAndStatusPenalties
-	pop bc
+	call nz, Bankswitch ; hide substitute if there is one
+	call PlayCurrentMoveAnimation ; play Minimize animation
+	pop bc  ; restore bc = w<>MonMinimized
 	ld a, $1
 	ld [bc], a
 	ld hl, ReshowSubstituteAnim
 	ld b, BANK(ReshowSubstituteAnim)
-	pop af
-	call nz, Bankswitch
+	pop af  ; restore z flag for substitute
+	call nz, Bankswitch ; reshow substitute if there is one
+	jr .applyBadgeBoostsAndStatusPenalties
+.notMinimize
+	call PlayCurrentMoveAnimation
 .applyBadgeBoostsAndStatusPenalties
 	ldh a, [hWhoseTurn]
 	and a
 	call z, ApplyBadgeStatBoosts ; whenever the player uses a stat-up move, badge boosts get reapplied again to every stat,
 	                             ; even to those not affected by the stat-up move (will be boosted further)
-	ld hl, MonsStatsRoseText
-	call PrintText
+	                             ; marcelnote - TO DO: check shinpokered for fix
 
-; these shouldn't be here
+; these shouldn't be here ; marcelnote - TO DO: check shinpokered for fix
 	call QuarterSpeedDueToParalysis ; apply speed penalty to the player whose turn is not, if it's paralyzed
-	jp HalveAttackDueToBurn ; apply attack penalty to the player whose turn is not, if it's burned
+	call HalveAttackDueToBurn       ; apply attack penalty to the player whose turn is not, if it's burned
 
-RestoreOriginalStatModifier:
-	pop hl
-	dec [hl]
+	ld hl, MonsStatsRoseText
+	jp PrintText
+
+;RestoreOriginalStatModifier:
+;	pop hl
+;	dec [hl]
 
 PrintNothingHappenedText:
 	ld hl, NothingHappenedText
@@ -374,10 +374,11 @@ UpdateLoweredStat:
 	pop de
 	pop hl
 UpdateLoweredStatDone:
-	ld b, c
-	inc b
+;	ld b, c
+;	inc b
+	inc c
 	push de
-	call PrintStatText
+	call PrintStatText ; uses c as counter
 	pop de
 	ld a, [de]
 	cp $44
@@ -441,17 +442,17 @@ FellText:
 	text_far _FellText
 	text_end
 
-PrintStatText:
+PrintStatText: ; uses c as counter
 	ld hl, StatModTextStrings
-	ld c, "@"
-.findStatName_outer
-	dec b
+	ld b, "@"
+.findStatName
+	dec c
 	jr z, .foundStatName
-.findStatName_inner
+.skipStatName
 	ld a, [hli]
-	cp c
-	jr z, .findStatName_outer
-	jr .findStatName_inner
+	cp b
+	jr nz, .skipStatName ; if not "@" go to next character
+	jr .findStatName
 .foundStatName
 	ld de, wStringBuffer
 	ld bc, $a
