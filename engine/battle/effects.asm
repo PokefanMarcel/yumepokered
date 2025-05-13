@@ -840,20 +840,20 @@ SubstituteEffect:
 	jpfar SubstituteEffect_
 
 HyperBeamEffect:
-	ld hl, wPlayerBattleStatus2
 	ldh a, [hWhoseTurn]
 	and a
-	jr z, .hyperBeamEffect
+	ld hl, wPlayerBattleStatus2
+	jr z, .playerTurn
 	ld hl, wEnemyBattleStatus2
-.hyperBeamEffect
+.playerTurn
 	set NEEDS_TO_RECHARGE, [hl] ; mon now needs to recharge
 	ret
 
 ClearHyperBeam:
 	push hl
-	ld hl, wEnemyBattleStatus2
 	ldh a, [hWhoseTurn]
 	and a
+	ld hl, wEnemyBattleStatus2
 	jr z, .playerTurn
 	ld hl, wPlayerBattleStatus2
 .playerTurn
@@ -862,12 +862,12 @@ ClearHyperBeam:
 	ret
 
 RageEffect:
-	ld hl, wPlayerBattleStatus2
 	ldh a, [hWhoseTurn]
 	and a
-	jr z, .player
+	ld hl, wPlayerBattleStatus2
+	jr z, .playerTurn
 	ld hl, wEnemyBattleStatus2
-.player
+.playerTurn
 	set USING_RAGE, [hl] ; mon is now in "rage" mode
 	ret
 
