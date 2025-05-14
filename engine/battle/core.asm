@@ -6672,6 +6672,7 @@ DoubleOrHalveSelectedStats:
 ScrollTrainerPicAfterBattle:
 	jpfar _ScrollTrainerPicAfterBattle
 
+
 ApplyBurnAndParalysisPenaltiesToPlayer:
 	ld a, $1
 	jr ApplyBurnAndParalysisPenalties
@@ -6735,6 +6736,7 @@ HalveAttackDueToBurn: ; marcelnote - optimized
 	ld [hl], b  ; [w<>MonAttack + 1] (low byte)
 	ret
 
+
 CalculateModifiedStats: ; marcelnote - optimized
 	ld c, NUM_STATS - 2        ; c = 3 = special
 .loop
@@ -6744,83 +6746,89 @@ CalculateModifiedStats: ; marcelnote - optimized
 	; fallthrough              ; compute Attack (c = 0)
 
 ; calculate modified stat for stat c (0 = attack, 1 = defense, 2 = speed, 3 = special)
-CalculateModifiedStat:
-	push bc
-	push bc
-	ld a, [wCalculateWhoseStats]
+CalculateModifiedStat: ; marcelnote - optimized
+	push bc ; save c = stat offset
+	ld a, [wCalculateWhoseStats] ; player = 0, enemy = 1
 	and a
-	ld a, c
-	ld hl, wBattleMonAttack
+	ld a, c ; a = stat offset
+	ld hl, wBattleMonAttack + 1
 	ld de, wPlayerMonUnmodifiedAttack
 	ld bc, wPlayerMonStatMods
-	jr z, .next
-	ld hl, wEnemyMonAttack
+	jr z, .gotPointers
+	ld hl, wEnemyMonAttack + 1
 	ld de, wEnemyMonUnmodifiedAttack
 	ld bc, wEnemyMonStatMods
-.next
+.gotPointers
 	add c
 	ld c, a
-	jr nc, .noCarry1
-	inc b
-.noCarry1
-	ld a, [bc]
-	pop bc
-	ld b, a
-	push bc
-	sla c
+	adc b
+	sub c
+	ld b, a       ; bc = wPlayerMon<Stat>Mod
+	ld a, [bc]    ; a = current stat mod (1 to 13)
+
+	pop bc        ; restore c = stat offset
+	sla c         ; c = 2 * (stat offset)
 	ld b, 0
-	add hl, bc
-	ld a, c
+	add hl, bc    ; hl = wBattleMon<Stat> + 1
+
+	ld b, a       ; save b = stat mod
+
+	ld a, c       ; a = 2 * (stat offset)
 	add e
 	ld e, a
-	jr nc, .noCarry2
-	inc d
-.noCarry2
-	pop bc
-	push hl
+	adc d
+	sub e
+	ld d, a       ; de = wPlayerMonUnmodified<Stat>
+
+	srl c         ; c = stat offset
+	ld a, c       ; save a = stat offset
+
+	push hl       ; save hl = wBattleMon<Stat> + 1
 	ld hl, StatModifierRatios
-	dec b
-	sla b
+	dec b         ; b in [0, 12] for the pointer table
+	sla b         ; multiply it by 2 (table size = 2)
 	ld c, b
 	ld b, 0
-	add hl, bc
+	add hl, bc    ; hl points to the numerator
+
+	ld c, a       ; c = stat offset until the end
+
 	xor a
 	ldh [hMultiplicand], a
-	ld a, [de]
+	ld a, [de]    ; a = [w<User>MonUnmodified<Stat>]
 	ldh [hMultiplicand + 1], a
 	inc de
-	ld a, [de]
+	ld a, [de]    ; a = [w<User>MonUnmodified<Stat> + 1]
 	ldh [hMultiplicand + 2], a
-	ld a, [hli]
+	ld a, [hli]   ; a = numerator to multiply with
 	ldh [hMultiplier], a
-	call Multiply
-	ld a, [hl]
+	call Multiply ; preserves all 16-bit registers
+	ld a, [hl]    ; a = denominator to divide with
 	ldh [hDivisor], a
-	ld b, $4
-	call Divide
-	pop hl
+	ld b, $4      ; number of bytes in the dividend
+	call Divide   ; preserves all 16-bit registers
+	pop hl        ; restore hl = wBattleMon<Stat> + 1
+
 	ldh a, [hDividend + 3]
 	sub LOW(MAX_STAT_VALUE)
 	ldh a, [hDividend + 2]
 	sbc HIGH(MAX_STAT_VALUE)
-	jp c, .storeNewStatValue
+	jr c, .storeNewStatValue
 ; cap the stat at MAX_STAT_VALUE (999)
-	ld a, HIGH(MAX_STAT_VALUE)
-	ldh [hDividend + 2], a
 	ld a, LOW(MAX_STAT_VALUE)
-	ldh [hDividend + 3], a
-.storeNewStatValue
-	ldh a, [hDividend + 2]
-	ld [hli], a
-	ld b, a
-	ldh a, [hDividend + 3]
-	ld [hl], a
-	or b
-	jr nz, .done
-	inc [hl] ; if the stat is 0, bump it up to 1
-.done
-	pop bc
+	ld [hld], a                   ; [wBattleMon<Stat> + 1] = LOW(MAX_STAT_VALUE)
+	ld [hl], HIGH(MAX_STAT_VALUE) ; [wBattleMon<Stat>]     = HIGH(MAX_STAT_VALUE)
 	ret
+.storeNewStatValue
+	ldh a, [hDividend + 3]
+	ld [hld], a ; low byte
+	ldh a, [hDividend + 2]
+	ld [hli], a ; high byte, but hl -> low byte again
+	or [hl]     ; are both bytes 0?
+	ret nz      ; if not, we're done
+	inc [hl]    ; otherwise bump up lower byte to 1
+	ret
+
 
 ApplyBadgeStatBoosts:
 	ld a, [wLinkState]
