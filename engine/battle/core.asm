@@ -6735,15 +6735,13 @@ HalveAttackDueToBurn: ; marcelnote - optimized
 	ld [hl], b  ; [w<>MonAttack + 1] (low byte)
 	ret
 
-CalculateModifiedStats:
-	ld c, 0
+CalculateModifiedStats: ; marcelnote - optimized
+	ld c, NUM_STATS - 2        ; c = 3 = special
 .loop
-	call CalculateModifiedStat
-	inc c
-	ld a, c
-	cp NUM_STATS - 1
+	call CalculateModifiedStat ; preserves c
+	dec c
 	jr nz, .loop
-	ret
+	; fallthrough              ; compute Attack (c = 0)
 
 ; calculate modified stat for stat c (0 = attack, 1 = defense, 2 = speed, 3 = special)
 CalculateModifiedStat:

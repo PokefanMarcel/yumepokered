@@ -14,7 +14,7 @@ DEF MAX_STAT_LEVEL EQU 13
 	const STAT_DEFENSE
 	const STAT_SPEED
 	const STAT_SPECIAL
-DEF NUM_STATS EQU const_value - 1
+DEF NUM_STATS EQU const_value - 1 ; NUM_STATS = 6 - 1 = 5
 
 ; StatModTextStrings indexes (see data/battle/stat_mod_names.asm)
 	const_def
