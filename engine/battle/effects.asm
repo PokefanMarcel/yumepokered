@@ -234,185 +234,174 @@ RoseText:
 	text_far _RoseText
 	text_end
 
-StatModifierDownEffect:
-	ld hl, wEnemyMonStatMods
-	ld de, wPlayerMoveEffect
-	ld bc, wEnemyBattleStatus1
+
+StatModifierDownEffect: ; marcelnote - optimized
 	ldh a, [hWhoseTurn]
 	and a
-	jr z, .statModifierDownEffect
+	ld hl, wEnemyMonStatMods
+	ld de, wPlayerMoveEffect
+	ld bc, wEnemyBattleStatus2
+	jr z, .playerTurn
 	ld hl, wPlayerMonStatMods
 	ld de, wEnemyMoveEffect
-	ld bc, wPlayerBattleStatus1
-	ld a, [wLinkState]
-	cp LINK_STATE_BATTLING
-	jr z, .statModifierDownEffect
+	ld bc, wPlayerBattleStatus2
+;	ld a, [wLinkState]            ; marcelnote - removed 25% chance for opponent to miss
+;	cp LINK_STATE_BATTLING
+;	jr z, .playerTurn
+;	call BattleRandom
+;	cp 25 percent + 1 ; chance to miss in regular battle
+;	jp c, ConditionalPrintButItFailed
+.playerTurn
+	ld a, [bc]                         ; a = [w<Target>BattleStatus2]
+	bit HAS_SUBSTITUTE_UP, a           ; does the target have a substitute up?
+	jp nz, ConditionalPrintButItFailed ; if yes, fail but print only if stat down was main effect
+	ld a, [de]                         ; a = [w<User>MoveEffect]
+	cp ATTACK_DOWN1_EFFECT             ; side effects come before Down1 and Down2 effects
+	push af                            ; save c flag (set = side effect)
+	jr nc, .mainEffect
+	; side effect
 	call BattleRandom
-	cp 25 percent + 1 ; chance to miss by in regular battle
-	jp c, MoveMissed
-.statModifierDownEffect
-	call CheckTargetSubstitute ; can't hit through substitute
-	jp nz, MoveMissed
-	ld a, [de]
-	cp ATTACK_DOWN_SIDE_EFFECT
-	jr c, .nonSideEffect
-	call BattleRandom
-	cp 33 percent + 1 ; chance for side effects
-	jp nc, CantLowerAnymore
-	ld a, [de]
-	sub ATTACK_DOWN_SIDE_EFFECT ; map each stat to 0-3
-	jr .decrementStatMod
-.nonSideEffect ; non-side effects only
+	cp 33 percent + 1           ; chance for side effects
+	jr nc, .butItFailed         ; here we'd like 'ret nc' but we have to pop af
+	ld a, [de]                  ; a = [w<User>MoveEffect]
+	sub ATTACK_DOWN_SIDE_EFFECT ; a = stat offset (0 to 3)
+	jr .gotStatOffset
+
+.butItFailed
+	pop af     ; restore c flag (set = side effect)
+	ret c      ; don't print anything if only side effect
+	jp PrintButItFailedText_
+
+.nothingHappened
+	pop af     ; restore c flag (set = side effect)
+	ret c      ; don't print anything if only side effect
+	jp PrintNothingHappenedText
+
+.mainEffect ; main effect only
+	dec bc               ; bc = w<Target>BattleStatus1
+	ld a, [bc]           ; a = [w<Target>BattleStatus1]
+	bit INVULNERABLE, a  ; is the target in fly/dig?
+	jr nz, .butItFailed  ; if yes, fail
 	push hl
 	push de
-	push bc
 	call MoveHitTest ; apply accuracy tests
-	pop bc
 	pop de
 	pop hl
 	ld a, [wMoveMissed]
 	and a
-	jp nz, MoveMissed
-	ld a, [bc]
-	bit INVULNERABLE, a ; fly/dig
-	jp nz, MoveMissed
+	jr nz, .butItFailed
+	ld a, [de]                                    ; a = w<User>MoveEffect
+	sub ATTACK_DOWN2_EFFECT                       ; a = stat offset for -2 effects
+	jr nc, .gotStatOffset                         ; -2 effects are after -1 effects
+	add ATTACK_DOWN2_EFFECT - ATTACK_DOWN1_EFFECT ; a = stat offset for -1 effects
+.gotStatOffset
+	ld c, a                 ; c = offset for stat to increase: 0=Attack, 1=Defense, 2=Speed,
+	ld b, $0                ;                                  3=Special, 4=Accuracy, 5=Evasion
+	add hl, bc              ; hl = w<Target>Mon<Stat>Mod
+	ld b, [hl]              ; b = [w<Target>Mon<Stat>Mod], current stat modifier
+	dec b                   ; decrease stat mod
+	jr z, .nothingHappened  ; can't lower stat mod below 1 (-6)
 	ld a, [de]
-	sub ATTACK_DOWN1_EFFECT
-	cp EVASION_DOWN1_EFFECT + $3 - ATTACK_DOWN1_EFFECT ; covers all -1 effects
-	jr c, .decrementStatMod
-	sub ATTACK_DOWN2_EFFECT - ATTACK_DOWN1_EFFECT ; map -2 effects to corresponding -1 effect
-.decrementStatMod
-	ld c, a
-	ld b, $0
-	add hl, bc
-	ld b, [hl]
-	dec b ; dec corresponding stat mod
-	jp z, CantLowerAnymore ; if stat mod is 1 (-6), can't lower anymore
-	ld a, [de]
-	cp ATTACK_DOWN2_EFFECT - $16 ; $24
-	jr c, .ok
-	cp EVASION_DOWN2_EFFECT + $5 ; $44
-	jr nc, .ok
-	dec b ; stat down 2 effects only (dec mod again)
-	jr nz, .ok
-	inc b ; increment mod to 1 (-6) if it would become 0 (-7)
-.ok
-	ld [hl], b ; save modified mod
-	ld a, c
+	cp ATTACK_DOWN2_EFFECT  ; is it a -2 effect?
+	jr c, .doneDecreasing   ; if not, stop
+	dec b                   ; else, -1 again
+	jr nz, .doneDecreasing  ; if result is not 0, we're done
+	inc b                   ; else keep b = 1 (stat mod -6)
+.doneDecreasing
+	ld [hl], b ; [w<Target>Mon<Stat>Mod] = updated stat mod
+	ld a, c    ; a = stat offset
 	cp $4
-	jr nc, UpdateLoweredStatDone ; jump for evasion/accuracy
-	push hl
-	push de
-	ld hl, wEnemyMonAttack + 1
-	ld de, wEnemyMonUnmodifiedAttack
+	jr nc, UpdateLoweredStatDone ; jump if stat affected is Accuracy/Evasion
+
 	ldh a, [hWhoseTurn]
 	and a
-	jr z, .pointToStat
+	ld hl, wEnemyMonAttack + 1
+	ld de, wEnemyMonUnmodifiedAttack
+	jr z, .pointToStat ; jump if player's turn
 	ld hl, wBattleMonAttack + 1
 	ld de, wPlayerMonUnmodifiedAttack
 .pointToStat
-	push bc
-	sla c
+	push bc    ; save b = stat mod, c = stat offset
+	sla c      ; multiply c by 2
 	ld b, $0
-	add hl, bc ; hl = modified stat
-	ld a, c
+	add hl, bc ; hl = w<Target>Mon<Stat> + 1
+	ld a, c    ; the next lines effectively do 'add de, bc' (not an actual command)
 	add e
 	ld e, a
-	jr nc, .noCarry
-	inc d ; de = unmodified stat
-.noCarry
-	pop bc
-	ld a, [hld]
-	sub $1 ; can't lower stat below 1 (-6)
-	jr nz, .recalculateStat
-	ld a, [hl]
-	and a
-	jp z, CantLowerAnymore_Pop
+	adc d
+	sub e
+	ld d, a    ; de = w<Target>MonUnmodified<Stat>
+	pop bc     ; restore b = stat mod, c = stat offset
+	; check if stat is already 1
+	ld a, [hld]              ; a = [w<Target>Mon<Stat> + 1]
+	dec a                    ; is low byte equal to 1?
+	jr nz, .recalculateStat  ; if not, we're good
+	ld a, [hl]               ; else low byte is 1,
+	and a                    ; so is high byte equal to 0?
+	jr z, .nothingHappened   ; if yes, can't decrease more
 .recalculateStat
 ; recalculate affected stat
 ; paralysis and burn penalties, as well as badge boosts are ignored
-	push hl
-	push bc
+	push hl       ; save hl = w<Target>Mon<Stat>
+	ld a, c       ; save a = stat offset
 	ld hl, StatModifierRatios
-	dec b
-	sla b
+	dec b         ; b in [0, 12] for the pointer table
+	sla b         ; multiply it by 2 (table size = 2)
 	ld c, b
 	ld b, $0
-	add hl, bc
-	pop bc
+	add hl, bc    ; hl points to the numerator
+	ld c, a       ; save c = stat offset
 	xor a
 	ldh [hMultiplicand], a
-	ld a, [de]
+	ld a, [de]    ; a = [w<Target>MonUnmodified<Stat>]
 	ldh [hMultiplicand + 1], a
 	inc de
-	ld a, [de]
+	ld a, [de]    ; a = [w<Target>MonUnmodified<Stat> + 1]
 	ldh [hMultiplicand + 2], a
-	ld a, [hli]
+	ld a, [hli]   ; a = numerator to multiply with
 	ldh [hMultiplier], a
-	call Multiply
-	ld a, [hl]
+	call Multiply ; preserves all 16-bit registers
+	ld a, [hl]    ; a = denominator to divide with
 	ldh [hDivisor], a
-	ld b, $4
-	call Divide
-	pop hl
+	ld b, $4      ; number of bytes in the dividend
+	call Divide   ; preserves all 16-bit registers
+	pop hl        ; restore hl = w<Target>Mon<Stat>
+; ensure stat value is at least 1
 	ldh a, [hProduct + 3]
 	ld b, a
 	ldh a, [hProduct + 2]
-	or b
-	jp nz, UpdateLoweredStat
-	ldh [hMultiplicand + 1], a
-	ld a, $1
-	ldh [hMultiplicand + 2], a
+	or b                     ; are both bytes 0?
+	jr nz, UpdateLoweredStat ; if not, we're good
+	inc a                    ; a = 1
+	ldh [hProduct + 3], a    ; increase low byte to 1
+	; need to also check if stat is still hitting the 999 cap?
 
 UpdateLoweredStat:
 	ldh a, [hProduct + 2]
-	ld [hli], a
+	ld [hli], a  ; hl = w<Target>Mon<Stat>
 	ldh a, [hProduct + 3]
-	ld [hl], a
-	pop de
-	pop hl
+	ld [hl], a   ; hl = w<Target>Mon<Stat> + 1
 UpdateLoweredStatDone:
-;	ld b, c
-;	inc b
-	inc c
-	push de
+	inc c              ; c = stat offset + 1 for list search
 	call PrintStatText ; uses c as counter
-	pop de
-	ld a, [de]
-	cp $44
-	jr nc, .ApplyBadgeBoostsAndStatusPenalties
+	pop af             ; restore c flag (set = side effect)
+	jr c, .ApplyBadgeBoostsAndStatusPenalties ; don't play move animation if only side effect
 	call PlayCurrentMoveAnimation2
 .ApplyBadgeBoostsAndStatusPenalties
 	ldh a, [hWhoseTurn]
 	and a
 	call nz, ApplyBadgeStatBoosts ; whenever the player uses a stat-down move, badge boosts get reapplied again to every stat,
 	                              ; even to those not affected by the stat-up move (will be boosted further)
-	ld hl, MonsStatsFellText
-	call PrintText
 
 ; These where probably added given that a stat-down move affecting speed or attack will override
 ; the stat penalties from paralysis and burn respectively.
 ; But they are always called regardless of the stat affected by the stat-down move.
 	call QuarterSpeedDueToParalysis
-	jp HalveAttackDueToBurn
+	call HalveAttackDueToBurn
 
-CantLowerAnymore_Pop:
-	pop de
-	pop hl
-	inc [hl]
-
-CantLowerAnymore:
-	ld a, [de]
-	cp ATTACK_DOWN_SIDE_EFFECT
-	ret nc
-	ld hl, NothingHappenedText
+	ld hl, MonsStatsFellText
 	jp PrintText
 
-MoveMissed:
-	ld a, [de]
-	cp $44
-	ret nc
-	jp ConditionalPrintButItFailed
 
 MonsStatsFellText:
 	text_far _MonsStatsFellText
