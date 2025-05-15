@@ -214,16 +214,16 @@ PrintNothingHappenedText:
 MonsStatsRoseText:
 	text_far _MonsStatsRoseText
 	text_asm
-	ld hl, GreatlyRoseText
+	ld hl, RoseText
 	ldh a, [hWhoseTurn]
 	and a
 	ld a, [wPlayerMoveEffect]
 	jr z, .playerTurn
 	ld a, [wEnemyMoveEffect]
 .playerTurn
-	cp ATTACK_DOWN1_EFFECT
-	ret nc
-	ld hl, RoseText
+	cp ATTACK_UP2_EFFECT
+	ret c
+	ld hl, GreatlyRoseText
 	ret
 
 GreatlyRoseText:
@@ -414,10 +414,8 @@ MonsStatsFellText:
 	ld a, [wEnemyMoveEffect]
 .playerTurn
 ; check if the move's effect decreases a stat by 2
-	cp BIDE_EFFECT
+	cp ATTACK_DOWN2_EFFECT
 	ret c
-	cp ATTACK_DOWN_SIDE_EFFECT
-	ret nc
 	ld hl, GreatlyFellText
 	ret
 
