@@ -679,6 +679,7 @@ ConditionalPrintButItFailed:
 	ld a, [wMoveDidntMiss]
 	and a
 	ret nz ; return if the side effect failed, yet the attack was successful
+	; fallthrough
 
 PrintButItFailedText_:
 	ld hl, ButItFailedText
@@ -702,12 +703,12 @@ IsUnaffectedText:
 
 CheckTargetSubstitute:
 	push hl
-	ld hl, wEnemyBattleStatus2
 	ldh a, [hWhoseTurn]
 	and a
-	jr z, .next1
+	ld hl, wEnemyBattleStatus2
+	jr z, .playerTurn
 	ld hl, wPlayerBattleStatus2
-.next1
+.playerTurn
 	bit HAS_SUBSTITUTE_UP, [hl]
 	pop hl
 	ret
@@ -718,11 +719,12 @@ PlayCurrentMoveAnimation2:
 	ldh a, [hWhoseTurn]
 	and a
 	ld a, [wPlayerMoveNum]
-	jr z, .notEnemyTurn
+	jr z, .playerTurn
 	ld a, [wEnemyMoveNum]
-.notEnemyTurn
+.playerTurn
 	and a
 	ret z
+	; fallthrough
 
 PlayBattleAnimation2:
 ; play animation ID at a and animation type 6 or 3
@@ -730,9 +732,9 @@ PlayBattleAnimation2:
 	ldh a, [hWhoseTurn]
 	and a
 	ld a, ANIMATIONTYPE_SHAKE_SCREEN_HORIZONTALLY_SLOW_2
-	jr z, .storeAnimationType
+	jr z, .playerTurn
 	ld a, ANIMATIONTYPE_SHAKE_SCREEN_HORIZONTALLY_SLOW
-.storeAnimationType
+.playerTurn
 	ld [wAnimationType], a
 	jp PlayBattleAnimationGotID
 
@@ -744,11 +746,12 @@ PlayCurrentMoveAnimation:
 	ldh a, [hWhoseTurn]
 	and a
 	ld a, [wPlayerMoveNum]
-	jr z, .notEnemyTurn
+	jr z, .playerTurn
 	ld a, [wEnemyMoveNum]
-.notEnemyTurn
+.playerTurn
 	and a
 	ret z
+	; fallthrough
 
 PlayBattleAnimation:
 ; play animation ID at a and predefined animation type
