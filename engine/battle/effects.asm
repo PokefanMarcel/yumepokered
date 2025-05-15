@@ -57,7 +57,7 @@ StatModifierUpEffect: ; marcelnote - optimized
 	ld hl, wEnemyMonStatMods  ; stat mod between 1 and 13 (-6 to +6)
 	ld de, wEnemyMoveEffect
 .playerTurn
-	ld a, [de]  ; a = w<>MoveEffect
+	ld a, [de]  ; a = [w<User>MoveEffect]
 	sub ATTACK_UP2_EFFECT                     ; a = stat offset for +2 effects
 	jr nc, .gotStatOffset                     ; +2 effects are after +1 effects
 	add ATTACK_UP2_EFFECT - ATTACK_UP1_EFFECT ; a = stat offset for +1 effects
@@ -155,8 +155,6 @@ UpdateStat:
 ;	pop hl       ; restore hl = w<User>Mon<Stat>Mod (for RestoreOriginalStatModifier)
 	; fallthrough
 UpdateStatDone:
-;	ld b, c ; b = stat offset
-;	inc b   ; prepare b for list search
 	inc c   ; c = stat offset + 1 for list search
 	call PrintStatText ; uses c as counter
 	ldh a, [hWhoseTurn]
@@ -176,12 +174,12 @@ UpdateStatDone:
  ; playing the minimize animation
 	bit HAS_SUBSTITUTE_UP, [hl]
 	push af  ; save z flag for substitute
-	push bc  ; save bc = w<>MonMinimized
+	push bc  ; save bc = w<User>MonMinimized
 	ld hl, HideSubstituteShowMonAnim
 	ld b, BANK(HideSubstituteShowMonAnim)
 	call nz, Bankswitch ; hide substitute if there is one
 	call PlayCurrentMoveAnimation ; play Minimize animation
-	pop bc  ; restore bc = w<>MonMinimized
+	pop bc  ; restore bc = w<User>MonMinimized
 	ld a, $1
 	ld [bc], a
 	ld hl, ReshowSubstituteAnim
@@ -199,8 +197,8 @@ UpdateStatDone:
 	                             ; marcelnote - TO DO: check shinpokered for fix
 
 ; these shouldn't be here ; marcelnote - TO DO: check shinpokered for fix
-	call QuarterSpeedDueToParalysis ; apply speed penalty to the player whose turn is not, if it's paralyzed
-	call HalveAttackDueToBurn       ; apply attack penalty to the player whose turn is not, if it's burned
+	call QuarterSpeedDueToParalysis ; apply speed penalty to the Mon whose turn is not, if it's paralyzed
+	call HalveAttackDueToBurn       ; apply attack penalty to the Mon whose turn is not, if it's burned
 
 	ld hl, MonsStatsRoseText
 	jp PrintText
