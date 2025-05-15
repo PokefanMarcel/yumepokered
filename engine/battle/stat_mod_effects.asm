@@ -30,7 +30,8 @@ StatModifierUpEffect: ; marcelnote - optimized
 	ld [hl], b ; [w<User>Mon<Stat>Mod] = updated stat mod
 	ld a, c    ; a = stat offset
 	cp $4
-	jr nc, UpdateStatDone ; jump if stat affected is Accuracy/Evasion
+	jr nc, UpdateUppedStatDone ; jump if stat affected is Accuracy/Evasion
+
 ;	push hl ; save hl = w<User>Mon<Stat>Mod (for RestoreOriginalStatModifier)
 	ldh a, [hWhoseTurn]
 	and a
@@ -52,61 +53,24 @@ StatModifierUpEffect: ; marcelnote - optimized
 	ld d, a    ; de = w<User>MonUnmodified<Stat>
 	pop bc     ; restore b = stat mod, c = stat offset
 	; check if stat is already 999 = $03E7
-	ld a, [hld]
+	ld a, [hld]  ; a = [w<User>Mon<Stat> + 1]
 	sub LOW(MAX_STAT_VALUE)
-	jr nz, .recalculateStat ; if low byte is different, must be less than 999
-	ld a, [hl]
-	sbc HIGH(MAX_STAT_VALUE) ; note that carry must be 0 here
-;	jp z, RestoreOriginalStatModifier ; used to do -1 on stat mod here
-	jp z, PrintNothingHappenedText    ; if both bytes equal, jump
-.recalculateStat ; recalculate affected stat
-                 ; paralysis and burn penalties, as well as badge boosts are ignored
-	push hl    ; save hl = w<User>Mon<Stat>
-	ld a, c    ; store a = stat offset
-	ld hl, StatModifierRatios
-	dec b      ; b in [0, 12] for the pointer table
-	sla b      ; multiply it by 2 (table size = 2)
-	ld c, b
-	ld b, $0
-	add hl, bc ; hl points to the numerator
-	ld c, a    ; restore c = stat offset
-	xor a
-	ldh [hMultiplicand], a
-	ld a, [de]    ; a = [w<User>MonUnmodified<Stat>]
-	ldh [hMultiplicand + 1], a
-	inc de
-	ld a, [de]    ; a = [w<User>MonUnmodified<Stat> + 1]
-	ldh [hMultiplicand + 2], a
-	ld a, [hli]   ; a = numerator to multiply with
-	ldh [hMultiplier], a
-	call Multiply ; preserves all 16-bit registers
-	ld a, [hl]    ; a = denominator to divide with
-	ldh [hDivisor], a
-	ld b, $4      ; number of bytes in the dividend
-	call Divide   ; preserves all 16-bit registers
-	pop hl        ; restore hl = w<User>Mon<Stat>
-; cap at MAX_STAT_VALUE (999)
-	ldh a, [hProduct + 3]
-	sub LOW(MAX_STAT_VALUE)
-	ldh a, [hProduct + 2]
+	ld a, [hli]  ; a = [w<User>Mon<Stat>]
 	sbc HIGH(MAX_STAT_VALUE)
-	jr c, UpdateStat
-	ld a, HIGH(MAX_STAT_VALUE)
-	ldh [hProduct + 2], a
-	ld a, LOW(MAX_STAT_VALUE)
-	ldh [hProduct + 3], a
+;	jp nc, RestoreOriginalStatModifier ; used to do -1 on stat mod here
+	jp nc, PrintNothingHappenedText    ; stat is already ≥ 999
+
+	; recalculate affected stat
+	; paralysis and burn penalties, as well as badge boosts are ignored
+	; UpdateStat takes b = stat mod, c = stat offset,
+	; hl = w<User>Mon<Stat> + 1,
+	; de = w<User>MonUnmodified<Stat>
+	call UpdateStat ; preserves c = stat offset
 	; fallthrough
 
-UpdateStat:
-	ldh a, [hProduct + 2]
-	ld [hli], a  ; hl = w<User>Mon<Stat>
-	ldh a, [hProduct + 3]
-	ld [hl], a   ; hl = w<User>Mon<Stat> + 1
-;	pop hl       ; restore hl = w<User>Mon<Stat>Mod (for RestoreOriginalStatModifier)
-	; fallthrough
-UpdateStatDone:
+UpdateUppedStatDone:
 	inc c   ; c = stat offset + 1 for list search
-	call PrintStatText ; uses c as counter
+	call BufferStatText ; uses c as counter
 	ldh a, [hWhoseTurn]
 	and a
 	ld hl, wPlayerBattleStatus2
@@ -157,11 +121,11 @@ UpdateStatDone:
 StatModifierDownEffect: ; marcelnote - optimized
 	ldh a, [hWhoseTurn]
 	and a
-	ld hl, wEnemyMonStatMods
+	ld hl, wEnemyMonStatMods ; stat mod between 1 and 13 (-6 to +6)
 	ld de, wPlayerMoveEffect
 	ld bc, wEnemyBattleStatus2
 	jr z, .playerTurn
-	ld hl, wPlayerMonStatMods
+	ld hl, wPlayerMonStatMods ; stat mod between 1 and 13 (-6 to +6)
 	ld de, wEnemyMoveEffect
 	ld bc, wPlayerBattleStatus2
 ;	ld a, [wLinkState]            ; marcelnote - removed 25% chance for opponent to miss
@@ -253,57 +217,23 @@ StatModifierDownEffect: ; marcelnote - optimized
 	pop bc     ; restore b = stat mod, c = stat offset
 	; check if stat is already 1
 	ld a, [hld]              ; a = [w<Target>Mon<Stat> + 1]
-	dec a                    ; is low byte equal to 1?
-	jr nz, .recalculateStat  ; if not, we're good
-	ld a, [hl]               ; else low byte is 1,
-	and a                    ; so is high byte equal to 0?
+	dec a                    ; a = 0 only if low byte is 1
+	or [hl]                  ; are both bytes 0?
 	jr z, .nothingHappened   ; if yes, can't decrease more
-.recalculateStat
-; recalculate affected stat
-; paralysis and burn penalties, as well as badge boosts are ignored
-	push hl       ; save hl = w<Target>Mon<Stat>
-	ld a, c       ; save a = stat offset
-	ld hl, StatModifierRatios
-	dec b         ; b in [0, 12] for the pointer table
-	sla b         ; multiply it by 2 (table size = 2)
-	ld c, b
-	ld b, $0
-	add hl, bc    ; hl points to the numerator
-	ld c, a       ; save c = stat offset
-	xor a
-	ldh [hMultiplicand], a
-	ld a, [de]    ; a = [w<Target>MonUnmodified<Stat>]
-	ldh [hMultiplicand + 1], a
-	inc de
-	ld a, [de]    ; a = [w<Target>MonUnmodified<Stat> + 1]
-	ldh [hMultiplicand + 2], a
-	ld a, [hli]   ; a = numerator to multiply with
-	ldh [hMultiplier], a
-	call Multiply ; preserves all 16-bit registers
-	ld a, [hl]    ; a = denominator to divide with
-	ldh [hDivisor], a
-	ld b, $4      ; number of bytes in the dividend
-	call Divide   ; preserves all 16-bit registers
-	pop hl        ; restore hl = w<Target>Mon<Stat>
-; ensure stat value is at least 1
-	ldh a, [hProduct + 3]
-	ld b, a
-	ldh a, [hProduct + 2]
-	or b                     ; are both bytes 0?
-	jr nz, UpdateLoweredStat ; if not, we're good
-	inc a                    ; a = 1
-	ldh [hProduct + 3], a    ; increase low byte to 1
-	; need to also check if stat is still hitting the 999 cap?
+	inc hl                   ; hl = w<Target>Mon<Stat> + 1
 
-UpdateLoweredStat:
-	ldh a, [hProduct + 2]
-	ld [hli], a  ; hl = w<Target>Mon<Stat>
-	ldh a, [hProduct + 3]
-	ld [hl], a   ; hl = w<Target>Mon<Stat> + 1
+	; recalculate affected stat
+	; paralysis and burn penalties, as well as badge boosts are ignored
+	; UpdateStat takes b = stat mod, c = stat offset,
+	; hl = w<Target>Mon<Stat> + 1,
+	; de = w<Target>MonUnmodified<Stat>
+	call UpdateStat ; preserves c = stat offset
+	; fallthrough
+
 UpdateLoweredStatDone:
-	inc c              ; c = stat offset + 1 for list search
-	call PrintStatText ; uses c as counter
-	pop af             ; restore c flag (set = side effect)
+	inc c               ; c = stat offset + 1 for list search
+	call BufferStatText ; uses c as counter
+	pop af              ; restore c flag (set = side effect)
 	jr c, .ApplyBadgeBoostsAndStatusPenalties ; don't play move animation if only side effect
 	call PlayCurrentMoveAnimation2
 .ApplyBadgeBoostsAndStatusPenalties
@@ -379,7 +309,7 @@ FellText:
 	text_end
 
 
-PrintStatText: ; uses c as counter
+BufferStatText: ; uses c as counter
 	ld hl, StatModTextStrings
 	ld b, "@"
 .findStatName

@@ -6781,9 +6781,11 @@ CalculateModifiedStat: ; marcelnote - optimized
 	ld d, a       ; de = wPlayerMonUnmodified<Stat>
 
 	srl c         ; c = stat offset
-	ld a, c       ; save a = stat offset
+	; fallthrough
 
+UpdateStat: ; marcelnote - new subfunction
 	push hl       ; save hl = wBattleMon<Stat> + 1
+	ld a, c       ; save a = stat offset
 	ld hl, StatModifierRatios
 	dec b         ; b in [0, 12] for the pointer table
 	sla b         ; multiply it by 2 (table size = 2)
@@ -6818,16 +6820,17 @@ CalculateModifiedStat: ; marcelnote - optimized
 	ld a, LOW(MAX_STAT_VALUE)
 	ld [hld], a                   ; [wBattleMon<Stat> + 1] = LOW(MAX_STAT_VALUE)
 	ld [hl], HIGH(MAX_STAT_VALUE) ; [wBattleMon<Stat>]     = HIGH(MAX_STAT_VALUE)
-	ret
+	ret                                 ; CAUTION: here returns hl = wBattleMon<Stat>
 .storeNewStatValue
 	ldh a, [hDividend + 3]
 	ld [hld], a ; low byte
 	ldh a, [hDividend + 2]
 	ld [hli], a ; high byte, but hl -> low byte again
+; make sure the stat is at least 1
 	or [hl]     ; are both bytes 0?
-	ret nz      ; if not, we're done
+	ret nz      ; if not, we're done   ; CAUTION: here returns hl = wBattleMon<Stat> + 1
 	inc [hl]    ; otherwise bump up lower byte to 1
-	ret
+	ret                                ; CAUTION: here returns hl = wBattleMon<Stat> + 1
 
 
 ApplyBadgeStatBoosts:
