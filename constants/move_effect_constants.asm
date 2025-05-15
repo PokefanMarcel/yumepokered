@@ -22,6 +22,10 @@
 	const EVASION_UP1_EFFECT         ; $0F
 	const PAY_DAY_EFFECT             ; $10
 	const SWIFT_EFFECT               ; $11
+	const ATTACK_DOWN_SIDE_EFFECT    ; $44
+	const DEFENSE_DOWN_SIDE_EFFECT   ; $45
+	const SPEED_DOWN_SIDE_EFFECT     ; $46
+	const SPECIAL_DOWN_SIDE_EFFECT   ; $47
 	const ATTACK_DOWN1_EFFECT        ; $12
 	const DEFENSE_DOWN1_EFFECT       ; $13
 	const SPEED_DOWN1_EFFECT         ; $14
@@ -72,10 +76,6 @@
 	const REFLECT_EFFECT             ; $41
 	const POISON_EFFECT              ; $42
 	const PARALYZE_EFFECT            ; $43
-	const ATTACK_DOWN_SIDE_EFFECT    ; $44
-	const DEFENSE_DOWN_SIDE_EFFECT   ; $45
-	const SPEED_DOWN_SIDE_EFFECT     ; $46
-	const SPECIAL_DOWN_SIDE_EFFECT   ; $47
 	const BURN_EFFECT                ; $48 ; marcelnote - new for WILL-O-WISP, was const_skip
 	const HEX_EFFECT                 ; $49 ; marcelnote - new for HEX, was const_skip
 	const TRI_ATTACK_EFFECT          ; $4A ; marcelnote - new for TRI_ATTACK, was const_skip
