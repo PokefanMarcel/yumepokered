@@ -6685,14 +6685,20 @@ ApplyBurnAndParalysisPenalties:
 	call QuarterSpeedDueToParalysis
 	jp HalveAttackDueToBurn
 
+QuarterOwnSpeedDueToParalysis: ; marcelnote - new
+	ldh a, [hWhoseTurn]
+	dec a ; z flag set on Enemy turn (a = 1)
+	jr QuarterSpeedDueToParalysis.gotTurn
+
 QuarterSpeedDueToParalysis: ; marcelnote - optimized
 	ldh a, [hWhoseTurn]
 	and a
-	ld a, [wBattleMonStatus]
-	ld hl, wBattleMonSpeed + 1
-	jr nz, .gotPointers ; if opponent's turn
+.gotTurn
 	ld a, [wEnemyMonStatus]
 	ld hl, wEnemyMonSpeed + 1
+	jr z, .gotPointers
+	ld a, [wBattleMonStatus]
+	ld hl, wBattleMonSpeed + 1
 .gotPointers
 	and 1 << PAR
 	ret z ; return if target not paralysed
@@ -6711,14 +6717,20 @@ QuarterSpeedDueToParalysis: ; marcelnote - optimized
 	ld [hl], b  ; [w<>MonSpeed + 1] (low byte)
 	ret
 
+HalveOwnAttackDueToBurn: ; marcelnote - new
+	ldh a, [hWhoseTurn]
+	dec a ; z flag set on Enemy turn (a = 1)
+	jr HalveAttackDueToBurn.gotTurn
+
 HalveAttackDueToBurn: ; marcelnote - optimized
 	ldh a, [hWhoseTurn]
 	and a
-	ld a, [wBattleMonStatus]
-	ld hl, wBattleMonAttack + 1
-	jr nz, .gotPointers ; if opponent's turn
+.gotTurn
 	ld a, [wEnemyMonStatus]
 	ld hl, wEnemyMonAttack + 1
+	jr z, .gotPointers
+	ld a, [wBattleMonStatus]
+	ld hl, wBattleMonAttack + 1
 .gotPointers
 	and 1 << BRN
 	ret z ; return if target not burnt
@@ -6783,6 +6795,11 @@ CalculateModifiedStat: ; marcelnote - optimized
 	srl c         ; c = stat offset
 	; fallthrough
 
+; inputs:
+; hl = adress of the stat to update (low byte)
+; de = adress of the unmodified stat (high byte)
+; b = stat modifier (1 to 13)
+; c = stat offset (0 to 3)
 UpdateStat: ; marcelnote - new subfunction
 	push hl       ; save hl = wBattleMon<Stat> + 1
 	ld a, c       ; save a = stat offset
