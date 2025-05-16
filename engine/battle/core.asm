@@ -6851,7 +6851,7 @@ ApplyBadgeStatBoosts: ; marcelnote - optimized
 ; Volcano (bit 6) - special
 .loop
 	srl b
-	call c, .applyBoostToStat
+	call c, ApplyBoostToStat
 	inc hl
 	inc hl
 	srl b
@@ -6859,8 +6859,28 @@ ApplyBadgeStatBoosts: ; marcelnote - optimized
 	jr nz, .loop
 	ret
 
+; marcelnote - new function
+; inputs: c = stat offset, hl = w<Subject>Mon<Stat> (both preserved)
+ApplyBadgeBoostToSelectedStat:
+	ld a, [wLinkState]
+	cp LINK_STATE_BATTLING
+	ret z ; return if link battle
+	ld a, [wObtainedBadges]
+	ld d, c ; d = stat offset
+	inc d
+.loop
+	dec d
+	jr z, .testBadge
+	rrca
+	rrca
+	jr .loop
+.testBadge
+	rrca
+	ret nc
+	; fallthrough
+
 ; multiply stat at hl by 1.125 (cap at MAX_STAT_VALUE)
-.applyBoostToStat
+ApplyBoostToStat:
 	ld a, [hli]
 	ld d, a       ; d = high byte
 	ld a, [hl]    ; a = low byte
@@ -6888,6 +6908,7 @@ ApplyBadgeStatBoosts: ; marcelnote - optimized
 	ld a, LOW(MAX_STAT_VALUE)
 	ld [hld], a
 	ret    ; hl -> high byte
+
 
 LoadHudAndHpBarAndStatusTilePatterns:
 	call LoadHpBarAndStatusTilePatterns
