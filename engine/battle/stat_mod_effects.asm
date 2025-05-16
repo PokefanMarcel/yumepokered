@@ -60,15 +60,17 @@ StatModifierUpEffect: ; marcelnote - optimized
 ;	jp nc, RestoreOriginalStatModifier ; used to do -1 on stat mod here
 	jp nc, PrintNothingHappenedText    ; stat is already ≥ 999
 
-	; recalculate affected stat
-	; paralysis and burn penalties, as well as badge boosts are ignored
-	; UpdateStat takes b = stat mod, c = stat offset,
-	; hl = w<User>Mon<Stat> + 1,
-	; de = w<User>MonUnmodified<Stat>
-	call UpdateStat ; preserves c = stat offset
+	; recalculate affected stat taking into account badge boosts and status penalties
+	call UpdateStat ; preserves c = stat offset, moves to hl = w<User>Mon<Stat>
 	ldh a, [hWhoseTurn]
 	and a           ; apply badge boost only if player increased own stats
 	call z, ApplyBadgeBoostToSelectedStat ; preserves c = stat offset and hl = w<User>Mon<Stat>
+	ld a, c
+	and a   ; stat offset = attack?
+	call z, HalveOwnAttackDueToBurn       ; preserves c = stat offset
+	ld a, c
+	cp 2    ; stat offset = speed?
+	call z, QuarterOwnSpeedDueToParalysis ; preserves c = stat offset
 	; fallthrough
 
 UpdateUppedStatDone:
@@ -103,18 +105,17 @@ UpdateUppedStatDone:
 	ld b, BANK(ReshowSubstituteAnim)
 	pop af  ; restore z flag for substitute
 	call nz, Bankswitch ; reshow substitute if there is one
-	jr .applyBadgeBoostsAndStatusPenalties
+	jr .printStatsRoseText
 .notMinimize
 	call PlayCurrentMoveAnimation
-.applyBadgeBoostsAndStatusPenalties
+.printStatsRoseText
+; marcelnote - fixed those glitches with calls after UpdateStat above
 ;	ldh a, [hWhoseTurn]
 ;	and a
 ;	call z, ApplyBadgeStatBoosts ; whenever the player uses a stat-up move, badge boosts get reapplied again to every stat,
 	                             ; even to those not affected by the stat-up move (will be boosted further)
-
-; these shouldn't be here ; marcelnote - TO DO: check shinpokered for fix
-	call QuarterSpeedDueToParalysis ; apply speed penalty to the Mon whose turn is not, if it's paralyzed
-	call HalveAttackDueToBurn       ; apply attack penalty to the Mon whose turn is not, if it's burned
+;	call QuarterSpeedDueToParalysis ; apply speed penalty to the Mon whose turn is not, if it's paralyzed
+;	call HalveAttackDueToBurn       ; apply attack penalty to the Mon whose turn is not, if it's burned
 
 	ld hl, MonsStatsRoseText
 	jp PrintText
@@ -224,34 +225,34 @@ StatModifierDownEffect: ; marcelnote - optimized
 	jr z, .nothingHappened   ; if yes, can't decrease more
 	inc hl                   ; hl = w<Target>Mon<Stat> + 1
 
-	; recalculate affected stat
-	; paralysis and burn penalties, as well as badge boosts are ignored
-	; UpdateStat takes b = stat mod, c = stat offset,
-	; hl = w<Target>Mon<Stat> + 1,
-	; de = w<Target>MonUnmodified<Stat>
-	call UpdateStat ; preserves c = stat offset
+	; recalculate affected stat taking into account badge boosts and status penalties
+	call UpdateStat ; preserves c = stat offset, moves to hl = w<User>Mon<Stat>
 	ldh a, [hWhoseTurn]
 	and a           ; apply badge boost only if enemy lowered player's stats
 	call nz, ApplyBadgeBoostToSelectedStat ; preserves c = stat offset and hl = w<User>Mon<Stat>
+	ld a, c
+	and a   ; stat offset = attack?
+	call z, HalveAttackDueToBurn       ; preserves c = stat offset
+	ld a, c
+	cp 2    ; stat offset = speed?
+	call z, QuarterSpeedDueToParalysis ; preserves c = stat offset
 	; fallthrough
 
 UpdateLoweredStatDone:
 	inc c               ; c = stat offset + 1 for list search
 	call BufferStatText ; uses c as counter
 	pop af              ; restore c flag (set = side effect)
-	jr c, .ApplyBadgeBoostsAndStatusPenalties ; don't play move animation if only side effect
+	jr c, .printMonStatsFellTest ; don't play move animation if only side effect
 	call PlayCurrentMoveAnimation2
-.ApplyBadgeBoostsAndStatusPenalties
+.printMonStatsFellTest
+; marcelnote - fixed those glitches with calls after UpdateStat above
 ;	ldh a, [hWhoseTurn]
 ;	and a
 ;	call nz, ApplyBadgeStatBoosts ; whenever the player uses a stat-down move, badge boosts get reapplied again to every stat,
 	                              ; even to those not affected by the stat-up move (will be boosted further)
-
-; These where probably added given that a stat-down move affecting speed or attack will override
-; the stat penalties from paralysis and burn respectively.
-; But they are always called regardless of the stat affected by the stat-down move.
-	call QuarterSpeedDueToParalysis
-	call HalveAttackDueToBurn
+; Always called regardless of the stat affected by the stat-down move.
+;	call QuarterSpeedDueToParalysis
+;	call HalveAttackDueToBurn
 
 	ld hl, MonsStatsFellText
 	jp PrintText
