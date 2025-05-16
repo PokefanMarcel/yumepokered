@@ -837,7 +837,7 @@ ItemUseVitamin:
 ItemUseMedicine:
 	ld a, [wPartyCount]
 	and a
-	jp z, .emptyParty
+	jr z, .emptyParty
 	ld a, [wWhichPokemon]
 	push af
 	ld a, [wCurItem]
