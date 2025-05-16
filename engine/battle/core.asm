@@ -6812,25 +6812,27 @@ UpdateStat: ; marcelnote - new subfunction
 	pop hl        ; restore hl = wBattleMon<Stat> + 1
 
 	ldh a, [hDividend + 3]
+	ld [hld], a   ; store low byte
 	sub LOW(MAX_STAT_VALUE)
 	ldh a, [hDividend + 2]
-	sbc HIGH(MAX_STAT_VALUE)
-	jr c, .storeNewStatValue
-; cap the stat at MAX_STAT_VALUE (999)
+	ld [hli], a   ; store high byte, hl -> low byte
+	sbc HIGH(MAX_STAT_VALUE) ; is the result ≥ MAX_STAT_VALUE (999)?
+	jr nc, .capAtMax         ; if yes, cap it at MAX_STAT_VALUE
+; else check if result is 0
+	ld a, [hld]  ; a = low byte, hl -> high byte
+	or [hl]      ; are both bytes 0?
+	ret nz       ; returns hl = wBattleMon<Stat>
+; if 0, increase to 1
+	inc a        ; a = 1
+	inc hl       ; hl -> low byte
+	ld [hld], a  ; hl -> high byte
+	ret          ; returns hl = wBattleMon<Stat>
+
+.capAtMax
 	ld a, LOW(MAX_STAT_VALUE)
 	ld [hld], a                   ; [wBattleMon<Stat> + 1] = LOW(MAX_STAT_VALUE)
 	ld [hl], HIGH(MAX_STAT_VALUE) ; [wBattleMon<Stat>]     = HIGH(MAX_STAT_VALUE)
-	ret                                 ; CAUTION: here returns hl = wBattleMon<Stat>
-.storeNewStatValue
-	ldh a, [hDividend + 3]
-	ld [hld], a ; low byte
-	ldh a, [hDividend + 2]
-	ld [hli], a ; high byte, but hl -> low byte again
-; make sure the stat is at least 1
-	or [hl]     ; are both bytes 0?
-	ret nz      ; if not, we're done   ; CAUTION: here returns hl = wBattleMon<Stat> + 1
-	inc [hl]    ; otherwise bump up lower byte to 1
-	ret                                ; CAUTION: here returns hl = wBattleMon<Stat> + 1
+	ret                           ; returns hl = wBattleMon<Stat>
 
 
 ApplyBadgeStatBoosts:
