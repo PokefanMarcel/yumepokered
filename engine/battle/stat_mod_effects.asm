@@ -66,6 +66,9 @@ StatModifierUpEffect: ; marcelnote - optimized
 	; hl = w<User>Mon<Stat> + 1,
 	; de = w<User>MonUnmodified<Stat>
 	call UpdateStat ; preserves c = stat offset
+	ldh a, [hWhoseTurn]
+	and a           ; apply badge boost only if player increased own stats
+	call z, ApplyBadgeBoostToSelectedStat ; preserves c = stat offset and hl = w<User>Mon<Stat>
 	; fallthrough
 
 UpdateUppedStatDone:
@@ -104,11 +107,10 @@ UpdateUppedStatDone:
 .notMinimize
 	call PlayCurrentMoveAnimation
 .applyBadgeBoostsAndStatusPenalties
-	ldh a, [hWhoseTurn]
-	and a
-	call z, ApplyBadgeStatBoosts ; whenever the player uses a stat-up move, badge boosts get reapplied again to every stat,
+;	ldh a, [hWhoseTurn]
+;	and a
+;	call z, ApplyBadgeStatBoosts ; whenever the player uses a stat-up move, badge boosts get reapplied again to every stat,
 	                             ; even to those not affected by the stat-up move (will be boosted further)
-	                             ; marcelnote - TO DO: check shinpokered for fix
 
 ; these shouldn't be here ; marcelnote - TO DO: check shinpokered for fix
 	call QuarterSpeedDueToParalysis ; apply speed penalty to the Mon whose turn is not, if it's paralyzed
@@ -228,6 +230,9 @@ StatModifierDownEffect: ; marcelnote - optimized
 	; hl = w<Target>Mon<Stat> + 1,
 	; de = w<Target>MonUnmodified<Stat>
 	call UpdateStat ; preserves c = stat offset
+	ldh a, [hWhoseTurn]
+	and a           ; apply badge boost only if enemy lowered player's stats
+	call nz, ApplyBadgeBoostToSelectedStat ; preserves c = stat offset and hl = w<User>Mon<Stat>
 	; fallthrough
 
 UpdateLoweredStatDone:
@@ -237,9 +242,9 @@ UpdateLoweredStatDone:
 	jr c, .ApplyBadgeBoostsAndStatusPenalties ; don't play move animation if only side effect
 	call PlayCurrentMoveAnimation2
 .ApplyBadgeBoostsAndStatusPenalties
-	ldh a, [hWhoseTurn]
-	and a
-	call nz, ApplyBadgeStatBoosts ; whenever the player uses a stat-down move, badge boosts get reapplied again to every stat,
+;	ldh a, [hWhoseTurn]
+;	and a
+;	call nz, ApplyBadgeStatBoosts ; whenever the player uses a stat-down move, badge boosts get reapplied again to every stat,
 	                              ; even to those not affected by the stat-up move (will be boosted further)
 
 ; These where probably added given that a stat-down move affecting speed or attack will override
