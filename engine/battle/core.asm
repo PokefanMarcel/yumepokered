@@ -6835,7 +6835,7 @@ UpdateStat: ; marcelnote - new subfunction
 	ret                           ; returns hl = wBattleMon<Stat>
 
 
-ApplyBadgeStatBoosts:
+ApplyBadgeStatBoosts: ; marcelnote - optimized
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
 	ret z ; return if link battle
@@ -6859,34 +6859,35 @@ ApplyBadgeStatBoosts:
 	jr nz, .loop
 	ret
 
-; multiply stat at hl by 1.125
-; cap stat at MAX_STAT_VALUE
+; multiply stat at hl by 1.125 (cap at MAX_STAT_VALUE)
 .applyBoostToStat
 	ld a, [hli]
-	ld d, a
-	ld e, [hl]
+	ld d, a       ; d = high byte
+	ld a, [hl]    ; a = low byte
+	; divide 'da' by 8
 	srl d
-	rr e
+	rra
 	srl d
-	rr e
+	rra
 	srl d
-	rr e
-	ld a, [hl]
-	add e
+	rra
+	; add 'da' (12.5% of stat) to stat
+	add [hl]      ; hl -> low byte
 	ld [hld], a
-	ld a, [hl]
+	ld a, [hl]    ; hl -> high byte
 	adc d
 	ld [hli], a
+	; cap stat at MAX_STAT_VALUE
 	ld a, [hld]
 	sub LOW(MAX_STAT_VALUE)
 	ld a, [hl]
 	sbc HIGH(MAX_STAT_VALUE)
-	ret c
+	ret c  ; hl -> high byte
 	ld a, HIGH(MAX_STAT_VALUE)
 	ld [hli], a
 	ld a, LOW(MAX_STAT_VALUE)
 	ld [hld], a
-	ret
+	ret    ; hl -> high byte
 
 LoadHudAndHpBarAndStatusTilePatterns:
 	call LoadHpBarAndStatusTilePatterns
