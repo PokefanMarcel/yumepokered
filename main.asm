@@ -189,7 +189,7 @@ INCLUDE "engine/slots/game_corner_slots2.asm"    ; marcelnote - moved from Battl
 
 SECTION "Battle Engine 7", ROMX
 
-INCLUDE "engine/battle/unused_stats_functions.asm"
+;INCLUDE "engine/battle/unused_stats_functions.asm"
 INCLUDE "engine/battle/scroll_draw_trainer_pic.asm"
 INCLUDE "engine/battle/trainer_ai.asm"
 INCLUDE "engine/battle/draw_hud_pokeball_gfx.asm"
@@ -209,6 +209,7 @@ INCLUDE "engine/battle/core.asm"
 INCLUDE "engine/battle/effects.asm"
 INCLUDE "engine/battle/status_effects.asm"   ; marcelnote - moved some functions for clarity
 INCLUDE "engine/battle/stat_mod_effects.asm" ; marcelnote - moved some functions for clarity
+INCLUDE "engine/battle/calculate_stats.asm"  ; marcelnote - moved some functions for clarity
 
 
 SECTION "bank10", ROMX
