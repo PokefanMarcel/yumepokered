@@ -73,23 +73,22 @@ BideEffect: ; marcelnote - optimized
 	ld a, XSTATITEM_ANIM
 	jp PlayBattleAnimation2
 
-ThrashPetalDanceEffect:
-	ld hl, wPlayerBattleStatus1
-	ld de, wPlayerNumAttacksLeft
+
+ThrashPetalDanceEffect: ; marcelnote - optimized
 	ldh a, [hWhoseTurn]
 	and a
-	jr z, .thrashPetalDanceEffect
+	ld hl, wPlayerBattleStatus1
+	ld de, wPlayerNumAttacksLeft
+	jr z, .gotPointers ; jump on player's turn
 	ld hl, wEnemyBattleStatus1
 	ld de, wEnemyNumAttacksLeft
-.thrashPetalDanceEffect
+.gotPointers
 	set THRASHING_ABOUT, [hl] ; mon is now using thrash/petal dance
 	call BattleRandom
-	and $1
-	inc a
-	inc a
-	ld [de], a ; set thrash/petal dance counter to 2 or 3 at random
-	ldh a, [hWhoseTurn]
-	add SHRINKING_SQUARE_ANIM
+	and $1     ; a = 0 or 1
+	add $2     ; a = 2 or 3
+	ld [de], a ; set counter to 2 or 3 at random
+	ld a, SHRINKING_SQUARE_ANIM
 	jp PlayBattleAnimation2
 
 
