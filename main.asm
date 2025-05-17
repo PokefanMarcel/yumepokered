@@ -207,9 +207,9 @@ SECTION "Battle Core", ROMX
 
 INCLUDE "engine/battle/core.asm"
 INCLUDE "engine/battle/effects.asm"
-INCLUDE "engine/battle/status_effects.asm"   ; marcelnote - moved some functions for clarity
-INCLUDE "engine/battle/stat_mod_effects.asm" ; marcelnote - moved some functions for clarity
-INCLUDE "engine/battle/calculate_stats.asm"  ; marcelnote - moved some functions for clarity
+INCLUDE "engine/battle/move_effects/status_effects.asm"   ; marcelnote - moved some functions for clarity
+INCLUDE "engine/battle/move_effects/stat_mod_effects.asm" ; marcelnote - moved some functions for clarity
+INCLUDE "engine/battle/calculate_stats.asm"               ; marcelnote - moved some functions for clarity
 
 
 SECTION "bank10", ROMX
