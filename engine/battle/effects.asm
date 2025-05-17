@@ -38,7 +38,7 @@ ExplodeEffect:
 	ld de, wEnemyBattleStatus2
 .playerTurn
 	xor a
-	ld [hli], a ; set the mon's HP to 0
+	ld [hli], a ; set the user mon's HP to 0
 	ld [hli], a
 	inc hl      ; hl = w<>MonStatus
 	ld [hl], a  ; set mon's status to 0
