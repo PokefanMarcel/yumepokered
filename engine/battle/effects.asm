@@ -334,14 +334,14 @@ DugAHoleText:
 
 
 TrappingEffect:
-	ld hl, wPlayerBattleStatus1
-	ld de, wPlayerNumAttacksLeft
 	ldh a, [hWhoseTurn]
 	and a
-	jr z, .trappingEffect
+	ld hl, wPlayerBattleStatus1
+	ld de, wPlayerNumAttacksLeft
+	jr z, .gotPointers ; jump on player's turn
 	ld hl, wEnemyBattleStatus1
 	ld de, wEnemyNumAttacksLeft
-.trappingEffect
+.gotPointers
 	bit USING_TRAPPING_MOVE, [hl]
 	ret nz
 	call ClearHyperBeam ; since this effect is called before testing whether the move will hit,
