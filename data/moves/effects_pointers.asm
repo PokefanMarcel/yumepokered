@@ -18,6 +18,10 @@ MoveEffectPointerTable:
 	dw StatModifierUpEffect      ; EVASION_UP1_EFFECT
 	dw PayDayEffect              ; PAY_DAY_EFFECT
 	dw NULL                      ; SWIFT_EFFECT
+	dw StatModifierDownEffect    ; ATTACK_DOWN_SIDE_EFFECT
+	dw StatModifierDownEffect    ; DEFENSE_DOWN_SIDE_EFFECT
+	dw StatModifierDownEffect    ; SPEED_DOWN_SIDE_EFFECT
+	dw StatModifierDownEffect    ; SPECIAL_DOWN_SIDE_EFFECT
 	dw StatModifierDownEffect    ; ATTACK_DOWN1_EFFECT
 	dw StatModifierDownEffect    ; DEFENSE_DOWN1_EFFECT
 	dw StatModifierDownEffect    ; SPEED_DOWN1_EFFECT
@@ -68,10 +72,6 @@ MoveEffectPointerTable:
 	dw ReflectLightScreenEffect  ; REFLECT_EFFECT
 	dw PoisonEffect              ; POISON_EFFECT
 	dw ParalyzeEffect            ; PARALYZE_EFFECT
-	dw StatModifierDownEffect    ; ATTACK_DOWN_SIDE_EFFECT
-	dw StatModifierDownEffect    ; DEFENSE_DOWN_SIDE_EFFECT
-	dw StatModifierDownEffect    ; SPEED_DOWN_SIDE_EFFECT
-	dw StatModifierDownEffect    ; SPECIAL_DOWN_SIDE_EFFECT
 	dw BurnEffect                ; BURN_EFFECT       ; marcelnote - new for WILL_O_WISP, was unused
 	dw HexEffect                 ; HEX_EFFECT        ; marcelnote - new for HEX, was unused
 	dw TriAttackEffect           ; TRI_ATTACK_EFFECT ; marcelnote - new for TRI_ATTACK, was unused
