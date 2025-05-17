@@ -6103,7 +6103,7 @@ CheckEnemyStatusConditions:
 .checkIfTrapped
 	ld a, [wPlayerBattleStatus1]
 	bit USING_TRAPPING_MOVE, a ; is the player using a multi-turn attack like warp
-	jp z, .checkIfFlinched
+	jr z, .checkIfFlinched
 	ld hl, CantMoveText
 	call PrintText
 	ld hl, ExecuteEnemyMoveDone ; enemy can't move this turn
@@ -6111,7 +6111,7 @@ CheckEnemyStatusConditions:
 .checkIfFlinched
 	ld hl, wEnemyBattleStatus1
 	bit FLINCHED, [hl] ; check if enemy mon flinched
-	jp z, .checkIfMustRecharge
+	jr z, .checkIfMustRecharge
 	res FLINCHED, [hl]
 	ld hl, FlinchedText
 	call PrintText
@@ -6142,7 +6142,7 @@ CheckEnemyStatusConditions:
 .checkIfConfused
 	ld a, [wEnemyBattleStatus1]
 	add a ; check if enemy mon is confused
-	jp nc, .checkIfTriedToUseDisabledMove
+	jr nc, .checkIfTriedToUseDisabledMove
 	ld hl, wEnemyConfusedCounter
 	dec [hl]
 	jr nz, .isConfused
@@ -6150,7 +6150,7 @@ CheckEnemyStatusConditions:
 	res CONFUSED, [hl] ; if confused counter hit 0, reset confusion status
 	ld hl, ConfusedNoMoreText
 	call PrintText
-	jp .checkIfTriedToUseDisabledMove
+	jr .checkIfTriedToUseDisabledMove
 .isConfused
 	ld hl, IsConfusedText
 	call PrintText
@@ -6323,19 +6323,19 @@ CheckEnemyStatusConditions:
 	jp .enemyReturnToHL
 .checkIfUsingMultiturnMove
 	bit USING_TRAPPING_MOVE, [hl] ; is mon using multi-turn move?
-	jp z, .checkIfUsingRage
+	jr z, .checkIfUsingRage
 	ld hl, AttackContinuesText
 	call PrintText
 	ld hl, wEnemyNumAttacksLeft
 	dec [hl] ; did multi-turn move end?
 	ld hl, GetEnemyAnimationType ; if it didn't, skip damage calculation (deal damage equal to last hit),
 	                             ; DecrementPP and MoveHitTest
-	jp nz, .enemyReturnToHL
+;	jp nz, .enemyReturnToHL
 	jp .enemyReturnToHL
 .checkIfUsingRage
 	ld a, [wEnemyBattleStatus2]
 	bit USING_RAGE, a ; is mon using rage?
-	jp z, .checkEnemyStatusConditionsDone ; if we made it this far, mon can move normally this turn
+	jr z, .checkEnemyStatusConditionsDone ; if we made it this far, mon can move normally this turn
 	ld a, RAGE
 	ld [wNamedObjectIndex], a
 	call GetMoveName
