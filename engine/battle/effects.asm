@@ -233,15 +233,15 @@ FlinchSideEffect:
 	and a
 	ld hl, wEnemyBattleStatus1
 	ld de, wPlayerMoveEffect
-	jr z, .flinchSideEffect
+	jr z, .gotPointers ; jump on player's turn
 	ld hl, wPlayerBattleStatus1
 	ld de, wEnemyMoveEffect
-.flinchSideEffect
+.gotPointers
 	ld a, [de]
 	cp FLINCH_SIDE_EFFECT1
-	ld b, 10 percent + 1 ; chance of flinch (FLINCH_SIDE_EFFECT1)
+	ld b, 10 percent + 1 ; chance for FLINCH_SIDE_EFFECT1
 	jr z, .gotEffectChance
-	ld b, 30 percent + 1 ; chance of flinch otherwise
+	ld b, 30 percent + 1 ; chance for FLINCH_SIDE_EFFECT2
 .gotEffectChance
 	call BattleRandom
 	cp b
