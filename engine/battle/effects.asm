@@ -48,33 +48,29 @@ ExplodeEffect:
 	ret
 
 
-
-
-BideEffect:
+BideEffect: ; marcelnote - optimized
+	ldh a, [hWhoseTurn]
+	and a
 	ld hl, wPlayerBattleStatus1
 	ld de, wPlayerBideAccumulatedDamage
 	ld bc, wPlayerNumAttacksLeft
-	ldh a, [hWhoseTurn]
-	and a
-	jr z, .bideEffect
+	jr z, .gotPointers ; jump on player's turn
 	ld hl, wEnemyBattleStatus1
 	ld de, wEnemyBideAccumulatedDamage
 	ld bc, wEnemyNumAttacksLeft
-.bideEffect
+.gotPointers
 	set STORING_ENERGY, [hl] ; mon is now using bide
 	xor a
-	ld [de], a
+	ld [de], a ; [w<User>BideAccumulatedDamage] = 0
 	inc de
-	ld [de], a
+	ld [de], a ; [w<User>BideAccumulatedDamage + 1] = 0
 	ld [wPlayerMoveEffect], a
 	ld [wEnemyMoveEffect], a
 	call BattleRandom
-	and $1
-	inc a
-	inc a
+	and $1     ; a = 0 or 1
+	add $2     ; a = 2 or 3
 	ld [bc], a ; set Bide counter to 2 or 3 at random
-	ldh a, [hWhoseTurn]
-	add XSTATITEM_ANIM
+	ld a, XSTATITEM_ANIM
 	jp PlayBattleAnimation2
 
 ThrashPetalDanceEffect:
