@@ -181,51 +181,50 @@ WasBlownAwayText:
 	text_end
 
 
-TwoToFiveAttacksEffect:
-	ld hl, wPlayerBattleStatus1
-	ld de, wPlayerNumAttacksLeft
-	ld bc, wPlayerNumHits
+TwoToFiveAttacksEffect: ; marcelnote - optimized
 	ldh a, [hWhoseTurn]
 	and a
-	jr z, .twoToFiveAttacksEffect
+	ld hl, wPlayerBattleStatus1
+	jr z, .checkIfAlreadyAttacking ; jump on player's turn
 	ld hl, wEnemyBattleStatus1
-	ld de, wEnemyNumAttacksLeft
-	ld bc, wEnemyNumHits
-.twoToFiveAttacksEffect
-	bit ATTACKING_MULTIPLE_TIMES, [hl] ; is mon attacking multiple times?
+.checkIfAlreadyAttacking
+	bit ATTACKING_MULTIPLE_TIMES, [hl] ; already attacking multiple times?
 	ret nz
 	set ATTACKING_MULTIPLE_TIMES, [hl] ; mon is now attacking multiple times
+	and a ; a = [hWhoseTurn] still
 	ld hl, wPlayerMoveEffect
-	ldh a, [hWhoseTurn]
-	and a
-	jr z, .setNumberOfHits
+	ld de, wPlayerNumAttacksLeft
+	ld bc, wPlayerNumHits
+	jr z, .gotPointers ; jump on player's turn
 	ld hl, wEnemyMoveEffect
-.setNumberOfHits
+	ld de, wEnemyNumAttacksLeft
+	ld bc, wEnemyNumHits
+.gotPointers
 	ld a, [hl]
-	cp TWINEEDLE_EFFECT
-	jr z, .twineedle
-	cp ATTACK_TWICE_EFFECT
-	ld a, $2 ; number of hits it's always 2 for ATTACK_TWICE_EFFECT
-	jr z, .saveNumberOfHits
-; for TWO_TO_FIVE_ATTACKS_EFFECT 3/8 chance for 2 and 3 hits, and 1/8 chance for 4 and 5 hits
+	cp TWO_TO_FIVE_ATTACKS_EFFECT
+	jr nz, .attackTwiceOrTwineedle
 	call BattleRandom
-	and $3
-	cp $2
-	jr c, .gotNumHits
-; if the number of hits was greater than 2, re-roll again for a lower chance
-	call BattleRandom
-	and $3
+	and $3 ; a = 0 to 3
+	cp $2  ; is a < 2 ?
+	jr c, .gotNumHits ; if yes, lock it in: 1/4 chance for each of 0 or 1
+	call BattleRandom ; otherwise, re-roll
+	and $3 ; a = 0 to 3
 .gotNumHits
-	inc a
-	inc a
+	add $2 ; finally, 3/8 chance for 2 or 3 hits, 1/8 chance for 4 or 5 hits
 .saveNumberOfHits
 	ld [de], a
 	ld [bc], a
 	ret
-.twineedle
-	ld a, POISON_SIDE_EFFECT1
-	ld [hl], a ; set Twineedle's effect to poison effect
+
+.attackTwiceOrTwineedle
+	cp ATTACK_TWICE_EFFECT
+	ld a, $2 ; number of hits
+	jr z, .saveNumberOfHits
+	; TWINEEDLE_EFFECT left, so set Twineedle's secondary side effect
+	ASSERT POISON_SIDE_EFFECT1 == $2
+	ld [hl], a ; [w<User>MoveEffect] = POISON_SIDE_EFFECT1
 	jr .saveNumberOfHits
+
 
 FlinchSideEffect:
 	call CheckTargetSubstitute
