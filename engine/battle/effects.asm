@@ -624,6 +624,7 @@ MoveWasDisabledText:
 	text_far _MoveWasDisabledText
 	text_end
 
+
 HexEffect:  ; marcelnote - new effect for HEX: gets to 90 base power if opponent has PAR/SLP/PSN/BRN/FRZ
 	ldh a, [hWhoseTurn]
 	and a
@@ -708,6 +709,7 @@ CheckTargetSubstitute:
 	pop hl
 	ret
 
+
 PlayCurrentMoveAnimation2:
 ; animation at MOVENUM will be played unless MOVENUM is 0
 ; plays wAnimationType 3 or 6
@@ -731,7 +733,7 @@ PlayBattleAnimation2:
 	ld a, ANIMATIONTYPE_SHAKE_SCREEN_HORIZONTALLY_SLOW
 .playerTurn
 	ld [wAnimationType], a
-	jp PlayBattleAnimationGotID
+	jr PlayBattleAnimationGotID
 
 PlayCurrentMoveAnimation:
 ; animation at MOVENUM will be played unless MOVENUM is 0
