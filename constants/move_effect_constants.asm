@@ -6,8 +6,8 @@
 	const_def
 	const NO_ADDITIONAL_EFFECT       ; $00
 ;	const EFFECT_01                  ; $01 unused
-	const POISON_SIDE_EFFECT1        ; $02
-	const DRAIN_HP_EFFECT            ; $03
+	const DRAIN_HP_EFFECT            ; $01
+	const POISON_SIDE_EFFECT1        ; $02 ; marcelnote - needs to stay $02 for Twineedle
 	const BURN_SIDE_EFFECT1          ; $04
 	const FREEZE_SIDE_EFFECT1        ; $05
 	const PARALYZE_SIDE_EFFECT1      ; $06
