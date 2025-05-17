@@ -522,8 +522,8 @@ wTransformedEnemyMonOriginalDVs:: dw
 
 wMonIsDisobedient:: db
 
-wPlayerDisabledMoveNumber:: db
-wEnemyDisabledMoveNumber:: db
+wPlayerDisabledMoveID:: db
+wEnemyDisabledMoveID:: db
 
 ; When running in the scope of HandlePlayerMonFainted, it equals 1.
 ; When running in the scope of HandleEnemyMonFainted, it equals 0.
