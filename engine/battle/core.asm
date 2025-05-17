@@ -771,7 +771,7 @@ FaintEnemyPokemon:
 	ld [hli], a
 	ld [hl], a
 	ld [wEnemyDisabledMove], a
-	ld [wEnemyDisabledMoveNumber], a
+	ld [wEnemyDisabledMoveID], a
 	ld [wEnemyMonMinimized], a
 	ld hl, wPlayerUsedMove
 	ld [hli], a
@@ -1350,7 +1350,7 @@ EnemySendOutFirstMon:
 	ld [hli], a
 	ld [hl], a
 	ld [wEnemyDisabledMove], a
-	ld [wEnemyDisabledMoveNumber], a
+	ld [wEnemyDisabledMoveID], a
 	ld [wEnemyMonMinimized], a
 	ld hl, wPlayerUsedMove
 	ld [hli], a
@@ -1804,7 +1804,7 @@ SendOutMon:
 	ld [hli], a
 	ld [hl], a
 	ld [wPlayerDisabledMove], a
-	ld [wPlayerDisabledMoveNumber], a
+	ld [wPlayerDisabledMoveID], a
 	ld [wPlayerMonMinimized], a
 	ld b, SET_PAL_BATTLE
 	call RunPaletteCommand
@@ -3581,7 +3581,7 @@ CheckPlayerStatusConditions:
 	and $f ; did Disable counter hit 0?
 	jr nz, .ConfusedCheck
 	ld [hl], a
-	ld [wPlayerDisabledMoveNumber], a
+	ld [wPlayerDisabledMoveID], a
 	ld hl, DisabledNoMoreText
 	call PrintText
 
@@ -3616,7 +3616,7 @@ CheckPlayerStatusConditions:
 
 .TriedToUseDisabledMoveCheck
 ; prevents a disabled move that was selected before being disabled from being used
-	ld a, [wPlayerDisabledMoveNumber]
+	ld a, [wPlayerDisabledMoveID]
 	and a
 	jr z, .ParalysisCheck
 	ld hl, wPlayerSelectedMove
@@ -4248,7 +4248,7 @@ CheckForDisobedience:
 	ld a, [wBattleMonMoves + 1]
 	and a ; is the second move slot empty?
 	jr z, .monDoesNothing ; mon will not use move if it only knows one move
-	ld a, [wPlayerDisabledMoveNumber]
+	ld a, [wPlayerDisabledMoveID]
 	and a
 	jr nz, .monDoesNothing
 	ld a, [wPlayerSelectedMove]
@@ -6136,7 +6136,7 @@ CheckEnemyStatusConditions:
 	and $f ; did disable counter hit 0?
 	jr nz, .checkIfConfused
 	ld [hl], a
-	ld [wEnemyDisabledMoveNumber], a
+	ld [wEnemyDisabledMoveID], a
 	ld hl, DisabledNoMoreText
 	call PrintText
 .checkIfConfused
@@ -6208,7 +6208,7 @@ CheckEnemyStatusConditions:
 	jr .monHurtItselfOrFullyParalysed
 .checkIfTriedToUseDisabledMove
 ; prevents a disabled move that was selected before being disabled from being used
-	ld a, [wEnemyDisabledMoveNumber]
+	ld a, [wEnemyDisabledMoveID]
 	and a
 	jr z, .checkIfParalysed
 	ld hl, wEnemySelectedMove

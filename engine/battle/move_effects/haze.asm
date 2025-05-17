@@ -34,7 +34,7 @@ HazeEffect_:
 	xor a
 	ld [wPlayerDisabledMove], a
 	ld [wEnemyDisabledMove], a
-	ld hl, wPlayerDisabledMoveNumber
+	ld hl, wPlayerDisabledMoveID
 	ld [hli], a
 	ld [hl], a
 	ld hl, wPlayerBattleStatus1

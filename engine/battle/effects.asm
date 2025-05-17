@@ -537,87 +537,87 @@ SplashEffect:
 	call PlayCurrentMoveAnimation
 	jp PrintNoEffectText
 
-DisableEffect:
-	call MoveHitTest
+DisableEffect: ; marcelnote - optimized
+	call MoveHitTest ; why is this here and not in the main battle loop?
 	ld a, [wMoveMissed]
 	and a
-	jr nz, .moveMissed
+	jr nz, .butItFailed
 	ldh a, [hWhoseTurn]
 	and a
 	ld de, wEnemyDisabledMove
 	ld hl, wEnemyMonMoves
-	jr z, .disableEffect
+	jr z, .gotPointers ; jump on player's turn
 	ld de, wPlayerDisabledMove
 	ld hl, wBattleMonMoves
-.disableEffect
-; no effect if target already has a move disabled
-	ld a, [de]
-	and a
-	jr nz, .moveMissed
+.gotPointers
+	ld a, [de] ; de = w<Target>DisabledMove
+	and a      ; target already has a move disabled?
+	jr nz, .butItFailed ; if yes, fail
 .pickMoveToDisable
-	push hl
+	push hl    ; save hl = w<Target>MonMoves
 	call BattleRandom
-	and $3
-	ld c, a
-	ld b, $0
-	add hl, bc
-	ld a, [hl]
-	pop hl
-	and a
-	jr z, .pickMoveToDisable ; loop until a non-00 move slot is found
-	ld [wNamedObjectIndex], a ; store move number
-	push hl
+	and $3     ; a = 0, 1, 2, or 3
+	ld c, a    ; c = move offset
+	ld b, 0
+	add hl, bc ; hl = w<Target>MonMoves + move offset
+	ld a, [hl] ; a = move to disable
+	and a      ; is it NO_MOVE?
+	jr z, .pickAnotherMove     ; if yes, pick another move
+	ld [wNamedObjectIndex], a  ; store move (used by GetMoveName below)
 	ldh a, [hWhoseTurn]
 	and a
 	ld hl, wBattleMonPP
-	jr nz, .enemyTurn
+	jr nz, .checkMoveHasPP ; hl -> player's PP if enemy turn
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
-	pop hl ; wEnemyMonMoves
-	jr nz, .playerTurnNotLinkBattle
-; .playerTurnLinkBattle
-	push hl
-	ld hl, wEnemyMonPP
-.enemyTurn
-	push hl
-	ld a, [hli]
-	or [hl]
-	inc hl
-	or [hl]
-	inc hl
-	or [hl]
-	and PP_MASK
-	pop hl ; wBattleMonPP or wEnemyMonPP
-	jr z, .moveMissedPopHL ; nothing to do if all moves have no PP left
-	add hl, bc
-	ld a, [hl]
-	pop hl
+	jr nz, .disableMove    ; don't track enemy's PP outside link battles
+	ld hl, wEnemyMonPP     ; hl -> enemy's PP if player turn and link battle
+.checkMoveHasPP
+	push hl    ; save hl = w<Target>MonPP
+	add hl, bc ; b = 0, c = move offset
+	ld a, [hl] ; a = [w<Target>MonPP + move offset]
+	pop hl     ; restore hl = w<Target>MonPP
 	and a
-	jr z, .pickMoveToDisable ; pick another move if this one had 0 PP
-.playerTurnNotLinkBattle
-; non-link battle enemies have unlimited PP so the previous checks aren't needed
+	jr nz, .disableMove
+; selected move had no PP left, but does any move have PP left?
+	ld a, [hli] ; a = [w<Target>MonPP]
+	or [hl]     ; hl = w<Target>MonPP + 1
+	inc hl
+	or [hl]     ; hl = w<Target>MonPP + 2
+	inc hl
+	or [hl]     ; hl = w<Target>MonPP + 3
+	and PP_MASK
+	jr z, .butItFailed_PopHL ; no move with PP left, so disable fails
+.pickAnotherMove
+	pop hl     ; restore hl = w<Target>MonMoves
+	jr .pickMoveToDisable
+
+.disableMove
+	pop hl     ; restore hl = w<Target>MonMoves (clean stack)
 	call BattleRandom
 	and $7
-	inc a ; 1-8 turns disabled
-	inc c ; move 1-4 will be disabled
+	inc a      ; 1-8 turns disabled
+	inc c      ; c = move offset + 1 (move 1-4 will be disabled)
 	swap c
-	add c ; map disabled move to high nibble of wEnemyDisabledMove / wPlayerDisabledMove
-	ld [de], a
+	add c      ; a = turns disabled (low nibble) and move number disabled (high nibble)
+	ld [de], a ; [w<Target>DisabledMove] = a
 	call PlayCurrentMoveAnimation2
-	ld hl, wPlayerDisabledMoveNumber
 	ldh a, [hWhoseTurn]
 	and a
+	ld hl, wPlayerDisabledMoveID
 	jr nz, .printDisableText
-	inc hl ; wEnemyDisabledMoveNumber
+	inc hl ; wEnemyDisabledMoveID
+	ASSERT wPlayerDisabledMoveID + 1 == wEnemyDisabledMoveID
 .printDisableText
-	ld a, [wNamedObjectIndex] ; move number
-	ld [hl], a
+	ld a, [wNamedObjectIndex] ; a = move ID
+	ld [hl], a ; hl = w<Target>DisabledMoveID
 	call GetMoveName
 	ld hl, MoveWasDisabledText
 	jp PrintText
-.moveMissedPopHL
+
+.butItFailed_PopHL
 	pop hl
-.moveMissed
+.butItFailed
 	jp PrintButItFailedText_
 
 MoveWasDisabledText:
