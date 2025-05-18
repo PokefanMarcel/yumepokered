@@ -98,12 +98,10 @@ hSpritePriority:: db
 UNION
 ; Multiplication and division variables are meant
 ; to overlap for back-to-back usage. Big endian.
-UNION
-	ds 1
+UNION ; 10 bytes
+	ds 1 ; multiplication needs this byte here
 hMultiplicand:: ds 3
 hMultiplier:: db
-	ds 1
-hMultiplyBuffer:: ds 4
 NEXTU
 hProduct:: ds 4
 NEXTU
