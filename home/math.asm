@@ -7,9 +7,11 @@
 ; FF95-FF98 = product
 Multiply::
 	push hl
+	push de
 	push bc
 	callfar _Multiply
 	pop bc
+	pop de
 	pop hl
 	ret
 
