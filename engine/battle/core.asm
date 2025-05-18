@@ -2591,7 +2591,7 @@ MoveSelectionMenu:
 	ld a, $c
 	jr .menuset
 .mimicmenu
-	ld hl, wEnemyMonMoves
+;	ld hl, wEnemyMonMoves ; marcelnote - now preloaded in MimicEffect
 	call .loadmoves
 	hlcoord 0, 7
 	ld b, 4
@@ -2771,8 +2771,10 @@ MoveDisabledText:
 	text_far _MoveDisabledText
 	text_end
 
-WhichTechniqueString:
-	db "WHICH TECHNIQUE?@"
+WhichTechniqueString: ; marcelnote - modified to solve misprinting bug
+;	db "WHICH TECHNIQUE?@"
+	db   "MIMIC which move?"
+	next "           @"
 
 SelectMenuItem_CursorUp:
 	ld a, [wCurrentMenuItem]

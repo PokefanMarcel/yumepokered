@@ -403,81 +403,83 @@ RageEffect:
 	set USING_RAGE, [hl] ; mon is now in "rage" mode
 	ret
 
-MimicEffect:
+MimicEffect: ; marcelnote - optimized
 	ld c, 50
 	call DelayFrames
-	call MoveHitTest
+	call MoveHitTest ; why is this here? this is a main effect
 	ld a, [wMoveMissed]
 	and a
-	jr nz, .mimicMissed
+	jr nz, .butItFailed
 	ldh a, [hWhoseTurn]
 	and a
 	ld hl, wBattleMonMoves
 	ld a, [wPlayerBattleStatus1]
-	jr nz, .enemyTurn
+	jr nz, .gotTargetPointers ; jump on enemy's turn
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
-	jr nz, .letPlayerChooseMove
 	ld hl, wEnemyMonMoves
 	ld a, [wEnemyBattleStatus1]
-.enemyTurn
+	jr nz, .letPlayerChooseMove ; can choose move outside of link battles only
+.gotTargetPointers
 	bit INVULNERABLE, a
-	jr nz, .mimicMissed
+	jr nz, .butItFailed
 .getRandomMove
-	push hl
+	push hl ; save hl = w<Target>MonMoves
 	call BattleRandom
-	and $3
+	and $3 ; draw a move (0 to 3)
 	ld c, a
 	ld b, $0
-	add hl, bc
+	add hl, bc ; hl = w<Target>MonMoves + move offset
 	ld a, [hl]
-	pop hl
-	and a
-	jr z, .getRandomMove
-	ld d, a
+	pop hl ; restore hl = w<Target>MonMoves
+	and a  ; is it NO_MOVE?
+	jr z, .getRandomMove ; if yes, find another move
+	ld d, a ; d = mimicked move
 	ldh a, [hWhoseTurn]
 	and a
 	ld hl, wBattleMonMoves
 	ld a, [wPlayerMoveListIndex]
-	jr z, .playerTurn
+	jr z, .gotUserPointers
 	ld hl, wEnemyMonMoves
 	ld a, [wEnemyMoveListIndex]
-	jr .playerTurn
+	jr .gotUserPointers
+
 .letPlayerChooseMove
-	ld a, [wEnemyBattleStatus1]
-	bit INVULNERABLE, a
-	jr nz, .mimicMissed
-	ld a, [wCurrentMenuItem]
-	push af
-	ld a, $1
+	bit INVULNERABLE, a ; a = [wEnemyBattleStatus1]
+	jr nz, .butItFailed
+	ld a, [wCurrentMenuItem] ; current position of MIMIC
+	push af ; save current position of MIMIC
+	ld a, $1 ; Mimic menu
 	ld [wMoveMenuType], a
-	call MoveSelectionMenu
+	call MoveSelectionMenu ; uses hl = wEnemyMonMoves for Mimic
 	call LoadScreenTilesFromBuffer1
 	ld hl, wEnemyMonMoves
 	ld a, [wCurrentMenuItem]
 	ld c, a
 	ld b, $0
 	add hl, bc
-	ld d, [hl]
-	pop af
+	ld d, [hl] ; d = mimicked move
+	pop af ; restore current position of MIMIC
 	ld hl, wBattleMonMoves
-.playerTurn
+.gotUserPointers
 	ld c, a
-	ld b, $0
-	add hl, bc
-	ld a, d
+	ld b, 0
+	add hl, bc ; hl = w<User>MonMoves + move offset
+	ld a, d    ; a = mimicked move
 	ld [hl], a
 	ld [wNamedObjectIndex], a
 	call GetMoveName
 	call PlayCurrentMoveAnimation
 	ld hl, MimicLearnedMoveText
 	jp PrintText
-.mimicMissed
+
+.butItFailed
 	jp PrintButItFailedText_
 
 MimicLearnedMoveText:
 	text_far _MimicLearnedMoveText
 	text_end
+
 
 LeechSeedEffect:
 	jpfar LeechSeedEffect_
