@@ -1924,6 +1924,7 @@ MrMimeEvosMoves:
 	db 34, PSYBEAM
 	db 39, MIMIC
 	db 45, SUBSTITUTE
+	db 51, MIRROR_MOVE
 	db 0
 
 ScytherEvosMoves:
