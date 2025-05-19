@@ -5730,13 +5730,10 @@ MoveHitTest:
 	ld [wMoveMissed], a
 	ldh a, [hWhoseTurn]
 	and a
-	jr z, .playerTurn2
-.enemyTurn2
-	ld hl, wEnemyBattleStatus1
-	res USING_TRAPPING_MOVE, [hl] ; end multi-turn attack e.g. wrap
-	ret
-.playerTurn2
 	ld hl, wPlayerBattleStatus1
+	jr z, .playerTurn2
+	ld hl, wEnemyBattleStatus1
+.playerTurn2
 	res USING_TRAPPING_MOVE, [hl] ; end multi-turn attack e.g. wrap
 	ret
 
