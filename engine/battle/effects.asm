@@ -398,9 +398,9 @@ RageEffect:
 	ldh a, [hWhoseTurn]
 	and a
 	ld hl, wPlayerBattleStatus2
-	jr z, .playerTurn
+	jr z, .gotPointer
 	ld hl, wEnemyBattleStatus2
-.playerTurn
+.gotPointer
 	set USING_RAGE, [hl] ; mon is now in "rage" mode
 	ret
 
@@ -582,10 +582,10 @@ HexEffect:  ; marcelnote - new effect for HEX: gets to 90 base power if opponent
 	and a
 	ld de, wEnemyMonStatus
 	ld hl, wPlayerMovePower
-	jr z, .playerTurn
+	jr z, .gotPointers ; jump on player's turn
 	ld de, wBattleMonStatus
 	ld hl, wEnemyMovePower
-.playerTurn
+.gotPointers
 	ld a, [de]
 	and a ; does the target have a status ailment?
 	ret z
