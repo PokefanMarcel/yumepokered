@@ -468,23 +468,21 @@ MainInBattleLoop:
 	jp MainInBattleLoop
 
 HandlePoisonBurnLeechSeed:
-	ld hl, wBattleMonHP
-	ld de, wBattleMonStatus
 	ldh a, [hWhoseTurn]
 	and a
-	jr z, .playersTurn
+	ld hl, wBattleMonHP
+	ld de, wBattleMonStatus
+	jr z, .gotPointers ; jump on player's turn
 	ld hl, wEnemyMonHP
 	ld de, wEnemyMonStatus
-.playersTurn
-	ld a, [de]
+.gotPointers
+	ld a, [de] ; a = [w<Turn>MonStatus]
 	and (1 << BRN) | (1 << PSN)
 	jr z, .notBurnedOrPoisoned
-	push hl
-	ld a, [de]
+	push hl ; save hl = w<Turn>MonHP
 	and 1 << BRN
 	jr z, .poisoned
 	ld hl, HurtByBurnText
-;;;;;;;;;; marcelnote - modified this for the new burn animation
 	call PrintText
 	xor a
 	ld [wAnimationType], a
@@ -492,26 +490,25 @@ HandlePoisonBurnLeechSeed:
 	jr .playAnim
 .poisoned
 	ld hl, HurtByPoisonText
-;;;;;;;;;;
 	call PrintText
 	xor a
 	ld [wAnimationType], a
-	ld a, PSN_ANIM     ; marcelnote - renamed from BURN_PSN_ANIM
+	ld a, PSN_ANIM
 .playAnim
 	call PlayMoveAnimation   ; play burn/poison animation
-	pop hl
+	pop hl  ; restore hl = w<Turn>MonHP
 	call HandlePoisonBurnLeechSeed_DecreaseOwnHP
 .notBurnedOrPoisoned
-	ld de, wPlayerBattleStatus2
 	ldh a, [hWhoseTurn]
 	and a
-	jr z, .playersTurn2
+	ld de, wPlayerBattleStatus2
+	jr z, .gotPointer
 	ld de, wEnemyBattleStatus2
-.playersTurn2
+.gotPointer
 	ld a, [de]
-	add a
+	rla ; tests if seeded (since SEEDED is bit 7)
 	jr nc, .notLeechSeeded
-	push hl
+	push hl ; save hl = w<Turn>MonHP
 	ldh a, [hWhoseTurn]
 	push af
 	xor $1
@@ -522,21 +519,21 @@ HandlePoisonBurnLeechSeed:
 	call PlayMoveAnimation ; play leech seed animation (from opposing mon)
 	pop af
 	ldh [hWhoseTurn], a
-	pop hl
-	call HandlePoisonBurnLeechSeed_DecreaseOwnHP
-	call HandlePoisonBurnLeechSeed_IncreaseEnemyHP
-	push hl
+	pop hl  ; restore hl = w<Turn>MonHP
+	call HandlePoisonBurnLeechSeed_DecreaseOwnHP   ; preserves hl
+	call HandlePoisonBurnLeechSeed_IncreaseEnemyHP ; preserves hl
+	push hl ; save hl = w<Turn>MonHP
 	ld hl, HurtByLeechSeedText
 	call PrintText
-	pop hl
+	pop hl  ; restore hl = w<Turn>MonHP
 .notLeechSeeded
-	ld a, [hli]
-	or [hl]
-	ret nz          ; test if fainted
+	ld a, [hli] ; a = [w<Turn>MonHP]
+	or [hl] ; did the Mon faint?
+	ret nz  ; if not, z flag unset
 	call DrawHUDsAndHPBars
 	ld c, 20
 	call DelayFrames
-	xor a
+	xor a   ; if yes, z flag set
 	ret
 
 HurtByPoisonText:
@@ -553,39 +550,43 @@ HurtByLeechSeedText:
 
 ; decreases the mon's current HP by 1/16 of the Max HP (multiplied by number of toxic ticks if active)
 ; note that the toxic ticks are considered even if the damage is not poison (hence the Leech Seed glitch)
-; hl: HP pointer
+; hl: HP pointer (preserved)
 ; bc (out): total damage
-HandlePoisonBurnLeechSeed_DecreaseOwnHP:
-	push hl
-	push hl
-	ld bc, $e      ; skip to max HP
-	add hl, bc
-	ld a, [hli]    ; load max HP
-	ld [wHPBarMaxHP+1], a
-	ld b, a
-	ld a, [hl]
+HandlePoisonBurnLeechSeed_DecreaseOwnHP: ; marcelnote - optimized
+	push hl ; save hl = w<Turn>MonHP
+	push hl ; save hl = w<Turn>MonHP
+	ld bc, wBattleMonMaxHP - wBattleMonHP
+	add hl, bc     ; hl = w<Turn>MonMaxHP
+	ld a, [hli]
+	ld [wHPBarMaxHP + 1], a
+	ld b, a        ; b = [w<Turn>MonMaxHP]
+	ld a, [hl]     ; a = [w<Turn>MonMaxHP + 1]
 	ld [wHPBarMaxHP], a
-	ld c, a
+; divide ba = max HP by 16
 	srl b
-	rr c
-	srl b
-	rr c
-	srl c
-	srl c         ; c = max HP/16 (assumption: HP < 1024)
-	ld a, c
+	rra
+	srl b         ; b = 0 (assumption: HP < 1024)
+	rra
+	srl a
+	srl a         ; a = max HP/16 (assumption: HP < 1024)
 	and a
-	jr nz, .nonZeroDamage
-	inc c         ; damage is at least 1
-.nonZeroDamage
-	ld hl, wPlayerBattleStatus3
-	ld de, wPlayerToxicCounter
+	jr nz, .gotDamage
+	inc a         ; damage is at least 1
+.gotDamage
+	ld c, a       ; c = damage
 	ldh a, [hWhoseTurn]
 	and a
+	ld hl, wPlayerBattleStatus3
+	ld de, wPlayerToxicCounter
 	jr z, .playersTurn
 	ld hl, wEnemyBattleStatus3
 	ld de, wEnemyToxicCounter
 .playersTurn
-	bit BADLY_POISONED, [hl]
+; marcelnote - code below would solve Leech Seed glitch
+;	ld a, [hli]              ; needs hl = wPlayerBattleStatus2 above
+;	rla                      ; tests if seeded (since SEEDED is bit 7)
+;	jr c, .noToxic           ; if seeded, skip Toxic counter
+	bit BADLY_POISONED, [hl] ; hl = [w<TurnMon>BattleStatus3]
 	jr z, .noToxic
 	ld a, [de]    ; increment toxic counter
 	inc a
@@ -598,95 +599,98 @@ HandlePoisonBurnLeechSeed_DecreaseOwnHP:
 	ld b, h       ; bc = damage * toxic counter
 	ld c, l
 .noToxic
-	pop hl
-	inc hl
-	ld a, [hl]    ; subtract total damage from current HP
+	pop hl ; restore hl = w<Turn>MonHP
+	inc hl ; hl = w<Turn>MonHP + 1
+; subtract total damage bc from current HP
+	ld a, [hl] ; a = [w<Turn>MonHP + 1]
 	ld [wHPBarOldHP], a
 	sub c
 	ld [hld], a
 	ld [wHPBarNewHP], a
-	ld a, [hl]
-	ld [wHPBarOldHP+1], a
+	ld a, [hl] ; a = [w<Turn>MonHP]
+	ld [wHPBarOldHP + 1], a
 	sbc b
 	ld [hl], a
-	ld [wHPBarNewHP+1], a
+	ld [wHPBarNewHP + 1], a
 	jr nc, .noOverkill
 	xor a         ; overkill: zero HP
 	ld [hli], a
 	ld [hl], a
-	ld [wHPBarNewHP], a
-	ld [wHPBarNewHP+1], a
+	ld hl, wHPBarNewHP
+	ld [hli], a
+	ld [hl], a
 .noOverkill
-	call UpdateCurMonHPBar
-	pop hl
+	call UpdateCurMonHPBar  ; preserves bc
+	pop hl ; restore hl = w<Turn>MonHP
 	ret
 
 ; adds bc to enemy HP
 ; bc isn't updated if HP subtracted was capped to prevent overkill
 HandlePoisonBurnLeechSeed_IncreaseEnemyHP:
-	push hl
-	ld hl, wEnemyMonMaxHP
+	push hl ; save hl = w<Turn>MonHP
 	ldh a, [hWhoseTurn]
 	and a
-	jr z, .playersTurn
+	ld hl, wEnemyMonMaxHP
+	jr z, .gotPointer ; jump on player's turn
 	ld hl, wBattleMonMaxHP
-.playersTurn
-	ld a, [hli]
-	ld [wHPBarMaxHP+1], a
-	ld a, [hl]
+.gotPointer
+	ld a, [hli]             ; a = [w<>MonMaxHP]
+	ld [wHPBarMaxHP + 1], a
+	ld a, [hl]              ; a = [w<>MonMaxHP + 1]
 	ld [wHPBarMaxHP], a
 	ld de, wBattleMonHP - wBattleMonMaxHP
-	add hl, de           ; skip back from max hp to current hp
-	ld a, [hl]
-	ld [wHPBarOldHP], a ; add bc to current HP
+	add hl, de              ; hl = w<>MonHP + 1
+; add bc to current HP
+	ld a, [hld]             ; a = [w<>MonHP + 1]
+	ld [wHPBarOldHP], a
 	add c
-	ld [hld], a
-	ld [wHPBarNewHP], a
-	ld a, [hl]
-	ld [wHPBarOldHP+1], a
+	ld c, a
+	ld a, [hl]              ; a = [w<>MonHP]
+	ld [wHPBarOldHP + 1], a
 	adc b
-	ld [hli], a
-	ld [wHPBarNewHP+1], a
+	ld b, a                 ; bc = new HP
+; check if new HP > max HP
+	ld a, [wHPBarMaxHP]
+	sub c
+	ld a, [wHPBarMaxHP + 1]
+	sbc b
+	jr nc, .noOverfullHeal
+; overfull heal, set HP to max HP
 	ld a, [wHPBarMaxHP]
 	ld c, a
-	ld a, [hld]
-	sub c
-	ld a, [wHPBarMaxHP+1]
+	ld a, [wHPBarMaxHP + 1]
 	ld b, a
-	ld a, [hl]
-	sbc b
-	jr c, .noOverfullHeal
-	ld a, b                ; overfull heal, set HP to max HP
-	ld [hli], a
-	ld [wHPBarNewHP+1], a
-	ld a, c
-	ld [hl], a
-	ld [wHPBarNewHP], a
 .noOverfullHeal
-	ldh a, [hWhoseTurn]
-	xor $1
-	ldh [hWhoseTurn], a
-	call UpdateCurMonHPBar
-	ldh a, [hWhoseTurn]
-	xor $1
-	ldh [hWhoseTurn], a
-	pop hl
+	ld a, b                 ; overfull heal, set HP to max HP
+	ld [hli], a             ; [w<>MonHP] = b
+	ld [wHPBarNewHP + 1], a
+	ld a, c
+	ld [hl], a              ; [w<>MonHP + 1] = c
+	ld [wHPBarNewHP], a
+	call UpdateOtherMonHPBar
+	pop hl  ; restore hl = w<Turn>MonHP
 	ret
 
-UpdateCurMonHPBar:
-	hlcoord 10, 9    ; tile pointer to player HP bar
+UpdateOtherMonHPBar:
 	ldh a, [hWhoseTurn]
-	and a
-	ld a, $1
-	jr z, .playersTurn
-	hlcoord 2, 2    ; tile pointer to enemy HP bar
-	xor a
-.playersTurn
-	push bc
+	xor $1 ; invert turns
+	jr UpdateCurMonHPBar.chooseCoords
+
+UpdateCurMonHPBar:
+	ldh a, [hWhoseTurn]
+.chooseCoords
+	dec a
+	hlcoord 2, 2     ; tile pointer to enemy HP bar
+	jr z, .gotCoords ; jump on opponent's turn
+	ld a, $1         ; HP bar with right tip
+	hlcoord 10, 9    ; tile pointer to player HP bar
+.gotCoords
 	ld [wHPBarType], a
+	push bc
 	predef UpdateHPBar2
 	pop bc
 	ret
+
 
 CheckNumAttacksLeft:
 	ld a, [wPlayerNumAttacksLeft]
@@ -6792,6 +6796,7 @@ HandleExplodingAnimation:
 	ASSERT ANIMATIONTYPE_SHAKE_SCREEN_HORIZONTALLY_LIGHT == MEGA_PUNCH
 	; ld a, MEGA_PUNCH
 ; fallthrough
+	; fallthrough
 PlayMoveAnimation:
 	ld [wAnimationID], a
 	vc_hook_red Reduce_move_anim_flashing_Confusion
