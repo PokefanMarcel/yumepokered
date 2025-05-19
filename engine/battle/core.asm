@@ -4113,19 +4113,15 @@ DoesntAffectMonText:
 	text_end
 
 ; if there was a critical hit or an OHKO was successful, print the corresponding text
-PrintCriticalOHKOText:
-	ld a, [wCriticalHitOrOHKO]
+PrintCriticalOHKOText: ; marcelnote - optimized
+	ld a, [wCriticalHitOrOHKO] ; $01 = critical hit, $02 = successful OHKO
 	and a
 	jr z, .done ; do nothing if there was no critical hit or successful OHKO
 	dec a
-	add a
-	ld hl, CriticalOHKOTextPointers
-	ld b, $0
-	ld c, a
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+	ld hl, CriticalHitText
+	jr z, .gotText
+	ld hl, OHKOText
+.gotText
 	call PrintText
 	xor a
 	ld [wCriticalHitOrOHKO], a
@@ -4133,9 +4129,9 @@ PrintCriticalOHKOText:
 	ld c, 20
 	jp DelayFrames
 
-CriticalOHKOTextPointers:
-	dw CriticalHitText
-	dw OHKOText
+;CriticalOHKOTextPointers:
+;	dw CriticalHitText
+;	dw OHKOText
 
 CriticalHitText:
 	text_far _CriticalHitText
