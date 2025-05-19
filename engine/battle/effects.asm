@@ -166,7 +166,7 @@ SwitchAndTeleportEffect: ; marcelnote - optimized
 	ld hl, DidntAffectText ; marcelnote - was IsUnaffectedText for fail in trainer battles
 	cp TELEPORT
 	jr nz, .printText
-	jp PrintButItFailedText_ ; marcelnote - here the enemy path had ConditionalPrintButItFailed, why?
+	jp PrintButItFailedText_ ; was ConditionalPrintButItFailed, but accuracy check prevents effect to run anyway?
 
 RanFromBattleText:
 	text_far _RanFromBattleText
