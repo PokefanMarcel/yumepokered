@@ -8,15 +8,18 @@ DrainHPEffect_: ; marcelnote - optimized
 ; if damage is 0, increase to 1 so that the attacker gains at least 1 HP
 	inc [hl]
 .getAttackerHP
-	ld hl, wBattleMonHP
-	ld de, wBattleMonMaxHP
 	ldh a, [hWhoseTurn]
 	and a
+	ld hl, wBattleMonHP
+	ld de, wBattleMonMaxHP
+	ld a, [wPlayerMoveEffect]
 	jr z, .addDamageToAttackerHP
 	ld hl, wEnemyMonHP
 	ld de, wEnemyMonMaxHP
+	ld a, [wEnemyMoveEffect]
 .addDamageToAttackerHP
-	ld bc, wHPBarOldHP+1
+	push af ; save a = move effect and z flag for turn
+	ld bc, wHPBarOldHP + 1
 ; copy current HP to wHPBarOldHP
 	ld a, [hli]
 	ld [bc], a  ; [wHPBarOldHP + 1] <- current HP (high byte)
@@ -32,14 +35,14 @@ DrainHPEffect_: ; marcelnote - optimized
 	ld a, [de]
 	ld [bc], a  ; [wHPBarMaxHP] <- max HP (low byte)
 ; add damage to attacker's HP and copy new HP to wHPBarNewHP
-	ld a, [wDamage+1]
+	ld a, [wDamage + 1]
 	add [hl] ; hl: current HP (low byte)
 	ld [hld], a
 	ld [wHPBarNewHP], a
 	ld a, [wDamage]
 	adc [hl] ; hl: current HP (high byte)
 	ld [hli], a
-	ld [wHPBarNewHP+1], a
+	ld [wHPBarNewHP + 1], a
 	jr c, .capToMaxHP ; if HP > 65,535 = $FFFF, cap to max HP
 ; compare HP with max HP
 	ld a, [de]  ; max HP (high byte)
@@ -52,7 +55,7 @@ DrainHPEffect_: ; marcelnote - optimized
 .capToMaxHP
 	ld a, [de]
 	ld [hli], a
-	ld [wHPBarNewHP+1], a
+	ld [wHPBarNewHP + 1], a
 	inc de
 	ld a, [de]
 	ld [hl], a
@@ -71,18 +74,13 @@ DrainHPEffect_: ; marcelnote - optimized
 	predef DrawPlayerHUDAndHPBar
 	predef DrawEnemyHUDAndHPBar
 	callfar ReadPlayerMonCurHPAndStatus
-	ld hl, SuckedHealthText
-	ldh a, [hWhoseTurn]
-	and a
-	ld a, [wPlayerMoveEffect]
-	jr z, .next3
-	ld a, [wEnemyMoveEffect]
-.next3
+	pop af ; restore a = move effect and z flag for turn
 	cp DREAM_EATER_EFFECT
-	jr nz, .printText
+	ld hl, SuckedHealthText
+	jp nz, PrintText
 	ld hl, DreamWasEatenText
-.printText
 	jp PrintText
+
 
 SuckedHealthText:
 	text_far _SuckedHealthText
