@@ -1,10 +1,10 @@
 FocusEnergyEffect_:
-	ld hl, wPlayerBattleStatus2
 	ldh a, [hWhoseTurn]
 	and a
-	jr z, .notEnemy
+	ld hl, wPlayerBattleStatus2
+	jr z, .gotPointer
 	ld hl, wEnemyBattleStatus2
-.notEnemy
+.gotPointer
 	bit GETTING_PUMPED, [hl] ; is mon already using focus energy?
 	jr nz, .alreadyUsing
 	set GETTING_PUMPED, [hl] ; mon is now using focus energy
