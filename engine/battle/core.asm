@@ -6794,8 +6794,7 @@ HandleExplodingAnimation:
 	ld a, ANIMATIONTYPE_SHAKE_SCREEN_HORIZONTALLY_LIGHT
 	ld [wAnimationType], a
 	ASSERT ANIMATIONTYPE_SHAKE_SCREEN_HORIZONTALLY_LIGHT == MEGA_PUNCH
-	; ld a, MEGA_PUNCH
-; fallthrough
+	; a = MEGA_PUNCH
 	; fallthrough
 PlayMoveAnimation:
 	ld [wAnimationID], a
