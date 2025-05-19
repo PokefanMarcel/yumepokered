@@ -1,4 +1,4 @@
-_Multiply:: ; marcelnote - adjusted from polishedcrystal
+_Multiply:: ; marcelnote - adapted from polishedcrystal
 ; Multiply hMultiplicand (3 bytes) by hMultiplier (1 byte). Result in hProduct.
 ; All values are big endian.
 
