@@ -1,35 +1,42 @@
 LeechSeedEffect_:
-	callfar MoveHitTest
+	callfar MoveHitTest ; why is this here? main effect
 	ld a, [wMoveMissed]
 	and a
-	jr nz, .moveMissed
-	ld hl, wEnemyBattleStatus2
-	ld de, wEnemyMonType1
+	jr nz, .evadedAttack
 	ldh a, [hWhoseTurn]
 	and a
-	jr z, .leechSeedEffect
+	ld hl, wEnemyBattleStatus2
+	ld de, wEnemyMonType1
+	jr z, .gotPointers ; jump on player's turn
 	ld hl, wPlayerBattleStatus2
 	ld de, wBattleMonType1
-.leechSeedEffect
+.gotPointers
 ; miss if the target is grass-type or already seeded
 	ld a, [de]
 	cp GRASS
-	jr z, .moveMissed
+	jr z, .didntAffect
 	inc de
 	ld a, [de]
 	cp GRASS
-	jr z, .moveMissed
+	jr z, .didntAffect
 	bit SEEDED, [hl]
-	jr nz, .moveMissed
+	jr nz, .didntAffect
 	set SEEDED, [hl]
 	callfar PlayCurrentMoveAnimation
 	ld hl, WasSeededText
 	jp PrintText
-.moveMissed
+
+.evadedAttack
 	ld c, 50
 	call DelayFrames
 	ld hl, EvadedAttackText
 	jp PrintText
+
+.didntAffect ; marcelnote - new for immunity
+	ld c, 50
+	call DelayFrames
+	jpfar PrintDidntAffectText
+
 
 WasSeededText:
 	text_far _WasSeededText
