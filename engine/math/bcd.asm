@@ -165,54 +165,60 @@ DivideBCD_getNextDigit:
 
 AddBCDPredef::
 	call GetPredefRegisters
+	; fallthrough
 
-AddBCD::
-	and a
-	ld b, c
+; add BCD number at hl to BCD number at de
+; c = number of bytes to add
+; hl, de = address of last byte
+AddBCD:: ; marcelnote - optimized
+	xor a   ; clear carry for first adc
+	ld b, c ; b = number of bytes to add
 .add
 	ld a, [de]
-	adc [hl]
-	daa
+	adc [hl]    ; uses carry from previous adc
+	daa         ; adjust result of adc to BCD
 	ld [de], a
 	dec de
 	dec hl
-	dec c
+	dec c       ; more bytes to add?
 	jr nz, .add
-	jr nc, .done
+	ret nc      ; if no carry from adc, we're done
+	; else cap at 9 for each nibble
 	ld a, $99
-	inc de
 .fill
-	ld [de], a
 	inc de
+	ld [de], a
 	dec b
 	jr nz, .fill
-.done
 	ret
 
 
 SubBCDPredef::
 	call GetPredefRegisters
+	; fallthrough
 
-SubBCD::
-	and a
-	ld b, c
+; subtract BCD number at hl from BCD number at de
+; c = number of bytes to subtract
+; hl, de = address of last byte
+SubBCD:: ; marcelnote - optimized
+	xor a   ; clear carry for first adc
+	ld b, c ; b = number of bytes to add
 .sub
 	ld a, [de]
-	sbc [hl]
-	daa
+	sbc [hl]    ; uses carry from previous sbc
+	daa         ; adjust result of adc to BCD
 	ld [de], a
 	dec de
 	dec hl
-	dec c
+	dec c       ; more bytes to subtract?
 	jr nz, .sub
-	jr nc, .done
+	ret nc      ; if no carry from sbc, we're done
+	; else clamp at 0 for each nibble
 	ld a, $00
-	inc de
 .fill
-	ld [de], a
 	inc de
+	ld [de], a
 	dec b
 	jr nz, .fill
-	scf
-.done
+	scf         ; in this case set carry
 	ret
