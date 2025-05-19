@@ -250,6 +250,7 @@ FlinchSideEffect:
 	call ClearHyperBeam
 	ret
 
+
 OneHitKOEffect:
 	jpfar OneHitKOEffect_
 
@@ -344,9 +345,9 @@ TrappingEffect:
 .gotPointers
 	bit USING_TRAPPING_MOVE, [hl]
 	ret nz
+	set USING_TRAPPING_MOVE, [hl] ; mon is now using a trapping move
 	call ClearHyperBeam ; since this effect is called before testing whether the move will hit,
                         ; the target won't need to recharge even if the trapping move missed
-	set USING_TRAPPING_MOVE, [hl] ; mon is now using a trapping move
 	call BattleRandom ; 3/8 chance for 2 and 3 attacks, and 1/8 chance for 4 and 5 attacks
 	and $3
 	cp $2
@@ -375,22 +376,22 @@ HyperBeamEffect:
 	ldh a, [hWhoseTurn]
 	and a
 	ld hl, wPlayerBattleStatus2
-	jr z, .playerTurn
+	jr z, .gotPointer ; jump on player's turn
 	ld hl, wEnemyBattleStatus2
-.playerTurn
+.gotPointer
 	set NEEDS_TO_RECHARGE, [hl] ; mon now needs to recharge
 	ret
 
 ClearHyperBeam:
-	push hl
+;	push hl
 	ldh a, [hWhoseTurn]
 	and a
 	ld hl, wEnemyBattleStatus2
-	jr z, .playerTurn
+	jr z, .gotPointer ; jump on player's turn
 	ld hl, wPlayerBattleStatus2
-.playerTurn
+.gotPointer
 	res NEEDS_TO_RECHARGE, [hl] ; mon no longer needs to recharge
-	pop hl
+;	pop hl
 	ret
 
 RageEffect:
