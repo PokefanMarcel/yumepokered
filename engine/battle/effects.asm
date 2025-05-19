@@ -33,10 +33,10 @@ ExplodeEffect:
 	and a
 	ld hl, wBattleMonHP
 	ld de, wPlayerBattleStatus2
-	jr z, .playerTurn
+	jr z, .gotPointers ; jump on player's turn
 	ld hl, wEnemyMonHP
 	ld de, wEnemyBattleStatus2
-.playerTurn
+.gotPointers
 	xor a
 	ld [hli], a ; set the user mon's HP to 0
 	ld [hli], a
