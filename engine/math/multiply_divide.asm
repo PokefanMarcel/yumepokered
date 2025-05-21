@@ -45,90 +45,85 @@ _Multiply:: ; marcelnote - adapted from polishedcrystal
 
 .next
 	add hl, hl            ; multiply hl by 2
-	rl e                  ; multiply e by 2 (accounting for carry)
-	rl d                  ; multiply d by 2 (accounting for carry)
+	rl e                  ; multiply e by 2 (plus carry)
+	rl d                  ; multiply d by 2 (plus carry)
 	jr .loop
 
 
-_Divide::
-	xor a
-	ldh [hDivideBuffer], a
-	ldh [hDivideBuffer+1], a
-	ldh [hDivideBuffer+2], a
-	ldh [hDivideBuffer+3], a
-	ldh [hDivideBuffer+4], a
-	ld a, $9
-	ld e, a
-.loop
-	ldh a, [hDivideBuffer]
-	ld c, a
-	ldh a, [hDividend+1] ; (aliases: hMultiplicand)
-	sub c
-	ld d, a
-	ldh a, [hDivisor] ; (aliases: hDivisor, hMultiplier, hPowerOf10)
-	ld c, a
-	ldh a, [hDividend] ; (aliases: hProduct, hPastLeadingZeros, hQuotient)
-	sbc c
-	jr c, .next
-	ldh [hDividend], a ; (aliases: hProduct, hPastLeadingZeros, hQuotient)
-	ld a, d
-	ldh [hDividend+1], a ; (aliases: hMultiplicand)
-	ldh a, [hDivideBuffer+4]
-	inc a
-	ldh [hDivideBuffer+4], a
-	jr .loop
-.next
-	ld a, b
-	cp $1
+_Divide:: ; marcelnote - adapted from polishedcrystal
+; Divide hDividend length b (max 4 bytes) by hDivisor (1 byte). Result in hQuotient.
+; All values are big endian.
+	ldh a, [hDivisor]
+	and a ; is divisor 0?
+	ret z ; here Polished Crystal had an error crash
+
+	ld d, a              ; d = divisor
+	ld c, LOW(hDividend) ; to use ldh a, [c]
+	ld e, 0              ; e = remainder
+.loopBytes
+	push bc       ; save b = byte counter, c = LOW(hDividend) + nByte
+	ld b, 8       ; b = bit counter
+	ldh a, [c]    ; a = [hDividend + nByte], next dividend byte
+	ld h, a       ; h = dividend for this byte
+	ld l, 0       ; l = quotient for this byte
+.loopBits
+	sla h
+	rl e          ; bring in next bit of h into e
+	ld a, e       ; a = remainder
+	jr c, .carry  ; if carry from rl e, then %1e [9bits] ≥ d so subtract d and increase l
+	cp d          ; e ≥ d?
+	jr c, .skip   ; if not, move to next bit
+.carry
+	sub d         ; subtract divisor from remainder
+	ld e, a       ; update remainder
+	inc l         ; update quotient
+.skip
+	dec b         ; one less bit to do
 	jr z, .done
-	ldh a, [hDivideBuffer+4]
-	sla a
-	ldh [hDivideBuffer+4], a
-	ldh a, [hDivideBuffer+3]
-	rl a
-	ldh [hDivideBuffer+3], a
-	ldh a, [hDivideBuffer+2]
-	rl a
-	ldh [hDivideBuffer+2], a
-	ldh a, [hDivideBuffer+1]
-	rl a
-	ldh [hDivideBuffer+1], a
-	dec e
-	jr nz, .next2
-	ld a, $8
-	ld e, a
-	ldh a, [hDivideBuffer]
-	ldh [hDivisor], a ; (aliases: hDivisor, hMultiplier, hPowerOf10)
-	xor a
-	ldh [hDivideBuffer], a
-	ldh a, [hDividend+1] ; (aliases: hMultiplicand)
-	ldh [hDividend], a ; (aliases: hProduct, hPastLeadingZeros, hQuotient)
-	ldh a, [hDividend+2]
-	ldh [hDividend+1], a ; (aliases: hMultiplicand)
-	ldh a, [hDividend+3]
-	ldh [hDividend+2], a
-.next2
-	ld a, e
-	cp $1
-	jr nz, .okay
-	dec b
-.okay
-	ldh a, [hDivisor] ; (aliases: hDivisor, hMultiplier, hPowerOf10)
-	srl a
-	ldh [hDivisor], a ; (aliases: hDivisor, hMultiplier, hPowerOf10)
-	ldh a, [hDivideBuffer]
-	rr a
-	ldh [hDivideBuffer], a
-	jr .loop
+	sla l         ; multiply quotient by 2
+	jr .loopBits
 .done
-	ldh a, [hDividend+1] ; (aliases: hMultiplicand)
-	ldh [hRemainder], a ; (aliases: hDivisor, hMultiplier, hPowerOf10)
-	ldh a, [hDivideBuffer+4]
-	ldh [hQuotient+3], a
-	ldh a, [hDivideBuffer+3]
-	ldh [hQuotient+2], a
-	ldh a, [hDivideBuffer+2]
-	ldh [hQuotient+1], a ; (aliases: hMultiplicand)
-	ldh a, [hDivideBuffer+1]
-	ldh [hDividend], a ; (aliases: hProduct, hPastLeadingZeros, hQuotient)
+	ld a, c     ; a = LOW(hDividend) + nByte
+	add hMathBuffer - hDividend
+	ld c, a     ; move c address to LOW(hMathBuffer) + nByte
+	ld a, l
+	ldh [c], a  ; [hMathBuffer + nByte] = quotient
+	; why put it in the Buffer and not directly in hQuotient?? we don't need this hDividend anymore
+	; this would avoid the hDividend <-> hMathBuffer dance
+	; this seems to be because we need to move lower result byte to [hDividend + 3] no matter initial b
+	; but there is probably a more efficient way to do this
+	pop bc      ; restore b = byte counter, c = LOW(hDividend) + nByte
+	inc c       ; move to next dividend byte
+	dec b       ; one less byte to do
+	jr nz, .loopBytes
+
+	xor a
+	ldh [hDividend], a
+	ldh [hDividend + 1], a
+	ldh [hDividend + 2], a
+	ldh [hDividend + 3], a
+	ld a, e
+	ldh [hRemainder], a
+	ld a, c     ; a = c = LOW(hDividend) + nByte (nByte = initial b)
+	sub LOW(hQuotient)
+	ld b, a     ; b = restored initial b (1 to 4)
+	add LOW(hMathBuffer) - 1
+	ld c, a     ; c = LOW(hMathBuffer) + last byte offset (0 to 3)
+	ldh a, [c]  ; a = [hMathBuffer + byte offset]
+	ldh [hQuotient + 3], a
+	dec b       ; more result bytes to store?
+	ret z
+	dec c       ; move up in hMathBuffer
+	ldh a, [c]
+	ldh [hQuotient + 2], a
+	dec b
+	ret z
+	dec c
+	ldh a, [c]
+	ldh [hQuotient + 1], a
+	dec b
+	ret z
+	dec c
+	ldh a, [c]
+	ldh [hQuotient], a
 	ret

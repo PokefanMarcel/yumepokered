@@ -107,7 +107,8 @@ hProduct:: ds 4
 NEXTU
 hDividend:: ds 4
 hDivisor:: db
-hDivideBuffer:: ds 5
+hMathBuffer:: ds 4
+	ds 1
 NEXTU
 hQuotient:: ds 4
 hRemainder:: db
