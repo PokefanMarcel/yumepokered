@@ -1588,10 +1588,6 @@ TryRunningFromBattle:
 	ld a, 32
 	ldh [hMultiplier], a
 	call Multiply ; multiply player speed by 32
-	ldh a, [hProduct + 2]
-	ldh [hDividend], a
-	ldh a, [hProduct + 3]
-	ldh [hDividend + 1], a
 	ldh a, [hEnemySpeed]
 	ld b, a
 	ldh a, [hEnemySpeed + 1]
@@ -1603,7 +1599,6 @@ TryRunningFromBattle:
 	and a
 	jr z, .canEscape ; jump if enemy speed divided by 4, mod 256 is 0
 	ldh [hDivisor], a ; ((enemy speed / 4) % 256)
-	ld b, $2
 	call Divide ; divide (player speed * 32) by ((enemy speed / 4) % 256)
 	ldh a, [hQuotient + 2]
 	and a ; is the quotient greater than 256?
@@ -1994,8 +1989,8 @@ DrawEnemyHUDAndHPBar:
 	ldh [hDivisor], a
 	ldh a, [hProduct + 2]
 	ld b, a
-	srl b
 	ldh a, [hProduct + 3]
+	srl b
 	rra
 	srl b
 	rra
@@ -2003,12 +1998,7 @@ DrawEnemyHUDAndHPBar:
 	ld a, b
 	ldh [hProduct + 2], a
 .doDivide
-	ldh a, [hProduct + 2]
-	ldh [hDividend], a
-	ldh a, [hProduct + 3]
-	ldh [hDividend + 1], a
 	call Divide ; divide (current HP * 48) by max HP
-	ld b, 2
 	ldh a, [hQuotient + 3]
 ; set variables for DrawHPBar
 	ld e, a
@@ -4345,7 +4335,7 @@ IgnoredOrdersText:
 GetDamageVarsForPlayerAttack:
 	xor a
 	ld hl, wDamage ; damage to eventually inflict, initialise to zero
-	ldi [hl], a
+	ld [hli], a
 	ld [hl], a
 	ld hl, wPlayerMovePower
 	ld a, [hli]
@@ -4638,26 +4628,24 @@ CalculateDamage:
 ;   d: base power
 ;   e: level
 
-	ldh a, [hWhoseTurn] ; whose turn?
+	ldh a, [hWhoseTurn]
 	and a
 	ld a, [wPlayerMoveEffect]
-	jr z, .effect
+	jr z, .gotMoveEffect ; jump on player's turn
 	ld a, [wEnemyMoveEffect]
-.effect
+.gotMoveEffect
 
 ; EXPLODE_EFFECT halves defense.
 	cp EXPLODE_EFFECT
-	jr nz, .ok
+	jr nz, .explodeDone
 	srl c
-	jr nz, .ok
-	inc c ; ...with a minimum value of 1 (used as a divisor later on)
-.ok
+	jr nz, .explodeDone
+	inc c ; minimum value of 1 (used as a divisor later on)
+.explodeDone
 
 ; Multi-hit attacks may or may not have 0 bp.
 	cp TWO_TO_FIVE_ATTACKS_EFFECT
 	jr z, .skipbp
-;	cp EFFECT_1E
-;	jr z, .skipbp
 
 ; Calculate OHKO damage based on remaining HP.
 	cp OHKO_EFFECT
@@ -4671,52 +4659,43 @@ CalculateDamage:
 
 	xor a
 	ld hl, hDividend
-	ldi [hl], a
-	ldi [hl], a
-	ld [hl], a
+	ld [hli], a       ; [hDividend] = 0
+	ld [hli], a       ; [hDividend + 1] = 0
+	ld [hl], a        ; [hDividend + 2] = 0
 
 ; Multiply level by 2
 	ld a, e ; level
 	add a
-	jr nc, .nc
-	push af
-	ld a, 1
-	ld [hl], a
-	pop af
-.nc
+	jr nc, .noCarry
+	inc [hl]          ; [hDividend + 2] = 1
+.noCarry
 	inc hl
-	ldi [hl], a
+	ld [hli], a       ; [hDividend + 3] = 2 * e [256]
 
 ; Divide by 5
 	ld a, 5
-	ldd [hl], a
-	push bc
-	ld b, 4
+	ld [hld], a       ; [hDivisor] = 5
 	call Divide
-	pop bc
 
-; Add 2
+; Add 2 to [hDividend + 3]
 	inc [hl]
 	inc [hl]
-
-	inc hl ; multiplier
 
 ; Multiply by attack base power
-	ld [hl], d
+	inc hl
+	ld [hl], d        ; [hMultiplier] = d
 	call Multiply
 
 ; Multiply by attack stat
-	ld [hl], b
+	ld [hl], b        ; [hMultiplier] = b
 	call Multiply
 
 ; Divide by defender's defense stat
-	ld [hl], c
-	ld b, 4
+	ld [hl], c        ; [hDivisor] = c
 	call Divide
 
 ; Divide by 50
-	ld [hl], 50
-	ld b, 4
+	ld [hl], 50       ; [hDivisor] = 50
 	call Divide
 
 ; Update wCurDamage.
@@ -4957,7 +4936,7 @@ HandleCounterMove:
 ; if it did damage, double it
 	ld a, [hl]
 	add a
-	ldd [hl], a
+	ld [hld], a
 	ld a, [hl]
 	adc a
 	ld [hl], a
@@ -5320,7 +5299,7 @@ HandleBuildingRage:
 	call StatModifierUpEffect ; stat modifier raising function
 	pop hl
 	xor a
-	ldd [hl], a ; null move effect
+	ld [hld], a ; null move effect
 	ld a, RAGE
 	ld [hl], a ; restore the target pokemon's move number to Rage
 	ldh a, [hWhoseTurn]
@@ -5554,7 +5533,6 @@ AdjustDamageForMoveType:
 	call Multiply
 	ld a, 10
 	ldh [hDivisor], a
-	ld b, 4
 	call Divide
 	ldh a, [hQuotient + 2]
 	ld [hli], a
@@ -5563,7 +5541,6 @@ AdjustDamageForMoveType:
 	ld [hl], a
 	or b ; is damage 0?
 	jr nz, .skipTypeImmunity
-.typeImmunity
 ; if damage is 0, make the move miss
 ; this only occurs if a move that would do 2 or 3 damage is 0.25x effective against the target
 	inc a
@@ -5783,26 +5760,24 @@ CalcHitChance:
 	ldh [hDivisor], a ; set divisor to the the denominator of the ratio
 	                 ; (the dividend is the product of the previous multiplication)
 	call Divide
-	ld b, 4 ; number of bytes in the dividend
 	ldh a, [hQuotient + 3]
 	ld b, a
 	ldh a, [hQuotient + 2]
 	or b
-	jp nz, .nextCalculation
+	jr nz, .nextCalculation
 ; make sure the result is always at least one
-	ldh [hQuotient + 2], a
-	ld a, $01
+	inc a ; a = 1
 	ldh [hQuotient + 3], a
 .nextCalculation
 	ld b, c
 	dec d
 	jr nz, .loop
 	ldh a, [hQuotient + 2]
-	and a ; is the calculated hit chance over 0xFF?
+	and a ; is the calculated hit chance over $FF?
 	ldh a, [hQuotient + 3]
 	jr z, .storeAccuracy
-; if calculated hit chance over 0xFF
-	ld a, $ff ; set the hit chance to 0xFF
+; if calculated hit chance over $FF
+	ld a, $ff ; set the hit chance to $FF
 .storeAccuracy
 	pop hl
 	ld [hl], a ; store the hit chance in the move accuracy variable
@@ -5836,7 +5811,6 @@ RandomizeDamage:
 	ld a, 255
 	ldh [hDivisor], a
 	call Divide ; divide the result by 255
-	ld b, 4
 ; store the modified damage
 	ldh a, [hQuotient + 2]
 	ld hl, wDamage

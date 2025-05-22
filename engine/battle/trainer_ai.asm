@@ -720,11 +720,13 @@ AICheckIfHPBelowFraction:
 ; return carry if enemy trainer's current HP is below 1 / a of the maximum
 	ldh [hDivisor], a
 	ld hl, wEnemyMonMaxHP
-	ld a, [hli]
+	xor a
 	ldh [hDividend], a
-	ld a, [hl]
 	ldh [hDividend + 1], a
-	ld b, 2
+	ld a, [hli]
+	ldh [hDividend + 2], a
+	ld a, [hl]
+	ldh [hDividend + 3], a
 	call Divide
 	ldh a, [hQuotient + 3]
 	ld c, a
@@ -734,8 +736,6 @@ AICheckIfHPBelowFraction:
 	ld a, [hld]
 	ld e, a
 	ld a, [hl]
-	ld d, a
-	ld a, d
 	sub b
 	ret nz
 	ld a, e

@@ -74,13 +74,12 @@ UpdateStat: ; marcelnote - new subfunction
 	ld a, [hl]    ; a = denominator to divide with
 	ldh [hDivisor], a
 	call Divide   ; preserves all 16-bit registers
-	ld b, 4       ; number of bytes in the dividend
 	pop hl        ; restore hl = wBattleMon<Stat> + 1
 
-	ldh a, [hDividend + 3]
+	ldh a, [hQuotient + 3]
 	ld [hld], a   ; store low byte
 	sub LOW(MAX_STAT_VALUE)
-	ldh a, [hDividend + 2]
+	ldh a, [hQuotient + 2]
 	ld [hli], a   ; store high byte, hl -> low byte
 	sbc HIGH(MAX_STAT_VALUE) ; is the result ≥ MAX_STAT_VALUE (999)?
 	jr nc, .capAtMax         ; if yes, cap it at MAX_STAT_VALUE

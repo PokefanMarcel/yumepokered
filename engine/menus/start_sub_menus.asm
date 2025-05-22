@@ -236,14 +236,15 @@ StartMenu_Pokemon::
 	ld hl, wPartyMon1MaxHP
 	ld a, [wWhichPokemon]
 	ld bc, wPartyMon2 - wPartyMon1
-	call AddNTimes
-	ld a, [hli]
+	call AddNTimes         ; returns a = 0
 	ldh [hDividend], a
-	ld a, [hl]
 	ldh [hDividend + 1], a
+	ld a, [hli]
+	ldh [hDividend + 2], a
+	ld a, [hl]
+	ldh [hDividend + 3], a
 	ld a, 5
 	ldh [hDivisor], a
-	ld b, 2 ; number of bytes
 	call Divide
 	ld bc, wPartyMon1HP - wPartyMon1MaxHP
 	add hl, bc
@@ -254,7 +255,7 @@ StartMenu_Pokemon::
 	ld b, [hl]
 	ldh a, [hQuotient + 2]
 	sbc b
-	jp nc, .notHealthyEnough
+	jr nc, .notHealthyEnough
 	ld a, [wPartyAndBillsPCSavedMenuItem]
 	push af
 	ld a, POTION
@@ -265,20 +266,22 @@ StartMenu_Pokemon::
 	ld [wPartyAndBillsPCSavedMenuItem], a
 	jp .loop
 .notHealthyEnough ; if current HP is less than 1/5 of max HP
-	ld hl, .notHealthyEnoughText
+	ld hl, NotHealthyEnoughText
 	call PrintText
 	jp .loop
-.notHealthyEnoughText
-	text_far _NotHealthyEnoughText
-	text_end
 .goBackToMap
 	call RestoreScreenTilesAndReloadTilePatterns
 	jp CloseTextDisplay
 .newBadgeRequired
-	ld hl, .newBadgeRequiredText
+	ld hl, NewBadgeRequiredText
 	call PrintText
 	jp .loop
-.newBadgeRequiredText
+
+NotHealthyEnoughText:
+	text_far _NotHealthyEnoughText
+	text_end
+
+NewBadgeRequiredText:
 	text_far _NewBadgeRequiredText
 	text_end
 

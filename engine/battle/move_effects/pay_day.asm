@@ -19,7 +19,6 @@ PayDayEffect_:
 	ld a, 100
 	ldh [hDivisor], a
 	call Divide
-	ld b, 4
 	ldh a, [hQuotient + 3]
 	ld [hli], a         ; [wPayDayMoney + 1] = hundreds (low nibble)
 	; divide remainder by 10 to get tens digit
@@ -28,7 +27,6 @@ PayDayEffect_:
 	ld a, 10
 	ldh [hDivisor], a
 	call Divide
-	ld b, 4
 	ldh a, [hQuotient + 3]
 	swap a              ; high nibble = tens
 	ld b, a
@@ -37,7 +35,7 @@ PayDayEffect_:
 	add b
 	ld [hl], a          ; [wPayDayMoney + 2] = tens (upper nibble), units (lower nibble)
 	ld de, wTotalPayDayMoney + 2
-	ld c, $3            ; number of bytes to add
+	ld c, 3             ; number of bytes to add
 	predef AddBCDPredef ; add bytes at hl to bytes at de
 	ld hl, CoinsScatteredText
 	jp PrintText

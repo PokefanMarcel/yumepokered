@@ -68,7 +68,6 @@ GainExperience:
 	call Multiply
 	ld a, 7
 	ldh [hDivisor], a
-	ld b, 4
 	call Divide
 	ld hl, wPartyMon1OTID - (wPartyMon1DVs - 1)
 	add hl, de
@@ -323,11 +322,12 @@ DivideExpDataByNumMonsGainingExp:
 .divideLoop
 	xor a
 	ldh [hDividend], a
-	ld a, [hl]
 	ldh [hDividend + 1], a
+	ldh [hDividend + 2], a
+	ld a, [hl]
+	ldh [hDividend + 3], a
 	ld a, [wTempByteValue]
 	ldh [hDivisor], a
-	ld b, $2
 	call Divide ; divide value by number of mons gaining exp
 	ldh a, [hQuotient + 3]
 	ld [hli], a

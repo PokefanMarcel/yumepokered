@@ -7,12 +7,12 @@ GetHPBarLength:
 	push hl
 	xor a
 	ld hl, hMultiplicand
-	ld [hli], a
+	ld [hli], a        ; [hMultiplicand] = 0
 	ld a, b
-	ld [hli], a
+	ld [hli], a        ; [hMultiplicand + 1] = b
 	ld a, c
-	ld [hli], a
-	ld [hl], $30
+	ld [hli], a        ; [hMultiplicand + 2] = c
+	ld [hl], $30       ; [hMultiplier] = $30 = 48
 	call Multiply      ; 48 * bc (hp bar is 48 pixels long)
 	ld a, d
 	and a
@@ -21,27 +21,26 @@ GetHPBarLength:
 	rr e
 	srl d
 	rr e
-	ldh a, [hMultiplicand+1]
+	ldh a, [hMultiplicand + 1]
 	ld b, a
-	ldh a, [hMultiplicand+2]
+	ldh a, [hMultiplicand + 2]
 	srl b              ; divide multiplication result as well
 	rra
 	srl b
-	ldh [hMultiplicand+2], a
 	rra
+	ldh [hMultiplicand + 2], a
 	ld a, b
-	ldh [hMultiplicand+1], a
+	ldh [hMultiplicand + 1], a
 .maxHPSmaller256
 	ld a, e
 	ldh [hDivisor], a
 	call Divide
-	ldh a, [hMultiplicand+2]
-	ld b, 4 ; could be 3
+	ldh a, [hQuotient + 3]
 	ld e, a            ; e = bc * 48 / de (num of pixels of HP bar)
 	pop hl
 	and a
 	ret nz
-	ld e, $1           ; make result at least 1
+	inc e              ; make result at least 1
 	ret
 
 ; predef $48

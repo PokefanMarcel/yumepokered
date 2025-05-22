@@ -289,7 +289,6 @@ ItemUseBall:
 
 ; Calculate (MaxHP * 255) / BallFactor.
 	ldh [hDivisor], a
-	ld b, 4 ; number of bytes in dividend
 	call Divide
 
 ; Divide the enemy's current HP by 4. HP is not supposed to exceed 999 so
@@ -310,7 +309,6 @@ ItemUseBall:
 .skip2
 ; Let W = ((MaxHP * 255) / BallFactor) / max(HP / 4, 1). Calculate W.
 	ldh [hDivisor], a
-	ld b, 4
 	call Divide
 
 ; If W > 255, store 255 in [hQuotient + 3].
@@ -380,7 +378,6 @@ ItemUseBall:
 ; Let Y = (CatchRate * 100) / BallFactor2. Calculate Y.
 	ld a, b
 	ldh [hDivisor], a
-	ld b, 4
 	call Divide
 
 ; If Y > 255, there are 3 shakes.
@@ -399,7 +396,6 @@ ItemUseBall:
 ; Calculate (X * Y) / 255.
 	ld a, 255
 	ldh [hDivisor], a
-	ld b, 4
 	call Divide
 
 ; Determine Status2.
@@ -1051,13 +1047,15 @@ ItemUseMedicine:
 	call AddNTimes
 	ld a, [hli]
 	ld [wHPBarMaxHP + 1], a
-	ldh [hDividend], a
+	ldh [hDividend + 2], a
 	ld a, [hl]
 	ld [wHPBarMaxHP], a
+	ldh [hDividend + 3], a
+	xor a
+	ldh [hDividend], a
 	ldh [hDividend + 1], a
 	ld a, 5
 	ldh [hDivisor], a
-	ld b, 2 ; number of bytes
 	call Divide ; get 1/5 of max HP of pokemon that used Softboiled
 	ld bc, (wPartyMon1HP + 1) - (wPartyMon1MaxHP + 1)
 	add hl, bc ; hl now points to LSB of current HP of pokemon that used Softboiled
@@ -2513,7 +2511,6 @@ AddBonusPP:
 	ldh [hDividend + 2], a
 	ld a, 5
 	ldh [hDivisor], a
-	ld b, 4
 	call Divide
 	ld a, [hl] ; move PP
 	ld b, a
