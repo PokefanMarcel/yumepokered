@@ -300,9 +300,9 @@ ItemUseBall:
 	ld b, a
 	ld a, [hl]
 	srl b
-	rr a
+	rra
 	srl b
-	rr a
+	rra
 	and a
 	jr nz, .skip2
 	inc a
@@ -1166,7 +1166,7 @@ ItemUseMedicine:
 	ld [de], a
 	ld [wHPBarNewHP+1], a
 	ld a, [hl]
-	rr a
+	rra
 	inc de
 	ld [de], a
 	ld [wHPBarNewHP], a

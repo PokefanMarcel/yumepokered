@@ -4,11 +4,11 @@
 GetRowColAddressBgMap::
 	xor a
 	srl h
-	rr a
+	rra
 	srl h
-	rr a
+	rra
 	srl h
-	rr a
+	rra
 	or l
 	ld l, a
 	ld a, b
