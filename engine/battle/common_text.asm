@@ -122,7 +122,6 @@ PrintSendOutMonMessage:
 	srl a
 	rr b
 	ld a, b
-	ld b, 4
 	ldh [hDivisor], a ; enemy mon max HP divided by 4
 	call Divide
 	ldh a, [hQuotient + 3] ; a = (enemy mon current HP * 25) / (enemy max HP / 4); this approximates the current percentage of max HP
@@ -177,8 +176,8 @@ PlayerMon2Text:
 	push bc
 	ld hl, wEnemyMonHP + 1
 	ld de, wLastSwitchInEnemyMonHP + 1
-	ld b, [hl]
-	dec hl
+	ld a, [hld]
+	ld b, a
 	ld a, [de]
 	sub b
 	ldh [hMultiplicand + 2], a
@@ -192,13 +191,12 @@ PlayerMon2Text:
 	call Multiply
 	ld hl, wEnemyMonMaxHP
 	ld a, [hli]
-	ld b, [hl]
-	srl a
-	rr b
-	srl a
-	rr b
-	ld a, b
-	ld b, 4
+	ld b, a
+	ld a, [hl]
+	srl b
+	rra
+	srl b
+	rra
 	ldh [hDivisor], a
 	call Divide
 	pop bc

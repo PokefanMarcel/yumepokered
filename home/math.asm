@@ -1,10 +1,10 @@
 ; function to do multiplication
 ; all values are big endian
-; INPUT
-; FF96-FF98 =  multiplicand
-; FF99 = multiplier
+; INPUTS
+; [hMultiplicand] to [hMultiplicand + 2] (3 bytes)
+; [hMultiplier] (1 byte)
 ; OUTPUT
-; FF95-FF98 = product
+; [hProduct] to [hProduct + 3] (4 bytes)
 Multiply::
 	push hl
 	push de
@@ -18,12 +18,11 @@ Multiply::
 ; function to do division
 ; all values are big endian
 ; INPUT
-; FF95-FF98 = dividend
-; FF99 = divisor
-; b = number of bytes in the dividend (starting from FF95)
+; [hDividend] to [hDividend + 3] (4 bytes)
+; [hDivisor] (1 byte)
 ; OUTPUT
-; FF95-FF98 = quotient
-; FF99 = remainder
+; [hQuotient] to [hQuotient + 3] (4 bytes)
+; [hRemainder] (1 byte)
 Divide::
 	push hl
 	push de

@@ -56,29 +56,26 @@ CalcStat::
 	push de
 	push bc
 	ld a, b
-	ld d, a
 	push hl
 	ld hl, wMonHeader
 	ld b, $0
 	add hl, bc
-	ld a, [hl]          ; read base value of stat
-	ld e, a
+	ld e, [hl]          ; read base value of stat
 	pop hl
 	push hl
 	sla c
-	ld a, d
 	and a
 	jr z, .statExpDone  ; consider stat exp?
 	add hl, bc          ; skip to corresponding stat exp value
 .statExpLoop            ; calculates ceil(Sqrt(stat exp)) in b
 	xor a
 	ldh [hMultiplicand], a
-	ldh [hMultiplicand+1], a
+	ldh [hMultiplicand + 1], a
 	inc b               ; increment current stat exp bonus
 	ld a, b
 	cp $ff
 	jr z, .statExpDone
-	ldh [hMultiplicand+2], a
+	ldh [hMultiplicand + 2], a
 	ldh [hMultiplier], a
 	call Multiply
 	ld a, [hld]
@@ -167,24 +164,17 @@ CalcStat::
 	jr nc, .noCarry2
 	inc d                     ; de = (Base + IV) * 2 + ceil(Sqrt(stat exp)) / 4
 .noCarry2
-	ldh [hMultiplicand+2], a
+	ldh [hMultiplicand + 2], a
 	ld a, d
-	ldh [hMultiplicand+1], a
+	ldh [hMultiplicand + 1], a
 	xor a
 	ldh [hMultiplicand], a
 	ld a, [wCurEnemyLevel]
 	ldh [hMultiplier], a
-	call Multiply            ; ((Base + IV) * 2 + ceil(Sqrt(stat exp)) / 4) * Level
-	ldh a, [hMultiplicand]
-	ldh [hDividend], a
-	ldh a, [hMultiplicand+1]
-	ldh [hDividend+1], a
-	ldh a, [hMultiplicand+2]
-	ldh [hDividend+2], a
+	call Multiply             ; ((Base + IV) * 2 + ceil(Sqrt(stat exp)) / 4) * Level
 	ld a, $64
 	ldh [hDivisor], a
-	call Divide             ; (((Base + IV) * 2 + ceil(Sqrt(stat exp)) / 4) * Level) / 100
-	ld b, 3
+	call Divide               ; (((Base + IV) * 2 + ceil(Sqrt(stat exp)) / 4) * Level) / 100
 	ld a, c
 	cp $1
 	ld a, 5 ; + 5 for non-HP stat

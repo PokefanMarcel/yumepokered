@@ -49,7 +49,6 @@ CalcExperience::
 	and $f
 	ldh [hDivisor], a
 	call Divide
-	ld b, 4
 	ldh a, [hQuotient + 1]
 	push af
 	ldh a, [hQuotient + 2]

@@ -34,27 +34,19 @@ LoadMissableObjects:
 ;;;;;;
 	ld a, l
 	sub e
-	jr nc, .noCarry
-	dec h
-.noCarry
-	ld l, a
+	ldh [hDividend + 3], a
 	ld a, h
-	sub d
-	ld h, a
-	ld a, h
-	ldh [hDividend], a
-	ld a, l
-	ldh [hDividend+1], a
+	sbc d
+	ldh [hDividend + 2], a
 	xor a
-	ldh [hDividend+2], a
-	ldh [hDividend+3], a
+	ldh [hDividend], a
+	ldh [hDividend + 1], a
 	ld a, $3
 	ldh [hDivisor], a
-	call Divide                ; divide difference by 3, resulting in the global offset (number of missable items before ours)
-	ld b, 2
+	call Divide                ; divide difference by 3, resulting in the global offset (number of missable items before ours) ; TO CHECK !!!
 	ld a, [wCurMap]
 	ld b, a
-	ldh a, [hDividend+3]
+	ldh a, [hQuotient + 3]
 	ld c, a                    ; store global offset in c
 	ld de, wMissableObjectList
 	pop hl
