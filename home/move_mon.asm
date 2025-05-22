@@ -36,10 +36,10 @@ CalcStats::
 .statsLoop
 	inc c
 	call CalcStat
-	ldh a, [hMultiplicand+1]
+	ldh a, [hMultiplicand + 1]
 	ld [de], a
 	inc de
-	ldh a, [hMultiplicand+2]
+	ldh a, [hMultiplicand + 2]
 	ld [de], a
 	inc de
 	ld a, c
@@ -55,29 +55,31 @@ CalcStat::
 	push hl
 	push de
 	push bc
-	ld a, b
-	push hl
+	ld a, b             ; a = consider stat exp?
+	push hl             ; save hl = base pointer to stat exp values
 	ld hl, wMonHeader
 	ld b, $0
-	add hl, bc
-	ld e, [hl]          ; read base value of stat
-	pop hl
-	push hl
-	sla c
+	add hl, bc          ; hl = wMonHBase<Stat>
+	ld e, [hl]          ; e = base value of stat
+	pop hl              ; restore hl = base pointer to stat exp values
+	push hl             ; save hl = base pointer to stat exp values
 	and a
 	jr z, .statExpDone  ; consider stat exp?
-	add hl, bc          ; skip to corresponding stat exp value
+	sla c
+	add hl, bc          ; move hl to corresponding stat exp value
+	srl c
 .statExpLoop            ; calculates ceil(Sqrt(stat exp)) in b
 	xor a
 	ldh [hMultiplicand], a
 	ldh [hMultiplicand + 1], a
-	inc b               ; increment current stat exp bonus
+	inc b               ; increment current stat exp bonus starting from 0
 	ld a, b
 	cp $ff
 	jr z, .statExpDone
 	ldh [hMultiplicand + 2], a
 	ldh [hMultiplier], a
-	call Multiply
+	call Multiply       ; compute a^2
+; test if (current stat exp bonus)^2 < stat exp
 	ld a, [hld]
 	ld d, a
 	ldh a, [hProduct + 3]
@@ -85,15 +87,14 @@ CalcStat::
 	ld a, [hli]
 	ld d, a
 	ldh a, [hProduct + 2]
-	sbc d               ; test if (current stat exp bonus)^2 < stat exp
+	sbc d
 	jr c, .statExpLoop
 .statExpDone
-	srl c
-	pop hl
-	push bc
+	pop hl              ; restore hl = base pointer to stat exp values
+	push bc             ; save b = stat exp bonus, c = stat offset (1 to 5)
 	ld bc, wPartyMon1DVs - (wPartyMon1HPExp - 1) ; also wEnemyMonDVs - wEnemyMonHP
 	add hl, bc
-	pop bc
+	pop bc              ; restore b = stat exp bonus, c = stat offset (1 to 5)
 	ld a, c
 	cp $2
 	jr z, .getAttackIV
@@ -103,67 +104,60 @@ CalcStat::
 	jr z, .getSpeedIV
 	cp $5
 	jr z, .getSpecialIV
-.getHpIV
-	push bc
+.getHpIV ; c = $1
 	ld a, [hl]  ; Atk IV
 	swap a
 	and $1
-	sla a
-	sla a
-	sla a
-	ld b, a
+	ld d, a     ; d = LSB of Atk IV
+
 	ld a, [hli] ; Def IV
-	and $1
-	sla a
-	sla a
-	add b
-	ld b, a
-	ld a, [hl] ; Spd IV
+	rra
+	rl d        ; rotate LSB of Def IV into d
+
+	ld a, [hl]  ; Spd IV
 	swap a
-	and $1
-	sla a
-	add b
-	ld b, a
-	ld a, [hl] ; Spc IV
-	and $1
-	add b      ; HP IV: LSB of the other 4 IVs
-	pop bc
+	rra
+	rl d        ; rotate LSB of Spd IV into d
+
+	ld a, [hl]  ; Spc IV
+	rra
+	rl d        ; rotate LSB of Spc IV into d
+
+	ld a, d     ; HP IV: Least Significant Bit of the other 4 IVs (Atk|Def|Spd|Spc)
 	jr .calcStatFromIV
 .getAttackIV
-	ld a, [hl]
+	ld a, [hl] ; Atk IV (high nibble)
 	swap a
 	and $f
 	jr .calcStatFromIV
 .getDefenseIV
-	ld a, [hl]
+	ld a, [hl] ; Def IV (low nibble)
 	and $f
 	jr .calcStatFromIV
 .getSpeedIV
 	inc hl
-	ld a, [hl]
+	ld a, [hl] ; Spd IV (high nibble)
 	swap a
 	and $f
 	jr .calcStatFromIV
 .getSpecialIV
 	inc hl
-	ld a, [hl]
+	ld a, [hl] ; Spc IV (low nibble)
 	and $f
 .calcStatFromIV
 	ld d, $0
-	add e
-	ld e, a
+	add e                     ; a = Stat IV + base stat
 	jr nc, .noCarry
-	inc d                     ; de = Base + IV
+	inc d                     ; da = Base + IV
 .noCarry
-	sla e
-	rl d                      ; de = (Base + IV) * 2
+	sla a
+	rl d                      ; da = 2 * (Base + IV)
 	srl b
 	srl b                     ; b = ceil(Sqrt(stat exp)) / 4
-	ld a, b
-	add e
+	add b
 	jr nc, .noCarry2
-	inc d                     ; de = (Base + IV) * 2 + ceil(Sqrt(stat exp)) / 4
-.noCarry2
+	inc d
+.noCarry2                     ; da = 2 * (Base + IV) + ceil(Sqrt(stat exp)) / 4
 	ldh [hMultiplicand + 2], a
 	ld a, d
 	ldh [hMultiplicand + 1], a
@@ -172,47 +166,33 @@ CalcStat::
 	ld a, [wCurEnemyLevel]
 	ldh [hMultiplier], a
 	call Multiply             ; ((Base + IV) * 2 + ceil(Sqrt(stat exp)) / 4) * Level
-	ld a, $64
+	ld a, 100
 	ldh [hDivisor], a
 	call Divide               ; (((Base + IV) * 2 + ceil(Sqrt(stat exp)) / 4) * Level) / 100
-	ld a, c
-	cp $1
+	dec c                     ; c = stat offset (1 to 5), are we calculating HP stat?
 	ld a, 5 ; + 5 for non-HP stat
 	jr nz, .notHPStat
 	ld a, [wCurEnemyLevel]
-	ld b, a
-	ldh a, [hMultiplicand+2]
-	add b
-	ldh [hMultiplicand+2], a
-	jr nc, .noCarry3
-	ldh a, [hMultiplicand+1]
-	inc a
-	ldh [hMultiplicand+1], a ; HP: (((Base + IV) * 2 + ceil(Sqrt(stat exp)) / 4) * Level) / 100 + Level
-.noCarry3
-	ld a, 10 ; +10 for HP stat
+	add 10  ; + Level + 10 for HP stat
 .notHPStat
 	ld b, a
-	ldh a, [hMultiplicand+2]
+	ldh a, [hQuotient + 3]
 	add b
-	ldh [hMultiplicand+2], a
-	jr nc, .noCarry4
-	ldh a, [hMultiplicand+1]
-	inc a                    ; non-HP: (((Base + IV) * 2 + ceil(Sqrt(stat exp)) / 4) * Level) / 100 + 5
-	ldh [hMultiplicand+1], a ; HP: (((Base + IV) * 2 + ceil(Sqrt(stat exp)) / 4) * Level) / 100 + Level + 10
-.noCarry4
-	ldh a, [hMultiplicand+1] ; check for overflow (>999)
-	cp HIGH(MAX_STAT_VALUE) + 1
-	jr nc, .overflow
-	cp HIGH(MAX_STAT_VALUE)
+	ldh [hQuotient + 3], a
+	jr nc, .noCarry3
+	ldh a, [hQuotient + 2]
+	inc a                     ; non-HP: (((Base + IV) * 2 + ceil(Sqrt(stat exp)) / 4) * Level) / 100 + 5
+	ldh [hQuotient + 2], a    ; HP: (((Base + IV) * 2 + ceil(Sqrt(stat exp)) / 4) * Level) / 100 + Level + 10
+.noCarry3
+	ldh a, [hQuotient + 3]    ; check for overflow (> MAX_STAT_VALUE = 999)
+	sub LOW(MAX_STAT_VALUE) + 1
+	ldh a, [hQuotient + 2]
+	sbc HIGH(MAX_STAT_VALUE)
 	jr c, .noOverflow
-	ldh a, [hMultiplicand+2]
-	cp LOW(MAX_STAT_VALUE) + 1
-	jr c, .noOverflow
-.overflow
 	ld a, HIGH(MAX_STAT_VALUE) ; overflow: cap at 999
-	ldh [hMultiplicand+1], a
+	ldh [hQuotient + 2], a
 	ld a, LOW(MAX_STAT_VALUE)
-	ldh [hMultiplicand+2], a
+	ldh [hQuotient + 3], a
 .noOverflow
 	pop bc
 	pop de
