@@ -18,8 +18,8 @@ PayDayEffect_:
 	; divide 2*level by 100 to get hundreds digit
 	ld a, 100
 	ldh [hDivisor], a
-	ld b, $4
 	call Divide
+	ld b, 4
 	ldh a, [hQuotient + 3]
 	ld [hli], a         ; [wPayDayMoney + 1] = hundreds (low nibble)
 	; divide remainder by 10 to get tens digit
@@ -27,8 +27,8 @@ PayDayEffect_:
 	ldh [hDividend + 3], a
 	ld a, 10
 	ldh [hDivisor], a
-	ld b, $4
 	call Divide
+	ld b, 4
 	ldh a, [hQuotient + 3]
 	swap a              ; high nibble = tens
 	ld b, a

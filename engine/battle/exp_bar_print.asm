@@ -225,8 +225,8 @@ CalcEXPBarPixelLength:
 	ld a, [wEXPBarNeededEXP + 2]
 	ldh [hDivisor], a
 	call .noDivZero	;joenote - do not allow a divisor of 0
-	ld b, $04
 	jp Divide
+	ld b, 4
 .noDivZero
 	ld a, [wEXPBarNeededEXP + 2]
 	ld b, a

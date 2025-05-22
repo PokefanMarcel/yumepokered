@@ -34,9 +34,9 @@ GetHPBarLength:
 .maxHPSmaller256
 	ld a, e
 	ldh [hDivisor], a
-	ld b, $4
 	call Divide
 	ldh a, [hMultiplicand+2]
+	ld b, 4 ; could be 3
 	ld e, a            ; e = bc * 48 / de (num of pixels of HP bar)
 	pop hl
 	and a

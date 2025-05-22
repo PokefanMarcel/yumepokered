@@ -2007,9 +2007,8 @@ DrawEnemyHUDAndHPBar:
 	ldh [hDividend], a
 	ldh a, [hProduct + 3]
 	ldh [hDividend + 1], a
-	ld a, $2
-	ld b, a
 	call Divide ; divide (current HP * 48) by max HP
+	ld b, 2
 	ldh a, [hQuotient + 3]
 ; set variables for DrawHPBar
 	ld e, a
@@ -5783,8 +5782,8 @@ CalcHitChance:
 	ld a, [hl]
 	ldh [hDivisor], a ; set divisor to the the denominator of the ratio
 	                 ; (the dividend is the product of the previous multiplication)
-	ld b, $04 ; number of bytes in the dividend
 	call Divide
+	ld b, 4 ; number of bytes in the dividend
 	ldh a, [hQuotient + 3]
 	ld b, a
 	ldh a, [hQuotient + 2]
@@ -5836,8 +5835,8 @@ RandomizeDamage:
 	call Multiply ; multiply damage by the random number, which is in the range [217, 255]
 	ld a, 255
 	ldh [hDivisor], a
-	ld b, $4
 	call Divide ; divide the result by 255
+	ld b, 4
 ; store the modified damage
 	ldh a, [hQuotient + 2]
 	ld hl, wDamage

@@ -73,8 +73,8 @@ UpdateStat: ; marcelnote - new subfunction
 	call Multiply ; preserves all 16-bit registers
 	ld a, [hl]    ; a = denominator to divide with
 	ldh [hDivisor], a
-	ld b, $4      ; number of bytes in the dividend
 	call Divide   ; preserves all 16-bit registers
+	ld b, 4       ; number of bytes in the dividend
 	pop hl        ; restore hl = wBattleMon<Stat> + 1
 
 	ldh a, [hDividend + 3]

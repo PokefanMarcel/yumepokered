@@ -183,9 +183,8 @@ CalcStat::
 	ldh [hDividend+2], a
 	ld a, $64
 	ldh [hDivisor], a
-	ld a, $3
-	ld b, a
 	call Divide             ; (((Base + IV) * 2 + ceil(Sqrt(stat exp)) / 4) * Level) / 100
+	ld b, 3
 	ld a, c
 	cp $1
 	ld a, 5 ; + 5 for non-HP stat
