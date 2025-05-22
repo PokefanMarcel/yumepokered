@@ -26,22 +26,29 @@ _Multiply:: ; marcelnote - adapted from polishedcrystal
 	jr nc, .next          ; if not, just multiply dehl by 2
 
 	; else, add dehl to result before multiplying it by 2
-	ld c, a               ; store multiplier in c
+	ld b, a               ; store multiplier in b
 
-	ldh a, [hProduct + 3]
+	ld c, LOW(hProduct + 3)
+	ldh a, [c]
 	add l
-	ldh [hProduct + 3], a
-	ldh a, [hProduct + 2]
-	adc h
-	ldh [hProduct + 2], a
-	ldh a, [hProduct + 1]
-	adc e
-	ldh [hProduct + 1], a
-	ldh a, [hProduct]
-	adc d
-	ldh [hProduct], a
+	ldh [c], a
 
-	ld a, c               ; retrieve multiplier
+	dec c ; c = LOW(hProduct + 2)
+	ldh a, [c]
+	adc h
+	ldh [c], a
+
+	dec c ; c = LOW(hProduct + 1)
+	ldh a, [c]
+	adc e
+	ldh [c], a
+
+	dec c ; c = LOW(hProduct)
+	ldh a, [c]
+	adc d
+	ldh [c], a
+
+	ld a, b               ; retrieve multiplier
 
 .next
 	add hl, hl            ; multiply hl by 2
