@@ -136,18 +136,19 @@ _Divide:: ; marcelnote - adapted from polishedcrystal
 	ret
 
 
-; This version takes low byte of dividend from [hDividend + 3] no matter b
+; This version always takes low byte of dividend from [hDividend + 3]
 _DivAlt:: ; marcelnote - adapted from polishedcrystal
-; Divide hDividend length b (max 4 bytes) by hDivisor (1 byte). Result in hQuotient.
+; Divide hDividend (4 bytes) by hDivisor (1 byte). Result in hQuotient.
 ; All values are big endian.
 	ldh a, [hDivisor]
 	and a ; is divisor 0?
 	ret z ; here Polished Crystal had an error crash
 
 	ld d, a              ; d = divisor
-	ld c, LOW(hDividend) ; to use ldh a, [c]
+	ld c, LOW(hDividend) ; address tracker to use ldh a, [c]
 	ld e, 0              ; e = remainder
 
+; first check if we can skip high bytes equal to 0
 	ld b, 4              ; number of bytes to check
 .skipZeros
 	ldh a, [c]           ; a = [hDividend + nByte], next dividend byte
