@@ -1597,9 +1597,9 @@ TryRunningFromBattle:
 	ldh a, [hEnemySpeed + 1]
 ; divide enemy speed by 4
 	srl b
-	rr a
+	rra
 	srl b
-	rr a
+	rra
 	and a
 	jr z, .canEscape ; jump if enemy speed divided by 4, mod 256 is 0
 	ldh [hDivisor], a ; ((enemy speed / 4) % 256)
@@ -1988,17 +1988,17 @@ DrawEnemyHUDAndHPBar:
 ; (it needs to be one byte so it can be used as the divisor for the Divide function)
 	ldh a, [hDivisor]
 	srl b
-	rr a
+	rra
 	srl b
-	rr a
+	rra
 	ldh [hDivisor], a
 	ldh a, [hProduct + 2]
 	ld b, a
 	srl b
 	ldh a, [hProduct + 3]
-	rr a
+	rra
 	srl b
-	rr a
+	rra
 	ldh [hProduct + 3], a
 	ld a, b
 	ldh [hProduct + 2], a
@@ -4996,7 +4996,7 @@ ApplyAttackToEnemyPokemon:
 	inc de
 	ld b, a
 	ld a, [hl]
-	rr a
+	rra
 	ld [de], a
 	or b
 	jr nz, ApplyDamageToEnemyPokemon
@@ -5120,7 +5120,7 @@ ApplyAttackToPlayerPokemon:
 	inc de
 	ld b, a
 	ld a, [hl]
-	rr a
+	rra
 	ld [de], a
 	or b
 	jr nz, ApplyDamageToPlayerPokemon

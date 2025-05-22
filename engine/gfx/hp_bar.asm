@@ -25,10 +25,10 @@ GetHPBarLength:
 	ld b, a
 	ldh a, [hMultiplicand+2]
 	srl b              ; divide multiplication result as well
-	rr a
+	rra
 	srl b
-	rr a
 	ldh [hMultiplicand+2], a
+	rra
 	ld a, b
 	ldh [hMultiplicand+1], a
 .maxHPSmaller256
