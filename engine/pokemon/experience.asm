@@ -48,8 +48,8 @@ CalcExperience::
 	ld a, [hli]
 	and $f
 	ldh [hDivisor], a
-	ld b, $4
 	call Divide
+	ld b, 4
 	ldh a, [hQuotient + 1]
 	push af
 	ldh a, [hQuotient + 2]

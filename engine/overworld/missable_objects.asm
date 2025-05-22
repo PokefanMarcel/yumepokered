@@ -50,8 +50,8 @@ LoadMissableObjects:
 	ldh [hDividend+3], a
 	ld a, $3
 	ldh [hDivisor], a
-	ld b, $2
 	call Divide                ; divide difference by 3, resulting in the global offset (number of missable items before ours)
+	ld b, 2
 	ld a, [wCurMap]
 	ld b, a
 	ldh a, [hDividend+3]
