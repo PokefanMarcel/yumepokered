@@ -5347,6 +5347,31 @@ MirrorMoveFailedText:
 	text_far _MirrorMoveFailedText
 	text_end
 
+
+MetronomePickMove:
+	xor a
+	ld [wAnimationType], a
+	ld a, METRONOME
+	call PlayMoveAnimation
+	ldh a, [hWhoseTurn]
+	and a
+	ld de, wPlayerMoveNum ; for FarCopyData
+	ld hl, wPlayerSelectedMove
+	jr z, .pickMoveLoop ; jump on player's turn
+	ld de, wEnemyMoveNum  ; for FarCopyData
+	ld hl, wEnemySelectedMove
+.pickMoveLoop
+	call BattleRandom
+	and a
+	jr z, .pickMoveLoop
+	cp STRUGGLE          ; is a >= STRUGGLE?
+	ASSERT NUM_ATTACKS == STRUGGLE ; STRUGGLE is last move
+	jr nc, .pickMoveLoop ; if yes, try again
+	cp METRONOME         ; not allowed to pick METRONOME either
+	jr z, .pickMoveLoop
+	ld [hl], a
+	; fallthrough
+
 ; function used to reload move data for moves like Mirror Move and Metronome
 ReloadMoveData:
 	ld [wNamedObjectIndex], a
@@ -5360,37 +5385,8 @@ ReloadMoveData:
 ; the follow two function calls are used to reload the move name
 	call GetMoveName
 	call CopyToStringBuffer
-	ld a, $01
-	and a
+	or $1
 	ret
-
-; function that picks a random move for metronome
-MetronomePickMove:
-	xor a
-	ld [wAnimationType], a
-	ld a, METRONOME
-	call PlayMoveAnimation ; play Metronome's animation
-; values for player turn
-	ld de, wPlayerMoveNum
-	ld hl, wPlayerSelectedMove
-	ldh a, [hWhoseTurn]
-	and a
-	jr z, .pickMoveLoop
-; values for enemy turn
-	ld de, wEnemyMoveNum
-	ld hl, wEnemySelectedMove
-; loop to pick a random number in the range of valid moves used by Metronome
-.pickMoveLoop
-	call BattleRandom
-	and a
-	jr z, .pickMoveLoop
-	cp STRUGGLE
-	ASSERT NUM_ATTACKS == STRUGGLE ; random numbers greater than STRUGGLE are not moves
-	jr nc, .pickMoveLoop
-	cp METRONOME
-	jr z, .pickMoveLoop
-	ld [hl], a
-	jr ReloadMoveData
 
 ; this function increments the current move's PP
 ; it's used to prevent moves that run another move within the same turn
