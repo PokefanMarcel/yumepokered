@@ -55,46 +55,46 @@ CalcStat::
 	push hl
 	push de
 	push bc
+
+; get stat exp bonus
+	push hl             ; save hl = base pointer to stat exp values
 	ld a, b             ; a = consider stat exp?
-	push hl             ; save hl = base pointer to stat exp values
-	ld hl, wMonHeader
-	ld b, $0
-	add hl, bc          ; hl = wMonHBase<Stat>
-	ld e, [hl]          ; e = base value of stat
-	pop hl              ; restore hl = base pointer to stat exp values
-	push hl             ; save hl = base pointer to stat exp values
 	and a
-	jr z, .statExpDone  ; consider stat exp?
+	jr z, .statExpDone  ; consider stat exp? if not, b = 0
 	sla c
 	add hl, bc          ; move hl to corresponding stat exp value
 	srl c
-.statExpLoop            ; calculates ceil(Sqrt(stat exp)) in b
-	xor a
-	ldh [hMultiplicand], a
-	ldh [hMultiplicand + 1], a
-	inc b               ; increment current stat exp bonus starting from 0
-	ld a, b
-	cp $ff
-	jr z, .statExpDone
-	ldh [hMultiplicand + 2], a
-	ldh [hMultiplier], a
-	call Multiply       ; compute a^2
-; test if (current stat exp bonus)^2 < stat exp
 	ld a, [hld]
-	ld d, a
-	ldh a, [hProduct + 3]
-	sub d
-	ld a, [hli]
-	ld d, a
-	ldh a, [hProduct + 2]
-	sbc d
-	jr c, .statExpLoop
-.statExpDone
+	ld h, [hl]
+	ld l, a             ; hl = S = stat exp
+; calculate stat exp bonus = ceil(Sqrt(stat exp)) in b
+	ld b, 0             ; to start at b = 1
+	ld de, 1            ; to start at de = -1
+.sqrtLoop ; use the formula n^2 = 1 + 3 + 5 + ... + (2n-1)
+	inc b
+	dec e               ; dec de, but de is odd
+	dec de              ; de = -1, -3, -5...
+	add hl, de
+	jr nc, .statExpDone ; carry means S - 1 - 3 - ... - (2b-1) ≥ 0
+	ld a, h             ; hl = 0? if yes S = b^2 is a perfect square
+	or l
+	jr nz, .sqrtLoop
+.statExpDone            ; b = ceil(Sqrt(stat exp))
 	pop hl              ; restore hl = base pointer to stat exp values
-	push bc             ; save b = stat exp bonus, c = stat offset (1 to 5)
-	ld bc, wPartyMon1DVs - (wPartyMon1HPExp - 1) ; also wEnemyMonDVs - wEnemyMonHP
-	add hl, bc
-	pop bc              ; restore b = stat exp bonus, c = stat offset (1 to 5)
+
+; get base stat
+	push hl
+	ld hl, wMonHeader
+	ld d, $0
+	ld e, c
+	add hl, de          ; hl = wMonHBase<Stat>
+	ld a, [hl]          ; a = base value of stat
+	pop hl
+
+; get stat IV
+	ld de, wPartyMon1DVs - (wPartyMon1HPExp - 1) ; also wEnemyMonDVs - wEnemyMonHP
+	add hl, de
+	ld e, a             ; e = base value of stat
 	ld a, c
 	cp $2
 	jr z, .getAttackIV
@@ -126,38 +126,38 @@ CalcStat::
 	ld a, d     ; HP IV: Least Significant Bit of the other 4 IVs (Atk|Def|Spd|Spc)
 	jr .calcStatFromIV
 .getAttackIV
-	ld a, [hl] ; Atk IV (high nibble)
+	ld a, [hl]  ; Atk IV (high nibble)
 	swap a
 	and $f
 	jr .calcStatFromIV
 .getDefenseIV
-	ld a, [hl] ; Def IV (low nibble)
+	ld a, [hl]  ; Def IV (low nibble)
 	and $f
 	jr .calcStatFromIV
 .getSpeedIV
 	inc hl
-	ld a, [hl] ; Spd IV (high nibble)
+	ld a, [hl]  ; Spd IV (high nibble)
 	swap a
 	and $f
 	jr .calcStatFromIV
 .getSpecialIV
 	inc hl
-	ld a, [hl] ; Spc IV (low nibble)
+	ld a, [hl]  ; Spc IV (low nibble)
 	and $f
 .calcStatFromIV
 	ld d, $0
-	add e                     ; a = Stat IV + base stat
-	jr nc, .noCarry
-	inc d                     ; da = Base + IV
-.noCarry
+	add e                     ; a = stat IV + base stat (missing carry)
+	jr nc, .addedBaseStat
+	inc d                     ; da = stat IV + base stat
+.addedBaseStat
 	sla a
 	rl d                      ; da = 2 * (Base + IV)
 	srl b
 	srl b                     ; b = ceil(Sqrt(stat exp)) / 4
 	add b
-	jr nc, .noCarry2
-	inc d
-.noCarry2                     ; da = 2 * (Base + IV) + ceil(Sqrt(stat exp)) / 4
+	jr nc, .addedStatExp
+	inc d                     ; da = 2 * (Base + IV) + ceil(Sqrt(stat exp)) / 4
+.addedStatExp
 	ldh [hMultiplicand + 2], a
 	ld a, d
 	ldh [hMultiplicand + 1], a
@@ -165,11 +165,11 @@ CalcStat::
 	ldh [hMultiplicand], a
 	ld a, [wCurEnemyLevel]
 	ldh [hMultiplier], a
-	call Multiply             ; ((Base + IV) * 2 + ceil(Sqrt(stat exp)) / 4) * Level
+	call Multiply             ; [2 * (Base + IV) + ceil(Sqrt(stat exp)) / 4] * Level
 	ld a, 100
 	ldh [hDivisor], a
-	call Divide               ; (((Base + IV) * 2 + ceil(Sqrt(stat exp)) / 4) * Level) / 100
-	dec c                     ; c = stat offset (1 to 5), are we calculating HP stat?
+	call Divide               ; [2 * (Base + IV) + ceil(Sqrt(stat exp)) / 4] * Level / 100
+	dec c                     ; is c = 1? (are we calculating HP stat?)
 	ld a, 5 ; + 5 for non-HP stat
 	jr nz, .notHPStat
 	ld a, [wCurEnemyLevel]
@@ -179,11 +179,11 @@ CalcStat::
 	ldh a, [hQuotient + 3]
 	add b
 	ldh [hQuotient + 3], a
-	jr nc, .noCarry3
+	jr nc, .addedExtraPoints
 	ldh a, [hQuotient + 2]
-	inc a                     ; non-HP: (((Base + IV) * 2 + ceil(Sqrt(stat exp)) / 4) * Level) / 100 + 5
-	ldh [hQuotient + 2], a    ; HP: (((Base + IV) * 2 + ceil(Sqrt(stat exp)) / 4) * Level) / 100 + Level + 10
-.noCarry3
+	inc a                     ; non-HP: [2 * (Base + IV) + ceil(Sqrt(stat exp)) / 4] * Level / 100 + 5
+	ldh [hQuotient + 2], a    ; HP: [2 * (Base + IV) + ceil(Sqrt(stat exp)) / 4] * Level / 100 + Level + 10
+.addedExtraPoints
 	ldh a, [hQuotient + 3]    ; check for overflow (> MAX_STAT_VALUE = 999)
 	sub LOW(MAX_STAT_VALUE) + 1
 	ldh a, [hQuotient + 2]
