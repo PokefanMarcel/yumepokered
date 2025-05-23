@@ -1357,7 +1357,7 @@ ItemUseMedicine:
 	ld e, l ; de now points to stats
 	ld bc, (wPartyMon1Exp + 2) - wPartyMon1Stats
 	add hl, bc ; hl now points to LSB of experience
-	ld b, 1
+	ld b, $1
 	jp CalcStats ; recalculate stats
 .useRareCandy
 	push hl
