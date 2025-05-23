@@ -36,10 +36,10 @@ CalcStats::
 .statsLoop
 	inc c
 	call CalcStat
-	ldh a, [hMultiplicand + 1]
+	ldh a, [hQuotient + 2]
 	ld [de], a
 	inc de
-	ldh a, [hMultiplicand + 2]
+	ldh a, [hQuotient + 3]
 	ld [de], a
 	inc de
 	ld a, c
