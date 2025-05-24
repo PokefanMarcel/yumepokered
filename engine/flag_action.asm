@@ -65,6 +65,7 @@ FlagAction:
 	ld b, [hl]
 	ld a, d
 	and b
+
 .done
 	pop bc
 	pop de
