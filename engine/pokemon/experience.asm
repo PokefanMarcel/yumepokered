@@ -7,7 +7,7 @@ CalcLevelFromExperience::
 .loop
 	inc d ; increment level
 	call CalcExperience
-	push hl
+;	push hl
 	ld hl, wLoadedMonExp + 2 ; current exp
 ; compare exp needed for level d with current exp
 	ldh a, [hExperience + 2]
@@ -22,7 +22,7 @@ CalcLevelFromExperience::
 	ld c, a
 	ld a, [hl]
 	sbc c
-	pop hl
+;	pop hl
 	jr nc, .loop ; if exp needed for level d is not greater than exp, try the next level
 	dec d ; since the exp was too high on the last loop iteration, go back to the previous value and return
 	ret
