@@ -2,62 +2,62 @@ GainExperience:
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
 	ret z ; return if link battle
-; marcelnote - no exp if Battle Hall battle
 	ld a, [wTrainerClass]
 	cp RED
-	ret nc
+	ret nc ; marcelnote - no exp if Battle Hall battle
 	call DivideExpDataByNumMonsGainingExp
 	ld hl, wPartyMon1
 	xor a
 	ld [wWhichPokemon], a
-.partyMonLoop ; loop over each mon and add gained exp
+
+.partyMonLoop      ; loop over each mon and add gained exp
 	inc hl
-	ld a, [hli]
-	or [hl] ; is mon's HP 0?
+	ld a, [hli]    ; hl = wPartyMon<n>HP
+	or [hl]        ; is mon's HP 0?
 	jp z, .nextMon ; if so, go to next mon
-	push hl
+	push hl        ; save hl = wPartyMon<n>HP + 1
 	ld hl, wPartyGainExpFlags
 	ld a, [wWhichPokemon]
 	ld c, a
 	ld b, FLAG_TEST
-	predef FlagActionPredef
-	ld a, c
-	and a ; is mon's gain exp flag set?
-	pop hl
+	predef FlagActionPredef ; perform action b on bit c at hl ('bit c, [hl]')
+	ld a, c        ; c = result
+	and a          ; is mon's gain exp flag set?
+	pop hl         ; restore hl = wPartyMon<n>HP + 1
 	jp z, .nextMon ; if mon's gain exp flag not set, go to next mon
-	ld de, (wPartyMon1HPExp + 1) - (wPartyMon1HP + 1)
-	add hl, de
+
+	ld de, wPartyMon1HPExp - wPartyMon1HP
+	add hl, de     ; hl = wPartyMon<n>HPExp + 1
 	ld d, h
-	ld e, l
+	ld e, l        ; de = wPartyMon<n>HPExp + 1
 	ld hl, wEnemyMonBaseStats
 	ld c, NUM_STATS
 .gainStatExpLoop
-	ld a, [hli]
-	ld b, a ; enemy mon base stat
-	ld a, [de] ; stat exp
-	add b ; add enemy mon base state to stat exp
+	ld a, [hli]    ; a = [wEnemyMonBaseStats + (NUM_STATS - c)]
+	ld b, a        ; enemy mon base stat
+	ld a, [de]     ; a = stat exp (low byte)
+	add b          ; add enemy mon base stat to stat exp
 	ld [de], a
 	jr nc, .nextBaseStat
-; if there was a carry, increment the upper byte
-	dec de
+	dec de         ; add carry to stat exp high byte
 	ld a, [de]
-	inc a
-	jr z, .maxStatExp ; jump if the value overflowed
+	inc a          ; a = $ff already?
+	jr z, .maxStatExp ; if yes, set low byte to $ff as well
 	ld [de], a
 	inc de
 	jr .nextBaseStat
 .maxStatExp ; if the upper byte also overflowed, then we have hit the max stat exp
-	ld a, $ff
-	ld [de], a
-	inc de
-	ld [de], a
+	dec a      ; a = $ff since a = 0 before jumping
+	inc de     ; high byte is already $ff
+	ld [de], a ; so just need to max low byte
 .nextBaseStat
 	dec c
 	jr z, .statExpDone
 	inc de
-	inc de
+	inc de     ; move to next stat exp (low byte)
 	jr .gainStatExpLoop
-.statExpDone
+
+.statExpDone   ; de = wPartyMon<n>SpecialExp + 1
 	xor a
 	ldh [hMultiplicand], a
 	ldh [hMultiplicand + 1], a
@@ -65,33 +65,32 @@ GainExperience:
 	ldh [hMultiplicand + 2], a
 	ld a, [wEnemyMonLevel]
 	ldh [hMultiplier], a
-	call Multiply
+	call Multiply                ; (base exp) * level
 	ld a, 7
 	ldh [hDivisor], a
-	call Divide
-	ld hl, wPartyMon1OTID - (wPartyMon1DVs - 1)
+	call Divide                  ; (base exp) * level / 7
+	ld hl, wPartyMon1OTID - (wPartyMon1SpecialExp + 1)
 	add hl, de
-	ld b, [hl] ; party mon OTID
-	inc hl
+	ld a, [hli]
+	ld b, a     ; b = [wPartyMon<n>OTID]
 	ld a, [wPlayerID]
 	cp b
 	jr nz, .tradedMon
-	ld b, [hl]
+	ld b, [hl]  ; b = [wPartyMon<n>OTID + 1]
 	ld a, [wPlayerID + 1]
-	cp b
-	ld a, 0
-	jr z, .next
+	sub b
+	jr z, .skipBoost ; a = 0 if jump
 .tradedMon
 	call BoostExp ; traded mon exp boost
 	ld a, 1
-.next
+.skipBoost
 	ld [wGainBoostedExp], a
 	ld a, [wIsInBattle]
-	dec a ; is it a trainer battle?
-	call nz, BoostExp ; if so, boost exp
+	dec a             ; is it a wild battle?
+	call nz, BoostExp ; if not (trainer battle), boost exp
 	inc hl
 	inc hl
-	inc hl
+	inc hl            ; hl = wPartyMon<n>Exp + 2 (low byte)
 ; add the gained exp to the party mon's exp
 	ld b, [hl]
 	ldh a, [hQuotient + 3]
@@ -110,7 +109,7 @@ GainExperience:
 .noCarry
 ; calculate exp for the mon at max level, and cap the exp at that value
 	inc hl
-	push hl
+	push hl           ; save hl = wPartyMon<n>Exp + 2
 	ld a, [wWhichPokemon]
 	ld c, a
 	ld b, 0
@@ -127,15 +126,15 @@ GainExperience:
 	ldh a, [hExperience + 1]
 	ld c, a
 	ldh a, [hExperience + 2]
-	ld d, a
-	pop hl
+	ld d, a           ; bcd = max exp
+	pop hl            ; restore hl = wPartyMon<n>Exp + 2
 	ld a, [hld]
 	sub d
 	ld a, [hld]
 	sbc c
 	ld a, [hl]
 	sbc b
-	jr c, .next2
+	jr c, .next2      ; is current exp < max exp?
 ; the mon's exp is greater than the max exp, so overwrite it with the max exp
 	ld a, b
 	ld [hli], a
@@ -145,7 +144,7 @@ GainExperience:
 	ld [hld], a
 	dec hl
 .next2
-	push hl
+	push hl            ; save hl = wPartyMon<n>Exp
 	ld a, [wWhichPokemon]
 	ld hl, wPartyMonNicks
 	call GetPartyMonName
@@ -155,13 +154,13 @@ GainExperience:
 	ld [wMonDataLocation], a
 	farcall AnimateEXPBar	; joenote - ADDED: animate the exp bar
 	call LoadMonData
-	pop hl
+	pop hl             ; restore hl = wPartyMon<n>Exp
 	ld bc, wPartyMon1Level - wPartyMon1Exp
 	add hl, bc
-	push hl
-	farcall CalcLevelFromExperience
-	pop hl
-	ld a, [hl] ; current level
+	push hl            ; save hl = wPartyMon<n>Level
+	farcall CalcLevelFromExperience ; outputs level d
+	pop hl             ; restore hl = wPartyMon<n>Level
+	ld a, [hl]         ; a = current level
 	cp d
 	jp z, .nextMon ; if level didn't change, go to next mon
 ;;;;;;;;;;;;;;;; joenote - ADDED: animate the exp bar
@@ -171,46 +170,45 @@ GainExperience:
 ;;;;;;;;;;;;;;;;
 	ld a, [wCurEnemyLevel]
 	push af
-	push hl
-	ld a, d
+	ld a, d            ; a = new level
 	ld [wCurEnemyLevel], a
 	ld [hl], a
 	ld bc, wPartyMon1Species - wPartyMon1Level
-	add hl, bc
+	add hl, bc         ; hl = wPartyMon<n>Species
 	ld a, [hl]
 	ld [wCurSpecies], a
 	ld [wPokedexNum], a
-	call GetMonHeader
+	call GetMonHeader ; preserves hl
 	ld bc, (wPartyMon1MaxHP + 1) - wPartyMon1Species
 	add hl, bc
-	push hl
+	push hl            ; save hl = wPartyMon<n>MaxHP + 1
 	ld a, [hld]
 	ld c, a
 	ld b, [hl]
-	push bc ; push max HP (from before levelling up)
+	push bc            ; save bc = max HP (from before levelling up)
 	ld d, h
-	ld e, l
+	ld e, l            ; de = wPartyMon<n>MaxHP
 	ld bc, (wPartyMon1HPExp - 1) - wPartyMon1MaxHP
-	add hl, bc
-	ld b, $1 ; consider stat exp when calculating stats
-	call CalcStats
-	pop bc ; pop max HP (from before levelling up)
-	pop hl
+	add hl, bc         ; hl = wPartyMon<n>HPExp - 1
+	ld b, $1           ; consider stat exp when calculating stats
+	call CalcStats     ; preserves hl
+	pop bc             ; restore bc = max HP (from before levelling up)
+	pop hl             ; restore hl = wPartyMon<n>MaxHP + 1
 	ld a, [hld]
 	sub c
 	ld c, a
 	ld a, [hl]
 	sbc b
-	ld b, a ; bc = difference between old max HP and new max HP after levelling
+	ld b, a            ; bc = difference between old max HP and new max HP
 	ld de, (wPartyMon1HP + 1) - wPartyMon1MaxHP
-	add hl, de
+	add hl, de         ; hl = wPartyMon<n>HP + 1
 ; add to the current HP the amount of max HP gained when levelling
-	ld a, [hl] ; wPartyMon1HP + 1
+	ld a, [hl]         ; a = [wPartyMon<n>HP + 1]
 	add c
 	ld [hld], a
-	ld a, [hl] ; wPartyMon1HP + 1
+	ld a, [hl]         ; a = [wPartyMon<n>HP]
 	adc b
-	ld [hl], a ; wPartyMon1HP
+	ld [hl], a
 	ld a, [wPlayerMonNumber]
 	ld b, a
 	ld a, [wWhichPokemon]
@@ -219,19 +217,19 @@ GainExperience:
 ; current mon is in battle
 	ld de, wBattleMonHP
 ; copy party mon HP to battle mon HP
-	ld a, [hli]
+	ld a, [hli]        ; a = [wPartyMon<n>HP]
 	ld [de], a
 	inc de
-	ld a, [hl]
+	ld a, [hl]         ; a = [wPartyMon<n>HP + 1]
 	ld [de], a
 ; copy other stats from party mon to battle mon
 	ld bc, wPartyMon1Level - (wPartyMon1HP + 1)
 	add hl, bc
-	push hl
+	push hl            ; save hl = wPartyMon<n>Level
 	ld de, wBattleMonLevel
 	ld bc, 1 + NUM_STATS * 2 ; size of stats
 	call CopyData
-	pop hl
+	pop hl             ; restore hl = wPartyMon<n>Level
 	ld a, [wPlayerBattleStatus3]
 	bit TRANSFORMED, a
 	jr nz, .recalcStatChanges
@@ -269,7 +267,6 @@ GainExperience:
 	ld c, a
 	ld b, FLAG_SET
 	predef FlagActionPredef
-	pop hl
 	pop af
 	ld [wCurEnemyLevel], a
 
@@ -287,51 +284,47 @@ GainExperience:
 	jp .partyMonLoop
 .done
 	ld hl, wPartyGainExpFlags
-	xor a
-	ld [hl], a ; clear gain exp flags
+	ld [hl], 0 ; clear gain exp flags
 	ld a, [wPlayerMonNumber]
 	ld c, a
 	ld b, FLAG_SET
 	push bc
 	predef FlagActionPredef ; set the gain exp flag for the mon that is currently out
 	ld hl, wPartyFoughtCurrentEnemyFlags
-	xor a
-	ld [hl], a
+	ld [hl], 0
 	pop bc
 	predef_jump FlagActionPredef ; set the fought current enemy flag for the mon that is currently out
 
 ; divide enemy base stats, catch rate, and base exp by the number of mons gaining exp
 DivideExpDataByNumMonsGainingExp:
 	ld a, [wPartyGainExpFlags]
-	ld b, a
-	xor a
-	ld c, $8
-	ld d, $0
+	ld b, a    ; b = [wPartyGainExpFlags]
+	xor a      ; a = 0
+	ld c, $8   ; c = 8
+	ld d, a    ; d = 0 for adc 0
 .countSetBitsLoop ; loop to count set bits in wPartyGainExpFlags
-	xor a
 	srl b
-	adc d
-	ld d, a
+	adc d      ; adc 0 but faster/lighter with register
 	dec c
 	jr nz, .countSetBitsLoop
 	cp $2
-	ret c ; return if only one mon is gaining exp
-	ld [wTempByteValue], a ; store number of mons gaining exp
+	ret c   ; return if only one mon is gaining exp
+	ld c, a ; c = number of mons gaining exp
 	ld hl, wEnemyMonBaseStats
-	ld c, wEnemyMonBaseExp + 1 - wEnemyMonBaseStats
-.divideLoop
+	ld b, wEnemyMonBaseExp - wEnemyMonBaseStats + 1
 	xor a
 	ldh [hDividend], a
 	ldh [hDividend + 1], a
 	ldh [hDividend + 2], a
+.divideLoop
 	ld a, [hl]
-	ldh [hDividend + 3], a
-	ld a, [wTempByteValue]
-	ldh [hDivisor], a
-	call Divide ; divide value by number of mons gaining exp
+	ldh [hDividend + 3], a ; [hDividend = 3] = number of mons gaining exp
+	ld a, c
+	ldh [hDivisor], a ; [hDivisor] = number of mons gaining exp
+	call Divide
 	ldh a, [hQuotient + 3]
 	ld [hli], a
-	dec c
+	dec b
 	jr nz, .divideLoop
 	ret
 
