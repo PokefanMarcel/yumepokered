@@ -168,5 +168,5 @@ DEF NUM_BADGES EQU const_value
 
 ; hNPCPlayerRelativePosFlags
 	const_def
-	const BIT_PLAYER_LOWER_Y ; 0
-	const BIT_PLAYER_LOWER_X ; 1
+	const BIT_NPC_LOWER_Y ; 0
+	const BIT_NPC_LOWER_X ; 1

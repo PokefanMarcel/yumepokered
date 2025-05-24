@@ -68,22 +68,13 @@ PalletTownOakHeyWaitScript:
 	ret
 
 PalletTownOakWalksToPlayerScript:
-	ld a, PALLETTOWN_OAK
-	ldh [hSpriteIndex], a
-	ld a, SPRITE_FACING_UP
-	ldh [hSpriteFacingDirection], a
-	call SetSpriteFacingDirectionAndDelay
 	call Delay3
-	ld a, 1
-	ld [wYCoord], a
-	ld a, 1
-	ldh [hNPCPlayerRelativePosPerspective], a
-	ld a, 1
+	ld a, PALLETTOWN_OAK
 	swap a
 	ldh [hNPCSpriteOffset], a
 	predef CalcPositionOfPlayerRelativeToNPC
 	ld hl, hNPCPlayerYDistance
-	dec [hl]
+	dec [hl] ; stop in front of player
 	predef FindPathToPlayer ; load Oak's movement into wNPCMovementDirections2
 	ld de, wNPCMovementDirections2
 	ld a, PALLETTOWN_OAK
