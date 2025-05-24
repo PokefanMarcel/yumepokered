@@ -1,10 +1,10 @@
 ; calculates the difference |a-b|, setting carry flag if a<b
 CalcDifference::
 	sub b
-	ret nc
+	ret nc  ; return if a ≥ b, no carry
 	cpl
-	add $1
-	scf
+	add $1  ; a - b < 0 so switch to b - a
+	scf     ; and set carry
 	ret
 
 MoveSprite::
