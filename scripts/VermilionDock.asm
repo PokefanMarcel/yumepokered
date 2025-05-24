@@ -265,6 +265,10 @@ VermilionDock_TextPointers:
 
 VermilionDockSailorText:
 	text_asm
+	ld a, [wSpritePlayerStateData1FacingDirection]
+	cp SPRITE_FACING_DOWN
+	ld hl, .CantSurfHereText
+	jr nz, .print_text
 	ld hl, .AreYouReadyText
 	call PrintText
 	ld a, $01
@@ -278,9 +282,14 @@ VermilionDockSailorText:
 	ld a, SCRIPT_VERMILIONDOCK_ALL_ABOARD
 	ld [wVermilionDockCurScript], a
 	ld hl, .AllAboardText
+.print_text
 	call PrintText
 .no
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+.CantSurfHereText:
+	text_far _VermilionDockSailorCantSurfHereText
+	text_end
 
 .AreYouReadyText:
 	text_far _VermilionDockSailorAreYouReadyText

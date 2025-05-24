@@ -1,4 +1,9 @@
 ; marcelnote - new location
+_MandarinDockSailorCantSurfHereText::
+	text "Whoa! You can't"
+	line "SURF here!"
+	done
+
 _MandarinDockSailorAreYouReadyText::
 	text "Final call for"
 	line "VERMILION CITY!"
