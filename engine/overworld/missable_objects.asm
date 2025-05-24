@@ -241,16 +241,14 @@ MissableObjectFlagAction:
 	jr z, .read
 
 .set
-	ld a, [hl]
-	ld b, a
+	ld b, [hl]
 	ld a, d
 	or b
 	ld [hl], a
 	jr .done
 
 .reset
-	ld a, [hl]
-	ld b, a
+	ld b, [hl]
 	ld a, d
 	xor $ff
 	and b
@@ -258,8 +256,7 @@ MissableObjectFlagAction:
 	jr .done
 
 .read
-	ld a, [hl]
-	ld b, a
+	ld b, [hl]
 	ld a, d
 	and b
 
