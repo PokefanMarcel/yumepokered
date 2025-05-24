@@ -357,13 +357,11 @@ OaksLabRivalChallengesPlayerScript:
 	call DisplayTextID
 	ld a, $1
 	ldh [hNPCPlayerRelativePosPerspective], a
-	ld a, $1
 	swap a
 	ldh [hNPCSpriteOffset], a
 	predef CalcPositionOfPlayerRelativeToNPC
-	ldh a, [hNPCPlayerYDistance]
-	dec a
-	ldh [hNPCPlayerYDistance], a
+	ld hl, hNPCPlayerYDistance
+	dec [hl]
 	predef FindPathToPlayer
 	ld de, wNPCMovementDirections2
 	ld a, OAKSLAB_RIVAL
