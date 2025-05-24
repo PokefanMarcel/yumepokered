@@ -132,11 +132,11 @@ PewterCityYoungsterShowsPlayerGymScript:
 	call DisplayTextID
 	ld a, $3c
 	ldh [hSpriteScreenYCoord], a
-	ld a, $40
+	ld a, $50 ; marcelnote - fixed glitch, was $40
 	ldh [hSpriteScreenXCoord], a
-	ld a, 22
+	ld a, 22 ; 4 + new Y
 	ldh [hSpriteMapYCoord], a
-	ld a, 16
+	ld a, 17 ; 4 + new X
 	ldh [hSpriteMapXCoord], a
 	ld a, PEWTERCITY_YOUNGSTER
 	ld [wSpriteIndex], a
