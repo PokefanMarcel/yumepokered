@@ -533,7 +533,7 @@ PrintStatsBox:
 	ld c, 8 ; x
 	call TextBoxBorder ; Draws the box
 	hlcoord 1, 9 ; Start printing stats from here
-	ld bc, $19 ; Number offset
+	ld bc, SCREEN_WIDTH + 3 ; Number offset
 	jr .PrintStatsNames
 .LevelUpBox
 	hlcoord 9, 2
@@ -541,7 +541,7 @@ PrintStatsBox:
 	ld c, 9 ; x
 	call TextBoxBorder
 	hlcoord 11, 3
-	ld bc, $18
+	ld bc, SCREEN_WIDTH + 2
 .PrintStatsNames
 	push bc
 	push hl
@@ -551,7 +551,7 @@ PrintStatsBox:
 	pop bc
 	add hl, bc
 .PrintStats
-	lb bc, 2, 3
+	lb bc, 2, 5 ; for PrintNumber, b = 2 bytes and c = 5 digits
 	ld de, wLoadedMonAttack
 	call PrintStat
 	ld de, wLoadedMonDefense
@@ -560,6 +560,7 @@ PrintStatsBox:
 	call PrintStat
 	ld de, wLoadedMonSpecial
 	jp PrintNumber
+
 PrintStat:
 	push hl
 	call PrintNumber
@@ -585,7 +586,7 @@ SwitchToStats:
 
 SwitchToDVs: ; we'll use wTempByteValue to store DVs
 	call ClearStatsLines
-	lb bc, 1, 3 ; for PrintNumber, b = 1 byte and c = 3 digits
+	lb bc, 1, 5 ; for PrintNumber, b = 1 byte and c = 5 digits
 
 	ld de, wTempByteValue
 	ld a, [wLoadedMonDVs]
@@ -620,7 +621,7 @@ SwitchToDVs: ; we'll use wTempByteValue to store DVs
 
 SwitchToStatExp:
 	call ClearStatsLines
-	lb bc, 2, 3 ; for PrintNumber, b = 1 byte and c = 3 digits
+	lb bc, 2, 5 ; for PrintNumber, b = 2 byte and c = 5 digits
 	ld de, wLoadedMonAttackExp
 	call PrintStat
 	ld de, wLoadedMonDefenseExp
@@ -636,12 +637,14 @@ SwitchToStatExp:
 
 
 ClearStatsLines:
-	hlcoord 6, 10 ; first number
+	hlcoord 4, 10 ; first number
 	push hl
-	ld bc, 2*SCREEN_WIDTH - 2
-	ld e, 4
+	ld bc, 2*SCREEN_WIDTH - 4
+	ld e, 6
 	ld a, " "
 .loop
+	ld [hli], a
+	ld [hli], a
 	ld [hli], a
 	ld [hli], a
 	ld [hl], a
