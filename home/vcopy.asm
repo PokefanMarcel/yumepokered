@@ -20,9 +20,9 @@ GetRowColAddressBgMap::
 ; INPUT: h - high byte of background tile map address in VRAM
 ClearBgMap::
 	ld a, " "
-	jr .next
-	ld a, l
-.next
+	; fallthrough
+
+FillBgMap:: ; marcelnote - new, fill with character in a
 	ld de, BG_MAP_WIDTH * BG_MAP_HEIGHT
 	ld l, e
 .loop
