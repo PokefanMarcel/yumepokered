@@ -137,10 +137,7 @@ hFindPathNumSteps:: db
 hFindPathFlags:: db
 hFindPathYProgress:: db
 hFindPathXProgress:: db
-; 0 = from player to NPC
-; 1 = from NPC to player
-hNPCPlayerRelativePosPerspective:: db
-	ds 1
+	ds 2 ; marcelnote - removed hNPCPlayerRelativePosPerspective:: db
 ; bit 0:
 ; 0 = target is to the south or aligned
 ; 1 = target is to the north
