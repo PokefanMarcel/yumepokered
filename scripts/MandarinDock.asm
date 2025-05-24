@@ -54,6 +54,10 @@ MandarinDock_TextPointers:
 
 MandarinDockSailorText:
 	text_asm
+	ld a, [wSpritePlayerStateData1FacingDirection]
+	cp SPRITE_FACING_DOWN
+	ld hl, .CantSurfHereText
+	jr nz, .print_text
 	ld hl, .AreYouReadyText
 	call PrintText
 	ld a, $01
@@ -67,9 +71,14 @@ MandarinDockSailorText:
 	ld a, SCRIPT_MANDARINDOCK_ALL_ABOARD
 	ld [wMandarinDockCurScript], a
 	ld hl, .AllAboardText
+.print_text
 	call PrintText
 .no
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+.CantSurfHereText:
+	text_far _MandarinDockSailorCantSurfHereText
+	text_end
 
 .AreYouReadyText:
 	text_far _MandarinDockSailorAreYouReadyText
