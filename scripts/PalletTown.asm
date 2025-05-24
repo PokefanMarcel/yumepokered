@@ -37,15 +37,13 @@ ENDC
 	ld [wPlayerMovingDirection], a
 	ld a, SFX_STOP_ALL_MUSIC
 	call PlaySound
-	ld a, 0 ; BANK(Music_MeetProfOak)
-	ld c, a
+	ld c, 0 ; BANK(Music_MeetProfOak)
 	ld a, MUSIC_MEET_PROF_OAK ; "oak appears" music
 	call PlayMusic
 	ld a, SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
 	ld [wJoyIgnore], a
 	SetEvent EVENT_OAK_APPEARED_IN_PALLET
 
-	; trigger the next script
 	ld a, SCRIPT_PALLETTOWN_OAK_HEY_WAIT
 	ld [wPalletTownCurScript], a
 	ret
@@ -62,7 +60,6 @@ PalletTownOakHeyWaitScript:
 	ld [wMissableObjectIndex], a
 	predef ShowObject
 
-	; trigger the next script
 	ld a, SCRIPT_PALLETTOWN_OAK_WALKS_TO_PLAYER
 	ld [wPalletTownCurScript], a
 	ret
@@ -83,7 +80,6 @@ PalletTownOakWalksToPlayerScript:
 	ld a, A_BUTTON | B_BUTTON | SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
 	ld [wJoyIgnore], a
 
-	; trigger the next script
 	ld a, SCRIPT_PALLETTOWN_OAK_NOT_SAFE_COME_WITH_ME
 	ld [wPalletTownCurScript], a
 	ret
@@ -113,7 +109,6 @@ PalletTownOakNotSafeComeWithMeScript:
 	ldh a, [hLoadedROMBank]
 	ld [wNPCMovementScriptBank], a
 
-	; trigger the next script
 	ld a, SCRIPT_PALLETTOWN_PLAYER_FOLLOWS_OAK
 	ld [wPalletTownCurScript], a
 	ret
@@ -123,7 +118,6 @@ PalletTownPlayerFollowsOakScript:
 	and a ; is the movement script over?
 	ret nz
 
-	; trigger the next script
 	ld a, SCRIPT_PALLETTOWN_DAISY
 	ld [wPalletTownCurScript], a
 	ret
