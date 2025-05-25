@@ -85,27 +85,23 @@ _Divide:: ; marcelnote - adapted from polishedcrystal
 
 .loopBytes
 	ldh a, [c]    ; a = [hDividend + nByte], next dividend byte
-	ld h, a       ; h = dividend for this byte
-	ld l, 0       ; l = quotient for this byte
+	ld h, a       ; h = dividend for this byte, will become quotient
+	ld a, e       ; a = remainder within bits loop
 	ld b, 8       ; b = bit counter
 .loopBits
-	sla h
-	rl e          ; bring in next bit of h into e
-	ld a, e       ; a = remainder
-	jr c, .carry  ; if carry from rl e, then %1e [9bits] ≥ d so subtract d and increase l
-	cp d          ; e ≥ d?
+	sla h         ; rotate dividend bit out and quotient bit left
+	rla           ; bring in next bit of dividend into a
+	jr c, .carry  ; if carry from rla, then $1a [9bits] ≥ d so subtract d and increase h
+	cp d          ; a ≥ d?
 	jr c, .skip   ; if not, move to next bit
 .carry
 	sub d         ; subtract divisor from remainder
-	ld e, a       ; update remainder
-	inc l         ; increase quotient
+	inc h         ; increase quotient
 .skip
 	dec b         ; one less bit to do
-	jr z, .done
-	sla l         ; shift quotient left
-	jr .loopBits
-.done
-	ld a, l
+	jr nz, .loopBits
+	ld e, a       ; update remainder
+	ld a, h
 	ldh [c], a    ; [hQuotient + nByte] = quotient
 	inc c         ; move to next dividend byte
 	ld a, c
