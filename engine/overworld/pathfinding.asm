@@ -88,37 +88,32 @@ CalcPositionOfPlayerRelativeToNPC:
 	ld b, a                      ; b = player sprite screen Y position in pixels
 	ld a, [hli]                  ; a = NPC sprite screen Y position in pixels
 	call CalcDifference          ; a = |a-b|, sets carry if a < b
-	push hl                      ; save hl = x#SPRITESTATEDATA1_XSTEPVECTOR
-	ld hl, hNPCPlayerRelativePosFlags
-	set BIT_NPC_LOWER_Y, [hl]    ; NPC north of player
-	jr c, .divideYDistance       ; carry if a < b, i.e. NPC has lower Y, i.e. NPC north of player
-	res BIT_NPC_LOWER_Y, [hl]    ; NPC south of or aligned with player
+	ld c, a                      ; dividend = |player Y -  NPC Y|
+	ldh a, [hNPCPlayerRelativePosFlags]
+	set BIT_NPC_LOWER_Y, a       ; NPC north of player
+	jr c, .divideYDistance       ; carry if a < b, i.e. NPC has lower Y (NPC north of player)
+	res BIT_NPC_LOWER_Y, a       ; NPC south of or aligned with player
 .divideYDistance
-	ld hl, hDividend2
-	ld [hli], a                  ; [hDividend2] = |player Y -  NPC Y|
-	ld a, 16
-	ld [hli], a                  ; [hDivisor2] = 16
-	call DivideBytes ; divide Y absolute distance by 16
-	ld a, [hl]                   ; a = [hQuotient2]
+	ldh [hNPCPlayerRelativePosFlags], a
+	ld d, 16                     ; divisor = 16
+	call DivideBytes ; divide c = Y absolute distance, by d = 16
+	ld a, c                      ; c = quotient
 	ldh [hNPCPlayerYDistance], a
-	pop hl                       ; restore hl = x#SPRITESTATEDATA1_XSTEPVECTOR
 	inc hl                       ; hl = x#SPRITESTATEDATA1_XPIXELS
 
 	ld a, [wSpritePlayerStateData1XPixels]
 	ld b, a                      ; b = player sprite screen X position in pixels
 	ld a, [hl]                   ; a = NPC sprite screen X position in pixels
 	call CalcDifference          ; a = |a-b|, sets carry if a < b
-	ld hl, hNPCPlayerRelativePosFlags
-	set BIT_NPC_LOWER_X, [hl]    ; NPC west of player
-	jr c, .divideXDistance       ; carry if a < b, i.e. NPC has lower X, i.e. NPC west of player
-	res BIT_NPC_LOWER_X, [hl]    ; NPC east of or aligned with player
+	ld c, a                      ; dividend = |player X -  NPC X|
+	ldh a, [hNPCPlayerRelativePosFlags]
+	set BIT_NPC_LOWER_X, a       ; NPC west of player
+	jr c, .divideXDistance       ; carry if a < b, i.e. NPC has lower X (NPC west of player)
+	res BIT_NPC_LOWER_X, a       ; NPC east of or aligned with player
 .divideXDistance
-	ld hl, hDividend2
-	ld [hli], a                  ; [hDividend2] = |player X -  NPC X|
-	ld a, 16
-	ld [hli], a                  ; [hDivisor2] = 16
-	call DivideBytes ; divide X absolute distance by 16
-	ld a, [hl]                   ; a = [hQuotient2]
+	ldh [hNPCPlayerRelativePosFlags], a
+	call DivideBytes ; divide c = X absolute distance, by d = 16
+	ld a, c                      ; c = quotient
 	ldh [hNPCPlayerXDistance], a
 	ret
 
