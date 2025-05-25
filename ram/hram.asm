@@ -99,7 +99,7 @@ UNION
 ; Multiplication and division variables are meant
 ; to overlap for back-to-back usage. Big endian.
 UNION ; 10 bytes
-	ds 1 ; multiplication needs this byte here
+	ds 1 ; first byte of result
 hMultiplicand:: ds 3
 hMultiplier:: db
 NEXTU
@@ -342,14 +342,9 @@ hStartTileID:: db
 
 hNewPartyLength:: db
 
-UNION
-hDividend2:: db
-hDivisor2::  db
-hQuotient2:: db
-
-NEXTU
 hIsHiddenMissableObject:: db
-ENDU
+
+	ds 2
 
 hMapROMBank:: db
 

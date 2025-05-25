@@ -43,23 +43,20 @@ MoveSprite_::
 	;ld [wUnusedOverrideSimulatedJoypadStatesIndex], a
 	ret
 
-; divides [hDividend2] by [hDivisor2] and stores the quotient in [hQuotient2]
+
+; marcelnote - modified
+; Divides c by d, result in c (quotient) and a (remainder). Preserves hl and de, sets b = 0.
 DivideBytes::
-	push hl
-	ld hl, hQuotient2
-	xor a
-	ld [hld], a
-	ld a, [hld]
-	and a
-	jr z, .done
-	ld a, [hli]
+	ld b, 8
+	xor a        ; initialize remainder at 0
 .loop
-	sub [hl]
-	jr c, .done
-	inc hl
-	inc [hl]
-	dec hl
-	jr .loop
-.done
-	pop hl
+	sla c        ; rotate dividend bit out and quotient bit left
+	rla          ; bring in next bit of c into a
+	cp d         ; a ≥ d?
+	jr c, .skip  ; if not, move on to next bit
+	inc c        ; if yes, increment quotient
+	sub d        ; and deduct divisor from a
+.skip
+	dec b
+	jr nz, .loop
 	ret
