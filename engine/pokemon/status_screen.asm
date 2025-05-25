@@ -639,11 +639,10 @@ SwitchToStatExp:
 ClearStatsLines:
 	hlcoord 4, 10 ; first number
 	push hl
-	ld bc, 2*SCREEN_WIDTH - 4
-	ld e, 6
+	ld bc, 2*SCREEN_WIDTH - 3
+	ld e, 5
 	ld a, " "
 .loop
-	ld [hli], a
 	ld [hli], a
 	ld [hli], a
 	ld [hli], a
