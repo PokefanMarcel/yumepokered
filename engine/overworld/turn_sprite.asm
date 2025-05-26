@@ -23,5 +23,7 @@ UpdateSpriteFacingOffsetAndDelayMovement::
 	ld a, [hl] ; x#SPRITESTATEDATA1_IMAGEINDEX
 	or b ; or in the facing direction
 	ld [hld], a ; x#SPRITESTATEDATA1_IMAGEINDEX
+	; marcelnote - this last Movement Status load was causing problems with Oak's pathfinding in Pallet,
+	;              because DisplayTextID was called before ShowObject (don't know exactly why)
 	ld [hl], $2 ; x#SPRITESTATEDATA1_MOVEMENTSTATUS, $2 = delayed movement status
 	ret
