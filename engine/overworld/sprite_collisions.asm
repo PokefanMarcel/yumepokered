@@ -1,34 +1,34 @@
-_UpdateSprites::
-	ld h, HIGH(wSpriteStateData2) ; marcelnote - was HIGH(wSpriteStateData1), inc h
-	ld a, SPRITESTATEDATA2_IMAGEBASEOFFSET
+_UpdateSprites:: ; marcelnote - optimized
+	push de
+	ld h, HIGH(wSpriteStateData2)
+	xor a
 .spriteLoop
-	ld l, a
-	sub SPRITESTATEDATA2_IMAGEBASEOFFSET
 	ld c, a
 	ldh [hCurrentSpriteOffset], a
+	add SPRITESTATEDATA2_IMAGEBASEOFFSET
+	ld l, a
 	ld a, [hl]
 	and a
 	jr z, .skipSprite   ; tests SPRITESTATEDATA2_IMAGEBASEOFFSET
 	push hl
-	push de
 	push bc
 	call .updateCurrentSprite
 	pop bc
-	pop de
 	pop hl
 .skipSprite
-	ld a, l
+	ld a, c
 	add $10             ; move to next sprite
-	cp SPRITESTATEDATA2_IMAGEBASEOFFSET ; test for overflow (back at beginning)
-	jr nz, .spriteLoop
+	jr nz, .spriteLoop  ; back at beginning?
+	pop de
 	ret
+
 .updateCurrentSprite
-	cp $1
-	jp nz, UpdateNonPlayerSprite
+	dec a
+	jr nz, UpdateNonPlayerSprite
 	jp UpdatePlayerSprite
 
+
 UpdateNonPlayerSprite:
-	dec a
 	swap a
 	ldh [hTilePlayerStandingOn], a  ; $10 * sprite#
 	ld a, [wNPCMovementScriptSpriteOffset] ; some sprite offset?

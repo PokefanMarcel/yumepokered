@@ -1,3 +1,4 @@
+; Preserves b and de.
 UpdateSprites::
 	ld a, [wUpdateSpritesEnabled]
 	dec a
