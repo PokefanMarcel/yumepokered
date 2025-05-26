@@ -141,7 +141,7 @@ DrawFrameBlock:
 	cp FRAMEBLOCKMODE_03
 	jr z, .advanceFrameBlockDestAddr ; skip cleaning OAM buffer
 	cp FRAMEBLOCKMODE_04
-	jr z, .done ; skip cleaning OAM buffer and don't advance the frame block destination address
+	ret z ; skip cleaning OAM buffer and don't advance the frame block destination address
 	ld a, [wAnimationID]
 	cp GROWL
 	jr z, .resetFrameBlockDestAddr
@@ -158,7 +158,6 @@ DrawFrameBlock:
 	ld [wFBDestAddr + 1], a
 	ld a, d
 	ld [wFBDestAddr], a
-.done
 	ret
 
 PlayAnimation:
