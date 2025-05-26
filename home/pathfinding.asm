@@ -42,21 +42,3 @@ MoveSprite_::
 	ld [wJoyIgnore], a
 	;ld [wUnusedOverrideSimulatedJoypadStatesIndex], a
 	ret
-
-
-; marcelnote - modified
-; Divides c by d, result in c (quotient) and a (remainder). Preserves hl and de, sets b = 0.
-DivideBytes::
-	ld b, 8
-	xor a        ; initialize remainder at 0
-.loop
-	sla c        ; rotate dividend bit out and quotient bit left
-	rla          ; bring in next bit of c into a
-	cp d         ; a ≥ d?
-	jr c, .skip  ; if not, move on to next bit
-	inc c        ; if yes, increment quotient
-	sub d        ; and deduct divisor from a
-.skip
-	dec b
-	jr nz, .loop
-	ret
