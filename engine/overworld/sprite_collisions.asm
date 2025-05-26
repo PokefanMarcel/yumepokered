@@ -318,24 +318,21 @@ DetectCollisionBetweenSprites:
 	jp nz, .loop
 	ret
 
-; takes delta X or delta Y in a
+; takes a = delta X or delta Y
+; returns:
 ; b = delta X/Y
 ; c = 0 if delta X/Y is 0
 ; c = 7 if delta X/Y is 1
 ; c = 9 if delta X/Y is -1
 SetSpriteCollisionValues:
-	and a
-	ld b, 0
-	ld c, 0
-	jr z, .done
-	ld c, 9
-	cp -1
-	jr z, .ok
-	ld c, 7
-	ld a, 0
-.ok
-	ld b, a
-.done
+	ld b, a  ; b = a
+	and a    ; a = 0 ?
+	ld c, a  ; c = 0 if a = 0
+	ret z
+	dec a    ; a = 1 ?
+	ld c, 7  ; c = 7 if a = 1
+	ret z
+	ld c, 9  ; c = 9 if a = -1
 	ret
 
 SpriteCollisionBitTable:
