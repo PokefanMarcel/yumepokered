@@ -473,41 +473,30 @@ DrawLineBox:
 DrawHP:
 ; Draws the HP bar in the stats screen, party screen, and battle screen
 	call GetPredefRegisters
-	;push hl
 	ld a, [wLoadedMonHP]
 	ld b, a
 	ld a, [wLoadedMonHP + 1]
 	ld c, a
 	or b
 	jr nz, .nonzeroHP
-	xor a
-	ld c, a
-	ld e, a
-	ld a, $6
-	ld d, a
+	ld d, $6
+	ld e, a  ; e = 0
 	jp .drawHPBarAndPrintFraction
 .nonzeroHP
 	ld a, [wLoadedMonMaxHP]
 	ld d, a
 	ld a, [wLoadedMonMaxHP + 1]
 	ld e, a
-	predef HPBarLength ; does not modify hl
-	ld a, $6
-	ld d, a
-	ld c, a
+	predef HPBarLength ; preserves hl
+	ld d, $6
+	ld c, d  ; c = $6
 .drawHPBarAndPrintFraction
-	;pop hl
 	push de
-	;push hl
-	push hl
 	call DrawHPBar ; [wHPBarType] set before calling DrawHP
-	pop hl
 	ldh a, [hUILayoutFlags]
 	bit BIT_PARTY_MENU_HP_BAR, a
-	jr z, .printFractionBelowBar
 	ld bc, $9 ; right of bar
-	jr .printFraction
-.printFractionBelowBar
+	jr nz, .printFraction
 	ld bc, SCREEN_WIDTH + 1 ; below bar
 .printFraction
 	add hl, bc
@@ -519,7 +508,6 @@ DrawHP:
 	ld de, wLoadedMonMaxHP
 	lb bc, 2, 3
 	call PrintNumber
-	;pop hl
 	pop de ; e is used to determine bar color in SGB
 	ret
 

@@ -5,63 +5,54 @@ DrawHPBar::
 
 	push hl
 	push de
-	push bc
 
-	; Left
 	ld a, "<HP>"
 	ld [hli], a
 	inc a ; a = $63, end of the P, colon, and left tip of the HP bar
 	ld [hli], a
 
-	push hl
+	ld a, e
+	and a
+	jr nz, .fullHPTiles
+	; If e = 0 but c is nonzero, draw a pixel anyway.
+	or c
+	jr z, .emptyHPTiles
+	ld e, 1
+.fullHPTiles
+	ld a, e
+	sub 8
+	jr c, .partialHPTile
+	ld e, a
+	ld a, $6c ; full HP bar tile
+	ld [hli], a
+	dec d
+	jr z, .rightTip
+	jr .fullHPTiles
 
-	; Middle
-	inc a ; a = $64, empty HP bar tile
+.partialHPTile
+	; Fill remaining pixels at the end if necessary.
+	ld a, $64 ; empty HP bar tile
+	add e
+	ld [hli], a
+	dec d
+	jr z, .rightTip
+
+.emptyHPTiles
+	ld a, $64 ; a = $64, empty HP bar tile
 .draw
 	ld [hli], a
 	dec d
 	jr nz, .draw
 
-	; Right
+.rightTip
 	ld a, [wHPBarType]
 	dec a
 	ld a, "<HUD_VERTI_BAR_HP_TIP>" ; HP bar tip with vertical bar ; for player Mon in battle
-	jr z, .got_rightmost_tile
+	jr z, .gotRightmostTile
 	ld a, $6d ; HP bar tip without vertical bar ; for pokemon menu, status screen, and for enemy Mon in battle
-.got_rightmost_tile
+.gotRightmostTile
 	ld [hl], a
 
-	pop hl
-
-	ld a, e
-	and a
-	jr nz, .fill
-
-	; If c is nonzero, draw a pixel anyway.
-	ld a, c
-	and a
-	jr z, .done
-	ld e, 1
-
-.fill
-	ld a, e
-	sub 8
-	jr c, .partial
-	ld e, a
-	ld a, $6c ; full HP bar tile
-	ld [hli], a
-	ld a, e
-	and a
-	jr z, .done
-	jr .fill
-
-.partial
-	; Fill remaining pixels at the end if necessary.
-	ld a, $64 ; empty HP bar tile
-	add e
-	ld [hl], a
-.done
-	pop bc
 	pop de
 	pop hl
 	ret
