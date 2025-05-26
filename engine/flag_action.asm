@@ -1,74 +1,68 @@
 FlagActionPredef:
 	call GetPredefRegisters
 
-FlagAction:
-; Perform action b on bit c
-; in the bitfield at hl.
-;  0: reset
-;  1: set
-;  2: read
-; Return the result in c.
+FlagAction: ; marcelnote - optimized
+; Performs action b on bit c in the bitfield at hl.
+; Preserves b, de, hl.
+;  b = 0: reset
+;  b = 1: set
+;  b = 2: read
+; Returns the result in c.
 
 	push hl
-	push de
-	push bc
-
-	; bit
-	ld a, c
-	ld d, a
-	and 7
-	ld e, a
 
 	; byte
-	ld a, d
+	ld a, c
 	srl a
 	srl a
 	srl a
 	add l
 	ld l, a
-	jr nc, .ok
-	inc h
-.ok
+	jr nc, .noCarry
+	inc h         ; hl is the byte to target
+.noCarry
 
-	; d = 1 << e (bitmask)
-	inc e
-	ld d, 1
+	; bit
+	ld a, c
+	and %00000111
+	ld c, a       ; c in [0,7] is the bit to target
+
+	; bitmask 1 << c
+	inc c         ; c in [1,8] for counter
+	xor a
+	scf           ; set carry flag to rotate 1 in a
 .shift
-	dec e
-	jr z, .shifted
-	sla d
-	jr .shift
-.shifted
+	rla
+	dec c
+	jr nz, .shift
+	ld c, a       ; c = 1 << c
 
 	ld a, b
-	and a
+	and a         ; b = 0 (reset) ?
 	jr z, .reset
-	cp 2
-	jr z, .read
+	dec a         ; b = 1 (set) ?
+	jr z, .set
+
+; read
+	ld a, [hl]
+	and c
+	jr .done
 
 .set
-	ld b, [hl]
-	ld a, d
-	or b
+	ld a, [hl]
+	or c
 	ld [hl], a
 	jr .done
 
 .reset
-	ld b, [hl]
-	ld a, d
-	xor $ff
-	and b
+	ld a, [hl]
+	cpl
+	or c
+	cpl
 	ld [hl], a
-	jr .done
-
-.read
-	ld b, [hl]
-	ld a, d
-	and b
+	; fallthrough
 
 .done
-	pop bc
-	pop de
-	pop hl
 	ld c, a
+	pop hl
 	ret
