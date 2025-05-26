@@ -55,16 +55,16 @@ DEF rLCDC_DEFAULT EQU (1 << rLCDC_ENABLE) | (1 << rLCDC_WINDOW_TILEMAP) | (1 << 
 ;joenote - implement xorshift RNG
 ;Initialize the RNG state. It can be initialized to anything but zero; this is just a simple way of doing it.
 ;Initialize with whatever random garbage is in hram to get an initial seed.
-	ld a, [hJoyLast]
+	ldh a, [hJoyLast]
 	and a
 	push af
-	ld a, [hFrameCounter]
+	ldh a, [hFrameCounter]
 	and a
 	push af
-	ld a, [hDividend2]
+	ldh a, [hDividend]
 	and a
 	push af
-	ld a, [hSpriteAnimFrameCounter]
+	ldh a, [hSpriteAnimFrameCounter]
 	and a
 	push af
 ;;;;;;;;;;;;;;;;;;;;
