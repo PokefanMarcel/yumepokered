@@ -11,34 +11,21 @@ PrintNumber::
 	ldh [hNumToPrint + 1], a
 	ld a, b
 	and $f
-	cp 1
+	dec a
 	jr z, .byte
-	cp 2
+	dec a
 	jr z, .word
-.long
 	ld a, [de]
 	ldh [hNumToPrint], a
 	inc de
-	ld a, [de]
-	ldh [hNumToPrint + 1], a
-	inc de
-	ld a, [de]
-	ldh [hNumToPrint + 2], a
-	jr .start
-
 .word
 	ld a, [de]
 	ldh [hNumToPrint + 1], a
 	inc de
-	ld a, [de]
-	ldh [hNumToPrint + 2], a
-	jr .start
-
 .byte
 	ld a, [de]
 	ldh [hNumToPrint + 2], a
 
-.start
 	push de
 
 	ld d, b
