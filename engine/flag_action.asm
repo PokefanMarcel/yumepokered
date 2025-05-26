@@ -41,14 +41,9 @@ FlagAction: ; marcelnote - optimized
 	and a         ; b = 0 (reset) ?
 	jr z, .reset
 	dec a         ; b = 1 (set) ?
-	jr z, .set
+	jr nz, .read
 
-; read
-	ld a, [hl]
-	and c
-	jr .done
-
-.set
+; set
 	ld a, [hl]
 	or c
 	ld [hl], a
@@ -60,6 +55,11 @@ FlagAction: ; marcelnote - optimized
 	or c
 	cpl
 	ld [hl], a
+	jr .done
+
+.read
+	ld a, [hl]
+	and c
 	; fallthrough
 
 .done
