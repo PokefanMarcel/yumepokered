@@ -6323,19 +6323,17 @@ CheckEnemyStatusConditions:
 GetCurrentMove:
 	ldh a, [hWhoseTurn]
 	and a
-	jp z, .player
 	ld de, wEnemyMoveNum
 	ld a, [wEnemySelectedMove]
-	jr .selected
-.player
+	jr nz, .gotPointers ; jump on opponent's turn
 	ld de, wPlayerMoveNum
 	; Apply InitBattleVariables to TestBattle.
 	ld a, [wStatusFlags7]
 	bit BIT_TEST_BATTLE, a
 	ld a, [wTestBattlePlayerSelectedMove]
-	jr nz, .selected
+	jr nz, .gotPointers
 	ld a, [wPlayerSelectedMove]
-.selected
+.gotPointers
 	ld [wNameListIndex], a
 	dec a
 	ld hl, Moves
