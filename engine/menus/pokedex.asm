@@ -523,7 +523,6 @@ ShowPokedexDataInternal:
 	and a
 	jp z, .waitForButtonPress ; if the pokemon has not been owned, don't print the height, weight, or description
 	inc de ; de = address of feet (height)
-	ld a, [de] ; reads feet, but a is overwritten without being used
 	hlcoord 12, 6
 	lb bc, 1, 2
 	call PrintNumber ; print feet (height)
@@ -532,10 +531,8 @@ IF DEF(_FRA) ; marcelnote - temporary solution to unmapped character
 ELSE
 	ld a, "′"
 ENDC
-	ld [hl], a
-	inc de
+	ld [hli], a
 	inc de ; de = address of inches (height)
-	hlcoord 15, 6
 	lb bc, LEADING_ZEROES | 1, 2
 	call PrintNumber ; print inches (height)
 IF DEF(_FRA) ; marcelnote - temporary solution to unmapped character
@@ -545,29 +542,22 @@ ELSE
 ENDC
 	ld [hl], a
 ; now print the weight (note that weight is stored in tenths of pounds internally)
-	inc de
-	inc de
-	inc de ; de = address of upper byte of weight
-	push de
-; put weight in big-endian order at hDexWeight
-	ld hl, hDexWeight
-	ld a, [hl] ; save existing value of [hDexWeight]
-	push af
+	inc de  ; de = address of lower/first byte of weight (little-endian)
+; put weight in big-endian order at wDexWeight
 	ld a, [de] ; a = upper byte of weight
-	ld [hli], a ; store upper byte of weight in [hDexWeight]
-	ld a, [hl] ; save existing value of [hDexWeight + 1]
-	push af
-	dec de
+	ld [wDexWeight + 1], a
+	inc de
+	push de ; save de = address of last byte of weight
 	ld a, [de] ; a = lower byte of weight
-	ld [hl], a ; store lower byte of weight in [hDexWeight + 1]
-	ld de, hDexWeight
+	ld [wDexWeight], a
+	ld de, wDexWeight
 	hlcoord 11, 8
 	lb bc, 2, 5 ; 2 bytes, 5 digits
 	call PrintNumber ; print weight
 	hlcoord 14, 8
-	ldh a, [hDexWeight + 1]
+	ld a, [wDexWeight + 1]
 	sub 10
-	ldh a, [hDexWeight]
+	ld a, [wDexWeight]
 	sbc 0
 	jr nc, .next
 	ld [hl], "0" ; if the weight is less than 10, put a 0 before the decimal point
@@ -576,11 +566,7 @@ ENDC
 	ld a, [hli]
 	ld [hld], a ; make space for the decimal point by moving the last digit forward one tile
 	ld [hl], "<DOT>" ; decimal point tile
-	pop af
-	ldh [hDexWeight + 1], a ; restore original value of [hDexWeight + 1]
-	pop af
-	ldh [hDexWeight], a ; restore original value of [hDexWeight]
-	pop hl
+	pop hl ; restore hl = address of last byte of weight
 	inc hl ; hl = address of pokedex description text
 	bccoord 1, 11
 	ld a, %10

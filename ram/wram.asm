@@ -830,6 +830,9 @@ wOptionsBattleAnimCursorX:: db
 wOptionsBattleStyleCursorX:: db
 wOptionsCancelCursorX:: db
 
+NEXTU ; marcelnote - new
+wDexWeight:: dw
+
 NEXTU
 ; tile ID of the badge number being drawn
 wBadgeNumberTile:: db
