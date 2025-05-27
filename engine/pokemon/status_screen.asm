@@ -550,10 +550,8 @@ PrintStatsBox:
 	jp PrintNumber
 
 PrintStat:
-	push hl
 	call PrintNumber
-	pop hl
-	ld de, SCREEN_WIDTH * 2
+	ld de, SCREEN_WIDTH * 2 - 5
 	add hl, de
 	ret
 
