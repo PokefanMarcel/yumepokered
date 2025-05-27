@@ -61,6 +61,7 @@ CalcStat::
 	ld a, b             ; a = consider stat exp?
 	and a
 	jr z, .statExpDone  ; consider stat exp? if not, b = 0
+	dec b               ; b = 0 for add hl, bc and sqrtLoop
 	sla c
 	add hl, bc          ; move hl to corresponding stat exp value
 	srl c
@@ -68,7 +69,6 @@ CalcStat::
 	ld h, [hl]
 	ld l, a             ; hl = S = stat exp
 ; calculate stat exp bonus = ceil(Sqrt(stat exp)) in b
-	ld b, 0             ; to start at b = 1
 	ld de, 1            ; to start at de = -1
 .sqrtLoop ; use the formula n^2 = 1 + 3 + 5 + ... + (2n-1)
 	inc b
