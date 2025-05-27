@@ -1,9 +1,7 @@
-PrintNumber::
-; Print the c-digit, b-byte value at de.
-; Allows 2 to 7 digits. For 1-digit numbers, add
-; the value to char "0" instead of calling PrintNumber.
-; Flags LEADING_ZEROES and LEFT_ALIGN can be given
-; in bits 7 and 6 of b respectively.
+PrintNumber:: ; marcelnote - optimized
+; Print the c-digit (2 to 7), b-byte (1 to 3) value at de.
+; For 1-digit numbers, add the value to char "0" instead of calling PrintNumber.
+; Flags LEADING_ZEROES and LEFT_ALIGN are in bits 7 and 6 of b respectively.
 ; Preserves bc, moves hl to next tile to write.
 	push bc
 	xor a
@@ -13,7 +11,7 @@ PrintNumber::
 
 	ld a, c
 	ldh [hNumDigitsToPrint], a ; save c = number of digits to print
-	dec a   ; a = tile offset
+	dec a
 	add l
 	ld l, a
 	jr nc, .noCarry
@@ -40,48 +38,34 @@ PrintNumber::
 	ld a, [de]
 	ldh [hDividend + 3], a
 
-; Print the number right-aligned by default,
-; we will move it later if needed.
+; Print right-aligned by default, we'll move it later if needed.
 .loopDivide
-	ld a, 10
-	ldh [hDivisor], a ; hDivisor = hRemainder get overwritten
+	ld a, 10           ; hDivisor = hRemainder get overwritten,
+	ldh [hDivisor], a  ; so reload it everytime
 	call Divide
 	ldh a, [hRemainder]
-	add "0"           ; a = character number to write
+	add "0"            ; a = character number to write
 	ld [hld], a
+	dec c              ; one less digit to print
+	jr z, .done_PopHL  ; if no more digits to print, we're done
 
 	bit BIT_LEADING_ZEROES, b
-	jr nz, .continue ; if printing leading zeroes, keep going
+	jr nz, .loopDivide ; if printing leading zeroes, keep going
 	; else check if we have printed everything
 	ldh a, [hQuotient + 3]
 	and a
-	jr nz, .continue
+	jr nz, .loopDivide
 	ldh a, [hQuotient + 2]
 	and a
-	jr nz, .continue
+	jr nz, .loopDivide
 	ldh a, [hQuotient + 1]
 	and a
-	jr nz, .continue
-	; we have printed everything, so check left alignment
-	dec c                 ; c = number of digits to print - number of digits printed
-	jr z, .done_PopHL     ; if no more digits to print, we're done anyway
-	bit BIT_LEFT_ALIGN, b
-	jr z, .done_PopHL     ; if no left alignment, we're also done
-	jr .handleLeftAlign   ; else we must move the printed number to the left
-
-.continue
-	dec c ; one less digit to print
 	jr nz, .loopDivide
+	; we have printed everything, now check left alignment
+	bit BIT_LEFT_ALIGN, b
+	jr z, .done_PopHL   ; if no left alignment, we're done
 
-.done_PopHL
-	pop hl  ; restore hl = coord of rightmost tile to write
-.done
-	inc hl  ; hl = coord of next tile after printed number
-	pop bc
-	ret
-
-
-.handleLeftAlign
+; Move the printed number to the left.
 	ldh a, [hNumDigitsToPrint]
 	sub c       ; c = number of digits to print - number of digits printed
 	ld b, a     ; b = number of digits printed
@@ -95,7 +79,7 @@ PrintNumber::
 	dec d       ; de = coord of written tile
 .noCarry2
 
-.moveDigit
+.moveDigit      ; copy the number to the left, going forward
 	inc hl      ; hl = coord of read tile
 	inc de      ; de = coord of written tile
 	ld a, [hl]
@@ -104,11 +88,18 @@ PrintNumber::
 	jr nz, .moveDigit
 
 	ld a, " "
-.fill
+.fill           ; erase the other tiles, going backward
 	ld [hld], a
 	dec c
 	jr nz, .fill
 
-;	pop de      ; restore de = address of number to print (low byte)
-	pop af      ; discard pushed hl
+;	pop de  ; restore de = address of number to print (low byte)
+	pop af  ; discard pushed hl
 	jr .done
+
+.done_PopHL
+	pop hl  ; restore hl = coord of rightmost tile to write
+.done
+	inc hl  ; hl = coord of next tile after printed number
+	pop bc
+	ret
