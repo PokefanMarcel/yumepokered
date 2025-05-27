@@ -2,7 +2,7 @@ PrintNumber:: ; marcelnote - optimized
 ; Print the c-digit (2 to 7), b-byte (1 to 3) value at de.
 ; For 1-digit numbers, add the value to char "0" instead of calling PrintNumber.
 ; Flags LEADING_ZEROES and LEFT_ALIGN are in bits 7 and 6 of b respectively.
-; Preserves bc, moves hl to next tile to write.
+; Preserves bc, moves hl to next tile to write, moves de to low byte of number to print.
 	push bc
 	xor a
 	ldh [hDividend], a
@@ -69,7 +69,7 @@ PrintNumber:: ; marcelnote - optimized
 	ldh a, [hNumDigitsToPrint]
 	sub c       ; c = number of digits to print - number of digits printed
 	ld b, a     ; b = number of digits printed
-;	push de     ; save de = address of number to print (low byte)
+	push de     ; save de = address of number to print (low byte)
 
 	ld d, h
 	ld a, l
@@ -93,7 +93,7 @@ PrintNumber:: ; marcelnote - optimized
 	dec c
 	jr nz, .fill
 
-;	pop de  ; restore de = address of number to print (low byte)
+	pop de  ; restore de = address of number to print (low byte)
 	pop af  ; discard pushed hl
 	jr .done
 

@@ -8,7 +8,6 @@ hSoftReset:: db
 
 UNION
 hBaseTileID:: ; base tile ID to which offsets are added
-hDexWeight::
 hWarpDestinationMap::
 hOAMTile::
 hROMBankTemp::
