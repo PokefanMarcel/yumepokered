@@ -4,203 +4,111 @@ PrintNumber::
 ; the value to char "0" instead of calling PrintNumber.
 ; Flags LEADING_ZEROES and LEFT_ALIGN can be given
 ; in bits 7 and 6 of b respectively.
+; Preserves bc, moves hl to next tile to write.
 	push bc
 	xor a
-	ldh [hPastLeadingZeros], a
-	ldh [hNumToPrint], a
-	ldh [hNumToPrint + 1], a
-	ld a, b
-	and $f
-	dec a
+	ldh [hDividend], a
+	ldh [hDividend + 1], a
+	ldh [hDividend + 2], a
+
+	ld a, c
+	ldh [hNumDigitsToPrint], a ; save c = number of digits to print
+	dec a   ; a = tile offset
+	add l
+	ld l, a
+	jr nc, .noCarry
+	inc h   ; hl = coord of rightmost tile to write
+.noCarry
+
+	push hl ; save hl = coord of rightmost tile to write
+
+	ld a, b ; a = number of bytes to print + printing flags
+	and $3  ; remove flags
+	dec a   ; print 1 byte?
 	jr z, .byte
-	dec a
+	dec a   ; print 2 bytes?
 	jr z, .word
+	; print 3 bytes
 	ld a, [de]
-	ldh [hNumToPrint], a
+	ldh [hDividend + 1], a
 	inc de
 .word
 	ld a, [de]
-	ldh [hNumToPrint + 1], a
+	ldh [hDividend + 2], a
 	inc de
 .byte
 	ld a, [de]
-	ldh [hNumToPrint + 2], a
+	ldh [hDividend + 3], a
 
-	push de
+; Print the number right-aligned by default,
+; we will move it later if needed.
+.loopDivide
+	ld a, 10
+	ldh [hDivisor], a ; hDivisor = hRemainder get overwritten
+	call Divide
+	ldh a, [hRemainder]
+	add "0"           ; a = character number to write
+	ld [hld], a
 
-	ld d, b
-	ld a, c
-	ld b, a
-	xor a
-	ld c, a
-	ld a, b
+	bit BIT_LEADING_ZEROES, b
+	jr nz, .continue ; if printing leading zeroes, keep going
+	; else check if we have printed everything
+	ldh a, [hQuotient + 3]
+	and a
+	jr nz, .continue
+	ldh a, [hQuotient + 2]
+	and a
+	jr nz, .continue
+	ldh a, [hQuotient + 1]
+	and a
+	jr nz, .continue
+	; we have printed everything, so check left alignment
+	dec c                 ; c = number of digits to print - number of digits printed
+	jr z, .done_PopHL     ; if no more digits to print, we're done anyway
+	bit BIT_LEFT_ALIGN, b
+	jr z, .done_PopHL     ; if no left alignment, we're also done
+	jr .handleLeftAlign   ; else we must move the printed number to the left
 
-	cp 2
-	jr z, .tens
-	cp 3
-	jr z, .hundreds
-	cp 4
-	jr z, .thousands
-	cp 5
-	jr z, .ten_thousands
-	cp 6
-	jr z, .hundred_thousands
+.continue
+	dec c ; one less digit to print
+	jr nz, .loopDivide
 
-MACRO print_digit
-
-	IF (\1) / $10000
-		ld a, \1 / $10000 % $100
-	ELSE
-		xor a
-	ENDC
-	ldh [hPowerOf10 + 0], a
-
-	IF (\1) / $100
-		ld a, \1 / $100   % $100
-	ELSE
-		xor a
-	ENDC
-	ldh [hPowerOf10 + 1], a
-
-	ld a, \1 / $1     % $100
-	ldh [hPowerOf10 + 2], a
-
-	call .PrintDigit
-	call .NextDigit
-ENDM
-
-.millions          print_digit 1000000
-.hundred_thousands print_digit 100000
-.ten_thousands     print_digit 10000
-.thousands         print_digit 1000
-.hundreds          print_digit 100
-
-.tens
-	ld c, 0
-	ldh a, [hNumToPrint + 2]
-.mod
-	cp 10
-	jr c, .ok
-	sub 10
-	inc c
-	jr .mod
-.ok
-
-	ld b, a
-	ldh a, [hPastLeadingZeros]
-	or c
-	ldh [hPastLeadingZeros], a
-	jr nz, .past
-	call .PrintLeadingZero
-	jr .next
-.past
-	ld a, "0"
-	add c
-	ld [hl], a
-.next
-
-	call .NextDigit
-.ones
-	ld a, "0"
-	add b
-	ld [hli], a
-	pop de
-	dec de
+.done_PopHL
+	pop hl  ; restore hl = coord of rightmost tile to write
+.done
+	inc hl  ; hl = coord of next tile after printed number
 	pop bc
 	ret
 
-.PrintDigit:
-; Divide by the current decimal place.
-; Print the quotient, and keep the modulus.
-	ld c, 0
-.loop
-	ldh a, [hPowerOf10]
-	ld b, a
-	ldh a, [hNumToPrint]
-	ldh [hSavedNumToPrint], a
-	cp b
-	jr c, .underflow0
-	sub b
-	ldh [hNumToPrint], a
-	ldh a, [hPowerOf10 + 1]
-	ld b, a
-	ldh a, [hNumToPrint + 1]
-	ldh [hSavedNumToPrint + 1], a
-	cp b
-	jr nc, .noborrow1
 
-	ldh a, [hNumToPrint]
-	or 0
-	jr z, .underflow1
-	dec a
-	ldh [hNumToPrint], a
-	ldh a, [hNumToPrint + 1]
-.noborrow1
+.handleLeftAlign
+	ldh a, [hNumDigitsToPrint]
+	sub c       ; c = number of digits to print - number of digits printed
+	ld b, a     ; b = number of digits printed
+;	push de     ; save de = address of number to print (low byte)
 
-	sub b
-	ldh [hNumToPrint + 1], a
-	ldh a, [hPowerOf10 + 2]
-	ld b, a
-	ldh a, [hNumToPrint + 2]
-	ldh [hSavedNumToPrint + 2], a
-	cp b
-	jr nc, .noborrow2
+	ld d, h
+	ld a, l
+	sub c
+	ld e, a
+	jr nc, .noCarry2
+	dec d       ; de = coord of written tile
+.noCarry2
 
-	ldh a, [hNumToPrint + 1]
-	and a
-	jr nz, .borrowed
+.moveDigit
+	inc hl      ; hl = coord of read tile
+	inc de      ; de = coord of written tile
+	ld a, [hl]
+	ld [de], a
+	dec b
+	jr nz, .moveDigit
 
-	ldh a, [hNumToPrint]
-	and a
-	jr z, .underflow2
-	dec a
-	ldh [hNumToPrint], a
-	xor a
-.borrowed
+	ld a, " "
+.fill
+	ld [hld], a
+	dec c
+	jr nz, .fill
 
-	dec a
-	ldh [hNumToPrint + 1], a
-	ldh a, [hNumToPrint + 2]
-.noborrow2
-	sub b
-	ldh [hNumToPrint + 2], a
-	inc c
-	jr .loop
-
-.underflow2
-	ldh a, [hSavedNumToPrint + 1]
-	ldh [hNumToPrint + 1], a
-.underflow1
-	ldh a, [hSavedNumToPrint]
-	ldh [hNumToPrint], a
-.underflow0
-	ldh a, [hPastLeadingZeros]
-	or c
-	jr z, .PrintLeadingZero
-
-	ld a, "0"
-	add c
-	ld [hl], a
-	ldh [hPastLeadingZeros], a
-	ret
-
-.PrintLeadingZero:
-	bit BIT_LEADING_ZEROES, d
-	ret z
-	ld [hl], "0"
-	ret
-
-.NextDigit:
-; Increment unless the number is left-aligned,
-; leading zeroes are not printed, and no digits
-; have been printed yet.
-	bit BIT_LEADING_ZEROES, d
-	jr nz, .inc
-	bit BIT_LEFT_ALIGN, d
-	jr z, .inc
-	ldh a, [hPastLeadingZeros]
-	and a
-	ret z
-.inc
-	inc hl
-	ret
+;	pop de      ; restore de = address of number to print (low byte)
+	pop af      ; discard pushed hl
+	jr .done

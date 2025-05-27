@@ -664,8 +664,8 @@ TradeCenter_PrintPartyListNames:
 	push hl
 	push de
 	push hl
-	ld a, c
-	ldh [hPastLeadingZeros], a
+;	ld a, c
+;	ldh [hPastLeadingZeros], a ; marcelnote - what is that for? deleted these hram registers
 	call GetMonName
 	pop hl
 	call PlaceString
