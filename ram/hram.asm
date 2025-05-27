@@ -107,19 +107,12 @@ hProduct:: ds 4
 NEXTU
 hDividend:: ds 4
 hDivisor:: db
-hMathBuffer:: ds 4
-	ds 1
+	ds 4
+hNumDigitsToPrint:: db ; marcelnote - used in PrintNumber concurrently with Divide
 NEXTU
 hQuotient:: ds 4
 hRemainder:: db
 ENDU
-
-NEXTU
-; PrintNumber (big endian).
-hPastLeadingZeros:: db ; last char printed
-hNumToPrint:: ds 3
-hPowerOf10:: ds 3
-hSavedNumToPrint:: ds 3
 
 NEXTU
 hNPCMovementDirections2Index::
