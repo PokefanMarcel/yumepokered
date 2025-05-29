@@ -49,6 +49,11 @@ Its kanji name 夢 is also an homage to [shinpokered](https://github.com/jojobea
 - A new NPC gives the fossil you didn't choose in Mt. Moon later in the game.
 - Either Hitmonlee or Hitmonchan is also obtainable from a new NPC before the Elite 4.
 
+**Maps**
+- New zones including Mandarin Island, Cinnabar Volcano, Saffron Pokémon Academy, Mt. Moon square, Celadon Grove.
+- Pokécenters have a modern layout with the PC next to the nurse.
+- Power Plant has updated mechanics and graphics.
+
 ### Visual updates
 
 - Several maps have updated graphics and new animations.
@@ -78,7 +83,7 @@ Its kanji name 夢 is also an homage to [shinpokered](https://github.com/jojobea
 
 There are also many other smaller tweaks to the original game, and still more to come!
 
-Link cable functionalities have not been tested yet – try it at your own risk!
+Link cable functionalities have not been tested yet – try it at your own risk.
 
 ## Screenshots
 
@@ -109,6 +114,7 @@ This project owes a lot to existing works, and above all to the pret's [pokered]
 - [Extreme Yellow](https://github.com/RainbowMetalPigeon/ExtremeYellow): overworld HM use, dynamic TM seller,
 - [Yellow Legacy](https://github.com/cRz-Shadows/Pokemon_Yellow_Legacy): inspiration for some balance changes,
 - [pokered-crysaudio](https://github.com/dannye/pokered-crysaudio/tree/1edc6019fb8630bccd94f0b0e7dd4082cf7f4245): updated sound engine,
+- [Polished Crystal](https://github.com/Rangi42/polishedcrystal): math functions, some gfx,
 - some new sprites have been provided by or adapted from Madame Frog/Hatuntun (retrieved [here](https://www.deviantart.com/ghost-missingno/art/Blue-Sprites-for-R-G-B-Y-339796334)), LouLilie ([here](https://www.deviantart.com/loulilie/art/PokemonSpecial-Sprites-Yellow-302559354)), Corra, Mauve and FrenchOrange (from the pokered discord),
 - the invaluable help from the amazing people on the pokered Discord,
 - and many others...
