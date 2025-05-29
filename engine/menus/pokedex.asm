@@ -451,7 +451,12 @@ ShowPokedexDataInternal:
 	call PlaceString ; draw horizontal divider line
 
 	hlcoord 9, 6
+	ld a, [wOptions]
+	bit BIT_UNITS_METRIC, a
 	ld de, HeightWeightText
+	jr z, .gotHTWTText
+	ld de, HeightWeightMetricText
+.gotHTWTText
 	call PlaceString
 
 	call GetMonName
@@ -523,25 +528,20 @@ ShowPokedexDataInternal:
 	and a
 	jp z, .waitForButtonPress ; if the pokemon has not been owned, don't print the height, weight, or description
 	inc de ; de = address of feet (height)
+
+	ld a, [wOptions]
+	bit BIT_UNITS_METRIC, a
+	jr nz, .printMetric
+
+; print Imperial
 	hlcoord 12, 6
 	lb bc, 1, 2
 	call PrintNumber ; print feet (height)
-IF DEF(_FRA) ; marcelnote - temporary solution to unmapped character
-	ld a, "’"
-ELSE
-	ld a, "′"
-ENDC
-	ld [hli], a
+	inc hl ; skip "′"
 	inc de ; de = address of inches (height)
 	lb bc, LEADING_ZEROES | 1, 2
 	call PrintNumber ; print inches (height)
-IF DEF(_FRA) ; marcelnote - temporary solution to unmapped character
-	ld a, "”"
-ELSE
-	ld a, "″"
-ENDC
-	ld [hl], a
-; now print the weight (note that weight is stored in tenths of pounds internally)
+; now print the weight (stored in tenths of pounds)
 	inc de  ; de = address of lower/first byte of weight (little-endian)
 ; put weight in big-endian order at wDexWeight
 	ld a, [de] ; a = upper byte of weight
@@ -559,15 +559,68 @@ ENDC
 	sub 10
 	ld a, [wDexWeight]
 	sbc 0
-	jr nc, .next
+	jr nc, .moreThan1Lb
 	ld [hl], "0" ; if the weight is less than 10, put a 0 before the decimal point
-.next
+.moreThan1Lb
+	inc hl
+	ld a, [hli]
+	ld [hld], a ; make space for the decimal point by moving the last digit forward one tile
+	ld [hl], "<DOT>" ; decimal point tile
+	pop hl ; restore hl = address of last byte of weight (pounds)
+	inc hl ; skip metric entries
+	inc hl
+	inc hl
+	inc hl ; hl = address of pokedex description text
+	jr .printData
+
+.printMetric
+	inc de ; skip imperial entries
+	inc de
+	inc de
+	inc de ; de = address of height in (tenth of) meters
+
+	hlcoord 13, 6
+	lb bc, 1, 3
+	call PrintNumber ; print height in meters
+	hlcoord 14, 6
+	ld a, [de]
+	cp 10
+	jr nc, .moreThan1Meter
+	ld [hl], "0" ; if the weight is less than 10, put a 0 before the decimal point
+.moreThan1Meter
+	inc hl
+	ld a, [hli]
+	ld [hld], a ; make space for the decimal point by moving the last digit forward one tile
+	ld [hl], "<DOT>" ; decimal point tile
+; now print the weight (stored in tenths of kg)
+	inc de  ; de = address of lower/first byte of weight (little-endian)
+; put weight in big-endian order at wDexWeight
+	ld a, [de] ; a = upper byte of weight
+	ld [wDexWeight + 1], a
+	inc de
+	push de ; save de = address of last byte of weight
+	ld a, [de] ; a = lower byte of weight
+	ld [wDexWeight], a
+	ld de, wDexWeight
+	hlcoord 11, 8
+	lb bc, 2, 5 ; 2 bytes, 5 digits
+	call PrintNumber ; print weight
+	hlcoord 14, 8
+	ld a, [wDexWeight + 1]
+	sub 10
+	ld a, [wDexWeight]
+	sbc 0
+	jr nc, .moreThan1Kg
+	ld [hl], "0" ; if the weight is less than 10, put a 0 before the decimal point
+.moreThan1Kg
 	inc hl
 	ld a, [hli]
 	ld [hld], a ; make space for the decimal point by moving the last digit forward one tile
 	ld [hl], "<DOT>" ; decimal point tile
 	pop hl ; restore hl = address of last byte of weight
 	inc hl ; hl = address of pokedex description text
+
+.printData
 	bccoord 1, 11
 	ld a, %10
 	ldh [hClearLetterPrintingDelayFlags], a
@@ -600,9 +653,9 @@ ELSE
 ENDC
 	next "WT   ???lb@"
 
-; XXX does anything point to this?
-PokeText:
-	db "#@"
+HeightWeightMetricText:
+	db   "HT   ???m"
+	next "WT   ???kg@"
 
 ; horizontal line that divides the pokedex text description from the rest of the data
 PokedexDataDividerLine:

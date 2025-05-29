@@ -58,7 +58,7 @@ ChampionsRoomRivalReadyToBattleScript:
 	ld a, TEXT_CHAMPIONSROOM_RIVAL_REMATCH
 	jr nz, .rematch
 	ld hl, wOptions
-	res BIT_BATTLE_ANIMATION, [hl]
+	res BIT_BATTLE_ANIM_OFF, [hl]
 	ld a, TEXT_CHAMPIONSROOM_RIVAL
 .rematch
 	;;;;;;
