@@ -646,11 +646,7 @@ ShowPokedexDataInternal:
 	ret
 
 HeightWeightText:
-IF DEF(_FRA)
-	db   "HT  ?’??”"
-ELSE
 	db   "HT  ?′??″"
-ENDC
 	next "WT   ???lb@"
 
 HeightWeightMetricText:

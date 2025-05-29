@@ -94,9 +94,8 @@
 ; Actual characters (from other graphics files)
 
 	; needed for ShowPokedexDataInternal (see engine/menus/pokedex.asm)
-	charmap "<M>",       $60 ; gfx/pokedex/pokedex.png
-	charmap "<K>",       $61 ; gfx/pokedex/pokedex.png
-	charmap "<G>",       $62 ; gfx/pokedex/pokedex.png
+	charmap "′",         $60 ; gfx/pokedex/pokedex.png
+	charmap "″",         $61 ; gfx/pokedex/pokedex.png
 
 	; needed for LoadTownMap_Fly (see engine/items/town_map.asm)
 	charmap "▲",         $ed ; gfx/town_map/up_arrow.1bpp
