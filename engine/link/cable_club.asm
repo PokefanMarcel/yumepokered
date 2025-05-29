@@ -282,7 +282,7 @@ CableClub_DoBattleOrTradeAgain:
 	call ClearScreen
 	call Delay3
 	ld hl, wOptions
-	res BIT_BATTLE_ANIMATION, [hl]
+	res BIT_BATTLE_ANIM_OFF, [hl]
 	predef InitOpponent
 	predef HealParty
 	jp ReturnToCableClubRoom

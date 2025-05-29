@@ -30,11 +30,12 @@ DEF BIT_FONT_LOADED EQU 0
 	const BIT_CUR_MAP_USED_ELEVATOR ; 7
 
 ; wOptions
-DEF TEXT_DELAY_MASK EQU %111
-	const_def 5
-	const BIT_60_FPS           ; 5 ; marcelnote - new 60fps option
-	const BIT_BATTLE_SHIFT     ; 6
-	const BIT_BATTLE_ANIMATION ; 7
+DEF TEXT_DELAY_MASK EQU %11 ; marcelnote - changed from %111 = 7
+	const_def 4
+	const BIT_60_FPS           ; 4 ; marcelnote - new 60fps option
+	const BIT_UNITS_METRIC     ; 5 ; marcelnote - new metric / imperial option
+	const BIT_BATTLE_SET       ; 6
+	const BIT_BATTLE_ANIM_OFF  ; 7
 
 DEF TEXT_DELAY_FAST   EQU %00 ; 0  ; marcelnote - changed from %001 = 1
 DEF TEXT_DELAY_MEDIUM EQU %01 ; 1  ; marcelnote - changed from %011 = 3

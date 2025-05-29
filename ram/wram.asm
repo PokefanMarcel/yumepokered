@@ -825,10 +825,7 @@ wTrainerInfoTextBoxWidth:: db
 wTrainerInfoTextBoxNextRowOffset:: db
 
 NEXTU
-wOptionsTextSpeedCursorX:: db
-wOptionsBattleAnimCursorX:: db
-wOptionsBattleStyleCursorX:: db
-wOptionsCancelCursorX:: db
+wOptionsCursorLocation:: db ; marcelnote - new from pokeyellow
 
 NEXTU ; marcelnote - new
 wDexWeight:: dw

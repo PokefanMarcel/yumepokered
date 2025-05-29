@@ -1429,7 +1429,7 @@ EnemySendOutFirstMon:
 	cp LINK_STATE_BATTLING
 	jr z, .next4
 	ld a, [wOptions]
-	bit BIT_BATTLE_SHIFT, a
+	bit BIT_BATTLE_SET, a
 	jr nz, .next4
 ; marcelnote - SET mode in Battle hall
 	ld a, [wTrainerClass]
