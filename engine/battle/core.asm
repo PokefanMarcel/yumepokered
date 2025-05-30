@@ -5419,6 +5419,8 @@ IncrementMovePP:
 
 ; function to adjust the base damage of an attack to account for type effectiveness
 AdjustDamageForMoveType:
+	ldh a, [hWhoseTurn]
+	and a
 ; values for player turn
 	ld hl, wBattleMonType
 	ld a, [hli]
@@ -5429,9 +5431,6 @@ AdjustDamageForMoveType:
 	ld d, a    ; d = type 1 of defender
 	ld e, [hl] ; e = type 2 of defender
 	ld a, [wPlayerMoveType]
-	ld [wMoveType], a
-	ldh a, [hWhoseTurn]
-	and a
 	jr z, .next
 ; values for enemy turn
 	ld hl, wEnemyMonType
@@ -5443,24 +5442,22 @@ AdjustDamageForMoveType:
 	ld d, a    ; d = type 1 of defender
 	ld e, [hl] ; e = type 2 of defender
 	ld a, [wEnemyMoveType]
-	ld [wMoveType], a
 .next
-	ld a, [wMoveType]
+	ld [wMoveType], a
 	cp b ; does the move type match type 1 of the attacker?
 	jr z, .sameTypeAttackBonus
 	cp c ; does the move type match type 2 of the attacker?
-	jr z, .sameTypeAttackBonus
-	jr .skipSameTypeAttackBonus
+	jr nz, .skipSameTypeAttackBonus
 .sameTypeAttackBonus
 ; if the move type matches one of the attacker's types
-	ld hl, wDamage + 1
-	ld a, [hld]
-	ld h, [hl]
-	ld l, a    ; hl = damage
+	ld hl, wDamage
+	ld a, [hli]
+	ld l, [hl]
+	ld h, a    ; hl = damage
 	ld b, h
 	ld c, l    ; bc = damage
 	srl b
-	rr c      ; bc = floor(0.5 * damage)
+	rr c       ; bc = floor(0.5 * damage)
 	add hl, bc ; hl = floor(1.5 * damage)
 ; store damage
 	ld a, h
@@ -5476,44 +5473,39 @@ AdjustDamageForMoveType:
 .loop
 	ld a, [hli] ; a = "attacking type" of the current type pair
 	cp $ff
-	jr z, .done
-	cp b ; does move type match "attacking type"?
+	ret z       ; function exits here
+	cp b        ; does move type match "attacking type"?
 	jr nz, .nextTypePair
-	ld a, [hl] ; a = "defending type" of the current type pair
-	cp d ; does type 1 of defender match "defending type"?
+	ld a, [hli] ; a = "defending type" of the current type pair
+	cp d        ; does type 1 of defender match "defending type"?
 	jr z, .matchingPairFound
-	cp e ; does type 2 of defender match "defending type"?
-	jr z, .matchingPairFound
-	jr .nextTypePair
+	cp e        ; does type 2 of defender match "defending type"?
+	jr nz, .nextTypePair2
 .matchingPairFound
 ; if the move type matches the "attacking type" and one of the defender's types matches the "defending type"
-	push hl
-	push bc
-	inc hl
-	ld a, [wDamageMultipliers]
+	ld a, [wDamageMultipliers] ; by default this is EFFECTIVE
 	and 1 << BIT_STAB_DAMAGE
-	ld b, a
-	ld a, [hl] ; a = damage multiplier
+	ld c, a     ; save STAB damage bit
+	ld a, [hli] ; a = damage multiplier
 	ldh [hMultiplier], a
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - pokered Wiki tutorial to output correct type effectiveness message
-	and a  ; cp NO_EFFECT
+	and a       ; NO_EFFECT?
 	jr z, .gotMultiplier
 	cp NOT_VERY_EFFECTIVE
 	jr nz, .notHalf
 	ld a, [wDamageMultipliers]
 	and EFFECTIVENESS_MASK
-	srl a
+	rra ; carry is clear
 	jr .gotMultiplier
 .notHalf
 	cp SUPER_EFFECTIVE
 	jr nz, .gotMultiplier
 	ld a, [wDamageMultipliers]
 	and EFFECTIVENESS_MASK
-	sla a
+	rla ; carry is clear
 .gotMultiplier
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-	add b
+	add c      ; readd STAB damage bit
 	ld [wDamageMultipliers], a
+	push hl ; save hl = address of next attacker type
 	xor a
 	ldh [hMultiplicand], a
 	ld hl, wDamage
@@ -5527,24 +5519,24 @@ AdjustDamageForMoveType:
 	call Divide
 	ldh a, [hQuotient + 2]
 	ld [hli], a
-	ld b, a
+	ld c, a
 	ldh a, [hQuotient + 3]
 	ld [hl], a
-	or b ; is damage 0?
-	jr nz, .skipTypeImmunity
+	pop hl ; restore hl = address of next attacker type
+	or c ; is damage 0?
+	jr nz, .loop
 ; if damage is 0, make the move miss
 ; this only occurs if a move that would do 2 or 3 damage is 0.25x effective against the target
 	inc a
 	ld [wMoveMissed], a
-.skipTypeImmunity
-	pop bc
-	pop hl
+	jr .loop
+
 .nextTypePair
-	inc hl
-	inc hl
-	jp .loop
-.done
-	ret
+	inc hl ; move hl to damage multiplier
+.nextTypePair2
+	inc hl ; move hl to next attacker type
+	jr .loop
+
 
 ; function to tell how effective the type of an enemy attack is on the player's current pokemon
 ; this doesn't take into account the effects that dual types can have
