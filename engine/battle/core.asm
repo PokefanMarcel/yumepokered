@@ -3278,8 +3278,6 @@ CheckIfPlayerNeedsToChargeUp:
 	ld a, [wPlayerMoveEffect]
 	cp CHARGE_EFFECT
 	jp z, JumpMoveEffect
-;	cp FLY_EFFECT ; marcelnote - replaced by CHARGE_EFFECT
-;	jp z, JumpMoveEffect
 	jr PlayerCanExecuteMove
 
 ; in-battle stuff
@@ -3297,19 +3295,18 @@ PlayerCanExecuteMove:
 	rst _Bankswitch ; marcelnote - free space in Home bank, changed from call Bankswitch
 	ld a, [wPlayerMoveEffect] ; effect of the move just used
 	ld hl, ResidualEffects1
-	;ld de, 1
 	call IsInList
 	jp c, JumpMoveEffect ; ResidualEffects1 moves skip damage calculation and accuracy tests
 	                    ; unless executed as part of their exclusive effect functions
 	ld a, [wPlayerMoveEffect]
 	ld hl, SpecialEffectsCont
-	;ld de, 1
 	call IsInList
-	call c, JumpMoveEffect ; execute the effects of SpecialEffectsCont moves (e.g. Wrap, Thrash) but don't skip anything
+	call c, JumpMoveEffect ; execute the effects of e.g. Wrap, Thrash but don't skip anything
+	; fallthrough
+
 PlayerCalcMoveDamage:
 	ld a, [wPlayerMoveEffect]
 	ld hl, SetDamageEffects
-	;ld de, 1
 	call IsInList
 	jp c, .moveHitTest ; SetDamageEffects moves (e.g. Seismic Toss and Super Fang) skip damage calculation
 	call CriticalHitTest
@@ -3387,7 +3384,6 @@ MirrorMoveCheck:
 .next
 	ld a, [wPlayerMoveEffect]
 	ld hl, ResidualEffects2
-	;ld de, 1
 	call IsInList
 	jp c, JumpMoveEffect ; done here after executing effects of ResidualEffects2
 	ld a, [wMoveMissed]
