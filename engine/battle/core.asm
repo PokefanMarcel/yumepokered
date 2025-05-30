@@ -5592,12 +5592,12 @@ INCLUDE "data/types/type_matchups.asm"
 
 ; some tests that need to pass for a move to hit
 MoveHitTest:
+	ldh a, [hWhoseTurn]
+	and a
 ; player's turn
 	ld hl, wEnemyBattleStatus1
 	ld de, wPlayerMoveEffect
 	ld bc, wEnemyMonStatus
-	ldh a, [hWhoseTurn]
-	and a
 	jr z, .dreamEaterCheck
 ; enemy's turn
 	ld hl, wPlayerBattleStatus1
@@ -5616,9 +5616,8 @@ MoveHitTest:
 	ret z ; Swift never misses (this was fixed from the Japanese versions)
 	call CheckTargetSubstitute ; substitute check (note that this overwrites a)
 	jr z, .checkForDigOrFlyStatus
-; The fix for Swift broke this code. It's supposed to prevent HP draining moves from working on Substitutes.
-; Since CheckTargetSubstitute overwrites a with either $00 or $01, it never works.
-	ld a, [de]         ; marcelnote - fixes aforementioned bug (fix from pokered Wiki)
+; HP draining moves fail on Substitutes.
+	ld a, [de]         ; marcelnote - fix from pokered Wiki
 	cp DRAIN_HP_EFFECT
 	jr z, .moveMissed
 	cp DREAM_EATER_EFFECT
@@ -5626,28 +5625,15 @@ MoveHitTest:
 .checkForDigOrFlyStatus
 	bit INVULNERABLE, [hl]
 	jr nz, .moveMissed
+
 	ldh a, [hWhoseTurn]
 	and a
 	jr nz, .enemyTurn
-.playerTurn
-; this checks if the move effect is disallowed by mist
+; player turn
 	ld a, [wPlayerMoveEffect]
-	cp ATTACK_DOWN1_EFFECT
-	jr c, .skipEnemyMistCheck
-	cp HAZE_EFFECT + 1
-	jr c, .enemyMistCheck
-	cp ATTACK_DOWN2_EFFECT
-	jr c, .skipEnemyMistCheck
-	cp REFLECT_EFFECT + 1
-	jr c, .enemyMistCheck
-	jr .skipEnemyMistCheck
-.enemyMistCheck
-; if move effect is from $12 to $19 inclusive or $3a to $41 inclusive
-; i.e. the following moves
-; GROWL, TAIL WHIP, LEER, STRING SHOT, SAND-ATTACK, SMOKESCREEN, KINESIS,
-; FLASH, CONVERSION*, HAZE*, SCREECH, LIGHT SCREEN*, REFLECT*
-; the moves that are marked with an asterisk are not affected since this
-; function is not called when those moves are used
+	ld hl, MistCanceledEffectsList
+	call IsInList
+	jr nc, .skipEnemyMistCheck
 	ld a, [wEnemyBattleStatus2]
 	bit PROTECTED_BY_MIST, a ; is mon protected by mist?
 	jr nz, .moveMissed
@@ -5658,16 +5644,9 @@ MoveHitTest:
 	jr .calcHitChance
 .enemyTurn
 	ld a, [wEnemyMoveEffect]
-	cp ATTACK_DOWN1_EFFECT
-	jr c, .skipPlayerMistCheck
-	cp HAZE_EFFECT + 1
-	jr c, .playerMistCheck
-	cp ATTACK_DOWN2_EFFECT
-	jr c, .skipPlayerMistCheck
-	cp REFLECT_EFFECT + 1
-	jr c, .playerMistCheck
-	jr .skipPlayerMistCheck
-.playerMistCheck
+	ld hl, MistCanceledEffectsList
+	call IsInList
+	jr nc, .skipPlayerMistCheck
 ; similar to enemy mist check
 	ld a, [wPlayerBattleStatus2]
 	bit PROTECTED_BY_MIST, a ; is mon protected by mist?
@@ -5678,20 +5657,18 @@ MoveHitTest:
 	ret nz ; if so, always hit regardless of accuracy/evasion
 .calcHitChance
 	call CalcHitChance ; scale the move accuracy according to attacker's accuracy and target's evasion
-	ld a, [wPlayerMoveAccuracy]
-	ld b, a
 	ldh a, [hWhoseTurn]
 	and a
+	ld a, [wPlayerMoveAccuracy]
 	jr z, .doAccuracyCheck
 	ld a, [wEnemyMoveAccuracy]
-	ld b, a
 .doAccuracyCheck
 ; if the random number generated is greater than or equal to the scaled accuracy, the move misses
 ; note that this means that even the highest accuracy is still just a 255/256 chance, not 100%
+	ld b, a
 	call BattleRandom
 	cp b
-	jr nc, .moveMissed
-	ret
+	ret c ; move succeeds if b > a, so always fails when a = $ff = 255
 .moveMissed
 	xor a
 	ld hl, wDamage ; zero the damage
@@ -5707,6 +5684,9 @@ MoveHitTest:
 .playerTurn2
 	res USING_TRAPPING_MOVE, [hl] ; end multi-turn attack e.g. wrap
 	ret
+
+INCLUDE "data/battle/mist_canceled_effects.asm"
+
 
 ; values for player turn
 CalcHitChance:
