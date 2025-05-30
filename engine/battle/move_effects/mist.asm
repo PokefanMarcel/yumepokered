@@ -13,6 +13,8 @@ MistEffect_:
 	jp PrintText
 
 .butItFailed
+	ld c, 50
+	call DelayFrames
 	jpfar PrintButItFailedText_
 
 ShroudedInMistText:
