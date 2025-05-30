@@ -64,7 +64,7 @@ Route15GateLeftBinoculars:
 	tx_pre Route15GateLeftBinocularsText
 	ld a, ARTICUNO
 	ld [wCurPartySpecies], a
-	call PlayCry
+;	call PlayCry ; marcelnote - play cry within DisplayMonFrontSpriteInBox (fix from PureRGB)
 	jp DisplayMonFrontSpriteInBox
 
 Route15GateLeftBinocularsText::
