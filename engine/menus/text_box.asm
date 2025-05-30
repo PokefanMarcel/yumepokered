@@ -18,6 +18,7 @@ DisplayTextBoxID_::
 	jr c, .textAndCoordTableMatch
 .done
 	ret
+
 .functionTableMatch
 	ld a, [hli]
 	ld h, [hl]
