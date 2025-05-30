@@ -333,18 +333,37 @@ DugAHoleText:
 	text_far _DugAHoleText
 	text_end
 
-
-TrappingEffect:
+; BIND, WRAP, FIRE_SPIN, CLAMP
+ASSERT FIRE_SPIN > BIND
+ASSERT FIRE_SPIN > WRAP
+ASSERT FIRE_SPIN < CLAMP
+TrappingEffect: ; marcelnote - added immunity check
 	ldh a, [hWhoseTurn]
 	and a
 	ld hl, wPlayerBattleStatus1
 	ld de, wPlayerNumAttacksLeft
+	ld bc, wEnemyMonType
+	ld a, [wPlayerMoveNum]
 	jr z, .gotPointers ; jump on player's turn
 	ld hl, wEnemyBattleStatus1
 	ld de, wEnemyNumAttacksLeft
+	ld bc, wBattleMonType
+	ld a, [wEnemyMoveNum]
 .gotPointers
 	bit USING_TRAPPING_MOVE, [hl]
 	ret nz
+	cp FIRE_SPIN
+	jr nc, .notImmune
+.testGhosts
+	; move is either WRAP or BIND, so GHOSTs are immune
+	ld a, [bc] ; a = type 1 of defending Mon
+	cp GHOST
+	ret z
+	inc bc
+	ld a, [bc] ; a = type 2 of defending Mon
+	cp GHOST
+	ret z
+.notImmune
 	set USING_TRAPPING_MOVE, [hl] ; mon is now using a trapping move
 	call ClearHyperBeam ; since this effect is called before testing whether the move will hit,
                         ; the target won't need to recharge even if the trapping move missed
