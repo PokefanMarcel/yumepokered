@@ -5849,19 +5849,16 @@ EnemyCanExecuteMove:
 	call PrintMonName1Text
 	ld a, [wEnemyMoveEffect]
 	ld hl, ResidualEffects1
-	;ld de, $1
 	call IsInList
 	jp c, JumpMoveEffect
 	ld a, [wEnemyMoveEffect]
 	ld hl, SpecialEffectsCont
-	;ld de, $1
 	call IsInList
 	call c, JumpMoveEffect
 EnemyCalcMoveDamage:
 	call SwapPlayerAndEnemyLevels
 	ld a, [wEnemyMoveEffect]
 	ld hl, SetDamageEffects
-	;ld de, $1
 	call IsInList
 	jp c, EnemyMoveHitTest
 	call CriticalHitTest
@@ -6045,7 +6042,7 @@ CheckEnemyStatusConditions:
 	jp .enemyReturnToHL
 .checkIfTrapped
 	ld a, [wPlayerBattleStatus1]
-	bit USING_TRAPPING_MOVE, a ; is the player using a multi-turn attack like warp
+	bit USING_TRAPPING_MOVE, a ; is the player using a multi-turn attack like wrap
 	jr z, .checkIfFlinched
 	ld hl, CantMoveText
 	call PrintText
