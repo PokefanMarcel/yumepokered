@@ -2655,7 +2655,7 @@ PlayApplyingAttackSound:
 ; don't play any sound at all if move is ineffective
 	call WaitForSoundToFinish
 	ld a, [wDamageMultipliers]
-	and $7f
+	and EFFECTIVENESS_MASK
 	ret z
 	cp 10
 	ld bc, $20
