@@ -5609,7 +5609,7 @@ MoveHitTest:
 	jr nz, .swiftCheck
 	ld a, [bc]
 	and SLP_MASK
-	jp z, .moveMissed
+	jr z, .moveMissed
 .swiftCheck
 	ld a, [de]
 	cp SWIFT_EFFECT
@@ -5620,12 +5620,12 @@ MoveHitTest:
 ; Since CheckTargetSubstitute overwrites a with either $00 or $01, it never works.
 	ld a, [de]         ; marcelnote - fixes aforementioned bug (fix from pokered Wiki)
 	cp DRAIN_HP_EFFECT
-	jp z, .moveMissed
+	jr z, .moveMissed
 	cp DREAM_EATER_EFFECT
-	jp z, .moveMissed
+	jr z, .moveMissed
 .checkForDigOrFlyStatus
 	bit INVULNERABLE, [hl]
-	jp nz, .moveMissed
+	jr nz, .moveMissed
 	ldh a, [hWhoseTurn]
 	and a
 	jr nz, .enemyTurn
@@ -5650,7 +5650,7 @@ MoveHitTest:
 ; function is not called when those moves are used
 	ld a, [wEnemyBattleStatus2]
 	bit PROTECTED_BY_MIST, a ; is mon protected by mist?
-	jp nz, .moveMissed
+	jr nz, .moveMissed
 .skipEnemyMistCheck
 	ld a, [wPlayerBattleStatus2]
 	bit USING_X_ACCURACY, a ; is the player using X Accuracy?
@@ -5671,7 +5671,7 @@ MoveHitTest:
 ; similar to enemy mist check
 	ld a, [wPlayerBattleStatus2]
 	bit PROTECTED_BY_MIST, a ; is mon protected by mist?
-	jp nz, .moveMissed
+	jr nz, .moveMissed
 .skipPlayerMistCheck
 	ld a, [wEnemyBattleStatus2]
 	bit USING_X_ACCURACY, a ; is the enemy using X Accuracy?
