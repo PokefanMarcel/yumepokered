@@ -530,7 +530,7 @@ DrawTrainerInfo:
 	call TrainerInfo_FarCopyData
 	ld hl, BadgeNumbersTileGraphics  ; badge number tile patterns
 	ld de, vChars1 tile $58
-	ld bc, 10 tiles
+	ld bc, 8 tiles
 	call TrainerInfo_FarCopyData
 	ld hl, GymLeaderFaceAndBadgeTileGraphics  ; gym leader face and badge tile patterns
 	ld de, vChars2 tile $20
