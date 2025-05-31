@@ -24,7 +24,7 @@ AddPartyMon::
 	push hl
 	push de
 	push bc
-	farcall _AddPartyMon
+	callfar _AddPartyMon
 	pop bc
 	pop de
 	pop hl

@@ -281,7 +281,7 @@ HandlePartyMenuInput::
 .handleSwap
 	ld a, [wCurrentMenuItem]
 	ld [wWhichPokemon], a
-	farcall SwitchPartyMon
+	callfar SwitchPartyMon
 	jr HandlePartyMenuInput
 
 DrawPartyMenu::

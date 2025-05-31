@@ -1879,7 +1879,7 @@ DrawPlayerHUDAndHPBar:
 	hlcoord 10, 7
 	call CenterMonName
 	call PlaceString
-	farcall PrintEXPBar	; joenote - ADDED: exp bar
+	callfar PrintEXPBar	; joenote - ADDED: exp bar
 	ld hl, wBattleMonSpecies
 	ld de, wLoadedMon
 	ld bc, wBattleMonDVs - wBattleMonSpecies

@@ -8,8 +8,8 @@ DisplayStartMenu::
 	call PlaySound
 
 RedisplayStartMenu::
-	farcall DrawStartMenu
-	farcall PrintSafariZoneSteps ; print Safari Zone info, if in Safari Zone
+	callfar DrawStartMenu
+	callfar PrintSafariZoneSteps ; print Safari Zone info, if in Safari Zone
 	call UpdateSprites
 .loop
 	call HandleMenuInput
