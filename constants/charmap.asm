@@ -78,7 +78,7 @@
 	charmap "<RIGHT_CORNER>",   $73 ; HUD lower-right corner tile
 
 	charmap "<ID>",     $74
-	charmap "№",        $75
+	charmap "№",        $75 ; also in gfx/pokedex/pokedex.png
 	charmap "<ST>",     $76 ; left of [START▶] button
 	charmap "<AR>",     $77 ; middle of [START▶] button
 	charmap "<T▶>",     $78 ; right of [START▶] button
@@ -98,8 +98,14 @@
 ; Actual characters (from other graphics files)
 
 	; needed for ShowPokedexDataInternal (see engine/menus/pokedex.asm)
-	charmap "′",         $60 ; gfx/pokedex/pokedex.png
-	charmap "″",         $61 ; gfx/pokedex/pokedex.png
+	charmap "′",         $70 ; gfx/pokedex/pokedex.png
+	charmap "″",         $71 ; gfx/pokedex/pokedex.png
+	charmap "<m>",       $72 ; gfx/pokedex/pokedex.png
+	charmap "<k>",       $73 ; gfx/pokedex/pokedex.png
+	charmap "<g>",       $74 ; gfx/pokedex/pokedex.png
+;	charmap "№",         $75 ; defined in gfx/font/font_battle_extra.png
+	charmap "<l>",       $76 ; gfx/pokedex/pokedex.png
+	charmap "<b>",       $77 ; gfx/pokedex/pokedex.png
 
 	; needed for LoadTownMap_Fly (see engine/items/town_map.asm)
 	charmap "▲",         $ed ; gfx/town_map/up_arrow.1bpp
