@@ -3005,51 +3005,166 @@ ItemUseReloadOverworldData:
 	call LoadCurrentMapView
 	jp UpdateSprites
 
-; creates a list at wBuffer of maps where the mon in [wPokedexNum] can be found.
-; this is used by the pokedex to display locations the mon can be found on the map.
-FindWildLocationsOfMon:
-	ld hl, WildDataPointers
+
+; Creates a list at wBuffer of maps where the mon in [wPokedexNum] can be found on land.
+FindWildLandLocationsOfMon: ; marcelnote - modified version of FindWildLocationsOfMon
+	ld hl, WildDataPointers + 1
 	ld de, wBuffer
-	ld c, $0
+	ld c, 0 ; c = map ID tracker
 .loop
-	inc hl
+	push hl ; save hl -> high byte of map data pointer
 	ld a, [hld]
-	inc a
+	ld l, [hl]
+	ld h, a
+	inc a   ; is high byte $ff?
 	jr z, .done
-	push hl
 	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld a, [hli]
-	and a
-	call nz, CheckMapForMon ; land
-	ld a, [hli]
-	and a
-	call nz, CheckMapForMon ; water
-	pop hl
+	and a   ; are there grass wild Mons?
+	call nz, CheckMapForMon ; grass
+	pop hl  ; restore hl -> high byte of map data pointer
 	inc hl
-	inc hl
+	inc hl  ; move hl to next map data pointer (low byte)
 	inc c
 	jr .loop
 .done
-	ld a, $ff ; list terminator
+	pop hl     ; clear the stack
+	ld [de], a ; exceptionally the terminator is 0 because $ff is Mandarin island
+	ret
+
+; Creates a list at wBuffer of maps where the mon in [wPokedexNum] can be found by surfing.
+FindWildWaterLocationsOfMon: ; marcelnote - modified version of FindWildLocationsOfMon
+	ld hl, WildDataPointers + 1
+	ld de, wBuffer
+	ld c, 0 ; c = map ID tracker
+.loop
+	push hl ; save hl -> high byte of map data pointer
+	ld a, [hld]
+	ld l, [hl]
+	ld h, a
+	inc a   ; is high byte $ff?
+	jr z, .done
+	ld a, [hli]
+	and a   ; are there grass wild Mons?
+	jr z, .noGrassMons
+	; skip grass Mons
+	push bc ; save c = map ID tracker
+	ld b, 0
+	ld c, 2 * NUM_WILDMONS
+	add hl, bc
+	pop bc  ; restore c = map ID tracker
+.noGrassMons
+	ld a, [hli]
+	and a   ; are there water wild Mons?
+	call nz, CheckMapForMon ; water
+	pop hl  ; restore hl -> high byte of map data pointer
+	inc hl
+	inc hl  ; move hl to next map data pointer (low byte)
+	inc c
+	jr .loop
+.done
+	pop hl     ; clear the stack
+	ld [de], a ; exceptionally the terminator is 0 because $ff is Mandarin island
+	ret
+
+
+CheckMapForMon: ; marcelnote - modified
+	push de ; save buffer address
+	ld d, NUM_WILDMONS
+	ld a, [wPokedexNum]
+	ld e, a ; e = Mon to search for
+.loop
+	inc hl      ; skip level
+	ld a, [hli] ; next Mon
+	cp e
+	jr z, .foundMon
+	dec d
+	jr nz, .loop
+	; Mon is not in map
+	pop de  ; restore buffer address
+	ret
+
+.foundMon
+	pop de  ; restore buffer address
+	ld a, c
+	ld [wMapCoordsTemp], a
+	push bc ; save c = map ID tracker
+	push de
+	callfar LoadTownMapEntryFar ; transforms [wMapCoordsTemp] from map ID into map coords
+	pop de
+	call AddIfNotDuplicate
+	pop bc  ; restore c = map ID tracker
+	ret
+
+
+FindWildRodsLocationsOfMon: ; marcelnote - new
+	ld de, wBuffer
+	ld hl, OldRodData
+	call .mapsLoop
+	ld hl, GoodRodData
+	call .mapsLoop
+	ld hl, SuperRodData
+	call .mapsLoop
+	xor a ; exceptionally the terminator is 0 because $ff is Mandarin island
 	ld [de], a
 	ret
 
-CheckMapForMon:
-	inc hl
-	ld b, NUM_WILDMONS
-.loop
+.mapsLoop
 	ld a, [wPokedexNum]
-	cp [hl]
-	jr nz, .nextEntry
+	ld c, a     ; c = Mon to search for
+	ld a, [hli] ; a = map ID
+	cp -1
+	ret z
+	push hl ; save hl -> first byte of fishing group pointer
+	push af ; save a = map ID
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a ; hl = address of fishing group
+	ld a, [hli]
+	ld b, a ; a = num of Mons in this group
+.loop
+	inc hl  ; skip Mon level
+	ld a, [hli]
+	cp c
+	jr z, .foundMon
+	dec b
+	jr nz, .loop
+	; Mon is not in this map
+	pop af  ; clear the stack
+	pop hl  ; restore hl -> first byte of fishing group pointer
+	inc hl
+	inc hl  ; move to next map ID
+	jr .mapsLoop
+
+.foundMon
+	pop af  ; restore a = map ID
+	ld [wMapCoordsTemp], a
+	push de
+	callfar LoadTownMapEntryFar ; transforms [wMapCoordsTemp] from map ID into map coords
+	pop de
+	call AddIfNotDuplicate
+	pop hl ; restore hl -> first byte of fishing group pointer
+	inc hl
+	inc hl
+	jr .mapsLoop
+
+; This function adds [wMapCoordsTemp] to the list at wBuffer
+; only if it's not already there (meaning above de)
+AddIfNotDuplicate: ; marcelnote - new
+	ld a, [wMapCoordsTemp]
+	ld c, a
+	xor a
+	ld [de], a ; mark temporary end of list
+	ld hl, wBuffer
+.loop
+	ld a, [hli]
+	and a
+	jr z, .notDuplicate
+	cp c
+	jr nz, .loop
+	ret ; duplicate
+
+.notDuplicate
 	ld a, c
 	ld [de], a
 	inc de
-.nextEntry
-	inc hl
-	inc hl
-	dec b
-	jr nz, .loop
-	dec hl
 	ret
