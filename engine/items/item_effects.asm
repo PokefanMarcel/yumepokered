@@ -658,7 +658,7 @@ ItemUseTownMap:
 	ld a, [wIsInBattle]
 	and a
 	jp nz, ItemUseNotTime
-	farjp DisplayTownMap
+	jpfar DisplayTownMap
 
 ItemUseBicycle:
 	ld a, [wIsInBattle]
@@ -1690,7 +1690,7 @@ ItemUseXStat:
 	call Delay3
 	xor a
 	ldh [hWhoseTurn], a ; set turn to player's turn
-	farcall StatModifierUpEffect ; do stat increase move
+	callfar StatModifierUpEffect ; do stat increase move
 	pop hl
 	pop af
 	ld [hld], a ; restore [wPlayerMoveEffect]
@@ -1788,7 +1788,7 @@ ItemUsePokeFlute: ; marcelnote - added Mew
 	ld a, SFX_POKEFLUTE_IN_BATTLE
 	call PlaySound
 	call WaitForSoundToFinish
-;	farcall Music_PokeFluteInBattle ; play in-battle pokeflute music
+;	callfar Music_PokeFluteInBattle ; play in-battle pokeflute music
 ;.musicWaitLoop ; wait for music to finish playing
 ;	ld a, [wChannelSoundIDs + CHAN7]
 ;	and a ; music off?
@@ -1922,7 +1922,7 @@ RodResponse:
 	push af
 	push hl
 	ld [hl], 0
-	farcall FishingAnim
+	callfar FishingAnim
 	pop hl
 	pop af
 	ld [hl], a
@@ -1963,7 +1963,7 @@ ItemUseItemfinder:
 	and a
 	jp nz, ItemUseNotTime
 	call ItemUseReloadOverworldData
-	farcall HiddenItemNear ; check for hidden items
+	callfar HiddenItemNear ; check for hidden items
 	ld hl, ItemfinderFoundNothingText
 	jr nc, .printText ; if no hidden items
 	ld c, 4

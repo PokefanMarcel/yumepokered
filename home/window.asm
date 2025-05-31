@@ -21,7 +21,7 @@ HandleMenuInput_::
 	ld a, [wPartyMenuAnimMonEnabled]
 	and a ; is it a pokemon selection menu?
 	jr z, .getJoypadState
-	farcall AnimatePartyMon ; shake mini sprite of selected pokemon
+	callfar AnimatePartyMon ; shake mini sprite of selected pokemon
 .getJoypadState
 	pop hl
 	call JoypadLowSensitivity

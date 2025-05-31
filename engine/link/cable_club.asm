@@ -591,7 +591,7 @@ ReturnToCableClubRoom:
 	dec a
 	ld [wDestinationWarpID], a
 	call LoadMapData
-	farcall ClearVariablesOnEnterMap
+	callfar ClearVariablesOnEnterMap
 	pop hl
 	pop af
 	ld [hl], a
