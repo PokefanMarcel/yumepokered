@@ -400,7 +400,7 @@ DisplayWildLocations:
 .exitLoop
 	ld a, l
 	and a ; were any OAM entries written?
-	jr nz, .drawPlayerSprite
+	jr nz, .done ; was .drawPlayerSprite
 ; if no OAM entries were written, print area unknown text
 	hlcoord 1, 7
 	ld b, 2
@@ -409,11 +409,11 @@ DisplayWildLocations:
 	hlcoord 2, 9
 	ld de, AreaUnknownText
 	call PlaceString
-	jr .done
-.drawPlayerSprite
-	ld a, [wCurMap]
-	ld b, $0
-	call DrawPlayerOrBirdSprite
+;	jr .done
+;.drawPlayerSprite
+;	ld a, [wCurMap]
+;	ld b, $0
+;	call DrawPlayerOrBirdSprite
 .done
 	ld hl, wShadowOAM
 	ld de, wShadowOAMBackup
