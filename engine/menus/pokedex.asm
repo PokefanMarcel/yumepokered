@@ -170,10 +170,8 @@ HandlePokedexListMenu:
 	ld [hli], a
 	ld [hli], a
 	hlcoord 14, 0
-	ld [hl], $71 ; vertical line tile
+	ld [hl], $61 ; vertical line tile
 	hlcoord 14, 1
-	call DrawPokedexVerticalLine
-	hlcoord 14, 9
 	call DrawPokedexVerticalLine
 	ld hl, wPokedexSeen
 	ld b, wPokedexSeenEnd - wPokedexSeen
@@ -257,7 +255,7 @@ HandlePokedexListMenu:
 	pop hl
 	ld a, " "
 	jr z, .writeTile
-	ld a, $72 ; pokeball tile
+	ld a, $62 ; pokeball tile
 .writeTile
 	ld [hl], a ; put a pokeball next to pokemon that the player has owned
 	push hl
@@ -352,9 +350,9 @@ HandlePokedexListMenu:
 	ret
 
 DrawPokedexVerticalLine:
-	ld c, 9 ; height of line
+	ld c, 17 ; height of line
 	ld de, SCREEN_WIDTH
-	ld a, $71 ; vertical line tile
+	ld a, $61 ; vertical line tile
 .loop
 	ld [hl], a
 	add hl, de
@@ -425,7 +423,7 @@ ShowPokedexDataInternal:
 	call DrawTileLine ; draw top border
 
 	hlcoord 0, 17
-	ld b, $6f
+	ld b, $6d
 	call DrawTileLine ; draw bottom border
 
 	hlcoord 0, 1
@@ -434,7 +432,7 @@ ShowPokedexDataInternal:
 	call DrawTileLine ; draw left border
 
 	hlcoord 19, 1
-	ld b, $67
+	ld b, $68
 	call DrawTileLine ; draw right border
 
 	ld a, $63 ; upper left corner tile
@@ -647,16 +645,16 @@ ShowPokedexDataInternal:
 
 HeightWeightText:
 	db   "HT  ?′??″"
-	next "WT   ???lb@"
+	next "WT   ???<l><b>@"
 
 HeightWeightMetricText:
-	db   "HT   ???m"
-	next "WT   ???kg@"
+	db   "HT   ???<m>"
+	next "WT   ???<k><g>@"
 
 ; horizontal line that divides the pokedex text description from the rest of the data
 PokedexDataDividerLine:
-	db $68, $69, $6B, $69, $6B, $69, $6B, $69, $6B, $6B
-	db $6B, $6B, $69, $6B, $69, $6B, $69, $6B, $69, $6A
+	db $69, $6a, $67, $6a, $67, $6a, $67, $6a, $67, $67
+	db $67, $67, $6a, $67, $6a, $67, $6a, $67, $6a, $6b
 	db "@"
 
 ; draws a line of tiles
