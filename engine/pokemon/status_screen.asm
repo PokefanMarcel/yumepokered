@@ -149,6 +149,8 @@ StatusScreenStatsPage:
 .switchStatsDVsStatExp
 	CheckEvent EVENT_PASSED_SENIOR_TEST
 	jr z, .waitButtonPress ; only visible after passing Senior test at Pokémon Academy
+	ld a, SFX_TINK
+	call PlaySound
 	hlcoord 16, 17 ; fifth letter of current text
 	ld a, [hl]
 	cp "S" ; text currently saying "STATS"?
