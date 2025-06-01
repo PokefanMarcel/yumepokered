@@ -4,13 +4,6 @@ MACRO callfar
 	rst _Bankswitch
 ENDM
 
-MACRO farjp
-	ld b, BANK(\1)
-	ld hl, \1
-	rst _Bankswitch ; PureRGB: Bankswitch as rst
-	ret
-ENDM
-
 MACRO jpfar
 	ld hl, \1
 	ld b, BANK(\1)

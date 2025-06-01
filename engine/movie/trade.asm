@@ -199,7 +199,7 @@ LoadTradingGFXAndMonNames:
 Trade_LoadMonPartySpriteGfx:
 	ld a, %11010000
 	ldh [rOBP1], a
-	farjp LoadMonPartySpriteGfx
+	jpfar LoadMonPartySpriteGfx
 
 Trade_SwapNames:
 	ld hl, wPlayerName

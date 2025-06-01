@@ -126,7 +126,7 @@ ViridianGymPlayerSpinningScript:
 	ld [wCurMapScript], a
 	ret
 .ViridianGymLoadSpinnerArrow
-	farjp LoadSpinnerArrowTiles
+	jpfar LoadSpinnerArrowTiles
 
 ViridianGymGiovanniPostBattle:
 	ld a, [wIsInBattle]

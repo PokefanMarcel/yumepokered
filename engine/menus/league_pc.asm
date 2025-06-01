@@ -110,7 +110,7 @@ LeaguePCShowMon:
 	ld de, wHoFTeamNo
 	lb bc, 1, 3
 	call PrintNumber
-	farjp HoFDisplayMonInfo
+	jpfar HoFDisplayMonInfo
 
 HallOfFameNoText:
 	db "HALL OF FAME No   @"

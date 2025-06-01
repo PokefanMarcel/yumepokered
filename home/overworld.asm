@@ -1,7 +1,7 @@
 HandleMidJump::
 ; Handle the player jumping down
 ; a ledge in the overworld.
-	farjp _HandleMidJump
+	jpfar _HandleMidJump
 
 EnterMap::
 ; Load a new map.
@@ -413,7 +413,7 @@ NewBattle::
 	ld a, [wStatusFlags4]
 	bit BIT_NO_BATTLES, a
 	jr nz, .noBattle
-	farjp InitBattle
+	jpfar InitBattle
 .noBattle
 	and a
 	ret
@@ -872,7 +872,7 @@ HandleFlyWarpOrDungeonWarp::
 	jp SpecialEnterMap
 
 LeaveMapAnim::
-	farjp _LeaveMapAnim
+	jpfar _LeaveMapAnim
 
 LoadPlayerSpriteGraphics::
 ; Load sprite graphics based on whether the player is standing, biking, or surfing.

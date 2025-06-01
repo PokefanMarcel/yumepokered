@@ -388,7 +388,7 @@ SilphFactory2FPlayerSpinningScript:
 	ld [wCurMapScript], a
 	ret
 .LoadSpinnerArrow
-	farjp LoadSpinnerArrowTiles
+	jpfar LoadSpinnerArrowTiles
 
 SilphFactory2FLoreleiGoesUpstairsScript: ; marcelnote - adapted from PokemonTower2F rival script
 	xor a

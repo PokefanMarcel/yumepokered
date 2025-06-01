@@ -61,7 +61,7 @@ CeladonMartElevatorWarpMaps:
 .End:
 
 CeladonMartElevatorShakeScript:
-	farjp ShakeElevator
+	jpfar ShakeElevator
 
 CeladonMartElevator_TextPointers:
 	def_text_pointers

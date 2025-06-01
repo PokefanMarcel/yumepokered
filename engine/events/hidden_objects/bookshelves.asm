@@ -34,7 +34,7 @@ PrintBookshelfText::
 .noMatch
 	ld a, $ff
 	ldh [hInteractedWithBookshelf], a
-	farjp PrintCardKeyText
+	jpfar PrintCardKeyText
 
 .checkFacingDown ; marcelnote - new for facing down bookshelf tiles
 	cp SPRITE_FACING_DOWN

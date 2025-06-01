@@ -8,7 +8,7 @@
 ; 01: successful
 ; 02: not able to be used right now, no extra menu displayed (only certain items use this)
 UseItem::
-	farjp UseItem_
+	jpfar UseItem_
 
 ; confirms the item toss and then tosses the item
 ; INPUT:
