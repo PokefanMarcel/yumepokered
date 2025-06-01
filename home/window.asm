@@ -2,7 +2,7 @@ HandleMenuInput::
 	xor a
 	ld [wPartyMenuAnimMonEnabled], a
 
-HandleMenuInput_::
+HandleMenuInput_:: ; marcelnote - small optim
 	ldh a, [hDownArrowBlinkCount1]
 	push af
 	ldh a, [hDownArrowBlinkCount2]
@@ -17,13 +17,13 @@ HandleMenuInput_::
 	call PlaceMenuCursor
 	call Delay3
 .loop2
-	push hl
 	ld a, [wPartyMenuAnimMonEnabled]
 	and a ; is it a pokemon selection menu?
 	jr z, .getJoypadState
+	push hl
 	callfar AnimatePartyMon ; shake mini sprite of selected pokemon
-.getJoypadState
 	pop hl
+.getJoypadState
 	call JoypadLowSensitivity
 	ldh a, [hJoy5]
 	and a ; was a key pressed?
@@ -34,10 +34,8 @@ HandleMenuInput_::
 	pop hl
 	ld a, [wMenuJoypadPollCount]
 	dec a
-	jr z, .giveUpWaiting
-	jr .loop2
-.giveUpWaiting
-; if a key wasn't pressed within the specified number of checks
+	jr nz, .loop2
+	; if a key wasn't pressed within the specified number of checks
 	pop af
 	ldh [hDownArrowBlinkCount2], a
 	pop af
@@ -79,16 +77,16 @@ HandleMenuInput_::
 	jr nc, .notAtBottom
 .alreadyAtBottom
 	ld a, [wMenuWrappingEnabled]
-	and a ; is wrapping around enabled?
-	jr z, .noWrappingAround
-	ld c, $00 ; wrap from bottom to top
+	dec a ; is wrapping around enabled?
+	jr nz, .noWrappingAround
+	ld c, a ; c = 0, wrap from bottom to top
 .notAtBottom
 	ld a, c
 	ld [wCurrentMenuItem], a
 .checkOtherKeys
 	ld a, [wMenuWatchedKeys]
 	and b ; does the menu care about any of the pressed keys?
-	jp z, .loop1
+	jr z, .loop1
 .checkIfAButtonOrBButtonPressed
 	ldh a, [hJoy5]
 	and A_BUTTON | B_BUTTON
@@ -116,59 +114,55 @@ HandleMenuInput_::
 	jr z, .checkOtherKeys
 	jr .checkIfAButtonOrBButtonPressed
 
-PlaceMenuCursor::
+PlaceMenuCursor:: ; marcelnote - small optim
+	ld b, 0
 	ld a, [wTopMenuItemY]
 	and a ; is the y coordinate 0?
 	jr z, .adjustForXCoord
 	hlcoord 0, 0
-	ld bc, SCREEN_WIDTH
+	ld c, SCREEN_WIDTH
 .topMenuItemLoop
 	add hl, bc
 	dec a
 	jr nz, .topMenuItemLoop
 .adjustForXCoord
 	ld a, [wTopMenuItemX]
-	ld b, 0
 	ld c, a
-	add hl, bc
-	push hl
+	add hl, bc ; hl = position of top menu item
+	push hl ; save hl = position of top menu item
 	ld a, [wLastMenuItem]
 	and a ; was the previous menu id 0?
 	jr z, .checkForArrow1
 	push af
 	ldh a, [hUILayoutFlags]
-	jr z, .doubleSpaced1
-	ld bc, SCREEN_WIDTH
-	jr .getOldMenuItemScreenPosition
-.doubleSpaced1
-	ld bc, SCREEN_WIDTH * 2
-.getOldMenuItemScreenPosition
 	bit BIT_SINGLE_SPACED_MENU, a
+	ld c, SCREEN_WIDTH * 2
+	jr z, .getLastMenuItemScreenPosition
+	srl c ; c = SCREEN_WIDTH
+.getLastMenuItemScreenPosition
 	pop af
-.oldMenuItemLoop
+.lastMenuItemLoop
 	add hl, bc
 	dec a
-	jr nz, .oldMenuItemLoop
+	jr nz, .lastMenuItemLoop
 .checkForArrow1
 	ld a, [hl]
 	cp "▶" ; was an arrow next to the previously selected menu item?
 	jr nz, .skipClearingArrow
-.clearArrow
+	; clear arrow
 	ld a, [wTileBehindCursor]
 	ld [hl], a
 .skipClearingArrow
-	pop hl
+	pop hl  ; restore hl = position of top menu item
 	ld a, [wCurrentMenuItem]
 	and a
 	jr z, .checkForArrow2
 	push af
 	ldh a, [hUILayoutFlags]
-	jr z, .doubleSpaced2
-	ld bc, SCREEN_WIDTH
-	jr .getCurrentMenuItemScreenPosition
-.doubleSpaced2
-	ld bc, SCREEN_WIDTH * 2
 	bit BIT_SINGLE_SPACED_MENU, a
+	ld c, SCREEN_WIDTH * 2
+	jr z, .getCurrentMenuItemScreenPosition
+	srl c ; c = SCREEN_WIDTH
 .getCurrentMenuItemScreenPosition
 	pop af
 .currentMenuItemLoop
@@ -181,8 +175,7 @@ PlaceMenuCursor::
 	jr z, .skipSavingTile ; if so, don't lose the saved tile
 	ld [wTileBehindCursor], a ; save tile before overwriting with right arrow
 .skipSavingTile
-	ld a, "▶" ; place right arrow
-	ld [hl], a
+	ld [hl], "▶" ; place right arrow
 	ld a, l
 	ld [wMenuCursorLocation], a
 	ld a, h
@@ -259,8 +252,7 @@ HandleDownArrowBlinkTiming::
 	ret nz
 	ld a, $06
 	ldh [hDownArrowBlinkCount2], a
-	ld a, "▼"
-	ld [hl], a
+	ld [hl], "▼"
 	ret
 
 ; The following code either enables or disables the automatic drawing of
