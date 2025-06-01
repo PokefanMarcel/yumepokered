@@ -432,9 +432,9 @@ INCLUDE "data/text/dakutens.asm"
 CalcStringLength:
 	ld hl, wStringBuffer
 	ld c, $0
+	ld a, "@"
 .loop
-	ld a, [hl]
-	cp "@"
+	cp [hl]
 	ret z
 	inc hl
 	inc c
