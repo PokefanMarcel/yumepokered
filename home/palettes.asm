@@ -46,12 +46,12 @@ GetHealthBarColor::
 ; an HP bar e pixels long.
 	ld a, e
 	cp 27
-	ld d, 0 ; green
+	ld d, 0 ; HP_BAR_GREEN
 	jr nc, .gotColor
 	cp 10
-	inc d ; yellow
+	inc d   ; HP_BAR_YELLOW
 	jr nc, .gotColor
-	inc d ; red
+	inc d   ; HP_BAR_RED
 .gotColor
 	ld [hl], d
 	ret
