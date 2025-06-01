@@ -1871,8 +1871,6 @@ DrawPlayerHUDAndHPBar:
 	lb bc, 5, 11
 	call ClearScreenArea
 	callfar PlacePlayerMonHUDTiles
-	hlcoord 18, 9
-	ld [hl], $73
 	ld de, wBattleMonNick
 	hlcoord 10, 7
 	call CenterMonName
@@ -1886,13 +1884,11 @@ DrawPlayerHUDAndHPBar:
 	ld de, wLoadedMonLevel
 	ld bc, wBattleMonPP - wBattleMonLevel
 	call CopyData
-	hlcoord 14, 8
-	push hl
-	inc hl
+	hlcoord 15, 8
 	ld de, wLoadedMonStatus
 	call PrintStatusConditionNotFainted
-	pop hl
 	jr nz, .doNotPrintLevel
+	hlcoord 14, 8
 	call PrintLevel
 .doNotPrintLevel
 	ld a, [wLoadedMonSpecies]
@@ -1939,13 +1935,11 @@ DrawEnemyHUDAndHPBar:
 	hlcoord 1, 0
 	call CenterMonName
 	call PlaceString
-	hlcoord 4, 1
-	push hl
-	inc hl
+	hlcoord 5, 1
 	ld de, wEnemyMonStatus
 	call PrintStatusConditionNotFainted
-	pop hl
 	jr nz, .skipPrintLevel ; if the mon has a status condition, skip printing the level
+	hlcoord 4, 1
 	ld a, [wEnemyMonLevel]
 	ld [wLoadedMonLevel], a
 	call PrintLevel
@@ -1962,7 +1956,7 @@ DrawEnemyHUDAndHPBar:
 	ld c, a
 	ld e, a
 	ld d, $6
-	jp .drawHPBar
+	jr .drawHPBar
 .hpNonzero
 	xor a
 	ldh [hMultiplicand], a
@@ -1971,38 +1965,35 @@ DrawEnemyHUDAndHPBar:
 	call Multiply ; multiply current HP by 48
 	ld hl, wEnemyMonMaxHP
 	ld a, [hli]
-	ld b, a
-	ld a, [hl]
+	ld b, a    ; b = HP high byte
+	and a      ; is max HP > 255?
+	ld a, [hl] ; a = HP low byte
 	ldh [hDivisor], a
-	ld a, b
-	and a ; is max HP > 255?
 	jr z, .doDivide
 ; if max HP > 255, scale both (current HP * 48) and max HP by dividing by 4 so that max HP fits in one byte
 ; (it needs to be one byte so it can be used as the divisor for the Divide function)
-	ldh a, [hDivisor]
 	srl b
 	rra
 	srl b
 	rra
 	ldh [hDivisor], a
-	ldh a, [hProduct + 2]
+	ld hl, hDividend + 2
+	ld a, [hli] ; hDividend + 2
 	ld b, a
-	ldh a, [hProduct + 3]
+	ld a, [hl]  ; hDividend + 3
 	srl b
 	rra
 	srl b
 	rra
-	ldh [hProduct + 3], a
-	ld a, b
-	ldh [hProduct + 2], a
+	ld [hld], a ; hDividend + 3
+	ld [hl], b  ; hDividend + 2
 .doDivide
 	call Divide ; divide (current HP * 48) by max HP
 	ldh a, [hQuotient + 3]
 ; set variables for DrawHPBar
 	ld e, a
-	ld a, $6
-	ld d, a
-	ld c, a
+	ld d, $6
+	ld c, d
 .drawHPBar
 	xor a ; no vertical bar on right tip
 	ld [wHPBarType], a
@@ -2275,15 +2266,11 @@ BagWasSelected:
 	dec a ; is it the old man tutorial?
 	jr nz, DisplayPlayerBag ; no, it is a normal battle
 	ld hl, OldManItemList
-	ld a, l
-	ld [wListPointer], a
-	ld a, h
-	ld [wListPointer + 1], a
 	jr DisplayBagMenu
 
 OldManItemList:
 	db 1 ; # items
-	db POKE_BALL, 50
+	db POKE_BALL, 5 ; marcelnote - was 50
 	db -1 ; end
 
 DisplayPlayerBag:
@@ -2292,16 +2279,16 @@ DisplayPlayerBag:
 	;;;;;;;;;; marcelnote - check which pocket we were last in, new for bag pockets
 	ld a, [wBagPocketsFlags]
 	bit BIT_KEY_ITEMS_POCKET, a
-	jr z, .gotBagPocket
+	jr z, DisplayBagMenu
 	ld hl, wNumBagKeyItems
-.gotBagPocket
 	;;;;;;;;;;
+	; fallthrough
+
+DisplayBagMenu:
 	ld a, l
 	ld [wListPointer], a
 	ld a, h
 	ld [wListPointer + 1], a
-
-DisplayBagMenu:
 	xor a
 	ld [wPrintItemPrices], a
 	;;;;;;;;;; marcelnote - display bag info box, new for bag pockets
@@ -2318,7 +2305,7 @@ DisplayBagMenu:
 	call DisplayListMenuID
 	ld a, [wCurrentMenuItem]
 	ld [wBagSavedMenuItem], a
-	ld a, $0
+	xor a
 	ld [wMenuWatchMovingOutOfBounds], a
 	ld [wMenuItemToSwap], a
 	;;;;;;;;;; marcelnote - display bag info box, new for bag pockets
@@ -2407,7 +2394,7 @@ PartyMenuOrRockOrRun:
 	ld [wMenuItemToSwap], a
 	call DisplayPartyMenu
 .checkIfPartyMonWasSelected
-	jp nc, .partyMonWasSelected ; if a party mon was selected, jump, else we quit the party menu
+	jr nc, .partyMonWasSelected ; if a party mon was selected, jump, else we quit the party menu
 .quitPartyMenu
 	call ClearSprites
 	call GBPalWhiteOut
