@@ -342,10 +342,10 @@ TradeCenter_SelectMon:
 	ld [wTopMenuItemX], a
 .enemyMonMenu_HandleInput
 	ld hl, hUILayoutFlags
-	set BIT_DOUBLE_SPACED_MENU, [hl]
+	set BIT_SINGLE_SPACED_MENU, [hl]
 	call HandleMenuInput
 	ld hl, hUILayoutFlags
-	res BIT_DOUBLE_SPACED_MENU, [hl]
+	res BIT_SINGLE_SPACED_MENU, [hl]
 	and a
 	jp z, .getNewInput
 	bit BIT_A_BUTTON, a
@@ -407,10 +407,10 @@ TradeCenter_SelectMon:
 	call ClearScreenArea
 .playerMonMenu_HandleInput
 	ld hl, hUILayoutFlags
-	set BIT_DOUBLE_SPACED_MENU, [hl]
+	set BIT_SINGLE_SPACED_MENU, [hl]
 	call HandleMenuInput
 	ld hl, hUILayoutFlags
-	res BIT_DOUBLE_SPACED_MENU, [hl]
+	res BIT_SINGLE_SPACED_MENU, [hl]
 	and a ; was anything pressed?
 	jr nz, .playerMonMenu_SomethingPressed
 	jp .getNewInput

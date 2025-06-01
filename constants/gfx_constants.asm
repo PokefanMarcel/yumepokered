@@ -39,7 +39,7 @@ DEF REDRAW_ROW EQU 2
 ; hUILayoutFlags
 	const_def
 	const BIT_PARTY_MENU_HP_BAR   ; 0
-	const BIT_DOUBLE_SPACED_MENU  ; 1
+	const BIT_SINGLE_SPACED_MENU  ; 1
 	const BIT_SINGLE_SPACED_LINES ; 2
 
 ; tile list ids

@@ -2685,10 +2685,10 @@ SelectMenuItem:
 	ld [hl], "▷"
 .select
 	ld hl, hUILayoutFlags
-	set BIT_DOUBLE_SPACED_MENU, [hl]
+	set BIT_SINGLE_SPACED_MENU, [hl]
 	call HandleMenuInput
 	ld hl, hUILayoutFlags
-	res BIT_DOUBLE_SPACED_MENU, [hl]
+	res BIT_SINGLE_SPACED_MENU, [hl]
 	bit BIT_D_UP, a
 	jp nz, SelectMenuItem_CursorUp
 	bit BIT_D_DOWN, a

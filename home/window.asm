@@ -137,13 +137,13 @@ PlaceMenuCursor::
 	jr z, .checkForArrow1
 	push af
 	ldh a, [hUILayoutFlags]
-	bit BIT_DOUBLE_SPACED_MENU, a
 	jr z, .doubleSpaced1
 	ld bc, SCREEN_WIDTH
 	jr .getOldMenuItemScreenPosition
 .doubleSpaced1
 	ld bc, SCREEN_WIDTH * 2
 .getOldMenuItemScreenPosition
+	bit BIT_SINGLE_SPACED_MENU, a
 	pop af
 .oldMenuItemLoop
 	add hl, bc
@@ -163,12 +163,12 @@ PlaceMenuCursor::
 	jr z, .checkForArrow2
 	push af
 	ldh a, [hUILayoutFlags]
-	bit BIT_DOUBLE_SPACED_MENU, a
 	jr z, .doubleSpaced2
 	ld bc, SCREEN_WIDTH
 	jr .getCurrentMenuItemScreenPosition
 .doubleSpaced2
 	ld bc, SCREEN_WIDTH * 2
+	bit BIT_SINGLE_SPACED_MENU, a
 .getCurrentMenuItemScreenPosition
 	pop af
 .currentMenuItemLoop
