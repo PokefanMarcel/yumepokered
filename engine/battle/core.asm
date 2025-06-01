@@ -2049,7 +2049,7 @@ CenterMonName:
 	pop de
 	ret
 
-DisplayBattleMenu::
+DisplayBattleMenu:: ; marcelnote - added B button as shortcut to Run
 	call LoadScreenTilesFromBuffer1 ; restore saved screen
 	ld a, [wBattleType]
 	and a
@@ -2070,7 +2070,7 @@ DisplayBattleMenu::
 	ld a, [wBattleType]
 	ASSERT BATTLE_TYPE_OLD_MAN == 1
 	dec a
-	jp nz, .handleBattleMenuInput
+	jr nz, .handleBattleMenuInput
 ; the following happens for the old man tutorial
 	; Temporarily save the player name in wLinkEnemyTrainerName.
 	; Since wLinkEnemyTrainerName == wGrassRate, this affects wild encounters.
@@ -2082,7 +2082,7 @@ DisplayBattleMenu::
 	ld de, wLinkEnemyTrainerName
 	ld bc, NAME_LENGTH
 	call CopyData
-	ld hl, .oldManName
+	ld hl, OldManName
 	ld de, wPlayerName
 	ld bc, NAME_LENGTH
 	call CopyData
@@ -2099,8 +2099,6 @@ DisplayBattleMenu::
 	ld [hl], "▷"
 	ld a, $2 ; select the "ITEM" menu
 	jp .upperLeftMenuItemWasNotSelected
-.oldManName
-	db "OLD MAN@"
 .handleBattleMenuInput
 	ld a, [wBattleAndStartSavedMenuItem]
 	ld [wCurrentMenuItem], a
@@ -2119,31 +2117,30 @@ DisplayBattleMenu::
 ; put cursor in left column for normal battle menu (i.e. when it's not a Safari battle)
 	ldcoord_a 15, 14 ; clear upper cursor position in right column
 	ldcoord_a 15, 16 ; clear lower cursor position in right column
-	ld b, $9 ; top menu item X
+	ld a, $9 ; top menu item X
 	jr .leftColumn_WaitForInput
 .safariLeftColumn
-	ldcoord_a 13, 14
-	ldcoord_a 13, 16
+	ldcoord_a 13, 14 ; clear upper cursor position in right column
+	ldcoord_a 13, 16 ; clear lower cursor position in right column
 	hlcoord 7, 14
 	ld de, wNumSafariBalls
 	lb bc, 1, 2
 	call PrintNumber
-	ld b, $1 ; top menu item X
+	ld a, $1 ; top menu item X
 .leftColumn_WaitForInput
-	ld hl, wTopMenuItemY
-	ld a, $e
-	ld [hli], a ; wTopMenuItemY
-	ld a, b
-	ld [hli], a ; wTopMenuItemX
-	inc hl
-	inc hl
+	ld hl, wTopMenuItemX
+	ld [hld], a ; wTopMenuItemX
+	ld [hl], $e ; wTopMenuItemY
+	ld hl, wMaxMenuItem
 	ld a, $1
 	ld [hli], a ; wMaxMenuItem
-	ld [hl], D_RIGHT | A_BUTTON ; wMenuWatchedKeys
+	ld [hl], D_RIGHT | A_BUTTON | B_BUTTON ; wMenuWatchedKeys
 	call HandleMenuInput
-	bit BIT_D_RIGHT, a
-	jr nz, .rightColumn
-	jr .AButtonPressed ; the A button was pressed
+	bit BIT_A_BUTTON, a
+	jr nz, .AButtonPressed
+	bit BIT_B_BUTTON, a
+	jr nz, .BButtonPressed
+	; D right pressed
 .rightColumn ; put cursor in right column of menu
 	ld a, [wBattleType]
 	cp BATTLE_TYPE_SAFARI
@@ -2152,7 +2149,7 @@ DisplayBattleMenu::
 ; put cursor in right column for normal battle menu (i.e. when it's not a Safari battle)
 	ldcoord_a 9, 14 ; clear upper cursor position in left column
 	ldcoord_a 9, 16 ; clear lower cursor position in left column
-	ld b, $f ; top menu item X
+	ld a, $f ; top menu item X
 	jr .rightColumn_WaitForInput
 .safariRightColumn
 	ldcoord_a 1, 14 ; clear upper cursor position in left column
@@ -2161,25 +2158,25 @@ DisplayBattleMenu::
 	ld de, wNumSafariBalls
 	lb bc, 1, 2
 	call PrintNumber
-	ld b, $d ; top menu item X
+	ld a, $d ; top menu item X
 .rightColumn_WaitForInput
-	ld hl, wTopMenuItemY
-	ld a, $e
-	ld [hli], a ; wTopMenuItemY
-	ld a, b
-	ld [hli], a ; wTopMenuItemX
-	inc hl
-	inc hl
+	ld hl, wTopMenuItemX
+	ld [hld], a ; wTopMenuItemX
+	ld [hl], $e ; wTopMenuItemY
+	ld hl, wMaxMenuItem
 	ld a, $1
 	ld [hli], a ; wMaxMenuItem
-	ld a, D_LEFT | A_BUTTON
+	ld a, D_LEFT | A_BUTTON | B_BUTTON
 	ld [hli], a ; wMenuWatchedKeys
 	call HandleMenuInput
 	bit BIT_D_LEFT, a
-	jr nz, .leftColumn ; if left was pressed, jump
-	ld a, [wCurrentMenuItem]
-	add $2 ; if we're in the right column, the actual id is +2
-	ld [wCurrentMenuItem], a
+	jr nz, .leftColumn
+	bit BIT_B_BUTTON, a
+	jr nz, .BButtonPressed
+	; A button pressed
+	ld hl, wCurrentMenuItem
+	inc [hl]
+	inc [hl] ; if we're in the right column, the actual id is +2
 .AButtonPressed
 	call PlaceUnfilledArrowMenuCursor
 	ld a, [wBattleType]
@@ -2195,6 +2192,22 @@ DisplayBattleMenu::
 ; item menu was selected
 	inc a ; increment a to 2
 	jr .handleMenuSelection
+.BButtonPressed ; move cursor to Run
+	ld a, $1
+	ld [wCurrentMenuItem], a
+	ld a, [wBattleType]
+	cp BATTLE_TYPE_SAFARI
+	ld a, " "
+	jr z, .safariBButton
+	ldcoord_a 15, 14 ; clear upper cursor position in right column
+	ld a, "▶"
+	ldcoord_a 15, 16 ; put cursor at Run
+	jr .rightColumn
+.safariBButton
+	ldcoord_a 13, 14 ; clear upper cursor position in right column
+	ld a, "▶"
+	ldcoord_a 13, 16 ; put cursor at Run
+	jr .rightColumn
 .notItemMenu
 	cp $2 ; was the party menu selected?
 	jr nz, .handleMenuSelection
@@ -2246,6 +2259,10 @@ DisplayBattleMenu::
 	ld a, SAFARI_BAIT
 	ld [wCurItem], a
 	jr UseBagItem
+
+OldManName:
+	db "OLD MAN@"
+
 
 BagWasSelected:
 	call LoadScreenTilesFromBuffer1
