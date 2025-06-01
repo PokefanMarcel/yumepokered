@@ -92,7 +92,7 @@ DisplayNamingScreen:
 	call RunPaletteCommand
 	call LoadHpBarAndStatusTilePatterns
 	call LoadNamingScreenTiles ; marcelnote - reorganized Naming screen tiles
-	farcall LoadMonPartySpriteGfx
+	callfar LoadMonPartySpriteGfx
 	hlcoord 0, 4
 	ld b, 9
 	ld c, 18
@@ -128,7 +128,7 @@ DisplayNamingScreen:
 .inputLoop
 	ld a, [wCurrentMenuItem]
 	push af
-	farcall AnimatePartyMon_ForceSpeed1
+	callfar AnimatePartyMon_ForceSpeed1
 	pop af
 	ld [wCurrentMenuItem], a
 	call JoypadLowSensitivity
@@ -452,7 +452,7 @@ PrintNamingText:
 	ld a, [wCurPartySpecies]
 	ld [wMonPartySpriteSpecies], a
 	push af
-	farcall WriteMonPartySpriteOAMBySpecies
+	callfar WriteMonPartySpriteOAMBySpecies
 	pop af
 	ld [wNamedObjectIndex], a
 	call GetMonName

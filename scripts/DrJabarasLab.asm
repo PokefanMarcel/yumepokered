@@ -36,7 +36,7 @@ DrJabarasLabJabaraText:
 	jr nz, .print_text
 	ld a, POKE_FLUTE
 	ldh [hItemToRemoveID], a
-	farcall RemoveItemByID
+	callfar RemoveItemByID
 	SetEvent EVENT_GAVE_JABARA_FLUTE
 	SetEvent EVENT_JABARA_RUNNING_TESTS
 	ld hl, .GaveFluteText

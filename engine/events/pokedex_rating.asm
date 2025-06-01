@@ -30,7 +30,7 @@ DisplayDexRating:
 	call PrintText
 	pop hl
 	call PrintText
-	farcall PlayPokedexRatingSfx
+	callfar PlayPokedexRatingSfx
 	jp WaitForTextScrollButtonPress
 .hallOfFame
 	ld de, wDexRatingNumMonsSeen

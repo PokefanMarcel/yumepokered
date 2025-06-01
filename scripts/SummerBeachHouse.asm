@@ -39,7 +39,7 @@ SummerBeachHouseSurfinDudeText:
 .StartSurfingPikachuMinigame
 ;	ld a, 1
 ;	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-;	farcall SurfingPikachuMinigame
+;	callfar SurfingPikachuMinigame
 ;	ld hl, wd492
 ;	set 1, [hl]
 	ld hl, .SummerBeachHouseSurfinDudeNotReadyYetText
@@ -98,7 +98,7 @@ SummerBeachHouseSurfinDudeText:
 ;	jr nz, .asm_f226b
 ;	ld a, 1
 ;	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-;	farcall SurfingPikachuMinigame
+;	callfar SurfingPikachuMinigame
 ;	ld hl, wd492
 ;	set 1, [hl]
 ;	jr .done

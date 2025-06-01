@@ -74,7 +74,7 @@ MrFujisHouseMrFujiText: ; marcelnote - optimized and added Citrus pass dialogue
 	jr z, .no_fujis_notes
 	ld a, FUJIS_NOTES
 	ldh [hItemToRemoveID], a
-	farcall RemoveItemByID
+	callfar RemoveItemByID
 	SetEvent EVENT_GAVE_FUJIS_NOTES
 	ld hl, .PlayerGaveNotesText
 .gaveFujisNotes

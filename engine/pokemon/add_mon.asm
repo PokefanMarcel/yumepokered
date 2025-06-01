@@ -498,7 +498,7 @@ _MoveMon::
 	add $2
 	ld [wMonDataLocation], a
 	call LoadMonData
-	farcall CalcLevelFromExperience
+	callfar CalcLevelFromExperience
 	ld a, d
 	ld [wCurEnemyLevel], a
 	pop hl

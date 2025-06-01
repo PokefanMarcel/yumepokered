@@ -53,7 +53,7 @@ CopycatsHouse2FCopycatText: ; marcelnote - optimized
 	jr nc, .print_text
 	ld a, POKE_DOLL
 	ldh [hItemToRemoveID], a
-	farcall RemoveItemByID
+	callfar RemoveItemByID
 	SetEvent EVENT_GOT_TM31
 	ld hl, .ReceivedTM31Text
 .print_text

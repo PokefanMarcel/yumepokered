@@ -23,7 +23,7 @@ DisplayPokemonCenterDialogue_::
 	ld [wSprite01StateData1ImageIndex], a ; make the nurse turn to face the machine
 	call Delay3
 	predef HealParty
-	farcall AnimateHealingMachine ; do the healing machine animation
+	callfar AnimateHealingMachine ; do the healing machine animation
 	xor a
 	ld [wMusicFade], a
 ;	ld a, [wAudioSavedROMBank]

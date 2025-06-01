@@ -29,7 +29,7 @@ PKMNLeaguePC:
 	push bc
 	ld a, [wHoFTeamIndex2]
 	ld [wHoFTeamIndex], a
-	farcall LoadHallOfFameTeams
+	callfar LoadHallOfFameTeams
 	call LeaguePCShowTeam
 	pop bc
 	jr c, .doneShowingTeams

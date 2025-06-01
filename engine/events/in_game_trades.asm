@@ -160,7 +160,7 @@ InGameTrade_DoTrade:
 	callfar InGameTrade_CheckForTradeEvo
 	call ClearScreen
 	call InGameTrade_RestoreScreen
-	farcall RedrawMapView
+	callfar RedrawMapView
 	and a
 	ld a, TRADETEXT_THANKS
 	jr .tradeSucceeded

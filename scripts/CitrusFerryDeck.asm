@@ -64,7 +64,7 @@ CitrusFerryDeckEntranceScript:
 	ret nz
 	ld c, 10
 	call DelayFrames
-	farcall ShakeElevator
+	callfar ShakeElevator
 	ld a, TEXT_CITRUSFERRYROOMS_SPEAKER_LEFT
 	ldh [hTextID], a
 	call DisplayTextID

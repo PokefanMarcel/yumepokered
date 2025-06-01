@@ -324,7 +324,7 @@ BillsPCRelease:
 	jp BillsPCMenu
 
 BillsPCChangeBox:
-	farcall ChangeBox
+	callfar ChangeBox
 	jp BillsPCMenu
 
 DisplayMonListMenu:

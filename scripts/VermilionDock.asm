@@ -59,7 +59,7 @@ VermilionDockSSAnneLeavesScript:
 	ld c, 0 ; BANK(Music_Surfing)
 	ld a, MUSIC_SURFING
 	call PlayMusic
-	farcall LoadSmokeTileFourTimes
+	callfar LoadSmokeTileFourTimes
 	xor a
 	ld [wSpritePlayerStateData1ImageIndex], a
 	ld c, 120

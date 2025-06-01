@@ -433,7 +433,7 @@ OaksLabRivalStartsExitScript:
 	ld a, TEXT_OAKSLAB_RIVAL_SMELL_YOU_LATER
 	ldh [hTextID], a
 	call DisplayTextID
-	farcall Music_RivalAlternateStart
+	callfar Music_RivalAlternateStart
 	ld a, OAKSLAB_RIVAL
 	ldh [hSpriteIndex], a
 	ld de, .RivalExitMovement
@@ -504,7 +504,7 @@ OaksLabRivalArrivesAtOaksRequestScript:
 	ld a, SFX_STOP_ALL_MUSIC
 ;	ld [wNewSoundID], a
 	call PlaySound
-	farcall Music_RivalAlternateStart
+	callfar Music_RivalAlternateStart
 	ld a, TEXT_OAKSLAB_RIVAL_GRAMPS
 	ldh [hTextID], a
 	call DisplayTextID
@@ -604,7 +604,7 @@ OaksLabOakGivesPokedexScript:
 	ld a, SFX_STOP_ALL_MUSIC
 ;	ld [wNewSoundID], a
 	call PlaySound
-	farcall Music_RivalAlternateStart
+	callfar Music_RivalAlternateStart
 	ld a, OAKSLAB_RIVAL
 	ldh [hSpriteIndex], a
 	ld de, wNPCMovementDirections2
@@ -695,7 +695,7 @@ OaksLabRivalBackToIndigoScript: ; marcelnote - postgame Rival event
 	ld a, SFX_STOP_ALL_MUSIC
 	; ld [wNewSoundID], a
 	call PlaySound
-	farcall Music_RivalAlternateStart
+	callfar Music_RivalAlternateStart
 	ld a, [wYCoord]
 	cp 4
 	ld a, OAKSLAB_RIVAL
@@ -1117,7 +1117,7 @@ OaksLabOakText: ; marcelnote - this was changed to make Balls more accessible
 	call PrintText
 	ld a, OAKS_PARCEL
 	ldh [hItemToRemoveID], a
-	farcall RemoveItemByID ; marcelnote - this replaces a dedicated script previously
+	callfar RemoveItemByID ; marcelnote - this replaces a dedicated script previously
 	ld a, SCRIPT_OAKSLAB_RIVAL_ARRIVES_AT_OAKS_REQUEST
 	ld [wOaksLabCurScript], a
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd

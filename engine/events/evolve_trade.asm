@@ -42,10 +42,10 @@ EvolveMonInteraction::
 	call ReloadTilesetTilePatterns
 	call LoadScreenTilesFromBuffer2
 	call UpdateSprites
-	farcall RedrawMapView
+	callfar RedrawMapView
 	call Delay3
 	call GBFadeInFromWhite ; or call LoadGBPal
-	farcall LoadWildData
+	callfar LoadWildData
 	ret
 
 ; marcelnote - adapted from IsMoveInParty

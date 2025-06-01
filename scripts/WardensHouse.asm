@@ -33,7 +33,7 @@ WardensHouseWardenText: ; marcelnote - optimized
 	call PrintText
 	ld a, GOLD_TEETH
 	ldh [hItemToRemoveID], a
-	farcall RemoveItemByID
+	callfar RemoveItemByID
 	SetEvent EVENT_GAVE_GOLD_TEETH
 .gave_gold_teeth
 	ld hl, .ThanksText
