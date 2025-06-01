@@ -892,7 +892,7 @@ ExpAllIsOnText: ; marcelnote - shortened ExpAll messages
 	text_end
 
 EndLowHealthAlarm:
-; This function is called when the player has the won the battle. It turns off
+; This function is called when the player has won the battle. It turns off
 ; the low health alarm and prevents it from reactivating until the next battle.
 	xor a
 	ld [wLowHealthAlarm], a ; turn off low health alarm
@@ -2553,11 +2553,11 @@ BattleMenu_RunWasSelected:
 
 MoveSelectionMenu:
 	ld a, [wMoveMenuType]
+	and a
+	jr z, .regularmenu
 	dec a
 	jr z, .mimicmenu
-	dec a
-	jr z, .relearnmenu
-	jr .regularmenu
+	jr .relearnmenu
 
 .loadmoves
 	ld de, wMoves
@@ -2583,8 +2583,7 @@ MoveSelectionMenu:
 	ld hl, wBattleMonMoves
 	call .loadmoves
 	hlcoord 4, 12
-	ld b, 4
-	ld c, 14
+	lb bc, 4, 14
 	di ; out of pure coincidence, it is possible for vblank to occur between the di and ei
 	   ; so it is necessary to put the di ei block to not cause tearing
 	call TextBoxBorder
@@ -2604,8 +2603,7 @@ MoveSelectionMenu:
 ;	ld hl, wEnemyMonMoves ; marcelnote - now preloaded in MimicEffect
 	call .loadmoves
 	hlcoord 0, 7
-	ld b, 4
-	ld c, 14
+	lb bc, 4, 14
 	call TextBoxBorder
 	hlcoord 2, 8
 	call .writemoves
@@ -2619,8 +2617,7 @@ MoveSelectionMenu:
 	call AddNTimes
 	call .loadmoves
 	hlcoord 4, 7
-	ld b, 4
-	ld c, 14
+	lb bc, 4, 14
 	call TextBoxBorder
 	hlcoord 6, 8
 	call .writemoves
@@ -2749,10 +2746,10 @@ SelectMenuItem:
 	dec a
 	cp c
 	jr z, .disabled
-	ld a, [wPlayerBattleStatus3]
-	bit TRANSFORMED, a
-	jr nz, .transformedMoveSelected
-.transformedMoveSelected ; pointless
+;	ld a, [wPlayerBattleStatus3]
+;	bit TRANSFORMED, a
+;	jr nz, .transformedMoveSelected
+;.transformedMoveSelected ; pointless
 	; Allow moves copied by Transform to be used.
 	ld a, [wCurrentMenuItem]
 	ld hl, wBattleMonMoves
@@ -2842,7 +2839,7 @@ AnyMoveToSelect:
 	or c
 	jr .handleDisabledMovePPLoop
 .allMovesChecked
-	and $3f ; any PP left? ; marcelnote - fixes Struggle not working correctly if any move has at least one PP Up (fix from pokered Wiki)
+	and PP_MASK ; any PP left? ; marcelnote - fixes Struggle not working correctly if any move has at least one PP Up (fix from pokered Wiki)
 	ret nz ; return if a move has PP left
 .noMovesLeft
 	ld hl, NoMovesLeftText
@@ -2936,9 +2933,8 @@ PrintMenuItem: ; marcelnote - this menu was revamped to also show power and accu
 	xor a
 	ldh [hAutoBGTransferEnabled], a
 	; marcelnote - changed the location and size of the box (taller, narrower)
-	hlcoord 0, 7 ; marcelnote - was 0, 8
-	ld b, 4 ; marcelnote - was 3
-	ld c, 8 ; marcelnote - was 9
+	hlcoord 0, 7 ; was 0, 8
+	lb bc, 4, 8  ; was 3, 9
 	call TextBoxBorder
 	ld a, [wPlayerDisabledMove]
 	and a
@@ -2949,10 +2945,10 @@ PrintMenuItem: ; marcelnote - this menu was revamped to also show power and accu
 	ld a, [wCurrentMenuItem]
 	cp b
 	jr nz, .notDisabled
-	hlcoord 1, 9 ; marcelnote - was y=10
+	hlcoord 1, 9 ; was y = 10
 	ld de, DisabledText
 	call PlaceString
-	jp .moveDisabled ; marcelnote - was jr
+	jp .moveDisabled ; was jr
 .notDisabled
 	ld hl, wCurrentMenuItem
 	dec [hl]
@@ -2961,7 +2957,7 @@ PrintMenuItem: ; marcelnote - this menu was revamped to also show power and accu
 	ld hl, wBattleMonMoves
 	ld a, [wCurrentMenuItem]
 	ld c, a
-	ld b, $0 ; which item in the menu is the cursor pointing to? (0-3)
+	ld b, 0 ; which item in the menu is the cursor pointing to? (0-3)
 	add hl, bc ; point to the item (move) in memory
 	ld a, [hl]
 	ld [wPlayerSelectedMove], a ; update wPlayerSelectedMove even if the move
@@ -2974,7 +2970,7 @@ PrintMenuItem: ; marcelnote - this menu was revamped to also show power and accu
 	ld hl, wCurrentMenuItem
 	ld c, [hl]
 	inc [hl]
-	ld b, $0
+	ld b, 0
 	ld hl, wBattleMonPP
 	add hl, bc
 	ld a, [hl]
@@ -3029,13 +3025,11 @@ PrintMenuItem: ; marcelnote - this menu was revamped to also show power and accu
 .accuracy
 	; accuracy
 	ld a, [wPlayerMoveAccuracy] ; this is a 0-255 value, need to get 0-100
-	ld hl, 0
+	ld hl, 255     ; start from 255 for rounding correctly
 	ld b, 0
 	ld c, a
 	ld a, 100
 	call AddNTimes ; add bc to hl a times
-	ld bc, 255
-	add hl, bc     ; add 255 for rounding correctly
 	ld a, h        ; effectively divides hl by 256
 	ld [wStringBuffer], a
 	hlcoord 6, 10
