@@ -179,7 +179,7 @@ InGameTrade_RestoreScreen:
 	call LoadGBPal
 	ld c, 10
 	call DelayFrames
-	farjp LoadWildData
+	jpfar LoadWildData
 
 InGameTrade_PrepareTradeData:
 	ld hl, wTradedPlayerMonSpecies

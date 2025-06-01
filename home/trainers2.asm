@@ -32,4 +32,4 @@ GetTrainerInformation::
 	ret
 
 GetTrainerName::
-	farjp GetTrainerName_
+	jpfar GetTrainerName_

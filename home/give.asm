@@ -31,4 +31,4 @@ GivePokemon::
 	ld [wCurEnemyLevel], a
 	xor a ; PLAYER_PARTY_DATA
 	ld [wMonDataLocation], a
-	farjp _GivePokemon
+	jpfar _GivePokemon

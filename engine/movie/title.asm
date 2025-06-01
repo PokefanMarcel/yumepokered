@@ -268,7 +268,7 @@ ENDC
 	jp MainMenu
 
 .doClearSaveDialogue
-	farjp DoClearSaveDialogue
+	jpfar DoClearSaveDialogue
 
 TitleScreenPickNewMon:
 	ld a, HIGH(vBGMap0)

@@ -227,7 +227,7 @@ ResetButtonPressedAndMapScript::
 
 ; calls TrainerWalkUpToPlayer
 TrainerWalkUpToPlayer_Bank0::
-	farjp TrainerWalkUpToPlayer
+	jpfar TrainerWalkUpToPlayer
 
 ; sets opponent type and mon set/lvl based on the engaging trainer data
 InitBattleEnemyParameters::

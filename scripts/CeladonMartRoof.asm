@@ -129,7 +129,7 @@ CeladonMartRoofScript_GiveDrinkToGirl:
 	jp PrintText
 
 RemoveItemByIDBank12:
-	farjp RemoveItemByID
+	jpfar RemoveItemByID
 
 CeladonMartRoofLittleGirlGiveHerADrinkText: ; marcelnote - was GiveHerWhichDrink
 	text_far _CeladonMartRoofLittleGirlGiveHerADrinkText

@@ -72,7 +72,7 @@ IsItemInBag::
 
 DisplayPokedex::
 	ld [wPokedexNum], a
-	farjp _DisplayPokedex
+	jpfar _DisplayPokedex
 
 SetSpriteFacingDirectionAndDelay::
 	call SetSpriteFacingDirection

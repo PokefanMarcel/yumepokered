@@ -45,10 +45,10 @@ RunNPCMovementScript::
 	dw PewterMuseumGuyMovementScriptPointerTable
 	dw PewterGymGuyMovementScriptPointerTable
 .playerStepOutFromDoor
-	farjp PlayerStepOutFromDoor
+	jpfar PlayerStepOutFromDoor
 
 EndNPCMovementScript::
-	farjp _EndNPCMovementScript
+	jpfar _EndNPCMovementScript
 
 DebugPressedOrHeldB:: ; dummy except in _DEBUG
 ; This is used to skip Trainer battles, the

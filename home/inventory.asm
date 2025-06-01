@@ -1,7 +1,7 @@
 ; subtracts the amount the player paid from their money
 ; OUTPUT: carry = 0(success) or 1(fail because there is not enough money)
 SubtractAmountPaidFromMoney::
-	farjp SubtractAmountPaidFromMoney_
+	jpfar SubtractAmountPaidFromMoney_
 
 ; adds the amount the player sold to their money
 AddAmountSoldToMoney::

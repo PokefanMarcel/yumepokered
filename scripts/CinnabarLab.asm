@@ -217,4 +217,4 @@ CinnabarLabFossilRoomScientist2Text:
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 LoadFossilItemAndMonNameBank1D:
-	farjp LoadFossilItemAndMonName
+	jpfar LoadFossilItemAndMonName
