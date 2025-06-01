@@ -282,8 +282,7 @@ StatusScreenMovesPage:
 	ld hl, wCurrentMenuItem
 	ld a, [hl]
 	push af
-	ld a, b
-	ld [hl], a
+	ld [hl], b
 	push hl
 	callfar GetMaxPP
 	pop hl
