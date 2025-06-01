@@ -8,7 +8,7 @@ AnimateBoulderDust:
 	ld a, %11100100
 	ldh [rOBP1], a
 	call LoadSmokeTileFourTimes
-	farcall WriteCutOrBoulderDustAnimationOAMBlock
+	callfar WriteCutOrBoulderDustAnimationOAMBlock
 	ld c, 8 ; number of steps in animation
 .loop
 	push bc

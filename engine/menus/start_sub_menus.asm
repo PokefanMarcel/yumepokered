@@ -159,7 +159,7 @@ StartMenu_Pokemon::
 .surf
 	bit BIT_SOULBADGE, a
 	jp z, .newBadgeRequired
-	farcall IsSurfingAllowed
+	callfar IsSurfingAllowed
 	ld hl, wStatusFlags1
 	bit BIT_SURF_ALLOWED, [hl]
 	res BIT_SURF_ALLOWED, [hl]

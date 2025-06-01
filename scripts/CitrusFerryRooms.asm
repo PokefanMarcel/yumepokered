@@ -36,7 +36,7 @@ CitrusFerryRoomsCheckIfArrivedScript:
 .skipBattleChecks
 	SetEventRange EVENT_FERRY_ARRIVED, EVENT_BEAT_CITRUS_FERRY_OUTSIDE_TRAINER_3
 	call Delay3
-	farcall ShakeElevator
+	callfar ShakeElevator
 	ld a, TEXT_CITRUSFERRYROOMS_SPEAKER_ARRIVED
 	ldh [hTextID], a
 	call DisplayTextID

@@ -9,7 +9,7 @@ ReloadMapSpriteTilePatterns::
 	xor a
 	ld [wSpriteSetID], a
 	call DisableLCD
-	farcall InitMapSprites
+	callfar InitMapSprites
 	call EnableLCD
 	pop hl
 	pop af

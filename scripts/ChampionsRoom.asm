@@ -142,7 +142,7 @@ ChampionsRoomRivalDefeatedScript:
 	ret
 
 ChampionsRoomOakArrivesScript:
-	farcall Music_Cities1AlternateTempo
+	callfar Music_Cities1AlternateTempo
 	ld a, TEXT_CHAMPIONSROOM_OAK
 	ldh [hTextID], a
 	call ChampionsRoom_DisplayTextID_AllowABSelectStart
@@ -239,7 +239,7 @@ ChampionsRoomOakExitsScript:
 	ret
 
 ChampionsRoomRivalComeWithMeScript: ; marcelnote - Rival rematch
-	farcall Music_Cities1AlternateTempo
+	callfar Music_Cities1AlternateTempo
 	ld de, RivalExitChampionsRoomMovement
 	ld a, CHAMPIONSROOM_RIVAL
 	ldh [hSpriteIndex], a

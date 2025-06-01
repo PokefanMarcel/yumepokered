@@ -88,7 +88,7 @@ CheckForCut::
 	ld de, CutTreeBlockSwaps
 	callfar ReplaceTreeTileBlock
 	callfar RedrawMapView
-	farcall AnimCut
+	callfar AnimCut
 	ld a, $1
 	ld [wUpdateSpritesEnabled], a
 	ld a, SFX_CUT

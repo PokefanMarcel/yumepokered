@@ -86,7 +86,7 @@ VBlank::
 ;	call Audio3_UpdateMusic
 ;.afterMusic
 
-	farcall TrackPlayTime ; keep track of time played
+	callfar TrackPlayTime ; keep track of time played
 
 	ldh a, [hDisableJoypadPolling]
 	and a
@@ -144,7 +144,7 @@ home_PrepareOAMData::
 ; if disabled, then enable it for now
 ; This is so DMA transfer is skipped in case vblank triggers while PrepareOAMData is running.
 	set 0, [hl]
-	farcall PrepareOAMData
+	callfar PrepareOAMData
 	ld hl, hSkipOAMUpdates
 	res 0, [hl] ; disable the OAM skip flag
 .skipOAM

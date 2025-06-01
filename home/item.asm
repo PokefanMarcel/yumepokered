@@ -42,7 +42,7 @@ IsKeyItem::
 	push hl
 	push de
 	push bc
-	farcall IsKeyItem_
+	callfar IsKeyItem_
 	pop bc
 	pop de
 	pop hl

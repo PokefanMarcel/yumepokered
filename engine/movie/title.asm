@@ -233,7 +233,7 @@ ENDC
 	ld c, 1
 	call CheckForUserInterruption
 	jr c, .finishedWaiting
-	farcall TitleScreenAnimateBallIfStarterOut
+	callfar TitleScreenAnimateBallIfStarterOut
 	call TitleScreenPickNewMon
 	jr .awaitUserInterruptionLoop
 
@@ -295,12 +295,12 @@ TitleScreenPickNewMon:
 	ld a, $90
 	ldh [hWY], a
 	ld d, 1 ; scroll out
-	farcall TitleScroll
+	callfar TitleScroll
 	ret
 
 TitleScreenScrollInMon:
 	ld d, 0 ; scroll in
-	farcall TitleScroll
+	callfar TitleScroll
 	xor a
 	ldh [hWY], a
 	ret

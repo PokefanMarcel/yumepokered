@@ -27,7 +27,7 @@ Route5GateDefaultScript:
 	ld [wPlayerMovingDirection], a
 	xor a
 	ldh [hJoyHeld], a
-	farcall RemoveGuardDrink
+	callfar RemoveGuardDrink
 	ldh a, [hItemToRemoveID]
 	and a
 	jr nz, .have_drink
@@ -76,7 +76,7 @@ SaffronGateGuardText:
 	ld a, [wStatusFlags1]
 	bit BIT_GAVE_SAFFRON_GUARDS_DRINK, a
 	jr nz, .thanks_for_drink
-	farcall RemoveGuardDrink
+	callfar RemoveGuardDrink
 	ldh a, [hItemToRemoveID]
 	and a
 	jr nz, .have_drink

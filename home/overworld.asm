@@ -8,7 +8,7 @@ EnterMap::
 	ld a, A_BUTTON | B_BUTTON | SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
 	ld [wJoyIgnore], a
 	call LoadMapData
-	farcall ClearVariablesOnEnterMap
+	callfar ClearVariablesOnEnterMap
 	ld hl, wStatusFlags2
 	bit BIT_WILD_ENCOUNTER_COOLDOWN, [hl]
 	jr z, .skipGivingThreeStepsOfNoRandomBattles
@@ -25,10 +25,10 @@ EnterMap::
 	and (1 << BIT_FLY_WARP) | (1 << BIT_DUNGEON_WARP)
 	jr z, .didNotEnterUsingFlyWarpOrDungeonWarp
 	res BIT_FLY_WARP, [hl]
-	farcall EnterMapAnim
+	callfar EnterMapAnim
 	call UpdateSprites
 .didNotEnterUsingFlyWarpOrDungeonWarp
-	farcall CheckForceBikeOrSurf ; handle currents in SF islands and forced bike riding in cycling road
+	callfar CheckForceBikeOrSurf ; handle currents in SF islands and forced bike riding in cycling road
 	ld hl, wStatusFlags3
 	res BIT_NO_NPC_FACE_PLAYER, [hl]
 	call UpdateSprites
@@ -50,7 +50,7 @@ OverworldLoopLessDelay::
 	and a
 	jp nz, .moveAhead ; if the player sprite has not yet completed the walking animation
 	call JoypadOverworld ; get joypad state (which is possibly simulated)
-	farcall SafariZoneCheck
+	callfar SafariZoneCheck
 	ld a, [wSafariZoneGameOver]
 	and a
 	jp nz, WarpFound2
@@ -286,7 +286,7 @@ OverworldLoopLessDelay::
 	ld a, [wMovementFlags]
 	bit BIT_SPINNING, a
 	jr z, .noSpinning
-	farcall LoadSpinnerArrowTiles
+	callfar LoadSpinnerArrowTiles
 .noSpinning
 	call UpdateSprites
 
@@ -349,7 +349,7 @@ OverworldLoopLessDelay::
 .doneStepCounting
 	CheckEvent EVENT_IN_SAFARI_ZONE
 	jr z, .notSafariZone
-	farcall SafariZoneCheckSteps
+	callfar SafariZoneCheckSteps
 	ld a, [wSafariZoneGameOver]
 	and a
 	jp nz, WarpFound2
@@ -470,7 +470,7 @@ CheckWarpsNoCollisionLoop::
 	push bc
 	ld hl, wMovementFlags
 	set BIT_STANDING_ON_WARP, [hl]
-	farcall IsPlayerStandingOnDoorTileOrWarpTile
+	callfar IsPlayerStandingOnDoorTileOrWarpTile
 	pop bc
 	pop hl
 	jr c, WarpFound1 ; jump if standing on door or warp
@@ -569,7 +569,7 @@ WarpFound2::
 	jr z, .goBackOutside
 ; if not going back to the previous map
 	ld [wCurMap], a
-	farcall IsPlayerStandingOnWarpPadOrHole
+	callfar IsPlayerStandingOnWarpPadOrHole
 	ld a, [wStandingOnWarpPadOrHole]
 	dec a ; is the player on a warp pad?
 	jr nz, .notWarpPad
@@ -737,7 +737,7 @@ CheckMapConnections::
 	call RunPaletteCommand
 ; Since the sprite set shouldn't change, this will just update VRAM slots at
 ; x#SPRITESTATEDATA2_IMAGEBASEOFFSET without loading any tile patterns.
-	farcall InitMapSprites
+	callfar InitMapSprites
 	call LoadTileBlockMap
 	jp OverworldLoopLessDelay
 
@@ -821,7 +821,7 @@ ExtraWarpCheck::
 	jp Bankswitch
 
 MapEntryAfterBattle::
-	farcall IsPlayerStandingOnWarp ; for enabling warp testing after collisions
+	callfar IsPlayerStandingOnWarp ; for enabling warp testing after collisions
 	ld a, [wMapPalOffset]
 	and a
 	jp z, GBFadeInFromWhite
@@ -1356,7 +1356,7 @@ CheckForJumpingAndTilePairCollisions::
 	predef GetTileAndCoordsInFrontOfPlayer ; get the tile in front of the player
 	push de
 	push bc
-	farcall HandleLedges ; check if the player is trying to jump a ledge
+	callfar HandleLedges ; check if the player is trying to jump a ledge
 	pop bc
 	pop de
 	pop hl
@@ -2037,11 +2037,11 @@ RunMapScript::
 	push hl
 	push de
 	push bc
-	farcall TryPushingBoulder
+	callfar TryPushingBoulder
 	ld a, [wMiscFlags]
 	bit BIT_BOULDER_DUST, a
 	jr z, .afterBoulderEffect
-	farcall DoBoulderDustAnimation
+	callfar DoBoulderDustAnimation
 .afterBoulderEffect
 	pop bc
 	pop de
@@ -2124,7 +2124,7 @@ LoadPlayerSpriteGraphicsCommon::
 
 ; function to load data from the map header
 LoadMapHeader::
-	farcall MarkTownVisitedAndLoadMissableObjects
+	callfar MarkTownVisitedAndLoadMissableObjects
 	;ld a, [wCurMapTileset]
 	;ld [wUnusedCurMapTilesetCopy], a
 	ld a, [wCurMap]
@@ -2432,7 +2432,7 @@ LoadMapData::
 	ld [wSpriteSetID], a
 	call LoadTextBoxTilePatterns
 	call LoadMapHeader
-	farcall InitMapSprites ; load tile pattern data for sprites
+	callfar InitMapSprites ; load tile pattern data for sprites
 	call LoadTileBlockMap
 	call LoadTilesetTilePatternData
 	call LoadCurrentMapView

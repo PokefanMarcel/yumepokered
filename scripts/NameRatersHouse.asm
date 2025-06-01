@@ -70,7 +70,7 @@ NameRatersHouseNameRaterText:
 	jr nz, .did_not_rename
 	ld hl, .WhatShouldWeNameItText
 	call PrintText
-	farcall DisplayNameRaterScreen
+	callfar DisplayNameRaterScreen
 	jr c, .did_not_rename
 	ld hl, .PokemonHasBeenRenamedText
 .print_text

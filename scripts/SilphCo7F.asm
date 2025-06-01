@@ -227,7 +227,7 @@ SilphCo7FRivalAfterBattleScript:
 	ld a, SFX_STOP_ALL_MUSIC
 ;	ld [wNewSoundID], a
 	call PlaySound
-	farcall Music_RivalAlternateStart
+	callfar Music_RivalAlternateStart
 	ld de, .RivalWalkAroundPlayerMovement
 	ld a, [wSavedCoordIndex]
 	cp 1 ; index of second, lower entry in SilphCo7FDefaultScript.RivalEncounterCoordinates

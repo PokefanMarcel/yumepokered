@@ -146,7 +146,7 @@ SSAnne2FRivalAfterBattleScript:
 	ld a, SFX_STOP_ALL_MUSIC
 ;	ld [wNewSoundID], a
 	call PlaySound
-	farcall Music_RivalAlternateStart
+	callfar Music_RivalAlternateStart
 	ld a, SCRIPT_SSANNE2F_RIVAL_EXIT
 	ld [wSSAnne2FCurScript], a
 	ret

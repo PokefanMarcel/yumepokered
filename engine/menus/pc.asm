@@ -10,7 +10,7 @@ ActivatePC::
 	call LoadScreenTilesFromBuffer2
 	call Delay3
 PCMainMenu:
-	farcall DisplayPCMainMenu
+	callfar DisplayPCMainMenu
 	ld hl, wMiscFlags
 	set BIT_NO_MENU_BUTTON_SOUND, [hl]
 	call HandleMenuInput
@@ -56,19 +56,19 @@ PCMainMenu:
 	call WaitForSoundToFinish
 	ld hl, AccessedMyPCText
 	call PrintText
-	farcall PlayerPC
+	callfar PlayerPC
 	jr ReloadMainMenu
 OaksPC:
 	ld a, SFX_ENTER_PC
 	call PlaySound
 	call WaitForSoundToFinish
-	farcall OpenOaksPC
+	callfar OpenOaksPC
 	jr ReloadMainMenu
 PKMNLeague:
 	ld a, SFX_ENTER_PC
 	call PlaySound
 	call WaitForSoundToFinish
-	farcall PKMNLeaguePC
+	callfar PKMNLeaguePC
 	jr ReloadMainMenu
 BillsPC:
 	ld a, SFX_ENTER_PC
@@ -80,7 +80,7 @@ BillsPC:
 	ld hl, AccessedSomeonesPCText
 .got_text
 	call PrintText
-	farcall BillsPC_
+	callfar BillsPC_
 	; fallthrough
 ReloadMainMenu:
 	xor a

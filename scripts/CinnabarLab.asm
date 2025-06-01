@@ -170,7 +170,7 @@ CinnabarLabFossilRoomScientist1Text: ; marcelnote - optimized
 	and a
 	ld hl, .NoFossilsText
 	jr z, .print_text
-	farcall GiveFossilToCinnabarLab
+	callfar GiveFossilToCinnabarLab
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .check_done_reviving
 	CheckEventAfterBranchReuseA EVENT_LAB_STILL_REVIVING_FOSSIL, EVENT_GAVE_FOSSIL_TO_LAB

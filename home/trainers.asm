@@ -351,14 +351,14 @@ PrintEndBattleText::
 	ldh [hLoadedROMBank], a
 	ld [MBC1RomBank], a
 	push hl
-	farcall SaveTrainerName
+	callfar SaveTrainerName
 	ld hl, TrainerEndBattleText
 	call PrintText
 	pop hl
 	pop af
 	ldh [hLoadedROMBank], a
 	ld [MBC1RomBank], a
-	farcall SetEnemyTrainerToStayAndFaceAnyDirection
+	callfar SetEnemyTrainerToStayAndFaceAnyDirection
 	jp WaitForSoundToFinish
 
 GetSavedEndBattleTextPointer::

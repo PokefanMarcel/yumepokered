@@ -4,7 +4,7 @@ DisplayTextID::
 	ASSERT hSpriteIndex == hTextID ; these are at the same memory location
 	ldh a, [hLoadedROMBank]
 	push af
-	farcall DisplayTextIDInit ; initialization
+	callfar DisplayTextIDInit ; initialization
 	ld hl, wTextPredefFlag
 	bit BIT_TEXT_PREDEF, [hl]
 	res BIT_TEXT_PREDEF, [hl]
@@ -44,7 +44,7 @@ DisplayTextID::
 	push hl
 ;	push de ; marcelnote - UpdateSpriteFacingOffsetAndDelayMovement doesn't use de
 	push bc
-	farcall UpdateSpriteFacingOffsetAndDelayMovement ; update the graphics of the sprite the player is talking to (to face the right direction)
+	callfar UpdateSpriteFacingOffsetAndDelayMovement ; update the graphics of the sprite the player is talking to (to face the right direction)
 	pop bc
 ;	pop de
 	ld hl, wMapSpriteData ; NPC text entries
@@ -85,7 +85,7 @@ ENDM
 	dict  TX_SCRIPT_PLAYERS_PC,              TextScript_ItemStoragePC
 	dict  TX_SCRIPT_BILLS_PC,                TextScript_BillsPC
 	dict  TX_SCRIPT_POKECENTER_PC,           TextScript_PokemonCenterPC
-	dict2 TX_SCRIPT_VENDING_MACHINE,         farcall VendingMachineMenu
+	dict2 TX_SCRIPT_VENDING_MACHINE,         callfar VendingMachineMenu
 	dict  TX_SCRIPT_PRIZE_VENDOR,            TextScript_GameCornerPrizeMenu
 	dict2 TX_SCRIPT_CABLE_CLUB_RECEPTIONIST, callfar CableClubNPC
 

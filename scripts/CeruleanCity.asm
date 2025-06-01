@@ -176,7 +176,7 @@ CeruleanCityRivalDefeatedScript:
 	ld a, SFX_STOP_ALL_MUSIC
 ;	ld [wNewSoundID], a
 	call PlaySound
-	farcall Music_RivalAlternateStart
+	callfar Music_RivalAlternateStart
 	ld a, CERULEANCITY_RIVAL
 	ldh [hSpriteIndex], a
 	call SetSpriteMovementBytesToFF
@@ -313,7 +313,7 @@ CeruleanCityRocketText:
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	ld hl, .ReceivedTM28Text
 	call PrintText
-	farcall CeruleanHideRocket
+	callfar CeruleanHideRocket
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Text:

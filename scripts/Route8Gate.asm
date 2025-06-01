@@ -32,7 +32,7 @@ Route8GateDefaultScript:
 	ld [wPlayerMovingDirection], a
 	xor a
 	ldh [hJoyHeld], a
-	farcall RemoveGuardDrink
+	callfar RemoveGuardDrink
 	ldh a, [hItemToRemoveID]
 	and a
 	jr nz, .have_drink

@@ -170,7 +170,7 @@ Route22Rival1AfterBattleScript:
 	ld a, SFX_STOP_ALL_MUSIC
 ;	ld [wNewSoundID], a
 	call PlaySound
-	farcall Music_RivalAlternateStart
+	callfar Music_RivalAlternateStart
 	ld a, [wSavedCoordIndex]
 	cp 1 ; index of second, lower entry in Route22DefaultScript.Route22RivalBattleCoords
 	jr nz, .exit_movement_2
@@ -248,7 +248,7 @@ Route22SecondRivalBattleScript:
 	ld a, SFX_STOP_ALL_MUSIC
 ;	ld [wNewSoundID], a
 	call PlaySound
-	farcall Music_RivalAlternateTempo
+	callfar Music_RivalAlternateTempo
 	ld a, ROUTE22_RIVAL2
 	ldh [hSpriteIndex], a
 	call Route22MoveRivalRightScript
@@ -329,7 +329,7 @@ Route22Rival2AfterBattleScript:
 	ld a, SFX_STOP_ALL_MUSIC
 ;	ld [wNewSoundID], a
 	call PlaySound
-	farcall Music_RivalAlternateStartAndTempo
+	callfar Music_RivalAlternateStartAndTempo
 	ld a, [wSavedCoordIndex]
 	cp 1 ; index of second, lower entry in Route22DefaultScript.Route22RivalBattleCoords
 	jr nz, .exit_movement_2

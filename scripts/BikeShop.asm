@@ -24,7 +24,7 @@ BikeShopClerkText: ; marcelnote - optimized
 	jr nc, .print_text
 	ld a, BIKE_VOUCHER
 	ldh [hItemToRemoveID], a
-	farcall RemoveItemByID
+	callfar RemoveItemByID
 	SetEvent EVENT_GOT_BICYCLE
 	ld hl, BikeShopExchangedVoucherText
 .print_text

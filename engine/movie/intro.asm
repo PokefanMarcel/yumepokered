@@ -305,7 +305,7 @@ LoadIntroGraphics:
 PlayShootingStar:
 	ld b, SET_PAL_GAME_FREAK_INTRO
 	call RunPaletteCommand
-	farcall LoadCopyrightAndTextBoxTiles
+	callfar LoadCopyrightAndTextBoxTiles
 	ldpal a, SHADE_BLACK, SHADE_DARK, SHADE_LIGHT, SHADE_WHITE
 	ldh [rBGP], a
 	ld c, 180
@@ -322,7 +322,7 @@ PlayShootingStar:
 	set rLCDC_BG_TILEMAP, [hl]
 	ld c, 64
 	call DelayFrames
-	farcall AnimateShootingStar
+	callfar AnimateShootingStar
 	push af
 	; A `call LoadPresentsGraphic` here was removed in localization
 	pop af

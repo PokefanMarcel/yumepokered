@@ -617,7 +617,7 @@ Trade_AnimCircledMon:
 	ret
 
 Trade_WriteCircledMonOAM:
-	farcall WriteMonPartySpriteOAMBySpecies
+	callfar WriteMonPartySpriteOAMBySpecies
 	call Trade_WriteCircleOAMBlock
 
 Trade_AddOffsetsToOAMCoords:
