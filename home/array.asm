@@ -4,11 +4,7 @@ SkipFixedLengthTextEntries::
 	and a
 	ret z
 	ld bc, NAME_LENGTH
-.skipLoop
-	add hl, bc
-	dec a
-	jr nz, .skipLoop
-	ret
+	jr AddNTimes.loop
 
 AddNTimes::
 ; add bc to hl a times
