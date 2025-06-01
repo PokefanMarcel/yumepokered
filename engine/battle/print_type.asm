@@ -21,12 +21,6 @@ PrintMonType:
 ; hl = dest addr
 PrintType:
 	push hl
-	jr PrintType_
-
-PrintMoveType:
-	call GetPredefRegisters
-	push hl
-	ld a, [wPlayerMoveType]
 	; fallthrough
 
 PrintType_:
@@ -40,5 +34,37 @@ PrintType_:
 	ld d, [hl]
 	pop hl
 	jp PlaceString
+
+
+PrintMoveType: ; marcelnote - modified to be right-aligned
+	call GetPredefRegisters
+	push hl ; save printing address
+	ld a, [wPlayerMoveType]
+	add a
+	ld hl, TypeNames
+	ld e, a
+	ld d, 0
+	add hl, de ; hl = address of name pointer
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a    ; de = address of name
+	; possible option: c = 0 if right-aligned, c = 1 is left-aligned
+;	dec c
+;	jr z, .leftAligned
+	ld h, d
+	ld l, e
+	ld c, 9 ; max number of spaces + 1
+	ld b, "@"
+.loop
+	dec c
+	ld a, [hli]
+	cp b
+	jr nz, .loop
+;.leftAligned
+	pop hl  ; restore printing address
+	ld b, 0
+	add hl, bc
+	jp PlaceString
+
 
 INCLUDE "data/types/names.asm"

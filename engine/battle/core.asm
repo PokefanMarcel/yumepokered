@@ -3038,66 +3038,29 @@ PrintMenuItem: ; marcelnote - this menu was revamped to also show power and accu
 	call PrintNumber
 	; move type
 	call GetCurrentMove
-	hlcoord 1, 8 ; default
-	;;;;;;;;;;;;;;; marcelnote - all this code to find how many spaces to put before Type name to right-align it
-	; there's probably a more robust way to do it using CalcStringLength
-	ld a, [wPlayerMoveType]
-	cp FIGHTING
-	jr c, .2spaces ; NORMAL
-	jr z, .printMoveType ; FIGHTING
-	cp ROCK
-	jr c, .2spaces ; FLYING, POISON, GROUND
-	cp BUG
-	jr c, .4spaces ; ROCK, BIRD
-	jr z, .5spaces ; BUG
-	cp FIRE
-	jr c, .3spaces ; GHOST
-	jr z, .4spaces ; FIRE
-	cp ELECTRIC
-	jr c, .3spaces ; WATER, GRASS
-	jr z, .printMoveType
-	cp ICE
-	jr c, .1space ; PSYCHIC
-	jr z, .5spaces ; ICE
-	jr .2spaces ; DRAGON
-.1space
-	hlcoord 2, 8
-	jr .printMoveType
-.2spaces
-	hlcoord 3, 8
-	jr .printMoveType
-.3spaces
-	hlcoord 4, 8
-	jr .printMoveType
-.4spaces
-	hlcoord 5, 8
-	jr .printMoveType
-.5spaces
-	hlcoord 6, 8
-.printMoveType
-	;;;;;;;;;;;;;;;
-	predef PrintMoveType
+	hlcoord 1, 8
+	predef PrintMoveType ; marcelnote - now right-aligned
 .moveDisabled
 	ld a, $1
 	ldh [hAutoBGTransferEnabled], a
 	jp Delay3
 
-DisabledText:
-	db "disabled@" ; marcelnote - was "disabled!@", removed "!" since box is now narrower
+DisabledText: ; marcelnote - was "disabled!@", removed "!" for narrower box
+	db "disabled@"
 
 TypeText:
 	db "TYPE@"
 
-PowerText: ; marcelnote - new
+PowerText:    ; marcelnote - new
 	db "PWR@"
 
 AccuracyText: ; marcelnote - new
 	db "ACC@"
 
-PPText: ; marcelnote - new
+PPText:       ; marcelnote - new
 	db "PP@"
 
-NoPowerText: ; marcelnote - new
+NoPowerText:  ; marcelnote - new
 	db "-@"
 
 SelectEnemyMove:
