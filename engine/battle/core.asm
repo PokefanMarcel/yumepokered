@@ -58,8 +58,7 @@ SlidePlayerAndEnemySilhouettesOnScreen:
 	call Delay3
 	xor a
 	ldh [hAutoBGTransferEnabled], a
-	ld b, $70
-	ld c, $90
+	lb bc, $70, $90
 	ld a, c
 	ldh [hSCX], a
 	call DelayFrame
@@ -73,8 +72,7 @@ SlidePlayerAndEnemySilhouettesOnScreen:
 	call SetScrollXForSlidingPlayerBodyLeft ; begin background scrolling on line $40
 	inc b
 	inc b
-	ld h, $0
-	ld l, $60
+	lb hl, $0, $60
 	call SetScrollXForSlidingPlayerBodyLeft ; end background scrolling on line $60
 	call SlidePlayerHeadLeft
 	ld a, c
@@ -837,8 +835,8 @@ FaintEnemyPokemon:
 	call SaveScreenTilesToBuffer1
 	xor a
 	ld [wBattleResult], a
-	;ld b, EXP_ALL
-	;call IsItemInBag
+;	ld b, EXP_ALL
+;	call IsItemInBag
 	ld hl, wStatusFlags1    ; marcelnote - ExpAll can be activated/deactivated
 	bit BIT_EXP_ALL_ACTIVE, [hl]
 	push af
@@ -2735,7 +2733,7 @@ SelectMenuItem:
 	ld hl, wBattleMonPP
 	ld a, [wCurrentMenuItem]
 	ld c, a
-	ld b, $0
+	ld b, 0
 	add hl, bc
 	ld a, [hl]
 	and PP_MASK
@@ -2754,7 +2752,7 @@ SelectMenuItem:
 	ld a, [wCurrentMenuItem]
 	ld hl, wBattleMonMoves
 	ld c, a
-	ld b, $0
+	ld b, 0
 	add hl, bc
 	ld a, [hl]
 	ld [wPlayerSelectedMove], a
@@ -3928,7 +3926,7 @@ _PrintMoveName:
 	ld a, [wMoveGrammar]
 	add a
 	push bc
-	ld b, $0
+	ld b, 0
 	ld c, a
 	add hl, bc
 	pop bc
@@ -3975,7 +3973,7 @@ DetermineExclamationPointTextNum:
 	push bc
 	ld a, [wMoveGrammar] ; move ID
 	ld c, a
-	ld b, $0
+	ld b, 0
 	ld hl, ExclamationPointMoveSets
 .loop
 	ld a, [hli]
@@ -4237,7 +4235,7 @@ CheckForDisobedience:
 	push af
 	ld a, [wCurrentMenuItem]
 	ld c, a
-	ld b, $0
+	ld b, 0
 	add hl, bc
 	ld a, [hl]
 	and PP_MASK
@@ -4268,7 +4266,7 @@ CheckForDisobedience:
 	jr z, .chooseMove ; if the move has no PP left, choose another
 	ld a, [wCurrentMenuItem]
 	ld c, a
-	ld b, $0
+	ld b, 0
 	ld hl, wBattleMonMoves
 	add hl, bc
 	ld a, [hl]
@@ -4560,7 +4558,7 @@ GetEnemyMonStat:
 	ld hl, wEnemyMon1Stats
 	dec c
 	sla c
-	ld b, $0
+	ld b, 0
 	add hl, bc
 	ld a, [wEnemyMonPartyPos]
 	ld bc, wEnemyMon2 - wEnemyMon1
@@ -4955,9 +4953,7 @@ ApplyAttackToEnemyPokemon:
 	jr ApplyDamageToEnemyPokemon
 .specialDamage
 	ld hl, wBattleMonLevel
-	;ld a, [hl]
-	;ld b, a ; Seismic Toss deals damage equal to the user's level
-	ld b, [hl] ; marcelnote - optimized
+	ld b, [hl] ; Seismic Toss deals damage equal to the user's level
 	ld a, [wPlayerMoveNum]
 	cp SEISMIC_TOSS
 	jr z, .storeDamage
@@ -5011,9 +5007,7 @@ ApplyDamageToEnemyPokemon:
 	ld [wHPBarOldHP], a
 	sub b
 	ld [wEnemyMonHP + 1], a
-	;ld a, [hl]
-	;ld b, a
-	ld b, [hl] ; marcelnote - optimized
+	ld b, [hl]
 	ld a, [wEnemyMonHP]
 	ld [wHPBarOldHP+1], a
 	sbc b
@@ -5079,9 +5073,7 @@ ApplyAttackToPlayerPokemon:
 	jr ApplyDamageToPlayerPokemon
 .specialDamage
 	ld hl, wEnemyMonLevel
-	;ld a, [hl]
-	;ld b, a
-	ld b, [hl] ; marcelnote - optimized
+	ld b, [hl]
 	ld a, [wEnemyMoveNum]
 	cp SEISMIC_TOSS
 	jr z, .storeDamage
@@ -5375,7 +5367,7 @@ IncrementMovePP:
 	ld de, wEnemyMon1PP
 	ld a, [wEnemyMoveListIndex]
 .next
-	ld b, $00
+	ld b, 0
 	ld c, a
 	add hl, bc
 	inc [hl] ; increment PP in the currently battling pokemon memory location
@@ -5689,7 +5681,7 @@ CalcHitChance:
 	dec b
 	sla b
 	ld c, b
-	ld b, $00
+	ld b, 0
 	add hl, bc ; hl = address of stat modifier ratio
 	pop bc
 	ld a, [hli]
@@ -6977,8 +6969,7 @@ LoadMonBackPic:
 	ld a, [wBattleMonSpecies2]
 	ld [wCurPartySpecies], a
 	hlcoord 1, 5
-	ld b, 7
-	ld c, 8
+	lb bc, 7, 8
 	call ClearScreenArea
 	ld hl,  wMonHBackSprite - wMonHeader
 	call UncompressMonSprite
