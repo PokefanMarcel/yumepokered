@@ -3132,7 +3132,7 @@ SelectEnemyMove:
 	pop hl
 	jr z, .chooseRandomMove ; move disabled, try again
 	and a
-	jr z, .chooseRandomMove ; move non-existant, try again
+	jr z, .chooseRandomMove ; move non-existent, try again
 .done
 	ld [wEnemySelectedMove], a
 	ret
@@ -3275,7 +3275,7 @@ PlayerCalcMoveDamage:
 	jr z, handleIfPlayerMoveMissed
 	call GetDamageVarsForPlayerAttack
 	call CalculateDamage
-	jp z, playerCheckIfFlyOrChargeEffect ; for moves with 0 BP, skip any further damage calculation and, for now, skip MoveHitTest
+	jr z, playerCheckIfFlyOrChargeEffect ; for moves with 0 BP, skip any further damage calculation and, for now, skip MoveHitTest
 	               ; for these moves, accuracy tests will only occur if they are called as part of the effect itself
 	call AdjustDamageForMoveType
 	call RandomizeDamage
@@ -3364,7 +3364,6 @@ MirrorMoveCheck:
 .notDone
 	ld a, [wPlayerMoveEffect]
 	ld hl, AlwaysHappenSideEffects
-	;ld de, 1
 	call IsInList
 	call c, JumpMoveEffect ; not done after executing effects of AlwaysHappenSideEffects
 	ld hl, wEnemyMonHP
@@ -3392,7 +3391,6 @@ MirrorMoveCheck:
 	and a
 	jp z, ExecutePlayerMoveDone
 	ld hl, SpecialEffects
-	;ld de, 1
 	call IsInList
 	call nc, JumpMoveEffect ; move effects not included in SpecialEffects or in either of the ResidualEffect arrays,
 	; which are the effects not covered yet. Rage effect will be executed for a second time (though it's irrelevant).
