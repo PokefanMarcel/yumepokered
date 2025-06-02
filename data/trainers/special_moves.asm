@@ -291,18 +291,18 @@ SpecialTrainerMoves:
 	db $ff
 
 	db LORELEI, 1  ; first battle
-	; Dewgong
+	; Dewgong - REST, SURF, ICE_BEAM, HYDRO_PUMP
 	db 1, 1, REST
 	db 1, 2, SURF
-	; Cloyster
+	; Cloyster - BLIZZARD, SPIKE_CANNON, CLAMP, ICE_BEAM
 	db 2, 1, BLIZZARD
-	; Slowbro
+	; Slowbro - ICE_BEAM, SURF, AMNESIA, PSYCHIC_M
 	db 3, 1, ICE_BEAM
 	db 3, 2, SURF
-	; Jynx
+	; Jynx - LOVELY_KISS, BODY_SLAM, PSYCHIC_M, BLIZZARD
 	db 4, 1, LOVELY_KISS
 	db 4, 3, PSYCHIC_M
-	; Lapras
+	; Lapras - CONFUSE_RAY, BODY_SLAM, HYDRO_PUMP, BLIZZARD
 	db 5, 2, BODY_SLAM
 	db $ff
 
@@ -331,16 +331,16 @@ SpecialTrainerMoves:
 	db $ff
 
 	db BRUNO, 1  ; first battle
-	; Onix
+	; Onix - BIND, SLAM, ROCK_SLIDE, DIG
 	db 1, 4, DIG
-	; Hitmonchan
+	; Hitmonchan - ICE_PUNCH, THUNDERPUNCH, DIZZY_PUNCH, COUNTER
 	; no change
-	; Hitmonlee
+	; Hitmonlee - MEDITATE, FOCUS_ENERGY, HI_JUMP_KICK, MEGA_KICK
 	db 3, 1, MEDITATE
 	db 3, 2, FOCUS_ENERGY
-	; Onix
+	; Onix - BIND, SLAM, ROCK_SLIDE, EARTHQUAKE
 	db 4, 4, EARTHQUAKE
-	; Machamp
+	; Machamp - KARATE_CHOP, ROCK_SLIDE, THRASH, EARTHQUAKE
 	db 5, 2, ROCK_SLIDE
 	db 5, 4, EARTHQUAKE
 	db $ff
@@ -364,20 +364,20 @@ SpecialTrainerMoves:
 	db $ff
 
 	db AGATHA, 1  ; first battle
-	; Gengar
+	; Gengar - HYPNOSIS, DREAM_EATER, HEX, CONFUSE_RAY
 	db 1, 4, CONFUSE_RAY
-	; Golbat
+	; Golbat - CONFUSE_RAY, ACID, TOXIC, HEX
 	db 2, 1, CONFUSE_RAY
 	db 2, 3, TOXIC
 	db 2, 4, HEX
-	; Haunter
+	; Haunter - CONFUSE_RAY, MEGA_DRAIN, HEX, TOXIC
 	db 3, 1, CONFUSE_RAY
 	db 3, 2, MEGA_DRAIN
 	db 3, 4, TOXIC
-	; Arbok
+	; Arbok - ACID, WRAP, HYPER_FANG, GLARE
 	db 4, 2, WRAP
 	db 4, 4, GLARE
-	; Gengar
+	; Gengar - HYPNOSIS, PSYCHIC_M, HEX, TOXIC
 	db 5, 2, PSYCHIC_M
 	db 5, 4, TOXIC
 	db $ff
@@ -447,56 +447,56 @@ SpecialTrainerMoves:
 	db $ff
 
 	db RIVAL3, 1  ; first battle
-	; Pidgeot
+	; Pidgeot - DOUBLE_EDGE, DOUBLE_TEAM, WING_ATTACK, SKY_ATTACK
 	db 1, 1, DOUBLE_EDGE
 	db 1, 2, DOUBLE_TEAM
 	db 1, 3, WING_ATTACK
-	; Alakazam
+	; Alakazam - KINESIS, RECOVER, PSYCHIC_M, REFLECT
 	db 2, 1, KINESIS
-	; Rhydon
+	; Rhydon - SURF, ROCK_SLIDE, HORN_DRILL, EARTHQUAKE
 	db 3, 1, SURF
-	; Arcanine
+	; Arcanine - FIRE_BLAST, DOUBLE_EDGE, AGILITY, FLAMETHROWER
 	db 4, 1, FIRE_BLAST
 	db 4, 2, DOUBLE_EDGE
-	; Exeggutor
+	; Exeggutor - EGG_BOMB, PSYCHIC_M, SOLARBEAM, SLEEP_POWDER
 	db 5, 2, PSYCHIC_M
-	; Blastoise
+	; Blastoise - EARTHQUAKE, THRASH, BLIZZARD, HYDRO_PUMP
 	db 6, 1, EARTHQUAKE
 	db 6, 3, BLIZZARD
 	db $ff
 
 	db RIVAL3, 2  ; first battle
-	; Pidgeot
+	; Pidgeot - DOUBLE_EDGE, DOUBLE_TEAM, WING_ATTACK, SKY_ATTACK
 	db 1, 1, DOUBLE_EDGE
 	db 1, 2, DOUBLE_TEAM
 	db 1, 3, WING_ATTACK
-	; Alakazam
+	; Alakazam - KINESIS, RECOVER, PSYCHIC_M, REFLECT
 	db 2, 1, KINESIS
-	; Rhydon
+	; Rhydon - SURF, ROCK_SLIDE, HORN_DRILL, EARTHQUAKE
 	db 3, 1, SURF
-	; Gyarados
+	; Gyarados -
 	; no change
-	; Arcanine
+	; Arcanine - FIRE_BLAST, DOUBLE_EDGE, AGILITY, FLAMETHROWER
 	db 5, 1, FIRE_BLAST
 	db 5, 2, DOUBLE_EDGE
-	; Venusaur
+	; Venusaur -
 	db 6, 4, GROWTH
 	db $ff
 
 	db RIVAL3, 3  ; first battle
-	; Pidgeot
+	; Pidgeot - DOUBLE_EDGE, DOUBLE_TEAM, WING_ATTACK, SKY_ATTACK
 	db 1, 1, DOUBLE_EDGE
 	db 1, 2, DOUBLE_TEAM
 	db 1, 3, WING_ATTACK
-	; Alakazam
+	; Alakazam - KINESIS, RECOVER, PSYCHIC_M, REFLECT
 	db 2, 1, KINESIS
-	; Rhydon
+	; Rhydon - SURF, ROCK_SLIDE, HORN_DRILL, EARTHQUAKE
 	db 3, 1, SURF
-	; Exeggutor
+	; Exeggutor - EGG_BOMB, PSYCHIC_M, SOLARBEAM, SLEEP_POWDER
 	db 4, 2, PSYCHIC_M
-	; Gyarados
+	; Gyarados -
 	; no change
-	; Charizard
+	; Charizard -
 	db 6, 2, FIRE_BLAST
 	db $ff
 
