@@ -500,30 +500,16 @@ StartMenu_TrainerInfo::
 
 ; loads tile patterns and draws everything except for gym leader faces / badges
 DrawTrainerInfo: ; marcelnote - modified
-	ld a, [wStatusFlags4] ; marcelnote - add female player
-	bit BIT_IS_GIRL, a
-	lb bc, BANK(RedPicFront), $01
-	ASSERT BANK(GreenPicFront) == BANK(RedPicFront)
-	ld de, RedPicFront
-	jr z, .gotPicFront
-	ld de, GreenPicFront
-.gotPicFront
-	predef DisplayPicCenteredOrUpperRight
 	call DisableLCD
-	; move player pic tiles ; this code freed some tiles but caused spilling
-;	ld hl, vChars2 tile $07
-;	ld de, vChars2 tile $00
-;	ld bc, $1c tiles
-;	call CopyData
-	; trainer info text box tile patterns
+	; load trainer info text box tile patterns
 	ld hl, TrainerInfoTextBoxTileGraphics
 	ld de, vChars2 tile $75
 	ld bc, 10 tiles
 	call TrainerInfo_FarCopyData
-	; marcelnote - restored printing leader names in Trainer card
+	; load badge numbers and leader names tiles ; marcelnote - restored
 	ld hl, LeaderNumbersNamesGraphics
 	ld de, vChars2 tile $51
-	ld bc, 30 tiles
+	ld bc, $1d tiles
 	ASSERT BANK(LeaderNumbersNamesGraphics) == BANK(TrainerInfoTextBoxTileGraphics)
 	call TrainerInfo_FarCopyData
 
@@ -553,6 +539,16 @@ DrawTrainerInfo: ; marcelnote - modified
 	jr nz, .loadFaceOrBadge
 
 	call EnableLCD
+	; draw player pic
+	ld a, [wStatusFlags4] ; marcelnote - add female player
+	bit BIT_IS_GIRL, a
+	lb bc, BANK(RedPicFront), $01
+	ASSERT BANK(GreenPicFront) == BANK(RedPicFront)
+	ld de, RedPicFront
+	jr z, .gotPicFront
+	ld de, GreenPicFront
+.gotPicFront
+	predef DisplayPicCenteredOrUpperRight
 	; draw trainer info box
 	ld hl, wTrainerInfoTextBoxWidthPlus1
 	ld a, 18 + 1
