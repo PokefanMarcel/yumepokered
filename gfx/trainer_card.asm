@@ -1,7 +1,5 @@
 TrainerInfoTextBoxTileGraphics:  INCBIN "gfx/trainer_card/trainer_info.2bpp"
 TrainerInfoTextBoxTileGraphicsEnd:
 
-; marcelnote - new, for printing leader names in Trainer card
-LeaderNames: INCBIN "gfx/trainer_card/leader_names.2bpp"
-
-BadgeNumbersTileGraphics: INCBIN "gfx/trainer_card/badge_numbers.2bpp"
+; marcelnote - for printing leader names in Trainer card
+LeaderNumbersNamesGraphics:  INCBIN "gfx/trainer_card/leader_numbers_names.2bpp"

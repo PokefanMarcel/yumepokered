@@ -520,21 +520,17 @@ DrawTrainerInfo: ; marcelnote - modified
 	ld bc, 10 tiles
 	call TrainerInfo_FarCopyData
 	; marcelnote - restored printing leader names in Trainer card
-	ld hl, LeaderNames
-	ld de, vChars2 tile $60
-	ld bc, $15 tiles
-	call TrainerInfo_FarCopyData
-	; badge number tile patterns
-	ld hl, BadgeNumbersTileGraphics
-	ld de, vChars2 tile $38
-	ld bc, 8 tiles
+	ld hl, LeaderNumbersNamesGraphics
+	ld de, vChars2 tile $51
+	ld bc, 30 tiles
+	ASSERT BANK(LeaderNumbersNamesGraphics) == BANK(TrainerInfoTextBoxTileGraphics)
 	call TrainerInfo_FarCopyData
 
 	; gym leader face and badge tile patterns ; marcelnote - only load relevant one
 	ld a, [wObtainedBadges]
 	ld c, a
 	ld b, NUM_BADGES
-	ld de, vChars2 tile $40
+	ld de, vChars2 tile $31
 	ld hl, GymLeaderFaceAndBadgeTileGraphics
 .loadFaceOrBadge
 	rrc c   ; player has badge?
