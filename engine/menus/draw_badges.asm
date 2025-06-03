@@ -1,11 +1,9 @@
 DrawBadges:
-; Draw 4x2 gym leader faces, with the faces replaced by
-; badges if they are owned. Used in the player status screen.
+; Draw 4x2 gym leader faces, or badges if they are owned.
+; Used in the player status screen.
 
-; In Japanese versions, names are displayed above faces.
-; Instead of removing relevant code, the name graphics were erased.
-
-; marcelnote - modified to display gym leader names and for different tileset layout
+; marcelnote -
+; Restored gym leader names, and optimised tileset layout for more efficient printing.
 
 ; Draw two rows of badges.
 	ld hl, wBadgeNumberTile
@@ -55,7 +53,7 @@ DrawBadges:
 	call .PlaceTiles
 	ld [wBadgeOrFaceTile], a
 
-	ld de, - 2 * SCREEN_WIDTH + 2
+	ld de, 2 - 2 * SCREEN_WIDTH
 	add hl, de ; set hl to tile for next badge number
 
 	dec b

@@ -488,6 +488,7 @@ StartMenu_TrainerInfo::
 	call GBPalNormal
 	call WaitForTextScrollButtonPress ; wait for button press
 	call GBPalWhiteOut
+	call ClearScreen ; marcelnote - clear screen for smoother transition
 ;	call LoadFontTilePatterns ; marcelnote - moved badge numbers out of font tiles
 	call LoadScreenTilesFromBuffer2 ; restore saved screen
 	call RunDefaultPaletteCommand
