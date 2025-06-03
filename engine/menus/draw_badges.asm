@@ -5,7 +5,7 @@ DrawBadges:
 ; In Japanese versions, names are displayed above faces.
 ; Instead of removing relevant code, the name graphics were erased.
 
-; marcelnote - this was modified to display gym leader names
+; marcelnote - modified to display gym leader names and for different tileset layout
 
 ; Tile ids for leader face graphics.
 	ld de, wBadgeOrFaceTiles
@@ -20,28 +20,28 @@ DrawBadges:
 	call CopyData
 
 ; Move from face to badge graphics if badge is owned.
-	ld hl, wBadgeOrFaceTiles
-	ld a, [wObtainedBadges]
-	ld b, a
-	ld c, NUM_BADGES
-.CheckBadge
-	srl b ; sets carry if rotates out a 1
-	jr nc, .KeepFaceTile
-	ld a, [hl]
-	add 4 ; Badge graphics are 4 tiles after each face
-	ld [hl], a
-.KeepFaceTile
-	inc hl
-	dec c
-	jr nz, .CheckBadge
+;	ld hl, wBadgeOrFaceTiles
+;	ld a, [wObtainedBadges]
+;	ld b, a
+;	ld c, NUM_BADGES
+;.CheckBadge
+;	srl b ; sets carry if rotates out a 1
+;	jr nc, .KeepFaceTile
+;	ld a, [hl]
+;	add 4 ; Badge graphics are 4 tiles after each face
+;	ld [hl], a
+;.KeepFaceTile
+;	inc hl
+;	dec c
+;	jr nz, .CheckBadge
 
 ; Draw two rows of badges.
 	ld hl, wBadgeNumberTile
-	ld a, $d8 ; [1]
+	ld a, $38 ; [1]
 	ld [hli], a ; hl -> wBadgeNameTile
 	ld [hl], $60 ; First name
 
-	ld b, 8 ; total badge counter
+	ld b, NUM_BADGES ; total badge counter
 	hlcoord 2, 11
 	call .DrawBadgeRow
 
@@ -51,7 +51,7 @@ DrawBadges:
 .DrawBadgeRow
 ; Draw 4 badges.
 
-	ld c, 4
+	ld c, NUM_BADGES / 2
 .DrawBadge
 	push hl ; hl = tile coord for badge number
 
@@ -113,7 +113,8 @@ DrawBadges:
 	ret
 
 .FaceBadgeTiles ; first tile for each leader/badge
-	db $20, $28, $30, $38, $40, $48, $50, $58
+;	db $20, $28, $30, $38, $40, $48, $50, $58
+	db $40, $44, $48, $4c, $50, $54, $58, $5c
 
 .NameTiles ; first name tile for each leader
 	db $60, $63, $66, $69, $6b, $6d, $70, $73
