@@ -839,7 +839,7 @@ wDexWeight:: dw
 NEXTU
 ; tile ID of the badge number being drawn
 wBadgeNumberTile:: db
-; first tile ID of the name being drawn
+; first tile ID of the badge or leader being drawn
 wBadgeOrFaceTile:: db
 
 NEXTU
