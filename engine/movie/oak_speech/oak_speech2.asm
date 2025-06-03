@@ -37,11 +37,11 @@ ChoosePlayerName:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
 	ld a, [wStatusFlags4]
 	bit BIT_IS_GIRL, a
-	ld de, RedPicFront
+	ASSERT BANK(GreenPicFront) == BANK(RedPicFront)
 	ld b, BANK(RedPicFront)
+	ld de, RedPicFront
 	jr z, .gotPicFront
 	ld de, GreenPicFront
-	ld b, BANK(GreenPicFront)
 .gotPicFront
 	call IntroDisplayPicCenteredOrUpperRight
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

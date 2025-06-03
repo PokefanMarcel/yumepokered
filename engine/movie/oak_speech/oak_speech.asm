@@ -78,7 +78,7 @@ OakSpeech:
 	bit BIT_DEBUG_MODE, a
 	jp nz, .skipSpeech
 	ld de, ProfOakPic
-	lb bc, BANK(ProfOakPic), $00
+	lb bc, BANK(ProfOakPic), 0
 	call IntroDisplayPicCenteredOrUpperRight
 	call FadeInIntroPic
 	ld hl, OakSpeechText1
@@ -99,8 +99,8 @@ OakSpeech:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
 	ld a, [wStatusFlags4]
 	bit BIT_IS_GIRL, a
-	lb bc, BANK(RedPicFront), $00
 	ASSERT BANK(GreenPicFront) == BANK(RedPicFront)
+	lb bc, BANK(RedPicFront), 0
 	ld de, RedPicFront
 	jr z, .gotPicFront
 	ld de, GreenPicFront
@@ -114,7 +114,7 @@ OakSpeech:
 	call GBFadeOutToWhite
 	call ClearScreen
 	ld de, Rival1Pic
-	lb bc, BANK(Rival1Pic), $00
+	lb bc, BANK(Rival1Pic), 0
 	call IntroDisplayPicCenteredOrUpperRight
 	call FadeInIntroPic
 	ld hl, IntroduceRivalText
@@ -126,21 +126,21 @@ OakSpeech:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
 	ld a, [wStatusFlags4]
 	bit BIT_IS_GIRL, a
+	ASSERT BANK(GreenPicFront) == BANK(RedPicFront)
+	lb bc, BANK(RedPicFront), 0
 	ld de, RedPicFront
-	lb bc, BANK(RedPicFront), $00
 	jr z, .gotPicFront2
 	ld de, GreenPicFront
-	lb bc, BANK(GreenPicFront), $00
 .gotPicFront2
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	call IntroDisplayPicCenteredOrUpperRight
 	call GBFadeInFromWhite
 	ld a, [wStatusFlags3]
-	and a ; ???
-	jr nz, .next
+;	and a ; ???
+;	jr nz, .next
 	ld hl, OakSpeechText3
 	call PrintText
-.next
+;.next
 	ldh a, [hLoadedROMBank]
 	push af
 	ld a, SFX_SHRINK
@@ -153,22 +153,22 @@ OakSpeech:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
 	ld a, [wStatusFlags4]
 	bit BIT_IS_GIRL, a
-	ld de, RedSprite
+	ASSERT BANK(GreenSprite) == BANK(RedSprite)
 	lb bc, BANK(RedSprite), $0C
+	ld de, RedSprite
 	jr z, .gotSprite
 	ld de, GreenSprite
-	lb bc, BANK(GreenSprite), $0C
 .gotSprite
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld hl, vSprites
 	call CopyVideoData
 	ld de, ShrinkPic1
-	lb bc, BANK(ShrinkPic1), $00
+	lb bc, BANK(ShrinkPic1), 0
 	call IntroDisplayPicCenteredOrUpperRight
 	ld c, 4
 	call DelayFrames
 	ld de, ShrinkPic2
-	lb bc, BANK(ShrinkPic2), $00
+	lb bc, BANK(ShrinkPic2), 0
 	call IntroDisplayPicCenteredOrUpperRight
 	call ResetPlayerSpriteData
 	ldh a, [hLoadedROMBank]
