@@ -215,7 +215,7 @@ CopyScreenTileBufferToVRAM::
 ClearScreen::
 ; Clear wTileMap, then wait
 ; for the bg map to update.
-	ld bc, 20 * 18
+	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	inc b
 	hlcoord 0, 0
 	ld a, " "

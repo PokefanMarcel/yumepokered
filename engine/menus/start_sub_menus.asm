@@ -488,7 +488,7 @@ StartMenu_TrainerInfo::
 	call GBPalNormal
 	call WaitForTextScrollButtonPress ; wait for button press
 	call GBPalWhiteOut
-	call LoadFontTilePatterns
+;	call LoadFontTilePatterns ; marcelnote - moved badge numbers out of font tiles
 	call LoadScreenTilesFromBuffer2 ; restore saved screen
 	call RunDefaultPaletteCommand
 	call ReloadMapData
@@ -498,46 +498,65 @@ StartMenu_TrainerInfo::
 	jp RedisplayStartMenu
 
 ; loads tile patterns and draws everything except for gym leader faces / badges
-DrawTrainerInfo:
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
-	ld a, [wStatusFlags4]
+DrawTrainerInfo: ; marcelnote - modified
+	ld a, [wStatusFlags4] ; marcelnote - add female player
 	bit BIT_IS_GIRL, a
-	ld de, RedPicFront
 	lb bc, BANK(RedPicFront), $01
+	ASSERT BANK(GreenPicFront) == BANK(RedPicFront)
+	ld de, RedPicFront
 	jr z, .gotPicFront
 	ld de, GreenPicFront
-	lb bc, BANK(GreenPicFront), $01
 .gotPicFront
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	predef DisplayPicCenteredOrUpperRight
 	call DisableLCD
-	hlcoord 0, 2
-	ld a, " "
-	call TrainerInfo_DrawVerticalLine
-	hlcoord 1, 2
-	call TrainerInfo_DrawVerticalLine
-	ld hl, vChars2 tile $07
-	ld de, vChars2 tile $00
-	ld bc, $1c tiles
-	call CopyData
-	ld hl, TrainerInfoTextBoxTileGraphics ; trainer info text box tile patterns
+	; move player pic tiles ; this code freed some tiles but caused spilling
+;	ld hl, vChars2 tile $07
+;	ld de, vChars2 tile $00
+;	ld bc, $1c tiles
+;	call CopyData
+	; trainer info text box tile patterns
+	ld hl, TrainerInfoTextBoxTileGraphics
 	ld de, vChars2 tile $75
 	ld bc, 10 tiles
 	call TrainerInfo_FarCopyData
-	ld hl, LeaderNames ; marcelnote - restored for printing leader names in Trainer card
+	; marcelnote - restored printing leader names in Trainer card
+	ld hl, LeaderNames
 	ld de, vChars2 tile $60
 	ld bc, $15 tiles
 	call TrainerInfo_FarCopyData
-	ld hl, BadgeNumbersTileGraphics  ; badge number tile patterns
-	ld de, vChars1 tile $58
+	; badge number tile patterns
+	ld hl, BadgeNumbersTileGraphics
+	ld de, vChars2 tile $38
 	ld bc, 8 tiles
 	call TrainerInfo_FarCopyData
-	ld hl, GymLeaderFaceAndBadgeTileGraphics  ; gym leader face and badge tile patterns
-	ld de, vChars2 tile $20
-	ld bc, 8 * 8 tiles
+
+	; gym leader face and badge tile patterns ; marcelnote - only load relevant one
+	ld a, [wObtainedBadges]
+	ld c, a
+	ld b, NUM_BADGES
+	ld de, vChars2 tile $40
+	ld hl, GymLeaderFaceAndBadgeTileGraphics
+.loadFaceOrBadge
+	rrc c   ; player has badge?
+	push bc ; save b = badge counter and c = obtained badges
+	ld bc, 4 tiles
 	ld a, BANK(GymLeaderFaceAndBadgeTileGraphics)
+	jr nc, .loadFace
+	; load badge
+	add hl, bc
 	call FarCopyData2
+	jr .continue
+.loadFace
+	call FarCopyData2
+	ld bc, 4 tiles
+	add hl, bc
+.continue
+	pop bc  ; restore b = badge counter and c = obtained badges
+	dec b
+	jr nz, .loadFaceOrBadge
+
 	call EnableLCD
+	; draw trainer info box
 	ld hl, wTrainerInfoTextBoxWidthPlus1
 	ld a, 18 + 1
 	ld [hli], a
@@ -546,6 +565,7 @@ DrawTrainerInfo:
 	ld [hl], 1
 	hlcoord 0, 0
 	call TrainerInfo_DrawTextBox
+	; draw badges box
 	ld hl, wTrainerInfoTextBoxWidthPlus1
 	ld a, 16 + 1
 	ld [hli], a
@@ -554,24 +574,31 @@ DrawTrainerInfo:
 	ld [hl], 3
 	hlcoord 1, 10
 	call TrainerInfo_DrawTextBox
+	; draw left side of badges box
 	hlcoord 0, 10
 	ld a, $7e ; background tile
 	call TrainerInfo_DrawVerticalLine
+	; draw right side of badges box
 	hlcoord 19, 10
 	call TrainerInfo_DrawVerticalLine
+	; Badges text
 	hlcoord 6, 9
 	ld de, TrainerInfo_BadgesText
 	call PlaceString
+	; "Name" "Money" and "Time"
 	hlcoord 2, 2
 	ld de, TrainerInfo_NameMoneyTimeText
 	call PlaceString
+	; Player name
 	hlcoord 7, 2
 	ld de, wPlayerName
 	call PlaceString
+	; Money
 	hlcoord 8, 4
 	ld de, wPlayerMoney
 	ld c, 3 | LEADING_ZEROES | LEFT_ALIGN | MONEY_SIGN
 	call PrintBCDNumber
+	; Play time
 	hlcoord 9, 6
 	ld de, wPlayTimeHours ; hours
 	lb bc, LEFT_ALIGN | 1, 3

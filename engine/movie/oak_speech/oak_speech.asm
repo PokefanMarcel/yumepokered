@@ -99,11 +99,11 @@ OakSpeech:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
 	ld a, [wStatusFlags4]
 	bit BIT_IS_GIRL, a
-	ld de, RedPicFront
 	lb bc, BANK(RedPicFront), $00
+	ASSERT BANK(GreenPicFront) == BANK(RedPicFront)
+	ld de, RedPicFront
 	jr z, .gotPicFront
 	ld de, GreenPicFront
-	lb bc, BANK(GreenPicFront), $00
 .gotPicFront
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	call IntroDisplayPicCenteredOrUpperRight
@@ -274,7 +274,7 @@ IntroDisplayPicCenteredOrUpperRight:
 	pop bc
 	ld a, c
 	and a
-	hlcoord 15, 1
+	hlcoord 14, 1 ; marcelnote - was 15, now print directly in the right spot
 	jr nz, .next
 	hlcoord 6, 4
 .next
@@ -282,7 +282,7 @@ IntroDisplayPicCenteredOrUpperRight:
 	ldh [hStartTileID], a
 	predef_jump CopyUncompressedPicToTilemap
 
-BoyGirlChoice::	;joenote - add female player
+BoyGirlChoice::	; joenote - add female player
 	call SaveScreenTilesToBuffer1
 	ld a, BOY_GIRL_MENU
 	ld [wTwoOptionMenuID], a
