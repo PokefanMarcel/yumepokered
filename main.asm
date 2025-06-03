@@ -86,6 +86,7 @@ INCLUDE "engine/menus/party_menu.asm"
 INCLUDE "gfx/player.asm"
 INCLUDE "engine/overworld/turn_sprite.asm"
 INCLUDE "engine/menus/start_sub_menus.asm"
+INCLUDE "engine/menus/trainer_menu.asm" ; marcelnote - moved stuff from start_sub_menus.asm
 INCLUDE "engine/items/tms.asm"
 INCLUDE "engine/battle/end_of_battle.asm"
 INCLUDE "engine/battle/wild_encounters.asm"
