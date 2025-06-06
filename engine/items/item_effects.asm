@@ -1086,7 +1086,7 @@ ItemUseMedicine:
 	ldh [hUILayoutFlags], a
 	ld a, $02
 	ld [wHPBarType], a
-	predef UpdateHPBar2 ; animate HP bar decrease of pokemon that used Softboiled
+	predef UpdateHPBar ; animate HP bar decrease of pokemon that used Softboiled
 	ldh a, [hUILayoutFlags]
 	res BIT_PARTY_MENU_HP_BAR, a
 	ldh [hUILayoutFlags], a
@@ -1236,7 +1236,7 @@ ItemUseMedicine:
 	ldh [hUILayoutFlags], a
 	ld a, $02
 	ld [wHPBarType], a
-	predef UpdateHPBar2 ; animate the HP bar lengthening
+	predef UpdateHPBar ; animate the HP bar lengthening
 	ldh a, [hUILayoutFlags]
 	res BIT_PARTY_MENU_HP_BAR, a
 	ldh [hUILayoutFlags], a
