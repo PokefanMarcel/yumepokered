@@ -19,12 +19,9 @@ PredefPointers::
 	add_predef JumpMoveEffect, $03 ; wrong bank
 	add_predef HealParty
 	add_predef MoveAnimation
-	add_predef DivideBCDPredef
-	add_predef DivideBCDPredef2
 	add_predef AddBCDPredef
 	add_predef SubBCDPredef
-	add_predef DivideBCDPredef3
-	add_predef DivideBCDPredef4
+	add_predef DivideBCDPredef
 	add_predef InitPlayerData
 	add_predef FlagActionPredef
 	add_predef HideObject

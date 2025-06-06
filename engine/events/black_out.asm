@@ -28,7 +28,7 @@ ResetStatusAndHalveMoneyOnBlackout::
 	ldh [hDivideBCDDivisor + 1], a
 	ld a, 2
 	ldh [hDivideBCDDivisor + 2], a
-	predef DivideBCDPredef3
+	predef DivideBCDPredef
 	ldh a, [hDivideBCDQuotient]
 	ld [wPlayerMoney], a
 	ldh a, [hDivideBCDQuotient + 1]
