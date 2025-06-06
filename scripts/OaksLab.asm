@@ -379,13 +379,13 @@ OaksLabRivalStartBattleScript:
 	ld [wCurOpponent], a
 	; select which team to use during the encounter
 	ld a, [wRivalStarter]
-	ld b, $1 ; squirtle team ; marcelnote - optimized team choice code by using register b
+	ld b, $1    ; squirtle team ; marcelnote - optimized
 	cp STARTER2 ; squirtle
 	jr z, .got_team
-	inc b ; b=2, bulbasaur team
+	inc b       ; b=2, bulbasaur team
 	cp STARTER3 ; bulbasaur
 	jr z, .got_team
-	inc b ; b=3, charmander team
+	inc b       ; b=3, charmander team
 .got_team
 	ld a, b
 	ld [wTrainerNo], a
