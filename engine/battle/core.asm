@@ -2305,7 +2305,7 @@ DisplayBagMenu:
 	call DisplayListMenuID
 	ld a, [wCurrentMenuItem]
 	ld [wBagSavedMenuItem], a
-	xor a
+	ld a, 0 ; conserve carry flag so no xor a
 	ld [wMenuWatchMovingOutOfBounds], a
 	ld [wMenuItemToSwap], a
 	;;;;;;;;;; marcelnote - display bag info box, new for bag pockets
