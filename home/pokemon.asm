@@ -38,7 +38,7 @@ DrawHPBar::
 	jr z, .rightTip
 
 .emptyHPTiles
-	ld a, $64 ; a = $64, empty HP bar tile
+	ld a, $64 ; empty HP bar tile
 .draw
 	ld [hli], a
 	dec d
