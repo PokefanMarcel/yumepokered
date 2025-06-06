@@ -2455,10 +2455,10 @@ PartyMenuOrRockOrRun:
 	jr nz, .doEnemyMonAnimation
 ; enemy mon doesn't have substitute
 	ld a, [wEnemyMonMinimized]
-	and a ; has the enemy mon used Minimise?
+	and a ; has the enemy mon used Minimize?
 	ld hl, AnimationMinimizeMon
 	jr nz, .doEnemyMonAnimation
-; enemy mon is not minimised
+; enemy mon is not minimized
 	ld a, [wEnemyMonSpecies]
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
