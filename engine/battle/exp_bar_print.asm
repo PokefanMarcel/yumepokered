@@ -30,7 +30,7 @@ AnimateEXPBar:
 	ldh a, [hQuotient + 3] ; a = new pixel length
 	ld [hl], a
 	sub c
-	jr z, .done
+	jr z, .delay
 	ld c, a  ; c = number of pixels to draw
 	ld b, $8 ; b = max number of tiles to place
 
@@ -85,6 +85,7 @@ AnimateEXPBar:
 	hlcoord 10, 11
 	ld de, wTileMapBackup + 10 + 11 * SCREEN_WIDTH
 	call CopyData
+.delay
 	ld c, 5
 	jp DelayFrames
 
