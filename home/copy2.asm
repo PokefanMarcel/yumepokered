@@ -66,8 +66,12 @@ CopyVideoData::
 
 	ldh a, [hAutoBGTransferEnabled]
 	push af
+
+	inc a
+	jr z, .dontDisable ; marcelnote - allow bypass for Exp bar animation
 	xor a ; disable auto-transfer while copying
 	ldh [hAutoBGTransferEnabled], a
+.dontDisable
 
 	ldh a, [hLoadedROMBank]
 	ldh [hROMBankTemp], a

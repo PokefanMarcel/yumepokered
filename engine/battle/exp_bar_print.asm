@@ -7,12 +7,13 @@ AnimateEXPBarAgain:
 	xor a
 	ld [wEXPBarPixelLength], a
 	hlcoord 17, 11
-	ld a, $c0
-	ld c, $08
+	ld a, "<HUD_HORIZ_BAR>"   ; empty Exp bar tile
+	ld c, $8
 .loop
 	ld [hld], a
 	dec c
 	jr nz, .loop
+	; fallthrough
 AnimateEXPBar:
 	call LoadMonData
 	call IsCurrentMonBattleMon
@@ -23,35 +24,70 @@ AnimateEXPBar:
 	call CalcEXPBarPixelLength
 	ld hl, wEXPBarPixelLength
 	ld a, [hl]
-	ld b, a
-	ldh a, [hQuotient + 3]
+	ld c, a                ; c = previous pixel length
+	and $7
+	ld d, a                ; d = current partial exp tile
+	ldh a, [hQuotient + 3] ; a = new pixel length
 	ld [hl], a
-	sub b
+	sub c
 	jr z, .done
-	ld b, a
-	ld c, $08
+	ld c, a  ; c = number of pixels to draw
+	ld b, $8 ; b = max number of tiles to place
+
+	ldh a, [hAutoBGTransferEnabled]
+	push af
+	ld a, $ff
+	ldh [hAutoBGTransferEnabled], a
+
 	hlcoord 17, 11
-.loop1
+	ld e, "<EXP_BAR_FULL>"
+.skipFullTiles
 	ld a, [hl]
-	cp $c8
-	jr nz, .loop2
+	sub e ; is it a full tile?
+	jr nz, .animateTile
 	dec hl
-	dec c
-	jr z, .done
-	jr .loop1
-.loop2
-	inc a
-	ld [hl], a
-	call DelayFrame
 	dec b
-	jr nz, .loop1
+	jr nz, .skipFullTiles
+	jr .done
+
+.animateTile
+	ld a, TRANSFERMIDDLE
+	ldh [hAutoBGTransferPortion], a
+.loopAnimate
+	inc d   ; we'll load the next tile
+	ld a, d
+	cp $8
+	jr nz, .loadPartial
+	ld [hl], e ; "<EXP_BAR_FULL>"
+	ld d, 0
+	call DelayFrame
+	call DelayFrame
+	jr .dontLoad
+.loadPartial
+	ld [hl], "<EXP_BAR_PARTIAL>"
+	push hl ; save hl = current tile
+	push bc ; save b = number of tiles left, c = pixels left
+	push de ; save d = current tile, e = "<EXP_BAR_FULL>"
+	ld a, d
+	call LoadExpBarDynamicTile ; contains a DelayFrame via CopyVideoData
+	call DelayFrame
+	pop de  ; restore d = current tile, e = "<EXP_BAR_FULL>"
+	pop bc  ; restore b = number of tiles left, c = pixels left
+	pop hl  ; restore hl = current tile
+.dontLoad
+	dec c
+	jr nz, .skipFullTiles
 .done
-	ld bc, $08
+	pop af
+	ldh [hAutoBGTransferEnabled], a
+
+	ld bc, $8
 	hlcoord 10, 11
-	ld de, wTileMapBackup + 10 + 11 * 20
+	ld de, wTileMapBackup + 10 + 11 * SCREEN_WIDTH
 	call CopyData
 	ld c, 5
 	jp DelayFrames
+
 
 KeepEXPBarFull:
 	call IsCurrentMonBattleMon
@@ -67,38 +103,40 @@ IsCurrentMonBattleMon:
 	ld a, [wWhichPokemon]
 	cp b
 	ret
-	
-	
-	
-	
+
 
 PrintEXPBar:
 	call CalcEXPBarPixelLength
+	ldh a, [hQuotient + 3]     ; pixel length
+	call LoadExpBarDynamicTile ; load tile with a mod 8 pixels long
+
 	ldh a, [hQuotient + 3] ; pixel length
 	ld [wEXPBarPixelLength], a
-	ld b, a
-	ld c, $08
-	ld d, $08
+	ld b, $8 ; number of tiles to place
+	ld c, $8 ; constant for subtraction
 	hlcoord 17, 11
-.loop
-	ld a, b
+.loopFullTiles
 	sub c
-	jr nc, .skip
-	ld c, b
-	jr .loop
-.skip
-	ld b, a
-	ld a, $c0
-	add c
-.loop2
+	jr c, .partialTile ; length left < 8 pixels ?
+	; place full Exp bar tile
+	ld [hl], "<EXP_BAR_FULL>"
+	dec hl
+	dec b
+	jr nz, .loopFullTiles
+	ret
+
+.partialTile
+	ld a, "<EXP_BAR_PARTIAL>" ; partial Exp bar tile
 	ld [hld], a
-	dec d
+	dec b
 	ret z
-	ld a, b
-	and a
-	jr nz, .loop
-	ld a, $c0
-	jr .loop2
+	ld a, "<HUD_HORIZ_BAR>"   ; empty Exp bar tile
+.loopEmptyTiles
+	ld [hld], a
+	dec b
+	jr nz, .loopEmptyTiles
+	ret
+
 
 CalcEXPBarPixelLength:
 	ld hl, wEXPBarKeepFullFlag
@@ -270,6 +308,19 @@ BattleMonPartyAttr:
 	jp AddNTimes
 
 
-;joenote - adding exp bar
+LoadExpBarDynamicTile:
+	and $7 ; a mod 8
+	swap a ; a * 16
+	ld b, 0
+	ld c, a
+	ld hl, EXPBarGraphics
+	add hl, bc
+	ld d, h
+	ld e, l
+	ld hl, vChars2 tile $75 ; "<EXP_BAR_PARTIAL>"
+	lb bc, BANK(EXPBarGraphics), 1 ; 1 tile
+	jp CopyVideoData
+
+
 EXPBarGraphics::  INCBIN "gfx/battle/exp_bar.2bpp"
 EXPBarGraphicsEnd::
