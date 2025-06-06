@@ -70,7 +70,7 @@ DrainHPEffect_: ; marcelnote - optimized
 	xor a
 .next2
 	ld [wHPBarType], a
-	predef UpdateHPBar2
+	predef UpdateHPBar
 	predef DrawPlayerHUDAndHPBar
 	predef DrawEnemyHUDAndHPBar
 	callfar ReadPlayerMonCurHPAndStatus

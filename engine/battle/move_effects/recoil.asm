@@ -57,7 +57,7 @@ RecoilEffect_: ; marcelnote - optimized
 	hlcoord 10, 9
 .updateHPBar
 	ld [wHPBarType], a
-	predef UpdateHPBar2
+	predef UpdateHPBar
 	ld hl, HitWithRecoilText
 	jp PrintText
 
