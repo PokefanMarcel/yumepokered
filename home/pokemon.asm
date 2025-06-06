@@ -343,16 +343,16 @@ PrintLevel::
 ; INPUT:
 ; hl = destination address
 ; [wLoadedMonLevel] = level
-PrintLevelFull::
+PrintLevelFull:: ; unused?
 	ld a, "<LV>" ; ":L" tile ID
 	ld [hli], a
 	ld a, [wLoadedMonLevel] ; level
+	ld c, 3 ; number of digits
 
 PrintLevelCommon::
 	ld [wTempByteValue], a
 	ld de, wTempByteValue
 	ld b, LEFT_ALIGN | 1 ; 1 byte
-	ld c, 3 ; number of digits
 	jp PrintNumber
 
 GetwMoves::
