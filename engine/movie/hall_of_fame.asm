@@ -169,6 +169,7 @@ HoFDisplayMonInfo:
 	call PlaceString
 	ld a, [wHoFMonLevel]
 	hlcoord 8, 7
+	ld c, 3 ; number of digits
 	call PrintLevelCommon
 	ld a, [wHoFMonSpecies]
 	ld [wCurSpecies], a
