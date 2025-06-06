@@ -67,13 +67,13 @@
 	charmap "<HP>",      $62
 
 	charmap "<LV>",      $6e ; :L
-	charmap "<BOLD_P>",  $6f ; bold P
 
 	charmap "<HUD_VERTI_BAR>",  $70 ; HUD vertical bar tile
 	charmap "<LEFT_TRIANGLE>",  $71 ; HUD lower-left triangle tile
 	charmap "<HUD_HORIZ_BAR>",  $72 ; HUD horizontal bar tile
 	charmap "<RIGHT_CORNER>",   $73 ; HUD lower-right corner tile
 
+	charmap "<BOLD_P>", $73 ; bold P
 	charmap "<ID>",     $74
 	charmap "№",        $75 ; also in gfx/pokedex/pokedex.png
 	charmap "<ST>",     $76 ; left of [START▶] button
@@ -81,10 +81,12 @@
 	charmap "<T▶>",     $78 ; right of [START▶] button
 
 	; loaded in battle (from gfx/battle/battle_hud.png)
-	charmap "<LEFT_CORNER>",           $74 ; HUD lower-left corner tile
-	charmap "<RIGHT_TRIANGLE>",        $75 ; HUD lower-right triangle tile
-	charmap "<RIGHT_EXP_BAR>",         $76 ; HUD right side of Exp bar
-	charmap "<HUD_VERTI_BAR_HP_TIP>",  $77 ; HUD vertical bar tile
+	charmap "<LEFT_CORNER>",           $73 ; HUD lower-left corner tile
+	charmap "<RIGHT_TRIANGLE>",        $74 ; HUD lower-right triangle tile
+	charmap "<EXP_BAR_PARTIAL>",       $75 ; HUD dynamically filled Exp bar
+	charmap "<EXP_BAR_FULL>",          $76 ; HUD full Exp bar
+	charmap "<RIGHT_EXP_BAR>",         $77 ; HUD right side of Exp bar
+	charmap "<HUD_VERTI_BAR_HP_TIP>",  $78 ; HUD vertical bar tile
 
 	; loaded in naming screem (see engine/menus/naming_screen.asm, from gfx/font/naming_screen.png)
 	charmap "<ED>",                $74
