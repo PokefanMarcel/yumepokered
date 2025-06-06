@@ -346,13 +346,13 @@ PrintLevel::
 PrintLevelFull::
 	ld a, "<LV>" ; ":L" tile ID
 	ld [hli], a
-	ld c, 3 ; number of digits
 	ld a, [wLoadedMonLevel] ; level
 
 PrintLevelCommon::
 	ld [wTempByteValue], a
 	ld de, wTempByteValue
 	ld b, LEFT_ALIGN | 1 ; 1 byte
+	ld c, 3 ; number of digits
 	jp PrintNumber
 
 GetwMoves::
