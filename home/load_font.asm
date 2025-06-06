@@ -39,22 +39,9 @@ LoadHpBarAndStatusTilePatterns::
 	ld de, vChars2 tile $62
 	ld bc, HpBarAndStatusGraphicsEnd - HpBarAndStatusGraphics
 	ld a, BANK(HpBarAndStatusGraphics)
-;shinpokerednote: ADDED: load exp bar
-	;jp FarCopyData2 ; if LCD is off, transfer all at once
-	call FarCopyData2
-	ld hl, EXPBarGraphics
-	ld de, vChars1 tile $40
-	ld bc, EXPBarGraphicsEnd - EXPBarGraphics
-	ld a, BANK(EXPBarGraphics)
-	jp FarCopyData2
+	jp FarCopyData2 ; if LCD is off, transfer all at once
 .on
 	ld de, HpBarAndStatusGraphics
 	ld hl, vChars2 tile $62
 	lb bc, BANK(HpBarAndStatusGraphics), (HpBarAndStatusGraphicsEnd - HpBarAndStatusGraphics) / $10
-;shinpokerednote: ADDED: load exp bar
-	;jp CopyVideoData ; if LCD is on, transfer during V-blank
-	call CopyVideoData
-	ld de, EXPBarGraphics
-	ld hl, vChars1 tile $40
-	lb bc, BANK(EXPBarGraphics), (EXPBarGraphicsEnd - EXPBarGraphics) / $10
-	jp CopyVideoData
+	jp CopyVideoData ; if LCD is on, transfer during V-blank

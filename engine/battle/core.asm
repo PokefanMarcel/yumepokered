@@ -6563,14 +6563,14 @@ LoadHudTilePatterns:
 .lcdDisabled
 	; marcelnote - reorganized Battle HUD tiles
 	ld hl, BattleHudTiles
-	ld de, vChars2 tile $74
+	ld de, vChars2 tile $73
 	ld bc, BattleHudTilesEnd - BattleHudTiles
 	ld a, BANK(BattleHudTiles)
 	jp FarCopyDataDouble
 .lcdEnabled
 	; marcelnote - reorganized Battle HUD tiles
 	ld de, BattleHudTiles
-	ld hl, vChars2 tile $74
+	ld hl, vChars2 tile $73
 	lb bc, BANK(BattleHudTiles), (BattleHudTilesEnd - BattleHudTiles) / $8
 	jp CopyVideoDataDouble
 
