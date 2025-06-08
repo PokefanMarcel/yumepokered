@@ -54,15 +54,15 @@ UpdateHPBar:
 	ld e, a      ; new HP into de
 	ld d, [hl]
 	pop hl
-	push de
-	push bc
+	push de ; save de = new HP
+	push bc ; save bc = old HP
 	call UpdateHPBar_CalcHPDifference
 	ld a, e
 	ld [wHPBarHPDifference+1], a
 	ld a, d
 	ld [wHPBarHPDifference], a
-	pop bc
-	pop de
+	pop bc  ; restore bc = old HP
+	pop de  ; restore  de = new HP
 	call UpdateHPBar_CompareNewHPToOldHP
 	ret z
 	ld a, $ff
@@ -162,27 +162,17 @@ UpdateHPBar_AnimateHPBar:
 ; compares old HP and new HP and sets c and z flags accordingly
 UpdateHPBar_CompareNewHPToOldHP:
 	ld a, d
-	sub b
+	cp b
 	ret nz
 	ld a, e
-	sub c
+	cp c
 	ret
 
-; calcs HP difference between bc and de (into de)
+; calcs absolute HP difference between bc = old HP and de = new HP (into de)
 UpdateHPBar_CalcHPDifference:
-	ld a, d
-	sub b
-	jr c, .oldHPGreater
-	jr z, .testLowerByte
-.newHPGreater
-	ld a, e
-	sub c
-	ld e, a
-	ld a, d
-	sbc b
-	ld d, a
-	ret
-.oldHPGreater
+	call UpdateHPBar_CompareNewHPToOldHP
+	jr nc, .newHPGreater
+; old HP greater
 	ld a, c
 	sub e
 	ld e, a
@@ -190,12 +180,13 @@ UpdateHPBar_CalcHPDifference:
 	sbc d
 	ld d, a
 	ret
-.testLowerByte
+.newHPGreater
 	ld a, e
 	sub c
-	jr c, .oldHPGreater
-	jr nz, .newHPGreater
-	ld de, $0
+	ld e, a
+	ld a, d
+	sbc b
+	ld d, a
 	ret
 
 UpdateHPBar_PrintHPNumber:
@@ -212,12 +203,10 @@ UpdateHPBar_PrintHPNumber:
 	push hl
 	ldh a, [hUILayoutFlags]
 	bit BIT_PARTY_MENU_HP_BAR, a
-	jr z, .hpBelowBar
-	ld de, $9
-	jr .next
-.hpBelowBar
-	ld de, $15
-.next
+	ld de, SCREEN_WIDTH + 1 ; below bar
+	jr z, .printFraction
+	ld de, $9 ; right of bar
+.printFraction
 	add hl, de
 	push hl
 	ld a, " "
