@@ -120,32 +120,32 @@ HallOfFameCongratulationsScript:
 	ld a, HS_CERULEAN_CAVE_GUY
 	ld [wMissableObjectIndex], a
 	predef HideObject
-	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL1 ; move girl to E4 entrance
+	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL1   ; move girl to E4 entrance
 	ld [wMissableObjectIndex], a
 	predef HideObjectCont
-	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL2 ; move girl to E4 entrance
+	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL2   ; move girl to E4 entrance
 	ld [wMissableObjectIndex], a
 	predef ShowObjectCont
 	; marcelnote - make roaming E4 members appear
-	ld a, HS_SILPH_FACTORY_2F_LORELEI_1 ; postgame Lorelei
+	ld a, HS_SILPH_FACTORY_2F_LORELEI_1   ; postgame Lorelei
 	ld [wMissableObjectIndex], a
 	predef ShowObjectCont
 	ld a, HS_SILPH_FACTORY_2F_SCIENTIST_1 ; postgame Lorelei event, scientist blocking factory stairs
 	ld [wMissableObjectIndex], a
 	predef HideObjectCont
-	ld a, HS_FIGHTING_DOJO_BRUNO        ; postgame Bruno
+	ld a, HS_FIGHTING_DOJO_BRUNO          ; postgame Bruno
 	ld [wMissableObjectIndex], a
 	predef ShowObject
-	ld a, HS_POKEMON_TOWER_1F_AGATHA    ; postgame Agatha
+	ld a, HS_POKEMON_TOWER_1F_AGATHA      ; postgame Agatha
 	ld [wMissableObjectIndex], a
 	predef ShowObject
-	ld a, HS_POKEMON_TOWER_1F_GENTLEMAN    ; postgame Agatha event, director of Pokemon radio
+	ld a, HS_POKEMON_TOWER_1F_GENTLEMAN   ; postgame Agatha event, director of Pokemon radio
 	ld [wMissableObjectIndex], a
 	predef ShowObject
-	ld a, HS_CINNABAR_VOLCANO_1F_LANCE  ; postgame Lance
+	ld a, HS_CINNABAR_VOLCANO_1F_LANCE    ; postgame Lance
 	ld [wMissableObjectIndex], a
 	predef ShowObject
-	ld a, HS_OAKS_LAB_RIVAL             ; postgame Rival
+	ld a, HS_OAKS_LAB_RIVAL               ; postgame Rival
 	ld [wMissableObjectIndex], a
 	predef ShowObject
 	; marcelnote - switch Gym Leaders to their rematch counterparts
@@ -216,7 +216,12 @@ HallOfFameCongratulationsScript:
 	ld a, HS_LANCES_ROOM_LANCE_REMATCH     ; show rematch Lance
 	ld [wMissableObjectIndex], a
 	predef ShowObjectCont
+	jr .done
 .rematch3
+	ld a, HS_CHAMPIONS_ROOM_RIVAL          ; make Rival reappear since he walked out
+	ld [wMissableObjectIndex], a
+	predef ShowObjectCont
+.done
 	ld a, SCRIPT_HALLOFFAME_RESET_EVENTS_AND_SAVE
 	ld [wHallOfFameCurScript], a
 	ret

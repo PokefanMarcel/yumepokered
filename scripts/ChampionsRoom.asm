@@ -298,11 +298,6 @@ ChampionsRoomCleanupScript:
 	ld [wJoyIgnore], a
 	ld a, SCRIPT_CHAMPIONSROOM_DEFAULT
 	ld [wChampionsRoomCurScript], a
-	;;;;; marcelnote - make Rival reappear since he walked out ; should be moved to Hall of Fame script?
-	ld a, HS_CHAMPIONS_ROOM_RIVAL
-	ld [wMissableObjectIndex], a
-	predef ShowObjectCont
-	;;;;;
 	ret
 
 ChampionsRoom_DisplayTextID_AllowABSelectStart:
