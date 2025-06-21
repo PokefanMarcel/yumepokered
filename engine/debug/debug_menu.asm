@@ -118,3 +118,10 @@ TestBattle: ; unreferenced except in _DEBUG
 	ld [wUpdateSpritesEnabled], a
 	ldh [hAutoBGTransferEnabled], a
 	jr .loop
+
+; marcelnote - new crashing function for debug
+Crash::
+	di           ; Disable interrupts
+	ld sp, $FFFE ; Reset stack pointer
+.hang
+	jr .hang     ; Infinite loop
