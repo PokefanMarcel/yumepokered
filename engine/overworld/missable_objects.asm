@@ -192,6 +192,14 @@ HideObject:
 
 HideObjectCont:
 	ld hl, wMissableObjectFlagsCont
+	;;;;;;;;;; marcelnote - temp code for bug fixing (Rival disappears in Champion's room)
+	ld a, [wMissableObjectIndex]
+	cp HS_CHAMPIONS_ROOM_RIVAL
+	jp nz, HideObjectCommon
+	ld a, [wCurMap]
+	cp CHAMPIONS_ROOM
+	jp nz, Crash
+	;;;;;;;;;;
 	; fallthrough
 HideObjectCommon:
 	ld a, [wMissableObjectIndex]
