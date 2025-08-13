@@ -162,8 +162,8 @@ This project owes a lot to existing works, and above all to the pret [pokered](h
 - some new sprites have been provided by or adapted from Madame Frog/Hatuntun (retrieved [here](https://www.deviantart.com/ghost-missingno/art/Blue-Sprites-for-R-G-B-Y-339796334)), LouLilie ([here](https://www.deviantart.com/loulilie/art/PokemonSpecial-Sprites-Yellow-302559354)), Corra, Mauve and FrenchOrange (from the pokered discord), SkidMarc25 ([here](https://www.deviantart.com/skidmarc25/art/Pokemon-Red-Blue-Green-Yellow-Back-Sprite-Touchups-977256591)),
 - the invaluable help from the amazing people on the pokered Discord.
 
-I try my best to keep track of all references, but I'm most likely forgetting some.
-If you think I should credit your work here, I'll be happy to do so – just reach out to me on the pokered Discord!
+I do my best to keep track of all references, but I may have missed some.
+If you think your work should be credited here, please reach out – I'll be happy to add it.
 
 ## Contact
 
