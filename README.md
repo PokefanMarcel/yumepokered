@@ -111,19 +111,6 @@ There are also many other smaller tweaks to the original game, and still more to
 
 Link cable functionalities have not been tested yet – try it at your own risk.
 
-### Version differences
-
-Differences between versions are minimal.  
-Version-exclusive Pokémon are now handled as rarity differences rather than outright exclusivity.
-For example, Oddish is more common in Red, while Bellsprout is more common in Green/Blue. Green version shares the same encounter tables as Blue.
-Other differences remain as in the original games:
-
-- Game Boy Color palettes: Red/Green for Red, Green/Red for Green, Blue/Red for Blue.
-- Game Corner slots: different visual designs.
-- Super Game Boy: different border graphics.
-
-Unless you’re after an easier hunt for a specific version-exclusive Pokémon, just pick whichever color you like!
-
 
 ## Screenshots
 
@@ -147,6 +134,20 @@ Unless you’re after an easier hunt for a specific version-exclusive Pokémon, 
 
 
 Note: colors are only available in SGB mode for now.
+
+
+## Version differences
+
+Differences between versions are minimal.  
+- Version-exclusive Pokémon are now handled as rarity differences rather than outright exclusivity.
+  For example, Oddish is more common in Red, while Bellsprout is more common in Green/Blue. Green version shares the same encounter tables as Blue.
+  
+Other differences remain as in the original games:
+- Game Boy Color palettes: Red/Green for Red, Green/Red for Green, Blue/Red for Blue.
+- Game Corner slots: different visual designs.
+- Super Game Boy: different border graphics.
+
+Unless you’re after an easier hunt for a specific version-exclusive Pokémon, just pick whichever color you like!
 
 ## Credits
 
