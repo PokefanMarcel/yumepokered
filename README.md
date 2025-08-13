@@ -1,4 +1,4 @@
-# Pokémon Yume 夢 Red/Green/Blue
+# Pokémon Yume 夢
 
 <p align="center">
   <img src="/docs/boxart/yumepokered.png"   alt="Yume Red"   width="256">
@@ -8,7 +8,7 @@
   <img src="/docs/boxart/yumepokeblue.png"  alt="Yume Blue"  width="256">
 </p>
 
-Pokémon Yume 夢 Red/Green/Blue is an enhancement hack of Pokémon Red and Blue built on the [pokered disassembly](https://github.com/pret/pokered).
+Pokémon Yume 夢 is an enhancement hack of Pokémon Red and Blue built on the [pokered disassembly](https://github.com/pret/pokered).
 It aims to enrich the originals with improved gameplay balance, greater Pokémon accessibility, and carefully integrated additions that feel as though they were always meant to be there.
 Above all, it seeks to preserve the charm and spirit of these games.
 
