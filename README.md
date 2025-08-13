@@ -40,7 +40,7 @@ Loosely inspired by the anime, manga, and later Pokémon generations, Yume featu
 - Stone and trade evolutions keep learning moves.
 
 **Battles**
-- Updated type match-ups: Ghost very effective against Psychic, Bug not effective against Poison.
+- Updated type match-ups: Ghost is very effective against Psychic, Bug is not effective against Poison.
 - Fixed badge boost glitch and Leech Seed/Toxic exploit.
 - Gym leaders' and Elite 4 members' Pokémon have better moves overall.
 - Several Gym leader teams were slightly modified (but trying to keep their theme intact!).
