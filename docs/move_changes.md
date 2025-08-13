@@ -25,7 +25,7 @@ There are **three** new moves:
 
 Move type changes are primarily meant to give STAB options to Mons who were lacking them.
 - CUT becomes Bug-type, providing a viable early-game Bug-type move and a decent coverage option to check Psychic-types.
-- RAZOR WIND becomes a weaker Bug-type HYPER BEAM, which due to Gen 1 mechanics can skip the recharge turn if it KOes the opponent.
+- RAZOR WIND becomes a weaker Bug-type HYPER BEAM which, in Gen 1, skips the recharge turn if it KOs the opponent.
 - GUST is now Flying-type, as part of a realignment of GUST and WING ATTACK on their Gen 2 counterparts.
 - KARATE CHOP becomes Fighting-type, surpassing SUBMISSION as the best Fighting move with its high crit rate.
 - SLAM becomes Dragon-type, providing dragons with a STAB option and others with a coverage move against dragons.
