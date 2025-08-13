@@ -10,7 +10,7 @@ For more detailed information about moves in the game, [check this file](../data
 ## New moves
 
 There are **three** new moves:
-- HEX has been imported from future generations to provide a strong, viable STAB Ghost-type move. It is now part of the Gastly line level-up learnset and is also the only new TM in the game, teachable to Pokémon like Hypno, Ninetales, Marowak, and a few others. HEX gains a 50% damage boost when the opponent is affected by a status condition, introducing a new move effect. However, given its similarity to DREAM EATER and its natural fit with Ghost-types, this addition feels like a seamless and sensible enhancement to the original movepool.
+- HEX has been imported from future generations to provide a viable STAB Ghost-type move. It is now part of the Gastly line level-up learnset and is also the only new TM in the game, teachable to Pokémon like Hypno, Ninetales, Marowak, and a few others. HEX gains a 50% damage boost when the opponent is affected by a status condition, introducing a new move effect. However, given its similarity to DREAM EATER and its natural fit with Ghost-types, this addition feels like a seamless and sensible enhancement to the original movepool.
 - ELECTRO BALL is a signature move for the Voltorb line which has a high crit rate. Given Electrode's speed and how critical hits are computed in Gen 1, it essentially becomes the best Electric move in the game.
 - WILL-O-WISP is a signature move for the Vulpix line. Ninetales suffers in comparison to Arcanine in Gen 1, and this provides it with a much-needed buff (WILL-O-WISP also pairs nicely with HEX).
 
