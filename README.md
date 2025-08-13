@@ -17,6 +17,7 @@ Loosely inspired by the anime, manga, and later Pokémon generations, Yume featu
 
 ▶▶ Download the latest version from the [releases page](https://github.com/PokefanMarcel/yumepokered/releases). ◀◀
 
+
 ### What's new?
 
 - **Catch 'em all!** All original 151 Pokémon are available through natural gameplay.
@@ -25,6 +26,7 @@ Loosely inspired by the anime, manga, and later Pokémon generations, Yume featu
 - **Expanded Postgame.** New quests, Elite Four rematches, Gen 2 tie-ins, a restored Prof. Oak battle, and more!
 - **Mew quest.** A proper storyline leading to the Mythical Pokémon.
 - **Quality-of-life improvements.** Running shoes, bigger bag space, easier HM usage, experience bars, repel reuse prompts, a move deleter, and much more.
+
 
 ### Gameplay updates
 
@@ -59,6 +61,7 @@ Loosely inspired by the anime, manga, and later Pokémon generations, Yume featu
 - A new NPC gives the fossil you didn't choose in Mt. Moon later in the game.
 - Either Hitmonlee or Hitmonchan is also obtainable from a new NPC before the Elite 4.
 
+
 ### New content
 
 **Maps**
@@ -81,6 +84,7 @@ Loosely inspired by the anime, manga, and later Pokémon generations, Yume featu
 - In SuperGameBoy mode, the town color palettes have been adjusted to better reflect the original Japanese town names.
 - Restored gym leader names in trainer card.
 - Many visual bug fixes.
+
 
 ### QoL updates
 
@@ -106,6 +110,20 @@ Loosely inspired by the anime, manga, and later Pokémon generations, Yume featu
 There are also many other smaller tweaks to the original game, and still more to come!
 
 Link cable functionalities have not been tested yet – try it at your own risk.
+
+### Version differences
+
+Differences between versions are minimal.  
+Version-exclusive Pokémon are now handled as rarity differences rather than outright exclusivity.
+For example, Oddish is more common in Red, while Bellsprout is more common in Green/Blue. Green version shares the same encounter tables as Blue.
+Other differences remain as in the original games:
+
+- Game Boy Color palettes: Red/Green for Red, Green/Red for Green, Blue/Red for Blue.
+- Game Corner slots: different visual designs.
+- Super Game Boy: different border graphics.
+
+Unless you’re after an easier hunt for a specific version-exclusive Pokémon, just pick whichever color you like!
+
 
 ## Screenshots
 
