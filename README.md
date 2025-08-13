@@ -139,7 +139,7 @@ Note: colors are only available in SGB mode for now.
 ## Version differences
 
 Differences between versions are minimal.  
-- Version-exclusive Pokémon are now handled as rarity differences instead of being completely unavailable in the other version.
+- Version-exclusive Pokémon are now handled as rarity differences instead of being completely unavailable in the other version.  
   For instance, in the original games, Oddish was exclusive to Red, while Bellsprout was exclusive to Blue.
   In Yume, both are obtainable in all versions, but Oddish is more common in Red and Bellsprout is more common in Blue.
   Green version shares the same encounter tables as Blue.
