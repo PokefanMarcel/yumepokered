@@ -569,7 +569,7 @@ StatsText:
 
 
 SwitchToStats:
-	call ClearHPandStatsLines
+	call ClearStatsLines
 	hlcoord 11, 4
 	ld de, wLoadedMonHP
 	lb bc, 2, 3
@@ -617,13 +617,35 @@ SwitchToDVs: ; we'll use wTempByteValue to store DVs
 	ld [de], a
 	call PrintNumber ; SPECIAL
 
+	ld hl, wLoadedMonDVs
+	ld e, 0
+	ld a, [hl]
+	swap a
+	rrca ; carry = Attack LSB
+	rl e
+	ld a, [hli]
+	rrca ; carry = Defense LSB
+	rl e
+	ld a, [hl]
+	swap a
+	rrca ; carry = Speed LSB
+	rl e
+	ld a, [hl]
+	rrca ; carry = Special LSB
+	rl e
+	ld a, e
+	ld de, wTempByteValue
+	ld [de], a
+	hlcoord 13, 4
+	call PrintNumber ; HP
+
 	ld de, StatusScreenDVsText ; "DVs"
 	call PlaceStatsDVsOrStatExpText
 	jp StatusScreenStatsPage.waitButtonPress
 
 
 SwitchToStatExp:
-	call ClearHPandStatsLines
+	call ClearStatsLines
 ;	hlcoord 5, 10 ; code to print numbers instead
 ;	lb bc, 2, 5 ; for PrintNumber, b = 2 byte and c = 5 digits
 ;	ld de, wLoadedMonAttackExp
@@ -699,7 +721,7 @@ LoadStatExpTilePatterns:
 	jp CopyVideoData
 
 
-ClearHPandStatsLines:
+ClearStatsLines:
 	hlcoord 11, 4 ; first HP stats bar tile
 	ld d, 7 ; number of tiles
 	ld a, " "
@@ -707,8 +729,7 @@ ClearHPandStatsLines:
 	ld [hli], a
 	dec d
 	jr nz, .clearHP
-	; fallthrough
-ClearStatsLines:
+; then in Stats box
 	hlcoord 3, 10 ; first tile
 	ld bc, 2*SCREEN_WIDTH - 6
 	ld e, 4 ; number of stats
