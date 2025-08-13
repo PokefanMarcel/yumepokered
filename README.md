@@ -81,7 +81,7 @@ Loosely inspired by the anime, manga, and later Pokémon generations, Yume featu
 - Several maps have updated graphics and new animations.
 - Gym leaders have their own sprites.
 - New player sprites when surfing or running.
-- In SuperGameBoy mode, the town color palettes have been adjusted to better reflect the original Japanese town names.
+- In Super Game Boy mode, the town color palettes have been adjusted to better reflect the original Japanese town names.
 - Restored gym leader names in trainer card.
 - Many visual bug fixes.
 
@@ -104,7 +104,7 @@ Loosely inspired by the anime, manga, and later Pokémon generations, Yume featu
 - Faster dialogue to buy coins at the Game Corner.
 - New nurse room in the SS.Anne.
 - Pokémon base stats can be consulted directly in the Pokédex.
-- Unlockable ability to view DVs and Stat.Exp (the Gen 1 equivalents of IVs and EVs).
+- Unlock the ability to view DVs and Stat.Exp (the Gen 1 equivalents of IVs and EVs) at the new Pokémon Academy.
 - Obtain the *Poké Beeper* from Oak's aide on Route 6 to get alerts when your box is almost full.
 
 There are also many other smaller tweaks to the original game, and still more to come!
