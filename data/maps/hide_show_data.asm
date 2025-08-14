@@ -233,7 +233,7 @@ MapHSPointers:
 	dw -1 ; end
 
 NoHS:
-	db $FF, $FF, $FF
+	db -1, -1, -1 ; end
 
 MissableObjects:
 ; entries correspond to HS_* constants (see constants/hide_show_constants)
@@ -576,8 +576,9 @@ MtSilver2FHS:
 	db MT_SILVER_2F, MTSILVER2F_ULTRA_BALL, SHOW
 	db MT_SILVER_2F, MTSILVER2F_MAX_REVIVE, SHOW
 	db MT_SILVER_2F, MTSILVER2F_FULL_RESTORE, SHOW
-	db $FF, $01, SHOW ; end
-	assert_table_length NUM_HS_OBJECTS + 1
+	assert_table_length NUM_HS_OBJECTS
+	db -1, 1, SHOW ; end
+
 
 
 ; marcelnote - the list continues here to allow for more than 256 HideShow objects
@@ -680,5 +681,5 @@ HallOfFameHS:
 	db HALL_OF_FAME, HALLOFFAME_RIVAL, HIDE
 MtSilver3FHS:
 	db MT_SILVER_3F, MTSILVER3F_YELLOW, SHOW ; marcelnote - Yellow battle
-	db $FF, $01, SHOW ; end
-	assert_table_length NUM_HS_OBJECTS_CONT + 1
+	assert_table_length NUM_HS_OBJECTS_CONT
+	db -1, 1, SHOW ; end
