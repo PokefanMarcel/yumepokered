@@ -1,19 +1,39 @@
-PrizeMonLevelDictionary:
+PrizeMonLevelDictionary: ; marcelnote - modified
 IF DEF(_RED)
-	db ABRA,      9
-	db CLEFAIRY,  8
+	db ABRA,      6
+	db CLEFAIRY, 12
 	db NIDORINA, 17
 
-	db DRATINI,  18
-	db SCYTHER,  25
+	db PINSIR,   20
+	db DRATINI,  24
 	db PORYGON,  26
 ENDC
-IF DEF(_BLUE)
+IF DEF(_BLUE) || DEF(_GREEN) ; marcelnote - added _GREEN
 	db ABRA,      6
 	db CLEFAIRY, 12
 	db NIDORINO, 17
 
-	db PINSIR,   20
+	db SCYTHER,  20
 	db DRATINI,  24
-	db PORYGON,  18
+	db PORYGON,  26
 ENDC
+
+; originals
+;IF DEF(_RED)
+;	db ABRA,      9
+;	db CLEFAIRY,  8
+;	db NIDORINA, 17
+;
+;	db DRATINI,  18
+;	db SCYTHER,  25
+;	db PORYGON,  26
+;ENDC
+;IF DEF(_BLUE)
+;	db ABRA,      6
+;	db CLEFAIRY, 12
+;	db NIDORINO, 17
+;
+;	db PINSIR,   20
+;	db DRATINI,  24
+;	db PORYGON,  18
+;ENDC
