@@ -181,6 +181,18 @@ IF DEF(_DEBUG)
 	call DebugSetPokedexEntries
 	SetEvent EVENT_GOT_POKEDEX
 
+	; Set money
+	ld hl, wPlayerMoney
+	ld a, $90 ; 900 000
+	ld [hli], a
+	xor a
+	ld [hli], a
+	ld [hli], a
+
+	; Set coins
+	ld [hl], $90
+
+
 	; Rival chose Squirtle,
 	; Player chose Charmander.
 	ld hl, wRivalStarter
@@ -234,6 +246,7 @@ DebugKeyItemsList:    ; marcelnote - new for Key Items pocket
 	db LIFT_KEY, 1
 	db SILPH_SCOPE, 1 ; marcelnote - added
 	db CITRUS_PASS, 1 ; marcelnote - added
+	db COIN_CASE, 1 ; marcelnote - added
 ;	db SURFBOARD, 1 ; marcelnote - added
 	db HM_CUT, 1 ; marcelnote - added
 	db HM_FLY, 1 ; marcelnote - added
