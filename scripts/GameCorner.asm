@@ -62,9 +62,9 @@ GameCornerRocketBattleScript: ; marcelnote - adjusted for reduced map size
 	call SetSpriteMovementBytesToFF
 	ld a, [wXCoord]
 	cp 10
-	ld de, GameCornerMovement_Rocket_WalkAroundPlayer
+	ld de, .AroundPlayerMovement
 	jr z, .gotRocketMovement
-	ld de, GameCornerMovement_Rocket_WalkDirect
+	ld de, .DirectMovement
 .gotRocketMovement
 	ld a, GAMECORNER_ROCKET
 	ldh [hSpriteIndex], a
@@ -73,7 +73,7 @@ GameCornerRocketBattleScript: ; marcelnote - adjusted for reduced map size
 	ld [wGameCornerCurScript], a
 	ret
 
-GameCornerMovement_Rocket_WalkAroundPlayer:
+.AroundPlayerMovement:
 	db NPC_MOVEMENT_DOWN
 	db NPC_MOVEMENT_RIGHT
 	db NPC_MOVEMENT_RIGHT
@@ -84,7 +84,7 @@ GameCornerMovement_Rocket_WalkAroundPlayer:
 	db NPC_MOVEMENT_RIGHT
 	db -1 ; end
 
-GameCornerMovement_Rocket_WalkDirect:
+.DirectMovement:
 	db NPC_MOVEMENT_RIGHT
 	db NPC_MOVEMENT_RIGHT
 	db NPC_MOVEMENT_RIGHT
