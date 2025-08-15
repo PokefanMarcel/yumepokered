@@ -101,7 +101,7 @@ SpecialTrainerMoves:
 	db $ff
 
 	db ERIKA, 1
-	; Victrebell
+	; Victreebel
 	db 1, 2, RAZOR_LEAF
 	; Tangela
 	db 2, 1, MEGA_DRAIN
