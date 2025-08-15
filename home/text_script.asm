@@ -44,9 +44,11 @@ DisplayTextID::
 ; get the text ID of the sprite
 	push hl
 ;	push de ; marcelnote - UpdateSpriteFacingOffsetAndDelayMovement doesn't use de
-	push bc
-	callfar UpdateSpriteFacingOffsetAndDelayMovement ; update the graphics of the sprite the player is talking to (to face the right direction)
-	pop bc
+;	push bc
+	; marcelnote - This function is bugged and was removed in Yellow.
+	;              Even the current repair messes with sprite placement and collision.
+;	callfar UpdateSpriteFacingOffsetAndDelayMovement ; update the graphics of the sprite the player is talking to (to face the right direction)
+;	pop bc
 ;	pop de
 	ld hl, wMapSpriteData ; NPC text entries
 	ldh a, [hSpriteIndex]
