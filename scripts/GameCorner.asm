@@ -48,7 +48,7 @@ GameCorner_ScriptPointers:
 	dw_const GameCornerRocketBattleScript, SCRIPT_GAMECORNER_ROCKET_BATTLE
 	dw_const GameCornerRocketExitScript,   SCRIPT_GAMECORNER_ROCKET_EXIT
 
-GameCornerRocketBattleScript:
+GameCornerRocketBattleScript: ; marcelnote - adjusted for reduced map size
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, GameCornerReenterMapAfterPlayerLoss
@@ -60,18 +60,12 @@ GameCornerRocketBattleScript:
 	ld a, GAMECORNER_ROCKET
 	ldh [hSpriteIndex], a
 	call SetSpriteMovementBytesToFF
-	ld de, GameCornerMovement_Rocket_WalkAroundPlayer
-	ld a, [wYCoord]
-	cp 6
-	jr nz, .not_direct_movement
-	ld de, GameCornerMovement_Rocket_WalkDirect
-	jr .got_rocket_movement
-.not_direct_movement
 	ld a, [wXCoord]
-	cp 8
-	jr nz, .got_rocket_movement
+	cp 10
+	ld de, GameCornerMovement_Rocket_WalkAroundPlayer
+	jr z, .gotRocketMovement
 	ld de, GameCornerMovement_Rocket_WalkDirect
-.got_rocket_movement
+.gotRocketMovement
 	ld a, GAMECORNER_ROCKET
 	ldh [hSpriteIndex], a
 	call MoveSprite
