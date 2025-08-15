@@ -360,15 +360,8 @@ CableClubOptionsText:
 	next "CANCEL@"
 
 VersionText:
-	db "  <PKMN>"
-IF DEF(_RED)
-	db "YumeRed "
-ELIF DEF(_BLUE)
-	db "YumeBlue "
-ELIF DEF(_GREEN)
-	db "YumeGreen "
-ENDC
-	db "v1.0@"
+	db "  <PKMN>Yume "
+	db "v1.0.1beta@"
 ;db " v"
 ;INCLUDE "version_number.asm"
 ;db "@"
