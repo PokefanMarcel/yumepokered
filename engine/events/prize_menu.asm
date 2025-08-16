@@ -141,11 +141,10 @@ INCLUDE "data/events/prizes.asm"
 
 PrintPrizePrice:
 	hlcoord 11, 0
-	ld b, 1
-	ld c, 7
+	lb bc, 1, 7 ; marcelnote - use lb
 	call TextBoxBorder
 	call UpdateSprites
-	hlcoord 12, 0
+	hlcoord 13, 0 ; marcelnote - moved from 12, 0
 	ld de, .CoinString
 	call PlaceString
 	hlcoord 13, 1
@@ -158,7 +157,7 @@ PrintPrizePrice:
 	ret
 
 .CoinString:
-	db "COIN@"
+	db "COINS@" ; marcelnote - added S
 
 .SixSpacesString:
 	db "      @"

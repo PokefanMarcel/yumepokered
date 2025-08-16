@@ -464,20 +464,18 @@ GameCornerDrawCoinBox:
 	ld hl, wStatusFlags5
 	set BIT_NO_TEXT_DELAY, [hl]
 	hlcoord 11, 0
-	ld b, 5
-	ld c, 7
+	lb bc, 5, 7 ; marcelnote - use lb
 	call TextBoxBorder
 	call UpdateSprites
 	hlcoord 12, 1
-	ld b, 4
-	ld c, 7
+	lb bc, 4, 7 ; marcelnote - use lb
 	call ClearScreenArea
 	hlcoord 12, 2
 	ld de, GameCornerMoneyText
 	call PlaceString
-	hlcoord 12, 3
-	ld de, GameCornerBlankText1
-	call PlaceString
+;	hlcoord 12, 3               ; marcelnote - useless?
+;	ld de, GameCornerBlankText
+;	call PlaceString
 	hlcoord 12, 3
 	ld de, wPlayerMoney
 	ld c, 3 | MONEY_SIGN | LEADING_ZEROES
@@ -485,9 +483,9 @@ GameCornerDrawCoinBox:
 	hlcoord 12, 4
 	ld de, GameCornerCoinText
 	call PlaceString
-	hlcoord 12, 5
-	ld de, GameCornerBlankText2
-	call PlaceString
+;	hlcoord 12, 5               ; marcelnote - useless?
+;	ld de, GameCornerBlankText
+;	call PlaceString
 	hlcoord 15, 5
 	ld de, wPlayerCoins
 	ld c, 2 | LEADING_ZEROES
@@ -500,13 +498,10 @@ GameCornerMoneyText:
 	db "MONEY@"
 
 GameCornerCoinText:
-	db "COIN@"
+	db "COINS@" ; marcelnote - added S
 
-GameCornerBlankText1:
-	db "       @"
-
-GameCornerBlankText2:
-	db "       @"
+;GameCornerBlankText: ; marcelnote - useless?
+;	db "       @"
 
 Has9990Coins:
 	ld a, $99
