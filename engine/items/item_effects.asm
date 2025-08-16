@@ -1969,6 +1969,7 @@ ItemUseItemfinder:
 	and a
 	jp nz, ItemUseNotTime
 	call ItemUseReloadOverworldData
+	call DelayFrame ; marcelnote - fixes sprites not reloading when using from bag (why?)
 	callfar HiddenItemNear ; check for hidden items
 	ld hl, ItemfinderFoundNothingText
 	jr nc, .printText ; if no hidden items
