@@ -207,13 +207,11 @@ IsSurfingAllowedOverworld:
 	res BIT_SURF_ALLOWED, [hl]
 	call EnableAutoTextBoxDrawing
 	tx_pre_jump CurrentTooFastOverworldText
-	ret
 .forcedToRideBike
 	ld hl, wStatusFlags1
 	res BIT_SURF_ALLOWED, [hl]
 	call EnableAutoTextBoxDrawing
 	tx_pre_jump CyclingIsFunOverworldText
-	ret
 
 
 SeafoamIslandsB4FStairsOverworldCoords:
