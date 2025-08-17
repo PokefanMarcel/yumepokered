@@ -16,17 +16,17 @@ TownMapOrder:
 	db ROUTE_6
 	db VERMILION_CITY
 	db SS_ANNE_1F
-	db DIGLETTS_CAVE ; marcelnote - adjusted order
+	db DIGLETTS_CAVE  ; marcelnote - adjusted order
 	db ROUTE_9
-	db ROUTE_10 ; marcelnote - adjusted order
+	db ROUTE_10       ; marcelnote - adjusted order
 	db ROCK_TUNNEL_1F ; marcelnote - was ROCK_TUNNEL_POKECENTER
-	db POWER_PLANT ; marcelnote - adjusted order
+	db POWER_PLANT    ; marcelnote - adjusted order
 	db LAVENDER_TOWN
 	db POKEMON_TOWER_2F
 	db ROUTE_8
 	db ROUTE_7
 	db CELADON_CITY
-	db CELADON_GROVE ; marcelnote - new location
+	db CELADON_GROVE  ; marcelnote - new location
 	db SAFFRON_CITY
 	db ROUTE_11
 	db ROUTE_12
