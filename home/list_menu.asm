@@ -80,7 +80,7 @@ DisplayListMenuIDLoop::
 	ld [wMenuCursorLocation + 1], a
 	jr .buttonAPressed
 .notOldManBattle
-	call LoadGBPal
+	call LoadGBPal ; marcelnote - reloads map after using Town map
 	call HandleMenuInput
 	push af
 	;call PrintBagInfoText ; marcelnote - new for bag pockets, should be placed around here if expect to display TM moves
