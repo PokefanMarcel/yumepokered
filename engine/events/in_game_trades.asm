@@ -250,7 +250,7 @@ InGameTrade_GetReceivedMonPointer:
 	ret
 
 InGameTrade_TrainerString:
-	db "<TRAINER>@@@@@@@@@@"
+	dname "<TRAINER>", NAME_LENGTH
 
 InGameTradeTextPointers:
 ; entries correspond to TRADE_DIALOGSET_* constants
