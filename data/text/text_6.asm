@@ -196,12 +196,12 @@ _BootedUpHMText::
 	prompt
 
 _TeachMachineMoveText::
-	text "It contained" ; marcelnote - this could be removed when TM names show when hovering
-	line "@"
-	text_ram wStringBuffer
-	text "!"
-
-	para "Teach @"
+;	text "It contained" ; marcelnote - removed since TM names show when hovering
+;	line "@"
+;	text_ram wStringBuffer
+;	text "!"
+;
+	text "Teach @"
 	text_ram wStringBuffer
 	text_start
 	line "to a #MON?"

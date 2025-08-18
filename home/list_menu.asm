@@ -51,7 +51,7 @@ DisplayListMenuID::
 	ld [wTopMenuItemY], a
 	ld a, 5
 	ld [wTopMenuItemX], a
-	ld a, PAD_A | PAD_B | PAD_SELECT | PAD_RIGHT ; marcelnote - added PAD_RIGHT for bag pockets
+	ld a, PAD_A | PAD_B | PAD_SELECT | PAD_RIGHT | PAD_LEFT ; marcelnote - added PAD_RIGHT | PAD_LEFT for bag pockets
 	ld [wMenuWatchedKeys], a
 	ld c, 10
 	call DelayFrames
@@ -80,15 +80,17 @@ DisplayListMenuIDLoop::
 	ld [wMenuCursorLocation + 1], a
 	jr .buttonAPressed
 .notOldManBattle
-	call LoadGBPal ; marcelnote - reloads map after using Town map
-	call HandleMenuInput
+	call LoadGBPal        ; reloads map after using Town map
+	call PrintBagInfoText ; marcelnote - for bag pockets and TM printing
+	call HandleMenuInput  ; updates wCurrentMenuItem
 	push af
-	;call PrintBagInfoText ; marcelnote - new for bag pockets, should be placed around here if expect to display TM moves
 	call PlaceMenuCursor
 	pop af
 	bit B_PAD_A, a
 	jp z, .checkOtherKeys
 .buttonAPressed
+	ld hl, wBagPocketsFlags ; marcelnote - for bag pockets and TM printing
+	res BIT_PRINT_INFO_BOX, [hl]
 	ld a, [wCurrentMenuItem]
 	call PlaceUnfilledArrowMenuCursor
 
@@ -184,6 +186,8 @@ DisplayListMenuIDLoop::
 	;;;;;;;;;; marcelnote - for bag pockets
 	bit B_PAD_RIGHT, a
 	jr nz, .switchBagPocket
+	bit B_PAD_LEFT, a
+	jr nz, .switchBagPocket
 	;;;;;;;;;;
 	;ld b, a
 	bit B_PAD_DOWN, a ; marcelnote - changed from bit BIT_D_DOWN, b (no point in using b)
@@ -191,7 +195,6 @@ DisplayListMenuIDLoop::
 	ld a, [hl] ; marcelnote - moved from below since unconditional
 	jr z, .upPressed
 .downPressed
-	;ld a, [hl]
 	add 3
 	ld b, a
 	ld a, [wListCount]
@@ -200,12 +203,13 @@ DisplayListMenuIDLoop::
 	inc [hl] ; if not, go down
 	jp DisplayListMenuIDLoop
 .upPressed
-	;ld a, [hl]
 	and a
 	jp z, DisplayListMenuIDLoop
 	dec [hl]
 	jp DisplayListMenuIDLoop
 .switchBagPocket ; marcelnote - new for bag pockets
+	ld a, SFX_TINK
+	call PlaySound
 	ld a, [wListMenuID]
 	cp ITEMLISTMENU
 	jp nz, DisplayListMenuIDLoop
@@ -561,31 +565,70 @@ PrintListMenuEntries::
 	jp PlaceString
 
 
-PrintBagInfoText: ; marcelnote - new for bag pockets
+PrintBagInfoText: ; marcelnote - new for bag pockets and TM printing
 	ld hl, wBagPocketsFlags
 	bit BIT_PRINT_INFO_BOX, [hl]
 	ret z ; do not display the info box
-	hlcoord 6, 14
+;	ld a, [wListMenuID]
+;	cp ITEMLISTMENU
+;	ret nz
 	ld de, BagItemsText
 	ld a, [wBagPocketsFlags]
 	bit BIT_KEY_ITEMS_POCKET, a
 	jr z, .mainPocket
 	ld de, BagKeyItemsText
 .mainPocket
-	;ld a, [wCurListMenuItem]
-	;cp $ff
-	;ret z
-	;cp TM_MEGA_PUNCH ; first TM (TMs are last items)
-	;jp c, .notTM
-	;ld de, IsTMText
-;.notTM
+	; hovered index = wListScrollOffset + wCurrentMenuItem
+	ld a, [wListScrollOffset]
+	ld c, a
+	ld a, [wCurrentMenuItem]
+	add c
+	ld c, a
+	; hl = list start + 2*index
+	ld hl, wListPointer
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	inc hl ; hl = beginning of list entries
+	ld b, 0
+	sla c
+	add hl, bc
+	ld a, [hl] ; item id under cursor
+	hlcoord 5, 14
+	cp $ff ; CANCEL?
+	jr z, .notTM
+	cp HM_CUT
+	jr c, .notTM
+	sub TM01 ; underflows below 0 for HM items (before TM items)
+	jr nc, .skipAdding
+	add NUM_TMS + NUM_HMS ; adjust HM IDs to come after TM IDs
+.skipAdding
+	inc a
+	ld [wTempTMHM], a
+	predef TMToMove ; get move ID from TM/HM ID
+	ld a, [wTempTMHM]
+	ld [wMoveNum], a
+	call GetMoveName
+	call CopyToStringBuffer
+	hlcoord 5, 14
+	ld a, " "
+	ld b, 14 ; clear whole line
+.clearLine
+	ld [hli], a
+	dec b
+	jr nz, .clearLine
+	ld de, wStringBuffer
+	hlcoord 6, 14
+.notTM
 	jp PlaceString
+
 
 ListMenuCancelText::
 	db "CANCEL@"
 
 BagItemsText:
-	db "ITEMS      ▶@"
+	db "◀ ITEMS      ▶@"
 
 BagKeyItemsText:
-	db "KEY ITEMS  ▶@" ; ▶
+	db "◀ KEY ITEMS  ▶@" ; ▶
+
