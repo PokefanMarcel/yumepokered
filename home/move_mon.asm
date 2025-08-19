@@ -72,6 +72,7 @@ CalcStat::
 	ld de, 1            ; to start at de = -1
 .sqrtLoop ; use the formula n^2 = 1 + 3 + 5 + ... + (2n-1)
 	inc b
+	jr z, .clamp
 	dec e               ; dec de, but de is odd
 	dec de              ; de = -1, -3, -5...
 	add hl, de
@@ -79,6 +80,9 @@ CalcStat::
 	ld a, h             ; hl = 0? if yes S = b^2 is a perfect square
 	or l
 	jr nz, .sqrtLoop
+	jr .statExpDone
+.clamp
+	dec b ; b = $ff
 .statExpDone            ; b = ceil(Sqrt(stat exp))
 	pop hl              ; restore hl = base pointer to stat exp values
 
