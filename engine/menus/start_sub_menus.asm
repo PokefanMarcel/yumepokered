@@ -343,6 +343,8 @@ StartMenu_Item:: ; marcelnote - BICYCLE does not have special handling anymore
 	ld hl, wBagPocketsFlags ; marcelnote - stop showing the Info box, new for bag pockets
 	res BIT_PRINT_INFO_BOX, [hl]
 	;;;;;;;;;;
+	xor a
+	ld [wListMenuID], a ; marcelnote - for TM printing
 	call LoadScreenTilesFromBuffer2 ; restore saved screen
 	call LoadTextBoxTilePatterns
 	call UpdateSprites
