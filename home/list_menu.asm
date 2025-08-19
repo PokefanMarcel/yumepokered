@@ -658,6 +658,7 @@ GetCurrentMenuItem: ; marcelnote - new for bag pockets and TM printing
 	ret
 
 
+GetTMHMContent: ; marcelnote - new for bag pockets and TM printing
 	sub TM01 ; underflows below 0 for HM items (before TM items)
 	jr nc, .skipAdding
 	add NUM_TMS + NUM_HMS ; adjust HM IDs to come after TM IDs
