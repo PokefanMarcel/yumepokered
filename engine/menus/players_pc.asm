@@ -105,6 +105,7 @@ PlayerPCDeposit:
 .loop
 	ld hl, WhatToDepositText
 	call PrintText
+	call SaveTextBoxTilesToBuffer ; marcelnote - for TM printing
 	ld hl, wNumBagItems
 	;;;;;;;;;; marcelnote - check which pocket we were last in, new for bag pockets
 	ld a, [wBagPocketsFlags]
@@ -122,7 +123,11 @@ PlayerPCDeposit:
 	ld a, ITEMLISTMENU
 	ld [wListMenuID], a
 	call DisplayListMenuID
-	jp c, PlayerPCMenu
+	jr nc, .afterWithdrawSelection ; marcelnote - new branching for TM printing
+	xor a
+	ld [wListMenuID], a
+	jp PlayerPCMenu
+.afterWithdrawSelection
 	call IsKeyItem
 	ld a, 1
 	ld [wItemQuantity], a
@@ -177,6 +182,7 @@ PlayerPCWithdraw:
 	;;;;;;;;;;
 	ld hl, WhatToWithdrawText
 	call PrintText
+	call SaveTextBoxTilesToBuffer ; marcelnote - for TM printing
 	ld hl, wNumBoxItems
 	ld a, l
 	ld [wListPointer], a
@@ -187,7 +193,11 @@ PlayerPCWithdraw:
 	ld a, ITEMLISTMENU
 	ld [wListMenuID], a
 	call DisplayListMenuID
-	jp c, PlayerPCMenu
+	jr nc, .afterWithdrawSelection ; marcelnote - new branching for TM printing
+	xor a
+	ld [wListMenuID], a
+	jp PlayerPCMenu
+.afterWithdrawSelection
 	call IsKeyItem
 	ld a, 1
 	ld [wItemQuantity], a
@@ -233,6 +243,7 @@ PlayerPCToss:
 .loop
 	ld hl, WhatToTossText
 	call PrintText
+	call SaveTextBoxTilesToBuffer ; marcelnote - for TM printing
 	ld hl, wNumBoxItems
 	ld a, l
 	ld [wListPointer], a
@@ -245,7 +256,11 @@ PlayerPCToss:
 	push hl
 	call DisplayListMenuID
 	pop hl
-	jp c, PlayerPCMenu
+	jr nc, .afterWithdrawSelection ; marcelnote - new branching for TM printing
+	xor a
+	ld [wListMenuID], a
+	jp PlayerPCMenu
+.afterWithdrawSelection
 	push hl
 	call IsKeyItem
 	pop hl
@@ -329,4 +344,8 @@ WhatToTossText:
 
 TossHowManyText:
 	text_far _TossHowManyText
+	text_end
+
+TMItContainsText:: ; marcelnote - for TM printing
+	text_far _TMItContainsText
 	text_end

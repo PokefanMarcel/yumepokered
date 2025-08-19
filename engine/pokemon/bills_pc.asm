@@ -334,8 +334,8 @@ DisplayMonListMenu:
 	ld [wListPointer + 1], a
 	xor a
 	ld [wPrintItemPrices], a
-	ld [wListMenuID], a ; PCPOKEMONLISTMENU
 	inc a
+	ld [wListMenuID], a ; PCPOKEMONLISTMENU
 	ld [wNameListType], a ; MONSTER_NAME
 	ld a, [wPartyAndBillsPCSavedMenuItem]
 	ld [wCurrentMenuItem], a

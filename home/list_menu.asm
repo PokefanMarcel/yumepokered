@@ -130,7 +130,7 @@ DisplayListMenuIDLoop::
 	ld a, [hl]
 	ld [wCurListMenuItem], a
 	ld a, [wListMenuID]
-	and a ; PCPOKEMONLISTMENU?
+	cp PCPOKEMONLISTMENU
 	jr z, .pokemonList
 ; if it's an item menu
 	ASSERT wCurListMenuItem == wCurItem
@@ -416,7 +416,7 @@ PrintListMenuEntries::
 	push hl
 	push de ; de = list entries
 	ld a, [wListMenuID]
-	and a ; PCPOKEMONLISTMENU?
+	cp PCPOKEMONLISTMENU
 	jr z, .pokemonPCMenu
 	cp MOVESLISTMENU
 	jr z, .movesMenu
@@ -464,7 +464,7 @@ PrintListMenuEntries::
 	call PrintBCDNumber
 .skipPrintingItemPrice
 	ld a, [wListMenuID]
-	and a ; PCPOKEMONLISTMENU?
+	cp PCPOKEMONLISTMENU
 	jr nz, .skipPrintingPokemonLevel
 .printPokemonLevel
 	ld a, [wNamedObjectIndex]
@@ -568,16 +568,73 @@ PrintListMenuEntries::
 PrintBagInfoText: ; marcelnote - new for bag pockets and TM printing
 	ld hl, wBagPocketsFlags
 	bit BIT_PRINT_INFO_BOX, [hl]
-	ret z ; do not display the info box
-;	ld a, [wListMenuID]
-;	cp ITEMLISTMENU
-;	ret nz
+	jr z, .notBag
 	ld de, BagItemsText
 	ld a, [wBagPocketsFlags]
 	bit BIT_KEY_ITEMS_POCKET, a
 	jr z, .mainPocket
 	ld de, BagKeyItemsText
 .mainPocket
+	call GetCurrentMenuItem ; returns a = current menu item
+	hlcoord 5, 14
+	cp $ff ; CANCEL?
+	jr z, .notTM
+	cp HM_CUT
+	jr c, .notTM
+	call GetTMHMContent
+	hlcoord 5, 14
+	ld a, " "
+	ld b, 14 ; clear whole line
+.clearLine
+	ld [hli], a
+	dec b
+	jr nz, .clearLine
+	ld de, wStringBuffer
+	hlcoord 6, 14
+.notTM
+	jp PlaceString
+
+.notBag
+	ld a, [wListMenuID]
+	cp ITEMLISTMENU
+	jr z, .continue
+	cp PRICEDITEMLISTMENU
+	ret nz
+.continue
+	call GetCurrentMenuItem
+	cp $ff
+	jr z, .restoreDefaultText
+	cp HM_CUT
+	jr c, .restoreDefaultText
+	call GetTMHMContent
+	hlcoord 1, 14
+	lb bc, 3, 18
+	call ClearScreenArea
+	ld hl, TMItContainsText
+	jp PrintText_NoCreatingTextBox
+.restoreDefaultText
+	; restore the saved text from wTextBoxBuffer (2 rows × 18 tiles at x=1,y=14)
+	ld de, wTextBoxBuffer
+	hlcoord 1, 14
+	ld b, 18
+.placeTiles
+	ld a, [de]
+	inc de
+	ld [hli], a
+	dec b
+	jr nz, .placeTiles
+	hlcoord 1, 16
+	ld b, 18
+.placeTiles2
+	ld a, [de]
+	inc de
+	ld [hli], a
+	dec b
+	jr nz, .placeTiles2
+	ret
+
+
+GetCurrentMenuItem: ; marcelnote - new for bag pockets and TM printing
 	; hovered index = wListScrollOffset + wCurrentMenuItem
 	ld a, [wListScrollOffset]
 	ld c, a
@@ -591,14 +648,16 @@ PrintBagInfoText: ; marcelnote - new for bag pockets and TM printing
 	ld l, a
 	inc hl ; hl = beginning of list entries
 	ld b, 0
+	ld a, [wListMenuID]
+	cp PRICEDITEMLISTMENU
+	jr z, .continue
 	sla c
+.continue
 	add hl, bc
 	ld a, [hl] ; item id under cursor
-	hlcoord 5, 14
-	cp $ff ; CANCEL?
-	jr z, .notTM
-	cp HM_CUT
-	jr c, .notTM
+	ret
+
+
 	sub TM01 ; underflows below 0 for HM items (before TM items)
 	jr nc, .skipAdding
 	add NUM_TMS + NUM_HMS ; adjust HM IDs to come after TM IDs
@@ -609,18 +668,7 @@ PrintBagInfoText: ; marcelnote - new for bag pockets and TM printing
 	ld a, [wTempTMHM]
 	ld [wMoveNum], a
 	call GetMoveName
-	call CopyToStringBuffer
-	hlcoord 5, 14
-	ld a, " "
-	ld b, 14 ; clear whole line
-.clearLine
-	ld [hli], a
-	dec b
-	jr nz, .clearLine
-	ld de, wStringBuffer
-	hlcoord 6, 14
-.notTM
-	jp PlaceString
+	jp CopyToStringBuffer
 
 
 ListMenuCancelText::

@@ -421,6 +421,7 @@ wSlotMachineSevenAndBarModeChance:: db
 wSlotMachineSavedROMBank:: db
 ;;;;;;;;;;;;;;;;;;;;;; marcelnote - pokered Move Deleter/Relearner tutorial
 	;ds 166
+wTextBoxBuffer::
 ; Move Buffer stuff for Mateo's code
 wMoveBuffer::
 wRelearnableMoves::

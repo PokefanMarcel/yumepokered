@@ -9,6 +9,7 @@ DisplayPokemartDialogue_::
 	ld [wListScrollOffset], a
 	ld [wCurrentMenuItem], a
 	ld [wPlayerMonNumber], a
+	ld [wListMenuID], a ; marcelnote - for TM printing
 	inc a
 	ld [wPrintItemPrices], a
 	ld a, MONEY_BOX
@@ -20,10 +21,10 @@ DisplayPokemartDialogue_::
 
 ; This code is useless. It copies the address of the pokemart's inventory to hl,
 ; but the address is never used.
-	ld hl, wItemListPointer
-	ld a, [hli]
-	ld l, [hl]
-	ld h, a
+;	ld hl, wItemListPointer ; marcelnote - removed
+;	ld a, [hli]
+;	ld l, [hl]
+;	ld h, a
 
 	ld a, [wMenuExitMethod]
 	cp CANCELLED_MENU
@@ -35,11 +36,12 @@ DisplayPokemartDialogue_::
 	jp z, .sellMenu
 	dec a ; quitting?
 	jp z, .done
-.sellMenu
+	; fallthrough
 
+.sellMenu
 ; the same variables are set again below, so this code has no effect
-	;xor a
-	;ld [wPrintItemPrices], a ; marcelnote - removed those
+;	xor a
+;	ld [wPrintItemPrices], a ; marcelnote - removed those
 	ld a, INIT_BAG_ITEM_LIST  ; but those lines seem to prevent a bug when computing selling prices
 	ld [wInitListType], a
 	callfar InitList
@@ -49,9 +51,11 @@ DisplayPokemartDialogue_::
 	jp z, .bagEmpty ; marcelnote - not checking that Key Items pocket is not empty since cannot sell them
 	ld hl, PokemonSellingGreetingText
 	call PrintText
-	call SaveScreenTilesToBuffer1 ; save screen
+	call SaveTextBoxTilesToBuffer ; marcelnote - for TM printing
+	call Delay3
+	call SaveScreenTilesToBuffer1
 .sellMenuLoop
-	call LoadScreenTilesFromBuffer1 ; restore saved screen
+;	call LoadScreenTilesFromBuffer1 ; marcelnote - not needed anymore with TM printing
 	ld a, MONEY_BOX
 	ld [wTextBoxID], a
 	call DisplayTextBoxID ; draw money text box
@@ -73,8 +77,14 @@ DisplayPokemartDialogue_::
 	ld a, ITEMLISTMENU
 	ld [wListMenuID], a
 	call DisplayListMenuID
-	jp c, .returnToMainPokemartMenu ; if the player closed the menu
+	jr nc, .confirmItemSale ; marcelnote - new branching for TM printing
+	; player closed the menu
+	xor a
+	ld [wListMenuID], a
+	jp .returnToMainPokemartMenu
 .confirmItemSale ; if the player is trying to sell a specific item
+	ld hl, wStatusFlags5
+	set BIT_NO_TEXT_DELAY, [hl]
 	call IsKeyItem ; item already loaded in [wCurItem]?
 	ld a, [wIsKeyItem]
 	and a
@@ -84,15 +94,17 @@ DisplayPokemartDialogue_::
 	;jr c, .unsellableItem
 	ld a, PRICEDITEMLISTMENU
 	ld [wListMenuID], a
-	ldh [hHalveItemPrices], a ; halve prices when selling
+	ldh [hHalveItemPrices], a ; halve prices when selling (PRICEDITEMLISTMENU > 0) ; marcelnote - modified list constants
+	ASSERT PRICEDITEMLISTMENU > 0
 	call DisplayChooseQuantityMenu
 	inc a
 	jr z, .sellMenuLoop ; if the player closed the choose quantity menu with the B button
 	ld hl, PokemartTellSellPriceText
-	lb bc, 14, 1 ; location that PrintText always prints to, this is useless
 	call PrintText
 	hlcoord 14, 7
 	lb bc, 8, 15
+	xor a
+	ld [wListMenuID], a ; marcelnote - for TM printing
 	ld a, TWO_OPTION_MENU
 	ld [wTextBoxID], a
 	call DisplayTextBoxID ; yes/no menu
@@ -102,9 +114,9 @@ DisplayPokemartDialogue_::
 
 ; The following code is supposed to check if the player chose No, but the above
 ; check already catches it.
-	ld a, [wChosenMenuItem]
-	dec a
-	jr z, .sellMenuLoop
+;	ld a, [wChosenMenuItem] ; marcelnote - removed
+;	dec a
+;	jr z, .sellMenuLoop
 
 .sellItem
 	ld a, [wBoughtOrSoldItemInMart]
@@ -126,8 +138,8 @@ DisplayPokemartDialogue_::
 	call PrintText
 	call SaveScreenTilesToBuffer1
 	jp .returnToMainPokemartMenu
-.buyMenu
 
+.buyMenu
 ; the same variables are set again below, so this code has no effect
 	ld a, 1
 	ld [wPrintItemPrices], a
@@ -137,9 +149,11 @@ DisplayPokemartDialogue_::
 
 	ld hl, PokemartBuyingGreetingText
 	call PrintText
+	call SaveTextBoxTilesToBuffer ; marcelnote - for TM printing
+	call Delay3
 	call SaveScreenTilesToBuffer1
 .buyMenuLoop
-	call LoadScreenTilesFromBuffer1
+;	call LoadScreenTilesFromBuffer1 ; marcelnote - not needed anymore with TM printing
 	ld a, MONEY_BOX
 	ld [wTextBoxID], a
 	call DisplayTextBoxID
@@ -152,10 +166,17 @@ DisplayPokemartDialogue_::
 	ld [wCurrentMenuItem], a
 	inc a
 	ld [wPrintItemPrices], a
-	inc a ; a = 2 (PRICEDITEMLISTMENU)
+	ld a, PRICEDITEMLISTMENU ; marcelnote - modified list constants
 	ld [wListMenuID], a
 	call DisplayListMenuID
-	jr c, .returnToMainPokemartMenu ; if the player closed the menu
+	jr nc, .askQuantity ; marcelnote - new branching for TM printing
+	; player closed the menu
+	xor a
+	ld [wListMenuID], a
+	jr .returnToMainPokemartMenu
+.askQuantity
+	ld hl, wStatusFlags5 ; marcelnote - for TM printing
+	set BIT_NO_TEXT_DELAY, [hl]
 	ld a, 99
 	ld [wMaxItemQuantity], a
 	xor a
@@ -173,16 +194,18 @@ DisplayPokemartDialogue_::
 	lb bc, 8, 15
 	ld a, TWO_OPTION_MENU
 	ld [wTextBoxID], a
+	xor a
+	ld [wListMenuID], a ; marcelnote - for TM printing
 	call DisplayTextBoxID ; yes/no menu
 	ld a, [wMenuExitMethod]
 	cp CHOSE_SECOND_ITEM
-	jp z, .buyMenuLoop ; if the player chose No or pressed the B button
+	jr z, .buyMenuLoop ; if the player chose No or pressed the B button
 
 ; The following code is supposed to check if the player chose No, but the above
 ; check already catches it.
-	ld a, [wChosenMenuItem]
-	dec a
-	jr z, .buyMenuLoop
+;	ld a, [wChosenMenuItem] ; marcelnote - removed
+;	dec a
+;	jr z, .buyMenuLoop
 
 .buyItem
 	call .isThereEnoughMoney

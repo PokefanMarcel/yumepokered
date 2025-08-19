@@ -24,8 +24,7 @@ SaveScreenTilesToBuffer2::
 	hlcoord 0, 0
 	ld de, wTileMapBackup2
 	ld bc, SCREEN_AREA
-	call CopyData
-	ret
+	jp CopyData
 
 LoadScreenTilesFromBuffer2::
 	call LoadScreenTilesFromBuffer2DisableBGTransfer
@@ -40,8 +39,7 @@ LoadScreenTilesFromBuffer2DisableBGTransfer::
 	ld hl, wTileMapBackup2
 	decoord 0, 0
 	ld bc, SCREEN_AREA
-	call CopyData
-	ret
+	jp CopyData
 
 SaveScreenTilesToBuffer1::
 	hlcoord 0, 0
@@ -59,3 +57,12 @@ LoadScreenTilesFromBuffer1::
 	ld a, 1
 	ldh [hAutoBGTransferEnabled], a
 	ret
+
+SaveTextBoxTilesToBuffer::
+	hlcoord 1, 14
+	ld de, wTextBoxBuffer
+	ld bc, 18
+	call CopyData
+	hlcoord 1, 16
+	ld bc, 18
+	jp CopyData

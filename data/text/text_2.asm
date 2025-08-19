@@ -1564,6 +1564,13 @@ _TossHowManyText::
 	text "How many?"
 	done
 
+_TMItContainsText:: ; marcelnote - new for TM printing
+	text "It contains"
+	line "@"
+	text_ram wStringBuffer
+	text "."
+	done
+
 _AccessedHoFPCText::
 	text "Accessed #MON"
 	line "LEAGUE's site."

@@ -1,10 +1,11 @@
 ; list menu IDs
 	const_def
-	const PCPOKEMONLISTMENU  ; $00 ; PC pokemon withdraw/deposit lists
-	const MOVESLISTMENU      ; $01 ; XXX where is this used?
-	const PRICEDITEMLISTMENU ; $02 ; Pokemart buy menu / Pokemart buy/sell choose quantity menu
-	const ITEMLISTMENU       ; $03 ; Start menu Item menu / Pokemart sell menu
-	const SPECIALLISTMENU    ; $04 ; list of special "items" e.g. floor list in elevators / list of badges
+	const NOLISTMENU         ; $00 ; marcelnote - added new constant
+	const PCPOKEMONLISTMENU  ; $01 ; PC pokemon withdraw/deposit lists
+	const MOVESLISTMENU      ; $02 ; XXX where is this used?
+	const PRICEDITEMLISTMENU ; $03 ; Pokemart buy menu / Pokemart buy/sell choose quantity menu
+	const ITEMLISTMENU       ; $04 ; Start menu Item menu / Pokemart sell menu
+	const SPECIALLISTMENU    ; $05 ; list of special "items" e.g. floor list in elevators / list of badges
 
 ; NamePointers indexes (see home/names2.asm)
 	const_def 1
