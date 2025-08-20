@@ -147,21 +147,22 @@ SpecialTrainerMoves:
 	db $ff
 
 	db KOGA, 2  ; rematch
-	; Weezing
+	; Weezing - TOXIC, SLUDGE, FIRE_BLAST, EXPLOSION
 	db 1, 1, TOXIC
 	db 1, 3, FIRE_BLAST
-	; Golbat
+	; Golbat - MEGA_DRAIN, HEX, TOXIC, HYPER_FANG
 	db 2, 1, MEGA_DRAIN
 	db 2, 2, HEX
 	db 2, 3, TOXIC
-	; Muk
+	; Muk - MINIMIZE, TOXIC, SLUDGE, BIND
 	db 3, 4, BIND
-	; Pinsir - TOXIC, PIN_MISSILE, SUBMISSION, SWORDS_DANCE
-	db 4, 1, TOXIC
-	; Tentacruel
+	; Scyther - WING_ATTACK, SWORDS_DANCE, CUT, TOXIC
+	db 4, 3, CUT
+	db 4, 4, TOXIC
+	; Tentacruel - WRAP, TOXIC, REFLECT, HYDRO_PUMP
 	db 5, 2, TOXIC
 	db 5, 3, REFLECT
-	; Venomoth
+	; Venomoth - RAZOR_WIND, DOUBLE_TEAM, SLEEP_POWDER, PSYCHIC_M
 	db 6, 1, RAZOR_WIND
 	db 6, 2, DOUBLE_TEAM
 	db $ff

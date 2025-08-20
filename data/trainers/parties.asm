@@ -757,7 +757,7 @@ ErikaData:  ; marcelnote - adjusted
 KogaData:  ; marcelnote - adjusted
 	;db $FF, 37, KOFFING, 39, MUK, 37, KOFFING, 43, WEEZING, 0 ; original
 	db $FF, 41, WEEZING, 37, GOLBAT, 39, MUK, 43, VENOMOTH, 0 ; new
-	db $FF, 57, WEEZING, 59, GOLBAT, 59, MUK, 61, PINSIR, 57, TENTACRUEL, 63, VENOMOTH, 0 ; new rematch team
+	db $FF, 57, WEEZING, 59, GOLBAT, 59, MUK, 61, SCYTHER, 57, TENTACRUEL, 63, VENOMOTH, 0 ; new rematch team
 
 SabrinaData:  ; marcelnote - adjusted
 	;db $FF, 38, KADABRA, 37, MR_MIME, 38, VENOMOTH, 43, ALAKAZAM, 0 ; original
@@ -874,7 +874,7 @@ ProfOakData: ; marcelnote - adapted unused teams for postgame Oak battle
 	db $FF, 66, TAUROS, 67, ELECTRODE, 68, KINGLER, 69, RAPIDASH, 70, VENUSAUR, 72, NIDOKING, 0
 	db $FF, 66, TAUROS, 67, ELECTRODE, 68, VICTREEBEL, 69, KINGLER, 70, CHARIZARD, 72, NIDOKING, 0
 	db $FF, 66, TAUROS, 67, ELECTRODE, 68, RAPIDASH, 69, VICTREEBEL, 70, BLASTOISE, 72, NIDOKING, 0
-	; ideas: MUK, PRIMEAPE, SCYTHER, PINSIR, ELECTABUZZ, JOLTEON
+	; ideas: MUK, PRIMEAPE, ELECTABUZZ, JOLTEON
 
 YellowData:  ; marcelnote - new postgame battle
 	db $FF, 78, DODRIO, 80, CHANSEY, 88, BUTTERFREE, 78, OMASTAR, 78, NINETALES, 94, PIKACHU, 0
