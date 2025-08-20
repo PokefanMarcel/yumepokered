@@ -59,10 +59,10 @@ DisplayPokemartDialogue_::
 	ld a, MONEY_BOX
 	ld [wTextBoxID], a
 	call DisplayTextBoxID ; draw money text box
-	ld hl, wNumBagItems
 	;;;;;;;;;; marcelnote - check which pocket we were last in, new for bag pockets
 	ld a, [wBagPocketsFlags]
 	bit BIT_KEY_ITEMS_POCKET, a
+	ld hl, wNumBagItems
 	jr z, .gotBagPocket
 	ld hl, wNumBagKeyItems
 .gotBagPocket
@@ -77,11 +77,7 @@ DisplayPokemartDialogue_::
 	ld a, ITEMLISTMENU
 	ld [wListMenuID], a
 	call DisplayListMenuID
-	jr nc, .confirmItemSale ; marcelnote - new branching for TM printing
-	; player closed the menu
-	xor a
-	ld [wListMenuID], a
-	jp .returnToMainPokemartMenu
+	jp c, .returnToMainPokemartMenu ; player closed the menu
 .confirmItemSale ; if the player is trying to sell a specific item
 	ld hl, wStatusFlags5
 	set BIT_NO_TEXT_DELAY, [hl]
@@ -89,9 +85,9 @@ DisplayPokemartDialogue_::
 	ld a, [wIsKeyItem]
 	and a
 	jr nz, .unsellableItem
-	;ld a, [wCurItem] ; marcelnote - removed, IsKeyItem already recognizes HMs as Key items
-	;call IsItemHM
-	;jr c, .unsellableItem
+;	ld a, [wCurItem] ; marcelnote - removed, IsKeyItem already recognizes HMs as Key items
+;	call IsItemHM
+;	jr c, .unsellableItem
 	ld a, PRICEDITEMLISTMENU
 	ld [wListMenuID], a
 	ldh [hHalveItemPrices], a ; halve prices when selling (PRICEDITEMLISTMENU > 0) ; marcelnote - modified list constants
@@ -103,7 +99,7 @@ DisplayPokemartDialogue_::
 	call PrintText
 	hlcoord 14, 7
 	lb bc, 8, 15
-	xor a
+	xor a               ; NOLISTMENU
 	ld [wListMenuID], a ; marcelnote - for TM printing
 	ld a, TWO_OPTION_MENU
 	ld [wTextBoxID], a
@@ -169,14 +165,10 @@ DisplayPokemartDialogue_::
 	ld a, PRICEDITEMLISTMENU ; marcelnote - modified list constants
 	ld [wListMenuID], a
 	call DisplayListMenuID
-	jr nc, .askQuantity ; marcelnote - new branching for TM printing
-	; player closed the menu
-	xor a
-	ld [wListMenuID], a
-	jr .returnToMainPokemartMenu
+	jr c, .returnToMainPokemartMenu ; player closed the menu
 .askQuantity
-	ld hl, wStatusFlags5 ; marcelnote - for TM printing
-	set BIT_NO_TEXT_DELAY, [hl]
+;	ld hl, wStatusFlags5 ; marcelnote - for TM printing
+;	set BIT_NO_TEXT_DELAY, [hl]
 	ld a, 99
 	ld [wMaxItemQuantity], a
 	xor a
@@ -192,10 +184,10 @@ DisplayPokemartDialogue_::
 	call PrintText
 	hlcoord 14, 7
 	lb bc, 8, 15
+	xor a               ; NOLISTMENU
+	ld [wListMenuID], a ; marcelnote - for TM printing
 	ld a, TWO_OPTION_MENU
 	ld [wTextBoxID], a
-	xor a
-	ld [wListMenuID], a ; marcelnote - for TM printing
 	call DisplayTextBoxID ; yes/no menu
 	ld a, [wMenuExitMethod]
 	cp CHOSE_SECOND_ITEM
@@ -228,6 +220,8 @@ DisplayPokemartDialogue_::
 	jp .buyMenuLoop
 .returnToMainPokemartMenu
 	call LoadScreenTilesFromBuffer1
+	xor a               ; NOLISTMENU
+	ld [wListMenuID], a ; marcelnote - for TM printing
 	ld a, MONEY_BOX
 	ld [wTextBoxID], a
 	call DisplayTextBoxID

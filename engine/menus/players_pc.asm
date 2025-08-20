@@ -17,6 +17,8 @@ PlayerPC::
 	call PrintText
 
 PlayerPCMenu:
+	xor a               ; NOLISTMENU
+	ld [wListMenuID], a ; marcelnote - new for TM printing
 	ld a, [wParentMenuItem]
 	ld [wCurrentMenuItem], a
 	ld hl, wMiscFlags
@@ -106,10 +108,10 @@ PlayerPCDeposit:
 	ld hl, WhatToDepositText
 	call PrintText
 	call SaveTextBoxTilesToBuffer ; marcelnote - for TM printing
-	ld hl, wNumBagItems
 	;;;;;;;;;; marcelnote - check which pocket we were last in, new for bag pockets
 	ld a, [wBagPocketsFlags]
 	bit BIT_KEY_ITEMS_POCKET, a
+	ld hl, wNumBagItems
 	jr z, .gotBagPocket
 	ld hl, wNumBagKeyItems
 .gotBagPocket
@@ -123,11 +125,7 @@ PlayerPCDeposit:
 	ld a, ITEMLISTMENU
 	ld [wListMenuID], a
 	call DisplayListMenuID
-	jr nc, .afterWithdrawSelection ; marcelnote - new branching for TM printing
-	xor a
-	ld [wListMenuID], a
-	jp PlayerPCMenu
-.afterWithdrawSelection
+	jp c, PlayerPCMenu
 	call IsKeyItem
 	ld a, 1
 	ld [wItemQuantity], a
@@ -193,11 +191,7 @@ PlayerPCWithdraw:
 	ld a, ITEMLISTMENU
 	ld [wListMenuID], a
 	call DisplayListMenuID
-	jr nc, .afterWithdrawSelection ; marcelnote - new branching for TM printing
-	xor a
-	ld [wListMenuID], a
-	jp PlayerPCMenu
-.afterWithdrawSelection
+	jp c, PlayerPCMenu
 	call IsKeyItem
 	ld a, 1
 	ld [wItemQuantity], a
@@ -213,7 +207,6 @@ PlayerPCWithdraw:
 	cp $ff
 	jp z, .loop
 .next
-	;ld hl, wNumBagItems
 	call AddItemToInventory
 	jr c, .roomAvailable
 	ld hl, CantCarryMoreText
@@ -256,11 +249,7 @@ PlayerPCToss:
 	push hl
 	call DisplayListMenuID
 	pop hl
-	jr nc, .afterWithdrawSelection ; marcelnote - new branching for TM printing
-	xor a
-	ld [wListMenuID], a
-	jp PlayerPCMenu
-.afterWithdrawSelection
+	jp c, PlayerPCMenu
 	push hl
 	call IsKeyItem
 	pop hl

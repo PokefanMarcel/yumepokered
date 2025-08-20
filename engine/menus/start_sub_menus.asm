@@ -337,14 +337,14 @@ StartMenu_Item:: ; marcelnote - BICYCLE does not have special handling anymore
 	call DisplayListMenuID
 	ld a, [wCurrentMenuItem]
 	ld [wBagSavedMenuItem], a
+	ld a, NOLISTMENU    ; no xor to preserve flag
+	ld [wListMenuID], a ; marcelnote - for TM printing
 	jr nc, .choseItem
 .exitMenu
 	;;;;;;;;;; marcelnote - display bag info box, new for bag pockets
 	ld hl, wBagPocketsFlags ; marcelnote - stop showing the Info box, new for bag pockets
 	res BIT_PRINT_INFO_BOX, [hl]
 	;;;;;;;;;;
-	xor a
-	ld [wListMenuID], a ; marcelnote - for TM printing
 	call LoadScreenTilesFromBuffer2 ; restore saved screen
 	call LoadTextBoxTilePatterns
 	call UpdateSprites
