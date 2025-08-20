@@ -146,10 +146,10 @@ PlayerPCDeposit:
 	call PrintText
 	jp .loop
 .roomAvailable
-	ld hl, wNumBagItems
 	;;;;;;;;;; marcelnote - check which pocket we are in, new for bag pockets
 	ld a, [wBagPocketsFlags]
 	bit BIT_KEY_ITEMS_POCKET, a
+	ld hl, wNumBagItems
 	jr z, .gotBagPocket2
 	ld hl, wNumBagKeyItems
 .gotBagPocket2
