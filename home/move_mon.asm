@@ -69,20 +69,20 @@ CalcStat::
 	ld h, [hl]
 	ld l, a             ; hl = S = stat exp
 ; calculate stat exp bonus = ceil(Sqrt(stat exp)) in b
-	ld de, 1            ; to start at de = -1
+	ld de, -1           ; to start at de = -1
 .sqrtLoop ; use the formula n^2 = 1 + 3 + 5 + ... + (2n-1)
+	ld a, h
+	or l                ; hl = 0?
+	jr z, .statExpDone  ; if yes S = b^2 is a perfect square
 	inc b
-	jr z, .clamp
-	dec e               ; dec de, but de is odd
-	dec de              ; de = -1, -3, -5...
+	jr z, .clampToFF
 	add hl, de
 	jr nc, .statExpDone ; carry means S - 1 - 3 - ... - (2b-1) ≥ 0
-	ld a, h             ; hl = 0? if yes S = b^2 is a perfect square
-	or l
-	jr nz, .sqrtLoop
-	jr .statExpDone
-.clamp
-	dec b ; b = $ff
+	dec e               ; dec de, but de is odd
+	dec de              ; de = -1, -3, -5...
+	jr .sqrtLoop
+.clampToFF
+	dec b               ; b = $ff
 .statExpDone            ; b = ceil(Sqrt(stat exp))
 	pop hl              ; restore hl = base pointer to stat exp values
 
