@@ -25,7 +25,7 @@ Loosely inspired by the anime, manga, and later Pokémon generations, Yume featu
 - **Revisit Kanto.** Explore new areas like the Cinnabar Volcano, the Saffron Pokémon Academy, Celadon Grove... and even an all-new Mandarin Island!
 - **Expanded Postgame.** New quests, Elite Four rematches, Gen 2 tie-ins, a restored Prof. Oak battle, and more!
 - **Mew quest.** A proper storyline leading to the Mythical Pokémon.
-- **Quality-of-life improvements.** Running shoes, bigger bag space, easier HM usage, experience bars, repel reuse prompts, a move deleter, and much more.
+- **Quality-of-life improvements.** Running shoes, bigger bag space, easier HM usage, improved Pokédex, experience bars, repel reuse prompts, a move deleter, and much more.
 
 
 ### Gameplay updates
