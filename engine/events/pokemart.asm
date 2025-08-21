@@ -167,8 +167,8 @@ DisplayPokemartDialogue_::
 	call DisplayListMenuID
 	jr c, .returnToMainPokemartMenu ; player closed the menu
 .askQuantity
-;	ld hl, wStatusFlags5 ; marcelnote - for TM printing
-;	set BIT_NO_TEXT_DELAY, [hl]
+	ld hl, wStatusFlags5 ; marcelnote - for TM printing
+	set BIT_NO_TEXT_DELAY, [hl]
 	ld a, 99
 	ld [wMaxItemQuantity], a
 	xor a
