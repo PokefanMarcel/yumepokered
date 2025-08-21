@@ -2320,6 +2320,7 @@ DisplayBagMenu:
 	ld a, 0 ; conserve carry flag so no xor a
 	ld [wMenuWatchMovingOutOfBounds], a
 	ld [wMenuItemToSwap], a
+	ld [wListMenuID], a ; NOLISTMENU
 	;;;;;;;;;; marcelnote - display bag info box, new for bag pockets
 	ld hl, wBagPocketsFlags
 	res BIT_PRINT_INFO_BOX, [hl] ; reset bit when using item or exiting menu
