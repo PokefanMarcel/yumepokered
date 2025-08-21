@@ -309,10 +309,10 @@ StartMenu_Item:: ; marcelnote - BICYCLE does not have special handling anymore
 	call PrintText
 	jr .exitMenu
 .notInCableClubRoom
-	ld bc, wNumBagItems
 	;;;;;;;;;; marcelnote - check which pocket we were last in, new for bag pockets
 	ld a, [wBagPocketsFlags]
 	bit BIT_KEY_ITEMS_POCKET, a
+	ld bc, wNumBagItems
 	jr z, .gotBagPocket
 	ld bc, wNumBagKeyItems
 .gotBagPocket
