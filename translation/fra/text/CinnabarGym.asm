@@ -249,3 +249,40 @@ _CinnabarGymGymGuideBeatBlaineText::
 	text "<PLAYER>! Tu as"
 	line "battu AUGUSTE!"
 	done
+
+
+_CinnabarGymBlaineRematchPreBattleText:: ; TODO marcelnote - Blaine rematch
+	text "Welcome back,"
+	line "<PLAYER>."
+
+	para "How about a"
+	line "friendly rematch?"
+
+	para "I won't hold back"
+	line "this time."
+	done
+
+_CinnabarGymBlaineRematchRefusedBattleText:: ; TODO marcelnote - Blaine rematch
+	text "Very well. Come"
+	line "back anytime."
+	done
+
+_CinnabarGymBlaineRematchAcceptBattleText:: ; TODO marcelnote - Blaine rematch
+	text "Careful, my"
+	line "#MON have been"
+	cont "burning for"
+	cont "this rematch!"
+	done
+
+_CinnabarGymBlaineRematchDefeatedText:: ; TODO marcelnote - Blaine rematch
+	text "Hah!"
+	line "I'm all fired up!" ; TODO text from Let's Go Pikachu
+	prompt
+
+_CinnabarGymAfterRematchText:: ; TODO marcelnote - Blaine rematch
+	text "Time for a hot"
+	line "springs bath!"
+
+	para "Let's do this"
+	line "again soon!"
+	done
