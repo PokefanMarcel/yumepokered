@@ -40,6 +40,22 @@ _BrunosRoomBrunoRematchEndBattleText:: ; TODO: marcelnote - Bruno rematch text
 	cont "still lacking..."
 	prompt
 
+_BrunosRoomBrunoRematchBeforeBattleText:: ; TODO marcelnote - Bruno rematch text
+	text "Ready for another"
+	line "round, champ?"
+
+	para "My #MON and I"
+	line "have kept to a"
+	cont "strict workout"
+	cont "and diet routine."
+
+	para "Face the results"
+	line "of our rigorous"
+	cont "training!"
+
+	para "Hoo hah!"
+	done
+
 _BrunosRoomBrunoRematchAfterBattleText:: ; TODO: marcelnote - Bruno rematch text
 	text "True discipline is"
 	line "not accomplished"
