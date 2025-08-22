@@ -114,3 +114,20 @@ _SSAnne1FRoomsGentleman3Text::
 	cont "TEAM ROCKET!"
 	cont "Chut!"
 	done
+
+
+_SSAnne1FRoomsGirl1WaitressText:: ; TODO marcelnote - new for girl player
+	text "Waitress, I would"
+	line "like a cherry pie"
+	cont "please!"
+	done
+
+_SSAnne1FRoomsNurseAreYouTiredText:: ; TODO marcelnote - new nurse room
+	text "Are you tired?"
+	line "You can rest"
+	cont "here for a bit."
+	prompt
+
+_SSAnne1FRoomsNurseEnjoyThePartyText:: ; TODO marcelnote - new nurse room
+	text "Enjoy the party!"
+	done
