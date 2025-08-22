@@ -259,3 +259,52 @@ _ViridianGymGuidePostBattleText::
 	cont "CHAMPION?"
 	cont "Ben ça alors!"
 	done
+
+
+_ViridianGymBlackbelt1BattleText:: ; TODO
+	text "Rrrroar! I'm"
+	line "working myself"
+	cont "into a rage!"
+	done
+
+_ViridianGymBlackbelt1EndBattleText:: ;TODO
+	text "Wargh!"
+	prompt
+
+_ViridianGymBlackbelt1AfterBattleText:: ;TODO
+	text "I'm still not"
+	line "worthy!"
+	done
+
+_ViridianGymBlackbelt2BattleText:: ; TODO
+	text "Karate is the"
+	line "ultimate form of"
+	cont "martial arts!"
+	done
+
+_ViridianGymBlackbelt2EndBattleText:: ; TODO
+	text "Atcho!"
+	prompt
+
+_ViridianGymBlackbelt2AfterBattleText:: ; TODO
+	text "If my #MON"
+	line "were as good at"
+	cont "Karate as I..."
+	done
+
+
+_ViridianGymBlackbelt3BattleText:: ; TODO
+	text "I'm the KARATE"
+	line "KING! Your fate"
+	cont "rests with me!"
+	done
+
+_ViridianGymBlackbelt3EndBattleText:: ; TODO
+	text "Ayah!"
+	prompt
+
+_ViridianGymBlackbelt3AfterBattleText:: ; TODO
+	text "#MON LEAGUE?"
+	line "You? Don't get"
+	cont "cocky!"
+	done
