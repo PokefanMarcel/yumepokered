@@ -13,8 +13,8 @@ _RockTunnelPokecenterFisherText::
 	done
 
 
-_CeladonPokecenterBenchGuyText:: ; TODO marcelnote - BenchGuy has a sprite
-	text "If I had a BIKE,"
-	line "I would go to"
-	cont "CYCLING ROAD!"
+_RockTunnelPokecenterBenchGuyText:: ; marcelnote - BenchGuy has a sprite
+	text "I heard that"
+	line "GHOSTs haunt"
+	cont "LAVENDER TOWN!"
 	done
