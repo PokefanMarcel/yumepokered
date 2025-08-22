@@ -90,6 +90,78 @@ _ChampionsRoomRivalAfterBattleText::
 	line "Ca me la coupe."
 	done
 
+
+_ChampionsRoomRivalRematchIntroText:: ; TODO marcelnote - new text for rematches
+	text "<RIVAL>: Hey,"
+	line "<PLAYER>!"
+
+	para "I've looked forward"
+	line "to our rematch."
+
+	para "After facing"
+	line "challengers here,"
+	cont "my team is now"
+	cont "prepared for"
+	cont "any strategy."
+
+	para "Think you still"
+	line "have what it"
+	cont "takes to be"
+	cont "champion?"
+
+	para "My comeback will"
+	line "be epic!"
+	done
+
+	;para "Back for another"
+	;line "challenge, huh?"
+
+	;para "I'm warning you,"
+	;line "my #MON have"
+	;cont "become a lot"
+	;cont "stronger since"
+	;cont "our last battle."
+
+	;para "Let's see if you"
+	;line "still have what"
+	;cont "it takes!"
+
+_RivalRematchDefeatedText:: ; TODO marcelnote - new text for rematches
+	text "No!"
+	line "How can you win"
+	cont "again?"
+
+	para "I trained my"
+	line "#MON to"
+	cont "perfection..."
+	prompt
+
+_RivalRematchVictoryText:: ; TODO marcelnote - new text for rematches
+	text "Hahaha!"
+
+	para "I won, I won!"
+	line "Looks like"
+	cont "I finally got the"
+	cont "better of you,"
+	cont "<PLAYER>!"
+	prompt
+
+_ChampionsRoomRivalRematchAfterBattleText:: ; TODO marcelnote - new text for rematches
+	text "I'm starting to"
+	line "understand what"
+	cont "gramps meant."
+
+	para "The bond you"
+	line "share with"
+	cont "your #MON,"
+	cont "<PLAYER>..."
+	cont "It's something"
+	cont "special."
+
+	para "Come on,"
+	line "follow me."
+	done
+
 _ChampionsRoomOakText::
 	text "CHEN: <PLAYER>!"
 	done
