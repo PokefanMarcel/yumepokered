@@ -244,3 +244,19 @@ _CeruleanCityPhoneText:: ; TODO marcelnote - new
 	para "It doesn't seem"
 	line "to be working..."
 	done
+
+_CeruleanCityBikeShopSignText:: ; TODO
+	text "Grass and caves"
+	line "handled easily!"
+	;cont "BIKE SHOP"
+	cont "MIRACLE CYCLE" ; marcelnote - Japanese name
+	done
+	
+_CeruleanCityGymSignText:: ; TODO
+	text "CERULEAN CITY"
+	line "#MON GYM"
+	cont "LEADER: MISTY"
+
+	para "The Tomboyish"
+	line "Mermaid!"
+	done

@@ -105,3 +105,26 @@ _BoxIsFullText::
 	line "dans un CENTRE"
 	cont "#MON!"
 	done
+
+_CurrentTooFastOverworldText:: ; TODO marcelnote - HM overworld use
+	text "The current is"
+	line "too fast to SURF!"
+	done
+_CyclingIsFunOverworldText:: ; TODO marcelnote - HM overworld use
+	text "Cycling is fun!"
+	line "Forget SURFing!"
+	done
+
+_ItemWasAssignedToSelectText:: ; TODO marcelnote - use items with Select
+	text_ram wStringBuffer
+	text " was"
+	line "assigned."
+	prompt
+
+_CableClubNPCNewMovesNotAllowedText:: ; TODO marcelnote - ban new moves from Cable Club
+	text "I'm sorry, #MON"
+	line "with the moves"
+	cont "HEX, ELECRO BALL"
+	cont "or WILL-O-WISP"
+	cont "are not allowed."
+	prompt

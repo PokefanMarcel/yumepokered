@@ -237,3 +237,43 @@ _BoxFullCannotThrowBallText::
 	line "est pleine! Objet"
 	cont "inutilisable!"
 	prompt
+
+
+_ExpAllActivatedText:: ; TODO marcelnote - ExpAll can be activated/deactivated
+	text "<PLAYER> switched"
+	line "on EXP.ALL."
+	prompt
+
+_ExpAllDeactivatedText:: ; TODO marcelnote - ExpAll can be activated/deactivated
+	text "<PLAYER> switched"
+	line "off EXP.ALL."
+	prompt
+
+_PokeBeeperSpaceLeftText:: ; TODO marcelnote - new for PokéBeeper
+	text "<PLAYER> checked"
+	line "the # BEEPER."
+
+	para "..."
+
+	para "The BOX has space"
+	line "for @"
+	text_decimal wStringBuffer, 1, 2
+	text " more"
+	cont "#MON."
+	prompt
+
+_PokeBeeperBoxIsFullText:: ; TODO marcelnote - new for PokéBeeper
+	text "<PLAYER> checked"
+	line "the # BEEPER."
+
+	para "..."
+
+	para "The BOX is full!"
+	line "Better find a"
+	cont "PC fast!"
+	prompt
+
+_ItemUseFujisNotesText:: ; TODO marcelnote - new
+	text "It's filled with"
+	line "complex formulas."
+	prompt
