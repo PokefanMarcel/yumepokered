@@ -142,7 +142,7 @@ INCLUDE "data/text/text_3.asm"
 
 INCLUDE "text/RedsYellowsHouses.asm" ; marcelnote - merged RedsHouse floors, added YellowsHouse
 IF DEF(_FRA)
-	INCLUDE "translation/fra/text/BluesAidesHouses-fra.asm"
+	INCLUDE "translation/fra/text/BluesAidesHouses.asm"
 ELSE
 	INCLUDE "text/BluesAidesHouses.asm" ; marcelnote - merged Blue's house with new Aide's house
 ENDC
@@ -239,7 +239,7 @@ SECTION "Text 10", ROMX
 INCLUDE "data/text/text_5.asm"
 
 IF DEF(_FRA)
-	INCLUDE "translation/fra/text/PalletTown-fra.asm"
+	INCLUDE "translation/fra/text/PalletTown.asm"
 ELSE
 	INCLUDE "text/PalletTown.asm"
 ENDC
@@ -295,7 +295,7 @@ INCLUDE "data/pokemon/dex_text.asm"
 SECTION "Move Names", ROMX
 
 IF DEF(_FRA)
-INCLUDE "translation/fra/data/moves/names-fra.asm"
+INCLUDE "translation/fra/data/moves/names.asm"
 ELSE
 INCLUDE "data/moves/names.asm"
 ENDC
