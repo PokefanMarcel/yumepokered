@@ -115,6 +115,11 @@ _SSAnne1FRoomsGentleman3Text::
 	cont "Chut!"
 	done
 
+_SSAnne1FRoomsGirl1WaiterText:: ; TODO
+	text "Waiter, I would"
+	line "like a cherry pie"
+	cont "please!"
+	done
 
 _SSAnne1FRoomsGirl1WaitressText:: ; TODO marcelnote - new for girl player
 	text "Waitress, I would"
