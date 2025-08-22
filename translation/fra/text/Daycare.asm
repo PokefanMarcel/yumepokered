@@ -61,3 +61,32 @@ _DaycareGentlemanMonNeedsMoreTimeText::
 	cont "doit rester"
 	cont "encore un peu."
 	prompt
+
+_DaycareGentlemanNotEnoughMoneyText:: ; TODO
+	text "Hey, you don't"
+	line "have enough ¥!"
+	done
+
+_DaycareGentlemanHeresYourMonText:: ; TODO
+	text "Thank you! Here's"
+	line "your #MON!"
+	prompt
+
+_DaycareGentlemanOnlyHaveOneMonText:: ; TODO
+	text "You only have one"
+	line "#MON with you."
+	done
+
+_DaycareGentlemanNoRoomForMonText:: ; TODO
+	text "You have no room"
+	line "for this #MON!"
+	done
+
+_DaycareGentlemanComeAgainText:: ; TODO
+	text "Come again."  ; marcelnote - capitalized 'come'
+	done
+
+_DaycareGentlemanAllRightThenText:: ; TODO
+	text "All right then,"
+	line "@"
+	text_end

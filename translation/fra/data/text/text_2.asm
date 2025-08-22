@@ -2048,3 +2048,10 @@ _TextIDErrorText::
 _ContCharText::
 	text "<_CONT>@"
 	text_end
+
+_TMItContainsText:: ; TODO marcelnote - new for TM printing
+	text "It contains"
+	line "@"
+	text_ram wStringBuffer
+	text "."
+	done
