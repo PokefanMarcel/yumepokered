@@ -48,6 +48,12 @@ _Route18CooltrainerM3AfterBattleText::
 	cont "#MON!"
 	done
 
+_Route18CooltrainerM4BattleText:: ; marcelnote - new trainer
+	text "You scared off"
+	line "that DODUO"
+	cont "I was watching!"
+	done
+
 _Route18CooltrainerM4EndBattleText:: ; TODO marcelnote - new trainer
 	text "You"
 	line "got lucky!"
