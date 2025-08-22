@@ -13,7 +13,7 @@ _RockTunnelPokecenterFisherText::
 	done
 
 
-_RockTunnelPokecenterBenchGuyText:: ; marcelnote - BenchGuy has a sprite
+_RockTunnelPokecenterBenchGuyText:: ; TODO marcelnote - BenchGuy has a sprite
 	text "I heard that"
 	line "GHOSTs haunt"
 	cont "LAVENDER TOWN!"
