@@ -125,19 +125,19 @@ ENDC
 SECTION "Text 3", ROMX
 
 IF DEF(_FRA)
-INCLUDE "text/RockTunnelB1F_2.asm"
-INCLUDE "text/SeafoamIslandsB4F.asm"
+INCLUDE "translation/fra/text/RockTunnelB1F_2.asm"
+INCLUDE "translation/fra/text/SeafoamIslandsB4F.asm"
 
-INCLUDE "data/text/text_2.asm"
+INCLUDE "translation/fra/data/text/text_2.asm"
 
-INCLUDE "text/DiglettsCaveRoute2.asm"
-INCLUDE "text/ViridianForestNorthGate.asm"
-INCLUDE "text/Route2TradeHouse.asm"
-INCLUDE "text/Route2Gate.asm"
-INCLUDE "text/ViridianForestSouthGate.asm"
-INCLUDE "text/MtMoonPokecenter.asm"
-INCLUDE "text/SaffronGates.asm"
-INCLUDE "text/Daycare.asm"
+INCLUDE "translation/fra/text/DiglettsCaveRoute2.asm"
+INCLUDE "translation/fra/text/ViridianForestNorthGate.asm"
+INCLUDE "translation/fra/text/Route2TradeHouse.asm"
+INCLUDE "translation/fra/text/Route2Gate.asm"
+INCLUDE "translation/fra/text/ViridianForestSouthGate.asm"
+INCLUDE "translation/fra/text/MtMoonPokecenter.asm"
+INCLUDE "translation/fra/text/SaffronGates.asm"
+INCLUDE "translation/fra/text/Daycare.asm"
 ELSE
 INCLUDE "text/RockTunnelB1F_2.asm"
 INCLUDE "text/SeafoamIslandsB4F.asm"
