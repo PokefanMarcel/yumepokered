@@ -79,3 +79,14 @@ _PokemonTower5FPurifiedZoneText::
 	line "<PLAYER> sont"
 	cont "soignés!"
 	done
+
+
+_PokemonTower5FGhostBattleText:: ; TODO marcelnote - postgame Agatha event
+	text "Heh heh..."
+	line "All must fade..."
+	done
+
+_PokemonTower5FGhostVanishedText:: ; TODO marcelnote - postgame Agatha event
+	text "The ghost"
+	line "vanished..."
+	done

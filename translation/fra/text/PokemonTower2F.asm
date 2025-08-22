@@ -59,3 +59,14 @@ _PokemonTower2FChannelerText::
 	line "pourrait les"
 	cont "démasquer."
 	done
+
+
+_PokemonTower2FGhostBattleText:: ; TODO marcelnote - postgame Agatha event
+	text "Intruders..."
+	line "In our home..."
+	done
+
+_PokemonTower2FGhostVanishedText:: ; TODO marcelnote - postgame Agatha event
+	text "The ghost"
+	line "vanished..."
+	done

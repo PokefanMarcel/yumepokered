@@ -88,3 +88,39 @@ _PokemonTower7FRocket3AfterBattleText::
 	line "sortiras pas"
 	cont "comme ça!"
 	done
+
+
+
+_PokemonTower7FChannelerIntroText::   ; TODO marcelnote - added 7FChanneler
+	text "The spiritual"
+	line "energies which"
+	cont "converge here"
+	cont "let me commune"
+	cont "with the GHOSTs."
+	done
+
+_PokemonTower7FChannelerHarnessPowerText::   ; TODO marcelnote - added 7FChanneler
+	text "Hmm... Your"
+	line "@"
+	text_ram wStringBuffer
+	text " seems"
+	cont "drawn to this"
+	cont "energy."
+
+	para "Shall I help it"
+	line "harness its power?"
+	done
+
+_PokemonTower7FChannelerIncantationsText::   ; TODO marcelnote - added 7FChanneler
+	text "The CHANNELER"
+	line "whispers strange"
+	cont "incantations"
+	cont "over @"
+	text_ram wStringBuffer
+	text "."
+	done
+
+_PokemonTower7FChannelerDotsText::    ; TODO marcelnote - added 7FChanneler
+	text "..."
+	line "..."
+	prompt

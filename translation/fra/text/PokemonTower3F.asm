@@ -45,3 +45,15 @@ _PokemonTower3FChanneler3AfterBattleText::
 	text "Mes amies étaient"
 	line "aussi possédées!"
 	done
+
+
+
+_PokemonTower3FGhostBattleText:: ; TODO marcelnote - postgame Agatha event
+	text "This presence..."
+	line "Angers us..."
+	done
+
+_PokemonTower3FGhostVanishedText:: ; TODO marcelnote - postgame Agatha event
+	text "The ghost"
+	line "vanished..."
+	done
