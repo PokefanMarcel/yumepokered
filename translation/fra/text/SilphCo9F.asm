@@ -1,15 +1,15 @@
-SilphCo9FNurseYouLookTiredText::
+_SilphCo9FNurseYouLookTiredText::
 	text "Tu as l'air très"
 	line "fatigué! Tu"
 	cont "devrais faire une"
 	cont "sieste!"
 	prompt
 
-SilphCo9FNurseDontGiveUpText::
+_SilphCo9FNurseDontGiveUpText::
 	text "Courage!"
 	done
 
-SilphCo9FNurseThankYouText::
+_SilphCo9FNurseThankYouText::
 	text "Merci mille"
 	line "fois!"
 	done
