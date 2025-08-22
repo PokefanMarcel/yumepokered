@@ -150,3 +150,42 @@ _PewterGymGuidePostBattleText::
 	line "Tu as l'âme d'un"
 	cont "champion!"
 	done
+
+
+
+_PewterGymBrockRematchPreBattleText:: ; TODO marcelnote - Brock rematch
+	text "Welcome back,"
+	line "<PLAYER>."
+
+	para "How about a"
+	line "friendly rematch?"
+
+	para "I won't hold back"
+	line "this time."
+	done
+
+_PewterGymBrockRematchRefusedBattleText:: ; TODO marcelnote - Brock rematch
+	text "Very well. Come"
+	line "back anytime."
+	done
+
+_PewterGymBrockRematchAcceptBattleText:: ; TODO marcelnote - Brock rematch
+	text "My rock #MON"
+	line "are ready! Show"
+	cont "us your best!"
+	done
+
+_PewterGymBrockRematchDefeatedText:: ; TODO marcelnote - Brock rematch
+	text "I knew"
+	line "you were strong,"
+	cont "but this..." ; text from Let's Go Pikachu
+	prompt
+
+_PewterGymAfterRematchText:: ; TODO marcelnote - Brock rematch
+	text "That was tough!"
+	line "ONIX and I need"
+	cont "a rest now."
+
+	para "Let's do this"
+	line "again soon!"
+	done

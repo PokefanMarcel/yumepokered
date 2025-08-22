@@ -262,3 +262,123 @@ _SaffronGymYoungster4AfterBattleText::
 	cont "très bien rangé"
 	cont "là d'dans!"
 	done
+
+
+_SaffronGymWillWelcomeText:: ; TODO marcelnote - postgame Will
+	text "Champion! It is"
+	line "an honor to"
+	cont "welcome you here."
+
+	para "I am WILL,"
+	line "SABRINA's top"
+	cont "student!"
+
+	para "I've been waiting"
+	line "for BRUNO of the"
+	cont "ELITE FOUR to"
+	cont "demonstrate my"
+	cont "abilities."
+
+	para "Wait, did BRUNO"
+	line "send you in his"
+	cont "place?"
+
+	para "Very well then!"
+	line "Please allow me"
+	cont "to show you"
+	cont "what I've learned."
+	done
+
+_SaffronGymWillDefeatedText:: ; TODO marcelnote - postgame Will
+	text "Amazing!"
+	line "I still have"
+	cont "much to learn!"
+	prompt
+
+_SaffronGymWillPostBattleText:: ; TODO marcelnote - postgame Will
+	text "Thank you for a"
+	line "memorable fight,"
+	cont "champion!"
+
+	para "My own journey is"
+	line "just beginning."
+
+	para "I will travel the"
+	line "world to discover"
+	cont "the secrets"
+	cont "that psychic"
+	cont "#MON hold!"
+	done
+
+_SaffronGymBrunoArrivesText:: ; TODO marcelnote - postgame Bruno
+	text "BRUNO: WILL!"
+	line "<PLAYER>!"
+	done
+
+_SaffronGymBrunoInspiringText:: ; TODO marcelnote - postgame Bruno
+	text "BRUNO: What an"
+	line "inspiring battle!"
+
+	para "WILL, you fought"
+	line "with remarkable"
+	cont "strategy and"
+	cont "precision."
+
+	para "That's more than"
+	line "anyone could"
+	cont "expect against"
+	cont "the #MON"
+	cont "LEAGUE champion!"
+
+	para "As for you,"
+	line "<PLAYER>, you"
+	cont "continue to"
+	cont "impress."
+
+	para "Both of you,"
+	line "keep pushing your"
+	cont "limits, and who"
+	cont "knows what"
+	cont "heights you will"
+	cont "reach!"
+
+	para "Train hard,"
+	line "until our paths"
+	cont "cross again!"
+	done
+
+_SaffronGymSabrinaRematchPreBattleText:: ; TODO marcelnote - Sabrina rematch
+	text "Welcome back,"
+	line "<PLAYER>."
+
+	para "How about a"
+	line "friendly rematch?"
+
+	para "I won't hold back"
+	line "this time."
+	done
+
+_SaffronGymSabrinaRematchRefusedBattleText:: ; TODO marcelnote - Sabrina rematch
+	text "Very well. Come"
+	line "back anytime."
+	done
+
+_SaffronGymSabrinaRematchAcceptBattleText:: ; TODO marcelnote - Sabrina rematch
+	text "I foresaw our"
+	line "battle. Let's find"
+	cont "out together"
+	cont "who will prevail."
+	done
+
+_SaffronGymSabrinaRematchDefeatedText:: ; TODO marcelnote - Sabrina rematch
+	text "I'm no"
+	line "longer surprised."
+	prompt
+
+_SaffronGymAfterRematchText:: ; TODO marcelnote - Sabrina rematch
+	text "Your free spirit"
+	line "inspires me."
+
+	para "Let's do this"
+	line "again soon!"
+	done

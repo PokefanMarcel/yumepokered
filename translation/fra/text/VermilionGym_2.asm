@@ -161,3 +161,40 @@ _VermilionGymGymGuideBeatLTSurgeText::
 	text "Wouh! Ce match"
 	line "était survolté!"
 	done
+
+
+
+_VermilionGymLTSurgeRematchPreBattleText:: ; TODO marcelnote - Lt.Surge rematch
+	text "Welcome back,"
+	line "<PLAYER>."
+
+	para "How about a"
+	line "friendly rematch?"
+
+	para "I won't hold back"
+	line "this time."
+	done
+
+_VermilionGymLTSurgeRematchRefusedBattleText:: ; TODO marcelnote - Lt.Surge rematch
+	text "Very well. Come"
+	line "back anytime."
+	done
+
+_VermilionGymLTSurgeRematchAcceptBattleText:: ; TODO marcelnote - Lt.Surge rematch
+	text "Ten-hut! Get"
+	line "ready to amp it"
+	cont "up, kid!"
+	done
+
+_VermilionGymLTSurgeRematchDefeatedText:: ; TODO marcelnote - Lt.Surge rematch
+	text "Abso-"
+	line "lutely shocking!" ; text from Let's Go Pikachu
+	prompt
+
+_VermilionGymAfterRematchText:: ; TODO marcelnote - Lt.Surge rematch
+	text "I'm all out of"
+	line "juice, kid."
+
+	para "Let's do this"
+	line "again soon!"
+	done
