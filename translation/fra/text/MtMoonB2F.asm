@@ -131,3 +131,7 @@ _MtMoonB2FRocket4AfterBattleText::
 	line "existaient bien"
 	cont "avant l'homme..."
 	done
+
+_MtMoonB2FMtMoonSquareSignText:: ; TODO marcelnote - added Mt Moon Square
+	text "To MT.MOON SQUARE"
+	done

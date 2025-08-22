@@ -39,3 +39,35 @@ _PokemonMansionB1FDiaryText::
 	line "impuissants face"
 	cont "à ses pièges..."
 	done
+
+_PokemonMansionB1FDiarySept1Text:: ; TODO
+	text "Diary: Sept. 1" ; marcelnote - changed ; to : to align with other diaries
+	line "MEWTWO is far too"
+	cont "powerful."
+
+	para "We have failed to"
+	line "curb its vicious"
+	cont "tendencies..."
+	done
+
+
+_PokemonMansionB1FDiaryMay24Text:: ; TODO marcelnote - new
+	text "Diary: May 24"
+	line "We have begun"
+	cont "tests on MEWTWO."
+
+	para "Early results show"
+	line "intelligence"
+	cont "beyond any"
+	cont "known #MON."
+	done
+
+;_PokemonMansionB1FKeyboardText:: ; TODO marcelnote - new
+;	text "The keyboard is"
+;	line "covered in dust."
+;	done
+
+_PokemonMansionB1FScreenText:: ; TODO marcelnote - new
+	text "It's frozen on"
+	line "a warning screen."
+	done

@@ -165,3 +165,15 @@ _SaffronCitySilphCoLatestProductSignText::
 	line "est encore à"
 	cont "déterminer..."
 	done
+
+
+_SaffronCityPokemonAcademySignText:: ; TODO marcelnote - added Pokemon Academy
+	text "#MON ACADEMY"
+	done
+
+_SaffronCityPhoneText:: ; TODO marcelnote - new
+	text "A pay phone?"
+
+	para "It doesn't seem"
+	line "to be working..."
+	done

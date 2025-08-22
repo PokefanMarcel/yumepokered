@@ -93,3 +93,83 @@ _MrFujisHouseMrFujiPokedexText::
 	para "...Hein? Il a"
 	line "disparu!"
 	done
+
+_MrFujisHouseMrFujiPlayerGaveNotesText:: ; TODO marcelnote - new
+	text "MR.FUJI: <PLAYER>,"
+	line "is your quest"
+	cont "going well?"
+
+	para "Hmm? You found"
+	line "something?"
+
+	para "<PLAYER> gave"
+	line "FUJI's NOTES.@"
+	text_end
+
+_MrFujisHouseMrFujiThankYouText:: ; TODO marcelnote - new
+	text_start
+	para "My research notes!"
+	line "I thought they"
+	cont "had been lost." ; maybe they were stolen before he left the project?
+
+	;para "Thank you for"
+	;line "bringing them"
+	;cont "back. They could"
+	;cont "have fallen into"
+	;cont "the wrong hands."
+
+	para "So, you know about"
+	line "CINNABAR, then?"
+
+	;para "What happened"
+	;line "there... I would"
+	;cont "rather leave it"
+	;cont "in the past."
+
+	para "I do not have the" ; FUJI left before MEWTWO escaped
+	line "answers you seek,"
+	cont "but I know some-"
+	cont "one who might."
+
+	para "DR.JABARA was part"
+	line "of the research"
+	cont "team on CINNABAR."
+
+	para "Now he works on"
+	line "MANDARIN ISLAND."
+	; fallthrough
+_MrFujisHouseMrFujiTakeThisText:: ; TODO marcelnote - new
+	para "Here, take this."
+	line "You will need it."
+	prompt
+
+_MrFujisHouseMrFujiReceivedCitrusPassText:: ; TODO marcelnote - new
+	text "<PLAYER> received"
+	line "a @"
+	text_ram wStringBuffer
+	text "!@"
+	text_end
+
+_MrFujisHouseMrFujiCitrusPassExplanationText:: ; TODO marcelnote - new
+	text_start
+
+	para "This pass lets you"
+	line "board the ferry"
+	cont "from VERMILION to"
+	cont "MANDARIN ISLAND."
+
+	para "You should find"
+	line "DR.JABARA there."
+	done
+
+_MrFujisHouseMrFujiBeCarefulText:: ; TODO marcelnote - new
+	text "MR.FUJI: DR.JABARA"
+	line "might have the"
+	cont "answers you seek,"
+	cont "but be careful."
+
+	para "Although he is a"
+	line "gifted scientist,"
+	cont "his methods can"
+	cont "be questionable."
+	done

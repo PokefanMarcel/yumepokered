@@ -86,6 +86,13 @@ _CeladonMartRoofLittleGirlTM49ExplanationText::
 	line "TRIPLATTAQUE!@"
 	text_end
 
+_CeladonMartRoofLittleGirlReceivedTMText:: ; TODO marcelnote - now common to all 3 TMs
+	text "<PLAYER> received"
+	line "@"
+	text_ram wStringBuffer
+	text "!@"
+	text_end
+
 _CeladonMartRoofLittleGirlNoRoomText::
 	text "Plus de place!@"
 	text_end
@@ -145,4 +152,8 @@ _VendingMachineText6::
 
 _VendingMachineText7::
 	text "Pas soif!"
+	done
+
+_VendingMachineWrongSideText:: ; TODO marcelnote - new
+	text "Wrong side!"
 	done

@@ -22,6 +22,11 @@ _GameCornerClerk1ThanksHereAre50CoinsText::
 	line "50 jetons!"
 	done
 
+_GameCornerClerk1WantMoreCoinsText:: ; TODO marcelnote - new for buying coins faster
+	text "More? It's ¥1000"
+	line "for 50 coins."
+	done
+
 _GameCornerClerk1PleaseComePlaySometimeText::
 	text "Non?"
 	line "Ben pourquoi?"

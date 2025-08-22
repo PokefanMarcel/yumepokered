@@ -20,3 +20,8 @@ _CeladonHotelSuperNerdText::
 	text "Mais pourquoi y'a"
 	line "son frère?"
 	done
+
+_CeladonHotelBenchGuyText:: ; TODO marcelnote - BenchGuy has a sprite
+	text "My sis brought me"
+	line "on this vacation!"
+	done

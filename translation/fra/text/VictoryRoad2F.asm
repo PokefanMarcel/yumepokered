@@ -91,3 +91,72 @@ _VictoryRoad2FSuperNerd3AfterBattleText::
 	line "dresseurs ont"
 	cont "abandonné ici!"
 	done
+
+_VictoryRoad2FGrampsIntroText:: ; TODO marcelnote - new
+	text "The journey of a"
+	line "#MON trainer"
+	cont "is a quest for"
+	cont "harmony."
+	prompt
+
+_VictoryRoad2FGrampsHaveYouTestedText:: ; TODO marcelnote - new
+	text "Have you tested"
+	line "your skills at"
+	cont "the FIGHTING DOJO"
+	cont "in SAFFRON?"
+
+	para "Prove yourself"
+	line "there, and I will"
+	cont "help you find"
+	cont "balance."
+	done
+
+_VictoryRoad2FGrampsGiveHimonleeText:: ; TODO marcelnote - new
+	text "I see you've chosen"
+	line "defense and"
+	cont "fortitude before."
+
+	para "To balance your"
+	line "training, I offer"
+	cont "you this agile"
+	cont "warrior."
+	prompt
+
+_VictoryRoad2FGrampsGiveHimonchanText:: ; TODO marcelnote - new
+	text "I see you've chosen"
+	line "offense and"
+	cont "speed before."
+
+	para "To balance your"
+	line "training, I offer"
+	cont "this steadfast"
+	cont "fighter."
+	prompt
+
+_VictoryRoad2FGrampsGreatFirebirdText:: ; TODO marcelnote - new
+	text "A great firebird"
+	line "once took refuge"
+	cont "in this cave."
+
+	para "I train strong"
+	line "#MON here to"
+	cont "honor its legacy."
+	done
+
+
+_VictoryRoad2FBlackbeltBattleText:: ; TODO
+	text "VICTORY ROAD is"
+	line "the final test"
+	cont "for trainers!"
+	done
+
+
+_VictoryRoad2FBlackbeltEndBattleText:: ; TODO
+	text "Aiyah!"
+	prompt
+
+_VictoryRoad2FBlackbeltAfterBattleText:: ; TODO
+	text "If you get stuck,"
+	line "try moving some"
+	cont "boulders around!"
+	done

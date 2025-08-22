@@ -237,3 +237,39 @@ _CeladonGymAfterBattleText8::
 	line "la prochaine"
 	cont "fois!"
 	done
+
+_CeladonGymErikaRematchPreBattleText:: ; TODO marcelnote - Erika rematch
+	text "Welcome back,"
+	line "<PLAYER>."
+
+	para "How about a"
+	line "friendly rematch?"
+
+	para "I won't hold back"
+	line "this time."
+	done
+
+_CeladonGymErikaRematchRefusedBattleText:: ; TODO marcelnote - Erika rematch
+	text "Very well. Come"
+	line "back anytime."
+	done
+
+_CeladonGymErikaRematchAcceptBattleText:: ; TODO marcelnote - Erika rematch
+	text "Such a wonderful"
+	line "day for a battle."
+	cont "Shall we begin?"
+	done
+
+_CeladonGymErikaRematchDefeatedText:: ; TODO marcelnote - Erika rematch
+	text "Oh!"
+	line "It appears it is"
+	cont "my loss..." ; from Let's Go Pikachu
+	prompt
+
+_CeladonGymAfterRematchText:: ; TODO marcelnote - Erika rematch
+	text "I must tend to"
+	line "my flowers now."
+
+	para "Let's do this"
+	line "again soon!"
+	done

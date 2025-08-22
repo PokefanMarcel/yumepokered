@@ -68,3 +68,44 @@ _LancesRoomLanceAfterBattleText::
 	para "Il est le vrai"
 	line "champion #MON!@"
 	text_end
+
+
+
+_LancesRoomLanceRematchBeforeBattleText:: ; TODO marcelnote - Lance rematch text
+	text "Ah, <PLAYER>!"
+	line "I have been"
+	cont "expecting you."
+
+	para "My dragons and I"
+	line "have trained"
+	cont "relentlessly to"
+	cont "surpass our"
+	cont "limits."
+	; "My powers have doubled since the last time we met, Count."
+
+	para "Do you think you"
+	line "can still handle"
+	cont "their power?"
+	done
+
+_LancesRoomLanceRematchEndBattleText:: ; TODO marcelnote - Lance rematch text
+	text "Truly"
+	line "astounding."
+
+	para "You've grown even"
+	line "stronger since"
+	cont "our last battle."
+	prompt
+
+_LancesRoomLanceRematchAfterBattleText:: ; TODO marcelnote - Lance rematch text
+	text "I can hardly"
+	line "believe it!"
+
+	para "Not even my new"
+	line "team could stand"
+	cont "against you."
+
+	para "You truly are a"
+	line "champion,"
+	cont "<PLAYER>!@"
+	text_end ; why not done?

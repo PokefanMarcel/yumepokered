@@ -116,3 +116,54 @@ _RockTunnel1FSignText::
 	line "AZURIA -"
 	cont "LAVANVILLE"
 	done
+
+_RockTunnel1FBlackbeltIntroText::   ; TODO marcelnote - added Blackbelt
+	text "Training in dark-"
+	line "ness sharpens a"
+	cont "warrior's"
+	cont "instinct!"
+
+	para "My fighting-type"
+	line "#MON have"
+	cont "reached new"
+	cont "heights here."
+	done
+
+_RockTunnel1FBlackbeltTruePotentialText::   ; TODO marcelnote - added Blackbelt, could be KARATE KING
+	text "Ah! Your"
+	line "@"
+	text_ram wStringBuffer
+	text " seems"
+	cont "eager to learn."
+
+	para "With my training,"
+	line "it could reach"
+	cont "its true"
+	cont "potential."
+	done
+
+_RockTunnel1FBlackbeltFlashOnText::   ; TODO marcelnote - added Blackbelt
+	text "Ah! Your"
+	line "@"
+	text_ram wStringBuffer
+	text " seems"
+	cont "eager to learn."
+
+	para "But I can't train"
+	line "it properly with"
+	cont "this FLASH on."
+	done
+
+_RockTunnel1FBlackbeltTrainingText::   ; TODO marcelnote - added Blackbelt
+	text "@"
+	text_ram wStringBuffer
+	text " shuts"
+	line "its eyes and"
+	cont "focuses on its"
+	cont "inner power."
+	done
+
+_RockTunnel1FBlackbeltDotsText::    ; TODO marcelnote - added Blackbelt
+	text "..."
+	line "..."
+	prompt

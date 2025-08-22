@@ -38,3 +38,7 @@ _CinnabarIslandGymSignText::
 	para "Le cerveau!"
 	line "Chaud! Chaud!"
 	done
+
+_CinnabarIslandVolcanoSignText:: ; TODO marcelnote - Cinnabar Volcano
+	text "CINNABAR VOLCANO"
+	done
