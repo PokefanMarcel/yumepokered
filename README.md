@@ -171,3 +171,6 @@ If you think your work should be credited here, please reach out – I'll be hap
 
 Enjoy this project? Help make it even better!
 I’m looking for creative contributions like new music, fresh graphics (especially Pokémon backsprites), and translations into other languages — please reach out via [GitHub](https://github.com/PokefanMarcel/yumepokered/issues) or [Reddit](https://www.reddit.com/message/compose/?to=wdpk_phoenix)!
+
+NEW: join the Pokémon Yume [Discord server](https://discord.gg/PBCCXxUd)!
+
