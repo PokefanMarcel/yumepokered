@@ -193,3 +193,39 @@ _FuchsiaGymGymGuideBeatKogaText::
 	cont "et ça fait"
 	cont "coin-coin! Non?"
 	done
+
+
+_FuchsiaGymKogaRematchPreBattleText:: ; TODO: marcelnote - Koga rematch
+	text "Welcome back,"
+	line "<PLAYER>."
+
+	para "How about a"
+	line "friendly rematch?"
+
+	para "I won't hold back"
+	line "this time."
+	done
+
+_FuchsiaGymKogaRematchRefusedBattleText:: ; TODO: marcelnote - Koga rematch
+	text "Very well. Come"
+	line "back anytime."
+	done
+
+_FuchsiaGymKogaRematchAcceptBattleText:: ; TODO: marcelnote - Koga rematch
+	text "Fwahahaha! Face"
+	line "my new ninja"
+	cont "techniques!"
+	done
+
+_FuchsiaGymKogaRematchDefeatedText:: ; TODO: marcelnote - Koga rematch
+	text "I must keep"
+	line "honing my skills." ; TODO: from Let's Go Pikachu
+	prompt
+
+_FuchsiaGymAfterRematchText:: ; TODO: marcelnote - Koga rematch
+	text "Perfecting my arts"
+	line "takes practice."
+
+	para "Let's do this"
+	line "again soon!"
+	done
