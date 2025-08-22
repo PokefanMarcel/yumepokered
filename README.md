@@ -15,7 +15,7 @@ Above all, it seeks to preserve the charm and spirit of these games.
 夢 (Yume), meaning dream, symbolizes a return to Kanto where the line between memory and reimagination blurs.
 Loosely inspired by the anime, manga, and later Pokémon generations, Yume features expanded storylines, new areas, and subtle cultural touches highlighting the games' Japanese roots.
 
-▶▶ Download the latest version from the [releases page](https://github.com/PokefanMarcel/yumepokered/releases). ◀◀
+▶▶ Download the latest version from the [releases page](https://github.com/PokefanMarcel/yumepokered/releases) or join the [Discord](https://discord.gg/PBCCXxUd) for news and discussion. ◀◀
 
 
 ### What's new?
@@ -171,3 +171,6 @@ If you think your work should be credited here, please reach out – I'll be hap
 
 Enjoy this project? Help make it even better!
 I’m looking for creative contributions like new music, fresh graphics (especially Pokémon backsprites), and translations into other languages — please reach out via [GitHub](https://github.com/PokefanMarcel/yumepokered/issues) or [Reddit](https://www.reddit.com/message/compose/?to=wdpk_phoenix)!
+
+NEW: join the Pokémon Yume [Discord server](https://discord.gg/PBCCXxUd)!
+
