@@ -173,3 +173,8 @@ _MrFujisHouseMrFujiBeCarefulText:: ; TODO marcelnote - new
 	cont "his methods can"
 	cont "be questionable."
 	done
+
+_MrFujisHouseMrFujiMakeRoomText:: ; TODO
+	text "You must make"
+	line "room for this!"
+	done

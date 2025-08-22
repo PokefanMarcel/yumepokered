@@ -161,3 +161,16 @@ _CeladonCityGameCornerSignText::
 	line "Club de jeu"
 	cont "pour adultes!"
 	done
+
+_CeladonCityCeladonGroveSignText:: ; TODO marcelnote - for Celadon Grove
+	text "CELADON GROVE"
+	done
+
+_CeladonCityCooltrainerFText:: ; TODO marcelnote - new NPC who mentions Celadon Grove
+    text "I made a wish"
+    line "at the old shrine"
+    cont "in CELADON GROVE."
+
+    para "I hope it"
+    line "comes true!"
+	done

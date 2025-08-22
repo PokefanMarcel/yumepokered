@@ -188,3 +188,25 @@ _ViridianCityGymLockedText::
 	line "l'ARENE sont"
 	cont "fermées..."
 	done
+
+_ViridianCityGambler1GymLeaderWasBossText:: ; TODO marcelnote - new
+	text "The GYM LEADER"
+	line "was the boss of"
+	cont "TEAM ROCKET!?"
+	done
+
+	
+_ViridianCityTrainerTips3Text:: ; TODO marcelnote - new
+	text "TRAINER TIPS"
+
+	para "Press the B"
+	line "Button to run!"
+	done
+
+	
+_ViridianCityPhoneText:: ; TODO marcelnote - new
+	text "A pay phone?"
+
+	para "It doesn't seem"
+	line "to be working..."
+	done

@@ -11,3 +11,10 @@ _ViridianSchoolHouseCooltrainerFText::
 	line "le tableau avant"
 	cont "de partir!"
 	done
+
+_ViridianSchoolHouseYoungsterText:: ; TODO marcelnote - new NPC
+    text "If I study hard,"
+    line "I could enter the"
+    cont "#MON ACADEMY"
+    cont "in SAFFRON CITY!"
+    done

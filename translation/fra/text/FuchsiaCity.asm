@@ -119,3 +119,18 @@ _FuchsiaCityFossilSignKabutoText::
 _FuchsiaCityFossilSignUndeterminedText::
 	text "..."
 	done
+
+_FuchsiaCityBlackbeltText:: ; TODO marcelnote - new NPC
+    text "People used to"
+    line "have to go all"
+    cont "around town to"
+    cont "get to the beach."
+
+    para "But PRIMEAPE and I"
+    line "cleared a path!"
+    done
+
+_FuchsiaCityPrimeapeText:: ; TODO marcelnote - new NPC
+    text "PRIMEAPE: Grah!"
+    line "Raaah-ha!@"
+    text_end
