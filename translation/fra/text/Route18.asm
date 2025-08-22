@@ -48,6 +48,17 @@ _Route18CooltrainerM3AfterBattleText::
 	cont "#MON!"
 	done
 
+_Route18CooltrainerM4EndBattleText:: ; TODO marcelnote - new trainer
+	text "You"
+	line "got lucky!"
+	prompt
+
+_Route18CooltrainerM4AfterBattleText:: ; TODO marcelnote - new trainer
+	text "This spot is"
+	line "perfect for"
+	cont "birdwatching."
+	done
+
 _Route18SignText::
 	text "ROUTE 18"
 	line "CELADOPOLE -"

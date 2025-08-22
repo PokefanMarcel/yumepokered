@@ -24,6 +24,26 @@ _Route11Youngster4AfterBattleText::
 	line "des plus forts!"
 	done
 
+_Route11Youngster5BattleText:: ; TODO marcelnote - new trainer based on A.J.
+	text "This is my 99th"
+	line "straight victory,"
+	cont "and I'm not"
+	cont "gonna lose now!"
+	done
+
+_Route11Youngster5EndBattleText:: ; TODO marcelnote - new trainer based on A.J.
+	text "No way!"
+	prompt
+
+_Route11Youngster5AfterBattleText:: ; TODO marcelnote - new trainer based on A.J.
+	text "After I win my"
+	line "100th battle,"
+	cont "I'll start"
+	cont "competing for"
+	cont "GYM BADGEs!"
+	done
+
+
 _Route11DiglettsCaveSignText::
 	text "CAVE TAUPIQUEUR"
 	done

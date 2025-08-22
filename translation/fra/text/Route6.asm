@@ -92,6 +92,25 @@ _Route6Youngster2AfterBattleText::
 	cont "très mauvais?"
 	done
 
+
+_Route6LassBattleText:: ; TODO marcelnote - new trainer
+	text "The guard won't"
+	line "let anyone"
+	cont "through."
+	done
+
+_Route6LassEndBattleText:: ; TODO marcelnote - new trainer
+	text "You"
+	line "scared PARAS!"
+	prompt
+
+_Route6LassAfterBattleText:: ; TODO marcelnote - new trainer
+	text "Waiting upstairs"
+	line "is boring, so I'm"
+	cont "taking a break."
+	done
+
+
 _Route6UndergroundPathSignText::
 	text "SOUTERRAIN"
 	line "AZURIA -"
