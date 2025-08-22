@@ -10,3 +10,10 @@ _CeladonPokecenterBeautyText::
 	line "PISTE CYCLABLE"
 	cont "depuis PARMANIE!"
 	done
+
+
+_CeladonPokecenterBenchGuyText:: ; TODO marcelnote - BenchGuy has a sprite
+	text "If I had a BIKE,"
+	line "I would go to"
+	cont "CYCLING ROAD!"
+	done

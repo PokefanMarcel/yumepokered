@@ -11,3 +11,10 @@ _RockTunnelPokecenterFisherText::
 	line "PEPITE pour"
 	cont "5000¥!"
 	done
+
+
+_CeladonPokecenterBenchGuyText:: ; TODO marcelnote - BenchGuy has a sprite
+	text "If I had a BIKE,"
+	line "I would go to"
+	cont "CYCLING ROAD!"
+	done
