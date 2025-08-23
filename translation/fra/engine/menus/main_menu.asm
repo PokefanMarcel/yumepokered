@@ -447,10 +447,10 @@ PrintPlayTime:
 	jp PrintNumber
 
 SaveScreenInfoText:
-	db   "PLAYER"
+	db   "JOUEUR"
 	next "BADGES    "
 	next "#DEX    "
-	next "TIME@"
+	next "TEMPS@"
 
 
 CheckForPlayerNameInSRAM:
