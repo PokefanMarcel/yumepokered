@@ -759,8 +759,8 @@ HeightWeightText:
 	next "PDS  ???<l><b>@"
 
 HeightWeightMetricText:
-	db   "TAI   ???<M>"
-	next "PDS   ???<K><G>@"
+	db   "TAI  ???<M>"
+	next "PDS  ???<K><G>@"
 
 
 ; horizontal line that divides the pokedex text description from the rest of the data
