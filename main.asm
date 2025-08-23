@@ -352,7 +352,13 @@ INCLUDE "engine/overworld/healing_machine.asm"
 INCLUDE "engine/overworld/player_animations.asm"
 INCLUDE "engine/battle/ghost_marowak_anim.asm"
 INCLUDE "engine/battle/battle_transitions.asm"
+
+IF DEF(_FRA)
+INCLUDE "translation/fra/engine/items/town_map.asm"
+ELSE
 INCLUDE "engine/items/town_map.asm"
+ENDC
+
 INCLUDE "engine/gfx/mon_icons.asm"
 INCLUDE "engine/events/in_game_trades.asm"
 INCLUDE "engine/gfx/palettes.asm"
