@@ -472,14 +472,9 @@ PrintNamingText:
 .placeString
 	jp PlaceString
 
-YourTextString:
-	db "YOUR @"
-
-RivalsTextString:
-	db "RIVAL's @"
-
-NameTextString:
-	db "NAME?@"
-
-NicknameTextString:
-	db "NICKNAME?@"
+; marcelnote - moved text in own file for translation
+IF DEF(_FRA)
+	INCLUDE "translation/fra/data/text/naming_screen-fra.asm"
+ELSE
+	INCLUDE "data/text/naming_screen.asm"
+ENDC
