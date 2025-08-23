@@ -748,10 +748,10 @@ PokedexTypeText:
 	db   "TYPE/@"
 
 PokedexStatsText:
-	db   "HP"
-	next "ATTACK"
+	db   "VIE"
+	next "FORCE"
 	next "DEFENSE"
-	next "SPEED"
+	next "VITESSE"
 	next "SPECIAL@"
 
 HeightWeightText:
