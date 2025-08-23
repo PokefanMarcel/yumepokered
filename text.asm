@@ -174,14 +174,13 @@ INCLUDE "translation/fra/text/Route12FishingGuideHouse.asm" ; marcelnote - from 
 ; INCLUDE "translation/fra/text/Route15Gate.asm" ; marcelnote - merged Route15Gate floors
 INCLUDE "text/Route15Gate.asm" ; TODO: manually translate
 
-; INCLUDE "translation/fra/text/Route16Gate.asm" ; marcelnote - merged Route16Gate floors
-INCLUDE "text/Route16Gate.asm" ; TODO: manually translate
+INCLUDE "translation/fra/text/Route16Gate.asm" ; marcelnote - merged Route16Gate floors
 
 INCLUDE "translation/fra/text/Route16FlyHouse.asm"
-; INCLUDE "translation/fra/text/Route18Gate.asm" ; marcelnote - merged Route18Gate floors
-INCLUDE "text/Route18Gate.asm" ; TODO: manually translate
+INCLUDE "translation/fra/text/Route18Gate.asm" ; marcelnote - merged Route18Gate floors
 
 INCLUDE "translation/fra/text/Route22Gate.asm"
+
 ; INCLUDE "translation/fra/text/BattleHall.asm"  ; marcelnote - new location
 INCLUDE "text/BattleHall.asm"  ; TODO: manually translate
 
@@ -192,17 +191,25 @@ INCLUDE "translation/fra/text/Route2.asm"
 INCLUDE "translation/fra/text/Route3.asm"
 INCLUDE "translation/fra/text/Route4.asm"
 INCLUDE "translation/fra/text/Route5.asm"
+
 ; INCLUDE "translation/fra/text/Route5Gate.asm" ; marcelnote - new, added 2nd floor
 INCLUDE "text/Route5Gate.asm" ; TODO: manually translate
+
 INCLUDE "translation/fra/text/Route6.asm"
+
 ; INCLUDE "translation/fra/text/Route6Gate.asm" ; marcelnote - new, added 2nd floor
 INCLUDE "text/Route6Gate.asm" ; marcelnote - new, added 2nd floor
+
 INCLUDE "translation/fra/text/Route7.asm"
+
 ; INCLUDE "translation/fra/text/Route7Gate.asm" ; marcelnote - new, added 2nd floor
 INCLUDE "text/Route7Gate.asm" ; TODO: manually translate
+
 INCLUDE "translation/fra/text/Route8.asm"
+
 ; INCLUDE "translation/fra/text/Route8Gate.asm" ; marcelnote - new, added 2nd floor
 INCLUDE "text/Route8Gate.asm" ; TODO: manually translate
+
 INCLUDE "translation/fra/text/Route9.asm"
 INCLUDE "translation/fra/text/Route10.asm"
 INCLUDE "translation/fra/text/Route11.asm"
