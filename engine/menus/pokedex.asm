@@ -786,7 +786,11 @@ DrawTileLine:
 	pop bc
 	ret
 
-INCLUDE "data/pokemon/dex_entries.asm"
+IF DEF(_FRA)
+INCLUDE "translation/fra/engine/data/pokemon/dex_entries.asm"
+ELSE
+INCLUDE "engine/data/pokemon/dex_entries.asm"
+ENDC
 
 PokedexToIndex:
 	; converts the Pokédex number at [wPokedexNum] to an index

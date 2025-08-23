@@ -39,8 +39,8 @@ IF DEF(_FRA)
 INCLUDE "translation/fra/engine/menus/draw_start_menu.asm"
 ELSE
 INCLUDE "engine/menus/draw_start_menu.asm"
-
 ENDC
+
 INCLUDE "engine/link/cable_club_npc.asm"
 INCLUDE "engine/menus/text_box.asm"
 INCLUDE "engine/battle/move_effects/drain_hp.asm"
