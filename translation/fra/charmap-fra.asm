@@ -68,10 +68,10 @@
 
 	charmap "<LV>",      $6e ; :L
 
-	charmap "<HUD_VERTI_BAR>",  $70 ; HUD vertical bar tile
-	charmap "<LEFT_TRIANGLE>",  $71 ; HUD lower-left triangle tile
-	charmap "<HUD_HORIZ_BAR>",  $72 ; HUD horizontal bar tile
-	charmap "<RIGHT_CORNER>",   $73 ; HUD lower-right corner tile
+	charmap "<HUD_VERTI_BAR>",  $6f ; HUD vertical bar tile
+	charmap "<LEFT_TRIANGLE>",  $70 ; HUD lower-left triangle tile
+	charmap "<HUD_HORIZ_BAR>",  $71 ; HUD horizontal bar tile
+	charmap "<RIGHT_CORNER>",   $72 ; HUD lower-right corner tile
 
 	charmap "<BOLD_P>", $73 ; bold P
 	charmap "<ID>",     $74
