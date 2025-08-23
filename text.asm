@@ -174,7 +174,7 @@ INCLUDE "translation/fra/text/Route12FishingGuideHouse.asm" ; marcelnote - from 
 ; INCLUDE "translation/fra/text/Route15Gate.asm" ; marcelnote - merged Route15Gate floors
 INCLUDE "text/Route15Gate.asm" ; TODO: manually translate
 
-INCLUDE "translation/fra/text/Route16Gate.asm" ; marcelnote - merged Route16Gate floors
+INCLUDE "text/Route16Gate.asm" ; TODO marcelnote - merged Route16Gate floors
 
 INCLUDE "translation/fra/text/Route16FlyHouse.asm"
 INCLUDE "translation/fra/text/Route18Gate.asm" ; marcelnote - merged Route18Gate floors
