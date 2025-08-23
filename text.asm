@@ -532,8 +532,7 @@ INCLUDE "translation/fra/text/SaffronCity.asm"
 
 INCLUDE "translation/fra/data/text/text_6.asm"
 
-; INCLUDE "translation/fra/data/text/text_7.asm" ; marcelnote - moved from Text 11
-INCLUDE "data/text/text_7.asm" ; marcelnote - moved from Text 11 ; TODO : translate manually
+INCLUDE "translation/fra/data/text/text_7.asm" ; marcelnote - moved from Text 11
 
 ELSE
 INCLUDE "data/text/text_5.asm"

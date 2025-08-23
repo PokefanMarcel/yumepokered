@@ -200,3 +200,55 @@ _UsedCutText::
 	text " a tout"
 	line "coupé! Trop fort!"
 	prompt
+
+
+_TeachFieldMoveText:: ; TODO marcelnote - for temporary field moves, adapted from shinpokered
+	;text "Teach it for use"
+	;line "outside battle?"
+	text "Teach as a SKILL"
+	line "outside battle?"
+	done
+
+_AlreadyKnowsFieldMoveText:: ; TODO marcelnote - for temporary field moves, adapted from shinpokered
+	;text "This #MON knows"
+	;line "an outside-battle"
+	;cont "move already!"
+	text "This #MON knows"
+	line "a SKILL already!"
+
+	para "To teach it a new"
+	line "one, store it in"
+	cont "the PC first."
+	prompt
+
+
+_WantToSurfText:: ; TODO
+	text "The water is calm."
+	line "Want to SURF?"
+	done
+
+_WantToCutText:: ; TODO
+	text "Want to CUT this"
+	line "tree?"
+	done
+
+_UsedFlashText:: ; TODO
+	text_ram wNameBuffer
+	text " lights"
+	line "the area!"
+	prompt
+
+_MonCouldSurfText:: ; TODO
+	text "A #MON could"
+	line "SURF here."
+	done
+
+_TreeCanBeCutText:: ; TODO
+	text "This tree can"
+	line "be CUT."
+	done
+
+_WantToStrengthText:: ; TODO
+	text "Want to use"
+	line "STRENGTH?"
+	done
