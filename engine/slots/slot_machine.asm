@@ -891,12 +891,22 @@ SlotMachineMapEnd:
 INCLUDE "data/events/slot_machine_wheels.asm"
 
 SlotMachineTiles1:
-IF DEF(_RED)
-	INCBIN "gfx/slots/red_slots_1.2bpp"
-ELIF DEF(_BLUE)
-	INCBIN "gfx/slots/blue_slots_1.2bpp"
-ELIF DEF(_GREEN) ; PureRGBnote: GREENBUILD: use the green slots visuals on green version
-	INCBIN "gfx/slots/green_slots_1.2bpp"
+IF DEF(_FRA)
+	IF DEF(_RED)
+		INCBIN "translation/fra/gfx/slots/red_slots_1-fra.2bpp"
+	ELIF DEF(_BLUE)
+		INCBIN "translation/fra/gfx/slots/blue_slots_1-fra.2bpp"
+	ELIF DEF(_GREEN) ; PureRGBnote: GREENBUILD: use the green slots visuals on green version
+		INCBIN "translation/fra/gfx/slots/green_slots_1-fra.2bpp"
+	ENDC
+ELSE
+	IF DEF(_RED)
+		INCBIN "gfx/slots/red_slots_1.2bpp"
+	ELIF DEF(_BLUE)
+		INCBIN "gfx/slots/blue_slots_1.2bpp"
+	ELIF DEF(_GREEN) ; PureRGBnote: GREENBUILD: use the green slots visuals on green version
+		INCBIN "gfx/slots/green_slots_1.2bpp"
+	ENDC
 ENDC
 SlotMachineTiles1End:
 
