@@ -164,15 +164,12 @@ INCLUDE "translation/fra/text/UndergroundPathRoute8.asm"
 INCLUDE "translation/fra/text/RockTunnelPokecenter.asm"
 INCLUDE "translation/fra/text/RockTunnel1F.asm"
 INCLUDE "translation/fra/text/PowerPlant.asm"
-; INCLUDE "translation/fra/text/Route11Gate.asm"
-INCLUDE "text/Route11Gate.asm" ; TODO: manually translate
+INCLUDE "translation/fra/text/Route11Gate.asm"
 
 INCLUDE "translation/fra/text/DiglettsCaveRoute11.asm"
-; INCLUDE "translation/fra/text/Route12Gate.asm" ; marcelnote - merged Route12Gate floors
-INCLUDE "text/Route12Gate.asm" ; TODO: manually translate
+INCLUDE "translation/fra/text/Route12Gate.asm" ; marcelnote - merged Route12Gate floors
 
-; INCLUDE "translation/fra/text/Route12FishingGuideHouse.asm" ; marcelnote - from Super Rod to Fishing Guide
-INCLUDE "text/Route12FishingGuideHouse.asm" ; TODO: manually translate
+INCLUDE "translation/fra/text/Route12FishingGuideHouse.asm" ; marcelnote - from Super Rod to Fishing Guide
 
 ; INCLUDE "translation/fra/text/Route15Gate.asm" ; marcelnote - merged Route15Gate floors
 INCLUDE "text/Route15Gate.asm" ; TODO: manually translate
