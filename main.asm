@@ -34,14 +34,19 @@ INCLUDE "engine/pokemon/learn_move.asm"
 INCLUDE "engine/events/pokecenter.asm"
 INCLUDE "engine/events/set_blackout_map.asm"
 INCLUDE "engine/menus/display_text_id_init.asm"
+
+IF DEF(_FRA)
+INCLUDE "translation/fra/engine/menus/draw_start_menu.asm"
+ELSE
 INCLUDE "engine/menus/draw_start_menu.asm"
+
+ENDC
 INCLUDE "engine/link/cable_club_npc.asm"
 INCLUDE "engine/menus/text_box.asm"
 INCLUDE "engine/battle/move_effects/drain_hp.asm"
 INCLUDE "engine/menus/players_pc.asm"
 INCLUDE "engine/pokemon/remove_mon.asm"
 INCLUDE "engine/events/display_pokedex.asm"
-
 
 SECTION "bank3", ROMX
 
