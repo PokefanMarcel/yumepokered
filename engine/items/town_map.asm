@@ -693,7 +693,11 @@ LoadTownMapEntry:
 
 INCLUDE "data/maps/town_map_entries.asm"
 
+IF DEF(_FRA)
+INCLUDE "translation/fra/data/maps/names.asm"
+ELSE
 INCLUDE "data/maps/names.asm"
+ENDC
 
 MonNestIcon:
 	INCBIN "gfx/town_map/mon_nest_icon.1bpp"
@@ -730,7 +734,7 @@ TownMapSpriteBlinkingAnimation::
 
 
 IF DEF(_FRA)
-	INCLUDE "translation/fra/data/text/town_map-fra.asm"
+	INCLUDE "translation/fra/data/text/town_map.asm"
 ELSE
 	INCLUDE "data/text/town_map.asm"
 ENDC

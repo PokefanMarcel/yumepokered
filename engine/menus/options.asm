@@ -296,7 +296,7 @@ OptionsControl:
 	ret
 
 IF DEF(_FRA)
-	INCLUDE "translation/fra/data/text/options-fra.asm"
+	INCLUDE "translation/fra/data/text/options.asm"
 ELSE
 	INCLUDE "data/text/options.asm"
 ENDC

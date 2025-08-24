@@ -332,10 +332,10 @@ BufferStatText: ; uses c as counter
 	jp CopyData
 
 
-IF DEF(_FRA) ; marcelnote - for translation
-	INCLUDE "translation/fra/data/battle/stat_mod_names-fra.asm"
+IF DEF(_FRA)
+INCLUDE "translation/fra/data/battle/stat_mod_names.asm"
 ELSE
-	INCLUDE "data/battle/stat_mod_names.asm"
+INCLUDE "data/battle/stat_mod_names.asm"
 ENDC
 
 INCLUDE "data/battle/stat_modifiers.asm"

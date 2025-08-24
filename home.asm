@@ -46,7 +46,12 @@ INCLUDE "home/text_script.asm"
 INCLUDE "home/start_menu.asm"
 INCLUDE "home/count_set_bits.asm"
 INCLUDE "home/inventory.asm"
+
+IF DEF(_FRA)
+INCLUDE "translation/fra/home/list_menu.asm"
+ELSE
 INCLUDE "home/list_menu.asm"
+ENDC
 INCLUDE "home/names.asm"
 INCLUDE "home/reload_tiles.asm"
 INCLUDE "home/item.asm"

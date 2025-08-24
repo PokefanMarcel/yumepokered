@@ -7,7 +7,7 @@ INCLUDE "engine/movie/title.asm"
 INCLUDE "engine/pokemon/load_mon_data.asm"
 INCLUDE "data/items/prices.asm"
 IF DEF(_FRA)
-INCLUDE "translation/fra/data/items/names-fra.asm"
+INCLUDE "translation/fra/data/items/names.asm"
 ELSE
 INCLUDE "data/items/names.asm"
 ENDC
@@ -20,7 +20,11 @@ INCLUDE "engine/debug/debug_menu.asm"
 INCLUDE "engine/events/pick_up_item.asm"
 INCLUDE "engine/overworld/movement.asm"
 INCLUDE "engine/link/cable_club.asm"
+IF DEF(_FRA)
+INCLUDE "translation/fra/engine/menus/main_menu.asm"
+ELSE
 INCLUDE "engine/menus/main_menu.asm"
+ENDC
 INCLUDE "engine/menus/options.asm" ; marcelnote - moved stuff from main_menu
 INCLUDE "engine/movie/oak_speech/oak_speech.asm"
 INCLUDE "engine/overworld/special_warps.asm"
@@ -34,14 +38,23 @@ INCLUDE "engine/pokemon/learn_move.asm"
 INCLUDE "engine/events/pokecenter.asm"
 INCLUDE "engine/events/set_blackout_map.asm"
 INCLUDE "engine/menus/display_text_id_init.asm"
+
+IF DEF(_FRA)
+INCLUDE "translation/fra/engine/menus/draw_start_menu.asm"
+ELSE
 INCLUDE "engine/menus/draw_start_menu.asm"
+ENDC
+
 INCLUDE "engine/link/cable_club_npc.asm"
 INCLUDE "engine/menus/text_box.asm"
 INCLUDE "engine/battle/move_effects/drain_hp.asm"
+IF DEF(_FRA)
+INCLUDE "translation/fra/engine/menus/players_pc.asm"
+ELSE
 INCLUDE "engine/menus/players_pc.asm"
+ENDC
 INCLUDE "engine/pokemon/remove_mon.asm"
 INCLUDE "engine/events/display_pokedex.asm"
-
 
 SECTION "bank3", ROMX
 
@@ -122,7 +135,7 @@ INCLUDE "engine/overworld/ledges.asm"
 SECTION "Pokémon Names", ROMX
 
 IF DEF(_FRA)
-INCLUDE "translation/fra/data/pokemon/names-fra.asm"
+INCLUDE "translation/fra/data/pokemon/names.asm"
 ELSE
 INCLUDE "data/pokemon/names.asm"
 ENDC
@@ -218,7 +231,12 @@ INCLUDE "engine/battle/move_effects/confusion.asm"
 
 SECTION "bank10", ROMX
 
+
+IF DEF(_FRA)
+INCLUDE "translation/fra/engine/menus/pokedex.asm"
+ELSE
 INCLUDE "engine/menus/pokedex.asm"
+ENDC
 INCLUDE "engine/movie/trade.asm"
 INCLUDE "engine/movie/intro.asm"
 INCLUDE "engine/movie/trade2.asm"
@@ -334,7 +352,13 @@ INCLUDE "engine/overworld/healing_machine.asm"
 INCLUDE "engine/overworld/player_animations.asm"
 INCLUDE "engine/battle/ghost_marowak_anim.asm"
 INCLUDE "engine/battle/battle_transitions.asm"
+
+IF DEF(_FRA)
+INCLUDE "translation/fra/engine/items/town_map.asm"
+ELSE
 INCLUDE "engine/items/town_map.asm"
+ENDC
+
 INCLUDE "engine/gfx/mon_icons.asm"
 INCLUDE "engine/events/in_game_trades.asm"
 INCLUDE "engine/gfx/palettes.asm"
