@@ -7,9 +7,9 @@ INCLUDE "engine/movie/title.asm"
 INCLUDE "engine/pokemon/load_mon_data.asm"
 INCLUDE "data/items/prices.asm"
 IF DEF(_FRA)
-INCLUDE "translation/fra/data/items/names-fra.asm"
+	INCLUDE "translation/fra/data/items/names-fra.asm"
 ELSE
-INCLUDE "data/items/names.asm"
+	INCLUDE "data/items/names.asm"
 ENDC
 ;INCLUDE "data/text/unused_names.asm" ; marcelnote - removed
 INCLUDE "engine/gfx/sprite_oam.asm"
@@ -122,9 +122,9 @@ INCLUDE "engine/overworld/ledges.asm"
 SECTION "Pokémon Names", ROMX
 
 IF DEF(_FRA)
-INCLUDE "translation/fra/data/pokemon/names-fra.asm"
+	INCLUDE "translation/fra/data/pokemon/names-fra.asm"
 ELSE
-INCLUDE "data/pokemon/names.asm"
+	INCLUDE "data/pokemon/names.asm"
 ENDC
 INCLUDE "engine/movie/oak_speech/clear_save.asm"
 INCLUDE "engine/events/elevator.asm"
