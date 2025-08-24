@@ -43,8 +43,6 @@ BuySellQuitText:
 	next "SELL"
 	next "QUIT@"
 
-	db "@" ; unused
-
 UseTossText:
 	db   "USE"
 	next "TOSS@"
