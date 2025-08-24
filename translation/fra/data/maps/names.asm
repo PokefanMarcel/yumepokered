@@ -9,7 +9,7 @@ FuchsiaCityName:     db "PARMANIE@"
 CinnabarIslandName:  db "CRAMOIS'ILE@"
 IndigoPlateauName:   db "PLATEAU INDIGO@"
 SaffronCityName:     db "SAFRANIA@"
-MandarinIslandName:  db "MANDARIN ISLAND@" ; marcelnote - new location
+MandarinIslandName:  db "ILE MANDARINE@" ; marcelnote - new location ; ???
 Route1Name:          db "ROUTE 1@"
 Route2Name:          db "ROUTE 2@"
 Route3Name:          db "ROUTE 3@"
@@ -51,12 +51,12 @@ RocketHQName:        db "REPAIRE ROCKET@"
 SilphCoName:         db "SYLPHE SARL@"
 PokemonMansionName:  db "MANOIR <PKMN>@"
 SafariZoneName:      db "PARC SAFARI@"
-CeruleanCaveName:    db "GROTTE INCONNUE@"
+CeruleanCaveName:    db "CAVERNE AZUREE@" ; marcelnote - changed from "GROTTE INCONNUE"
 PowerPlantName:      db "CENTRALE@"
-CinnabarVolcanoName: db "CINNABAR VOLCANO@" ; marcelnote - new location
-MtMoonSquareName:    db "MT.MOON SQUARE@"   ; marcelnote - new location
-PokemonAcademyName:  db "#MON ACADEMY@"     ; marcelnote - new location
-CeladonGroveName:    db "CELADON GROVE@"    ; marcelnote - new location
-SilphFactoryName:    db "SILPH CO.FACTORY@" ; marcelnote - new location
-MtSilverName:        db "MT.SILVER@"        ; marcelnote - new location
-CitrusFerryName:     db "CITRUS FERRIES@"   ; marcelnote - new location
+CinnabarVolcanoName: db "CINNABAR VOLCANO@" ; marcelnote - new location ; TODO ; VOLCAN CRAMOISI ???
+MtMoonSquareName:    db "AIRE DE REPOS@" ; marcelnote - new location
+PokemonAcademyName:  db "ACADEMIE #MON@" ; marcelnote - new location
+CeladonGroveName:    db "BOIS CELADON@" ; marcelnote - new location ; ???
+SilphFactoryName:    db "USINE SYLPHE@" ; marcelnote - new location
+MtSilverName:        db "MONT ARGENTE@" ; marcelnote - new location
+CitrusFerryName: db "CITRUS FERRIES@" ; marcelnote - new location ; TODO
