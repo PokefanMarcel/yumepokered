@@ -381,7 +381,6 @@ TwoOptionMenu_RestoreScreenTiles:
 	call UpdateSprites
 	ret
 
-INCLUDE "data/yes_no_menu_strings.asm"
 
 DisplayFieldMoveMonMenu:
 	xor a
@@ -504,12 +503,6 @@ DisplayFieldMoveMonMenu:
 	ld de, PokemonMenuEntries
 	jp PlaceString
 
-INCLUDE "data/moves/field_move_names.asm"
-
-PokemonMenuEntries:
-	db   "STATS"
-	next "SWITCH"
-	next "CANCEL@"
 
 GetMonFieldMoves: ; marcelnote - modified for temporary field moves, from shinpokered
 	ld a, [wWhichPokemon]
@@ -595,3 +588,13 @@ GetMonFieldMoves: ; marcelnote - modified for temporary field moves, from shinpo
 	jr .fieldMoveLoop
 
 INCLUDE "data/moves/field_moves.asm"
+
+IF DEF(_FRA)
+	INCLUDE "translation/fra/data/moves/field_move_names-fra.asm"
+	INCLUDE "translation/fra/data/two_option_menus-fra.asm"
+	INCLUDE "translation/fra/data/text/pokemon_menu_entries-fra.asm"
+ELSE
+	INCLUDE "data/moves/field_move_names.asm"
+	INCLUDE "data/two_option_menus.asm"
+	INCLUDE "data/text/pokemon_menu_entries.asm"
+ENDC

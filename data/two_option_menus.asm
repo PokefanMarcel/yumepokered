@@ -8,7 +8,7 @@ TwoOptionMenuStrings:
 	table_width 5
 	; width, height, blank line before first menu item?, text pointer
 	two_option_menu 4, 3, FALSE, .YesNoMenu
-	;two_option_menu 6, 3, FALSE, .NorthWestMenu
+;	two_option_menu 6, 3, FALSE, .NorthWestMenu
 	two_option_menu 5, 3, FALSE, .BoyGirlMenu ; marcelnote - add female player
 	two_option_menu 6, 3, FALSE, .SouthEastMenu
 	two_option_menu 6, 3, FALSE, .YesNoMenu
