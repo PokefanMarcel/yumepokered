@@ -365,21 +365,6 @@ DrawPokedexVerticalLine:
 	jr nz, .loop
 	ret
 
-PokedexSeenText:
-	db "SEEN@"
-
-PokedexOwnText:
-	db "OWN@"
-
-PokedexContentsText:
-	db "CONTENTS@"
-
-PokedexMenuItemsText:
-	db   "DATA"
-	next "MOVE" ; marcelnote - reorganized for learnset page
-	next "AREA"
-	next "CRY@"
-
 
 ; tests if a pokemon's bit is set in the seen or owned pokemon bit fields
 ; INPUT:
@@ -744,24 +729,6 @@ PrintBaseStats: ; marcelnote - new
 	ret
 
 
-PokedexTypeText:
-	db   "TYPE/@"
-
-PokedexStatsText:
-	db   "HP"
-	next "ATTACK"
-	next "DEFENSE"
-	next "SPEED"
-	next "SPECIAL@"
-
-HeightWeightText:
-	db   "HT  ?′??″"
-	next "WT   ???<l><b>@"
-
-HeightWeightMetricText:
-	db   "HT   ???<m>"
-	next "WT   ???<k><g>@"
-
 ; horizontal line that divides the pokedex text description from the rest of the data
 PokedexDataDividerLine:
 	db $69, $6a, $67, $6a, $67, $6a, $67, $6a, $67, $67
@@ -786,7 +753,6 @@ DrawTileLine:
 	pop bc
 	ret
 
-INCLUDE "data/pokemon/dex_entries.asm"
 
 PokedexToIndex:
 	; converts the Pokédex number at [wPokedexNum] to an index
@@ -825,8 +791,6 @@ IndexToPokedex:
 	pop bc
 	ret
 
-INCLUDE "data/pokemon/dex_order.asm"
-
 
 ShowPokedexMoves: ; marcelnote - new for learnset page
 	ld hl, wStatusFlags2
@@ -862,16 +826,22 @@ ShowPokedexMoves: ; marcelnote - new for learnset page
 	ld a, $6e ; lower right corner tile
 	ldcoord_a 19, 17
 
+IF DEF(_FRA) ; in French: CAPA. BULBIZARRE
+	hlcoord 2, 1
+	ld de, PokedexMovesHeader
+	call PlaceString
+	call GetMonName
+	hlcoord 8, 1
+	call PlaceString ; Pokémon name
+ELSE         ; in English: BULBASAUR's MOVES
 	call GetMonName
 	hlcoord 2, 1
 	call PlaceString ; Pokémon name
-.skipNameTiles
-	ld a, [hli]
-	cp " "
-	jr nz, .skipNameTiles
-	dec hl
+	ld h, b
+	ld l, c
 	ld de, PokedexMovesHeader
 	call PlaceString
+ENDC
 
 	hlcoord 0, 2
 	ld de, PokedexDataDividerLine
@@ -1063,4 +1033,12 @@ ShowPokedexMoves: ; marcelnote - new for learnset page
 	scf
 	ret
 
-PokedexMovesHeader: db "'s MOVES@"
+
+INCLUDE "data/pokemon/dex_entries.asm"
+INCLUDE "data/pokemon/dex_order.asm"
+
+IF DEF(_FRA)
+	INCLUDE "translation/fra/data/text/pokedex-fra.asm"
+ELSE
+	INCLUDE "data/text/pokedex.asm"
+ENDC
