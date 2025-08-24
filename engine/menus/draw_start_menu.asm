@@ -59,26 +59,6 @@ DrawStartMenu::
 	res BIT_NO_TEXT_DELAY, [hl]
 	ret
 
-StartMenuPokedexText:
-	db "POKéDEX@"
-
-StartMenuPokemonText:
-	db "POKéMON@"
-
-StartMenuItemText:
-	db "ITEM@"
-
-StartMenuSaveText:
-	db "SAVE@"
-
-StartMenuResetText:
-	db "RESET@"
-
-StartMenuExitText:
-	db "EXIT@"
-
-StartMenuOptionText:
-	db "OPTION@"
 
 PrintStartMenuItem:
 	push hl
@@ -87,3 +67,9 @@ PrintStartMenuItem:
 	ld de, SCREEN_WIDTH * 2
 	add hl, de
 	ret
+
+IF DEF(_FRA) ; marcelnote - added for translation
+	INCLUDE "translation/fra/data/text/start_menu-fra.asm"
+ELSE
+	INCLUDE "data/text/start_menu.asm"
+ENDC
