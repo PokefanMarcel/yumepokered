@@ -27,7 +27,7 @@ ItemNames::
 	li "ITEM19"
 	li "ITEM1A"
 	li "ITEM1B"
-	li "POKé BEEPER" ; marcelnote - new for PokéBeeper, translation to find
+	li "POKéBIP"
 	li "CORDE SORTIE"
 	li "REPOUSSE"
 	li "VIEIL AMBRE"

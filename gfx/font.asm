@@ -9,6 +9,9 @@ IF DEF(_FRA)
 
 	NamingScreenTiles: INCBIN "translation/fra/gfx/naming_screen-fra.1bpp" ; marcelnote - reorganized Naming screen tiles
 	NamingScreenTilesEnd:
+
+	PokedexTileGraphics: INCBIN "translation/fra/gfx/pokedex-fra.2bpp"
+	PokedexTileGraphicsEnd:
 ELSE
 	FontGraphics:: INCBIN "gfx/font/font.1bpp"
 	FontGraphicsEnd::
@@ -18,6 +21,9 @@ ELSE
 
 	NamingScreenTiles: INCBIN "gfx/font/naming_screen.1bpp" ; marcelnote - reorganized Naming screen tiles
 	NamingScreenTilesEnd:
+
+	PokedexTileGraphics: INCBIN "gfx/pokedex/pokedex.2bpp"
+	PokedexTileGraphicsEnd:
 ENDC
 
 BattleHudTiles: INCBIN "gfx/battle/battle_hud.1bpp" ; marcelnote - reorganized Battle HUD tiles
@@ -30,9 +36,6 @@ GameFreakLogoGraphicsEnd:
 
 TextBoxGraphics:: INCBIN "gfx/font/font_extra.2bpp"
 TextBoxGraphicsEnd::
-
-PokedexTileGraphics: INCBIN "gfx/pokedex/pokedex.2bpp"
-PokedexTileGraphicsEnd:
 
 StatsBarGraphics: INCBIN "gfx/pokedex/stats_bar.2bpp" ; marcelnote - new
 StatsBarGraphicsEnd:

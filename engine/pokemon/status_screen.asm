@@ -399,48 +399,6 @@ NamePointers2:
 	dw wDayCareMonName
 
 
-StatusScreenStatusText:
-	db "STATUS/@"
-
-StatusScreenOKText:
-	db "OK@"
-
-StatusScreenTypeText:
-	db "TYPE/@"
-
-StatusScreenOTText:
-	db   "OT/"
-	next ""
-	; fallthrough
-StatusScreenIDNoText:
-	db "<ID>№<DOT>@"
-
-StatusScreenInfoText:
-	db "INFO/@"
-
-StatusScreenStatsText:
-	db "STATS   @"
-
-StatusScreenDVsText:
-	db "DVS     @"
-
-StatusScreenStatExpText:
-	db "STAT.EXP@"
-
-StatusScreenExpText:
-	db   "EXP.POINTS"
-	next ""
-	; fallthrough
-StatusScreenLevelUpText:
-	db   "LEVEL UP@"
-
-StatusScreenToNextLevelText:
-	db "to@"
-
-StatusScreenFieldMoveText:
-	db "SKILL@"
-
-
 
 StatusScreenClearScreen:
 	hlcoord 9, 1
@@ -560,12 +518,6 @@ PrintStat:
 	ld de, SCREEN_WIDTH * 2 - 5
 	add hl, de
 	ret
-
-StatsText:
-	db   "ATTACK"
-	next "DEFENSE"
-	next "SPEED"
-	next "SPECIAL@"
 
 
 SwitchToStats:
@@ -826,3 +778,10 @@ PlaceStringWithHyphen: ; to print field moves with hyphen after 4 letters (won't
 	add hl, bc
 	ld b, 0
 	jr .placeNextChar
+
+
+IF DEF(_FRA) ; marcelnote - added for translation
+	INCLUDE "translation/fra/data/text/status_screen-fra.asm"
+ELSE
+	INCLUDE "data/text/status_screen.asm"
+ENDC
