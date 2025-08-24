@@ -6,7 +6,7 @@ ItemNames::
 	li "POKé BALL"
 	li "CARTE"
 	li "BICYCLETTE"
-	li "PLANCHE SURF" ; SURFBOARD
+	li "PLANCHE SURF"
 	li "SAFARI BALL"
 	li "POKéDEX"
 	li "PIERRE LUNE"
@@ -27,7 +27,7 @@ ItemNames::
 	li "ITEM19"
 	li "ITEM1A"
 	li "ITEM1B"
-	li "POKé BEEPER" ; marcelnote - new for PokéBeeper, translation to find
+	li "POKéBIP"
 	li "CORDE SORTIE"
 	li "REPOUSSE"
 	li "VIEIL AMBRE"
@@ -73,7 +73,7 @@ ItemNames::
 	li "CHERCH'OBJET"
 	li "SCOPE SYLPHE"
 	li "POKéFLUTE"
-	li "CLE ASC."
+	li "CLE ASCENS."
 	li "MULTI EXP"
 	li "CANNE"
 	li "SUPER CANNE"

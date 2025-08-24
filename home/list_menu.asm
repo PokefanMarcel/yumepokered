@@ -702,12 +702,8 @@ GetTMHMContent: ; marcelnote - new for bag pockets and TM printing
 	jp CopyToStringBuffer
 
 
-ListMenuCancelText::
-	db "CANCEL@"
-
-BagItemsText:
-	db "◀ ITEMS      ▶@"
-
-BagKeyItemsText:
-	db "◀ KEY ITEMS  ▶@" ; ▶
-
+IF DEF(_FRA) ; marcelnote - added for translation
+	INCLUDE "translation/fra/data/text/list_menu-fra.asm"
+ELSE
+	INCLUDE "data/text/list_menu.asm"
+ENDC

@@ -361,7 +361,7 @@ CableClubOptionsText:
 
 VersionText:
 	db "  <PKMN>Yume "
-	db "v1.1beta@"
+	db "v1.1@"
 ;db " v"
 ;INCLUDE "version_number.asm"
 ;db "@"

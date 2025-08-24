@@ -41,7 +41,6 @@
 	charmap "<BOLD_S>",  $6a
 	charmap "<BOLD_L>",  $6b ; unused
 	charmap "<BOLD_M>",  $6c ; unused
-	charmap "<COLON>",   $6d ; colon with tinier dots than ":"
 	charmap "ぃ",        $6e ; hiragana small i, unused
 	charmap "ぅ",        $6f ; hiragana small u, unused
 	charmap "‘",         $70 ; opening single quote
@@ -140,7 +139,7 @@
 	charmap "(",         $9a
 	charmap ")",         $9b
 	charmap ":",         $9c
-	charmap ";",         $9d
+	charmap ",",         $9d
 	charmap "[",         $9e
 	charmap "]",         $9f
 
@@ -212,24 +211,25 @@
 	charmap "-",         $e3
 	charmap "+",         $e4
 
+	charmap "'m",        $e5 ; unused?
+
 	charmap "?",         $e6
 	charmap "!",         $e7
 	charmap ".",         $e8
+	charmap ";",         $e9
 
-	charmap "ァ",         $e9 ; katakana small a, unused
-	charmap "ゥ",         $ea ; katakana small u, unused
-	charmap "ェ",         $eb ; katakana small e, unused
+	charmap "ゥ",        $ea ; katakana small u, unused
+	charmap "<COLON>",   $eb ; colon with tinier dots than ":"
 
 	charmap "▷",         $ec
 	charmap "▶",         $ed
 	charmap "▼",         $ee
 	charmap "◀",         $ef ; marcelnote - duplicate for now
-	charmap "♂",         $ef
 	charmap "¥",         $f0
 	charmap "×",         $f1
 	charmap "<DOT>",     $f2 ; decimal point; same as "." in English
 	charmap "/",         $f3
-	charmap ",",         $f4
+	charmap "♂",         $f4
 	charmap "♀",         $f5
 
 	charmap "0",         $f6

@@ -57,23 +57,6 @@ OptionsMenu_UpdateCursorPosition:
 	ret
 
 
-AllOptionsText:
-	db   "TEXT SPEED"
-	next "BATTLE ANIMATION"
-	next "BATTLE STYLE"
-	next "MEASURE UNITS"
-	next ""
-	next ""
-	next ""
-	next "DONE@" ; marcelnote - changed from CANCEL@
-
-OptionsColonsText:
-	db   ":"
-	next ":"
-	next ":"
-	next ":@"
-
-
 GetOptionPointer:
 	ld a, [wOptionsCursorLocation]
 	add a
@@ -166,15 +149,6 @@ TextSpeedStringsPointerTable:
 	dw MediumText
 	dw SlowText
 
-InstantText:
-	db "INSTANT@"
-FastText:
-	db "FAST   @"
-MediumText:
-	db "MEDIUM @"
-SlowText:
-	db "SLOW   @"
-
 
 OptionsMenu_BattleAnimations: ; bit set = animations off
 	ldh a, [hJoy5]
@@ -203,11 +177,6 @@ OptionsMenu_BattleAnimations: ; bit set = animations off
 AnimationOptionStringsPointerTable:
 	dw AnimationOnText
 	dw AnimationOffText
-
-AnimationOnText:
-	db "ON @"
-AnimationOffText:
-	db "OFF@"
 
 
 OptionsMenu_BattleStyle: ; bit set = metric
@@ -239,11 +208,6 @@ BattleStyleOptionStringsPointerTable:
 	dw BattleStyleShiftText
 	dw BattleStyleSetText
 
-BattleStyleShiftText:
-	db "SHIFT@"
-BattleStyleSetText:
-	db "SET  @"
-
 
 OptionsMenu_MeasureUnits: ; bit set = metric
 	ldh a, [hJoy5]
@@ -274,11 +238,6 @@ OptionsMenu_MeasureUnits: ; bit set = metric
 MeasureUnitsOptionStringsPointerTable:
 	dw MeasureUnitsImperialText
 	dw MeasureUnitsMetricText
-
-MeasureUnitsImperialText:
-	db "IMPERIAL@"
-MeasureUnitsMetricText:
-	db "METRIC  @"
 
 
 OptionsMenu_Dummy:
@@ -335,3 +294,9 @@ OptionsControl:
 	dec [hl]
 	scf
 	ret
+
+IF DEF(_FRA)
+	INCLUDE "translation/fra/data/text/options-fra.asm"
+ELSE
+	INCLUDE "data/text/options.asm"
+ENDC

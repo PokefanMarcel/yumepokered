@@ -458,9 +458,9 @@ PrintNamingText:
 	call GetMonName
 	hlcoord 4, 1
 	call PlaceString
-	ld hl, $1
-	add hl, bc
-	ld [hl], "の" ; leftover from Japanese version; blank tile $c9 in English
+;	ld hl, $1 ; marcelnote - removed
+;	add hl, bc
+;	ld [hl], "の" ; leftover from Japanese version; blank tile $c9 in English
 	hlcoord 1, 3
 	ld de, NicknameTextString
 	jr .placeString
@@ -472,14 +472,9 @@ PrintNamingText:
 .placeString
 	jp PlaceString
 
-YourTextString:
-	db "YOUR @"
-
-RivalsTextString:
-	db "RIVAL's @"
-
-NameTextString:
-	db "NAME?@"
-
-NicknameTextString:
-	db "NICKNAME?@"
+; marcelnote - moved text in own file for translation
+IF DEF(_FRA)
+	INCLUDE "translation/fra/data/text/naming_screen-fra.asm"
+ELSE
+	INCLUDE "data/text/naming_screen.asm"
+ENDC

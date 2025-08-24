@@ -437,7 +437,11 @@ IntroNidorinoAnimation7:
 	db ANIMATION_END
 
 GameFreakIntro:
+IF DEF(FRA)
+	INCBIN "translation/fra/gfx/gamefreak_presents-fra.2bpp"
+ELSE
 	INCBIN "gfx/splash/gamefreak_presents.2bpp"
+ENDC
 	INCBIN "gfx/splash/gamefreak_logo.2bpp"
 	ds 16, $00 ; blank tile
 GameFreakIntroEnd:
