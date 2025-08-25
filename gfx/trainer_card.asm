@@ -3,7 +3,7 @@ TrainerInfoTextBoxTileGraphicsEnd:
 
 ; marcelnote - for printing leader names in Trainer card`
 IF DEF(_FRA)
-	LeaderNumbersNamesGraphics:  INCBIN "translation/fra/gfx/leader_numbers_names.2bpp"
+	LeaderNumbersNamesGraphics:  INCBIN "translation/fra/gfx/leader_numbers_names.fra.2bpp"
 ELSE
 	LeaderNumbersNamesGraphics:  INCBIN "gfx/trainer_card/leader_numbers_names.2bpp"
 ENDC

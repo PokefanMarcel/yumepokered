@@ -1,16 +1,16 @@
 PokemonLogoGraphics: INCBIN "gfx/title/pokemon_logo.2bpp"
 
 IF DEF(_FRA)
-	FontGraphics:: INCBIN "translation/fra/gfx/font.1bpp"
+	FontGraphics:: INCBIN "translation/fra/gfx/font.fra.1bpp"
 	FontGraphicsEnd::
 
-	HpBarAndStatusGraphics:: INCBIN "translation/fra/gfx/font_battle_extra.2bpp"
+	HpBarAndStatusGraphics:: INCBIN "translation/fra/gfx/font_battle_extra.fra.2bpp"
 	HpBarAndStatusGraphicsEnd::
 
-	NamingScreenTiles: INCBIN "translation/fra/gfx/naming_screen.1bpp" ; marcelnote - reorganized Naming screen tiles
+	NamingScreenTiles: INCBIN "translation/fra/gfx/naming_screen.fra.1bpp" ; marcelnote - reorganized Naming screen tiles
 	NamingScreenTilesEnd:
 
-	PokedexTileGraphics: INCBIN "translation/fra/gfx/pokedex.2bpp"
+	PokedexTileGraphics: INCBIN "translation/fra/gfx/pokedex.fra.2bpp"
 	PokedexTileGraphicsEnd:
 ELSE
 	FontGraphics:: INCBIN "gfx/font/font.1bpp"

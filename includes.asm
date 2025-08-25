@@ -14,7 +14,7 @@ INCLUDE "macros/scripts/events.asm"
 INCLUDE "macros/scripts/text.asm"
 
 IF DEF(_FRA)
-INCLUDE "translation/fra/constants/charmap.asm"
+INCLUDE "translation/fra/constants/charmap.fra.asm"
 ELSE
 INCLUDE "constants/charmap.asm"
 ENDC

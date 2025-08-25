@@ -48,7 +48,7 @@ INCLUDE "home/count_set_bits.asm"
 INCLUDE "home/inventory.asm"
 
 IF DEF(_FRA)
-INCLUDE "translation/fra/home/list_menu.asm"
+INCLUDE "translation/fra/home/list_menu.fra.asm"
 ELSE
 INCLUDE "home/list_menu.asm"
 ENDC

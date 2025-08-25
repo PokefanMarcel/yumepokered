@@ -126,7 +126,7 @@ GetAddressOfScreenCoords:
 	ret
 
 IF DEF(_FRA)
-INCLUDE "translation/fra/data/text_boxes.asm"
+INCLUDE "translation/fra/data/text_boxes.fra.asm"
 ELSE
 INCLUDE "data/text_boxes.asm"
 ENDC
@@ -590,9 +590,9 @@ GetMonFieldMoves: ; marcelnote - modified for temporary field moves, from shinpo
 INCLUDE "data/moves/field_moves.asm"
 
 IF DEF(_FRA)
-	INCLUDE "translation/fra/data/moves/field_move_names-fra.asm"
-	INCLUDE "translation/fra/data/two_option_menus-fra.asm"
-	INCLUDE "translation/fra/data/text/pokemon_menu_entries-fra.asm"
+	INCLUDE "translation/fra/data/moves/field_move_names.fra.asm"
+	INCLUDE "translation/fra/data/two_option_menus.fra.asm"
+	INCLUDE "translation/fra/data/text/pokemon_menu_entries.fra.asm"
 ELSE
 	INCLUDE "data/moves/field_move_names.asm"
 	INCLUDE "data/two_option_menus.asm"

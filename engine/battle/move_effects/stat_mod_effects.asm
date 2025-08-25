@@ -333,7 +333,7 @@ BufferStatText: ; uses c as counter
 
 
 IF DEF(_FRA)
-INCLUDE "translation/fra/data/battle/stat_mod_names.asm"
+INCLUDE "translation/fra/data/battle/stat_mod_names.fra.asm"
 ELSE
 INCLUDE "data/battle/stat_mod_names.asm"
 ENDC

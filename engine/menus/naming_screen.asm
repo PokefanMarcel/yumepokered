@@ -474,7 +474,7 @@ PrintNamingText:
 
 ; marcelnote - moved text in own file for translation
 IF DEF(_FRA)
-	INCLUDE "translation/fra/data/text/naming_screen.asm"
+	INCLUDE "translation/fra/data/text/naming_screen.fra.asm"
 ELSE
 	INCLUDE "data/text/naming_screen.asm"
 ENDC

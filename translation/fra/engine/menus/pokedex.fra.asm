@@ -788,7 +788,7 @@ DrawTileLine:
 	ret
 
 IF DEF(_FRA)
-INCLUDE "translation/fra/data/pokemon/dex_entries.asm"
+INCLUDE "translation/fra/data/pokemon/dex_entries.fra.asm"
 ELSE
 INCLUDE "data/pokemon/dex_entries.asm"
 ENDC

@@ -7,7 +7,7 @@ INCLUDE "engine/movie/title.asm"
 INCLUDE "engine/pokemon/load_mon_data.asm"
 INCLUDE "data/items/prices.asm"
 IF DEF(_FRA)
-INCLUDE "translation/fra/data/items/names.asm"
+INCLUDE "translation/fra/data/items/names.fra.asm"
 ELSE
 INCLUDE "data/items/names.asm"
 ENDC
@@ -21,7 +21,7 @@ INCLUDE "engine/events/pick_up_item.asm"
 INCLUDE "engine/overworld/movement.asm"
 INCLUDE "engine/link/cable_club.asm"
 IF DEF(_FRA)
-INCLUDE "translation/fra/engine/menus/main_menu.asm"
+INCLUDE "translation/fra/engine/menus/main_menu.fra.asm"
 ELSE
 INCLUDE "engine/menus/main_menu.asm"
 ENDC
@@ -40,7 +40,7 @@ INCLUDE "engine/events/set_blackout_map.asm"
 INCLUDE "engine/menus/display_text_id_init.asm"
 
 IF DEF(_FRA)
-INCLUDE "translation/fra/engine/menus/draw_start_menu.asm"
+INCLUDE "translation/fra/engine/menus/draw_start_menu.fra.asm"
 ELSE
 INCLUDE "engine/menus/draw_start_menu.asm"
 ENDC
@@ -49,7 +49,7 @@ INCLUDE "engine/link/cable_club_npc.asm"
 INCLUDE "engine/menus/text_box.asm"
 INCLUDE "engine/battle/move_effects/drain_hp.asm"
 IF DEF(_FRA)
-INCLUDE "translation/fra/engine/menus/players_pc.asm"
+INCLUDE "translation/fra/engine/menus/players_pc.fra.asm"
 ELSE
 INCLUDE "engine/menus/players_pc.asm"
 ENDC
@@ -135,7 +135,7 @@ INCLUDE "engine/overworld/ledges.asm"
 SECTION "Pokémon Names", ROMX
 
 IF DEF(_FRA)
-INCLUDE "translation/fra/data/pokemon/names.asm"
+INCLUDE "translation/fra/data/pokemon/names.fra.asm"
 ELSE
 INCLUDE "data/pokemon/names.asm"
 ENDC
@@ -233,7 +233,7 @@ SECTION "bank10", ROMX
 
 
 IF DEF(_FRA)
-INCLUDE "translation/fra/engine/menus/pokedex.asm"
+INCLUDE "translation/fra/engine/menus/pokedex.fra.asm"
 ELSE
 INCLUDE "engine/menus/pokedex.asm"
 ENDC
@@ -354,7 +354,7 @@ INCLUDE "engine/battle/ghost_marowak_anim.asm"
 INCLUDE "engine/battle/battle_transitions.asm"
 
 IF DEF(_FRA)
-INCLUDE "translation/fra/engine/items/town_map.asm"
+INCLUDE "translation/fra/engine/items/town_map.fra.asm"
 ELSE
 INCLUDE "engine/items/town_map.asm"
 ENDC
