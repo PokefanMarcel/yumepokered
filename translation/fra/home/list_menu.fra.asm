@@ -254,6 +254,8 @@ DisplayChooseQuantityMenu::
 	ld a, [wListMenuID]
 	cp PRICEDITEMLISTMENU
 	jr nz, .printInitialQuantity
+	ld a,"¥"
+	ld [wTileMap + 218],a
 	hlcoord 8, 10
 .printInitialQuantity
 	ld de, InitialQuantityText
@@ -492,6 +494,7 @@ PrintListMenuEntries::
 	add hl, bc
 	ld c, 3 | LEADING_ZEROES | MONEY_SIGN
 	call PrintBCDNumber
+	ld [hl], "¥"
 .skipPrintingItemPrice
 	ld a, [wListMenuID]
 	cp PCPOKEMONLISTMENU
@@ -702,8 +705,13 @@ GetTMHMContent: ; marcelnote - new for bag pockets and TM printing
 	jp CopyToStringBuffer
 
 
-IF DEF(_FRA) ; marcelnote - added for translation
-	INCLUDE "translation/fra/data/text/list_menu.fra.asm"
-ELSE
-	INCLUDE "data/text/list_menu.asm"
-ENDC
+ListMenuCancelText::
+	db "RETOUR@"
+
+BagItemsText:
+	db "◀ OBJET      ▶@"
+
+BagKeyItemsText:
+	db "◀ OBJ CLÉS  ▶@" ; ▶
+
+	

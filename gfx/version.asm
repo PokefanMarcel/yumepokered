@@ -6,10 +6,10 @@ ELIF DEF(_GREEN) && !DEF(_FRA)
 ELIF DEF(_BLUE) && !DEF(_FRA)
 	INCBIN "gfx/title/blue_version.1bpp" ; 8 tiles
 ELIF DEF(_RED) && DEF(_FRA)
-	INCBIN "translation/fra/gfx/version_rouge.1bpp" ; 10 tiles
+	INCBIN "translation/fra/gfx/version_rouge.fra.1bpp" ; 10 tiles
 ELIF DEF(_GREEN) && DEF(_FRA)
-	INCBIN "translation/fra/gfx/version_verte.1bpp" ; 10 tiles
+	INCBIN "translation/fra/gfx/version_verte.fra.1bpp" ; 10 tiles
 ELIF DEF(_BLUE) && DEF(_FRA)
-	INCBIN "translation/fra/gfx/version_bleue.1bpp" ; 10 tiles
+	INCBIN "translation/fra/gfx/version_bleue.fra.1bpp" ; 10 tiles
 ENDC
 Version_GFXEnd:

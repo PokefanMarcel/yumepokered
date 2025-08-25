@@ -120,15 +120,6 @@ LoadTownMap_Nest: ; marcelnote - completely modified for fishing guide
 	ld a, [hl]
 	push af
 	ld [hl], $ff
-
-IF DEF(_FRA) ; in French: NID DE BULBIZARRE
-	hlcoord 1, 0
-	ld de, MonsNestText
-	call PlaceString
-	call GetMonName
-	hlcoord 8, 0
-	call PlaceString
-ELSE         ; in English: BULBASAUR's NEST
 	call GetMonName
 	hlcoord 1, 0
 	call PlaceString
@@ -136,8 +127,6 @@ ELSE         ; in English: BULBASAUR's NEST
 	ld l, c
 	ld de, MonsNestText
 	call PlaceString
-ENDC
-
 	ld a, 3   ; 3 tries before printing Area Unknown
 	ld [wAreaUnknownCountdown], a
 	call DisplayWildLandLocations
@@ -256,6 +245,11 @@ ENDC
 	call WaitForTextScrollButtonPress
 	jp .exit
 
+AreaUnknownText:
+	db " ZONE INCONNUE@"
+
+MonsNestText:
+	db "NID DE @"
 
 LoadTownMap_Fly::
 	call ClearSprites
@@ -367,6 +361,8 @@ LoadTownMap_Fly::
 	ld hl, wFlyLocationsList + NUM_CITY_MAPS
 	jr .pressedDown
 
+ToText:
+	db " ‘@"
 
 BuildFlyLocationsList:
 	ld hl, wFlyAnimUsingCoordList
@@ -731,10 +727,3 @@ TownMapSpriteBlinkingAnimation::
 .done
 	ld [wAnimCounter], a
 	jp DelayFrame
-
-
-IF DEF(_FRA)
-	INCLUDE "translation/fra/data/text/town_map.fra.asm"
-ELSE
-	INCLUDE "data/text/town_map.asm"
-ENDC
