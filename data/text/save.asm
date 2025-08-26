@@ -1,3 +1,4 @@
+; marcelnote - moved from engine/menus/save.asm
 BoxNames:
 	db   "BOX 1"
 	next "BOX 2"
