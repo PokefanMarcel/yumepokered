@@ -1035,10 +1035,10 @@ ENDC
 
 IF DEF(_FRA)
 	INCLUDE "translation/fra/data/pokemon/dex_entries.fra.asm"
-	INCLUDE "translation/fra/data/text/pokedex.fra.asm"
+	INCLUDE "translation/fra/engine/menus/pokedex.texts.fra.asm"
 ELSE
 	INCLUDE "data/pokemon/dex_entries.asm"
-	INCLUDE "data/text/pokedex.asm"
+	INCLUDE "engine/menus/pokedex.texts.asm"
 ENDC
 
 INCLUDE "data/pokemon/dex_order.asm"

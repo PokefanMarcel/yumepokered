@@ -218,12 +218,7 @@ INCLUDE "engine/battle/move_effects/confusion.asm"
 
 SECTION "bank10", ROMX
 
-
-IF DEF(_FRA)
-INCLUDE "translation/fra/engine/menus/pokedex.fra.asm"
-ELSE
 INCLUDE "engine/menus/pokedex.asm"
-ENDC
 INCLUDE "engine/movie/trade.asm"
 INCLUDE "engine/movie/intro.asm"
 INCLUDE "engine/movie/trade2.asm"
