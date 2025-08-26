@@ -115,8 +115,9 @@ AccessedHoFPCText:
 	text_far _AccessedHoFPCText
 	text_end
 
+
 IF DEF(_FRA)
-	INCLUDE "translation/fra/engine/menus/league_pc.texts.fra.asm"
+	INCLUDE "translation/fra/data/text/league_pc.fra.asm"
 ELSE
-	INCLUDE "engine/menus/league_pc.texts.asm"
+	INCLUDE "data/text/league_pc.asm"
 ENDC
