@@ -6732,14 +6732,54 @@ InitWildBattle:
 	jr z, .isGhost
 	call IsGhostBattle
 	jr nz, .isNoGhost
-
+.isGhost
+	ld hl, wMonHSpriteDim
+	ld a, $66
+	ld [hli], a   ; write sprite dimensions
+	ld bc, GhostPic
+	ld a, c
+	ld [hli], a   ; write front sprite pointer
+	ld [hl], b
+	ld hl, wEnemyMonNick  ; set name to "GHOST"
 
 IF DEF(_FRA)
-	INCLUDE "translation/fra/engine/battle/core.isGhost.fra.asm"
+	ld a, "S"
+	ld [hli], a
+	ld a, "P"
+	ld [hli], a
+	ld a, "E"
+	ld [hli], a
+	ld a, "C"
+	ld [hli], a
+	ld a, "T"
+	ld [hli], a
+	ld a, "R"
+	ld [hli], a
+	ld a, "E"
+	ld [hli], a
 ELSE
-	INCLUDE "engine/battle/core.isGhost.asm"
+	ld a, "G"
+	ld [hli], a
+	ld a, "H"
+	ld [hli], a
+	ld a, "O"
+	ld [hli], a
+	ld a, "S"
+	ld [hli], a
+	ld a, "T"
+	ld [hli], a
 ENDC
 
+	ld [hl], "@"
+	ld a, [wCurPartySpecies]
+	push af
+	ld a, MON_GHOST
+	ld [wCurPartySpecies], a
+	ld de, vFrontPic
+	call LoadMonFrontSprite ; load ghost sprite
+	pop af
+	ld [wCurPartySpecies], a
+	jr .spriteLoaded
 .isNoGhost
 	ld de, vFrontPic
 	call LoadMonFrontSprite ; load mon sprite
@@ -6935,8 +6975,9 @@ LoadMonBackPic:
 	ld b, a
 	jp CopyVideoData
 
+
 IF DEF(_FRA)
-	INCLUDE "translation/fra/engine/battle/core.texts.fra.asm"
+	INCLUDE "translation/fra/data/text/battle.fra.asm"
 ELSE
-	INCLUDE "engine/battle/core.texts.asm"
+	INCLUDE "data/text/battle.asm"
 ENDC

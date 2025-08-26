@@ -1,12 +1,12 @@
-WhichTechniqueString:
-	db "Quelle technique?"
-	next "                 @"
+WhichTechniqueString: ; marcelnote - modified translation to reflect new English version
+	db "COPIE quelle"
+	next "technique? @"
 
 OldManName:
 	db "VIEILLARD@"
 
-DisabledText:
-	db "NON DISP.@"
+DisabledText: ; marcelnote - was "NON DISP.@", adjusted translation for narrower box
+	db "entravé@"
 
 TypeText:
 	db "TYPE@"
