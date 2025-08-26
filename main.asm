@@ -20,11 +20,7 @@ INCLUDE "engine/debug/debug_menu.asm"
 INCLUDE "engine/events/pick_up_item.asm"
 INCLUDE "engine/overworld/movement.asm"
 INCLUDE "engine/link/cable_club.asm"
-IF DEF(_FRA)
-INCLUDE "translation/fra/engine/menus/main_menu.fra.asm"
-ELSE
 INCLUDE "engine/menus/main_menu.asm"
-ENDC
 INCLUDE "engine/menus/options.asm" ; marcelnote - moved stuff from main_menu
 INCLUDE "engine/movie/oak_speech/oak_speech.asm"
 INCLUDE "engine/overworld/special_warps.asm"
