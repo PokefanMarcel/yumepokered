@@ -125,11 +125,7 @@ GetAddressOfScreenCoords:
 	add hl, de
 	ret
 
-IF DEF(_FRA)
-INCLUDE "translation/fra/data/text_boxes.fra.asm"
-ELSE
 INCLUDE "data/text_boxes.asm"
-ENDC
 
 DisplayMoneyBox:
 	ld hl, wStatusFlags5

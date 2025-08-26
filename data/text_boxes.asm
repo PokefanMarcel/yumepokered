@@ -38,31 +38,8 @@ TextBoxTextAndCoordTable:
 ;	text_box_text JP_AH_MENU_TEMPLATE,                7,  6, 11, 10, JapaneseAhText,           8,  8
 ;	text_box_text JP_POKEDEX_MENU_TEMPLATE,          11,  8, 19, 17, JapanesePokedexMenu,     12, 10
 
-BuySellQuitText:
-	db   "BUY"
-	next "SELL"
-	next "QUIT@"
-
-UseTossText:
-	db   "USE"
-	next "TOSS@"
-
-UseSlctText: ; marcelnote - use items with SELECT
-	db   "USE"
-	next "SLCT@"
-
-MoneyText:
-	db "MONEY@"
-
-BattleMenuText:
-	db   "FIGHT <PK><MN>"
-	next "ITEM  RUN@"
-
-SafariZoneBattleMenuText:
-	db   "BALL×       BAIT"
-	next "THROW ROCK  RUN@"
-
-SwitchStatsCancelText:
-	db   "SWITCH"
-	next "STATS"
-	next "CANCEL@"
+IF DEF(_FRA)
+	INCLUDE "translation/fra/data/text_boxes.variables.fra.asm"
+ELSE
+	INCLUDE "data/text_boxes.variables.asm"
+ENDC
