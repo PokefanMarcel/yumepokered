@@ -1,3 +1,4 @@
+; marcelnote - moved from engine/movie/hall_of_fame.asm
 HoFPlayTimeText:
 	db "PLAY TIME@"
 
@@ -7,4 +8,4 @@ HoFMoneyText:
 HoFMonInfoText:
 	db   "LEVEL/"
 	next "TYPE/@" ; marcelnote - was "TYPE1/"
-	;next "TYPE2/@"
+;	next "TYPE2/@"

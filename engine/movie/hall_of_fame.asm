@@ -292,8 +292,9 @@ HoFFadeOutScreenAndMusic:
 	ld [wMusicFadeID], a
 	jp GBFadeOutToWhite
 
+
 IF DEF(_FRA)
-	INCLUDE "translation/fra/engine/movie/hall_of_fame.texts.fra.asm"
+	INCLUDE "translation/fra/data/text/hall_of_fame.fra.asm"
 ELSE
-	INCLUDE "engine/movie/hall_of_fame.texts.asm"
+	INCLUDE "data/text/hall_of_fame.asm"
 ENDC
