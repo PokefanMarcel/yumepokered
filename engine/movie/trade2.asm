@@ -42,8 +42,8 @@ Trade_PrintEnemyMonInfoText:
 	lb bc, LEADING_ZEROES | 2, 5
 	jp PrintNumber
 
-Trade_MonInfoText:
-	db   "──№<DOT>"
-	next ""
-	next "OT/"
-	next "<ID>№<DOT>@"
+IF DEF(_FRA)
+	INCLUDE "translation/fra/engine/movie/trade2.texts.fra.asm"
+ELSE
+	INCLUDE "engine/movie/trade2.texts.asm"
+ENDC
