@@ -1320,23 +1320,33 @@ _MoveNameText::
 	text "@"
 
 _ExclamationPoint1Text::
-	text_start
+;	text_start
+;	done
+	text "!"
 	done
 
 _ExclamationPoint2Text::
-	text_start
+;	text_start
+;	done
+	text "!"
 	done
 
 _ExclamationPoint3Text::
-	text_start
+;	text_start
+;	done
+	text "!"
 	done
 
 _ExclamationPoint4Text::
-	text_start
+;	text_start
+;	done
+	text "!"
 	done
 
 _ExclamationPoint5Text::
-	text_start
+;	text_start
+;	done
+	text "!"
 	done
 
 _AttackMissedText::
