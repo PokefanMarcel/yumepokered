@@ -528,8 +528,9 @@ JustAMomentText::
 OpenBillsPCText::
 	script_bills_pc
 
+
 IF DEF(_FRA)
-	INCLUDE "translation/fra/engine/pokemon/bills_pc.texts.fra.asm"
+	INCLUDE "translation/fra/data/text/bills_pc.fra.asm"
 ELSE
-	INCLUDE "engine/pokemon/bills_pc.texts.asm"
+	INCLUDE "data/text/bills_pc.asm"
 ENDC

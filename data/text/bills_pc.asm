@@ -1,3 +1,4 @@
+; marcelnote - moved from engine/pokemon/bills_pc.asm
 BillsPCMenuText:
 	db   "WITHDRAW <PKMN>"
 	next "DEPOSIT <PKMN>"
