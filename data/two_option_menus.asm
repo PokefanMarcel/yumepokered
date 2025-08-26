@@ -18,30 +18,8 @@ TwoOptionMenuStrings:
 	two_option_menu 4, 3, FALSE, .NoYesMenu
 	assert_table_length NUM_TWO_OPTION_MENUS
 
-.NoYesMenu:
-	db   "NO"
-	next "YES@"
-
-.YesNoMenu:
-	db   "YES"
-	next "NO@"
-
-.BoyGirlMenu: ; marcelnote - add female player
-	db   "BOY"
-	next "GIRL@"
-
-.SouthEastMenu:
-	db   "SOUTH"
-	next "EAST@"
-
-.NorthEastMenu:
-	db   "NORTH"
-	next "EAST@"
-
-.TradeCancelMenu:
-	db   "TRADE"
-	next "CANCEL@"
-
-.HealCancelMenu:
-	db   "HEAL"
-	next "CANCEL@"
+IF DEF(_FRA)
+	INCLUDE "translation/fra/data/two_option_menus.options.fra.asm"
+ELSE
+	INCLUDE "data/two_option_menus.options.asm"
+ENDC
