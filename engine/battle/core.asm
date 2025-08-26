@@ -2261,10 +2261,6 @@ DisplayBattleMenu:: ; marcelnote - added B button as shortcut to Run
 	ld [wCurItem], a
 	jr UseBagItem
 
-OldManName:
-	db "OLD MAN@"
-
-
 BagWasSelected:
 	call LoadScreenTilesFromBuffer1
 	ld a, [wBattleType]
@@ -2779,11 +2775,6 @@ MoveDisabledText:
 	text_far _MoveDisabledText
 	text_end
 
-WhichTechniqueString: ; marcelnote - modified to solve misprinting bug
-;	db "WHICH TECHNIQUE?@"
-	db   "MIMIC which move?"
-	next "           @"
-
 SelectMenuItem_CursorUp:
 	ld a, [wCurrentMenuItem]
 	and a
@@ -3045,24 +3036,6 @@ PrintMenuItem: ; marcelnote - this menu was revamped to also show power and accu
 	ld a, $1
 	ldh [hAutoBGTransferEnabled], a
 	jp Delay3
-
-DisabledText: ; marcelnote - was "disabled!@", removed "!" for narrower box
-	db "disabled@"
-
-TypeText:
-	db "TYPE@"
-
-PowerText:    ; marcelnote - new
-	db "PWR@"
-
-AccuracyText: ; marcelnote - new
-	db "ACC@"
-
-PPText:       ; marcelnote - new
-	db "PP@"
-
-NoPowerText:  ; marcelnote - new
-	db "-@"
 
 SelectEnemyMove:
 	ld a, [wLinkState]
@@ -6768,7 +6741,7 @@ InitWildBattle:
 	ld [hli], a   ; write front sprite pointer
 	ld [hl], b
 	ld hl, wEnemyMonNick  ; set name to "GHOST"
-	ld a, "G"
+	ld a, "G" ; TODO : Translate
 	ld [hli], a
 	ld a, "H"
 	ld [hli], a
@@ -6851,7 +6824,7 @@ _LoadTrainerPic: ; marcelnote - modified to manage Red/Green battle
 	ld a, [wTrainerClass]
 	cp RED
 	jr nc, .loadRedPicBank
-	ld a, BANK("Trainer Pics")
+	ld a, BANK("Trainer Pics") ; TODO translate
 .loadSprite
 	call UncompressSpriteFromDE
 	ld de, vFrontPic
@@ -6982,3 +6955,9 @@ LoadMonBackPic:
 	ldh a, [hLoadedROMBank]
 	ld b, a
 	jp CopyVideoData
+
+IF DEF(_FRA)
+	INCLUDE "translation/fra/engine/battle/core.texts.fra.asm"
+ELSE
+	INCLUDE "engine/battle/core.texts.asm"
+ENDC
