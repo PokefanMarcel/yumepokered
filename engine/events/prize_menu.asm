@@ -157,10 +157,14 @@ PrintPrizePrice:
 	call PrintBCDNumber
 	ret
 
+.SixSpacesString:
+	db "      @"
+
+.CoinString:
 IF DEF(_FRA)
-	INCLUDE "translation/fra/engine/events/prize_menu.texts.fra.asm"
+	db "JETONS@"
 ELSE
-	INCLUDE "engine/events/prize_menu.texts.asm"
+	db "COINS@" ; marcelnote - added S
 ENDC
 
 LoadCoinsToSubtract:
