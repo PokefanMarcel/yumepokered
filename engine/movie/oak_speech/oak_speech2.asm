@@ -206,10 +206,11 @@ DisplayIntroNameTextBox:
 	ld [wMaxMenuItem], a
 	jp HandleMenuInput
 
-.namestring
-	db "NAME@"
-
-INCLUDE "data/player_names.asm"
+IF DEF(_FRA)
+	INCLUDE "translation/fra/data/player_names.fra.asm"
+ELSE
+	INCLUDE "data/player_names.asm"
+ENDC
 
 GetDefaultName:
 ; a = name index
@@ -235,7 +236,11 @@ GetDefaultName:
 	ld bc, NAME_BUFFER_LENGTH
 	jp CopyData
 
-INCLUDE "data/player_names_list.asm"
+IF DEF(_FRA)
+	INCLUDE "translation/fra/data/player_names_list.fra.asm"
+ELSE
+	INCLUDE "data/player_names_list.asm"
+ENDC
 
 LinkMenuEmptyText:
 	text_end
