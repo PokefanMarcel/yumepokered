@@ -156,12 +156,6 @@ PrintPrizePrice:
 	call PrintBCDNumber
 	ret
 
-.CoinString:
-	db "COINS@" ; marcelnote - added S
-
-.SixSpacesString:
-	db "      @"
-
 LoadCoinsToSubtract:
 	ld a, [wWhichPrize]
 	add a
@@ -295,3 +289,9 @@ GetPrizeMonLevel:
 	ret
 
 INCLUDE "data/events/prize_mon_levels.asm"
+
+IF DEF(_FRA)
+	INCLUDE "translation/fra/engine/events/prize_menu.texts.fra.asm"
+ELSE
+	INCLUDE "engine/events/prize_menu.texts.asm"
+ENDC
