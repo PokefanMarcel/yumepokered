@@ -85,13 +85,6 @@ DisplayPCMainMenu::
 	ldh [hAutoBGTransferEnabled], a
 	ret
 
-SomeonesPCText:   db "SOMEONE's PC@"
-BillsPCText:      db "BILL's PC@"
-PlayersPCText:    db "'s PC@"
-OaksPCText:       db "PROF.OAK's PC@"
-PKMNLeaguePCText: db "<PKMN>LEAGUE@"
-LogOffPCText:     db "LOG OFF@"
-
 BillsPC_::
 	ld hl, wStatusFlags5
 	set BIT_NO_TEXT_DELAY, [hl]
@@ -344,17 +337,6 @@ DisplayMonListMenu:
 	ld [wPartyAndBillsPCSavedMenuItem], a
 	ret
 
-BillsPCMenuText:
-	db   "WITHDRAW <PKMN>"
-	next "DEPOSIT <PKMN>"
-	next "RELEASE <PKMN>"
-	next "CHANGE BOX"
-	next "SEE YA!"
-	db "@"
-
-BoxNoPCText:
-	db "BOX No.@"
-
 KnowsHMMove::
 ; returns whether mon with party index [wWhichPokemon] knows an HM move
 	ld hl, wPartyMon1Moves
@@ -451,12 +433,6 @@ DisplayDepositWithdrawMenu:
 	call LoadGBPal
 	jr .loop
 
-DepositPCText:  db "DEPOSIT@"
-WithdrawPCText: db "WITHDRAW@"
-StatsCancelPCText:
-	db   "STATS"
-	next "CANCEL@"
-
 SwitchOnText:
 	text_far _SwitchOnText
 	text_end
@@ -551,3 +527,9 @@ JustAMomentText::
 
 OpenBillsPCText::
 	script_bills_pc
+
+IF DEF(_FRA)
+	INCLUDE "translation/fra/engine/pokemon/bills_pc.texts.fra.asm"
+ELSE
+	INCLUDE "engine/pokemon/bills_pc.texts.asm"
+ENDC
