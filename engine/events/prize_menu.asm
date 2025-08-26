@@ -139,6 +139,7 @@ GetPrizeMenuId:
 
 INCLUDE "data/events/prizes.asm"
 
+
 PrintPrizePrice:
 	hlcoord 11, 0
 	lb bc, 1, 7 ; marcelnote - use lb
@@ -155,6 +156,12 @@ PrintPrizePrice:
 	ld c, 2 | LEADING_ZEROES
 	call PrintBCDNumber
 	ret
+
+IF DEF(_FRA)
+	INCLUDE "translation/fra/engine/events/prize_menu.texts.fra.asm"
+ELSE
+	INCLUDE "engine/events/prize_menu.texts.asm"
+ENDC
 
 LoadCoinsToSubtract:
 	ld a, [wWhichPrize]
@@ -289,9 +296,3 @@ GetPrizeMonLevel:
 	ret
 
 INCLUDE "data/events/prize_mon_levels.asm"
-
-IF DEF(_FRA)
-	INCLUDE "translation/fra/engine/events/prize_menu.texts.fra.asm"
-ELSE
-	INCLUDE "engine/events/prize_menu.texts.asm"
-ENDC
