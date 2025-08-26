@@ -3841,7 +3841,7 @@ PrintMonName1Text:
 ; and choosing between Used1Text and Used2Text, even though
 ; those text strings are identical and both continue at PrintInsteadText
 ; this likely had to do with Japanese grammar that got translated,
-; but the functionality didn't get removed
+; but the functionality didn't get removed ; marcelnote - removed
 MonName1Text:
 	text_far _MonName1Text
 	text_asm
@@ -3858,24 +3858,16 @@ MonName1Text:
 	call DetermineExclamationPointTextNum
 	ld a, [wMonIsDisobedient]
 	and a
-	ld hl, Used2Text
+	ld hl, UsedText
 	ret nz
 	ld a, [wMoveGrammar]
 	cp 3
-	ld hl, Used2Text
-	ret c
-	ld hl, Used1Text
 	ret
 
-Used1Text:
-	text_far _Used1Text
+UsedText:
+	text_far _UsedText
 	text_asm
-	jr PrintInsteadText
-
-Used2Text:
-	text_far _Used2Text
-	text_asm
-	; fall through
+	; fallthrough
 
 PrintInsteadText:
 	ld a, [wMonIsDisobedient]
@@ -3887,7 +3879,7 @@ PrintInsteadText:
 InsteadText:
 	text_far _InsteadText
 	text_asm
-	; fall through
+	; fallthrough
 
 PrintMoveName:
 	ld hl, _PrintMoveName

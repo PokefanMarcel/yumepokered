@@ -1305,12 +1305,7 @@ _MonName1Text::
 	text "<USER>@"
 	text_end
 
-_Used1Text::
-	text_start
-	line "lance @"
-	text_end
-
-_Used2Text::
+_UsedText::
 	text_start
 	line "lance @"
 	text_end
