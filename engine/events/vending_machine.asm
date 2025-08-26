@@ -90,18 +90,6 @@ VendingMachineText1:
 	text_far _VendingMachineText1
 	text_end
 
-DrinkText:
-	db   "FRESH WATER"
-	next "SODA POP"
-	next "LEMONADE"
-	next "CANCEL@"
-
-DrinkPriceText:
-	db   "¥200"
-	next "¥300"
-	next "¥350"
-	next "@"
-
 VendingMachineText4:
 	text_far _VendingMachineText4
 	text_end
@@ -141,3 +129,9 @@ LoadVendingMachineItem:
 	ret
 
 INCLUDE "data/items/vending_prices.asm"
+
+IF DEF(_FRA)
+	INCLUDE "translation/fra/engine/events/vending_machine.texts.fra.asm"
+ELSE
+	INCLUDE "engine/events/vending_machine.texts.asm"
+ENDC
