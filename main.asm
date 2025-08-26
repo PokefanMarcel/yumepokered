@@ -38,12 +38,7 @@ INCLUDE "engine/pokemon/learn_move.asm"
 INCLUDE "engine/events/pokecenter.asm"
 INCLUDE "engine/events/set_blackout_map.asm"
 INCLUDE "engine/menus/display_text_id_init.asm"
-
-IF DEF(_FRA)
-INCLUDE "translation/fra/engine/menus/draw_start_menu.fra.asm"
-ELSE
 INCLUDE "engine/menus/draw_start_menu.asm"
-ENDC
 
 INCLUDE "engine/link/cable_club_npc.asm"
 INCLUDE "engine/menus/text_box.asm"

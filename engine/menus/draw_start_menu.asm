@@ -68,8 +68,8 @@ PrintStartMenuItem:
 	add hl, de
 	ret
 
-IF DEF(_FRA) ; marcelnote - added for translation
-	INCLUDE "translation/fra/data/text/start_menu.fra.asm"
+IF DEF(_FRA)
+	INCLUDE "translation/fra/engine/menus/draw_start_menu.variables.fra.asm"
 ELSE
-	INCLUDE "data/text/start_menu.asm"
+	INCLUDE "engine/menus/draw_start_menu.variables.asm"
 ENDC
