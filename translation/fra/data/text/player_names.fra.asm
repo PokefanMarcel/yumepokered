@@ -1,6 +1,3 @@
-.namestring
-	db "─NOM@"
-
 IF DEF(_RED)
 	DefaultNamesPlayer:
 		db "NOM:"

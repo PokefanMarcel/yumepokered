@@ -206,10 +206,17 @@ DisplayIntroNameTextBox:
 	ld [wMaxMenuItem], a
 	jp HandleMenuInput
 
+.namestring
 IF DEF(_FRA)
-	INCLUDE "translation/fra/data/player_names.fra.asm"
+	db "─NOM@"
 ELSE
-	INCLUDE "data/player_names.asm"
+	db "NAME@"
+ENDC
+
+IF DEF(_FRA)
+	INCLUDE "translation/fra/data/text/player_names.fra.asm"
+ELSE
+	INCLUDE "data/text/player_names.asm" ; marcelnote - investigate redundancy player_names and player_names_list
 ENDC
 
 GetDefaultName:
@@ -237,9 +244,9 @@ GetDefaultName:
 	jp CopyData
 
 IF DEF(_FRA)
-	INCLUDE "translation/fra/data/player_names_list.fra.asm"
+	INCLUDE "translation/fra/data/text/player_names_list.fra.asm"
 ELSE
-	INCLUDE "data/player_names_list.asm"
+	INCLUDE "data/text/player_names_list.asm"
 ENDC
 
 LinkMenuEmptyText:
