@@ -39,7 +39,7 @@ TextBoxTextAndCoordTable:
 ;	text_box_text JP_POKEDEX_MENU_TEMPLATE,          11,  8, 19, 17, JapanesePokedexMenu,     12, 10
 
 IF DEF(_FRA)
-	INCLUDE "translation/fra/data/text_boxes.variables.fra.asm"
+	INCLUDE "translation/fra/data/text_boxes.texts.fra.asm"
 ELSE
-	INCLUDE "data/text_boxes.variables.asm"
+	INCLUDE "data/text_boxes.texts.asm"
 ENDC

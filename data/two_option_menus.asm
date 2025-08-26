@@ -19,7 +19,7 @@ TwoOptionMenuStrings:
 	assert_table_length NUM_TWO_OPTION_MENUS
 
 IF DEF(_FRA)
-	INCLUDE "translation/fra/data/two_option_menus.options.fra.asm"
+	INCLUDE "translation/fra/data/two_option_menus.texts.fra.asm"
 ELSE
-	INCLUDE "data/two_option_menus.options.asm"
+	INCLUDE "data/two_option_menus.texts.asm"
 ENDC
