@@ -1,3 +1,4 @@
+; marcelnote - moved from engine/events/vending_machine.asm
 DrinkText:
 	db   "FRESH WATER"
 	next "SODA POP"

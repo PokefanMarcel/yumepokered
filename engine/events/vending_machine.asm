@@ -128,10 +128,11 @@ LoadVendingMachineItem:
 	ldh [hVendingMachinePrice + 2], a
 	ret
 
+
 INCLUDE "data/items/vending_prices.asm"
 
 IF DEF(_FRA)
-	INCLUDE "translation/fra/engine/events/vending_machine.texts.fra.asm"
+	INCLUDE "translation/fra/data/text/vending_machine.fra.asm"
 ELSE
-	INCLUDE "engine/events/vending_machine.texts.asm"
+	INCLUDE "data/text/vending_machine.asm"
 ENDC
