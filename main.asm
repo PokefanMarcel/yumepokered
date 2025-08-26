@@ -39,11 +39,7 @@ INCLUDE "engine/menus/draw_start_menu.asm"
 INCLUDE "engine/link/cable_club_npc.asm"
 INCLUDE "engine/menus/text_box.asm"
 INCLUDE "engine/battle/move_effects/drain_hp.asm"
-IF DEF(_FRA)
-INCLUDE "translation/fra/engine/menus/players_pc.fra.asm"
-ELSE
 INCLUDE "engine/menus/players_pc.asm"
-ENDC
 INCLUDE "engine/pokemon/remove_mon.asm"
 INCLUDE "engine/events/display_pokedex.asm"
 
