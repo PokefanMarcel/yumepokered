@@ -1,0 +1,2 @@
+HallOfFameNoText:
+	db " CELEBRITE No.    @"
