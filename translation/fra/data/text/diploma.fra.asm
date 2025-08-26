@@ -11,4 +11,4 @@ DiplomaCongrats:
 	db   "Fabuleux! Ce"
 	next "diplôme certifie"
 	next "la perfection de"
-	next "votre PokéDex@"
+	next "votre POKéDEX.@" ; marcelnote - changed from "PokéDex" and added full stop

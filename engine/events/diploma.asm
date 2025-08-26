@@ -92,10 +92,11 @@ DiplomaTextPointersAndCoords:
 	diploma_text  2,  6, DiplomaCongrats
 	diploma_text  9, 16, DiplomaGameFreak
 
+
 IF DEF(_FRA)
-	INCLUDE "translation/fra/engine/events/diploma.texts.fra.asm"
+	INCLUDE "translation/fra/data/text/diploma.fra.asm"
 ELSE
-	INCLUDE "engine/events/diploma.texts.asm"
+	INCLUDE "data/text/diploma.asm"
 ENDC
 
 DiplomaGameFreak:
