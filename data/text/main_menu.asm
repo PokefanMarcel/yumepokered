@@ -1,3 +1,4 @@
+; marcelnote - moved from engine/menus/main_menu.asm
 ContinueText:
 	db "CONTINUE"
 	next ""
