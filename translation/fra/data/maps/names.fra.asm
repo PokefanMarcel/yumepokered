@@ -51,12 +51,12 @@ RocketHQName:        db "REPAIRE ROCKET@"
 SilphCoName:         db "SYLPHE SARL@"
 PokemonMansionName:  db "MANOIR <PKMN>@"
 SafariZoneName:      db "PARC SAFARI@"
-CeruleanCaveName:    db "CAVERNE AZUREE@" ; marcelnote - changed from "GROTTE INCONNUE"
+CeruleanCaveName:    db "CAVERNE AZUREE@"   ; marcelnote - changed from "GROTTE INCONNUE"
 PowerPlantName:      db "CENTRALE@"
 CinnabarVolcanoName: db "CINNABAR VOLCANO@" ; marcelnote - new location ; TODO ; VOLCAN CRAMOISI ???
-MtMoonSquareName:    db "AIRE DE REPOS@" ; marcelnote - new location
-PokemonAcademyName:  db "ACADEMIE #MON@" ; marcelnote - new location
-CeladonGroveName:    db "BOIS CELADON@" ; marcelnote - new location ; ???
-SilphFactoryName:    db "USINE SYLPHE@" ; marcelnote - new location
-MtSilverName:        db "MONT ARGENTE@" ; marcelnote - new location
-CitrusFerryName: db "CITRUS FERRIES@" ; marcelnote - new location ; TODO
+MtMoonSquareName:    db "AIRE DE REPOS@"    ; marcelnote - new location
+PokemonAcademyName:  db "ACADEMIE #MON@"    ; marcelnote - new location
+CeladonGroveName:    db "BOIS CELADON@"     ; marcelnote - new location ; ???
+SilphFactoryName:    db "USINE SYLPHE@"     ; marcelnote - new location
+MtSilverName:        db "MONT ARGENTE@"     ; marcelnote - new location
+CitrusFerryName: db "CITRUS FERRIES@"       ; marcelnote - new location ; TODO
