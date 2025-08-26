@@ -6803,7 +6803,7 @@ _LoadTrainerPic: ; marcelnote - modified to manage Red/Green battle
 	ld a, [wTrainerClass]
 	cp RED
 	jr nc, .loadRedPicBank
-	ld a, BANK("Trainer Pics") ; TODO translate
+	ld a, BANK("Trainer Pics")
 .loadSprite
 	call UncompressSpriteFromDE
 	ld de, vFrontPic
