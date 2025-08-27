@@ -149,7 +149,9 @@ GetMachineName::
 	pop hl
 	ret
 
-TechnicalPrefix::
-	db "TM"
-HiddenPrefix::
-	db "HM"
+
+IF DEF(_FRA)
+	INCLUDE "translation/fra/data/text/tm_hm_prefix.fra.asm"
+ELSE
+	INCLUDE "data/text/tm_hm_prefix.asm"
+ENDC
