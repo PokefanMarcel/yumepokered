@@ -6,4 +6,4 @@ BagItemsText:
 	db "◀ OBJETS     ▶@"
 
 BagKeyItemsText:
-	db "◀ OBJETS CLE ▶@"
+	db "◀ RARES      ▶@"
