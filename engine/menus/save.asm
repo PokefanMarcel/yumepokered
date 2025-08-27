@@ -692,7 +692,7 @@ PadSRAM_FF:
 	jp FillMemory
 
 IF DEF(_FRA)
-	INCLUDE "translation/fra/engine/menus/save.texts.fra.asm"
+	INCLUDE "translation/fra/data/text/save.fra.asm"
 ELSE
-	INCLUDE "engine/menus/save.texts.asm"
+	INCLUDE "data/text/save.asm"
 ENDC

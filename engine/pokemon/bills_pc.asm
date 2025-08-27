@@ -38,6 +38,16 @@ DisplayPCMainMenu::
 	ld de, BillsPCText
 .next2
 	call PlaceString
+
+IF DEF(_FRA) ; French: PC DE <PLAYER>
+	hlcoord 2, 4
+	ld de, PlayersPCText
+	call PlaceString
+	ld l, c
+	ld h, b
+	ld de, wPlayerName
+	call PlaceString
+ELSE         ; English: <PLAYER>'s PC
 	hlcoord 2, 4
 	ld de, wPlayerName
 	call PlaceString
@@ -45,6 +55,8 @@ DisplayPCMainMenu::
 	ld h, b
 	ld de, PlayersPCText
 	call PlaceString
+ENDC
+
 	CheckEvent EVENT_GOT_POKEDEX
 	jr z, .noOaksPC2
 	hlcoord 2, 6
@@ -528,8 +540,9 @@ JustAMomentText::
 OpenBillsPCText::
 	script_bills_pc
 
+
 IF DEF(_FRA)
-	INCLUDE "translation/fra/engine/pokemon/bills_pc.texts.fra.asm"
+	INCLUDE "translation/fra/data/text/bills_pc.fra.asm"
 ELSE
-	INCLUDE "engine/pokemon/bills_pc.texts.asm"
+	INCLUDE "data/text/bills_pc.asm"
 ENDC

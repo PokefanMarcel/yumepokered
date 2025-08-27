@@ -42,8 +42,9 @@ Trade_PrintEnemyMonInfoText:
 	lb bc, LEADING_ZEROES | 2, 5
 	jp PrintNumber
 
+
 IF DEF(_FRA)
-	INCLUDE "translation/fra/engine/movie/trade2.texts.fra.asm"
+	INCLUDE "translation/fra/data/text/trade2.fra.asm"
 ELSE
-	INCLUDE "engine/movie/trade2.texts.asm"
+	INCLUDE "data/text/trade2.asm"
 ENDC

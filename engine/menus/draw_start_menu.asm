@@ -69,7 +69,7 @@ PrintStartMenuItem:
 	ret
 
 IF DEF(_FRA)
-	INCLUDE "translation/fra/engine/menus/draw_start_menu.texts.fra.asm"
+	INCLUDE "translation/fra/data/text/draw_start_menu.fra.asm"
 ELSE
-	INCLUDE "engine/menus/draw_start_menu.texts.asm"
+	INCLUDE "data/text/draw_start_menu.asm"
 ENDC

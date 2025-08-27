@@ -13,12 +13,12 @@ _CardKeyFailText::
 	line "CARTE MAGN.!"
 	done
 
-_CardKeyNeedsUpdateText:: ; TODO
-	text "<PLAYER> used"
-	line "the CARD KEY."
+_CardKeyNeedsUpdateText:: ; marcelnote - added for SilphFactory2F
+	text "<PLAYER> utilise"
+	line "la CARTE MAGN.!"
 
-	para "Huh? Nothing"
-	line "happened."
+	para "Hein? Rien ne"
+	line "se passe."
 	done
 
 _TrainerNameText::
@@ -58,13 +58,13 @@ _BoulderText::
 _MartSignText::
 	text "Faites le plein"
 	line "d'objets!"
-	para "BOUTIQUE PKMN"
+	para "BOUTIQUE #MON" ; marcelnote - was "BOUTIQUE PKMN"
 	done
 
 _PokeCenterSignText::
 	text "Soignez vos"
 	line "#MON!"
-	para "CENTRE PKMN"
+	para "CENTRE #MON" ; marcelnote - was "CENTRE PKMN"
 	done
 
 _FoundItemText::

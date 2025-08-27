@@ -333,8 +333,9 @@ TMItContainsText:: ; marcelnote - for TM printing
 	text_far _TMItContainsText
 	text_end
 
+
 IF DEF(_FRA)
-	INCLUDE "translation/fra/engine/menus/players_pc.texts.fra.asm"
+	INCLUDE "translation/fra/data/text/players_pc.fra.asm"
 ELSE
-	INCLUDE "engine/menus/players_pc.texts.asm"
+	INCLUDE "data/text/players_pc.asm"
 ENDC

@@ -2077,13 +2077,27 @@ DisplayBattleMenu:: ; marcelnote - added B button as shortcut to Run
 	ld bc, NAME_LENGTH
 	call CopyData
 ; the following simulates the keystrokes by drawing menus on screen
+
+IF DEF(_FRA) ; marcelnote - different layout in French
+	hlcoord 7, 14
+	ld [hl], "▶"
+ELSE
 	hlcoord 9, 14
 	ld [hl], "▶"
+ENDC
+
 	ld c, 80
 	call DelayFrames
 	ld [hl], " "
+
+IF DEF(_FRA) ; marcelnote - different layout in French
+	hlcoord 7, 16
+	ld [hl], "▶"
+ELSE
 	hlcoord 9, 16
 	ld [hl], "▶"
+ENDC
+
 	ld c, 50
 	call DelayFrames
 	ld [hl], "▷"
@@ -2105,13 +2119,28 @@ DisplayBattleMenu:: ; marcelnote - added B button as shortcut to Run
 	ld a, " "
 	jr z, .safariLeftColumn
 ; put cursor in left column for normal battle menu (i.e. when it's not a Safari battle)
+
+IF DEF(_FRA) ; marcelnote - different layout in French
+	ldcoord_a 13, 14 ; clear upper cursor position in right column ; TODO normal battle
+	ldcoord_a 13, 16 ; clear lower cursor position in right column ; TODO normal battle
+	ld a, 7 ; top menu item X
+ELSE
 	ldcoord_a 15, 14 ; clear upper cursor position in right column
 	ldcoord_a 15, 16 ; clear lower cursor position in right column
-	ld a, $9 ; top menu item X
+	ld a, 9 ; top menu item X
+ENDC
+
 	jr .leftColumn_WaitForInput
 .safariLeftColumn
+
+IF DEF(_FRA) ; marcelnote - different layout in French
+	ldcoord_a 12, 14 ; clear upper cursor position in right column
+	ldcoord_a 12, 16 ; clear lower cursor position in right column
+ELSE
 	ldcoord_a 13, 14 ; clear upper cursor position in right column
 	ldcoord_a 13, 16 ; clear lower cursor position in right column
+ENDC
+
 	hlcoord 7, 14
 	ld de, wNumSafariBalls
 	lb bc, 1, 2
@@ -2143,9 +2172,17 @@ DisplayBattleMenu:: ; marcelnote - added B button as shortcut to Run
 	ld a, " "
 	jr z, .safariRightColumn
 ; put cursor in right column for normal battle menu (i.e. when it's not a Safari battle)
+
+IF DEF(_FRA) ; marcelnote - different layout in French
+	ldcoord_a 7, 14 ; clear upper cursor position in left column
+	ldcoord_a 7, 16 ; clear lower cursor position in left column
+	ld a, 13 ; top menu item X
+ELSE
 	ldcoord_a 9, 14 ; clear upper cursor position in left column
 	ldcoord_a 9, 16 ; clear lower cursor position in left column
-	ld a, $f ; top menu item X
+	ld a, 15 ; top menu item X
+ENDC
+
 	jr .rightColumn_WaitForInput
 .safariRightColumn
 	ldcoord_a 1, 14 ; clear upper cursor position in left column
@@ -2154,7 +2191,13 @@ DisplayBattleMenu:: ; marcelnote - added B button as shortcut to Run
 	ld de, wNumSafariBalls
 	lb bc, 1, 2
 	call PrintNumber
-	ld a, $d ; top menu item X
+
+IF DEF(_FRA) ; marcelnote - different layout in French
+	ld a, 12 ; top menu item X
+ELSE
+	ld a, 13 ; top menu item X
+ENDC
+
 .rightColumn_WaitForInput
 	ld hl, wTopMenuItemX
 	ld [hld], a ; wTopMenuItemX
@@ -2200,14 +2243,30 @@ DisplayBattleMenu:: ; marcelnote - added B button as shortcut to Run
 	cp BATTLE_TYPE_SAFARI
 	ld a, " "
 	jr z, .safariBButton
+
+IF DEF(_FRA) ; marcelnote - different layout in French
+	ldcoord_a 13, 14 ; clear upper cursor position in right column ; TODO normal battle
+	ld a, "▶"
+	ldcoord_a 13, 16 ; put cursor at Run
+ELSE
 	ldcoord_a 15, 14 ; clear upper cursor position in right column
 	ld a, "▶"
 	ldcoord_a 15, 16 ; put cursor at Run
+ENDC
+
 	jr .rightColumn
 .safariBButton
+
+IF DEF(_FRA) ; marcelnote - different layout in French
+	ldcoord_a 12, 14 ; clear upper cursor position in right column
+	ld a, "▶"
+	ldcoord_a 12, 16 ; put cursor at Run
+ELSE
 	ldcoord_a 13, 14 ; clear upper cursor position in right column
 	ld a, "▶"
 	ldcoord_a 13, 16 ; put cursor at Run
+ENDC
+
 	jp .rightColumn
 .notItemMenu
 	cp $2 ; was the party menu selected?
@@ -3841,7 +3900,7 @@ PrintMonName1Text:
 ; and choosing between Used1Text and Used2Text, even though
 ; those text strings are identical and both continue at PrintInsteadText
 ; this likely had to do with Japanese grammar that got translated,
-; but the functionality didn't get removed
+; but the functionality didn't get removed ; marcelnote - removed
 MonName1Text:
 	text_far _MonName1Text
 	text_asm
@@ -3858,24 +3917,16 @@ MonName1Text:
 	call DetermineExclamationPointTextNum
 	ld a, [wMonIsDisobedient]
 	and a
-	ld hl, Used2Text
+	ld hl, UsedText
 	ret nz
 	ld a, [wMoveGrammar]
 	cp 3
-	ld hl, Used2Text
-	ret c
-	ld hl, Used1Text
 	ret
 
-Used1Text:
-	text_far _Used1Text
+UsedText:
+	text_far _UsedText
 	text_asm
-	jr PrintInsteadText
-
-Used2Text:
-	text_far _Used2Text
-	text_asm
-	; fall through
+	; fallthrough
 
 PrintInsteadText:
 	ld a, [wMonIsDisobedient]
@@ -3887,7 +3938,7 @@ PrintInsteadText:
 InsteadText:
 	text_far _InsteadText
 	text_asm
-	; fall through
+	; fallthrough
 
 PrintMoveName:
 	ld hl, _PrintMoveName
@@ -6732,14 +6783,54 @@ InitWildBattle:
 	jr z, .isGhost
 	call IsGhostBattle
 	jr nz, .isNoGhost
-
+.isGhost
+	ld hl, wMonHSpriteDim
+	ld a, $66
+	ld [hli], a   ; write sprite dimensions
+	ld bc, GhostPic
+	ld a, c
+	ld [hli], a   ; write front sprite pointer
+	ld [hl], b
+	ld hl, wEnemyMonNick  ; set name to "GHOST"
 
 IF DEF(_FRA)
-	INCLUDE "translation/fra/engine/battle/core.isGhost.fra.asm"
+	ld a, "S"
+	ld [hli], a
+	ld a, "P"
+	ld [hli], a
+	ld a, "E"
+	ld [hli], a
+	ld a, "C"
+	ld [hli], a
+	ld a, "T"
+	ld [hli], a
+	ld a, "R"
+	ld [hli], a
+	ld a, "E"
+	ld [hli], a
 ELSE
-	INCLUDE "engine/battle/core.isGhost.asm"
+	ld a, "G"
+	ld [hli], a
+	ld a, "H"
+	ld [hli], a
+	ld a, "O"
+	ld [hli], a
+	ld a, "S"
+	ld [hli], a
+	ld a, "T"
+	ld [hli], a
 ENDC
 
+	ld [hl], "@"
+	ld a, [wCurPartySpecies]
+	push af
+	ld a, MON_GHOST
+	ld [wCurPartySpecies], a
+	ld de, vFrontPic
+	call LoadMonFrontSprite ; load ghost sprite
+	pop af
+	ld [wCurPartySpecies], a
+	jr .spriteLoaded
 .isNoGhost
 	ld de, vFrontPic
 	call LoadMonFrontSprite ; load mon sprite
@@ -6935,8 +7026,9 @@ LoadMonBackPic:
 	ld b, a
 	jp CopyVideoData
 
+
 IF DEF(_FRA)
-	INCLUDE "translation/fra/engine/battle/core.texts.fra.asm"
+	INCLUDE "translation/fra/data/text/battle.fra.asm"
 ELSE
-	INCLUDE "engine/battle/core.texts.asm"
+	INCLUDE "data/text/battle.asm"
 ENDC

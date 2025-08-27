@@ -462,8 +462,9 @@ CheckForPlayerNameInSRAM:
 	scf
 	ret
 
+
 IF DEF(_FRA)
-	INCLUDE "translation/fra/engine/menus/main_menu.texts.fra.asm"
+	INCLUDE "translation/fra/data/text/main_menu.fra.asm"
 ELSE
-	INCLUDE "engine/menus/main_menu.texts.asm"
+	INCLUDE "data/text/main_menu.asm"
 ENDC
