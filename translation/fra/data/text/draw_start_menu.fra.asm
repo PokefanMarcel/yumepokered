@@ -1,9 +1,8 @@
-; marcelnote - moved from engine/menus/draw_start_menu.asm
 StartMenuPokedexText:
-	db "POKéDEX@"
+	db "#DEX@"
 
 StartMenuPokemonText:
-	db "POKéMON@"
+	db "#MON@"
 
 StartMenuItemText:
 	db "OBJET@"

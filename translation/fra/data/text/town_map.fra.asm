@@ -6,4 +6,4 @@ MonsNestText:
 	db "NID DE@"
 
 ToText:
-	db "To@" ; TO TRANSLATE
+	db "To@" ; TODO TO TRANSLATE

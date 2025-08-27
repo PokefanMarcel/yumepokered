@@ -278,7 +278,7 @@ INCLUDE "data/trainers/move_choices.asm"
 INCLUDE "data/trainers/pic_pointers_money.asm"
 
 IF DEF(_FRA) ; marcelnote - for translation
-	INCLUDE "translation/fra/data/trainers/names-fra.asm"
+	INCLUDE "translation/fra/data/trainers/names.fra.asm"
 ELSE
 	INCLUDE "data/trainers/names.asm"
 ENDC

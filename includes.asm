@@ -14,7 +14,7 @@ INCLUDE "macros/scripts/events.asm"
 INCLUDE "macros/scripts/text.asm"
 
 IF DEF(_FRA)
-	INCLUDE "translation/fra/constants/charmap-fra.asm"
+	INCLUDE "translation/fra/constants/charmap.fra.asm"
 ELSE
 	INCLUDE "constants/charmap.asm"
 ENDC
@@ -55,8 +55,8 @@ INCLUDE "constants/text_constants.asm"
 INCLUDE "constants/menu_constants.asm"
 
 IF DEF(_RED_VC)
-INCLUDE "vc/pokered.constants.asm"
+	INCLUDE "vc/pokered.constants.asm"
 ENDC
 IF DEF(_BLUE_VC)
-INCLUDE "vc/pokeblue.constants.asm"
+	INCLUDE "vc/pokeblue.constants.asm"
 ENDC

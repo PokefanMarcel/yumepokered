@@ -82,7 +82,7 @@ _CeladonMartRoofLittleGirlReceivedTM49Text::
 _CeladonMartRoofLittleGirlTM49ExplanationText::
 	text_start
 
-	para "TM49..."
+	para "CT49..." ; marcelnote - oubli de traduction "TM49"
 	line "TRIPLATTAQUE!@"
 	text_end
 

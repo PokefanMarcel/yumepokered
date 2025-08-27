@@ -207,9 +207,17 @@ DisplayIntroNameTextBox:
 	jp HandleMenuInput
 
 .namestring
+IF DEF(_FRA)
+	db "─NOM@"
+ELSE
 	db "NAME@"
+ENDC
 
-INCLUDE "data/player_names.asm"
+IF DEF(_FRA)
+	INCLUDE "translation/fra/data/text/player_names.fra.asm"
+ELSE
+	INCLUDE "data/text/player_names.asm" ; marcelnote - investigate redundancy player_names and player_names_list
+ENDC
 
 GetDefaultName:
 ; a = name index
@@ -235,7 +243,11 @@ GetDefaultName:
 	ld bc, NAME_BUFFER_LENGTH
 	jp CopyData
 
-INCLUDE "data/player_names_list.asm"
+IF DEF(_FRA)
+	INCLUDE "translation/fra/data/text/player_names_list.fra.asm"
+ELSE
+	INCLUDE "data/text/player_names_list.asm"
+ENDC
 
 LinkMenuEmptyText:
 	text_end

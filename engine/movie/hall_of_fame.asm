@@ -178,11 +178,6 @@ HoFDisplayMonInfo:
 	ld a, [wHoFMonSpecies]
 	jp PlayCry
 
-HoFMonInfoText:
-	db   "LEVEL/"
-	next "TYPE/@" ; marcelnote - was "TYPE1/"
-	;next "TYPE2/@"
-
 HoFLoadPlayerPics:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
 	ld a, [wStatusFlags4]
@@ -267,12 +262,6 @@ HoFPrintTextAndDelay:
 	ld c, 120
 	jp DelayFrames
 
-HoFPlayTimeText:
-	db "PLAY TIME@"
-
-HoFMoneyText:
-	db "MONEY@"
-
 DexSeenOwnedText:
 	text_far _DexSeenOwnedText
 	text_end
@@ -302,3 +291,10 @@ HoFFadeOutScreenAndMusic:
 	xor a
 	ld [wMusicFadeID], a
 	jp GBFadeOutToWhite
+
+
+IF DEF(_FRA)
+	INCLUDE "translation/fra/data/text/hall_of_fame.fra.asm"
+ELSE
+	INCLUDE "data/text/hall_of_fame.asm"
+ENDC

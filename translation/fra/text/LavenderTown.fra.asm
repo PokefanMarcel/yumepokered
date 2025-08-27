@@ -35,7 +35,7 @@ _LavenderTownSuperNerdText::
 	para "Ils doivent être"
 	line "les esprits des"
 	cont "#MON tués par"
-	cont "la TEAM ROCKET." ; marcelnote - was "la ROCKET."
+	cont "la ROCKET."
 	done
 
 _LavenderTownSignText::
