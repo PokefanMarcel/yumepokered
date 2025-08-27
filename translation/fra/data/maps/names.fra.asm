@@ -59,4 +59,4 @@ PokemonAcademyName:  db "ACADEMIE #MON@"    ; marcelnote - new location
 CeladonGroveName:    db "BOIS CELADON@"     ; marcelnote - new location ; ???
 SilphFactoryName:    db "USINE SYLPHE@"     ; marcelnote - new location
 MtSilverName:        db "MONT ARGENTE@"     ; marcelnote - new location
-CitrusFerryName: db "CITRUS FERRIES@"       ; marcelnote - new location ; TODO
+CitrusFerryName:     db "CITRUS FERRIES@"   ; marcelnote - new location ; TODO
