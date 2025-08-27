@@ -125,8 +125,13 @@ BillsPCMenu:
 	call CopyVideoData
 	call LoadScreenTilesFromBuffer2DisableBGTransfer
 	hlcoord 0, 0
-	ld b, 10
-	ld c, 12
+
+IF DEF(_FRA) ; marcelnote - wider box
+	lb bc, 10, 14
+ELSE
+	lb bc, 10, 12
+ENDC
+
 	call TextBoxBorder
 	hlcoord 2, 2
 	ld de, BillsPCMenuText
@@ -151,9 +156,15 @@ BillsPCMenu:
 	ld [wPlayerMonNumber], a
 	ld hl, WhatText
 	call PrintText
+
+IF DEF(_FRA) ; marcelnote - narrower box
+	hlcoord 11, 14
+	lb bc, 2, 7
+ELSE
 	hlcoord 9, 14
-	ld b, 2
-	ld c, 9
+	lb bc, 2, 9
+ENDC
+
 	call TextBoxBorder
 	ld a, [wCurrentBoxNum]
 	and $7f
@@ -169,7 +180,13 @@ BillsPCMenu:
 	add "1"
 .next
 	ldcoord_a 18, 16
+
+IF DEF(_FRA) ; marcelnote - narrower box
+	hlcoord 12, 16
+ELSE
 	hlcoord 10, 16
+ENDC
+
 	ld de, BoxNoPCText
 	call PlaceString
 	ld a, 1
