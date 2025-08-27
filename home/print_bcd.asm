@@ -11,17 +11,10 @@
 ; bits 0-4: length of BCD number in bytes
 ; Note that bits 5 and 7 are modified during execution. The above reflects
 ; their meaning at the beginning of the functions's execution.
-PrintBCDNumber::
-	ld b, c ; save flags in b
-	res BIT_LEADING_ZEROES, c
-	res BIT_LEFT_ALIGN, c
-	res BIT_MONEY_SIGN, c ; c now holds the length
-	bit BIT_MONEY_SIGN, b
-	jr z, .loop
-	bit BIT_LEADING_ZEROES, b
-	jr nz, .loop
-	ld [hl], "¥"
-	inc hl
+PrintBCDNumber:: ; marcelnote - optimized
+	ld a, c ; save flags in c
+	and ~(MONEY_SIGN | LEFT_ALIGN | LEADING_ZEROES)
+	ld b, a ; b now holds the length
 .loop
 	ld a, [de]
 	swap a
@@ -29,49 +22,67 @@ PrintBCDNumber::
 	ld a, [de]
 	call PrintBCDDigit ; print lower digit
 	inc de
-	dec c
+	dec b
 	jr nz, .loop
-	bit BIT_LEADING_ZEROES, b
-	jr z, .done ; if so, we are done
-.numberEqualsZero ; if every digit of the BCD number is zero
-	bit BIT_LEFT_ALIGN, b
+	bit BIT_LEADING_ZEROES, c ; have we printed something?
+
+IF DEF (_FRA)
+	jr z, .checkCurrencySymbol ; if so, check currency symbol
+	bit BIT_LEFT_ALIGN, c
 	jr nz, .skipRightAlignmentAdjustment
 	dec hl ; if the string is right-aligned, it needs to be moved back one space
 .skipRightAlignmentAdjustment
-	bit BIT_MONEY_SIGN, b
-	jr z, .skipCurrencySymbol
-	ld [hl], "¥"
+	ld [hl], "0"
+	call PrintLetterDelay
 	inc hl
+.checkCurrencySymbol
+	bit BIT_MONEY_SIGN, c
+	ret z
+	ld a, "¥"
+	ld [hli], a
+	ret
+ELSE
+	ret z ; if so, we are done
+	bit BIT_LEFT_ALIGN, c
+	jr nz, .skipRightAlignmentAdjustment
+	dec hl ; if the string is right-aligned, it needs to be moved back one space
+.skipRightAlignmentAdjustment
+	bit BIT_MONEY_SIGN, c
+	jr z, .skipCurrencySymbol
+	ld a, "¥"
+	ld [hli], a
 .skipCurrencySymbol
 	ld [hl], "0"
 	call PrintLetterDelay
 	inc hl
-.done
 	ret
+ENDC
 
-PrintBCDDigit::
+
+PrintBCDDigit:: ; marcelnote - optimized
 	and $f
-	and a
-	jr z, .zeroDigit
-.nonzeroDigit
-	bit BIT_LEADING_ZEROES, b
-	jr z, .outputDigit
-; if bit 7 is set, then no numbers have been printed yet
-	bit BIT_MONEY_SIGN, b
-	jr z, .skipCurrencySymbol
-	ld [hl], "¥"
-	inc hl
-	res BIT_MONEY_SIGN, b
-.skipCurrencySymbol
-	res BIT_LEADING_ZEROES, b
-.outputDigit
-	add "0"
-	ld [hli], a
-	jp PrintLetterDelay
-.zeroDigit
-	bit BIT_LEADING_ZEROES, b
-	jr z, .outputDigit ; if so, print a zero digit
-	bit BIT_LEFT_ALIGN, b
+	jr nz, .notZero
+	bit BIT_LEADING_ZEROES, c
+	jr z, .checkCurrencySign
+	bit BIT_LEFT_ALIGN, c
 	ret nz
 	inc hl ; if right-aligned, "print" a space by advancing the pointer
 	ret
+.notZero
+	res BIT_LEADING_ZEROES, c
+.checkCurrencySign
+
+IF DEF(_FRA)
+	; do nothing, sign at the end
+ELSE
+	bit BIT_MONEY_SIGN, c
+	jr z, .printDigit
+	res BIT_MONEY_SIGN, c
+	ld [hl], "¥"
+	inc hl
+ENDC
+
+.printDigit
+	add "0"
+	ld [hli], a
+	jp PrintLetterDelay
