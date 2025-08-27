@@ -46,8 +46,13 @@ StatExpBarGraphicsEnd:
 WorldMapTileGraphics: INCBIN "gfx/town_map/town_map.2bpp"
 WorldMapTileGraphicsEnd:
 
+IF DEF(_FRA)
+MonNestOptionsTileGraphics: INCBIN "translation/fra/gfx/town_map/mon_nest_options.fra.2bpp" ; marcelnote - new
+MonNestOptionsTileGraphicsEnd:
+ELSE
 MonNestOptionsTileGraphics: INCBIN "gfx/town_map/mon_nest_options.2bpp" ; marcelnote - new
 MonNestOptionsTileGraphicsEnd:
+ENDC
 
 PlayerCharacterTitleGraphics: INCBIN "gfx/title/player.2bpp"
 PlayerCharacterTitleGraphicsEnd:
