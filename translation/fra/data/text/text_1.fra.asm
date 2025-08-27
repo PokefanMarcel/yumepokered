@@ -58,13 +58,13 @@ _BoulderText::
 _MartSignText::
 	text "Faites le plein"
 	line "d'objets!"
-	para "BOUTIQUE PKMN"
+	para "BOUTIQUE #MON" ; marcelnote - was "BOUTIQUE PKMN"
 	done
 
 _PokeCenterSignText::
 	text "Soignez vos"
 	line "#MON!"
-	para "CENTRE PKMN"
+	para "CENTRE #MON" ; marcelnote - was "CENTRE PKMN"
 	done
 
 _FoundItemText::
