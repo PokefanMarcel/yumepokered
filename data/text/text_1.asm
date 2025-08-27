@@ -15,7 +15,7 @@ _CardKeyFailText::
 
 _CardKeyNeedsUpdateText:: ; marcelnote - added for SilphFactory2F
 	text "<PLAYER> used"
-	line "the CARD KEY."
+	line "the CARD KEY!"
 
 	para "Huh? Nothing"
 	line "happened."

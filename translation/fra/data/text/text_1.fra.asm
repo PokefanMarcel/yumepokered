@@ -13,12 +13,12 @@ _CardKeyFailText::
 	line "CARTE MAGN.!"
 	done
 
-_CardKeyNeedsUpdateText:: ; TODO
-	text "<PLAYER> used"
-	line "the CARD KEY."
+_CardKeyNeedsUpdateText:: ; marcelnote - added for SilphFactory2F
+	text "<PLAYER> utilise"
+	line "la CARTE MAGN.!"
 
-	para "Huh? Nothing"
-	line "happened."
+	para "Hein? Rien ne"
+	line "se passe."
 	done
 
 _TrainerNameText::
