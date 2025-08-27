@@ -23,12 +23,12 @@ PokedexStatsText:
 	next "VITESSE"
 	next "SPECIAL@"
 
-HeightWeightText:
-	db   "TAI ?′??″"
-	next "PDS  ???<l><b>@"
+HeightWeightText: ; marcelnote - changed from "TAI" and "PDS"
+	db   "TA  ?′??″"
+	next "PO   ???<l><b>@"
 
-HeightWeightMetricText:
-	db   "TAI  ???<m>"
-	next "PDS  ???<k><g>@"
+HeightWeightMetricText: ; marcelnote - changed from "TAI" and "PDS"
+	db   "TA   ???<m>"
+	next "PO   ???<k><g>@"
 
 PokedexMovesHeader: db "CAPA.@"
