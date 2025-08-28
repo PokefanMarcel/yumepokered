@@ -161,15 +161,17 @@ _GymStatueText2::
 	cont "<PLAYER>"
 	done
 
-_GymStatueText3:: ; TODO
+_GymStatueText3::
+	text "ARENE #MON"
+	line "de @"
 	text_ram wGymCityName
 	text_start
-	line "#MON GYM"
-	cont "LEADER: @"
+	cont "CHAMPION:"
+	cont "@"
 	text_ram wGymLeaderName
 	text_start
 
-	para "WINNING TRAINERS:"
+	para "VAINQUEURS:"
 	line "<RIVAL>"
 	cont "<PLAYER>"
 	cont "YELLOW"
