@@ -1,4 +1,4 @@
-_FuchsiaGoodRodHouseFishingGuruText::
+_VermilionGoodRodHouseFishingGuruDoYouLikeToFishText::
 	text "Je suis le grand"
 	line "frère du MAITRE"
 	cont "PECHEUR!"
@@ -10,7 +10,7 @@ _FuchsiaGoodRodHouseFishingGuruText::
 	line "pêche, petit?"
 	done
 
-_FuchsiaGoodRodHouseFishingGuruReceivedGoodRodText::
+_VermilionGoodRodHouseFishingGuruTakeThisText::
 	text "Cool! T'as l'air"
 	line "d'un bon gars!"
 
@@ -25,19 +25,19 @@ _FuchsiaGoodRodHouseFishingGuruReceivedGoodRodText::
 	text "!@"
 	text_end
 
-_FuchsiaGoodRodHouseFishingGuruThatsSoDisappointingText::
+_VermilionGoodRodHouseFishingGuruThatsSoDisappointingText::
 	text "Oh...Pas cool!"
 	line "Pas cool du tout!"
 	done
 
-_FuchsiaGoodRodHouseFishingGuruHowAreTheFishText::
+_VermilionGoodRodHouseFishingGuruHowAreTheFishBitingText::
 	text "Salut,"
 	line "<PLAYER>!"
 
 	para "Ca mord?"
 	done
 
-_FuchsiaGoodRodHouseFishingGuruNoRoomText::
+_VermilionGoodRodHouseFishingGuruNoRoomText::
 	text "Oh non!"
 
 	para "Ton inventaire"

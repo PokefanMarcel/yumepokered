@@ -1,24 +1,22 @@
-_CeladonMartRoofLittleGirlGiveHerWhichDrinkText::
-	text "Quelle boisson"
-	line "lui offrir?"
+_CeladonMartRoofLittleGirlImThirstyText::
+	text "N'ai soif!"
+	line "Ne veux boire!"
+	prompt ; marcelnote - was 'done'
+
+_CeladonMartRoofLittleGirlGiveHerADrinkText:: ; marcelnote - simplified
+	text "Lui offrir"
+	line "une boisson?" ; marcelnote - was "Quelle boisson lui offrir?"
 	done
 
 _CeladonMartRoofLittleGirlYayFreshWaterText::
 	text "Ouais ouais!"
 
-	para "DE L'EAU!"
+	para "De l'EAU FRAICHE!" ; marcelnote - was "DE L'EAU!"
 
 	para "C'est cool!"
 
 	para "Tiens...c'est"
 	line "pour toi!@"
-	text_end
-
-_CeladonMartRoofLittleGirlReceivedTM13Text::
-	text "<PLAYER> reçoit"
-	line "@"
-	text_ram wStringBuffer
-	text "!@"
 	text_end
 
 _CeladonMartRoofLittleGirlTM13ExplanationText::
@@ -44,13 +42,6 @@ _CeladonMartRoofLittleGirlYaySodaPopText::
 	para "Tiens, prends ça!@"
 	text_end
 
-_CeladonMartRoofLittleGirlReceivedTM48Text::
-	text "<PLAYER> reçoit"
-	line "@"
-	text_ram wStringBuffer
-	text "!@"
-	text_end
-
 _CeladonMartRoofLittleGirlTM48ExplanationText::
 	text_start
 
@@ -74,20 +65,19 @@ _CeladonMartRoofLittleGirlYayLemonadeText::
 	para "V'là pour toi!@"
 	text_end
 
-_CeladonMartRoofLittleGirlReceivedTM49Text::
-	text "<PLAYER> reçoit:"
-	line "CT49!@"
-	text_end
-
 _CeladonMartRoofLittleGirlTM49ExplanationText::
 	text_start
 
 	para "CT49..." ; marcelnote - oubli de traduction "TM49"
-	line "TRIPLATTAQUE!@"
+	line "TRIPLATTAQUE!"
+
+	para "It can paralyze," ; TODO marcelnote - new explanation for new TRI_ATTACK_EFFECT
+	line "freeze or burn"
+	cont "the target!@"
 	text_end
 
-_CeladonMartRoofLittleGirlReceivedTMText:: ; TODO marcelnote - now common to all 3 TMs
-	text "<PLAYER> received"
+_CeladonMartRoofLittleGirlReceivedTMText::
+	text "<PLAYER> reçoit"
 	line "@"
 	text_ram wStringBuffer
 	text "!@"
@@ -111,16 +101,6 @@ _CeladonMartRoofSuperNerdText::
 	para "Mais c'est une"
 	line "p'tite peste!"
 	cont "Elle m'agace!"
-	done
-
-_CeladonMartRoofLittleGirlImThirstyText::
-	text "N'ai soif!"
-	line "Ne veux boire!"
-	done
-
-_CeladonMartRoofLittleGirlGiveHerADrinkText::
-	text "N'ai soif!"
-	line "Ne veux boire!"
 	done
 
 _CeladonMartRoofCurrentFloorSignText::
@@ -154,6 +134,6 @@ _VendingMachineText7::
 	text "Pas soif!"
 	done
 
-_VendingMachineWrongSideText:: ; TODO marcelnote - new
-	text "Wrong side!"
+_VendingMachineWrongSideText:: ; marcelnote - new
+	text "Mauvais côté!"
 	done

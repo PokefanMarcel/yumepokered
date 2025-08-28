@@ -2,7 +2,6 @@ SECTION "Text 1", ROMX
 
 IF DEF(_FRA)
   INCLUDE "translation/fra/data/text/text_1.fra.asm"
-
   INCLUDE "translation/fra/text/ViridianForest.fra.asm"
   INCLUDE "translation/fra/text/MtMoon1F.fra.asm"
   INCLUDE "translation/fra/text/MtMoonB1F.fra.asm"
@@ -30,7 +29,6 @@ IF DEF(_FRA)
   INCLUDE "translation/fra/text/SilphCo5F.fra.asm"
 ELSE
   INCLUDE "data/text/text_1.asm"
-
   INCLUDE "text/ViridianForest.asm"
   INCLUDE "text/MtMoon1F.asm"
   INCLUDE "text/MtMoonB1F.asm"
@@ -149,8 +147,8 @@ ELSE
   INCLUDE "text/Daycare.asm"
 ENDC
 
-SECTION "Text 4", ROMX
 
+SECTION "Text 4", ROMX
 
 IF DEF(_FRA)
   INCLUDE "translation/fra/text/UndergroundPathRoute6.fra.asm"
@@ -277,36 +275,28 @@ SECTION "Text 6", ROMX
 IF DEF(_FRA)
   INCLUDE "translation/fra/text/Route24_2.fra.asm"
   INCLUDE "translation/fra/text/Route25.fra.asm"
+
   ; INCLUDE "translation/fra/text/Route28.fra.asm" ; marcelnote - new location
   INCLUDE "text/Route28.asm" ; marcelnote - new location ; TODO: manually translate
 
   INCLUDE "translation/fra/data/text/text_3.fra.asm"
-
-  ; INCLUDE "translation/fra/text/RedsYellowsHouses.fra.asm" ; marcelnote - merged RedsHouse floors, added YellowsHouse
-  INCLUDE "text/RedsYellowsHouses.asm" ; marcelnote - merged RedsHouse floors, added YellowsHouse ; TODO: manually translate
-
-  ; INCLUDE "translation/fra/text/BluesAidesHouses.fra.asm" ; marcelnote - merged Blue's house with new Aide's house
-  INCLUDE "text/BluesAidesHouses.asm" ; marcelnote - merged Blue's house with new Aide's house ; TODO: manually translate
+  INCLUDE "translation/fra/text/RedsYellowsHouses.fra.asm" ; marcelnote - merged RedsHouse floors, added YellowsHouse
+  INCLUDE "translation/fra/text/BluesAidesHouses.fra.asm" ; marcelnote - merged Blue's house with new Aide's house
   INCLUDE "translation/fra/text/OaksLab.fra.asm"
   INCLUDE "translation/fra/text/pokedex_ratings.fra.asm"
   INCLUDE "translation/fra/text/ViridianPokecenterMart.fra.asm" ; marcelnote - merged Viridian Pokecenter and Mart
   INCLUDE "translation/fra/text/ViridianSchoolHouse.fra.asm"
   INCLUDE "translation/fra/text/ViridianNicknameHouse.fra.asm"
   INCLUDE "translation/fra/text/ViridianGym.fra.asm"
-  ; INCLUDE "translation/fra/text/Route22OldRodHouse.fra.asm" ; marcelnote - new location
-  INCLUDE "text/Route22OldRodHouse.asm" ; marcelnote - new location ; TODO: manually translate
-  ; INCLUDE "translation/fra/text/PewterMuseum.fra.asm" ; marcelnote - merged Pewter Museum floors
-  INCLUDE "text/PewterMuseum.asm" ; marcelnote - merged Pewter Museum floors ; TODO: manually translate
+  INCLUDE "translation/fra/text/Route22OldRodHouse.fra.asm" ; marcelnote - new location
+  INCLUDE "translation/fra/text/PewterMuseum.fra.asm" ; marcelnote - merged Pewter Museum floors
   INCLUDE "translation/fra/text/PewterGym.fra.asm"
 ELSE
   INCLUDE "text/Route24_2.asm"
   INCLUDE "text/Route25.asm"
   INCLUDE "text/Route28.asm" ; marcelnote - new location
-
   INCLUDE "data/text/text_3.asm"
-
   INCLUDE "text/RedsYellowsHouses.asm" ; marcelnote - merged RedsHouse floors, added YellowsHouse
-
   INCLUDE "text/BluesAidesHouses.asm" ; marcelnote - merged Blue's house with new Aide's house
   INCLUDE "text/OaksLab.asm"
   INCLUDE "text/pokedex_ratings.asm"
@@ -381,19 +371,11 @@ IF DEF(_FRA)
   INCLUDE "translation/fra/text/VermilionGym_2.fra.asm"
   INCLUDE "translation/fra/text/VermilionPidgeyHouse.fra.asm"
   INCLUDE "translation/fra/text/VermilionDock.fra.asm"
-  ; INCLUDE "translation/fra/text/VermilionGoodRodHouse.fra.asm" ; marcelnote - from Old to Good Rod
-  INCLUDE "text/VermilionGoodRodHouse.asm" ; marcelnote - from Old to Good Rod ; TODO: manually translate
-
-  ; INCLUDE "translation/fra/text/CeladonMart1F2F3F.fra.asm" ; marcelnote - merged 1F 2F 3F
-  INCLUDE "text/CeladonMart1F2F3F.asm" ; marcelnote - merged 1F 2F 3F ; TODO: manually translate
-
-  ; INCLUDE "translation/fra/text/CeladonMart4F5F6F.fra.asm" ; marcelnote - merged 4F 5F + new 6F
-  INCLUDE "text/CeladonMart4F5F6F.asm" ; marcelnote - merged 4F 5F + new 6F ; TODO: manually translate
-
+  INCLUDE "translation/fra/text/VermilionGoodRodHouse.fra.asm" ; marcelnote - from Old to Good Rod
+  INCLUDE "translation/fra/text/CeladonMart1F2F3F.fra.asm" ; marcelnote - merged 1F 2F 3F
+  INCLUDE "translation/fra/text/CeladonMart4F5F6F.fra.asm" ; marcelnote - merged 4F 5F + new 6F
   INCLUDE "translation/fra/text/CeladonMartRoof.fra.asm"
-  ; INCLUDE "translation/fra/text/CeladonMansion.fra.asm" ; marcelnote - merged Celadon Mansion floors
-  INCLUDE "text/CeladonMansion.asm" ; marcelnote - merged Celadon Mansion floors ; TODO: manually translate
-
+  INCLUDE "translation/fra/text/CeladonMansion.fra.asm" ; marcelnote - merged Celadon Mansion floors
   INCLUDE "translation/fra/text/CeladonMansionRoof.fra.asm"
   INCLUDE "translation/fra/text/CeladonMansionRoofHouse.fra.asm"
   INCLUDE "translation/fra/text/CeladonPokecenter.fra.asm"

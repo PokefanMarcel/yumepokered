@@ -67,6 +67,6 @@ _AidesHouseMemoText:: ; marcelnote - new Pallet house
 
 	para "Aide aux dresseurs"
 	line "sur ROUTE 2,"
-	cont "ROUTE 11,"
-	cont "ROUTE 15."
+	cont "ROUTE 6, ROUTE 11"
+	cont "et ROUTE 15."
 	done

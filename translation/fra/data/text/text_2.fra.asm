@@ -613,29 +613,24 @@ _Route18GateRightBinocularsText::
 	line "de nageurs!"
 	done
 
-_Route22GateLeftBinocularsText:: ; TODO ; marcelnote - new
-	text "Looked into the"
-	line "binoculars."
+_Route22GateLeftBinocularsText:: ; marcelnote - new
+	text "Vous regardez"
+	line "dans les"
+	cont "jumelles."
 
-	para "A remote mountain"
+	para "A remote mountain" ; TODO
 	line "rises above"
 	cont "the horizon."
 	done
 
-_Route22GateRightBinocularsText:: ; TODO ; marcelnote - new
-	text "Looked into the"
-	line "binoculars."
+_Route22GateRightBinocularsText:: ; marcelnote - new
+	text "Vous regardez"
+	line "dans les"
+	cont "jumelles."
 
-	para "A winding path"
+	para "A winding path" ; TODO
 	line "leads to the"
 	cont "#MON LEAGUE."
-	done
-
-_RedBedroomSNESText::
-	text "<PLAYER> joue à la"
-	line "Super Nintendo!"
-	cont "...Bon!"
-	cont "On y va, non?"
 	done
 
 _AerodactylFossilText::

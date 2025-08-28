@@ -26,6 +26,7 @@ _CeladonMart4FCurrentFloorSignText::
 	cont "sale now!"
 	done
 
+
 _CeladonMart5FGentlemanText::
 	text "#MON ability"
 	line "enhancers can be"
@@ -54,6 +55,7 @@ _CeladonMart5FSailorText::
 _CeladonMart5FCurrentFloorSignText::
 	text "5F: DRUG STORE"
 	done
+
 
 _CeladonMart6FClerkNoInventoryText:: ; marcelnote - new floor
 	text "Sorry, we're"

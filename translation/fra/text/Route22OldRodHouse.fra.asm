@@ -1,4 +1,4 @@
-_VermilionOldRodHouseFishingGuruDoYouLikeToFishText::
+_Route22OldRodHouseFishingGuruDoYouLikeToFishText::
 	text "Je suis le..."
 	line "MAITRE PECHEUR!"
 
@@ -9,7 +9,7 @@ _VermilionOldRodHouseFishingGuruDoYouLikeToFishText::
 	line "tête?"
 	done
 
-_VermilionOldRodHouseFishingGuruTakeThisText::
+_Route22OldRodHouseFishingGuruTakeThisText::
 	text "Terrib'! Toi,"
 	line "j't'aime bien!"
 
@@ -22,7 +22,7 @@ _VermilionOldRodHouseFishingGuruTakeThisText::
 	text "!@"
 	text_end
 
-_VermilionOldRodHouseFishingGuruFishingIsAWayOfLifeText::
+_Route22OldRodHouseFishingGuruFishingIsAWayOfLifeText::
 	text_start
 
 	para "Pêcher, c'est la"
@@ -35,12 +35,12 @@ _VermilionOldRodHouseFishingGuruFishingIsAWayOfLifeText::
 	cont "pêche encore!"
 	done
 
-_VermilionOldRodHouseFishingGuruThatsSoDisappointingText::
+_Route22OldRodHouseFishingGuruThatsSoDisappointingText::
 	text "Oh...ben..."
 	line "C'est dommage..."
 	done
 
-_VermilionOldRodHouseFishingGuruHowAreTheFishBitingText::
+_Route22OldRodHouseFishingGuruHowAreTheFishBitingText::
 	text "B'jour à toi,"
 	line "<PLAYER>!"
 
@@ -48,7 +48,7 @@ _VermilionOldRodHouseFishingGuruHowAreTheFishBitingText::
 	line "Hein? Hein?"
 	done
 
-_VermilionOldRodHouseFishingGuruNoRoomText::
+_Route22OldRodHouseFishingGuruNoRoomText::
 	text "Oh non!"
 
 	para "T'as plus d'place"

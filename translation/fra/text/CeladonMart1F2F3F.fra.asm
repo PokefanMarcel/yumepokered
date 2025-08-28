@@ -1,3 +1,86 @@
+_CeladonMart1FReceptionistText::
+	text "Bonjour et bien-"
+	line "venue au CENTRE"
+	cont "COMMERCIAL de"
+	cont "CELADOPOLE."
+
+	para "Le tableau sur la"
+	line "droite décrit les"
+	cont "différents rayons"
+	cont "du magasin."
+	done
+
+_CeladonMart1FDirectorySignText::
+	text "RDC:"
+	line "RENSEIGNEMENTS"
+
+	para "1er: MARCHE DES"
+	line "DRESSEURS"
+
+	para "2ème: JEUX VIDEO"
+
+	para "3ème: CADEAUX"
+
+	para "4ème: MEDICAMENTS"
+
+	para "6F: ENERGY AISLE" ; TODO marcelnote - new floor
+
+	para "DERNIER ETAGE:"
+	line "DISTRIBUTEURS"
+	done
+
+_CeladonMart1FCurrentFloorSignText::
+	text "RDC: "
+	line "RENSEIGNEMENTS"
+	done
+
+_CeladonMart1FPhoneText:: ; TODO marcelnote - new
+	text "A pay phone?"
+
+	para "It doesn't seem"
+	line "to be working..."
+	done
+
+
+_CeladonMart2FMiddleAgedManText::
+	text "Le SUPEREPOUSSE"
+	line "tient les faibles"
+	cont "#MON à"
+	cont "l'écart..."
+
+	para "C'est un REPOUSSE"
+	line "plus puissant!"
+	done
+
+_CeladonMart2FBrunetteGirlText:: ; TODO marcelnote - new NPC
+	text "Here each BADGE"
+	line "allows you to"
+	cont "buy more TMs."
+
+	para "I want to teach"
+	line "BUBBLEBEAM to"
+	cont "WIGGLYTUFF, but"
+	cont "the clerk says"
+	cont "I need the"
+	cont "RAINBOW BADGE..."
+	done
+
+_CeladonMart2FGirlText::
+	text "Equipe-toi de"
+	line "RAPPELS avant"
+	cont "de partir à"
+	cont "l'aventure."
+	done
+
+_CeladonMart2FCurrentFloorSignText::
+	text "Les objets de"
+	line "premier choix!"
+
+	para "1er: MARCHE DES"
+	line "DRESSEURS"
+	done
+
+
 _CeladonMart3FClerkTM18PreReceiveText::
 	text "J'ai fini!!!!"
 	line "J'ai fini"
