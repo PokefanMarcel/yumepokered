@@ -1916,8 +1916,8 @@ _ContCharText::
 	text "<_CONT>@"
 	text_end
 
-_TMItContainsText:: ; TODO marcelnote - new for TM printing
-	text "It contains"
+_TMItContainsText:: ; marcelnote - new for TM printing
+	text "Elle contient:"
 	line "@"
 	text_ram wStringBuffer
 	text "."

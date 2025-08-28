@@ -166,13 +166,12 @@ _BootedUpHMText::
 	prompt
 
 _TeachMachineMoveText::
-	text "Elle contient:"
-	line "@"
-	text_ram wStringBuffer
-
-	text "!"
-
-	para "Apprendre"
+;	text "Elle contient:" ; marcelnote - removed since TM names show when hovering
+;	line "@"
+;	text_ram wStringBuffer
+;	text "!"
+;
+	text "Apprendre"
 	line "@"
 	text_ram wStringBuffer
 	text " à"
