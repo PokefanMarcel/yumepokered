@@ -232,10 +232,10 @@ _WantToCutText:: ; TODO
 	line "tree?"
 	done
 
-_UsedFlashText:: ; TODO
+_UsedFlashText::
 	text_ram wNameBuffer
-	text " lights"
-	line "the area!"
+	text " éclaire"
+	line "les environs!"
 	prompt
 
 _MonCouldSurfText:: ; TODO
