@@ -12,10 +12,7 @@ IF DEF(_FRA)
   INCLUDE "translation/fra/text/SSAnne1F.fra.asm"
   INCLUDE "translation/fra/text/SSAnne2F.fra.asm"
   INCLUDE "translation/fra/text/SSAnne3F.fra.asm"
-
-  ; INCLUDE "translation/fra/text/SSAnneB1F.asm" ; marcelnote - merged SS Anne B1F and B1FRooms
-  INCLUDE "text/SSAnneB1F.asm" ; TODO: manually translate
-
+  INCLUDE "translation/fra/text/SSAnneB1F.fra.asm" ; marcelnote - merged SS Anne B1F and B1FRooms
   INCLUDE "translation/fra/text/SSAnneBow.fra.asm"
   INCLUDE "translation/fra/text/SSAnneKitchen.fra.asm"
   INCLUDE "translation/fra/text/SSAnneCaptainsRoom.fra.asm"
