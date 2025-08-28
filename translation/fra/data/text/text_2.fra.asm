@@ -1874,9 +1874,9 @@ _OakSpeechText3::
 	cont "t'attend! Dingue!"
 	done
 
-_BoyGirlText:: ; TODO : joenote - add female player
-	text "Are you a boy or"
-	line "a girl?"
+_BoyGirlText:: ; joenote - add female player
+	text "Es-tu un garçon"
+	line "ou une fille?"
 	done
 
 _DoYouWantToNicknameText::
