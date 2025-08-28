@@ -6,8 +6,10 @@ IF DEF(_FRA)
   INCLUDE "translation/fra/text/MtMoon1F.fra.asm"
   INCLUDE "translation/fra/text/MtMoonB1F.fra.asm"
   INCLUDE "translation/fra/text/MtMoonB2F.fra.asm"
+
   ; INCLUDE "translation/fra/text/MtMoonSquare.asm" ; marcelnote - new location 
   INCLUDE "text/MtMoonSquare.asm" ; TODO: manually translate
+
   INCLUDE "translation/fra/text/SSAnne1F.fra.asm"
   INCLUDE "translation/fra/text/SSAnne2F.fra.asm"
   INCLUDE "translation/fra/text/SSAnne3F.fra.asm"
