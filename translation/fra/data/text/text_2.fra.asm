@@ -721,8 +721,8 @@ _ViridianBlackboardPrlzText::
 	text "La paralysie peut"
 	line "annuler certaines"
 	cont "attaques!"
-	cont "It also reduces" ; TODO : marcelnote - added
-	cont "speed."
+	cont "Elle réduit aussi" ; marcelnote - added
+	cont "la vitesse."
 
 	para "La paralysie ne"
 	line "disparaît pas"
@@ -735,10 +735,10 @@ _ViridianBlackboardPrlzText::
 
 _ViridianBlackboardBurnText::
 	text "La BRULURE réduit"
-	;line "power and speed."
-	;cont "It also causes"
-	line "power and causes" ; TODO marcelnote - added this line and removed two lines above
-	cont "ongoing damage."
+	line "la puissance et"
+;	cont "la vitesse. Elle" ; marcelnote - mistake, removed
+	cont "inflige aussi des"
+	cont "dégâts continus."
 
 	para "La brûlure ne"
 	line "disparaît pas"
@@ -861,15 +861,15 @@ _PokemonBooksText::
 	line "les #MON!"
 	done
 
-_DiglettSculptureText:: ; TODO marcelnote - modified
-	;text "It's a sculpture" ; original Red/Blue
-	;line "of DIGLETT."
-	;text "It's a statue of" ; translation from shinpokered of original Japanese
-	;line "a fat Buddha."
-	text "It's an altar with" ; new version
-	line "a small statue."
-	;text "An altar with a" ; variant
-	;line "peaceful statue."
+_DiglettSculptureText:: ; marcelnote - modified
+;	text "Une sculpture de" ; original Rouge/Bleue
+;	line "TAUPIQUEUR."
+;	text "It's a statue of" ; translation from shinpokered of original Japanese
+;	line "a fat Buddha."
+	text "Un autel avec" ; new version
+	line "une petite statue."
+;	text "An altar with a" ; variant
+;	line "peaceful statue."
 	done
 
 _ElevatorText::
@@ -1310,8 +1310,9 @@ _GainedText::
 ;	cont "@"
 ;	text_end
 
-_ExpAllIsOnText:: ; TODO: marcelnote - shortened ExpAll messages
-	text "EXP.ALL is on!"
+_ExpAllIsOnText:: ; marcelnote - shortened ExpAll messages
+	text "Le MULTI. EXP"
+	line "est allumé!"
 	prompt
 
 _BoostedText::
