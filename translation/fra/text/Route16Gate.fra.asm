@@ -20,3 +20,14 @@ _Route16Gate1FGamblerText::
 	text "Comment t'es"
 	line "arrivé jusqu'ici?"
 	done
+
+_Route16Gate2FLittleBoyText::
+	text "Je vais me faire"
+	line "une virée avec"
+	cont "ma p'tite copine!"
+	done
+
+_Route16Gate2FLittleGirlText::
+	text "On va pédaler"
+	line "ensemble!"
+	done

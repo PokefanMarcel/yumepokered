@@ -507,11 +507,54 @@ _IndigoPlateauHQText::
 	cont "#MON"
 	done
 
-_RedBedroomSNESText::
-	text "<PLAYER> joue à la"
-	line "Super Nintendo!"
-	cont "...Bon!"
-	cont "On y va, non?"
+_Route11GateLeftBinocularsSnorlaxText::
+	text "Vous regardez"
+	line "dans les"
+	cont "jumelles."
+
+	para "Un énorme"
+	line "#MON dort"
+	cont "sur la route!"
+	done
+
+_Route11GateLeftBinocularsNoSnorlaxText::
+	text "Vous regardez"
+	line "dans les"
+	cont "jumelles."
+
+	para "C'est très beau!"
+	line "... "
+	cont "Bon! On y va?"
+	done
+
+_Route11GateRightBinocularsText::
+	text "Vous regardez"
+	line "dans les"
+	cont "jumelles."
+
+	para "Il n'y a qu'un"
+	line "seul chemin pour"
+	cont "aller de AZURIA"
+	cont "à LAVANVILLE:"
+	cont "la GROTTE!"
+	done
+
+_Route12GateLeftBinocularsText::
+	text "Vous regardez"
+	line "dans les"
+	cont "jumelles."
+
+	para "Vous voyez un"
+	line "pêcheur!"
+	done
+
+_Route12GateRightBinocularsText::
+	text "Vous regardez"
+	line "dans les"
+	cont "jumelles."
+
+	para "Vous voyez la"
+	line "TOUR #MON!"
 	done
 
 _Route15GateLeftBinocularsText::
@@ -524,85 +567,50 @@ _Route15GateLeftBinocularsText::
 	cont "la mer."
 	done
 
-_Route11GateLeftBinocularsSnorlaxText:: ; TODO
-	text "Looked into the"
-	line "binoculars."
+_Route15GateRightBinocularsText::
+	text "Vous regardez"
+	line "dans les"
+	cont "jumelles."
 
-	para "A big #MON is"
-	line "asleep on a road!"
+	para "Vous voyez une"
+	line "petite île!"
 	done
 
-_Route11GateLeftBinocularsNoSnorlaxText:: ; TODO
-	text "Looked into the"
-	line "binoculars."
+_Route16GateLeftBinocularsText::
+	text "Vous regardez"
+	line "dans les"
+	cont "jumelles."
 
-	para "It's a beautiful"
-	line "view!"
+	para "Vous voyez le"
+	line "centre commercial"
+	cont "de CELADOPOLE!"
 	done
 
-_Route11GateRightBinocularsText:: ; TODO
-	text "Looked into the"
-	line "binoculars."
+_Route16GateRightBinocularsText::
+	text "Vous regardez"
+	line "dans les"
+	cont "jumelles."
 
-	para "The only way to"
-	line "get from CERULEAN"
-	cont "CITY to LAVENDER"
-	cont "is by way of the"
-	cont "ROCK TUNNEL."
+	para "Vous voyez un"
+	line "grand ponton!"
 	done
 
-_Route12GateLeftBinocularsText:: ; TODO
-	text "Looked into the"
-	line "binoculars."
+_Route18GateLeftBinocularsText::
+	text "Vous regardez"
+	line "dans les"
+	cont "jumelles."
 
-	para "A man fishing!"
+	para "BOURG PALETTE"
+	line "est à l'Ouest!"
 	done
 
-_Route12GateRightBinocularsText:: ; TODO
-	text "Looked into the"
-	line "binoculars."
+_Route18GateRightBinocularsText::
+	text "Vous regardez"
+	line "dans les"
+	cont "jumelles."
 
-	para "It's #MON TOWER!"
-	done
-
-_Route15GateRightBinocularsText:: ; TODO
-	text "Looked into the"
-	line "binoculars."
-
-	para "It looks like a"
-	line "small island!"
-	done
-
-_Route16GateLeftBinocularsText:: ; TODO
-	text "Looked into the"
-	line "binoculars."
-
-	para "It's CELADON DEPT."
-	line "STORE!"
-	done
-
-_Route16GateRightBinocularsText:: ; TODO
-	text "Looked into the"
-	line "binoculars."
-
-	para "There's a long"
-	line "path over water!"
-	done
-
-_Route18GateLeftBinocularsText:: ; TODO
-	text "Looked into the"
-	line "binoculars."
-
-	para "PALLET TOWN is in"
-	line "the west!"
-	done
-
-_Route18GateRightBinocularsText:: ; TODO
-	text "Looked into the"
-	line "binoculars."
-
-	para "There are people"
-	line "swimming!"
+	para "C'est plein"
+	line "de nageurs!"
 	done
 
 _Route22GateLeftBinocularsText:: ; TODO ; marcelnote - new
@@ -623,6 +631,12 @@ _Route22GateRightBinocularsText:: ; TODO ; marcelnote - new
 	cont "#MON LEAGUE."
 	done
 
+_RedBedroomSNESText::
+	text "<PLAYER> joue à la"
+	line "Super Nintendo!"
+	cont "...Bon!"
+	cont "On y va, non?"
+	done
 
 _AerodactylFossilText::
 	text "Le fossile du"

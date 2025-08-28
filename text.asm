@@ -129,9 +129,7 @@ SECTION "Text 3", ROMX
 IF DEF(_FRA)
   INCLUDE "translation/fra/text/RockTunnelB1F_2.fra.asm"
   INCLUDE "translation/fra/text/SeafoamIslandsB4F.fra.asm"
-
   INCLUDE "translation/fra/data/text/text_2.fra.asm"
-
   INCLUDE "translation/fra/text/DiglettsCaveRoute2.fra.asm"
   INCLUDE "translation/fra/text/ViridianForestNorthGate.fra.asm"
   INCLUDE "translation/fra/text/Route2TradeHouse.fra.asm"
@@ -143,9 +141,7 @@ IF DEF(_FRA)
 ELSE
   INCLUDE "text/RockTunnelB1F_2.asm"
   INCLUDE "text/SeafoamIslandsB4F.asm"
-
   INCLUDE "data/text/text_2.asm"
-
   INCLUDE "text/DiglettsCaveRoute2.asm"
   INCLUDE "text/ViridianForestNorthGate.asm"
   INCLUDE "text/Route2TradeHouse.asm"
@@ -167,20 +163,13 @@ IF DEF(_FRA)
   INCLUDE "translation/fra/text/RockTunnel1F.fra.asm"
   INCLUDE "translation/fra/text/PowerPlant.fra.asm"
   INCLUDE "translation/fra/text/Route11Gate.fra.asm"
-
   INCLUDE "translation/fra/text/DiglettsCaveRoute11.fra.asm"
   INCLUDE "translation/fra/text/Route12Gate.fra.asm" ; marcelnote - merged Route12Gate floors
-
   INCLUDE "translation/fra/text/Route12FishingGuideHouse.fra.asm" ; marcelnote - from Super Rod to Fishing Guide
-
-  ; INCLUDE "translation/fra/text/Route15Gate.asm" ; marcelnote - merged Route15Gate floors
-  INCLUDE "text/Route15Gate.asm" ; TODO: manually translate
-
-  INCLUDE "text/Route16Gate.asm" ; TODO marcelnote - merged Route16Gate floors
-
+  INCLUDE "translation/fra/text/Route15Gate.fra.asm" ; marcelnote - merged Route15Gate floors
+  INCLUDE "translation/fra/text/Route16Gate.fra.asm" ; marcelnote - merged Route16Gate floors
   INCLUDE "translation/fra/text/Route16FlyHouse.fra.asm"
   INCLUDE "translation/fra/text/Route18Gate.fra.asm" ; marcelnote - merged Route18Gate floors
-
   INCLUDE "translation/fra/text/Route22Gate.fra.asm"
 
   ; INCLUDE "translation/fra/text/BattleHall.fra.asm"  ; marcelnote - new location
