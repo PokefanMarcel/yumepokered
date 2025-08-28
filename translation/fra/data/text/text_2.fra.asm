@@ -245,45 +245,43 @@ _CinnabarGymQuizIntroText::
 
 
 _CinnabarQuizQuestionsText1::
-	text "METAPOD evolves" ; TODO marcelnote - changed from CATERPIE
-	line "into BUTTERFREE?"
+	text "CHRYSACIER évolue" ; marcelnote - changed from CATERPIE
+	line "en PAPILUSION?"
 	done
 
-_CinnabarQuizQuestionsText2:: ; TODO marcelnote - new quiz question for 2nd trainer
-	text "VULPIX and"
-	line "NINETALES are"
-	cont "able to learn"
-	cont "WILL-O-WISP?"
+_CinnabarQuizQuestionsText2:: ; marcelnote - new quiz question for 2nd trainer
+	text "GOUPIX et FEUNARD"
+	line "apprennent"
+	cont "FEU FOLLET?"
 	done
 
-_CinnabarQuizQuestionsText3:: ; TODO marcelnote - reindexed from 2
-	text "There are 9"
-	line "certified #MON"
-	cont "LEAGUE BADGEs?"
+_CinnabarQuizQuestionsText3:: ; marcelnote - reindexed from 2
+	text "Il existe 9"
+	line "BADGES #MON?"
 	done
 
-_CinnabarQuizQuestionsText4:: ; TODO marcelnote - reindexed from 3
-	text "POLIWAG evolves 3"
-	line "times?"
+_CinnabarQuizQuestionsText4:: ; marcelnote - reindexed from 3
+	text "PTITARD évolue"
+	line "3 fois?"
 	done
 
-_CinnabarQuizQuestionsText5:: ; TODO marcelnote - reindexed from 4
-	text "Are thunder moves"
-	line "effective against"
-	cont "ground element-"
-	cont "type #MON?"
+_CinnabarQuizQuestionsText5:: ; marcelnote - reindexed from 4
+	text "La foudre est"
+	line "efficace contre"
+	cont "les #MON du"
+	cont "sol?"
 	done
 
-_CinnabarQuizQuestionsText6:: ; TODO marcelnote - reindexed from 5
-	text "#MON of the"
-	line "same kind and"
-	cont "level are not"
-	cont "identical?"
+_CinnabarQuizQuestionsText6:: ; marcelnote - reindexed from 5
+	text "Les #MON du"
+	line "même type et du"
+	cont "même niveau sont"
+	cont "différents?"
 	done
 
-_CinnabarQuizQuestionsText7:: ; TODO marcelnote - reindexed from 6
-	text "TM28 contains"
-	line "TOMBSTONER?"
+_CinnabarQuizQuestionsText7:: ; marcelnote - reindexed from 6
+	text "CT28 contient"
+	line "FOSSE?"
 	done
 
 _CinnabarGymQuizCorrectText::
