@@ -40,4 +40,4 @@ DefaultNamesPlayerListF: ; marcelnote - add female player
  	db "NOM:@"
  	db "GREEN@"
  	db "FLORA@"
-  db "AMANDA@"
+ 	db "AMANDA@"

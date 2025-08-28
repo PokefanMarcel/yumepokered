@@ -168,10 +168,8 @@ IF DEF(_FRA)
   INCLUDE "translation/fra/text/Route16FlyHouse.fra.asm"
   INCLUDE "translation/fra/text/Route18Gate.fra.asm" ; marcelnote - merged Route18Gate floors
   INCLUDE "translation/fra/text/Route22Gate.fra.asm"
-
   ; INCLUDE "translation/fra/text/BattleHall.fra.asm"  ; marcelnote - new location
   INCLUDE "text/BattleHall.asm"  ; TODO: manually translate
-
   INCLUDE "translation/fra/text/VictoryRoad2F.fra.asm"
   INCLUDE "translation/fra/text/BillsHouse.fra.asm"
   INCLUDE "translation/fra/text/Route1.fra.asm"
@@ -179,25 +177,19 @@ IF DEF(_FRA)
   INCLUDE "translation/fra/text/Route3.fra.asm"
   INCLUDE "translation/fra/text/Route4.fra.asm"
   INCLUDE "translation/fra/text/Route5.fra.asm"
-
   ; INCLUDE "translation/fra/text/Route5Gate.fra.asm" ; marcelnote - new, added 2nd floor
   INCLUDE "text/Route5Gate.asm" ; TODO: manually translate
-
   INCLUDE "translation/fra/text/Route6.fra.asm"
-
   ; INCLUDE "translation/fra/text/Route6Gate.fra.asm" ; marcelnote - new, added 2nd floor
   INCLUDE "text/Route6Gate.asm" ; TODO: manually translate
 
   INCLUDE "translation/fra/text/Route7.fra.asm"
-
   ; INCLUDE "translation/fra/text/Route7Gate.fra.asm" ; marcelnote - new, added 2nd floor
   INCLUDE "text/Route7Gate.asm" ; TODO: manually translate
-
   INCLUDE "translation/fra/text/Route8.fra.asm"
 
   ; INCLUDE "translation/fra/text/Route8Gate.fra.asm" ; marcelnote - new, added 2nd floor
   INCLUDE "text/Route8Gate.asm" ; TODO: manually translate
-
   INCLUDE "translation/fra/text/Route9.fra.asm"
   INCLUDE "translation/fra/text/Route10.fra.asm"
   INCLUDE "translation/fra/text/Route11.fra.asm"
@@ -274,6 +266,7 @@ ENDC
 
 
 SECTION "Text 6", ROMX
+
 
 IF DEF(_FRA)
   INCLUDE "translation/fra/text/Route24_2.fra.asm"
@@ -429,10 +422,8 @@ IF DEF(_FRA)
 
   ; INCLUDE "translation/fra/text/CinnabarVolcano1FB1F.fra.asm" ; marcelnote - new location
   INCLUDE "text/CinnabarVolcano1FB1F.asm" ; marcelnote - new location ; TODO: manually translate
-
   ; INCLUDE "translation/fra/text/CinnabarVolcano2F.fra.asm" ; marcelnote - new location
   INCLUDE "text/CinnabarVolcano2F.asm" ; marcelnote - new location ; TODO: manually translate
-
   INCLUDE "translation/fra/text/IndigoPlateauLobby.fra.asm"
   INCLUDE "translation/fra/text/CopycatsHouse.fra.asm" ; marcelnote - merged Copycat's house floors
   INCLUDE "translation/fra/text/FightingDojo.fra.asm"
@@ -463,6 +454,7 @@ ENDC
 
 
 SECTION "Text 10", ROMX
+
 
 IF DEF(_FRA)
   INCLUDE "translation/fra/data/text/text_5.fra.asm"
@@ -495,6 +487,7 @@ ELSE
   INCLUDE "data/text/text_6.asm"
   INCLUDE "data/text/text_7.asm" ; marcelnote - moved from Text 11
 ENDC
+
 
 
 SECTION "Text 11", ROMX
