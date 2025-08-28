@@ -272,6 +272,7 @@ ENDC
 
 
 SECTION "Text 6", ROMX
+
 IF DEF(_FRA)
   INCLUDE "translation/fra/text/Route24_2.fra.asm"
   INCLUDE "translation/fra/text/Route25.fra.asm"
@@ -466,9 +467,7 @@ SECTION "Text 10", ROMX
 
 IF DEF(_FRA)
   INCLUDE "translation/fra/data/text/text_5.fra.asm"
-
   INCLUDE "translation/fra/text/PalletTown.fra.asm"
-
   INCLUDE "translation/fra/text/ViridianCity.fra.asm"
   INCLUDE "translation/fra/text/PewterCity.fra.asm"
   INCLUDE "translation/fra/text/CeruleanCity.fra.asm"
@@ -478,16 +477,12 @@ IF DEF(_FRA)
   INCLUDE "translation/fra/text/FuchsiaCity.fra.asm"
   INCLUDE "translation/fra/text/CinnabarIsland.fra.asm"
   INCLUDE "translation/fra/text/SaffronCity.fra.asm"
-
   INCLUDE "translation/fra/data/text/text_4.fra.asm" ; marcelnote - moved from Text 9
   INCLUDE "translation/fra/data/text/text_6.fra.asm"
-
   INCLUDE "translation/fra/data/text/text_7.fra.asm" ; marcelnote - moved from Text 11
 ELSE
   INCLUDE "data/text/text_5.asm"
-
   INCLUDE "text/PalletTown.asm"
-
   INCLUDE "text/ViridianCity.asm"
   INCLUDE "text/PewterCity.asm"
   INCLUDE "text/CeruleanCity.asm"
@@ -497,11 +492,11 @@ ELSE
   INCLUDE "text/FuchsiaCity.asm"
   INCLUDE "text/CinnabarIsland.asm"
   INCLUDE "text/SaffronCity.asm"
-
   INCLUDE "data/text/text_4.asm" ; marcelnote - moved from Text 9
   INCLUDE "data/text/text_6.asm"
   INCLUDE "data/text/text_7.asm" ; marcelnote - moved from Text 11
 ENDC
+
 
 SECTION "Text 11", ROMX
 
@@ -537,7 +532,9 @@ ELSE
   INCLUDE "text/DrJabarasLab.asm"             ; marcelnote - new location
 ENDC
 
+
 SECTION "Text 12", ROMX ; marcelnote - new
+
 IF FALSE ; TODO: manually translate
   INCLUDE "translation/fra/text/PokemonAcademy1F2F.asm"       ; TODO marcelnote - new location
   INCLUDE "translation/fra/text/PokemonAcademy3F4F.asm"       ; TODO marcelnote - new location
@@ -566,7 +563,9 @@ ELSE
   INCLUDE "text/SummerBeachHouse.asm"         ; marcelnote - new location from pokeyellow
 ENDC
 
+
 SECTION "Pokédex Text", ROMX
+
 IF DEF(_FRA)
   INCLUDE "translation/fra/data/pokemon/dex_text.fra.asm"
 ELSE
