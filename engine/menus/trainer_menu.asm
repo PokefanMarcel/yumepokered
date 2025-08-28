@@ -132,10 +132,11 @@ TrainerInfo_FarCopyData:
 	ld a, BANK(TrainerInfoTextBoxTileGraphics)
 	jp FarCopyData2
 
-TrainerInfo_NameMoneyTimeText:
-	db   "NAME/"
-	next "MONEY/"
-	next "TIME/@"
+IF DEF(_FRA)
+	INCLUDE "translation/fra/data/text/menus/trainer_menu.fra.asm"
+ELSE
+	INCLUDE "data/text/menus/trainer_menu.asm"
+ENDC
 
 ; $75 is a circle tile
 TrainerInfo_BadgesText:

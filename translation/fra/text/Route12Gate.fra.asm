@@ -34,21 +34,3 @@ _Route12Gate2FBrunetteGirlTM39NoRoomText::
 	text "Ton inventaire"
 	line "est plein!"
 	done
-
-_Route12Gate2FLeftBinocularsText::
-	text "Vous regardez"
-	line "dans les"
-	cont "jumelles."
-
-	para "Vous voyez un"
-	line "pêcheur!"
-	done
-
-_Route12Gate2FRightBinocularsText::
-	text "Vous regardez"
-	line "dans les"
-	cont "jumelles."
-
-	para "Vous voyez la"
-	line "TOUR #MON!"
-	done

@@ -29,6 +29,14 @@ _CinnabarLabTestingRoomSignText::
 	line "Testing Room"
 	done
 
+_CinnabarLabPhoneText:: ; marcelnote - new pay phones
+	text "A pay phone?"
+
+	para "It doesn't seem"
+	line "to be working..."
+	done
+
+
 _CinnabarLabTradeRoomSuperNerdText::
 	text "I found this very"
 	line "strange fossil in"
@@ -38,6 +46,7 @@ _CinnabarLabTradeRoomSuperNerdText::
 	line "rare, prehistoric"
 	cont "#MON!"
 	done
+
 
 _CinnabarLabMetronomeRoomScientist1Text::
 	text "Tch-tch-tch!"
@@ -103,6 +112,7 @@ _CinnabarLabMetronomeRoomPCText::
 _CinnabarLabMetronomeRoomAmberPipeText::
 	text "An amber pipe!"
 	done
+
 
 _CinnabarLabFossilRoomScientist1Text::
 	text "Hiya!"
@@ -181,11 +191,4 @@ _CinnabarLabFossilRoomScientist1GoForAWalkText2::
 _CinnabarLabFossilRoomScientist1ComeAgainText::
 	text "Aiyah! You come"
 	line "again!"
-	done
-
-_CinnabarLabPhoneText:: ; marcelnote - new pay phones
-	text "A pay phone?"
-
-	para "It doesn't seem"
-	line "to be working..."
 	done

@@ -13,7 +13,7 @@ _GameCornerClerk1DoYouNeedSomeGameCoinsText::
 	para "Désirez-vous des"
 	line "jetons?"
 
-	para "¥1000 pour 50"
+	para "1000¥ pour 50" ; marcelnote - was "¥1000"
 	line "jetons. OK?"
 	done
 

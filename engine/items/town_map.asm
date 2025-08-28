@@ -149,7 +149,7 @@ ENDC
 	ld [hli], a
 	ld a, $72 ; second "Land" tile
 	ld [hli], a
-	ld a, $64 ; empty tile
+	ld a, $73 ; third "Land" tile
 	ld [hl], a
 	call WaitForTextScrollButtonPress
 	ldh a, [hJoy5]
@@ -177,11 +177,11 @@ ENDC
 	hlcoord 0, 17
 	ld a, $70 ; A button tile
 	ld [hli], a
-	ld a, $73 ; first "Water" tile
+	ld a, $74 ; first "Water" tile
 	ld [hli], a
-	ld a, $74 ; second "Water" tile
+	ld a, $75 ; second "Water" tile
 	ld [hli], a
-	ld a, $75 ; third "Water" tile
+	ld a, $76 ; third "Water" tile
 	ld [hl], a
 	call WaitForTextScrollButtonPress
 	ldh a, [hJoy5]
@@ -206,11 +206,11 @@ ENDC
 	hlcoord 0, 17
 	ld a, $70 ; A button tile
 	ld [hli], a
-	ld a, $76 ; first "Rods" tile
+	ld a, $77 ; first "Rods" tile
 	ld [hli], a
-	ld a, $77 ; second "Rods" tile
+	ld a, $78 ; second "Rods" tile
 	ld [hli], a
-	ld a, $64 ; empty tile
+	ld a, $79 ; third "Rods" tile
 	ld [hl], a
 	call WaitForTextScrollButtonPress
 	ldh a, [hJoy5]
@@ -235,7 +235,7 @@ ENDC
 	ld [hli], a
 	ld a, $72 ; second "Land" tile
 	ld [hli], a
-	ld a, $64 ; empty tile
+	ld a, $73 ; third "Land" tile
 	ld [hl], a
 	call WaitForTextScrollButtonPress
 	ldh a, [hJoy5]

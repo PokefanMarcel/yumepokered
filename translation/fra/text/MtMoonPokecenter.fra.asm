@@ -26,7 +26,7 @@ _MtMoonPokecenterMagikarpSalesmanIGotADealText::
 
 	para "Je t'offre une"
 	line "MAGICARPE pour"
-	cont "juste ¥500!"
+	cont "juste 500¥!" ; marcelnote - was "¥500"
 	cont "Qu'en dis-tu?"
 	done
 
@@ -48,4 +48,10 @@ _MtMoonPokecenterMagikarpSalesmanNoRefundsText::
 
 _MtMoonPokecenterClipboardText::
 	text_start
+	done
+
+_MtMoonPokecenterBenchGuyText::
+	text "Tu devrais ranger"
+	line "tes #MON en"
+	cont "trop via un PC!"
 	done

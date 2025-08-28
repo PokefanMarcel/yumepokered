@@ -161,156 +161,20 @@ _GymStatueText2::
 	cont "<PLAYER>"
 	done
 
-_GymStatueText3:: ; TODO
+_GymStatueText3::
+	text "ARENE #MON"
+	line "de @"
 	text_ram wGymCityName
 	text_start
-	line "#MON GYM"
-	cont "LEADER: @"
+	cont "CHAMPION:"
+	cont "@"
 	text_ram wGymLeaderName
 	text_start
 
-	para "WINNING TRAINERS:"
+	para "VAINQUEURS:"
 	line "<RIVAL>"
 	cont "<PLAYER>"
 	cont "YELLOW"
-	done
-
-_ViridianCityPokecenterGuyText::
-	text "Les CENTRES"
-	line "#MON soignent"
-	cont "tous les #MON"
-	cont "blessés ou K.O.!"
-	done
-
-_PewterCityPokecenterGuyText::
-	text "(Baille)!"
-
-	para "Lorsque RONDOUDOU"
-	line "chante, tous les"
-	cont "#MON piquent"
-	cont "du nez..."
-
-	para "...Moi aussi..."
-	line "(Pionce)..."
-	done
-
-_CeruleanPokecenterGuyText::
-	text "LEO a une sacrée"
-	line "collection de"
-	cont "#MON!"
-
-	para "Et des rares, en"
-	line "plus..."
-	done
-
-_LavenderPokecenterGuyText::
-	text "Les OSSELAIT"
-	line "portent un crâne,"
-	cont "non?"
-
-	para "Certains seraient"
-	line "prêts à en payer"
-	cont "le prix fort!"
-	done
-
-_MtMoonPokecenterBenchGuyText::
-	text "Tu devrais ranger"
-	line "tes #MON en"
-	cont "trop via un PC!"
-	done
-
-_RockTunnelPokecenterGuyText::
-	text "On m'a dit qu'il"
-	line "y a des SPECTRES"
-	cont "à LAVANVILLE!"
-	done
-
-_UnusedBenchGuyText1::
-	text "Moi aussi j'veux"
-	line "capturer un"
-	cont "#MON."
-	done
-
-_UnusedBenchGuyText2::
-	text "La fatigue..."
-	cont "Doucement..."
-	cont "Me gagne..."
-	done
-
-_UnusedBenchGuyText3::
-	text "Le patron de la"
-	line "SYLPHE se cache"
-	cont "dans le PARC"
-	cont "SAFARI."
-	done
-
-_VermilionPokecenterGuyText::
-	text "C'est vrai qu'un"
-	line "#MON de haut"
-	cont "niveau est très"
-	cont "puissant..."
-
-	para "Mais tout #MON"
-	line "est vulnérable"
-	cont "face à un certain"
-	cont "élément."
-
-	para "Il n'y a donc pas"
-	line "de #MON de"
-	cont "la mort qui tue."
-	done
-
-_CeladonCityPokecenterGuyText::
-	text "Si j'avais une"
-	line "BICYCLETTE,"
-	cont "j'irais sur la"
-	cont "PISTE CYCLABLE!"
-	done
-
-_FuchsiaCityPokecenterGuyText::
-	text "LE PARC SAFARI"
-	line "regorge de"
-	cont "#MON."
-
-	para "On y trouve aussi"
-	line "de très rares!"
-	done
-
-_CinnabarPokecenterGuyText::
-	text "Les #MON"
-	line "peuvent apprendre"
-	cont "des techniques"
-	cont "même après avoir"
-	cont "annulé une"
-	cont "évolution."
-
-	para "On peut lancer"
-	line "une évolution"
-	cont "après avoir"
-	cont "appris une"
-	cont "technique!!!"
-	done
-
-_SaffronCityPokecenterGuyText1::
-	text "Pourquoi le"
-	line "CONSEIL des 4 ne"
-	cont "vient pas casser"
-	cont "les dents de la"
-	cont "TEAM ROCKET?"
-	done
-
-_SaffronCityPokecenterGuyText2::
-	text "La TEAM ROCKET"
-	line "est partie! Alors"
-	cont "c'est la fête!"
-	cont "Youpi!"
-	done
-
-_CeladonCityHotelText::
-	text "Je suis en"
-	line "vacances avec ma"
-	cont "soeur... "
-	cont "Ca craint à mort!"
 	done
 
 _BookcaseText::
@@ -381,45 +245,43 @@ _CinnabarGymQuizIntroText::
 
 
 _CinnabarQuizQuestionsText1::
-	text "METAPOD evolves" ; TODO marcelnote - changed from CATERPIE
-	line "into BUTTERFREE?"
+	text "CHRYSACIER évolue" ; marcelnote - changed from CATERPIE
+	line "en PAPILUSION?"
 	done
 
-_CinnabarQuizQuestionsText2:: ; TODO marcelnote - new quiz question for 2nd trainer
-	text "VULPIX and"
-	line "NINETALES are"
-	cont "able to learn"
-	cont "WILL-O-WISP?"
+_CinnabarQuizQuestionsText2:: ; marcelnote - new quiz question for 2nd trainer
+	text "GOUPIX et FEUNARD"
+	line "apprennent"
+	cont "FEU FOLLET?"
 	done
 
-_CinnabarQuizQuestionsText3:: ; TODO marcelnote - reindexed from 2
-	text "There are 9"
-	line "certified #MON"
-	cont "LEAGUE BADGEs?"
+_CinnabarQuizQuestionsText3:: ; marcelnote - reindexed from 2
+	text "Il existe 9"
+	line "BADGES #MON?"
 	done
 
-_CinnabarQuizQuestionsText4:: ; TODO marcelnote - reindexed from 3
-	text "POLIWAG evolves 3"
-	line "times?"
+_CinnabarQuizQuestionsText4:: ; marcelnote - reindexed from 3
+	text "PTITARD évolue"
+	line "3 fois?"
 	done
 
-_CinnabarQuizQuestionsText5:: ; TODO marcelnote - reindexed from 4
-	text "Are thunder moves"
-	line "effective against"
-	cont "ground element-"
-	cont "type #MON?"
+_CinnabarQuizQuestionsText5:: ; marcelnote - reindexed from 4
+	text "La foudre est"
+	line "efficace contre"
+	cont "les #MON du"
+	cont "sol?"
 	done
 
-_CinnabarQuizQuestionsText6:: ; TODO marcelnote - reindexed from 5
-	text "#MON of the"
-	line "same kind and"
-	cont "level are not"
-	cont "identical?"
+_CinnabarQuizQuestionsText6:: ; marcelnote - reindexed from 5
+	text "Les #MON du"
+	line "même type et du"
+	cont "même niveau sont"
+	cont "différents?"
 	done
 
-_CinnabarQuizQuestionsText7:: ; TODO marcelnote - reindexed from 6
-	text "TM28 contains"
-	line "TOMBSTONER?"
+_CinnabarQuizQuestionsText7:: ; marcelnote - reindexed from 6
+	text "CT28 contient"
+	line "FOSSE?"
 	done
 
 _CinnabarGymQuizCorrectText::
@@ -643,14 +505,57 @@ _IndigoPlateauHQText::
 	cont "#MON"
 	done
 
-_RedBedroomSNESText::
-	text "<PLAYER> joue à la"
-	line "Super Nintendo!"
-	cont "...Bon!"
-	cont "On y va, non?"
+_Route11GateLeftBinocularsSnorlaxText::
+	text "Vous regardez"
+	line "dans les"
+	cont "jumelles."
+
+	para "Un énorme"
+	line "#MON dort"
+	cont "sur la route!"
 	done
 
-_Route15UpstairsBinocularsText:: ; TODO
+_Route11GateLeftBinocularsNoSnorlaxText::
+	text "Vous regardez"
+	line "dans les"
+	cont "jumelles."
+
+	para "C'est très beau!"
+	line "... "
+	cont "Bon! On y va?"
+	done
+
+_Route11GateRightBinocularsText::
+	text "Vous regardez"
+	line "dans les"
+	cont "jumelles."
+
+	para "Il n'y a qu'un"
+	line "seul chemin pour"
+	cont "aller de AZURIA"
+	cont "à LAVANVILLE:"
+	cont "la GROTTE!"
+	done
+
+_Route12GateLeftBinocularsText::
+	text "Vous regardez"
+	line "dans les"
+	cont "jumelles."
+
+	para "Vous voyez un"
+	line "pêcheur!"
+	done
+
+_Route12GateRightBinocularsText::
+	text "Vous regardez"
+	line "dans les"
+	cont "jumelles."
+
+	para "Vous voyez la"
+	line "TOUR #MON!"
+	done
+
+_Route15GateLeftBinocularsText::
 	text "Vous regardez"
 	line "dans les"
 	cont "jumelles..."
@@ -660,114 +565,71 @@ _Route15UpstairsBinocularsText:: ; TODO
 	cont "la mer."
 	done
 
-_Route11GateLeftBinocularsSnorlaxText:: ; TODO
-	text "Looked into the"
-	line "binoculars."
+_Route15GateRightBinocularsText::
+	text "Vous regardez"
+	line "dans les"
+	cont "jumelles."
 
-	para "A big #MON is"
-	line "asleep on a road!"
+	para "Vous voyez une"
+	line "petite île!"
 	done
 
-_Route11GateLeftBinocularsNoSnorlaxText:: ; TODO
-	text "Looked into the"
-	line "binoculars."
+_Route16GateLeftBinocularsText::
+	text "Vous regardez"
+	line "dans les"
+	cont "jumelles."
 
-	para "It's a beautiful"
-	line "view!"
+	para "Vous voyez le"
+	line "centre commercial"
+	cont "de CELADOPOLE!"
 	done
 
-_Route11GateRightBinocularsText:: ; TODO
-	text "Looked into the"
-	line "binoculars."
+_Route16GateRightBinocularsText::
+	text "Vous regardez"
+	line "dans les"
+	cont "jumelles."
 
-	para "The only way to"
-	line "get from CERULEAN"
-	cont "CITY to LAVENDER"
-	cont "is by way of the"
-	cont "ROCK TUNNEL."
+	para "Vous voyez un"
+	line "grand ponton!"
 	done
 
-_Route12GateLeftBinocularsText:: ; TODO
-	text "Looked into the"
-	line "binoculars."
+_Route18GateLeftBinocularsText::
+	text "Vous regardez"
+	line "dans les"
+	cont "jumelles."
 
-	para "A man fishing!"
+	para "BOURG PALETTE"
+	line "est à l'Ouest!"
 	done
 
-_Route12GateRightBinocularsText:: ; TODO
-	text "Looked into the"
-	line "binoculars."
+_Route18GateRightBinocularsText::
+	text "Vous regardez"
+	line "dans les"
+	cont "jumelles."
 
-	para "It's #MON TOWER!"
+	para "C'est plein"
+	line "de nageurs!"
 	done
 
-_Route15GateLeftBinocularsText:: ; TODO
-	text "Looked into the"
-	line "binoculars..."
+_Route22GateLeftBinocularsText:: ; marcelnote - new
+	text "Vous regardez"
+	line "dans les"
+	cont "jumelles."
 
-	para "A large, shining"
-	line "bird is flying"
-	cont "toward the sea."
-	done
-
-_Route15GateRightBinocularsText:: ; TODO
-	text "Looked into the"
-	line "binoculars."
-
-	para "It looks like a"
-	line "small island!"
-	done
-
-_Route16GateLeftBinocularsText:: ; TODO
-	text "Looked into the"
-	line "binoculars."
-
-	para "It's CELADON DEPT."
-	line "STORE!"
-	done
-
-_Route16GateRightBinocularsText:: ; TODO
-	text "Looked into the"
-	line "binoculars."
-
-	para "There's a long"
-	line "path over water!"
-	done
-
-_Route18GateLeftBinocularsText:: ; TODO
-	text "Looked into the"
-	line "binoculars."
-
-	para "PALLET TOWN is in"
-	line "the west!"
-	done
-
-_Route18GateRightBinocularsText:: ; TODO
-	text "Looked into the"
-	line "binoculars."
-
-	para "There are people"
-	line "swimming!"
-	done
-
-_Route22GateLeftBinocularsText:: ; TODO ; marcelnote - new
-	text "Looked into the"
-	line "binoculars."
-
-	para "A remote mountain"
+	para "A remote mountain" ; TODO
 	line "rises above"
 	cont "the horizon."
 	done
 
-_Route22GateRightBinocularsText:: ; TODO ; marcelnote - new
-	text "Looked into the"
-	line "binoculars."
+_Route22GateRightBinocularsText:: ; marcelnote - new
+	text "Vous regardez"
+	line "dans les"
+	cont "jumelles."
 
-	para "A winding path"
+	para "A winding path" ; TODO
 	line "leads to the"
 	cont "#MON LEAGUE."
 	done
-
 
 _AerodactylFossilText::
 	text "Le fossile du"
@@ -859,8 +721,8 @@ _ViridianBlackboardPrlzText::
 	text "La paralysie peut"
 	line "annuler certaines"
 	cont "attaques!"
-	cont "It also reduces" ; TODO : marcelnote - added
-	cont "speed."
+	cont "Elle réduit aussi" ; marcelnote - added
+	cont "la vitesse."
 
 	para "La paralysie ne"
 	line "disparaît pas"
@@ -873,10 +735,10 @@ _ViridianBlackboardPrlzText::
 
 _ViridianBlackboardBurnText::
 	text "La BRULURE réduit"
-	;line "power and speed."
-	;cont "It also causes"
-	line "power and causes" ; TODO marcelnote - added this line and removed two lines above
-	cont "ongoing damage."
+	line "la puissance et"
+;	cont "la vitesse. Elle" ; marcelnote - mistake, removed
+	cont "inflige aussi des"
+	cont "dégâts continus."
 
 	para "La brûlure ne"
 	line "disparaît pas"
@@ -999,15 +861,15 @@ _PokemonBooksText::
 	line "les #MON!"
 	done
 
-_DiglettSculptureText:: ; TODO marcelnote - modified
-	;text "It's a sculpture" ; original Red/Blue
-	;line "of DIGLETT."
-	;text "It's a statue of" ; translation from shinpokered of original Japanese
-	;line "a fat Buddha."
-	text "It's an altar with" ; new version
-	line "a small statue."
-	;text "An altar with a" ; variant
-	;line "peaceful statue."
+_DiglettSculptureText:: ; marcelnote - modified
+;	text "Une sculpture de" ; original Rouge/Bleue
+;	line "TAUPIQUEUR."
+;	text "It's a statue of" ; translation from shinpokered of original Japanese
+;	line "a fat Buddha."
+	text "Un autel avec" ; new version
+	line "une petite statue."
+;	text "An altar with a" ; variant
+;	line "peaceful statue."
 	done
 
 _ElevatorText::
@@ -1448,8 +1310,9 @@ _GainedText::
 ;	cont "@"
 ;	text_end
 
-_ExpAllIsOnText:: ; TODO: marcelnote - shortened ExpAll messages
-	text "EXP.ALL is on!"
+_ExpAllIsOnText:: ; marcelnote - shortened ExpAll messages
+	text "Le MULTI. EXP"
+	line "est allumé!"
 	prompt
 
 _BoostedText::
@@ -2012,9 +1875,9 @@ _OakSpeechText3::
 	cont "t'attend! Dingue!"
 	done
 
-_BoyGirlText:: ; TODO : joenote - add female player
-	text "Are you a boy or"
-	line "a girl?"
+_BoyGirlText:: ; joenote - add female player
+	text "Es-tu un garçon"
+	line "ou une fille?"
 	done
 
 _DoYouWantToNicknameText::
@@ -2054,8 +1917,8 @@ _ContCharText::
 	text "<_CONT>@"
 	text_end
 
-_TMItContainsText:: ; TODO marcelnote - new for TM printing
-	text "It contains"
+_TMItContainsText:: ; marcelnote - new for TM printing
+	text "Elle contient:"
 	line "@"
 	text_ram wStringBuffer
 	text "."

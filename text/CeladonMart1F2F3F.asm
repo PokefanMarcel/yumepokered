@@ -39,6 +39,7 @@ _CeladonMart1FPhoneText:: ; marcelnote - new
 	line "to be working..."
 	done
 
+
 _CeladonMart2FMiddleAgedManText::
 	text "SUPER REPEL keeps"
 	line "weak #MON at"
@@ -74,6 +75,7 @@ _CeladonMart2FCurrentFloorSignText::
 	para "2F: TRAINER'S"
 	line "    MARKET"
 	done
+
 
 _CeladonMart3FClerkTM18PreReceiveText::
 	text "Oh, hi! I finally"

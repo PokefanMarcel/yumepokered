@@ -80,7 +80,6 @@ INCLUDE "gfx/font.asm"
 
 SECTION "Battle Engine 1", ROMX
 
-INCLUDE "engine/overworld/is_player_just_outside_map.asm"
 INCLUDE "engine/pokemon/status_screen.asm"
 INCLUDE "engine/menus/party_menu.asm"
 INCLUDE "gfx/player.asm"
@@ -277,6 +276,7 @@ INCLUDE "gfx/trainer_card.asm" ; marcelnote - moved from Battle Engine 5
 SECTION "Trainer Sight", ROMX
 
 INCLUDE "engine/overworld/trainer_sight.asm"
+INCLUDE "engine/overworld/is_player_just_outside_map.asm" ; marcelnote - moved from Battle Engine 1
 
 
 SECTION "Battle Engine 10", ROMX
