@@ -276,10 +276,7 @@ SECTION "Text 6", ROMX
 IF DEF(_FRA)
   INCLUDE "translation/fra/text/Route24_2.fra.asm"
   INCLUDE "translation/fra/text/Route25.fra.asm"
-
-  ; INCLUDE "translation/fra/text/Route28.fra.asm" ; marcelnote - new location
-  INCLUDE "text/Route28.asm" ; marcelnote - new location ; TODO: manually translate
-
+  INCLUDE "translation/fra/text/Route28.fra.asm" ; marcelnote - new location
   INCLUDE "translation/fra/data/text/text_3.fra.asm"
   INCLUDE "translation/fra/text/RedsYellowsHouses.fra.asm" ; marcelnote - merged RedsHouse floors, added YellowsHouse
   INCLUDE "translation/fra/text/BluesAidesHouses.fra.asm" ; marcelnote - merged Blue's house with new Aide's house
