@@ -421,9 +421,7 @@ SECTION "Text 9", ROMX
 IF DEF(_FRA)
   INCLUDE "translation/fra/text/FuchsiaGym_2.fra.asm"
   INCLUDE "translation/fra/text/FuchsiaMeetingRoom.fra.asm"
-  ; INCLUDE "translation/fra/text/FuchsiaSuperRodHouse.fra.asm" ; marcelnote - from Good to Super Rod
-  INCLUDE "text/FuchsiaSuperRodHouse.asm" ; marcelnote - from Good to Super Rod ; TODO: manually translate
-
+  INCLUDE "translation/fra/text/FuchsiaSuperRodHouse.fra.asm" ; marcelnote - from Good to Super Rod
   INCLUDE "translation/fra/text/PokemonMansion1F.fra.asm"
   INCLUDE "translation/fra/text/CinnabarGym.fra.asm"
   ; INCLUDE "translation/fra/text/CinnabarLab.fra.asm" ; marcelnote - merged Cinnabar Lab maps
