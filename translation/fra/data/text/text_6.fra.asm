@@ -238,14 +238,14 @@ _BoxFullCannotThrowBallText::
 	prompt
 
 
-_ExpAllActivatedText:: ; TODO marcelnote - ExpAll can be activated/deactivated
-	text "<PLAYER> switched"
-	line "on EXP.ALL."
+_ExpAllActivatedText:: ; marcelnote - ExpAll can be activated/deactivated
+	text "<PLAYER> allume"
+	line "le MULTI. EXP."
 	prompt
 
-_ExpAllDeactivatedText:: ; TODO marcelnote - ExpAll can be activated/deactivated
-	text "<PLAYER> switched"
-	line "off EXP.ALL."
+_ExpAllDeactivatedText:: ; marcelnote - ExpAll can be activated/deactivated
+	text "<PLAYER> éteint"
+	line "le MULTI. EXP."
 	prompt
 
 _PokeBeeperSpaceLeftText:: ; TODO marcelnote - new for PokéBeeper
