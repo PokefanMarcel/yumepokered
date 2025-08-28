@@ -1,3 +1,28 @@
+_LavenderPokecenterGentlemanText::
+	text "La TEAM ROCKET"
+	line "ferait n'importe"
+	cont "quoi pour de"
+	cont "l'argent!"
+	done
+
+_LavenderPokecenterLittleGirlText::
+	text "J'ai vu la mère"
+	line "de OSSELAIT se"
+	cont "faire tuer par la"
+	cont "TEAM ROCKET!"
+	done
+
+_LavenderPokecenterBenchGuyText::
+	text "Les OSSELAIT"
+	line "portent un crâne,"
+	cont "non?"
+
+	para "Certains seraient"
+	line "prêts à en payer"
+	cont "le prix fort!"
+	done
+
+
 _LavenderMartBaldingGuyText::
 	text "Je cherche des"
 	line "objets permettant"

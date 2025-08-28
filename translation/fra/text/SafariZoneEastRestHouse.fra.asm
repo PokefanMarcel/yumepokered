@@ -17,3 +17,9 @@ _SafariZoneEastRestHouseSilphWorkerMText::
 	text "Pffff!"
 	line "J'en ai marre!"
 	done
+
+;_UnusedBenchGuyText2:: ; marcelnote - second translation for text above
+;	text "La fatigue..."
+;	cont "Doucement..."
+;	cont "Me gagne..."
+;	done

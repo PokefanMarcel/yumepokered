@@ -303,8 +303,7 @@ IF DEF(_FRA)
   INCLUDE "text/BluesAidesHouses.asm" ; marcelnote - merged Blue's house with new Aide's house ; TODO: manually translate
   INCLUDE "translation/fra/text/OaksLab.fra.asm"
   INCLUDE "translation/fra/text/pokedex_ratings.fra.asm"
-  ; INCLUDE "translation/fra/text/ViridianPokecenterMart.fra.asm" ; marcelnote - merged Viridian Pokecenter and Mart
-  INCLUDE "text/ViridianPokecenterMart.asm" ; marcelnote - merged Viridian Pokecenter and Mart ; TODO: manually translate
+  INCLUDE "translation/fra/text/ViridianPokecenterMart.fra.asm" ; marcelnote - merged Viridian Pokecenter and Mart
   INCLUDE "translation/fra/text/ViridianSchoolHouse.fra.asm"
   INCLUDE "translation/fra/text/ViridianNicknameHouse.fra.asm"
   INCLUDE "translation/fra/text/ViridianGym.fra.asm"
@@ -341,20 +340,14 @@ IF DEF(_FRA)
   INCLUDE "translation/fra/text/PewterGym_2.fra.asm"
   INCLUDE "translation/fra/text/PewterNidoranHouse.fra.asm"
   INCLUDE "translation/fra/text/PewterSpeechHouse.fra.asm"
-  ; INCLUDE "translation/fra/text/PewterPokecenterMart.fra.asm" ; marcelnote - merged Vermilion Pokecenter and Mart
-  INCLUDE "text/PewterPokecenterMart.asm" ; marcelnote - merged Vermilion Pokecenter and Mart ; TODO: manually translate
-
+  INCLUDE "translation/fra/text/PewterPokecenterMart.fra.asm" ; marcelnote - merged Pewter Pokecenter and Mart
   INCLUDE "translation/fra/text/CeruleanTrashedHouse.fra.asm"
   INCLUDE "translation/fra/text/CeruleanTradeHouse.fra.asm"
-  ; INCLUDE "translation/fra/text/CeruleanPokecenterMart.fra.asm" ; marcelnote - merged Cerulean Pokecenter and Mart
-  INCLUDE "text/CeruleanPokecenterMart.asm" ; marcelnote - merged Cerulean Pokecenter and Mart ; TODO: manually translate
-
+  INCLUDE "translation/fra/text/CeruleanPokecenterMart.fra.asm" ; marcelnote - merged Cerulean Pokecenter and Mart
   INCLUDE "translation/fra/text/CeruleanGym.fra.asm"
   INCLUDE "translation/fra/text/BikeShop.fra.asm"
   INCLUDE "translation/fra/text/CeruleanBadgeHouse.fra.asm"
-  ; INCLUDE "translation/fra/text/LavenderPokecenterMart.fra.asm" ; marcelnote - merged Lavender Pokecenter and Mart
-  INCLUDE "text/LavenderPokecenterMart.asm" ; marcelnote - merged Lavender Pokecenter and Mart ; TODO: manually translate
-
+  INCLUDE "translation/fra/text/LavenderPokecenterMart.fra.asm" ; marcelnote - merged Lavender Pokecenter and Mart
   INCLUDE "translation/fra/text/PokemonTower1F.fra.asm"
   INCLUDE "translation/fra/text/PokemonTower2F.fra.asm"
   INCLUDE "translation/fra/text/PokemonTower3F.fra.asm"
@@ -365,16 +358,14 @@ IF DEF(_FRA)
   INCLUDE "translation/fra/text/MrFujisHouse.fra.asm"
   INCLUDE "translation/fra/text/LavenderCuboneHouse.fra.asm"
   INCLUDE "translation/fra/text/NameRatersHouse.fra.asm"
-  ; INCLUDE "translation/fra/text/VermilionPokecenterMart.fra.asm" ; marcelnote - merged Vermilion Pokecenter and Mart
-  INCLUDE "text/VermilionPokecenterMart.asm" ; marcelnote - merged Vermilion Pokecenter and Mart ; TODO: manually translate
-
+  INCLUDE "translation/fra/text/VermilionPokecenterMart.fra.asm" ; marcelnote - merged Vermilion Pokecenter and Mart
   INCLUDE "translation/fra/text/PokemonFanClub.fra.asm"
   INCLUDE "translation/fra/text/VermilionGym.fra.asm"
 ELSE
   INCLUDE "text/PewterGym_2.asm"
   INCLUDE "text/PewterNidoranHouse.asm"
   INCLUDE "text/PewterSpeechHouse.asm"
-  INCLUDE "text/PewterPokecenterMart.asm" ; marcelnote - merged Vermilion Pokecenter and Mart
+  INCLUDE "text/PewterPokecenterMart.asm" ; marcelnote - merged Pewter Pokecenter and Mart
   INCLUDE "text/CeruleanTrashedHouse.asm"
   INCLUDE "text/CeruleanTradeHouse.asm"
   INCLUDE "text/CeruleanPokecenterMart.asm" ; marcelnote - merged Cerulean Pokecenter and Mart
@@ -427,9 +418,7 @@ IF DEF(_FRA)
   INCLUDE "translation/fra/text/CeladonChiefHouse.fra.asm"
   INCLUDE "translation/fra/text/CeladonHotel.fra.asm"
   INCLUDE "translation/fra/text/FuchsiaBillsGrandpasHouse.fra.asm"
-  ; INCLUDE "translation/fra/text/FuchsiaPokecenterMart.fra.asm" ; marcelnote - merged Fuchsia Pokecenter and Mart
-  INCLUDE "text/FuchsiaPokecenterMart.asm" ; marcelnote - merged Fuchsia Pokecenter and Mart ; TODO: manually translate
-
+  INCLUDE "translation/fra/text/FuchsiaPokecenterMart.fra.asm" ; marcelnote - merged Fuchsia Pokecenter and Mart
   INCLUDE "translation/fra/text/WardensHouse.fra.asm"
   INCLUDE "translation/fra/text/SafariZoneGate.fra.asm"
   INCLUDE "translation/fra/text/FuchsiaGym.fra.asm"
@@ -472,9 +461,7 @@ IF DEF(_FRA)
   ; INCLUDE "translation/fra/text/CinnabarLab.fra.asm" ; marcelnote - merged Cinnabar Lab maps
   INCLUDE "text/CinnabarLab.asm" ; marcelnote - merged Cinnabar Lab maps ; TODO: manually translate
 
-  ; INCLUDE "translation/fra/text/CinnabarPokecenterMart.fra.asm" ; marcelnote - merged Cinnabar Pokecenter and Mart
-  INCLUDE "text/CinnabarPokecenterMart.asm" ; marcelnote - merged Cinnabar Pokecenter and Mart ; TODO: manually translate
-
+  INCLUDE "translation/fra/text/CinnabarPokecenterMart.fra.asm" ; marcelnote - merged Cinnabar Pokecenter and Mart
   ; INCLUDE "translation/fra/text/CinnabarVolcano1FB1F.fra.asm" ; marcelnote - new location
   INCLUDE "text/CinnabarVolcano1FB1F.asm" ; marcelnote - new location ; TODO: manually translate
 
@@ -489,12 +476,8 @@ IF DEF(_FRA)
   INCLUDE "translation/fra/text/SaffronGym.fra.asm"
   INCLUDE "translation/fra/text/SaffronPidgeyHouse.fra.asm"
   INCLUDE "translation/fra/text/SilphCo1F.fra.asm"
-  ; INCLUDE "translation/fra/text/SaffronPokecenterMart.fra.asm" ; marcelnote - merged Saffron Pokecenter and Mart
-  INCLUDE "text/SaffronPokecenterMart.asm" ; marcelnote - merged Saffron Pokecenter and Mart ; TODO: manually translate
-
+  INCLUDE "translation/fra/text/SaffronPokecenterMart.fra.asm" ; marcelnote - merged Saffron Pokecenter and Mart
   INCLUDE "translation/fra/text/MrPsychicsHouse.fra.asm"
-
-  INCLUDE "translation/fra/data/text/text_4.fra.asm"
 ELSE
   INCLUDE "text/FuchsiaGym_2.asm"
   INCLUDE "text/FuchsiaMeetingRoom.asm"
@@ -513,12 +496,11 @@ ELSE
   INCLUDE "text/SilphCo1F.asm"
   INCLUDE "text/SaffronPokecenterMart.asm" ; marcelnote - merged Saffron Pokecenter and Mart
   INCLUDE "text/MrPsychicsHouse.asm"
-
-  INCLUDE "data/text/text_4.asm"
 ENDC
 
 
 SECTION "Text 10", ROMX
+
 IF DEF(_FRA)
   INCLUDE "translation/fra/data/text/text_5.fra.asm"
 
@@ -534,6 +516,7 @@ IF DEF(_FRA)
   INCLUDE "translation/fra/text/CinnabarIsland.fra.asm"
   INCLUDE "translation/fra/text/SaffronCity.fra.asm"
 
+  INCLUDE "translation/fra/data/text/text_4.fra.asm" ; marcelnote - moved from Text 9
   INCLUDE "translation/fra/data/text/text_6.fra.asm"
 
   INCLUDE "translation/fra/data/text/text_7.fra.asm" ; marcelnote - moved from Text 11
@@ -552,22 +535,33 @@ ELSE
   INCLUDE "text/CinnabarIsland.asm"
   INCLUDE "text/SaffronCity.asm"
 
+  INCLUDE "data/text/text_4.asm" ; marcelnote - moved from Text 9
   INCLUDE "data/text/text_6.asm"
   INCLUDE "data/text/text_7.asm" ; marcelnote - moved from Text 11
 ENDC
 
 SECTION "Text 11", ROMX
 
-IF FALSE ; TODO: manually translate
-  INCLUDE "translation/fra/text/MandarinIsland.asm"           ; TODO marcelnote - new location
-  INCLUDE "translation/fra/text/MandarinPokecenterMart.asm"   ; TODO marcelnote - new location
-  INCLUDE "translation/fra/text/MandarinSurfShop.asm"         ; TODO marcelnote - new location
-  INCLUDE "translation/fra/text/MandarinHotel.asm"            ; TODO marcelnote - new location
-  INCLUDE "translation/fra/text/MandarinSilphCo.asm"          ; TODO marcelnote - new location
-  INCLUDE "translation/fra/text/SilphFactory1F.asm"           ; TODO marcelnote - new location
-  INCLUDE "translation/fra/text/SilphFactory2F.asm"           ; TODO marcelnote - new location
-  INCLUDE "translation/fra/text/OrangeRoute1.asm"             ; TODO marcelnote - new location
-  INCLUDE "translation/fra/text/DrJabarasLab.asm"             ; TODO marcelnote - new location
+IF DEF(_FRA) ; TODO: manually translate
+;  INCLUDE "translation/fra/text/MandarinIsland.fra.asm"        ; TODO marcelnote - new location
+  INCLUDE "text/MandarinIsland.asm"           ; marcelnote - new location
+
+  INCLUDE "translation/fra/text/MandarinPokecenterMart.fra.asm" ; marcelnote - new location
+
+;  INCLUDE "translation/fra/text/MandarinSurfShop.fra.asm"             ; TODO marcelnote - new location
+  INCLUDE "text/MandarinSurfShop.asm"         ; marcelnote - new location
+;  INCLUDE "translation/fra/text/MandarinHotel.fra.asm"                ; TODO marcelnote - new location
+  INCLUDE "text/MandarinHotel.asm"            ; marcelnote - new location
+;  INCLUDE "translation/fra/text/MandarinSilphCo.fra.asm"              ; TODO marcelnote - new location
+  INCLUDE "text/MandarinSilphCo.asm"          ; marcelnote - new location
+;  INCLUDE "translation/fra/text/SilphFactory1F.fra.asm"               ; TODO marcelnote - new location
+  INCLUDE "text/SilphFactory1F.asm"           ; marcelnote - new location
+;  INCLUDE "translation/fra/text/SilphFactory2F.fra.asm"               ; TODO marcelnote - new location
+  INCLUDE "text/SilphFactory2F.asm"           ; marcelnote - new location
+;  INCLUDE "translation/fra/text/OrangeRoute1.fra.asm"                 ; TODO marcelnote - new location
+  INCLUDE "text/OrangeRoute1.asm"             ; marcelnote - new location
+;  INCLUDE "translation/fra/text/DrJabarasLab.fra.asm"                 ; TODO marcelnote - new location
+  INCLUDE "text/DrJabarasLab.asm"             ; marcelnote - new location
 ELSE
   INCLUDE "text/MandarinIsland.asm"           ; marcelnote - new location
   INCLUDE "text/MandarinPokecenterMart.asm"   ; marcelnote - new location

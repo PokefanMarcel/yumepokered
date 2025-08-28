@@ -12,9 +12,8 @@ _RockTunnelPokecenterFisherText::
 	cont "5000¥!"
 	done
 
-
-_RockTunnelPokecenterBenchGuyText:: ; TODO marcelnote - BenchGuy has a sprite
-	text "I heard that"
-	line "GHOSTs haunt"
-	cont "LAVENDER TOWN!"
+_RockTunnelPokecenterBenchGuyText::
+	text "On m'a dit qu'il"
+	line "y a des SPECTRES"
+	cont "à LAVANVILLE!"
 	done

@@ -177,144 +177,6 @@ _GymStatueText3::
 	cont "YELLOW"
 	done
 
-_ViridianCityPokecenterGuyText::
-	text "Les CENTRES"
-	line "#MON soignent"
-	cont "tous les #MON"
-	cont "blessés ou K.O.!"
-	done
-
-_PewterCityPokecenterGuyText::
-	text "(Baille)!"
-
-	para "Lorsque RONDOUDOU"
-	line "chante, tous les"
-	cont "#MON piquent"
-	cont "du nez..."
-
-	para "...Moi aussi..."
-	line "(Pionce)..."
-	done
-
-_CeruleanPokecenterGuyText::
-	text "LEO a une sacrée"
-	line "collection de"
-	cont "#MON!"
-
-	para "Et des rares, en"
-	line "plus..."
-	done
-
-_LavenderPokecenterGuyText::
-	text "Les OSSELAIT"
-	line "portent un crâne,"
-	cont "non?"
-
-	para "Certains seraient"
-	line "prêts à en payer"
-	cont "le prix fort!"
-	done
-
-_MtMoonPokecenterBenchGuyText::
-	text "Tu devrais ranger"
-	line "tes #MON en"
-	cont "trop via un PC!"
-	done
-
-_RockTunnelPokecenterGuyText::
-	text "On m'a dit qu'il"
-	line "y a des SPECTRES"
-	cont "à LAVANVILLE!"
-	done
-
-_UnusedBenchGuyText1::
-	text "Moi aussi j'veux"
-	line "capturer un"
-	cont "#MON."
-	done
-
-_UnusedBenchGuyText2::
-	text "La fatigue..."
-	cont "Doucement..."
-	cont "Me gagne..."
-	done
-
-_UnusedBenchGuyText3::
-	text "Le patron de la"
-	line "SYLPHE se cache"
-	cont "dans le PARC"
-	cont "SAFARI."
-	done
-
-_VermilionPokecenterGuyText::
-	text "C'est vrai qu'un"
-	line "#MON de haut"
-	cont "niveau est très"
-	cont "puissant..."
-
-	para "Mais tout #MON"
-	line "est vulnérable"
-	cont "face à un certain"
-	cont "élément."
-
-	para "Il n'y a donc pas"
-	line "de #MON de"
-	cont "la mort qui tue."
-	done
-
-_CeladonCityPokecenterGuyText::
-	text "Si j'avais une"
-	line "BICYCLETTE,"
-	cont "j'irais sur la"
-	cont "PISTE CYCLABLE!"
-	done
-
-_FuchsiaCityPokecenterGuyText::
-	text "LE PARC SAFARI"
-	line "regorge de"
-	cont "#MON."
-
-	para "On y trouve aussi"
-	line "de très rares!"
-	done
-
-_CinnabarPokecenterGuyText::
-	text "Les #MON"
-	line "peuvent apprendre"
-	cont "des techniques"
-	cont "même après avoir"
-	cont "annulé une"
-	cont "évolution."
-
-	para "On peut lancer"
-	line "une évolution"
-	cont "après avoir"
-	cont "appris une"
-	cont "technique!!!"
-	done
-
-_SaffronCityPokecenterGuyText1::
-	text "Pourquoi le"
-	line "CONSEIL des 4 ne"
-	cont "vient pas casser"
-	cont "les dents de la"
-	cont "TEAM ROCKET?"
-	done
-
-_SaffronCityPokecenterGuyText2::
-	text "La TEAM ROCKET"
-	line "est partie! Alors"
-	cont "c'est la fête!"
-	cont "Youpi!"
-	done
-
-_CeladonCityHotelText::
-	text "Je suis en"
-	line "vacances avec ma"
-	cont "soeur... "
-	cont "Ca craint à mort!"
-	done
-
 _BookcaseText::
 	text "Des bouquins sur"
 	line "les #MON!"
@@ -652,7 +514,7 @@ _RedBedroomSNESText::
 	cont "On y va, non?"
 	done
 
-_Route15UpstairsBinocularsText:: ; TODO
+_Route15GateLeftBinocularsText::
 	text "Vous regardez"
 	line "dans les"
 	cont "jumelles..."
@@ -701,15 +563,6 @@ _Route12GateRightBinocularsText:: ; TODO
 	line "binoculars."
 
 	para "It's #MON TOWER!"
-	done
-
-_Route15GateLeftBinocularsText:: ; TODO
-	text "Looked into the"
-	line "binoculars..."
-
-	para "A large, shining"
-	line "bird is flying"
-	cont "toward the sea."
 	done
 
 _Route15GateRightBinocularsText:: ; TODO

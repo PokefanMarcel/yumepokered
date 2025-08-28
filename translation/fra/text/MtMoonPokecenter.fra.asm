@@ -49,3 +49,9 @@ _MtMoonPokecenterMagikarpSalesmanNoRefundsText::
 _MtMoonPokecenterClipboardText::
 	text_start
 	done
+
+_MtMoonPokecenterBenchGuyText::
+	text "Tu devrais ranger"
+	line "tes #MON en"
+	cont "trop via un PC!"
+	done
