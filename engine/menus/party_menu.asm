@@ -17,6 +17,11 @@ RedrawPartyMenu_::
 	ld c, a
 	ldh [hPartyMonIndex], a
 	ld [wWhichPartyMenuHPBar], a
+IF DEF(_FRA)
+	INCLUDE "translation/fra/data/text/party_menu.fra.asm"
+ELSE
+	INCLUDE "data/text/party_menu.asm"
+ENDC
 .loop
 	ld a, [de]
 	cp $FF ; reached the terminator?
@@ -109,10 +114,6 @@ RedrawPartyMenu_::
 	pop bc
 	inc c
 	jp .loop
-.ableToLearnMoveText
-	db "ABLE@"
-.notAbleToLearnMoveText
-	db "NOT ABLE@"
 .evolutionStoneMenu
 	push hl
 	ld hl, EvosMovesPointerTable
@@ -166,10 +167,6 @@ RedrawPartyMenu_::
 	call PlaceString
 	pop hl
 	jr .printLevel
-.ableToEvolveText
-	db "ABLE@"
-.notAbleToEvolveText
-	db "NOT ABLE@"
 .afterDrawingMonEntries
 	ld b, SET_PAL_PARTY_MENU
 	call RunPaletteCommand
