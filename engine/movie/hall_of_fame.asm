@@ -91,8 +91,6 @@ AnimateHallOfFame:
 	res B_LCDC_BG_MAP, [hl]
 	ret
 
-HallOfFameText:
-	db "HALL OF FAME@"
 
 HoFShowMonOrPlayer:
 	call ClearScreen

@@ -19,16 +19,11 @@ _Route15Gate2FOaksAideExpAllText::
 	line "l'EXP de chaque"
 	cont "#MON."
 
-	para "Si tu n'en as pas"
-	line "besoin, laisse-le"
-	cont "dans ton PC."
-	done
+;	para "Si tu n'en as pas"
+;	line "besoin, laisse-le"
+;	cont "dans ton PC."
 
-_Route15Gate2FBinocularsText::
-	text "Vous regardez"
-	line "dans les"
-	cont "jumelles."
-
-	para "Vous voyez une"
-	line "petite île!"
+	para "Si tu n'en as pas"    ; marcelnote - ExpAll can be activated/deactivated
+	line "besoin, tu peux"
+	cont "l'éteindre."
 	done

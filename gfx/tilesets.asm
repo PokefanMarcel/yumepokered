@@ -1,6 +1,10 @@
 SECTION "Tilesets 1", ROMX
 
+IF DEF(_FRA)
+Overworld_GFX::     INCBIN "translation/fra/gfx/tilesets/overworld.fra.2bpp"
+ELSE
 Overworld_GFX::     INCBIN "gfx/tilesets/overworld.2bpp"
+ENDC
 Overworld_Block::   INCBIN "gfx/blocksets/overworld.bst"
 
 BigHouse_GFX::      INCBIN "gfx/tilesets/big_house.2bpp" ; marcelnote - removed REDS_HOUSE_2 tileset

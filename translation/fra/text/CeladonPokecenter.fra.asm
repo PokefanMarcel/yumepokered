@@ -11,9 +11,9 @@ _CeladonPokecenterBeautyText::
 	cont "depuis PARMANIE!"
 	done
 
-
-_CeladonPokecenterBenchGuyText:: ; TODO marcelnote - BenchGuy has a sprite
-	text "If I had a BIKE,"
-	line "I would go to"
-	cont "CYCLING ROAD!"
+_CeladonPokecenterBenchGuyText:: ; marcelnote - BenchGuy has a sprite
+	text "Si j'avais une"
+	line "BICYCLETTE,"
+	cont "j'irais sur la"
+	cont "PISTE CYCLABLE!"
 	done

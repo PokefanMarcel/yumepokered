@@ -21,7 +21,9 @@ _CeladonHotelSuperNerdText::
 	line "son frère?"
 	done
 
-_CeladonHotelBenchGuyText:: ; TODO marcelnote - BenchGuy has a sprite
-	text "My sis brought me"
-	line "on this vacation!"
+_CeladonHotelBenchGuyText:: ; marcelnote - BenchGuy has a sprite
+	text "Je suis en"
+	line "vacances avec ma"
+	cont "soeur... "
+	cont "Ca craint à mort!"
 	done

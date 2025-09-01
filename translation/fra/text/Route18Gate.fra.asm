@@ -4,12 +4,12 @@ _Route18Gate1FGuardYouNeedABicycleText::
 	cont "PISTE CYCLABLE!"
 	done
 
-_Route18Gate1FGuardCyclingRoadUphillText:: ; TODO
-	text "CYCLING ROAD is"
-	line "all uphill from"
-	cont "here."
+_Route18Gate1FGuardCyclingRoadUphillText::
+	text "La montée de" ; marcelnote - was "descente"
+	line "la PISTE CYCLABLE"
+	cont "commence ici."
 	done
 
-_Route18Gate1FGuardExcuseMeText:: ; TODO
-	text "Excuse me!"
+_Route18Gate1FGuardExcuseMeText::
+	text "Halte!"
 	done

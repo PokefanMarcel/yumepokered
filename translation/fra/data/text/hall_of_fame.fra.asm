@@ -1,3 +1,6 @@
+HallOfFameText:
+	db "CELEBRITE@"
+
 HoFPlayTimeText:
 	db "DUREE JEU@"
 
@@ -5,5 +8,5 @@ HoFMoneyText:
 	db "ARGENT@"
 
 HoFMonInfoText:
-	db   "LEVEL/"
+	db   "NIVEAU/"
 	next "TYPE/@" 

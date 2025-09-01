@@ -78,26 +78,6 @@ _CinnabarGymBlaineTM38NoRoomText::
 	done
 
 _CinnabarGymSuperNerd1BattleText::
-	text "Un #MON du"
-	line "feu, c'est chaud!"
-	done
-
-_CinnabarGymSuperNerd1EndBattleText::
-	text "Yaha!"
-	line "Fait chaud, non?"
-	prompt
-
-_CinnabarGymSuperNerd1AfterBattleText::
-	text "Le feu, ça brûle,"
-	line "les flammes, faut"
-	cont "pas mettre la"
-	cont "main d'dans..."
-
-	para "Brûle, brûle..."
-	line "J'aime le feu..."
-	done
-
-_CinnabarGymSuperNerd2BattleText::
 	text "Avant, j'étais un"
 	line "voleur, j'avais"
 	cont "honte..."
@@ -106,17 +86,37 @@ _CinnabarGymSuperNerd2BattleText::
 	cont "et je suis fier!"
 	done
 
-_CinnabarGymSuperNerd2EndBattleText::
+_CinnabarGymSuperNerd1EndBattleText::
 	text "Ah!"
 	line "J'ai honte, je me"
 	cont "rends!"
 	prompt
 
-_CinnabarGymSuperNerd2AfterBattleText::
+_CinnabarGymSuperNerd1AfterBattleText::
 	text "Je vole, j'y peux"
 	line "rien. Je vole des"
 	cont "#MON, et"
 	cont "j'me marre bien!"
+	done
+
+_CinnabarGymSuperNerd2BattleText::
+	text "Un #MON du"
+	line "feu, c'est chaud!"
+	done
+
+_CinnabarGymSuperNerd2EndBattleText::
+	text "Yaha!"
+	line "Fait chaud, non?"
+	prompt
+
+_CinnabarGymSuperNerd2AfterBattleText::
+	text "Le feu, ça brûle,"
+	line "les flammes, faut"
+	cont "pas mettre la"
+	cont "main d'dans..."
+
+	para "Brûle, brûle..."
+	line "J'aime le feu..."
 	done
 
 _CinnabarGymSuperNerd3BattleText::

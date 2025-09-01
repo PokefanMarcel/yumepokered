@@ -68,7 +68,7 @@ _CinnabarGymBlaineTM38NoRoomText::
 	line "gift!"
 	done
 
-_CinnabarGymSuperNerd1BattleText:: ; this
+_CinnabarGymSuperNerd1BattleText::
 	text "I was a thief, but"
 	line "I became straight"
 	cont "as a trainer!"
@@ -85,7 +85,7 @@ _CinnabarGymSuperNerd1AfterBattleText::
 	cont "people's #MON!"
 	done
 
-_CinnabarGymSuperNerd2BattleText:: ; this
+_CinnabarGymSuperNerd2BattleText::
 	text "Do you know how"
 	line "hot #MON fire"
 	cont "breath can get?"
