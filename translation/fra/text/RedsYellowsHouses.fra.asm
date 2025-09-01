@@ -12,13 +12,13 @@ _RedsHouse1FMomWakeUpText::
 	done
 
 _RedsHouse1FMomYouShouldRestText::
-	text "MERE: <PLAYER>!"
+	text "MAMAN: <PLAYER>!" ; marcelnote - "MERE" to "MAMAN"
 	line "Tu devrais faire"
 	cont "une sieste."
 	prompt
 
 _RedsHouse1FMomLookingGreatText::
-	text "MERE: Ah, bien!"
+	text "MAMAN: Ah, bien!" ; marcelnote - "MERE" to "MAMAN"
 	line "Toi et tes"
 	cont "#MON êtes"
 	cont "en pleine forme!"
