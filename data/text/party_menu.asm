@@ -1,8 +1,8 @@
-.ableToLearnMoveText
+NotAbleToLearnMoveText:
+NotAbleToEvolveText:
+	db "NOT "
+	; fallthrough
+
+AbleToLearnMoveText:
+AbleToEvolveText:
 	db "ABLE@"
-.notAbleToLearnMoveText
-	db "NOT ABLE@"
-.ableToEvolveText
-	db "ABLE@"
-.notAbleToEvolveText
-	db "NOT ABLE@"
