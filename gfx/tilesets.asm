@@ -1,9 +1,9 @@
 SECTION "Tilesets 1", ROMX
 
 IF DEF(_FRA)
-Overworld_GFX::     INCBIN "translation/fra/gfx/tilesets/overworld.fra.2bpp"
+	Overworld_GFX::     INCBIN "translation/fra/gfx/tilesets/overworld.fra.2bpp"
 ELSE
-Overworld_GFX::     INCBIN "gfx/tilesets/overworld.2bpp"
+	Overworld_GFX::     INCBIN "gfx/tilesets/overworld.2bpp"
 ENDC
 Overworld_Block::   INCBIN "gfx/blocksets/overworld.bst"
 
