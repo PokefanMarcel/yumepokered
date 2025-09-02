@@ -92,7 +92,7 @@
 	const MAX_ELIXIR    ; $53 ; marcelnote - renamed from ELIXER
 DEF NUM_ITEMS EQU const_value - 1
 
-; elevator floors use item IDs
+; elevator floors use item IDs (see scripts/CeladonMartElevator.asm and scripts/SilphCoElevator.asm)
 	const FLOOR_B2F     ; $54
 	const FLOOR_B1F     ; $55
 	const FLOOR_1F      ; $56
@@ -128,6 +128,7 @@ DEF NUM_FLOORS EQU const_value - 1 - NUM_ITEMS
 DEF NUM_TYPES_ITEMS EQU const_value - 1 - NUM_ITEMS - NUM_FLOORS
 
 ; marcelnote - cleaned Badges from Item list as in PureRGB
+; badges use item IDs (see scripts/CeruleanBadgeHouse.asm)
 	const BOULDERBADGE  ; $71
 	const CASCADEBADGE  ; $72
 	const THUNDERBADGE  ; $73
