@@ -7,9 +7,9 @@ _JumpMoveEffect:
 	ldh a, [hWhoseTurn]
 	and a
 	ld a, [wPlayerMoveEffect]
-	jr z, .next1
+	jr z, .next
 	ld a, [wEnemyMoveEffect]
-.next1
+.next
 	dec a ; subtract 1, there is no special effect for 00
 	add a ; x2, 16bit pointers
 	ld hl, MoveEffectPointerTable

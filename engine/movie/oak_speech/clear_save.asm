@@ -15,7 +15,7 @@ DoClearSaveDialogue:
 	ld a, [wCurrentMenuItem]
 	and a
 	jp z, Init
-	callfar ClearSAV
+	callfar ClearAllSRAMBanks
 	jp Init
 
 ClearSaveDataText:
