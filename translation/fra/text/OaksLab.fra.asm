@@ -387,11 +387,10 @@ _OaksLabScientistText::
 	cont "ASSISTANT!"
 	done
 
-
-
-_OaksLabScientistOakWentForWalkText:: ; TODO marcelnote - new for Oak battle
-	text "PROF.OAK went out"
-	line "for a walk."
+_OaksLabScientistOakWentForWalkText:: ; marcelnote - new for Oak battle
+	text "Le PROF. CHEN est"
+	line "parti faire sa"
+	cont "promenade."
 	done
 
 _OaksLabRivalShowingDexText:: ; TODO marcelnote - postgame Rival event
