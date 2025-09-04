@@ -1,6 +1,6 @@
 StartMenu_Pokedex::
 	predef ShowPokedexMenu
-	call LoadScreenTilesFromBuffer2 ; restore saved screen
+	call LoadScreenTilesFromBuffer2
 	call Delay3
 	call LoadGBPal
 	call UpdateSprites
@@ -63,7 +63,7 @@ StartMenu_Pokemon::
 	ld [hl], a
 	call HandleMenuInput
 	push af
-	call LoadScreenTilesFromBuffer1 ; restore saved screen
+	call LoadScreenTilesFromBuffer1
 	pop af
 	bit B_PAD_B, a
 	jp nz, .loop
@@ -116,7 +116,7 @@ StartMenu_Pokemon::
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld a, [wObtainedBadges] ; badges obtained
+	ld a, [wObtainedBadges]
 	jp hl
 .outOfBattleMovePointers
 	dw .cut
@@ -288,7 +288,7 @@ NewBadgeRequiredText:
 ; writes a blank tile to all possible menu cursor positions on the party menu
 ErasePartyMenuCursors::
 	hlcoord 0, 1
-	ld bc, 2 * 20 ; menu cursor positions are 2 rows apart
+	ld bc, 2 * SCREEN_WIDTH ; menu cursor positions are 2 rows apart
 	ld a, 6 ; 6 menu cursor positions
 .loop
 	ld [hl], " "
@@ -298,7 +298,7 @@ ErasePartyMenuCursors::
 	ret
 
 ItemMenuLoop:
-	call LoadScreenTilesFromBuffer2DisableBGTransfer ; restore saved screen
+	call LoadScreenTilesFromBuffer2DisableBGTransfer
 	call RunDefaultPaletteCommand
 
 StartMenu_Item:: ; marcelnote - BICYCLE does not have special handling anymore
@@ -345,7 +345,7 @@ StartMenu_Item:: ; marcelnote - BICYCLE does not have special handling anymore
 	ld hl, wBagPocketsFlags ; marcelnote - stop showing the Info box, new for bag pockets
 	res BIT_PRINT_INFO_BOX, [hl]
 	;;;;;;;;;;
-	call LoadScreenTilesFromBuffer2 ; restore saved screen
+	call LoadScreenTilesFromBuffer2
 	call LoadTextBoxTilePatterns
 	call UpdateSprites
 	jp RedisplayStartMenu
@@ -483,8 +483,8 @@ StartMenu_SaveReset::
 	ld a, [wStatusFlags4]
 	bit BIT_LINK_CONNECTED, a
 	jp nz, Init
-	predef SaveSAV ; save the game
-	call LoadScreenTilesFromBuffer2 ; restore saved screen
+	predef SaveMenu
+	call LoadScreenTilesFromBuffer2
 	jp HoldTextDisplayOpen
 
 StartMenu_Option::
@@ -493,7 +493,7 @@ StartMenu_Option::
 	call ClearScreen
 	call UpdateSprites
 	callfar DisplayOptionMenu
-	call LoadScreenTilesFromBuffer2 ; restore saved screen
+	call LoadScreenTilesFromBuffer2
 	call LoadTextBoxTilePatterns
 	call UpdateSprites
 	jp RedisplayStartMenu

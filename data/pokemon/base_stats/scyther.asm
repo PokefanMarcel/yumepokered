@@ -13,10 +13,10 @@
 	db QUICK_ATTACK, LEER, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - added LEER
 	db GROWTH_MEDIUM_FAST ; growth rate
 
-	; tm/hm learnset
+	; tm/hm learnset ; marcelnote - added RAZOR_WIND
 	tmhm SWORDS_DANCE, TOXIC,        TAKE_DOWN,    DOUBLE_EDGE,  HYPER_BEAM,   \
 	     RAGE,         MIMIC,        DOUBLE_TEAM,  BIDE,         SWIFT,        \
-	     SKULL_BASH,   REST,         SUBSTITUTE,   CUT
+	     SKULL_BASH,   REST,         SUBSTITUTE,   CUT,          RAZOR_WIND
 	; end
 
 	; marcelnote - improve Pokemon picture system tutorial

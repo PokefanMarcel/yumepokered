@@ -455,7 +455,6 @@ ENDC
 
 SECTION "Text 10", ROMX
 
-
 IF DEF(_FRA)
   INCLUDE "translation/fra/data/text/text_5.fra.asm"
   INCLUDE "translation/fra/text/PalletTown.fra.asm"

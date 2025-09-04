@@ -1295,6 +1295,7 @@ PonytaEvosMoves:
 	db 34, TAKE_DOWN
 	db 39, FLAMETHROWER ; marcelnote - exclusive to PONYTA
 	db 45, AGILITY
+	; JUMP_KICK?
 	db 0
 
 RapidashEvosMoves:
@@ -1308,6 +1309,7 @@ RapidashEvosMoves:
 	db 38, TAKE_DOWN
 	db 43, HORN_DRILL ; marcelnote - exclusive to RAPIDASH
 	db 50, AGILITY
+	; JUMP_KICK?
 	db 0
 
 SlowpokeEvosMoves:

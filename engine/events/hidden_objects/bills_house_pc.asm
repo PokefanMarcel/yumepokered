@@ -1,8 +1,8 @@
 BillsHousePC:
-	call EnableAutoTextBoxDrawing
 	ld a, [wSpritePlayerStateData1FacingDirection]
 	cp SPRITE_FACING_UP
 	ret nz
+	call EnableAutoTextBoxDrawing
 	CheckEvent EVENT_LEFT_BILLS_HOUSE_AFTER_HELPING
 	jr nz, .displayBillsHousePokemonList
 	CheckEventReuseA EVENT_USED_CELL_SEPARATOR_ON_BILL

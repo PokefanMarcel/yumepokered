@@ -148,22 +148,22 @@ _CeladonMart3FSNESText::
 	text "It's an SNES!"
 	done
 
-_CeladonMart3FRPGText::
+_CeladonMart3FRPGText:: ; marcelnote - hidden object
 	text "An RPG! There's"
 	line "no time for that!"
 	done
 
-_CeladonMart3FSportsGameText::
+_CeladonMart3FSportsGameText:: ; marcelnote - hidden object
 	text "A sports game!"
 	line "Dad'll like that!"
 	done
 
-_CeladonMart3FPuzzleGameText::
+_CeladonMart3FPuzzleGameText:: ; marcelnote - hidden object
 	text "A puzzle game!"
 	line "Looks addictive!"
 	done
 
-_CeladonMart3FFightingGameText::
+_CeladonMart3FFightingGameText:: ; marcelnote - hidden object
 	text "A fighting game!"
 	line "Looks tough!"
 	done

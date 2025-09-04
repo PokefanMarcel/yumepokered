@@ -185,7 +185,6 @@ INCLUDE "engine/movie/title2.asm"
 INCLUDE "engine/slots/slot_machine.asm"
 INCLUDE "engine/math/multiply_divide.asm"
 INCLUDE "engine/slots/game_corner_slots.asm"
-INCLUDE "engine/slots/game_corner_slots2.asm"    ; marcelnote - moved from Battle Engine 5
 
 
 SECTION "Battle Engine 7", ROMX
@@ -259,6 +258,7 @@ INCLUDE "engine/events/card_key.asm"
 INCLUDE "engine/events/prize_menu.asm"
 INCLUDE "engine/events/hidden_objects/school_notebooks.asm"
 INCLUDE "engine/events/hidden_objects/fighting_dojo.asm"
+INCLUDE "engine/events/hidden_objects/celadon_mart.asm" ; marcelnote - new
 INCLUDE "engine/events/hidden_objects/indigo_plateau_hq.asm"
 
 

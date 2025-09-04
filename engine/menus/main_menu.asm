@@ -8,7 +8,7 @@ MainMenu:
 	call CheckForPlayerNameInSRAM
 	jr nc, .mainMenuLoop
 
-	predef LoadSAV
+	predef TryLoadSaveFile
 
 .mainMenuLoop
 	ld c, 20
@@ -132,7 +132,11 @@ MainMenu:
 InitOptions:
 	ld a, 1 << BIT_FAST_TEXT_DELAY
 	ld [wLetterPrintingDelayFlags], a
+IF DEF(_FRA) ; metric by default in French
+	ld a, TEXT_DELAY_FAST | (1 << BIT_UNITS_METRIC)
+ELSE
 	ld a, TEXT_DELAY_FAST ; marcelnote - was TEXT_DELAY_MEDIUM
+ENDC
 	ld [wOptions], a
 	ret
 
@@ -438,8 +442,9 @@ CheckForPlayerNameInSRAM:
 ; in carry.
 	ld a, RAMG_SRAM_ENABLE
 	ld [rRAMG], a
-	ld a, $1
+	ld a, BMODE_ADVANCED
 	ld [rBMODE], a
+	ASSERT BANK(sPlayerName) == BMODE_ADVANCED
 	ld [rRAMB], a
 	ld b, NAME_LENGTH
 	ld hl, sPlayerName

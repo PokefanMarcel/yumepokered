@@ -1,6 +1,6 @@
 HiddenObjectMaps:
 	db REDS_YELLOWS_HOUSES ; marcelnote - merged RedsHouse floors
-	;db BLUES_AIDES_HOUSES
+;	db BLUES_AIDES_HOUSES
 	db OAKS_LAB
 	db VIRIDIAN_POKECENTER_MART ; marcelnote - merged Viridian Pokecenter and Mart
 	db VIRIDIAN_SCHOOL_HOUSE
@@ -17,7 +17,7 @@ HiddenObjectMaps:
 	db CELADON_POKECENTER
 	db CELADON_GYM
 	db GAME_CORNER
-	;db CELADON_HOTEL
+;	db CELADON_HOTEL
 	db FUCHSIA_POKECENTER_MART ; marcelnote - merged Fuchsia Pokecenter and Mart
 	db FUCHSIA_GYM
 	db CINNABAR_GYM
@@ -29,7 +29,7 @@ HiddenObjectMaps:
 	db COLOSSEUM
 	db VIRIDIAN_FOREST
 	db MT_MOON_B2F
-	db INDIGO_PLATEAU
+;	db INDIGO_PLATEAU
 	db ROUTE_25
 	db ROUTE_9
 	db SS_ANNE_KITCHEN
@@ -60,9 +60,9 @@ HiddenObjectMaps:
 	db VICTORY_ROAD_2F
 	db BILLS_HOUSE
 	db VIRIDIAN_CITY
-	;db SAFARI_ZONE_WEST_REST_HOUSE ; marcelnote - inaccessible Hidden objects
-	;db SAFARI_ZONE_EAST_REST_HOUSE
-	;db SAFARI_ZONE_NORTH_REST_HOUSE
+;	db SAFARI_ZONE_WEST_REST_HOUSE ; marcelnote - inaccessible Hidden objects
+;	db SAFARI_ZONE_EAST_REST_HOUSE
+;	db SAFARI_ZONE_NORTH_REST_HOUSE
 	db ROUTE_11_GATE ; marcelnote - binoculars now hidden objects
 	db ROUTE_12_GATE ; marcelnote - binoculars now hidden objects
 	db ROUTE_15_GATE ; marcelnote - merged ROUTE_15_GATE floors
@@ -85,6 +85,8 @@ HiddenObjectMaps:
 	db VERMILION_CITY
 	db CERULEAN_CITY
 	db ROUTE_4
+	db DAYCARE                   ; marcelnote - new
+	db CELADON_MART_1F2F3F       ; marcelnote - new
 	db CINNABAR_VOLCANO_2F       ; marcelnote - new
 	db POKEMON_ACADEMY_3F4F      ; marcelnote - new
 	db MANDARIN_POKECENTER_MART  ; marcelnote - new
@@ -99,7 +101,7 @@ HiddenObjectMaps:
 HiddenObjectPointers:
 ; each of these pointers is for the corresponding map in HiddenObjectMaps
 	dw RedsYellowsHousesHiddenObjects ; marcelnote - merged RedsHouse floors, added YellowsHouse
-	;dw BluesAidesHousesHiddenObjects ; marcelnote - hidden objects were redundant
+;	dw BluesAidesHousesHiddenObjects ; marcelnote - hidden objects were redundant
 	dw OaksLabHiddenObjects
 	dw ViridianPokecenterMartHiddenObjects ; marcelnote - merged Viridian Pokecenter and Mart
 	dw ViridianSchoolHiddenObjects
@@ -116,7 +118,7 @@ HiddenObjectPointers:
 	dw CeladonPokecenterHiddenObjects
 	dw CeladonGymHiddenObjects
 	dw GameCornerHiddenObjects
-	;dw CeladonHotelHiddenObjects
+;	dw CeladonHotelHiddenObjects
 	dw FuchsiaPokecenterMartHiddenObjects ; marcelnote - merged Fuchsia Pokecenter and Mart
 	dw FuchsiaGymHiddenObjects
 	dw CinnabarGymHiddenObjects
@@ -128,7 +130,7 @@ HiddenObjectPointers:
 	dw ColosseumHiddenObjects
 	dw ViridianForestHiddenObjects
 	dw MtMoonB2FHiddenObjects
-	dw IndigoPlateauHiddenObjects
+;	dw IndigoPlateauHiddenObjects
 	dw Route25HiddenObjects
 	dw Route9HiddenObjects
 	dw SSAnneKitchenHiddenObjects
@@ -159,9 +161,9 @@ HiddenObjectPointers:
 	dw VictoryRoad2FHiddenObjects
 	dw BillsHouseHiddenObjects
 	dw ViridianCityHiddenObjects
-	;dw SafariZoneRestHouse2HiddenObjects ; marcelnote - inaccessible Hidden objects
-	;dw SafariZoneRestHouse3HiddenObjects
-	;dw SafariZoneRestHouse4HiddenObjects
+;	dw SafariZoneRestHouse2HiddenObjects ; marcelnote - inaccessible Hidden objects
+;	dw SafariZoneRestHouse3HiddenObjects
+;	dw SafariZoneRestHouse4HiddenObjects
 	dw Route11GateHiddenObjects ; marcelnote - new, binoculars now hidden objects
 	dw Route12GateHiddenObjects ; marcelnote - new, binoculars now hidden objects
 	dw Route15GateHiddenObjects
@@ -184,6 +186,8 @@ HiddenObjectPointers:
 	dw VermilionCityHiddenObjects
 	dw CeruleanCityHiddenObjects
 	dw Route4HiddenObjects
+	dw DaycareHiddenObjects                ; marcelnote - new
+	dw CeladonMart1F2F3FHiddenObjects      ; marcelnote - new
 	dw CinnabarVolcano2FHiddenObjects      ; marcelnote - new
 	dw PokemonAcademy3F4FHiddenObjects     ; marcelnote - new
 	dw MandarinPokecenterMartHiddenObjects ; marcelnote - new
@@ -236,28 +240,28 @@ CinnabarPokecenterMartHiddenObjects:
 MandarinPokecenterMartHiddenObjects:  ; marcelnote - new
 MtMoonPokecenterHiddenObjects:
 RockTunnelPokecenterHiddenObjects:
-	hidden_object  5,  2, SPRITE_FACING_UP, OpenPokemonCenterPC
+	hidden_object  5,  2,  $0, OpenPokemonCenterPC
 	db -1 ; end
 
 IndigoPlateauLobbyHiddenObjects:
-	hidden_object  9,  6, SPRITE_FACING_UP, OpenPokemonCenterPC ; marcelnote - modified map
+	hidden_object  9,  6,  $0, OpenPokemonCenterPC ; marcelnote - modified map
 	db -1 ; end
 
 RedsYellowsHousesHiddenObjects: ; marcelnote - merged RedsHouse floors
-	hidden_object 14,  1, SPRITE_FACING_UP, OpenRedsPC
+	hidden_object 14,  1,  $0, OpenRedsPC
 	db -1 ; end
 
 ;BluesAidesHousesHiddenObjects: ; marcelnote - bookcase text is already handled by bookshelf_tile_ids
-;	hidden_object  0,  1, SPRITE_FACING_UP, PrintBookcaseText
-;	hidden_object  1,  1, SPRITE_FACING_UP, PrintBookcaseText
-;	hidden_object  7,  1, SPRITE_FACING_UP, PrintBookcaseText
+;	hidden_object  0,  1,  $0, PrintBookcaseText
+;	hidden_object  1,  1,  $0, PrintBookcaseText
+;	hidden_object  7,  1,  $0, PrintBookcaseText
 ;	db -1 ; end
 
 OaksLabHiddenObjects:
-	hidden_object  4,  0, SPRITE_FACING_UP, DisplayOakLabLeftPoster
-	hidden_object  5,  0, SPRITE_FACING_UP, DisplayOakLabRightPoster
-	hidden_object  0,  1, SPRITE_FACING_UP, DisplayOakLabEmailText
-	hidden_object  1,  1, SPRITE_FACING_UP, DisplayOakLabEmailText
+	hidden_object  4,  0,  $0, DisplayOakLabLeftPoster
+	hidden_object  5,  0,  $0, DisplayOakLabRightPoster
+	hidden_object  0,  1,  $0, DisplayOakLabEmailText
+	hidden_object  1,  1,  $0, DisplayOakLabEmailText
 	db -1 ; end
 
 
@@ -267,29 +271,29 @@ ViridianSchoolHiddenObjects:
 	db -1 ; end
 
 ViridianGymHiddenObjects:
-	hidden_object 15, 15, SPRITE_FACING_UP, GymStatues
-	hidden_object 18, 15, SPRITE_FACING_UP, GymStatues
+	hidden_object 15, 15,  $0, GymStatues
+	hidden_object 18, 15,  $0, GymStatues
 	db -1 ; end
 
 PewterMuseumHiddenObjects: ; marcelnote - merged Pewter Museum floors
-	hidden_object  2, 15, SPRITE_FACING_UP, AerodactylFossil
-	hidden_object  2, 18, SPRITE_FACING_UP, KabutopsFossil
+	hidden_object  2, 15,  $0, AerodactylFossil
+	hidden_object  2, 18,  $0, KabutopsFossil
 	db -1 ; end
 
 PewterGymHiddenObjects:
-	hidden_object  3, 10, SPRITE_FACING_UP, GymStatues
-	hidden_object  6, 10, SPRITE_FACING_UP, GymStatues
+	hidden_object  3, 10,  $0, GymStatues
+	hidden_object  6, 10,  $0, GymStatues
 	db -1 ; end
 
 CeruleanGymHiddenObjects:
-	hidden_object  3, 11, SPRITE_FACING_UP, GymStatues
-	hidden_object  6, 11, SPRITE_FACING_UP, GymStatues
+	hidden_object  3, 11,  $0, GymStatues
+	hidden_object  6, 11,  $0, GymStatues
 	db -1 ; end
 
 VermilionGymHiddenObjects:
-	hidden_object  3, 14, SPRITE_FACING_UP, GymStatues
-	hidden_object  6, 14, SPRITE_FACING_UP, GymStatues
-	hidden_object  6,  1, SPRITE_FACING_DOWN, PrintTrashText
+	hidden_object  3, 14,  $0, GymStatues
+	hidden_object  6, 14,  $0, GymStatues
+	hidden_object  6,  1,  $0, PrintTrashText
 	; third param: [wGymTrashCanIndex]
 	hidden_object  1,  7,  0, GymTrashScript
 	hidden_object  1,  9,  1, GymTrashScript
@@ -309,51 +313,51 @@ VermilionGymHiddenObjects:
 	db -1 ; end
 
 CeladonMansionHiddenObjects:
-	hidden_object  0, 39, SPRITE_FACING_UP, OpenPokemonCenterPC ; marcelnote - merged Celadon Mansion floors
+	hidden_object  0, 39,  $0, OpenPokemonCenterPC ; marcelnote - merged Celadon Mansion floors
 	db -1 ; end
 
 CeladonGymHiddenObjects:
-	hidden_object  3, 15, SPRITE_FACING_UP, GymStatues
-	hidden_object  6, 15, SPRITE_FACING_UP, GymStatues
+	hidden_object  3, 15,  $0, GymStatues
+	hidden_object  6, 15,  $0, GymStatues
 	db -1 ; end
 
-GameCornerHiddenObjects: ; marcelnote - adjusted for new map size
-	hidden_object 18, 11, ANY_FACING, StartSlotMachine
-	hidden_object 18, 10, ANY_FACING, StartSlotMachine
-	hidden_object 18,  9, ANY_FACING, StartSlotMachine
-	hidden_object 18,  8, ANY_FACING, StartSlotMachine
-	hidden_object 18,  7, ANY_FACING, StartSlotMachine
+GameCornerHiddenObjects: ; marcelnote - adjusted for new map size, changed arguments to $0
+	hidden_object 18, 11,                 $0, StartSlotMachine
+	hidden_object 18, 10,                 $0, StartSlotMachine
+	hidden_object 18,  9,                 $0, StartSlotMachine
+	hidden_object 18,  8,                 $0, StartSlotMachine
+	hidden_object 18,  7,                 $0, StartSlotMachine
 	hidden_object 18,  6, SLOTS_SOMEONESKEYS, StartSlotMachine
-	hidden_object 13,  6, ANY_FACING, StartSlotMachine
-	hidden_object 13,  7, ANY_FACING, StartSlotMachine
-	hidden_object 13,  8, SLOTS_OUTTOLUNCH, StartSlotMachine
-	hidden_object 13,  9, ANY_FACING, StartSlotMachine
-	hidden_object 13, 10, ANY_FACING, StartSlotMachine
-	hidden_object 13, 11, ANY_FACING, StartSlotMachine
-	hidden_object 12, 11, ANY_FACING, StartSlotMachine
-	hidden_object 12, 10, ANY_FACING, StartSlotMachine
-	hidden_object 12,  9, ANY_FACING, StartSlotMachine
-	hidden_object 12,  8, ANY_FACING, StartSlotMachine
-	hidden_object 12,  7, ANY_FACING, StartSlotMachine
-	hidden_object 12,  6, ANY_FACING, StartSlotMachine
-	hidden_object  7,  6, ANY_FACING, StartSlotMachine
-	hidden_object  7,  7, ANY_FACING, StartSlotMachine
-	hidden_object  7,  8, ANY_FACING, StartSlotMachine
-	hidden_object  7,  9, ANY_FACING, StartSlotMachine
-	hidden_object  7, 10, ANY_FACING, StartSlotMachine
-	hidden_object  7, 11, ANY_FACING, StartSlotMachine
-	hidden_object  6, 11, ANY_FACING, StartSlotMachine
-	hidden_object  6, 10, ANY_FACING, StartSlotMachine
-	hidden_object  6,  9, ANY_FACING, StartSlotMachine
-	hidden_object  6,  8, SLOTS_OUTOFORDER, StartSlotMachine
-	hidden_object  6,  7, ANY_FACING, StartSlotMachine
-	hidden_object  6,  6, ANY_FACING, StartSlotMachine
-	hidden_object  1,  6, ANY_FACING, StartSlotMachine
-	hidden_object  1,  7, ANY_FACING, StartSlotMachine
-	hidden_object  1,  8, ANY_FACING, StartSlotMachine
-	hidden_object  1,  9, ANY_FACING, StartSlotMachine
-	hidden_object  1, 10, ANY_FACING, StartSlotMachine
-	hidden_object  1, 11, ANY_FACING, StartSlotMachine
+	hidden_object 13,  6,                 $0, StartSlotMachine
+	hidden_object 13,  7,                 $0, StartSlotMachine
+	hidden_object 13,  8,   SLOTS_OUTTOLUNCH, StartSlotMachine
+	hidden_object 13,  9,                 $0, StartSlotMachine
+	hidden_object 13, 10,                 $0, StartSlotMachine
+	hidden_object 13, 11,                 $0, StartSlotMachine
+	hidden_object 12, 11,                 $0, StartSlotMachine
+	hidden_object 12, 10,                 $0, StartSlotMachine
+	hidden_object 12,  9,                 $0, StartSlotMachine
+	hidden_object 12,  8,                 $0, StartSlotMachine
+	hidden_object 12,  7,                 $0, StartSlotMachine
+	hidden_object 12,  6,                 $0, StartSlotMachine
+	hidden_object  7,  6,                 $0, StartSlotMachine
+	hidden_object  7,  7,                 $0, StartSlotMachine
+	hidden_object  7,  8,                 $0, StartSlotMachine
+	hidden_object  7,  9,                 $0, StartSlotMachine
+	hidden_object  7, 10,                 $0, StartSlotMachine
+	hidden_object  7, 11,                 $0, StartSlotMachine
+	hidden_object  6, 11,                 $0, StartSlotMachine
+	hidden_object  6, 10,                 $0, StartSlotMachine
+	hidden_object  6,  9,                 $0, StartSlotMachine
+	hidden_object  6,  8,   SLOTS_OUTOFORDER, StartSlotMachine
+	hidden_object  6,  7,                 $0, StartSlotMachine
+	hidden_object  6,  6,                 $0, StartSlotMachine
+	hidden_object  1,  6,                 $0, StartSlotMachine
+	hidden_object  1,  7,                 $0, StartSlotMachine
+	hidden_object  1,  8,                 $0, StartSlotMachine
+	hidden_object  1,  9,                 $0, StartSlotMachine
+	hidden_object  1, 10,                 $0, StartSlotMachine
+	hidden_object  1, 11,                 $0, StartSlotMachine
 
 	; marcelnote - see also data/events/hidden_coins.asm
 	hidden_object  0,  4, COIN+10, HiddenCoins
@@ -371,12 +375,12 @@ GameCornerHiddenObjects: ; marcelnote - adjusted for new map size
 	db -1 ; end
 
 FuchsiaGymHiddenObjects:
-	hidden_object  3, 15, SPRITE_FACING_UP, GymStatues
-	hidden_object  6, 15, SPRITE_FACING_UP, GymStatues
+	hidden_object  3, 15,  $0, GymStatues
+	hidden_object  6, 15,  $0, GymStatues
 	db -1 ; end
 
 CinnabarGymHiddenObjects: ; marcelnote - quiz questions 2-6 were reindexed as 3-7
-	hidden_object 17, 13, SPRITE_FACING_UP, GymStatues
+	hidden_object 17, 13,  $0, GymStatues
 	; third param: ([hGymGateAnswer] << 4) | [hGymGateIndex]
 	hidden_object 15,  7, (FALSE << 4) | 1, PrintCinnabarQuiz
 	hidden_object 15,  1, (FALSE << 4) | 2, PrintCinnabarQuiz ; marcelnote - new quiz question
@@ -388,7 +392,7 @@ CinnabarGymHiddenObjects: ; marcelnote - quiz questions 2-6 were reindexed as 3-
 	db -1 ; end
 
 SaffronGymHiddenObjects:
-	hidden_object  9, 15, SPRITE_FACING_UP, GymStatues
+	hidden_object  9, 15,  $0, GymStatues
 	db -1 ; end
 
 ViridianForestHiddenObjects:
@@ -401,10 +405,10 @@ MtMoonB2FHiddenObjects:
 	hidden_object 33,  9, ETHER, HiddenItems
 	db -1 ; end
 
-IndigoPlateauHiddenObjects:
-	hidden_object  8, 13, $ff, PrintIndigoPlateauHQText ; inaccessible
-	hidden_object 11, 13, SPRITE_FACING_DOWN, PrintIndigoPlateauHQText ; inaccessible
-	db -1 ; end
+;IndigoPlateauHiddenObjects: ; marcelnote - removed
+;	hidden_object  8, 13,  $0, PrintIndigoPlateauHQText ; inaccessible
+;	hidden_object 11, 13,  $0, PrintIndigoPlateauHQText ; inaccessible
+;	db -1 ; end
 
 Route25HiddenObjects:
 	hidden_object 38,  3, ETHER, HiddenItems
@@ -416,8 +420,8 @@ Route9HiddenObjects:
 	db -1 ; end
 
 SSAnneKitchenHiddenObjects:
-	hidden_object 13,  5, SPRITE_FACING_DOWN, PrintTrashText
-	hidden_object 13,  7, SPRITE_FACING_DOWN, PrintTrashText
+	hidden_object 13,  5, $0, PrintTrashText
+	hidden_object 13,  7, $0, PrintTrashText
 	hidden_object 13,  9, GREAT_BALL, HiddenItems
 	db -1 ; end
 
@@ -468,7 +472,7 @@ SilphCo9FHiddenObjects:
 	db -1 ; end
 
 SilphCo11FHiddenObjects:
-	hidden_object 10, 12, SPRITE_FACING_UP, OpenPokemonCenterPC
+	hidden_object 10, 12,  $0, OpenPokemonCenterPC
 	db -1 ; end
 
 CopycatsHouseHiddenObjects: ; marcelnote - merged Copycat's house floors
@@ -502,22 +506,22 @@ SeafoamIslandsB4FHiddenObjects:
 
 PokemonMansion1FHiddenObjects:
 	hidden_object  8, 16, MOON_STONE, HiddenItems
-	hidden_object  2,  5, SPRITE_FACING_UP, PokemonMansion1FScript_Switches
+	hidden_object  2,  5, $0, PokemonMansion1FScript_Switches
 	db -1 ; end
 
 PokemonMansion2FHiddenObjects:
-	hidden_object  2, 11, SPRITE_FACING_UP, PokemonMansion2FScript_Switches
+	hidden_object  2, 11, $0, PokemonMansion2FScript_Switches
 	db -1 ; end
 
 PokemonMansion3FHiddenObjects:
 	hidden_object  1,  9, MAX_REVIVE, HiddenItems
-	hidden_object 10,  5, SPRITE_FACING_UP, PokemonMansion3FScript_Switches
+	hidden_object 10,  5, $0, PokemonMansion3FScript_Switches
 	db -1 ; end
 
 PokemonMansionB1FHiddenObjects:
 	hidden_object  1,  9, RARE_CANDY, HiddenItems
-	hidden_object 20,  3, SPRITE_FACING_UP, PokemonMansionB1FScript_Switches
-	hidden_object 18, 25, SPRITE_FACING_UP, PokemonMansionB1FScript_Switches
+	hidden_object 20,  3, $0, PokemonMansionB1FScript_Switches
+	hidden_object 18, 25, $0, PokemonMansionB1FScript_Switches
 	db -1 ; end
 
 Route23HiddenObjects:
@@ -532,7 +536,7 @@ VictoryRoad2FHiddenObjects:
 	db -1 ; end
 
 BillsHouseHiddenObjects:
-	hidden_object  1,  4, SPRITE_FACING_UP, BillsHousePC
+	hidden_object  1,  4,  $0, BillsHousePC
 	db -1 ; end
 
 ViridianCityHiddenObjects:
@@ -540,39 +544,39 @@ ViridianCityHiddenObjects:
 	db -1 ; end
 
 Route11GateHiddenObjects: ; marcelnote - new, binoculars now hidden objects
-	hidden_object  1, 16, SPRITE_FACING_UP, Route11GateLeftBinoculars
-	hidden_object  6, 16, SPRITE_FACING_UP, Route11GateRightBinoculars
+	hidden_object  1, 16,  $0, Route11GateLeftBinoculars
+	hidden_object  6, 16,  $0, Route11GateRightBinoculars
 	db -1 ; end
 
 Route12GateHiddenObjects: ; marcelnote - new, binoculars now hidden objects
-	hidden_object 15,  2, SPRITE_FACING_UP, Route12GateLeftBinoculars
-	hidden_object 20,  2, SPRITE_FACING_UP, Route12GateRightBinoculars
+	hidden_object 15,  2,  $0, Route12GateLeftBinoculars
+	hidden_object 20,  2,  $0, Route12GateRightBinoculars
 	db -1 ; end
 
 Route15GateHiddenObjects: ; marcelnote - merged Route15Gate floors, binoculars now hidden objects
-	hidden_object  1, 16, SPRITE_FACING_UP, Route15GateLeftBinoculars
-	hidden_object  6, 16, SPRITE_FACING_UP, Route15GateRightBinoculars
+	hidden_object  1, 16,  $0, Route15GateLeftBinoculars
+	hidden_object  6, 16,  $0, Route15GateRightBinoculars
 	db -1 ; end
 
 Route16GateHiddenObjects: ; marcelnote - new, binoculars now hidden objects
-	hidden_object  1, 20, SPRITE_FACING_UP, Route16GateLeftBinoculars
-	hidden_object  6, 20, SPRITE_FACING_UP, Route16GateRightBinoculars
+	hidden_object  1, 20,  $0, Route16GateLeftBinoculars
+	hidden_object  6, 20,  $0, Route16GateRightBinoculars
 	db -1 ; end
 
 Route18GateHiddenObjects: ; marcelnote - new, binoculars now hidden objects
-	hidden_object  1, 16, SPRITE_FACING_UP, Route18GateLeftBinoculars
-	hidden_object  6, 16, SPRITE_FACING_UP, Route18GateRightBinoculars
+	hidden_object  1, 16,  $0, Route18GateLeftBinoculars
+	hidden_object  6, 16,  $0, Route18GateRightBinoculars
 	db -1 ; end
 
 Route22GateHiddenObjects: ; marcelnote - new, binoculars now hidden objects
-	hidden_object 26,  2, SPRITE_FACING_UP, Route22GateLeftBinoculars
-	hidden_object 28,  2, SPRITE_FACING_UP, Route22GateRightBinoculars
+	hidden_object 26,  2,  $0, Route22GateLeftBinoculars
+	hidden_object 28,  2,  $0, Route22GateRightBinoculars
 	db -1 ; end
 
 MrFujisHouseHiddenObjects:
-	hidden_object  0,  1, SPRITE_FACING_DOWN, PrintMagazinesText
-	hidden_object  1,  1, SPRITE_FACING_DOWN, PrintMagazinesText
-	hidden_object  7,  1, SPRITE_FACING_DOWN, PrintMagazinesText
+	hidden_object  0,  1,  $0, PrintMagazinesText
+	hidden_object  1,  1,  $0, PrintMagazinesText
+	hidden_object  7,  1,  $0, PrintMagazinesText
 	db -1 ; end
 
 CeladonMansionRoofHouseHiddenObjects:
@@ -582,24 +586,24 @@ CeladonMansionRoofHouseHiddenObjects:
 	db -1 ; end
 
 FightingDojoHiddenObjects:
-	hidden_object  3,  9, SPRITE_FACING_UP, PrintFightingDojoText
-	hidden_object  6,  9, SPRITE_FACING_UP, PrintFightingDojoText
-	hidden_object  4,  0, SPRITE_FACING_UP, PrintFightingDojoText2
-	hidden_object  5,  0, SPRITE_FACING_UP, PrintFightingDojoText3
+	hidden_object  3,  9,  $0, PrintFightingDojoText
+	hidden_object  6,  9,  $0, PrintFightingDojoText
+	hidden_object  4,  0,  $0, PrintFightingDojoText2
+	hidden_object  5,  0,  $0, PrintFightingDojoText3
 	db -1 ; end
 
 CinnabarLabHiddenObjects: ; marcelnote - merged Cinnabar Lab maps
-	hidden_object 52,  4, SPRITE_FACING_UP, OpenPokemonCenterPC
-	hidden_object 54,  4, SPRITE_FACING_UP, OpenPokemonCenterPC
+	hidden_object 52,  4,  $0, OpenPokemonCenterPC
+	hidden_object 54,  4,  $0, OpenPokemonCenterPC
 	db -1 ; end
 
 BikeShopHiddenObjects:
-	hidden_object  1,  0, ANY_FACING, PrintNewBikeText
-	hidden_object  2,  1, ANY_FACING, PrintNewBikeText
-	hidden_object  1,  2, ANY_FACING, PrintNewBikeText
-	hidden_object  3,  2, ANY_FACING, PrintNewBikeText
-	hidden_object  0,  4, ANY_FACING, PrintNewBikeText
-	hidden_object  1,  5, ANY_FACING, PrintNewBikeText
+	hidden_object  1,  0,  $0, PrintNewBikeText
+	hidden_object  2,  1,  $0, PrintNewBikeText
+	hidden_object  1,  2,  $0, PrintNewBikeText
+	hidden_object  3,  2,  $0, PrintNewBikeText
+	hidden_object  0,  4,  $0, PrintNewBikeText
+	hidden_object  1,  5,  $0, PrintNewBikeText
 	db -1 ; end
 
 Route11HiddenObjects:
@@ -644,20 +648,31 @@ Route4HiddenObjects:
 	hidden_object 40,  3, GREAT_BALL, HiddenItems
 	db -1 ; end
 
+DaycareHiddenObjects:  ; marcelnote - new
+	hidden_object  7,  1,  $0, OpenPokemonCenterPC
+	db -1 ; end
+
+CeladonMart1F2F3FHiddenObjects:  ; marcelnote - new
+	hidden_object  3,  4,  $0, PrintCeladonMart3FRPGText
+	hidden_object  6,  4,  $0, PrintCeladonMart3FSportsGameText
+	hidden_object  3,  6,  $0, PrintCeladonMart3FPuzzleGameText
+	hidden_object  6,  6,  $0, PrintCeladonMart3FFightingGameText
+	db -1 ; end
+
 CinnabarVolcano2FHiddenObjects:  ; marcelnote - new
 	hidden_object 23,  5, MAX_ELIXIR, HiddenItems
 	db -1 ; end
 
 PokemonAcademy3F4FHiddenObjects:  ; marcelnote - new
-	hidden_object 24,  0, SPRITE_FACING_UP, OpenPokemonCenterPC
+	hidden_object 24,  0,  $0, OpenPokemonCenterPC
 	db -1 ; end
 
 MandarinSurfShopHiddenObjects:  ; marcelnote - new
-	hidden_object  1,  4, ANY_FACING, PrintNewSurfboardText
-	hidden_object  3,  1, ANY_FACING, PrintNewSurfboardText
-	hidden_object  1,  3, ANY_FACING, PrintNewSurfboardText
-	hidden_object  1,  5, ANY_FACING, PrintNewSurfboardText
-	hidden_object  7,  4, ANY_FACING, PrintNewSurfboardText
+	hidden_object  1,  4,  $0, PrintNewSurfboardText
+	hidden_object  3,  1,  $0, PrintNewSurfboardText
+	hidden_object  1,  3,  $0, PrintNewSurfboardText
+	hidden_object  1,  5,  $0, PrintNewSurfboardText
+	hidden_object  7,  4,  $0, PrintNewSurfboardText
 	db -1 ; end
 
 SilphFactory1FHiddenObjects:  ; marcelnote - new
@@ -679,5 +694,5 @@ MtSilver2FHiddenObjects:  ; marcelnote - new
 	db -1 ; end
 
 BattleHallHiddenObjects:  ; marcelnote - new
-	hidden_object 11,  4, SPRITE_FACING_UP, OpenPokemonCenterPC
+	hidden_object 11,  4,  $0, OpenPokemonCenterPC
 	db -1 ; end

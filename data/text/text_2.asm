@@ -471,10 +471,10 @@ _FightingDojoText::
 	text "FIGHTING DOJO"
 	done
 
-_IndigoPlateauHQText::
-	text "INDIGO PLATEAU"
-	line "#MON LEAGUE HQ"
-	done
+;_IndigoPlateauHQText:: ; marcelnote - inaccessible, removed
+;	text "INDIGO PLATEAU"
+;	line "#MON LEAGUE HQ"
+;	done
 
 _Route11GateLeftBinocularsSnorlaxText::
 	text "Looked into the"

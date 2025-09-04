@@ -36,18 +36,17 @@ CheckForHiddenObject::
 	inc de
 	jr .hiddenMapLoop
 .foundMatchingMap
+	ld hl, wHiddenObjectFunctionRomBank
+	xor a
+	ld [hli], a ; [wHiddenObjectFunctionArgument]
+	ld [hli], a ; [wHiddenObjectFunctionRomBank]
+	ld [hl], a  ; [wHiddenObjectIndex]
 	ld hl, HiddenObjectPointers
 	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	push hl
-	ld hl, wHiddenObjectFunctionArgument
-	xor a
-	ld [hli], a
-	ld [hli], a
-	ld [hl], a
-	pop hl
+	ld de, $04 ; load skip offset
 .hiddenObjectLoop
 	ld a, [hli]
 	cp $ff
@@ -61,18 +60,14 @@ CheckForHiddenObject::
 	ldh a, [hCoordsInFrontOfPlayerMatch]
 	and a
 	jr z, .foundMatchingObject
-	inc hl
-	inc hl
-	inc hl
-	inc hl
-	push hl
-	ld hl, wHiddenObjectIndex
-	inc [hl]
-	pop hl
+	add hl, de ; skip argument, function bank, function address
+	ld a, [wHiddenObjectIndex]
+	inc a
+	ld [wHiddenObjectIndex], a
 	jr .hiddenObjectLoop
 .foundMatchingObject
 	ld a, [hli]
-	ld [wHiddenObjectFunctionArgument], a
+	ld [wHiddenObjectFunctionArgument], a ; SPRITE_FACING_UP, item, quizz answer...
 	ld a, [hli]
 	ld [wHiddenObjectFunctionRomBank], a
 	ld a, [hli]
@@ -80,8 +75,7 @@ CheckForHiddenObject::
 	ld l, a
 	ret
 .noMatch
-	ld a, $ff
-	ldh [hDidntFindAnyHiddenObject], a
+	ldh [hDidntFindAnyHiddenObject], a ; a = $ff
 	ret
 
 ; checks if the coordinates in front of the player's sprite match Y in b and X in c
