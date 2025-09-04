@@ -267,7 +267,6 @@ ENDC
 
 SECTION "Text 6", ROMX
 
-
 IF DEF(_FRA)
   INCLUDE "translation/fra/text/Route24_2.fra.asm"
   INCLUDE "translation/fra/text/Route25.fra.asm"

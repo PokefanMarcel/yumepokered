@@ -498,12 +498,12 @@ _FightingDojoText::
 	text "DOJO"
 	done
 
-_IndigoPlateauHQText::
-	text "PLATEAU INDIGO"
-	line "Quartier général"
-	cont "de la LIGUE"
-	cont "#MON"
-	done
+;_IndigoPlateauHQText:: ; marcelnote - inaccessible, removed
+;	text "PLATEAU INDIGO"
+;	line "Quartier général"
+;	cont "de la LIGUE"
+;	cont "#MON"
+;	done
 
 _Route11GateLeftBinocularsSnorlaxText::
 	text "Vous regardez"
