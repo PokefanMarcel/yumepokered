@@ -9,7 +9,7 @@ TextPredefs::
 	add_tx_pre CardKeyFailText                      ; 02
 	add_tx_pre CardKeyNeedsUpdateText               ; 02bis ; marcelnote - added for SilphFactory2F
 	add_tx_pre RedBedroomPCText                     ; 03
-	;add_tx_pre RedBedroomSNESText                   ; 04
+;	add_tx_pre RedBedroomSNESText                   ; 04
 	add_tx_pre PushStartText                        ; 05
 	add_tx_pre SaveOptionText                       ; 06
 	add_tx_pre StrengthsAndWeaknessesText           ; 07
@@ -32,8 +32,8 @@ TextPredefs::
 	add_tx_pre GymStatueText1                       ; 0C
 	add_tx_pre GymStatueText2                       ; 0D
 	add_tx_pre GymStatueText3                       ; 0E ; marcelnote - added for Yellow
-	;add_tx_pre BookcaseText                         ; 0E ; marcelnote - already handled by BookOrSculptureText
-	;add_tx_pre UnusedPredefText                     ; 1E XXX unused ; marcelnote - commented out
+;	add_tx_pre BookcaseText                         ; 0E ; marcelnote - already handled by BookOrSculptureText
+;	add_tx_pre UnusedPredefText                     ; 1E XXX unused ; marcelnote - commented out
 	add_tx_pre PokemonCenterPCText                  ; 1F
 	add_tx_pre ViridianSchoolNotebook               ; 20
 	add_tx_pre ViridianSchoolBlackboard             ; 21
@@ -42,7 +42,7 @@ TextPredefs::
 	add_tx_pre FoundHiddenItemText                  ; 24
 	add_tx_pre HiddenItemBagFullText                ; 25 XXX unused
 	add_tx_pre VermilionGymTrashText                ; 26
-	add_tx_pre IndigoPlateauHQText                  ; 27
+;	add_tx_pre IndigoPlateauHQText                  ; 27
 	add_tx_pre GameCornerOutOfOrderText             ; 28
 	add_tx_pre GameCornerOutToLunchText             ; 29
 	add_tx_pre GameCornerSomeonesKeysText           ; 2A

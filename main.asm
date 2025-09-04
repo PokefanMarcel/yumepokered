@@ -186,7 +186,6 @@ INCLUDE "engine/movie/title2.asm"
 INCLUDE "engine/slots/slot_machine.asm"
 INCLUDE "engine/math/multiply_divide.asm"
 INCLUDE "engine/slots/game_corner_slots.asm"
-INCLUDE "engine/slots/game_corner_slots2.asm"    ; marcelnote - moved from Battle Engine 5
 
 
 SECTION "Battle Engine 7", ROMX

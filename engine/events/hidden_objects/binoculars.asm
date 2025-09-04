@@ -6,11 +6,9 @@ Route11GateLeftBinoculars:
 	call EnableAutoTextBoxDrawing
 	CheckEvent EVENT_BEAT_ROUTE12_SNORLAX
 	jr z, .SnorlaxStillHere
-	tx_pre Route11GateLeftBinocularsNoSnorlaxText
-	ret
+	tx_pre_jump Route11GateLeftBinocularsNoSnorlaxText
 .SnorlaxStillHere
-	tx_pre Route11GateLeftBinocularsSnorlaxText
-	ret
+	tx_pre_jump Route11GateLeftBinocularsSnorlaxText
 
 Route11GateLeftBinocularsSnorlaxText::
 	text_far _Route11GateLeftBinocularsSnorlaxText
@@ -25,8 +23,7 @@ Route11GateRightBinoculars:
 	cp SPRITE_FACING_UP
 	ret nz
 	call EnableAutoTextBoxDrawing
-	tx_pre Route11GateRightBinocularsText
-	ret
+	tx_pre_jump Route11GateRightBinocularsText
 
 Route11GateRightBinocularsText::
 	text_far _Route11GateRightBinocularsText
@@ -37,8 +34,7 @@ Route12GateLeftBinoculars:
 	cp SPRITE_FACING_UP
 	ret nz
 	call EnableAutoTextBoxDrawing
-	tx_pre Route12GateLeftBinocularsText
-	ret
+	tx_pre_jump Route12GateLeftBinocularsText
 
 Route12GateLeftBinocularsText::
 	text_far _Route12GateLeftBinocularsText
@@ -49,8 +45,7 @@ Route12GateRightBinoculars:
 	cp SPRITE_FACING_UP
 	ret nz
 	call EnableAutoTextBoxDrawing
-	tx_pre Route12GateRightBinocularsText
-	ret
+	tx_pre_jump Route12GateRightBinocularsText
 
 Route12GateRightBinocularsText::
 	text_far _Route12GateRightBinocularsText
@@ -76,8 +71,7 @@ Route15GateRightBinoculars:
 	cp SPRITE_FACING_UP
 	ret nz
 	call EnableAutoTextBoxDrawing
-	tx_pre Route15GateRightBinocularsText
-	ret
+	tx_pre_jump Route15GateRightBinocularsText
 
 Route15GateRightBinocularsText::
 	text_far _Route15GateRightBinocularsText
@@ -88,8 +82,7 @@ Route16GateLeftBinoculars:
 	cp SPRITE_FACING_UP
 	ret nz
 	call EnableAutoTextBoxDrawing
-	tx_pre Route16GateLeftBinocularsText
-	ret
+	tx_pre_jump Route16GateLeftBinocularsText
 
 Route16GateLeftBinocularsText::
 	text_far _Route16GateLeftBinocularsText
@@ -100,8 +93,7 @@ Route16GateRightBinoculars:
 	cp SPRITE_FACING_UP
 	ret nz
 	call EnableAutoTextBoxDrawing
-	tx_pre Route16GateRightBinocularsText
-	ret
+	tx_pre_jump Route16GateRightBinocularsText
 
 Route16GateRightBinocularsText::
 	text_far _Route16GateRightBinocularsText
@@ -112,8 +104,7 @@ Route18GateLeftBinoculars:
 	cp SPRITE_FACING_UP
 	ret nz
 	call EnableAutoTextBoxDrawing
-	tx_pre Route18GateLeftBinocularsText
-	ret
+	tx_pre_jump Route18GateLeftBinocularsText
 
 Route18GateLeftBinocularsText::
 	text_far _Route18GateLeftBinocularsText
@@ -124,8 +115,7 @@ Route18GateRightBinoculars:
 	cp SPRITE_FACING_UP
 	ret nz
 	call EnableAutoTextBoxDrawing
-	tx_pre Route18GateRightBinocularsText
-	ret
+	tx_pre_jump Route18GateRightBinocularsText
 
 Route18GateRightBinocularsText::
 	text_far _Route18GateRightBinocularsText
@@ -136,8 +126,7 @@ Route22GateLeftBinoculars:
 	cp SPRITE_FACING_UP
 	ret nz
 	call EnableAutoTextBoxDrawing
-	tx_pre Route22GateLeftBinocularsText
-	ret
+	tx_pre_jump Route22GateLeftBinocularsText
 
 Route22GateLeftBinocularsText::
 	text_far _Route22GateLeftBinocularsText
@@ -148,8 +137,7 @@ Route22GateRightBinoculars:
 	cp SPRITE_FACING_UP
 	ret nz
 	call EnableAutoTextBoxDrawing
-	tx_pre Route22GateRightBinocularsText
-	ret
+	tx_pre_jump Route22GateRightBinocularsText
 
 Route22GateRightBinocularsText::
 	text_far _Route22GateRightBinocularsText

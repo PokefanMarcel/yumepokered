@@ -2,10 +2,10 @@ GymStatues:
 ; if in a gym and have the corresponding badge, a = GymStatueText2_id and jp PrintPredefTextID
 ; if in a gym and don't have the corresponding badge, a = GymStatueText1_id and jp PrintPredefTextID
 ; else ret
-	call EnableAutoTextBoxDrawing
 	ld a, [wSpritePlayerStateData1FacingDirection]
 	cp SPRITE_FACING_UP
 	ret nz
+	call EnableAutoTextBoxDrawing
 	ld hl, MapBadgeFlags
 	ld a, [wCurMap]
 	ld b, a

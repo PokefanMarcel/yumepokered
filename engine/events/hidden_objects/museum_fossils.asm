@@ -3,8 +3,7 @@ AerodactylFossil:
 	ld [wCurPartySpecies], a
 	call DisplayMonFrontSpriteInBox
 	call EnableAutoTextBoxDrawing
-	tx_pre AerodactylFossilText
-	ret
+	tx_pre_jump AerodactylFossilText
 
 AerodactylFossilText::
 	text_far _AerodactylFossilText
@@ -15,8 +14,7 @@ KabutopsFossil:
 	ld [wCurPartySpecies], a
 	call DisplayMonFrontSpriteInBox
 	call EnableAutoTextBoxDrawing
-	tx_pre KabutopsFossilText
-	ret
+	tx_pre_jump KabutopsFossilText
 
 KabutopsFossilText::
 	text_far _KabutopsFossilText
