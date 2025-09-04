@@ -139,6 +139,7 @@ GetPrizeMenuId:
 
 INCLUDE "data/events/prizes.asm"
 
+
 PrintPrizePrice:
 	hlcoord 11, 0
 	lb bc, 1, 7 ; marcelnote - use lb
@@ -156,11 +157,15 @@ PrintPrizePrice:
 	call PrintBCDNumber
 	ret
 
-.CoinString:
-	db "COINS@" ; marcelnote - added S
-
 .SixSpacesString:
 	db "      @"
+
+.CoinString:
+IF DEF(_FRA)
+	db "JETONS@"
+ELSE
+	db "COINS@" ; marcelnote - added S
+ENDC
 
 LoadCoinsToSubtract:
 	ld a, [wWhichPrize]

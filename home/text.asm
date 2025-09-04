@@ -161,11 +161,19 @@ PlaceMoveUsersName::
 	jr PlaceCommandCharacter
 
 .enemy
+IF DEF(_FRA) ; French: BULBIZARRE ennemi
+	ld de, wEnemyMonNick
+	call PlaceString
+	ld h, b
+	ld l, c
+	ld de, EnemyText
+ELSE         ; English: Enemy BULBASAUR
 	ld de, EnemyText
 	call PlaceString
 	ld h, b
 	ld l, c
 	ld de, wEnemyMonNick
+ENDC
 	; fallthrough
 
 PlaceCommandCharacter::
@@ -176,14 +184,11 @@ PlaceCommandCharacter::
 	inc de
 	jp PlaceNextChar
 
-TMCharText::      db "TM@"
-TrainerCharText:: db "TRAINER@"
-PCCharText::      db "PC@"
-RocketCharText::  db "ROCKET@"
-PlacePOKeText::   db "POKé@"
-;SixDotsCharText:: db "……@" ; marcelnote - unused, removed
-EnemyText::       db "Enemy @"
-PlacePKMNText::   db "<PK><MN>@"
+IF DEF(_FRA)
+	INCLUDE "translation/fra/data/text/home_strings.fra.asm"
+ELSE
+	INCLUDE "data/text/home_strings.asm"
+ENDC
 
 ContText::
 	push de

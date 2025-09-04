@@ -442,8 +442,15 @@ DisplayChangeBoxMenu:
 	ld [wMaxMenuItem], a
 	ld a, 1
 	ld [wTopMenuItemY], a
+
+IF DEF(_FRA) ; marcelnote - different layout in French
+	ld a, 10
+	ld [wTopMenuItemX], a
+ELSE
 	ld a, 12
 	ld [wTopMenuItemX], a
+ENDC
+
 	xor a
 	ld [wMenuWatchMovingOutOfBounds], a
 	ld a, [wCurrentBoxNum]
@@ -451,19 +458,36 @@ DisplayChangeBoxMenu:
 	ld [wCurrentMenuItem], a
 	ld [wLastMenuItem], a
 	hlcoord 0, 0
-	ld b, 2
-	ld c, 9
+
+IF DEF(_FRA) ; marcelnote - different layout in French
+	lb bc, 2, 7
+ELSE
+	lb bc, 2, 9
+ENDC
+
 	call TextBoxBorder
 	ld hl, ChooseABoxText
 	call PrintText
+
+IF DEF(_FRA) ; marcelnote - different layout in French
+	hlcoord 9, 0
+	lb bc, 12, 9
+ELSE
 	hlcoord 11, 0
-	ld b, 12
-	ld c, 7
+	lb bc, 12, 7
+ENDC
+
 	call TextBoxBorder
 	ld hl, hUILayoutFlags
 	set BIT_SINGLE_SPACED_LINES, [hl]
 	ld de, BoxNames
+
+IF DEF(_FRA) ; marcelnote - different layout in French
+	hlcoord 11, 1
+ELSE
 	hlcoord 13, 1
+ENDC
+
 	call PlaceString
 	ld hl, hUILayoutFlags
 	res BIT_SINGLE_SPACED_LINES, [hl]
@@ -472,14 +496,26 @@ DisplayChangeBoxMenu:
 	cp 9
 	jr c, .singleDigitBoxNum
 	sub 9
+
+IF DEF(_FRA) ; marcelnote - different layout in French
+	hlcoord 6, 2
+ELSE
 	hlcoord 8, 2
+ENDC
+
 	ld [hl], "1"
 	add "0"
 	jr .next
 .singleDigitBoxNum
 	add "1"
 .next
+
+IF DEF(_FRA) ; marcelnote - different layout in French
+	ldcoord_a 7, 2
+ELSE
 	ldcoord_a 9, 2
+ENDC
+
 	hlcoord 1, 2
 	ld de, BoxNoText
 	call PlaceString
@@ -507,23 +543,6 @@ DisplayChangeBoxMenu:
 ChooseABoxText:
 	text_far _ChooseABoxText
 	text_end
-
-BoxNames:
-	db   "BOX 1"
-	next "BOX 2"
-	next "BOX 3"
-	next "BOX 4"
-	next "BOX 5"
-	next "BOX 6"
-	next "BOX 7"
-	next "BOX 8"
-	next "BOX 9"
-	next "BOX10"
-	next "BOX11"
-	next "BOX12@"
-
-BoxNoText:
-	db "BOX No.@"
 
 EmptyAllSRAMBoxes:
 ; marks all boxes in SRAM as empty (initialisation for the first time the
@@ -724,3 +743,9 @@ ClearAllSRAMBanks:
 	ld bc, SIZEOF(SRAM)
 	ld a, $ff
 	jp FillMemory
+
+IF DEF(_FRA)
+	INCLUDE "translation/fra/data/text/save.fra.asm"
+ELSE
+	INCLUDE "data/text/save.asm"
+ENDC

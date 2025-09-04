@@ -273,12 +273,6 @@ PlayerPCToss:
 	call TossItem ; disallows tossing key items
 	jp .loop
 
-PlayersPCMenuEntries:
-	db   "WITHDRAW ITEM"
-	next "DEPOSIT ITEM"
-	next "TOSS ITEM"
-	next "LOG OFF@"
-
 TurnedOnPC2Text:
 	text_far _TurnedOnPC2Text
 	text_end
@@ -338,3 +332,10 @@ TossHowManyText:
 TMItContainsText:: ; marcelnote - for TM printing
 	text_far _TMItContainsText
 	text_end
+
+
+IF DEF(_FRA)
+	INCLUDE "translation/fra/data/text/players_pc.fra.asm"
+ELSE
+	INCLUDE "data/text/players_pc.asm"
+ENDC

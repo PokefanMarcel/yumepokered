@@ -111,9 +111,13 @@ LeaguePCShowMon:
 	call PrintNumber
 	jpfar HoFDisplayMonInfo
 
-HallOfFameNoText:
-	db "HALL OF FAME No   @"
-
 AccessedHoFPCText:
 	text_far _AccessedHoFPCText
 	text_end
+
+
+IF DEF(_FRA)
+	INCLUDE "translation/fra/data/text/league_pc.fra.asm"
+ELSE
+	INCLUDE "data/text/league_pc.asm"
+ENDC

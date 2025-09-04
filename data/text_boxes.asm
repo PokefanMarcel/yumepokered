@@ -38,6 +38,7 @@ TextBoxTextAndCoordTable:
 ;	text_box_text JP_AH_MENU_TEMPLATE,                7,  6, 11, 10, JapaneseAhText,           8,  8
 ;	text_box_text JP_POKEDEX_MENU_TEMPLATE,          11,  8, 19, 17, JapanesePokedexMenu,     12, 10
 
+
 BuySellQuitText:
 	db   "BUY"
 	next "SELL"

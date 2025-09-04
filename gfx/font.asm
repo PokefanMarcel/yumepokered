@@ -1,16 +1,16 @@
 PokemonLogoGraphics: INCBIN "gfx/title/pokemon_logo.2bpp"
 
 IF DEF(_FRA)
-	FontGraphics:: INCBIN "translation/fra/gfx/font-fra.1bpp"
+	FontGraphics:: INCBIN "translation/fra/gfx/font.fra.1bpp"
 	FontGraphicsEnd::
 
-	HpBarAndStatusGraphics:: INCBIN "translation/fra/gfx/font_battle_extra-fra.2bpp"
+	HpBarAndStatusGraphics:: INCBIN "translation/fra/gfx/font_battle_extra.fra.2bpp"
 	HpBarAndStatusGraphicsEnd::
 
-	NamingScreenTiles: INCBIN "translation/fra/gfx/naming_screen-fra.1bpp" ; marcelnote - reorganized Naming screen tiles
+	NamingScreenTiles: INCBIN "translation/fra/gfx/naming_screen.fra.1bpp" ; marcelnote - reorganized Naming screen tiles
 	NamingScreenTilesEnd:
 
-	PokedexTileGraphics: INCBIN "translation/fra/gfx/pokedex-fra.2bpp"
+	PokedexTileGraphics: INCBIN "translation/fra/gfx/pokedex.fra.2bpp"
 	PokedexTileGraphicsEnd:
 ELSE
 	FontGraphics:: INCBIN "gfx/font/font.1bpp"
@@ -46,8 +46,13 @@ StatExpBarGraphicsEnd:
 WorldMapTileGraphics: INCBIN "gfx/town_map/town_map.2bpp"
 WorldMapTileGraphicsEnd:
 
-MonNestOptionsTileGraphics: INCBIN "gfx/town_map/mon_nest_options.2bpp" ; marcelnote - new
-MonNestOptionsTileGraphicsEnd:
+IF DEF(_FRA)
+	MonNestOptionsTileGraphics: INCBIN "translation/fra/gfx/town_map/mon_nest_options.fra.2bpp" ; marcelnote - new
+	MonNestOptionsTileGraphicsEnd:
+ELSE
+	MonNestOptionsTileGraphics: INCBIN "gfx/town_map/mon_nest_options.2bpp" ; marcelnote - new
+	MonNestOptionsTileGraphicsEnd:
+ENDC
 
 PlayerCharacterTitleGraphics: INCBIN "gfx/title/player.2bpp"
 PlayerCharacterTitleGraphicsEnd:

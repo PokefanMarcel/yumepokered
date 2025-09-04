@@ -1,0 +1,8 @@
+TMCharText::      db "CT@"
+TrainerCharText:: db "DRES.@"
+PCCharText::      db "PC@"
+RocketCharText::  db "ROCKET@"
+PlacePOKeText::   db "POKé@"
+;SixDotsCharText:: db "……@"
+EnemyText::       db " ennemi@"
+PlacePKMNText::   db "<PK><MN>@"

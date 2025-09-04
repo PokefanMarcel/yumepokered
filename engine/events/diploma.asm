@@ -92,21 +92,12 @@ DiplomaTextPointersAndCoords:
 	diploma_text  2,  6, DiplomaCongrats
 	diploma_text  9, 16, DiplomaGameFreak
 
-DiplomaText:
-	db CIRCLE_TILE_ID, "Diploma", CIRCLE_TILE_ID, "@"
 
-DiplomaPlayer:
-	db "Player@"
-
-DiplomaEmptyText:
-	db "@"
-
-DiplomaCongrats:
-	db   "Congrats! This"
-	next "diploma certifies"
-	next "that you have"
-	next "completed your"
-	next "#DEX.@"
+IF DEF(_FRA)
+	INCLUDE "translation/fra/data/text/diploma.fra.asm"
+ELSE
+	INCLUDE "data/text/diploma.asm"
+ENDC
 
 DiplomaGameFreak:
 	db "GAME FREAK@"

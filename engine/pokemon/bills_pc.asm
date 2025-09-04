@@ -38,6 +38,16 @@ DisplayPCMainMenu::
 	ld de, BillsPCText
 .next2
 	call PlaceString
+
+IF DEF(_FRA) ; French: PC DE <PLAYER>
+	hlcoord 2, 4
+	ld de, PlayersPCText
+	call PlaceString
+	ld l, c
+	ld h, b
+	ld de, wPlayerName
+	call PlaceString
+ELSE         ; English: <PLAYER>'s PC
 	hlcoord 2, 4
 	ld de, wPlayerName
 	call PlaceString
@@ -45,6 +55,8 @@ DisplayPCMainMenu::
 	ld h, b
 	ld de, PlayersPCText
 	call PlaceString
+ENDC
+
 	CheckEvent EVENT_GOT_POKEDEX
 	jr z, .noOaksPC2
 	hlcoord 2, 6
@@ -85,13 +97,6 @@ DisplayPCMainMenu::
 	ldh [hAutoBGTransferEnabled], a
 	ret
 
-SomeonesPCText:   db "SOMEONE's PC@"
-BillsPCText:      db "BILL's PC@"
-PlayersPCText:    db "'s PC@"
-OaksPCText:       db "PROF.OAK's PC@"
-PKMNLeaguePCText: db "<PKMN>LEAGUE@"
-LogOffPCText:     db "LOG OFF@"
-
 BillsPC_::
 	ld hl, wStatusFlags5
 	set BIT_NO_TEXT_DELAY, [hl]
@@ -120,8 +125,13 @@ BillsPCMenu:
 	call CopyVideoData
 	call LoadScreenTilesFromBuffer2DisableBGTransfer
 	hlcoord 0, 0
-	ld b, 10
-	ld c, 12
+
+IF DEF(_FRA) ; marcelnote - wider box
+	lb bc, 10, 14
+ELSE
+	lb bc, 10, 12
+ENDC
+
 	call TextBoxBorder
 	hlcoord 2, 2
 	ld de, BillsPCMenuText
@@ -146,9 +156,15 @@ BillsPCMenu:
 	ld [wPlayerMonNumber], a
 	ld hl, WhatText
 	call PrintText
+
+IF DEF(_FRA) ; marcelnote - narrower box
+	hlcoord 11, 14
+	lb bc, 2, 7
+ELSE
 	hlcoord 9, 14
-	ld b, 2
-	ld c, 9
+	lb bc, 2, 9
+ENDC
+
 	call TextBoxBorder
 	ld a, [wCurrentBoxNum]
 	and BOX_NUM_MASK
@@ -164,7 +180,13 @@ BillsPCMenu:
 	add "1"
 .next
 	ldcoord_a 18, 16
+
+IF DEF(_FRA) ; marcelnote - narrower box
+	hlcoord 12, 16
+ELSE
 	hlcoord 10, 16
+ENDC
+
 	ld de, BoxNoPCText
 	call PlaceString
 	ld a, 1
@@ -344,17 +366,6 @@ DisplayMonListMenu:
 	ld [wPartyAndBillsPCSavedMenuItem], a
 	ret
 
-BillsPCMenuText:
-	db   "WITHDRAW <PKMN>"
-	next "DEPOSIT <PKMN>"
-	next "RELEASE <PKMN>"
-	next "CHANGE BOX"
-	next "SEE YA!"
-	db "@"
-
-BoxNoPCText:
-	db "BOX No.@"
-
 KnowsHMMove::
 ; returns whether mon with party index [wWhichPokemon] knows an HM move
 	ld hl, wPartyMon1Moves
@@ -451,12 +462,6 @@ DisplayDepositWithdrawMenu:
 	call LoadGBPal
 	jr .loop
 
-DepositPCText:  db "DEPOSIT@"
-WithdrawPCText: db "WITHDRAW@"
-StatsCancelPCText:
-	db   "STATS"
-	next "CANCEL@"
-
 SwitchOnText:
 	text_far _SwitchOnText
 	text_end
@@ -552,3 +557,10 @@ UnusedOpenBillsPC: ; unreferenced
 
 OpenBillsPCText::
 	script_bills_pc
+
+
+IF DEF(_FRA)
+	INCLUDE "translation/fra/data/text/bills_pc.fra.asm"
+ELSE
+	INCLUDE "data/text/bills_pc.asm"
+ENDC

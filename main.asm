@@ -7,7 +7,7 @@ INCLUDE "engine/movie/title.asm"
 INCLUDE "engine/pokemon/load_mon_data.asm"
 INCLUDE "data/items/prices.asm"
 IF DEF(_FRA)
-	INCLUDE "translation/fra/data/items/names-fra.asm"
+	INCLUDE "translation/fra/data/items/names.fra.asm"
 ELSE
 	INCLUDE "data/items/names.asm"
 ENDC
@@ -80,7 +80,6 @@ INCLUDE "gfx/font.asm"
 
 SECTION "Battle Engine 1", ROMX
 
-INCLUDE "engine/overworld/is_player_just_outside_map.asm"
 INCLUDE "engine/pokemon/status_screen.asm"
 INCLUDE "engine/menus/party_menu.asm"
 INCLUDE "gfx/player.asm"
@@ -122,7 +121,7 @@ INCLUDE "engine/overworld/ledges.asm"
 SECTION "Pokémon Names", ROMX
 
 IF DEF(_FRA)
-	INCLUDE "translation/fra/data/pokemon/names-fra.asm"
+	INCLUDE "translation/fra/data/pokemon/names.fra.asm"
 ELSE
 	INCLUDE "data/pokemon/names.asm"
 ENDC
@@ -277,6 +276,7 @@ INCLUDE "gfx/trainer_card.asm" ; marcelnote - moved from Battle Engine 5
 SECTION "Trainer Sight", ROMX
 
 INCLUDE "engine/overworld/trainer_sight.asm"
+INCLUDE "engine/overworld/is_player_just_outside_map.asm" ; marcelnote - moved from Battle Engine 1
 
 
 SECTION "Battle Engine 10", ROMX

@@ -102,7 +102,7 @@ _CeladonMansion3FDevRoomSignText::
 	done
 
 
-_CeladonMansion4FHackerText::
+_CeladonMansion4FHackerText:: ; marcelnote - new
 	text "I'm the hacker!"
 	line "I made changes"
 	cont "to the original"
@@ -112,12 +112,12 @@ _CeladonMansion4FHackerText::
 	line "find any bugs!"
 	done
 
-_CeladonMansion4FExeggutorSurfPCText::
+_CeladonMansion4FExeggutorSurfPCText:: ; marcelnote - new
     text "An EXEGGUTOR who"
     line "can FLY!?"
 	done
 
-_CeladonMansion4FYumeLabsSignText::
+_CeladonMansion4FYumeLabsSignText:: ; marcelnote - new
 	text "YUME LABS"
 	line "Home office"
 	done

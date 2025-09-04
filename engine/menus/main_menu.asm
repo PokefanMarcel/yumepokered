@@ -349,20 +349,6 @@ SpecialEnterMap::
 	ret nz
 	jp EnterMap
 
-ContinueText:
-	db "CONTINUE"
-	next ""
-	; fallthrough
-
-NewGameText:
-	db   "NEW GAME"
-	next "OPTION@"
-
-CableClubOptionsText:
-	db   "TRADE CENTER"
-	next "COLOSSEUM"
-	next "CANCEL@"
-
 VersionText:
 	db "  <PKMN>Yume "
 	db "v1.1@"
@@ -450,13 +436,6 @@ PrintPlayTime:
 	lb bc, LEADING_ZEROES | 1, 2
 	jp PrintNumber
 
-SaveScreenInfoText:
-	db   "PLAYER"
-	next "BADGES    "
-	next "#DEX    "
-	next "TIME@"
-
-
 CheckForPlayerNameInSRAM:
 ; Check if the player name data in SRAM has a string terminator character
 ; (indicating that a name may have been saved there) and return whether it does
@@ -487,3 +466,10 @@ CheckForPlayerNameInSRAM:
 	ld [rBMODE], a
 	scf
 	ret
+
+
+IF DEF(_FRA)
+	INCLUDE "translation/fra/data/text/main_menu.fra.asm"
+ELSE
+	INCLUDE "data/text/main_menu.asm"
+ENDC

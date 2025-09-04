@@ -67,8 +67,8 @@ PrintMoveType: ; marcelnote - modified to be right-aligned
 	jp PlaceString
 
 
-IF DEF(_FRA) ; marcelnote - added for translation
-	INCLUDE "translation/fra/data/types/names-fra.asm"
+IF DEF(_FRA)
+	INCLUDE "translation/fra/data/types/names.fra.asm"
 ELSE
 	INCLUDE "data/types/names.asm"
 ENDC

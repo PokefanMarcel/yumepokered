@@ -125,11 +125,11 @@ GetAddressOfScreenCoords:
 	add hl, de
 	ret
 
-;IF DEF(_FRA)
-;	INCLUDE "translation/fra/data/text_boxes-fra.asm" ; TODO
-;ELSE
+IF DEF(_FRA)
+	INCLUDE "translation/fra/data/text_boxes.fra.asm"
+ELSE
 	INCLUDE "data/text_boxes.asm"
-;ENDC
+ENDC
 
 DisplayMoneyBox:
 	ld hl, wStatusFlags5
@@ -587,13 +587,14 @@ GetMonFieldMoves: ; marcelnote - modified for temporary field moves, from shinpo
 	ld hl, FieldMoveDisplayData
 	jr .fieldMoveLoop
 
-INCLUDE "data/moves/field_moves.asm"
 
 IF DEF(_FRA)
-	INCLUDE "translation/fra/data/moves/field_move_names-fra.asm"
-	INCLUDE "translation/fra/data/two_option_menus-fra.asm"
-	INCLUDE "translation/fra/data/text/pokemon_menu_entries-fra.asm"
+	INCLUDE "translation/fra/data/moves/field_moves.fra.asm"
+	INCLUDE "translation/fra/data/moves/field_move_names.fra.asm"
+	INCLUDE "translation/fra/data/two_option_menus.fra.asm"
+	INCLUDE "translation/fra/data/text/pokemon_menu_entries.fra.asm"
 ELSE
+	INCLUDE "data/moves/field_moves.asm"
 	INCLUDE "data/moves/field_move_names.asm"
 	INCLUDE "data/two_option_menus.asm"
 	INCLUDE "data/text/pokemon_menu_entries.asm"

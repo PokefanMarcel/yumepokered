@@ -21,6 +21,7 @@ _CopycatsHouse1FChanseyText::
 	line "Sii!@"
 	text_end
 
+
 _CopycatsHouse2FCopycatDoYouLikePokemonText::
 	text "<PLAYER>: Hi! Do"
 	line "you like #MON?"
