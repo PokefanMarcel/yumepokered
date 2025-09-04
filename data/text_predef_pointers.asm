@@ -75,6 +75,10 @@ TextPredefs::
 	add_tx_pre ColdDrinksText                       ; marcelnote - new for Marts
 	add_tx_pre HolidayBrochuresText                 ; marcelnote - new for Safari Rest houses
 	add_tx_pre LiveWaterText                        ; marcelnote - new for Power Plant
+	add_tx_pre CeladonMart3FRPGText                 ; marcelnote - new for Celadon Mart 3F
+	add_tx_pre CeladonMart3FSportsGameText          ; marcelnote - new for Celadon Mart 3F
+	add_tx_pre CeladonMart3FPuzzleGameText          ; marcelnote - new for Celadon Mart 3F
+	add_tx_pre CeladonMart3FFightingGameText        ; marcelnote - new for Celadon Mart 3F
 	add_tx_pre MonCouldSurfText                     ; 43 ; marcelnote - HM overworld use
 	add_tx_pre WantToSurfText                       ; 44 ; marcelnote - HM overworld use
 	add_tx_pre CyclingIsFunOverworldText            ; 45 ; marcelnote - HM overworld use

@@ -19,16 +19,13 @@ CeladonMart1F2F3F_TextPointers:
 	; background events
 	dw_const CeladonMart1FDirectorySignText,    TEXT_CELADONMART1F_DIRECTORY_SIGN
 	dw_const CeladonMart1FCurrentFloorSignText, TEXT_CELADONMART1F_CURRENT_FLOOR_SIGN
-	dw_const CeladonMart1FPhoneText,            TEXT_CELADONMART1F_PHONE ; marcelnote - new
+	dw_const CeladonMart1FPhoneText,            TEXT_CELADONMART1F_PHONE1 ; marcelnote - new
+	dw_const CeladonMart1FPhoneText,            TEXT_CELADONMART1F_PHONE2 ; marcelnote - new
 	dw_const CeladonMart2FCurrentFloorSignText, TEXT_CELADONMART2F_CURRENT_FLOOR_SIGN
 	dw_const CeladonMart3FSNESText,             TEXT_CELADONMART3F_SNES1
-	dw_const CeladonMart3FRPGText,              TEXT_CELADONMART3F_RPG
 	dw_const CeladonMart3FSNESText,             TEXT_CELADONMART3F_SNES2
-	dw_const CeladonMart3FSportsGameText,       TEXT_CELADONMART3F_SPORTS_GAME
 	dw_const CeladonMart3FSNESText,             TEXT_CELADONMART3F_SNES3
-	dw_const CeladonMart3FPuzzleGameText,       TEXT_CELADONMART3F_PUZZLE_GAME
 	dw_const CeladonMart3FSNESText,             TEXT_CELADONMART3F_SNES4
-	dw_const CeladonMart3FFightingGameText,     TEXT_CELADONMART3F_FIGHTING_GAME
 	dw_const CeladonMart3FCurrentFloorSignText, TEXT_CELADONMART3F_CURRENT_FLOOR_SIGN
 	dw_const CeladonMart3FPokemonPosterText,    TEXT_CELADONMART3F_POKEMON_POSTER1
 	dw_const CeladonMart3FPokemonPosterText,    TEXT_CELADONMART3F_POKEMON_POSTER2
@@ -123,22 +120,6 @@ CeladonMart3FLittleBoyText:
 
 CeladonMart3FSNESText:
 	text_far _CeladonMart3FSNESText
-	text_end
-
-CeladonMart3FRPGText:
-	text_far _CeladonMart3FRPGText
-	text_end
-
-CeladonMart3FSportsGameText:
-	text_far _CeladonMart3FSportsGameText
-	text_end
-
-CeladonMart3FPuzzleGameText:
-	text_far _CeladonMart3FPuzzleGameText
-	text_end
-
-CeladonMart3FFightingGameText:
-	text_far _CeladonMart3FFightingGameText
 	text_end
 
 CeladonMart3FCurrentFloorSignText:
