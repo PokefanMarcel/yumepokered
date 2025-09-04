@@ -644,7 +644,8 @@ INCLUDE "data/maps/objects/Route21.asm"
 Route21_Blocks: INCBIN "maps/Route21.blk"
 
 VermilionGoodRodHouse_Blocks: ; marcelnote - from Old to Good Rod
-Route12FishingGuideHouse_Blocks:
+Route12FishingGuideHouse_Blocks: INCBIN "maps/Route12FishingGuideHouse.blk"
+
 Daycare_Blocks: INCBIN "maps/Daycare.blk"
 
 FuchsiaSuperRodHouse_Blocks: INCBIN "maps/FuchsiaSuperRodHouse.blk" ; marcelnote - from Good to Super Rod

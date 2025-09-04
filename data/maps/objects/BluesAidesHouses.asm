@@ -7,7 +7,7 @@
 	const_export AIDESHOUSE_MEMO ; marcelnote - new Pallet house
 
 BluesAidesHouses_Object:
-	db $a ; border block
+	db $0 ; border block ; marcelnote - modified blockset
 
 	def_warp_events
 	; Blue's house

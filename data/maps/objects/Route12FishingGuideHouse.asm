@@ -3,7 +3,7 @@
 	const_export ROUTE12FISHINGGUIDEHOUSE_FISHING_GUIDE
 
 Route12FishingGuideHouse_Object:
-	db $a ; border block
+	db $0 ; border block ; marcelnote - modified blockset
 
 	def_warp_events
 	warp_event  2,  7, LAST_MAP, 4

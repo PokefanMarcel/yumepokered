@@ -85,6 +85,7 @@ HiddenObjectMaps:
 	db VERMILION_CITY
 	db CERULEAN_CITY
 	db ROUTE_4
+	db DAYCARE                   ; marcelnote - new
 	db CINNABAR_VOLCANO_2F       ; marcelnote - new
 	db POKEMON_ACADEMY_3F4F      ; marcelnote - new
 	db MANDARIN_POKECENTER_MART  ; marcelnote - new
@@ -184,6 +185,7 @@ HiddenObjectPointers:
 	dw VermilionCityHiddenObjects
 	dw CeruleanCityHiddenObjects
 	dw Route4HiddenObjects
+	dw DaycareHiddenObjects                ; marcelnote - new
 	dw CinnabarVolcano2FHiddenObjects      ; marcelnote - new
 	dw PokemonAcademy3F4FHiddenObjects     ; marcelnote - new
 	dw MandarinPokecenterMartHiddenObjects ; marcelnote - new
@@ -642,6 +644,10 @@ CeruleanCityHiddenObjects:
 
 Route4HiddenObjects:
 	hidden_object 40,  3, GREAT_BALL, HiddenItems
+	db -1 ; end
+
+DaycareHiddenObjects:  ; marcelnote - new
+	hidden_object  7,  1, SPRITE_FACING_UP, OpenPokemonCenterPC
 	db -1 ; end
 
 CinnabarVolcano2FHiddenObjects:  ; marcelnote - new

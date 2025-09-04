@@ -3,7 +3,7 @@
 	const_export LAVENDERCUBONEHOUSE_BRUNETTE_GIRL
 
 LavenderCuboneHouse_Object:
-	db $a ; border block
+	db $0 ; border block ; marcelnote - modified blockset
 
 	def_warp_events
 	warp_event  2,  7, LAST_MAP, 5
