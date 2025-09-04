@@ -1,7 +1,6 @@
 _CeladonCityLittleGirlText::
-	text "J'ai eu mon"
-	line "SMOGO à"
-	cont "CRAMOIS'ILE!"
+	text "J'ai eu mon SMOGO"
+	line "à CRAMOIS'ILE!"
 
 	para "Il est gentil"
 	line "mais il crache du"
