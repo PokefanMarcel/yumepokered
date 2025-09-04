@@ -132,7 +132,11 @@ MainMenu:
 InitOptions:
 	ld a, 1 << BIT_FAST_TEXT_DELAY
 	ld [wLetterPrintingDelayFlags], a
+IF DEF(_FRA) ; metric by default in French
+	ld a, TEXT_DELAY_FAST | (1 << BIT_UNITS_METRIC)
+ELSE
 	ld a, TEXT_DELAY_FAST ; marcelnote - was TEXT_DELAY_MEDIUM
+ENDC
 	ld [wOptions], a
 	ret
 
