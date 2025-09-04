@@ -428,7 +428,7 @@ ELIF DEF(_BLUE) && DEF(_FRA)
 ENDC
 
 DebugNewGamePlayerName:
-	db "PMARCEL@"
+	db "<PK>MARCEL@"
 
 DebugNewGameRivalName:
 	db "SONYINC@"
