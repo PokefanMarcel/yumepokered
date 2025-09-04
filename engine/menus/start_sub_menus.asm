@@ -371,7 +371,11 @@ StartMenu_Item:: ; marcelnote - BICYCLE does not have special handling anymore
 	ld hl, wTopMenuItemY
 	ld a, 11
 	ld [hli], a ; top menu item Y
+IF DEF(_FRA) ; different layout in French
+	ld a, 13
+ELSE
 	ld a, 14
+ENDC
 	ld [hli], a ; top menu item X
 	xor a
 	ld [hli], a ; current menu item ID

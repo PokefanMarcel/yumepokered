@@ -95,10 +95,6 @@ _Route1OakAcceptedBattleText:: ; marcelnote - postgame Oak battle
 	done
 
 _Route1OakDefeatText:: ; marcelnote - postgame Oak battle
-	text "Truly"
-	line "exhilarating!"
-	prompt
-
 _Route1OakVictoryText:: ; marcelnote - postgame Oak battle
 	text "Truly"
 	line "exhilarating!"

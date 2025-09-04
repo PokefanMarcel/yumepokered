@@ -18,4 +18,8 @@ SaveTrainerName::
 	jr nz, .CopyCharacter
 	ret
 
-INCLUDE "data/trainers/name_pointers.asm"
+IF DEF(_FRA)
+	INCLUDE "translation/fra/data/trainers/name_pointers.fra.asm"
+ELSE
+	INCLUDE "data/trainers/name_pointers.asm"
+ENDC

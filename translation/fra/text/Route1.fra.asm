@@ -55,93 +55,92 @@ _Route1SignText::
 
 
 _Route1OakBeforeBattleText:: ; marcelnote - postgame Oak fight
-	text "OAK: Oh,"
+	text "CHEN: Oh,"
 	line "<PLAYER>!"
-	cont "You caught me"
-	cont "on my afternoon"
-	cont "stroll."
+	cont "Tu me surprends"
+	cont "en pleine"
+	cont "promenade."
 
-	para "Actually, I've"
-	line "been wanting"
-	cont "to see you."
+	para "Ça tombe bien, je"
+	line "voulais te voir."
 
-	para "You know, I was"
-	line "quite the trainer"
-	cont "too, back in"
-	cont "my day."
+	para "Tu sais, à mon"
+	line "époque, j'étais"
+	cont "un sacré dresseur"
+	cont "moi aussi."
 
-	para "Witnessing your"
-	line "journey from"
-	cont "PALLET TOWN to"
-	cont "becoming the"
-	cont "#MON LEAGUE"
-	cont "champion..."
+	para "Et te voir partir"
+	line "du BOURG PALETTE"
+	cont "jusqu'à décrocher"
+	cont "le titre de"
+	cont "champion de la"
+	cont "LIGUE #MON..."
 
-	para "It made me feel"
-	line "young again!"
+	para "Ça m'a rajeuni!"
 
-	para "What do you say,"
-	line "<PLAYER>?"
-	cont "Would you indulge"
-	cont "this old man in a"
-	cont "friendly battle?"
+	para "Alors, <PLAYER>!"
+	line "Tu offrirais bien"
+	cont "un combat amical"
+	cont "à un vétéran"
+	cont "comme moi, non?"
 	done
 
 _Route1OakRefusedBattleText:: ; marcelnote - postgame Oak battle
-	text "Perhaps another"
-	line "time, then!"
+	text "Une autre fois,"
+	line "peut-être!"
 	done
 
 _Route1OakAcceptedBattleText:: ; marcelnote - postgame Oak battle
-	text "Excellent!"
-	line "Let's put those"
-	cont "old reflexes"
-	cont "to the test!"
+	text "Parfait!"
+	line "Mettons ces vieux"
+	cont "réflexes à"
+	cont "l'épreuve!"
 	done
 
 _Route1OakDefeatText:: ; marcelnote - postgame Oak battle
-	text "Truly"
-	line "exhilarating!"
-	prompt
-
 _Route1OakVictoryText:: ; marcelnote - postgame Oak battle
-	text "Truly"
-	line "exhilarating!"
+	text "Ah!"
+	line "Un tel combat,"
+	cont "ça vous requinque"
+	cont "un homme!"
 	prompt
 
 _Route1OakPostBattleText:: ; marcelnote - postgame Oak battle
-	text "OAK: Thank you,"
-	line "<PLAYER>."
+	text "CHEN: Alors là,"
+	line "<PLAYER>, chapeau!"
 
-	para "I hadn't felt"
-	line "that rush in"
-	cont "a long time!"
+	para "Je n'avais pas"
+	line "pris une telle"
+	cont "dérouillée depuis"
+	cont "des lustres!"
 
-	para "Well, back to"
-	line "work now!"
+	para "Bon, maintenant,"
+	line "retour au boulot!"
 	done
 
 _Route1OakOneMoreThingText:: ; marcelnote - postgame Oak battle
-	text "Oh, one more"
-	line "thing!"
+	text "Ah, encore"
+	line "une chose!"
 
-	para "Given your recent"
-	line "feats, I've"
-	cont "instructed the"
-	cont "guard at ROUTE 22"
-	cont "to let you pass."
+	para "Vu tes récents"
+	line "exploits, j'ai"
+	cont "demandé au garde"
+	cont "de la ROUTE 22"
+	cont "de t'ouvrir le"
+	cont "passage."
 
-	para "Actually, I just"
-	line "authorized"
-	cont "another trainer"
-	cont "from PALLET, too."
+	para "D'ailleurs, j'ai"
+	line "aussi donné mon"
+	cont "feu vert pour une"
+	cont "autre dresseuse"
+	cont "du BOURG PALETTE."
 
-	para "She defeated the"
-	line "ELITE FOUR and"
-	cont "<RIVAL> at the"
-	cont "INDIGO PLATEAU!"
+	para "Elle a vaincu le"
+	line "CONSEIL des 4 et"
+	cont "<RIVAL> au"
+	cont "PLATEAU INDIGO!"
 
-	para "I bet she'd like"
-	line "to face the"
-	cont "true champion!"
+	para "Je te parie qu'elle"
+	line "aimerait défier"
+	cont "le vrai champion!"
 	done

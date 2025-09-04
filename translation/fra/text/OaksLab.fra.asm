@@ -62,19 +62,19 @@ _OaksLabLastMonText::
 	cont "PROF. CHEN!"
 	done
 
-_OaksLabOak1WhichPokemonDoYouWantText::
+_OaksLabOakWhichPokemonDoYouWantText::
 	text "CHEN: <PLAYER>,"
 	line "quel #MON "
 	cont "choisis-tu?"
 	done
 
-_OaksLabOak1YourPokemonCanFightText::
+_OaksLabOakYourPokemonCanFightText::
 	text "CHEN: Ton #MON"
 	line "te protègera des"
 	cont "#MON sauvages!"
 	done
 
-_OaksLabOak1RaiseYourYoungPokemonText::
+_OaksLabOakRaiseYourYoungPokemonText::
 	text "CHEN: <PLAYER>,"
 	line "entraîne ton"
 	cont "#MON au combat"
@@ -82,7 +82,7 @@ _OaksLabOak1RaiseYourYoungPokemonText::
 	cont "devienne fort!"
 	done
 
-_OaksLabOak1DeliverParcelText::
+_OaksLabOakDeliverParcelText::
 	text "CHEN: <PLAYER>!"
 
 	para "Comment va ton"
@@ -104,7 +104,7 @@ _OaksLabOak1DeliverParcelText::
 	line "le COLIS DE CHEN.@"
 	text_end
 
-_OaksLabOak1ParcelThanksText::
+_OaksLabOakParcelThanksText::
 	text_start
 
 	para "Ah! C'est la"
@@ -113,13 +113,13 @@ _OaksLabOak1ParcelThanksText::
 	cont "Merci!"
 	done
 
-_OaksLabOak1PokemonAroundTheWorldText::
+_OaksLabOakPokemonAroundTheWorldText::
 	text "Les #MON du"
 	line "monde entier sont"
 	cont "à toi, <PLAYER>!"
 	done
 
-_OaksLabOak1ReceivedPokeballsText::
+_OaksLabOakReceivedPokeballsText::
 	text "CHEN: Il ne te"
 	line "suffit pas de"
 	cont "voir un #MON"
@@ -145,7 +145,7 @@ _OaksLabGivePokeballsExplanationText::
 
 	para "Lance-lui une"
 	line "# BALL pour le"
-	line "capturer!"
+	cont "capturer!" ; marcelnote - fixed 'line' to 'cont'
 
 	para "Mais ça ne"
 	line "marchera pas à"
@@ -159,7 +159,7 @@ _OaksLabGivePokeballsExplanationText::
 	cont "des #MON!"
 	done
 
-_OaksLabOak1ComeSeeMeSometimesText::
+_OaksLabOakComeSeeMeSometimesText::
 	text "CHEN: Reviens me"
 	line "voir de temps en"
 	cont "temps."
@@ -169,7 +169,7 @@ _OaksLabOak1ComeSeeMeSometimesText::
 	cont "#DEX."
 	done
 
-_OaksLabOak1HowIsYourPokedexComingText::
+_OaksLabOakHowIsYourPokedexComingText::
 	text "CHEN: Je suis"
 	line "content de te"
 	cont "revoir. Où en"
@@ -185,7 +185,7 @@ _OaksLabPokedexText::
 	cont "sont blanches!"
 	done
 
-_OaksLabOak2Text::
+_OaksLabOakWalkingText:: ; marcelnote - this is not seen since this Oak is just for the walking animation
 	text "?"
 	done
 
@@ -387,16 +387,10 @@ _OaksLabScientistText::
 	cont "ASSISTANT!"
 	done
 
-
-_OaksLabOakWalkingText:: ; TODO marcelnote - this is not seen since this Oak is just for the walking animation
-	text "?"
-	done
-
-
-
-_OaksLabScientistOakWentForWalkText:: ; TODO marcelnote - new for Oak battle
-	text "PROF.OAK went out"
-	line "for a walk."
+_OaksLabScientistOakWentForWalkText:: ; marcelnote - new for Oak battle
+	text "Le PROF. CHEN est"
+	line "parti faire sa"
+	cont "promenade."
 	done
 
 _OaksLabRivalShowingDexText:: ; TODO marcelnote - postgame Rival event
@@ -534,91 +528,4 @@ _OaksLabRivalBackToIndigoText:: ; TODO marcelnote - postgame Rival event
 
 	para "<PLAYER>! Gramps!"
 	line "Smell you later!"
-	done
-
-_OaksLabOakHowIsYourPokedexComingText:: ; TODO
-	text "OAK: Good to see "
-	line "you! How is your "
-	cont "#DEX coming? "
-	cont "Here, let me take"
-	cont "a look!"
-	prompt
-
-_OaksLabOakComeSeeMeSometimesText:: ; TODO
-	text "OAK: Come see me"
-	line "sometimes."
-
-	para "I want to know how"
-	line "your #DEX is"
-	cont "coming along."
-	done
-
-_OaksLabOakReceivedPokeballsText:: ; TODO
-	text "OAK: You can't get"
-	line "detailed data on"
-	cont "#MON by just"
-	cont "seeing them."
-
-	para "You must catch"
-	line "them! Use these"
-	cont "to capture wild"
-	cont "#MON."
-
-	para "<PLAYER> got 5"
-	line "# BALLs!@"
-	text_end
-
-_OaksLabOakPokemonAroundTheWorldText:: ; TODO
-	text "#MON around the"
-	line "world wait for"
-	cont "you, <PLAYER>!"
-	done
-
-
-_OaksLabOakWhichPokemonDoYouWantText:: ; TODO
-	text "OAK: Now, <PLAYER>,"
-	line "which #MON do"
-	cont "you want?"
-	done
-
-_OaksLabOakYourPokemonCanFightText:: ; TODO
-	text "OAK: If a wild"
-	line "#MON appears,"
-	cont "your #MON can"
-	cont "fight against it!"
-	done
-
-_OaksLabOakRaiseYourYoungPokemonText:: ; TODO
-	text "OAK: <PLAYER>,"
-	line "raise your young"
-	cont "#MON by making"
-	cont "it fight!"
-	done
-
-_OaksLabOakDeliverParcelText:: ; TODO
-	text "OAK: Oh, <PLAYER>!"
-
-	para "How is my old"
-	line "#MON?"
-
-	para "Well, it seems to"
-	line "like you a lot."
-
-	para "You must be"
-	line "talented as a"
-	cont "#MON trainer!"
-
-	para "What? You have"
-	line "something for me?"
-
-	para "<PLAYER> delivered"
-	line "OAK's PARCEL.@"
-	text_end
-
-_OaksLabOakParcelThanksText:: ; TODO
-	text_start
-	para "Ah! This is the"
-	line "custom # BALL"
-	cont "I ordered!"
-	cont "Thank you!"
 	done
