@@ -1760,7 +1760,7 @@ AnimationSlideMonDownAndHide:
 	ld c, 8
 	call DelayFrames
 	pop af
-	inc a
+	inc a ; TILEMAP_SLIDE_DOWN_MON_PIC_7X3
 	pop bc
 	dec c
 	jr nz, .loop
