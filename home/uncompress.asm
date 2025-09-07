@@ -3,6 +3,14 @@
 	const BIT_USE_SPRITE_BUFFER_2 ; 0
 	const BIT_LAST_SPRITE_CHUNK   ; 1
 
+; Data:
+; * Header byte:
+;     - High nibble = width in 8-pixel tiles
+;     - Low nibble = height in 8-pixel tiles
+; * Initial control bit
+;     - Single bit → decides which buffer (1 or 2) to fill first
+
+
 ; bankswitches and runs _UncompressSpriteData
 ; bank is given in a, sprite input stream is pointed to in wSpriteInputPtr
 UncompressSpriteData:: ; marcelnote - small optimization
@@ -59,15 +67,14 @@ _UncompressSpriteData::
 ; each chunk is a 1bpp sprite. A 2bpp sprite consist of two chunks which are merged afterwards
 ; note that this is an endless loop which is terminated during a call to MoveToNextBufferPosition by manipulating the stack
 UncompressSpriteDataLoop::
-	ld hl, sSpriteBuffer1
-	ld a, [wSpriteLoadFlags]
+	; a = [wSpriteLoadFlags]
 	bit BIT_USE_SPRITE_BUFFER_2, a
+	ld hl, sSpriteBuffer1
 	jr z, .useSpriteBuffer1    ; check which buffer to use
 	ld hl, sSpriteBuffer2
 .useSpriteBuffer1
-	call StoreSpriteOutputPointer
-	ld a, [wSpriteLoadFlags]
 	bit BIT_LAST_SPRITE_CHUNK, a
+	call StoreSpriteOutputPointer ; preserves flags
 	jr z, .startDecompression  ; check if last iteration
 	call ReadNextInputBit      ; if last chunk, read 1-2 bit unpacking mode
 	and a
@@ -543,6 +550,10 @@ ReverseNybble::
 	ld a, [de]
 	ret
 
+; maps each nybble to its reverse
+NybbleReverseTable::
+	db $0, $8, $4, $c, $2, $a, $6, $e, $1, $9, $5, $d, $3, $b, $7, $f
+
 ; resets sprite buffer pointers to buffer 1 and 2, depending on wSpriteLoadFlags
 ResetSpriteBufferPointers::
 	ld a, [wSpriteLoadFlags]
@@ -564,10 +575,6 @@ ResetSpriteBufferPointers::
 	ld a, d
 	ld [wSpriteOutputPtrCached+1], a
 	ret
-
-; maps each nybble to its reverse
-NybbleReverseTable::
-	db $0, $8, $4, $c, $2, $a, $6, $e, $1, $9, $5, $d, $3, $b, $7, $f
 
 ; combines the two loaded chunks with xor (the chunk loaded second is the destination). Both chunks are differential decoded beforehand.
 UnpackSpriteMode2::
