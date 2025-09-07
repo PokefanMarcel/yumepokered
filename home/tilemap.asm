@@ -1,16 +1,16 @@
-FillMemory::
+FillMemory:: ; marcelnote - optimized by Engezerstorung
 ; Fill bc bytes at hl with a.
-	push de
-	ld d, a
-.loop
-	ld a, d
-	ld [hli], a
+; No bc = 0 guard.
 	dec bc
-	ld a, b
-	or c
+	inc c
+	inc b
+.loop
+	ld [hli], a
+	dec c
 	jr nz, .loop
-	pop de
-	ret ; returns a = b = c = 0
+	dec b
+	jr nz, .loop
+	ret   ; returns b = c = 0
 
 UncompressSpriteFromDE::
 ; Decompress pic at a:de.
