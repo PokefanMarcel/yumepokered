@@ -6906,12 +6906,12 @@ _LoadTrainerPic: ; marcelnote - modified to manage Red/Green battle
 	ld a, BANK(RedPicFront)
 	jr .loadSprite
 
-; unreferenced
-ResetCryModifiers:
-	xor a
-;	ld [wFrequencyModifier], a
-;	ld [wTempoModifier], a
-	jp PlaySound
+; unreferenced : marcelnote - removed
+;ResetCryModifiers:
+;	xor a
+;;	ld [wFrequencyModifier], a
+;;	ld [wTempoModifier], a
+;	jp PlaySound
 
 ; animates the mon "growing" out of the pokeball
 AnimateSendingOutMon:
