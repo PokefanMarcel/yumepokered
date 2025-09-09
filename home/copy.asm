@@ -26,7 +26,22 @@ CopyData:: ; marcelnote - Engezerstorung optim
 	jr nz, .loop
 	dec b
 	jr nz, .loop
+	ret
+
+CopyDataDEtoHL:: ; marcelnote - new
+; Copy bc bytes from de to hl.
+; No bc = 0 guard.
 	dec bc
+	inc c
+	inc b
+.loop
+	ld a, [de]
+	ld [hli], a
+	inc de
+	dec c
+	jr nz, .loop
+	dec b
+	jr nz, .loop
 	ret
 
 ; marcelnote - new from pokeyellow
