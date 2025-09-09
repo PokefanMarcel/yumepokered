@@ -12,15 +12,21 @@ FarCopyData::
 	ld [rROMB], a
 	ret
 
-CopyData::
+CopyData:: ; marcelnote - Engezerstorung optim
 ; Copy bc bytes from hl to de.
+; No bc = 0 guard.
+	dec bc
+	inc c
+	inc b
+.loop
 	ld a, [hli]
 	ld [de], a
 	inc de
+	dec c
+	jr nz, .loop
+	dec b
+	jr nz, .loop
 	dec bc
-	ld a, c
-	or b
-	jr nz, CopyData
 	ret
 
 ; marcelnote - new from pokeyellow
