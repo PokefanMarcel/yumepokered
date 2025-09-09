@@ -6,10 +6,7 @@ IF DEF(_FRA)
   INCLUDE "translation/fra/text/MtMoon1F.fra.asm"
   INCLUDE "translation/fra/text/MtMoonB1F.fra.asm"
   INCLUDE "translation/fra/text/MtMoonB2F.fra.asm"
-
-  ; INCLUDE "translation/fra/text/MtMoonSquare.asm" ; marcelnote - new location 
-  INCLUDE "text/MtMoonSquare.asm" ; TODO: manually translate
-
+  INCLUDE "translation/fra/text/MtMoonSquare.fra.asm" ; marcelnote - new location
   INCLUDE "translation/fra/text/SSAnne1F.fra.asm"
   INCLUDE "translation/fra/text/SSAnne2F.fra.asm"
   INCLUDE "translation/fra/text/SSAnne3F.fra.asm"
@@ -61,7 +58,6 @@ ENDC
 SECTION "Text 2", ROMX
 
 IF DEF(_FRA)
-  INCLUDE "translation/fra/text/SilphCo5F_2.fra.asm"
   INCLUDE "translation/fra/text/SilphCo6F.fra.asm"
   INCLUDE "translation/fra/text/SilphCo7F.fra.asm"
   INCLUDE "translation/fra/text/SilphCo8F.fra.asm"
@@ -90,7 +86,6 @@ IF DEF(_FRA)
   INCLUDE "translation/fra/text/AgathasRoom.fra.asm"
   INCLUDE "translation/fra/text/RockTunnelB1F.fra.asm"
 ELSE
-  INCLUDE "text/SilphCo5F_2.asm"
   INCLUDE "text/SilphCo6F.asm"
   INCLUDE "text/SilphCo7F.asm"
   INCLUDE "text/SilphCo8F.asm"
@@ -490,26 +485,16 @@ ENDC
 
 SECTION "Text 11", ROMX
 
-IF DEF(_FRA) ; TODO: manually translate
-;  INCLUDE "translation/fra/text/MandarinIsland.fra.asm"        ; TODO marcelnote - new location
-  INCLUDE "text/MandarinIsland.asm"           ; marcelnote - new location
-
+IF DEF(_FRA)
+  INCLUDE "translation/fra/text/MandarinIsland.fra.asm"         ; marcelnote - new location
   INCLUDE "translation/fra/text/MandarinPokecenterMart.fra.asm" ; marcelnote - new location
-
-;  INCLUDE "translation/fra/text/MandarinSurfShop.fra.asm"             ; TODO marcelnote - new location
-  INCLUDE "text/MandarinSurfShop.asm"         ; marcelnote - new location
-;  INCLUDE "translation/fra/text/MandarinHotel.fra.asm"                ; TODO marcelnote - new location
-  INCLUDE "text/MandarinHotel.asm"            ; marcelnote - new location
-;  INCLUDE "translation/fra/text/MandarinSilphCo.fra.asm"              ; TODO marcelnote - new location
-  INCLUDE "text/MandarinSilphCo.asm"          ; marcelnote - new location
-;  INCLUDE "translation/fra/text/SilphFactory1F.fra.asm"               ; TODO marcelnote - new location
-  INCLUDE "text/SilphFactory1F.asm"           ; marcelnote - new location
-;  INCLUDE "translation/fra/text/SilphFactory2F.fra.asm"               ; TODO marcelnote - new location
-  INCLUDE "text/SilphFactory2F.asm"           ; marcelnote - new location
-;  INCLUDE "translation/fra/text/OrangeRoute1.fra.asm"                 ; TODO marcelnote - new location
-  INCLUDE "text/OrangeRoute1.asm"             ; marcelnote - new location
-;  INCLUDE "translation/fra/text/DrJabarasLab.fra.asm"                 ; TODO marcelnote - new location
-  INCLUDE "text/DrJabarasLab.asm"             ; marcelnote - new location
+  INCLUDE "translation/fra/text/MandarinSurfShop.fra.asm"       ; marcelnote - new location
+  INCLUDE "translation/fra/text/MandarinHotel.fra.asm"          ; marcelnote - new location
+  INCLUDE "translation/fra/text/MandarinSilphCo.fra.asm"        ; marcelnote - new location
+  INCLUDE "translation/fra/text/SilphFactory1F.fra.asm"         ; marcelnote - new location
+  INCLUDE "translation/fra/text/SilphFactory2F.fra.asm"         ; marcelnote - new location
+  INCLUDE "translation/fra/text/OrangeRoute1.fra.asm"           ; marcelnote - new location
+  INCLUDE "translation/fra/text/DrJabarasLab.fra.asm"           ; marcelnote - new location
 ELSE
   INCLUDE "text/MandarinIsland.asm"           ; marcelnote - new location
   INCLUDE "text/MandarinPokecenterMart.asm"   ; marcelnote - new location
