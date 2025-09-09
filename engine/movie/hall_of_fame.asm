@@ -58,8 +58,7 @@ AnimateHallOfFame:
 	ld c, 80
 	call DelayFrames
 	hlcoord 2, 13
-	ld b, 3
-	ld c, 14
+	lb bc, 3, 14
 	call TextBoxBorder
 	hlcoord 4, 15
 	ld de, HallOfFameText
@@ -115,8 +114,7 @@ HoFShowMonOrPlayer:
 	call LoadFrontSpriteByMonIndex
 	predef LoadMonBackPic
 .next1
-	ld b, SET_PAL_POKEMON_WHOLE_SCREEN
-	ld c, 0
+	lb bc, SET_PAL_POKEMON_WHOLE_SCREEN, 0
 	call RunPaletteCommand
 	ld a, %11100100
 	ldh [rBGP], a
@@ -156,8 +154,7 @@ HoFDisplayAndRecordMonInfo:
 
 HoFDisplayMonInfo:
 	hlcoord 0, 2
-	ld b, 9
-	ld c, 10
+	lb bc, 9, 10
 	call TextBoxBorder
 	hlcoord 2, 6
 	ld de, HoFMonInfoText
@@ -220,12 +217,10 @@ HoFDisplayPlayerStats:
 	SetEvent EVENT_HALL_OF_FAME_DEX_RATING
 	predef DisplayDexRating
 	hlcoord 0, 4
-	ld b, 6
-	ld c, 10
+	lb bc, 6, 10
 	call TextBoxBorder
 	hlcoord 5, 0
-	ld b, 2
-	ld c, 9
+	lb bc, 2, 9
 	call TextBoxBorder
 	hlcoord 7, 2
 	ld de, wPlayerName
