@@ -87,6 +87,7 @@ OverwritewMoves::
 LoadFlippedFrontSpriteByMonIndex::
 	ld a, 1
 	ld [wSpriteFlipped], a
+	; fallthrough
 
 LoadFrontSpriteByMonIndex::
 	push hl
@@ -117,19 +118,11 @@ LoadFrontSpriteByMonIndex::
 	ld de, vFrontPic
 	call LoadMonFrontSprite
 	pop hl
-	ldh a, [hLoadedROMBank]
-	push af
-	ld a, BANK(CopyUncompressedPicToHL)
-	ldh [hLoadedROMBank], a
-	ld [rROMB], a
 	xor a
 	ldh [hStartTileID], a
-	call CopyUncompressedPicToHL
+	predef CopySpriteToTilemap
 	xor a
 	ld [wSpriteFlipped], a
-	pop af
-	ldh [hLoadedROMBank], a
-	ld [rROMB], a
 	ret
 
 
@@ -403,12 +396,16 @@ GetMonHeader::
 	jr .done
 .specialID
 	ld hl, wMonHSpriteDim
-	ld [hl], b ; write sprite dimensions
-	inc hl
-	ld [hl], e ; write front sprite pointer
-	inc hl
+	ld a, b
+	ld [hli], a ; write sprite dimensions
+	ld a, e
+	ld [hli], a ; write front sprite pointer
 	ld [hl], d
-	jr .done
+	ld a, BANK(FossilKabutopsPic) ; marcelnote - added for improved picture system
+	ASSERT BANK(FossilKabutopsPic) == BANK(FossilAerodactylPic)
+	ASSERT BANK(FossilKabutopsPic) == BANK(GhostPic)
+	ld [wMonHPicBank], a
+	; fallthrough
 .done
 	ld a, [wCurSpecies]
 	ld [wMonHIndex], a

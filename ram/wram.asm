@@ -1248,8 +1248,10 @@ wTrainerClass:: db
 	ds 1
 
 wTrainerPicPointer:: dw
-
-	ds 1
+wTrainerPicBank:: db ; marcelnote - added for picture bank
+;	ds 1
+; money received after battle = base money × level of last enemy mon
+wTrainerBaseMoney:: dw ; BCD
 
 UNION
 wTempMoveNameBuffer:: ds 14
@@ -1260,9 +1262,6 @@ wLearnMoveMonName:: ds NAME_LENGTH
 ENDU
 
 	ds 2
-
-; money received after battle = base money × level of last enemy mon
-wTrainerBaseMoney:: dw ; BCD
 
 wMissableObjectCounter:: db
 
@@ -1520,38 +1519,44 @@ wSlideMonUpBottomRowLeftTile::
 
 wDisableVBlankWYUpdate:: db ; if non-zero, don't update WY during V-blank
 
-wSpriteCurPosX:: db
-wSpriteCurPosY:: db
-wSpriteWidth:: db
-wSpriteHeight:: db
+; marcelnote - all this was used for decompression, now unused
+	ds 6
+;wSpriteCurPosX:: db
+;wSpriteCurPosY:: db
+;wSpriteWidth:: db
+;wSpriteHeight:: db
 ; current input byte
-wSpriteInputCurByte:: db
+;wSpriteInputCurByte:: db
 ; bit offset of last read input bit
-wSpriteInputBitCounter:: db
+;wSpriteInputBitCounter:: db
 
 ; determines where in the output byte the two bits are placed. Each byte contains four columns (2bpp data)
 ; 3 -> XX000000   1st column
 ; 2 -> 00XX0000   2nd column
 ; 1 -> 0000XX00   3rd column
 ; 0 -> 000000XX   4th column
-wSpriteOutputBitOffset:: db
+;wSpriteOutputBitOffset:: db
+	db
 
 ; bit 0 determines used buffer (0 -> sSpriteBuffer1, 1 -> sSpriteBuffer2)
 ; bit 1 loading last sprite chunk? (there are at most 2 chunks per load operation)
-wSpriteLoadFlags:: db
-wSpriteUnpackMode:: db
+;wSpriteLoadFlags:: db  ; marcelnote - now unused
+;wSpriteUnpackMode:: db ; marcelnote - now unused
+	ds 2
 wSpriteFlipped:: db
 
+; marcelnote - all this was used for decompression, now unused
+	ds 10
 ; pointer to next input byte
-wSpriteInputPtr:: dw
+;wSpriteInputPtr:: dw
 ; pointer to current output byte
-wSpriteOutputPtr:: dw
+;wSpriteOutputPtr:: dw
 ; used to revert pointer for different bit offsets
-wSpriteOutputPtrCached:: dw
+;wSpriteOutputPtrCached:: dw
 ; pointer to differential decoding table (assuming initial value 0)
-wSpriteDecodeTable0Ptr:: dw
+;wSpriteDecodeTable0Ptr:: dw
 ; pointer to differential decoding table (assuming initial value 1)
-wSpriteDecodeTable1Ptr:: dw
+;wSpriteDecodeTable1Ptr:: dw
 
 ; input for GetMonHeader
 wCurSpecies::

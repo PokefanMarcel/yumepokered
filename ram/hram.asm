@@ -9,7 +9,7 @@ hSoftReset:: db
 UNION
 hBaseTileID:: ; base tile ID to which offsets are added
 hWarpDestinationMap::
-hOAMTile::
+;hOAMTile:: ; marcelnote - now unused
 hROMBankTemp::
 hPreviousTileset::
 hRLEByteValue::
@@ -39,11 +39,11 @@ hSlidingRegionSize:: db
 ;  0 = right
 hSlideDirection:: db
 
-NEXTU
-hSpriteInterlaceCounter::
-hSpriteWidth::  db ; in tiles
-hSpriteHeight:: db ; in tiles
-hSpriteOffset:: db
+;NEXTU ; marcelnote - unused after removing compression
+;hSpriteInterlaceCounter::
+;hSpriteWidth::  db ; in tiles
+;hSpriteHeight:: db ; in tiles
+;hSpriteOffset:: db
 
 NEXTU
 ; counters for blinking down arrow

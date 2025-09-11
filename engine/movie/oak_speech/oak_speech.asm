@@ -258,19 +258,14 @@ MovePicLeft:
 
 DisplayPicCenteredOrUpperRight:
 	call GetPredefRegisters
-IntroDisplayPicCenteredOrUpperRight:
+IntroDisplayPicCenteredOrUpperRight: ; marcelnote - refactored to remove sprite compression
 ; b = bank
-; de = address of compressed pic
+; de = address of pic
 ; c: 0 = centred, non-zero = upper-right
 	push bc
-	ld a, b
-	call UncompressSpriteFromDE
-	ld hl, sSpriteBuffer1
-	ld de, sSpriteBuffer0
-	ld bc, $310
-	call CopyData
-	ld de, vFrontPic
-	call InterlaceMergeSpriteBuffers
+	ld hl, vFrontPic
+	ld c, 7 * 7
+	call CopyVideoData
 	pop bc
 	ld a, c
 	and a
@@ -280,7 +275,7 @@ IntroDisplayPicCenteredOrUpperRight:
 .next
 	xor a
 	ldh [hStartTileID], a
-	predef_jump CopyUncompressedPicToTilemap
+	predef_jump CopySpriteToTilemap
 
 BoyGirlChoice::	; joenote - add female player
 	call SaveScreenTilesToBuffer1

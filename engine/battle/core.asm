@@ -83,9 +83,8 @@ SlidePlayerAndEnemySilhouettesOnScreen:
 	ld a, $1
 	ldh [hAutoBGTransferEnabled], a
 	ld a, $31
-	ldh [hStartTileID], a
 	hlcoord 1, 5
-	predef CopyUncompressedPicToTilemap
+	call CopySpriteToHL
 	xor a
 	ldh [hWY], a
 	ldh [rWY], a
@@ -6514,12 +6513,11 @@ SwapPlayerAndEnemyLevels:
 	pop bc
 	ret
 
+; marcelnote - refactored to remove pic compression
 ; loads either red back pic or old man back pic
 ; also writes OAM data and loads tile patterns for the Red or Old Man back sprite's head
 ; (for use when scrolling the player sprite and enemy's silhouettes on screen)
 LoadPlayerBackPic:
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; marcelnote - changed to add female player and not always load OldManPicBack
 	ld a, [wStatusFlags4]
 	bit BIT_IS_GIRL, a
 	ld de, RedPicBack
@@ -6531,61 +6529,61 @@ LoadPlayerBackPic:
 	jr nz, .gotPicPointer
 	ld de, OldManPicBack
 .gotPicPointer
-	ld a, BANK(RedPicBack)
+	ld b, BANK(RedPicBack)
 	ASSERT BANK(RedPicBack) == BANK(GreenPicBack)
 	ASSERT BANK(RedPicBack) == BANK(OldManPicBack)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-	call UncompressSpriteFromDE
-	predef ScaleSpriteByTwo
-	ld hl, wShadowOAM
-	xor a
-	ldh [hOAMTile], a ; initial tile number
-	ld b, $7 ; 7 columns
-	ld e, $a0 ; X for the left-most column
-.loop ; each loop iteration writes 3 OAM entries in a vertical column
-	ld c, $3 ; 3 tiles per column
-	ld d, $38 ; Y for the top of each column
-.innerLoop ; each loop iteration writes 1 OAM entry in the column
-	ld [hl], d ; OAM Y
-	inc hl
-	ld [hl], e ; OAM X
-	ld a, $8 ; height of tile
-	add d ; increase Y by height of tile
-	ld d, a
-	inc hl
-	ldh a, [hOAMTile]
-	ld [hli], a ; OAM tile number
-	inc a ; increment tile number
-	ldh [hOAMTile], a
-	inc hl
-	dec c
-	jr nz, .innerLoop
-	ldh a, [hOAMTile]
-	add $4 ; increase tile number by 4
-	ldh [hOAMTile], a
-	ld a, $8 ; width of tile
-	add e ; increase X by width of tile
-	ld e, a
-	dec b
-	jr nz, .loop
-	ld de, vBackPic
-	call InterlaceMergeSpriteBuffers
-	ld a, $a
-	ld [rRAMG], a
+
 	xor a
 	ld [rRAMB], a
-	ld hl, vSprites
-	ld de, sSpriteBuffer1
+	ld a, RAMG_SRAM_ENABLE
+	ld [rRAMG], a
+	call ScaleSpriteByTwo ; puts scaled sprite at sSpriteBuffer0
+
+	ld hl, wShadowOAM
+	ld c, 0           ; initial tile number
+	ld d, $38         ; Y start (top)
+.rowOAM ; 3 rows, each loop iteration writes 7 OAM entries in a row
+	ld b, 7           ; 7 columns
+	ld e, $a0         ; X start (left)
+.colOAM
+	ld a, d
+	ld [hli], a       ; OAM Y
+	ld a, e
+	ld [hli], a       ; OAM X
+	add $8            ; width of tile
+	ld e, a           ; increase X by width of tile
+	ld a, c
+	ld [hli], a       ; tile number
+	inc c             ; increment tile number
+	inc hl            ; skip attributes (leave 0)
+	dec b
+	jr nz, .colOAM
+	ld a, $8          ; height of tile
+	add d             ; increase Y by height of tile
+	ld d, a
+	cp $38 + 3 * $8   ; stop after 3 rows
+	jr nz, .rowOAM
+
+	ld hl, vBackPic
+	ld de, sSpriteBuffer0
 	ldh a, [hLoadedROMBank]
 	ld b, a
 	ld c, 7 * 7
 	call CopyVideoData
+
 	xor a
 	ld [rRAMG], a
+
+	ld hl, vSprites
+	ld de, vBackPic
+	ldh a, [hLoadedROMBank]
+	ld b, a
+	ld c, 7 * 7
+	call CopyVideoData
+
 	ld a, $31
-	ldh [hStartTileID], a
 	hlcoord 1, 5
-	predef_jump CopyUncompressedPicToTilemap
+	jp CopySpriteToHL ; copy for scrolling
 
 
 ScrollTrainerPicAfterBattle:
@@ -6763,11 +6761,11 @@ InitBattleCommon:
 	call _LoadTrainerPic
 	xor a
 	ld [wEnemyMonSpecies2], a
-	ldh [hStartTileID], a
 	dec a
 	ld [wAICount], a
 	hlcoord 12, 0
-	predef CopyUncompressedPicToTilemap
+	xor a ; start tile
+	call CopySpriteToHL
 	ld a, $ff
 	ld [wEnemyMonPartyPos], a
 	ld a, $2
@@ -6838,9 +6836,8 @@ ENDC
 .spriteLoaded
 	xor a
 	ld [wTrainerClass], a
-	ldh [hStartTileID], a
 	hlcoord 12, 0
-	predef CopyUncompressedPicToTilemap
+	call CopySpriteToHL
 
 ; common code that executes after init battle code specific to trainer or wild battles
 _InitBattleCommon:
@@ -6884,27 +6881,17 @@ _InitBattleCommon:
 .emptyString
 	db "@"
 
-_LoadTrainerPic: ; marcelnote - modified to manage Red/Green battle
-	ld a, [wTrainerPicPointer]
+
+_LoadTrainerPic: ; marcelnote - refactored for removing sprite compression
+	ld hl, wTrainerPicPointer
+	ld a, [hli]
 	ld e, a
-	ld a, [wTrainerPicPointer + 1]
+	ld a, [hli]
 	ld d, a ; de contains pointer to trainer pic
-	ld a, [wLinkState]
-	and a
-	jr nz, .loadRedPicBank
-	ld a, [wTrainerClass]
-	cp RED
-	jr nc, .loadRedPicBank
-	ld a, BANK("Trainer Pics")
-.loadSprite
-	call UncompressSpriteFromDE
-	ld de, vFrontPic
-	ld a, $77
-	ld c, a
-	jp LoadUncompressedSpriteData
-.loadRedPicBank
-	ld a, BANK(RedPicFront)
-	jr .loadSprite
+	ld b, [hl] ; wTrainerPicBank
+	ld hl, vFrontPic
+	ld c, 7 * 7
+	jp CopyVideoData
 
 ; unreferenced : marcelnote - removed
 ;ResetCryModifiers:
@@ -6912,6 +6899,7 @@ _LoadTrainerPic: ; marcelnote - modified to manage Red/Green battle
 ;;	ld [wFrequencyModifier], a
 ;;	ld [wTempoModifier], a
 ;	jp PlaySound
+
 
 ; animates the mon "growing" out of the pokeball
 AnimateSendingOutMon:
@@ -6952,80 +6940,65 @@ AnimateSendingOutMon:
 	add hl, bc
 	ldh a, [hBaseTileID]
 	add $31
-	jr CopyUncompressedPicToHL
+	jr CopySpriteToHL
 
-CopyUncompressedPicToTilemap:
+
+CopySpriteToTilemap: ; marcelnote - refactored to remove sprite compression
 	ld a, [wPredefHL]
 	ld h, a
 	ld a, [wPredefHL + 1]
 	ld l, a
 	ldh a, [hStartTileID]
-CopyUncompressedPicToHL::
-	lb bc, 7, 7
-	ld de, SCREEN_WIDTH
-	push af
-	ld a, [wSpriteFlipped]
-	and a
-	jr nz, .flipped
-	pop af
-.loop
-	push bc
-	push hl
-.innerLoop
-	ld [hl], a
-	add hl, de
-	inc a
+CopySpriteToHL::
+	ld de, SCREEN_WIDTH - 7
+	ld b, 7
+.loopRow
+	ld c, 7
+.loopCol
+	ld [hli], a
+	inc a                    ; next tile id
 	dec c
-	jr nz, .innerLoop
-	pop hl
-	inc hl
-	pop bc
+	jr nz, .loopCol
+	add hl, de               ; move down one row
 	dec b
-	jr nz, .loop
+	jr nz, .loopRow
 	ret
 
-.flipped
-	push bc
-	ld b, 0
-	dec c
-	add hl, bc
-	pop bc
-	pop af
-.flippedLoop
-	push bc
-	push hl
-.flippedInnerLoop
-	ld [hl], a
-	add hl, de
-	inc a
-	dec c
-	jr nz, .flippedInnerLoop
-	pop hl
-	dec hl
-	pop bc
-	dec b
-	jr nz, .flippedLoop
-	ret
 
+; marcelnote - refactored to remove sprite compression
+; Assumes the monster's attributes have been loaded with GetMonHeader.
+; Scales 2x the Mon backsprite into sSpriteBuffer0, then ships it to vBackPic.
 LoadMonBackPic:
-; Assumes the monster's attributes have
-; been loaded with GetMonHeader.
 	ld a, [wBattleMonSpecies2]
 	ld [wCurPartySpecies], a
 	hlcoord 1, 5
 	lb bc, 7, 8
 	call ClearScreenArea
-	ld hl,  wMonHBackSprite - wMonHeader
-	call UncompressMonSprite
-	predef ScaleSpriteByTwo
-	ld de, vBackPic
-	call InterlaceMergeSpriteBuffers ; combine the two buffers to a single 2bpp sprite
-	ld hl, vSprites
-	ld de, vBackPic
-	ld c, (2 * SPRITEBUFFERSIZE) / 16 ; count of 16-byte chunks to be copied
+
+	ld hl, wMonHBackSprite
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
+
+	xor a
+	ld [rRAMB], a
+	ld a, RAMG_SRAM_ENABLE
+	ld [rRAMG], a
+
+	ld a, [wMonHPicBank]
+	ld b, a
+	call ScaleSpriteByTwo ; puts scaled sprite at sSpriteBuffer0
+
+	ld hl, vBackPic
+	ld de, sSpriteBuffer0
+	ld c, 7 * 7 ; number of tiles to be copied
 	ldh a, [hLoadedROMBank]
 	ld b, a
-	jp CopyVideoData
+	call CopyVideoData
+
+	xor a
+	ld [rRAMG], a
+	ret
 
 
 IF DEF(_FRA)

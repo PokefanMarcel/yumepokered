@@ -11,9 +11,8 @@ PredefPointers::
 ; these are pointers to ASM routines.
 ; they appear to be used in overworld map scripts.
 	add_predef DrawPlayerHUDAndHPBar
-	add_predef CopyUncompressedPicToTilemap
+	add_predef CopySpriteToTilemap ; marcelnote - modified to remove sprite compression
 	add_predef AnimateSendingOutMon
-	add_predef ScaleSpriteByTwo
 	add_predef LoadMonBackPic
 	add_predef CopyDownscaledMonTiles
 	add_predef JumpMoveEffect, $03 ; wrong bank

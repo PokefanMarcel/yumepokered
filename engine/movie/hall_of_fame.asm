@@ -118,8 +118,10 @@ HoFShowMonOrPlayer:
 	call RunPaletteCommand
 	ld a, %11100100
 	ldh [rBGP], a
-	ld c, $31 ; back pic
-	call HoFLoadMonPlayerPicTileIDs
+	ld a, $31 ; back pic
+	ldh [hStartTileID], a
+	hlcoord 12, 5
+	predef CopySpriteToTilemap ; marcelnote - modified to remove sprite compression
 	ld d, $a0
 	ld e, 4
 	ld a, [wOnSGB]
@@ -130,8 +132,9 @@ HoFShowMonOrPlayer:
 	call .ScrollPic ; scroll back pic left
 	xor a
 	ldh [hSCY], a
-	ld c, a ; front pic
-	call HoFLoadMonPlayerPicTileIDs
+	ldh [hStartTileID], a ; front pic
+	hlcoord 12, 5
+	predef CopySpriteToTilemap ; marcelnote - modified to remove sprite compression
 	ld d, 0
 	ld e, -4
 ; scroll front pic right
@@ -173,45 +176,40 @@ HoFDisplayMonInfo:
 	ld a, [wHoFMonSpecies]
 	jp PlayCry
 
-HoFLoadPlayerPics:
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
+HoFLoadPlayerPics: ; marcelnote - refactored to remove sprite compression
 	ld a, [wStatusFlags4]
-	bit BIT_IS_GIRL, a
+	bit BIT_IS_GIRL, a ; marcelnote - add female player
 	ld de, RedPicFront
-	ld a, BANK(RedPicFront)
-	jr z, .gotPicFront
+	ld bc, RedPicBack
+	jr z, .gotPics
 	ld de, GreenPicFront
-	ld a, BANK(GreenPicFront)
-.gotPicFront
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-	call UncompressSpriteFromDE
-	ld hl, sSpriteBuffer1
+	ld bc, GreenPicBack
+.gotPics
+	ASSERT BANK(RedPicFront) == BANK(GreenPicFront)
+	push bc ; save bc = back pic address
+	ld b, BANK(RedPicFront)
+	ld hl, vFrontPic
+	ld c, 7 * 7 ; number of tiles to be copied
+	call CopyVideoData ; copy front sprite
+	pop de ; restore de = back pic address
+	ld b, BANK(RedPicBack)
+	xor a
+	ld [rRAMB], a
+	ld a, RAMG_SRAM_ENABLE
+	ld [rRAMG], a
+	call ScaleSpriteByTwo ; writes scaled sprite at sSpriteBuffer0
+	ld hl, vBackPic
 	ld de, sSpriteBuffer0
-	ld bc, $310
-	call CopyData
-	ld de, vFrontPic
-	call InterlaceMergeSpriteBuffers
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
-	ld a, [wStatusFlags4]
-	bit BIT_IS_GIRL, a
-	ld de, RedPicBack
-	ld a, BANK(RedPicBack)
-	jr z, .gotPicBack
-	ld de, GreenPicBack
-	ld a, BANK(GreenPicBack)
-.gotPicBack
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-	call UncompressSpriteFromDE
-	predef ScaleSpriteByTwo
-	ld de, vBackPic
-	call InterlaceMergeSpriteBuffers
-	ld c, $1
-
-HoFLoadMonPlayerPicTileIDs:
-; c = base tile ID
-	ld b, TILEMAP_MON_PIC
+	ld c, 7 * 7 ; number of tiles to be copied
+	ldh a, [hLoadedROMBank]
+	ld b, a
+	call CopyVideoData ; copy back sprite
+	xor a
+	ld [rRAMG], a
+	ld a, $31
+	ldh [hStartTileID], a
 	hlcoord 12, 5
-	predef_jump CopyTileIDsFromList
+	predef_jump CopySpriteToTilemap
 
 HoFDisplayPlayerStats:
 	SetEvent EVENT_HALL_OF_FAME_DEX_RATING

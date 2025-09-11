@@ -1161,65 +1161,70 @@ AnimationSlideMonUp:
 	and a
 	hlcoord 1, 6
 	decoord 1, 5
-	ld a, $30
+	ld a, $31 ; marcelnote - modified to remove sprite compression
 	jr z, .next
 	hlcoord 12, 1
 	decoord 12, 0
-	ld a, $ff
+	ld a, $0 ; marcelnote - modified to remove sprite compression
 .next
 	ld [wSlideMonUpBottomRowLeftTile], a
 	jp _AnimationSlideMonUp
 
-AnimationSlideMonDown:
+AnimationSlideMonDown: ; marcelnote - modified for removing sprite compression
 ; Slides the mon's sprite down out of the screen.
-	xor a ; TILEMAP_MON_PIC
-	call GetTileIDList
-.loop
-	call GetMonSpriteTileMapPointerFromRowCount
+	ld c, 7
+	ldh a, [hWhoseTurn]
+	and a
+	hlcoord 1, 10
+	decoord 1, 11
+	jr z, .outerLoop
+	hlcoord 12, 5
+	decoord 12, 6
+.outerLoop
+; In each iteration, slide down all rows.
 	push bc
 	push de
-	call CopyPicTiles
-	call Delay3
-	call AnimationHideMonPic
-	pop de
+	push hl
+	ld b, 7
+.innerLoop
+	push bc
+	push hl       ; save coords of lower row
+	ld bc, 7
+	call CopyData ; Copy bc bytes from de to hl.
+	pop de        ; lower row becomes upper row
+	ld bc, - SCREEN_WIDTH - 7
+	add hl, bc    ; move de to next row
 	pop bc
 	dec b
-	jr nz, .loop
+	jr nz, .innerLoop
+	call Delay3
+	pop hl
+	pop de
+	pop bc
+	dec c
+	jr nz, .outerLoop
 	ret
-
-AnimationSlideMonOff:
-; Slides the mon's sprite off the screen horizontally.
-	ld e, 8
-	ld a, 3
-	ld [wSlideMonDelay], a
-	jp _AnimationSlideMonOff
 
 AnimationSlideEnemyMonOff:
 ; Slides the enemy mon off the screen horizontally.
 	ld hl, AnimationSlideMonOff
 	jp CallWithTurnFlipped
 
-_AnimationSlideMonUp:
-	push de
-	push hl
+_AnimationSlideMonUp: ; marcelnote - optimized and adjusted for sprite removing compression
+	push de ; save e.g. decoord 1, 5 (upper row)
+	push hl ; save e.g. hlcoord 1, 6 (lower row)
 	push bc
 
 ; In each iteration, slide up all rows but the top one (which is overwritten).
 	ld b, 6
 .slideLoop
 	push bc
-	push de
-	push hl
+	push hl       ; save coords of lower row
 	ld bc, 7
-	call CopyData
-; Note that de and hl are popped in the same order they are pushed, swapping
-; their values. When CopyData is called, hl points to a tile 1 row below
-; the one de points to. To maintain this relationship, after swapping, we add 2
-; rows to hl so that it is 1 row below again.
-	pop de
-	pop hl
-	ld bc, SCREEN_WIDTH * 2
-	add hl, bc
+	call CopyData ; Copy bc bytes from hl to de.
+	pop de        ; lower row becomes upper row
+	ld bc, SCREEN_WIDTH - 7
+	add hl, bc    ; move hl to next row
 	pop bc
 	dec b
 	jr nz, .slideLoop
@@ -1232,15 +1237,14 @@ _AnimationSlideMonUp:
 	hlcoord 12, 6
 .next
 	ld a, [wSlideMonUpBottomRowLeftTile]
-	inc a
-	ld [wSlideMonUpBottomRowLeftTile], a
 	ld c, 7
 .fillBottomRowLoop
 	ld [hli], a
-	add 7
+	inc a
 	dec c
 	jr nz, .fillBottomRowLoop
 
+	ld [wSlideMonUpBottomRowLeftTile], a
 	ld c, 2
 	call DelayFrames
 	pop bc
@@ -1364,19 +1368,6 @@ AnimationBlinkMon:
 	jr nz, .loop
 	pop af
 	ret
-
-AnimationFlashMonPic:
-; Flashes the mon's sprite on and off
-	ld a, [wBattleMonSpecies]
-	ld [wChangeMonPicPlayerTurnSpecies], a
-	ld a, [wEnemyMonSpecies]
-	ld [wChangeMonPicEnemyTurnSpecies], a
-	jp ChangeMonPic
-
-AnimationFlashEnemyMonPic:
-; Flashes the enemy mon's sprite on and off
-	ld hl, AnimationFlashMonPic
-	jp CallWithTurnFlipped
 
 AnimationShowMonPic:
 	xor a ; TILEMAP_MON_PIC
@@ -1771,80 +1762,6 @@ AnimationSlideMonDownAndHide:
 	call FillMemory
 	jp CopyTempPicToMonPic
 
-_AnimationSlideMonOff:
-; Slides the mon's sprite off the screen horizontally by e tiles and waits
-; [wSlideMonDelay] V-blanks each time the pic is slid by one tile.
-	ldh a, [hWhoseTurn]
-	and a
-	jr z, .playerTurn
-	hlcoord 12, 0
-	jr .next
-.playerTurn
-	hlcoord 0, 5
-.next
-	ld d, 8 ; d's value is unused
-.slideLoop ; iterates once for each time the pic slides by one tile
-	push hl
-	ld b, 7
-.rowLoop ; iterates once for each row
-	ld c, 8
-.tileLoop ; iterates once for each tile in the row
-	ldh a, [hWhoseTurn]
-	and a
-	jr z, .playerTurn2
-	call .EnemyNextTile
-	jr .next2
-.playerTurn2
-	call .PlayerNextTile
-.next2
-	ld [hli], a
-	dec c
-	jr nz, .tileLoop
-	push de
-	ld de, SCREEN_WIDTH - 8
-	add hl, de
-	pop de
-	dec b
-	jr nz, .rowLoop
-	ld a, [wSlideMonDelay]
-	ld c, a
-	call DelayFrames
-	pop hl
-	dec d
-	dec e
-	jr nz, .slideLoop
-	ret
-
-; Since mon pic tile numbers go from top to bottom, left to right in order,
-; adding the height of the mon pic in tiles to a tile number gives the tile
-; number of the tile one column to the right (and thus subtracting the height
-; gives the reverse). If the next tile would be past the edge of the pic, the 2
-; functions below catch it by checking if the tile number is within the valid
-; range and if not, replacing it with a blank tile.
-
-.PlayerNextTile
-	ld a, [hl]
-	add 7
-; This is a bug. The lower right corner tile of the mon back pic is blanked
-; while the mon is sliding off the screen. It should compare with the max tile
-; plus one instead.
-	;cp $61
-	cp $62 ; marcelnote - fixed
-	ret c
-	ld a, " "
-	ret
-
-.EnemyNextTile
-	ld a, [hl]
-	sub 7
-; This has the same problem as above, but it has no visible effect because
-; the lower right tile is in the first column to slide off the screen.
-	;cp $30
-	cp $31 ; marcelnote - fixed
-	ret c
-	ld a, " "
-	ret
-
 AnimationSlideMonHalfOff:
 ; Slides the mon's sprite halfway off the screen. It's used in Softboiled.
 	ld e, 4
@@ -1852,6 +1769,72 @@ AnimationSlideMonHalfOff:
 	ld [wSlideMonDelay], a
 	call _AnimationSlideMonOff
 	jp Delay3
+
+AnimationSlideMonOff:
+; Slides the mon's sprite off the screen horizontally.
+	ld e, 8
+	ld a, 3
+	ld [wSlideMonDelay], a
+	; fallthrough
+
+_AnimationSlideMonOff:
+; marcelnote - refactored to remove sprite compression
+; Slides the mon's sprite off the screen horizontally by e tiles and waits
+; [wSlideMonDelay] V-blanks each time the pic is slid by one tile.
+	ldh a, [hWhoseTurn]
+	and a
+	jr z, .slidePlayerMonLoop
+	; fallthrough
+
+.slideEnemyMonLoop ; iterates once for each time the pic slides by one tile
+	push de ; save e = times left to scroll
+	hlcoord 18, 0
+	ld de, SCREEN_WIDTH + 7
+	ld b, 7 ; 7 rows
+.rowLoopEnemy
+	ld c, 7 ; 7 tiles in a row
+.tileLoopEnemy
+	; use left neighbor, ok because one column of buffer left of FrontPic
+	dec hl
+	ld a, [hli]
+	ld [hld], a
+	dec c
+	jr nz, .tileLoopEnemy
+	add hl, de ; move hl to next row
+	dec b
+	jr nz, .rowLoopEnemy
+	ld a, [wSlideMonDelay]
+	ld c, a
+	call DelayFrames
+	pop de ; restore e = tiles left to scroll
+	dec e
+	jr nz, .slideEnemyMonLoop
+	ret
+
+.slidePlayerMonLoop ; iterates once for each time the pic slides by one tile
+	push de ; save e = times left to scroll
+	hlcoord 1, 5
+	ld de, SCREEN_WIDTH - 7
+	ld b, 7 ; 7 rows
+.rowLoopPlayer
+	ld c, 7 ; 7 tiles in a row
+.tileLoopPlayer
+	; use right neighbor, ok because one column of buffer right of BackPic
+	inc hl
+	ld a, [hld]
+	ld [hli], a
+	dec c
+	jr nz, .tileLoopPlayer
+	add hl, de ; move hl to next row
+	dec b
+	jr nz, .rowLoopPlayer
+	ld a, [wSlideMonDelay]
+	ld c, a
+	call DelayFrames
+	pop de ; restore e = tiles left to scroll
+	dec e
+	jr nz, .slidePlayerMonLoop
+	ret
 
 CopyTempPicToMonPic:
 	ldh a, [hWhoseTurn]
@@ -1938,30 +1921,30 @@ AnimationSubstitute:
 	and a
 	jr z, .playerTurn
 	ld hl, MonsterSprite tile 0 ; facing down sprite
-	ld de, wTempPic + $120
+	ld de, wTempPic + (7 * 4 + 2) tiles
 	call CopyMonsterSpriteData
 	ld hl, MonsterSprite tile 1
-	ld de, wTempPic + $120 + $70
+	ld de, wTempPic + (7 * 4 + 3) tiles
 	call CopyMonsterSpriteData
 	ld hl, MonsterSprite tile 2
-	ld de, wTempPic + $120 + $10
+	ld de, wTempPic + (7 * 5 + 2) tiles
 	call CopyMonsterSpriteData
 	ld hl, MonsterSprite tile 3
-	ld de, wTempPic + $120 + $10 + $70
+	ld de, wTempPic + (7 * 5 + 3) tiles
 	call CopyMonsterSpriteData
 	jr .next
 .playerTurn
 	ld hl, MonsterSprite tile 4 ; facing up sprite
-	ld de, wTempPic + $120 + $70
+	ld de, wTempPic + (7 * 4 + 3) tiles
 	call CopyMonsterSpriteData
 	ld hl, MonsterSprite tile 5
-	ld de, wTempPic + $120 + $e0
+	ld de, wTempPic + (7 * 4 + 4) tiles
 	call CopyMonsterSpriteData
 	ld hl, MonsterSprite tile 6
-	ld de, wTempPic + $120 + $80
+	ld de, wTempPic + (7 * 5 + 3) tiles
 	call CopyMonsterSpriteData
 	ld hl, MonsterSprite tile 7
-	ld de, wTempPic + $120 + $f0
+	ld de, wTempPic + (7 * 5 + 4) tiles
 	call CopyMonsterSpriteData
 .next
 	call CopyTempPicToMonPic
@@ -1977,10 +1960,10 @@ HideSubstituteShowMonAnim:
 	and a
 	ld hl, wPlayerMonMinimized
 	ld a, [wPlayerBattleStatus2]
-	jr z, .next1
+	jr z, .gotTurn
 	ld hl, wEnemyMonMinimized
 	ld a, [wEnemyBattleStatus2]
-.next1
+.gotTurn
 	push hl
 ; if the substitute broke, slide it down, else slide it offscreen horizontally
 	bit HAS_SUBSTITUTE_UP, a
@@ -2014,6 +1997,19 @@ AnimationBoundUpAndDown:
 	jr nz, .loop
 	jp AnimationShowMonPic
 
+AnimationFlashEnemyMonPic:
+; Flashes the enemy mon's sprite on and off
+	ld hl, AnimationFlashMonPic
+	jp CallWithTurnFlipped
+
+AnimationFlashMonPic:
+; Flashes the mon's sprite on and off
+	ld a, [wBattleMonSpecies]
+	ld [wChangeMonPicPlayerTurnSpecies], a
+	ld a, [wEnemyMonSpecies]
+	ld [wChangeMonPicEnemyTurnSpecies], a
+	jr ChangeMonPic
+
 AnimationTransformMon:
 ; Redraws this mon's sprite as the back/front sprite of the opposing mon.
 ; Used in Transform.
@@ -2021,6 +2017,7 @@ AnimationTransformMon:
 	ld [wChangeMonPicPlayerTurnSpecies], a
 	ld a, [wBattleMonSpecies]
 	ld [wChangeMonPicEnemyTurnSpecies], a
+	; fallthrough
 
 ChangeMonPic:
 	ldh a, [hWhoseTurn]
@@ -2043,10 +2040,10 @@ ChangeMonPic:
 	ld [wCurSpecies], a
 	call GetMonHeader
 	predef LoadMonBackPic
-	xor a ; TILEMAP_MON_PIC
-	call GetTileIDList
-	call GetMonSpriteTileMapPointerFromRowCount
-	call CopyPicTiles
+	ld a, $31 ; back pic
+	ldh [hStartTileID], a
+	hlcoord 1, 5
+	predef CopySpriteToTilemap ; marcelnote - modified to remove sprite compression
 	pop af
 	ld [wBattleMonSpecies2], a
 .done
@@ -2093,6 +2090,7 @@ AnimationHideMonPic:
 	jr ClearMonPicFromTileMap
 .playerTurn
 	ld a, 5 * SCREEN_WIDTH + 1
+	; fallthrough
 
 ClearMonPicFromTileMap:
 	push hl
@@ -2116,12 +2114,10 @@ GetMonSpriteTileMapPointerFromRowCount:
 	push de
 	ldh a, [hWhoseTurn]
 	and a
+	ld a, 12
 	jr nz, .enemyTurn
 	ld a, 5 * SCREEN_WIDTH + 1
-	jr .next
 .enemyTurn
-	ld a, 12
-.next
 	hlcoord 0, 0
 	ld e, a
 	ld d, 0
@@ -2142,7 +2138,7 @@ GetMonSpriteTileMapPointerFromRowCount:
 ; Input:
 ; a = tile ID list index
 ; Output:
-; de = tile ID list pointer
+; de = tile ID list pointer ; is this useful? this could preserve DE
 ; b = number of rows
 ; c = number of columns
 GetTileIDList:
@@ -2156,14 +2152,13 @@ GetTileIDList:
 	ld e, a
 	ld a, [hli]
 	ld d, a
-	ld a, [hli]
-	ld b, a
+	ld a, [hl]  ; a = $( nRows )( nCols )
 	and $f
-	ld c, a
-	ld a, b
+	ld c, a ; c = number of columns
+	ld a, [hli] ; a = $( nRows )( nCols )
 	swap a
 	and $f
-	ld b, a
+	ld b, a ; b = number of rows
 	ret
 
 AnimCopyRowLeft:

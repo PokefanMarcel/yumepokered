@@ -35,7 +35,7 @@ DEF REDRAW_ROW EQU 2
 ; tile list ids
 ; TileIDListPointerTable indexes (see data/tilemaps.asm)
 	const_def
-	const TILEMAP_MON_PIC
+	const TILEMAP_MON_PIC ; marcelnote - could be removed now that we have CopySpriteToTilemap?
 	const TILEMAP_SLIDE_DOWN_MON_PIC_7X5
 	const TILEMAP_SLIDE_DOWN_MON_PIC_7X3
 	const TILEMAP_GENGAR_INTRO_1

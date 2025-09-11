@@ -39,7 +39,7 @@ INCLUDE "home/update_sprites.asm"
 ;INCLUDE "data/items/marts.asm" ; marcelnote - moved inventories to their respective scripts
 
 INCLUDE "home/overworld_text.asm"
-INCLUDE "home/uncompress.asm"
+INCLUDE "home/scale_sprites.asm"
 INCLUDE "home/reset_player_sprite.asm"
 ;INCLUDE "home/fade_audio.asm"
 INCLUDE "home/text_script.asm"

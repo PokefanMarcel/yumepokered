@@ -12,14 +12,6 @@ FillMemory:: ; marcelnote - Engezerstorung optim
 	jr nz, .loop
 	ret   ; returns b = c = 0
 
-UncompressSpriteFromDE::
-; Decompress pic at a:de.
-	ld hl, wSpriteInputPtr
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	jp UncompressSpriteData
-
 SaveScreenTilesToBuffer2::
 	hlcoord 0, 0
 	ld de, wTileMapBackup2
