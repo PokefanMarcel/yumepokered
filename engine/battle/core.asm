@@ -6539,29 +6539,26 @@ LoadPlayerBackPic:
 	ld [rRAMG], a
 	call ScaleSpriteByTwo ; puts scaled sprite at sSpriteBuffer0
 
-	ld hl, wShadowOAM
-	ld c, 0           ; initial tile number
-	ld d, $38         ; Y start (top)
+	ld hl, wShadowOAM       ; marcelnote - optim by Engezerstorung
+	lb bc, $38, 0           ; b = Y start (top), c = initial tile number
+	lb de, $a0 + 7 * $8, $8 ; d = X end (right), e = tile width / height
 .rowOAM ; 3 rows, each loop iteration writes 7 OAM entries in a row
-	ld b, 7           ; 7 columns
-	ld e, $a0         ; X start (left)
+	ld a, $a0               ; X start (left)
 .colOAM
-	ld a, d
-	ld [hli], a       ; OAM Y
-	ld a, e
-	ld [hli], a       ; OAM X
-	add $8            ; width of tile
-	ld e, a           ; increase X by width of tile
-	ld a, c
-	ld [hli], a       ; tile number
-	inc c             ; increment tile number
-	inc hl            ; skip attributes (leave 0)
-	dec b
+	ld [hl], b              ; OAM Y
+	inc l
+	ld [hli], a             ; OAM X
+	add e                   ; increase X by width of tile
+	ld [hl], c              ; tile number
+	inc l
+	inc c                   ; next tile
+	inc l                   ; skip attributes (leave 0)
+	cp d
 	jr nz, .colOAM
-	ld a, $8          ; height of tile
-	add d             ; increase Y by height of tile
-	ld d, a
-	cp $38 + 3 * $8   ; stop after 3 rows
+	ld a, b
+	add e                   ; increase Y by height of tile
+	ld b, a
+	cp $38 + 3 * $8         ; stop after 3 rows
 	jr nz, .rowOAM
 
 	ld hl, vBackPic
