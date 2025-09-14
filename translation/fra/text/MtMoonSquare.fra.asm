@@ -1,52 +1,53 @@
 ; marcelnote - new location
-_MtMoonSquareCooltrainerFText:: ; TODO - manually translate
-	text "CLEFAIRY comes"
-	line "to the pond"
-	cont "sometimes."
+_MtMoonSquareCooltrainerFText::
+	text "Un MELOFEE vient"
+	line "parfois au bord"
+	cont "de la mare."
 
-	para "You might spot one"
-	line "if you're lucky!"
+	para "Avec un peu de"
+	line "chance, tu le"
+	cont "verras peut-être!"
 	done
 
-_MtMoonSquareClefairyText:: ; TODO - manually translate
-	text "CLEFAIRY: Feehee!@"
+_MtMoonSquareClefairyText::
+	text "MELOFEE: Fé-ée!@"
 	text_end
 
-_MtMoonSquareSignText:: ; TODO - manually translate
-	text "MT.MOON SQUARE"
-	line "Do not litter"
+_MtMoonSquareSignText::
+	text "AIRE DE REPOS"
+	line "Ne rien jeter"
 	done
 
-_MtMoonSquareHikerText:: ; TODO - manually translate
-	text "Wow! My #MON"
-	line "evolved as we"
-	cont "practiced our"
-	cont "strikes on this"
-	cont "rock!"
+_MtMoonSquareHikerText::
+	text "Whoua! On répétait"
+	line "nos attaques"
+	cont "sur ce rocher,"
+	cont "et mon #MON"
+	cont "a évolué!"
 	done
 
-_MtMoonSquareGolemText:: ; TODO - manually translate
-	text "GOLEM: Rumble!"
-	line "Grum-grumble!@"
+_MtMoonSquareGolemText::
+	text "GROLEM: Grooo!"
+	line "Groooleeem!@"
 	text_end
 
-_MtMoonSquareThisRockVibratesText:: ; TODO - manually translate
-	text "This rock"
-	line "vibrates with"
-	cont "intense power."
+_MtMoonSquareThisRockVibratesText::
+	text "Une énergie"
+	line "sourde résonne"
+	cont "dans ce rocher."
 	done
 
-_MtMoonSquareShouldGravelerStrikeText:: ; TODO - manually translate
-	text "Should @"
+_MtMoonSquareShouldGravelerStrikeText::
+	text "Le frapper avec"
+	line "@"
 	text_ram wStringBuffer
-	text_start
-	line "strike it?"
+	text "?"
 	done
 
-_MtMoonSquareGravelerGivesPunchText:: ; TODO - manually translate
+_MtMoonSquareGravelerGivesPunchText::
 	text_ram wStringBuffer
-	text " gives"
-	line "a solid punch!"
+	text " lance"
+	line "une patate!"
 	done
 
 _MtMoonSquareGravelerDotsText::
