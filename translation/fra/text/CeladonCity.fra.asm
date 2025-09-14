@@ -161,15 +161,15 @@ _CeladonCityGameCornerSignText::
 	cont "pour adultes!"
 	done
 
-_CeladonCityCeladonGroveSignText:: ; TODO marcelnote - for Celadon Grove
-	text "CELADON GROVE"
+_CeladonCityCeladonGroveSignText:: ; marcelnote - for Celadon Grove
+	text "BOIS CELADON"
 	done
 
-_CeladonCityCooltrainerFText:: ; TODO marcelnote - new NPC who mentions Celadon Grove
-    text "I made a wish"
-    line "at the old shrine"
-    cont "in CELADON GROVE."
+_CeladonCityCooltrainerFText:: ; marcelnote - new NPC who mentions Celadon Grove
+	text "J'ai fait un voeu"
+	line "au sanctuaire"
+	cont "du BOIS CELADON."
 
-    para "I hope it"
-    line "comes true!"
+	para "Pourvu que ça"
+	line "marche!"
 	done
