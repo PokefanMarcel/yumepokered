@@ -9,7 +9,7 @@ FuchsiaCityName:     db "PARMANIE@"
 CinnabarIslandName:  db "CRAMOIS'ILE@"
 IndigoPlateauName:   db "PLATEAU INDIGO@"
 SaffronCityName:     db "SAFRANIA@"
-MandarinIslandName:  db "ILE MANDARINE@" ; marcelnote - new location ; ???
+MandarinIslandName:  db "ILE MANDARINE@" ; marcelnote - new location
 Route1Name:          db "ROUTE 1@"
 Route2Name:          db "ROUTE 2@"
 Route3Name:          db "ROUTE 3@"
