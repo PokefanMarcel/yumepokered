@@ -232,31 +232,32 @@ ENDC
 	done
 
 
-_PokeBeeperAlertFullText:: ; TODO marcelnote - new for PokéBeeper
-	text "A message on the"
-	line "# BEEPER."
+_PokeBeeperAlertFullText:: ; marcelnote - new for PokéBeeper
+	text "Un message sur"
+	line "le # BIP."
 
-	para "The BOX is full!"
-	line "Better find a"
-	cont "PC fast!"
+	para "La BOITE est"
+	line "pleine! Trouve"
+	cont "vite un PC!"
 	done
 
 _RepelUseAnotherText:: ; TODO marcelnote - added prompt to reuse repel
 	text "Use another?"
 	done
 
-_PokeBeeperAlertText:: ; TODO marcelnote - new for PokéBeeper
-	text "A message on the"
-	line "# BEEPER!"
+_PokeBeeperAlertText:: ; marcelnote - new for PokéBeeper
+	text "Un message sur"
+	line "le # BIP!"
 
-	para "The BOX has space"
-	line "for just @"
+	para "La BOITE ne peut"
+	line "recevoir que @"
 	text_decimal wStringBuffer, 1, 2
-	text " more"
-	cont "#MON."
+	text_start
+	cont "#MON de plus."
 
-	para "Change it soon at"
-	line "a #MON CENTER!"
+	para "Trouve vite un"
+	line "CENTRE #MON"
+	cont "pour en changer!"
 	done
 
 _CanUseMoveText:: ; TODO marcelnote - for temporary field moves

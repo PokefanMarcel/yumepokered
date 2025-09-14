@@ -248,28 +248,28 @@ _ExpAllDeactivatedText:: ; marcelnote - ExpAll can be activated/deactivated
 	line "le MULTI. EXP."
 	prompt
 
-_PokeBeeperSpaceLeftText:: ; TODO marcelnote - new for PokéBeeper
-	text "<PLAYER> checked"
-	line "the # BEEPER."
+_PokeBeeperSpaceLeftText:: ; marcelnote - new for PokéBeeper
+	text "<PLAYER> allume"
+	line "le # BIP."
 
 	para "..."
 
-	para "The BOX has space"
-	line "for @"
+	para "La BOITE peut"
+	line "encore recevoir"
+	cont "@"
 	text_decimal wStringBuffer, 1, 2
-	text " more"
-	cont "#MON."
+	text " #MON."
 	prompt
 
-_PokeBeeperBoxIsFullText:: ; TODO marcelnote - new for PokéBeeper
-	text "<PLAYER> checked"
-	line "the # BEEPER."
+_PokeBeeperBoxIsFullText:: ; marcelnote - new for PokéBeeper
+	text "<PLAYER> allume"
+	line "le # BIP."
 
 	para "..."
 
-	para "The BOX is full!"
-	line "Better find a"
-	cont "PC fast!"
+	para "La BOITE est"
+	line "pleine! Trouve"
+	cont "vite un PC!"
 	prompt
 
 _ItemUseFujisNotesText:: ; TODO marcelnote - new
