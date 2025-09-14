@@ -167,8 +167,8 @@ _SaffronCitySilphCoLatestProductSignText::
 	done
 
 
-_SaffronCityPokemonAcademySignText:: ; TODO marcelnote - added Pokemon Academy
-	text "#MON ACADEMY"
+_SaffronCityPokemonAcademySignText::
+	text "ACADEMIE #MON"
 	done
 
 _SaffronCityPhoneText:: ; TODO marcelnote - new
