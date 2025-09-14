@@ -20,7 +20,7 @@ _PlayerBlackedOutText::
 _RepelWoreOffText::
 	text "L'effet REPOUSSE"
 	line "est terminé."
-	done
+	prompt ; marcelnote - changed from done for UseAnotherRepel
 
 _PokemartBuyingGreetingText::
 	text "Prends ton temps."
@@ -241,8 +241,9 @@ _PokeBeeperAlertFullText:: ; marcelnote - new for PokéBeeper
 	cont "vite un PC!"
 	done
 
-_RepelUseAnotherText:: ; TODO marcelnote - added prompt to reuse repel
-	text "Use another?"
+_RepelUseAnotherText:: ; marcelnote - added prompt to reuse repel
+	text "En utiliser"
+	line "un autre?"
 	done
 
 _PokeBeeperAlertText:: ; marcelnote - new for PokéBeeper
