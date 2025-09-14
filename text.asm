@@ -511,18 +511,18 @@ ENDC
 SECTION "Text 12", ROMX ; marcelnote - new
 
 IF FALSE ; TODO: manually translate
-  INCLUDE "translation/fra/text/PokemonAcademy1F2F.asm"       ; TODO marcelnote - new location
-  INCLUDE "translation/fra/text/PokemonAcademy3F4F.asm"       ; TODO marcelnote - new location
-  INCLUDE "translation/fra/text/CeladonGrove.asm"             ; TODO marcelnote - new location
-  INCLUDE "translation/fra/text/CeladonGroveSouthGate.asm"    ; TODO marcelnote - new location
-  INCLUDE "translation/fra/text/CeladonGroveNorthGate.asm"    ; TODO marcelnote - new location
-  INCLUDE "translation/fra/text/FuchsiaMoveDeleterHouse.asm"  ; TODO marcelnote - new location
-  INCLUDE "translation/fra/text/MtSilver3F.asm"               ; TODO marcelnote - new location
-  INCLUDE "translation/fra/text/MandarinDock.asm"             ; TODO marcelnote - new location
-  INCLUDE "translation/fra/text/CitrusFerryDeck.asm"          ; TODO marcelnote - new location
-  INCLUDE "translation/fra/text/CitrusFerryOutside.asm"       ; TODO marcelnote - new location
-  INCLUDE "translation/fra/text/CitrusFerryRooms.asm"         ; TODO marcelnote - new location
-  INCLUDE "translation/fra/text/SummerBeachHouse.asm"         ; TODO marcelnote - new location from pokeyellow
+  INCLUDE "translation/fra/text/PokemonAcademy1F2F.fra.asm"       ; TODO marcelnote - new location
+  INCLUDE "translation/fra/text/PokemonAcademy3F4F.fra.asm"       ; TODO marcelnote - new location
+  INCLUDE "translation/fra/text/CeladonGrove.fra.asm"             ; TODO marcelnote - new location
+  INCLUDE "translation/fra/text/CeladonGroveSouthGate.fra.asm"    ; TODO marcelnote - new location
+  INCLUDE "translation/fra/text/CeladonGroveNorthGate.fra.asm"    ; TODO marcelnote - new location
+  INCLUDE "translation/fra/text/FuchsiaMoveDeleterHouse.fra.asm"  ; TODO marcelnote - new location
+  INCLUDE "translation/fra/text/MtSilver3F.fra.asm"               ; TODO marcelnote - new location
+  INCLUDE "translation/fra/text/MandarinDock.fra.asm"             ; TODO marcelnote - new location
+  INCLUDE "translation/fra/text/CitrusFerryDeck.fra.asm"          ; TODO marcelnote - new location
+  INCLUDE "translation/fra/text/CitrusFerryOutside.fra.asm"       ; TODO marcelnote - new location
+  INCLUDE "translation/fra/text/CitrusFerryRooms.fra.asm"         ; TODO marcelnote - new location
+  INCLUDE "translation/fra/text/SummerBeachHouse.fra.asm"         ; TODO marcelnote - new location from pokeyellow
 ELSE
   INCLUDE "text/PokemonAcademy1F2F.asm"       ; marcelnote - new location
   INCLUDE "text/PokemonAcademy3F4F.asm"       ; marcelnote - new location
