@@ -160,8 +160,10 @@ _PokemonCenterWelcomeText::
 	text "Bienvenue dans"
 	line "notre CENTRE"
 	cont "#MON!"
+	prompt
 
-	para "Nous soignons les"
+_PokemonCenterPerfectHealthText:: ; marcelnote - broke down WelcomeText to skip this
+	text "Nous soignons les"
 	line "#MON!"
 	prompt
 
@@ -268,9 +270,3 @@ _CanUseMoveText:: ; TODO marcelnote - for temporary field moves
 	text_ram wStringBuffer
 	text "!@"
 	text_end
-
-_PokemonCenterPerfectHealthText:: ; TODO marcelnote - broke down WelcomeText to skip this
-	text "We heal your"
-	line "#MON back to"
-	cont "perfect health!"
-	prompt
