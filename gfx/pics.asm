@@ -643,6 +643,7 @@ EngineerPic::      INCBIN "gfx/trainers/engineer.2bpp"
 
 
 SECTION "Trainer Pics 2", ROMX
+
 FisherPic::        INCBIN "gfx/trainers/fisher.2bpp"
 SwimmerPic::       INCBIN "gfx/trainers/swimmer.2bpp"
 CueBallPic::       INCBIN "gfx/trainers/cueball.2bpp"
