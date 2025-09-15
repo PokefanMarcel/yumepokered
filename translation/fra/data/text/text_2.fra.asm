@@ -616,9 +616,9 @@ _Route22GateLeftBinocularsText:: ; marcelnote - new
 	line "dans les"
 	cont "jumelles."
 
-	para "A remote mountain" ; TODO
-	line "rises above"
-	cont "the horizon."
+	para "Un pic isolé"
+	line "se dessine"
+	cont "à l'horizon."
 	done
 
 _Route22GateRightBinocularsText:: ; marcelnote - new
@@ -626,9 +626,9 @@ _Route22GateRightBinocularsText:: ; marcelnote - new
 	line "dans les"
 	cont "jumelles."
 
-	para "A winding path" ; TODO
-	line "leads to the"
-	cont "#MON LEAGUE."
+	para "Un chemin sinueux"
+	line "grimpe vers la"
+	cont "LIGUE #MON."
 	done
 
 _AerodactylFossilText::
