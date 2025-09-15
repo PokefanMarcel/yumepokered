@@ -886,14 +886,14 @@ _PokemonStuffText::
 	cont "#MON!"
 	done
 
-_HotSnacksText:: ; TODO marcelnote - new for Marts
-	text "A sale on hot"
-	line "snacks! Yummy!"
+_HotSnacksText:: ; marcelnote - new for Marts
+	text "Encas chauds"
+	line "en promo! Miam!"
 	done
 
-_ColdDrinksText:: ; TODO marcelnote - new for Marts
-	text "Cold drinks, all"
-	line "neatly arranged!"
+_ColdDrinksText:: ; marcelnote - new for Marts
+	text "Des bouteilles"
+	line "bien rangées!"
 	done
 
 _HolidayBrochuresText:: ; TODO marcelnote - new for Safari Rest houses
