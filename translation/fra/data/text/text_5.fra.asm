@@ -26,11 +26,20 @@ _CurrentTooFastText::
 	line "trop rapide!"
 	prompt
 
+_CurrentTooFastOverworldText:: ; marcelnote - HM overworld use
+	text "Trop de courant"
+	line "pour SURFER!"
+	done
+
 _CyclingIsFunText::
-	text "Le vélo,"
-	line "c'est cool!"
-	cont "Oublie le SURF!"
+	text "Le vélo c'est cool!" ; marcelnote - deleted comma to make one line
+	line "Oublie le SURF!"
 	prompt
+
+_CyclingIsFunOverworldText:: ; marcelnote - HM overworld use
+	text "Le vélo c'est cool!"
+	line "Oublie le SURF!"
+	done
 
 _FlashLightsAreaText::
 	text "Un FLASH éclaire"
@@ -106,19 +115,11 @@ _BoxIsFullText::
 	cont "#MON!"
 	done
 
-_CurrentTooFastOverworldText:: ; TODO marcelnote - HM overworld use
-	text "The current is"
-	line "too fast to SURF!"
-	done
-_CyclingIsFunOverworldText:: ; TODO marcelnote - HM overworld use
-	text "Cycling is fun!"
-	line "Forget SURFing!"
-	done
-
-_ItemWasAssignedToSelectText:: ; TODO marcelnote - use items with Select
+_ItemWasAssignedToSelectText:: ; marcelnote - use items with Select
+	text "SELECT utilise:"
+	line "@"
 	text_ram wStringBuffer
-	text " was"
-	line "assigned."
+	text "."
 	prompt
 
 _CableClubNPCNewMovesNotAllowedText:: ; TODO marcelnote - ban new moves from Cable Club
