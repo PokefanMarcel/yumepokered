@@ -129,7 +129,7 @@ _DexSeenOwnedText::
 	done
 
 _DexRatingText::
-	text "#DEX Rating:" ; marcelnote - replaced <COLON> since ":" is used everywhere else in text
+	text "Eval. #DEX:" ; marcelnote - replaced <COLON> since ":" is used everywhere else in text
 	done
 
 _GymStatueText1::
