@@ -187,9 +187,9 @@ _NewBicycleText::
 	line "toute neuve! Top!"
 	done
 
-_NewSurfboardText::  ; TODO
-	text "A shiny new"
-	line "SURFBOARD!"
+_NewSurfboardText::
+	text "Une PLANCHE DE"
+	line "SURF toute neuve!"
 	done
 
 _PushStartText::
