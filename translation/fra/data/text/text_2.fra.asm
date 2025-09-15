@@ -506,9 +506,8 @@ _FightingDojoText::
 ;	done
 
 _Route11GateLeftBinocularsSnorlaxText::
-	text "Vous regardez"
-	line "dans les"
-	cont "jumelles."
+	text "Vous regardez dans" ; marcelnote - merged two lines
+	line "les jumelles."
 
 	para "Un énorme"
 	line "#MON dort"
@@ -516,9 +515,8 @@ _Route11GateLeftBinocularsSnorlaxText::
 	done
 
 _Route11GateLeftBinocularsNoSnorlaxText::
-	text "Vous regardez"
-	line "dans les"
-	cont "jumelles."
+	text "Vous regardez dans" ; marcelnote - merged two lines
+	line "les jumelles."
 
 	para "C'est très beau!"
 	line "... "
@@ -526,9 +524,8 @@ _Route11GateLeftBinocularsNoSnorlaxText::
 	done
 
 _Route11GateRightBinocularsText::
-	text "Vous regardez"
-	line "dans les"
-	cont "jumelles."
+	text "Vous regardez dans" ; marcelnote - merged two lines
+	line "les jumelles."
 
 	para "Il n'y a qu'un"
 	line "seul chemin pour"
@@ -538,27 +535,24 @@ _Route11GateRightBinocularsText::
 	done
 
 _Route12GateLeftBinocularsText::
-	text "Vous regardez"
-	line "dans les"
-	cont "jumelles."
+	text "Vous regardez dans" ; marcelnote - merged two lines
+	line "les jumelles."
 
 	para "Vous voyez un"
 	line "pêcheur!"
 	done
 
 _Route12GateRightBinocularsText::
-	text "Vous regardez"
-	line "dans les"
-	cont "jumelles."
+	text "Vous regardez dans" ; marcelnote - merged two lines
+	line "les jumelles."
 
 	para "Vous voyez la"
 	line "TOUR #MON!"
 	done
 
 _Route15GateLeftBinocularsText::
-	text "Vous regardez"
-	line "dans les"
-	cont "jumelles..."
+	text "Vous regardez dans" ; marcelnote - merged two lines
+	line "les jumelles..."
 
 	para "Un grand et bel"
 	line "oiseau vole vers"
@@ -566,18 +560,16 @@ _Route15GateLeftBinocularsText::
 	done
 
 _Route15GateRightBinocularsText::
-	text "Vous regardez"
-	line "dans les"
-	cont "jumelles."
+	text "Vous regardez dans" ; marcelnote - merged two lines
+	line "les jumelles."
 
 	para "Vous voyez une"
 	line "petite île!"
 	done
 
 _Route16GateLeftBinocularsText::
-	text "Vous regardez"
-	line "dans les"
-	cont "jumelles."
+	text "Vous regardez dans" ; marcelnote - merged two lines
+	line "les jumelles."
 
 	para "Vous voyez le"
 	line "centre commercial"
@@ -585,36 +577,32 @@ _Route16GateLeftBinocularsText::
 	done
 
 _Route16GateRightBinocularsText::
-	text "Vous regardez"
-	line "dans les"
-	cont "jumelles."
+	text "Vous regardez dans" ; marcelnote - merged two lines
+	line "les jumelles."
 
 	para "Vous voyez un"
 	line "grand ponton!"
 	done
 
 _Route18GateLeftBinocularsText::
-	text "Vous regardez"
-	line "dans les"
-	cont "jumelles."
+	text "Vous regardez dans" ; marcelnote - merged two lines
+	line "les jumelles."
 
 	para "BOURG PALETTE"
 	line "est à l'Ouest!"
 	done
 
 _Route18GateRightBinocularsText::
-	text "Vous regardez"
-	line "dans les"
-	cont "jumelles."
+	text "Vous regardez dans" ; marcelnote - merged two lines
+	line "les jumelles."
 
 	para "C'est plein"
 	line "de nageurs!"
 	done
 
 _Route22GateLeftBinocularsText:: ; marcelnote - new
-	text "Vous regardez"
-	line "dans les"
-	cont "jumelles."
+	text "Vous regardez dans"
+	line "les jumelles."
 
 	para "Un pic isolé"
 	line "se dessine"
@@ -622,9 +610,8 @@ _Route22GateLeftBinocularsText:: ; marcelnote - new
 	done
 
 _Route22GateRightBinocularsText:: ; marcelnote - new
-	text "Vous regardez"
-	line "dans les"
-	cont "jumelles."
+	text "Vous regardez dans"
+	line "les jumelles."
 
 	para "Un chemin sinueux"
 	line "grimpe vers la"
