@@ -184,13 +184,11 @@ _MonCannotLearnMachineMoveText::
 	line "incompatible avec"
 	cont "@"
 	text_ram wNameBuffer
-
 	text "."
 
 	para "Instruction de"
 	line "@"
 	text_ram wStringBuffer
-
 	text_start
 	cont "impossible."
 	prompt
