@@ -13,7 +13,7 @@ _Route22GateGuardICantLetYouPassText::
 	para "La loi est dure,"
 	line "mais c'est la"
 	cont "loi! Tu ne peux"
-	cont "pas passer"
+	cont "pas passer." ; marcelnote - added full stop
 	done
 
 _Route22GateGuardGoRightAheadText::
@@ -21,8 +21,6 @@ _Route22GateGuardGoRightAheadText::
 	line "BADGE ROCHE!"
 	cont "Tu peux passer!@"
 	text_end
-
-
 
 _Route22GateGuard2ScaryStrongText:: ; TODO marcelnote - new guard
 	text "Some scary-strong"
