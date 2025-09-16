@@ -88,6 +88,15 @@ _LearnedMove1Text::
 	text "!@"
 	text_end
 
+_CanUseMoveText:: ; marcelnote - for temporary field moves
+	text_ram wLearnMoveMonName
+	text_start
+	line "peut utiliser..."
+	cont "@"
+	text_ram wStringBuffer
+	text "!@"
+	text_end
+
 _WhichMoveToForgetText::
 	text "Oublier quelle"
 	next "attaque?"
@@ -262,11 +271,3 @@ _PokeBeeperAlertText:: ; marcelnote - new for PokéBeeper
 	line "CENTRE #MON"
 	cont "pour en changer!"
 	done
-
-_CanUseMoveText:: ; TODO marcelnote - for temporary field moves
-	text_ram wLearnMoveMonName
-	text " can use"
-	line "@"
-	text_ram wStringBuffer
-	text "!@"
-	text_end

@@ -202,23 +202,19 @@ _UsedCutText::
 	prompt
 
 
-_TeachFieldMoveText:: ; TODO marcelnote - for temporary field moves, adapted from shinpokered
-	;text "Teach it for use"
-	;line "outside battle?"
-	text "Teach as a SKILL"
-	line "outside battle?"
+_TeachFieldMoveText:: ; marcelnote - for temporary field moves, adapted from shinpokered
+	text "L'apprendre comme"
+	line "COMPETENCE?"
 	done
 
-_AlreadyKnowsFieldMoveText:: ; TODO marcelnote - for temporary field moves, adapted from shinpokered
-	;text "This #MON knows"
-	;line "an outside-battle"
-	;cont "move already!"
-	text "This #MON knows"
-	line "a SKILL already!"
+_AlreadyKnowsFieldMoveText:: ; marcelnote - for temporary field moves, adapted from shinpokered
+	text "Ce #MON a déjà"
+	line "une COMPETENCE!"
 
-	para "To teach it a new"
-	line "one, store it in"
-	cont "the PC first."
+	para "Dépose-le dans"
+	line "le PC avant de"
+	cont "lui en apprendre"
+	cont "une nouvelle."
 	prompt
 
 
