@@ -218,14 +218,14 @@ _AlreadyKnowsFieldMoveText:: ; marcelnote - for temporary field moves, adapted f
 	prompt
 
 
-_WantToSurfText:: ; TODO
-	text "The water is calm."
-	line "Want to SURF?"
+_WantToSurfText::
+	text "L'eau est calme..."
+	line "Un coup de SURF?"
 	done
 
-_WantToCutText:: ; TODO
-	text "Want to CUT this"
-	line "tree?"
+_WantToCutText::
+	text "Voulez-vous"
+	line "utiliser COUPE?"
 	done
 
 _UsedFlashText::
@@ -234,17 +234,17 @@ _UsedFlashText::
 	line "les environs!"
 	prompt
 
-_MonCouldSurfText:: ; TODO
-	text "A #MON could"
-	line "SURF here."
+_MonCouldSurfText::
+	text "Un #MON peut"
+	line "SURFER ici."
 	done
 
-_TreeCanBeCutText:: ; TODO
-	text "This tree can"
-	line "be CUT."
+_TreeCanBeCutText::
+	text "Cet arbre peut"
+	line "être COUPE!"
 	done
 
-_WantToStrengthText:: ; TODO
-	text "Want to use"
-	line "STRENGTH?"
+_WantToStrengthText::
+	text "Voulez-vous"
+	line "utiliser FORCE?"
 	done
