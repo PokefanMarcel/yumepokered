@@ -163,8 +163,7 @@ IF DEF(_FRA)
   INCLUDE "translation/fra/text/Route16FlyHouse.fra.asm"
   INCLUDE "translation/fra/text/Route18Gate.fra.asm" ; marcelnote - merged Route18Gate floors
   INCLUDE "translation/fra/text/Route22Gate.fra.asm"
-  ; INCLUDE "translation/fra/text/BattleHall.fra.asm"  ; marcelnote - new location
-  INCLUDE "text/BattleHall.asm"  ; TODO: manually translate
+  INCLUDE "translation/fra/text/BattleHall.fra.asm"  ; marcelnote - new location
   INCLUDE "translation/fra/text/VictoryRoad2F.fra.asm"
   INCLUDE "translation/fra/text/BillsHouse.fra.asm"
   INCLUDE "translation/fra/text/Route1.fra.asm"
