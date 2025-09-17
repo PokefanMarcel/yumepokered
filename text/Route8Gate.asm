@@ -6,9 +6,9 @@ _Route8GateMiddleAgedWomanText::
 	cont "#MON TOWER."
 
 	para "I offer comfort"
-    line "and a warm meal"
-    cont "to ease their"
-    cont "sorrow."
+	line "and a warm meal"
+	cont "to ease their"
+	cont "sorrow."
 	done
 
 _Route8GateBaldingGuyText::

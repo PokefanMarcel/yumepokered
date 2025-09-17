@@ -180,9 +180,7 @@ IF DEF(_FRA)
   ; INCLUDE "translation/fra/text/Route7Gate.fra.asm" ; marcelnote - new, added 2nd floor
   INCLUDE "text/Route7Gate.asm" ; TODO: manually translate
   INCLUDE "translation/fra/text/Route8.fra.asm"
-
-  ; INCLUDE "translation/fra/text/Route8Gate.fra.asm" ; marcelnote - new, added 2nd floor
-  INCLUDE "text/Route8Gate.asm" ; TODO: manually translate
+  INCLUDE "translation/fra/text/Route8Gate.fra.asm" ; marcelnote - new, added 2nd floor
   INCLUDE "translation/fra/text/Route9.fra.asm"
   INCLUDE "translation/fra/text/Route10.fra.asm"
   INCLUDE "translation/fra/text/Route11.fra.asm"
