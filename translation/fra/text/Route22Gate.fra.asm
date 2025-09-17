@@ -22,119 +22,125 @@ _Route22GateGuardGoRightAheadText::
 	cont "Tu peux passer!@"
 	text_end
 
-_Route22GateGuard2ScaryStrongText:: ; TODO marcelnote - new guard
-	text "Some scary-strong"
-	line "#MON live"
-	cont "out there."
+_Route22GateGuard2ScaryStrongText:: ; marcelnote - new guard
+	text "Des #MON af-"
+	line "freusement forts"
+	cont "vivent par là."
 
-	para "Access is granted"
-	line "only on PROF.OAK's"
-	cont "authorization."
+	para "Il te faut"
+	line "l'autorisation"
+	cont "du PROF. CHEN"
+	cont "pour passer."
 	done
 
-_Route22GateGuard2WelcomeChampionText:: ; TODO marcelnote - new guard
-	text "Welcome,"
-	line "champion."
+_Route22GateGuard2WelcomeChampionText:: ; marcelnote - new guard
+	text "Bienvenue,"
+	line "champion." ; gendered text
 
-	para "Powerful #MON"
-	line "await beyond"
-	cont "this gate."
+	para "Derrière cette"
+	line "porte, de redou-"
+	cont "tables #MON"
+	cont "t'attendent."
 
-	para "Be careful,"
-	line "and good luck!@"
+	para "Sois prudent," ; gendered text
+	line "et bonne chance!@"
 	text_end
 
-_Route22GateCooltrainerMText:: ; TODO marcelnote - new NPC
-	text "Trainers practice"
-	line "at the BATTLE"
-	cont "HALL upstairs to"
-	cont "get ready for the"
-	cont "#MON LEAGUE."
+_Route22GateCooltrainerMText:: ; marcelnote - new NPC
+	text "Les dresseurs"
+	line "s'entraînent à la"
+	cont "SALLE DE COMBAT"
+	cont "du deuxième étage"
+	cont "avant d'affronter"
+	cont "la LIGUE #MON."
 	done
 
-_Route22GateYoungsterText:: ; TODO marcelnote - new NPC
-	text "I tried to sign"
-	line "up for a battle,"
-	cont "but the lady"
-	cont "turned me down."
+_Route22GateYoungsterText:: ; marcelnote - new NPC
+	text "J'ai voulu"
+	line "m'inscrire à un"
+	cont "combat, mais la"
+	cont "dame m'a recalé."
 
-	para "Looks like I need"
-	line "more BADGEs."
+	para "Il me faut plus"
+	line "de BADGES."
 	done
 
-_Route22GateCooltrainerFText:: ; TODO marcelnote - new NPC
-	text "I just lost my"
-	line "last battle."
+_Route22GateCooltrainerFText:: ; marcelnote - new NPC
+	text "Je viens de perdre"
+	line "un combat."
 
-	para "Preparing for the"
-	line "#MON LEAGUE"
-	cont "is tough!"
+	para "Se préparer pour"
+	line "la LIGUE #MON,"
+	cont "c'est pas"
+	cont "d'la tarte!"
 	done
 
-_Route22GateReceptionistWelcomeText:: ; TODO marcelnote - new receptionist
-	text "Welcome to our"
-	line "BATTLE HALL!"
+_Route22GateReceptionistWelcomeText:: ; marcelnote - new receptionist
+	text "Bienvenue à notre"
+	line "SALLE DE COMBAT!"
 	prompt
 
-_Route22GateReceptionistPleaseStepAroundText:: ; TODO marcelnote - new receptionist
-	text "Please step around"
-	line "the counter to"
-	cont "register."
+_Route22GateReceptionistPleaseStepAroundText:: ; marcelnote - new receptionist
+	text "Les inscriptions"
+	line "se font de l'autre"
+	cont "côté du comptoir."
 	done
 
-_Route22GateReceptionistSorryText:: ; TODO marcelnote - new receptionist
-	text "I am sorry, but"
-	line "you need eight"
-	cont "BADGEs to sign"
-	cont "up for a battle."
+_Route22GateReceptionistSorryText:: ; marcelnote - new receptionist
+	text "Je suis désolée,"
+	line "mais il vous faut"
+	cont "huit BADGES pour"
+	cont "vous inscrire"
+	cont "à un combat."
 
-	para "Please come back"
-	line "when you have"
-	cont "them all!"
+	para "Revenez quand vous"
+	line "les aurez tous!"
 	done
 
-_Route22GateReceptionistWantToBattleText:: ; TODO marcelnote - new receptionist
-	text "We have a"
-	line "challenger ready."
+_Route22GateReceptionistWantToBattleText:: ; marcelnote - new receptionist
+	text "Un adversaire est"
+	line "prêt à combattre."
 
-	para "Would you like"
-	line "to face them?"
+	para "Voulez-vous"
+	line "l'affronter?"
 	done
 
-_Route22GateReceptionistFantasticText:: ; TODO marcelnote - new receptionist
-	text "Fantastic! Do you"
-	line "know the BATTLE"
-	cont "HALL rules?"
+_Route22GateReceptionistFantasticText:: ; marcelnote - new receptionist
+	text "Formidable! Vous"
+	line "connaissez les"
+	cont "règles de la"
+	cont "SALLE DE COMBAT?"
 	done
 
-_Route22GateReceptionistRulesText:: ; TODO marcelnote - new receptionist
-	text "In the BATTLE"
-	line "HALL, trainers"
-	cont "compete using"
-	cont "teams of three"
-	cont "#MON."
+_Route22GateReceptionistRulesText:: ; marcelnote - new receptionist
+	text "Dans la SALLE DE"
+	line "COMBAT, les dres-"
+	cont "seurs s'affrontent"
+	cont "avec des équipes"
+	cont "de trois #MON."
 
-	para "A PC is available"
-	line "upstairs if you"
-	cont "need to adjust"
-	cont "your #MON."
+	para "Il y a un PC à"
+	line "l'étage si vous"
+	cont "voulez ajuster"
+	cont "votre équipe."
 
-	para "Choose your team"
-	line "carefully!"
+	para "Choisissez bien"
+	line "vos #MON!"
 
-	para "Oh, and items"
-	line "are not allowed"
-	cont "in battle."
+	para "Ah, et les objets"
+	line "sont interdits"
+	cont "durant le combat."
 	prompt
 
-_Route22GateReceptionistOpponentWaitingForYouText:: ; TODO marcelnote - new receptionist
-	text "Your opponent is"
-	line "waiting for you"
-	cont "upstairs."
+_Route22GateReceptionistOpponentWaitingForYouText:: ; marcelnote - new receptionist
+	text "Votre adversaire"
+	line "vous attend"
+	cont "à l'étage."
 
-	para "Good luck!"
+	para "Bonne chance!"
 	done
 
-_Route22GateReceptionistComeBackAnytimeText:: ; TODO marcelnote - new receptionist
-	text "Come back anytime!"
+_Route22GateReceptionistComeBackAnytimeText:: ; marcelnote - new receptionist
+	text "Revenez quand"
+	line "vous voulez!"
 	done
