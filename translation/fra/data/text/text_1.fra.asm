@@ -83,7 +83,7 @@ _OaksAideHiText::
 	text "Salut! Tu te"
 	line "rappelles? Je"
 	cont "suis l'assistant"
-	cont "du Prof. Chen!"
+	cont "du PROF. CHEN!" ; marcelnote - was "Prof. Chen"
 
 	para "Si tu attrapes "
 	line "@"
