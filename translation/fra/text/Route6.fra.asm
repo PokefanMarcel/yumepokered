@@ -93,21 +93,21 @@ _Route6Youngster2AfterBattleText::
 	done
 
 
-_Route6LassBattleText:: ; TODO marcelnote - new trainer
-	text "The guard won't"
-	line "let anyone"
-	cont "through."
+_Route6LassBattleText:: ; marcelnote - new trainer
+	text "Le garde ne veut"
+	line "laisser passer"
+	cont "personne."
 	done
 
-_Route6LassEndBattleText:: ; TODO marcelnote - new trainer
-	text "You"
-	line "scared PARAS!"
+_Route6LassEndBattleText:: ; marcelnote - new trainer
+	text "Tu fais"
+	line "peur à PARAS!"
 	prompt
 
-_Route6LassAfterBattleText:: ; TODO marcelnote - new trainer
-	text "Waiting upstairs"
-	line "is boring, so I'm"
-	cont "taking a break."
+_Route6LassAfterBattleText:: ; marcelnote - new trainer
+	text "Je prends l'air"
+	line "en attendant de"
+	cont "pouvoir passer."
 	done
 
 
