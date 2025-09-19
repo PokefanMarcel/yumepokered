@@ -41,23 +41,26 @@ _PokemonMansionB1FDiarySept1Text::
 	done
 
 
-_PokemonMansionB1FDiaryMay24Text:: ; TODO marcelnote - new
-	text "Diary: May 24"
-	line "We have begun"
-	cont "tests on MEWTWO."
+_PokemonMansionB1FDiaryMay24Text::
+	text "Rapport:"
+	line "24 Mai."
+	cont "Nous avons com-"
+	cont "mencé les tests"
+	cont "sur MEWTWO."
 
-	para "Early results show"
-	line "intelligence"
-	cont "beyond any"
-	cont "known #MON."
+	para "Les premiers rés-"
+	line "ultats suggèrent"
+	cont "une intelligence"
+	cont "au-delà de tout"
+	cont "#MON connu."
 	done
 
-;_PokemonMansionB1FKeyboardText:: ; TODO marcelnote - new
+;_PokemonMansionB1FKeyboardText::
 ;	text "The keyboard is"
 ;	line "covered in dust."
 ;	done
 
-_PokemonMansionB1FScreenText:: ; TODO marcelnote - new
-	text "It's frozen on"
-	line "a warning screen."
+_PokemonMansionB1FScreenText::
+	text "C'est figé sur"
+	line "un écran d'alerte."
 	done
