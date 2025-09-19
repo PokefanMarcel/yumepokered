@@ -133,23 +133,23 @@ _ViridianForestLeavingSignText::
 	done
 
 
-_ViridianForestYoungster6BattleText:: ; TODO marcelnote - new trainer based on Samurai
-	text "Are you the"
-	line "#MON trainer"
-	cont "who comes from"
-	cont "PALLET?"
+_ViridianForestYoungster6BattleText:: ; marcelnote - new trainer based on Samurai
+	text "Salutations."
+	line "Serais-tu par"
+	cont "hasard l'apprenti"
+	cont "dresseur venant"
+	cont "du BOURG PALETTE?"
 	done
-	; Are you by chance the Pokmn trainer who comes from Pallet?
-	; Am I addressing the pokemon trainer who comes from pallet? I have found you at last
+	; Salutations. Serais-tu par hasard l'apprenti dresseur venant du Bourg Palette? Je t'ai enfin trouvé
 
-_ViridianForestYoungster6EndBattleText:: ; TODO marcelnote - new trainer based on Samurai
-	text "A"
-	line "fine battle."
-	prompt ; Clever, quite clever
+_ViridianForestYoungster6EndBattleText:: ; marcelnote - new trainer based on Samurai
+	text "Un"
+	line "combat mémorable!"
+	prompt ; Très malin, bravo
 
-_ViridianForestYoungster6AfterBattleText:: ; TODO marcelnote - new trainer based on Samurai
-	text "I was defeated by"
-	line "another trainer"
-	cont "from PALLET TOWN"
-	cont "earlier."
+_ViridianForestYoungster6AfterBattleText:: ; marcelnote - new trainer based on Samurai
+	text "J'ai été battu par"
+	line "un autre dresseur"
+	cont "du BOURG PALETTE"
+	cont "plus tôt."
 	done
