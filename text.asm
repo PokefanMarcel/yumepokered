@@ -404,9 +404,7 @@ IF DEF(_FRA)
   INCLUDE "translation/fra/text/CinnabarGym.fra.asm"
   INCLUDE "translation/fra/text/CinnabarLab.fra.asm" ; marcelnote - merged Cinnabar Lab maps
   INCLUDE "translation/fra/text/CinnabarPokecenterMart.fra.asm" ; marcelnote - merged Cinnabar Pokecenter and Mart
-
-  ; INCLUDE "translation/fra/text/CinnabarVolcano1FB1F.fra.asm" ; marcelnote - new location
-  INCLUDE "text/CinnabarVolcano1FB1F.asm" ; marcelnote - new location ; TODO: manually translate
+  INCLUDE "translation/fra/text/CinnabarVolcano1FB1F.fra.asm" ; marcelnote - new location
   INCLUDE "translation/fra/text/CinnabarVolcano2F.fra.asm" ; marcelnote - new location
   INCLUDE "translation/fra/text/IndigoPlateauLobby.fra.asm"
   INCLUDE "translation/fra/text/CopycatsHouse.fra.asm" ; marcelnote - merged Copycat's house floors
