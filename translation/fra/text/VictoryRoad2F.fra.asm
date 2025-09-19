@@ -1,6 +1,6 @@
-_VictoryRoad2FMoltresBattleText::
-	text "Yahoo!@"
-	text_end
+;_VictoryRoad2FMoltresBattleText::
+;	text "Yahoo!@"
+;	text_end
 
 _VictoryRoad2FHikerBattleText::
 	text "La ROUTE VICTOIRE"
