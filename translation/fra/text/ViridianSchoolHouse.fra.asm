@@ -12,9 +12,13 @@ _ViridianSchoolHouseCooltrainerFText::
 	cont "de partir!"
 	done
 
-_ViridianSchoolHouseYoungsterText:: ; TODO marcelnote - new NPC
-    text "If I study hard,"
-    line "I could enter the"
-    cont "#MON ACADEMY"
-    cont "in SAFFRON CITY!"
+_ViridianSchoolHouseYoungsterText:: ; marcelnote - new NPC
+    text "Si je travaille"
+    line "dur, je pourrai"
+    cont "aller étudier à"
+    line "l'ACADEMIE #MON"
+    cont "à SAFRANIA!"
+
+    para "C'est ma maman"
+    line "qui me l'a dit!"
     done
