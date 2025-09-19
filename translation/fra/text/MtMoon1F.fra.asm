@@ -1,7 +1,7 @@
 _MtMoon1FHikerBattleText::
 	text "YAHA! Tu m'as fait"
 	line "peur! Quoi? Mais"
-	cont "t'es qu'un mioche!"
+	cont "t'es qu'un mioche!" ; gendered text
 	done
 
 _MtMoon1FHikerEndBattleText::
