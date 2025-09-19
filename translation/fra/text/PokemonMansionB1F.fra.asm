@@ -29,7 +29,7 @@ _PokemonMansionB1FScientistAfterBattleText::
 	cont "mon internat!"
 	done
 
-_PokemonMansionB1FDiaryText::
+_PokemonMansionB1FDiarySept1Text::
 	text "Rapport:"
 	line "1er Septembre."
 	cont "MEWTWO est trop"
@@ -38,16 +38,6 @@ _PokemonMansionB1FDiaryText::
 	para "Nous sommes"
 	line "impuissants face"
 	cont "à ses pièges..."
-	done
-
-_PokemonMansionB1FDiarySept1Text:: ; TODO
-	text "Diary: Sept. 1" ; marcelnote - changed ; to : to align with other diaries
-	line "MEWTWO is far too"
-	cont "powerful."
-
-	para "We have failed to"
-	line "curb its vicious"
-	cont "tendencies..."
 	done
 
 
