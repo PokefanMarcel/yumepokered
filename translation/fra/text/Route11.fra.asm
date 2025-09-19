@@ -137,3 +137,53 @@ _Route11SuperNerd2BattleText::
 	text "Fais gaffe"
 	line "aux câbles!"
 	done
+
+_Route11SuperNerd2EndBattleText::
+	text "Whoa!"
+	line "Tu fais des"
+	cont "étincelles!"
+	prompt
+
+_Route11SuperNerd2AfterBattleText::
+	text "Bon, j'ai du"
+	line "boulot, moi!"
+	done
+
+_Route11Youngster4BattleText::
+	text "Mes #MON sont"
+	line "prêts!"
+	done
+
+_Route11Youngster4EndBattleText::
+	text "Trop,"
+	line "trop trop balèze!"
+	prompt
+
+_Route11Youngster4AfterBattleText::
+	text "Faut qu'je chope"
+	line "des plus forts!"
+	done
+
+_Route11Youngster5BattleText:: ; marcelnote - new trainer based on A.J.
+	text "J'ai 99 victoires"
+	line "d'affilée,"
+	cont "j'vais pas perdre"
+	cont "maintenant!"
+	done
+
+_Route11Youngster5EndBattleText:: ; marcelnote - new trainer based on A.J.
+	text "Pas"
+	line "possible!"
+	prompt
+
+_Route11Youngster5AfterBattleText:: ; marcelnote - new trainer based on A.J.
+	text "Quand j'aurai"
+	line "100 victoires,"
+	cont "je vais voyager"
+	cont "pour gagner des"
+	cont "BADGES!"
+	done ; Lorsque j'aurai atteint le chiffre de 100 victoires, je vais concourir pour gagner un Badge.
+
+_Route11DiglettsCaveSignText::
+	text "CAVE TAUPIQUEUR"
+	done

@@ -174,7 +174,6 @@ IF DEF(_FRA)
   INCLUDE "translation/fra/text/Route5Gate.fra.asm" ; marcelnote - new, added 2nd floor
   INCLUDE "translation/fra/text/Route6.fra.asm"
   INCLUDE "translation/fra/text/Route6Gate.fra.asm" ; marcelnote - new, added 2nd floor
-
   INCLUDE "translation/fra/text/Route7.fra.asm"
   INCLUDE "translation/fra/text/Route7Gate.fra.asm" ; marcelnote - new, added 2nd floor
   INCLUDE "translation/fra/text/Route8.fra.asm"
@@ -222,7 +221,6 @@ ENDC
 SECTION "Text 5", ROMX
 
 IF DEF(_FRA)
-  INCLUDE "translation/fra/text/Route11_2.fra.asm"
   INCLUDE "translation/fra/text/Route12.fra.asm"
   INCLUDE "translation/fra/text/Route13.fra.asm"
   INCLUDE "translation/fra/text/Route14.fra.asm"
@@ -237,7 +235,6 @@ IF DEF(_FRA)
   INCLUDE "translation/fra/text/Route23.fra.asm"
   INCLUDE "translation/fra/text/Route24.fra.asm"
 ELSE
-  INCLUDE "text/Route11_2.asm"
   INCLUDE "text/Route12.asm"
   INCLUDE "text/Route13.asm"
   INCLUDE "text/Route14.asm"
