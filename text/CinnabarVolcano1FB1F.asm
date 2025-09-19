@@ -171,7 +171,7 @@ _CinnabarVolcanoB1FLanceTogetherText::
 
 _CinnabarVolcanoB1FLancePokeBallText::
 	text "LANCE: Here we go!"
-	line "POKé BALL!"
+	line "# BALL!"
 	done
 
 _CinnabarVolcanoB1FCharizardCaughtText::
