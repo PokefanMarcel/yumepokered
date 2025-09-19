@@ -16,7 +16,7 @@ _ViridianSchoolHouseYoungsterText:: ; marcelnote - new NPC
     text "Si je travaille"
     line "dur, je pourrai"
     cont "aller étudier à"
-    line "l'ACADEMIE #MON"
+    cont "l'ACADEMIE #MON"
     cont "à SAFRANIA!"
 
     para "C'est ma maman"
