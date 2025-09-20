@@ -2,18 +2,18 @@
 ;	text "Yahoo!@"
 ;	text_end
 
-_VictoryRoad2FHikerBattleText::
+_VictoryRoad2FBlackbeltBattleText::
 	text "La ROUTE VICTOIRE"
 	line "est l'épreuve"
 	cont "finale de tout"
 	cont "dresseur!"
 	done
 
-_VictoryRoad2FHikerEndBattleText::
+_VictoryRoad2FBlackbeltEndBattleText::
 	text "Ouargh!"
 	prompt
 
-_VictoryRoad2FHikerAfterBattleText::
+_VictoryRoad2FBlackbeltAfterBattleText::
 	text "Si tu es bloqué,"
 	line "essaie de bouger"
 	cont "les rochers!"
@@ -92,71 +92,53 @@ _VictoryRoad2FSuperNerd3AfterBattleText::
 	cont "abandonné ici!"
 	done
 
-_VictoryRoad2FGrampsIntroText:: ; TODO marcelnote - new
-	text "The journey of a"
-	line "#MON trainer"
-	cont "is a quest for"
-	cont "harmony."
+_VictoryRoad2FGrampsIntroText:: ; marcelnote - new
+	text "La quête de tout"
+	line "dresseur #MON"
+	cont "est une recherche"
+	cont "d'équilibre."
 	prompt
 
-_VictoryRoad2FGrampsHaveYouTestedText:: ; TODO marcelnote - new
-	text "Have you tested"
-	line "your skills at"
-	cont "the FIGHTING DOJO"
-	cont "in SAFFRON?"
+_VictoryRoad2FGrampsHaveYouTestedText:: ; marcelnote - new
+	text "Tu ne t'es pas"
+	line "encore mesuré au"
+	cont "DOJO de SAFRANIA?"
 
-	para "Prove yourself"
-	line "there, and I will"
-	cont "help you find"
-	cont "balance."
+	para "Fais tes preuves"
+	line "au DOJO, et je"
+	cont "t'aiderai à trou-"
+	cont "ver l'équilibre."
 	done
 
-_VictoryRoad2FGrampsGiveHimonleeText:: ; TODO marcelnote - new
-	text "I see you've chosen"
-	line "defense and"
-	cont "fortitude before."
+_VictoryRoad2FGrampsGiveHimonleeText:: ; marcelnote - new
+	text "Ainsi tu as misé"
+	line "sur la défense"
+	cont "et la tenacité."
 
-	para "To balance your"
-	line "training, I offer"
-	cont "you this agile"
-	cont "warrior."
+	para "Pour équilibrer"
+	line "ton entraînement,"
+	cont "je te confie ce"
+	cont "guerrier agile."
 	prompt
 
-_VictoryRoad2FGrampsGiveHimonchanText:: ; TODO marcelnote - new
-	text "I see you've chosen"
-	line "offense and"
-	cont "speed before."
+_VictoryRoad2FGrampsGiveHimonchanText:: ; marcelnote - new
+	text "Ainsi tu as misé"
+	line "sur l'offensive"
+	cont "et la vitesse."
 
-	para "To balance your"
-	line "training, I offer"
-	cont "this steadfast"
-	cont "fighter."
+	para "Pour équilibrer"
+	line "ton entraînement,"
+	cont "accepte ce solide"
+	cont "combattant."
 	prompt
 
-_VictoryRoad2FGrampsGreatFirebirdText:: ; TODO marcelnote - new
-	text "A great firebird"
-	line "once took refuge"
-	cont "in this cave."
+_VictoryRoad2FGrampsGreatFirebirdText:: ; marcelnote - new
+	text "Un grand oiseau"
+	line "de feu trouvait"
+	cont "refuge ici jadis."
 
-	para "I train strong"
-	line "#MON here to"
-	cont "honor its legacy."
-	done
-
-
-_VictoryRoad2FBlackbeltBattleText:: ; TODO
-	text "VICTORY ROAD is"
-	line "the final test"
-	cont "for trainers!"
-	done
-
-
-_VictoryRoad2FBlackbeltEndBattleText:: ; TODO
-	text "Aiyah!"
-	prompt
-
-_VictoryRoad2FBlackbeltAfterBattleText:: ; TODO
-	text "If you get stuck,"
-	line "try moving some"
-	cont "boulders around!"
+	para "J'y entraîne mes"
+	line "#MON afin"
+	cont "d'honorer"
+	cont "sa légende."
 	done
