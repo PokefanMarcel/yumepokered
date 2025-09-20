@@ -54,95 +54,99 @@ _RedsHouse2FSNESText:: ; marcelnote - moved from hidden_objects
 	line "On y va, non?"
 	done
 
-_YellowsHouse1FDadUnpackingText:: ; TODO marcelnote - new for Yellow's house
-	text "Sorry about the"
-	line "mess, we're"
-	cont "still unpacking."
+_YellowsHouse1FDadUnpackingText:: ; marcelnote - new for Yellow's house
+	text "Pardon pour le"
+	line "désordre, on est"
+	cont "en plein."
+	cont "déballage."
 
-	para "Please stop by"
-	line "again later,"
-	cont "I'll make tea!"
+	para "Repasse un peu"
+	line "plus tard,"
+	cont "je ferai du thé!"
 	done
 
-_YellowsHouse1FDadJustMissedHerText:: ; TODO marcelnote - new for Yellow's house
-	text "Oh, you just"
-	line "missed her!"
+_YellowsHouse1FDadJustMissedHerText:: ; marcelnote - new for Yellow's house
+	text "Ah, tu l'as"
+	line "ratée de peu!"
 
-	para "My daughter ran"
-	line "off to get her"
-	cont "first #MON"
-	cont "from PROF.OAK."
+	para "Ma fille a filé"
+	line "chercher son"
+	cont "premier #MON"
+	cont "au laboratoire du"
+	cont "PROF. CHEN."
 
-	para "The excitment"
-	line "kept her up all"
-	cont "night, so she"
-	cont "overslept!"
+	para "Elle était si"
+	line "excitée qu'elle"
+	cont "n'en a pas dormi"
+	cont "de la nuit,"
+	cont "et elle a raté"
+	cont "le réveil!"
 	done
 
-_YellowsHouse1FDadJustRunIntoHerText:: ; TODO marcelnote - new for Yellow's house
-	text "My daughter is"
-	line "always looking"
-	cont "for adventure!"
+_YellowsHouse1FDadJustRunIntoHerText:: ; marcelnote - new for Yellow's house
+	text "Ma fille est"
+	line "toujours en quête"
+	cont "d'aventure!"
 
-	para "I'm sure you'll"
-	line "run into her"
-	cont "before long."
+	para "Tu la croiseras"
+	line "bientôt,"
+	cont "j'en suis sûr."
 	done
 
-_YellowsHouse1FDadYellowIsBackText:: ; TODO marcelnote - new for Yellow's house
-	text "It's wonderful to"
-	line "have YELLOW home"
-	cont "again!"
+_YellowsHouse1FDadYellowIsBackText:: ; marcelnote - new for Yellow's house
+	text "YELLOW est rentrée"
+	line "à la maison!"
+	cont "Quel bonheur!"
 
-	para "Seeing the kind-"
-	line "ness that guides"
-	cont "you both, it"
-	cont "warms my heart."
+	para "Voir la bonté"
+	line "qui vous guide"
+	cont "tous les deux,"
+	cont "ça me fait chaud"
+	cont "au coeur."
 
-	para "I've made some tea!"
-	line "Please, stay here"
-	cont "a little while."
+	para "Le thé est prêt!"
+	line "Je t'en prie,"
+	cont "reste un moment"
+	cont "avec nous."
 	done
 
-_YellowsHouse1FTVText:: ; TODO marcelnote - new for Yellow's house
-	text "It's not even"
-	line "plugged in yet."
+_YellowsHouse1FTVText:: ; marcelnote - new for Yellow's house
+	text "La télé n'est pas"
+	line "encore branchée."
 	done
 
-_YellowsHouse2FAsleepText:: ; TODO marcelnote - new for Yellow's house
-	text "This kid is"
-	line "fast asleep."
-
-	para "Better not"
-	line "wake them up."
+_YellowsHouse2FAsleepText:: ; marcelnote - new for Yellow's house
+	text "Elle dort à"
+	line "poings fermés."
+	cont "Laisse-là dormir!"
 	done
 
-_YellowsHouse2FYellowText:: ; TODO marcelnote - new for Yellow's house
+_YellowsHouse2FYellowText:: ; marcelnote - new for Yellow's house
 	text "Oh, <PLAYER>!"
-	line "I came back home"
-	cont "to spend some"
-	cont "time with dad."
+	line "Je suis rentrée"
+	cont "pour passer du"
+	cont "temps avec papa."
 
-	para "I thought he might"
-	line "like a little"
-	cont "company, and"
-	cont "honestly..."
-	cont "I missed him too!"
+	para "Je me suis dit"
+	line "que ça lui ferait"
+	cont "plaisir..."
+	cont "Et puis, il m'a"
+	cont "manqué aussi!"
 	done
 
-_YellowsHouse2FGameboyText:: ; TODO marcelnote - new for Yellow's house
-	text "It's a GAME BOY!"
-	line "...But the"
-	cont "battery's dead."
+_YellowsHouse2FGameboyText:: ; marcelnote - new for Yellow's house
+	text "Une GAME BOY!"
+	line "...mais il n'y"
+	cont "a plus de piles."
 	done
 
-_YellowsHouse2FTVText:: ; TODO marcelnote - new for Yellow's house
-	text "It looks like"
-	line "the TV has been"
-	cont "on all night."
+_YellowsHouse2FTVText:: ; marcelnote - new for Yellow's house
+	text "La télé est restée"
+	line "allumée toute la"
+	cont "nuit, on dirait."
 	done
 
-_UnpackedBoxText:: ; TODO marcelnote - new for Yellow's house
-	text "A moving box"
-	line "full of stuff."
+_UnpackedBoxText:: ; marcelnote - new for Yellow's house
+	text "Un carton"
+	line "plein à craquer."
 	done
