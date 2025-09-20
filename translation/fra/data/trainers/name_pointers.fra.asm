@@ -69,7 +69,7 @@ TrainerNamePointers:
 .RockerName:        db "ROCKER@"
 .JugglerName:       db "JONGLEUR@"
 .BlackbeltName:     db "KARATEKA@"
-.ProfOakName:       db "PROF.CHEN@"
+.ProfOakName:       db "PROF. CHEN@"
 .ChiefName:         db "CHIEF@"
 .ScientistName:     db "SCIENTIFIQUE@"
 .RocketName:        db "ROCKET@"

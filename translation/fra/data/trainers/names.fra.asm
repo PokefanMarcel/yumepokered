@@ -24,7 +24,7 @@ TrainerNames::
 	li "ORNITHOLOGUE"
 	li "KARATEKA"
 	li "RIVAL1"
-	li "PROF.CHEN"
+	li "PROF. CHEN"
 	li "CHIEF"
 	li "SCIENTIFIQUE"
 	li "GIOVANNI"
