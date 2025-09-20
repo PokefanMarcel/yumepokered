@@ -174,19 +174,15 @@ _VermilionCityCooltrainerFText:: ; TODO
 	cont "there regularly."
 	done
 
-_VermilionCityCooltrainerMText:: ; TODO marcelnote - to explain temporary field moves
-;	text "If you won't use"
-;	line "an HM in battle,"
-;	cont "teach a #MON"
-;	cont "to use it only"
-;	cont "outside battles!"
-	text "If you don't need"
-	line "an HM in battle,"
-	cont "just teach it as"
-	cont "a SKILL to use"
-	cont "outside battles!"
+_VermilionCityCooltrainerMText:: ; marcelnote - to explain temporary field moves
+	text "Si tu ne te sers"
+	line "pas d'une CS en"
+	cont "combat, apprends-"
+	cont "là plutôt comme"
+	cont "COMPETENCE!"
 
-	para "It also works for"
-	line "moves like DIG or"
-	cont "TELEPORT."
+	para "Ca marche aussi"
+	line "avec des attaques"
+	cont "comme TUNNEL"
+	cont "et TELEPORT."
 	done
