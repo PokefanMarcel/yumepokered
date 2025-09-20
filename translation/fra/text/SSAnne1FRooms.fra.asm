@@ -81,8 +81,14 @@ _SSAnne1FRoomsCooltrainerFAfterBattleText::
 	cont "CENTRE #MON!!!"
 	done
 
-_SSAnne1FRoomsGirl1Text::
+_SSAnne1FRoomsGirl1WaiterText::
 	text "Serveur,"
+	line "amenez-moi une"
+	cont "tarte aux poires!"
+	done
+
+_SSAnne1FRoomsGirl1WaitressText:: ; marcelnote - new for girl player
+	text "Serveuse,"
 	line "amenez-moi une"
 	cont "tarte aux poires!"
 	done
@@ -115,24 +121,13 @@ _SSAnne1FRoomsGentleman3Text::
 	cont "Chut!"
 	done
 
-_SSAnne1FRoomsGirl1WaiterText:: ; TODO
-	text "Waiter, I would"
-	line "like a cherry pie"
-	cont "please!"
-	done
-
-_SSAnne1FRoomsGirl1WaitressText:: ; TODO marcelnote - new for girl player
-	text "Waitress, I would"
-	line "like a cherry pie"
-	cont "please!"
-	done
-
-_SSAnne1FRoomsNurseAreYouTiredText:: ; TODO marcelnote - new nurse room
-	text "Are you tired?"
-	line "You can rest"
-	cont "here for a bit."
+_SSAnne1FRoomsNurseAreYouTiredText:: ; marcelnote - new nurse room
+	text "Tu es fatigué?" ; gendered text
+	line "Repose-toi"
+	cont "peu ici."
 	prompt
 
-_SSAnne1FRoomsNurseEnjoyThePartyText:: ; TODO marcelnote - new nurse room
-	text "Enjoy the party!"
+_SSAnne1FRoomsNurseEnjoyThePartyText:: ; marcelnote - new nurse room
+	text "Retourne t'amuser"
+	line "maintenant!"
 	done
