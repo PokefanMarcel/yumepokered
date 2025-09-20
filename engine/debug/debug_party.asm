@@ -223,11 +223,11 @@ DebugNewGameItemsList: ; marcelnote - moved some to key items pocket
 	db RARE_CANDY, 99
 	db MASTER_BALL, 99
 	db MAX_ELIXIR, 99 ; marcelnote - added
-	;db TOWN_MAP, 1
-	;db SECRET_KEY, 1
-	;db CARD_KEY, 1
-	;db S_S_TICKET, 1
-	;db LIFT_KEY, 1
+;	db TOWN_MAP, 1
+;	db SECRET_KEY, 1
+;	db CARD_KEY, 1
+;	db S_S_TICKET, 1
+;	db LIFT_KEY, 1
 	db TM_TELEPORT, 1
 	db TM_DIG, 1
 	db TM_SOFTBOILED, 1
@@ -255,8 +255,6 @@ DebugKeyItemsList:    ; marcelnote - new for Key Items pocket
 	db HM_FLASH, 1 ; marcelnote - added
 	db -1 ; end
 
-;DebugUnusedList:
-;	db -1 ; end
 ELSE
 	ret
 ENDC
