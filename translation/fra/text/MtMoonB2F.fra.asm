@@ -99,7 +99,7 @@ _MtMoonB2FRocket3BattleText::
 	text "Ca bosse dur"
 	line "ici!"
 	cont "Alors du balai,"
-	cont "le mouflet!"
+	cont "le mouflet!" ; gendered text
 	done
 
 _MtMoonB2FRocket3EndBattleText::
@@ -115,7 +115,7 @@ _MtMoonB2FRocket3AfterBattleText::
 	done
 
 _MtMoonB2FRocket4BattleText::
-	text "Les p'tits gamins"
+	text "Les p'tits gamins" ; gendered text (?)
 	line "ne s'occupent pas"
 	cont "des affaires"
 	cont "des grands!"
