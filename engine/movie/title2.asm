@@ -97,9 +97,8 @@ TitleScreenAnimateBallIfStarterOut:
 	cp STARTER3
 	ret nz
 .ok
-	ld e, 1 ; animate titleball
 	ld bc, TitleScroll_WaitBall
-	ld d, 0
+	lb de, 0, 1 ; animate titleball
 	jp _TitleScroll
 
 GetTitleBallY:
