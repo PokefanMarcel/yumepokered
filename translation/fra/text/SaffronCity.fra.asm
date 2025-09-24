@@ -125,7 +125,7 @@ _SaffronCityTrainerTips1Text::
 	para "TOTAL SOIN fait"
 	line "disparaître tous"
 	cont "les changements"
-	cont "de statut comme"
+	cont "de STATUT comme" ; marcelnote - capitalized STATUT
 	cont "le sommeil ou le"
 	cont "gel."
 
