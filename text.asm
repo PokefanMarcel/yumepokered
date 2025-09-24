@@ -501,9 +501,9 @@ SECTION "Text 12", ROMX ; marcelnote - new
 IF DEF(_FRA) ; TODO: manually translate
 ;	INCLUDE "translation/fra/text/PokemonAcademy1F2F.fra.asm"       ; TODO marcelnote - new location
 ;	INCLUDE "translation/fra/text/PokemonAcademy3F4F.fra.asm"       ; TODO marcelnote - new location
-;	INCLUDE "translation/fra/text/CeladonGrove.fra.asm"             ; TODO marcelnote - new location
-;	INCLUDE "translation/fra/text/CeladonGroveSouthGate.fra.asm"    ; TODO marcelnote - new location
-;	INCLUDE "translation/fra/text/CeladonGroveNorthGate.fra.asm"    ; TODO marcelnote - new location
+	INCLUDE "translation/fra/text/CeladonGrove.fra.asm"             ; marcelnote - new location
+	INCLUDE "translation/fra/text/CeladonGroveSouthGate.fra.asm"    ; marcelnote - new location
+	INCLUDE "translation/fra/text/CeladonGroveNorthGate.fra.asm"    ; marcelnote - new location
 ;	INCLUDE "translation/fra/text/FuchsiaMoveDeleterHouse.fra.asm"  ; TODO marcelnote - new location
 ;	INCLUDE "translation/fra/text/MtSilver3F.fra.asm"               ; TODO marcelnote - new location
 ;	INCLUDE "translation/fra/text/MandarinDock.fra.asm"             ; TODO marcelnote - new location
@@ -513,9 +513,6 @@ IF DEF(_FRA) ; TODO: manually translate
 ;	INCLUDE "translation/fra/text/SummerBeachHouse.fra.asm"         ; TODO marcelnote - new location from pokeyellow
 	INCLUDE "text/PokemonAcademy1F2F.asm"       ; marcelnote - new location
 	INCLUDE "text/PokemonAcademy3F4F.asm"       ; marcelnote - new location
-	INCLUDE "text/CeladonGrove.asm"             ; marcelnote - new location
-	INCLUDE "text/CeladonGroveSouthGate.asm"    ; marcelnote - new location
-	INCLUDE "text/CeladonGroveNorthGate.asm"    ; marcelnote - new location
 	INCLUDE "text/FuchsiaMoveDeleterHouse.asm"  ; marcelnote - new location
 	INCLUDE "text/MtSilver3F.asm"               ; marcelnote - new location
 	INCLUDE "text/MandarinDock.asm"             ; marcelnote - new location

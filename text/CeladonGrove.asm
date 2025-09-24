@@ -33,7 +33,7 @@ _CeladonGroveChanneler2TM51ExplanationText::
 	text "TM51 contains"
 	line "HEX!"
 
-	para "This GHOST move"
+	para "This ghost move"
 	line "hits harder when"
 	cont "the foe is"
 	cont "affected by a"
