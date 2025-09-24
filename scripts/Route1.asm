@@ -183,15 +183,15 @@ Route1OakText: ; marcelnote - postgame Oak fight
 	ld [wCurOpponent], a
 	; select which team to use during the encounter
 	ld a, [wPlayerStarter]
-	cp STARTER1
-	ld a, 1
+	ld b, $1    ; 1 = Venusaur team
+	cp STARTER1 ; Charmander
 	jr z, .saveTrainerId
-	ld a, [wPlayerStarter]
-	cp STARTER2
-	ld a, 2
+	inc b       ; 2 = Charizard team
+	cp STARTER2 ; Squirtle
 	jr z, .saveTrainerId
-	ld a, 3
+	inc b       ; 3 = Blastoise team
 .saveTrainerId
+	ld a, b
 	ld [wTrainerNo], a
 	xor a
 	ldh [hJoyHeld], a

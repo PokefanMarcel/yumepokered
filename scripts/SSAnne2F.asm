@@ -103,14 +103,14 @@ SSAnne2FRivalStartBattleScript:
 
 	; select which team to use during the encounter
 	ld a, [wRivalStarter]
-	ld b, $1 ; squirtle team ; marcelnote - optimized team choice code by using register b
-	cp STARTER2 ; squirtle
-	jr z, .got_team
-	inc b ; b=2, bulbasaur team
-	cp STARTER3 ; bulbasaur
-	jr z, .got_team
-	inc b ; b=3, charmander team
-.got_team
+	ld b, $1    ; 1 = Squirtle team
+	cp STARTER2 ; Squirtle
+	jr z, .gotTeam
+	inc b       ; 2 = Bulbasaur team
+	cp STARTER3 ; Bulbasaur
+	jr z, .gotTeam
+	inc b       ; 3 = Charmander team
+.gotTeam
 	ld a, b
 	ld [wTrainerNo], a
 

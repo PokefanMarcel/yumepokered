@@ -21,20 +21,6 @@ Route22SetDefaultScript:
 	ld [wRoute22CurScript], a
 	ret
 
-Route22GetRivalTrainerNoByStarterScript:
-	ld a, [wRivalStarter]
-	ld b, a
-.next_trainer_no
-	ld a, [hli]
-	cp b
-	jr z, .got_trainer_no
-	inc hl
-	jr .next_trainer_no
-.got_trainer_no
-	ld a, [hl]
-	ld [wTrainerNo], a
-	ret
-
 Route22MoveRivalRightScript:
 	ld de, Route22RivalMovementData
 	ld a, [wSavedCoordIndex]
@@ -133,17 +119,24 @@ Route22Rival1StartBattleScript:
 	call SaveEndBattleTextPointers
 	ld a, OPP_RIVAL1
 	ld [wCurOpponent], a
-	ld hl, .StarterTable
-	call Route22GetRivalTrainerNoByStarterScript
+
+	; select which team to use during the encounter
+	ld a, [wRivalStarter]
+	ld b, $4    ; 4 = Squirtle team
+	cp STARTER2 ; Squirtle
+	jr z, .gotTeam
+	inc b       ; 5 = Bulbasaur team
+	cp STARTER3 ; Bulbasaur
+	jr z, .gotTeam
+	inc b       ; 6 = Charmander team
+.gotTeam
+	ld a, b
+	ld [wTrainerNo], a
+
 	ld a, SCRIPT_ROUTE22_RIVAL1_AFTER_BATTLE
 	ld [wRoute22CurScript], a
 	ret
 
-.StarterTable:
-; starter the rival picked, rival trainer number
-	db STARTER2, 4
-	db STARTER3, 5
-	db STARTER1, 6
 
 Route22Rival1AfterBattleScript:
 	ld a, [wIsInBattle]
@@ -289,16 +282,23 @@ Route22Rival2StartBattleScript:
 	call SaveEndBattleTextPointers
 	ld a, OPP_RIVAL2
 	ld [wCurOpponent], a
-	ld hl, .StarterTable
-	call Route22GetRivalTrainerNoByStarterScript
+
+	; select which team to use during the encounter
+	ld a, [wRivalStarter]
+	ld b, $10   ; 10 = Squirtle team
+	cp STARTER2 ; Squirtle
+	jr z, .gotTeam
+	inc b       ; 11 = Bulbasaur team
+	cp STARTER3 ; Bulbasaur
+	jr z, .gotTeam
+	inc b       ; 12 = Charmander team
+.gotTeam
+	ld a, b
+	ld [wTrainerNo], a
+
 	ld a, SCRIPT_ROUTE22_RIVAL2_AFTER_BATTLE
 	ld [wRoute22CurScript], a
 	ret
-
-.StarterTable:
-	db STARTER2, 10
-	db STARTER3, 11
-	db STARTER1, 12
 
 Route22Rival2AfterBattleScript:
 	ld a, [wIsInBattle]

@@ -85,20 +85,17 @@ ChampionsRoomRivalReadyToBattleScript:
 
 	; select which team to use during the encounter
 	ld a, [wRivalStarter]
-	cp STARTER2
-	jr nz, .NotStarter2
-	ld a, $1
-	jr .saveTrainerId
-.NotStarter2
-	cp STARTER3
-	jr nz, .NotStarter3
-	ld a, $2
-	jr .saveTrainerId
-.NotStarter3
-	ld a, $3
-.saveTrainerId
+	ld b, $1    ; 1 = Blastoise team
+	cp STARTER2 ; Squirtle
+	jr z, .gotTeam
+	inc b       ; 2 = Venusaur team
+	cp STARTER3 ; Bulbasaur
+	jr z, .gotTeam
+	inc b       ; 3 = Charizard team
+.gotTeam
 ;;;;;; marcelnote - if rematch, use team 4, 5 or 6
-	CheckEventHL EVENT_BECAME_CHAMPION ; use hl to not overwrite a
+	CheckEvent EVENT_BECAME_CHAMPION
+	ld a, b
 	jr z, .loadTrainerNo
 	add 3
 .loadTrainerNo
