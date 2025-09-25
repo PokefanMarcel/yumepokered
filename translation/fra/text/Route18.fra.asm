@@ -49,20 +49,21 @@ _Route18CooltrainerM3AfterBattleText::
 	done
 
 _Route18CooltrainerM4BattleText:: ; marcelnote - new trainer
-	text "You scared off"
-	line "that DODUO"
-	cont "I was watching!"
+	text "Non! T'as fait"
+	line "fuir le DODUO"
+	cont "que j'observais!"
 	done
 
-_Route18CooltrainerM4EndBattleText:: ; TODO marcelnote - new trainer
-	text "You"
-	line "got lucky!"
+_Route18CooltrainerM4EndBattleText:: ; marcelnote - new trainer
+	text "T'as"
+	line "eu de la chance!"
 	prompt
 
-_Route18CooltrainerM4AfterBattleText:: ; TODO marcelnote - new trainer
-	text "This spot is"
-	line "perfect for"
-	cont "birdwatching."
+_Route18CooltrainerM4AfterBattleText:: ; marcelnote - new trainer
+	text "Ce coin est"
+	line "parfait pour"
+	cont "observer les"
+	cont "oiseaux."
 	done
 
 _Route18SignText::
