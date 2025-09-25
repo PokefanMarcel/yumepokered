@@ -163,68 +163,70 @@ _Route19Swimmer8AfterBattleText::
 	done
 
 
-_Route19Swimmer9BattleText:: ; TODO marcelnote - new trainer, Swimmer9
-	text "The current"
-	line "carried me away"
-	cont "from my friends."
+_Route19Swimmer9BattleText:: ; marcelnote - new trainer, Swimmer9
+	text "Le courant m'a"
+	line "emportée loin"
+	cont "de mes amis."
 	done
 
-_Route19Swimmer9EndBattleText:: ; TODO marcelnote - new trainer, Swimmer9
-	text "Gulp!"
+_Route19Swimmer9EndBattleText:: ; marcelnote - new trainer, Swimmer9
+	text "Gloup!"
 	prompt
 
-_Route19Swimmer9AfterBattleText:: ; TODO marcelnote - new trainer, Swimmer9
-	text "I'm too tired"
-	line "to keep up..."
+_Route19Swimmer9AfterBattleText:: ; marcelnote - new trainer, Swimmer9
+	text "J'fais une"
+	line "pause..."
 	done
 
-_Route19Blackbelt1BattleText:: ; TODO marcelnote - new trainer, Blackbelt1
-	text "Practicing my"
-	line "stances on the"
-	cont "sand is tiring!"
+_Route19Blackbelt1BattleText:: ; marcelnote - new trainer, Blackbelt1
+	text "Bosser mes katas"
+	line "sur le sable,"
+	cont "ça épuise!"
 	done
 
-_Route19Blackbelt1EndBattleText:: ; TODO marcelnote - new trainer, Blackbelt1
+_Route19Blackbelt1EndBattleText:: ; marcelnote - new trainer, Blackbelt1
 	text "Saah!"
 	prompt
 
-_Route19Blackbelt1AfterBattleText:: ; TODO marcelnote - new trainer, Blackbelt1
-	text "My brother trains"
-	line "on that pier"
-	cont "over there."
+_Route19Blackbelt1AfterBattleText:: ; marcelnote - new trainer, Blackbelt1
+	text "Mon frère"
+	line "s'entraîne sur le"
+	cont "ponton au large."
 	done
 
-_Route19Blackbelt2BattleText:: ; TODO marcelnote - new trainer, Blackbelt2
-	text "The rhythm of the"
-	line "waves helps me"
-	cont "perfect my moves."
+_Route19Blackbelt2BattleText:: ; marcelnote - new trainer, Blackbelt2
+	text "J'affine mes gestes"
+	line "en suivant le"
+	cont "va-et-vient des"
+	cont "vagues."
 	done
 
-_Route19Blackbelt2EndBattleText:: ; TODO marcelnote - new trainer, Blackbelt2
-	text "Kyah!"
+_Route19Blackbelt2EndBattleText:: ; marcelnote - new trainer, Blackbelt2
+	text "Ayah!"
 	prompt
 
-_Route19Blackbelt2AfterBattleText:: ; TODO marcelnote - new trainer, Blackbelt2
-	text "My brother trains"
-	line "back on the"
-	cont "beach."
+_Route19Blackbelt2AfterBattleText:: ; marcelnote - new trainer, Blackbelt2
+	text "Mon frère"
+	line "s'entraîne là-bas"
+	cont "sur la plage."
 	done
 
-_Route19Fisher1BattleText:: ; TODO marcelnote - new trainer, Fisher1
-	text "That guy's yells"
-	line "are scaring away"
-	cont "the fish!"
+_Route19Fisher1BattleText:: ; marcelnote - new trainer, Fisher1
+	text "Ce KARATEKA eff-"
+	line "raie les poissons"
+	cont "avec ses cris!"
 	done
 
-_Route19Fisher1EndBattleText:: ; TODO marcelnote - new trainer, Fisher1
-	text "No"
-	line "bite!"
+_Route19Fisher1EndBattleText:: ; marcelnote - new trainer, Fisher1
+	text "Je"
+	line "suis bredouille!"
 	prompt
 
-_Route19Fisher1AfterBattleText:: ; TODO marcelnote - new trainer, Fisher1
-	text "I really need"
-	line "to find another"
-	cont "fishing spot."
+_Route19Fisher1AfterBattleText:: ; marcelnote - new trainer, Fisher1
+	text "Il faut vraiment"
+	line "qu'je trouve"
+	cont "un autre coin"
+	cont "pour pêcher."
 	done
 
 _Route19SignText::
