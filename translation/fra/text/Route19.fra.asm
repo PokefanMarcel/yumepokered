@@ -234,9 +234,8 @@ _Route19SignText::
 	done
 
 
-_Route19BeachHouseSignText:: ; TODO marcelnote - new sign for Beach house from pokeyellow
-	text "BEACH HOUSE"
-	line "#MON welcome!"
-	;line "Closed for"
-	;cont "repairs."
+_Route19BeachHouseSignText:: ; marcelnote - new sign for Beach house from pokeyellow
+	text "PAILLOTE D'ETE"
+	line "Bienvenue aux"
+	cont "#MON!"
 	done
