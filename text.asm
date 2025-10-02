@@ -499,26 +499,16 @@ ENDC
 SECTION "Text 12", ROMX ; marcelnote - new
 
 IF DEF(_FRA)
-;	INCLUDE "translation/fra/text/PokemonAcademy1F2F.fra.asm"       ; TODO marcelnote - new location
-;	INCLUDE "translation/fra/text/PokemonAcademy3F4F.fra.asm"       ; TODO marcelnote - new location
+	INCLUDE "translation/fra/text/PokemonAcademy1F2F.fra.asm"       ; marcelnote - new location
+	INCLUDE "translation/fra/text/PokemonAcademy3F4F.fra.asm"       ; marcelnote - new location
 	INCLUDE "translation/fra/text/CeladonGrove.fra.asm"             ; marcelnote - new location
 	INCLUDE "translation/fra/text/CeladonGroveSouthGate.fra.asm"    ; marcelnote - new location
 	INCLUDE "translation/fra/text/CeladonGroveNorthGate.fra.asm"    ; marcelnote - new location
 ;	INCLUDE "translation/fra/text/FuchsiaMoveDeleterHouse.fra.asm"  ; TODO marcelnote - new location
 ;	INCLUDE "translation/fra/text/MtSilver3F.fra.asm"               ; TODO marcelnote - new location
-;	INCLUDE "translation/fra/text/MandarinDock.fra.asm"             ; TODO marcelnote - new location
-;	INCLUDE "translation/fra/text/CitrusFerryDeck.fra.asm"          ; TODO marcelnote - new location
-;	INCLUDE "translation/fra/text/CitrusFerryOutside.fra.asm"       ; TODO marcelnote - new location
-;	INCLUDE "translation/fra/text/CitrusFerryRooms.fra.asm"         ; TODO marcelnote - new location
 	INCLUDE "translation/fra/text/SummerBeachHouse.fra.asm"         ; marcelnote - new location from pokeyellow
-	INCLUDE "text/PokemonAcademy1F2F.asm"       ; marcelnote - new location
-	INCLUDE "text/PokemonAcademy3F4F.asm"       ; marcelnote - new location
 	INCLUDE "text/FuchsiaMoveDeleterHouse.asm"  ; marcelnote - new location
 	INCLUDE "text/MtSilver3F.asm"               ; marcelnote - new location
-	INCLUDE "text/MandarinDock.asm"             ; marcelnote - new location
-	INCLUDE "text/CitrusFerryDeck.asm"          ; marcelnote - new location
-	INCLUDE "text/CitrusFerryOutside.asm"       ; marcelnote - new location
-	INCLUDE "text/CitrusFerryRooms.asm"         ; marcelnote - new location
 ELSE
 	INCLUDE "text/PokemonAcademy1F2F.asm"       ; marcelnote - new location
 	INCLUDE "text/PokemonAcademy3F4F.asm"       ; marcelnote - new location
@@ -527,11 +517,26 @@ ELSE
 	INCLUDE "text/CeladonGroveNorthGate.asm"    ; marcelnote - new location
 	INCLUDE "text/FuchsiaMoveDeleterHouse.asm"  ; marcelnote - new location
 	INCLUDE "text/MtSilver3F.asm"               ; marcelnote - new location
+	INCLUDE "text/SummerBeachHouse.asm"         ; marcelnote - new location from pokeyellow
+ENDC
+
+
+SECTION "Mandarin Island Text", ROMX ; marcelnote - new
+
+IF DEF(_FRA)
+;	INCLUDE "translation/fra/text/MandarinDock.fra.asm"             ; TODO marcelnote - new location
+;	INCLUDE "translation/fra/text/CitrusFerryDeck.fra.asm"          ; TODO marcelnote - new location
+;	INCLUDE "translation/fra/text/CitrusFerryOutside.fra.asm"       ; TODO marcelnote - new location
+;	INCLUDE "translation/fra/text/CitrusFerryRooms.fra.asm"         ; TODO marcelnote - new location
 	INCLUDE "text/MandarinDock.asm"             ; marcelnote - new location
 	INCLUDE "text/CitrusFerryDeck.asm"          ; marcelnote - new location
 	INCLUDE "text/CitrusFerryOutside.asm"       ; marcelnote - new location
 	INCLUDE "text/CitrusFerryRooms.asm"         ; marcelnote - new location
-	INCLUDE "text/SummerBeachHouse.asm"         ; marcelnote - new location from pokeyellow
+ELSE
+	INCLUDE "text/MandarinDock.asm"             ; marcelnote - new location
+	INCLUDE "text/CitrusFerryDeck.asm"          ; marcelnote - new location
+	INCLUDE "text/CitrusFerryOutside.asm"       ; marcelnote - new location
+	INCLUDE "text/CitrusFerryRooms.asm"         ; marcelnote - new location
 ENDC
 
 
