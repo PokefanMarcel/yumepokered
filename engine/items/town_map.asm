@@ -165,6 +165,7 @@ ENDC
 	ld a, SFX_TINK
 	call PlaySound
 	jr .switchToWater
+
 .exit
 	call ExitTownMap
 	pop af
