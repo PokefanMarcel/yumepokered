@@ -61,7 +61,7 @@ _Route1OakBeforeBattleText:: ; marcelnote - postgame Oak fight
 	cont "en pleine"
 	cont "promenade."
 
-	para "Ça tombe bien, je"
+	para "Ca tombe bien, je"
 	line "voulais te voir."
 
 	para "Tu sais, à mon"
@@ -76,7 +76,7 @@ _Route1OakBeforeBattleText:: ; marcelnote - postgame Oak fight
 	cont "champion de la"
 	cont "LIGUE #MON..."
 
-	para "Ça m'a rajeuni!"
+	para "Ca m'a rajeuni!"
 
 	para "Alors, <PLAYER>!"
 	line "Tu offrirais bien"
