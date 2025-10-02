@@ -145,12 +145,19 @@ ENDC
 	hlcoord 0, 17
 	ld a, $70 ; A button tile
 	ld [hli], a
+IF DEF(_FRA)
+	ld a, $71 ; first "Terre" tile
+	ld [hli], a
+	ld a, $72 ; second "Terre" tile
+	ld [hli], a
+	ld a, $73 ; third "Terre" tile
+	ld [hl], a
+ELSE
 	ld a, $71 ; first "Land" tile
 	ld [hli], a
 	ld a, $72 ; second "Land" tile
-	ld [hli], a
-	ld a, $73 ; third "Land" tile
 	ld [hl], a
+ENDC
 	call WaitForTextScrollButtonPress
 	ldh a, [hJoy5]
 	and PAD_A
@@ -177,12 +184,21 @@ ENDC
 	hlcoord 0, 17
 	ld a, $70 ; A button tile
 	ld [hli], a
-	ld a, $74 ; first "Water" tile
+IF DEF(_FRA)
+	ld a, $74 ; first "Surf" tile
 	ld [hli], a
-	ld a, $75 ; second "Water" tile
+	ld a, $75 ; second "Surf" tile
 	ld [hli], a
-	ld a, $76 ; third "Water" tile
+	ld a, $64 ; background water tile
 	ld [hl], a
+ELSE
+	ld a, $73 ; first "Water" tile
+	ld [hli], a
+	ld a, $74 ; second "Water" tile
+	ld [hli], a
+	ld a, $75 ; third "Water" tile
+	ld [hl], a
+ENDC
 	call WaitForTextScrollButtonPress
 	ldh a, [hJoy5]
 	and PAD_A
@@ -206,11 +222,11 @@ ENDC
 	hlcoord 0, 17
 	ld a, $70 ; A button tile
 	ld [hli], a
-	ld a, $77 ; first "Rods" tile
+	ld a, $76 ; first "Rods" tile
 	ld [hli], a
-	ld a, $78 ; second "Rods" tile
+	ld a, $77 ; second "Rods" tile
 	ld [hli], a
-	ld a, $79 ; third "Rods" tile
+	ld a, $78 ; third "Rods" tile
 	ld [hl], a
 	call WaitForTextScrollButtonPress
 	ldh a, [hJoy5]
@@ -231,12 +247,21 @@ ENDC
 	xor a
 	ld [wAreaUnknownCountdown], a ; reset countdown
 	hlcoord 1, 17
+IF DEF(_FRA)
+	ld a, $71 ; first "Terre" tile
+	ld [hli], a
+	ld a, $72 ; second "Terre" tile
+	ld [hli], a
+	ld a, $73 ; third "Terre" tile
+	ld [hl], a
+ELSE
 	ld a, $71 ; first "Land" tile
 	ld [hli], a
 	ld a, $72 ; second "Land" tile
 	ld [hli], a
-	ld a, $73 ; third "Land" tile
+	ld a, $64 ; background water tile
 	ld [hl], a
+ENDC
 	call WaitForTextScrollButtonPress
 	ldh a, [hJoy5]
 	and PAD_A
