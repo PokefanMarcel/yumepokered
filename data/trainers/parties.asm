@@ -166,7 +166,7 @@ SailorData:
 JrTrainerMData:
 ; Pewter Gym
 	db 11, DIGLETT, SANDSHREW, 0
-; Route 24/Route 25
+; Route 25 ; marcelnote - used to be shared with a Route 24 trainer
 	db 14, RATTATA, EKANS, 0
 ; Route 24
 	db 18, MANKEY, 0
@@ -174,7 +174,9 @@ JrTrainerMData:
 	db 20, SQUIRTLE, 0
 	db 16, SPEAROW, RATICATE, 0
 ; Unused
-	db 18, DIGLETT, DIGLETT, SANDSHREW, 0
+;	db 18, DIGLETT, DIGLETT, SANDSHREW, 0
+; Route 24 ; marcelnote - new team to feature Abra
+	db 14, ABRA, SANDSHREW, 0
 ; Route 9
 	db 21, GROWLITHE, CHARMANDER, 0
 	db 19, RATTATA, DIGLETT, EKANS, SANDSHREW, 0
