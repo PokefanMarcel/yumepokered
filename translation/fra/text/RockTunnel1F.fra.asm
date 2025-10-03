@@ -117,53 +117,55 @@ _RockTunnel1FSignText::
 	cont "LAVANVILLE"
 	done
 
-_RockTunnel1FBlackbeltIntroText::   ; TODO marcelnote - added Blackbelt
-	text "Training in dark-"
-	line "ness sharpens a"
-	cont "warrior's"
-	cont "instinct!"
+_RockTunnel1FBlackbeltIntroText::   ; marcelnote - added Blackbelt
+	text "S'entraîner dans"
+	line "le noir aiguise"
+	cont "l'instinct du"
+	cont "guerrier!"
 
-	para "My fighting-type"
-	line "#MON have"
-	cont "reached new"
-	cont "heights here."
+	para "Mes #MON combat"
+	line "ont atteint de"
+	cont "nouveaux sommets"
+	cont "ici."
 	done
 
-_RockTunnel1FBlackbeltTruePotentialText::   ; TODO marcelnote - added Blackbelt, could be KARATE KING
-	text "Ah! Your"
+_RockTunnel1FBlackbeltTruePotentialText::   ; marcelnote - added Blackbelt, could be KARATE KING
+	text "Ah! Ton"
 	line "@"
 	text_ram wStringBuffer
-	text " seems"
-	cont "eager to learn."
+	text " a l'air"
+	cont "avide d'apprendre."
 
-	para "With my training,"
-	line "it could reach"
-	cont "its true"
-	cont "potential."
+	para "Sous ma tutelle,"
+	line "il pourrait"
+	cont "atteindre son"
+	cont "vrai potentiel."
 	done
 
-_RockTunnel1FBlackbeltFlashOnText::   ; TODO marcelnote - added Blackbelt
-	text "Ah! Your"
+_RockTunnel1FBlackbeltFlashOnText::   ; marcelnote - added Blackbelt
+	text "Ah! Ton"
 	line "@"
 	text_ram wStringBuffer
-	text " seems"
-	cont "eager to learn."
+	text " a l'air"
+	cont "avide d'apprendre."
 
-	para "But I can't train"
-	line "it properly with"
-	cont "this FLASH on."
+	para "Mais je ne peux"
+	line "pas l'entraîner"
+	cont "comme il faut"
+	cont "tant que ce FLASH"
+	cont "est allumé."
 	done
 
-_RockTunnel1FBlackbeltTrainingText::   ; TODO marcelnote - added Blackbelt
+_RockTunnel1FBlackbeltTrainingText::   ; marcelnote - added Blackbelt
 	text "@"
 	text_ram wStringBuffer
-	text " shuts"
-	line "its eyes and"
-	cont "focuses on its"
-	cont "inner power."
+	text " ferme"
+	line "les yeux et se"
+	cont "concentre sur sa"
+	cont "force intérieure."
 	done
 
-_RockTunnel1FBlackbeltDotsText::    ; TODO marcelnote - added Blackbelt
+_RockTunnel1FBlackbeltDotsText::    ; marcelnote - added Blackbelt
 	text "..."
 	line "..."
 	prompt
