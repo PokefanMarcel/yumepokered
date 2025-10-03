@@ -1,33 +1,36 @@
-_Route12FishingGuideHouseItsAFishingGuideText:: ; TODO
-	text "It's a FISHING"
-	line "GUIDE!"
+_Route12FishingGuideHouseItsAFishingGuideText::
+	text "C'est un GUIDE"
+	line "DE PECHE!"
 
-	para "There is a note"
-	line "inside."
+	para "Il y a un mot"
+	line "à l'intérieur."
 
-	para "To all travelers."
-	line "Cast your line,"
-	cont "reel in glory!"
+	para "A tous les"
+	line "voyageurs."
+	cont "Lancez l'hameçon,"
+	cont "ferrez la gloire!"
 
-	para "FISHING GURU"
+	para "MAITRE PECHEUR"
 	prompt
 
-_Route12FishingGuideHouseAddedToPokedexText:: ; TODO
-	text "<PLAYER> added the"
-	line "FISHING GUIDE to"
-	cont "the #DEX!"
+_Route12FishingGuideHouseAddedToPokedexText::
+	text "<PLAYER> ajoute"
+	line "le GUIDE DE PECHE"
+	cont "au #DEX!"
 	done
 
-_Route12FishingGuideHouseAreaUpgradedText:: ; TODO
-	text "The #DEX's AREA"
-	line "functionality was"
-	cont "upgraded to show"
-	cont "fishing spots."
+_Route12FishingGuideHouseAreaUpgradedText::
+	text "La fonction ZONE"
+	line "du #DEX montre"
+	cont "désormais où"
+	cont "les #MON peuvent"
+	cont "être pêchés."
 	done
 
-_Route12FishingGuideHouseToAllTravelersText:: ; TODO
-	text "To all travelers."
-	line "Cast your line,"
-	cont "reel in glory!"
-	cont "FISHING GURU"
+_Route12FishingGuideHouseToAllTravelersText::
+	text "A tous les"
+	line "voyageurs."
+	cont "Lancez l'hameçon,"
+	cont "ferrez la gloire!"
+	cont "MAITRE PECHEUR"
 	done
