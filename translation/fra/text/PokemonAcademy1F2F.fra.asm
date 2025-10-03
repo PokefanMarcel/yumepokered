@@ -70,7 +70,7 @@ _PokemonAcademy2FTeacherTakeTestText::
 	cont "questions."
 
 	para "Es-tu prêt pour"
-	line "le test ?"
+	line "le test?"
 	done
 
 _PokemonAcademy2FTeacherQuestion1Text::
@@ -78,8 +78,8 @@ _PokemonAcademy2FTeacherQuestion1Text::
 	line "Alors allons-y."
 
 	para "Question 1:"
-	line "Les attaques glace"
-	cont "sont très"
+	line "Les attaques"
+	cont "glace sont très"
 	cont "efficaces contre"
 	cont "les #MON feu."
 	done
@@ -138,7 +138,7 @@ _PokemonAcademy2FTeacherWellDoneText::
 	para "Maintenant que tu"
 	line "maîtrises les"
 	cont "bases, tu devrais"
-	cont "tenter la"
+	cont "essayer la"
 	cont "classe avancée"
 	cont "à l'étage."
 	done
@@ -165,7 +165,7 @@ _PokemonAcademy2FPhysicalSpecialIntroText::
 	line "notes de cours!"
 
 	para "TYPES PHYSIQUES"
-	line "OU SPECIAUX."
+	line "ET SPECIAUX."
 	prompt
 
 _PokemonAcademy2FPhysicalSpecialTypesText::
@@ -198,7 +198,7 @@ _PokemonAcademy2FPhysicalTypesText::
 	para "Mais la stat de"
 	line "DEFENSE de"
 	cont "l'adversaire joue"
-	cont "aussi un role."
+	cont "aussi un rôle."
 
 	para "Plus l'ATTAQUE est"
 	line "haute, plus ça"
@@ -232,15 +232,15 @@ _PokemonAcademy2FSpecialTypesText::
 	text_waitbutton
 	text_end
 
-_PokemonAcademy2FYoungsterText:: ; TODO
-	text "My older brother"
-	line "complains that"
-	cont "FOCUS POWER"
-	cont "never works."
+_PokemonAcademy2FYoungsterText::
+	text "Mon grand frère"
+	line "dit que l'attaque"
+	cont "PUISSANCE ne sert"
+	cont "à rien."
 
-	para "But I think"
-	line "he's just bad"
-	cont "at battling!"
+	para "Mais j'crois qu'il"
+	line "est juste nul en"
+	cont "combat #MON!"
 	done
 
 _PokemonAcademy2FCriticalHitsIntroText:: ; should also add that crits ignore stat changes, maybe advanced class?
@@ -250,200 +250,213 @@ _PokemonAcademy2FCriticalHitsIntroText:: ; should also add that crits ignore sta
 	para "COUPS CRITIQUES." ; CRITICAL HITS BASICS?
 	prompt
 
-_PokemonAcademy2FCriticalSpeedText:: ; TODO
-	text "A critical hit's"
-	line "chance depends on"
-	cont "the natural SPEED"
-	cont "of a #MON's"
-	cont "species."
+_PokemonAcademy2FCriticalSpeedText::
+	text "Les chances de"
+	line "coup critique"
+	cont "dépendent de la"
+	cont "VITESSE naturelle"
+	cont "de chaque espèce"
+	cont "de #MON."
 
-	para "The faster the"
-	line "#MON species,"
-	cont "the higher the"
-	cont "chance to land"
-	cont "critical hits."
-	cont "Be quick!"
+	para "Plus une espèce"
+	line "est rapide, plus"
+	cont "ses chances de"
+	cont "coup critique"
+	cont "sont élevées."
+	cont "Sois rapide!"
 	prompt
 
-_PokemonAcademy2FIncreaseCritText:: ; TODO
-	text "Using the move"
-	line "FOCUS ENERGY"
-	cont "in battle will"
-	cont "increase your"
-	cont "chance to land"
-	cont "critical hits."
+_PokemonAcademy2FIncreaseCritText::
+	text "Utiliser l'attaque"
+	line "PUISSANCE en"
+	cont "combat augmentera"
+	cont "tes chances de"
+	cont "lancer un coup"
+	cont "critique."
 
-	para "If your #MON"
-	line "does not know"
-	cont "FOCUS ENERGY, you"
-	cont "can also give it"
-	cont "some DIRE HIT!"
+	para "Si ton #MON ne"
+	line "connaît pas"
+	cont "PUISSANCE,"
+	cont "tu peux aussi"
+	cont "lui donner"
+	cont "du MUSCLE +!"
 	prompt
 
-_PokemonAcademy2FHighCritMovesText:: ; TODO
-	text "Some moves like"
-	line "SLASH and RAZOR"
-	cont "LEAF almost"
-	cont "always land"
-	cont "critical hits."
+_PokemonAcademy2FHighCritMovesText::
+	text "Certaines attaques"
+	line "comme TRANCHE ou"
+	cont "TRANCH'HERBE font"
+	cont "presque toujours"
+	cont "un coup critique."
 
-	para "Watch out for"
-	line "those moves!@"
+	para "Prends garde à"
+	line "ces attaques!@"
 	text_waitbutton
 	text_end
 
-_PokemonAcademy2FBeautyText:: ; TODO
-	text "I taught my"
-	line "POLIWAG four"
-	cont "water moves to"
-	cont "make the most of"
-	cont "the same-type"
-	cont "attack bonus."
+_PokemonAcademy2FBeautyText::
+	text "J'ai appris quatre"
+	line "attaques de type"
+	cont "eau à mon PTITARD"
+	cont "pour profiter à"
+	cont "fond du bonus de"
+	cont "même type."
 
-	para "But I keep losing"
-	line "against grass"
-	cont "#MON..."
+	para "Mais je perds sans"
+	line "arrêt contre les"
+	cont "#MON plante..."
 	done
 
-_PokemonAcademy2FSTABIntroText:: ; TODO
+_PokemonAcademy2FSTABIntroText::
 	text "Vous consultez les"
 	line "notes de cours!"
 
-	para "SAME-TYPE"
-	line "ATTACK BONUS."
+	para "BONUS D'ATTAQUE"
+	line "DE MEME TYPE."
 	prompt
 
-_PokemonAcademy2FSTABExplanationText:: ; TODO
-	text "When a #MON"
-	line "uses a move"
-	cont "that matches its"
-	cont "type, the move"
-	cont "is more powerful."
+_PokemonAcademy2FSTABExplanationText::
+	text "Quand un #MON"
+	line "utilise une"
+	cont "attaque de son"
+	cont "propre type,"
+	cont "cette attaque est"
+	cont "plus puissante."
 
-	para "For example,"
-	line "a fire move"
-	cont "is stronger when"
-	cont "used by a fire-"
-	cont "type #MON."
+	para "Par exemple,"
+	line "une attaque feu"
+	cont "frappe plus fort"
+	cont "quand elle est"
+	cont "lancée par un"
+	cont "#MON feu."
 
-	para "Remember this"
-	line "for your battles!@"
+	para "Retiens bien ça"
+	line "pour tes combats!@"
 	text_waitbutton
 	text_end
 
-_PokemonAcademy2FSuperNerdText:: ; TODO
-	text "Some moves change"
-	line "#MON's stats"
-	cont "during battle."
+_PokemonAcademy2FSuperNerdText::
+	text "Certaines attaques"
+	line "modifient les"
+	cont "stats d'un #MON"
+	cont "en plein combat."
 
-	para "GROWL or SAND"
-	line "ATTACK are easy,"
-	cont "but REFLECT and"
-	cont "LIGHT SCREEN"
-	cont "can be tricky"
-	cont "to understand!"
+	para "RUGISSEMENT ou"
+	line "JET DE SABLE,"
+	cont "c'est facile,"
+	cont "mais PROTECTION"
+	cont "ou MUR LUMIERE,"
+	cont "ça l'est moins!"
 	done
 
-_PokemonAcademy2FSuperNerd2Text:: ; TODO
-	text "Two STATUS"
-	line "conditions also"
-	cont "affect #MON's"
-	cont "stats during"
-	cont "battle."
+_PokemonAcademy2FSuperNerd2Text::
+	text "Deux changements"
+	line "de STATUT ont un"
+	cont "effet sur les"
+	cont "stats d'un #MON"
+	cont "en combat."
 
-	para "A paralyzed"
-	line "#MON loses"
-	cont "half its SPEED,"
-	cont "and a burned"
-	cont "#MON loses"
-	cont "half its ATTACK."
+	para "Un #MON"
+	line "paralysé perd"
+	cont "la moitié de"
+	cont "sa VITESSE, et"
+	cont "un #MON brûlé"
+	cont "perd la moitié"
+	cont "de son ATTAQUE."
 	done
 
-_PokemonAcademy2FReflectLightScreenIntroText:: ; TODO
+_PokemonAcademy2FReflectLightScreenIntroText::
 	text "Vous consultez les"
 	line "notes de cours!"
 
-	para "REFLECT AND"
-	line "LIGHT SCREEN."
+	para "PROTECTION ET"
+	line "MUR LUMIERE."
 	prompt
 
-_PokemonAcademy2FReflectText:: ; TODO
-	text "When a #MON"
-	line "uses REFLECT,"
-	cont "its DEFENSE stat"
-	cont "is doubled."
+_PokemonAcademy2FReflectText::
+	text "Quand un #MON"
+	line "lance PROTECTION,"
+	cont "sa DEFENSE est"
+	cont "doublée."
 
-	para "PHYSICAL moves"
-	line "like TACKLE or"
-	cont "ROCK THROW will"
-	cont "do less damage!"
+	para "Les attaques"
+	line "PHYSIQUES comme"
+	cont "CHARGE ou JET-"
+	cont "PIERRES feront"
+	cont "moins de dégâts!"
 	prompt
 
-_PokemonAcademy2FLightScreenText:: ; TODO
-	text "If a #MON uses"
-	line "LIGHT SCREEN,"
-	cont "its SPECIAL stat"
-	cont "doubles against"
-	cont "the opponent's"
-	cont "SPECIAL attacks."
+_PokemonAcademy2FLightScreenText::
+	text "Si il utilise"
+	line "MUR LUMIERE,"
+	cont "alors son SPECIAL"
+	cont "est doublé face"
+	cont "aux attaques"
+	cont "SPECIALES."
 
-	para "Moves like WATER"
-	line "GUN or PSYBEAM"
-	cont "will do less"
-	cont "damage!"
+	para "Les attaques comme"
+	line "PISTOLET A O ou"
+	cont "RAFALE PSY feront"
+	cont "moins de dégâts!"
 	prompt
 
-_PokemonAcademy2FReflectLightScreenEndText:: ; TODO
-	text "Be careful!"
-	line "When the #MON"
-	cont "that set up LIGHT"
-	cont "SCREEN or REFLECT"
-	cont "switches out or"
-	cont "faints, the"
-	cont "effect ends.@"
+_PokemonAcademy2FReflectLightScreenEndText::
+	text "Attention!"
+	line "Quand le #MON"
+	cont "qui a lancé"
+	cont "MUR LUMIERE ou"
+	cont "PROTECTION est"
+	cont "changé ou mis"
+	cont "K.O., l'effet"
+	cont "prend fin.@"
 	text_waitbutton
 	text_end
 
-_PokemonAcademy2FSetDamageMovesIntroText:: ; TODO
+_PokemonAcademy2FSetDamageMovesIntroText::
 	text "Vous consultez les"
 	line "notes de cours!"
 
-	para "SET DAMAGE MOVES."
+	para "ATTAQUES A DEGATS"
+	line "FIXES."
 	prompt
 
-_PokemonAcademy2FDragonRageSonicboomText:: ; TODO
-	text "Some moves do not"
-	line "rely on #MON's"
-	cont "stats to inflict"
-	cont "damage."
+_PokemonAcademy2FDragonRageSonicboomText::
+	text "Quelques attaques"
+	line "infligent des"
+	cont "dégâts sans"
+	cont "prendre en compte"
+	cont "les stats des"
+	cont "#MON."
 
-	para "For instance,"
-	line "DRAGON RAGE and"
-	cont "SONICBOOM always"
-	cont "have the same"
-	cont "effect, no matter"
-	cont "how strong the"
-	cont "#MON using"
-	cont "them is."
+	para "Par exemple,"
+	line "DRACO-RAGE et"
+	cont "SONICBOOM ont"
+	cont "toujours le même"
+	cont "effet, et ceci"
+	cont "peu importe la"
+	cont "force du #MON"
+	cont "qui les utilise."
 	prompt
 
-_PokemonAcademy2FNightShadeSeismicTossPsywaveText:: ; TODO
-	text "SEISMIC TOSS and"
-	line "NIGHT SHADE deal"
-	cont "damage based on"
-	cont "the user's level."
+_PokemonAcademy2FNightShadeSeismicTossPsywaveText::
+	text "Les dégâts de"
+	line "FRAPPE ATLAS et"
+	cont "de TENEBRES"
+	cont "dépendent du"
+	cont "niveau de celui"
+	cont "qui les lance."
 
-	para "Finally, PSYWAVE"
-	line "also scales with"
-	cont "the user's level,"
-	cont "but its damage is"
-	cont "unpredictable."
+	para "Enfin, VAGUE PSY"
+	line "varie aussi avec"
+	cont "le niveau, mais"
+	cont "ses dégâts sont"
+	cont "imprévisibles."
 
-	para "At its strongest,"
-	line "it can be 3 times"
-	cont "more powerful"
-	cont "than at its"
-	cont "weakest!@"
+	para "A son maximum,"
+	line "elle peut faire"
+	cont "jusqu'à 3 fois"
+	cont "plus de dégâts"
+	cont "qu'à son minimum!@"
 	text_waitbutton
 	text_end
 
