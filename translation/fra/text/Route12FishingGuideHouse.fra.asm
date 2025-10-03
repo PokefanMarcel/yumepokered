@@ -22,8 +22,8 @@ _Route12FishingGuideHouseAddedToPokedexText::
 _Route12FishingGuideHouseAreaUpgradedText::
 	text "La fonction ZONE"
 	line "du #DEX montre"
-	cont "désormais où"
-	cont "les #MON peuvent"
+	cont "désormais où les"
+	cont "#MON peuvent"
 	cont "être pêchés."
 	done
 
