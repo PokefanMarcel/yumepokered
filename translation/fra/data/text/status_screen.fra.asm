@@ -35,7 +35,7 @@ StatusScreenLevelUpText:
 	db   "PROCH.NIV.@"
 
 StatusScreenToNextLevelText:
-	db "▶@"
+	db "<▶>@"
 
 StatusScreenFieldMoveText:
 	db "COMP.@"

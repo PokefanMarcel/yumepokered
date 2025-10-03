@@ -192,6 +192,7 @@
 	charmap "C'",        $cd ; marcelnote - new
 	charmap "J'",        $ce ; marcelnote - new
 	charmap "L'",        $cf ; marcelnote - new
+	charmap "<▶>",       $d0 ; marcelnote - new
 	charmap "c'",        $d4
 	charmap "d'",        $d5
 	charmap "j'",        $d6
