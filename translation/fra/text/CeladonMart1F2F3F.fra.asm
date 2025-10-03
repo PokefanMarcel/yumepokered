@@ -15,7 +15,7 @@ _CeladonMart1FDirectorySignText::
 	line "RENSEIGNEMENTS"
 
 	para "1er: MARCHE DES"
-	line "DRESSEURS"
+	line "     DRESSEURS" ; marcelnote - realigned
 
 	para "2ème: JEUX VIDEO"
 
@@ -23,7 +23,7 @@ _CeladonMart1FDirectorySignText::
 
 	para "4ème: MEDICAMENTS"
 
-	para "6F: ENERGY AISLE" ; TODO marcelnote - new floor
+	para "6ème: TONIQUES" ; marcelnote - new floor
 
 	para "DERNIER ETAGE:"
 	line "DISTRIBUTEURS"

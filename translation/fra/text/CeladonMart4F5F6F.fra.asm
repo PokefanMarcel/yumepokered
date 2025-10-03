@@ -61,52 +61,55 @@ _CeladonMart5FCurrentFloorSignText::
 	done
 
 
-_CeladonMart6FClerkNoInventoryText:: ; TODO marcelnote - new floor
-	text "Sorry, we're"
-	line "currently out of"
-	cont "stock."
+_CeladonMart6FClerkNoInventoryText:: ; marcelnote - new floor
+	text "Désolé, nous"
+	line "sommes en rupture"
+	cont "de stock."
 
-	para "We're waiting"
-	line "to hear from"
-	cont "our supplier on"
-	cont "MANDARIN ISLAND."
+	para "Nous attendons une"
+	line "réponse de notre"
+	cont "fournisseur sur"
+	cont "l'ILE MANDARINE."
 	done
 
-_CeladonMart6FBeautyUsuallyStocksText:: ; TODO marcelnote - new floor
-	text "This floor usually"
-	line "stocks ETHER and"
-	cont "other PP-related"
-	cont "items."
+_CeladonMart6FBeautyUsuallyStocksText:: ; marcelnote - new floor
+	text "D'habitude, cet"
+	line "étage propose de"
+	cont "l'ETHER et d'autres"
+	cont "objets pour"
+	cont "recharger les PP."
 
-	para "They even sell"
-	line "RARE CANDY!"
+	para "Il y a même des"
+	line "SUPER BONBONS!"
 	done
 
-_CeladonMart6FBeautyAlwaysComeHereText:: ; TODO marcelnote - new floor
-	text "I always come"
-	line "here for ELIXIRs."
-	cont "They're great for"
-	cont "long journeys."
+_CeladonMart6FBeautyAlwaysComeHereText:: ; marcelnote - new floor
+	text "Je viens toujours"
+	line "ici pour acheter"
+	cont "des ELIXIRS."
+	cont "Ils sont utiles"
+	cont "pour les longs"
+	cont "voyages."
 	done
 
-_CeladonMart6FMiddleAgedWomanText:: ; TODO marcelnote - new floor
-	text "Have you heard of"
-	line "MANDARIN ISLAND?"
+_CeladonMart6FMiddleAgedWomanText:: ; marcelnote - new floor
+	text "Tu connais l'ILE"
+	line "MANDARINE?"
 
-	para "My husband travels"
-	line "there often for"
-	cont "his work at"
-	cont "SILPH CO."
+	para "Mon mari s'y rend"
+	line "souvent pour son"
+	cont "travail à la"
+	cont "SYLPHE SARL."
 
-	para "Their factory has"
-	line "been experiencing"
-	cont "delays lately."
+	para "Leur usine a pris"
+	line "du retard ces"
+	cont "temps-ci."
 	done
 
-_CeladonMart6FCurrentFloorSignText:: ; TODO marcelnote - new floor
-	text "Recharge your"
-	line "team!"
+_CeladonMart6FCurrentFloorSignText:: ; marcelnote - new floor
+	text "Recharge ton"
+	line "équipe!"
 
-	para "6F: ENERGY AISLE"
+	para "6ème: TONIQUES"
 	done
 
