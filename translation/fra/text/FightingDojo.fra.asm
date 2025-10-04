@@ -145,53 +145,55 @@ _FightingDojoBetterNotGetGreedyText::
 	done
 
 
-_FightingDojoBrunoOhChampText:: ; TODO marcelnote - postgame Bruno
-	text "Oh, champ!"
+_FightingDojoBrunoOhChampText:: ; marcelnote - postgame Bruno
+	text "Hé, champion!" ; gendered text
 
-	para "Didn't expect to"
-	line "find you here."
+	para "J'pensais pas te"
+	line "voir muscler"
+	cont "tes mollets ici."
 
-	para "I'm here on ELITE"
-	line "FOUR business,"
-	cont "you see."
+	para "J'suis en mission"
+	line "pour le CONSEIL"
+	cont "des 4, tu vois."
 
-	para "We're always on"
-	line "the lookout for"
-	cont "new talents."
+	para "On est toujours"
+	line "à la chasse aux"
+	cont "gros biscotos."
 
-	para "SABRINA spoke"
-	line "highly of a"
-	cont "promising student"
-	cont "of hers, so"
-	cont "I came to witness"
-	cont "his potential"
-	cont "firsthand."
+	para "MORGANE m'a parlé"
+	line "d'un élève à elle,"
+	cont "très prometteur."
+	cont "Alors j'viens le"
+	cont "jauger un peu!"
 
-	para "I know!"
+	para "Attends, je sais!"
 
 	para "<PLAYER>,"
-	line "why not test"
-	cont "this student"
-	cont "yourself?"
+	line "et si tu allais"
+	cont "le tester toi-"
+	cont "même?"
 
-	para "He is waiting at"
-	line "the SAFFRON GYM."
-	cont "Go see what he's"
-	cont "made of, champ!"
+	para "Il attend à"
+	line "l'ARENE à côté."
+	cont "Va voir de quel"
+	cont "bois il se"
+	cont "chauffe!"
 	done
 
-_FightingDojoBrunoUsedToTrainHereText:: ; TODO marcelnote - postgame Bruno
-	text "You know, I used"
-	line "to train in this"
-	cont "DOJO, back when"
-	cont "it was SAFFRON's"
-	cont "official GYM."
+_FightingDojoBrunoUsedToTrainHereText:: ; marcelnote - postgame Bruno
+	text "Tu sais, je"
+	line "m'entrainais dans"
+	cont "ce DOJO, quand"
+	cont "c'était encore"
+	cont "l'ARENE officielle"
+	cont "de SAFRANIA."
 
-	para "But city life"
-	line "was not for me."
-	cont "The fresh air and"
-	cont "rugged mountains"
-	cont "of the INDIGO"
-	cont "PLATEAU is where"
-	cont "I feel alive!"
+	para "Mais la ville, ça"
+	line "sent ni la craie"
+	cont "ni la sueur."
+	cont "Au PLATEAU INDIGO,"
+	cont "j'respire l'air"
+	cont "pur, j'soulève"
+	cont "des rochers,"
+	cont "j'me sens bien!"
 	done

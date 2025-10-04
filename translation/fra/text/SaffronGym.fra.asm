@@ -310,41 +310,37 @@ _SaffronGymWillPostBattleText:: ; TODO marcelnote - postgame Will
 	cont "#MON hold!"
 	done
 
-_SaffronGymBrunoArrivesText:: ; TODO marcelnote - postgame Bruno
-	text "BRUNO: WILL!"
+_SaffronGymBrunoArrivesText:: ; marcelnote - postgame Bruno
+	text "ALDO: CLEMENT!"
 	line "<PLAYER>!"
 	done
 
-_SaffronGymBrunoInspiringText:: ; TODO marcelnote - postgame Bruno
-	text "BRUNO: What an"
-	line "inspiring battle!"
+_SaffronGymBrunoInspiringText:: ; marcelnote - postgame Bruno
+	text "ALDO: Quel"
+	line "sacré combat!"
 
-	para "WILL, you fought"
-	line "with remarkable"
-	cont "strategy and"
-	cont "precision."
+	para "CLEMENT, ta"
+	line "stratégie était"
+	cont "carrée, précise."
+	cont "Rien à redire!"
 
-	para "That's more than"
-	line "anyone could"
-	cont "expect against"
-	cont "the #MON"
-	cont "LEAGUE champion!"
+	para "Contre le"
+	line "CHAMPION de la"
+	cont "LIGUE #MON,"
+	cont "c'est du lourd!"
 
-	para "As for you,"
-	line "<PLAYER>, you"
-	cont "continue to"
-	cont "impress."
+	para "Et toi,"
+	line "<PLAYER>, tu"
+	cont "m'épates encore."
 
-	para "Both of you,"
-	line "keep pushing your"
-	cont "limits, and who"
-	cont "knows what"
-	cont "heights you will"
-	cont "reach!"
+	para "Tous les deux,"
+	line "poussez la barre"
+	cont "toujours plus"
+	cont "haut!"
 
-	para "Train hard,"
-	line "until our paths"
-	cont "cross again!"
+	para "Continuez à vous"
+	line "entraîner dur, et"
+	cont "on se reverra!"
 	done
 
 _SaffronGymSabrinaRematchPreBattleText:: ; TODO marcelnote - Sabrina rematch

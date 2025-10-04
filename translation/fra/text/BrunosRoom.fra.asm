@@ -32,40 +32,40 @@ _BrunosRoomBrunoAfterBattleText::
 	cont "t'attend!"
 	done
 
-	
 
-_BrunosRoomBrunoRematchEndBattleText:: ; TODO: marcelnote - Bruno rematch text
-	text "So my"
-	line "training is"
-	cont "still lacking..."
+_BrunosRoomBrunoRematchEndBattleText:: ; marcelnote - Bruno rematch text
+	text "J'manque"
+	line "encore de jus..."
 	prompt
 
-_BrunosRoomBrunoRematchBeforeBattleText:: ; TODO marcelnote - Bruno rematch text
-	text "Ready for another"
-	line "round, champ?"
+_BrunosRoomBrunoRematchBeforeBattleText:: ; marcelnote - Bruno rematch text
+	text "On y va pour un"
+	line "nouveau round,"
+	cont "champion?" ; gendered text
 
-	para "My #MON and I"
-	line "have kept to a"
-	cont "strict workout"
-	cont "and diet routine."
+	para "Avec mes #MON,"
+	line "on a suivi un"
+	cont "régime strict,"
+	cont "muscu et brocoli."
 
-	para "Face the results"
-	line "of our rigorous"
-	cont "training!"
+	para "Prêt à manger" ; gendered text: Prête
+	line "tes dents, p'tit?" ; gendered text: p'tite
 
-	para "Hoo hah!"
+	para "A table!"
 	done
 
-_BrunosRoomBrunoRematchAfterBattleText:: ; TODO: marcelnote - Bruno rematch text
-	text "True discipline is"
-	line "not accomplished"
-	cont "in a day."
+_BrunosRoomBrunoRematchAfterBattleText:: ; marcelnote - Bruno rematch text
+	text "La discipline,"
+	line "ça s'improvise pas"
+	cont "en un jour."
 
-	para "Constant training"
-	line "over time is key."
+	para "Faut bosser,"
+	line "répéter, encore"
+	cont "et encore!"
 
-	para "On to the next"
-	line "battle, champ!"
+	para "Allez, va voir"
+	line "la prochaine,"
+	cont "champion!" ; gendered text
 	done
 
 _BrunosRoomBrunoDontRunAwayText::
