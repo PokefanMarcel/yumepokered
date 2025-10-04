@@ -34,12 +34,12 @@ _PokemonTower1FChannelerText::
 	cont "esprits!"
 	done
 
-_PokemonTower1FLittleBoyText:: ; TODO marcelnote - added 7FChanneler
-	text "I saw a lady on"
-	line "the top floor"
-	cont "who was speaking"
-	cont "with GHOSTs..."
-	cont "Spooky!"
+_PokemonTower1FLittleBoyText:: ; marcelnote - added 7FChanneler
+	text "Au dernier étage,"
+	line "j'ai vu une dame"
+	cont "qui parlait avec"
+	cont "des SPECTRES..."
+	cont "Brrr!"
 	done
 
 _PokemonTower1FAgathaHowDareYouText:: ; TODO marcelnote - postgame Agatha event

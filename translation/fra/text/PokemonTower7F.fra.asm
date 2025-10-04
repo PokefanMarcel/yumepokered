@@ -90,37 +90,38 @@ _PokemonTower7FRocket3AfterBattleText::
 	done
 
 
-
-_PokemonTower7FChannelerIntroText::   ; TODO marcelnote - added 7FChanneler
-	text "The spiritual"
-	line "energies which"
-	cont "converge here"
-	cont "let me commune"
-	cont "with the GHOSTs."
+_PokemonTower7FChannelerIntroText::   ; marcelnote - added 7FChanneler
+	text "Les forces"
+	line "mystiques qui"
+	cont "convergent ici"
+	cont "m'aident à"
+	cont "communiquer avec"
+	cont "les SPECTRES."
 	done
 
-_PokemonTower7FChannelerHarnessPowerText::   ; TODO marcelnote - added 7FChanneler
-	text "Hmm... Your"
+_PokemonTower7FChannelerHarnessPowerText::   ; marcelnote - added 7FChanneler
+	text "Hmm... Ton"
 	line "@"
 	text_ram wStringBuffer
-	text " seems"
-	cont "drawn to this"
-	cont "energy."
+	text " semble"
+	cont "attiré par"
+	cont "cette énergie."
 
-	para "Shall I help it"
-	line "harness its power?"
+	para "Veux-tu que je"
+	line "l'aide à la"
+	cont "canaliser ?"
 	done
 
-_PokemonTower7FChannelerIncantationsText::   ; TODO marcelnote - added 7FChanneler
-	text "The CHANNELER"
-	line "whispers strange"
-	cont "incantations"
-	cont "over @"
+_PokemonTower7FChannelerIncantationsText::   ; marcelnote - added 7FChanneler
+	text "L'EXORCISTE"
+	line "murmure des"
+	cont "paroles étranges"
+	cont "sur @"
 	text_ram wStringBuffer
 	text "."
 	done
 
-_PokemonTower7FChannelerDotsText::    ; TODO marcelnote - added 7FChanneler
+_PokemonTower7FChannelerDotsText::    ; marcelnote - added 7FChanneler
 	text "..."
 	line "..."
 	prompt
