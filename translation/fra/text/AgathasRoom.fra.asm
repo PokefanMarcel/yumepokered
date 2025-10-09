@@ -76,7 +76,7 @@ _AgathasRoomAgathaRematchEndBattleText:: ; marcelnote - Agatha rematch text
 
 _AgathasRoomAgathaRematchAfterBattleText:: ; marcelnote - Agatha rematch text
 	text "Avec toi comme"
-	line "CHAMPION, notre" ; gendered text
+	line "champion, notre" ; gendered text
 	cont "héritage est"
 	cont "entre de bonnes"
 	cont "mains."
