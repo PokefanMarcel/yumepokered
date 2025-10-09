@@ -61,12 +61,12 @@ _PokemonTower2FChannelerText::
 	done
 
 
-_PokemonTower2FGhostBattleText:: ; TODO marcelnote - postgame Agatha event
-	text "Intruders..."
-	line "In our home..."
+_PokemonTower2FGhostBattleText:: ; marcelnote - postgame Agatha event
+	text "Intrus..."
+	line "Chez nous..."
 	done
 
-_PokemonTower2FGhostVanishedText:: ; TODO marcelnote - postgame Agatha event
-	text "The ghost"
-	line "vanished..."
+_PokemonTower2FGhostVanishedText:: ; marcelnote - postgame Agatha event
+	text "Le SPECTRE a"
+	line "disparu..."
 	done

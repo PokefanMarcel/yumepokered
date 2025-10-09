@@ -81,12 +81,12 @@ _PokemonTower5FPurifiedZoneText::
 	done
 
 
-_PokemonTower5FGhostBattleText:: ; TODO marcelnote - postgame Agatha event
-	text "Heh heh..."
-	line "All must fade..."
+_PokemonTower5FGhostBattleText:: ; marcelnote - postgame Agatha event
+	text "Hé hé..."
+	line "Tout s'efface..."
 	done
 
-_PokemonTower5FGhostVanishedText:: ; TODO marcelnote - postgame Agatha event
-	text "The ghost"
-	line "vanished..."
+_PokemonTower5FGhostVanishedText:: ; marcelnote - postgame Agatha event
+	text "Le SPECTRE a"
+	line "disparu..."
 	done

@@ -63,63 +63,61 @@ _PokemonTower6FBeGoneText::
 	done
 
 
-_PokemonTower6FAgathaText:: ; TODO marcelnote - postgame Agatha event
-	text "So, you made it"
-	line "past the spirits."
-	cont "They seem calmer"
-	cont "now."
+_PokemonTower6FAgathaText:: ; marcelnote - postgame Agatha event
+	text "Alors, tu as bravé"
+	line "les esprits."
+	cont "Ils sont plus"
+	cont "calmes, on dirait."
 
-	para "Don't judge an"
-	line "old lady too"
-	cont "harshly for"
-	cont "clinging to her"
-	cont "past, child."
-	; When you're as old as me, you too will cherish what was.
+	para "Ne juge pas trop"
+	line "vite une vieille"
+	cont "dame qui tient"
+	cont "à son passé,"
+	cont "mon petit." ; gendered text
 
-	para "This place..."
-	line "It holds the"
-	cont "memories of my"
-	cont "old friends."
+	para "Cet endroit..."
+	line "Il garde la"
+	cont "mémoire de mes"
+	cont "vieux amis."
 
-	para "But if #MON"
-	line "can accept"
-	cont "change, then"
-	cont "maybe so must I."
+	para "Mais si même les"
+	line "#MON acceptent"
+	cont "le changement,"
+	cont "alors moi aussi."
 
-	para "MR.FUJI will see"
-	line "that the tombs"
-	cont "are moved with"
-	cont "care. He, at"
-	cont "least, still"
-	cont "honors what was."
+	para "MR.FUJI veillera"
+	line "à déplacer les"
+	cont "tombes avec soin."
+	cont "Lui, au moins,"
+	cont "respecte encore"
+	cont "ce qui fut jadis."
 
-	para "You may stay."
-	line "I will go to"
-	cont "light incense"
-	cont "for my old"
-	cont "companions."
+	para "Tu peux rester."
+	line "Je vais allumer"
+	cont "un peu d'encens"
+	cont "pour mes vieux"
+	cont "compagnons."
 	done
 
-_PokemonTower6FGhostBattleText:: ; TODO marcelnote - postgame Agatha event
-	text "Change..."
-	line "Inevitable..."
+_PokemonTower6FGhostBattleText:: ; marcelnote - postgame Agatha event
+	text "Changement..."
+	line "Inévitable..."
 	done
 
-_PokemonTower6FGhostVanishedText:: ; TODO marcelnote - postgame Agatha event
-	text "The spirit seems"
-	line "to find peace..."
+_PokemonTower6FGhostVanishedText:: ; marcelnote - postgame Agatha event
+	text "L'esprit semble"
+	line "se calmer..."
 	done
 
-_PokemonTower6FTombText:: ; TODO marcelnote - postgame Agatha event
-	text "Something is"
-	line "written."
+_PokemonTower6FTombText:: ; marcelnote - postgame Agatha event
+	text "Un message"
+	line "est gravé."
 
-	para "Here lies a"
-	line "loyal companion,"
-	cont "forever at peace."
+	para "A UN AMI LOYAL,"
+	line "EN PAIX A JAMAIS."
 
-	para "A faded photo"
-	line "shows a young"
-	cont "girl beside her"
-	cont "NINETALES."
+	para "Une photo jaunie"
+	line "montre une jeune"
+	cont "fille à côté de"
+	cont "son FEUNARD."
 	done

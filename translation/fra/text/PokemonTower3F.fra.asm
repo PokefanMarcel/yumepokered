@@ -47,13 +47,12 @@ _PokemonTower3FChanneler3AfterBattleText::
 	done
 
 
-
-_PokemonTower3FGhostBattleText:: ; TODO marcelnote - postgame Agatha event
-	text "This presence..."
-	line "Angers us..."
+_PokemonTower3FGhostBattleText:: ; marcelnote - postgame Agatha event
+	text "Cette présence..."
+	line "Nous fâche..."
 	done
 
-_PokemonTower3FGhostVanishedText:: ; TODO marcelnote - postgame Agatha event
-	text "The ghost"
-	line "vanished..."
+_PokemonTower3FGhostVanishedText:: ; marcelnote - postgame Agatha event
+	text "Le SPECTRE a"
+	line "disparu..."
 	done
