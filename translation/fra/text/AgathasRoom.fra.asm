@@ -1,12 +1,12 @@
 _AgathasRoomAgathaBeforeBattleText::
 	text "Gnnn... Bonjour"
-	line "mon tout petit."
+	line "mon tout petit." ; gendered text
 	cont "Je suis AGATHA du"
 	cont "CONSEIL des 4!"
 
 	para "CHEN mise de"
 	line "grands espoirs"
-	cont "sur toi, fiston!"
+	cont "sur toi, fiston!" ; gendered text
 
 	para "Sais-tu que ce"
 	line "vieux machin"
@@ -31,7 +31,7 @@ _AgathasRoomAgathaBeforeBattleText::
 
 _AgathasRoomAgathaEndBattleText::
 	text "Oh ho!"
-	line "Tu es doué mon"
+	line "Tu es doué mon" ; gendered text
 	cont "petit!"
 	prompt
 
@@ -52,40 +52,37 @@ _AgathasRoomAgathaDontRunAwayText::
 	done
 
 
+_AgathasRoomAgathaRematchBeforeBattleText:: ; marcelnote - Agatha rematch text
+	text "Déjà de retour,"
+	line "mon petit?" ; gendered text
 
-_AgathasRoomAgathaRematchBeforeBattleText:: ; TODO marcelnote - Agatha rematch text
-	text "Back so soon,"
-	line "are you?"
+	para "Le temps passe"
+	line "pour nous tous..."
+	cont "Mais moi, je ne"
+	cont "m'éteindrai pas"
+	cont "en silence!"
 
-	para "Time has a way"
-	line "of moving past"
-	cont "us all... But"
-	cont "know that I won't"
-	cont "fade quietly!"
-
-	para "Show me you are"
-	line "worthy of"
-	cont "carrying our"
-	cont "spirit forward,"
-	cont "child!"
+	para "Montre-moi que tu"
+	line "es digne de"
+	cont "porter notre"
+	cont "flambeau, fiston!" ; gendered text
 	done
 
-_AgathasRoomAgathaRematchEndBattleText:: ; TODO marcelnote - Agatha rematch text
-	text "Ah! Like"
-	line "that old duff"
-	;text "Oh ho! You"
-	;line "remind me of OAK"
-	cont "in his prime!"
+_AgathasRoomAgathaRematchEndBattleText:: ; marcelnote - Agatha rematch text
+	text "Ah! Comme"
+	line "le vieux CHEN à"
+	cont "sa grande époque!"
 	prompt
 
-_AgathasRoomAgathaRematchAfterBattleText:: ; TODO marcelnote - Agatha rematch text
-	text "With you as"
-	line "champion, our"
-	cont "legacy is in"
-	cont "good hands."
+_AgathasRoomAgathaRematchAfterBattleText:: ; marcelnote - Agatha rematch text
+	text "Avec toi comme"
+	line "CHAMPION, notre" ; gendered text
+	cont "héritage est"
+	cont "entre de bonnes"
+	cont "mains."
 
-	para "Now, off you go."
-	line "Go teach that"
-	cont "pompous dragon"
-	cont "master a lesson!"
+	para "Allez, file."
+	line "Va rabattre"
+	cont "son caquet à ce"
+	cont "maître dragon!"
 	done
