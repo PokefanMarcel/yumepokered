@@ -70,42 +70,39 @@ _LancesRoomLanceAfterBattleText::
 	text_end
 
 
-
-_LancesRoomLanceRematchBeforeBattleText:: ; TODO marcelnote - Lance rematch text
+_LancesRoomLanceRematchBeforeBattleText:: ; marcelnote - Lance rematch text
 	text "Ah, <PLAYER>!"
-	line "I have been"
-	cont "expecting you."
+	line "Je t'attendais."
 
-	para "My dragons and I"
-	line "have trained"
-	cont "relentlessly to"
-	cont "surpass our"
-	cont "limits."
-	; "My powers have doubled since the last time we met, Count."
+	para "J'ai entraîné"
+	line "mes dragons sans"
+	cont "relâche afin"
+	cont "qu'ils dépassent"
+	cont "leurs limites."
 
-	para "Do you think you"
-	line "can still handle"
-	cont "their power?"
+	para "Peux-tu encore"
+	line "tenir face à"
+	cont "leur puissance?"
 	done
 
-_LancesRoomLanceRematchEndBattleText:: ; TODO marcelnote - Lance rematch text
-	text "Truly"
-	line "astounding."
+_LancesRoomLanceRematchEndBattleText:: ; marcelnote - Lance rematch text
+	text "Incroyable!"
 
-	para "You've grown even"
-	line "stronger since"
-	cont "our last battle."
+	para "Tu deviens encore"
+	line "plus fort avec"
+	cont "chaque combat."
 	prompt
 
-_LancesRoomLanceRematchAfterBattleText:: ; TODO marcelnote - Lance rematch text
-	text "I can hardly"
-	line "believe it!"
+_LancesRoomLanceRematchAfterBattleText:: ; marcelnote - Lance rematch text
+	text "J'ai du mal"
+	line "à y croire!"
 
-	para "Not even my new"
-	line "team could stand"
-	cont "against you."
+	para "Même ma nouvelle"
+	line "équipe n'a pas pu"
+	cont "te faire face."
 
-	para "You truly are a"
-	line "champion,"
+	para "Tu mérites"
+	line "vraiment le titre"
+	cont "de champion," ; gendered text
 	cont "<PLAYER>!@"
-	text_end ; why not done?
+	text_end
