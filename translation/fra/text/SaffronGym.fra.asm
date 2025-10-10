@@ -264,50 +264,52 @@ _SaffronGymYoungster4AfterBattleText::
 	done
 
 
-_SaffronGymWillWelcomeText:: ; TODO marcelnote - postgame Will
-	text "Champion! It is"
-	line "an honor to"
-	cont "welcome you here."
+_SaffronGymWillWelcomeText:: ; marcelnote - postgame Will
+	text "Quel honneur de"
+	line "recevoir ici le"
+	cont "champion de la" ; gendered text
+	cont "LIGUE #MON!"
 
-	para "I am WILL,"
-	line "SABRINA's top"
-	cont "student!"
+	para "Je suis CLEMENT,"
+	line "le meilleur élève"
+	cont "de MORGANE!"
 
-	para "I've been waiting"
-	line "for BRUNO of the"
-	cont "ELITE FOUR to"
-	cont "demonstrate my"
-	cont "abilities."
+	para "Tu tombes à pic."
+	line "ALDO du CONSEIL"
+	cont "des 4 arrive"
+	cont "bientôt afin"
+	cont "de me tester."
 
-	para "Wait, did BRUNO"
-	line "send you in his"
-	cont "place?"
+	para "Quoi? Tu veux dire"
+	line "qu'ALDO t'a envoyé"
+	cont "à sa place?"
 
-	para "Very well then!"
-	line "Please allow me"
-	cont "to show you"
-	cont "what I've learned."
+	para "Très bien! Alors,"
+	line "permets-moi de te"
+	cont "montrer ce que"
+	cont "j'ai appris."
 	done
 
-_SaffronGymWillDefeatedText:: ; TODO marcelnote - postgame Will
-	text "Amazing!"
-	line "I still have"
-	cont "much to learn!"
+_SaffronGymWillDefeatedText:: ; marcelnote - postgame Will
+	text "Epatant!"
+	line "J'ai encore"
+	cont "beaucoup"
+	cont "à apprendre!"
 	prompt
 
-_SaffronGymWillPostBattleText:: ; TODO marcelnote - postgame Will
-	text "Thank you for a"
-	line "memorable fight,"
-	cont "champion!"
+_SaffronGymWillPostBattleText:: ; marcelnote - postgame Will
+	text "Merci pour ce"
+	line "combat mémorable,"
+	cont "champion!" ; gendered text
 
-	para "My own journey is"
-	line "just beginning."
+	para "Mon propre voyage"
+	line "ne fait que."
+	cont "commencer."
 
-	para "I will travel the"
-	line "world to discover"
-	cont "the secrets"
-	cont "that psychic"
-	cont "#MON hold!"
+	para "Je vais parcourir"
+	line "le monde pour"
+	cont "percer le mystère"
+	cont "des #MON psy!"
 	done
 
 _SaffronGymBrunoArrivesText:: ; marcelnote - postgame Bruno
