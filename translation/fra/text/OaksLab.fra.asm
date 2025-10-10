@@ -393,139 +393,134 @@ _OaksLabScientistOakWentForWalkText:: ; marcelnote - new for Oak battle
 	cont "promenade."
 	done
 
-_OaksLabRivalShowingDexText:: ; TODO marcelnote - postgame Rival event
+_OaksLabRivalShowingDexText:: ; marcelnote - postgame Rival event
 	text "<RIVAL>: Yo,"
 	line "<PLAYER>!"
 
-	para "I was just show-"
-	line "ing my #DEX"
-	cont "to gramps."
+	para "Je montrais mon"
+	line "#DEX à pépé."
 
-	para "I've recorded 146"
-	line "different kinds"
-	cont "of #MON!"
-	cont "Pretty impress-"
-	cont "ive, right?"
+	para "J'ai enregistré"
+	line "146 espèces de"
+	cont "#MON! Ca en"
+	cont "jette, hein?"
 
-	para "But gramps keeps"
-	line "going on about"
-	cont "these legendary"
-	cont "birds."
+	para "Mais pépé me parle"
+	line "toujours d'oiseaux"
+	cont "légendaires."
 
-	para "What about you,"
-	line "<PLAYER>?"
-	cont "Have you come"
-	cont "across any of"
-	cont "these legendary"
-	cont "#MON?"
+	para "Et toi, <PLAYER>?"
+	line "T'es tombé sur"
+	cont "un de ces #MON"
+	cont "légendaires?"
 	prompt
 
 
-_OaksLabRivalSeenNoBirdText:: ; TODO marcelnote - postgame Rival event
-	text "No? That's what"
-	line "I figured."
+_OaksLabRivalSeenNoBirdText:: ; marcelnote - postgame Rival event
+	text "Non? Je m'en"
+	line "doutais."
 
-	para "They're probably"
-	line "just stories for"
-	cont "kids."
+	para "C'est sûrement des"
+	line "contes pour"
+	cont "minables."
 	done
 
 ; marcelnote - there must be a smarter way to define these text variants
 ;              by making use of string buffers like wcd6d (stores names) and wStringBuffer
-_OaksLabRivalSeenArticunoText:: ; TODO marcelnote - postgame Rival event
-	text "So you've seen"
-	line "ARTICUNO, huh."
+_OaksLabRivalSeenArticunoText:: ; marcelnote - postgame Rival event
+	text "Alors t'as vu"
+	line "ARTIKODIN, hein."
 
-	para "Maybe the stories"
-	line "are true after"
-	cont "all..."
+	para "Peut-être que pépé"
+	line "dit vrai, après"
+	cont "tout..."
 	done
 
-_OaksLabRivalSeenZapdosText:: ; TODO marcelnote - postgame Rival event
-	text "So you've seen"
-	line "ZAPDOS, huh."
+_OaksLabRivalSeenZapdosText:: ; marcelnote - postgame Rival event
+	text "Alors t'as vu"
+	line "ELECTHOR, hein."
 
-	para "Maybe the stories"
-	line "are true after"
-	cont "all..."
+	para "Peut-être que pépé"
+	line "dit vrai, après"
+	cont "tout..."
 	done
 
-_OaksLabRivalSeenMoltresText:: ; TODO marcelnote - postgame Rival event
-	text "So you've seen"
-	line "MOLTRES, huh."
+_OaksLabRivalSeenMoltresText:: ; marcelnote - postgame Rival event
+	text "Alors t'as vu"
+	line "SULFURA, hein."
 
-	para "Maybe the stories"
-	line "are true after"
-	cont "all..."
+	para "Peut-être que pépé"
+	line "dit vrai, après"
+	cont "tout..."
 	done
 
-_OaksLabRivalSeenArticunoZapdosText:: ; TODO marcelnote - postgame Rival event
-	text "What? You've seen"
-	line "both ARTICUNO"
-	cont "and ZAPDOS?"
+_OaksLabRivalSeenArticunoZapdosText:: ; marcelnote - postgame Rival event
+	text "Quoi? T'as vu"
+	line "ARTIKODIN et"
+	cont "ELECTHOR?"
 
-	para "Could MOLTRES"
-	line "actually be real,"
-	cont "as well?"
+	para "Alors... SULFURA"
+	line "existe-t-il"
+	cont "lui aussi?"
 	done
 
-_OaksLabRivalSeenArticunoMoltresText:: ; TODO marcelnote - postgame Rival event
-	text "What? You've seen"
-	line "both ARTICUNO"
-	cont "and MOLTRES?"
+_OaksLabRivalSeenArticunoMoltresText:: ; marcelnote - postgame Rival event
+	text "Quoi? T'as vu"
+	line "ARTIKODIN et"
+	cont "SULFURA?"
 
-	para "Could ZAPDOS"
-	line "actually be real,"
-	cont "as well?"
+	para "Alors... ELECTHOR"
+	line "existe-t-il"
+	cont "lui aussi?"
 	done
 
-_OaksLabRivalSeenZapdosMoltresText:: ; TODO marcelnote - postgame Rival event
-	text "What? You've seen"
-	line "both ZAPDOS"
-	cont "and MOLTRES?"
+_OaksLabRivalSeenZapdosMoltresText:: ; marcelnote - postgame Rival event
+	text "Quoi? T'as vu"
+	line "ELECTHOR et"
+	cont "SULFURA?"
 
-	para "Could ARTICUNO"
-	line "actually be real,"
-	cont "as well?"
+	para "Alors... ARTIKODIN"
+	line "existe-t-il"
+	cont "lui aussi?"
 	done
 
-_OaksLabRivalSeenAllBirdsText:: ; TODO marcelnote - postgame Rival event
-	text "Whoa, have you"
-	line "really seen all"
-	cont "three legendary"
-	cont "birds?"
+_OaksLabRivalSeenAllBirdsText:: ; marcelnote - postgame Rival event
+	text "Hein, t'as vu"
+	line "les trois oiseaux"
+	cont "légendaires?"
 
-	para "ARTICUNO, ZAPDOS,"
-	line "and MOLTRES..."
-	cont "Unbelievable!"
+	para "ARTIKODIN,"
+	line "ELECTHOR et"
+	cont "SULFURA..."
+	cont "Incroyable!"
 
-	para "You really are"
-	line "something else,"
+	para "T'es vraiment un"
+	line "sacré dresseur," ; gendered text
 	cont "<PLAYER>!"
 	done
 
-_OaksLabRivalBackToIndigoText:: ; TODO marcelnote - postgame Rival event
-	text "Alright, I'm off"
-	line "to train at the"
-	cont "INDIGO PLATEAU."
+_OaksLabRivalBackToIndigoText:: ; marcelnote - postgame Rival event
+	text "Bon, je retourne"
+	line "m'entraîner au"
+	cont "PLATEAU INDIGO."
 
-	para "Oh, did you hear?"
-	line "GIOVANNI was"
-	cont "secretly the head"
-	cont "of TEAM ROCKET!"
+	para "Eh, devine quoi!"
+	line "GIOVANNI était"
+	cont "le chef caché de"
+	cont "la TEAM ROCKET!"
 
-	para "With him gone,"
-	line "VIRIDIAN will"
-	cont "need a new"
-	cont "GYM LEADER."
+	para "Maintenant qu'il a"
+	line "disparu, JADIELLE"
+	cont "aura besoin"
+	cont "d'un nouveau"
+	cont "CHAMPION d'ARENE."
 
-	para "Think it over,"
+	para "Réfléchis-y,"
 	line "<PLAYER>!"
-	cont "A steady gig as"
-	cont "VIRIDIAN's GYM"
-	cont "LEADER sounds"
-	cont "like your style!"
+	cont "Un poste peinard"
+	cont "dans une ARENE,"
+	cont "ça t'irait bien!"
 
-	para "<PLAYER>! Gramps!"
-	line "Smell you later!"
+	para "<PLAYER>! Pépé!"
+	line "A plus tard!"
 	done

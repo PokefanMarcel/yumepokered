@@ -91,75 +91,58 @@ _ChampionsRoomRivalAfterBattleText::
 	done
 
 
-_ChampionsRoomRivalRematchIntroText:: ; TODO marcelnote - new text for rematches
-	text "<RIVAL>: Hey,"
+_ChampionsRoomRivalRematchIntroText:: ; marcelnote - new text for rematches
+	text "<RIVAL>: Yo,"
 	line "<PLAYER>!"
 
-	para "I've looked forward"
-	line "to our rematch."
+	para "J'attendais l'heure"
+	line "de ma revanche."
 
-	para "After facing"
-	line "challengers here,"
-	cont "my team is now"
-	cont "prepared for"
-	cont "any strategy."
+	para "A force d'affronter"
+	line "les meilleurs,"
+	cont "mon équipe est"
+	cont "parée contre"
+	cont "toute stratégie."
 
-	para "Think you still"
-	line "have what it"
-	cont "takes to be"
-	cont "champion?"
+	para "Tu crois encore"
+	line "être à la hauteur"
+	line "du titre de"
+	cont "CHAMPION?" ; gendered text
 
-	para "My comeback will"
-	line "be epic!"
+	para "Mon retour va"
+	line "être épique!"
 	done
 
-	;para "Back for another"
-	;line "challenge, huh?"
-
-	;para "I'm warning you,"
-	;line "my #MON have"
-	;cont "become a lot"
-	;cont "stronger since"
-	;cont "our last battle."
-
-	;para "Let's see if you"
-	;line "still have what"
-	;cont "it takes!"
-
-_RivalRematchDefeatedText:: ; TODO marcelnote - new text for rematches
-	text "No!"
-	line "How can you win"
-	cont "again?"
-
-	para "I trained my"
-	line "#MON to"
-	cont "perfection..."
+_RivalRematchDefeatedText:: ; marcelnote - new text for rematches
+	text "NON!"
+	line "Tu gagnes encore?"
+	cont "Mais comment?"
 	prompt
 
-_RivalRematchVictoryText:: ; TODO marcelnote - new text for rematches
+_RivalRematchVictoryText:: ; marcelnote - new text for rematches
 	text "Hahaha!"
 
-	para "I won, I won!"
-	line "Looks like"
-	cont "I finally got the"
-	cont "better of you,"
-	cont "<PLAYER>!"
+	para "J'ai gagné,"
+	line "j'ai gagné!"
+	cont "Tu restes un"
+	cont "minable malgré"
+	cont "tout, minable!"
 	prompt
 
-_ChampionsRoomRivalRematchAfterBattleText:: ; TODO marcelnote - new text for rematches
-	text "I'm starting to"
-	line "understand what"
-	cont "gramps meant."
+_ChampionsRoomRivalRematchAfterBattleText:: ; marcelnote - new text for rematches
+	text "Je commence à"
+	line "comprendre ce que"
+	cont "disait pépé."
 
-	para "The bond you"
-	line "share with"
-	cont "your #MON,"
+	para "Ce lien que tu"
+	line "partages avec tes"
+	cont "tes #MON,"
 	cont "<PLAYER>..."
-	cont "It's something"
-	cont "special."
+	cont "C'est vraiment"
+	cont "quelque chose"
+	cont "de spécial."
 
-	para "Come on,"
-	line "follow me."
+	para "Allez, suis-moi."
 	done
 
 _ChampionsRoomOakText::

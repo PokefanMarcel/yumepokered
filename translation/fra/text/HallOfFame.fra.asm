@@ -28,13 +28,14 @@ _HallOfFameOakText::
 	cont "tous célèbres!"
 	done
 
-_HallOfFameRivalText:: ; TODO marcelnote - new text for E4 rematches
-	text "<RIVAL>: Well,"
-	line "you know how"
-	cont "this works."
+_HallOfFameRivalText:: ; marcelnote - new text for E4 rematches
+	text "<RIVAL>: Bon,"
+	line "tu sais comment"
+	cont "ça fonctionne."
 
-	para "Time to register"
-	line "your #MON in"
-	cont "the HALL OF FAME,"
+	para "C'est le moment"
+	line "d'enregistrer tes"
+	cont "#MON en tant"
+	cont "que CELEBRITES,"
 	cont "<PLAYER>!"
 	done

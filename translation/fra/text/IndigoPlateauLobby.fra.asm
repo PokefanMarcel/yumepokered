@@ -1,5 +1,5 @@
 _IndigoPlateauLobbyGymGuideText::
-	text "Salut! Champion"
+	text "Salut! Champion" ; gendered text
 	line "en herbe!"
 
 	para "Tu vas devoir"
@@ -14,93 +14,79 @@ _IndigoPlateauLobbyGymGuideText::
 	cont "honte, et ensuite"
 	cont "tu devras tout"
 	cont "recommencer!"
-	;cont "Alors fais bien"
-	;cont "attention et..."
+	cont "Alors fais bien"
+	cont "attention et..."
 	cont "Ecrase-les!"
 	done
 
-_IndigoPlateauLobbyCooltrainerFBeforeChampionText:: ; TODO marcelnote - modified label
-	text "From here on, you"
-	line "face the ELITE"
-	cont "FOUR one by one!"
+_IndigoPlateauLobbyCooltrainerFBeforeChampionText:: ; marcelnote - modified label
+	text "A partir d'ici,"
+	line "tu affronteras"
+	cont "les quatre"
+	cont "membres du...."
+	cont "CONSEIL des 4!"
 
-	para "If you win, a"
-	line "door opens to the"
-	cont "next trainer!"
-	;cont "Good luck!"
+	para "Remporte la"
+	line "victoire et une"
+	cont "porte s'ouvrira"
+	cont "vers le prochain"
+	cont "dresseur. Bonne"
+	cont "chance, petit!" ; gendered text
 	done
 
-_IndigoPlateauLobbyCooltrainerFEliteFourAwayText:: ; TODO marcelnote - new text
-	text "The ELITE FOUR"
-	line "are currently"
-	cont "away on duty."
+_IndigoPlateauLobbyCooltrainerFEliteFourAwayText:: ; marcelnote - new text
+	text "Les dresseurs du"
+	line "CONSEIL des 4"
+	cont "sont absents."
 
-	para "You can challenge"
-	line "them again when"
-	cont "they return."
+	para "Tu pourras les"
+	line "défier de nouveau"
+	cont "à leur retour."
 	done
 
-_IndigoPlateauLobbyCooltrainerFAfterChampionText:: ; TODO marcelnote - new text
-	text "Welcome, champ!"
-	line "The ELITE FOUR"
-	cont "are back and rea-"
-	cont "dy for a rematch!"
+_IndigoPlateauLobbyCooltrainerFAfterChampionText:: ; marcelnote - new text
+	text "Bienvenue,"
+	line "champion!" ; gendered text
+	cont "Le CONSEIL des 4"
+	cont "est prêt pour"
+	cont "une revanche!"
 	done
 
-_IndigoPlateauLobbyRivalText:: ; TODO marcelnote - new text
+_IndigoPlateauLobbyRivalText:: ; marcelnote - new text
 	text "<RIVAL>: Yo,"
 	line "<PLAYER>!"
 
-	para "Ready to take"
-	line "your seat as the"
-	cont "#MON LEAGUE"
-	cont "champion?"
+	para "Prêt à prendre" ; gendered text
+	line "ta place de"
+	cont "CHAMPION de la" ; gendered text
+	cont "LIGUE #MON?"
 
-	para "No?"
+	para "Hein?"
 	line "..."
-	cont "Wait, what?"
+	cont "Comment ça, non?"
 
-	;para "But as champion,"
-	;line "you must defend"
-	;cont "your rank against"
-	;cont "challengers!"
-	para "But it is the"
-	line "champion's job"
-	cont "to take on any"
-	cont "#MON LEAGUE"
-	cont "challenger!"
-	;cont "anyone who bests"
-	;cont "the ELITE FOUR!"
+	para "Mais le CHAMPION" ; gendered text
+	line "doit affronter"
+	cont "quiconque défie"
+	cont "la LIGUE #MON!"
 
-	;para "Really? You think"
-	;line "I should hold the"
-	;cont "champion's seat"
-	;cont "for now?"
+	para "Vraiment? Moi?"
+	line "OK, <PLAYER>."
+	cont "Si tu insistes,"
+	cont "je m'en occuperai"
+	cont "pour l'instant."
 
-	;para "Seriously? Me?"
-	;line "Okay, <PLAYER>."
-	;cont "If that's what"
-	;cont "you want,"
-	;cont "I'll keep the seat"
-	;cont "while you're away."
-	;cont "I'll hold onto the"
-	;cont "champion's seat"
-	;cont "for now."
-	;cont "I'll stay as the"
-	;cont "acting champion"
-	;cont "while you're away."
+	para "En affrontant les"
+	line "meilleurs je"
+	cont "deviendrai plus"
+	cont "fort, et dès que"
+	cont "tu reviendras..."
 
-	;para "Facing the best"
-	;line "trainers will"
-	;cont "help me learn"
-	;cont "how to beat you!"
+	para "Je te reprendrai"
+	line "mon titre!"
 
-	para "I'll wait for"
-	line "our rematch and"
-	cont "the chance to win"
-	cont "my title back!"
-
-	;para "Smell ya in the"
-	;line "champion's room,"
-	;cont "<PLAYER>!"
+	para "A plus tard"
+	line "dans la salle"
+	cont "du CHAMPION,"
+	cont "<PLAYER>!"
 	done
