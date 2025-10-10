@@ -934,6 +934,7 @@ wDownscaledMonSize::
 ; FormatMovesString stores the number of moves minus one here
 wNumMovesMinusOne:: db
 
+; This union spans 20 bytes.
 UNION
 ; storage buffer for various name strings
 wNameBuffer:: ds NAME_BUFFER_LENGTH
@@ -949,7 +950,8 @@ wPayDayMoney:: ds 3
 
 NEXTU
 ; evolution data for one mon
-wEvoDataBuffer:: ds 4 * 3 + 1 ; enough for Eevee's three 4-byte evolutions and 0 terminator
+wEvoDataBuffer:: ds NUM_EVOS_IN_BUFFER * 4 + 1 ; enough for Eevee's three 4-byte evolutions and 0 terminator
+wEvoDataBufferEnd::
 
 NEXTU
 wBattleMenuCurrentPP:: db
@@ -1112,7 +1114,7 @@ wPartyMenuBlkPacket:: ds $30
 NEXTU
 	ds 29
 ; storage buffer for various strings
-wStringBuffer:: ds 20
+wStringBuffer:: ds NAME_BUFFER_LENGTH
 
 NEXTU
 	ds 29
@@ -1254,7 +1256,7 @@ wTrainerPicBank:: db ; marcelnote - added for picture bank
 wTrainerBaseMoney:: dw ; BCD
 
 UNION
-wTempMoveNameBuffer:: ds 14
+wTempMoveNameBuffer:: ds ITEM_NAME_LENGTH + 1
 
 NEXTU
 ; The name of the mon that is learning a move.
@@ -2219,12 +2221,12 @@ wEventFlags:: flag_array NUM_EVENTS
 
 UNION
 wGrassRate:: db
-wGrassMons:: ds 10 * 2
+wGrassMons:: ds WILDDATA_LENGTH - 1
 
 ;	ds 8
 
 wWaterRate:: db
-wWaterMons:: ds 10 * 2
+wWaterMons:: ds WILDDATA_LENGTH - 1
 
 NEXTU
 ; linked game's trainer name
