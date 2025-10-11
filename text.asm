@@ -504,10 +504,9 @@ IF DEF(_FRA)
 	INCLUDE "translation/fra/text/CeladonGrove.fra.asm"             ; marcelnote - new location
 	INCLUDE "translation/fra/text/CeladonGroveSouthGate.fra.asm"    ; marcelnote - new location
 	INCLUDE "translation/fra/text/CeladonGroveNorthGate.fra.asm"    ; marcelnote - new location
-;	INCLUDE "translation/fra/text/FuchsiaMoveDeleterHouse.fra.asm"  ; TODO marcelnote - new location
+	INCLUDE "translation/fra/text/FuchsiaMoveDeleterHouse.fra.asm"  ; marcelnote - new location
 ;	INCLUDE "translation/fra/text/MtSilver3F.fra.asm"               ; TODO marcelnote - new location
 	INCLUDE "translation/fra/text/SummerBeachHouse.fra.asm"         ; marcelnote - new location from pokeyellow
-	INCLUDE "text/FuchsiaMoveDeleterHouse.asm"  ; marcelnote - new location
 	INCLUDE "text/MtSilver3F.asm"               ; marcelnote - new location
 ELSE
 	INCLUDE "text/PokemonAcademy1F2F.asm"       ; marcelnote - new location
