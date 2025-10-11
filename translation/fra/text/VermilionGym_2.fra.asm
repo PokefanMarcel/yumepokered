@@ -1,6 +1,6 @@
 _VermilionGymLTSurgePostBattleAdviceText::
 	text "Un p'tit conseil,"
-	line "gamin!"
+	line "gamin!" ; gendered text
 
 	para "L'électricité est"
 	line "très puissante!"
@@ -22,7 +22,7 @@ _VermilionGymLTSurgeThunderBadgeInfoText::
 	cont "de VOLER!"
 
 	para "Tu es un bon, mon"
-	line "p'tit gars!"
+	line "p'tit gars!" ; gendered text
 	cont "Prends ça!"
 	done
 
@@ -45,7 +45,7 @@ _TM24ExplanationText::
 
 _VermilionGymLTSurgeTM24NoRoomText::
 	text "Revue d'paquetage"
-	line "p'tit gars, ton"
+	line "p'tit gars, ton" ; gendered text
 	cont "inventaire est"
 	cont "plein!"
 	done
@@ -54,7 +54,7 @@ _VermilionGymLTSurgeReceivedThunderBadgeText::
 	text "Whoo!"
 
 	para "Gard'vous! T'es"
-	line "un dur, mon p'tit"
+	line "un dur, mon p'tit" ; gendered text
 	cont "gars!"
 
 	para "Très bien, prends"
@@ -70,7 +70,7 @@ _VermilionGymGentlemanBattleText::
 
 _VermilionGymGentlemanEndBattleText::
 	text "Stop!"
-	line "Tu es fort!"
+	line "Tu es fort!" ; gendered text
 	prompt
 
 _VermilionGymGentlemanAfterBattleText::
@@ -106,7 +106,7 @@ _VermilionGymSuperNerdAfterBattleText::
 _VermilionGymSailorBattleText::
 	text "C'est pas un"
 	line "endroit pour les"
-	cont "gamins, ici!"
+	cont "gamins, ici!" ; gendered text
 	done
 
 _VermilionGymSailorEndBattleText::
@@ -126,7 +126,7 @@ _VermilionGymSailorAfterBattleText::
 	done
 
 _VermilionGymGymGuideChampInMakingText::
-	text "Salut! Champion"
+	text "Salut! Champion" ; gendered text
 	line "en herbe!"
 
 	para "Le MAJOR BOB a"
@@ -163,27 +163,27 @@ _VermilionGymGymGuideBeatLTSurgeText::
 	done
 
 
+_VermilionGymLTSurgeRematchPreBattleText:: ; marcelnote - Lt.Surge rematch
+	text "Ravi de te"
+	line "revoir, <PLAYER>."
 
-_VermilionGymLTSurgeRematchPreBattleText:: ; TODO marcelnote - Lt.Surge rematch
-	text "Welcome back,"
-	line "<PLAYER>."
+	para "Que dirais-tu d'une"
+	line "revanche amicale?"
 
-	para "How about a"
-	line "friendly rematch?"
-
-	para "I won't hold back"
-	line "this time."
+	para "Cette fois,"
+	line "je ne te ferai"
+	cont "pas de cadeau."
 	done
 
-_VermilionGymLTSurgeRematchRefusedBattleText:: ; TODO marcelnote - Lt.Surge rematch
-	text "Very well. Come"
-	line "back anytime."
+_VermilionGymLTSurgeRematchRefusedBattleText:: ; marcelnote - Lt.Surge rematch
+	text "Très bien. Reviens"
+	line "quand tu veux."
 	done
 
-_VermilionGymLTSurgeRematchAcceptBattleText:: ; TODO marcelnote - Lt.Surge rematch
-	text "Ten-hut! Get"
-	line "ready to amp it"
-	cont "up, kid!"
+_VermilionGymLTSurgeRematchAcceptBattleText:: ; marcelnote - Lt.Surge rematch
+	text "Garde-à-vous!"
+	line "On passe en haute"
+	cont "tension, gamin!" ; gendered text
 	done
 
 _VermilionGymLTSurgeRematchDefeatedText:: ; TODO marcelnote - Lt.Surge rematch
@@ -191,10 +191,10 @@ _VermilionGymLTSurgeRematchDefeatedText:: ; TODO marcelnote - Lt.Surge rematch
 	line "lutely shocking!" ; text from Let's Go Pikachu
 	prompt
 
-_VermilionGymAfterRematchText:: ; TODO marcelnote - Lt.Surge rematch
-	text "I'm all out of"
-	line "juice, kid."
+_VermilionGymAfterRematchText:: ; marcelnote - Lt.Surge rematch
+	text "J'ai plus de jus,"
+	line "gamin." ; gendered text
 
-	para "Let's do this"
-	line "again soon!"
+	para "Refaisons ça"
+	line "bientôt!"
 	done
