@@ -202,8 +202,8 @@ _PokemonAcademy3FStatExpUseText::
 	text "Plus son EXP.Stat"
 	line "est élevée, plus"
 	cont "les stats de ton"
-	cont "#MON grimperont"
-	cont "quand il gagnera"
+	cont "#MON montent"
+	cont "quand il gagne"
 	cont "un niveau."
 
 	para "Un #MON capturé"
@@ -226,8 +226,8 @@ _PokemonAcademy3FStatExpMaxText::
 	line "max, les #MON"
 	cont "gagnent encore"
 	cont "de l'EXP.Stat et"
-	cont "continuent à dev-"
-	cont "enir plus forts."
+	cont "continuent à de-"
+	cont "venir plus forts."
 
 	para "Dépose un #MON"
 	line "dans une BOITE PC"
@@ -237,10 +237,10 @@ _PokemonAcademy3FStatExpMaxText::
 
 	para "Les accélérateurs"
 	line "comme le CARBONE"
-	line "ou le FER peuvent"
+	cont "ou le FER peuvent"
 	cont "aussi augmenter"
-	cont "l'EXP.Stat"
-	cont "des #MON.@"
+	cont "l'EXP.Stat des"
+	cont "#MON.@"
 	text_waitbutton
 	text_end
 
@@ -284,7 +284,7 @@ _PokemonAcademy3FDVsExplanationText::
 
 	para "Valeurs"
 	line "déterminantes,"
-	line "ou juste VDs."
+	cont "ou juste VDs."
 
 	para "En raison de ce"
 	line "potentiel unique,"
