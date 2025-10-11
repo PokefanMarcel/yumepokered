@@ -291,7 +291,6 @@ ENDC
 SECTION "Text 7", ROMX
 
 IF DEF(_FRA)
-	INCLUDE "translation/fra/text/PewterGym_2.fra.asm"
 	INCLUDE "translation/fra/text/PewterNidoranHouse.fra.asm"
 	INCLUDE "translation/fra/text/PewterSpeechHouse.fra.asm"
 	INCLUDE "translation/fra/text/PewterPokecenterMart.fra.asm"   ; marcelnote - merged Pewter Pokecenter and Mart
@@ -316,7 +315,6 @@ IF DEF(_FRA)
 	INCLUDE "translation/fra/text/PokemonFanClub.fra.asm"
 	INCLUDE "translation/fra/text/VermilionGym.fra.asm"
 ELSE
-	INCLUDE "text/PewterGym_2.asm"
 	INCLUDE "text/PewterNidoranHouse.asm"
 	INCLUDE "text/PewterSpeechHouse.asm"
 	INCLUDE "text/PewterPokecenterMart.asm"   ; marcelnote - merged Pewter Pokecenter and Mart
