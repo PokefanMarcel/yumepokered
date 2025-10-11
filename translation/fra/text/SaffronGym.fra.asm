@@ -345,38 +345,39 @@ _SaffronGymBrunoInspiringText:: ; marcelnote - postgame Bruno
 	cont "on se reverra!"
 	done
 
-_SaffronGymSabrinaRematchPreBattleText:: ; TODO marcelnote - Sabrina rematch
-	text "Welcome back,"
-	line "<PLAYER>."
+_SaffronGymSabrinaRematchPreBattleText:: ; marcelnote - Sabrina rematch
+	text "Ravie de te"
+	line "revoir, <PLAYER>."
 
-	para "How about a"
-	line "friendly rematch?"
+	para "Que dirais-tu d'une"
+	line "revanche amicale?"
 
-	para "I won't hold back"
-	line "this time."
+	para "Cette fois,"
+	line "je ne te ferai"
+	cont "pas de cadeau."
 	done
 
-_SaffronGymSabrinaRematchRefusedBattleText:: ; TODO marcelnote - Sabrina rematch
-	text "Very well. Come"
-	line "back anytime."
+_SaffronGymSabrinaRematchRefusedBattleText:: ; marcelnote - Sabrina rematch
+	text "Très bien. Reviens"
+	line "quand tu veux."
 	done
 
-_SaffronGymSabrinaRematchAcceptBattleText:: ; TODO marcelnote - Sabrina rematch
-	text "I foresaw our"
-	line "battle. Let's find"
-	cont "out together"
-	cont "who will prevail."
+_SaffronGymSabrinaRematchAcceptBattleText:: ; marcelnote - Sabrina rematch
+	text "J'avais prédit"
+	line "notre combat."
+	cont "Voyons ensemble"
+	cont "qui va l'emporter."
 	done
 
-_SaffronGymSabrinaRematchDefeatedText:: ; TODO marcelnote - Sabrina rematch
-	text "I'm no"
-	line "longer surprised."
+_SaffronGymSabrinaRematchDefeatedText:: ; marcelnote - Sabrina rematch
+	text "Plus rien"
+	line "de surprenant."
 	prompt
 
-_SaffronGymAfterRematchText:: ; TODO marcelnote - Sabrina rematch
-	text "Your free spirit"
-	line "inspires me."
+_SaffronGymAfterRematchText:: ; marcelnote - Sabrina rematch
+	text "Ta soif d'aventure"
+	line "m'inspire."
 
-	para "Let's do this"
-	line "again soon!"
+	para "Refaisons ça"
+	line "bientôt!"
 	done
