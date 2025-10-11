@@ -344,7 +344,6 @@ ENDC
 SECTION "Text 8", ROMX
 
 IF DEF(_FRA)
-	INCLUDE "translation/fra/text/VermilionGym_2.fra.asm"
 	INCLUDE "translation/fra/text/VermilionPidgeyHouse.fra.asm"
 	INCLUDE "translation/fra/text/VermilionDock.fra.asm"
 	INCLUDE "translation/fra/text/VermilionGoodRodHouse.fra.asm" ; marcelnote - from Old to Good Rod
@@ -367,7 +366,6 @@ IF DEF(_FRA)
 	INCLUDE "translation/fra/text/SafariZoneGate.fra.asm"
 	INCLUDE "translation/fra/text/FuchsiaGym.fra.asm"
 ELSE
-	INCLUDE "text/VermilionGym_2.asm"
 	INCLUDE "text/VermilionPidgeyHouse.asm"
 	INCLUDE "text/VermilionDock.asm"
 	INCLUDE "text/VermilionGoodRodHouse.asm" ; marcelnote - from Old to Good Rod
