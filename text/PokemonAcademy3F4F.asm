@@ -375,11 +375,11 @@ _PokemonAcademy3FBeautyText::
 	cont "bug move called"
 	cont "RAZOR WIND."
 
-    para "It's not quite"
-    line "as powerful as"
-    cont "HYPER BEAM, but"
-    cont "it seems to have"
-    cont "a similar effect!"
+	para "It's not quite"
+	line "as powerful as"
+	cont "HYPER BEAM, but"
+	cont "it seems to have"
+	cont "a similar effect!"
 	done
 
 _PokemonAcademy3FHyperBeamIntroText::
