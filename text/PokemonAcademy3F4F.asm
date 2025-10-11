@@ -423,10 +423,10 @@ _PokemonAcademy4FGameboyKid2Text::
 	cont "only evolve"
 	cont "by trading."
 
-    para "But the dean's"
-    line "secret project"
-    cont "seems to trigger"
-    cont "its evolution..."
+	para "But the dean's"
+	line "secret project"
+	cont "seems to trigger"
+	cont "its evolution..."
 	done
 
 _PokemonAcademy4FGrannyIntroText::
