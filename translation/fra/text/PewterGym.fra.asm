@@ -173,27 +173,27 @@ _PewterGymGuidePostBattleText::
 	done
 
 
+_PewterGymBrockRematchPreBattleText:: ; marcelnote - Brock rematch
+	text "Ravi de te"
+	line "revoir, <PLAYER>."
 
-_PewterGymBrockRematchPreBattleText:: ; TODO marcelnote - Brock rematch
-	text "Welcome back,"
-	line "<PLAYER>."
+	para "Que dirais-tu d'une"
+	line "revanche amicale?"
 
-	para "How about a"
-	line "friendly rematch?"
-
-	para "I won't hold back"
-	line "this time."
+	para "Cette fois,"
+	line "je ne te ferai"
+	cont "pas de cadeau."
 	done
 
-_PewterGymBrockRematchRefusedBattleText:: ; TODO marcelnote - Brock rematch
-	text "Very well. Come"
-	line "back anytime."
+_PewterGymBrockRematchRefusedBattleText:: ; marcelnote - Brock rematch
+	text "Très bien. Reviens"
+	line "quand tu veux."
 	done
 
-_PewterGymBrockRematchAcceptBattleText:: ; TODO marcelnote - Brock rematch
-	text "My rock #MON"
-	line "are ready! Show"
-	cont "us your best!"
+_PewterGymBrockRematchAcceptBattleText:: ; marcelnote - Brock rematch
+	text "Mes #MON roche"
+	line "sont prêts! Donne"
+	cont "tout ce que t'as!"
 	done
 
 _PewterGymBrockRematchDefeatedText:: ; TODO marcelnote - Brock rematch
@@ -202,11 +202,11 @@ _PewterGymBrockRematchDefeatedText:: ; TODO marcelnote - Brock rematch
 	cont "but this..." ; text from Let's Go Pikachu
 	prompt
 
-_PewterGymAfterRematchText:: ; TODO marcelnote - Brock rematch
-	text "That was tough!"
-	line "ONIX and I need"
-	cont "a rest now."
+_PewterGymAfterRematchText:: ; marcelnote - Brock rematch
+	text "C'était ardu!"
+	line "ONIX et moi avons"
+	cont "besoin de repos."
 
-	para "Let's do this"
-	line "again soon!"
+	para "Refaisons ça"
+	line "bientôt!"
 	done
