@@ -139,9 +139,9 @@ _CeladonCityTrainerTips2Text::
 	para "GUARD SPEC." ; marcelnote - corrected text
 	line "protects #MON"
 	cont "against stats-"
-	cont "lowering attacks"
+	cont "lowering moves"
 	cont "such as GROWL"
-	cont "or SAND ATTACK!"
+	cont "or SAND-ATTACK!"
 
 	para "Get your items at"
 	line "CELADON DEPT."
