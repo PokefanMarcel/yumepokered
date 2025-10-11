@@ -130,11 +130,18 @@ _CeladonCityDeptStoreSignText::
 _CeladonCityTrainerTips2Text::
 	text "TRAINER TIPS"
 
-	para "GUARD SPEC."
+;	para "GUARD SPEC."
+;	line "protects #MON"
+;	cont "against SPECIAL"
+;	cont "attacks such as"
+;	cont "fire and water!"
+
+	para "GUARD SPEC." ; marcelnote - corrected text
 	line "protects #MON"
-	cont "against SPECIAL"
-	cont "attacks such as"
-	cont "fire and water!"
+	cont "against stats-"
+	cont "lowering attacks"
+	cont "such as GROWL"
+	cont "or SAND ATTACK!"
 
 	para "Get your items at"
 	line "CELADON DEPT."

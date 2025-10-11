@@ -136,12 +136,20 @@ _CeladonCityDeptStoreSignText::
 _CeladonCityTrainerTips2Text::
 	text "ASTUCE"
 
-	para "DEFENSE SPEC"
+;	para "DEFENSE SPEC"
+;	line "protège les"
+;	cont "#MON des atta-"
+;	cont "ques SPECIALES"
+;	cont "telles que le feu"
+;	cont "ou l'eau!"
+
+	para "DEFENSE SPEC" ; marcelnote - corrected text
 	line "protège les"
 	cont "#MON des atta-"
-	cont "ques SPECIALES"
-	cont "telles que le feu"
-	cont "ou l'eau!"
+	cont "ques qui font"
+	cont "baisser les stats"
+	cont "comme RUGISSEMENT"
+	cont "ou JET DE SABLE!"
 
 	para "Y'a tout c'qui"
 	line "t'faut au CENTRE"
