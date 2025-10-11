@@ -195,37 +195,39 @@ _FuchsiaGymGymGuideBeatKogaText::
 	done
 
 
-_FuchsiaGymKogaRematchPreBattleText:: ; TODO: marcelnote - Koga rematch
-	text "Welcome back,"
-	line "<PLAYER>."
+_FuchsiaGymKogaRematchPreBattleText:: ; marcelnote - Koga rematch
+	text "Ravi de te"
+	line "revoir, <PLAYER>."
 
-	para "How about a"
-	line "friendly rematch?"
+	para "Que dirais-tu d'une"
+	line "revanche amicale?"
 
-	para "I won't hold back"
-	line "this time."
+	para "Cette fois,"
+	line "je ne te ferai"
+	cont "pas de cadeau."
 	done
 
-_FuchsiaGymKogaRematchRefusedBattleText:: ; TODO: marcelnote - Koga rematch
-	text "Very well. Come"
-	line "back anytime."
+_FuchsiaGymKogaRematchRefusedBattleText:: ; marcelnote - Koga rematch
+	text "Très bien. Reviens"
+	line "quand tu veux."
 	done
 
-_FuchsiaGymKogaRematchAcceptBattleText:: ; TODO: marcelnote - Koga rematch
-	text "Fwahahaha! Face"
-	line "my new ninja"
-	cont "techniques!"
+_FuchsiaGymKogaRematchAcceptBattleText:: ; marcelnote - Koga rematch
+	text "Gwahahaha! Goûte"
+	line "à mes nouvelles"
+	cont "techniques ninja!"
 	done
 
-_FuchsiaGymKogaRematchDefeatedText:: ; TODO: marcelnote - Koga rematch
+_FuchsiaGymKogaRematchDefeatedText:: ; TODO marcelnote - Koga rematch
 	text "I must keep"
-	line "honing my skills." ; TODO: from Let's Go Pikachu
+	line "honing my skills." ; from Let's Go Pikachu
 	prompt
 
-_FuchsiaGymAfterRematchText:: ; TODO: marcelnote - Koga rematch
-	text "Perfecting my arts"
-	line "takes practice."
+_FuchsiaGymAfterRematchText:: ; marcelnote - Koga rematch
+	text "Parfaire mon art,"
+	line "ça demande de"
+	cont "la pratique."
 
-	para "Let's do this"
-	line "again soon!"
+	para "Refaisons ça"
+	line "bientôt!"
 	done
