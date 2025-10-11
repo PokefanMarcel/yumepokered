@@ -251,38 +251,40 @@ _CinnabarGymGymGuideBeatBlaineText::
 	done
 
 
-_CinnabarGymBlaineRematchPreBattleText:: ; TODO marcelnote - Blaine rematch
-	text "Welcome back,"
-	line "<PLAYER>."
+_CinnabarGymBlaineRematchPreBattleText:: ; marcelnote - Blaine rematch
+	text "Ravi de te"
+	line "revoir, <PLAYER>."
 
-	para "How about a"
-	line "friendly rematch?"
+	para "Que dirais-tu d'une"
+	line "revanche amicale?"
 
-	para "I won't hold back"
-	line "this time."
+	para "Cette fois,"
+	line "je ne te ferai"
+	cont "pas de cadeau."
 	done
 
-_CinnabarGymBlaineRematchRefusedBattleText:: ; TODO marcelnote - Blaine rematch
-	text "Very well. Come"
-	line "back anytime."
+_CinnabarGymBlaineRematchRefusedBattleText:: ; marcelnote - Blaine rematch
+	text "Très bien. Reviens"
+	line "quand tu veux."
 	done
 
-_CinnabarGymBlaineRematchAcceptBattleText:: ; TODO marcelnote - Blaine rematch
-	text "Careful, my"
-	line "#MON have been"
-	cont "burning for"
-	cont "this rematch!"
+_CinnabarGymBlaineRematchAcceptBattleText:: ; marcelnote - Blaine rematch
+	text "Attention, mes"
+	line "#MON brûlent"
+	cont "d'envie de prendre"
+	cont "leur revanche!"
 	done
 
 _CinnabarGymBlaineRematchDefeatedText:: ; TODO marcelnote - Blaine rematch
 	text "Hah!"
-	line "I'm all fired up!" ; TODO text from Let's Go Pikachu
+	line "I'm all fired up!" ; text from Let's Go Pikachu
 	prompt
 
-_CinnabarGymAfterRematchText:: ; TODO marcelnote - Blaine rematch
-	text "Time for a hot"
-	line "springs bath!"
+_CinnabarGymAfterRematchText:: ; marcelnote - Blaine rematch
+	text "Après ça, rien de"
+	line "tel qu'un bain aux"
+	cont "sources chaudes!"
 
-	para "Let's do this"
-	line "again soon!"
+	para "Refaisons ça"
+	line "bientôt!"
 	done
