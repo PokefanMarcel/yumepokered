@@ -144,38 +144,40 @@ _CeruleanGymGymGuideBeatMistyText::
 	cont "équipe!"
 	done
 
-_CeruleanGymMistyRematchPreBattleText:: ; TODO marcelnote - Misty rematch
-	text "Welcome back,"
-	line "<PLAYER>."
+_CeruleanGymMistyRematchPreBattleText:: ; marcelnote - Misty rematch
+	text "Ravie de te"
+	line "revoir, <PLAYER>."
 
-	para "How about a"
-	line "friendly rematch?"
+	para "Que dirais-tu d'une"
+	line "revanche amicale?"
 
-	para "I won't hold back"
-	line "this time."
+	para "Cette fois,"
+	line "je ne te ferai"
+	cont "pas de cadeau."
 	done
 
-_CeruleanGymMistyRematchRefusedBattleText:: ; TODO marcelnote - Misty rematch
-	text "Very well. Come"
-	line "back anytime."
+_CeruleanGymMistyRematchRefusedBattleText:: ; marcelnote - Misty rematch
+	text "Très bien. Reviens"
+	line "quand tu veux."
 	done
 
-_CeruleanGymMistyRematchAcceptBattleText:: ; TODO marcelnote - Misty rematch
-	text "Good! Let's see how"
-	line "the champ handles"
-	cont "my all-out style!"
+_CeruleanGymMistyRematchAcceptBattleText:: ; marcelnote - Misty rematch
+	text "Parfait! Voyons"
+	line "si tu peux gérer"
+	cont "ma stratégie!"
 	done ; The ultimate offense of Water-type Pokémon! I hope you're ready! (LGP)
 
 _CeruleanGymMistyRematchDefeatedText:: ; TODO marcelnote - Misty rematch
 	text "Hmph!"
-	line "How annoying!" ; text from Let's Go Pikachu
+	line "How annoying!" ; text from Let's Go Pikachu ; Quelle plaie
 	prompt
 
-_CeruleanGymAfterRematchText:: ; TODO marcelnote - Misty rematch
-	text "My #MON and I"
-	line "will take a swim"
-	cont "to cool off."
+_CeruleanGymAfterRematchText:: ; marcelnote - Misty rematch
+	text "Je vais piquer"
+	line "une tête avec mes"
+	cont "#MON pour"
+	cont "récupérer."
 
-	para "Let's do this"
-	line "again soon!"
+	para "Refaisons ça"
+	line "bientôt!"
 	done
