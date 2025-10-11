@@ -238,26 +238,27 @@ _CeladonGymAfterBattleText8::
 	cont "fois!"
 	done
 
-_CeladonGymErikaRematchPreBattleText:: ; TODO marcelnote - Erika rematch
-	text "Welcome back,"
-	line "<PLAYER>."
+_CeladonGymErikaRematchPreBattleText:: ; marcelnote - Erika rematch
+	text "Ravie de te"
+	line "revoir, <PLAYER>."
 
-	para "How about a"
-	line "friendly rematch?"
+	para "Que dirais-tu d'une"
+	line "revanche amicale?"
 
-	para "I won't hold back"
-	line "this time."
+	para "Cette fois,"
+	line "je ne te ferai"
+	cont "pas de cadeau."
 	done
 
-_CeladonGymErikaRematchRefusedBattleText:: ; TODO marcelnote - Erika rematch
-	text "Very well. Come"
-	line "back anytime."
+_CeladonGymErikaRematchRefusedBattleText:: ; marcelnote - Erika rematch
+	text "Très bien. Reviens"
+	line "quand tu veux."
 	done
 
-_CeladonGymErikaRematchAcceptBattleText:: ; TODO marcelnote - Erika rematch
-	text "Such a wonderful"
-	line "day for a battle."
-	cont "Shall we begin?"
+_CeladonGymErikaRematchAcceptBattleText:: ; marcelnote - Erika rematch
+	text "Quel temps idéal"
+	line "pour un combat."
+	cont "Allons-y?"
 	done
 
 _CeladonGymErikaRematchDefeatedText:: ; TODO marcelnote - Erika rematch
@@ -266,10 +267,11 @@ _CeladonGymErikaRematchDefeatedText:: ; TODO marcelnote - Erika rematch
 	cont "my loss..." ; from Let's Go Pikachu
 	prompt
 
-_CeladonGymAfterRematchText:: ; TODO marcelnote - Erika rematch
-	text "I must tend to"
-	line "my flowers now."
+_CeladonGymAfterRematchText:: ; marcelnote - Erika rematch
+	text "Je dois aller"
+	line "m'occuper de mes"
+	line "fleurs à présent."
 
-	para "Let's do this"
-	line "again soon!"
+	para "Refaisons ça"
+	line "bientôt!"
 	done
