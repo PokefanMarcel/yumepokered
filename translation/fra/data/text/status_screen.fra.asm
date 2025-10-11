@@ -22,10 +22,10 @@ StatusScreenStatsText:
 	db "STATS   @"
 
 StatusScreenDVsText:
-	db "DVS     @"
+	db "VDS     @"
 
 StatusScreenStatExpText:
-	db "STAT.EXP@"
+	db "EXP.STAT@"
 
 StatusScreenExpText:
 	db   "PTS EXP."

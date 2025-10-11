@@ -1,91 +1,92 @@
 ; marcelnote - new location
 _PokemonAcademy3FSignText::
-	text "2ème: CLASSE"
-	line "AVANCEE"
+	text "2ème: COURS"
+	line "EXPERT"
 	done
 
-_PokemonAcademy3FTeacherPresentationText:: ; TODO
-	text "This is the"
-	line "Senior class,"
-	cont "where we study"
-	cont "advanced topics"
-	cont "about #MON."
+_PokemonAcademy3FTeacherPresentationText::
+	text "Ici dans le cours"
+	line "expert, on aborde"
+	cont "des thèmes"
+	cont "avancés sur les"
+	cont "#MON."
 	prompt
 
-_PokemonAcademy3FTeacherComeBackAfterJuniorText:: ; TODO
-	text "You should come"
-	line "back after you"
-	cont "have passed the"
-	cont "Junior test."
+_PokemonAcademy3FTeacherComeBackAfterJuniorText::
+	text "Reviens plutôt"
+	line "quand tu auras"
+	cont "réussi le test"
+	cont "pour débutants."
 	done
 
-_PokemonAcademy3FTeacherTakeTestText:: ; TODO
-	text "Oh! I see you"
-	line "passed the"
-	cont "Junior test."
+_PokemonAcademy3FTeacherTakeTestText::
+	text "Oh! Tu as réussi"
+	line "le test pour"
+	cont "débutants!"
 
-	para "Ready for the"
-	line "next challenge?"
+	para "Es-tu prêt pour"
+	line "le test suivant?"
 	done
 
-_PokemonAcademy3FTeacherQuestion1Text:: ; TODO
-	text "Great!"
-	line "Let's start then."
+_PokemonAcademy3FTeacherQuestion1Text::
+	text "Très bien!"
+	line "Alors allons-y."
 
 	para "Question 1:"
-	line "GROWL is useless"
-	cont "against a"
-	cont "#MON who"
-	cont "just used MIST."
+	line "RUGISSEMENT est"
+	cont "sans effet contre"
+	cont "un #MON qui a"
+	cont "utilisé BRUME."
 	done
 
-_PokemonAcademy3FTeacherQuestion2Text:: ; TODO
+_PokemonAcademy3FTeacherQuestion2Text::
 	text "Correct!"
 
 	para "Question 2:"
-	line "If HYPER BEAM"
-	cont "defeats its foe,"
-	cont "your #MON"
-	cont "still needs"
-	cont "to recharge."
+	line "Si ULTRALASER met"
+	cont "K.O. l'adversaire,"
+	cont "ton #MON doit"
+	cont "quand même"
+	cont "se recharger."
 	done
 
-_PokemonAcademy3FTeacherQuestion3Text:: ; TODO
+_PokemonAcademy3FTeacherQuestion3Text::
 	text "Correct!"
 
 	para "Question 3:"
-	line "HAZE removes"
-	cont "all stat changes"
-	cont "and status effects"
-	cont "like paralysis."
+	line "BUEE NOIRE annule"
+	cont "toutes les modi-"
+	cont "fications de stat"
+	cont "ainsi que les"
+	cont "changements de"
+	cont "STATUT comme"
+	cont "la paralysie."
 	done
 
-_PokemonAcademy3FTeacherQuestion4Text:: ; TODO
+_PokemonAcademy3FTeacherQuestion4Text::
 	text "Correct!"
 
 	para "Question 4:"
-	line "Battling a high-"
-	cont "level #MON"
-	cont "grants more"
-	cont "Stat EXP. than"
-	cont "battling a low-"
-	cont "level #MON of"
-	cont "the same species."
+	line "Pour une même"
+	cont "espèce, les"
+	cont "#MON de haut"
+	cont "niveau donnent"
+	cont "plus de Stat EXP"
+	cont "que ceux de bas"
+	cont "niveau."
 	done
 
-_PokemonAcademy3FTeacherQuestion5Text:: ; TODO
+_PokemonAcademy3FTeacherQuestion5Text::
 	text "Correct!"
 
-	para "Last question:"
-	line "If they are the"
-	cont "same species and"
-	cont "the same level,"
-	cont "a wild #MON is"
-	cont "always weaker"
-	cont "than a #MON"
-	cont "who has been"
-	cont "raised by"
-	cont "a trainer."
+	para "Dernière question:"
+	line "A espèce et"
+	cont "niveau égaux, un"
+	cont "#MON sauvage"
+	cont "est toujours plus"
+	cont "faible qu'un"
+	cont "#MON élevé par"
+	cont "un dresseur."
 	done
 
 _PokemonAcademy3FTeacherWrongAnswerText::
@@ -93,36 +94,36 @@ _PokemonAcademy3FTeacherWrongAnswerText::
 	line "Dommage."
 	prompt
 
-_PokemonAcademy3FTeacherCongratulationsText:: ; TODO
-	text "Congratulations!"
-	line "You passed the"
-	cont "Senior test!"
+_PokemonAcademy3FTeacherCongratulationsText::
+	text "Félicitations!"
+	line "Tu as réussi"
+	cont "le test expert!"
 
-	para "From now on, you'll"
-	line "be able to notice"
-	cont "extra info about"
-	cont "your #MON."
+	para "Désormais, tu"
+	line "pourras consulter"
+	cont "des infos"
+	cont "supplémentaires"
+	cont "sur tes #MON."
 
-	para "Take a look at"
-	line "their STATS page!"
+	para "Jette un oeil"
+	line "à leur écran"
+	line "de STATS!"
 	done
 
-_PokemonAcademy3FTeacherComeBackAnytimeText:: ; TODO
-	;text "We have nothing"
-	;line "else to teach"
-	;cont "you for now."
-	text "Come back anytime"
-	line "to brush up on"
-	cont "your #MON"
-	cont "knowledge!"
+_PokemonAcademy3FTeacherComeBackAnytimeText::
+	text "Repasse quand tu"
+	line "veux pour réviser"
+	cont "tes connaissances"
+	cont "sur les #MON!"
 
-	para "If you have time,"
-	line "head upstairs to"
-	cont "meet the dean."
+	para "Si tu as le temps,"
+	line "va aussi voir"
+	cont "la directrice"
+	cont "au dernier étage."
 
-	para "She's always eager"
-	line "to meet talented"
-	cont "students."
+	para "Elle adore parler"
+	line "avec les élèves"
+	cont "talentueux."
 	done
 
 _PokemonAcademy3FComeBackWhenReadyText::
@@ -131,256 +132,275 @@ _PokemonAcademy3FComeBackWhenReadyText::
 	cont "tu seras prêt."
 	done
 
-_PokemonAcademy3FYoungsterText:: ; TODO
-	text "That little girl"
-	line "in the front row"
-	cont "is a child"
-	cont "prodigy!"
+_PokemonAcademy3FYoungsterText::
+	text "Cette petite fille"
+	line "au premier rang"
+	cont "est une vraie"
+	cont "enfant prodige!"
 
-	para "She's tackled the"
-	line "toughest lessons"
-	cont "that even seniors"
-	cont "struggle with."
+	para "Elle dévore les"
+	line "leçons les plus"
+	cont "difficiles, même"
+	cont "celles où les"
+	cont "élèves avancés"
+	cont "calent!"
 	done
 
-_PokemonAcademy3FLittleGirlText:: ; TODO
-	text "If you want to"
-	line "be the very best"
-	cont "#MON trainer,"
-	cont "you will need to"
-	cont "study how stat"
-	cont "experience works!"
+_PokemonAcademy3FLittleGirlText::
+	text "Si tu veux devenir"
+	line "le meilleur"
+	cont "dresseur #MON,"
+	cont "étudie comment"
+	cont "l'expérience de"
+	cont "stat fonctionne!"
 	done
 
-_PokemonAcademy3FStatExpIntroText:: ; TODO
+_PokemonAcademy3FStatExpIntroText::
 	text "Vous consultez les"
 	line "notes de cours!"
 
-	para "STAT EXPERIENCE."
+	para "EXPERIENCE"
+	line "DE STAT."
 	prompt
 
-_PokemonAcademy3FStatExpBattleText:: ; TODO
-	text "When a #MON"
-	line "battles, it gains"
-	cont "EXP. Points to"
-	cont "level up."
+_PokemonAcademy3FStatExpBattleText::
+	text "Quand un #MON"
+	line "combat, il gagne"
+	cont "des niveaux grâce"
+	cont "aux points d'EXP."
 
-	para "But battling"
-	line "also grants"
-	cont "Stat EXP. to"
-	cont "#MON, making"
-	cont "them stronger."
+	para "Mais combattre"
+	line "donne aussi de"
+	cont "l'EXP.Stat aux"
+	cont "#MON, qui les"
+	cont "rend plus forts."
 	prompt
 
-_PokemonAcademy3FStatExpGainText:: ; TODO
-	text "The amount of"
-	line "Stat EXP. gained"
-	cont "after a battle"
-	cont "depends on the"
-	cont "base stats of the"
-	cont "defeated #MON."
+_PokemonAcademy3FStatExpGainText::
+	text "L'EXP.Stat gagnée"
+	line "après un combat"
+	cont "dépend des stats"
+	cont "de base du"
+	cont "#MON vaincu."
 
-	para "For instance,"
-	line "ELECTRODE has a"
-	cont "high SPEED base"
-	cont "stat, but a low"
-	cont "ATTACK base stat."
+	para "Par exemple,"
+	line "ELECTRODE a une"
+	cont "VITESSE de base"
+	cont "élevée, mais une"
+	cont "ATTAQUE faible."
 
-	para "Defeating it will"
-	line "grant a lot of"
-	cont "SPEED Stat EXP.,"
-	cont "but less ATTACK"
-	cont "Stat EXP.!"
+	para "Gagner un combat"
+	line "contre ELECTRODE"
+	cont "donnera beaucoup"
+	cont "d'EXP.Stat de"
+	cont "VITESSE, mais"
+	cont "peu d'EXP.Stat"
+	cont "d'ATTAQUE!"
 	prompt
 
-_PokemonAcademy3FStatExpUseText:: ; TODO
-	text "The more Stat EXP."
-	line "a #MON has,"
-	cont "the faster its"
-	cont "stats will grow"
-	cont "as it levels up."
+_PokemonAcademy3FStatExpUseText::
+	text "Plus son EXP.Stat"
+	line "est élevée, plus"
+	cont "les stats de ton"
+	cont "#MON grimperont"
+	cont "quand il gagnera"
+	cont "un niveau."
 
-	para "Captured #MON"
-	line "start with zero"
-	cont "Stat EXP., but"
-	cont "gain it when"
-	cont "raised by a"
-	cont "trainer."
+	para "Un #MON capturé"
+	line "part avec zéro"
+	cont "EXP.Stat, mais"
+	cont "il commence à en"
+	cont "gagner avec"
+	cont "un dresseur."
 
-	para "This is why wild"
-	line "#MON are"
-	cont "usually weaker"
-	cont "than raised ones"
-	cont "at identical"
-	cont "levels!"
+	para "C'est pour ça"
+	line "que les #MON"
+	cont "sauvages sont"
+	cont "souvent plus"
+	cont "faibles, même"
+	cont "à niveau égal!"
 	prompt
 
-_PokemonAcademy3FStatExpMaxText:: ; TODO
-	text "Even at maximum"
-	line "level, #MON"
-	cont "continue to gain"
-	cont "Stat EXP. to"
-	cont "become stronger."
+_PokemonAcademy3FStatExpMaxText::
+	text "Même au niveau"
+	line "max, les #MON"
+	cont "gagnent encore"
+	cont "de l'EXP.Stat et"
+	cont "continuent à dev-"
+	cont "enir plus forts."
 
-	para "Store them in the"
-	line "PC for a little"
-	cont "while to help"
-	cont "them bulk up!"
+	para "Dépose un #MON"
+	line "dans une BOITE PC"
+	cont "pour lui donner"
+	cont "le temps de se"
+	cont "renforcer!"
 
-	para "Supplements like"
-	line "IRON or CARBOS"
-	cont "can also raise"
-	cont "the Stat EXP."
-	cont "of #MON.@"
+	para "Les accélérateurs"
+	line "comme le CARBONE"
+	line "ou le FER peuvent"
+	cont "aussi augmenter"
+	cont "l'EXP.Stat"
+	cont "des #MON.@"
 	text_waitbutton
 	text_end
 
-_PokemonAcademy3FRockerText:: ; TODO
-	text "My SANDSLASH is"
-	line "the same level"
-	cont "as my friend's."
+_PokemonAcademy3FRockerText::
+	text "Mon SABLAIREAU a"
+	line "le même niveau"
+	cont "que celui de"
+	cont "mon amie."
 
-	para "But mine has"
-	line "better SPEED,"
-	cont "while hers has"
-	cont "better ATTACK."
+	para "Le mien a plus"
+	line "de VITESSE, alors"
+	cont "que le sien a"
+	cont "plus d'ATTAQUE."
 
-	para "That's because"
-	line "each #MON has"
-	cont "unique potential"
-	cont "in every stat!"
+	para "C'est parce que"
+	line "tous les #MON"
+	cont "ont un potentiel"
+	cont "unique pour"
+	cont "chaque stat!"
 	done
 
-_PokemonAcademy3FDVsIntroText:: ; TODO
+_PokemonAcademy3FDVsIntroText::
 	text "Vous consultez les"
 	line "notes de cours!"
 
-	para "DETERMINANT"
-	line "VALUES."
+	para "VALEURS"
+	line "DETERMINANTES."
 	prompt
 
-_PokemonAcademy3FDVsExplanationText:: ; TODO
-	text "Recent research"
-	line "shows that each"
-	cont "#MON has"
-	cont "unique potential"
-	cont "in every stat."
+_PokemonAcademy3FDVsExplanationText::
+	text "De récentes études"
+	line "montrent que"
+	cont "tous les #MON"
+	cont "ont un potentiel"
+	cont "propre dans"
+	cont "chaque stat."
 
-	para "Scientists call"
-	line "these innate"
-	cont "abilities:"
+	para "Les scientifiques"
+	line "appellent ces"
+	cont "aptitudes innées:"
 
-	para "Determinant"
-	line "Values, or DVs."
+	para "Valeurs"
+	line "déterminantes,"
+	line "ou juste VDs."
 
-	para "Because of this"
-	line "unique potential,"
-	cont "even two #MON"
-	cont "of the same"
-	cont "species can be"
-	cont "quite different!"
+	para "En raison de ce"
+	line "potentiel unique,"
+	cont "deux #MON de"
+	cont "la même espèce"
+	cont "peuvent être"
+	cont "très differents!"
 	prompt
 
-_PokemonAcademy3FDVsGrowthText:: ; TODO
-	text "DVs determine"
-	line "how a #MON"
-	cont "grows over time."
+_PokemonAcademy3FDVsGrowthText::
+	text "Les VDs affectent"
+	line "la façon dont un"
+	cont "#MON progresse"
+	cont "au fil du temps."
 
-	para "For example, a"
-	line "#MON with high"
-	cont "ATTACK potential"
-	cont "will have its"
-	cont "ATTACK stat grow"
-	cont "faster as it"
-	cont "levels up.@"
+	para "Par exemple, un"
+	line "#MON au fort"
+	cont "potentiel en"
+	cont "ATTAQUE verra"
+	cont "sa stat d'ATTAQUE"
+	cont "augmenter plus"
+	cont "vite en montant"
+	cont "de niveau.@"
 	text_waitbutton
 	text_end
 
-_PokemonAcademy3FCooltrainerFText:: ; TODO
-	text "#MON who use"
-	line "MINIMIZE can be"
-	cont "very annoying."
+_PokemonAcademy3FCooltrainerFText::
+	text "Les #MON qui"
+	line "lancent LILLIPUT"
+	cont "m'énervent!"
 
-	para "I'm glad my"
-	line "GOLBAT knows"
-	cont "HAZE!"
+	para "Alors j'ai appris"
+	line "BUEE NOIRE à mon"
+	cont "NOSFERALTO."
 	done
 
-_PokemonAcademy3FMistHazeIntroText:: ; TODO
+_PokemonAcademy3FMistHazeIntroText::
 	text "Vous consultez les"
 	line "notes de cours!"
 
-	para "MIST AND HAZE."
+	para "BRUME ET"
+	line "BUEE NOIRE."
 	prompt
 
-_PokemonAcademy3FMistText:: ; TODO
-	text "The move MIST"
-	line "prevents your"
-	cont "#MON's stats"
-	cont "from being"
-	cont "lowered by the"
-	cont "opponent's status"
-	cont "moves, like"
-	cont "STRING SHOT"
-	cont "or SCREECH."
+_PokemonAcademy3FMistText::
+	text "L'attaque BRUME"
+	line "empêche l'ennemi"
+	cont "de baisser les"
+	cont "stats de ton"
+	cont "#MON avec des"
+	cont "capacités comme"
+	cont "SECRETION ou"
+	cont "GRINCEMENT."
 
-	para "But damaging"
-	line "moves like"
-	cont "PSYCHIC can"
-	cont "still lower your"
-	cont "#MON's stats."
+	para "Mais des attaques"
+	line "offensives comme"
+	cont "PSYKO peuvent"
+	cont "encore baisser"
+	cont "ses stats."
 
-	para "Use a GUARD SPEC."
-	line "in battle for"
-	cont "the same effect!"
+	para "Utilise DEFENSE"
+	line "SPEC en combat"
+	cont "pour le même"
+	cont "effet!"
 	prompt
 
-_PokemonAcademy3FHazeText:: ; TODO
-	text "The move HAZE"
-	line "cancels all stat"
-	cont "changes of both"
-	cont "battling #MON,"
-	cont "including the"
-	cont "stat reductions"
-	cont "from burns or"
-	cont "paralysis."
+_PokemonAcademy3FHazeText::
+	text "L'attaque BUEE"
+	line "NOIRE annule tous"
+	cont "les changements"
+	cont "de stats des deux"
+	cont "#MON en combat"
+	cont "y compris les"
+	cont "baisses dues aux"
+	cont "brûlures ou à la"
+	cont "paralysie."
 
-	para "It also lifts the"
-	line "effects of FOCUS"
-	cont "ENERGY, REFLECT,"
-	cont "LEECH SEED,"
-	cont "DISABLE, and"
-	cont "LIGHT SCREEN."
+	para "Elle annule aussi"
+	line "les effets de"
+	cont "PUISSANCE,"
+	cont "PROTECTION,"
+	cont "VAMPIGRAINE,"
+	cont "ENTRAVE et"
+	cont "MUR LUMIERE."
 
-	para "HAZE also cures"
-	line "confusion and"
-	cont "turns TOXIC"
-	cont "poison into"
-	cont "regular poison.@"
+	para "Enfin, BUEE NOIRE"
+	line "guérit aussi la"
+	cont "confusion et"
+	cont "change l'effet"
+	cont "de TOXIK en un"
+	cont "poison normal.@"
 	text_waitbutton
 	text_end
 
-_PokemonAcademy3FSuperNerdText:: ; TODO
-	text "Wow, HYPER BEAM"
-	line "sounds very"
-	cont "powerful..."
+_PokemonAcademy3FSuperNerdText::
+	text "Ouah, ULTRALASER"
+	line "a l'air super"
+	cont "costaud..."
 
-	para "I wonder which"
-	line "#MON can even"
-	cont "learn it!"
+	para "Je me demande"
+	line "quels #MON"
+	cont "peuvent bien"
+	cont "l'apprendre!"
 	done
 
-_PokemonAcademy3FBeautyText:: ; TODO
-	text "My BUTTERFREE"
-	line "learnt a strong"
-	cont "bug move called"
-	cont "RAZOR WIND."
+_PokemonAcademy3FBeautyText::
+	text "Mon PAPILUSION"
+	line "a appris une"
+	cont "puissante attaque"
+	cont "insecte appelée"
+	cont "COUPE-VENT."
 
-    para "It's not quite"
-    line "as powerful as"
-    cont "HYPER BEAM, but"
-    cont "it seems to have"
-    cont "a similar effect!"
+	para "C'est moins fort"
+	line "qu'ULTRALASER,"
+	cont "mais son effet"
+	cont "est similaire!"
 	done
 
 _PokemonAcademy3FHyperBeamIntroText::
@@ -390,21 +410,21 @@ _PokemonAcademy3FHyperBeamIntroText::
 	para "ULTRALASER."
 	prompt
 
-_PokemonAcademy3FHyperBeamExplanationText:: ; TODO
-	text "This move is so"
-	line "powerful that"
-	cont "#MON need to"
-	cont "rest for one turn"
-	cont "after using it."
+_PokemonAcademy3FHyperBeamExplanationText::
+	text "Cette attaque est"
+	line "si puissante que"
+	cont "le #MON qui"
+	cont "l'utilise doit"
+	cont "se reposer"
+	cont "pendant un tour."
 
-	para "But if it makes"
-	line "the opposing"
-	cont "#MON faint,"
-	cont "then the user"
-	cont "can catch its"
-	cont "breath, and it"
-	cont "is ready for"
-	cont "the next round!@"
+	para "Mais si elle met"
+	line "l'adversaire K.O.,"
+	cont "alors le #MON"
+	cont "peut reprendre"
+	cont "son souffle et"
+	cont "sera prêt au"
+	cont "tour suivant!@"
 	text_waitbutton
 	text_end
 
@@ -412,85 +432,91 @@ _PokemonAcademy4FSignText::
 	text "3ème: LABORATOIRE"
 	done
 
-_PokemonAcademy4FGameboyKid1Text:: ; TODO
-	text "Trade evolution"
-	line "is cooler though!"
+_PokemonAcademy4FGameboyKid1Text::
+	text "Les échanges c'est"
+	line "vachement cool!"
 	done
 
-_PokemonAcademy4FGameboyKid2Text:: ; TODO
-	text "Most people"
-	line "believe that"
-	cont "KADABRA can"
-	cont "only evolve"
-	cont "by trading."
+_PokemonAcademy4FGameboyKid2Text::
+	text "La plupart des"
+	line "gens croient que"
+	cont "KADABRA n'évolue"
+	cont "qu'après avoir"
+	cont "été échangé."
 
-    para "But the dean's"
-    line "secret project"
-    cont "seems to trigger"
-    cont "its evolution..."
+	para "Mais on dit que"
+	line "le projet secret"
+	cont "de la directrice"
+	cont "pourrait aussi le"
+	cont "faire évoluer..."
 	done
 
-_PokemonAcademy4FGrannyIntroText:: ; TODO
-	text "Hello, young one."
-	line "I am the dean"
-	cont "of the #MON"
-	cont "ACADEMY."
+_PokemonAcademy4FGrannyIntroText::
+	text "Bien le bonjour."
+	line "Je suis la"
+	cont "directrice de"
+	cont "l'ACADEMIE"
+	cont "#MON."
 	prompt
 
-_PokemonAcademy4FGrannyBitBusyText:: ; TODO
-	text "I'm a bit busy"
-	line "at the moment..."
+_PokemonAcademy4FGrannyBitBusyText::
+	text "Je suis un peu"
+	line "occupée pour"
+	line "le moment..."
 
-	para "Why don't you"
-	line "check out our"
-	cont "classes for now?"
-	cont "There's surely"
-	cont "something new"
-	cont "for you to learn!"
+	para "Passe donc voir"
+	line "nos cours!"
+	cont "Il y a toujours"
+	cont "quelque chose"
+	cont "de nouveau"
+	cont "à apprendre."
 	done
 
-_PokemonAcademy4FGrannyPassedTestsText:: ; TODO
-	text "Ah, I see you've"
-	line "passed both of"
-	cont "our tests!"
+_PokemonAcademy4FGrannyPassedTestsText::
+	text "Ah, je vois que"
+	line "tu as réussi"
+	cont "nos deux tests!"
 
-	para "A smart kid like"
-	line "you might be"
-	cont "able to help me."
+	para "Avec un esprit vif"
+	line "comme le tien,"
+	cont "tu peux sûrement"
+	cont "m'aider."
 
-	para "Our lab detected"
-	line "strange psychic"
-	cont "signals a few"
-	cont "weeks ago."
+	para "Notre laboratoire"
+	line "a détecté de"
+	cont "curieux signaux"
+	cont "psychiques ces"
+	cont "derniers temps."
 
-	para "A psychic #MON"
-	line "could decipher"
-	cont "them."
+	para "Un #MON psy"
+	line "pourrait les"
+	cont "déchiffrer."
 	done
 
-_PokemonAcademy4FGrannyKadabraCapableText:: ; TODO
-	text "Oh! Your"
-	line "@"
-	text_ram wStringBuffer
-	text " seems"
-	cont "capable."
-
-	para "Could it decode"
-	line "these signals?"
-	done
-
-_PokemonAcademy4FGrannyGetToWorkText:: ; TODO
-	text "Great! Let's get"
-	line "to work!"
-	done
-
-_PokemonAcademy4FGrannyGoodProgressText:: ; TODO
-	text "Your @"
+_PokemonAcademy4FGrannyKadabraCapableText::
+	text "Oh! Ton @"
 	text_ram wStringBuffer
 	text_start
-	line "worked well, but"
-	cont "it seems affected"
-	cont "by the signals."
+	line "semble doué."
+
+	para "Veux-tu qu'il"
+	line "essaie de décoder"
+	cont "ces signaux?"
+	done
+
+_PokemonAcademy4FGrannyGetToWorkText::
+	text "Excellent! Alors"
+	line "au travail!"
+	done
+
+_PokemonAcademy4FGrannyGoodProgressText::
+	text "Ton @"
+	text_ram wStringBuffer
+	text_start
+	line "a bien travaillé,"
+	cont "mais on dirait"
+	cont "que les signaux"
+	cont "l'ont affecté."
 
 	para "..."
 	line "..."

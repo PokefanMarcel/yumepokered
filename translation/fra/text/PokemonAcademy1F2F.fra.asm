@@ -54,8 +54,8 @@ _PokemonAcademy1FSignText::
 	done
 
 _PokemonAcademy2FTeacherTakeTestText::
-	text "Bienvenue dans la"
-	line "classe débutants."
+	text "Bienvenue dans le"
+	line "cours débutant."
 
 	para "Ici, on étudie"
 	line "les principes"
@@ -138,9 +138,8 @@ _PokemonAcademy2FTeacherWellDoneText::
 	para "Maintenant que tu"
 	line "maîtrises les"
 	cont "bases, tu devrais"
-	cont "essayer la"
-	cont "classe avancée"
-	cont "à l'étage."
+	cont "essayer le cours"
+	cont "expert à l'étage."
 	done
 
 _PokemonAcademy2FComeBackWhenReadyText::
@@ -621,8 +620,8 @@ _PokemonAcademy2FBlackboardDragonText::
 	prompt
 
 _PokemonAcademy2FSignText::
-	text "1er: CLASSE"
-	line "DEBUTANTS"
+	text "1er: COURS"
+	line "DEBUTANT"
 	done
 
 _KeepReadingText::
