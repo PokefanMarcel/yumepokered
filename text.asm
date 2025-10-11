@@ -393,7 +393,6 @@ ENDC
 SECTION "Text 9", ROMX
 
 IF DEF(_FRA)
-	INCLUDE "translation/fra/text/FuchsiaGym_2.fra.asm"
 	INCLUDE "translation/fra/text/FuchsiaMeetingRoom.fra.asm"
 	INCLUDE "translation/fra/text/FuchsiaSuperRodHouse.fra.asm"   ; marcelnote - from Good to Super Rod
 	INCLUDE "translation/fra/text/PokemonMansion1F.fra.asm"
@@ -411,7 +410,6 @@ IF DEF(_FRA)
 	INCLUDE "translation/fra/text/SaffronPokecenterMart.fra.asm"  ; marcelnote - merged Saffron Pokecenter and Mart
 	INCLUDE "translation/fra/text/MrPsychicsHouse.fra.asm"
 ELSE
-	INCLUDE "text/FuchsiaGym_2.asm"
 	INCLUDE "text/FuchsiaMeetingRoom.asm"
 	INCLUDE "text/FuchsiaSuperRodHouse.asm"   ; marcelnote - from Good to Super Rod
 	INCLUDE "text/PokemonMansion1F.asm"
