@@ -158,7 +158,7 @@ _VermilionCityPhoneText:: ; marcelnote - new
 	line "to be working..."
 	done
 
-_VermilionCityCooltrainerFText::
+_VermilionCityCooltrainerFText:: ; marcelnote - new
 	text "The S.S.ANNE party"
 	line "was amazing!"
 

@@ -52,29 +52,30 @@ _VermilionCitySailor1YouNeedATicketText::
 	cont "à bord."
 	done
 
-_VermilionCitySailor3WelcomeToFerriesText:: ;TODO marcelnote - new for ferry
-	text "Welcome to"
-	line "CITRUS FERRIES!"
+_VermilionCitySailor3WelcomeToFerriesText:: ; marcelnote - new for ferry
+	text "Bienvenue sur le"
+	line "FERRY CITRUS!"
 	done
 
-_VermilionCitySailor3ShowedPassText:: ;TODO marcelnote - new for ferry
-	text "Welcome to"
-	line "CITRUS FERRIES!"
+_VermilionCitySailor3ShowedPassText:: ; marcelnote - new for ferry
+	text "Bienvenue sur le"
+	line "FERRY CITRUS!"
 
-	para "<PLAYER> showed"
-	line "the CITRUS PASS."
+	para "<PLAYER> montre"
+	line "le PASSE CITRUS."
 
-	para "Perfect! Right"
-	line "this way, please."
+	para "Parfait! Par ici,"
+	line "s'il vous plaît."
 	done
 
-_VermilionCitySailor3YouNeedPassText:: ;TODO marcelnote - new for ferry
-	text "Welcome to"
-	line "CITRUS FERRIES!"
+_VermilionCitySailor3YouNeedPassText:: ; marcelnote - new for ferry
+	text "Bienvenue sur le"
+	line "FERRY CITRUS!"
 
-	para "I'm sorry, you"
-	line "need an CITRUS"
-	cont "PASS to board."
+	para "Désolé, il vous"
+	line "faut un PASSE"
+	cont "CITRUS pour"
+	cont "monter à bord."
 	done
 
 _VermilionCitySailor1ShipSetSailText::
@@ -164,14 +165,16 @@ _VermilionCityPhoneText:: ; TODO marcelnote - new
 	line "to be working..."
 	done
 
-_VermilionCityCooltrainerFText:: ; TODO
-	text "The S.S.ANNE party"
-	line "was amazing!"
+_VermilionCityCooltrainerFText:: ; marcelnote - new
+	text "C'était dingue,"
+	line "cette fête sur"
+	cont "l'OCEANE!"
 
-	para "I'm heading next to"
-	line "MANDARIN ISLAND."
-	cont "The ferry runs"
-	cont "there regularly."
+	para "Maintenant, cap"
+	line "sur la plage de"
+	cont "l'ILE MANDARINE."
+	cont "Le ferry s'y rend"
+	cont "régulièrement."
 	done
 
 _VermilionCityCooltrainerMText:: ; marcelnote - to explain temporary field moves
