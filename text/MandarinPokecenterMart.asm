@@ -19,7 +19,7 @@ _MandarinPokecenterCooltrainerFText::
 	line "so cool!"
 
 	para "If only they were"
-    line "less expensive..."
+	line "less expensive..."
 	done
 
 _MandarinPokecenterBenchGuyText::

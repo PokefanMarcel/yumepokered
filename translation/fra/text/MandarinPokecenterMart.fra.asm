@@ -1,52 +1,57 @@
 ; marcelnote - new location
-_MandarinPokecenterSuperNerdText:: ; TODO manually translate
-	text "Have you heard of"
-	line "LORELEI of the"
-	cont "ELITE FOUR?"
+_MandarinPokecenterSuperNerdText::
+	text "As-tu entendu"
+	text "parler d'OLGA du"
+	line "CONSEIL des 4?"
 
-	para "She grew up on"
-	line "this island, you"
-	cont "know. She's our"
-	cont "local hero!"
+	para "Elle a grandi ici,"
+	line "sur cette île!"
+	line "C'est notre fierté"
+	cont "locale."
 
-	para "And between us,"
-	line "she's also quite"
-	cont "stunning..."
+	para "Et entre nous..."
+	line "Elle me fait"
+	cont "fondre total!"
 	done
 
-_MandarinPokecenterCooltrainerFText:: ; TODO manually translate
-	text "SURFBOARDs are"
-	line "so cool!"
+_MandarinPokecenterCooltrainerFText::
+	text "Je veux une"
+	line "PLANCHE DE SURF!"
 
-	para "If only they were"
-    line "less expensive..."
+	para "Si seulement elles"
+	line "étaient moins"
+	cont "chères..."
 	done
 
-_MandarinPokecenterBenchGuyText:: ; TODO manually translate
-	text "MANDARIN ISLAND"
-	line "is just one of"
-	cont "many in the"
-	cont "ORANGE ISLANDS"
-	cont "archipelago!"
+_MandarinPokecenterBenchGuyText::
+	text "L'ILE MANDARINE"
+	line "fait partie"
+	cont "de l'archipel"
+	cont "des ILES ORANGES!"
 	done
 
 
-_MandarinMartCookText:: ; TODO manually translate
-	text "Tonight's special"
-	line "at the hotel:"
-	cont "instant noodles!"
+_MandarinMartCookText::
+	text "J'suis l'chef"
+	line "cuistot à l'HOTEL"
+	cont "MANDARIN!"
 
-	para "Who says gourmet"
-	line "can't be cheap?"
+	para "Au menu ce soir..."
+	line "Nouilles"
+	cont "instantanées!"
+
+	para "Un goût exquis,"
+	line "à petit prix!"
 	done
 
-_MandarinMartCooltrainerFText:: ; TODO manually translate
-	text "Ouch! Careful,"
-	line "I got a sunburn!"
+_MandarinMartCooltrainerFText::
+	text "Aïe! Attention,"
+	line "j'ai pris un"
+	cont "coup de soleil!"
 
-	para "Where's a BURN"
-	line "HEAL when you"
-	cont "need one?"
+	para "Y'a jamais"
+	line "d'ANTI-BRULE quand"
+	cont "j'en ai besoin!"
 	done
 
 ; keep for somewhere
