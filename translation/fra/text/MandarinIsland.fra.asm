@@ -1,129 +1,133 @@
 ; marcelnote - new location
-_MandarinIslandFisherText:: ; TODO manually translate
-	text "The fish aren't"
-	line "biting like they"
-	cont "used to."
+_MandarinIslandFisherText::
+	text "Avant, ça mordait"
+	line "tout l'temps..."
 
-	para "Reckon they don't"
-	line "like all this"
-	cont "commotion."
+	para "C'est l'vacarme"
+	line "des touristes qui"
+	cont "a fait partir"
+	cont "les poissons!"
 	done
 
-_MandarinIslandLittleGirlText:: ; TODO manually translate
-	text "I'm making a"
-	line "sandcastle for"
+_MandarinIslandLittleGirlText::
+	text "Je fais un château"
+	line "de sable pour"
 	cont "KRABBY!"
 
-	para "Think it'll move"
-	line "in?"
+	para "Peut-être qu’il va"
+	line "venir dedans!"
 	done
 
-_MandarinIslandRockerText:: ; TODO manually translate
-	text "Waves are calling,"
-	line "dude!"
+_MandarinIslandRockerText::
+	text "Les vagues"
+	line "m'appellent!!"
 
-	para "It's pure freedom"
-	line "out there."
+	para "Le surf, la mer,"
+	line "c'est la vie!"
 	done
 
-_MandarinIslandSwimmerText:: ; TODO manually translate
-	text "You know, I saw"
-	line "a purple blob"
-	cont "earlier..."
+_MandarinIslandSwimmerText::
+	text "J'ai vu passer un"
+	line "truc violet tout"
+	cont "à l'heure..."
 
-	para "Could it have"
-	line "been a #MON?"
+	para "C'était peut-être"
+	line "un #MON?"
 	done
 
-_MandarinIslandSwimmerFText:: ; TODO manually translate
-	text "The sea's perfect"
-	line "today!"
+_MandarinIslandSwimmerFText::
+	text "L'eau est si bonne"
+	line "aujourd'hui!"
 
-	para "Whoa! Something"
-	line "just touched my"
-	cont "leg!"
+	para "AAAH! Y'a un truc"
+	line "qui vient de"
+	cont "frôler ma jambe!"
 	done
 
-_MandarinIslandCooltrainerMText:: ; TODO manually translate
-	text "MANDARIN ISLAND"
-	line "used to be a"
-	cont "small fishing"
-	cont "town..."
+_MandarinIslandCooltrainerMText::
+	text "L'ILE MANDARINE"
+	line "était autrefois"
+	cont "un simple village"
+	cont "de pêcheurs."
 
-	para "But with tourists"
-	line "and businesses"
-	cont "popping up, we're"
-	cont "on the map now!"
+	para "Mais avec l'arrivée"
+	line "des commerces et"
+	cont "des touristes,"
+	cont "toute la région"
+	cont "nous connait!"
 	done
 
-_MandarinIslandSilphWorkerFText:: ; TODO manually translate
-	;text "The factory brings"
-	;line "jobs, but at"
-	;cont "what cost?"
-	text "I used to see"
-	line "lots of MAGIKARP"
-	cont "splashing here."
+_MandarinIslandSilphWorkerFText::
+	text "Je voyais souvent"
+	line "des MAGICARPE"
+	cont "sauter près de"
+	cont "la rive."
 
-	para "Now they're gone..."
+	para "Mais il n'y en a"
+	line "plus maintenant."
 	done
 
-_MandarinIslandGirlText:: ; TODO manually translate
-	text "Hey, don't wander"
-	line "off too far!"
+_MandarinIslandGirlText::
+	text "Hé, ne t'éloigne"
+	line "pas trop!"
 
-	para "My little sister"
-	line "takes her castles"
-	cont "very seriously..."
+	para "Ma petite soeur"
+	line "passe des heures"
+	cont "sur ses châteaux"
+	cont "de sable..."
 
-	para "Good thing I got"
-	line "ice cream from"
-	cont "the MART to"
-	cont "pass time."
+	para "Mais j'ai acheté"
+	line "une glace à la"
+	cont "BOUTIQUE #MON"
+	cont "pour patienter!"
 	done
 
-_MandarinIslandSailorWelcomeToFerriesText:: ; TODO manually translate
-	text "Welcome to"
-	line "CITRUS FERRIES!"
+_MandarinIslandSailorWelcomeToFerriesText::
+	text "Bienvenue sur le"
+	line "FERRY CITRUS!"
 	done
 
-_MandarinIslandSailorShowedPassText:: ; TODO manually translate
-	text "Welcome to"
-	line "CITRUS FERRIES!"
+_MandarinIslandSailorShowedPassText::
+	text "Bienvenue sur le"
+	line "FERRY CITRUS!"
 
-	para "<PLAYER> showed"
-	line "the CITRUS PASS."
+	para "<PLAYER> montre"
+	line "le PASSE CITRUS."
 
-	para "Perfect! Right"
-	line "this way, please."
+	para "Parfait! Par ici,"
+	line "s'il vous plaît."
 	done
 
-_MandarinIslandSailorYouNeedPassText:: ; TODO manually translate
-	text "Welcome to"
-	line "CITRUS FERRIES!"
+_MandarinIslandSailorYouNeedPassText::
+	text "Bienvenue sur le"
+	line "FERRY CITRUS!"
 
-	para "I'm sorry, you"
-	line "need a CITRUS"
-	cont "PASS to board."
+	para "Désolé, il vous"
+	line "faut un PASSE"
+	cont "CITRUS pour"
+	cont "monter à bord."
 	done
 
-_MandarinIslandSignText:: ; TODO manually translate
-	text "MANDARIN ISLAND"
-	line "The Prosperous"
-	cont "Orange Haven"
+_MandarinIslandSignText::
+	text "ILE MANDARINE"
+	line "Le havre au"
+	cont "soleil doré"
 	done
 
-_MandarinIslandSurfShopSignText:: ; TODO manually translate
-	text "Ride the ocean!"
-	line "WAVE CRAZE"
+_MandarinIslandSurfShopSignText::
+	text "Glisse sur les"
+	line "flots!"
+	line "...SURF A GOGO"
 	done
 
-_MandarinIslandSilphCoSignText:: ; TODO manually translate
-	text "SILPH CO."
-	line "MANDARIN BRANCH"
+_MandarinIslandSilphCoSignText::
+	text "SYLPHE SARL"
+	line "SUCCURSALE de"
+	cont "l'ILE MANDARINE"
 	done
 
-_MandarinIslandHotelSignText:: ; TODO manually translate
-	text "MANDARIN HOTEL"
+_MandarinIslandHotelSignText::
+	text "HOTEL MANDARIN"
 	done
 
 _MandarinIslandPhoneText:: ; TODO manually translate
