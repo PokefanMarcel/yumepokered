@@ -214,13 +214,13 @@ _StrengthsAndWeaknessesText::
 	done
 
 _TimesUpText::
-	text "Haut-parleur: Hé!"
+	text "HAUT-PARLEUR: Hé!" ; marcelnote - capitalized haut-parleur
 
 	para "C'est fini!"
 	prompt
 
 _GameOverText::
-	text "Haut-parleur:"
+	text "HAUT-PARLEUR:" ; marcelnote - capitalized haut-parleur
 	line "Le SAFARI est"
 	cont "terminé!"
 	done
@@ -896,7 +896,7 @@ _HolidayBrochuresText:: ; marcelnote - new for Safari Rest houses
 	done
 
 _OutOfSafariBallsText::
-	text "Haut-parleur: Hé!"
+	text "HAUT-PARLEUR: Hé!" ; marcelnote - capitalized haut-parleur
 
 	para "Vous n'avez plus"
 	line "de SAFARI BALL!"

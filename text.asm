@@ -516,14 +516,10 @@ ENDC
 SECTION "Mandarin Island Text", ROMX ; marcelnote - new
 
 IF DEF(_FRA)
-;	INCLUDE "translation/fra/text/MandarinDock.fra.asm"             ; TODO marcelnote - new location
-;	INCLUDE "translation/fra/text/CitrusFerryDeck.fra.asm"          ; TODO marcelnote - new location
-;	INCLUDE "translation/fra/text/CitrusFerryOutside.fra.asm"       ; TODO marcelnote - new location
-;	INCLUDE "translation/fra/text/CitrusFerryRooms.fra.asm"         ; TODO marcelnote - new location
-	INCLUDE "text/MandarinDock.asm"             ; marcelnote - new location
-	INCLUDE "text/CitrusFerryDeck.asm"          ; marcelnote - new location
-	INCLUDE "text/CitrusFerryOutside.asm"       ; marcelnote - new location
-	INCLUDE "text/CitrusFerryRooms.asm"         ; marcelnote - new location
+	INCLUDE "translation/fra/text/MandarinDock.fra.asm"             ; marcelnote - new location
+	INCLUDE "translation/fra/text/CitrusFerryDeck.fra.asm"          ; marcelnote - new location
+	INCLUDE "translation/fra/text/CitrusFerryOutside.fra.asm"       ; marcelnote - new location
+	INCLUDE "translation/fra/text/CitrusFerryRooms.fra.asm"         ; marcelnote - new location
 ELSE
 	INCLUDE "text/MandarinDock.asm"             ; marcelnote - new location
 	INCLUDE "text/CitrusFerryDeck.asm"          ; marcelnote - new location
