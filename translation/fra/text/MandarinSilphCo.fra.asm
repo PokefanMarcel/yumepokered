@@ -1,101 +1,104 @@
 ; marcelnote - new location
 
-_MandarinSilphCo1FReceptionistText:: ; TODO manually translate
-	text "Welcome to our"
-	line "MANDARIN ISLAND"
-	cont "branch!"
+_MandarinSilphCo1FReceptionistText::
+	text "Bienvenue à la"
+	line "SYLPHE SARL!"
 	done
 
-_MandarinSilphCo2FSilphWorkerFText:: ; TODO manually translate
-	text "I moved from"
-	line "SAFFRON when"
-	cont "SILPH CO."
-	cont "expanded here."
+_MandarinSilphCo2FSilphWorkerFText::
+	text "J'ai été mutée de"
+	line "SAFRANIA quand la"
+	cont "SYLPHE SARL s'est"
+	cont "installée ici."
 
-	para "Busy streets for"
-	line "sand beaches?"
-	cont "No regrets!"
+	para "Béton gris contre"
+	line "sable fin?"
+	cont "Aucun regret!"
 	done
 
-_MandarinSilphCo2FSilphWorkerMText:: ; TODO manually translate
-	text "Office life can"
-	line "be fun if you"
-	cont "know how to keep"
-	cont "things lively."
+_MandarinSilphCo2FSilphWorkerMText::
+	text "La vie au bureau,"
+	line "faut savoir"
+	cont "la pimenter!"
 
-	para "Ever put a VOLTORB"
-	line "in someone's desk?"
+	para "T'as déjà planqué"
+	line "un VOLTORBE dans"
+	cont "le tiroir d'un"
+	cont "collègue!?"
 	done
 
-_MandarinSilphCo2FCooltrainerMText:: ; TODO manually translate
-	text "Someone keeps"
-	line "hiding my pen!"
+_MandarinSilphCo2FCooltrainerMText::
+	text "Qui a encore"
+	line "piqué mon stylo?"
 
-	para "Totally messing"
-	line "with my workflow!"
+	para "Pas moyen d'bosser"
+	line "sérieusement ici!"
 	done
 
-_MandarinSilphCo3FScientistText:: ; TODO manually translate
-	text "There's trouble"
-	line "at the factory!"
+_MandarinSilphCo3FScientistText::
+	text "C'est la pagaille"
+	line "à l'usine!"
 
-	para "Why won't the"
-	line "director see me?"
+	para "Pourquoi le"
+	line "directeur refuse"
+	cont "de me recevoir?"
 	done
 
-_MandarinSilphCo4FDirectorBusyText:: ; TODO manually translate
-	text "Sorry, I'm busy!"
-	line "HQ wanted this"
-	cont "report done"
-	cont "yesterday!"
+_MandarinSilphCo4FDirectorBusyText::
+	text "Désolé, je suis"
+	line "débordé!"
+	cont "Ce rapport est dû"
+	cont "pour hier!"
 
-	para "Meetings? Maybe"
-	line "next month!"
+	para "Des réunions?"
+	line "Peut-être le mois"
+	cont "prochain!"
 	done
 
-_MandarinSilphCo4FDirectorPleaseTakeThisText:: ; TODO manually translate
-	text "You saved the day!"
-	line "TEAM ROCKET's gone"
-	cont "thanks to you."
+_MandarinSilphCo4FDirectorPleaseTakeThisText::
+	text "Tu nous as sauvés!"
+	line "Grâce à toi, la"
+	cont "TEAM ROCKET a"
+	cont "décampé."
 
-	para "Please accept this"
-	line "as a token of our"
-	cont "gratitude."
+	para "Accepte ceci en"
+	line "signe de ma"
+	cont "reconnaissance."
 	prompt
 
-_MandarinSilphCo4FDirectorReceivedNuggetText:: ; TODO manually translate
-	text "<PLAYER> received"
-	line "a @"
+_MandarinSilphCo4FDirectorReceivedNuggetText::
+	text "<PLAYER> obtient:"
+	line "@"
 	text_ram wStringBuffer
 	text "!@"
 	text_end
 
-_MandarinSilphCo4FDirectorNoRoomText:: ; TODO manually translate
-	text "You don't have any"
-	line "room for this."
+_MandarinSilphCo4FDirectorNoRoomText::
+	text "Votre inventaire"
+	line "est plein."
 	done
 
-_MandarinSilphCo4FDirectorFromNowOnText:: ; TODO manually translate
-	text "I guess reports"
-	line "can wait."
+_MandarinSilphCo4FDirectorFromNowOnText::
+	text "Les rapports"
+	line "peuvent attendre."
 
-	para "From now on, I'll"
-	line "step away from"
-	cont "my desk and be"
-	cont "more involved!"
+	para "Je passerai moins"
+	line "de temps dans mon"
+	cont "bureau à l'avenir!"
 	done
 
-_MandarinSilphCo2FSalesSignText:: ; TODO manually translate
-	text "SILPH CO."
-	line "Sales"
+_MandarinSilphCo2FSalesSignText::
+	text "SYLPHE SARL"
+	line "Ventes"
 	done
 
-_MandarinSilphCo3FMeetingRoomSignText:: ; TODO manually translate
-	text "SILPH CO."
-	line "Meeting room"
+_MandarinSilphCo3FMeetingRoomSignText::
+	text "SYLPHE SARL"
+	line "Salle de réunion"
 	done
 
-_MandarinSilphCo4FRegionalDirectorSignText:: ; TODO manually translate
-	text "SILPH CO."
-	line "Regional director"
+_MandarinSilphCo4FRegionalDirectorSignText::
+	text "SYLPHE SARL"
+	line "Directeur"
+	line "régional"
 	done

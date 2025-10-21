@@ -122,7 +122,7 @@ _MandarinIslandSurfShopSignText::
 
 _MandarinIslandSilphCoSignText::
 	text "SYLPHE SARL"
-	line "SUCCURSALE de"
+	line "ANTENNE de"
 	cont "l'ILE MANDARINE"
 	done
 
