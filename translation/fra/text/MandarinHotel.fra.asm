@@ -2,65 +2,64 @@
 
 ; 1F
 
-_MandarinHotel1FWaiterText:: ; TODO - manually translate
-	text "Welcome to the"
-	line "MANDARIN HOTEL."
+_MandarinHotel1FWaiterText::
+	text "Bienvenue à"
+	line "l'HOTEL MANDARIN."
 
-	para "Are you here to"
-	line "visit one of our"
-	cont "guests upstairs?"
+	para "Venez-vous rendre"
+	line "visite à l'un de"
+	cont "nos clients?"
 	done
 
-_MandarinHotel1FWaiter2Text:: ; TODO - manually translate
-	text "Beware, some of"
-	line "our guests are"
-	cont "eager for a good"
-	cont "battle!"
+_MandarinHotel1FWaiter2Text::
+	text "Attention,"
+	line "certains clients"
+	cont "sont prêts"
+	cont "à combattre!"
 	done
 
-_MandarinHotel1FBeautyText:: ; TODO - manually translate
-	text "This hotel is"
-	line "amazing!"
-	cont "It offers all the"
-	cont "modern comforts"
-	cont "for travelers."
+_MandarinHotel1FBeautyText::
+	text "Cet hôtel est"
+	line "si chic! J'y"
+	cont "resterais bien"
+	cont "un mois de plus!"
 	done
 
 ; 2F
 
-_MandarinHotel2FGentlemanBattleText:: ; TODO - manually translate
-	text "A battle will be"
-	line "a delightful"
-	cont "pastime."
+_MandarinHotel2FGentlemanBattleText::
+	text "Combattre est un"
+	line "passe-temps des"
+	cont "plus agréables."
 	done
 
-_MandarinHotel2FGentlemanEndBattleText:: ; TODO - manually translate
+_MandarinHotel2FGentlemanEndBattleText::
 	text "Oh,"
-	line "my..."
+	line "ça alors..."
 	prompt
 
-_MandarinHotel2FGentlemanAfterBattleBoyText:: ; TODO - manually translate
-	text "Your skills are"
-	line "sharper than"
-	cont "your attire,"
-	cont "young man!"
+_MandarinHotel2FGentlemanAfterBattleBoyText::
+	text "Tes talents sont"
+	line "plus affûtés que"
+	cont "ta tenue, jeune"
+	cont "homme!"
 	done
 
-_MandarinHotel2FGentlemanAfterBattleGirlText:: ; TODO - manually translate
-	text "Your skills are"
-	line "sharper than"
-	cont "your attire,"
-	cont "young lady!"
+_MandarinHotel2FGentlemanAfterBattleGirlText::
+	text "Tes talents sont"
+	line "plus affûtés que"
+	cont "ta tenue, jeune"
+	cont "fille!"
 	done
 
-_MandarinHotel2FSilphWorkerMText:: ; TODO - manually translate
-	text "I'm here on"
-	line "business for"
-	cont "SILPH CO."
+_MandarinHotel2FSilphWorkerMText::
+	text "Je suis en voyage"
+	line "d'affaires pour la"
+	cont "SYLPHE SARL."
 
-	para "Life seems more"
-	line "relaxed here"
-	cont "than in SAFFRON!"
+	para "Les gens sont bien"
+	line "plus détendus ici"
+	cont "qu'à SAFRANIA!"
 	done
 
 _MandarinHotel2FRoom11SignText::
@@ -73,46 +72,47 @@ _MandarinHotel2FRoom12SignText::
 
 ; 3F
 
-_MandarinHotel3FGamblerBattleText:: ; TODO - manually translate
-	text "I won big time"
-	line "at the CELADON"
-	cont "CASINO, so I blew"
-	cont "it all on this"
-	cont "fancy holiday."
+_MandarinHotel3FGamblerBattleText::
+	text "J'ai raflé la mise"
+	line "au CASINO de"
+	cont "CELADOPOLE, alors"
+	cont "je claque tout"
+	cont "dans ces vacances"
+	cont "de luxe."
 	done
 
-_MandarinHotel3FGamblerEndBattleText:: ; TODO - manually translate
-	text "Where"
-	line "is my luck!?"
+_MandarinHotel3FGamblerEndBattleText::
+	text "Et ma"
+	line "chance alors!?"
 	prompt
 
-_MandarinHotel3FGamblerAfterBattleText:: ; TODO - manually translate
-	text "No CASINO on this"
-	line "island. I'm bored"
-	cont "out of my mind."
+_MandarinHotel3FGamblerAfterBattleText::
+	text "Pas de CASINO sur"
+	line "cette île... Je"
+	cont "m'ennuie à mourir!"
 	done
 
-_MandarinHotel3FFisherBattleText:: ; TODO - manually translate
-	text "The fishing here"
-	line "is top-notch!"
+_MandarinHotel3FFisherBattleText::
+	text "La pêche au large,"
+	line "c'est top!"
 	done
 
-_MandarinHotel3FFisherEndBattleText:: ; TODO - manually translate
-	text "I got"
-	line "reeled in!"
+_MandarinHotel3FFisherEndBattleText::
+	text "Tu m'as"
+	line "rembobiné!"
 	prompt
 
-_MandarinHotel3FFisherAfterBattleText:: ; TODO - manually translate
-	text "My daughter and I"
-	line "are on a fishing"
-	cont "vacation!"
+_MandarinHotel3FFisherAfterBattleText::
+	text "Pêche tous les"
+	line "jours! Ma fille"
+	cont "est ravie!"
 	done
 
-_MandarinHotel3FLittleGirlText:: ; TODO - manually translate
-	text "Daddy and I"
-	line "caught a SEAKING"
-	cont "thiiiiiis big"
-	cont "today!"
+_MandarinHotel3FLittleGirlText::
+	text "Avec papa, on a"
+	line "attrapé un"
+	cont "POISSOROY"
+	cont "graaand comme ça!"
 	done
 
 _MandarinHotel3FRoom21SignText::
@@ -125,27 +125,28 @@ _MandarinHotel3FRoom22SignText::
 
 ; 4F
 
-_MandarinHotel4FSilphWorkerMText:: ; TODO - manually translate
-	text "We're touring the"
-	line "nearby islands."
+_MandarinHotel4FSilphWorkerMText::
+	text "Nous visitons"
+	line "toutes les îles"
+	cont "des environs."
 
-	para "The last island"
-	line "we visited had"
-	cont "all pink #MON!"
+	para "Sur la dernière,"
+	line "tous les #MON"
+	cont "étaient roses!"
 	done
 
-_MandarinHotel4FSilphWorkerFText:: ; TODO - manually translate
-	text "I bought a"
-	line "SURFBOARD from"
-	cont "the shop."
+_MandarinHotel4FSilphWorkerFText::
+	text "J'ai acheté une"
+	line "PLANCHE DE SURF"
+	cont "à la boutique."
 
-	para "But it's RAICHU"
-	line "who is using it"
-	cont "the most!"
+	para "Mais c'est RAICHU"
+	line "qui s'en sert le"
+	cont "plus!"
 
-	para "I had no idea"
-	line "RAICHU was good"
-	cont "at SURFing!"
+	para "Je ne savais pas"
+	line "que RAICHU était"
+	cont "doué en SURF!"
 	done
 
 _MandarinHotel4FRaichuText::
@@ -153,6 +154,6 @@ _MandarinHotel4FRaichuText::
 	line "Chu!"
 	done
 
-_MandarinHotel4FSuiteSignText:: ; TODO - manually translate
+_MandarinHotel4FSuiteSignText::
 	text "SUITE"
 	done
