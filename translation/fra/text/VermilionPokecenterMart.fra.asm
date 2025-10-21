@@ -8,7 +8,7 @@ _VermilionPokecenterFishingGuruText::
 	cont "est toujours plus"
 	cont "fort qu'un"
 	cont "#MON sauvage."
-	cont "Ouais mon gars!"
+	cont "Ouais mon gars!" ; gendered text
 	done
 
 _VermilionPokecenterSailorText::

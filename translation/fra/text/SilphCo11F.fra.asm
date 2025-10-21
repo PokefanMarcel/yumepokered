@@ -69,7 +69,7 @@ _SilphCo11FGiovanniText::
 
 	para "Viens pas t'mêler"
 	line "de tout ça, mon"
-	cont "bonhomme..."
+	cont "bonhomme..." ; gendered text
 
 	para "Dégage ou..."
 	line "Déguste!"

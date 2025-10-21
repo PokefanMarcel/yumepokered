@@ -125,7 +125,7 @@ _OaksLabOakReceivedPokeballsText::
 	cont "voir un #MON"
 	cont "pour tout savoir"
 	cont "sur lui, mon"
-	cont "p'tit bonhomme!"
+	cont "p'tit bonhomme!" ; gendered text
 
 	para "Il te faut aussi"
 	line "l'attraper! Voici"

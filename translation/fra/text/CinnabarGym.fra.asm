@@ -191,7 +191,7 @@ _CinnabarGymSuperNerd6BattleText::
 	text "J'ai bourlingué"
 	line "dans pas mal"
 	cont "d'ARENES, p'tit"
-	cont "gars! Mais ma"
+	cont "gars! Mais ma" ; gendered text
 	cont "préférée c'est"
 	cont "celle-ci!"
 	done

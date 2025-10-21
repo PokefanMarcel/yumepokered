@@ -24,13 +24,13 @@ _SSAnne1FRoomsGentleman1AfterBattleText::
 	done
 
 _SSAnne1FRoomsGentleman2BattleText::
-	text "Toi, jeune sot! Tu"
+	text "Toi, jeune sot! Tu" ; gendered text
 	line "oses entrer ici!?"
 	done
 
 _SSAnne1FRoomsGentleman2EndBattleText::
 	text "Huf!"
-	line "Tu es mal élevé!!"
+	line "Tu es mal élevé!!" ; gendered text
 	prompt
 
 _SSAnne1FRoomsGentleman2AfterBattleText::
@@ -128,6 +128,5 @@ _SSAnne1FRoomsNurseAreYouTiredText:: ; marcelnote - new nurse room
 	prompt
 
 _SSAnne1FRoomsNurseEnjoyThePartyText:: ; marcelnote - new nurse room
-	text "Retourne t'amuser"
-	line "maintenant!"
+	text "Retourne t'amuser!"
 	done

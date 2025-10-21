@@ -7,7 +7,7 @@ _ChampionsRoomRivalIntroText::
 	cont "plombe, <PLAYER>!"
 
 	para "Ton devoir en"
-	line "tant que rival"
+	line "tant que rival" ; gendered text
 	cont "est d'entraîner"
 	cont "mes #MON."
 
@@ -83,7 +83,7 @@ _ChampionsRoomRivalAfterBattleText::
 	cont "perfection..."
 
 	para "Et zut alors!"
-	line "Tu es le nouveau"
+	line "Tu es le nouveau" ; gendered text
 	cont "champion #MON!"
 
 	para "Alors ça..."
@@ -124,7 +124,7 @@ _RivalRematchVictoryText:: ; marcelnote - new text for rematches
 
 	para "J'ai gagné,"
 	line "j'ai gagné!"
-	cont "Tu restes un"
+	cont "Tu restes un" ; gendered text
 	cont "minable malgré"
 	cont "tout, minable!"
 	prompt
@@ -163,7 +163,7 @@ _ChampionsRoomOakCongratulatesPlayerText::
 	text "!"
 
 	para "<PLAYER>, tu es"
-	line "grand maintenant!"
+	line "grand maintenant!" ; gendered text
 	done
 
 _ChampionsRoomOakDisappointedWithRivalText::

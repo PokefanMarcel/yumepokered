@@ -30,7 +30,7 @@ _MtMoon1FYoungster1AfterBattleText::
 	text "J'suis là pour"
 	line "impressionner les"
 	cont "filles!"
-	cont "Ouais mon gars!"
+	cont "Ouais mon gars!" ; gendered text
 	done
 
 _MtMoon1FCooltrainerF1BattleText::
