@@ -164,7 +164,7 @@ _FightingDojoBrunoOhChampText:: ; marcelnote - postgame Bruno
 	line "d'un élève à elle,"
 	cont "très prometteur."
 	cont "Alors j'viens le"
-	cont "jauger un peu!"
+	cont "castagner un peu!"
 
 	para "Attends, je sais!"
 
@@ -189,7 +189,7 @@ _FightingDojoBrunoUsedToTrainHereText:: ; marcelnote - postgame Bruno
 	cont "de SAFRANIA."
 
 	para "Mais la ville, ça"
-	line "sent ni la craie"
+	line "sent ni la terre"
 	cont "ni la sueur."
 	cont "Au PLATEAU INDIGO,"
 	cont "j'respire l'air"
