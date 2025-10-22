@@ -1,112 +1,107 @@
 ; marcelnote - new location
-_SilphFactory2FRocket1BattleText:: ; TODO translate
-	text "So you're the"
-	line "kid who's been"
-	cont "playing the hero!"
-	cont "Spreading lies"
-	cont "about how TEAM"
-	cont "ROCKET has"
-	cont "disbanded."
+_SilphFactory2FRocket1BattleText::
+	text "Alors c'est toi,"
+	line "le mioche qui" ; gendered text
+	cont "raconte que la"
+	cont "TEAM ROCKET a"
+	cont "été dissoute!"
 
-	para "We're not foolish"
-	line "enough to believe"
-	cont "a child!"
-	cont "Now you'll see"
-	cont "how scary I am!"
+	para "On n'est pas assez"
+	line "naïfs pour croire"
+	cont "un gosse. J'vais" ; gendered text
+	cont "t'faire ravaler"
+	cont "tes mensonges!"
 	done
 
-_SilphFactory2FRocket1EndBattleText:: ; TODO translate
-	text "Urgh..."
-	line "You're too strong."
-	cont "Wait... That's"
-	cont "GIOVANNI's BADGE!"
-	cont "So it is true?"
+_SilphFactory2FRocket1EndBattleText::
+	text "Grrr..."
+	line "T'es trop fort."
+	cont "Attends... T'as le"
+	cont "BADGE de GIOVANNI!"
+	cont "C'était donc vrai?"
 	prompt
 
-_SilphFactory2FRocket1AfterBattleText:: ; TODO translate
-	text "We will leave"
-	line "this factory."
-	cont "But don't think"
-	cont "this is over."
+_SilphFactory2FRocket1AfterBattleText::
+	text "T'as gagné, on va"
+	line "déguerpir de"
+	cont "cette usine. Mais"
+	cont "va pas croire que"
+	cont "tout est terminé!"
 
-	para "I won't let this"
-	line "be the end."
-
-	para "I will find"
-	line "GIOVANNI... And"
-	cont "I will resurrect"
-	cont "TEAM ROCKET!"
+	para "Je retrouverai"
+	line "GIOVANNI... et"
+	cont "la TEAM ROCKET"
+	cont "renaîtra de"
+	cont "ses cendres!"
 	done
 
-_SilphFactory2FScientist1Text:: ; TODO translate
-	text "I saw some shady"
-	line "people sneak"
-	cont "into the factory."
+_SilphFactory2FScientist1Text::
+	text "J'ai vu des types"
+	line "louches entrer"
+	cont "dans l'usine."
 
-	para "What should"
-	line "we do?"
+	para "Que faire?"
 	done
 
-_SilphFactory2FScientist2DuringEventText:: ; TODO translate
-	text "The factory's"
-	line "out of control!"
-	cont "Something suspi-"
-	cont "cious is going"
-	cont "on downstairs."
+_SilphFactory2FScientist2DuringEventText::
+	text "L'usine est"
+	line "hors de contrôle!"
+	cont "Y'a un truc louche"
+	cont "qui se trame"
+	cont "en bas."
 	done
 
-_SilphFactory2FScientist2AfterEventText:: ; TODO translate
-	text "The factory is"
-	line "running normally"
-	cont "again."
+_SilphFactory2FScientist2AfterEventText::
+	text "L'usine fonctionne"
+	line "de nouveau."
 
-	para "We have resumed"
-	line "production!"
+	para "La production"
+	line "a repris!"
 	done
 
-_SilphFactory2FScientist3DuringEventText:: ; TODO translate
-	text "Has LORELEI of the"
-	line "ELITE FOUR come"
-	cont "to help us?"
-	cont "We're saved!"
+_SilphFactory2FScientist3DuringEventText::
+	text "OLGA du CONSEIL"
+	line "des 4 est venue"
+	cont "nous aider?"
+	cont "On est sauvés!"
 	done
 
-_SilphFactory2FScientist3AfterEventText:: ; TODO translate
-	text "LORELEI promised"
-	line "she would help"
-	cont "us repair the"
-	cont "damage done by"
+_SilphFactory2FScientist3AfterEventText::
+	text "OLGA a promis de"
+	line "nous aider à ré-"
+	cont "parer les dégâts"
+	cont "causés par la"
 	cont "TEAM ROCKET."
 	done
 
-_SilphFactory2FSilphWorkerMUpdateCardText:: ; TODO translate
-	text "Aaah!"
-	line "Wait... Are you"
-	cont "here to help?"
+_SilphFactory2FSilphWorkerMUpdateCardText::
+	text "Haaa!"
+	line "Attends... Tu es"
+	cont "venu nous aider?"
 
-	para "I'll update your"
-	line "CARD KEY so you"
-	cont "can access the"
-	cont "meeting room."
+	para "Je vais mettre ta"
+	line "CARTE MAGN. à"
+	cont "jour pour accéder"
+	cont "à la salle de"
+	cont "réunion."
 	prompt
 
-_SilphFactory2FSilphWorkerMNoCardText:: ; TODO translate
-	text "Oh! You don't have"
-	line "your CARD KEY."
+_SilphFactory2FSilphWorkerMNoCardText::
+	text "Oh! Tu n'as pas"
+	line "ta CARTE MAGN.!"
 	done
 
-_SilphFactory2FSilphWorkerMCardWasUpdatedText:: ; TODO translate
-	text "The CARD KEY"
-	line "was updated!"
+_SilphFactory2FSilphWorkerMCardWasUpdatedText::
+	line "La CARTE MAGN. a"
+	cont "été mise à jour!"
 	done
 
-_SilphFactory2FSilphWorkerMHidHereText:: ; TODO translate
-	text "I came here to"
-	line "hide when TEAM"
-	cont "ROCKET took over."
-
-	para "But now I can't"
-	line "find the way out!"
+_SilphFactory2FSilphWorkerMHidHereText::
+	text "J'suis venu ici"
+	line "pour me cacher de"
+	cont "la TEAM ROCKET,"
+	cont "mais j'retrouve"
+	cont "plus la sortie!"
 	done
 
 _SilphFactory2FLoreleiGladToSeeYouText:: ; TODO translate
@@ -128,8 +123,8 @@ _SilphFactory2FLoreleiGladToSeeYouText:: ; TODO translate
 	cont "this?"
 	done
 
-_SilphFactory2FLoreleiArrivesText:: ; TODO translate
-	text "LORELEI: <PLAYER>!"
+_SilphFactory2FLoreleiArrivesText::
+	text "OLGA: <PLAYER>!"
 	done
 
 _SilphFactory2FLoreleiTakeCareText:: ; TODO translate
