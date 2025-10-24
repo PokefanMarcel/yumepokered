@@ -36,41 +36,32 @@ _LoreleisRoomLoreleiAfterBattleText::
 	done
 
 
-_LoreleisRoomLoreleiRematchBeforeBattleText:: ; TODO marcelnote - Lorelei rematch text
-	text "Welcome back to"
-	line "#MON LEAGUE,"
-	cont "champion!"
+_LoreleisRoomLoreleiRematchBeforeBattleText::
+	text "Te revoizi à la"
+	line "LIGUE #MON,"
+	cont "jampion!" ; gendered text
 
-	para "After our stay in"
-	line "the sun, my"
-	cont "#MON are eager"
-	cont "for a fresh new"
-	cont "challenge!"
+	para "Après un zéjour"
+	line "à la plage, mez"
+	cont "#MON veulent"
+	cont "ze rafraîchir!"
 
-	para "Bundle up, it's"
-	line "about to get"
-	cont "freezing cold!"
+	para "Ach! Ach! Ach!"
+	line "Za va geler!"
 	done
 
-_LoreleisRoomLoreleiRematchEndBattleText:: ; TODO marcelnote - Lorelei rematch text
-	text "You've"
-	line "melted us worse"
-	cont "than a beach day!"
+_LoreleisRoomLoreleiRematchEndBattleText::
+	text "Fondus comme"
+	line "neige au zoleil!"
 	prompt
 
-_LoreleisRoomLoreleiRematchAfterBattleText:: ; TODO marcelnote - Lorelei rematch text
-	text "Your freedom is"
-	line "inspiring,"
-	cont "<PLAYER>..."
+_LoreleisRoomLoreleiRematchAfterBattleText::
+	text "J'envie ta liberté,"
+	line "<PLAYER>..."
 
-	para "Now that my home"
-	line "needs help, I"
-	cont "may soon follow"
-	cont "your example." ; TODO maybe not explicit enough?
-
-	para "But while I'm"
-	line "still here, I'll"
-	cont "give it my all!"
+	para "Mais en attendant,"
+	line "mes #MON ze"
+	cont "tiendront prêts!"
 	done
 
 

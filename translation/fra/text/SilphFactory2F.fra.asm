@@ -104,51 +104,49 @@ _SilphFactory2FSilphWorkerMHidHereText::
 	cont "plus la sortie!"
 	done
 
-_SilphFactory2FLoreleiGladToSeeYouText:: ; TODO translate
-	text "I'm glad to see you"
-	line "here, champion."
+_SilphFactory2FLoreleiGladToSeeYouText::
+	text "Je zuis razzurée"
+	line "de te voir izi,"
+	cont "jampion." ; gendered text
 
-	para "Someone's pushing"
-	line "this factory too"
-	cont "hard, spilling"
-	cont "waste into"
-	cont "the sea."
+	para "L'uzine tourne"
+	line "à plein régime et"
+	cont "envoie zes déjets"
+	cont "dans la mer!"
 
-	para "I can't let that"
-	line "happen."
+	para "Je ne peux pas"
+	line "laizzer faire za."
 
-	para "<PLAYER>, will you"
-	line "help me get to"
-	cont "the bottom of"
-	cont "this?"
+	para "<PLAYER>, veux-tu"
+	line "m'aider à trouver"
+	cont "ze qui ze pazze?"
 	done
 
 _SilphFactory2FLoreleiArrivesText::
 	text "OLGA: <PLAYER>!"
 	done
 
-_SilphFactory2FLoreleiTakeCareText:: ; TODO translate
-	text "So it was TEAM"
-	line "ROCKET behind"
-	cont "this mess. We're"
-	cont "lucky you were"
-	cont "again here to"
-	cont "stop them."
+_SilphFactory2FLoreleiTakeCareText::
+	text "Alors z'était"
+	line "la TEAM ROCKET"
+	line "derrière tout za."
+	cont "Merzi de t'être"
+	cont "occupé d'eux, même"
+	cont "zi j'ai peur que"
+	cont "le mal zoit fait."
 
-	para "But I'm afraid the"
-	line "damage is done..."
-	cont "Cleaning the sea"
-	cont "of this pollution"
-	cont "will take time."
+	para "Nettoyer la mer de"
+	line "zette polluzion"
+	cont "prendra du temps."
 
-	para "This island is"
-	line "my home. If not"
-	cont "for my duty to"
-    cont "the ELITE FOUR,"
-    cont "I could stay"
-    cont "to help..."
+	para "Zans mes obliga-"
+	line "zions envers le"
+	cont "CONZEIL des 4, je"
+	cont "pourrais rezter"
+	cont "pour aider..."
 
-	para "For now, take"
-	line "care. We'll meet"
-	cont "again, champion."
+	para "Je vais réfléchir"
+	line "à tout za. On ze"
+	cont "reverra bientôt,"
+	cont "jampion." ; gendered text
 	done
