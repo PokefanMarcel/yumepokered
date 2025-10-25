@@ -42,9 +42,10 @@ _SafariZoneSecretHouseFishingGuruHM03NoRoomText::
 	cont "place!"
 	done
 
-_SafariZoneSecretHousePosterText:: ; TODO marcelnote - new
-	text "SURF lovers, come"
-	line "visit our shop on"
-	cont "MANDARIN ISLAND!"
-	cont "WAVE CRAZE"
+_SafariZoneSecretHousePosterText:: ; marcelnote - new
+	text "Fans de SURF,"
+	line "venez visiter"
+	line "notre magasin sur"
+	cont "l'ILE MANDARINE!"
+	cont "SURF A GOGO"
 	done
