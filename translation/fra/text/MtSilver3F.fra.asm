@@ -76,7 +76,7 @@ _MtSilver3FYellowPostBattleText:: ; TODO
 	line "montagne, tu peux"
 	cont "contempler le"
 	cont "chemin déjà"
-	cont "parcouru... et"
+	cont "parcouru... Et"
 	cont "les aventures"
 	cont "qui t'attendent"
 	cont "encore."
