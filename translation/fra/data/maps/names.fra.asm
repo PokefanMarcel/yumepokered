@@ -53,7 +53,7 @@ PokemonMansionName:  db "MANOIR <PKMN>@"
 SafariZoneName:      db "PARC SAFARI@"
 CeruleanCaveName:    db "CAVERNE AZUREE@"   ; marcelnote - changed from "GROTTE INCONNUE"
 PowerPlantName:      db "CENTRALE@"
-CinnabarVolcanoName: db "CINNABAR VOLCANO@" ; marcelnote - new location ; TODO ; VOLCAN CRAMOISI ??? VOLCAN ???
+CinnabarVolcanoName: db "VOLCAN@"           ; marcelnote - new location
 MtMoonSquareName:    db "AIRE DE REPOS@"    ; marcelnote - new location
 PokemonAcademyName:  db "ACADEMIE #MON@"    ; marcelnote - new location
 CeladonGroveName:    db "BOIS CELADON@"     ; marcelnote - new location ; ???
