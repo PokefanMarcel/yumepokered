@@ -1,65 +1,70 @@
 ; marcelnote - new location
 ; text remains to be made around event to obtain SURFBOARD
-_MandarinSurfShopClerkWelcomeText:: ; TODO manually translate
-	text "Aloha! Welcome"
-	line "to WAVE CRAZE."
+_MandarinSurfShopClerkWelcomeText::
+	text "Bienvenue au"
+	line "SURF A GOGO."
 
-	para "Only the best"
-	line "SURFBOARDs here!"
+	para "Rien que des"
+	line "planches de surf"
+	cont "de qualité!"
 	prompt
 
-_MandarinSurfShopClerkDoYouWantItText:: ; TODO manually translate
-	text "A new SURFBOARD!"
-	line "Do you want it?"
+_MandarinSurfShopClerkDoYouWantItText::
+	text "C'est une super"
+	line "PLANCHE DE SURF,"
+	line "tu la veux?"
 	done
 
-_MandarinSurfShopCantAffordText:: ; TODO manually translate
-	text "Sorry! You can't"
-	line "afford it!"
+_MandarinSurfShopCantAffordText::
+	text "Oh! Tu n'as pas"
+	line "assez d'argent!"
 	prompt
 
-_MandarinSurfShopClerkOhThatsAVoucherText:: ; TODO manually translate
-	text "Oh, that's..."
+_MandarinSurfShopClerkOhThatsAVoucherText::
+	text "Oh! Mais c'est..."
 
-	para "A BIKE VOUCHER!"
+	para "Un BON pour"
+	line "une BICYCLETTE!"
 
-	para "OK! Here you go!"
+	para "OK! Voilà ta"
+	line "BICYCLETTE!"
 	prompt
 
-_MandarinSurfShopExchangedVoucherText:: ; TODO manually translate
-	text "<PLAYER> exchanged"
-	line "the BIKE VOUCHER"
-	cont "for a BICYCLE.@"
+_MandarinSurfShopExchangedVoucherText::
+	text "<PLAYER> échange"
+	line "le BON contre"
+	cont "une BICYCLETTE.@"
 	text_end
 
-_MandarinSurfShopComeAgainText:: ; TODO manually translate
-	text "Come back again"
-	line "some time!"
+_MandarinSurfShopComeAgainText::
+	text "Reviens quand tu"
+	line "veux!"
 	done
 
-_MandarinSurfShopClerkHowDoYouLikeYourSurfboardText:: ; TODO manually translate
-	text "How do you like"
-	line "your SURFBOARD?"
+_MandarinSurfShopClerkHowDoYouLikeYourSurfboardText::
+	text "Comment se porte"
+	line "ta BICYCLETTE?"
 
-	para "You can take it"
-	line "on CYCLING ROAD"
-	cont "and in caves!"
+	para "Tu peux aller sur"
+	line "la PISTE CYCLABLE"
+	cont "et dans les"
+	cont "GROTTES!"
 	done
 
-_MandarinSurfShopBagFullText:: ; TODO manually translate
-	text "You better make"
-	line "room for this!"
+_MandarinSurfShopBagFullText::
+	text "Ton inventaire"
+	line "est plein!"
 	done
 
-_MandarinSurfShopBrunetteGirlText:: ; that's not great, to update later  ; TODO manually translate
-	text "They even offer"
-	line "free SURFBOARD"
-	cont "repairs here!"
+_MandarinSurfShopBrunetteGirlText:: ; that's not great, to update later
+	text "Ils font même"
+	line "des révisions"
+	cont "gratuites ici!"
 	done
 
-_MandarinSurfShopGirlText:: ; TODO manually translate
-	text "The owner's brother"
-	line "runs the MIRACLE"
-	cont "CYCLE store in"
-	cont "CERULEAN CITY."
+_MandarinSurfShopGirlText::
+	text "Le frère du gérant"
+	line "tient la boutique"
+	cont "CYCLES A GOGO à"
+	cont "AZURIA."
 	done
