@@ -25,6 +25,13 @@ _ViridianCityGambler1GymLeaderReturnedText::
 	cont "retour! Dingue!"
 	done
 
+_ViridianCityGambler1GymLeaderWasBossText:: ; marcelnote - new
+	text "Le CHAMPION d'ARENE"
+	line "était le chef de"
+	cont "la TEAM ROCKET!?"
+	cont "Dingue!"
+	done
+
 _ViridianCityYoungster2YouWantToKnowAboutText::
 	text "Tu veux tout"
 	line "savoir sur les 2"
@@ -189,18 +196,11 @@ _ViridianCityGymLockedText::
 	cont "fermées..."
 	done
 
-_ViridianCityGambler1GymLeaderWasBossText:: ; TODO marcelnote - new
-	text "The GYM LEADER"
-	line "was the boss of"
-	cont "TEAM ROCKET!?"
-	done
+_ViridianCityTrainerTips3Text:: ; marcelnote - new
+	text "ASTUCE"
 
-	
-_ViridianCityTrainerTips3Text:: ; TODO marcelnote - new
-	text "TRAINER TIPS"
-
-	para "Press the B"
-	line "Button to run!"
+	para "Maintenez B"
+	line "pour courir!"
 	done
 
 	
