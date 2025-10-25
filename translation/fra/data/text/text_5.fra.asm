@@ -122,10 +122,9 @@ _ItemWasAssignedToSelectText:: ; marcelnote - use items with Select
 	text "."
 	prompt
 
-_CableClubNPCNewMovesNotAllowedText:: ; TODO marcelnote - ban new moves from Cable Club
-	text "I'm sorry, #MON"
-	line "with the moves"
-	cont "HEX, ELECRO BALL"
-	cont "or WILL-O-WISP"
-	cont "are not allowed."
+_CableClubNPCNewMovesNotAllowedText:: ; marcelnote - ban new moves from Cable Club
+	text "Je suis désolée,"
+	line "les échanges ne"
+	cont "sont pas encore"
+	cont "fonctionnels."
 	prompt
