@@ -123,7 +123,7 @@ _CeladonCityGymSignText::
 	done
 
 _CeladonCityMansionSignText::
-	text "MANOIR CELADON"
+	text "RESIDENCE CELADON" ; marcelnote - corrected mistranslation MANOIR CELADON
 	done
 
 _CeladonCityDeptStoreSignText::

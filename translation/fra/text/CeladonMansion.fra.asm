@@ -22,7 +22,7 @@ _CeladonMansion1FNidoranFText::
 	text_end
 
 _CeladonMansion1FManagersSuiteSignText::
-	text "MANOIR CELADON" ; TODO (translation error from Japanese)
+	text "RESIDENCE CELADON" ; marcelnote - corrected mistranslation MANOIR CELADON
 	line "La Suite"
 	cont "présidentielle"
 	done
