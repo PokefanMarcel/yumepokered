@@ -71,7 +71,7 @@ _MrFujisHouseMrFujiPokeFluteExplanationText::
 	line "tous les #MON."
 	done
 
-_MrFujisHouseMrFujiPokeFluteNoRoomText::
+_MrFujisHouseMrFujiMakeRoomText::
 	text "Votre inventaire"
 	line "est plein!"
 	done
@@ -94,87 +94,81 @@ _MrFujisHouseMrFujiPokedexText::
 	line "disparu!"
 	done
 
-_MrFujisHouseMrFujiPlayerGaveNotesText:: ; TODO marcelnote - new
+_MrFujisHouseMrFujiPlayerGaveNotesText:: ; marcelnote - new
 	text "MR.FUJI: <PLAYER>,"
-	line "is your quest"
-	cont "going well?"
+	line "ton voyage se"
+	cont "passe bien?"
 
-	para "Hmm? You found"
-	line "something?"
+	para "Mmh? Tu as quelque"
+	line "chose pour moi?"
 
-	para "<PLAYER> gave"
-	line "FUJI's NOTES.@"
+	para "<PLAYER> donne le"
+	line "CARNET DE FUJI.@"
 	text_end
 
-_MrFujisHouseMrFujiThankYouText:: ; TODO marcelnote - new
+_MrFujisHouseMrFujiThankYouText:: ; marcelnote - new
 	text_start
-	para "My research notes!"
-	line "I thought they"
-	cont "had been lost." ; maybe they were stolen before he left the project?
+	para "Mon carnet! Je le"
+	line "croyais perdu."
 
-	;para "Thank you for"
-	;line "bringing them"
-	;cont "back. They could"
-	;cont "have fallen into"
-	;cont "the wrong hands."
+	para "Alors, tu sais"
+	line "pour CRAMOIS'ILE?"
 
-	para "So, you know about"
-	line "CINNABAR, then?"
+	para "Je n'ai pas les"
+	line "réponses que tu"
+	cont "cherches, mais je"
+	cont "connais quelqu'un"
+	cont "qui peut t'aider."
 
-	;para "What happened"
-	;line "there... I would"
-	;cont "rather leave it"
-	;cont "in the past."
+	para "Le DR.JABARA"
+	line "faisait partie"
+	cont "de notre groupe"
+	cont "de recherche"
+	cont "sur CRAMOIS'ILE."
 
-	para "I do not have the" ; FUJI left before MEWTWO escaped
-	line "answers you seek,"
-	cont "but I know some-"
-	cont "one who might."
+	para "J'ai entendu dire"
+	line "qu'il a un nouveau"
+	line "laboratoire sur"
+	cont "l'ILE MANDARINE."
 
-	para "DR.JABARA was part"
-	line "of the research"
-	cont "team on CINNABAR."
-
-	para "Now he works on"
-	line "MANDARIN ISLAND."
-	; fallthrough
-_MrFujisHouseMrFujiTakeThisText:: ; TODO marcelnote - new
-	para "Here, take this."
-	line "You will need it."
+	para "Prends ceci, ça"
+	line "te sera utile."
 	prompt
 
-_MrFujisHouseMrFujiReceivedCitrusPassText:: ; TODO marcelnote - new
-	text "<PLAYER> received"
-	line "a @"
-	text_ram wStringBuffer
+_MrFujisHouseMrFujiTakeThisText:: ; marcelnote - new
+	text "Prends ceci, ça"
+	line "te sera utile."
+	prompt
+
+_MrFujisHouseMrFujiReceivedCitrusPassText:: ; marcelnote - new
+	text "<PLAYER> obtient:"
+	line "@"
+	text_ram wNameBuffer
 	text "!@"
 	text_end
 
-_MrFujisHouseMrFujiCitrusPassExplanationText:: ; TODO marcelnote - new
+_MrFujisHouseMrFujiCitrusPassExplanationText:: ; marcelnote - new
 	text_start
+	para "Avec ce PASSE,"
+	line "tu peux prendre"
+	cont "le ferry entre"
+	cont "CARMIN SUR MER"
+	cont "l'ILE MANDARINE."
 
-	para "This pass lets you"
-	line "board the ferry"
-	cont "from VERMILION to"
-	cont "MANDARIN ISLAND."
-
-	para "You should find"
-	line "DR.JABARA there."
+	para "Là-bas, tu devrais"
+	line "trouver le"
+	cont "DR.JABARA."
 	done
 
-_MrFujisHouseMrFujiBeCarefulText:: ; TODO marcelnote - new
-	text "MR.FUJI: DR.JABARA"
-	line "might have the"
-	cont "answers you seek,"
-	cont "but be careful."
+_MrFujisHouseMrFujiBeCarefulText:: ; marcelnote - new
+	text "MR.FUJI: Même"
+	line "si le DR.JABARA"
+	cont "peut t'aider,"
+	cont "reste prudent."
 
-	para "Although he is a"
-	line "gifted scientist,"
-	cont "his methods can"
-	cont "be questionable."
-	done
-
-_MrFujisHouseMrFujiMakeRoomText:: ; TODO
-	text "You must make"
-	line "room for this!"
+	para "C'est un brillant"
+	line "chercheur, mais"
+	cont "ses méthodes"
+	cont "sont parfois"
+	cont "douteuses."
 	done

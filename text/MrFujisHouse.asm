@@ -131,9 +131,13 @@ _MrFujisHouseMrFujiThankYouText:: ; marcelnote - new
 
 	para "Now he works on"
 	line "MANDARIN ISLAND."
-	; fallthrough
-_MrFujisHouseMrFujiTakeThisText:: ; marcelnote - new
+
 	para "Here, take this."
+	line "You will need it."
+	prompt
+
+_MrFujisHouseMrFujiTakeThisText:: ; marcelnote - new
+	text "Here, take this."
 	line "You will need it."
 	prompt
 
