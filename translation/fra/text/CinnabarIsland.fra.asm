@@ -39,6 +39,6 @@ _CinnabarIslandGymSignText::
 	line "Chaud! Chaud!"
 	done
 
-_CinnabarIslandVolcanoSignText:: ; TODO marcelnote - Cinnabar Volcano
-	text "CINNABAR VOLCANO"
+_CinnabarIslandVolcanoSignText:: ; marcelnote - Cinnabar Volcano
+	text "VOLCAN"
 	done
