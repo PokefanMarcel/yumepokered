@@ -1,179 +1,190 @@
 ; marcelnote - new map
-_DrJabarasLabJabaraIntroText:: ; TODO manually translate
-	text "JABARA: Hmm? What's"
-	line "this? A trainer?"
+_DrJabarasLabJabaraIntroText::
+	text "DR.JABARA: Hmm?"
+	line "Un dresseur? Ici?"
 
-	para "You don't look like"
-	line "you belong in"
-	cont "a lab."
+	para "Je n'ai pas l'temps"
+	line "de bavarder avec"
+	cont "des gamins niais."
 
-	para "Oh, FUJI sent you?"
-	line "That old fool..."
-	cont "A sharp mind, but"
-	cont "he never dared to" ; lacking the will to
-	cont "dream big enough."
+	para "Ah, FUJI t'envoie?"
+	line "Ce vieux raté..."
+	cont "Un esprit vif,"
+	cont "mais il manquait"
+	cont "d'ambition."
 
-	para "Anyway, our work"
-	line "on CINNABAR is"
-	cont "behind me now."
+	para "Peu importe"
+	line "Nos travaux"
+	cont "à CRAMOIS'ILE,"
+	cont "c'est du passé."
 
-	para "Here I study how"
-	line "#MON react to"
-	cont "different sound"
-	cont "frequencies."
+	para "Ici, j’étudie com-"
+	line "ment les #MON"
+	cont "réagissent à des"
+	cont "sons différents."
 
-	para "I know the answer"
-	line "I need is near."
-	cont "If only I could"
-	cont "get my hands on"
-	cont "a # FLUTE..."
+	para "Je sens que je"
+	line "touche au but."
+	cont "Si seulement je"
+	cont "pouvais mettre la"
+	cont "main sur une"
+	cont "#FLUTE..."
 	done
 
-_DrJabarasLabHaveFluteText:: ; TODO manually translate
-	text "Wait... You have"
-	line "a # FLUTE?"
+_DrJabarasLabHaveFluteText::
+	text "Attends voir... Tu"
+	line "as une #FLUTE?"
 
-	para "With it, I could"
-	line "finally confirm"
-	cont "my theories."
+	para "Avec ça, je"
+	line "pourrais enfin"
+	cont "confirmer mes"
+	cont "théories."
 
-	para "Let me use it, and"
-	line "I'll make it worth"
-	cont "your while."
+	para "Si tu m'la prêtes,"
+	line "tu ne seras pas"
+	cont "déçu."
 	done
 
-_DrJabarasLabRefusedText:: ; TODO manually translate
-	text "Hmph... No wonder"
-	line "FUJI liked you."
+_DrJabarasLabRefusedText::
+	text "Tss... Je vois"
+	line "pourquoi FUJI"
+	cont "t'aime bien."
 	done
 
-_DrJabarasLabGaveFluteText:: ; TODO manually translate
-	text "<PLAYER> gave the"
-	line "# FLUTE to"
+_DrJabarasLabGaveFluteText::
+	text "<PLAYER> donne"
+	line "la #FLUTE au"
 	cont "DR.JABARA.@"
 	text_end
 
-_DrJabarasLabNeedTimeText:: ; TODO manually translate
-	text "I'll need time to"
-	line "run some tests."
-	cont "Come back later."
+_DrJabarasLabNeedTimeText::
+	text "Mes tests vont"
+	line "prendre du temps."
+	cont "Reste pas dans"
+	cont "mes pattes."
 	done
 
-_DrJabarasLabExperimentsOverText:: ; TODO manually translate
-	text "Oh, it's you!"
-	line "My tests were a"
-	cont "complete success!"
+_DrJabarasLabExperimentsOverText::
+	text "Ah, te revoilà!"
+	line "Mes tests sont"
+	cont "un succès total!"
 
-	para "Thanks to your"
-	line "# FLUTE, I've"
-	cont "proved that some"
-	cont "frequencies can"
-	cont "provoke... ah,"
-	cont "unusual reactions"
-	cont "in #MON."
+	para "Grâce à ta"
+	line "#FLUTE, j'ai"
+	cont "trouvé des sons"
+	cont "qui déclenchent"
+	cont "une réaction..."
+	cont "Disons, anormale"
+	cont "chez les #MON."
 
-	para "Here, you can"
-	line "have it back."
+	para "Tiens, je n'en ai"
+	line "plus besoin."
 	prompt
 
-_DrJabarasLabNoRoomText:: ; TODO manually translate
-	text "You don't have"
-	line "room for this."
+_DrJabarasLabNoRoomText::
+	text "Votre inventaire"
+	line "est plein."
 	done
 
-_DrJabarasLabReturnedFluteText:: ; TODO manually translate
-	text "DR.JABARA returned"
-	line "the # FLUTE!@"
+_DrJabarasLabReturnedFluteText::
+	text "DR.JABARA rend"
+	line "la #FLUTE!@"
 	text_end
 
-_DrJabarasLabJabaraFinalText:: ; TODO manually translate
-	text "Still here?"
+_DrJabarasLabJabaraFinalText::
+	text "Tu es encore là?"
 
-	para "Well, I suppose"
-	line "you've earned"
-	cont "some answers."
+	para "Soit. Tu as"
+	line "mérité quelques"
+	cont "explications."
 
-	para "Creating MEWTWO"
-	line "was our greatest"
-	cont "achievement, but"
-	cont "its power quickly"
-	cont "grew beyond our"
-	cont "control."
+	para "Créer MEWTWO fut"
+	line "notre plus grand"
+	cont "exploit. Mais sa"
+	cont "puissance est"
+	cont "vite devenue"
+	cont "incontrolable."
 
-	para "The day it escaped"
-	line "was chaos. In the"
-	cont "confusion, MEW"
-	cont "vanished as well."
+	para "Quand il s'est"
+	line "échappé, le labo"
+	cont "a été dévasté. Et"
+	cont "MEW en a profité"
+	cont "pour filer aussi."
 
-	para "I left CINNABAR"
-	line "not long after."
-	cont "No one has seen"
-	cont "MEWTWO since."
+	para "Je suis parti de"
+	line "CRAMOIS'ILE peu"
+	cont "après. Personne"
+	cont "n'a vu MEWTWO"
+	cont "depuis."
 
-	para "As for MEW, rumors"
-	line "claim that it was"
-	cont "seen in CELADON."
+	para "Et MEW? Il aurait"
+	line "été vu près de"
+	cont "CELADOPOLE, selon"
+	cont "des rumeurs."
 
-	para "Maybe it found"
-	line "refuge in a"
-	cont "secluded place"
-	cont "nearby."
+	para "Et MEW? On raconte"
+	line "qu'il a été vu"
+	cont "vers CELADOPOLE."
 
-	para "MEW was always"
-	line "fascinated by"
-	cont "FUJI's # FLUTE."
-	cont "Perhaps if you"
-	cont "play yours in"
-	cont "the right spot,"
-	cont "it might show"
-	cont "itself."
+	para "Il a dû y trouver"
+	line "un lieu isolé"
+	cont "pour se cacher."
+
+	para "MEW était toujours"
+	line "fasciné par"
+	cont "la #FLUTE du"
+	cont "DR.FUJI."
+	cont "Si tu en joues"
+	cont "au bon endroit,"
+	cont "il pourrait"
+	cont "se montrer."
 	done
 
-_DrJabarasLabNotesText:: ; TODO manually translate
-	text "DR.JABARA's"
-	line "research notes."
+_DrJabarasLabNotesText::
+	text "C'est le travail"
+	line "du DR.JABARA."
 
-	para "It's full of"
-	line "complicated data"
-	cont "about MAGIKARP."
+	para "Des pages entières"
+	line "de chiffres sur"
+	cont "MAGICARPE."
 	done
 
-_DrJabarasLabReceivedEmailText:: ; TODO manually translate
-	text "There's an e-mail"
-	line "message here."
+_DrJabarasLabReceivedEmailText::
+	text "Il y a un e-mail."
 
 	para "..."
 
-	para "DR.JABARA, your"
-	line "recent studies on"
-	cont "#MON behavior"
-	cont "have caught our"
-	cont "attention."
+	para "DR.JABARA, vos"
+	line "études récentes"
+	cont "sur les #MON"
+	cont "ont éveillé"
+	cont "notre intérêt."
 
-	para "We should discuss"
-	line "ways to... expand"
-	cont "its applications."
+	para "Nous aimerions en"
+	line "discuter pour..."
+	cont "étendre ses"
+	cont "usages."
 
 	para "..."
 	done
 
-_DrJabarasLabEmailDraftText:: ; TODO manually translate
-	text "An e-mail draft"
-	line "from DR.JABARA."
+_DrJabarasLabEmailDraftText::
+	text "LE DR.JABARA a"
+	line "écrit un e-mail."
 
 	para "..."
 
-	para "...borrowed a"
-	line "# FLUTE from"
-	cont "a naive kid..."
+	para "...ai emprunté la"
+	line "#FLUTE d'un"
+	cont "gamin naïf..." ; gendered text
 
-	para "...isolated a"
-	line "frequency which"
-	cont "can trigger..."
+	para "...isolé une"
+	line "fréquence qui"
+	cont "déclenche..."
 
-	para "...potential"
-	line "use for #MON"
-	cont "evolution..."
+	para "...usage potentiel"
+	line "sur l'évolution"
+	cont "des #MON..."
 
-	para "Huh?"
+	para "Hein?"
 	done
