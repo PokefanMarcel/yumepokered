@@ -29,6 +29,20 @@ _FuchsiaCityYoungster2Text::
 	cont "#MON."
 	done
 
+_FuchsiaCityBlackbeltText:: ; marcelnote - new NPC
+	text "Plus besoin de"
+	line "faire le tour de"
+	cont "la ville pour"
+	cont "aller à la plage."
+
+	para "Avec COLOSSINGE,"
+	line "on a tout dégagé!"
+	done
+
+_FuchsiaCityPrimeapeText:: ; marcelnote - new NPC
+	text "COLOSSINGE: Colo!@"
+	text_end
+
 _FuchsiaCityPokemonText::
 	text "!"
 	done
@@ -119,18 +133,3 @@ _FuchsiaCityFossilSignKabutoText::
 _FuchsiaCityFossilSignUndeterminedText::
 	text "..."
 	done
-
-_FuchsiaCityBlackbeltText:: ; TODO marcelnote - new NPC
-    text "People used to"
-    line "have to go all"
-    cont "around town to"
-    cont "get to the beach."
-
-    para "But PRIMEAPE and I"
-    line "cleared a path!"
-    done
-
-_FuchsiaCityPrimeapeText:: ; TODO marcelnote - new NPC
-    text "PRIMEAPE: Grah!"
-    line "Raaah-ha!@"
-    text_end
