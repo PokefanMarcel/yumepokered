@@ -52,17 +52,17 @@ _CeladonMart2FMiddleAgedManText::
 	line "plus puissant!"
 	done
 
-_CeladonMart2FBrunetteGirlText:: ; TODO marcelnote - new NPC
-	text "Here each BADGE"
-	line "allows you to"
-	cont "buy more TMs."
+_CeladonMart2FBrunetteGirlText:: ; marcelnote - new NPC
+	text "Ici, chaque BADGE"
+	line "te donne accès"
+	cont "à plus de CT."
 
-	para "I want to teach"
-	line "BUBBLEBEAM to"
-	cont "WIGGLYTUFF, but"
-	cont "the clerk says"
-	cont "I need the"
-	cont "RAINBOW BADGE..."
+	para "Je veux apprendre"
+	line "BULLES D'O à mon"
+	cont "GRODOUDOU, mais"
+	cont "le vendeur dit"
+	cont "qu'il me faut un"
+	cont "BADGE PRISME..."
 	done
 
 _CeladonMart2FGirlText::
