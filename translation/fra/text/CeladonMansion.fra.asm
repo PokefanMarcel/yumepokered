@@ -103,22 +103,21 @@ _CeladonMansion3FDevRoomSignText::
 	done
 
 
-_CeladonMansion4FHackerText:: ; TODO marcelnote - new
-	text "I'm the hacker!"
-	line "I made changes"
-	cont "to the original"
-	cont "game."
+_CeladonMansion4FHackerText:: ; marcelnote - new
+	text "Je suis le hacker!"
+	line "J'ai modifié le"
+	cont "jeu d'origine."
 
-	para "Let me know if you"
-	line "find any bugs!"
+	para "Dis-moi si tu"
+	line "trouves des bugs!"
 	done
 
-_CeladonMansion4FExeggutorSurfPCText:: ; TODO marcelnote - new
-    text "An EXEGGUTOR who"
-    line "can FLY!?"
+_CeladonMansion4FExeggutorSurfPCText:: ; marcelnote - new
+	text "Un NOADKOKO qui"
+	line "sait VOLer!?"
 	done
 
-_CeladonMansion4FYumeLabsSignText:: ; TODO marcelnote - new
+_CeladonMansion4FYumeLabsSignText:: ; marcelnote - new
 	text "YUME LABS"
-	line "Home office"
+	line "C'est fait maison!"
 	done
