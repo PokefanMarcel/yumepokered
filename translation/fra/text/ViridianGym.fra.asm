@@ -116,17 +116,17 @@ _ViridianGymCooltrainerM1AfterBattleText::
 	cont "CHAMPION!"
 	done
 
-_ViridianGymHiker1BattleText::
+_ViridianGymBlackbelt1BattleText::
 	text "Groaar!"
 	line "Colère! Viens"
 	cont "te battre!"
 	done
 
-_ViridianGymHiker1EndBattleText::
+_ViridianGymBlackbelt1EndBattleText::
 	text "Rargh!"
 	prompt
 
-_ViridianGymHiker1AfterBattleText::
+_ViridianGymBlackbelt1AfterBattleText::
 	text "Grouargh!"
 	done
 
@@ -146,17 +146,17 @@ _ViridianGymRocker1AfterBattleText::
 	line "notre CHAMPION?"
 	done
 
-_ViridianGymHiker2BattleText::
+_ViridianGymBlackbelt2BattleText::
 	text "Le Karaté est"
 	line "l'art martial"
 	cont "ultime!"
 	done
 
-_ViridianGymHiker2EndBattleText::
+_ViridianGymBlackbelt2EndBattleText::
 	text "Yaha!"
 	prompt
 
-_ViridianGymHiker2AfterBattleText::
+_ViridianGymBlackbelt2AfterBattleText::
 	text "Mes #MON sont"
 	line "des karatékas..."
 	done
@@ -177,18 +177,18 @@ _ViridianGymCooltrainerM2AfterBattleText::
 	line "me taper dessus!"
 	done
 
-_ViridianGymHiker3BattleText::
+_ViridianGymBlackbelt3BattleText::
 	text "J'suis le ROI du"
 	line "KARATE! Ton"
 	cont "destin repose"
 	cont "entre mes mains!"
 	done
 
-_ViridianGymHiker3EndBattleText::
+_ViridianGymBlackbelt3EndBattleText::
 	text "Yaah!"
 	prompt
 
-_ViridianGymHiker3AfterBattleText::
+_ViridianGymBlackbelt3AfterBattleText::
 	text "La LIGUE #MON?"
 	line "Toi? Hahahahah!!!"
 	cont "T'es un rigolo!"
@@ -261,50 +261,7 @@ _ViridianGymGuidePostBattleText::
 	done
 
 
-_ViridianGymBlackbelt1BattleText:: ; TODO
-	text "Rrrroar! I'm"
-	line "working myself"
-	cont "into a rage!"
-	done
-
-_ViridianGymBlackbelt1EndBattleText:: ;TODO
-	text "Wargh!"
-	prompt
-
-_ViridianGymBlackbelt1AfterBattleText:: ;TODO
-	text "I'm still not"
-	line "worthy!"
-	done
-
-_ViridianGymBlackbelt2BattleText:: ; TODO
-	text "Karate is the"
-	line "ultimate form of"
-	cont "martial arts!"
-	done
-
-_ViridianGymBlackbelt2EndBattleText:: ; TODO
-	text "Atcho!"
-	prompt
-
-_ViridianGymBlackbelt2AfterBattleText:: ; TODO
-	text "If my #MON"
-	line "were as good at"
-	cont "Karate as I..."
-	done
 
 
-_ViridianGymBlackbelt3BattleText:: ; TODO
-	text "I'm the KARATE"
-	line "KING! Your fate"
-	cont "rests with me!"
-	done
 
-_ViridianGymBlackbelt3EndBattleText:: ; TODO
-	text "Ayah!"
-	prompt
 
-_ViridianGymBlackbelt3AfterBattleText:: ; TODO
-	text "#MON LEAGUE?"
-	line "You? Don't get"
-	cont "cocky!"
-	done
