@@ -6,14 +6,14 @@ _PowerPlantZapdosBattleText::
 	text "Yahoo!@"
 	text_end
 
-_PowerPlantComputerText:: ; TODO marcelnote - new
-	text "A damaged console."
+_PowerPlantComputerText:: ; marcelnote - new
+	text "Un terminal abîmé."
 
-	para "Ouch! It crackles"
-	line "with static."
+	para "Aïe! Une bonne"
+	line "châtaigne!"
 	done
 
-_PowerPlantLiveWaterText:: ; TODO marcelnote - new
-	text "Electrified water!"
-	line "Better stay back."
+_PowerPlantLiveWaterText:: ; marcelnote - new
+	text "Gare au coup de"
+	line "jus! Pas touche!"
 	done
