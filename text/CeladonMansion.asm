@@ -113,8 +113,8 @@ _CeladonMansion4FHackerText:: ; marcelnote - new
 	done
 
 _CeladonMansion4FExeggutorSurfPCText:: ; marcelnote - new
-    text "An EXEGGUTOR who"
-    line "can FLY!?"
+	text "An EXEGGUTOR who"
+	line "can FLY!?"
 	done
 
 _CeladonMansion4FYumeLabsSignText:: ; marcelnote - new
