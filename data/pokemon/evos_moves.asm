@@ -1060,7 +1060,7 @@ PoliwagEvosMoves:
 	db 21, HYPNOSIS
 	db 25, BUBBLEBEAM
 	db 31, BODY_SLAM
-	db 38, PSYBEAM  ; marcelnote - exclusive to POLIWAG
+	db 38, AMNESIA  ; marcelnote - exclusive to POLIWAG and POLIWHIRL
 	db 45, HYDRO_PUMP
 	db 0
 
@@ -1075,7 +1075,7 @@ PoliwhirlEvosMoves:
 	db 23, HYPNOSIS
 	db 27, BUBBLEBEAM
 	db 33, BODY_SLAM
-	db 41, KARATE_CHOP  ; marcelnote - exclusive to POLIWHIRL and POLIWRATH
+	db 41, AMNESIA  ; marcelnote - exclusive to POLIWAG and POLIWHIRL
 	db 49, HYDRO_PUMP
 	db 0
 
@@ -1089,7 +1089,7 @@ PoliwrathEvosMoves:
 	db 25, HYPNOSIS
 	db 29, BUBBLEBEAM
 	db 36, BODY_SLAM
-	db 45, KARATE_CHOP  ; marcelnote - exclusive to POLIWHIRL and POLIWRATH
+	db 45, KARATE_CHOP  ; marcelnote - exclusive to POLIWRATH
 	db 54, HYDRO_PUMP
 	db 0
 
