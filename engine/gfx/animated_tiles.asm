@@ -7,12 +7,12 @@ AnimateTiles::
 	ldh a, [hMovingBGTilesCounter1]
 	inc a
 	ldh [hMovingBGTilesCounter1], a
-	cp 11  ; no animation for tick < 11
+	cp 10  ; no animation for tick < 10
 	ret c
 	cp 22  ; maintain a h-tick period of 22 to keep original speed
 	jr nc, .reset
-	; animations on ticks 11–21
-	sub 11 ; a = 0–10
+	; animations on ticks 10–21
+	sub 10 ; a = 0–9
 	ld hl, AnimationsTable
 	add a
 	ld c, a
@@ -34,9 +34,10 @@ AnimateTiles::
 	ret
 
 AnimationsTable: ; each animation happens on a different counter tick
-	dw AnimateWaterTile        ; 11
-	dw AnimateWaterBollardTile ; 12
-	dw AnimateFlowerTile       ; 13
+	dw AnimateWaterTile        ; 10
+	dw AnimateWaterBollardTile ; 11
+	dw AnimateFlowerTile       ; 12
+	dw AnimateRicePlantTile    ; 13
 	dw AnimateLanternLeftTile  ; 14
 	dw AnimateLanternRightTile ; 15
 	dw AnimateLavaTile         ; 16
@@ -177,6 +178,22 @@ AnimateFlowerTile:
 	ld hl, FlowerTile3 ; if counter is 3
 .copy
 	ld de, vTileset tile $03 ; flower tile
+	jp AnimateCopyTile
+
+
+AnimateRicePlantTile:
+	ldh a, [hTileAnimations]
+	bit BIT_ANIM_FLOWER, a
+	ret z
+
+	ldh a, [hMovingBGTilesCounter2]
+	and $7 ; = %00000111 ; a modulo 8
+	cp 4
+	ld hl, RicePlantTile1 ; if counter is 0,1,2,3,4
+	jr nc, .copy
+	ld hl, RicePlantTile2 ; if counter is 5,6,7
+.copy
+	ld de, vTileset tile $23 ; rice plant tile
 	jp AnimateCopyTile
 
 
@@ -336,6 +353,9 @@ ScrollTileDown: ; marcelnote - from pokecrystal
 FlowerTile1: INCBIN "gfx/tilesets/flower/flower1.2bpp"
 FlowerTile2: INCBIN "gfx/tilesets/flower/flower2.2bpp"
 FlowerTile3: INCBIN "gfx/tilesets/flower/flower3.2bpp"
+
+RicePlantTile1: INCBIN "gfx/tilesets/rice_plant/rice_plant1.2bpp"
+RicePlantTile2: INCBIN "gfx/tilesets/rice_plant/rice_plant2.2bpp"
 
 WaterTile1: INCBIN "gfx/tilesets/water/water1.2bpp"
 WaterTile2: INCBIN "gfx/tilesets/water/water2.2bpp"

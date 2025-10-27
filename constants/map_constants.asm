@@ -38,7 +38,7 @@ DEF NUM_CITY_MAPS EQU const_value
 	map_const ROUTE_2,                       10, 36
 	map_const ROUTE_3,                       37,  9 ; marcelnote - expanded from x=35 for Celadon Grove
 	map_const ROUTE_4,                       45,  9
-	map_const ROUTE_5,                       10, 18
+	map_const ROUTE_5,                       14, 18 ; marcelnote - expanded from x = 10 for rice fields
 	map_const ROUTE_6,                       10, 18
 	map_const ROUTE_7,                       10,  9
 	map_const ROUTE_8,                       30,  9

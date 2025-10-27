@@ -1,5 +1,5 @@
 	map_header SaffronCity, SAFFRON_CITY, OVERWORLD, NORTH | SOUTH | WEST | EAST
-	connection north, Route5, ROUTE_5, 5
+	connection north, Route5, ROUTE_5, 3 ; marcelnote - was 5, adjusted for Route 6 rice fields
 	connection south, Route6, ROUTE_6, 5
 	connection west, Route7, ROUTE_7, 4
 	connection east, Route8, ROUTE_8, 4

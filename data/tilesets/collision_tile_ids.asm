@@ -9,7 +9,7 @@ Underground_Coll::
 	coll_tiles $0b, $0c, $13, $15, $18
 
 Overworld_Coll::
-	coll_tiles $00, $10, $1b, $20, $21, $23, $2c, $2d, $2e, $30, $31, $33, $39, $3c, $3e, $52, $54, $58, $5b
+	coll_tiles $00, $10, $1b, $20, $21, $2c, $2d, $30, $31, $33, $39, $3c, $3e, $52, $54, $58, $5b ; marcelnote - removed $23, $2e
 
 BigHouse_Coll::  ; marcelnote - merged REDS_HOUSE tilesets, added $04 (carpet)
 	coll_tiles $01, $02, $03, $04, $11, $12, $13, $14, $1c, $1a
