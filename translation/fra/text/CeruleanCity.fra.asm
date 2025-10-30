@@ -237,10 +237,3 @@ _CeruleanCityGymSignText::
 	para "La petite pest..."
 	line "Heu...sirène!"
 	done
-
-_CeruleanCityPhoneText:: ; TODO marcelnote - new
-	text "A pay phone?"
-
-	para "It doesn't seem"
-	line "to be working..."
-	done

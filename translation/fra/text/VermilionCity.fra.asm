@@ -157,14 +157,6 @@ _VermilionCityHarborSignText::
 	text "PORT DE CARMIN"
 	done
 
-
-_VermilionCityPhoneText:: ; TODO marcelnote - new
-	text "A pay phone?"
-
-	para "It doesn't seem"
-	line "to be working..."
-	done
-
 _VermilionCityCooltrainerFText:: ; marcelnote - new
 	text "C'était dingue,"
 	line "cette fête sur"

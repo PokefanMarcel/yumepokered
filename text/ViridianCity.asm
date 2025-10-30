@@ -228,13 +228,6 @@ _ViridianCityGymSignText::
 	line "#MON GYM"
 	done
 
-_ViridianCityPhoneText:: ; marcelnote - new
-	text "A pay phone?"
-
-	para "It doesn't seem"
-	line "to be working..."
-	done
-
 _ViridianCityGymLockedText::
 	text "The GYM's doors"
 	line "are locked..."

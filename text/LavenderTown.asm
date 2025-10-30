@@ -62,10 +62,3 @@ _LavenderTownPokemonTowerSignText::
 	line "#MON Rest Easy"
 	cont "#MON TOWER"
 	done
-
-_LavenderTownPhoneText:: ; marcelnote - new
-	text "A pay phone?"
-
-	para "It doesn't seem"
-	line "to be working..."
-	done

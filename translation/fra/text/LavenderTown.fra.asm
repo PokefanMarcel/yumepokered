@@ -64,10 +64,3 @@ _LavenderTownPokemonTowerSignText::
 	line "#MON"
 	cont "TOUR #MON"
 	done
-
-_LavenderTownPhoneText:: ; TODO marcelnote - new
-	text "A pay phone?"
-
-	para "It doesn't seem"
-	line "to be working..."
-	done

@@ -21,6 +21,5 @@ FuchsiaMeetingRoomSafariZoneWorker3:
 	text_far _FuchsiaMeetingRoomSafariZoneWorker3
 	text_end
 
-FuchsiaMeetingRoomPhoneText: ; marcelnote - new pay phones
-	text_far _FuchsiaMeetingRoomPhoneText
-	text_end
+FuchsiaMeetingRoomPhoneText: ; marcelnote - new for pay phones
+	script_pay_phone

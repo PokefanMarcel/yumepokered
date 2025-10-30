@@ -128,6 +128,5 @@ SaffronCityPokemonAcademySignText:  ; marcelnote - added Pokemon Academy
 	text_far _SaffronCityPokemonAcademySignText
 	text_end
 
-SaffronCityPhoneText: ; marcelnote - new
-	text_far _SaffronCityPhoneText
-	text_end
+SaffronCityPhoneText: ; marcelnote - new for pay phones
+	script_pay_phone

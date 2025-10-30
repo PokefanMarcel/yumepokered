@@ -324,6 +324,5 @@ PewterCitySignText:
 	text_far _PewterCitySignText
 	text_end
 
-PewterCityPhoneText: ; marcelnote - new pay phones
-	text_far _PewterCityPhoneText
-	text_end
+PewterCityPhoneText: ; marcelnote - new for pay phones
+	script_pay_phone

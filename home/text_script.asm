@@ -85,6 +85,7 @@ ENDM
 
 	dict  TX_SCRIPT_MART,                    DisplayPokemartDialogue
 	dict  TX_SCRIPT_POKECENTER_NURSE,        DisplayPokemonCenterDialogue
+	dict  TX_SCRIPT_PAY_PHONE,               DisplayPayPhoneDialogue ; marcelnote - new for pay phones
 	dict  TX_SCRIPT_PLAYERS_PC,              TextScript_ItemStoragePC
 	dict  TX_SCRIPT_BILLS_PC,                TextScript_BillsPC
 	dict  TX_SCRIPT_POKECENTER_PC,           TextScript_PokemonCenterPC
@@ -187,6 +188,13 @@ DisplayPokemonCenterDialogue::
 
 	inc hl
 	homecall DisplayPokemonCenterDialogue_
+	jp AfterDisplayingTextID
+
+DisplayPayPhoneDialogue:: ; marcelnote - new for pay phones
+	homecall DisplayPayPhoneDialogue_
+	ld a, [wCurrentMenuItem]
+	cp 2 ; cancel or B
+	jp z, CloseTextDisplay
 	jp AfterDisplayingTextID
 
 DisplaySafariGameOverText::

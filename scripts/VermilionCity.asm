@@ -278,9 +278,8 @@ VermilionCityHarborSignText:
 	text_far _VermilionCityHarborSignText
 	text_end
 
-VermilionCityPhoneText: ; marcelnote - new
-	text_far _VermilionCityPhoneText
-	text_end
+VermilionCityPhoneText: ; marcelnote - new for pay phones
+	script_pay_phone
 
 VermilionCitySailor3Text: ; marcelnote - new for ferry
 	text_asm

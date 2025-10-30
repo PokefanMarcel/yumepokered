@@ -383,3 +383,8 @@ INCLUDE "engine/menus/draw_badges.asm"                ; marcelnote - moved from 
 SECTION "GFX engine", ROMX ; marcelnote - new
 
 INCLUDE "engine/gfx/animated_tiles.asm"
+
+
+SECTION "Pay phones", ROMX
+
+INCLUDE "engine/events/pay_phone.asm" ; marcelnote - new for pay phones

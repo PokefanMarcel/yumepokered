@@ -143,8 +143,7 @@ MandarinIslandHotelSignText:
 	text_end
 
 MandarinIslandPhoneText:
-	text_far _MandarinIslandPhoneText
-	text_end
+	script_pay_phone
 
 MandarinIslandSailorFerriesText:
 	text_asm

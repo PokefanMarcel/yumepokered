@@ -64,6 +64,5 @@ LavenderTownPokemonTowerSignText:
 	text_far _LavenderTownPokemonTowerSignText
 	text_end
 
-LavenderTownPhoneText: ; marcelnote - new
-	text_far _LavenderTownPhoneText
-	text_end
+LavenderTownPhoneText: ; marcelnote - new for pay phones
+	script_pay_phone

@@ -32,6 +32,7 @@ DEF PC_ITEM_CAPACITY  EQU 50
 	const JP_POKEDEX_MENU_TEMPLATE          ; $1a
 	const SAFARI_BATTLE_MENU_TEMPLATE       ; $1b
 	const BAG_INFO_BOX                      ; $1c ; marcelnote - new for bag pockets
+	const MOM_DAISY_CANCEL_MENU_TEMPLATE    ; $1d ; marcelnote - new for pay phones
 
 ; two option menu constants
 ; TwoOptionMenuStrings indexes (see data/yes_no_menu_strings.asm)

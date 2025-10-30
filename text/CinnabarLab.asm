@@ -29,13 +29,6 @@ _CinnabarLabTestingRoomSignText::
 	line "Testing Room"
 	done
 
-_CinnabarLabPhoneText:: ; marcelnote - new pay phones
-	text "A pay phone?"
-
-	para "It doesn't seem"
-	line "to be working..."
-	done
-
 
 _CinnabarLabTradeRoomSuperNerdText::
 	text "I found this very"

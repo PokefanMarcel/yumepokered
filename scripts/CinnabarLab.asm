@@ -220,6 +220,5 @@ CinnabarLabFossilRoomScientist2Text:
 LoadFossilItemAndMonNameBank1D:
 	jpfar LoadFossilItemAndMonName
 
-CinnabarLabPhoneText: ; marcelnote - new pay phones
-	text_far _CinnabarLabPhoneText
-	text_end
+CinnabarLabPhoneText: ; marcelnote - new for pay phones
+	script_pay_phone

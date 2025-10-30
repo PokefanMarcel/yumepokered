@@ -234,10 +234,3 @@ _CeruleanCityGymSignText::
 	para "The Tomboyish"
 	line "Mermaid!"
 	done
-
-_CeruleanCityPhoneText:: ; marcelnote - new
-	text "A pay phone?"
-
-	para "It doesn't seem"
-	line "to be working..."
-	done

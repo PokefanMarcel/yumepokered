@@ -129,10 +129,3 @@ _MandarinIslandSilphCoSignText::
 _MandarinIslandHotelSignText::
 	text "HOTEL MANDARIN"
 	done
-
-_MandarinIslandPhoneText:: ; TODO manually translate
-	text "A pay phone?"
-
-	para "It doesn't seem"
-	line "to be working..."
-	done

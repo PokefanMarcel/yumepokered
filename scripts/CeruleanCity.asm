@@ -451,6 +451,5 @@ CeruleanCityGymSignText:
 	text_far _CeruleanCityGymSignText
 	text_end
 
-CeruleanCityPhoneText: ; marcelnote - new
-	text_far _CeruleanCityPhoneText
-	text_end
+CeruleanCityPhoneText: ; marcelnote - new for pay phones
+	script_pay_phone

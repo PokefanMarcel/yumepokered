@@ -320,9 +320,8 @@ ViridianCityGymSignText:
 	text_far _ViridianCityGymSignText
 	text_end
 
-ViridianCityPhoneText: ; marcelnote - new
-	text_far _ViridianCityPhoneText
-	text_end
+ViridianCityPhoneText: ; marcelnote - new for pay phones
+	script_pay_phone
 
 ViridianCityGymLockedText:
 	text_far _ViridianCityGymLockedText

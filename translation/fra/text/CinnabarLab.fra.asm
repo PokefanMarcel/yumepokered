@@ -31,13 +31,6 @@ _CinnabarLabTestingRoomSignText::
 	line "LABO #MON"
 	done
 
-_CinnabarLabPhoneText:: ; TODO marcelnote - new pay phones
-	text "A pay phone?"
-
-	para "It doesn't seem"
-	line "to be working..."
-	done
-
 
 _CinnabarLabTradeRoomSuperNerdText::
 	text "J'ai trouvé cet"

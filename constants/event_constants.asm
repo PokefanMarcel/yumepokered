@@ -29,7 +29,8 @@
 	const EVENT_GOT_TM42
 	const_skip 15 ; marcelnote - +1 for deleting EVENT_OAK_GOT_PARCEL
 	const EVENT_GOT_OAKS_PARCEL
-	const_skip 22
+	const EVENT_CALLED_MOM_VIRIDIAN
+	const_skip 21 ; marcelnote - adjusted for pay phone
 	const EVENT_GOT_TM27
 	const EVENT_BEAT_VIRIDIAN_GYM_GIOVANNI
 	const EVENT_BEAT_VIRIDIAN_GYM_TRAINER_0
@@ -45,7 +46,8 @@
 	const_next $68
 	const EVENT_BOUGHT_MUSEUM_TICKET
 	const EVENT_GOT_OLD_AMBER
-	const_skip 9 ; marcelnote - adjusted for Brock rematch
+	const EVENT_CALLED_MOM_PEWTER
+	const_skip 8 ; marcelnote - adjusted for Brock rematch and pay phone
 	const EVENT_BEAT_PEWTER_GYM_TRAINER_0
 	const_skip 2 ; marcelnote - adjusted for Brock rematch
 	const EVENT_GOT_TM34
@@ -54,7 +56,8 @@
 ; Cerulean City events
 	const_next $98
 	const EVENT_BEAT_CERULEAN_RIVAL
-	const_skip 14
+	const EVENT_CALLED_MOM_CERULEAN
+	const_skip 13 ; marcelnote - adjusted for pay phone
 	const EVENT_BEAT_CERULEAN_ROCKET_THIEF
 	const_skip 19 ; marcelnote - adjusted for Misty rematch
 	const EVENT_BEAT_CERULEAN_GYM_TRAINER_0
@@ -93,7 +96,8 @@
 	const EVENT_BEAT_POKEMONTOWER_7_TRAINER_0
 	const EVENT_BEAT_POKEMONTOWER_7_TRAINER_1
 	const EVENT_BEAT_POKEMONTOWER_7_TRAINER_2
-	const_skip 4 ; marcelnote - removed EVENT_RESCUED_MR_FUJI_2
+	const_skip 3 ; marcelnote - removed EVENT_RESCUED_MR_FUJI_2, added pay phone
+	const EVENT_CALLED_MOM_LAVENDER
 	const EVENT_GOT_POKE_FLUTE
 	const EVENT_GAVE_FUJIS_NOTES ; marcelnote - new
 	const EVENT_GOT_CITRUS_PASS  ; marcelnote - new
@@ -109,7 +113,8 @@
 	const_next $150
 	const_skip
 	const EVENT_GOT_BIKE_VOUCHER
-	const_skip 4
+	const EVENT_CALLED_MOM_VERMILION
+	const_skip 3 ; marcelnote - adjusted for pay phone
 	const EVENT_SEEL_FAN_BOAST
 	const EVENT_PIKACHU_FAN_BOAST
 	const_skip 8
@@ -126,7 +131,8 @@
 ; Celadon City events
 	const_next $180
 	const EVENT_GOT_TM41
-	const_skip 11
+	const EVENT_CALLED_MOM_CELADON
+	const_skip 10 ; marcelnote - adjusted for pay phone
 	const EVENT_GOT_TM13
 	const EVENT_GOT_TM48
 	const EVENT_GOT_TM49
@@ -160,7 +166,8 @@
 	const_skip 12 ; marcelnote - adjusted for Koga rematch
 	const EVENT_SAFARI_GAME_OVER
 	const EVENT_IN_SAFARI_ZONE
-	const_skip 8
+	const EVENT_CALLED_MOM_FUCHSIA
+	const_skip 7 ; marcelnote - adjusted for pay phone
 	const EVENT_GOT_TM06
 	const EVENT_BEAT_KOGA
 	const_skip 1 ; marcelnote - adjusted for Koga rematch
@@ -202,7 +209,8 @@
 	const EVENT_GAVE_FOSSIL_TO_LAB
 	const EVENT_LAB_STILL_REVIVING_FOSSIL
 	const EVENT_LAB_HANDING_OVER_FOSSIL_MON
-	const_skip 6
+	const EVENT_CALLED_MOM_CINNABAR
+	const_skip 5 ; marcelnote - adjusted for pay phone
 	const EVENT_BEAT_MOLTRES  ; marcelnote - Moltres at Cinnabar Volcano, must be bit 1
 	const EVENT_CINNABAR_VOLCANO_1F_BOULDER_ON_SWITCH
 	const EVENT_CINNABAR_VOLCANO_2F_BOULDER1_ON_SWITCH
@@ -221,7 +229,8 @@
 	const_next $340
 	const EVENT_GOT_TM31
 	const EVENT_GAVE_SAFFRON_GUARDS_DRINK ; marcelnote - moved from wStatusFlags1
-	const_skip 6 ; marcelnote - adjusted
+	const EVENT_CALLED_MOM_SAFFRON
+	const_skip 5 ; marcelnote - adjusted for pay phone
 	const EVENT_DEFEATED_FIGHTING_DOJO
 	const EVENT_BEAT_KARATE_MASTER
 	const EVENT_BEAT_FIGHTING_DOJO_TRAINER_0
@@ -821,7 +830,7 @@ DEF INDIGO_PLATEAU_EVENTS_START EQU const_value
 	const EVENT_BEAT_SABRINA_REMATCH
 	const EVENT_BEAT_BLAINE_REMATCH
 DEF INDIGO_PLATEAU_EVENTS_END EQU const_value - 1
-	const EVENT_BECAME_CHAMPION ; marcelnote - new event to mark postgame
+	const EVENT_BECAME_CHAMPION    ; marcelnote - new event to mark postgame
 
 ; Victory Road 1F events
 	const_next $910
@@ -841,6 +850,7 @@ DEF INDIGO_PLATEAU_EVENTS_END EQU const_value - 1
 	const EVENT_GAVE_JABARA_FLUTE
 	const EVENT_JABARA_RUNNING_TESTS
 	const EVENT_JABARA_RETURNED_FLUTE
+	const EVENT_CALLED_MOM_MANDARIN
 
 ; Silph Factory events ; marcelnote - new
 	const_next $930

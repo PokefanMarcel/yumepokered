@@ -544,3 +544,13 @@ IF DEF(_FRA)
 ELSE
 	INCLUDE "data/moves/names.asm"
 ENDC
+
+
+SECTION "Pay Phone Text", ROMX
+
+IF DEF(_FRA)
+;	INCLUDE "translation/fra/data/text/pay_phone.fra.asm" ; TODO - activate
+	INCLUDE "data/text/pay_phone.asm"
+ELSE
+	INCLUDE "data/text/pay_phone.asm"
+ENDC

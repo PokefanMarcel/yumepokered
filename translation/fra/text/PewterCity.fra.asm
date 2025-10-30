@@ -125,10 +125,3 @@ _PewterCitySignText::
 	line "Le mat et le gris"
 	cont "de la roche."
 	done
-
-_PewterCityPhoneText:: ; TODO marcelnote - new pay phones
-	text "A pay phone?"
-
-	para "It doesn't seem"
-	line "to be working..."
-	done

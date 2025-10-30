@@ -170,10 +170,3 @@ _SaffronCitySilphCoLatestProductSignText::
 _SaffronCityPokemonAcademySignText::
 	text "ACADEMIE #MON"
 	done
-
-_SaffronCityPhoneText:: ; TODO marcelnote - new
-	text "A pay phone?"
-
-	para "It doesn't seem"
-	line "to be working..."
-	done

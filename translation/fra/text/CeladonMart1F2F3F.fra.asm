@@ -34,13 +34,6 @@ _CeladonMart1FCurrentFloorSignText::
 	line "RENSEIGNEMENTS"
 	done
 
-_CeladonMart1FPhoneText:: ; TODO marcelnote - new
-	text "A pay phone?"
-
-	para "It doesn't seem"
-	line "to be working..."
-	done
-
 
 _CeladonMart2FMiddleAgedManText::
 	text "Le SUPEREPOUSSE"

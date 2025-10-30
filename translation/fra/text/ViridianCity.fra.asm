@@ -202,11 +202,3 @@ _ViridianCityTrainerTips3Text:: ; marcelnote - new
 	para "Maintenez B"
 	line "pour courir!"
 	done
-
-	
-_ViridianCityPhoneText:: ; TODO marcelnote - new
-	text "A pay phone?"
-
-	para "It doesn't seem"
-	line "to be working..."
-	done

@@ -43,9 +43,8 @@ CeladonMart1FCurrentFloorSignText:
 	text_far _CeladonMart1FCurrentFloorSignText
 	text_end
 
-CeladonMart1FPhoneText: ; marcelnote - new
-	text_far _CeladonMart1FPhoneText
-	text_end
+CeladonMart1FPhoneText: ; marcelnote - new for pay phones
+	script_pay_phone
 
 CeladonMart2FMiddleAgedManText:
 	text_far _CeladonMart2FMiddleAgedManText

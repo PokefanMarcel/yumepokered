@@ -154,10 +154,3 @@ _SaffronCitySilphCoLatestProductSignText::
 _SaffronCityPokemonAcademySignText:: ; marcelnote - added Pokemon Academy
 	text "#MON ACADEMY"
 	done
-
-_SaffronCityPhoneText:: ; marcelnote - new
-	text "A pay phone?"
-
-	para "It doesn't seem"
-	line "to be working..."
-	done

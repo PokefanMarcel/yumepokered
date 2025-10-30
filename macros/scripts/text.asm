@@ -240,3 +240,8 @@ ENDM
 MACRO script_vending_machine
 	db TX_SCRIPT_VENDING_MACHINE
 ENDM
+
+	const TX_SCRIPT_PAY_PHONE ; $f4 ; marcelnote - new for pay phones
+MACRO script_pay_phone
+	db TX_SCRIPT_PAY_PHONE
+ENDM
