@@ -8,15 +8,23 @@ _PayPhoneIntroText::
 	line "to call?"
 	done
 
-_PayPhoneMomViridianText::
+_PayPhoneMomIntroText::
 	text "..."
 
 	para "MOM: Hello?"
 
 	para "Oh, <PLAYER>!"
 	line "Where are you?"
+	prompt
 
-	para "You're in VIRIDIAN!"
+_PayPhoneMomOutroText::
+	text "Take care!"
+
+	para "..."
+	done
+
+_PayPhoneMomViridianText::
+	text "You're in VIRIDIAN!"
 ;	line "I got lost in the"
 ;	cont "forest, once."
 	line "The sunlight"
@@ -30,21 +38,10 @@ _PayPhoneMomViridianText::
 	line "your shoelaces"
 	cont "tight before you"
 	cont "go, okay?"
-
-	para "Take care!"
-
-	para "..."
-	done
+	prompt
 
 _PayPhoneMomPewterText::
-	text "..."
-
-	para "MOM: Hello?"
-
-	para "Oh, <PLAYER>!"
-	line "Where are you?"
-
-	para "PEWTER? I heard"
+	text "PEWTER? I heard"
 	line "the city faintly"
 	cont "smells of stone"
 	cont "after the rain..."
@@ -55,21 +52,10 @@ _PayPhoneMomPewterText::
 	line "handle yourself,"
 	cont "but call me when"
 	cont "you can, okay?"
-
-	para "Take care!"
-
-	para "..."
-	done
+	prompt
 
 _PayPhoneMomCeruleanText::
-	text "..."
-
-	para "MOM: Hello?"
-
-	para "Oh, <PLAYER>!"
-	line "Where are you?"
-
-	para "Ah, CERULEAN..."
+	text "Ah, CERULEAN..."
 	line "Flowers blooming"
 	cont "by the water."
 	cont "It looks like a"
@@ -80,21 +66,10 @@ _PayPhoneMomCeruleanText::
 	line "a moment, you'll"
 	cont "notice how nature"
 	cont "quietly opens up."
-
-	para "Take care!"
-
-	para "..."
-	done
+	prompt
 
 _PayPhoneMomVermilionText::
-	text "..."
-
-	para "MOM: Hello?"
-
-	para "Oh, <PLAYER>!"
-	line "Where are you?"
-
-	para "VERMILION! I can"
+	text "VERMILION! I can"
 	line "picture those big"
 	cont "ships full of"
 	cont "travelers..."
@@ -108,21 +83,10 @@ _PayPhoneMomVermilionText::
 	line "dress warm, okay?"
 	cont "Port towns can"
 	cont "be chilly."
-
-	para "Take care!"
-
-	para "..."
-	done
+	prompt
 
 _PayPhoneMomLavenderText::
-	text "..."
-
-	para "MOM: Hello?"
-
-	para "Oh, <PLAYER>!"
-	line "Where are you?"
-
-	para "LAVENDER? People"
+	text "LAVENDER? People"
 	line "say it's a sad"
 	cont "town, but I think"
 	cont "it is peaceful"
@@ -132,21 +96,10 @@ _PayPhoneMomLavenderText::
 	line "can say what we"
 	cont "can't put into"
 	cont "words."
-
-	para "Take care!"
-
-	para "..."
-	done
+	prompt
 
 _PayPhoneMomCeladonText::
-	text "..."
-
-	para "MOM: Hello?"
-
-	para "Oh, <PLAYER>!"
-	line "Where are you?"
-
-	para "Oh, CELADON is"
+	text "Oh, CELADON is"
 	line "so dazzling in"
 	cont "the evening! Neon"
 	cont "signs and lights"
@@ -155,21 +108,10 @@ _PayPhoneMomCeladonText::
 	para "Try not to spend"
 	line "all your money"
 	cont "shopping, okay?"
-
-	para "Take care!"
-
-	para "..."
-	done
+	prompt
 
 _PayPhoneMomSaffronText::
-	text "..."
-
-	para "MOM: Hello?"
-
-	para "Oh, <PLAYER>!"
-	line "Where are you?"
-
-	para "Ah, SAFFRON! Big"
+	text "Ah, SAFFRON! Big"
 	line "cities can feel"
 	cont "overwhelming,"
 	cont "right? People"
@@ -178,21 +120,10 @@ _PayPhoneMomSaffronText::
 	para "Remember, it's okay"
 	line "to take a break"
 	cont "sometimes."
-
-	para "Take care!"
-
-	para "..."
-	done
+	prompt
 
 _PayPhoneMomFuchsiaText::
-	text "..."
-
-	para "MOM: Hello?"
-
-	para "Oh, <PLAYER>!"
-	line "Where are you?"
-
-	para "The view from"
+	text "The view from"
 	line "FUCHSIA's hills is"
 	cont "lovely, isn't it?"
 	cont "All those birds"
@@ -200,21 +131,10 @@ _PayPhoneMomFuchsiaText::
 
 	para "Take a moment to"
 	line "look, won't you?"
-
-	para "Take care!"
-
-	para "..."
-	done
+	prompt
 
 _PayPhoneMomCinnabarText::
-	text "..."
-
-	para "MOM: Hello?"
-
-	para "Oh, <PLAYER>!"
-	line "Where are you?"
-
-	para "CINNABAR? If the"
+	text "CINNABAR? If the"
 	line "sea is calm, you"
 	cont "might see the"
 	cont "reflection of the"
@@ -225,21 +145,10 @@ _PayPhoneMomCinnabarText::
 	para "You sound so grown"
 	line "up, <PLAYER>. I'm"
 	cont "at ease now."
-
-	para "Take care!"
-
-	para "..."
-	done
+	prompt
 
 _PayPhoneMomMandarinText::
-	text "..."
-
-	para "MOM: Hello?"
-
-	para "Oh, <PLAYER>!"
-	line "Where are you?"
-
-	para "MANDARIN ISLAND!"
+	text "MANDARIN ISLAND!"
 	line "You're so far"
 	cont "from home now..."
 	cont "Is the sea as"
@@ -249,11 +158,7 @@ _PayPhoneMomMandarinText::
 	line "you go, you'll al-"
 	cont "ways have a home"
 	cont "waiting for you."
-
-	para "Take care!"
-
-	para "..."
-	done
+	prompt
 
 
 _PayPhoneDaisyOldRodText::

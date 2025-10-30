@@ -46,6 +46,8 @@ DisplayPayPhoneDialogue_::
 	jr nz, .callDaisy
 	; fallthrough
 .callMom
+	ld hl, PayPhoneMomIntroText
+	call PrintText
 	ld a, [wCurMap]
 	ld b, a
 	ld de, 5
@@ -73,6 +75,8 @@ DisplayPayPhoneDialogue_::
 	; print Mom's text
 	ld h, d
 	ld l, e
+	call PrintText
+	ld hl, PayPhoneMomOutroText
 .print_text
 	call PrintText
 	jp UpdateSprites
@@ -180,6 +184,14 @@ TablePayPhoneMom:
 	pay_phone_mom FUCHSIA_MEETING_ROOM, EVENT_CALLED_MOM_FUCHSIA,   PayPhoneMomFuchsiaText
 	pay_phone_mom CINNABAR_LAB,         EVENT_CALLED_MOM_CINNABAR,  PayPhoneMomCinnabarText
 	pay_phone_mom MANDARIN_ISLAND,      EVENT_CALLED_MOM_MANDARIN,  PayPhoneMomMandarinText
+
+PayPhoneMomIntroText:
+	text_far _PayPhoneMomIntroText
+	text_end
+
+PayPhoneMomOutroText:
+	text_far _PayPhoneMomOutroText
+	text_end
 
 PayPhoneMomViridianText:
 	text_far _PayPhoneMomViridianText
