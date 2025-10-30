@@ -351,7 +351,7 @@ SpecialEnterMap::
 
 VersionText:
 	db "  <PKMN>Yume "
-	db "v1.1@"
+	db "v1.2beta@"
 ;db " v"
 ;INCLUDE "version_number.asm"
 ;db "@"
