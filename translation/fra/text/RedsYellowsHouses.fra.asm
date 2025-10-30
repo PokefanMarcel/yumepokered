@@ -38,12 +38,12 @@ _RedsHouse1FTVWrongSideText::
 	line "côté."
 	done
 
-_RedsHouse1FPhoneText:: ; marcelnote - new
-	text "The phone is"
-	line "silent."
+_RedsHouse1FPhoneText:: ; marcelnote - new for pay phones
+	text "C'est le téléphone."
 
-	para "I should call"
-	line "home more often."
+	para "Je devrais appeler"
+	line "MAMAN de temps"
+	cont "en temps."
 	done
 
 _RedsHouse2FSNESText:: ; marcelnote - moved from hidden_objects

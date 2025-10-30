@@ -29,7 +29,7 @@ RedsYellowsHouses_TextPointers:
 	dw_const YellowsHouse2FAsleepText,       TEXT_YELLOWSHOUSE2F_ASLEEP        ; marcelnote - new for Yellow's bedroom
 	dw_const YellowsHouse2FYellowText,       TEXT_YELLOWSHOUSE2F_YELLOW        ; marcelnote - Yellow
 	dw_const RedsHouse1FTVText,              TEXT_REDSHOUSE1F_TV
-	dw_const RedsHouse1FPhoneText,           TEXT_REDSHOUSE1F_PHONE         ; marcelnote - new
+	dw_const RedsHouse1FPhoneText,           TEXT_REDSHOUSE1F_PHONE         ; marcelnote - new for pay phones
 	dw_const RedsHouse2FSNESText,            TEXT_REDSHOUSE2F_SNES          ; marcelnote - moved from hidden_objects
 	dw_const YellowsHouse1FTVText,           TEXT_YELLOWSHOUSE1F_TV         ; marcelnote - new for Yellow's bedroom
 	dw_const YellowsHouse2FGameboyText,      TEXT_YELLOWSHOUSE2F_GAMEBOY    ; marcelnote - new for Yellow's bedroom
