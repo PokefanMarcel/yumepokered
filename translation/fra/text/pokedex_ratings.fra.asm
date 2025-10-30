@@ -29,11 +29,17 @@ _DexRatingText_Own10To19::
 	cont "FLASH!"
 	done
 
-_DexRatingText_Own20To29::
-	text "Il te faut encore"
-	line "des #MON!"
-	cont "Va en capturer"
-	cont "d'autres!"
+_DexRatingText_Own20To29:: ; marcelnote - changed for PokeBeeper
+;	text "Il te faut encore"
+;	line "des #MON!"
+;	cont "Va en capturer"
+;	cont "d'autres!"
+
+	text "Ta BOITE doit être"
+	line "presque pleine!"
+	cont "Mon ASSISTANT te"
+	cont "donnera un"
+	cont "# BIP!"
 	done
 
 _DexRatingText_Own30To39::

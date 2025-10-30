@@ -27,11 +27,16 @@ _DexRatingText_Own10To19::
 	cont "from my AIDE!"
 	done
 
-_DexRatingText_Own20To29::
-	text "You still need"
-	line "more #MON!"
-	cont "Try to catch"
-	cont "other species!"
+_DexRatingText_Own20To29:: ; marcelnote - changed for PokeBeeper
+;	text "You still need"
+;	line "more #MON!"
+;	cont "Try to catch"
+;	cont "other species!"
+
+	text "Your BOX must"
+	line "be almost full!"
+	cont "Get a # BEEPER"
+	cont "from my AIDE!"
 	done
 
 _DexRatingText_Own30To39::
