@@ -40,7 +40,7 @@ DEF NUM_CITY_MAPS EQU const_value
 	map_const ROUTE_4,                       45,  9
 	map_const ROUTE_5,                       14, 18 ; marcelnote - expanded from x = 10 for rice fields
 	map_const ROUTE_6,                       10, 18
-	map_const ROUTE_7,                       10,  9
+	map_const ROUTE_7,                       10, 12 ; marcelnote - expanded from y=9
 	map_const ROUTE_8,                       30,  9
 	map_const ROUTE_9,                       30,  9
 	map_const ROUTE_10,                      10, 36

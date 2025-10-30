@@ -10,6 +10,7 @@ Route7_Object:
 
 	def_bg_events
 	bg_event  3, 13, TEXT_ROUTE7_UNDERGROUND_PATH_SIGN
+	bg_event  7, 17, TEXT_ROUTE7_FISHING_POND_SIGN ; marcelnote - new for fishing pond
 
 	def_object_events
 
