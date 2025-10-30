@@ -17,11 +17,11 @@ ENDM
 Tilesets:
 	table_width 12
 	; name, 3 counter tiles, grass tile, animations
-	tileset Overworld,    -1, -1, -1, $52, TILEANIM_WATER_FLOWER_WBOLLARD ; marcelnote - was TILEANIM_WATER_FLOWER
-	tileset BigHouse,     -1, -1, -1,  -1, TILEANIM_NONE  ; marcelnote - renamed REDS_HOUSE_1 tileset
-	tileset Forest,       -1, -1, -1, $11, TILEANIM_WATER ; marcelnote - reorganized tileset
-	tileset Safari,       -1, -1, -1, $20, TILEANIM_WATER   ; marcelnote - new tileset from FOREST
-	tileset Pokecenter,  $58,$25,$3C,  -1, TILEANIM_NONE    ; marcelnote - modified tileset
+	tileset Overworld,    -1, -1, -1, $52, TILEANIM_OVERWORLD ; marcelnote - was TILEANIM_WATER_FLOWER
+	tileset BigHouse,     -1, -1, -1,  -1, TILEANIM_NONE      ; marcelnote - renamed REDS_HOUSE_1 tileset
+	tileset Forest,       -1, -1, -1, $11, TILEANIM_WATER     ; marcelnote - reorganized tileset
+	tileset Safari,       -1, -1, -1, $20, TILEANIM_WATER     ; marcelnote - new tileset from FOREST
+	tileset Pokecenter,  $58,$25,$3C,  -1, TILEANIM_NONE      ; marcelnote - modified tileset
 	tileset Gym,         $3A, -1, -1,  -1, TILEANIM_WATER_FLOWER
 	tileset House,        -1, -1, -1,  -1, TILEANIM_NONE
 	tileset Underground,  -1, -1, -1,  -1, TILEANIM_NONE

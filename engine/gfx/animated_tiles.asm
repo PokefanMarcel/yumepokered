@@ -183,7 +183,7 @@ AnimateFlowerTile:
 
 AnimateRicePlantTile:
 	ldh a, [hTileAnimations]
-	bit BIT_ANIM_FLOWER, a
+	bit BIT_ANIM_RICEPLANT, a
 	ret z
 
 	ldh a, [hMovingBGTilesCounter2]

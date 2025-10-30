@@ -34,12 +34,13 @@ DEF MAX_OBJECT_EVENTS EQU 16
 	const BIT_ANIM_LAVA       ; bit 4 = lava tiles $49, $4A, $4B are animated
 	const BIT_ANIM_WATERFALL  ; bit 5 = waterfall tile $48 is animated
 	const BIT_ANIM_LIVEWATER  ; bit 6 = water tile $14 (slowly) and live water tile $15 are animated
+	const BIT_ANIM_RICEPLANT  ; bit 7 = rice plant tile $23 is animated
 
 	DEF TILEANIM_NONE                     EQU %00000000 ; = 0
 	DEF TILEANIM_WATER                    EQU %00000001 ; = 1
 	DEF TILEANIM_WATER_FLOWER             EQU %00000011 ; = 3
 	DEF TILEANIM_WATER_WBOLLARD           EQU %00000101 ; = 5
-	DEF TILEANIM_WATER_FLOWER_WBOLLARD    EQU %00000111 ; = 7
+	DEF TILEANIM_OVERWORLD                EQU %10000111 ; = 135
 	DEF TILEANIM_LANTERN                  EQU %00001000 ; = 8
 	DEF TILEANIM_CAVERN                   EQU %00110001 ; = 49
 	DEF TILEANIM_MOUNTAIN                 EQU (1 << BIT_ANIM_WATER) | (1 << BIT_ANIM_LAVA)
