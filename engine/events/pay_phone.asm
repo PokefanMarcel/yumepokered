@@ -20,7 +20,7 @@ DisplayPayPhoneDialogue_::
 	xor a
 	ldh [hMoney], a
 	ldh [hMoney + 1], a
-	ld a, $5
+	ld a, $10
 	ldh [hMoney + 2], a
 	call HasEnoughMoney
 	ld hl, .NotEnoughMoneyText
@@ -29,7 +29,7 @@ DisplayPayPhoneDialogue_::
 	xor a
 	ld [wPriceTemp], a
 	ld [wPriceTemp + 1], a
-	ld a, $5
+	ld a, $10
 	ld [wPriceTemp + 2], a
 	ld hl, wPriceTemp + 2
 	ld de, wPlayerMoney + 2

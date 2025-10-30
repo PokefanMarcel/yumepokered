@@ -2,7 +2,7 @@
 
 _PayPhoneIntroText::
 	text "A pay phone!"
-	line "It's ¥5 per use."
+	line "It's ¥10 per use."
 
 	para "Who do you want"
 	line "to call?"
