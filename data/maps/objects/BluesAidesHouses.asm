@@ -18,6 +18,7 @@ BluesAidesHouses_Object:
 	warp_event 17,  7, LAST_MAP, 5
 
 	def_bg_events
+	bg_event  7,  6, TEXT_BLUESHOUSE_PHONE ; marcelnote - new for pay phone
 
 	def_object_events
 	object_event  2,  3, SPRITE_DAISY, STAY, RIGHT, TEXT_BLUESHOUSE_DAISY_SITTING

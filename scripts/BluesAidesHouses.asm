@@ -31,7 +31,8 @@ BluesAidesHouses_TextPointers:
 	dw_const BluesHouseDaisyWalkingText,         TEXT_BLUESHOUSE_DAISY_WALKING
 	dw_const AidesHouseMiddleAgedWomanText,      TEXT_AIDESHOUSE_MIDDLE_AGED_WOMAN ; marcelnote - new Pallet house
 	dw_const BluesHouseTownMapText,              TEXT_BLUESHOUSE_TOWN_MAP
-	dw_const AidesHouseMemoText,                 TEXT_AIDESHOUSE_MEMO ; marcelnote - new Pallet house
+	dw_const AidesHouseMemoText,                 TEXT_AIDESHOUSE_MEMO  ; marcelnote - new Pallet house
+	dw_const BluesHousePhoneText,                TEXT_BLUESHOUSE_PHONE ; marcelnote - new for pay phone
 
 BluesHouseDaisySittingText: ; marcelnote - optimized
 	text_asm
@@ -77,12 +78,31 @@ BluesHouseDaisyUseMapText:
 	text_far _BluesHouseDaisyUseMapText
 	text_end
 
-BluesHouseDaisyWalkingText:
-	text_far _BluesHouseDaisyWalkingText
+BluesHouseDaisyWalkingText: ; marcelnote - modified for pay phones
+	text_asm
+	ldh a, [hRandomAdd]
+	ld hl, .LivingThingsText
+	cp 85 ; 85/256 chance of 1st dialogue
+	jr c, .print_text
+	ld hl, .PhoneText
+.print_text
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+.LivingThingsText
+	text_far _BluesHouseDaisyWalkingLivingThingsText
+	text_end
+
+.PhoneText
+	text_far _BluesHouseDaisyWalkingPhoneText
 	text_end
 
 BluesHouseTownMapText:
 	text_far _BluesHouseTownMapText
+	text_end
+
+BluesHousePhoneText: ; marcelnote - new for pay phones
+	text_far _BluesHousePhoneText
 	text_end
 
 AidesHouseMiddleAgedWomanText: ; marcelnote - new Pallet house

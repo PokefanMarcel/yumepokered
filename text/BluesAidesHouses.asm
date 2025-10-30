@@ -5,10 +5,17 @@ _BluesHouseDaisyRivalAtLabText::
 	done
 
 _BluesHouseDaisyOfferMapText::
-	text "Grandpa asked you"
-	line "to run an errand?"
-	cont "Here, this will"
-	cont "help you!"
+;	text "Grandpa asked you" ; original
+;	line "to run an errand?"
+;	cont "Here, this will"
+;	cont "help you!"
+
+	text "DAISY: Grandpa" ; marcelnote - new to add Daisy's name
+	line "asked you to"
+	cont "run an errand?"
+
+	para "Here, this will"
+	line "help you!"
 	prompt
 
 _GotMapText::
@@ -29,16 +36,35 @@ _BluesHouseDaisyUseMapText::
 	cont "you are."
 	done
 
-_BluesHouseDaisyWalkingText::
-	text "#MON are living"
-	line "things! If they"
-	cont "get tired, give"
-	cont "them a rest!"
+_BluesHouseDaisyWalkingLivingThingsText::
+;	text "#MON are living" ; original
+;	line "things! If they"
+;	cont "get tired, give"
+;	cont "them a rest!"
+
+	text "DAISY: #MON are" ; marcelnote - new to add Daisy's name
+	line "living things!"
+
+	para "If they get tired,"
+	line "give them a rest!"
+	done
+
+_BluesHouseDaisyWalkingPhoneText:: ; marcelnote - new for pay phones
+	text "DAISY: Grandpa got"
+	line "me a new phone!"
+
+	para "Call me when you"
+	line "need help, okay?"
 	done
 
 _BluesHouseTownMapText::
 	text "It's a big map!"
 	line "This is useful!"
+	done
+
+_BluesHousePhoneText:: ; marcelnote - new for pay phones
+	text "It's DAISY's phone."
+	line "Still shiny!"
 	done
 
 _AidesHouseMiddleAgedWomanText:: ; marcelnote - new Pallet house
