@@ -252,7 +252,6 @@ TablePayPhoneDaisy:
 	pay_phone_daisy CINNABAR_LAB,         PayPhoneDaisyDynamicTMSellerText
 	pay_phone_daisy MANDARIN_ISLAND,      PayPhoneDaisyFishingGuideText
 
-
 PayPhoneDaisyOldRodText:
 	text_far _PayPhoneDaisyOldRodText
 	text_end
