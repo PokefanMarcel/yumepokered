@@ -34,9 +34,8 @@ _PayPhoneMomViridianText::
 	cont "me feel like time"
 	cont "has stopped."
 
-	para "Tie your shoelaces"
-	line "tight before you"
-	cont "go, okay?"
+	para "Don't get lost in"
+	line "the forest, okay?"
 	prompt
 
 _PayPhoneMomPewterText::
@@ -63,8 +62,8 @@ _PayPhoneMomCeruleanText::
 
 	para "If you pause for"
 	line "a moment, you'll"
-	cont "notice how nature"
-	cont "quietly opens up."
+	cont "notice things you"
+	cont "didn't see before."
 	prompt
 
 _PayPhoneMomVermilionText::
@@ -360,9 +359,8 @@ _PayPhoneDaisyFishingGuideText::
 
 	para "With it, your"
 	line "#DEX will also"
-	cont "show where"
-	cont "locations for"
-	cont "fishing #MON!"
+	cont "show where you"
+	cont "can fish #MON!"
 
 	para "Bye!"
 
