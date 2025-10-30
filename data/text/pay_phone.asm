@@ -34,9 +34,8 @@ _PayPhoneMomViridianText::
 	cont "me feel like time"
 	cont "has stopped."
 
-	para "Make sure to tie"
-	line "your shoelaces"
-	cont "tight before you"
+	para "Tie your shoelaces"
+	line "tight before you"
 	cont "go, okay?"
 	prompt
 
@@ -379,12 +378,12 @@ _PayPhoneDaisyPostgameLoreleiText::
 	para "MANDARIN ISLAND"
 	line "was on the news."
 	cont "They said there's"
-	cont "some kind of mess"
-	cont "at a factory."
+	cont "trouble at"
+	cont "a factory there."
 
-	para "It sounded bad."
+	para "It sounded bad..."
 	line "Please be careful"
-	cont "if you go..."
+	cont "if you go."
 
 	para "Bye!"
 
@@ -397,16 +396,14 @@ _PayPhoneDaisyPostgameBrunoText::
 	para "DAISY: Hello?"
 	line "Hi <PLAYER>!"
 
-	para "You know BRUNO of"
-	line "the ELITE FOUR?"
+	para "BRUNO was on the"
+	line "news again today!"
 	cont "He was seen in"
 	cont "SAFFRON CITY!"
 
-	para "He looked so cool"
-	line "on the news!"
-
-	para "Maybe you'll see"
-	line "him too!"
+	para "Doesn't he look"
+	line "cool? Maybe you'll"
+	cont "see him too!"
 
 	para "Bye!"
 
@@ -425,8 +422,8 @@ _PayPhoneDaisyPostgameAgathaText::
 	cont "the old tower."
 
 	para "I couldn't quite"
-	line "catch the details,"
-	cont "maybe you should"
+	line "catch the details."
+	cont "Maybe you should"
 	cont "go see."
 
 	para "Bye!"
