@@ -4,11 +4,11 @@
 ; it's mainly used to simulate differences in elevation
 
 TilePairCollisionsLand::
-	db CAVERN,   $20, $05
-	db CAVERN,   $41, $05
-	db CAVERN,   $41, $20 ; marcelnote - new
-	db CAVERN,   $2A, $05
-	db CAVERN,   $05, $21
+	db CAVERN,   $20, $05 ; marcelnote - ground to floor
+	db CAVERN,   $41, $05 ; marcelnote - floors of different elevations
+	db CAVERN,   $41, $20 ; marcelnote - new, ground to floor
+	db CAVERN,   $2A, $05 ; marcelnote - ground to floor
+	db CAVERN,   $05, $21 ; marcelnote - carpet to floor
 	db SAFARI,   $30, $2E ; marcelnote - new tileset from FOREST
 	db SAFARI,   $52, $2E
 	db SAFARI,   $55, $2E
