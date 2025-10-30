@@ -35,7 +35,7 @@ ENDM
 	map_const INDIGO_PLATEAU,                10,  9
 DEF NUM_CITY_MAPS EQU const_value
 	map_const ROUTE_1,                       10, 18
-	map_const ROUTE_2,                       10, 36
+	map_const ROUTE_2,                       11, 36 ; marcelnote - expanded from x=10 for new layout
 	map_const ROUTE_3,                       37,  9 ; marcelnote - expanded from x=35 for Celadon Grove
 	map_const ROUTE_4,                       45,  9
 	map_const ROUTE_5,                       14, 18 ; marcelnote - expanded from x = 10 for rice fields
@@ -49,7 +49,7 @@ DEF NUM_CITY_MAPS EQU const_value
 	map_const ROUTE_13,                      30,  9
 	map_const ROUTE_14,                      10, 27
 	map_const ROUTE_15,                      30,  9
-	map_const ROUTE_16,                      22, 10 ; marcelnote - expanded to solve visual bug
+	map_const ROUTE_16,                      40, 10 ; marcelnote - expanded from
 	map_const ROUTE_17,                      10, 72
 	map_const ROUTE_18,                      25,  9
 	map_const ROUTE_19,                      15, 27 ; marcelnote - adjusted for expanded Route 19

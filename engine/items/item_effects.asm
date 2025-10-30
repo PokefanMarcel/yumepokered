@@ -1836,8 +1836,8 @@ Route12SnorlaxFluteCoords:
 	db -1 ; end
 
 Route16SnorlaxFluteCoords: ; marcelnote - was changed for new map size
-	dbmapcoord 31, 12 ; one space West of Snorlax ; was 25, 10
-	dbmapcoord 29, 12 ; one space East of Snorlax ; was 27, 10
+	dbmapcoord 65, 12 ; one space West of Snorlax ; was 25, 10
+	dbmapcoord 67, 12 ; one space East of Snorlax ; was 27, 10
 	db -1 ; end
 
 CeladonGroveMewFluteCoords: ; marcelnote - new

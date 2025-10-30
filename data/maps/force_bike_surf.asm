@@ -4,8 +4,8 @@ ENDM
 
 ForcedBikeOrSurfMaps:
 	; map id, x, y
-	force_bike_surf ROUTE_16,            21, 12 ; marcelnote - adjusted for new ROUTE_16 map size
-	force_bike_surf ROUTE_16,            21, 13 ; marcelnote - adjusted for new ROUTE_16 map size
+	force_bike_surf ROUTE_16,            57, 12 ; marcelnote - adjusted for new ROUTE_16 map size
+	force_bike_surf ROUTE_16,            57, 13 ; marcelnote - adjusted for new ROUTE_16 map size
 	force_bike_surf ROUTE_18,            33,  8
 	force_bike_surf ROUTE_18,            33,  9
 	force_bike_surf SEAFOAM_ISLANDS_B3F, 18,  7
