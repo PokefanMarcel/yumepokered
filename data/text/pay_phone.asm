@@ -438,7 +438,7 @@ _PayPhoneDaisyPostgameLanceText::
 	para "I just heard news"
 	line "from CINNABAR."
 	cont "A wild #MON is"
-	cont "causing a stir"
+	cont "causing a panic"
 	cont "near the volcano."
 
 	para "You might want to"
