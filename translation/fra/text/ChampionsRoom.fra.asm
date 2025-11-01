@@ -152,7 +152,7 @@ _ChampionsRoomOakText::
 _ChampionsRoomOakCongratulatesPlayerText::
 	text "CHEN: Tu as gagné!"
 	line "Félicitations!"
-	cont "Tu es le nouveau"
+	cont "Tu es le nouveau" ; gendered text
 	cont "champion de la"
 	cont "LIGUE #MON!"
 
