@@ -48,42 +48,41 @@ MarowakAnim:
 	call Delay3
 	jp ClearSprites
 
-; copies a mon pic's  from background VRAM to sprite VRAM and sets up OAM
-CopyMonPicFromBGToSpriteVRAM:
+; copies a mon pic's from background VRAM to sprite VRAM and sets up OAM
+CopyMonPicFromBGToSpriteVRAM: ; marcelnote - changed from column-major to row-major
 	ld de, vFrontPic
 	ld hl, vSprites
 	ld bc, 7 * 7
 	call CopyVideoData
-	ld a, $10
-	ld [wBaseCoordY], a
-	ld a, $70
+	ld e, $10            ; starting Y
+	ld a, $70            ; starting X
 	ld [wBaseCoordX], a
 	ld hl, wShadowOAM
-	lb bc, 6, 6
-	ld d, $8
-.oamLoop
-	push bc
-	ld a, [wBaseCoordY]
-	ld e, a
-.oamInnerLoop
+	lb bc, 6, 6          ; b = rows, c = cols
+	ld d, $8             ; starting tile index
+.oamRowLoop
+	push bc              ; save bc = rowCount, colCount
 	ld a, e
-	add $8
-	ld e, a
-	ld [hli], a
+	add $8               ; move Y down 8 px (so actual starting Y is $18)
+	ld e, a	             ; e = this row's fixed Y
 	ld a, [wBaseCoordX]
+	ld b, a              ; b = this row's starting X
+.oamColumnLoop
+	ld a, e              ; Y coord
 	ld [hli], a
-	ld a, d
+	ld a, b              ; X coord
 	ld [hli], a
-	ld a, OAM_PAL1
+	add $8               ; advance X coord by 8 px for next tile
+	ld b, a
+	ld a, d              ; tile index
 	ld [hli], a
-	inc d
+	ld a, OAM_PAL1       ; attributes
+	ld [hli], a
+	inc d                ; next tile
 	dec c
-	jr nz, .oamInnerLoop
-	inc d
-	ld a, [wBaseCoordX]
-	add $8
-	ld [wBaseCoordX], a
-	pop bc
+	jr nz, .oamColumnLoop
+	inc d                ; skip one tile ID (sprite padding?)
+	pop bc               ; restore bc = rowCount, colCount
 	dec b
-	jr nz, .oamLoop
+	jr nz, .oamRowLoop
 	ret
