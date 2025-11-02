@@ -7,8 +7,9 @@
 	db 30 ; catch rate
 	db 255 ; base exp
 
-	INCBIN "gfx/pokemon/front/chansey.pic", 0, 1 ; sprite dimensions
-	dw ChanseyPicFront, ChanseyPicBack
+	db SPRITE_DIM_MEDIUM ; marcelnote - modified data structure
+	dw ChanseyPics
+	dw 0 ; empty
 
 	db POUND, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset ; removed DOUBLESLAP
 	db GROWTH_FAST ; growth rate

@@ -1,20 +1,44 @@
 ; marcelnote - refactored to remove sprite compression
 ; Assumes the monster's attributes have been loaded with GetMonHeader.
 ; Copies the Mon front sprite from ROM to de in VRAM (typically vFrontPic but not always).
-LoadMonFrontSprite::
+LoadMonFrontPic::
 	push de
+	ld hl, wMonHFrontPicDim
+	ld a, [hli] ; hl = wMonHPics
+	ld d, a     ; d = sprite dim in tiles
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a     ; hl = address of Mon pics, e.g. BulbasaurPics
+	ld bc, BulbasaurPicFront - BulbasaurPics
+	add hl, bc  ; skip back pics
+	ld a, [wOptions]
+	and SPRITE_STYLE_MASK
+	jr z, .gotPicAddress
+	rr a
+	rr a
+	ld c, a ; c = 1 (Yellow) or 2 (Green)
+	swap d ; multiply by 16 to get sprite dim in bytes
+	ld e, d
+	ld a, $0F
+	and d
+	ld d, a
+	ld a, $F0
+	and e
+	ld e, a  ; de = sprite dim in bytes
+	add hl, de
+	dec c
+	jr z, .gotPicAddress
+	add hl, de ; for Green sprites
+.gotPicAddress
+	ld d, h
+	ld e, l ; de = pic address
 	ld a, [wMonHPicBank]
 	ld b, a
-	ld hl, wMonHFrontSprite + 1
-	ld a, [hld]
-	ld d, a
-	ld a, [hld]
-	ld e, a    ; de = Pic address
 	ld a, [wSpriteFlipped]
 	and a
 	jr nz, .flipped
-	ld a, [hl] ; wMonHSpriteDim
-	cp $77
+	ld a, [wMonHFrontPicDim]
+	cp 7 * 7
 	jr nz, .notLargePic
 	; large pics ship directly to VRAM
 	pop hl ; hl = destination address, e.g. vFrontPic
@@ -39,10 +63,10 @@ LoadMonFrontSprite::
 	ld bc, 2 * SPRITEBUFFERSIZE
 	call FillMemory ; clear sprite buffers 0 and 1, preserves a
 
-	ld a, [wMonHSpriteDim]
-	cp $55
+	ld a, [wMonHFrontPicDim]
+	cp 5 * 5
 	jr z, .smallPic
-; medium pic, dim = $66
+; medium pic, dim = 6 * 6
 	ld hl, sSpriteBuffer0 + (7 + 1) tiles ; skip one row and one column
 	ld b, 6 ; copy 6 rows of tiles
 .loopMedium
@@ -97,8 +121,8 @@ LoadMonFrontSprite::
 	ldh [hLoadedROMBank], a
 	ld [rROMB], a
 
-	ld a, [hl] ; wMonHSpriteDim
-	cp $77
+	ld a, [wMonHFrontPicDim]
+	cp 7 * 7
 	jr nz, .flippedNotLargePic
 	; flipped large pic
 	ld hl, sSpriteBuffer0 + 6 tiles
@@ -120,8 +144,8 @@ LoadMonFrontSprite::
 	ld bc, 2 * SPRITEBUFFERSIZE
 	call FillMemory ; clear sprite buffers 0 and 1, preserves a
 
-	ld a, [wMonHSpriteDim]
-	cp $55
+	ld a, [wMonHFrontPicDim]
+	cp 5 * 5
 	jr z, .flippedSmallPic
 
 	ld hl, sSpriteBuffer0 + (7 + 5) tiles ; skip one row

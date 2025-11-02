@@ -7,8 +7,9 @@
 	db 25 ; catch rate
 	db 154 ; base exp
 
-	INCBIN "gfx/pokemon/front/snorlax.pic", 0, 1 ; sprite dimensions
-	dw SnorlaxPicFront, SnorlaxPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw SnorlaxPics
+	dw 0 ; empty
 
 	db HEADBUTT, AMNESIA, REST, NO_MOVE ; level 1 learnset
 	db GROWTH_SLOW ; growth rate

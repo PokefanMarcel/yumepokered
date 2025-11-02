@@ -7,8 +7,9 @@
 	db 60 ; catch rate
 	db 173 ; base exp
 
-	INCBIN "gfx/pokemon/front/weezing.pic", 0, 1 ; sprite dimensions
-	dw WeezingPicFront, WeezingPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw WeezingPics
+	dw 0 ; empty
 
 	db TACKLE, POISON_GAS, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - changed from TACKLE, SMOG, SLUDGE, NO_MOVE
 	db GROWTH_MEDIUM_FAST ; growth rate

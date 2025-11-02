@@ -7,8 +7,9 @@
 	db 180 ; catch rate
 	db 88 ; base exp
 
-	INCBIN "gfx/pokemon/front/machop.pic", 0, 1 ; sprite dimensions
-	dw MachopPicFront, MachopPicBack
+	db SPRITE_DIM_SMALL ; marcelnote - modified data structure
+	dw MachopPics
+	dw 0 ; empty
 
 	db LOW_KICK, LEER, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - changed from KARATE_CHOP, NO_MOVE, NO_MOVE, NO_MOVE
 	db GROWTH_MEDIUM_SLOW ; growth rate

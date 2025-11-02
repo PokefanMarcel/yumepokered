@@ -7,8 +7,9 @@
 	db 190 ; catch rate
 	db 103 ; base exp
 
-	INCBIN "gfx/pokemon/front/voltorb.pic", 0, 1 ; sprite dimensions
-	dw VoltorbPicFront, VoltorbPicBack
+	db SPRITE_DIM_SMALL ; marcelnote - modified data structure
+	dw VoltorbPics
+	dw 0 ; empty
 
 	db TACKLE, SCREECH, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_MEDIUM_FAST ; growth rate

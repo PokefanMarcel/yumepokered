@@ -7,8 +7,9 @@
 	db 45 ; catch rate
 	db 177 ; base exp
 
-	INCBIN "gfx/pokemon/front/golem.pic", 0, 1 ; sprite dimensions
-	dw GolemPicFront, GolemPicBack
+	db SPRITE_DIM_MEDIUM ; marcelnote - modified data structure
+	dw GolemPics
+	dw 0 ; empty
 
 	db TACKLE, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed DEFENSE_CURL
 	db GROWTH_MEDIUM_SLOW ; growth rate

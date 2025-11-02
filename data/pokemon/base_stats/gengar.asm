@@ -7,8 +7,9 @@
 	db 45 ; catch rate
 	db 190 ; base exp
 
-	INCBIN "gfx/pokemon/front/gengar.pic", 0, 1 ; sprite dimensions
-	dw GengarPicFront, GengarPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw GengarPics
+	dw 0 ; empty
 
 	db LICK, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - replaced LICK, CONFUSE_RAY, NIGHT_SHADE, NO_MOVE
 	db GROWTH_MEDIUM_SLOW ; growth rate

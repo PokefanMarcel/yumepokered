@@ -7,8 +7,9 @@
 	db 120 ; catch rate
 	db 71 ; base exp
 
-	INCBIN "gfx/pokemon/front/kakuna.pic", 0, 1 ; sprite dimensions
-	dw KakunaPicFront, KakunaPicBack
+	db SPRITE_DIM_SMALL ; marcelnote - modified data structure
+	dw KakunaPics
+	dw 0 ; empty
 
 	db POISON_STING, STRING_SHOT, HARDEN, NO_MOVE ; level 1 learnset ; marcelnote - added POISON_STING and STRING_SHOT
 	db GROWTH_MEDIUM_FAST ; growth rate

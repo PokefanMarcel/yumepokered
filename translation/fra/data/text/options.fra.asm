@@ -3,14 +3,15 @@ AllOptionsText:
 	db   "VITESSE TEXTE"
 	next "ANIMATION COMBAT"
 	next "STYLE COMBAT"
+	next "STYLE SPRITES"
 	next "UNITE MESURE"
-	next ""
 	next ""
 	next ""
 	next "RETOUR@"
 
 OptionsColonsText:
 	db   ":"
+	next ":"
 	next ":"
 	next ":"
 	next ":@"
@@ -38,3 +39,10 @@ MeasureUnitsImperialText:
 	db "IMPERIAL@"
 MeasureUnitsMetricText:
 	db "METRIQUE@"
+
+SpriteStyleGreenText:
+	db "VERT @"
+SpriteStyleBlueText:
+	db "BLEU @"
+SpriteStyleYellowText:
+	db "JAUNE@"

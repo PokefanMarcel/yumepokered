@@ -7,8 +7,9 @@
 	db 120 ; catch rate
 	db 113 ; base exp
 
-	INCBIN "gfx/pokemon/front/pidgeotto.pic", 0, 1 ; sprite dimensions
-	dw PidgeottoPicFront, PidgeottoPicBack
+	db SPRITE_DIM_MEDIUM ; marcelnote - modified data structure
+	dw PidgeottoPics
+	dw 0 ; empty
 
 	db TACKLE, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - added TACKLE, removed SAND_ATTACK, GUST
 	db GROWTH_MEDIUM_SLOW ; growth rate

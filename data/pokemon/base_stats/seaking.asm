@@ -7,8 +7,9 @@
 	db 60 ; catch rate
 	db 170 ; base exp
 
-	INCBIN "gfx/pokemon/front/seaking.pic", 0, 1 ; sprite dimensions
-	dw SeakingPicFront, SeakingPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw SeakingPics
+	dw 0 ; empty
 
 	db PECK, TAIL_WHIP, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - SUPERSONIC
 	db GROWTH_MEDIUM_FAST ; growth rate

@@ -7,8 +7,9 @@
 	db 90 ; catch rate
 	db 116 ; base exp
 
-	INCBIN "gfx/pokemon/front/raticate.pic", 0, 1 ; sprite dimensions
-	dw RaticatePicFront, RaticatePicBack
+	db SPRITE_DIM_MEDIUM ; marcelnote - modified data structure
+	dw RaticatePics
+	dw 0 ; empty
 
 	db TACKLE, TAIL_WHIP, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed QUICK_ATTACK
 	db GROWTH_MEDIUM_FAST ; growth rate

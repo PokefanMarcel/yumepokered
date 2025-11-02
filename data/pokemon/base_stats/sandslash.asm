@@ -7,8 +7,9 @@
 	db 90 ; catch rate
 	db 163 ; base exp
 
-	INCBIN "gfx/pokemon/front/sandslash.pic", 0, 1 ; sprite dimensions
-	dw SandslashPicFront, SandslashPicBack
+	db SPRITE_DIM_MEDIUM ; marcelnote - modified data structure
+	dw SandslashPics
+	dw 0 ; empty
 
 	db SCRATCH, DEFENSE_CURL, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - added DEFENSE_CURL, removed SAND_ATTACK
 	db GROWTH_MEDIUM_FAST ; growth rate

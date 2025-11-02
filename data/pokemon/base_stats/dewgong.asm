@@ -7,8 +7,9 @@
 	db 75 ; catch rate
 	db 176 ; base exp
 
-	INCBIN "gfx/pokemon/front/dewgong.pic", 0, 1 ; sprite dimensions
-	dw DewgongPicFront, DewgongPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw DewgongPics
+	dw 0 ; empty
 
 	db HORN_ATTACK, GROWL, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - changed from HEADBUTT, GROWL, AURORA_BEAM, NO_MOVE
 	db GROWTH_MEDIUM_FAST ; growth rate

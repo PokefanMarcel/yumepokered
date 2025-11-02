@@ -7,8 +7,9 @@
 	db 255 ; catch rate
 	db 81 ; base exp
 
-	INCBIN "gfx/pokemon/front/diglett.pic", 0, 1 ; sprite dimensions
-	dw DiglettPicFront, DiglettPicBack
+	db SPRITE_DIM_SMALL ; marcelnote - modified data structure
+	dw DiglettPics
+	dw 0 ; empty
 
 	db SCRATCH, GROWL, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - added GROWL
 	db GROWTH_MEDIUM_FAST ; growth rate

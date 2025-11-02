@@ -7,8 +7,9 @@
 	db 45 ; catch rate
 	db 184 ; base exp
 
-	INCBIN "gfx/pokemon/front/vileplume.pic", 0, 1 ; sprite dimensions
-	dw VileplumePicFront, VileplumePicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw VileplumePics
+	dw 0 ; empty
 
 ;	db STUN_SPORE, SLEEP_POWDER, ACID, PETAL_DANCE ; level 1 learnset
 	db ABSORB, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - changed

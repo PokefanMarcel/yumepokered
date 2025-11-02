@@ -7,8 +7,9 @@
 	db 75 ; catch rate
 	db 178 ; base exp
 
-	INCBIN "gfx/pokemon/front/ninetales.pic", 0, 1 ; sprite dimensions
-	dw NinetalesPicFront, NinetalesPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw NinetalesPics
+	dw 0 ; empty
 
 	db EMBER, TAIL_WHIP, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed QUICK_ATTACK, ROAR
 	db GROWTH_MEDIUM_FAST ; growth rate

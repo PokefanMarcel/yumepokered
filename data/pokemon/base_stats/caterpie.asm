@@ -7,8 +7,9 @@
 	db 255 ; catch rate
 	db 53 ; base exp
 
-	INCBIN "gfx/pokemon/front/caterpie.pic", 0, 1 ; sprite dimensions
-	dw CaterpiePicFront, CaterpiePicBack
+	db SPRITE_DIM_SMALL ; marcelnote - modified data structure
+	dw CaterpiePics
+	dw 0 ; empty
 
 	db TACKLE, STRING_SHOT, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_MEDIUM_FAST ; growth rate

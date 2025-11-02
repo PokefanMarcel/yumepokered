@@ -7,8 +7,9 @@
 	db 190 ; catch rate
 	db 95 ; base exp
 
-	INCBIN "gfx/pokemon/front/gastly.pic", 0, 1 ; sprite dimensions
-	dw GastlyPicFront, GastlyPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw GastlyPics
+	dw 0 ; empty
 
 	db LICK, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed CONFUSE_RAY, NIGHT_SHADE
 	db GROWTH_MEDIUM_SLOW ; growth rate

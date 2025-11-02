@@ -7,8 +7,9 @@
 	db 45 ; catch rate
 	db 156 ; base exp
 
-	INCBIN "gfx/pokemon/front/electabuzz.pic", 0, 1 ; sprite dimensions
-	dw ElectabuzzPicFront, ElectabuzzPicBack
+	db SPRITE_DIM_MEDIUM ; marcelnote - modified data structure
+	dw ElectabuzzPics
+	dw 0 ; empty
 
 	db QUICK_ATTACK, THUNDERSHOCK, NO_MOVE, NO_MOVE ; level 1 learnset - marcelnote - replaced LEER by THUNDERSHOCK
 	db GROWTH_MEDIUM_FAST ; growth rate

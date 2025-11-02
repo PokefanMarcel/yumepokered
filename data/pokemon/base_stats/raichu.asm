@@ -7,8 +7,9 @@
 	db 75 ; catch rate
 	db 122 ; base exp
 
-	INCBIN "gfx/pokemon/front/raichu.pic", 0, 1 ; sprite dimensions
-	dw RaichuPicFront, RaichuPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw RaichuPics
+	dw 0 ; empty
 
 	db THUNDERSHOCK, GROWL, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed THUNDER_WAVE
 	db GROWTH_MEDIUM_FAST ; growth rate

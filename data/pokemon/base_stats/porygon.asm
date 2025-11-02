@@ -7,8 +7,9 @@
 	db 45 ; catch rate
 	db 130 ; base exp
 
-	INCBIN "gfx/pokemon/front/porygon.pic", 0, 1 ; sprite dimensions
-	dw PorygonPicFront, PorygonPicBack
+	db SPRITE_DIM_MEDIUM ; marcelnote - modified data structure
+	dw PorygonPics
+	dw 0 ; empty
 
 	db TACKLE, CONVERSION, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed SHARPEN
 	db GROWTH_MEDIUM_FAST ; growth rate

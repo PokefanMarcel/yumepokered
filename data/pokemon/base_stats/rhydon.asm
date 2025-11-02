@@ -7,8 +7,9 @@
 	db 60 ; catch rate
 	db 204 ; base exp
 
-	INCBIN "gfx/pokemon/front/rhydon.pic", 0, 1 ; sprite dimensions
-	dw RhydonPicFront, RhydonPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw RhydonPics
+	dw 0 ; empty
 
 	db HORN_ATTACK, LEER, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - changed from HORN_ATTACK, STOMP, TAIL_WHIP, FURY_ATTACK
 	db GROWTH_SLOW ; growth rate

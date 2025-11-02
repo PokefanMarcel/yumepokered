@@ -7,8 +7,9 @@
 	db 45 ; catch rate
 	db 214 ; base exp
 
-	INCBIN "gfx/pokemon/front/gyarados.pic", 0, 1 ; sprite dimensions
-	dw GyaradosPicFront, GyaradosPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw GyaradosPics
+	dw 0 ; empty
 
 	db TACKLE, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - changed from BITE, DRAGON_RAGE, LEER, HYDRO_PUMP
 	db GROWTH_SLOW ; growth rate

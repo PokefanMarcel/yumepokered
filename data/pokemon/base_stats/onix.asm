@@ -7,8 +7,9 @@
 	db 45 ; catch rate
 	db 108 ; base exp
 
-	INCBIN "gfx/pokemon/front/onix.pic", 0, 1 ; sprite dimensions
-	dw OnixPicFront, OnixPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw OnixPics
+	dw 0 ; empty
 
 	db TACKLE, SCREECH, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_MEDIUM_FAST ; growth rate

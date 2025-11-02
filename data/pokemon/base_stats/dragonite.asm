@@ -7,8 +7,9 @@
 	db 45 ; catch rate
 	db 218 ; base exp
 
-	INCBIN "gfx/pokemon/front/dragonite.pic", 0, 1 ; sprite dimensions
-	dw DragonitePicFront, DragonitePicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw DragonitePics
+	dw 0 ; empty
 
 	db WRAP, LEER, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed THUNDER_WAVE and AGILITY
 	db GROWTH_SLOW ; growth rate

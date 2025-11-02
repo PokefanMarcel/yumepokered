@@ -7,8 +7,9 @@
 	db 255 ; catch rate
 	db 54 ; base exp
 
-	INCBIN "gfx/pokemon/front/zubat.pic", 0, 1 ; sprite dimensions
-	dw ZubatPicFront, ZubatPicBack
+	db SPRITE_DIM_SMALL ; marcelnote - modified data structure
+	dw ZubatPics
+	dw 0 ; empty
 
 	db LEECH_LIFE, SUPERSONIC, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - added SUPERSONIC
 	db GROWTH_MEDIUM_FAST ; growth rate

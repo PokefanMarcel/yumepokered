@@ -7,8 +7,9 @@
 	db 60 ; catch rate
 	db 206 ; base exp
 
-	INCBIN "gfx/pokemon/front/kingler.pic", 0, 1 ; sprite dimensions
-	dw KinglerPicFront, KinglerPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw KinglerPics
+	dw 0 ; empty
 
 	db BUBBLE, LEER, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed VICEGRIP
 	db GROWTH_MEDIUM_FAST ; growth rate

@@ -7,8 +7,9 @@
 	db 120 ; catch rate
 	db 117 ; base exp
 
-	INCBIN "gfx/pokemon/front/nidorina.pic", 0, 1 ; sprite dimensions
-	dw NidorinaPicFront, NidorinaPicBack
+	db SPRITE_DIM_MEDIUM ; marcelnote - modified data structure
+	dw NidorinaPics
+	dw 0 ; empty
 
 	db TACKLE, GROWL, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed SCRATCH
 	db GROWTH_MEDIUM_SLOW ; growth rate

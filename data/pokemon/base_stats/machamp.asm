@@ -7,8 +7,9 @@
 	db 45 ; catch rate
 	db 193 ; base exp
 
-	INCBIN "gfx/pokemon/front/machamp.pic", 0, 1 ; sprite dimensions
-	dw MachampPicFront, MachampPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw MachampPics
+	dw 0 ; empty
 
 	db LOW_KICK, LEER, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - changed from KARATE_CHOP, LEER, LOW_KICK, NO_MOVE
 	db GROWTH_MEDIUM_SLOW ; growth rate

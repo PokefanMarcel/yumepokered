@@ -7,8 +7,9 @@
 	db 255 ; catch rate
 	db 57 ; base exp
 
-	INCBIN "gfx/pokemon/front/rattata.pic", 0, 1 ; sprite dimensions
-	dw RattataPicFront, RattataPicBack
+	db SPRITE_DIM_SMALL ; marcelnote - modified data structure
+	dw RattataPics
+	dw 0 ; empty
 
 	db TACKLE, TAIL_WHIP, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_MEDIUM_FAST ; growth rate

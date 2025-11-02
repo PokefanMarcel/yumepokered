@@ -7,8 +7,9 @@
 	db 75 ; catch rate
 	db 149 ; base exp
 
-	INCBIN "gfx/pokemon/front/primeape.pic", 0, 1 ; sprite dimensions
-	dw PrimeapePicFront, PrimeapePicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw PrimeapePics
+	dw 0 ; empty
 
 	db SCRATCH, LEER, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed KARATE_CHOP, FURY_SWIPES
 	db GROWTH_MEDIUM_FAST ; growth rate

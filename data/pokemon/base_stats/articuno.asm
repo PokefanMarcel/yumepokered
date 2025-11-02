@@ -7,8 +7,9 @@
 	db 3 ; catch rate
 	db 215 ; base exp
 
-	INCBIN "gfx/pokemon/front/articuno.pic", 0, 1 ; sprite dimensions
-	dw ArticunoPicFront, ArticunoPicBack
+	db SPRITE_DIM_LARGE
+	dw ArticunoPics
+	dw 0
 
 	db PECK, ICE_BEAM, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_SLOW ; growth rate

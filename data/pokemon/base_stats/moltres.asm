@@ -7,8 +7,9 @@
 	db 3 ; catch rate
 	db 217 ; base exp
 
-	INCBIN "gfx/pokemon/front/moltres.pic", 0, 1 ; sprite dimensions
-	dw MoltresPicFront, MoltresPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw MoltresPics
+	dw 0 ; empty
 
 	db WING_ATTACK, FIRE_SPIN, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - changed PECK to WING_ATTACK
 	db GROWTH_SLOW ; growth rate

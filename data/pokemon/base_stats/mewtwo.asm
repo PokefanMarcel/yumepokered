@@ -7,8 +7,9 @@
 	db 3 ; catch rate
 	db 220 ; base exp
 
-	INCBIN "gfx/pokemon/front/mewtwo.pic", 0, 1 ; sprite dimensions
-	dw MewtwoPicFront, MewtwoPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw MewtwoPics
+	dw 0 ; empty
 
 	db CONFUSION, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - changed from CONFUSION, DISABLE, SWIFT, PSYCHIC_M
 	db GROWTH_SLOW ; growth rate

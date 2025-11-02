@@ -7,8 +7,9 @@
 	db 190 ; catch rate
 	db 89 ; base exp
 
-	INCBIN "gfx/pokemon/front/magnemite.pic", 0, 1 ; sprite dimensions
-	dw MagnemitePicFront, MagnemitePicBack
+	db SPRITE_DIM_SMALL ; marcelnote - modified data structure
+	dw MagnemitePics
+	dw 0 ; empty
 
 	db TACKLE, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_MEDIUM_FAST ; growth rate

@@ -7,8 +7,9 @@
 	db 120 ; catch rate
 	db 132 ; base exp
 
-	INCBIN "gfx/pokemon/front/gloom.pic", 0, 1 ; sprite dimensions
-	dw GloomPicFront, GloomPicBack
+	db SPRITE_DIM_MEDIUM ; marcelnote - modified data structure
+	dw GloomPics
+	dw 0 ; empty
 
 	db ABSORB, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed POISONPOWDER, STUN_SPORE
 	db GROWTH_MEDIUM_SLOW ; growth rate

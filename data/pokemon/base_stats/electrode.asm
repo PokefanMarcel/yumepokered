@@ -7,8 +7,9 @@
 	db 60 ; catch rate
 	db 150 ; base exp
 
-	INCBIN "gfx/pokemon/front/electrode.pic", 0, 1 ; sprite dimensions
-	dw ElectrodePicFront, ElectrodePicBack
+	db SPRITE_DIM_SMALL ; marcelnote - modified data structure
+	dw ElectrodePics
+	dw 0 ; empty
 
 	db TACKLE, SCREECH, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed SONICBOOM
 	db GROWTH_MEDIUM_FAST ; growth rate

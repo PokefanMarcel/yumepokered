@@ -7,8 +7,9 @@
 	db 120 ; catch rate
 	db 151 ; base exp
 
-	INCBIN "gfx/pokemon/front/weepinbell.pic", 0, 1 ; sprite dimensions
-	dw WeepinbellPicFront, WeepinbellPicBack
+	db SPRITE_DIM_MEDIUM ; marcelnote - modified data structure
+	dw WeepinbellPics
+	dw 0 ; empty
 
 	db VINE_WHIP, GROWTH, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed WRAP
 	db GROWTH_MEDIUM_SLOW ; growth rate

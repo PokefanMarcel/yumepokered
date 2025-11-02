@@ -7,8 +7,9 @@
 	db 45 ; catch rate
 	db 208 ; base exp
 
-	INCBIN "gfx/pokemon/front/venusaur.pic", 0, 1 ; sprite dimensions
-	dw VenusaurPicFront, VenusaurPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw VenusaurPics
+	dw 0 ; empty
 
 	db TACKLE, GROWL, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed LEECH_SEED, VINE_WHIP
 	db GROWTH_MEDIUM_SLOW ; growth rate

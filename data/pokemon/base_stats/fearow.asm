@@ -7,8 +7,9 @@
 	db 90 ; catch rate
 	db 162 ; base exp
 
-	INCBIN "gfx/pokemon/front/fearow.pic", 0, 1 ; sprite dimensions
-	dw FearowPicFront, FearowPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw FearowPics
+	dw 0 ; empty
 
 	db PECK, GROWL, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed LEER
 	db GROWTH_MEDIUM_FAST ; growth rate

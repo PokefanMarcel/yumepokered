@@ -39,7 +39,7 @@ DisplayMonFrontSpriteInBox:
 	ld [wCurSpecies], a
 	call GetMonHeader
 	ld de, vChars1 tile $31
-	call LoadMonFrontSprite
+	call LoadMonFrontPic
 	ld a, $80
 	ldh [hStartTileID], a
 	hlcoord 10, 11

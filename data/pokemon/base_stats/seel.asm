@@ -7,8 +7,9 @@
 	db 190 ; catch rate
 	db 100 ; base exp
 
-	INCBIN "gfx/pokemon/front/seel.pic", 0, 1 ; sprite dimensions
-	dw SeelPicFront, SeelPicBack
+	db SPRITE_DIM_MEDIUM ; marcelnote - modified data structure
+	dw SeelPics
+	dw 0 ; empty
 
 	db HORN_ATTACK, GROWL, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - changed from HEADBUTT, NO_MOVE, NO_MOVE, NO_MOVE
 	db GROWTH_MEDIUM_FAST ; growth rate

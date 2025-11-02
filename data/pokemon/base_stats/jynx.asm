@@ -7,8 +7,9 @@
 	db 45 ; catch rate
 	db 137 ; base exp
 
-	INCBIN "gfx/pokemon/front/jynx.pic", 0, 1 ; sprite dimensions
-	dw JynxPicFront, JynxPicBack
+	db SPRITE_DIM_MEDIUM ; marcelnote - modified data structure
+	dw JynxPics
+	dw 0 ; empty
 
 	db POUND, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset ; removed LOVELY_KISS
 	db GROWTH_MEDIUM_FAST ; growth rate

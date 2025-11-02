@@ -7,8 +7,9 @@
 	db 120 ; catch rate
 	db 131 ; base exp
 
-	INCBIN "gfx/pokemon/front/poliwhirl.pic", 0, 1 ; sprite dimensions
-	dw PoliwhirlPicFront, PoliwhirlPicBack
+	db SPRITE_DIM_MEDIUM ; marcelnote - modified data structure
+	dw PoliwhirlPics
+	dw 0 ; empty
 
 	db POUND, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset; marcelnote - replaced BUBBLE, HYPNOSIS, WATER_GUN, NO_MOVE
 	db GROWTH_MEDIUM_SLOW ; growth rate

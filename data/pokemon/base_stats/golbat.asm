@@ -7,8 +7,9 @@
 	db 90 ; catch rate
 	db 171 ; base exp
 
-	INCBIN "gfx/pokemon/front/golbat.pic", 0, 1 ; sprite dimensions
-	dw GolbatPicFront, GolbatPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw GolbatPics
+	dw 0 ; empty
 
 	db LEECH_LIFE, SUPERSONIC, NO_MOVE, NO_MOVE ; level 1 learnset ; marcenote - replaced SCREECH by SUPERSONIC, removed BITE
 	db GROWTH_MEDIUM_FAST ; growth rate

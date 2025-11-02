@@ -7,8 +7,9 @@
 	db 50 ; catch rate
 	db 186 ; base exp
 
-	INCBIN "gfx/pokemon/front/alakazam.pic", 0, 1 ; sprite dimensions
-	dw AlakazamPicFront, AlakazamPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw AlakazamPics
+	dw 0 ; empty
 
 	db TELEPORT, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed DISABLE, CONFUSION
 	db GROWTH_MEDIUM_SLOW ; growth rate

@@ -7,8 +7,9 @@
 	db 75 ; catch rate
 	db 155 ; base exp
 
-	INCBIN "gfx/pokemon/front/seadra.pic", 0, 1 ; sprite dimensions
-	dw SeadraPicFront, SeadraPicBack
+	db SPRITE_DIM_MEDIUM ; marcelnote - modified data structure
+	dw SeadraPics
+	dw 0 ; empty
 
 	db BUBBLE, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed SMOKESCREEN
 	db GROWTH_MEDIUM_FAST ; growth rate

@@ -7,8 +7,9 @@
 	db 45 ; catch rate
 	db 197 ; base exp
 
-	INCBIN "gfx/pokemon/front/jolteon.pic", 0, 1 ; sprite dimensions
-	dw JolteonPicFront, JolteonPicBack
+	db SPRITE_DIM_MEDIUM ; marcelnote - modified data structure
+	dw JolteonPics
+	dw 0 ; empty
 
 	db TACKLE, SAND_ATTACK, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed QUICK_ATTACK, THUNDERSHOCK
 	db GROWTH_MEDIUM_FAST ; growth rate

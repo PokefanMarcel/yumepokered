@@ -7,8 +7,9 @@
 	db 45 ; catch rate
 	db 199 ; base exp
 
-	INCBIN "gfx/pokemon/front/omastar.pic", 0, 1 ; sprite dimensions
-	dw OmastarPicFront, OmastarPicBack
+	db SPRITE_DIM_MEDIUM ; marcelnote - modified data structure
+	dw OmastarPics
+	dw 0 ; empty
 
 	db CONSTRICT, WITHDRAW, HORN_ATTACK, NO_MOVE ; level 1 learnset ; marcelnote - replaced WATER_GUN by CONSTRICT
 	db GROWTH_MEDIUM_FAST ; growth rate

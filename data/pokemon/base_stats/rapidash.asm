@@ -7,8 +7,9 @@
 	db 60 ; catch rate
 	db 192 ; base exp
 
-	INCBIN "gfx/pokemon/front/rapidash.pic", 0, 1 ; sprite dimensions
-	dw RapidashPicFront, RapidashPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw RapidashPics
+	dw 0 ; empty
 
 	db EMBER, TAIL_WHIP, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed STOMP, GROWL
 	db GROWTH_MEDIUM_FAST ; growth rate

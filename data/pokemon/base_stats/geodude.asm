@@ -7,8 +7,9 @@
 	db 255 ; catch rate
 	db 86 ; base exp
 
-	INCBIN "gfx/pokemon/front/geodude.pic", 0, 1 ; sprite dimensions
-	dw GeodudePicFront, GeodudePicBack
+	db SPRITE_DIM_SMALL ; marcelnote - modified data structure
+	dw GeodudePics
+	dw 0 ; empty
 
 	db TACKLE, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_MEDIUM_SLOW ; growth rate

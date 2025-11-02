@@ -1483,7 +1483,7 @@ EnemySendOutFirstMon:
 	ld [wCurSpecies], a
 	call GetMonHeader
 	ld de, vFrontPic
-	call LoadMonFrontSprite
+	call LoadMonFrontPic
 	ld a, -$31
 	ldh [hStartTileID], a
 	hlcoord 15, 6
@@ -2534,7 +2534,7 @@ PartyMenuOrRockOrRun:
 	ld [wCurSpecies], a
 	call GetMonHeader
 	ld de, vFrontPic
-	call LoadMonFrontSprite
+	call LoadMonFrontPic
 	jr .enemyMonPicReloaded
 .doEnemyMonAnimation
 	ld b, BANK(AnimationSubstitute) ; BANK(AnimationMinimizeMon)
@@ -6780,10 +6780,12 @@ InitWildBattle:
 	call IsGhostBattle
 	jr nz, .isNoGhost
 .isGhost
-	ld hl, wMonHSpriteDim
-	ld a, $66
+	ld a, BANK(GhostPic)
+	ld [wMonHPicBank], a
+	ld hl, wMonHFrontPicDim
+	ld a, 6 * 6
 	ld [hli], a   ; write sprite dimensions
-	ld bc, GhostPic
+	ld bc, GhostPic - (BulbasaurPicFront - BulbasaurPics)
 	ld a, c
 	ld [hli], a   ; write front sprite pointer
 	ld [hl], b
@@ -6818,23 +6820,16 @@ ELSE
 ENDC
 
 	ld [hl], "@"
-	ld a, [wCurPartySpecies]
-	push af
-	ld a, MON_GHOST
-	ld [wCurPartySpecies], a
-	ld de, vFrontPic
-	call LoadMonFrontSprite ; load ghost sprite
-	pop af
-	ld [wCurPartySpecies], a
-	jr .spriteLoaded
+	; fallthrough
 .isNoGhost
 	ld de, vFrontPic
-	call LoadMonFrontSprite ; load mon sprite
+	call LoadMonFrontPic ; load mon sprite
 .spriteLoaded
 	xor a
 	ld [wTrainerClass], a
 	hlcoord 12, 0
 	call CopySpriteToHL
+	; fallthrough
 
 ; common code that executes after init battle code specific to trainer or wild battles
 _InitBattleCommon:
@@ -6972,7 +6967,7 @@ LoadMonBackPic:
 	lb bc, 7, 8
 	call ClearScreenArea
 
-	ld hl, wMonHBackSprite
+	ld hl, wMonHPics
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a

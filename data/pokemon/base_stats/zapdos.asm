@@ -7,8 +7,9 @@
 	db 3 ; catch rate
 	db 216 ; base exp
 
-	INCBIN "gfx/pokemon/front/zapdos.pic", 0, 1 ; sprite dimensions
-	dw ZapdosPicFront, ZapdosPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw ZapdosPics
+	dw 0 ; empty
 
 	db THUNDERSHOCK, DRILL_PECK, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_SLOW ; growth rate

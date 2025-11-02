@@ -7,8 +7,9 @@
 	db 190 ; catch rate
 	db 80 ; base exp
 
-	INCBIN "gfx/pokemon/front/psyduck.pic", 0, 1 ; sprite dimensions
-	dw PsyduckPicFront, PsyduckPicBack
+	db SPRITE_DIM_SMALL ; marcelnote - modified data structure
+	dw PsyduckPics
+	dw 0 ; empty
 
 	db SCRATCH, TAIL_WHIP, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - added TAIL_WHIP
 	db GROWTH_MEDIUM_FAST ; growth rate

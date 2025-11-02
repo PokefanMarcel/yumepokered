@@ -7,8 +7,9 @@
 	db 225 ; catch rate
 	db 83 ; base exp
 
-	INCBIN "gfx/pokemon/front/horsea.pic", 0, 1 ; sprite dimensions
-	dw HorseaPicFront, HorseaPicBack
+	db SPRITE_DIM_SMALL ; marcelnote - modified data structure
+	dw HorseaPics
+	dw 0 ; empty
 
 	db BUBBLE, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_MEDIUM_FAST ; growth rate

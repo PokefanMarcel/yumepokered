@@ -7,8 +7,9 @@
 	db 75 ; catch rate
 	db 138 ; base exp
 
-	INCBIN "gfx/pokemon/front/venomoth.pic", 0, 1 ; sprite dimensions
-	dw VenomothPicFront, VenomothPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw VenomothPics
+	dw 0 ; empty
 
 	db TACKLE, DISABLE, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed POISONPOWDER and LEECH_LIFE
 	db GROWTH_MEDIUM_FAST ; growth rate

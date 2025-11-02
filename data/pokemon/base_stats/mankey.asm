@@ -7,8 +7,9 @@
 	db 190 ; catch rate
 	db 74 ; base exp
 
-	INCBIN "gfx/pokemon/front/mankey.pic", 0, 1 ; sprite dimensions
-	dw MankeyPicFront, MankeyPicBack
+	db SPRITE_DIM_MEDIUM ; marcelnote - modified data structure
+	dw MankeyPics
+	dw 0 ; empty
 
 	db SCRATCH, LEER, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_MEDIUM_FAST ; growth rate

@@ -7,8 +7,9 @@
 	db 45 ; catch rate
 	db 127 ; base exp
 
-	INCBIN "gfx/pokemon/front/lickitung.pic", 0, 1 ; sprite dimensions
-	dw LickitungPicFront, LickitungPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw LickitungPics
+	dw 0 ; empty
 
 	db LICK, SUPERSONIC, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - replaced WRAP by LICK
 	db GROWTH_MEDIUM_FAST ; growth rate

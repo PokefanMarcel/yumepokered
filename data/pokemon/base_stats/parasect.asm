@@ -7,8 +7,9 @@
 	db 75 ; catch rate
 	db 128 ; base exp
 
-	INCBIN "gfx/pokemon/front/parasect.pic", 0, 1 ; sprite dimensions
-	dw ParasectPicFront, ParasectPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw ParasectPics
+	dw 0 ; empty
 
 	db SCRATCH, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed STUN_SPORE, LEECH_LIFE
 	db GROWTH_MEDIUM_FAST ; growth rate

@@ -7,8 +7,9 @@
 	db 45 ; catch rate
 	db 141 ; base exp
 
-	INCBIN "gfx/pokemon/front/ivysaur.pic", 0, 1 ; sprite dimensions
-	dw IvysaurPicFront, IvysaurPicBack
+	db SPRITE_DIM_MEDIUM ; marcelnote - modified data structure
+	dw IvysaurPics
+	dw 0 ; empty
 
 	db TACKLE, GROWL, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed LEECH_SEED
 	db GROWTH_MEDIUM_SLOW ; growth rate

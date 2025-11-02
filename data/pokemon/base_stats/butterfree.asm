@@ -7,8 +7,9 @@
 	db 45 ; catch rate
 	db 160 ; base exp
 
-	INCBIN "gfx/pokemon/front/butterfree.pic", 0, 1 ; sprite dimensions
-	dw ButterfreePicFront, ButterfreePicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw ButterfreePics
+	dw 0 ; empty
 
 	db TACKLE, STRING_SHOT, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - added TACKLE and STRING_SHOT, removed CONFUSION
 	db GROWTH_MEDIUM_FAST ; growth rate

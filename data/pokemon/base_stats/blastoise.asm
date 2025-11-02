@@ -7,8 +7,9 @@
 	db 45 ; catch rate
 	db 210 ; base exp
 
-	INCBIN "gfx/pokemon/front/blastoise.pic", 0, 1 ; sprite dimensions
-	dw BlastoisePicFront, BlastoisePicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw BlastoisePics
+	dw 0 ; empty
 
 	db TACKLE, TAIL_WHIP, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed BUBBLE, WATER_GUN
 	db GROWTH_MEDIUM_SLOW ; growth rate

@@ -7,8 +7,9 @@
 	db 120 ; catch rate
 	db 135 ; base exp
 
-	INCBIN "gfx/pokemon/front/rhyhorn.pic", 0, 1 ; sprite dimensions
-	dw RhyhornPicFront, RhyhornPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw RhyhornPics
+	dw 0 ; empty
 
 	db HORN_ATTACK, LEER, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - added LEER
 	db GROWTH_SLOW ; growth rate

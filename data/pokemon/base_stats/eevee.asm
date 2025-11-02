@@ -7,8 +7,9 @@
 	db 45 ; catch rate
 	db 92 ; base exp
 
-	INCBIN "gfx/pokemon/front/eevee.pic", 0, 1 ; sprite dimensions
-	dw EeveePicFront, EeveePicBack
+	db SPRITE_DIM_SMALL ; marcelnote - modified data structure
+	dw EeveePics
+	dw 0 ; empty
 
 	db TACKLE, SAND_ATTACK, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_MEDIUM_FAST ; growth rate

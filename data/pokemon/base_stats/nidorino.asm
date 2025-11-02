@@ -7,8 +7,9 @@
 	db 120 ; catch rate
 	db 118 ; base exp
 
-	INCBIN "gfx/pokemon/front/nidorino.pic", 0, 1 ; sprite dimensions
-	dw NidorinoPicFront, NidorinoPicBack
+	db SPRITE_DIM_MEDIUM ; marcelnote - modified data structure
+	dw NidorinoPics
+	dw 0 ; empty
 
 	db TACKLE, LEER, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed HORN_ATTACK
 	db GROWTH_MEDIUM_SLOW ; growth rate

@@ -7,8 +7,9 @@
 	db 75 ; catch rate
 	db 157 ; base exp
 
-	INCBIN "gfx/pokemon/front/muk.pic", 0, 1 ; sprite dimensions
-	dw MukPicFront, MukPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw MukPics
+	dw 0 ; empty
 
 	db POUND, DISABLE, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed POISON_GAS
 	db GROWTH_MEDIUM_FAST ; growth rate

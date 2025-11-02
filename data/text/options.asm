@@ -3,14 +3,15 @@ AllOptionsText:
 	db   "TEXT SPEED"
 	next "BATTLE ANIMATION"
 	next "BATTLE STYLE"
+	next "SPRITE STYLE"
 	next "MEASURE UNITS"
-	next ""
 	next ""
 	next ""
 	next "DONE@" ; marcelnote - changed from CANCEL@
 
 OptionsColonsText:
 	db   ":"
+	next ":"
 	next ":"
 	next ":"
 	next ":@"
@@ -38,3 +39,10 @@ MeasureUnitsImperialText:
 	db "IMPERIAL@"
 MeasureUnitsMetricText:
 	db "METRIC  @"
+
+SpriteStyleGreenText:
+	db "GREEN  @"
+SpriteStyleBlueText:
+	db "BLUE   @"
+SpriteStyleYellowText:
+	db "YELLOW @"

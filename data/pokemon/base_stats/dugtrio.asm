@@ -7,8 +7,9 @@
 	db 50 ; catch rate
 	db 153 ; base exp
 
-	INCBIN "gfx/pokemon/front/dugtrio.pic", 0, 1 ; sprite dimensions
-	dw DugtrioPicFront, DugtrioPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw DugtrioPics
+	dw 0 ; empty
 
 	db SCRATCH, GROWL, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed DIG
 	db GROWTH_MEDIUM_FAST ; growth rate

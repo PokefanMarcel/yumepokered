@@ -30,18 +30,22 @@ DEF BIT_FONT_LOADED EQU 0
 	const BIT_CUR_MAP_USED_ELEVATOR ; 7
 
 ; wOptions
-DEF TEXT_DELAY_MASK EQU %11 ; marcelnote - changed from %111 = 7
-	const_def 4                ; 0-1 are for text delay
-	; marcelnote - bits 2-3 are free
-	const BIT_60_FPS           ; 4 ; marcelnote - new 60fps option
-	const BIT_UNITS_METRIC     ; 5 ; marcelnote - new metric / imperial option
-	const BIT_BATTLE_SET       ; 6
-	const BIT_BATTLE_ANIM_OFF  ; 7
+DEF TEXT_DELAY_MASK   EQU %11   ; marcelnote - changed from %111
+DEF SPRITE_STYLE_MASK EQU %1100 ; marcelnote - new for sprite style
+	const_def 4                 ; 0-1 are for text delay, 2-3 are for sprite style
+	const BIT_60_FPS            ; 4 ; marcelnote - new 60fps option ; maybe no option for that?
+	const BIT_UNITS_METRIC      ; 5 ; marcelnote - new metric / imperial option
+	const BIT_BATTLE_SET        ; 6
+	const BIT_BATTLE_ANIM_OFF   ; 7
 
 DEF TEXT_DELAY_INSTANT EQU 0 ; 0  ; marcelnote - new
 DEF TEXT_DELAY_FAST    EQU 1 ; 1  ; marcelnote - changed from %001 = 1
 DEF TEXT_DELAY_MEDIUM  EQU 2 ; 2  ; marcelnote - changed from %011 = 3
 DEF TEXT_DELAY_SLOW    EQU 3 ; 3  ; marcelnote - changed from %101 = 5
+
+DEF SPRITE_STYLE_BLUE   EQU %0000 ; 0 ; marcelnote - new constants for sprite style
+DEF SPRITE_STYLE_YELLOW EQU %0100 ; 1
+DEF SPRITE_STYLE_GREEN  EQU %1000 ; 2
 
 ; wLetterPrintingDelayFlags
 	const_def

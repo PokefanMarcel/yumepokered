@@ -7,8 +7,9 @@
 	db 120 ; catch rate
 	db 134 ; base exp
 
-	INCBIN "gfx/pokemon/front/graveler.pic", 0, 1 ; sprite dimensions
-	dw GravelerPicFront, GravelerPicBack
+	db SPRITE_DIM_MEDIUM ; marcelnote - modified data structure
+	dw GravelerPics
+	dw 0 ; empty
 
 	db TACKLE, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed DEFENSE_CURL
 	db GROWTH_MEDIUM_SLOW ; growth rate

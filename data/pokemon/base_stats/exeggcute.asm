@@ -7,8 +7,9 @@
 	db 90 ; catch rate
 	db 98 ; base exp
 
-	INCBIN "gfx/pokemon/front/exeggcute.pic", 0, 1 ; sprite dimensions
-	dw ExeggcutePicFront, ExeggcutePicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw ExeggcutePics
+	dw 0 ; empty
 
 	db ABSORB, HYPNOSIS, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - replaced BARRAGE with ABSORB
 	db GROWTH_SLOW ; growth rate

@@ -7,8 +7,9 @@
 	db 45 ; catch rate
 	db 195 ; base exp
 
-	INCBIN "gfx/pokemon/front/nidoking.pic", 0, 1 ; sprite dimensions
-	dw NidokingPicFront, NidokingPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw NidokingPics
+	dw 0 ; empty
 
 	;db TACKLE, HORN_ATTACK, POISON_STING, THRASH ; level 1 learnset
 	db TACKLE, LEER, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - changed

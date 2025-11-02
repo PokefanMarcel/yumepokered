@@ -7,8 +7,9 @@
 	db 190 ; catch rate
 	db 87 ; base exp
 
-	INCBIN "gfx/pokemon/front/cubone.pic", 0, 1 ; sprite dimensions
-	dw CubonePicFront, CubonePicBack
+	db SPRITE_DIM_SMALL ; marcelnote - modified data structure
+	dw CubonePics
+	dw 0 ; empty
 
 	db GROWL, BONE_CLUB, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_MEDIUM_FAST ; growth rate

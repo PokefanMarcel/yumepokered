@@ -7,8 +7,9 @@
 	db 255 ; catch rate
 	db 20 ; base exp
 
-	INCBIN "gfx/pokemon/front/magikarp.pic", 0, 1 ; sprite dimensions
-	dw MagikarpPicFront, MagikarpPicBack
+	db SPRITE_DIM_MEDIUM ; marcelnote - modified data structure
+	dw MagikarpPics
+	dw 0 ; empty
 
 	db SPLASH, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_SLOW ; growth rate

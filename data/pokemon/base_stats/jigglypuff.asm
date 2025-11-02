@@ -7,8 +7,9 @@
 	db 170 ; catch rate
 	db 76 ; base exp
 
-	INCBIN "gfx/pokemon/front/jigglypuff.pic", 0, 1 ; sprite dimensions
-	dw JigglypuffPicFront, JigglypuffPicBack
+	db SPRITE_DIM_SMALL ; marcelnote - modified data structure
+	dw JigglypuffPics
+	dw 0 ; empty
 
 	db SING, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_FAST ; growth rate

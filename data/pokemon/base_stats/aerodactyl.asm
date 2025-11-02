@@ -7,8 +7,9 @@
 	db 45 ; catch rate
 	db 202 ; base exp
 
-	INCBIN "gfx/pokemon/front/aerodactyl.pic", 0, 1 ; sprite dimensions
-	dw AerodactylPicFront, AerodactylPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw AerodactylPics
+	dw 0 ; empty
 
 	db WING_ATTACK, AGILITY, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_SLOW ; growth rate

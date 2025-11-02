@@ -7,8 +7,9 @@
 	db 45 ; catch rate
 	db 119 ; base exp
 
-	INCBIN "gfx/pokemon/front/kabuto.pic", 0, 1 ; sprite dimensions
-	dw KabutoPicFront, KabutoPicBack
+	db SPRITE_DIM_SMALL ; marcelnote - modified data structure
+	dw KabutoPics
+	dw 0 ; empty
 
 	db SCRATCH, HARDEN, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_MEDIUM_FAST ; growth rate

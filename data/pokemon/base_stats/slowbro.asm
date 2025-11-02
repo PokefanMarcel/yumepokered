@@ -7,8 +7,9 @@
 	db 75 ; catch rate
 	db 164 ; base exp
 
-	INCBIN "gfx/pokemon/front/slowbro.pic", 0, 1 ; sprite dimensions
-	dw SlowbroPicFront, SlowbroPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw SlowbroPics
+	dw 0 ; empty
 
 	db POUND, GROWL, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - changed from CONFUSION, DISABLE, HEADBUTT, NO_MOVE
 	db GROWTH_MEDIUM_FAST ; growth rate

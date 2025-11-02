@@ -7,8 +7,9 @@
 	db 190 ; catch rate
 	db 102 ; base exp
 
-	INCBIN "gfx/pokemon/front/drowzee.pic", 0, 1 ; sprite dimensions
-	dw DrowzeePicFront, DrowzeePicBack
+	db SPRITE_DIM_MEDIUM ; marcelnote - modified data structure
+	dw DrowzeePics
+	dw 0 ; empty
 
 	db POUND, HYPNOSIS, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_MEDIUM_FAST ; growth rate

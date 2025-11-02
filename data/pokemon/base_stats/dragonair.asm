@@ -7,8 +7,9 @@
 	db 45 ; catch rate
 	db 144 ; base exp
 
-	INCBIN "gfx/pokemon/front/dragonair.pic", 0, 1 ; sprite dimensions
-	dw DragonairPicFront, DragonairPicBack
+	db SPRITE_DIM_MEDIUM ; marcelnote - modified data structure
+	dw DragonairPics
+	dw 0 ; empty
 
 	db WRAP, LEER, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed THUNDER_WAVE
 	db GROWTH_SLOW ; growth rate

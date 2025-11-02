@@ -7,8 +7,9 @@
 	db 45 ; catch rate
 	db 185 ; base exp
 
-	INCBIN "gfx/pokemon/front/poliwrath.pic", 0, 1 ; sprite dimensions
-	dw PoliwrathPicFront, PoliwrathPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw PoliwrathPics
+	dw 0 ; empty
 
 	db POUND, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - replaced HYPNOSIS, WATER_GUN, DOUBLESLAP, BODY_SLAM
 	db GROWTH_MEDIUM_SLOW ; growth rate

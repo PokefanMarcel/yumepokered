@@ -7,8 +7,9 @@
 	db 75 ; catch rate
 	db 165 ; base exp
 
-	INCBIN "gfx/pokemon/front/hypno.pic", 0, 1 ; sprite dimensions
-	dw HypnoPicFront, HypnoPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw HypnoPics
+	dw 0 ; empty
 
 	db POUND, HYPNOSIS, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed DISABLE, CONFUSION
 	db GROWTH_MEDIUM_FAST ; growth rate

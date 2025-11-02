@@ -7,8 +7,9 @@
 	db 25 ; catch rate
 	db 129 ; base exp
 
-	INCBIN "gfx/pokemon/front/clefable.pic", 0, 1 ; sprite dimensions
-	dw ClefablePicFront, ClefablePicBack
+	db SPRITE_DIM_MEDIUM ; marcelnote - modified data structure
+	dw ClefablePics
+	dw 0 ; empty
 
 	db POUND, GROWL, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - changed from SING, DOUBLESLAP, MINIMIZE, METRONOME
 	db GROWTH_FAST ; growth rate

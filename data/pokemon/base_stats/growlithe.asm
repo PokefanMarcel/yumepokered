@@ -7,8 +7,9 @@
 	db 190 ; catch rate
 	db 91 ; base exp
 
-	INCBIN "gfx/pokemon/front/growlithe.pic", 0, 1 ; sprite dimensions
-	dw GrowlithePicFront, GrowlithePicBack
+	db SPRITE_DIM_SMALL ; marcelnote - modified data structure
+	dw GrowlithePics
+	dw 0 ; empty
 
 	db TACKLE, GROWL, NO_MOVE, NO_MOVE ; level 1 learnset - marcelnote - replaced BITE, ROAR, NO_MOVE, NO_MOVE
 	db GROWTH_SLOW ; growth rate

@@ -7,8 +7,9 @@
 	db 45 ; catch rate
 	db 167 ; base exp
 
-	INCBIN "gfx/pokemon/front/magmar.pic", 0, 1 ; sprite dimensions
-	dw MagmarPicFront, MagmarPicBack
+	db SPRITE_DIM_MEDIUM ; marcelnote - modified data structure
+	dw MagmarPics
+	dw 0 ; empty
 
 	db POUND, EMBER, NO_MOVE, NO_MOVE ; level 1 learnset ; marecelnote - added POUND
 	db GROWTH_MEDIUM_FAST ; growth rate

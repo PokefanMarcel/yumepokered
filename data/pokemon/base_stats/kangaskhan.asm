@@ -7,8 +7,9 @@
 	db 45 ; catch rate
 	db 175 ; base exp
 
-	INCBIN "gfx/pokemon/front/kangaskhan.pic", 0, 1 ; sprite dimensions
-	dw KangaskhanPicFront, KangaskhanPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw KangaskhanPics
+	dw 0 ; empty
 
 	db COMET_PUNCH, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed RAGE
 	db GROWTH_MEDIUM_FAST ; growth rate

@@ -7,8 +7,9 @@
 	db 75 ; catch rate
 	db 213 ; base exp
 
-	INCBIN "gfx/pokemon/front/arcanine.pic", 0, 1 ; sprite dimensions
-	dw ArcaninePicFront, ArcaninePicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw ArcaninePics
+	dw 0 ; empty
 
 	db TACKLE, GROWL, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - changed from ROAR, EMBER, LEER, TAKE_DOWN
 	db GROWTH_SLOW ; growth rate

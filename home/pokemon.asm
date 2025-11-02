@@ -116,7 +116,7 @@ LoadFrontSpriteByMonIndex::
 .validDexNumber
 	push hl
 	ld de, vFrontPic
-	call LoadMonFrontSprite
+	call LoadMonFrontPic
 	pop hl
 	xor a
 	ldh [hStartTileID], a
@@ -373,15 +373,16 @@ GetMonHeader::
 	push af
 	ld a, [wCurSpecies]
 	ld [wPokedexNum], a
-	ld de, FossilKabutopsPic
-	ld b, $66 ; size of Kabutops fossil and Ghost sprites
+	ld b, 6 * 6 ; size of Kabutops fossil and Ghost sprites
+	ld de, FossilKabutopsPic - (BulbasaurPicFront - BulbasaurPics)
 	cp FOSSIL_KABUTOPS ; Kabutops fossil
 	jr z, .specialID
-	ld de, GhostPic
-	cp MON_GHOST ; Ghost
-	jr z, .specialID
-	ld de, FossilAerodactylPic
-	ld b, $77 ; size of Aerodactyl fossil sprite
+	; marcelnote - this is useless, Ghosts are handled in InitWildBattle
+;	ld de, GhostPic - (BulbasaurPicFront - BulbasaurPics)
+;	cp MON_GHOST ; Ghost
+;	jr z, .specialID
+	ld b, 7 * 7 ; size of Aerodactyl fossil sprite
+	ld de, FossilAerodactylPic - (BulbasaurPicFront - BulbasaurPics)
 	cp FOSSIL_AERODACTYL ; Aerodactyl fossil
 	jr z, .specialID
 	predef IndexToPokedex
@@ -395,7 +396,7 @@ GetMonHeader::
 	call CopyData
 	jr .done
 .specialID
-	ld hl, wMonHSpriteDim
+	ld hl, wMonHFrontPicDim
 	ld a, b
 	ld [hli], a ; write sprite dimensions
 	ld a, e

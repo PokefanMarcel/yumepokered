@@ -7,8 +7,9 @@
 	db 45 ; catch rate
 	db 200 ; base exp
 
-	INCBIN "gfx/pokemon/front/pinsir.pic", 0, 1 ; sprite dimensions
-	dw PinsirPicFront, PinsirPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw PinsirPics
+	dw 0 ; empty
 
 	db LEER, VICEGRIP, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - added LEER
 	db GROWTH_SLOW ; growth rate

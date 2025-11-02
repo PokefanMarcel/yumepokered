@@ -7,8 +7,9 @@
 	db 100 ; catch rate
 	db 145 ; base exp
 
-	INCBIN "gfx/pokemon/front/kadabra.pic", 0, 1 ; sprite dimensions
-	dw KadabraPicFront, KadabraPicBack
+	db SPRITE_DIM_MEDIUM ; marcelnote - modified data structure
+	dw KadabraPics
+	dw 0 ; empty
 
 	db TELEPORT, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed CONFUSION, DISABLE
 	db GROWTH_MEDIUM_SLOW ; growth rate

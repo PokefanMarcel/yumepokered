@@ -7,8 +7,9 @@
 	db 190 ; catch rate
 	db 70 ; base exp
 
-	INCBIN "gfx/pokemon/front/paras.pic", 0, 1 ; sprite dimensions
-	dw ParasPicFront, ParasPicBack
+	db SPRITE_DIM_SMALL ; marcelnote - modified data structure
+	dw ParasPics
+	dw 0 ; empty
 
 	db SCRATCH, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_MEDIUM_FAST ; growth rate

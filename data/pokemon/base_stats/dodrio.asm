@@ -7,8 +7,9 @@
 	db 45 ; catch rate
 	db 158 ; base exp
 
-	INCBIN "gfx/pokemon/front/dodrio.pic", 0, 1 ; sprite dimensions
-	dw DodrioPicFront, DodrioPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw DodrioPics
+	dw 0 ; empty
 
 	db PECK, GROWL, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed FURY_ATTACK
 	db GROWTH_MEDIUM_FAST ; growth rate

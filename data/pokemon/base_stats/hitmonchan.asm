@@ -7,8 +7,9 @@
 	db 45 ; catch rate
 	db 140 ; base exp
 
-	INCBIN "gfx/pokemon/front/hitmonchan.pic", 0, 1 ; sprite dimensions
-	dw HitmonchanPicFront, HitmonchanPicBack
+	db SPRITE_DIM_MEDIUM ; marcelnote - modified data structure
+	dw HitmonchanPics
+	dw 0 ; empty
 
 	db COMET_PUNCH, AGILITY, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_MEDIUM_FAST ; growth rate

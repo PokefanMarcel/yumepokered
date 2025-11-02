@@ -7,8 +7,9 @@
 	db 60 ; catch rate
 	db 161 ; base exp
 
-	INCBIN "gfx/pokemon/front/magneton.pic", 0, 1 ; sprite dimensions
-	dw MagnetonPicFront, MagnetonPicBack
+	db SPRITE_DIM_MEDIUM ; marcelnote - modified data structure
+	dw MagnetonPics
+	dw 0 ; empty
 
 	db TACKLE, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - changed from TACKLE, SONICBOOM, THUNDERSHOCK, NO_MOVE
 	db GROWTH_MEDIUM_FAST ; growth rate

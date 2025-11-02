@@ -7,8 +7,9 @@
 	db 60 ; catch rate
 	db 205 ; base exp
 
-	INCBIN "gfx/pokemon/front/tentacruel.pic", 0, 1 ; sprite dimensions
-	dw TentacruelPicFront, TentacruelPicBack
+	db SPRITE_DIM_MEDIUM ; marcelnote - modified data structure
+	dw TentacruelPics
+	dw 0 ; empty
 
 	db POISON_STING, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - changed from ACID, SUPERSONIC, WRAP, NO_MOVE
 	db GROWTH_SLOW ; growth rate

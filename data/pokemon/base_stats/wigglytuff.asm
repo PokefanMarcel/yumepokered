@@ -7,8 +7,9 @@
 	db 50 ; catch rate
 	db 109 ; base exp
 
-	INCBIN "gfx/pokemon/front/wigglytuff.pic", 0, 1 ; sprite dimensions
-	dw WigglytuffPicFront, WigglytuffPicBack
+	db SPRITE_DIM_MEDIUM ; marcelnote - modified data structure
+	dw WigglytuffPics
+	dw 0 ; empty
 
 	db SING, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed DISABLE, DEFENSE_CURL, DOUBLESLAP
 	db GROWTH_FAST ; growth rate

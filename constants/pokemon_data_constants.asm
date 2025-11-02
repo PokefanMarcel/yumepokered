@@ -23,6 +23,11 @@ DEF BASE_TMHM        rb (NUM_TM_HM + 7) / 8
                      rb_skip
 DEF BASE_DATA_SIZE EQU _RS
 
+; marcelnote - new
+DEF SPRITE_DIM_SMALL  EQU 5 * 5 ; was $55
+DEF SPRITE_DIM_MEDIUM EQU 6 * 6 ; was $66
+DEF SPRITE_DIM_LARGE  EQU 7 * 7 ; was $77
+
 ; party_struct members (see macros/ram.asm)
 rsreset
 DEF MON_SPECIES    rb

@@ -7,8 +7,9 @@
 	db 45 ; catch rate
 	db 159 ; base exp
 
-	INCBIN "gfx/pokemon/front/beedrill.pic", 0, 1 ; sprite dimensions
-	dw BeedrillPicFront, BeedrillPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw BeedrillPics
+	dw 0 ; empty
 
 	db POISON_STING, STRING_SHOT, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - added POISON_STING and STRING_SHOT, removed FURY_ATTACK
 	db GROWTH_MEDIUM_FAST ; growth rate

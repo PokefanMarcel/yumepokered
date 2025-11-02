@@ -7,8 +7,9 @@
 	db 90 ; catch rate
 	db 148 ; base exp
 
-	INCBIN "gfx/pokemon/front/persian.pic", 0, 1 ; sprite dimensions
-	dw PersianPicFront, PersianPicBack
+	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	dw PersianPics
+	dw 0 ; empty
 
 	db SCRATCH, GROWL, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - removed BITE and SCREECH
 	db GROWTH_MEDIUM_FAST ; growth rate

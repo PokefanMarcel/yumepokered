@@ -1583,9 +1583,12 @@ wMonHType1:: db
 wMonHType2:: db
 wMonHCatchRate:: db
 wMonHBaseEXP:: db
-wMonHSpriteDim:: db
-wMonHFrontSprite:: dw
-wMonHBackSprite:: dw
+;wMonHSpriteDim:: db
+;wMonHFrontSprite:: dw
+;wMonHBackSprite:: dw
+wMonHFrontPicDim:: db ; marcelnote - modified
+wMonHPics:: dw
+	dw ; now unused
 wMonHMoves:: ds NUM_MOVES
 wMonHGrowthRate:: db
 wMonHLearnset:: flag_array NUM_TMS + NUM_HMS

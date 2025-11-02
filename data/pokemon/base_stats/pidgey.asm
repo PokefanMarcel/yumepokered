@@ -7,8 +7,9 @@
 	db 255 ; catch rate
 	db 55 ; base exp
 
-	INCBIN "gfx/pokemon/front/pidgey.pic", 0, 1 ; sprite dimensions
-	dw PidgeyPicFront, PidgeyPicBack
+	db SPRITE_DIM_SMALL ; marcelnote - modified data structure
+	dw PidgeyPics
+	dw 0 ; empty
 
 	db TACKLE, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - changed GUST to TACKLE
 	db GROWTH_MEDIUM_SLOW ; growth rate

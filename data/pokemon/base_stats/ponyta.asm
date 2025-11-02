@@ -7,8 +7,9 @@
 	db 190 ; catch rate
 	db 152 ; base exp
 
-	INCBIN "gfx/pokemon/front/ponyta.pic", 0, 1 ; sprite dimensions
-	dw PonytaPicFront, PonytaPicBack
+	db SPRITE_DIM_MEDIUM ; marcelnote - modified data structure
+	dw PonytaPics
+	dw 0 ; empty
 
 	db EMBER, TAIL_WHIP, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - added TAIL_WHIP
 	db GROWTH_MEDIUM_FAST ; growth rate

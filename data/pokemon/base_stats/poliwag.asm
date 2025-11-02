@@ -7,8 +7,9 @@
 	db 255 ; catch rate
 	db 77 ; base exp
 
-	INCBIN "gfx/pokemon/front/poliwag.pic", 0, 1 ; sprite dimensions
-	dw PoliwagPicFront, PoliwagPicBack
+	db SPRITE_DIM_SMALL ; marcelnote - modified data structure
+	dw PoliwagPics
+	dw 0 ; empty
 
 	db POUND, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset ; marcelnote - switched BUBBLE for POUND
 	db GROWTH_MEDIUM_SLOW ; growth rate
