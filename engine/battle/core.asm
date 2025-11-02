@@ -6969,8 +6969,20 @@ LoadMonBackPic:
 
 	ld hl, wMonHPics
 	ld a, [hli]
-	ld d, [hl]
-	ld e, a
+	ld h, [hl]
+	ld l, a
+
+	ld a, [wOptions]
+	and SPRITE_STYLE_MASK
+	jr z, .gotPicAddress
+	ld de, BulbasaurPicBackYellow - BulbasaurPicBack
+	add hl, de
+	cp SPRITE_STYLE_YELLOW
+	jr z, .gotPicAddress
+	add hl, de ; Green
+.gotPicAddress
+	ld d, h
+	ld e, l
 
 	xor a
 	ld [rRAMB], a
