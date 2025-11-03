@@ -196,10 +196,10 @@ _PewterGymBrockRematchAcceptBattleText:: ; marcelnote - Brock rematch
 	cont "tout ce que t'as!"
 	done
 
-_PewterGymBrockRematchDefeatedText:: ; TODO marcelnote - Brock rematch
-	text "I knew"
-	line "you were strong,"
-	cont "but this..." ; text from Let's Go Pikachu
+_PewterGymBrockRematchDefeatedText:: ; marcelnote - Brock rematch
+	text "Je ne"
+	line "m'attendais pas à"
+	cont "tant de talent..." ; text from Let's Go Pikachu
 	prompt
 
 _PewterGymAfterRematchText:: ; marcelnote - Brock rematch
@@ -210,3 +210,17 @@ _PewterGymAfterRematchText:: ; marcelnote - Brock rematch
 	para "Refaisons ça"
 	line "bientôt!"
 	done
+
+
+; Dialogues Pierre rematch LGPE :
+
+; Que de chemin parcouru depuis notre dernière rencontre !
+; Maintenant que tu as montré ta supériorité à la Ligue Pokémon, j'aimerais te proposer quelque chose.
+; En tant que Champion, j'ai toujours voulu affronter le Maître de la Ligue.
+; Battons-nous à nouveau ! La force de mes Pokémon ne te laissera sûrement pas de marbre !
+
+; Je savais que tu te débrouillais bien, mais je ne m'attendais pas à tant de talent.
+
+; J'ai décidé de mettre mon rêve de devenir Éleveur Pokémon entre parenthèses.
+; Ma priorité du moment, c'est de m'entraîner pour parvenir à te battre !
+; N'hésite pas à revenir aussi souvent que tu le souhaites ! Je suis à ta disposition tous les jours, si le cœur t'en dit.
