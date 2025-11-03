@@ -167,9 +167,9 @@ _CeruleanGymMistyRematchAcceptBattleText:: ; marcelnote - Misty rematch
 	cont "ma stratégie!"
 	done ; The ultimate offense of Water-type Pokémon! I hope you're ready! (LGP)
 
-_CeruleanGymMistyRematchDefeatedText:: ; TODO marcelnote - Misty rematch
-	text "Hmph!"
-	line "How annoying!" ; text from Let's Go Pikachu ; Quelle plaie
+_CeruleanGymMistyRematchDefeatedText:: ; marcelnote - Misty rematch
+	text "Pfff!"
+	line "Je m'en fiche!" ; text from Let's Go Pikachu
 	prompt
 
 _CeruleanGymAfterRematchText:: ; marcelnote - Misty rematch
@@ -181,3 +181,16 @@ _CeruleanGymAfterRematchText:: ; marcelnote - Misty rematch
 	para "Refaisons ça"
 	line "bientôt!"
 	done
+
+
+; Dialogues d'Ondine rematch LGPE :
+
+; Ne dis rien, je sais déjà tout ! Vos exploits, à ton ami d'enfance et toi, face à la Team Rocket et votre duel au sommet pour le titre de Maître de la Ligue !
+; Depuis que j'ai appris ça, je bous d'impatience ! Je meurs d'envie de t'affronter à nouveau, maintenant que tu es si fort !
+; Allez, tu ne peux pas me refuser un petit combat !
+
+; Pfff ! De toute façon, je m'en fiche !
+
+; Zut, voilà qu'on a perdu ! Je vais aller piquer une tête pour me changer les idées.
+; Mais je te préviens, la prochaine fois, la victoire sera mienne !
+
