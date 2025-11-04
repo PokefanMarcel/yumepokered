@@ -1,9 +1,9 @@
 # Credits for graphics
 
-- All sprites for the female player character from Madame Frog/Hatuntun (retrieved [here](https://www.deviantart.com/ghost-missingno/art/Blue-Sprites-for-R-G-B-Y-339796334)), as well as the high-res backsprite for the male character -- some with light modifications by me.
+- All sprites for the female player character are from Madame Frog/Hatuntun (retrieved [here](https://www.deviantart.com/ghost-missingno/art/Blue-Sprites-for-R-G-B-Y-339796334)), as well as the high-res backsprite for the male character -- some with light modifications by me.
 The high-res Old Man backsprite is from [PureRGB](https://github.com/Vortyne/pureRGB).
 
-- All Yellow sprites have been adapted from ([LouLilie's](https://www.deviantart.com/loulilie/art/PokemonSpecial-Sprites-Yellow-302559354)).
+- All Yellow sprites have been adapted from [LouLilie's](https://www.deviantart.com/loulilie/art/PokemonSpecial-Sprites-Yellow-302559354).
 
 - Gym leaders' overworld sprites were obtained from [Yellow Legacy](https://github.com/cRz-Shadows/Pokemon_Yellow_Legacy).
 
