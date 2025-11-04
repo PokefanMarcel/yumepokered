@@ -41,8 +41,8 @@ MeasureUnitsMetricText:
 	db "METRIQUE@"
 
 SpriteStyleGreenText:
-	db "VERT @"
+	db "VERT   @"
 SpriteStyleBlueText:
-	db "BLEU @"
-SpriteStyleYellowText:
-	db "JAUNE@"
+	db "BLEU   @"
+SpriteStyleCrystalText:
+	db "CRISTAL@"

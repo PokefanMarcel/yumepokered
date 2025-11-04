@@ -234,3 +234,33 @@ ReverseByte:
 ; maps each nybble to its reverse
 NybbleReverseTable::
 	db $0, $8, $4, $c, $2, $a, $6, $e, $1, $9, $5, $d, $3, $b, $7, $f
+
+
+CenterHiResSprite::
+	ldh a, [hLoadedROMBank]
+	push af
+	ld a, b
+	ldh [hLoadedROMBank], a
+	ld [rROMB], a
+
+	xor a
+	ld hl, sSpriteBuffer0
+	ld bc, 2 * SPRITEBUFFERSIZE
+	call FillMemory ; clear sprite buffers 0 and 1, preserves a
+
+	ld hl, sSpriteBuffer0 + (7 + 1) tiles ; skip one row and one column
+	ld b, 6 ; copy 6 rows of tiles
+.loop
+	push bc
+	ld bc, 6 tiles ; copy 6 tiles
+	call CopyDataDEtoHL ; Copy bc bytes from de to hl.
+	ld bc, 1 tiles
+	add hl, bc ; skip 1 tile
+	pop bc
+	dec b
+	jr nz, .loop
+
+	pop af
+	ldh [hLoadedROMBank], a
+	ld [rROMB], a
+	ret

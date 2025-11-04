@@ -44,5 +44,5 @@ SpriteStyleGreenText:
 	db "GREEN  @"
 SpriteStyleBlueText:
 	db "BLUE   @"
-SpriteStyleYellowText:
-	db "YELLOW @"
+SpriteStyleCrystalText:
+	db "CRYSTAL@"

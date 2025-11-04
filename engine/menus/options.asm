@@ -295,20 +295,20 @@ GetSpriteStyle:
 	rr c
 	rr c
 	cp SPRITE_STYLE_CRYSTAL
-	jr z, .yellowSpriteStyleOption
+	jr z, .crystalSpriteStyleOption
 ; green sprite style option
 	lb de, SPRITE_STYLE_CRYSTAL, SPRITE_STYLE_BLUE
 	ret
 .blueSpriteStyleOption
 	lb de, SPRITE_STYLE_GREEN, SPRITE_STYLE_CRYSTAL
 	ret
-.yellowSpriteStyleOption
+.crystalSpriteStyleOption
 	lb de, SPRITE_STYLE_BLUE, SPRITE_STYLE_GREEN
 	ret
 
 SpriteStyleStringsPointerTable:
 	dw SpriteStyleBlueText
-	dw SpriteStyleYellowText
+	dw SpriteStyleCrystalText
 	dw SpriteStyleGreenText
 
 
