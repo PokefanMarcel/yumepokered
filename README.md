@@ -156,12 +156,12 @@ Unless you’re after an easier hunt for a specific version-exclusive Pokémon, 
 This project owes a lot to existing works, and above all to the pret [pokered](https://github.com/pret/pokered) disassemby project, but also:
 
 - [Shinpokered](https://github.com/jojobear13/shinpokered): initial inspiration, including the kanji name; girl player, experience bar, temporary field moves, many bug fixes,
-- [PureRGB](https://github.com/Vortyne/pureRGB): overworld HM use, ROM space management, repel reuse prompt, use items with Select, several Volcano and Power plant graphics, many other code snippets,
+- [PureRGB](https://github.com/Vortyne/pureRGB): overworld HM use, ROM space management, repel reuse prompt, use items with Select, some gfx, many other code snippets,
 - [Extreme Yellow](https://github.com/RainbowMetalPigeon/ExtremeYellow): overworld HM use, dynamic TM seller,
 - [Yellow Legacy](https://github.com/cRz-Shadows/Pokemon_Yellow_Legacy): inspiration for many balance changes,
 - [pokered-crysaudio](https://github.com/dannye/pokered-crysaudio/tree/1edc6019fb8630bccd94f0b0e7dd4082cf7f4245): updated sound engine,
-- [Polished Crystal](https://github.com/Rangi42/polishedcrystal): math functions, some gfx,
-- some new sprites have been provided by or adapted from Madame Frog/Hatuntun (retrieved [here](https://www.deviantart.com/ghost-missingno/art/Blue-Sprites-for-R-G-B-Y-339796334)), LouLilie ([here](https://www.deviantart.com/loulilie/art/PokemonSpecial-Sprites-Yellow-302559354)), Corra, Mauve and FrenchOrange (from the pokered discord), SkidMarc25 ([here](https://www.deviantart.com/skidmarc25/art/Pokemon-Red-Blue-Green-Yellow-Back-Sprite-Touchups-977256591)),
+- [Polished Crystal](https://github.com/Rangi42/polishedcrystal): math functions, Pokémon Gen2 sprites,
+- additional credits and references for the graphics used in Yume are listed [here](docs/gfx_credits.md),
 - the invaluable help from the amazing people on the pokered Discord.
 
 I do my best to keep track of all references, but I may have missed some.
@@ -170,7 +170,4 @@ If you think your work should be credited here, please reach out – I'll be hap
 ## Contact
 
 Enjoy this project? Help make it even better!
-I’m looking for creative contributions like new music, fresh graphics (especially Pokémon backsprites), and translations into other languages — please reach out via [GitHub](https://github.com/PokefanMarcel/yumepokered/issues) or [Reddit](https://www.reddit.com/message/compose/?to=wdpk_phoenix)!
-
-NEW: join the Pokémon Yume [Discord server](https://discord.gg/AHbQ8vZ6FG)!
-
+I’m looking for creative contributions like new music, fresh graphics (especially Pokémon backsprites), and translations into other languages — please reach out via [GitHub](https://github.com/PokefanMarcel/yumepokered/issues), [Discord server](https://discord.gg/AHbQ8vZ6FG), or [Reddit](https://www.reddit.com/message/compose/?to=wdpk_phoenix)!
