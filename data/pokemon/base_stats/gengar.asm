@@ -7,7 +7,7 @@
 	db 45 ; catch rate
 	db 190 ; base exp
 
-	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	db SPRITE_DIM_MEDIUM ; marcelnote - modified data structure
 	dw GengarPics
 	dw 0 ; empty
 

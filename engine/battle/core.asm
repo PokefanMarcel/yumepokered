@@ -6537,7 +6537,20 @@ LoadPlayerBackPic:
 	ld [rRAMB], a
 	ld a, RAMG_SRAM_ENABLE
 	ld [rRAMG], a
-	call ScaleSpriteByTwo ; puts scaled sprite at sSpriteBuffer0
+
+	ld a, [wOptions]
+	and SPRITE_STYLE_MASK
+	cp SPRITE_STYLE_CRYSTAL
+	jr z, .highResPic
+	call ScaleSpriteByTwo  ; writes scaled sprite at sSpriteBuffer0
+	jr .continue
+.highResPic
+	ld hl, RedPicBackCrystal - RedPicBack
+	add hl, de
+	ld d, h
+	ld e, l
+	call CenterHiResSprite ; writes centered sprite at sSpriteBuffer0
+.continue
 
 	ld hl, wShadowOAM       ; marcelnote - optim by Engezerstorung
 	lb bc, $38, 0           ; b = Y start (top), c = initial tile number
@@ -6972,18 +6985,6 @@ LoadMonBackPic:
 	ld h, [hl]
 	ld l, a
 
-	ld a, [wOptions]
-	and SPRITE_STYLE_MASK
-	jr z, .gotPicAddress
-	ld de, BulbasaurPicBackYellow - BulbasaurPicBack
-	add hl, de
-	cp SPRITE_STYLE_YELLOW
-	jr z, .gotPicAddress
-	add hl, de ; Green
-.gotPicAddress
-	ld d, h
-	ld e, l
-
 	xor a
 	ld [rRAMB], a
 	ld a, RAMG_SRAM_ENABLE
@@ -6991,8 +6992,27 @@ LoadMonBackPic:
 
 	ld a, [wMonHPicBank]
 	ld b, a
-	call ScaleSpriteByTwo ; puts scaled sprite at sSpriteBuffer0
 
+	ld a, [wOptions]
+	and SPRITE_STYLE_MASK
+	jr z, .defaultPic
+	cp SPRITE_STYLE_CRYSTAL
+	jr z, .highResPic
+	ld de, BulbasaurPicBackGreen - BulbasaurPicBack
+	add hl, de ; Green
+.defaultPic
+	ld d, h
+	ld e, l
+	call ScaleSpriteByTwo ; puts scaled sprite at sSpriteBuffer0
+	jr .continue
+.highResPic
+	ld de, BulbasaurPicBackCrystal - BulbasaurPicBack
+	add hl, de ; Crystal
+	ld d, h
+	ld e, l
+	call CenterHiResSprite ; writes centered sprite at sSpriteBuffer0
+
+.continue
 	ld hl, vBackPic
 	ld de, sSpriteBuffer0
 	ld c, 7 * 7 ; number of tiles to be copied

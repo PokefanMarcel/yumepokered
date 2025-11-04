@@ -7,7 +7,7 @@
 	db 190 ; catch rate
 	db 74 ; base exp
 
-	db SPRITE_DIM_MEDIUM ; marcelnote - modified data structure
+	db SPRITE_DIM_SMALL ; marcelnote - modified data structure
 	dw MankeyPics
 	dw 0 ; empty
 

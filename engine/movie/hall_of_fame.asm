@@ -197,7 +197,21 @@ HoFLoadPlayerPics: ; marcelnote - refactored to remove sprite compression
 	ld [rRAMB], a
 	ld a, RAMG_SRAM_ENABLE
 	ld [rRAMG], a
-	call ScaleSpriteByTwo ; writes scaled sprite at sSpriteBuffer0
+;;;;;;;;;;;;;;;;;;;;;; marcelnote - new to handle hi-res backsprites
+	ld a, [wOptions]
+	and SPRITE_STYLE_MASK
+	cp SPRITE_STYLE_CRYSTAL
+	jr z, .highResPic
+	call ScaleSpriteByTwo  ; writes scaled sprite at sSpriteBuffer0
+	jr .continue
+.highResPic
+	ld hl, RedPicBackCrystal - RedPicBack
+	add hl, de
+	ld d, h
+	ld e, l
+	call CenterHiResSprite ; writes centered sprite at sSpriteBuffer0
+.continue
+;;;;;;;;;;;;;;;;;;;;;;
 	ld hl, vBackPic
 	ld de, sSpriteBuffer0
 	ld c, 7 * 7 ; number of tiles to be copied

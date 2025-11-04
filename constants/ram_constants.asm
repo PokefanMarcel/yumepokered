@@ -43,9 +43,9 @@ DEF TEXT_DELAY_FAST    EQU 1 ; 1  ; marcelnote - changed from %001 = 1
 DEF TEXT_DELAY_MEDIUM  EQU 2 ; 2  ; marcelnote - changed from %011 = 3
 DEF TEXT_DELAY_SLOW    EQU 3 ; 3  ; marcelnote - changed from %101 = 5
 
-DEF SPRITE_STYLE_BLUE   EQU %0000 ; 0 ; marcelnote - new constants for sprite style
-DEF SPRITE_STYLE_YELLOW EQU %0100 ; 1
-DEF SPRITE_STYLE_GREEN  EQU %1000 ; 2
+DEF SPRITE_STYLE_BLUE    EQU %0000 ; 0 ; marcelnote - new constants for sprite style
+DEF SPRITE_STYLE_CRYSTAL EQU %0100 ; 1
+DEF SPRITE_STYLE_GREEN   EQU %1000 ; 2
 
 ; wLetterPrintingDelayFlags
 	const_def

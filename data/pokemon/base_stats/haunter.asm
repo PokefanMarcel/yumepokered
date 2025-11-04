@@ -7,7 +7,7 @@
 	db 90 ; catch rate
 	db 126 ; base exp
 
-	db SPRITE_DIM_LARGE ; marcelnote - modified data structure
+	db SPRITE_DIM_MEDIUM ; marcelnote - modified data structure
 	dw HaunterPics
 	dw 0 ; empty
 
