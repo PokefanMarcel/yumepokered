@@ -1,4 +1,13 @@
 _ChampionsRoomRivalIntroText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "<RIVAL>:"
 	line "Bonjour minable."
 
@@ -7,7 +16,49 @@ _ChampionsRoomRivalIntroText::
 	cont "plombe, <PLAYER>!"
 
 	para "Ton devoir en"
-	line "tant que rival" ; gendered text
+	line "tant que rival"
+	cont "est d'entraîner"
+	cont "mes #MON."
+
+	para "En améliorant mon"
+	line "#DEX, j'ai"
+	cont "recherché les"
+	cont "#MON sur-"
+	cont "puissants!"
+
+	para "J'ai ainsi créé"
+	line "l'équipe ultime,"
+	cont "efficace contre"
+	cont "tous les types de"
+	cont "#MON!"
+
+	para "Ca t'épate, hein?"
+
+	para "Je suis le"
+	line "champion #MON!"
+
+	para "Tu sais c'que ça"
+	line "veut dire?"
+
+	para "Ecoute ça,"
+	line "minable!"
+
+	para "Je suis le"
+	line "dresseur le plus"
+	cont "puissant du"
+	cont "monde! Yaaa!"
+	done
+
+.GirlText
+	text "<RIVAL>:"
+	line "Bonjour minable."
+
+	para "Je t'attends"
+	line "depuis une bonne"
+	cont "plombe, <PLAYER>!"
+
+	para "Ton devoir en"
+	line "tant que rivale"
 	cont "est d'entraîner"
 	cont "mes #MON."
 
@@ -74,6 +125,15 @@ _RivalVictoryText::
 	prompt
 
 _ChampionsRoomRivalAfterBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Qu...Comm...Hein?"
 	line "Moi? Pourquoi?"
 	cont "WHAAAAAAAAAAA!"
@@ -83,8 +143,26 @@ _ChampionsRoomRivalAfterBattleText::
 	cont "perfection..."
 
 	para "Et zut alors!"
-	line "Tu es le nouveau" ; gendered text
+	line "Tu es le nouveau"
 	cont "champion #MON!"
+
+	para "Alors ça..."
+	line "Ca me la coupe."
+	done
+
+.GirlText
+	text "Qu...Comm...Hein?"
+	line "Moi? Pourquoi?"
+	cont "WHAAAAAAAAAAA!"
+
+	para "J'ai entraîné mes"
+	line "#MON à la"
+	cont "perfection..."
+
+	para "Et zut alors!"
+	line "Tu es la nouvelle"
+	cont "championne"
+	cont "#MON!"
 
 	para "Alors ça..."
 	line "Ca me la coupe."
@@ -92,6 +170,15 @@ _ChampionsRoomRivalAfterBattleText::
 
 
 _ChampionsRoomRivalRematchIntroText:: ; marcelnote - new text for rematches
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "<RIVAL>: Yo,"
 	line "<PLAYER>!"
 
@@ -107,7 +194,29 @@ _ChampionsRoomRivalRematchIntroText:: ; marcelnote - new text for rematches
 	para "Tu crois encore"
 	line "être à la hauteur"
 	line "du titre de"
-	cont "CHAMPION?" ; gendered text
+	cont "CHAMPION?"
+
+	para "Mon retour va"
+	line "être épique!"
+	done
+
+.GirlText
+	text "<RIVAL>: Yo,"
+	line "<PLAYER>!"
+
+	para "J'attendais l'heure"
+	line "de ma revanche."
+
+	para "A force d'affronter"
+	line "les meilleurs,"
+	cont "mon équipe est"
+	cont "parée contre"
+	cont "toute stratégie."
+
+	para "Tu crois encore"
+	line "être à la hauteur"
+	line "du titre de"
+	cont "CHAMPIONNE?"
 
 	para "Mon retour va"
 	line "être épique!"
@@ -120,11 +229,30 @@ _RivalRematchDefeatedText:: ; marcelnote - new text for rematches
 	prompt
 
 _RivalRematchVictoryText:: ; marcelnote - new text for rematches
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Hahaha!"
 
 	para "J'ai gagné,"
 	line "j'ai gagné!"
-	cont "Tu restes un" ; gendered text
+	cont "Tu restes un"
+	cont "minable malgré"
+	cont "tout, minable!"
+	prompt
+
+.GirlText
+	text "Hahaha!"
+
+	para "J'ai gagné,"
+	line "j'ai gagné!"
+	cont "Tu restes une"
 	cont "minable malgré"
 	cont "tout, minable!"
 	prompt
@@ -150,9 +278,18 @@ _ChampionsRoomOakText::
 	done
 
 _ChampionsRoomOakCongratulatesPlayerText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "CHEN: Tu as gagné!"
 	line "Félicitations!"
-	cont "Tu es le nouveau" ; gendered text
+	cont "Tu es le nouveau"
 	cont "champion de la"
 	cont "LIGUE #MON!"
 
@@ -163,7 +300,25 @@ _ChampionsRoomOakCongratulatesPlayerText::
 	text "!"
 
 	para "<PLAYER>, tu es"
-	line "grand maintenant!" ; gendered text
+	line "grand maintenant!"
+	done
+
+.GirlText
+	text "CHEN: Tu as gagné!"
+	line "Félicitations!"
+	cont "Tu es la nouvelle"
+	cont "championne de la"
+	cont "LIGUE #MON!"
+
+	para "Tu as tant changé"
+	line "depuis ton départ"
+	cont "avec @"
+	text_ram wNameBuffer
+	text "!"
+
+	para "<PLAYER>, tu"
+	line "es grande"
+	line "maintenant!"
 	done
 
 _ChampionsRoomOakDisappointedWithRivalText::

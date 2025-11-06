@@ -81,9 +81,49 @@ _PokemonTower1FAgathaHowDareYouText:: ; marcelnote - postgame Agatha event
 	done
 
 _PokemonTower1FGentlemanIntroText:: ; marcelnote - postgame Agatha event
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "DIRECTEUR: Ah!"
 	line "Tu es <PLAYER>,"
-	cont "champion de la" ; gendered text
+	cont "champion de la"
+	cont "LIGUE #MON,"
+	cont "n'est-ce pas?"
+
+	para "Enchanté! Je suis"
+	line "le directeur"
+	cont "de la future"
+	cont "TOUR RADIO"
+	cont "de LAVANVILLE."
+
+	para "Eh oui, cette"
+	line "vieille tour"
+	cont "sera bientôt une"
+	cont "station de radio"
+	cont "flambant neuve!"
+
+	para "Mais notre projet"
+	line "a encore des"
+	cont "opposants, comme"
+	cont "AGATHA. Elle ne"
+	cont "veut rien savoir."
+
+	para "Pourrais-tu aller"
+	line "lui parler?"
+	cont "Elle t'écoutera"
+	cont "sûrement."
+	done
+
+.GirlText
+	text "DIRECTEUR: Ah!"
+	line "Tu es <PLAYER>,"
+	cont "championne de la"
 	cont "LIGUE #MON,"
 	cont "n'est-ce pas?"
 

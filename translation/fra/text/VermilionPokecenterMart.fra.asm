@@ -1,4 +1,13 @@
 _VermilionPokecenterFishingGuruText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Deux #MON d'un"
 	line "même niveau sont"
 	cont "différents."
@@ -8,7 +17,20 @@ _VermilionPokecenterFishingGuruText::
 	cont "est toujours plus"
 	cont "fort qu'un"
 	cont "#MON sauvage."
-	cont "Ouais mon gars!" ; gendered text
+	cont "Ouais mon gars!"
+	done
+
+.GirlText
+	text "Deux #MON d'un"
+	line "même niveau sont"
+	cont "différents."
+
+	para "Un #MON élevé"
+	line "par un dresseur"
+	cont "est toujours plus"
+	cont "fort qu'un"
+	cont "#MON sauvage."
+	cont "Ouais ma belle!"
 	done
 
 _VermilionPokecenterSailorText::

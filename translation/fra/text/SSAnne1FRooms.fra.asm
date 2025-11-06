@@ -24,13 +24,42 @@ _SSAnne1FRoomsGentleman1AfterBattleText::
 	done
 
 _SSAnne1FRoomsGentleman2BattleText::
-	text "Toi, jeune sot! Tu" ; gendered text
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
+	text "Toi, jeune sot! Tu"
 	line "oses entrer ici!?"
 	done
 
+.GirlText
+	text "Toi, jeune sotte!"
+	line "Tu oses entrer"
+	cont "ici!?"
+	done
+
 _SSAnne1FRoomsGentleman2EndBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Huf!"
-	line "Tu es mal élevé!!" ; gendered text
+	line "Tu es mal élevé!!"
+	prompt
+
+.GirlText
+	text "Huf! Tu"
+	line "es mal élevée!!"
 	prompt
 
 _SSAnne1FRoomsGentleman2AfterBattleText::
@@ -122,7 +151,22 @@ _SSAnne1FRoomsGentleman3Text::
 	done
 
 _SSAnne1FRoomsNurseAreYouTiredText:: ; marcelnote - new nurse room
-	text "Tu es fatigué?" ; gendered text
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
+	text "Tu es fatiguée?"
+	line "Repose-toi"
+	cont "peu ici."
+	prompt
+
+.GirlText
+	text "Tu es fatigué?"
 	line "Repose-toi"
 	cont "peu ici."
 	prompt

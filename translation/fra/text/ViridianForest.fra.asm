@@ -51,9 +51,24 @@ _ViridianForestYoungster4BattleText::
 	done
 
 _ViridianForestYoungster4EndBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Houlà!"
 	line "J'abandonne!"
 	cont "T'es trop fort!"
+	prompt
+
+.GirlText
+	text "Houlà!"
+	line "J'abandonne!"
+	cont "T'es trop forte!"
 	prompt
 
 _ViridianForestYoungster4AfterBattleText::
@@ -134,10 +149,27 @@ _ViridianForestLeavingSignText::
 
 
 _ViridianForestYoungster6BattleText:: ; marcelnote - new trainer based on Samurai
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Salutations."
 	line "Serais-tu par"
 	cont "hasard l'apprenti"
 	cont "dresseur venant"
+	cont "du BOURG PALETTE?"
+	done
+
+.GirlText
+	text "Salutations."
+	line "Serais-tu par"
+	cont "hasard l'apprentie"
+	cont "dresseuse venant"
 	cont "du BOURG PALETTE?"
 	done
 	; Salutations. Serais-tu par hasard l'apprenti dresseur venant du Bourg Palette? Je t'ai enfin trouvé

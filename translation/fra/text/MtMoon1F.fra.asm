@@ -1,7 +1,22 @@
 _MtMoon1FHikerBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "YAHA! Tu m'as fait"
 	line "peur! Quoi? Mais"
-	cont "t'es qu'un mioche!" ; gendered text
+	cont "t'es qu'un mioche!"
+	done
+
+.GirlText
+	text "YAHA! Tu m'as fait"
+	line "peur! Quoi? Mais"
+	cont "t'es qu'une mioche!"
 	done
 
 _MtMoon1FHikerEndBattleText::
@@ -27,10 +42,26 @@ _MtMoon1FYoungster1EndBattleText::
 	prompt
 
 _MtMoon1FYoungster1AfterBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "J'suis là pour"
 	line "impressionner les"
 	cont "filles!"
-	cont "Ouais mon gars!" ; gendered text
+	cont "Ouais mon gars!"
+	done
+
+.GirlText
+	text "J'suis là pour"
+	line "impressionner les"
+	cont "filles!"
+	cont "Ouais ma belle!"
 	done
 
 _MtMoon1FCooltrainerF1BattleText::

@@ -118,18 +118,52 @@ _Route11Youngster3BattleText::
 	done
 
 _Route11Youngster3EndBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Argh!"
 	line "Tu veux être le"
 	cont "chef de classe?"
 	prompt
 
+.GirlText
+	text "Argh!"
+	line "Tu veux être la"
+	cont "chef de classe?"
+	prompt
+
 _Route11Youngster3AfterBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Il y a un gros"
 	line "#MON qui"
 	cont "vient de la"
 	cont "montagne."
 
 	para "Si t'es fort, tu"
+	line "peux l'attraper."
+	done
+
+.GirlText
+	text "Il y a un gros"
+	line "#MON qui"
+	cont "vient de la"
+	cont "montagne."
+
+	para "Si t'es forte, tu"
 	line "peux l'attraper."
 	done
 

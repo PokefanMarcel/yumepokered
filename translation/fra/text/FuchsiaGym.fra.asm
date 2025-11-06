@@ -1,7 +1,36 @@
 _FuchsiaGymKogaBeforeBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "KOGA: Gwahahaha!"
 
-	para "Un nain ose me" ; gendered text
+	para "Un nain ose me"
+	line "défier? Moi, le"
+	cont "grand le beau le"
+	cont "terrible KOGA?"
+
+	para "Par l'enfer,"
+	line "par le sang,"
+	cont "par l'acier,"
+	cont "j'vais gagner!"
+
+	para "Puisse la poigne"
+	line "de mes poisons"
+	cont "pétrifier de peur"
+	cont "la paix et tes"
+	cont "petits #MON!"
+	done
+
+.GirlText
+	text "KOGA: Gwahahaha!"
+
+	para "Une naine ose me"
 	line "défier? Moi, le"
 	cont "grand le beau le"
 	cont "terrible KOGA?"
@@ -117,14 +146,44 @@ _FuchsiaGymRocker2AfterBattleText::
 	done
 
 _FuchsiaGymRocker3BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Crois-tu pouvoir"
 	line "me battre? Haha."
 	cont "Nabot!"
 	done
 
+.GirlText
+	text "Crois-tu pouvoir"
+	line "me battre? Haha."
+	cont "Minus!"
+	done
+
 _FuchsiaGymRocker3EndBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Quoi?"
 	line "Eul'nabot m'a"
+	cont "battu?"
+	prompt
+
+.GirlText
+	text "Quoi?"
+	line "La minus m'a"
 	cont "battu?"
 	prompt
 
@@ -200,8 +259,35 @@ _FuchsiaGymRocker6AfterBattleText::
 	done
 
 _FuchsiaGymGymGuideChampInMakingText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Hop là! Graine"
 	line "de champion!"
+
+	para "L'ARENE de"
+	line "PARMANIE est un"
+	cont "vrai casse-tête!"
+
+	para "KOGA te semblera"
+	line "proche, mais de"
+	cont "nombreux murs le"
+	cont "protégeront!"
+
+	para "Trouve les trous"
+	line "entre les murs"
+	cont "pour l'atteindre!"
+	done
+
+.GirlText
+	text "Hop là! Graine"
+	line "de championne!"
 
 	para "L'ARENE de"
 	line "PARMANIE est un"

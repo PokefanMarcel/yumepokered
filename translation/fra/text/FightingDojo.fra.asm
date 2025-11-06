@@ -21,12 +21,38 @@ _FightingDojoKarateMasterDefeatedText::
 	prompt
 
 _FightingDojoKarateMasterIWillGiveYouAPokemonText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "OK, tu as gagné!"
 
 	para "Mais ne va pas"
 	line "le crier sur tous"
 	cont "les toits! T'es"
 	cont "très fort, on a"
+	cont "compris!"
+
+	para "Tiens, prends"
+	line "ça! Tu as gagné"
+	cont "un #MON!"
+
+	para "Choisis celui que"
+	line "tu veux!"
+	done
+
+.GirlText
+	text "OK, tu as gagné!"
+
+	para "Mais ne va pas"
+	line "le crier sur tous"
+	cont "les toits! T'es"
+	cont "très forte, on a"
 	cont "compris!"
 
 	para "Tiens, prends"
@@ -73,8 +99,22 @@ _FightingDojoBlackbelt2BattleText::
 	done
 
 _FightingDojoBlackbelt2EndBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Nyaha!"
 	line "T'es fort!"
+	prompt
+
+.GirlText
+	text "Nyaha!"
+	line "T'es forte!"
 	prompt
 
 _FightingDojoBlackbelt2AfterBattleText::
@@ -107,10 +147,28 @@ _FightingDojoBlackbelt3AfterBattleText::
 	done
 
 _FightingDojoBlackbelt4BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Ayah!"
 
 	para "Tu joues avec ta"
 	line "vie, p'tit!"
+	cont "Not'DOJO, c'est"
+	cont "pour les balèzes!"
+	done
+
+.GirlText
+	text "Ayah!"
+
+	para "Tu joues avec ta"
+	line "vie, p'tite!"
 	cont "Not'DOJO, c'est"
 	cont "pour les balèzes!"
 	done
@@ -146,7 +204,51 @@ _FightingDojoBetterNotGetGreedyText::
 
 
 _FightingDojoBrunoOhChampText:: ; marcelnote - postgame Bruno
-	text "Hé, champion!" ; gendered text
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
+	text "Hé, champion!"
+
+	para "J'pensais pas te"
+	line "voir muscler"
+	cont "tes mollets ici."
+
+	para "J'suis en mission"
+	line "pour le CONSEIL"
+	cont "des 4, tu vois."
+
+	para "On est toujours"
+	line "à la chasse aux"
+	cont "gros biscotos."
+
+	para "MORGANE m'a parlé"
+	line "d'un élève à elle,"
+	cont "très prometteur."
+	cont "Alors j'viens le"
+	cont "castagner un peu!"
+
+	para "Attends, je sais!"
+
+	para "<PLAYER>,"
+	line "et si tu allais"
+	cont "le tester toi-"
+	cont "même?"
+
+	para "Il attend à"
+	line "l'ARENE à côté."
+	cont "Va voir de quel"
+	cont "bois il se"
+	cont "chauffe!"
+	done
+
+.GirlText
+	text "Hé, championne!"
 
 	para "J'pensais pas te"
 	line "voir muscler"

@@ -1,4 +1,13 @@
 _VermilionGymLTSurgePreBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Hé, gamin!"
 	line "Tu fais quoi là?"
 
@@ -25,9 +34,58 @@ _VermilionGymLTSurgePreBattleText::
 	cont "Tu vas morfler!"
 	done
 
+.GirlText
+	text "Hé, gamine!"
+	line "Tu fais quoi là?"
+
+	para "Tu ne résisterais"
+	line "pas longtemps"
+	cont "en temps de"
+	cont "guerre!"
+
+	para "Je vais te dire,"
+	line "mes #MON"
+	cont "électriques m'ont"
+	cont "sauvé la vie!"
+	cont "Et ouais!"
+
+	para "Ils ont paralysé"
+	line "mes ennemis avec"
+	cont "leurs éclairs!"
+	cont "Une vraie"
+	cont "boucherie!"
+
+	para "Y va t'arriver la"
+	line "même chose!"
+	cont "Compte tes dents!"
+	cont "Tu vas morfler!"
+	done
+
 _VermilionGymLTSurgePostBattleAdviceText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Un p'tit conseil,"
-	line "gamin!" ; gendered text
+	line "gamin!"
+
+	para "L'électricité est"
+	line "très puissante!"
+
+	para "Mais elle est"
+	line "inutile face à"
+	cont "des #MON de"
+	cont "la terre!"
+	done
+
+.GirlText
+	text "Un p'tit conseil,"
+	line "gamine!"
 
 	para "L'électricité est"
 	line "très puissante!"
@@ -39,6 +97,15 @@ _VermilionGymLTSurgePostBattleAdviceText::
 	done
 
 _VermilionGymLTSurgeThunderBadgeInfoText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Le BADGEFOUDRE"
 	line "augmente la"
 	cont "VITESSE de tes"
@@ -49,7 +116,22 @@ _VermilionGymLTSurgeThunderBadgeInfoText::
 	cont "de VOLER!"
 
 	para "Tu es un bon, mon"
-	line "p'tit gars!" ; gendered text
+	line "p'tit gars!"
+	cont "Prends ça!"
+	done
+
+.GirlText
+	text "Le BADGEFOUDRE"
+	line "augmente la"
+	cont "VITESSE de tes"
+	cont "#MON!"
+
+	para "Il permet aussi"
+	line "à tes #MON"
+	cont "de VOLER!"
+
+	para "Tu es douée,"
+	line "ma p'tite!"
 	cont "Prends ça!"
 	done
 
@@ -71,18 +153,54 @@ _TM24ExplanationText::
 	done
 
 _VermilionGymLTSurgeTM24NoRoomText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Revue d'paquetage"
-	line "p'tit gars, ton" ; gendered text
+	line "p'tit gars, ton"
+	cont "inventaire est"
+	cont "plein!"
+	done
+
+.GirlText
+	text "Revue d'paquetage"
+	line "fillette, ton"
 	cont "inventaire est"
 	cont "plein!"
 	done
 
 _VermilionGymLTSurgeReceivedThunderBadgeText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Whoo!"
 
 	para "Gard'vous! T'es"
-	line "un dur, mon p'tit" ; gendered text
+	line "un dur, mon p'tit"
 	cont "gars!"
+
+	para "Très bien, prends"
+	line "le BADGEFOUDRE!"
+	prompt
+
+.GirlText
+	text "Whoo!"
+
+	para "Gard'vous! T'as"
+	line "du cran, ma"
+	cont "p'tite!"
 
 	para "Très bien, prends"
 	line "le BADGEFOUDRE!"
@@ -96,8 +214,22 @@ _VermilionGymGentlemanBattleText::
 	done
 
 _VermilionGymGentlemanEndBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Stop!"
-	line "Tu es fort!" ; gendered text
+	line "Tu es fort!"
+	prompt
+
+.GirlText
+	text "Stop!"
+	line "Tu es forte!"
 	prompt
 
 _VermilionGymGentlemanAfterBattleText::
@@ -131,9 +263,24 @@ _VermilionGymSuperNerdAfterBattleText::
 	done
 
 _VermilionGymSailorBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "C'est pas un"
 	line "endroit pour les"
-	cont "gamins, ici!" ; gendered text
+	cont "gamins, ici!"
+	done
+
+.GirlText
+	text "C'est pas un"
+	line "endroit pour les"
+	cont "gamines, ici!"
 	done
 
 _VermilionGymSailorEndBattleText::
@@ -153,7 +300,48 @@ _VermilionGymSailorAfterBattleText::
 	done
 
 _VermilionGymGymGuideChampInMakingText::
-	text "Salut! Champion" ; gendered text
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
+	text "Salut! Champion"
+	line "en herbe!"
+
+	para "Le MAJOR BOB a"
+	line "un surnom. On"
+	cont "l'appelle..."
+	cont "Le Ricain"
+	cont "Survolté!"
+
+	para "Il est expert"
+	line "en #MON"
+	cont "électriques!"
+
+	para "C'est pas bon"
+	line "pour les #MON"
+	cont "volants et"
+	cont "aquatiques! Fais"
+	cont "aussi gaffe aux"
+	cont "éclairs pouvant"
+	cont "paralyser!"
+
+	para "Le MAJOR BOB"
+	line "est très prudent!"
+
+	para "Il te faudra"
+	line "résoudre une"
+	cont "énigme pour"
+	cont "arriver jusqu'à"
+	cont "lui!"
+	done
+
+.GirlText
+	text "Salut! Championne"
 	line "en herbe!"
 
 	para "Le MAJOR BOB a"
@@ -208,9 +396,24 @@ _VermilionGymLTSurgeRematchRefusedBattleText:: ; marcelnote - Lt.Surge rematch
 	done
 
 _VermilionGymLTSurgeRematchAcceptBattleText:: ; marcelnote - Lt.Surge rematch
-	text "Garde-à-vous!"
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
+	text "Gard'vous!"
 	line "On passe en haute"
-	cont "tension, gamin!" ; gendered text
+	cont "tension, gamin!"
+	done
+
+.GirlText
+	text "Gard'vous!"
+	line "On passe en haute"
+	cont "tension, gamine!"
 	done
 
 _VermilionGymLTSurgeRematchDefeatedText:: ; TODO marcelnote - Lt.Surge rematch
@@ -219,8 +422,25 @@ _VermilionGymLTSurgeRematchDefeatedText:: ; TODO marcelnote - Lt.Surge rematch
 	prompt
 
 _VermilionGymAfterRematchText:: ; marcelnote - Lt.Surge rematch
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "J'ai plus de jus,"
-	line "gamin." ; gendered text
+	line "mon p'tit gars."
+
+	para "Refaisons ça"
+	line "bientôt!"
+	done
+
+.GirlText
+	text "J'ai plus de jus,"
+	line "ma p'tite."
 
 	para "Refaisons ça"
 	line "bientôt!"

@@ -57,6 +57,15 @@ _SilphCo11FBeautyText::
 	done
 
 _SilphCo11FGiovanniText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Ah, <PLAYER>!"
 	line "Une fois encore"
 	cont "nos routes se"
@@ -69,7 +78,26 @@ _SilphCo11FGiovanniText::
 
 	para "Viens pas t'mêler"
 	line "de tout ça, mon"
-	cont "bonhomme..." ; gendered text
+	cont "bonhomme..."
+
+	para "Dégage ou..."
+	line "Déguste!"
+	done
+
+.GirlText
+	text "Ah, <PLAYER>!"
+	line "Une fois encore"
+	cont "nos routes se"
+	cont "croisent..."
+
+	para "Le PDG et moi-"
+	line "même discutons"
+	cont "d'une affaire"
+	cont "très importante."
+
+	para "Viens pas t'mêler"
+	line "de tout ça, ma"
+	cont "grande..."
 
 	para "Dégage ou..."
 	line "Déguste!"

@@ -1,7 +1,22 @@
 ; marcelnote - new location
 _SilphFactory1FRocket1BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Kess'tu fiches"
-	line "ici, gamin?" ; gendered text
+	line "ici, gamin?"
+	cont "Dégage!"
+	done
+
+.GirlText
+	text "Kess'tu fiches"
+	line "ici, gamine?"
 	cont "Dégage!"
 	done
 
@@ -11,9 +26,24 @@ _SilphFactory1FRocket1EndBattleText::
 	prompt
 
 _SilphFactory1FRocket1AfterBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Attends un peu..."
-	line "T'es l'gamin qui" ; gendered text
+	line "T'es l'gamin qui"
 	cont "est CHAMPION!"
+	done
+
+.GirlText
+	text "Attends un peu..."
+	line "T'es la gamine qui"
+	cont "est CHAMPIONNE!"
 	done
 
 _SilphFactory1FRocket2BattleText::
@@ -23,8 +53,22 @@ _SilphFactory1FRocket2BattleText::
 	done
 
 _SilphFactory1FRocket2EndBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Argh!"
-	line "Sale morveux!" ; gendered text
+	line "Sale morveux!"
+	prompt
+
+.GirlText
+	text "Argh!"
+	line "Sale morveuse!"
 	prompt
 
 _SilphFactory1FRocket2AfterBattleText::

@@ -58,12 +58,35 @@ _PokemonTower6FChanneler3AfterBattleText::
 	done
 
 _PokemonTower6FBeGoneText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Fuis..."
 	line "Impudent..."
 	done
 
+.GirlText
+	text "Fuis..."
+	line "Impudente..."
+	done
+
 
 _PokemonTower6FAgathaText:: ; marcelnote - postgame Agatha event
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Alors, tu as bravé"
 	line "les esprits."
 	cont "Ils sont plus"
@@ -73,7 +96,43 @@ _PokemonTower6FAgathaText:: ; marcelnote - postgame Agatha event
 	line "vite une vieille"
 	cont "dame qui tient"
 	cont "à son passé,"
-	cont "mon petit." ; gendered text
+	cont "mon petit."
+
+	para "Cet endroit..."
+	line "Il garde la"
+	cont "mémoire de mes"
+	cont "vieux amis."
+
+	para "Mais si même les"
+	line "#MON acceptent"
+	cont "le changement,"
+	cont "alors moi aussi."
+
+	para "MR.FUJI veillera"
+	line "à déplacer les"
+	cont "tombes avec soin."
+	cont "Lui, au moins,"
+	cont "respecte encore"
+	cont "ce qui fut jadis."
+
+	para "Tu peux rester."
+	line "Je vais allumer"
+	cont "un peu d'encens"
+	cont "pour mes vieux"
+	cont "compagnons."
+	done
+
+.GirlText
+	text "Alors, tu as bravé"
+	line "les esprits."
+	cont "Ils sont plus"
+	cont "calmes, on dirait."
+
+	para "Ne juge pas trop"
+	line "vite une vieille"
+	cont "dame qui tient"
+	cont "à son passé,"
+	cont "ma petite."
 
 	para "Cet endroit..."
 	line "Il garde la"

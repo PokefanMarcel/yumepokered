@@ -23,8 +23,22 @@ _CitrusFerryRoomsHikerBattleText::
 	done
 
 _CitrusFerryRoomsHikerEndBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Sacrée"
-	line "trempe, p'tit!" ; gendered text
+	line "trempe, p'tit!"
+	prompt
+
+.GirlText
+	text "Sacrée"
+	line "trempe, p'tite!"
 	prompt
 
 _CitrusFerryRoomsHikerAfterBattleText::

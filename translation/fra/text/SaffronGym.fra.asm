@@ -265,9 +265,44 @@ _SaffronGymYoungster4AfterBattleText::
 
 
 _SaffronGymWillWelcomeText:: ; marcelnote - postgame Will
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Quel honneur de"
 	line "recevoir ici le"
-	cont "champion de la" ; gendered text
+	cont "champion de la"
+	cont "LIGUE #MON!"
+
+	para "Je suis CLEMENT,"
+	line "le meilleur élève"
+	cont "de MORGANE!"
+
+	para "Tu tombes à pic."
+	line "ALDO du CONSEIL"
+	cont "des 4 arrive"
+	cont "bientôt afin"
+	cont "de me tester."
+
+	para "Quoi? Tu veux dire"
+	line "qu'ALDO t'a envoyé"
+	cont "à sa place?"
+
+	para "Très bien! Alors,"
+	line "permets-moi de te"
+	cont "montrer ce que"
+	cont "j'ai appris."
+	done
+
+.GirlText
+	text "Quel honneur de"
+	line "recevoir ici la"
+	cont "championne de la"
 	cont "LIGUE #MON!"
 
 	para "Je suis CLEMENT,"
@@ -298,9 +333,33 @@ _SaffronGymWillDefeatedText:: ; marcelnote - postgame Will
 	prompt
 
 _SaffronGymWillPostBattleText:: ; marcelnote - postgame Will
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Merci pour ce"
 	line "combat mémorable,"
-	cont "champion!" ; gendered text
+	cont "champion!"
+
+	para "Mon propre voyage"
+	line "ne fait que."
+	cont "commencer."
+
+	para "Je vais parcourir"
+	line "le monde pour"
+	cont "percer le mystère"
+	cont "des #MON psy!"
+	done
+
+.GirlText
+	text "Merci pour ce"
+	line "combat mémorable,"
+	cont "championne!"
 
 	para "Mon propre voyage"
 	line "ne fait que."

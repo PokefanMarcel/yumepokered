@@ -76,14 +76,43 @@ _Route6CooltrainerF2AfterBattleText::
 	done
 
 _Route6Youngster2BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "J't'ai jamais"
 	line "vu dans le coin!"
 	cont "T'es puissant?"
 	done
 
+.GirlText
+	text "J't'ai jamais"
+	line "vue dans le coin!"
+	cont "T'es puissante?"
+	done
+
 _Route6Youngster2EndBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Whaa!"
 	line "Trop puissant!"
+	prompt
+
+.GirlText
+	text "Whaa!"
+	line "Trop puissante!"
 	prompt
 
 _Route6Youngster2AfterBattleText::

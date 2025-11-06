@@ -313,7 +313,6 @@ IF DEF(_FRA)
 	INCLUDE "translation/fra/text/NameRatersHouse.fra.asm"
 	INCLUDE "translation/fra/text/VermilionPokecenterMart.fra.asm" ; marcelnote - merged Vermilion Pokecenter and Mart
 	INCLUDE "translation/fra/text/PokemonFanClub.fra.asm"
-	INCLUDE "translation/fra/text/VermilionGym.fra.asm"
 ELSE
 	INCLUDE "text/PewterNidoranHouse.asm"
 	INCLUDE "text/PewterSpeechHouse.asm"
@@ -337,7 +336,19 @@ ELSE
 	INCLUDE "text/NameRatersHouse.asm"
 	INCLUDE "text/VermilionPokecenterMart.asm" ; marcelnote - merged Vermilion Pokecenter and Mart
 	INCLUDE "text/PokemonFanClub.asm"
+ENDC
+
+
+SECTION "Text 7.5", ROMX
+
+IF DEF(_FRA)
+	INCLUDE "translation/fra/text/VermilionGym.fra.asm"
+	INCLUDE "translation/fra/text/FuchsiaMeetingRoom.fra.asm"
+	INCLUDE "translation/fra/text/FuchsiaSuperRodHouse.fra.asm"   ; marcelnote - from Good to Super Rod
+ELSE
 	INCLUDE "text/VermilionGym.asm"
+	INCLUDE "text/FuchsiaMeetingRoom.asm"
+	INCLUDE "text/FuchsiaSuperRodHouse.asm"   ; marcelnote - from Good to Super Rod
 ENDC
 
 
@@ -393,8 +404,6 @@ ENDC
 SECTION "Text 9", ROMX
 
 IF DEF(_FRA)
-	INCLUDE "translation/fra/text/FuchsiaMeetingRoom.fra.asm"
-	INCLUDE "translation/fra/text/FuchsiaSuperRodHouse.fra.asm"   ; marcelnote - from Good to Super Rod
 	INCLUDE "translation/fra/text/PokemonMansion1F.fra.asm"
 	INCLUDE "translation/fra/text/CinnabarGym.fra.asm"
 	INCLUDE "translation/fra/text/CinnabarLab.fra.asm"            ; marcelnote - merged Cinnabar Lab maps
@@ -410,8 +419,6 @@ IF DEF(_FRA)
 	INCLUDE "translation/fra/text/SaffronPokecenterMart.fra.asm"  ; marcelnote - merged Saffron Pokecenter and Mart
 	INCLUDE "translation/fra/text/MrPsychicsHouse.fra.asm"
 ELSE
-	INCLUDE "text/FuchsiaMeetingRoom.asm"
-	INCLUDE "text/FuchsiaSuperRodHouse.asm"   ; marcelnote - from Good to Super Rod
 	INCLUDE "text/PokemonMansion1F.asm"
 	INCLUDE "text/CinnabarGym.asm"
 	INCLUDE "text/CinnabarLab.asm"            ; marcelnote - merged Cinnabar Lab maps

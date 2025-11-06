@@ -37,9 +37,32 @@ _LoreleisRoomLoreleiAfterBattleText::
 
 
 _LoreleisRoomLoreleiRematchBeforeBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Te revoizi à la"
 	line "LIGUE #MON,"
-	cont "jampion!" ; gendered text
+	cont "jampion!"
+
+	para "Après un zéjour"
+	line "à la plage, mez"
+	cont "#MON veulent"
+	cont "ze rafraîchir!"
+
+	para "Ach! Ach! Ach!"
+	line "Za va geler!"
+	done
+
+.GirlText
+	text "Te revoizi à la"
+	line "LIGUE #MON,"
+	cont "jampionne!"
 
 	para "Après un zéjour"
 	line "à la plage, mez"

@@ -40,6 +40,15 @@ _LancesRoomLanceEndBattleText::
 	prompt
 
 _LancesRoomLanceAfterBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Comment mes"
 	line "dragons ont-ils"
 	cont "pu succomber à"
@@ -48,6 +57,36 @@ _LancesRoomLanceAfterBattleText::
 
 	para "Tu es désormais"
 	line "champion de la"
+	cont "LIGUE #MON!"
+
+	para "Enfin..."
+	line "Pas tout à fait."
+	cont "Une épreuve doit"
+	cont "encore t'être"
+	cont "imposée..."
+
+	para "Un grand dresseur"
+	line "t'attend. Son nom"
+	cont "est..."
+
+	para "<RIVAL>!"
+	line "Il a vaincu le"
+	cont "CONSEIL des 4"
+	cont "avant toi!"
+
+	para "Il est le vrai"
+	line "champion #MON!@"
+	text_end
+
+.GirlText
+	text "Comment mes"
+	line "dragons ont-ils"
+	cont "pu succomber à"
+	cont "tes attaques,"
+	cont "<PLAYER>?"
+
+	para "Tu es désormais"
+	line "championne de la"
 	cont "LIGUE #MON!"
 
 	para "Enfin..."
@@ -86,6 +125,15 @@ _LancesRoomLanceRematchBeforeBattleText:: ; marcelnote - Lance rematch text
 	done
 
 _LancesRoomLanceRematchEndBattleText:: ; marcelnote - Lance rematch text
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Incroyable!"
 
 	para "Tu deviens encore"
@@ -93,7 +141,24 @@ _LancesRoomLanceRematchEndBattleText:: ; marcelnote - Lance rematch text
 	cont "chaque combat."
 	prompt
 
+.GirlText
+	text "Incroyable!"
+
+	para "Tu deviens encore"
+	line "plus forte avec"
+	cont "chaque combat."
+	prompt
+
 _LancesRoomLanceRematchAfterBattleText:: ; marcelnote - Lance rematch text
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "J'ai du mal"
 	line "à y croire!"
 
@@ -103,6 +168,20 @@ _LancesRoomLanceRematchAfterBattleText:: ; marcelnote - Lance rematch text
 
 	para "Tu mérites"
 	line "vraiment le titre"
-	cont "de champion," ; gendered text
+	cont "de champion,"
+	cont "<PLAYER>!@"
+	text_end
+
+.GirlText
+	text "J'ai du mal"
+	line "à y croire!"
+
+	para "Même ma nouvelle"
+	line "équipe n'a pas pu"
+	cont "te faire face."
+
+	para "Tu mérites"
+	line "vraiment le titre"
+	cont "de championne,"
 	cont "<PLAYER>!@"
 	text_end

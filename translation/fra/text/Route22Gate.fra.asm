@@ -34,15 +34,37 @@ _Route22GateGuard2ScaryStrongText:: ; marcelnote - new guard
 	done
 
 _Route22GateGuard2WelcomeChampionText:: ; marcelnote - new guard
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Bienvenue,"
-	line "champion." ; gendered text
+	line "champion."
 
 	para "Derrière cette"
 	line "porte, de redou-"
 	cont "tables #MON"
 	cont "t'attendent."
 
-	para "Sois prudent," ; gendered text
+	para "Sois prudent,"
+	line "et bonne chance!@"
+	text_end
+
+.GirlText
+	text "Bienvenue,"
+	line "championne."
+
+	para "Derrière cette"
+	line "porte, de redou-"
+	cont "tables #MON"
+	cont "t'attendent."
+
+	para "Sois prudente,"
 	line "et bonne chance!@"
 	text_end
 

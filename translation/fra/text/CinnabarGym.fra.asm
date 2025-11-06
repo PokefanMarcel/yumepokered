@@ -188,10 +188,28 @@ _CinnabarGymSuperNerd5AfterBattleText::
 	done
 
 _CinnabarGymSuperNerd6BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "J'ai bourlingué"
 	line "dans pas mal"
 	cont "d'ARENES, p'tit"
-	cont "gars! Mais ma" ; gendered text
+	cont "gars! Mais ma"
+	cont "préférée c'est"
+	cont "celle-ci!"
+	done
+
+.GirlText
+	text "J'ai bourlingué"
+	line "dans pas mal"
+	cont "d'ARENES,"
+	cont "fillette! Mais ma"
 	cont "préférée c'est"
 	cont "celle-ci!"
 	done

@@ -1,14 +1,37 @@
 ; marcelnote - new location
 _SilphFactory2FRocket1BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Alors c'est toi,"
-	line "le mioche qui" ; gendered text
+	line "le mioche qui"
 	cont "raconte que la"
 	cont "TEAM ROCKET a"
 	cont "été dissoute!"
 
 	para "On n'est pas assez"
 	line "naïfs pour croire"
-	cont "un gosse. J'vais" ; gendered text
+	cont "un gosse. J'vais"
+	cont "t'faire ravaler"
+	cont "tes mensonges!"
+	done
+
+.GirlText
+	text "Alors c'est toi,"
+	line "la mioche qui"
+	cont "raconte que la"
+	cont "TEAM ROCKET a"
+	cont "été dissoute!"
+
+	para "On n'est pas assez"
+	line "naïfs pour croire"
+	cont "une gosse. J'vais"
 	cont "t'faire ravaler"
 	cont "tes mensonges!"
 	done
@@ -105,9 +128,36 @@ _SilphFactory2FSilphWorkerMHidHereText::
 	done
 
 _SilphFactory2FLoreleiGladToSeeYouText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Je zuis razzurée"
 	line "de te voir izi,"
-	cont "jampion." ; gendered text
+	cont "jampion."
+
+	para "L'uzine tourne"
+	line "à plein régime et"
+	cont "envoie zes déjets"
+	cont "dans la mer!"
+
+	para "Je ne peux pas"
+	line "laizzer faire za."
+
+	para "<PLAYER>, veux-tu"
+	line "m'aider à trouver"
+	cont "ze qui ze pazze?"
+	done
+
+.GirlText
+	text "Je zuis razzurée"
+	line "de te voir izi,"
+	cont "jampionne."
 
 	para "L'uzine tourne"
 	line "à plein régime et"
@@ -127,6 +177,15 @@ _SilphFactory2FLoreleiArrivesText::
 	done
 
 _SilphFactory2FLoreleiTakeCareText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Alors z'était"
 	line "la TEAM ROCKET"
 	line "derrière tout za."
@@ -148,5 +207,30 @@ _SilphFactory2FLoreleiTakeCareText::
 	para "Je vais réfléchir"
 	line "à tout za. On ze"
 	cont "reverra bientôt,"
-	cont "jampion." ; gendered text
+	cont "jampion."
+	done
+
+.GirlText
+	text "Alors z'était"
+	line "la TEAM ROCKET"
+	line "derrière tout za."
+	cont "Merzi de t'être"
+	cont "occupé d'eux, même"
+	cont "zi j'ai peur que"
+	cont "le mal zoit fait."
+
+	para "Nettoyer la mer de"
+	line "zette polluzion"
+	cont "prendra du temps."
+
+	para "Zans mes obliga-"
+	line "zions envers le"
+	cont "CONZEIL des 4, je"
+	cont "pourrais rezter"
+	cont "pour aider..."
+
+	para "Je vais réfléchir"
+	line "à tout za. On ze"
+	cont "reverra bientôt,"
+	cont "jampionne."
 	done

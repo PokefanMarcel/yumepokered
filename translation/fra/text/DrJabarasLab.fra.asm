@@ -169,6 +169,15 @@ _DrJabarasLabReceivedEmailText::
 	done
 
 _DrJabarasLabEmailDraftText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "LE DR.JABARA a"
 	line "écrit un e-mail."
 
@@ -176,7 +185,28 @@ _DrJabarasLabEmailDraftText::
 
 	para "...ai emprunté la"
 	line "#FLUTE d'un"
-	cont "gamin naïf..." ; gendered text
+	cont "gamin naïf..."
+
+	para "...isolé une"
+	line "fréquence qui"
+	cont "déclenche..."
+
+	para "...usage potentiel"
+	line "sur l'évolution"
+	cont "des #MON..."
+
+	para "Hein?"
+	done
+
+.GirlText
+	text "LE DR.JABARA a"
+	line "écrit un e-mail."
+
+	para "..."
+
+	para "...ai emprunté la"
+	line "#FLUTE d'une"
+	cont "gamine naïve..."
 
 	para "...isolé une"
 	line "fréquence qui"

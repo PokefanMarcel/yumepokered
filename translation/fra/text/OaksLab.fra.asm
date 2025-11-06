@@ -120,12 +120,38 @@ _OaksLabOakPokemonAroundTheWorldText::
 	done
 
 _OaksLabOakReceivedPokeballsText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "CHEN: Il ne te"
 	line "suffit pas de"
 	cont "voir un #MON"
 	cont "pour tout savoir"
 	cont "sur lui, mon"
-	cont "p'tit bonhomme!" ; gendered text
+	cont "p'tit bonhomme!"
+
+	para "Il te faut aussi"
+	line "l'attraper! Voici"
+	cont "des # BALL"
+	cont "pour en capturer."
+
+	para "<PLAYER> obtient"
+	line "5 # BALL!@"
+	text_end
+
+.GirlText
+	text "CHEN: Il ne te"
+	line "suffit pas de"
+	cont "voir un #MON"
+	cont "pour tout savoir"
+	cont "sur lui, ma"
+	cont "p'tite dame!"
 
 	para "Il te faut aussi"
 	line "l'attraper! Voici"
@@ -485,6 +511,15 @@ _OaksLabRivalSeenZapdosMoltresText:: ; marcelnote - postgame Rival event
 	done
 
 _OaksLabRivalSeenAllBirdsText:: ; marcelnote - postgame Rival event
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Hein, t'as vu"
 	line "les trois oiseaux"
 	cont "légendaires?"
@@ -495,7 +530,22 @@ _OaksLabRivalSeenAllBirdsText:: ; marcelnote - postgame Rival event
 	cont "Incroyable!"
 
 	para "T'es vraiment un"
-	line "sacré dresseur," ; gendered text
+	line "sacré dresseur,"
+	cont "<PLAYER>!"
+	done
+
+.GirlText
+	text "Hein, t'as vu"
+	line "les trois oiseaux"
+	cont "légendaires?"
+
+	para "ARTIKODIN,"
+	line "ELECTHOR et"
+	cont "SULFURA..."
+	cont "Incroyable!"
+
+	para "T'es vraiment une"
+	line "sacrée dresseuse,"
 	cont "<PLAYER>!"
 	done
 

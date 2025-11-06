@@ -39,22 +39,56 @@ _BrunosRoomBrunoRematchEndBattleText:: ; marcelnote - Bruno rematch text
 	prompt
 
 _BrunosRoomBrunoRematchBeforeBattleText:: ; marcelnote - Bruno rematch text
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "On y va pour un"
 	line "nouveau round,"
-	cont "champion?" ; gendered text
+	cont "champion?"
 
 	para "Avec mes #MON,"
 	line "on a suivi un"
 	cont "régime strict,"
 	cont "muscu et brocoli."
 
-	para "Prêt à manger" ; gendered text: Prête
-	line "tes dents, p'tit?" ; gendered text: p'tite
+	para "Prêt à manger"
+	line "tes dents, p'tit?"
+
+	para "A table!"
+	done
+
+.GirlText
+	text "On y va pour un"
+	line "nouveau round,"
+	cont "championne?"
+
+	para "Avec mes #MON,"
+	line "on a suivi un"
+	cont "régime strict,"
+	cont "muscu et brocoli."
+
+	para "Prête à manger"
+	line "tes dents, p'tite?"
 
 	para "A table!"
 	done
 
 _BrunosRoomBrunoRematchAfterBattleText:: ; marcelnote - Bruno rematch text
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "La discipline,"
 	line "ça s'improvise pas"
 	cont "en un jour."
@@ -65,7 +99,21 @@ _BrunosRoomBrunoRematchAfterBattleText:: ; marcelnote - Bruno rematch text
 
 	para "Allez, va voir"
 	line "la prochaine,"
-	cont "champion!" ; gendered text
+	cont "champion!"
+	done
+
+.GirlText
+	text "La discipline,"
+	line "ça s'improvise pas"
+	cont "en un jour."
+
+	para "Faut bosser,"
+	line "répéter, encore"
+	cont "et encore!"
+
+	para "Allez, va voir"
+	line "la prochaine,"
+	cont "championne!"
 	done
 
 _BrunosRoomBrunoDontRunAwayText::

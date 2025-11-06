@@ -96,10 +96,26 @@ _MtMoonB2FRocket2AfterBattleText::
 	done
 
 _MtMoonB2FRocket3BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Ca bosse dur"
 	line "ici!"
 	cont "Alors du balai,"
-	cont "le mouflet!" ; gendered text
+	cont "le mouflet!"
+	done
+
+.GirlText
+	text "Ca bosse dur"
+	line "ici!"
+	cont "Alors du balai,"
+	cont "la mouflette!"
 	done
 
 _MtMoonB2FRocket3EndBattleText::
@@ -115,7 +131,23 @@ _MtMoonB2FRocket3AfterBattleText::
 	done
 
 _MtMoonB2FRocket4BattleText::
-	text "Les p'tits gamins" ; gendered text (?)
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
+	text "Les p'tits gamins"
+	line "ne s'occupent pas"
+	cont "des affaires"
+	cont "des grands!"
+	done
+
+.GirlText
+	text "Les p'tites gamines"
 	line "ne s'occupent pas"
 	cont "des affaires"
 	cont "des grands!"

@@ -1,9 +1,25 @@
 ; marcelnote - new location
 _CinnabarVolcanoB1FScientistBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Le passage est"
 	line "bloqué."
 	cont "Tu perds ton"
-	cont "temps, gamin!" ; gendered text
+	cont "temps, gamin!"
+	done
+
+.GirlText
+	text "Le passage est"
+	line "bloqué."
+	cont "Tu perds ton"
+	cont "temps, gamine!"
 	done
 
 _CinnabarVolcanoB1FScientistEndBattleText::
@@ -18,7 +34,22 @@ _CinnabarVolcanoB1FScientistAfterBattleText::
 	done
 
 _CinnabarVolcanoB1FHikerBattleText::
-	text "Enfin, un adver-" ; gendered text
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
+	text "Enfin, un adver-"
+	line "saire de taille"
+	cont "pour mes #MON!"
+	done
+
+.GirlText
+	text "Enfin, une adver-"
 	line "saire de taille"
 	cont "pour mes #MON!"
 	done
@@ -143,6 +174,15 @@ _CinnabarVolcano1FBurnHealSignText::
 	done
 
 _CinnabarVolcano1FLanceCameInHasteText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Ah, <PLAYER>!"
 	line "Heureux de te"
 	cont "voir ici."
@@ -167,7 +207,35 @@ _CinnabarVolcano1FLanceCameInHasteText::
 
 	para "Ton aide me"
 	line "serait précieuse,"
-	cont "champion." ; gendered text
+	cont "champion."
+	done
+
+.GirlText
+	text "Ah, <PLAYER>!"
+	line "Heureux de te"
+	cont "voir ici."
+
+	para "J'ai accouru"
+	line "en apprenant qu'un"
+	cont "#MON sauvage"
+	cont "semait le chaos"
+	cont "à CRAMOIS'ILE."
+
+	para "En tant que membre"
+	line "du CONSEIL des 4,"
+	cont "il est de mon de-"
+	cont "voir de protéger"
+	cont "cette région."
+
+	para "J'ai pisté le"
+	line "#MON jusqu'ici,"
+	cont "mais il s'est"
+	cont "enfui plus loin"
+	cont "dans le volcan."
+
+	para "Ton aide me"
+	line "serait précieuse,"
+	cont "championne."
 	done
 
 _CinnabarVolcanoB1FLanceTogetherText::
@@ -192,6 +260,15 @@ _CinnabarVolcanoB1FCharizardCaughtText::
 	done
 
 _CinnabarVolcanoB1FLanceGreatJobText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Beau travail,"
 	line "<PLAYER>."
 
@@ -207,7 +284,26 @@ _CinnabarVolcanoB1FLanceGreatJobText::
 
 	para "A notre prochaine"
 	line "rencontre,"
-	cont "champion!" ; gendered text
+	cont "champion!"
+	done
+
+.GirlText
+	text "Beau travail,"
+	line "<PLAYER>."
+
+	para "Ce DRACAUFEU était"
+	line "coriace, mais nos"
+	cont "forces ont été"
+	cont "supérieures."
+
+	para "Je veillerai"
+	line "à ce qu'il reçoive"
+	cont "un entraînement"
+	cont "digne de ce nom."
+
+	para "A notre prochaine"
+	line "rencontre,"
+	cont "championne!"
 	done
 
 _CinnabarVolcanoB1FCharizardText:: ; marcelnote - postgame Lance
