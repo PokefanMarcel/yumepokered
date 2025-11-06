@@ -5,7 +5,7 @@ TextBoxFunctionTable:
 	dbw FIELD_MOVE_MON_MENU, DisplayFieldMoveMonMenu
 	db -1 ; end
 
-TextBoxCoordTable: ; TODO all these have to be double-checked in-game for best size
+TextBoxCoordTable:
 	; text box ID, upper-left X, upper-left Y, lower-right X, lower-right Y
 	db MESSAGE_BOX,       0, 12, 19, 17
 	db MENU_TEMPLATE_03,  0,  0, 19, 14

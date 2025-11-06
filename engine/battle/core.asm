@@ -2122,8 +2122,8 @@ ENDC
 ; put cursor in left column for normal battle menu (i.e. when it's not a Safari battle)
 
 IF DEF(_FRA) ; marcelnote - different layout in French
-	ldcoord_a 13, 14 ; clear upper cursor position in right column ; TODO normal battle
-	ldcoord_a 13, 16 ; clear lower cursor position in right column ; TODO normal battle
+	ldcoord_a 13, 14 ; clear upper cursor position in right column
+	ldcoord_a 13, 16 ; clear lower cursor position in right column
 	ld a, 7 ; top menu item X
 ELSE
 	ldcoord_a 15, 14 ; clear upper cursor position in right column
@@ -2246,7 +2246,7 @@ ENDC
 	jr z, .safariBButton
 
 IF DEF(_FRA) ; marcelnote - different layout in French
-	ldcoord_a 13, 14 ; clear upper cursor position in right column ; TODO normal battle
+	ldcoord_a 13, 14 ; clear upper cursor position in right column
 	ld a, "▶"
 	ldcoord_a 13, 16 ; put cursor at Run
 ELSE
