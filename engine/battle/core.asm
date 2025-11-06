@@ -2470,6 +2470,7 @@ PartyMenuOrRockOrRun:
 	call LoadHudTilePatterns
 	call LoadScreenTilesFromBuffer1     ; marcelnote - replaced LoadScreenTilesFromBuffer2
 	call RunDefaultPaletteCommand
+	call Delay3                         ; marcelnote - added
 	call GBPalNormal
 	jp DisplayBattleMenu.skipLoadScreen ; marcelnote - added skipping reload since already done
 .partyMonDeselected
