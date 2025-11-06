@@ -637,30 +637,30 @@ PrintStatBar:
 	add c ; when stat is full, add last pixel
 	ld b, 4 ; b = number of tiles per bar
 	ld c, a ; c = length of bar in pixels
-	ld a, $d0 ; left bar tip ; to move back to $40 after improving uncompression routine
+	ld a, $31 ; left bar tip
 	ld [hli], a
 .loopFullTile
 	ld a, c
 	sub 8
 	jr c, .partialTile
 	ld c, a
-	ld a, $d9  ; full tile ; to move back to $49 after improving uncompression routine
+	ld a, $3a ; full tile
 	ld [hli], a
 	dec b
 	jr nz, .loopFullTile
 	jr .finish
 .partialTile
-	add 8 + $d1 ; $41 = empty, $42 = 1px, etc ; to move back to $41... after improving uncompression routine
+	add 8 + $32 ; $32 = empty, $33 = 1px, etc
 	ld [hli], a
 	dec b
 	jr z, .finish
-	ld a, $d1 ; to move back to $41 after improving uncompression routine
+	ld a, $32 ; empty tile
 .loopEmptyTile
 	ld [hli], a
 	dec b
 	jr nz, .loopEmptyTile
 .finish
-	ld a, $da ; right tip ; to move back to $4a after improving uncompression routine
+	ld a, $3b ; right tip
 	ld [hl], a
 	ld de, SCREEN_WIDTH * 2 - 5 ; line offset between bars
 	add hl, de ; move hl to next bar start
@@ -668,7 +668,7 @@ PrintStatBar:
 
 LoadStatExpTilePatterns:
 	ld de, StatExpBarGraphics
-	ld hl, vFont tile $50 ; to move back to vChars2 tile $40 after improving uncompression routine
+	ld hl, vBackPic ; vChars2 tile $31 ; first backsprite tile
 	lb bc, BANK(StatExpBarGraphics), (StatExpBarGraphicsEnd - StatExpBarGraphics) / $10
 	jp CopyVideoData
 

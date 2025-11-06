@@ -2515,8 +2515,29 @@ PartyMenuOrRockOrRun:
 	call ClearSprites
 ; display the status screen
 	predef StatusScreen
-; reload player mon backsprite ; marcelnote - to add once uncompression routine will be optimized
-;	predef LoadMonBackPic      ;              in order to move back stat exp bar onto back sprite
+; reload player mon backsprite ; marcelnote - added for stat exp bars
+	xor a
+	ldh [hWhoseTurn], a
+	ld a, [wPlayerBattleStatus2]
+	bit HAS_SUBSTITUTE_UP, a ; does the player mon have a substitute?
+	ld hl, AnimationSubstitute
+	jr nz, .doPlayerMonAnimation
+; player mon doesn't have substitute
+	ld a, [wPlayerMonMinimized]
+	and a ; has the player mon used Minimize?
+	ld hl, AnimationMinimizeMon
+	jr nz, .doPlayerMonAnimation
+; enemy mon is not minimized
+	ld a, [wBattleMonSpecies]
+	ld [wCurPartySpecies], a
+	ld [wCurSpecies], a
+	call GetMonHeader
+	predef LoadMonBackPic
+	jr .playerMonPicReloaded
+.doPlayerMonAnimation
+	ld b, BANK(AnimationSubstitute) ; BANK(AnimationMinimizeMon)
+	rst _Bankswitch ; marcelnote - free space in Home bank, changed from call Bankswitch
+.playerMonPicReloaded
 ; now we need to reload the enemy mon pic
 	ld a, 1                ; marcelnote - these two lines fix a visual bug
 	ldh [hWhoseTurn], a    ;              with Minimize and Substitute (pokered Wiki)
