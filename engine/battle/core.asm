@@ -2644,11 +2644,9 @@ MoveSelectionMenu:
 	   ; so it is necessary to put the di ei block to not cause tearing
 	call TextBoxBorder
 	hlcoord 4, 12
-	ld [hl], "┘"  ; marcelnote - inverted the two for new box size
-	;ld [hl], "─"
-	hlcoord 10, 12
 	ld [hl], "─"
-	;ld [hl], "┘"
+	hlcoord 9, 12 ; marcelnote - shifted for new box size
+	ld [hl], "┘"
 	ei
 	hlcoord 6, 13
 	call .writemoves
