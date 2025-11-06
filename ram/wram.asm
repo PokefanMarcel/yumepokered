@@ -1643,7 +1643,7 @@ wPokedexNum::
 wTempTMHM::
 wUsingPPUp::
 wMaxPP::
-wMoveGrammar::
+;wMoveGrammar:: ; marcelnote - now unused but leaving it for Japanese just in case
 ; 0 for player, non-zero for enemy
 wCalculateWhoseStats::
 wPokeBallCaptureCalcTemp::

@@ -1170,34 +1170,8 @@ _MoveNameText::
 	text_ram wStringBuffer
 	text "@"
 
-_ExclamationPoint1Text::
-;	text_start
-;	done
-	text "!"
-	done
-
-_ExclamationPoint2Text::
-;	text_start
-;	done
-	text "!"
-	done
-
-_ExclamationPoint3Text::
-;	text_start
-;	done
-	text "!"
-	done
-
-_ExclamationPoint4Text::
-;	text_start
-;	done
-	text "!"
-	done
-
-_ExclamationPoint5Text::
-;	text_start
-;	done
-	text "!"
+_ExclamationPointText:: ; marcelnote - no space for exclamation point after move name in French
+	text_start
 	done
 
 _AttackMissedText::

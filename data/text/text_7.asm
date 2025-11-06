@@ -139,13 +139,12 @@ _Thanks2Text::
 	text "Thanks!"
 	done
 
-_AfterTrade2Text:: ; marcelnote - dialogue changed to that of pokeyellow since RAICHU cannot evolve
+_AfterTrade2Text:: ; marcelnote - dialogue changed to that of pokeyellow since POLIWHIRL and RAICHU cannot evolve
 ;	text "The @"
 ;	text_ram wInGameTradeGiveMonName
 ;	text " you"
 ;	line "traded to me"
-;
-;	para "went and evolved!"
+;	cont "went and evolved!" ; marcelnote - changed from para
 ;	done
 	text "Hello there! Your"
 	line "old @"
