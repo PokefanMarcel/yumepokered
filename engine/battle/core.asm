@@ -2041,6 +2041,7 @@ CenterMonName:
 
 DisplayBattleMenu:: ; marcelnote - added B button as shortcut to Run
 	call LoadScreenTilesFromBuffer1 ; restore saved screen
+.skipLoadScreen
 	ld a, [wBattleType]
 	and a
 	jr nz, .nonstandardbattle
@@ -2310,7 +2311,7 @@ ENDC
 	jp DisplayBattleMenu
 
 .canUseItems
-	call SaveScreenTilesToBuffer2
+	call SaveScreenTilesToBuffer2 ; marcelnote - this is needed to restore after using e.g. Pokeflute
 	ld a, [wBattleType]
 	cp BATTLE_TYPE_SAFARI
 	jr nz, BagWasSelected
@@ -2447,7 +2448,7 @@ PartyMenuOrRockOrRun:
 	dec a ; was Run selected?
 	jp nz, BattleMenu_RunWasSelected
 ; party menu or rock was selected
-	call SaveScreenTilesToBuffer2
+;	call SaveScreenTilesToBuffer2 ; marcelnote - removed, LoadScreenTilesFromBuffer1 instead of 2
 	ld a, [wBattleType]
 	cp BATTLE_TYPE_SAFARI
 	jr nz, .partyMenuWasSelected
@@ -2467,10 +2468,10 @@ PartyMenuOrRockOrRun:
 	call ClearSprites
 	call GBPalWhiteOut
 	call LoadHudTilePatterns
-	call LoadScreenTilesFromBuffer2
+	call LoadScreenTilesFromBuffer1     ; marcelnote - replaced LoadScreenTilesFromBuffer2
 	call RunDefaultPaletteCommand
 	call GBPalNormal
-	jp DisplayBattleMenu
+	jp DisplayBattleMenu.skipLoadScreen ; marcelnote - added skipping reload since already done
 .partyMonDeselected
 	hlcoord 11, 11
 	ld bc, 6 * SCREEN_WIDTH + 9
