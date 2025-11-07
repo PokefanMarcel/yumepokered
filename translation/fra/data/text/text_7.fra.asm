@@ -139,13 +139,18 @@ _Thanks2Text::
 	text "Merci merci!"
 	done
 
-_AfterTrade2Text::
-	text "Ton @"
+_AfterTrade2Text:: ; marcelnote - dialogue changed to that of pokeyellow since POLIWHIRL and RAICHU cannot evolve
+;	text "Ton @"
+;	text_ram wInGameTradeGiveMonName
+;	text_start
+;	line "a évolué pendant"
+;	cont "l'échange!" ; marcelnote - changed from para
+;	done
+	text "Salut! Ton"
+	line "@"
 	text_ram wInGameTradeGiveMonName
-	text_start
-	line "a évolué pendant"
-
-	para "l'échange!"
+	text ""
+	cont "est bien joli!"
 	done
 
 _WannaTrade3Text::
