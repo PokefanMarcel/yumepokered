@@ -246,6 +246,17 @@ Credits:
 	pop de
 	ld de, TheEndGfx
 	ld hl, vChars2 tile $60
+IF DEF(_FRA)
+	lb bc, BANK(TheEndGfx), (TheEndGfxEnd - TheEndGfx) / $10
+	call CopyVideoData
+	hlcoord 7, 8
+	ld de, TheEndTextString
+	call PlaceString
+	hlcoord 7, 9
+	inc de
+	call PlaceString
+	jp FadeInCreditsText
+ELSE
 	lb bc, BANK(TheEndGfx), (TheEndGfxEnd - TheEndGfx) / $10
 	call CopyVideoData
 	hlcoord 4, 8
@@ -255,6 +266,24 @@ Credits:
 	inc de
 	call PlaceString
 	jp FadeInCreditsText
+ENDC
+
+
+
+IF DEF(_FRA)
+
+TheEndTextString:
+; "T H E  E N D"
+	db $60," ",$61,$62," ",$63,"@"
+	db $64," ",$65,$66," ",$67,"@"
+
+INCLUDE "translation/fra/data/credits/credits_order.fra.asm"
+INCLUDE "translation/fra/data/credits/credits_text.fra.asm"
+
+TheEndGfx: INCBIN "translation/fra/gfx/credits/the_end.fra.2bpp"
+TheEndGfxEnd:
+
+ELSE
 
 TheEndTextString:
 ; "T H E  E N D"
@@ -262,9 +291,9 @@ TheEndTextString:
 	db $61," ",$63," ",$65,"  ",$65," ",$67," ",$69,"@"
 
 INCLUDE "data/credits/credits_order.asm"
-
 INCLUDE "data/credits/credits_text.asm"
 
-TheEndGfx:
-	INCBIN "gfx/credits/the_end.2bpp"
+TheEndGfx: INCBIN "gfx/credits/the_end.2bpp"
 TheEndGfxEnd:
+
+ENDC

@@ -15,8 +15,10 @@ INCLUDE "macros/scripts/text.asm"
 
 IF DEF(_FRA)
 	INCLUDE "translation/fra/constants/charmap.fra.asm"
+	INCLUDE "translation/fra/constants/credits_constants.fra.asm"
 ELSE
 	INCLUDE "constants/charmap.asm"
+	INCLUDE "constants/credits_constants.asm"
 ENDC
 INCLUDE "constants/hardware.inc"
 INCLUDE "constants/oam_constants.asm"
@@ -46,7 +48,6 @@ INCLUDE "constants/map_data_constants.asm"
 INCLUDE "constants/map_object_constants.asm"
 INCLUDE "constants/hide_show_constants.asm"
 INCLUDE "constants/sprite_set_constants.asm"
-INCLUDE "constants/credits_constants.asm"
 ;INCLUDE "constants/audio_constants.asm"
 INCLUDE "constants/music_constants.asm"
 INCLUDE "constants/tileset_constants.asm"
