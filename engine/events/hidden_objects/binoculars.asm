@@ -51,19 +51,27 @@ Route12GateRightBinocularsText::
 	text_far _Route12GateRightBinocularsText
 	text_end
 
-Route15GateLeftBinoculars:
+Route15GateLeftBinoculars: ; marcelnote - added alternative text after Articuno is fought
 	ld a, [wSpritePlayerStateData1FacingDirection]
 	cp SPRITE_FACING_UP
 	ret nz
 	call EnableAutoTextBoxDrawing
-	tx_pre Route15GateLeftBinocularsText
+	CheckEvent EVENT_BEAT_ARTICUNO
+	jr z, .ArticunoStillHere
+	tx_pre_jump Route15GateLeftBinocularsNoArticunoText
+.ArticunoStillHere
+	tx_pre Route15GateLeftBinocularsArticunoText
 	ld a, ARTICUNO
 	ld [wCurPartySpecies], a
 ;	call PlayCry ; marcelnote - play cry within DisplayMonFrontSpriteInBox (fix from PureRGB)
 	jp DisplayMonFrontSpriteInBox
 
-Route15GateLeftBinocularsText::
-	text_far _Route15GateLeftBinocularsText
+Route15GateLeftBinocularsArticunoText::
+	text_far _Route15GateLeftBinocularsArticunoText
+	text_end
+
+Route15GateLeftBinocularsNoArticunoText::
+	text_far _Route15GateLeftBinocularsNoArticunoText
 	text_end
 
 Route15GateRightBinoculars:

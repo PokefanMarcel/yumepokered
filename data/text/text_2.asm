@@ -517,13 +517,21 @@ _Route12GateRightBinocularsText::
 	para "It's #MON TOWER!"
 	done
 
-_Route15GateLeftBinocularsText::
+_Route15GateLeftBinocularsArticunoText:: ; marcelnote - added alternative text after Articuno is fought
 	text "Looked into the"
 	line "binoculars..."
 
 	para "A large, shining"
 	line "bird is flying"
 	cont "toward the sea."
+	done
+
+_Route15GateLeftBinocularsNoArticunoText:: ; marcelnote - added alternative text after Articuno is fought
+	text "Looked into the"
+	line "binoculars."
+
+	para "The sea glimmers"
+	line "under the sun."
 	done
 
 _Route15GateRightBinocularsText::

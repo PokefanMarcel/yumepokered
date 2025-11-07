@@ -550,13 +550,21 @@ _Route12GateRightBinocularsText::
 	line "TOUR #MON!"
 	done
 
-_Route15GateLeftBinocularsText::
+_Route15GateLeftBinocularsArticunoText:: ; marcelnote - added alternative text after Articuno is fought
 	text "Vous regardez dans" ; marcelnote - merged two lines
 	line "les jumelles..."
 
 	para "Un grand et bel"
 	line "oiseau vole vers"
 	cont "la mer."
+	done
+
+_Route15GateLeftBinocularsNoArticunoText:: ; marcelnote - added alternative text after Articuno is fought
+	text "Vous regardez dans" ; marcelnote - merged two lines
+	line "les jumelles."
+
+	para "La mer scintille"
+	line "sous le soleil."
 	done
 
 _Route15GateRightBinocularsText::

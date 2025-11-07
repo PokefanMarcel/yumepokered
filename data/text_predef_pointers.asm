@@ -20,7 +20,8 @@ TextPredefs::
 	add_tx_pre Route11GateRightBinocularsText       ; 0A ; marcelnote - binoculars now hidden objects
 	add_tx_pre Route12GateLeftBinocularsText        ; 0A ; marcelnote - binoculars now hidden objects
 	add_tx_pre Route12GateRightBinocularsText       ; 0A ; marcelnote - binoculars now hidden objects
-	add_tx_pre Route15GateLeftBinocularsText        ; 0A
+	add_tx_pre Route15GateLeftBinocularsArticunoText        ; 0A ; marcelnote - added alternative text after Articuno is fought
+	add_tx_pre Route15GateLeftBinocularsNoArticunoText      ; 0A ; marcelnote - added alternative text after Articuno is fought
 	add_tx_pre Route15GateRightBinocularsText       ; 0A ; marcelnote - binoculars now hidden objects
 	add_tx_pre Route16GateLeftBinocularsText        ; 0A ; marcelnote - binoculars now hidden objects
 	add_tx_pre Route16GateRightBinocularsText       ; 0A ; marcelnote - binoculars now hidden objects
