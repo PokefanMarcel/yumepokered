@@ -161,6 +161,7 @@ This project owes a lot to existing works, and above all to the pret [pokered](h
 - [Yellow Legacy](https://github.com/cRz-Shadows/Pokemon_Yellow_Legacy): inspiration for many balance changes,
 - [pokered-crysaudio](https://github.com/dannye/pokered-crysaudio/tree/1edc6019fb8630bccd94f0b0e7dd4082cf7f4245): updated sound engine,
 - [Polished Crystal](https://github.com/Rangi42/polishedcrystal): math functions, Pokémon Gen2 sprites,
+- [pokered-fr](https://github.com/einstein95/pokered-fr) and [MohnDoe](https://github.com/MohnDoe) for help with the French translation,
 - additional credits and references for the graphics used in Yume are listed [here](docs/gfx_credits.md),
 - the invaluable help from the amazing people on the pokered Discord.
 
