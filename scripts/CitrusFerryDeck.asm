@@ -26,7 +26,7 @@ CitrusFerryDeckDefaultScript:
 	ld [wCitrusFerryDeckCurScript], a
 	jr .startMovement
 .checkSailor
-	cp 1
+	dec a
 	ret nz
 	xor a
 	ldh [hJoyHeld], a
