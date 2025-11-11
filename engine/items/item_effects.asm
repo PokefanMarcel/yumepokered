@@ -2280,6 +2280,8 @@ ItemUseTMHM:
 	ld a, [wCurrentMenuItem]
 	and a
 	jr z, .useMachine
+	ld a, ITEM_NAME ; marcelnote - added to prevent a bug with TMs/HMs
+	ld [wNameListType], a
 	ld a, 2
 	ld [wActionResultOrTookBattleTurn], a ; item not used
 	ret
