@@ -1185,7 +1185,7 @@ AnimationSlideMonDown: ; marcelnote - modified for removing sprite compression
 	push bc
 	push de
 	push hl
-	ld b, 7
+	ld b, 6 ; do bottom 6 rows
 .innerLoop
 	push bc
 	push hl       ; save coords of lower row
@@ -1197,6 +1197,12 @@ AnimationSlideMonDown: ; marcelnote - modified for removing sprite compression
 	pop bc
 	dec b
 	jr nz, .innerLoop
+	; handle top row differently (opponent side cannot copy from above row)
+	ld a, $7f ; blank tile
+	ld c, 7 ; since b = 0, bc = 7
+	ld h, d
+	ld l, e
+	call FillMemory ; fills bc bytes at hl with a
 	call Delay3
 	pop hl
 	pop de
