@@ -1478,6 +1478,7 @@ EnemySendOutFirstMon:
 	call GBPalNormal
 	ld hl, TrainerSentOutText
 	call PrintText
+	call Delay3 ; marcelnote - remove sprite compression, added padding before sending mon to smooth transition
 	ld a, [wEnemyMonSpecies2]
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
