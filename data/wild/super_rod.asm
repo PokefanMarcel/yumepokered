@@ -10,12 +10,14 @@ SuperRodData:
 	dbw FUCHSIA_CITY,        .Group2
 	dbw CINNABAR_ISLAND,     .Group1
 	dbw MANDARIN_ISLAND,     .Group12 ; marcelnote - new map
+	dbw ROUTE_2,             .Group2  ; marcelnote - map now has water
 	dbw ROUTE_4,             .Group2
 	dbw ROUTE_6,             .Group4
 	dbw ROUTE_10,            .Group5
 	dbw ROUTE_11,            .Group1
 	dbw ROUTE_12,            .Group1
 	dbw ROUTE_13,            .Group1
+	dbw ROUTE_16,            .Group2  ; marcelnote - map now has water
 	dbw ROUTE_17,            .Group1
 	dbw ROUTE_18,            .Group1
 	dbw ROUTE_19,            .Group1

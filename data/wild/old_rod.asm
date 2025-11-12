@@ -10,12 +10,14 @@ OldRodData:
 	dbw FUCHSIA_CITY,        .Group5
 	dbw CINNABAR_ISLAND,     .Group4
 	dbw MANDARIN_ISLAND,     .Group4 ; marcelnote - new map
+	dbw ROUTE_2,             .Group1 ; marcelnote - map now has water
 	dbw ROUTE_4,             .Group3
 	dbw ROUTE_6,             .Group6
 	dbw ROUTE_10,            .Group4
 	dbw ROUTE_11,            .Group4
 	dbw ROUTE_12,            .Group4
 	dbw ROUTE_13,            .Group4
+	dbw ROUTE_16,            .Group1 ; marcelnote - map now has water
 	dbw ROUTE_17,            .Group4
 	dbw ROUTE_18,            .Group4
 	dbw ROUTE_19,            .Group4

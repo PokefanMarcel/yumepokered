@@ -10,12 +10,14 @@ GoodRodData:
 	dbw FUCHSIA_CITY,        .Group1
 	dbw CINNABAR_ISLAND,     .Group4
 	dbw MANDARIN_ISLAND,     .Group11 ; marcelnote - new map
+	dbw ROUTE_2,             .Group1  ; marcelnote - map now has water
 	dbw ROUTE_4,             .Group1
 	dbw ROUTE_6,             .Group5
 	dbw ROUTE_10,            .Group7
 	dbw ROUTE_11,            .Group3
 	dbw ROUTE_12,            .Group4
 	dbw ROUTE_13,            .Group4
+	dbw ROUTE_16,            .Group1 ; marcelnote - map now has water
 	dbw ROUTE_17,            .Group4
 	dbw ROUTE_18,            .Group4
 	dbw ROUTE_19,            .Group4
