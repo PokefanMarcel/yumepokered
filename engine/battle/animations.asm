@@ -1297,7 +1297,7 @@ BattleAnimWriteOAMEntry: ; marcelnote - adjusted for row-major
 	ld [hli], a
 	ld a, d
 	ld [hli], a
-	xor a
+	xor a ; marcelnote - could ld a, OAM_PAL1 but requires ldh [rOBP1], %11100100
 	ld [hli], a
 	ret
 
