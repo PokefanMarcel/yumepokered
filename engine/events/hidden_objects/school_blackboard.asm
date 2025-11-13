@@ -67,12 +67,6 @@ LinkCableHelpText2:
 	text_far _LinkCableHelpText2
 	text_end
 
-HowToLinkText:
-	db   "HOW TO LINK"
-	next "COLOSSEUM"
-	next "TRADE CENTER"
-	next "STOP READING@"
-
 LinkCableInfoTexts:
 	dw LinkCableInfoText1
 	dw LinkCableInfoText2
@@ -184,17 +178,11 @@ ViridianSchoolBlackboardText2:
 	text_far _ViridianSchoolBlackboardText2
 	text_end
 
-StatusAilmentText1:
-	db   " SLP"
-	next " PSN"
-	next " PAR@"
-
-StatusAilmentText2:
-	db   " BRN"
-	next " FRZ"
-	next " QUIT@"
-
-	db "@" ; unused
+IF DEF(_FRA)
+	INCLUDE "translation/fra/data/text/school_blackboard.fra.asm"
+ELSE
+	INCLUDE "data/text/school_blackboard.asm"
+ENDC
 
 ViridianBlackboardStatusPointers:
 	dw ViridianBlackboardSleepText
