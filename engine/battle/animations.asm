@@ -1260,44 +1260,40 @@ _AnimationSlideMonUp: ; marcelnote - optimized and adjusted for sprite removing 
 	jr nz, _AnimationSlideMonUp
 	ret
 
-ShakeEnemyHUD_WritePlayerMonPicOAM:
+ShakeEnemyHUD_WritePlayerMonPicOAM: ; marcelnote - adjusted for row-major
 ; Writes the OAM entries for a copy of the player mon's pic in OAM.
 ; The top 5 rows are reproduced in OAM, although only 2 are actually needed.
-	ld a, $10
-	ld [wBaseCoordX], a
-	ld a, $30
+	ld a, $38            ; starting Y
 	ld [wBaseCoordY], a
 	ld hl, wShadowOAM
-	ld d, 0
-	ld c, 7
-.loop
-	ld a, [wBaseCoordY]
+	ld d, 0              ; tile index
+	ld b, 5              ; number of rows
+.rowLoop
+	ld a, $08            ; starting X
 	ld e, a
-	ld b, 5
-.innerLoop
+	ld c, 7
+.colLoop
 	call BattleAnimWriteOAMEntry
 	inc d
-	dec b
-	jr nz, .innerLoop
 	dec c
-	ret z
-	inc d
-	inc d
-	ld a, [wBaseCoordX]
+	jr nz, .colLoop
+	ld a, [wBaseCoordY]
 	add 8
-	ld [wBaseCoordX], a
-	jr .loop
+	ld [wBaseCoordY], a
+	dec b
+	jr nz, .rowLoop
+	ret
 
-BattleAnimWriteOAMEntry:
-; Y coordinate = e (increased by 8 each call, before the write to OAM)
-; X coordinate = [wBaseCoordX]
+BattleAnimWriteOAMEntry: ; marcelnote - adjusted for row-major
+; Y coordinate = [wBaseCoordY]
+; X coordinate = e (increased by 8 each call, before the write to OAM)
 ; tile = d
 ; attributes = 0
+	ld a, [wBaseCoordY]
+	ld [hli], a
 	ld a, e
 	add 8
 	ld e, a
-	ld [hli], a
-	ld a, [wBaseCoordX]
 	ld [hli], a
 	ld a, d
 	ld [hli], a
