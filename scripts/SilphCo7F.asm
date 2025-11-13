@@ -193,7 +193,7 @@ SilphCo7FRivalStartBattleScript:
 
 	; select which team to use during the encounter
 	ld a, [wRivalStarter]
-	ld b, $7    ; 7 = Squirtle team
+	ld b, 7     ; 7 = Squirtle team
 	cp STARTER2 ; Squirtle
 	jr z, .gotTeam
 	inc b       ; 8 = Bulbasaur team

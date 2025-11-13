@@ -103,7 +103,7 @@ SSAnne2FRivalStartBattleScript:
 
 	; select which team to use during the encounter
 	ld a, [wRivalStarter]
-	ld b, $1    ; 1 = Squirtle team
+	ld b, 1     ; 1 = Squirtle team
 	cp STARTER2 ; Squirtle
 	jr z, .gotTeam
 	inc b       ; 2 = Bulbasaur team

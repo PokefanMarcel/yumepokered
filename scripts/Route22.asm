@@ -122,7 +122,7 @@ Route22Rival1StartBattleScript:
 
 	; select which team to use during the encounter
 	ld a, [wRivalStarter]
-	ld b, $4    ; 4 = Squirtle team
+	ld b, 4     ; 4 = Squirtle team
 	cp STARTER2 ; Squirtle
 	jr z, .gotTeam
 	inc b       ; 5 = Bulbasaur team
@@ -285,7 +285,7 @@ Route22Rival2StartBattleScript:
 
 	; select which team to use during the encounter
 	ld a, [wRivalStarter]
-	ld b, $10   ; 10 = Squirtle team
+	ld b, 10    ; 10 = Squirtle team
 	cp STARTER2 ; Squirtle
 	jr z, .gotTeam
 	inc b       ; 11 = Bulbasaur team

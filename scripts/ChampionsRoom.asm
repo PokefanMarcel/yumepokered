@@ -85,7 +85,7 @@ ChampionsRoomRivalReadyToBattleScript:
 
 	; select which team to use during the encounter
 	ld a, [wRivalStarter]
-	ld b, $1    ; 1 = Blastoise team
+	ld b, 1     ; 1 = Blastoise team
 	cp STARTER2 ; Squirtle
 	jr z, .gotTeam
 	inc b       ; 2 = Venusaur team
