@@ -52,26 +52,12 @@ ViridianCityYoungster2CaterpieAndWeedleDescriptionText::
 	line "DARD-VENIN!"
 	done
 
-_ViridianCityGirlHasntHadHisCoffeeYetText::
-	text "Papinou! Tu vas"
-	line "t'lever, ouais?"
-	cont "T'as vidé la cave"
-	cont "ou quoi?"
-	done
-
 _ViridianCityGirlWhenIGoShopText::
 	text "Je passe par la"
 	line "FORET DE JADE"
 	cont "pour faire mes"
 	cont "courses à"
 	cont "ARGENTA."
-	done
-
-_ViridianCityOldManSleepyPrivatePropertyText::
-	text "Passage..."
-	line "INTERDIT!"
-
-	para "Propriété privée!"
 	done
 
 ViridianCityFisherYouCanHaveThisText::
@@ -107,18 +93,50 @@ _ViridianCityFisherTM42NoRoomText::
 	line "chargé."
 	done
 
-_ViridianCityOldManHadMyCoffeeNowText::
-	text "Ahh... Un p'tit"
-	line "somme, un bon"
-	cont "café et hop! La"
-	cont "pêche pour la"
-	cont "journée!"
+_ViridianCityOldManSleepyPrivatePropertyText:: ; marcelnote - use translation of original Japanese dialogue
+;	text "Passage..."
+;	line "INTERDIT!"
 
-	para "Mais bien sûr que"
-	line "tu peux passer!"
+;	para "Propriété privée!"
+;	done
+	text "Wouhouu! Hips!"
+	line "H-hé, attends!"
+	cont "Faut qu'j'te"
+	cont "dise un truc!"
+
+	para "...Hé! Pars pas!"
+	done
+
+_ViridianCityOldManHadMyCoffeeNowText:: ; marcelnote - use translation of original Japanese dialogue
+;	text "Ahh... Un p'tit"
+;	line "somme, un bon"
+;	cont "café et hop! La"
+;	cont "pêche pour la"
+;	cont "journée!"
+
+;	para "Mais bien sûr que"
+;	line "tu peux passer!"
+
+;	para "Mais au fait..."
+;	line "T'es pressé?"
+;	done
+	text "Ouff... J'crois"
+	line "qu'j'ai un peu"
+	cont "abusé, hein?"
+
+	para "Mais un p'tit"
+	line "somme et hop!"
+	cont "C'est reparti!"
 
 	para "Mais au fait..."
 	line "T'es pressé?"
+	done
+
+_ViridianCityGirlHasntHadHisCoffeeYetText::
+	text "Papinou! Tu vas"
+	line "t'lever, ouais?"
+	cont "T'as vidé la cave"
+	cont "ou quoi?"
 	done
 
 _ViridianCityOldManKnowHowToCatchPokemonText::
