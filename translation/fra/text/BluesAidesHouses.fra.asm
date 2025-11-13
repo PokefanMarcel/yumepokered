@@ -90,7 +90,7 @@ _AidesHouseMiddleAgedWomanText:: ; marcelnote - new Pallet house
 _AidesHouseMemoText:: ; marcelnote - new Pallet house
 	text "Un mémo écrit par"
 	line "l'ASSISTANT du"
-	line "PROF. CHEN."
+	cont "PROF. CHEN."
 
 	para "..."
 

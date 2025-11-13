@@ -258,9 +258,6 @@ IF DEF(_FRA)
 	INCLUDE "translation/fra/text/Route25.fra.asm"
 	INCLUDE "translation/fra/text/Route28.fra.asm"           ; marcelnote - new location
 	INCLUDE "translation/fra/data/text/text_3.fra.asm"
-	INCLUDE "translation/fra/text/RedsYellowsHouses.fra.asm" ; marcelnote - merged RedsHouse floors, added YellowsHouse
-	INCLUDE "translation/fra/text/BluesAidesHouses.fra.asm"  ; marcelnote - merged Blue's house with new Aide's house
-	INCLUDE "translation/fra/text/OaksLab.fra.asm"
 	INCLUDE "translation/fra/text/pokedex_ratings.fra.asm"
 	INCLUDE "translation/fra/text/ViridianPokecenterMart.fra.asm" ; marcelnote - merged Viridian Pokecenter and Mart
 	INCLUDE "translation/fra/text/ViridianSchoolHouse.fra.asm"
@@ -274,9 +271,6 @@ ELSE
 	INCLUDE "text/Route25.asm"
 	INCLUDE "text/Route28.asm"           ; marcelnote - new location
 	INCLUDE "data/text/text_3.asm"
-	INCLUDE "text/RedsYellowsHouses.asm" ; marcelnote - merged RedsHouse floors, added YellowsHouse
-	INCLUDE "text/BluesAidesHouses.asm"  ; marcelnote - merged Blue's house with new Aide's house
-	INCLUDE "text/OaksLab.asm"
 	INCLUDE "text/pokedex_ratings.asm"
 	INCLUDE "text/ViridianPokecenterMart.asm" ; marcelnote - merged Viridian Pokecenter and Mart
 	INCLUDE "text/ViridianSchoolHouse.asm"
@@ -339,14 +333,34 @@ ELSE
 ENDC
 
 
-SECTION "Text 7.5", ROMX
+SECTION "Text Pallet", ROMX
+
+IF DEF(_FRA)
+	INCLUDE "translation/fra/text/RedsYellowsHouses.fra.asm" ; marcelnote - merged RedsHouse floors, added YellowsHouse
+	INCLUDE "translation/fra/text/BluesAidesHouses.fra.asm"  ; marcelnote - merged Blue's house with new Aide's house
+	INCLUDE "translation/fra/text/OaksLab.fra.asm"
+ELSE
+	INCLUDE "text/RedsYellowsHouses.asm" ; marcelnote - merged RedsHouse floors, added YellowsHouse
+	INCLUDE "text/BluesAidesHouses.asm"  ; marcelnote - merged Blue's house with new Aide's house
+	INCLUDE "text/OaksLab.asm"
+ENDC
+
+
+SECTION "Text Vermilion", ROMX
 
 IF DEF(_FRA)
 	INCLUDE "translation/fra/text/VermilionGym.fra.asm"
+ELSE
+	INCLUDE "text/VermilionGym.asm"
+ENDC
+
+
+SECTION "Text Fuchsia", ROMX
+
+IF DEF(_FRA)
 	INCLUDE "translation/fra/text/FuchsiaMeetingRoom.fra.asm"
 	INCLUDE "translation/fra/text/FuchsiaSuperRodHouse.fra.asm"   ; marcelnote - from Good to Super Rod
 ELSE
-	INCLUDE "text/VermilionGym.asm"
 	INCLUDE "text/FuchsiaMeetingRoom.asm"
 	INCLUDE "text/FuchsiaSuperRodHouse.asm"   ; marcelnote - from Good to Super Rod
 ENDC

@@ -57,7 +57,7 @@ _RedsHouse2FSNESText:: ; marcelnote - moved from hidden_objects
 _YellowsHouse1FDadUnpackingText:: ; marcelnote - new for Yellow's house
 	text "Pardon pour le"
 	line "désordre, on est"
-	cont "en plein."
+	cont "en plein"
 	cont "déballage."
 
 	para "Repasse un peu"

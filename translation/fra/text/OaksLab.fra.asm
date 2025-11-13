@@ -83,6 +83,15 @@ _OaksLabOakRaiseYourYoungPokemonText::
 	done
 
 _OaksLabOakDeliverParcelText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "CHEN: <PLAYER>!"
 
 	para "Comment va ton"
@@ -93,6 +102,28 @@ _OaksLabOakDeliverParcelText::
 
 	para "Tu m'as l'air"
 	line "doué pour"
+	cont "entraîner les"
+	cont "#MON!"
+
+	para "Comment? Tu as"
+	line "quelque chose à"
+	cont "me donner?"
+
+	para "<PLAYER> donne"
+	line "le COLIS DE CHEN.@"
+	text_end
+
+.GirlText
+	text "CHEN: <PLAYER>!"
+
+	para "Comment va ton"
+	line "#MON?"
+
+	para "Je crois qu'il"
+	line "t'aime bien!"
+
+	para "Tu m'as l'air"
+	line "douée pour"
 	cont "entraîner les"
 	cont "#MON!"
 
@@ -436,8 +467,8 @@ _OaksLabRivalShowingDexText:: ; marcelnote - postgame Rival event
 	cont "légendaires."
 
 	para "Et toi, <PLAYER>?"
-	line "T'es tombé sur"
-	cont "un de ces #MON"
+	line "T'as croisé un"
+	cont "de ces #MON"
 	cont "légendaires?"
 	prompt
 
@@ -446,8 +477,8 @@ _OaksLabRivalSeenNoBirdText:: ; marcelnote - postgame Rival event
 	text "Non? Je m'en"
 	line "doutais."
 
-	para "C'est sûrement des"
-	line "contes pour"
+	para "C'est sûrement"
+	line "des contes pour"
 	cont "minables."
 	done
 
