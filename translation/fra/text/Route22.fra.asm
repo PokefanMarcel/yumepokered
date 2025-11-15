@@ -1,4 +1,13 @@
 _Route22RivalBeforeBattleText1::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "<RIVAL>: Hé!"
 	line "<PLAYER>!"
 
@@ -15,6 +24,30 @@ _Route22RivalBeforeBattleText1::
 	line "laisseront pas"
 	cont "passer un minable"
 	cont "comme toi!"
+
+	para "Enfin, si tu veux"
+	line "je suis prêt à"
+	cont "exploser tes"
+	cont "#MON!"
+	done
+
+.GirlText
+	text "<RIVAL>: Hé!"
+	line "<PLAYER>!"
+
+	para "Tu vas à la"
+	line "LIGUE #MON?"
+
+	para "Laisse tomber!"
+	line "T'es bien trop"
+	cont "minable. En plus"
+	cont "il te faut des"
+	cont "BADGES!"
+
+	para "Les gardes ne"
+	line "laisseront pas"
+	cont "passer une min-"
+	cont "able comme toi!"
 
 	para "Enfin, si tu veux"
 	line "je suis prêt à"
@@ -82,6 +115,15 @@ _Route22RivalBeforeBattleText2::
 	done
 
 _Route22RivalAfterBattleText2::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Tu m'as amusé"
 	line "un peu! J'suis"
 	cont "chaud pour la"
@@ -89,6 +131,21 @@ _Route22RivalAfterBattleText2::
 
 	para "<PLAYER>, t'es"
 	line "vraiment un"
+	cont "minable!"
+
+	para "Mais je crois que"
+	line "tu commences à le"
+	cont "savoir, minable!"
+	done
+
+.GirlText
+	text "Tu m'as amusé"
+	line "un peu! J'suis"
+	cont "chaud pour la"
+	cont "LIGUE #MON!"
+
+	para "<PLAYER>, t'es"
+	line "vraiment une"
 	cont "minable!"
 
 	para "Mais je crois que"
@@ -104,11 +161,33 @@ _Route22Rival2DefeatedText::
 	prompt
 
 _Route22Rival2VictoryText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "<RIVAL>: Hahaha!"
 	line "<PLAYER>! T'es"
 	cont "vraiment nul! Un"
 	cont "énorme minable,"
 	cont "pas bon du tout!"
+
+	para "Allez, retourne"
+	line "t'entraîner!"
+	prompt
+
+
+.GirlText
+	text "<RIVAL>: Hahaha!"
+	line "<PLAYER>! T'es"
+	cont "vraiment nulle!"
+	cont "Une énorme"
+	cont "minable, pas"
+	cont "bonne du tout!"
 
 	para "Allez, retourne"
 	line "t'entraîner!"
