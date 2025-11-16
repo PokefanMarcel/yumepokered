@@ -113,8 +113,8 @@ _ViridianForestTrainerTips2Text::
 
 	para "Pour évaluer"
 	line "votre #DEX,"
-	cont "appelez le Prof."
-	cont "Chen via un PC!"
+	cont "appelez le PROF." ; marcelnote - was Prof. Chen
+	cont "CHEN via un PC!"
 	done
 
 _ViridianForestTrainerTips3Text::
