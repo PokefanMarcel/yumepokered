@@ -10,6 +10,7 @@ The high-res Old Man backsprite is from [PureRGB](https://github.com/Vortyne/pur
 - Will's battle sprite was made by Corra (on the pokered discord).
 
 - Pokémon CRYSTAL sprites are a mix of original sprites from Gold/Silver, and reworked sprites from [Polished Crystal](https://github.com/Rangi42/polishedcrystal).
+The Lavender Tower Ghost sprite is from [RacieBeep](https://www.deviantart.com/racieb).
 
 - Some Pokémon BLUE backsprites have been reworked by me, sometimes with inspiration from [SkidMarc25's work](https://www.deviantart.com/skidmarc25/art/Pokemon-Red-Blue-Green-Yellow-Back-Sprite-Touchups-977256591).
 
