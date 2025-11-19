@@ -416,9 +416,9 @@ _VermilionGymLTSurgeRematchAcceptBattleText:: ; marcelnote - Lt.Surge rematch
 	cont "tension, gamine!"
 	done
 
-_VermilionGymLTSurgeRematchDefeatedText:: ; TODO marcelnote - Lt.Surge rematch
-	text "Abso-"
-	line "lutely shocking!" ; text from Let's Go Pikachu
+_VermilionGymLTSurgeRematchDefeatedText:: ; marcelnote - Lt.Surge rematch
+	text "Défaite"
+	line "du tonnerre!"
 	prompt
 
 _VermilionGymAfterRematchText:: ; marcelnote - Lt.Surge rematch
@@ -445,3 +445,16 @@ _VermilionGymAfterRematchText:: ; marcelnote - Lt.Surge rematch
 	para "Refaisons ça"
 	line "bientôt!"
 	done
+
+
+; Dialogues du Major Bob rematch LGPE :
+
+; Hey rookie! Ou plutôt, Maître ? Alors comme ça, on revient de la Ligue ?
+; Je parie que c'est grâce à des Pokémon Electrik, tout ça ! Parce que y'a pas mieux qu'eux !
+; Allez, montre-moi c'que tu as dans le ventre !
+
+; Nom d'un petit soldat ! J'ai perdu !
+
+; "Abandonner" ne fait pas partie de mon vocabulaire, soldat ! Je suis toujours prêt à en découdre !
+; Bon sang, j'avais encore jamais ressenti ça depuis que je suis arrivé à Kanto. Merci, kiddo !
+; Reviens quand tu veux, je t'attends ! Oh yeah !
