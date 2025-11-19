@@ -293,9 +293,10 @@ _CinnabarGymBlaineRematchAcceptBattleText:: ; marcelnote - Blaine rematch
 	cont "leur revanche!"
 	done
 
-_CinnabarGymBlaineRematchDefeatedText:: ; TODO marcelnote - Blaine rematch
-	text "Hah!"
-	line "I'm all fired up!" ; text from Let's Go Pikachu
+_CinnabarGymBlaineRematchDefeatedText:: ; marcelnote - Blaine rematch
+	text "Rien ne"
+	line "viendra éteindre"
+	cont "ma flamme!" ; text from Let's Go Pikachu
 	prompt
 
 _CinnabarGymAfterRematchText:: ; marcelnote - Blaine rematch
@@ -306,3 +307,22 @@ _CinnabarGymAfterRematchText:: ; marcelnote - Blaine rematch
 	para "Refaisons ça"
 	line "bientôt!"
 	done
+
+
+; Dialogues d'Auguste rematch LGPE :
+
+; Oh bah dis donc ! Ça fait rudement plaisir de te revoir !
+; C'est bien toi qui est allé chercher la clé de mon Arène au Manoir Pokémon ?
+; Tu as vu des choses intéressantes, là-bas ?
+; J'ai un vieil ami qui y faisait des recherches, il doit encore rester des traces de ses activités.
+; Il paraît d'ailleurs qu'une jeune demoiselle s'intéresse de près à ses recherches.
+; Elle s'appelle Green, ça te dit quelque chose ?
+; ??? pas grand-chose.
+; Pardon, je t'embête, à radoter.
+; Et si on se faisait un petit combat Pokémon ?
+
+; Rien ne viendra éteindre les flammes de ma motivation !
+
+; Le nombre de Champions en herbe grimpe en flèche, ces derniers temps.
+; Personellement, je m'en frotte les mains ! Voilà qui va pimenter mon quotidien.
+; Je sais que tu as déjà mon Badge, mais n'hésite pas à revenir faire un tour !
