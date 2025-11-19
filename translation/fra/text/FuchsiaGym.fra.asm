@@ -334,9 +334,9 @@ _FuchsiaGymKogaRematchAcceptBattleText:: ; marcelnote - Koga rematch
 	cont "techniques ninja!"
 	done
 
-_FuchsiaGymKogaRematchDefeatedText:: ; TODO marcelnote - Koga rematch
-	text "I must keep"
-	line "honing my skills." ; from Let's Go Pikachu
+_FuchsiaGymKogaRematchDefeatedText:: ; marcelnote - Koga rematch
+	text "Je dois me"
+	line "perfectionner!" ; from Let's Go Pikachu
 	prompt
 
 _FuchsiaGymAfterRematchText:: ; marcelnote - Koga rematch
@@ -347,3 +347,15 @@ _FuchsiaGymAfterRematchText:: ; marcelnote - Koga rematch
 	para "Refaisons ça"
 	line "bientôt!"
 	done
+
+
+; Dialogues de Koga rematch LGPE :
+
+; Gwahahaha ! Mais qui revoilà ? Tu tombes à pic, gamin !
+; Je viens justement de sublimer l'un de mes arcanes de ninja, à force d'entraînement.
+; Je cherchais un valeureux adversaire contre lequel le tester !
+
+; La défaite est une source d'enseignements. Je dois me perfectionner !
+
+; C'est grâce à des dresseurs comme toi et Régis que la Ligue Pokémon sait rester forte.
+; Je songeais justement à briguer un poste au Conseil 4, pour rejoindre cette grande et belle institution.
