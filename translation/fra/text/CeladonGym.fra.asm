@@ -261,10 +261,10 @@ _CeladonGymErikaRematchAcceptBattleText:: ; marcelnote - Erika rematch
 	cont "Allons-y?"
 	done
 
-_CeladonGymErikaRematchDefeatedText:: ; TODO marcelnote - Erika rematch
-	text "Oh!"
-	line "It appears it is"
-	cont "my loss..." ; from Let's Go Pikachu
+_CeladonGymErikaRematchDefeatedText:: ; marcelnote - Erika rematch
+	text "Déjà fini?"
+	line "Dommage, on"
+	cont "s'amusait bien..." ; from Let's Go Pikachu
 	prompt
 
 _CeladonGymAfterRematchText:: ; marcelnote - Erika rematch
@@ -275,3 +275,16 @@ _CeladonGymAfterRematchText:: ; marcelnote - Erika rematch
 	para "Refaisons ça"
 	line "bientôt!"
 	done
+
+
+; Dialogues d'Erika rematch LGPE :
+
+; Oh, je me souviens de toi. Comment avance ton Pokédex ? Quelles sont les nouvelles depuis notre dernière rencontre ?
+; Ah, je vois. Eh bien ma foi, tu n'as pas chômé ! Mais, tu sais, en réalité, toutes ces mondanités ne m'intéressent guère.
+; "Maître de la Ligue"? Ha ! Comme c'est surfait. Ce n'est qu'un titre ronflant.
+; Mais si tu veux te battre, c'est un autre histoire. Je suis toujours prête pour une bonne baston !
+
+; Oh non, le combat est terminé... Dommage, on s'amusait si bien...
+
+; Aaah, ça fait du bien ! Merci, j'en avais besoin.
+; Tu mériterais au moins dix Badges Prisme en remerciement de ce beau combat !
