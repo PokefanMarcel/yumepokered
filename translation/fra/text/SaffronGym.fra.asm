@@ -440,3 +440,15 @@ _SaffronGymAfterRematchText:: ; marcelnote - Sabrina rematch
 	para "Refaisons ça"
 	line "bientôt!"
 	done
+
+
+; Dialogues de Morgane rematch LGPE :
+
+; Perdre contre toi, ça m'a ouvert les yeux. J'en avais bien besoin, crois-moi.
+; C'est pour cela que j'aimerais t'affronter à nouveau.
+; Mais cette fois, je ne me reposerai pas uniquement sur mes pouvoirs psychiques. Je vais tout donner !
+
+; Je pressens que je ne reverrai pas de Dreseur de ta trempe avant plusieurs années...
+
+; Tu sais, quand je perds contre toi, cela ne me prend plus de court comme avant.
+; Maintenant, cela me motive à me surpasser et à devenir comme toi, forte et libre !
