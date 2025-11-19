@@ -370,3 +370,18 @@ _ChampionsRoomOakComeWithMeText::
 	cont "<PLAYER>!"
 	cont "Suis-moi!"
 	done
+
+
+; Dialogues de Blue rematch LGPE :
+
+; Salut, <PLAYER>. La forme ?
+; Depuis que je suis devenu le Champion de l'Arène de Jadielle, c'est la folie !
+; On est débordés, je te raconte pas.
+; Et sinon, t'en dis quoi, du design ? Tu trouves pas que ça me colle des airs de boss final ?
+; Perso, j'ai bien envie de refaire toute la déco.
+; Tu m'diras, même si la déco est pourrie, ça ne change rien au fait que je suis le meilleur !
+; T'en veux la preuve ? Alors c'est parti !
+
+; Non, mais redescends, t'es pas le seul Dresseur à Kanto, quoi.
+
+; Tu sais quoi ? J'aime avoir des adversaires à ma hauteur, alors t'as intérêt à repasser !
