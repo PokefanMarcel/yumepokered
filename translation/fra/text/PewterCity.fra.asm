@@ -24,7 +24,21 @@ _PewterCityCooltrainerMText::
 	done
 
 _PewterCitySuperNerd1DidYouCheckOutMuseumText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Es-tu allé au"
+	line "MUSEE?"
+	done
+
+.GirlText
+	text "Es-tu allée au"
 	line "MUSEE?"
 	done
 
@@ -67,18 +81,51 @@ _PewterCitySuperNerd2ImSprayingRepelText::
 	done
 
 _PewterCityYoungsterYoureATrainerFollowMeText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "T'es un dresseur?"
 	line "PIERRE cherche un"
 	cont "adversaire!"
 	cont "Suis-moi!"
 	done
 
+.GirlText
+	text "T'es une dresseuse?"
+	line "PIERRE cherche un"
+	cont "adversaire!"
+	cont "Suis-moi!"
+	done
+
 _PewterCityYoungsterGoTakeOnBrockText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Si t'es fort..."
 	line "T'as pas tort..."
 	cont "Alors..."
 	cont "Bats PIERRE..."
 	cont "Ou t'es mort!"
+	done
+
+.GirlText
+	text "Si t'es forte..."
+	line "Pas d'escorte..."
+	cont "N'importe..."
+	cont "Bats PIERRE..."
+	cont "Ou t'es morte!"
 	done
 
 _PewterCityTrainerTipsText::
