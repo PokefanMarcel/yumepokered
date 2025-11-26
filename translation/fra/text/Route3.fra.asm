@@ -65,7 +65,21 @@ _Route3CooltrainerF1AfterBattleText::
 	done
 
 _Route3Youngster3BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "T'es un dresseur?"
+	line "A l'attaque!"
+	done
+
+.GirlText
+	text "T'es une dresseuse?"
 	line "A l'attaque!"
 	done
 
@@ -84,15 +98,45 @@ _Route3Youngster3AfterBattleText::
 	done
 
 _Route3CooltrainerF2BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Dis donc beau"
 	line "ténébreux..."
 	cont "Tu veux qu'on"
 	cont "s'boxe?"
 	done
 
+.GirlText
+	text "Dis donc ma"
+	line "belle..."
+	cont "Tu veux qu'on"
+	cont "s'boxe?"
+	done
+
 _Route3CooltrainerF2EndBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Hmmm..."
 	line "Sois gentil!"
+	prompt
+
+.GirlText
+	text "Hmmm..."
+	line "Sois gentille!"
 	prompt
 
 _Route3CooltrainerF2AfterBattleText::
@@ -102,8 +146,22 @@ _Route3CooltrainerF2AfterBattleText::
 	done
 
 _Route3Youngster4BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Hé! T'as pas de"
 	line "short! T'es nul!"
+	done
+
+.GirlText
+	text "Hé! T'as pas de"
+	line "short! T'es nulle!"
 	done
 
 _Route3Youngster4EndBattleText::
