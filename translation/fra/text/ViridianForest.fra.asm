@@ -96,7 +96,7 @@ _ViridianForestTrainerTips1Text::
 	text "ASTUCE"
 
 	para "Pour éviter les"
-	line "combats, ne "
+	line "combats, ne"
 	cont "marchez pas dans"
 	cont "les hautes herbes!"
 	done
@@ -104,7 +104,7 @@ _ViridianForestTrainerTips1Text::
 _ViridianForestUseAntidoteSignText::
 	text "L'ANTIDOTE vendu"
 	line "dans les"
-	cont "BOUTIQUES PKMN"
+	cont "BOUTIQUES #MON" ; marcelnote - was PKMN
 	cont "guérit du poison."
 	done
 
