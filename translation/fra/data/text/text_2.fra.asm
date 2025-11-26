@@ -992,6 +992,15 @@ _LinkBattleLostText::
 	prompt
 
 _TrainerAboutToUseText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text_ram wTrainerName
 	text_start
 	line "va appeler..."
@@ -1000,6 +1009,19 @@ _TrainerAboutToUseText::
 	text "!"
 
 	para "<PLAYER> va-t-il"
+	line "changer de"
+	cont "#MON?"
+	done
+
+.GirlText
+	text_ram wTrainerName
+	text_start
+	line "va appeler..."
+	cont"@"
+	text_ram wEnemyMonNick
+	text "!"
+
+	para "<PLAYER> va-t-elle"
 	line "changer de"
 	cont "#MON?"
 	done
