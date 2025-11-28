@@ -78,9 +78,7 @@ _YellowsHouse1FDadJustMissedHerText:: ; marcelnote - new for Yellow's house
 	para "Elle était si"
 	line "excitée qu'elle"
 	cont "n'en a pas dormi"
-	cont "de la nuit,"
-	cont "et elle a raté"
-	cont "le réveil!"
+	cont "de la nuit!"
 	done
 
 _YellowsHouse1FDadJustRunIntoHerText:: ; marcelnote - new for Yellow's house
