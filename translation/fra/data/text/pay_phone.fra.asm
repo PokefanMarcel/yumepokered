@@ -41,14 +41,14 @@ _PayPhoneMomPewterText::
 	line "qu'après la pluie,"
 	cont "l'air y prend une"
 	cont "odeur minérale..."
-	cont "J’aimerais voir ça"
+	cont "J'aimerais voir ça"
 	cont "un jour."
 
 	para "Je sais que tu te"
 	line "débrouilles bien,"
 	cont "mais appelle-moi"
 	cont "quand tu peux,"
-	cont "d’accord?"
+	cont "d'accord?"
 	prompt
 
 _PayPhoneMomCeruleanText::
@@ -232,7 +232,7 @@ _PayPhoneDaisyRoute6AideText::
 	para "NINA: Oui?"
 	line "Salut <PLAYER>!"
 
-	para "Pépé m’a dit que"
+	para "Pépé m'a dit que"
 	line "son ASSISTANT"
 	cont "t'attend sur la"
 	cont "ROUTE 6."

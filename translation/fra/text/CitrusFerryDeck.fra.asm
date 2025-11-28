@@ -37,7 +37,7 @@ _CitrusFerryDeckSailor2Text::
 	text "Avant, les bateaux"
 	line "se fiaient aux"
 	cont "TENTACOOL pour"
-	cont "s’orienter!"
+	cont "s'orienter!"
 
 	para "Maintenant, on a"
 	line "des cartes et"

@@ -14,7 +14,7 @@ _MandarinIslandLittleGirlText::
 	line "de sable pour"
 	cont "KRABBY!"
 
-	para "Peut-être qu’il va"
+	para "Peut-être qu'il va"
 	line "venir dedans!"
 	done
 

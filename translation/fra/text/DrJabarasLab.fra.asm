@@ -18,7 +18,7 @@ _DrJabarasLabJabaraIntroText::
 	cont "à CRAMOIS'ILE,"
 	cont "c'est du passé."
 
-	para "Ici, j’étudie com-"
+	para "Ici, j'étudie com-"
 	line "ment les #MON"
 	cont "réagissent à des"
 	cont "sons différents."

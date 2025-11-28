@@ -67,7 +67,7 @@ _CitrusFerryOutsideCooltrainerFEndBattleText::
 
 _CitrusFerryOutsideCooltrainerFAfterBattleText::
 	text "ERIKA dit que les"
-	line "fleurs l’aident à"
+	line "fleurs l'aident à"
 	cont "se calmer..."
 	cont "Je me demande ce"
 	cont "qu'elle veut dire."
