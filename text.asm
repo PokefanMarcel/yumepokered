@@ -254,7 +254,6 @@ ENDC
 SECTION "Text 6", ROMX
 
 IF DEF(_FRA)
-	INCLUDE "translation/fra/text/Route24_2.fra.asm"
 	INCLUDE "translation/fra/text/Route25.fra.asm"
 	INCLUDE "translation/fra/text/Route28.fra.asm"           ; marcelnote - new location
 	INCLUDE "translation/fra/data/text/text_3.fra.asm"
@@ -267,7 +266,6 @@ IF DEF(_FRA)
 	INCLUDE "translation/fra/text/PewterMuseum.fra.asm"       ; marcelnote - merged Pewter Museum floors
 	INCLUDE "translation/fra/text/PewterGym.fra.asm"
 ELSE
-	INCLUDE "text/Route24_2.asm"
 	INCLUDE "text/Route25.asm"
 	INCLUDE "text/Route28.asm"           ; marcelnote - new location
 	INCLUDE "data/text/text_3.asm"

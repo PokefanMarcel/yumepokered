@@ -1,4 +1,13 @@
 _CeruleanCityRivalPreBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "<RIVAL>: Yo!"
 	line "<PLAYER>!"
 
@@ -13,6 +22,24 @@ _CeruleanCityRivalPreBattleText::
 
 	para "Fais-moi voir"
 	line "c'que t'as, p'tit"
+	cont "minable!"
+	done
+
+.GirlText
+	text "<RIVAL>: Yo!"
+	line "<PLAYER>!"
+
+	para "Alors tu t'en"
+	line "sors?"
+
+	para "Moi c'est l'pied!"
+	line "J'ai chopé un tas"
+	cont "de #MON méga"
+	cont "puissants et"
+	cont "tétra balèzes!"
+
+	para "Fais-moi voir"
+	line "c'que t'as, p'tite"
 	cont "minable!"
 	done
 
@@ -57,7 +84,28 @@ _CeruleanCityRivalIWentToBillsText::
 	done
 
 _CeruleanCityRocketText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Hé le lutin!"
+	line "C'est pas chez"
+	cont "toi, ici..."
+	cont "Quoi? Moi?"
+
+	para "J'suis innocent!"
+	line "Hein? Quoi dit?"
+	cont "Tu m'crois pas?"
+	cont "Tu m'cherches?"
+	done
+
+.GirlText
+	text "Hé la lutine!"
 	line "C'est pas chez"
 	cont "toi, ici..."
 	cont "Quoi? Moi?"
@@ -91,9 +139,24 @@ _CeruleanCityRocketTM28NoRoomText::
 	done
 
 _CeruleanCityRocketIGiveUpText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Stop!"
 	line "J'me rends!"
 	cont "T'es trop fort!"
+	prompt
+
+.GirlText
+	text "Stop!"
+	line "J'me rends!"
+	cont "T'es trop forte!"
 	prompt
 
 _CeruleanCityRocketIllReturnTheTMText::
@@ -102,7 +165,24 @@ _CeruleanCityRocketIllReturnTheTMText::
 	prompt
 
 _CeruleanCityCooltrainerMText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "T'es un dresseur?"
+	line "Capturer..."
+	cont "Collectionner..."
+	cont "Se friter..."
+	cont "Dur, hein?"
+	done
+
+.GirlText
+	text "T'es une dresseuse?"
 	line "Capturer..."
 	cont "Collectionner..."
 	cont "Se friter..."

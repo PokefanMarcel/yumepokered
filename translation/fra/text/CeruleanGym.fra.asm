@@ -1,4 +1,13 @@
 _CeruleanGymMistyPreBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Salut! T'es un"
 	line "nouveau!"
 
@@ -7,6 +16,27 @@ _CeruleanGymMistyPreBattleText::
 	cont "il te faut une"
 	cont "stratégie pour"
 	cont "tes #MON!"
+
+	para "C'est quoi ta"
+	line "tactique pour"
+	cont "capturer les"
+	cont "#MON sauvages?"
+
+	para "Moi je leur fonce"
+	line "dans le tas avec"
+	cont "mes #MON"
+	cont "aquatiques!"
+	done
+
+.GirlText
+	text "Salut! T'es une"
+	line "nouvelle!"
+
+	para "Si tu veux être"
+	line "une vraie dres-"
+	cont "seuse, il te faut"
+	cont "une stratégie"
+	cont "pour tes #MON!"
 
 	para "C'est quoi ta"
 	line "tactique pour"
@@ -62,8 +92,28 @@ _CeruleanGymMistyTM11NoRoomText::
 	done
 
 _CeruleanGymMistyReceivedCascadeBadgeText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Whouha!"
 	line "T'es super fort!"
+
+	para "Très bien!"
+
+	para "Je te donne le"
+	line "BADGECASCADE pour"
+	cont "m'avoir battue!@"
+	text_end
+
+.GirlText
+	text "Whouha!"
+	line "T'es super forte!"
 
 	para "Très bien!"
 
@@ -106,6 +156,15 @@ _CeruleanGymEndBattleText2::
 	prompt
 
 _CeruleanGymAfterBattleText2::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "ONDINE est super"
 	line "forte!"
 
@@ -115,9 +174,49 @@ _CeruleanGymAfterBattleText2::
 	cont "comme toi!"
 	done
 
+.GirlText
+	text "ONDINE est super"
+	line "forte!"
+
+	para "Elle ne va pas"
+	line "se faire avoir"
+	cont "par une rigolote"
+	cont "comme toi!"
+	done
+
 _CeruleanGymGymGuideChampInMakingText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Salut à toi!"
 	line "Futur champion!"
+
+	para "Un conseil?"
+
+	para "La CHAMPIONNE,"
+	line "ONDINE, est une"
+	cont "spécialiste des"
+	cont "#MON de l'eau!"
+
+	para "Absorbe l'eau"
+	line "avec des #MON"
+	cont "des plantes!"
+
+	para "Ou grille-les"
+	line "avec de"
+	cont "l'électricité!"
+	done
+
+.GirlText
+	text "Salut à toi!"
+	line "Future"
+	cont "championne!"
 
 	para "Un conseil?"
 
