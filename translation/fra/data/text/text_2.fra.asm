@@ -627,17 +627,25 @@ _Route22GateRightBinocularsText:: ; marcelnote - new
 	done
 
 _AerodactylFossilText::
-	text "Le fossile du"
-	line "PTERA est un"
-	cont "#MON rare"
-	cont "et ancien."
+;	text "Le fossile du"
+;	line "PTERA est un"
+;	cont "#MON rare"
+;	cont "et ancien."
+	text "Un fossile de" ; marcelnote - corrected
+	line "PTERA."
+	cont "C'est un #MON"
+	cont "rare et ancien."
 	done
 
 _KabutopsFossilText::
-	text "Le fossile du"
-	line "KABUTOPS est un"
-	cont "#MON rare"
-	cont "et ancien."
+;	text "Le fossile du"
+;	line "KABUTOPS est un"
+;	cont "#MON rare"
+;	cont "et ancien."
+	text "Un fossile de" ; marcelnote - corrected
+	line "KABUTOPS."
+	cont "C'est un #MON"
+	cont "rare et ancien."
 	done
 
 _LinkCableHelpText1::

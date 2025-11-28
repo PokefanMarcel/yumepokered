@@ -19,6 +19,15 @@ _MtMoonPokecenterGentlemanText::
 	done
 
 _MtMoonPokecenterMagikarpSalesmanIGotADealText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Bonjour l'ami!"
 	line "J'ai une super"
 	cont "affaire à te"
@@ -30,8 +39,35 @@ _MtMoonPokecenterMagikarpSalesmanIGotADealText::
 	cont "Qu'en dis-tu?"
 	done
 
+.GirlText
+	text "Bonjour l'amie!"
+	line "J'ai une super"
+	cont "affaire à te"
+	cont "proposer!"
+
+	para "Je t'offre une"
+	line "MAGICARPE pour"
+	cont "juste 500¥!" ; marcelnote - was "¥500"
+	cont "Qu'en dis-tu?"
+	done
+
 _MtMoonPokecenterMagikarpSalesmanNoText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Non? Va-zy lui!"
+	line "C'est un service"
+	cont "que j'te rends!"
+	done
+
+.GirlText
+	text "Non? Va-zy elle!"
 	line "C'est un service"
 	cont "que j'te rends!"
 	done

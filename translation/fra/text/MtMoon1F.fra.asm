@@ -32,7 +32,21 @@ _MtMoon1FHikerAfterBattleText::
 	done
 
 _MtMoon1FYoungster1BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Tu es aussi venu"
+	line "pour explorer?"
+	done
+
+.GirlText
+	text "Tu es aussi venue"
 	line "pour explorer?"
 	done
 

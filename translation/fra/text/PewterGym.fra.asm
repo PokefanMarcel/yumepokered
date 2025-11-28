@@ -20,6 +20,15 @@ _PewterGymBrockPreBattleText::
 	done
 
 _PewterGymBrockPostBattleAdviceText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Il y a plusieurs"
 	line "types de"
 	cont "dresseurs dans le"
@@ -27,6 +36,22 @@ _PewterGymBrockPostBattleAdviceText::
 
 	para "Tu sembles être"
 	line "un dresseur"
+	cont "d'exception!"
+
+	para "Va à l'ARENE"
+	line "d'AZURIA pour"
+	cont "tester tes"
+	cont "capacités."
+	done
+
+.GirlText
+	text "Il y a plusieurs"
+	line "types de"
+	cont "dresseurs dans le"
+	cont "monde!"
+
+	para "Tu sembles être"
+	line "une dresseuse"
 	cont "d'exception!"
 
 	para "Va à l'ARENE"
@@ -106,8 +131,27 @@ _PewterGymBrockBoulderBadgeInfoText::
 	prompt
 
 _PewterGymCooltrainerMBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Une minute,"
 	line "gamin!"
+
+	para "Tu es encore loin"
+	line "de PIERRE, tu"
+	cont "vas devoir"
+	cont "m'affronter!"
+	done
+
+.GirlText
+	text "Une minute,"
+	line "gamine!"
 
 	para "Tu es encore loin"
 	line "de PIERRE, tu"
@@ -123,14 +167,52 @@ _PewterGymCooltrainerMEndBattleText::
 	prompt
 
 _PewterGymCooltrainerMAfterBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Tu es fort..."
 	line "Mais pas autant"
 	cont "que PIERRE!"
 	done
 
+.GirlText
+	text "Tu es forte..."
+	line "Mais pas autant"
+	cont "que PIERRE!"
+	done
+
 _PewterGymGuidePreAdviceText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Salut graine de"
 	line "CHAMPION!"
+
+	para "Je ne suis pas"
+	line "dresseur mais mes"
+	cont "conseils sont"
+	cont "avisés!"
+
+	para "Laisse-moi te"
+	line "mener à la"
+	cont "victoire!"
+	done
+
+.GirlText
+	text "Salut graine de"
+	line "CHAMPIONNE!"
 
 	para "Je ne suis pas"
 	line "dresseur mais mes"
@@ -167,9 +249,24 @@ _PewterGymGuideFreeServiceText::
 	prompt
 
 _PewterGymGuidePostBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Je le savais!"
 	line "Tu as l'âme d'un"
 	cont "champion!"
+	done
+
+.GirlText
+	text "Je le savais!"
+	line "Tu as l'âme d'une"
+	cont "championne!"
 	done
 
 
