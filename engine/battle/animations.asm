@@ -1273,7 +1273,7 @@ ShakeEnemyHUD_WritePlayerMonPicOAM: ; marcelnote - adjusted for row-major
 	ld e, a
 	ld c, 7
 .colLoop
-	call BattleAnimWriteOAMEntry
+	call BattleAnimWriteOAMEntryRowMajor
 	inc d
 	dec c
 	jr nz, .colLoop
@@ -1284,7 +1284,7 @@ ShakeEnemyHUD_WritePlayerMonPicOAM: ; marcelnote - adjusted for row-major
 	jr nz, .rowLoop
 	ret
 
-BattleAnimWriteOAMEntry: ; marcelnote - adjusted for row-major
+BattleAnimWriteOAMEntryRowMajor: ; marcelnote - new
 ; Y coordinate = [wBaseCoordY]
 ; X coordinate = e (increased by 8 each call, before the write to OAM)
 ; tile = d
@@ -1298,6 +1298,23 @@ BattleAnimWriteOAMEntry: ; marcelnote - adjusted for row-major
 	ld a, d
 	ld [hli], a
 	xor a ; marcelnote - could ld a, OAM_PAL1 but requires ldh [rOBP1], %11100100
+	ld [hli], a
+	ret
+
+BattleAnimWriteOAMEntryColumnMajor: ; marcelnote - renamed
+; Y coordinate = e (increased by 8 each call, before the write to OAM)
+; X coordinate = [wBaseCoordX]
+; tile = d
+; attributes = 0
+	ld a, e
+	add 8
+	ld e, a
+	ld [hli], a
+	ld a, [wBaseCoordX]
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+	xor a
 	ld [hli], a
 	ret
 
@@ -1598,16 +1615,14 @@ _AnimationSquishMonPic:
 	jp Delay3
 
 AnimationShootBallsUpward:
-; Shoots one pillar of "energy" balls upwards. Used in Teleport/Sky Attack
+; Shoots one pillar of "energy" balls upwards. Used in Teleport/Sky Attack/Fly
 ; animations.
 	ldh a, [hWhoseTurn]
 	and a
+	lb bc, 6 * 8, 5 * 8
 	jr z, .playerTurn
 	lb bc, 0, 16 * 8
-	jr .next
 .playerTurn
-	lb bc, 6 * 8, 5 * 8
-.next
 	ld a, b
 	ld [wBaseCoordY], a
 	ld a, c
@@ -1628,7 +1643,7 @@ _AnimationShootBallsUpward:
 	ld a, [wBaseCoordY]
 	ld e, a
 .initOAMLoop
-	call BattleAnimWriteOAMEntry
+	call BattleAnimWriteOAMEntryColumnMajor
 	dec b
 	jr nz, .initOAMLoop
 	call DelayFrame
@@ -2078,7 +2093,7 @@ InitMultipleObjectsOAM:
 	ld [wBaseCoordX], a
 	ld hl, wShadowOAM
 .loop
-	call BattleAnimWriteOAMEntry
+	call BattleAnimWriteOAMEntryColumnMajor
 	dec c
 	jr nz, .loop
 	ret
