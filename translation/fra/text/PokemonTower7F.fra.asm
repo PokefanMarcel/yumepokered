@@ -1,6 +1,46 @@
 _PokemonTower7FMrFujiRescueText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "MR.FUJI: Hé? Tu"
 	line "es venu me"
+	cont "sauver?"
+
+	para "Merci! Mais je"
+	line "suis venu ici de"
+	cont "mon plein gré."
+
+	para "Je voulais"
+	line "apaiser l'esprit"
+	cont "de la mère de"
+	cont "OSSELAIT."
+
+	para "Je pense que"
+	line "l'esprit de"
+	cont "OSSATUEUR s'en"
+	cont "est allé vers"
+	cont "les cieux."
+
+	para "Je dois te"
+	line "remercier pour"
+	cont "cet acte noble!"
+
+	para "Viens avec moi"
+	line "dans ma maison,"
+	cont "la MAISON #MON"
+	cont "au pied de cette"
+	cont "tour."
+	done
+
+.GirlText
+	text "MR.FUJI: Hé? Tu"
+	line "es venue me"
 	cont "sauver?"
 
 	para "Merci! Mais je"

@@ -301,8 +301,6 @@ IF DEF(_FRA)
 	INCLUDE "translation/fra/text/MrFujisHouse.fra.asm"
 	INCLUDE "translation/fra/text/LavenderCuboneHouse.fra.asm"
 	INCLUDE "translation/fra/text/NameRatersHouse.fra.asm"
-	INCLUDE "translation/fra/text/VermilionPokecenterMart.fra.asm" ; marcelnote - merged Vermilion Pokecenter and Mart
-	INCLUDE "translation/fra/text/PokemonFanClub.fra.asm"
 ELSE
 	INCLUDE "text/PewterNidoranHouse.asm"
 	INCLUDE "text/PewterSpeechHouse.asm"
@@ -324,8 +322,6 @@ ELSE
 	INCLUDE "text/MrFujisHouse.asm"
 	INCLUDE "text/LavenderCuboneHouse.asm"
 	INCLUDE "text/NameRatersHouse.asm"
-	INCLUDE "text/VermilionPokecenterMart.asm" ; marcelnote - merged Vermilion Pokecenter and Mart
-	INCLUDE "text/PokemonFanClub.asm"
 ENDC
 
 
@@ -346,8 +342,12 @@ SECTION "Text Vermilion", ROMX
 
 IF DEF(_FRA)
 	INCLUDE "translation/fra/text/VermilionGym.fra.asm"
+	INCLUDE "translation/fra/text/VermilionPokecenterMart.fra.asm" ; marcelnote - merged Vermilion Pokecenter and Mart
+	INCLUDE "translation/fra/text/PokemonFanClub.fra.asm"
 ELSE
 	INCLUDE "text/VermilionGym.asm"
+	INCLUDE "text/VermilionPokecenterMart.asm" ; marcelnote - merged Vermilion Pokecenter and Mart
+	INCLUDE "text/PokemonFanClub.asm"
 ENDC
 
 

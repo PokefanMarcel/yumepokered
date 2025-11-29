@@ -87,8 +87,23 @@ _Route12SuperNerdAfterBattleText::
 	done
 
 _Route12Fisher3BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Le PECHEUR FOU"
 	line "contre le KID des"
+	cont "#MON!"
+	done
+
+.GirlText
+	text "Le PECHEUR FOU"
+	line "contre la KID des"
 	cont "#MON!"
 	done
 
