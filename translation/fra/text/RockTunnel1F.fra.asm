@@ -34,7 +34,22 @@ _RockTunnel1FHiker2AfterBattleText::
 	done
 
 _RockTunnel1FHiker3BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Un profane"
+	line "comme toi me"
+	cont "doit le respect!"
+	done
+
+.GirlText
+	text "Une profane"
 	line "comme toi me"
 	cont "doit le respect!"
 	done
@@ -44,9 +59,24 @@ _RockTunnel1FHiker3EndBattleText::
 	prompt
 
 _RockTunnel1FHiker3AfterBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Tu pourrais faire"
 	line "un bon montagnard"
 	cont "mon p'tit mec!"
+	done
+
+.GirlText
+	text "Tu pourrais faire"
+	line "une bonne monta-"
+	cont "gnarde ma p'tite!"
 	done
 
 _RockTunnel1FSuperNerdBattleText::
@@ -92,8 +122,22 @@ _RockTunnel1FCooltrainerF2EndBattleText::
 	prompt
 
 _RockTunnel1FCooltrainerF2AfterBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "T'as pas l'air si"
 	line "méchant pourtant!"
+	done
+
+.GirlText
+	text "T'as pas l'air si"
+	line "méchante pourtant!"
 	done
 
 _RockTunnel1FCooltrainerF3BattleText::
@@ -102,8 +146,22 @@ _RockTunnel1FCooltrainerF3BattleText::
 	done
 
 _RockTunnel1FCooltrainerF3EndBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "T'es"
 	line "un dur toi!"
+	prompt
+
+.GirlText
+	text "T'es"
+	line "une dure toi!"
 	prompt
 
 _RockTunnel1FCooltrainerF3AfterBattleText::
@@ -151,7 +209,7 @@ _RockTunnel1FBlackbeltFlashOnText::   ; marcelnote - added Blackbelt
 
 	para "Mais je ne peux"
 	line "pas l'entraîner"
-	cont "comme il faut"
+	cont "convenablement"
 	cont "tant que ce FLASH"
 	cont "est allumé."
 	done

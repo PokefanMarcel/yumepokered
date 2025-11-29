@@ -100,11 +100,48 @@ _RockTunnelB1FCooltrainerF2AfterBattleText::
 	done
 
 _RockTunnelB1FHiker3BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Donne-toi à fond,"
 	line "mon mignon!"
+	done
+
+.GirlText
+	text "Donne-toi à fond,"
+	line "ma mignonne!"
 	done
 
 _RockTunnelB1FHiker3EndBattleText::
 	text "Mince!"
 	line "Détruit!"
 	prompt
+
+_RockTunnelB1FHiker3AfterBattleText::
+	text "Je vais encore"
+	line "m'entraîner!"
+	done
+
+_RockTunnelB1FSuperNerd3BattleText::
+	text "Je dessine des"
+	line "#MON quand"
+	cont "chuis tout seul."
+	cont "..."
+	cont "Cool, non?"
+	done
+
+_RockTunnelB1FSuperNerd3EndBattleText::
+	text "Fouii!"
+	line "Je suis crevé!"
+	prompt
+
+_RockTunnelB1FSuperNerd3AfterBattleText::
+	text "Chuis un artiste,"
+	line "pas un violent."
+	done

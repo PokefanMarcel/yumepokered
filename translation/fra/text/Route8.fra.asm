@@ -144,9 +144,25 @@ _Route8CooltrainerF4BattleText::
 	done
 
 _Route8CooltrainerF4EndBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Arrête!"
 
 	para "T'es pas gentil"
+	line "avec MELOFEE!"
+	prompt
+
+.GirlText
+	text "Arrête!"
+
+	para "T'es pas gentille"
 	line "avec MELOFEE!"
 	prompt
 

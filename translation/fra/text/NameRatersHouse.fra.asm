@@ -1,10 +1,33 @@
 _NameRatersHouseNameRaterWantMeToRateText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Salut tout le"
 	line "monde! Je suis le"
 	cont "GRAND DONNEUR DE"
 	cont "NOMS!"
 
 	para "Dis-moi, petit,"
+	line "tu serais pas du"
+	cont "genre à vouloir"
+	cont "donner un p'tit"
+	cont "nom à un de tes"
+	cont "#MON?"
+	done
+
+.GirlText
+	text "Salut tout le"
+	line "monde! Je suis le"
+	cont "GRAND DONNEUR DE"
+	cont "NOMS!"
+
+	para "Dis-moi, petite,"
 	line "tu serais pas du"
 	cont "genre à vouloir"
 	cont "donner un p'tit"
@@ -53,8 +76,24 @@ _NameRatersHouseNameRaterPokemonHasBeenRenamedText::
 	done
 
 _NameRatersHouseNameRaterComeAnyTimeYouLikeText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Alors petit, t'es"
 	line "content? Hmm..."
+	cont "Reviens me voir"
+	cont "quand tu veux!"
+	done
+
+.GirlText
+	text "Alors petite, t'es"
+	line "contente? Hmm..."
 	cont "Reviens me voir"
 	cont "quand tu veux!"
 	done

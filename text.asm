@@ -119,7 +119,6 @@ ENDC
 SECTION "Text 3", ROMX
 
 IF DEF(_FRA)
-	INCLUDE "translation/fra/text/RockTunnelB1F_2.fra.asm"
 	INCLUDE "translation/fra/text/SeafoamIslandsB4F.fra.asm"
 	INCLUDE "translation/fra/data/text/text_2.fra.asm"
 	INCLUDE "translation/fra/text/DiglettsCaveRoute2.fra.asm"
@@ -131,7 +130,6 @@ IF DEF(_FRA)
 	INCLUDE "translation/fra/text/SaffronGates.fra.asm"
 	INCLUDE "translation/fra/text/Daycare.fra.asm"
 ELSE
-	INCLUDE "text/RockTunnelB1F_2.asm"
 	INCLUDE "text/SeafoamIslandsB4F.asm"
 	INCLUDE "data/text/text_2.asm"
 	INCLUDE "text/DiglettsCaveRoute2.asm"
