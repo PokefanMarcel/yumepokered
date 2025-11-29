@@ -1459,7 +1459,11 @@ VitaminNoEffectText:
 	text_far _VitaminNoEffectText
 	text_end
 
-INCLUDE "data/battle/stat_names.asm"
+IF DEF(_FRA)
+	INCLUDE "translation/fra/data/battle/stat_names.fra.asm"
+ELSE
+	INCLUDE "data/battle/stat_names.asm"
+ENDC
 
 ; for BOULDERBADGE when used from the
 ; ITEM window, which corresponds to

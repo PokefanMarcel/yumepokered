@@ -30,6 +30,15 @@ _BillsHouseBillUseSeparationSystemText::
 	done
 
 _BillsHouseBillNoYouGottaHelpText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Non!? Hé, mais tu"
 	line "dois m'aider, je"
 	cont "suis un mec cool!"
@@ -39,9 +48,44 @@ _BillsHouseBillNoYouGottaHelpText::
 	cont "doux seigneur?"
 	prompt
 
+.GirlText
+	text "Non!? Hé, mais tu"
+	line "dois m'aider, je"
+	cont "suis un mec cool!"
+
+	para "Bon, que veux-tu"
+	line "en échange, ma"
+	cont "douce dame?"
+	prompt
+
 _BillsHouseBillThankYouText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "LEO: Yahoo!"
 	line "Merci, mec!"
+	cont "Je t'en dois une!"
+
+	para "Bon, tu es venu"
+	line "pour voir ma"
+	cont "collection de"
+	cont "#MON?"
+	cont "Non? Tu rigoles!"
+
+	para "Bon, ben,"
+	line "prends ça en"
+	cont "remerciement!"
+	prompt
+
+.GirlText
+	text "LEO: Yahoo!"
+	line "Merci, meuf!"
 	cont "Je t'en dois une!"
 
 	para "Bon, tu es venu"
@@ -63,8 +107,22 @@ _SSTicketReceivedText::
 	text_end
 
 _SSTicketNoRoomText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Ton inventaire"
 	line "est plein, mec!"
+	done
+
+.GirlText
+	text "Ton inventaire"
+	line "est plein, meuf!"
 	done
 
 _BillsHouseBillWhyDontYouGoInsteadOfMeText::

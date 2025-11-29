@@ -10,6 +10,15 @@ _SSAnne2FWaiterText::
 	done
 
 _SSAnne2FRivalText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "<RIVAL>: Salut!"
 	line "<PLAYER>!"
 
@@ -19,6 +28,31 @@ _SSAnne2FRivalText::
 	para "<PLAYER>, as-tu"
 	line "vraiment été"
 	cont "invité?"
+
+	para "Où en es-tu avec"
+	line "ton #DEX?"
+
+	para "Moi, j'ai déjà"
+	line "attrapé 40"
+	cont "#MON! Minable!"
+
+	para "Y'en a partout!"
+
+	para "Tu n'as qu'à ramper"
+	line "dans les hautes"
+	cont "herbes!"
+	done
+
+.GirlText
+	text "<RIVAL>: Salut!"
+	line "<PLAYER>!"
+
+	para "Toi! Ici!"
+	line "Sans blague!"
+
+	para "<PLAYER>, as-tu"
+	line "vraiment été"
+	cont "invitée?"
 
 	para "Où en es-tu avec"
 	line "ton #DEX?"

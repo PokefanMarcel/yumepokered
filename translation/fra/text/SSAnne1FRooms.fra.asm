@@ -160,13 +160,13 @@ _SSAnne1FRoomsNurseAreYouTiredText:: ; marcelnote - new nurse room
 	ret
 
 .BoyText
-	text "Tu es fatiguée?"
+	text "Tu es fatigué?"
 	line "Repose-toi"
 	cont "peu ici."
 	prompt
 
 .GirlText
-	text "Tu es fatigué?"
+	text "Tu es fatiguée?"
 	line "Repose-toi"
 	cont "peu ici."
 	prompt

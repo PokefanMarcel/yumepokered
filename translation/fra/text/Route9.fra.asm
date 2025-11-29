@@ -59,9 +59,24 @@ _Route9CooltrainerF2EndBattleText::
 	prompt
 
 _Route9CooltrainerF2AfterBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "T'as l'air doué!"
 	line "Bonne chance,"
 	cont "garçon!"
+	done
+
+.GirlText
+	text "T'as l'air douée!"
+	line "Bonne chance,"
+	cont "ma grande!"
 	done
 
 _Route9Hiker1BattleText::
@@ -80,14 +95,43 @@ _Route9Hiker1EndBattleText::
 	prompt
 
 _Route9Hiker1AfterBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "T'es un"
 	line "courageux toi!"
 	done
 
+.GirlText
+	text "T'es une"
+	line "courageuse toi!"
+	done
+
 _Route9Hiker2BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Hahaha!"
 	line "T'es un p'tit"
 	cont "dur, toi!"
+	done
+
+.GirlText
+	text "Hahaha!"
+	line "T'es une p'tite"
+	cont "dure, toi!"
 	done
 
 _Route9Hiker2EndBattleText::
@@ -122,8 +166,22 @@ _Route9Youngster1AfterBattleText::
 	done
 
 _Route9Hiker3BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Viens t'battre,"
 	line "galopin!"
+	done
+
+.GirlText
+	text "Viens t'battre,"
+	line "galopine!"
 	done
 
 _Route9Hiker3EndBattleText::
@@ -149,9 +207,24 @@ _Route9Youngster2EndBattleText::
 	prompt
 
 _Route9Youngster2AfterBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "T'aimes pas les"
 	line "insectes #MON?"
 	cont "T'es infect!"
+	done
+
+.GirlText
+	text "T'aimes pas les"
+	line "insectes #MON?"
+	cont "T'es infecte!"
 	done
 
 _Route9SignText::

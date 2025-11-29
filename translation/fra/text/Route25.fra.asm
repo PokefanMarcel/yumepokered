@@ -5,8 +5,22 @@ _Route25Youngster1BattleText::
 	done
 
 _Route25Youngster1EndBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Tu es"
 	line "bon gagnant."
+	prompt
+
+.GirlText
+	text "Tu es"
+	line "bonne gagnante."
 	prompt
 
 _Route25Youngster1AfterBattleText::
@@ -116,8 +130,22 @@ _Route25Hiker1BattleText::
 	done
 
 _Route25Hiker1EndBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Pfiou!"
 	line "T'es un balèze!"
+	prompt
+
+.GirlText
+	text "Pfiou!"
+	line "T'es une balèze!"
 	prompt
 
 _Route25Hiker1AfterBattleText::

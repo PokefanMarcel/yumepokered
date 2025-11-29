@@ -95,8 +95,22 @@ _SSAnne2FRoomsGentleman2BattleText::
 	done
 
 _SSAnne2FRoomsGentleman2EndBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Bravo!"
 	line "Tu es très fort!"
+	prompt
+
+.GirlText
+	text "Bravo!"
+	line "Tu es très forte!"
 	prompt
 
 _SSAnne2FRoomsGentleman2AfterBattleText::
@@ -106,7 +120,21 @@ _SSAnne2FRoomsGentleman2AfterBattleText::
 	done
 
 _SSAnne2FRoomsCooltrainerFBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Je ne t'ai pas vu"
+	line "à la fête."
+	done
+
+.GirlText
+	text "Je ne t'ai pas vue"
 	line "à la fête."
 	done
 

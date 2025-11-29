@@ -44,8 +44,22 @@ _SSAnneB1FRoomsSailor3BattleText::
 	done
 
 _SSAnneB1FRoomsSailor3EndBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "OK!"
 	line "T'es pas nul!"
+	prompt
+
+.GirlText
+	text "OK!"
+	line "T'es pas nulle!"
 	prompt
 
 _SSAnneB1FRoomsSailor3AfterBattleText::
@@ -55,8 +69,23 @@ _SSAnneB1FRoomsSailor3AfterBattleText::
 	done
 
 _SSAnneB1FRoomsSailor4BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "J'aime les p'tits"
 	line "gars joyeux"
+	cont "comme toi!@"
+	text_end
+
+.GirlText
+	text "J'aime voir des"
+	line "mômes joyeuses"
 	cont "comme toi!@"
 	text_end
 
@@ -94,7 +123,24 @@ _SSAnneB1FRoomsSailor5AfterBattleText::
 	done
 
 _SSAnneB1FRoomsFisherBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Salut étranger!"
+	line "Parlons un peu!"
+
+	para "Tous mes #MON"
+	line "sont aquatiques!"
+	done
+
+.GirlText
+	text "Salut étrangere!"
 	line "Parlons un peu!"
 
 	para "Tous mes #MON"
@@ -108,9 +154,24 @@ _SSAnneB1FRoomsFisherEndBattleText::
 	prompt
 
 _SSAnneB1FRoomsFisherAfterBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "J'allais faire de"
 	line "toi mon"
 	cont "assistant!"
+	done
+
+.GirlText
+	text "J'allais faire de"
+	line "toi mon"
+	cont "assistante!"
 	done
 
 _SSAnneB1FRoomsSuperNerdText::

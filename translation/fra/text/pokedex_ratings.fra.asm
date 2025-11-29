@@ -76,9 +76,24 @@ _DexRatingText_Own70To79::
 	done
 
 _DexRatingText_Own80To89::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Magnifique!"
 	line "T'es un vrai"
 	cont "collectionneur!"
+	done
+
+.GirlText
+	text "Magnifique!"
+	line "T'es une vraie"
+	cont "collectionneuse!"
 	done
 
 _DexRatingText_Own90To99::
@@ -88,9 +103,24 @@ _DexRatingText_Own90To99::
 	done
 
 _DexRatingText_Own100To109::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Tu en as 100!"
 	cont "Tu es vraiment"
 	cont "très doué!"
+	done
+
+.GirlText
+	text "Tu en as 100!"
+	cont "Tu es vraiment"
+	cont "très douée!"
 	done
 
 _DexRatingText_Own110To119::
@@ -106,15 +136,45 @@ _DexRatingText_Own120To129::
 	done
 
 _DexRatingText_Own130To139::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Impressionnant!"
 	line "Tu es devenu un"
 	cont "vrai pro!"
 	done
 
+.GirlText
+	text "Impressionnant!"
+	line "Tu es devenu une"
+	cont "vraie pro!"
+	done
+
 _DexRatingText_Own140To149::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Chapeau bas!"
 	line "C'est toi le plus"
 	cont "calé maintenant!"
+	done
+
+.GirlText
+	text "Chapeau bas!"
+	line "C'est toi la plus"
+	cont "calée maintenant!"
 	done
 
 _DexRatingText_Own150To151::

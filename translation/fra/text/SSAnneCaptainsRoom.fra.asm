@@ -12,8 +12,41 @@ _SSAnneCaptainsRoomRubCaptainsBackText::
 	text_end
 
 _SSAnneCaptainsRoomCaptainIFeelMuchBetterText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "CAPITAINE: Merci"
 	line "moussaillon!"
+	cont "Ca va beaucoup"
+	cont "mieux..."
+
+	para "Mille sabords!"
+	line "Tu veux voir"
+	cont "la technique"
+	cont "COUPE?"
+
+	para "Je pourrais te la"
+	line "montrer, mais"
+	cont "j'suis malade."
+
+	para "Je sais!"
+	line "Prends ça!"
+
+	para "C'est la technique"
+	line "COUPE."
+	cont "Enseigne-la à"
+	cont "tes #MON!"
+	prompt
+
+.GirlText
+	text "CAPITAINE: Merci"
+	line "mousse!"
 	cont "Ca va beaucoup"
 	cont "mieux..."
 

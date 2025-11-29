@@ -122,12 +122,11 @@ BillsHousePokemonListText1:
 	text_far _BillsHousePokemonListText1
 	text_end
 
-BillsMonListText:
-	db   "EEVEE"
-	next "FLAREON"
-	next "JOLTEON"
-	next "VAPOREON"
-	next "CANCEL@"
+IF DEF(_FRA)
+	INCLUDE "translation/fra/data/text/bills_house_pc.fra.asm"
+ELSE
+	INCLUDE "data/text/bills_house_pc.asm"
+ENDC
 
 BillsHousePokemonListText2:
 	text_far _BillsHousePokemonListText2

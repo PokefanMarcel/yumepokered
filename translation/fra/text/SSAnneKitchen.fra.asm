@@ -1,9 +1,24 @@
 _SSAnneKitchenCook1Text::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Hé! Le mouflet,"
 	line "y'en a qui bossent"
+	cont "dur ici!" ; marcelnote - was para
+	cont "Alors dégage!"
+	done
 
-	para "dur ici!"
-	line "Alors dégage!"
+.GirlText
+	text "Hé! La mouflette,"
+	line "y'en a qui bossent"
+	cont "dur ici!" ; marcelnote - was para
+	cont "Alors dégage!"
 	done
 
 _SSAnneKitchenCook2Text::

@@ -21,15 +21,45 @@ _SSAnneBowCooltrainerMText::
 	done
 
 _SSAnneBowSailor2BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Hé! Copain!"
 
 	para "Tu danses?"
 	line "Un tango?"
 	done
 
+.GirlText
+	text "Hé! Copine!"
+
+	para "Tu danses?"
+	line "Un tango?"
+	done
+
 _SSAnneBowSailor2EndBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "..."
 	line "T'es bon!"
+	prompt
+
+.GirlText
+	text "..."
+	line "T'es bonne!"
 	prompt
 
 _SSAnneBowSailor2AfterBattleText::
