@@ -108,8 +108,8 @@ _PayPhoneMomCeladonText::
 
 _PayPhoneMomSaffronText::
 	text "Ah, SAFRANIA! Les"
-	line "grandes villes, ça"
-	cont "peut donner le"
+	line "grandes villes,"
+	cont "ça peut donner le"
 	cont "tournis, hein?"
 	cont "Là-bas, tout le"
 	cont "monde est pressé."
@@ -304,7 +304,7 @@ _PayPhoneDaisyKadabraEvoText::
 	cont "savoir sur les"
 	cont "#MON!"
 
-	para "Des #MON PSY"
+	para "Des #MON psy"
 	line "participent même"
 	cont "à leurs études."
 	cont "Tu pourrais en"
