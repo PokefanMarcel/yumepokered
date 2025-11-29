@@ -75,6 +75,15 @@ _CeladonMart2FCurrentFloorSignText::
 
 
 _CeladonMart3FClerkTM18PreReceiveText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "J'ai fini!!!!"
 	line "J'ai fini"
 	cont "#MON!!!!"
@@ -82,6 +91,16 @@ _CeladonMart3FClerkTM18PreReceiveText::
 	para "Pas toi? Yahaha!"
 	line "Prends donc ceci,"
 	cont "petit!"
+	prompt
+
+.GirlText
+	text "J'ai fini!!!!"
+	line "J'ai fini"
+	cont "#MON!!!!"
+
+	para "Pas toi? Yahaha!"
+	line "Prends donc ceci,"
+	cont "petite!"
 	prompt
 
 _CeladonMart3FClerkReceivedTM18Text::

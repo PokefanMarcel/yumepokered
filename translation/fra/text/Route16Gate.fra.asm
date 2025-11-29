@@ -17,8 +17,22 @@ _Route16Gate1FGuardWaitUpText::
 	done
 
 _Route16Gate1FGamblerText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Comment t'es"
 	line "arrivé jusqu'ici?"
+	done
+
+.GirlText
+	text "Comment t'es"
+	line "arrivée jusqu'ici?"
 	done
 
 _Route16Gate2FLittleBoyText::

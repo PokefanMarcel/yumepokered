@@ -1,4 +1,13 @@
 _CeladonGymErikaPreBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Bonjour et sois"
 	line "le bienvenu. Il"
 	cont "fait beau, n'est-"
@@ -26,6 +35,39 @@ _CeladonGymErikaPreBattleText::
 	cont "Hein? Tu veux te"
 	cont "battre? Bah..."
 	cont "Dis-le mon vieux!"
+
+	para "Tu sais quoi?"
+	line "Tu vas perdre!"
+	done
+
+.GirlText
+	text "Bonjour et sois"
+	line "la bienvenue. Il"
+	cont "fait beau, n'est-"
+	cont "ce pas?"
+
+	para "J'aime la vie."
+	line "J'aime les fleurs"
+	cont "et les chansons."
+	cont "C'est chou, non?"
+
+	para "Moi c'est ERIKA,"
+	line "la championne de"
+	cont "l'ARENE de"
+	cont "CELADOPOLE."
+
+	para "L'arrangement"
+	line "floral est ma"
+	cont "spécialité. Mes"
+	cont "#MON sont du"
+	cont "type plante."
+
+	para "Il fit grand"
+	line "froid hier, alors"
+	cont "j'ai mis un pull."
+	cont "Hein? Tu veux te"
+	cont "battre? Bah..."
+	cont "Dis-le ma grande!"
 
 	para "Tu sais quoi?"
 	line "Tu vas perdre!"
@@ -92,15 +134,45 @@ _CeladonGymTM21NoRoomText::
 	done
 
 _CeladonGymBattleText2::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Hé toi!"
 
 	para "C'est interdit"
 	line "par ici!"
 	done
 
+.GirlText
+	text "Hé toi!"
+
+	para "T'es nouvelle"
+	line "par ici!"
+	done
+
 _CeladonGymEndBattleText2::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "T'es..."
 	line "Trop fort!"
+	prompt
+
+.GirlText
+	text "T'es..."
+	line "Trop forte!"
 	prompt
 
 _CeladonGymAfterBattleText2::
@@ -132,8 +204,22 @@ _CeladonGymAfterBattleText3::
 	done
 
 _CeladonGymBattleText4::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Mais kesstu fais"
 	line "là, toi?"
+	done
+
+.GirlText
+	text "Oh! Tu m'as"
+	line "surprise!"
 	done
 
 _CeladonGymEndBattleText4::
@@ -181,8 +267,22 @@ _CeladonGymBattleText6::
 	done
 
 _CeladonGymEndBattleText6::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Oh!"
 	line "Vilain."
+	prompt
+
+.GirlText
+	text "Oh!"
+	line "Vilaine."
 	prompt
 
 _CeladonGymAfterBattleText6::

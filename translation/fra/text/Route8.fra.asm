@@ -1,5 +1,21 @@
 _Route8SuperNerd1BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "T'es un bon avec"
+	line "tes #MON."
+	cont "Mais les maths,"
+	cont "tu connais?"
+	done
+
+.GirlText
+	text "T'es un bonne avec"
 	line "tes #MON."
 	cont "Mais les maths,"
 	cont "tu connais?"

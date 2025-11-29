@@ -8,12 +8,30 @@ _SaffronGateGuardGeeImThirstyText::
 	done
 
 _SaffronGateGuardImParchedText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "C'que j'ai soif!"
 	line "C'est dingue!"
 	cont "..."
 	cont "Hein? Tu m'donnes"
 	cont "à boire? Dingue!"
 	cont "Merci, p'tit!@"
+	text_end
+
+.GirlText
+	text "C'que j'ai soif!"
+	line "C'est dingue!"
+	cont "..."
+	cont "Hein? Tu m'donnes"
+	cont "à boire? Dingue!"
+	cont "Merci, p'tite!@"
 	text_end
 
 _SaffronGateGuardYouCanGoOnThroughText::

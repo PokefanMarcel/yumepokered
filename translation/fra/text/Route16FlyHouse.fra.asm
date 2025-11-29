@@ -5,7 +5,7 @@ _Route16FlyHouseBrunetteGirlText::
 	para "Prends ceci."
 	line "En échange ne"
 	cont "dis à personne"
-	cont "que tu m'as vu!"
+	cont "que tu m'as vue!" ; marcelnote - corrected from 'tu m'as vu'
 	prompt
 
 _Route16FlyHouseBrunetteGirlReceivedHM02Text::

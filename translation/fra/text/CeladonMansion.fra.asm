@@ -40,9 +40,24 @@ _CeladonMansion3FProgrammerText::
 	done
 
 _CeladonMansion3FGraphicArtistText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Je fais tous les"
 	line "graphismes!"
 	cont "Je t'ai dessiné!"
+	done
+
+.GirlText
+	text "Je fais tous les"
+	line "graphismes!"
+	cont "Je t'ai dessinée!"
 	done
 
 _CeladonMansion3FWriterText::
