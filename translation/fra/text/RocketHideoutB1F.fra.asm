@@ -3,8 +3,22 @@ _RocketHideoutB1FRocket5EndBattleText::
 	text_end
 
 _RocketHideoutB1FRocket1BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "T'es qui? Comment"
 	line "t'es entré ici?"
+	done
+
+.GirlText
+	text "T'es qui? Comment"
+	line "t'es entrée ici?"
 	done
 
 _RocketHideoutB1FRocket1EndBattleText::
@@ -67,8 +81,22 @@ _RocketHideoutB1FRocket4AfterBattleText::
 	done
 
 _RocketHideoutB1FRocket5BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Petit rat,"
 	line "tu es perdu?"
+	done
+
+.GirlText
+	text "Petite souris,"
+	line "tu es perdue?"
 	done
 
 _RocketHideoutB1FRocket5AfterBattleText::

@@ -11,11 +11,38 @@ _RocketHideoutB4FGiovanniWhatCannotBeText::
 	prompt
 
 _RocketHideoutB4FGiovanniHopeWeMeetAgainText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Tu élèves tes"
 	line "#MON trop"
 	cont "soigneusement."
 
 	para "Un gosse comme"
+	line "toi ne peut"
+	cont "comprendre mes"
+	cont "plans!"
+
+	para "Tu as gagné cette"
+	line "bataille, mais"
+	cont "pas la guerre..."
+
+	para "On se retrouvera,"
+	line "et cette fois..."
+	done
+
+.GirlText
+	text "Tu élèves tes"
+	line "#MON trop"
+	cont "soigneusement."
+
+	para "Une gosse comme"
 	line "toi ne peut"
 	cont "comprendre mes"
 	cont "plans!"

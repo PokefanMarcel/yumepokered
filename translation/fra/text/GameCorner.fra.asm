@@ -64,7 +64,21 @@ _GameCornerBeauty2Text::
 	done
 
 _GameCornerFishingGuruWantToPlayText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Petit..."
+	line "Tu veux jouer?"
+	prompt
+
+.GirlText
+	text "Petite..."
 	line "Tu veux jouer?"
 	prompt
 
@@ -89,11 +103,41 @@ _GameCornerMiddleAgedWomanText::
 	done
 
 _GameCornerGymGuideChampInMakingText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Hé toi!"
 
 	para "Sacré toi, va..."
 	line "Une vraie graine"
 	cont "de champion!"
+
+	para "ERIKA est la"
+	line "CHAMPIONNE de"
+	cont "l'ARENE de"
+	cont "CELADOPOLE! Elle"
+	cont "utilise des"
+	cont "#MON des"
+	cont "plantes!"
+
+	para "Elle te semblera"
+	line "douce et tout ça,"
+	cont "mais...c'est un"
+	cont "piège!"
+	done
+
+.GirlText
+	text "Hé toi!"
+
+	para "Sacrée toi, va..."
+	line "Une vraie graine"
+	cont "de championne!"
 
 	para "ERIKA est la"
 	line "CHAMPIONNE de"

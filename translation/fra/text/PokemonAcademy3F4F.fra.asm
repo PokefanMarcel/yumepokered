@@ -71,7 +71,7 @@ _PokemonAcademy3FTeacherQuestion4Text::
 	cont "espèce, les"
 	cont "#MON de haut"
 	cont "niveau donnent"
-	cont "plus de Stat EXP"
+	cont "plus d'EXP.Stat"
 	cont "que ceux de bas"
 	cont "niveau."
 	done
@@ -107,7 +107,7 @@ _PokemonAcademy3FTeacherCongratulationsText::
 
 	para "Jette un oeil"
 	line "à leur écran"
-	line "de STATS!"
+	cont "de STATS!"
 	done
 
 _PokemonAcademy3FTeacherComeBackAnytimeText::
@@ -462,7 +462,7 @@ _PokemonAcademy4FGrannyIntroText::
 _PokemonAcademy4FGrannyBitBusyText::
 	text "Je suis un peu"
 	line "occupée pour"
-	line "le moment..."
+	cont "le moment..."
 
 	para "Passe donc voir"
 	line "nos cours!"
