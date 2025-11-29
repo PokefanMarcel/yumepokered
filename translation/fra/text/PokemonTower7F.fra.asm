@@ -45,6 +45,15 @@ _PokemonTower7FRocket1AfterBattleText::
 	done
 
 _PokemonTower7FRocket2BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Ce vieil homme"
 	line "est venu nous"
 	cont "demander de ne"
@@ -54,6 +63,19 @@ _PokemonTower7FRocket2BattleText::
 	para "Mais c'est une"
 	line "conversation"
 	cont "d'adultes, petit!"
+	cont "Dégage!"
+	done
+
+.GirlText
+	text "Ce vieil homme"
+	line "est venu nous"
+	cont "demander de ne"
+	cont "plus troubler les"
+	cont "gentils #MON!"
+
+	para "Mais c'est une"
+	line "conversation"
+	cont "d'adultes, petite!"
 	cont "Dégage!"
 	done
 
@@ -109,7 +131,7 @@ _PokemonTower7FChannelerHarnessPowerText::   ; marcelnote - added 7FChanneler
 
 	para "Veux-tu que je"
 	line "l'aide à la"
-	cont "canaliser ?"
+	cont "canaliser?"
 	done
 
 _PokemonTower7FChannelerIncantationsText::   ; marcelnote - added 7FChanneler

@@ -11,11 +11,29 @@ _PokemonTower2FRivalWhatBringsYouHereText::
 	done
 
 _PokemonTower2FRivalDefeatedText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Hein?"
 	line "Petit fennec!"
 
 	para "Je ne t'ai pas"
 	line "pris au sérieux!"
+	cont "M-I-N-A-B-L-E!"
+	prompt
+
+.GirlText
+	text "Hein?"
+	line "Petite fouine!"
+
+	para "Je ne t'ai pas"
+	line "prise au sérieux!"
 	cont "M-I-N-A-B-L-E!"
 	prompt
 
@@ -30,6 +48,15 @@ _PokemonTower2FRivalVictoryText::
 	prompt
 
 _PokemonTower2FRivalHowsYourDexText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Où en est ton"
 	line "#DEX? Je"
 	cont "viens de capturer"
@@ -48,6 +75,27 @@ _PokemonTower2FRivalHowsYourDexText::
 
 	para "A bientôt..."
 	line "Gros minable!"
+	done
+
+.GirlText
+	text "Où en est ton"
+	line "#DEX? Je"
+	cont "viens de capturer"
+	cont "un OSSELAIT!"
+
+	para "Je n'ai pas"
+	line "encore trouvé de"
+	cont "OSSATUEUR!"
+
+	para "Je crois qu'il"
+	line "n'en existe plus!"
+	cont "Je dois y aller,"
+	cont "minable! J'ai du"
+	cont "pain sur la"
+	cont "planche, minable!"
+
+	para "A bientôt..."
+	line "Grosse minable!"
 	done
 
 _PokemonTower2FChannelerText::
