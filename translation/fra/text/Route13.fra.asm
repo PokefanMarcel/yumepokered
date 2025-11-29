@@ -106,8 +106,22 @@ _Route13Beauty1BattleText::
 	done
 
 _Route13Beauty1EndBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Oh!"
 	line "Petit voyou!"
+	prompt
+
+.GirlText
+	text "Oh!"
+	line "Petite teigne!"
 	prompt
 
 _Route13Beauty1AfterBattleText::

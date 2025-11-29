@@ -29,18 +29,60 @@ _Route16Biker2AfterBattleText::
 	done
 
 _Route16Biker3BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Viens t'battre!"
 	line "P'tit rat!"
 	done
 
+.GirlText
+	text "Viens t'battre!"
+	line "P'tite fouine!"
+	done
+
 _Route16Biker3EndBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Toi!!"
 	line "Espèce de fennec!"
 	prompt
 
+.GirlText
+	text "Toi!!"
+	line "Espèce de fouine!"
+	prompt
+
 _Route16Biker3AfterBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Je déteste perdre"
 	line "face à un fennec!"
+	done
+
+.GirlText
+	text "Je déteste perdre"
+	line "face à une fouine!"
 	done
 
 _Route16biker4BattleText::

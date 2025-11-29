@@ -1,4 +1,13 @@
 _FuchsiaSuperRodHouseFishingGuruDoYouLikeToFishText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Mon frère,"
 	line "j'suis le maître"
 	cont "pêcheur!"
@@ -10,13 +19,48 @@ _FuchsiaSuperRodHouseFishingGuruDoYouLikeToFishText::
 	line "mon frère?"
 	done
 
+.GirlText
+	text "Ma grande,"
+	line "j'suis le maître"
+	cont "pêcheur!"
+
+	para "Moi, dans la vie,"
+	line "j'suis pêcheur!"
+
+	para "T'aimes la pêche,"
+	line "ma grande?"
+	done
+
 _FuchsiaSuperRodHouseFishingGuruTakeThisText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Trop cool!"
 	line "J't'aime bien!"
 
 	para "Prends cette"
 	line "canne à pêche,"
 	cont "mon frère!"
+
+	para "<PLAYER> obtient:"
+	line "@"
+	text_ram wStringBuffer
+	text "!@"
+	text_end
+
+.GirlText
+	text "Trop cool!"
+	line "J't'aime bien!"
+
+	para "Prends cette"
+	line "canne à pêche,"
+	cont "ma grande!"
 
 	para "<PLAYER> obtient:"
 	line "@"

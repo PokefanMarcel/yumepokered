@@ -95,7 +95,7 @@ _RocketHideoutB1FRocket5BattleText::
 	done
 
 .GirlText
-	text "Petite souris,"
+	text "Petite fouine,"
 	line "tu es perdue?"
 	done
 

@@ -1,7 +1,7 @@
 _Route15CooltrainerF1BattleText::
 	text "Je vais tester"
 	line "les #MON que"
-	cont "j'ai échangé!"
+	cont "j'ai échangés!" ; marcelnote - corrected 'échangé'
 	done
 
 _Route15CooltrainerF1EndBattleText::
@@ -19,14 +19,43 @@ _Route15CooltrainerF1AfterBattleText::
 	done
 
 _Route15CooltrainerF2BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "T'as l'air niais,"
 	line "je dois pouvoir"
 	cont "te battre!"
 	done
 
+.GirlText
+	text "T'as l'air niaise,"
+	line "je dois pouvoir"
+	cont "te battre!"
+	done
+
 _Route15CooltrainerF2EndBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "!!!"
 	line "Pas trop niais!"
+	prompt
+
+.GirlText
+	text "!!!"
+	line "Pas trop niaise!"
 	prompt
 
 _Route15CooltrainerF2AfterBattleText::
@@ -54,14 +83,43 @@ _Route15CooltrainerM1AfterBattleText::
 	done
 
 _Route15CooltrainerM2BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Hmm? Mes oiseaux"
 	line "ont peur! Tu es"
 	cont "fort, toi?"
 	done
 
+.GirlText
+	text "Hmm? Mes oiseaux"
+	line "ont peur! Tu es"
+	cont "forte, toi?"
+	done
+
 _Route15CooltrainerM2EndBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "..."
 	line "T'es effrayant!"
+	prompt
+
+.GirlText
+	text "..."
+	line "T'es effrayante!"
 	prompt
 
 _Route15CooltrainerM2AfterBattleText::
@@ -73,18 +131,60 @@ _Route15CooltrainerM2AfterBattleText::
 	done
 
 _Route15Beauty1BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Oh! T'es un p'tit"
 	line "jeunot!"
 	done
 
+.GirlText
+	text "Oh! T'es une p'tite"
+	line "jeunette!"
+	done
+
 _Route15Beauty1EndBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "T'étais"
 	line "mignon, pourtant!"
 	prompt
 
+.GirlText
+	text "T'étais"
+	line "jolie, pourtant!"
+	prompt
+
 _Route15Beauty1AfterBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Je te pardonne!"
 	line "T'es trop mignon!"
+	done
+
+.GirlText
+	text "Je te pardonne!"
+	line "T'es trop jolie!"
 	done
 
 _Route15Beauty2BattleText::
@@ -105,7 +205,21 @@ _Route15Beauty2AfterBattleText::
 	done
 
 _Route15Biker1BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Hé, l'mouflet!"
+	line "Regarde ça!"
+	done
+
+.GirlText
+	text "Hé, la mouflette!"
 	line "Regarde ça!"
 	done
 

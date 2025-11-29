@@ -1,5 +1,20 @@
 _Route17Biker1BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Pff... Un gosse,"
+	line "ça n'a jamais"
+	cont "d'flouze!"
+	done
+
+.GirlText
+	text "Pff... Une gosse,"
 	line "ça n'a jamais"
 	cont "d'flouze!"
 	done
@@ -17,8 +32,22 @@ _Route17Biker1AfterBattleText::
 	done
 
 _Route17Biker2BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Kesstu veux, toi"
 	line "l'mioche?"
+	done
+
+.GirlText
+	text "Kesstu veux, toi"
+	line "la mioche?"
 	done
 
 _Route17Biker2EndBattleText::
@@ -119,7 +148,10 @@ _Route17Biker7AfterBattleText::
 	done
 
 _Route17Biker8BattleText::
-	text "No future!"
+;	text "No future!" ; marcelnote - switched those texts in FRA
+;	done
+	text "Prépare-toi à la"
+	line "baston, microbe!"
 	done
 
 _Route17Biker8EndBattleText::
@@ -127,8 +159,10 @@ _Route17Biker8EndBattleText::
 	prompt
 
 _Route17Biker8AfterBattleText::
-	text "Prépare-toi à la"
-	line "baston, microbe!"
+;	text "Prépare-toi à la" ; marcelnote - switched those texts in FRA
+;	line "baston, microbe!"
+;	done
+	text "No future!"
 	done
 
 _Route17Biker9BattleText::
@@ -149,13 +183,41 @@ _Route17Biker9AfterBattleText::
 	done
 
 _Route17Biker10BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Du vent gamin!"
 	line "J'suis épuisé!"
 	done
 
+.GirlText
+	text "Du vent gamine!"
+	line "J'suis épuisé!"
+	done
+
 _Route17Biker10EndBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Voilà,"
 	line "t'es content?"
+	prompt
+
+.GirlText
+	text "Voilà,"
+	line "t'es contente?"
 	prompt
 
 _Route17Biker10AfterBattleText::
