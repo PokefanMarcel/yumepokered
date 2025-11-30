@@ -13,6 +13,7 @@ DoorTileIDPointers:
 	dbw ACADEMY,     .AcademyDoorTileIDs    ; marcelnote - new tileset
 	dbw MOUNTAIN,    .MountainDoorTileIDs   ; marcelnote - new tileset
 	dbw GAME,        .GameDoorTileIDs       ; marcelnote - new tileset
+	dbw INTERIOR,    .InteriorDoorTileIDs   ; marcelnote - added door tiles
 	db -1 ; end
 
 MACRO door_tiles
@@ -58,3 +59,6 @@ ENDM
 
 .AcademyDoorTileIDs:    ; marcelnote - new tileset
 	door_tiles $1a, $1c
+
+.InteriorDoorTileIDs:    ; marcelnote - added door tiles
+	door_tiles $04, $15
