@@ -100,28 +100,28 @@ UpdateStat: ; marcelnote - new subfunction
 	ret                           ; returns hl = wBattleMon<Stat>
 
 
-ApplyBadgeStatBoosts: ; marcelnote - optimized
+ApplyBadgeStatBoosts: ; marcelnote - optimized and aligned boosts on in game dialogue
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
 	ret z ; return if link battle
 	ld a, [wObtainedBadges]
 	ld b, a
+	; Boulder (bit 0) - attack
 	ld hl, wBattleMonAttack
-	ld c, $4
-; the boost is applied for badges whose bit position is even
-; the order of boosts matches the order they are laid out in RAM
-; Boulder (bit 0) - attack
-; Thunder (bit 2) - defense
-; Soul (bit 4) - speed
-; Volcano (bit 6) - special
-.loop
-	srl b
-	call c, ApplyBoostToStat
-	inc hl
-	inc hl
-	srl b
-	dec c
-	jr nz, .loop
+	bit BIT_BOULDERBADGE, b
+	call nz, ApplyBoostToStat
+	; Thunder (bit 2) - speed   ; was defense
+	ld hl, wBattleMonSpeed
+	bit BIT_THUNDERBADGE, b
+	call nz, ApplyBoostToStat
+	; Soul    (bit 4) - defense ; was speed
+	ld hl, wBattleMonDefense
+	bit BIT_SOULBADGE, b
+	call nz, ApplyBoostToStat
+	; Volcano (bit 6) - special
+	ld hl, wBattleMonSpecial
+	bit BIT_VOLCANOBADGE, b
+	call nz, ApplyBoostToStat
 	ret
 
 ; marcelnote - new function
@@ -131,17 +131,34 @@ ApplyBadgeBoostToSelectedStat:
 	cp LINK_STATE_BATTLING
 	ret z ; return if link battle
 	ld a, [wObtainedBadges]
-	ld d, c ; d = stat offset
-	inc d
-.loop
-	dec d
-	jr z, .testBadge
-	rrca
-	rrca
-	jr .loop
-.testBadge
-	rrca
-	ret nc
+	ld b, a ; b = obtained badges
+	ld a, c ; a = stat offset
+	; Boulder (bit 0) - attack if a = 0
+	and a
+	jr nz, .testSoulBadge
+	bit BIT_BOULDERBADGE, b
+	jr nz, ApplyBoostToStat
+	ret
+.testSoulBadge
+	; Soul (bit 4) - defense if a = 1
+	dec a
+	jr nz, .testThunderBadge
+	bit BIT_SOULBADGE, b
+	jr nz, ApplyBoostToStat
+	ret
+.testThunderBadge
+	; Thunder (bit 2) - speed if a = 2
+	dec a
+	jr nz, .testVolcanoBadge
+	bit BIT_THUNDERBADGE, b
+	jr nz, ApplyBoostToStat
+	ret
+.testVolcanoBadge
+	; Volcano (bit 6) - special if a = 3
+	dec a
+	ret nz ; a not in correct range
+	bit BIT_VOLCANOBADGE, b
+	ret z
 	; fallthrough
 
 ; multiply stat at hl by 1.125 (cap at MAX_STAT_VALUE)
