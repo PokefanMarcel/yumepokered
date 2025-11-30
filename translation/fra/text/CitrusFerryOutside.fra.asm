@@ -89,8 +89,9 @@ _CitrusFerryOutsideGrampsStoryText:: ; Toya Maru
 	para "Le capitaine"
 	line "croyait que le"
 	cont "pire était passé."
-	cont "Mais l'orage revint"
-	cont "plus fort encore."
+	cont "Mais l'orage"
+	cont "revint plus"
+	cont "fort encore."
 
 	para "Le vent malmenait"
 	line "la coque, et les"

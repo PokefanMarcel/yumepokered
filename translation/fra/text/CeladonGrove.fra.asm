@@ -80,12 +80,6 @@ _CeladonGroveChanneler1EndBattleText::
 
 _CeladonGroveChanneler1AfterBattleText::
 	text "J'ai fait tout"
-	line "le chemin à pied"
-	cont "depuis la"
-	cont "TOUR #MON de"
-	cont "LAVANVILLE."
-
-	text "J'ai fait tout"
 	line "le chemin depuis"
 	cont "la TOUR #MON"
 	cont "de LAVANVILLE"

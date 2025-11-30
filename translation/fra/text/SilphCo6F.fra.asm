@@ -50,10 +50,26 @@ _SilphCo6FSilphWorkerM3TargetedSilphText::
 	done
 
 _SilphCo6FSilphWorkerM3WorkForSilphText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Travaille donc"
 	line "pour la SYLPHE"
 	cont "une fois plus"
 	cont "grand!"
+	done
+
+.GirlText
+	text "Travaille donc"
+	line "pour la SYLPHE"
+	cont "une fois plus"
+	cont "grande!"
 	done
 
 _SilphCo6FRocket1BattleText::
@@ -98,11 +114,39 @@ _SilphCo6FRocket2BattleText::
 	done
 
 _SilphCo6FRocket2EndBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Rebelle..."
 	line "Vilain!"
 	prompt
 
+.GirlText
+	text "Rebelle..."
+	line "Vilaine!"
+	prompt
+
 _SilphCo6FRocket2AfterBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Si t'es gentil,"
 	line "t'es pas méchant!"
+	done
+
+.GirlText
+	text "Si t'es gentille,"
+	line "t'es pas méchante!"
 	done

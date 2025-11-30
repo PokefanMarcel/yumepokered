@@ -1,5 +1,5 @@
 _SafariZoneWestRestHouseScientistText::
-	text "Une PIERRE peut"
+	text "Un CAILLOU peut" ; marcelnote - was "Une PIERRE"
 	line "faire fuir les"
 	cont "#MON mais ils"
 	cont "seront plus fa-"

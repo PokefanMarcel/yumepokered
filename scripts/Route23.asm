@@ -99,26 +99,11 @@ BadgeTextPointers:
 	dw VolcanoBadgeText
 	dw EarthBadgeText
 
-EarthBadgeText:
-	db "EARTHBADGE@"
-
-VolcanoBadgeText:
-	db "VOLCANOBADGE@"
-
-MarshBadgeText:
-	db "MARSHBADGE@"
-
-SoulBadgeText:
-	db "SOULBADGE@"
-
-RainbowBadgeText:
-	db "RAINBOWBADGE@"
-
-ThunderBadgeText:
-	db "THUNDERBADGE@"
-
-CascadeBadgeText:
-	db "CASCADEBADGE@"
+IF DEF(_FRA)
+	INCLUDE "translation/fra/data/text/badge_names.fra.asm"
+ELSE
+	INCLUDE "data/text/badge_names.asm"
+ENDC
 
 Route23MovePlayerDownScript:
 	ld a, $1

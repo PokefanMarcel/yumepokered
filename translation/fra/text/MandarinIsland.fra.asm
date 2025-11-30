@@ -117,7 +117,7 @@ _MandarinIslandSignText::
 _MandarinIslandSurfShopSignText::
 	text "Glisse sur les"
 	line "flots!"
-	line "...SURF A GOGO"
+	cont "...SURF A GOGO"
 	done
 
 _MandarinIslandSilphCoSignText::

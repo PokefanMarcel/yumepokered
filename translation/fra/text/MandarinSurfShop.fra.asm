@@ -10,8 +10,7 @@ _MandarinSurfShopClerkWelcomeText::
 	prompt
 
 _MandarinSurfShopClerkDoYouWantItText::
-	text "C'est une super"
-	line "PLANCHE DE SURF,"
+	text "Une super planche,"
 	line "tu la veux?"
 	done
 

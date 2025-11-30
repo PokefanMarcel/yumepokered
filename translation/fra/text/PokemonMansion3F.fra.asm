@@ -23,7 +23,22 @@ _PokemonMansion3FScientistEndBattleText::
 	prompt
 
 _PokemonMansion3FScientistAfterBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "T'es perdu?"
+	line "Essaie de sauter"
+	cont "par là-bas!"
+	done
+
+.GirlText
+	text "T'es perdue?"
 	line "Essaie de sauter"
 	cont "par là-bas!"
 	done

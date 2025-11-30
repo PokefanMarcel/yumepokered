@@ -10,7 +10,7 @@ _SilphCo8FSilphWorkerMThanksForSavingUsText::
 	done
 
 _SilphCo8FRocket1BattleText::
-	text "Hop hop hop !"
+	text "Hop hop hop!" ; marcelnote - removed space before !
 	line "On ne bouge plus!"
 	done
 
@@ -20,9 +20,8 @@ _SilphCo8FRocket1EndBattleText::
 	prompt
 
 _SilphCo8FRocket1AfterBattleText::
-	text "Va-t'en ou"
-	line "j'appelle du"
-	cont "renfort!"
+	text "Va-t'en ou j'appelle" ; marcelnote - merged in two lines
+	line "du renfort!"
 	done
 
 _SilphCo8FScientistBattleText::

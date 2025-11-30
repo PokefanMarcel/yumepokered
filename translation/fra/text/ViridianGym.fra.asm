@@ -53,6 +53,15 @@ _ViridianGymGiovanniPostBattleAdviceText::
 	text_end
 
 _ViridianGymGiovanniEarthBadgeInfoText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Grâce au BADGE"
 	line "TERRE tous les"
 	cont "#MON obéiront"
@@ -73,6 +82,29 @@ _ViridianGymGiovanniEarthBadgeInfoText::
 	cont "et deviens le"
 	cont "plus grand des"
 	cont "dresseurs!"
+	done
+
+.GirlText
+	text "Grâce au BADGE"
+	line "TERRE tous les"
+	cont "#MON obéiront"
+	cont "à tes ordres!"
+
+	para "Il est le"
+	line "témoignage de ta"
+	cont "grande maîtrise"
+	cont "des #MON!"
+
+	para "Tu pourras ainsi"
+	line "accéder à la"
+	cont "LIGUE #MON!"
+
+	para "C'est un cadeau"
+	line "que je te fais."
+	cont "Va maintenant,"
+	cont "et deviens la"
+	cont "plus grande des"
+	cont "dresseuses!"
 	done
 
 _ViridianGymGiovanniReceivedTM27Text::
@@ -100,8 +132,22 @@ _ViridianGymGiovanniTM27NoRoomText::
 	done
 
 _ViridianGymCooltrainerM1BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Hé! Tu dois être"
 	line "crevé, non? "
+	done
+
+.GirlText
+	text "Hé! Tu dois être"
+	line "crevée, non? "
 	done
 
 _ViridianGymCooltrainerM1EndBattleText::
@@ -110,9 +156,25 @@ _ViridianGymCooltrainerM1EndBattleText::
 	prompt
 
 _ViridianGymCooltrainerM1AfterBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Il faut que tu"
 	line "sois fort pour te"
 	cont "mesurer au..."
+	cont "CHAMPION!"
+	done
+
+.GirlText
+	text "Il faut que tu"
+	line "sois forte pour"
+	cont "te mesurer au..."
 	cont "CHAMPION!"
 	done
 
@@ -137,8 +199,22 @@ _ViridianGymRocker1BattleText::
 	done
 
 _ViridianGymRocker1EndBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Tu es"
 	line "très fort!"
+	prompt
+
+.GirlText
+	text "Tu es"
+	line "très forte!"
 	prompt
 
 _ViridianGymRocker1AfterBattleText::
@@ -189,9 +265,24 @@ _ViridianGymBlackbelt3EndBattleText::
 	prompt
 
 _ViridianGymBlackbelt3AfterBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "La LIGUE #MON?"
 	line "Toi? Hahahahah!!!"
 	cont "T'es un rigolo!"
+	done
+
+.GirlText
+	text "La LIGUE #MON?"
+	line "Toi? Hahahahah!!!"
+	cont "T'es marrante!"
 	done
 
 _ViridianGymRocker2BattleText::
@@ -235,7 +326,35 @@ _ViridianGymCooltrainerM3AfterBattleText::
 	done
 
 _ViridianGymGuidePreBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Salut! Champion"
+	line "en herbe!"
+
+	para "Même moi, je ne"
+	line "sais pas qui est"
+	cont "le CHAMPION de"
+	cont "JADIELLE!"
+
+	para "Le combat qui"
+	line "t'attend sera le"
+	cont "plus dur de tous!"
+
+	para "Le dresseur de"
+	line "cette ARENE aime"
+	cont "les #MON du"
+	cont "type SOL!"
+	done
+
+.GirlText
+	text "Salut! Championne"
 	line "en herbe!"
 
 	para "Même moi, je ne"

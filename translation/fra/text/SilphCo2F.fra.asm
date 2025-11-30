@@ -72,8 +72,22 @@ _SilphCo2FRocket1BattleText::
 	done
 
 _SilphCo2FRocket1EndBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "La vache!"
 	line "Balèze le p'tit!"
+	prompt
+
+.GirlText
+	text "La vache!"
+	line "Balèze la p'tite!"
 	prompt
 
 _SilphCo2FRocket1AfterBattleText::

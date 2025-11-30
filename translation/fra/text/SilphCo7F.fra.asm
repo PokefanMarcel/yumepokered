@@ -10,6 +10,15 @@ _SilphCo7FSilphWorkerM1HaveThisPokemonText::
 	prompt
 
 _SilphCo7FSilphWorkerM1LaprasDescriptionText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "C'est un LOKHLASS."
 	line "Il est très"
 	cont "intelligent."
@@ -21,6 +30,25 @@ _SilphCo7FSilphWorkerM1LaprasDescriptionText::
 
 	para "Tu seras un bon"
 	line "dresseur pour"
+	cont "LOKHLASS!"
+
+	para "Etant bon nageur,"
+	line "il pourra même te"
+	cont "porter!"
+	done
+
+.GirlText
+	text "C'est un LOKHLASS."
+	line "Il est très"
+	cont "intelligent."
+
+	para "Nous le gardions"
+	line "dans le labo,"
+	cont "mais il sera"
+	cont "mieux avec toi!"
+
+	para "Tu seras une bonne"
+	line "dresseuse pour"
 	cont "LOKHLASS!"
 
 	para "Etant bon nageur,"
@@ -66,15 +94,47 @@ _SilphCo7FSilphWorkerM3ItWouldBeBadText::
 	done
 
 _SilphCo7FSilphWorkerM3YouChasedOffTeamRocketText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Woah! Tu as battu"
 	line "la TEAM ROCKET"
 	cont "tout seul?"
 	done
 
+.GirlText
+	text "Woah! Tu as battu"
+	line "la TEAM ROCKET"
+	cont "toute seule?"
+	done
+
 _SilphCo7FSilphWorkerM4ItsReallyDangerousHereText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Hé toi! C'est"
 	line "dangereux par"
 	cont "ici! Tu es venu"
+	cont "me sauver?"
+	cont "Impossible!"
+	done
+
+.GirlText
+	text "Hé toi! C'est"
+	line "dangereux par"
+	cont "ici! Tu es venue"
 	cont "me sauver?"
 	cont "Impossible!"
 	done
@@ -130,14 +190,44 @@ _SilphCo7FRocket2EndBattleText::
 	prompt
 
 _SilphCo7FRocket2AfterBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Pas grave."
 	line "Mes frères se"
 	cont "chargeront de"
 	cont "toi, mon petit!"
 	done
 
+.GirlText
+	text "Pas grave."
+	line "Mes frères se"
+	cont "chargeront de"
+	cont "toi, ma petite!"
+	done
+
 _SilphCo7FRocket3BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Un jeune intrus?"
+	line "Mais! C'est toi!"
+	done
+
+.GirlText
+	text "Une jeune intruse?"
 	line "Mais! C'est toi!"
 	done
 
@@ -153,11 +243,34 @@ _SilphCo7FRocket3AfterBattleText::
 	done
 
 _SilphCo7FRivalText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "<RIVAL>: C'que tu"
 	line "es lent, <PLAYER>!"
 	done
 
+.GirlText
+	text "<RIVAL>: C'que t'es"
+	line "lente, <PLAYER>!"
+	done
+
 _SilphCo7FRivalWaitedHereText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "<RIVAL>: Hahaha!"
 	line "J'étais sûr que"
 	cont "tu passerais par"
@@ -174,9 +287,42 @@ _SilphCo7FRivalWaitedHereText::
 	cont "nul?"
 	done
 
+.GirlText
+	text "<RIVAL>: Hahaha!"
+	line "J'étais sûr que"
+	cont "tu passerais par"
+	cont "là!"
+
+	para "La TEAM ROCKET"
+	line "t'a posé des"
+	cont "problèmes?"
+	cont "Quel dommage!"
+
+	para "Je t'ai vue à"
+	line "SAFRANIA. Es-tu"
+	cont "toujours aussi"
+	cont "nulle?"
+	done
+
 _SilphCo7FRivalDefeatedText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Oh non!"
 	line "Tu es donc prêt"
+	cont "pour le chef de"
+	cont "la TEAM ROCKET!"
+	prompt
+
+.GirlText
+	text "Oh non!"
+	line "Tu es donc prête"
 	cont "pour le chef de"
 	cont "la TEAM ROCKET!"
 	prompt

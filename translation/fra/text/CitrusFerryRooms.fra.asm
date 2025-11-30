@@ -44,7 +44,7 @@ _CitrusFerryRoomsHikerEndBattleText::
 _CitrusFerryRoomsHikerAfterBattleText::
 	text "Mon plus beau"
 	line "souvenir?"
-	cont "Le SQUARE du"
+	cont "L'AIRE du"
 	cont "MONT SELENITE"
 	cont "au clair de lune!"
 	done
@@ -63,8 +63,7 @@ _CitrusFerryRoomsCooltrainerFEndBattleText::
 
 _CitrusFerryRoomsCooltrainerFAfterBattleText::
 	text "La mer offre tant,"
-	line "et demande"
-	cont "si peu."
+	line "et demande si peu."
 	done
 
 ;_CitrusFerryRoomsSailor1BattleText::
@@ -84,14 +83,43 @@ _CitrusFerryRoomsCooltrainerFAfterBattleText::
 ;	done
 
 _CitrusFerryRoomsNurseYouLookTiredText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Tu as l'air"
 	line "fatigué! Tu"
 	cont "devrais faire une"
 	cont "sieste!"
 	prompt
 
+.GirlText
+	text "Tu as l'air"
+	line "fatiguée! Tu"
+	cont "devrais faire une"
+	cont "sieste!"
+	prompt
+
 _CitrusFerryRoomsNurseTakeCareText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Sois prudent!"
+	done
+
+.GirlText
+	text "Sois prudente!"
 	done
 
 _CitrusFerryRoomsNurseGoodLuckText::

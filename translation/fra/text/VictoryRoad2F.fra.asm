@@ -14,7 +14,22 @@ _VictoryRoad2FBlackbeltEndBattleText::
 	prompt
 
 _VictoryRoad2FBlackbeltAfterBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Si tu es bloqué,"
+	line "essaie de bouger"
+	cont "les rochers!"
+	done
+
+.GirlText
+	text "Si tu es bloquée,"
 	line "essaie de bouger"
 	cont "les rochers!"
 	done
@@ -100,8 +115,28 @@ _VictoryRoad2FGrampsIntroText:: ; marcelnote - new
 	prompt
 
 _VictoryRoad2FGrampsHaveYouTestedText:: ; marcelnote - new
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Tu ne t'es pas"
 	line "encore mesuré au"
+	cont "DOJO de SAFRANIA?"
+
+	para "Fais tes preuves"
+	line "au DOJO, et je"
+	cont "t'aiderai à trou-"
+	cont "ver l'équilibre."
+	done
+
+.GirlText
+	text "Tu ne t'es pas"
+	line "encore mesurée au"
 	cont "DOJO de SAFRANIA?"
 
 	para "Fais tes preuves"

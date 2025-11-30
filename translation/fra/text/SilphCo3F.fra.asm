@@ -17,8 +17,22 @@ _SilphCo3FRocketBattleText::
 	done
 
 _SilphCo3FRocketEndBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Yaha!"
 	line "T'es trop fort!"
+	prompt
+
+.GirlText
+	text "Yaha!"
+	line "T'es trop forte!"
 	prompt
 
 _SilphCo3FRocketAfterBattleText::

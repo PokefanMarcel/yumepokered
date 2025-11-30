@@ -16,7 +16,6 @@ IF DEF(_FRA)
 	INCLUDE "translation/fra/text/SSAnneCaptainsRoom.fra.asm"
 	INCLUDE "translation/fra/text/SSAnne1FRooms.fra.asm"
 	INCLUDE "translation/fra/text/SSAnne2FRooms.fra.asm"
-	INCLUDE "translation/fra/text/VictoryRoad3F.fra.asm"
 	INCLUDE "translation/fra/text/RocketHideoutB1F.fra.asm"
 	INCLUDE "translation/fra/text/RocketHideoutB2F.fra.asm"
 	INCLUDE "translation/fra/text/RocketHideoutB3F.fra.asm"
@@ -42,7 +41,6 @@ ELSE
 	INCLUDE "text/SSAnneCaptainsRoom.asm"
 	INCLUDE "text/SSAnne1FRooms.asm"
 	INCLUDE "text/SSAnne2FRooms.asm"
-	INCLUDE "text/VictoryRoad3F.asm"
 	INCLUDE "text/RocketHideoutB1F.asm"
 	INCLUDE "text/RocketHideoutB2F.asm"
 	INCLUDE "text/RocketHideoutB3F.asm"
@@ -67,17 +65,7 @@ IF DEF(_FRA)
 	INCLUDE "translation/fra/text/PokemonMansion2F.fra.asm"
 	INCLUDE "translation/fra/text/PokemonMansion3F.fra.asm"
 	INCLUDE "translation/fra/text/PokemonMansionB1F.fra.asm"
-	INCLUDE "translation/fra/text/SafariZoneEast.fra.asm"
-	INCLUDE "translation/fra/text/SafariZoneNorth.fra.asm"
-	INCLUDE "translation/fra/text/SafariZoneWest.fra.asm"
-	INCLUDE "translation/fra/text/SafariZoneCenter.fra.asm"
-	INCLUDE "translation/fra/text/SafariZoneCenterRestHouse.fra.asm"
-	INCLUDE "translation/fra/text/SafariZoneSecretHouse.fra.asm"
-	INCLUDE "translation/fra/text/SafariZoneWestRestHouse.fra.asm"
-	INCLUDE "translation/fra/text/SafariZoneEastRestHouse.fra.asm"
-	INCLUDE "translation/fra/text/SafariZoneNorthRestHouse.fra.asm"
 	INCLUDE "translation/fra/text/CeruleanCaveB1F.fra.asm"
-	INCLUDE "translation/fra/text/VictoryRoad1F.fra.asm"
 	INCLUDE "translation/fra/text/LancesRoom.fra.asm"
 	INCLUDE "translation/fra/text/HallOfFame.fra.asm"
 	INCLUDE "translation/fra/text/ChampionsRoom.fra.asm"
@@ -95,17 +83,7 @@ ELSE
 	INCLUDE "text/PokemonMansion2F.asm"
 	INCLUDE "text/PokemonMansion3F.asm"
 	INCLUDE "text/PokemonMansionB1F.asm"
-	INCLUDE "text/SafariZoneEast.asm"
-	INCLUDE "text/SafariZoneNorth.asm"
-	INCLUDE "text/SafariZoneWest.asm"
-	INCLUDE "text/SafariZoneCenter.asm"
-	INCLUDE "text/SafariZoneCenterRestHouse.asm"
-	INCLUDE "text/SafariZoneSecretHouse.asm"
-	INCLUDE "text/SafariZoneWestRestHouse.asm"
-	INCLUDE "text/SafariZoneEastRestHouse.asm"
-	INCLUDE "text/SafariZoneNorthRestHouse.asm"
 	INCLUDE "text/CeruleanCaveB1F.asm"
-	INCLUDE "text/VictoryRoad1F.asm"
 	INCLUDE "text/LancesRoom.asm"
 	INCLUDE "text/HallOfFame.asm"
 	INCLUDE "text/ChampionsRoom.asm"
@@ -162,7 +140,6 @@ IF DEF(_FRA)
 	INCLUDE "translation/fra/text/Route18Gate.fra.asm" ; marcelnote - merged Route18Gate floors
 	INCLUDE "translation/fra/text/Route22Gate.fra.asm"
 	INCLUDE "translation/fra/text/BattleHall.fra.asm"  ; marcelnote - new location
-	INCLUDE "translation/fra/text/VictoryRoad2F.fra.asm"
 	INCLUDE "translation/fra/text/BillsHouse.fra.asm"
 	INCLUDE "translation/fra/text/Route1.fra.asm"
 	INCLUDE "translation/fra/text/Route2.fra.asm"
@@ -196,7 +173,6 @@ ELSE
 	INCLUDE "text/Route18Gate.asm" ; marcelnote - merged Route18Gate floors
 	INCLUDE "text/Route22Gate.asm"
 	INCLUDE "text/BattleHall.asm"  ; marcelnote - new location
-	INCLUDE "text/VictoryRoad2F.asm"
 	INCLUDE "text/BillsHouse.asm"
 	INCLUDE "text/Route1.asm"
 	INCLUDE "text/Route2.asm"
@@ -351,17 +327,6 @@ ELSE
 ENDC
 
 
-SECTION "Text Fuchsia", ROMX
-
-IF DEF(_FRA)
-	INCLUDE "translation/fra/text/FuchsiaMeetingRoom.fra.asm"
-	INCLUDE "translation/fra/text/FuchsiaSuperRodHouse.fra.asm"   ; marcelnote - from Good to Super Rod
-ELSE
-	INCLUDE "text/FuchsiaMeetingRoom.asm"
-	INCLUDE "text/FuchsiaSuperRodHouse.asm"   ; marcelnote - from Good to Super Rod
-ENDC
-
-
 SECTION "Text 8", ROMX
 
 IF DEF(_FRA)
@@ -414,12 +379,6 @@ ENDC
 SECTION "Text 9", ROMX
 
 IF DEF(_FRA)
-	INCLUDE "translation/fra/text/PokemonMansion1F.fra.asm"
-	INCLUDE "translation/fra/text/CinnabarGym.fra.asm"
-	INCLUDE "translation/fra/text/CinnabarLab.fra.asm"            ; marcelnote - merged Cinnabar Lab maps
-	INCLUDE "translation/fra/text/CinnabarPokecenterMart.fra.asm" ; marcelnote - merged Cinnabar Pokecenter and Mart
-	INCLUDE "translation/fra/text/CinnabarVolcano1FB1F.fra.asm"   ; marcelnote - new location
-	INCLUDE "translation/fra/text/CinnabarVolcano2F.fra.asm"      ; marcelnote - new location
 	INCLUDE "translation/fra/text/IndigoPlateauLobby.fra.asm"
 	INCLUDE "translation/fra/text/CopycatsHouse.fra.asm"          ; marcelnote - merged Copycat's house floors
 	INCLUDE "translation/fra/text/FightingDojo.fra.asm"
@@ -429,12 +388,6 @@ IF DEF(_FRA)
 	INCLUDE "translation/fra/text/SaffronPokecenterMart.fra.asm"  ; marcelnote - merged Saffron Pokecenter and Mart
 	INCLUDE "translation/fra/text/MrPsychicsHouse.fra.asm"
 ELSE
-	INCLUDE "text/PokemonMansion1F.asm"
-	INCLUDE "text/CinnabarGym.asm"
-	INCLUDE "text/CinnabarLab.asm"            ; marcelnote - merged Cinnabar Lab maps
-	INCLUDE "text/CinnabarPokecenterMart.asm" ; marcelnote - merged Cinnabar Pokecenter and Mart
-	INCLUDE "text/CinnabarVolcano1FB1F.asm"   ; marcelnote - new location
-	INCLUDE "text/CinnabarVolcano2F.asm"      ; marcelnote - new location
 	INCLUDE "text/IndigoPlateauLobby.asm"
 	INCLUDE "text/CopycatsHouse.asm"          ; marcelnote - merged Copycat's house floors
 	INCLUDE "text/FightingDojo.asm"
@@ -530,6 +483,54 @@ ELSE
 ENDC
 
 
+SECTION "Text Fuchsia", ROMX
+
+IF DEF(_FRA)
+	INCLUDE "translation/fra/text/FuchsiaMeetingRoom.fra.asm"
+	INCLUDE "translation/fra/text/FuchsiaSuperRodHouse.fra.asm"   ; marcelnote - from Good to Super Rod
+	INCLUDE "translation/fra/text/SafariZoneEast.fra.asm"
+	INCLUDE "translation/fra/text/SafariZoneNorth.fra.asm"
+	INCLUDE "translation/fra/text/SafariZoneWest.fra.asm"
+	INCLUDE "translation/fra/text/SafariZoneCenter.fra.asm"
+	INCLUDE "translation/fra/text/SafariZoneCenterRestHouse.fra.asm"
+	INCLUDE "translation/fra/text/SafariZoneSecretHouse.fra.asm"
+	INCLUDE "translation/fra/text/SafariZoneWestRestHouse.fra.asm"
+	INCLUDE "translation/fra/text/SafariZoneEastRestHouse.fra.asm"
+	INCLUDE "translation/fra/text/SafariZoneNorthRestHouse.fra.asm"
+ELSE
+	INCLUDE "text/FuchsiaMeetingRoom.asm"
+	INCLUDE "text/FuchsiaSuperRodHouse.asm"   ; marcelnote - from Good to Super Rod
+	INCLUDE "text/SafariZoneEast.asm"
+	INCLUDE "text/SafariZoneNorth.asm"
+	INCLUDE "text/SafariZoneWest.asm"
+	INCLUDE "text/SafariZoneCenter.asm"
+	INCLUDE "text/SafariZoneCenterRestHouse.asm"
+	INCLUDE "text/SafariZoneSecretHouse.asm"
+	INCLUDE "text/SafariZoneWestRestHouse.asm"
+	INCLUDE "text/SafariZoneEastRestHouse.asm"
+	INCLUDE "text/SafariZoneNorthRestHouse.asm"
+ENDC
+
+
+SECTION "Text Cinnabar Island", ROMX
+
+IF DEF(_FRA)
+	INCLUDE "translation/fra/text/PokemonMansion1F.fra.asm"
+	INCLUDE "translation/fra/text/CinnabarGym.fra.asm"
+	INCLUDE "translation/fra/text/CinnabarLab.fra.asm"            ; marcelnote - merged Cinnabar Lab maps
+	INCLUDE "translation/fra/text/CinnabarPokecenterMart.fra.asm" ; marcelnote - merged Cinnabar Pokecenter and Mart
+	INCLUDE "translation/fra/text/CinnabarVolcano1FB1F.fra.asm"   ; marcelnote - new location
+	INCLUDE "translation/fra/text/CinnabarVolcano2F.fra.asm"      ; marcelnote - new location
+ELSE
+	INCLUDE "text/PokemonMansion1F.asm"
+	INCLUDE "text/CinnabarGym.asm"
+	INCLUDE "text/CinnabarLab.asm"            ; marcelnote - merged Cinnabar Lab maps
+	INCLUDE "text/CinnabarPokecenterMart.asm" ; marcelnote - merged Cinnabar Pokecenter and Mart
+	INCLUDE "text/CinnabarVolcano1FB1F.asm"   ; marcelnote - new location
+	INCLUDE "text/CinnabarVolcano2F.asm"      ; marcelnote - new location
+ENDC
+
+
 SECTION "Mandarin Island Text", ROMX ; marcelnote - new
 
 IF DEF(_FRA)
@@ -542,6 +543,19 @@ ELSE
 	INCLUDE "text/CitrusFerryDeck.asm"          ; marcelnote - new location
 	INCLUDE "text/CitrusFerryOutside.asm"       ; marcelnote - new location
 	INCLUDE "text/CitrusFerryRooms.asm"         ; marcelnote - new location
+ENDC
+
+
+SECTION "Victory Road Text", ROMX ; marcelnote - new
+
+IF DEF(_FRA)
+	INCLUDE "translation/fra/text/VictoryRoad1F.fra.asm"
+	INCLUDE "translation/fra/text/VictoryRoad2F.fra.asm"
+	INCLUDE "translation/fra/text/VictoryRoad3F.fra.asm"
+ELSE
+	INCLUDE "text/VictoryRoad1F.asm"
+	INCLUDE "text/VictoryRoad2F.asm"
+	INCLUDE "text/VictoryRoad3F.asm"
 ENDC
 
 

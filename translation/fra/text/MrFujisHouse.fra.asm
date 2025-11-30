@@ -128,7 +128,7 @@ _MrFujisHouseMrFujiThankYouText:: ; marcelnote - new
 
 	para "J'ai entendu dire"
 	line "qu'il a un nouveau"
-	line "laboratoire sur"
+	cont "laboratoire sur"
 	cont "l'ILE MANDARINE."
 
 	para "Prends ceci, ça"
@@ -152,7 +152,7 @@ _MrFujisHouseMrFujiCitrusPassExplanationText:: ; marcelnote - new
 	para "Avec ce PASSE,"
 	line "tu peux prendre"
 	cont "le ferry entre"
-	cont "CARMIN SUR MER"
+	cont "CARMIN SUR MER et"
 	cont "l'ILE MANDARINE."
 
 	para "Là-bas, tu devrais"
@@ -161,10 +161,32 @@ _MrFujisHouseMrFujiCitrusPassExplanationText:: ; marcelnote - new
 	done
 
 _MrFujisHouseMrFujiBeCarefulText:: ; marcelnote - new
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "MR.FUJI: Même"
 	line "si le DR.JABARA"
 	cont "peut t'aider,"
 	cont "reste prudent."
+
+	para "C'est un brillant"
+	line "chercheur, mais"
+	cont "ses méthodes"
+	cont "sont parfois"
+	cont "douteuses."
+	done
+
+.GirlText
+	text "MR.FUJI: Même"
+	line "si le DR.JABARA"
+	cont "peut t'aider,"
+	cont "reste prudente."
 
 	para "C'est un brillant"
 	line "chercheur, mais"

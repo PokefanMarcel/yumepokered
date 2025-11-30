@@ -13,7 +13,7 @@ _DrJabarasLabJabaraIntroText::
 	cont "mais il manquait"
 	cont "d'ambition."
 
-	para "Peu importe"
+	para "Peu importe."
 	line "Nos travaux"
 	cont "à CRAMOIS'ILE,"
 	cont "c'est du passé."
@@ -32,6 +32,15 @@ _DrJabarasLabJabaraIntroText::
 	done
 
 _DrJabarasLabHaveFluteText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Attends voir... Tu"
 	line "as une #FLUTE?"
 
@@ -43,6 +52,20 @@ _DrJabarasLabHaveFluteText::
 	para "Si tu m'la prêtes,"
 	line "tu ne seras pas"
 	cont "déçu."
+	done
+
+.GirlText
+	text "Attends voir... Tu"
+	line "as une #FLUTE?"
+
+	para "Avec ça, je"
+	line "pourrais enfin"
+	cont "confirmer mes"
+	cont "théories."
+
+	para "Si tu m'la prêtes,"
+	line "tu ne seras pas"
+	cont "déçue."
 	done
 
 _DrJabarasLabRefusedText::
@@ -73,8 +96,9 @@ _DrJabarasLabExperimentsOverText::
 	line "#FLUTE, j'ai"
 	cont "trouvé des sons"
 	cont "qui déclenchent"
-	cont "une réaction..."
-	cont "Disons, anormale"
+	cont "des réactions..."
+	cont "disons..."
+	cont "surprenantes"
 	cont "chez les #MON."
 
 	para "Tiens, je n'en ai"
@@ -116,11 +140,6 @@ _DrJabarasLabJabaraFinalText::
 	cont "après. Personne"
 	cont "n'a vu MEWTWO"
 	cont "depuis."
-
-	para "Et MEW? Il aurait"
-	line "été vu près de"
-	cont "CELADOPOLE, selon"
-	cont "des rumeurs."
 
 	para "Et MEW? On raconte"
 	line "qu'il a été vu"

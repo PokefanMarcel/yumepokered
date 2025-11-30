@@ -155,11 +155,28 @@ _Route19Swimmer8EndBattleText::
 	prompt
 
 _Route19Swimmer8AfterBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Un LOKHLASS, c'est"
 	line "grand et gros! Si"
 	cont "tu montes sur son"
 	cont "dos, tu ne seras"
 	cont "pas mouillé!"
+	done
+
+.GirlText
+	text "Un LOKHLASS, c'est"
+	line "grand et gros! Si"
+	cont "tu montes sur son"
+	cont "dos, tu ne seras"
+	cont "pas mouillée!"
 	done
 
 
@@ -224,7 +241,7 @@ _Route19Fisher1EndBattleText:: ; marcelnote - new trainer, Fisher1
 
 _Route19Fisher1AfterBattleText:: ; marcelnote - new trainer, Fisher1
 	text "Il faut vraiment"
-	line "qu'je trouve"
+	line "qu'j'trouve"
 	cont "un autre coin"
 	cont "pour pêcher."
 	done

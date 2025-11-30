@@ -84,8 +84,36 @@ _SaffronGymSabrinaTM46NoRoomText::
 	done
 
 _SaffronGymGuideChampInMakingText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Salut! Graine de"
 	line "champion!"
+
+	para "Les #MON de"
+	line "MORGANE utilisent"
+	cont "les pouvoirs de"
+	cont "l'esprit!"
+
+	para "Les #MON du"
+	line "type combat sont"
+	cont "désavantagés!"
+
+	para "Ils deviennent"
+	line "dingues avant de"
+	cont "pouvoir porter"
+	cont "un coup!"
+	done
+
+.GirlText
+	text "Salut! Graine de"
+	line "championne!"
 
 	para "Les #MON de"
 	line "MORGANE utilisent"
@@ -142,9 +170,24 @@ _SaffronGymYoungster1BattleText::
 	done
 
 _SaffronGymYoungster1EndBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Nyan!"
 	line "T'as pas l'air"
 	cont "effrayé!"
+	prompt
+
+.GirlText
+	text "Nyan!"
+	line "T'as pas l'air"
+	cont "effrayée!"
 	prompt
 
 _SaffronGymYoungster1AfterBattleText::
@@ -214,7 +257,7 @@ _SaffronGymYoungster3BattleText::
 	text "MORGANE est jeune"
 	line "mais elle est"
 	cont "aussi notre"
-	cont "CHAMPION!"
+	cont "CHAMPIONNE!" ; marcelnote - was CHAMPION
 
 	para "Tu vas en baver"
 	line "comme un russe"
@@ -240,7 +283,7 @@ _SaffronGymYoungster3AfterBattleText::
 	done
 
 _SaffronGymYoungster4BattleText::
-	text "Le CHAMPION de"
+	text "La CHAMPIONNE de" ; marcelnote - was Le CHAMPION
 	line "l'ARENE #MON"
 	cont "de SAFRANIA est"
 	cont "une médium psy!"

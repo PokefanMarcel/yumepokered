@@ -13,7 +13,7 @@ _SilphCo10FRocketBattleText::
 	text "Bienvenue au"
 	line "9ème étage!"
 	cont "J'adore les"
-	cont "visites !"
+	cont "visites!" ; marcelnote - removed space before !
 	done
 
 _SilphCo10FRocketEndBattleText::
@@ -39,6 +39,20 @@ _SilphCo10FScientistEndBattleText::
 	prompt
 
 _SilphCo10FScientistAfterBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "T'as gagné!"
 	line "T'es content?"
+	done
+
+.GirlText
+	text "T'as gagné!"
+	line "T'es contente?"
 	done

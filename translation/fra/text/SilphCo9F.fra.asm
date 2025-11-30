@@ -1,6 +1,22 @@
 _SilphCo9FNurseYouLookTiredText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Tu as l'air très"
 	line "fatigué! Tu"
+	cont "devrais faire une"
+	cont "sieste!"
+	prompt
+
+.GirlText
+	text "Tu as l'air très"
+	line "fatiguée! Tu"
 	cont "devrais faire une"
 	cont "sieste!"
 	prompt

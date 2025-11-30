@@ -1,7 +1,31 @@
 _SafariZoneSecretHouseFishingGuruYouHaveWonText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Ah! Quand même!"
 
 	para "Tu es le premier"
+	line "à découvrir la"
+	cont "CABANE SECRETE!"
+
+	para "J'avais peur que"
+	line "personne ne gagne"
+	cont "notre prix."
+
+	para "Félicitations!"
+	line "Tu as gagné!"
+	prompt
+
+.GirlText
+	text "Ah! Quand même!"
+
+	para "Tu es la première"
 	line "à découvrir la"
 	cont "CABANE SECRETE!"
 
@@ -45,7 +69,7 @@ _SafariZoneSecretHouseFishingGuruHM03NoRoomText::
 _SafariZoneSecretHousePosterText:: ; marcelnote - new
 	text "Fans de SURF,"
 	line "venez visiter"
-	line "notre magasin sur"
+	cont "notre magasin sur"
 	cont "l'ILE MANDARINE!"
 	cont "SURF A GOGO"
 	done

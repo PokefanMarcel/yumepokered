@@ -245,8 +245,36 @@ _CinnabarGymSuperNerd7AfterBattleText::
 	done
 
 _CinnabarGymGymGuideChampInMakingText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Salut! Graine de"
 	line "champion!"
+
+	para "AUGUSTE, le"
+	line "flamboyant, est"
+	cont "un pro des"
+	cont "#MON de feu!"
+
+	para "C'est le moment"
+	line "de jeter de"
+	cont "l'eau sur le feu!"
+
+	para "Prends donc des"
+	line "ANTI-BRULE avec"
+	cont "toi! Ca peut"
+	cont "toujours servir!"
+	done
+
+.GirlText
+	text "Salut! Graine de"
+	line "championne!"
 
 	para "AUGUSTE, le"
 	line "flamboyant, est"

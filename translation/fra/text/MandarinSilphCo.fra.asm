@@ -41,7 +41,7 @@ _MandarinSilphCo3FScientistText::
 
 	para "Pourquoi le"
 	line "directeur refuse"
-	cont "de me recevoir?"
+	cont "de m'recevoir?"
 	done
 
 _MandarinSilphCo4FDirectorBusyText::
@@ -100,5 +100,5 @@ _MandarinSilphCo3FMeetingRoomSignText::
 _MandarinSilphCo4FRegionalDirectorSignText::
 	text "SYLPHE SARL"
 	line "Directeur"
-	line "régional"
+	cont "régional"
 	done

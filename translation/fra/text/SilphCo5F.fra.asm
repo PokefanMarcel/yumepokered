@@ -6,13 +6,43 @@ _SilphCo5FSilphWorkerMThatsYouRightText::
 	done
 
 _SilphCo5FSilphWorkerMYoureOurHeroText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "La TEAM ROCKET"
 	line "est battue! Tu es"
 	cont "notre héros!"
 	done
 
+.GirlText
+	text "La TEAM ROCKET"
+	line "est battue! Tu es"
+	cont "notre sauveuse!"
+	done
+
 _SilphCo5FRocket1BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Il paraît qu'un"
+	line "gosse se balade"
+	cont "dans le coin..."
+	done
+
+.GirlText
+	text "Il paraît qu'une"
 	line "gosse se balade"
 	cont "dans le coin..."
 	done
@@ -46,9 +76,24 @@ _SilphCo5FScientistAfterBattleText::
 	done
 
 _SilphCo5FRockerBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Mais? C'est pas"
 	line "pour les p'tits"
 	cont "morveux ici!"
+	done
+
+.GirlText
+	text "Mais? C'est pas"
+	line "pour les p'tites"
+	cont "morveuses ici!"
 	done
 
 _SilphCo5FRockerEndBattleText::

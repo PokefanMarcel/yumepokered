@@ -55,8 +55,22 @@ _CinnabarVolcanoB1FHikerBattleText::
 	done
 
 _CinnabarVolcanoB1FHikerEndBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "T'es"
 	line "pas un rigolo!"
+	prompt
+
+.GirlText
+	text "T'es"
+	line "pas une rigolote!"
 	prompt
 
 _CinnabarVolcanoB1FHikerAfterBattleText::

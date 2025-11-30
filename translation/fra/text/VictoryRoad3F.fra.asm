@@ -1,6 +1,21 @@
 _VictoryRoad3FCooltrainerM1BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "J'ai entendu"
 	line "parler d'un jeune"
+	cont "prodige!"
+	done
+
+.GirlText
+	text "J'ai entendu"
+	line "parler d'une jeune"
 	cont "prodige!"
 	done
 
@@ -56,12 +71,41 @@ _VictoryRoad3FCooltrainerF2BattleText::
 	done
 
 _VictoryRoad3FCooltrainerF2EndBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Oh!"
 	line "T'es un dur toi!"
 	prompt
 
+.GirlText
+	text "Oh!"
+	line "T'es une dure!"
+	prompt
+
 _VictoryRoad3FCooltrainerF2AfterBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Bats-toi bien,"
 	line "et tu seras"
 	cont "un bon dresseur!"
+	done
+
+.GirlText
+	text "Bats-toi bien,"
+	line "et tu seras une"
+	cont "bonne dresseuse!"
 	done

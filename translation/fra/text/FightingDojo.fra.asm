@@ -1,5 +1,30 @@
 _FightingDojoKarateMasterText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "P'tit faiblard!"
+
+	para "Je suis le GRAND"
+	line "MAITRE de KARATE!"
+	cont "Je suis le"
+	cont "CHAMPION!"
+
+	para "Tu me provoques?"
+	line "Tu veux t'battre?"
+	cont "Tu cherches le"
+	cont "contact? HAHAHA!"
+
+	para "Ayaaaaa!"
+	done
+
+.GirlText
+	text "P'tite faiblarde!"
 
 	para "Je suis le GRAND"
 	line "MAITRE de KARATE!"
@@ -197,9 +222,24 @@ _FightingDojoHitmonchanPokeBallText::
 	done
 
 _FightingDojoBetterNotGetGreedyText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Tss tss tss!"
 	line "Faut pas être"
 	cont "trop gourmand..."
+	done
+
+.GirlText
+	text "Tss tss tss!"
+	line "Faut pas être"
+	cont "trop gourmande..."
 	done
 
 

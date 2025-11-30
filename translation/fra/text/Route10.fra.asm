@@ -1,5 +1,21 @@
 _Route10SuperNerd1BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "T'es un dingue"
+	line "des #MON?"
+	cont "Tu veux voir ma"
+	cont "collec'?"
+	done
+
+.GirlText
+	text "T'es une dingue"
 	line "des #MON?"
 	cont "Tu veux voir ma"
 	cont "collec'?"
@@ -33,7 +49,22 @@ _Route10Hiker1AfterBattleText::
 	done
 
 _Route10SuperNerd2BattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Hé, gamin! Tu"
+	line "veux voir mes"
+	cont "#MON?"
+	done
+
+.GirlText
+	text "Hé, gamine! Tu"
 	line "veux voir mes"
 	cont "#MON?"
 	done

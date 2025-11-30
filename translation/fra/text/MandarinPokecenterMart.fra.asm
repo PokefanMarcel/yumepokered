@@ -1,12 +1,12 @@
 ; marcelnote - new location
 _MandarinPokecenterSuperNerdText::
 	text "As-tu entendu"
-	text "parler d'OLGA du"
-	line "CONSEIL des 4?"
+	line "parler d'OLGA du"
+	cont "CONSEIL des 4?"
 
 	para "Elle a grandi ici,"
 	line "sur cette île!"
-	line "C'est notre fierté"
+	cont "C'est notre fierté"
 	cont "locale."
 
 	para "Et entre nous..."

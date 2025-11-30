@@ -32,8 +32,30 @@ _WardensHouseWardenTeethPoppedInHisTeethText::
 	prompt
 
 _WardensHouseWardenThanksText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "GARDIEN: Merci,"
 	line "gamin! C'est un"
+	cont "peu dur de me"
+	cont "faire comprendre."
+
+	para "J'pouvais plus"
+	line "travailler!"
+	cont "Quelle horreur!"
+	cont "Tiens, voilà pour"
+	cont "te remercier."
+	prompt
+
+.GirlText
+	text "GARDIEN: Merci,"
+	line "gamine! C'est un"
 	cont "peu dur de me"
 	cont "faire comprendre."
 
