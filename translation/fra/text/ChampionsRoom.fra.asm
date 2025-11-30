@@ -108,12 +108,38 @@ _RivalDefeatedText::
 	prompt
 
 _RivalVictoryText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Hahaha!"
 	line "J'ai gagné!"
 	cont "Nya na nana na!"
 
 	para "J'suis trop fort!"
 	line "T'es trop nul!"
+
+	para "Comment t'as fait"
+	line "pour arriver"
+	cont "jusqu'ici?"
+
+	para "Minable!"
+	line "T'entends?"
+	cont "Minable!"
+	prompt
+
+.GirlText
+	text "Hahaha!"
+	line "J'ai gagné!"
+	cont "Nya na nana na!"
+
+	para "J'suis trop fort!"
+	line "T'es trop nulle!"
 
 	para "Comment t'as fait"
 	line "pour arriver"

@@ -88,9 +88,9 @@ _PokemonTower6FAgathaText:: ; marcelnote - postgame Agatha event
 
 .BoyText
 	text "Alors, tu as bravé"
-	line "les esprits."
-	cont "Ils sont plus"
-	cont "calmes, on dirait."
+	line "les esprits. Ils"
+	cont "sont plus calmes,"
+	cont "on dirait."
 
 	para "Ne juge pas trop"
 	line "vite une vieille"
@@ -124,9 +124,9 @@ _PokemonTower6FAgathaText:: ; marcelnote - postgame Agatha event
 
 .GirlText
 	text "Alors, tu as bravé"
-	line "les esprits."
-	cont "Ils sont plus"
-	cont "calmes, on dirait."
+	line "les esprits. Ils"
+	cont "sont plus calmes,"
+	cont "on dirait."
 
 	para "Ne juge pas trop"
 	line "vite une vieille"

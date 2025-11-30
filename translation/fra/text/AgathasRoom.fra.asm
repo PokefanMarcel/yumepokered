@@ -87,7 +87,7 @@ _AgathasRoomAgathaEndBattleText::
 
 .GirlText
 	text "Oh ho!"
-	line "Tu es doué ma"
+	line "Tu es douée ma"
 	cont "petite!"
 	prompt
 
@@ -119,7 +119,7 @@ _AgathasRoomAgathaRematchBeforeBattleText:: ; marcelnote - Agatha rematch text
 
 .BoyText
 	text "Déjà de retour,"
-	line "ma petit?"
+	line "mon petit?"
 
 	para "Le temps passe"
 	line "pour nous tous..."

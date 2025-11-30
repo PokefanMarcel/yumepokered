@@ -52,8 +52,8 @@ _PokemonTower1FAgathaHowDareYouText:: ; marcelnote - postgame Agatha event
 	line "à troubler"
 	cont "le dernier repos"
 	cont "des #MON, tout"
-	cont "ça pour une fichue"
-	cont "radio!?"
+	cont "ça pour une"
+	cont "fichue radio!?"
 
 	para "DIRECTEUR: C'est"
 	line "le progrès qui"

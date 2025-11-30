@@ -163,7 +163,7 @@ _LancesRoomLanceRematchAfterBattleText:: ; marcelnote - Lance rematch text
 	line "à y croire!"
 
 	para "Même ma nouvelle"
-	line "équipe n'a pas pu"
+	line "équipe n'a pas su"
 	cont "te faire face."
 
 	para "Tu mérites"
@@ -177,7 +177,7 @@ _LancesRoomLanceRematchAfterBattleText:: ; marcelnote - Lance rematch text
 	line "à y croire!"
 
 	para "Même ma nouvelle"
-	line "équipe n'a pas pu"
+	line "équipe n'a pas su"
 	cont "te faire face."
 
 	para "Tu mérites"

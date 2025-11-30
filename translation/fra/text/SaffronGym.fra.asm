@@ -390,7 +390,7 @@ _SaffronGymWillPostBattleText:: ; marcelnote - postgame Will
 	cont "champion!"
 
 	para "Mon propre voyage"
-	line "ne fait que."
+	line "ne fait que"
 	cont "commencer."
 
 	para "Je vais parcourir"
@@ -405,7 +405,7 @@ _SaffronGymWillPostBattleText:: ; marcelnote - postgame Will
 	cont "championne!"
 
 	para "Mon propre voyage"
-	line "ne fait que."
+	line "ne fait que"
 	cont "commencer."
 
 	para "Je vais parcourir"
@@ -420,6 +420,15 @@ _SaffronGymBrunoArrivesText:: ; marcelnote - postgame Bruno
 	done
 
 _SaffronGymBrunoInspiringText:: ; marcelnote - postgame Bruno
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "ALDO: Quel"
 	line "sacré combat!"
 
@@ -430,6 +439,34 @@ _SaffronGymBrunoInspiringText:: ; marcelnote - postgame Bruno
 
 	para "Contre le"
 	line "CHAMPION de la"
+	cont "LIGUE #MON,"
+	cont "c'est du lourd!"
+
+	para "Et toi,"
+	line "<PLAYER>, tu"
+	cont "m'épates encore."
+
+	para "Tous les deux,"
+	line "poussez la barre"
+	cont "toujours plus"
+	cont "haut!"
+
+	para "Continuez à vous"
+	line "entraîner dur, et"
+	cont "on se reverra!"
+	done
+
+.GirlText
+	text "ALDO: Quel"
+	line "sacré combat!"
+
+	para "CLEMENT, ta"
+	line "stratégie était"
+	cont "carrée, précise."
+	cont "Rien à redire!"
+
+	para "Contre la"
+	line "CHAMPIONNE de la"
 	cont "LIGUE #MON,"
 	cont "c'est du lourd!"
 

@@ -13,17 +13,17 @@ _MtSilver3FYellowBattleText::
 
 	para "Ravie de te"
 	line "recontrer enfin."
+	cont "Je suis YELLOW."
 
-	para "Je suis YELLOW."
-	line "J'ai aussi commencé"
-	cont "mon voyage au"
+	para "J'ai aussi commencé"
+	line "mon voyage au"
 	cont "BOURG PALETTE,"
 	cont "peu après <RIVAL>"
 	cont "et toi."
 
 	para "J'ai beaucoup"
 	line "entendu parler"
-	cont "de tes exploits."
+	cont "de tes exploits!"
 
 	para "Vaincre la TEAM"
 	line "ROCKET, devenir"
@@ -39,7 +39,7 @@ _MtSilver3FYellowBattleText::
 
 	para "Notre aventure,"
 	line "notre vraie"
-	line "victoire, c'est"
+	cont "victoire, c'est"
 	cont "le lien qui nous"
 	cont "unit à nos"
 	cont "#MON."
@@ -54,7 +54,7 @@ _MtSilver3FYellowBattleText::
 	cont "vainqueur..."
 
 	para "Aujourd'hui, es-tu"
-	para "enfin le meilleur"
+	line "enfin le meilleur"
 	cont "dresseur?"
 	done
 
@@ -64,17 +64,17 @@ _MtSilver3FYellowBattleText::
 
 	para "Ravie de te"
 	line "recontrer enfin."
+	cont "Je suis YELLOW."
 
-	para "Je suis YELLOW."
-	line "J'ai aussi commencé"
-	cont "mon voyage au"
+	para "J'ai aussi commencé"
+	line "mon voyage au"
 	cont "BOURG PALETTE,"
 	cont "peu après <RIVAL>"
 	cont "et toi."
 
 	para "J'ai beaucoup"
 	line "entendu parler"
-	cont "de tes exploits."
+	cont "de tes exploits!"
 
 	para "Vaincre la TEAM"
 	line "ROCKET, devenir"
@@ -90,7 +90,7 @@ _MtSilver3FYellowBattleText::
 
 	para "Notre aventure,"
 	line "notre vraie"
-	line "victoire, c'est"
+	cont "victoire, c'est"
 	cont "le lien qui nous"
 	cont "unit à nos"
 	cont "#MON."
@@ -105,7 +105,7 @@ _MtSilver3FYellowBattleText::
 	cont "vainqueur..."
 
 	para "Aujourd'hui, es-tu"
-	para "enfin le meilleur"
+	line "enfin le meilleur"
 	cont "dresseur?"
 	done
 

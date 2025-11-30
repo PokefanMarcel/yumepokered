@@ -37,10 +37,27 @@ _SilphFactory2FRocket1BattleText::
 	done
 
 _SilphFactory2FRocket1EndBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Grrr..."
 	line "T'es trop fort."
 	cont "Attends... T'as le"
-	cont "BADGE de GIOVANNI!"
+	cont "BADGE d'GIOVANNI?"
+	cont "C'était donc vrai?"
+	prompt
+
+.GirlText
+	text "Grrr..."
+	line "T'es trop forte."
+	cont "Attends... T'as le"
+	cont "BADGE d'GIOVANNI?"
 	cont "C'était donc vrai?"
 	prompt
 
@@ -98,9 +115,30 @@ _SilphFactory2FScientist3AfterEventText::
 	done
 
 _SilphFactory2FSilphWorkerMUpdateCardText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Haaa!"
 	line "Attends... Tu es"
 	cont "venu nous aider?"
+
+	para "Je vais mettre ta"
+	line "CARTE MAGN. à"
+	cont "jour pour accéder"
+	cont "à la salle de"
+	cont "réunion."
+	prompt
+
+.GirlText
+	text "Haaa!"
+	line "Attends... Tu es"
+	cont "venue nous aider?"
 
 	para "Je vais mettre ta"
 	line "CARTE MAGN. à"
@@ -115,8 +153,8 @@ _SilphFactory2FSilphWorkerMNoCardText::
 	done
 
 _SilphFactory2FSilphWorkerMCardWasUpdatedText::
-	line "La CARTE MAGN. a"
-	cont "été mise à jour!"
+	text "La CARTE MAGN. a"
+	line "été mise à jour!"
 	done
 
 _SilphFactory2FSilphWorkerMHidHereText::
@@ -188,11 +226,12 @@ _SilphFactory2FLoreleiTakeCareText::
 .BoyText
 	text "Alors z'était"
 	line "la TEAM ROCKET"
-	line "derrière tout za."
+	cont "derrière tout za."
 	cont "Merzi de t'être"
-	cont "occupé d'eux, même"
-	cont "zi j'ai peur que"
-	cont "le mal zoit fait."
+	cont "occupé d'eux."
+
+	para "Mais j'ai peur que"
+	line "le mal zoit fait."
 
 	para "Nettoyer la mer de"
 	line "zette polluzion"
@@ -213,11 +252,12 @@ _SilphFactory2FLoreleiTakeCareText::
 .GirlText
 	text "Alors z'était"
 	line "la TEAM ROCKET"
-	line "derrière tout za."
+	cont "derrière tout za."
 	cont "Merzi de t'être"
-	cont "occupé d'eux, même"
-	cont "zi j'ai peur que"
-	cont "le mal zoit fait."
+	cont "occupée d'eux."
+
+	para "Mais j'ai peur que"
+	line "le mal zoit fait."
 
 	para "Nettoyer la mer de"
 	line "zette polluzion"

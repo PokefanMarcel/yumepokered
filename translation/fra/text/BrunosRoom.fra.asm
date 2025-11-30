@@ -27,7 +27,22 @@ _BrunosRoomBrunoEndBattleText::
 	prompt
 
 _BrunosRoomBrunoAfterBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Bien joué, p'tit!"
+	line "La prochaine"
+	cont "t'attend!"
+	done
+
+.GirlText
+	text "Bien joué, p'tite!"
 	line "La prochaine"
 	cont "t'attend!"
 	done

@@ -26,7 +26,26 @@ _LoreleisRoomLoreleiEndBattleText::
 	prompt
 
 _LoreleisRoomLoreleiAfterBattleText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Tu es fort."
+	line "Z'est bien."
+
+	para "Mais la LIGUE"
+	line "#MON te"
+	cont "rézerve d'autres"
+	cont "zurprizes!"
+	done
+
+.GirlText
+	text "Tu es forte."
 	line "Z'est bien."
 
 	para "Mais la LIGUE"
