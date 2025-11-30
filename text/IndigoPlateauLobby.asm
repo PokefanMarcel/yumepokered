@@ -1,4 +1,4 @@
-_IndigoPlateauLobbyGymGuideText::
+_IndigoPlateauLobbyGymGuideChampInMakingText:: ; marcelnote - modified label
 	text "Yo! Champ in"
 	line "making!"
 
@@ -11,6 +11,18 @@ _IndigoPlateauLobbyGymGuideText::
 	line "have to start all"
 	cont "over again! This"
 	cont "is it! Go for it!"
+	done
+
+_IndigoPlateauLobbyGymGuideTrueChampText:: ; marcelnote - new after becoming champ
+	text "Yo! You're the"
+	line "champ now!"
+	cont "I always knew you"
+	cont "had it in you!"
+
+	para "Just remember,"
+	line "a true champ"
+	cont "keeps dreaming"
+	cont "big!"
 	done
 
 _IndigoPlateauLobbyCooltrainerFBeforeChampionText:: ; marcelnote - modified label

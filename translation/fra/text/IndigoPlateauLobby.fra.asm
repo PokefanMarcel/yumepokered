@@ -1,4 +1,4 @@
-_IndigoPlateauLobbyGymGuideText::
+_IndigoPlateauLobbyGymGuideChampInMakingText:: ; marcelnote - modified label
 	text_asm
 	ld a, [wStatusFlags4]
 	bit BIT_IS_GIRL, a
@@ -47,6 +47,35 @@ _IndigoPlateauLobbyGymGuideText::
 	cont "Alors fais bien"
 	cont "attention et..."
 	cont "Ecrase-les!"
+	done
+
+_IndigoPlateauLobbyGymGuideTrueChampText:: ; marcelnote - new after becoming champ
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
+	text "Salut! Te voilà,"
+	line "champion!"
+	cont "J'savais que t'en"
+	cont "étais capable!"
+
+	para "Alors, tu vises"
+	line "quoi maintenant?"
+	done
+
+.GirlText
+	text "Salut! Te voilà,"
+	line "championne!"
+	cont "J'savais que t'en"
+	cont "étais capable!"
+
+	para "Alors, tu vises"
+	line "quoi maintenant?"
 	done
 
 _IndigoPlateauLobbyCooltrainerFBeforeChampionText:: ; marcelnote - modified label

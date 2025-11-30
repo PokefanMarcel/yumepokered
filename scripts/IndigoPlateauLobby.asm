@@ -131,7 +131,21 @@ IndigoPlateauLobbyNurseText:
 	script_pokecenter_nurse
 
 IndigoPlateauLobbyGymGuideText:
-	text_far _IndigoPlateauLobbyGymGuideText
+	text_asm
+	CheckEvent EVENT_BECAME_CHAMPION
+	ld hl, .AfterChampionText
+    jr nz, .is_champion
+	ld hl, .BeforeChampionText
+.is_champion
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+.BeforeChampionText
+	text_far _IndigoPlateauLobbyGymGuideChampInMakingText
+	text_end
+
+.AfterChampionText
+	text_far _IndigoPlateauLobbyGymGuideTrueChampText
 	text_end
 
 IndigoPlateauLobbyCooltrainerFText: ; marcelnote - modified to say something different after becoming champion
