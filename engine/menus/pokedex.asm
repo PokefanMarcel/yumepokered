@@ -1,4 +1,10 @@
 ShowPokedexMenu:
+	;;;;;;;;;; marcelnote - added pausing animations
+	ldh a, [hTileAnimations]
+	push af
+	xor a
+	ldh [hTileAnimations], a
+	;;;;;;;;;;
 	call GBPalWhiteOut
 	call ClearScreen
 	call UpdateSprites
@@ -40,6 +46,10 @@ ShowPokedexMenu:
 	ld [wOverrideSimulatedJoypadStatesMask], a
 	pop af
 	ld [wListScrollOffset], a
+	;;;;;;;;;; marcelnote - added pausing animations
+	pop af
+	ldh [hTileAnimations], a
+	;;;;;;;;;;
 	call GBPalWhiteOutWithDelay3
 	call RunDefaultPaletteCommand
 	jp ReloadMapData
