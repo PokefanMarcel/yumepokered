@@ -113,7 +113,11 @@ _Route16CyclingRoadSignText::
 	line "CYCLING ROAD"
 	done
 
-_Route16SignText:: ; marcelnote - modified for new layout
+_Route16SignText::
 	text "ROUTE 16"
-	line "East to CELADON"
+	line "CELADON CITY -"
+	cont "FUCHSIA CITY"
 	done
+;	text "ROUTE 16" ; marcelnote - planned changes for new layout
+;	line "East to CELADON"
+;	done

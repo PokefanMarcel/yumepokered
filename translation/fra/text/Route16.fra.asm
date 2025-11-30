@@ -164,8 +164,12 @@ _Route16CyclingRoadSignText::
 	line "PISTE CYCLABLE"
 	done
 
-_Route16SignText:: ; marcelnote - modified for new layout
+_Route16SignText::
 	text "ROUTE 16"
-	line "CELADOPOLE"
-	cont "à l'Est"
+	line "CELADOPOLE -"
+	cont "PARMANIE"
 	done
+;	text "ROUTE 16" ; marcelnote - planned changes for new layout
+;	line "CELADOPOLE"
+;	cont "à l'Est"
+;	done
