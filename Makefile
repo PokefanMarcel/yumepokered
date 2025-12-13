@@ -180,9 +180,9 @@ yumepokeblue.gb:        RGBLINKFLAGS += -p 0x00
 yumepokeblue_debug.gb:  RGBLINKFLAGS += -p 0xff
 yumepokered_vc.gb:      RGBLINKFLAGS += -p 0x00
 yumepokeblue_vc.gb:     RGBLINKFLAGS += -p 0x00
-yumepokerouge.gb        RGBLINKFLAGS += -p 0x00
-yumepokeverte.gb        RGBLINKFLAGS += -p 0x00
-yumepokebleue.gb        RGBLINKFLAGS += -p 0x00
+yumepokerouge.gb:       RGBLINKFLAGS += -p 0x00
+yumepokeverte.gb:       RGBLINKFLAGS += -p 0x00
+yumepokebleue.gb:       RGBLINKFLAGS += -p 0x00
 yumepokebleue_debug.gb: RGBLINKFLAGS += -p 0xff
 
 RGBFIXFLAGS += -jsv -n 0 -k 01 -l 0x33 -m MBC3+RAM+BATTERY -r 03
