@@ -174,31 +174,30 @@ endif
 
 
 RGBLINKFLAGS += -d
-yumepokered.gbc:         RGBLINKFLAGS += -p 0x00
-yumepokegreen.gbc:       RGBLINKFLAGS += -p 0x00
-yumepokeblue.gbc:        RGBLINKFLAGS += -p 0x00
-yumepokeblue_debug.gbc:  RGBLINKFLAGS += -p 0xff
-yumepokered_vc.gbc:      RGBLINKFLAGS += -p 0x00
-yumepokeblue_vc.gbc:     RGBLINKFLAGS += -p 0x00
-yumepokerouge.gbc        RGBLINKFLAGS += -p 0x00
-yumepokeverte.gbc        RGBLINKFLAGS += -p 0x00
-yumepokebleue.gbc        RGBLINKFLAGS += -p 0x00
-yumepokebleue_debug.gbc: RGBLINKFLAGS += -p 0xff
+yumepokered.gb:         RGBLINKFLAGS += -p 0x00
+yumepokegreen.gb:       RGBLINKFLAGS += -p 0x00
+yumepokeblue.gb:        RGBLINKFLAGS += -p 0x00
+yumepokeblue_debug.gb:  RGBLINKFLAGS += -p 0xff
+yumepokered_vc.gb:      RGBLINKFLAGS += -p 0x00
+yumepokeblue_vc.gb:     RGBLINKFLAGS += -p 0x00
+yumepokerouge.gb        RGBLINKFLAGS += -p 0x00
+yumepokeverte.gb        RGBLINKFLAGS += -p 0x00
+yumepokebleue.gb        RGBLINKFLAGS += -p 0x00
+yumepokebleue_debug.gb: RGBLINKFLAGS += -p 0xff
 
 RGBFIXFLAGS += -jsv -n 0 -k 01 -l 0x33 -m MBC3+RAM+BATTERY -r 03
-yumepokered.gbc:         RGBFIXFLAGS += -p 0x00 -t "POKEMON RED"
-yumepokegreen_opt        RGBFIXFLAGS += -p 0x00 -t "POKEMON GREEN"
-yumepokeblue.gbc:        RGBFIXFLAGS += -p 0x00 -t "POKEMON BLUE"
-yumepokeblue_debug.gbc:  RGBFIXFLAGS += -p 0xff -t "POKEMON BLUE"
-yumepokered_vc.gbc:      RGBFIXFLAGS += -p 0x00 -t "POKEMON RED"
-yumepokeblue_vc.gbc:     RGBFIXFLAGS += -p 0x00 -t "POKEMON BLUE"
+yumepokered.gb:         RGBFIXFLAGS += -p 0x00 -t "POKEMON RED"
+yumepokegreen.gb:       RGBFIXFLAGS += -p 0x00 -t "POKEMON GREEN"
+yumepokeblue.gb:        RGBFIXFLAGS += -p 0x00 -t "POKEMON BLUE"
+yumepokeblue_debug.gb:  RGBFIXFLAGS += -p 0xff -t "POKEMON BLUE"
+yumepokered_vc.gb:      RGBFIXFLAGS += -p 0x00 -t "POKEMON RED"
+yumepokeblue_vc.gb:     RGBFIXFLAGS += -p 0x00 -t "POKEMON BLUE"
+yumepokerouge.gb:       RGBFIXFLAGS += -p 0x00 -t "POKEMON RED"
+yumepokeverte.gb:       RGBFIXFLAGS += -p 0x00 -t "POKEMON GREEN"
+yumepokebleue.gc:       RGBFIXFLAGS += -p 0x00 -t "POKEMON BLUE"
+yumepokebleue_debug.gb: RGBFIXFLAGS += -p 0xff -t "POKEMON BLUE"
 
-yumepokerouge.gbc        RGBFIXFLAGS += -p 0x00 -t "POKEMON RED"
-yumepokeverte.gbc        RGBFIXFLAGS += -p 0x00 -t "POKEMON GREEN"
-yumepokebleue.gbc        RGBFIXFLAGS += -p 0x00 -t "POKEMON BLUE"
-yumepokebleue_debug.gbc  RGBFIXFLAGS += -p 0xff -t "POKEMON BLUE"
-
-%.gbc: $$(%_obj) layout.link
+%.gb: $$(%_obj) layout.link
 	$(RGBLINK) $(RGBLINKFLAGS) -l layout.link -m $*.map -n $*.sym -o $@ $(filter %.o,$^)
 	$(RGBFIX) $(RGBFIXFLAGS) $@
 

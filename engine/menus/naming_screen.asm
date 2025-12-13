@@ -378,7 +378,7 @@ PrintNicknameAndUnderscores:
 	jr nc, .got_max_length
 	ld b, 7 ; player or rival max name length
 .got_max_length
-	ld a, "<UNDERSCORE>" ; underscore tile id
+	ld a, '<UNDERSCORE>' ; underscore tile id
 .placeUnderscoreLoop
 	ld [hli], a
 	dec b
@@ -409,7 +409,7 @@ PrintNicknameAndUnderscores:
 	ld b, $0
 	hlcoord 10, 3
 	add hl, bc
-	ld [hl], "<UNDERSCORE_RAISED>"
+	ld [hl], '<UNDERSCORE_RAISED>'
 	ret
 
 DakutensAndHandakutens:

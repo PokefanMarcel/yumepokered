@@ -159,16 +159,16 @@ StatusScreenStatsPage:
 If DEF(_FRA)
 	hlcoord 11, 16 ; first letter of current text
 	ld a, [hl]
-	cp "S" ; text currently saying "STATS"?
+	cp 'S' ; text currently saying "STATS"?
 	jp z, SwitchToDVs ; if yes, switch to DVs
-	cp "V" ; text currently saying "VDS"?
+	cp 'V' ; text currently saying "VDS"?
 	jp z, SwitchToStatExp ; if yes, switch to StatExp
 ELSE
 	hlcoord 15, 16 ; fifth letter of current text
 	ld a, [hl]
-	cp "S" ; text currently saying "STATS"?
+	cp 'S' ; text currently saying "STATS"?
 	jp z, SwitchToDVs ; if yes, switch to DVs
-	cp " " ; text currently saying "DVS"?
+	cp ' ' ; text currently saying "DVS"?
 	jp z, SwitchToStatExp ; if yes, switch to StatExp
 ENDC
 	; if neither then switch to Stats

@@ -317,7 +317,7 @@ FellText:
 
 BufferStatText: ; uses c as counter
 	ld hl, StatModTextStrings
-	ld b, "@"
+	ld b, '@'
 .findStatName
 	dec c
 	jr z, .foundStatName

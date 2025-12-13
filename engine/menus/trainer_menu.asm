@@ -122,7 +122,7 @@ DrawTrainerInfo: ; marcelnote - modified
 	ld de, wPlayTimeHours ; hours
 	lb bc, LEFT_ALIGN | 1, 3
 	call PrintNumber
-	ld [hl], "<COLON>" ; colon with tinier dots than ":"
+	ld [hl], '<COLON>' ; colon with tinier dots than ':'
 	inc hl
 	ld de, wPlayTimeMinutes ; minutes
 	lb bc, LEADING_ZEROES | 1, 2

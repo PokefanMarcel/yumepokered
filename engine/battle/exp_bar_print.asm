@@ -7,7 +7,7 @@ AnimateEXPBarAgain:
 	xor a
 	ld [wEXPBarPixelLength], a
 	hlcoord 17, 11
-	ld a, "<HUD_HORIZ_BAR>"   ; empty Exp bar tile
+	ld a, '<HUD_HORIZ_BAR>'   ; empty Exp bar tile
 	ld c, $8
 .loop
 	ld [hld], a
@@ -40,7 +40,7 @@ AnimateEXPBar:
 	ldh [hAutoBGTransferEnabled], a
 
 	hlcoord 17, 11
-	ld e, "<EXP_BAR_FULL>"
+	ld e, '<EXP_BAR_FULL>'
 .skipFullTiles
 	ld a, [hl]
 	sub e ; is it a full tile?
@@ -64,7 +64,7 @@ AnimateEXPBar:
 	call DelayFrame
 	jr .dontLoad
 .loadPartial
-	ld [hl], "<EXP_BAR_PARTIAL>"
+	ld [hl], '<EXP_BAR_PARTIAL>'
 	push hl ; save hl = current tile
 	push bc ; save b = number of tiles left, c = pixels left
 	push de ; save d = current tile, e = "<EXP_BAR_FULL>"
@@ -118,18 +118,18 @@ PrintEXPBar:
 	sub c
 	jr c, .partialTile ; length left < 8 pixels ?
 	; place full Exp bar tile
-	ld [hl], "<EXP_BAR_FULL>"
+	ld [hl], '<EXP_BAR_FULL>'
 	dec hl
 	dec b
 	jr nz, .loopFullTiles
 	ret
 
 .partialTile
-	ld a, "<EXP_BAR_PARTIAL>" ; partial Exp bar tile
+	ld a, '<EXP_BAR_PARTIAL>' ; partial Exp bar tile
 	ld [hld], a
 	dec b
 	ret z
-	ld a, "<HUD_HORIZ_BAR>"   ; empty Exp bar tile
+	ld a, '<HUD_HORIZ_BAR>'   ; empty Exp bar tile
 .loopEmptyTiles
 	ld [hld], a
 	dec b
@@ -321,7 +321,7 @@ LoadExpBarDynamicTile:
 	add hl, bc
 	ld d, h
 	ld e, l
-	ld hl, vChars2 tile "<EXP_BAR_PARTIAL>"
+	ld hl, vChars2 tile '<EXP_BAR_PARTIAL>'
 	lb bc, BANK(EXPBarGraphics), 1 ; 1 tile
 	jp CopyVideoData
 

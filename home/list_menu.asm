@@ -613,7 +613,7 @@ PrintBagInfoText: ; marcelnote - new for bag pockets and TM printing
 	jr c, .notTM
 	call GetTMHMContent
 	hlcoord 5, 14
-	ld a, " "
+	ld a, ' '
 	ld b, 14 ; clear whole line
 .clearLine
 	ld [hli], a

@@ -584,12 +584,12 @@ ShowPokedexDataInternal:
 	ld a, [de]
 	cp 10
 	jr nc, .moreThan1Meter
-	ld [hl], "0" ; if the weight is less than 10, put a 0 before the decimal point
+	ld [hl], '0' ; if the weight is less than 10, put a 0 before the decimal point
 .moreThan1Meter
 	inc hl
 	ld a, [hli]
 	ld [hld], a ; make space for the decimal point by moving the last digit forward one tile
-	ld [hl], "<DOT>" ; decimal point tile
+	ld [hl], '<DOT>' ; decimal point tile
 ; now print the weight (stored in tenths of kg)
 	inc de  ; de = address of lower/first byte of weight (little-endian)
 ; put weight in big-endian order at wDexWeight
@@ -885,7 +885,7 @@ ENDC
 	ld l, e
 	ld a, $6f ; ":L"
 	ld [hli], a
-	ld a, "1"
+	ld a, '1'
 	ld [hli], a
 	inc hl
 	inc hl
@@ -977,7 +977,7 @@ ENDC
 	ld h, d
 	ld l, e
 	inc hl
-	ld a, "-"
+	ld a, '-'
 	ld [hli], a
 	ld [hli], a
 	inc hl

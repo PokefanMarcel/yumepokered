@@ -430,7 +430,7 @@ PrintPlayTime:
 	ld de, wPlayTimeHours
 	lb bc, 1, 3
 	call PrintNumber
-	ld [hl], "<COLON>" ; colon with tinier dots than ":"
+	ld [hl], '<COLON>' ; colon with tinier dots than ":"
 	inc hl
 	ld de, wPlayTimeMinutes
 	lb bc, LEADING_ZEROES | 1, 2

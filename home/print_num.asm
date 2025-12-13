@@ -87,7 +87,7 @@ PrintNumber:: ; marcelnote - optimized
 	dec b
 	jr nz, .moveDigit
 
-	ld a, " "
+	ld a, ' '
 .fill           ; erase the other tiles, going backward
 	ld [hld], a
 	dec c

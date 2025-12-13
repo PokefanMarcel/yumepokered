@@ -162,7 +162,7 @@ PlaceHUDTiles:
 	ld a, 8
 .loop
 	add hl, de
-	ld [hl], "<HUD_HORIZ_BAR>"
+	ld [hl], '<HUD_HORIZ_BAR>'
 	dec a
 	jr nz, .loop
 	add hl, de

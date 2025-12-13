@@ -2244,16 +2244,16 @@ ENDC
 	ld [wCurrentMenuItem], a
 	ld a, [wBattleType]
 	cp BATTLE_TYPE_SAFARI
-	ld a, " "
+	ld a, ' '
 	jr z, .safariBButton
 
 IF DEF(_FRA) ; marcelnote - different layout in French
 	ldcoord_a 13, 14 ; clear upper cursor position in right column
-	ld a, "▶"
+	ld a, '▶'
 	ldcoord_a 13, 16 ; put cursor at Run
 ELSE
 	ldcoord_a 15, 14 ; clear upper cursor position in right column
-	ld a, "▶"
+	ld a, '▶'
 	ldcoord_a 15, 16 ; put cursor at Run
 ENDC
 
@@ -2262,11 +2262,11 @@ ENDC
 
 IF DEF(_FRA) ; marcelnote - different layout in French
 	ldcoord_a 12, 14 ; clear upper cursor position in right column
-	ld a, "▶"
+	ld a, '▶'
 	ldcoord_a 12, 16 ; put cursor at Run
 ELSE
 	ldcoord_a 13, 14 ; clear upper cursor position in right column
-	ld a, "▶"
+	ld a, '▶'
 	ldcoord_a 13, 16 ; put cursor at Run
 ENDC
 
