@@ -6838,7 +6838,7 @@ _LoadTrainerPic: ; marcelnote - refactored for removing sprite compression
 	ld d, a ; de contains pointer to trainer pic
 	ld b, [hl] ; wTrainerPicBank
 	ld hl, vFrontPic
-	ld c, 7 * 7
+	ld c, PIC_SIZE
 	jp CopyVideoData
 
 ; unreferenced : marcelnote - removed

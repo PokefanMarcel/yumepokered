@@ -189,7 +189,7 @@ HoFLoadPlayerPics: ; marcelnote - refactored to remove sprite compression
 	push bc ; save bc = back pic address
 	ld b, BANK(RedPicFront)
 	ld hl, vFrontPic
-	ld c, 7 * 7 ; number of tiles to be copied
+	ld c, PIC_SIZE ; number of tiles to be copied
 	call CopyVideoData ; copy front sprite
 	pop de ; restore de = back pic address
 	ld b, BANK(RedPicBack)
