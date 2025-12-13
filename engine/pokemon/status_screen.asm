@@ -30,7 +30,7 @@ StatusScreen:
 	ld hl, wLoadedMonHPExp - 1
 	ld de, wLoadedMonStats
 	ld b, $1
-	call CalcStats ; Recalculate stats
+	call CalcStats
 .DontRecalculate
 
 	; first load the stuff in common to both pages: upper box, Pokemon number (not sprite though!)
@@ -39,16 +39,16 @@ StatusScreen:
 	call DrawLineBox ; Draws the box around name, HP and status
 
 	hlcoord 2, 7
-	ld [hl], "№"
+	ld [hl], '№'
 	inc hl
-	ld [hl], "<DOT>"
+	ld [hl], '<DOT>'
 	; fallthrough
 
 
 
 StatusScreenStatsPage:
 	hlcoord 19, 0
-	ld a, "▶"
+	ld a, '▶'
 	ld [hl], a
 
 	; this could in principle be outside, but for some reason doing this bugs the Pokemon species and exp
@@ -124,7 +124,7 @@ StatusScreenStatsPage:
 	lb bc, 8, 7
 	call DrawLineBox ; Draws the box around name, HP and status
 
-	ld d, $0 ; d=0 for status screen, d=1 for level up
+	ld d, STATUS_SCREEN_STATS_BOX ; d=0 for status screen, d=1 for level up
 	call PrintStatsBox
 
 	ld a, [wStatusFlags2]
@@ -217,7 +217,7 @@ StatusScreenMovesPage:
 	call StatusScreenClearScreen ; clears name area, bottom screen part, and directional arrows
 
 	hlcoord 0, 0
-	ld a, "◀"
+	ld a, '◀'
 	ld [hl], a
 
 	ld a, [wMonHIndex]
@@ -268,19 +268,19 @@ StatusScreenMovesPage:
 	call PlaceString ; Print moves
 	ld a, [wNumMovesMinusOne]
 	inc a
-	ld c, a
-	ld a, $4
+	ld c, a ; number of known moves
+	ld a, NUM_MOVES
 	sub c
-	ld b, a ; Number of moves ?
+	ld b, a ; number of blank moves
 	hlcoord 5, 10
 	ld de, SCREEN_WIDTH * 2
-	ld a, "<BOLD_P>"
+	ld a, '<BOLD_P>'
 	call StatusScreen_PrintPP ; Print "PP"
 	ld a, b
 	and a
 	jr z, .InitPP
 	ld c, a
-	ld a, "-"
+	ld a, '-'
 	call StatusScreen_PrintPP ; Fill the rest with --
 .InitPP
 	ld hl, wLoadedMonMoves
@@ -305,7 +305,7 @@ StatusScreenMovesPage:
 	pop de
 	pop hl
 	push hl
-	ld bc, wPartyMon1PP - wPartyMon1Moves - 1
+	ld bc, MON_PP - MON_MOVES - 1
 	add hl, bc
 	ld a, [hl]
 	and PP_MASK
@@ -316,7 +316,7 @@ StatusScreenMovesPage:
 	ld de, wStatusScreenCurrentPP
 	lb bc, 1, 2
 	call PrintNumber
-	ld a, "/"
+	ld a, '/'
 	ld [hli], a
 	ld de, wMaxPP
 	lb bc, 1, 2
@@ -330,7 +330,7 @@ StatusScreenMovesPage:
 	pop bc
 	inc b
 	ld a, b
-	cp $4
+	cp NUM_MOVES
 	jr nz, .PrintPP
 .PPDone
 
@@ -339,7 +339,7 @@ StatusScreenMovesPage:
 	call PlaceString ; "SKILL"
 
 	hlcoord 14, 11
-	ld [hl], "-" ; by default write "-" for field move
+	ld [hl], '-' ; by default write "-" for field move
 	ld a, [wMonDataLocation]
 	cp PLAYER_PARTY_DATA ; no field move if not in party
 	jr nz, .FieldMoveDone
@@ -416,7 +416,7 @@ StatusScreenClearScreen:
 	hlcoord 0, 8
 	lb bc, 10, 20 ; y, x
 	call ClearScreenArea ; Clear bottom part of screen
-	ld a, " "
+	ld a, ' '
 	hlcoord 0, 0
 	ld [hl], a
 	hlcoord 19, 0
@@ -428,18 +428,18 @@ StatusScreenClearScreen:
 DrawLineBox:
 	ld de, SCREEN_WIDTH ; New line
 .PrintVerticalLine
-	ld [hl], "<HUD_VERTI_BAR>" ; │
+	ld [hl], '<HUD_VERTI_BAR>' ; │
 	add hl, de
 	dec b
 	jr nz, .PrintVerticalLine
-	ld [hl], "<RIGHT_CORNER>" ; ┘
+	ld [hl], '<RIGHT_CORNER>' ; ┘
 	dec hl
 .PrintHorizLine
-	ld [hl], "<HUD_HORIZ_BAR>" ; ─
+	ld [hl], '<HUD_HORIZ_BAR>' ; ─
 	dec hl
 	dec c
 	jr nz, .PrintHorizLine
-	ld [hl], "<LEFT_TRIANGLE>" ; ← (halfarrow ending)
+	ld [hl], '<LEFT_TRIANGLE>' ; ← (halfarrow ending)
 	ret
 
 
@@ -476,7 +476,7 @@ DrawHP:
 	ld de, wLoadedMonHP
 	lb bc, 2, 3
 	call PrintNumber
-	ld a, "/"
+	ld a, '/'
 	ld [hli], a
 	ld de, wLoadedMonMaxHP
 	lb bc, 2, 3
@@ -535,7 +535,7 @@ SwitchToStats:
 	ld de, wLoadedMonHP
 	lb bc, 2, 3
 	call PrintNumber
-	ld a, "/"
+	ld a, '/'
 	ld [hli], a
 	ld de, wLoadedMonMaxHP
 	lb bc, 2, 3
@@ -685,7 +685,7 @@ LoadStatExpTilePatterns:
 ClearStatsLines:
 	hlcoord 11, 4 ; first HP stats bar tile
 	ld d, 7 ; number of tiles
-	ld a, " "
+	ld a, ' '
 .clearHP
 	ld [hli], a
 	dec d
@@ -694,7 +694,7 @@ ClearStatsLines:
 	hlcoord 3, 10 ; first tile
 	ld bc, 2*SCREEN_WIDTH - 6
 	ld e, 4 ; number of stats
-	ld a, " "
+	ld a, ' '
 .loopStats
 	ld d, 6 ; number of tiles
 .loopTiles
@@ -713,7 +713,7 @@ PlaceInfoStartAndStatsGraphics:
 	call PlaceString ; "INFO/"
 
 	hlcoord 15, 15
-	ld a, "<ST>" ; left of [START▶] button
+	ld a, '<ST>' ; left of [START▶] button
 	ld b, 3 ; 3 tiles long
 .loop
 	ld [hli], a
@@ -770,7 +770,7 @@ PlaceStringWithHyphen: ; to print field moves with hyphen after 4 letters (won't
 	ld b, 4
 .placeNextChar
 	ld a, [de]
-	cp "@"
+	cp '@'
 	ret z
 	ld [hli], a
 	inc de
@@ -779,9 +779,9 @@ PlaceStringWithHyphen: ; to print field moves with hyphen after 4 letters (won't
 	inc de
 	ld a, [de] ; check the 6th character (Flash)
 	dec de     ; go back to 5th
-	cp "@"
+	cp '@'
 	jr z, .placeNextChar
-	ld a, "-"
+	ld a, '-'
 	ld [hl], a
 	ld bc, SCREEN_WIDTH - 4
 	add hl, bc

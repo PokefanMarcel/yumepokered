@@ -2,7 +2,7 @@
 LoadPokedexTilePatterns: ; marcelnote - gathered all dex tiles in same file
 	ld de, PokedexTileGraphics
 	ld hl, vChars2 tile $60
-	lb bc, BANK(PokedexTileGraphics), (PokedexTileGraphicsEnd - PokedexTileGraphics) / $10
+	lb bc, BANK(PokedexTileGraphics), (PokedexTileGraphicsEnd - PokedexTileGraphics) / TILE_SIZE
 	call CopyVideoData
 ; marcelnote - new, for base stats in pokedex
 	ld de, StatsBarGraphics

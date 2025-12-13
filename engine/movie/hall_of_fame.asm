@@ -8,7 +8,7 @@ AnimateHallOfFame:
 	call DisableLCD
 	ld hl, vBGMap0
 	ld bc, 2 * TILEMAP_AREA
-	ld a, " "
+	ld a, ' '
 	call FillMemory
 	call EnableLCD
 	ld hl, rLCDC
@@ -49,7 +49,7 @@ AnimateHallOfFame:
 	ld a, c
 	ld [wHoFPartyMonIndex], a
 	ld hl, wPartyMon1Level
-	ld bc, wPartyMon2 - wPartyMon1
+	ld bc, PARTYMON_STRUCT_LENGTH
 	call AddNTimes
 	ld a, [hl]
 	ld [wHoFMonLevel], a
@@ -214,7 +214,7 @@ HoFLoadPlayerPics: ; marcelnote - refactored to remove sprite compression
 ;;;;;;;;;;;;;;;;;;;;;;
 	ld hl, vBackPic
 	ld de, sSpriteBuffer0
-	ld c, 7 * 7 ; number of tiles to be copied
+	ld c, PIC_SIZE ; number of tiles to be copied
 	ldh a, [hLoadedROMBank]
 	ld b, a
 	call CopyVideoData ; copy back sprite

@@ -474,7 +474,7 @@ DisplayFieldMoveMonMenu:
 	jr z, .reachedName
 .skipNameLoop ; skip past current name
 	ld a, [hli]
-	cp "@"
+	cp '@'
 	jr nz, .skipNameLoop
 	jr .skipNamesLoop
 .reachedName
@@ -507,7 +507,7 @@ DisplayFieldMoveMonMenu:
 GetMonFieldMoves: ; marcelnote - modified for temporary field moves, from shinpokered
 	ld a, [wWhichPokemon]
 	ld hl, wPartyMon1Moves
-	ld bc, wPartyMon2 - wPartyMon1
+	ld bc, PARTYMON_STRUCT_LENGTH
 	call AddNTimes
 	ld d, h
 	ld e, l

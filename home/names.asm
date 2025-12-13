@@ -16,7 +16,7 @@ GetMonName::
 	ld bc, NAME_LENGTH - 1
 	call CopyData
 	ld hl, wNameBuffer + NAME_LENGTH - 1
-	ld [hl], "@"
+	ld [hl], '@'
 	pop de
 	pop af
 	ldh [hLoadedROMBank], a

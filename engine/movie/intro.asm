@@ -443,12 +443,12 @@ ELSE
 	INCBIN "gfx/splash/gamefreak_presents.2bpp"
 ENDC
 	INCBIN "gfx/splash/gamefreak_logo.2bpp"
-	ds 16, $00 ; blank tile
+	ds TILE_SIZE, $00 ; blank tile
 GameFreakIntroEnd:
 
 FightIntroBackMon:
 	INCBIN "gfx/intro/gengar.2bpp"
-	ds 16, $00 ; blank tile
+	ds TILE_SIZE, $00 ; blank tile
 FightIntroBackMonEnd:
 
 IF (DEF(_RED) || DEF(_GREEN)) ; PureRGBnote: GREENBUILD: pokemon green displays the nidorino intro

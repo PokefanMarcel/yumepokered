@@ -26,7 +26,7 @@ GainExperience:
 	pop hl         ; restore hl = wPartyMon<n>HP + 1
 	jp z, .nextMon ; if mon's gain exp flag not set, go to next mon
 
-	ld de, wPartyMon1HPExp - wPartyMon1HP
+	ld de, (MON_HP_EXP + 1) - (MON_HP + 1)
 	add hl, de     ; hl = wPartyMon<n>HPExp + 1
 	ld d, h
 	ld e, l        ; de = wPartyMon<n>HPExp + 1
@@ -155,7 +155,7 @@ GainExperience:
 	callfar AnimateEXPBar	; joenote - ADDED: animate the exp bar
 	call LoadMonData
 	pop hl             ; restore hl = wPartyMon<n>Exp
-	ld bc, wPartyMon1Level - wPartyMon1Exp
+	ld bc, MON_LEVEL - MON_EXP
 	add hl, bc
 	push hl            ; save hl = wPartyMon<n>Level
 	callfar CalcLevelFromExperience ; outputs level d
@@ -173,13 +173,13 @@ GainExperience:
 	ld a, d            ; a = new level
 	ld [wCurEnemyLevel], a
 	ld [hl], a
-	ld bc, wPartyMon1Species - wPartyMon1Level
+	ld bc, MON_SPECIES - MON_LEVEL
 	add hl, bc         ; hl = wPartyMon<n>Species
 	ld a, [hl]
 	ld [wCurSpecies], a
 	ld [wPokedexNum], a
 	call GetMonHeader ; preserves hl
-	ld bc, (wPartyMon1MaxHP + 1) - wPartyMon1Species
+	ld bc, (MON_MAXHP + 1) - MON_SPECIES
 	add hl, bc
 	push hl            ; save hl = wPartyMon<n>MaxHP + 1
 	ld a, [hld]
@@ -188,7 +188,7 @@ GainExperience:
 	push bc            ; save bc = max HP (from before levelling up)
 	ld d, h
 	ld e, l            ; de = wPartyMon<n>MaxHP
-	ld bc, (wPartyMon1HPExp - 1) - wPartyMon1MaxHP
+	ld bc, (MON_HP_EXP - 1) - MON_MAXHP
 	add hl, bc         ; hl = wPartyMon<n>HPExp - 1
 	ld b, $1           ; consider stat exp when calculating stats
 	call CalcStats     ; preserves hl
@@ -200,7 +200,7 @@ GainExperience:
 	ld a, [hl]
 	sbc b
 	ld b, a            ; bc = difference between old max HP and new max HP
-	ld de, (wPartyMon1HP + 1) - wPartyMon1MaxHP
+	ld de, (MON_HP + 1) - MON_MAXHP
 	add hl, de         ; hl = wPartyMon<n>HP + 1
 ; add to the current HP the amount of max HP gained when levelling
 	ld a, [hl]         ; a = [wPartyMon<n>HP + 1]
@@ -223,7 +223,7 @@ GainExperience:
 	ld a, [hl]         ; a = [wPartyMon<n>HP + 1]
 	ld [de], a
 ; copy other stats from party mon to battle mon
-	ld bc, wPartyMon1Level - (wPartyMon1HP + 1)
+	ld bc, MON_LEVEL - (MON_HP + 1)
 	add hl, bc
 	push hl            ; save hl = wPartyMon<n>Level
 	ld de, wBattleMonLevel
@@ -253,7 +253,7 @@ GainExperience:
 	ld [wMonDataLocation], a
 	callfar AnimateEXPBarAgain	; joenote - ADDED: animate the exp bar
 	call LoadMonData
-	ld d, $1
+	ld d, LEVEL_UP_STATS_BOX
 	callfar PrintStatsBox
 	call WaitForTextScrollButtonPress
 	call LoadScreenTilesFromBuffer1
@@ -278,7 +278,7 @@ GainExperience:
 	cp b
 	jr z, .done
 	ld [wWhichPokemon], a
-	ld bc, wPartyMon2 - wPartyMon1
+	ld bc, PARTYMON_STRUCT_LENGTH
 	ld hl, wPartyMon1
 	call AddNTimes
 	jp .partyMonLoop

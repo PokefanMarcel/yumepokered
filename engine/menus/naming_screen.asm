@@ -40,7 +40,7 @@ AskName:
 	pop af
 	ld [wUpdateSpritesEnabled], a
 	ld a, [wStringBuffer]
-	cp "@"
+	cp '@'
 	ret nz
 .declinedNickname
 	ld d, h
@@ -64,7 +64,7 @@ DisplayNameRaterScreen::
 	call RestoreScreenTilesAndReloadTilePatterns
 	call LoadGBPal
 	ld a, [wStringBuffer]
-	cp "@"
+	cp '@'
 	jr z, .playerCancelled
 	ld hl, wPartyMonNicks
 	ld bc, NAME_LENGTH
@@ -108,7 +108,7 @@ DisplayNamingScreen:
 	ld [wMenuWatchedKeys], a
 	ld a, 7
 	ld [wMaxMenuItem], a
-	ld a, "@"
+	ld a, '@'
 	ld [wStringBuffer], a
 	xor a
 	ld hl, wNamingScreenSubmitName
@@ -231,21 +231,21 @@ DisplayNamingScreen:
 	ld [wNamingScreenLetter], a
 	call CalcStringLength
 	ld a, [wNamingScreenLetter]
-	cp "ﾞ"
+	cp 'ﾞ'
 	ld de, Dakutens
 	jr z, .dakutensAndHandakutens
-	cp "ﾟ"
+	cp 'ﾟ'
 	ld de, Handakutens
 	jr z, .dakutensAndHandakutens
 	ld a, [wNamingScreenType]
 	cp NAME_MON_SCREEN
 	jr nc, .checkMonNameLength
 	ld a, [wNamingScreenNameLength]
-	cp $7 ; max length of player/rival names
+	cp PLAYER_NAME_LENGTH - 1
 	jr .checkNameLength
 .checkMonNameLength
 	ld a, [wNamingScreenNameLength]
-	cp $a ; max length of pokemon nicknames
+	cp NAME_LENGTH - 1
 .checkNameLength
 	jr c, .addLetter
 	ret
@@ -259,7 +259,7 @@ DisplayNamingScreen:
 .addLetter
 	ld a, [wNamingScreenLetter]
 	ld [hli], a
-	ld [hl], "@"
+	ld [hl], '@'
 	ld a, SFX_PRESS_AB
 	call PlaySound
 	ret
@@ -269,7 +269,7 @@ DisplayNamingScreen:
 	ret z
 	call CalcStringLength
 	dec hl
-	ld [hl], "@"
+	ld [hl], '@'
 	ret
 .pressedRight
 	ld a, [wCurrentMenuItem]
@@ -326,7 +326,7 @@ DisplayNamingScreen:
 LoadNamingScreenTiles:
 	ld de, NamingScreenTiles
 	ld hl, vChars2 tile $74
-	lb bc, BANK(NamingScreenTiles), (NamingScreenTilesEnd - NamingScreenTiles) / $8
+	lb bc, BANK(NamingScreenTiles), (NamingScreenTilesEnd - NamingScreenTiles) / TILE_1BPP_SIZE
 	jp CopyVideoDataDouble
 
 PrintAlphabet:
@@ -432,7 +432,7 @@ INCLUDE "data/text/dakutens.asm"
 CalcStringLength:
 	ld hl, wStringBuffer
 	ld c, $0
-	ld a, "@"
+	ld a, '@'
 .loop
 	cp [hl]
 	ret z
@@ -460,7 +460,7 @@ PrintNamingText:
 	call PlaceString
 ;	ld hl, $1 ; marcelnote - removed
 ;	add hl, bc
-;	ld [hl], "の" ; leftover from Japanese version; blank tile $c9 in English
+;	ld [hl], 'の' ; leftover from Japanese version; blank tile $c9 in English
 	hlcoord 1, 3
 	ld de, NicknameTextString
 	jr .placeString

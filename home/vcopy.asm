@@ -19,7 +19,7 @@ GetRowColAddressBgMap::
 ; clears a VRAM background map with blank space tiles
 ; INPUT: h - high byte of background tile map address in VRAM
 ClearBgMap::
-	ld a, " "
+	ld a, ' '
 	; fallthrough
 
 FillBgMap:: ; marcelnote - new, fill with character in a
@@ -69,8 +69,8 @@ RedrawRowOrColumn::
 .noCarry
 ; the following 4 lines wrap us from bottom to top if necessary
 	ld a, d
-	and $3
-	or $98
+	and HIGH(TILEMAP_AREA - 1)
+	or HIGH(vBGMap0)
 	ld d, a
 	dec c
 	jr nz, .loop1
@@ -86,7 +86,7 @@ RedrawRowOrColumn::
 	push de
 	call .DrawHalf ; draw upper half
 	pop de
-	ld a, TILEMAP_WIDTH ; width of VRAM background map
+	ld a, TILEMAP_WIDTH
 	add e
 	ld e, a
 	; fall through and draw lower half
@@ -102,10 +102,10 @@ RedrawRowOrColumn::
 	ld a, e
 	inc a
 ; the following 6 lines wrap us from the right edge to the left edge if necessary
-	and $1f
+	and %11111
 	ld b, a
 	ld a, e
-	and $e0
+	and %11100000
 	or b
 	ld e, a
 	dec c
@@ -134,7 +134,7 @@ AutoBgMapTransfer::
 	dec a
 	jr z, .transferMiddleThird
 .transferBottomThird
-	hlcoord 0, 12
+	hlcoord 0, 2 * SCREEN_HEIGHT / 3
 	ld sp, hl
 	ldh a, [hAutoBGTransferDest + 1]
 	ld h, a
@@ -154,7 +154,7 @@ AutoBgMapTransfer::
 	ld a, TRANSFERMIDDLE
 	jr .doTransfer
 .transferMiddleThird
-	hlcoord 0, 6
+	hlcoord 0, SCREEN_HEIGHT / 3
 	ld sp, hl
 	ldh a, [hAutoBGTransferDest + 1]
 	ld h, a
@@ -165,7 +165,7 @@ AutoBgMapTransfer::
 	ld a, TRANSFERBOTTOM
 .doTransfer
 	ldh [hAutoBGTransferPortion], a ; store next portion
-	ld b, 6
+	ld b, SCREEN_HEIGHT / 3
 
 TransferBgRows::
 ; unrolled loop and using pop for speed

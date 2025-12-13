@@ -32,13 +32,13 @@ IF DEF (_FRA)
 	jr nz, .skipRightAlignmentAdjustment
 	dec hl ; if the string is right-aligned, it needs to be moved back one space
 .skipRightAlignmentAdjustment
-	ld [hl], "0"
+	ld [hl], '0'
 	call PrintLetterDelay
 	inc hl
 .checkCurrencySymbol
 	bit BIT_MONEY_SIGN, c
 	ret z
-	ld a, "¥"
+	ld a, '¥'
 	ld [hli], a
 	ret
 ELSE
@@ -49,10 +49,10 @@ ELSE
 .skipRightAlignmentAdjustment
 	bit BIT_MONEY_SIGN, c
 	jr z, .skipCurrencySymbol
-	ld a, "¥"
+	ld a, '¥'
 	ld [hli], a
 .skipCurrencySymbol
-	ld [hl], "0"
+	ld [hl], '0'
 	call PrintLetterDelay
 	inc hl
 	ret
@@ -78,11 +78,11 @@ ELSE
 	bit BIT_MONEY_SIGN, c
 	jr z, .printDigit
 	res BIT_MONEY_SIGN, c
-	ld [hl], "¥"
+	ld [hl], '¥'
 	inc hl
 ENDC
 
 .printDigit
-	add "0"
+	add '0'
 	ld [hli], a
 	jp PrintLetterDelay

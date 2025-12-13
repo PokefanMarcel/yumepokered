@@ -44,7 +44,7 @@ PrintNumber:: ; marcelnote - optimized
 	ldh [hDivisor], a  ; so reload it everytime
 	call Divide
 	ldh a, [hRemainder]
-	add "0"            ; a = character number to write
+	add '0'            ; a = character number to write
 	ld [hld], a
 	dec c              ; one less digit to print
 	jr z, .done_PopHL  ; if no more digits to print, we're done

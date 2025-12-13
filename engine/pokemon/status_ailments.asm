@@ -13,73 +13,33 @@ PrintStatusAilment::
 	; fallthrough
 
 IF DEF(_FRA)
-	ld a, "S"
-	ld [hli], a
-	ld a, "O"
-	ld [hli], a
-	ld [hl], "M"
+	ld_hli_a_string "SOM"
 	ret
 .psn
-	ld a, "P"
-	ld [hli], a
-	ld a, "S"
-	ld [hli], a
-	ld [hl], "N"
+	ld_hli_a_string "PSN"
 	ret
 .brn
-	ld a, "B"
-	ld [hli], a
-	ld a, "R"
-	ld [hli], a
-	ld [hl], "U"
+	ld_hli_a_string "BRU"
 	ret
 .frz
-	ld a, "G"
-	ld [hli], a
-	ld a, "E"
-	ld [hli], a
-	ld [hl], "L"
+	ld_hli_a_string "GEL"
 	ret
 .par
-	ld a, "P"
-	ld [hli], a
-	ld a, "A"
-	ld [hli], a
-	ld [hl], "R"
+	ld_hli_a_string "PAR"
 	ret
 ELSE
-	ld a, "S"
-	ld [hli], a
-	ld a, "L"
-	ld [hli], a
-	ld [hl], "P"
+	ld_hli_a_string "SLP"
 	ret
 .psn
-	ld a, "P"
-	ld [hli], a
-	ld a, "S"
-	ld [hli], a
-	ld [hl], "N"
+	ld_hli_a_string "PSN"
 	ret
 .brn
-	ld a, "B"
-	ld [hli], a
-	ld a, "R"
-	ld [hli], a
-	ld [hl], "N"
+	ld_hli_a_string "BRN"
 	ret
 .frz
-	ld a, "F"
-	ld [hli], a
-	ld a, "R"
-	ld [hli], a
-	ld [hl], "Z"
+	ld_hli_a_string "FRZ"
 	ret
 .par
-	ld a, "P"
-	ld [hli], a
-	ld a, "A"
-	ld [hli], a
-	ld [hl], "R"
+	ld_hli_a_string "PAR"
 	ret
 ENDC

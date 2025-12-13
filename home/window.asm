@@ -153,7 +153,7 @@ PlaceMenuCursor:: ; marcelnote - small optim
 	jr nz, .lastMenuItemLoop
 .checkForArrow1
 	ld a, [hl]
-	cp "▶" ; was an arrow next to the previously selected menu item?
+	cp '▶' ; was an arrow next to the previously selected menu item?
 	jr nz, .skipClearingArrow
 	; clear arrow
 	ld a, [wTileBehindCursor]
@@ -177,11 +177,11 @@ PlaceMenuCursor:: ; marcelnote - small optim
 	jr nz, .currentMenuItemLoop
 .checkForArrow2
 	ld a, [hl]
-	cp "▶" ; has the right arrow already been placed?
+	cp '▶' ; has the right arrow already been placed?
 	jr z, .skipSavingTile ; if so, don't lose the saved tile
 	ld [wTileBehindCursor], a ; save tile before overwriting with right arrow
 .skipSavingTile
-	ld [hl], "▶" ; place right arrow
+	ld [hl], '▶' ; place right arrow
 	ld a, l
 	ld [wMenuCursorLocation], a
 	ld a, h
@@ -200,7 +200,7 @@ PlaceUnfilledArrowMenuCursor::
 	ld l, a
 	ld a, [wMenuCursorLocation + 1]
 	ld h, a
-	ld [hl], "▷"
+	ld [hl], '▷'
 	ld a, b
 	ret
 
@@ -210,7 +210,7 @@ EraseMenuCursor::
 	ld l, a
 	ld a, [wMenuCursorLocation + 1]
 	ld h, a
-	ld [hl], " "
+	ld [hl], ' '
 	ret
 
 ; This toggles a blinking down arrow at hl on and off after a delay has passed.
@@ -224,7 +224,7 @@ EraseMenuCursor::
 HandleDownArrowBlinkTiming::
 	ld a, [hl]
 	ld b, a
-	ld a, "▼"
+	ld a, '▼'
 	cp b
 	jr nz, .downArrowOff
 .downArrowOn
@@ -236,7 +236,7 @@ HandleDownArrowBlinkTiming::
 	dec a
 	ldh [hDownArrowBlinkCount2], a
 	ret nz
-	ld a, " "
+	ld a, ' '
 	ld [hl], a
 	ld a, $ff
 	ldh [hDownArrowBlinkCount1], a
@@ -258,7 +258,7 @@ HandleDownArrowBlinkTiming::
 	ret nz
 	ld a, $06
 	ldh [hDownArrowBlinkCount2], a
-	ld [hl], "▼"
+	ld [hl], '▼'
 	ret
 
 ; The following code either enables or disables the automatic drawing of

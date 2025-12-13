@@ -449,7 +449,7 @@ SlotMachine_CheckForMatches:
 	ld h, [hl]
 	ld l, a
 	ld de, wStringBuffer
-	ld bc, 4
+	ld bc, 4 ; every SlotReward*Text is at most 4 bytes
 	call CopyData
 	pop hl
 	ld de, .flashScreenLoop
@@ -631,7 +631,7 @@ SlotMachine_PrintWinningSymbol:
 	inc a
 	ld [hl], a
 	hlcoord 18, 16
-	ld [hl], "▼"
+	ld [hl], '▼'
 	ret
 
 SlotMachine_SubtractBetFromPlayerCoins:

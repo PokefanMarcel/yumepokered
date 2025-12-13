@@ -96,7 +96,7 @@ CalcStat::
 	pop hl
 
 ; get stat IV
-	ld de, wPartyMon1DVs - (wPartyMon1HPExp - 1) ; also wEnemyMonDVs - wEnemyMonHP
+	ld de, MON_DVS - (MON_HP_EXP - 1) ; also wEnemyMonDVs - wEnemyMonHP
 	add hl, de
 	ld e, a             ; e = base value of stat
 	ld a, c

@@ -130,7 +130,7 @@ HandlePokedexSideMenu:
 	push bc
 	hlcoord 0, 3
 	ld de, 20
-	lb bc, " ", 13
+	lb bc, ' ', 13
 	call DrawTileLine ; cover up the menu cursor in the pokemon list
 	pop bc
 	ret
@@ -139,7 +139,7 @@ HandlePokedexSideMenu:
 	push bc
 	hlcoord 15, 10
 	ld de, 20
-	lb bc, " ", 7
+	lb bc, ' ', 7
 	call DrawTileLine ; cover up the menu cursor in the side menu
 	pop bc
 	jr .exitSideMenu
@@ -177,7 +177,7 @@ HandlePokedexListMenu:
 	ldh [hAutoBGTransferEnabled], a
 ; draw the horizontal line separating the seen and owned amounts from the menu
 	hlcoord 15, 8
-	ld a, "─"
+	ld a, '─'
 	ld [hli], a
 	ld [hli], a
 	ld [hli], a
@@ -267,7 +267,7 @@ HandlePokedexListMenu:
 	ld hl, wPokedexOwned
 	call IsPokemonBitSet
 	pop hl
-	ld a, " "
+	ld a, ' '
 	jr z, .writeTile
 	ld a, $62 ; pokeball tile
 .writeTile
@@ -483,9 +483,9 @@ ShowPokedexDataInternal:
 	call IndexToPokedex
 
 	hlcoord 2, 8
-	ld a, "№"
+	ld a, '№'
 	ld [hli], a
-	ld a, "<DOT>"
+	ld a, '<DOT>'
 	ld [hli], a
 	ld de, wPokedexNum
 	lb bc, LEADING_ZEROES | 1, 3
@@ -535,7 +535,7 @@ ShowPokedexDataInternal:
 	hlcoord 12, 6
 	lb bc, 1, 2
 	call PrintNumber ; print feet (height)
-	inc hl ; skip "′"
+	inc hl ; skip '′'
 	inc de ; de = address of inches (height)
 	lb bc, LEADING_ZEROES | 1, 2
 	call PrintNumber ; print inches (height)
@@ -558,12 +558,12 @@ ShowPokedexDataInternal:
 	ld a, [wDexWeight]
 	sbc 0
 	jr nc, .moreThan1Lb
-	ld [hl], "0" ; if the weight is less than 10, put a 0 before the decimal point
+	ld [hl], '0' ; if the weight is less than 10, put a 0 before the decimal point
 .moreThan1Lb
 	inc hl
 	ld a, [hli]
 	ld [hld], a ; make space for the decimal point by moving the last digit forward one tile
-	ld [hl], "<DOT>" ; decimal point tile
+	ld [hl], '<DOT>' ; decimal point tile
 	pop hl ; restore hl = address of last byte of weight (pounds)
 	inc hl ; skip metric entries
 	inc hl
@@ -609,12 +609,12 @@ ShowPokedexDataInternal:
 	ld a, [wDexWeight]
 	sbc 0
 	jr nc, .moreThan1Kg
-	ld [hl], "0" ; if the weight is less than 10, put a 0 before the decimal point
+	ld [hl], '0' ; if the weight is less than 10, put a 0 before the decimal point
 .moreThan1Kg
 	inc hl
 	ld a, [hli]
 	ld [hld], a ; make space for the decimal point by moving the last digit forward one tile
-	ld [hl], "<DOT>" ; decimal point tile
+	ld [hl], '<DOT>' ; decimal point tile
 	pop hl ; restore hl = address of last byte of weight
 	inc hl ; hl = address of pokedex description text
 

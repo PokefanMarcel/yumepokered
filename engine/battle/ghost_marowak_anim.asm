@@ -52,7 +52,7 @@ MarowakAnim:
 CopyMonPicFromBGToSpriteVRAM: ; marcelnote - changed from column-major to row-major
 	ld de, vFrontPic
 	ld hl, vSprites
-	ld bc, 7 * 7
+	ld bc, PIC_SIZE
 	call CopyVideoData
 	ld e, $10            ; starting Y
 	ld a, $70            ; starting X

@@ -54,7 +54,7 @@ PrintMoveType: ; marcelnote - modified to be right-aligned
 	ld h, d
 	ld l, e
 	ld c, 9 ; max number of spaces + 1
-	ld b, "@"
+	ld b, '@'
 .loop
 	dec c
 	ld a, [hli]

@@ -920,7 +920,7 @@ BallMoveDistances2:
 DoGrowlSpecialEffects:
 	ld hl, wShadowOAM
 	ld de, wShadowOAMSprite04
-	ld bc, $10
+	ld bc, OBJ_SIZE * 4
 	call CopyData ; copy the musical note graphic
 	ld a, [wSubAnimCounter]
 	dec a
@@ -1222,14 +1222,14 @@ _AnimationSlideMonUp: ; marcelnote - optimized and adjusted for sprite removing 
 	push bc
 
 ; In each iteration, slide up all rows but the top one (which is overwritten).
-	ld b, 6
+	ld b, PIC_HEIGHT - 1
 .slideLoop
 	push bc
 	push hl       ; save coords of lower row
-	ld bc, 7
+	ld bc, PIC_WIDTH
 	call CopyData ; Copy bc bytes from hl to de.
 	pop de        ; lower row becomes upper row
-	ld bc, SCREEN_WIDTH - 7
+	ld bc, SCREEN_WIDTH - PIC_WIDTH
 	add hl, bc    ; move hl to next row
 	pop bc
 	dec b
@@ -1243,7 +1243,7 @@ _AnimationSlideMonUp: ; marcelnote - optimized and adjusted for sprite removing 
 	hlcoord 12, 6
 .next
 	ld a, [wSlideMonUpBottomRowLeftTile]
-	ld c, 7
+	ld c, PIC_WIDTH
 .fillBottomRowLoop
 	ld [hli], a
 	inc a
@@ -1323,7 +1323,7 @@ AdjustOAMBlockXPos:
 	ld h, d
 
 AdjustOAMBlockXPos2:
-	ld de, 4
+	ld de, OBJ_SIZE
 .loop
 	ld a, [wCoordAdjustmentAmount]
 	ld b, a
@@ -1333,7 +1333,7 @@ AdjustOAMBlockXPos2:
 	jr c, .skipPuttingEntryOffScreen
 ; put off-screen if X >= 168
 	dec hl
-	ld a, 160
+	ld a, SCREEN_HEIGHT_PX + OAM_Y_OFS
 	ld [hli], a
 .skipPuttingEntryOffScreen
 	ld [hl], a
@@ -1347,7 +1347,7 @@ AdjustOAMBlockYPos:
 	ld h, d
 
 AdjustOAMBlockYPos2:
-	ld de, 4
+	ld de, OBJ_SIZE
 .loop
 	ld a, [wCoordAdjustmentAmount]
 	ld b, a
@@ -1605,7 +1605,7 @@ _AnimationSquishMonPic:
 	call AnimCopyRowRight
 	inc hl
 .next
-	ld [hl], " "
+	ld [hl], ' '
 	pop hl
 	ld de, SCREEN_WIDTH
 	add hl, de
@@ -1670,7 +1670,7 @@ _AnimationShootBallsUpward:
 	dec a
 	ld [wNumShootingBalls], a
 .next
-	ld de, 4
+	ld de, OBJ_SIZE
 	add hl, de ; next OAM entry
 	dec b
 	jr nz, .innerLoop
@@ -1723,10 +1723,10 @@ AnimationMinimizeMon:
 	ld hl, wTempPic
 	push hl
 	xor a
-	ld bc, 7 * 7 * $10
+	ld bc, PIC_SIZE tiles
 	call FillMemory
 	pop hl
-	ld de, 7 * 3 * $10 + 4 * $10 + 4
+	ld de, (PIC_WIDTH * 3 + 4) tiles + TILE_SIZE / 4
 	add hl, de
 	ld de, MinimizedMonSprite
 	ld c, MinimizedMonSpriteEnd - MinimizedMonSprite
@@ -1774,7 +1774,7 @@ AnimationSlideMonDownAndHide:
 	jr nz, .loop
 	call AnimationHideMonPic
 	ld hl, wTempPic
-	ld bc, 7 * 7 tiles
+	ld bc, PIC_SIZE tiles
 	xor a
 	call FillMemory
 	jp CopyTempPicToMonPic
@@ -1861,7 +1861,7 @@ CopyTempPicToMonPic:
 	ld hl, vFrontPic ; enemy turn
 .next
 	ld de, wTempPic
-	ld bc, 7 * 7
+	ld bc, PIC_SIZE
 	jp CopyVideoData
 
 AnimationWavyScreen:
@@ -1932,7 +1932,7 @@ AnimationSubstitute:
 ; Changes the pokemon's sprite to the mini sprite
 	ld hl, wTempPic
 	xor a
-	ld bc, 7 * 7 tiles
+	ld bc, PIC_SIZE tiles
 	call FillMemory
 	ldh a, [hWhoseTurn]
 	and a
@@ -1968,7 +1968,7 @@ AnimationSubstitute:
 	jp AnimationShowMonPic
 
 CopyMonsterSpriteData:
-	ld bc, 1 tiles
+	ld bc, TILE_SIZE
 	ld a, BANK(MonsterSprite)
 	jp FarCopyData2
 
@@ -2407,7 +2407,7 @@ FallingObjects_UpdateOAMEntry:
 	inc a
 	cp 112
 	jr c, .next
-	ld a, 160 ; if Y >= 112, put it off-screen
+	ld a, SCREEN_HEIGHT_PX + OAM_Y_OFS ; if Y >= 112, put it off-screen
 .next
 	ld [hli], a ; Y
 	ld a, [wFallingObjectMovementByte]
@@ -2501,7 +2501,7 @@ AnimationShakeEnemyHUD:
 ; Make a copy of the back pic's tile patterns in sprite tile pattern VRAM.
 	ld de, vBackPic
 	ld hl, vSprites
-	ld bc, 7 * 7
+	ld bc, PIC_SIZE
 	call CopyVideoData
 
 	xor a

@@ -146,6 +146,9 @@ OakSpeech:
 	ld a, SFX_SHRINK
 	call PlaySound
 	pop af
+; bug: switching ROM Bank should not happen outside of Home Bank
+; This code does nothing, as PlaySound does all necessary Bank switch
+; It looks like a leftover from an early development stage
 	ldh [hLoadedROMBank], a
 	ld [rROMB], a
 	ld c, 4
@@ -183,6 +186,7 @@ OakSpeech:
 	ld [wMusicFadeID], a
 
 	pop af
+; bug: switching ROM Bank should not happen outside of Home Bank
 	ldh [hLoadedROMBank], a
 	ld [rROMB], a
 	ld c, 20
@@ -198,21 +202,26 @@ OakSpeech:
 	call DelayFrames
 	call GBFadeOutToWhite
 	jp ClearScreen
+
 OakSpeechText1:
 	text_far _OakSpeechText1
 	text_end
+
 OakSpeechText2:
 	text_far _OakSpeechText2A
 	; BUG: The cry played does not match the sprite displayed.
 	sound_cry_nidorino   ; marcelnote - fixed from NIDORINA (pokered wiki)
 	text_far _OakSpeechText2B
 	text_end
+
 IntroducePlayerText:
 	text_far _IntroducePlayerText
 	text_end
+
 IntroduceRivalText:
 	text_far _IntroduceRivalText
 	text_end
+
 OakSpeechText3:
 	text_far _OakSpeechText3
 	text_end
@@ -264,7 +273,7 @@ IntroDisplayPicCenteredOrUpperRight: ; marcelnote - refactored to remove sprite 
 ; c: 0 = centred, non-zero = upper-right
 	push bc
 	ld hl, vFrontPic
-	ld c, 7 * 7
+	ld c, PIC_SIZE
 	call CopyVideoData
 	pop bc
 	ld a, c

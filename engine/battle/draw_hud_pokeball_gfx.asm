@@ -13,7 +13,7 @@ DrawEnemyPokeballs:
 LoadPartyPokeballGfx:
 	ld de, PokeballTileGraphics
 	ld hl, vSprites tile $31
-	lb bc, BANK(PokeballTileGraphics), (PokeballTileGraphicsEnd - PokeballTileGraphics) / $10
+	lb bc, BANK(PokeballTileGraphics), (PokeballTileGraphicsEnd - PokeballTileGraphics) / TILE_SIZE
 	jp CopyVideoData
 
 SetupOwnPartyPokeballs:
@@ -90,7 +90,7 @@ PickPokeball:
 .done
 	ld a, b
 	ld [de], a
-	ld bc, wPartyMon2 - wPartyMon1Status
+	ld bc, PARTYMON_STRUCT_LENGTH - MON_STATUS
 	add hl, bc ; next mon struct
 	ret
 
@@ -154,7 +154,7 @@ EnemyBattleHUDGraphicsTiles:
 	db "<RIGHT_TRIANGLE>" ; lower-right triangle tile of the HUD
 
 PlaceHUDTiles:
-	ld [hl], "<HUD_VERTI_BAR>"
+	ld [hl], '<HUD_VERTI_BAR>'
 	ld bc, SCREEN_WIDTH
 	add hl, bc
 	ld a, [wHUDGraphicsTiles] ; leftmost tile

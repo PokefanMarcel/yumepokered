@@ -209,7 +209,7 @@ UpdateHPBar_PrintHPNumber:
 .printFraction
 	add hl, de
 	push hl
-	ld a, " "
+	ld a, ' '
 	ld [hli], a
 	ld [hli], a
 	ld [hli], a
