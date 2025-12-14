@@ -1,29 +1,45 @@
-HandleLedges::
+HandleLedges:: ; marcelnote - modified to check more accurate tiles
 	ld a, [wMovementFlags]
 	bit BIT_LEDGE_OR_FISHING, a
 	ret nz
 	ld a, [wCurMapTileset]
-;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - modified to handle ledges in CAVERN tileset
+	and a ; OVERWORLD?
+	jr z, .overworldTileset
 	cp CAVERN
-	jp z, .proceed
-	and a ; OVERWORLD
-	ret nz
-.proceed
-;;;;;;;;;;;;;;;;;;;;;;;;
-	predef GetTileAndCoordsInFrontOfPlayer
+	ret nz ; other tilesets do not have ledges
+	ld hl, LedgeTilesCavern
+	jr .gotTileset
+.overworldTileset
+	ld hl, LedgeTiles
+.gotTileset
 	ld a, [wSpritePlayerStateData1FacingDirection]
 	ld b, a
-	lda_coord 8, 9
-	ld c, a
-	ld a, [wTileInFrontOfPlayer]
-	ld d, a
-	ld hl, LedgeTiles
-;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - modified to handle ledges in CAVERN tileset
-	ld a, [wCurMapTileset]
-	and a
-	jp z, .loop ; if OVERWORLD, keep LedgeTiles
-	ld hl, LedgeTilesCavern
-;;;;;;;;;;;;;;;;;;;;;;;;
+	and a ; SPRITE_FACING_DOWN
+	jr nz, .notFacingDown
+	; facing down
+	lda_coord 8, 10
+	ld c, a ; c = tile in front of player, northwest
+	lda_coord 8, 11
+	ld d, a ; d = tile in front of player, southwest
+	jr .loop
+.notFacingDown
+	cp SPRITE_FACING_LEFT
+	jr nz, .notFacingLeft
+	; facing left
+	lda_coord 7, 9
+	ld c, a ; c = tile in front of player, southeast
+	lda_coord 6, 9
+	ld d, a ; d = tile in front of player, southwest
+	jr .loop
+.notFacingLeft
+	cp SPRITE_FACING_RIGHT
+	ret nz ; no ledges facing up
+	; facing right
+	lda_coord 10, 9
+	ld c, a ; c = tile in front of player, southwest
+	lda_coord 11, 9
+	ld d, a ; d = tile in front of player, southeast
+	; fallthrough
 .loop
 	ld a, [hli]
 	cp $ff
