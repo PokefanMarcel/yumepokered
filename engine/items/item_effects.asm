@@ -157,7 +157,7 @@ ItemUseBall:
 	dec a
 	jr nz, .notOldManBattle
 
-.oldManBattle
+; Old Man battle
 	ld hl, wGrassRate
 	ld de, wPlayerName
 	ld bc, NAME_LENGTH
@@ -680,7 +680,7 @@ ItemUseBicycle:
 	jp z, ItemUseNotTime
 	dec a ; BIKING?
 	jr nz, .tryToGetOnBike
-.getOffBike
+; get off bike
 	call ItemUseReloadOverworldData
 	xor a ; WALKING
 	ld [wWalkBikeSurfState], a ; change player state to walking
@@ -706,13 +706,13 @@ ItemUseSurfboard:
 	ld [wWalkBikeSurfStateCopy], a
 	cp SURFING
 	jr z, .tryToStopSurfing
-.tryToSurf
+; try to Surf
 	call IsNextTileShoreOrWater
 	jp c, SurfingAttemptFailed
 	ld hl, TilePairCollisionsWater
 	call CheckForTilePairCollisions
 	jp c, SurfingAttemptFailed
-.surf
+; surfing
 	call .makePlayerMoveForward
 	ld hl, wStatusFlags5
 	set BIT_SCRIPTED_MOVEMENT_STATE, [hl]
@@ -953,7 +953,7 @@ ItemUseMedicine:
 	ld [wHPBarOldHP], a ; current HP stored at wHPBarOldHP (2 bytes, big-endian)
 	or b
 	jr nz, .notFainted
-.fainted
+; fainted
 	ld a, [wCurItem]
 	cp REVIVE
 	jr z, .updateInBattleFaintedData
@@ -1005,7 +1005,7 @@ ItemUseMedicine:
 .skipComparingLSB
 	pop hl
 	jr nz, .notFullHP
-.fullHP ; if the pokemon's current HP equals its max HP
+; if the pokemon's current HP equals its max HP
 	ld a, [wCurItem]
 	cp FULL_RESTORE
 	jp nz, .healingItemNoEffect
@@ -1342,7 +1342,7 @@ ItemUseMedicine:
 	jr .statNameLoop
 .gotStatName
 	ld de, wStringBuffer
-	ld bc, NAME_LENGTH - 1 ; all VitaminStats are at most 10 bytes
+	ld bc, STAT_NAME_LENGTH
 	call CopyData ; copy the stat's name to wStringBuffer
 	ld a, SFX_HEAL_AILMENT
 	call PlaySound
@@ -1814,8 +1814,8 @@ ItemUsePokeFlute: ; marcelnote - added Mew
 ; OUTPUT:
 ; [wWereAnyMonsAsleep]: set to 1 if any pokemon were asleep
 WakeUpEntireParty:
-	ld de, 44
-	ld c, 6
+	ld de, PARTYMON_STRUCT_LENGTH
+	ld c, PARTY_LENGTH
 .loop
 	ld a, [hl]
 	push af
@@ -2094,7 +2094,7 @@ ItemUsePPRestore:
 	ld a, [wPPRestoreItem]
 	cp ETHER
 	jr nc, .useEther ; if Ether or Max Ether
-.usePPUp
+; use PP Up
 	ld bc, MON_PP - MON_MOVES
 	add hl, bc
 	ld a, [hl] ; move PP

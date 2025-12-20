@@ -374,9 +374,9 @@ PrintNicknameAndUnderscores:
 	hlcoord 10, 3
 	ld a, [wNamingScreenType]
 	cp NAME_MON_SCREEN
-	ld b, 10 ; pokemon max name length
+	ld b, NAME_LENGTH - 1 ; pokemon max name length
 	jr nc, .got_max_length
-	ld b, 7 ; player or rival max name length
+	ld b, PLAYER_NAME_LENGTH - 1 ; player or rival max name length
 .got_max_length
 	ld a, '<UNDERSCORE>' ; underscore tile id
 .placeUnderscoreLoop
@@ -387,13 +387,15 @@ PrintNicknameAndUnderscores:
 	cp NAME_MON_SCREEN
 	ld a, [wNamingScreenNameLength]
 	jr nc, .pokemon2
-	cp 7 ; player or rival max name length
-	jr .playerOrRival2
+; player or rival
+	cp PLAYER_NAME_LENGTH - 1
+	jr .checkEmptySpaces
 .pokemon2
-	cp 10 ; pokemon max name length
-.playerOrRival2
-	jr nz, .emptySpacesRemaining
-	; when all spaces are filled, force the cursor onto the ED tile
+	cp NAME_LENGTH - 1
+.checkEmptySpaces
+	jr nz, .placeRaisedUnderscore ; jump if empty spaces remain
+	; when all spaces are filled, force the cursor onto the ED tile,
+	; and keep the last underscore raised
 	call EraseMenuCursor
 	ld a, $11 ; "ED" x coord
 	ld [wTopMenuItemX], a
@@ -401,10 +403,10 @@ PrintNicknameAndUnderscores:
 	ld [wCurrentMenuItem], a
 	ld a, [wNamingScreenType]
 	cp NAME_MON_SCREEN
-	ld a, 9 ; keep the last underscore raised
-	jr nc, .emptySpacesRemaining
-	ld a, 6 ; keep the last underscore raised
-.emptySpacesRemaining
+	ld a, NAME_LENGTH - 2 ; keep the last underscore raised
+	jr nc, .placeRaisedUnderscore
+	ld a, PLAYER_NAME_LENGTH - 2 ; keep the last underscore raised
+.placeRaisedUnderscore
 	ld c, a
 	ld b, $0
 	hlcoord 10, 3

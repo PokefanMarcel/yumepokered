@@ -255,4 +255,6 @@ DEF NUM_MAPS EQU const_value
 
 ; Indoor maps, such as houses, use this as the Map ID in their exit warps
 ; This map ID takes the player back to the last outdoor map they were on, stored in wLastMap
-DEF LAST_MAP EQU -1
+DEF LAST_MAP EQU $ff
+
+ASSERT NUM_MAPS <= LAST_MAP, "map IDs overlap LAST_MAP"

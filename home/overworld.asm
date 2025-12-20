@@ -617,7 +617,7 @@ ContinueCheckWarpsNoCollisionLoop::
 
 ; if no matching warp was found
 CheckMapConnections::
-.checkWestMap
+; check west map
 	ld a, [wXCoord]
 	cp $ff
 	jr nz, .checkEastMap
@@ -1174,8 +1174,7 @@ IsSpriteOrSignInFrontOfPlayer::
 	ld a, [hli] ; sign X
 	cp e
 	jr nz, .retry
-.xCoordMatched
-; found sign
+; X coord matched: found sign
 	push hl
 	push bc
 	ld hl, wSignTextIDs
@@ -2180,7 +2179,7 @@ LoadMapHeader::
 ; copy connection data (if any) to WRAM
 	ld a, [wCurMapConnections]
 	ld b, a
-.checkNorth
+; check north
 	bit NORTH_F, b
 	jr z, .checkSouth
 	ld de, wNorthConnectionHeader
@@ -2213,7 +2212,7 @@ LoadMapHeader::
 	ld de, wMapBackgroundTile
 	ld a, [hli]
 	ld [de], a
-.loadWarpData
+; load warp data
 	ld a, [hli]
 	ld [wNumberOfWarps], a
 	and a

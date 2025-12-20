@@ -1,14 +1,15 @@
+DEF __move_choices__ = 0
+
 MACRO move_choices
 	IF _NARG
 		db \# ; all args
 	ENDC
 	db 0 ; end
-	DEF list_index += 1
+	DEF __move_choices__ += 1
 ENDM
 
 ; move choice modification methods that are applied for each trainer class
 TrainerClassMoveChoiceModifications:
-	list_start
 	move_choices         ; YOUNGSTER
 	move_choices 1       ; BUG CATCHER
 	move_choices 1       ; LASS
@@ -60,4 +61,5 @@ TrainerClassMoveChoiceModifications:
 	move_choices 1, 3    ; WILL   ; marcelnote - new trainer class
 	move_choices 1, 3    ; RED    ; marcelnote - new trainer class
 	move_choices 1, 3    ; GREEN  ; marcelnote - new trainer class
-	assert_list_length NUM_TRAINERS
+	assert __move_choices__ == NUM_TRAINERS, \
+		"TrainerClassMoveChoiceModifications: expected {d:NUM_TRAINERS} entries, got {d:__move_choices__}"

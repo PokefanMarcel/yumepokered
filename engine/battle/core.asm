@@ -1301,7 +1301,7 @@ SlideTrainerPicOffScreen:
 	ldh a, [hSlideAmount]
 	cp 8
 	jr z, .slideRight
-.slideLeft ; slide player sprite off screen
+; slide player sprite left off screen
 	ld a, [hld]
 	ld [hli], a
 	inc hl
@@ -3829,7 +3829,7 @@ ConfusedNoMoreText:
 	text_far _ConfusedNoMoreText
 	text_end
 
-SavingEnergyText:
+SavingEnergyText: ; unreferenced
 	text_far _SavingEnergyText
 	text_end
 
@@ -4291,7 +4291,7 @@ GetDamageVarsForPlayerAttack:
 	and a ; TRUE if Special, FALSE if Physical
 	jr nz, .specialAttack
 	;;;;;;;;;;;;;;;
-.physicalAttack
+; physical attack
 	ld hl, wEnemyMonDefense
 	ld a, [hli]
 	ld b, a
@@ -4415,7 +4415,7 @@ GetDamageVarsForEnemyAttack:
 	and a ; TRUE if Special, FALSE if Physical
 	jr nz, .specialAttack
 	;;;;;;;;;;;;;;;
-.physicalAttack
+; physical attack
 	ld hl, wBattleMonDefense
 	ld a, [hli]
 	ld b, a
@@ -6195,9 +6195,10 @@ CheckEnemyStatusConditions:
 	call PrintText
 	ld hl, wEnemyNumAttacksLeft
 	dec [hl] ; did multi-turn move end?
-	ld hl, GetEnemyAnimationType ; if it didn't, skip damage calculation (deal damage equal to last hit),
+	ld hl, GetEnemyAnimationType ; skip damage calculation (deal damage equal to last hit),
 	                             ; DecrementPP and MoveHitTest
-;	jp nz, .enemyReturnToHL
+;	jp nz, .enemyReturnToHL ; redundant leftover code, the case wEnemyNumAttacksLeft == 0
+							; is handled within CheckNumAttacksLeft
 	jp .enemyReturnToHL
 .checkIfUsingRage
 	ld a, [wEnemyBattleStatus2]
@@ -6551,7 +6552,7 @@ LoadHudTilePatterns:
 	ldh a, [rLCDC]
 	add a ; is LCD disabled?
 	jr c, .lcdEnabled
-.lcdDisabled
+; LCD disabled
 	; marcelnote - reorganized Battle HUD tiles
 	ld hl, BattleHudTiles
 	ld de, vChars2 tile $73

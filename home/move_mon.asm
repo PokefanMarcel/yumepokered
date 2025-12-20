@@ -108,7 +108,7 @@ CalcStat::
 	jr z, .getSpeedIV
 	cp $5
 	jr z, .getSpecialIV
-.getHpIV ; c = $1
+; get HP IV ; c = $1
 	ld a, [hl]  ; Atk IV
 	swap a
 	and $1
