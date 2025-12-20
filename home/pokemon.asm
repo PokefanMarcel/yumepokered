@@ -6,7 +6,7 @@ DrawHPBar::
 	push hl
 	push de
 
-	ld a, "<HP>"
+	ld a, '<HP>'
 	ld [hli], a
 	inc a ; a = $63, end of the P, colon, and left tip of the HP bar
 	ld [hli], a
@@ -47,7 +47,7 @@ DrawHPBar::
 .rightTip
 	ld a, [wHPBarType]
 	dec a
-	ld a, "<HUD_VERTI_BAR_HP_TIP>" ; HP bar tip with vertical bar ; for player Mon in battle
+	ld a, '<HUD_VERTI_BAR_HP_TIP>' ; HP bar tip with vertical bar ; for player Mon in battle
 	jr z, .gotRightmostTile
 	ld a, $6d ; HP bar tip without vertical bar ; for pokemon menu, status screen, and for enemy Mon in battle
 .gotRightmostTile
