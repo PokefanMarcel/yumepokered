@@ -1153,6 +1153,7 @@ ChooseNextMon:
 	call LoadBattleMonFromParty
 	call GBPalWhiteOut
 	call LoadHudTilePatterns
+;	callfar CalcAndLoadExpBarDynamicTile ; marcelnote - for dynamic exp bar tile
 	call LoadScreenTilesFromBuffer1
 	call RunDefaultPaletteCommand
 	call GBPalNormal
@@ -1466,7 +1467,7 @@ EnemySendOutFirstMon:
 	ld [wCurrentMenuItem], a
 .next7
 	call GBPalWhiteOut
-	call LoadHudTilePatterns
+	call LoadHudTilePatterns ; here
 	callfar CalcAndLoadExpBarDynamicTile ; marcelnote - new for ExpBar
 	call LoadScreenTilesFromBuffer1
 .sendEnemyMon
@@ -1777,6 +1778,7 @@ LoadEnemyMonFromParty:
 
 SendOutMon:
 	callfar PrintSendOutMonMessage
+	call Delay3
 	ld hl, wEnemyMonHP
 	ld a, [hli]
 	or [hl] ; is enemy mon HP zero?
@@ -2394,7 +2396,8 @@ UseBagItem:
 	xor a
 	ld [wPseudoItemID], a
 	call UseItem
-	call LoadHudTilePatterns
+	call LoadHudTilePatterns ; here
+;	callfar CalcAndLoadExpBarDynamicTile ; marcelnote - for dynamic exp bar tile
 	call ClearSprites
 	xor a
 	ld [wCurrentMenuItem], a
@@ -2469,7 +2472,7 @@ PartyMenuOrRockOrRun:
 .quitPartyMenu
 	call ClearSprites
 	call GBPalWhiteOut
-	call LoadHudTilePatterns
+	call LoadHudTilePatterns ; here
 	call LoadScreenTilesFromBuffer1     ; marcelnote - replaced LoadScreenTilesFromBuffer2
 	call RunDefaultPaletteCommand
 	call Delay3                         ; marcelnote - added
@@ -2583,7 +2586,7 @@ PartyMenuOrRockOrRun:
 	ld [wActionResultOrTookBattleTurn], a
 	call GBPalWhiteOut
 	call ClearSprites
-	call LoadHudTilePatterns
+	call LoadHudTilePatterns ; here
 	callfar CalcAndLoadExpBarDynamicTile ; marcelnote - for dynamic exp bar tile
 	call LoadScreenTilesFromBuffer1
 	call RunDefaultPaletteCommand
