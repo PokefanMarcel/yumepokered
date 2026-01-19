@@ -16,11 +16,17 @@ PewterGym_Script:
 	ld de, .LeaderName
 	jp LoadGymLeaderAndCityName
 
+IF DEF(_FRA)
+.CityName:
+	db "ARGENTA@"
+.LeaderName:
+	db "PIERRE@"
+ELSE
 .CityName:
 	db "PEWTER CITY@"
-
 .LeaderName:
 	db "BROCK@"
+ENDC
 
 PewterGymResetScripts:
 	xor a

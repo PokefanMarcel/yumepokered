@@ -16,11 +16,17 @@ CeladonGym_Script:
 	ld de, .LeaderName
 	jp LoadGymLeaderAndCityName
 
+IF DEF(_FRA)
 .CityName:
-	db "CELADON CITY@"
-
+	db "CELADOPOLE@"
 .LeaderName:
 	db "ERIKA@"
+ELSE
+.CityName:
+	db "CELADON CITY@"
+.LeaderName:
+	db "ERIKA@"
+ENDC
 
 CeladonGymResetScripts:
 	xor a ; SCRIPT_CELADONGYM_DEFAULT

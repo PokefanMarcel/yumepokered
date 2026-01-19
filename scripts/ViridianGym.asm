@@ -10,11 +10,18 @@ ViridianGym_Script:
 	ld [wViridianGymCurScript], a
 	ret
 
+IF DEF(_FRA)
 .CityName:
-	db "VIRIDIAN CITY@"
-
+	db "JADIELLE@"
 .LeaderName:
 	db "GIOVANNI@"
+ELSE
+.CityName:
+	db "VIRIDIAN CITY@"
+.LeaderName:
+	db "GIOVANNI@"
+ENDC
+
 
 ViridianGymResetScripts:
 	xor a

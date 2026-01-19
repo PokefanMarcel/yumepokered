@@ -16,11 +16,17 @@ CeruleanGym_Script:
 	ld de, .LeaderName
 	jp LoadGymLeaderAndCityName
 
+IF DEF(_FRA)
+.CityName:
+	db "AZURIA@"
+.LeaderName:
+	db "ONDINE@"
+ELSE
 .CityName:
 	db "CERULEAN CITY@"
-
 .LeaderName:
 	db "MISTY@"
+ENDC
 
 CeruleanGymResetScripts:
 	xor a ; SCRIPT_CERULEANGYM_DEFAULT

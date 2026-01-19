@@ -18,11 +18,17 @@ FuchsiaGym_Script:
 	call LoadGymLeaderAndCityName
 	ret
 
+IF DEF(_FRA)
 .CityName:
-	db "FUCHSIA CITY@"
-
+	db "PARMANIE@"
 .LeaderName:
 	db "KOGA@"
+ELSE
+.CityName:
+	db "FUCHSIA CITY@"
+.LeaderName:
+	db "KOGA@"
+ENDC
 
 FuchsiaGymResetScripts:
 	xor a ; SCRIPT_FUCHSIAGYM_DEFAULT

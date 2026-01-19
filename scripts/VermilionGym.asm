@@ -21,11 +21,17 @@ VermilionGym_Script:
 	ld de, .LeaderName
 	jp LoadGymLeaderAndCityName
 
+IF DEF(_FRA)
+.CityName:
+	db "CARMIN SUR MER@"
+.LeaderName:
+	db "MAJOR BOB@"
+ELSE
 .CityName:
 	db "VERMILION CITY@"
-
 .LeaderName:
 	db "LT.SURGE@"
+ENDC
 
 VermilionGymSetDoorTile:
 	CheckEvent EVENT_2ND_LOCK_OPENED

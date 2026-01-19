@@ -16,11 +16,17 @@ SaffronGym_Script:
 	ld de, .LeaderName
 	jp LoadGymLeaderAndCityName
 
+IF DEF(_FRA)
+.CityName:
+	db "SAFRANIA@"
+.LeaderName:
+	db "MORGANE@"
+ELSE
 .CityName:
 	db "SAFFRON CITY@"
-
 .LeaderName:
 	db "SABRINA@"
+ENDC
 
 SaffronGymResetScripts:
 	xor a ; SCRIPT_SAFFRONGYM_DEFAULT

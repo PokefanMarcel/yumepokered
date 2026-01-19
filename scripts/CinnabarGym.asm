@@ -23,11 +23,17 @@ CinnabarGymSetMapAndTiles:
 	ld de, .LeaderName
 	jp LoadGymLeaderAndCityName
 
+IF DEF(_FRA)
+.CityName:
+	db "CRAMOIS'ILE@"
+.LeaderName:
+	db "AUGUSTE@"
+ELSE
 .CityName:
 	db "CINNABAR ISLAND@"
-
 .LeaderName:
 	db "BLAINE@"
+ENDC
 
 CinnabarGymResetScripts:
 	xor a ; SCRIPT_CINNABARGYM_DEFAULT
