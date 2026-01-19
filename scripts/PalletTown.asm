@@ -125,11 +125,11 @@ PalletTownPlayerFollowsOakScript:
 PalletTownDaisyScript: ; marcelnote - this was adjusted to move on to SCRIPT_PALLETTOWN_NOOP
 	CheckEvent EVENT_GOT_TOWN_MAP
 	ret z
-	ld a, HS_DAISY_SITTING
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_DAISY_SITTING
+	ld [wToggleableObjectIndex], a
 	predef HideObject
-	ld a, HS_DAISY_WALKING
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_DAISY_WALKING
+	ld [wToggleableObjectIndex], a
 	predef ShowObject
 
 	ld a, SCRIPT_PALLETTOWN_NOOP

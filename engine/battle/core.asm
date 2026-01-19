@@ -3323,7 +3323,7 @@ PlayerCanExecuteChargingMove:
 	                    ; resulting in the Pokemon being invulnerable for the whole battle
 	res INVULNERABLE, [hl]
 PlayerCanExecuteMove:
-	call PrintMonName1Text
+	call DisplayUsedMoveText
 	ld hl, DecrementPP
 	ld de, wPlayerSelectedMove ; pointer to the move just used
 	ld b, BANK(DecrementPP)
@@ -3918,6 +3918,9 @@ HandleSelfConfusionDamage:
 	ldh [hWhoseTurn], a
 	jp ApplyDamageToPlayerPokemon
 
+INCLUDE "engine/battle/used_move_text.asm"
+
+;;;;;;;;;;
 PrintMonName1Text:
 	ld hl, MonName1Text
 	jp PrintText
@@ -3963,6 +3966,7 @@ _PrintMoveName: ; marcelnote - removed redundant exclamation points leftover fro
 ExclamationPointText:
 	text_far _ExclamationPointText
 	text_end
+;;;;;;;;;;
 
 PrintMoveFailureText:
 	ld de, wPlayerMoveEffect
@@ -5776,7 +5780,7 @@ EnemyCanExecuteChargingMove:
 EnemyCanExecuteMove:
 	xor a
 	ld [wMonIsDisobedient], a
-	call PrintMonName1Text
+	call DisplayUsedMoveText
 	ld a, [wEnemyMoveEffect]
 	ld hl, ResidualEffects1
 	call IsInList

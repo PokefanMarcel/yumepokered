@@ -37,7 +37,7 @@ PredefPointers::
 	add_predef LearnMove
 	add_predef GetQuantityOfItemInBag
 	add_predef GetIndexOfItemInBag  ; marcelnote - copied from PureRGB
-	add_predef CheckForHiddenObjectOrBookshelfOrCardKeyDoor, $03 ; home bank
+	add_predef CheckForHiddenEventOrBookshelfOrCardKeyDoor, $03 ; home bank
 	add_predef GiveItem, $03 ; home bank
 	add_predef ChangeBGPalColor0_4Frames
 	add_predef FindPathToPlayer
@@ -72,7 +72,7 @@ PredefPointers::
 	add_predef WriteMonMoves
 	add_predef SaveMenu
 	add_predef LoadSGB
-	add_predef MarkTownVisitedAndLoadMissableObjects
+	add_predef MarkTownVisitedAndLoadToggleableObjects
 	add_predef SetPartyMonTypes
 	add_predef CanLearnTM
 	add_predef TMToMove

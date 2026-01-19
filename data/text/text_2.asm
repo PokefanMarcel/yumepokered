@@ -1106,16 +1106,16 @@ _MoveIsDisabledText::
 	cont "disabled!"
 	prompt
 
-_MonName1Text::
+_ActorNameText::
 	text "<USER>@"
 	text_end
 
-_UsedText:: ; marcelnote - merged _Used1Text and _Used2Text
+_UsedMoveText:: ; marcelnote - merged _Used1Text and _Used2Text
 	text_start
 	line "used @"
 	text_end
 
-_InsteadText::
+_UsedInsteadText::
 	text "instead,"
 	cont "@"
 	text_end

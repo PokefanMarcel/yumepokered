@@ -117,8 +117,8 @@ HallOfFameCongratulationsScript:
 	jp nz, .rematch3
 	; marcelnote - resetting events and hide/show items after first win
 	SetEvent EVENT_BECAME_CHAMPION ; new event which marks postgame
-	ld a, HS_CERULEAN_CAVE_GUY
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_CERULEAN_CAVE_GUY
+	ld [wToggleableObjectIndex], a
 	predef HideObject
 	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL1   ; move girl to E4 entrance
 	ld [wMissableObjectIndex], a

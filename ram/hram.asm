@@ -314,7 +314,7 @@ hItemToRemoveIndex:: db
 NEXTU
 hItemCounter::
 hSavedCoordIndex::
-hMissableObjectIndex::
+hToggleableObjectIndex::
 hGymTrashCanRandNumMask::
 hInteractedWithBookshelf::
 	db
@@ -333,7 +333,7 @@ hStartTileID:: db
 
 hNewPartyLength:: db
 
-hIsHiddenMissableObject:: db
+hIsToggleableObjectOff:: db
 
 	ds 2
 
@@ -355,7 +355,7 @@ NEXTU
 hOverworldHMUseFound:: ; marcelnote - new, for overworld HM use
 hItemAlreadyFound:: db
 	ds 2
-hDidntFindAnyHiddenObject:: db
+hDidntFindAnyHiddenEvent:: db
 
 NEXTU
 	ds 1

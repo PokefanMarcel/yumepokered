@@ -1,14 +1,14 @@
 StartSlotMachine: ; marcelnote - optimized
-	ld a, [wHiddenObjectFunctionArgument]
+	ld a, [wHiddenEventFunctionArgument]
 	and a
 	jr nz, .otherTexts
 	call AbleToPlaySlotsCheck
 	ld a, [wCanPlaySlots]
 	and a
 	ret z
-	ld a, [wLuckySlotHiddenObjectIndex]
+	ld a, [wLuckySlotHiddenEventIndex]
 	ld b, a
-	ld a, [wHiddenObjectIndex]
+	ld a, [wHiddenEventIndex]
 	inc a
 	cp b
 	ld a, 250

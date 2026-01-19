@@ -1,21 +1,21 @@
 UpdateCinnabarGymGateTileBlocks::
 	jpfar UpdateCinnabarGymGateTileBlocks_
 
-CheckForHiddenObjectOrBookshelfOrCardKeyDoor::
+CheckForHiddenEventOrBookshelfOrCardKeyDoor::
 	ldh a, [hLoadedROMBank]
 	push af
 	;ldh a, [hJoyHeld] ; marcelnote - button is already checked before calling the function
 	;bit B_PAD_A, a
 	;jr z, .nothingFound
 ; A button is pressed
-	ld a, BANK(CheckForHiddenObject)
+	ld a, BANK(CheckForHiddenEvent)
 	ld [rROMB], a
 	ldh [hLoadedROMBank], a
-	call CheckForHiddenObject
-	ldh a, [hDidntFindAnyHiddenObject]
+	call CheckForHiddenEvent
+	ldh a, [hDidntFindAnyHiddenEvent]
 	and a
-	jr nz, .hiddenObjectNotFound
-	ld a, [wHiddenObjectFunctionRomBank]
+	jr nz, .hiddenEventNotFound
+	ld a, [wHiddenEventFunctionRomBank]
 	ld [rROMB], a
 	ldh [hLoadedROMBank], a
 	ld de, .returnAddress
@@ -24,7 +24,7 @@ CheckForHiddenObjectOrBookshelfOrCardKeyDoor::
 .returnAddress
 	xor a
 	jr .done
-.hiddenObjectNotFound
+.hiddenEventNotFound
 	callfar PrintBookshelfText
 	ldh a, [hInteractedWithBookshelf]
 	and a

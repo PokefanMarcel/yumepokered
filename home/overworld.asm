@@ -109,12 +109,12 @@ OverworldLoopLessDelay::
 ;	call CheckForHiddenObjectOrBookshelfOrCardKeyDoor
 ;	ldh a, [hItemAlreadyFound] ; a = $ff if not found, = 0 if found
 ;	and a
-;	jp z, OverworldLoop ; jump if a hidden object or bookshelf was found, but not if a card key door was found
+;	jp z, OverworldLoop ; jump if a hidden event or bookshelf was found, but not if a card key door was found
 	call IsSpriteOrSignInFrontOfPlayer
 	ldh a, [hTextID]
 	and a
 	jr nz, .displayDialogue ; checks for Strength via BoulderText
-	call CheckForHiddenObjectOrBookshelfOrCardKeyDoor ; marcelnote - check Hidden objects after sprites
+	call CheckForHiddenEventOrBookshelfOrCardKeyDoor ; marcelnote - check Hidden objects after sprites
 	ldh a, [hItemAlreadyFound] ; a = $ff if not found, = 0 if found
 	and a
 	jp z, OverworldLoop ; jump if a hidden object or bookshelf was found, but not if a card key door was found
@@ -2136,9 +2136,9 @@ LoadPlayerSpriteGraphicsCommon::
 
 ; function to load data from the map header
 LoadMapHeader::
-	callfar MarkTownVisitedAndLoadMissableObjects
-	;ld a, [wCurMapTileset]
-	;ld [wUnusedCurMapTilesetCopy], a
+	callfar MarkTownVisitedAndLoadToggleableObjects
+;	ld a, [wCurMapTileset]
+;	ld [wUnusedCurMapTilesetCopy], a
 	ld a, [wCurMap]
 	call SwitchToMapRomBank
 	ld a, [wCurMapTileset]

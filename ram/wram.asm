@@ -357,7 +357,7 @@ wCheckFor180DegreeTurn:: db
 
 	ds 1
 
-wMissableObjectIndex:: db
+wToggleableObjectIndex:: db
 
 wPredefID:: db
 wPredefHL:: dw
@@ -430,7 +430,7 @@ wRelearnableMoves::
 ; A good amount of space is needed to store data for the move relearner.
 ; If it's like, 2, it'll lag like crazy and show garbage from elsewhere.
 ;;;;;;;;;;;;;;;;;;;;;;
-wLuckySlotHiddenObjectIndex:: db
+wLuckySlotHiddenEventIndex:: db
 
 NEXTU
 ; values between 0-6. Shake screen horizontally, shake screen vertically, blink Pokemon...
@@ -799,12 +799,12 @@ wTempCoins1:: dw
 wTempCoins2:: dw
 
 NEXTU
-wHiddenObjectFunctionArgument:: db
-wHiddenObjectFunctionRomBank:: db
-wHiddenObjectIndex:: db
-wHiddenObjectY:: db
+wHiddenEventFunctionArgument:: db
+wHiddenEventFunctionRomBank:: db
+wHiddenEventIndex:: db
+wHiddenEventY:: db
 wHiddenItemOrCoinsIndex::
-wHiddenObjectX:: db
+wHiddenEventX:: db
 
 NEXTU
 wPlayerSpinInPlaceAnimFrameDelay:: db
@@ -1269,7 +1269,7 @@ ENDU
 
 	ds 2
 
-wMissableObjectCounter:: db
+wToggleableObjectCounter:: db
 
 	ds 1
 
@@ -1980,9 +1980,9 @@ wTilesetTalkingOverTiles:: ds 3
 
 wGrassTile:: db
 
-; bit array of missable objects. set = removed
-wMissableObjectFlags:: flag_array $100
-wMissableObjectFlagsEnd::
+; bit array of toggleable objects, bit set = toggled off
+wToggleableObjectFlags:: flag_array $100
+wToggleableObjectFlagsEnd::
 
 ; marcelnote - second MissableObject list, this is 32 bytes taken from unused below
 wMissableObjectFlagsCont:: flag_array $100
@@ -1992,9 +1992,9 @@ wMissableObjectFlagsContEnd::
 
 ; each entry consists of 2 bytes
 ; * the sprite ID (depending on the current map)
-; * the missable object index (global, used for wMissableObjectFlags)
+; * the toggleable object index (global, used for wToggleableObjectFlags)
 ; terminated with $FF
-wMissableObjectList:: ds 16 * 2 + 1
+wToggleableObjectList:: ds 16 * 2 + 1
 
 	ds 1
 

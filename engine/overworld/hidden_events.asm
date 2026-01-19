@@ -14,16 +14,16 @@ IsPlayerOnDungeonWarp::
 	set BIT_DUNGEON_WARP, [hl]
 	ret
 
-; if a hidden object was found, stores $00 in [hDidntFindAnyHiddenObject], else stores $ff
-CheckForHiddenObject::
+; if a hidden event was found, stores $00 in [hDidntFindAnyHiddenEvent], else stores $ff
+CheckForHiddenEvent::
 	ld hl, hItemAlreadyFound
 	xor a
 	ld [hli], a ; [hItemAlreadyFound]
 	ld [hli], a ; [hSavedMapTextPtr]
 	ld [hli], a ; [hSavedMapTextPtr + 1]
-	ld [hl], a  ; [hDidntFindAnyHiddenObject]
+	ld [hl], a  ; [hDidntFindAnyHiddenEvent]
 	ld de, $0
-	ld hl, HiddenObjectMaps
+	ld hl, HiddenEventMaps
 .hiddenMapLoop
 	ld a, [hli]
 	ld b, a
@@ -36,46 +36,46 @@ CheckForHiddenObject::
 	inc de
 	jr .hiddenMapLoop
 .foundMatchingMap
-	ld hl, wHiddenObjectFunctionRomBank
+	ld hl, wHiddenEventFunctionRomBank
 	xor a
-	ld [hli], a ; [wHiddenObjectFunctionArgument]
-	ld [hli], a ; [wHiddenObjectFunctionRomBank]
-	ld [hl], a  ; [wHiddenObjectIndex]
-	ld hl, HiddenObjectPointers
+	ld [hli], a ; [wHiddenEventFunctionArgument]
+	ld [hli], a ; [wHiddenEventFunctionRomBank]
+	ld [hl], a  ; [wHiddenEventIndex]
+	ld hl, HiddenEventPointers
 	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	ld de, $04 ; load skip offset
-.hiddenObjectLoop
+.hiddenEventLoop
 	ld a, [hli]
 	cp $ff
 	jr z, .noMatch
-	ld [wHiddenObjectY], a
+	ld [wHiddenEventY], a
 	ld b, a
 	ld a, [hli]
-	ld [wHiddenObjectX], a
+	ld [wHiddenEventX], a
 	ld c, a
 	call CheckIfCoordsInFrontOfPlayerMatch
 	ldh a, [hCoordsInFrontOfPlayerMatch]
 	and a
-	jr z, .foundMatchingObject
+	jr z, .foundMatchingEvent
 	add hl, de ; skip argument, function bank, function address
-	ld a, [wHiddenObjectIndex]
+	ld a, [wHiddenEventIndex]
 	inc a
-	ld [wHiddenObjectIndex], a
-	jr .hiddenObjectLoop
-.foundMatchingObject
+	ld [wHiddenEventIndex], a
+	jr .hiddenEventLoop
+.foundMatchingEvent
 	ld a, [hli]
-	ld [wHiddenObjectFunctionArgument], a ; SPRITE_FACING_UP, item, quizz answer...
+	ld [wHiddenEventFunctionArgument], a ; SPRITE_FACING_UP, item, quizz answer...
 	ld a, [hli]
-	ld [wHiddenObjectFunctionRomBank], a
+	ld [wHiddenEventFunctionRomBank], a
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	ret
 .noMatch
-	ldh [hDidntFindAnyHiddenObject], a ; a = $ff
+	ldh [hDidntFindAnyHiddenEvent], a ; a = $ff
 	ret
 
 ; checks if the coordinates in front of the player's sprite match Y in b and X in c
@@ -124,4 +124,4 @@ CheckIfCoordsInFrontOfPlayerMatch:
 	ldh [hCoordsInFrontOfPlayerMatch], a
 	ret
 
-INCLUDE "data/events/hidden_objects.asm"
+INCLUDE "data/events/hidden_events.asm"
