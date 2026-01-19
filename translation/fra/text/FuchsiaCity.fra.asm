@@ -70,8 +70,10 @@ _FuchsiaCitySafariZoneSignText::
 	done
 
 _FuchsiaCityGymSignText::
-	text "PARMANIE"
-	line "ARENE #MON"
+;	text "PARMANIE"
+;	line "ARENE #MON"
+	text "ARENE #MON" ; marcelnote - adjusted translation
+	line "de PARMANIE"
 	cont "CHAMPION: KOGA"
 
 	para "Le Ninja aux"

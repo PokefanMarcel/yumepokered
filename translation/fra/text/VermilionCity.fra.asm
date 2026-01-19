@@ -144,8 +144,10 @@ _VermilionCityPokemonFanClubSignText::
 	done
 
 _VermilionCityGymSignText::
-	text "CARMIN SUR MER"
-	line "ARENE #MON"
+;	text "CARMIN SUR MER"
+;	line "ARENE #MON"
+	text "ARENE #MON" ; marcelnote - adjusted translation
+	line "de CARMIN SUR MER"
 	cont "CHAMPION:"
 	cont "MAJOR BOB"
 

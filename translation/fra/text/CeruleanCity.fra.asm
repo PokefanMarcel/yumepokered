@@ -310,8 +310,10 @@ _CeruleanCityBikeShopSignText::
 	done
 
 _CeruleanCityGymSignText::
-	text "AZURIA"
-	line "ARENE #MON"
+;	text "AZURIA"
+;	line "ARENE #MON"
+	text "ARENE #MON" ; marcelnote - adjusted translation
+	line "d'AZURIA"
 	cont "CHAMPION: ONDINE"
 
 	para "La petite pest..."

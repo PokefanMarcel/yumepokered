@@ -111,8 +111,10 @@ _SaffronCityFightingDojoSignText::
 	done
 
 _SaffronCityGymSignText::
-	text "SAFRANIA"
-	line "ARENE #MON"
+;	text "SAFRANIA"
+;	line "ARENE #MON"
+	text "ARENE #MON" ; marcelnote - adjusted translation
+	line "de SAFRANIA"
 	cont "CHAMPION: MORGANE"
 
 	para "Maîtresse des"

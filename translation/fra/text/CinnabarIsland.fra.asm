@@ -31,8 +31,10 @@ _CinnabarIslandPokemonLabSignText::
 	done
 
 _CinnabarIslandGymSignText::
-	text "CRAMOIS'ILE"
-	line "ARENE #MON"
+;	text "CRAMOIS'ILE"
+;	line "ARENE #MON"
+	text "ARENE #MON" ; marcelnote - adjusted translation
+	line "de CRAMOIS'ILE"
 	cont "CHAMPION: AUGUSTE"
 
 	para "Le cerveau!"

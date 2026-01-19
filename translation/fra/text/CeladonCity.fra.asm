@@ -114,8 +114,10 @@ _CeladonCitySignText::
 	done
 
 _CeladonCityGymSignText::
-	text "CELADOPOLE"
-	line "ARENE #MON"
+;	text "CELADOPOLE"
+;	line "ARENE #MON"
+	text "ARENE #MON" ; marcelnote - adjusted translation
+	line "de CELADOPOLE"
 	cont "CHAMPION: ERIKA"
 
 	para "Le combat par"
