@@ -14,11 +14,11 @@ Route22Gate_ScriptPointers:
 Route22GateShowRedOrGreenScript: ; marcelnote - runs only on first entrance in Route22Gate
 	ld a, [wStatusFlags4]
 	bit BIT_IS_GIRL, a
-	ld a, HS_BATTLE_HALL_RED
+	ld a, TOGGLE_BATTLE_HALL_RED
 	jr nz, .isGirl
-	ld a, HS_BATTLE_HALL_GREEN
+	ld a, TOGGLE_BATTLE_HALL_GREEN
 .isGirl
-	ld [wMissableObjectIndex], a
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
 	ld a, SCRIPT_ROUTE22GATE_CHECK_COORDS
 	ld [wRoute22GateCurScript], a

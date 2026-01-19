@@ -726,22 +726,22 @@ OaksLabRivalLeavesForIndigoScript: ; marcelnote - postgame Rival event
 	bit BIT_SCRIPTED_NPC_MOVEMENT, a
 	ret nz
 	call PlayDefaultMusic
-	ld a, HS_OAKS_LAB_RIVAL
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_OAKS_LAB_RIVAL
+	ld [wToggleableObjectIndex], a
 	predef HideObject
 	SetEvent EVENT_POSTGAME_RIVAL
 	CheckBothEventsSet EVENT_POSTGAME_LORELEI, EVENT_POSTGAME_BRUNO ; sets Z flag when events are set
 	jr nz, .end
 	CheckBothEventsSet EVENT_POSTGAME_AGATHA, EVENT_POSTGAME_LANCE
 	jr nz, .end
-	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL1 ; marcelnote - remove girl from E4 entrance
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_INDIGO_PLATEAU_LOBBY_GIRL1 ; marcelnote - remove girl from E4 entrance
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
-	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL2 ; marcelnote - remove girl from E4 entrance
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_INDIGO_PLATEAU_LOBBY_GIRL2 ; marcelnote - remove girl from E4 entrance
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
-	ld a, HS_INDIGO_PLATEAU_LOBBY_RIVAL ; marcelnote - show Rival
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_INDIGO_PLATEAU_LOBBY_RIVAL ; marcelnote - show Rival
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
 .end
 	xor a
@@ -1339,7 +1339,7 @@ OaksLabRivalLeaveItAllToMeText:
 
 OaksLabScientistText: ; marcelnote - text_asm to work around DisableAutoTextBoxDrawing
 	text_asm
-	CheckHideShowCont HS_ROUTE_1_OAK
+	CheckHideShowCont TOGGLE_ROUTE_1_OAK
 	ld hl, .Text
 	jr nz, .print_text
 	ld hl, .OakWentForWalkText ; marcelnote - new for Oak battle

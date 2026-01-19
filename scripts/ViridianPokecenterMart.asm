@@ -50,14 +50,14 @@ ViridianMartOaksParcelScript:
 	lb bc, OAKS_PARCEL, 1
 	call GiveItem
 	SetEvent EVENT_GOT_OAKS_PARCEL
-	ld a, HS_REDS_YELLOWS_HOUSES_ASLEEP ; marcelnote - hide Yellow asleep
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_REDS_YELLOWS_HOUSES_ASLEEP ; marcelnote - hide Yellow asleep
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
-	ld a, HS_REDS_YELLOWS_HOUSES_DAD1 ; marcelnote - hide Yellow's dad unpacking
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_REDS_YELLOWS_HOUSES_DAD1 ; marcelnote - hide Yellow's dad unpacking
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
-	ld a, HS_REDS_YELLOWS_HOUSES_DAD2 ; marcelnote - show Yellow's dad sitting
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_REDS_YELLOWS_HOUSES_DAD2 ; marcelnote - show Yellow's dad sitting
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
 	ld a, SCRIPT_VIRIDIANMART_NOOP
 	ld [wViridianPokecenterMartCurScript], a

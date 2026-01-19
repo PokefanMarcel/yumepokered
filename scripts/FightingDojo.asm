@@ -298,12 +298,12 @@ FightingDojoBetterNotGetGreedyText:
 
 FightingDojoBrunoText: ; marcelnote - postgame Bruno
 	text_asm
-	CheckHideShowCont HS_SAFFRON_GYM_WILL
+	CheckHideShowCont TOGGLE_SAFFRON_GYM_WILL
 	jr z, .alreadySpoke
 	ld hl, .OhChampText
 	call PrintText
-	ld a, HS_SAFFRON_GYM_WILL
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_SAFFRON_GYM_WILL
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .alreadySpoke

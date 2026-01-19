@@ -26,7 +26,7 @@ IndigoPlateauLobbyDefaultScript:
 	ResetEventRange INDIGO_PLATEAU_EVENTS_START, EVENT_LANCES_ROOM_LOCK_DOOR
 
 .checkRivalCoords ; marcelnote - postgame Rival
-	CheckHideShowCont HS_INDIGO_PLATEAU_LOBBY_RIVAL
+	CheckHideShowCont TOGGLE_INDIGO_PLATEAU_LOBBY_RIVAL
 	ret nz
 	ld hl, .RivalCoords
 	call ArePlayerCoordsInArray
@@ -87,27 +87,27 @@ IndigoPlateauLobbyRivalLeavesScript: ; marcelnote - postgame Rival
 	ld a, [wStatusFlags5]
 	bit BIT_SCRIPTED_NPC_MOVEMENT, a
 	ret nz
-	ld a, HS_INDIGO_PLATEAU_LOBBY_RIVAL
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_INDIGO_PLATEAU_LOBBY_RIVAL
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
 	; set up Oak battle
 	ld a, [wPlayerStarter] ; this code finds the last starter ball to hide
 	cp STARTER1
-	ld b, HS_STARTER_BALL_3
+	ld b, TOGGLE_STARTER_BALL_3
 	jr z, .hideBall
 	cp STARTER2
-	ld b, HS_STARTER_BALL_1
+	ld b, TOGGLE_STARTER_BALL_1
 	jr z, .hideBall
-	ld b, HS_STARTER_BALL_2
+	ld b, TOGGLE_STARTER_BALL_2
 .hideBall
 	ld a, b
-	ld [wMissableObjectIndex], a
+	ld [wToggleableObjectIndex], a
 	predef HideObject
-	ld a, HS_OAKS_LAB_OAK
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_OAKS_LAB_OAK
+	ld [wToggleableObjectIndex], a
 	predef HideObject
-	ld a, HS_ROUTE_1_OAK     ; Oak appears once E4 reopens after talking to rival
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_ROUTE_1_OAK     ; Oak appears once E4 reopens after talking to rival
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
 	xor a
 	ld [wJoyIgnore], a

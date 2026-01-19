@@ -23,7 +23,7 @@ PokemonTower3F_ScriptPointers:
 	dw_const PokemonTower3FPlayerMovingScript,      SCRIPT_POKEMONTOWER3F_PLAYER_MOVING ; marcelnote - postgame Agatha event
 
 PokemonTower3FDefaultScript: ; marcelnote - postgame Agatha event
-	CheckHideShow HS_POKEMON_TOWER_6F_AGATHA
+	CheckHideShow TOGGLE_POKEMON_TOWER_6F_AGATHA
 	jp nz, CheckFightingMapTrainers
 	CheckEvent EVENT_BEAT_GHOST_3F
 	jp nz, CheckFightingMapTrainers

@@ -1984,9 +1984,9 @@ wGrassTile:: db
 wToggleableObjectFlags:: flag_array $100
 wToggleableObjectFlagsEnd::
 
-; marcelnote - second MissableObject list, this is 32 bytes taken from unused below
-wMissableObjectFlagsCont:: flag_array $100
-wMissableObjectFlagsContEnd::
+; marcelnote - second ToggleableObjectStates list, this is 32 bytes taken from unused below
+wToggleableObjectFlagsCont:: flag_array $100
+wToggleableObjectFlagsContEnd::
 
 	ds 11
 

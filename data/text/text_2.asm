@@ -1124,7 +1124,7 @@ _MoveNameText::
 	text_ram wStringBuffer
 	text "@"
 
-_ExclamationPointText::
+_EndUsedMoveText::
 	text "!"
 	done
 

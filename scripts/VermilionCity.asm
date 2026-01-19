@@ -42,11 +42,11 @@ VermilionCityDefaultScript:
 	CheckEvent EVENT_FERRY_ARRIVED
 	jr z, .FerryAlreadyReset
 	ResetEventRange EVENT_FERRY_ARRIVED, EVENT_BEAT_CITRUS_FERRY_OUTSIDE_TRAINER_3
-	ld a, HS_VERMILION_DOCK_SAILOR
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_VERMILION_DOCK_SAILOR
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
-	ld a, HS_MANDARIN_DOCK_SAILOR
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_MANDARIN_DOCK_SAILOR
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
 .FerryAlreadyReset
 	ld a, [wSpritePlayerStateData1FacingDirection]

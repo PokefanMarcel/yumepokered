@@ -130,7 +130,7 @@ PokemonTower2FRivalExitsScript:
 	ret
 
 PokemonTower2FCheckGhostEncounterScript: ; marcelnote - postgame Agatha event
-	CheckHideShow HS_POKEMON_TOWER_6F_AGATHA
+	CheckHideShow TOGGLE_POKEMON_TOWER_6F_AGATHA
 	jp nz, PokemonTower2FSetDefaultScript
 	CheckEvent EVENT_BEAT_GHOST_2F
 	jp nz, PokemonTower2FSetDefaultScript

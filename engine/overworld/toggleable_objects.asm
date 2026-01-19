@@ -19,13 +19,13 @@ MarkTownVisitedAndLoadToggleableObjects::
 	push hl
 ;;;;;; marcelnote - this is adapted from PureRGB to deal with extended HideShow list
 	ld a, l
-	cp LOW(ToggleableObjectsStatesCont)
+	cp LOW(ToggleableObjectStatesCont)
 	ld a, h
-	sbc HIGH(ToggleableObjectsStatesCont) ; sets carry flag if hl address is < MissableObjectsCont
-	ld de, ToggleableObjectsStates
+	sbc HIGH(ToggleableObjectStatesCont) ; sets carry flag if hl address is < ToggleableObjectStatesCont
+	ld de, ToggleableObjectStates
 	ResetEventA EVENT_USE_TOGGLEABLE_OBJECTS_CONT_LIST
 	jr c, .listLoaded
-	ld de, ToggleableObjectsStatesCont
+	ld de, ToggleableObjectStatesCont
 	SetEventA EVENT_USE_TOGGLEABLE_OBJECTS_CONT_LIST
 .listLoaded
 ;;;;;;
@@ -105,7 +105,7 @@ InitializeToggleableObjectsFlagsCont: ; marcelnote - replicates code above for e
 	ld bc, wToggleableObjectFlagsContEnd - wToggleableObjectFlagsCont
 	xor a
 	call FillMemory ; clear toggleable objects flags
-	ld hl, ToggleableObjectsStatesCont
+	ld hl, ToggleableObjectStatesCont
 	xor a
 	ld [wToggleableObjectCounter], a
 .toggleableObjectsLoop

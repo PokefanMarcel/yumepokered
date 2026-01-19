@@ -41,11 +41,11 @@ HallOfFameResetEventsAndSaveScript:
 	; Elite 4 events ; marcelnote - now also resets Gym Leader's rematches
 	ResetEventRange INDIGO_PLATEAU_EVENTS_START, INDIGO_PLATEAU_EVENTS_END, 1
 	;;;;;; marcelnote - switching Oak for Rival for rematches
-	ld a, HS_HALL_OF_FAME_OAK
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_HALL_OF_FAME_OAK
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
-	ld a, HS_HALL_OF_FAME_RIVAL
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_HALL_OF_FAME_RIVAL
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
 	;;;;;;
 	xor a
@@ -120,106 +120,106 @@ HallOfFameCongratulationsScript:
 	ld a, TOGGLE_CERULEAN_CAVE_GUY
 	ld [wToggleableObjectIndex], a
 	predef HideObject
-	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL1   ; move girl to E4 entrance
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_INDIGO_PLATEAU_LOBBY_GIRL1   ; move girl to E4 entrance
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
-	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL2   ; move girl to E4 entrance
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_INDIGO_PLATEAU_LOBBY_GIRL2   ; move girl to E4 entrance
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
 	; marcelnote - make roaming E4 members appear
-	ld a, HS_SILPH_FACTORY_2F_LORELEI_1   ; postgame Lorelei
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_SILPH_FACTORY_2F_LORELEI_1   ; postgame Lorelei
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
-	ld a, HS_SILPH_FACTORY_2F_SCIENTIST_1 ; postgame Lorelei event, scientist blocking factory stairs
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_SILPH_FACTORY_2F_SCIENTIST_1 ; postgame Lorelei event, scientist blocking factory stairs
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
-	ld a, HS_FIGHTING_DOJO_BRUNO          ; postgame Bruno
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_FIGHTING_DOJO_BRUNO          ; postgame Bruno
+	ld [wToggleableObjectIndex], a
 	predef ShowObject
-	ld a, HS_POKEMON_TOWER_1F_AGATHA      ; postgame Agatha
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_POKEMON_TOWER_1F_AGATHA      ; postgame Agatha
+	ld [wToggleableObjectIndex], a
 	predef ShowObject
-	ld a, HS_POKEMON_TOWER_1F_GENTLEMAN   ; postgame Agatha event, director of Pokemon radio
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_POKEMON_TOWER_1F_GENTLEMAN   ; postgame Agatha event, director of Pokemon radio
+	ld [wToggleableObjectIndex], a
 	predef ShowObject
-	ld a, HS_CINNABAR_VOLCANO_1F_LANCE    ; postgame Lance
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_CINNABAR_VOLCANO_1F_LANCE    ; postgame Lance
+	ld [wToggleableObjectIndex], a
 	predef ShowObject
-	ld a, HS_OAKS_LAB_RIVAL               ; postgame Rival
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_OAKS_LAB_RIVAL               ; postgame Rival
+	ld [wToggleableObjectIndex], a
 	predef ShowObject
 	; marcelnote - switch Gym Leaders to their rematch counterparts
-	ld a, HS_PEWTER_GYM_BROCK                ; hide original Brock
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_PEWTER_GYM_BROCK                ; hide original Brock
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
-	ld a, HS_PEWTER_GYM_BROCK_REMATCH        ; show rematch Brock
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_PEWTER_GYM_BROCK_REMATCH        ; show rematch Brock
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
-	ld a, HS_CERULEAN_GYM_MISTY              ; hide original Misty
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_CERULEAN_GYM_MISTY              ; hide original Misty
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
-	ld a, HS_CERULEAN_GYM_MISTY_REMATCH      ; show rematch Misty
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_CERULEAN_GYM_MISTY_REMATCH      ; show rematch Misty
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
-	ld a, HS_VERMILION_GYM_LT_SURGE          ; hide original Lt.Surge
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_VERMILION_GYM_LT_SURGE          ; hide original Lt.Surge
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
-	ld a, HS_VERMILION_GYM_LT_SURGE_REMATCH  ; show rematch Lt.Surge
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_VERMILION_GYM_LT_SURGE_REMATCH  ; show rematch Lt.Surge
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
-	ld a, HS_CELADON_GYM_ERIKA               ; hide original Erika
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_CELADON_GYM_ERIKA               ; hide original Erika
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
-	ld a, HS_CELADON_GYM_ERIKA_REMATCH       ; show rematch Erika
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_CELADON_GYM_ERIKA_REMATCH       ; show rematch Erika
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
-	ld a, HS_FUCHSIA_GYM_KOGA                ; hide original Koga
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_FUCHSIA_GYM_KOGA                ; hide original Koga
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
-	ld a, HS_FUCHSIA_GYM_KOGA_REMATCH        ; show rematch Koga
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_FUCHSIA_GYM_KOGA_REMATCH        ; show rematch Koga
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
-	ld a, HS_SAFFRON_GYM_SABRINA             ; hide original Sabrina
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_SAFFRON_GYM_SABRINA             ; hide original Sabrina
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
-	ld a, HS_SAFFRON_GYM_SABRINA_REMATCH     ; show rematch Sabrina
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_SAFFRON_GYM_SABRINA_REMATCH     ; show rematch Sabrina
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
-	ld a, HS_CINNABAR_GYM_BLAINE             ; hide original Blaine
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_CINNABAR_GYM_BLAINE             ; hide original Blaine
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
-	ld a, HS_CINNABAR_GYM_BLAINE_REMATCH     ; show rematch Blaine
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_CINNABAR_GYM_BLAINE_REMATCH     ; show rematch Blaine
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
 	; marcelnote - switch E4 to their rematch counterparts
-	ld a, HS_LORELEIS_ROOM_LORELEI         ; hide original Lorelei
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_LORELEIS_ROOM_LORELEI         ; hide original Lorelei
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
-	ld a, HS_LORELEIS_ROOM_LORELEI_REMATCH ; show rematch Lorelei
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_LORELEIS_ROOM_LORELEI_REMATCH ; show rematch Lorelei
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
-	ld a, HS_BRUNOS_ROOM_BRUNO             ; hide original Bruno
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_BRUNOS_ROOM_BRUNO             ; hide original Bruno
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
-	ld a, HS_BRUNOS_ROOM_BRUNO_REMATCH     ; show rematch Bruno
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_BRUNOS_ROOM_BRUNO_REMATCH     ; show rematch Bruno
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
-	ld a, HS_AGATHAS_ROOM_AGATHA           ; hide original Agatha
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_AGATHAS_ROOM_AGATHA           ; hide original Agatha
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
-	ld a, HS_AGATHAS_ROOM_AGATHA_REMATCH   ; show rematch Agatha
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_AGATHAS_ROOM_AGATHA_REMATCH   ; show rematch Agatha
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
-	ld a, HS_LANCES_ROOM_LANCE             ; hide original Lance
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_LANCES_ROOM_LANCE             ; hide original Lance
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
-	ld a, HS_LANCES_ROOM_LANCE_REMATCH     ; show rematch Lance
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_LANCES_ROOM_LANCE_REMATCH     ; show rematch Lance
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
 	jr .done
 .rematch3
-	ld a, HS_CHAMPIONS_ROOM_RIVAL          ; make Rival reappear since he walked out
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_CHAMPIONS_ROOM_RIVAL          ; make Rival reappear since he walked out
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
 .done
 	ld a, SCRIPT_HALLOFFAME_RESET_EVENTS_AND_SAVE

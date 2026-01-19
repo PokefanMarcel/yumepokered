@@ -96,8 +96,8 @@ MrFujisHouseMrFujiText: ; marcelnote - optimized and added Citrus pass dialogue
 	call GiveItem
 	ld hl, .MakeRoomText
 	jr nc, .print_text
-	ld a, HS_POKEMON_TOWER_7F_CHANNELER ; marcelnote - added 7FChanneler
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_POKEMON_TOWER_7F_CHANNELER ; marcelnote - added 7FChanneler
+	ld [wToggleableObjectIndex], a
 	predef ShowObject
 	SetEvent EVENT_GOT_POKE_FLUTE
 	ld hl, .ReceivedPokeFluteText

@@ -13,7 +13,7 @@ PokemonTower1F_ScriptPointers:
 	dw_const PokemonTower1FAgathaLeavesScript, SCRIPT_POKEMONTOWER1F_AGATHA_LEAVES
 
 PokemonTower1FDefaultScript:
-	CheckHideShow HS_POKEMON_TOWER_1F_AGATHA
+	CheckHideShow TOGGLE_POKEMON_TOWER_1F_AGATHA
 	ret nz
 	ld hl, .Agatha1FCoords
 	call ArePlayerCoordsInArray
@@ -70,11 +70,11 @@ PokemonTower1FAgathaLeavesScript: ; marcelnote - postgame Agatha event
 	ld a, [wStatusFlags5]
 	bit BIT_SCRIPTED_NPC_MOVEMENT, a
 	ret nz
-	ld a, HS_POKEMON_TOWER_1F_AGATHA
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_POKEMON_TOWER_1F_AGATHA
+	ld [wToggleableObjectIndex], a
 	predef HideObject
-	ld a, HS_POKEMON_TOWER_6F_AGATHA
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_POKEMON_TOWER_6F_AGATHA
+	ld [wToggleableObjectIndex], a
 	predef ShowObject
 	xor a
 	ld [wJoyIgnore], a

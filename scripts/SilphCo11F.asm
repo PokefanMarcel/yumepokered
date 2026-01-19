@@ -100,7 +100,7 @@ SilphCo11FTeamRocketLeavesScript:
 	cp -1
 	ret z
 	push hl
-	ld [wMissableObjectIndex], a
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont ; marcelnote - changed from ShowObject because moved to second list
 	pop hl
 	jr .hide_loop_again
@@ -149,7 +149,7 @@ SilphCo11FTeamRocketLeavesScript:
 	db TOGGLE_SILPH_CO_11F_3
 	db -1 ; end
 
-.HideMissableObjectIDsCont: ; marcelnote - new, these objects belong to the second list so use a different function
+.HideToggleableObjectIDsCont: ; marcelnote - new, these objects belong to the second list so use a different function
 	db TOGGLE_SAFFRON_CITY_1
 	db TOGGLE_SAFFRON_CITY_2
 	db TOGGLE_SAFFRON_CITY_3

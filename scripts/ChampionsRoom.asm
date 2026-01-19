@@ -249,8 +249,8 @@ ChampionsRoomRivalExitsScript: ; marcelnote - Rival rematch
 	ld a, [wStatusFlags5]
 	bit BIT_SCRIPTED_NPC_MOVEMENT, a
 	ret nz
-	ld a, HS_CHAMPIONS_ROOM_RIVAL
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_CHAMPIONS_ROOM_RIVAL
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
 	ld a, SCRIPT_CHAMPIONSROOM_PLAYER_FOLLOWS_RIVAL
 	ld [wChampionsRoomCurScript], a

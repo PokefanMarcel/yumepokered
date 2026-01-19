@@ -21,7 +21,7 @@
 	const_skip 3 ; marcelnote - added 1 padding, +1 for deleting EVENT_PALLET_AFTER_GETTING_POKEBALLS_2,
 	             ;              +1 for moving EVENT_OAK_APPEARED_IN_PALLET above
 	const EVENT_POSTGAME_RIVAL ; marcelnote - postgame Rival
-	const EVENT_USE_MISSABLE_OBJECTS_CONT_LIST ; marcelnote - to deal with extended HideShow list
+	const EVENT_USE_TOGGLEABLE_OBJECTS_CONT_LIST ; marcelnote - to deal with extended HideShow list
 
 ; Viridian City events
 	const_next $28

@@ -3920,54 +3920,6 @@ HandleSelfConfusionDamage:
 
 INCLUDE "engine/battle/used_move_text.asm"
 
-;;;;;;;;;;
-PrintMonName1Text:
-	ld hl, MonName1Text
-	jp PrintText
-
-; this function wastes time calling DetermineExclamationPointTextNum
-; and choosing between Used1Text and Used2Text, even though
-; those text strings are identical and both continue at PrintInsteadText
-; this likely had to do with Japanese grammar that got translated,
-; but the functionality didn't get removed ; marcelnote - removed
-MonName1Text:
-	text_far _MonName1Text
-	text_asm
-	ld hl, UsedText
-	ret
-
-UsedText:
-	text_far _UsedText
-	text_asm
-	; fallthrough
-
-PrintInsteadText:
-	ld a, [wMonIsDisobedient]
-	and a
-	jr z, PrintMoveName
-	ld hl, InsteadText
-	ret
-
-InsteadText:
-	text_far _InsteadText
-	text_asm
-	; fallthrough
-
-PrintMoveName:
-	ld hl, _PrintMoveName
-	ret
-
-_PrintMoveName: ; marcelnote - removed redundant exclamation points leftover from Japanese
-	text_far _MoveNameText
-	text_asm
-	ld hl, ExclamationPointText
-	ret
-
-ExclamationPointText:
-	text_far _ExclamationPointText
-	text_end
-;;;;;;;;;;
-
 PrintMoveFailureText:
 	ld de, wPlayerMoveEffect
 	ldh a, [hWhoseTurn]

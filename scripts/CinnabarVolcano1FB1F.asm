@@ -42,13 +42,13 @@ CinnabarVolcano1FB1F_ScriptPointers:
 	dw_const CinnabarVolcanoB1FLanceGreatJobScript,          SCRIPT_CINNABARVOLCANOB1F_LANCE_GREAT_JOB
 
 CinnabarVolcano1FB1FDefaultScript:
-	CheckHideShow HS_CINNABAR_VOLCANO_1F_LANCE
+	CheckHideShow TOGGLE_CINNABAR_VOLCANO_1F_LANCE
 	jr nz, .noLance1F
 	ld hl, .Lance1FCoords
 	call ArePlayerCoordsInArray
 	jp c, CinnabarVolcano1FLanceGoesInScript
 .noLance1F
-	CheckHideShow HS_CINNABAR_VOLCANO_B1F_LANCE
+	CheckHideShow TOGGLE_CINNABAR_VOLCANO_B1F_LANCE
 	jr nz, .noLanceB1F
 	ld hl, .LanceB1FCoords
 	call ArePlayerCoordsInArray
@@ -130,14 +130,14 @@ CinnabarVolcano1FLanceExitsScript:
 	ld a, [wStatusFlags5]
 	bit BIT_SCRIPTED_NPC_MOVEMENT, a
 	ret nz
-	ld a, HS_CINNABAR_VOLCANO_1F_LANCE
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_CINNABAR_VOLCANO_1F_LANCE
+	ld [wToggleableObjectIndex], a
 	predef HideObject
-	ld a, HS_CINNABAR_VOLCANO_B1F_LANCE
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_CINNABAR_VOLCANO_B1F_LANCE
+	ld [wToggleableObjectIndex], a
 	predef ShowObject
-	ld a, HS_CINNABAR_VOLCANO_B1F_CHARIZARD
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_CINNABAR_VOLCANO_B1F_CHARIZARD
+	ld [wToggleableObjectIndex], a
 	predef ShowObject
 	xor a
 	ld [wJoyIgnore], a
@@ -203,8 +203,8 @@ CinnabarVolcanoB1FCharizardBattleScript:
 	ld a, TEXT_CINNABARVOLCANOB1F_LANCE_POKE_BALL
 	ldh [hTextID], a
 	call DisplayTextID
-	ld a, HS_CINNABAR_VOLCANO_B1F_CHARIZARD
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_CINNABAR_VOLCANO_B1F_CHARIZARD
+	ld [wToggleableObjectIndex], a
 	predef HideObject
 	ld a, TEXT_CINNABARVOLCANOB1F_CHARIZARD_CAUGHT
 	ldh [hTextID], a
@@ -239,8 +239,8 @@ CinnabarVolcanoB1FLanceGreatJobScript:
 	ldh [hTextID], a
 	call DisplayTextID
 	call GBFadeOutToBlack
-	ld a, HS_CINNABAR_VOLCANO_B1F_LANCE
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_CINNABAR_VOLCANO_B1F_LANCE
+	ld [wToggleableObjectIndex], a
 	predef HideObject
 	call UpdateSprites
 	call Delay3
@@ -249,14 +249,14 @@ CinnabarVolcanoB1FLanceGreatJobScript:
 	jr nz, .end
 	CheckBothEventsSet EVENT_POSTGAME_AGATHA, EVENT_POSTGAME_RIVAL
 	jr nz, .end
-	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL1 ; marcelnote - remove girl from E4 entrance
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_INDIGO_PLATEAU_LOBBY_GIRL1 ; marcelnote - remove girl from E4 entrance
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
-	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL2 ; marcelnote - remove girl from E4 entrance
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_INDIGO_PLATEAU_LOBBY_GIRL2 ; marcelnote - remove girl from E4 entrance
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
-	ld a, HS_INDIGO_PLATEAU_LOBBY_RIVAL ; marcelnote - show Rival
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_INDIGO_PLATEAU_LOBBY_RIVAL ; marcelnote - show Rival
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
 .end
 	call GBFadeInFromBlack

@@ -182,8 +182,8 @@ CitrusFerryRoomsScientistText: ; marcelnote - optimized
 	ld hl, .YouDontHaveSpaceText
 	jr nc, .print_text
 	SetEvent EVENT_GOT_FERRY_FOSSIL
-	ld a, HS_CITRUS_FERRY_ROOMS_FOSSIL
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_CITRUS_FERRY_ROOMS_FOSSIL
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
 	CheckEvent EVENT_GOT_DOME_FOSSIL
 	ld hl, .ReceivedHelixFossilText

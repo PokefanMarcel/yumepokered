@@ -51,8 +51,8 @@ ENDC
 PalletTownOakHeyWaitScript:
 	xor a
 	ld [wOakWalkedToPlayer], a
-	ld a, HS_PALLET_TOWN_OAK
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_PALLET_TOWN_OAK
+	ld [wToggleableObjectIndex], a
 	predef ShowObject ; marcelnote - ShowObject moved before DisplayTextID to solve bug
 	ld a, TEXT_PALLETTOWN_OAK
 	ldh [hTextID], a

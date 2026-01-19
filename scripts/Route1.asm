@@ -95,11 +95,11 @@ Route1OakExitsScript: ; marcelnote - postgame Rival event
 	ret nz
 	call Delay3
 	SetEvent EVENT_BEAT_ROUTE_1_OAK
-	ld a, HS_OAKS_LAB_OAK
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_OAKS_LAB_OAK
+	ld [wToggleableObjectIndex], a
 	predef ShowObject
-	ld a, HS_ROUTE_1_OAK
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_ROUTE_1_OAK
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
 	call UpdateSprites
 	xor a

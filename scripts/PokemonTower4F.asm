@@ -23,7 +23,7 @@ PokemonTower4F_ScriptPointers:
 	dw_const PokemonTower4FPlayerMovingScript,      SCRIPT_POKEMONTOWER4F_PLAYER_MOVING ; marcelnote - postgame Agatha event
 
 PokemonTower4FDefaultScript: ; marcelnote - postgame Agatha event
-	CheckHideShow HS_POKEMON_TOWER_6F_AGATHA
+	CheckHideShow TOGGLE_POKEMON_TOWER_6F_AGATHA
 	jp nz, CheckFightingMapTrainers
 	CheckEvent EVENT_BEAT_GHOST_4F
 	jp nz, CheckFightingMapTrainers

@@ -49,8 +49,8 @@ BluesHouseDaisySittingText: ; marcelnote - optimized
 	ld hl, BluesHouseDaisyBagFullText
 	jr nc, .print_text
 	SetEvent EVENT_GOT_TOWN_MAP
-	ld a, HS_TOWN_MAP
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_TOWN_MAP
+	ld [wToggleableObjectIndex], a
 	predef HideObject
 	ld hl, GotMapText
 .print_text

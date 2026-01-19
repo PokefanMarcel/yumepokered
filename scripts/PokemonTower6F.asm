@@ -102,7 +102,7 @@ PokemonTower6FPlayerMovingScript:
 	ret
 
 PokemonTower6FCheckGhostEncounterScript: ; marcelnote - postgame Agatha event
-	CheckHideShow HS_POKEMON_TOWER_6F_AGATHA
+	CheckHideShow TOGGLE_POKEMON_TOWER_6F_AGATHA
 	jp nz, CheckFightingMapTrainers
 	CheckEvent EVENT_BEAT_GHOST_6F
 	jp nz, CheckFightingMapTrainers
@@ -278,8 +278,8 @@ PokemonTower6FAgathaText: ; marcelnote - postgame Agatha event
 	call PrintText
 	call Delay3
 	call GBFadeOutToBlack
-	ld a, HS_POKEMON_TOWER_6F_AGATHA
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_POKEMON_TOWER_6F_AGATHA
+	ld [wToggleableObjectIndex], a
 	predef HideObject
 	call UpdateSprites
 	call Delay3
@@ -288,14 +288,14 @@ PokemonTower6FAgathaText: ; marcelnote - postgame Agatha event
 	jr nz, .end
 	CheckBothEventsSet EVENT_POSTGAME_LANCE, EVENT_POSTGAME_RIVAL
 	jr nz, .end
-	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL1 ; marcelnote - remove girl from E4 entrance
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_INDIGO_PLATEAU_LOBBY_GIRL1 ; marcelnote - remove girl from E4 entrance
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
-	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL2 ; marcelnote - remove girl from E4 entrance
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_INDIGO_PLATEAU_LOBBY_GIRL2 ; marcelnote - remove girl from E4 entrance
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
-	ld a, HS_INDIGO_PLATEAU_LOBBY_RIVAL ; marcelnote - show Rival
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_INDIGO_PLATEAU_LOBBY_RIVAL ; marcelnote - show Rival
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
 .end
 	call GBFadeInFromBlack

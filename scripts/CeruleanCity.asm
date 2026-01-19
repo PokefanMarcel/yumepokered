@@ -315,14 +315,14 @@ CeruleanCityRocketText:
 	ld hl, .ReceivedTM28Text
 	call PrintText
 	call GBFadeOutToBlack ; marcelnote - deleted function CeruleanHideRocket
-;	ld a, HS_CERULEAN_GUARD_1    ; this was in the function
-;	ld [wMissableObjectIndex], a ; but is done in Bill's house
+;	ld a, TOGGLE_CERULEAN_GUARD_1    ; this was in the function
+;	ld [wToggleableObjectIndex], a ; but is done in Bill's house
 ;	predef ShowObject
-;	ld a, HS_CERULEAN_GUARD_2
-;	ld [wMissableObjectIndex], a
+;	ld a, TOGGLE_CERULEAN_GUARD_2
+;	ld [wToggleableObjectIndex], a
 ;	predef HideObject
-	ld a, HS_CERULEAN_ROCKET
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_CERULEAN_ROCKET
+	ld [wToggleableObjectIndex], a
 	predef HideObject
 	call GBFadeInFromBlack
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd

@@ -22,11 +22,11 @@ MandarinDockAllAboardScript:
 	call UpdateSprites
 	ld c, 30
 	call DelayFrames
-	ld a, HS_MANDARIN_DOCK_SAILOR
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_MANDARIN_DOCK_SAILOR
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
-	ld a, HS_VERMILION_DOCK_SAILOR
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_VERMILION_DOCK_SAILOR
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
 	ld a, PAD_DOWN
 	ld [wSimulatedJoypadStatesEnd], a

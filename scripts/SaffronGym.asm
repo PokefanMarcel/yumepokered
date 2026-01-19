@@ -96,8 +96,8 @@ SaffronGymBrunoArrivesScript: ; marcelnote - postgame Bruno event
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, CheckFightingMapTrainers
-	ld a, HS_SAFFRON_GYM_BRUNO
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_SAFFRON_GYM_BRUNO
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
 	ld a, TEXT_SAFFRONGYM_BRUNO_ARRIVES
 	ldh [hTextID], a
@@ -169,27 +169,27 @@ SaffronGymBrunoInspiringScript: ; marcelnote - postgame Bruno event
 	ldh [hTextID], a
 	call DisplayTextID
 	call GBFadeOutToBlack
-	ld a, HS_SAFFRON_GYM_BRUNO
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_SAFFRON_GYM_BRUNO
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
 	call UpdateSprites
 	call Delay3
 	SetEvent EVENT_POSTGAME_BRUNO
-	ld a, HS_FIGHTING_DOJO_BRUNO
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_FIGHTING_DOJO_BRUNO
+	ld [wToggleableObjectIndex], a
 	predef HideObject
 	CheckBothEventsSet EVENT_POSTGAME_LORELEI, EVENT_POSTGAME_AGATHA ; sets Z flag when events are set
 	jr nz, .end
 	CheckBothEventsSet EVENT_POSTGAME_LANCE, EVENT_POSTGAME_RIVAL
 	jr nz, .end
-	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL1 ; marcelnote - remove girl from E4 entrance
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_INDIGO_PLATEAU_LOBBY_GIRL1 ; marcelnote - remove girl from E4 entrance
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
-	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL2 ; marcelnote - remove girl from E4 entrance
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_INDIGO_PLATEAU_LOBBY_GIRL2 ; marcelnote - remove girl from E4 entrance
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
-	ld a, HS_INDIGO_PLATEAU_LOBBY_RIVAL ; marcelnote - show Rival
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_INDIGO_PLATEAU_LOBBY_RIVAL ; marcelnote - show Rival
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
 .end
 	call GBFadeInFromBlack
@@ -442,7 +442,7 @@ SaffronGymYoungster4AfterBattleText:
 
 SaffronGymWillText: ; marcelnote - postgame Will
 	text_asm
-	CheckHideShow HS_FIGHTING_DOJO_BRUNO
+	CheckHideShow TOGGLE_FIGHTING_DOJO_BRUNO
 	jr z, .battle
 	ld hl, .PostBattleText
 	call PrintText

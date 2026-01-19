@@ -1745,7 +1745,7 @@ ItemUsePokeFlute: ; marcelnote - added Mew
 	;jr nz, .noMewToCall
 	CheckEvent EVENT_BEAT_MEW
 	jr nz, .noMewToCall
-	CheckHideShow HS_CELADON_GROVE_MEW
+	CheckHideShow TOGGLE_CELADON_GROVE_MEW
 	jr z, .noMewToCall
 	ld hl, CeladonGroveMewFluteCoords
 	call ArePlayerCoordsInArray

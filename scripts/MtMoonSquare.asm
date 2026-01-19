@@ -8,8 +8,8 @@ MtMoonSquare_Script:
 	call Random
 	cp 26 ; carry when a is 0-25 so prob_spawning = 26/256 = 10.1%
 	ret nc
-	ld a, HS_MT_MOON_SQUARE_CLEFAIRY
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_MT_MOON_SQUARE_CLEFAIRY
+	ld [wToggleableObjectIndex], a
 	predef_jump ShowObject
 
 MtMoonSquare_TextPointers:
@@ -38,11 +38,11 @@ MtMoonSquareClefairyText:
 	ld a, SFX_TELEPORT_EXIT_1
 	;ld [wNewSoundID], a
 	call PlaySound
-	ld a, HS_MT_MOON_SQUARE_CLEFAIRY
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_MT_MOON_SQUARE_CLEFAIRY
+	ld [wToggleableObjectIndex], a
 	predef HideObject
-	ld a, HS_MT_MOON_SQUARE_ITEM_1 ; show Moon Stone
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_MT_MOON_SQUARE_ITEM_1 ; show Moon Stone
+	ld [wToggleableObjectIndex], a
 	predef ShowObject
 	call UpdateSprites
 	ld c, 20

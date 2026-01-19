@@ -59,7 +59,7 @@ PokemonTower5FPurifiedZoneCoords:
 	db -1 ; end
 
 PokemonTower5FCheckGhostEncounterScript: ; marcelnote - postgame Agatha event
-	CheckHideShow HS_POKEMON_TOWER_6F_AGATHA
+	CheckHideShow TOGGLE_POKEMON_TOWER_6F_AGATHA
 	jp nz, CheckFightingMapTrainers
 	CheckEvent EVENT_BEAT_GHOST_5F
 	jp nz, CheckFightingMapTrainers

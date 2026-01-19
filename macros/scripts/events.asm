@@ -489,7 +489,7 @@ ENDM
 ;\2 = return result in carry instead of zero flag
 MACRO CheckHideShow
 	DEF hideshow_byte = ((\1) / 8)
-	ld a, [wMissableObjectFlags + hideshow_byte]
+	ld a, [wToggleableObjectFlags + hideshow_byte]
 
 	IF _NARG > 1
 		IF ((\1) % 8) == 7
@@ -507,7 +507,7 @@ ENDM
 ; marcelnote - replicates macro above for second list of HideShow items
 MACRO CheckHideShowCont
 	DEF hideshow_byte = ((\1) / 8)
-	ld a, [wMissableObjectFlagsCont + hideshow_byte]
+	ld a, [wToggleableObjectFlagsCont + hideshow_byte]
 
 	IF _NARG > 1
 		IF ((\1) % 8) == 7

@@ -15,8 +15,8 @@ CeladonGroveMewAppearsScript:: ; used in ItemUsePokeFlute
 	ldh [hTextID], a
 	call DisplayTextID
 	call GBFadeOutToWhite
-	ld a, HS_CELADON_GROVE_MEW
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_CELADON_GROVE_MEW
+	ld [wToggleableObjectIndex], a
 	predef ShowObject
 	call UpdateSprites
 	ld c, 12

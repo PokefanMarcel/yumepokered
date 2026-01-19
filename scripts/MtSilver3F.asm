@@ -20,11 +20,11 @@ MtSilver3FYellowPostBattleScript:
 	call DisplayTextID
 	call Delay3
 	call GBFadeOutToBlack
-	ld a, HS_MT_SILVER_3F_YELLOW
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_MT_SILVER_3F_YELLOW
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
-	ld a, HS_REDS_YELLOWS_HOUSES_YELLOW
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_REDS_YELLOWS_HOUSES_YELLOW
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
 	call UpdateSprites
 	call Delay3

@@ -413,11 +413,11 @@ SilphFactory2FLoreleiHideScript:
 	ld a, [wStatusFlags5]
 	bit BIT_SCRIPTED_NPC_MOVEMENT, a
 	ret nz
-	ld a, HS_SILPH_FACTORY_2F_LORELEI_1
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_SILPH_FACTORY_2F_LORELEI_1
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
-	ld a, HS_MANDARIN_SILPH_CO_SCIENTIST ; also hide the worried Scientist in Mandarin Silph Co meeting room
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_MANDARIN_SILPH_CO_SCIENTIST ; also hide the worried Scientist in Mandarin Silph Co meeting room
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
 	xor a
 	ld [wJoyIgnore], a
@@ -437,20 +437,20 @@ SilphFactory2FRocketPostBattle:
 	call Delay3
 	call GBFadeOutToBlack
 	SetEvent EVENT_BEAT_SILPH_FACTORY_2F_TRAINER_0
-	ld a, HS_SILPH_FACTORY_2F_ROCKET_1
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_SILPH_FACTORY_2F_ROCKET_1
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
-	ld a, HS_SILPH_FACTORY_1F_ROCKET_1
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_SILPH_FACTORY_1F_ROCKET_1
+	ld [wToggleableObjectIndex], a
 	predef HideObject
-	ld a, HS_SILPH_FACTORY_1F_ROCKET_2
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_SILPH_FACTORY_1F_ROCKET_2
+	ld [wToggleableObjectIndex], a
 	predef HideObject
-	ld a, HS_SILPH_FACTORY_1F_ROCKET_3
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_SILPH_FACTORY_1F_ROCKET_3
+	ld [wToggleableObjectIndex], a
 	predef HideObject
-	ld a, HS_SILPH_FACTORY_1F_ROCKET_4
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_SILPH_FACTORY_1F_ROCKET_4
+	ld [wToggleableObjectIndex], a
 	predef HideObject
 	call UpdateSprites
 	call Delay3
@@ -461,8 +461,8 @@ SilphFactory2FRocketPostBattle:
 	call DisplayTextID
 	ld a, PAD_BUTTONS | PAD_CTRL_PAD
 	ld [wJoyIgnore], a
-	ld a, HS_SILPH_FACTORY_2F_LORELEI_2
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_SILPH_FACTORY_2F_LORELEI_2
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
 	;ld a, PAD_BUTTONS | PAD_CTRL_PAD
 	;ld [wJoyIgnore], a
@@ -542,8 +542,8 @@ SilphFactory2FLoreleiLeavesScript:
 	ld a, [wStatusFlags5]
 	bit BIT_SCRIPTED_NPC_MOVEMENT, a
 	ret nz
-	ld a, HS_SILPH_FACTORY_2F_LORELEI_2
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_SILPH_FACTORY_2F_LORELEI_2
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
 	call UpdateSprites
 	call Delay3
@@ -552,14 +552,14 @@ SilphFactory2FLoreleiLeavesScript:
 	jr nz, .end
 	CheckBothEventsSet EVENT_POSTGAME_LANCE, EVENT_POSTGAME_RIVAL
 	jr nz, .end
-	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL1 ; marcelnote - remove girl from E4 entrance
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_INDIGO_PLATEAU_LOBBY_GIRL1 ; marcelnote - remove girl from E4 entrance
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
-	ld a, HS_INDIGO_PLATEAU_LOBBY_GIRL2 ; marcelnote - remove girl from E4 entrance
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_INDIGO_PLATEAU_LOBBY_GIRL2 ; marcelnote - remove girl from E4 entrance
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
-	ld a, HS_INDIGO_PLATEAU_LOBBY_RIVAL ; marcelnote - show Rival
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_INDIGO_PLATEAU_LOBBY_RIVAL ; marcelnote - show Rival
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
 .end
 	xor a

@@ -28,11 +28,11 @@ SSAnneCaptainsRoomCaptainText: ; marcelnote - optimized
 	call GiveItem
 	jr nc, .bag_full
 	SetEvent EVENT_GOT_HM01
-	ld a, HS_VERMILION_CITY_SAILOR2 ; marcelnote - hide SS Anne Sailor in Vermilion City
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_VERMILION_CITY_SAILOR2 ; marcelnote - hide SS Anne Sailor in Vermilion City
+	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
-	ld a, HS_VERMILION_CITY_COOLTRAINER_F ; marcelnote - show girl who mentions Mandarin
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_VERMILION_CITY_COOLTRAINER_F ; marcelnote - show girl who mentions Mandarin
+	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
 	ld hl, SSAnneCaptainsRoomCaptainReceivedHM01Text
 	jr .print_text

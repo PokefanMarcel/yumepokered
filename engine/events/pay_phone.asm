@@ -120,7 +120,7 @@ DisplayPayPhoneDialogue_::
 	CheckEvent EVENT_POSTGAME_RIVAL
 	jr z, .print_text
 	ld hl, PayPhoneDaisyRivalAtIndigoText
-	CheckHideShowCont HS_INDIGO_PLATEAU_LOBBY_RIVAL
+	CheckHideShowCont TOGGLE_INDIGO_PLATEAU_LOBBY_RIVAL
 	jr z, .print_text
 	ld hl, PayPhoneDaisyOakRoute1Text
 	jr .print_text

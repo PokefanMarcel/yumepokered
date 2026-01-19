@@ -1190,16 +1190,16 @@ _MoveIsDisabledText::
 	cont "a disparu!"
 	prompt
 
-_MonName1Text::
+_ActorNameText::
 	text "<USER>@"
 	text_end
 
-_UsedText::
+_UsedMoveText::
 	text_start
 	line "lance @"
 	text_end
 
-_InsteadText::
+_UsedInsteadText::
 	text "à la place:"
 	cont "@"
 	text_end
@@ -1208,7 +1208,7 @@ _MoveNameText::
 	text_ram wStringBuffer
 	text "@"
 
-_ExclamationPointText:: ; marcelnote - no space for exclamation point after move name in French
+_EndUsedMoveText:: ; marcelnote - no space for exclamation point after move name in French
 	text_start
 	done
 
