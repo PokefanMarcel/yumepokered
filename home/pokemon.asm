@@ -304,7 +304,11 @@ PrintStatusCondition::
 	pop de
 	jr nz, PrintStatusConditionNotFainted
 ; if the pokemon's HP is 0, print "FNT"
+IF DEF(_FRA)
+	ld_hli_a_string "KO"
+ELSE
 	ld_hli_a_string "FNT"
+ENDC
 	and a
 	ret
 
