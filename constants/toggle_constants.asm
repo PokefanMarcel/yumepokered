@@ -1,11 +1,3 @@
-DEF OFF EQU $11
-DEF ON  EQU $15
-
-;MACRO toggle_consts_for ; marcelnote - was added to pokered
-;	DEF TOGGLEMAP{\1}_ID EQU const_value
-;	DEF TOGGLEMAP{\1}_NAME EQUS "\1"
-;ENDM
-
 ; ToggleableObjectStates indexes (see data/maps/toggleable_objects.asm)
 ; This lists the object_events that can be toggled by ShowObject/HideObject.
 ; The constants marked with an X are never used, because those object_events
@@ -174,7 +166,6 @@ DEF ON  EQU $15
 	const TOGGLE_SILPH_CO_7F_RIVAL             ; AA
 	const TOGGLE_SILPH_CO_7F_ITEM_1            ; AB X
 	const TOGGLE_SILPH_CO_7F_ITEM_2            ; AC X
-;	const TOGGLE_SILPH_CO_7F_8                 ; AC XXX sprite doesn't exist ; marcelnote - removed
 	const TOGGLE_SILPH_CO_8F_1                 ; AD
 	const TOGGLE_SILPH_CO_8F_2                 ; AE
 	const TOGGLE_SILPH_CO_8F_3                 ; AF
@@ -190,7 +181,6 @@ DEF ON  EQU $15
 	const TOGGLE_SILPH_CO_11F_1                ; B8
 	const TOGGLE_SILPH_CO_11F_2                ; B9
 	const TOGGLE_SILPH_CO_11F_3                ; BA
-;	const TOGGLE_UNUSED_MAP_F4_1               ; BA XXX sprite doesn't exist ; marcelnote - removed
 	const TOGGLE_POKEMON_MANSION_2F_ITEM       ; BB X
 	const TOGGLE_POKEMON_MANSION_3F_ITEM_1     ; BC X
 	const TOGGLE_POKEMON_MANSION_3F_ITEM_2     ; BD X
@@ -292,21 +282,21 @@ DEF NUM_TOGGLEABLE_OBJECTS EQU const_value
 	const TOGGLE_CELADON_GROVE_SOUTH_GATE_ROCKET ; blocking the way
 	const TOGGLE_FUCHSIA_GYM_KOGA                ; default Koga
 	const TOGGLE_FUCHSIA_GYM_KOGA_REMATCH        ; rematch Koga
-	const TOGGLE_SAFFRON_CITY_1                ; 0A
-	const TOGGLE_SAFFRON_CITY_2                ; 0B
-	const TOGGLE_SAFFRON_CITY_3                ; 0C
-	const TOGGLE_SAFFRON_CITY_4                ; 0D
-	const TOGGLE_SAFFRON_CITY_5                ; 0E
-	const TOGGLE_SAFFRON_CITY_6                ; 0F
-	const TOGGLE_SAFFRON_CITY_7                ; 10
-	const TOGGLE_SAFFRON_CITY_8                ; 11
-	const TOGGLE_SAFFRON_CITY_9                ; 12
-	const TOGGLE_SAFFRON_CITY_A                ; 13
-	const TOGGLE_SAFFRON_CITY_B                ; 14
-	const TOGGLE_SAFFRON_CITY_C                ; 15
-	const TOGGLE_SAFFRON_CITY_D                ; 16
-	const TOGGLE_SAFFRON_CITY_E                ; 17 ; Silph Co guard
-	const TOGGLE_SAFFRON_CITY_F                ; 18 ; Silph Co guard asleep
+	const TOGGLE_SAFFRON_CITY_1                  ; 0A
+	const TOGGLE_SAFFRON_CITY_2                  ; 0B
+	const TOGGLE_SAFFRON_CITY_3                  ; 0C
+	const TOGGLE_SAFFRON_CITY_4                  ; 0D
+	const TOGGLE_SAFFRON_CITY_5                  ; 0E
+	const TOGGLE_SAFFRON_CITY_6                  ; 0F
+	const TOGGLE_SAFFRON_CITY_7                  ; 10
+	const TOGGLE_SAFFRON_CITY_8                  ; 11
+	const TOGGLE_SAFFRON_CITY_9                  ; 12
+	const TOGGLE_SAFFRON_CITY_A                  ; 13
+	const TOGGLE_SAFFRON_CITY_B                  ; 14
+	const TOGGLE_SAFFRON_CITY_C                  ; 15
+	const TOGGLE_SAFFRON_CITY_D                  ; 16
+	const TOGGLE_SAFFRON_CITY_E                  ; 17 ; Silph Co guard
+	const TOGGLE_SAFFRON_CITY_F                  ; 18 ; Silph Co guard asleep
 	const TOGGLE_SAFFRON_GYM_SABRINA             ; default Sabrina
 	const TOGGLE_SAFFRON_GYM_SABRINA_REMATCH     ; rematch Sabrina
 	const TOGGLE_SAFFRON_GYM_WILL                ; postgame Will
