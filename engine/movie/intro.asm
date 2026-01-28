@@ -437,7 +437,7 @@ IntroNidorinoAnimation7:
 	db ANIMATION_END
 
 GameFreakIntro:
-IF DEF(FRA)
+IF DEF(_FRA)
 	INCBIN "translation/fra/gfx/gamefreak_presents.fra.2bpp"
 ELSE
 	INCBIN "gfx/splash/gamefreak_presents.2bpp"
