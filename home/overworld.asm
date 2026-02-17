@@ -887,43 +887,29 @@ HandleFlyWarpOrDungeonWarp::
 LeaveMapAnim::
 	jpfar _LeaveMapAnim
 
-LoadPlayerSpriteGraphics::
-; Load sprite graphics based on whether the player is standing, biking, or surfing.
-
-	; 0: standing
-	; 1: biking
-	; 2: surfing
-
-	ld a, [wWalkBikeSurfState]
-	dec a ; BIKING?
-	jr z, .ridingBike
-
-	ldh a, [hTileAnimations]
-	and a
-	jr nz, .determineGraphics ; if no animation then no water to surf on
-	jr .startWalking
-
-.ridingBike
-	; If the bike can't be used,
-	; start walking instead.
-	call IsBikingAllowed
-	jr c, .determineGraphics
-
-.startWalking
-	xor a ; WALKING
-	ld [wWalkBikeSurfState], a
-	ld [wWalkBikeSurfStateCopy], a
-	jp LoadWalkingPlayerSpriteGraphics
-
-.determineGraphics
+LoadPlayerSpriteGraphics:: ; marcelnote - modified to not use hTileAnimations
+; Load sprite graphics based on whether the player is walking, biking, or surfing.
+; wWalkBikeSurfState: 0 = walking, 1 = biking, 2 = surfing
 	ld a, [wWalkBikeSurfState]
 	and a ; WALKING?
 	jp z, LoadWalkingPlayerSpriteGraphics
 	dec a ; BIKING?
-	jp z, LoadBikePlayerSpriteGraphics
+	jr z, .checkIfBikingAllowed
 	dec a ; SURFING?
 	jp z, LoadSurfingPlayerSpriteGraphics
-	jp LoadWalkingPlayerSpriteGraphics ; by default, walk
+	jr .walking ; if unexpected value, default to walking
+
+.checkIfBikingAllowed
+	call IsBikingAllowed
+	jr nc, .forceWalking
+	jp LoadBikePlayerSpriteGraphics
+
+.forceWalking
+	xor a
+	ld [wWalkBikeSurfState], a
+;	ld [wWalkBikeSurfStateCopy], a ; unused?
+.walking
+	jp LoadWalkingPlayerSpriteGraphics
 
 SwitchRunningToWalkingSprites: ; marcelnote - running sprites
 	ld a, [wWalkBikeSurfState]
