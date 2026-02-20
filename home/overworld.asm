@@ -891,24 +891,18 @@ LoadPlayerSpriteGraphics:: ; marcelnote - modified to not use hTileAnimations
 ; Load sprite graphics based on whether the player is walking, biking, or surfing.
 ; wWalkBikeSurfState: 0 = walking, 1 = biking, 2 = surfing
 	ld a, [wWalkBikeSurfState]
-	and a ; WALKING?
-	jp z, LoadWalkingPlayerSpriteGraphics
 	dec a ; BIKING?
 	jr z, .checkIfBikingAllowed
 	dec a ; SURFING?
 	jp z, LoadSurfingPlayerSpriteGraphics
-	jr .walking ; if unexpected value, default to walking
+	jp LoadWalkingPlayerSpriteGraphics ; defaults to walking, including unexpected values
 
 .checkIfBikingAllowed
 	call IsBikingAllowed
-	jr nc, .forceWalking
-	jp LoadBikePlayerSpriteGraphics
-
-.forceWalking
+	jp c, LoadBikePlayerSpriteGraphics
 	xor a
 	ld [wWalkBikeSurfState], a
 ;	ld [wWalkBikeSurfStateCopy], a ; unused?
-.walking
 	jp LoadWalkingPlayerSpriteGraphics
 
 SwitchRunningToWalkingSprites: ; marcelnote - running sprites
@@ -926,7 +920,7 @@ IsBikingAllowed:: ; marcelnote - simplified
 ; Return carry if biking is allowed.
 	ld a, [wCurMapTileset]
 	ld hl, BikeRidingTilesets
-	;ld de, 1 ; size of array entries
+;	ld de, 1 ; size of array entries
 	jp IsInList ; returns carry if found
 
 INCLUDE "data/tilesets/bike_riding_tilesets.asm"
@@ -2425,8 +2419,8 @@ LoadMapData::
 	ldh [hSCY], a
 	ldh [hSCX], a
 	ld [wWalkCounter], a
-	;ld [wUnusedCurMapTilesetCopy], a
-	ld [wWalkBikeSurfStateCopy], a
+;	ld [wUnusedCurMapTilesetCopy], a
+;	ld [wWalkBikeSurfStateCopy], a ; unused?
 	ld [wSpriteSetID], a
 	call LoadTextBoxTilePatterns
 	call LoadMapHeader
