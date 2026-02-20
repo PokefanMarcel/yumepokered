@@ -1110,7 +1110,7 @@ _ActorNameText::
 	text "<USER>@"
 	text_end
 
-_UsedMoveText:: ; marcelnote - merged _Used1Text and _Used2Text
+_UsedText:: ; marcelnote - merged _Used1Text and _Used2Text
 	text_start
 	line "used @"
 	text_end
