@@ -96,20 +96,20 @@ OptionsMenu_TextSpeed:
 	bit B_PAD_LEFT, a
 	jr nz, .pressedLeft
 	jr .nonePressed
-.pressedRight ; pick right speed e and increase c
+.pressedRight ; pick right speed e and decrease c
+	dec c
+	ld a, c
+	inc a ; cp -1
+	jr nz, .save
+	ld c, 3   ; wrap around to 3 if c = 0
+	jr .save
+.pressedLeft  ; pick left speed d and increase c
+	ld e, d
 	inc c
 	ld a, c
 	cp 4
 	jr nz, .save
 	ld c, 0   ; wrap around to 0 if c = 4
-	jr .save
-.pressedLeft  ; pick left speed d and decrease c
-	ld e, d
-	dec c
-	ld a, c
-	cp -1 ; inc a
-	jr nz, .save
-	ld c, 3   ; wrap around to 3 if c = 0
 .save
 	ld a, [wOptions]
 	and ~TEXT_DELAY_MASK
@@ -138,16 +138,16 @@ GetTextSpeed:
 	dec a
 	jr z, .mediumTextOption
 ; slow text option
-	lb de, TEXT_DELAY_MEDIUM, TEXT_DELAY_INSTANT
-	ret
-.mediumTextOption
-	lb de, TEXT_DELAY_FAST, TEXT_DELAY_SLOW
-	ret
-.fastTextOption
 	lb de, TEXT_DELAY_INSTANT, TEXT_DELAY_MEDIUM
 	ret
-.instantTextOption
+.mediumTextOption
 	lb de, TEXT_DELAY_SLOW, TEXT_DELAY_FAST
+	ret
+.fastTextOption
+	lb de, TEXT_DELAY_MEDIUM, TEXT_DELAY_INSTANT
+	ret
+.instantTextOption
+	lb de, TEXT_DELAY_FAST, TEXT_DELAY_SLOW
 	ret
 
 TextSpeedStringsPointerTable:
