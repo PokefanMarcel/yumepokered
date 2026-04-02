@@ -1,11 +1,8 @@
-YourTextString:
+YourNameTextString:
 	db "VOTRE NOM?@"
 
-RivalsTextString:
+RivalsNameTextString:
 	db "NOM DU RIVAL?@"
-
-NameTextString:
-	db "NOM?@"
 
 NicknameTextString:
 	db "SURNOM?@"

@@ -444,13 +444,13 @@ CalcStringLength:
 
 PrintNamingText:
 	hlcoord 0, 1
-	ld a, [wNamingScreenType]
-	ld de, YourTextString
+	ld a, [wNamingScreenType] ; 0 = YOUR NAME?, 1 = RIVAL's NAME?, 2 = SURNAME?
+	ld de, YourNameTextString
 	and a
-	jr z, .notNickname
-	ld de, RivalsTextString
+	jr z, .placeString
+	ld de, RivalsNameTextString
 	dec a
-	jr z, .notNickname
+	jr z, .placeString
 	ld a, [wCurPartySpecies]
 	ld [wMonPartySpriteSpecies], a
 	push af
@@ -460,17 +460,8 @@ PrintNamingText:
 	call GetMonName
 	hlcoord 4, 1
 	call PlaceString
-;	ld hl, $1 ; marcelnote - removed
-;	add hl, bc
-;	ld [hl], 'の' ; leftover from Japanese version; blank tile $c9 in English
 	hlcoord 1, 3
 	ld de, NicknameTextString
-	jr .placeString
-.notNickname
-	call PlaceString
-	ld l, c
-	ld h, b
-	ld de, NameTextString
 .placeString
 	jp PlaceString
 

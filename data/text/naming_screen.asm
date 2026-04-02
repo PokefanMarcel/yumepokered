@@ -1,12 +1,9 @@
 ; marcelnote - moved from engine/menus/naming_screen.asm
-YourTextString:
-	db "YOUR @"
+YourNameTextString:
+	db "YOUR NAME?@"
 
-RivalsTextString:
-	db "RIVAL's @"
-
-NameTextString:
-	db "NAME?@"
+RivalsNameTextString:
+	db "RIVAL's NAME?@"
 
 NicknameTextString:
 	db "NICKNAME?@"
