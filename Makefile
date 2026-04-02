@@ -194,7 +194,7 @@ yumepokered_vc.gb:      RGBFIXFLAGS += -p 0x00 -t "POKEMON RED"
 yumepokeblue_vc.gb:     RGBFIXFLAGS += -p 0x00 -t "POKEMON BLUE"
 yumepokerouge.gb:       RGBFIXFLAGS += -p 0x00 -t "POKEMON RED"
 yumepokeverte.gb:       RGBFIXFLAGS += -p 0x00 -t "POKEMON GREEN"
-yumepokebleue.gc:       RGBFIXFLAGS += -p 0x00 -t "POKEMON BLUE"
+yumepokebleue.gb:       RGBFIXFLAGS += -p 0x00 -t "POKEMON BLUE"
 yumepokebleue_debug.gb: RGBFIXFLAGS += -p 0xff -t "POKEMON BLUE"
 
 %.gb: $$(%_obj) layout.link
