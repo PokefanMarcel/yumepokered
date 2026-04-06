@@ -6,14 +6,13 @@ GainExperience:
 	cp RED
 	ret nc ; marcelnote - no exp if Battle Hall battle
 	call DivideExpDataByNumMonsGainingExp
-	ld hl, wPartyMon1
+	ld hl, wPartyMon1HP
 	xor a
 	ld [wWhichPokemon], a
 
 .partyMonLoop      ; loop over each mon and add gained exp
-	inc hl
-	ld a, [hli]    ; hl = wPartyMon<n>HP
-	or [hl]        ; is mon's HP 0?
+	ld a, [hli]    ; a = [wPartyMon<n>HP]
+	or [hl]        ; OR [wPartyMon<n>HP + 1], is mon's HP 0?
 	jp z, .nextMon ; if so, go to next mon
 	push hl        ; save hl = wPartyMon<n>HP + 1
 	ld hl, wPartyGainExpFlags
@@ -39,10 +38,10 @@ GainExperience:
 	add b          ; add enemy mon base stat to stat exp
 	ld [de], a
 	jr nc, .nextBaseStat
-	dec de         ; add carry to stat exp high byte
-	ld a, [de]
-	inc a          ; a = $ff already?
-	jr z, .maxStatExp ; if yes, set low byte to $ff as well
+	dec de
+	ld a, [de]     ; a = stat exp (high byte)
+	inc a
+	jr z, .maxStatExp ; a = $ff already?
 	ld [de], a
 	inc de
 	jr .nextBaseStat
@@ -134,7 +133,7 @@ GainExperience:
 	sbc c
 	ld a, [hl]
 	sbc b
-	jr c, .next2      ; is current exp < max exp?
+	jr c, .noClamp    ; is current exp < max exp?
 ; the mon's exp is greater than the max exp, so overwrite it with the max exp
 	ld a, b
 	ld [hli], a
@@ -143,7 +142,7 @@ GainExperience:
 	ld a, d
 	ld [hld], a
 	dec hl
-.next2
+.noClamp
 	push hl            ; save hl = wPartyMon<n>Exp
 	ld a, [wWhichPokemon]
 	ld hl, wPartyMonNicks
@@ -318,12 +317,12 @@ DivideExpDataByNumMonsGainingExp:
 	ldh [hDividend + 2], a
 .divideLoop
 	ld a, [hl]
-	ldh [hDividend + 3], a ; [hDividend = 3] = number of mons gaining exp
+	ldh [hDividend + 3], a ; [hDividend + 3] = stat to be divided
 	ld a, c
 	ldh [hDivisor], a ; [hDivisor] = number of mons gaining exp
 	call Divide
 	ldh a, [hQuotient + 3]
-	ld [hli], a
+	ld [hli], a            ; [hl] <- [hl] / c
 	dec b
 	jr nz, .divideLoop
 	ret
@@ -346,10 +345,10 @@ BoostExp:
 GainedText:
 	text_far _GainedText
 	text_asm
-	;ld a, [wBoostExpByExpAll] ; marcelnote - shortened ExpAll messages
-	;ld hl, WithExpAllText
-	;and a
-	;ret nz
+;	ld a, [wBoostExpByExpAll] ; marcelnote - shortened ExpAll messages
+;	ld hl, WithExpAllText
+;	and a
+;	ret nz
 	ld hl, ExpPointsText
 	ld a, [wGainBoostedExp]
 	and a

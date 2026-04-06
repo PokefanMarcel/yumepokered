@@ -856,8 +856,8 @@ FaintEnemyPokemon:
 ; give exp (divided evenly) to the mons that actually fought in battle against the enemy mon that has fainted
 ; if exp all is in the bag, this will be only be half of the stat exp and normal exp, due to the above loop
 .giveExpToMonsThatFought
-	;xor a
-	;ld [wBoostExpByExpAll], a ; marcelnote - shortened ExpAll messages
+;	xor a
+;	ld [wBoostExpByExpAll], a ; marcelnote - shortened ExpAll messages
 	callfar GainExperience
 	pop af
 	ret z ; return if no exp all
@@ -867,8 +867,8 @@ FaintEnemyPokemon:
 ; half of the total stat exp and normal exp will be divided evenly amongst every party member
 	ld hl, ExpAllIsOnText ; marcelnote - new, shortened ExpAll messages
 	call PrintText
-	;ld a, TRUE
-	;ld [wBoostExpByExpAll], a ; marcelnote - shortened ExpAll messages
+;	ld a, TRUE
+;	ld [wBoostExpByExpAll], a ; marcelnote - shortened ExpAll messages
 	ld a, [wPartyCount]
 	ld b, 0
 .gainExpFlagsLoop

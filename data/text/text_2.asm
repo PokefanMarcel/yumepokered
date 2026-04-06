@@ -691,8 +691,8 @@ _ViridianBlackboardPrlzText::
 
 _ViridianBlackboardBurnText::
 	text "A burn reduces"
-	;line "power and speed."
-	;cont "It also causes"
+;	line "power and speed."
+;	cont "It also causes"
 	line "power and causes" ; marcelnote - added this line and removed two lines above
 	cont "ongoing damage."
 
