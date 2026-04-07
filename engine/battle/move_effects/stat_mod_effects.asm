@@ -284,7 +284,7 @@ MonsStatsRoseText:
 
 GreatlyRoseText:
 	text_pause
-	text_far _GreatlyRoseText
+	text_far _GreatlyText
 ; fallthrough
 RoseText:
 	text_far _RoseText
@@ -308,7 +308,7 @@ MonsStatsFellText:
 
 GreatlyFellText:
 	text_pause
-	text_far _GreatlyFellText
+	text_far _GreatlyText
 ; fallthrough
 FellText:
 	text_far _FellText
