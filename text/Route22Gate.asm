@@ -116,9 +116,9 @@ _Route22GateReceptionistRulesText:: ; marcelnote - new receptionist
 	para "A PC is available"
 	line "upstairs if you"
 	cont "need to adjust"
-	cont "your #MON."
+	cont "your team."
 
-	para "Choose your team"
+	para "Choose it"
 	line "carefully!"
 
 	para "Oh, and items"
