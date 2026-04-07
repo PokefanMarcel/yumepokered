@@ -1311,10 +1311,15 @@ _GainedText::
 ;	cont "@"
 ;	text_end
 
-_ExpAllIsOnText:: ; marcelnote - shortened ExpAll messages
-	text "Le MULTI. EXP"
-	line "est allumé!"
-	prompt
+;_ExpAllIsOnText:: ; marcelnote - shortened ExpAll messages
+;	text "Le MULTI. EXP"
+;	line "est allumé!"
+;	prompt
+
+_ExpAllSharedText:: ; marcelnote - shortened ExpAll messages
+	text "EXP.ALL shared"
+	line "@"
+	text_end
 
 _BoostedText::
 	text "un bonus de"

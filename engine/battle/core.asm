@@ -834,59 +834,23 @@ FaintEnemyPokemon:
 	call SaveScreenTilesToBuffer1
 	xor a
 	ld [wBattleResult], a
-;	ld b, EXP_ALL
-;	call IsItemInBag
-	ld hl, wStatusFlags1    ; marcelnote - ExpAll can be activated/deactivated
-	bit BIT_EXP_ALL_ACTIVE, [hl]
-	push af
-	jr z, .giveExpToMonsThatFought ; if no exp all, then jump
 
-; the player has exp all
-; first, we halve the values that determine exp gain
-; the enemy mon base stats are added to stat exp, so they are halved
-; the base exp (which determines normal exp) is also halved
-	ld hl, wEnemyMonBaseStats
-	ld b, NUM_STATS + 2
-.halveExpDataLoop
-	srl [hl]
-	inc hl
-	dec b
-	jr nz, .halveExpDataLoop
-
-; give exp (divided evenly) to the mons that actually fought in battle against the enemy mon that has fainted
-; if exp all is in the bag, this will be only be half of the stat exp and normal exp, due to the above loop
-.giveExpToMonsThatFought
-;	xor a
-;	ld [wBoostExpByExpAll], a ; marcelnote - shortened ExpAll messages
-	callfar GainExperience
-	pop af
-	ret z ; return if no exp all
-
-; the player has exp all
-; now, set the gain exp flag for every party member
-; half of the total stat exp and normal exp will be divided evenly amongst every party member
-	ld hl, ExpAllIsOnText ; marcelnote - new, shortened ExpAll messages
-	call PrintText
-;	ld a, TRUE
-;	ld [wBoostExpByExpAll], a ; marcelnote - shortened ExpAll messages
-	ld a, [wPartyCount]
-	ld b, 0
 .gainExpFlagsLoop
-	scf
-	rl b
-	dec a
-	jr nz, .gainExpFlagsLoop
-	ld a, b
-	ld [wPartyGainExpFlags], a
+; marcelnote - drastically simplified this function's ending,
+;              ExpAll is managed within the GainExperience function instead
+;	ld hl, wStatusFlags1
+;	bit BIT_EXP_ALL_ACTIVE, [hl]
+;	jr z, .skipExpAllMessage
+;	ld hl, ExpAllIsOnText
 	jpfar GainExperience
 
 EnemyMonFaintedText:
 	text_far _EnemyMonFaintedText
 	text_end
 
-ExpAllIsOnText: ; marcelnote - shortened ExpAll messages
-	text_far _ExpAllIsOnText
-	text_end
+;ExpAllIsOnText: ; marcelnote - shortened ExpAll messages
+;	text_far _ExpAllIsOnText
+;	text_end
 
 EndLowHealthAlarm:
 ; This function is called when the player has won the battle. It turns off

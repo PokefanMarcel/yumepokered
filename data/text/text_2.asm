@@ -1225,9 +1225,14 @@ _GainedText::
 ;	cont "@"
 ;	text_end
 
-_ExpAllIsOnText:: ; marcelnote - shortened ExpAll messages
-	text "EXP.ALL is on!"
-	prompt
+;_ExpAllIsOnText:: ; marcelnote - shortened ExpAll messages
+;	text "EXP.ALL is on!"
+;	prompt
+
+_ExpAllSharedText:: ; marcelnote - shortened ExpAll messages
+	text "EXP.ALL shared"
+	line "@"
+	text_end
 
 _BoostedText::
 	text "a boosted"
