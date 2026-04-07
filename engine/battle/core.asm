@@ -834,14 +834,14 @@ FaintEnemyPokemon:
 	call SaveScreenTilesToBuffer1
 	xor a
 	ld [wBattleResult], a
-
-.gainExpFlagsLoop
 ; marcelnote - drastically simplified this function's ending,
 ;              ExpAll is managed within the GainExperience function instead
 ;	ld hl, wStatusFlags1
 ;	bit BIT_EXP_ALL_ACTIVE, [hl]
 ;	jr z, .skipExpAllMessage
 ;	ld hl, ExpAllIsOnText
+;	call PrintText
+;.skipExpAllMessage
 	jpfar GainExperience
 
 EnemyMonFaintedText:
