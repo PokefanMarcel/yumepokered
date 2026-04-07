@@ -105,11 +105,12 @@ _MonsStatsRoseText::
 	text "@"
 	text_end
 
-_GreatlyRoseText::
+_GreatlyText::
 	text "<SCROLL>à fond@"
 	text_end
 
 _RoseText::
+_FellText::
 	text "!"
 	prompt
 
@@ -119,14 +120,6 @@ _MonsStatsFellText::
 	text_ram wStringBuffer
 	text "@"
 	text_end
-
-_GreatlyFellText::
-	text "<SCROLL>à fond@"
-	text_end
-
-_FellText::
-	text "!"
-	prompt
 
 _RanFromBattleText::
 	text "<USER>"
