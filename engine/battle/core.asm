@@ -4723,9 +4723,9 @@ CriticalHitTest:
 ;	ld b, $ff
 ;.SkipHighCritical
 	call BattleRandom            ; generates a random value, in "a"
-	rlc a
-	rlc a
-	rlc a
+	rlca
+	rlca
+	rlca
 	cp b                         ; check a against calculated crit rate
 	ret nc                       ; no critical hit if no borrow
 	ld a, $1
