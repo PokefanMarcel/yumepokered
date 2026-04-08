@@ -14,8 +14,8 @@ LoadMonFrontPic::
 	ld a, [wOptions]
 	and SPRITE_STYLE_MASK
 	jr z, .gotPicAddress
-	rr a
-	rr a
+	rra
+	rra
 	ld c, a ; c = 1 (Yellow) or 2 (Green)
 	swap d ; multiply by 16 to get sprite dim in bytes
 	ld e, d
