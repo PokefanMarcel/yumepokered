@@ -26,7 +26,7 @@ DoubleSelectedStats:
 	add a
 	ld [hld], a
 	ld a, [hl]
-	rl a
+	rla
 	ld [hli], a
 	ret
 

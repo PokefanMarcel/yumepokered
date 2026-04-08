@@ -3674,7 +3674,7 @@ CheckPlayerStatusConditions:
 	ld b, a
 	ld [wDamage + 1], a
 	ld a, [hl]
-	rl a ; double the damage
+	rla ; double the damage
 	ld [wDamage], a
 	or b
 	jr nz, .next
@@ -6064,7 +6064,7 @@ CheckEnemyStatusConditions:
 	ld b, a
 	ld [wDamage + 1], a
 	ld a, [hl]
-	rl a ; double the damage
+	rla ; double the damage
 	ld [wDamage], a
 	or b
 	jr nz, .next
