@@ -103,7 +103,7 @@ RemoveItemFromInventory_::
 	push hl
 	inc hl
 	ld a, [wWhichPokemon] ; index (within the inventory) of the item being removed
-	sla a
+	add a
 	add l
 	ld l, a
 	jr nc, .noCarry

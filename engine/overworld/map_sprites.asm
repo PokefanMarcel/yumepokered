@@ -278,10 +278,10 @@ InitOutsideMapSprites:
 	ld [wSpriteSetID], a
 	dec a
 	ld b, a
-	sla a
+	add a
 	ld c, a
-	sla a
-	sla a
+	add a
+	add a
 	add c
 	add b ; a = (spriteSetID - 1) * SPRITE_SET_LENGTH
 	ld de, SpriteSets
@@ -390,8 +390,8 @@ GetSplitMapSpriteSetID:
 	ld hl, SplitMapSpriteSets
 	and $0f
 	dec a
-	sla a
-	sla a
+	add a
+	add a
 	add l
 	ld l, a
 	jr nc, .noCarry

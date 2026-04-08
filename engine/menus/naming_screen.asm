@@ -137,7 +137,7 @@ DisplayNamingScreen:
 	jr z, .inputLoop
 	ld hl, .namingScreenButtonFunctions
 .checkForPressedButton
-	sla a
+	add a
 	jr c, .foundPressedButton
 	inc hl
 	inc hl

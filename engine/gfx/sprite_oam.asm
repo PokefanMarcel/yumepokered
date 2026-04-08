@@ -111,10 +111,10 @@ PrepareOAMData::
 
 .notFourTileSprite
 	; a *= 12
-	sla a
-	sla a
+	add a
+	add a
 	ld c, a
-	sla a
+	add a
 	add c
 
 .next2

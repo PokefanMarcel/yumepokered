@@ -423,7 +423,7 @@ PrintListMenuEntries::
 	jr nz, .skipMultiplying
 ; if it's an item menu
 ; item entries are 2 bytes long, so multiply by 2
-	sla a
+	add a
 	sla c
 .skipMultiplying
 	add e
@@ -572,7 +572,7 @@ PrintListMenuEntries::
 	ld a, [wMenuItemToSwap] ; ID of item chosen for swapping (counts from 1)
 	and a ; is an item being swapped?
 	jr z, .nextListEntry
-	sla a
+	add a
 	cp c ; is it this item?
 	jr nz, .nextListEntry
 	dec hl

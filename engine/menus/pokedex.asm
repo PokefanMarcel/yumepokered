@@ -221,7 +221,7 @@ HandlePokedexListMenu:
 	ld c, 8
 .maxSeenPokemonInnerLoop
 	dec b
-	sla a
+	add a
 	jr c, .storeMaxSeenPokemon
 	dec c
 	jr nz, .maxSeenPokemonInnerLoop

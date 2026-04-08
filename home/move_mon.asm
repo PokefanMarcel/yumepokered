@@ -154,7 +154,7 @@ CalcStat::
 	jr nc, .addedBaseStat
 	inc d                     ; da = stat IV + base stat
 .addedBaseStat
-	sla a
+	add a
 	rl d                      ; da = 2 * (Base + IV)
 	srl b
 	srl b                     ; b = ceil(Sqrt(stat exp)) / 4

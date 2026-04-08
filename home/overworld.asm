@@ -2130,7 +2130,7 @@ LoadMapHeader::
 	ret nz
 	ld hl, MapHeaderPointers
 	ld a, [wCurMap]
-	sla a
+	add a
 	jr nc, .noCarry1
 	inc h
 .noCarry1
