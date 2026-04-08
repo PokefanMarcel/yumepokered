@@ -452,9 +452,8 @@ wSimulatedJoypadStatesEnd::
 
 NEXTU
 ;wBoostExpByExpAll:: db ; marcelnote - removed, shortened ExpAll messages
-wNumSharesExp:: db      ; marcelnote - new for ExpAll
 
-	ds 59
+	ds 60
 
 wNPCMovementDirections2:: ds 10
 ; used in Pallet Town scripted movement
@@ -1125,6 +1124,8 @@ NEXTU
 ; the total amount of exp a mon gained
 wExpAmountGained:: dw
 wGainBoostedExp:: db
+wExpAmountPerShare:: dw  ; marcelnote - new for ExpAll
+wNumSharesExp:: db       ; marcelnote - new for ExpAll
 ENDU
 
 wGymCityName:: ds GYM_CITY_LENGTH

@@ -836,21 +836,11 @@ FaintEnemyPokemon:
 	ld [wBattleResult], a
 ; marcelnote - drastically simplified this function's ending,
 ;              ExpAll is managed within the GainExperience function instead
-;	ld hl, wStatusFlags1
-;	bit BIT_EXP_ALL_ACTIVE, [hl]
-;	jr z, .skipExpAllMessage
-;	ld hl, ExpAllIsOnText
-;	call PrintText
-;.skipExpAllMessage
 	jpfar GainExperience
 
 EnemyMonFaintedText:
 	text_far _EnemyMonFaintedText
 	text_end
-
-;ExpAllIsOnText: ; marcelnote - shortened ExpAll messages
-;	text_far _ExpAllIsOnText
-;	text_end
 
 EndLowHealthAlarm:
 ; This function is called when the player has won the battle. It turns off

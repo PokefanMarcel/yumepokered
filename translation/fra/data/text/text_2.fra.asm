@@ -1317,7 +1317,7 @@ _GainedText::
 ;	prompt
 
 _ExpAllSharedText:: ; marcelnote - shortened ExpAll messages
-	text "EXP.ALL shared"
+	text "MULTI. EXP partage"
 	line "@"
 	text_end
 

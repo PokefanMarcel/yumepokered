@@ -786,6 +786,7 @@
 	const_next $860
 	const_skip
 	const EVENT_BEAT_YELLOW
+	const EVENT_BOOSTED_EXP_ALL
 
 ; Safari Zone events
 	const_next $880
