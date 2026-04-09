@@ -47,7 +47,7 @@ HallOfFameResetEventsAndSaveScript:
 	ld [wHallOfFameCurScript], a
 	ld a, PALLET_TOWN
 	ld [wLastBlackoutMap], a
-	farcall SaveSAVtoSRAM
+	farcall SaveGameData
 	ld b, 5
 .delayLoop
 	ld c, 600 / 5
@@ -96,8 +96,8 @@ HallOfFameOakCongratulationsScript:
 	call DisplayTextID
 	ld a, PAD_BUTTONS | PAD_CTRL_PAD
 	ld [wJoyIgnore], a
-	ld a, HS_CERULEAN_CAVE_GUY
-	ld [wMissableObjectIndex], a
+	ld a, TOGGLE_CERULEAN_CAVE_GUY
+	ld [wToggleableObjectIndex], a
 	predef HideObject
 	ld a, SCRIPT_HALLOFFAME_RESET_EVENTS_AND_SAVE
 	ld [wHallOfFameCurScript], a

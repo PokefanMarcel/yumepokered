@@ -51,7 +51,7 @@ RedrawPartyMenu_::
 	dec hl
 	dec hl
 	dec hl
-	ld a, "▷" ; unfilled right arrow menu cursor
+	ld a, '▷' ; unfilled right arrow menu cursor
 	ld [hli], a ; place the cursor
 	inc hl
 	inc hl
@@ -90,7 +90,7 @@ RedrawPartyMenu_::
 	jr nz, .placeMoveLearnabilityString
 	ld de, .notAbleToLearnMoveText
 .placeMoveLearnabilityString
-	ld bc, 20 + 9 ; down 1 row and right 9 columns
+	ld bc, SCREEN_WIDTH + 9 ; 1 row down and 9 columns right
 	push hl
 	add hl, bc
 	call PlaceString
@@ -102,7 +102,7 @@ RedrawPartyMenu_::
 	pop hl
 	pop de
 	inc de
-	ld bc, 2 * 20
+	ld bc, 2 * SCREEN_WIDTH
 	add hl, bc
 	pop bc
 	inc c
@@ -131,7 +131,7 @@ RedrawPartyMenu_::
 	ld l, a
 	ld de, wEvoDataBuffer
 	ld a, BANK(EvosMovesPointerTable)
-	ld bc, 4 * 3 + 1 ; enough for Eevee's three 4-byte evolutions and 0 terminator
+	ld bc, wEvoDataBufferEnd - wEvoDataBuffer
 	call FarCopyData
 	ld hl, wEvoDataBuffer
 	ld de, .notAbleToEvolveText

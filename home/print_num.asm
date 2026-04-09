@@ -82,11 +82,16 @@ MACRO print_digit
 	call .NextDigit
 ENDM
 
-.millions          print_digit 1000000
-.hundred_thousands print_digit 100000
-.ten_thousands     print_digit 10000
-.thousands         print_digit 1000
-.hundreds          print_digit 100
+; millions
+	print_digit 1000000
+.hundred_thousands
+	print_digit 100000
+.ten_thousands
+	print_digit 10000
+.thousands
+	print_digit 1000
+.hundreds
+	print_digit 100
 
 .tens
 	ld c, 0
@@ -107,14 +112,14 @@ ENDM
 	call .PrintLeadingZero
 	jr .next
 .past
-	ld a, "0"
+	ld a, '0'
 	add c
 	ld [hl], a
 .next
 
 	call .NextDigit
-.ones
-	ld a, "0"
+; ones
+	ld a, '0'
 	add b
 	ld [hli], a
 	pop de
@@ -191,7 +196,7 @@ ENDM
 	or c
 	jr z, .PrintLeadingZero
 
-	ld a, "0"
+	ld a, '0'
 	add c
 	ld [hl], a
 	ldh [hPastLeadingZeros], a
@@ -200,7 +205,7 @@ ENDM
 .PrintLeadingZero:
 	bit BIT_LEADING_ZEROES, d
 	ret z
-	ld [hl], "0"
+	ld [hl], '0'
 	ret
 
 .NextDigit:

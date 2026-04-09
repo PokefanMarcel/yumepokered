@@ -2,12 +2,12 @@ CeladonPrizeMenu::
 	ld b, COIN_CASE
 	call IsItemInBag
 	jr nz, .havingCoinCase
-	ld hl, RequireCoinCaseTextPtr
+	ld hl, RequireCoinCaseText
 	jp PrintText
 .havingCoinCase
 	ld hl, wStatusFlags5
 	set BIT_NO_TEXT_DELAY, [hl]
-	ld hl, ExchangeCoinsForPrizesTextPtr
+	ld hl, ExchangeCoinsForPrizesText
 	call PrintText
 ; the following are the menu settings
 	xor a
@@ -28,7 +28,7 @@ CeladonPrizeMenu::
 	call TextBoxBorder
 	call GetPrizeMenuId
 	call UpdateSprites
-	ld hl, WhichPrizeTextPtr
+	ld hl, WhichPrizeText
 	call PrintText
 	call HandleMenuInput ; menu choice handler
 	bit B_PAD_B, a
@@ -42,16 +42,16 @@ CeladonPrizeMenu::
 	res BIT_NO_TEXT_DELAY, [hl]
 	ret
 
-RequireCoinCaseTextPtr:
+RequireCoinCaseText:
 	text_far _RequireCoinCaseText
 	text_waitbutton
 	text_end
 
-ExchangeCoinsForPrizesTextPtr:
+ExchangeCoinsForPrizesText:
 	text_far _ExchangeCoinsForPrizesText
 	text_end
 
-WhichPrizeTextPtr:
+WhichPrizeText:
 	text_far _WhichPrizeText
 	text_end
 
@@ -195,7 +195,7 @@ HandlePrizeChoice:
 .getMonName
 	call GetMonName
 .givePrize
-	ld hl, SoYouWantPrizeTextPtr
+	ld hl, SoYouWantPrizeText
 	call PrintText
 	call YesNoChoice
 	ld a, [wCurrentMenuItem] ; yes/no answer (Y=0, N=1)
@@ -243,25 +243,25 @@ HandlePrizeChoice:
 	predef SubBCDPredef
 	jp PrintPrizePrice
 .bagFull
-	ld hl, PrizeRoomBagIsFullTextPtr
+	ld hl, PrizeRoomBagIsFullText
 	jp PrintText
 .notEnoughCoins
 	ld hl, SorryNeedMoreCoinsText
 	jp PrintText
 .printOhFineThen
-	ld hl, OhFineThenTextPtr
+	ld hl, OhFineThenText
 	jp PrintText
 
 UnknownPrizeData:
 ; XXX what's this?
 	db $00,$01,$00,$01,$00,$01,$00,$00,$01
 
-HereYouGoTextPtr:
+HereYouGoText: ; unreferenced
 	text_far _HereYouGoText
 	text_waitbutton
 	text_end
 
-SoYouWantPrizeTextPtr:
+SoYouWantPrizeText:
 	text_far _SoYouWantPrizeText
 	text_end
 
@@ -270,12 +270,12 @@ SorryNeedMoreCoinsText:
 	text_waitbutton
 	text_end
 
-PrizeRoomBagIsFullTextPtr:
+PrizeRoomBagIsFullText:
 	text_far _OopsYouDontHaveEnoughRoomText
 	text_waitbutton
 	text_end
 
-OhFineThenTextPtr:
+OhFineThenText:
 	text_far _OhFineThenText
 	text_waitbutton
 	text_end

@@ -105,7 +105,7 @@ HandlePokedexSideMenu:
 	jr z, .choseCry
 	dec a
 	jr z, .choseArea
-.choseQuit
+; chose Quit
 	ld b, 1
 .exitSideMenu
 	pop af
@@ -121,7 +121,7 @@ HandlePokedexSideMenu:
 	push bc
 	hlcoord 0, 3
 	ld de, 20
-	lb bc, " ", 13
+	lb bc, ' ', 13
 	call DrawTileLine ; cover up the menu cursor in the pokemon list
 	pop bc
 	ret
@@ -130,7 +130,7 @@ HandlePokedexSideMenu:
 	push bc
 	hlcoord 15, 10
 	ld de, 20
-	lb bc, " ", 7
+	lb bc, ' ', 7
 	call DrawTileLine ; cover up the menu cursor in the side menu
 	pop bc
 	jr .exitSideMenu
@@ -159,7 +159,7 @@ HandlePokedexListMenu:
 	ldh [hAutoBGTransferEnabled], a
 ; draw the horizontal line separating the seen and owned amounts from the menu
 	hlcoord 15, 8
-	ld a, "─"
+	ld a, '─'
 	ld [hli], a
 	ld [hli], a
 	ld [hli], a
@@ -251,7 +251,7 @@ HandlePokedexListMenu:
 	ld hl, wPokedexOwned
 	call IsPokemonBitSet
 	pop hl
-	ld a, " "
+	ld a, ' '
 	jr z, .writeTile
 	ld a, $72 ; pokeball tile
 .writeTile
@@ -286,7 +286,7 @@ HandlePokedexListMenu:
 	call HandleMenuInput
 	bit B_PAD_B, a
 	jp nz, .buttonBPressed
-.checkIfUpPressed
+; check if Up pressed
 	bit B_PAD_UP, a
 	jr z, .checkIfDownPressed
 .upPressed ; scroll up one row
@@ -299,7 +299,7 @@ HandlePokedexListMenu:
 .checkIfDownPressed
 	bit B_PAD_DOWN, a
 	jr z, .checkIfRightPressed
-.downPressed ; scroll down one row
+; Down pressed, scroll down one row
 	ld a, [wDexMaxSeenMon]
 	cp 7
 	jp c, .loop ; can't if the list is shorter than 7
@@ -314,7 +314,7 @@ HandlePokedexListMenu:
 .checkIfRightPressed
 	bit B_PAD_RIGHT, a
 	jr z, .checkIfLeftPressed
-.rightPressed ; scroll down 7 rows
+; Right pressed, scroll down 7 rows
 	ld a, [wDexMaxSeenMon]
 	cp 7
 	jp c, .loop ; can't if the list is shorter than 7
@@ -332,7 +332,7 @@ HandlePokedexListMenu:
 .checkIfLeftPressed ; scroll up 7 rows
 	bit B_PAD_LEFT, a
 	jr z, .buttonAPressed
-.leftPressed
+; Left pressed
 	ld a, [wListScrollOffset]
 	sub 7
 	ld [wListScrollOffset], a
@@ -476,9 +476,9 @@ ShowPokedexDataInternal:
 	call IndexToPokedex
 
 	hlcoord 2, 8
-	ld a, "№"
+	ld a, '№'
 	ld [hli], a
-	ld a, "<DOT>"
+	ld a, '<DOT>'
 	ld [hli], a
 	ld de, wPokedexNum
 	lb bc, LEADING_ZEROES | 1, 3
@@ -518,14 +518,14 @@ ShowPokedexDataInternal:
 	hlcoord 12, 6
 	lb bc, 1, 2
 	call PrintNumber ; print feet (height)
-	ld a, "′"
+	ld a, '′'
 	ld [hl], a
 	inc de
 	inc de ; de = address of inches (height)
 	hlcoord 15, 6
 	lb bc, LEADING_ZEROES | 1, 2
 	call PrintNumber ; print inches (height)
-	ld a, "″"
+	ld a, '″'
 	ld [hl], a
 ; now print the weight (note that weight is stored in tenths of pounds internally)
 	inc de
@@ -553,12 +553,12 @@ ShowPokedexDataInternal:
 	ldh a, [hDexWeight]
 	sbc 0
 	jr nc, .next
-	ld [hl], "0" ; if the weight is less than 10, put a 0 before the decimal point
+	ld [hl], '0' ; if the weight is less than 10, put a 0 before the decimal point
 .next
 	inc hl
 	ld a, [hli]
 	ld [hld], a ; make space for the decimal point by moving the last digit forward one tile
-	ld [hl], "<DOT>" ; decimal point tile
+	ld [hl], '<DOT>' ; decimal point tile
 	pop af
 	ldh [hDexWeight + 1], a ; restore original value of [hDexWeight + 1]
 	pop af
@@ -593,8 +593,8 @@ HeightWeightText:
 	db   "HT  ?′??″"
 	next "WT   ???lb@"
 
-; XXX does anything point to this?
-PokeText:
+; leftover from JPN Pokedex, where species have the suffix "Pokemon"
+PokeText: ; unreferenced
 	db "#@"
 
 ; horizontal line that divides the pokedex text description from the rest of the data

@@ -30,27 +30,25 @@ TextScript_ItemStoragePC::
 	call SaveScreenTilesToBuffer2
 	ld b, BANK(PlayerPC)
 	ld hl, PlayerPC
-	jr bankswitchAndContinue
+	jr BankswitchAndContinue
 
 TextScript_BillsPC::
 	call SaveScreenTilesToBuffer2
 	ld b, BANK(BillsPC_)
 	ld hl, BillsPC_
-	jr bankswitchAndContinue
+	jr BankswitchAndContinue
 
 TextScript_GameCornerPrizeMenu::
-; XXX find a better name for this function
-; special_F7
 	ld b, BANK(CeladonPrizeMenu)
 	ld hl, CeladonPrizeMenu
-bankswitchAndContinue::
+BankswitchAndContinue::
 	call Bankswitch
 	jp HoldTextDisplayOpen        ; continue to main text-engine function
 
 TextScript_PokemonCenterPC::
 	ld b, BANK(ActivatePC)
 	ld hl, ActivatePC
-	jr bankswitchAndContinue
+	jr BankswitchAndContinue
 
 StartSimulatingJoypadStates::
 	xor a
@@ -117,7 +115,7 @@ CheckCoords::
 	ld hl, wCoordIndex
 	inc [hl]
 	pop hl
-.compareYCoord
+; compare Y coord
 	cp b
 	jr z, .compareXCoord
 	inc hl
@@ -126,7 +124,7 @@ CheckCoords::
 	ld a, [hli]
 	cp c
 	jr nz, .loop
-.inArray
+; in array
 	scf
 	ret
 .notInArray
