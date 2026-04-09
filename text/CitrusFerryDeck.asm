@@ -23,7 +23,7 @@ _CitrusFerryDeckSailorSorryText::
 
 _CitrusFerryDeckSpeakerWelcomeText::
 	text "SPEAKER: Welcome"
-	line "on our FERRIES!"
+	line "aboard our ferry!"
 
 	para "We hope you have a"
 	line "pleasant journey!"
