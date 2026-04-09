@@ -1312,12 +1312,12 @@ _GainedText::
 ;	text_end
 
 ;_ExpAllIsOnText:: ; marcelnote - shortened ExpAll messages
-;	text "Le MULTI. EXP"
+;	text "Le MULTI EXP"
 ;	line "est allumé!"
 ;	prompt
 
 _ExpAllSharedText:: ; marcelnote - shortened ExpAll messages
-	text "MULTI. EXP partage"
+	text "MULTI EXP partage" ; marcelnote - changed from MULTI. EXP
 	line "@"
 	text_end
 

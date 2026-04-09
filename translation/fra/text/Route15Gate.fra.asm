@@ -8,7 +8,7 @@ _Route15Gate1FGuardText::
 	done
 
 _Route15Gate2FOaksAideExpAllText::
-	text "MULTI. EXP"
+	text "MULTI EXP" ; marcelnote - changed from MULTI. EXP
 	line "distribue l'EXP à"
 	cont "tous tes #MON,"
 	cont "même à ceux"

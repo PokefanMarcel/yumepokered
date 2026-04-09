@@ -72,7 +72,6 @@ IF DEF(_FRA)
 	INCLUDE "translation/fra/text/LoreleisRoom.fra.asm"
 	INCLUDE "translation/fra/text/BrunosRoom.fra.asm"
 	INCLUDE "translation/fra/text/AgathasRoom.fra.asm"
-	INCLUDE "translation/fra/text/RockTunnelB1F.fra.asm"
 ELSE
 	INCLUDE "text/SilphCo6F.asm"
 	INCLUDE "text/SilphCo7F.asm"
@@ -90,7 +89,6 @@ ELSE
 	INCLUDE "text/LoreleisRoom.asm"
 	INCLUDE "text/BrunosRoom.asm"
 	INCLUDE "text/AgathasRoom.asm"
-	INCLUDE "text/RockTunnelB1F.asm"
 ENDC
 
 
@@ -127,8 +125,6 @@ IF DEF(_FRA)
 	INCLUDE "translation/fra/text/UndergroundPathRoute6.fra.asm"
 	INCLUDE "translation/fra/text/UndergroundPathRoute7.fra.asm"
 	INCLUDE "translation/fra/text/UndergroundPathRoute8.fra.asm"
-	INCLUDE "translation/fra/text/RockTunnelPokecenter.fra.asm"
-	INCLUDE "translation/fra/text/RockTunnel1F.fra.asm"
 	INCLUDE "translation/fra/text/PowerPlant.fra.asm"
 	INCLUDE "translation/fra/text/Route11Gate.fra.asm"
 	INCLUDE "translation/fra/text/DiglettsCaveRoute11.fra.asm"
@@ -160,8 +156,6 @@ ELSE
 	INCLUDE "text/UndergroundPathRoute6.asm"
 	INCLUDE "text/UndergroundPathRoute7.asm"
 	INCLUDE "text/UndergroundPathRoute8.asm"
-	INCLUDE "text/RockTunnelPokecenter.asm"
-	INCLUDE "text/RockTunnel1F.asm"
 	INCLUDE "text/PowerPlant.asm"
 	INCLUDE "text/Route11Gate.asm"
 	INCLUDE "text/DiglettsCaveRoute11.asm"
@@ -512,7 +506,20 @@ ELSE
 ENDC
 
 
-SECTION "Text Cinnabar Island", ROMX
+SECTION "Rock Tunnel Text", ROMX
+
+IF DEF(_FRA)
+	INCLUDE "translation/fra/text/RockTunnelPokecenter.fra.asm"
+	INCLUDE "translation/fra/text/RockTunnel1F.fra.asm"
+	INCLUDE "translation/fra/text/RockTunnelB1F.fra.asm"
+ELSE
+	INCLUDE "text/RockTunnelPokecenter.asm"
+	INCLUDE "text/RockTunnel1F.asm"
+	INCLUDE "text/RockTunnelB1F.asm"
+ENDC
+
+
+SECTION "Cinnabar Island Text", ROMX
 
 IF DEF(_FRA)
 	INCLUDE "translation/fra/text/PokemonMansion1F.fra.asm"

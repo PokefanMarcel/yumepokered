@@ -732,11 +732,11 @@
 	const EVENT_SILPH_CO_7_UNLOCKED_DOOR1
 	const EVENT_SILPH_CO_7_UNLOCKED_DOOR2
 	const EVENT_SILPH_CO_7_UNLOCKED_DOOR3
-	const_skip 3
+	const_skip 4 ; increased by 1 ; marcelnote - new for EXP.ALL boost
 	const EVENT_BEAT_SILPH_CO_8F_TRAINER_0
 	const EVENT_BEAT_SILPH_CO_8F_TRAINER_1
 	const EVENT_BEAT_SILPH_CO_8F_TRAINER_2
-	const_skip 3
+	const_skip 2 ; decreased by 1 ; marcelnote - new for EXP.ALL boost
 	const EVENT_SILPH_CO_8_UNLOCKED_DOOR
 	const_skip 9
 	const EVENT_BEAT_SILPH_CO_9F_TRAINER_0

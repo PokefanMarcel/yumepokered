@@ -1,4 +1,5 @@
 	object_const_def
+	const_export SILPHCO8F_BALDING_GUY ; marcelnote - new for EXP.ALL boost
 	const_export SILPHCO8F_SILPH_WORKER_M
 	const_export SILPHCO8F_ROCKET1
 	const_export SILPHCO8F_SCIENTIST
@@ -19,7 +20,8 @@ SilphCo8F_Object:
 	def_bg_events
 
 	def_object_events
-	object_event  4,  2, SPRITE_SILPH_WORKER_M, STAY, NONE, TEXT_SILPHCO8F_SILPH_WORKER_M
+	object_event  4,  2, SPRITE_BALDING_GUY, STAY, DOWN, TEXT_SILPHCO8F_BALDING_GUY ; marcelnote - new for EXP.ALL boost
+	object_event 21,  9, SPRITE_SILPH_WORKER_M, STAY, NONE, TEXT_SILPHCO8F_SILPH_WORKER_M ; marcelnote - moved from 4, 2
 	object_event 19,  2, SPRITE_ROCKET, STAY, LEFT, TEXT_SILPHCO8F_ROCKET1, OPP_ROCKET, 35
 	object_event 10,  2, SPRITE_SCIENTIST, STAY, DOWN, TEXT_SILPHCO8F_SCIENTIST, OPP_SCIENTIST, 9
 	object_event 12, 15, SPRITE_ROCKET, STAY, RIGHT, TEXT_SILPHCO8F_ROCKET2, OPP_ROCKET, 36

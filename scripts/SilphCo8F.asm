@@ -78,13 +78,14 @@ SilphCo8F_ScriptPointers:
 
 SilphCo8F_TextPointers:
 	def_text_pointers
+	dw_const SilphCo8FBaldingGuyText,   TEXT_SILPHCO8F_BALDING_GUY ; marcelnote - new for EXP.ALL boost
 	dw_const SilphCo8FSilphWorkerMText, TEXT_SILPHCO8F_SILPH_WORKER_M
 	dw_const SilphCo8FRocket1Text,      TEXT_SILPHCO8F_ROCKET1
 	dw_const SilphCo8FScientistText,    TEXT_SILPHCO8F_SCIENTIST
 	dw_const SilphCo8FRocket2Text,      TEXT_SILPHCO8F_ROCKET2
 
 SilphCo8TrainerHeaders:
-	def_trainers 2
+	def_trainers 3 ; marcelnote - modified for new EXP.ALL boost, was 2
 SilphCo8TrainerHeader0:
 	trainer EVENT_BEAT_SILPH_CO_8F_TRAINER_0, 4, SilphCo8FRocket1BattleText, SilphCo8FRocket1EndBattleText, SilphCo8FRocket1AfterBattleText
 SilphCo8TrainerHeader1:
@@ -92,6 +93,66 @@ SilphCo8TrainerHeader1:
 SilphCo8TrainerHeader2:
 	trainer EVENT_BEAT_SILPH_CO_8F_TRAINER_2, 4, SilphCo8FRocket2BattleText, SilphCo8FRocket2EndBattleText, SilphCo8FRocket2AfterBattleText
 	db -1 ; end
+
+SilphCo8FBaldingGuyText: ; marcelnote - new for EXP.ALL boost
+	text_asm
+	CheckEvent EVENT_BOOSTED_EXP_ALL
+	ld hl, .FirstVersionText
+	jr nz, .print_text
+	CheckEvent EVENT_BECAME_CHAMPION
+	jr nz, .canUpgrade
+	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
+	ld hl, .ReadySoonText
+	jr nz, .print_text
+	ld hl, .ShutMeDownText
+.print_text
+	call PrintText
+	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+.canUpgrade
+	ld hl, .UpgradeExpAllText
+	call PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	ld hl, .RefusedText
+	jr nz, .print_text
+	ld b, EXP_ALL
+	call IsItemInBag
+	ld hl, .NoExpAllText
+	jr z, .print_text
+	SetEvent EVENT_BOOSTED_EXP_ALL
+	ld hl, .LetMeSeeText
+	jr .print_text
+
+.ShutMeDownText:
+	text_far _SilphCo8FBaldingGuyShutMeDownText
+	text_end
+
+.ReadySoonText:
+	text_far _SilphCo8FBaldingGuyReadySoonText
+	text_end
+
+.UpgradeExpAllText:
+	text_far _SilphCo8FBaldingGuyUpgradeExpAllText
+	text_end
+
+.NoExpAllText:
+	text_far _SilphCo8FBaldingGuyNoExpAllText
+	text_end
+
+.LetMeSeeText:
+	text_far _SilphCo8FBaldingGuyLetMeSeeText
+	sound_get_item_1
+	text_end
+
+.RefusedText:
+	text_far _SilphCo8FBaldingGuyRefusedText
+	text_end
+
+.FirstVersionText:
+	text_far _SilphCo8FBaldingGuyFirstVersionText
+	text_end
 
 SilphCo8FSilphWorkerMText:
 	text_asm
@@ -104,7 +165,7 @@ SilphCo8FSilphWorkerMText:
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .SilphIsFinishedText:
-	text_far __SilphCo8FSilphWorkerMThanksForSavingUsText
+	text_far _SilphCo8FSilphWorkerMSilphIsFinishedText
 	text_end
 
 .ThanksForSavingUsText:
