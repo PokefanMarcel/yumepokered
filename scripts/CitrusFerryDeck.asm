@@ -35,7 +35,7 @@ CitrusFerryDeckDefaultScript:
 	ld a, SPRITE_FACING_LEFT
 	ldh [hSpriteFacingDirection], a
 	call SetSpriteFacingDirectionAndDelay
-	ld a, TEXT_CITRUSFERRYDECK_SAILOR_SORRY
+	ld a, TEXT_CITRUSFERRYDECK_SAILOR_EASY_THERE
 	ldh [hTextID], a
 	call DisplayTextID
 	ld a, PAD_DOWN
@@ -74,11 +74,11 @@ CitrusFerryDeckEntranceScript:
 
 CitrusFerryDeck_TextPointers:
 	def_text_pointers
-	dw_const CitrusFerryDeckSailor1Text,        TEXT_CITRUSFERRYDECK_SAILOR1
-	dw_const CitrusFerryDeckSailor2Text,        TEXT_CITRUSFERRYDECK_SAILOR2
-	dw_const CitrusFerryDeckVendingMachineText, TEXT_CITRUSFERRYDECK_VENDING_MACHINE
-	dw_const CitrusFerryDeckSailorSorryText,    TEXT_CITRUSFERRYDECK_SAILOR_SORRY
-	dw_const CitrusFerryDeckSpeakerWelcomeText, TEXT_CITRUSFERRYROOMS_SPEAKER_LEFT
+	dw_const CitrusFerryDeckSailor1Text,         TEXT_CITRUSFERRYDECK_SAILOR1
+	dw_const CitrusFerryDeckSailor2Text,         TEXT_CITRUSFERRYDECK_SAILOR2
+	dw_const CitrusFerryDeckVendingMachineText,  TEXT_CITRUSFERRYDECK_VENDING_MACHINE
+	dw_const CitrusFerryDeckSailorEasyThereText, TEXT_CITRUSFERRYDECK_SAILOR_EASY_THERE
+	dw_const CitrusFerryDeckSpeakerWelcomeText,  TEXT_CITRUSFERRYROOMS_SPEAKER_LEFT
 
 CitrusFerryDeckSailor1Text:
 	text_asm
@@ -110,8 +110,8 @@ CitrusFerryDeckSailor2Text:
 	text_far _CitrusFerryDeckSailor2Text
 	text_end
 
-CitrusFerryDeckSailorSorryText:
-	text_far _CitrusFerryDeckSailorSorryText
+CitrusFerryDeckSailorEasyThereText:
+	text_far _CitrusFerryDeckSailorEasyThereText
 	text_end
 
 CitrusFerryDeckSpeakerWelcomeText:

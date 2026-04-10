@@ -15,10 +15,12 @@ _CitrusFerryDeckSailorEndOfTheLineMandarinText::
 	cont "MANDARIN ISLAND!"
 	done
 
-_CitrusFerryDeckSailorSorryText::
-	text "Sorry, you cannot"
-	line "exit the ferry"
-	cont "before we arrive!"
+_CitrusFerryDeckSailorEasyThereText::
+	text "Easy there! We're"
+	line "still on our way."
+
+	para "Why don't you go"
+	line "get some rest?"
 	done
 
 _CitrusFerryDeckSpeakerWelcomeText::

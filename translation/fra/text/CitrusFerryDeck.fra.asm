@@ -17,10 +17,12 @@ _CitrusFerryDeckSailorEndOfTheLineMandarinText::
 	cont "l'ILE MANDARINE!"
 	done
 
-_CitrusFerryDeckSailorSorryText::
+_CitrusFerryDeckSailorEasyThereText::
 	text "Hé là, on saute"
 	line "pas en marche!"
-	cont "Attends l'arrivée!"
+
+	para "Va plutôt piquer"
+	line "un p'tit somme."
 	done
 
 _CitrusFerryDeckSpeakerWelcomeText::
