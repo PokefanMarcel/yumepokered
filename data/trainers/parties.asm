@@ -754,15 +754,20 @@ LtSurgeData:
 ErikaData:  ; marcelnote - adjusted
 	;db $FF, 29, VICTREEBEL, 24, TANGELA, 29, VILEPLUME, 0 ; original
 	db $FF, 31, VICTREEBEL, 29, TANGELA, 33, VILEPLUME, 0 ; new
+;	db $FF, 38, VICTREEBEL, 36, TANGELA, 38, IVYSAUR, 40, VILEPLUME, 0 ; possible dynamic team?
+;	db $FF, 43, VICTREEBEL, 41, TANGELA, 43, VENUSAUR, 47, VILEPLUME, 0 ; possible dynamic team?
 	db $FF, 56, VICTREEBEL, 58, PARASECT, 56, EXEGGUTOR, 60, TANGELA, 58, VENUSAUR, 62, VILEPLUME, 0 ; new rematch team
 
 KogaData:  ; marcelnote - adjusted
 	;db $FF, 37, KOFFING, 39, MUK, 37, KOFFING, 43, WEEZING, 0 ; original
+;	db $FF, 37, KOFFING, 35, MUK, 39, VENOMOTH, 0 ; possible dynamic team?
 	db $FF, 41, WEEZING, 37, GOLBAT, 39, MUK, 43, VENOMOTH, 0 ; new
+;	db $FF, 45, WEEZING, 41, GOLBAT, 43, MUK, 47, VENOMOTH, 0 ; possible dynamic team?
 	db $FF, 57, WEEZING, 59, GOLBAT, 59, MUK, 61, SCYTHER, 57, TENTACRUEL, 63, VENOMOTH, 0 ; new rematch team
 
 SabrinaData:  ; marcelnote - adjusted
 	;db $FF, 38, KADABRA, 37, MR_MIME, 38, VENOMOTH, 43, ALAKAZAM, 0 ; original
+;	db $FF, 38, KADABRA, 37, MR_MIME, 41, BUTTERFREE, 43, ALAKAZAM, 0  ; possible dynamic team?
 	db $FF, 41, KADABRA, 40, MR_MIME, 44, BUTTERFREE, 46, ALAKAZAM, 0 ; new
 	db $FF, 58, KADABRA, 58, WIGGLYTUFF, 60, MR_MIME, 58, GENGAR, 66, BUTTERFREE, 62, ALAKAZAM, 0 ; new rematch team ; STARMIE?
 
