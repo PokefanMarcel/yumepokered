@@ -49,7 +49,7 @@ Loosely inspired by the anime, manga, and later Pokémon generations, Yume featu
 - The rival's teams now include a more diverse roster to better reflect his storyline.
 - New trainers to fight in new and existing areas. (You may recognize some from the anime!)
 - Rematches for Gym leaders and the Elite 4 with stronger teams and movesets.
-- A new **Battle Hall** with random 3vs3 battles.
+- A new *Battle Hall* with random 3vs3 battles.
 
 **Wild encounters**
 - Wild encounters have been reworked to increase diversity and make many Pokémon available earlier in the game.
@@ -100,7 +100,7 @@ Loosely inspired by the anime, manga, and later Pokémon generations, Yume featu
 - Experience bar in battle.
 - Improved move info box in battle.
 - Pressing B during wild battles now shortcuts directly to 'Run' on the main menu.
-- Turn Exp.All on and off from the bag.
+- Exp.All reworked and can be turned on and off from the bag.
 - Faster dialogue to buy coins at the Game Corner.
 - New nurse room in the SS.Anne.
 - Pokémon base stats can be consulted directly in the Pokédex.
