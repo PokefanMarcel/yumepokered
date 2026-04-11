@@ -384,6 +384,7 @@ MACRO ResetEventRange
 ENDM
 
 
+; marcelnote - modified
 ; returns whether both events are set in Z flag
 ; This is counter-intuitive because the other event checks set the Z flag when
 ; the event is not set, but this sets the Z flag when the event is set.
@@ -391,34 +392,37 @@ ENDM
 ;\2 = event index 2
 ;\3 = try to reuse a (optional)
 MACRO CheckBothEventsSet
-	IF ((\1) / 8) == ((\2) / 8)
-		IF (_NARG < 3) || (((\1) / 8) != event_byte)
-			DEF event_byte = ((\1) / 8)
-			ld a, [wEventFlags + ((\1) / 8)]
+	DEF event_byte_1 = ((\1) / 8)
+	DEF event_byte_2 = ((\2) / 8)
+
+	IF event_byte_1 == event_byte_2
+		IF (_NARG < 3) || (event_byte_1 != event_byte)
+			ld a, [wEventFlags + event_byte_1]
 		ENDC
-		and (1 << ((\1) % 8)) | (1 << ((\2) % 8))
-		cp (1 << ((\1) % 8)) | (1 << ((\2) % 8))
+		or ~((1 << ((\1) % 8)) | (1 << ((\2) % 8))) & $ff
+		inc a ; sets Z flag if both events set
+	; Version with opposite polarity, slower
+	;	ld a, [wEventFlags + event_byte_1]
+	;	bit ((\1) % 8), a
+	;	jr z, .done\@
+	;	bit ((\2) % 8), a
+	;.done\@
 	ELSE
-		; This case doesn't happen in the original ROM.
-		IF ((\1) % 8) == ((\2) % 8)
-			push hl
-			ld a, [wEventFlags + ((\1) / 8)]
-			ld hl, wEventFlags + ((\2) / 8)
-			and [hl]
-			cpl
-			bit ((\1) % 8), a
-			pop hl
-		ELSE
-			push bc
-			ld a, [wEventFlags + ((\1) / 8)]
-			and (1 << ((\1) % 8))
-			ld b, a
-			ld a, [wEventFlags + ((\2) / 8)]
-			and (1 << ((\2) % 8))
-			or b
-			cp (1 << ((\1) % 8)) | (1 << ((\2) % 8))
-			pop bc
-		ENDC
+		ld a, [wEventFlags + event_byte_1]
+		or ~(1 << ((\1) % 8)) & $ff
+		inc a ; sets Z flag if first event set
+		jr nz, .done\@
+		ld a, [wEventFlags + event_byte_2]
+		or ~(1 << ((\2) % 8)) & $ff
+		inc a ; sets Z flag if second event set
+	.done\@
+	; Version with opposite polarity, faster
+	;	ld a, [wEventFlags + event_byte_1]
+	;	bit ((\1) % 8), a
+	;	jr z, .done\@
+	;	ld a, [wEventFlags + event_byte_2]
+	;	bit ((\2) % 8), a
+	;.done\@
 	ENDC
 ENDM
 
