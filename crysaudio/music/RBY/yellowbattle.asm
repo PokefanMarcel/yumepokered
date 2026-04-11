@@ -1,10 +1,10 @@
-Music_UntitledSong:
+Music_YellowBattle:
 	channel_count 3
-	channel 1, Music_UntitledSong_Ch1
-	channel 2, Music_UntitledSong_Ch2
-	channel 3, Music_UntitledSong_Ch3
+	channel 1, Music_YellowBattle_Ch1
+	channel 2, Music_YellowBattle_Ch2
+	channel 3, Music_YellowBattle_Ch3
 
-Music_UntitledSong_Ch1:
+Music_YellowBattle_Ch1:
 	tempo 256
 	volume 7, 7
 	note_type 12, 15, 8
@@ -361,7 +361,7 @@ Music_UntitledSong_Ch1:
 	note D#, 1
 	sound_ret
 
-Music_UntitledSong_Ch2:
+Music_YellowBattle_Ch2:
 	note_type 12, 15, 8
 .mainLoop:
 	octave 3
@@ -501,7 +501,7 @@ Music_UntitledSong_Ch2:
 	rest 8
 	sound_loop 0, .mainLoop
 
-Music_UntitledSong_Ch3:
+Music_YellowBattle_Ch3:
 	note_type 12, 1, 0
 .mainLoop:
 	octave 4
