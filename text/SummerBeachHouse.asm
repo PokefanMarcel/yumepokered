@@ -40,11 +40,6 @@ _SummerBeachHouseSurfinDudeDogsBurgersText::
 	line "on special today!"
 	done
 
-_SummerBeachHouseSurfinDudeNotReadyYetText:: ; marcelnote - temporary until minigame works
-	text "Actually, I'm not"
-	line "ready yet..."
-	done
-
 _SummerBeachHousePikachuText::
 	text "PIKACHU: Pikaa!" ; marcelnote - added "!"
 	done

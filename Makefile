@@ -20,6 +20,7 @@ rom_obj := \
 	text.o \
 	gfx/pics.o \
 	gfx/sprites.o \
+	gfx/surfing_pikachu.o \
 	gfx/tilesets.o
 
 yumepokered_obj         := $(rom_obj:.o=_red.o)
@@ -226,6 +227,7 @@ gfx/tilesets/%.2bpp: tools/gfx += --trim-whitespace
 gfx/tilesets/reds_house.2bpp: tools/gfx += --preserve=0x48
 
 gfx/trade/game_boy.2bpp: tools/gfx += --remove-duplicates
+gfx/surfing_pikachu/surfing_pikachu_1c.2bpp: tools/gfx += --trim-whitespace
 
 
 ### Catch-all graphics rules

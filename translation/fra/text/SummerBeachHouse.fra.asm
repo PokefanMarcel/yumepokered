@@ -41,11 +41,6 @@ _SummerBeachHouseSurfinDudeDogsBurgersText::
 	line "Burgers à gogo!"
 	done
 
-_SummerBeachHouseSurfinDudeNotReadyYetText:: ; marcelnote - temporary until minigame works
-	text "En fait, j'suis"
-	line "pas encore prêt."
-	done
-
 _SummerBeachHousePikachuText::
 	text "PIKACHU: Pikaa!" ; marcelnote - added "!"
 	done

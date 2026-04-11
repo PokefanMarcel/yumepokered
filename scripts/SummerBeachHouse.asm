@@ -37,13 +37,9 @@ SummerBeachHouseSurfinDudeText:
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .StartSurfingPikachuMinigame
-;	ld a, 1
-;	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-;	callfar SurfingPikachuMinigame
-;	ld hl, wd492
-;	set 1, [hl]
-	ld hl, .NotReadyYetText
-	call PrintText
+	ld a, 1
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	callfar SurfingPikachuMinigame
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .DogsBurgersText
@@ -60,10 +56,6 @@ SummerBeachHouseSurfinDudeText:
 
 .ComeAnytimeText
 	text_far _SummerBeachHouseSurfinDudeComeAnytimeText
-	text_end
-
-.NotReadyYetText ; marcelnote - temporary until minigame works
-	text_far _SummerBeachHouseSurfinDudeNotReadyYetText
 	text_end
 
 ; pokeyellow original

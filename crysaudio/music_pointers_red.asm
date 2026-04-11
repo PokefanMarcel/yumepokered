@@ -39,6 +39,7 @@ Music:
 	dba Music_JigglypuffSong
 	dba Music_BikeRiding
 	dba Music_Surfing
+	dba Music_SurfingPikachu ; marcelnote - Pikachu Surfing minigame
 	dba Music_RBYGameCorner
 	dba Music_IntroBattle
 	dba Music_Dungeon1

@@ -101,6 +101,26 @@ MACRO sprite_oam_struct
 \1Attributes:: db
 ENDM
 
+MACRO animated_object ; marcelnote - Pikachu Surfing minigame
+\1Index::          db
+\1FramesetID::     db
+\1AnimSeqID::      db
+\1TileID::         db
+\1XCoord::         db
+\1YCoord::         db
+\1XOffset::        db
+\1YOffset::        db
+\1Duration::       db
+\1DurationOffset:: db
+\1FrameIndex::     db
+\1FieldB::         db
+\1FieldC::         db
+\1FieldD::         db
+\1FieldE::         db
+\1FieldF::         db
+\1End::
+ENDM
+
 MACRO map_connection_struct
 \1ConnectedMap::            db
 \1ConnectionStripSrc::      dw

@@ -15,6 +15,7 @@ SECTION "Home", ROM0
 
 INCLUDE "home/start.asm"
 INCLUDE "home/joypad.asm"
+INCLUDE "home/lcdc.asm" ; marcelnote - Pikachu Surfing minigame
 
 INCLUDE "data/maps/map_header_pointers.asm"
 

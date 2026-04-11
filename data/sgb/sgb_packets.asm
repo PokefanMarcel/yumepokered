@@ -226,6 +226,12 @@ PalPacket_TrainerCard:    PAL_SET PAL_MEWMON, PAL_BADGE, PAL_REDMON, PAL_YELLOWM
 PalPacket_Generic:        PAL_SET PAL_MEWMON, 0, 0, 0
 PalPacket_NidorinoIntro:  PAL_SET PAL_PURPLEMON, PAL_BLACK, 0, 0
 PalPacket_GameFreakIntro: PAL_SET PAL_GAMEFREAK, PAL_REDMON, PAL_VIRIDIAN, PAL_BLUEMON
+; marcelnote - Pikachu Surfing minigame
+PalPacket_PikachusBeach:  PAL_SET PAL_MEWMON, 0, 0, 0
+PalPacket_PikachusBeachTitle: PAL_SET PAL_LOGO2, PAL_LOGO1, PAL_MEWMON, PAL_PURPLEMON
+; pokeyellow reference packet mappings:
+;PalPacket_PikachusBeach:      PAL_SET PAL_PIKACHUS_BEACH, PAL_PIKACHUS_BEACH, PAL_PIKACHUS_BEACH, PAL_PIKACHUS_BEACH
+;PalPacket_PikachusBeachTitle: PAL_SET PAL_PIKACHUS_BEACH, PAL_PIKACHUS_BEACH_TITLE, PAL_PIKACHUS_BEACH, PAL_PIKACHUS_BEACH
 
 PalTrnPacket:  PAL_TRN
 MltReq1Packet: MLT_REQ 1

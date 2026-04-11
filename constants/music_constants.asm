@@ -46,6 +46,7 @@
 	const MUSIC_JIGGLYPUFF_SONG
 	const MUSIC_BIKE_RIDING
 	const MUSIC_SURFING
+	const MUSIC_SURFING_PIKACHU ; marcelnote - Pikachu Surfing minigame
 	const MUSIC_GAME_CORNER
 	const MUSIC_INTRO_BATTLE
 	const MUSIC_DUNGEON1
@@ -218,6 +219,11 @@ DEF NUM_MUSIC_SONGS EQU const_value
 	const SFX_SLOTS_REWARD
 	const SFX_SLOTS_NEW_SPIN
 	const SFX_SHOOTING_STAR
+	; marcelnote - Pikachu Surfing minigame
+	const SFX_SURFING_JUMP
+	const SFX_SURFING_FLIP
+	const SFX_SURFING_CRASH
+	const SFX_SURFING_LAND
 
 	const SFX_POKEFLUTE_IN_BATTLE
 DEF NUM_SFX EQU const_value

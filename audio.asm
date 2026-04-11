@@ -132,6 +132,11 @@ INCLUDE "audio/sfx/slots_stop_wheel.asm"
 INCLUDE "audio/sfx/slots_reward.asm"
 INCLUDE "audio/sfx/slots_new_spin.asm"
 INCLUDE "audio/sfx/shooting_star.asm"
+; marcelnote - Pikachu Surfing minigame
+INCLUDE "audio/sfx/surfing_jump.asm"
+INCLUDE "audio/sfx/surfing_flip.asm"
+INCLUDE "audio/sfx/surfing_crash.asm"
+INCLUDE "audio/sfx/surfing_land.asm"
 
 
 SECTION "Music Routines", ROMX

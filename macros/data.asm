@@ -93,3 +93,9 @@ MACRO? dname
 	db \1
 	ds n - CHARLEN(\1), '@'
 ENDM
+
+MACRO? sine_table ; marcelnote - Pikachu Surfing minigame
+	FOR x, \1
+		dw sin(x * 0.5 / (\1))
+	ENDR
+ENDM

@@ -385,6 +385,12 @@ SECTION "GFX engine", ROMX ; marcelnote - new
 INCLUDE "engine/gfx/animated_tiles.asm"
 
 
+SECTION "Surfing Minigame", ROMX ; marcelnote - Pikachu Surfing minigame
+
+INCLUDE "engine/minigame/surfing_pikachu.asm"
+INCLUDE "engine/gfx/animated_objects.asm"
+
+
 SECTION "Pay phones", ROMX
 
 INCLUDE "engine/events/pay_phone.asm" ; marcelnote - new for pay phones

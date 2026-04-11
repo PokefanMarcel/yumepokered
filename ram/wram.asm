@@ -214,6 +214,77 @@ wSerialPartyMonsPatchList:: ds 200
 
 ; list of indexes to patch with SERIAL_NO_DATA_BYTE after transfer
 wSerialEnemyMonsPatchList:: ds 200
+
+NEXTU
+; marcelnote - Pikachu Surfing minigame, new union
+; Yellow-style animated object buffers reused by the surfing minigame.
+wAnimatedObjectsData::
+
+wAnimatedObjectStartTileOffsets:: ds 10 * 2
+
+wAnimatedObjectDataStructs::
+FOR n, 10
+wAnimatedObject{d:n}:: animated_object wAnimatedObject{d:n}
+ENDR
+
+wNumLoadedAnimatedObjects:: db
+wCurrentAnimatedObjectOAMBufferOffset::
+	ds 3
+wAnimatedObjectSpawnStateDataPointer:: dw
+wAnimatedObjectFramesDataPointer:: dw
+wAnimatedObjectJumptablePointer:: dw
+wAnimatedObjectOAMDataPointer:: dw
+
+wCurAnimatedObjectOAMAttributes:: db
+wCurrentAnimatedObjectVTileOffset:: db
+wCurrentAnimatedObjectXCoord:: db
+wCurrentAnimatedObjectYCoord:: db
+wCurrentAnimatedObjectXOffset:: db
+wCurrentAnimatedObjectYOffset:: db
+wAnimatedObjectGlobalYOffset:: db
+wAnimatedObjectGlobalXOffset:: db
+
+wAnimatedObjectsDataEnd::
+
+; Surfing minigame
+wSurfingMinigameData:: db
+wSurfingMinigameRoutineNumber:: db
+wc5d2:: db
+wSurfingMinigameWaveFunctionNumber:: dw
+wc5d5:: db
+wSurfingMinigamePikachuHP:: dw ; little-endian BCD
+wc5d8:: db
+wSurfingMinigameRadnessMeter:: db
+wSurfingMinigameRadnessScore:: dw ; little-endian BCD
+wSurfingMinigameTotalScore:: dw ; little-endian BCD
+wc5de:: db
+wc5df:: db
+wc5e0:: db
+wc5e1:: db
+wc5e2:: db
+wSurfingMinigamePikachuSpeed:: dw ; little-endian
+wc5e5:: ds 3 ; big-endian
+wSurfingMinigameWaveHeightBuffer:: dw
+wSurfingMinigamePikachuObjectHeight:: db
+wc5eb:: db
+wc5ec:: db
+wc5ed:: db
+wc5ee:: db
+wSurfingMinigameBGMapReadBuffer:: ds 1 tiles
+	ds 24
+wSurfingMinigameSCX:: db
+wSurfingMinigameSCX2:: db
+wSurfingMinigameSCXHi:: db
+wSurfingMinigameWaveHeight:: ds SCREEN_WIDTH
+wSurfingMinigameXOffset:: db
+wSurfingMinigameTrickFlags:: db
+wc630:: db
+wc631:: db
+wSurfingMinigameRoutineDelay:: db
+wSurfingMinigameIntroAnimationFinished:: db
+wc634:: db
+wc635:: db
+wSurfingMinigameDataEnd::
 ENDU
 
 
@@ -225,6 +296,13 @@ wOverworldMapEnd::
 
 NEXTU
 wTempPic:: ds PIC_SIZE tiles
+
+NEXTU
+; marcelnote - Pikachu Surfing minigame, new union
+wLYOverrides:: ds $100
+wLYOverridesEnd::
+wLYOverridesBuffer:: ds $100
+wLYOverridesBufferEnd::
 ENDU
 
 
@@ -2154,7 +2232,9 @@ wFossilItem:: db
 ; mon that will result from the item
 wFossilMon:: db
 
-	ds 2
+; marcelnote - Pikachu Surfing minigame
+wSurfingMinigameHiScore:: dw ; little-endian BCD
+;	ds 2
 
 ; trainer classes start at OPP_ID_OFFSET
 wEnemyMonOrTrainerClass:: db
