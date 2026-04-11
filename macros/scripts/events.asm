@@ -427,20 +427,64 @@ MACRO CheckBothEventsSet
 ENDM
 
 
-; marcelnote - new to check event range (WIP, need to adapt ResetEventRange)
-; returns whether all events in range are set in Z flag
-; Sets the Z flag if any event in the range is not set.
-;\1 = event index 1
-;\2 = event index 2
-;\3 = try to reuse a (optional)
-;MACRO CheckAllEventsRange
-;	DEF event_start_byte = ((\1) / 8)
-;	DEF event_end_byte = ((\2) / 8)
-;
-;	IF event_end_byte < event_start_byte
-;		FAIL "Incorrect argument order in CheckAllEventsRange."
-;	ENDC
-;ENDM
+; marcelnote - new to check event range
+; returns Z if all events in the range are set
+; returns NZ if at least one event in the range is not set
+; Counter-intuitive! This sets the Z flag when all events are set.
+;\1 = event start
+;\2 = event end
+MACRO CheckEventRange
+	DEF event_start_byte = ((\1) / 8)
+	DEF event_end_byte = ((\2) / 8)
+
+	IF event_end_byte < event_start_byte
+		FAIL "Incorrect argument order in CheckEventRange."
+	ENDC
+
+	IF event_start_byte == event_end_byte
+		ld a, [wEventFlags + event_start_byte]
+		or ~( (1 << (((\2) % 8) + 1)) - (1 << ((\1) % 8)) ) & $ff
+		inc a ; sets Z flag if all events set
+	ELSE
+		; first byte: bits start_bit..7 must be set
+		IF ((\1) % 8) != 0
+			ld a, [wEventFlags + event_start_byte]
+			or (1 << ((\1) % 8)) - 1
+			inc a ; sets Z flag if all events set
+			jr nz, .done\@ ; at least one not set -> return NZ
+		ELSE ; if start_bit = 0, then all bits must be set
+			ld a, [wEventFlags + event_start_byte]
+			inc a ; sets Z flag if all events set
+			jr nz, .done\@ ; at least one not set -> return NZ
+		ENDC
+
+		; middle bytes: must all be $ff
+		IF event_end_byte - event_start_byte > 1
+			REPT event_end_byte - event_start_byte - 1
+				ld a, [wEventFlags + event_start_byte + 1 + _N]
+				inc a ; sets Z flag if all events set
+				jr nz, .done\@ ; at least one not set -> return NZ
+			ENDR
+			FOR N, event_start_byte + 1, event_end_byte
+				ld a, [wEventFlags + N]
+				inc a
+				jr nz, .done\@
+			ENDR
+		ENDC
+
+		; last byte: bits 0..end_bit must be set
+		IF ((\2) % 8) != 7
+			ld a, [wEventFlags + event_end_byte]
+			or ~((1 << (((\2) % 8) + 1)) - 1) & $ff
+			inc a ; sets Z flag if all events set
+		ELSE ; if end_bit = 7, then all bits must be set
+			ld a, [wEventFlags + event_end_byte]
+			inc a ; sets Z flag if all events set
+		ENDC
+
+	.done\@
+	ENDC
+ENDM
 
 
 ; sets Z flag if no event is set

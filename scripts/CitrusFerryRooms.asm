@@ -19,20 +19,10 @@ CitrusFerryRoomsCheckIfArrivedScript:
 	ld a, [wTownVisitedFlag + (MANDARIN_ISLAND / 8)]
 	bit (MANDARIN_ISLAND % 8), a
 	jr nz, .skipBattleChecks ; if already travelled to Mandarin Island, skip the battle checks
-	CheckEvent EVENT_BEAT_CITRUS_FERRY_ROOMS_TRAINER_0 ; need to make CheckAllEventsRange!!
-	jr z, .notArrived
-	CheckEvent EVENT_BEAT_CITRUS_FERRY_ROOMS_TRAINER_1
-	jr z, .notArrived
-	CheckEvent EVENT_BEAT_CITRUS_FERRY_ROOMS_TRAINER_2
-	jr z, .notArrived
-	CheckEvent EVENT_BEAT_CITRUS_FERRY_OUTSIDE_TRAINER_0
-	jr z, .notArrived
-	CheckEvent EVENT_BEAT_CITRUS_FERRY_OUTSIDE_TRAINER_1
-	jr z, .notArrived
-	CheckEvent EVENT_BEAT_CITRUS_FERRY_OUTSIDE_TRAINER_2
-	jr z, .notArrived
-	CheckEvent EVENT_BEAT_CITRUS_FERRY_OUTSIDE_TRAINER_3
-	jr z, .notArrived
+	CheckEventRange EVENT_BEAT_CITRUS_FERRY_ROOMS_TRAINER_0, EVENT_BEAT_CITRUS_FERRY_ROOMS_TRAINER_2
+	jr nz, .notArrived
+	CheckEventRange EVENT_BEAT_CITRUS_FERRY_OUTSIDE_TRAINER_0, EVENT_BEAT_CITRUS_FERRY_OUTSIDE_TRAINER_3
+	jr nz, .notArrived
 .skipBattleChecks
 	SetEventRange EVENT_FERRY_ARRIVED, EVENT_BEAT_CITRUS_FERRY_OUTSIDE_TRAINER_3
 	call Delay3

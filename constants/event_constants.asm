@@ -640,7 +640,7 @@
 	const EVENT_BEAT_CITRUS_FERRY_ROOMS_TRAINER_0
 	const EVENT_BEAT_CITRUS_FERRY_ROOMS_TRAINER_1
 	const EVENT_BEAT_CITRUS_FERRY_ROOMS_TRAINER_2
-	const_skip 5 ; no events here in order to use Range functions on trainer events
+	const_skip 5 ; these are set by SetEventRange the first time the ferry arrives
 	const EVENT_BEAT_CITRUS_FERRY_OUTSIDE_TRAINER_0
 	const EVENT_BEAT_CITRUS_FERRY_OUTSIDE_TRAINER_1
 	const EVENT_BEAT_CITRUS_FERRY_OUTSIDE_TRAINER_2
