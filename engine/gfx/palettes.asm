@@ -279,7 +279,7 @@ SetPal_PikachusBeach: ; marcelnote - Pikachu Surfing minigame
 
 SetPal_PikachusBeachTitle: ; marcelnote - Pikachu Surfing minigame
 	ld hl, PalPacket_PikachusBeachTitle
-	ld de, BlkPacket_Titlescreen
+	ld de, BlkPacket_PikachusBeachTitle
 	ret
 
 SetPalFunctions:

@@ -16,13 +16,13 @@ SurfingPikachuMinigame::
 	push af
 	xor a
 	ldh [rIF], a
-	ld a, $d
+	ld a, IE_VBLANK | IE_STAT | IE_TIMER | IE_SERIAL
 	ldh [rIE], a
-	xor a
+	ld a, $8
 	ldh [rSTAT], a
 	ldh a, [hAutoBGTransferDest + 1]
 	push af
-	ld a, $98
+	ld a, HIGH(vBGMap0)
 	ldh [hAutoBGTransferDest + 1], a
 	call SurfingPikachuMinigameIntro
 	call SurfingPikachuLoop
@@ -30,11 +30,11 @@ SurfingPikachuMinigame::
 	ldh [rBGP], a
 	ldh [rOBP0], a
 	ldh [rOBP1], a
-	call SurfingMinigame_UpdatePalettes
+;	call SurfingMinigame_UpdatePalettes
 	call ClearObjectAnimationBuffers
 	call ClearSprites
 	xor a
-	ldh [hRedrawMapViewRowOffset], a
+	ldh [hLCDCPointer], a
 	ldh [hSCX], a
 	ldh [hSCY], a
 	ld a, $90
@@ -68,40 +68,34 @@ SurfingPikachuLoop:
 	bit 7, a
 	ret nz
 	call SurfingPikachu_GetJoypad_3FrameBuffer
-	call SurfingPikachu_CheckPressedSelect
-	ret nz
+	ldh a, [hJoyPressed]
+	and PAD_SELECT
+	ret nz ; if pressed Select, exit the minigame
 	call RunSurfingMinigameRoutine
 	ld a, $3c
 	ld [wCurrentAnimatedObjectOAMBufferOffset], a
 	call RunObjectAnimations
 	call SurfingMinigame_MoveClouds
-	call .DelayFrame
-	call SurfingMinigame_UpdateMusicTempo
+	call DelayFrame
+;	call SurfingMinigame_UpdateMusicTempo
 	jr .loop
 
-.DelayFrame:
-	call DelayFrame
-	ret
+;SurfingPikachu_ToggleStartFlag: ; unused
+;	ldh a, [hJoyPressed]
+;	and PAD_START
+;	ret z
+;	ld hl, wc5e2
+;	ld a, [hl]
+;	xor $1
+;	ld [hl], a
+;	ret
 
-SurfingPikachu_CheckPressedSelect:
-	xor a
-	ret
+; Crysaudio integration does not use Yellow's tempo hook here.
+;SurfingMinigame_UpdateMusicTempo:
+;	ret
 
-Func_f80b7:
-	ldh a, [hJoyPressed]
-	and PAD_START
-	ret z
-	ld hl, wc5e2
-	ld a, [hl]
-	xor $1
-	ld [hl], a
-	ret
-
-SurfingMinigame_UpdateMusicTempo:
-	ret
-
-SurfingMinigame_ResetMusicTempo:
-	ret
+;SurfingMinigame_ResetMusicTempo:
+;	ret
 
 SurfingPikachuMinigame_LoadGFXAndLayout:
 	di
@@ -177,7 +171,7 @@ SurfingPikachuMinigame_LoadGFXAndLayout:
 	ld a, $7e
 	ldh [hWY], a
 	ld a, rSCY - $ff00
-	ldh [hRedrawMapViewRowOffset], a
+	ldh [hLCDCPointer], a
 	ld a, $40
 	ld [wSurfingMinigamePikachuSpeed], a
 	xor a
@@ -190,8 +184,8 @@ SurfingPikachuMinigame_LoadGFXAndLayout:
 	ld bc, $14
 	ld a, $74
 	call FillMemory
-	call Func_f81ff
-	call Func_f8256
+	call SurfingPikachuMinigame_InitStaticSpriteLayout
+	call SurfingPikachuMinigame_DrawStaticTilemapLayout
 	ld a, $e3
 	ldh [rLCDC], a
 	call SurfingPikachuMinigame_SetBGPals
@@ -199,7 +193,7 @@ SurfingPikachuMinigame_LoadGFXAndLayout:
 	ldh [rOBP0], a
 	ld a, $e0
 	ldh [rOBP1], a
-	call SurfingMinigame_UpdatePalettes
+;	call SurfingMinigame_UpdatePalettes
 	ei
 	ret
 
@@ -209,58 +203,52 @@ SurfingPikachuMinigame_SetBGPals:
 	jr nz, .sgb
 	ld a, $d0
 	ldh [rBGP], a
-	call SurfingMinigame_UpdatePalettes
+;	call SurfingMinigame_UpdatePalettes
 	ret
 
 .sgb
 	ld a, $e4
 	ldh [rBGP], a
-	call SurfingMinigame_UpdatePalettes
+;	call SurfingMinigame_UpdatePalettes
 	ret
 
-Func_f81ff:
+SurfingPikachuMinigame_InitStaticSpriteLayout:
 	ld hl, wSpriteDataEnd
 	ld de, Unkn_f8249
-	ld b, $97
-	ld c, $80
+	lb bc, $97, $80
 	ld a, $4
-	call Func_f8233
+	call SurfingPikachuMinigame_PlaceSpriteRowFromTiles
 	ld de, Unkn_f8248
-	ld b, $96
-	ld c, $50
+	lb bc, $96, $50
 	ld a, $1
-	call Func_f8233
+	call SurfingPikachuMinigame_PlaceSpriteRowFromTiles
 	ld de, Unkn_f824d
-	ld b, $14
-	ld c, $20
+	lb bc, $14, $20
 	ld a, $5
-	call Func_f8233
+	call SurfingPikachuMinigame_PlaceSpriteRowFromTiles
 	ld de, Unkn_f8252
-	ld b, $20
-	ld c, $80
+	lb bc, $20, $80
 	ld a, $4
-	call Func_f8233
-	ret
+	jp SurfingPikachuMinigame_PlaceSpriteRowFromTiles
 
-Func_f8233:
-.asm_f8233
+SurfingPikachuMinigame_PlaceSpriteRowFromTiles:
+.loop
 	push af
-	ld [hl], b
-	inc hl
-	ld [hl], c
-	inc hl
+	ld a, b
+	ld [hli], a
+	ld a, c
+	ld [hli], a
 	ld a, [de]
-	ld [hl], a
-	inc hl
-	ld [hl], $0
-	inc hl
+	ld [hli], a
+	xor a
+	ld [hli], a
 	ld a, c
 	add $8
 	ld c, a
 	inc de
 	pop af
 	dec a
-	jr nz, .asm_f8233
+	jr nz, .loop
 	ret
 
 Unkn_f8248:
@@ -285,16 +273,16 @@ Unkn_f8252:
 	db $ee
 	db $ef
 
-Func_f8256:
+SurfingPikachuMinigame_DrawStaticTilemapLayout:
 	ld de, $9c21
 	ld hl, Unkn_f8279
 	ld c, $9
-.asm_f825e
+.copyTileRow
 	ld a, [hli]
 	ld [de], a
 	inc de
 	dec c
-	jr nz, .asm_f825e
+	jr nz, .copyTileRow
 	ld hl, $9c01
 	ld [hl], $15
 	ld hl, $9c02
@@ -329,10 +317,10 @@ RunSurfingMinigameRoutine:
 	jp hl
 
 .Jumptable:
-	dw SurfingMinigameRoutine_SpawnPikachu ; 0
+	dw SurfingMinigame_SpawnPikachu ; 0
 	dw SurfingMinigame_RunGame ; 1
-	dw Func_f8324 ; 2
-	dw Func_f835c ; 3
+	dw SurfingMinigame_WaitToShowResults ; 2
+	dw SurfingMinigame_ScrollToResultsScreen ; 3
 	dw SurfingMinigame_DrawResultsScreenAndWait ; 4
 	dw SurfingMinigame_WriteHPLeftAndWait ; 5
 	dw SurfingMinigame_WriteRadnessAndWait ; 6
@@ -343,7 +331,7 @@ RunSurfingMinigameRoutine:
 	dw SurfingMinigame_ExitOnPressA ; b
 	dw SurfingMinigame_GameOver ; c
 
-SurfingMinigameRoutine_SpawnPikachu:
+SurfingMinigame_SpawnPikachu:
 	ld a, $2
 	lb de, $48, $e0
 	call SpawnAnimatedObject
@@ -370,8 +358,7 @@ SurfingMinigame_RunGame:
 	call SurfingMinigame_ScrollAndGenerateBGMap
 	call SurfingMinigame_UpdatePikachuDistance
 	call SurfingMinigame_Deduct1HP
-	call SurfingMinigame_DrawHP
-	ret
+	jp SurfingMinigame_DrawHP
 
 .asm_f82e8
 	ld hl, wSurfingMinigameRoutineNumber
@@ -405,7 +392,7 @@ SurfingMinigame_RunGame:
 	ld [wc634], a
 	ret
 
-Func_f8324:
+SurfingMinigame_WaitToShowResults:
 	call SurfingMinigame_RunDelayTimer
 	jr c, .done_delay
 	xor a
@@ -414,7 +401,7 @@ Func_f8324:
 	call SurfingMinigame_SetPikachuHeight
 	call SurfingMinigame_ReadBGMapBuffer
 	call Func_f8c97
-	call SurfingMinigame_ResetMusicTempo
+;	call SurfingMinigame_ResetMusicTempo
 	ret
 
 .done_delay
@@ -427,13 +414,13 @@ Func_f8324:
 	ld a, $4
 	ld [wc5d2], a
 	xor a
-	ldh [hRedrawMapViewRowOffset], a
+	ldh [hLCDCPointer], a
 	ld [wSurfingMinigameSCX], a
 	ld [wSurfingMinigameSCX2], a
 	ld [wSurfingMinigameSCXHi], a
 	ret
 
-Func_f835c:
+SurfingMinigame_ScrollToResultsScreen:
 	ldh a, [hSCX]
 	and a
 	jr z, .asm_f837b
@@ -441,15 +428,11 @@ Func_f835c:
 	call SurfingMinigame_SetPikachuHeight
 	call SurfingMinigame_ReadBGMapBuffer
 	ldh a, [hSCX]
-	dec a
-	dec a
-	dec a
-	dec a
+	sub $4
 	ldh [hSCX], a
 	ld a, $e0
 	ld [wSurfingMinigameXOffset], a
-	call SurfingMinigame_GenerateBGMap
-	ret
+	jp SurfingMinigame_GenerateBGMap
 
 .asm_f837b
 	xor a
@@ -553,7 +536,7 @@ SurfingMinigame_GameOver:
 	call SurfingMinigame_SetPikachuHeight
 	call SurfingMinigame_ReadBGMapBuffer
 	call SurfingMinigame_ScrollAndGenerateBGMap
-	call SurfingMinigame_ResetMusicTempo
+;	call SurfingMinigame_ResetMusicTempo
 	ld hl, wc631
 	ld a, [hl]
 	and a
@@ -637,8 +620,7 @@ Func_f848d:
 	call Func_f871e
 	jr c, .splash
 	call Func_f8742
-	call SurfingMinigame_SpeedUpPikachu
-	ret
+	jp SurfingMinigame_SpeedUpPikachu
 
 .splash
 	call Func_f8742
@@ -657,8 +639,7 @@ Func_f848d:
 	ld [wSurfingMinigameRadnessMeter], a
 	ld [wSurfingMinigameTrickFlags], a
 	ld a, SFX_SURFING_JUMP
-	call PlaySound
-	ret
+	jp PlaySound
 
 .asm_f84d2
 	xor a
@@ -666,8 +647,7 @@ Func_f848d:
 	ld [wSurfingMinigamePikachuSpeed + 1], a
 	ld a, $4
 	ld [wc5d2], a
-	call Func_f8742
-	ret
+	jp Func_f8742
 
 SurfingMinigame_ScoreCurrentWave:
 	call SurfingMinigame_DPadAction
@@ -691,8 +671,7 @@ SurfingMinigame_ScoreCurrentWave:
 	ld a, $10
 	call SetCurrentAnimatedObjectCallbackAndResetFrameStateRegisters
 	ld a, SFX_SURFING_CRASH
-	call PlaySound
-	ret
+	jp PlaySound
 
 Func_f8516:
 	ld hl, ANIM_OBJ_FIELD_C
@@ -740,16 +719,14 @@ Func_f8545:
 	ld a, $0
 	ld [wc5d2], a
 	ld a, $4
-	call SetCurrentAnimatedObjectCallbackAndResetFrameStateRegisters
-	ret
+	jp SetCurrentAnimatedObjectCallbackAndResetFrameStateRegisters
 
 Func_f8561:
 	ld a, [wSurfingMinigamePikachuObjectHeight]
 	ld hl, ANIM_OBJ_Y_COORD
 	add hl, bc
 	ld [hl], a
-	call Func_f8742
-	ret
+	jp Func_f8742
 
 Func_f856d:
 	ld a, $f
@@ -853,8 +830,7 @@ SurfingMinigame_DPadAction:
 	add hl, bc
 	ld [hl], a
 	ld a, SFX_SURFING_FLIP
-	call PlaySound
-	ret
+	jp PlaySound
 
 SurfingMinigame_TileInteraction:
 	ld hl, ANIM_OBJ_FRAME_SET
@@ -1188,9 +1164,8 @@ Func_f87fb:
 	ld [hl], a
 	ret
 
-Func_f8807: ; unreferenced
-	call MaskCurrentAnimatedObjectStruct
-	ret
+;Func_f8807: ; unreferenced
+;	jp MaskCurrentAnimatedObjectStruct
 
 SurfingMinigameAnimatedObjectFn_FlippingPika:
 	ld hl, ANIM_OBJ_FIELD_B
@@ -1234,8 +1209,7 @@ SurfingMinigameAnimatedObjectFn_IntroAnimationPikachu:
 .done
 	ld a, $1
 	ld [wSurfingMinigameIntroAnimationFinished], a
-	call MaskCurrentAnimatedObjectStruct
-	ret
+	jp MaskCurrentAnimatedObjectStruct
 
 SurfingMinigame_MoveClouds:
 	ld a, [wc635]
@@ -1348,7 +1322,6 @@ SurfingMinigame_Deduct1HP:
 	call .BCD_Deduct
 	ret nc
 	inc hl
-	ld e, $99
 .BCD_Deduct:
 	ld a, [hl]
 	and a
@@ -1445,8 +1418,7 @@ INCBIN "gfx/surfing_pikachu/unknown_f8946.tilemap"
 	hlcoord 1, 9
 	lb de, $3d, $3e
 	ld a, $40
-	call .place_row
-	ret
+	; fallthrough
 
 .place_row:
 	ld [hl], d
@@ -1463,8 +1435,7 @@ SurfingMinigame_PrintTextHiScore:
 	ld hl, .Hi_Score
 	decoord 6, 8
 	ld bc, $9
-	call CopyData
-	ret
+	jp CopyData
 
 .Hi_Score:
 	db $20,$2e,$2f,$30,$31,$2c,$32,$23,$33 ; Hi-Score!!
@@ -1474,8 +1445,7 @@ SurfingMinigame_WriteHPLeft:
 	decoord 2, 2
 	ld bc, $7
 	call CopyData
-	call SurfingMinigame_BCDPrintHPLeft
-	ret
+	jp SurfingMinigame_BCDPrintHPLeft
 
 .HP_Left:
 	db $20,$21,$ff,$22,$23,$24,$25 ; HP Left
@@ -1527,8 +1497,7 @@ SurfingMinigame_WriteRadness:
 	decoord 2, 4
 	ld bc, $7
 	call CopyData
-	call SurfingMinigame_BCDPrintRadness
-	ret
+	jp SurfingMinigame_BCDPrintRadness
 
 .Radness:
 	db $27,$28,$29,$2a,$23,$26,$26 ; Radness
@@ -1620,8 +1589,7 @@ SurfingMinigame_WriteTotal:
 	ld bc, $5
 	call CopyData
 	call SurfingMinigame_BCDPrintRadness
-	call SurfingMinigame_BCDPrintTotalScore
-	ret
+	jp SurfingMinigame_BCDPrintTotalScore
 
 .Total:
 	db $2b,$2c,$25,$28,$2d ; Total
@@ -2286,7 +2254,7 @@ SurfingPikachuMinigameIntro:
 	ldh [hSCY], a
 	ld a, $90
 	ldh [hWY], a
-	ld b, SET_PAL_SURFING_PIKACHU_MINIGAME
+	ld b, SET_PAL_SURFING_PIKACHU_TITLE
 	call RunPaletteCommand
 	ld a, $e3
 	ldh [rLCDC], a
@@ -2300,7 +2268,7 @@ SurfingPikachuMinigameIntro:
 	ldh [rOBP0], a
 	ld a, $e0
 	ldh [rOBP1], a
-	call SurfingMinigame_UpdatePalettes
+;	call SurfingMinigame_UpdatePalettes
 	call DelayFrame
 	ld a, MUSIC_SURFING_PIKACHU
 	ld c, BANK(Music_SurfingPikachu)
@@ -2340,8 +2308,7 @@ DrawSurfingPikachuMinigameIntroBackground:
 	ld hl, Tilemap_f91bb
 	decoord 4, 9
 	ld bc, 13
-	call CopyData
-	ret
+	jp CopyData
 
 .CopyBox:
 .copy_row
@@ -2441,7 +2408,7 @@ SurfingPikachuMinigame_BlankPals:
 	ldh [rBGP], a
 	ldh [rOBP0], a
 	ldh [rOBP1], a
-	call SurfingMinigame_UpdatePalettes
+;	call SurfingMinigame_UpdatePalettes
 	ret
 
 SurfingPikachuMinigame_NormalPals:
@@ -2450,18 +2417,20 @@ SurfingPikachuMinigame_NormalPals:
 	ldh [rOBP0], a
 	ld a, $e0
 	ldh [rOBP1], a
-	call SurfingMinigame_UpdatePalettes
+;	call SurfingMinigame_UpdatePalettes
 	ret
 
-SurfingMinigame_UpdatePalettes:
-	ret
+; Surfing Pikachu in pokeyellow updates CGB palette data.
+; Yumepokered runs the minigame in a DMG/SGB-style path here, so there is no
+; additional per-frame palette work to do.
+;SurfingMinigame_UpdatePalettes:
+;	ret
 
 SurfingPikachu_ClearTileMap:
 	ld hl, wTileMap
 	ld bc, SCREEN_AREA
 	xor a
-	call FillMemory
-	ret
+	jp FillMemory
 
 Func_f9284:
 	xor a

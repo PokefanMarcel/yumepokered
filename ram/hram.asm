@@ -385,6 +385,8 @@ hJoyInput:: db
 
 hDisableJoypadPolling:: db
 
-	ds 5
+hLCDCPointer:: db ; marcelnote - Pikachu Surfing minigame
+
+	ds 4 ; -1
 
 ENDSECTION

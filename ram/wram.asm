@@ -261,7 +261,7 @@ wc5de:: db
 wc5df:: db
 wc5e0:: db
 wc5e1:: db
-wc5e2:: db
+wc5e2:: db ; only used in unused function
 wSurfingMinigamePikachuSpeed:: dw ; little-endian
 wc5e5:: ds 3 ; big-endian
 wSurfingMinigameWaveHeightBuffer:: dw
@@ -299,6 +299,9 @@ wTempPic:: ds PIC_SIZE tiles
 
 NEXTU
 ; marcelnote - Pikachu Surfing minigame, new union
+	; Page-align scanline override buffers so the Yellow LCDC handler can index
+	; them via HIGH(wLYOverrides) and rLY.
+	ds $18
 wLYOverrides:: ds $100
 wLYOverridesEnd::
 wLYOverridesBuffer:: ds $100

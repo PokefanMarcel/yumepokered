@@ -29,6 +29,7 @@ ReloadTilesetTilePatterns::
 	ret
 
 ReloadMapAfterSurfingMinigame:: ; marcelnote - Pikachu Surfing minigame
+	; Adapted from pokeyellow's lighter return path to avoid a heavier double reload.
 	ldh a, [hLoadedROMBank]
 	push af
 	call DisableLCD

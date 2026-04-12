@@ -64,4 +64,8 @@ DEF SET_PAL_DEFAULT EQU $ff
 	const PAL_CAVE      ; $23
 	const PAL_VOLCANO   ; $24 ; marcelnote - new
 	const PAL_GAMEFREAK ; $25
+	; marcelnote - Pikachu Surfing minigame
+	const PAL_PIKACHUS_BEACH       ; $26
+	const PAL_PIKACHU_PORTRAIT     ; $27
+	const PAL_PIKACHUS_BEACH_TITLE ; $28
 DEF NUM_SGB_PALS EQU const_value
