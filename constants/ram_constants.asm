@@ -144,8 +144,8 @@ DEF NUM_BADGES EQU const_value
 
 ; wElite4Flags
 	const_def
-	const BIT_UNUSED_BEAT_ELITE_4 ; 0
-	const BIT_STARTED_ELITE_4     ; 1
+	const BIT_UNUSED_ELITE4_0    ; 0
+	const BIT_UNUSED_ELITE4_1    ; 1 ; marcelnote - was BIT_STARTED_ELITE_4
 
 ; wMovementFlags
 	const_def

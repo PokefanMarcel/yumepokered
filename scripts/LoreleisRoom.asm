@@ -14,9 +14,8 @@ LoreleiShowOrHideExitBlock:
 	bit BIT_CUR_MAP_LOADED_1, [hl]
 	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
-	ld hl, wElite4Flags
-	set BIT_STARTED_ELITE_4, [hl]
-	;CheckEvent EVENT_BEAT_LORELEIS_ROOM_TRAINER_0 ; marcelnote - Lorelei rematch
+	SetEvent EVENT_STARTED_ELITE_4
+;	CheckEvent EVENT_BEAT_LORELEIS_ROOM_TRAINER_0 ; marcelnote - Lorelei rematch
 	CheckEitherEventSet EVENT_BEAT_LORELEIS_ROOM_TRAINER_0, EVENT_BEAT_LORELEIS_ROOM_TRAINER_1
 	jr z, .blockExitToNextRoom
 	ld a, $5

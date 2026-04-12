@@ -802,7 +802,7 @@
 ; Indigo Plateau events
 	const_next $8E0
 DEF INDIGO_PLATEAU_EVENTS_START EQU const_value
-	const_skip
+	const EVENT_STARTED_ELITE_4              ; marcelnote - removed BIT_STARTED_ELITE_4
 	const EVENT_BEAT_LORELEIS_ROOM_TRAINER_0
 	const EVENT_BEAT_LORELEIS_ROOM_TRAINER_1 ; marcelnote - Lorelei rematch
 	const_skip 3                             ; marcelnote - adjusted down
