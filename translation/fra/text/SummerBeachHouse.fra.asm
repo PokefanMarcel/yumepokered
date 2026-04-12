@@ -32,6 +32,41 @@ _SummerBeachHouseSurfinDudeComeAnytimeText::
 	line "quand tu veux!"
 	done
 
+_SummerBeachHouseSurfinDudeImpressedText::
+	text "Wah! Ton PIKACHU"
+	line "a le SURF dans"
+	cont "la peau!"
+
+	para "Tiens, prends ça."
+	line "C'est mérité!"
+	prompt
+
+_SummerBeachHouseReceivedSurfVoucherText::
+	text "<PLAYER> reçoit"
+	line "un @"
+	text_ram wStringBuffer
+	text "!@"
+	text_end
+
+_SummerBeachHouseExplainSurfVoucherText::
+	text_start
+
+	para "L'ILE MANDARINE,"
+	line "tu connais?"
+
+	para "Leur boutique vend"
+	line "les meilleures"
+	cont "PLANCHES DE SURF!"
+
+	para "Dis-leur que tu"
+	line "viens de ma part."
+	done
+
+_SummerBeachHouseBagFullText::
+	text "Tu dois faire"
+	line "de la place!"
+	done
+
 _SummerBeachHouseSurfinDudeWannaGoSurfText::
 	text "Tu veux surfer?"
 	done

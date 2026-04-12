@@ -22,7 +22,7 @@ ItemNames::
 	li "POTION"
 	li "BAIT"
 	li "ROCK"
-	li "ITEM17"
+	li "BON CADEAU" ; marcelnote - new for Surfboard
 	li "ITEM18"
 	li "ITEM19"
 	li "ITEM1A"

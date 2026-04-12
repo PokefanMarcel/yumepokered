@@ -15,7 +15,7 @@ _BikeShopClerkDoYouLikeItText::
 _BikeShopCantAffordText::
 	text "Oh! Tu n'as pas"
 	line "assez d'argent!"
-	prompt
+	done
 
 _BikeShopClerkOhThatsAVoucherText::
 	text "Oh! Mais c'est..."

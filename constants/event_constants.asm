@@ -481,7 +481,7 @@
 	const EVENT_BEAT_ROUTE_19_TRAINER_11 ; marcelnote - new trainer, Blackbelt1
 	const EVENT_BEAT_ROUTE_19_TRAINER_12 ; marcelnote - new trainer, Blackbelt2
 	const EVENT_BEAT_ROUTE_19_TRAINER_13 ; marcelnote - new trainer, Fisher1
-	; marcelnote - 1 spot left
+	const EVENT_GOT_SURF_VOUCHER         ; marcelnote - new for Surfboard
 
 ; Route 20 events
 	const_next $500
@@ -852,6 +852,7 @@ DEF INDIGO_PLATEAU_EVENTS_END EQU const_value - 1
 	const EVENT_JABARA_RUNNING_TESTS
 	const EVENT_JABARA_RETURNED_FLUTE
 	const EVENT_CALLED_MOM_MANDARIN
+	const EVENT_GOT_SURFBOARD ; marcelnote - new for Surfboard
 
 ; Silph Factory events ; marcelnote - new
 	const_next $930

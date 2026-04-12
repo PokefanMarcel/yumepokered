@@ -39,7 +39,7 @@ ItemUsePtrTable:
 	dw ItemUseMedicine   ; POTION
 	dw ItemUseBait       ; SAFARI_BAIT
 	dw ItemUseRock       ; SAFARI_ROCK
-	dw UnusableItem      ; ITEM_17
+	dw UnusableItem      ; SURF_VOUCHER ; marcelnote - new for Surfboard
 	dw UnusableItem      ; ITEM_18
 	dw UnusableItem      ; ITEM_19
 	dw UnusableItem      ; ITEM_1A

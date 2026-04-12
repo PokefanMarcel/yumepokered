@@ -29,7 +29,7 @@
 	const POTION        ; $14
 	const SAFARI_BAIT   ; $15 ; marcelnote - cleaned from BoulderBadge
 	const SAFARI_ROCK   ; $16 ; marcelnote - cleaned from CascadeBadge
-	const ITEM_17       ; $17 ; unused ; marcelnote - cleaned from ThunderBadge
+	const SURF_VOUCHER  ; $17 ; marcelnote - new for Surfboard, cleaned from ThunderBadge
 	const ITEM_18       ; $18 ; unused ; marcelnote - cleaned from RainbowBadge
 	const ITEM_19       ; $19 ; unused ; marcelnote - cleaned from SoulBadge
 	const ITEM_1A       ; $1A ; unused ; marcelnote - cleaned from MarshBadge

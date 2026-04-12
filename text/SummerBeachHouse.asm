@@ -31,6 +31,41 @@ _SummerBeachHouseSurfinDudeComeAnytimeText::
 	line "my friend!"
 	done
 
+_SummerBeachHouseSurfinDudeImpressedText::
+	text "Whoa! Your PIKACHU"
+	line "really has a feel"
+	cont "for the waves!"
+
+	para "Here, take this."
+	line "You've earned it."
+	prompt
+
+_SummerBeachHouseReceivedSurfVoucherText::
+	text "<PLAYER> received"
+	line "a @"
+	text_ram wStringBuffer
+	text "!@"
+	text_end
+
+_SummerBeachHouseExplainSurfVoucherText::
+	text_start
+
+	para "Ever been to"
+	line "MANDARIN ISLAND?"
+
+	para "Their shop has the"
+	line "best SURFBOARDs!"
+
+	para "Tell them I sent"
+	line "you, they'll set"
+	cont "you up nicely."
+	done
+
+_SummerBeachHouseBagFullText::
+	text "You need to make"
+	line "room for this!"
+	done
+
 _SummerBeachHouseSurfinDudeWannaGoSurfText::
 	text "Wanna go SURF?"
 	done

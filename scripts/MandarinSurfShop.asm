@@ -10,6 +10,29 @@ MandarinSurfShop_TextPointers:
 
 MandarinSurfShopClerkText:
 	text_asm
+	CheckEvent EVENT_GOT_SURFBOARD
+	ld hl, MandarinSurfShopClerkHowDoYouLikeYourSurfboardText
+	jr nz, .print_text
+; don't have surfboard
+	ld b, SURF_VOUCHER
+	call IsItemInBag
+	jr z, .dontHaveVoucher
+	ld hl, MandarinSurfShopClerkOhThatsAVoucherText
+	call PrintText
+	lb bc, SURFBOARD, 1
+	call GiveItem
+	ld hl, MandarinSurfShopBagFullText
+	jr nc, .print_text
+	ld a, SURF_VOUCHER
+	ldh [hItemToRemoveID], a
+	callfar RemoveItemByID
+	SetEvent EVENT_GOT_SURFBOARD
+	ld hl, MandarinSurfShopExchangedVoucherText
+.print_text
+	call PrintText
+	rst TextScriptEnd
+
+.dontHaveVoucher
 	ld hl, MandarinSurfShopClerkWelcomeText
 	call PrintText
 	xor a
@@ -41,20 +64,14 @@ MandarinSurfShopClerkText:
 	ld hl, wStatusFlags5 ; marcelnote - moved code from below
 	res BIT_NO_TEXT_DELAY, [hl]
 	call HandleMenuInput
+	ld hl, MandarinSurfShopComeAgainText
 	bit B_PAD_B, a
-	jr nz, .cancel
-	;ld hl, wStatusFlags5 ; marcelnote - moved above to fix instant text bug
-	;res BIT_NO_TEXT_DELAY, [hl]
+	jr nz, .print_text
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .cancel
+	jr nz, .print_text
 	ld hl, MandarinSurfShopCantAffordText
-	call PrintText
-.cancel
-	ld hl, MandarinSurfShopComeAgainText
-	call PrintText
-.Done
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	jr .print_text
 
 MandarinSurfShopMenuText:
 	db   "SURFBOARD"
@@ -88,7 +105,7 @@ MandarinSurfShopComeAgainText:
 	text_far _MandarinSurfShopComeAgainText
 	text_end
 
-MandarinSurfShopClerkHowDoYouLikeYourBicycleText:
+MandarinSurfShopClerkHowDoYouLikeYourSurfboardText:
 	text_far _MandarinSurfShopClerkHowDoYouLikeYourSurfboardText
 	text_end
 

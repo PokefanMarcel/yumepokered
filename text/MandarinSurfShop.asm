@@ -1,5 +1,4 @@
 ; marcelnote - new location
-; text remains to be made around event to obtain SURFBOARD
 _MandarinSurfShopClerkWelcomeText::
 	text "Aloha! Welcome"
 	line "to WAVE CRAZE."
@@ -16,20 +15,20 @@ _MandarinSurfShopClerkDoYouWantItText::
 _MandarinSurfShopCantAffordText::
 	text "Sorry! You can't"
 	line "afford it!"
-	prompt
+	done
 
 _MandarinSurfShopClerkOhThatsAVoucherText::
 	text "Oh, that's..."
 
-	para "A BIKE VOUCHER!"
+	para "A SURF VOUCHER!"
 
-	para "OK! Here you go!"
+	para "Rad! Take this!"
 	prompt
 
 _MandarinSurfShopExchangedVoucherText::
 	text "<PLAYER> exchanged"
-	line "the BIKE VOUCHER"
-	cont "for a BICYCLE.@"
+	line "the SURF VOUCHER"
+	cont "for a SURFBOARD.@"
 	text_end
 
 _MandarinSurfShopComeAgainText::
@@ -38,12 +37,12 @@ _MandarinSurfShopComeAgainText::
 	done
 
 _MandarinSurfShopClerkHowDoYouLikeYourSurfboardText::
-	text "How do you like"
-	line "your SURFBOARD?"
+	text "Still making waves"
+	line "out there?"
 
-	para "You can take it"
-	line "on CYCLING ROAD"
-	cont "and in caves!"
+	para "Say aloha to the"
+	line "SURFING MASTER"
+	cont "for me!"
 	done
 
 _MandarinSurfShopBagFullText::

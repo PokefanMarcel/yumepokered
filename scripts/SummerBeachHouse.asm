@@ -40,7 +40,26 @@ SummerBeachHouseSurfinDudeText:
 	ld a, 1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	callfar SurfingPikachuMinigame
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	; The minigame reload path restores the map for the overworld, but not the
+	; active NPC dialogue window.
+	callfar DisplayTextIDInit
+	xor a
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	CheckEvent EVENT_GOT_SURF_VOUCHER
+	ld hl, .ComeAnytimeText
+	jr nz, .print_text
+	ld a, [wSurfingMinigameHiScore + 1]
+	cp $10 ; is high score < 3000?
+	jr c, .print_text
+	ld hl, .ImpressedText
+	call PrintText
+	lb bc, SURF_VOUCHER, 1
+	call GiveItem
+	ld hl, .BagFullText
+	jr nc, .print_text
+	SetEvent EVENT_GOT_SURF_VOUCHER
+	ld hl, .ReceivedVoucherText
+	jr .print_text
 
 .DogsBurgersText
 	text_far _SummerBeachHouseSurfinDudeDogsBurgersText
@@ -56,6 +75,20 @@ SummerBeachHouseSurfinDudeText:
 
 .ComeAnytimeText
 	text_far _SummerBeachHouseSurfinDudeComeAnytimeText
+	text_end
+
+.ImpressedText
+	text_far _SummerBeachHouseSurfinDudeImpressedText
+	text_end
+
+.ReceivedVoucherText
+	text_far _SummerBeachHouseReceivedSurfVoucherText
+	sound_get_key_item
+	text_far _SummerBeachHouseExplainSurfVoucherText
+	text_end
+
+.BagFullText
+	text_far _SummerBeachHouseBagFullText
 	text_end
 
 ; pokeyellow original

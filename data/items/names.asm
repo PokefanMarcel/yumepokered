@@ -22,7 +22,7 @@ ItemNames::
 	li "POTION"
 	li "BAIT"    ; marcelnote - cleaned badges
 	li "ROCK"    ; marcelnote - cleaned badges
-	li "ITEM17"  ; marcelnote - cleaned badges
+	li "SURF VOUCHER" ; marcelnote - new for Surfboard
 	li "ITEM18"  ; marcelnote - cleaned badges
 	li "ITEM19"  ; marcelnote - cleaned badges
 	li "ITEM1A"  ; marcelnote - cleaned badges

@@ -22,7 +22,7 @@ ItemPrices::
 	bcd3 300   ; POTION
 	bcd3 0     ; BAIT
 	bcd3 0     ; ROCK
-	bcd3 0     ; ITEM_17
+	bcd3 0     ; SURF_VOUCHER ; marcelnote - new for Surfboard
 	bcd3 0     ; ITEM_18
 	bcd3 0     ; ITEM_19
 	bcd3 0     ; ITEM_1A

@@ -1,5 +1,4 @@
 ; marcelnote - new location
-; text remains to be made around event to obtain SURFBOARD
 _MandarinSurfShopClerkWelcomeText::
 	text "Bienvenue au"
 	line "SURF A GOGO."
@@ -17,22 +16,21 @@ _MandarinSurfShopClerkDoYouWantItText::
 _MandarinSurfShopCantAffordText::
 	text "Oh! Tu n'as pas"
 	line "assez d'argent!"
-	prompt
+	done
 
 _MandarinSurfShopClerkOhThatsAVoucherText::
 	text "Oh! Mais c'est..."
 
-	para "Un BON pour"
-	line "une BICYCLETTE!"
+	para "Un BON CADEAU!"
 
-	para "OK! Voilà ta"
-	line "BICYCLETTE!"
+	para "Mortel!"
+	line "Voilà pour toi!"
 	prompt
 
 _MandarinSurfShopExchangedVoucherText::
 	text "<PLAYER> échange"
-	line "le BON contre"
-	cont "une BICYCLETTE.@"
+	line "le BON contre une"
+	cont "PLANCHE SURF.@"
 	text_end
 
 _MandarinSurfShopComeAgainText::
@@ -41,13 +39,12 @@ _MandarinSurfShopComeAgainText::
 	done
 
 _MandarinSurfShopClerkHowDoYouLikeYourSurfboardText::
-	text "Comment se porte"
-	line "ta BICYCLETTE?"
+	text "Tu fais toujours"
+	line "des vagues?"
 
-	para "Tu peux aller sur"
-	line "la PISTE CYCLABLE"
-	cont "et dans les"
-	cont "GROTTES!"
+	para "Glisse un aloha"
+	line "au MAITRE SURFEUR"
+	cont "de ma part!"
 	done
 
 _MandarinSurfShopBagFullText::
