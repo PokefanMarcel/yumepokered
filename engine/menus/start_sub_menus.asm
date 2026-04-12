@@ -145,8 +145,8 @@ StartMenu_Pokemon::
 	bit BIT_FLY_WARP, a
 	jp nz, .goBackToMap
 	call LoadFontTilePatterns
-	ld hl, wStatusFlags4
-	set BIT_UNKNOWN_4_1, [hl]
+;	ld hl, wStatusFlags4
+;	set BIT_UNKNOWN_4_1, [hl] ; marcelnote - never read
 	jp StartMenu_Pokemon
 .cut
 	bit BIT_CASCADEBADGE, a
@@ -217,7 +217,7 @@ StartMenu_Pokemon::
 	set BIT_FLY_WARP, [hl]
 	set BIT_ESCAPE_WARP, [hl]
 	ld hl, wStatusFlags4
-	set BIT_UNKNOWN_4_1, [hl]
+;	set BIT_UNKNOWN_4_1, [hl] ; marcelnote - never read
 	res BIT_NO_BATTLES, [hl]
 	ld c, 60
 	call DelayFrames

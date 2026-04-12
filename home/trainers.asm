@@ -176,8 +176,8 @@ StartTrainerBattle::
 	ld hl, wStatusFlags3
 	set BIT_TALKED_TO_TRAINER, [hl]
 	set BIT_PRINT_END_BATTLE_TEXT, [hl]
-	ld hl, wStatusFlags4
-	set BIT_UNKNOWN_4_1, [hl]
+;	ld hl, wStatusFlags4
+;	set BIT_UNKNOWN_4_1, [hl] ; marcelnote - never read
 	ld hl, wCurMapScript
 	inc [hl] ; increment map script index (next script function is usually EndTrainerBattle)
 	ret
@@ -191,7 +191,7 @@ EndTrainerBattle::
 	ld hl, wMiscFlags
 	res BIT_SEEN_BY_TRAINER, [hl] ; player is no longer engaged by any trainer
 	ld a, [wIsInBattle]
-	cp $ff
+	inc a ; cp $ff
 	jp z, ResetButtonPressedAndMapScript
 	ld a, $2
 	call ReadTrainerHeaderInfo
@@ -211,10 +211,10 @@ EndTrainerBattle::
 	ld [wToggleableObjectIndex], a ; load corresponding toggleable object index and remove it
 	predef HideObject
 .skipRemoveSprite
-	ld hl, wStatusFlags5
-	bit BIT_UNKNOWN_5_4, [hl]
-	res BIT_UNKNOWN_5_4, [hl]
-	ret nz
+;	ld hl, wStatusFlags5
+;	bit BIT_UNKNOWN_5_4, [hl] ; marcelnote - never set
+;	res BIT_UNKNOWN_5_4, [hl]
+;	ret nz
 
 ResetButtonPressedAndMapScript::
 	xor a

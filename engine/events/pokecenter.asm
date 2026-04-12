@@ -4,8 +4,8 @@ DisplayPokemonCenterDialogue_::
 	call PrintText
 	ld hl, wStatusFlags4
 	bit BIT_USED_POKECENTER, [hl]
-	set BIT_UNKNOWN_4_1, [hl] ; marcelnote - never checked?
-	jr nz, .skipPerfectHealthText ; marcelnote - used to skip ShallWeHealYourPokemonText
+;	set BIT_UNKNOWN_4_1, [hl] ; marcelnote - never read
+	jr nz, .skipPerfectHealthText ; marcelnote - used to skip PerfectHealthText
 	ld hl, PokemonCenterPerfectHealthText
 	call PrintText
 .skipPerfectHealthText
