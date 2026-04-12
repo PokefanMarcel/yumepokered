@@ -330,7 +330,6 @@ OaksLabRivalChoosesStarterScript:
 	ld a, TEXT_OAKSLAB_RIVAL_RECEIVED_MON
 	ldh [hTextID], a
 	call DisplayTextID
-	SetEvent EVENT_GOT_STARTER
 	xor a
 	ld [wJoyIgnore], a
 
@@ -1046,8 +1045,7 @@ OaksLabMonChoiceMenu:
 	ld a, [wCurPartySpecies]
 	ld [wPokedexNum], a
 	call AddPartyMon
-	ld hl, wStatusFlags4
-	set BIT_GOT_STARTER, [hl]
+	SetEvent EVENT_GOT_STARTER
 	ld a, PAD_SELECT | PAD_START | PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	ld a, SCRIPT_OAKSLAB_CHOSE_STARTER_SCRIPT
@@ -1095,8 +1093,7 @@ OaksLabOakText: ; marcelnote - this was changed to make Balls more accessible
 	jr nz, .got_pokedex
 	CheckEvent EVENT_BATTLED_RIVAL_IN_OAKS_LAB
 	jr nz, .check_got_parcel
-	ld a, [wStatusFlags4]
-	bit BIT_GOT_STARTER, a
+	CheckEvent EVENT_GOT_STARTER
 	jr nz, .already_got_pokemon
 	ld hl, .WhichPokemonDoYouWantText
 	call PrintText

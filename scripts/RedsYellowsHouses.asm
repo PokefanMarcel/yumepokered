@@ -38,8 +38,7 @@ RedsYellowsHouses_TextPointers:
 
 RedsHouse1FMomText:
 	text_asm
-	ld a, [wStatusFlags4]
-	bit BIT_GOT_STARTER, a ; received a Pokémon from Oak?
+	CheckEvent EVENT_GOT_STARTER ; received a Pokemon from Oak?
 	jr nz, .heal
 	ld hl, .WakeUpText
 	call PrintText
