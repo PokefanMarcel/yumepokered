@@ -104,7 +104,7 @@ DEF NUM_BADGES EQU const_value
 	const BIT_IS_GIRL                 ; 0 ; marcelnote - for player gender, was BIT_GOT_LAPRAS
 	const BIT_UNKNOWN_4_1             ; 1
 	const BIT_USED_POKECENTER         ; 2
-	const BIT_UNUSED_4_3              ; 3 ; marcelnote - for player gender, was BIT_GOT_STARTER
+	const BIT_UNUSED_4_3              ; 3 ; marcelnote - was BIT_GOT_STARTER
 	const BIT_NO_BATTLES              ; 4
 	const BIT_BATTLE_OVER_OR_BLACKOUT ; 5
 	const BIT_LINK_CONNECTED          ; 6
