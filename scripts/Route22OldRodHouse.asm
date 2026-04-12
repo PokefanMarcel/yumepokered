@@ -8,8 +8,7 @@ Route22OldRodHouse_TextPointers:
 
 Route22OldRodHouseFishingGuruText: ; marcelnote - optimized
 	text_asm
-	ld a, [wStatusFlags1]
-	bit BIT_GOT_OLD_ROD, a
+	CheckEvent EVENT_GOT_OLD_ROD
 	ld hl, .HowAreTheFishBitingText
 	jr nz, .print_text
 	ld hl, .DoYouLikeToFishText
@@ -23,8 +22,7 @@ Route22OldRodHouseFishingGuruText: ; marcelnote - optimized
 	call GiveItem
 	ld hl, .NoRoomText
 	jr nc, .print_text
-	ld hl, wStatusFlags1
-	set BIT_GOT_OLD_ROD, [hl]
+	SetEvent EVENT_GOT_OLD_ROD
 	ld hl, .TakeThisText
 .print_text
 	call PrintText

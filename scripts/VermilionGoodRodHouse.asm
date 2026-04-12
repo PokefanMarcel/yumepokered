@@ -8,8 +8,7 @@ VermilionGoodRodHouse_TextPointers:
 
 VermilionGoodRodHouseFishingGuruText: ; marcelnote - optimized
 	text_asm
-	ld a, [wStatusFlags1]
-	bit BIT_GOT_GOOD_ROD, a ; got good rod?
+	CheckEvent EVENT_GOT_GOOD_ROD
 	ld hl, .HowAreTheFishBitingText
 	jr nz, .print_text
 	ld hl, .DoYouLikeToFishText
@@ -23,8 +22,7 @@ VermilionGoodRodHouseFishingGuruText: ; marcelnote - optimized
 	call GiveItem
 	ld hl, .NoRoomText
 	jr nc, .print_text
-	ld hl, wStatusFlags1
-	set BIT_GOT_GOOD_ROD, [hl] ; got good rod
+	SetEvent EVENT_GOT_GOOD_ROD
 	ld hl, .TakeThisText
 .print_text
 	call PrintText

@@ -111,7 +111,7 @@
 
 ; Vermilion City events
 	const_next $150
-	const_skip
+	const EVENT_GOT_GOOD_ROD ; marcelnote - replaced const_skip
 	const EVENT_GOT_BIKE_VOUCHER
 	const EVENT_CALLED_MOM_VERMILION
 	const_skip 3 ; marcelnote - adjusted for pay phone
@@ -163,7 +163,8 @@
 	const_next $238
 	const EVENT_GOT_HM04
 	const EVENT_GAVE_GOLD_TEETH
-	const_skip 12 ; marcelnote - adjusted for Koga rematch
+	const EVENT_GOT_SUPER_ROD
+	const_skip 11 ; marcelnote - adjusted for Koga rematch and Super Rod event
 	const EVENT_SAFARI_GAME_OVER
 	const EVENT_IN_SAFARI_ZONE
 	const EVENT_CALLED_MOM_FUCHSIA
@@ -517,7 +518,8 @@
 	const_next $520
 	const EVENT_1ST_ROUTE22_RIVAL_BATTLE
 	const EVENT_2ND_ROUTE22_RIVAL_BATTLE
-	const_skip 3
+	const EVENT_GOT_OLD_ROD
+	const_skip 2 ; marcelnote - -1 for EVENT_GOT_OLD_ROD
 	const EVENT_BEAT_ROUTE22_RIVAL_1ST_BATTLE
 	const EVENT_BEAT_ROUTE22_RIVAL_2ND_BATTLE
 	const EVENT_ROUTE22_RIVAL_WANTS_BATTLE

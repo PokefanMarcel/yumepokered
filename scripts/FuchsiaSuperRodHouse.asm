@@ -8,8 +8,7 @@ FuchsiaSuperRodHouse_TextPointers:
 
 FuchsiaSuperRodHouseFishingGuruText: ; marcelnote - optimized
 	text_asm
-	ld a, [wStatusFlags1]
-	bit BIT_GOT_SUPER_ROD, a ; received super rod?
+	CheckEvent EVENT_GOT_SUPER_ROD
 	ld hl, .TryFishingText
 	jr nz, .print_text
 	ld hl, .DoYouLikeToFishText
@@ -23,8 +22,7 @@ FuchsiaSuperRodHouseFishingGuruText: ; marcelnote - optimized
 	call GiveItem
 	ld hl, .NoRoomText
 	jr nc, .print_text
-	ld hl, wStatusFlags1
-	set BIT_GOT_SUPER_ROD, [hl] ; received super rod
+	SetEvent EVENT_GOT_SUPER_ROD
 	ld hl, .TakeThisText
 .print_text
 	call PrintText
