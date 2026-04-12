@@ -49,7 +49,7 @@ SummerBeachHouseSurfinDudeText:
 	ld hl, .ComeAnytimeText
 	jr nz, .print_text
 	ld a, [wSurfingMinigameHiScore + 1]
-	cp $10 ; is high score < 3000?
+	cp $40 ; is high score < 4000?
 	jr c, .print_text
 	ld hl, .ImpressedText
 	call PrintText

@@ -77,7 +77,7 @@ SurfingPikachuLoop:
 	call RunObjectAnimations
 	call SurfingMinigame_MoveClouds
 	call DelayFrame
-;	call SurfingMinigame_UpdateMusicTempo
+	call SurfingMinigame_UpdateMusicTempo
 	jr .loop
 
 ;SurfingPikachu_ToggleStartFlag: ; unused
@@ -90,12 +90,76 @@ SurfingPikachuLoop:
 ;	ld [hl], a
 ;	ret
 
-; Crysaudio integration does not use Yellow's tempo hook here.
-;SurfingMinigame_UpdateMusicTempo:
-;	ret
+; Adapted from pokeyellow for Crysaudio: update the active music channels'
+; tempo only when they are about to start their next note.
+SurfingMinigame_UpdateMusicTempo:
+	ld a, [wc634]
+	and a
+	ret z
 
-;SurfingMinigame_ResetMusicTempo:
-;	ret
+	; Check that channels 1-3 are on their last frame of note duration.
+	ld a, [wChannel1NoteDuration]
+	cp 1
+	ret nz
+	ld a, [wChannel2NoteDuration]
+	cp 1
+	ret nz
+	ld a, [wChannel3NoteDuration]
+	cp 1
+	ret nz
+
+	; de = ([wSurfingMinigamePikachuSpeed] & 0x3ff) * 2
+	ld a, [wSurfingMinigamePikachuSpeed]
+	ld e, a
+	ld a, [wSurfingMinigamePikachuSpeed + 1]
+	and $3
+	ld d, a
+	sla e
+	rl d
+	ld e, d
+	ld d, 0
+	ld hl, .Tempos
+	add hl, de
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	jr SurfingMinigame_ApplyMusicTempo
+
+.Tempos:
+	dw 117
+	dw 109
+	dw 101
+	dw  93
+	dw  85
+
+SurfingMinigame_ResetMusicTempo:
+	ld a, [wChannel1NoteDuration]
+	cp 1
+	ret nz
+	ld a, [wChannel2NoteDuration]
+	cp 1
+	ret nz
+	ld a, [wChannel3NoteDuration]
+	cp 1
+	ret nz
+	ld de, 117
+	; fallthrough
+
+SurfingMinigame_ApplyMusicTempo:
+	ld a, e
+	ld [wChannel1Tempo], a
+	ld [wChannel2Tempo], a
+	ld [wChannel3Tempo], a
+	ld a, d
+	ld [wChannel1Tempo + 1], a
+	ld [wChannel2Tempo + 1], a
+	ld [wChannel3Tempo + 1], a
+	xor a
+	ld [wChannel1Field16], a
+	ld [wChannel2Field16], a
+	ld [wChannel3Field16], a
+	ret
 
 SurfingPikachuMinigame_LoadGFXAndLayout:
 	di
@@ -401,8 +465,7 @@ SurfingMinigame_WaitToShowResults:
 	call SurfingMinigame_SetPikachuHeight
 	call SurfingMinigame_ReadBGMapBuffer
 	call Func_f8c97
-;	call SurfingMinigame_ResetMusicTempo
-	ret
+	jp SurfingMinigame_ResetMusicTempo
 
 .done_delay
 	ld hl, wSurfingMinigameRoutineNumber
@@ -536,7 +599,7 @@ SurfingMinigame_GameOver:
 	call SurfingMinigame_SetPikachuHeight
 	call SurfingMinigame_ReadBGMapBuffer
 	call SurfingMinigame_ScrollAndGenerateBGMap
-;	call SurfingMinigame_ResetMusicTempo
+	call SurfingMinigame_ResetMusicTempo
 	ld hl, wc631
 	ld a, [hl]
 	and a
