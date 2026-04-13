@@ -137,40 +137,40 @@ _SummerBeachHousePosterSurfingTip2Text::
 	cont "d'la balle!"
 	done
 
-_SummerBeachHousePrinterText1::
+_SummerBeachHouseSomeMachineText::
 	text "On dirait une"
-	line "machine...@"
-	text_end
-
-_SummerBeachHousePrinterText2::
-	text "IMPRIMANTE de la"
-	line "PAILLOTE D'ETE!@"
-	text_end
-
-_SummerBeachHousePrinterText3::
-	text "Le meilleur score"
-	line "est affiché."
-
-	para "On l'imprime?"
+	line "machine..."
 	done
 
-_SummerBeachHousePrinterText4::
+;_SummerBeachHousePrinterText2::
+;	text "IMPRIMANTE de la"
+;	line "PAILLOTE D'ETE!@"
+;	text_end
+
+;_SummerBeachHousePrinterText3::
+;	text "Le meilleur score"
+;	line "est affiché."
+
+;	para "On l'imprime?"
+;	done
+
+_SummerBeachHousePrinterCheckItOutText::
 	text "IMPRIMANTE de la"
 	line "PAILLOTE D'ETE!"
 
 	para "Le meilleur score"
 	line "est affiché."
 
-	para "On l'imprime?"
-	done
-
-_SummerBeachHousePrinterText5::
-	text "Impression: OK!@"
+	para "On regarde?@"
 	text_end
 
-_SummerBeachHousePrinterText6::
-	text "ERREUR IMPRESSION!@"
-	text_end
+;_SummerBeachHousePrinterText5::
+;	text "Impression: OK!@"
+;	text_end
+
+;_SummerBeachHousePrinterText6::
+;	text "ERREUR IMPRESSION!@"
+;	text_end
 
 _SummerBeachHousePokemonSurfboardText::
 	text "Une PLANCHE DE"

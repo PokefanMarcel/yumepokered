@@ -136,40 +136,40 @@ _SummerBeachHousePosterSurfingTip2Text::
 	cont "super cool!"
 	done
 
-_SummerBeachHousePrinterText1::
+_SummerBeachHouseSomeMachineText::
 	text "It's some sort of"
-	line "a machine...@"
-	text_end
-
-_SummerBeachHousePrinterText2::
-	text "SUMMER BEACH HOUSE"
-	line "PRINTER, it says.@"
-	text_end
-
-_SummerBeachHousePrinterText3::
-	text "The Hi-Score is"
-	line "shown."
-
-	para "PRINT it out?"
+	line "a machine..."
 	done
 
-_SummerBeachHousePrinterText4::
-	text "SUMMER BEACH HOUSE"
+;_SummerBeachHousePrinterText2::
+;	text "SUMMER BEACH HOUSE"
+;	line "PRINTER, it says.@"
+;	text_end
+
+;_SummerBeachHousePrinterText3::
+;	text "The Hi-Score is"
+;	line "shown."
+
+;	para "Check it out?@"
+;	text_end
+
+_SummerBeachHousePrinterCheckItOutText::
+	text "BEACH HOUSE"
 	line "PRINTER, it says."
 
 	para "The Hi-Score is"
 	line "shown."
 
-	para "PRINT it out?"
-	done
-
-_SummerBeachHousePrinterText5::
-	text "PRINT completed.@"
+	para "Check it out?@"
 	text_end
 
-_SummerBeachHousePrinterText6::
-	text "PRINT error!@"
-	text_end
+;_SummerBeachHousePrinterText5::
+;	text "Done checking!@"
+;	text_end
+
+;_SummerBeachHousePrinterText6::
+;	text "Couldn't show it!@"
+;	text_end
 
 _SummerBeachHousePokemonSurfboardText::
 	text "It's a PIKACHU-"

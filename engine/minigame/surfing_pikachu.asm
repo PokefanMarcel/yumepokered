@@ -2348,6 +2348,183 @@ SurfingPikachuMinigameIntro:
 	call DelayFrame
 	jr .loop
 
+PrepareSurfingMinigameHighScoreScreen::
+	call GBPalWhiteOutWithDelay3
+	call ClearScreen
+	ld de, SurfingPikachu2Graphics
+	ld hl, vChars2
+	lb bc, BANK(SurfingPikachu2Graphics), (SurfingPikachu2GraphicsEnd - SurfingPikachu2Graphics) / $10
+	call CopyVideoData
+	hlcoord 0, 0
+	call .PlaceRowAlternatingTiles
+	hlcoord 0, 17
+	call .PlaceRowAlternatingTiles
+	hlcoord 0, 0
+	call .PlaceColumnAlternatingTiles
+	hlcoord 19, 0
+	call .PlaceColumnAlternatingTiles
+	ld a, $4
+	hlcoord 0, 0
+	ld [hl], a
+	hlcoord 0, 17
+	ld [hl], a
+	hlcoord 19, 0
+	ld [hl], a
+	hlcoord 19, 17
+	ld [hl], a
+	ld de, .Tilemap1
+	hlcoord 10, 8
+	lb bc, 3, 8
+	call .CopyBox
+	ld de, .Tilemap2
+	hlcoord 2, 11
+	lb bc, 6, 16
+	call .CopyBox
+	ld de, .PikachusBeachString
+	hlcoord 3, 2
+	call PlaceString
+	ld de, .HiScoreString
+	hlcoord 9, 4
+	call PlaceString
+	ld de, .PointsString
+	hlcoord 12, 6
+	call PlaceString
+	ld de, wPlayerName
+	ld hl, wPlayerName
+	ld bc, 0
+.findEndOfName
+	ld a, [hli]
+	inc c
+	cp '@'
+	jr nz, .findEndOfName
+	ld a, 8
+	sub c
+	jr nc, .gotNameLength
+	xor a
+.gotNameLength
+	ld c, a
+	hlcoord 2, 4
+	add hl, bc
+	call PlaceString
+	call .CopyHighScore
+	ld b, SET_PAL_SURFING_PIKACHU_HISCORE
+	call RunPaletteCommand
+	ld a, $1
+	ldh [hAutoBGTransferEnabled], a
+	call Delay3
+	call GBPalNormal
+	ret
+
+	.PlaceRowAlternatingTiles
+	ld c, SCREEN_WIDTH / 2
+.rowLoop
+	ld [hl], $0
+	inc hl
+	ld [hl], $1
+	inc hl
+	dec c
+	jr nz, .rowLoop
+	ret
+
+.PlaceColumnAlternatingTiles
+	ld c, SCREEN_HEIGHT / 2
+	ld de, SCREEN_WIDTH
+.columnLoop
+	ld [hl], $2
+	add hl, de
+	ld [hl], $3
+	add hl, de
+	dec c
+	jr nz, .columnLoop
+	ret
+
+.CopyBox
+.copyBoxY
+	push bc
+	push hl
+.copyBoxX
+	ld a, [de]
+	inc de
+	ld [hli], a
+	dec c
+	jr nz, .copyBoxX
+	pop hl
+	ld bc, SCREEN_WIDTH
+	add hl, bc
+	pop bc
+	dec b
+	jr nz, .copyBoxY
+	ret
+
+.CopyHighScore
+	ld de, wSurfingMinigameHiScore + 1
+	hlcoord 7, 6
+	ld a, [de]
+	call .BCDConvertScore
+	ld a, [de]
+.BCDConvertScore
+	ld c, a
+	swap a
+	and $f
+	add -10
+	ld [hli], a
+	ld a, c
+	and $f
+	add -10
+	ld [hli], a
+	dec de
+	ret
+
+.Tilemap1:
+INCBIN "gfx/surfing_pikachu/high_score_1.tilemap"
+
+.Tilemap2:
+INCBIN "gfx/surfing_pikachu/high_score_2.tilemap"
+
+.PikachusBeachString:
+	db "Pikachu's Beach@"
+	.HiScoreString:
+		db "'s Hi-Score@"
+	.PointsString:
+		db "Points@"
+
+DisplaySurfingMinigameHighScoreScreen::
+	ld hl, wStatusFlags5
+	set BIT_NO_TEXT_DELAY, [hl]
+	call PrepareSurfingMinigameHighScoreScreen
+	ld a, MUSIC_GB_PRINTER
+	call PlayMusic
+.waitRelease
+	call Joypad
+	ldh a, [hJoyHeld]
+	and PAD_A | PAD_B
+	jr nz, .waitRelease
+.waitPress
+	call Joypad
+	ldh a, [hJoyPressed]
+	and PAD_A | PAD_B
+	jr z, .waitPress
+.waitReleaseAfterPress
+	call Joypad
+	ldh a, [hJoyHeld]
+	and PAD_A | PAD_B
+	jr nz, .waitReleaseAfterPress
+	ld hl, wStatusFlags5
+	res BIT_NO_TEXT_DELAY, [hl]
+	call GBPalWhiteOutWithDelay3
+	call PlayDefaultMusic
+	call RunDefaultPaletteCommand
+	call ReloadMapSpriteTilePatterns
+	call ReloadTilesetTilePatterns
+	xor a
+	ldh [hJoyLast], a
+	ldh [hJoyReleased], a
+	ldh [hJoyPressed], a
+	ldh [hJoyHeld], a
+	ldh [hJoy5], a
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	ret
+
 DrawSurfingPikachuMinigameIntroBackground:
 	ld hl, wTileMap
 	ld bc, SCREEN_AREA

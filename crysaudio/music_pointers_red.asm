@@ -51,4 +51,5 @@ Music:
 	dba Music_MeetEvilTrainer
 	dba Music_MeetFemaleTrainer
 	dba Music_MeetMaleTrainer
+	dba Music_Printer ; marcelnote - Pikachu Surfing minigame
 	assert_table_length NUM_MUSIC_SONGS

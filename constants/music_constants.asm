@@ -58,6 +58,7 @@
 	const MUSIC_MEET_EVIL_TRAINER
 	const MUSIC_MEET_FEMALE_TRAINER
 	const MUSIC_MEET_MALE_TRAINER
+	const MUSIC_GB_PRINTER ; marcelnote - Pikachu Surfing minigame
 DEF NUM_MUSIC_SONGS EQU const_value
 
 	const_def

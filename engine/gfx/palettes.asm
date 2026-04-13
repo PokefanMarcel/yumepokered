@@ -282,6 +282,11 @@ SetPal_PikachusBeachTitle: ; marcelnote - Pikachu Surfing minigame
 	ld de, BlkPacket_PikachusBeachTitle
 	ret
 
+SetPal_SurfingPikachuHiscore: ; marcelnote - Pikachu Surfing minigame
+	ld hl, PalPacket_SurfingPikachuHiscore
+	ld de, BlkPacket_WholeScreen
+	ret
+
 SetPalFunctions:
 ; entries correspond to SET_PAL_* constants
 	dw SetPal_BattleBlack
@@ -301,6 +306,7 @@ SetPalFunctions:
 	; marcelnote - Pikachu Surfing minigame
 	dw SetPal_PikachusBeachTitle
 	dw SetPal_PikachusBeach
+	dw SetPal_SurfingPikachuHiscore
 
 ; The length of the blk data of each badge on the Trainer Card.
 ; The Rainbow Badge has 3 entries because of its many colors.
