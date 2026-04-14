@@ -35,7 +35,7 @@ CeladonMansion_TextPointers:
 
 CeladonMansion_PlayCryScript:
 	call PlayCry
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 CeladonMansion1FMeowthText:
 	text_far _CeladonMansion1FMeowthText
@@ -88,16 +88,14 @@ CeladonMansion3FGameDesignerText:
 	call CountSetBits
 	ld a, [wNumSetBits]
 	cp NUM_POKEMON - 1 ; discount Mew
-	jr nc, .completed_dex
-	ld hl, .Text
-	jr .done
-.completed_dex
 	ld hl, .CompletedDexText
-.done
+	jr nc, .print_text
+	ld hl, .GameDesignerText
+.print_text
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
-.Text:
+.GameDesignerText:
 	text_far _CeladonMansion3FGameDesignerText
 	text_end
 
@@ -108,7 +106,7 @@ CeladonMansion3FGameDesignerText:
 	callfar DisplayDiploma
 	ld a, TRUE
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 CeladonMansion3FGameProgramPCText:
 	text_far _CeladonMansion3FGameProgramPCText
