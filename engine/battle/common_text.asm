@@ -26,8 +26,7 @@ PrintBeginningBattleText:
 	push hl
 	callfar DrawAllPokeballs
 	pop hl
-	call PrintText
-	jr .done
+	jp PrintText
 .pokemonTower
 	ld b, SILPH_SCOPE
 	call IsItemInBag
@@ -46,8 +45,7 @@ PrintBeginningBattleText:
 	ld hl, EnemyAppearedText
 	call PrintText
 	ld hl, GhostCantBeIDdText
-	call PrintText
-	jr .done
+	jp PrintText
 .isMarowak
 	ld a, b
 	and a
@@ -69,8 +67,6 @@ PrintBeginningBattleText:
 	ld a, SFX_SILPH_SCOPE
 	call PlaySound
 	jp WaitForSoundToFinish
-.done
-	ret
 
 WildMonAppearedText:
 	text_far _WildMonAppearedText
