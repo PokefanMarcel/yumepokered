@@ -64,7 +64,7 @@ ChooseRivalName:
 	call GetDefaultName
 	ld de, wRivalName
 	call OakSpeechSlidePicLeft
-	jr .done
+	jr .gotName
 .customName
 	ld hl, wRivalName
 	ld a, NAME_RIVAL_SCREEN
@@ -78,7 +78,7 @@ ChooseRivalName:
 	ld de, Rival1Pic
 	ld b, BANK(Rival1Pic)
 	call IntroDisplayPicCenteredOrUpperRight
-.done
+.gotName
 	ld hl, HisNameIsText
 	jp PrintText
 
@@ -107,6 +107,7 @@ OakSpeechSlidePicRight:
 	hlcoord 5, 4
 	lb de, 6, 6 * SCREEN_WIDTH + 5
 	xor a
+	; fallthrough
 
 OakSpeechSlidePicCommon:
 	push hl
@@ -184,8 +185,7 @@ OakSpeechSlidePicCommon:
 DisplayIntroNameTextBox:
 	push de
 	hlcoord 0, 0
-	ld b, $a
-	ld c, $9
+	lb bc, $a, $9
 	call TextBoxBorder
 	hlcoord 3, 0
 	ld de, .namestring
