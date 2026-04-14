@@ -3464,21 +3464,19 @@ GetOutText:
 	text_far _GetOutText
 	text_end
 
-IsGhostBattle: ; marcelnote - sets z flag if Ghost battle
+IsGhostBattle: ; marcelnote - optimized, sets z flag if Ghost battle
 	ld a, [wIsInBattle]
 	dec a
 	ret nz
 	ld a, [wCurMap]
 	cp POKEMON_TOWER_1F
-	jr c, .next
+	ret c ; carry flag set implies nz, so not ghost battle
 	cp POKEMON_TOWER_7F + 1
 	jr nc, .next
 	ld b, SILPH_SCOPE
-	call IsItemInBag
-	ret ; was ret z but no need
+	jp IsItemInBag
 .next
-	ld a, 1
-	and a ; resets z flag so not ghost battle
+	or 1 ; clears z flag so not ghost battle
 	ret
 
 ; checks for various status conditions affecting the player mon
