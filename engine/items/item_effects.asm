@@ -1918,7 +1918,7 @@ RodResponse:
 	jr nz, .next
 	; if yes, store level and species data
 	ld a, 1
-	ld [wMoveMissed], a
+	ld [wHookedMon], a
 	ld a, b ; level
 	ld [wCurEnemyLevel], a
 	ld a, c ; species

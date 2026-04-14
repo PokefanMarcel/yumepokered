@@ -1399,6 +1399,7 @@ wTrainerNo:: db
 ; $ff = failed OHKO
 wCriticalHitOrOHKO:: db
 
+wHookedMon::
 wMoveMissed:: db
 
 wBattleStatusData::

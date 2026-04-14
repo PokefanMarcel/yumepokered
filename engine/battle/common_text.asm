@@ -11,7 +11,7 @@ PrintBeginningBattleText:
 	ld a, [wEnemyMonSpecies2]
 	call PlayCry
 	ld hl, WildMonAppearedText
-	ld a, [wMoveMissed]
+	ld a, [wHookedMon]
 	and a
 	jr z, .notFishing
 	ld hl, HookedMonAttackedText
