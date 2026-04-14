@@ -1909,7 +1909,7 @@ ItemUseSuperRod:
 	call FishingInit
 	jp c, ItemUseNotTime
 	call ReadSuperRodData
-	;ld a, e
+;	ld a, e
 RodResponse:
 	ld a, e ; marcelnote - moved after jr
 	ld [wRodResponse], a
@@ -1917,7 +1917,7 @@ RodResponse:
 	dec a ; is there a bite?
 	jr nz, .next
 	; if yes, store level and species data
-	ld a, 1
+	inc a ; a = 1
 	ld [wHookedMon], a
 	ld a, b ; level
 	ld [wCurEnemyLevel], a
