@@ -82,12 +82,12 @@ PrepareOAMData::
 	ld d, HIGH(wShadowOAM)
 
 .tileLoop
-	ldh a, [hSpriteScreenY]   ; temp for sprite Y position
+	ldh a, [hSpriteScreenY]  ; temp for sprite Y position
 	add $10                  ; Y=16 is top of screen (Y=0 is invisible)
 	add [hl]                 ; add Y offset from table
 	ld [de], a               ; write new sprite OAM Y position
 	inc hl
-	ldh a, [hSpriteScreenX]   ; temp for sprite X position
+	ldh a, [hSpriteScreenX]  ; temp for sprite X position
 	add $8                   ; X=8 is left of screen (X=0 is invisible)
 	add [hl]                 ; add X offset from table
 	inc e
