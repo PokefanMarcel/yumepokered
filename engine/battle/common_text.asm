@@ -1,32 +1,34 @@
-PrintBeginningBattleText:
+PrintBeginningBattleText: ; marcelnote - optimized and removed sound bug in Ghost Marowak case
 	ld a, [wIsInBattle]
 	dec a
 	jr nz, .trainerBattle
 	ld a, [wCurMap]
 	cp POKEMON_TOWER_3F
-	jr c, .notPokemonTower
+	jr c, .wildBattle
 	cp POKEMON_TOWER_7F + 1
 	jr c, .pokemonTower
-.notPokemonTower
+.wildBattle
 	ld a, [wEnemyMonSpecies2]
 	call PlayCry
 	ld hl, WildMonAppearedText
 	ld a, [wHookedMon]
 	and a
-	jr z, .notFishing
+	jr z, .drawPokeballs
 	ld hl, HookedMonAttackedText
-.notFishing
-	jr .wildBattle
+	jr .drawPokeballs
 .trainerBattle
-	call .playSFX
+	ld a, SFX_SILPH_SCOPE
+	call PlaySound
+	call WaitForSoundToFinish
 	ld c, 20
 	call DelayFrames
 	ld hl, TrainerWantsToFightText
-.wildBattle
+.drawPokeballs
 	push hl
 	callfar DrawAllPokeballs
 	pop hl
 	jp PrintText
+
 .pokemonTower
 	ld b, SILPH_SCOPE
 	call IsItemInBag
@@ -40,7 +42,7 @@ PrintBeginningBattleText:
 	and a
 	jr z, .noSilphScope
 	callfar LoadEnemyMonData
-	jr .notPokemonTower
+	jr .wildBattle
 .noSilphScope
 	ld hl, EnemyAppearedText
 	call PrintText
@@ -57,16 +59,7 @@ PrintBeginningBattleText:
 	callfar LoadEnemyMonData
 	callfar MarowakAnim
 	ld hl, WildMonAppearedText
-	call PrintText
-
-.playSFX
-;	xor a
-;	ld [wFrequencyModifier], a
-;	ld a, $80
-;	ld [wTempoModifier], a
-	ld a, SFX_SILPH_SCOPE
-	call PlaySound
-	jp WaitForSoundToFinish
+	jp PrintText
 
 WildMonAppearedText:
 	text_far _WildMonAppearedText
