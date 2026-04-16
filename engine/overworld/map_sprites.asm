@@ -33,9 +33,7 @@ InitMapSprites::
 LoadMapSpriteTilePatterns:
 	ld a, [wNumSprites]
 	and a ; are there any sprites?
-	jr nz, .spritesExist
-	ret
-.spritesExist
+	ret z
 	ld c, a ; c = [wNumSprites]
 	ld b, NUM_SPRITESTATEDATA_STRUCTS
 	ld hl, wSpritePlayerStateData2PictureID
