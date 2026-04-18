@@ -41,7 +41,7 @@ PrintBeginningBattleText: ; marcelnote - optimized and removed sound bug in Ghos
 	ld a, b
 	and a
 	jr z, .noSilphScope
-	callfar LoadEnemyMonData
+;	callfar LoadEnemyMonData ; marcelnote - removed
 	jr .wildBattle
 .noSilphScope
 	ld hl, EnemyAppearedText
