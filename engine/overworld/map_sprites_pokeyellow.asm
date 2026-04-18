@@ -17,8 +17,7 @@ InitMapSprites::
 ; if the map is an inside map (i.e. mapID >= FIRST_INDOOR_MAP)
 	call LoadSpriteSetFromMapHeader
 	call LoadMapSpriteTilePatterns
-	call Func_14150
-	ret
+	jp Func_14150
 
 ; Loads sprite set for outside maps (cities and routes) and sets VRAM slots.
 ; sets carry if the map is a city or route, unsets carry if not
@@ -138,19 +137,13 @@ CheckForFourTileSprite:
 	scf
 	ret
 
-LoadMapSpriteTilePatterns:
-	ld a, 0
+LoadMapSpriteTilePatterns: ; marcelnote - Engezer optim
+	xor a
 .loop
 	ldh [hVRAMSlot], a
 	cp 9
-	jr nc, .fourTileSprite
+	call c, LoadWalkingTilePattern
 	call LoadStillTilePattern
-	call LoadWalkingTilePattern
-	jr .continue
-
-.fourTileSprite
-	call LoadStillTilePattern
-.continue
 	ldh a, [hVRAMSlot]
 	inc a
 	cp 11
@@ -162,9 +155,7 @@ ReloadWalkingTilePatterns:
 .loop
 	ldh [hVRAMSlot], a
 	cp 9
-	jr nc, .fourTileSprite
-	call LoadWalkingTilePattern
-.fourTileSprite
+	call c, LoadWalkingTilePattern ; marcelnote - small optim
 	ldh a, [hVRAMSlot]
 	inc a
 	cp 11
@@ -173,13 +164,12 @@ ReloadWalkingTilePatterns:
 
 LoadStillTilePattern:
 	ld a, [wFontLoaded]
-	bit 0, a ; reloading upper half of tile patterns after displaying text?
-	ret nz ; if so, skip loading data into the lower half
+	bit BIT_FONT_LOADED, a ; reloading sprites after displaying text?
+	ret nz ; if so, skip loading still tile patterns
 	call ReadSpriteSheetData
 	ret nc
 	call GetSpriteVRAMAddress
-	call CopyVideoDataAlternate ; new yellow function
-	ret
+	jp CopyVideoDataAlternate
 
 LoadWalkingTilePattern:
 	call ReadSpriteSheetData
@@ -190,8 +180,7 @@ LoadWalkingTilePattern:
 	ld e, l
 	call GetSpriteVRAMAddress
 	set 3, h ; add $80 tiles to hl
-	call CopyVideoDataAlternate
-	ret
+	jp CopyVideoDataAlternate
 
 GetSpriteVRAMAddress:
 	push bc
