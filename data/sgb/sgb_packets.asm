@@ -214,10 +214,10 @@ BlkPacket_GameFreakIntro:
 	db $03, 12,11, 14,13, $03
 	db $00
 
-BlkPacket_PikachusBeachTitle:
-	ATTR_BLK 1
-	ATTR_BLK_DATA %111, 1,1,0, 04,00, 15,05
-	ds 8, 0
+;BlkPacket_PikachusBeachTitle:
+;	ATTR_BLK 1
+;	ATTR_BLK_DATA %111, 1,1,0, 04,00, 15,05
+;	ds 8, 0
 
 
 PalPacket_Empty:          PAL_SET 0, 0, 0, 0
@@ -233,7 +233,7 @@ PalPacket_NidorinoIntro:  PAL_SET PAL_PURPLEMON, PAL_BLACK, 0, 0
 PalPacket_GameFreakIntro: PAL_SET PAL_GAMEFREAK, PAL_REDMON, PAL_VIRIDIAN, PAL_BLUEMON
 ; marcelnote - Pikachu Surfing minigame
 PalPacket_PikachusBeach:      PAL_SET PAL_PIKACHUS_BEACH, PAL_PIKACHUS_BEACH, PAL_PIKACHUS_BEACH, PAL_PIKACHUS_BEACH
-PalPacket_PikachusBeachTitle: PAL_SET PAL_PIKACHUS_BEACH, PAL_PIKACHUS_BEACH_TITLE, PAL_PIKACHUS_BEACH, PAL_PIKACHUS_BEACH
+;PalPacket_PikachusBeachTitle: PAL_SET PAL_PIKACHUS_BEACH, PAL_PIKACHUS_BEACH_TITLE, PAL_PIKACHUS_BEACH, PAL_PIKACHUS_BEACH
 PalPacket_SurfingPikachuHiscore: PAL_SET PAL_SURFING_HISCORE, 0, 0, 0
 
 PalTrnPacket:  PAL_TRN

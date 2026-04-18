@@ -61,8 +61,8 @@ SurfingPikachuMinigame::
 SurfingPikachuLoop:
 	call SurfingPikachuMinigame_LoadGFXAndLayout
 	call DelayFrame
-	ld b, SET_PAL_SURFING_PIKACHU_MINIGAME
-	call RunPaletteCommand
+;	ld b, SET_PAL_SURFING_PIKACHU_MINIGAME
+;	call RunPaletteCommand
 .loop
 	ld a, [wSurfingMinigameRoutineNumber]
 	bit 7, a
@@ -1407,6 +1407,7 @@ SurfingMinigame_DrawHP:
 	call .PlaceBCDNumber
 	ld hl, wShadowOAMSprite02TileID
 	ld a, [de]
+	; fallthrough
 .PlaceBCDNumber:
 	ld c, a
 	swap a
@@ -2317,7 +2318,7 @@ SurfingPikachuMinigameIntro:
 	ldh [hSCY], a
 	ld a, $90
 	ldh [hWY], a
-	ld b, SET_PAL_SURFING_PIKACHU_TITLE
+	ld b, SET_PAL_SURFING_PIKACHU_MINIGAME ; was SET_PAL_SURFING_PIKACHU_TITLE
 	call RunPaletteCommand
 	ld a, $e3
 	ldh [rLCDC], a

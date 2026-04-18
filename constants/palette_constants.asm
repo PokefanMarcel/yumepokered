@@ -16,7 +16,7 @@
 	const SET_PAL_GAME_FREAK_INTRO     ; $0C
 	const SET_PAL_TRAINER_CARD         ; $0D
 	; marcelnote - Pikachu Surfing minigame
-	const SET_PAL_SURFING_PIKACHU_TITLE    ; $0E
+;	const SET_PAL_SURFING_PIKACHU_TITLE    ; $0E
 	const SET_PAL_SURFING_PIKACHU_MINIGAME ; $0F
 	const SET_PAL_SURFING_PIKACHU_HISCORE  ; $10
 

@@ -277,10 +277,10 @@ SetPal_PikachusBeach: ; marcelnote - Pikachu Surfing minigame
 	ld de, BlkPacket_WholeScreen
 	ret
 
-SetPal_PikachusBeachTitle: ; marcelnote - Pikachu Surfing minigame
-	ld hl, PalPacket_PikachusBeachTitle
-	ld de, BlkPacket_PikachusBeachTitle
-	ret
+;SetPal_PikachusBeachTitle: ; marcelnote - Pikachu Surfing minigame
+;	ld hl, PalPacket_PikachusBeachTitle
+;	ld de, BlkPacket_PikachusBeachTitle
+;	ret
 
 SetPal_SurfingPikachuHiscore: ; marcelnote - Pikachu Surfing minigame
 	ld hl, PalPacket_SurfingPikachuHiscore
@@ -304,7 +304,7 @@ SetPalFunctions:
 	dw SetPal_GameFreakIntro
 	dw SetPal_TrainerCard
 	; marcelnote - Pikachu Surfing minigame
-	dw SetPal_PikachusBeachTitle
+;	dw SetPal_PikachusBeachTitle
 	dw SetPal_PikachusBeach
 	dw SetPal_SurfingPikachuHiscore
 
