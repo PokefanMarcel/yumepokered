@@ -144,7 +144,7 @@ CopyVideoDataDouble::
 	ld c, a ; c = c - 9
 	inc c   ; c = c - 8
 	ld a, 8
-	ldh [hVBlankCopySize], a
+	ldh [hVBlankCopyDoubleSize], a
 	call DelayFrame
 	jr .loop
 
