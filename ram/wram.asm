@@ -1979,8 +1979,8 @@ wSpriteSet:: ds SPRITE_SET_LENGTH
 ; sprite set ID for the current map
 wSpriteSetID:: db
 
-; saved copy of SPRITESTATEDATA1_IMAGEINDEX (used for sprite facing/anim)
-wSavedSpriteImageIndex:: db
+; marcelnote - was wSavedSpriteImageIndex, saved copy of SPRITESTATEDATA1_IMAGEINDEX (used for sprite facing/anim)
+wSavedSpriteOffset:: db
 
 wObjectDataPointerTemp:: dw
 

@@ -1,4 +1,4 @@
-PrepareOAMData::
+PrepareOAMData:: ; marcelnote - optimized
 ; Determine OAM data for currently visible
 ; sprites and write it to wShadowOAM.
 
@@ -17,9 +17,7 @@ PrepareOAMData::
 
 .spriteLoop
 	ldh [hSpriteOffset2], a
-
 	ld d, HIGH(wSpriteStateData1)
-	;ldh a, [hSpriteOffset2] ; marcelnote - value already in a
 	ld e, a
 	ld a, [de] ; [x#SPRITESTATEDATA1_PICTUREID]
 	and a
@@ -28,54 +26,81 @@ PrepareOAMData::
 	inc e
 	inc e
 	ld a, [de] ; [x#SPRITESTATEDATA1_IMAGEINDEX]
-	ld [wSavedSpriteImageIndex], a
+	ld b, a ; b = sprite image index
+
+; get sprite X and Y ; also needed for off-screen sprites? if not could move it below
+	inc e
+	inc e
+	ld a, [de] ; [x#SPRITESTATEDATA1_YPIXELS]
+	ldh [hSpriteScreenY], a
+	inc e
+	inc e
+	ld a, [de] ; [x#SPRITESTATEDATA1_XPIXELS]
+	ldh [hSpriteScreenX], a
+	inc e
+	inc e
+	inc e
+	inc e
+	ldh a, [hSpriteScreenY]
+	add 4
+	and $f0
+	ld [de], a ; [x#SPRITESTATEDATA1_YADJUSTED]
+	inc e
+	ldh a, [hSpriteScreenX]
+	and $f0
+	ld [de], a ; [x#SPRITESTATEDATA1_XADJUSTED]
+
+	ld a, b ; a = sprite image index
 	cp $ff ; off-screen (don't draw)
-	jr nz, .visible
+	jr z, .nextSprite
 
-	call GetSpriteScreenXY
-	jr .nextSprite
-
-.visible
-	cp $a0 ; is the sprite unchanging like an item ball or boulder?
-	jr c, .usefacing
-
-; unchanging
+; compute and store sprite offset
+	cp $b0
+	jr c, .notSecondStillSprite
+	ld a, $a * 12 + 4 ; second still sprite has specific offset
+	jr .storeOffset
+.notSecondStillSprite
+	swap a
 	and $f
-	add $10 ; skip to the second half of the table which doesn't account for facing direction
-	jr .next
+	; a *= 12
+	add a
+	add a
+	ld c, a
+	add a
+	add c
+.storeOffset
+	ld [wSavedSpriteOffset], a
 
-.usefacing
+; get pointers
+	ld a, b ; a = sprite image index
+	cp $a0  ; is it a still sprite?
+	ld c, 0 ; for still sprite, force facing down frame 0
+	ld b, c
+	jr nc, .stillSprite
 	and $f
-
-.next
-	ld l, a
-
-; get sprite priority
-	push de
-	inc d
-	ld a, e
-	add $5
-	ld e, a
-	ld a, [de] ; [x#SPRITESTATEDATA2_GRASSPRIORITY]
-	and $80
-	ldh [hSpritePriority], a ; temp store sprite priority
-	pop de
-
+	add a
+	add a ; animation table is 4 bytes wide
+	ld c, a
+.stillSprite
 ; read the entry from the table
-	ld h, 0
-	ld bc, SpriteFacingAndAnimationTable
-	add hl, hl
-	add hl, hl
+	ld hl, SpriteFacingAndAnimationTable
 	add hl, bc
 	ld a, [hli]
 	ld c, a
 	ld a, [hli]
-	ld b, a
+	ld b, a     ; bc = .StandingDown / .WalkingDown / ...
 	ld a, [hli]
 	ld h, [hl]
-	ld l, a
+	ld l, a     ; hl = .NormalOAM / .FlippedOAM
 
-	call GetSpriteScreenXY
+; get sprite priority
+	inc d
+	ld a, e
+	add SPRITESTATEDATA2_GRASSPRIORITY - SPRITESTATEDATA1_XADJUSTED
+	ld e, a
+	ld a, [de] ; [x#SPRITESTATEDATA2_GRASSPRIORITY]
+	and $80
+	ldh [hSpritePriority], a ; temp store sprite priority
 
 	ldh a, [hOAMBufferOffset]
 	ld e, a
@@ -83,12 +108,10 @@ PrepareOAMData::
 
 .tileLoop
 	ldh a, [hSpriteScreenY]  ; temp for sprite Y position
-	add $10                  ; Y=16 is top of screen (Y=0 is invisible)
 	add [hl]                 ; add Y offset from table
 	ld [de], a               ; write new sprite OAM Y position
 	inc hl
 	ldh a, [hSpriteScreenX]  ; temp for sprite X position
-	add $8                   ; X=8 is left of screen (X=0 is invisible)
 	add [hl]                 ; add X offset from table
 	inc e
 	ld [de], a               ; write new sprite OAM X position
@@ -97,28 +120,8 @@ PrepareOAMData::
 	inc bc
 	push bc
 	ld b, a
-
-	ld a, [wSavedSpriteImageIndex]
-	swap a                   ; high nybble determines sprite used (0 is always player sprite, next are some npcs)
-	and $f
-
-	; Sprites $a and $b have one face (and therefore 4 tiles instead of 12).
-	; As a result, sprite $b's tile offset is less than normal.
-	cp $b
-	jr nz, .notFourTileSprite
-	ld a, $a * 12 + 4
-	jr .next2
-
-.notFourTileSprite
-	; a *= 12
-	add a
-	add a
-	ld c, a
-	add a
-	add c
-
-.next2
-	add b ; add the tile offset from the table (based on frame and facing direction)
+	ld a, [wSavedSpriteOffset]
+	add b      ; add the tile offset from the table (based on frame and facing direction)
 	pop bc
 	ld [de], a ; tile id
 	inc hl
@@ -165,25 +168,3 @@ PrepareOAMData::
 	ld [hl], b
 	add hl, de
 	jr .clear
-
-GetSpriteScreenXY:
-	inc e
-	inc e
-	ld a, [de] ; [x#SPRITESTATEDATA1_YPIXELS]
-	ldh [hSpriteScreenY], a
-	inc e
-	inc e
-	ld a, [de] ; [x#SPRITESTATEDATA1_XPIXELS]
-	ldh [hSpriteScreenX], a
-	ld a, 4
-	add e
-	ld e, a
-	ldh a, [hSpriteScreenY]
-	add 4
-	and $f0
-	ld [de], a ; [x#SPRITESTATEDATA1_YADJUSTED]
-	inc e
-	ldh a, [hSpriteScreenX]
-	and $f0
-	ld [de], a  ; [x#SPRITESTATEDATA1_XADJUSTED]
-	ret
