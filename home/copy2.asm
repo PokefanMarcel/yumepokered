@@ -92,10 +92,17 @@ CopyVideoData::
 
 .loop
 	ld a, c
-	cp 8
-	jr nc, .keepgoing
+	sub 8 + 1
+	jr c, .done ; if c <= 8 go to the last pass
+	ld c, a ; c = c - 9
+	inc c   ; c = c - 8
+	ld a, 8
+	ldh [hVBlankCopySize], a
+	call DelayFrame
+	jr .loop
 
 .done
+	ld a, c
 	ldh [hVBlankCopySize], a
 	call DelayFrame
 	ldh a, [hROMBankTemp]
@@ -104,15 +111,6 @@ CopyVideoData::
 	pop af
 	ldh [hAutoBGTransferEnabled], a
 	ret
-
-.keepgoing
-	ld a, 8
-	ldh [hVBlankCopySize], a
-	call DelayFrame
-	ld a, c
-	sub 8
-	ld c, a
-	jr .loop
 
 CopyVideoDataDouble::
 ; Wait for the next VBlank, then copy c 1bpp
@@ -141,10 +139,17 @@ CopyVideoDataDouble::
 
 .loop
 	ld a, c
-	cp 8
-	jr nc, .keepgoing
+	sub 8 + 1
+	jr c, .done ; if c <= 8 go to the last pass
+	ld c, a ; c = c - 9
+	inc c   ; c = c - 8
+	ld a, 8
+	ldh [hVBlankCopySize], a
+	call DelayFrame
+	jr .loop
 
 .done
+	ld a, c
 	ldh [hVBlankCopyDoubleSize], a
 	call DelayFrame
 	ldh a, [hROMBankTemp]
@@ -154,17 +159,8 @@ CopyVideoDataDouble::
 	ldh [hAutoBGTransferEnabled], a
 	ret
 
-.keepgoing
-	ld a, 8
-	ldh [hVBlankCopyDoubleSize], a
-	call DelayFrame
-	ld a, c
-	sub 8
-	ld c, a
-	jr .loop
-
 ClearScreenArea::
-; Clear tilemap area cxb at hl.
+; Clear tilemap area bxc at hl.
 	ld a, ' '
 	ld de, SCREEN_WIDTH
 .loopRows
@@ -217,10 +213,9 @@ CopyScreenTileBufferToVRAM::
 	ret
 
 ClearScreen::
-; Clear wTileMap, then wait
-; for the bg map to update.
-	ld bc, SCREEN_AREA
-	inc b
+; Clear wTileMap, then wait for the bg map to update.
+	ld bc, SCREEN_AREA + $0100 ; marcelnote - adding $0100 avoids inc b
+;	inc b
 	hlcoord 0, 0
 	ld a, ' '
 .loop
