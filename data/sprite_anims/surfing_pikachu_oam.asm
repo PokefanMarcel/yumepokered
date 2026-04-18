@@ -32,10 +32,11 @@ SurfingPikachuOAMData:
 	dbw $00, .Frame29
 	dbw $00, .Frame30
 	dbw $00, .Frame31
-	dbw $80, .Frame32
-	dbw $84, .Frame33
-	dbw $88, .Frame34
-	dbw $8c, .Frame35
+	; intro pikachu frames ; marcelnote - minus $80 since moved Pikachu in VRAM
+	dbw $00, .Frame32
+	dbw $04, .Frame33
+	dbw $08, .Frame34
+	dbw $0c, .Frame35
 
 .Frame0:
 	db 1

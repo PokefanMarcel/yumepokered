@@ -389,6 +389,7 @@ SECTION "Surfing Minigame", ROMX ; marcelnote - Pikachu Surfing minigame
 
 INCLUDE "engine/minigame/surfing_pikachu.asm"
 INCLUDE "engine/gfx/animated_objects.asm"
+INCLUDE "gfx/surfing_pikachu.asm"
 
 
 SECTION "Pay phones", ROMX

@@ -179,16 +179,14 @@ SurfingPikachuMinigame_LoadGFXAndLayout:
 	call ClearObjectAnimationBuffers
 
 	ld hl, SurfingPikachu1Graphics1
-	ld de, $9000
-	ld bc, $500
-	ld a, BANK(SurfingPikachu1Graphics1)
-	call FarCopyData
+	ld de, vChars2
+	ld bc, $36 tiles
+	call CopyData
 
 	ld hl, SurfingPikachu1Graphics2
-	ld de, $8000
+	ld de, vChars0
 	ld bc, $1000
-	ld a, BANK(SurfingPikachu1Graphics2)
-	call FarCopyData
+	call CopyData
 
 	ld a, LOW(SurfingPikachuSpawnStateDataPointer)
 	ld [wAnimatedObjectSpawnStateDataPointer], a
@@ -212,12 +210,12 @@ SurfingPikachuMinigame_LoadGFXAndLayout:
 
 	ld hl, vBGMap0
 	ld bc, $80 tiles
-	ld a, $0
+	ld a, $7f ; blank tile
 	call FillMemory
 
 	ld hl, $98c0
 	ld bc, $18 tiles
-	ld a, $b
+	ld a, $55 ; water tile
 	call FillMemory
 
 	ld a, $1
@@ -1426,73 +1424,64 @@ SurfingMinigame_DrawHP:
 
 SurfingMinigame_DrawResultsScreen:
 	ld hl, wTileMap
-	ld bc, SCREEN_AREA
-	xor a
+	ld bc, 6 * SCREEN_WIDTH
+	ld a, $7f
 	call FillMemory
-	ld hl, .BeachTilemap
+	ld hl, SurfingMinigame_BeachOutroTilemap
 	decoord 0, 6
-	ld bc, .BeachTilemapEnd - .BeachTilemap
+	ld bc, 10 * SCREEN_WIDTH
 	call CopyData
+	hlcoord 1, 1
 	call .PlaceTextbox
 	ld hl, wShadowOAMSprite05XCoord
 	ld bc, 9 * 4
 	xor a
 	call FillMemory
-	ld a, $1
+	ld a, 1
 	ldh [hAutoBGTransferEnabled], a
 	ret
 
-.BeachTilemap:
-INCBIN "gfx/surfing_pikachu/unknown_f8946.tilemap"
-.BeachTilemapEnd:
-
 .PlaceTextbox:
-	hlcoord 1, 1
-	lb de, $3b, $3c
-	ld a, $40
-	call .place_row
-	hlcoord 1, 2
-	lb de, $3f, $3f
-	ld a, $ff
-	call .place_row
-	hlcoord 1, 3
-	lb de, $3f, $3f
-	ld a, $ff
-	call .place_row
-	hlcoord 1, 4
-	lb de, $3f, $3f
-	ld a, $ff
-	call .place_row
-	hlcoord 1, 5
-	lb de, $3f, $3f
-	ld a, $ff
-	call .place_row
-	hlcoord 1, 6
-	lb de, $3f, $3f
-	ld a, $ff
-	call .place_row
-	hlcoord 1, 7
-	lb de, $3f, $3f
-	ld a, $ff
-	call .place_row
-	hlcoord 1, 8
-	lb de, $3f, $3f
-	ld a, $ff
-	call .place_row
-	hlcoord 1, 9
-	lb de, $3d, $3e
-	ld a, $40
-	; fallthrough
-
-.place_row:
-	ld [hl], d
-	inc hl
-	ld c, $10
-.loop
+	ld de, SCREEN_WIDTH - 17
+; top row
+	ld a, $56 ; northwest corner
+	ld [hli], a
+	ld c, 16
+	ld a, $5b ; horizontal bar
+.placeTopRow
 	ld [hli], a
 	dec c
-	jr nz, .loop
-	ld [hl], e
+	jr nz, .placeTopRow
+	ld a, $57 ; northeast corner
+	ld [hl], a
+; intermediate rows
+	add hl, de
+	ld a, $5a ; vertical bar
+	ld b, 7   ; 7 rows
+.placeRows
+	ld [hli], a
+	ld a, $7f
+	ld c, 16  ; 16 tiles
+.fillBlanks
+	ld [hli], a
+	dec c
+	jr nz, .fillBlanks
+	ld a, $5a ; vertical bar
+	ld [hl], a
+	add hl, de
+	dec b
+	jr nz, .placeRows
+; bottom row
+	ld a, $58 ; southwest corner
+	ld [hli], a
+	ld c, 16
+	ld a, $5b ; horizontal bar
+.placeBottomRow
+	ld [hli], a
+	dec c
+	jr nz, .placeBottomRow
+	ld a, $59 ; southeast corner
+	ld [hl], a
 	ret
 
 SurfingMinigame_PrintTextHiScore:
@@ -1502,7 +1491,7 @@ SurfingMinigame_PrintTextHiScore:
 	jp CopyData
 
 .Hi_Score:
-	db $20,$2e,$2f,$30,$31,$2c,$32,$23,$33 ; Hi-Score!!
+	db $20,$2e,$2f,$30,$31,$32,$34,$35,$33 ; HI-SCORE!!
 
 SurfingMinigame_WriteHPLeft:
 	ld hl, .HP_Left
@@ -1549,7 +1538,7 @@ SurfingMinigame_BCDPrintHPLeft:
 	call SurfingPikachu_PlaceBCDNumber
 	inc hl
 	inc hl
-	ld [hl], $21 ; P
+	ld [hl], $1d ; P
 	inc hl
 	ld [hl], $25 ; t
 	inc hl
@@ -1609,7 +1598,7 @@ SurfingMinigame_BCDPrintRadness:
 	call SurfingPikachu_PlaceBCDNumber
 	inc hl
 	inc hl
-	ld [hl], $21 ; P
+	ld [hl], $1d ; P
 	inc hl
 	ld [hl], $25 ; t
 	inc hl
@@ -1640,7 +1629,7 @@ SurfingMinigame_BCDPrintTotalScore:
 	call SurfingPikachu_PlaceBCDNumber
 	inc hl
 	inc hl
-	ld [hl], $21 ; P
+	ld [hl], $1d ; P
 	inc hl
 	ld [hl], $25 ; t
 	inc hl
@@ -1900,7 +1889,7 @@ SurfingMinigame_GenerateBGMap:
 	push hl
 	ld l, a
 	ld h, $0
-	ld de, Unkn_f96e5
+	ld de, SurfingMinigame_BGMetatileTable
 	add hl, hl
 	add hl, hl
 	add hl, de
@@ -2088,7 +2077,7 @@ SurfingMinigameWaveFunction_NoWave:
 	and $7
 	ld e, a
 	ld d, $0
-	ld hl, Unkn_f8e75
+	ld hl, SurfingMinigame_WaveFunctionStartTable
 	add hl, de
 	ld a, [hl]
 .got_next_fn
@@ -2098,7 +2087,7 @@ SurfingMinigameWaveFunction_NoWave:
 	ld de, Unkn_f973d
 	ret
 
-Unkn_f8e75:
+SurfingMinigame_WaveFunctionStartTable:
 	db $01,$0e,$1a,$29,$32,$40,$4d,$5c
 
 Func_f8e7d:
@@ -2288,11 +2277,18 @@ SurfingPikachuMinigameIntro:
 	xor a
 	ldh [hAutoBGTransferEnabled], a
 	call ClearObjectAnimationBuffers
-	ld hl, SurfingPikachu1Graphics3
-	ld de, $8800
-	ld bc, $900
-	ld a, BANK(SurfingPikachu1Graphics3)
-	call FarCopyData
+	ld hl, SurfingPikachuIntroPikachuGFX
+	ld de, vSprites
+	ld bc, 48 tiles
+	call CopyData
+	ld hl, SurfingPikachuTitleGFX
+	ld de, vTileset
+	ld bc, 78 tiles
+	call CopyData
+	ld hl, SurfingPikachuBeachGFX
+	ld de, vTileset + $50 tiles
+	ld bc, 6 tiles + 6 tiles ; also SurfingPikachuFrameGFX
+	call CopyData
 	ld a, LOW(SurfingPikachuSpawnStateDataPointer)
 	ld [wAnimatedObjectSpawnStateDataPointer], a
 	ld a, HIGH(SurfingPikachuSpawnStateDataPointer)
@@ -2324,9 +2320,9 @@ SurfingPikachuMinigameIntro:
 	ldh [rLCDC], a
 	ld a, $1
 	ldh [hAutoBGTransferEnabled], a
-	call DelayFrame
-	call DelayFrame
-	call DelayFrame
+	call Delay3
+;	call DelayFrame
+;	call DelayFrame
 	call SurfingPikachuMinigame_SetBGPals
 	ld a, $e4
 	ldh [rOBP0], a
@@ -2528,68 +2524,40 @@ DisplaySurfingMinigameHighScoreScreen::
 
 DrawSurfingPikachuMinigameIntroBackground:
 	ld hl, wTileMap
-	ld bc, SCREEN_AREA
-	ld a, $ff
+	ld bc, 16 * SCREEN_WIDTH
+	ld a, $7f ; blank tile
 	call FillMemory
-	ld hl, Tilemap_f90bc
+	ld hl, SurfingMinigame_BeachIntroTilemap
 	decoord 0, 6
 	ld bc, 12 * SCREEN_WIDTH
 	call CopyData
-	ld de, Tilemap_f91c8
 	hlcoord 4, 0
-	lb bc, 6, 12
-	call .CopyBox
-	hlcoord 3, 7
-	lb bc, 3, 15
-	call .FillBoxWithFF
-	ld hl, Tilemap_f91ac
+	lb bc, 6, 13
+	xor a ; intro splash starts at tile $00
+	call .PlaceIntroTitle
+	ld hl, SurfingMinigame_UseControlPadTilemap
 	decoord 3, 7
 	ld bc, 15
 	call CopyData
-	ld hl, Tilemap_f91bb
+	ld hl, SurfingMinigame_ToSurfRadTilemap
 	decoord 4, 9
-	ld bc, 13
+	ld bc, 12
 	jp CopyData
 
-.CopyBox:
-.copy_row
+.PlaceIntroTitle
+	ld de, SCREEN_WIDTH - 13
+.rowLoop
 	push bc
-	push hl
-.copy_col
-	ld a, [de]
-	inc de
+.tileLoop
 	ld [hli], a
+	inc a
 	dec c
-	jr nz, .copy_col
-	ld bc, SCREEN_WIDTH
-	pop hl
-	add hl, bc
+	jr nz, .tileLoop
+	add hl, de
 	pop bc
 	dec b
-	jr nz, .copy_row
+	jr nz, .rowLoop
 	ret
-
-.FillBoxWithFF:
-.fill_row
-	push bc
-	push hl
-.fill_col
-	ld [hl], $ff
-	inc hl
-	dec c
-	jr nz, .fill_col
-	pop hl
-	ld bc, SCREEN_WIDTH
-	add hl, bc
-	pop bc
-	dec b
-	jr nz, .fill_row
-	ret
-
-Tilemap_f90bc: INCBIN "gfx/surfing_pikachu/unknown_f90bc.tilemap"
-Tilemap_f91ac: INCBIN "gfx/surfing_pikachu/unknown_f91ac.tilemap"
-Tilemap_f91bb: INCBIN "gfx/surfing_pikachu/unknown_f91bb.tilemap"
-Tilemap_f91c8: INCBIN "gfx/surfing_pikachu/unknown_f91c8.tilemap"
 
 SurfingMinigame_UpdateLYOverrides:
 	ld hl, wLYOverrides + $10
@@ -2909,28 +2877,28 @@ SurfingMinigame_LYOverridesInitialSineWave:
 	db  0,  0,  0, -1, -1, -1, -1, -2
 	db -2, -2, -1, -1, -1, -1,  0,  0
 
-Unkn_f96e5:
-	db $00, $00, $00, $00 ; 00
-	db $0b, $0b, $0b, $0b ; 01
-	db $0b, $02, $02, $06 ; 02
-	db $03, $0b, $07, $03 ; 03
+SurfingMinigame_BGMetatileTable: ; metatiles of 2x2 tiles
+	db $7f, $7f, $7f, $7f ; 00 ; sky block (blank)
+	db $55, $55, $55, $55 ; 01 ; water block
+	db $55, $02, $02, $06 ; 02
+	db $03, $55, $07, $03 ; 03
 	db $06, $06, $06, $06 ; 04
 	db $07, $07, $07, $07 ; 05
 	db $06, $04, $04, $08 ; 06
 	db $05, $07, $08, $05 ; 07
-	db $0b, $0b, $11, $12 ; 08
-	db $0b, $0b, $13, $03 ; 09
+	db $55, $55, $11, $12 ; 08
+	db $55, $55, $13, $03 ; 09
 	db $14, $12, $04, $08 ; 0a
 	db $13, $07, $08, $05 ; 0b
 	db $06, $14, $06, $14 ; 0c
 	db $13, $07, $13, $07 ; 0d
 	db $08, $08, $08, $08 ; 0e
 	db $14, $12, $14, $12 ; 0f
-	db $0b, $11, $02, $14 ; 10
+	db $55, $11, $02, $14 ; 10
 	db $06, $14, $06, $14 ; 11
-	db $0c, $0c, $0d, $0d ; 12
-	db $0d, $0d, $0d, $0d ; 13
-	db $0e, $0f, $10, $0b ; 14
+	db $50, $50, $53, $53 ; 12 ; beach top block
+	db $53, $53, $53, $53 ; 13 ; beach sand block
+	db $51, $52, $54, $55 ; 14 ; beach shore block
 	db $12, $13, $12, $13 ; 15
 
 Unkn_f973d:
@@ -2993,3 +2961,10 @@ Unkn_f981d:
 	db $00, $00, $00, $14, $14, $14, $14, $14
 Unkn_f9825:
 	db $00, $00, $00, $12, $13, $13, $13, $13
+
+
+;SurfingMinigame_TitleTilemap:         INCBIN "gfx/surfing_pikachu/title.tilemap"
+SurfingMinigame_BeachIntroTilemap:    INCBIN "gfx/surfing_pikachu/beach_intro.tilemap"
+SurfingMinigame_UseControlPadTilemap: INCBIN "gfx/surfing_pikachu/use_control_pad.tilemap"
+SurfingMinigame_ToSurfRadTilemap:     INCBIN "gfx/surfing_pikachu/to_surf_rad.tilemap"
+SurfingMinigame_BeachOutroTilemap:    INCBIN "gfx/surfing_pikachu/beach_outro.tilemap"
