@@ -3,40 +3,24 @@ DisplayPCMainMenu::
 	ldh [hAutoBGTransferEnabled], a
 	call SaveScreenTilesToBuffer2
 	ld a, [wNumHoFTeams]
-	and a
-	jr nz, .leaguePCAvailable
-	CheckEvent EVENT_GOT_POKEDEX
-	jr z, .noOaksPC
-	ld a, [wNumHoFTeams]
-	and a
-	jr nz, .leaguePCAvailable
+	and a                        ; beat the league already?
 	hlcoord 0, 0
+	lb bc, 10, 14
+	jr nz, .gotMenuSize          ; if yes, show Hall of Fame
+	CheckEvent EVENT_GOT_POKEDEX ; got Pokedex?
 	ld b, 8
-	ld c, 14
-	jr .next
-.noOaksPC
-	hlcoord 0, 0
+	jr nz, .gotMenuSize          ; if yes, show Oak's PC
 	ld b, 6
-	ld c, 14
-	jr .next
-.leaguePCAvailable
-	hlcoord 0, 0
-	ld b, 10
-	ld c, 14
-.next
+.gotMenuSize
 	call TextBoxBorder
 	call UpdateSprites
-	ld a, 3
-	ld [wMaxMenuItem], a
+
 	CheckEvent EVENT_MET_BILL
-	jr nz, .metBill
-	hlcoord 2, 2
-	ld de, SomeonesPCText
-	jr .next2
-.metBill
 	hlcoord 2, 2
 	ld de, BillsPCText
-.next2
+	jr nz, .metBill
+	ld de, SomeonesPCText
+.metBill
 	call PlaceString
 
 IF DEF(_FRA) ; French: PC DE <PLAYER>
@@ -57,43 +41,38 @@ ELSE         ; English: <PLAYER>'s PC
 	call PlaceString
 ENDC
 
-	CheckEvent EVENT_GOT_POKEDEX
-	jr z, .noOaksPC2
+	ld a, 2
+	ld [wMaxMenuItem], a
 	hlcoord 2, 6
+	CheckEvent EVENT_GOT_POKEDEX
+	jr z, .printLogOff
 	ld de, OaksPCText
 	call PlaceString
+	ld hl, wMaxMenuItem
+	inc [hl] ; max item = 3
+	hlcoord 2, 8
 	ld a, [wNumHoFTeams]
 	and a
-	jr z, .noLeaguePC
-	ld a, 4
-	ld [wMaxMenuItem], a
-	hlcoord 2, 8
+	jr z, .printLogOff
 	ld de, PKMNLeaguePCText
 	call PlaceString
+	ld hl, wMaxMenuItem
+	inc [hl] ; max item = 4
 	hlcoord 2, 10
+.printLogOff
 	ld de, LogOffPCText
-	jr .next3
-.noLeaguePC
-	hlcoord 2, 8
-	ld de, LogOffPCText
-	jr .next3
-.noOaksPC2
-	ld a, $2
-	ld [wMaxMenuItem], a
-	hlcoord 2, 6
-	ld de, LogOffPCText
-.next3
 	call PlaceString
+
 	ld a, PAD_A | PAD_B
 	ld [wMenuWatchedKeys], a
 	ld a, 2
 	ld [wTopMenuItemY], a
-	ld a, 1
+	dec a ; a = 1
 	ld [wTopMenuItemX], a
 	xor a
 	ld [wCurrentMenuItem], a
 	ld [wLastMenuItem], a
-	ld a, 1
+	inc a ; a = 1
 	ldh [hAutoBGTransferEnabled], a
 	ret
 
@@ -152,7 +131,7 @@ ENDC
 	ld [hli], a ; wPartyAndBillsPCSavedMenuItem
 	ld hl, wListScrollOffset
 	ld [hli], a ; wListScrollOffset
-	ld [hl], a ; wMenuWatchMovingOutOfBounds
+	ld [hl], a  ; wMenuWatchMovingOutOfBounds
 	ld [wPlayerMonNumber], a
 	ld hl, WhatText
 	call PrintText
@@ -171,14 +150,11 @@ ENDC
 	cp 9
 	jr c, .singleDigitBoxNum
 ; two digit box num
-	sub 9
+	sub 10
 	hlcoord 17, 16
 	ld [hl], '1'
-	add '0'
-	jr .next
 .singleDigitBoxNum
 	add '1'
-.next
 	ldcoord_a 18, 16
 
 IF DEF(_FRA) ; marcelnote - narrower box
@@ -200,12 +176,13 @@ ENDC
 	ld [wParentMenuItem], a
 	and a
 	jp z, BillsPCWithdraw ; withdraw
-	cp $1
+	dec a
 	jp z, BillsPCDeposit ; deposit
-	cp $2
+	dec a
 	jp z, BillsPCRelease ; release
-	cp $3
+	dec a
 	jp z, BillsPCChangeBox ; change box
+	; fallthrough
 
 ExitBillsPC:
 	ld a, [wMiscFlags]
@@ -228,30 +205,22 @@ ExitBillsPC:
 
 BillsPCDeposit:
 	ld a, [wPartyCount]
-	dec a
-	jr nz, .partyLargeEnough
+	dec a ; only one mon in party?
 	ld hl, CantDepositLastMonText
-	call PrintText
-	jp BillsPCMenu
-.partyLargeEnough
+	jr z, .printAndExit
 	ld a, [wBoxCount]
-	cp MONS_PER_BOX
-	jr nz, .boxNotFull
+	cp MONS_PER_BOX ; box full?
 	ld hl, BoxFullText
-	call PrintText
-	jp BillsPCMenu
-.boxNotFull
+	jr z, .printAndExit
 	ld hl, wPartyCount
 	call DisplayMonListMenu
 	jp c, BillsPCMenu
 	call DisplayDepositWithdrawMenu
 	jp nc, BillsPCMenu
 	ld a, [wCurPartySpecies]
-
 	call PlayCry
 ;	call GetCryData
 ;	call PlaySoundWaitForCurrent
-
 	ld a, PARTY_TO_BOX
 	ld [wMoveMonType], a
 	call MoveMon
@@ -264,35 +233,27 @@ BillsPCDeposit:
 	and BOX_NUM_MASK
 	cp 9
 	jr c, .singleDigitBoxNum
-	sub 9
+	sub 10
 	ld [hl], '1'
 	inc hl
-	add '0'
-	jr .next
 .singleDigitBoxNum
 	add '1'
-.next
 	ld [hli], a
 	ld [hl], '@'
 	ld hl, MonWasStoredText
+.printAndExit
 	call PrintText
 	jp BillsPCMenu
 
 BillsPCWithdraw:
 	ld a, [wBoxCount]
-	and a
-	jr nz, .boxNotEmpty
+	and a ; box empty?
 	ld hl, NoMonText
-	call PrintText
-	jp BillsPCMenu
-.boxNotEmpty
+	jr z, .printAndExit
 	ld a, [wPartyCount]
-	cp PARTY_LENGTH
-	jr nz, .partyNotFull
+	cp PARTY_LENGTH ; party full?
 	ld hl, CantTakeMonText
-	call PrintText
-	jp BillsPCMenu
-.partyNotFull
+	jr z, .printAndExit
 	ld hl, wBoxCount
 	call DisplayMonListMenu
 	jp c, BillsPCMenu
@@ -302,11 +263,9 @@ BillsPCWithdraw:
 	ld hl, wBoxMonNicks
 	call GetPartyMonName
 	ld a, [wCurPartySpecies]
-
 	call PlayCry
 ;	call GetCryData
 ;	call PlaySoundWaitForCurrent
-
 	xor a ; BOX_TO_PARTY
 	ld [wMoveMonType], a
 	call MoveMon
@@ -315,16 +274,15 @@ BillsPCWithdraw:
 	call RemovePokemon
 	call WaitForSoundToFinish
 	ld hl, MonIsTakenOutText
+.printAndExit
 	call PrintText
 	jp BillsPCMenu
 
 BillsPCRelease:
 	ld a, [wBoxCount]
-	and a
-	jr nz, .loop
+	and a ; box empty?
 	ld hl, NoMonText
-	call PrintText
-	jp BillsPCMenu
+	jr z, .printAndExit
 .loop
 	ld hl, wBoxCount
 	call DisplayMonListMenu
@@ -342,6 +300,7 @@ BillsPCRelease:
 	ld a, [wCurPartySpecies]
 	call PlayCry
 	ld hl, MonWasReleasedText
+.printAndExit
 	call PrintText
 	jp BillsPCMenu
 
@@ -398,8 +357,7 @@ KnowsHMMove::
 
 DisplayDepositWithdrawMenu:
 	hlcoord 9, 10
-	ld b, 6
-	ld c, 9
+	lb bc, 6, 9
 	call TextBoxBorder
 	ld a, [wParentMenuItem]
 	and a ; was the Deposit or Withdraw item selected in the parent menu?
@@ -443,9 +401,11 @@ DisplayDepositWithdrawMenu:
 .exit
 	and a
 	ret
+
 .choseDepositWithdraw
 	scf
 	ret
+
 .viewStats
 	call SaveScreenTilesToBuffer1
 	ld a, [wParentMenuItem]
@@ -548,12 +508,12 @@ JustAMomentText::
 	text_far _JustAMomentText
 	text_end
 
-UnusedOpenBillsPC: ; unreferenced
-	ld a, [wSpritePlayerStateData1FacingDirection]
-	cp SPRITE_FACING_UP
-	ret nz
-	call EnableAutoTextBoxDrawing
-	tx_pre_jump OpenBillsPCText
+;UnusedOpenBillsPC: ; unreferenced
+;	ld a, [wSpritePlayerStateData1FacingDirection]
+;	cp SPRITE_FACING_UP
+;	ret nz
+;	call EnableAutoTextBoxDrawing
+;	tx_pre_jump OpenBillsPCText
 
 OpenBillsPCText::
 	script_bills_pc
