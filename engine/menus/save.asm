@@ -397,8 +397,7 @@ ChangeBox::
 	call SetMapTextPointer
 	ld a, SFX_SAVE
 	call PlaySoundWaitForCurrent
-	call WaitForSoundToFinish
-	ret
+	jp WaitForSoundToFinish
 
 WhenYouChangeBoxText:
 	text_far _WhenYouChangeBoxText
@@ -495,7 +494,7 @@ ENDC
 	and BOX_NUM_MASK
 	cp 9
 	jr c, .singleDigitBoxNum
-	sub 9
+	sub 10
 
 IF DEF(_FRA) ; marcelnote - different layout in French
 	hlcoord 6, 2
@@ -504,11 +503,8 @@ ELSE
 ENDC
 
 	ld [hl], '1'
-	add '0'
-	jr .next
 .singleDigitBoxNum
 	add '1'
-.next
 
 IF DEF(_FRA) ; marcelnote - different layout in French
 	ldcoord_a 7, 2
@@ -528,15 +524,18 @@ ENDC
 	push af
 	ld a, [de]
 	and a ; is the box empty?
-	jr z, .skipPlacingPokeball
-	ld [hl], $61 ; place pokeball tile next to box name if box not empty
-.skipPlacingPokeball
+	jr z, .donePlacingPokeball
+	ld [hl], $60    ; place pokeball tile next to box name if box not empty
+	cp MONS_PER_BOX ; is the box full?
+	jr nz, .donePlacingPokeball
+	inc [hl] ; $61  ; place black pokeball tile if box is full
+.donePlacingPokeball
 	add hl, bc
 	inc de
 	pop af
 	dec a
 	jr nz, .loop
-	ld a, 1
+	inc a ; a = 1
 	ldh [hAutoBGTransferEnabled], a
 	ret
 
@@ -580,8 +579,7 @@ EmptySRAMBoxesInBank:
 	ld bc, sBank2AllBoxesChecksum - sBox1
 	call CalcCheckSum
 	ld [sBank2AllBoxesChecksum], a ; sBank3AllBoxesChecksum
-	call CalcIndividualBoxCheckSums
-	ret
+	jp CalcIndividualBoxCheckSums
 
 EmptySRAMBox:
 	xor a
@@ -616,7 +614,6 @@ GetMonCountsForAllBoxes:
 	add hl, bc
 	ld a, [wBoxCount]
 	ld [hl], a
-
 	ret
 
 GetMonCountsForBoxesInBank:

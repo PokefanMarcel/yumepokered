@@ -94,13 +94,14 @@ BillsPC_::
 	call PlaySound
 	ld hl, SwitchOnText
 	call PrintText
+	; fallthrough
 
 BillsPCMenu:
 	ld a, [wParentMenuItem]
 	ld [wCurrentMenuItem], a
-	ld hl, vChars2 tile $61
+	ld hl, vChars2 tile $60
 	ld de, PokeballTileGraphics
-	lb bc, BANK(PokeballTileGraphics), 1
+	lb bc, BANK(PokeballTileGraphics), 2 ; marcelnote - added gfx for full box
 	call CopyVideoData
 	call LoadScreenTilesFromBuffer2DisableBGTransfer
 	hlcoord 0, 0
@@ -195,7 +196,7 @@ ENDC
 	jp z, BillsPCRelease ; release
 	dec a
 	jp z, BillsPCChangeBox ; change box
-	; fallthrough
+	; fallthrough ; See ya!
 
 ExitBillsPC:
 	ld a, [wMiscFlags]
