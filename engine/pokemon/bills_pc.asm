@@ -137,11 +137,11 @@ ENDC
 	call PrintText
 
 IF DEF(_FRA) ; marcelnote - narrower box
-	hlcoord 11, 14
-	lb bc, 2, 7
+	hlcoord 11, 12
+	lb bc, 4, 7
 ELSE
-	hlcoord 9, 14
-	lb bc, 2, 9
+	hlcoord 9, 12
+	lb bc, 4, 9
 ENDC
 
 	call TextBoxBorder
@@ -151,20 +151,33 @@ ENDC
 	jr c, .singleDigitBoxNum
 ; two digit box num
 	sub 10
-	hlcoord 17, 16
+	hlcoord 17, 14
 	ld [hl], '1'
 .singleDigitBoxNum
 	add '1'
-	ldcoord_a 18, 16
+	ldcoord_a 18, 14
 
 IF DEF(_FRA) ; marcelnote - narrower box
-	hlcoord 12, 16
+	hlcoord 12, 14
 ELSE
-	hlcoord 10, 16
+	hlcoord 10, 14
 ENDC
 
 	ld de, BoxNoPCText
 	call PlaceString
+
+	; marcelnote - print box occupancy
+	hlcoord 14, 16
+	ld de, wBoxCount
+	lb bc, 1, 2
+	call PrintNumber
+	ld a, '/'
+	ld [hli], a
+	ld a, '2'
+	ld [hli], a
+	ld a, '0'
+	ld [hl], a
+
 	ld a, 1
 	ldh [hAutoBGTransferEnabled], a
 	call Delay3
