@@ -9,11 +9,12 @@ _CableClubNPCMakingPreparationsText::
 	done
 
 _CableClubNPCNewMovesNotAllowedText:: ; marcelnote - ban new moves from Cable Club
-	text "I'm sorry, #MON"
+	text "I'm sorry. #MON"
 	line "with the moves"
-	cont "HEX, ELECRO BALL"
+	cont "ELECTRO BALL, HEX"
 	cont "or WILL-O-WISP"
-	cont "are not allowed."
+	cont "cannot enter the"
+	cont "Cable Club."
 	prompt
 
 _UsedStrengthText::

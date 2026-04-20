@@ -1813,6 +1813,13 @@ _LinkCanceledText::
 	line "échoué."
 	done
 
+_ColosseumUnavailableText:: ; marcelnote - disable Colosseum
+	text "Je suis désolée,"
+	line "le COLISEE est"
+	cont "fermé pour"
+	cont "le moment."
+	done
+
 _OakSpeechText1::
 	text "Bien le bonjour!"
 	line "Bienvenue dans le"

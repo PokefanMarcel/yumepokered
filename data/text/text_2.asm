@@ -1719,6 +1719,12 @@ _LinkCanceledText::
 	line "canceled."
 	done
 
+_ColosseumUnavailableText:: ; marcelnote - disable Colosseum
+	text "I'm sorry."
+	line "The COLOSSEUM is"
+	cont "closed for now."
+	done
+
 _OakSpeechText1::
 	text "Hello there!"
 	line "Welcome to the"

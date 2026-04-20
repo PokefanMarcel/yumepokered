@@ -268,14 +268,18 @@ LinkMenu:
 	ld a, [wCurrentMenuItem]
 	cp $2
 	jr z, .choseCancel
+;;;;;;;;;;;;;;; marcelnote - disable Colosseum
+	and a
+	jr nz, .choseColosseum
+;;;;;;;;;;;;;;;
 	xor a ; WALKING
 	ld [wWalkBikeSurfState], a ; start walking
-	ld a, [wCurrentMenuItem]
-	and a
-	ld a, COLOSSEUM
-	jr nz, .next
+;	ld a, [wCurrentMenuItem]
+;	and a
+;	ld a, COLOSSEUM
+;	jr nz, .next
 	ld a, TRADE_CENTER
-.next
+;.next
 	ld [wCableClubDestinationMap], a
 	ld hl, PleaseWaitText
 	call PrintText
@@ -295,6 +299,20 @@ LinkMenu:
 	ld [wLinkState], a
 	ld [wEnteringCableClub], a
 	jr SpecialEnterMap
+;;;;;;;;;;;;;;; marcelnote - disable Colosseum
+.choseColosseum
+	xor a
+	ld [wMenuJoypadPollCount], a
+	vc_hook Wireless_net_stop
+	call Delay3
+	call CloseLinkConnection
+	ld hl, ColosseumUnavailableText
+	vc_hook Wireless_net_end
+	call PrintText
+	ld hl, wStatusFlags4
+	res BIT_LINK_CONNECTED, [hl]
+	ret
+;;;;;;;;;;;;;;;
 .choseCancel
 	xor a
 	ld [wMenuJoypadPollCount], a
@@ -318,6 +336,10 @@ PleaseWaitText:
 
 LinkCanceledText:
 	text_far _LinkCanceledText
+	text_end
+
+ColosseumUnavailableText: ; marcelnote - disable Colosseum
+	text_far _ColosseumUnavailableText
 	text_end
 
 StartNewGame:

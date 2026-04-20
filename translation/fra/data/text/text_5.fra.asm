@@ -124,7 +124,10 @@ _ItemWasAssignedToSelectText:: ; marcelnote - use items with Select
 
 _CableClubNPCNewMovesNotAllowedText:: ; marcelnote - ban new moves from Cable Club
 	text "Je suis désolée,"
-	line "les échanges ne"
-	cont "sont pas encore"
-	cont "fonctionnels."
+	line "les attaques"
+	cont "BOULE ELEK,"
+	cont "FEU FOLLET et"
+	cont "CHATIMENT sont"
+	cont "interdites"
+	cont "au Club Link."
 	prompt

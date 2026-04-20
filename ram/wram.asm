@@ -1840,6 +1840,7 @@ wLinkBattleRandomNumberList:: ds 10
 ENDU
 
 wSerialPlayerDataBlock:: ; ds $1a8
+; marcelnote - needs the 6 bytes of padding below before wPlayerName
 
 ; When a real item is being used, this is 0.
 ; When a move is acting as an item, this is the ID of the item it's acting as.
@@ -1849,7 +1850,7 @@ wPseudoItemID:: db
 
 ;wUnusedAlreadyOwnedFlag:: db ; marcelnote - removed
 
-	ds 2
+	ds 3
 
 wEvoStoneItemID:: db
 

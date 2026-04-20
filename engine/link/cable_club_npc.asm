@@ -2,7 +2,7 @@ CableClubNPC::
 	ld hl, CableClubNPCWelcomeText
 	call PrintText
 	CheckEvent EVENT_GOT_POKEDEX
-	jp nz, .receivedPokedex
+	jr nz, .receivedPokedex
 ; if the player hasn't received the pokedex
 	ld c, 60
 	call DelayFrames
@@ -48,8 +48,8 @@ CableClubNPC::
 	call DelayFrame
 	jr .establishConnectionLoop
 .establishedConnection
-	call IsNewMoveInParty ; marcelnote - check for Hex, Electro Ball or Will-O-Wisp
-	jr nz, .newMoveInParty
+	call IsIncompatibleTradeMoveInParty ; marcelnote - check for non-vanilla moves
+	jr nz, .incompatibleTradeMoveInParty
 	call Serial_SendZeroByte
 	call DelayFrame
 	call Serial_SendZeroByte
@@ -103,7 +103,9 @@ CableClubNPC::
 	ld hl, CableClubNPCAreaReservedFor2FriendsLinkedByCableText
 	call PrintText
 	jr .didNotConnect
-.newMoveInParty ; marcelnote - new, no Mons with Hex, Electro Ball or Will-O-Wisp allowed
+.incompatibleTradeMoveInParty
+	ld c, 50
+	call DelayFrames
 	ld hl, CableClubNPCNewMovesNotAllowedText
 	call PrintText
 .choseNo
@@ -171,13 +173,25 @@ CloseLinkConnection:
 	ldh [rSC], a
 	ret
 
-IsNewMoveInParty: ; marcelnote - new, nz if new move in party
-	ld d, HEX
-	call IsMoveInParty
-	ret nz
-	ld d, ELECTRO_BALL
-	call IsMoveInParty
-	ret nz
-	ld d, WILL_O_WISP
-	call IsMoveInParty
+IsIncompatibleTradeMoveInParty: ; marcelnote - detects non-vanilla moves for trading
+	ld a, [wPartyCount]
+	and a
+	ret z
+	ld b, a
+	ld hl, wPartyMon1Moves
+	ld de, PARTYMON_STRUCT_LENGTH - NUM_MOVES
+.monLoop
+	ld c, NUM_MOVES
+.moveLoop
+	ld a, [hli]
+	cp ELECTRO_BALL ; first non-allowed move
+	jr nc, .found
+	dec c
+	jr nz, .moveLoop
+	add hl, de
+	dec b
+	jr nz, .monLoop
+	ret  ; returns Z
+.found
+	or a ; returns NZ
 	ret

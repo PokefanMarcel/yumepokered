@@ -600,7 +600,7 @@ ReturnToCableClubRoom:
 
 TradeCenter_DrawCancelBox:
 	hlcoord 11, 15
-	ld a, $7e
+	ld a, CABLE_CLUB_TEXTBOX_BG
 	ld bc, 2 * SCREEN_WIDTH + 9
 	call FillMemory
 	hlcoord 0, 15
@@ -930,6 +930,19 @@ CableClub_Run:
 EmptyFunc:
 	ret
 
+; marcelnote - moved tileset in VRAM and added labels
+DEF CABLE_CLUB_TEXTBOX_BASE         EQU $55
+DEF CABLE_CLUB_TEXTBOX_BULLET       EQU CABLE_CLUB_TEXTBOX_BASE + 0
+DEF CABLE_CLUB_TEXTBOX_BOTTOM_EDGE  EQU CABLE_CLUB_TEXTBOX_BASE + 1
+DEF CABLE_CLUB_TEXTBOX_RIGHT_EDGE   EQU CABLE_CLUB_TEXTBOX_BASE + 2
+DEF CABLE_CLUB_TEXTBOX_UPPER_LEFT   EQU CABLE_CLUB_TEXTBOX_BASE + 3
+DEF CABLE_CLUB_TEXTBOX_TOP_EDGE     EQU CABLE_CLUB_TEXTBOX_BASE + 4
+DEF CABLE_CLUB_TEXTBOX_UPPER_RIGHT  EQU CABLE_CLUB_TEXTBOX_BASE + 5
+DEF CABLE_CLUB_TEXTBOX_LEFT_EDGE    EQU CABLE_CLUB_TEXTBOX_BASE + 6
+DEF CABLE_CLUB_TEXTBOX_LOWER_LEFT   EQU CABLE_CLUB_TEXTBOX_BASE + 7
+DEF CABLE_CLUB_TEXTBOX_LOWER_RIGHT  EQU CABLE_CLUB_TEXTBOX_BASE + 8
+DEF CABLE_CLUB_TEXTBOX_BG           EQU CABLE_CLUB_TEXTBOX_BASE + 9
+
 Diploma_TextBoxBorder:
 	call GetPredefRegisters
 
@@ -937,32 +950,32 @@ Diploma_TextBoxBorder:
 ; c = width
 CableClub_TextBoxBorder:
 	push hl
-	ld a, $78 ; border upper left corner tile
+	ld a, CABLE_CLUB_TEXTBOX_UPPER_LEFT
 	ld [hli], a
-	inc a ; border top horizontal line tile
+	ld a, CABLE_CLUB_TEXTBOX_TOP_EDGE
 	call CableClub_DrawHorizontalLine
-	inc a ; border upper right corner tile
+	ld a, CABLE_CLUB_TEXTBOX_UPPER_RIGHT
 	ld [hl], a
 	pop hl
 	ld de, 20
 	add hl, de
 .loop
 	push hl
-	ld a, $7b ; border left vertical line tile
+	ld a, CABLE_CLUB_TEXTBOX_LEFT_EDGE
 	ld [hli], a
 	ld a, ' '
 	call CableClub_DrawHorizontalLine
-	ld [hl], $77 ; border right vertical line tile
+	ld [hl], CABLE_CLUB_TEXTBOX_RIGHT_EDGE
 	pop hl
 	ld de, 20
 	add hl, de
 	dec b
 	jr nz, .loop
-	ld a, $7c ; border lower left corner tile
+	ld a, CABLE_CLUB_TEXTBOX_LOWER_LEFT
 	ld [hli], a
-	ld a, $76 ; border bottom horizontal line tile
+	ld a, CABLE_CLUB_TEXTBOX_BOTTOM_EDGE
 	call CableClub_DrawHorizontalLine
-	ld [hl], $7d ; border lower right corner tile
+	ld [hl], CABLE_CLUB_TEXTBOX_LOWER_RIGHT
 	ret
 
 ; c = width
@@ -976,6 +989,6 @@ CableClub_DrawHorizontalLine:
 
 LoadTrainerInfoTextBoxTiles:
 	ld de, TrainerInfoTextBoxTileGraphics
-	ld hl, vChars2 tile $75
+	ld hl, vChars2 tile CABLE_CLUB_TEXTBOX_BASE ; marcelnote - moved tileset in VRAM from $75
 	lb bc, BANK(TrainerInfoTextBoxTileGraphics), (TrainerInfoTextBoxTileGraphicsEnd - TrainerInfoTextBoxTileGraphics) / TILE_SIZE
 	jp CopyVideoData
