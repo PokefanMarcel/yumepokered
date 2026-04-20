@@ -34,8 +34,7 @@ MainMenu:
 	jr z, .noSaveFile
 ; there's a save file
 	hlcoord 0, 0
-	ld b, 6
-	ld c, 13
+	lb bc, 6, 13
 	call TextBoxBorder
 	hlcoord 2, 2
 	ld de, ContinueText
@@ -43,15 +42,14 @@ MainMenu:
 	jr .next2
 .noSaveFile
 	hlcoord 0, 0
-	ld b, 4
-	ld c, 13
+	lb bc, 4, 13
 	call TextBoxBorder
 	hlcoord 2, 2
 	ld de, NewGameText
 	call PlaceString
 .next2
 ;;;;;;;;;;;;; joenote - print the game version
-	coord hl, $00, $11
+	hlcoord 2, 17
 	ld de, VersionText
 	call PlaceString
 ;;;;;;;;;;;;;
@@ -129,6 +127,10 @@ MainMenu:
 	call PrepareForSpecialWarp
 	jp SpecialEnterMap
 
+VersionText:
+	db "<PKMN>Yume "
+	db "v1.3beta@"
+
 InitOptions:
 	ld a, 1 << BIT_FAST_TEXT_DELAY
 	ld [wLetterPrintingDelayFlags], a
@@ -151,8 +153,7 @@ LinkMenu:
 	ld hl, WhereWouldYouLikeText
 	call PrintText
 	hlcoord 5, 5
-	ld b, $6
-	ld c, $d
+	lb bc, $6, $d
 	call TextBoxBorder
 	call UpdateSprites
 	hlcoord 7, 7
@@ -236,8 +237,7 @@ LinkMenu:
 	ld a, SC_START | SC_INTERNAL
 	ldh [rSC], a
 .skipStartingTransfer
-	ld b, ' '
-	ld c, ' '
+	lb bc, ' ', ' '
 	ld d, '▷'
 	ld a, [wLinkMenuSelectionSendBuffer]
 	and PAD_B << 2 ; was B button pressed?
@@ -371,19 +371,11 @@ SpecialEnterMap::
 	ret nz
 	jp EnterMap
 
-VersionText:
-	db "  <PKMN>Yume "
-	db "v1.2@"
-;db " v"
-;INCLUDE "version_number.asm"
-;db "@"
-
 DisplayContinueGameInfo:
 	xor a
 	ldh [hAutoBGTransferEnabled], a
 	hlcoord 4, 7
-	ld b, 8
-	ld c, 14
+	lb bc, 8, 14
 	call TextBoxBorder
 	hlcoord 5, 9
 	ld de, SaveScreenInfoText
@@ -406,8 +398,7 @@ PrintSaveScreenText:
 	xor a
 	ldh [hAutoBGTransferEnabled], a
 	hlcoord 4, 0
-	ld b, $8
-	ld c, $e
+	lb bc, $8, $e
 	call TextBoxBorder
 	call LoadTextBoxTilePatterns
 	call UpdateSprites
@@ -423,7 +414,7 @@ PrintSaveScreenText:
 	call PrintNumOwnedMons
 	hlcoord 13, 8
 	call PrintPlayTime
-	ld a, $1
+	ld a, 1
 	ldh [hAutoBGTransferEnabled], a
 	ld c, 30
 	jp DelayFrames
