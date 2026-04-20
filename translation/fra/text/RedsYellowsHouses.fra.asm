@@ -40,6 +40,7 @@ _RedsHouse1FMomGotMoneyText:: ; marcelnote - Mom gives money to prevent softlock
 	line "500¥ de MAMAN!"
 	done
 
+_RedsHouse1FTVWizardOfOzMovieText:: ; marcelnote - FRLG text option for girl
 _RedsHouse1FTVStandByMeMovieText::
 	text "Un dessin animé!"
 	line "Un petit garçon"

@@ -49,6 +49,15 @@ _RedsHouse1FTVStandByMeMovieText::
 	para "I better go too."
 	done
 
+_RedsHouse1FTVWizardOfOzMovieText:: ; marcelnote - FRLG text option for girl
+	text "There's a movie"
+	line "on TV. A girl"
+	cont "is walking up"
+	cont "a brick road."
+
+	para "I better go too."
+	done
+
 _RedsHouse1FTVWrongSideText::
 	text "Oops, wrong side."
 	done

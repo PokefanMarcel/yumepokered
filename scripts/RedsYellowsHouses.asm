@@ -103,12 +103,20 @@ RedsHouse1FTVText:
 	ld hl, .WrongSideText
 	jr nz, .got_text
 	ld hl, .StandByMeMovieText
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	jr z, .got_text
+	ld hl, .WizardOfOzMovieText ; marcelnote - FRLG text option for girl
 .got_text
 	call PrintText
 	rst TextScriptEnd
 
 .StandByMeMovieText:
 	text_far _RedsHouse1FTVStandByMeMovieText
+	text_end
+
+.WizardOfOzMovieText: ; marcelnote - FRLG text option for girl
+	text_far _RedsHouse1FTVWizardOfOzMovieText
 	text_end
 
 .WrongSideText:
