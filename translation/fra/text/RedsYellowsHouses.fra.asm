@@ -24,6 +24,22 @@ _RedsHouse1FMomLookingGreatText::
 	cont "en pleine forme!"
 	done
 
+_RedsHouse1FMomShortOnMoneyText:: ; marcelnote - Mom gives money to prevent softlocks
+	text "MAMAN: <PLAYER>!"
+	line "Tu manques un peu"
+	cont "d'argent, non?"
+
+	para "Tiens, prends ça."
+	line "Ne dépense pas"
+	cont "tout d'un coup,"
+	cont "d'accord?"
+	prompt
+
+_RedsHouse1FMomGotMoneyText:: ; marcelnote - Mom gives money to prevent softlocks
+	text "<PLAYER> reçoit"
+	line "500¥ de MAMAN!"
+	done
+
 _RedsHouse1FTVStandByMeMovieText::
 	text "Un dessin animé!"
 	line "Un petit garçon"

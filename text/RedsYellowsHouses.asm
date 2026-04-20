@@ -24,6 +24,22 @@ _RedsHouse1FMomLookingGreatText::
 	cont "Take care now!"
 	done
 
+_RedsHouse1FMomShortOnMoneyText:: ; marcelnote - Mom gives money to prevent softlocks
+	text "MOM: Oh, <PLAYER>!"
+	line "Aren't you short"
+	cont "on money?"
+
+	para "Here, take this."
+	line "Don't spend it"
+	cont "all at once,"
+	cont "okay?"
+	prompt
+
+_RedsHouse1FMomGotMoneyText:: ; marcelnote - Mom gives money to prevent softlocks
+	text "<PLAYER> received"
+	line "¥500 from MOM!"
+	done
+
 _RedsHouse1FTVStandByMeMovieText::
 	text "There's a movie"
 	line "on TV. Four boys"

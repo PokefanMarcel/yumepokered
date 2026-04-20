@@ -36,22 +36,29 @@ RedsYellowsHouses_TextPointers:
 	dw_const YellowsHouse2FTVText,           TEXT_YELLOWSHOUSE2F_TV         ; marcelnote - new for Yellow's bedroom
 	dw_const UnpackedBoxText,                TEXT_YELLOWSHOUSE_UNPACKED_BOX ; marcelnote - new for Yellow's house
 
-RedsHouse1FMomText:
+RedsHouse1FMomText: ; marcelnote - modified
 	text_asm
 	CheckEvent EVENT_GOT_STARTER ; received a Pokemon from Oak?
-	jr nz, .heal
+	jr nz, .gotStarter
 	ld hl, .WakeUpText
+	jr .print_text
+.gotStarter ; marcelnote - Mom gives money to prevent softlocks
+	xor a
+	ldh [hMoney], a
+	ldh [hMoney + 2], a
+	ld a, $05
+	ldh [hMoney + 1], a
+	call HasEnoughMoney ; has at least ¥500?
+	jr nc, .heal
+	ld hl, .ShortOnMoneyText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	ld hl, hMoney + 2
+	ld de, wPlayerMoney + 2
+	ld c, 3
+	predef AddBCDPredef
+	ld hl, .GotMoneyText
+	jr .print_text
 .heal
-	call RedsHouse1FMomHealScript
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-
-.WakeUpText:
-	text_far _RedsHouse1FMomWakeUpText
-	text_end
-
-RedsHouse1FMomHealScript: ; marcelnote - modified for crysaudio
 	ld hl, RedsHouse1FMomYouShouldRestText
 	call PrintText
 	call GBFadeOutToWhite
@@ -64,11 +71,27 @@ RedsHouse1FMomHealScript: ; marcelnote - modified for crysaudio
 	call PlayMusic
 	call GBFadeInFromWhite
 	ld hl, RedsHouse1FMomLookingGreatText
-	jp PrintText
+.print_text
+	call PrintText
+	rst TextScriptEnd
+
+.WakeUpText:
+	text_far _RedsHouse1FMomWakeUpText
+	text_end
+
+.ShortOnMoneyText: ; marcelnote - Mom gives money to prevent softlocks
+	text_far _RedsHouse1FMomShortOnMoneyText
+	text_end
+
+.GotMoneyText: ; marcelnote - Mom gives money to prevent softlocks
+	text_far _RedsHouse1FMomGotMoneyText
+	sound_get_item_1
+	text_end
 
 RedsHouse1FMomYouShouldRestText:
 	text_far _RedsHouse1FMomYouShouldRestText
 	text_end
+
 RedsHouse1FMomLookingGreatText:
 	text_far _RedsHouse1FMomLookingGreatText
 	text_end
@@ -82,7 +105,7 @@ RedsHouse1FTVText:
 	ld hl, .StandByMeMovieText
 .got_text
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .StandByMeMovieText:
 	text_far _RedsHouse1FTVStandByMeMovieText
@@ -119,7 +142,7 @@ YellowsHouse1FDadSittingText: ; marcelnote - new for Yellow's House
 	ld hl, .JustMissedHerText
 .print_text
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .JustMissedHerText:
 	text_far _YellowsHouse1FDadJustMissedHerText
