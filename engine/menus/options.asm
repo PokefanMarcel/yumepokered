@@ -18,14 +18,12 @@ DisplayOptionMenu: ; marcelnote - modified
 	call PlaceString
 	xor a
 	ld [wOptionsCursorLocation], a
-	ld b, 5 ; the number of options to loop through
 .loop
-	push bc
 	call GetOptionPointer ; updates the next option
-	pop bc
 	ld hl, wOptionsCursorLocation
 	inc [hl] ; moves the cursor for the highlighted option
-	dec b
+	ld a, 5 ; the number of options to loop through
+	cp [hl]
 	jr nz, .loop
 	xor a
 	ld [wOptionsCursorLocation], a
@@ -84,7 +82,7 @@ OptionMenuJumpTable:
 	dw OptionsMenu_SpriteStyle
 	dw OptionsMenu_MeasureUnits
 	dw OptionsMenu_Dummy
-	dw OptionsMenu_Dummy
+	dw OptionsMenu_GoHome ; marcelnote - option to Go Home
 	dw OptionsMenu_Cancel
 
 
@@ -317,11 +315,34 @@ OptionsMenu_Dummy:
 	ret
 
 
+OptionsMenu_GoHome: ; marcelnote - option to Go Home
+	ldh a, [hJoy5]
+	and PAD_A ; clears carry
+	ret z
+	ld hl, GoHomeConfirmText
+	call PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr nz, .popAndJump ; said No
+	inc a ; a = 1 so nz
+	scf ; set carry flag but not zero flag to warp home
+	ret
+.popAndJump
+	pop hl ; pop the 'call GetOptionPointer' return address
+	jp DisplayOptionMenu
+
+GoHomeConfirmText: ; marcelnote - option to Go Home
+	text_far _GoHomeConfirmText
+	text_end
+
+
 OptionsMenu_Cancel:
 	ldh a, [hJoy5]
 	and PAD_A ; clears carry
 	ret z
-	scf ; set carry flag to exit options menu
+	xor a ; set zero flag ; marcelnote - option to Go Home
+	scf   ; set carry flag to exit options menu
 	ret
 
 
@@ -343,9 +364,9 @@ OptionsControl:
 	scf
 	ret
 .doNotWrapAround
-	cp 4    ; if last option, go down to Cancel
-	jr c, .regularIncrement
-	ld [hl], 6
+	cp 4    ; if last option, go down to Go Home
+	jr nz, .regularIncrement
+	inc [hl]
 .regularIncrement
 	inc [hl]
 	scf
@@ -353,15 +374,15 @@ OptionsControl:
 
 .pressedUp
 	ld a, [hl]
-	cp 7    ; if Cancel, go up to last option
-	jr nz, .notCancel
-	ld [hl], 4
+	and a    ; if first option, go down to Cancel
+	jr nz, .doNotWrapAround2
+	ld [hl], 7
 	scf
 	ret
-.notCancel
-	and a    ; if first option, go down to Cancel
+.doNotWrapAround2
+	cp 6    ; if Go Home, go up to last option
 	jr nz, .regularDecrement
-	ld [hl], 8
+	dec [hl]
 .regularDecrement
 	dec [hl]
 	scf

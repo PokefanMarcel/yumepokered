@@ -6,7 +6,7 @@ AllOptionsText:
 	next "SPRITE STYLE"
 	next "MEASURE UNITS"
 	next ""
-	next ""
+	next "GO HOME" ; marcelnote - option to Go Home
 	next "DONE@" ; marcelnote - changed from CANCEL@
 
 OptionsColonsText:

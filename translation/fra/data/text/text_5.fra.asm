@@ -52,6 +52,12 @@ _WarpToLastPokemonCenterText::
 	cont "#MON visité."
 	done
 
+_GoHomeConfirmText:: ; marcelnote - option to Go Home
+	text "Rentrer à"
+	line "BOURG PALETTE"
+	cont "maintenant?"
+	done
+
 _CannotUseTeleportNowText::
 	text_ram wNameBuffer
 	text " ne"

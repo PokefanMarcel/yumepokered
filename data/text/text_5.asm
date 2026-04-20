@@ -59,6 +59,12 @@ _WarpToLastPokemonCenterText::
 	line "#MON CENTER."
 	done
 
+_GoHomeConfirmText:: ; marcelnote - option to Go Home
+	text "Are you sure you"
+	line "want to go back"
+	cont "to PALLET TOWN?"
+	done
+
 _CannotUseTeleportNowText::
 	text_ram wNameBuffer
 	text " can't"

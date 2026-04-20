@@ -6,7 +6,7 @@ AllOptionsText:
 	next "STYLE SPRITES"
 	next "UNITE MESURE"
 	next ""
-	next ""
+	next "RENTRER MAISON" ; marcelnote - option to Go Home
 	next "RETOUR@"
 
 OptionsColonsText:
