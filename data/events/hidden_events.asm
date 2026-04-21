@@ -214,19 +214,18 @@ MACRO hidden_text_predef
 	dba \4 ; event function
 ENDM
 
-; Some hidden objects use SPRITE_FACING_* values,
+; Some hidden events use SPRITE_FACING_* values,
 ; but these do not actually prevent the player
 ; from interacting with them in any direction.
-DEF ANY_FACING EQU $d0
 
 TradeCenterHiddenEvents:
-	hidden_event  5,  4, ANY_FACING, CableClubRightGameboy
-	hidden_event  4,  4, ANY_FACING, CableClubLeftGameboy
+	hidden_event  5,  4, $0, CableClubRightGameboy
+	hidden_event  4,  4, $0, CableClubLeftGameboy
 	db -1 ; end
 
 ColosseumHiddenEvents:
-	hidden_event  5,  4, ANY_FACING, CableClubRightGameboy
-	hidden_event  4,  4, ANY_FACING, CableClubLeftGameboy
+	hidden_event  5,  4, $0, CableClubRightGameboy
+	hidden_event  4,  4, $0, CableClubLeftGameboy
 	db -1 ; end
 
 ; marcelnote - merged all these labels, removed PrintBenchGuyText

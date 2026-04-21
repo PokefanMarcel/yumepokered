@@ -2,7 +2,7 @@ MACRO hidden_coin
 	db \1, \3, \2
 ENDM
 
-HiddenCoinCoords: ; marcelnote - see also GameCornerHiddenObjects
+HiddenCoinCoords: ; marcelnote - see also GameCornerHiddenEvents
 	table_width 3
 	; map id, x, y
 	hidden_coin GAME_CORNER,  0,  4
