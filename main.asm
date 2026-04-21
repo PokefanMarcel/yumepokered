@@ -145,6 +145,7 @@ INCLUDE "engine/events/hidden_events/book_or_sculpture.asm"
 INCLUDE "engine/events/hidden_events/elevator.asm"
 INCLUDE "engine/events/hidden_events/town_map.asm"
 INCLUDE "engine/events/hidden_events/pokemon_stuff.asm"
+INCLUDE "engine/events/hidden_events/floor_signs.asm" ; marcelnote - new for floor signs
 
 
 SECTION "Bill's PC", ROMX

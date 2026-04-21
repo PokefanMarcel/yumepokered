@@ -30,24 +30,24 @@ CeladonMansion_Object:
 	warp_event  2, 18, CELADON_MANSION,  9 ; 3F -> 2F back
 	warp_event  4, 18, CELADON_MANSION, 16 ; 3F -> 4F back
 	; 4F
-	warp_event  6,  0, CELADON_MANSION, 11      ; 4F -> 3F main
-	warp_event  7,  0, CELADON_MANSION_ROOF, 1 ; 4F -> Roof main
-	warp_event  4,  0, CELADON_MANSION, 13      ; 4F -> 3F back
-	warp_event  2,  0, CELADON_MANSION_ROOF, 2 ; 4F -> Roof back
+	warp_event  6,  0, CELADON_MANSION,      11 ; 4F -> 3F main
+	warp_event  7,  0, CELADON_MANSION_ROOF,  1 ; 4F -> Roof main
+	warp_event  4,  0, CELADON_MANSION,      13 ; 4F -> 3F back
+	warp_event  2,  0, CELADON_MANSION_ROOF,  2 ; 4F -> Roof back
 
-	def_bg_events
+	def_bg_events ; marcelnote - floor signs moved to hidden events
 	; 1F
-	bg_event  4, 63, TEXT_CELADONMANSION1F_MANAGERS_SUITE_SIGN
+;	bg_event  4, 63, TEXT_CELADONMANSION1F_MANAGERS_SUITE_SIGN
 	; 2F
-	bg_event  4, 45, TEXT_CELADONMANSION2F_MEETING_ROOM_SIGN
+;	bg_event  4, 45, TEXT_CELADONMANSION2F_MEETING_ROOM_SIGN
 	; 3F
 	bg_event  1, 21, TEXT_CELADONMANSION3F_GAME_PROGRAM_PC
 	bg_event  4, 21, TEXT_CELADONMANSION3F_PLAYING_GAME_PC
 	bg_event  1, 24, TEXT_CELADONMANSION3F_GAME_SCRIPT_PC
-	bg_event  4, 27, TEXT_CELADONMANSION3F_DEV_ROOM_SIGN
+;	bg_event  4, 27, TEXT_CELADONMANSION3F_DEV_ROOM_SIGN
 	; 4F
 	bg_event  1,  3, TEXT_CELADONMANSION4F_EXEGGUTOR_SURF_PC
-	bg_event  4,  9, TEXT_CELADONMANSION4F_YUME_LABS_SIGN
+;	bg_event  4,  9, TEXT_CELADONMANSION4F_YUME_LABS_SIGN
 
 	def_object_events
 	; 1F

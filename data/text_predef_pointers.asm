@@ -91,4 +91,10 @@ TextPredefs::
 	add_tx_pre ThisRequiresStrengthText             ; 51 ; marcelnote - HM overworld use
 	add_tx_pre WantToStrengthText                   ; 51 ; marcelnote - HM overworld use
 	add_tx_pre CanMoveBouldersText                  ; 52 ; marcelnote - HM overworld use
-
+	add_tx_pre CeladonMansion1FManagersSuiteSignText     ; 53 ; marcelnote - new for floor signs
+	add_tx_pre CeladonMansion2FMeetingRoomSignText       ; 54 ; marcelnote - new for floor signs
+	add_tx_pre CeladonMansion3FDevRoomSignText           ; 55 ; marcelnote - new for floor signs
+	add_tx_pre CeladonMansion4FYumeLabsSignText          ; 56 ; marcelnote - new for floor signs
+	add_tx_pre MandarinSilphCo2FSalesSignText            ; 57 ; marcelnote - new for floor signs
+	add_tx_pre MandarinSilphCo3FMeetingRoomSignText      ; 58 ; marcelnote - new for floor signs
+	add_tx_pre MandarinSilphCo4FRegionalDirectorSignText ; 59 ; marcelnote - new for floor signs

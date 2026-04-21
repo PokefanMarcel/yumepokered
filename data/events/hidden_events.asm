@@ -96,6 +96,7 @@ HiddenEventMaps:
 	db MT_SILVER_1F              ; marcelnote - new
 	db MT_SILVER_2F              ; marcelnote - new
 	db BATTLE_HALL               ; marcelnote - new
+	db MANDARIN_SILPH_CO         ; marcelnote - new
 	db -1 ; end
 
 HiddenEventPointers:
@@ -197,6 +198,7 @@ HiddenEventPointers:
 	dw MtSilver1FHiddenEvents             ; marcelnote - new
 	dw MtSilver2FHiddenEvents             ; marcelnote - new
 	dw BattleHallHiddenEvents             ; marcelnote - new
+	dw MandarinSilphCoHiddenEvents        ; marcelnote - new
 
 MACRO hidden_event
 	db \2 ; y coord
@@ -314,6 +316,11 @@ VermilionGymHiddenEvents:
 
 CeladonMansionHiddenEvents:
 	hidden_event  0, 39,  $0, OpenPokemonCenterPC ; marcelnote - merged Celadon Mansion floors
+	; marcelnote - new for floor signs
+	hidden_text_predef  4, 63, CeladonMansion1FManagersSuiteSignText, PrintFloorSign
+	hidden_text_predef  4, 45, CeladonMansion2FMeetingRoomSignText,   PrintFloorSign
+	hidden_text_predef  4, 27, CeladonMansion3FDevRoomSignText,       PrintFloorSign
+	hidden_text_predef  4,  9, CeladonMansion4FYumeLabsSignText,      PrintFloorSign
 	db -1 ; end
 
 CeladonGymHiddenEvents:
@@ -695,4 +702,10 @@ MtSilver2FHiddenEvents:  ; marcelnote - new
 
 BattleHallHiddenEvents:  ; marcelnote - new
 	hidden_event 11,  4,  $0, OpenPokemonCenterPC
+	db -1 ; end
+
+MandarinSilphCoHiddenEvents: ; marcelnote - new for floor signs
+	hidden_text_predef  4, 30, MandarinSilphCo2FSalesSignText,            PrintFloorSign
+	hidden_text_predef  4, 16, MandarinSilphCo3FMeetingRoomSignText,      PrintFloorSign
+	hidden_text_predef  4,  2, MandarinSilphCo4FRegionalDirectorSignText, PrintFloorSign
 	db -1 ; end

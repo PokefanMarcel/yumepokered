@@ -10,9 +10,6 @@ MandarinSilphCo_TextPointers:
 	dw_const MandarinSilphCo2FCooltrainerMText,         TEXT_MANDARINSILPHCO2F_COOLTRAINER_M_TEXT
 	dw_const MandarinSilphCo3FScientistText,            TEXT_MANDARINSILPHCO3F_SCIENTIST_TEXT
 	dw_const MandarinSilphCo4FDirectorText,             TEXT_MANDARINSILPHCO4F_DIRECTOR_TEXT
-	dw_const MandarinSilphCo2FSalesSignText,            TEXT_MANDARINSILPHCO2F_SALES_SIGN
-	dw_const MandarinSilphCo3FMeetingRoomSignText,      TEXT_MANDARINSILPHCO3F_MEETING_ROOM_SIGN
-	dw_const MandarinSilphCo4FRegionalDirectorSignText, TEXT_MANDARINSILPHCO4F_REGIONAL_DIRECTOR_SIGN
 
 
 MandarinSilphCo1FReceptionistText:
@@ -75,16 +72,4 @@ MandarinSilphCo4FDirectorText:
 
 .FromNowOnText:
 	text_far _MandarinSilphCo4FDirectorFromNowOnText
-	text_end
-
-MandarinSilphCo2FSalesSignText:
-	text_far _MandarinSilphCo2FSalesSignText
-	text_end
-
-MandarinSilphCo3FMeetingRoomSignText:
-	text_far _MandarinSilphCo3FMeetingRoomSignText
-	text_end
-
-MandarinSilphCo4FRegionalDirectorSignText:
-	text_far _MandarinSilphCo4FRegionalDirectorSignText
 	text_end

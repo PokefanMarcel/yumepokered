@@ -20,17 +20,15 @@ CeladonMansion_TextPointers:
 	dw_const CeladonMansion4FHackerText,         TEXT_CELADONMANSION4F_HACKER
 	; bg
 	; 1F
-	dw_const CeladonMansion1FManagersSuiteSignText, TEXT_CELADONMANSION1F_MANAGERS_SUITE_SIGN
+	; nothing
 	; 2F
-	dw_const CeladonMansion2FMeetingRoomSignText, TEXT_CELADONMANSION2F_MEETING_ROOM_SIGN
+	; nothing
 	; 3F
 	dw_const CeladonMansion3FGameProgramPCText,  TEXT_CELADONMANSION3F_GAME_PROGRAM_PC
 	dw_const CeladonMansion3FPlayingGamePCText,  TEXT_CELADONMANSION3F_PLAYING_GAME_PC
 	dw_const CeladonMansion3FGameScriptPCText,   TEXT_CELADONMANSION3F_GAME_SCRIPT_PC
-	dw_const CeladonMansion3FDevRoomSignText,    TEXT_CELADONMANSION3F_DEV_ROOM_SIGN
 	; 4F
 	dw_const CeladonMansion4FExeggutorSurfPCText, TEXT_CELADONMANSION4F_EXEGGUTOR_SURF_PC
-	dw_const CeladonMansion4FYumeLabsSignText,    TEXT_CELADONMANSION4F_YUME_LABS_SIGN
 
 
 CeladonMansion_PlayCryScript:
@@ -58,15 +56,6 @@ CeladonMansion1FNidoranFText:
 	text_asm
 	ld a, NIDORAN_F
 	jp CeladonMansion_PlayCryScript
-
-CeladonMansion1FManagersSuiteSignText:
-	text_far _CeladonMansion1FManagersSuiteSignText
-	text_end
-
-
-CeladonMansion2FMeetingRoomSignText:
-	text_far _CeladonMansion2FMeetingRoomSignText
-	text_end
 
 
 CeladonMansion3FProgrammerText:
@@ -120,10 +109,6 @@ CeladonMansion3FGameScriptPCText:
 	text_far _CeladonMansion3FGameScriptPCText
 	text_end
 
-CeladonMansion3FDevRoomSignText:
-	text_far _CeladonMansion3FDevRoomSignText
-	text_end
-
 
 CeladonMansion4FHackerText:
 	text_far _CeladonMansion4FHackerText
@@ -131,8 +116,4 @@ CeladonMansion4FHackerText:
 
 CeladonMansion4FExeggutorSurfPCText:
 	text_far _CeladonMansion4FExeggutorSurfPCText
-	text_end
-
-CeladonMansion4FYumeLabsSignText:
-	text_far _CeladonMansion4FYumeLabsSignText
 	text_end
