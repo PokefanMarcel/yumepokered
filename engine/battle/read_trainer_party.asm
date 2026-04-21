@@ -159,7 +159,7 @@ ReadTrainer:
 	inc de
 	;and a
 	cp $ff ; marcelnote - new terminator to prevent issues with NO_MOVE
-	jp z, .FinishUp
+	jr z, .FinishUp
 	dec a
 	ld hl, wEnemyMon1Moves
 	ld bc, wEnemyMon2 - wEnemyMon1
