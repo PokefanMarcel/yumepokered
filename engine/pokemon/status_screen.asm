@@ -45,7 +45,6 @@ StatusScreen:
 	; fallthrough
 
 
-
 StatusScreenStatsPage:
 	hlcoord 19, 0
 	ld a, '▶'
@@ -145,8 +144,10 @@ StatusScreenStatsPage:
 	jp nz, StatusScreenExit
 	bit B_PAD_START, a ; marcelnote - switch between Stats and DVs
 	jr nz, .switchStatsDVsStatExp
-	;bit B_PAD_DOWN, a ; marcelnote - for switching up and down
-	;jr nz, .checkIfLastMon
+	bit B_PAD_UP, a
+	jr nz, .tryPreviousPartyMon
+	bit B_PAD_DOWN, a
+	jr nz, .tryNextPartyMon
 	and PAD_A | PAD_RIGHT
 	jr nz, StatusScreenMovesPage
 	jr .waitButtonPress
@@ -174,16 +175,32 @@ ENDC
 	; if neither then switch to Stats
 	jp SwitchToStats
 
-;.checkIfLastMon
-;	ld a, [wWhichPokemon]
-;	cp 5 ; here need to account for team size wPartyCount, or number of Mons in box...
-;	jr z, .waitButtonPress
-;	inc a
-;	ld [wWhichPokemon], a
-;   ; also need to move cursor in the overarching list
-;	ld hl, wStatusFlags2
-;	res BIT_PLAYED_CRY, [hl]
-;	jp StatusScreen.loadMonData
+.tryPreviousPartyMon ; marcelnote - for switching up and down
+	ld a, [wMonDataLocation]
+	cp PLAYER_PARTY_DATA
+	jr nz, .waitButtonPress
+	ld a, [wWhichPokemon]
+	and a                  ; is it the first Mon in the list?
+	jr z, .waitButtonPress ; if yes, cannot go upwards
+	dec a
+	jr .goToPartyMon
+.tryNextPartyMon
+	ld a, [wMonDataLocation]
+	cp PLAYER_PARTY_DATA
+	jr nz, .waitButtonPress
+	ld a, [wPartyCount]
+	ld b, a
+	ld a, [wWhichPokemon]
+	inc a
+	cp b                   ; is it the last Mon in the list?
+	jr z, .waitButtonPress ; if yes, cannot go downwards
+.goToPartyMon
+	ld [wWhichPokemon], a
+	ld [wCurrentMenuItem], a
+	ld [wPartyAndBillsPCSavedMenuItem], a
+	ld hl, wStatusFlags2
+	res BIT_PLAYED_CRY, [hl]
+	jp StatusScreen.loadMonData
 
 .GetStringPointer
 	ld a, [wMonDataLocation]
@@ -369,11 +386,42 @@ StatusScreenMovesPage:
 .waitButtonPress
 	call JoypadLowSensitivity
 	ldh a, [hJoy5]
+	bit B_PAD_UP, a
+	jr nz, .tryPreviousPartyMon
+	bit B_PAD_DOWN, a
+	jr nz, .tryNextPartyMon
 	bit B_PAD_LEFT, a
 	jr nz, .clearScreenAndGoBackToStats
 	and PAD_A | PAD_B
 	jr nz, StatusScreenExit
 	jr .waitButtonPress
+
+.tryPreviousPartyMon ; marcelnote - for switching up and down
+	ld a, [wMonDataLocation]
+	cp PLAYER_PARTY_DATA
+	jr nz, .waitButtonPress
+	ld a, [wWhichPokemon]
+	and a                  ; is it the first Mon in the list?
+	jr z, .waitButtonPress ; if yes, cannot go upwards
+	dec a
+	jr .goToPartyMon
+.tryNextPartyMon
+	ld a, [wMonDataLocation]
+	cp PLAYER_PARTY_DATA
+	jr nz, .waitButtonPress
+	ld a, [wPartyCount]
+	ld b, a
+	ld a, [wWhichPokemon]
+	inc a
+	cp b                   ; is it the last Mon in the list?
+	jr z, .waitButtonPress ; if yes, cannot go downwards
+.goToPartyMon
+	ld [wWhichPokemon], a
+	ld [wCurrentMenuItem], a
+	ld [wPartyAndBillsPCSavedMenuItem], a
+	ld hl, wStatusFlags2
+	res BIT_PLAYED_CRY, [hl]
+	jp StatusScreen.loadMonData
 
 .clearScreenAndGoBackToStats
 	call StatusScreenClearScreen ; clears name area, bottom screen part, and directional arrows
