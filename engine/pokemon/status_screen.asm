@@ -13,11 +13,14 @@ StatusScreen:
 	xor a
 	ldh [hTileAnimations], a
 
-.loadMonData ; label for later feature: jump here when moving from one Mon to the next
+.loadMonData
 	call GBPalWhiteOutWithDelay3
 	call ClearScreen
 	call UpdateSprites
 	call LoadStatExpTilePatterns
+
+	xor a
+	ldh [hAutoBGTransferEnabled], a
 
 	call LoadMonData
 	ld a, [wMonDataLocation]
@@ -125,6 +128,10 @@ StatusScreenStatsPage:
 
 	ld d, STATUS_SCREEN_STATS_BOX ; d=0 for status screen, d=1 for level up
 	call PrintStatsBox
+
+	ld a, 1
+	ldh [hAutoBGTransferEnabled], a
+	call Delay3
 
 	ld a, [wStatusFlags2]
 	bit BIT_PLAYED_CRY, a
@@ -379,8 +386,8 @@ StatusScreenMovesPage:
 	call PlaceStringWithHyphen ; Field move
 .FieldMoveDone
 
-	ld a, $1
-	ldh [hAutoBGTransferEnabled], a ; ??? could this be in initialization / exit instead
+	ld a, 1
+	ldh [hAutoBGTransferEnabled], a
 	call Delay3
 
 .waitButtonPress
@@ -424,6 +431,8 @@ StatusScreenMovesPage:
 	jp StatusScreen.loadMonData
 
 .clearScreenAndGoBackToStats
+	xor a
+	ldh [hAutoBGTransferEnabled], a
 	call StatusScreenClearScreen ; clears name area, bottom screen part, and directional arrows
 	jp StatusScreenStatsPage
 
