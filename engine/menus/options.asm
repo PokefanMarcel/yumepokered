@@ -223,15 +223,11 @@ OptionsMenu_MeasureUnits: ; bit set = metric
 	ld [wOptions], a
 .keep
 	and 1 << BIT_UNITS_METRIC
-	ld bc, $0
-	ASSERT BIT_UNITS_METRIC == 5
-	rla
-	rla
-	rla
-	rl c
 	ld hl, MeasureUnitsOptionStringsPointerTable
-	add hl, bc
-	add hl, bc
+	jr z, .gotPointer
+	inc hl
+	inc hl
+.gotPointer
 	ld a, [hli]
 	ld e, a
 	ld d, [hl]
