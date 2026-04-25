@@ -16,160 +16,167 @@ MoveDeleterText:
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr z, .saidYes
+	jr z, .chooseMon
 .exit
 	ld hl, MoveDeleterByeText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-.saidYes
-	ld hl, MoveDeleterSaidYesText
-	call PrintText
-	; Select pokemon from party.
-	xor a
-;	ld [wListScrollOffset], a
-	ld [wPartyMenuTypeOrMessageID], a
-	dec a
-	ld [wUpdateSpritesEnabled], a
-;	ld [wMenuItemToSwap], a
-	call DisplayPartyMenu
-	push af
+.restoreAndExit
 	call GBPalWhiteOutWithDelay3
 	call RestoreScreenTilesAndReloadTilePatterns
-	call LoadScreenTilesFromBuffer2
-	call Delay3
 	call LoadGBPal
-	pop af
-	jr c, .exit
-	ld a, [wWhichPokemon]
-	ld b, a
-	push bc
-	call PrepareDeletableMoveList
-	pop bc
-	ld a, [wMoveBuffer]
-	cp 2
-	jr nc, .chooseMove
+	jr .exit
+
+.chooseMon
+	xor a
+	ld [wPartyMenuTypeOrMessageID], a
+	dec a ; a = $ff
+	ld [wUpdateSpritesEnabled], a
+	call DisplayPartyMenu
+	jr c, .restoreAndExit
+	call PrepareDeletableMoveList ; b = number of moves known
+	dec b
+	jr nz, .chooseMove
 	ld hl, MoveDeleterOneMoveText
 	call PrintText
-	jr .saidYes
+	jr .chooseMon
+
 .chooseMove
-	push bc
-	xor a
-	ld [wListScrollOffset], a
-	ld [wCurrentMenuItem], a
-	ld hl, MoveDeleterWhichMoveText
-	call PrintText
-	ld a, MOVESLISTMENU
-	ld [wListMenuID], a
-	ld de, wMoveBuffer
-	ld hl, wListPointer
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	xor a
-	ld [wPrintItemPrices], a ; don't print prices
-	call DisplayListMenuID
-	pop bc
-	jr c, .exit  ; exit if player chose cancel
-	; Save the selected move id.
-	ld a, [wCurListMenuItem]
-	ld d, a
-	push de
-	push bc
+	call MoveDeleterChooseMove
+	jr c, .chooseMon
+	push bc ; save c = move index (0-3)
 	ld [wMoveNum], a
-	ld [wPokeBallCaptureCalcTemp],a
+	ld [wNamedObjectIndex], a
 	call GetMoveName
-	call CopyToStringBuffer ; copy name to wcf4b
+	call CopyToStringBuffer
 	ld hl, MoveDeleterConfirmText
 	call PrintText
 	call YesNoChoice
-	pop bc
-	pop de
+	pop de  ; restore e = move index (0-3)
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .chooseMove
-	push de
-	ld a, b ; a = mon index
+	jr nz, .chooseMon
+	ld a, [wWhichPokemon] ; a = mon index
 	ld hl, wPartyMon1Moves
 	ld bc, wPartyMon2 - wPartyMon1
-	call AddNTimes
-	; hl = pointer to mon's moves
-	; Search for the move, and set it to 0.
-	pop de ; d = move id
+	call AddNTimes ; hl = pointer to mon's moves
 	call DeleteMove
+	call GBPalWhiteOutWithDelay3
+	call RestoreScreenTilesAndReloadTilePatterns
+	call LoadGBPal
 	ld hl, MoveDeleterForgotText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-DeleteMove:
-; d = move id
+MoveDeleterChooseMove:
+; Sets carry if pressed B (cancel)
+; Output: a = [wCurListMenuItem] = move id, c = move index (0-3)
+	call SaveScreenTilesToBuffer1
+	callfar FormatMovesString
+	ld hl, MoveDeleterWhichMoveText
+	call PrintText
+	ld hl, wStatusFlags5
+	set BIT_NO_TEXT_DELAY, [hl]
+	hlcoord 4, 7
+	lb bc, 4, 14
+	call TextBoxBorder
+	hlcoord 6, 8
+	ld de, wMovesString
+	ldh a, [hUILayoutFlags]
+	set BIT_SINGLE_SPACED_LINES, a
+	ldh [hUILayoutFlags], a
+	call PlaceString
+	ldh a, [hUILayoutFlags]
+	res BIT_SINGLE_SPACED_LINES, a
+	ldh [hUILayoutFlags], a
+	ld hl, wTopMenuItemY
+	ld a, 8
+	ld [hli], a ; wTopMenuItemY
+	ld a, 5
+	ld [hli], a ; wTopMenuItemX
+	xor a
+	ld [hli], a ; wCurrentMenuItem
+	inc hl
+	ld a, [wNumMovesMinusOne]
+	ld [hli], a ; wMaxMenuItem
+	ld a, PAD_A | PAD_B
+	ld [hli], a ; wMenuWatchedKeys
+	ld [hl], 0 ; wLastMenuItem
+	ld hl, hUILayoutFlags
+	set BIT_SINGLE_SPACED_MENU, [hl]
+	call HandleMenuInput
+	ld hl, hUILayoutFlags
+	res BIT_SINGLE_SPACED_MENU, [hl]
+	ld hl, wStatusFlags5
+	res BIT_NO_TEXT_DELAY, [hl]
+	push af
+	call LoadScreenTilesFromBuffer1
+	pop af
+	bit B_PAD_B, a
+	jr nz, .cancel
+	ld hl, wMoves
+	ld a, [wCurrentMenuItem]
+	ld c, a
 	ld b, 0
-.searchLoop
-	ld a, [hli]
-	cp d
-	jr z, .foundMoveLoop
-	inc b
-	jr .searchLoop
-.foundMoveLoop
-	ld a, b
-	cp 3
-	jr z, .zeroLastMove
+	add hl, bc
 	ld a, [hl]
-	dec hl
-	ld [hli], a
-	push hl
-	ld de, wPartyMon1PP - wPartyMon1Moves
+	ld [wCurListMenuItem], a
+	and a ; clear carry
+	ret
+.cancel
+	scf
+	ret
+
+DeleteMove:
+; hl = wPartyMon[n]Moves, e = move index
+	ld d, 0
 	add hl, de
+	ld bc, wPartyMon1PP - wPartyMon1Moves
+.moveLoop
+	ld a, e
+	cp NUM_MOVES - 1
+	jr z, .clearLastMove
+	inc hl
+	push hl
+	ld a, [hld]
+	ld [hli], a
+	add hl, bc
 	ld a, [hld]
 	ld [hl], a ; copy move's PP
 	pop hl
-	inc hl
-	inc b
-	jr .foundMoveLoop
-.zeroLastMove
-	dec hl
+	inc e
+	jr .moveLoop
+.clearLastMove
 	xor a
-	ld [hl], a
-	ld de, wPartyMon1PP - wPartyMon1Moves
-	add hl, de
+	ld [hl], a ; clear last move
+	add hl, bc
 	ld [hl], a ; clear last move's PP
 	ret
 
 PrepareDeletableMoveList:
-; Places a list of the selected pokemon's moves at wMoveBuffer.
-; First byte is count, and last byte is $ff.
+; Places the selected pokemon's moves at wMoves and returns the number known in b.
 ; Input: party mon index = [wWhichPokemon]
 	ld a, [wWhichPokemon]
 	ld hl, wPartyMon1Moves
 	ld bc, wPartyMon2 - wPartyMon1
-	call AddNTimes
-	; hl = pointer to mon's 4 moves
-	ld b, 0 ; count of moves
-	ld c, 4 + 1 ; 4 moves
-	ld de, wMoveBuffer + 1
+	call AddNTimes ; hl = pointer to mon's 4 moves
+	lb bc, 0, NUM_MOVES
+	ld de, wMoves
 .loop
-	dec c
-	jr z, .done
 	ld a, [hli]
+	ld [de], a
 	and a
-	jr z, .loop
-	ld [de], a
-	inc de
+	jr z, .skipCount
 	inc b
-	jr .loop
-.done
-	ld a, $ff  ; terminate the list
-	ld [de], a
-	ld a, b  ; store number of moves
-	ld [wMoveBuffer], a
+.skipCount
+	inc de
+	dec c
+	jr nz, .loop
 	ret
 
 MoveDeleterGreetingText:
 	text_far _MoveDeleterGreetingText
-	text_end
-
-MoveDeleterSaidYesText:
-	text_far _MoveDeleterSaidYesText
 	text_end
 
 MoveDeleterWhichMoveText:

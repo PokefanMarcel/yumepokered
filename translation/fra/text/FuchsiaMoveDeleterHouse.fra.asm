@@ -15,10 +15,6 @@ _MoveDeleterGreetingText::
 	cont "une attaque?"
 	done
 
-_MoveDeleterSaidYesText::
-	text "Quel #MON?"
-	prompt
-
 _MoveDeleterWhichMoveText::
 	text "Oublier quelle"
 	line "attaque?"
@@ -29,14 +25,14 @@ _MoveDeleterConfirmText::
 	line "@"
 	text_ram wStringBuffer
 	text "?"
-	prompt
+	done
 
 _MoveDeleterForgotText::
 	text "@"
 	text_ram wStringBuffer
 	text " a"
 	line "été oublié!"
-	prompt
+	done
 
 _MoveDeleterByeText::
 	text "Non? Reviens"
@@ -47,7 +43,7 @@ _MoveDeleterOneMoveText::
 	text "Ce #MON ne"
 	line "connait qu'une"
 	cont "seule attaque."
-	done
+	prompt
 
 
 _MoveReminderGreetingText::

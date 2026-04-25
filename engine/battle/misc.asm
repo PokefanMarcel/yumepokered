@@ -1,8 +1,8 @@
 ; formats a string at wMovesString that lists the moves at wMoves
-FormatMovesString:
+FormatMovesString::
 	ld hl, wMoves
 	ld de, wMovesString
-	ld b, $0
+	ld b, NUM_MOVES
 .printMoveNameLoop
 	ld a, [hli]
 	and a ; end of move list?
@@ -22,30 +22,30 @@ FormatMovesString:
 	ld [de], a
 	inc de
 	jr .copyNameLoop
+
 .doneCopyingName
-	ld a, b
+	ld a, NUM_MOVES
+	sub b
 	ld [wNumMovesMinusOne], a
-	inc b
 	ld a, '<NEXT>'
 	ld [de], a
 	inc de
 	pop hl
-	ld a, b
-	cp NUM_MOVES
+	dec b
 	jr z, .done
 	jr .printMoveNameLoop
+
 .printDashLoop
 	ld a, '-'
 	ld [de], a
 	inc de
-	inc b
-	ld a, b
-	cp NUM_MOVES
+	dec b
 	jr z, .done
 	ld a, '<NEXT>'
 	ld [de], a
 	inc de
 	jr .printDashLoop
+
 .done
 	ld a, '@'
 	ld [de], a

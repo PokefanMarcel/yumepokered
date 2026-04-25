@@ -11,10 +11,6 @@ _MoveDeleterGreetingText::
 	line "#MON forget?"
 	done
 
-_MoveDeleterSaidYesText::
-	text "Which #MON?"
-	prompt
-
 _MoveDeleterWhichMoveText::
 	text "Which move should"
 	line "it forget, then?"
@@ -25,14 +21,14 @@ _MoveDeleterConfirmText::
 	line "@"
 	text_ram wStringBuffer
 	text "?"
-	prompt
+	done
 
 _MoveDeleterForgotText::
 	text "@"
 	text_ram wStringBuffer
 	text " was"
 	line "forgotten!"
-	prompt
+	done
 
 _MoveDeleterByeText::
 	text "No? Come visit me"
@@ -43,7 +39,7 @@ _MoveDeleterOneMoveText::
 	text "That #MON"
 	line "knows only one"
 	cont "move."
-	done
+	prompt
 
 
 _MoveReminderGreetingText::
