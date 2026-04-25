@@ -31,6 +31,7 @@ MoveDeleterText:
 .chooseMon
 	xor a
 	ld [wPartyMenuTypeOrMessageID], a
+	ld [wMenuItemToSwap], a
 	dec a ; a = $ff
 	ld [wUpdateSpritesEnabled], a
 	call DisplayPartyMenu
@@ -207,7 +208,6 @@ MoveDeleterOneMoveText:
 
 MoveReminderText:
 	text_asm
-; Display the list of moves to the player.
 	ld hl, MoveReminderGreetingText
 	call PrintText
 	call YesNoChoice
@@ -215,75 +215,51 @@ MoveReminderText:
 	and a
 	jp nz, .exit
 	xor a
-	;charge 1000 money
 	ldh [hMoney], a
 	ldh [hMoney + 2], a
-	ld a, $0A
-	ldh [hMoney + 1], a
+	ld a, $10
+	ldh [hMoney + 1], a ; charge ¥1000
 	call HasEnoughMoney
 	jr nc, .enoughMoney
-	; not enough money
 	ld hl, MoveReminderNotEnoughMoneyText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
+
 .enoughMoney
 	ld hl, MoveReminderSaidYesText
 	call PrintText
 	; Select pokemon from party.
 	call SaveScreenTilesToBuffer2
 	xor a
-	ld [wListScrollOffset], a
 	ld [wPartyMenuTypeOrMessageID], a
-	ld [wUpdateSpritesEnabled], a
 	ld [wMenuItemToSwap], a
+	dec a ; a = $ff
+	ld [wUpdateSpritesEnabled], a
 	call DisplayPartyMenu
-	push af
-	call GBPalWhiteOutWithDelay3
-	call RestoreScreenTilesAndReloadTilePatterns
-	call LoadGBPal
-	pop af
-	jp c, .exit
-	ld a, [wWhichPokemon]
-	ld b, a
-	push bc
+	jr .checkChosenMon
+
+.goBackToChooseMon
+	call GoBackToPartyMenu
+.checkChosenMon
+	jr c, .restoreAndExit
 	ld hl, PrepareRelearnableMoveList
-	ld b, Bank(PrepareRelearnableMoveList)
+	ld b, BANK(PrepareRelearnableMoveList)
 	rst _Bankswitch ; marcelnote - free space in Home bank, changed from call Bankswitch
 	ld a, [wMoveBuffer]
-	and a
+	and a ; empty list?
 	jr nz, .chooseMove
-	pop bc
 	ld hl, MoveReminderNoMovesText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	jr .goBackToChooseMon
+
 .chooseMove
-	ld hl, MoveReminderWhichMoveText
-	call PrintText
-	xor a
-	ld [wCurrentMenuItem], a
-	ld [wLastMenuItem], a
-	ld a, MOVESLISTMENU
-	ld [wListMenuID], a
-	ld de, wMoveBuffer
-	ld hl, wListPointer
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	xor a
-	ld [wPrintItemPrices], a ; don't print prices
-	call DisplayListMenuID
-	pop bc
-	jr c, .exit  ; exit if player chose cancel
-	push bc
-	; Save the selected move id.
+	call MoveReminderChooseMove
+	jr c, .goBackToChooseMon
 	ld a, [wCurListMenuItem]
 	ld [wMoveNum], a
-	ld [wPokeBallCaptureCalcTemp],a
+	ld [wNamedObjectIndex], a
 	call GetMoveName
-	call CopyToStringBuffer ; copy name to wcf4b
-	pop bc
-	ld a, b
-	ld [wWhichPokemon], a
+	call CopyToStringBuffer
 	ld a, [wLetterPrintingDelayFlags]
 	push af
 	xor a
@@ -293,21 +269,131 @@ MoveReminderText:
 	ld [wLetterPrintingDelayFlags], a
 	ld a, b
 	and a
-	jr z, .exit
-	; Charge 1000 money
+	jr z, .restoreAndExit
 	xor a
 	ld [wPriceTemp], a
 	ld [wPriceTemp + 2], a
-	ld a, $0A
+	ld a, $10
 	ld [wPriceTemp + 1], a
 	ld hl, wPriceTemp + 2
 	ld de, wPlayerMoney + 2
-	ld c, $3
+	ld c, 3
 	predef SubBCDPredef
+.restoreAndExit
+	call GBPalWhiteOutWithDelay3
+	call RestoreScreenTilesAndReloadTilePatterns
+	call LoadGBPal
 .exit
 	ld hl, MoveReminderByeText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+
+MoveReminderChooseMove:
+; Sets carry if pressed B (cancel).
+; Output: [wCurListMenuItem] = move id
+	call SaveScreenTilesToBuffer1
+	ld hl, MoveReminderWhichMoveText
+	call PrintText
+	ld hl, wStatusFlags5
+	set BIT_NO_TEXT_DELAY, [hl]
+	xor a
+	ld [wCurrentMenuItem], a
+	ld [wLastMenuItem], a
+	call MoveReminderDrawMoveList
+	ld a, [wMoveBuffer]
+	dec a
+	ld [wMaxMenuItem], a
+	ld a, [wMoveBuffer]
+	ld b, a
+	ld a, 12
+	sub b
+	ld [wTopMenuItemY], a
+	ld a, 5
+	ld [wTopMenuItemX], a
+	ld a, PAD_A | PAD_B
+	ld [wMenuWatchedKeys], a
+	ld hl, hUILayoutFlags
+	set BIT_SINGLE_SPACED_MENU, [hl]
+	call HandleMenuInput
+	ld hl, hUILayoutFlags
+	res BIT_SINGLE_SPACED_MENU, [hl]
+	ld hl, wStatusFlags5
+	res BIT_NO_TEXT_DELAY, [hl]
+	bit B_PAD_B, a
+	jr nz, .cancel
+	ld a, [wCurrentMenuItem]
+	ld c, a
+	ld b, 0
+	ld hl, wMoveBuffer + 1
+	add hl, bc
+	ld a, [hl]
+	ld [wCurListMenuItem], a
+	and a ; clear carry
+	jr .done
+.cancel
+	scf
+.done
+	push af
+	call LoadScreenTilesFromBuffer1
+	pop af
+	ret
+
+MoveReminderDrawMoveList:
+	ld a, [wMoveBuffer]
+	ld e, a ; move count
+	ld a, 12
+	sub e
+	ld [wTopMenuItemY], a ; first item y
+	dec a
+	ld b, a ; box y
+	ld c, 4 ; box x
+	push de
+	call MoveReminderCoordFromBC
+	pop de
+	push de
+	ld b, e ; move count
+	ld c, 14
+	call TextBoxBorder
+	pop de
+	ld hl, wMoveBuffer + 1
+	ld b, e
+.printLoop
+	push bc
+	push hl
+	ld a, [hli]
+	ld [wNamedObjectIndex], a
+	call GetMoveName
+	ld a, [wTopMenuItemY]
+	ld b, a
+	ld c, 6
+	call MoveReminderCoordFromBC
+	ld de, wNameBuffer
+	call PlaceString
+	ld hl, wTopMenuItemY
+	inc [hl]
+	pop hl
+	inc hl
+	pop bc
+	dec b
+	jr nz, .printLoop
+	ret
+
+MoveReminderCoordFromBC:
+; b = y, c = x
+	ld h, 0
+	ld l, b
+	add hl, hl ; y * 2
+	add hl, hl ; y * 4
+	push hl
+	add hl, hl ; y * 8
+	add hl, hl ; y * 16
+	pop de
+	add hl, de ; y * 20
+	ld b, 0
+	add hl, bc
+	ld de, wTileMap
+	add hl, de
+	ret
 
 
 MoveReminderGreetingText:
