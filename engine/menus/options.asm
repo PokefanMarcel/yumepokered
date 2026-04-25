@@ -19,9 +19,9 @@ DisplayOptionMenu: ; marcelnote - modified
 	xor a
 	ld [wOptionsCursorLocation], a
 .loop
-	call GetOptionPointer ; updates the next option
+	call GetOptionPointer ; writes text for this option
 	ld hl, wOptionsCursorLocation
-	inc [hl] ; moves the cursor for the highlighted option
+	inc [hl] ; moves to next option
 	ld a, 5 ; the number of options to loop through
 	cp [hl]
 	jr nz, .loop
@@ -46,16 +46,15 @@ DisplayOptionMenu: ; marcelnote - modified
 
 
 OptionsMenu_UpdateCursorPosition:
-	hlcoord 1, 1
-	ld de, SCREEN_WIDTH
-	ld c, 16
-.loop
-	ld [hl], ' '
-	add hl, de
-	dec c
-	jr nz, .loop
 	hlcoord 1, 2
 	ld bc, SCREEN_WIDTH * 2
+	lb de, ' ', 8
+.loop
+	ld [hl], d
+	add hl, bc
+	dec e
+	jr nz, .loop
+	hlcoord 1, 2
 	ld a, [wOptionsCursorLocation]
 	call AddNTimes
 	ld [hl], '▶'
@@ -164,27 +163,17 @@ OptionsMenu_BattleAnimations: ; bit set = animations off
 	ld [wOptions], a
 .keep
 	and 1 << BIT_BATTLE_ANIM_OFF
-	ld bc, $0
-	ASSERT BIT_BATTLE_ANIM_OFF == 7
-	rla
-	rl c
-	ld hl, AnimationOptionStringsPointerTable
-	add hl, bc
-	add hl, bc
-	ld a, [hli]
-	ld e, a
-	ld d, [hl]
+	ld de, AnimationOnText
+	jr z, .gotText
+	ld de, AnimationOffText
+.gotText
 	hlcoord OPTIONS_MENU_X_COORD, 5
 	call PlaceString
 	and a
 	ret
 
-AnimationOptionStringsPointerTable:
-	dw AnimationOnText
-	dw AnimationOffText
 
-
-OptionsMenu_BattleStyle: ; bit set = metric
+OptionsMenu_BattleStyle: ; bit set = set battle
 	ldh a, [hJoy5]
 	and PAD_LEFT | PAD_RIGHT
 	ld a, [wOptions]
@@ -193,25 +182,14 @@ OptionsMenu_BattleStyle: ; bit set = metric
 	ld [wOptions], a
 .keep
 	and 1 << BIT_BATTLE_SET
-	ld bc, $0
-	ASSERT BIT_BATTLE_SET == 6
-	rla
-	rla
-	rl c
-	ld hl, BattleStyleOptionStringsPointerTable
-	add hl, bc
-	add hl, bc
-	ld a, [hli]
-	ld e, a
-	ld d, [hl]
+	ld de, BattleStyleShiftText
+	jr z, .gotPointer
+	ld de, BattleStyleSetText
+.gotPointer
 	hlcoord OPTIONS_MENU_X_COORD, 7
 	call PlaceString
 	and a
 	ret
-
-BattleStyleOptionStringsPointerTable:
-	dw BattleStyleShiftText
-	dw BattleStyleSetText
 
 
 OptionsMenu_MeasureUnits: ; bit set = metric
@@ -223,22 +201,14 @@ OptionsMenu_MeasureUnits: ; bit set = metric
 	ld [wOptions], a
 .keep
 	and 1 << BIT_UNITS_METRIC
-	ld hl, MeasureUnitsOptionStringsPointerTable
+	ld de, MeasureUnitsImperialText
 	jr z, .gotPointer
-	inc hl
-	inc hl
+	ld de, MeasureUnitsMetricText
 .gotPointer
-	ld a, [hli]
-	ld e, a
-	ld d, [hl]
 	hlcoord OPTIONS_MENU_X_COORD, 11
 	call PlaceString
 	and a
 	ret
-
-MeasureUnitsOptionStringsPointerTable:
-	dw MeasureUnitsImperialText
-	dw MeasureUnitsMetricText
 
 
 OptionsMenu_SpriteStyle:
