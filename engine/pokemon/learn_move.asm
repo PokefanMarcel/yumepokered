@@ -143,8 +143,7 @@ TryingToLearn:
 	ld hl, WhichMoveToForgetText
 	call PrintText
 	hlcoord 4, 7
-	ld b, 4
-	ld c, 14
+	lb bc, 4, 14
 	call TextBoxBorder
 
 	; joenote - disable sprites behind the text box
