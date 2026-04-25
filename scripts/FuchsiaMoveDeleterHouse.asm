@@ -10,6 +10,7 @@ FuchsiaMoveDeleterHouse_TextPointers:
 ; marcelnote - pokered Move Deleter/Relearner tutorial
 MoveDeleterText:
 	text_asm
+	call SaveScreenTilesToBuffer2
 	ld hl, MoveDeleterGreetingText
 	call PrintText
 	call YesNoChoice
@@ -25,16 +26,18 @@ MoveDeleterText:
 	ld hl, MoveDeleterSaidYesText
 	call PrintText
 	; Select pokemon from party.
-	call SaveScreenTilesToBuffer2
 	xor a
-	ld [wListScrollOffset], a
+;	ld [wListScrollOffset], a
 	ld [wPartyMenuTypeOrMessageID], a
+	dec a
 	ld [wUpdateSpritesEnabled], a
-	ld [wMenuItemToSwap], a
+;	ld [wMenuItemToSwap], a
 	call DisplayPartyMenu
 	push af
 	call GBPalWhiteOutWithDelay3
 	call RestoreScreenTilesAndReloadTilePatterns
+	call LoadScreenTilesFromBuffer2
+	call Delay3
 	call LoadGBPal
 	pop af
 	jr c, .exit
