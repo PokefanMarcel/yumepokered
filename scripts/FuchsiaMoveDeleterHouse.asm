@@ -34,17 +34,22 @@ MoveDeleterText:
 	dec a ; a = $ff
 	ld [wUpdateSpritesEnabled], a
 	call DisplayPartyMenu
+	jr .checkChosenMon
+
+.goBackToChooseMon
+	call GoBackToPartyMenu
+.checkChosenMon
 	jr c, .restoreAndExit
 	call PrepareDeletableMoveList ; b = number of moves known
 	dec b
 	jr nz, .chooseMove
 	ld hl, MoveDeleterOneMoveText
 	call PrintText
-	jr .chooseMon
+	jr .goBackToChooseMon
 
 .chooseMove
 	call MoveDeleterChooseMove
-	jr c, .chooseMon
+	jr c, .goBackToChooseMon
 	push bc ; save c = move index (0-3)
 	ld [wMoveNum], a
 	ld [wNamedObjectIndex], a
@@ -56,7 +61,7 @@ MoveDeleterText:
 	pop de  ; restore e = move index (0-3)
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .chooseMon
+	jr nz, .goBackToChooseMon
 	ld a, [wWhichPokemon] ; a = mon index
 	ld hl, wPartyMon1Moves
 	ld bc, wPartyMon2 - wPartyMon1
