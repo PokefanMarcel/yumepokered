@@ -15,8 +15,11 @@ DontAbandonLearning:
 	ld a, [wWhichPokemon]
 	call AddNTimes
 
-	jp LearnAsFieldMove ; marcelnote - for temporary field moves
-.back
+	push hl
+	call TryLearnAsFieldMove ; marcelnote - for temporary field moves
+	pop hl
+	jp c, AbandonLearning        ; already knows field move
+	jp nz, PrintLearnedFieldMove ; learned as field move
 
 	ld d, h
 	ld e, l
@@ -102,12 +105,7 @@ AbandonLearning:
 	ld b, 0
 	ret
 
-;PrintLearnedMove:
-;	ld hl, LearnedMove1Text
-;	call PrintText
-;	ld b, 1
-;	ret
-PrintLearnedMove: ; marcelnote - for temporary field moves
+PrintLearnedMove: ; marcelnote - modified for temporary field moves
 	ld hl, LearnedMove1Text
 	call PrintText
 	lb bc, 1, 0 ; marcelnote - b=1 to indicate move was learnt
@@ -261,14 +259,16 @@ HMCantDeleteText:
 
 ; marcelnote - for temporary field moves, adapted from shinpokered
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-LearnAsFieldMove:
+TryLearnAsFieldMove:
 ;return z flag if not executed
 ;return nz flag if field move slot was learned
-	push hl
-
 	ld a, [wIsInBattle]
 	and a
 	jr nz, .return_fail	; do not allow the learning of a temporary field move in battle
+
+	ld a, [wPartyMenuTypeOrMessageID]
+	cp TMHM_PARTY_MENU
+	jr nz, .return_fail
 
 	ld a, [wMoveNum]
 	ld hl, FieldMovesList ; array to search
@@ -277,10 +277,6 @@ LearnAsFieldMove:
 
 	ld hl, TeachFieldMoveText
 	call PrintText
-	;call LearnMoveYesNo ; marcelnote - why this and not YesNoChoice?
-	;ld a, [wCurrentMenuItem]
-	;rra ; rotate register a right through carry
-	;jr c, .return_fail	; exit if No is chosen
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
@@ -308,17 +304,14 @@ LearnAsFieldMove:
 
 .return_success
 	xor a
-	add 1
-	pop hl
-	jp PrintLearnedFieldMove
+	inc a
+	ret
 .return_fail
-	xor a
-	pop hl
-	jp DontAbandonLearning.back
+	xor a ; set Z flag
+	ret
 .return_occupied
-	xor a
-	pop hl
-	jp AbandonLearning
+	scf
+	ret
 
 TeachFieldMoveText:
 	text_far _TeachFieldMoveText
