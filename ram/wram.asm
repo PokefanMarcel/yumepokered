@@ -1196,17 +1196,15 @@ UNION
 wPartyMenuBlkPacket:: ds $30
 
 NEXTU
-	ds 29
-; storage buffer for various strings
-wStringBuffer:: ds NAME_BUFFER_LENGTH
-
-NEXTU
-	ds 29
 ; the total amount of exp a mon gained
+; marcelnote - moved into same union as wStringBuffer because gets clobbered when a Mon learns a move
 wExpAmountGained:: dw
 wGainBoostedExp:: db
 wExpAmountPerShare:: dw  ; marcelnote - new for ExpAll
 wNumSharesExp:: db       ; marcelnote - new for ExpAll
+	ds 23
+; storage buffer for various strings
+wStringBuffer:: ds NAME_BUFFER_LENGTH
 ENDU
 
 wGymCityName:: ds GYM_CITY_LENGTH
