@@ -208,28 +208,23 @@ MoveDeleterOneMoveText:
 
 MoveReminderText:
 	text_asm
+	call SaveScreenTilesToBuffer2
 	ld hl, MoveReminderGreetingText
 	call PrintText
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jp nz, .exit
-	xor a
-	ldh [hMoney], a
+	jr nz, .exit
+	ldh [hMoney], a ; a = 0
 	ldh [hMoney + 2], a
 	ld a, $10
 	ldh [hMoney + 1], a ; charge ¥1000
 	call HasEnoughMoney
-	jr nc, .enoughMoney
 	ld hl, MoveReminderNotEnoughMoneyText
-	call PrintText
-	rst TextScriptEnd
-
-.enoughMoney
+	jr c, .print_text
 	ld hl, MoveReminderSaidYesText
 	call PrintText
 	; Select pokemon from party.
-	call SaveScreenTilesToBuffer2
 	xor a
 	ld [wPartyMenuTypeOrMessageID], a
 	ld [wMenuItemToSwap], a
@@ -242,9 +237,7 @@ MoveReminderText:
 	call GoBackToPartyMenu
 .checkChosenMon
 	jr c, .restoreAndExit
-	ld hl, PrepareRelearnableMoveList
-	ld b, BANK(PrepareRelearnableMoveList)
-	rst _Bankswitch ; marcelnote - free space in Home bank, changed from call Bankswitch
+	callfar PrepareRelearnableMoveList
 	ld a, [wMoveBuffer]
 	and a ; empty list?
 	jr nz, .chooseMove
@@ -267,47 +260,42 @@ MoveReminderText:
 	predef LearnMove
 	pop af
 	ld [wLetterPrintingDelayFlags], a
-	ld a, b
-	and a
-	jr z, .restoreAndExit
+	dec b ; b = 1 means move was learnt
+	jr nz, .restoreAndExit
+	ld hl, wPriceTemp
 	xor a
-	ld [wPriceTemp], a
-	ld [wPriceTemp + 2], a
+	ld [hli], a ; [wPriceTemp] = 0
 	ld a, $10
-	ld [wPriceTemp + 1], a
-	ld hl, wPriceTemp + 2
+	ld [hli], a ; [wPriceTemp + 1] = $10
+	ld [hl], b  ; [wPriceTemp + 2] = 0
 	ld de, wPlayerMoney + 2
 	ld c, 3
-	predef SubBCDPredef
+	predef SubBCDPredef ; charge ¥1000
 .restoreAndExit
 	call GBPalWhiteOutWithDelay3
 	call RestoreScreenTilesAndReloadTilePatterns
 	call LoadGBPal
 .exit
 	ld hl, MoveReminderByeText
+.print_text
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 MoveReminderChooseMove:
 ; Sets carry if pressed B (cancel).
 ; Output: [wCurListMenuItem] = move id
-	call SaveScreenTilesToBuffer1
 	ld hl, MoveReminderWhichMoveText
 	call PrintText
+	call SaveScreenTilesToBuffer1
 	ld hl, wStatusFlags5
 	set BIT_NO_TEXT_DELAY, [hl]
 	xor a
 	ld [wCurrentMenuItem], a
 	ld [wLastMenuItem], a
-	call MoveReminderDrawMoveList
+	call MoveReminderDrawMoveList ; sets [wTopMenuItemY]
 	ld a, [wMoveBuffer]
 	dec a
 	ld [wMaxMenuItem], a
-	ld a, [wMoveBuffer]
-	ld b, a
-	ld a, 12
-	sub b
-	ld [wTopMenuItemY], a
 	ld a, 5
 	ld [wTopMenuItemX], a
 	ld a, PAD_A | PAD_B
@@ -340,59 +328,50 @@ MoveReminderChooseMove:
 
 MoveReminderDrawMoveList:
 	ld a, [wMoveBuffer]
-	ld e, a ; move count
+	cp 11
+	jr nc, .longList
+	ld b, a
 	ld a, 12
-	sub e
+	sub b ; a = 12 - b
+	jr .gotTopMenuItemY
+.longList
+	ld a, 1
+.gotTopMenuItemY
 	ld [wTopMenuItemY], a ; first item y
 	dec a
-	ld b, a ; box y
-	ld c, 4 ; box x
-	push de
-	call MoveReminderCoordFromBC
-	pop de
-	push de
-	ld b, e ; move count
+	ld hl, wTileMap
+	lb bc, 0, SCREEN_WIDTH
+	call AddNTimes
+	ld c, 4
+	add hl, bc
+	ld a, [wMoveBuffer]
+	ld b, a ; move count
 	ld c, 14
-	call TextBoxBorder
-	pop de
-	ld hl, wMoveBuffer + 1
-	ld b, e
-.printLoop
-	push bc
 	push hl
-	ld a, [hli]
+	call TextBoxBorder
+	pop hl
+	ld bc, SCREEN_WIDTH + 2
+	add hl, bc
+	ld de, wMoveBuffer
+	ld a, [de] ; a = num moves
+.printLoop
+	inc de
+	push af ; save a = move counter
+	push de ; save de = current move address
+	push hl ; save hl = current screen address
+	ld a, [de] ; next move
 	ld [wNamedObjectIndex], a
 	call GetMoveName
-	ld a, [wTopMenuItemY]
-	ld b, a
-	ld c, 6
-	call MoveReminderCoordFromBC
 	ld de, wNameBuffer
 	call PlaceString
-	ld hl, wTopMenuItemY
-	inc [hl]
-	pop hl
-	inc hl
-	pop bc
-	dec b
-	jr nz, .printLoop
-	ret
-
-MoveReminderCoordFromBC:
-; b = y, c = x
-	ld h, 0
-	ld l, b
-	add hl, hl ; y * 2
-	add hl, hl ; y * 4
-	push hl
-	add hl, hl ; y * 8
-	add hl, hl ; y * 16
-	pop de
-	add hl, de ; y * 20
-	ld b, 0
-	add hl, bc
-	ld de, wTileMap
+	pop hl ; restore hl = current screen address
+	ld de, SCREEN_WIDTH
 	add hl, de
+	pop de ; restore de = current move address
+	pop af ; restore a = move counter
+	dec a
+	jr nz, .printLoop
+	call Delay3
 	ret
 
 

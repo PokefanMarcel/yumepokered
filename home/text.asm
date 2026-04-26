@@ -1,5 +1,5 @@
 TextBoxBorder::
-; Draw a c×b text box at hl.
+; Draw a b×c text box at hl.
 
 	; top row
 	push hl

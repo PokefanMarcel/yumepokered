@@ -7,6 +7,7 @@ LearnMove:
 	ld de, wLearnMoveMonName
 	ld bc, NAME_LENGTH
 	call CopyData
+	; fallthrough
 
 DontAbandonLearning:
 	ld hl, wPartyMon1Moves
@@ -109,12 +110,12 @@ AbandonLearning:
 PrintLearnedMove: ; marcelnote - for temporary field moves
 	ld hl, LearnedMove1Text
 	call PrintText
-	ld bc, $0100 ; marcelnote - b=1 to indicate move was learnt
+	lb bc, 1, 0 ; marcelnote - b=1 to indicate move was learnt
 	ret
 PrintLearnedFieldMove:
 	ld hl, CanUseMoveText
 	call PrintText
-	ld bc, $0101 ; marcelnote - b=1 to indicate move was learnt, c=1 to indicate as field move
+	lb bc, 1, 1 ; marcelnote - b=1 to indicate move was learnt, c=1 to indicate as field move
 	ret
 
 TryingToLearn:

@@ -83,4 +83,4 @@ _MoveReminderNoMovesText::
 	text "This #MON"
 	line "hasn't forgotten"
 	cont "any moves."
-	done
+	prompt

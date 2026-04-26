@@ -515,7 +515,7 @@ Evolution_FlagAction:
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; marcelnote - pokered Move Deleter/Relearner tutorial
-PrepareRelearnableMoveList:: ;joenote - custom function by Mateo for move relearner
+PrepareRelearnableMoveList::
 ; Loads relearnable move list to wRelearnableMoves.
 	; Get mon species id.
 	ld a, [wWhichPokemon] ; a = party mon index

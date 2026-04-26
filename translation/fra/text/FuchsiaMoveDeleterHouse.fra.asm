@@ -89,4 +89,4 @@ _MoveReminderNoMovesText::
 	text "Ce #MON n'a"
 	line "oublié aucune"
 	cont "attaque."
-	done
+	prompt
