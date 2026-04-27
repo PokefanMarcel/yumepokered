@@ -4733,13 +4733,12 @@ CriticalHitTest:
 INCLUDE "data/battle/critical_hit_moves.asm"
 
 ; function to determine if Counter hits and if so, how much damage it does
-HandleCounterMove:
+HandleCounterMove: ; marcelnote - adjusted to counter any physical type
 ; The variables checked by Counter are updated whenever the cursor points to a new move in the battle selection menu.
 ; This is irrelevant for the opponent's side outside of link battles, since the move selection is controlled by the AI.
 ; However, in the scenario where the player switches out and the opponent uses Counter,
 ; the outcome may be affected by the player's actions in the move selection menu prior to switching the Pokemon.
 ; This might also lead to desync glitches in link battles.
-
 	ldh a, [hWhoseTurn] ; whose turn
 	and a
 ; player's turn
@@ -4754,25 +4753,28 @@ HandleCounterMove:
 .next
 	cp COUNTER
 	ret nz ; return if not using Counter
-	ld a, $01
-	ld [wMoveMissed], a ; initialize the move missed variable to true (it is set to false below if the move hits)
+	ld a, TRUE
+	ld [wMoveMissed], a ; can become False below
 	ld a, [hl]
 	cp COUNTER
-	ret z ; miss if the opponent's last selected move is Counter.
+	ret z ; miss if the opponent's last selected move is Counter
 	ld a, [de]
 	and a
-	ret z ; miss if the opponent's last selected move's Base Power is 0.
-; check if the move the target last selected was Normal or Fighting type
+	ret z ; miss if the opponent's last selected move's Base Power is 0
+; check if the move the target last selected was a Physical type ; marcelnote - adjusted
 	inc de
-	ld a, [de]
-	and a ; normal type
-	jr z, .counterableType
-	cp FIGHTING
-	jr z, .counterableType
-; if the move wasn't Normal or Fighting type, miss
+	ld a, [de] ; move type
+	ld c, a
+	ld b, 0
+	ld hl, SpecialTypesList
+	add hl, bc
+	ld a, [hl]
+	and a ; TRUE if Special, FALSE if Physical
+	jr z, .physicalType
+; if the move wasn't Physical type, miss
 	xor a
 	ret
-.counterableType
+.physicalType
 	ld hl, wDamage
 	ld a, [hli]
 	or [hl]
@@ -4792,7 +4794,7 @@ HandleCounterMove:
 	ld [hli], a
 	ld [hl], a
 .noCarry
-	xor a
+	xor a ; FALSE
 	ld [wMoveMissed], a
 	call MoveHitTest ; do the normal move hit test in addition to Counter's special rules
 	xor a
