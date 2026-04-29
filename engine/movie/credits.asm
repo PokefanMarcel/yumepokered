@@ -177,10 +177,8 @@ Credits:
 	push de
 .nextCreditsScreen
 	pop de
-	hlcoord 9, 6
-	push hl
 	call FillMiddleOfScreenWithWhite
-	pop hl
+	hlcoord 9, 6
 .nextCreditsCommand
 	ld a, [de]
 	inc de
@@ -200,17 +198,17 @@ Credits:
 	push hl
 	push hl
 	ld hl, CreditsTextPointers
-	add a
 	ld c, a
 	ld b, 0
 	add hl, bc
-	ld e, [hl]
-	inc hl
+	add hl, bc
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 	ld a, [de]
 	inc de
 	ld c, a
-	ld b, -1
+	dec b ; b = -1
 	pop hl
 	add hl, bc
 	call PlaceString
@@ -219,31 +217,37 @@ Credits:
 	add hl, bc
 	pop de
 	jr .nextCreditsCommand
+
 .fadeInTextAndShowMon
 	call FadeInCredits
 	ld c, 90
 	jr .next1
+
 .showTextAndShowMon
 	ld c, 110
 .next1
 	call DelayFrames
 	call DisplayCreditsMon
 	jr .nextCreditsScreen
+
 .fadeInText
 	call FadeInCredits
 	ld c, 120
 	jr .next2
+
 .showText
 	ld c, 140
 .next2
 	call DelayFrames
 	jr .nextCreditsScreen
+
 .showCopyrightText
 	push de
 	callfar LoadCopyrightTiles
 	pop de
 	pop de
 	jr .nextCreditsCommand
+
 .showTheEnd
 	ld c, 16
 	call DelayFrames
