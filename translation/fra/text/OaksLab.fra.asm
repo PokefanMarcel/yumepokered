@@ -483,7 +483,7 @@ _OaksLabRivalSeenNoBirdText:: ; marcelnote - postgame Rival event
 	done
 
 ; marcelnote - there must be a smarter way to define these text variants
-;              by making use of string buffers like wcd6d (stores names) and wStringBuffer
+;              by making use of string buffers like wNameBuffer and wStringBuffer
 _OaksLabRivalSeenArticunoText:: ; marcelnote - postgame Rival event
 	text "Alors t'as vu"
 	line "ARTIKODIN, hein."
