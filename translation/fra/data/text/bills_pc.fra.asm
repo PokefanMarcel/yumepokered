@@ -1,13 +1,12 @@
-BillsPCMenuText:
-	db   "RETIRER <PKMN>"
-	next "STOCKER <PKMN>"
-	next "RELACHER <PKMN>"
-	next "CHANGER BOITE"
-	next "SALUT!"
-	db "@"
+; marcelnote - revamped Bill's PC
 
-BoxNoPCText:
-	db "BOITE@"
+;BillsPCMenuText:
+;	db   "RETIRER <PKMN>"
+;	next "STOCKER <PKMN>"
+;	next "RELACHER <PKMN>"
+;	next "CHANGER BOITE"
+;	next "SALUT!"
+;	db "@"
 
 SomeonesPCText:   db "PC DE ???@"
 BillsPCText:      db "PC DE LEO@"
@@ -16,8 +15,10 @@ OaksPCText:       db "PC DE CHEN@"
 PKMNLeaguePCText: db "LIGUE <PKMN>@"
 LogOffPCText:     db "DECONNEXION@"
 
+BillsPCWhatToDoText:  db "Que faire?@"
+
 DepositPCText:  db "STOCKER@"
 WithdrawPCText: db "RETIRER@"
-StatsCancelPCText:
-	db   "STATS"
-	next "RETOUR@"
+StatsPCText:    db "STATS@"
+ReleasePCText:  db "RELACHER@"
+CancelPCText:   db "RETOUR@"

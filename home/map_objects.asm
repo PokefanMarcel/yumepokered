@@ -34,8 +34,8 @@ TextScript_ItemStoragePC::
 
 TextScript_BillsPC::
 	call SaveScreenTilesToBuffer2
-	ld b, BANK(BillsPC_)
-	ld hl, BillsPC_
+	ld b, BANK(BillsPC)
+	ld hl, BillsPC
 	jr BankswitchAndContinue
 
 TextScript_GameCornerPrizeMenu::

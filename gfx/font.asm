@@ -37,6 +37,15 @@ GameFreakLogoGraphicsEnd:
 TextBoxGraphics:: INCBIN "gfx/font/font_extra.2bpp"
 TextBoxGraphicsEnd::
 
+; marcelnote - revamped Bill's PC
+IF DEF(_FRA)
+	BillsPCChangeBoxGraphics: INCBIN "translation/fra/gfx/font/change_box.fra.1bpp"
+	BillsPCChangeBoxGraphicsEnd::
+ELSE
+	BillsPCChangeBoxGraphics: INCBIN "gfx/font/change_box.1bpp"
+	BillsPCChangeBoxGraphicsEnd::
+ENDC
+
 StatsBarGraphics: INCBIN "gfx/pokedex/stats_bar.2bpp" ; marcelnote - new
 StatsBarGraphicsEnd:
 

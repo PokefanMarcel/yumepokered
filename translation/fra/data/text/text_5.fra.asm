@@ -101,7 +101,7 @@ _SentToBoxText::
 	text "Plus de place"
 	line "pour un #MON!"
 	cont "@"
-	text_ram wBoxMonNicks
+	text_ram wNameBuffer ; marcelnote - revamped Bill's PC, was wBoxMonNicks
 	text " est"
 	cont "transféré à la"
 	cont "BOITE @"

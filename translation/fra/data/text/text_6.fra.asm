@@ -33,14 +33,14 @@ _ItemUseBallText05::
 	text_end
 
 _ItemUseBallText07::
-	text_ram wBoxMonNicks
+	text_ram wNameBuffer ; marcelnote - revamped Bill's PC, was wBoxMonNicks
 	text " est"
 	line "transféré au PC"
 	cont "de LEO!"
 	prompt
 
 _ItemUseBallText08::
-	text_ram wBoxMonNicks
+	text_ram wNameBuffer ; marcelnote - revamped Bill's PC, was wBoxMonNicks
 	text " est"
 	line "transféré au PC"
 	cont "inconnu!"

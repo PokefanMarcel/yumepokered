@@ -1241,14 +1241,10 @@ wHPBarType::
 ; ID used by DisplayListMenuID
 wListMenuID:: db
 
-; if non-zero, RemovePokemon will remove the mon from the current box,
-; else it will remove the mon from the party
-wRemoveMonFromBox::
-; 0 = move from box to party
-; 1 = move from party to box
-; 2 = move from daycare to party
-; 3 = move from party to daycare
-wMoveMonType:: db
+;wRemoveMonFromBox:: ; marcelnote - revamped Bill's PC, now unused
+; 0 = copy from daycare to party
+; 1 = copy from party to daycare
+wCopyMonType:: db
 
 wItemQuantity:: db
 

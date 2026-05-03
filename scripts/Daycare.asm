@@ -49,10 +49,8 @@ DaycareGentlemanText:
 	ld a, 1
 	ld [wDayCareInUse], a
 	ld a, PARTY_TO_DAYCARE
-	ld [wMoveMonType], a
-	call MoveMon
-	xor a
-	ld [wRemoveMonFromBox], a
+	ld [wCopyMonType], a
+	call CopyMonDaycare ; marcelnote - revamped Bill's PC
 	call RemovePokemon
 	ld a, [wCurPartySpecies]
 	call PlayCry
@@ -111,9 +109,9 @@ DaycareGentlemanText:
 	inc de
 	ld [de], a
 	ld hl, wDayCarePerLevelCost
-	ld a, $1
+	ld a, 1
 	ld [hli], a
-	ld [hl], $0
+	ld [hl], 0
 	ld a, [wDayCareNumLevelsGrown]
 	inc a
 	ld b, a
@@ -166,15 +164,14 @@ DaycareGentlemanText:
 	ld hl, .HeresYourMonText
 	call PrintText
 	ld a, DAYCARE_TO_PARTY
-	ld [wMoveMonType], a
-	call MoveMon
+	ld [wCopyMonType], a
+	call CopyMonDaycare ; marcelnote - revamped Bill's PC
 	ld a, [wDayCareMonSpecies]
 	ld [wCurPartySpecies], a
 	ld a, [wPartyCount]
 	dec a
 	push af
 	ld bc, PARTYMON_STRUCT_LENGTH
-	push bc
 	ld hl, wPartyMon1Moves
 	call AddNTimes
 	ld d, h
@@ -182,11 +179,11 @@ DaycareGentlemanText:
 	ld a, 1
 	ld [wLearningMovesFromDayCare], a
 	predef WriteMonMoves
-	pop bc
 	pop af
 
 ; set mon's HP to max
 	ld hl, wPartyMon1HP
+	ld bc, PARTYMON_STRUCT_LENGTH
 	call AddNTimes
 	ld d, h
 	ld e, l
@@ -206,10 +203,9 @@ DaycareGentlemanText:
 .leaveMonInDayCare
 	ld a, [wDayCareStartLevel]
 	ld [wDayCareMonBoxLevel], a
-
 .print_text
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .IntroText:
 	text_far _DaycareGentlemanIntroText

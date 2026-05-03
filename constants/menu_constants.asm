@@ -58,12 +58,10 @@ DEF CANCELLED_MENU    EQU 2 ; pressed B
 DEF CHOSE_FIRST_ITEM  EQU 1
 DEF CHOSE_SECOND_ITEM EQU 2
 
-; move mon constants
+; move mon constants ; marcelnote - revamped Bill's PC, now daycare only
 	const_def
-	const BOX_TO_PARTY     ; 0
-	const PARTY_TO_BOX     ; 1
-	const DAYCARE_TO_PARTY ; 2
-	const PARTY_TO_DAYCARE ; 3
+	const DAYCARE_TO_PARTY ; 0
+	const PARTY_TO_DAYCARE ; 1
 
 ; party menu types
 ; PartyMenuMessagePointers indexes (see engine/menus/party_menu.asm)

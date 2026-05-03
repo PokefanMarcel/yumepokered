@@ -13,10 +13,8 @@ CopyDataUntil::
 	jr nz, CopyDataUntil
 	ret
 
-; Function to remove a pokemon from the party or the current box.
-; wWhichPokemon determines the pokemon.
-; [wRemoveMonFromBox] == 0 specifies the party.
-; [wRemoveMonFromBox] != 0 specifies the current box.
+; marcelnote - revamped Bill's PC
+; Removes mon at wWhichPokemon from the party.
 RemovePokemon::
 	jpfar _RemovePokemon
 
@@ -207,6 +205,6 @@ AddEnemyMonToPlayerParty::
 	homecall_sf _AddEnemyMonToPlayerParty
 	ret
 
-MoveMon::
-	homecall_sf _MoveMon
+CopyMonDaycare:: ; marcelnote - revamped Bill's PC
+	homecall_sf _CopyMonDaycare
 	ret

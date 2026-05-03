@@ -221,6 +221,12 @@ WriteMonPartySpriteOAMByPartyIndex:
 ;	pop hl
 ;	jp CopyVideoData
 
+SetCurPartySpeciesSpriteID: ; marcelnote - revamped Bill's PC
+	ld a, [wCurPartySpecies]
+	call GetPartyMonSpriteID
+	ld [wOAMBaseTile], a
+	ret
+
 WriteMonPartySpriteOAMBySpecies:
 ; Write OAM blocks for the party sprite of the species in
 ; [wMonPartySpriteSpecies].
@@ -257,7 +263,7 @@ WriteMonPartySpriteOAM:
 	ld bc, OBJ_SIZE * 4 * PARTY_LENGTH
 	jp CopyData
 
-GetPartyMonSpriteID:
+GetPartyMonSpriteID: ; input: a = species, output: a = icon base tile
 	ld [wPokedexNum], a
 	predef IndexToPokedex
 	ld a, [wPokedexNum]

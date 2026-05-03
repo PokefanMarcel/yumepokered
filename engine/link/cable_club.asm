@@ -794,8 +794,6 @@ TradeCenter_Trade:
 	add hl, bc
 	ld a, [hl]
 	ld [wTradedPlayerMonSpecies], a
-	xor a
-	ld [wRemoveMonFromBox], a
 	call RemovePokemon
 	ld a, [wTradingWhichEnemyMon]
 	ld c, a

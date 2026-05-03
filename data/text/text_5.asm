@@ -114,7 +114,7 @@ _SentToBoxText::
 	text "There's no more"
 	line "room for #MON!"
 	cont "@"
-	text_ram wBoxMonNicks
+	text_ram wNameBuffer ; marcelnote - revamped Bill's PC, was wBoxMonNicks
 	text " was"
 	cont "sent to #MON"
 	cont "BOX @"

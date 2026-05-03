@@ -11,43 +11,42 @@ ActivatePC::
 	call Delay3
 PCMainMenu:
 	callfar DisplayPCMainMenu
+PCMainMenuHandle: ; marcelnote - revamped Bill's PC, simplified branching below
 	ld hl, wMiscFlags
 	set BIT_NO_MENU_BUTTON_SOUND, [hl]
 	call HandleMenuInput
 	bit B_PAD_B, a
-	jp nz, LogOff
+	jr nz, .LogOff
 	ld a, [wMaxMenuItem]
-	cp 2
-	jr nz, .next ;if not 2 menu items (not counting log off) (2 occurs before you get the pokedex)
+	ld b, a
 	ld a, [wCurrentMenuItem]
+	cp b ; last menu item?
+	jr z, .LogOff
 	and a
-	jp z, BillsPC    ;if current menu item id is 0, it's bills pc
-	cp 1
-	jr z, .playersPC ;if current menu item id is 1, it's players pc
-	jp LogOff        ;otherwise, it's 2, and you're logging off
-.next
-	cp 3
-	jr nz, .next2 ;if not 3 menu items (not counting log off) (3 occurs after you get the pokedex, before you beat the pokemon league)
-	ld a, [wCurrentMenuItem]
-	and a
-	jp z, BillsPC    ;if current menu item id is 0, it's bills pc
-	cp 1
-	jr z, .playersPC ;if current menu item id is 1, it's players pc
-	cp 2
-	jp z, OaksPC     ;if current menu item id is 2, it's oaks pc
-	jp LogOff        ;otherwise, it's 3, and you're logging off
-.next2
-	ld a, [wCurrentMenuItem]
-	and a
-	jp z, BillsPC    ;if current menu item id is 0, it's bills pc
-	cp 1
-	jr z, .playersPC ;if current menu item id is 1, it's players pc
-	cp 2
-	jp z, OaksPC     ;if current menu item id is 2, it's oaks pc
-	cp 3
-	jp z, PKMNLeague ;if current menu item id is 3, it's pkmnleague
-	jp LogOff        ;otherwise, it's 4, and you're logging off
-.playersPC
+	jr z, .BillsPC
+	dec a
+	jr z, .PlayersPC
+	dec a
+	jr z, .OaksPC
+	; fallthrough
+
+.PKMNLeague
+	ld a, SFX_ENTER_PC
+	call PlaySound
+	call WaitForSoundToFinish
+	callfar PKMNLeaguePC
+	jr ReloadMainMenu
+
+.LogOff
+	ld a, SFX_TURN_OFF_PC
+	call PlaySound
+	call WaitForSoundToFinish
+	ld hl, wMiscFlags
+	res BIT_USING_GENERIC_PC, [hl]
+	res BIT_NO_MENU_BUTTON_SOUND, [hl]
+	ret
+
+.PlayersPC
 	ld hl, wMiscFlags
 	res BIT_NO_MENU_BUTTON_SOUND, [hl]
 	set BIT_USING_GENERIC_PC, [hl]
@@ -58,19 +57,15 @@ PCMainMenu:
 	call PrintText
 	callfar PlayerPC
 	jr ReloadMainMenu
-OaksPC:
+
+.OaksPC
 	ld a, SFX_ENTER_PC
 	call PlaySound
 	call WaitForSoundToFinish
 	callfar OpenOaksPC
 	jr ReloadMainMenu
-PKMNLeague:
-	ld a, SFX_ENTER_PC
-	call PlaySound
-	call WaitForSoundToFinish
-	callfar PKMNLeaguePC
-	jr ReloadMainMenu
-BillsPC:
+
+.BillsPC ; marcelnote - revamped Bill's PC
 	ld a, SFX_ENTER_PC
 	call PlaySound
 	call WaitForSoundToFinish
@@ -80,23 +75,22 @@ BillsPC:
 	ld hl, AccessedSomeonesPCText
 .got_text
 	call PrintText
-	callfar BillsPC_
-	; fallthrough
+	callfar BillsPC
+	xor a
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	call ReloadMapData
+	call UpdateSprites
+	callfar DisplayPCMainMenu
+	call Delay3
+	call GBPalNormal
+	jp PCMainMenuHandle
+
 ReloadMainMenu:
 	xor a
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	call ReloadMapData
 	call UpdateSprites
 	jp PCMainMenu
-
-LogOff:
-	ld a, SFX_TURN_OFF_PC
-	call PlaySound
-	call WaitForSoundToFinish
-	ld hl, wMiscFlags
-	res BIT_USING_GENERIC_PC, [hl]
-	res BIT_NO_MENU_BUTTON_SOUND, [hl]
-	ret
 
 TurnedOnPC1Text:
 	text_far _TurnedOnPC1Text

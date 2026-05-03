@@ -338,180 +338,102 @@ _AddEnemyMonToPlayerParty::
 	and a
 	ret                  ; return success
 
-_MoveMon::
-	ld a, [wMoveMonType]
-	and a   ; BOX_TO_PARTY
-	jr z, .checkPartyMonSlots
-	cp DAYCARE_TO_PARTY
-	jr z, .checkPartyMonSlots
-	cp PARTY_TO_DAYCARE
-	ld hl, wDayCareMon
-	jr z, .findMonDataSrc
-	; else it's PARTY_TO_BOX
-	ld hl, wBoxCount
-	ld a, [hl]
-	cp MONS_PER_BOX
-	jr nz, .partyOrBoxNotFull
-	jr .boxFull
-.checkPartyMonSlots
+; marcelnote - revamped Bill's PC, replaces _MoveMon, now only handles Daycare deposit and withdrawal
+_CopyMonDaycare::
+	ld a, [wCopyMonType]
+	and a ; DAYCARE_TO_PARTY?
+	jr nz, .partyToDaycare
+
+	; Copy species.
 	ld hl, wPartyCount
-	ld a, [hl]
-	cp PARTY_LENGTH
-	jr nz, .partyOrBoxNotFull
-.boxFull
-	scf
-	ret
-.partyOrBoxNotFull
-	inc a
-	ld [hl], a           ; increment number of mons in party/box
+	ld a, [hli]         ; hl = wPartySpecies
 	ld c, a
 	ld b, 0
-	add hl, bc
-	ld a, [wMoveMonType]
-	cp DAYCARE_TO_PARTY
+	add hl, bc          ; hl = wPartySpecies<n> (current party list terminator)
 	ld a, [wDayCareMon]
-	jr z, .copySpecies
-	ld a, [wCurPartySpecies]
-.copySpecies
-	ld [hli], a          ; write new mon ID
-	ld [hl], $ff         ; write new sentinel
-; find mon data dest
-	ld a, [wMoveMonType]
-	dec a
+	ld [hli], a
+	ld [hl], $ff        ; new sentinel
+
+	; Copy mon data.
 	ld hl, wPartyMons
 	ld bc, PARTYMON_STRUCT_LENGTH
-	ld a, [wPartyCount]
-	jr nz, .addMonOffset
-	; if it's PARTY_TO_BOX
-	ld hl, wBoxMons
-	ld bc, BOXMON_STRUCT_LENGTH
-	ld a, [wBoxCount]
-.addMonOffset
-	dec a
+	ld a, [wPartyCount] ; old party count
 	call AddNTimes
-.findMonDataSrc
-	push hl
-	ld e, l
+	push hl ; save hl = wPartyMons<n>
 	ld d, h
-	ld a, [wMoveMonType]
-	and a
-	ld hl, wBoxMons
-	ld bc, BOXMON_STRUCT_LENGTH
-	jr z, .addMonOffset2
-	cp DAYCARE_TO_PARTY
+	ld e, l ; de = wPartyMons<n>
 	ld hl, wDayCareMon
-	jr z, .copyMonData
-	ld hl, wPartyMons
-	ld bc, PARTYMON_STRUCT_LENGTH
-.addMonOffset2
-	ld a, [wWhichPokemon]
-	call AddNTimes
-.copyMonData
-	push hl
-	push de
 	ld bc, BOXMON_STRUCT_LENGTH
 	call CopyData
-	pop de
-	pop hl
-	ld a, [wMoveMonType]
-	and a ; BOX_TO_PARTY
-	jr z, .findOTdest
-	cp DAYCARE_TO_PARTY
-	jr z, .findOTdest
-	ld bc, BOXMON_STRUCT_LENGTH
-	add hl, bc
-	ld a, [hl] ; hl = Level
-	inc de
-	inc de
-	inc de
-	ld [de], a ; de = BoxLevel
-.findOTdest
-	ld a, [wMoveMonType]
-	cp PARTY_TO_DAYCARE
-	ld de, wDayCareMonOT
-	jr z, .findOTsrc
-	dec a
+
+	; Copy OT.
 	ld hl, wPartyMonOT
-	ld a, [wPartyCount]
-	jr nz, .addOToffset
-	ld hl, wBoxMonOT
-	ld a, [wBoxCount]
-.addOToffset
-	dec a
-	call SkipFixedLengthTextEntries
+	ld a, [wPartyCount] ; old party count
+	call SkipFixedLengthTextEntries ; sets bc = NAME_LENGTH
 	ld d, h
-	ld e, l
-.findOTsrc
-	ld hl, wBoxMonOT
-	ld a, [wMoveMonType]
-	and a
-	jr z, .addOToffset2
+	ld e, l ; de = wPartyMon<n>OT
 	ld hl, wDayCareMonOT
-	cp DAYCARE_TO_PARTY
-	jr z, .copyOT
-	ld hl, wPartyMonOT
-.addOToffset2
-	ld a, [wWhichPokemon]
-	call SkipFixedLengthTextEntries
-.copyOT
-	ld bc, NAME_LENGTH
 	call CopyData
-	ld a, [wMoveMonType]
-; find nick dest
-	cp PARTY_TO_DAYCARE
-	ld de, wDayCareMonName
-	jr z, .findNickSrc
-	dec a
+
+	; Copy nickname.
 	ld hl, wPartyMonNicks
-	ld a, [wPartyCount]
-	jr nz, .addNickOffset
-	ld hl, wBoxMonNicks
-	ld a, [wBoxCount]
-.addNickOffset
-	dec a
-	call SkipFixedLengthTextEntries
+	ld a, [wPartyCount] ; old party count
+	call SkipFixedLengthTextEntries ; sets bc = NAME_LENGTH
 	ld d, h
-	ld e, l
-.findNickSrc
-	ld hl, wBoxMonNicks
-	ld a, [wMoveMonType]
-	and a
-	jr z, .addNickOffset2
+	ld e, l ; de = wPartyMon<n>Nick
 	ld hl, wDayCareMonName
-	cp DAYCARE_TO_PARTY
-	jr z, .copyNick
-	ld hl, wPartyMonNicks
-.addNickOffset2
-	ld a, [wWhichPokemon]
-	call SkipFixedLengthTextEntries
-.copyNick
-	ld bc, NAME_LENGTH
 	call CopyData
-	pop hl
-	ld a, [wMoveMonType]
-	cp PARTY_TO_BOX
-	jr z, .done
-	cp PARTY_TO_DAYCARE
-	jr z, .done
-	; returning mon to party, compute level and stats
-	push hl
-	srl a
-	add $2
+
+	; Update party count.
+	ld hl, wPartyCount
+	inc [hl]
+
+	; Compute the new party mon's level and stats from its experience.
+	ld a, DAYCARE_DATA
 	ld [wMonDataLocation], a
 	call LoadMonData
 	callfar CalcLevelFromExperience
 	ld a, d
 	ld [wCurEnemyLevel], a
-	pop hl
+	pop hl ; restore hl = wPartyMon<n>
 	ld bc, BOXMON_STRUCT_LENGTH
-	add hl, bc ; hl = wPartyMon*Level
+	add hl, bc ; hl = wPartyMon<n>Level
 	ld [hli], a
 	ld d, h
-	ld e, l
+	ld e, l    ; de = wPartyMon<n>Stats
 	ld bc, (MON_HP_EXP - 1) - MON_STATS
-	add hl, bc ; hl = wPartyMon*HPExp - 1
-	ld b, $1
-	call CalcStats
-.done
-	and a
-	ret
+	add hl, bc ; hl = wPartyMon<n>HPExp - 1
+	ld b, 1    ; consider stat exp
+	jp CalcStats
+
+.partyToDaycare
+	; Copy wPartyMon<n> into the daycare slot.
+	ld hl, wPartyMons
+	ld bc, PARTYMON_STRUCT_LENGTH
+	ld a, [wWhichPokemon]
+	call AddNTimes
+	push hl ; save hl = wPartyMon<n>
+	ld de, wDayCareMon
+	ld bc, BOXMON_STRUCT_LENGTH
+	call CopyData
+
+	; Copy the party mon's level into wDayCareMonBoxLevel.
+	pop hl ; restore hl = wPartyMon<n>
+	ld bc, MON_LEVEL
+	add hl, bc
+	ld a, [hl]
+	ld [wDayCareMonBoxLevel], a
+
+	; Copy OT.
+	ld hl, wPartyMonOT
+	ld a, [wWhichPokemon]
+	call SkipFixedLengthTextEntries ; sets bc = NAME_LENGTH
+	ld de, wDayCareMonOT
+	call CopyData
+
+	; Copy nickname.
+	ld hl, wPartyMonNicks
+	ld a, [wWhichPokemon]
+	call SkipFixedLengthTextEntries ; sets bc = NAME_LENGTH
+	ld de, wDayCareMonName
+	jp CopyData

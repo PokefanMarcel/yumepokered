@@ -1665,14 +1665,14 @@ _SwitchOnText::
 	text "Branché!"
 	prompt
 
-_WhatText::
-	text "Que faire?"
-	done
+;_WhatText:: ; marcelnote - revamped Bill's PC
+;	text "Que faire?"
+;	done
 
-_DepositWhichMonText::
-	text "Stocker quel"
-	line "#MON?"
-	done
+;_DepositWhichMonText:: ; marcelnote - revamped Bill's PC
+;	text "Stocker quel"
+;	line "#MON?"
+;	done
 
 _MonWasStoredText::
 	text_ram wStringBuffer
@@ -1716,10 +1716,10 @@ _CantTakeMonText::
 	line "un #MON."
 	prompt
 
-_ReleaseWhichMonText::
-	text "Relâcher quel"
-	line "#MON?"
-	done
+;_ReleaseWhichMonText:: ; marcelnote - revamped Bill's PC
+;	text "Relâcher quel"
+;	line "#MON?"
+;	done
 
 _OnceReleasedText::
 	text_ram wStringBuffer

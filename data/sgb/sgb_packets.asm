@@ -170,6 +170,13 @@ BlkPacket_PartyMenu:
 	db $03, 12,10, 18,11, $00
 	db $00
 
+BlkPacket_BillsPC: ; marcelnote - revamped Bill's PC
+	ATTR_BLK 3
+	ATTR_BLK_DATA %011, 0,0,0, 00,00, 19,17 ; whole screen: grey
+	ATTR_BLK_DATA %011, 1,1,0, 01,00, 02,11 ; party mon icons: lightened party sprite palette
+	ATTR_BLK_DATA %011, 1,1,0, 05,01, 18,08 ; box mon icons: lightened party sprite palette
+	ds 12, 0
+
 BlkPacket_TrainerCard:
 	ATTR_BLK 10
 	ATTR_BLK_DATA %010, 0,0,0, 03,12, 04,13 ; Boulder Badge
@@ -235,6 +242,7 @@ PalPacket_GameFreakIntro: PAL_SET PAL_GAMEFREAK, PAL_REDMON, PAL_VIRIDIAN, PAL_B
 PalPacket_PikachusBeach:      PAL_SET PAL_PIKACHUS_BEACH, PAL_PIKACHUS_BEACH, PAL_PIKACHUS_BEACH, PAL_PIKACHUS_BEACH
 ;PalPacket_PikachusBeachTitle: PAL_SET PAL_PIKACHUS_BEACH, PAL_PIKACHUS_BEACH_TITLE, PAL_PIKACHUS_BEACH, PAL_PIKACHUS_BEACH
 PalPacket_SurfingPikachuHiscore: PAL_SET PAL_SURFING_HISCORE, 0, 0, 0
+PalPacket_BillsPC:        PAL_SET PAL_GRAYMON, PAL_BILLS_PC, PAL_GRAYMON, PAL_GRAYMON ; marcelnote - revamped Bill's PC
 
 PalTrnPacket:  PAL_TRN
 MltReq1Packet: MLT_REQ 1

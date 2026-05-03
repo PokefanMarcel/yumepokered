@@ -19,6 +19,8 @@
 ;	const SET_PAL_SURFING_PIKACHU_TITLE    ; $0E
 	const SET_PAL_SURFING_PIKACHU_MINIGAME ; $0F
 	const SET_PAL_SURFING_PIKACHU_HISCORE  ; $10
+	; marcelnote - revamped Bill's PC
+	const SET_PAL_BILLS_PC                 ; $11
 
 DEF SET_PAL_PARTY_MENU_HP_BARS EQU $fc
 DEF SET_PAL_DEFAULT EQU $ff
@@ -53,6 +55,7 @@ DEF SET_PAL_DEFAULT EQU $ff
 	const PAL_PINKMON   ; $17
 	const PAL_YELLOWMON ; $18
 	const PAL_GRAYMON   ; $19
+	const PAL_BILLS_PC  ; $1Abis ; marcelnote - revamped Bill's PC
 	const PAL_SLOTS1    ; $1A
 	const PAL_SLOTS2    ; $1B
 	const PAL_SLOTS3    ; $1C

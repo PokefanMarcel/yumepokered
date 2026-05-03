@@ -1575,14 +1575,14 @@ _SwitchOnText::
 	text "Switch on!"
 	prompt
 
-_WhatText::
-	text "What?"
-	done
+;_WhatText:: ; marcelnote - revamped Bill's PC
+;	text "What?"
+;	done
 
-_DepositWhichMonText::
-	text "Deposit which"
-	line "#MON?"
-	done
+;_DepositWhichMonText:: ; marcelnote - revamped Bill's PC
+;	text "Deposit which"
+;	line "#MON?"
+;	done
 
 _MonWasStoredText::
 	text_ram wStringBuffer
@@ -1624,10 +1624,10 @@ _CantTakeMonText::
 	line "first."
 	prompt
 
-_ReleaseWhichMonText::
-	text "Release which"
-	line "#MON?"
-	done
+;_ReleaseWhichMonText:: ; marcelnote - revamped Bill's PC
+;	text "Release which"
+;	line "#MON?"
+;	done
 
 _OnceReleasedText::
 	text "Once released,"

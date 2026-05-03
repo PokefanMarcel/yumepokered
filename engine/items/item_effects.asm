@@ -2769,137 +2769,63 @@ IsKeyItem_::
 
 INCLUDE "data/items/key_items.asm"
 
-; store the new mon in the first slot, shifting all existing box data down
+; marcelnote - revamped Bill's PC
+; This used to place the new mon in the first box spot and shift all others.
+; Now it just finds the first empty spot in the box and places the mon there.
 SendNewMonToBox:
-	ld de, wBoxCount
-	ld a, [de]
-	inc a
-	ld [de], a
-
+	callfar NormalizeBillsPCBoxSpecies
+	callfar FindFirstFreeBillsPCBoxSlot
+	ret c
 	ld a, [wCurPartySpecies]
 	ld [wCurSpecies], a
-	ld c, a
-.shiftSpeciesLoop
-	inc de
-	ld a, [de]
-	ld b, a
-	ld a, c
-	ld c, b
-	ld [de], a
-	cp -1
-	jr nz, .shiftSpeciesLoop
-
 	call GetMonHeader
+
+	ld hl, wBoxCount
+	ld a, [hl]
+	inc a
+	ld [hli], a ; hl = wBoxSpecies
+
+	ld a, [wPlayerMonNumber]
+	ld c, a
+	ld b, 0
+	add hl, bc
+	ld a, [wCurPartySpecies]
+	ld [hl], a
+
 	ld hl, wBoxMonOT
-	ld bc, NAME_LENGTH
-	ld a, [wBoxCount]
-	dec a
-	jr z, .skipOTshift ; if the box was empty, there is nothing to shift
-
-	dec a
-	call AddNTimes
-	push hl
-	ld bc, NAME_LENGTH
-	add hl, bc
+	ld a, [wPlayerMonNumber]
+	call SkipFixedLengthTextEntries
 	ld d, h
 	ld e, l
-	pop hl
-	ld a, [wBoxCount]
-	dec a
-	ld b, a
-.shiftMonOTLoop
-	push bc
-	push hl
-	ld bc, NAME_LENGTH
-	call CopyData
-	pop hl
-	ld d, h
-	ld e, l
-	ld bc, -NAME_LENGTH
-	add hl, bc
-	pop bc
-	dec b
-	jr nz, .shiftMonOTLoop
-
-.skipOTshift
 	ld hl, wPlayerName
-	ld de, wBoxMon1OT
 	ld bc, NAME_LENGTH
 	call CopyData
-
-	ld a, [wBoxCount]
-	dec a
-	jr z, .skipNickShift
 
 	ld hl, wBoxMonNicks
-	ld bc, NAME_LENGTH
-	dec a
-	call AddNTimes
-	push hl
-	ld bc, NAME_LENGTH
-	add hl, bc
-	ld d, h
-	ld e, l
-	pop hl
-	ld a, [wBoxCount]
-	dec a
-	ld b, a
-.shiftNickLoop
-	push bc
-	push hl
-	ld bc, NAME_LENGTH
-	call CopyData
-	pop hl
-	ld d, h
-	ld e, l
-	ld bc, -NAME_LENGTH
-	add hl, bc
-	pop bc
-	dec b
-	jr nz, .shiftNickLoop
-
-.skipNickShift
-	ld hl, wBoxMon1Nick
+	ld a, [wPlayerMonNumber]
+	call SkipFixedLengthTextEntries
+	push hl ; save hl = wBoxMon<n>Nick
 	ld a, NAME_MON_SCREEN
 	ld [wNamingScreenType], a
 	predef AskName
 
-	ld a, [wBoxCount]
-	dec a
-	jr z, .skipMonDataShift
+	pop hl  ; restore hl = wBoxMon<n>Nick
+	ld de, wNameBuffer ; text messages use wNameBuffer
+	ld bc, NAME_LENGTH
+	call CopyData
 
 	ld hl, wBoxMons
 	ld bc, BOXMON_STRUCT_LENGTH
-	dec a
+	ld a, [wPlayerMonNumber]
 	call AddNTimes
-	push hl
-	ld bc, BOXMON_STRUCT_LENGTH
-	add hl, bc
 	ld d, h
-	ld e, l
-	pop hl
-	ld a, [wBoxCount]
-	dec a
-	ld b, a
-.shiftMonDataLoop
-	push bc
-	push hl
-	ld bc, BOXMON_STRUCT_LENGTH
-	call CopyData
-	pop hl
-	ld d, h
-	ld e, l
-	ld bc, -BOXMON_STRUCT_LENGTH
-	add hl, bc
-	pop bc
-	dec b
-	jr nz, .shiftMonDataLoop
+	ld e, l ; de = wBoxMon<n>
+	; fallthrough
 
-.skipMonDataShift
+CopyEnemyMonToBoxSlot:
 	ld a, [wEnemyMonLevel]
 	ld [wEnemyMonBoxLevel], a
 	ld hl, wEnemyMon
-	ld de, wBoxMon1
 	ld bc, wEnemyMonDVs - wEnemyMon
 	call CopyData
 	ld hl, wPlayerID
