@@ -15,7 +15,7 @@ InitPlayerData2:
 	ld hl, wPartyCount
 	call InitializeEmptyList
 	ld hl, wBoxCount
-	call InitializeEmptyList
+	call InitializeEmptyBox
 	ld hl, wNumBagItems
 	call InitializeEmptyList
 	ld hl, wNumBagKeyItems    ; marcelnote - new for Key Items pocket
@@ -52,6 +52,18 @@ DEF START_MONEY EQU $3000
 InitializeEmptyList:
 	xor a ; count
 	ld [hli], a
+	dec a ; terminator
+	ld [hl], a
+	ret
+
+InitializeEmptyBox: ; marcelnote - revamped Bill's PC
+	xor a ; count, and empty species slot value
+	ld [hli], a
+	ld b, MONS_PER_BOX
+.clearSpecies
+	ld [hli], a
+	dec b
+	jr nz, .clearSpecies
 	dec a ; terminator
 	ld [hl], a
 	ret

@@ -581,10 +581,15 @@ EmptySRAMBoxesInBank:
 	ld [sBank2AllBoxesChecksum], a ; sBank3AllBoxesChecksum
 	jp CalcIndividualBoxCheckSums
 
-EmptySRAMBox:
-	xor a
+EmptySRAMBox: ; marcelnote - revamped Bill's PC
+	xor a ; count, and empty species slot value
 	ld [hli], a
-	dec a
+	ld b, MONS_PER_BOX
+.clearSpecies
+	ld [hli], a
+	dec b
+	jr nz, .clearSpecies
+	dec a ; terminator
 	ld [hl], a
 	ret
 
