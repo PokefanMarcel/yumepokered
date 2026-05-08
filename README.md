@@ -147,7 +147,7 @@ Differences between versions are minimal.
 Other differences remain as in the original games:
 - Game Boy Color palettes: Red/Green for Red, Green/Red for Green, Blue/Red for Blue.
 - Game Corner slots: different visual designs.
-- Super Game Boy: different border graphics.
+- Super Game Boy: different border graphics and slightly different palettes.
 
 Unless you’re after an easier hunt for a specific version-exclusive Pokémon, just pick whichever color you like!
 
