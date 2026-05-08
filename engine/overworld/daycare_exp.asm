@@ -13,6 +13,17 @@ IncrementDayCareMonExp:
 	ld a, [hl]
 	cp $50
 	ret c
-	ld a, $50
-	ld [hl], a
+	ld [hl], $50
+	ret
+
+IncrementMtMoonSquareClefairyCounter: ; marcelnote - Mt Moon Square Clefairy spawn
+	CheckHideShow TOGGLE_MT_MOON_SQUARE_CLEFAIRY
+	ret z ; Clefairy is already spawned.
+	ld a, [wStepCounter]
+	and $3f ; every 64 steps (without map reload)
+	ret nz
+	ld a, [wMtMoonSquareClefairyCounter]
+	inc a
+	ret z
+	ld [wMtMoonSquareClefairyCounter], a
 	ret

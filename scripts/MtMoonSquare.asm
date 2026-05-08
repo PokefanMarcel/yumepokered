@@ -5,9 +5,13 @@ MtMoonSquare_Script:
 	bit BIT_CUR_MAP_LOADED_1, [hl]
 	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
+	CheckHideShow TOGGLE_MT_MOON_SQUARE_CLEFAIRY
+	ret z ; Clefairy is already spawned.
 	call Random
-	cp 26 ; carry when a is 0-25 so prob_spawning = 26/256 = 10.1%
-	ret nc
+	ld b, a
+	ld a, [wMtMoonSquareClefairyCounter]
+	cp b
+	ret c ; spawn only if random <= counter
 	ld a, TOGGLE_MT_MOON_SQUARE_CLEFAIRY
 	ld [wToggleableObjectIndex], a
 	predef_jump ShowObject
@@ -30,13 +34,13 @@ MtMoonSquareCooltrainerFText:
 MtMoonSquareClefairyText:
 	text_far _MtMoonSquareClefairyText
 	text_asm
-	ld a, $1
+	ld a, 1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	ld a, CLEFAIRY
 	call PlayCry
 	call GBFadeOutToWhite
 	ld a, SFX_TELEPORT_EXIT_1
-	;ld [wNewSoundID], a
+;	ld [wNewSoundID], a
 	call PlaySound
 	ld a, TOGGLE_MT_MOON_SQUARE_CLEFAIRY
 	ld [wToggleableObjectIndex], a
@@ -44,11 +48,13 @@ MtMoonSquareClefairyText:
 	ld a, TOGGLE_MT_MOON_SQUARE_ITEM_1 ; show Moon Stone
 	ld [wToggleableObjectIndex], a
 	predef ShowObject
+	xor a
+	ld [wMtMoonSquareClefairyCounter], a
 	call UpdateSprites
 	ld c, 20
 	call DelayFrames
 	call GBFadeInFromWhite
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 MtMoonSquareHikerText:
 	text_far _MtMoonSquareHikerText
@@ -59,7 +65,7 @@ MtMoonSquareGolemText:
 	text_asm
 	ld a, GOLEM
 	call PlayCry
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 MtMoonSquareSignText:
 	text_far _MtMoonSquareSignText
@@ -85,9 +91,9 @@ MtMoonSquareEvolutionRockText:
 	jr nz, .done
 	ld hl, .GravelerGivesPunchText
 	call PrintText
-	;ld a, GRAVELER
-	;call PlayCry
-	;call WaitForSoundToFinish
+;	ld a, GRAVELER
+;	call PlayCry
+;	call WaitForSoundToFinish
 	ld a, SFX_PUSH_BOULDER
 	call PlaySound
 	call WaitForSoundToFinish
@@ -95,7 +101,7 @@ MtMoonSquareEvolutionRockText:
 	call PrintText
 	callfar EvolveMonInteraction    ; actual evolution and map reloading
 .done
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .ThisRockVibratesText
 	text_far _MtMoonSquareThisRockVibratesText

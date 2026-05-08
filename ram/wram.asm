@@ -2242,7 +2242,7 @@ wPlayerJumpingYScreenCoordsIndex:: db
 
 wRivalStarter:: db
 
-	ds 1
+wMtMoonSquareClefairyCounter:: db
 
 wPlayerStarter:: db
 

@@ -33,11 +33,8 @@ DEF START_MONEY EQU $3000
 	ld [hl], a
 
 	ld [wMonDataLocation], a
-
-	ld hl, wObtainedBadges
-	;ld [hli], a
-	;ASSERT wObtainedBadges + 1 == wUnusedObtainedBadges
-	ld [hl], a
+	ld [wObtainedBadges], a
+	ld [wMtMoonSquareClefairyCounter], a ; marcelnote - Mt Moon Square Clefairy spawn
 
 	ld hl, wPlayerCoins
 	ld [hli], a
