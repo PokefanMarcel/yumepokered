@@ -91,16 +91,16 @@ BillsPC:: ; marcelnote - revamped Bill's PC
 	ld [wUpdateSpritesEnabled], a
 	ld a, [wListScrollOffset]
 	push af ; save a = [wListScrollOffset]
-	ld a, [wMiscFlags]
-	bit BIT_USING_GENERIC_PC, a
-	jr nz, .loadBillsPCScreen
-	; Direct access needs the switch-on text and sound.
-	ld a, SFX_TURN_ON_PC
-	call PlaySound
-	ld hl, SwitchOnText
-	call PrintText
-.loadBillsPCScreen
-	call GBPalWhiteOutWithDelay3
+;	ld a, [wMiscFlags] ; marcelnote - unused direct-access Bill's PC
+;	bit BIT_USING_GENERIC_PC, a
+;	jr nz, .loadBillsPCScreen
+;	; Direct access needs the switch-on text and sound.
+;	ld a, SFX_TURN_ON_PC
+;	call PlaySound
+;	ld hl, SwitchOnText
+;	call PrintText
+;.loadBillsPCScreen
+;	call GBPalWhiteOutWithDelay3
 
 	; Pokeball indicators for DisplayChangeBoxMenu.
 	ld de, PokeballTileGraphics
@@ -329,16 +329,6 @@ BillsPC:: ; marcelnote - revamped Bill's PC
 
 ExitBillsPC:
 	call GBPalWhiteOutWithDelay3
-	ld a, [wMiscFlags]
-	bit BIT_USING_GENERIC_PC, a
-	jr nz, .next
-	; Direct object access has no generic PC menu to return to,
-	; so it restores the map screen itself after the shared cleanup below.
-	call LoadTextBoxTilePatterns
-	ld a, SFX_TURN_OFF_PC
-	call PlaySound
-	call WaitForSoundToFinish
-.next
 	ld hl, wMiscFlags
 	res BIT_NO_MENU_BUTTON_SOUND, [hl]
 	call ReloadTilesetTilePatterns
@@ -359,16 +349,7 @@ ExitBillsPC:
 	ld hl, wStatusFlags5
 	res BIT_NO_TEXT_DELAY, [hl]
 
-	; Generic-PC caller reloads and fades in the main PC menu.
-	ld a, [wMiscFlags]
-	bit BIT_USING_GENERIC_PC, a
-	ret nz
-
-	; Direct Bill's PC access returns straight to the overworld.
-	call LoadScreenTilesFromBuffer2
-	call UpdateSprites
-	call Delay3
-	jp GBPalNormal
+	ret
 
 RedrawBillsPCBoxScreen:
 	call RedrawBillsPCBoxScreenCommon
@@ -1300,10 +1281,6 @@ BillsPCBoxReversedNibbles:
 	db $0, $8, $4, $c, $2, $a, $6, $e
 	db $1, $9, $5, $d, $3, $b, $7, $f
 
-SwitchOnText:
-	text_far _SwitchOnText
-	text_end
-
 MonWasStoredText:
 	text_far _MonWasStoredText
 	text_end
@@ -1373,10 +1350,6 @@ CableClubRightGameboy::
 JustAMomentText::
 	text_far _JustAMomentText
 	text_end
-
-OpenBillsPCText::
-	script_bills_pc
-
 
 IF DEF(_FRA)
 	INCLUDE "translation/fra/data/text/bills_pc.fra.asm"

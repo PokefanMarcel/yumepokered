@@ -39,7 +39,7 @@ TextPredefs::
 	add_tx_pre ViridianSchoolNotebook               ; 20
 	add_tx_pre ViridianSchoolBlackboard             ; 21
 	add_tx_pre JustAMomentText                      ; 22
-	add_tx_pre OpenBillsPCText                      ; 23
+;	add_tx_pre OpenBillsPCText                      ; 23 ; marcelnote - unused direct-access Bill's PC
 	add_tx_pre FoundHiddenItemText                  ; 24
 	add_tx_pre HiddenItemBagFullText                ; 25 XXX unused
 	add_tx_pre VermilionGymTrashText                ; 26

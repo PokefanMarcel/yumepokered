@@ -1571,9 +1571,9 @@ _AccessedHoFPCText::
 	line "OF FAME List."
 	prompt
 
-_SwitchOnText::
-	text "Switch on!"
-	prompt
+;_SwitchOnText:: ; marcelnote - unused direct-access Bill's PC
+;	text "Switch on!"
+;	prompt
 
 ;_WhatText:: ; marcelnote - revamped Bill's PC
 ;	text "What?"

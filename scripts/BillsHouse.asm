@@ -11,7 +11,7 @@ BillsHouse_ScriptPointers:
 	dw_const BillsHousePokemonEntersMachineScript, SCRIPT_BILLSHOUSE_POKEMON_ENTERS_MACHINE
 	dw_const BillsHouseBillExitsMachineScript,     SCRIPT_BILLSHOUSE_BILL_EXITS_MACHINE
 	dw_const BillsHouseCleanupScript,              SCRIPT_BILLSHOUSE_CLEANUP
-	dw_const BillsHousePCScript,                   SCRIPT_BILLSHOUSE_PC
+;	dw_const BillsHousePCScript,                   SCRIPT_BILLSHOUSE_PC ; marcelnote - unused direct-access Bill's PC
 
 BillsHousePokemonWalkToMachineScript:
 	ld a, [wSpritePlayerStateData1FacingDirection]
@@ -105,23 +105,23 @@ BillsHouseCleanupScript:
 	ld [wBillsHouseCurScript], a
 	ret
 
-BillsHousePCScript:
-	ld a, TEXT_BILLSHOUSE_ACTIVATE_PC
-	ldh [hTextID], a
-	call DisplayTextID
-	ld a, SCRIPT_BILLSHOUSE_DEFAULT
-	ld [wBillsHouseCurScript], a
-	ret
+;BillsHousePCScript: ; marcelnote - unused direct-access Bill's PC
+;	ld a, TEXT_BILLSHOUSE_ACTIVATE_PC
+;	ldh [hTextID], a
+;	call DisplayTextID
+;	ld a, SCRIPT_BILLSHOUSE_DEFAULT
+;	ld [wBillsHouseCurScript], a
+;	ret
 
 BillsHouse_TextPointers:
 	def_text_pointers
 	dw_const BillsHouseBillPokemonText,               TEXT_BILLSHOUSE_BILL_POKEMON
 	dw_const BillsHouseBillSSTicketText,              TEXT_BILLSHOUSE_BILL_SS_TICKET
 	dw_const BillsHouseBillCheckOutMyRarePokemonText, TEXT_BILLSHOUSE_BILL_CHECK_OUT_MY_RARE_POKEMON
-	dw_const BillsHouseActivatePCScript,              TEXT_BILLSHOUSE_ACTIVATE_PC
+;	dw_const BillsHouseActivatePCScript,              TEXT_BILLSHOUSE_ACTIVATE_PC ; marcelnote - unused direct-access Bill's PC
 
-BillsHouseActivatePCScript:
-	script_bills_pc
+;BillsHouseActivatePCScript: ; marcelnote - unused direct-access Bill's PC
+;	script_bills_pc
 
 BillsHouseBillPokemonText: ; marcelnote - optimized
 	text_asm
@@ -138,7 +138,7 @@ BillsHouseBillPokemonText: ; marcelnote - optimized
 	call PrintText
 	ld a, SCRIPT_BILLSHOUSE_POKEMON_WALK_TO_MACHINE
 	ld [wBillsHouseCurScript], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .ImNotAPokemonText:
 	text_far _BillsHouseBillImNotAPokemonText
@@ -173,7 +173,7 @@ BillsHouseBillSSTicketText: ; marcelnote - optimized
 	ld hl, .SSTicketReceivedText
 .print_text
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .ThankYouText:
 	text_far _BillsHouseBillThankYouText

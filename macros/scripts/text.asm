@@ -205,10 +205,11 @@ MACRO script_mart
 	db -1 ; end
 ENDM
 
-	const TX_SCRIPT_BILLS_PC ; $fd
-MACRO script_bills_pc
-	db TX_SCRIPT_BILLS_PC
-ENDM
+	const_skip ; $fd
+;	const TX_SCRIPT_BILLS_PC ; $fd ; marcelnote - unused direct-access Bill's PC
+;MACRO script_bills_pc
+;	db TX_SCRIPT_BILLS_PC
+;ENDM
 
 	const TX_SCRIPT_PLAYERS_PC ; $fc
 MACRO script_players_pc

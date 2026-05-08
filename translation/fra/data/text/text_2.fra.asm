@@ -1661,9 +1661,9 @@ _AccessedHoFPCText::
 	line "des CELEBRITES."
 	prompt
 
-_SwitchOnText::
-	text "Branché!"
-	prompt
+;_SwitchOnText:: ; marcelnote - unused direct-access Bill's PC
+;	text "Branché!"
+;	prompt
 
 ;_WhatText:: ; marcelnote - revamped Bill's PC
 ;	text "Que faire?"

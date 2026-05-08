@@ -32,11 +32,11 @@ TextScript_ItemStoragePC::
 	ld hl, PlayerPC
 	jr BankswitchAndContinue
 
-TextScript_BillsPC::
-	call SaveScreenTilesToBuffer2
-	ld b, BANK(BillsPC)
-	ld hl, BillsPC
-	jr BankswitchAndContinue
+;TextScript_BillsPC:: ; marcelnote - unused direct-access Bill's PC
+;	call SaveScreenTilesToBuffer2
+;	ld b, BANK(BillsPC)
+;	ld hl, BillsPC
+;	jr BankswitchAndContinue
 
 TextScript_GameCornerPrizeMenu::
 	ld b, BANK(CeladonPrizeMenu)

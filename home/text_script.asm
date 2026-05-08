@@ -87,7 +87,7 @@ ENDM
 	dict  TX_SCRIPT_POKECENTER_NURSE,        DisplayPokemonCenterDialogue
 	dict  TX_SCRIPT_PAY_PHONE,               DisplayPayPhoneDialogue ; marcelnote - new for pay phones
 	dict  TX_SCRIPT_PLAYERS_PC,              TextScript_ItemStoragePC
-	dict  TX_SCRIPT_BILLS_PC,                TextScript_BillsPC
+;	dict  TX_SCRIPT_BILLS_PC,                TextScript_BillsPC      ; marcelnote - unused direct-access Bill's PC
 	dict  TX_SCRIPT_POKECENTER_PC,           TextScript_PokemonCenterPC
 	dict2 TX_SCRIPT_VENDING_MACHINE,         callfar VendingMachineMenu
 	dict  TX_SCRIPT_PRIZE_VENDOR,            TextScript_GameCornerPrizeMenu
