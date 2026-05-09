@@ -164,7 +164,7 @@ OverworldLoopLessDelay::
 	call SwitchRunningToWalkingSprites ; marcelnote - running sprites
 	call UpdateSprites
 	ld a, 1
-	ld [wCheckFor180DegreeTurn], a
+	ld [wTurnInPlaceDelay], a
 	ld a, [wPlayerMovingDirection] ; the direction that was pressed last time
 	and a
 	jp z, OverworldLoop
@@ -211,7 +211,7 @@ OverworldLoopLessDelay::
 	ld a, [wStatusFlags5]
 	bit BIT_SCRIPTED_MOVEMENT_STATE, a
 	jr nz, .noDirectionChange ; ignore direction changes if we are
-	ld a, [wCheckFor180DegreeTurn]
+	ld a, [wTurnInPlaceDelay]
 	and a
 	jr z, .noDirectionChange
 	ld a, [wPlayerDirection] ; new direction
@@ -227,36 +227,39 @@ OverworldLoopLessDelay::
 ; ever be visible because DelayFrame is called at the start of OverworldLoop and
 ; normally not enough cycles would be executed between then and the time the
 ; direction is set for V-blank to occur while the direction is still set.
-	swap a ; put old direction in upper half
-	or b ; put new direction in lower half
-	cp (PLAYER_DIR_DOWN << 4) | PLAYER_DIR_UP ; change dir from down to up
-	jr nz, .notDownToUp
-	ld a, PLAYER_DIR_LEFT
-	ld [wPlayerMovingDirection], a
-	jr .holdIntermediateDirectionLoop
-.notDownToUp
-	cp (PLAYER_DIR_UP << 4) | PLAYER_DIR_DOWN ; change dir from up to down
-	jr nz, .notUpToDown
-	ld a, PLAYER_DIR_RIGHT
-	ld [wPlayerMovingDirection], a
-	jr .holdIntermediateDirectionLoop
-.notUpToDown
-	cp (PLAYER_DIR_RIGHT << 4) | PLAYER_DIR_LEFT ; change dir from right to left
-	jr nz, .notRightToLeft
-	ld a, PLAYER_DIR_DOWN
-	ld [wPlayerMovingDirection], a
-	jr .holdIntermediateDirectionLoop
-.notRightToLeft
-	cp (PLAYER_DIR_LEFT << 4) | PLAYER_DIR_RIGHT ; change dir from left to right
-	jr nz, .holdIntermediateDirectionLoop
-	ld a, PLAYER_DIR_UP
-	ld [wPlayerMovingDirection], a
-.holdIntermediateDirectionLoop
+; marcelnote - removed this intermediate direction code since it's not visible
+;	swap a ; put old direction in upper half
+;	or b ; put new direction in lower half
+;	cp (PLAYER_DIR_DOWN << 4) | PLAYER_DIR_UP ; change dir from down to up
+;	jr nz, .notDownToUp
+;	ld a, PLAYER_DIR_LEFT
+;	ld [wPlayerMovingDirection], a
+;	jr .holdIntermediateDirectionLoop
+;.notDownToUp
+;	cp (PLAYER_DIR_UP << 4) | PLAYER_DIR_DOWN ; change dir from up to down
+;	jr nz, .notUpToDown
+;	ld a, PLAYER_DIR_RIGHT
+;	ld [wPlayerMovingDirection], a
+;	jr .holdIntermediateDirectionLoop
+;.notUpToDown
+;	cp (PLAYER_DIR_RIGHT << 4) | PLAYER_DIR_LEFT ; change dir from right to left
+;	jr nz, .notRightToLeft
+;	ld a, PLAYER_DIR_DOWN
+;	ld [wPlayerMovingDirection], a
+;	jr .holdIntermediateDirectionLoop
+;.notRightToLeft
+;	cp (PLAYER_DIR_LEFT << 4) | PLAYER_DIR_RIGHT ; change dir from left to right
+;	jr nz, .holdIntermediateDirectionLoop
+;	ld a, PLAYER_DIR_UP
+;	ld [wPlayerMovingDirection], a
+;.holdIntermediateDirectionLoop
 	ld hl, wMiscFlags
 	set BIT_TURNING, [hl]
-	ld hl, wCheckFor180DegreeTurn
-	dec [hl]
-	jr nz, .holdIntermediateDirectionLoop
+	xor a
+	ld [wTurnInPlaceDelay], a
+;	ld hl, wCheckFor180DegreeTurn
+;	dec [hl]
+;	jr nz, .holdIntermediateDirectionLoop
 	ld a, [wPlayerDirection]
 	ld [wPlayerMovingDirection], a
 	call NewBattle

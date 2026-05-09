@@ -433,8 +433,8 @@ wMonDataLocation:: db
 ; set to 0 if you can't go past the top or bottom of the menu
 wMenuWrappingEnabled:: db
 
-; whether to check for 180-degree turn (0 = don't, 1 = do)
-wCheckFor180DegreeTurn:: db
+; delay before moving after turning in place (0 = don't, 1 = do)
+wTurnInPlaceDelay:: db ; marcelnote - was wCheckFor180DegreeTurn
 
 	ds 1
 

@@ -45,7 +45,7 @@ HandleMenuInput_:: ; marcelnote - small optim
 	ret
 .keyPressed
 	xor a
-	ld [wCheckFor180DegreeTurn], a
+	ld [wTurnInPlaceDelay], a
 	ldh a, [hJoy5]
 	ld b, a
 	bit B_PAD_UP, a
