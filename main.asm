@@ -190,7 +190,6 @@ SECTION "Battle Engine 7", ROMX
 
 ;INCLUDE "engine/battle/unused_stats_functions.asm"
 INCLUDE "engine/battle/scroll_draw_trainer_pic.asm"
-INCLUDE "engine/battle/trainer_ai.asm"
 INCLUDE "engine/battle/draw_hud_pokeball_gfx.asm"
 INCLUDE "engine/pokemon/evos_moves.asm"
 INCLUDE "data/moves/moves.asm"
@@ -200,6 +199,11 @@ INCLUDE "data/pokemon/base_stats.asm" ; used by evos_moves.asm
 SECTION "Pokemon Data 1", ROMX    ; marcelnote - new, moved from Battle Engine 7
 
 INCLUDE "data/pokemon/cries.asm" ; CryData is accessed with GetCryData which always Bankswitch
+
+
+SECTION "Trainer AI", ROMX        ; marcelnote - new, moved out of Battle Engine 7
+
+INCLUDE "engine/battle/trainer_ai.asm"
 
 
 SECTION "Battle Core", ROMX

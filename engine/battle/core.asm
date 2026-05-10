@@ -2536,7 +2536,7 @@ PartyMenuOrRockOrRun:
 .notAlreadyOut
 	call HasMonFainted
 	jp z, .partyMonDeselected ; can't switch to fainted mon
-	ld a, $1
+	ld a, $a ; marcelnote - new trainer AI, marker for Expert AI layer to distinguish "player switched" from "player used item"
 	ld [wActionResultOrTookBattleTurn], a
 	call GBPalWhiteOut
 	call ClearSprites
@@ -5398,7 +5398,7 @@ AIGetTypeEffectiveness:
 	inc hl
 	ld c, [hl]                 ; c = type 2 of player's pokemon
 	; initialize to neutral effectiveness
-	ld a, $10 ; bug: should be EFFECTIVE (10)
+	ld a, 10 ; bug: should be EFFECTIVE (10) ; marcelnote - fixed
 	ld [wTypeEffectiveness], a
 	ld hl, TypeEffects
 .loop
@@ -5662,6 +5662,9 @@ ExecuteEnemyMove:
 	bit CHARGING_UP, [hl] ; is the enemy charging up for attack?
 	jr nz, EnemyCanExecuteChargingMove ; if so, jump
 	call GetCurrentMove
+	ld a, [wEnemyMovePower] ; marcelnote - revised trainer AI
+	ld [wAILastMovePower], a
+	; fallthrough
 
 CheckIfEnemyNeedsToChargeUp:
 	ld a, [wEnemyMoveEffect]

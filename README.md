@@ -49,6 +49,7 @@ Loosely inspired by the anime, manga, and later Pokémon generations, Yume featu
 - The rival's teams now include a more diverse roster to better reflect his storyline.
 - New trainers to fight in new and existing areas. (You may recognize some from the anime!)
 - Rematches for Gym leaders and the Elite 4 with stronger teams and movesets.
+- Trainer AI has been improved; see [trainer AI notes](docs/trainer_ai.md) for an overview.
 - A new *Battle Hall* with random 3vs3 battles.
 
 **Wild encounters**
@@ -155,7 +156,7 @@ Unless you’re after an easier hunt for a specific version-exclusive Pokémon, 
 
 This project owes a lot to existing works, and above all to the pret [pokered](https://github.com/pret/pokered) disassemby project, but also:
 
-- [Shinpokered](https://github.com/jojobear13/shinpokered): initial inspiration, including the kanji name; girl player, experience bar, temporary field moves, many bug fixes,
+- [Shinpokered](https://github.com/jojobear13/shinpokered): initial inspiration, including the kanji name; girl player, experience bar, temporary field moves, revamped trainer AI, many bug fixes,
 - [PureRGB](https://github.com/Vortyne/pureRGB): overworld HM use, ROM space management, repel reuse prompt, use items with Select, some gfx, many other code snippets,
 - [Extreme Yellow](https://github.com/RainbowMetalPigeon/ExtremeYellow): overworld HM use, dynamic TM seller,
 - [Yellow Legacy](https://github.com/cRz-Shadows/Pokemon_Yellow_Legacy): inspiration for many balance changes,

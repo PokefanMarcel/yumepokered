@@ -557,10 +557,13 @@ wCanEvolveFlags:: db
 
 wForceEvolution:: db
 
-; if [wAILayer2Encouragement] != 1, the second AI layer is not applied
+; if [wAILayer2Encouragement] != 0, the PreferSetup AI layer is not applied
 wAILayer2Encouragement:: db
 
-	ds 1
+; marcelnote - new trainer AI
+; base power of the move the enemy used last turn; used by the Expert AI layer
+; to discourage spamming consecutive 0-BP buff/debuff moves
+wAILastMovePower:: db
 
 ; current HP of player and enemy substitutes
 wPlayerSubstituteHP:: db
