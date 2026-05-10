@@ -100,7 +100,7 @@ BillsPC:: ; marcelnote - revamped Bill's PC
 ;	ld hl, SwitchOnText
 ;	call PrintText
 ;.loadBillsPCScreen
-;	call GBPalWhiteOutWithDelay3
+	call GBPalWhiteOutWithDelay3
 
 	; Pokeball indicators for DisplayChangeBoxMenu.
 	ld de, PokeballTileGraphics
