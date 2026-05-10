@@ -698,23 +698,23 @@ DepositBillsPCSelectedPartyMon:
 	; Copy OT name.
 	ld hl, wBoxMonOT
 	ld a, [wPlayerMonNumber]
-	call SkipFixedLengthTextEntries ; sets bc = NAME_LENGTH
+	call SkipFixedLengthTextEntries
 	ld d, h
 	ld e, l ; de = wBoxMon<i>OT
 	ld hl, wPartyMonOT
 	ld a, [wWhichPokemon]
-	call AddNTimes ; hl = wPartyMon<j>OT
+	call SkipFixedLengthTextEntries ; hl = wPartyMon<j>OT
 	call CopyData
 
 	; Copy nickname.
 	ld hl, wBoxMonNicks
 	ld a, [wPlayerMonNumber]
-	call SkipFixedLengthTextEntries ; sets bc = NAME_LENGTH
+	call SkipFixedLengthTextEntries
 	ld d, h
 	ld e, l ; de = wBoxMon<i>Nick
 	ld hl, wPartyMonNicks
 	ld a, [wWhichPokemon]
-	call AddNTimes ; hl = wPartyMon<j>Nick
+	call SkipFixedLengthTextEntries ; hl = wPartyMon<j>Nick
 	call CopyData
 
 	; Update box count.
