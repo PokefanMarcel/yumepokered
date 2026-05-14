@@ -8,19 +8,16 @@ AgathasRoom_Script:
 	ld [wAgathasRoomCurScript], a
 	ret
 
-AgathaShowOrHideExitBlock:
-; Blocks or clears the exit to the next room.
+AgathaShowOrHideExitBlock: ; marcelnote - optimized
 	ld hl, wCurrentMapScriptFlags
 	bit BIT_CUR_MAP_LOADED_1, [hl]
-	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
-	;CheckEvent EVENT_BEAT_AGATHAS_ROOM_TRAINER_0 ; marcelnote - Agatha rematch
+	res BIT_CUR_MAP_LOADED_1, [hl]
+;	CheckEvent EVENT_BEAT_AGATHAS_ROOM_TRAINER_0 ; marcelnote - Agatha rematch
 	CheckEitherEventSet EVENT_BEAT_AGATHAS_ROOM_TRAINER_0, EVENT_BEAT_AGATHAS_ROOM_TRAINER_1
-	jr z, .blockExitToNextRoom
-	ld a, $e
-	jp .setExitBlock
-.blockExitToNextRoom
-	ld a, $3b
+	ld a, $3b ; closed
+	jr z, .setExitBlock
+	ld a, $e  ; open
 .setExitBlock
 	ld [wNewTileBlockID], a
 	lb bc, 0, 2

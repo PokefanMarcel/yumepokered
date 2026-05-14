@@ -8,20 +8,17 @@ LoreleisRoom_Script:
 	ld [wLoreleisRoomCurScript], a
 	ret
 
-LoreleiShowOrHideExitBlock:
-; Blocks or clears the exit to the next room.
+LoreleiShowOrHideExitBlock: ; marcelnote - optimized
 	ld hl, wCurrentMapScriptFlags
 	bit BIT_CUR_MAP_LOADED_1, [hl]
-	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
+	res BIT_CUR_MAP_LOADED_1, [hl]
 	SetEvent EVENT_STARTED_ELITE_4
 ;	CheckEvent EVENT_BEAT_LORELEIS_ROOM_TRAINER_0 ; marcelnote - Lorelei rematch
 	CheckEitherEventSet EVENT_BEAT_LORELEIS_ROOM_TRAINER_0, EVENT_BEAT_LORELEIS_ROOM_TRAINER_1
-	jr z, .blockExitToNextRoom
-	ld a, $5
-	jr .setExitBlock
-.blockExitToNextRoom
-	ld a, $24
+	ld a, $24 ; closed
+	jr z, .setExitBlock
+	ld a, $5  ; open
 .setExitBlock
 	ld [wNewTileBlockID], a
 	lb bc, 0, 2

@@ -8,19 +8,16 @@ BrunosRoom_Script:
 	ld [wBrunosRoomCurScript], a
 	ret
 
-BrunoShowOrHideExitBlock:
-; Blocks or clears the exit to the next room.
+BrunoShowOrHideExitBlock: ; marcelnote - optimized
 	ld hl, wCurrentMapScriptFlags
 	bit BIT_CUR_MAP_LOADED_1, [hl]
-	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
-	;CheckEvent EVENT_BEAT_BRUNOS_ROOM_TRAINER_0 ; marcelnote - Bruno rematch
+	res BIT_CUR_MAP_LOADED_1, [hl]
+;	CheckEvent EVENT_BEAT_BRUNOS_ROOM_TRAINER_0 ; marcelnote - Bruno rematch
 	CheckEitherEventSet EVENT_BEAT_BRUNOS_ROOM_TRAINER_0, EVENT_BEAT_BRUNOS_ROOM_TRAINER_1
-	jr z, .blockExitToNextRoom
-	ld a, $5
-	jp .setExitBlock
-.blockExitToNextRoom
-	ld a, $24
+	ld a, $24 ; closed
+	jr z, .setExitBlock
+	ld a, $5  ; open
 .setExitBlock
 	ld [wNewTileBlockID], a
 	lb bc, 0, 2

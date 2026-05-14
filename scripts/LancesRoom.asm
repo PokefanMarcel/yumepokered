@@ -8,31 +8,25 @@ LancesRoom_Script:
 	ld [wLancesRoomCurScript], a
 	ret
 
-LanceShowOrHideEntranceBlocks:
+LanceShowOrHideEntranceBlocks: ; marcelnote - optimized
 	ld hl, wCurrentMapScriptFlags
 	bit BIT_CUR_MAP_LOADED_1, [hl]
-	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
+	res BIT_CUR_MAP_LOADED_1, [hl]
 	CheckEvent EVENT_LANCES_ROOM_LOCK_DOOR
-	jr nz, .closeEntrance
-	; open entrance
-	ld a, $31
-	ld b, $32
-	jp .setEntranceBlocks
-.closeEntrance
-	ld a, $72
-	ld b, $73
+	ld a, $31 ; open entrance
+	jr z, .setEntranceBlocks
+	ld a, $72 ; close entrance
 .setEntranceBlocks
 ; Replaces the tile blocks so the player can't leave.
-	push bc
 	ld [wNewTileBlockID], a
 	lb bc, 6, 2
-	call .SetEntranceBlock
-	pop bc
-	ld a, b
+	call .setBlock
+	ld a, [wNewTileBlockID]
+	inc a ; blocks must be next to each other
 	ld [wNewTileBlockID], a
 	lb bc, 6, 3
-.SetEntranceBlock:
+.setBlock
 	predef_jump ReplaceTileBlock
 
 ResetLanceScript:
