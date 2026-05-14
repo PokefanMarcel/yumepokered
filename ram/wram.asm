@@ -1756,8 +1756,10 @@ wIsKeyItem:: db
 
 wTextBoxID:: db
 
-; bit 5: set when maps first load; can be reset to re-run a script
-; bit 6: set when maps first load; can be reset to re-run a script (used less often than bit 5)
+; bit 3: set when maps first load; can be reset to re-run a script
+; bit 4: set when maps first load; can be reset to re-run a script (used less often than bit 3)
+; bit 5: set when a batched tile block replacement needs a redraw ; marcelnote - smarter block replacing
+; bit 6: set while map-script tile block redraws are being batched ; marcelnote - smarter block replacing
 ; bit 7: set when using an elevator map's menu; triggers the shaking animation
 wCurrentMapScriptFlags:: db
 

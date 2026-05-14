@@ -2044,6 +2044,8 @@ RunMapScript::
 	call RunNPCMovementScript
 	ld a, [wCurMap] ; current map number
 	call SwitchToMapRomBank ; change to the ROM bank the map's data is in
+	ld hl, wCurrentMapScriptFlags ; marcelnote - smarter block replacing
+	set BIT_REPLACE_TILE_BLOCK_BATCHING, [hl]
 	ld hl, wCurMapScriptPtr
 	ld a, [hli]
 	ld h, [hl]
@@ -2052,7 +2054,13 @@ RunMapScript::
 	push de
 	jp hl ; jump to script
 .return
-	ret
+	; marcelnote - smarter block replacing
+	ld hl, wCurrentMapScriptFlags
+	res BIT_REPLACE_TILE_BLOCK_BATCHING, [hl]
+	bit BIT_REDRAW_MAP_VIEW_PENDING, [hl]
+	ret z
+	res BIT_REDRAW_MAP_VIEW_PENDING, [hl]
+	jpfar RedrawMapView
 
 LoadWalkingPlayerSpriteGraphics::
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player

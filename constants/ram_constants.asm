@@ -24,9 +24,11 @@ DEF BIT_TEXT_PREDEF EQU 0
 DEF BIT_FONT_LOADED EQU 0
 
 ; wCurrentMapScriptFlags
-	const_def 5
-	const BIT_CUR_MAP_LOADED_1 ; 5
-	const BIT_CUR_MAP_LOADED_2 ; 6
+	const_def 3
+	const BIT_CUR_MAP_LOADED_1 ; 3
+	const BIT_CUR_MAP_LOADED_2 ; 4
+	const BIT_REDRAW_MAP_VIEW_PENDING ; 5     ; marcelnote - smarter block replacing
+	const BIT_REPLACE_TILE_BLOCK_BATCHING ; 6 ; marcelnote - smarter block replacing
 	const BIT_CUR_MAP_USED_ELEVATOR ; 7
 
 ; wOptions
