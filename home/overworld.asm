@@ -392,11 +392,6 @@ OverworldLoopLessDelay::
 	set BIT_CUR_MAP_LOADED_2, [hl]
 	xor a
 	ldh [hJoyHeld], a
-	ld a, [wCurMap]
-	cp CINNABAR_GYM
-	jr nz, .notCinnabarGym
-	SetEvent EVENT_2A7
-.notCinnabarGym
 	ld hl, wStatusFlags4
 	set BIT_BATTLE_OVER_OR_BLACKOUT, [hl]
 	ld a, [wCurMap]

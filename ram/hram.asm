@@ -322,7 +322,6 @@ ENDU
 
 	ds 1
 
-hBackupGymGateIndex::
 hUnlockedSilphCoDoors::
 	db
 

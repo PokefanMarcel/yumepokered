@@ -1,6 +1,3 @@
-UpdateCinnabarGymGateTileBlocks::
-	jpfar UpdateCinnabarGymGateTileBlocks_
-
 CheckForHiddenEventOrBookshelfOrCardKeyDoor::
 	ldh a, [hLoadedROMBank]
 	push af

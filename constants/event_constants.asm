@@ -195,7 +195,7 @@
 	const EVENT_BEAT_CINNABAR_GYM_TRAINER_5
 	const EVENT_BEAT_CINNABAR_GYM_TRAINER_6
 	const_skip 6
-	const EVENT_2A7 ; ???
+	const EVENT_2A7 ; marcelnote - now unused
 	const EVENT_CINNABAR_GYM_GATE0_UNLOCKED
 	const EVENT_CINNABAR_GYM_GATE1_UNLOCKED
 	const EVENT_CINNABAR_GYM_GATE2_UNLOCKED ; marcelnote - new quiz question
