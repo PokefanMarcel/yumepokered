@@ -1144,7 +1144,8 @@ ReadMove:
 	ld bc, MOVE_LENGTH
 	call AddNTimes
 	ld de, wEnemyMoveNum
-	call CopyData
+	ld a, BANK(Moves)
+	call FarCopyData
 	pop bc
 	pop de
 	pop hl
