@@ -25,6 +25,97 @@ DebugNewGameParty: ; unreferenced except in _DEBUG
 	db PIKACHU, 5
 	db -1 ; end
 
+SetDebugNewGameBoxes: ; marcelnote - added boxed mons to debug
+	ld hl, DebugNewGameBox1
+	call LoadDebugBoxData
+	xor a ; PLAYER_PARTY_DATA
+	ld [wCurrentBoxNum], a
+	ld [wMonDataLocation], a
+	ret
+
+LoadDebugBoxData:
+	push hl
+	xor a
+	ld hl, wBoxDataStart
+	ld bc, wBoxDataEnd - wBoxDataStart
+	call FillMemory
+	ld hl, wBoxSpecies + MONS_PER_BOX
+	ld [hl], $ff
+	pop de
+.loop
+	ld a, [de]
+	cp -1
+	ret z
+	ld [wCurPartySpecies], a
+	ld [wEnemyMonSpecies2], a
+	inc de
+	ld a, [de]
+	ld [wCurEnemyLevel], a
+	inc de
+	push de
+	xor a
+	ld [wEnemyBattleStatus3], a
+	ld [wIsInBattle], a
+	callfar LoadEnemyMonData
+	call AddDebugBoxMon
+	pop de
+	jr .loop
+
+AddDebugBoxMon:
+	ld hl, wBoxCount
+	ld a, [hl]
+	cp MONS_PER_BOX
+	ret nc
+	ld [wPlayerMonNumber], a
+	inc [hl]
+
+	ld c, a
+	ld b, 0
+	ld hl, wBoxSpecies
+	add hl, bc
+	ld a, [wCurPartySpecies]
+	ld [hl], a
+
+	ld hl, wBoxMons
+	ld bc, BOXMON_STRUCT_LENGTH
+	ld a, [wPlayerMonNumber]
+	call AddNTimes
+	ld d, h
+	ld e, l
+	callfar CopyEnemyMonToBoxSlot
+
+	ld hl, wBoxMonOT
+	ld a, [wPlayerMonNumber]
+	call SkipFixedLengthTextEntries
+	ld d, h
+	ld e, l
+	ld hl, wPlayerName
+	ld bc, NAME_LENGTH
+	call CopyData
+
+	ld hl, wBoxMonNicks
+	ld a, [wPlayerMonNumber]
+	call SkipFixedLengthTextEntries
+	ld d, h
+	ld e, l
+	ld hl, wEnemyMonNick
+	ld bc, NAME_LENGTH
+	jp CopyData
+
+DebugNewGameBox1:
+	db BULBASAUR, 12
+	db CHARMANDER, 14
+	db SQUIRTLE, 13
+	db PIKACHU, 18
+	db CLEFAIRY, 20
+	db ZUBAT, 22
+	db ODDISH, 24
+	db DIGLETT, 26
+	db ABRA, 28
+	db MACHOP, 30
+	db SNORLAX, 30
+	db -1 ; end
+
 PrepareNewGameDebug: ; dummy except in _DEBUG
 IF DEF(_DEBUG)
 	xor a ; PLAYER_PARTY_DATA
@@ -40,6 +131,7 @@ IF DEF(_DEBUG)
 	ld [wObtainedBadges], a
 
 	call SetDebugNewGameParty
+	call SetDebugNewGameBoxes
 
 	; Exeggutor gets four HM moves.
 	ld hl, wPartyMon1Moves
