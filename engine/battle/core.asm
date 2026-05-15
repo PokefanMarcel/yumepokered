@@ -5386,42 +5386,60 @@ AdjustDamageForMoveType:
 
 
 ; function to tell how effective the type of an enemy attack is on the player's current pokemon
-; this doesn't take into account the effects that dual types can have
-; (e.g. 4x weakness / resistance, weaknesses and resistances canceling)
 ; the result is stored in [wTypeEffectiveness]
-; as far is can tell, this is only used once in some AI code to help decide which move to use
-AIGetTypeEffectiveness:
+AIGetTypeEffectiveness: ; marcelnote - new trainer AI
 	ld a, [wEnemyMoveType]
-	ld d, a                    ; d = type of enemy move
+	ld b, a                    ; b = type of enemy move
 	ld hl, wBattleMonType
-	ld b, [hl]                 ; b = type 1 of player's pokemon
+	ld d, [hl]                 ; d = type 1 of player's pokemon
 	inc hl
-	ld c, [hl]                 ; c = type 2 of player's pokemon
+	ld e, [hl]                 ; e = type 2 of player's pokemon
 	; initialize to neutral effectiveness
-	ld a, 10 ; bug: should be EFFECTIVE (10) ; marcelnote - fixed
+	ld a, EFFECTIVE
 	ld [wTypeEffectiveness], a
 	ld hl, TypeEffects
 .loop
 	ld a, [hli]
 	cp $ff
 	ret z
-	cp d                      ; match the type of the move
+	cp b                      ; match the type of the move
 	jr nz, .nextTypePair1
 	ld a, [hli]
-	cp b                      ; match with type 1 of pokemon
-	jr z, .done
-	cp c                      ; or match with type 2 of pokemon
-	jr z, .done
+	cp d                      ; match with type 1 of pokemon
+	jr z, .matchingPairFound
+	cp e                      ; or match with type 2 of pokemon
+	jr z, .matchingPairFound
+	jr .nextTypePair2
+.matchingPairFound
+	ld a, [hl]
+	and a                     ; NO_EFFECT?
+	jr z, .storeEffectiveness
+	cp NOT_VERY_EFFECTIVE
+	jr z, .halveEffectiveness
+	cp MORE_EFFECTIVE
+	jr z, .increaseEffectiveness
+	cp SUPER_EFFECTIVE
+	jr nz, .nextTypePair2
+	ld a, [wTypeEffectiveness]
+	add a
+	jr .storeEffectiveness
+.halveEffectiveness
+	ld a, [wTypeEffectiveness]
+	srl a
+	jr .storeEffectiveness
+.increaseEffectiveness
+	ld a, [wTypeEffectiveness]
+	ld c, a
+	srl a
+	add c
+.storeEffectiveness
+	ld [wTypeEffectiveness], a
 	jr .nextTypePair2
 .nextTypePair1
 	inc hl
 .nextTypePair2
 	inc hl
 	jr .loop
-.done
-	ld a, [hl]
-	ld [wTypeEffectiveness], a ; store damage multiplier
-	ret
 
 INCLUDE "data/types/type_matchups.asm"
 
