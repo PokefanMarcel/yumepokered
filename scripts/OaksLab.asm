@@ -1,6 +1,6 @@
 OaksLab_Script:
-	;CheckEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS
-	;call nz, OaksLabLoadTextPointers2Script ; marcelnote - useless?
+;	CheckEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS
+;	call nz, OaksLabLoadTextPointers2Script ; marcelnote - useless?
 	call DisableAutoTextBoxDrawing ; marcelnote - replaces code which did DisableAutoTextBoxDrawing
 	ld hl, OaksLab_ScriptPointers
 	ld a, [wOaksLabCurScript]
@@ -167,7 +167,7 @@ OaksLabPlayerDontGoAwayScript:
 	ld a, TEXT_OAKSLAB_OAK_DONT_GO_AWAY_YET
 	ldh [hTextID], a
 	call DisplayTextID
-	ld a, $1
+	ld a, 1
 	ld [wSimulatedJoypadStatesIndex], a
 	ld a, PAD_UP
 	ld [wSimulatedJoypadStatesEnd], a
@@ -674,8 +674,7 @@ OaksLabCalcRivalMovementScript:
 	ldh [hSpriteMapYCoord], a
 	ld a, OAKSLAB_RIVAL
 	ld [wSpriteIndex], a
-	call SetSpritePosition1
-	ret
+	jp SetSpritePosition1
 
 ;OaksLabLoadTextPointers2Script:
 ;	ld hl, OaksLab_TextPointers2
@@ -809,7 +808,7 @@ OaksLabRivalText: ; marcelnote - optimized and added postgame dialogue
 
 .got_text
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .postgameDialogue ; marcelnote - postgame Rival event
 	xor a
@@ -817,45 +816,37 @@ OaksLabRivalText: ; marcelnote - optimized and added postgame dialogue
 	ld hl, .ShowingDexText
 	call PrintText
 	call Delay3
-	CheckEvent EVENT_BEAT_ARTICUNO
-	jr z, .NoArticuno
-	CheckEvent EVENT_BEAT_ZAPDOS
-	jr z, .YesArticunoNoZapdos
-	CheckEvent EVENT_BEAT_MOLTRES
-	jr nz, .YesArticunoYesZapdosYesMoltres
-	ld hl, .SeenArticunoZapdosText
-	jr .got_text
-.NoArticuno
-	CheckEvent EVENT_BEAT_ZAPDOS
-	jr z, .NoArticunoNoZapdos
-	CheckEvent EVENT_BEAT_MOLTRES
-	jr z, .NoArticunoYesZapdosNoMoltres
-	ld hl, .SeenZapdosMoltresText
-	jr .got_text
-.NoArticunoNoZapdos
-	CheckEvent EVENT_BEAT_MOLTRES
-	jr z, .NoArticunoNoZapdosNoMoltres
-	ld hl, .SeenMoltresText
-	jr .got_text
-.NoArticunoNoZapdosNoMoltres
-	ld hl, .SeenNoBirdText
-	jr .got_text
-.YesArticunoNoZapdos
-	CheckEvent EVENT_BEAT_MOLTRES
-	jr z, .YesArticunoNoZapdosNoMoltres
-	ld hl, .SeenArticunoMoltresText
-	jr .got_text
-.YesArticunoNoZapdosNoMoltres
-	ld hl, .SeenArticunoText
-	jr .got_text
-.NoArticunoYesZapdosNoMoltres
-	ld hl, .SeenZapdosText
-	jr .got_text
-.YesArticunoYesZapdosYesMoltres
+	ld e, 0
+	CheckEvent EVENT_BEAT_MOLTRES, 1
+	rl e
+	CheckEvent EVENT_BEAT_ZAPDOS, 1
+	rl e
+	CheckEvent EVENT_BEAT_ARTICUNO, 1
+	rl e
+	ld a, e
+	rl e
+	cp %111
+	jr nz, .loadBirdText
 	ld a, SCRIPT_OAKSLAB_RIVAL_BACK_TO_INDIGO
 	ld [wOaksLabCurScript], a
-	ld hl, .SeenAllBirdsText
+.loadBirdText
+	ld hl, .BirdTextPointers
+	ld d, 0
+	add hl, de
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
 	jr .got_text
+
+.BirdTextPointers:
+	dw .SeenNoBirdText
+	dw .SeenArticunoText
+	dw .SeenZapdosText
+	dw .SeenArticunoZapdosText
+	dw .SeenMoltresText
+	dw .SeenArticunoMoltresText
+	dw .SeenZapdosMoltresText
+	dw .SeenAllBirdsText
 
 .GrampsIsntAroundText:
 	text_far _OaksLabRivalGrampsIsntAroundText
@@ -938,6 +929,7 @@ OaksLabBulbasaurPokeBallText:
 	ld [wRivalStarterBallSpriteIndex], a
 	ld a, STARTER3
 	ld b, OAKSLAB_BULBASAUR_POKE_BALL
+	; fallthrough
 
 OaksLabSelectedPokeBallScript:
 	ld [wCurPartySpecies], a
@@ -950,7 +942,7 @@ OaksLabSelectedPokeBallScript:
 	jr nz, OaksLabShowPokeBallPokemonScript
 	ld hl, OaksLabThoseArePokeBallsText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 OaksLabThoseArePokeBallsText:
 	text_far _OaksLabThoseArePokeBallsText
@@ -982,7 +974,14 @@ OaksLabShowPokeBallPokemonScript:
 	jr z, OaksLabYouWantCharmanderText
 	cp OAKSLAB_SQUIRTLE_POKE_BALL
 	jr z, OaksLabYouWantSquirtleText
-	jr OaksLabYouWantBulbasaurText
+	; fallthrough
+
+OaksLabYouWantBulbasaurText:
+	ld hl, .Text
+	jr OaksLabMonChoiceMenu
+.Text:
+	text_far _OaksLabYouWantBulbasaurText
+	text_end
 
 OaksLabYouWantCharmanderText:
 	ld hl, .Text
@@ -998,21 +997,14 @@ OaksLabYouWantSquirtleText:
 	text_far _OaksLabYouWantSquirtleText
 	text_end
 
-OaksLabYouWantBulbasaurText:
-	ld hl, .Text
-	jr OaksLabMonChoiceMenu
-.Text:
-	text_far _OaksLabYouWantBulbasaurText
-	text_end
-
 OaksLabMonChoiceMenu:
 	call PrintText
-	ld a, $1
+	ld a, 1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	call YesNoChoice ; yes/no menu
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, OaksLabMonChoiceEnd
+	jr nz, .done
 	ld a, [wCurPartySpecies]
 	ld [wPlayerStarter], a
 	ld [wNamedObjectIndex], a
@@ -1032,7 +1024,7 @@ OaksLabMonChoiceMenu:
 .continue
 	ld [wToggleableObjectIndex], a
 	predef HideObject
-	ld a, $1
+	ld a, 1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	ld hl, OaksLabMonEnergeticText
 	call PrintText
@@ -1050,8 +1042,8 @@ OaksLabMonChoiceMenu:
 	ld [wJoyIgnore], a
 	ld a, SCRIPT_OAKSLAB_CHOSE_STARTER_SCRIPT
 	ld [wOaksLabCurScript], a
-OaksLabMonChoiceEnd:
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.done
+	rst TextScriptEnd
 
 OaksLabMonEnergeticText:
 	text_far _OaksLabMonEnergeticText
@@ -1071,7 +1063,7 @@ OaksLabLastMonScript:
 	ld [hl], SPRITE_FACING_DOWN
 	ld hl, OaksLabLastMonText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 OaksLabLastMonText:
 	text_far _OaksLabLastMonText
@@ -1083,10 +1075,10 @@ OaksLabOakText: ; marcelnote - this was changed to make Balls more accessible
 	jr z, .didnt_get_or_just_got_poke_balls
 	ld hl, .HowIsYourPokedexComingText
 	call PrintText
-	ld a, $1
+	ld a, 1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	predef DisplayDexRating
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .didnt_get_or_just_got_poke_balls
 	CheckEvent EVENT_GOT_POKEDEX
@@ -1097,18 +1089,18 @@ OaksLabOakText: ; marcelnote - this was changed to make Balls more accessible
 	jr nz, .already_got_pokemon
 	ld hl, .WhichPokemonDoYouWantText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .already_got_pokemon
 	ld hl, .YourPokemonCanFightText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .check_got_parcel
 	ld b, OAKS_PARCEL
 	call IsItemInBag
 	jr nz, .got_parcel
 	ld hl, .RaiseYourYoungPokemonText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .got_parcel
 	ld hl, .DeliverParcelText
 	call PrintText
@@ -1117,7 +1109,7 @@ OaksLabOakText: ; marcelnote - this was changed to make Balls more accessible
 	callfar RemoveItemByID ; marcelnote - this replaces a dedicated script previously
 	ld a, SCRIPT_OAKSLAB_RIVAL_ARRIVES_AT_OAKS_REQUEST
 	ld [wOaksLabCurScript], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .got_pokedex
 	CheckEvent EVENT_PALLET_AFTER_GETTING_POKEDEX
@@ -1134,17 +1126,17 @@ OaksLabOakText: ; marcelnote - this was changed to make Balls more accessible
 .just_got_pokeballs
 	ld hl, .ComeSeeMeSometimesText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .just_got_pokedex
 	ld hl, .PokemonAroundTheWorldText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .give_poke_balls
 	lb bc, POKE_BALL, 5
 	call GiveItem
 	ld hl, .GivePokeballsText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .WhichPokemonDoYouWantText:
 	text_far _OaksLabOakWhichPokemonDoYouWantText
@@ -1186,7 +1178,7 @@ OaksLabPokedexText: ; marcelnote - text_asm to work around DisableAutoTextBoxDra
 	text_asm
 	ld hl, .Text
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text:
 	text_far _OaksLabPokedexText
@@ -1200,7 +1192,7 @@ OaksLabGirlText: ; marcelnote - text_asm to work around DisableAutoTextBoxDrawin
 	text_asm
 	ld hl, .Text
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text:
 	text_far _OaksLabGirlText
@@ -1210,7 +1202,7 @@ OaksLabRivalFedUpWithWaitingText: ; marcelnote - text_asm to work around Disable
 	text_asm
 	ld hl, .Text
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text:
 	text_far _OaksLabRivalFedUpWithWaitingText
@@ -1220,7 +1212,7 @@ OaksLabOakChooseMonText: ; marcelnote - text_asm to work around DisableAutoTextB
 	text_asm
 	ld hl, .Text
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text:
 	text_far _OaksLabOakChooseMonText
@@ -1230,7 +1222,7 @@ OaksLabRivalWhatAboutMeText: ; marcelnote - text_asm to work around DisableAutoT
 	text_asm
 	ld hl, .Text
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text:
 	text_far _OaksLabRivalWhatAboutMeText
@@ -1240,7 +1232,7 @@ OaksLabOakBePatientText: ; marcelnote - text_asm to work around DisableAutoTextB
 	text_asm
 	ld hl, .Text
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text:
 	text_far _OaksLabOakBePatientText
@@ -1250,7 +1242,7 @@ OaksLabOakDontGoAwayYetText: ; marcelnote - text_asm to work around DisableAutoT
 	text_asm
 	ld hl, .Text
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text:
 	text_far _OaksLabOakDontGoAwayYetText
@@ -1260,7 +1252,7 @@ OaksLabRivalIllTakeThisOneText: ; marcelnote - text_asm to work around DisableAu
 	text_asm
 	ld hl, .Text
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text:
 	text_far _OaksLabRivalIllTakeThisOneText
@@ -1270,7 +1262,7 @@ OaksLabRivalReceivedMonText: ; marcelnote - text_asm to work around DisableAutoT
 	text_asm
 	ld hl, .Text
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text:
 	text_far _OaksLabRivalReceivedMonText
@@ -1281,7 +1273,7 @@ OaksLabRivalIllTakeYouOnText: ; marcelnote - text_asm to work around DisableAuto
 	text_asm
 	ld hl, .Text
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text:
 	text_far _OaksLabRivalIllTakeYouOnText
@@ -1299,7 +1291,7 @@ OaksLabRivalSmellYouLaterText: ; marcelnote - text_asm to work around DisableAut
 	text_asm
 	ld hl, .Text
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text:
 	text_far _OaksLabRivalSmellYouLaterText
@@ -1342,7 +1334,7 @@ OaksLabScientistText: ; marcelnote - text_asm to work around DisableAutoTextBoxD
 	ld hl, .OakWentForWalkText ; marcelnote - new for Oak battle
 .print_text
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text:
 	text_far _OaksLabScientistText
