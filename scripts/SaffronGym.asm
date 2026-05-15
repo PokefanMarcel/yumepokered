@@ -1,8 +1,5 @@
 SaffronGym_Script:
-	ld hl, wCurrentMapScriptFlags
-	bit BIT_CUR_MAP_LOADED_2, [hl]
-	res BIT_CUR_MAP_LOADED_2, [hl]
-	call nz, .LoadNames
+	call SaffronGymSetMapAndTiles
 	call EnableAutoTextBoxDrawing
 	ld hl, SaffronGymTrainerHeaders
 	ld de, SaffronGym_ScriptPointers
@@ -10,6 +7,24 @@ SaffronGym_Script:
 	call ExecuteCurMapScriptInTable
 	ld [wSaffronGymCurScript], a
 	ret
+
+SaffronGymSetMapAndTiles: ; marcelnote - open Saffron Gym gate
+	ld hl, wCurrentMapScriptFlags
+	bit BIT_CUR_MAP_LOADED_2, [hl]
+	res BIT_CUR_MAP_LOADED_2, [hl]
+	call nz, .LoadNames
+	ld hl, wCurrentMapScriptFlags
+	bit BIT_CUR_MAP_LOADED_1, [hl]
+	ret z
+	res BIT_CUR_MAP_LOADED_1, [hl]
+	ld a, [wObtainedBadges]
+	bit BIT_MARSHBADGE, a
+	ret z  ; gate closed before getting Marsh Badge
+	CheckEvent EVENT_BECAME_CHAMPION
+	jp z, UpdateSaffronGymTileBlocks ; gate open before being champion
+	CheckHideShow TOGGLE_FIGHTING_DOJO_BRUNO
+	ret z ; gate closed while Bruno is at Fighting Dojo
+	jp UpdateSaffronGymTileBlocks
 
 .LoadNames:
 	ld hl, .CityName
@@ -72,13 +87,25 @@ SaffronGymSabrinaReceiveTM46Script:
 .gymVictory
 	ld hl, wObtainedBadges
 	set BIT_MARSHBADGE, [hl]
-	;ld hl, wBeatGymFlags     ; marcelnote - removed redundant wBeatGymFlags
-	;set BIT_MARSHBADGE, [hl]
-
-	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_SAFFRON_GYM_TRAINER_0, EVENT_BEAT_SAFFRON_GYM_TRAINER_6
-
+	call UpdateSaffronGymTileBlocks ; marcelnote - open Saffron Gym gate
 	jp SaffronGymResetScripts
+
+UpdateSaffronGymTileBlocks: ; marcelnote - open Saffron Gym gate
+	ld hl, wCurrentMapScriptFlags
+	set BIT_REPLACE_TILE_BLOCK_BATCHING, [hl]
+	ld a, $0e ; floor block
+	ld [wNewTileBlockID], a
+	lb bc, 6, 4
+	predef ReplaceTileBlock
+	lb bc, 6, 5
+	predef ReplaceTileBlock
+	ld hl, wCurrentMapScriptFlags
+	res BIT_REPLACE_TILE_BLOCK_BATCHING, [hl]
+	bit BIT_REDRAW_MAP_VIEW_PENDING, [hl]
+	ret z
+	res BIT_REDRAW_MAP_VIEW_PENDING, [hl]
+	jpfar RedrawMapView
 
 SaffronGymSabrinaRematchPostBattleScript: ; marcelnote - Sabrina rematch
 	ld a, [wIsInBattle]
@@ -193,10 +220,8 @@ SaffronGymBrunoInspiringScript: ; marcelnote - postgame Bruno event
 	predef ShowObjectCont
 .end
 	call GBFadeInFromBlack
-	ld a, SCRIPT_SAFFRONGYM_DEFAULT
-	ld [wSaffronGymCurScript], a
-	ld [wCurMapScript], a
-	ret
+	call UpdateSaffronGymTileBlocks ; marcelnote - open Saffron Gym gate
+	jp SaffronGymResetScripts
 
 SaffronGym_TextPointers:
 	def_text_pointers
