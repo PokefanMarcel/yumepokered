@@ -54,22 +54,6 @@ INCLUDE "scripts/IndigoPlateauLobby.asm"
 INCLUDE "data/maps/objects/IndigoPlateauLobby.asm"
 IndigoPlateauLobby_Blocks: INCBIN "maps/IndigoPlateauLobby.blk"
 
-INCLUDE "data/maps/headers/SilphCo4F.asm"
-INCLUDE "scripts/SilphCo4F.asm"
-INCLUDE "data/maps/objects/SilphCo4F.asm"
-SilphCo4F_Blocks: INCBIN "maps/SilphCo4F.blk"
-
-INCLUDE "data/maps/headers/SilphCo5F.asm"
-INCLUDE "scripts/SilphCo5F.asm"
-INCLUDE "data/maps/objects/SilphCo5F.asm"
-SilphCo5F_Blocks: INCBIN "maps/SilphCo5F.blk"
-
-INCLUDE "data/maps/headers/SilphCo6F.asm"
-INCLUDE "scripts/SilphCo6F.asm"
-INCLUDE "data/maps/objects/SilphCo6F.asm"
-SilphCo6F_Blocks: INCBIN "maps/SilphCo6F.blk"
-
-
 SECTION "Maps 3", ROMX
 
 INCLUDE "data/maps/headers/CinnabarIsland.asm"
@@ -303,11 +287,6 @@ INCLUDE "data/maps/headers/RocketHideoutElevator.asm"
 INCLUDE "scripts/RocketHideoutElevator.asm"
 INCLUDE "data/maps/objects/RocketHideoutElevator.asm"
 RocketHideoutElevator_Blocks: INCBIN "maps/RocketHideoutElevator.blk"
-
-INCLUDE "data/maps/headers/SilphCoElevator.asm"
-INCLUDE "scripts/SilphCoElevator.asm"
-INCLUDE "data/maps/objects/SilphCoElevator.asm"
-SilphCoElevator_Blocks: INCBIN "maps/SilphCoElevator.blk"
 
 INCLUDE "data/maps/headers/SafariZoneEast.asm"
 INCLUDE "scripts/SafariZoneEast.asm"
@@ -580,11 +559,6 @@ INCLUDE "scripts/MtMoonB1F.asm"
 INCLUDE "data/maps/objects/MtMoonB1F.asm"
 MtMoonB1F_Blocks: INCBIN "maps/MtMoonB1F.blk"
 
-INCLUDE "data/maps/headers/SilphCo7F.asm"
-INCLUDE "scripts/SilphCo7F.asm"
-INCLUDE "data/maps/objects/SilphCo7F.asm"
-SilphCo7F_Blocks: INCBIN "maps/SilphCo7F.blk"
-
 INCLUDE "data/maps/headers/PokemonMansion2F.asm"
 INCLUDE "scripts/PokemonMansion2F.asm"
 INCLUDE "data/maps/objects/PokemonMansion2F.asm"
@@ -680,12 +654,6 @@ INCLUDE "data/maps/headers/Route12FishingGuideHouse.asm" ; marcelnote - from Sup
 INCLUDE "scripts/Route12FishingGuideHouse.asm"
 INCLUDE "data/maps/objects/Route12FishingGuideHouse.asm"
 
-INCLUDE "data/maps/headers/SilphCo8F.asm"
-INCLUDE "scripts/SilphCo8F.asm"
-INCLUDE "data/maps/objects/SilphCo8F.asm"
-SilphCo8F_Blocks: INCBIN "maps/SilphCo8F.blk"
-
-
 SECTION "Maps 13", ROMX
 
 INCLUDE "data/maps/headers/Route6.asm"
@@ -736,21 +704,6 @@ INCLUDE "data/maps/headers/PokemonFanClub.asm"
 INCLUDE "scripts/PokemonFanClub.asm"
 INCLUDE "data/maps/objects/PokemonFanClub.asm"
 PokemonFanClub_Blocks: INCBIN "maps/PokemonFanClub.blk"
-
-INCLUDE "data/maps/headers/SilphCo2F.asm"
-INCLUDE "scripts/SilphCo2F.asm"
-INCLUDE "data/maps/objects/SilphCo2F.asm"
-SilphCo2F_Blocks: INCBIN "maps/SilphCo2F.blk"
-
-INCLUDE "data/maps/headers/SilphCo3F.asm"
-INCLUDE "scripts/SilphCo3F.asm"
-INCLUDE "data/maps/objects/SilphCo3F.asm"
-SilphCo3F_Blocks: INCBIN "maps/SilphCo3F.blk"
-
-INCLUDE "data/maps/headers/SilphCo10F.asm"
-INCLUDE "scripts/SilphCo10F.asm"
-INCLUDE "data/maps/objects/SilphCo10F.asm"
-SilphCo10F_Blocks: INCBIN "maps/SilphCo10F.blk"
 
 INCLUDE "data/maps/headers/LancesRoom.asm"
 INCLUDE "scripts/LancesRoom.asm"
@@ -869,11 +822,6 @@ INCLUDE "scripts/SaffronGym.asm"
 INCLUDE "data/maps/objects/SaffronGym.asm"
 SaffronGym_Blocks: INCBIN "maps/SaffronGym.blk"
 
-INCLUDE "data/maps/headers/SilphCo1F.asm"
-INCLUDE "scripts/SilphCo1F.asm"
-INCLUDE "data/maps/objects/SilphCo1F.asm"
-SilphCo1F_Blocks: INCBIN "maps/SilphCo1F.blk"
-
 INCLUDE "data/maps/headers/ViridianForestNorthGate.asm"
 INCLUDE "scripts/ViridianForestNorthGate.asm"
 INCLUDE "data/maps/objects/ViridianForestNorthGate.asm"
@@ -897,11 +845,6 @@ INCLUDE "data/maps/objects/UndergroundPathRoute6.asm"
 INCLUDE "data/maps/headers/UndergroundPathRoute7.asm"
 INCLUDE "scripts/UndergroundPathRoute7.asm"
 INCLUDE "data/maps/objects/UndergroundPathRoute7.asm"
-
-INCLUDE "data/maps/headers/SilphCo9F.asm"
-INCLUDE "scripts/SilphCo9F.asm"
-INCLUDE "data/maps/objects/SilphCo9F.asm"
-SilphCo9F_Blocks: INCBIN "maps/SilphCo9F.blk"
 
 INCLUDE "data/maps/headers/VictoryRoad1F.asm"
 INCLUDE "scripts/VictoryRoad1F.asm"
@@ -1010,12 +953,6 @@ INCLUDE "data/maps/headers/DiglettsCave.asm"
 INCLUDE "scripts/DiglettsCave.asm"
 INCLUDE "data/maps/objects/DiglettsCave.asm"
 DiglettsCave_Blocks: INCBIN "maps/DiglettsCave.blk"
-
-INCLUDE "data/maps/headers/SilphCo11F.asm"
-INCLUDE "scripts/SilphCo11F.asm"
-INCLUDE "data/maps/objects/SilphCo11F.asm"
-SilphCo11F_Blocks: INCBIN "maps/SilphCo11F.blk"
-
 
 SECTION "Maps 19", ROMX
 
@@ -1176,11 +1113,6 @@ INCLUDE "scripts/SilphFactory1F.asm"
 INCLUDE "data/maps/objects/SilphFactory1F.asm"
 SilphFactory1F_Blocks:: INCBIN "maps/SilphFactory1F.blk"
 
-INCLUDE "data/maps/headers/SilphFactory2F.asm" ; marcelnote - new location
-INCLUDE "scripts/SilphFactory2F.asm"
-INCLUDE "data/maps/objects/SilphFactory2F.asm"
-SilphFactory2F_Blocks:: INCBIN "maps/SilphFactory2F.blk"
-
 INCLUDE "data/maps/headers/DrJabarasLab.asm" ; marcelnote - new location
 INCLUDE "scripts/DrJabarasLab.asm"
 INCLUDE "data/maps/objects/DrJabarasLab.asm"
@@ -1220,3 +1152,74 @@ INCLUDE "data/maps/headers/SummerBeachHouse.asm" ; marcelnote - new location fro
 INCLUDE "scripts/SummerBeachHouse.asm"
 INCLUDE "data/maps/objects/SummerBeachHouse.asm"
 SummerBeachHouse_Blocks:: INCBIN "maps/SummerBeachHouse.blk"
+
+
+SECTION "Silph Co Maps", ROMX
+; marcelnote - simplify Silph Co gates scripts, keep Card Key gate scripts in one bank
+
+INCLUDE "scripts/SilphCoGates.asm"
+
+INCLUDE "data/maps/headers/SilphCo1F.asm"
+INCLUDE "scripts/SilphCo1F.asm"
+INCLUDE "data/maps/objects/SilphCo1F.asm"
+SilphCo1F_Blocks: INCBIN "maps/SilphCo1F.blk"
+
+INCLUDE "data/maps/headers/SilphCo2F.asm"
+INCLUDE "scripts/SilphCo2F.asm"
+INCLUDE "data/maps/objects/SilphCo2F.asm"
+SilphCo2F_Blocks: INCBIN "maps/SilphCo2F.blk"
+
+INCLUDE "data/maps/headers/SilphCo3F.asm"
+INCLUDE "scripts/SilphCo3F.asm"
+INCLUDE "data/maps/objects/SilphCo3F.asm"
+SilphCo3F_Blocks: INCBIN "maps/SilphCo3F.blk"
+
+INCLUDE "data/maps/headers/SilphCo4F.asm"
+INCLUDE "scripts/SilphCo4F.asm"
+INCLUDE "data/maps/objects/SilphCo4F.asm"
+SilphCo4F_Blocks: INCBIN "maps/SilphCo4F.blk"
+
+INCLUDE "data/maps/headers/SilphCo5F.asm"
+INCLUDE "scripts/SilphCo5F.asm"
+INCLUDE "data/maps/objects/SilphCo5F.asm"
+SilphCo5F_Blocks: INCBIN "maps/SilphCo5F.blk"
+
+INCLUDE "data/maps/headers/SilphCo6F.asm"
+INCLUDE "scripts/SilphCo6F.asm"
+INCLUDE "data/maps/objects/SilphCo6F.asm"
+SilphCo6F_Blocks: INCBIN "maps/SilphCo6F.blk"
+
+INCLUDE "data/maps/headers/SilphCo7F.asm"
+INCLUDE "scripts/SilphCo7F.asm"
+INCLUDE "data/maps/objects/SilphCo7F.asm"
+SilphCo7F_Blocks: INCBIN "maps/SilphCo7F.blk"
+
+INCLUDE "data/maps/headers/SilphCo8F.asm"
+INCLUDE "scripts/SilphCo8F.asm"
+INCLUDE "data/maps/objects/SilphCo8F.asm"
+SilphCo8F_Blocks: INCBIN "maps/SilphCo8F.blk"
+
+INCLUDE "data/maps/headers/SilphCo9F.asm"
+INCLUDE "scripts/SilphCo9F.asm"
+INCLUDE "data/maps/objects/SilphCo9F.asm"
+SilphCo9F_Blocks: INCBIN "maps/SilphCo9F.blk"
+
+INCLUDE "data/maps/headers/SilphCo10F.asm"
+INCLUDE "scripts/SilphCo10F.asm"
+INCLUDE "data/maps/objects/SilphCo10F.asm"
+SilphCo10F_Blocks: INCBIN "maps/SilphCo10F.blk"
+
+INCLUDE "data/maps/headers/SilphCo11F.asm"
+INCLUDE "scripts/SilphCo11F.asm"
+INCLUDE "data/maps/objects/SilphCo11F.asm"
+SilphCo11F_Blocks: INCBIN "maps/SilphCo11F.blk"
+
+INCLUDE "data/maps/headers/SilphCoElevator.asm"
+INCLUDE "scripts/SilphCoElevator.asm"
+INCLUDE "data/maps/objects/SilphCoElevator.asm"
+SilphCoElevator_Blocks: INCBIN "maps/SilphCoElevator.blk"
+
+INCLUDE "data/maps/headers/SilphFactory2F.asm" ; marcelnote - new location
+INCLUDE "scripts/SilphFactory2F.asm"
+INCLUDE "data/maps/objects/SilphFactory2F.asm"
+SilphFactory2F_Blocks:: INCBIN "maps/SilphFactory2F.blk"

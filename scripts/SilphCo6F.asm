@@ -8,31 +8,15 @@ SilphCo6F_Script:
 	ld [wSilphCo6FCurScript], a
 	ret
 
-SilphCo6F_GateCallbackScript:
-	ld hl, wCurrentMapScriptFlags
-	bit BIT_CUR_MAP_LOADED_1, [hl]
-	res BIT_CUR_MAP_LOADED_1, [hl]
-	ret z
+SilphCo6F_GateCallbackScript: ; marcelnote - simplify Silph Co gates scripts
 	ld hl, .GateCoordinates
-	call SilphCo4F_SetCardKeyDoorYScript
-	call SilphCo6F_UnlockedDoorEventScript
-	CheckEvent EVENT_SILPH_CO_6_UNLOCKED_DOOR
-	ret nz
-	ld a, $5f
-	ld [wNewTileBlockID], a
-	lb bc, 6, 2
-	predef_jump ReplaceTileBlock
+	EventFlagAddress de, EVENT_SILPH_CO_6_UNLOCKED_DOOR
+	EventFlagBit c, EVENT_SILPH_CO_6_UNLOCKED_DOOR
+	jp SilphCoGateCallback
 
 .GateCoordinates:
-	dbmapcoord  2,  6
+	dbgatecoord 2, 6, FACILITY_CARD_KEY_GATE_BLOCK_2
 	db -1 ; end
-
-SilphCo6F_UnlockedDoorEventScript:
-	ldh a, [hUnlockedSilphCoDoors]
-	and a
-	ret z
-	SetEvent EVENT_SILPH_CO_6_UNLOCKED_DOOR
-	ret
 
 SilphCo6F_ScriptPointers:
 	def_script_pointers

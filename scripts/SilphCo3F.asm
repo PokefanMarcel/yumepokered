@@ -8,47 +8,16 @@ SilphCo3F_Script:
 	ld [wSilphCo3FCurScript], a
 	ret
 
-SilphCo3FGateCallbackScript:
-	ld hl, wCurrentMapScriptFlags
-	bit BIT_CUR_MAP_LOADED_1, [hl]
-	res BIT_CUR_MAP_LOADED_1, [hl]
-	ret z
+SilphCo3FGateCallbackScript: ; marcelnote - simplify Silph Co gates scripts
 	ld hl, .GateCoordinates
-	call SilphCo2F_SetCardKeyDoorYScript
-	call SilphCo3F_UnlockedDoorEventScript
-	CheckEvent EVENT_SILPH_CO_3_UNLOCKED_DOOR1
-	jr nz, .unlock_door1
-	push af
-	ld a, $5f
-	ld [wNewTileBlockID], a
-	lb bc, 4, 4
-	predef ReplaceTileBlock
-	pop af
-.unlock_door1
-	CheckEventAfterBranchReuseA EVENT_SILPH_CO_3_UNLOCKED_DOOR2, EVENT_SILPH_CO_3_UNLOCKED_DOOR1
-	ret nz
-	ld a, $5f
-	ld [wNewTileBlockID], a
-	lb bc, 4, 8
-	predef_jump ReplaceTileBlock
+	EventFlagAddress de, EVENT_SILPH_CO_3_UNLOCKED_DOOR1
+	EventFlagBit c, EVENT_SILPH_CO_3_UNLOCKED_DOOR1
+	jp SilphCoGateCallback
 
 .GateCoordinates:
-	dbmapcoord  4,  4
-	dbmapcoord  8,  4
+	dbgatecoord 4, 4, FACILITY_CARD_KEY_GATE_BLOCK_2
+	dbgatecoord 8, 4, FACILITY_CARD_KEY_GATE_BLOCK_2
 	db -1 ; end
-
-SilphCo3F_UnlockedDoorEventScript:
-	EventFlagAddress hl, EVENT_SILPH_CO_3_UNLOCKED_DOOR1
-	ldh a, [hUnlockedSilphCoDoors]
-	and a
-	ret z
-	cp $1
-	jr nz, .unlock_door1
-	SetEventReuseHL EVENT_SILPH_CO_3_UNLOCKED_DOOR1
-	ret
-.unlock_door1
-	SetEventAfterBranchReuseHL EVENT_SILPH_CO_3_UNLOCKED_DOOR2, EVENT_SILPH_CO_3_UNLOCKED_DOOR1
-	ret
 
 SilphCo3F_ScriptPointers:
 	def_script_pointers

@@ -320,10 +320,9 @@ hInteractedWithBookshelf::
 	db
 ENDU
 
-	ds 1
+	ds 2 ; marcelnote - removed hUnlockedSilphCoDoors
 
-hUnlockedSilphCoDoors::
-	db
+;hUnlockedSilphCoDoors:: db
 
 ; the first tile ID in a sequence of tile IDs that increase by 1 each step
 hStartTileID:: db

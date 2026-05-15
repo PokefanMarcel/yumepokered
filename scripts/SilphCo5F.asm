@@ -8,62 +8,17 @@ SilphCo5F_Script:
 	ld [wSilphCo5FCurScript], a
 	ret
 
-SilphCo5FGateCallbackScript:
-	ld hl, wCurrentMapScriptFlags
-	bit BIT_CUR_MAP_LOADED_1, [hl]
-	res BIT_CUR_MAP_LOADED_1, [hl]
-	ret z
+SilphCo5FGateCallbackScript: ; marcelnote - simplify Silph Co gates scripts
 	ld hl, .GateCoordinates
-	call SilphCo4F_SetCardKeyDoorYScript
-	call SilphCo5F_SetUnlockedSilphCoDoorsScript
-	CheckEvent EVENT_SILPH_CO_5_UNLOCKED_DOOR1
-	jr nz, .unlock_door1
-	push af
-	ld a, $5f
-	ld [wNewTileBlockID], a
-	lb bc, 2, 3
-	predef ReplaceTileBlock
-	pop af
-.unlock_door1
-	CheckEventAfterBranchReuseA EVENT_SILPH_CO_5_UNLOCKED_DOOR2, EVENT_SILPH_CO_5_UNLOCKED_DOOR1
-	jr nz, .unlock_door2
-	push af
-	ld a, $5f
-	ld [wNewTileBlockID], a
-	lb bc, 6, 3
-	predef ReplaceTileBlock
-	pop af
-.unlock_door2
-	CheckEventAfterBranchReuseA EVENT_SILPH_CO_5_UNLOCKED_DOOR3, EVENT_SILPH_CO_5_UNLOCKED_DOOR2
-	ret nz
-	ld a, $5f
-	ld [wNewTileBlockID], a
-	lb bc, 5, 7
-	predef_jump ReplaceTileBlock
+	EventFlagAddress de, EVENT_SILPH_CO_5_UNLOCKED_DOOR1
+	EventFlagBit c, EVENT_SILPH_CO_5_UNLOCKED_DOOR1
+	jp SilphCoGateCallback
 
 .GateCoordinates:
-	dbmapcoord  3,  2
-	dbmapcoord  3,  6
-	dbmapcoord  7,  5
+	dbgatecoord 3, 2, FACILITY_CARD_KEY_GATE_BLOCK_2
+	dbgatecoord 3, 6, FACILITY_CARD_KEY_GATE_BLOCK_2
+	dbgatecoord 7, 5, FACILITY_CARD_KEY_GATE_BLOCK_2
 	db -1 ; end
-
-SilphCo5F_SetUnlockedSilphCoDoorsScript:
-	EventFlagAddress hl, EVENT_SILPH_CO_5_UNLOCKED_DOOR1
-	ldh a, [hUnlockedSilphCoDoors]
-	and a
-	ret z
-	cp $1
-	jr nz, .unlock_door1
-	SetEventReuseHL EVENT_SILPH_CO_5_UNLOCKED_DOOR1
-	ret
-.unlock_door1
-	cp $2
-	jr nz, .unlock_door2
-	SetEventAfterBranchReuseHL EVENT_SILPH_CO_5_UNLOCKED_DOOR2, EVENT_SILPH_CO_5_UNLOCKED_DOOR1
-	ret
-.unlock_door2
-	SetEventAfterBranchReuseHL EVENT_SILPH_CO_5_UNLOCKED_DOOR3, EVENT_SILPH_CO_5_UNLOCKED_DOOR1
-	ret
 
 SilphCo5F_ScriptPointers:
 	def_script_pointers

@@ -8,103 +8,22 @@ SilphCo7F_Script:
 	ld [wSilphCo7FCurScript], a
 	ret
 
-SilphCo7F_GateCallbackScript:
-	ld hl, wCurrentMapScriptFlags
-	bit BIT_CUR_MAP_LOADED_1, [hl]
-	res BIT_CUR_MAP_LOADED_1, [hl]
-	ret z
+SilphCo7F_GateCallbackScript: ; marcelnote - simplify Silph Co gates scripts
 	ld hl, .GateCoordinates
-	call SilphCo7F_SetCardKeyDoorYScript
-	call SilphCo7F_UnlockedDoorEventScript
-	CheckEvent EVENT_SILPH_CO_7_UNLOCKED_DOOR1
-	jr nz, .unlock_door1
-	push af
-	ld a, $54
-	ld [wNewTileBlockID], a
-	lb bc, 3, 5
-	predef ReplaceTileBlock
-	pop af
-.unlock_door1
-	CheckEventAfterBranchReuseA EVENT_SILPH_CO_7_UNLOCKED_DOOR2, EVENT_SILPH_CO_7_UNLOCKED_DOOR1
-	jr nz, .unlock_door2
-	push af
-	ld a, $54
-	ld [wNewTileBlockID], a
-	lb bc, 2, 10
-	predef ReplaceTileBlock
-	pop af
-.unlock_door2
-	CheckEventAfterBranchReuseA EVENT_SILPH_CO_7_UNLOCKED_DOOR3, EVENT_SILPH_CO_7_UNLOCKED_DOOR2
-	ret nz
-	ld a, $54
-	ld [wNewTileBlockID], a
-	lb bc, 6, 10
-	predef_jump ReplaceTileBlock
+	EventFlagAddress de, EVENT_SILPH_CO_7_UNLOCKED_DOOR1
+	EventFlagBit c, EVENT_SILPH_CO_7_UNLOCKED_DOOR1
+	jp SilphCoGateCallback
 
 .GateCoordinates:
-	dbmapcoord  5,  3
-	dbmapcoord 10,  2
-	dbmapcoord 10,  6
+	dbgatecoord 5, 3, FACILITY_CARD_KEY_GATE_BLOCK_1
+	dbgatecoord 10, 2, FACILITY_CARD_KEY_GATE_BLOCK_1
+	dbgatecoord 10, 6, FACILITY_CARD_KEY_GATE_BLOCK_1
 	db -1 ; end
-
-SilphCo7F_SetCardKeyDoorYScript:
-	push hl
-	ld hl, wCardKeyDoorY
-	ld a, [hli]
-	ld b, a
-	ld a, [hl]
-	ld c, a
-	xor a
-	ldh [hUnlockedSilphCoDoors], a
-	pop hl
-.loop_check_doors
-	ld a, [hli]
-	cp $ff
-	jr z, .exit_loop
-	push hl
-	ld hl, hUnlockedSilphCoDoors
-	inc [hl]
-	pop hl
-	cp b
-	jr z, .check_y_coord
-	inc hl
-	jr .loop_check_doors
-.check_y_coord
-	ld a, [hli]
-	cp c
-	jr nz, .loop_check_doors
-	ld hl, wCardKeyDoorY
-	xor a
-	ld [hli], a
-	ld [hl], a
-	ret
-.exit_loop
-	xor a
-	ldh [hUnlockedSilphCoDoors], a
-	ret
-
-SilphCo7F_UnlockedDoorEventScript:
-	EventFlagAddress hl, EVENT_SILPH_CO_7_UNLOCKED_DOOR1
-	ldh a, [hUnlockedSilphCoDoors]
-	and a
-	ret z
-	cp $1
-	jr nz, .unlock_door1
-	SetEventReuseHL EVENT_SILPH_CO_7_UNLOCKED_DOOR1
-	ret
-.unlock_door1
-	cp $2
-	jr nz, .unlock_door2
-	SetEventAfterBranchReuseHL EVENT_SILPH_CO_7_UNLOCKED_DOOR2, EVENT_SILPH_CO_7_UNLOCKED_DOOR1
-	ret
-.unlock_door2
-	SetEventAfterBranchReuseHL EVENT_SILPH_CO_7_UNLOCKED_DOOR3, EVENT_SILPH_CO_7_UNLOCKED_DOOR1
-	ret
 
 SilphCo7FSetDefaultScript:
 	xor a
 	ld [wJoyIgnore], a
-
+	; fallthrough
 SilphCo7FSetCurScript:
 	ld [wSilphCo7FCurScript], a
 	ld [wCurMapScript], a

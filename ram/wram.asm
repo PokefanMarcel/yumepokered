@@ -1062,6 +1062,10 @@ UNION
 ; Temporary storage area
 wBuffer:: ds 30
 
+NEXTU ; marcelnote - simplify Silph Co gates scripts
+wSilphCoGateEventFlagBit:: db
+wSilphCoGateEventFlagAddress:: dw
+
 NEXTU
 wEvoOldSpecies:: db
 wEvoNewSpecies:: db

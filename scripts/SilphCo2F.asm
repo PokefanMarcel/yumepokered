@@ -8,83 +8,16 @@ SilphCo2F_Script:
 	ld [wSilphCo2FCurScript], a
 	ret
 
-SilphCo2FGateCallbackScript:
-	ld hl, wCurrentMapScriptFlags
-	bit BIT_CUR_MAP_LOADED_1, [hl]
-	res BIT_CUR_MAP_LOADED_1, [hl]
-	ret z
+SilphCo2FGateCallbackScript: ; marcelnote - simplify Silph Co gates scripts
 	ld hl, .GateCoordinates
-	call SilphCo2F_SetCardKeyDoorYScript
-	call SilphCo2F_UnlockedDoorEventScript
-	CheckEvent EVENT_SILPH_CO_2_UNLOCKED_DOOR1
-	jr nz, .unlock_door1
-	push af
-	ld a, $54
-	ld [wNewTileBlockID], a
-	lb bc, 2, 2
-	predef ReplaceTileBlock
-	pop af
-.unlock_door1
-	CheckEventAfterBranchReuseA EVENT_SILPH_CO_2_UNLOCKED_DOOR2, EVENT_SILPH_CO_2_UNLOCKED_DOOR1
-	ret nz
-	ld a, $54
-	ld [wNewTileBlockID], a
-	lb bc, 5, 2
-	predef_jump ReplaceTileBlock
+	EventFlagAddress de, EVENT_SILPH_CO_2_UNLOCKED_DOOR1
+	EventFlagBit c, EVENT_SILPH_CO_2_UNLOCKED_DOOR1
+	jp SilphCoGateCallback
 
 .GateCoordinates:
-	dbmapcoord  2,  2
-	dbmapcoord  2,  5
+	dbgatecoord 2, 2, FACILITY_CARD_KEY_GATE_BLOCK_1
+	dbgatecoord 2, 5, FACILITY_CARD_KEY_GATE_BLOCK_1
 	db -1 ; end
-
-SilphCo2F_SetCardKeyDoorYScript:
-	push hl
-	ld hl, wCardKeyDoorY
-	ld a, [hli]
-	ld b, a
-	ld a, [hl]
-	ld c, a
-	xor a
-	ldh [hUnlockedSilphCoDoors], a
-	pop hl
-.loop_check_doors
-	ld a, [hli]
-	cp $ff
-	jr z, .exit_loop
-	push hl
-	ld hl, hUnlockedSilphCoDoors
-	inc [hl]
-	pop hl
-	cp b
-	jr z, .check_y_coord
-	inc hl
-	jr .loop_check_doors
-.check_y_coord
-	ld a, [hli]
-	cp c
-	jr nz, .loop_check_doors
-	ld hl, wCardKeyDoorY
-	xor a
-	ld [hli], a
-	ld [hl], a
-	ret
-.exit_loop
-	xor a
-	ldh [hUnlockedSilphCoDoors], a
-	ret
-
-SilphCo2F_UnlockedDoorEventScript:
-	EventFlagAddress hl, EVENT_SILPH_CO_2_UNLOCKED_DOOR1
-	ldh a, [hUnlockedSilphCoDoors]
-	and a
-	ret z
-	cp $1
-	jr nz, .unlock_door1
-	SetEventReuseHL EVENT_SILPH_CO_2_UNLOCKED_DOOR1
-	ret
-.unlock_door1
-	SetEventAfterBranchReuseHL EVENT_SILPH_CO_2_UNLOCKED_DOOR2, EVENT_SILPH_CO_2_UNLOCKED_DOOR1
-	ret
 
 SilphCo2F_ScriptPointers:
 	def_script_pointers

@@ -56,8 +56,7 @@ PrintCardKeyText:
 .replaceCardKeyDoorTileBlock
 	ld [wNewTileBlockID], a
 	predef ReplaceTileBlock
-	ld hl, wCurrentMapScriptFlags
-	set BIT_CUR_MAP_LOADED_1, [hl]
+	callfar SetCardKeyGateEvent ; marcelnote - simplify Silph Co gates scripts
 	ld a, SFX_GO_INSIDE
 	jp PlaySound
 .noCardKey

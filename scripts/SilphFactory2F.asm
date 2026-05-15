@@ -17,84 +17,15 @@ SilphFactory2FResetScripts:
 	ret
 
 SilphFactory2FGateCallbackScript: ; marcelnote - adapted from SilphCo9FGateCallbackScript
-	ld hl, wCurrentMapScriptFlags
-	bit BIT_CUR_MAP_LOADED_1, [hl]
-	res BIT_CUR_MAP_LOADED_1, [hl]
-	ret z
 	ld hl, .GateCoordinates
-	call SilphFactory2F_SetCardKeyDoorYScript
-	call SilphFactory2F_SetUnlockedDoorsScript
-	CheckEvent EVENT_SILPH_FACTORY_2F_UNLOCKED_DOOR1
-	jr nz, .unlock_door1
-	push af
-	ld a, $2d
-	ld [wNewTileBlockID], a
-	lb bc, 7, 11
-	predef ReplaceTileBlock
-	pop af
-.unlock_door1
-	CheckEventAfterBranchReuseA EVENT_SILPH_FACTORY_2F_UNLOCKED_DOOR2, EVENT_SILPH_FACTORY_2F_UNLOCKED_DOOR1
-	ret nz
-	ld a, $54
-	ld [wNewTileBlockID], a
-	lb bc, 9, 13
-	predef ReplaceTileBlock
+	EventFlagAddress de, EVENT_SILPH_FACTORY_2F_UNLOCKED_DOOR1
+	EventFlagBit c, EVENT_SILPH_FACTORY_2F_UNLOCKED_DOOR1
+	jp SilphCoGateCallback
 
 .GateCoordinates:
-	dbmapcoord 11,  7
-	dbmapcoord 13,  9
+	dbgatecoord 11, 7, SILPH_FACTORY_CARD_KEY_GATE_BLOCK
+	dbgatecoord 13, 9, FACILITY_CARD_KEY_GATE_BLOCK_1
 	db -1 ; end
-
-SilphFactory2F_SetCardKeyDoorYScript:
-	push hl
-	ld hl, wCardKeyDoorY
-	ld a, [hli]
-	ld b, a
-	ld a, [hl]
-	ld c, a
-	xor a
-	ldh [hUnlockedSilphCoDoors], a
-	pop hl
-.loop_card_key_doors
-	ld a, [hli]
-	cp $ff
-	jr z, .exit_loop
-	push hl
-	ld hl, hUnlockedSilphCoDoors
-	inc [hl]
-	pop hl
-	cp b
-	jr z, .check_door
-	inc hl
-	jr .loop_card_key_doors
-.check_door
-	ld a, [hli]
-	cp c
-	jr nz, .loop_card_key_doors
-	ld hl, wCardKeyDoorY
-	xor a
-	ld [hli], a
-	ld [hl], a
-	ret
-.exit_loop
-	xor a
-	ldh [hUnlockedSilphCoDoors], a
-	ret
-
-SilphFactory2F_SetUnlockedDoorsScript:
-	EventFlagAddress hl, EVENT_SILPH_FACTORY_2F_UNLOCKED_DOOR1
-	ldh a, [hUnlockedSilphCoDoors]
-	and a
-	ret z
-	cp $1
-	jr nz, .unlock_door1
-	SetEventReuseHL EVENT_SILPH_FACTORY_2F_UNLOCKED_DOOR1
-	ret
-.unlock_door1
-	cp $2
-	ret nz
-	SetEventAfterBranchReuseHL EVENT_SILPH_FACTORY_2F_UNLOCKED_DOOR2, EVENT_SILPH_FACTORY_2F_UNLOCKED_DOOR1
-	ret
 
 SilphFactory2F_ScriptPointers:
 	def_script_pointers
