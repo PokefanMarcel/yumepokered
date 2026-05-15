@@ -208,13 +208,11 @@ SilphCo11FGiovanniBattleFacingScript:
 	call SetSpriteMovementBytesToFF
 	ld a, [wSavedCoordIndex]
 	cp 1 ; index of second, upper-right entry in SilphCo11FDefaultScript.PlayerCoordsArray
-	jr z, .face_player_up
-	ld a, PLAYER_DIR_LEFT
-	ld b, SPRITE_FACING_RIGHT
-	jr .continue
-.face_player_up
 	ld a, PLAYER_DIR_UP
 	ld b, SPRITE_FACING_DOWN
+	jr z, .continue
+	ld a, PLAYER_DIR_LEFT
+	ld b, SPRITE_FACING_RIGHT
 .continue
 	call SilphCo11FSetPlayerAndSpriteFacingDirectionScript
 	call Delay3
@@ -254,12 +252,12 @@ SilphCo11TrainerHeader1:
 	trainer EVENT_BEAT_SILPH_CO_11F_TRAINER_1, 3, SilphCo11FRocket2BattleText, SilphCo11FRocket2EndBattleText, SilphCo11FRocket2AfterBattleText
 	db -1 ; end
 
-SilphCo11FSilphPresidentText: ; marcelnote - optimized
+SilphCo11FSilphPresidentText:
 	text_asm
 	CheckEvent EVENT_GOT_MASTER_BALL
 	ld hl, .MasterBallDescriptionText
-	jp nz, .print_text
-	ld hl, .Text
+	jr nz, .print_text
+	ld hl, .ThankYouText
 	call PrintText
 	lb bc, MASTER_BALL, 1
 	call GiveItem
@@ -269,10 +267,10 @@ SilphCo11FSilphPresidentText: ; marcelnote - optimized
 	ld hl, .ReceivedMasterBallText
 .print_text
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
-.Text:
-	text_far _SilphCo11FSilphPresidentText
+.ThankYouText:
+	text_far _SilphCo11FSilphPresidentThankYouText
 	text_end
 
 .ReceivedMasterBallText:
@@ -308,7 +306,7 @@ SilphCo11FRocket1Text:
 	text_asm
 	ld hl, SilphCo11TrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SilphCo11FRocket1BattleText:
 	text_far _SilphCo11FRocket1BattleText
@@ -326,7 +324,7 @@ SilphCo11FRocket2Text:
 	text_asm
 	ld hl, SilphCo11TrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SilphCo11FRocket2BattleText:
 	text_far _SilphCo11FRocket2BattleText
@@ -340,14 +338,14 @@ SilphCo11FRocket2AfterBattleText:
 	text_far _SilphCo11FRocket2AfterBattleText
 	text_end
 
-SilphCo10FPorygonText: ; unreferenced
-	text_asm
-	ld hl, .Text
-	call PrintText
-	ld a, PORYGON
-	call DisplayPokedex
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+;SilphCo11FPorygonText: ; unreferenced
+;	text_asm
+;	ld hl, .Text
+;	call PrintText
+;	ld a, PORYGON
+;	call DisplayPokedex
+;	rst TextScriptEnd
 
-.Text:
-	text_far _SilphCo10FPorygonText
-	text_end
+;.Text:
+;	text_far _SilphCo11FPorygonText
+;	text_end

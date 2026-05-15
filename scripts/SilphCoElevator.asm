@@ -2,9 +2,8 @@ SilphCoElevator_Script:
 	ld hl, wCurrentMapScriptFlags
 	bit BIT_CUR_MAP_LOADED_1, [hl]
 	res BIT_CUR_MAP_LOADED_1, [hl]
-	push hl
 	call nz, SilphCoElevatorStoreWarpEntriesScript
-	pop hl
+	ld hl, wCurrentMapScriptFlags
 	bit BIT_CUR_MAP_USED_ELEVATOR, [hl]
 	res BIT_CUR_MAP_USED_ELEVATOR, [hl]
 	call nz, SilphCoElevatorShakeScript
@@ -37,8 +36,7 @@ SilphCoElevatorCopyWarpMapsScript:
 	ld hl, SilphCoElevatorWarpMaps
 	ld de, wElevatorWarpMaps
 	ld bc, SilphCoElevatorWarpMaps.End - SilphCoElevatorWarpMaps
-	call CopyData
-	ret
+	jp CopyData
 
 SilphCoElevatorFloors:
 	db 11 ; #
@@ -69,12 +67,11 @@ SilphCoElevatorWarpMaps:
 	db 2, SILPH_CO_9F
 	db 2, SILPH_CO_10F
 	db 1, SILPH_CO_11F
-.End:
+.End
 
 SilphCoElevatorShakeScript:
 	call Delay3
-	callfar ShakeElevator
-	ret
+	jpfar ShakeElevator
 
 SilphCoElevator_TextPointers:
 	def_text_pointers
@@ -85,4 +82,4 @@ SilphCoElevatorElevatorText:
 	call SilphCoElevatorCopyWarpMapsScript
 	ld hl, SilphCoElevatorWarpMaps
 	predef DisplayElevatorFloorMenu
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd

@@ -44,11 +44,11 @@ SilphCo3FSilphWorkerMText:
 	text_asm
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
 	ld hl, .YouSavedUsText
-	jr nz, .beat_giovanni
+	jr nz, .print_text
 	ld hl, .WhatShouldIDoText
-.beat_giovanni
+.print_text
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .WhatShouldIDoText:
 	text_far _SilphCo3FSilphWorkerMWhatShouldIDoText
@@ -62,7 +62,7 @@ SilphCo3FRocketText:
 	text_asm
 	ld hl, SilphCo3TrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SilphCo3FRocketBattleText:
 	text_far _SilphCo3FRocketBattleText
@@ -80,7 +80,7 @@ SilphCo3FScientistText:
 	text_asm
 	ld hl, SilphCo3TrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SilphCo3FScientistBattleText:
 	text_far _SilphCo3FScientistBattleText

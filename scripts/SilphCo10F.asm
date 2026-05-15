@@ -45,23 +45,23 @@ SilphCo10FRocketText:
 	text_asm
 	ld hl, SilphCo10TrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SilphCo10FScientistText:
 	text_asm
 	ld hl, SilphCo10TrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SilphCo10FSilphWorkerFText:
 	text_asm
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
 	ld hl, .QuietAboutMyCryingText
-	jr nz, .beat_giovanni
+	jr nz, .print_text
 	ld hl, .ImScaredText
-.beat_giovanni
+.print_text
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .ImScaredText:
 	text_far _SilphCo10FSilphWorkerFImScaredText

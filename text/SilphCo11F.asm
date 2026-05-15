@@ -1,4 +1,4 @@
-_SilphCo11FSilphPresidentText::
+_SilphCo11FSilphPresidentThankYouText::
 	text "PRESIDENT: Thank"
 	line "you for saving"
 	cont "SILPH!"
@@ -129,7 +129,7 @@ _SilphCo11FRocket2AfterBattleText::
 	cont "#MON tough!"
 	done
 
-_SilphCo10FPorygonText::
-	text "The monitor has"
-	line "#MON on it!"
-	done
+;_SilphCo11FPorygonText::
+;	text "The monitor has"
+;	line "#MON on it!"
+;	done

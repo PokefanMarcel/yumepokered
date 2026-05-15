@@ -47,22 +47,15 @@ SilphCo6TrainerHeader2:
 	trainer EVENT_BEAT_SILPH_CO_6F_TRAINER_2, 2, SilphCo6FRocket2BattleText, SilphCo6FRocket2EndBattleText, SilphCo6FRocket2AfterBattleText
 	db -1 ; end
 
-SilphCo6FBeatGiovanniPrintDEOrPrintHLScript:
-	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
-	jr nz, .beat_giovanni
-	jr .print_text
-.beat_giovanni
-	ld h, d
-	ld l, e
-.print_text
-	jp PrintText
-
 SilphCo6FSilphWorkerM1Text:
 	text_asm
+	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
+	ld hl, .BackToWorkText
+	jr nz, .print_text
 	ld hl, .TookOverTheBuildingText
-	ld de, .BackToWorkText
-	call SilphCo6FBeatGiovanniPrintDEOrPrintHLScript
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.print_text
+	call PrintText
+	rst TextScriptEnd
 
 .TookOverTheBuildingText:
 	text_far _SilphCo6FSilphWorkerM1TookOverTheBuildingText
@@ -74,10 +67,13 @@ SilphCo6FSilphWorkerM1Text:
 
 SilphCo6FSilphWorkerM2Text:
 	text_asm
+	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
+	ld hl, .WeGotEngagedText
+	jr nz, .print_text
 	ld hl, .HelpMePleaseText
-	ld de, .WeGotEngagedText
-	call SilphCo6FBeatGiovanniPrintDEOrPrintHLScript
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.print_text
+	call PrintText
+	rst TextScriptEnd
 
 .HelpMePleaseText:
 	text_far _SilphCo6FSilphWorkerMHelpMePleaseText
@@ -89,10 +85,13 @@ SilphCo6FSilphWorkerM2Text:
 
 SilphCo6FSilphWorkerF1Text:
 	text_asm
+	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
+	ld hl, .HaveToMarryHimText
+	jr nz, .print_text
 	ld hl, .SuchACowardText
-	ld de, .HaveToMarryHimText
-	call SilphCo6FBeatGiovanniPrintDEOrPrintHLScript
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.print_text
+	call PrintText
+	rst TextScriptEnd
 
 .SuchACowardText:
 	text_far _SilphCo6FSilphWorkerF1SuchACowardText
@@ -104,10 +103,13 @@ SilphCo6FSilphWorkerF1Text:
 
 SilphCo6FSilphWorkerF2Text:
 	text_asm
+	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
+	ld hl, .TeamRocketRanText
+	jr nz, .print_text
 	ld hl, .TeamRocketConquerWorldText
-	ld de, .TeamRocketRanText
-	call SilphCo6FBeatGiovanniPrintDEOrPrintHLScript
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.print_text
+	call PrintText
+	rst TextScriptEnd
 
 .TeamRocketConquerWorldText:
 	text_far _SilphCo6FSilphWorkerF2TeamRocketConquerWorldText
@@ -119,10 +121,13 @@ SilphCo6FSilphWorkerF2Text:
 
 SilphCo6FSilphWorkerM3Text:
 	text_asm
+	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
+	ld hl, .WorkForSilphText
+	jr nz, .print_text
 	ld hl, .TargetedSilphText
-	ld de, .WorkForSilphText
-	call SilphCo6FBeatGiovanniPrintDEOrPrintHLScript
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+.print_text
+	call PrintText
+	rst TextScriptEnd
 
 .TargetedSilphText:
 	text_far _SilphCo6FSilphWorkerM3TargetedSilphText
@@ -136,7 +141,7 @@ SilphCo6FRocket1Text:
 	text_asm
 	ld hl, SilphCo6TrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SilphCo6FRocket1BattleText:
 	text_far _SilphCo6FRocket1BattleText
@@ -154,7 +159,7 @@ SilphCo6FScientistText:
 	text_asm
 	ld hl, SilphCo6TrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SilphCo6FScientistBattleText:
 	text_far _SilphCo6FScientistBattleText
@@ -172,7 +177,7 @@ SilphCo6FRocket2Text:
 	text_asm
 	ld hl, SilphCo6TrainerHeader2
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SilphCo6FRocket2BattleText:
 	text_far _SilphCo6FRocket2BattleText

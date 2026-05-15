@@ -1,4 +1,4 @@
-_SilphCo11FSilphPresidentText::
+_SilphCo11FSilphPresidentThankYouText::
 	text "PDG: Merci d'avoir"
 	line "sauvé la SYLPHE!"
 
@@ -163,7 +163,7 @@ _SilphCo11FRocket2AfterBattleText::
 	cont "terribles!"
 	done
 
-_SilphCo10FPorygonText::
-	text "Des #MON sur"
-	line "le moniteur!"
-	done
+;_SilphCo11FPorygonText::
+;	text "Des #MON sur"
+;	line "le moniteur!"
+;	done

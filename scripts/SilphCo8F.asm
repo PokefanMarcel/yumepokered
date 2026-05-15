@@ -55,7 +55,7 @@ SilphCo8FBaldingGuyText: ; marcelnote - new for EXP.ALL boost
 	ld hl, .ShutMeDownText
 .print_text
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .canUpgrade
 	ld hl, .UpgradeExpAllText
@@ -106,11 +106,11 @@ SilphCo8FSilphWorkerMText:
 	text_asm
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
 	ld hl, .ThanksForSavingUsText
-	jr nz, .beat_giovanni
+	jr nz, .print_text
 	ld hl, .SilphIsFinishedText
-.beat_giovanni
+.print_text
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .SilphIsFinishedText:
 	text_far _SilphCo8FSilphWorkerMSilphIsFinishedText
@@ -124,19 +124,19 @@ SilphCo8FRocket1Text:
 	text_asm
 	ld hl, SilphCo8TrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SilphCo8FScientistText:
 	text_asm
 	ld hl, SilphCo8TrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SilphCo8FRocket2Text:
 	text_asm
 	ld hl, SilphCo8TrainerHeader2
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SilphCo8FRocket1BattleText:
 	text_far _SilphCo8FRocket1BattleText

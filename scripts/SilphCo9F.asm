@@ -44,11 +44,11 @@ SilphCo9TrainerHeader2:
 	trainer EVENT_BEAT_SILPH_CO_9F_TRAINER_2, 4, SilphCo9FRocket2BattleText, SilphCo9FRocket2EndBattleText, SilphCo9FRocket2AfterBattleText
 	db -1 ; end
 
-SilphCo9FNurseText: ; marcelnote - optimized
+SilphCo9FNurseText:
 	text_asm
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
 	ld hl, .ThankYouText
-	jr nz, .beat_giovanni
+	jr nz, .print_text
 	ld hl, .YouLookTiredText
 	call PrintText
 	predef HealParty
@@ -56,9 +56,9 @@ SilphCo9FNurseText: ; marcelnote - optimized
 	call Delay3
 	call GBFadeInFromWhite
 	ld hl, .DontGiveUpText
-.beat_giovanni
+.print_text
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .YouLookTiredText:
 	text_far _SilphCo9FNurseYouLookTiredText
@@ -76,19 +76,19 @@ SilphCo9FRocket1Text:
 	text_asm
 	ld hl, SilphCo9TrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SilphCo9FScientistText:
 	text_asm
 	ld hl, SilphCo9TrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SilphCo9FRocket2Text:
 	text_asm
 	ld hl, SilphCo9TrainerHeader2
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SilphCo9FRocket1BattleText:
 	text_far _SilphCo9FRocket1BattleText
