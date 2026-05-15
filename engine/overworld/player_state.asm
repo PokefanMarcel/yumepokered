@@ -278,7 +278,7 @@ _GetTileAndCoordsInFrontOfPlayer:
 	ld a, [wXCoord]
 	ld e, a
 	ld a, [wSpritePlayerStateData1FacingDirection]
-	and a ; cp SPRITE_FACING_DOWN
+	and a ; SPRITE_FACING_DOWN?
 	jr nz, .notFacingDown
 ; facing down
 ;;;;;;;;;;;;;;; marcelnote - prevents cut tree from returning
@@ -407,7 +407,7 @@ GetTileTwoStepsInFrontOfPlayer:
 	ld d, a
 	ld e, [hl]
 	ld a, [wSpritePlayerStateData1FacingDirection]
-	and a ; cp SPRITE_FACING_DOWN
+	and a ; SPRITE_FACING_DOWN?
 	jr nz, .notFacingDown
 ; facing down
 	ld hl, hPlayerFacing
