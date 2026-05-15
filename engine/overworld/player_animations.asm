@@ -535,6 +535,8 @@ _HandleMidJump::
 	ldh [hJoyPressed], a
 	ldh [hJoyReleased], a
 	ld [wPlayerJumpingYScreenCoordsIndex], a
+	ld [wSimulatedJoypadStatesIndex], a ; marcelnote - free ledge tile
+	ld [wSimulatedJoypadStatesEnd], a
 	ld hl, wMovementFlags
 	res BIT_LEDGE_OR_FISHING, [hl]
 	ld hl, wStatusFlags5

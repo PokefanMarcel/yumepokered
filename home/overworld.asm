@@ -1272,13 +1272,16 @@ IsSpriteInFrontOfPlayer2::
 ; function to check if the player will jump down a ledge and check if the tile ahead is passable (when not surfing)
 ; sets the carry flag if there is a collision, and unsets it if there isn't a collision
 CollisionCheckOnLand::
-	ld a, [wMovementFlags]
-	bit BIT_LEDGE_OR_FISHING, a
+	ld hl, wMovementFlags
+	bit BIT_CLIMBING_LEDGE, [hl] ; marcelnote - free ledge tile
+	res BIT_CLIMBING_LEDGE, [hl]
+	jr nz, .collision
+	bit BIT_LEDGE_OR_FISHING, [hl]
 	jr nz, .noCollision
 ; if not jumping a ledge
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
-	jr nz, .noCollision ; no collisions when the player's movements are being controlled by the game
+	ret nz ; no collisions when the player's movements are being controlled by the game
 	ld a, [wPlayerDirection] ; the direction that the player is trying to go in
 	ld d, a
 	ld a, [wSpritePlayerStateData1CollisionData]
@@ -1295,9 +1298,8 @@ CollisionCheckOnLand::
 	call CheckForJumpingAndTilePairCollisions
 	jr c, .collision
 	call CheckTilePassable
-	jr nc, .noCollision
+	ret nc ; no collision
 .collision
-
 ;	ld a, [wChannelSoundIDs + CHAN5]
 ;	cp SFX_COLLISION ; check if collision sound is already playing
 ;	jr z, .setCarry
@@ -1349,12 +1351,20 @@ CheckForJumpingAndTilePairCollisions::
 	callfar HandleLedges ; check if the player is trying to jump a ledge
 	pop bc
 	pop de
+	ld hl, wMovementFlags
+	bit BIT_CLIMBING_LEDGE, [hl]
+	jr z, .notClimbingLedge
+	res BIT_CLIMBING_LEDGE, [hl]
+	pop hl
+	scf
+	ret
+.notClimbingLedge
 	pop hl
 	and a
 	ld a, [wMovementFlags]
 	bit BIT_LEDGE_OR_FISHING, a
 	ret nz
-; if not jumping
+	; if not jumping
 
 CheckForTilePairCollisions2::
 	lda_coord 8, 9 ; tile the player is on
@@ -1941,7 +1951,7 @@ JoypadOverworld::
 	ldh [hJoyHeld], a
 	ld hl, wMovementFlags
 	ld a, [hl]
-	and (1 << BIT_SPINNING) | (1 << BIT_LEDGE_OR_FISHING) | (1 << 5) | (1 << 4) | (1 << 3)
+	and (1 << BIT_SPINNING) | (1 << BIT_LEDGE_OR_FISHING) | (1 << BIT_CLIMBING_LEDGE) | (1 << 4) | (1 << 3)
 	ld [hl], a
 	ld hl, wStatusFlags5
 	res BIT_SCRIPTED_MOVEMENT_STATE, [hl]

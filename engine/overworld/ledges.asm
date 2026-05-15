@@ -4,17 +4,15 @@ HandleLedges:: ; marcelnote - modified to check more accurate tiles
 	ret nz
 	ld a, [wCurMapTileset]
 	and a ; OVERWORLD?
-	jr z, .overworldTileset
+	ld hl, LedgeTiles
+	jr z, .gotTileset
 	cp CAVERN
 	ret nz ; other tilesets do not have ledges
 	ld hl, LedgeTilesCavern
-	jr .gotTileset
-.overworldTileset
-	ld hl, LedgeTiles
 .gotTileset
 	ld a, [wSpritePlayerStateData1FacingDirection]
 	ld b, a
-	and a ; SPRITE_FACING_DOWN
+	and a ; SPRITE_FACING_DOWN?
 	jr nz, .notFacingDown
 	; facing down
 	lda_coord 8, 10
@@ -43,7 +41,7 @@ HandleLedges:: ; marcelnote - modified to check more accurate tiles
 .loop
 	ld a, [hli]
 	cp $ff
-	ret z
+	jr z, .checkRightLedge
 	cp b ; b = facing direction
 	jr nz, .nextLedgeTile1
 	ld a, [hli]
@@ -78,7 +76,20 @@ HandleLedges:: ; marcelnote - modified to check more accurate tiles
 	ld [wSimulatedJoypadStatesIndex], a
 	call LoadHoppingShadowOAM
 	ld a, SFX_LEDGE
-	call PlaySound
+	jp PlaySound
+
+.checkRightLedge ; hardcodes collision when facing right ledges on overworld
+	ld a, [wCurMapTileset]
+	and a ; OVERWORLD?
+	ret nz
+	ld a, [wSpritePlayerStateData1FacingDirection]
+	cp SPRITE_FACING_LEFT
+	ret nz
+	lda_coord 7, 9 ; tile in front of player, southeast
+	cp $24
+	ret nz
+	ld hl, wMovementFlags
+	set BIT_CLIMBING_LEDGE, [hl]
 	ret
 
 INCLUDE "data/tilesets/ledge_tiles.asm"
@@ -91,8 +102,7 @@ LoadHoppingShadowOAM:
 	ld a, $9
 	lb bc, $54, $48 ; b, c = y, x coordinates of shadow
 	ld de, LedgeHoppingShadowOAMBlock
-	call WriteOAMBlock
-	ret
+	jp WriteOAMBlock
 
 LedgeHoppingShadow:
 	INCBIN "gfx/overworld/shadow.1bpp"

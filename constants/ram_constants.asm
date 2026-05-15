@@ -154,7 +154,8 @@ DEF NUM_BADGES EQU const_value
 	const BIT_STANDING_ON_DOOR ; 0
 	const BIT_EXITING_DOOR     ; 1
 	const BIT_STANDING_ON_WARP ; 2
-	const_skip 3               ; 3-5 ; unused
+	const_skip 2               ; 3-4 ; unused
+	const BIT_CLIMBING_LEDGE   ; 5 ; marcelnote - free ledge tile
 	const BIT_LEDGE_OR_FISHING ; 6
 	const BIT_SPINNING         ; 7
 
