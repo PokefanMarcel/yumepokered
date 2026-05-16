@@ -7,14 +7,13 @@ PlayerStepOutFromDoor::
 	ld [wJoyIgnore], a
 	ld hl, wMovementFlags
 	set BIT_EXITING_DOOR, [hl]
-	ld a, $1
+	ld a, 1
 	ld [wSimulatedJoypadStatesIndex], a
 	ld a, PAD_DOWN
 	ld [wSimulatedJoypadStatesEnd], a
 	xor a
 	ld [wSpritePlayerStateData1ImageIndex], a
-	call StartSimulatingJoypadStates
-	ret
+	jp StartSimulatingJoypadStates
 .notStandingOnDoor
 	xor a
 	;ld [wUnusedOverrideSimulatedJoypadStatesIndex], a
