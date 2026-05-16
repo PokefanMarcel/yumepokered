@@ -169,7 +169,6 @@ IsWarpTileInFrontOfPlayer::
 	ld h, [hl]
 	ld l, a
 	ld a, [wTileInFrontOfPlayer]
-	;ld de, $1
 	call IsInList
 .done
 	pop bc
@@ -211,13 +210,12 @@ IsPlayerStandingOnDoorTileOrWarpTile::
 	ld a, [wCurMapTileset]
 	add a
 	ld c, a
-	ld b, $0
+	ld b, 0
 	ld hl, WarpTileIDPointers
 	add hl, bc
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	;ld de, $1
 	lda_coord 8, 9
 	call IsInList
 	jr nc, .done
