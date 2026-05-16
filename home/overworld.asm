@@ -634,7 +634,7 @@ CheckMapConnections::
 	ld [wCurrentTileBlockMapViewPointer], a ; pointer to upper left corner of current tile block map section
 	ld a, h
 	ld [wCurrentTileBlockMapViewPointer + 1], a
-	jp .loadNewMap
+	jr .loadNewMap
 
 .checkNorthMap
 	ld a, [wYCoord]
@@ -661,13 +661,13 @@ CheckMapConnections::
 	ld [wCurrentTileBlockMapViewPointer], a ; pointer to upper left corner of current tile block map section
 	ld a, h
 	ld [wCurrentTileBlockMapViewPointer + 1], a
-	jp .loadNewMap
+	jr .loadNewMap
 
 .checkSouthMap
 	ld b, a
 	ld a, [wCurrentMapHeight2]
 	cp b
-	jr nz, .didNotEnterConnectedMap
+	jp nz, OverworldLoop ; did not enter connected map
 	ld a, [wSouthConnectedMap]
 	ld [wCurMap], a
 	ld a, [wSouthConnectedMapYAlignment] ; new Y coordinate upon entering south map
@@ -700,18 +700,13 @@ CheckMapConnections::
 	call LoadTileBlockMap
 	jp OverworldLoopLessDelay
 
-.didNotEnterConnectedMap
-	jp OverworldLoop
-
 ; function to play a sound when changing maps
 PlayMapChangeSound::
 	lda_coord 8, 8 ; upper left tile of the 4x4 square the player's sprite is standing on
-	cp $0b ; door tile in tileset 0
-	jr nz, .didNotGoThroughDoor
-	ld a, SFX_GO_INSIDE
-	jr .playSound
-.didNotGoThroughDoor
+	cp $0b ; door tile in OVERWORLD
 	ld a, SFX_GO_OUTSIDE
+	jr nz, .playSound
+	ld a, SFX_GO_INSIDE
 .playSound
 	call PlaySound
 	ld a, [wMapPalOffset]
@@ -868,7 +863,6 @@ IsBikingAllowed:: ; marcelnote - simplified
 ; Return carry if biking is allowed.
 	ld a, [wCurMapTileset]
 	ld hl, BikeRidingTilesets
-;	ld de, 1 ; size of array entries
 	jp IsInList ; returns carry if found
 
 INCLUDE "data/tilesets/bike_riding_tilesets.asm"
@@ -997,7 +991,7 @@ LoadTileBlockMap::
 .eastConnection
 	ld a, [wEastConnectedMap]
 	cp $ff
-	jr z, .done
+	ret z
 	call SwitchToMapRomBank
 	ld a, [wEastConnectionStripSrc]
 	ld l, a
@@ -1011,9 +1005,7 @@ LoadTileBlockMap::
 	ld b, a
 	ld a, [wEastConnectedMapWidth]
 	ldh [hEastWestConnectedMapWidth], a
-	call LoadEastWestConnectionsTileMap
-.done
-	ret
+	jp LoadEastWestConnectionsTileMap
 
 LoadNorthSouthConnectionsTileMap::
 	ld c, MAP_BORDER
