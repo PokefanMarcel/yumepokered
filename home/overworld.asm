@@ -772,9 +772,8 @@ PlayMapChangeSound::
 	jp GBFadeOutToBlack
 
 CheckIfInFlyMap:: ; marcelnote - added more FLY maps
-	call CheckIfInOutsideMap
+	call CheckIfInOutsideMap ; a = [wCurMapTileset]
 	ret z
-	; a = [wCurMapTileset]
 	cp MOUNTAIN ; Cinnabar Volcano 2F, Mt Silver 3F
 	ret z
 ;	cp FOREST   ; Viridian Forest, Celadon Grove
@@ -797,7 +796,7 @@ CheckIfInOutsideMap::
 ; the "sometimes" qualification is necessary because of CheckWarpsNoCollision's behavior
 ; depending on the map, either "function 1" or "function 2" is used for the check
 ; "function 1" passes when the player is at the edge of the map and is facing towards the outside of the map
-; "function 2" passes when the the tile in front of the player is among a certain set
+; "function 2" passes when the tile in front of the player is among a certain set
 ; sets carry if the check passes, otherwise clears carry
 ExtraWarpCheck::
 	ld a, [wCurMap]
