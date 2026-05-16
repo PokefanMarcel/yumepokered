@@ -12,14 +12,14 @@ RockTunnel1F_Object:
 	db $3 ; border block
 
 	def_warp_events
-	warp_event 15,  3, LAST_MAP, 2
-	warp_event 15,  0, LAST_MAP, 2
-	warp_event 15, 33, LAST_MAP, 3
-	warp_event 15, 35, LAST_MAP, 3
-	warp_event 37,  3, ROCK_TUNNEL_B1F, 1
-	warp_event  5,  3, ROCK_TUNNEL_B1F, 2
-	warp_event 17, 11, ROCK_TUNNEL_B1F, 3
-	warp_event 37, 17, ROCK_TUNNEL_B1F, 4
+	warp_event 15,  3, ANY_DIR,   LAST_MAP, 2
+	warp_event 15,  0, WARP_UP,   LAST_MAP, 2 ; unreachable
+	warp_event 15, 33, ANY_DIR,   LAST_MAP, 3
+	warp_event 15, 35, WARP_DOWN, LAST_MAP, 3 ; unreachable
+	warp_event 37,  3, ANY_DIR,   ROCK_TUNNEL_B1F, 1
+	warp_event  5,  3, ANY_DIR,   ROCK_TUNNEL_B1F, 2
+	warp_event 17, 11, ANY_DIR,   ROCK_TUNNEL_B1F, 3
+	warp_event 37, 17, ANY_DIR,   ROCK_TUNNEL_B1F, 4
 
 	def_bg_events
 	bg_event 11, 29, TEXT_ROCKTUNNEL1F_SIGN

@@ -13,13 +13,13 @@ SilphFactory2F_Object:
 	db $2e ; border block
 
 	def_warp_events
-	warp_event  4, 27, MANDARIN_ISLAND, 6
-	warp_event  5, 27, MANDARIN_ISLAND, 6
-	warp_event  8, 21, SILPH_FACTORY_2F, 4
-	warp_event  3, 12, SILPH_FACTORY_2F, 3
-	warp_event 10,  1, SILPH_FACTORY_1F, 1
-	warp_event 26,  1, SILPH_FACTORY_1F, 2
-	warp_event 19, 26, SILPH_FACTORY_1F, 3
+	warp_event  4, 27, WARP_DOWN, MANDARIN_ISLAND, 6
+	warp_event  5, 27, WARP_DOWN, MANDARIN_ISLAND, 6
+	warp_event  8, 21, ANY_DIR,   SILPH_FACTORY_2F, 4
+	warp_event  3, 12, ANY_DIR,   SILPH_FACTORY_2F, 3
+	warp_event 10,  1, ANY_DIR,   SILPH_FACTORY_1F, 1
+	warp_event 26,  1, ANY_DIR,   SILPH_FACTORY_1F, 2
+	warp_event 19, 26, ANY_DIR,   SILPH_FACTORY_1F, 3
 
 	def_bg_events
 

@@ -14,14 +14,14 @@ MandarinIsland_Object:
 	db $43 ; border block
 
 	def_warp_events
-	warp_event 23,  5, MANDARIN_POKECENTER_MART, 1
-	warp_event  7, 11, MANDARIN_POKECENTER_MART, 3
-	warp_event 23, 11, MANDARIN_SURF_SHOP, 1
-	warp_event 17, 13, MANDARIN_HOTEL, 1
-	warp_event 11,  5, MANDARIN_SILPH_CO, 1
-	warp_event 16,  5, SILPH_FACTORY_2F, 1
-	warp_event 26, 27, MANDARIN_DOCK, 1
-	warp_event 27, 27, MANDARIN_DOCK, 1
+	warp_event 23,  5, ANY_DIR,   MANDARIN_POKECENTER_MART, 1
+	warp_event  7, 11, ANY_DIR,   MANDARIN_POKECENTER_MART, 3
+	warp_event 23, 11, ANY_DIR,   MANDARIN_SURF_SHOP, 1
+	warp_event 17, 13, ANY_DIR,   MANDARIN_HOTEL, 1
+	warp_event 11,  5, ANY_DIR,   MANDARIN_SILPH_CO, 1
+	warp_event 16,  5, ANY_DIR,   SILPH_FACTORY_2F, 1
+	warp_event 26, 27, WARP_DOWN, MANDARIN_DOCK, 1
+	warp_event 27, 27, WARP_DOWN, MANDARIN_DOCK, 1
 
 	def_bg_events
 	bg_event 21, 17, TEXT_MANDARINISLAND_SIGN

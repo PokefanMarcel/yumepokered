@@ -11,15 +11,15 @@ Route16_Object: ; marcelnote - all objects were shifted to expand the map
 	db $43 ; border block ; marcelnote - was $0f, changed to solve visual bug
 
 	def_warp_events
-	warp_event 57, 12, ROUTE_16_GATE, 1 ; marcelnote - merged ROUTE_16_GATE floors
-	warp_event 57, 13, ROUTE_16_GATE, 2
-	warp_event 64, 12, ROUTE_16_GATE, 3
-	warp_event 64, 13, ROUTE_16_GATE, 4
-	warp_event 57,  6, ROUTE_16_GATE, 5
-	warp_event 57,  7, ROUTE_16_GATE, 6
-	warp_event 64,  6, ROUTE_16_GATE, 7
-	warp_event 64,  7, ROUTE_16_GATE, 8
-	warp_event 47,  7, ROUTE_16_FLY_HOUSE, 1
+	warp_event 57, 12, WARP_RIGHT, ROUTE_16_GATE, 1 ; marcelnote - merged ROUTE_16_GATE floors
+	warp_event 57, 13, WARP_RIGHT, ROUTE_16_GATE, 2
+	warp_event 64, 12, WARP_LEFT,  ROUTE_16_GATE, 3
+	warp_event 64, 13, WARP_LEFT,  ROUTE_16_GATE, 4
+	warp_event 57,  6, WARP_RIGHT, ROUTE_16_GATE, 5
+	warp_event 57,  7, WARP_RIGHT, ROUTE_16_GATE, 6
+	warp_event 64,  6, WARP_LEFT,  ROUTE_16_GATE, 7
+	warp_event 64,  7, WARP_LEFT,  ROUTE_16_GATE, 8
+	warp_event 47,  7, ANY_DIR,    ROUTE_16_FLY_HOUSE, 1
 
 	def_bg_events
 	bg_event 67, 13, TEXT_ROUTE16_CYCLING_ROAD_SIGN

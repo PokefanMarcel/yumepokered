@@ -6,8 +6,8 @@ SafariZoneSecretHouse_Object:
 	db $0 ; border block ; marcelnote - tileset was changed from LAB to BEACH_HOUSE
 
 	def_warp_events
-	warp_event  2,  7, SAFARI_ZONE_WEST, 7
-	warp_event  3,  7, SAFARI_ZONE_WEST, 7
+	warp_event  2,  7, WARP_DOWN, SAFARI_ZONE_WEST, 7
+	warp_event  3,  7, WARP_DOWN, SAFARI_ZONE_WEST, 7
 
 	def_bg_events
 	bg_event  3,  0, TEXT_SAFARIZONESECRETHOUSE_POSTER ; marcelnote - new

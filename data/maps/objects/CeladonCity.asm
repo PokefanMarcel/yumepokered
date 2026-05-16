@@ -14,20 +14,20 @@ CeladonCity_Object:
 	db $f ; border block
 
 	def_warp_events
-	warp_event  8, 13, CELADON_MART_1F2F3F, 1 ; marcelnote - merged 1F 2F 3F
-	warp_event 10, 13, CELADON_MART_1F2F3F, 3 ; marcelnote - merged 1F 2F 3F
-	warp_event 24,  9, CELADON_MANSION, 1 ; marcelnote - merged Celadon Mansion floors
-	warp_event 24,  3, CELADON_MANSION, 3 ; marcelnote - merged Celadon Mansion floors
-	warp_event 25,  3, CELADON_MANSION, 3 ; marcelnote - merged Celadon Mansion floors
-	warp_event 41,  9, CELADON_POKECENTER, 1
-	warp_event 12, 27, CELADON_GYM, 1
-	warp_event 28, 19, GAME_CORNER, 1
-	warp_event 39, 19, CELADON_MART_4F5F6F, 1 ; marcelnote - was CELADON_MART_5F
-	warp_event 33, 19, GAME_CORNER_PRIZE_ROOM, 1
-	warp_event 31, 27, CELADON_DINER, 1
-	warp_event 35, 27, CELADON_CHIEF_HOUSE, 1
-	warp_event 43, 27, CELADON_HOTEL, 1
-	warp_event  9,  3, CELADON_GROVE_SOUTH_GATE, 2 ; marcelnote - new for Celadon Grove
+	warp_event  8, 13, ANY_DIR,   CELADON_MART_1F2F3F, 1 ; marcelnote - merged 1F 2F 3F
+	warp_event 10, 13, ANY_DIR,   CELADON_MART_1F2F3F, 3 ; marcelnote - merged 1F 2F 3F
+	warp_event 24,  9, ANY_DIR,   CELADON_MANSION, 1 ; marcelnote - merged Celadon Mansion floors
+	warp_event 24,  3, WARP_DOWN, CELADON_MANSION, 3 ; marcelnote - merged Celadon Mansion floors
+	warp_event 25,  3, WARP_DOWN, CELADON_MANSION, 3 ; marcelnote - merged Celadon Mansion floors
+	warp_event 41,  9, ANY_DIR,   CELADON_POKECENTER, 1
+	warp_event 12, 27, ANY_DIR,   CELADON_GYM, 1
+	warp_event 28, 19, ANY_DIR,   GAME_CORNER, 1
+	warp_event 39, 19, ANY_DIR,   CELADON_MART_4F5F6F, 1 ; marcelnote - was CELADON_MART_5F
+	warp_event 33, 19, ANY_DIR,   GAME_CORNER_PRIZE_ROOM, 1
+	warp_event 31, 27, ANY_DIR,   CELADON_DINER, 1
+	warp_event 35, 27, ANY_DIR,   CELADON_CHIEF_HOUSE, 1
+	warp_event 43, 27, ANY_DIR,   CELADON_HOTEL, 1
+	warp_event  9,  3, ANY_DIR,   CELADON_GROVE_SOUTH_GATE, 2 ; marcelnote - new for Celadon Grove
 
 	def_bg_events
 	bg_event 27, 15, TEXT_CELADONCITY_TRAINER_TIPS1

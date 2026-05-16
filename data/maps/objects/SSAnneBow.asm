@@ -9,8 +9,8 @@ SSAnneBow_Object:
 	db $23 ; border block
 
 	def_warp_events
-	warp_event 13,  6, SS_ANNE_3F, 1
-	warp_event 13,  7, SS_ANNE_3F, 1
+	warp_event 13,  6, WARP_RIGHT, SS_ANNE_3F, 1
+	warp_event 13,  7, WARP_RIGHT, SS_ANNE_3F, 1
 
 	def_bg_events
 

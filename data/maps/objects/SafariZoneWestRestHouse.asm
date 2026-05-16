@@ -7,8 +7,8 @@ SafariZoneWestRestHouse_Object:
 	db $0 ; border block ; marcelnote - changed tileset from GATE
 
 	def_warp_events
-	warp_event  2,  7, SAFARI_ZONE_WEST, 8
-	warp_event  3,  7, SAFARI_ZONE_WEST, 8
+	warp_event  2,  7, WARP_DOWN, SAFARI_ZONE_WEST, 8
+	warp_event  3,  7, WARP_DOWN, SAFARI_ZONE_WEST, 8
 
 	def_bg_events
 

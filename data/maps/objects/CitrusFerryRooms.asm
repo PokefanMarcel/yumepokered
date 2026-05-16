@@ -14,16 +14,16 @@ CitrusFerryRooms_Object:
 	db $c ; border block
 
 	def_warp_events
-	warp_event 30, 11, CITRUS_FERRY_DECK, 5  ; Captain's room
-	warp_event  1, 11, CITRUS_FERRY_DECK, 6  ; top rooms
-	warp_event  2, 11, CITRUS_FERRY_DECK, 6
-	warp_event 11, 11, CITRUS_FERRY_DECK, 7
-	warp_event 12, 11, CITRUS_FERRY_DECK, 7
-	warp_event 21, 11, CITRUS_FERRY_DECK, 8
-	warp_event 22, 11, CITRUS_FERRY_DECK, 8
-	warp_event  0,  0, CITRUS_FERRY_DECK, 9  ; bottom rooms
-	warp_event 10,  0, CITRUS_FERRY_DECK, 10
-	warp_event 20,  0, CITRUS_FERRY_DECK, 11
+	warp_event 30, 11, ANY_DIR,   CITRUS_FERRY_DECK, 5  ; Captain's room
+	warp_event  1, 11, WARP_DOWN, CITRUS_FERRY_DECK, 6  ; top rooms
+	warp_event  2, 11, WARP_DOWN, CITRUS_FERRY_DECK, 6
+	warp_event 11, 11, WARP_DOWN, CITRUS_FERRY_DECK, 7
+	warp_event 12, 11, WARP_DOWN, CITRUS_FERRY_DECK, 7
+	warp_event 21, 11, WARP_DOWN, CITRUS_FERRY_DECK, 8
+	warp_event 22, 11, WARP_DOWN, CITRUS_FERRY_DECK, 8
+	warp_event  0,  0, ANY_DIR,   CITRUS_FERRY_DECK, 9  ; bottom rooms
+	warp_event 10,  0, ANY_DIR,   CITRUS_FERRY_DECK, 10
+	warp_event 20,  0, ANY_DIR,   CITRUS_FERRY_DECK, 11
 
 
 	def_bg_events

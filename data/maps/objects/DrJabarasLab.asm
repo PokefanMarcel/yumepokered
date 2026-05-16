@@ -7,8 +7,8 @@ DrJabarasLab_Object:
 	db $3 ; border block
 
 	def_warp_events
-	warp_event  4,  7, LAST_MAP, 1
-	warp_event  5,  7, LAST_MAP, 1
+	warp_event  4,  7, WARP_DOWN, LAST_MAP, 1
+	warp_event  5,  7, WARP_DOWN, LAST_MAP, 1
 
 	def_bg_events
 	bg_event  0,  1, TEXT_DRJABARASLAB_EMAILS

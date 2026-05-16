@@ -13,9 +13,9 @@ SilphFactory1F_Object:
 	db $2e ; border block
 
 	def_warp_events
-	warp_event 10,  1, SILPH_FACTORY_2F, 5
-	warp_event 24,  1, SILPH_FACTORY_2F, 6
-	warp_event 15, 22, SILPH_FACTORY_2F, 7
+	warp_event 10,  1, ANY_DIR, SILPH_FACTORY_2F, 5
+	warp_event 24,  1, ANY_DIR, SILPH_FACTORY_2F, 6
+	warp_event 15, 22, ANY_DIR, SILPH_FACTORY_2F, 7
 
 	def_bg_events
 

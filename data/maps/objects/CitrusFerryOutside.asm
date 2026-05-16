@@ -10,8 +10,8 @@ CitrusFerryOutside_Object:
 	db $23 ; border block
 
 	def_warp_events
-	warp_event 11,  6, CITRUS_FERRY_DECK, 3
-	warp_event 20,  6, CITRUS_FERRY_DECK, 4
+	warp_event 11,  6, WARP_RIGHT, CITRUS_FERRY_DECK, 3
+	warp_event 20,  6, WARP_LEFT,  CITRUS_FERRY_DECK, 4
 
 	def_bg_events
 

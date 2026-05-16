@@ -9,12 +9,12 @@ Route5Gate_Object:
 	db $a ; border block
 
 	def_warp_events
-	warp_event  3,  5, LAST_MAP, 3
-	warp_event  4,  5, LAST_MAP, 3
-	warp_event  3,  0, LAST_MAP, 2
-	warp_event  4,  0, LAST_MAP, 1
-	warp_event  6,  4, ROUTE_5_GATE, 6 ; marcelnote - added 2nd floor
-	warp_event 19,  5, ROUTE_5_GATE, 5 ; marcelnote - added 2nd floor
+	warp_event  3,  5, WARP_DOWN, LAST_MAP, 3
+	warp_event  4,  5, WARP_DOWN, LAST_MAP, 3
+	warp_event  3,  0, ANY_DIR,   LAST_MAP, 2
+	warp_event  4,  0, ANY_DIR,   LAST_MAP, 1
+	warp_event  6,  4, ANY_DIR,   ROUTE_5_GATE, 6 ; marcelnote - added 2nd floor
+	warp_event 19,  5, ANY_DIR,   ROUTE_5_GATE, 5 ; marcelnote - added 2nd floor
 
 	def_bg_events
 

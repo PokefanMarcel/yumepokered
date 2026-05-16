@@ -13,11 +13,11 @@ MtMoonB2F_Object:
 	db $3 ; border block
 
 	def_warp_events
-	warp_event 25,  9, MT_MOON_B1F, 2
-	warp_event 21, 17, MT_MOON_B1F, 5
-	warp_event 15, 27, MT_MOON_B1F, 6
-	warp_event  5,  7, MT_MOON_B1F, 7
-	warp_event  3, 19, MT_MOON_B1F, 9 ; marcelnote - added Mt Moon Square
+	warp_event 25,  9, ANY_DIR, MT_MOON_B1F, 2
+	warp_event 21, 17, ANY_DIR, MT_MOON_B1F, 5
+	warp_event 15, 27, ANY_DIR, MT_MOON_B1F, 6
+	warp_event  5,  7, ANY_DIR, MT_MOON_B1F, 7
+	warp_event  3, 19, ANY_DIR, MT_MOON_B1F, 9 ; marcelnote - added Mt Moon Square
 
 	def_bg_events
 	bg_event  5, 29, TEXT_MTMOONB2F_MT_MOON_SQUARE_SIGN ; marcelnote - added Mt Moon Square

@@ -16,11 +16,11 @@ ViridianPokecenterMart_Object:
 
 	def_warp_events
 	; Pokecenter
-	warp_event  3,  7, LAST_MAP, 1
-	warp_event  4,  7, LAST_MAP, 1
+	warp_event  3,  7, WARP_DOWN, LAST_MAP, 1
+	warp_event  4,  7, WARP_DOWN, LAST_MAP, 1
 	; Mart
-	warp_event 19,  7, LAST_MAP, 2
-	warp_event 20,  7, LAST_MAP, 2
+	warp_event 19,  7, WARP_DOWN, LAST_MAP, 2
+	warp_event 20,  7, WARP_DOWN, LAST_MAP, 2
 
 	def_bg_events
 

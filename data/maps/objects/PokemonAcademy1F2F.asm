@@ -14,11 +14,11 @@ PokemonAcademy1F2F_Object:
 	db $00 ; border block
 
 	def_warp_events
-	warp_event  8, 11, LAST_MAP, 9
-	warp_event  9, 11, LAST_MAP, 9
-	warp_event 14,  0, POKEMON_ACADEMY_1F2F, 4
-	warp_event 36,  0, POKEMON_ACADEMY_1F2F, 3
-	warp_event 37,  0, POKEMON_ACADEMY_3F4F, 1
+	warp_event  8, 11, WARP_DOWN, LAST_MAP, 9
+	warp_event  9, 11, WARP_DOWN, LAST_MAP, 9
+	warp_event 14,  0, ANY_DIR,   POKEMON_ACADEMY_1F2F, 4
+	warp_event 36,  0, ANY_DIR,   POKEMON_ACADEMY_1F2F, 3
+	warp_event 37,  0, ANY_DIR,   POKEMON_ACADEMY_3F4F, 1
 
 	def_bg_events
 	bg_event  8,  7, TEXT_POKEMONACADEMY1F_SIGN

@@ -153,8 +153,7 @@ DEF NUM_BADGES EQU const_value
 	const_def
 	const BIT_STANDING_ON_DOOR ; 0
 	const BIT_EXITING_DOOR     ; 1
-	const BIT_STANDING_ON_WARP ; 2
-	const_skip 2               ; 3-4 ; unused
+	const_skip 3               ; 2-4 ; unused ; marcelnote - refactored warp engine, bit 2 was BIT_STANDING_ON_WARP
 	const BIT_CLIMBING_LEDGE   ; 5 ; marcelnote - free ledge tile
 	const BIT_LEDGE_OR_FISHING ; 6
 	const BIT_SPINNING         ; 7

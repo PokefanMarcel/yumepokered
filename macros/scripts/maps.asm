@@ -44,12 +44,15 @@ MACRO def_warp_events
 	DEF {_NUM_WARP_EVENTS} = 0
 ENDM
 
+; marcelnote - refactored warp engine
 ;\1 x position
 ;\2 y position
-;\3 destination map (-1 = wLastMap)
-;\4 destination warp id; starts at 1 (internally at 0)
+;\3 direction
+;\4 destination map (-1 = wLastMap)
+;\5 destination warp id; starts at 1 (internally at 0)
 MACRO warp_event
-	db \2, \1, \4 - 1, \3
+	ASSERT \5 <= MAX_WARP_EVENTS, "Invalid destination warp id"
+	db \2, \1, (\3 << WARP_DIR_SHIFT) | (\5 - 1), \4
 	DEF _WARP_{d:{_NUM_WARP_EVENTS}}_X = \1
 	DEF _WARP_{d:{_NUM_WARP_EVENTS}}_Y = \2
 	DEF {_NUM_WARP_EVENTS} += 1

@@ -15,11 +15,11 @@ Route11_Object:
 	db $f ; border block
 
 	def_warp_events ; marcelnote - merged ROUTE_11_GATE floors
-	warp_event 51,  8, ROUTE_11_GATE, 1 ; marcelnote - reduced size of gate building
-	warp_event 51,  9, ROUTE_11_GATE, 2 ; marcelnote - reduced size of gate building
-	warp_event 58,  8, ROUTE_11_GATE, 3
-	warp_event 58,  9, ROUTE_11_GATE, 4
-	warp_event  4,  5, DIGLETTS_CAVE_ROUTE_11, 1
+	warp_event 51,  8, WARP_RIGHT, ROUTE_11_GATE, 1 ; marcelnote - reduced size of gate building
+	warp_event 51,  9, WARP_RIGHT, ROUTE_11_GATE, 2 ; marcelnote - reduced size of gate building
+	warp_event 58,  8, WARP_LEFT,  ROUTE_11_GATE, 3
+	warp_event 58,  9, WARP_LEFT,  ROUTE_11_GATE, 4
+	warp_event  4,  5, ANY_DIR,    DIGLETTS_CAVE_ROUTE_11, 1
 
 	def_bg_events
 	bg_event  1,  5, TEXT_ROUTE11_DIGLETTSCAVE_SIGN

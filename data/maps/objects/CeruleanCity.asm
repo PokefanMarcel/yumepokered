@@ -15,16 +15,16 @@ CeruleanCity_Object:
 	db $a ; border block ; marcelnote - changed from $0f (trees)
 
 	def_warp_events
-	warp_event 27, 11, CERULEAN_TRASHED_HOUSE, 1
-	warp_event 13, 15, CERULEAN_TRADE_HOUSE, 1
-	warp_event 19, 17, CERULEAN_POKECENTER_MART, 1 ; marcelnote - merged Cerulean Pokecenter and Mart
-	warp_event 30, 19, CERULEAN_GYM, 1
-	warp_event 13, 25, BIKE_SHOP, 1
-	warp_event 25, 25, CERULEAN_POKECENTER_MART, 3 ; marcelnote - merged Cerulean Pokecenter and Mart
-	warp_event  4, 11, CERULEAN_CAVE_1F, 1
-	warp_event 27,  9, CERULEAN_TRASHED_HOUSE, 3
-	warp_event  9, 11, CERULEAN_BADGE_HOUSE, 2
-	warp_event  9,  9, CERULEAN_BADGE_HOUSE, 1
+	warp_event 27, 11, ANY_DIR,   CERULEAN_TRASHED_HOUSE, 1
+	warp_event 13, 15, ANY_DIR,   CERULEAN_TRADE_HOUSE, 1
+	warp_event 19, 17, ANY_DIR,   CERULEAN_POKECENTER_MART, 1 ; marcelnote - merged Cerulean Pokecenter and Mart
+	warp_event 30, 19, ANY_DIR,   CERULEAN_GYM, 1
+	warp_event 13, 25, ANY_DIR,   BIKE_SHOP, 1
+	warp_event 25, 25, ANY_DIR,   CERULEAN_POKECENTER_MART, 3 ; marcelnote - merged Cerulean Pokecenter and Mart
+	warp_event  4, 11, ANY_DIR,   CERULEAN_CAVE_1F, 1
+	warp_event 27,  9, WARP_DOWN, CERULEAN_TRASHED_HOUSE, 3
+	warp_event  9, 11, ANY_DIR,   CERULEAN_BADGE_HOUSE, 2
+	warp_event  9,  9, WARP_DOWN, CERULEAN_BADGE_HOUSE, 1
 
 	def_bg_events
 	bg_event 23, 19, TEXT_CERULEANCITY_SIGN

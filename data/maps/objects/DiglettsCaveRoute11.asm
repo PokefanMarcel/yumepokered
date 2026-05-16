@@ -5,9 +5,9 @@ DiglettsCaveRoute11_Object: ; marcelnote - changed map size
 	db $7d ; border block
 
 	def_warp_events
-	warp_event  2,  5, LAST_MAP, 5
-	warp_event  3,  5, LAST_MAP, 5
-	warp_event  4,  2, DIGLETTS_CAVE, 2
+	warp_event  2,  5, WARP_DOWN, LAST_MAP, 5
+	warp_event  3,  5, WARP_DOWN, LAST_MAP, 5
+	warp_event  4,  2, ANY_DIR,   DIGLETTS_CAVE, 2
 
 	def_bg_events
 

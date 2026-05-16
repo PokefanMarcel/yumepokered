@@ -17,23 +17,23 @@ SSAnneB1F_Object:
 
 	def_warp_events
 	; Corridor
-	warp_event 27,  3, SS_ANNE_1F, 10
-	warp_event  7,  1, SS_ANNE_B1F, 7 ; to Room 1
-	warp_event 11,  1, SS_ANNE_B1F, 9 ; to Room 2
-	warp_event 15,  1, SS_ANNE_B1F, 11 ; to Room 3
-	warp_event 19,  1, SS_ANNE_B1F, 13 ; to Room 4
-	warp_event 23,  1, SS_ANNE_B1F, 15 ; to Room 5
+	warp_event 27,  3, ANY_DIR, SS_ANNE_1F, 10
+	warp_event  7,  1, ANY_DIR, SS_ANNE_B1F,  7 ; to Room 1
+	warp_event 11,  1, ANY_DIR, SS_ANNE_B1F,  9 ; to Room 2
+	warp_event 15,  1, ANY_DIR, SS_ANNE_B1F, 11 ; to Room 3
+	warp_event 19,  1, ANY_DIR, SS_ANNE_B1F, 13 ; to Room 4
+	warp_event 23,  1, ANY_DIR, SS_ANNE_B1F, 15 ; to Room 5
 	; Rooms
-	warp_event 36,  5, SS_ANNE_B1F, 2 ; Room 1
-	warp_event 37,  5, SS_ANNE_B1F, 2
-	warp_event 46,  5, SS_ANNE_B1F, 3 ; Room 2
-	warp_event 47,  5, SS_ANNE_B1F, 3
-	warp_event 56,  5, SS_ANNE_B1F, 4 ; Room 3
-	warp_event 57,  5, SS_ANNE_B1F, 4
-	warp_event 66,  5, SS_ANNE_B1F, 5 ; Room 4
-	warp_event 67,  5, SS_ANNE_B1F, 5
-	warp_event 76,  5, SS_ANNE_B1F, 6 ; Room 5
-	warp_event 77,  5, SS_ANNE_B1F, 6
+	warp_event 36,  5, WARP_DOWN, SS_ANNE_B1F, 2 ; Room 1
+	warp_event 37,  5, WARP_DOWN, SS_ANNE_B1F, 2
+	warp_event 46,  5, WARP_DOWN, SS_ANNE_B1F, 3 ; Room 2
+	warp_event 47,  5, WARP_DOWN, SS_ANNE_B1F, 3
+	warp_event 56,  5, WARP_DOWN, SS_ANNE_B1F, 4 ; Room 3
+	warp_event 57,  5, WARP_DOWN, SS_ANNE_B1F, 4
+	warp_event 66,  5, WARP_DOWN, SS_ANNE_B1F, 5 ; Room 4
+	warp_event 67,  5, WARP_DOWN, SS_ANNE_B1F, 5
+	warp_event 76,  5, WARP_DOWN, SS_ANNE_B1F, 6 ; Room 5
+	warp_event 77,  5, WARP_DOWN, SS_ANNE_B1F, 6
 
 	def_bg_events
 

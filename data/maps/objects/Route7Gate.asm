@@ -7,12 +7,12 @@ Route7Gate_Object:
 	db $a ; border block
 
 	def_warp_events
-	warp_event  0,  3, LAST_MAP, 4
-	warp_event  0,  4, LAST_MAP, 4
-	warp_event  5,  3, LAST_MAP, 1
-	warp_event  5,  4, LAST_MAP, 2
-	warp_event  4,  6, ROUTE_7_GATE, 6 ; marcelnote - added 2nd floor
-	warp_event  5, 19, ROUTE_7_GATE, 5 ; marcelnote - added 2nd floor
+	warp_event  0,  3, WARP_LEFT,  LAST_MAP, 4
+	warp_event  0,  4, WARP_LEFT,  LAST_MAP, 4
+	warp_event  5,  3, WARP_RIGHT, LAST_MAP, 1
+	warp_event  5,  4, WARP_RIGHT, LAST_MAP, 2
+	warp_event  4,  6, ANY_DIR,    ROUTE_7_GATE, 6 ; marcelnote - added 2nd floor
+	warp_event  5, 19, ANY_DIR,    ROUTE_7_GATE, 5 ; marcelnote - added 2nd floor
 
 	def_bg_events
 

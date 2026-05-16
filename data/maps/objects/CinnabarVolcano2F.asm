@@ -11,7 +11,7 @@ CinnabarVolcano2F_Object:
 	db $2D ; border block
 
 	def_warp_events
-	warp_event 22,  7, CINNABAR_VOLCANO_1FB1F, 7
+	warp_event 22,  7, ANY_DIR, CINNABAR_VOLCANO_1FB1F, 7
 
 	def_bg_events
 	bg_event 14, 21, TEXT_CINNABARVOLCANO2F_SIGN

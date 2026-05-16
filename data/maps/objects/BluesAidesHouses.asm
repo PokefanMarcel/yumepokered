@@ -11,11 +11,11 @@ BluesAidesHouses_Object:
 
 	def_warp_events
 	; Blue's house
-	warp_event  2,  7, LAST_MAP, 2
-	warp_event  3,  7, LAST_MAP, 2
+	warp_event  2,  7, WARP_DOWN, LAST_MAP, 2
+	warp_event  3,  7, WARP_DOWN, LAST_MAP, 2
 	; Aide's house
-	warp_event 16,  7, LAST_MAP, 5
-	warp_event 17,  7, LAST_MAP, 5
+	warp_event 16,  7, WARP_DOWN, LAST_MAP, 5
+	warp_event 17,  7, WARP_DOWN, LAST_MAP, 5
 
 	def_bg_events
 	bg_event  7,  6, TEXT_BLUESHOUSE_PHONE ; marcelnote - new for pay phone

@@ -15,7 +15,7 @@ PokemonMansionB1F_Object:
 	db $1 ; border block
 
 	def_warp_events
-	warp_event 23, 22, POKEMON_MANSION_1F, 6
+	warp_event 23, 22, ANY_DIR, POKEMON_MANSION_1F, 6
 
 	def_bg_events ; marcelnote - new
 	bg_event  6, 19, TEXT_POKEMONMANSIONB1F_SCREEN

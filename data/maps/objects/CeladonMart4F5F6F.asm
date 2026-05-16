@@ -15,15 +15,15 @@ CeladonMart4F5F6F_Object:
 	db $f ; border block
 
 	def_warp_events
-	warp_event 12, 29, CELADON_MART_1F2F3F,  10 ; marcelnote - 4F going downstairs
-	warp_event 16, 29, CELADON_MART_4F5F6F,   5 ; marcelnote - 4F going upstairs
-	warp_event  1, 29, CELADON_MART_ELEVATOR, 1 ; marcelnote - elevator 4F
-	warp_event 12, 15, CELADON_MART_4F5F6F,   7 ; marcelnote - 5F going upstairs
-	warp_event 16, 15, CELADON_MART_4F5F6F,   2 ; marcelnote - 5F going downstairs
-	warp_event  1, 15, CELADON_MART_ELEVATOR, 1 ; marcelnote - elevator 5F
-	warp_event 12,  1, CELADON_MART_4F5F6F,   4 ; marcelnote - 6F going downstairs
-	warp_event 16,  1, CELADON_MART_ROOF,     1 ; marcelnote - 6F going upstairs
-	warp_event  1,  1, CELADON_MART_ELEVATOR, 1 ; marcelnote - elevator 6F
+	warp_event 12, 29, ANY_DIR, CELADON_MART_1F2F3F, 10 ; marcelnote - 4F going downstairs
+	warp_event 16, 29, ANY_DIR, CELADON_MART_4F5F6F, 5 ; marcelnote - 4F going upstairs
+	warp_event  1, 29, ANY_DIR, CELADON_MART_ELEVATOR, 1 ; marcelnote - elevator 4F
+	warp_event 12, 15, ANY_DIR, CELADON_MART_4F5F6F, 7 ; marcelnote - 5F going upstairs
+	warp_event 16, 15, ANY_DIR, CELADON_MART_4F5F6F, 2 ; marcelnote - 5F going downstairs
+	warp_event  1, 15, ANY_DIR, CELADON_MART_ELEVATOR, 1 ; marcelnote - elevator 5F
+	warp_event 12,  1, ANY_DIR, CELADON_MART_4F5F6F, 4 ; marcelnote - 6F going downstairs
+	warp_event 16,  1, ANY_DIR, CELADON_MART_ROOF, 1 ; marcelnote - 6F going upstairs
+	warp_event  1,  1, ANY_DIR, CELADON_MART_ELEVATOR, 1 ; marcelnote - elevator 6F
 
 	def_bg_events
 	bg_event 14, 29, TEXT_CELADONMART4F_CURRENT_FLOOR_SIGN

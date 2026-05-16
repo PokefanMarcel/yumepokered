@@ -18,20 +18,20 @@ CinnabarLab_Object:
 
 	def_warp_events
 	; Lobby
-	warp_event  2,  7, LAST_MAP, 3
-	warp_event  3,  7, LAST_MAP, 3
-	warp_event  8,  4, CINNABAR_LAB, 6 ; to Trade room
-	warp_event 12,  4, CINNABAR_LAB, 8 ; to Metronome room
-	warp_event 16,  4, CINNABAR_LAB, 10 ; to Fossil room
+	warp_event  2,  7, WARP_DOWN, LAST_MAP, 3
+	warp_event  3,  7, WARP_DOWN, LAST_MAP, 3
+	warp_event  8,  4, ANY_DIR,   CINNABAR_LAB, 6 ; to Trade room
+	warp_event 12,  4, ANY_DIR,   CINNABAR_LAB, 8 ; to Metronome room
+	warp_event 16,  4, ANY_DIR,   CINNABAR_LAB, 10 ; to Fossil room
 	; Trade room
-	warp_event 26,  7, CINNABAR_LAB, 3
-	warp_event 27,  7, CINNABAR_LAB, 3
+	warp_event 26,  7, WARP_DOWN, CINNABAR_LAB, 3
+	warp_event 27,  7, WARP_DOWN, CINNABAR_LAB, 3
 	; Metronome room
-	warp_event 40,  7, CINNABAR_LAB, 4
-	warp_event 41,  7, CINNABAR_LAB, 4
+	warp_event 40,  7, WARP_DOWN, CINNABAR_LAB, 4
+	warp_event 41,  7, WARP_DOWN, CINNABAR_LAB, 4
 	; Fossil room
-	warp_event 54,  7, CINNABAR_LAB, 5
-	warp_event 55,  7, CINNABAR_LAB, 5
+	warp_event 54,  7, WARP_DOWN, CINNABAR_LAB, 5
+	warp_event 55,  7, WARP_DOWN, CINNABAR_LAB, 5
 
 	def_bg_events
 	; Lobby

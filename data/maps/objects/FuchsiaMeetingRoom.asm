@@ -7,8 +7,8 @@ FuchsiaMeetingRoom_Object:
 	db $0 ; border block ; marcelnote - modified blockset
 
 	def_warp_events
-	warp_event  4,  7, LAST_MAP, 7
-	warp_event  5,  7, LAST_MAP, 7
+	warp_event  4,  7, WARP_DOWN, LAST_MAP, 7
+	warp_event  5,  7, WARP_DOWN, LAST_MAP, 7
 
 	def_bg_events
 	bg_event 11,  5, TEXT_FUCHSIAMEETINGROOM_PHONE ; marcelnote - new pay phones

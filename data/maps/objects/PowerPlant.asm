@@ -19,9 +19,9 @@ PowerPlant_Object:
 	db $0 ; border block ; marcelnote - changed for new tileset
 
 	def_warp_events
-	warp_event  4, 35, LAST_MAP, 4
-	warp_event  5, 35, LAST_MAP, 4
-	warp_event  0, 11, LAST_MAP, 5 ; marcelnote - exit now leads to western entrance
+	warp_event  4, 35, WARP_DOWN, LAST_MAP, 4
+	warp_event  5, 35, WARP_DOWN, LAST_MAP, 4
+	warp_event  0, 11, WARP_LEFT, LAST_MAP, 5 ; marcelnote - exit now leads to western entrance
 
 	def_bg_events
 	bg_event 19, 18, TEXT_POWERPLANT_COMPUTER1

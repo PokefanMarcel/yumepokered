@@ -26,6 +26,13 @@ RocketHideoutElevatorStoreWarpEntriesScript:
 	inc hl
 	inc hl
 	ld a, b
+	;;;;;; marcelnote - refactored warp engine, preserve warp direction
+	and WARP_ID_MASK
+	ld b, a
+	ld a, [hl]
+	and WARP_DIR_MASK
+	or b
+	;;;;;;
 	ld [hli], a
 	ld a, c
 	ld [hli], a

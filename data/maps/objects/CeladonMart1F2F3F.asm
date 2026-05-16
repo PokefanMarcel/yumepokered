@@ -16,18 +16,18 @@ CeladonMart1F2F3F_Object:
 	db $f ; border block
 
 	def_warp_events
-	warp_event  2, 35, LAST_MAP, 1
-	warp_event  3, 35, LAST_MAP, 1
-	warp_event 16, 35, LAST_MAP, 2
-	warp_event 17, 35, LAST_MAP, 2
-	warp_event 12, 29, CELADON_MART_1F2F3F,   7 ; marcelnote - 1F going upstairs
-	warp_event  1, 29, CELADON_MART_ELEVATOR, 1 ; marcelnote - elevator 1F
-	warp_event 12, 15, CELADON_MART_1F2F3F,   5 ; marcelnote - 2F going downstairs
-	warp_event 16, 15, CELADON_MART_1F2F3F,  11 ; marcelnote - 2F going upstairs
-	warp_event  1, 15, CELADON_MART_ELEVATOR, 1 ; marcelnote - elevator 2F
-	warp_event 12,  1, CELADON_MART_4F5F6F,   1 ; marcelnote - 3F going upstairs
-	warp_event 16,  1, CELADON_MART_1F2F3F,   8 ; marcelnote - 3F going downstairs
-	warp_event  1,  1, CELADON_MART_ELEVATOR, 1 ; marcelnote - elevator 3F
+	warp_event  2, 35, WARP_DOWN, LAST_MAP, 1
+	warp_event  3, 35, WARP_DOWN, LAST_MAP, 1
+	warp_event 16, 35, WARP_DOWN, LAST_MAP, 2
+	warp_event 17, 35, WARP_DOWN, LAST_MAP, 2
+	warp_event 12, 29, ANY_DIR,   CELADON_MART_1F2F3F, 7 ; marcelnote - 1F going upstairs
+	warp_event  1, 29, ANY_DIR,   CELADON_MART_ELEVATOR, 1 ; marcelnote - elevator 1F
+	warp_event 12, 15, ANY_DIR,   CELADON_MART_1F2F3F, 5 ; marcelnote - 2F going downstairs
+	warp_event 16, 15, ANY_DIR,   CELADON_MART_1F2F3F, 11 ; marcelnote - 2F going upstairs
+	warp_event  1, 15, ANY_DIR,   CELADON_MART_ELEVATOR, 1 ; marcelnote - elevator 2F
+	warp_event 12,  1, ANY_DIR,   CELADON_MART_4F5F6F, 1 ; marcelnote - 3F going upstairs
+	warp_event 16,  1, ANY_DIR,   CELADON_MART_1F2F3F, 8 ; marcelnote - 3F going downstairs
+	warp_event  1,  1, ANY_DIR,   CELADON_MART_ELEVATOR, 1 ; marcelnote - elevator 3F
 
 	def_bg_events
 	bg_event 11, 32, TEXT_CELADONMART1F_DIRECTORY_SIGN

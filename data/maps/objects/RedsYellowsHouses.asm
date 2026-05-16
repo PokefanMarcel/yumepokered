@@ -11,15 +11,15 @@ RedsYellowsHouses_Object:
 
 	def_warp_events
 	; Red's house
-	warp_event  2,  7, LAST_MAP, 1
-	warp_event  3,  7, LAST_MAP, 1
-	warp_event  7,  1, REDS_YELLOWS_HOUSES, 4 ; marcelnote - merged RedsHouse floors
-	warp_event 21,  1, REDS_YELLOWS_HOUSES, 3 ; marcelnote - merged RedsHouse floors
+	warp_event  2,  7, WARP_DOWN, LAST_MAP, 1
+	warp_event  3,  7, WARP_DOWN, LAST_MAP, 1
+	warp_event  7,  1, ANY_DIR,   REDS_YELLOWS_HOUSES, 4 ; marcelnote - merged RedsHouse floors
+	warp_event 21,  1, ANY_DIR,   REDS_YELLOWS_HOUSES, 3 ; marcelnote - merged RedsHouse floors
 	; Yellow's house
-	warp_event 30,  7, LAST_MAP, 4
-	warp_event 31,  7, LAST_MAP, 4
-	warp_event 35,  1, REDS_YELLOWS_HOUSES, 8
-	warp_event 49,  1, REDS_YELLOWS_HOUSES, 7
+	warp_event 30,  7, WARP_DOWN, LAST_MAP, 4
+	warp_event 31,  7, WARP_DOWN, LAST_MAP, 4
+	warp_event 35,  1, ANY_DIR,   REDS_YELLOWS_HOUSES, 8
+	warp_event 49,  1, ANY_DIR,   REDS_YELLOWS_HOUSES, 7
 
 	def_bg_events
 	bg_event  3,  1, TEXT_REDSHOUSE1F_TV

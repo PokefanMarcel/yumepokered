@@ -6,9 +6,9 @@ CeruleanTrashedHouse_Object:
 	db $0 ; border block ; marcelnote - modified blockset
 
 	def_warp_events
-	warp_event  2,  7, LAST_MAP, 1
-	warp_event  3,  7, LAST_MAP, 1
-	warp_event  3,  0, LAST_MAP, 8
+	warp_event  2,  7, WARP_DOWN, LAST_MAP, 1
+	warp_event  3,  7, WARP_DOWN, LAST_MAP, 1
+	warp_event  3,  0, ANY_DIR,   LAST_MAP, 8
 
 	def_bg_events
 	bg_event  3,  0, TEXT_CERULEANTRASHEDHOUSE_WALL_HOLE

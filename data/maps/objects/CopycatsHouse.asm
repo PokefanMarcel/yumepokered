@@ -16,11 +16,11 @@ CopycatsHouse_Object:
 
 	def_warp_events
 	; 1F
-	warp_event  2,  7, LAST_MAP, 1
-	warp_event  3,  7, LAST_MAP, 1
-	warp_event  7,  1, COPYCATS_HOUSE, 4
+	warp_event  2,  7, WARP_DOWN, LAST_MAP, 1
+	warp_event  3,  7, WARP_DOWN, LAST_MAP, 1
+	warp_event  7,  1, ANY_DIR,   COPYCATS_HOUSE, 4
 	; 2F
-	warp_event 21,  1, COPYCATS_HOUSE, 3
+	warp_event 21,  1, ANY_DIR,   COPYCATS_HOUSE, 3
 
 	def_bg_events
 	; 2F

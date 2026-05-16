@@ -6,10 +6,10 @@ Route2Gate_Object:
 	db $a ; border block
 
 	def_warp_events
-	warp_event  4,  0, LAST_MAP, 4
-	warp_event  5,  0, LAST_MAP, 4
-	warp_event  4,  7, LAST_MAP, 5
-	warp_event  5,  7, LAST_MAP, 5
+	warp_event  4,  0, ANY_DIR,   LAST_MAP, 4 ; unreachable
+	warp_event  5,  0, ANY_DIR,   LAST_MAP, 4
+	warp_event  4,  7, WARP_DOWN, LAST_MAP, 5
+	warp_event  5,  7, WARP_DOWN, LAST_MAP, 5
 
 	def_bg_events
 

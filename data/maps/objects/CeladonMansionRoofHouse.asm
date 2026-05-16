@@ -6,8 +6,8 @@ CeladonMansionRoofHouse_Object:
 	db $0 ; border block ; marcelnote - modified blockset
 
 	def_warp_events
-	warp_event  2,  7, CELADON_MANSION_ROOF, 3
-	warp_event  3,  7, CELADON_MANSION_ROOF, 3
+	warp_event  2,  7, WARP_DOWN, CELADON_MANSION_ROOF, 3
+	warp_event  3,  7, WARP_DOWN, CELADON_MANSION_ROOF, 3
 
 	def_bg_events
 

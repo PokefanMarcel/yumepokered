@@ -266,7 +266,7 @@ OverworldLoopLessDelay::
 	jp c, .battleOccurred
 	jp OverworldLoop
 
-.noDirectionChange
+.noDirectionChange ; marcelnote - refactored warp engine
 	ld a, [wPlayerDirection] ; current direction
 	ld [wPlayerMovingDirection], a ; save direction
 	call UpdateSprites
@@ -274,19 +274,11 @@ OverworldLoopLessDelay::
 	cp SURFING
 	jr z, .surfing
 ; not surfing
+	call CheckDirectionalWarpAtPlayerCoord
+	jp c, WarpFound2
 	call CollisionCheckOnLand
 	jr nc, .noCollision
 ; collision occurred
-	push hl
-	ld hl, wMovementFlags
-	bit BIT_STANDING_ON_WARP, [hl]
-	pop hl
-	jp z, OverworldLoop
-; collision occurred while standing on a warp
-	push hl
-	call ExtraWarpCheck ; sets carry if there is a potential to warp
-	pop hl
-	jp c, CheckWarpsCollision
 	jp OverworldLoop
 
 .surfing
@@ -379,8 +371,6 @@ OverworldLoopLessDelay::
 	jp nz, HandleBlackOut ; if all pokemon fainted
 .newBattle
 	call NewBattle
-	ld hl, wMovementFlags
-	res BIT_STANDING_ON_WARP, [hl]
 	jp nc, CheckWarpsNoCollision ; check for warps if there was no battle
 .battleOccurred
 	ld hl, wStatusFlags3
@@ -457,75 +447,39 @@ DoBikeSpeedup::
 	jr .goFaster
 
 ; check if the player has stepped onto a warp after having not collided
-CheckWarpsNoCollision::
+CheckWarpsNoCollision:: ; marcelnote - refactored warp engine
+	call TryWarpAtPlayerCoord
+	jp nc, CheckMapConnections
+	ld a, [wDestinationWarpID]
+	and WARP_DIR_MASK ; ANY_DIR?
+	jp nz, CheckMapConnections
+	jr WarpFound2
+
+; returns carry if the player's coordinates match a warp, and copies the
+; destination warp/map for WarpFound2
+TryWarpAtPlayerCoord: ; marcelnote - refactored warp engine
 	ld a, [wNumberOfWarps]
 	and a
-	jp z, CheckMapConnections
-	ld a, [wNumberOfWarps]
-	ld b, 0
+	ret z
 	ld c, a
 	ld a, [wYCoord]
 	ld d, a
 	ld a, [wXCoord]
 	ld e, a
 	ld hl, wWarpEntries
-CheckWarpsNoCollisionLoop::
-	ld a, [hli] ; check if the warp's Y position matches
-	cp d
-	jr nz, CheckWarpsNoCollisionRetry1
-	ld a, [hli] ; check if the warp's X position matches
-	cp e
-	jr nz, CheckWarpsNoCollisionRetry2
-; if a match was found
-	push hl
-	push bc
-	ld hl, wMovementFlags
-	set BIT_STANDING_ON_WARP, [hl]
-	callfar IsPlayerStandingOnDoorTileOrWarpTile
-	pop bc
-	pop hl
-	jr c, WarpFound1 ; jump if standing on door or warp
-	push hl
-	push bc
-	call ExtraWarpCheck
-	pop bc
-	pop hl
-	jr nc, CheckWarpsNoCollisionRetry2
-; if the extra check passed
-	ld a, [wStatusFlags7]
-	bit BIT_FORCED_WARP, a
-	jr nz, WarpFound1
-	push de
-	push bc
-	call Joypad
-	pop bc
-	pop de
-	ldh a, [hJoyHeld]
-	and PAD_CTRL_PAD
-	jr z, CheckWarpsNoCollisionRetry2 ; if directional buttons aren't being pressed, do not pass through the warp
-	jr WarpFound1
-
-; check if the player has stepped onto a warp after having collided
-CheckWarpsCollision::
-	ld a, [wNumberOfWarps]
-	ld c, a
-	ld hl, wWarpEntries
 .loop
 	ld a, [hli] ; Y coordinate of warp
-	ld b, a
-	ld a, [wYCoord]
-	cp b
+	cp d
 	jr nz, .retry1
 	ld a, [hli] ; X coordinate of warp
-	ld b, a
-	ld a, [wXCoord]
-	cp b
+	cp e
 	jr nz, .retry2
 	ld a, [hli]
 	ld [wDestinationWarpID], a
 	ld a, [hl]
 	ldh [hWarpDestinationMap], a
-	jr WarpFound2
+	scf
+	ret
 .retry1
 	inc hl
 .retry2
@@ -533,22 +487,21 @@ CheckWarpsCollision::
 	inc hl
 	dec c
 	jr nz, .loop
-	jp OverworldLoop
+	and a
+	ret
 
-CheckWarpsNoCollisionRetry1::
-	inc hl
-CheckWarpsNoCollisionRetry2::
-	inc hl
-	inc hl
-	jp ContinueCheckWarpsNoCollisionLoop
+CheckDirectionalWarpAtPlayerCoord: ; marcelnote - refactored warp engine
+	call TryWarpAtPlayerCoord
+	ret nc
+	jp CheckDirectionalWarpEventDirection
 
-WarpFound1::
-	ld a, [hli]
+WarpFound2:: ; marcelnote - refactored warp engine
+	ld a, [wDestinationWarpID]
+	cp $ff
+	jr z, .gotDestinationWarpID
+	and WARP_ID_MASK
 	ld [wDestinationWarpID], a
-	ld a, [hli]
-	ldh [hWarpDestinationMap], a
-
-WarpFound2::
+.gotDestinationWarpID
 	ld a, [wNumberOfWarps]
 	sub c
 	ld [wWarpedFromWhichWarp], a ; save ID of used warp
@@ -607,11 +560,6 @@ WarpFound2::
 	set BIT_STANDING_ON_DOOR, [hl] ; have the player's sprite step out from the door (if there is one)
 	call IgnoreInputForHalfSecond
 	jp EnterMap
-
-ContinueCheckWarpsNoCollisionLoop::
-	inc b ; increment warp number
-	dec c ; decrement number of warps
-	jp nz, CheckWarpsNoCollisionLoop
 
 ; if no matching warp was found
 CheckMapConnections::
@@ -792,46 +740,49 @@ CheckIfInOutsideMap::
 	cp PLATEAU ; Route 23 / Indigo Plateau
 	ret
 
-; this function is an extra check that sometimes has to pass in order to warp, beyond just standing on a warp
-; the "sometimes" qualification is necessary because of CheckWarpsNoCollision's behavior
-; depending on the map, either "function 1" or "function 2" is used for the check
-; "function 1" passes when the player is at the edge of the map and is facing towards the outside of the map
-; "function 2" passes when the tile in front of the player is among a certain set
-; sets carry if the check passes, otherwise clears carry
-ExtraWarpCheck::
-	ld a, [wCurMap]
-	cp SS_ANNE_3F
-	jr z, .useFunction1
-	cp CITRUS_FERRY_DECK
-	jr z, .useFunction1
-	cp ROCKET_HIDEOUT_B1F
-	jr z, .useFunction2
-	cp ROCKET_HIDEOUT_B2F
-	jr z, .useFunction2
-	cp ROCKET_HIDEOUT_B4F
-	jr z, .useFunction2
-	cp ROCK_TUNNEL_1F
-	jr z, .useFunction2
-	ld a, [wCurMapTileset]
-	and a ; outside tileset (OVERWORLD)
-	jr z, .useFunction2
-	cp SHIP ; S.S. Anne tileset
-	jr z, .useFunction2
-	cp SHIP_PORT ; Vermilion Port tileset
-	jr z, .useFunction2
-	cp PLATEAU ; Indigo Plateau tileset
-	jr z, .useFunction2
-.useFunction1
-	ld hl, IsPlayerFacingEdgeOfMap
-	jr .doBankswitch
-.useFunction2
-	ld hl, IsWarpTileInFrontOfPlayer
-.doBankswitch
-	ld b, BANK(IsWarpTileInFrontOfPlayer)
-	jp Bankswitch
+CheckDirectionalWarpEventDirection: ; marcelnote - refactored warp engine
+	ld a, [wDestinationWarpID]
+	and WARP_DIR_MASK ; ANY_DIR?
+	ret z
+	jr CheckWarpEventDirection.gotDirection
 
-MapEntryAfterBattle::
-	callfar IsPlayerStandingOnWarp ; for enabling warp testing after collisions
+CheckWarpEventDirection: ; marcelnote - refactored warp engine
+	ld a, [wDestinationWarpID]
+	and WARP_DIR_MASK ; ANY_DIR?
+	jr z, .setCarry
+.gotDirection
+	cp WARP_DOWN << WARP_DIR_SHIFT
+	jr z, .down
+	cp WARP_UP << WARP_DIR_SHIFT
+	jr z, .up
+	cp WARP_LEFT << WARP_DIR_SHIFT
+	jr z, .left
+	cp WARP_RIGHT << WARP_DIR_SHIFT
+	jr z, .right
+	and a
+	ret
+.down
+	ld a, [wPlayerMovingDirection]
+	and PLAYER_DIR_DOWN
+	jr .done
+.up
+	ld a, [wPlayerMovingDirection]
+	and PLAYER_DIR_UP
+	jr .done
+.left
+	ld a, [wPlayerMovingDirection]
+	and PLAYER_DIR_LEFT
+	jr .done
+.right
+	ld a, [wPlayerMovingDirection]
+	and PLAYER_DIR_RIGHT
+.done
+	ret z
+.setCarry
+	scf
+	ret
+
+MapEntryAfterBattle:: ; marcelnote - refactored warp engine
 	ld a, [wMapPalOffset]
 	and a
 	jp z, GBFadeInFromWhite
@@ -2559,6 +2510,7 @@ ENDC
 ; INPUT:
 ; a = ID of destination warp within destination map
 LoadDestinationWarpPosition::
+	and WARP_ID_MASK ; marcelnote - refactored warp engine
 	ld b, a
 	ldh a, [hLoadedROMBank]
 	push af

@@ -8,13 +8,13 @@ PalletTown_Object:
 	db $b ; border block
 
 	def_warp_events
-	warp_event  5,  5, REDS_YELLOWS_HOUSES, 1 ; marcelnote - merged RedsHouse floors, added YellowsHouse
-	warp_event 13,  5, BLUES_AIDES_HOUSES, 1 ; marcelnote - merged Blue's house with new Aide's house
-	warp_event 12, 11, OAKS_LAB, 2
-	warp_event 23,  5, REDS_YELLOWS_HOUSES, 5 ; marcelnote - new houses
-	warp_event 21, 13, BLUES_AIDES_HOUSES, 3 ; marcelnote - new Aide's house
+	warp_event  5,  5, ANY_DIR,   REDS_YELLOWS_HOUSES, 1 ; marcelnote - merged RedsHouse floors, added YellowsHouse
+	warp_event 13,  5, ANY_DIR,   BLUES_AIDES_HOUSES, 1 ; marcelnote - merged Blue's house with new Aide's house
+	warp_event 12, 11, ANY_DIR,   OAKS_LAB, 2
+	warp_event 23,  5, ANY_DIR,   REDS_YELLOWS_HOUSES, 5 ; marcelnote - new houses
+	warp_event 21, 13, ANY_DIR,   BLUES_AIDES_HOUSES, 3 ; marcelnote - new Aide's house
 IF DEF(_DEBUG) ; marcelnote - added for debug
-	warp_event 12,  7, CHAMPIONS_ROOM, 1
+	warp_event 12,  7, WARP_DOWN, CHAMPIONS_ROOM, 1
 ENDC
 
 	def_bg_events

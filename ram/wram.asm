@@ -1999,8 +1999,8 @@ wMapBackgroundTile:: db
 ; number of warps in current map (up to MAX_WARP_EVENTS)
 wNumberOfWarps:: db
 
-; current map warp entries
-wWarpEntries:: ds MAX_WARP_EVENTS * 4 ; Y, X, warp ID, map ID
+; current map warp entries ; marcelnote - refactored warp engine
+wWarpEntries:: ds MAX_WARP_EVENTS * 4 ; Y, X, direction/warp ID, map ID
 
 ; if $ff, the player's coordinates are not updated when entering the map
 wDestinationWarpID:: db

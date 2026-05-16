@@ -14,26 +14,26 @@ CeladonMansion_Object:
 
 	def_warp_events ; marcelnote - warps were modified for the map changes
 	; 1F
-	warp_event  4, 65, LAST_MAP, 3
-	warp_event  5, 65, LAST_MAP, 3
-	warp_event  2, 54, LAST_MAP, 4
-	warp_event  6, 54, CELADON_MANSION, 6 ; 1F -> 2F main
-	warp_event  4, 54, CELADON_MANSION, 8 ; 1F -> 2F back
+	warp_event  4, 65, WARP_DOWN, LAST_MAP, 3
+	warp_event  5, 65, WARP_DOWN, LAST_MAP, 3
+	warp_event  2, 54, ANY_DIR,   LAST_MAP, 4
+	warp_event  6, 54, ANY_DIR,   CELADON_MANSION,  6 ; 1F -> 2F main
+	warp_event  4, 54, ANY_DIR,   CELADON_MANSION,  8 ; 1F -> 2F back
 	; 2F
-	warp_event  6, 36, CELADON_MANSION,  4 ; 2F -> 1F main
-	warp_event  7, 36, CELADON_MANSION, 10 ; 2F -> 3F main
-	warp_event  4, 36, CELADON_MANSION,  5 ; 2F -> 1F back
-	warp_event  2, 36, CELADON_MANSION, 12 ; 2F -> 3F back
+	warp_event  6, 36, ANY_DIR,   CELADON_MANSION,  4 ; 2F -> 1F main
+	warp_event  7, 36, ANY_DIR,   CELADON_MANSION, 10 ; 2F -> 3F main
+	warp_event  4, 36, ANY_DIR,   CELADON_MANSION,  5 ; 2F -> 1F back
+	warp_event  2, 36, ANY_DIR,   CELADON_MANSION, 12 ; 2F -> 3F back
 	; 3F
-	warp_event  7, 18, CELADON_MANSION,  7 ; 3F -> 2F main
-	warp_event  6, 18, CELADON_MANSION, 14 ; 3F -> 4F main
-	warp_event  2, 18, CELADON_MANSION,  9 ; 3F -> 2F back
-	warp_event  4, 18, CELADON_MANSION, 16 ; 3F -> 4F back
+	warp_event  7, 18, ANY_DIR,   CELADON_MANSION,  7 ; 3F -> 2F main
+	warp_event  6, 18, ANY_DIR,   CELADON_MANSION, 14 ; 3F -> 4F main
+	warp_event  2, 18, ANY_DIR,   CELADON_MANSION,  9 ; 3F -> 2F back
+	warp_event  4, 18, ANY_DIR,   CELADON_MANSION, 16 ; 3F -> 4F back
 	; 4F
-	warp_event  6,  0, CELADON_MANSION,      11 ; 4F -> 3F main
-	warp_event  7,  0, CELADON_MANSION_ROOF,  1 ; 4F -> Roof main
-	warp_event  4,  0, CELADON_MANSION,      13 ; 4F -> 3F back
-	warp_event  2,  0, CELADON_MANSION_ROOF,  2 ; 4F -> Roof back
+	warp_event  6,  0, ANY_DIR,   CELADON_MANSION, 11 ; 4F -> 3F main
+	warp_event  7,  0, ANY_DIR,   CELADON_MANSION_ROOF, 1 ; 4F -> Roof main
+	warp_event  4,  0, ANY_DIR,   CELADON_MANSION, 13 ; 4F -> 3F back
+	warp_event  2,  0, ANY_DIR,   CELADON_MANSION_ROOF, 2 ; 4F -> Roof back
 
 	def_bg_events ; marcelnote - floor signs moved to hidden events
 	; 1F

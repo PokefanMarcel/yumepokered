@@ -13,11 +13,11 @@ Route8_Object:
 	db $2c ; border block
 
 	def_warp_events
-	warp_event  1,  9, ROUTE_8_GATE, 1
-	warp_event  1, 10, ROUTE_8_GATE, 2
-	warp_event  8,  9, ROUTE_8_GATE, 3
-	warp_event  8, 10, ROUTE_8_GATE, 4
-	warp_event 13,  3, UNDERGROUND_PATH_ROUTE_8, 1
+	warp_event  1,  9, WARP_RIGHT, ROUTE_8_GATE, 1
+	warp_event  1, 10, WARP_RIGHT, ROUTE_8_GATE, 2
+	warp_event  8,  9, WARP_LEFT,  ROUTE_8_GATE, 3
+	warp_event  8, 10, WARP_LEFT,  ROUTE_8_GATE, 4
+	warp_event 13,  3, ANY_DIR,    UNDERGROUND_PATH_ROUTE_8, 1
 
 	def_bg_events
 	bg_event 17,  3, TEXT_ROUTE8_UNDERGROUND_SIGN

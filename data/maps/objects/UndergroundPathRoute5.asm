@@ -5,9 +5,9 @@ UndergroundPathRoute5_Object:
 	db $a ; border block
 
 	def_warp_events
-	warp_event  3,  7, LAST_MAP, 4
-	warp_event  4,  7, LAST_MAP, 4
-	warp_event  4,  4, UNDERGROUND_PATH_NORTH_SOUTH, 1
+	warp_event  3,  7, WARP_DOWN, LAST_MAP, 4
+	warp_event  4,  7, WARP_DOWN, LAST_MAP, 4
+	warp_event  4,  4, ANY_DIR,   UNDERGROUND_PATH_NORTH_SOUTH, 1
 
 	def_bg_events
 

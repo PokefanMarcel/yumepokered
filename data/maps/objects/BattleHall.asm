@@ -8,7 +8,7 @@ BattleHall_Object:
 	db $0e ; border block
 
 	def_warp_events
-	warp_event 11,  9, ROUTE_22_GATE, 9
+	warp_event 11,  9, ANY_DIR, ROUTE_22_GATE, 9
 
 	def_bg_events
 

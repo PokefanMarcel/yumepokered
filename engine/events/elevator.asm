@@ -33,12 +33,19 @@ DisplayElevatorFloorMenu:
 	ld c, a
 	ld hl, wWarpEntries
 	call .UpdateWarp
-
+	; fallthrough
 .UpdateWarp
 	inc hl
 	inc hl
 	ld a, b
-	ld [hli], a ; destination warp ID
+	;;;;;; marcelnote - refactored warp engine, preserve warp direction
+	and WARP_ID_MASK
+	ld b, a
+	ld a, [hl]
+	and WARP_DIR_MASK
+	or b
+	;;;;;;
+	ld [hli], a ; direction/warp ID
 	ld a, c
 	ld [hli], a ; destination map ID
 	ret

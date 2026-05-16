@@ -10,8 +10,8 @@ PokemonTower6F_Object:
 	db $1 ; border block
 
 	def_warp_events
-	warp_event 18,  9, POKEMON_TOWER_5F, 2
-	warp_event  9, 16, POKEMON_TOWER_7F, 1
+	warp_event 18,  9, ANY_DIR, POKEMON_TOWER_5F, 2
+	warp_event  9, 16, ANY_DIR, POKEMON_TOWER_7F, 1
 
 	def_bg_events
 	bg_event  4,  9, TEXT_POKEMONTOWER6F_TOMB ; marcelnote - postgame Agatha event

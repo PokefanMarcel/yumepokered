@@ -1,34 +1,30 @@
-; only used for setting BIT_STANDING_ON_WARP of wMovementFlags upon entering a new map
-IsPlayerStandingOnWarp::
+IsPlayerStandingOnWarp: ; marcelnote - refactored warp engine
 	ld a, [wNumberOfWarps]
 	and a
 	ret z
-	ld c, a
+	ld b, a
+	ld a, [wYCoord]
+	ld d, a
+	ld a, [wXCoord]
+	ld e, a
 	ld hl, wWarpEntries
 .loop
-	ld a, [wYCoord]
-	cp [hl]
+	ld a, [hli]
+	cp d
 	jr nz, .nextWarp1
-	inc hl
-	ld a, [wXCoord]
-	cp [hl]
+	ld a, [hli]
+	cp e
 	jr nz, .nextWarp2
-	inc hl
-	ld a, [hli] ; target warp
-	ld [wDestinationWarpID], a
-	ld a, [hl] ; target map
-	ldh [hWarpDestinationMap], a
-	ld hl, wMovementFlags
-	set BIT_STANDING_ON_WARP, [hl]
+	scf
 	ret
 .nextWarp1
 	inc hl
 .nextWarp2
 	inc hl
 	inc hl
-	inc hl
-	dec c
+	dec b
 	jr nz, .loop
+	and a
 	ret
 
 CheckForceBikeOrSurf::
@@ -90,7 +86,7 @@ IsPlayerFacingEdgeOfMap::
 	ld a, [wSpritePlayerStateData1FacingDirection]
 	srl a
 	ld c, a
-	ld b, $0
+	ld b, 0
 	ld hl, .functionPointerTable
 	add hl, bc
 	ld a, [hli]
@@ -149,85 +145,16 @@ IsPlayerFacingEdgeOfMap::
 	scf
 	ret
 
-IsWarpTileInFrontOfPlayer::
-	push hl
-	push de
-	push bc
-	call _GetTileAndCoordsInFrontOfPlayer
-	ld a, [wCurMap]
-	cp SS_ANNE_BOW
-	jr z, IsSSAnneBowWarpTileInFrontOfPlayer
-	cp CITRUS_FERRY_OUTSIDE                        ; marcelnote - new for Ferry
-	jr z, IsFerryOutsideWarpTileInFrontOfPlayer    ;
-	ld a, [wSpritePlayerStateData1FacingDirection]
-	srl a
-	ld c, a
-	ld b, 0
-	ld hl, WarpTileListPointers
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld a, [wTileInFrontOfPlayer]
-	call IsInList
-.done
-	pop bc
-	pop de
-	pop hl
-	ret
-
-INCLUDE "data/tilesets/warp_carpet_tile_ids.asm"
-
-IsSSAnneBowWarpTileInFrontOfPlayer:
-	ld a, [wTileInFrontOfPlayer]
-	cp $15
-	jr nz, .notSSAnneBowWarp
-	scf
-	jr IsWarpTileInFrontOfPlayer.done
-.notSSAnneBowWarp
-	and a
-	jr IsWarpTileInFrontOfPlayer.done
-
-IsFerryOutsideWarpTileInFrontOfPlayer: ; marcelnote - new for CITRUS_FERRY_OUTSIDE
-	ld a, [wTileInFrontOfPlayer]
-	cp $01 ; black tile (when facing left)
-	jr z, .FerryOutsideWarp
-	cp $15 ; wall tile (when facing right)
-	jr nz, .notFerryOutsideWarp
-.FerryOutsideWarp
-	scf
-	jr IsWarpTileInFrontOfPlayer.done
-.notFerryOutsideWarp
-	and a
-	jr IsWarpTileInFrontOfPlayer.done
-
 IsPlayerStandingOnDoorTileOrWarpTile::
 	push hl
 	push de
 	push bc
 	callfar IsPlayerStandingOnDoorTile
-	jr c, .done
-	ld a, [wCurMapTileset]
-	add a
-	ld c, a
-	ld b, 0
-	ld hl, WarpTileIDPointers
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	lda_coord 8, 9
-	call IsInList
-	jr nc, .done
-	ld hl, wMovementFlags
-	res BIT_STANDING_ON_WARP, [hl]
-.done
+	call nc, IsPlayerStandingOnWarp ; marcelnote - refactored warp engine
 	pop bc
 	pop de
 	pop hl
 	ret
-
-INCLUDE "data/tilesets/warp_tile_ids.asm"
 
 PrintSafariZoneSteps::
 	ld a, [wCurMap]

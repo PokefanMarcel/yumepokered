@@ -11,9 +11,9 @@ VictoryRoad1F_Object:
 	db $7d ; border block
 
 	def_warp_events
-	warp_event  8, 17, LAST_MAP, 3
-	warp_event  9, 17, LAST_MAP, 3
-	warp_event  1,  1, VICTORY_ROAD_2F, 1
+	warp_event  8, 17, WARP_DOWN, LAST_MAP, 3
+	warp_event  9, 17, WARP_DOWN, LAST_MAP, 3
+	warp_event  1,  1, ANY_DIR,   VICTORY_ROAD_2F, 1
 
 	def_bg_events
 

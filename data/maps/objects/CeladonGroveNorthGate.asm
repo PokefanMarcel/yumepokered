@@ -6,9 +6,9 @@ CeladonGroveNorthGate_Object:
 	db $a ; border block
 
 	def_warp_events
-	warp_event  5,  0, ROUTE_3, 1
-	warp_event  4,  7, CELADON_GROVE, 3
-	warp_event  5,  7, CELADON_GROVE, 4
+	warp_event  5,  0, WARP_UP,   ROUTE_3, 1
+	warp_event  4,  7, WARP_DOWN, CELADON_GROVE, 3
+	warp_event  5,  7, WARP_DOWN, CELADON_GROVE, 4
 
 	def_bg_events
 

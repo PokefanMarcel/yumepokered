@@ -7,12 +7,12 @@ Route15Gate_Object:
 	db $a ; border block
 
 	def_warp_events
-	warp_event  0,  4, LAST_MAP, 1
-	warp_event  0,  5, LAST_MAP, 2
-	warp_event  7,  4, LAST_MAP, 3
-	warp_event  7,  5, LAST_MAP, 4
-	warp_event  6,  8, ROUTE_15_GATE, 6
-	warp_event  7, 21, ROUTE_15_GATE, 5
+	warp_event  0,  4, WARP_LEFT,  LAST_MAP, 1
+	warp_event  0,  5, WARP_LEFT,  LAST_MAP, 2
+	warp_event  7,  4, WARP_RIGHT, LAST_MAP, 3
+	warp_event  7,  5, WARP_RIGHT, LAST_MAP, 4
+	warp_event  6,  8, ANY_DIR,    ROUTE_15_GATE, 6
+	warp_event  7, 21, ANY_DIR,    ROUTE_15_GATE, 5
 
 	def_bg_events
 	; marcelnote - binoculars are handled as hidden object

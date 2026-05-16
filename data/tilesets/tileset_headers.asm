@@ -7,7 +7,6 @@ MACRO tileset
 ENDM
 
 ; marcelnote - see also:
-; data/tilesets/warp_tile_ids.asm
 ; data/tilesets/collision_tile_ids.asm
 ; data/tilesets/pair_collision_tile_ids.asm
 ; data/tilesets/bookshelf_tile_ids.asm

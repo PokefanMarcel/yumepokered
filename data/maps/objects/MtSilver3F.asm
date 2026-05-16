@@ -6,7 +6,7 @@ MtSilver3F_Object:
 	db $66 ; border block
 
 	def_warp_events
-	warp_event  8, 30, MT_SILVER_2F, 2
+	warp_event  8, 30, ANY_DIR, MT_SILVER_2F, 2
 
 	def_bg_events
 	;bg_event 15, 23, TEXT_MTMOON1F_BEWARE_ZUBAT_SIGN

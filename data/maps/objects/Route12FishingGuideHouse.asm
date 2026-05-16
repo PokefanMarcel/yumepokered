@@ -6,8 +6,8 @@ Route12FishingGuideHouse_Object:
 	db $0 ; border block ; marcelnote - modified blockset
 
 	def_warp_events
-	warp_event  2,  7, LAST_MAP, 4
-	warp_event  3,  7, LAST_MAP, 4
+	warp_event  2,  7, WARP_DOWN, LAST_MAP, 4
+	warp_event  3,  7, WARP_DOWN, LAST_MAP, 4
 
 	def_bg_events
 

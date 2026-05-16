@@ -12,7 +12,7 @@ MtMoonSquare_Object:
 	db $2c ; border block
 
 	def_warp_events
-	warp_event 16,  3, MT_MOON_B1F, 10
+	warp_event 16,  3, ANY_DIR, MT_MOON_B1F, 10
 
 	def_bg_events
 	bg_event 13, 5, TEXT_MTMOONSQUARE_SIGN

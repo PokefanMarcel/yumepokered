@@ -8,10 +8,10 @@ Route18_Object:
 	db $43 ; border block
 
 	def_warp_events ; marcelnote - merged ROUTE_18_GATE floors
-	warp_event 33,  8, ROUTE_18_GATE, 1
-	warp_event 33,  9, ROUTE_18_GATE, 2
-	warp_event 40,  8, ROUTE_18_GATE, 3
-	warp_event 40,  9, ROUTE_18_GATE, 4
+	warp_event 33,  8, WARP_RIGHT, ROUTE_18_GATE, 1
+	warp_event 33,  9, WARP_RIGHT, ROUTE_18_GATE, 2
+	warp_event 40,  8, WARP_LEFT,  ROUTE_18_GATE, 3
+	warp_event 40,  9, WARP_LEFT,  ROUTE_18_GATE, 4
 
 	def_bg_events
 	bg_event 43,  7, TEXT_ROUTE18_SIGN

@@ -6,10 +6,10 @@ ViridianForestSouthGate_Object:
 	db $a ; border block
 
 	def_warp_events
-	warp_event  4,  0, VIRIDIAN_FOREST, 4 ; marcelnote - unused
-	warp_event  5,  0, VIRIDIAN_FOREST, 5
-	warp_event  4,  7, LAST_MAP, 6
-	warp_event  5,  7, LAST_MAP, 6
+	warp_event  4,  0, ANY_DIR,   VIRIDIAN_FOREST, 4 ; unreachable
+	warp_event  5,  0, ANY_DIR,   VIRIDIAN_FOREST, 5
+	warp_event  4,  7, WARP_DOWN, LAST_MAP, 6
+	warp_event  5,  7, WARP_DOWN, LAST_MAP, 6
 
 	def_bg_events
 

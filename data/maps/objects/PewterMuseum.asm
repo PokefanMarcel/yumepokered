@@ -18,13 +18,13 @@ PewterMuseum_Object:
 
 	def_warp_events
 	; 1F
-	warp_event 10, 19, LAST_MAP, 1
-	warp_event 11, 19, LAST_MAP, 1
-	warp_event 16, 19, LAST_MAP, 2
-	warp_event 17, 19, LAST_MAP, 2
-	warp_event  7, 19, PEWTER_MUSEUM, 6
+	warp_event 10, 19, WARP_DOWN, LAST_MAP, 1
+	warp_event 11, 19, WARP_DOWN, LAST_MAP, 1
+	warp_event 16, 19, WARP_DOWN, LAST_MAP, 2
+	warp_event 17, 19, WARP_DOWN, LAST_MAP, 2
+	warp_event  7, 19, ANY_DIR,   PEWTER_MUSEUM, 6
 	; 2F
-	warp_event  7,  7, PEWTER_MUSEUM, 5
+	warp_event  7,  7, ANY_DIR,   PEWTER_MUSEUM, 5
 
 	def_bg_events
 	; 2F

@@ -16,11 +16,11 @@ FuchsiaPokecenterMart_Object:
 
 	def_warp_events
 	; Pokecenter
-	warp_event  3,  7, LAST_MAP, 3
-	warp_event  4,  7, LAST_MAP, 3
+	warp_event  3,  7, WARP_DOWN, LAST_MAP, 3
+	warp_event  4,  7, WARP_DOWN, LAST_MAP, 3
 	; Mart
-	warp_event 19,  7, LAST_MAP, 1
-	warp_event 20,  7, LAST_MAP, 1
+	warp_event 19,  7, WARP_DOWN, LAST_MAP, 1
+	warp_event 20,  7, WARP_DOWN, LAST_MAP, 1
 
 	def_bg_events
 

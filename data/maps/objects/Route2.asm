@@ -6,13 +6,13 @@ Route2_Object:
 	db $f ; border block
 
 	def_warp_events
-	warp_event 14,  9, DIGLETTS_CAVE_ROUTE_2, 1
-	warp_event  5, 11, VIRIDIAN_FOREST_NORTH_GATE, 2
-	warp_event 17, 19, ROUTE_2_TRADE_HOUSE, 1
-	warp_event 18, 35, ROUTE_2_GATE, 2
-	warp_event 18, 39, ROUTE_2_GATE, 3
-	warp_event  5, 43, VIRIDIAN_FOREST_SOUTH_GATE, 3
-	warp_event 19, 35, ROUTE_2_GATE, 2 ; marcelnote - second warp above Route2Gate
+	warp_event 14,  9, ANY_DIR,   DIGLETTS_CAVE_ROUTE_2, 1
+	warp_event  5, 11, WARP_DOWN, VIRIDIAN_FOREST_NORTH_GATE, 2
+	warp_event 17, 19, ANY_DIR,   ROUTE_2_TRADE_HOUSE, 1
+	warp_event 18, 35, WARP_DOWN, ROUTE_2_GATE, 2
+	warp_event 18, 39, ANY_DIR,   ROUTE_2_GATE, 3
+	warp_event  5, 43, ANY_DIR,   VIRIDIAN_FOREST_SOUTH_GATE, 3
+	warp_event 19, 35, WARP_DOWN, ROUTE_2_GATE, 2 ; marcelnote - second warp above Route2Gate
 
 	def_bg_events
 	bg_event  5, 67, TEXT_ROUTE2_SIGN

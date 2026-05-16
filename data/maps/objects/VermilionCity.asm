@@ -13,17 +13,17 @@ VermilionCity_Object:
 	db $43 ; border block
 
 	def_warp_events
-	warp_event 11,  3, VERMILION_POKECENTER_MART, 1 ; marcelnote - merged Vermilion Pokecenter and Mart
-	warp_event  9, 13, POKEMON_FAN_CLUB, 1
-	warp_event 23, 13, VERMILION_POKECENTER_MART, 3 ; marcelnote - merged Vermilion Pokecenter and Mart
-	warp_event 12, 19, VERMILION_GYM, 1
-	warp_event 23, 19, VERMILION_PIDGEY_HOUSE, 1
-	warp_event 18, 31, VERMILION_DOCK, 3 ; marcelnote - changed for CITRUS_FERRY warps
-	warp_event 19, 31, VERMILION_DOCK, 3 ; marcelnote - changed for CITRUS_FERRY warps
-	warp_event 15, 13, VERMILION_TRADE_HOUSE, 1
-	warp_event  7,  3, VERMILION_GOOD_ROD_HOUSE, 1 ; marcelnote - Old -> Good Rod
-	warp_event 32, 31, VERMILION_DOCK, 1 ; marcelnote - new
-	warp_event 33, 31, VERMILION_DOCK, 1 ; marcelnote - new
+	warp_event 11,  3, ANY_DIR,   VERMILION_POKECENTER_MART, 1 ; marcelnote - merged Vermilion Pokecenter and Mart
+	warp_event  9, 13, ANY_DIR,   POKEMON_FAN_CLUB, 1
+	warp_event 23, 13, ANY_DIR,   VERMILION_POKECENTER_MART, 3 ; marcelnote - merged Vermilion Pokecenter and Mart
+	warp_event 12, 19, ANY_DIR,   VERMILION_GYM, 1
+	warp_event 23, 19, ANY_DIR,   VERMILION_PIDGEY_HOUSE, 1
+	warp_event 18, 31, WARP_DOWN, VERMILION_DOCK, 3 ; marcelnote - changed for CITRUS_FERRY warps
+	warp_event 19, 31, WARP_DOWN, VERMILION_DOCK, 3 ; marcelnote - changed for CITRUS_FERRY warps
+	warp_event 15, 13, ANY_DIR,   VERMILION_TRADE_HOUSE, 1
+	warp_event  7,  3, ANY_DIR,   VERMILION_GOOD_ROD_HOUSE, 1 ; marcelnote - Old -> Good Rod
+	warp_event 32, 31, WARP_DOWN, VERMILION_DOCK, 1 ; marcelnote - new
+	warp_event 33, 31, WARP_DOWN, VERMILION_DOCK, 1 ; marcelnote - new
 
 	def_bg_events
 	bg_event 27,  3, TEXT_VERMILIONCITY_SIGN

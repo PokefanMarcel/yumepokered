@@ -6,8 +6,8 @@ FuchsiaMoveDeleterHouse_Object:
 	db $0 ; border block
 
 	def_warp_events
-	warp_event  2,  7, LAST_MAP, 10
-	warp_event  3,  7, LAST_MAP, 10
+	warp_event  2,  7, WARP_DOWN, LAST_MAP, 10
+	warp_event  3,  7, WARP_DOWN, LAST_MAP, 10
 
 	def_bg_events
 

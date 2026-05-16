@@ -13,10 +13,10 @@ CeladonGrove_Object:
 	db $0 ; border block
 
 	def_warp_events
-	warp_event 38, 47, CELADON_GROVE_SOUTH_GATE, 1
-	warp_event 39, 47, CELADON_GROVE_SOUTH_GATE, 1
-	warp_event  4,  0, CELADON_GROVE_NORTH_GATE, 2
-	warp_event  5,  0, CELADON_GROVE_NORTH_GATE, 3
+	warp_event 38, 47, WARP_DOWN, CELADON_GROVE_SOUTH_GATE, 1
+	warp_event 39, 47, WARP_DOWN, CELADON_GROVE_SOUTH_GATE, 1
+	warp_event  4,  0, WARP_UP,   CELADON_GROVE_NORTH_GATE, 2
+	warp_event  5,  0, WARP_UP,   CELADON_GROVE_NORTH_GATE, 3
 
 	def_bg_events
 	bg_event 38, 38, TEXT_CELADONGROVE_ENTRANCESIGN

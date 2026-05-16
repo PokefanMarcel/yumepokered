@@ -15,9 +15,9 @@ PokemonAcademy3F4F_Object:
 	db $00 ; border block
 
 	def_warp_events
-	warp_event 15,  0, POKEMON_ACADEMY_1F2F, 5
-	warp_event 14,  0, POKEMON_ACADEMY_3F4F, 3
-	warp_event 32,  0, POKEMON_ACADEMY_3F4F, 2
+	warp_event 15,  0, ANY_DIR, POKEMON_ACADEMY_1F2F, 5
+	warp_event 14,  0, ANY_DIR, POKEMON_ACADEMY_3F4F, 3
+	warp_event 32,  0, ANY_DIR, POKEMON_ACADEMY_3F4F, 2
 
 	def_bg_events
 	bg_event 13,  7, TEXT_POKEMONACADEMY3F_SIGN

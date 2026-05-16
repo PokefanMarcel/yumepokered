@@ -19,15 +19,15 @@ SaffronCity_Object:
 	db $f ; border block
 
 	def_warp_events
-	warp_event  7,  5, COPYCATS_HOUSE, 1 ; marcelnote - merged Copycat's house floors
-	warp_event 26,  3, FIGHTING_DOJO, 1
-	warp_event 34,  3, SAFFRON_GYM, 1
-	warp_event 13, 11, SAFFRON_PIDGEY_HOUSE, 1
-	warp_event 25, 11, SAFFRON_POKECENTER_MART, 3 ; marcelnote - merged Saffron Pokecenter and Mart
-	warp_event 18, 21, SILPH_CO_1F, 1
-	warp_event  9, 29, SAFFRON_POKECENTER_MART, 1 ; marcelnote - merged Saffron Pokecenter and Mart
-	warp_event 29, 29, MR_PSYCHICS_HOUSE, 1
-	warp_event 32, 21, POKEMON_ACADEMY_1F2F, 1  ; marcelnote - added Pokemon Academy
+	warp_event  7,  5, ANY_DIR, COPYCATS_HOUSE, 1 ; marcelnote - merged Copycat's house floors
+	warp_event 26,  3, ANY_DIR, FIGHTING_DOJO, 1
+	warp_event 34,  3, ANY_DIR, SAFFRON_GYM, 1
+	warp_event 13, 11, ANY_DIR, SAFFRON_PIDGEY_HOUSE, 1
+	warp_event 25, 11, ANY_DIR, SAFFRON_POKECENTER_MART, 3 ; marcelnote - merged Saffron Pokecenter and Mart
+	warp_event 18, 21, ANY_DIR, SILPH_CO_1F, 1
+	warp_event  9, 29, ANY_DIR, SAFFRON_POKECENTER_MART, 1 ; marcelnote - merged Saffron Pokecenter and Mart
+	warp_event 29, 29, ANY_DIR, MR_PSYCHICS_HOUSE, 1
+	warp_event 32, 21, ANY_DIR, POKEMON_ACADEMY_1F2F, 1  ; marcelnote - added Pokemon Academy
 
 	def_bg_events
 	bg_event 17,  5, TEXT_SAFFRONCITY_SIGN

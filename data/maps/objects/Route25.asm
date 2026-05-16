@@ -14,7 +14,7 @@ Route25_Object:
 	db $2c ; border block
 
 	def_warp_events
-	warp_event 45,  3, BILLS_HOUSE, 1
+	warp_event 45,  3, ANY_DIR, BILLS_HOUSE, 1
 
 	def_bg_events
 	bg_event 43,  3, TEXT_ROUTE25_BILL_SIGN

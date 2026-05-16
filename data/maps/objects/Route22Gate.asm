@@ -10,15 +10,15 @@ Route22Gate_Object:
 	db $a ; border block
 
 	def_warp_events
-	warp_event 12,  7, ROUTE_22, 1 ; marcelnote - adjusted coords, was LAST_MAP
-	warp_event 13,  7, ROUTE_22, 1 ; marcelnote - adjusted coords, was LAST_MAP
-	warp_event 12,  0, ROUTE_23, 1 ; marcelnote - adjusted coords, was LAST_MAP
-	warp_event 13,  0, ROUTE_23, 2 ; marcelnote - adjusted coords, was LAST_MAP
-	warp_event  0,  3, ROUTE_22, 3 ; marcelnote - added for Route 28
-	warp_event  0,  4, ROUTE_22, 4 ; marcelnote - added for Route 28
-	warp_event  7,  7, ROUTE_22_GATE, 8 ; marcelnote - added 2nd floor
-	warp_event 25,  7, ROUTE_22_GATE, 7 ; marcelnote - added 2nd floor
-	warp_event 35,  7, BATTLE_HALL, 1   ; marcelnote - added 3rd floor
+	warp_event 12,  7, WARP_DOWN, ROUTE_22, 1 ; marcelnote - adjusted coords, was LAST_MAP
+	warp_event 13,  7, WARP_DOWN, ROUTE_22, 1 ; marcelnote - adjusted coords, was LAST_MAP
+	warp_event 12,  0, ANY_DIR,   ROUTE_23, 1 ; marcelnote - adjusted coords, was LAST_MAP
+	warp_event 13,  0, ANY_DIR,   ROUTE_23, 2 ; marcelnote - adjusted coords, was LAST_MAP
+	warp_event  0,  3, WARP_LEFT, ROUTE_22, 3 ; marcelnote - added for Route 28
+	warp_event  0,  4, WARP_LEFT, ROUTE_22, 4 ; marcelnote - added for Route 28
+	warp_event  7,  7, ANY_DIR,   ROUTE_22_GATE, 8 ; marcelnote - added 2nd floor
+	warp_event 25,  7, ANY_DIR,   ROUTE_22_GATE, 7 ; marcelnote - added 2nd floor
+	warp_event 35,  7, ANY_DIR,   BATTLE_HALL, 1   ; marcelnote - added 3rd floor
 
 	def_bg_events
 	; marcelnote - binoculars are handled as hidden object

@@ -16,16 +16,16 @@ FuchsiaCity_Object:
 	db $f ; border block
 
 	def_warp_events
-	warp_event  5, 13, FUCHSIA_POKECENTER_MART, 3 ; marcelnote - merged Fuchsia Pokecenter and Mart
-	warp_event 11, 27, FUCHSIA_BILLS_GRANDPAS_HOUSE, 1
-	warp_event 19, 27, FUCHSIA_POKECENTER_MART, 1 ; marcelnote - merged Fuchsia Pokecenter and Mart
-	warp_event 27, 27, WARDENS_HOUSE, 1
-	warp_event 18,  3, SAFARI_ZONE_GATE, 1
-	warp_event  5, 27, FUCHSIA_GYM, 1
-	warp_event 22, 13, FUCHSIA_MEETING_ROOM, 1
-	warp_event 31, 27, FUCHSIA_SUPER_ROD_HOUSE, 2 ; marcelnote - from Good to Super Rod
-	warp_event 31, 24, FUCHSIA_SUPER_ROD_HOUSE, 1 ; marcelnote - from Good to Super Rod
-	warp_event 15, 27, FUCHSIA_MOVE_DELETER_HOUSE, 1 ; marcelnote - Move deleter house
+	warp_event  5, 13, ANY_DIR,   FUCHSIA_POKECENTER_MART, 3 ; marcelnote - merged Fuchsia Pokecenter and Mart
+	warp_event 11, 27, ANY_DIR,   FUCHSIA_BILLS_GRANDPAS_HOUSE, 1
+	warp_event 19, 27, ANY_DIR,   FUCHSIA_POKECENTER_MART, 1 ; marcelnote - merged Fuchsia Pokecenter and Mart
+	warp_event 27, 27, ANY_DIR,   WARDENS_HOUSE, 1
+	warp_event 18,  3, ANY_DIR,   SAFARI_ZONE_GATE, 1
+	warp_event  5, 27, ANY_DIR,   FUCHSIA_GYM, 1
+	warp_event 22, 13, ANY_DIR,   FUCHSIA_MEETING_ROOM, 1
+	warp_event 31, 27, ANY_DIR,   FUCHSIA_SUPER_ROD_HOUSE, 2 ; marcelnote - from Good to Super Rod
+	warp_event 31, 24, WARP_DOWN, FUCHSIA_SUPER_ROD_HOUSE, 1 ; marcelnote - from Good to Super Rod
+	warp_event 15, 27, ANY_DIR,   FUCHSIA_MOVE_DELETER_HOUSE, 1 ; marcelnote - Move deleter house
 
 	def_bg_events
 	bg_event 25, 15, TEXT_FUCHSIACITY_SIGN  ; marcelnote - removed unused sign bg object

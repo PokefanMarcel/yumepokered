@@ -6,8 +6,8 @@ MandarinDock_Object:
 	db $f ; border block
 
 	def_warp_events
-	warp_event 10,  0, MANDARIN_ISLAND, 7
-	warp_event 10,  3, CITRUS_FERRY_DECK, 1
+	warp_event 10,  0, WARP_UP,   MANDARIN_ISLAND, 7
+	warp_event 10,  3, WARP_DOWN, CITRUS_FERRY_DECK, 1
 
 	def_bg_events
 

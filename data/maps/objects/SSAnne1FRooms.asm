@@ -16,14 +16,14 @@ SSAnne1FRooms_Object:
 	db $c ; border block
 
 	def_warp_events ; marcelnote - reorganized map
-	warp_event  0,  0, SS_ANNE_1F, 3
-	warp_event 10,  0, SS_ANNE_1F, 4
-	warp_event 20,  0, SS_ANNE_1F, 5
-	warp_event 30,  0, SS_ANNE_1F, 6
-	warp_event 40,  0, SS_ANNE_1F, 7
-	warp_event 50,  0, SS_ANNE_1F, 8
-	warp_event 62,  5, SS_ANNE_1F, 12 ; marcelnote - new nurse room
-	warp_event 63,  5, SS_ANNE_1F, 12 ; marcelnote - new nurse room
+	warp_event  0,  0, ANY_DIR,   SS_ANNE_1F, 3
+	warp_event 10,  0, ANY_DIR,   SS_ANNE_1F, 4
+	warp_event 20,  0, ANY_DIR,   SS_ANNE_1F, 5
+	warp_event 30,  0, ANY_DIR,   SS_ANNE_1F, 6
+	warp_event 40,  0, ANY_DIR,   SS_ANNE_1F, 7
+	warp_event 50,  0, ANY_DIR,   SS_ANNE_1F, 8
+	warp_event 62,  5, WARP_DOWN, SS_ANNE_1F, 12 ; marcelnote - new nurse room
+	warp_event 63,  5, WARP_DOWN, SS_ANNE_1F, 12 ; marcelnote - new nurse room
 
 	def_bg_events
 

@@ -11,10 +11,10 @@ Route6_Object:
 	db $f ; border block
 
 	def_warp_events
-	warp_event  9,  1, ROUTE_6_GATE, 3
-	warp_event 10,  1, ROUTE_6_GATE, 3
-	warp_event 10,  5, ROUTE_6_GATE, 1  ; marcelnote - changed from 10, 7 after altering the map slightly
-	warp_event 17, 13, UNDERGROUND_PATH_ROUTE_6, 1
+	warp_event  9,  1, WARP_DOWN, ROUTE_6_GATE, 3
+	warp_event 10,  1, WARP_DOWN, ROUTE_6_GATE, 3
+	warp_event 10,  5, ANY_DIR,   ROUTE_6_GATE, 1  ; marcelnote - changed from 10, 7 after altering the map slightly
+	warp_event 17, 13, ANY_DIR,   UNDERGROUND_PATH_ROUTE_6, 1
 
 	def_bg_events
 	bg_event 19, 15, TEXT_ROUTE6_UNDERGROUND_PATH_SIGN
