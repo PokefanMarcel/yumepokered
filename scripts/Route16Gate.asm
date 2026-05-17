@@ -30,7 +30,7 @@ Route16GateDefaultScript:
 	ldh [hJoyHeld], a
 	ld a, [wCoordIndex]
 	cp $1
-	jr z, .next_to_counter
+	jr z, .nextToCounter
 	ld a, [wCoordIndex]
 	dec a
 	ld [wSimulatedJoypadStatesIndex], a
@@ -43,7 +43,7 @@ Route16GateDefaultScript:
 	ld a, SCRIPT_ROUTE16GATE_PLAYER_MOVING_UP
 	ld [wRoute16GateCurScript], a
 	ret
-.next_to_counter
+.nextToCounter
 	ld a, SCRIPT_ROUTE16GATE_GUARD
 	ld [wRoute16GateCurScript], a
 	ret
@@ -101,9 +101,9 @@ Route16Gate1FGuardText: ; marcelnote - optimized
 	ld b, BICYCLE
 	call IsItemInBag
 	ld hl, .NoPedestriansAllowedText
-	jr z, .got_text
+	jr z, .gotText
 	ld hl, .CyclingRoadExplanationText
-.got_text
+.gotText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
