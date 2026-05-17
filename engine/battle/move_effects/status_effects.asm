@@ -272,14 +272,14 @@ FreezeBurnParalyzeEffect: ; only side effects ; marcelnote - optimized
 	ld a, [de]  ; a = [w<>MoveEffect]
 	cp PARALYZE_SIDE_EFFECT1 + 1
 	ld b, 10 percent + 1
-	jr c, .regular_effectiveness
+	jr c, .regularEffectiveness
 ; extra effectiveness
 	ld b, 30 percent + 1
 	ASSERT PARALYZE_SIDE_EFFECT2 - PARALYZE_SIDE_EFFECT1 == BURN_SIDE_EFFECT2 - BURN_SIDE_EFFECT1
 	ASSERT PARALYZE_SIDE_EFFECT2 - PARALYZE_SIDE_EFFECT1 == FREEZE_SIDE_EFFECT2 - FREEZE_SIDE_EFFECT1
 	sub PARALYZE_SIDE_EFFECT2 - PARALYZE_SIDE_EFFECT1
 	ld [de], a ; treat extra effective as regular from now on
-.regular_effectiveness
+.regularEffectiveness
 	call BattleRandom ; preserves all 16-bit registers
 	cp b
 	ret nc     ; do nothing if random value is >= 1A or 4D [no status applied]
