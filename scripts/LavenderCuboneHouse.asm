@@ -18,9 +18,9 @@ LavenderCuboneHouseBrunetteGirlText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_RESCUED_MR_FUJI
 	ld hl, .TheGhostIsGoneText
-	jr nz, .rescued_mr_fuji
+	jr nz, .rescuedMrFuji
 	ld hl, .PoorCubonesMotherText
-.rescued_mr_fuji
+.rescuedMrFuji
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
