@@ -84,13 +84,13 @@ CitrusFerryDeckSailor1Text:
 	text_asm
 	CheckEvent EVENT_FERRY_ARRIVED
 	ld hl, .EnjoyYourTripText
-	jr z, .print_text
+	jr z, .printText
 	ld a, [wLastMap]
 	cp VERMILION_DOCK
 	ld hl, .EndOfTheLineVermilionText
-	jr z, .print_text
+	jr z, .printText
 	ld hl, .EndOfTheLineMandarinText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
