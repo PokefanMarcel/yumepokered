@@ -9,16 +9,16 @@ MrPsychicsHouseMrPsychicText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_TM29
 	ld hl, .TM29ExplanationText
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, .YouWantedThisText
 	call PrintText
 	lb bc, TM_PSYCHIC_M, 1
 	call GiveItem
 	ld hl, .TM29NoRoomText
-	jr nc, .print_text
+	jr nc, .printText
 	SetEvent EVENT_GOT_TM29
 	ld hl, .ReceivedTM29Text
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
