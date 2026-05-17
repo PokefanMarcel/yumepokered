@@ -14,9 +14,9 @@ GameCornerSelectLuckySlotMachine:
 	call Random
 	ldh a, [hRandomAdd]
 	cp $8 ; marcelnote - fixed from 7
-	jr nc, .not_max
+	jr nc, .notMax
 	ld a, $8
-.not_max
+.notMax
 	srl a
 	srl a
 	srl a
@@ -133,23 +133,23 @@ GameCornerClerk1Text: ; marcelnote - optimized and made buying coins faster
 	; Show player's coins
 	call GameCornerDrawCoinBox
 	ld hl, .DoYouNeedSomeGameCoins
-.need_more_coins ; marcelnote - new for buying coins faster
+.needMoreCoins ; marcelnote - new for buying coins faster
 	call PrintText
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
 	ld hl, .PleaseComePlaySometime
-	jr nz, .print_text ; declined
+	jr nz, .printText ; declined
 	; Can only get more coins if you
 	; - have the Coin Case
 	ld b, COIN_CASE
 	call IsItemInBag
 	ld hl, .DontHaveCoinCase
-	jr z, .print_text ; no coin case
+	jr z, .printText ; no coin case
 	; - have room in the Coin Case for at least 9 coins
 	call Has9990Coins
 	ld hl, .CoinCaseIsFull
-	jr nc, .print_text ; coin case full
+	jr nc, .printText ; coin case full
 	; - have at least 1000 yen
 	xor a
 	ldh [hMoney], a
@@ -157,12 +157,12 @@ GameCornerClerk1Text: ; marcelnote - optimized and made buying coins faster
 	ld a, $10
 	ldh [hMoney + 1], a
 	call HasEnoughMoney
-	jr nc, .buy_coins
+	jr nc, .buyCoins
 	ld hl, .CantAffordTheCoins
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-.buy_coins
+.buyCoins
 	; Spend 1000 yen
 	xor a
 	ldh [hMoney], a
@@ -193,7 +193,7 @@ GameCornerClerk1Text: ; marcelnote - optimized and made buying coins faster
 	; marcelnote - next few lines are new for buying coins faster
 	call PrintText
 	ld hl, .WantMoreCoins
-	jr .need_more_coins
+	jr .needMoreCoins
 
 .DoYouNeedSomeGameCoins:
 	text_far _GameCornerClerk1DoYouNeedSomeGameCoinsText
@@ -235,16 +235,16 @@ GameCornerFishingGuruText:
 	text_asm
 	CheckEvent EVENT_GOT_10_COINS
 	ld hl, .WinsComeAndGoText
-	jr nz, .print_text ; already got coins
+	jr nz, .printText ; already got coins
 	ld hl, .WantToPlayText
 	call PrintText
 	ld b, COIN_CASE
 	call IsItemInBag
 	ld hl, GameCornerOopsForgotCoinCaseText
-	jr z, .print_text ; don't have coin case
+	jr z, .printText ; don't have coin case
 	call Has9990Coins
 	ld hl, .DontNeedMyCoinsText ; coin case full
-	jr nc, .print_text
+	jr nc, .printText
 	xor a
 	ldh [hUnusedCoinsByte], a
 	ldh [hCoins], a
@@ -258,7 +258,7 @@ GameCornerFishingGuruText:
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	ld hl, .Received10CoinsText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
@@ -287,9 +287,9 @@ GameCornerGymGuideText: ; marcelnote - adjusted
 	text_asm
 	CheckEvent EVENT_BEAT_ERIKA
 	ld hl, GameCornerGymGuideTheyOfferRarePokemonText
-	jr nz, .beat_erika
+	jr nz, .beatErika
 	ld hl, GameCornerGymGuideChampInMakingText
-.beat_erika
+.beatErika
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
@@ -309,16 +309,16 @@ GameCornerClerk2Text:
 	text_asm
 	CheckEvent EVENT_GOT_20_COINS_2
 	ld hl, .INeedMoreCoinsText
-	jr nz, .print_text ; already got coins
+	jr nz, .printText ; already got coins
 	ld hl, .WantSomeCoinsText
 	call PrintText
 	ld b, COIN_CASE
 	call IsItemInBag
 	ld hl, GameCornerOopsForgotCoinCaseText
-	jr z, .print_text ; don't have coin case
+	jr z, .printText ; don't have coin case
 	call Has9990Coins
 	ld hl, .YouHaveLotsOfCoinsText
-	jr nc, .print_text ; coin case full
+	jr nc, .printText ; coin case full
 	xor a
 	ldh [hUnusedCoinsByte], a
 	ldh [hCoins], a
@@ -330,7 +330,7 @@ GameCornerClerk2Text:
 	predef AddBCDPredef
 	SetEvent EVENT_GOT_20_COINS_2
 	ld hl, .Received20CoinsText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
@@ -355,16 +355,16 @@ GameCornerGentlemanText:
 	text_asm
 	CheckEvent EVENT_GOT_20_COINS
 	ld hl, .CloselyWatchTheReelsText
-	jr nz, .print_text ; already got coins
+	jr nz, .printText ; already got coins
 	ld hl, .ThrowingMeOffText
 	call PrintText
 	ld b, COIN_CASE
 	call IsItemInBag
 	ld hl, GameCornerOopsForgotCoinCaseText
-	jr z, .print_text ; don't have coin case
+	jr z, .printText ; don't have coin case
 	call Has9990Coins
 	ld hl, .YouGotYourOwnCoinsText
-	jr z, .print_text ; coin case full
+	jr z, .printText ; coin case full
 	xor a
 	ldh [hUnusedCoinsByte], a
 	ldh [hCoins], a
@@ -376,7 +376,7 @@ GameCornerGentlemanText:
 	predef AddBCDPredef
 	SetEvent EVENT_GOT_20_COINS
 	ld hl, .Received20CoinsText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
