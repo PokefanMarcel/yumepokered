@@ -14,18 +14,18 @@ RocketHideoutB4FDoorCallbackScript:
 	ret z
 	res BIT_CUR_MAP_LOADED_1, [hl]
 	CheckEvent EVENT_ROCKET_HIDEOUT_4_DOOR_UNLOCKED
-	jr nz, .door_already_unlocked
+	jr nz, .doorAlreadyUnlocked
 	CheckBothEventsSet EVENT_BEAT_ROCKET_HIDEOUT_4_TRAINER_0, EVENT_BEAT_ROCKET_HIDEOUT_4_TRAINER_1, 1
-	jr z, .unlock_door
+	jr z, .unlockDoor
 	ld a, $2d ; Door block
-	jr .set_block
-.unlock_door
+	jr .setBlock
+.unlockDoor
 	ld a, SFX_GO_INSIDE
 	call PlaySound
 	SetEvent EVENT_ROCKET_HIDEOUT_4_DOOR_UNLOCKED
-.door_already_unlocked
+.doorAlreadyUnlocked
 	ld a, $e ; Floor block
-.set_block
+.setBlock
 	ld [wNewTileBlockID], a
 	lb bc, 5, 12
 	predef_jump ReplaceTileBlock
@@ -99,7 +99,7 @@ RocketHideout4TrainerHeader2:
 RocketHideoutB4FGiovanniText:
 	text_asm
 	CheckEvent EVENT_BEAT_ROCKET_HIDEOUT_GIOVANNI
-	jp nz, .beat_giovanni
+	jp nz, .beatGiovanni
 	ld hl, .ImpressedYouGotHereText
 	call PrintText
 	ld hl, wStatusFlags3
@@ -118,7 +118,7 @@ RocketHideoutB4FGiovanniText:
 	ld [wRocketHideoutB4FCurScript], a
 	ld [wCurMapScript], a
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-.beat_giovanni
+.beatGiovanni
 	ld hl, RocketHideoutB4FGiovanniHopeWeMeetAgainText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
@@ -139,7 +139,7 @@ RocketHideoutB4FRocket1Text:
 	text_asm
 	ld hl, RocketHideout4TrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 RocketHideoutB4FRocket1BattleText:
 	text_far _RocketHideoutB4FRocket1BattleText
@@ -157,7 +157,7 @@ RocketHideoutB4FRocket2Text:
 	text_asm
 	ld hl, RocketHideout4TrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 RocketHideoutB4FRocket2BattleText:
 	text_far _RocketHideoutB4FRocket2BattleText
@@ -175,7 +175,7 @@ RocketHideoutB4FRocket3Text:
 	text_asm
 	ld hl, RocketHideout4TrainerHeader2
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 RocketHideoutB4FRocket3BattleText:
 	text_far _RocketHideoutB4FRocket3BattleText
@@ -188,7 +188,7 @@ RocketHideoutB4FRocket3EndBattleText: ; marcelnote - adapted from pokeyellow
 	ld a, TOGGLE_ROCKET_HIDEOUT_B4F_ITEM_5
 	ld [wToggleableObjectIndex], a
 	predef ShowObject
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 RocketHideoutB4FRocket3AfterBattleText: ; marcelnote - now drops key in EndBattle text
 	text_far _RocketHideoutB4FRocket3AfterBattleText
