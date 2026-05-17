@@ -264,23 +264,23 @@ TryLearnAsFieldMove:
 ;return nz flag if field move slot was learned
 	ld a, [wIsInBattle]
 	and a
-	jr nz, .return_fail	; do not allow the learning of a temporary field move in battle
+	jr nz, .returnFail	; do not allow the learning of a temporary field move in battle
 
 	ld a, [wPartyMenuTypeOrMessageID]
 	cp TMHM_PARTY_MENU
-	jr nz, .return_fail
+	jr nz, .returnFail
 
 	ld a, [wMoveNum]
 	ld hl, FieldMovesList ; array to search
 	call IsInList ; sets carry if a is in list
-	jr nc, .return_fail
+	jr nc, .returnFail
 
 	ld hl, TeachFieldMoveText
 	call PrintText
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .return_fail	; exit if No is chosen
+	jr nz, .returnFail	; exit if No is chosen
 
 	; move to the correct field move slot
 	ld hl, wTempFieldMoves
@@ -295,7 +295,7 @@ TryLearnAsFieldMove:
 	jr z, .next
 	ld hl, AlreadyKnowsFieldMoveText
 	call PrintText
-	jr .return_occupied
+	jr .returnOccupied
 .next
 
 	;fill the slot with the move
@@ -306,10 +306,10 @@ TryLearnAsFieldMove:
 	xor a
 	inc a
 	ret
-.return_fail
+.returnFail
 	xor a ; set Z flag
 	ret
-.return_occupied
+.returnOccupied
 	scf
 	ret
 
