@@ -78,9 +78,9 @@ CeladonMansion3FGameDesignerText:
 	ld a, [wNumSetBits]
 	cp NUM_POKEMON - 1 ; discount Mew
 	ld hl, .CompletedDexText
-	jr nc, .print_text
+	jr nc, .printText
 	ld hl, .GameDesignerText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd
 
