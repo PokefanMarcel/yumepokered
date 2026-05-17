@@ -48,19 +48,19 @@ SilphCo2TrainerHeader3:
 SilphCo2FSilphWorkerFText:
 	text_asm
 	CheckEvent EVENT_GOT_TM36
-	jr nz, .already_have_tm
+	jr nz, .alreadyHaveTM
 	ld hl, .PleaseTakeThisText
 	call PrintText
 	lb bc, TM_SELFDESTRUCT, 1
 	call GiveItem
 	ld hl, .TM36NoRoomText
-	jr nc, .print_text
+	jr nc, .printText
 	SetEvent EVENT_GOT_TM36
 	ld hl, .ReceivedTM36Text
-	jr .print_text
-.already_have_tm
+	jr .printText
+.alreadyHaveTM
 	ld hl, .TM36ExplanationText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd
 
