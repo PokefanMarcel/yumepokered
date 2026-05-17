@@ -150,10 +150,10 @@ ViridianGymReceiveTM27: ; marcelnote - optimized
 	lb bc, TM_FISSURE, 1
 	call GiveItem
 	ld a, TEXT_VIRIDIANGYM_GIOVANNI_TM27_NO_ROOM
-	jr nc, .bag_full
+	jr nc, .bagFull
 	SetEvent EVENT_GOT_TM27
 	ld a, TEXT_VIRIDIANGYM_GIOVANNI_RECEIVED_TM27
-.bag_full
+.bagFull
 	ldh [hTextID], a
 	call DisplayTextID
 	ld hl, wObtainedBadges
