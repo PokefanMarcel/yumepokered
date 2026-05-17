@@ -15,7 +15,7 @@ VermilionDockSSAnneDefaultScript:
 	CheckEvent EVENT_WALKED_OUT_OF_DOCK
 	ret nz
 	CheckEventHL EVENT_STARTED_WALKING_OUT_OF_DOCK
-	jr nz, .walking_out_of_dock
+	jr nz, .walkingOutOfDock
 	CheckEventReuseHL EVENT_GOT_HM01
 	ret z
 	ld a, [wDestinationWarpID]
@@ -40,7 +40,7 @@ VermilionDockSSAnneDefaultScript:
 	dec a
 	ld [wJoyIgnore], a
 	ret
-.walking_out_of_dock
+.walkingOutOfDock
 	CheckEventAfterBranchReuseHL EVENT_WALKED_OUT_OF_DOCK, EVENT_STARTED_WALKING_OUT_OF_DOCK
 	ret nz
 	ld a, [wSimulatedJoypadStatesIndex]
@@ -91,7 +91,7 @@ VermilionDockSSAnneLeavesScript:
 	ld [wUpdateSpritesEnabled], a
 	ld d, $0
 	ld e, $8
-.shift_columns_up
+.shiftColumnsUp
 	ld hl, $2
 	add hl, bc
 	ld a, l
@@ -104,19 +104,19 @@ VermilionDockSSAnneLeavesScript:
 	call VermilionDock_EmitSmokePuff
 	pop de
 	ld b, $10
-.smoke_puff_drift_loop
+.smokePuffDriftLoop
 	call VermilionDock_AnimSmokePuffDriftRight
 	ld c, $8
-.delay_between_drifts
+.delayBetweenDrifts
 	call VermilionDock_SyncScrollWithLY
 	dec c
-	jr nz, .delay_between_drifts
+	jr nz, .delayBetweenDrifts
 	inc d
 	dec b
-	jr nz, .smoke_puff_drift_loop
+	jr nz, .smokePuffDriftLoop
 	pop bc
 	dec e
-	jr nz, .shift_columns_up
+	jr nz, .shiftColumnsUp
 	xor a
 	ldh [rWY], a
 	ldh [hWY], a
@@ -143,12 +143,12 @@ VermilionDock_AnimSmokePuffDriftRight:
 	swap a
 	ld c, a
 	ld de, OBJ_SIZE
-.drift_loop
+.driftLoop
 	inc [hl]
 	inc [hl]
 	add hl, de
 	dec c
-	jr nz, .drift_loop
+	jr nz, .driftLoop
 	pop de
 	pop bc
 	ret
@@ -178,19 +178,19 @@ VermilionDockOAMBlock:
 VermilionDock_SyncScrollWithLY:
 	ld h, d
 	ld l, $50
-	call .sync_scroll_ly
+	call .syncScrollLY
 	ld h, $0
 	ld l, $80
-.sync_scroll_ly
+.syncScrollLY
 	ldh a, [rLY]
 	cp l
-	jr nz, .sync_scroll_ly
+	jr nz, .syncScrollLY
 	ld a, h
 	ldh [rSCX], a
-.wait_for_ly_match
+.waitForLYMatch
 	ldh a, [rLY]
 	cp h
-	jr z, .wait_for_ly_match
+	jr z, .waitForLYMatch
 	ret
 
 VermilionDock_EraseSSAnne:
@@ -268,7 +268,7 @@ VermilionDockSailorText:
 	ld a, [wSpritePlayerStateData1FacingDirection]
 	cp SPRITE_FACING_DOWN
 	ld hl, .CantSurfHereText
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, .AreYouReadyText
 	call PrintText
 	ld a, $01
@@ -282,7 +282,7 @@ VermilionDockSailorText:
 	ld a, SCRIPT_VERMILIONDOCK_ALL_ABOARD
 	ld [wVermilionDockCurScript], a
 	ld hl, .AllAboardText
-.print_text
+.printText
 	call PrintText
 .no
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
