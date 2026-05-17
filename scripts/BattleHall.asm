@@ -102,13 +102,13 @@ BattleHallReceptionistText:
 	text_asm
 	CheckEvent EVENT_BATTLED_BATTLE_HALL_TRAINER
 	ld hl, .WhatABattleText
-	jr nz, .print_text
+	jr nz, .printText
 	ld a, [wPartyCount]
 	cp 3
 	ld hl, .TeamReadyText
-	jr z, .print_text
+	jr z, .printText
 	ld hl, .NeedThreeMonText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
@@ -136,7 +136,7 @@ BattleHallTrainerText:
 	call PrintText
 	ld a, [wPartyCount]
 	cp 3
-	jr nz, .text_script_end
+	jr nz, .textScriptEnd
 	ld hl, wStatusFlags3
 	set BIT_TALKED_TO_TRAINER, [hl]
 	set BIT_PRINT_END_BATTLE_TEXT, [hl]
@@ -150,7 +150,7 @@ BattleHallTrainerText:
 	ld [wBattleHallCurScript], a
 	ld [wCurMapScript], a
 
-.text_script_end
+.textScriptEnd
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .PreBattleText:
