@@ -52,16 +52,16 @@ CinnabarVolcano2FDefaultScript:
 	EventFlagAddress hl, EVENT_CINNABAR_VOLCANO_2F_BOULDER1_ON_SWITCH
 	ld a, [wCoordIndex]
 	cp $2
-	jr z, .second_switch
+	jr z, .secondSwitch
 	CheckEventReuseHL EVENT_CINNABAR_VOLCANO_2F_BOULDER1_ON_SWITCH
 	SetEventReuseHL EVENT_CINNABAR_VOLCANO_2F_BOULDER1_ON_SWITCH
 	ret nz  ; event already set, no need to set flag
-	jr .set_script_flag
-.second_switch
+	jr .setScriptFlag
+.secondSwitch
 	CheckEventReuseHL EVENT_CINNABAR_VOLCANO_2F_BOULDER2_ON_SWITCH
 	SetEventReuseHL EVENT_CINNABAR_VOLCANO_2F_BOULDER2_ON_SWITCH
 	ret nz
-.set_script_flag
+.setScriptFlag
 	ld hl, wCurrentMapScriptFlags
 	set BIT_CUR_MAP_LOADED_1, [hl]
 	ret
