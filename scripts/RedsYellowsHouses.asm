@@ -41,7 +41,7 @@ RedsHouse1FMomText: ; marcelnote - modified
 	CheckEvent EVENT_GOT_STARTER ; received a Pokemon from Oak?
 	jr nz, .gotStarter
 	ld hl, .WakeUpText
-	jr .print_text
+	jr .printText
 .gotStarter ; marcelnote - Mom gives money to prevent softlocks
 	xor a
 	ldh [hMoney], a
@@ -57,7 +57,7 @@ RedsHouse1FMomText: ; marcelnote - modified
 	ld c, 3
 	predef AddBCDPredef
 	ld hl, .GotMoneyText
-	jr .print_text
+	jr .printText
 .heal
 	ld hl, RedsHouse1FMomYouShouldRestText
 	call PrintText
@@ -71,7 +71,7 @@ RedsHouse1FMomText: ; marcelnote - modified
 	call PlayMusic
 	call GBFadeInFromWhite
 	ld hl, RedsHouse1FMomLookingGreatText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd
 
@@ -101,13 +101,13 @@ RedsHouse1FTVText:
 	ld a, [wSpritePlayerStateData1FacingDirection]
 	cp SPRITE_FACING_UP
 	ld hl, .WrongSideText
-	jr nz, .got_text
+	jr nz, .gotText
 	ld hl, .StandByMeMovieText
 	ld a, [wStatusFlags4]
 	bit BIT_IS_GIRL, a
-	jr z, .got_text
+	jr z, .gotText
 	ld hl, .WizardOfOzMovieText ; marcelnote - FRLG text option for girl
-.got_text
+.gotText
 	call PrintText
 	rst TextScriptEnd
 
@@ -143,12 +143,12 @@ YellowsHouse1FDadSittingText: ; marcelnote - new for Yellow's House
 	text_asm
 	CheckEvent EVENT_BEAT_YELLOW
 	ld hl, .YellowIsBackText
-	jr nz, .print_text
+	jr nz, .printText
 	CheckEvent EVENT_BEAT_BROCK
 	ld hl, .RunIntoHerText
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, .JustMissedHerText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd
 
