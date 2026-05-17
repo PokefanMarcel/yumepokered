@@ -162,10 +162,10 @@ CutAnimationOffsets:
 BoulderDustAnimationOffsets:
 ; Each pair represents the x and y pixels offsets from the player of where the cut tree animation should be drawn
 ; These offsets represent 2 blocks away from the player
-	db  8,  52 ; player is facing down
-	db  8, -12 ; player is facing up
-	db -24, 20 ; player is facing left
-	db 40,  20 ; player is facing right
+	db   8,  52 ; player is facing down
+	db   8, -12 ; player is facing up
+	db -24,  20 ; player is facing left
+	db  40,  20 ; player is facing right
 
 ReplaceTreeTileBlock:
 ; Determine the address of the tile block that contains the tile in front of the
@@ -214,31 +214,32 @@ ReplaceTreeTileBlock:
 .centerTileBlock
 	add hl, bc
 .aboveCenter
-	ld e, $2
+	ld e, 2
 	add hl, de
 	jr .next
 .leftOfCenter
-	ld e, $1
+	ld e, 1
 	add hl, bc
 	add hl, de
 	jr .next
 .rightOfCenter
-	ld e, $3
+	ld e, 3
 	add hl, bc
 	add hl, de
 .next
 	pop de
-	ld a, [hl]
-	ld c, a
+	ld c, [hl]
 .loop ; find the matching tile block in the array
 	ld a, [de]
-	inc de
-	inc de
 	cp $ff
 	ret z
 	cp c
-	jr nz, .loop
-	dec de
+	jr z, .found
+	inc de
+	inc de
+	jr .loop
+.found
+	inc de
 	ld a, [de] ; replacement tile block from matching array entry
 	ld [hl], a
 	ret
