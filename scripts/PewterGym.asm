@@ -201,7 +201,7 @@ PewterGymGuideText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_BEAT_BROCK
 	ld hl, PewterGymGuidePostBattleText
-	jr nz, .beat_brock
+	jr nz, .beatBrock
 	ld hl, PewterGymGuidePreAdviceText
 	call PrintText
 	call YesNoChoice
@@ -213,7 +213,7 @@ PewterGymGuideText: ; marcelnote - optimized
 .saidNo
 	call PrintText
 	ld hl, PewterGymGuideAdviceText
-.beat_brock
+.beatBrock
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
