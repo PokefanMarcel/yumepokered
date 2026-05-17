@@ -221,7 +221,7 @@ MoveReminderText:
 	ldh [hMoney + 1], a ; charge ¥1000
 	call HasEnoughMoney
 	ld hl, MoveReminderNotEnoughMoneyText
-	jr c, .print_text
+	jr c, .printText
 	ld hl, MoveReminderSaidYesText
 	call PrintText
 	; Select pokemon from party.
@@ -277,7 +277,7 @@ MoveReminderText:
 	call LoadGBPal
 .exit
 	ld hl, MoveReminderByeText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd
 
