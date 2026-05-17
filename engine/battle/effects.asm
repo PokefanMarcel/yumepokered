@@ -558,7 +558,7 @@ DisableEffect: ; marcelnote - optimized
 	inc hl
 	or [hl]     ; hl = w<Target>MonPP + 3
 	and PP_MASK
-	jr z, .butItFailed_PopHL ; no move with PP left, so disable fails
+	jr z, .butItFailedPopHL ; no move with PP left, so disable fails
 .pickAnotherMove
 	pop hl     ; restore hl = w<Target>MonMoves
 	jr .pickMoveToDisable
@@ -586,7 +586,7 @@ DisableEffect: ; marcelnote - optimized
 	ld hl, MoveWasDisabledText
 	jp PrintText
 
-.butItFailed_PopHL
+.butItFailedPopHL
 	pop hl
 .butItFailed
 	jp PrintButItFailedText_
