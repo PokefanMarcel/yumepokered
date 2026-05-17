@@ -63,7 +63,7 @@ PokemonTower3FGhostBattleScript: ; marcelnote - postgame Agatha event
 	ld [wJoyIgnore], a
 	ld a, [wBattleResult]
 	and a
-	jr nz, .did_not_defeat
+	jr nz, .didNotDefeat
 	SetEvent EVENT_BEAT_GHOST_3F
 	ld a, TEXT_POKEMONTOWER3F_GHOST_VANISHED
 	ldh [hTextID], a
@@ -74,7 +74,7 @@ PokemonTower3FGhostBattleScript: ; marcelnote - postgame Agatha event
 	ld [wPokemonTower3FCurScript], a
 	ld [wCurMapScript], a
 	ret
-.did_not_defeat
+.didNotDefeat
 	ld a, $1
 	ld [wSimulatedJoypadStatesIndex], a
 	ld a, PAD_LEFT
