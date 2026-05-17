@@ -40,12 +40,12 @@ ENDC
 	cp $1
 	ld a, PLAYER_DIR_UP
 	ld b, SPRITE_FACING_DOWN
-	jr nz, .player_below_rival
+	jr nz, .playerBelowRival
 ; the rival is on the left side and the player is on the right side
 	SetEvent EVENT_POKEMON_TOWER_RIVAL_ON_LEFT
 	ld a, PLAYER_DIR_LEFT
 	ld b, SPRITE_FACING_RIGHT
-.player_below_rival
+.playerBelowRival
 	ld [wPlayerMovingDirection], a
 	ld a, POKEMONTOWER2F_RIVAL
 	ldh [hSpriteIndex], a
@@ -77,9 +77,9 @@ PokemonTower2FDefeatedRivalScript:
 	call DisplayTextID
 	ld de, PokemonTower2FRivalDownThenRightMovement
 	CheckEvent EVENT_POKEMON_TOWER_RIVAL_ON_LEFT
-	jr nz, .got_movement
+	jr nz, .gotMovement
 	ld de, PokemonTower2FRivalRightThenDownMovement
-.got_movement
+.gotMovement
 	ld a, POKEMONTOWER2F_RIVAL
 	ldh [hSpriteIndex], a
 	call MoveSprite
@@ -169,7 +169,7 @@ PokemonTower2FGhostBattleScript: ; marcelnote - postgame Agatha event
 	ld [wJoyIgnore], a
 	ld a, [wBattleResult]
 	and a
-	jr nz, .did_not_defeat
+	jr nz, .didNotDefeat
 	SetEvent EVENT_BEAT_GHOST_2F
 	ld a, TEXT_POKEMONTOWER2F_GHOST_VANISHED
 	ldh [hTextID], a
@@ -180,7 +180,7 @@ PokemonTower2FGhostBattleScript: ; marcelnote - postgame Agatha event
 	ld [wPokemonTower2FCurScript], a
 	ld [wCurMapScript], a
 	ret
-.did_not_defeat
+.didNotDefeat
 	ld a, $1
 	ld [wSimulatedJoypadStatesIndex], a
 	ld a, PAD_RIGHT
@@ -215,11 +215,11 @@ PokemonTower2F_TextPointers:
 PokemonTower2FRivalText:
 	text_asm
 	CheckEvent EVENT_BEAT_POKEMON_TOWER_RIVAL
-	jr z, .do_battle
+	jr z, .doBattle
 	ld hl, .HowsYourDexText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-.do_battle
+.doBattle
 	ld hl, .WhatBringsYouHereText
 	call PrintText
 	ld hl, wStatusFlags3
