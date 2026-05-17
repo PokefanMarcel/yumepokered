@@ -64,9 +64,9 @@ PewterMuseum1FScientist1Text: ; marcelnote - optimized
 	ld a, [wCurrentMenuItem]
 	cp $0
 	ld hl, .AmberIsFossilizedTreeSapText
-	jr nz, .answeredNo
+	jr nz, .saidNo
 	ld hl, .TheresALabSomewhereText
-.answeredNo
+.saidNo
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
