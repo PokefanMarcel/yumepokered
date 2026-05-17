@@ -24,7 +24,7 @@ DisplayPayPhoneDialogue_::
 	ldh [hMoney + 2], a
 	call HasEnoughMoney
 	ld hl, .NotEnoughMoneyText
-	jr c, .print_text
+	jr c, .printText
 	; has enough money
 	xor a
 	ld [wPriceTemp], a
@@ -77,7 +77,7 @@ DisplayPayPhoneDialogue_::
 	ld l, e
 	call PrintText
 	ld hl, PayPhoneMomOutroText
-.print_text
+.printText
 	call PrintText
 	jp UpdateSprites
 
@@ -101,29 +101,29 @@ DisplayPayPhoneDialogue_::
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a     ; hl = address of text
-	jr .print_text
+	jr .printText
 
 .postgameEvents
 	ld hl, PayPhoneDaisyPostgameLoreleiText
 	CheckEvent EVENT_POSTGAME_LORELEI
-	jr z, .print_text
+	jr z, .printText
 	ld hl, PayPhoneDaisyPostgameBrunoText
 	CheckEvent EVENT_POSTGAME_BRUNO
-	jr z, .print_text
+	jr z, .printText
 	ld hl, PayPhoneDaisyPostgameAgathaText
 	CheckEvent EVENT_POSTGAME_AGATHA
-	jr z, .print_text
+	jr z, .printText
 	ld hl, PayPhoneDaisyPostgameLanceText
 	CheckEvent EVENT_POSTGAME_LANCE
-	jr z, .print_text
+	jr z, .printText
 	ld hl, PayPhoneDaisyPostgameRivalText
 	CheckEvent EVENT_POSTGAME_RIVAL
-	jr z, .print_text
+	jr z, .printText
 	ld hl, PayPhoneDaisyRivalAtIndigoText
 	CheckHideShowCont TOGGLE_INDIGO_PLATEAU_LOBBY_RIVAL
-	jr z, .print_text
+	jr z, .printText
 	ld hl, PayPhoneDaisyOakRoute1Text
-	jr .print_text
+	jr .printText
 
 .IntroText:
 	text_far _PayPhoneIntroText
@@ -370,10 +370,10 @@ PayPhoneDaisyOakRoute1Text:
 ;
 ;.allEventsSet
 ;	ld hl, PayPhoneDaisyFinalText
-;	jr .print_text
+;	jr .printText
 ;
 ;.eventNotSet
 ;	ld a, [hli]
 ;	ld h, [hl]
 ;	ld l, a     ; hl = address of text
-;	jr .print_text
+;	jr .printText
