@@ -69,9 +69,9 @@ AnimateWaterTile: ; marcelnote - modified this function to synchronize with wate
 	ld hl, WaterTilesTable
 	ld a, [wCurMapTileset]
 	and a ; OVERWORLD?
-	jr z, .got_table
+	jr z, .gotTable
 	ld hl, WaterAltTilesTable ; other tilesets have different water tiles
-.got_table
+.gotTable
 	ldh a, [hMovingBGTilesCounter2]
 	ld de, vTileset tile $14 ; water tile
 	jp AnimateFindPointerInTable
@@ -105,9 +105,9 @@ AnimateWaterBollardTile:
 	ld hl, WaterBollardTilesTable
 	ld a, [wCurMapTileset]
 	and a ; OVERWORLD?
-	jr z, .got_table
+	jr z, .gotTable
 	ld hl, WaterBollardAltTilesTable ; other tilesets have different water tiles
-.got_table
+.gotTable
 	ldh a, [hMovingBGTilesCounter2]
 	ld de, vTileset tile $5e ; water bollard tile
 	jp AnimateFindPointerInTable
