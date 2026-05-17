@@ -528,9 +528,9 @@ CinnabarGymGymGuideText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_BEAT_BLAINE
 	ld hl, .BeatBlaineText
-	jr nz, .beat_blaine
+	jr nz, .beatBlaine
 	ld hl, .ChampInMakingText
-.beat_blaine
+.beatBlaine
 	call PrintText
 	rst TextScriptEnd
 
