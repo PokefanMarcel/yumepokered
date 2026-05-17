@@ -26,10 +26,10 @@ PokemonFanClubPikachuFanText: ; marcelnote - optimized
 	text_asm
 	CheckAndResetEvent EVENT_PIKACHU_FAN_BOAST
 	ld hl, .BetterText
-	jr nz, .mine_is_better
+	jr nz, .mineIsBetter
 	SetEvent EVENT_SEEL_FAN_BOAST
 	ld hl, .NormalText
-.mine_is_better
+.mineIsBetter
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
@@ -45,10 +45,10 @@ PokemonFanClubSeelFanText: ; marcelnote - optimized
 	text_asm
 	CheckAndResetEvent EVENT_SEEL_FAN_BOAST
 	ld hl, .BetterText
-	jr nz, .mine_is_better
+	jr nz, .mineIsBetter
 	SetEvent EVENT_PIKACHU_FAN_BOAST
 	ld hl, .NormalText
-.mine_is_better
+.mineIsBetter
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
@@ -91,24 +91,24 @@ PokemonFanClubChairmanText: ; marcelnote - optimized
 	;call PokemonFanClub_CheckBikeInBag ; marcelnote - seems useless
 	CheckEvent EVENT_GOT_BIKE_VOUCHER
 	ld hl, .FinalText
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, .IntroText
 	call PrintText
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
 	ld hl, .NoStoryText
-	jr nz, .print_text
+	jr nz, .printText
 	; tell the story
 	ld hl, .StoryText
 	call PrintText
 	lb bc, BIKE_VOUCHER, 1
 	call GiveItem
 	ld hl, .BagFullText
-	jr nc, .print_text
+	jr nc, .printText
 	SetEvent EVENT_GOT_BIKE_VOUCHER
 	ld hl, .BikeVoucherText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
