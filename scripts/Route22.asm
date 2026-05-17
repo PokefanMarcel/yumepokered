@@ -25,9 +25,9 @@ Route22MoveRivalRightScript:
 	ld de, Route22RivalMovementData
 	ld a, [wSavedCoordIndex]
 	cp $1
-	jr z, .skip_first_right
+	jr z, .skipFirstRight
 	inc de
-.skip_first_right
+.skipFirstRight
 	call MoveSprite
 	ld a, SPRITE_FACING_RIGHT
 	ldh [hSpriteFacingDirection], a
@@ -94,14 +94,14 @@ Route22Rival1StartBattleScript:
 	ret nz
 	ld a, [wSavedCoordIndex]
 	cp 1 ; index of second, lower entry in Route22DefaultScript.Route22RivalBattleCoords
-	jr nz, .set_rival_facing_right
+	jr nz, .setRivalFacingRight
 	ld a, PLAYER_DIR_DOWN
 	ld [wPlayerMovingDirection], a
 	ld a, SPRITE_FACING_UP
-	jr .set_rival_facing_direction
-.set_rival_facing_right
+	jr .setRivalFacingDirection
+.setRivalFacingRight
 	ld a, SPRITE_FACING_RIGHT
-.set_rival_facing_direction
+.setRivalFacingDirection
 	ldh [hSpriteFacingDirection], a
 	ld a, ROUTE22_RIVAL1
 	ldh [hSpriteIndex], a
@@ -144,12 +144,12 @@ Route22Rival1AfterBattleScript:
 	jp z, Route22SetDefaultScript
 	ld a, [wSpritePlayerStateData1FacingDirection]
 	and a ; cp SPRITE_FACING_DOWN
-	jr nz, .not_facing_down
+	jr nz, .notFacingDown
 	ld a, SPRITE_FACING_UP
-	jr .set_rival_facing
-.not_facing_down
+	jr .setRivalFacing
+.notFacingDown
 	ld a, SPRITE_FACING_RIGHT
-.set_rival_facing
+.setRivalFacing
 	ldh [hSpriteFacingDirection], a
 	ld a, ROUTE22_RIVAL1
 	ldh [hSpriteIndex], a
@@ -166,12 +166,12 @@ Route22Rival1AfterBattleScript:
 	callfar Music_RivalAlternateStart
 	ld a, [wSavedCoordIndex]
 	cp 1 ; index of second, lower entry in Route22DefaultScript.Route22RivalBattleCoords
-	jr nz, .exit_movement_2
+	jr nz, .exitMovement2
 	call .RivalExit1Script
-	jr .next_script
-.exit_movement_2
+	jr .nextScript
+.exitMovement2
 	call .RivalExit2Script
-.next_script
+.nextScript
 	ld a, SCRIPT_ROUTE22_RIVAL1_EXIT
 	ld [wRoute22CurScript], a
 	ret
@@ -257,16 +257,16 @@ Route22Rival2StartBattleScript:
 	ldh [hSpriteIndex], a
 	ld a, [wSavedCoordIndex]
 	cp 1 ; index of second, lower entry in Route22DefaultScript.Route22RivalBattleCoords
-	jr nz, .set_player_direction_left
+	jr nz, .setPlayerDirectionLeft
 	ld a, PLAYER_DIR_DOWN
 	ld [wPlayerMovingDirection], a
 	ld a, SPRITE_FACING_UP
-	jr .set_rival_facing_direction
-.set_player_direction_left
+	jr .setRivalFacingDirection
+.setPlayerDirectionLeft
 	ld a, PLAYER_DIR_LEFT
 	ld [wPlayerMovingDirection], a
 	ld a, SPRITE_FACING_RIGHT
-.set_rival_facing_direction
+.setRivalFacingDirection
 	ldh [hSpriteFacingDirection], a
 	call SetSpriteFacingDirectionAndDelay
 	xor a
@@ -308,16 +308,16 @@ Route22Rival2AfterBattleScript:
 	ldh [hSpriteIndex], a
 	ld a, [wSavedCoordIndex]
 	cp 1 ; index of second, lower entry in Route22DefaultScript.Route22RivalBattleCoords
-	jr nz, .set_player_direction_left
+	jr nz, .setPlayerDirectionLeft
 	ld a, PLAYER_DIR_DOWN
 	ld [wPlayerMovingDirection], a
 	ld a, SPRITE_FACING_UP
-	jr .set_rival_facing_direction
-.set_player_direction_left
+	jr .setRivalFacingDirection
+.setPlayerDirectionLeft
 	ld a, PLAYER_DIR_LEFT
 	ld [wPlayerMovingDirection], a
 	ld a, SPRITE_FACING_RIGHT
-.set_rival_facing_direction
+.setRivalFacingDirection
 	ldh [hSpriteFacingDirection], a
 	call SetSpriteFacingDirectionAndDelay
 	ld a, PAD_CTRL_PAD
@@ -332,12 +332,12 @@ Route22Rival2AfterBattleScript:
 	callfar Music_RivalAlternateStartAndTempo
 	ld a, [wSavedCoordIndex]
 	cp 1 ; index of second, lower entry in Route22DefaultScript.Route22RivalBattleCoords
-	jr nz, .exit_movement_2
+	jr nz, .exitMovement2
 	call .RivalExit1Script
-	jr .next_script
-.exit_movement_2
+	jr .nextScript
+.exitMovement2
 	call .RivalExit2Script
-.next_script
+.nextScript
 	ld a, SCRIPT_ROUTE22_RIVAL2_EXIT
 	ld [wRoute22CurScript], a
 	ret
@@ -386,9 +386,9 @@ Route22Rival1Text: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_BEAT_ROUTE22_RIVAL_1ST_BATTLE
 	ld hl, Route22RivalBeforeBattleText1
-	jr z, .print_text
+	jr z, .printText
 	ld hl, Route22RivalAfterBattleText1
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
@@ -396,9 +396,9 @@ Route22Rival2Text: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_BEAT_ROUTE22_RIVAL_2ND_BATTLE
 	ld hl, Route22RivalBeforeBattleText2
-	jr z, .print_text
+	jr z, .printText
 	ld hl, Route22RivalAfterBattleText2
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
