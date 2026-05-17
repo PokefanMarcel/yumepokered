@@ -70,9 +70,9 @@ ENDC
 	ld a, [wCoordIndex]
 	ld [wSavedCoordIndex], a
 	cp 1 ; index of second, lower entry in .RivalEncounterCoordinates
-	jr z, .full_rival_movement
+	jr z, .fullRivalMovement
 	inc de
-.full_rival_movement
+.fullRivalMovement
 	ld a, SILPHCO7F_RIVAL
 	ldh [hSpriteIndex], a
 	call MoveSprite
@@ -150,9 +150,9 @@ SilphCo7FRivalAfterBattleScript:
 	ld de, .RivalWalkAroundPlayerMovement
 	ld a, [wSavedCoordIndex]
 	cp 1 ; index of second, lower entry in SilphCo7FDefaultScript.RivalEncounterCoordinates
-	jr nz, .walk_around_player
+	jr nz, .walkAroundPlayer
 	ld de, .RivalExitRightMovement
-.walk_around_player
+.walkAroundPlayer
 	ld a, SILPHCO7F_RIVAL
 	ldh [hSpriteIndex], a
 	call MoveSprite
@@ -220,15 +220,15 @@ SilphCo7FSilphWorkerM1Text:
 ; lapras guy
 	text_asm
 	CheckEvent EVENT_GOT_LAPRAS ; marcelnote - now event instead of bit check
-	jr z, .give_lapras
+	jr z, .giveLapras
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
 	ld hl, .SavedText
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, .IsOurPresidentOkText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd
-.give_lapras
+.giveLapras
 	ld hl, .HaveThisPokemonText
 	call PrintText
 	lb bc, LAPRAS, 25 ; marcelnote - changed from 15 to 25
@@ -264,9 +264,9 @@ SilphCo7FSilphWorkerM2Text:
 	text_asm
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
 	ld hl, .CancelledTheMasterBallText
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, .AfterTheMasterBallText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd
 
@@ -282,9 +282,9 @@ SilphCo7FSilphWorkerM3Text:
 	text_asm
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
 	ld hl, .YouChasedOffTeamRocketText
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, .ItWouldBeBadText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd
 
@@ -300,9 +300,9 @@ SilphCo7FSilphWorkerM4Text:
 	text_asm
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
 	ld hl, .SafeAtLastText
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, .ItsReallyDangerousHereText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd
 
