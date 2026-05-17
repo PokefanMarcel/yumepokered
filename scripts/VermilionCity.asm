@@ -68,14 +68,14 @@ VermilionCityDefaultScript:
 	ldh [hTextID], a
 	call DisplayTextID
 	CheckEvent EVENT_SS_ANNE_LEFT
-	jr nz, .cannot_enter
+	jr nz, .cannotEnter
 	ld b, S_S_TICKET
 	;predef GetQuantityOfItemInBag
 	;ld a, b
 	;and a
 	call IsItemInBag
 	ret nz
-	jr .cannot_enter
+	jr .cannotEnter
 .atFerries
 	dec a ; a was 1
 	ldh [hJoyHeld], a
@@ -88,7 +88,7 @@ VermilionCityDefaultScript:
 	ld b, CITRUS_PASS
 	call IsItemInBag
 	ret nz
-.cannot_enter
+.cannotEnter
 	ld a, PAD_UP
 	ld [wSimulatedJoypadStatesEnd], a
 	ld a, $1
@@ -173,9 +173,9 @@ VermilionCityGambler1Text:
 	text_asm
 	CheckEvent EVENT_SS_ANNE_LEFT
 	ld hl, .SSAnneDepartedText
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, .DidYouSeeText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
@@ -191,24 +191,24 @@ VermilionCitySailor1Text: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_SS_ANNE_LEFT
 	ld hl, .ShipSetSailText
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, .inFrontOfOrBehindGuardCoords
 	call ArePlayerCoordsInArray
 	ld hl, .WelcomeToSSAnneText
-	jr c, .print_text
+	jr c, .printText
 	ld a, [wSpritePlayerStateData1FacingDirection]
 	cp SPRITE_FACING_RIGHT
-	jr z, .print_text
+	jr z, .printText
 	ld hl, .DoYouHaveATicketText
 	call PrintText
 	ld b, S_S_TICKET
 	call IsItemInBag
 	ld hl, .YouNeedATicketText
-	jr z, .print_text
+	jr z, .printText
 	ld hl, .FlashedTicketText
 	ld a, SCRIPT_VERMILIONCITY_PLAYER_ALLOWED_TO_PASS
 	ld [wVermilionCityCurScript], a
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
@@ -286,18 +286,18 @@ VermilionCitySailor3Text: ; marcelnote - new for ferry
 	ld hl, .inFrontOfOrBehindGuardCoords
 	call ArePlayerCoordsInArray
 	ld hl, .WelcomeToFerriesText
-	jr c, .print_text
+	jr c, .printText
 	ld a, [wSpritePlayerStateData1FacingDirection]
 	cp SPRITE_FACING_RIGHT
-	jr z, .print_text
+	jr z, .printText
 	ld b, CITRUS_PASS
 	call IsItemInBag
 	ld hl, .YouNeedPassText
-	jr z, .print_text
+	jr z, .printText
 	ld hl, .ShowedPassText
 	ld a, SCRIPT_VERMILIONCITY_PLAYER_ALLOWED_TO_PASS
 	ld [wVermilionCityCurScript], a
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
