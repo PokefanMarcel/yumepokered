@@ -2,9 +2,9 @@ PrepareForSpecialWarp::
 	call LoadSpecialWarpData
 	predef LoadTilesetHeader
 	ld hl, wStatusFlags6
-	bit BIT_FLY_OR_DUNGEON_WARP, [hl]
-	res BIT_FLY_OR_DUNGEON_WARP, [hl]
+	bit BIT_SPECIAL_WARP, [hl]
 	jr z, .debugNewGameWarp
+	res BIT_SPECIAL_WARP, [hl]
 	ld a, [wDestinationMap]
 	jr .next
 .debugNewGameWarp
@@ -52,7 +52,7 @@ LoadSpecialWarpData:
 	bit BIT_DEBUG_MODE, a
 	; warp to wLastMap (PALLET_TOWN) for StartNewGameDebug
 	jr nz, .notNewGameWarp
-	bit BIT_FLY_OR_DUNGEON_WARP, a
+	bit BIT_SPECIAL_WARP, a
 	jr nz, .notNewGameWarp
 	ld hl, NewGameWarp
 .copyWarpData

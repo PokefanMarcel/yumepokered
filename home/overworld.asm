@@ -818,7 +818,7 @@ HandleFlyWarpOrDungeonWarp::
 	ld [wIsInBattle], a
 	ld [wMapPalOffset], a
 	ld hl, wStatusFlags6
-	set BIT_FLY_OR_DUNGEON_WARP, [hl]
+	set BIT_SPECIAL_WARP, [hl]
 	res BIT_ALWAYS_ON_BIKE, [hl]
 	call LeaveMapAnim
 	ld a, BANK(PrepareForSpecialWarp)

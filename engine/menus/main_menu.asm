@@ -123,7 +123,7 @@ MainMenu:
 	xor a
 	ld [wDestinationMap], a
 	ld hl, wStatusFlags6
-	set BIT_FLY_OR_DUNGEON_WARP, [hl]
+	set BIT_SPECIAL_WARP, [hl]
 	call PrepareForSpecialWarp
 	jp SpecialEnterMap
 

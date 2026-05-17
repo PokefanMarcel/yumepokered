@@ -127,7 +127,7 @@ DEF NUM_BADGES EQU const_value
 	const_def
 	const BIT_GAME_TIMER_COUNTING ; 0
 	const BIT_DEBUG_MODE          ; 1
-	const BIT_FLY_OR_DUNGEON_WARP ; 2
+	const BIT_SPECIAL_WARP        ; 2 ; marcelnote - renamed from BIT_FLY_OR_DUNGEON_WARP
 	const BIT_FLY_WARP            ; 3
 	const BIT_DUNGEON_WARP        ; 4
 	const BIT_ALWAYS_ON_BIKE      ; 5
