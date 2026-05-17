@@ -4,7 +4,7 @@ OaksAideScript:
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .answered_no
+	jr nz, .saidNo
 	ld hl, wPokedexOwned
 	ld b, wPokedexOwnedEnd - wPokedexOwned
 	call CountSetBits
@@ -37,7 +37,7 @@ OaksAideScript:
 	call PrintText
 	ld a, OAKS_AIDE_NOT_ENOUGH_MONS
 	jr .loadNextScript
-.answered_no
+.saidNo
 	ld hl, OaksAideComeBackText
 	call PrintText
 	ld a, OAKS_AIDE_REFUSED
