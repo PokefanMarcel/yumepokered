@@ -132,9 +132,9 @@ IndigoPlateauLobbyGymGuideText:
 	text_asm
 	CheckEvent EVENT_BECAME_CHAMPION
 	ld hl, .AfterChampionText
-    jr nz, .is_champion
+    jr nz, .isChampion
 	ld hl, .BeforeChampionText
-.is_champion
+.isChampion
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
@@ -150,9 +150,9 @@ IndigoPlateauLobbyCooltrainerFText: ; marcelnote - modified to say something dif
 	text_asm
 	CheckEvent EVENT_BECAME_CHAMPION
 	ld hl, .AfterChampionText
-    jr nz, .is_champion
+    jr nz, .isChampion
 	ld hl, .BeforeChampionText
-.is_champion
+.isChampion
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
