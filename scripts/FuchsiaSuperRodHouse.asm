@@ -10,21 +10,21 @@ FuchsiaSuperRodHouseFishingGuruText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_SUPER_ROD
 	ld hl, .TryFishingText
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, .DoYouLikeToFishText
 	call PrintText
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
 	ld hl, .ThatsDisappointingText
-	jr nz, .print_text
+	jr nz, .printText
 	lb bc, SUPER_ROD, 1
 	call GiveItem
 	ld hl, .NoRoomText
-	jr nc, .print_text
+	jr nc, .printText
 	SetEvent EVENT_GOT_SUPER_ROD
 	ld hl, .TakeThisText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
