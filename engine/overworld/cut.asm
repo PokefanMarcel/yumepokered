@@ -11,7 +11,6 @@ UsedCut:
 	jr nz, .nothingToCut
 	jr .canCut
 .overworld
-	dec a
 	ld a, [wTileInFrontOfPlayer]
 	cp $3d ; cut tree
 	jr z, .canCut
@@ -58,7 +57,7 @@ UsedCut:
 	call ReplaceTreeTileBlock
 	call RedrawMapView
 	callfar AnimCut
-	ld a, $1
+	ld a, 1
 	ld [wUpdateSpritesEnabled], a
 	ld a, SFX_CUT
 	call PlaySound
@@ -137,7 +136,7 @@ GetCutOrBoulderDustAnimationOffsets:
 	ld a, [hl] ; a holds direction of player (00: down, 04: up, 08: left, 0C: right)
 	srl a
 	ld e, a
-	ld d, $0 ; de holds direction (00: down, 02: up, 04: left, 06: right)
+	ld d, 0 ; de holds direction (00: down, 02: up, 04: left, 06: right)
 	ld a, [wWhichAnimationOffsets]
 	and a
 	ld hl, CutAnimationOffsets
@@ -145,15 +144,12 @@ GetCutOrBoulderDustAnimationOffsets:
 	ld hl, BoulderDustAnimationOffsets
 .next
 	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	ld a, b
-	add d
-	ld b, a
-	ld a, c
-	add e
+	ld a, [hli] ; x offset
+	add c
 	ld c, a
+	ld a, [hl]  ; y offset
+	add b
+	ld b, a
 	ret
 
 CutAnimationOffsets:
