@@ -71,9 +71,9 @@ PCMainMenuHandle: ; marcelnote - revamped Bill's PC, simplified branching below
 	call WaitForSoundToFinish
 	CheckEvent EVENT_MET_BILL
 	ld hl, AccessedBillsPCText
-	jr nz, .got_text ; if you've met bill, use "Bill's" instead of "Someone's"
+	jr nz, .gotText ; if you've met bill, use "Bill's" instead of "Someone's"
 	ld hl, AccessedSomeonesPCText
-.got_text
+.gotText
 	call PrintText
 	callfar BillsPC
 	xor a
