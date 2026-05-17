@@ -6,7 +6,7 @@ PrintLetterDelay:: ; marcelnote - small optimization
 	bit BIT_NO_TEXT_DELAY, a
 	ret nz
 	ld a, [wLetterPrintingDelayFlags]
-	bit BIT_TEXT_DELAY, a
+	bit BIT_LETTER_PRINTING_DELAY, a
 	ret z
 	push hl
 	push de

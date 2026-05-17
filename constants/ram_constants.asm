@@ -50,9 +50,11 @@ DEF SPRITE_STYLE_CRYSTAL EQU %0100 ; 1
 DEF SPRITE_STYLE_GREEN   EQU %1000 ; 2
 
 ; wLetterPrintingDelayFlags
+; BIT_LETTER_PRINTING_DELAY enables the normal per-letter delay.
+; BIT_NO_TEXT_DELAY in wStatusFlags5 can still override this for instant text.
 	const_def
-	const BIT_FAST_TEXT_DELAY ; 0
-	const BIT_TEXT_DELAY      ; 1
+	const BIT_FAST_TEXT_DELAY       ; 0
+	const BIT_LETTER_PRINTING_DELAY ; 1 ; marcelnote - renamed from BIT_TEXT_DELAY
 
 ; wCurMapTileset
 DEF BIT_NO_PREVIOUS_MAP EQU 7

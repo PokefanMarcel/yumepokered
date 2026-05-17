@@ -6637,7 +6637,7 @@ InitBattleCommon:
 	ld hl, wLetterPrintingDelayFlags
 	ld a, [hl]
 	push af
-	res BIT_TEXT_DELAY, [hl] ; no delay
+	res BIT_LETTER_PRINTING_DELAY, [hl] ; no delay
 	callfar InitBattleVariables
 	ld a, [wEnemyMonSpecies2]
 	sub OPP_ID_OFFSET

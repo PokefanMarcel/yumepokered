@@ -324,7 +324,7 @@ ProtectedDelay3::
 TextCommandProcessor::
 	ld a, [wLetterPrintingDelayFlags]
 	push af
-	set BIT_TEXT_DELAY, a
+	set BIT_LETTER_PRINTING_DELAY, a
 	ld e, a
 	ldh a, [hClearLetterPrintingDelayFlags]
 	xor e
