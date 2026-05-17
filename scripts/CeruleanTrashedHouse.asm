@@ -14,9 +14,9 @@ CeruleanTrashedHouseFishingGuruText: ; marcelnote - optimized
 	predef GetQuantityOfItemInBag
 	and b
 	ld hl, .TheyStoleATMText
-	jr z, .no_dig_tm
+	jr z, .noDigTM
 	ld hl, .WhatsLostIsLostText
-.no_dig_tm
+.noDigTM
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
