@@ -402,19 +402,19 @@ ENDC
 	ld [wPseudoItemID], a ; a must be 0 due to above conditional jump
 	ld a, [wCurItem]
 	cp HM01
-	jr nc, .useItem_partyMenu
+	jr nc, .useItemPartyMenu
 	ld hl, UsableItems_CloseMenu
 	;ld de, 1
 	call IsInList
-	jr c, .useItem_closeMenu
+	jr c, .useItemCloseMenu
 	ld a, [wCurItem]
 	ld hl, UsableItems_PartyMenu
 	;ld de, 1
 	call IsInList
-	jr c, .useItem_partyMenu
+	jr c, .useItemPartyMenu
 	call UseItem
 	jp ItemMenuLoop
-.useItem_closeMenu
+.useItemCloseMenu
 	xor a
 	ld [wPseudoItemID], a
 	call UseItem
@@ -426,7 +426,7 @@ ENDC
 	res BIT_PRINT_INFO_BOX, [hl]
 	;;;;;;;;;;
 	jp CloseStartMenu
-.useItem_partyMenu
+.useItemPartyMenu
 	ld a, [wUpdateSpritesEnabled]
 	push af
 	call UseItem
