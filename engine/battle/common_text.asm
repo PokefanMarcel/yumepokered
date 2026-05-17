@@ -17,7 +17,7 @@ PrintBeginningBattleText: ; marcelnote - optimized and removed sound bug in Ghos
 	ld hl, HookedMonAttackedText
 	jr .drawPokeballs
 .trainerBattle
-	ld a, SFX_SILPH_SCOPE
+	ld a, SFX_TRAINER_APPEARED
 	call PlaySound
 	call WaitForSoundToFinish
 	ld c, 20

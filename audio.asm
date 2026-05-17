@@ -58,7 +58,7 @@ INCLUDE "audio/sfx/get_key_item_1.asm"
 
 SECTION "Sound Effects 2", ROMX
 
-INCLUDE "audio/sfx/silph_scope.asm"
+INCLUDE "audio/sfx/trainer_appeared.asm"
 INCLUDE "audio/sfx/ball_toss.asm"
 INCLUDE "audio/sfx/ball_poof.asm"
 INCLUDE "audio/sfx/faint_thud.asm"
