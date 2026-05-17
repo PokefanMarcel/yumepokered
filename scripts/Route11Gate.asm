@@ -24,7 +24,7 @@ Route11Gate2FYoungsterText:
 Route11Gate2FOaksAideText: ; marcelnote - simplified by using wNameBuffer in text
 	text_asm
 	CheckEvent EVENT_GOT_ITEMFINDER
-	jr nz, .got_item
+	jr nz, .gotItem
 	ld a, 30
 	ldh [hOaksAideRequirement], a
 	ld a, ITEMFINDER
@@ -34,12 +34,12 @@ Route11Gate2FOaksAideText: ; marcelnote - simplified by using wNameBuffer in tex
 	predef OaksAideScript
 	ldh a, [hOaksAideResult]
 	dec a ; OAKS_AIDE_GOT_ITEM?
-	jr nz, .no_item
+	jr nz, .noItem
 	SetEvent EVENT_GOT_ITEMFINDER
-.got_item
+.gotItem
 	ld hl, .ItemfinderDescriptionText
 	call PrintText
-.no_item
+.noItem
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .ItemfinderDescriptionText:
