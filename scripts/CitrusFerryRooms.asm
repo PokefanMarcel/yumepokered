@@ -159,27 +159,27 @@ CitrusFerryRoomsScientistText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_FERRY_FOSSIL
 	ld hl, .SoMuchToLearnText
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, .TakeThisText
 	call PrintText
 	ld c, 1
 	ld b, HELIX_FOSSIL
 	CheckEvent EVENT_GOT_DOME_FOSSIL
-	jr nz, .loaded_fossil
+	jr nz, .loadedFossil
 	ld b, DOME_FOSSIL
-.loaded_fossil
+.loadedFossil
 	call GiveItem
 	ld hl, .YouDontHaveSpaceText
-	jr nc, .print_text
+	jr nc, .printText
 	SetEvent EVENT_GOT_FERRY_FOSSIL
 	ld a, TOGGLE_CITRUS_FERRY_ROOMS_FOSSIL
 	ld [wToggleableObjectIndex], a
 	predef HideObjectCont
 	CheckEvent EVENT_GOT_DOME_FOSSIL
 	ld hl, .ReceivedHelixFossilText
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, .ReceivedDomeFossilText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
