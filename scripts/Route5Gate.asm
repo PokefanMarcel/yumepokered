@@ -29,7 +29,7 @@ Route5GateDefaultScript:
 	callfar RemoveGuardDrink
 	ldh a, [hItemToRemoveID]
 	and a
-	jr nz, .have_drink
+	jr nz, .haveDrink
 	ld a, TEXT_ROUTE5GATE_GUARD_GEE_IM_THIRSTY
 	ldh [hTextID], a
 	call DisplayTextID
@@ -37,7 +37,7 @@ Route5GateDefaultScript:
 	ld a, SCRIPT_ROUTE5GATE_PLAYER_MOVING
 	ld [wRoute5GateCurScript], a
 	ret
-.have_drink
+.haveDrink
 	SetEvent EVENT_GAVE_SAFFRON_GUARDS_DRINK
 	ld a, TEXT_ROUTE5GATE_GUARD_GIVE_DRINK
 	ldh [hTextID], a
@@ -71,11 +71,11 @@ Route5Gate_TextPointers:
 SaffronGateGuardText:
 	text_asm
 	CheckEvent EVENT_GAVE_SAFFRON_GUARDS_DRINK
-	jr nz, .thanks_for_drink
+	jr nz, .thanksForDrink
 	callfar RemoveGuardDrink
 	ldh a, [hItemToRemoveID]
 	and a
-	jr nz, .have_drink
+	jr nz, .haveDrink
 	ld hl, SaffronGateGuardGeeImThirstyText
 	call PrintText
 	call Route5GateMovePlayerUpScript
@@ -83,13 +83,13 @@ SaffronGateGuardText:
 	ld [wRoute5GateCurScript], a
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-.have_drink
+.haveDrink
 	ld hl, SaffronGateGuardGiveDrinkText
 	call PrintText
 	SetEvent EVENT_GAVE_SAFFRON_GUARDS_DRINK
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-.thanks_for_drink
+.thanksForDrink
 	ld hl, SaffronGateGuardThanksForTheDrinkText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
