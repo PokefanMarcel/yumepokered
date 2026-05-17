@@ -100,7 +100,7 @@ PokemonTower7FRocketLeaveMovementScript:
 .loop
 	ld a, [hli]
 	cp b
-	jr nz, .inc_and_skip
+	jr nz, .incAndSkip
 	ld a, [hli]
 	cp c
 	jr nz, .skip
@@ -110,7 +110,7 @@ PokemonTower7FRocketLeaveMovementScript:
 	ld a, [wSpriteIndex]
 	ldh [hSpriteIndex], a
 	jp MoveSprite
-.inc_and_skip
+.incAndSkip
 	inc hl
 .skip
 	inc hl
