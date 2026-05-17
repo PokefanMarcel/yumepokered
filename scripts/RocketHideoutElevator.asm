@@ -75,12 +75,12 @@ RocketHideoutElevatorText:
 	text_asm
 	ld b, LIFT_KEY
 	call IsItemInBag
-	jr z, .no_key
+	jr z, .noKey
 	call RocketHideoutElevatorScript
 	ld hl, RocketHideoutElevatorWarpMaps
 	predef DisplayElevatorFloorMenu
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-.no_key
+.noKey
 	ld hl, .AppearsToNeedKeyText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
