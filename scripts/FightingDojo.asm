@@ -59,7 +59,7 @@ FightingDojoKarateMasterPostBattleScript:
 	jp z, FightingDojoResetScripts
 	ld a, [wSavedCoordIndex]
 	and a ; nz if the player was at (4, 3), left of the Karate Master
-	jr z, .already_facing
+	jr z, .alreadyFacing
 	ld a, PLAYER_DIR_RIGHT
 	ld [wPlayerMovingDirection], a
 	ld a, FIGHTINGDOJO_KARATE_MASTER
@@ -67,7 +67,7 @@ FightingDojoKarateMasterPostBattleScript:
 	ld a, SPRITE_FACING_LEFT
 	ldh [hSpriteFacingDirection], a
 	call SetSpriteFacingDirectionAndDelay
-.already_facing
+.alreadyFacing
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	SetEventRange EVENT_BEAT_KARATE_MASTER, EVENT_BEAT_FIGHTING_DOJO_TRAINER_3
@@ -239,19 +239,19 @@ FightingDojoHitmonleePokeBallText:
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .text_script_end
+	jr nz, .textScriptEnd
 	ld a, [wCurPartySpecies]
 	ld b, a
 	ld c, 30
 	call GivePokemon
-	jr nc, .text_script_end
+	jr nc, .textScriptEnd
 
 	; once Poké Ball is taken, hide sprite
 	ld a, TOGGLE_FIGHTING_DOJO_GIFT_1
 	ld [wToggleableObjectIndex], a
 	predef HideObject
 	SetEvents EVENT_GOT_HITMONLEE, EVENT_DEFEATED_FIGHTING_DOJO
-.text_script_end
+.textScriptEnd
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .Text:
