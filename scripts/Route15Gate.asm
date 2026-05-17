@@ -16,7 +16,7 @@ Route15Gate1FGuardText:
 Route15Gate2FOaksAideText: ; marcelnote - simplified by using wNameBuffer in text
 	text_asm
 	CheckEvent EVENT_GOT_EXP_ALL
-	jr nz, .got_item
+	jr nz, .gotItem
 	ld a, 50
 	ldh [hOaksAideRequirement], a
 	ld a, EXP_ALL
@@ -26,14 +26,14 @@ Route15Gate2FOaksAideText: ; marcelnote - simplified by using wNameBuffer in tex
 	predef OaksAideScript
 	ldh a, [hOaksAideResult]
 	dec a ; OAKS_AIDE_GOT_ITEM?
-	jr nz, .no_item
+	jr nz, .noItem
 	SetEvent EVENT_GOT_EXP_ALL
 	ld hl, wStatusFlags1      ; marcelnote - ExpAll can be activated/deactivated
 	set BIT_EXP_ALL_ACTIVE, [hl]
-.got_item
+.gotItem
 	ld hl, .ExpAllText
 	call PrintText
-.no_item
+.noItem
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .ExpAllText:
