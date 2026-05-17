@@ -785,7 +785,7 @@ FaintEnemyPokemon:
 	call ClearScreenArea
 	ld a, [wIsInBattle]
 	dec a
-	jr z, .wild_win
+	jr z, .wildWin
 
 	call WaitForSoundToFinish
 	ld bc, $00
@@ -808,7 +808,7 @@ FaintEnemyPokemon:
 	call PlaySound
 	call WaitForSoundToFinish
 	jr .sfxplayed
-.wild_win
+.wildWin
 	call EndLowHealthAlarm
 	ld a, MUSIC_DEFEATED_WILD_MON
 	call PlayBattleVictoryMusic
@@ -898,20 +898,20 @@ TrainerBattleVictory: ; marcelnote - music choice code was optimized, and added 
 	ld b, MUSIC_DEFEATED_GYM_LEADER
 	ld a, [wGymLeaderNo]
 	and a
-	jr nz, .got_music
+	jr nz, .gotMusic
 	ld a, [wTrainerClass]
 	cp YELLOW
-	jr z, .got_music
+	jr z, .gotMusic
 	cp PROF_OAK
-	jr z, .got_music
+	jr z, .gotMusic
 	cp RIVAL3
 	jr z, .turnOffMapMusic
 	ld b, MUSIC_DEFEATED_TRAINER
-	jr .got_music
+	jr .gotMusic
 .turnOffMapMusic
 	ld hl, wStatusFlags7
 	set BIT_NO_MAP_MUSIC, [hl]
-.got_music
+.gotMusic
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
 	ld a, b
@@ -4553,7 +4553,7 @@ CalculateDamage:
 	ldh a, [hQuotient + 3]
 	add b
 	ldh [hQuotient + 3], a
-	jr nc, .dont_cap_1
+	jr nc, .dontCap1
 
 	ldh a, [hQuotient + 2]
 	inc a
@@ -4561,7 +4561,7 @@ CalculateDamage:
 	and a
 	jr z, .cap
 
-.dont_cap_1
+.dontCap1
 	ldh a, [hQuotient]
 	ld b, a
 	ldh a, [hQuotient + 1]
@@ -4570,7 +4570,7 @@ CalculateDamage:
 
 	ldh a, [hQuotient + 2]
 	cp HIGH(MAX_NEUTRAL_DAMAGE - MIN_NEUTRAL_DAMAGE + 1)
-	jr c, .dont_cap_2
+	jr c, .dontCap2
 
 	cp HIGH(MAX_NEUTRAL_DAMAGE - MIN_NEUTRAL_DAMAGE + 1) + 1
 	jr nc, .cap
@@ -4579,7 +4579,7 @@ CalculateDamage:
 	cp LOW(MAX_NEUTRAL_DAMAGE - MIN_NEUTRAL_DAMAGE + 1)
 	jr nc, .cap
 
-.dont_cap_2
+.dontCap2
 	inc hl
 
 	ldh a, [hQuotient + 3]
@@ -4595,7 +4595,7 @@ CalculateDamage:
 
 	ld a, [hl]
 	cp HIGH(MAX_NEUTRAL_DAMAGE - MIN_NEUTRAL_DAMAGE + 1)
-	jr c, .dont_cap_3
+	jr c, .dontCap3
 
 	cp HIGH(MAX_NEUTRAL_DAMAGE - MIN_NEUTRAL_DAMAGE + 1) + 1
 	jr nc, .cap
@@ -4603,7 +4603,7 @@ CalculateDamage:
 	inc hl
 	ld a, [hld]
 	cp LOW(MAX_NEUTRAL_DAMAGE - MIN_NEUTRAL_DAMAGE + 1)
-	jr c, .dont_cap_3
+	jr c, .dontCap3
 
 .cap
 	ld a, HIGH(MAX_NEUTRAL_DAMAGE - MIN_NEUTRAL_DAMAGE)
@@ -4611,15 +4611,15 @@ CalculateDamage:
 	ld a, LOW(MAX_NEUTRAL_DAMAGE - MIN_NEUTRAL_DAMAGE)
 	ld [hld], a
 
-.dont_cap_3
+.dontCap3
 ; Add back MIN_NEUTRAL_DAMAGE (capping at 999).
 	inc hl
 	ld a, [hl]
 	add MIN_NEUTRAL_DAMAGE
 	ld [hld], a
-	jr nc, .dont_floor
+	jr nc, .dontFloor
 	inc [hl]
-.dont_floor
+.dontFloor
 
 ; Returns nz and nc.
 	ld a, 1
