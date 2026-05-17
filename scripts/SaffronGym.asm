@@ -367,9 +367,9 @@ SaffronGymGymGuideText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_BEAT_SABRINA
 	ld hl, .BeatSabrinaText
-	jr nz, .beat_sabrina
+	jr nz, .beatSabrina
 	ld hl, .ChampInMakingText
-.beat_sabrina
+.beatSabrina
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
