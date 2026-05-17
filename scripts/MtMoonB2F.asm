@@ -9,11 +9,11 @@ MtMoonB2F_Script:
 	ret z
 	ld hl, MtMoonB2FFossilAreaCoords
 	call ArePlayerCoordsInArray
-	jr nc, .enable_battles
+	jr nc, .enableBattles
 	ld hl, wStatusFlags4
 	set BIT_NO_BATTLES, [hl]
 	ret
-.enable_battles
+.enableBattles
 	ld hl, wStatusFlags4
 	res BIT_NO_BATTLES, [hl]
 	ret
@@ -93,13 +93,13 @@ MtMoonB2FMoveSuperNerdScript:
 	call SetSpriteMovementBytesToFF
 	ld hl, MtMoonB2FPlayerNearDomeFossilCoords
 	call ArePlayerCoordsInArray
-	jr c, .player_near_dome_fossil
+	jr c, .playerNearDomeFossil
 	ld hl, MtMoonB2FPlayerNearHelixFossilCoords
 	call ArePlayerCoordsInArray
 	jp nc, CheckFightingMapTrainers
 	ld de, MtMoon3FSuperNerdMoveUpMovementData
 	jr .continue
-.player_near_dome_fossil
+.playerNearDomeFossil
 	ld de, MtMoon3FSuperNerdMoveRightMovementData
 .continue
 	ld a, MTMOONB2F_SUPER_NERD
@@ -182,15 +182,15 @@ MtMoon3TrainerHeader3:
 MtMoonB2FSuperNerdText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_BEAT_MT_MOON_EXIT_SUPER_NERD
-	jr z, .beat_super_nerd
+	jr z, .beatSuperNerd
 	CheckEitherEventSet EVENT_GOT_DOME_FOSSIL, EVENT_GOT_HELIX_FOSSIL, 1
 	ld hl, MtMoonB2FSuperNerdTheresAPokemonLabText
-	jr nz, .got_a_fossil
+	jr nz, .gotAFossil
 	ld hl, MtMoonB2fSuperNerdEachTakeOneText
-.got_a_fossil
+.gotAFossil
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-.beat_super_nerd
+.beatSuperNerd
 	ld hl, MtMoonB2FSuperNerdTheyreBothMineText
 	call PrintText
 	ld hl, wStatusFlags3
