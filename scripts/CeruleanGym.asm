@@ -211,9 +211,9 @@ CeruleanGymGymGuideText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_BEAT_MISTY
 	ld hl, .BeatMistyText
-	jr nz, .beat_misty
+	jr nz, .beatMisty
 	ld hl, .ChampInMakingText
-.beat_misty
+.beatMisty
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
