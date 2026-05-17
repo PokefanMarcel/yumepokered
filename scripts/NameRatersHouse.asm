@@ -16,25 +16,25 @@ NameRatersHouseCheckMonOTScript:
 	call AddNTimes
 	ld de, wPlayerName
 	ld c, NAME_LENGTH
-	call .check_match_loop
-	jr c, .no_match
+	call .checkMatchLoop
+	jr c, .noMatch
 	ld hl, wPartyMon1OTID
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, [wWhichPokemon]
 	call AddNTimes
 	ld de, wPlayerID
 	ld c, $2
-.check_match_loop
+.checkMatchLoop
 	ld a, [de]
 	cp [hl]
-	jr nz, .no_match
+	jr nz, .noMatch
 	inc hl
 	inc de
 	dec c
-	jr nz, .check_match_loop
+	jr nz, .checkMatchLoop
 	and a
 	ret
-.no_match
+.noMatch
 	scf
 	ret
 
@@ -47,7 +47,7 @@ NameRatersHouseNameRaterText:
 	call SaveScreenTilesToBuffer2
 	ld hl, .WantMeToRateText
 	call NameRatersHouseYesNoScript
-	jr nz, .did_not_rename
+	jr nz, .didNotRename
 	ld hl, .WhichPokemonText
 	call PrintText
 	xor a
@@ -60,25 +60,25 @@ NameRatersHouseNameRaterText:
 	call RestoreScreenTilesAndReloadTilePatterns
 	call LoadGBPal
 	pop af
-	jr c, .did_not_rename
+	jr c, .didNotRename
 	call GetPartyMonName2
 	call NameRatersHouseCheckMonOTScript
 	ld hl, .ATrulyImpeccableNameText
-	jr c, .print_text
+	jr c, .printText
 	ld hl, .GiveItANiceNameText
 	call NameRatersHouseYesNoScript
-	jr nz, .did_not_rename
+	jr nz, .didNotRename
 	ld hl, .WhatShouldWeNameItText
 	call PrintText
 	callfar DisplayNameRaterScreen
-	jr c, .did_not_rename
+	jr c, .didNotRename
 	ld hl, .PokemonHasBeenRenamedText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-.did_not_rename
+.didNotRename
 	ld hl, .ComeAnyTimeYouLikeText
-	jr .print_text
+	jr .printText
 
 .WantMeToRateText:
 	text_far _NameRatersHouseNameRaterWantMeToRateText
