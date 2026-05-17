@@ -77,10 +77,10 @@ VermilionGymLTSurgeReceiveTM24Script: ; marcelnote - optimized
 	lb bc, TM_THUNDERBOLT, 1
 	call GiveItem
 	ld a, TEXT_VERMILIONGYM_LT_SURGE_TM24_NO_ROOM
-	jr nc, .bag_full
+	jr nc, .bagFull
 	SetEvent EVENT_GOT_TM24
 	ld a, TEXT_VERMILIONGYM_LT_SURGE_RECEIVED_TM24
-.bag_full
+.bagFull
 	ldh [hTextID], a
 	call DisplayTextID
 	ld hl, wObtainedBadges
@@ -131,17 +131,17 @@ VermilionGymTrainerHeader2:
 VermilionGymLTSurgeText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_BEAT_LT_SURGE
-	jr z, .before_beat
+	jr z, .beforeBeat
 	CheckEventReuseA EVENT_GOT_TM24
-	jr nz, .got_tm24_already
+	jr nz, .gotTM24Already
 	call z, VermilionGymLTSurgeReceiveTM24Script
 	call DisableWaitingAfterTextDisplay
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-.got_tm24_already
+.gotTM24Already
 	ld hl, .PostBattleAdviceText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-.before_beat
+.beforeBeat
 	ld hl, .PreBattleText
 	call PrintText
 	ld hl, wStatusFlags3
@@ -247,9 +247,9 @@ VermilionGymGymGuideText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_BEAT_LT_SURGE
 	ld hl, .BeatLTSurgeText
-	jr nz, .beat_lt_surge
+	jr nz, .beatLtSurge
 	ld hl, .ChampInMakingText
-.beat_lt_surge
+.beatLtSurge
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
