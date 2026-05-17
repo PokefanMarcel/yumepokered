@@ -15,7 +15,7 @@ DrJabarasLabJabaraText:
 	text_asm
 	CheckEvent EVENT_JABARA_RETURNED_FLUTE
 	ld hl, .FinalText
-    jr nz, .print_text
+    jr nz, .printText
     CheckEvent EVENT_JABARA_RUNNING_TESTS
    	jr nz, .runningTests
     CheckEvent EVENT_GAVE_JABARA_FLUTE
@@ -24,7 +24,7 @@ DrJabarasLabJabaraText:
 	call PrintText
 	ld b, POKE_FLUTE
 	call IsItemInBag
-	jr z, .text_script_end
+	jr z, .textScriptEnd
 	ld hl, TextScriptPromptButton
 	call TextCommandProcessor
 	ld hl, .HaveFluteText
@@ -33,7 +33,7 @@ DrJabarasLabJabaraText:
 	ld a, [wCurrentMenuItem]
 	and a
 	ld hl, .RefusedText
-	jr nz, .print_text
+	jr nz, .printText
 	ld a, POKE_FLUTE
 	ldh [hItemToRemoveID], a
 	callfar RemoveItemByID
@@ -43,9 +43,9 @@ DrJabarasLabJabaraText:
 	call PrintText
 .runningTests
 	ld hl, .NeedTimeText
-.print_text
+.printText
 	call PrintText
-.text_script_end
+.textScriptEnd
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .gaveFlute
 	ld hl, .ExperimentsOverText
@@ -53,10 +53,10 @@ DrJabarasLabJabaraText:
 	lb bc, POKE_FLUTE, 1
 	call GiveItem
 	ld hl, .NoRoomText
-	jr nc, .print_text
+	jr nc, .printText
 	SetEvent EVENT_JABARA_RETURNED_FLUTE
 	ld hl, .ReturnedFluteText
-	jr .print_text
+	jr .printText
 
 .IntroText:
 	text_far _DrJabarasLabJabaraIntroText
@@ -106,11 +106,11 @@ DrJabarasLabEmailsText:
 	text_asm
 	ld hl, .ReceivedEmailText
     CheckEvent EVENT_GAVE_JABARA_FLUTE ; Checkevent does not use hl
-    jr z, .print_text
+    jr z, .printText
     CheckEvent EVENT_JABARA_RUNNING_TESTS
-    jr nz, .print_text
+    jr nz, .printText
     ld hl, .EmailDraftText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
