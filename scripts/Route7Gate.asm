@@ -35,7 +35,7 @@ Route7DefaultScript:
 	callfar RemoveGuardDrink
 	ldh a, [hItemToRemoveID]
 	and a
-	jr nz, .have_drink
+	jr nz, .haveDrink
 	ld a, TEXT_ROUTE7GATE_GUARD_GEE_IM_THIRSTY
 	ldh [hTextID], a
 	call DisplayTextID
@@ -43,7 +43,7 @@ Route7DefaultScript:
 	ld a, SCRIPT_ROUTE7GATE_PLAYER_MOVING
 	ld [wRoute7GateCurScript], a
 	ret
-.have_drink
+.haveDrink
 	SetEvent EVENT_GAVE_SAFFRON_GUARDS_DRINK
 	ld a, TEXT_ROUTE7GATE_GUARD_GIVE_DRINK
 	ldh [hTextID], a
