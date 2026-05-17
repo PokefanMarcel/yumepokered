@@ -34,7 +34,7 @@ Route8GateDefaultScript:
 	callfar RemoveGuardDrink
 	ldh a, [hItemToRemoveID]
 	and a
-	jr nz, .have_drink
+	jr nz, .haveDrink
 	ld a, TEXT_ROUTE8GATE_GUARD_GEE_IM_THIRSTY
 	ldh [hTextID], a
 	call DisplayTextID
@@ -42,7 +42,7 @@ Route8GateDefaultScript:
 	ld a, SCRIPT_ROUTE8GATE_PLAYER_MOVING
 	ld [wRoute8GateCurScript], a
 	ret
-.have_drink
+.haveDrink
 	SetEvent EVENT_GAVE_SAFFRON_GUARDS_DRINK
 	ld a, TEXT_ROUTE8GATE_GUARD_GIVE_DRINK
 	ldh [hTextID], a
