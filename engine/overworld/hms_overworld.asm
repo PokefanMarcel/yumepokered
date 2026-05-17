@@ -231,9 +231,9 @@ WantToSurfText::
 ;	ld a, SURF ; marcelnote - code here can be uncommented for SURFBOARD
 ;	call IsMoveInParty ; probably a better way to do this since we already checked
 	ld hl, SurfingGotOnText
-;	jr nz, .print_text
+;	jr nz, .printText
 ;	ld hl, GotOnSurfboardText
-;.print_text
+;.printText
 	call PrintText
 .saidNo
 	rst TextScriptEnd
