@@ -47,12 +47,12 @@ ENDC
 	ld [wJoyIgnore], a
 	ldh a, [hSavedCoordIndex]
 	cp $2
-	jr nz, .player_standing_right
+	jr nz, .playerStandingRight
 	ld de, .RivalDownFourMovement
-	jr .move_sprite
-.player_standing_right
+	jr .moveSprite
+.playerStandingRight
 	ld de, .RivalDownThreeMovement
-.move_sprite
+.moveSprite
 	call MoveSprite
 	ld a, SCRIPT_SSANNE2F_RIVAL_START_BATTLE
 	ld [wSSAnne2FCurScript], a
@@ -74,14 +74,14 @@ ENDC
 SSAnne2FSetFacingDirectionScript:
 	ld a, [wXCoord]
 	cp 37
-	jr nz, .player_standing_left
+	jr nz, .playerStandingLeft
 	ld a, PLAYER_DIR_LEFT
 	ld [wPlayerMovingDirection], a
 	ld a, SPRITE_FACING_RIGHT
-	jr .set_facing_direction
-.player_standing_left
+	jr .setFacingDirection
+.playerStandingLeft
 	xor a ; SPRITE_FACING_DOWN
-.set_facing_direction
+.setFacingDirection
 	ldh [hSpriteFacingDirection], a
 	ld a, SSANNE2F_RIVAL
 	ldh [hSpriteIndex], a
@@ -134,12 +134,12 @@ SSAnne2FRivalAfterBattleScript:
 	call SetSpriteMovementBytesToFF
 	ld a, [wXCoord]
 	cp 37
-	jr nz, .player_standing_left
+	jr nz, .playerStandingLeft
 	ld de, .RivalDownFourMovement
-	jr .move_sprite
-.player_standing_left
+	jr .moveSprite
+.playerStandingLeft
 	ld de, .RivalWalkAroundPlayerMovement
-.move_sprite
+.moveSprite
 	ld a, SSANNE2F_RIVAL
 	ldh [hSpriteIndex], a
 	call MoveSprite
