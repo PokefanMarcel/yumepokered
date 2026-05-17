@@ -71,16 +71,16 @@ CeladonMart3FClerkText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_TM18
 	ld hl, .TM18ExplanationText
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, .TM18PreReceiveText
 	call PrintText
 	lb bc, TM_COUNTER, 1
 	call GiveItem
 	ld hl, .TM18NoRoomText
-	jr nc, .print_text
+	jr nc, .printText
 	SetEvent EVENT_GOT_TM18
 	ld hl, .ReceivedTM18Text
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
