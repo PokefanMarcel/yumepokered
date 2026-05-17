@@ -237,34 +237,34 @@ IF DEF(_DEBUG)
 	; Get some debug items.
 	ld hl, wNumBagItems
 	ld de, DebugNewGameItemsList
-.items_loop
+.itemsLoop
 	ld a, [de]
 	cp -1
-	jr z, .items_end
+	jr z, .itemsEnd
 	ld [wCurItem], a
 	inc de
 	ld a, [de]
 	inc de
 	ld [wItemQuantity], a
 	call AddItemToInventory
-	jr .items_loop
-.items_end
+	jr .itemsLoop
+.itemsEnd
 
 	; Get some more debug items. ; marcelnote - new for Key items pocket
 	ld hl, wNumBagKeyItems
 	ld de, DebugKeyItemsList
-.key_items_loop
+.keyItemsLoop
 	ld a, [de]
 	cp -1
-	jr z, .key_items_end
+	jr z, .keyItemsEnd
 	ld [wCurItem], a
 	inc de
 	ld a, [de]
 	inc de
 	ld [wItemQuantity], a
 	call AddItemToInventory
-	jr .key_items_loop
-.key_items_end
+	jr .keyItemsLoop
+.keyItemsEnd
 
 	; Complete the Pokédex.
 	ld hl, wPokedexOwned
