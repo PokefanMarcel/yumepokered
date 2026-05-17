@@ -13,38 +13,38 @@ WardensHouseWardenText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_HM04
 	ld hl, .HM04ExplanationText
-	jr nz, .print_text
+	jr nz, .printText
 	ld b, GOLD_TEETH
 	call IsItemInBag
-	jr nz, .have_gold_teeth
+	jr nz, .haveGoldTeeth
 	CheckEvent EVENT_GAVE_GOLD_TEETH
-	jr nz, .gave_gold_teeth
+	jr nz, .gaveGoldTeeth
 	ld hl, .Gibberish1Text
 	call PrintText
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
 	ld hl, .Gibberish3Text
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, .Gibberish2Text
-	jr .print_text
-.have_gold_teeth
+	jr .printText
+.haveGoldTeeth
 	ld hl, .GaveTheGoldTeethText
 	call PrintText
 	ld a, GOLD_TEETH
 	ldh [hItemToRemoveID], a
 	callfar RemoveItemByID
 	SetEvent EVENT_GAVE_GOLD_TEETH
-.gave_gold_teeth
+.gaveGoldTeeth
 	ld hl, .ThanksText
 	call PrintText
 	lb bc, HM_STRENGTH, 1
 	call GiveItem
 	ld hl, .HM04NoRoomText
-	jr nc, .print_text
+	jr nc, .printText
 	SetEvent EVENT_GOT_HM04
 	ld hl, .ReceivedHM04Text
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
@@ -90,9 +90,9 @@ WardensHouseDisplayText:
 	ldh a, [hTextID]
 	cp TEXT_WARDENSHOUSE_DISPLAY_LEFT
 	ld hl, .MerchandiseText
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, .PhotosAndFossilsText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
