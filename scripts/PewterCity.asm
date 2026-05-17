@@ -260,9 +260,9 @@ PewterCitySuperNerd2Text: ; marcelnote - optimized
 	ld a, [wCurrentMenuItem]
 	cp 0
 	ld hl, .ImSprayingRepelText
-	jr nz, .answered_no
+	jr nz, .saidNo
 	ld hl, .ThatsRightText
-.answered_no
+.saidNo
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
