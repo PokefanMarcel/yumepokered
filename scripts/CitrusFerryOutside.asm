@@ -115,9 +115,9 @@ CitrusFerryOutsideGrampsText:
 	ld a, [wCurrentMenuItem]
 	and a
 	ld hl, .NotEasilyToldText
-	jr z, .answered_no
+	jr z, .saidNo
 	ld hl, .StoryText
-.answered_no
+.saidNo
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
