@@ -150,18 +150,18 @@ MandarinIslandSailorFerriesText:
 	ld hl, .inFrontOfOrBehindGuardCoords
 	call ArePlayerCoordsInArray
 	ld hl, .WelcomeToFerriesText
-	jr c, .print_text
+	jr c, .printText
 	ld a, [wSpritePlayerStateData1FacingDirection]
 	cp SPRITE_FACING_RIGHT
-	jr z, .print_text
+	jr z, .printText
 	ld b, CITRUS_PASS
 	call IsItemInBag
 	ld hl, .YouNeedPassText
-	jr z, .print_text
+	jr z, .printText
 	ld hl, .ShowedPassText
 	ld a, SCRIPT_MANDARINISLAND_PLAYER_ALLOWED_TO_PASS
 	ld [wMandarinIslandCurScript], a
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
