@@ -153,11 +153,11 @@ PalletTownOakText: ; marcelnote - optimized
 	ld a, [wOakWalkedToPlayer]
 	and a
 	ld hl, .ItsUnsafeText
-	jr nz, .print_text
+	jr nz, .printText
 	ld a, 1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	ld hl, .HeyWaitDontGoOutText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
