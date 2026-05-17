@@ -20,30 +20,30 @@ SilphCo11GateCoords:
 
 SilphCo11FTeamRocketLeavesScript:
 	ld hl, .HideToggleableObjectIDs
-.hide_loop
+.hideLoop
 	ld a, [hli]
 	cp $ff
-	jr z, .done_hiding
+	jr z, .doneHiding
 	push hl
 	ld [wToggleableObjectIndex], a
 	predef HideObject
 	pop hl
-	jr .hide_loop
-.done_hiding
+	jr .hideLoop
+.doneHiding
 	ld hl, .ShowToggleableObjectIDs
-.show_loop
+.showLoop
 	ld a, [hli]
 	cp -1
-	jr z, .done_showing ; marcelnote - was ret z, now need to deal with second hiding list
+	jr z, .doneShowing ; marcelnote - was ret z, now need to deal with second hiding list
 	push hl
 	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont ; marcelnote - changed from ShowObject because moved to second list
 	pop hl
-	jr .show_loop
+	jr .showLoop
 ; marcelnote - this new code below deals with second Hide list
-.done_showing
+.doneShowing
 	ld hl, .HideToggleableObjectIDsCont
-.hide_loop_again
+.hideLoopAgain
 	ld a, [hli]
 	cp -1
 	ret z
@@ -51,7 +51,7 @@ SilphCo11FTeamRocketLeavesScript:
 	ld [wToggleableObjectIndex], a
 	predef HideObjectCont ; marcelnote - changed from ShowObject because moved to second list
 	pop hl
-	jr .hide_loop_again
+	jr .hideLoopAgain
 
 .ShowToggleableObjectIDs:
 	db TOGGLE_SAFFRON_CITY_8
@@ -175,11 +175,11 @@ SilphCo11FGiovanniAfterBattleScript:
 	jp z, SilphCo11FResetCurScript
 	ld a, [wSavedCoordIndex]
 	cp 1 ; index of second, upper-right entry in SilphCo11FDefaultScript.PlayerCoordsArray
-	jr z, .face_player_up
+	jr z, .facePlayerUp
 	ld a, PLAYER_DIR_LEFT
 	ld b, SPRITE_FACING_RIGHT
 	jr .continue
-.face_player_up
+.facePlayerUp
 	ld a, PLAYER_DIR_UP
 	ld b, SPRITE_FACING_DOWN
 .continue
@@ -256,16 +256,16 @@ SilphCo11FSilphPresidentText:
 	text_asm
 	CheckEvent EVENT_GOT_MASTER_BALL
 	ld hl, .MasterBallDescriptionText
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, .ThankYouText
 	call PrintText
 	lb bc, MASTER_BALL, 1
 	call GiveItem
 	ld hl, .NoRoomText
-	jr nc, .print_text
+	jr nc, .printText
 	SetEvent EVENT_GOT_MASTER_BALL
 	ld hl, .ReceivedMasterBallText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd
 
