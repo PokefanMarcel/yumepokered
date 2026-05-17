@@ -20,10 +20,10 @@ ViridianCityCheckGymOpenScript:
 	ret nz
 	ld a, [wObtainedBadges]
 	cp ~(1 << BIT_EARTHBADGE)
-	jr nz, .gym_closed
+	jr nz, .gymClosed
 	SetEvent EVENT_VIRIDIAN_GYM_OPEN
 	ret
-.gym_closed
+.gymClosed
 	ld a, [wYCoord]
 	cp 8
 	ret nz
@@ -153,13 +153,13 @@ ViridianCityGambler1Text: ; marcelnote - reorganized for new text
 	text_asm
 	CheckEvent EVENT_BEAT_VIRIDIAN_GYM_GIOVANNI
 	ld hl, .GymLeaderWasBossText
-	jr nz, .print_text
+	jr nz, .printText
 	ld a, [wObtainedBadges]
 	cp ~(1 << BIT_EARTHBADGE) ; checks whether got all other badges
 	ld hl, .GymLeaderReturnedText
-	jr z, .print_text
+	jr z, .printText
 	ld hl, .GymAlwaysClosedText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
@@ -183,9 +183,9 @@ ViridianCityYoungster2Text: ; marcelnote - optimized
 	ld a, [wCurrentMenuItem]
 	and a
 	ld hl, .OkThenText
-	jr nz, .answered_no
+	jr nz, .saidNo
 	ld hl, .CaterpieAndWeedleDescriptionText
-.answered_no
+.saidNo
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
@@ -205,9 +205,9 @@ ViridianCityGirlText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_POKEDEX
 	ld hl, .WhenIGoShopText
-	jr nz, .got_pokedex
+	jr nz, .gotPokedex
 	ld hl, .HasntHadHisCoffeeYetText
-.got_pokedex
+.gotPokedex
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
@@ -236,16 +236,16 @@ ViridianCityFisherText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_TM42
 	ld hl, .TM42ExplanationText
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, .YouCanHaveThisText
 	call PrintText
 	lb bc, TM_DREAM_EATER, 1
 	call GiveItem
 	ld hl, .TM42NoRoomText
-	jr nc, .print_text
+	jr nc, .printText
 	SetEvent EVENT_GOT_TM42
 	ld hl, .ReceivedTM42Text
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
