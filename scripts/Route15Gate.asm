@@ -34,7 +34,7 @@ Route15Gate2FOaksAideText: ; marcelnote - simplified by using wNameBuffer in tex
 	ld hl, .ExpAllText
 	call PrintText
 .noItem
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .ExpAllText:
 	text_far _Route15Gate2FOaksAideExpAllText

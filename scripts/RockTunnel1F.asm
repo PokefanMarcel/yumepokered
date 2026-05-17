@@ -78,7 +78,7 @@ RockTunnel1FCooltrainerF3Text:
 	ld hl, RockTunnel1TrainerHeader6
 RockTunnel1FTalkToTrainer:
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 RockTunnel1FHiker1BattleText:
 	text_far _RockTunnel1FHiker1BattleText
@@ -199,11 +199,11 @@ RockTunnel1FBlackbeltText:    ; marcelnote - added Blackbelt
 	call PrintText
 	callfar EvolveMonInteraction    ; actual evolution and map reloading
 .done
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .flashOn
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .IntroText:
 	text_far _RockTunnel1FBlackbeltIntroText

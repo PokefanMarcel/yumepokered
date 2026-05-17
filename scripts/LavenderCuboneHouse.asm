@@ -12,7 +12,7 @@ LavenderCuboneHouseCuboneText:
 	text_asm
 	ld a, CUBONE
 	call PlayCry
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 LavenderCuboneHouseBrunetteGirlText: ; marcelnote - optimized
 	text_asm
@@ -22,7 +22,7 @@ LavenderCuboneHouseBrunetteGirlText: ; marcelnote - optimized
 	ld hl, .PoorCubonesMotherText
 .rescuedMrFuji
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .PoorCubonesMotherText:
 	text_far _LavenderCuboneHouseBrunetteGirlPoorCubonesMotherText

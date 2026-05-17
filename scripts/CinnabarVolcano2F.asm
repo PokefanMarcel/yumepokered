@@ -91,7 +91,7 @@ CinnabarVolcano2FMoltresText:
 	text_asm
 	ld hl, MoltresTrainerHeader
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 CinnabarVolcano2FMoltresBattleText:
 	text_far _CinnabarVolcano2FMoltresBattleText
@@ -99,7 +99,7 @@ CinnabarVolcano2FMoltresBattleText:
 	ld a, MOLTRES
 	call PlayCry
 	call WaitForSoundToFinish
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 CinnabarVolcano2FSignText:
 	text_far _CinnabarVolcano2FSignText

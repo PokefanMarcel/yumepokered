@@ -47,7 +47,7 @@ LavenderMartCooltrainerMText: ; marcelnote - optimized
 	ld hl, .ReviveText
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .ReviveText
 	text_far _LavenderMartCooltrainerMReviveText

@@ -19,7 +19,7 @@ MrFujisHouseSuperNerdText: ; marcelnote - optimized
 	ld hl, .MrFujiIsntHereText
 .rescuedMrFuji
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .MrFujiIsntHereText:
 	text_far _MrFujisHouseSuperNerdMrFujiIsntHereText
@@ -37,7 +37,7 @@ MrFujisHouseLittleGirlText: ; marcelnote - optimized
 	ld hl, .ThisIsMrFujisHouseText
 .rescuedMrFuji
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .ThisIsMrFujisHouseText:
 	text_far _MrFujisHouseLittleGirlThisIsMrFujisHouseText
@@ -52,14 +52,14 @@ MrFujisHousePsyduckText:
 	text_asm
 	ld a, PSYDUCK
 	call PlayCry
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 MrFujisHouseNidorinoText:
 	text_far _MrFujisHouseNidorinoText
 	text_asm
 	ld a, NIDORINO
 	call PlayCry
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 MrFujisHouseMrFujiText: ; marcelnote - optimized and added Citrus pass dialogue
 	text_asm
@@ -103,7 +103,7 @@ MrFujisHouseMrFujiText: ; marcelnote - optimized and added Citrus pass dialogue
 	ld hl, .ReceivedPokeFluteText
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .IThinkThisMayHelpYourQuestText:
 	text_far _MrFujisHouseMrFujiIThinkThisMayHelpYourQuestText

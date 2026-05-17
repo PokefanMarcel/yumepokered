@@ -139,43 +139,43 @@ Route23Guard1Text:
 	text_asm
 	EventFlagBit a, EVENT_PASSED_EARTHBADGE_CHECK, EVENT_PASSED_CASCADEBADGE_CHECK
 	call Route23CheckForBadgeScript
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route23Guard2Text:
 	text_asm
 	EventFlagBit a, EVENT_PASSED_VOLCANOBADGE_CHECK, EVENT_PASSED_CASCADEBADGE_CHECK
 	call Route23CheckForBadgeScript
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route23Swimmer1Text:
 	text_asm
 	EventFlagBit a, EVENT_PASSED_MARSHBADGE_CHECK, EVENT_PASSED_CASCADEBADGE_CHECK
 	call Route23CheckForBadgeScript
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route23Swimmer2Text:
 	text_asm
 	EventFlagBit a, EVENT_PASSED_SOULBADGE_CHECK, EVENT_PASSED_CASCADEBADGE_CHECK
 	call Route23CheckForBadgeScript
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route23Guard3Text:
 	text_asm
 	EventFlagBit a, EVENT_PASSED_RAINBOWBADGE_CHECK, EVENT_PASSED_CASCADEBADGE_CHECK
 	call Route23CheckForBadgeScript
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route23Guard4Text:
 	text_asm
 	EventFlagBit a, EVENT_PASSED_THUNDERBADGE_CHECK, EVENT_PASSED_CASCADEBADGE_CHECK
 	call Route23CheckForBadgeScript
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route23Guard5Text:
 	text_asm
 	EventFlagBit a, EVENT_PASSED_CASCADEBADGE_CHECK
 	call Route23CheckForBadgeScript
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route23CheckForBadgeScript:
 	ld [wWhichBadge], a
@@ -217,7 +217,7 @@ Route23YouDontHaveTheBadgeYetText:
 	ld a, SFX_DENIED
 	call PlaySoundWaitForCurrent
 	call WaitForSoundToFinish
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route23OhThatIsTheBadgeText:
 	text_far _Route23OhThatIsTheBadgeText

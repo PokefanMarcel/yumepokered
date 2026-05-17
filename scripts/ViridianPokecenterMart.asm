@@ -123,11 +123,11 @@ ViridianMartClerkText: ; marcelnote - moved Mart inventories
 	call ViridianMartClerkDialogue
 ;	ld hl, .NormalClerkText
 ;	call TextCommandProcessor
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .NoPokedex
 	ld hl, .SayHiToOakText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .SayHiToOakText:
 	text_far _ViridianMartClerkSayHiToOakText

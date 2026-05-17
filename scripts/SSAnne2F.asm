@@ -195,7 +195,7 @@ SSAnne2FRivalText:
 	ld hl, SSAnne2FRivalDefeatedText
 	ld de, SSAnne2FRivalVictoryText
 	call SaveEndBattleTextPointers
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text:
 	text_far _SSAnne2FRivalText

@@ -48,44 +48,44 @@ SSAnneB1FRoomsSailor1Text:
 	text_asm
 	ld hl, SSAnneB1FTrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SSAnneB1FRoomsSailor2Text:
 	text_asm
 	ld hl, SSAnneB1FTrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SSAnneB1FRoomsSailor3Text:
 	text_asm
 	ld hl, SSAnneB1FTrainerHeader2
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SSAnneB1FRoomsSailor4Text:
 	text_asm
 	ld hl, SSAnneB1FTrainerHeader3
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SSAnneB1FRoomsSailor5Text:
 	text_asm
 	ld hl, SSAnneB1FTrainerHeader4
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SSAnneB1FRoomsFisherText:
 	text_asm
 	ld hl, SSAnneB1FTrainerHeader5
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SSAnneB1FRoomsMachokeText:
 	text_far _SSAnneB1FRoomsMachokeText
 	text_asm
 	ld a, MACHOKE
 	call PlayCry
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SSAnneB1FRoomsSailor1BattleText:
 	text_far _SSAnneB1FRoomsSailor1BattleText

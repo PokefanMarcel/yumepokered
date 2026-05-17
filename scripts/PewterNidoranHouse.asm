@@ -13,7 +13,7 @@ PewterNidoranHouseNidoranText:
 	ld a, NIDORAN_M
 	call PlayCry
 	call WaitForSoundToFinish
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 PewterNidoranHouseLittleBoyText:
 	text_far _PewterNidoranHouseLittleBoyText

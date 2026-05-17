@@ -92,7 +92,7 @@ Route6GateOaksAideText: ; marcelnote - new for PokéBeeper
 	ld hl, .PokeBeeperExplanationText
 	call PrintText
 .noItem
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .PokeBeeperExplanationText:
 	text_far _Route6GateOaksAidePokeBeeperExplanationText

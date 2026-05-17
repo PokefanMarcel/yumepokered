@@ -30,7 +30,7 @@ CopycatsHouse1FChanseyText:
 	text_asm
 	ld a, CHANSEY
 	call PlayCry
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 
 CopycatsHouse2FCopycatText: ; marcelnote - optimized
@@ -59,7 +59,7 @@ CopycatsHouse2FCopycatText: ; marcelnote - optimized
 .printText
 	call PrintText
 .textScriptEnd
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .DoYouLikePokemonText:
 	text_far _CopycatsHouse2FCopycatDoYouLikePokemonText
@@ -109,7 +109,7 @@ CopycatsHouse2FPCText: ; marcelnote - simplified because can only be seen from b
 ;	ld hl, .MySecretsText
 ;.notUp
 ;	call PrintText
-;	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+;	rst TextScriptEnd
 
 ;.MySecretsText:
 ;	text_far _CopycatsHouse2FPCMySecretsText

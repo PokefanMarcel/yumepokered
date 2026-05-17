@@ -70,7 +70,7 @@ CinnabarLabTradeRoomBeautyText:
 	ld [wWhichTrade], a
 CinnabarLabTradeRoomDoTrade:
 	predef DoInGameTradeDialogue
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 
 CinnabarLabMetronomeRoomScientist1Text: ; marcelnote - optimized
@@ -88,7 +88,7 @@ CinnabarLabMetronomeRoomScientist1Text: ; marcelnote - optimized
 	ld hl, .ReceivedTM35Text
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text:
 	text_far _CinnabarLabMetronomeRoomScientist1Text
@@ -172,7 +172,7 @@ CinnabarLabFossilRoomScientist1Text: ; marcelnote - optimized
 	ld hl, .NoFossilsText
 	jr z, .printText
 	callfar GiveFossilToCinnabarLab
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .checkDoneReviving
 	CheckEventAfterBranchReuseA EVENT_LAB_STILL_REVIVING_FOSSIL, EVENT_GAVE_FOSSIL_TO_LAB
 	jr z, .doneReviving
@@ -180,7 +180,7 @@ CinnabarLabFossilRoomScientist1Text: ; marcelnote - optimized
 .printText
 	call PrintText
 .textScriptEnd
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .doneReviving
 	call LoadFossilItemAndMonNameBank1D
 	ld hl, .FossilIsBackToLifeText
@@ -192,7 +192,7 @@ CinnabarLabFossilRoomScientist1Text: ; marcelnote - optimized
 	call GivePokemon
 	jr nc, .textScriptEnd
 	ResetEvents EVENT_GAVE_FOSSIL_TO_LAB, EVENT_LAB_STILL_REVIVING_FOSSIL, EVENT_LAB_HANDING_OVER_FOSSIL_MON
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text:
 	text_far _CinnabarLabFossilRoomScientist1Text
@@ -215,7 +215,7 @@ CinnabarLabFossilRoomScientist2Text:
 	ld a, TRADE_FOR_SAILOR
 	ld [wWhichTrade], a
 	predef DoInGameTradeDialogue
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 LoadFossilItemAndMonNameBank1D:
 	jpfar LoadFossilItemAndMonName

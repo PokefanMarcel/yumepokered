@@ -133,7 +133,7 @@ BrunosRoomBrunoText:
 	text_asm
 	ld hl, BrunosRoomTrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 BrunosRoomBrunoBeforeBattleText: ; marcelnote - added map name to text label
 	text_far _BrunosRoomBrunoBeforeBattleText
@@ -156,7 +156,7 @@ BrunosRoomBrunoRematchText:
 	text_asm
 	ld hl, BrunosRoomTrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 BrunosRoomBrunoRematchBeforeBattleText:
 	text_far _BrunosRoomBrunoRematchBeforeBattleText

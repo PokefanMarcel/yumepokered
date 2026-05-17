@@ -20,7 +20,7 @@ MrPsychicsHouseMrPsychicText: ; marcelnote - optimized
 	ld hl, .ReceivedTM29Text
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .YouWantedThisText:
 	text_far _MrPsychicsHouseMrPsychicYouWantedThisText

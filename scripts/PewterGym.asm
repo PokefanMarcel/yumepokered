@@ -124,11 +124,11 @@ PewterGymBrockText:
 	jr nz, .afterBeat
 	call z, PewterGymScriptReceiveTM34
 	call DisableWaitingAfterTextDisplay
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .afterBeat
 	ld hl, .PostBattleAdviceText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .beforeBeat
 	ld hl, .PreBattleText
 	call PrintText
@@ -149,7 +149,7 @@ PewterGymBrockText:
 	ld a, SCRIPT_PEWTERGYM_BROCK_POST_BATTLE
 	ld [wPewterGymCurScript], a
 	ld [wCurMapScript], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .PreBattleText:
 	text_far _PewterGymBrockPreBattleText
@@ -183,7 +183,7 @@ PewterGymCooltrainerMText:
 	text_asm
 	ld hl, PewterGymTrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 PewterGymCooltrainerMBattleText:
 	text_far _PewterGymCooltrainerMBattleText
@@ -215,7 +215,7 @@ PewterGymGuideText: ; marcelnote - optimized
 	ld hl, PewterGymGuideAdviceText
 .beatBrock
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 PewterGymGuidePreAdviceText:
 	text_far _PewterGymGuidePreAdviceText
@@ -244,7 +244,7 @@ PewterGymBrockRematchText: ; marcelnote - Brock rematch
 	jr z, .beforeBeat
 	ld hl, PewterGymAfterRematchText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .beforeBeat
 	ld hl, .PreBattleText
 	call PrintText
@@ -271,11 +271,11 @@ PewterGymBrockRematchText: ; marcelnote - Brock rematch
 	ld a, SCRIPT_PEWTERGYM_BROCK_REMATCH_POST_BATTLE
 	ld [wPewterGymCurScript], a
 	ld [wCurMapScript], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .refused
 	ld hl, .RefusedBattleText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .PreBattleText:
 	text_far _PewterGymBrockRematchPreBattleText

@@ -263,7 +263,7 @@ CeruleanCityRivalText:
 	ld hl, .PreBattleText
 	call PrintText
 .end
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .PreBattleText:
 	text_far _CeruleanCityRivalPreBattleText
@@ -299,7 +299,7 @@ CeruleanCityRocketText:
 	call InitBattleEnemyParameters
 	ld a, SCRIPT_CERULEANCITY_ROCKET_DEFEATED
 	ld [wCeruleanCityCurScript], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .beatRocketThief
 	ld hl, .IllReturnTheTMText
 	call PrintText
@@ -308,7 +308,7 @@ CeruleanCityRocketText:
 	jr c, .itemReceived
 	ld hl, .TM28NoRoomText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .itemReceived
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
@@ -325,7 +325,7 @@ CeruleanCityRocketText:
 	ld [wToggleableObjectIndex], a
 	predef HideObject
 	call GBFadeInFromBlack
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text:
 	text_far _CeruleanCityRocketText
@@ -379,7 +379,7 @@ CeruleanCityCooltrainerF1Text: ; marcelnote - optimized and modified probs sligh
 	ld hl, .SlowbroWithdrawText
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .SlowbroUseSonicboomText:
 	text_far _CeruleanCityCooltrainerF1SlowbroUseSonicboomText
@@ -409,7 +409,7 @@ CeruleanCitySlowbroText: ; marcelnote - optimized and modified probs slightly
 	ld hl, .IgnoredOrdersText
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .TookASnoozeText:
 	text_far _CeruleanCitySlowbroTookASnoozeText

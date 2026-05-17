@@ -105,38 +105,38 @@ VictoryRoad2FBlackbeltText:
 	text_asm
 	ld hl, VictoryRoad2TrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 VictoryRoad2FSuperNerd1Text:
 	text_asm
 	ld hl, VictoryRoad2TrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 VictoryRoad2FCooltrainerMText:
 	text_asm
 	ld hl, VictoryRoad2TrainerHeader2
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 VictoryRoad2FSuperNerd2Text:
 	text_asm
 	ld hl, VictoryRoad2TrainerHeader3
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 VictoryRoad2FSuperNerd3Text:
 	text_asm
 	ld hl, VictoryRoad2TrainerHeader4
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 ; marcelnote - removed Moltres from Victory Road
 ;VictoryRoad2FMoltresText:
 ;	text_asm
 ;	ld hl, MoltresTrainerHeader
 ;	call TalkToTrainer
-;	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+;	rst TextScriptEnd
 
 ;VictoryRoad2FMoltresBattleText:
 ;	text_far _VictoryRoad2FMoltresBattleText
@@ -144,7 +144,7 @@ VictoryRoad2FSuperNerd3Text:
 ;	ld a, MOLTRES
 ;	call PlayCry
 ;	call WaitForSoundToFinish
-;	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+;	rst TextScriptEnd
 
 VictoryRoad2FBlackbeltBattleText:
 	text_far _VictoryRoad2FBlackbeltBattleText
@@ -218,7 +218,7 @@ VictoryRoad2FGrampsText: ; marcelnote - new, adapted from Silph Co Lapras guy
 	jr nz, .giveHitmon
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .giveHitmon
 	CheckEvent EVENT_GOT_HITMONCHAN
 	ld c, 40
@@ -239,7 +239,7 @@ VictoryRoad2FGrampsText: ; marcelnote - new, adapted from Silph Co Lapras guy
 	;call EnableAutoTextBoxDrawing
 	SetEvent EVENT_VICTORY_ROAD_2F_GOT_HITMON
 .done
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .IntroText:
 	text_far _VictoryRoad2FGrampsIntroText

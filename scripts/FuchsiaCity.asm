@@ -54,7 +54,7 @@ FuchsiaCityPrimeapeText: ; marcelnote - new NPC
 	text_asm
 	ld a, PRIMEAPE
 	call PlayCry
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 FuchsiaCityPokemonText:
 	text_far _FuchsiaCityPokemonText
@@ -86,7 +86,7 @@ FuchsiaCityChanseySignText:
 	call PrintText
 	ld a, CHANSEY
 	call DisplayPokedex
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text:
 	text_far _FuchsiaCityChanseySignText
@@ -98,7 +98,7 @@ FuchsiaCityVoltorbSignText:
 	call PrintText
 	ld a, VOLTORB
 	call DisplayPokedex
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text:
 	text_far _FuchsiaCityVoltorbSignText
@@ -110,7 +110,7 @@ FuchsiaCityKangaskhanSignText:
 	call PrintText
 	ld a, KANGASKHAN
 	call DisplayPokedex
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text:
 	text_far _FuchsiaCityKangaskhanSignText
@@ -122,7 +122,7 @@ FuchsiaCitySlowpokeSignText:
 	call PrintText
 	ld a, SLOWPOKE
 	call DisplayPokedex
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text:
 	text_far _FuchsiaCitySlowpokeSignText
@@ -134,7 +134,7 @@ FuchsiaCityLaprasSignText:
 	call PrintText
 	ld a, LAPRAS
 	call DisplayPokedex
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text:
 	text_far _FuchsiaCityLaprasSignText
@@ -148,7 +148,7 @@ FuchsiaCityFossilSignText: ; marcelnote - optimized
 	jr nz, .gotHelixFossil
 	ld hl, .UndeterminedText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .gotDomeFossil
 	ld hl, .OmanyteText
 	call PrintText
@@ -160,7 +160,7 @@ FuchsiaCityFossilSignText: ; marcelnote - optimized
 	ld a, KABUTO
 .display
 	call DisplayPokedex
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .OmanyteText:
 	text_far _FuchsiaCityFossilSignOmanyteText

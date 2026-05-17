@@ -51,7 +51,7 @@ MandarinSilphCo4FDirectorText:
 	jr .print
 .print
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .BusyText:
 	text_far _MandarinSilphCo4FDirectorBusyText

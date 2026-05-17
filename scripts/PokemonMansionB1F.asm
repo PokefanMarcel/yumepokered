@@ -90,13 +90,13 @@ PokemonMansionB1FBurglarText:
 	text_asm
 	ld hl, Mansion4TrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 PokemonMansionB1FScientistText:
 	text_asm
 	ld hl, Mansion4TrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 PokemonMansionB1FBurglarBattleText:
 	text_far _PokemonMansionB1FBurglarBattleText

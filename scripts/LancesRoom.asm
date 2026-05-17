@@ -146,7 +146,7 @@ LancesRoomLanceText:
 	text_asm
 	ld hl, LancesRoomTrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 LancesRoomLanceBeforeBattleText:
 	text_far _LancesRoomLanceBeforeBattleText
@@ -160,14 +160,14 @@ LancesRoomLanceAfterBattleText:
 	text_far _LancesRoomLanceAfterBattleText
 	text_asm
 	SetEvent EVENT_BEAT_LANCE
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 ; marcelnote - Lance rematch texts
 LancesRoomLanceRematchText:
 	text_asm
 	ld hl, LancesRoomTrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 LancesRoomLanceRematchBeforeBattleText:
 	text_far _LancesRoomLanceRematchBeforeBattleText
@@ -181,4 +181,4 @@ LancesRoomLanceRematchAfterBattleText:
 	text_far _LancesRoomLanceRematchAfterBattleText
 	text_asm
 	SetEvent EVENT_BEAT_LANCE
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd

@@ -19,7 +19,7 @@ Route11Gate2FYoungsterText:
 	xor a ; TRADE_FOR_TERRY
 	ld [wWhichTrade], a
 	predef DoInGameTradeDialogue
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route11Gate2FOaksAideText: ; marcelnote - simplified by using wNameBuffer in text
 	text_asm
@@ -40,7 +40,7 @@ Route11Gate2FOaksAideText: ; marcelnote - simplified by using wNameBuffer in tex
 	ld hl, .ItemfinderDescriptionText
 	call PrintText
 .noItem
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .ItemfinderDescriptionText:
 	text_far _Route11Gate2FOaksAideItemfinderDescriptionText

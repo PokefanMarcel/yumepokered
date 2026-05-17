@@ -136,7 +136,7 @@ AgathasRoomAgathaText:
 	text_asm
 	ld hl, AgathasRoomTrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 AgathasRoomAgathaBeforeBattleText: ; marcelnote - added map name to text label
 	text_far _AgathasRoomAgathaBeforeBattleText
@@ -159,7 +159,7 @@ AgathasRoomAgathaRematchText:
 	text_asm
 	ld hl, AgathasRoomTrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 AgathasRoomAgathaRematchBeforeBattleText:
 	text_far _AgathasRoomAgathaRematchBeforeBattleText

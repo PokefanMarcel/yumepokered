@@ -105,7 +105,7 @@ Route16Gate1FGuardText: ; marcelnote - optimized
 	ld hl, .CyclingRoadExplanationText
 .gotText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .NoPedestriansAllowedText:
 	text_far _Route16Gate1FGuardNoPedestriansAllowedText

@@ -134,7 +134,7 @@ LoreleisRoomLoreleiText:
 	text_asm
 	ld hl, LoreleisRoomTrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 LoreleisRoomLoreleiBeforeBattleText:
 	text_far _LoreleisRoomLoreleiBeforeBattleText
@@ -157,7 +157,7 @@ LoreleisRoomLoreleiRematchText:
 	text_asm
 	ld hl, LoreleisRoomTrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 LoreleisRoomLoreleiRematchBeforeBattleText:
 	text_far _LoreleisRoomLoreleiRematchBeforeBattleText

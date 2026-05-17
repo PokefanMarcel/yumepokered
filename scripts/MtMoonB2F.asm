@@ -189,7 +189,7 @@ MtMoonB2FSuperNerdText: ; marcelnote - optimized
 	ld hl, MtMoonB2fSuperNerdEachTakeOneText
 .gotAFossil
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .beatSuperNerd
 	ld hl, MtMoonB2FSuperNerdTheyreBothMineText
 	call PrintText
@@ -206,31 +206,31 @@ MtMoonB2FSuperNerdText: ; marcelnote - optimized
 	ld a, SCRIPT_MTMOONB2F_DEFEATED_SUPER_NERD
 	ld [wMtMoonB2FCurScript], a
 	ld [wCurMapScript], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 MtMoonB2FRocket1Text:
 	text_asm
 	ld hl, MtMoon3TrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 MtMoonB2FRocket2Text:
 	text_asm
 	ld hl, MtMoon3TrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 MtMoonB2FRocket3Text:
 	text_asm
 	ld hl, MtMoon3TrainerHeader2
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 MtMoonB2FRocket4Text:
 	text_asm
 	ld hl, MtMoon3TrainerHeader3
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 MtMoonB2FDomeFossilText:
 	text_asm
@@ -254,7 +254,7 @@ MtMoonB2FDomeFossilText:
 	ld [wMtMoonB2FCurScript], a
 	ld [wCurMapScript], a
 .done
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .YouWantText:
 	text_far _MtMoonB2FDomeFossilYouWantText
@@ -282,7 +282,7 @@ MtMoonB2FHelixFossilText:
 	ld [wMtMoonB2FCurScript], a
 	ld [wCurMapScript], a
 .done
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .YouWantText:
 	text_far _MtMoonB2FHelixFossilYouWantText
@@ -301,7 +301,7 @@ MtMoonB2FReceivedFossilText:
 MtMoonB2FYouHaveNoRoomText:
 	ld hl, .Text
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text:
 	text_far _MtMoonB2FYouHaveNoRoomText

@@ -52,7 +52,7 @@ CeladonMart6FBeautyText: ; marcelnote - new floor
 	ld hl, .UsuallyStocksText
 .EventCleared
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .UsuallyStocksText
 	text_far _CeladonMart6FBeautyUsuallyStocksText
@@ -87,11 +87,11 @@ CeladonMart6FClerkText: ; marcelnote - new floor
 	call CeladonMart6FClerkDialogue
 ;	ld hl, .NormalClerkText
 ;	call TextCommandProcessor
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .NoInventory
 	ld hl, .NoInventoryText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .NoInventoryText:
 	text_far _CeladonMart6FClerkNoInventoryText

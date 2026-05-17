@@ -139,13 +139,13 @@ Route24CooltrainerM1Text: ; marcelnote - optimized
 	ld a, SCRIPT_ROUTE24_AFTER_ROCKET_BATTLE
 	ld [wRoute24CurScript], a
 	ld [wCurMapScript], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .bagFull
 	SetEvent EVENT_NUGGET_REWARD_AVAILABLE
 	ld hl, .NoRoomText
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .YouBeatOurContestText:
 	text_far _Route24CooltrainerM1YouBeatOurContestText
@@ -179,37 +179,37 @@ Route24CooltrainerM2Text:
 	text_asm
 	ld hl, Route24TrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route24CooltrainerM3Text:
 	text_asm
 	ld hl, Route24TrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route24CooltrainerF1Text:
 	text_asm
 	ld hl, Route24TrainerHeader2
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route24Youngster1Text:
 	text_asm
 	ld hl, Route24TrainerHeader3
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route24CooltrainerF2Text:
 	text_asm
 	ld hl, Route24TrainerHeader4
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route24Youngster2Text:
 	text_asm
 	ld hl, Route24TrainerHeader5
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route24CooltrainerM2BattleText:
 	text_far _Route24CooltrainerM2BattleText

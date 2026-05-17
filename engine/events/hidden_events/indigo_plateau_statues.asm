@@ -9,7 +9,7 @@ IndigoPlateauStatues::
 	ld hl, IndigoPlateauStatuesText3
 .ok
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 IndigoPlateauStatuesText1:
 	text_far _IndigoPlateauStatuesText1

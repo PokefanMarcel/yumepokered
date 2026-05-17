@@ -136,7 +136,7 @@ IndigoPlateauLobbyGymGuideText:
 	ld hl, .BeforeChampionText
 .isChampion
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .BeforeChampionText
 	text_far _IndigoPlateauLobbyGymGuideChampInMakingText
@@ -154,7 +154,7 @@ IndigoPlateauLobbyCooltrainerFText: ; marcelnote - modified to say something dif
 	ld hl, .BeforeChampionText
 .isChampion
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .BeforeChampionText:
 	text_far _IndigoPlateauLobbyCooltrainerFBeforeChampionText

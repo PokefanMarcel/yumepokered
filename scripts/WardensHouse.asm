@@ -46,7 +46,7 @@ WardensHouseWardenText: ; marcelnote - optimized
 	ld hl, .ReceivedHM04Text
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Gibberish1Text:
 	text_far _WardensHouseWardenGibberish1Text
@@ -94,7 +94,7 @@ WardensHouseDisplayText:
 	ld hl, .PhotosAndFossilsText
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .PhotosAndFossilsText:
 	text_far _WardensHouseDisplayPhotosAndFossilsText

@@ -51,25 +51,25 @@ ViridianForestYoungster2Text:
 	text_asm
 	ld hl, ViridianForestTrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 ViridianForestYoungster3Text:
 	text_asm
 	ld hl, ViridianForestTrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 ViridianForestYoungster4Text:
 	text_asm
 	ld hl, ViridianForestTrainerHeader2
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 ViridianForestYoungster6Text: ; marcelnote - new trainer based on Samurai
 	text_asm
 	ld hl, ViridianForestTrainerHeader3
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 ViridianForestYoungster2BattleText:
 	text_far _ViridianForestYoungster2BattleText

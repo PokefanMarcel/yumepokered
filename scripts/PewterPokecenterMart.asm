@@ -82,7 +82,7 @@ PewterPokecenterJigglypuffText:
 	ld c, 48
 	call DelayFrames
 	call PlayDefaultMusic
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text:
 	text_far _PewterPokecenterJigglypuffText

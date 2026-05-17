@@ -100,12 +100,12 @@ Route22GateGuardText: ; marcelnote - adapted for additions to Route22Gate
 	call Route22GateMovePlayerScript
 	ld a, SCRIPT_ROUTE22GATE_PLAYER_MOVING
 	ld [wRoute22GateCurScript], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .hasBoulderBadge
 	ld hl, Route22GateGuardGoRightAheadText
 	call PrintText
 	SetEvent EVENT_ROUTE22GATE_PRESENTED_BOULDER_BADGE ; marcelnote - new event instead of separate script
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route22GateGuardNoBoulderbadgeText:
 	text_far _Route22GateGuardNoBoulderbadgeText
@@ -140,12 +140,12 @@ ENDC
 	call Route22GateMovePlayerScript
 	ld a, SCRIPT_ROUTE22GATE_PLAYER_MOVING
 	ld [wRoute22GateCurScript], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .beatOak
 	ld hl, Route22GateGuard2WelcomeChampionText
 	call PrintText
 	SetEvent EVENT_ROUTE22GATE_WELCOME_CHAMPION
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route22GateGuard2ScaryStrongText: ; marcelnote - new guard
 	text_far _Route22GateGuard2ScaryStrongText
@@ -178,7 +178,7 @@ Route22GateReceptionistText: ; marcelnote - new receptionist
 	ld hl, .PleaseStepAroundText
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .PleaseStepAroundText:
 	text_far _Route22GateReceptionistPleaseStepAroundText
@@ -242,7 +242,7 @@ ENDC
 	call Route22GateMovePlayerScript
 	ld a, SCRIPT_ROUTE22GATE_PLAYER_MOVING
 	ld [wRoute22GateCurScript], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .SorryText:
 	text_far _Route22GateReceptionistSorryText

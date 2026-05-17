@@ -68,19 +68,19 @@ PewterMuseum1FScientist1Text: ; marcelnote - optimized
 	ld hl, .TheresALabSomewhereText
 .saidNo
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .inVisitorSectionWrongSide
 	CheckEvent EVENT_BOUGHT_MUSEUM_TICKET
 	jr nz, .alreadyBoughtTicket
 	ld hl, .GoToOtherSideText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .alreadyBoughtTicket
 	ld hl, .TakePlentyOfTimeText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .inVisitorSectionRightSide
 	CheckEvent EVENT_BOUGHT_MUSEUM_TICKET
@@ -114,7 +114,7 @@ PewterMuseum1FScientist1Text: ; marcelnote - optimized
 	ld [wSimulatedJoypadStatesEnd], a
 	call StartSimulatingJoypadStates
 	call UpdateSprites
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .buyTicket
 	ld hl, .ThankYouText
 	call PrintText
@@ -136,7 +136,7 @@ PewterMuseum1FScientist1Text: ; marcelnote - optimized
 	call WaitForSoundToFinish
 	ld a, SCRIPT_PEWTERMUSEUM_NOOP
 	ld [wPewterMuseumCurScript], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .ComeAgainText:
 	text_far _PewterMuseum1FScientist1ComeAgainText
@@ -196,7 +196,7 @@ PewterMuseum1FScientist2Text: ; marcelnote - optimized
 	ld hl, .ReceivedOldAmberText
 .done
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .TakeThisToAPokemonLabText:
 	text_far _PewterMuseum1FScientist2TakeThisToAPokemonLabText

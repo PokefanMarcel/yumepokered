@@ -269,11 +269,11 @@ SaffronGymSabrinaText:
 	jr nz, .afterBeat
 	call z, SaffronGymSabrinaReceiveTM46Script
 	call DisableWaitingAfterTextDisplay
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .afterBeat
 	ld hl, .PostBattleAdviceText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .beforeBeat
 	ld hl, .Text
 	call PrintText
@@ -291,7 +291,7 @@ SaffronGymSabrinaText:
 	ld [wGymLeaderNo], a
 	ld a, SCRIPT_SAFFRONGYM_SABRINA_POST_BATTLE
 	ld [wSaffronGymCurScript], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text:
 	text_far _SaffronGymSabrinaText
@@ -325,43 +325,43 @@ SaffronGymChanneler1Text:
 	text_asm
 	ld hl, SaffronGymTrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SaffronGymYoungster1Text:
 	text_asm
 	ld hl, SaffronGymTrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SaffronGymChanneler2Text:
 	text_asm
 	ld hl, SaffronGymTrainerHeader2
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SaffronGymYoungster2Text:
 	text_asm
 	ld hl, SaffronGymTrainerHeader3
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SaffronGymChanneler3Text:
 	text_asm
 	ld hl, SaffronGymTrainerHeader4
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SaffronGymYoungster3Text:
 	text_asm
 	ld hl, SaffronGymTrainerHeader5
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SaffronGymYoungster4Text:
 	text_asm
 	ld hl, SaffronGymTrainerHeader6
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SaffronGymGymGuideText: ; marcelnote - optimized
 	text_asm
@@ -371,7 +371,7 @@ SaffronGymGymGuideText: ; marcelnote - optimized
 	ld hl, .ChampInMakingText
 .beatSabrina
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .ChampInMakingText:
 	text_far _SaffronGymGuideChampInMakingText
@@ -471,7 +471,7 @@ SaffronGymWillText: ; marcelnote - postgame Will
 	jr z, .battle
 	ld hl, .PostBattleText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .battle
 	ld hl, .WelcomeText
 	call PrintText
@@ -487,7 +487,7 @@ SaffronGymWillText: ; marcelnote - postgame Will
 	call InitBattleEnemyParameters
 	ld a, SCRIPT_SAFFRONGYM_BRUNO_ARRIVES
 	ld [wSaffronGymCurScript], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .WelcomeText:
 	text_far _SaffronGymWillWelcomeText
@@ -515,7 +515,7 @@ SaffronGymSabrinaRematchText: ; marcelnote - Sabrina rematch
 	jr z, .beforeBeat
 	ld hl, SaffronGymAfterRematchText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .beforeBeat
 	ld hl, .PreBattleText
 	call PrintText
@@ -542,11 +542,11 @@ SaffronGymSabrinaRematchText: ; marcelnote - Sabrina rematch
 	ld a, SCRIPT_SAFFRONGYM_SABRINA_REMATCH_POST_BATTLE
 	ld [wSaffronGymCurScript], a
 	ld [wCurMapScript], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .refused
 	ld hl, .RefusedBattleText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .PreBattleText:
 	text_far _SaffronGymSabrinaRematchPreBattleText

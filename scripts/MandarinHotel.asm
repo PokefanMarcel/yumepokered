@@ -66,7 +66,7 @@ MandarinHotel2FGentlemanText:
 	text_asm
 	ld hl, MandarinHotelTrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 MandarinHotel2FGentlemanBattleText:
 	text_far _MandarinHotel2FGentlemanBattleText
@@ -85,7 +85,7 @@ MandarinHotel2FGentlemanAfterBattleText:
 	ld hl, .BoyText
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .GirlText
 	text_far _MandarinHotel2FGentlemanAfterBattleGirlText
@@ -113,7 +113,7 @@ MandarinHotel3FGamblerText:
 	text_asm
 	ld hl, MandarinHotelTrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 MandarinHotel3FGamblerBattleText:
 	text_far _MandarinHotel3FGamblerBattleText
@@ -131,7 +131,7 @@ MandarinHotel3FFisherText:
 	text_asm
 	ld hl, MandarinHotelTrainerHeader2
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 MandarinHotel3FFisherBattleText:
 	text_far _MandarinHotel3FFisherBattleText
@@ -172,7 +172,7 @@ MandarinHotel4FRaichuText:
 	text_asm
 	ld a, RAICHU
 	call PlayCry
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 MandarinHotel4FSuiteSignText:
 	text_far _MandarinHotel4FSuiteSignText

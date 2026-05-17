@@ -20,7 +20,7 @@ MoveDeleterText:
 .exit
 	ld hl, MoveDeleterByeText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .restoreAndExit
 	call GBPalWhiteOutWithDelay3
@@ -73,7 +73,7 @@ MoveDeleterText:
 	call LoadGBPal
 	ld hl, MoveDeleterForgotText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 MoveDeleterChooseMove:
 ; Sets carry if pressed B (cancel)

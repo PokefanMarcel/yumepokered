@@ -21,7 +21,7 @@ SafariZoneSecretHouseFishingGuruText: ; marcelnote - optimized
 	ld hl, .ReceivedHM03Text
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .YouHaveWonText:
 	text_far _SafariZoneSecretHouseFishingGuruYouHaveWonText

@@ -136,11 +136,11 @@ VermilionGymLTSurgeText: ; marcelnote - optimized
 	jr nz, .gotTM24Already
 	call z, VermilionGymLTSurgeReceiveTM24Script
 	call DisableWaitingAfterTextDisplay
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .gotTM24Already
 	ld hl, .PostBattleAdviceText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .beforeBeat
 	ld hl, .PreBattleText
 	call PrintText
@@ -161,7 +161,7 @@ VermilionGymLTSurgeText: ; marcelnote - optimized
 	ld a, SCRIPT_VERMILIONGYM_LT_SURGE_AFTER_BATTLE
 	ld [wVermilionGymCurScript], a
 	ld [wCurMapScript], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .PreBattleText:
 	text_far _VermilionGymLTSurgePreBattleText
@@ -193,7 +193,7 @@ VermilionGymGentlemanText:
 	text_asm
 	ld hl, VermilionGymTrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 VermilionGymGentlemanBattleText:
 	text_far _VermilionGymGentlemanBattleText
@@ -211,7 +211,7 @@ VermilionGymSuperNerdText:
 	text_asm
 	ld hl, VermilionGymTrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 VermilionGymSuperNerdBattleText:
 	text_far _VermilionGymSuperNerdBattleText
@@ -229,7 +229,7 @@ VermilionGymSailorText:
 	text_asm
 	ld hl, VermilionGymTrainerHeader2
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 VermilionGymSailorBattleText:
 	text_far _VermilionGymSailorBattleText
@@ -251,7 +251,7 @@ VermilionGymGymGuideText: ; marcelnote - optimized
 	ld hl, .ChampInMakingText
 .beatLtSurge
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .ChampInMakingText:
 	text_far _VermilionGymGymGuideChampInMakingText
@@ -267,7 +267,7 @@ VermilionGymLTSurgeRematchText: ; marcelnote - Lt.Surge rematch
 	jr z, .beforeBeat
 	ld hl, VermilionGymAfterRematchText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .beforeBeat
 	ld hl, .PreBattleText
 	call PrintText
@@ -294,11 +294,11 @@ VermilionGymLTSurgeRematchText: ; marcelnote - Lt.Surge rematch
 	ld a, SCRIPT_VERMILIONGYM_LT_SURGE_REMATCH_POST_BATTLE
 	ld [wVermilionGymCurScript], a
 	ld [wCurMapScript], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .refused
 	ld hl, .RefusedBattleText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .PreBattleText:
 	text_far _VermilionGymLTSurgeRematchPreBattleText

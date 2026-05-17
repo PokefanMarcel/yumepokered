@@ -94,7 +94,7 @@ Route9Youngster2Text:
 	ld hl, Route9TrainerHeader8
 Route9TalkToTrainer:
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route9CooltrainerF1BattleText:
 	text_far _Route9CooltrainerF1BattleText

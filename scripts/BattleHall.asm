@@ -110,7 +110,7 @@ BattleHallReceptionistText:
 	ld hl, .NeedThreeMonText
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .NeedThreeMonText:
 	text_far _BattleHallReceptionistNeedThreeMonText
@@ -130,7 +130,7 @@ BattleHallTrainerText:
 	jr z, .beforeBeat
 	ld hl, .PostBattleText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .beforeBeat
 	ld hl, .PreBattleText
 	call PrintText
@@ -151,7 +151,7 @@ BattleHallTrainerText:
 	ld [wCurMapScript], a
 
 .textScriptEnd
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .PreBattleText:
 	text_far _BattleHallTrainerPreBattleText

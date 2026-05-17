@@ -226,7 +226,7 @@ CeladonMartRoofLittleGirlText: ; marcelnote - simplified
 	ld a, [wFilteredBagItemsCount]
 	and a
 	call nz, CeladonMartRoofScript_GiveDrinkToGirl
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .ImThirstyText:
 	text_far _CeladonMartRoofLittleGirlImThirstyText

@@ -134,7 +134,7 @@ FightingDojoKarateMasterText:
 	ld hl, .IWillGiveYouAPokemonText
 	call PrintText
 .end
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text:
 	text_far _FightingDojoKarateMasterText
@@ -156,7 +156,7 @@ FightingDojoBlackbelt1Text:
 	text_asm
 	ld hl, FightingDojoTrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 FightingDojoBlackbelt1BattleText:
 	text_far _FightingDojoBlackbelt1BattleText
@@ -174,7 +174,7 @@ FightingDojoBlackbelt2Text:
 	text_asm
 	ld hl, FightingDojoTrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 FightingDojoBlackbelt2BattleText:
 	text_far _FightingDojoBlackbelt2BattleText
@@ -192,7 +192,7 @@ FightingDojoBlackbelt3Text:
 	text_asm
 	ld hl, FightingDojoTrainerHeader2
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 FightingDojoBlackbelt3BattleText:
 	text_far _FightingDojoBlackbelt3BattleText
@@ -210,7 +210,7 @@ FightingDojoBlackbelt4Text:
 	text_asm
 	ld hl, FightingDojoTrainerHeader3
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 FightingDojoBlackbelt4BattleText:
 	text_far _FightingDojoBlackbelt4BattleText
@@ -230,7 +230,7 @@ FightingDojoHitmonleePokeBallText:
 	jr z, .GetMon
 	ld hl, FightingDojoBetterNotGetGreedyText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .GetMon
 	ld a, HITMONLEE
 	call DisplayPokedex
@@ -252,7 +252,7 @@ FightingDojoHitmonleePokeBallText:
 	predef HideObject
 	SetEvents EVENT_GOT_HITMONLEE, EVENT_DEFEATED_FIGHTING_DOJO
 .textScriptEnd
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text:
 	text_far _FightingDojoHitmonleePokeBallText
@@ -264,7 +264,7 @@ FightingDojoHitmonchanPokeBallText:
 	jr z, .GetMon
 	ld hl, FightingDojoBetterNotGetGreedyText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .GetMon
 	ld a, HITMONCHAN
 	call DisplayPokedex
@@ -286,7 +286,7 @@ FightingDojoHitmonchanPokeBallText:
 	ld [wToggleableObjectIndex], a
 	predef HideObject
 .done
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text:
 	text_far _FightingDojoHitmonchanPokeBallText
@@ -305,11 +305,11 @@ FightingDojoBrunoText: ; marcelnote - postgame Bruno
 	ld a, TOGGLE_SAFFRON_GYM_WILL
 	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .alreadySpoke
 	ld hl, .UsedToTrainHereText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .OhChampText
 	text_far _FightingDojoBrunoOhChampText

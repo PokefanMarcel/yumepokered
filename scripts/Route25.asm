@@ -81,55 +81,55 @@ Route25Youngster1Text:
 	text_asm
 	ld hl, Route25TrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route25Youngster2Text:
 	text_asm
 	ld hl, Route25TrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route25CooltrainerMText:
 	text_asm
 	ld hl, Route25TrainerHeader2
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route25CooltrainerF1Text:
 	text_asm
 	ld hl, Route25TrainerHeader3
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route25Youngster3Text:
 	text_asm
 	ld hl, Route25TrainerHeader4
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route25CooltrainerF2Text:
 	text_asm
 	ld hl, Route25TrainerHeader5
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route25Hiker1Text:
 	text_asm
 	ld hl, Route25TrainerHeader6
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route25Hiker2Text:
 	text_asm
 	ld hl, Route25TrainerHeader7
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route25Hiker3Text:
 	text_asm
 	ld hl, Route25TrainerHeader8
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route25Youngster1BattleText:
 	text_far _Route25Youngster1BattleText

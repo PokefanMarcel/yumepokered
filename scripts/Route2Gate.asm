@@ -25,7 +25,7 @@ Route2GateOaksAideText: ; marcelnote - simplified by using wNameBuffer in text
 	ld hl, .FlashExplanationText
 	call PrintText
 .noItem
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .FlashExplanationText:
 	text_far _Route2GateOaksAideFlashExplanationText

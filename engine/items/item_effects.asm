@@ -1878,7 +1878,7 @@ PlayedFluteHadEffectText:
 ;	jr z, .musicWaitLoop
 	call PlayDefaultMusic ; start playing normal music again
 .done
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 ItemUseCoinCase:
 	ld a, [wIsInBattle]

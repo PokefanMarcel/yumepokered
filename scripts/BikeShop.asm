@@ -29,7 +29,7 @@ BikeShopClerkText: ; marcelnote - optimized
 	ld hl, BikeShopExchangedVoucherText
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .dontHaveVoucher
 	ld hl, BikeShopClerkWelcomeText
 	call PrintText
@@ -117,7 +117,7 @@ BikeShopMiddleAgedWomanText:
 	text_asm
 	ld hl, .Text
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text:
 	text_far _BikeShopMiddleAgedWomanText
@@ -131,7 +131,7 @@ BikeShopYoungsterText:
 	ld hl, .TheseBikesAreExpensiveText
 .gotBike
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .TheseBikesAreExpensiveText:
 	text_far _BikeShopYoungsterTheseBikesAreExpensiveText

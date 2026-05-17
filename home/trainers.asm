@@ -383,7 +383,7 @@ TrainerEndBattleText::
 	text_asm
 	call GetSavedEndBattleTextPointer
 	call TextCommandProcessor
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 ; only engage with the trainer if the player is not already
 ; engaged with another trainer

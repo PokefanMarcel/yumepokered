@@ -18,7 +18,7 @@ VermilionPidgeyHousePidgeyText:
 	ld a, PIDGEY
 	call PlayCry
 	call WaitForSoundToFinish
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 VermilionPidgeyHouseLetterText:
 	text_far _VermilionPidgeyHouseLetterText

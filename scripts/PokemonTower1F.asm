@@ -134,7 +134,7 @@ PokemonTower1FGentlemanText: ; marcelnote - postgame Agatha event
 	ld hl, .GentlemanIntroText
 .textLoaded
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .GentlemanIntroText:
 	text_far _PokemonTower1FGentlemanIntroText

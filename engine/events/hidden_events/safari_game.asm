@@ -75,7 +75,7 @@ SafariGameOverText:
 .noMoreSafariBalls
 	ld hl, GameOverText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 TimesUpText:
 	text_far _TimesUpText

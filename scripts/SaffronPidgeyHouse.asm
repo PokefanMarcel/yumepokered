@@ -17,7 +17,7 @@ SaffronPidgeyHousePidgeyText:
 	text_asm
 	ld a, PIDGEY
 	call PlayCry
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SaffronPidgeyHouseYoungsterText:
 	text_far _SaffronPidgeyHouseYoungsterText

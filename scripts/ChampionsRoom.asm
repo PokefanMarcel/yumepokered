@@ -322,7 +322,7 @@ ChampionsRoomRivalText:
 	ld hl, ChampionsRoomRivalAfterBattleText
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .IntroText:
 	text_far _ChampionsRoomRivalIntroText
@@ -348,7 +348,7 @@ ChampionsRoomRivalRematchText: ; marcelnote - Rival rematch
 	ld hl, ChampionsRoomRivalRematchAfterBattleText
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .IntroText: ; marcelnote - Rival rematch
 	text_far _ChampionsRoomRivalRematchIntroText
@@ -377,7 +377,7 @@ ChampionsRoomOakCongratulatesPlayerText:
 	call GetMonName
 	ld hl, .Text
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text:
 	text_far _ChampionsRoomOakCongratulatesPlayerText

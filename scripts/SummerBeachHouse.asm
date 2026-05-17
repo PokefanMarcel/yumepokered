@@ -34,7 +34,7 @@ SummerBeachHouseSurfinDudeText:
 	ld hl, .ComeAnytimeText
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .StartSurfingPikachuMinigame
 	ld a, 1
@@ -155,7 +155,7 @@ SummerBeachHousePikachuText:
 	ld a, PIKACHU
 	call PlayCry
 	call WaitForSoundToFinish
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SummerBeachHousePoster1Text: ; marcelnote - shuffled poster texts
 	text_far _SummerBeachHousePoster30YearsOfWavesText
@@ -169,7 +169,7 @@ SummerBeachHousePoster2Text: ; marcelnote - shuffled poster texts
 	ld hl, .SurfingTip1Text
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .ScribblesText
 	text_far _SummerBeachHousePosterScribblesText
@@ -187,7 +187,7 @@ SummerBeachHousePoster3Text: ; marcelnote - shuffled poster texts
 	ld hl, .SurfingTip2Text
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .SeaUnitesAllText
 	text_far _SummerBeachHousePosterSeaUnitesAllText

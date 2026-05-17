@@ -161,7 +161,7 @@ ViridianCityGambler1Text: ; marcelnote - reorganized for new text
 	ld hl, .GymAlwaysClosedText
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .GymAlwaysClosedText:
 	text_far _ViridianCityGambler1GymAlwaysClosedText
@@ -187,7 +187,7 @@ ViridianCityYoungster2Text: ; marcelnote - optimized
 	ld hl, .CaterpieAndWeedleDescriptionText
 .saidNo
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .YouWantToKnowAboutText:
 	text_far _ViridianCityYoungster2YouWantToKnowAboutText
@@ -209,7 +209,7 @@ ViridianCityGirlText: ; marcelnote - optimized
 	ld hl, .HasntHadHisCoffeeYetText
 .gotPokedex
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .HasntHadHisCoffeeYetText:
 	text_far _ViridianCityGirlHasntHadHisCoffeeYetText
@@ -226,7 +226,7 @@ ViridianCityOldManSleepyText:
 	call ViridianCityMovePlayerDownScript
 	ld a, SCRIPT_VIRIDIANCITY_PLAYER_MOVING_DOWN
 	ld [wViridianCityCurScript], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .PrivatePropertyText:
 	text_far _ViridianCityOldManSleepyPrivatePropertyText
@@ -247,7 +247,7 @@ ViridianCityFisherText: ; marcelnote - optimized
 	ld hl, .ReceivedTM42Text
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .YouCanHaveThisText:
 	text_far ViridianCityFisherYouCanHaveThisText
@@ -282,7 +282,7 @@ ViridianCityOldManText: ; marcelnote - optimized
 	ld [wViridianCityCurScript], a
 .saidNo
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .HadMyCoffeeNowText:
 	text_far _ViridianCityOldManHadMyCoffeeNowText

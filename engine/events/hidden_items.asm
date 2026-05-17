@@ -36,14 +36,14 @@ FoundHiddenItemText::
 	ld a, SFX_GET_ITEM_2
 	call PlaySoundWaitForCurrent
 	call WaitForSoundToFinish
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .bagFull
 	call WaitForTextScrollButtonPress ; wait for button press
 	xor a
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	ld hl, HiddenItemBagFullText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 HiddenItemBagFullText::
 	text_far _HiddenItemBagFullText

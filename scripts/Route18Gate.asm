@@ -102,7 +102,7 @@ Route18Gate1FGuardText: ; marcelnote - optimized
 	ld hl, .CyclingRoadUphillText
 .gotText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .YouNeedABicycleText:
 	text_far _Route18Gate1FGuardYouNeedABicycleText
@@ -121,4 +121,4 @@ Route18Gate2FYoungsterText:
 	ld a, TRADE_FOR_MARC
 	ld [wWhichTrade], a
 	predef DoInGameTradeDialogue
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd

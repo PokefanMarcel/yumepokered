@@ -18,7 +18,7 @@ CeruleanTrashedHouseFishingGuruText: ; marcelnote - optimized
 	ld hl, .WhatsLostIsLostText
 .noDigTM
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .TheyStoleATMText:
 	text_far _CeruleanTrashedHouseFishingGuruTheyStoleATMText

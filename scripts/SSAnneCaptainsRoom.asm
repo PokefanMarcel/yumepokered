@@ -41,10 +41,10 @@ SSAnneCaptainsRoomCaptainText: ; marcelnote - optimized
 	call PrintText
 	ld hl, wStatusFlags3
 	set BIT_NO_NPC_FACE_PLAYER, [hl]
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SSAnneCaptainsRoomRubCaptainsBackText:
 	text_far _SSAnneCaptainsRoomRubCaptainsBackText
@@ -73,7 +73,7 @@ SSAnneCaptainsRoomRubCaptainsBackText:
 	SetEvent EVENT_RUBBED_CAPTAINS_BACK
 	ld hl, wStatusFlags3
 	res BIT_NO_NPC_FACE_PLAYER, [hl]
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SSAnneCaptainsRoomCaptainIFeelMuchBetterText:
 	text_far _SSAnneCaptainsRoomCaptainIFeelMuchBetterText

@@ -21,7 +21,7 @@ Route16FlyHouseBrunetteGirlText: ; marcelnote - optimized
 	ld hl, .ReceivedHM02Text
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text:
 	text_far _Route16FlyHouseBrunetteGirlText
@@ -47,7 +47,7 @@ Route16FlyHouseFearowText:
 	ld a, FEAROW
 	call PlayCry
 	call WaitForSoundToFinish
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text:
 	text_far _Route16FlyHouseFearowText

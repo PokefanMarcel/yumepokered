@@ -61,7 +61,7 @@ Route17Biker1Text:
 	text_asm
 	ld hl, Route17TrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route17Biker1BattleText:
 	text_far _Route17Biker1BattleText
@@ -79,7 +79,7 @@ Route17Biker2Text:
 	text_asm
 	ld hl, Route17TrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route17Biker2BattleText:
 	text_far _Route17Biker2BattleText
@@ -97,7 +97,7 @@ Route17Biker3Text:
 	text_asm
 	ld hl, Route17TrainerHeader2
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route17Biker3BattleText:
 	text_far _Route17Biker3BattleText
@@ -115,7 +115,7 @@ Route17Biker4Text:
 	text_asm
 	ld hl, Route17TrainerHeader3
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route17Biker4BattleText:
 	text_far _Route17Biker4BattleText
@@ -133,7 +133,7 @@ Route17Biker5Text:
 	text_asm
 	ld hl, Route17TrainerHeader4
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route17Biker5BattleText:
 	text_far _Route17Biker5BattleText
@@ -151,7 +151,7 @@ Route17Biker6Text:
 	text_asm
 	ld hl, Route17TrainerHeader5
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route17Biker6BattleText:
 	text_far _Route17Biker6BattleText
@@ -169,7 +169,7 @@ Route17Biker7Text:
 	text_asm
 	ld hl, Route17TrainerHeader6
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route17Biker7BattleText:
 	text_far _Route17Biker7BattleText
@@ -187,7 +187,7 @@ Route17Biker8Text:
 	text_asm
 	ld hl, Route17TrainerHeader7
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route17Biker8BattleText:
 	text_far _Route17Biker8BattleText
@@ -205,7 +205,7 @@ Route17Biker9Text:
 	text_asm
 	ld hl, Route17TrainerHeader8
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route17Biker9BattleText:
 	text_far _Route17Biker9BattleText
@@ -223,7 +223,7 @@ Route17Biker10Text:
 	text_asm
 	ld hl, Route17TrainerHeader9
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route17Biker10BattleText:
 	text_far _Route17Biker10BattleText

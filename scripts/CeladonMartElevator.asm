@@ -79,4 +79,4 @@ CeladonMartElevatorText:
 	call CeladonMartElevatorCopyWarpMapsScript
 	ld hl, CeladonMartElevatorWarpMaps
 	predef DisplayElevatorFloorMenu
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd

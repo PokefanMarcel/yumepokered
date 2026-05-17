@@ -50,7 +50,7 @@ SSAnneKitchenCook7Text: ; marcelnote - optimized
 	ld hl, .PrimeBeefSteakText
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .MainCourseIsText:
 	text_far _SSAnneKitchenCook7MainCourseIsText

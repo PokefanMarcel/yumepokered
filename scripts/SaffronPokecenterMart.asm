@@ -38,7 +38,7 @@ SaffronPokecenterBenchGuyText: ; marcelnote - BenchGuy has a sprite
 	ld hl, .WouldBeGreatText
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .WouldBeGreatText:
 	text_far _SaffronPokecenterBenchGuyWouldBeGreatText

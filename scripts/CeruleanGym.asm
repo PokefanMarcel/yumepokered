@@ -118,11 +118,11 @@ CeruleanGymMistyText:
 	jr nz, .afterBeat
 	call z, CeruleanGymReceiveTM11
 	call DisableWaitingAfterTextDisplay
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .afterBeat
 	ld hl, .TM11ExplanationText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .beforeBeat
 	ld hl, .PreBattleText
 	call PrintText
@@ -142,7 +142,7 @@ CeruleanGymMistyText:
 	ldh [hJoyHeld], a
 	ld a, SCRIPT_CERULEANGYM_MISTY_POST_BATTLE
 	ld [wCeruleanGymCurScript], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .PreBattleText:
 	text_far _CeruleanGymMistyPreBattleText
@@ -175,7 +175,7 @@ CeruleanGymCooltrainerFText:
 	text_asm
 	ld hl, CeruleanGymTrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 CeruleanGymBattleText1:
 	text_far _CeruleanGymBattleText1
@@ -193,7 +193,7 @@ CeruleanGymSwimmerText:
 	text_asm
 	ld hl, CeruleanGymTrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 CeruleanGymBattleText2:
 	text_far _CeruleanGymBattleText2
@@ -215,7 +215,7 @@ CeruleanGymGymGuideText: ; marcelnote - optimized
 	ld hl, .ChampInMakingText
 .beatMisty
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .ChampInMakingText:
 	text_far _CeruleanGymGymGuideChampInMakingText
@@ -232,7 +232,7 @@ CeruleanGymMistyRematchText: ; marcelnote - Misty rematch
 	jr z, .beforeBeat
 	ld hl, CeruleanGymAfterRematchText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .beforeBeat
 	ld hl, .PreBattleText
 	call PrintText
@@ -259,11 +259,11 @@ CeruleanGymMistyRematchText: ; marcelnote - Misty rematch
 	ld a, SCRIPT_CERULEANGYM_MISTY_REMATCH_POST_BATTLE
 	ld [wCeruleanGymCurScript], a
 	ld [wCurMapScript], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .refused
 	ld hl, .RefusedBattleText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .PreBattleText:
 	text_far _CeruleanGymMistyRematchPreBattleText

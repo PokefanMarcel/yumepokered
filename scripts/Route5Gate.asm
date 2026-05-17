@@ -81,18 +81,18 @@ SaffronGateGuardText:
 	call Route5GateMovePlayerUpScript
 	ld a, SCRIPT_ROUTE5GATE_PLAYER_MOVING
 	ld [wRoute5GateCurScript], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .haveDrink
 	ld hl, SaffronGateGuardGiveDrinkText
 	call PrintText
 	SetEvent EVENT_GAVE_SAFFRON_GUARDS_DRINK
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .thanksForDrink
 	ld hl, SaffronGateGuardThanksForTheDrinkText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SaffronGateGuardGeeImThirstyText:
 	text_far _SaffronGateGuardGeeImThirstyText
@@ -123,7 +123,7 @@ Route5GatePersianText: ; marcelnote - added 2nd floor
 	call PlayCry
 	ld hl, .Route5GatePersianFriendlyText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .Route5GatePersianFriendlyText
 	text_far _Route5GatePersianFriendlyText
 	text_end
@@ -135,7 +135,7 @@ Route5GateSandslashText: ; marcelnote - added 2nd floor
 	call PlayCry
 	ld hl, .Route5GateSandslashFriendlyText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .Route5GateSandslashFriendlyText
 	text_far _Route5GateSandslashFriendlyText
 	text_end

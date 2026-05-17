@@ -22,7 +22,7 @@ PokeCenterSignText::
 PickUpItemText::
 	text_asm
 	predef PickUpItem
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 MonCouldSurfText:: ; marcelnote - HMs in overworld
     text_far _MonCouldSurfText

@@ -55,7 +55,7 @@ BluesHouseDaisySittingText: ; marcelnote - optimized
 	ld hl, GotMapText
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 BluesHouseDaisyRivalAtLabText:
 	text_far _BluesHouseDaisyRivalAtLabText
@@ -87,7 +87,7 @@ BluesHouseDaisyWalkingText: ; marcelnote - modified for pay phones
 	ld hl, .PhoneText
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .LivingThingsText
 	text_far _BluesHouseDaisyWalkingLivingThingsText
@@ -119,7 +119,7 @@ AidesHouseMiddleAgedWomanText: ; marcelnote - new Pallet house
 ;	ld hl, GotMapText
 ;.printText
 ;	call PrintText
-;	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+;	rst TextScriptEnd
 
 ;TakeThisRareCandyText:
 ;	text_far _TakeThisRareCandyText

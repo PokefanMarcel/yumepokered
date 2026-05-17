@@ -117,11 +117,11 @@ RocketHideoutB4FGiovanniText:
 	ld a, SCRIPT_ROCKETHIDEOUTB4F_BEAT_GIOVANNI
 	ld [wRocketHideoutB4FCurScript], a
 	ld [wCurMapScript], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .beatGiovanni
 	ld hl, RocketHideoutB4FGiovanniHopeWeMeetAgainText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .ImpressedYouGotHereText:
 	text_far _RocketHideoutB4FGiovanniImpressedYouGotHereText

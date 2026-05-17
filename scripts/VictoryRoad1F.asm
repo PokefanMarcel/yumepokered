@@ -61,13 +61,13 @@ VictoryRoad1FCooltrainerFText:
 	text_asm
 	ld hl, VictoryRoad1TrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 VictoryRoad1FCooltrainerMText:
 	text_asm
 	ld hl, VictoryRoad1TrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 VictoryRoad1FCooltrainerFBattleText:
 	text_far _VictoryRoad1FCooltrainerFBattleText

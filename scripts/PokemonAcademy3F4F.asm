@@ -91,7 +91,7 @@ PokemonAcademy3FTeacherText:
 	ld hl, .ComeBackWhenReady
 .printText
     call PrintText
-    rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+    rst TextScriptEnd
 
 .Presentation
 	text_far _PokemonAcademy3FTeacherPresentationText
@@ -182,7 +182,7 @@ PokemonAcademy3FDVsNotes:
 	ld hl, .DVsGrowthText
 	call PrintText
 .doneReading
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .DVsIntroText:
 	text_far _PokemonAcademy3FDVsIntroText
@@ -212,7 +212,7 @@ PokemonAcademy3FMistHazeNotes:
 	ld hl, .HazeText
 	call PrintText
 .doneReading
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .MistHazeIntroText:
 	text_far _PokemonAcademy3FMistHazeIntroText
@@ -238,7 +238,7 @@ PokemonAcademy3FHyperBeamNotes:
 	ld hl, .HyperBeamExplanationText
 	call PrintText
 .doneReading
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .HyperBeamIntroText:
 	text_far _PokemonAcademy3FHyperBeamIntroText
@@ -272,7 +272,7 @@ PokemonAcademy3FStatExpNotes:
 	ld hl, .StatExpMaxText
 	call PrintText
 .doneReading
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .StatExpIntroText:
 	text_far _PokemonAcademy3FStatExpIntroText
@@ -346,12 +346,12 @@ PokemonAcademy4FGrannyText:
 	ld hl, .GoodProgressText
 	call PrintText
 	callfar EvolveMonInteraction    ; actual evolution and map reloading
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .notPassed
 	ld hl, .BitBusyText
 	call PrintText
 .done
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .IntroText
 	text_far _PokemonAcademy4FGrannyIntroText

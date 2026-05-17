@@ -122,19 +122,19 @@ PokemonTower3FChanneler1Text:
 	text_asm
 	ld hl, PokemonTower3TrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 PokemonTower3FChanneler2Text:
 	text_asm
 	ld hl, PokemonTower3TrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 PokemonTower3FChanneler3Text:
 	text_asm
 	ld hl, PokemonTower3TrainerHeader2
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 PokemonTower3FChanneler1BattleText:
 	text_far _PokemonTower3FChanneler1BattleText

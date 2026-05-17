@@ -161,7 +161,7 @@ GameCornerClerk1Text: ; marcelnote - optimized and made buying coins faster
 	ld hl, .CantAffordTheCoins
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .buyCoins
 	; Spend 1000 yen
 	xor a
@@ -260,7 +260,7 @@ GameCornerFishingGuruText:
 	ld hl, .Received10CoinsText
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .WantToPlayText:
 	text_far _GameCornerFishingGuruWantToPlayText
@@ -291,7 +291,7 @@ GameCornerGymGuideText: ; marcelnote - adjusted
 	ld hl, GameCornerGymGuideChampInMakingText
 .beatErika
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 GameCornerGymGuideChampInMakingText:
 	text_far _GameCornerGymGuideChampInMakingText
@@ -332,7 +332,7 @@ GameCornerClerk2Text:
 	ld hl, .Received20CoinsText
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .WantSomeCoinsText:
 	text_far _GameCornerClerk2WantSomeCoinsText
@@ -378,7 +378,7 @@ GameCornerGentlemanText:
 	ld hl, .Received20CoinsText
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .ThrowingMeOffText:
 	text_far _GameCornerGentlemanThrowingMeOffText
@@ -417,7 +417,7 @@ GameCornerRocketText:
 	ldh [hJoyReleased], a
 	ld a, SCRIPT_GAMECORNER_ROCKET_BATTLE
 	ld [wGameCornerCurScript], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .ImGuardingThisPosterText:
 	text_far _GameCornerRocketImGuardingThisPosterText
@@ -446,7 +446,7 @@ GameCornerPosterText:
 	ld [wNewTileBlockID], a
 	lb bc, 0, 8 ; marcelnote - reduced map size
 	predef ReplaceTileBlock
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .SwitchBehindPosterText:
 	text_far _GameCornerPosterSwitchBehindPosterText
@@ -454,7 +454,7 @@ GameCornerPosterText:
 	ld a, SFX_SWITCH
 	call PlaySound
 	call WaitForSoundToFinish
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 GameCornerOopsForgotCoinCaseText:
 	text_far _GameCornerOopsForgotCoinCaseText

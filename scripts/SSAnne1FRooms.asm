@@ -44,32 +44,32 @@ SSAnne1FRoomsGentleman1Text:
 	text_asm
 	ld hl, SSAnne8TrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SSAnne1FRoomsGentleman2Text:
 	text_asm
 	ld hl, SSAnne8TrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SSAnne1FRoomsYoungsterText:
 	text_asm
 	ld hl, SSAnne8TrainerHeader2
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SSAnne1FRoomsCooltrainerFText:
 	text_asm
 	ld hl, SSAnne8TrainerHeader3
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SSAnne1FRoomsWigglytuffText:
 	text_far _SSAnne1FRoomsWigglytuffText
 	text_asm
 	ld a, WIGGLYTUFF
 	call PlayCry
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SSAnne1FRoomsGentleman1BattleText:
 	text_far _SSAnne1FRoomsGentleman1BattleText
@@ -128,7 +128,7 @@ SSAnne1FRoomsGirl1Text: ; marcelnote - modified for girl player
 	ld hl, .WaitressText
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .WaiterText
 	text_far _SSAnne1FRoomsGirl1WaiterText
@@ -164,7 +164,7 @@ SSAnne1FRoomsNurseText: ; marcelnote - new nurse room
 	call GBFadeInFromWhite
 	ld hl, .EnjoyThePartyText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .AreYouTiredText:
 	text_far _SSAnne1FRoomsNurseAreYouTiredText

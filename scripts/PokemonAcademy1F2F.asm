@@ -98,7 +98,7 @@ PokemonAcademy2FTeacherText:
 	ld hl, .ComeBackWhenReady
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .DoYouWantToTakeTheTest:
 	text_far _PokemonAcademy2FTeacherTakeTestText
@@ -177,7 +177,7 @@ PokemonAcademy2FPhysicalSpecialNotes:
 	ld hl, .SpecialTypesText
 	call PrintText
 .doneReading
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .PhysicalSpecialIntroText:
 	text_far _PokemonAcademy2FPhysicalSpecialIntroText
@@ -215,7 +215,7 @@ PokemonAcademy2FCriticalHitsNotes:
 	ld hl, .HighCritMovesText
 	call PrintText
 .doneReading
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .CriticalHitsIntroText:
 	text_far _PokemonAcademy2FCriticalHitsIntroText
@@ -253,7 +253,7 @@ PokemonAcademy2FReflectLightScreenNotes:
 	ld hl, .ReflectLightScreenEndText
 	call PrintText
 .doneReading
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .ReflectLightScreenIntroText:
 	text_far _PokemonAcademy2FReflectLightScreenIntroText
@@ -287,7 +287,7 @@ PokemonAcademy2FSetDamageMovesNotes:
 	ld hl, .NightShadeSeismicTossPsywaveText
 	call PrintText
 .doneReading
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .SetDamageMovesIntroText:
 	text_far _PokemonAcademy2FSetDamageMovesIntroText
@@ -313,7 +313,7 @@ PokemonAcademy2FSTABNotes:
 	ld hl, .STABExplanationText
 	call PrintText
 .doneReading
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .STABIntroText:
 	text_far _PokemonAcademy2FSTABIntroText
@@ -366,7 +366,7 @@ PokemonAcademy2FBlackboard:
 	ld [wAutoTextBoxDrawingControl], a
 	inc a
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .TypeItemList:
 	table_width 1, .TypeItemList

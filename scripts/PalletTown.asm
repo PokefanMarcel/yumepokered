@@ -159,7 +159,7 @@ PalletTownOakText: ; marcelnote - optimized
 	ld hl, .HeyWaitDontGoOutText
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .HeyWaitDontGoOutText:
 	text_far _PalletTownOakHeyWaitDontGoOutText
@@ -172,7 +172,7 @@ PalletTownOakText: ; marcelnote - optimized
 	predef EmotionBubble
 	ld a, PLAYER_DIR_DOWN
 	ld [wPlayerMovingDirection], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .ItsUnsafeText:
 	text_far _PalletTownOakItsUnsafeText
@@ -214,7 +214,7 @@ PalletTownYellowsHouseSignText: ; marcelnote - added Yellow's house
 	ld hl, .JustMovedInText
 .textLoaded
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .YellowsHouseText:
 	text_far _PalletTownYellowsHouseSignText

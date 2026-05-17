@@ -10,4 +10,4 @@ VermilionTradeHouseLittleGirlText:
 	ld a, TRADE_FOR_DUX
 	ld [wWhichTrade], a
 	predef DoInGameTradeDialogue
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd

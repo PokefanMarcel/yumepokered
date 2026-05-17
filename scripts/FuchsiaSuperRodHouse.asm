@@ -26,7 +26,7 @@ FuchsiaSuperRodHouseFishingGuruText: ; marcelnote - optimized
 	ld hl, .TakeThisText
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .DoYouLikeToFishText:
 	text_far _FuchsiaSuperRodHouseFishingGuruDoYouLikeToFishText

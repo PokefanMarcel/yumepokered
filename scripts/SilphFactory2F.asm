@@ -536,7 +536,7 @@ SilphFactory2FRocket1Text:
 	call InitBattleEnemyParameters
 	ld a, SCRIPT_SILPHFACTORY2F_ROCKET_POST_BATTLE
 	ld [wSilphFactory2FCurScript], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .PreBattleText:
 	text_far _SilphFactory2FRocket1BattleText
@@ -562,7 +562,7 @@ SilphFactory2FScientist2Text:
 	ld hl, .DuringEventText
 .EventFinished
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .DuringEventText:
 	text_far _SilphFactory2FScientist2DuringEventText
@@ -580,7 +580,7 @@ SilphFactory2FScientist3Text:
 	ld hl, .DuringEventText
 .EventFinished
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .DuringEventText:
 	text_far _SilphFactory2FScientist3DuringEventText
@@ -607,7 +607,7 @@ SilphFactory2FSilphWorkerMText:
 	ld hl, .HidHereText
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .UpdateCardText:
 	text_far _SilphFactory2FSilphWorkerMUpdateCardText
@@ -633,7 +633,7 @@ SilphFactory2FLoreleiGladToSeeYouText: ; marcelnote - postgame Lorelei
 	ld a, SCRIPT_SILPHFACTORY2F_LORELEI_GOES_UPSTAIRS
 	ld [wSilphFactory2FCurScript], a
 	ld [wCurMapScript], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .text
 	text_far _SilphFactory2FLoreleiGladToSeeYouText
 	text_end

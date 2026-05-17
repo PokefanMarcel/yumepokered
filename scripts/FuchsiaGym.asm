@@ -132,11 +132,11 @@ FuchsiaGymKogaText:
 	jr nz, .afterBeat
 	call z, FuchsiaGymReceiveTM06
 	call DisableWaitingAfterTextDisplay
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .afterBeat
 	ld hl, .PostBattleAdviceText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .beforeBeat
 	ld hl, .BeforeBattleText
 	call PrintText
@@ -156,7 +156,7 @@ FuchsiaGymKogaText:
 	ldh [hJoyHeld], a
 	ld a, SCRIPT_FUCHSIAGYM_KOGA_POST_BATTLE
 	ld [wFuchsiaGymCurScript], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .BeforeBattleText:
 	text_far _FuchsiaGymKogaBeforeBattleText
@@ -188,7 +188,7 @@ FuchsiaGymRocker1Text:
 	text_asm
 	ld hl, FuchsiaGymTrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 FuchsiaGymRocker1BattleText:
 	text_far _FuchsiaGymRocker1BattleText
@@ -206,7 +206,7 @@ FuchsiaGymRocker2Text:
 	text_asm
 	ld hl, FuchsiaGymTrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 FuchsiaGymRocker2BattleText:
 	text_far _FuchsiaGymRocker2BattleText
@@ -224,7 +224,7 @@ FuchsiaGymRocker3Text:
 	text_asm
 	ld hl, FuchsiaGymTrainerHeader2
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 FuchsiaGymRocker3BattleText:
 	text_far _FuchsiaGymRocker3BattleText
@@ -242,7 +242,7 @@ FuchsiaGymRocker4Text:
 	text_asm
 	ld hl, FuchsiaGymTrainerHeader3
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 FuchsiaGymRocker4BattleText:
 	text_far _FuchsiaGymRocker4BattleText
@@ -260,7 +260,7 @@ FuchsiaGymRocker5Text:
 	text_asm
 	ld hl, FuchsiaGymTrainerHeader4
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 FuchsiaGymRocker5BattleText:
 	text_far _FuchsiaGymRocker5BattleText
@@ -278,7 +278,7 @@ FuchsiaGymRocker6Text:
 	text_asm
 	ld hl, FuchsiaGymTrainerHeader5
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 FuchsiaGymRocker6BattleText:
 	text_far _FuchsiaGymRocker6BattleText
@@ -300,7 +300,7 @@ FuchsiaGymGymGuideText: ; marcelnote - adjusted
 	ld hl, .ChampInMakingText
 .beatKoga
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .ChampInMakingText:
 	text_far _FuchsiaGymGymGuideChampInMakingText
@@ -317,7 +317,7 @@ FuchsiaGymKogaRematchText: ; marcelnote - Koga rematch
 	jr z, .beforeBeat
 	ld hl, FuchsiaGymAfterRematchText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .beforeBeat
 	ld hl, .PreBattleText
 	call PrintText
@@ -344,11 +344,11 @@ FuchsiaGymKogaRematchText: ; marcelnote - Koga rematch
 	ld a, SCRIPT_FUCHSIAGYM_KOGA_REMATCH_POST_BATTLE
 	ld [wFuchsiaGymCurScript], a
 	ld [wCurMapScript], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .refused
 	ld hl, .RefusedBattleText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .PreBattleText:
 	text_far _FuchsiaGymKogaRematchPreBattleText

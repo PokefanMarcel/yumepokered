@@ -41,7 +41,7 @@ CeladonDinerGymGuideText: ; marcelnote - optimized
 	ld hl, .ReceivedCoinCaseText
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .ImFlatOutBustedText:
 	text_far _CeladonDinerGymGuideImFlatOutBustedText

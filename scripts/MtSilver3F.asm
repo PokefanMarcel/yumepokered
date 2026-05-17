@@ -78,7 +78,7 @@ MtSilver3FYellowText:
 	ld a, SCRIPT_MTSILVER3F_YELLOW_POST_BATTLE
 	ld [wMtSilver3FCurScript], a
 	ld [wCurMapScript], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .PreBattleText:
 	text_far _MtSilver3FYellowBattleText

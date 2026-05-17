@@ -19,4 +19,4 @@ CeladonMansionRoofHouseEeveePokeballText:
 	ld [wToggleableObjectIndex], a
 	predef HideObject
 .partyFull
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd

@@ -46,7 +46,7 @@ DrJabarasLabJabaraText:
 .printText
 	call PrintText
 .textScriptEnd
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .gaveFlute
 	ld hl, .ExperimentsOverText
 	call PrintText
@@ -112,7 +112,7 @@ DrJabarasLabEmailsText:
     ld hl, .EmailDraftText
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .ReceivedEmailText:
 	text_far _DrJabarasLabReceivedEmailText

@@ -31,7 +31,7 @@ PokemonFanClubPikachuFanText: ; marcelnote - optimized
 	ld hl, .NormalText
 .mineIsBetter
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .NormalText:
 	text_far _PokemonFanClubPikachuFanNormalText
@@ -50,7 +50,7 @@ PokemonFanClubSeelFanText: ; marcelnote - optimized
 	ld hl, .NormalText
 .mineIsBetter
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .NormalText:
 	text_far _PokemonFanClubSeelFanNormalText
@@ -67,7 +67,7 @@ PokemonFanClubPikachuText:
 	ld a, PIKACHU
 	call PlayCry
 	call WaitForSoundToFinish
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text
 	text_far _PokemonFanClubPikachuText
@@ -80,7 +80,7 @@ PokemonFanClubSeelText:
 	ld a, SEEL
 	call PlayCry
 	call WaitForSoundToFinish
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text:
 	text_far _PokemonFanClubSeelText
@@ -110,7 +110,7 @@ PokemonFanClubChairmanText: ; marcelnote - optimized
 	ld hl, .BikeVoucherText
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .IntroText:
 	text_far _PokemonFanClubChairmanIntroText

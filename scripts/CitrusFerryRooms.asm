@@ -64,7 +64,7 @@ CitrusFerryRoomsGentlemanText:
 	text_asm
 	ld hl, CitrusFerryRoomsTrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 CitrusFerryRoomsGentlemanBattleText:
 	text_far _CitrusFerryRoomsGentlemanBattleText
@@ -82,7 +82,7 @@ CitrusFerryRoomsHikerText:
 	text_asm
 	ld hl, CitrusFerryRoomsTrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 CitrusFerryRoomsHikerBattleText:
 	text_far _CitrusFerryRoomsHikerBattleText
@@ -100,7 +100,7 @@ CitrusFerryRoomsCooltrainerFText:
 	text_asm
 	ld hl, CitrusFerryRoomsTrainerHeader2
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 CitrusFerryRoomsCooltrainerFBattleText:
 	text_far _CitrusFerryRoomsCooltrainerFBattleText
@@ -130,7 +130,7 @@ CitrusFerryRoomsNurseText:
 	ld [wCitrusFerryRoomsCurScript], a
 .arrived
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .YouLookTiredText:
 	text_far _CitrusFerryRoomsNurseYouLookTiredText
@@ -153,7 +153,7 @@ CitrusFerryRoomsGrampsText: ; the water tile still moves during the trade (Rhydo
 	ld a, TRADE_FOR_BUFFY
 	ld [wWhichTrade], a
 	predef DoInGameTradeDialogue
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 CitrusFerryRoomsScientistText: ; marcelnote - optimized
 	text_asm
@@ -181,7 +181,7 @@ CitrusFerryRoomsScientistText: ; marcelnote - optimized
 	ld hl, .ReceivedDomeFossilText
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .TakeThisText:
 	text_far _CitrusFerryRoomsScientistTakeThisText
@@ -218,7 +218,7 @@ CitrusFerryRoomsBlastoiseText:
 	text_asm
 	ld a, BLASTOISE
 	call PlayCry
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 CitrusFerryRoomsCaptainsBookText:
 	text_far _CitrusFerryRoomsCaptainsBookText

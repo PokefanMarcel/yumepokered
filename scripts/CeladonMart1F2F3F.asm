@@ -65,7 +65,7 @@ CeladonMart2FCurrentFloorSignText:
 CeladonMart2FClerk2Text: ; marcelnote - new text for dynamic list
 	text_asm
 	call MartTMClerkDialogue
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 CeladonMart3FClerkText: ; marcelnote - optimized
 	text_asm
@@ -82,7 +82,7 @@ CeladonMart3FClerkText: ; marcelnote - optimized
 	ld hl, .ReceivedTM18Text
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .TM18PreReceiveText:
 	text_far _CeladonMart3FClerkTM18PreReceiveText

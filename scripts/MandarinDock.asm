@@ -74,7 +74,7 @@ MandarinDockSailorText:
 .printText
 	call PrintText
 .no
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .CantSurfHereText:
 	text_far _MandarinDockSailorCantSurfHereText

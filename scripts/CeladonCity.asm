@@ -58,7 +58,7 @@ CeladonCityGramps3Text: ; marcelnote - optimized
 	ld hl, .ReceivedTM41Text
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text:
 	text_far _CeladonCityGramps3Text
@@ -86,7 +86,7 @@ CeladonCityPoliwrathText:
 	text_asm
 	ld a, POLIWRATH
 	call PlayCry
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 CeladonCityRocket1Text:
 	text_far _CeladonCityRocket1Text

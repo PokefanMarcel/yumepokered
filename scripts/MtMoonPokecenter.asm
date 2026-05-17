@@ -62,10 +62,10 @@ MtMoonPokecenterMagikarpSalesmanText: ; marcelnote - optimized
 	call DisplayTextBoxID
 	SetEvent EVENT_BOUGHT_MAGIKARP
 .done
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .IGotADealText
 	text_far _MtMoonPokecenterMagikarpSalesmanIGotADealText

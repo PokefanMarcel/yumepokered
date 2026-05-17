@@ -12,4 +12,4 @@ UndergroundPathRoute5LittleGirlText: ; marcelnote - optimized
 	ld a, TRADE_FOR_SPOT
 	ld [wWhichTrade], a
 	predef DoInGameTradeDialogue
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd

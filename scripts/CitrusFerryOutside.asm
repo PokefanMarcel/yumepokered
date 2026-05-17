@@ -39,7 +39,7 @@ CitrusFerryOutsideSailor1Text:
 	text_asm
 	ld hl, CitrusFerryOutsideTrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 CitrusFerryOutsideSailor1BattleText:
 	text_far _CitrusFerryOutsideSailor1BattleText
@@ -57,7 +57,7 @@ CitrusFerryOutsideCooltrainerMText:
 	text_asm
 	ld hl, CitrusFerryOutsideTrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 CitrusFerryOutsideCooltrainerMBattleText:
 	text_far _CitrusFerryOutsideCooltrainerMBattleText
@@ -75,7 +75,7 @@ CitrusFerryOutsideBeautyText:
 	text_asm
 	ld hl, CitrusFerryOutsideTrainerHeader2
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 CitrusFerryOutsideBeautyBattleText:
 	text_far _CitrusFerryOutsideBeautyBattleText
@@ -93,7 +93,7 @@ CitrusFerryOutsideCooltrainerFText:
 	text_asm
 	ld hl, CitrusFerryOutsideTrainerHeader3
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 CitrusFerryOutsideCooltrainerFBattleText:
 	text_far _CitrusFerryOutsideCooltrainerFBattleText
@@ -119,7 +119,7 @@ CitrusFerryOutsideGrampsText:
 	ld hl, .StoryText
 .saidNo
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .DoYouKnowText:
 	text_far _CitrusFerryOutsideGrampsDoYouKnowText

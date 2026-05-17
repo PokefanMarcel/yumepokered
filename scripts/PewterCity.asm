@@ -217,7 +217,7 @@ PewterCitySuperNerd1Text: ; marcelnote - optimized
 	jr nz, .playerDidNotGoIntoMuseum
 	ld hl, .WerentThoseFossilsAmazingText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .playerDidNotGoIntoMuseum
 	ld hl, .YouHaveToGoText
 	call PrintText
@@ -234,7 +234,7 @@ PewterCitySuperNerd1Text: ; marcelnote - optimized
 	call GetSpritePosition2
 	ld a, SCRIPT_PEWTERCITY_SUPER_NERD1_SHOWS_PLAYER_MUSEUM
 	ld [wPewterCityCurScript], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .DidYouCheckOutMuseumText:
 	text_far _PewterCitySuperNerd1DidYouCheckOutMuseumText
@@ -264,7 +264,7 @@ PewterCitySuperNerd2Text: ; marcelnote - optimized
 	ld hl, .ThatsRightText
 .saidNo
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .DoYouKnowWhatImDoingText:
 	text_far _PewterCitySuperNerd2DoYouKnowWhatImDoingText
@@ -294,7 +294,7 @@ PewterCityYoungsterText:
 	call GetSpritePosition2
 	ld a, SCRIPT_PEWTERCITY_YOUNGSTER_SHOWS_PLAYER_GYM
 	ld [wPewterCityCurScript], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .YoureATrainerFollowMeText:
 	text_far _PewterCityYoungsterYoureATrainerFollowMeText

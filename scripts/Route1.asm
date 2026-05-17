@@ -132,7 +132,7 @@ Route1Youngster1Text: ; marcelnote - optimized
 	ld hl, .GotPotionText
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .MartSampleText:
 	text_far _Route1Youngster1MartSampleText
@@ -197,11 +197,11 @@ Route1OakText: ; marcelnote - postgame Oak fight
 	ldh [hJoyHeld], a
 	ld a, SCRIPT_ROUTE1_OAK_POST_BATTLE
 	ld [wRoute1CurScript], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .refused
 	ld hl, Route1OakRefusedBattleText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route1OakBeforeBattleText: ; marcelnote - postgame Oak battle
 	text_far _Route1OakBeforeBattleText

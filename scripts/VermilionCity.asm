@@ -177,7 +177,7 @@ VermilionCityGambler1Text:
 	ld hl, .DidYouSeeText
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .DidYouSeeText:
 	text_far _VermilionCityGambler1DidYouSeeText
@@ -210,7 +210,7 @@ VermilionCitySailor1Text: ; marcelnote - optimized
 	ld [wVermilionCityCurScript], a
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .inFrontOfOrBehindGuardCoords
 	dbmapcoord 19, 29 ; in front of guard
@@ -299,7 +299,7 @@ VermilionCitySailor3Text: ; marcelnote - new for ferry
 	ld [wVermilionCityCurScript], a
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .inFrontOfOrBehindGuardCoords
 	dbmapcoord 33, 29 ; in front of guard

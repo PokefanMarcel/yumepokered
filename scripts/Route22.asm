@@ -390,7 +390,7 @@ Route22Rival1Text: ; marcelnote - optimized
 	ld hl, Route22RivalAfterBattleText1
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route22Rival2Text: ; marcelnote - optimized
 	text_asm
@@ -400,7 +400,7 @@ Route22Rival2Text: ; marcelnote - optimized
 	ld hl, Route22RivalAfterBattleText2
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route22RivalBeforeBattleText1:
 	text_far _Route22RivalBeforeBattleText1

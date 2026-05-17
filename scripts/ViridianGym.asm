@@ -215,7 +215,7 @@ ViridianGymGiovanniText:
 	jr nz, .afterBeat
 	call z, ViridianGymReceiveTM27
 	call DisableWaitingAfterTextDisplay
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .afterBeat
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
@@ -228,7 +228,7 @@ ViridianGymGiovanniText:
 	call UpdateSprites
 	call Delay3
 	call GBFadeInFromBlack
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .beforeBeat
 	ld hl, .PreBattleText
 	call PrintText
@@ -246,7 +246,7 @@ ViridianGymGiovanniText:
 	ld [wGymLeaderNo], a
 	ld a, SCRIPT_VIRIDIANGYM_GIOVANNI_POST_BATTLE
 	ld [wViridianGymCurScript], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .PreBattleText:
 	text_far _ViridianGymGiovanniPreBattleText
@@ -282,7 +282,7 @@ ViridianGymCooltrainerM1Text:
 	text_asm
 	ld hl, ViridianGymTrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 ViridianGymCooltrainerM1BattleText:
 	text_far _ViridianGymCooltrainerM1BattleText
@@ -300,7 +300,7 @@ ViridianGymBlackbelt1Text:
 	text_asm
 	ld hl, ViridianGymTrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 ViridianGymBlackbelt1BattleText:
 	text_far _ViridianGymBlackbelt1BattleText
@@ -318,7 +318,7 @@ ViridianGymRocker1Text:
 	text_asm
 	ld hl, ViridianGymTrainerHeader2
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 ViridianGymRocker1BattleText:
 	text_far _ViridianGymRocker1BattleText
@@ -336,7 +336,7 @@ ViridianGymBlackbelt2Text:
 	text_asm
 	ld hl, ViridianGymTrainerHeader3
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 ViridianGymBlackbelt2BattleText:
 	text_far _ViridianGymBlackbelt2BattleText
@@ -354,7 +354,7 @@ ViridianGymCooltrainerM2Text:
 	text_asm
 	ld hl, ViridianGymTrainerHeader4
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 ViridianGymCooltrainerM2BattleText:
 	text_far _ViridianGymCooltrainerM2BattleText
@@ -372,7 +372,7 @@ ViridianGymBlackbelt3Text:
 	text_asm
 	ld hl, ViridianGymTrainerHeader5
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 ViridianGymBlackbelt3BattleText:
 	text_far _ViridianGymBlackbelt3BattleText
@@ -390,7 +390,7 @@ ViridianGymRocker2Text:
 	text_asm
 	ld hl, ViridianGymTrainerHeader6
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 ViridianGymRocker2BattleText:
 	text_far _ViridianGymRocker2BattleText
@@ -408,7 +408,7 @@ ViridianGymCooltrainerM3Text:
 	text_asm
 	ld hl, ViridianGymTrainerHeader7
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 ViridianGymCooltrainerM3BattleText:
 	text_far _ViridianGymCooltrainerM3BattleText
@@ -430,7 +430,7 @@ ViridianGymGymGuideText: ; marcelnote - optimized
 	ld hl, ViridianGymGuidePreBattleText
 .afterBeat
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 ViridianGymGuidePreBattleText:
 	text_far _ViridianGymGuidePreBattleText

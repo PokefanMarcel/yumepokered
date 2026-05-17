@@ -15,4 +15,4 @@ CeruleanTradeHouseGamblerText:
 	ld a, TRADE_FOR_LOLA
 	ld [wWhichTrade], a
 	predef DoInGameTradeDialogue
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd

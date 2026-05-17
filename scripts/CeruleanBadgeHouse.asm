@@ -50,7 +50,7 @@ CeruleanBadgeHouseMiddleAgedManText:
 	ld [wListScrollOffset], a
 	ld hl, .VisitAnyTimeText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .BadgeItemList:
 	db NUM_BADGES ; #

@@ -92,7 +92,7 @@ CitrusFerryDeckSailor1Text:
 	ld hl, .EndOfTheLineMandarinText
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .EnjoyYourTripText:
 	text_far _CitrusFerryDeckSailorEnjoyYourTripText

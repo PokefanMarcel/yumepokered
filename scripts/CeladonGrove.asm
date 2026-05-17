@@ -81,7 +81,7 @@ CeladonGroveChanneler2Text:
 	ld hl, .TM51ExplanationText
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .TakeThisText:
 	text_far _CeladonGroveChanneler2TakeThisText
@@ -104,7 +104,7 @@ CeladonGroveYoungsterText:
 	text_asm
 	ld hl, CeladonGroveTrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 CeladonGroveYoungsterBattleText:
 	text_far _CeladonGroveYoungsterBattleText
@@ -122,7 +122,7 @@ CeladonGroveChanneler1Text:
 	text_asm
 	ld hl, CeladonGroveTrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 CeladonGroveChanneler1BattleText:
 	text_far _CeladonGroveChanneler1BattleText
@@ -140,7 +140,7 @@ CeladonGroveSuperNerdText:
 	text_asm
 	ld hl, CeladonGroveTrainerHeader2
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 CeladonGroveSuperNerdBattleText:
 	text_far _CeladonGroveSuperNerdBattleText
@@ -170,7 +170,7 @@ CeladonGroveMewText:
 	text_asm
 	ld hl, MewTrainerHeader
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 MewBattleText:
 	text_far _MewBattleText
@@ -178,4 +178,4 @@ MewBattleText:
 	ld a, MEW
 	call PlayCry
 	call WaitForSoundToFinish
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd

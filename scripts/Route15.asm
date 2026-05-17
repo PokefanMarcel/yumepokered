@@ -102,7 +102,7 @@ Route15CooltrainerF4Text:
 	ld hl, Route15TrainerHeader9
 Route15TalkToTrainer:
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route15CooltrainerF1BattleText:
 	text_far _Route15CooltrainerF1BattleText

@@ -163,7 +163,7 @@ MandarinIslandSailorFerriesText:
 	ld [wMandarinIslandCurScript], a
 .printText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .inFrontOfOrBehindGuardCoords
 	dbmapcoord 27, 25 ; in front of guard

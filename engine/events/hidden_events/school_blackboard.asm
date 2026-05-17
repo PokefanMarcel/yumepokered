@@ -57,7 +57,7 @@ LinkCableHelp::
 	ld hl, wStatusFlags5
 	res BIT_NO_TEXT_DELAY, [hl]
 	call LoadScreenTilesFromBuffer1
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 LinkCableHelpText1:
 	text_far _LinkCableHelpText1
@@ -161,7 +161,7 @@ ViridianSchoolBlackboard:: ; marcelnote - optimized and fixed blinking
 	ld hl, wStatusFlags5
 	res BIT_NO_TEXT_DELAY, [hl]
 	call LoadScreenTilesFromBuffer1
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 ViridianSchoolBlackboardText1:
 	text_far _ViridianSchoolBlackboardText1

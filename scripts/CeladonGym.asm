@@ -132,11 +132,11 @@ CeladonGymErikaText:
 	jr nz, .afterBeat
 	call z, CeladonGymReceiveTM21
 	call DisableWaitingAfterTextDisplay
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .afterBeat
 	ld hl, .PostBattleAdviceText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .beforeBeat
 	ld hl, .PreBattleText
 	call PrintText
@@ -155,7 +155,7 @@ CeladonGymErikaText:
 	ld a, SCRIPT_CELADONGYM_ERIKA_POST_BATTLE
 	ld [wCeladonGymCurScript], a
 	ld [wCurMapScript], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .PreBattleText:
 	text_far _CeladonGymErikaPreBattleText
@@ -187,7 +187,7 @@ CeladonGymCooltrainerF1Text:
 	text_asm
 	ld hl, CeladonGymTrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 CeladonGymBattleText2:
 	text_far _CeladonGymBattleText2
@@ -205,7 +205,7 @@ CeladonGymBeauty1Text:
 	text_asm
 	ld hl, CeladonGymTrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 CeladonGymBattleText3:
 	text_far _CeladonGymBattleText3
@@ -223,7 +223,7 @@ CeladonGymCooltrainerF2Text:
 	text_asm
 	ld hl, CeladonGymTrainerHeader2
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 CeladonGymBattleText4:
 	text_far _CeladonGymBattleText4
@@ -241,7 +241,7 @@ CeladonGymBeauty2Text:
 	text_asm
 	ld hl, CeladonGymTrainerHeader3
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 CeladonGymBattleText5:
 	text_far _CeladonGymBattleText5
@@ -259,7 +259,7 @@ CeladonGymCooltrainerF3Text:
 	text_asm
 	ld hl, CeladonGymTrainerHeader4
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 CeladonGymBattleText6:
 	text_far _CeladonGymBattleText6
@@ -277,7 +277,7 @@ CeladonGymBeauty3Text:
 	text_asm
 	ld hl, CeladonGymTrainerHeader5
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 CeladonGymBattleText7:
 	text_far _CeladonGymBattleText7
@@ -295,7 +295,7 @@ CeladonGymCooltrainerF4Text:
 	text_asm
 	ld hl, CeladonGymTrainerHeader6
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 CeladonGymBattleText8:
 	text_far _CeladonGymBattleText8
@@ -316,7 +316,7 @@ CeladonGymErikaRematchText: ; marcelnote - Erika rematch
 	jr z, .beforeBeat
 	ld hl, CeladonGymAfterRematchText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .beforeBeat
 	ld hl, .PreBattleText
 	call PrintText
@@ -343,11 +343,11 @@ CeladonGymErikaRematchText: ; marcelnote - Erika rematch
 	ld a, SCRIPT_CELADONGYM_ERIKA_REMATCH_POST_BATTLE
 	ld [wCeladonGymCurScript], a
 	ld [wCurMapScript], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .refused
 	ld hl, .RefusedBattleText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .PreBattleText:
 	text_far _CeladonGymErikaRematchPreBattleText

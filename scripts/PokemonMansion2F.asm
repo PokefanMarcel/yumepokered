@@ -73,7 +73,7 @@ PokemonMansion2FSuperNerdText:
 	text_asm
 	ld hl, Mansion2TrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 PokemonMansion2FSuperNerdBattleText:
 	text_far _PokemonMansion2FSuperNerdBattleText
@@ -115,11 +115,11 @@ PokemonMansion2FSwitchText: ; marcelnote - optimized
 	jr z, .done
 	ResetEventReuseHL EVENT_MANSION_SWITCH_ON
 .done
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 .notPressed
 	ld hl, .NotPressed
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .Text:
 	text_far _PokemonMansion2FSwitchText

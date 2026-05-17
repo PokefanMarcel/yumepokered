@@ -28,7 +28,7 @@ Route12Gate2FBrunetteGirlText: ; marcelnote - optimized
 	ld hl, .ReceivedTM39Text
 .gotText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .YouCanHaveThisText:
 	text_far _Route12Gate2FBrunetteGirlYouCanHaveThisText
