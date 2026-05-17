@@ -32,7 +32,7 @@ PokemonAcademy3FTeacherText:
 	call PrintText
 	CheckEvent EVENT_PASSED_JUNIOR_TEST
 	ld hl, .ComeBackAfterJunior
-    jp z, .print_text
+    jp z, .printText
 	ld hl, .DoYouWantToTakeTheTest
 	call PrintText
 	call YesNoChoice
@@ -80,7 +80,7 @@ PokemonAcademy3FTeacherText:
    	call WaitForSoundToFinish
 .passed
 	ld hl, .ComeBackAnytime
-    jr .print_text
+    jr .printText
 .fail
 	ld a, SFX_DENIED
 	call PlaySoundWaitForCurrent
@@ -89,7 +89,7 @@ PokemonAcademy3FTeacherText:
 	call PrintText
 .refused
 	ld hl, .ComeBackWhenReady
-.print_text
+.printText
     call PrintText
     rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
