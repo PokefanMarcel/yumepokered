@@ -303,15 +303,15 @@ OaksLabRivalChoosesStarterScript:
 	call DisplayTextID
 	ld a, [wRivalStarterBallSpriteIndex]
 	cp OAKSLAB_CHARMANDER_POKE_BALL
-	jr nz, .not_charmander
+	jr nz, .notCharmander
 	ld a, TOGGLE_STARTER_BALL_1
 	jr .hideBallAndContinue
-.not_charmander
+.notCharmander
 	cp OAKSLAB_SQUIRTLE_POKE_BALL
-	jr nz, .not_squirtle
+	jr nz, .notSquirtle
 	ld a, TOGGLE_STARTER_BALL_2
 	jr .hideBallAndContinue
-.not_squirtle
+.notSquirtle
 	ld a, TOGGLE_STARTER_BALL_3
 .hideBallAndContinue
 	ld [wToggleableObjectIndex], a
@@ -643,32 +643,32 @@ OaksLabCalcRivalMovementScript:
 	ldh [hSpriteMapXCoord], a
 	ld a, [wYCoord]
 	cp 3
-	jr nz, .not_below_oak
+	jr nz, .notBelowOak
 	ld a, $4
 	ld [wNPCMovementDirections2Index], a
 	ld a, $30
 	ld b, 11
-	jr .got_coords
-.not_below_oak
+	jr .gotCoords
+.notBelowOak
 	cp 1
-	jr nz, .not_above_oak
+	jr nz, .notAboveOak
 	ld a, $2
 	ld [wNPCMovementDirections2Index], a
 	ld a, $30
 	ld b, 9
-	jr .got_coords
-.not_above_oak
+	jr .gotCoords
+.notAboveOak
 	ld a, $3
 	ld [wNPCMovementDirections2Index], a
 	ld b, 10
 	ld a, [wXCoord]
 	cp 4
-	jr nz, .not_left_of_oak
+	jr nz, .notLeftOfOak
 	ld a, $40
-	jr .got_coords
-.not_left_of_oak
+	jr .gotCoords
+.notLeftOfOak
 	ld a, $20
-.got_coords
+.gotCoords
 	ldh [hSpriteScreenXCoord], a
 	ld a, b
 	ldh [hSpriteMapYCoord], a
@@ -800,13 +800,13 @@ OaksLabRivalText: ; marcelnote - optimized and added postgame dialogue
 	;;;;;;
 	ld hl, .GrampsIsntAroundText
 	CheckEvent EVENT_OAK_APPEARED_IN_PALLET ; marcelnote - harmonized events
-	jr z, .got_text
+	jr z, .gotText
 	ld hl, .GoAheadAndChooseText
 	CheckEvent EVENT_GOT_STARTER
-	jr z, .got_text
+	jr z, .gotText
 	ld hl, .MyPokemonLooksStrongerText
 
-.got_text
+.gotText
 	call PrintText
 	rst TextScriptEnd
 
@@ -836,7 +836,7 @@ OaksLabRivalText: ; marcelnote - optimized and added postgame dialogue
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	jr .got_text
+	jr .gotText
 
 .BirdTextPointers:
 	dw .SeenNoBirdText
@@ -1011,15 +1011,15 @@ OaksLabMonChoiceMenu:
 	call GetMonName
 	ld a, [wSpriteIndex]
 	cp OAKSLAB_CHARMANDER_POKE_BALL
-	jr nz, .not_charmander
+	jr nz, .notCharmander
 	ld a, TOGGLE_STARTER_BALL_1
 	jr .continue
-.not_charmander
+.notCharmander
 	cp OAKSLAB_SQUIRTLE_POKE_BALL
-	jr nz, .not_squirtle
+	jr nz, .notSquirtle
 	ld a, TOGGLE_STARTER_BALL_2
 	jr .continue
-.not_squirtle
+.notSquirtle
 	ld a, TOGGLE_STARTER_BALL_3
 .continue
 	ld [wToggleableObjectIndex], a
@@ -1072,7 +1072,7 @@ OaksLabLastMonText:
 OaksLabOakText: ; marcelnote - this was changed to make Balls more accessible
 	text_asm
 	CheckEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS
-	jr z, .didnt_get_or_just_got_poke_balls
+	jr z, .didntGetOrJustGotPokeBalls
 	ld hl, .HowIsYourPokedexComingText
 	call PrintText
 	ld a, 1
@@ -1080,28 +1080,28 @@ OaksLabOakText: ; marcelnote - this was changed to make Balls more accessible
 	predef DisplayDexRating
 	rst TextScriptEnd
 
-.didnt_get_or_just_got_poke_balls
+.didntGetOrJustGotPokeBalls
 	CheckEvent EVENT_GOT_POKEDEX
-	jr nz, .got_pokedex
+	jr nz, .gotPokedex
 	CheckEvent EVENT_BATTLED_RIVAL_IN_OAKS_LAB
-	jr nz, .check_got_parcel
+	jr nz, .checkGotParcel
 	CheckEvent EVENT_GOT_STARTER
-	jr nz, .already_got_pokemon
+	jr nz, .alreadyGotPokemon
 	ld hl, .WhichPokemonDoYouWantText
 	call PrintText
 	rst TextScriptEnd
-.already_got_pokemon
+.alreadyGotPokemon
 	ld hl, .YourPokemonCanFightText
 	call PrintText
 	rst TextScriptEnd
-.check_got_parcel
+.checkGotParcel
 	ld b, OAKS_PARCEL
 	call IsItemInBag
-	jr nz, .got_parcel
+	jr nz, .gotParcel
 	ld hl, .RaiseYourYoungPokemonText
 	call PrintText
 	rst TextScriptEnd
-.got_parcel
+.gotParcel
 	ld hl, .DeliverParcelText
 	call PrintText
 	ld a, OAKS_PARCEL
@@ -1111,27 +1111,27 @@ OaksLabOakText: ; marcelnote - this was changed to make Balls more accessible
 	ld [wOaksLabCurScript], a
 	rst TextScriptEnd
 
-.got_pokedex
+.gotPokedex
 	CheckEvent EVENT_PALLET_AFTER_GETTING_POKEDEX
-	jr z, .just_got_pokedex
+	jr z, .justGotPokedex
 	CheckAndSetEvent EVENT_GOT_POKEBALLS_FROM_OAK ; set whether actually given or not
-	jr nz, .just_got_pokeballs
+	jr nz, .justGotPokeballs
 	ld hl, wPokedexOwned
 	ld b, wPokedexOwnedEnd - wPokedexOwned
 	call CountSetBits
 	ld a, [wNumSetBits]
 	cp 2
-	jr c, .give_poke_balls ; if only 1 Mon caught
+	jr c, .givePokeBalls ; if only 1 Mon caught
 	; fallthrough
-.just_got_pokeballs
+.justGotPokeballs
 	ld hl, .ComeSeeMeSometimesText
 	call PrintText
 	rst TextScriptEnd
-.just_got_pokedex
+.justGotPokedex
 	ld hl, .PokemonAroundTheWorldText
 	call PrintText
 	rst TextScriptEnd
-.give_poke_balls
+.givePokeBalls
 	lb bc, POKE_BALL, 5
 	call GiveItem
 	ld hl, .GivePokeballsText
@@ -1330,9 +1330,9 @@ OaksLabScientistText: ; marcelnote - text_asm to work around DisableAutoTextBoxD
 	text_asm
 	CheckHideShowCont TOGGLE_ROUTE_1_OAK
 	ld hl, .Text
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, .OakWentForWalkText ; marcelnote - new for Oak battle
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd
 
