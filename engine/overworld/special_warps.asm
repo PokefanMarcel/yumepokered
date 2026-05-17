@@ -73,8 +73,8 @@ LoadSpecialWarpData: ; marcelnote - modified for new special warp engine
 	bit BIT_DUNGEON_WARP, [hl]
 	jr nz, .usedDungeonWarp
 	bit BIT_ESCAPE_WARP, [hl]
-	res BIT_ESCAPE_WARP, [hl]
 	jr z, .otherDestination
+	res BIT_ESCAPE_WARP, [hl]
 	ld a, [wLastBlackoutMap]
 	jr .usedFlyWarp
 .usedDungeonWarp
