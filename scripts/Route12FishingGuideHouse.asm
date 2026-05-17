@@ -10,7 +10,7 @@ Route12FishingGuideHouseFishingGuideText: ; marcelnote - new
 	text_asm
 	CheckEvent EVENT_GOT_FISHING_GUIDE
 	ld hl, .ToAllTravelersText
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, .ItsAFishingGuideText
 	call PrintText
 	SetEvent EVENT_GOT_FISHING_GUIDE
@@ -20,7 +20,7 @@ Route12FishingGuideHouseFishingGuideText: ; marcelnote - new
 	call PlaySound
 	call WaitForSoundToFinish
 	ld hl, .AreaUpgradedText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd
 
