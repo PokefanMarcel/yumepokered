@@ -65,7 +65,7 @@ PokemonTower6FMarowakBattleScript:
 	ld [wJoyIgnore], a
 	ld a, [wBattleResult]
 	and a
-	jr nz, .did_not_defeat
+	jr nz, .didNotDefeat
 	SetEvent EVENT_BEAT_GHOST_MAROWAK
 	ld a, TEXT_POKEMONTOWER6F_MAROWAK_DEPARTED
 	ldh [hTextID], a
@@ -76,8 +76,8 @@ PokemonTower6FMarowakBattleScript:
 	ld [wPokemonTower6FCurScript], a
 	ld [wCurMapScript], a
 	ret
-.did_not_defeat
-	ld a, $1
+.didNotDefeat
+	ld a, 1
 	ld [wSimulatedJoypadStatesIndex], a
 	ld a, PAD_RIGHT
 	ld [wSimulatedJoypadStatesEnd], a
@@ -141,7 +141,7 @@ PokemonTower6FGhostBattleScript: ; marcelnote - postgame Agatha event
 	ld [wJoyIgnore], a
 	ld a, [wBattleResult]
 	and a
-	jr nz, .did_not_defeat
+	jr nz, .didNotDefeat
 	SetEvent EVENT_BEAT_GHOST_6F
 	ld a, TEXT_POKEMONTOWER6F_GHOST_VANISHED
 	ldh [hTextID], a
@@ -152,8 +152,8 @@ PokemonTower6FGhostBattleScript: ; marcelnote - postgame Agatha event
 	ld [wPokemonTower6FCurScript], a
 	ld [wCurMapScript], a
 	ret
-.did_not_defeat
-	ld a, $1
+.didNotDefeat
+	ld a, 1
 	ld [wSimulatedJoypadStatesIndex], a
 	ld a, PAD_UP
 	ld [wSimulatedJoypadStatesEnd], a
@@ -195,19 +195,19 @@ PokemonTower6FChanneler1Text:
 	text_asm
 	ld hl, PokemonTower6TrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 PokemonTower6FChanneler2Text:
 	text_asm
 	ld hl, PokemonTower6TrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 PokemonTower6FChanneler3Text:
 	text_asm
 	ld hl, PokemonTower6TrainerHeader2
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 PokemonTower6FMarowakDepartedText:
 	text_asm
@@ -220,7 +220,7 @@ PokemonTower6FMarowakDepartedText:
 	call DelayFrames
 	ld hl, PokemonTower6FSoulWasCalmedText
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 PokemonTower6FGhostWasCubonesMotherText:
 	text_far _PokemonTower6FGhostWasCubonesMotherText
@@ -272,7 +272,7 @@ PokemonTower6FBeGoneText:
 
 PokemonTower6FAgathaText: ; marcelnote - postgame Agatha event
 	text_asm
-	ld a, $1
+	ld a, 1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	ld hl, .text
 	call PrintText
@@ -302,7 +302,7 @@ PokemonTower6FAgathaText: ; marcelnote - postgame Agatha event
 	ld a, SCRIPT_POKEMONTOWER6F_DEFAULT
 	ld [wPokemonTower6FCurScript], a
 	ld [wCurMapScript], a
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .text
 	text_far _PokemonTower6FAgathaText
