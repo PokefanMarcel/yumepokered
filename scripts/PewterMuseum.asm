@@ -52,12 +52,12 @@ PewterMuseum1FScientist1Text: ; marcelnote - optimized
 	text_asm
 	ld a, [wYCoord]
 	cp 16
-	jr c, .behind_counter                  ; then y=15
-	jr nz, .in_visitor_section_wrong_side  ; then y=18
+	jr c, .behindCounter                  ; then y=15
+	jr nz, .inVisitorSectionWrongSide  ; then y=18
 	ld a, [wXCoord]                        ; else y=16
 	cp 13
-	jr nz, .in_visitor_section_right_side
-.behind_counter
+	jr nz, .inVisitorSectionRightSide
+.behindCounter
 	ld hl, .DoYouKnowWhatAmberIsText
 	call PrintText
 	call YesNoChoice
@@ -70,21 +70,21 @@ PewterMuseum1FScientist1Text: ; marcelnote - optimized
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-.in_visitor_section_wrong_side
+.inVisitorSectionWrongSide
 	CheckEvent EVENT_BOUGHT_MUSEUM_TICKET
-	jr nz, .already_bought_ticket
+	jr nz, .alreadyBoughtTicket
 	ld hl, .GoToOtherSideText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-.already_bought_ticket
+.alreadyBoughtTicket
 	ld hl, .TakePlentyOfTimeText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-.in_visitor_section_right_side
+.inVisitorSectionRightSide
 	CheckEvent EVENT_BOUGHT_MUSEUM_TICKET
-	jr nz, .already_bought_ticket
+	jr nz, .alreadyBoughtTicket
 	ld a, MONEY_BOX
 	ld [wTextBoxID], a
 	call DisplayTextBoxID
@@ -95,17 +95,17 @@ PewterMuseum1FScientist1Text: ; marcelnote - optimized
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .deny_entry
+	jr nz, .denyEntry
 	xor a
 	ldh [hMoney], a
 	ldh [hMoney + 1], a
 	ld a, $50
 	ldh [hMoney + 2], a
 	call HasEnoughMoney
-	jr nc, .buy_ticket
+	jr nc, .buyTicket
 	ld hl, .DontHaveEnoughMoneyText
 	call PrintText
-.deny_entry
+.denyEntry
 	ld hl, .ComeAgainText
 	call PrintText
 	ld a, $1
@@ -115,7 +115,7 @@ PewterMuseum1FScientist1Text: ; marcelnote - optimized
 	call StartSimulatingJoypadStates
 	call UpdateSprites
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-.buy_ticket
+.buyTicket
 	ld hl, .ThankYouText
 	call PrintText
 	SetEvent EVENT_BOUGHT_MUSEUM_TICKET
