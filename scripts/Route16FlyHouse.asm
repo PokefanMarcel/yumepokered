@@ -10,16 +10,16 @@ Route16FlyHouseBrunetteGirlText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_HM02
 	ld hl, .HM02ExplanationText
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, .Text
 	call PrintText
 	lb bc, HM_FLY, 1
 	call GiveItem
 	ld hl, .HM02NoRoomText
-	jr nc, .print_text
+	jr nc, .printText
 	SetEvent EVENT_GOT_HM02
 	ld hl, .ReceivedHM02Text
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
