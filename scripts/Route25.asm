@@ -16,12 +16,12 @@ Route25ToggleBillsScript:
 	CheckEventHL EVENT_LEFT_BILLS_HOUSE_AFTER_HELPING
 	ret nz
 	CheckEventReuseHL EVENT_MET_BILL_2
-	jr nz, .met_bill
+	jr nz, .metBill
 	ResetEventReuseHL EVENT_BILL_SAID_USE_CELL_SEPARATOR
 	ld a, TOGGLE_BILL_POKEMON
 	ld [wToggleableObjectIndex], a
 	predef_jump ShowObject
-.met_bill
+.metBill
 	CheckEventAfterBranchReuseHL EVENT_GOT_SS_TICKET, EVENT_MET_BILL_2
 	ret z
 	SetEventReuseHL EVENT_LEFT_BILLS_HOUSE_AFTER_HELPING
