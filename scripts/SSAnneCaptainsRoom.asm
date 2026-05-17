@@ -19,14 +19,14 @@ SSAnneCaptainsRoomCaptainText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_HM01
 	ld hl, SSAnneCaptainsRoomCaptainNotSickAnymoreText
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, SSAnneCaptainsRoomRubCaptainsBackText
 	call PrintText
 	ld hl, SSAnneCaptainsRoomCaptainIFeelMuchBetterText
 	call PrintText
 	lb bc, HM_CUT, 1
 	call GiveItem
-	jr nc, .bag_full
+	jr nc, .bagFull
 	SetEvent EVENT_GOT_HM01
 	ld a, TOGGLE_VERMILION_CITY_SAILOR2 ; marcelnote - hide SS Anne Sailor in Vermilion City
 	ld [wToggleableObjectIndex], a
@@ -35,14 +35,14 @@ SSAnneCaptainsRoomCaptainText: ; marcelnote - optimized
 	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
 	ld hl, SSAnneCaptainsRoomCaptainReceivedHM01Text
-	jr .print_text
-.bag_full
+	jr .printText
+.bagFull
 	ld hl, SSAnneCaptainsRoomCaptainHM01NoRoomText
 	call PrintText
 	ld hl, wStatusFlags3
 	set BIT_NO_NPC_FACE_PLAYER, [hl]
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
