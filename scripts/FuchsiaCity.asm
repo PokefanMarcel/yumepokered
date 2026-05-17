@@ -143,18 +143,18 @@ FuchsiaCityLaprasSignText:
 FuchsiaCityFossilSignText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_DOME_FOSSIL
-	jr nz, .got_dome_fossil
+	jr nz, .gotDomeFossil
 	CheckEventReuseA EVENT_GOT_HELIX_FOSSIL
-	jr nz, .got_helix_fossil
+	jr nz, .gotHelixFossil
 	ld hl, .UndeterminedText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-.got_dome_fossil
+.gotDomeFossil
 	ld hl, .OmanyteText
 	call PrintText
 	ld a, OMANYTE
 	jr .display
-.got_helix_fossil
+.gotHelixFossil
 	ld hl, .KabutoText
 	call PrintText
 	ld a, KABUTO
