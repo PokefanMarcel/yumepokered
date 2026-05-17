@@ -305,11 +305,11 @@ CeruleanCityRocketText:
 	call PrintText
 	lb bc, TM_DIG, 1
 	call GiveItem
-	jr c, .item_received
+	jr c, .itemReceived
 	ld hl, .TM28NoRoomText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-.item_received
+.itemReceived
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	ld hl, .ReceivedTM28Text
@@ -371,13 +371,13 @@ CeruleanCityCooltrainerF1Text: ; marcelnote - optimized and modified probs sligh
 	ldh a, [hRandomAdd]
 	ld hl, .SlowbroUseSonicboomText
 	cp 85 ; 85/256 chance of 1st dialogue, was 76/256
-	jr c, .print_text
+	jr c, .printText
 	ld hl, .SlowbroPunchText
 	cp 170 ; 85/256 chance of 2nd dialogue, was 80/256
-	jr c, .print_text
+	jr c, .printText
 	; 86/256 chance of 3rd dialogue, was 100/256
 	ld hl, .SlowbroWithdrawText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
@@ -398,16 +398,16 @@ CeruleanCitySlowbroText: ; marcelnote - optimized and modified probs slightly
 	ldh a, [hRandomAdd]
 	ld hl, .TookASnoozeText
 	cp 64 ; 64/256 chance of 1st dialogue, was 76/256
-	jr c, .print_text
+	jr c, .printText
 	ld hl, .IsLoafingAroundText
 	cp 128 ; 64/256 chance of 2nd dialogue, was 60/256
-	jr c, .print_text
+	jr c, .printText
 	ld hl, .TurnedAwayText
 	cp 192 ; 64/256 chance of 3rd dialogue, was 60/256
-	jr c, .print_text
+	jr c, .printText
 	; 64/256 chance of 4th dialogue, was 60/256
 	ld hl, .IgnoredOrdersText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
