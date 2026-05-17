@@ -12,7 +12,7 @@ MandarinSurfShopClerkText:
 	text_asm
 	CheckEvent EVENT_GOT_SURFBOARD
 	ld hl, MandarinSurfShopClerkHowDoYouLikeYourSurfboardText
-	jr nz, .print_text
+	jr nz, .printText
 ; don't have surfboard
 	ld b, SURF_VOUCHER
 	call IsItemInBag
@@ -22,13 +22,13 @@ MandarinSurfShopClerkText:
 	lb bc, SURFBOARD, 1
 	call GiveItem
 	ld hl, MandarinSurfShopBagFullText
-	jr nc, .print_text
+	jr nc, .printText
 	ld a, SURF_VOUCHER
 	ldh [hItemToRemoveID], a
 	callfar RemoveItemByID
 	SetEvent EVENT_GOT_SURFBOARD
 	ld hl, MandarinSurfShopExchangedVoucherText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd
 
@@ -66,12 +66,12 @@ MandarinSurfShopClerkText:
 	call HandleMenuInput
 	ld hl, MandarinSurfShopComeAgainText
 	bit B_PAD_B, a
-	jr nz, .print_text
+	jr nz, .printText
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, MandarinSurfShopCantAffordText
-	jr .print_text
+	jr .printText
 
 MandarinSurfShopMenuText:
 	db   "SURFBOARD"
