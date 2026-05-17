@@ -40,11 +40,11 @@ Route23DefaultScript:
 	cp b
 	jr nz, .loop
 	cp 35
-	jr nz, .not_past_victory_road
+	jr nz, .notPastVictoryRoad
 	ld a, [wXCoord]
 	cp 14
 	ret nc
-.not_past_victory_road
+.notPastVictoryRoad
 	ld a, e
 	ldh [hSpriteIndex], a
 	ld a, c
@@ -188,14 +188,14 @@ Route23CheckForBadgeScript:
 	predef FlagActionPredef
 	ld a, c
 	and a
-	jr nz, .have_badge
+	jr nz, .haveBadge
 	ld hl, Route23YouDontHaveTheBadgeYetText
 	call PrintText
 	call Route23MovePlayerDownScript
 	ld a, SCRIPT_ROUTE23_PLAYER_MOVING
 	ld [wRoute23CurScript], a
 	ret
-.have_badge
+.haveBadge
 	ld hl, Route23OhThatIsTheBadgeText
 	call PrintText
 	ld a, [wWhichBadge]
