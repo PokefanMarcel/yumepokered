@@ -38,22 +38,22 @@ BluesHouseDaisySittingText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_TOWN_MAP
 	ld hl, BluesHouseDaisyUseMapText
-	jr nz, .print_text
+	jr nz, .printText
 	CheckEvent EVENT_GOT_POKEDEX
 	ld hl, BluesHouseDaisyRivalAtLabText
-	jr z, .print_text
+	jr z, .printText
 	ld hl, BluesHouseDaisyOfferMapText
 	call PrintText
 	lb bc, TOWN_MAP, 1
 	call GiveItem
 	ld hl, BluesHouseDaisyBagFullText
-	jr nc, .print_text
+	jr nc, .printText
 	SetEvent EVENT_GOT_TOWN_MAP
 	ld a, TOGGLE_TOWN_MAP
 	ld [wToggleableObjectIndex], a
 	predef HideObject
 	ld hl, GotMapText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
@@ -83,9 +83,9 @@ BluesHouseDaisyWalkingText: ; marcelnote - modified for pay phones
 	ldh a, [hRandomAdd]
 	ld hl, .LivingThingsText
 	cp 85 ; 85/256 chance of 1st dialogue
-	jr c, .print_text
+	jr c, .printText
 	ld hl, .PhoneText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
@@ -115,9 +115,9 @@ AidesHouseMiddleAgedWomanText: ; marcelnote - new Pallet house
 ;	lb bc, RARE_CANDY, 5
 ;	call GiveItem
 ;	ld hl, BluesHouseDaisyBagFullText
-;	jr nc, .print_text
+;	jr nc, .printText
 ;	ld hl, GotMapText
-;.print_text
+;.printText
 ;	call PrintText
 ;	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
