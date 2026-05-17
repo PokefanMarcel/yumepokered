@@ -237,9 +237,9 @@ DisplayPokeBeeperAlertText:: ; marcelnote - new for PokéBeeper
 	ld a, [wBoxCount]
 	cp MONS_PER_BOX
 	ld hl, .PokeBeeperAlertText
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, .PokeBeeperAlertFullText
-.print_text
+.printText
 	call PrintText
 	jp AfterDisplayingTextID
 
