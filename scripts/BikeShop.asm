@@ -11,7 +11,7 @@ BikeShopClerkText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_BICYCLE
 	ld hl, BikeShopClerkHowDoYouLikeYourBicycleText
-	jr nz, .print_text
+	jr nz, .printText
 ; don't have bike
 	ld b, BIKE_VOUCHER
 	call IsItemInBag
@@ -21,13 +21,13 @@ BikeShopClerkText: ; marcelnote - optimized
 	lb bc, BICYCLE, 1
 	call GiveItem
 	ld hl, BikeShopBagFullText
-	jr nc, .print_text
+	jr nc, .printText
 	ld a, BIKE_VOUCHER
 	ldh [hItemToRemoveID], a
 	callfar RemoveItemByID
 	SetEvent EVENT_GOT_BICYCLE
 	ld hl, BikeShopExchangedVoucherText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 .dontHaveVoucher
@@ -64,14 +64,14 @@ BikeShopClerkText: ; marcelnote - optimized
 	call HandleMenuInput
 	ld hl, BikeShopComeAgainText
 	bit B_PAD_B, a
-	jr nz, .print_text
+	jr nz, .printText
 	;ld hl, wStatusFlags5 ; marcelnote - moved above to fix instant text bug
 	;res BIT_NO_TEXT_DELAY, [hl]
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, BikeShopCantAffordText
-	jr .print_text
+	jr .printText
 
 BikeShopMenuText:
 	db   "BICYCLE"
