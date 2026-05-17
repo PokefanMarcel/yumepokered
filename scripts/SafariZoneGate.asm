@@ -30,11 +30,11 @@ SafariZoneGateDefaultScript:
 	ld [wSpritePlayerStateData1FacingDirection], a
 	ld a, [wCoordIndex]
 	cp 1 ; index of second, lower entry in .PlayerNextToSafariZoneWorker1CoordsArray
-	jr z, .player_not_next_to_worker
+	jr z, .playerNotNextToWorker
 	ld a, SCRIPT_SAFARIZONEGATE_WOULD_YOU_LIKE_TO_JOIN
 	ld [wSafariZoneGateCurScript], a
 	ret
-.player_not_next_to_worker
+.playerNotNextToWorker
 	ld a, PAD_RIGHT
 	ld c, 1
 	call SafariZoneEntranceAutoWalk
@@ -77,7 +77,7 @@ SafariZoneGateLeavingSafariScript:
 	ld a, PLAYER_DIR_DOWN
 	ld [wPlayerMovingDirection], a
 	CheckAndResetEvent EVENT_SAFARI_GAME_OVER
-	jr z, .leaving_early
+	jr z, .leavingEarly
 	ResetEventReuseHL EVENT_IN_SAFARI_ZONE
 	call UpdateSprites
 	ld a, PAD_CTRL_PAD
@@ -93,7 +93,7 @@ SafariZoneGateLeavingSafariScript:
 	ld a, SCRIPT_SAFARIZONEGATE_PLAYER_MOVING_DOWN
 	ld [wSafariZoneGateCurScript], a
 	jr .return
-.leaving_early
+.leavingEarly
 	ld a, TEXT_SAFARIZONEGATE_SAFARI_ZONE_WORKER1_LEAVING_EARLY
 	ldh [hTextID], a
 	call DisplayTextID
@@ -229,7 +229,7 @@ SafariZoneGateSafariZoneWorker1LeavingEarlyText:
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .not_ready_to_leave
+	jr nz, .notReadyToLeave
 	ld hl, .ReturnSafariBallsText
 	call PrintText
 	xor a
@@ -240,8 +240,8 @@ SafariZoneGateSafariZoneWorker1LeavingEarlyText:
 	ResetEvents EVENT_SAFARI_GAME_OVER, EVENT_IN_SAFARI_ZONE
 	ld a, SCRIPT_SAFARIZONEGATE_DEFAULT
 	ld [wNextSafariZoneGateScript], a
-	jr .set_current_script
-.not_ready_to_leave
+	jr .setCurrentScript
+.notReadyToLeave
 	ld hl, .GoodLuckText
 	call PrintText
 	ld a, SPRITE_FACING_UP
@@ -251,7 +251,7 @@ SafariZoneGateSafariZoneWorker1LeavingEarlyText:
 	call SafariZoneEntranceAutoWalk
 	ld a, SCRIPT_SAFARIZONEGATE_LEAVING_SAFARI
 	ld [wNextSafariZoneGateScript], a
-.set_current_script
+.setCurrentScript
 	ld a, SCRIPT_SAFARIZONEGATE_SET_SCRIPT_AFTER_MOVE
 	ld [wSafariZoneGateCurScript], a
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
@@ -276,9 +276,9 @@ SafariZoneGateSafariZoneWorker2Text:
 	ld a, [wCurrentMenuItem]
 	and a
 	ld hl, .YoureARegularHereText
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, .SafariZoneExplanationText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
