@@ -17,16 +17,16 @@ Route12Gate2FBrunetteGirlText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_TM39
 	ld hl, .TM39ExplanationText
-	jr nz, .got_text
+	jr nz, .gotText
 	ld hl, .YouCanHaveThisText
 	call PrintText
 	lb bc, TM_SWIFT, 1
 	call GiveItem
 	ld hl, .TM39NoRoomText
-	jr nc, .got_text
+	jr nc, .gotText
 	SetEvent EVENT_GOT_TM39
 	ld hl, .ReceivedTM39Text
-.got_text
+.gotText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
