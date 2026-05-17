@@ -62,7 +62,7 @@ CinnabarVolcano1FB1FDefaultScript:
 	SetEventReuseHL EVENT_CINNABAR_VOLCANO_1F_BOULDER_ON_SWITCH
 	ret nz  ; event already set, no need to set flag
 	ld hl, wCurrentMapScriptFlags
-	set 5, [hl]
+	set BIT_CUR_MAP_LOADED_1, [hl]
 	ret
 
 .SwitchCoords:

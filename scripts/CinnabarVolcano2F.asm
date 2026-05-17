@@ -63,7 +63,7 @@ CinnabarVolcano2FDefaultScript:
 	ret nz
 .set_script_flag
 	ld hl, wCurrentMapScriptFlags
-	set 5, [hl]
+	set BIT_CUR_MAP_LOADED_1, [hl]
 	ret
 
 .SwitchCoords:

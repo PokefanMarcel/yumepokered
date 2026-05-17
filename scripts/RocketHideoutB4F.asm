@@ -11,8 +11,8 @@ RocketHideoutB4F_Script:
 RocketHideoutB4FDoorCallbackScript:
 	ld hl, wCurrentMapScriptFlags
 	bit BIT_CUR_MAP_LOADED_1, [hl]
-	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
+	res BIT_CUR_MAP_LOADED_1, [hl]
 	CheckEvent EVENT_ROCKET_HIDEOUT_4_DOOR_UNLOCKED
 	jr nz, .door_already_unlocked
 	CheckBothEventsSet EVENT_BEAT_ROCKET_HIDEOUT_4_TRAINER_0, EVENT_BEAT_ROCKET_HIDEOUT_4_TRAINER_1, 1

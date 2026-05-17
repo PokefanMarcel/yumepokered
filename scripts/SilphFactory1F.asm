@@ -11,9 +11,9 @@ SilphFactory1F_Script:
 
 SilphFactory1FDoorCallbackScript: ; marcelnote - adapted from RocketHideoutB4FDoorCallbackScript
 	ld hl, wCurrentMapScriptFlags
-	bit 5, [hl]
-	res 5, [hl]
+	bit BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
+	res BIT_CUR_MAP_LOADED_1, [hl]
 	CheckEvent EVENT_SILPH_FACTORY_1F_UNLOCKED_DOOR1
 	jr nz, .door_already_unlocked
 	CheckBothEventsSet EVENT_BEAT_SILPH_FACTORY_1F_TRAINER_4, EVENT_BEAT_SILPH_FACTORY_1F_TRAINER_5, 1
