@@ -56,9 +56,9 @@ SilphCo5FSilphWorkerMText:
 	text_asm
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
 	ld hl, .YoureOurHeroText
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, .ThatsYouRightText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd
 
