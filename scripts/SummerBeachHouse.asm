@@ -19,7 +19,7 @@ SummerBeachHouseSurfinDudeText:
 	text_asm
 	callfar IsSurfingPikachuInParty
 	ld hl, .DogsBurgersText
-	jr z, .print_text
+	jr z, .printText
 	CheckEvent EVENT_SURFIN_DUDE_WHOA
 	ld hl, .WannaGoSurfText
 	jr nz, .alreadySawSurfinPikachu
@@ -32,7 +32,7 @@ SummerBeachHouseSurfinDudeText:
 	and a
 	jr z, .StartSurfingPikachuMinigame
 	ld hl, .ComeAnytimeText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
@@ -47,19 +47,19 @@ SummerBeachHouseSurfinDudeText:
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	CheckEvent EVENT_GOT_SURF_VOUCHER
 	ld hl, .ComeAnytimeText
-	jr nz, .print_text
+	jr nz, .printText
 	ld a, [wSurfingMinigameHiScore + 1]
 	cp $40 ; is high score < 4000?
-	jr c, .print_text
+	jr c, .printText
 	ld hl, .ImpressedText
 	call PrintText
 	lb bc, SURF_VOUCHER, 1
 	call GiveItem
 	ld hl, .BagFullText
-	jr nc, .print_text
+	jr nc, .printText
 	SetEvent EVENT_GOT_SURF_VOUCHER
 	ld hl, .ReceivedVoucherText
-	jr .print_text
+	jr .printText
 
 .DogsBurgersText
 	text_far _SummerBeachHouseSurfinDudeDogsBurgersText
@@ -165,9 +165,9 @@ SummerBeachHousePoster2Text: ; marcelnote - shuffled poster texts
 	text_asm
 	callfar IsSurfingPikachuInParty
 	ld hl, .ScribblesText
-	jr z, .print_text
+	jr z, .printText
 	ld hl, .SurfingTip1Text
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
@@ -183,9 +183,9 @@ SummerBeachHousePoster3Text: ; marcelnote - shuffled poster texts
 	text_asm
 	callfar IsSurfingPikachuInParty
 	ld hl, .SeaUnitesAllText
-	jr z, .print_text
+	jr z, .printText
 	ld hl, .SurfingTip2Text
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
