@@ -686,7 +686,7 @@ ItemUseBicycle:
 	ld [wWalkBikeSurfState], a ; change player state to walking
 	call PlayDefaultMusic ; play walking music
 	ld hl, GotOffBicycleText
-	jr .print_text
+	jr .printText
 .tryToGetOnBike
 	call IsBikingAllowed
 	jp nc, NoCyclingAllowedHere
@@ -697,7 +697,7 @@ ItemUseBicycle:
 	ld [wWalkBikeSurfState], a ; change player state to biking
 	call PlayDefaultMusic ; play bike riding music
 	ld hl, GotOnBicycleText
-.print_text
+.printText
 	jp PrintText
 
 ; indirectly used by SURF in StartMenu_Pokemon.surf
@@ -2005,9 +2005,9 @@ ItemUseExpAll:    ; marcelnote - ExpAll can be activated/deactivated
 	ld a, [wStatusFlags1]
 	bit BIT_EXP_ALL_ACTIVE, a
 	ld hl, .ActivatedText
-	jr z, .got_text
+	jr z, .gotText
 	ld hl, .DeactivatedText
-.got_text
+.gotText
 	xor 1 << BIT_EXP_ALL_ACTIVE
 	ld [wStatusFlags1], a
 	jp PrintText
