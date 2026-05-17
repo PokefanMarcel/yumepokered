@@ -77,16 +77,16 @@ CinnabarLabMetronomeRoomScientist1Text: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_TM35
 	ld hl, .TM35ExplanationText
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, .Text
 	call PrintText
 	lb bc, TM_METRONOME, 1
 	call GiveItem
 	ld hl, .TM35NoRoomText
-	jr nc, .print_text
+	jr nc, .printText
 	SetEvent EVENT_GOT_TM35
 	ld hl, .ReceivedTM35Text
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
@@ -163,25 +163,25 @@ FossilsList:
 CinnabarLabFossilRoomScientist1Text: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GAVE_FOSSIL_TO_LAB
-	jr nz, .check_done_reviving
+	jr nz, .checkDoneReviving
 	ld hl, .Text
 	call PrintText
 	call CinnabarLabScript_GetFossilsInBag
 	ld a, [wFilteredBagItemsCount]
 	and a
 	ld hl, .NoFossilsText
-	jr z, .print_text
+	jr z, .printText
 	callfar GiveFossilToCinnabarLab
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-.check_done_reviving
+.checkDoneReviving
 	CheckEventAfterBranchReuseA EVENT_LAB_STILL_REVIVING_FOSSIL, EVENT_GAVE_FOSSIL_TO_LAB
-	jr z, .done_reviving
+	jr z, .doneReviving
 	ld hl, .GoForAWalkText
-.print_text
+.printText
 	call PrintText
-.text_script_end
+.textScriptEnd
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-.done_reviving
+.doneReviving
 	call LoadFossilItemAndMonNameBank1D
 	ld hl, .FossilIsBackToLifeText
 	call PrintText
@@ -190,7 +190,7 @@ CinnabarLabFossilRoomScientist1Text: ; marcelnote - optimized
 	ld b, a
 	ld c, 30
 	call GivePokemon
-	jr nc, .text_script_end
+	jr nc, .textScriptEnd
 	ResetEvents EVENT_GAVE_FOSSIL_TO_LAB, EVENT_LAB_STILL_REVIVING_FOSSIL, EVENT_LAB_HANDING_OVER_FOSSIL_MON
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
