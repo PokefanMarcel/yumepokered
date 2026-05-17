@@ -599,13 +599,13 @@ SilphFactory2FSilphWorkerMText:
 	ld b, CARD_KEY
 	call IsItemInBag
 	ld hl, .NoCardText
-	jr z, .print_text
+	jr z, .printText
 	SetEvent EVENT_SILPH_FACTORY_2F_CARD_KEY_UPDATED
 	ld hl, .CardWasUpdatedText
-	jr .print_text
+	jr .printText
 .alreadyUpdated
 	ld hl, .HidHereText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
