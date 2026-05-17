@@ -9,7 +9,7 @@ Route2Gate_TextPointers:
 Route2GateOaksAideText: ; marcelnote - simplified by using wNameBuffer in text
 	text_asm
 	CheckEvent EVENT_GOT_HM05
-	jr nz, .got_item
+	jr nz, .gotItem
 	ld a, 10
 	ldh [hOaksAideRequirement], a
 	ld a, HM_FLASH
@@ -19,12 +19,12 @@ Route2GateOaksAideText: ; marcelnote - simplified by using wNameBuffer in text
 	predef OaksAideScript
 	ldh a, [hOaksAideResult]
 	dec a ; OAKS_AIDE_GOT_ITEM?
-	jr nz, .no_item
+	jr nz, .noItem
 	SetEvent EVENT_GOT_HM05
-.got_item
+.gotItem
 	ld hl, .FlashExplanationText
 	call PrintText
-.no_item
+.noItem
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .FlashExplanationText:
