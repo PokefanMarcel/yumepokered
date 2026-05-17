@@ -11,10 +11,10 @@ VBlank::
 	; joenote - set the correct backed-up bank if vblank happened during a DelayFrame function
 	ld a, [wDelayFrameBank]
 	and a
-	jr z, .no_delay_bank
+	jr z, .noDelayBank
 	ld [hLoadedROMBank], a
 	ld [rROMB], a
-.no_delay_bank
+.noDelayBank
 
 	ldh a, [hSCX]
 	ldh [rSCX], a
