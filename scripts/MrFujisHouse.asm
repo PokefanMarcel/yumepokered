@@ -15,9 +15,9 @@ MrFujisHouseSuperNerdText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_RESCUED_MR_FUJI
 	ld hl, .MrFujiHadBeenPrayingText
-	jr nz, .rescued_mr_fuji
+	jr nz, .rescuedMrFuji
 	ld hl, .MrFujiIsntHereText
-.rescued_mr_fuji
+.rescuedMrFuji
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
@@ -33,9 +33,9 @@ MrFujisHouseLittleGirlText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_RESCUED_MR_FUJI
 	ld hl, .PokemonAreNiceToHugText
-	jr nz, .rescued_mr_fuji
+	jr nz, .rescuedMrFuji
 	ld hl, .ThisIsMrFujisHouseText
-.rescued_mr_fuji
+.rescuedMrFuji
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
@@ -65,13 +65,13 @@ MrFujisHouseMrFujiText: ; marcelnote - optimized and added Citrus pass dialogue
 	text_asm
 	CheckEvent EVENT_GOT_CITRUS_PASS
 	ld hl, .BeCarefulText
-	jr nz, .print_text
+	jr nz, .printText
 	CheckEvent EVENT_GAVE_FUJIS_NOTES
 	ld hl, .TakeThisText
 	jr nz, .gaveFujisNotes ; this jump should never happen because giving the Notes frees up one spot in the bag
 	ld b, FUJIS_NOTES
 	call IsItemInBag
-	jr z, .no_fujis_notes
+	jr z, .noFujisNotes
 	ld a, FUJIS_NOTES
 	ldh [hItemToRemoveID], a
 	callfar RemoveItemByID
@@ -82,26 +82,26 @@ MrFujisHouseMrFujiText: ; marcelnote - optimized and added Citrus pass dialogue
 	lb bc, CITRUS_PASS, 1
 	call GiveItem
 	ld hl, .MakeRoomText
-	jr nc, .print_text ; should never happen either
+	jr nc, .printText ; should never happen either
 	SetEvent EVENT_GOT_CITRUS_PASS
 	ld hl, .ReceivedCitrusPassText
-	jr .print_text
-.no_fujis_notes
+	jr .printText
+.noFujisNotes
 	CheckEvent EVENT_GOT_POKE_FLUTE
 	ld hl, .HasMyFluteHelpedYouText
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, .IThinkThisMayHelpYourQuestText
 	call PrintText
 	lb bc, POKE_FLUTE, 1
 	call GiveItem
 	ld hl, .MakeRoomText
-	jr nc, .print_text
+	jr nc, .printText
 	ld a, TOGGLE_POKEMON_TOWER_7F_CHANNELER ; marcelnote - added 7FChanneler
 	ld [wToggleableObjectIndex], a
 	predef ShowObject
 	SetEvent EVENT_GOT_POKE_FLUTE
 	ld hl, .ReceivedPokeFluteText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
