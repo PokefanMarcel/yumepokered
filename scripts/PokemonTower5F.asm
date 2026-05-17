@@ -25,12 +25,12 @@ PokemonTower5F_ScriptPointers:
 PokemonTower5FDefaultScript:
 	ld hl, PokemonTower5FPurifiedZoneCoords
 	call ArePlayerCoordsInArray
-	jr c, .in_purified_zone
+	jr c, .inPurifiedZone
 	ld hl, wStatusFlags4
 	res BIT_NO_BATTLES, [hl]
 	ResetEvent EVENT_IN_PURIFIED_ZONE
 	jp PokemonTower5FCheckGhostEncounterScript ; marcelnote - postgame Agatha event, was jp CheckFightingMapTrainers
-.in_purified_zone
+.inPurifiedZone
 	CheckAndSetEvent EVENT_IN_PURIFIED_ZONE
 	ret nz
 	xor a
@@ -101,7 +101,7 @@ PokemonTower5FGhostBattleScript: ; marcelnote - postgame Agatha event
 	ld [wJoyIgnore], a
 	ld a, [wBattleResult]
 	and a
-	jr nz, .did_not_defeat
+	jr nz, .didNotDefeat
 	SetEvent EVENT_BEAT_GHOST_5F
 	ld a, TEXT_POKEMONTOWER5F_GHOST_VANISHED
 	ldh [hTextID], a
@@ -112,7 +112,7 @@ PokemonTower5FGhostBattleScript: ; marcelnote - postgame Agatha event
 	ld [wPokemonTower5FCurScript], a
 	ld [wCurMapScript], a
 	ret
-.did_not_defeat
+.didNotDefeat
 	ld a, $1
 	ld [wSimulatedJoypadStatesIndex], a
 	ld a, PAD_LEFT
