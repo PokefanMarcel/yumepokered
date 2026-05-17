@@ -15,18 +15,18 @@ SilphFactory1FDoorCallbackScript: ; marcelnote - adapted from RocketHideoutB4FDo
 	ret z
 	res BIT_CUR_MAP_LOADED_1, [hl]
 	CheckEvent EVENT_SILPH_FACTORY_1F_UNLOCKED_DOOR1
-	jr nz, .door_already_unlocked
+	jr nz, .doorAlreadyUnlocked
 	CheckBothEventsSet EVENT_BEAT_SILPH_FACTORY_1F_TRAINER_4, EVENT_BEAT_SILPH_FACTORY_1F_TRAINER_5, 1
-	jr z, .unlock_door
+	jr z, .unlockDoor
 	ld a, $5f ; Door block
-	jr .set_block
-.unlock_door
+	jr .setBlock
+.unlockDoor
 	ld a, SFX_GO_INSIDE
 	call PlaySound
-	SetEvent EVENT_ROCKET_HIDEOUT_4_DOOR_UNLOCKED
-.door_already_unlocked
+	SetEvent EVENT_SILPH_FACTORY_1F_UNLOCKED_DOOR1
+.doorAlreadyUnlocked
 	ld a, $0e ; Floor block
-.set_block
+.setBlock
 	ld [wNewTileBlockID], a
 	lb bc, 5, 5
 	predef_jump ReplaceTileBlock
@@ -68,7 +68,7 @@ SilphFactory1FRocket1Text:
 	text_asm
 	ld hl, SilphFactory1FTrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SilphFactory1FRocket1BattleText:
 	text_far _SilphFactory1FRocket1BattleText
@@ -86,7 +86,7 @@ SilphFactory1FRocket2Text:
 	text_asm
 	ld hl, SilphFactory1FTrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SilphFactory1FRocket2BattleText:
 	text_far _SilphFactory1FRocket2BattleText
@@ -104,7 +104,7 @@ SilphFactory1FRocket3Text:
 	text_asm
 	ld hl, SilphFactory1FTrainerHeader2
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SilphFactory1FRocket3BattleText:
 	text_far _SilphFactory1FRocket3BattleText
@@ -122,7 +122,7 @@ SilphFactory1FRocket4Text:
 	text_asm
 	ld hl, SilphFactory1FTrainerHeader3
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SilphFactory1FRocket4BattleText:
 	text_far _SilphFactory1FRocket4BattleText
@@ -140,7 +140,7 @@ SilphFactory1FRocket5Text:
 	text_asm
 	ld hl, SilphFactory1FTrainerHeader4
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SilphFactory1FRocket5BattleText:
 	text_far _SilphFactory1FRocket5BattleText
@@ -158,7 +158,7 @@ SilphFactory1FRocket5AfterBattleText:
 	ld hl, .AfterBattleText
 .ArcherDefeated
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .AfterBattleText:
 	text_far _SilphFactory1FRocket5AfterBattleText
@@ -172,7 +172,7 @@ SilphFactory1FRocket6Text:
 	text_asm
 	ld hl, SilphFactory1FTrainerHeader5
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 SilphFactory1FRocket6BattleText:
 	text_far _SilphFactory1FRocket6BattleText
@@ -190,7 +190,7 @@ SilphFactory1FRocket6AfterBattleText:
 	ld hl, .AfterBattleText
 .ArcherDefeated
 	call PrintText
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 .AfterBattleText:
 	text_far _SilphFactory1FRocket6AfterBattleText
