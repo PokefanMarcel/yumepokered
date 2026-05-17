@@ -30,13 +30,13 @@ RunObjectAnimations:
 	ld a, [wCurrentAnimatedObjectOAMBufferOffset]
 	ld l, a
 	ld h, HIGH(wShadowOAM)
-.deinit_unused_oam_loop
+.deinitUnusedOamLoop
 	ld a, l
 	cp LOW(wShadowOAMEnd)
 	jr nc, .quit
 	xor a
 	ld [hli], a
-	jr .deinit_unused_oam_loop
+	jr .deinitUnusedOamLoop
 
 .quit
 	ret
@@ -147,7 +147,7 @@ UpdateCurrentAnimatedObjectFrame:
 	cp $fd
 	jr z, .finish
 	cp $fc
-	jr z, .delete_animation
+	jr z, .deleteAnimation
 	call GetCurrentAnimatedObjectOAMDataPointer
 	ld a, [wCurrentAnimatedObjectVTileOffset]
 	add [hl]
@@ -199,27 +199,27 @@ UpdateCurrentAnimatedObjectFrame:
 	ld a, [wc634]
 	cp $7
 	ld a, b
-	jr z, .skip_load
+	jr z, .skipLoad
 	ld [de], a
-.skip_load
+.skipLoad
 	inc hl
 	inc de
 	ld a, e
 	ld [wCurrentAnimatedObjectOAMBufferOffset], a
 	cp LOW(wShadowOAMEnd)
-	jr nc, .oam_is_full
+	jr nc, .oamIsFull
 	dec c
 	jr nz, .loop
 	pop bc
 	jr .finish
 
-.delete_animation
+.deleteAnimation
 	call MaskCurrentAnimatedObjectStruct
 .finish
 	and a
 	ret
 
-.oam_is_full
+.oamIsFull
 	pop bc
 	scf
 	ret
@@ -229,11 +229,11 @@ GetCurrentAnimatedObjectTileYCoordinate:
 	ld a, [hl]
 	ld hl, wCurAnimatedObjectOAMAttributes
 	bit B_OAM_YFLIP, [hl]
-	jr z, .no_flip
+	jr z, .noFlip
 	add $8
 	xor $ff
 	inc a
-.no_flip
+.noFlip
 	pop hl
 	ret
 
@@ -242,11 +242,11 @@ GetCurrentAnimatedObjectTileXCoordinate:
 	ld a, [hl]
 	ld hl, wCurAnimatedObjectOAMAttributes
 	bit B_OAM_XFLIP, [hl]
-	jr z, .no_flip
+	jr z, .noFlip
 	add $8
 	xor $ff
 	inc a
-.no_flip
+.noFlip
 	pop hl
 	ret
 
@@ -298,23 +298,23 @@ UpdateDurationTimerAndFrameStateForCurrentAnimatedObject:
 	add hl, bc
 	ld a, [hl]
 	and a
-	jr z, .next_frame
+	jr z, .nextFrame
 	dec [hl]
 	call GetPointerToCurrentAnimatedObjectFrameScript
 	ld a, [hli]
 	push af
 	jr .finish
 
-.next_frame
+.nextFrame
 	ld hl, $a
 	add hl, bc
 	inc [hl]
 	call GetPointerToCurrentAnimatedObjectFrameScript
 	ld a, [hli]
 	cp $fe
-	jr z, .restart_anim
+	jr z, .restartAnim
 	cp $ff
-	jr z, .hold_last_frame_state
+	jr z, .holdLastFrameState
 	push af
 	ld a, [hl]
 	push hl
@@ -334,7 +334,7 @@ UpdateDurationTimerAndFrameStateForCurrentAnimatedObject:
 	pop af
 	ret
 
-.hold_last_frame_state
+.holdLastFrameState
 	xor a
 	ld hl, $8
 	add hl, bc
@@ -345,7 +345,7 @@ UpdateDurationTimerAndFrameStateForCurrentAnimatedObject:
 	dec [hl]
 	jr .loop
 
-.restart_anim
+.restartAnim
 	xor a
 	ld hl, $8
 	add hl, bc
