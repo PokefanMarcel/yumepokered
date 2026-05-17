@@ -6,7 +6,7 @@ CheckForSurf:: ; marcelnote - could be improved if there is a wram bit which che
 	ret z
 ; we have the right badge
 	ld a, [wWalkBikeSurfState]
-	cp 2 ; is the player already surfing?
+	cp SURFING
 	ret z
 ; we are not already surfing
 	callfar IsNextTileShoreOrWater
@@ -15,9 +15,9 @@ CheckForSurf:: ; marcelnote - could be improved if there is a wram bit which che
 	call IsSurfingAllowedOverworld
 	ld hl, wStatusFlags1
 	bit BIT_SURF_ALLOWED, [hl]
-	res BIT_SURF_ALLOWED, [hl]
 	ret z
 ; surfing is allowed
+	res BIT_SURF_ALLOWED, [hl]
 	ld hl, TilePairCollisionsWater
 	call CheckForTilePairCollisions
 	ret z
@@ -95,7 +95,7 @@ CheckForCut::
 	callfar ReplaceTreeTileBlock
 	callfar RedrawMapView
 	callfar AnimCut
-	ld a, $1
+	ld a, 1
 	ld [wUpdateSpritesEnabled], a
 	ld a, SFX_CUT
 	call PlaySound
@@ -143,7 +143,7 @@ CheckForStrength:: ; marcelnote - this function is different from the others bec
 	jr z, .fail
 ; we have the right badge
 	ld a, [wStatusFlags1]
-	bit BIT_STRENGTH_ACTIVE, a ; is Strength already activated?
+	bit BIT_STRENGTH_ACTIVE, a
 	jr nz, .fail
 ; Strength not activated yet
 	ld d, STRENGTH
@@ -185,7 +185,7 @@ CheckForStrength:: ; marcelnote - this function is different from the others bec
 
 IsSurfingAllowedOverworld:
 ; marcelnote - this is essentially a copy of IsSurfingAllowed which
-;              uses call EnableAutoTextBoxDrawing, tx_pre_jump, ret
+;              uses call EnableAutoTextBoxDrawing / tx_pre_jump
 ;              instead of jp PrintText ; there's probably a way to merge both
 ; Returns whether surfing is allowed in bit 1 of wStatusFlags1.
 ; Surfing isn't allowed on the Cycling Road or in the lowest level of the
@@ -222,7 +222,7 @@ SeafoamIslandsB4FStairsOverworldCoords:
 WantToSurfText::
 	text_far _WantToSurfText
 	text_asm
-	ld a, $1
+	ld a, 1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
@@ -236,7 +236,7 @@ WantToSurfText::
 ;.print_text
 	call PrintText
 .saidNo
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 ;GotOnSurfboardText: ; marcelnote - for SURFBOARD
 ;	text_far _GotOnBicycleText1
@@ -247,7 +247,7 @@ WantToSurfText::
 WantToCutText::
 	text_far _WantToCutText
 	text_asm
-	ld a, $1
+	ld a, 1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
@@ -256,14 +256,14 @@ WantToCutText::
 	ld hl, UsedCutText
 	call PrintText
 .saidNo
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 UsedFlashText::
 	text_far _UsedFlashText
 	text_asm
-	ld a, $1
+	ld a, 1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
- 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+ 	rst TextScriptEnd
 
 
 ; marcelnote - adapted from shinpokered function
