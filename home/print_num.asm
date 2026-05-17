@@ -47,7 +47,7 @@ PrintNumber:: ; marcelnote - optimized
 	add '0'            ; a = character number to write
 	ld [hld], a
 	dec c              ; one less digit to print
-	jr z, .done_PopHL  ; if no more digits to print, we're done
+	jr z, .donePopHL  ; if no more digits to print, we're done
 
 	bit BIT_LEADING_ZEROES, b
 	jr nz, .loopDivide ; if printing leading zeroes, keep going
@@ -63,7 +63,7 @@ PrintNumber:: ; marcelnote - optimized
 	jr nz, .loopDivide
 	; we have printed everything, now check left alignment
 	bit BIT_LEFT_ALIGN, b
-	jr z, .done_PopHL   ; if no left alignment, we're done
+	jr z, .donePopHL   ; if no left alignment, we're done
 
 ; Move the printed number to the left.
 	ldh a, [hNumDigitsToPrint]
@@ -97,7 +97,7 @@ PrintNumber:: ; marcelnote - optimized
 	pop af  ; discard pushed hl
 	jr .done
 
-.done_PopHL
+.donePopHL
 	pop hl  ; restore hl = coord of rightmost tile to write
 .done
 	inc hl  ; hl = coord of next tile after printed number
