@@ -124,9 +124,9 @@ SSAnne1FRoomsGirl1Text: ; marcelnote - modified for girl player
 	ld a, [wStatusFlags4]
 	bit BIT_IS_GIRL, a
 	ld hl, .WaiterText
-	jr z, .print_text
+	jr z, .printText
 	ld hl, .WaitressText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
