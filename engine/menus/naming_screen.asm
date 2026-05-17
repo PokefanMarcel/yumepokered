@@ -192,7 +192,7 @@ DisplayNamingScreen:
 	dw .ABStartReturnPoint
 	dw .pressedA
 
-.pressedA_changedCase
+.pressedAChangedCase
 	pop de
 	ld de, .selectReturnPoint
 	push de
@@ -220,7 +220,7 @@ DisplayNamingScreen:
 	jr nz, .didNotPressCaseSwitch
 	ld a, [wTopMenuItemX]
 	cp $1 ; case switch column
-	jr z, .pressedA_changedCase
+	jr z, .pressedAChangedCase
 .didNotPressCaseSwitch
 	ld hl, wMenuCursorLocation
 	ld a, [hli]
@@ -375,9 +375,9 @@ PrintNicknameAndUnderscores:
 	ld a, [wNamingScreenType]
 	cp NAME_MON_SCREEN
 	ld b, NAME_LENGTH - 1 ; pokemon max name length
-	jr nc, .got_max_length
+	jr nc, .gotMaxLength
 	ld b, PLAYER_NAME_LENGTH - 1 ; player or rival max name length
-.got_max_length
+.gotMaxLength
 	ld a, '<UNDERSCORE>' ; underscore tile id
 .placeUnderscoreLoop
 	ld [hli], a
