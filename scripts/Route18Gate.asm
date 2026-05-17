@@ -30,7 +30,7 @@ Route18GateDefaultScript:
 	ldh [hJoyHeld], a
 	ld a, [wCoordIndex]
 	cp $1
-	jr z, .next_to_counter
+	jr z, .nextToCounter
 	ld a, [wCoordIndex]
 	dec a
 	ld [wSimulatedJoypadStatesIndex], a
@@ -43,7 +43,7 @@ Route18GateDefaultScript:
 	ld a, SCRIPT_ROUTE18GATE_PLAYER_MOVING_UP
 	ld [wRoute18GateCurScript], a
 	ret
-.next_to_counter
+.nextToCounter
 	ld a, SCRIPT_ROUTE18GATE_GUARD
 	ld [wRoute18GateCurScript], a
 	ret
@@ -98,9 +98,9 @@ Route18Gate1FGuardText: ; marcelnote - optimized
 	ld b, BICYCLE
 	call IsItemInBag
 	ld hl, .YouNeedABicycleText
-	jr z, .got_text
+	jr z, .gotText
 	ld hl, .CyclingRoadUphillText
-.got_text
+.gotText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
