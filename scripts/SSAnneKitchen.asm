@@ -43,12 +43,12 @@ SSAnneKitchenCook7Text: ; marcelnote - optimized
 	ldh a, [hRandomAdd]
 	bit 7, a
 	ld hl, .SalmonDuSaladText
-	jr nz, .print_text
+	jr nz, .printText
 	bit 4, a
 	ld hl, .EelsAuBarbecueText
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, .PrimeBeefSteakText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
