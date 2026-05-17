@@ -97,14 +97,12 @@ SeafoamIslandsB3FMoveObjectScript:
 	ret z
 	ld a, [wXCoord]
 	cp 18
-	jr z, .playerFellThroughHoleLeft
+	ld de, .RLEList_StrongCurrentNearLeftBoulder
+	jr z, .forceSurfMovement
 	cp 19
 	ld a, SCRIPT_SEAFOAMISLANDSB3F_DEFAULT
 	jr nz, .playerNotInStrongCurrent
 	ld de, .RLEList_StrongCurrentNearRightBoulder
-	jr .forceSurfMovement
-.playerFellThroughHoleLeft
-	ld de, .RLEList_StrongCurrentNearLeftBoulder
 .forceSurfMovement
 	ld hl, wSimulatedJoypadStatesEnd
 	call DecodeRLEList
@@ -125,7 +123,6 @@ SeafoamIslandsB3FMoveObjectScript:
 	db PAD_DOWN, 7 ; marcelnote - refactored warp engine
 	db PAD_RIGHT, 1
 	db PAD_DOWN, 4
-	db PAD_LEFT, 1
 	db -1 ; end
 
 .RLEList_StrongCurrentNearLeftBoulder:
