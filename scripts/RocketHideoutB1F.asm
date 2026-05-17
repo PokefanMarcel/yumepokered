@@ -14,19 +14,19 @@ RocketHideoutB1FDoorCallbackScript:
 	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
 	CheckEvent EVENT_ENTERED_ROCKET_HIDEOUT
-	jr nz, .door_open
+	jr nz, .doorOpen
 	CheckEventReuseA EVENT_BEAT_ROCKET_HIDEOUT_1_TRAINER_4
-	jr nz, .play_sound_door_open
+	jr nz, .playSoundDoorOpen
 	ld a, $54 ; Door Block
-	jr .set_door_block
-.play_sound_door_open
+	jr .setDoorBlock
+.playSoundDoorOpen
 	ld a, SFX_GO_INSIDE
 	call PlaySound
 	; BUG: should be SetEvent to avoid the SFX playing every time you enter the map
 	CheckEventHL EVENT_ENTERED_ROCKET_HIDEOUT
-.door_open
+.doorOpen
 	ld a, $e ; Floor Block
-.set_door_block
+.setDoorBlock
 	ld [wNewTileBlockID], a
 	lb bc, 8, 12
 	predef_jump ReplaceTileBlock
