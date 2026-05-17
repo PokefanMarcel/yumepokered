@@ -87,7 +87,7 @@ PokemonAcademy2FTeacherText:
 	call WaitForSoundToFinish
 .passed
 	ld hl, .WellDone
-    jr .print_text
+    jr .printText
 .fail
 	ld a, SFX_DENIED
 	call PlaySoundWaitForCurrent
@@ -96,7 +96,7 @@ PokemonAcademy2FTeacherText:
 	call PrintText
 .refused
 	ld hl, .ComeBackWhenReady
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
