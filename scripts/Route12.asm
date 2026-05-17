@@ -49,11 +49,11 @@ Route12SnorlaxPostBattleScript:
 	call UpdateSprites
 	ld a, [wBattleResult]
 	cp $2
-	jr z, .caught_snorlax
+	jr z, .caughtSnorlax
 	ld a, TEXT_ROUTE12_SNORLAX_CALMED_DOWN
 	ldh [hTextID], a
 	call DisplayTextID
-.caught_snorlax
+.caughtSnorlax
 	SetEvent EVENT_BEAT_ROUTE12_SNORLAX
 	call Delay3
 	ld a, SCRIPT_ROUTE12_DEFAULT
