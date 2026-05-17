@@ -22,9 +22,9 @@ LavenderTownLittleGirlText:
 	ld a, [wCurrentMenuItem]
 	and a
 	ld hl, .HaHaGuessNotText
-	jr nz, .got_text
+	jr nz, .gotText
 	ld hl, .SoThereAreBelieversText
-.got_text
+.gotText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
