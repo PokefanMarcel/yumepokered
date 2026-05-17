@@ -270,12 +270,12 @@ OverworldLoopLessDelay::
 	ld a, [wPlayerDirection] ; current direction
 	ld [wPlayerMovingDirection], a ; save direction
 	call UpdateSprites
+	call CheckDirectionalWarpAtPlayerCoord
+	jp c, WarpFound2
 	ld a, [wWalkBikeSurfState]
 	cp SURFING
 	jr z, .surfing
 ; not surfing
-	call CheckDirectionalWarpAtPlayerCoord
-	jp c, WarpFound2
 	call CollisionCheckOnLand
 	jr nc, .noCollision
 ; collision occurred

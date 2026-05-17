@@ -79,7 +79,7 @@ SeafoamIslandsB3FDefaultScript:
 	ret
 
 RLEList_ForcedSurfingStrongCurrentNearSteps:
-	db PAD_DOWN, 6
+	db PAD_DOWN, 7 ; marcelnote - refactored warp engine
 	db PAD_RIGHT, 5
 	db PAD_DOWN, 3
 	db -1 ; end
@@ -122,14 +122,14 @@ SeafoamIslandsB3FMoveObjectScript:
 	ret
 
 .RLEList_StrongCurrentNearRightBoulder:
-	db PAD_DOWN, 6
-	db PAD_RIGHT, 2
+	db PAD_DOWN, 7 ; marcelnote - refactored warp engine
+	db PAD_RIGHT, 1
 	db PAD_DOWN, 4
 	db PAD_LEFT, 1
 	db -1 ; end
 
 .RLEList_StrongCurrentNearLeftBoulder:
-	db PAD_DOWN, 6
+	db PAD_DOWN, 7 ; marcelnote - refactored warp engine
 	db PAD_RIGHT, 2
 	db PAD_DOWN, 4
 	db -1 ; end
