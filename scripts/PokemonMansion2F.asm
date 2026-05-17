@@ -102,7 +102,7 @@ PokemonMansion2FSwitchText: ; marcelnote - optimized
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .not_pressed
+	jr nz, .notPressed
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	ld hl, wCurrentMapScriptFlags
@@ -116,7 +116,7 @@ PokemonMansion2FSwitchText: ; marcelnote - optimized
 	ResetEventReuseHL EVENT_MANSION_SWITCH_ON
 .done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-.not_pressed
+.notPressed
 	ld hl, .NotPressed
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
