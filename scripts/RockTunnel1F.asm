@@ -181,7 +181,7 @@ RockTunnel1FBlackbeltText:    ; marcelnote - added Blackbelt
 	ld a, [wMapPalOffset] ; this checks that FLASH is not active
 	and a
 	ld hl, .FlashOnText
-	jr z, .flash_on
+	jr z, .flashOn
 	ld hl, .TruePotentialText
 	call PrintText
 	ld a, $01
@@ -201,7 +201,7 @@ RockTunnel1FBlackbeltText:    ; marcelnote - added Blackbelt
 .done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
-.flash_on
+.flashOn
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
