@@ -17,11 +17,11 @@ DaycareGentlemanText:
 	ld a, [wCurrentMenuItem]
 	and a
 	ld hl, .ComeAgainText
-	jp nz, .print_text
+	jp nz, .printText
 	ld a, [wPartyCount]
 	dec a
 	ld hl, .OnlyHaveOneMonText
-	jp z, .print_text
+	jp z, .printText
 	ld hl, .WhichMonText
 	call PrintText
 	xor a
@@ -35,10 +35,10 @@ DaycareGentlemanText:
 	call LoadGBPal
 	pop af
 	ld hl, .AllRightThenText
-	jp c, .print_text
+	jp c, .printText
 ;	callfar KnowsHMMove ; marcelnote - daycare can erase HM moves
 ;	ld hl, .CantAcceptMonWithHMText
-;	jp c, .print_text
+;	jp c, .printText
 	xor a
 	ld [wPartyAndBillsPCSavedMenuItem], a
 	ld a, [wWhichPokemon]
@@ -55,7 +55,7 @@ DaycareGentlemanText:
 	ld a, [wCurPartySpecies]
 	call PlayCry
 	ld hl, .ComeSeeMeInAWhileText
-	jp .print_text
+	jp .printText
 
 .daycareInUse
 	xor a
@@ -198,12 +198,12 @@ DaycareGentlemanText:
 	ld a, [wCurPartySpecies]
 	call PlayCry
 	ld hl, .GotMonBackText
-	jr .print_text
+	jr .printText
 
 .leaveMonInDayCare
 	ld a, [wDayCareStartLevel]
 	ld [wDayCareMonBoxLevel], a
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd
 
