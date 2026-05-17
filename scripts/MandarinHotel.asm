@@ -81,9 +81,9 @@ MandarinHotel2FGentlemanAfterBattleText:
 	ld a, [wStatusFlags4]
 	bit BIT_IS_GIRL, a
 	ld hl, .GirlText
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, .BoyText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
