@@ -296,9 +296,9 @@ FuchsiaGymGymGuideText: ; marcelnote - adjusted
 	text_asm
 	CheckEvent EVENT_BEAT_KOGA
 	ld hl, .BeatKogaText
-	jr nz, .beat_koga
+	jr nz, .beatKoga
 	ld hl, .ChampInMakingText
-.beat_koga
+.beatKoga
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
