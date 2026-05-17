@@ -37,28 +37,28 @@ CopycatsHouse2FCopycatText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_TM31
 	ld hl, .TM31Explanation2Text
-	jr nz, .print_text
+	jr nz, .printText
 	ld a, TRUE
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	ld hl, .DoYouLikePokemonText
 	call PrintText
 	ld b, POKE_DOLL
 	call IsItemInBag
-	jr z, .text_script_end
+	jr z, .textScriptEnd
 	ld hl, .TM31PreReceiveText
 	call PrintText
 	lb bc, TM_MIMIC, 1
 	call GiveItem
 	ld hl, .TM31NoRoomText
-	jr nc, .print_text
+	jr nc, .printText
 	ld a, POKE_DOLL
 	ldh [hItemToRemoveID], a
 	callfar RemoveItemByID
 	SetEvent EVENT_GOT_TM31
 	ld hl, .ReceivedTM31Text
-.print_text
+.printText
 	call PrintText
-.text_script_end
+.textScriptEnd
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .DoYouLikePokemonText:
