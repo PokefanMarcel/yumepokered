@@ -99,7 +99,7 @@ PokemonMansion1FSwitchText:
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .not_pressed
+	jr nz, .notPressed
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	ld hl, wCurrentMapScriptFlags
@@ -113,7 +113,7 @@ PokemonMansion1FSwitchText:
 	ResetEventReuseHL EVENT_MANSION_SWITCH_ON
 .done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-.not_pressed
+.notPressed
 	ld hl, .NotPressedText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
