@@ -46,14 +46,14 @@ SilphCo8FBaldingGuyText: ; marcelnote - new for EXP.ALL boost
 	text_asm
 	CheckEvent EVENT_BOOSTED_EXP_ALL
 	ld hl, .FirstVersionText
-	jr nz, .print_text
+	jr nz, .printText
 	CheckEvent EVENT_BECAME_CHAMPION
 	jr nz, .canUpgrade
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
 	ld hl, .ReadySoonText
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, .ShutMeDownText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd
 
@@ -64,14 +64,14 @@ SilphCo8FBaldingGuyText: ; marcelnote - new for EXP.ALL boost
 	ld a, [wCurrentMenuItem]
 	and a
 	ld hl, .RefusedText
-	jr nz, .print_text
+	jr nz, .printText
 	ld b, EXP_ALL
 	call IsItemInBag
 	ld hl, .NoExpAllText
-	jr z, .print_text
+	jr z, .printText
 	SetEvent EVENT_BOOSTED_EXP_ALL
 	ld hl, .LetMeSeeText
-	jr .print_text
+	jr .printText
 
 .ShutMeDownText:
 	text_far _SilphCo8FBaldingGuyShutMeDownText
@@ -106,9 +106,9 @@ SilphCo8FSilphWorkerMText:
 	text_asm
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
 	ld hl, .ThanksForSavingUsText
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, .SilphIsFinishedText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd
 
