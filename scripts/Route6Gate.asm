@@ -23,7 +23,7 @@ Route6GateDefaultScript:
 	callfar RemoveGuardDrink
 	ldh a, [hItemToRemoveID]
 	and a
-	jr nz, .have_drink
+	jr nz, .haveDrink
 	ld a, TEXT_ROUTE6GATE_GUARD_GEE_IM_THIRSTY
 	ldh [hTextID], a
 	call DisplayTextID
@@ -31,7 +31,7 @@ Route6GateDefaultScript:
 	ld a, SCRIPT_ROUTE6GATE_PLAYER_MOVING
 	ld [wRoute6GateCurScript], a
 	ret
-.have_drink
+.haveDrink
 	SetEvent EVENT_GAVE_SAFFRON_GUARDS_DRINK
 	ld a, TEXT_ROUTE6GATE_GUARD_GIVE_DRINK
 	ldh [hTextID], a
@@ -76,7 +76,7 @@ Route6Gate_TextPointers:
 Route6GateOaksAideText: ; marcelnote - new for PokéBeeper
 	text_asm
 	CheckEvent EVENT_GOT_POKE_BEEPER
-	jr nz, .got_item
+	jr nz, .gotItem
 	ld a, 20
 	ldh [hOaksAideRequirement], a
 	ld a, POKE_BEEPER
@@ -86,12 +86,12 @@ Route6GateOaksAideText: ; marcelnote - new for PokéBeeper
 	predef OaksAideScript
 	ldh a, [hOaksAideResult]
 	dec a ; OAKS_AIDE_GOT_ITEM?
-	jr nz, .no_item
+	jr nz, .noItem
 	SetEvent EVENT_GOT_POKE_BEEPER
-.got_item
+.gotItem
 	ld hl, .PokeBeeperExplanationText
 	call PrintText
-.no_item
+.noItem
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
 .PokeBeeperExplanationText:
