@@ -1,95 +1,61 @@
-; Format: (size 2 bytes)
-; 00: target map ID
-; 01: which dungeon warp in the source map was used
-DungeonWarpList:
-	db SEAFOAM_ISLANDS_B1F,    1
-	db SEAFOAM_ISLANDS_B1F,    2
-	db SEAFOAM_ISLANDS_B2F,    1
-	db SEAFOAM_ISLANDS_B2F,    2
-	db SEAFOAM_ISLANDS_B3F,    1
-	db SEAFOAM_ISLANDS_B3F,    2
-	db SEAFOAM_ISLANDS_B4F,    1
-	db SEAFOAM_ISLANDS_B4F,    2
-	db VICTORY_ROAD_2F,        2
-	db POKEMON_MANSION_1F,     1
-	db POKEMON_MANSION_1F,     2
-	db POKEMON_MANSION_2F,     3
-	db CINNABAR_VOLCANO_1FB1F, 1 ; marcelnote - new hole warp
-	db -1 ; end
-
-
-MACRO fly_warp
+; marcelnote - refactored warp engine
+MACRO special_warp
+	db \1
 	event_displacement \1_WIDTH, \2, \3
-	db ((\3) & $01) ;sub-block Y
-	db ((\2) & $01) ;sub-block X
+	db ((\3) & $01) ; sub-block Y
+	db ((\2) & $01) ; sub-block X
 ENDM
 
+; Hole/drop destinations that do not use normal map warp events.
+; The source scripts set wDungeonWarpID, then the special-warp engine loads
+; the matching destination here.
 DungeonWarpData:
-	fly_warp SEAFOAM_ISLANDS_B1F,    18,  7
-	fly_warp SEAFOAM_ISLANDS_B1F,    23,  7
-	fly_warp SEAFOAM_ISLANDS_B2F,    19,  7
-	fly_warp SEAFOAM_ISLANDS_B2F,    22,  7
-	fly_warp SEAFOAM_ISLANDS_B3F,    18,  7
-	fly_warp SEAFOAM_ISLANDS_B3F,    19,  7
-	fly_warp SEAFOAM_ISLANDS_B4F,     4, 14
-	fly_warp SEAFOAM_ISLANDS_B4F,     5, 14
-	fly_warp VICTORY_ROAD_2F,        22, 16
-	fly_warp POKEMON_MANSION_1F,     16, 14
-	fly_warp POKEMON_MANSION_1F,     16, 14
-	fly_warp POKEMON_MANSION_2F,     18, 14
-	fly_warp CINNABAR_VOLCANO_1FB1F, 21, 32 ; marcelnote - new hole warp
+	table_width 7
+	special_warp SEAFOAM_ISLANDS_B1F,    18,  7 ; DUNGEON_WARP_SEAFOAM_1F_LEFT
+	special_warp SEAFOAM_ISLANDS_B1F,    23,  7 ; DUNGEON_WARP_SEAFOAM_1F_RIGHT
+	special_warp SEAFOAM_ISLANDS_B2F,    19,  7 ; DUNGEON_WARP_SEAFOAM_B1F_LEFT
+	special_warp SEAFOAM_ISLANDS_B2F,    22,  7 ; DUNGEON_WARP_SEAFOAM_B1F_RIGHT
+	special_warp SEAFOAM_ISLANDS_B3F,    18,  7 ; DUNGEON_WARP_SEAFOAM_B2F_LEFT
+	special_warp SEAFOAM_ISLANDS_B3F,    19,  7 ; DUNGEON_WARP_SEAFOAM_B2F_RIGHT
+	special_warp SEAFOAM_ISLANDS_B4F,     4, 14 ; DUNGEON_WARP_SEAFOAM_B3F_LEFT
+	special_warp SEAFOAM_ISLANDS_B4F,     5, 14 ; DUNGEON_WARP_SEAFOAM_B3F_RIGHT
+	special_warp VICTORY_ROAD_2F,        22, 16 ; DUNGEON_WARP_VICTORY_ROAD_3F
+	special_warp POKEMON_MANSION_1F,     16, 14 ; DUNGEON_WARP_POKEMON_MANSION_3F_LEFT
+	special_warp POKEMON_MANSION_1F,     16, 14 ; DUNGEON_WARP_POKEMON_MANSION_3F_MIDDLE
+	special_warp POKEMON_MANSION_2F,     18, 14 ; DUNGEON_WARP_POKEMON_MANSION_3F_RIGHT
+	special_warp CINNABAR_VOLCANO_1FB1F, 21, 32 ; DUNGEON_WARP_CINNABAR_VOLCANO_1F
+	assert_table_length NUM_DUNGEON_WARPS
 
+; Landing points used by Fly, Teleport, Escape Rope, blackouts, and Go Home.
+TravelWarpData:
+	special_warp PALLET_TOWN,      5,  6
+	special_warp VIRIDIAN_CITY,   23, 26
+	special_warp PEWTER_CITY,     13, 26
+	special_warp CERULEAN_CITY,   19, 18
+	special_warp LAVENDER_TOWN,    3,  6
+	special_warp VERMILION_CITY,  11,  4
+	special_warp CELADON_CITY,    41, 10
+	special_warp FUCHSIA_CITY,    19, 28
+	special_warp CINNABAR_ISLAND, 19, 12 ; marcelnote - modified to accommodate Cinnabar Volcano
+	special_warp INDIGO_PLATEAU,   9,  6
+	special_warp SAFFRON_CITY,     9, 30
+	special_warp MANDARIN_ISLAND, 23,  6 ; marcelnote - new location
+	special_warp ROUTE_4,         11,  6
+	special_warp ROUTE_10,        11, 20
 
-MACRO special_warp_spec
-	db \1
-	fly_warp \1, \2, \3
+MACRO tileset_warp
+	special_warp \1, \2, \3
 	db \4
 ENDM
 
+; Special warps whose destination tileset isn't OVERWORLD.
 NewGameWarp:
-	special_warp_spec REDS_YELLOWS_HOUSES, 17, 6, BIG_HOUSE ; marcelnote - merged RedsHouse floors, added YellowsHouse
+	tileset_warp REDS_YELLOWS_HOUSES, 17, 6, BIG_HOUSE ; marcelnote - merged RedsHouse floors, added YellowsHouse
 TradeCenterPlayerWarp:
-	special_warp_spec TRADE_CENTER,  3, 4, CLUB
+	tileset_warp TRADE_CENTER,  3, 4, CLUB
 TradeCenterFriendWarp:
-	special_warp_spec TRADE_CENTER,  6, 4, CLUB
+	tileset_warp TRADE_CENTER,  6, 4, CLUB
 ColosseumPlayerWarp:
-	special_warp_spec COLOSSEUM,     3, 4, CLUB
+	tileset_warp COLOSSEUM,     3, 4, CLUB
 ColosseumFriendWarp:
-	special_warp_spec COLOSSEUM,     6, 4, CLUB
-
-
-MACRO fly_warp_spec
-	db \1, 0
-	dw \2
-ENDM
-
-FlyWarpDataPtr:
-	fly_warp_spec PALLET_TOWN,     .PalletTown
-	fly_warp_spec VIRIDIAN_CITY,   .ViridianCity
-	fly_warp_spec PEWTER_CITY,     .PewterCity
-	fly_warp_spec CERULEAN_CITY,   .CeruleanCity
-	fly_warp_spec LAVENDER_TOWN,   .LavenderTown
-	fly_warp_spec VERMILION_CITY,  .VermilionCity
-	fly_warp_spec CELADON_CITY,    .CeladonCity
-	fly_warp_spec FUCHSIA_CITY,    .FuchsiaCity
-	fly_warp_spec CINNABAR_ISLAND, .CinnabarIsland
-	fly_warp_spec INDIGO_PLATEAU,  .IndigoPlateau
-	fly_warp_spec SAFFRON_CITY,    .SaffronCity
-	fly_warp_spec MANDARIN_ISLAND, .MandarinIsland ; marcelnote - new location
-	fly_warp_spec ROUTE_4,         .Route4
-	fly_warp_spec ROUTE_10,        .Route10
-
-.PalletTown:     fly_warp PALLET_TOWN,      5,  6
-.ViridianCity:   fly_warp VIRIDIAN_CITY,   23, 26
-.PewterCity:     fly_warp PEWTER_CITY,     13, 26
-.CeruleanCity:   fly_warp CERULEAN_CITY,   19, 18
-.LavenderTown:   fly_warp LAVENDER_TOWN,    3,  6
-.VermilionCity:  fly_warp VERMILION_CITY,  11,  4
-.CeladonCity:    fly_warp CELADON_CITY,    41, 10
-.FuchsiaCity:    fly_warp FUCHSIA_CITY,    19, 28
-.CinnabarIsland: fly_warp CINNABAR_ISLAND, 19, 12 ; marcelnote - modified to accommodate Cinnabar Volcano
-.IndigoPlateau:  fly_warp INDIGO_PLATEAU,   9,  6
-.SaffronCity:    fly_warp SAFFRON_CITY,     9, 30
-.MandarinIsland: fly_warp MANDARIN_ISLAND, 23,  6 ; marcelnote - new location
-.Route4:         fly_warp ROUTE_4,         11,  6
-.Route10:        fly_warp ROUTE_10,        11, 20
+	tileset_warp COLOSSEUM,     6, 4, CLUB

@@ -24,29 +24,27 @@ SeafoamIslandsB4FObjectMoving3Script:
 	cp $ff
 	jr z, SeafoamIslandsB4FResetScript
 	call EndTrainerBattle
-	ld a, SCRIPT_SEAFOAMISLANDSB4F_DEFAULT
+	xor a ; SCRIPT_SEAFOAMISLANDSB4F_DEFAULT
 	ld [wSeafoamIslandsB4FCurScript], a
 	ret
 
 SeafoamIslandsB4FDefaultScript:
-	CheckBothEventsSet EVENT_SEAFOAM3_BOULDER1_DOWN_HOLE, EVENT_SEAFOAM3_BOULDER2_DOWN_HOLE
-	ret z
+	CheckEvent EVENT_SEAFOAM_B3F_BOULDERS_DOWN ; marcelnote - simplified Seafoam boulder events
+	ret nz
 	ld hl, .Coords
 	call ArePlayerCoordsInArray
 	ret nc
 	ld a, [wCoordIndex]
 	cp $3
-	jr nc, .only1UpInputNeeded
-	ld a, PAD_UP
-	ld [wSimulatedJoypadStatesEnd + 1], a
-	ld a, 2
-	jr .forcePlayerUpFromSurfExit
-.only1UpInputNeeded
-	ld a, 1
-.forcePlayerUpFromSurfExit
-	ld [wSimulatedJoypadStatesIndex], a
+	ld b, 1
 	ld a, PAD_UP
 	ld [wSimulatedJoypadStatesEnd], a
+	jr nc, .forcePlayerUpFromSurfExit
+	ld [wSimulatedJoypadStatesEnd + 1], a
+	inc b
+.forcePlayerUpFromSurfExit
+	ld a, b
+	ld [wSimulatedJoypadStatesIndex], a
 	call StartSimulatingJoypadStates
 	ld hl, wStatusFlags7
 	res BIT_FORCED_WARP, [hl]
@@ -65,27 +63,24 @@ SeafoamIslandsB4FObjectMoving1Script:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
-	xor a
+	; a = 0 = SCRIPT_SEAFOAMISLANDSB4F_DEFAULT
 	ld [wJoyIgnore], a
-	ld a, SCRIPT_SEAFOAMISLANDSB4F_DEFAULT
 	ld [wSeafoamIslandsB4FCurScript], a
 	ret
 
 SeafoamIslandsB4FMoveObjectScript:
-	CheckBothEventsSet EVENT_SEAFOAM4_BOULDER1_DOWN_HOLE, EVENT_SEAFOAM4_BOULDER2_DOWN_HOLE
+	CheckEvent EVENT_SEAFOAM_B4F_BOULDERS_DOWN
 	ld a, SCRIPT_SEAFOAMISLANDSB4F_DEFAULT
-	jr z, .playerNotInStrongCurrent
+	jr nz, .playerNotInStrongCurrent
 	ld hl, .Coords
 	call ArePlayerCoordsInArray
 	ld a, SCRIPT_SEAFOAMISLANDSB4F_DEFAULT
 	jr nc, .playerNotInStrongCurrent
 	ld a, [wCoordIndex]
-	cp $1
-	jr nz, .nearRightBoulder
-	ld de, .RLEList_StrongCurrentNearLeftBoulder
-	jr .forceSurfMovement
-.nearRightBoulder
+	dec a
 	ld de, .RLEList_StrongCurrentNearRightBoulder
+	jr nz, .forceSurfMovement
+	ld de, .RLEList_StrongCurrentNearLeftBoulder
 .forceSurfMovement
 	ld hl, wSimulatedJoypadStatesEnd
 	call DecodeRLEList
@@ -117,18 +112,17 @@ SeafoamIslandsB4FMoveObjectScript:
 SeafoamIslandsB4FObjectMoving2Script:
 	ld a, [wSimulatedJoypadStatesIndex]
 	ld b, a
-	cp $1
+	dec a
 	call z, .doneForcedSurfMovement
 	ld a, b
 	and a
 	ret nz
-	ld a, SCRIPT_SEAFOAMISLANDSB4F_DEFAULT
+	; a = 0 = SCRIPT_SEAFOAMISLANDSB4F_DEFAULT
 	ld [wSeafoamIslandsB4FCurScript], a
 	ret
 
 .doneForcedSurfMovement:
-	xor a ; WALKING
-	ld [wWalkBikeSurfState], a
+	ld [wWalkBikeSurfState], a ; a = 0 = WALKING
 	ld [wWalkBikeSurfStateCopy], a
 	jp ForceBikeOrSurf
 

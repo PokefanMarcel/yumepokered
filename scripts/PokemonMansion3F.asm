@@ -8,11 +8,11 @@ PokemonMansion3F_Script:
 	ld [wPokemonMansion3FCurScript], a
 	ret
 
-Mansion3CheckReplaceSwitchDoorBlocks:
+Mansion3CheckReplaceSwitchDoorBlocks: ; marcelnote - modified for new special warp engine
 	ld hl, wCurrentMapScriptFlags
 	bit BIT_CUR_MAP_LOADED_1, [hl]
-	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
+	res BIT_CUR_MAP_LOADED_1, [hl]
 	CheckEvent EVENT_MANSION_SWITCH_ON
 	jr nz, .switchTurnedOn
 	ld a, $e
@@ -20,16 +20,15 @@ Mansion3CheckReplaceSwitchDoorBlocks:
 	call Mansion2ReplaceBlock
 	ld a, $5f
 	lb bc, 5, 7
-	call Mansion2ReplaceBlock
-	ret
+	jp Mansion2ReplaceBlock
+
 .switchTurnedOn
 	ld a, $5f
 	lb bc, 2, 7
 	call Mansion2ReplaceBlock
 	ld a, $e
 	lb bc, 5, 7
-	call Mansion2ReplaceBlock
-	ret
+	jp Mansion2ReplaceBlock
 
 PokemonMansion3F_ScriptPointers:
 	def_script_pointers
@@ -37,41 +36,18 @@ PokemonMansion3F_ScriptPointers:
 	dw_const DisplayEnemyTrainerTextAndStartBattle, SCRIPT_POKEMONMANSION3F_START_BATTLE
 	dw_const EndTrainerBattle,                      SCRIPT_POKEMONMANSION3F_END_BATTLE
 
-PokemonMansion3FDefaultScript:
-	ld hl, .holeCoords
-	call .isPlayerFallingDownHole
-	ld a, [wWhichDungeonWarp]
-	and a
-	jp z, CheckFightingMapTrainers
-	cp $3
-	ld a, POKEMON_MANSION_1F
-	jr nz, .fellDownHoleTo1F
-	ld a, POKEMON_MANSION_2F
-.fellDownHoleTo1F
-	ld [wDungeonWarpDestinationMap], a
+PokemonMansion3FDefaultScript: ; marcelnote - modified for new special warp engine
+	ld d, DUNGEON_WARP_POKEMON_MANSION_3F_LEFT
+	ld hl, .HolesCoords
+	call IsPlayerOnDungeonWarp
+	jp nc, CheckFightingMapTrainers
 	ret
 
-.holeCoords:
+.HolesCoords:
 	dbmapcoord 16, 14
 	dbmapcoord 17, 14
 	dbmapcoord 19, 14
 	db -1 ; end
-
-.isPlayerFallingDownHole:
-	xor a
-	ld [wWhichDungeonWarp], a
-	ld a, [wStatusFlags3]
-	bit BIT_ON_DUNGEON_WARP, a
-	ret nz
-	call ArePlayerCoordsInArray
-	ret nc
-	ld a, [wCoordIndex]
-	ld [wWhichDungeonWarp], a
-	ld hl, wStatusFlags3
-	set BIT_ON_DUNGEON_WARP, [hl]
-	ld hl, wStatusFlags6
-	set BIT_DUNGEON_WARP, [hl]
-	ret
 
 PokemonMansion3FScript_Switches::
 	ld a, [wSpritePlayerStateData1FacingDirection]
@@ -104,13 +80,13 @@ PokemonMansion3FSuperNerdText:
 	text_asm
 	ld hl, Mansion3TrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 PokemonMansion3FScientistText:
 	text_asm
 	ld hl, Mansion3TrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 PokemonMansion3FSuperNerdBattleText:
 	text_far _PokemonMansion3FSuperNerdBattleText

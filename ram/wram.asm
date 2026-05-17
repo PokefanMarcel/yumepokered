@@ -1793,8 +1793,6 @@ wOutOfBattleBlackout:: db
 ; $02 = the user pressed B or pressed A with the second menu item selected
 wMenuExitMethod:: db
 
-; the size is always 6, so they didn't need a variable in RAM for this
-wDungeonWarpDataEntrySize::
 ; 0 = museum guy
 ; 1 = gym guy
 wWhichPewterGuy::
@@ -2270,11 +2268,10 @@ wDestinationMap:: db
 ; also used to store the result of the collision check ($ff for a collision and $00 for no collision)
 wTileInFrontOfBoulderAndBoulderCollisionResult:: db
 
-; destination map for dungeon warps
-wDungeonWarpDestinationMap:: db
+; index into DungeonWarpData ; marcelnote - refactored warp engine
+wDungeonWarpID:: db
 
-; which dungeon warp within the source map was used
-wWhichDungeonWarp:: db
+	ds 1
 
 ;wUnusedCardKeyGateID:: db ; marcelnote - removed
 

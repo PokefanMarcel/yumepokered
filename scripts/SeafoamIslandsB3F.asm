@@ -1,50 +1,47 @@
-SeafoamIslandsB3F_Script:
+SeafoamIslandsB3F_Script: ; marcelnote - modified for new special warp engine
 	call EnableAutoTextBoxDrawing
 	ld hl, wMiscFlags
 	bit BIT_PUSHED_BOULDER, [hl]
+	jr z, .checkHoles
 	res BIT_PUSHED_BOULDER, [hl]
-	jr z, .noBoulderWasPushed
-	ld hl, Seafoam4HolesCoords
+	ld hl, .HolesCoords
 	call CheckBoulderCoords
 	ret nc
-	EventFlagAddress hl, EVENT_SEAFOAM4_BOULDER1_DOWN_HOLE
 	ld a, [wCoordIndex]
-	cp $1
+	dec a
 	jr nz, .boulder2FellDownHole
-	SetEventReuseHL EVENT_SEAFOAM4_BOULDER1_DOWN_HOLE
 	ld a, TOGGLE_SEAFOAM_ISLANDS_B3F_BOULDER_1
-	ld [wObjectToHide], a
-	ld a, TOGGLE_SEAFOAM_ISLANDS_B4F_BOULDER_1
-	ld [wObjectToShow], a
-	jr .hideAndShowBoulderObjects
-.boulder2FellDownHole
-	SetEventAfterBranchReuseHL EVENT_SEAFOAM4_BOULDER2_DOWN_HOLE, EVENT_SEAFOAM4_BOULDER1_DOWN_HOLE
-	ld a, TOGGLE_SEAFOAM_ISLANDS_B3F_BOULDER_2
-	ld [wObjectToHide], a
-	ld a, TOGGLE_SEAFOAM_ISLANDS_B4F_BOULDER_2
-	ld [wObjectToShow], a
-.hideAndShowBoulderObjects
-	ld a, [wObjectToHide]
 	ld [wToggleableObjectIndex], a
 	predef HideObject
-	ld a, [wObjectToShow]
+	ld a, TOGGLE_SEAFOAM_ISLANDS_B4F_BOULDER_1
 	ld [wToggleableObjectIndex], a
 	predef ShowObject
+	CheckHideShow TOGGLE_SEAFOAM_ISLANDS_B4F_BOULDER_2
+	jr nz, .runCurrentMapScript
+	SetEvent EVENT_SEAFOAM_B4F_BOULDERS_DOWN
 	jr .runCurrentMapScript
-.noBoulderWasPushed
-	ld a, SEAFOAM_ISLANDS_B4F
-	ld [wDungeonWarpDestinationMap], a
-	ld hl, Seafoam4HolesCoords
+.boulder2FellDownHole
+	ld a, TOGGLE_SEAFOAM_ISLANDS_B3F_BOULDER_2
+	ld [wToggleableObjectIndex], a
+	predef HideObject
+	ld a, TOGGLE_SEAFOAM_ISLANDS_B4F_BOULDER_2
+	ld [wToggleableObjectIndex], a
+	predef ShowObject
+	CheckHideShow TOGGLE_SEAFOAM_ISLANDS_B4F_BOULDER_1
+	jr nz, .runCurrentMapScript
+	SetEvent EVENT_SEAFOAM_B4F_BOULDERS_DOWN
+	jr .runCurrentMapScript
+.checkHoles
+	ld d, DUNGEON_WARP_SEAFOAM_B3F_LEFT
+	ld hl, .HolesCoords
 	call IsPlayerOnDungeonWarp
-	ld a, [wStatusFlags6]
-	bit BIT_DUNGEON_WARP, a
-	ret nz
+	ret c
 .runCurrentMapScript
 	ld hl, SeafoamIslandsB3F_ScriptPointers
 	ld a, [wSeafoamIslandsB3FCurScript]
 	jp CallFunctionInTable
 
-Seafoam4HolesCoords:
+.HolesCoords:
 	dbmapcoord  3, 16
 	dbmapcoord  6, 16
 	db -1 ; end
@@ -58,8 +55,8 @@ SeafoamIslandsB3F_ScriptPointers:
 	EXPORT SCRIPT_SEAFOAMISLANDSB3F_MOVE_OBJECT ; used by engine/overworld/player_state.asm
 
 SeafoamIslandsB3FDefaultScript:
-	CheckBothEventsSet EVENT_SEAFOAM3_BOULDER1_DOWN_HOLE, EVENT_SEAFOAM3_BOULDER2_DOWN_HOLE
-	ret z
+	CheckEvent EVENT_SEAFOAM_B3F_BOULDERS_DOWN
+	ret nz
 	ld a, [wYCoord]
 	cp 8
 	ret nz
@@ -88,13 +85,13 @@ SeafoamIslandsB3FObjectMoving1Script:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
-	ld a, SCRIPT_SEAFOAMISLANDSB3F_DEFAULT
+	; a = 0 = SCRIPT_SEAFOAMISLANDSB3F_DEFAULT
 	ld [wSeafoamIslandsB3FCurScript], a
 	ret
 
 SeafoamIslandsB3FMoveObjectScript:
-	CheckBothEventsSet EVENT_SEAFOAM3_BOULDER1_DOWN_HOLE, EVENT_SEAFOAM3_BOULDER2_DOWN_HOLE
-	ret z
+	CheckEvent EVENT_SEAFOAM_B3F_BOULDERS_DOWN
+	ret nz
 	ld a, [wXCoord]
 	cp 18
 	ld de, .RLEList_StrongCurrentNearLeftBoulder
@@ -135,7 +132,7 @@ SeafoamIslandsB3FObjectMoving2Script:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
-	ld a, SCRIPT_SEAFOAMISLANDSB3F_DEFAULT
+	; a = 0 = SCRIPT_SEAFOAMISLANDSB3F_DEFAULT
 	ld [wSeafoamIslandsB3FCurScript], a
 	ret
 

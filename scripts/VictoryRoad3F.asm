@@ -26,24 +26,24 @@ VictoryRoad3F_ScriptPointers:
 	dw_const DisplayEnemyTrainerTextAndStartBattle, SCRIPT_VICTORYROAD3F_START_BATTLE
 	dw_const EndTrainerBattle,                      SCRIPT_VICTORYROAD3F_END_BATTLE
 
-VictoryRoad3FDefaultScript:
+VictoryRoad3FDefaultScript: ; marcelnote - modified for new special warp engine
 	ld hl, wMiscFlags
 	bit BIT_PUSHED_BOULDER, [hl]
+	jr z, .checkHole
 	res BIT_PUSHED_BOULDER, [hl]
-	jp z, .check_switch_hole
 	ld hl, .SwitchOrHoleCoords
 	call CheckBoulderCoords
-	jp nc, .check_switch_hole
+	jr nc, .checkHole
 	ld a, [wCoordIndex]
-	cp $1
-	jr nz, .handle_hole
+	dec a
+	jr nz, .boulderFellDownHole
 	ld hl, wCurrentMapScriptFlags
 	set BIT_CUR_MAP_LOADED_1, [hl]
 	SetEvent EVENT_VICTORY_ROAD_3_BOULDER_ON_SWITCH1
 	ret
-.handle_hole
+.boulderFellDownHole
 	CheckAndSetEvent EVENT_VICTORY_ROAD_3_BOULDER_ON_SWITCH2
-	jr nz, .check_switch_hole
+	jr nz, .checkHole
 	ld a, TOGGLE_VICTORY_ROAD_3F_BOULDER
 	ld [wToggleableObjectIndex], a
 	predef HideObject
@@ -51,29 +51,18 @@ VictoryRoad3FDefaultScript:
 	ld [wToggleableObjectIndex], a
 	predef_jump ShowObject
 
+.checkHole
+	ld d, DUNGEON_WARP_VICTORY_ROAD_3F
+	ld hl, .HolesCoords
+	call IsPlayerOnDungeonWarp
+	jp nc, CheckFightingMapTrainers
+	ret
+
 .SwitchOrHoleCoords:
 	dbmapcoord  3,  5 ; switch
+.HolesCoords:
 	dbmapcoord 23, 15 ; hole
 	db -1 ; end
-
-.check_switch_hole
-	ld a, VICTORY_ROAD_2F
-	ld [wDungeonWarpDestinationMap], a
-	ld hl, .SwitchOrHoleCoords
-	call IsPlayerOnDungeonWarp
-	ld a, [wCoordIndex]
-	cp $1
-	jr nz, .hole
-	ld hl, wStatusFlags3
-	res BIT_ON_DUNGEON_WARP, [hl]
-	ld hl, wStatusFlags6
-	res BIT_DUNGEON_WARP, [hl]
-	ret
-.hole
-	ld a, [wStatusFlags3]
-	bit BIT_ON_DUNGEON_WARP, a
-	jp z, CheckFightingMapTrainers
-	ret
 
 VictoryRoad3F_TextPointers:
 	def_text_pointers
@@ -104,25 +93,25 @@ VictoryRoad3FCooltrainerM1Text:
 	text_asm
 	ld hl, VictoryRoad3TrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 VictoryRoad3FCooltrainerF1Text:
 	text_asm
 	ld hl, VictoryRoad3TrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 VictoryRoad3FCooltrainerM2Text:
 	text_asm
 	ld hl, VictoryRoad3TrainerHeader2
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 VictoryRoad3FCooltrainerF2Text:
 	text_asm
 	ld hl, VictoryRoad3TrainerHeader3
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 VictoryRoad3FCooltrainerM1BattleText:
 	text_far _VictoryRoad3FCooltrainerM1BattleText

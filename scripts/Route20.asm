@@ -10,34 +10,27 @@ Route20_Script:
 	ret
 
 Route20BoulderScript:
-	CheckBothEventsSet EVENT_SEAFOAM3_BOULDER1_DOWN_HOLE, EVENT_SEAFOAM3_BOULDER2_DOWN_HOLE
-	jr z, .next_boulder_check
+	call Route20SeafoamBoulderCompatibilityScript ; marcelnote - for save compatibility
+	CheckEvent EVENT_SEAFOAM_B3F_BOULDERS_DOWN
+	jr nz, .nextBoulderCheck
+.resetUpperBoulders
 	ld a, TOGGLE_SEAFOAM_ISLANDS_1F_BOULDER_1
 	call Route20ShowObjectScript
 	ld a, TOGGLE_SEAFOAM_ISLANDS_1F_BOULDER_2
 	call Route20ShowObjectScript
 	ld hl, .ToggleableObjectIDs
-.hide_toggleable_objects
+.hideToggleableObjects
 	ld a, [hli]
 	cp $ff
-	jr z, .next_boulder_check
+	jr z, .nextBoulderCheck
 	push hl
 	call Route20HideObjectScript
 	pop hl
-	jr .hide_toggleable_objects
-
-.ToggleableObjectIDs:
-	db TOGGLE_SEAFOAM_ISLANDS_B1F_BOULDER_1
-	db TOGGLE_SEAFOAM_ISLANDS_B1F_BOULDER_2
-	db TOGGLE_SEAFOAM_ISLANDS_B2F_BOULDER_1
-	db TOGGLE_SEAFOAM_ISLANDS_B2F_BOULDER_2
-	db TOGGLE_SEAFOAM_ISLANDS_B3F_BOULDER_3
-	db TOGGLE_SEAFOAM_ISLANDS_B3F_BOULDER_4
-	db -1 ; end
-
-.next_boulder_check
-	CheckBothEventsSet EVENT_SEAFOAM4_BOULDER1_DOWN_HOLE, EVENT_SEAFOAM4_BOULDER2_DOWN_HOLE
-	ret z
+	jr .hideToggleableObjects
+.nextBoulderCheck
+	CheckEvent EVENT_SEAFOAM_B4F_BOULDERS_DOWN
+	ret nz
+.resetLowerBoulders
 	ld a, TOGGLE_SEAFOAM_ISLANDS_B3F_BOULDER_1
 	call Route20ShowObjectScript
 	ld a, TOGGLE_SEAFOAM_ISLANDS_B3F_BOULDER_2
@@ -48,6 +41,15 @@ Route20BoulderScript:
 	call Route20HideObjectScript
 	ret
 
+.ToggleableObjectIDs:
+	db TOGGLE_SEAFOAM_ISLANDS_B1F_BOULDER_1
+	db TOGGLE_SEAFOAM_ISLANDS_B1F_BOULDER_2
+	db TOGGLE_SEAFOAM_ISLANDS_B2F_BOULDER_1
+	db TOGGLE_SEAFOAM_ISLANDS_B2F_BOULDER_2
+	db TOGGLE_SEAFOAM_ISLANDS_B3F_BOULDER_3
+	db TOGGLE_SEAFOAM_ISLANDS_B3F_BOULDER_4
+	db -1 ; end
+
 Route20ShowObjectScript:
 	ld [wToggleableObjectIndex], a
 	predef_jump ShowObject
@@ -55,6 +57,24 @@ Route20ShowObjectScript:
 Route20HideObjectScript:
 	ld [wToggleableObjectIndex], a
 	predef_jump HideObject
+
+Route20SeafoamBoulderCompatibilityScript: ; marcelnote - for save compatibility, remove eventually
+	CheckEvent EVENT_SEAFOAM_B3F_BOULDERS_DOWN
+	jr nz, .checkB4FBoulders
+	CheckHideShow TOGGLE_SEAFOAM_ISLANDS_B3F_BOULDER_3
+	jr nz, .checkB4FBoulders
+	CheckHideShow TOGGLE_SEAFOAM_ISLANDS_B3F_BOULDER_4
+	jr nz, .checkB4FBoulders
+	SetEvent EVENT_SEAFOAM_B3F_BOULDERS_DOWN
+.checkB4FBoulders
+	CheckEvent EVENT_SEAFOAM_B4F_BOULDERS_DOWN
+	ret nz
+	CheckHideShow TOGGLE_SEAFOAM_ISLANDS_B4F_BOULDER_1
+	ret nz
+	CheckHideShow TOGGLE_SEAFOAM_ISLANDS_B4F_BOULDER_2
+	ret nz
+	SetEvent EVENT_SEAFOAM_B4F_BOULDERS_DOWN
+	ret
 
 Route20_ScriptPointers:
 	def_script_pointers
@@ -105,61 +125,61 @@ Route20Swimmer1Text:
 	text_asm
 	ld hl, Route20TrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route20Swimmer2Text:
 	text_asm
 	ld hl, Route20TrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route20Swimmer3Text:
 	text_asm
 	ld hl, Route20TrainerHeader2
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route20Swimmer4Text:
 	text_asm
 	ld hl, Route20TrainerHeader3
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route20Swimmer5Text:
 	text_asm
 	ld hl, Route20TrainerHeader4
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route20Swimmer6Text:
 	text_asm
 	ld hl, Route20TrainerHeader5
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route20CooltrainerMText:
 	text_asm
 	ld hl, Route20TrainerHeader6
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route20Swimmer7Text:
 	text_asm
 	ld hl, Route20TrainerHeader7
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route20Swimmer8Text:
 	text_asm
 	ld hl, Route20TrainerHeader8
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route20Swimmer9Text:
 	text_asm
 	ld hl, Route20TrainerHeader9
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 Route20Swimmer1BattleText:
 	text_far _Route20Swimmer1BattleText

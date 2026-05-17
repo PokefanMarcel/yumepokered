@@ -406,8 +406,8 @@ OverworldLoopLessDelay::
 ; function to determine if there will be a battle and execute it (either a trainer battle or wild battle)
 ; sets carry if a battle occurred and unsets carry if not
 NewBattle::
-	ld a, [wStatusFlags3]
-	bit BIT_ON_DUNGEON_WARP, a
+	ld a, [wStatusFlags6]
+	bit BIT_DUNGEON_WARP, a
 	jr nz, .noBattle
 	call IsPlayerCharacterBeingControlledByGame
 	jr nz, .noBattle ; no battle if the player character is under the game's control

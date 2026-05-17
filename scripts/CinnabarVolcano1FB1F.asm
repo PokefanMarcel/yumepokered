@@ -5,19 +5,16 @@ CinnabarVolcano1FB1F_Script:
 	res BIT_CUR_MAP_LOADED_1, [hl]
 	call nz, CinnabarVolcano1FB1FCheckBoulderEventScript
 	call EnableAutoTextBoxDrawing
-	; new
 	ld hl, CinnabarVolcano1FB1FTrainerHeaders
     ld de, CinnabarVolcano1FB1F_ScriptPointers
     ld a, [wCinnabarVolcano1FB1FCurScript]
     call ExecuteCurMapScriptInTable
-    ld [wCinnabarVolcano1FB1FCurScript], a
-    ;
-	ld a, CINNABAR_VOLCANO_1FB1F
-	ld [wDungeonWarpDestinationMap], a
-	ld hl, CinnabarVolcano1FHolesCoords
+	ld [wCinnabarVolcano1FB1FCurScript], a
+	ld d, DUNGEON_WARP_CINNABAR_VOLCANO_1F
+	ld hl, .HolesCoords
 	jp IsPlayerOnDungeonWarp
 
-CinnabarVolcano1FHolesCoords:
+.HolesCoords:
 	dbmapcoord 20, 13
 	db -1 ; end
 
@@ -27,8 +24,7 @@ CinnabarVolcano1FB1FCheckBoulderEventScript:
 	ld a, $1D
 	lb bc, 16, 11
 	ld [wNewTileBlockID], a
-	predef ReplaceTileBlock
-	ret
+	predef_jump ReplaceTileBlock
 
 CinnabarVolcano1FB1F_ScriptPointers:
 	def_script_pointers
@@ -81,13 +77,13 @@ CinnabarVolcano1FB1FDefaultScript:
 
 CinnabarVolcano1FLanceGoesInScript: ; marcelnote - adapted from PokemonTower2F rival script
 	ld a, [wCoordIndex]
-	cp $1
+	dec a
 	ld a, PLAYER_DIR_UP
 	ld b, SPRITE_FACING_DOWN
-	jr nz, .player_below_Lance
+	jr nz, .gotData
 	ld a, PLAYER_DIR_LEFT
 	ld b, SPRITE_FACING_RIGHT
-.player_below_Lance
+.gotData
 	ld [wPlayerMovingDirection], a
 	ld a, CINNABARVOLCANO1F_LANCE
 	ldh [hSpriteIndex], a
@@ -102,9 +98,9 @@ CinnabarVolcano1FLanceGoesInScript: ; marcelnote - adapted from PokemonTower2F r
 	ldh [hJoyPressed], a
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
-	ld de, .LanceGoesInMovementFacingDown
 	ld a, [wPlayerMovingDirection]
 	cp PLAYER_DIR_LEFT
+	ld de, .LanceGoesInMovementFacingDown
 	jr nz, .LanceFacingDown
 	ld de, .LanceGoesInMovementFacingRight
 .LanceFacingDown
@@ -158,7 +154,7 @@ CinnabarVolcanoB1FLanceTogetherScript:
 CinnabarVolcanoB1FPlayerMovesToCharizardScript:
 	ld a, PAD_BUTTONS | PAD_CTRL_PAD
 	ld [wJoyIgnore], a
-	ld a, $3
+	ld a, 3
 	ld [wSimulatedJoypadStatesIndex], a
 	ld hl, wSimulatedJoypadStatesEnd
 	ld a, PAD_UP
@@ -167,12 +163,12 @@ CinnabarVolcanoB1FPlayerMovesToCharizardScript:
 	ld [hli], a
 	ld a, [wXCoord]
 	cp 20 ; Xcoord of left event tile
-	jr z, .left_tile
+	jr z, .leftTile
 	ld a, PAD_LEFT ; if on right tile, do one more step to the left
 	ld [hli], a
-	ld a, $4     ; and increase the total number of steps
+	ld a, 4        ; and increase the total number of steps
 	ld [wSimulatedJoypadStatesIndex], a
-.left_tile
+.leftTile
 	ld a, PAD_UP
 	ld [hl], a
 	call StartSimulatingJoypadStates
@@ -315,43 +311,43 @@ CinnabarVolcanoB1FScientistText:
 	text_asm
 	ld hl, CinnabarVolcanoB1FTrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 CinnabarVolcanoB1FHikerText:
 	text_asm
 	ld hl, CinnabarVolcanoB1FTrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 CinnabarVolcanoB1FCooltrainerFText:
 	text_asm
 	ld hl, CinnabarVolcanoB1FTrainerHeader2
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 CinnabarVolcano1FCooltrainerMText:
 	text_asm
 	ld hl, CinnabarVolcano1FTrainerHeader0
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 CinnabarVolcano1FBurglarText:
 	text_asm
 	ld hl, CinnabarVolcano1FTrainerHeader1
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 CinnabarVolcano1FGentlemanText:
 	text_asm
 	ld hl, CinnabarVolcano1FTrainerHeader2
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 CinnabarVolcano1FBeautyText:
 	text_asm
 	ld hl, CinnabarVolcano1FTrainerHeader3
 	call TalkToTrainer
-	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	rst TextScriptEnd
 
 CinnabarVolcanoB1FScientistBattleText:
 	text_far _CinnabarVolcanoB1FScientistBattleText
@@ -461,7 +457,7 @@ CinnabarVolcanoB1FLancePokeBallText:
 	;ld c, BANK(SFX_Ball_Toss)
 	;call PlaySound
 	;call WaitForSoundToFinish
-	;rst TextScriptEnd ; PureRGB - rst TextScriptEnd
+	;rst TextScriptEnd
 
 CinnabarVolcanoB1FCharizardCaughtText:
 	text_far _CinnabarVolcanoB1FCharizardCaughtText

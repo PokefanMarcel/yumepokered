@@ -16,19 +16,19 @@ PrepareForSpecialWarp::
 	; loads the first warp event for the specified map index.
 	ld a, PALLET_TOWN
 .next
-	ld b, a
-	ld a, [wStatusFlags3]
-	and a ; ???
-	jr nz, .next2
-	ld a, b
-.next2
+;	ld b, a ; marcelnote - this wrote wStatusFlags3 to wLastMap when any bit was set
+;	ld a, [wStatusFlags3]
+;	and a
+;	jr nz, .next2
+;	ld a, b
+;.next2
 	ld hl, wStatusFlags6
 	bit BIT_DUNGEON_WARP, [hl]
 	ret nz
 	ld [wLastMap], a
 	ret
 
-LoadSpecialWarpData:
+LoadSpecialWarpData: ; marcelnote - modified for new special warp engine
 	ld a, [wCableClubDestinationMap]
 	cp TRADE_CENTER
 	jr nz, .notTradeCenter
@@ -69,7 +69,6 @@ LoadSpecialWarpData:
 	xor a
 	jr .done
 .notNewGameWarp
-	ld a, [wLastMap] ; this value is overwritten before it's ever read
 	ld hl, wStatusFlags6
 	bit BIT_DUNGEON_WARP, [hl]
 	jr nz, .usedDungeonWarp
@@ -79,57 +78,26 @@ LoadSpecialWarpData:
 	ld a, [wLastBlackoutMap]
 	jr .usedFlyWarp
 .usedDungeonWarp
-	ld hl, wStatusFlags3
-	res BIT_ON_DUNGEON_WARP, [hl]
-	ld a, [wDungeonWarpDestinationMap]
-	ld b, a
-	ld [wCurMap], a
-	ld a, [wWhichDungeonWarp]
-	ld c, a
-	ld hl, DungeonWarpList
-	ld de, 0
-	ld a, 6
-	ld [wDungeonWarpDataEntrySize], a
-.dungeonWarpListLoop
-	ld a, [hli]
-	cp b
-	jr z, .matchedDungeonWarpDestinationMap
-	inc hl
-	jr .nextDungeonWarp
-.matchedDungeonWarpDestinationMap
-	ld a, [hli]
-	cp c
-	jr z, .matchedDungeonWarpID
-.nextDungeonWarp
-	ld a, [wDungeonWarpDataEntrySize]
-	add e
-	ld e, a
-	jr .dungeonWarpListLoop
-.matchedDungeonWarpID
 	ld hl, DungeonWarpData
-	add hl, de
+	ld bc, 7
+	ld a, [wDungeonWarpID]
+	call AddNTimes
 	jr .copyWarpData2
 .otherDestination
 	ld a, [wDestinationMap]
 .usedFlyWarp
 	ld b, a
-	ld [wCurMap], a
-	ld hl, FlyWarpDataPtr
-.flyWarpDataPtrLoop
-	ld a, [hli]
-	inc hl
+	ld hl, TravelWarpData
+	ld de, 7
+.travelWarpDataLoop
+	ld a, [hl]
 	cp b
-	jr z, .foundFlyWarpMatch
-	inc hl
-	inc hl
-	jr .flyWarpDataPtrLoop
-.foundFlyWarpMatch
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+	jr z, .copyWarpData2
+	add hl, de
+	jr .travelWarpDataLoop
 .copyWarpData2
-	ld de, wCurrentTileBlockMapViewPointer
-	ld c, $6
+	ld de, wCurMap
+	ld c, $7
 .copyWarpDataLoop2
 	ld a, [hli]
 	ld [de], a

@@ -497,9 +497,6 @@
 	const EVENT_BEAT_ROUTE_20_TRAINER_7
 	const EVENT_BEAT_ROUTE_20_TRAINER_8
 	const EVENT_BEAT_ROUTE_20_TRAINER_9
-	const_skip 3
-	const EVENT_SEAFOAM1_BOULDER1_DOWN_HOLE
-	const EVENT_SEAFOAM1_BOULDER2_DOWN_HOLE
 
 ; Route 21 events
 	const_next $510
@@ -887,15 +884,9 @@ DEF INDIGO_PLATEAU_EVENTS_END EQU const_value - 1
 
 ; Seafoam Islands events
 	const_next $9C0
-	const EVENT_SEAFOAM2_BOULDER1_DOWN_HOLE
-	const EVENT_SEAFOAM2_BOULDER2_DOWN_HOLE
-	const_skip 6
-	const EVENT_SEAFOAM3_BOULDER1_DOWN_HOLE
-	const EVENT_SEAFOAM3_BOULDER2_DOWN_HOLE
-	const_skip 6
-	const EVENT_SEAFOAM4_BOULDER1_DOWN_HOLE
-	const EVENT_SEAFOAM4_BOULDER2_DOWN_HOLE
-	const_skip 8
+	const_skip 24
+	const EVENT_SEAFOAM_B3F_BOULDERS_DOWN ; marcelnote - set when both boulders have fallen to B3F
+	const EVENT_SEAFOAM_B4F_BOULDERS_DOWN ; marcelnote - set when both boulders have fallen to B4F
 	const EVENT_BEAT_ARTICUNO
 
 ; End of events

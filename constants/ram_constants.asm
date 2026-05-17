@@ -96,7 +96,7 @@ DEF NUM_BADGES EQU const_value
 	const BIT_INIT_TRADE_CENTER_FACING ; 0
 	const_skip 2                       ; 1-2 ; unused
 	const BIT_WARP_FROM_CUR_SCRIPT     ; 3
-	const BIT_ON_DUNGEON_WARP          ; 4
+	const_skip                         ; 4 ; marcelnote - unused, was BIT_ON_DUNGEON_WARP
 	const BIT_NO_NPC_FACE_PLAYER       ; 5
 	const BIT_TALKED_TO_TRAINER        ; 6
 	const BIT_PRINT_END_BATTLE_TEXT    ; 7

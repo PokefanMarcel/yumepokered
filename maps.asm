@@ -230,38 +230,15 @@ INCLUDE "scripts/LavenderTown.asm"
 INCLUDE "data/maps/objects/LavenderTown.asm"
 LavenderTown_Blocks: INCBIN "maps/LavenderTown.blk"
 
-SafariZoneCenterRestHouse_Blocks:
-SafariZoneWestRestHouse_Blocks:
-SafariZoneEastRestHouse_Blocks:
-SafariZoneNorthRestHouse_Blocks: INCBIN "maps/SafariZoneCenterRestHouse.blk"
-
-
-SECTION "Maps 6", ROMX   ; marcelnote - maps with dungeon warps (holes) need to be here
-
-INCLUDE "data/maps/headers/PokemonMansion1F.asm"
-INCLUDE "scripts/PokemonMansion1F.asm"
-INCLUDE "data/maps/objects/PokemonMansion1F.asm"
-PokemonMansion1F_Blocks: INCBIN "maps/PokemonMansion1F.blk"
-
 INCLUDE "data/maps/headers/RockTunnel1F.asm"
 INCLUDE "scripts/RockTunnel1F.asm"
 INCLUDE "data/maps/objects/RockTunnel1F.asm"
 RockTunnel1F_Blocks: INCBIN "maps/RockTunnel1F.blk"
 
-INCLUDE "data/maps/headers/SeafoamIslands1F.asm"
-INCLUDE "scripts/SeafoamIslands1F.asm"
-INCLUDE "data/maps/objects/SeafoamIslands1F.asm"
-SeafoamIslands1F_Blocks: INCBIN "maps/SeafoamIslands1F.blk"
-
 INCLUDE "data/maps/headers/SSAnne3F.asm"
 INCLUDE "scripts/SSAnne3F.asm"
 INCLUDE "data/maps/objects/SSAnne3F.asm"
 SSAnne3F_Blocks: INCBIN "maps/SSAnne3F.blk"
-
-INCLUDE "data/maps/headers/VictoryRoad3F.asm"
-INCLUDE "scripts/VictoryRoad3F.asm"
-INCLUDE "data/maps/objects/VictoryRoad3F.asm"
-VictoryRoad3F_Blocks: INCBIN "maps/VictoryRoad3F.blk"
 
 INCLUDE "data/maps/headers/RocketHideoutB1F.asm"
 INCLUDE "scripts/RocketHideoutB1F.asm"
@@ -319,6 +296,11 @@ INCLUDE "data/maps/headers/SafariZoneNorthRestHouse.asm"
 INCLUDE "scripts/SafariZoneNorthRestHouse.asm"
 INCLUDE "data/maps/objects/SafariZoneNorthRestHouse.asm"
 
+SafariZoneCenterRestHouse_Blocks:
+SafariZoneWestRestHouse_Blocks:
+SafariZoneEastRestHouse_Blocks:
+SafariZoneNorthRestHouse_Blocks: INCBIN "maps/SafariZoneCenterRestHouse.blk"
+
 INCLUDE "data/maps/headers/CeruleanCave2F.asm"
 INCLUDE "scripts/CeruleanCave2F.asm"
 INCLUDE "data/maps/objects/CeruleanCave2F.asm"
@@ -333,6 +315,34 @@ INCLUDE "data/maps/headers/RockTunnelB1F.asm"
 INCLUDE "scripts/RockTunnelB1F.asm"
 INCLUDE "data/maps/objects/RockTunnelB1F.asm"
 RockTunnelB1F_Blocks: INCBIN "maps/RockTunnelB1F.blk"
+
+
+SECTION "Maps 6", ROMX   ; marcelnote - maps with dungeon warps (holes) need to be here
+
+INCLUDE "data/maps/headers/PokemonMansion1F.asm"
+INCLUDE "scripts/PokemonMansion1F.asm"
+INCLUDE "data/maps/objects/PokemonMansion1F.asm"
+PokemonMansion1F_Blocks: INCBIN "maps/PokemonMansion1F.blk"
+
+INCLUDE "data/maps/headers/PokemonMansion2F.asm"
+INCLUDE "scripts/PokemonMansion2F.asm"
+INCLUDE "data/maps/objects/PokemonMansion2F.asm"
+PokemonMansion2F_Blocks: INCBIN "maps/PokemonMansion2F.blk"
+
+INCLUDE "data/maps/headers/PokemonMansion3F.asm"
+INCLUDE "scripts/PokemonMansion3F.asm"
+INCLUDE "data/maps/objects/PokemonMansion3F.asm"
+PokemonMansion3F_Blocks: INCBIN "maps/PokemonMansion3F.blk"
+
+INCLUDE "data/maps/headers/PokemonMansionB1F.asm"
+INCLUDE "scripts/PokemonMansionB1F.asm"
+INCLUDE "data/maps/objects/PokemonMansionB1F.asm"
+PokemonMansionB1F_Blocks: INCBIN "maps/PokemonMansionB1F.blk"
+
+INCLUDE "data/maps/headers/SeafoamIslands1F.asm"
+INCLUDE "scripts/SeafoamIslands1F.asm"
+INCLUDE "data/maps/objects/SeafoamIslands1F.asm"
+SeafoamIslands1F_Blocks: INCBIN "maps/SeafoamIslands1F.blk"
 
 INCLUDE "data/maps/headers/SeafoamIslandsB1F.asm"
 INCLUDE "scripts/SeafoamIslandsB1F.asm"
@@ -364,17 +374,31 @@ INCLUDE "scripts/CinnabarVolcano2F.asm"
 INCLUDE "data/maps/objects/CinnabarVolcano2F.asm"
 CinnabarVolcano2F_Blocks:: INCBIN "maps/CinnabarVolcano2F.blk"
 
+INCLUDE "data/maps/headers/VictoryRoad1F.asm"
+INCLUDE "scripts/VictoryRoad1F.asm"
+INCLUDE "data/maps/objects/VictoryRoad1F.asm"
+VictoryRoad1F_Blocks: INCBIN "maps/VictoryRoad1F.blk"
+
+INCLUDE "data/maps/headers/VictoryRoad2F.asm"
+INCLUDE "scripts/VictoryRoad2F.asm"
+INCLUDE "data/maps/objects/VictoryRoad2F.asm"
+VictoryRoad2F_Blocks: INCBIN "maps/VictoryRoad2F.blk"
+
+INCLUDE "data/maps/headers/VictoryRoad3F.asm"
+INCLUDE "scripts/VictoryRoad3F.asm"
+INCLUDE "data/maps/objects/VictoryRoad3F.asm"
+VictoryRoad3F_Blocks: INCBIN "maps/VictoryRoad3F.blk"
+
 
 SECTION "Maps 7", ROMX
-
-INCLUDE "data/maps/headers/Route7.asm"
-INCLUDE "data/maps/objects/Route7.asm"
-Route7_Blocks: INCBIN "maps/Route7.blk"
 
 
 SECTION "Maps 8", ROMX
 
+INCLUDE "data/maps/headers/Route7.asm"
 INCLUDE "scripts/Route7.asm"
+INCLUDE "data/maps/objects/Route7.asm"
+Route7_Blocks: INCBIN "maps/Route7.blk"
 
 INCLUDE "data/maps/headers/RedsYellowsHouses.asm" ; marcelnote - merged RedsHouse floors,
 INCLUDE "scripts/RedsYellowsHouses.asm"           ;              added YellowsHouse
@@ -539,9 +563,9 @@ INCLUDE "data/maps/objects/IndigoPlateau.asm"
 IndigoPlateau_Blocks: INCBIN "maps/IndigoPlateau.blk"
 
 INCLUDE "data/maps/headers/SaffronCity.asm"
+INCLUDE "scripts/SaffronCity.asm"
 INCLUDE "data/maps/objects/SaffronCity.asm"
 SaffronCity_Blocks: INCBIN "maps/SaffronCity.blk"
-INCLUDE "scripts/SaffronCity.asm"
 
 INCLUDE "scripts/Route20.asm"
 INCLUDE "scripts/Route22.asm"
@@ -549,30 +573,10 @@ INCLUDE "scripts/Route23.asm"
 INCLUDE "scripts/Route24.asm"
 INCLUDE "scripts/Route25.asm"
 
-INCLUDE "data/maps/headers/VictoryRoad2F.asm"
-INCLUDE "scripts/VictoryRoad2F.asm"
-INCLUDE "data/maps/objects/VictoryRoad2F.asm"
-VictoryRoad2F_Blocks: INCBIN "maps/VictoryRoad2F.blk"
-
 INCLUDE "data/maps/headers/MtMoonB1F.asm"
 INCLUDE "scripts/MtMoonB1F.asm"
 INCLUDE "data/maps/objects/MtMoonB1F.asm"
 MtMoonB1F_Blocks: INCBIN "maps/MtMoonB1F.blk"
-
-INCLUDE "data/maps/headers/PokemonMansion2F.asm"
-INCLUDE "scripts/PokemonMansion2F.asm"
-INCLUDE "data/maps/objects/PokemonMansion2F.asm"
-PokemonMansion2F_Blocks: INCBIN "maps/PokemonMansion2F.blk"
-
-INCLUDE "data/maps/headers/PokemonMansion3F.asm"
-INCLUDE "scripts/PokemonMansion3F.asm"
-INCLUDE "data/maps/objects/PokemonMansion3F.asm"
-PokemonMansion3F_Blocks: INCBIN "maps/PokemonMansion3F.blk"
-
-INCLUDE "data/maps/headers/PokemonMansionB1F.asm"
-INCLUDE "scripts/PokemonMansionB1F.asm"
-INCLUDE "data/maps/objects/PokemonMansionB1F.asm"
-PokemonMansionB1F_Blocks: INCBIN "maps/PokemonMansionB1F.blk"
 
 
 SECTION "Maps 11", ROMX
@@ -845,11 +849,6 @@ INCLUDE "data/maps/objects/UndergroundPathRoute6.asm"
 INCLUDE "data/maps/headers/UndergroundPathRoute7.asm"
 INCLUDE "scripts/UndergroundPathRoute7.asm"
 INCLUDE "data/maps/objects/UndergroundPathRoute7.asm"
-
-INCLUDE "data/maps/headers/VictoryRoad1F.asm"
-INCLUDE "scripts/VictoryRoad1F.asm"
-INCLUDE "data/maps/objects/VictoryRoad1F.asm"
-VictoryRoad1F_Blocks: INCBIN "maps/VictoryRoad1F.blk"
 
 
 SECTION "Maps 17", ROMX

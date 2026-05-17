@@ -91,7 +91,6 @@ ROMX $10
 	"bank10"
 ROMX $11
 	"Maps 5"
-	"Pokédex Rating"
 	"Maps 6"
 	"Hidden Events Core"
 ROMX $12

@@ -1,17 +1,28 @@
-IsPlayerOnDungeonWarp::
-	xor a
-	ld [wWhichDungeonWarp], a
-	ld a, [wStatusFlags3]
-	bit BIT_ON_DUNGEON_WARP, a
-	ret nz
-	call ArePlayerCoordsInArray
+IsPlayerOnDungeonWarp:: ; marcelnote - modified for new special warp engine
+; INPUT:
+; hl = address of coordinates array
+; d = dungeon warp id of first coordinate
+; OUTPUT:
+; d = dungeon warp id
+; sets carry if the player is on a dungeon warp
+	ld a, [wStatusFlags6]
+	bit BIT_DUNGEON_WARP, a
+	jr nz, .foundDungeonWarp
+	call ArePlayerCoordsInArray ; preserves d
 	ret nc
 	ld a, [wCoordIndex]
-	ld [wWhichDungeonWarp], a
-	ld hl, wStatusFlags3
-	set BIT_ON_DUNGEON_WARP, [hl]
+	dec a
+	add d
+	ld d, a
+	ld [wDungeonWarpID], a
 	ld hl, wStatusFlags6
 	set BIT_DUNGEON_WARP, [hl]
+	scf
+	ret
+.foundDungeonWarp
+	ld a, [wDungeonWarpID]
+	ld d, a
+	scf
 	ret
 
 ; if a hidden event was found, stores $00 in [hDidntFindAnyHiddenEvent], else stores $ff

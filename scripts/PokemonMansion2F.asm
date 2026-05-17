@@ -11,8 +11,8 @@ PokemonMansion2F_Script:
 Mansion2CheckReplaceSwitchDoorBlocks:
 	ld hl, wCurrentMapScriptFlags
 	bit BIT_CUR_MAP_LOADED_1, [hl]
-	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
+	res BIT_CUR_MAP_LOADED_1, [hl]
 	CheckEvent EVENT_MANSION_SWITCH_ON
 	jr nz, .switchTurnedOn
 	ld a, $e
@@ -23,8 +23,7 @@ Mansion2CheckReplaceSwitchDoorBlocks:
 	call Mansion2ReplaceBlock
 	ld a, $5f
 	lb bc, 11, 3
-	call Mansion2ReplaceBlock
-	ret
+	jp Mansion2ReplaceBlock
 .switchTurnedOn
 	ld a, $5f
 	lb bc, 2, 4
@@ -34,8 +33,7 @@ Mansion2CheckReplaceSwitchDoorBlocks:
 	call Mansion2ReplaceBlock
 	ld a, $e
 	lb bc, 11, 3
-	call Mansion2ReplaceBlock
-	ret
+	jp Mansion2ReplaceBlock
 
 Mansion2ReplaceBlock:
 	ld [wNewTileBlockID], a

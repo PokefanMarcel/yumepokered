@@ -91,17 +91,9 @@ MACRO def_warps_to
 			"An object_event has text ID {_OBJECT_EVENT_{d:n}_TEXT_ID} expected for a bg_event (above {d:{_NUM_OBJECT_EVENTS}})"
 	ENDR
 	FOR n, {_NUM_WARP_EVENTS}
-		warp_to _WARP_{d:n}_X, _WARP_{d:n}_Y, \1_WIDTH
+		event_displacement \1_WIDTH, _WARP_{d:n}_X, _WARP_{d:n}_Y
 	ENDR
 ENDM
-
-;\1 x position
-;\2 y position
-;\3 map width
-MACRO warp_to
-	event_displacement \3, \1, \2
-ENDM
-
 
 ;\1 first bit offset / first object id
 MACRO def_trainers

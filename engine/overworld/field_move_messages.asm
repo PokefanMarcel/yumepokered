@@ -26,8 +26,8 @@ IsSurfingAllowed:
 	ld a, [wCurMap]
 	cp SEAFOAM_ISLANDS_B4F
 	ret nz
-	CheckBothEventsSet EVENT_SEAFOAM4_BOULDER1_DOWN_HOLE, EVENT_SEAFOAM4_BOULDER2_DOWN_HOLE
-	ret z
+	CheckEvent EVENT_SEAFOAM_B4F_BOULDERS_DOWN ; marcelnote - simplified Seafoam boulder events
+	ret nz
 	ld hl, SeafoamIslandsB4FStairsCoords
 	call ArePlayerCoordsInArray
 	ret nc

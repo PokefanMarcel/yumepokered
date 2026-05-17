@@ -1,43 +1,35 @@
-SeafoamIslands1F_Script:
+SeafoamIslands1F_Script: ; marcelnote - modified for new special warp engine
 	call EnableAutoTextBoxDrawing
 	SetEvent EVENT_IN_SEAFOAM_ISLANDS
 	ld hl, wMiscFlags
 	bit BIT_PUSHED_BOULDER, [hl]
+	jr z, .checkHoles
 	res BIT_PUSHED_BOULDER, [hl]
-	jr z, .noBoulderWasPushed
-	ld hl, Seafoam1HolesCoords
+	ld hl, .HolesCoords
 	call CheckBoulderCoords
 	ret nc
-	EventFlagAddress hl, EVENT_SEAFOAM1_BOULDER1_DOWN_HOLE
 	ld a, [wCoordIndex]
-	cp $1
+	dec a
 	jr nz, .boulder2FellDownHole
-	SetEventReuseHL EVENT_SEAFOAM1_BOULDER1_DOWN_HOLE
 	ld a, TOGGLE_SEAFOAM_ISLANDS_1F_BOULDER_1
-	ld [wObjectToHide], a
-	ld a, TOGGLE_SEAFOAM_ISLANDS_B1F_BOULDER_1
-	ld [wObjectToShow], a
-	jr .hideAndShowBoulderObjects
-.boulder2FellDownHole
-	SetEventAfterBranchReuseHL EVENT_SEAFOAM1_BOULDER2_DOWN_HOLE, EVENT_SEAFOAM1_BOULDER1_DOWN_HOLE
-	ld a, TOGGLE_SEAFOAM_ISLANDS_1F_BOULDER_2
-	ld [wObjectToHide], a
-	ld a, TOGGLE_SEAFOAM_ISLANDS_B1F_BOULDER_2
-	ld [wObjectToShow], a
-.hideAndShowBoulderObjects
-	ld a, [wObjectToHide]
 	ld [wToggleableObjectIndex], a
 	predef HideObject
-	ld a, [wObjectToShow]
+	ld a, TOGGLE_SEAFOAM_ISLANDS_B1F_BOULDER_1
 	ld [wToggleableObjectIndex], a
 	predef_jump ShowObject
-.noBoulderWasPushed
-	ld a, SEAFOAM_ISLANDS_B1F
-	ld [wDungeonWarpDestinationMap], a
-	ld hl, Seafoam1HolesCoords
+.boulder2FellDownHole
+	ld a, TOGGLE_SEAFOAM_ISLANDS_1F_BOULDER_2
+	ld [wToggleableObjectIndex], a
+	predef HideObject
+	ld a, TOGGLE_SEAFOAM_ISLANDS_B1F_BOULDER_2
+	ld [wToggleableObjectIndex], a
+	predef_jump ShowObject
+.checkHoles
+	ld d, DUNGEON_WARP_SEAFOAM_1F_LEFT
+	ld hl, .HolesCoords
 	jp IsPlayerOnDungeonWarp
 
-Seafoam1HolesCoords:
+.HolesCoords:
 	dbmapcoord 17,  6
 	dbmapcoord 24,  6
 	db -1 ; end
