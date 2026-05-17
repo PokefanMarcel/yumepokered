@@ -456,7 +456,7 @@ SurfingMinigame_RunGame:
 
 SurfingMinigame_WaitToShowResults:
 	call SurfingMinigame_RunDelayTimer
-	jr c, .done_delay
+	jr c, .doneDelay
 	xor a
 	ld [wc5d5], a
 	call SurfingMinigame_UpdateLYOverrides
@@ -465,7 +465,7 @@ SurfingMinigame_WaitToShowResults:
 	call Func_f8c97
 	jp SurfingMinigame_ResetMusicTempo
 
-.done_delay
+.doneDelay
 	ld hl, wSurfingMinigameRoutineNumber
 	inc [hl]
 	ld a, $90
@@ -601,11 +601,11 @@ SurfingMinigame_GameOver:
 	ld hl, wc631
 	ld a, [hl]
 	and a
-	jr z, .wait_press_a
+	jr z, .waitPressA
 	dec [hl]
 	ret
 
-.wait_press_a
+.waitPressA
 	ldh a, [hJoyPressed]
 	and PAD_A
 	ret z
@@ -617,12 +617,12 @@ SurfingMinigame_RunDelayTimer:
 	ld hl, wSurfingMinigameRoutineDelay
 	ld a, [hl]
 	and a
-	jr z, .set_carry
+	jr z, .setCarry
 	dec [hl]
 	and a
 	ret
 
-.set_carry
+.setCarry
 	scf
 	ret
 
@@ -823,13 +823,13 @@ SurfingMinigame_DPadAction:
 	ld de, hJoy5
 	ld a, [de]
 	and PAD_LEFT
-	jr nz, .d_left
+	jr nz, .dLeft
 	ld a, [de]
 	and PAD_RIGHT
-	jr nz, .d_right
+	jr nz, .dRight
 	ret
 
-.d_left
+.dLeft
 	ld hl, ANIM_OBJ_FIELD_E
 	add hl, bc
 	ld [hl], $0
@@ -838,24 +838,24 @@ SurfingMinigame_DPadAction:
 	ld a, [hl]
 	inc [hl]
 	cp $b
-	jr c, .d_left_skip
+	jr c, .dLeftSkip
 	call .StartTrick
 	ld hl, wSurfingMinigameTrickFlags
 	set 0, [hl]
-.d_left_skip
+.dLeftSkip
 	ld hl, ANIM_OBJ_FRAME_SET
 	add hl, bc
 	ld a, [hl]
 	cp $e
-	jr nc, .d_left_reset
+	jr nc, .dLeftReset
 	inc [hl]
 	ret
 
-.d_left_reset
+.dLeftReset
 	ld [hl], $1
 	ret
 
-.d_right
+.dRight
 	ld hl, ANIM_OBJ_FIELD_D
 	add hl, bc
 	ld [hl], $0
@@ -864,20 +864,20 @@ SurfingMinigame_DPadAction:
 	ld a, [hl]
 	inc [hl]
 	cp $d
-	jr c, .d_right_skip
+	jr c, .dRightSkip
 	call .StartTrick
 	ld hl, wSurfingMinigameTrickFlags
 	set 1, [hl]
-.d_right_skip
+.dRightSkip
 	ld hl, ANIM_OBJ_FRAME_SET
 	add hl, bc
 	ld a, [hl]
 	cp $1
-	jr z, .d_right_reset
+	jr z, .dRightReset
 	dec [hl]
 	ret
 
-.d_right_reset
+.dRightReset
 	ld [hl], $e
 	ret
 
@@ -898,98 +898,98 @@ SurfingMinigame_TileInteraction:
 	add hl, bc
 	ld a, [wSurfingMinigameBGMapReadBuffer]
 	cp $6
-	jr z, .tile_06
+	jr z, .tile06
 	cp $14
-	jr z, .tile_14
+	jr z, .tile14
 	cp $12
-	jr z, .tile_12
+	jr z, .tile12
 	cp $7
-	jr z, .tile_07
+	jr z, .tile07
 	ld a, [hl]
 	cp $1
-	jp z, .action_0
+	jp z, .action0
 	cp $2
-	jr z, .action_1
+	jr z, .action1
 	cp $3
-	jr z, .action_2
+	jr z, .action2
 	cp $4
-	jr z, .action_3
+	jr z, .action3
 	cp $5
-	jr z, .action_2
+	jr z, .action2
 	cp $6
-	jr z, .action_1
+	jr z, .action1
 	cp $7
-	jr z, .action_0
-	jr .action_0
+	jr z, .action0
+	jr .action0
 
-.tile_06
+.tile06
 	ld a, [hl]
 	cp $1
-	jr z, .action_0
+	jr z, .action0
 	cp $2
-	jr z, .action_0
+	jr z, .action0
 	cp $3
-	jr z, .action_0
+	jr z, .action0
 	cp $4
-	jr z, .action_1
+	jr z, .action1
 	cp $5
-	jr z, .action_2
+	jr z, .action2
 	cp $6
-	jr z, .action_3
+	jr z, .action3
 	cp $7
-	jr z, .action_2
-	jr .action_0
+	jr z, .action2
+	jr .action0
 
-.tile_07
+.tile07
 	ld a, [hl]
 	cp $1
-	jr z, .action_2
+	jr z, .action2
 	cp $2
-	jr z, .action_3
+	jr z, .action3
 	cp $3
-	jr z, .action_2
+	jr z, .action2
 	cp $4
-	jr z, .action_1
+	jr z, .action1
 	cp $5
-	jr z, .action_0
+	jr z, .action0
 	cp $6
-	jr z, .action_0
+	jr z, .action0
 	cp $7
-	jr z, .action_0
-	jr .action_0
+	jr z, .action0
+	jr .action0
 
-.tile_12
-.tile_14
+.tile12
+.tile14
 	ld a, [hl]
 	cp $1
-	jr z, .action_0
+	jr z, .action0
 	cp $2
-	jr z, .action_1
+	jr z, .action1
 	cp $3
-	jr z, .action_2
+	jr z, .action2
 	cp $4
-	jr z, .action_3
+	jr z, .action3
 	cp $5
-	jr z, .action_3
+	jr z, .action3
 	cp $6
-	jr z, .action_2
+	jr z, .action2
 	cp $7
-	jr z, .action_1
-	jr .action_0
+	jr z, .action1
+	jr .action0
 
-.action_1
+.action1
 	call SufingMinigame_ReduceSpeedBy128
-	jr .action_3
+	jr .action3
 
-.action_2
+.action2
 	call SufingMinigame_ReduceSpeedBy64
-.action_3
+.action3
 	ld a, SFX_SURFING_LAND
 	call PlaySound
 	and a
 	ret
 
-.action_0
+.action0
 	ld a, $40
 	ld [wSurfingMinigamePikachuSpeed], a
 	xor a
@@ -1184,24 +1184,24 @@ Func_f87b5:
 .GetYCoord:
 	ldh a, [hSCX]
 	and $8
-	jr nz, .get_height_plus_9
+	jr nz, .getHeightPlus9
 	ld hl, wSurfingMinigameWaveHeight + 8
-	jr .got_hl
+	jr .gotHL
 
-.get_height_plus_9
+.getHeightPlus9
 	ld hl, wSurfingMinigameWaveHeight + 9
-.got_hl
+.gotHL
 	ld a, [wSurfingMinigameBGMapReadBuffer + 1]
 	cp $6
-	jr z, .six_or_twenty
+	jr z, .sixOrTwenty
 	cp $14
-	jr z, .six_or_twenty
+	jr z, .sixOrTwenty
 	cp $7
 	jr z, .seven
 	ld a, [hl]
 	ret
 
-.six_or_twenty
+.sixOrTwenty
 	ldh a, [hSCX]
 	and $7
 	ld e, a
@@ -1386,14 +1386,14 @@ SurfingMinigame_Deduct1HP:
 .BCD_Deduct:
 	ld a, [hl]
 	and a
-	jr z, .roll_over
+	jr z, .rollOver
 	sub $1
 	daa
 	ld [hl], a
 	and a
 	ret
 
-.roll_over
+.rollOver
 	ld [hl], e
 	scf
 	ret
@@ -1651,19 +1651,19 @@ DidPlayerGetAHighScore:
 	ld hl, wSurfingMinigameHiScore + 1
 	ld a, [wSurfingMinigameTotalScore + 1]
 	cp [hl]
-	jr c, .not_high_score
-	jr nz, .high_score
+	jr c, .notHighScore
+	jr nz, .highScore
 	dec hl
 	ld a, [wSurfingMinigameTotalScore]
 	cp [hl]
-	jr c, .not_high_score
-	jr nz, .high_score
-.not_high_score
+	jr c, .notHighScore
+	jr nz, .highScore
+.notHighScore
 	call WaitForSoundToFinish
 	and a
 	ret
 
-.high_score
+.highScore
 	ld a, [wSurfingMinigameTotalScore]
 	ld [wSurfingMinigameHiScore], a
 	ld a, [wSurfingMinigameTotalScore + 1]
@@ -1699,23 +1699,23 @@ SurfingMinigame_CalculateAndAddRadnessFromStunt:
 	ld a, [wSurfingMinigameTrickFlags]
 	and $3
 	cp $3 ; did a combination of front and back flips
-	jr z, .mixed_chain
+	jr z, .mixedChain
 	ld a, [wSurfingMinigameRadnessMeter]
 	ld d, a
 	ld e, $1
 	ld a, $0
-.get_amount_of_radness
+.getAmountOfRadness
 	add e
 	sla e
 	dec d
-	jr nz, .get_amount_of_radness
-.add_radness_50_at_a_time
+	jr nz, .getAmountOfRadness
+.addRadness50AtATime
 	push af
 	ld e, $50
 	call SurfingMinigame_AddRadness
 	pop af
 	dec a
-	jr nz, .add_radness_50_at_a_time
+	jr nz, .addRadness50AtATime
 	ld hl, ANIM_OBJ_Y_COORD
 	add hl, bc
 	ld a, [hl]
@@ -1731,18 +1731,18 @@ SurfingMinigame_CalculateAndAddRadnessFromStunt:
 	pop bc
 	ret
 
-.mixed_chain
+.mixedChain
 	ld a, [wSurfingMinigameRadnessMeter]
 	cp $3
-	jr c, .add_180_radness_points
+	jr c, .add180RadnessPoints
 	ld a, 10
-.add_500_radness_50_at_a_time
+.add500Radness50AtATime
 	push af
 	ld e, $50
 	call SurfingMinigame_AddRadness
 	pop af
 	dec a
-	jr nz, .add_500_radness_50_at_a_time
+	jr nz, .add500Radness50AtATime
 	ld hl, ANIM_OBJ_Y_COORD
 	add hl, bc
 	ld a, [hl]
@@ -1757,7 +1757,7 @@ SurfingMinigame_CalculateAndAddRadnessFromStunt:
 	pop bc
 	ret
 
-.add_180_radness_points
+.add180RadnessPoints
 	ld e, $50
 	call SurfingMinigame_AddRadness
 	ld e, $50
@@ -1845,12 +1845,12 @@ SurfingMinigame_GenerateBGMap:
 	ld hl, wSurfingMinigameWaveHeight
 	ld de, wSurfingMinigameWaveHeight + 2
 	ld c, SCREEN_WIDTH - 2
-.copy_loop
+.copyLoop
 	ld a, [de]
 	inc de
 	ld [hli], a
 	dec c
-	jr nz, .copy_loop
+	jr nz, .copyLoop
 	ld a, [wSurfingMinigameWaveHeightBuffer]
 	ld [hli], a
 	ld a, [wSurfingMinigameWaveHeightBuffer + 1]
@@ -2062,17 +2062,17 @@ Jumptable_f8d53:
 SurfingMinigameWaveFunction_NoWave:
 	ld a, [wc5e5]
 	cp $16
-	jr c, .check_param
-	jr z, .big_kahuna
-	jr nc, .got_wave
-.big_kahuna
+	jr c, .checkParam
+	jr z, .bigKahuna
+	jr nc, .gotWave
+.bigKahuna
 	ld a, $6a
-	jr .got_next_fn
+	jr .gotNextFn
 
-.check_param
+.checkParam
 	ld a, [wc5d5]
 	and a
-	jr z, .got_wave
+	jr z, .gotWave
 	dec a
 	and $7
 	ld e, a
@@ -2080,9 +2080,9 @@ SurfingMinigameWaveFunction_NoWave:
 	ld hl, SurfingMinigame_WaveFunctionStartTable
 	add hl, de
 	ld a, [hl]
-.got_next_fn
+.gotNextFn
 	ld [wSurfingMinigameWaveFunctionNumber], a
-.got_wave
+.gotWave
 	lb bc, $74, $74
 	ld de, Unkn_f973d
 	ret
@@ -2777,9 +2777,9 @@ SurfingMinigame_NTimesDE:
 	ld hl, $0
 .loop
 	srl a
-	jr nc, .no_add
+	jr nc, .noAdd
 	add hl, de
-.no_add
+.noAdd
 	sla e
 	rl d
 	and a
@@ -2830,9 +2830,9 @@ SurfingPikachu_Sine: ; sine
 	ld hl, $0
 .loop
 	srl a
-	jr nc, .no_add
+	jr nc, .noAdd
 	add hl, de
-.no_add
+.noAdd
 	sla e
 	rl d
 	and a
