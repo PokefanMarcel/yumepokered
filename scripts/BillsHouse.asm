@@ -130,10 +130,10 @@ BillsHouseBillPokemonText: ; marcelnote - optimized
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr z, .answered_yes
+	jr z, .saidYes
 	ld hl, .NoYouGottaHelpText
 	call PrintText
-.answered_yes
+.saidYes
 	ld hl, .UseSeparationSystemText
 	call PrintText
 	ld a, SCRIPT_BILLSHOUSE_POKEMON_WALK_TO_MACHINE
@@ -156,13 +156,13 @@ BillsHouseBillSSTicketText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_SS_TICKET
 	ld hl, .WhyDontYouGoInsteadOfMeText
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, .ThankYouText
 	call PrintText
 	lb bc, S_S_TICKET, 1
 	call GiveItem
 	ld hl, .SSTicketNoRoomText
-	jr nc, .print_text
+	jr nc, .printText
 	SetEvent EVENT_GOT_SS_TICKET
 	ld a, TOGGLE_CERULEAN_GUARD_1
 	ld [wToggleableObjectIndex], a
@@ -171,7 +171,7 @@ BillsHouseBillSSTicketText: ; marcelnote - optimized
 	ld [wToggleableObjectIndex], a
 	predef HideObject
 	ld hl, .SSTicketReceivedText
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd
 
