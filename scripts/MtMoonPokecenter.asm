@@ -27,7 +27,7 @@ MtMoonPokecenterMagikarpSalesmanText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_BOUGHT_MAGIKARP
 	ld hl, .NoRefundsText
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, .IGotADealText
 	call PrintText
 	ld a, MONEY_BOX
@@ -37,14 +37,14 @@ MtMoonPokecenterMagikarpSalesmanText: ; marcelnote - optimized
 	ld a, [wCurrentMenuItem]
 	and a
 	ld hl, .NoText
-	jr nz, .print_text
+	jr nz, .printText
 	ldh [hMoney], a
 	ldh [hMoney + 2], a
 	ld a, $5
 	ldh [hMoney + 1], a
 	call HasEnoughMoney
 	ld hl, .NoMoneyText
-	jr c, .print_text
+	jr c, .printText
 	lb bc, MAGIKARP, 5
 	call GivePokemon
 	jr nc, .done
@@ -63,7 +63,7 @@ MtMoonPokecenterMagikarpSalesmanText: ; marcelnote - optimized
 	SetEvent EVENT_BOUGHT_MAGIKARP
 .done
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-.print_text
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
 
