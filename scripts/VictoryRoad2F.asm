@@ -20,13 +20,13 @@ VictoryRoad2FResetBoulderEventScript:
 ; fallthrough
 VictoryRoad2FCheckBoulderEventScript:
 	CheckEvent EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH1
-	jr z, .not_on_switch
+	jr z, .notOnSwitch
 	push af
 	ld a, $15
 	lb bc, 4, 3
 	call VictoryRoad2FReplaceTileBlockScript
 	pop af
-.not_on_switch
+.notOnSwitch
 	CheckEventReuseA EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH2
 	ret z
 	ld a, $1d
@@ -49,16 +49,16 @@ VictoryRoad2FDefaultScript:
 	EventFlagAddress hl, EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH1
 	ld a, [wCoordIndex]
 	cp $2
-	jr z, .second_switch
+	jr z, .secondSwitch
 	CheckEventReuseHL EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH1
 	SetEventReuseHL EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH1
 	ret nz
-	jr .set_script_flag
-.second_switch
+	jr .setScriptFlag
+.secondSwitch
 	CheckEventAfterBranchReuseHL EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH2, EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH1
 	SetEventReuseHL EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH2
 	ret nz
-.set_script_flag
+.setScriptFlag
 	ld hl, wCurrentMapScriptFlags
 	set BIT_CUR_MAP_LOADED_1, [hl]
 	ret
@@ -210,24 +210,24 @@ VictoryRoad2FGrampsText: ; marcelnote - new, adapted from Silph Co Lapras guy
 	text_asm
 	CheckEvent EVENT_VICTORY_ROAD_2F_GOT_HITMON
 	ld hl, .GreatFirebirdText
-	jr nz, .print_text
+	jr nz, .printText
 	ld hl, .IntroText
 	call PrintText
 	CheckEitherEventSet EVENT_GOT_HITMONLEE, EVENT_GOT_HITMONCHAN
 	ld hl, .HaveYouTestedText
-	jr nz, .give_hitmon
-.print_text
+	jr nz, .giveHitmon
+.printText
 	call PrintText
 	rst TextScriptEnd ; PureRGB - rst TextScriptEnd
-.give_hitmon
+.giveHitmon
 	CheckEvent EVENT_GOT_HITMONCHAN
 	ld c, 40
 	ld b, HITMONLEE
 	ld hl, .GiveHitmonleeText
-	jr nz, .got_text_and_mon
+	jr nz, .gotTextAndMon
 	ld b, HITMONCHAN
 	ld hl, .GiveHitmonchanText
-.got_text_and_mon
+.gotTextAndMon
 	push bc ; save Mon and level info
 	call PrintText
 	pop bc
