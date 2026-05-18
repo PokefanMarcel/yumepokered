@@ -59,7 +59,7 @@ ShowPokedexMenu:
 	jr z, .exitPokedex ; if the player chose Quit
 	dec b
 	jr z, .doPokemonListMenu ; if pokemon not seen or player pressed B button
-	jp .setUpGraphics ; if pokemon data or area was shown
+	jr .setUpGraphics ; if pokemon data or area was shown
 
 ; handles the menu on the lower right in the pokedex screen
 ; OUTPUT:
@@ -301,7 +301,7 @@ HandlePokedexListMenu:
 	call GBPalNormal
 	call HandleMenuInput
 	bit B_PAD_B, a
-	jp nz, .buttonBPressed
+	jr nz, .buttonBPressed
 ; check if Up pressed
 	bit B_PAD_UP, a
 	jr z, .checkIfDownPressed
