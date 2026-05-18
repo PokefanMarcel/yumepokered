@@ -27,7 +27,7 @@ PokemonTower7FEndBattleScript:
 	res BIT_SEEN_BY_TRAINER, [hl]
 	ld a, [wIsInBattle]
 	cp $ff
-	jp z, PokemonTower7FSetDefaultScript
+	jr z, PokemonTower7FSetDefaultScript
 	call EndTrainerBattle
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
