@@ -147,10 +147,6 @@ SetPal_Overworld:
 	jr z, .caveOrBruno
 	cp SAFARI
 	jr z, .SafariZone
-	cp SHIP
-	jr z, .shipOrPort
-	cp SHIP_PORT
-	jr z, .shipOrPort
 	ld a, [wCurMap]
 	cp FIRST_INDOOR_MAP
 	jr c, .townOrRoute
@@ -168,8 +164,17 @@ SetPal_Overworld:
 	jr z, .caveOrBruno
 	cp MT_SILVER_3F
 	jr z, .MtSilver3F
+	cp VERMILION_DOCK
+	jr z, .Vermilion
+	cp MANDARIN_DOCK
+	jr z, .Mandarin
 .normalDungeonOrBuilding
 	ld a, [wLastMap] ; town or route that current dungeon or building is located
+	; if last map is VERMILION_DOCK or MANDARIN_DOCK we're on the ferry, so use Mandarin palette
+	cp VERMILION_DOCK
+	jr z, .Mandarin
+	cp MANDARIN_DOCK
+	jr z, .Mandarin
 .townOrRoute
 	cp NUM_CITY_MAPS
 	jr c, .town
@@ -182,6 +187,7 @@ SetPal_Overworld:
 	ld a, SET_PAL_OVERWORLD
 	ld [wDefaultPaletteCommand], a
 	ret
+
 .PokemonTowerOrAgatha
 	ld a, PAL_GRAYMON - 1
 	jr .town
@@ -204,11 +210,14 @@ SetPal_Overworld:
 .SafariZone
 	ld a, PAL_ROUTE - 1
 	jr .town
-.shipOrPort
+.Vermilion
 	ld a, PAL_VERMILION - 1
 	jr .town
 .MtSilver3F
 	ld a, PAL_SAFFRON - 1
+	jr .town
+.Mandarin
+	ld a, PAL_MANDARIN - 1
 	jr .town
 
 ; used when a Pokemon is the only thing on the screen
