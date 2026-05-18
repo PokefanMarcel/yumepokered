@@ -114,7 +114,7 @@ Serial_ExchangeByte::
 	pop hl
 	call IsUnknownCounterZero
 	jr nz, .loop
-	jp SetUnknownCounterToFFFF
+	jr SetUnknownCounterToFFFF
 .doNotIncrementUnknownCounter
 	ldh a, [rIE]
 	and IE_SERIAL | IE_TIMER | IE_STAT | IE_VBLANK
@@ -247,7 +247,7 @@ Serial_SyncAndExchangeNybble::
 	jr nz, .next2
 	pop hl
 	xor a
-	jp SetUnknownCounterToFFFF
+	jr SetUnknownCounterToFFFF
 .next2
 	pop hl
 .next1
