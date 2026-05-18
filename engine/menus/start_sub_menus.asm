@@ -66,24 +66,24 @@ StartMenu_Pokemon::
 	call LoadScreenTilesFromBuffer1
 	pop af
 	bit B_PAD_B, a
-	jp nz, .loop
+	jr nz, .loop
 ; if the B button wasn't pressed
 	ld a, [wMaxMenuItem]
 	ld b, a
 	ld a, [wCurrentMenuItem] ; menu selection
 	cp b
-	jp z, .exitMenu ; if the player chose Cancel
+	jr z, .exitMenu ; if the player chose Cancel
 	dec b
 	cp b
 	jr z, .choseSwitch
 	dec b
 	cp b
-	jp z, .choseStats
+	jr z, .choseStats
 	ld c, a
 	ld b, 0
 	ld hl, wFieldMoves
 	add hl, bc
-	jp .choseOutOfBattleMove
+	jr .choseOutOfBattleMove
 .choseSwitch
 	ld a, [wPartyCount]
 	cp 2 ; is there more than one pokemon in the party?
@@ -92,7 +92,7 @@ StartMenu_Pokemon::
 	ld a, SWAP_MONS_PARTY_MENU
 	ld [wPartyMenuTypeOrMessageID], a
 	call GoBackToPartyMenu
-	jp .checkIfPokemonChosen
+	jr .checkIfPokemonChosen
 .choseStats
 	call ClearSprites
 	xor a ; PLAYER_PARTY_DATA
@@ -222,7 +222,7 @@ StartMenu_Pokemon::
 	ld c, 60
 	call DelayFrames
 	call GBPalWhiteOutWithDelay3
-	jp .goBackToMap
+	jr .goBackToMap
 .warpToLastPokemonCenterText
 	text_far _WarpToLastPokemonCenterText
 	text_end
@@ -432,7 +432,7 @@ ENDC
 	call UseItem
 	ld a, [wActionResultOrTookBattleTurn]
 	cp $02
-	jp z, .partyMenuNotDisplayed
+	jr z, .partyMenuNotDisplayed
 	call GBPalWhiteOutWithDelay3
 	call RestoreScreenTilesAndReloadTilePatterns
 	pop af
