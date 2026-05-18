@@ -68,7 +68,7 @@ PokemonTower2FRivalEncounterEventCoords:
 PokemonTower2FDefeatedRivalScript:
 	ld a, [wIsInBattle]
 	cp $ff
-	jp z, PokemonTower2FSetDefaultScript ; marcelnote - was PokemonTower2FResetRivalEncounter
+	jr z, PokemonTower2FSetDefaultScript ; marcelnote - was PokemonTower2FResetRivalEncounter
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	SetEvent EVENT_BEAT_POKEMON_TOWER_RIVAL
