@@ -55,13 +55,13 @@ MtMoonB2F_ScriptPointers:
 
 MtMoonB2FDefaultScript:
 	CheckEvent EVENT_BEAT_MT_MOON_EXIT_SUPER_NERD
-	jp nz, MtMoonB2FCheckGotAFossil
+	jr nz, MtMoonB2FCheckGotAFossil
 	ld a, [wYCoord]
 	cp 8
-	jp nz, MtMoonB2FCheckGotAFossil
+	jr nz, MtMoonB2FCheckGotAFossil
 	ld a, [wXCoord]
 	cp 13
-	jp nz, MtMoonB2FCheckGotAFossil
+	jr nz, MtMoonB2FCheckGotAFossil
 	xor a
 	ldh [hJoyHeld], a
 	ld a, TEXT_MTMOONB2F_SUPER_NERD
@@ -76,7 +76,7 @@ MtMoonB2FCheckGotAFossil:
 MtMoonB2FDefeatedSuperNerdScript:
 	ld a, [wIsInBattle]
 	cp $ff
-	jp z, MtMoonB2FResetScripts
+	jr z, MtMoonB2FResetScripts
 	call UpdateSprites
 	call Delay3
 	SetEvent EVENT_BEAT_MT_MOON_EXIT_SUPER_NERD
@@ -244,7 +244,7 @@ MtMoonB2FDomeFossilText:
 	jr nz, .done
 	lb bc, DOME_FOSSIL, 1
 	call GiveItem
-	jp nc, MtMoonB2FYouHaveNoRoomText
+	jr nc, MtMoonB2FYouHaveNoRoomText
 	call MtMoonB2FReceivedFossilText
 	ld a, TOGGLE_MT_MOON_B2F_FOSSIL_1
 	ld [wToggleableObjectIndex], a
@@ -272,7 +272,7 @@ MtMoonB2FHelixFossilText:
 	jr nz, .done
 	lb bc, HELIX_FOSSIL, 1
 	call GiveItem
-	jp nc, MtMoonB2FYouHaveNoRoomText
+	jr nc, MtMoonB2FYouHaveNoRoomText
 	call MtMoonB2FReceivedFossilText
 	ld a, TOGGLE_MT_MOON_B2F_FOSSIL_2
 	ld [wToggleableObjectIndex], a
