@@ -71,7 +71,7 @@ LancesRoomDefaultScript:
 	set BIT_CUR_MAP_LOADED_1, [hl]
 	ld a, SFX_GO_INSIDE
 	call PlaySound
-	jp LanceShowOrHideEntranceBlocks
+	jr LanceShowOrHideEntranceBlocks
 
 LanceTriggerMovementCoords:
 	dbmapcoord  5,  1
@@ -85,7 +85,7 @@ LancesRoomLanceEndBattleScript:
 	call EndTrainerBattle
 	ld a, [wIsInBattle]
 	cp $ff
-	jp z, ResetLanceScript
+	jr z, ResetLanceScript
 	;;;;;; marcelnote - added for Lance rematch
 	CheckEvent EVENT_BECAME_CHAMPION
 	ld a, TEXT_LANCESROOM_LANCE_REMATCH
