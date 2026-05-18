@@ -260,7 +260,7 @@ DisplayChooseQuantityMenu::
 	call PlaceString
 	xor a
 	ld [wItemQuantity], a ; initialize current quantity to 0
-	jp .incrementQuantity
+	jr .incrementQuantity
 .waitForKeyPressLoop
 	call JoypadLowSensitivity
 	ldh a, [hJoyPressed] ; newly pressed buttons
