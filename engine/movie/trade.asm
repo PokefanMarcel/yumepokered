@@ -794,7 +794,7 @@ PrintTradeWentToText:
 	call PrintText
 	ld c, 200
 	call DelayFrames
-	jp Trade_SlideTextBoxOffScreen
+	jr Trade_SlideTextBoxOffScreen
 
 TradeWentToText:
 	text_far _TradeWentToText
@@ -823,7 +823,7 @@ PrintTradeFarewellText:
 	ld hl, TradeTransferredText
 	call PrintText
 	call Trade_Delay80
-	jp Trade_SlideTextBoxOffScreen
+	jr Trade_SlideTextBoxOffScreen
 
 TradeWavesFarewellText:
 	text_far _TradeWavesFarewellText
