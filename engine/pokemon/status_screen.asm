@@ -511,7 +511,7 @@ DrawHP:
 	jr nz, .nonzeroHP
 	ld d, $6
 	ld e, a  ; e = 0
-	jp .drawHPBarAndPrintFraction
+	jr .drawHPBarAndPrintFraction
 .nonzeroHP
 	ld a, [wLoadedMonMaxHP]
 	ld d, a
