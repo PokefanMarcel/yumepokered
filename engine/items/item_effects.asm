@@ -164,42 +164,17 @@ ItemUseBall:
 	call CopyData ; save the player's name in the Wild Monster data (part of the Cinnabar Island Missingno. glitch)
 	jp .captured
 
-.notOldManBattle
-; If the player is fighting the ghost Marowak, set the value that indicates the
-; Pokémon can't be caught and skip the capture calculations.
+.notOldManBattle ; marcelnote - modified to handle more uncatchable scripted encounters
+	callfar IsSpecialGhostMon
+	ld b, $10 ; can't be caught value
+	jp z, .setAnimData
 	ld a, [wCurMap]
-	ld b, $10 ; can't be caught value ; marcelnote - this is overwritten if .loop is entered
-;;;;;; marcelnote - added this to also work with Cinnabar Volcano event Charizard and Pokemon Tower special ghosts
 	cp CINNABAR_VOLCANO_1FB1F
-	jr nz, .checkPokemonTower
+	jr nz, .loop
 	ld a, [wEnemyMonSpecies2]
 	cp CHARIZARD
 	jp z, .setAnimData
-.checkPokemonTower
-	cp POKEMON_TOWER_2F
-	jr c, .loop ; if strictly below POKEMON_TOWER_2F, nothing to check
-	cp POKEMON_TOWER_7F
-	jr nc, .loop ; if POKEMON_TOWER_7F or above, nothing to check
-	ld a, [wEnemyMonSpecies2]
-	cp GHOST_RATICATE  ; 2F
-	jp z, .setAnimData
-	cp GHOST_PRIMEAPE  ; 3F
-	jp z, .setAnimData
-	cp GHOST_JOLTEON   ; 4F
-	jp z, .setAnimData
-	cp GHOST_GENGAR    ; 5F
-	jp z, .setAnimData
-	cp GHOST_NINETALES ; 6F
-	jp z, .setAnimData
-	cp RESTLESS_SOUL   ; 6F, original Marowak
-    jp z, .setAnimData
-;;;;;; below original code to check RESTLESS_SOUL in POKEMON_TOWER_6F
-;	cp POKEMON_TOWER_6F
-;	jr nz, .loop
-;	ld a, [wEnemyMonSpecies2]
-;	cp RESTLESS_SOUL
-;	ld b, $10 ; can't be caught value
-;	jp z, .setAnimData
+	; fallthrough
 
 ; Get the first random number. Let it be called Rand1.
 ; Rand1 must be within a certain range according the kind of ball being thrown.

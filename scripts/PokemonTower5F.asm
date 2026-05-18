@@ -71,7 +71,7 @@ PokemonTower5FCheckGhostEncounterScript: ; marcelnote - postgame Agatha event
 	ld a, TEXT_POKEMONTOWER5F_GHOST_BATTLE
 	ldh [hTextID], a
 	call DisplayTextID
-	ld a, GHOST_GENGAR
+	ld a, AGATHA_GHOST_5F
 	ld [wCurOpponent], a
 	ld a, 60
 	ld [wCurEnemyLevel], a

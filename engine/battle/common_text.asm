@@ -3,7 +3,7 @@ PrintBeginningBattleText: ; marcelnote - optimized and removed sound bug in Ghos
 	dec a
 	jr nz, .trainerBattle
 	ld a, [wCurMap]
-	cp POKEMON_TOWER_3F
+	cp POKEMON_TOWER_2F
 	jr c, .wildBattle
 	cp POKEMON_TOWER_7F + 1
 	jr c, .pokemonTower
@@ -33,16 +33,9 @@ PrintBeginningBattleText: ; marcelnote - optimized and removed sound bug in Ghos
 .pokemonTower
 	ld b, SILPH_SCOPE
 	call IsItemInBag
-	ld a, [wEnemyMonSpecies2]
-	ld [wCurPartySpecies], a
-	cp RESTLESS_SOUL
-	jr z, .isMarowak
-	;cp GHOST_NINETALES ; marcelnote - postgame Agatha event
-	;jr z, .isMarowak   ; marcelnote - postgame Agatha event
-	ld a, b
-	and a
 	jr z, .noSilphScope
-;	callfar LoadEnemyMonData ; marcelnote - removed
+	callfar IsSpecialGhostMon
+	jr z, .isSpecialGhostMon
 	jr .wildBattle
 
 .noSilphScope
@@ -50,17 +43,14 @@ PrintBeginningBattleText: ; marcelnote - optimized and removed sound bug in Ghos
 	call PrintText
 	ld hl, GhostCantBeIDdText
 	jp PrintText
-.isMarowak
 
-	ld a, b
-	and a
-	jr z, .noSilphScope
+.isSpecialGhostMon
 	ld hl, EnemyAppearedText
 	call PrintText
 	ld hl, UnveiledGhostText
 	call PrintText
 	callfar LoadEnemyMonData
-	callfar MarowakAnim
+	callfar UnveilGhostAnim
 	ld hl, WildMonAppearedText
 	jp PrintText
 

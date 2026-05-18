@@ -142,7 +142,7 @@ PokemonTower2FCheckGhostEncounterScript: ; marcelnote - postgame Agatha event
 	ld a, TEXT_POKEMONTOWER2F_GHOST_BATTLE
 	ldh [hTextID], a
 	call DisplayTextID
-	ld a, GHOST_RATICATE
+	ld a, AGATHA_GHOST_2F
 	ld [wCurOpponent], a
 	ld a, 62
 	ld [wCurEnemyLevel], a

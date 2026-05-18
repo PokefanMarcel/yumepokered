@@ -35,7 +35,7 @@ PokemonTower4FDefaultScript: ; marcelnote - postgame Agatha event
 	ld a, TEXT_POKEMONTOWER4F_GHOST_BATTLE
 	ldh [hTextID], a
 	call DisplayTextID
-	ld a, GHOST_JOLTEON
+	ld a, AGATHA_GHOST_4F
 	ld [wCurOpponent], a
 	ld a, 62
 	ld [wCurEnemyLevel], a

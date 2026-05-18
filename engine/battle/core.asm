@@ -3478,6 +3478,29 @@ IsGhostBattle: ; marcelnote - optimized, sets z flag if Ghost battle
 	or 1 ; clears z flag so not ghost battle
 	ret
 
+IsSpecialGhostMon: ; marcelnote - sets z flag if current foe is a scripted Pokemon Tower ghost
+	ld a, [wCurMap]
+	cp POKEMON_TOWER_2F
+	jr c, .notGhost
+	cp POKEMON_TOWER_7F
+	jr nc, .notGhost
+	ld a, [wEnemyMonSpecies2]
+	cp RESTLESS_SOUL
+	ret z
+	cp AGATHA_GHOST_2F
+	ret z
+	cp AGATHA_GHOST_3F
+	ret z
+	cp AGATHA_GHOST_4F
+	ret z
+	cp AGATHA_GHOST_5F
+	ret z
+	cp AGATHA_GHOST_6F
+	ret
+.notGhost
+	or 1 ; clears z flag so not a scripted Tower ghost
+	ret
+
 ; checks for various status conditions affecting the player mon
 ; stores whether the mon cannot use a move this turn in Z flag
 CheckPlayerStatusConditions:
@@ -6664,11 +6687,10 @@ InitWildBattle:
 	ld [wIsInBattle], a
 	call LoadEnemyMonData
 	call DoBattleTransitionAndInitBattleVariables
-	ld a, [wCurOpponent]
-	cp RESTLESS_SOUL
+	call IsSpecialGhostMon
 	jr z, .isGhost
 	call IsGhostBattle
-	jr nz, .isNoGhost
+	jr nz, .isNotGhost
 .isGhost
 	ld a, BANK(GhostPic)
 	ld [wMonHPicBank], a
@@ -6711,7 +6733,7 @@ ENDC
 
 	ld [hl], '@'
 	; fallthrough
-.isNoGhost
+.isNotGhost
 	ld de, vFrontPic
 	call LoadMonFrontPic ; load mon sprite
 .spriteLoaded

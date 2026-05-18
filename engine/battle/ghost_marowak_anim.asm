@@ -1,5 +1,4 @@
-MarowakAnim:
-; animate the ghost being unveiled as a Marowak
+UnveilGhostAnim:
 	ld a, $e4
 	ldh [rOBP1], a
 	call CopyMonPicFromBGToSpriteVRAM ; cover the BG ghost pic with a sprite ghost pic that looks the same
@@ -9,9 +8,9 @@ MarowakAnim:
 	call ClearScreenArea
 	call Delay3
 	xor a
-	ldh [hAutoBGTransferEnabled], a ; disable BG transfer so we don't see the Marowak too soon
-; replace ghost pic with Marowak in BG
-	ld a, RESTLESS_SOUL
+	ldh [hAutoBGTransferEnabled], a ; disable BG transfer so we don't see the Pokemon too soon
+; replace ghost pic with the Pokemon in BG
+	ld a, [wEnemyMonSpecies2]
 	ld [wChangeMonPicEnemyTurnSpecies], a
 	ld a, 1
 	ldh [hWhoseTurn], a
@@ -29,9 +28,9 @@ MarowakAnim:
 	ldh [rOBP1], a
 	jr nz, .fadeOutGhostLoop
 	call ClearSprites
-	call CopyMonPicFromBGToSpriteVRAM ; copy Marowak pic from BG to sprite VRAM
+	call CopyMonPicFromBGToSpriteVRAM ; copy Pokemon pic from BG to sprite VRAM
 	ld b, $e4
-.fadeInMarowakLoop
+.fadeInPokemonLoop
 	ld c, 10
 	call DelayFrames
 	ldh a, [rOBP1]
@@ -42,9 +41,9 @@ MarowakAnim:
 	ldh [rOBP1], a
 	ld a, b
 	and a
-	jr nz, .fadeInMarowakLoop
-	ldh [hAutoBGTransferEnabled], a ; enable BG transfer so the BG Marowak pic will be visible after the sprite one is cleared
+	jr nz, .fadeInPokemonLoop
 	ld a, 1
+	ldh [hAutoBGTransferEnabled], a ; enable BG transfer so the BG Pokemon pic will be visible after the sprite one is cleared
 	call Delay3
 	jp ClearSprites
 

@@ -35,7 +35,7 @@ PokemonTower3FDefaultScript: ; marcelnote - postgame Agatha event
 	ld a, TEXT_POKEMONTOWER3F_GHOST_BATTLE
 	ldh [hTextID], a
 	call DisplayTextID
-	ld a, GHOST_PRIMEAPE
+	ld a, AGATHA_GHOST_3F
 	ld [wCurOpponent], a
 	ld a, 60
 	ld [wCurEnemyLevel], a
