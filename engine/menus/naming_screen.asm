@@ -276,7 +276,7 @@ DisplayNamingScreen:
 	ret z ; can't scroll right on bottom row
 	ld a, [wTopMenuItemX]
 	cp $11 ; max
-	jp z, .wrapToFirstColumn
+	jr z, .wrapToFirstColumn
 	inc a
 	inc a
 	jr .done
@@ -289,7 +289,7 @@ DisplayNamingScreen:
 	ret z ; can't scroll right on bottom row
 	ld a, [wTopMenuItemX]
 	dec a
-	jp z, .wrapToLastColumn
+	jr z, .wrapToLastColumn
 	dec a
 	jr .done
 .wrapToLastColumn
