@@ -171,7 +171,7 @@ DisplayPartyMenu::
 	call ClearSprites
 	call PartyMenuInit
 	call DrawPartyMenu
-	jp HandlePartyMenuInput
+	jr HandlePartyMenuInput
 
 GoBackToPartyMenu::
 	ldh a, [hTileAnimations]
@@ -180,7 +180,7 @@ GoBackToPartyMenu::
 	ldh [hTileAnimations], a
 	call PartyMenuInit
 	call RedrawPartyMenu
-	jp HandlePartyMenuInput
+	jr HandlePartyMenuInput
 
 PartyMenuInit::
 	ld a, 1 ; hardcoded bank
@@ -237,7 +237,7 @@ HandlePartyMenuInput::
 	res BIT_NO_TEXT_DELAY, [hl]
 	ld a, [wMenuItemToSwap]
 	and a
-	jp nz, .swappingPokemon
+	jr nz, .swappingPokemon
 	pop af
 	ldh [hTileAnimations], a
 	bit B_PAD_B, b
