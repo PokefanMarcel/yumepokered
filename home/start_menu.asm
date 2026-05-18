@@ -55,7 +55,7 @@ RedisplayStartMenu::
 	ld [wBattleAndStartSavedMenuItem], a ; save current menu selection
 	ld a, b
 	and PAD_B | PAD_START ; was the Start button or B button pressed?
-	jp nz, CloseStartMenu
+	jr nz, CloseStartMenu
 	call SaveScreenTilesToBuffer2 ; copy background from wTileMap to wTileMapBackup2
 	CheckEvent EVENT_GOT_POKEDEX
 	ld a, [wCurrentMenuItem]
