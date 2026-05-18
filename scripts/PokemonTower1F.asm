@@ -17,7 +17,7 @@ PokemonTower1FDefaultScript:
 	ret nz
 	ld hl, .Agatha1FCoords
 	call ArePlayerCoordsInArray
-	jp c, PokemonTower1FAgathaHowDareYouScript
+	jr c, PokemonTower1FAgathaHowDareYouScript
 
 .Agatha1FCoords:
 	dbmapcoord 10, 15
