@@ -79,7 +79,7 @@ InitializeToggleableObjectsFlags:
 	ld a, [hli]
 	cp -1           ; end of list
 ;	ret z
-	jp z, InitializeToggleableObjectsFlagsCont ; marcelnote - continue with extended list instead
+	jr z, InitializeToggleableObjectsFlagsCont ; marcelnote - continue with extended list instead
 	push hl
 	inc hl
 	ld a, [hl]
