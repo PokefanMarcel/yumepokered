@@ -47,7 +47,7 @@ RocketHideoutB4F_ScriptPointers:
 RocketHideoutB4FBeatGiovanniScript:
 	ld a, [wIsInBattle]
 	cp $ff
-	jp z, RocketHideoutB4FSetDefaultScript
+	jr z, RocketHideoutB4FSetDefaultScript
 	call UpdateSprites
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
@@ -99,7 +99,7 @@ RocketHideout4TrainerHeader2:
 RocketHideoutB4FGiovanniText:
 	text_asm
 	CheckEvent EVENT_BEAT_ROCKET_HIDEOUT_GIOVANNI
-	jp nz, .beatGiovanni
+	jr nz, .beatGiovanni
 	ld hl, .ImpressedYouGotHereText
 	call PrintText
 	ld hl, wStatusFlags3
