@@ -99,7 +99,7 @@ TitleScreenAnimateBallIfStarterOut:
 .ok
 	ld bc, TitleScroll_WaitBall
 	lb de, 0, 1 ; animate titleball
-	jp _TitleScroll
+	jr _TitleScroll
 
 GetTitleBallY:
 ; Get position e from TitleBallYTable
