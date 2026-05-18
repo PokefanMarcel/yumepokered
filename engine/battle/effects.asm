@@ -588,7 +588,7 @@ DisableEffect: ; marcelnote - optimized
 .butItFailedPopHL
 	pop hl
 .butItFailed
-	jp PrintButItFailedText_
+	jr PrintButItFailedText_
 
 MoveWasDisabledText:
 	text_far _MoveWasDisabledText
