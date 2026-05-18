@@ -22,7 +22,7 @@ VermilionDockSSAnneDefaultScript:
 	cp 3 ; marcelnote - changed from cp 1 since new warps for Ferry
 	ret nz
 	CheckEventReuseHL EVENT_SS_ANNE_LEFT
-	jp z, VermilionDockSSAnneLeavesScript
+	jr z, VermilionDockSSAnneLeavesScript
 	SetEventReuseHL EVENT_STARTED_WALKING_OUT_OF_DOCK
 	call Delay3
 	ld hl, wStatusFlags5
