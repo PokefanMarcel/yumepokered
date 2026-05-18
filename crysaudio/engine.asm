@@ -1048,13 +1048,13 @@ ApplyPitchSlide:
 	add hl, bc
 	ld a, [hl]
 	cp d
-	jp c, .finished_pitch_slide
+	jr c, .finished_pitch_slide
 	jr nz, .continue_pitch_slide
 	ld hl, CHANNEL_PITCH_SLIDE_TARGET
 	add hl, bc
 	ld a, [hl]
 	cp e
-	jp c, .finished_pitch_slide
+	jr c, .finished_pitch_slide
 	jr .continue_pitch_slide
 
 .decreasing
@@ -2045,7 +2045,18 @@ Music_NoteType:
 	cp CHAN4
 	ret z
 	; volume envelope
-	jp Music_VolumeEnvelope
+	; fallthrough
+
+Music_VolumeEnvelope:
+; volume envelope
+; params: 1
+;	hi: volume
+;   lo: fade
+	call GetMusicByte
+	ld hl, CHANNEL_VOLUME_ENVELOPE
+	add hl, bc
+	ld [hl], a
+	ret
 
 Music_PitchSweep:
 ; update pitch sweep
@@ -2065,17 +2076,6 @@ Music_DutyCycle:
 	rrca
 	and $c0
 	ld hl, CHANNEL_DUTY_CYCLE
-	add hl, bc
-	ld [hl], a
-	ret
-
-Music_VolumeEnvelope:
-; volume envelope
-; params: 1
-;	hi: volume
-;   lo: fade
-	call GetMusicByte
-	ld hl, CHANNEL_VOLUME_ENVELOPE
 	add hl, bc
 	ld [hl], a
 	ret
