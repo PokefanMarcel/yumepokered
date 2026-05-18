@@ -70,7 +70,7 @@ PlaceNextChar::
 	pop hl
 	add hl, bc
 	push hl
-	jp NextChar
+	jr NextChar
 
 .NotNext
 	cp '<LINE>'
@@ -78,7 +78,7 @@ PlaceNextChar::
 	pop hl
 	hlcoord 1, 16
 	push hl
-	jp NextChar
+	jr NextChar
 
 .NotLine
 
@@ -214,7 +214,7 @@ PlaceDexEnd::
 PromptText::
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
-	jp z, .ok
+	jr z, .ok
 	ld a, '▼'
 	ldcoord_a 18, 16
 .ok
@@ -432,13 +432,13 @@ TextCommand_MOVE::
 	ld a, [hli]
 	ld [wTextDest + 1], a
 	ld b, a
-	jp NextTextCommand
+	jr NextTextCommand
 
 TextCommand_LOW::
 ; write text at (1,16)
 	pop hl
 	bccoord 1, 16 ; second line of dialogue text box
-	jp NextTextCommand
+	jr NextTextCommand
 
 TextCommand_PROMPT_BUTTON::
 ; wait for button press; show arrow
