@@ -52,7 +52,7 @@ IF DEF(_DEBUG)
 
 	ld a, [wCurrentMenuItem]
 	and a ; FIGHT?
-	jp z, TestBattle
+	jr z, TestBattle
 
 	; DEBUG
 	ld hl, wStatusFlags6
