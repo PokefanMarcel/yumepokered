@@ -30,7 +30,11 @@ ReflectLightScreenEffect_:
 	ld c, 50
 	call DelayFrames
 	ld hl, PrintButItFailedText_
-	jp EffectCallBattleCore
+	; fallthrough
+
+EffectCallBattleCore:
+	ld b, BANK(BattleCore)
+	jp Bankswitch
 
 LightScreenProtectedText:
 	text_far _LightScreenProtectedText
@@ -39,7 +43,3 @@ LightScreenProtectedText:
 ReflectGainedArmorText:
 	text_far _ReflectGainedArmorText
 	text_end
-
-EffectCallBattleCore:
-	ld b, BANK(BattleCore)
-	jp Bankswitch
