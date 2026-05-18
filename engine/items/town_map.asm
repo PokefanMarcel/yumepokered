@@ -376,10 +376,10 @@ LoadTownMap_Fly::
 	jr z, .wrapToStartOfList
 	cp NOT_VISITED
 	jr z, .pressedUp ; skip past unvisited towns
-	jp .townMapFlyLoop
+	jr .townMapFlyLoop
 .wrapToStartOfList
 	ld hl, wFlyLocationsList
-	jp .townMapFlyLoop
+	jr .townMapFlyLoop
 .pressedDown
 	decoord 19, 0
 	dec hl
