@@ -13,7 +13,7 @@ MarowakAnim:
 ; replace ghost pic with Marowak in BG
 	ld a, RESTLESS_SOUL
 	ld [wChangeMonPicEnemyTurnSpecies], a
-	ld a, $1
+	ld a, 1
 	ldh [hWhoseTurn], a
 	callfar ChangeMonPic
  ; alternate between black and light gray 8 times.
@@ -43,8 +43,8 @@ MarowakAnim:
 	ld a, b
 	and a
 	jr nz, .fadeInMarowakLoop
-	ld a, $1
 	ldh [hAutoBGTransferEnabled], a ; enable BG transfer so the BG Marowak pic will be visible after the sprite one is cleared
+	ld a, 1
 	call Delay3
 	jp ClearSprites
 
