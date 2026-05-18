@@ -63,7 +63,7 @@ SaffronGym_ScriptPointers:
 SaffronGymSabrinaPostBattle:
 	ld a, [wIsInBattle]
 	cp $ff
-	jp z, SaffronGymResetScripts
+	jr z, SaffronGymResetScripts
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 
@@ -89,7 +89,7 @@ SaffronGymSabrinaReceiveTM46Script:
 	set BIT_MARSHBADGE, [hl]
 	SetEventRange EVENT_BEAT_SAFFRON_GYM_TRAINER_0, EVENT_BEAT_SAFFRON_GYM_TRAINER_6
 	call UpdateSaffronGymTileBlocks ; marcelnote - open Saffron Gym gate
-	jp SaffronGymResetScripts
+	jr SaffronGymResetScripts
 
 UpdateSaffronGymTileBlocks: ; marcelnote - open Saffron Gym gate
 	ld hl, wCurrentMapScriptFlags
