@@ -13,7 +13,26 @@ ViridianCity_ScriptPointers:
 
 ViridianCityDefaultScript:
 	call ViridianCityCheckGymOpenScript
-	jp ViridianCityCheckGotPokedexScript
+	; fallthrough
+
+ViridianCityCheckGotPokedexScript:
+	CheckEvent EVENT_GOT_POKEDEX
+	ret nz
+	ld a, [wYCoord]
+	cp 9
+	ret nz
+	ld a, [wXCoord]
+	cp 19
+	ret nz
+	ld a, TEXT_VIRIDIANCITY_OLD_MAN_SLEEPY
+	ldh [hTextID], a
+	call DisplayTextID
+	xor a
+	ldh [hJoyHeld], a
+	call ViridianCityMovePlayerDownScript
+	ld a, SCRIPT_VIRIDIANCITY_PLAYER_MOVING_DOWN
+	ld [wViridianCityCurScript], a
+	ret
 
 ViridianCityCheckGymOpenScript:
 	CheckEvent EVENT_VIRIDIAN_GYM_OPEN
@@ -31,25 +50,6 @@ ViridianCityCheckGymOpenScript:
 	cp 32
 	ret nz
 	ld a, TEXT_VIRIDIANCITY_GYM_LOCKED
-	ldh [hTextID], a
-	call DisplayTextID
-	xor a
-	ldh [hJoyHeld], a
-	call ViridianCityMovePlayerDownScript
-	ld a, SCRIPT_VIRIDIANCITY_PLAYER_MOVING_DOWN
-	ld [wViridianCityCurScript], a
-	ret
-
-ViridianCityCheckGotPokedexScript:
-	CheckEvent EVENT_GOT_POKEDEX
-	ret nz
-	ld a, [wYCoord]
-	cp 9
-	ret nz
-	ld a, [wXCoord]
-	cp 19
-	ret nz
-	ld a, TEXT_VIRIDIANCITY_OLD_MAN_SLEEPY
 	ldh [hTextID], a
 	call DisplayTextID
 	xor a
