@@ -377,7 +377,7 @@ SlotMachine_CheckForMatches:
 	ld de, wSlotMachineWheel2MiddleTile
 	ld bc, wSlotMachineWheel3TopTile
 	call SlotMachine_CheckForMatch
-	jp z, .foundMatch
+	jr z, .foundMatch
 	ld hl, wSlotMachineWheel1TopTile
 	ld de, wSlotMachineWheel2MiddleTile
 	ld bc, wSlotMachineWheel3BottomTile
@@ -421,7 +421,7 @@ SlotMachine_CheckForMatches:
 	call DelayFrame
 	call SlotMachine_AnimWheel3
 	call DelayFrame
-	jp SlotMachine_CheckForMatches
+	jr SlotMachine_CheckForMatches
 .foundMatch
 	ld a, [wSlotMachineFlags]
 	and (1 << BIT_SLOTS_CAN_WIN) | (1 << BIT_SLOTS_CAN_WIN_WITH_7_OR_BAR)
@@ -476,7 +476,7 @@ SlotMachine_CheckForMatches:
 	call SlotMachine_PrintPayoutCoins
 	ld a, $e4
 	ldh [rOBP0], a
-	jp .done
+	jr .done
 
 SymbolLinedUpSlotMachineText:
 	text_asm
