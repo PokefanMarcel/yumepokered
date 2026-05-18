@@ -29,7 +29,7 @@ PokemonTower5FDefaultScript:
 	ld hl, wStatusFlags4
 	res BIT_NO_BATTLES, [hl]
 	ResetEvent EVENT_IN_PURIFIED_ZONE
-	jp PokemonTower5FCheckGhostEncounterScript ; marcelnote - postgame Agatha event, was jp CheckFightingMapTrainers
+	jr PokemonTower5FCheckGhostEncounterScript ; marcelnote - postgame Agatha event, was jp CheckFightingMapTrainers
 .inPurifiedZone
 	CheckAndSetEvent EVENT_IN_PURIFIED_ZONE
 	ret nz
