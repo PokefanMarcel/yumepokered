@@ -49,7 +49,7 @@ DisplayPokemonCenterDialogue_::
 .checkReset ; marcelnote - now we reset the bit once in a while to have the long text pop up sometimes
 	call Random
 	cp 31       ; 32/256 = 1/8 chance to reset text
-	jp nc, .dontReset
+	jr nc, .dontReset
 	ld hl, wStatusFlags4
 	res BIT_USED_POKECENTER, [hl]
 .dontReset
