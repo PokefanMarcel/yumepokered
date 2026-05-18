@@ -154,7 +154,7 @@ SafariZoneGateSafariZoneWorker1WouldYouLikeToJoinText:
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jp nz, .PleaseComeAgain
+	jr nz, .PleaseComeAgain
 	xor a
 	ldh [hMoney], a
 	ld a, $05
