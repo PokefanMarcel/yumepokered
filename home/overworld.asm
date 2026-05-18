@@ -84,14 +84,14 @@ OverworldLoopLessDelay::
 ; if START is pressed
 	xor a ; TEXT_START_MENU
 	ldh [hTextID], a
-	jp .displayDialogue
+	jr .displayDialogue
 ;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - use items with Select
 .checkIfSelectIsPressed
 	bit B_PAD_SELECT, a
 	jr z, .checkIfAIsPressed
 ; if SELECT is pressed
 	callfar UseSelectButtonItem
-	jp OverworldLoop
+	jr OverworldLoop
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 .checkIfAIsPressed
 	bit B_PAD_A, a
@@ -386,9 +386,9 @@ OverworldLoopLessDelay::
 	set BIT_BATTLE_OVER_OR_BLACKOUT, [hl]
 	ld a, [wCurMap]
 	cp OAKS_LAB
-	jp z, .noFaintCheck ; no blacking out if the player lost to the rival in Oak's lab
+	jr z, .noFaintCheck ; no blacking out if the player lost to the rival in Oak's lab
 	cp BATTLE_HALL
-	jp z, .noFaintCheck ; marcelnote - new for Battle Hall, no blacking out there
+	jr z, .noFaintCheck ; marcelnote - new for Battle Hall, no blacking out there
 	callfar AnyPartyAlive
 	ld a, d
 	and a
@@ -1005,7 +1005,7 @@ LoadTileBlockMap::
 	ld b, a
 	ld a, [wEastConnectedMapWidth]
 	ldh [hEastWestConnectedMapWidth], a
-	jp LoadEastWestConnectionsTileMap
+	jr LoadEastWestConnectionsTileMap
 
 LoadNorthSouthConnectionsTileMap::
 	ld c, MAP_BORDER
@@ -1911,7 +1911,7 @@ JoypadOverworld::
 CollisionCheckOnWater::
 	ld a, [wStatusFlags5]
 	bit BIT_SCRIPTED_MOVEMENT_STATE, a
-	jp nz, .noCollision ; return and clear carry if button presses are being simulated
+	jr nz, .noCollision ; return and clear carry if button presses are being simulated
 	ld a, [wPlayerDirection] ; the direction that the player is trying to go in
 	ld d, a
 	ld a, [wSpritePlayerStateData1CollisionData]
@@ -2232,7 +2232,7 @@ LoadMapHeader::
 	ld de, wSprite01StateData1
 	ld a, [wNumSprites] ; number of sprites
 	and a ; are there any sprites?
-	jp z, .finishUp ; if there are no sprites, skip the rest
+	jr z, .finishUp ; if there are no sprites, skip the rest
 	ld b, a
 	ld c, $00
 .loadSpriteLoop
@@ -2318,7 +2318,7 @@ LoadMapHeader::
 	inc c
 	inc c
 	dec b
-	jp nz, .loadSpriteLoop
+	jr nz, .loadSpriteLoop
 .finishUp
 	predef LoadTilesetHeader
 	callfar LoadWildData
