@@ -56,7 +56,7 @@ AIEnemyTrainerChooseMoves:
 .readTrainerClassData
 	ld a, [hl]
 	and a
-	jp z, .useOriginalMoveSet
+	jr z, .useOriginalMoveSet
 	push hl
 .nextMoveChoiceModification
 	pop hl
@@ -471,10 +471,10 @@ AIMoveChoiceAdept:
 	ld b, a
 	ld a, [wEnemyMonType1]
 	cp b
-	jp z, .encourage
+	jr z, .encourage
 	ld a, [wEnemyMonType2]
 	cp b
-	jp z, .encourage
+	jr z, .encourage
 	jp .nextMove
 
 .notEffectiveMove
@@ -592,7 +592,7 @@ AIMoveChoiceExpert:
 	jr z, .nextMove
 	cp ATTACK_TWICE_EFFECT
 	jp nz, .heavyDiscourage
-	jp .nextMove
+	jr .nextMove
 .notRage
 
 	; --- Counter --- requires a Physical move from the player, with non-zero power
@@ -764,7 +764,7 @@ AIMoveChoiceExpert:
 	jr z, .notSpamFollowup
 	cp SUBSTITUTE_EFFECT
 	jr z, .notSpamFollowup
-	jp .heavyDiscourage
+	jr .heavyDiscourage
 .notSpamFollowup
 
 	; --- Anti-omniscience on player switch ---
@@ -788,9 +788,9 @@ AIMoveChoiceExpert:
 	jp nc, .nextMove           ; ~20% per move: AI "sees through" the switch
 	call Random
 	cp 50 percent + 1
-	jp nc, .heavyDiscourage    ; 50%: heavy discourage
+	jr nc, .heavyDiscourage    ; 50%: heavy discourage
 	cp 13 percent
-	jp c, .encourage           ; 12.5%: lightly encourage
+	jr c, .encourage           ; 12.5%: lightly encourage
 	jp .nextMove
 
 .heavyDiscourage
@@ -1330,12 +1330,12 @@ Rival3AI: ; marcelnote - modified, was 13% chance of Full Restore if HP < 1/5 HP
 	jr nc, .checkHP ; 25% chance to heal status condition
 	ld a, [wEnemyMonStatus]
 	and a
-	jp nz, AIUseFullRestore
+	jr nz, AIUseFullRestore
 .checkHP
 	ld a, 3
 	call AICheckIfHPBelowFraction
 	ret nc
-	jp AIUseFullRestore
+	jr AIUseFullRestore
 
 LoreleiAI:
 	cp 50 percent + 1
@@ -1343,14 +1343,14 @@ LoreleiAI:
 	ld a, 3 ; marcelnote - modified, 1/3 HP instead of 1/5
 	call AICheckIfHPBelowFraction
 	ret nc
-	jp AIUseHyperPotion ; marcelnote - modified from Super Potion
+	jr AIUseHyperPotion ; marcelnote - modified from Super Potion
 
 BrunoAI: ; marcelnote - modified, was 25% chance of using XDefend
 	cp 50 percent + 1
 	ret nc
 	ld a, 3
 	call AICheckIfHPBelowFraction
-	jp c, AIUseHyperPotion
+	jr c, AIUseHyperPotion
 	call Random
 	cp 50 percent + 1
 	ret nc
@@ -1364,14 +1364,14 @@ AgathaAI:
 	ld a, 4
 	call AICheckIfHPBelowFraction
 	ret nc
-	jp AIUseHyperPotion ; marcelnote - changed to Hyper Potion
+	jr AIUseHyperPotion ; marcelnote - changed to Hyper Potion
 
 LanceAI: ; marcelnote - now also chance to use Full Heal
 	cp 50 percent + 1
 	ret nc
 	ld a, 3
 	call AICheckIfHPBelowFraction
-	jp c, AIUseHyperPotion
+	jr c, AIUseHyperPotion
 	call Random
 	cp 50 percent + 1
 	ret nc
@@ -1513,14 +1513,12 @@ AISwitchIfEnoughMons:
 
 	ld a, d ; how many available monsters are there?
 	cp 2    ; don't bother if only 1
-	jp nc, SwitchEnemyMon
+	jr nc, SwitchEnemyMon
 	and a
 	ret
 
 SwitchEnemyMon:
-
 ; prepare to withdraw the active monster: copy HP, party pos, and status to roster
-
 	ld a, [wEnemyMonPartyPos]
 	ld hl, wEnemyMon1HP
 	ld bc, PARTYMON_STRUCT_LENGTH
