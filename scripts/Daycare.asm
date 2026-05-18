@@ -10,7 +10,7 @@ DaycareGentlemanText:
 	call SaveScreenTilesToBuffer2
 	ld a, [wDayCareInUse]
 	and a
-	jp nz, .daycareInUse
+	jr nz, .daycareInUse
 	ld hl, .IntroText
 	call PrintText
 	call YesNoChoice
@@ -135,7 +135,7 @@ DaycareGentlemanText:
 	ld hl, .AllRightThenText
 	ld a, [wCurrentMenuItem]
 	and a
-	jp nz, .leaveMonInDayCare
+	jr nz, .leaveMonInDayCare
 	ld hl, wDayCareTotalCost
 	ldh [hMoney], a
 	ld a, [hli]
@@ -145,7 +145,7 @@ DaycareGentlemanText:
 	call HasEnoughMoney
 	jr nc, .enoughMoney
 	ld hl, .NotEnoughMoneyText
-	jp .leaveMonInDayCare
+	jr .leaveMonInDayCare
 
 .enoughMoney
 	xor a
