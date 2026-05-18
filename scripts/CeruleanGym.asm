@@ -46,7 +46,7 @@ CeruleanGym_ScriptPointers:
 CeruleanGymMistyPostBattleScript:
 	ld a, [wIsInBattle]
 	cp $ff
-	jp z, CeruleanGymResetScripts
+	jr z, CeruleanGymResetScripts
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 
@@ -76,19 +76,19 @@ CeruleanGymReceiveTM11:
 	; deactivate gym trainers
 	SetEvents EVENT_BEAT_CERULEAN_GYM_TRAINER_0, EVENT_BEAT_CERULEAN_GYM_TRAINER_1
 
-	jp CeruleanGymResetScripts
+	jr CeruleanGymResetScripts
 
 CeruleanGymMistyRematchPostBattleScript: ; marcelnote - Misty rematch
 	ld a, [wIsInBattle]
 	cp $ff
-	jp z, CeruleanGymResetScripts
+	jr z, CeruleanGymResetScripts
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	ld a, TEXT_CERULEANGYM_AFTER_REMATCH
 	ldh [hTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_MISTY_REMATCH
-	jp CeruleanGymResetScripts
+	jr CeruleanGymResetScripts
 
 CeruleanGym_TextPointers:
 	def_text_pointers
