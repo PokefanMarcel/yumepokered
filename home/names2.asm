@@ -27,7 +27,7 @@ GetName::
 	ASSERT NUM_TRAINERS < HM01, \
 		"A bug in GetName will get TM/HM names for trainers above ${x:HM01}."
 	cp HM01
-	jp nc, GetMachineName
+	jr nc, GetMachineName
 
 	ldh a, [hLoadedROMBank]
 	push af
