@@ -33,7 +33,7 @@ DisplayPokemartDialogue_::
 	and a ; buying?
 	jp z, .buyMenu
 	dec a ; selling?
-	jp z, .sellMenu
+	jr z, .sellMenu
 	dec a ; quitting?
 	jp z, .done
 	; fallthrough
@@ -124,7 +124,7 @@ DisplayPokemartDialogue_::
 	call AddAmountSoldToMoney
 	ld hl, wNumBagItems
 	call RemoveItemFromInventory
-	jp .sellMenuLoop
+	jr .sellMenuLoop
 .unsellableItem
 	ld hl, PokemartUnsellableItemText
 	call PrintText
