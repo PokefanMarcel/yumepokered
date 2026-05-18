@@ -42,7 +42,7 @@ CinnabarVolcano1FB1FDefaultScript:
 	jr nz, .noLance1F
 	ld hl, .Lance1FCoords
 	call ArePlayerCoordsInArray
-	jp c, CinnabarVolcano1FLanceGoesInScript
+	jr c, CinnabarVolcano1FLanceGoesInScript
 .noLance1F
 	CheckHideShow TOGGLE_CINNABAR_VOLCANO_B1F_LANCE
 	jr nz, .noLanceB1F
