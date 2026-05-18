@@ -40,7 +40,7 @@ Evolution_PartyMonLoop: ; loop over party mons
 	call Evolution_FlagAction
 	ld a, c
 	and a ; is the mon's bit set?
-	jp z, Evolution_PartyMonLoop ; if not, go to the next mon
+	jr z, Evolution_PartyMonLoop ; if not, go to the next mon
 	ld a, [wEvoOldSpecies]
 	dec a
 	ld b, 0
@@ -90,7 +90,7 @@ Evolution_PartyMonLoop: ; loop over party mons
 	ld b, a
 	ld a, [wLoadedMonLevel]
 	cp b ; is the mon's level greater than the evolution requirement?
-	jp c, Evolution_PartyMonLoop ; if so, go the next mon
+	jr c, Evolution_PartyMonLoop ; if so, go the next mon
 	jr .doEvolution
 .checkItemEvo
 	ld a, [hli]
@@ -408,11 +408,11 @@ WriteMonMoves:
 .firstMove
 	ld a, [hli]       ; read level of next move in learnset
 	and a
-	jp z, .done       ; end of list
+	jr z, .done       ; end of list
 	ld b, a
 	ld a, [wCurEnemyLevel]
 	cp b
-	jp c, .done       ; mon level < move level (assumption: learnset is sorted by level)
+	jr c, .done       ; mon level < move level (assumption: learnset is sorted by level)
 	ld a, [wLearningMovesFromDayCare]
 	and a
 	jr z, .skipMinLevelCheck
