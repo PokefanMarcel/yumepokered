@@ -455,7 +455,7 @@ MoveBillsPCCursorUp:
 	sub BILLS_PC_BOX_COLUMNS
 	add PARTY_LENGTH
 	ld [wCurrentMenuItem], a
-	jp DrawBillsPCCursor
+	jr DrawBillsPCCursor
 
 MoveBillsPCCursorDown:
 	ld a, [wCurrentMenuItem]
@@ -469,14 +469,14 @@ MoveBillsPCCursorDown:
 	ret c
 	ld a, b
 	ld [wCurrentMenuItem], a
-	jp DrawBillsPCCursor
+	jr DrawBillsPCCursor
 .notParty
 	sub PARTY_LENGTH
 	cp MONS_PER_BOX - BILLS_PC_BOX_COLUMNS
 	ret nc
 	add PARTY_LENGTH + BILLS_PC_BOX_COLUMNS
 	ld [wCurrentMenuItem], a
-	jp DrawBillsPCCursor
+	jr DrawBillsPCCursor
 
 MoveBillsPCCursorLeft:
 	ld a, [wCurrentMenuItem]
@@ -489,7 +489,7 @@ MoveBillsPCCursorLeft:
 	ld a, [wCurrentMenuItem]
 	dec a
 	ld [wCurrentMenuItem], a
-	jp DrawBillsPCCursor
+	jr DrawBillsPCCursor
 .firstColumn
 	; Wrap to the party slot in the same row, clamping to the last filled slot.
 	ld a, [wPartyCount]
@@ -500,7 +500,7 @@ MoveBillsPCCursorLeft:
 .gotPartyRow
 	ld a, b
 	ld [wCurrentMenuItem], a
-	jp DrawBillsPCCursor
+	jr DrawBillsPCCursor
 
 MoveBillsPCCursorRight:
 	ld a, [wCurrentMenuItem]
@@ -513,7 +513,7 @@ MoveBillsPCCursorRight:
 	ld a, [wCurrentMenuItem]
 	inc a
 	ld [wCurrentMenuItem], a
-	jp DrawBillsPCCursor
+	jr DrawBillsPCCursor
 .party
 	cp BILLS_PC_BOX_ROWS
 	ret nc
@@ -523,7 +523,7 @@ MoveBillsPCCursorRight:
 	add hl, bc
 	ld a, [hl]
 	ld [wCurrentMenuItem], a
-	jp DrawBillsPCCursor
+	jr DrawBillsPCCursor
 
 BillsPCBoxRowStartMenuItems:
 	db PARTY_LENGTH
@@ -544,7 +544,7 @@ GetBillsPCBoxRowAndColumn:
 ; Redraw the grid cursor, then refresh the fixed textbox/hover text.
 DrawBillsPCCursor:
 	call DrawBillsPCCursorOnly
-	jp DrawBillsPCInfoText
+	jr DrawBillsPCInfoText
 
 ; hl is the BG tile under the old/new cursor; wLastMenuItem is updated to match.
 DrawBillsPCCursorOnly:
@@ -893,7 +893,7 @@ WithdrawBillsPCSelectedBoxMon:
 	call RedrawBillsPCBoxScreenForSelectedMessage
 
 	ld hl, MonIsTakenOutText
-	jp PrintBillsPCMessageAfterRedraw
+	jr PrintBillsPCMessageAfterRedraw
 
 ReleaseBillsPCSelectedBoxMon:
 	; Release only acts on boxed mons. Keep the selected slot in
@@ -904,7 +904,7 @@ ReleaseBillsPCSelectedBoxMon:
 	ld [wPlayerMonNumber], a
 	call BillsPCBoxSlotHasMon
 	ld hl, NoMonText
-	jp z, PrintBillsPCSelectedMessageNoName
+	jr z, PrintBillsPCSelectedMessageNoName
 	ld [wCurPartySpecies], a
 	ld hl, wBoxMonNicks
 	call CopyBillsPCMonNameToStringBuffer
@@ -932,7 +932,7 @@ ReleaseBillsPCSelectedBoxMon:
 	pop af
 	call PlayCry
 	ld hl, MonWasReleasedText
-	jp PrintBillsPCSelectedMessage
+	jr PrintBillsPCSelectedMessage
 
 PrintBillsPCSelectedMessageNoName:
 	; For warnings without a mon name. Keep the selected white cursor visible,
