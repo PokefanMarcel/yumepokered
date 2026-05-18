@@ -388,7 +388,7 @@ TradeCenter_SelectMon:
 	jr .playerMonMenu
 .enemyMonMenu_LeftNotPressed
 	bit B_PAD_DOWN, a
-	jp z, .getNewInput
+	jr z, .getNewInput
 	jp .selectedCancelMenuItem ; jump if Down pressed
 .playerMonMenu
 	xor a ; player mon menu
@@ -413,17 +413,17 @@ TradeCenter_SelectMon:
 	res BIT_SINGLE_SPACED_MENU, [hl]
 	and a ; was anything pressed?
 	jr nz, .playerMonMenu_SomethingPressed
-	jp .getNewInput
+	jr .getNewInput
 .playerMonMenu_SomethingPressed
 	bit B_PAD_A, a
 	jr z, .playerMonMenu_ANotPressed
-	jp .chosePlayerMon ; jump if A button pressed
+	jr .chosePlayerMon ; jump if A button pressed
 ; unreachable code
 	ld a, INIT_PLAYEROT_LIST
 	ld [wInitListType], a
 	callfar InitList ; the list isn't used
 	call TradeCenter_DisplayStats
-	jp .getNewInput
+	jr .getNewInput
 .playerMonMenu_ANotPressed
 	bit B_PAD_RIGHT, a
 	jr z, .playerMonMenu_RightNotPressed
@@ -453,7 +453,7 @@ TradeCenter_SelectMon:
 .getNewInput
 	ld a, [wWhichTradeMonSelectionMenu]
 	and a
-	jp z, .playerMonMenu_HandleInput
+	jr z, .playerMonMenu_HandleInput
 	jp .enemyMonMenu_HandleInput
 .chosePlayerMon
 	call SaveScreenTilesToBuffer1
@@ -628,7 +628,7 @@ TradeCenter_DisplayStats:
 	call GBPalNormal
 	call LoadTrainerInfoTextBoxTiles
 	call TradeCenter_DrawPartyLists
-	jp TradeCenter_DrawCancelBox
+	jr TradeCenter_DrawCancelBox
 
 TradeCenter_DrawPartyLists:
 	hlcoord 0, 0
