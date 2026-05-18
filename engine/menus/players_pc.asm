@@ -57,14 +57,14 @@ PlayerPCMenu:
 	call PrintText
 	call HandleMenuInput
 	bit B_PAD_B, a
-	jp nz, ExitPlayerPC
+	jr nz, ExitPlayerPC
 	call PlaceUnfilledArrowMenuCursor
 	ld a, [wCurrentMenuItem]
 	ld [wParentMenuItem], a
 	and a
 	jp z, PlayerPCWithdraw
 	dec a
-	jp z, PlayerPCDeposit
+	jr z, PlayerPCDeposit
 	dec a
 	jp z, PlayerPCToss
 
@@ -137,14 +137,14 @@ PlayerPCDeposit:
 	call PrintText
 	call DisplayChooseQuantityMenu
 	cp $ff
-	jp z, .loop
+	jr z, .loop
 .next
 	ld hl, wNumBoxItems
 	call AddItemToInventory
 	jr c, .roomAvailable
 	ld hl, NoRoomToStoreText
 	call PrintText
-	jp .loop
+	jr .loop
 .roomAvailable
 	;;;;;;;;;; marcelnote - check which pocket we are in, new for bag pockets
 	ld a, [wBagPocketsFlags]
@@ -161,7 +161,7 @@ PlayerPCDeposit:
 	call WaitForSoundToFinish
 	ld hl, ItemWasStoredText
 	call PrintText
-	jp .loop
+	jr .loop
 
 PlayerPCWithdraw:
 	xor a
@@ -205,13 +205,13 @@ PlayerPCWithdraw:
 	call DisplayChooseQuantityMenu
 	ld hl, wNumBagItems ; marcelnote - moved from below, new for bag pockets
 	cp $ff
-	jp z, .loop
+	jr z, .loop
 .next
 	call AddItemToInventory
 	jr c, .roomAvailable
 	ld hl, CantCarryMoreText
 	call PrintText
-	jp .loop
+	jr .loop
 .roomAvailable
 	ld hl, wNumBoxItems
 	call RemoveItemFromInventory
@@ -221,7 +221,7 @@ PlayerPCWithdraw:
 	call WaitForSoundToFinish
 	ld hl, WithdrewItemText
 	call PrintText
-	jp .loop
+	jr .loop
 
 PlayerPCToss:
 	xor a
@@ -268,10 +268,10 @@ PlayerPCToss:
 	call DisplayChooseQuantityMenu
 	pop hl
 	cp $ff
-	jp z, .loop
+	jr z, .loop
 .next
 	call TossItem ; disallows tossing key items
-	jp .loop
+	jr .loop
 
 TurnedOnPC2Text:
 	text_far _TurnedOnPC2Text
