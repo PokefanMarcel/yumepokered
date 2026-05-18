@@ -23,7 +23,7 @@ CeruleanCity_ScriptPointers:
 CeruleanCityRocketDefeatedScript:
 	ld a, [wIsInBattle]
 	cp $ff
-	jp z, CeruleanCityClearScripts
+	jr z, CeruleanCityClearScripts
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	SetEvent EVENT_BEAT_CERULEAN_ROCKET_THIEF
