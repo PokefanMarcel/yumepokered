@@ -5542,9 +5542,9 @@ INCLUDE "data/battle/mist_canceled_effects.asm"
 
 ; values for player turn
 CalcHitChance:
-	ld hl, wPlayerMoveAccuracy
 	ldh a, [hWhoseTurn]
 	and a
+	ld hl, wPlayerMoveAccuracy
 	ld a, [wPlayerMonAccuracyMod]
 	ld b, a
 	ld a, [wEnemyMonEvasionMod]
@@ -6351,14 +6351,14 @@ DoBattleTransitionAndInitBattleVariables:
 	xor a
 	ld [wMenuJoypadPollCount], a
 	callfar DisplayLinkBattleVersusTextBox
-	ld a, $1
+	ld a, 1
 	ld [wUpdateSpritesEnabled], a
 	call ClearScreen
 .next
 	call DelayFrame
 	predef BattleTransition
 	callfar LoadHudAndHpBarAndStatusTilePatterns
-	ld a, $1
+	ld a, 1
 	ldh [hAutoBGTransferEnabled], a
 	ld a, $ff
 	ld [wUpdateSpritesEnabled], a
@@ -6655,12 +6655,12 @@ InitBattleCommon:
 	call CopySpriteToHL
 	ld a, $ff
 	ld [wEnemyMonPartyPos], a
-	ld a, $2
+	ld a, 2
 	ld [wIsInBattle], a
 	jp _InitBattleCommon
 
 InitWildBattle:
-	ld a, $1
+	ld a, 1
 	ld [wIsInBattle], a
 	call LoadEnemyMonData
 	call DoBattleTransitionAndInitBattleVariables
@@ -6760,6 +6760,7 @@ _InitBattleCommon:
 	ldh [hTileAnimations], a
 	scf
 	ret
+
 .emptyString
 	db "@"
 
