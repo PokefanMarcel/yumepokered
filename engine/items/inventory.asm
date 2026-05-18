@@ -32,7 +32,7 @@ AddItemToInventory_::
 	ld b, a ; b = ID of current item in table
 	ld a, [wCurItem] ; a = ID of item being added
 	cp b ; does the current item in the table match the item being added?
-	jp z, .increaseItemQuantity ; if so, increase the item's quantity
+	jr z, .increaseItemQuantity ; if so, increase the item's quantity
 	inc hl
 .checkIfEndOfInventory ; marcelnote - issue with adding more than 99 items (fix from pokered Wiki)
 	ld a, [hl]
@@ -56,14 +56,14 @@ AddItemToInventory_::
 	ld a, [wItemQuantity]
 	ld [hli], a ; store item quantity
 	ld [hl], $ff ; store terminator
-	jp .success
+	jr .success
 .increaseItemQuantity ; increase the quantity of an item already in the inventory
 	ld a, [wItemQuantity]
 	ld b, a ; b = quantity to add
 	ld a, [hl] ; a = existing item quantity
 	add b ; a = new item quantity
 	cp 100
-	jp c, .storeNewQuantity ; if the new quantity is less than 100, store it
+	jr c, .storeNewQuantity ; if the new quantity is less than 100, store it
 ; if the new quantity is greater than or equal to 100,
 ; try to max out the current slot and add the rest in a new slot
 	sub 99
@@ -75,7 +75,7 @@ AddItemToInventory_::
 	ld a, 99
 	ld [hli], a
 	;jp .notAtEndOfInventory
-	jp .checkIfEndOfInventory ; marcelnote - issue with adding more than 99 items (fix from pokered Wiki)
+	jr .checkIfEndOfInventory ; marcelnote - issue with adding more than 99 items (fix from pokered Wiki)
 .increaseItemQuantityFailed
 	pop hl
 	and a
