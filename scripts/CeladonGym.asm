@@ -46,7 +46,7 @@ CeladonGym_ScriptPointers:
 CeladonGymErikaPostBattleScript:
 	ld a, [wIsInBattle]
 	cp $ff
-	jp z, CeladonGymResetScripts
+	jr z, CeladonGymResetScripts
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 
@@ -76,19 +76,19 @@ CeladonGymReceiveTM21:
 	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_CELADON_GYM_TRAINER_0, EVENT_BEAT_CELADON_GYM_TRAINER_6
 
-	jp CeladonGymResetScripts
+	jr CeladonGymResetScripts
 
 CeladonGymErikaRematchPostBattleScript: ; marcelnote - Erika rematch
 	ld a, [wIsInBattle]
 	cp $ff
-	jp z, CeladonGymResetScripts
+	jr z, CeladonGymResetScripts
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	ld a, TEXT_CELADONGYM_AFTER_REMATCH
 	ldh [hTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_ERIKA_REMATCH
-	jp CeladonGymResetScripts
+	jr CeladonGymResetScripts
 
 CeladonGym_TextPointers:
 	def_text_pointers
