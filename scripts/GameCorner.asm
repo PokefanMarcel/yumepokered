@@ -51,7 +51,7 @@ GameCorner_ScriptPointers:
 GameCornerRocketBattleScript: ; marcelnote - adjusted for reduced map size
 	ld a, [wIsInBattle]
 	cp $ff
-	jp z, GameCornerReenterMapAfterPlayerLoss
+	jr z, GameCornerReenterMapAfterPlayerLoss
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	ld a, TEXT_GAMECORNER_ROCKET_AFTER_BATTLE
