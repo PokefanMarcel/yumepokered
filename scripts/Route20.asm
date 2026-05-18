@@ -38,7 +38,7 @@ Route20BoulderScript:
 	ld a, TOGGLE_SEAFOAM_ISLANDS_B4F_BOULDER_1
 	call Route20HideObjectScript
 	ld a, TOGGLE_SEAFOAM_ISLANDS_B4F_BOULDER_2
-	jp Route20HideObjectScript
+	jr Route20HideObjectScript
 
 .ToggleableObjectIDs:
 	db TOGGLE_SEAFOAM_ISLANDS_B1F_BOULDER_1
