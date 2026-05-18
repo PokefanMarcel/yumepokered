@@ -32,7 +32,7 @@ DisplayTextID::
 	; joenote - close if $FF is the textID or sprite index
 	; marcelnote - used for using items with Select
 	cp $FF
-	jp z, CloseTextDisplay
+	jr z, CloseTextDisplay
 
 	ld a, [wNumSprites]
 	ld e, a
@@ -157,7 +157,7 @@ DisplayPokemartDialogue::
 	ld a, PRICEDITEMLISTMENU
 	ld [wListMenuID], a
 	homecall DisplayPokemartDialogue_
-	jp AfterDisplayingTextID
+	jr AfterDisplayingTextID
 
 PokemartGreetingText::
 	text_far _PokemartGreetingText
