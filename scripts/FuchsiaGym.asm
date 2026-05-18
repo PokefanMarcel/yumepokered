@@ -47,7 +47,7 @@ FuchsiaGym_ScriptPointers:
 FuchsiaGymKogaPostBattleScript:
 	ld a, [wIsInBattle]
 	cp $ff
-	jp z, FuchsiaGymResetScripts
+	jr z, FuchsiaGymResetScripts
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 ; fallthrough
@@ -77,19 +77,19 @@ FuchsiaGymReceiveTM06:
 	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_FUCHSIA_GYM_TRAINER_0, EVENT_BEAT_FUCHSIA_GYM_TRAINER_5
 
-	jp FuchsiaGymResetScripts
+	jr FuchsiaGymResetScripts
 
 FuchsiaGymKogaRematchPostBattleScript: ; marcelnote - Koga rematch
 	ld a, [wIsInBattle]
 	cp $ff
-	jp z, FuchsiaGymResetScripts
+	jr z, FuchsiaGymResetScripts
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	ld a, TEXT_FUCHSIAGYM_AFTER_REMATCH
 	ldh [hTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_KOGA_REMATCH
-	jp FuchsiaGymResetScripts
+	jr FuchsiaGymResetScripts
 
 FuchsiaGym_TextPointers:
 	def_text_pointers
