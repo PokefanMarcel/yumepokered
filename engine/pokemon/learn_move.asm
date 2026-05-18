@@ -18,7 +18,7 @@ DontAbandonLearning:
 	push hl
 	call TryLearnAsFieldMove ; marcelnote - for temporary field moves
 	pop hl
-	jp c, AbandonLearning        ; already knows field move
+	jr c, AbandonLearning        ; already knows field move
 	jp nz, PrintLearnedFieldMove ; learned as field move
 
 	ld d, h
@@ -34,7 +34,7 @@ DontAbandonLearning:
 	push de
 	call TryingToLearn
 	pop de
-	jp c, AbandonLearning
+	jr c, AbandonLearning
 	push hl
 	push de
 	ld [wNamedObjectIndex], a
@@ -63,19 +63,19 @@ DontAbandonLearning:
 	ld [hl], a
 	ld a, [wIsInBattle]
 	and a
-	jp z, PrintLearnedMove
+	jr z, PrintLearnedMove
 	ld a, [wWhichPokemon]
 	ld b, a
 	ld a, [wPlayerMonNumber]
 	cp b
-	jp nz, PrintLearnedMove
+	jr nz, PrintLearnedMove
 
 	; joenote - do not update active mon moves if it is transformed
 	ld b, a
 	ld a, [wPlayerBattleStatus3]
 	bit TRANSFORMED, a ; is the mon transformed?
 	ld a, b
-	jp nz, PrintLearnedMove
+	jr nz, PrintLearnedMove
 
 	ld h, d
 	ld l, e
@@ -87,7 +87,7 @@ DontAbandonLearning:
 	ld de, wBattleMonPP
 	ld bc, NUM_MOVES
 	call CopyData
-	jp PrintLearnedMove
+	jr PrintLearnedMove
 
 AbandonLearning:
 	ld hl, AbandonLearningText
