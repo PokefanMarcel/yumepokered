@@ -160,7 +160,7 @@ StartBattle:
 	call LoadScreenTilesFromBuffer1
 	ld a, [wBattleType]
 	and a ; is it a normal battle?
-	jp z, .playerSendOutFirstMon ; if so, send out player mon
+	jr z, .playerSendOutFirstMon ; if so, send out player mon
 ; safari zone battle
 .displaySafariZoneBattleMenu
 	call DisplayBattleMenu
@@ -1736,7 +1736,7 @@ SendOutMon:
 	ld hl, wEnemyMonHP
 	ld a, [hli]
 	or [hl] ; is enemy mon HP zero?
-	jp z, .skipDrawingEnemyHUDAndHPBar ; if HP is zero, skip drawing the HUD and HP bar
+	jr z, .skipDrawingEnemyHUDAndHPBar ; if HP is zero, skip drawing the HUD and HP bar
 	call DrawEnemyHUDAndHPBar
 .skipDrawingEnemyHUDAndHPBar
 	call DrawPlayerHUDAndHPBar
@@ -3296,7 +3296,7 @@ PlayerCalcMoveDamage:
 	ld a, [wPlayerMoveEffect]
 	ld hl, SetDamageEffects
 	call IsInList
-	jp c, .moveHitTest ; SetDamageEffects moves (e.g. Seismic Toss and Super Fang) skip damage calculation
+	jr c, .moveHitTest ; SetDamageEffects moves (e.g. Seismic Toss and Super Fang) skip damage calculation
 	call CriticalHitTest
 	call HandleCounterMove
 	jr z, HandleIfPlayerMoveMissed
@@ -3707,7 +3707,7 @@ CheckPlayerStatusConditions:
 	ld a, BIDE
 	ld [wPlayerMoveNum], a
 	ld hl, HandleIfPlayerMoveMissed ; skip damage calculation, DecrementPP and MoveHitTest
-	jp .returnToHL
+	jr .returnToHL
 
 .ThrashingAboutCheck
 	bit THRASHING_ABOUT, [hl] ; is mon using thrash or petal dance?
@@ -3719,7 +3719,7 @@ CheckPlayerStatusConditions:
 	ld hl, wPlayerNumAttacksLeft
 	dec [hl] ; did Thrashing About counter hit 0?
 	ld hl, PlayerCalcMoveDamage ; skip DecrementPP
-	jp nz, .returnToHL
+	jr nz, .returnToHL
 	push hl
 	ld hl, wPlayerBattleStatus1
 	res THRASHING_ABOUT, [hl] ; no longer thrashing about
@@ -3730,7 +3730,7 @@ CheckPlayerStatusConditions:
 	inc a ; confused for 2-5 turns
 	ld [wPlayerConfusedCounter], a
 	pop hl ; skip DecrementPP
-	jp .returnToHL
+	jr .returnToHL
 
 .MultiturnMoveCheck
 	bit USING_TRAPPING_MOVE, [hl] ; is mon using multi-turn move?
@@ -3742,7 +3742,7 @@ CheckPlayerStatusConditions:
 	ld [wPlayerNumAttacksLeft], a
 	ld hl, GetPlayerAnimationType ; if it didn't, skip damage calculation (deal damage equal to last hit),
 	                ; DecrementPP and MoveHitTest
-	jp .returnToHL
+	jr .returnToHL
 
 .RageCheck
 	ld a, [wPlayerBattleStatus2]
@@ -3755,7 +3755,7 @@ CheckPlayerStatusConditions:
 	xor a
 	ld [wPlayerMoveEffect], a
 	ld hl, PlayerCanExecuteMove
-	jp .returnToHL
+	jr .returnToHL
 
 .returnToHL
 	xor a
@@ -6121,7 +6121,7 @@ CheckEnemyStatusConditions:
 	ld [wEnemyMoveNum], a
 	call SwapPlayerAndEnemyLevels
 	ld hl, HandleIfEnemyMoveMissed ; skip damage calculation, DecrementPP and MoveHitTest
-	jp .enemyReturnToHL
+	jr .enemyReturnToHL
 .checkIfThrashingAbout
 	bit THRASHING_ABOUT, [hl] ; is mon using thrash or petal dance?
 	jr z, .checkIfUsingMultiturnMove
@@ -6132,7 +6132,7 @@ CheckEnemyStatusConditions:
 	ld hl, wEnemyNumAttacksLeft
 	dec [hl] ; did Thrashing About counter hit 0?
 	ld hl, EnemyCalcMoveDamage ; skip DecrementPP
-	jp nz, .enemyReturnToHL
+	jr nz, .enemyReturnToHL
 	push hl
 	ld hl, wEnemyBattleStatus1
 	res THRASHING_ABOUT, [hl] ; mon is no longer using thrash or petal dance
@@ -6143,7 +6143,7 @@ CheckEnemyStatusConditions:
 	inc a ; confused for 2-5 turns
 	ld [wEnemyConfusedCounter], a
 	pop hl ; skip DecrementPP
-	jp .enemyReturnToHL
+	jr .enemyReturnToHL
 .checkIfUsingMultiturnMove
 	bit USING_TRAPPING_MOVE, [hl] ; is mon using multi-turn move?
 	jr z, .checkIfUsingRage
@@ -6155,7 +6155,7 @@ CheckEnemyStatusConditions:
 	                             ; DecrementPP and MoveHitTest
 ;	jp nz, .enemyReturnToHL ; redundant leftover code, the case wEnemyNumAttacksLeft == 0
 							; is handled within CheckNumAttacksLeft
-	jp .enemyReturnToHL
+	jr .enemyReturnToHL
 .checkIfUsingRage
 	ld a, [wEnemyBattleStatus2]
 	bit USING_RAGE, a ; is mon using rage?
@@ -6167,7 +6167,7 @@ CheckEnemyStatusConditions:
 	xor a
 	ld [wEnemyMoveEffect], a
 	ld hl, EnemyCanExecuteMove
-	jp .enemyReturnToHL
+	jr .enemyReturnToHL
 .enemyReturnToHL
 	xor a ; set Z flag
 	ret
