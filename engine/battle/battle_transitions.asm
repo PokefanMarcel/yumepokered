@@ -663,7 +663,7 @@ BattleTransition_Circle_Sub2:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	jp BattleTransition_Circle_Sub3
+	jr BattleTransition_Circle_Sub3
 
 ; halves
 	const_def
