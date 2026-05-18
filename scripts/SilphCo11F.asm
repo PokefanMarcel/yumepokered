@@ -148,7 +148,7 @@ SilphCo11FDefaultScript:
 	ld de, .GiovanniMovement
 	call MoveSprite
 	ld a, SCRIPT_SILPHCO11F_GIOVANNI_FACING
-	jp SilphCo11FSetCurScript
+	jr SilphCo11FSetCurScript
 
 .PlayerCoordsArray:
 	dbmapcoord  6, 13
@@ -172,7 +172,7 @@ SilphCo11FSetPlayerAndSpriteFacingDirectionScript:
 SilphCo11FGiovanniAfterBattleScript:
 	ld a, [wIsInBattle]
 	cp $ff
-	jp z, SilphCo11FResetCurScript
+	jr z, SilphCo11FResetCurScript
 	ld a, [wSavedCoordIndex]
 	cp 1 ; index of second, upper-right entry in SilphCo11FDefaultScript.PlayerCoordsArray
 	jr z, .facePlayerUp
