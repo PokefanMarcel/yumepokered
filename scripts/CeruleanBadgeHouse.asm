@@ -1,7 +1,8 @@
 CeruleanBadgeHouse_Script:
 	ld a, 1 << BIT_NO_AUTO_TEXT_BOX
 	ld [wAutoTextBoxDrawingControl], a
-	dec a
+	ASSERT BIT_NO_AUTO_TEXT_BOX == 0
+	dec a ; a = 0
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	ret
 
