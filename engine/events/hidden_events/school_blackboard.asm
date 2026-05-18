@@ -51,7 +51,7 @@ LinkCableHelp::
 	ld h, [hl]
 	ld l, a
 	call PrintText
-	jp .linkHelpLoop
+	jr .linkHelpLoop
 .exit
 	ld hl, wStatusFlags5
 	res BIT_NO_TEXT_DELAY, [hl]
