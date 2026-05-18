@@ -77,7 +77,7 @@ MainMenu:
 	ld b, a
 	ld a, [wSaveFileStatus]
 	cp 2
-	jp z, .skipInc
+	jr z, .skipInc
 ; If there's no save file, increment the current menu item so that the numbers
 ; are the same whether or not there's a save file.
 	inc b
