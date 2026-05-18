@@ -173,7 +173,7 @@ TrainerEngage:
 	ld a, [hl]             ; x#SPRITESTATEDATA1_IMAGEINDEX
 	sub $ff
 	jr nz, .spriteOnScreen ; test if sprite is on screen
-	jp .noEngage
+	jr .noEngage
 .spriteOnScreen
 	ld a, [wTrainerSpriteOffset]
 	add SPRITESTATEDATA1_FACINGDIRECTION
@@ -195,7 +195,7 @@ TrainerEngage:
 	cp b
 	jr z, .linedUpX
 	xor a
-	jp .noEngage
+	jr .noEngage
 .linedUpY
 	ld a, [wTrainerScreenX]        ; sprite screen X pos
 	ld b, a
@@ -215,7 +215,7 @@ TrainerEngage:
 	call CheckSpriteCanSeePlayer
 	jr c, .engage
 	xor a
-	jp .noEngage
+	jr .noEngage
 .engage
 	call CheckPlayerIsInFrontOfSprite
 	ld a, [wTrainerSpriteOffset]
@@ -293,7 +293,7 @@ CheckSpriteCanSeePlayer:
 CheckPlayerIsInFrontOfSprite:
 	ld a, [wCurMap]
 	cp POWER_PLANT
-	jp z, .engage       ; bypass this for power plant to get voltorb fake items to work
+	jr z, .engage       ; bypass this for power plant to get voltorb fake items to work
 	ld a, [wTrainerSpriteOffset]
 	add SPRITESTATEDATA1_YPIXELS
 	ld d, $0
