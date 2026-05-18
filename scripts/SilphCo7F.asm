@@ -77,7 +77,7 @@ ENDC
 	ldh [hSpriteIndex], a
 	call MoveSprite
 	ld a, SCRIPT_SILPHCO7F_RIVAL_START_BATTLE
-	jp SilphCo7FSetCurScript
+	jr SilphCo7FSetCurScript
 
 .RivalEncounterCoordinates:
 	dbmapcoord  3,  2
