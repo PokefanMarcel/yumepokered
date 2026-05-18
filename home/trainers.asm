@@ -123,7 +123,7 @@ TalkToTrainer::
 	call EngageMapTrainer
 	ld hl, wCurMapScript
 	inc [hl]      ; increment map script index before StartTrainerBattle increments it again (next script function is usually EndTrainerBattle)
-	jp StartTrainerBattle
+	jr StartTrainerBattle
 
 ; checks if any trainers are seeing the player and wanting to fight
 CheckFightingMapTrainers::
@@ -192,7 +192,7 @@ EndTrainerBattle::
 	res BIT_SEEN_BY_TRAINER, [hl] ; player is no longer engaged by any trainer
 	ld a, [wIsInBattle]
 	inc a ; cp $ff
-	jp z, ResetButtonPressedAndMapScript
+	jr z, ResetButtonPressedAndMapScript
 	ld a, $2
 	call ReadTrainerHeaderInfo
 	ld a, [wTrainerHeaderFlagBit]
@@ -336,7 +336,7 @@ EngageMapTrainer::
 	ld [wEngagedTrainerClass], a
 	ld a, [hl]     ; load trainer mon set
 	ld [wEngagedTrainerSet], a
-	jp PlayTrainerMusic
+	jr PlayTrainerMusic
 
 PrintEndBattleText::
 	push hl
