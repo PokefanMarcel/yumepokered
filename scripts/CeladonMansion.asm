@@ -39,7 +39,7 @@ CeladonMansion1FMeowthText:
 	text_far _CeladonMansion1FMeowthText
 	text_asm
 	ld a, MEOWTH
-	jp CeladonMansion_PlayCryScript
+	jr CeladonMansion_PlayCryScript
 
 CeladonMansion1FGrannyText:
 	text_far _CeladonMansion1FGrannyText
@@ -49,13 +49,13 @@ CeladonMansion1FClefairyText:
 	text_far _CeladonMansion1FClefairyText
 	text_asm
 	ld a, CLEFAIRY
-	jp CeladonMansion_PlayCryScript
+	jr CeladonMansion_PlayCryScript
 
 CeladonMansion1FNidoranFText:
 	text_far _CeladonMansion1FNidoranFText
 	text_asm
 	ld a, NIDORAN_F
-	jp CeladonMansion_PlayCryScript
+	jr CeladonMansion_PlayCryScript
 
 
 CeladonMansion3FProgrammerText:
