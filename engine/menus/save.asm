@@ -44,7 +44,7 @@ LoadMainData:
 	ld c, a
 	ld a, [sMainDataCheckSum]
 	cp c
-	jp z, .checkSumMatched
+	jr z, .checkSumMatched
 
 ; If the computed checksum didn't match the saved on, try again.
 	ld hl, sGameData
@@ -80,7 +80,7 @@ LoadMainData:
 	call CopyData
 
 	and a
-	jp GoodCheckSum
+	jr GoodCheckSum
 
 LoadCurrentBoxData:
 	ld a, RAMG_SRAM_ENABLE
@@ -101,7 +101,7 @@ LoadCurrentBoxData:
 	ld bc, wBoxDataEnd - wBoxDataStart
 	call CopyData
 	and a
-	jp GoodCheckSum
+	jr GoodCheckSum
 
 LoadPartyAndDexData:
 	ld a, RAMG_SRAM_ENABLE
@@ -116,7 +116,7 @@ LoadPartyAndDexData:
 	ld c, a
 	ld a, [sMainDataCheckSum]
 	cp c
-	jp nz, CheckSumFailed
+	jr nz, CheckSumFailed
 	ld hl, sPartyData
 	ld de, wPartyDataStart
 	ld bc, wPartyDataEnd - wPartyDataStart
@@ -126,7 +126,7 @@ LoadPartyAndDexData:
 	ld bc, wPokedexSeenEnd - wPokedexOwned
 	call CopyData
 	and a
-	jp GoodCheckSum
+	jr GoodCheckSum
 
 CheckSumFailed:
 	scf
@@ -144,7 +144,7 @@ TryLoadSaveFileIgnoreChecksum: ; unreferenced
 ; don't display warning in case of failed checksum
 	call LoadMainData
 	call LoadCurrentBoxData
-	jp LoadPartyAndDexData
+	jr LoadPartyAndDexData
 
 SaveMenu:
 	callfar PrintSaveScreenText
@@ -291,7 +291,7 @@ SaveGameData::
 	ld [wSaveFileStatus], a
 	call SaveMainData
 	call SaveCurrentBoxData
-	jp SavePartyAndDexData
+	jr SavePartyAndDexData
 
 CalcCheckSum:
 ;Check Sum (result[1 byte] is complemented)
