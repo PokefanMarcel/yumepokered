@@ -565,7 +565,7 @@ CheckSGB:
 SendMltReq1Packet:
 	ld hl, MltReq1Packet
 	call SendSGBPacket
-	jp Wait7000
+	jr Wait7000
 
 CopyGfxToSuperNintendoVRAM:
 	di
@@ -626,7 +626,7 @@ SendSGBPackets:
 	push de
 	call InitCGBPalettes
 	pop hl
-	jp EmptyFunc3
+	ret
 .notCGB
 	push de
 	call SendSGBPacket
@@ -653,9 +653,6 @@ InitCGBPalettes:
 	ldh [rBGPD], a
 	dec c
 	jr nz, .loop
-	ret
-
-EmptyFunc3:
 	ret
 
 CopySGBBorderTiles:
