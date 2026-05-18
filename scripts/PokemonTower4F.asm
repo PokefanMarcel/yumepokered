@@ -53,7 +53,7 @@ PokemonTower4FGhostBattleCoords: ; marcelnote - postgame Agatha event
 PokemonTower4FGhostBattleScript: ; marcelnote - postgame Agatha event
 	ld a, [wIsInBattle]
 	cp $ff
-	jp z, PokemonTower4FSetDefaultScript
+	jr z, PokemonTower4FSetDefaultScript
 	ld a, PAD_BUTTONS | PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	ld a, [wStatusFlags3]
