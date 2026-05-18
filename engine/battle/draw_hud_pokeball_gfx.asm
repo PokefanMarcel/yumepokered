@@ -4,11 +4,11 @@ DrawAllPokeballs:
 	ld a, [wIsInBattle]
 	dec a
 	ret z ; return if wild pokémon
-	jp SetupEnemyPartyPokeballs
+	jr SetupEnemyPartyPokeballs
 
 DrawEnemyPokeballs:
 	call LoadPartyPokeballGfx
-	jp SetupEnemyPartyPokeballs
+	jr SetupEnemyPartyPokeballs
 
 LoadPartyPokeballGfx:
 	ld de, PokeballTileGraphics
@@ -28,7 +28,7 @@ SetupOwnPartyPokeballs:
 	ld a, 8
 	ld [wHUDPokeballGfxOffsetX], a
 	ld hl, wShadowOAM
-	jp WritePokeballOAMData
+	jr WritePokeballOAMData
 
 SetupEnemyPartyPokeballs:
 	call PlaceEnemyHUDTiles
@@ -42,7 +42,7 @@ SetupEnemyPartyPokeballs:
 	ld a, -8
 	ld [wHUDPokeballGfxOffsetX], a
 	ld hl, wShadowOAMSprite06
-	jp WritePokeballOAMData
+	jr WritePokeballOAMData
 
 SetupPokeballs:
 	ld a, [de]
