@@ -4,7 +4,7 @@ _Joypad::
 
 	ldh a, [hJoyInput]
 	cp PAD_BUTTONS ; soft reset
-	jp z, TrySoftReset
+	jr z, TrySoftReset
 
 	ld b, a
 	ldh a, [hJoyLast]
