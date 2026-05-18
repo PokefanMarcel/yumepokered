@@ -65,9 +65,10 @@ VermilionGym_ScriptPointers:
 VermilionGymLTSurgeAfterBattleScript:
 	ld a, [wIsInBattle]
 	cp $ff ; did we lose?
-	jp z, VermilionGymResetScripts
+	jr z, VermilionGymResetScripts
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
+	; fallthrough
 
 VermilionGymLTSurgeReceiveTM24Script: ; marcelnote - optimized
 	ld a, TEXT_VERMILIONGYM_LT_SURGE_THUNDER_BADGE_INFO
@@ -85,25 +86,20 @@ VermilionGymLTSurgeReceiveTM24Script: ; marcelnote - optimized
 	call DisplayTextID
 	ld hl, wObtainedBadges
 	set BIT_THUNDERBADGE, [hl]
-	;ld hl, wBeatGymFlags     ; marcelnote - removed redundant wBeatGymFlags
-	;set BIT_THUNDERBADGE, [hl]
-
-	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_VERMILION_GYM_TRAINER_0, EVENT_BEAT_VERMILION_GYM_TRAINER_2
-
-	jp VermilionGymResetScripts
+	jr VermilionGymResetScripts
 
 VermilionGymLTSurgeRematchPostBattleScript: ; marcelnote - Lt.Surge rematch
 	ld a, [wIsInBattle]
 	cp $ff
-	jp z, VermilionGymResetScripts
+	jr z, VermilionGymResetScripts
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	ld a, TEXT_VERMILIONGYM_AFTER_REMATCH
 	ldh [hTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_LT_SURGE_REMATCH
-	jp VermilionGymResetScripts
+	jr VermilionGymResetScripts
 
 VermilionGym_TextPointers:
 	def_text_pointers
