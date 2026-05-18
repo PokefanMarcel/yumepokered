@@ -480,7 +480,7 @@ CheckSpriteAvailability:
 	predef IsObjectHidden
 	ldh a, [hIsToggleableObjectOff]
 	and a
-	jp nz, .spriteInvisible
+	jr nz, .spriteInvisible
 	ld h, HIGH(wSpriteStateData2)
 	ldh a, [hCurrentSpriteOffset]
 	add SPRITESTATEDATA2_MOVEMENTBYTE1
@@ -748,7 +748,7 @@ DoScriptedNPCMovement:
 	ld hl, wStatusFlags4
 	bit BIT_INIT_SCRIPTED_MOVEMENT, [hl]
 	set BIT_INIT_SCRIPTED_MOVEMENT, [hl]
-	jp z, InitScriptedNPCMovement
+	jr z, InitScriptedNPCMovement
 	ld hl, wNPCMovementDirections2
 	ld a, [wNPCMovementDirections2Index]
 	add l
@@ -812,7 +812,7 @@ InitScriptedNPCMovement:
 	ld [wNPCMovementDirections2Index], a
 	ld a, 8
 	ld [wScriptedNPCWalkCounter], a
-	jp AnimScriptedNPCMovement
+	jr AnimScriptedNPCMovement
 
 GetSpriteScreenYPointer:
 	ld a, SPRITESTATEDATA1_YPIXELS
