@@ -1,6 +1,5 @@
 LavenderCuboneHouse_Script:
-	call EnableAutoTextBoxDrawing
-	ret
+	jp EnableAutoTextBoxDrawing
 
 LavenderCuboneHouse_TextPointers:
 	def_text_pointers

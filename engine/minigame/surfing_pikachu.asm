@@ -2409,8 +2409,7 @@ PrepareSurfingMinigameHighScoreScreen::
 	ld a, $1
 	ldh [hAutoBGTransferEnabled], a
 	call Delay3
-	call GBPalNormal
-	ret
+	jp GBPalNormal
 
 	.PlaceRowAlternatingTiles
 	ld c, SCREEN_WIDTH / 2

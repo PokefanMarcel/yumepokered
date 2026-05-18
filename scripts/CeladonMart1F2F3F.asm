@@ -179,8 +179,7 @@ MartTMClerkDialogue: ; marcelnote - this fills the TM seller list dynamically
 	call PrintText
 	ld a, PRICEDITEMLISTMENU
 	ld [wListMenuID], a
-	callfar DisplayPokemartDialogue_
-	ret
+	jpfar DisplayPokemartDialogue_
 
 ; marcelnote - this list indicates which badge is needed to buy each TM
 ;              -2 means you need to have become champion

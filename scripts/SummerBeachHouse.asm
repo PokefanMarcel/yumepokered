@@ -1,7 +1,6 @@
 ; marcelnote - new location from pokeyellow
 SummerBeachHouse_Script:
-	call EnableAutoTextBoxDrawing
-	ret
+	jp EnableAutoTextBoxDrawing
 
 ; bit 6 of wd471 is supposed to be set if there is a surfing pikachu in the party
 

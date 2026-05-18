@@ -3,8 +3,7 @@ ClearObjectAnimationBuffers:
 	ld hl, wAnimatedObjectsData
 	ld bc, wAnimatedObjectsDataEnd - wAnimatedObjectsData
 	xor a
-	call FillMemory
-	ret
+	jp FillMemory
 
 RunObjectAnimations:
 	ld hl, wAnimatedObjectDataStructs

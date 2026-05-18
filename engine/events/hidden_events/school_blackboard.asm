@@ -3,8 +3,7 @@ PrintBlackboardLinkCableText:
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	ld a, [wHiddenEventFunctionArgument]
-	call PrintPredefTextID
-	ret
+	jp PrintPredefTextID
 
 LinkCableHelp::
 	text_asm

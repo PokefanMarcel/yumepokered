@@ -595,8 +595,7 @@ ReturnToCableClubRoom:
 	pop hl
 	pop af
 	ld [hl], a
-	call GBFadeInFromWhite
-	ret
+	jp GBFadeInFromWhite
 
 TradeCenter_DrawCancelBox:
 	hlcoord 11, 15

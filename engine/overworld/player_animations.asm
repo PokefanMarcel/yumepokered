@@ -464,8 +464,7 @@ FishingAnim:
 	call PrintText
 	ld hl, wMovementFlags
 	res BIT_LEDGE_OR_FISHING, [hl]
-	call LoadFontTilePatterns
-	ret
+	jp LoadFontTilePatterns
 
 .ShakePlayerSprite
 	ld a, [hl]

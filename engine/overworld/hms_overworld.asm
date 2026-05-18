@@ -176,8 +176,7 @@ CheckForStrength:: ; marcelnote - this function is different from the others bec
 	ret
 .fail
 	ld hl, ThisRequiresStrengthText
-	call PrintText
-	ret
+	jp PrintText
 .saidNo
 	pop hl ; remove address wPartyMon{1+a}Species from the stack to use rst TextScriptEnd
 	ret

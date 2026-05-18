@@ -45,8 +45,7 @@ CitrusFerryDeckDefaultScript:
 	ld a, SCRIPT_CITRUSFERRYDECK_PLAYER_MOVING_DOWN
 	ld [wCitrusFerryDeckCurScript], a
 .startMovement
-	call StartSimulatingJoypadStates
-	ret
+	jp StartSimulatingJoypadStates
 
 CitrusFerryDeckPlayerMovingDownScript:
 	ld a, [wSimulatedJoypadStatesIndex]

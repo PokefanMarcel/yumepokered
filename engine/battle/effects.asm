@@ -247,8 +247,7 @@ FlinchSideEffect:
 	cp b
 	ret nc
 	set FLINCHED, [hl] ; set mon's status to flinching
-	call ClearHyperBeam
-	ret
+	jp ClearHyperBeam
 
 
 OneHitKOEffect:

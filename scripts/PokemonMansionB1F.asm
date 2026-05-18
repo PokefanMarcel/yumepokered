@@ -26,8 +26,7 @@ MansionB1FCheckReplaceSwitchDoorBlocks:
 	call Mansion2ReplaceBlock
 	ld a, $54
 	lb bc, 8, 8
-	call Mansion2ReplaceBlock
-	ret
+	jp Mansion2ReplaceBlock
 .switchTurnedOn
 	ld a, $2d
 	lb bc, 8, 13
@@ -40,8 +39,7 @@ MansionB1FCheckReplaceSwitchDoorBlocks:
 	call Mansion2ReplaceBlock
 	ld a, $e
 	lb bc, 8, 8
-	call Mansion2ReplaceBlock
-	ret
+	jp Mansion2ReplaceBlock
 
 PokemonMansionB1FScript_Switches::
 	ld a, [wSpritePlayerStateData1FacingDirection]

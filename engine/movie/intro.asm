@@ -17,8 +17,7 @@ PlayIntro:
 	ldh [hSCX], a
 	ldh [hAutoBGTransferEnabled], a
 	call ClearSprites
-	call DelayFrame
-	ret
+	jp DelayFrame
 
 PlayIntroScene:
 	ld b, SET_PAL_NIDORINO_INTRO

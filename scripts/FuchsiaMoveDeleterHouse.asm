@@ -371,8 +371,7 @@ MoveReminderDrawMoveList:
 	pop af ; restore a = move counter
 	dec a
 	jr nz, .printLoop
-	call Delay3
-	ret
+	jp Delay3
 
 
 MoveReminderGreetingText:

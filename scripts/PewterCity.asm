@@ -18,8 +18,7 @@ PewterCityDefaultScript:
 	xor a
 	ld [wPewterMuseumCurScript], a ; marcelnote - merged Pewter Museum floors
 	ResetEvent EVENT_BOUGHT_MUSEUM_TICKET
-	call PewterCityCheckPlayerLeavingEastScript
-	ret
+	jp PewterCityCheckPlayerLeavingEastScript
 
 PewterCityCheckPlayerLeavingEastScript:
 	CheckEvent EVENT_BEAT_BROCK

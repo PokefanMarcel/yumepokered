@@ -154,8 +154,7 @@ PrintPrizePrice:
 	hlcoord 13, 1
 	ld de, wPlayerCoins
 	ld c, 2 | LEADING_ZEROES
-	call PrintBCDNumber
-	ret
+	jp PrintBCDNumber
 
 .SixSpacesString:
 	db "      @"

@@ -121,7 +121,7 @@ ApplyBadgeStatBoosts: ; marcelnote - optimized and aligned boosts on in game dia
 	; Volcano (bit 6) - special
 	ld hl, wBattleMonSpecial
 	bit BIT_VOLCANOBADGE, b
-	call nz, ApplyBoostToStat
+	jp nz, ApplyBoostToStat
 	ret
 
 ; marcelnote - new function

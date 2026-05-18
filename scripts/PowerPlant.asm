@@ -5,8 +5,7 @@ PowerPlant_Script:
 	ld a, [wPowerPlantCurScript]
 	call ExecuteCurMapScriptInTable
 	ld [wPowerPlantCurScript], a
-	call PowerPlantSetWaterBlocksScript
-	ret
+	jp PowerPlantSetWaterBlocksScript
 
 PowerPlantSetWaterBlocksScript:
 	ld hl, wCurrentMapScriptFlags
@@ -30,7 +29,7 @@ PowerPlantSetWaterBlocksScript:
 	call z, .switchBlocks
 	CheckEvent EVENT_BEAT_POWER_PLANT_VOLTORB_7
 	ld hl, .coordsVoltorb6
-	call z, .switchBlocks
+	jp z, .switchBlocks
 	ret
 
 .switchBlocks

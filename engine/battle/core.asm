@@ -2601,8 +2601,7 @@ MoveSelectionMenu:
 	ld de, wMoves
 	ld bc, NUM_MOVES
 	call CopyData
-	callfar FormatMovesString
-	ret
+	jpfar FormatMovesString
 
 .writemoves
 	ld de, wMovesString

@@ -35,8 +35,7 @@ MandarinDockAllAboardScript:
 	ld [wSimulatedJoypadStatesIndex], a
 	ld a, SCRIPT_MANDARINDOCK_PLAYER_MOVING_DOWN
 	ld [wMandarinDockCurScript], a
-	call StartSimulatingJoypadStates
-	ret
+	jp StartSimulatingJoypadStates
 
 MandarinDockPlayerMovingDownScript:
 	ld a, [wSimulatedJoypadStatesIndex]

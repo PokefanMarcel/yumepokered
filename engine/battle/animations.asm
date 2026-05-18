@@ -788,14 +788,14 @@ DoRockSlideSpecialEffects:
 FlashScreenEveryEightFrameBlocks:
 	ld a, [wSubAnimCounter]
 	and 7 ; is the subanimation counter exactly 8?
-	call z, AnimationFlashScreen ; if so, flash the screen
+	jp z, AnimationFlashScreen ; if so, flash the screen
 	ret
 
 ; flashes the screen if the subanimation counter is divisible by 4
 FlashScreenEveryFourFrameBlocks:
 	ld a, [wSubAnimCounter]
 	and 3
-	call z, AnimationFlashScreen
+	jp z, AnimationFlashScreen
 	ret
 
 ; used for Explosion and Selfdestruct
@@ -924,7 +924,7 @@ DoGrowlSpecialEffects:
 	call CopyData ; copy the musical note graphic
 	ld a, [wSubAnimCounter]
 	dec a
-	call z, AnimationCleanOAM ; clean up at the end of the subanimation
+	jp z, AnimationCleanOAM ; clean up at the end of the subanimation
 	ret
 
 ; this is associated with Tail Whip, but Tail Whip doesn't use any subanimations
@@ -1907,8 +1907,7 @@ AnimationWavyScreen:
 	call Delay3
 	call LoadScreenTilesFromBuffer2
 	ld hl, vBGMap1
-	call BattleAnimCopyTileMapToVRAM
-	ret
+	jp BattleAnimCopyTileMapToVRAM
 
 WavyScreen_SetSCX:
 	ldh a, [rSTAT]

@@ -45,8 +45,7 @@ EvolveMonInteraction::
 	callfar RedrawMapView
 	call Delay3
 	call GBFadeInFromWhite ; or call LoadGBPal
-	callfar LoadWildData
-	ret
+	jpfar LoadWildData
 
 ; marcelnote - adapted from IsMoveInParty
 ; Searches for a specific Mon in the party and stores nickname of corresponding Pokémon in wStringBuffer

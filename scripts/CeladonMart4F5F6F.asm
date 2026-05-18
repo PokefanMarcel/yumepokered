@@ -126,5 +126,4 @@ CeladonMart6FClerkDialogue:
    	call PrintText
    	ld a, PRICEDITEMLISTMENU
    	ld [wListMenuID], a
-   	callfar DisplayPokemartDialogue_
-   	ret
+	jpfar DisplayPokemartDialogue_

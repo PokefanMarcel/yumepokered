@@ -44,8 +44,7 @@ RocketHideoutElevatorScript:
 	ld hl, RocketHideoutElevatorWarpMaps
 	ld de, wElevatorWarpMaps
 	ld bc, RocketHideoutElevatorWarpMaps.End - RocketHideoutElevatorWarpMaps
-	call CopyData
-	ret
+	jp CopyData
 
 RocketHideoutElevatorFloors:
 	db 3 ; #
@@ -64,8 +63,7 @@ RocketHideoutElevatorWarpMaps:
 
 RocketHideoutElevatorShakeScript:
 	call Delay3
-	callfar ShakeElevator
-	ret
+	jpfar ShakeElevator
 
 RocketHideoutElevator_TextPointers:
 	def_text_pointers

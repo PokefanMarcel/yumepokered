@@ -256,7 +256,7 @@ Evolution_PartyMonLoop: ; loop over party mons
 	ret nz
 	ld a, [wEvolutionOccurred]
 	and a
-	call nz, PlayDefaultMusic
+	jp nz, PlayDefaultMusic
 	ret
 
 RenameEvolvedMon:

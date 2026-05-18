@@ -1,8 +1,7 @@
 CeladonCity_Script:
-	call EnableAutoTextBoxDrawing
+	jp EnableAutoTextBoxDrawing
 ;	ResetEvents EVENT_1B8, EVENT_1BF ; marcelnote - unknown events, removed
 ;	ResetEvent EVENT_67F
-	ret
 
 CeladonCity_TextPointers:
 	def_text_pointers

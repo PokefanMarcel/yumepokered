@@ -296,8 +296,7 @@ TitleScreenPickNewMon:
 	ld a, $90
 	ldh [hWY], a
 	ld d, 1 ; scroll out
-	callfar TitleScroll
-	ret
+	jpfar TitleScroll
 
 TitleScreenScrollInMon:
 	ld d, 0 ; scroll in

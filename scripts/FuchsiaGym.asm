@@ -15,8 +15,7 @@ FuchsiaGym_Script:
 	ret z
 	ld hl, .CityName
 	ld de, .LeaderName
-	call LoadGymLeaderAndCityName
-	ret
+	jp LoadGymLeaderAndCityName
 
 IF DEF(_FRA)
 .CityName:

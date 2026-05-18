@@ -626,8 +626,7 @@ SendSGBPackets:
 	push de
 	call InitCGBPalettes
 	pop hl
-	call EmptyFunc3
-	ret
+	jp EmptyFunc3
 .notCGB
 	push de
 	call SendSGBPacket

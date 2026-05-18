@@ -165,8 +165,7 @@ VermilionDock_EmitSmokePuff:
 	ld [wSSAnneSmokeDriftAmount], a
 	ld a, $1
 	ld de, VermilionDockOAMBlock
-	call WriteOAMBlock
-	ret
+	jp WriteOAMBlock
 
 VermilionDockOAMBlock:
 ; tile ID, attributes
@@ -219,8 +218,7 @@ VermilionDock_EraseSSAnne:
 	ld a, SFX_SS_ANNE_HORN
 	call PlaySound
 	ld c, 120
-	call DelayFrames
-	ret
+	jp DelayFrames
 
 VermilionDockAllAboardScript:
 	xor a
@@ -246,8 +244,7 @@ VermilionDockAllAboardScript:
 	ld [wSimulatedJoypadStatesIndex], a
 	ld a, SCRIPT_VERMILIONDOCK_PLAYER_MOVING_DOWN
 	ld [wVermilionDockCurScript], a
-	call StartSimulatingJoypadStates
-	ret
+	jp StartSimulatingJoypadStates
 
 VermilionDockPlayerMovingDownScript:
 	ld a, [wSimulatedJoypadStatesIndex]

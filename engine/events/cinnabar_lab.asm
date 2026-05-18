@@ -69,8 +69,7 @@ GiveFossilToCinnabarLab::
 	ret
 .cancelledGivingFossil
 	ld hl, .ComeAgainText
-	call PrintText
-	ret
+	jp PrintText
 
 .ScientistSeesFossilText:
 	text_far _CinnabarLabFossilRoomScientist1SeesFossilText
@@ -119,5 +118,4 @@ LoadFossilItemAndMonName::
 	call CopyToStringBuffer
 	ld a, [wFossilItem]
 	ld [wNamedObjectIndex], a
-	call GetItemName
-	ret
+	jp GetItemName
