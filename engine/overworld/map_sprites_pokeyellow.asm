@@ -17,7 +17,7 @@ InitMapSprites::
 ; if the map is an inside map (i.e. mapID >= FIRST_INDOOR_MAP)
 	call LoadSpriteSetFromMapHeader
 	call LoadMapSpriteTilePatterns
-	jp Func_14150
+	jr Func_14150
 
 ; Loads sprite set for outside maps (cities and routes) and sets VRAM slots.
 ; sets carry if the map is a city or route, unsets carry if not
