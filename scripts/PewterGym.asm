@@ -46,7 +46,7 @@ PewterGym_ScriptPointers:
 PewterGymBrockPostBattleScript:
 	ld a, [wIsInBattle]
 	cp $ff
-	jp z, PewterGymResetScripts
+	jr z, PewterGymResetScripts
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 ; fallthrough
@@ -85,12 +85,12 @@ PewterGymScriptReceiveTM34:
 	; deactivate gym trainers
 	SetEvent EVENT_BEAT_PEWTER_GYM_TRAINER_0
 
-	jp PewterGymResetScripts
+	jr PewterGymResetScripts
 
 PewterGymBrockRematchPostBattleScript: ; marcelnote - Brock rematch
 	ld a, [wIsInBattle]
 	cp $ff
-	jp z, PewterGymResetScripts
+	jr z, PewterGymResetScripts
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	ld a, TEXT_PEWTERGYM_AFTER_REMATCH
