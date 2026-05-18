@@ -256,7 +256,7 @@ FreezeBurnParalyzeEffect: ; only side effects ; marcelnote - optimized
 .opponentTurn
 	ld a, [hli] ; a = [w<>MonStatus]
 	and a
-	jp nz, CheckDefrost ; can't inflict status if opponent is already statused
+	jr nz, CheckDefrost ; can't inflict status if opponent is already statused
 	ld a, [de]
 	ld b, a     ; b = [w<>MoveType]
 	ld a, [hli] ; a = [w<>MonType1]
