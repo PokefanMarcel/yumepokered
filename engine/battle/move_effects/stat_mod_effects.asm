@@ -161,7 +161,7 @@ StatModifierDownEffect: ; marcelnote - optimized
 .nothingHappened
 	pop af     ; restore c flag (set = side effect)
 	ret c      ; don't print anything if only side effect
-	jp PrintNothingHappenedText
+	jr PrintNothingHappenedText
 
 .mainEffect ; main effect only
 	dec bc               ; bc = w<Target>BattleStatus1
