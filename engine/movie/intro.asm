@@ -137,7 +137,7 @@ PlayIntroScene:
 	ld a, (FightIntroFrontMon3 - FightIntroFrontMon) / TILE_SIZE
 	ld [wIntroNidorinoBaseTile], a
 	ld de, IntroNidorinoAnimation7
-	jp AnimateIntroNidorino
+	; fallthrough
 
 AnimateIntroNidorino:
 	ld a, [de]
