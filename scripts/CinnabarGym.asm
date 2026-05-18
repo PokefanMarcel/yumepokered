@@ -444,7 +444,7 @@ CinnabarGymBlaineText:
 	call SaveEndBattleTextPointers
 	ld a, 7
 	ld [wGymLeaderNo], a
-	jp CinnabarGymStartBattleScript
+	jr CinnabarGymStartBattleScript
 
 .PreBattleText:
 	text_far _CinnabarGymBlainePreBattleText
