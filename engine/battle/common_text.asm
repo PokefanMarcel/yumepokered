@@ -10,12 +10,13 @@ PrintBeginningBattleText: ; marcelnote - optimized and removed sound bug in Ghos
 .wildBattle
 	ld a, [wEnemyMonSpecies2]
 	call PlayCry
-	ld hl, WildMonAppearedText
 	ld a, [wHookedMon]
 	and a
+	ld hl, WildMonAppearedText
 	jr z, .drawPokeballs
 	ld hl, HookedMonAttackedText
 	jr .drawPokeballs
+
 .trainerBattle
 	ld a, SFX_TRAINER_APPEARED
 	call PlaySound
@@ -43,12 +44,14 @@ PrintBeginningBattleText: ; marcelnote - optimized and removed sound bug in Ghos
 	jr z, .noSilphScope
 ;	callfar LoadEnemyMonData ; marcelnote - removed
 	jr .wildBattle
+
 .noSilphScope
 	ld hl, EnemyAppearedText
 	call PrintText
 	ld hl, GhostCantBeIDdText
 	jp PrintText
 .isMarowak
+
 	ld a, b
 	and a
 	jr z, .noSilphScope
