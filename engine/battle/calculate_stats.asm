@@ -121,7 +121,7 @@ ApplyBadgeStatBoosts: ; marcelnote - optimized and aligned boosts on in game dia
 	; Volcano (bit 6) - special
 	ld hl, wBattleMonSpecial
 	bit BIT_VOLCANOBADGE, b
-	jp nz, ApplyBoostToStat
+	jr nz, ApplyBoostToStat
 	ret
 
 ; marcelnote - new function
@@ -198,11 +198,12 @@ ApplyBurnAndParalysisPenaltiesToPlayer:
 
 ApplyBurnAndParalysisPenaltiesToEnemy:
 	xor a
+	; fallthrough
 
 ApplyBurnAndParalysisPenalties:
 	ldh [hWhoseTurn], a
 	call QuarterSpeedDueToParalysis
-	jp HalveAttackDueToBurn
+	jr HalveAttackDueToBurn
 
 
 QuarterOwnSpeedDueToParalysis: ; marcelnote - new
