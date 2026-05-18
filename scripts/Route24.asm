@@ -41,7 +41,7 @@ ENDC
 	ret z
 	ld a, PAD_DOWN
 	ld [wSimulatedJoypadStatesEnd], a
-	ld a, $1
+	ld a, 1
 	ld [wSimulatedJoypadStatesIndex], a
 	call StartSimulatingJoypadStates
 	ld a, SCRIPT_ROUTE24_PLAYER_MOVING
@@ -66,7 +66,7 @@ Route24PlayerMovingScript:
 Route24AfterRocketBattleScript:
 	ld a, [wIsInBattle]
 	cp $ff
-	jp z, Route24SetDefaultScript
+	jr z, Route24SetDefaultScript
 	call UpdateSprites
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
