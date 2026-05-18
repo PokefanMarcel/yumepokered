@@ -54,7 +54,7 @@ PokemonTower6FMarowakCoords:
 PokemonTower6FMarowakBattleScript:
 	ld a, [wIsInBattle]
 	cp $ff
-	jp z, PokemonTower6FSetDefaultScript
+	jr z, PokemonTower6FSetDefaultScript
 	ld a, PAD_BUTTONS | PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	ld a, [wStatusFlags3]
