@@ -55,7 +55,7 @@ FightingDojoDefaultScript:
 FightingDojoKarateMasterPostBattleScript:
 	ld a, [wIsInBattle]
 	cp $ff
-	jp z, FightingDojoResetScripts
+	jr z, FightingDojoResetScripts
 	ld a, [wSavedCoordIndex]
 	and a ; nz if the player was at (4, 3), left of the Karate Master
 	jr z, .alreadyFacing
@@ -106,9 +106,11 @@ FightingDojoTrainerHeader3:  ; marcelnote - increased sight from 3 to 4 since mo
 FightingDojoKarateMasterText:
 	text_asm
 	CheckEvent EVENT_DEFEATED_FIGHTING_DOJO
-	jp nz, .defeated_dojo
+	ld hl, .StayAndTrainWithUsText
+	jr nz, .printText
 	CheckEventReuseA EVENT_BEAT_KARATE_MASTER
-	jp nz, .defeated_master
+	ld hl, .IWillGiveYouAPokemonText
+	jr nz, .printText
 	ld hl, .Text
 	call PrintText
 	ld hl, wStatusFlags3
@@ -124,15 +126,9 @@ FightingDojoKarateMasterText:
 	ld a, SCRIPT_FIGHTINGDOJO_KARATE_MASTER_POST_BATTLE
 	ld [wFightingDojoCurScript], a
 	ld [wCurMapScript], a
-	jr .end
-.defeated_dojo
-	ld hl, .StayAndTrainWithUsText
+	rst TextScriptEnd
+.printText
 	call PrintText
-	jr .end
-.defeated_master
-	ld hl, .IWillGiveYouAPokemonText
-	call PrintText
-.end
 	rst TextScriptEnd
 
 .Text:
