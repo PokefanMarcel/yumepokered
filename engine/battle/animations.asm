@@ -19,7 +19,7 @@ DrawFrameBlock:
 	dec a
 	jr z, .flipHorizontalAndVertical   ; SUBANIMTYPE_HVFLIP
 	dec a
-	jp z, .flipHorizontalTranslateDown ; SUBANIMTYPE_HFLIP
+	jr z, .flipHorizontalTranslateDown ; SUBANIMTYPE_HFLIP
 	dec a
 	jr z, .flipBaseCoords              ; SUBANIMTYPE_COORDFLIP
 ; no transformation
@@ -55,7 +55,7 @@ DrawFrameBlock:
 	ld a, [hli]
 	ld [de], a ; store flags
 	inc de
-	jp .nextTile
+	jr .nextTile
 .flipHorizontalAndVertical
 	ld a, [wBaseCoordY]
 	add [hl] ; Y offset
@@ -93,7 +93,7 @@ DrawFrameBlock:
 	ld a, b
 	ld [de], a
 	inc de
-	jp .nextTile
+	jr .nextTile
 .flipHorizontalTranslateDown
 	ld a, [wBaseCoordY]
 	add [hl]
@@ -633,7 +633,7 @@ PlaySubanimation:
 	ld [wSubAnimSubEntryAddr + 1], a
 	ld a, l
 	ld [wSubAnimSubEntryAddr], a
-	jp .loop
+	jr .loop
 
 AnimationCleanOAM:
 	push hl
@@ -1170,7 +1170,7 @@ AnimationSlideMonUp:
 	ld a, $0 ; marcelnote - modified to remove sprite compression
 .next
 	ld [wSlideMonUpBottomRowLeftTile], a
-	jp _AnimationSlideMonUp
+	jr _AnimationSlideMonUp
 
 AnimationSlideMonDown: ; marcelnote - modified for removing sprite compression
 ; Slides the mon's sprite down out of the screen.
@@ -1779,7 +1779,7 @@ AnimationSlideMonDownAndHide:
 	ld bc, PIC_SIZE tiles
 	xor a
 	call FillMemory
-	jp CopyTempPicToMonPic
+	jr CopyTempPicToMonPic
 
 AnimationSlideMonHalfOff:
 ; Slides the mon's sprite halfway off the screen. It's used in Softboiled.
@@ -2565,7 +2565,14 @@ AnimationShakeEnemyHUD:
 	call Delay3
 	call LoadScreenTilesFromBuffer1
 	ld hl, vBGMap1
-	jp BattleAnimCopyTileMapToVRAM
+	;fallthrough
+
+BattleAnimCopyTileMapToVRAM:
+	ld a, h
+	ldh [hAutoBGTransferDest + 1], a
+	ld a, l
+	ldh [hAutoBGTransferDest], a
+	jp Delay3
 
 ; b = tile ID list index
 ; c = base tile ID
@@ -2598,13 +2605,6 @@ ShakeEnemyHUD_ShakeBG:
 	ld a, [wTempSCX]
 	ldh [hSCX], a
 	ret
-
-BattleAnimCopyTileMapToVRAM:
-	ld a, h
-	ldh [hAutoBGTransferDest + 1], a
-	ld a, l
-	ldh [hAutoBGTransferDest], a
-	jp Delay3
 
 TossBallAnimation:
 	ld a, [wIsInBattle]
