@@ -33,7 +33,7 @@ TryPushingBoulder::
 	predef CheckForCollisionWhenPushingBoulder
 	ld a, [wTileInFrontOfBoulderAndBoulderCollisionResult]
 	and a ; was there a collision?
-	jp nz, ResetBoulderPushFlags
+	jr nz, ResetBoulderPushFlags
 	ldh a, [hJoyHeld]
 	ld b, a
 	ld a, [wSpritePlayerStateData1FacingDirection]
