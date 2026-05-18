@@ -63,4 +63,4 @@ CopyVideoDataAlternate::
 	and c
 	ld c, a
 	pop af
-	jp FarCopyData
+	jr FarCopyData
