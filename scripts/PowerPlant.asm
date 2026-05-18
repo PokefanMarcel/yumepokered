@@ -5,13 +5,13 @@ PowerPlant_Script:
 	ld a, [wPowerPlantCurScript]
 	call ExecuteCurMapScriptInTable
 	ld [wPowerPlantCurScript], a
-	jp PowerPlantSetWaterBlocksScript
+	; fallthrough
 
 PowerPlantSetWaterBlocksScript:
 	ld hl, wCurrentMapScriptFlags
 	bit BIT_CUR_MAP_LOADED_1, [hl]
-	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
+	res BIT_CUR_MAP_LOADED_1, [hl]
 	CheckEvent EVENT_BEAT_POWER_PLANT_VOLTORB_0
 	ld hl, .coordsVoltorb1
 	call z, .switchBlocks
@@ -29,8 +29,8 @@ PowerPlantSetWaterBlocksScript:
 	call z, .switchBlocks
 	CheckEvent EVENT_BEAT_POWER_PLANT_VOLTORB_7
 	ld hl, .coordsVoltorb6
-	jp z, .switchBlocks
-	ret
+	ret nz
+	; fallthrough
 
 .switchBlocks
 	ld a, [hli]
