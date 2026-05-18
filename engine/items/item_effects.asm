@@ -194,7 +194,7 @@ ItemUseBall:
 
 ; The Master Ball always succeeds.
 	cp MASTER_BALL
-	jp z, .captured
+	jr z, .captured
 
 ; Anything will do for the basic Poké Ball.
 	cp POKE_BALL
@@ -234,7 +234,7 @@ ItemUseBall:
 .notFrozenOrAsleep
 	ld a, b
 	sub c
-	jp c, .captured
+	jr c, .captured
 	ld b, a
 
 .skipAilmentValueSubtraction
@@ -1194,7 +1194,7 @@ ItemUseMedicine:
 	jr .doneHealing
 .healingItemNoEffect
 	call ItemUseNoEffect
-	jp .done
+	jr .done
 .doneHealing
 	ld a, [wPseudoItemID]
 	and a ; using Softboiled?
@@ -1278,7 +1278,7 @@ ItemUseMedicine:
 	pop hl
 	ld a, [wCurItem]
 	cp RARE_CANDY
-	jp z, .useRareCandy
+	jr z, .useRareCandy
 	push hl
 	sub HP_UP
 	add a
@@ -2114,7 +2114,7 @@ ItemUsePPRestore:
 .useEther
 	call .restorePP
 	jr nz, .afterRestoringPP
-	jp .noEffect
+	jr .noEffect
 ; unsets zero flag if PP was restored, sets zero flag if not
 ; however, this is bugged for Max Ethers and Max Elixirs (see below)
 .restorePP
@@ -2330,7 +2330,7 @@ ItemUseTMHM:
 	ld a, [wCurItem]
 	call IsItemHM
 	ret c
-	jp RemoveUsedItem
+	jr RemoveUsedItem
 
 BootedUpTMText:
 	text_far _BootedUpTMText
