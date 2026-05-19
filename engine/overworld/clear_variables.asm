@@ -10,7 +10,6 @@ ClearVariablesOnEnterMap::
 	ldh [hJoyReleased], a
 	ldh [hJoyHeld], a
 	ld [wActionResultOrTookBattleTurn], a
-	;ld [wUnusedMapVariable], a ; marcelnote - removed wUnusedMapVariable
 ;	ld [wUnusedMapVariable], a ; marcelnote - removed wUnusedMapVariable
 	ld hl, wCardKeyDoorY
 	ld [hli], a
