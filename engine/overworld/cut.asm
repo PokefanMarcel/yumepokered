@@ -53,7 +53,6 @@ UsedCut:
 	ld a, $ff
 	ld [wUpdateSpritesEnabled], a
 	call InitCutAnimOAM
-	ld de, CutTreeBlockSwaps
 	call ReplaceTreeTileBlock
 	call RedrawMapView
 	callfar AnimCut
@@ -167,81 +166,341 @@ BoulderDustAnimationOffsets:
 	db -24,  20 ; player is facing left
 	db  40,  20 ; player is facing right
 
+; marcelnote - modified cut trees engine
 ReplaceTreeTileBlock:
-; Determine the address of the tile block that contains the tile in front of the
-; player (i.e. where the tree is) and replace it with the corresponding tile
-; block that doesn't have the tree.
-	push de
-	ld a, [wCurMapWidth]
-	add 6
-	ld c, a
-	ld b, 0
-	ld d, 0
-	ld hl, wCurrentTileBlockMapViewPointer
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	add hl, bc
-	ld a, [wSpritePlayerStateData1FacingDirection]
-	and a
-	jr z, .down
-	cp SPRITE_FACING_UP
-	jr z, .up
-	cp SPRITE_FACING_LEFT
-	jr z, .left
-; right
-	ld a, [wXBlockCoord]
-	and a
-	jr z, .centerTileBlock
-	jr .rightOfCenter
-.down
-	ld a, [wYBlockCoord]
-	and a
-	jr z, .centerTileBlock
-	jr .belowCenter
-.up
-	ld a, [wYBlockCoord]
-	and a
-	jr z, .aboveCenter
-	jr .centerTileBlock
-.left
-	ld a, [wXBlockCoord]
-	and a
-	jr z, .leftOfCenter
-	jr .centerTileBlock
-.belowCenter
-	add hl, bc
-.centerTileBlock
-	add hl, bc
-.aboveCenter
-	ld e, 2
-	add hl, de
-	jr .next
-.leftOfCenter
-	ld e, 1
-	add hl, bc
-	add hl, de
-	jr .next
-.rightOfCenter
-	ld e, 3
-	add hl, bc
-	add hl, de
-.next
-	pop de
-	ld c, [hl]
-.loop ; find the matching tile block in the array
+; Replace the cuttable block in front of the player, and record tree cuts so
+; they can be replayed if the map is rebuilt during a connected-map transition.
+	call GetCutTreeBlock ; hl = destination block, wBuffer = source block pointer
+	ret nc
+	ld de, CutTreeBlockSwaps
+	ld c, [hl] ; current block ID
+
+; Find the current block in CutTreeBlockSwaps.
+.loop
 	ld a, [de]
 	cp $ff
 	ret z
+	inc de
 	cp c
 	jr z, .found
 	inc de
-	inc de
 	jr .loop
 .found
-	inc de
 	ld a, [de] ; replacement tile block from matching array entry
+	ld [hl], a ; update wOverworldMap
+	; fallthrough
+
+RecordTemporaryCutTreeBlockReplacement:
+; Append the last replaced tree block to wTemporaryTileBlockReplacements.
+; wBuffer + 1 = source block pointer, a = replacement block ID.
+	ld [wBuffer + 3], a ; replacement block
+	ld a, [wCutTile]
+	cp $52 ; cut grass does not need to persist across map rebuilds
+	ret z
+
+; Stop recording if the fixed-size table is already full.
+	ld a, [wTemporaryTileBlockReplacementsCount]
+	cp NUM_CUT_TREE_REPLACEMENTS
+	ret nc
+
+; Increment counter and advance to the next free entry.
+	ld hl, wTemporaryTileBlockReplacementsCount
+	inc [hl]
+	inc hl ; hl = wTemporaryTileBlockReplacements
+	ld bc, CUT_TREE_REPLACEMENT_LENGTH
+	call AddNTimes
+	ld a, [wCurMap] ; map ID
+	ld [hli], a
+	ld a, [wBuffer + 1] ; source block pointer low byte
+	ld [hli], a
+	ld a, [wBuffer + 2] ; source block pointer high byte
+	ld [hli], a
+	ld a, [wBuffer + 3] ; replacement block
 	ld [hl], a
+	ret
+
+GetCutTreeBlock:
+; Return the block in front of the player.
+; hl = wOverworldMap destination, wBuffer + 1 = map data source, carry = found
+; First get the target tile coordinates from the player's position and facing.
+	ld a, [wYCoord]
+	ld b, a
+	ld a, [wXCoord]
+	ld c, a
+	ld a, [wSpritePlayerStateData1FacingDirection]
+	and a ; SPRITE_FACING_DOWN?
+	jr nz, .notFacingDown
+	inc b
+	jr .gotTargetTileCoords
+.notFacingDown
+	cp SPRITE_FACING_UP
+	jr nz, .notFacingUp
+	dec b
+	jr .gotTargetTileCoords
+.notFacingUp
+	cp SPRITE_FACING_LEFT
+	jr nz, .notFacingLeft
+	dec c
+	jr .gotTargetTileCoords
+.notFacingLeft
+	inc c
+.gotTargetTileCoords
+; Only record blocks that belong to the current map's own map data.
+	ld hl, wCurrentMapHeight2
+	ld a, b
+	cp [hl]
+	ret nc ; no match if b >= map height
+	inc hl ; hl = wCurrentMapWidth2
+	ld a, c
+	cp [hl]
+	ret nc ; no match if c >= map width
+	srl b
+	srl c
+
+; Convert target block coordinates to a source pointer in the map's block data.
+	push bc
+	ld a, [wCurMapDataPtr]
+	ld l, a
+	ld a, [wCurMapDataPtr + 1]
+	ld h, a
+	ld a, b
+	and a
+	jr z, .gotSourceRow
+	ld a, [wCurMapWidth]
+	ld e, a
+	ld d, 0
+.sourceRowLoop
+	add hl, de
+	dec b
+	jr nz, .sourceRowLoop
+.gotSourceRow ; b = 0
+	add hl, bc
+	ld a, l
+	ld [wBuffer + 1], a
+	ld a, h
+	ld [wBuffer + 2], a
+	pop bc
+
+; Convert target block coordinates to the matching destination in wOverworldMap.
+	ld a, [wCurMapWidth]
+	add MAP_BORDER * 2
+	ld e, a
+	ld d, 0        ; de = row size
+	ld hl, wOverworldMap
+	ld a, b
+	add MAP_BORDER ; also skip 3 border rows
+.destRow
+	add hl, de
+	dec a
+	jr nz, .destRow
+	ld a, c
+	add MAP_BORDER
+	ld e, a
+	ld d, 0
+	add hl, de
+	scf
+	ret
+
+ApplyTemporaryTileBlockReplacements::
+; Replay recorded cut-tree replacements after LoadTileBlockMap has rebuilt
+; wOverworldMap for the current map and its connection borders.
+	ld a, [wTemporaryTileBlockReplacementsCount]
+	and a
+	ret z
+	ld b, a ; b = cut trees count
+	ld hl, wTemporaryTileBlockReplacements
+
+; Load each table entry into scratch and try to apply it to the visible map.
+.loop
+	push bc
+	ld a, [hli] ; map ID
+	ld [wBuffer], a
+	ld a, [hli] ; source block pointer low byte
+	ld [wBuffer + 1], a
+	ld a, [hli] ; source block pointer high byte
+	ld [wBuffer + 2], a
+	ld a, [hli] ; replacement block
+	ld [wBuffer + 3], a
+	push hl
+	call ApplyTemporaryTileBlockReplacement
+	pop hl
+	pop bc
+	dec b
+	jr nz, .loop
+	ret
+
+ApplyTemporaryTileBlockReplacement:
+; Try the current map first, then each connected map whose border is loaded.
+	ld a, [wBuffer] ; map ID
+	ld c, a
+	ld a, [wCurMap]
+	cp c
+	jr nz, .northConnection
+	call ApplyTemporaryTileBlockReplacementToCurrentMap
+	ret c
+.northConnection
+	ld a, [wNorthConnectedMap]
+	cp $ff
+	jr z, .southConnection
+	ld c, a
+	ld a, [wBuffer] ; map ID
+	cp c
+	jr nz, .southConnection
+	ld hl, wNorthConnectionHeader
+	call ApplyTemporaryTileBlockReplacementToNorthSouthConnection
+	ret c
+.southConnection
+	ld a, [wSouthConnectedMap]
+	cp $ff
+	jr z, .westConnection
+	ld c, a
+	ld a, [wBuffer] ; map ID
+	cp c
+	jr nz, .westConnection
+	ld hl, wSouthConnectionHeader
+	call ApplyTemporaryTileBlockReplacementToNorthSouthConnection
+	ret c
+.westConnection
+	ld a, [wWestConnectedMap]
+	cp $ff
+	jr z, .eastConnection
+	ld c, a
+	ld a, [wBuffer] ; map ID
+	cp c
+	jr nz, .eastConnection
+	ld hl, wWestConnectionHeader
+	call ApplyTemporaryTileBlockReplacementToEastWestConnection
+	ret c
+.eastConnection
+	ld a, [wEastConnectedMap]
+	cp $ff
+	ret z
+	ld c, a
+	ld a, [wBuffer] ; map ID
+	cp c
+	ret nz
+	ld hl, wEastConnectionHeader
+	jr ApplyTemporaryTileBlockReplacementToEastWestConnection
+
+ApplyTemporaryTileBlockReplacementToCurrentMap:
+; Set up a full current-map region.
+	ld a, [wCurMapWidth]
+	ld [wBuffer + 4], a ; source stride
+	add MAP_BORDER * 2
+	ld [wBuffer + 5], a ; destination stride
+	ld e, a
+	ld d, 0
+	ld hl, wOverworldMap
+	add hl, de
+	add hl, de
+	add hl, de
+	ld e, MAP_BORDER
+	add hl, de ; skip north and west borders
+	ld d, h
+	ld e, l
+	ld a, [wCurMapDataPtr]
+	ld l, a
+	ld a, [wCurMapDataPtr + 1]
+	ld h, a
+	ld a, [wCurMapHeight]
+	ld b, a
+	ld a, [wCurMapWidth]
+	ld c, a
+	jr ApplyTemporaryTileBlockReplacementToRegion
+
+ApplyTemporaryTileBlockReplacementToNorthSouthConnection:
+; Set up the visible 3-row strip for a north or south connection.
+	inc hl ; connected map
+	ld a, [hli] ; strip source
+	ld e, a
+	ld a, [hli]
+	ld d, a
+	push de
+	ld a, [hli] ; strip destination
+	ld e, a
+	ld a, [hli]
+	ld d, a
+	ld a, [hli] ; strip width
+	ld c, a
+	ld a, [hl] ; connected map width
+	ld [wBuffer + 4], a ; source stride
+	ld a, [wCurMapWidth]
+	add MAP_BORDER * 2
+	ld [wBuffer + 5], a ; destination stride
+	ld b, MAP_BORDER
+	pop hl
+	jr ApplyTemporaryTileBlockReplacementToRegion
+
+ApplyTemporaryTileBlockReplacementToEastWestConnection:
+; Set up the visible 3-column strip for a west or east connection.
+	inc hl ; connected map
+	ld a, [hli] ; strip source
+	ld e, a
+	ld a, [hli]
+	ld d, a
+	push de
+	ld a, [hli] ; strip destination
+	ld e, a
+	ld a, [hli]
+	ld d, a
+	ld a, [hli] ; strip height
+	ld b, a
+	ld a, [hl] ; connected map width
+	ld [wBuffer + 4], a ; source stride
+	ld a, [wCurMapWidth]
+	add MAP_BORDER * 2
+	ld [wBuffer + 5], a ; destination stride
+	ld c, MAP_BORDER
+	pop hl
+	; fallthrough
+
+ApplyTemporaryTileBlockReplacementToRegion:
+; hl = source top-left, de = destination top-left, b = rows, c = columns
+; Scan a source region for the recorded source pointer. If found, patch the
+; corresponding destination block in wOverworldMap.
+.row
+	push bc
+	push hl
+	push de
+.innerLoop
+	ld a, [wBuffer + 2]
+	cp h
+	jr nz, .nextBlock
+	ld a, [wBuffer + 1]
+	cp l
+	jr nz, .nextBlock
+
+; The recorded source pointer is visible in this region; replay the block swap.
+	ld a, [wBuffer + 3]
+	ld [de], a
+	pop de
+	pop hl
+	pop bc
+	scf
+	ret
+.nextBlock
+	inc hl
+	inc de
+	dec c
+	jr nz, .innerLoop
+
+; Move source and destination pointers to the next row of their regions.
+	pop de
+	pop hl
+	ld a, [wBuffer + 4]
+	ld b, c ; c = 0
+	ld c, a
+	add hl, bc
+	ld a, [wBuffer + 5]
+	add e
+	ld e, a
+	jr nc, .noDestCarry
+	inc d
+.noDestCarry
+	pop bc
+	dec b
+	jr nz, .row
+	and a
 	ret
 
 INCLUDE "data/tilesets/cut_tree_blocks.asm"

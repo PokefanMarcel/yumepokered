@@ -91,7 +91,6 @@ CheckForCut::
 	ld a, $ff
 	ld [wUpdateSpritesEnabled], a
 	callfar InitCutAnimOAM
-	ld de, CutTreeBlockSwaps
 	callfar ReplaceTreeTileBlock
 	callfar RedrawMapView
 	callfar AnimCut

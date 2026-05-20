@@ -25,6 +25,11 @@ DEF MAX_BG_EVENTS EQU 16
 ; wMapSpriteData
 DEF MAX_OBJECT_EVENTS EQU 16
 
+; marcelnote - modified cut trees engine
+DEF NUM_CUT_TREE_REPLACEMENTS EQU 7
+DEF CUT_TREE_REPLACEMENT_LENGTH EQU 4 ; map, map-data pointer, replacement block
+
+
 ; flower and water tile animations ; marcelnote - redid this with bits
 	const_def
 	const BIT_ANIM_WATER      ; bit 0 = water tile $14 is animated

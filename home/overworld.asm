@@ -991,7 +991,7 @@ LoadTileBlockMap::
 .eastConnection
 	ld a, [wEastConnectedMap]
 	cp $ff
-	ret z
+	jr z, .applyTemporaryTileBlockReplacements ; marcelnote - modified cut trees engine
 	call SwitchToMapRomBank
 	ld a, [wEastConnectionStripSrc]
 	ld l, a
@@ -1005,7 +1005,9 @@ LoadTileBlockMap::
 	ld b, a
 	ld a, [wEastConnectedMapWidth]
 	ldh [hEastWestConnectedMapWidth], a
-	jr LoadEastWestConnectionsTileMap
+	call LoadEastWestConnectionsTileMap
+.applyTemporaryTileBlockReplacements
+	jpfar ApplyTemporaryTileBlockReplacements ; marcelnote - modified cut trees engine
 
 LoadNorthSouthConnectionsTileMap::
 	ld c, MAP_BORDER
@@ -2370,6 +2372,8 @@ LoadMapData::
 	ldh a, [hLoadedROMBank]
 	push af
 	call DisableLCD
+	xor a
+	ld [wTemporaryTileBlockReplacementsCount], a ; marcelnote - modified cut trees engine
 	ld a, HIGH(vBGMap0)
 	ld [wMapViewVRAMPointer + 1], a
 	xor a

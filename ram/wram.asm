@@ -704,8 +704,12 @@ wEnemyMonEvasionMod:: db
 wEnemyMonStatModsEnd::
 
 NEXTU
-wTempColCoords:: ; marcelnote - prevents cut tree from returning (fix from pokered Wiki)
-	ds 30
+; marcelnote - modified cut trees engine
+wTemporaryTileBlockReplacementsCount:: db
+wTemporaryTileBlockReplacements:: ds NUM_CUT_TREE_REPLACEMENTS * CUT_TREE_REPLACEMENT_LENGTH
+
+	ds 1
+
 wEngagedTrainerClass:: db
 wEngagedTrainerSet:: db
 ENDU
