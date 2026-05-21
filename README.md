@@ -156,8 +156,8 @@ Unless you’re after an easier hunt for a specific version-exclusive Pokémon, 
 
 This project owes a lot to existing works, and above all to the pret [pokered](https://github.com/pret/pokered) disassemby project, but also:
 
-- [Shinpokered](https://github.com/jojobear13/shinpokered): initial inspiration, including the kanji name; girl player, experience bar, temporary field moves, revamped trainer AI, many bug fixes,
-- [PureRGB](https://github.com/Vortyne/pureRGB): overworld HM use, ROM space management, repel reuse prompt, use items with Select, some gfx, many other code snippets,
+- [Shinpokered](https://github.com/jojobear13/shinpokered): initial inspiration, including the kanji name; girl player, experience bar, temporary field moves, revamped trainer AI, improved spinner engine, many bug fixes,
+- [PureRGB](https://github.com/Vortyne/pureRGB): overworld HM use, ROM space management, repel reuse prompt, use items with Select, some gfx, improved spinner engine, many other code snippets,
 - [Extreme Yellow](https://github.com/RainbowMetalPigeon/ExtremeYellow): overworld HM use, dynamic TM seller,
 - [Yellow Legacy](https://github.com/cRz-Shadows/Pokemon_Yellow_Legacy): inspiration for many balance changes,
 - [pokered-crysaudio](https://github.com/dannye/pokered-crysaudio/tree/1edc6019fb8630bccd94f0b0e7dd4082cf7f4245): updated sound engine,

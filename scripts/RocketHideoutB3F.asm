@@ -12,118 +12,13 @@ RocketHideoutB3F_ScriptPointers:
 	dw_const RocketHideoutB3FDefaultScript,         SCRIPT_ROCKETHIDEOUTB3F_DEFAULT
 	dw_const DisplayEnemyTrainerTextAndStartBattle, SCRIPT_ROCKETHIDEOUTB3F_START_BATTLE
 	dw_const EndTrainerBattle,                      SCRIPT_ROCKETHIDEOUTB3F_END_BATTLE
-	dw_const RocketHideoutB3FPlayerSpinningScript,  SCRIPT_ROCKETHIDEOUTB3F_PLAYER_SPINNING
 
-RocketHideoutB3FDefaultScript:
-	ld a, [wYCoord]
-	ld b, a
-	ld a, [wXCoord]
-	ld c, a
-	ld hl, RocketHideout3ArrowTilePlayerMovement
-	call DecodeArrowMovementRLE
-	cp $ff
+RocketHideoutB3FDefaultScript: ; marcelnote - modified spinners engine
+	callfar CheckStartStopSpinning
+	ld hl, wMovementFlags
+	bit BIT_SPINNING, [hl]
 	jp z, CheckFightingMapTrainers
-	ld hl, wMovementFlags
-	set BIT_SPINNING, [hl]
-	call StartSimulatingJoypadStates
-	ld a, SFX_ARROW_TILES
-	call PlaySound
-	ld a, PAD_BUTTONS | PAD_CTRL_PAD
-	ld [wJoyIgnore], a
-	ld a, SCRIPT_ROCKETHIDEOUTB3F_PLAYER_SPINNING
-	ld [wCurMapScript], a
-	ret
-
-RocketHideout3ArrowTilePlayerMovement:
-	map_coord_movement 10, 13, RocketHideout3ArrowMovement6
-	map_coord_movement 10, 19, RocketHideout3ArrowMovement1
-	map_coord_movement 11, 18, RocketHideout3ArrowMovement2
-	map_coord_movement 12, 11, RocketHideout3ArrowMovement3
-	map_coord_movement 12, 17, RocketHideout3ArrowMovement4
-	map_coord_movement 12, 20, RocketHideout3ArrowMovement5
-	map_coord_movement 13, 16, RocketHideout3ArrowMovement6
-	map_coord_movement 14, 11, RocketHideout3ArrowMovement7
-	map_coord_movement 14, 15, RocketHideout3ArrowMovement6
-	map_coord_movement 14, 17, RocketHideout3ArrowMovement8
-	map_coord_movement 14, 19, RocketHideout3ArrowMovement9
-	map_coord_movement 15, 16, RocketHideout3ArrowMovement7
-	map_coord_movement 15, 18, RocketHideout3ArrowMovement10
-	map_coord_movement 16, 13, RocketHideout3ArrowMovement11
-	map_coord_movement 17, 12, RocketHideout3ArrowMovement10
-	map_coord_movement 18, 16, RocketHideout3ArrowMovement12
-	db -1 ; end
-
-;format: direction, count
-;each list is read starting from the $FF and working backwards
-RocketHideout3ArrowMovement1:
-	db PAD_RIGHT, 4
-	db PAD_UP, 4
-	db PAD_RIGHT, 4
-	db -1 ; end
-
-RocketHideout3ArrowMovement2:
-	db PAD_DOWN, 4
-	db PAD_RIGHT, 4
-	db -1 ; end
-
-RocketHideout3ArrowMovement3:
-	db PAD_LEFT, 2
-	db -1 ; end
-
-RocketHideout3ArrowMovement4:
-	db PAD_RIGHT, 4
-	db PAD_UP, 2
-	db PAD_RIGHT, 2
-	db -1 ; end
-
-RocketHideout3ArrowMovement5:
-	db PAD_RIGHT, 4
-	db PAD_UP, 2
-	db PAD_RIGHT, 2
-	db PAD_UP, 3
-	db -1 ; end
-
-RocketHideout3ArrowMovement6:
-	db PAD_RIGHT, 4
-	db -1 ; end
-
-RocketHideout3ArrowMovement7:
-	db PAD_RIGHT, 2
-	db -1 ; end
-
-RocketHideout3ArrowMovement8:
-	db PAD_RIGHT, 4
-	db PAD_UP, 2
-	db -1 ; end
-
-RocketHideout3ArrowMovement9:
-	db PAD_RIGHT, 4
-	db PAD_UP, 4
-	db -1 ; end
-
-RocketHideout3ArrowMovement10:
-	db PAD_DOWN, 4
-	db -1 ; end
-
-RocketHideout3ArrowMovement11:
-	db PAD_UP, 2
-	db -1 ; end
-
-RocketHideout3ArrowMovement12:
-	db PAD_UP, 1
-	db -1 ; end
-
-RocketHideoutB3FPlayerSpinningScript:
-	ld a, [wSimulatedJoypadStatesIndex]
-	and a
-	jp nz, LoadSpinnerArrowTiles
-	xor a
-	ld [wJoyIgnore], a
-	ld hl, wMovementFlags
-	res BIT_SPINNING, [hl]
-	ld a, SCRIPT_ROCKETHIDEOUTB3F_DEFAULT
-	ld [wCurMapScript], a
-	ret
+	jpfar LoadSpinnerArrowTiles
 
 RocketHideoutB3F_TextPointers:
 	def_text_pointers

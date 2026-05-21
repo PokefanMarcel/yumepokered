@@ -160,6 +160,12 @@ DEF NUM_BADGES EQU const_value
 	const BIT_LEDGE_OR_FISHING ; 6
 	const BIT_SPINNING         ; 7
 
+; wSpinnerArrowAnimFlags ; marcelnote - modified spinners engine
+	const_def
+	const BIT_SPINNER_ARROW_NEW   ; 0 ; copy animated arrows immediately
+	const BIT_SPINNER_ARROW_TICK  ; 1 ; wait one tile before flipping arrows
+	const BIT_SPINNER_ARROW_PHASE ; 2 ; current arrow graphics phase
+
 ; wWalkBikeSurfState
 	const_def
 	const WALKING              ; 0

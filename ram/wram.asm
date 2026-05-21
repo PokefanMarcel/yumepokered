@@ -1184,6 +1184,11 @@ wPlayerHPBarColor:: db
 NEXTU
 ; species of the mon whose palette is used for the whole screen
 wWholeScreenPaletteMonSpecies:: db
+
+NEXTU
+; marcelnote - modified spinners engine
+; Spinners only run in the overworld, so this can share palette scratch space.
+wSpinnerArrowAnimFlags:: db
 ENDU
 
 wEnemyHPBarColor:: db
