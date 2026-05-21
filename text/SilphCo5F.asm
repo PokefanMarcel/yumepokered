@@ -102,6 +102,6 @@ _SilphCo5FPokemonReport3Text::
 	line "REPORT!"
 
 	para "4 #MON evolve"
-	line "only when traded"
+	line "when traded" ; marcelnote - was "only when traded"
 	cont "by link-cable."
 	done

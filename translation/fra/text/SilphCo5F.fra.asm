@@ -150,8 +150,13 @@ _SilphCo5FPokemonReport3Text::
 	text "C'est un RAPPORT"
 	line "sur les #MON!"
 
-	para "4 #MON"
-	line "n'évoluent que"
-	cont "s'ils sont"
-	cont "échangés!"
+;	para "4 #MON"
+;	line "n'évoluent que"
+;	cont "s'ils sont"
+;	cont "échangés!"
+;	done
+
+	para "4 #MON" ; marcelnote - modified dialogue
+	line "évoluent s'ils"
+	cont "sont échangés!"
 	done

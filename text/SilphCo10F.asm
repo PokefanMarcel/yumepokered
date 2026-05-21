@@ -1,6 +1,6 @@
 _SilphCo10FSilphWorkerFImScaredText::
 	text "Waaaaa!"
-	cont "I'm scared!"
+	line "I'm scared!" ; marcelnote - was cont, fixed in pokeyellow
 	done
 
 _SilphCo10FSilphWorkerFQuietAboutMyCryingText::
