@@ -1920,6 +1920,7 @@ FishingInit:
 	scf ; can't fish during battle
 	ret
 .notInBattle
+	predef GetTileAndCoordsInFrontOfPlayer ; marcelnote - use items with Select
 	call IsNextTileShoreOrWater
 	ret c
 	ld a, [wWalkBikeSurfState]
