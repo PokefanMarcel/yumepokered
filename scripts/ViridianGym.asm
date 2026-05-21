@@ -1,7 +1,8 @@
 ViridianGym_Script:
-	ld hl, .CityName
-	ld de, .LeaderName
-	call LoadGymLeaderAndCityName
+	ld hl, wCurrentMapScriptFlags
+	bit BIT_CUR_MAP_LOADED_2, [hl]
+	res BIT_CUR_MAP_LOADED_2, [hl]
+	call nz, .LoadNames
 	call EnableAutoTextBoxDrawing
 	ld hl, ViridianGymTrainerHeaders
 	ld de, ViridianGym_ScriptPointers
@@ -9,6 +10,11 @@ ViridianGym_Script:
 	call ExecuteCurMapScriptInTable
 	ld [wViridianGymCurScript], a
 	ret
+
+.LoadNames:
+	ld hl, .CityName
+	ld de, .LeaderName
+	jp LoadGymLeaderAndCityName
 
 IF DEF(_FRA)
 .CityName:
@@ -67,17 +73,12 @@ ViridianGymReceiveTM27: ; marcelnote - optimized
 	call DisplayTextID
 	ld hl, wObtainedBadges
 	set BIT_EARTHBADGE, [hl]
-	;ld hl, wBeatGymFlags     ; marcelnote - removed redundant wBeatGymFlags
-	;set BIT_EARTHBADGE, [hl]
-
-	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_VIRIDIAN_GYM_TRAINER_0, EVENT_BEAT_VIRIDIAN_GYM_TRAINER_7
-
 	ld a, TOGGLE_ROUTE_22_RIVAL_2
 	ld [wToggleableObjectIndex], a
 	predef ShowObject
 	SetEvents EVENT_2ND_ROUTE22_RIVAL_BATTLE, EVENT_ROUTE22_RIVAL_WANTS_BATTLE
-	jp ViridianGymResetScripts
+	jr ViridianGymResetScripts
 
 ViridianGym_TextPointers:
 	def_text_pointers
