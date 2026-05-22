@@ -1,80 +1,55 @@
-AnimCut:
+AnimCut: ; marcelnote - modified cut/boulder dust animation
+; This animation always owns OAM entries 36-39, so move those entries directly
+; instead of going through the generic battle-animation OAM adjustment helpers.
 	ld a, [wCutTile]
 	cp $52
 	jr z, .grass
-	ld c, $8
+	ld b, $8
+	ld de, OBJ_SIZE
 .cutTreeLoop
-	push bc
+	; Move the upper row right and the lower row left.
 	ld hl, wShadowOAMSprite36XCoord
-	ld a, 1
-	ld [wCoordAdjustmentAmount], a
-	ld c, 2
-	call AdjustOAMBlockXPos2
+	inc [hl]
+	add hl, de
+	inc [hl]
 	ld hl, wShadowOAMSprite38XCoord
-	ld a, -1
-	ld [wCoordAdjustmentAmount], a
-	ld c, 2
-	call AdjustOAMBlockXPos2
+	dec [hl]
+	add hl, de
+	dec [hl]
 	ldh a, [rOBP1]
 	xor $64
 	ldh [rOBP1], a
 	call DelayFrame
-	pop bc
-	dec c
+	dec b
 	jr nz, .cutTreeLoop
 	ret
 .grass
-	ld c, 2
+	ld b, 2 ; two spread/drop cycles
 .cutGrassLoop
 	push bc
-	ld c, $8
-	call AnimCutGrass_UpdateOAMEntries
-	call AnimCutGrass_SwapOAMEntries
-	ld c, $8
-	call AnimCutGrass_UpdateOAMEntries
-	call AnimCutGrass_SwapOAMEntries
-	ld hl, wShadowOAMSprite36YCoord
-	ld a, 2
-	ld [wCoordAdjustmentAmount], a
-	ld c, 4
-	call AdjustOAMBlockYPos2
-	pop bc
-	dec c
-	jr nz, .cutGrassLoop
-	ret
-
-AnimCutGrass_UpdateOAMEntries:
-	push bc
+	ld b, 2 ; spread, swap, spread back
+.cutGrassPhaseLoop
+	ld c, 8
+.cutGrassSpreadLoop
+	; Spread the four leaf sprites outward horizontally.
 	ld hl, wShadowOAMSprite36XCoord
-	ld a, 1
-	ld [wCoordAdjustmentAmount], a
-	ld c, 1
-	call AdjustOAMBlockXPos2
+	inc [hl]
 	ld hl, wShadowOAMSprite37XCoord
-	ld a, 2
-	ld [wCoordAdjustmentAmount], a
-	ld c, 1
-	call AdjustOAMBlockXPos2
+	inc [hl]
+	inc [hl]
 	ld hl, wShadowOAMSprite38XCoord
-	ld a, -2
-	ld [wCoordAdjustmentAmount], a
-	ld c, 1
-	call AdjustOAMBlockXPos2
+	dec [hl]
+	dec [hl]
 	ld hl, wShadowOAMSprite39XCoord
-	ld a, -1
-	ld [wCoordAdjustmentAmount], a
-	ld c, 1
-	call AdjustOAMBlockXPos2
+	dec [hl]
 	ldh a, [rOBP1]
 	xor $64
 	ldh [rOBP1], a
 	call DelayFrame
-	pop bc
 	dec c
-	jr nz, AnimCutGrass_UpdateOAMEntries
-	ret
-
-AnimCutGrass_SwapOAMEntries:
+	jr nz, .cutGrassSpreadLoop
+	; Swap left/right pairs so the same four sprites fold back inward next phase.
+	push bc
 	ld hl, wShadowOAMSprite36
 	ld de, wBuffer
 	ld bc, 2 * OBJ_SIZE
@@ -86,4 +61,21 @@ AnimCutGrass_SwapOAMEntries:
 	ld hl, wBuffer
 	ld de, wShadowOAMSprite38
 	ld bc, 2 * OBJ_SIZE
-	jp CopyData
+	call CopyData
+	pop bc
+	dec b
+	jr nz, .cutGrassPhaseLoop
+	ld de, OBJ_SIZE
+	ld hl, wShadowOAMSprite36YCoord
+	ld c, 4
+.moveGrassDownLoop
+	; Drop the puff before the second spread cycle.
+	inc [hl]
+	inc [hl]
+	add hl, de
+	dec c
+	jr nz, .moveGrassDownLoop
+	pop bc
+	dec b
+	jr nz, .cutGrassLoop
+	ret

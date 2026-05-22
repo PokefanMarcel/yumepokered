@@ -1320,52 +1320,53 @@ BattleAnimWriteOAMEntryColumnMajor: ; marcelnote - renamed
 	ld [hli], a
 	ret
 
-AdjustOAMBlockXPos:
-	ld l, e
-	ld h, d
+; marcelnote - these functions were used by the cut/boulder dust animations
+;AdjustOAMBlockXPos:
+;	ld l, e
+;	ld h, d
 
-AdjustOAMBlockXPos2:
-	ld de, OBJ_SIZE
-.loop
-	ld a, [wCoordAdjustmentAmount]
-	ld b, a
-	ld a, [hl]
-	add b
-	cp 168
-	jr c, .skipPuttingEntryOffScreen
-; put off-screen if X >= 168
-	dec hl
-	ld a, SCREEN_HEIGHT_PX + OAM_Y_OFS
-	ld [hli], a
-.skipPuttingEntryOffScreen
-	ld [hl], a
-	add hl, de
-	dec c
-	jr nz, .loop
-	ret
+;AdjustOAMBlockXPos2:
+;	ld de, OBJ_SIZE
+;.loop
+;	ld a, [wCoordAdjustmentAmount]
+;	ld b, a
+;	ld a, [hl]
+;	add b
+;	cp 168
+;	jr c, .skipPuttingEntryOffScreen
+;; put off-screen if X >= 168
+;	dec hl
+;	ld a, SCREEN_HEIGHT_PX + OAM_Y_OFS
+;	ld [hli], a
+;.skipPuttingEntryOffScreen
+;	ld [hl], a
+;	add hl, de
+;	dec c
+;	jr nz, .loop
+;	ret
 
-AdjustOAMBlockYPos:
-	ld l, e
-	ld h, d
+;AdjustOAMBlockYPos:
+;	ld l, e
+;	ld h, d
 
-AdjustOAMBlockYPos2:
-	ld de, OBJ_SIZE
-.loop
-	ld a, [wCoordAdjustmentAmount]
-	ld b, a
-	ld a, [hl]
-	add b
-	cp 112
-	jr c, .skipSettingPreviousEntrysAttribute
-	;dec hl ; marcelnote - fixes that bug (pokered Wiki)
-	ld a, 160 ; bug, sets previous OAM entry's attribute
-	;ld [hli], a ; marcelnote - fixes that bug (pokered Wiki)
-.skipSettingPreviousEntrysAttribute
-	ld [hl], a
-	add hl, de
-	dec c
-	jr nz, .loop
-	ret
+;AdjustOAMBlockYPos2:
+;	ld de, OBJ_SIZE
+;.loop
+;	ld a, [wCoordAdjustmentAmount]
+;	ld b, a
+;	ld a, [hl]
+;	add b
+;	cp 112
+;	jr c, .skipSettingPreviousEntrysAttribute
+;	;dec hl ; marcelnote - fixes that bug (pokered Wiki)
+;	ld a, 160 ; bug, sets previous OAM entry's attribute
+;	;ld [hli], a ; marcelnote - fixes that bug (pokered Wiki)
+;.skipSettingPreviousEntrysAttribute
+;	ld [hl], a
+;	add hl, de
+;	dec c
+;	jr nz, .loop
+;	ret
 
 AnimationBlinkEnemyMon:
 ; Make the enemy mon's sprite blink on and off for a second or two

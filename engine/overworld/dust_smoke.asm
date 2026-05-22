@@ -1,5 +1,6 @@
-AnimateBoulderDust:
-	ld a, $1
+AnimateBoulderDust: ; marcelnote - modified cut/boulder dust animation
+; Must stay in the same bank as cut.asm.
+	ld a, 1
 	ld [wWhichAnimationOffsets], a ; select the boulder dust offsets
 	ld a, [wUpdateSpritesEnabled]
 	push af
@@ -7,77 +8,65 @@ AnimateBoulderDust:
 	ld [wUpdateSpritesEnabled], a
 	ld a, %11100100
 	ldh [rOBP1], a
-	call LoadSmokeTileFourTimes
-	callfar WriteCutOrBoulderDustAnimationOAMBlock
-	ld c, 8 ; number of steps in animation
-.loop
-	push bc
-	call GetMoveBoulderDustFunctionPointer
-	ld bc, .returnAddress
-	push bc
+	call LoadSmokeTile
+	call GetCutOrBoulderDustAnimationOffsets
+	ld a, $9
+	ld de, GrassOrBoulderDustOAMBlock
+	call WriteOAMBlock
+	; Pick the coordinate byte to move and whether the dust drifts positive or
+	; negative on that axis.
+	ld b, 8 ; number of steps in animation
+	ld a, [wSpritePlayerStateData1FacingDirection]
+	and a ; SPRITE_FACING_DOWN?
+	ld hl, wShadowOAMSprite36YCoord
+	ld de, OBJ_SIZE
+	jr z, .moveDustNegativeLoop
+	cp SPRITE_FACING_UP
+	jr z, .moveDustPositiveLoop
+	ld hl, wShadowOAMSprite36XCoord
+	cp SPRITE_FACING_LEFT
+	jr z, .moveDustPositiveLoop
+.moveDustNegativeLoop
+	push hl
 	ld c, 4
-	jp hl
-.returnAddress
+.moveDustNegativeOAMLoop
+	; Move all four dust sprites one pixel up/left.
+	dec [hl]
+	add hl, de
+	dec c
+	jr nz, .moveDustNegativeOAMLoop
 	ldh a, [rOBP1]
 	xor %01100100
 	ldh [rOBP1], a
 	call Delay3
-	pop bc
+	pop hl
+	dec b
+	jr nz, .moveDustNegativeLoop
+	jr .done
+.moveDustPositiveLoop
+	push hl
+	ld c, 4
+.moveDustPositiveOAMLoop
+	; Move all four dust sprites one pixel down/right.
+	inc [hl]
+	add hl, de
 	dec c
-	jr nz, .loop
+	jr nz, .moveDustPositiveOAMLoop
+	ldh a, [rOBP1]
+	xor %01100100
+	ldh [rOBP1], a
+	call Delay3
+	pop hl
+	dec b
+	jr nz, .moveDustPositiveLoop
+.done
 	pop af
 	ld [wUpdateSpritesEnabled], a
 	jp LoadPlayerSpriteGraphics
 
-GetMoveBoulderDustFunctionPointer:
-	ld a, [wSpritePlayerStateData1FacingDirection]
-	ld hl, MoveBoulderDustFunctionPointerTable
-	ld c, a
-	ld b, $0
-	add hl, bc
-	ld a, [hli]
-	ld [wCoordAdjustmentAmount], a
-	ld a, [hli]
-	ld e, a
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	push hl
-	ld hl, wShadowOAMSprite36
-	ld d, $0
-	add hl, de
-	ld e, l
-	ld d, h
-	pop hl
-	ret
-
-MACRO boulder_dust_adjust
-	db \1, \2 ; coords
-	dw \3 ; function
-ENDM
-
-MoveBoulderDustFunctionPointerTable:
-	boulder_dust_adjust -1, 0, AdjustOAMBlockYPos ; down
-	boulder_dust_adjust  1, 0, AdjustOAMBlockYPos ; up
-	boulder_dust_adjust  1, 1, AdjustOAMBlockXPos ; left
-	boulder_dust_adjust -1, 1, AdjustOAMBlockXPos ; right
-
-LoadSmokeTileFourTimes::
+LoadSmokeTile::
+; Load the single smoke/dust tile used by all four OAM entries.
 	ld hl, vChars1 tile $7c
-	ld c, 4
-.loop
-	push bc
-	push hl
-	call LoadSmokeTile
-	pop hl
-	ld bc, TILE_SIZE
-	add hl, bc
-	pop bc
-	dec c
-	jr nz, .loop
-	ret
-
-LoadSmokeTile:
 	ld de, SSAnneSmokePuffTile
 	lb bc, BANK(SSAnneSmokePuffTile), (SSAnneSmokePuffTileEnd - SSAnneSmokePuffTile) / TILE_SIZE
 	jp CopyVideoData

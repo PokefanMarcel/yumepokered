@@ -65,7 +65,10 @@ UsedCut:
 	call UpdateSprites
 	jp RedrawMapView
 
-InitCutAnimOAM:
+InitCutAnimOAM: ; marcelnote - modified cut/boulder dust animation
+; Load the tiles used by the 2x2 cut animation, then write four OAM entries.
+; Tree uses four distinct quadrants. Grass uses the same leaf tile four times,
+; with flips applied below to make the 2x2 puff.
 	xor a
 	ld [wWhichAnimationOffsets], a
 	ld a, %11100100
@@ -74,6 +77,7 @@ InitCutAnimOAM:
 	cp $52
 	jr z, .grass
 ; tree
+	; Tree quadrants are distinct, so keep both rows.
 	ld de, Overworld_GFX tile $2d ; cuttable tree sprite top row
 	ld hl, vChars1 tile $7c
 	lb bc, BANK(Overworld_GFX), 2
@@ -82,17 +86,20 @@ InitCutAnimOAM:
 	ld hl, vChars1 tile $7e
 	lb bc, BANK(Overworld_GFX), 2
 	call CopyVideoData
-	jr WriteCutOrBoulderDustAnimationOAMBlock
+	call GetCutOrBoulderDustAnimationOffsets
+	ld a, $9
+	ld de, CutTreeOAMBlock
+	jp WriteOAMBlock
 .grass
+	; One leaf tile is enough; the four OAM entries flip it into a 2x2 puff.
+	ld de, MoveAnimationTiles1 tile $6 ; leaf tile
 	ld hl, vChars1 tile $7c
-	call LoadCutGrassAnimationTilePattern
-	ld hl, vChars1 tile $7d
-	call LoadCutGrassAnimationTilePattern
-	ld hl, vChars1 tile $7e
-	call LoadCutGrassAnimationTilePattern
-	ld hl, vChars1 tile $7f
-	call LoadCutGrassAnimationTilePattern
-	call WriteCutOrBoulderDustAnimationOAMBlock
+	lb bc, BANK(MoveAnimationTiles1), 1
+	call CopyVideoData
+	call GetCutOrBoulderDustAnimationOffsets
+	ld a, $9
+	ld de, GrassOrBoulderDustOAMBlock
+	call WriteOAMBlock
 	ld hl, wShadowOAMSprite36Attributes
 	ld de, OBJ_SIZE
 	ld a, OAM_XFLIP | OAM_PAL1
@@ -105,25 +112,21 @@ InitCutAnimOAM:
 	jr nz, .loop
 	ret
 
-LoadCutGrassAnimationTilePattern:
-	ld de, MoveAnimationTiles1 tile 6 ; tile depicting a leaf
-	lb bc, BANK(MoveAnimationTiles1), 1
-	jp CopyVideoData
-
-WriteCutOrBoulderDustAnimationOAMBlock:
-	call GetCutOrBoulderDustAnimationOffsets
-	ld a, $9
-	ld de, .OAMBlock
-	jp WriteOAMBlock
-
-.OAMBlock:
-; tile ID, attributes
+CutTreeOAMBlock:
 	db $fc, OAM_PAL1
 	db $fd, OAM_PAL1
 	db $fe, OAM_PAL1
 	db $ff, OAM_PAL1
 
+GrassOrBoulderDustOAMBlock:
+	db $fc, OAM_PAL1
+	db $fc, OAM_PAL1
+	db $fc, OAM_PAL1
+	db $fc, OAM_PAL1
+
 GetCutOrBoulderDustAnimationOffsets:
+; Return the animation origin in bc, relative to the player's sprite position.
+; wWhichAnimationOffsets selects cut tree/grass offsets or boulder dust offsets.
 	ld hl, wSpritePlayerStateData1YPixels
 	ld a, [hli] ; player's sprite screen Y position
 	ld b, a
@@ -152,15 +155,14 @@ GetCutOrBoulderDustAnimationOffsets:
 	ret
 
 CutAnimationOffsets:
-; Each pair represents the x and y pixels offsets from the player of where the cut tree animation should be drawn
+; x, y offsets from the player for the cut tree/grass animation.
 	db  8, 36 ; player is facing down
 	db  8,  4 ; player is facing up
 	db -8, 20 ; player is facing left
 	db 24, 20 ; player is facing right
 
 BoulderDustAnimationOffsets:
-; Each pair represents the x and y pixels offsets from the player of where the cut tree animation should be drawn
-; These offsets represent 2 blocks away from the player
+; x, y offsets from the player for boulder dust, two blocks ahead.
 	db   8,  52 ; player is facing down
 	db   8, -12 ; player is facing up
 	db -24,  20 ; player is facing left

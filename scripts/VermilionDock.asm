@@ -59,7 +59,7 @@ VermilionDockSSAnneLeavesScript:
 	ld c, 0 ; BANK(Music_Surfing)
 	ld a, MUSIC_SURFING
 	call PlayMusic
-	callfar LoadSmokeTileFourTimes
+	callfar LoadSmokeTile ; marcelnote - modified cut/boulder dust animation
 	xor a
 	ld [wSpritePlayerStateData1ImageIndex], a
 	ld c, 120
@@ -166,12 +166,11 @@ VermilionDock_EmitSmokePuff:
 	ld de, VermilionDockOAMBlock
 	jp WriteOAMBlock
 
-VermilionDockOAMBlock:
-; tile ID, attributes
+VermilionDockOAMBlock: ; marcelnote - modified cut/boulder dust animation
 	db $fc, OAM_PAL1
-	db $fd, OAM_PAL1
-	db $fe, OAM_PAL1
-	db $ff, OAM_PAL1
+	db $fc, OAM_PAL1
+	db $fc, OAM_PAL1
+	db $fc, OAM_PAL1
 
 VermilionDock_SyncScrollWithLY:
 	ld h, d

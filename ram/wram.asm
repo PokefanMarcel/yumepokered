@@ -1542,8 +1542,7 @@ wNumShootingBalls::
 wTradedMonMovingRight::
 wOptionsInitialized::
 wNewSlotMachineBallTile::
-; how much to add to the X/Y coord
-wCoordAdjustmentAmount::
+;wCoordAdjustmentAmount:: ; marcelnote - modified cut/boulder dust animation
 ;wUnusedWaterDropletsByte:: ; marcelnote - removed
 	db
 
