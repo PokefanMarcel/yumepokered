@@ -9,7 +9,7 @@ CheckForSurf:: ; marcelnote - could be improved if there is a wram bit which che
 	cp SURFING
 	ret z
 ; we are not already surfing
-	callfar IsNextTileShoreOrWater
+	call IsNextTileShoreOrWater
 	ret c
 ; we have water in front of us
 	call IsSurfingAllowedOverworld
@@ -40,7 +40,7 @@ CheckForSurf:: ; marcelnote - could be improved if there is a wram bit which che
 	and a ; if answered NO
 	ret nz
 	call LoadSurfingPlayerSpriteGraphics
-	callfar ItemUseSurfboard.makePlayerMoveForward
+	call ItemUseSurfboard.makePlayerMoveForward
 	ld hl, wStatusFlags5
 	set BIT_SCRIPTED_MOVEMENT_STATE, [hl]
 	ld a, SURFING
