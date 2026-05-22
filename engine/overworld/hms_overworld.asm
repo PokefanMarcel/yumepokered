@@ -90,10 +90,10 @@ CheckForCut::
 ; actual cutting stuff
 	ld a, $ff
 	ld [wUpdateSpritesEnabled], a
-	callfar InitCutAnimOAM
-	callfar ReplaceTreeTileBlock
-	callfar RedrawMapView
-	callfar AnimCut
+	call InitCutAnimOAM
+	call ReplaceTreeTileBlock
+	call RedrawMapView
+	call AnimCut
 	ld a, 1
 	ld [wUpdateSpritesEnabled], a
 	ld a, SFX_CUT
