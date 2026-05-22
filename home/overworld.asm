@@ -309,29 +309,35 @@ OverworldLoopLessDelay::
 	ld a, [wWalkBikeSurfState]
 	dec a ; BIKING?
 	jr z, .speedUp
+	dec a ; SURFING?
+	jr z, .checkSurfSpeed
+; walking
+	ld hl, wStatusFlags6
+	ld a, [wWalkCounter]
+	cp $08
+	jr nz, .checkWalkingSpeed
+; Only switch walking/running graphics at the start of a step. BIT_RUNNING means
+; that running graphics are loaded and this whole step should be fast.
 	ldh a, [hJoyHeld]
 	and PAD_B
-	jr nz, .checkIfWalking
-	; marcelnote - running sprites
-	; if reached here then player is not running, so check if we need to update sprites
-	ld a, [wWalkBikeSurfState]
-	and a ; WALKING?
-	jr nz, .normalPlayerSpriteAdvancement ; if not walking, no need to update sprites
-	ld hl, wStatusFlags6
+	jr nz, .startOrContinueRunning
 	bit BIT_RUNNING, [hl]
-	jr z, .normalPlayerSpriteAdvancement ; if wasn't running, no need to update sprites
-	res BIT_RUNNING, [hl]
+	jr z, .normalPlayerSpriteAdvancement
 	call LoadWalkingPlayerSpriteGraphics
 	jr .normalPlayerSpriteAdvancement
-.checkIfWalking
-	ld a, [wWalkBikeSurfState]
-	and a ; WALKING?
-	jr nz, .speedUp ; if not walking, no need to update sprites
-	ld hl, wStatusFlags6
+.startOrContinueRunning
 	bit BIT_RUNNING, [hl]
-	jr nz, .speedUp ; if already running, no need to update sprites
-	set BIT_RUNNING, [hl]
+	jr nz, .speedUp
 	call LoadRunningPlayerSpriteGraphics
+	jr .speedUp
+.checkWalkingSpeed
+	bit BIT_RUNNING, [hl]
+	jr nz, .speedUp
+	jr .normalPlayerSpriteAdvancement
+.checkSurfSpeed
+	ldh a, [hJoyHeld]
+	and PAD_B
+	jr z, .normalPlayerSpriteAdvancement
 .speedUp
 	call DoBikeSpeedup
 .normalPlayerSpriteAdvancement
@@ -855,7 +861,6 @@ SwitchRunningToWalkingSprites: ; marcelnote - running sprites
 	ld hl, wStatusFlags6
 	bit BIT_RUNNING, [hl]
 	ret z ; if wasn't running, do nothing
-	res BIT_RUNNING, [hl]
 	jp LoadWalkingPlayerSpriteGraphics
 
 IsBikingAllowed:: ; marcelnote - simplified
@@ -2012,6 +2017,8 @@ RunMapScript::
 	jpfar RedrawMapView
 
 LoadWalkingPlayerSpriteGraphics::
+	ld hl, wStatusFlags6
+	res BIT_RUNNING, [hl]
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
 	ld a, [wStatusFlags4]
 	bit BIT_IS_GIRL, a
@@ -2024,6 +2031,8 @@ LoadWalkingPlayerSpriteGraphics::
 	jr LoadPlayerSpriteGraphicsCommon
 
 LoadRunningPlayerSpriteGraphics:: ; marcelnote - running sprites
+	ld hl, wStatusFlags6
+	set BIT_RUNNING, [hl]
 	ld a, [wStatusFlags4]
 	bit BIT_IS_GIRL, a
 	ld de, RedRunSprite
@@ -2033,28 +2042,27 @@ LoadRunningPlayerSpriteGraphics:: ; marcelnote - running sprites
 	ld hl, vNPCSprites
 	jr LoadPlayerSpriteGraphicsCommon
 
-LoadSurfingPlayerSpriteGraphics:: ; marcelnote - new surfing sprites
-	;ld de, SeelSprite
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
+LoadSurfingPlayerSpriteGraphics:: ; marcelnote - add female player, running sprites, and new surfing sprites
+	ld hl, wStatusFlags6
+	res BIT_RUNNING, [hl]
 	ld a, [wStatusFlags4]
 	bit BIT_IS_GIRL, a
 	ld de, RedSurfSprite
 	jr z, .gotSprite
 	ld de, GreenSurfSprite
 .gotSprite
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld hl, vNPCSprites
 	jr LoadPlayerSpriteGraphicsCommon
 
-LoadBikePlayerSpriteGraphics::
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
+LoadBikePlayerSpriteGraphics:: ; marcelnote - add female player and running sprites
+	ld hl, wStatusFlags6
+	res BIT_RUNNING, [hl]
 	ld a, [wStatusFlags4]
 	bit BIT_IS_GIRL, a
 	ld de, RedBikeSprite
 	jr z, .gotBikeSprite
 	ld de, GreenBikeSprite
 .gotBikeSprite
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld hl, vNPCSprites
 
 LoadPlayerSpriteGraphicsCommon::
