@@ -302,12 +302,12 @@ OverworldLoopLessDelay::
 	ld hl, wMiscFlags
 	res BIT_TURNING, [hl]
 	ld a, [wMovementFlags]
-    bit BIT_LEDGE_OR_FISHING, a ; jumping a ledge?
-    jr nz, .normalPlayerSpriteAdvancement
+	bit BIT_LEDGE_OR_FISHING, a ; jumping a ledge?
+	jr nz, .normalPlayerSpriteAdvancement
 	bit BIT_SPINNING, a ; spinning?
-    jr nz, .speedUp
+	jr nz, .speedUp
 	ld a, [wWalkBikeSurfState]
-	dec a ; BIKING ?
+	dec a ; BIKING?
 	jr z, .speedUp
 	ldh a, [hJoyHeld]
 	and PAD_B
