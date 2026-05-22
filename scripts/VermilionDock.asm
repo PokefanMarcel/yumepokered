@@ -89,8 +89,7 @@ VermilionDockSSAnneLeavesScript:
 	call PlaySoundWaitForCurrent
 	ld a, $ff
 	ld [wUpdateSpritesEnabled], a
-	ld d, $0
-	ld e, $8
+	lb de, $0, $8
 .shiftColumnsUp
 	ld hl, $2
 	add hl, bc
@@ -123,12 +122,12 @@ VermilionDockSSAnneLeavesScript:
 	call VermilionDock_EraseSSAnne
 	ld a, $90
 	ldh [hWY], a
-	ld a, $1
+	ld a, 1
 	ld [wUpdateSpritesEnabled], a
 	pop hl
 	pop bc
-	ld [hl], b
-	dec hl
+	ld a, b
+	ld [hld], a
 	ld [hl], c
 	call LoadPlayerSpriteGraphics
 	ld hl, wNumberOfWarps
@@ -178,8 +177,7 @@ VermilionDock_SyncScrollWithLY:
 	ld h, d
 	ld l, $50
 	call .syncScrollLY
-	ld h, $0
-	ld l, $80
+	lb hl, $0, $80
 .syncScrollLY
 	ldh a, [rLY]
 	cp l
@@ -268,12 +266,12 @@ VermilionDockSailorText:
 	jr nz, .printText
 	ld hl, .AreYouReadyText
 	call PrintText
-	ld a, $01
+	ld a, 1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .no
+	jr nz, .saidNo
 	ld a, MANDARIN_DOCK
 	ld [wLastMap], a
 	ld a, SCRIPT_VERMILIONDOCK_ALL_ABOARD
@@ -281,7 +279,7 @@ VermilionDockSailorText:
 	ld hl, .AllAboardText
 .printText
 	call PrintText
-.no
+.saidNo
 	rst TextScriptEnd
 
 .CantSurfHereText:
