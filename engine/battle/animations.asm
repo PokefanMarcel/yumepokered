@@ -1940,30 +1940,30 @@ AnimationSubstitute:
 	and a
 	jr z, .playerTurn
 	ld hl, MonsterSprite tile 0 ; facing down sprite
-	ld de, wTempPic + (7 * 4 + 2) tiles
+	ld de, wTempPic + (PIC_WIDTH * 4 + 2) tiles ; x = 2, y = 4
 	call CopyMonsterSpriteData
 	ld hl, MonsterSprite tile 1
-	ld de, wTempPic + (7 * 4 + 3) tiles
+	ld de, wTempPic + (PIC_WIDTH * 4 + 3) tiles ; x = 3, y = 4
 	call CopyMonsterSpriteData
 	ld hl, MonsterSprite tile 2
-	ld de, wTempPic + (7 * 5 + 2) tiles
+	ld de, wTempPic + (PIC_WIDTH * 5 + 2) tiles ; x = 2, y = 5
 	call CopyMonsterSpriteData
 	ld hl, MonsterSprite tile 3
-	ld de, wTempPic + (7 * 5 + 3) tiles
+	ld de, wTempPic + (PIC_WIDTH * 5 + 3) tiles ; x = 3, y = 5
 	call CopyMonsterSpriteData
 	jr .next
 .playerTurn
 	ld hl, MonsterSprite tile 4 ; facing up sprite
-	ld de, wTempPic + (7 * 4 + 3) tiles
+	ld de, wTempPic + (PIC_WIDTH * 4 + 3) tiles ; x = 3, y = 4
 	call CopyMonsterSpriteData
 	ld hl, MonsterSprite tile 5
-	ld de, wTempPic + (7 * 4 + 4) tiles
+	ld de, wTempPic + (PIC_WIDTH * 4 + 4) tiles ; x = 4, y = 4
 	call CopyMonsterSpriteData
 	ld hl, MonsterSprite tile 6
-	ld de, wTempPic + (7 * 5 + 3) tiles
+	ld de, wTempPic + (PIC_WIDTH * 5 + 3) tiles ; x = 3, y = 5
 	call CopyMonsterSpriteData
 	ld hl, MonsterSprite tile 7
-	ld de, wTempPic + (7 * 5 + 4) tiles
+	ld de, wTempPic + (PIC_WIDTH * 5 + 4) tiles ; x = 4, y = 5
 	call CopyMonsterSpriteData
 .next
 	call CopyTempPicToMonPic
