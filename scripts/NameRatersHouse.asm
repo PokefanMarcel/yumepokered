@@ -12,7 +12,7 @@ NameRatersHouseCheckMonOTScript:
 ; return carry if mon's OT name or OT ID do not match the player's
 	ld hl, wPartyMonOT
 	ld a, [wWhichPokemon]
-	call SkipFixedLengthTextEntries
+	call SkipNameEntries
 	ld de, wPlayerName
 	ld c, NAME_LENGTH
 	call .checkMatchLoop

@@ -429,7 +429,7 @@ GetPartyMonName2::
 GetPartyMonName::
 	push hl
 	push bc
-	call SkipFixedLengthTextEntries ; add NAME_LENGTH to hl, a times
+	call SkipNameEntries ; add NAME_LENGTH to hl, a times
 	ld de, wNameBuffer
 	push de
 	ld bc, NAME_LENGTH

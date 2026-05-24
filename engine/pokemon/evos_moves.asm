@@ -282,7 +282,7 @@ RenameEvolvedMon:
 	jr nz, .compareNamesLoop
 	ld a, [wWhichPokemon]
 	ld hl, wPartyMonNicks
-	call SkipFixedLengthTextEntries
+	call SkipNameEntries
 	push hl
 	call GetName ; stores name in wNameBuffer
 	ld hl, wNameBuffer

@@ -2770,7 +2770,7 @@ SendNewMonToBox:
 
 	ld hl, wBoxMonOT
 	ld a, [wPlayerMonNumber]
-	call SkipFixedLengthTextEntries
+	call SkipNameEntries
 	ld d, h
 	ld e, l
 	ld hl, wPlayerName
@@ -2779,7 +2779,7 @@ SendNewMonToBox:
 
 	ld hl, wBoxMonNicks
 	ld a, [wPlayerMonNumber]
-	call SkipFixedLengthTextEntries
+	call SkipNameEntries
 	push hl ; save hl = wBoxMon<n>Nick
 	ld a, NAME_MON_SCREEN
 	ld [wNamingScreenType], a

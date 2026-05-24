@@ -311,7 +311,7 @@ IsMoveInParty::
 	ld a, e
     ld hl, wPartyMon1Nick
     push af
-    call SkipFixedLengthTextEntries ; brings hl to the address wPartyMon{1+a}Nick
+    call SkipNameEntries ; brings hl to the address wPartyMon{1+a}Nick
     ld de, wNameBuffer
     call CopyData ; copy bc bytes from hl to de
     pop af

@@ -43,7 +43,7 @@ _RemovePokemon::
 
 	; shift OT upwards
 	ld hl, wPartyMonOT ; a = [wWhichPokemon] still
-	call SkipFixedLengthTextEntries ; sets bc = NAME_LENGTH
+	call SkipNameEntries ; sets bc = NAME_LENGTH
 	ld d, h
 	ld e, l    ; de = wPartyMon<n>OT
 	add hl, bc ; hl = wPartyMon<n+1>OT
@@ -53,7 +53,7 @@ _RemovePokemon::
 	; shift nicknames upwards
 	ld hl, wPartyMonNicks
 	ld a, [wWhichPokemon]
-	call SkipFixedLengthTextEntries ; sets bc = NAME_LENGTH
+	call SkipNameEntries ; sets bc = NAME_LENGTH
 	ld d, h
 	ld e, l    ; de = wPartyMon<n>Nick
 	add hl, bc ; hl = wPartyMon<n+1>Nick

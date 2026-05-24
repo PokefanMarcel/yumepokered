@@ -755,7 +755,7 @@ TradeCenter_Trade:
 .doTrade
 	ld a, [wTradingWhichPlayerMon]
 	ld hl, wPartyMonOT
-	call SkipFixedLengthTextEntries
+	call SkipNameEntries
 	ld de, wTradedPlayerMonOT
 	ld bc, NAME_LENGTH
 	call CopyData
@@ -771,7 +771,7 @@ TradeCenter_Trade:
 	ld [wTradedPlayerMonOTID + 1], a
 	ld a, [wTradingWhichEnemyMon]
 	ld hl, wEnemyMonOT
-	call SkipFixedLengthTextEntries
+	call SkipNameEntries
 	ld de, wTradedEnemyMonOT
 	ld bc, NAME_LENGTH
 	call CopyData

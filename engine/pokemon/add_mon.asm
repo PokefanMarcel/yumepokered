@@ -34,7 +34,7 @@ _AddPartyMon::
 .next2
 	ldh a, [hNewPartyLength]
 	dec a
-	call SkipFixedLengthTextEntries
+	call SkipNameEntries
 	ld d, h
 	ld e, l
 	ld hl, wPlayerName
@@ -46,7 +46,7 @@ _AddPartyMon::
 	ld hl, wPartyMonNicks
 	ldh a, [hNewPartyLength]
 	dec a
-	call SkipFixedLengthTextEntries
+	call SkipNameEntries
 	ld a, NAME_MON_SCREEN
 	ld [wNamingScreenType], a
 	predef AskName
@@ -303,23 +303,23 @@ _AddEnemyMonToPlayerParty::
 	ld hl, wPartyMonOT
 	ld a, [wPartyCount]
 	dec a
-	call SkipFixedLengthTextEntries
+	call SkipNameEntries
 	ld d, h
 	ld e, l
 	ld hl, wEnemyMonOT
 	ld a, [wWhichPokemon]
-	call SkipFixedLengthTextEntries
+	call SkipNameEntries
 	ld bc, NAME_LENGTH
 	call CopyData    ; write new mon's OT name (from an enemy mon)
 	ld hl, wPartyMonNicks
 	ld a, [wPartyCount]
 	dec a
-	call SkipFixedLengthTextEntries
+	call SkipNameEntries
 	ld d, h
 	ld e, l
 	ld hl, wEnemyMonNicks
 	ld a, [wWhichPokemon]
-	call SkipFixedLengthTextEntries
+	call SkipNameEntries
 	ld bc, NAME_LENGTH
 	call CopyData    ; write new mon's nickname (from an enemy mon)
 	ld a, [wCurPartySpecies]
@@ -369,7 +369,7 @@ _CopyMonDaycare::
 	; Copy OT.
 	ld hl, wPartyMonOT
 	ld a, [wPartyCount] ; old party count
-	call SkipFixedLengthTextEntries ; sets bc = NAME_LENGTH
+	call SkipNameEntries ; sets bc = NAME_LENGTH
 	ld d, h
 	ld e, l ; de = wPartyMon<n>OT
 	ld hl, wDayCareMonOT
@@ -378,7 +378,7 @@ _CopyMonDaycare::
 	; Copy nickname.
 	ld hl, wPartyMonNicks
 	ld a, [wPartyCount] ; old party count
-	call SkipFixedLengthTextEntries ; sets bc = NAME_LENGTH
+	call SkipNameEntries ; sets bc = NAME_LENGTH
 	ld d, h
 	ld e, l ; de = wPartyMon<n>Nick
 	ld hl, wDayCareMonName
@@ -427,13 +427,13 @@ _CopyMonDaycare::
 	; Copy OT.
 	ld hl, wPartyMonOT
 	ld a, [wWhichPokemon]
-	call SkipFixedLengthTextEntries ; sets bc = NAME_LENGTH
+	call SkipNameEntries ; sets bc = NAME_LENGTH
 	ld de, wDayCareMonOT
 	call CopyData
 
 	; Copy nickname.
 	ld hl, wPartyMonNicks
 	ld a, [wWhichPokemon]
-	call SkipFixedLengthTextEntries ; sets bc = NAME_LENGTH
+	call SkipNameEntries ; sets bc = NAME_LENGTH
 	ld de, wDayCareMonName
 	jp CopyData

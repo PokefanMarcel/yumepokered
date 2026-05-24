@@ -617,7 +617,7 @@ DrawBillsPCInfoText:
 
 DrawBillsPCHoveredMonName:
 	ld a, [wWhichPokemon]
-	call SkipFixedLengthTextEntries
+	call SkipNameEntries
 	ld d, h
 	ld e, l
 	hlcoord 5, 10
@@ -698,23 +698,23 @@ DepositBillsPCSelectedPartyMon:
 	; Copy OT name.
 	ld hl, wBoxMonOT
 	ld a, [wPlayerMonNumber]
-	call SkipFixedLengthTextEntries
+	call SkipNameEntries
 	ld d, h
 	ld e, l ; de = wBoxMon<i>OT
 	ld hl, wPartyMonOT
 	ld a, [wWhichPokemon]
-	call SkipFixedLengthTextEntries ; hl = wPartyMon<j>OT
+	call SkipNameEntries ; hl = wPartyMon<j>OT
 	call CopyData
 
 	; Copy nickname.
 	ld hl, wBoxMonNicks
 	ld a, [wPlayerMonNumber]
-	call SkipFixedLengthTextEntries
+	call SkipNameEntries
 	ld d, h
 	ld e, l ; de = wBoxMon<i>Nick
 	ld hl, wPartyMonNicks
 	ld a, [wWhichPokemon]
-	call SkipFixedLengthTextEntries ; hl = wPartyMon<j>Nick
+	call SkipNameEntries ; hl = wPartyMon<j>Nick
 	call CopyData
 
 	; Update box count.
@@ -821,12 +821,12 @@ WithdrawBillsPCSelectedBoxMon:
 	ld hl, wPartyMonOT
 	ld a, [wPartyCount]
 	dec a
-	call SkipFixedLengthTextEntries
+	call SkipNameEntries
 	ld d, h
 	ld e, l
 	ld hl, wBoxMonOT
 	ld a, [wWhichPokemon]
-	call SkipFixedLengthTextEntries
+	call SkipNameEntries
 	ld bc, NAME_LENGTH
 	call CopyData
 
@@ -834,12 +834,12 @@ WithdrawBillsPCSelectedBoxMon:
 	ld hl, wPartyMonNicks
 	ld a, [wPartyCount]
 	dec a
-	call SkipFixedLengthTextEntries
+	call SkipNameEntries
 	ld d, h
 	ld e, l
 	ld hl, wBoxMonNicks
 	ld a, [wWhichPokemon]
-	call SkipFixedLengthTextEntries
+	call SkipNameEntries
 	ld bc, NAME_LENGTH
 	call CopyData
 

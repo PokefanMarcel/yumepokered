@@ -222,7 +222,7 @@ ENDC
 	cp DAYCARE_DATA
 	ret z
 	ld a, [wWhichPokemon]
-	jp SkipFixedLengthTextEntries
+	jp SkipNameEntries
 
 
 

@@ -68,7 +68,7 @@ DisplayNameRaterScreen::
 	jr z, .playerCancelled
 	ld hl, wPartyMonNicks
 	ld a, [wWhichPokemon]
-	call SkipFixedLengthTextEntries ; sets bc = NAME_LENGTH
+	call SkipNameEntries ; sets bc = NAME_LENGTH
 	ld e, l
 	ld d, h
 	ld hl, wBuffer

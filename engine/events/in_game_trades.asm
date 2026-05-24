@@ -186,7 +186,7 @@ InGameTrade_PrepareTradeData:
 	ld [hl], a ; wTradedEnemyMonSpecies
 	ld hl, wPartyMonOT
 	ld a, [wWhichPokemon]
-	call SkipFixedLengthTextEntries
+	call SkipNameEntries
 	ld de, wTradedPlayerMonOT
 	call InGameTrade_CopyData
 	ld hl, InGameTrade_TrainerString
