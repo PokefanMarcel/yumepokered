@@ -24,6 +24,7 @@ Gym_Coll::
 	           $16, \ ; carpet
 	           $19, \ ; tiled floor (e.g. Hall of fame)
 	           $2b, \ ; grassy floor (Erika's gym)
+	           $03, \ ; flower
 	           $3c, $3e, $3f, \ ; spinner tiles
 	           $4a, \ ; stairs
 	           $4d  \ ; spinner stop
