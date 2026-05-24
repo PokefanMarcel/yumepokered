@@ -76,8 +76,7 @@ IsMonInParty::
 	sub e
 	ld [wWhichPokemon], a
 	ld hl, wPartyMon1Nick
-	ld bc, wPartyMon2Nick - wPartyMon1Nick
-	call AddNTimes  ; brings hl to the address wPartyMon{1+a}Nick
+	call SkipFixedLengthTextEntries ; brings hl to the address wPartyMon{1+a}Nick
 	ld de, wStringBuffer
 	call CopyData   ; copy bc bytes from hl to de
 	inc b   ; sets nz since b=0 after CopyData

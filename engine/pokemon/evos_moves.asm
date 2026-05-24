@@ -281,9 +281,8 @@ RenameEvolvedMon:
 	cp '@'
 	jr nz, .compareNamesLoop
 	ld a, [wWhichPokemon]
-	ld bc, NAME_LENGTH
 	ld hl, wPartyMonNicks
-	call AddNTimes
+	call SkipFixedLengthTextEntries
 	push hl
 	call GetName ; stores name in wNameBuffer
 	ld hl, wNameBuffer

@@ -67,13 +67,11 @@ DisplayNameRaterScreen::
 	cp '@'
 	jr z, .playerCancelled
 	ld hl, wPartyMonNicks
-	ld bc, NAME_LENGTH
 	ld a, [wWhichPokemon]
-	call AddNTimes
+	call SkipFixedLengthTextEntries ; sets bc = NAME_LENGTH
 	ld e, l
 	ld d, h
 	ld hl, wBuffer
-	ld bc, NAME_LENGTH
 	call CopyData
 	and a
 	ret

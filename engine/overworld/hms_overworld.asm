@@ -310,9 +310,8 @@ IsMoveInParty::
 .foundMove
 	ld a, e
     ld hl, wPartyMon1Nick
-    ld bc, wPartyMon2Nick - wPartyMon1Nick
     push af
-    call AddNTimes ; brings hl to the address wPartyMon{1+a}Nick
+    call SkipFixedLengthTextEntries ; brings hl to the address wPartyMon{1+a}Nick
     ld de, wNameBuffer
     call CopyData ; copy bc bytes from hl to de
     pop af

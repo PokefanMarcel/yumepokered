@@ -185,11 +185,9 @@ InGameTrade_PrepareTradeData:
 	ld a, [wInGameTradeReceiveMonSpecies]
 	ld [hl], a ; wTradedEnemyMonSpecies
 	ld hl, wPartyMonOT
-	ld bc, NAME_LENGTH
 	ld a, [wWhichPokemon]
-	call AddNTimes
+	call SkipFixedLengthTextEntries
 	ld de, wTradedPlayerMonOT
-	ld bc, NAME_LENGTH
 	call InGameTrade_CopyData
 	ld hl, InGameTrade_TrainerString
 	ld de, wTradedEnemyMonOT
