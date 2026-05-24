@@ -6488,7 +6488,7 @@ LoadPlayerBackPic:
 	ld de, vBackPic
 	ldh a, [hLoadedROMBank]
 	ld b, a
-	ld c, PIC_SIZE
+	ld c, PIC_WIDTH * 3 ; only the rows used by the sliding player head OAM
 	call CopyVideoData
 
 	ld a, $31
@@ -6514,12 +6514,21 @@ LoadHudTilePatterns:
 	ld de, vChars2 tile $73
 	ld bc, BattleHudTilesEnd - BattleHudTiles
 	ld a, BANK(BattleHudTiles)
+	call FarCopyDataDouble
+	ld hl, CaughtIconTileGraphics ; marcelnote - caught mon icon
+	ld de, vFont tile ($eb - $80) ; overwrites <COLON> during battle
+	ld bc, TILE_1BPP_SIZE
+	ld a, BANK(CaughtIconTileGraphics)
 	jp FarCopyDataDouble
 .lcdEnabled
 	; marcelnote - reorganized Battle HUD tiles
 	ld de, BattleHudTiles
 	ld hl, vChars2 tile $73
 	lb bc, BANK(BattleHudTiles), (BattleHudTilesEnd - BattleHudTiles) / TILE_1BPP_SIZE
+	call CopyVideoDataDouble
+	ld de, CaughtIconTileGraphics ; marcelnote - caught mon icon
+	ld hl, vFont tile ($eb - $80) ; overwrites <COLON> during battle
+	lb bc, BANK(CaughtIconTileGraphics), 1
 	jp CopyVideoDataDouble
 
 PrintEmptyString:

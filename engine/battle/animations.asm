@@ -1264,12 +1264,12 @@ _AnimationSlideMonUp: ; marcelnote - optimized and adjusted for sprite removing 
 
 ShakeEnemyHUD_WritePlayerMonPicOAM: ; marcelnote - adjusted for row-major
 ; Writes the OAM entries for a copy of the player mon's pic in OAM.
-; The top 5 rows are reproduced in OAM, although only 2 are actually needed.
+; The top 2 rows are reproduced in OAM to cover the part that overlaps the enemy shaking area.
 	ld a, $38            ; starting Y
 	ld [wBaseCoordY], a
 	ld hl, wShadowOAM
 	ld d, 0              ; tile index
-	ld b, 5              ; number of rows
+	ld b, 2              ; number of rows
 .rowLoop
 	ld a, $08            ; starting X
 	ld e, a
@@ -2503,7 +2503,7 @@ AnimationShakeEnemyHUD:
 ; Make a copy of the back pic's tile patterns in sprite tile pattern VRAM.
 	ld de, vBackPic
 	ld hl, vSprites
-	ld bc, PIC_SIZE
+	ld bc, PIC_WIDTH * 2
 	call CopyVideoData
 
 	xor a

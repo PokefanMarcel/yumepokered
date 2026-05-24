@@ -1,3 +1,8 @@
+DEF BATTLE_HUD_POKEBALL_TILE       EQU $31
+DEF BATTLE_HUD_STATUS_BALL_TILE    EQU BATTLE_HUD_POKEBALL_TILE + 1
+DEF BATTLE_HUD_FAINTED_BALL_TILE   EQU BATTLE_HUD_POKEBALL_TILE + 2
+DEF BATTLE_HUD_EMPTY_BALL_TILE     EQU BATTLE_HUD_POKEBALL_TILE + 3
+
 DrawAllPokeballs:
 	call LoadPartyPokeballGfx
 	call SetupOwnPartyPokeballs
@@ -12,7 +17,7 @@ DrawEnemyPokeballs:
 
 LoadPartyPokeballGfx:
 	ld de, PokeballTileGraphics
-	ld hl, vSprites tile $31
+	ld hl, vSprites tile BATTLE_HUD_POKEBALL_TILE
 	lb bc, BANK(PokeballTileGraphics), (PokeballTileGraphicsEnd - PokeballTileGraphics) / TILE_SIZE
 	jp CopyVideoData
 
@@ -49,7 +54,7 @@ SetupPokeballs:
 	push af
 	ld de, wBuffer
 	ld c, PARTY_LENGTH
-	ld a, $34 ; empty pokeball
+	ld a, BATTLE_HUD_EMPTY_BALL_TILE
 .emptyloop
 	ld [de], a
 	inc de
@@ -73,14 +78,14 @@ PickPokeball:
 	jr nz, .alive
 	ld a, [hl]
 	and a
-	ld b, $33 ; crossed ball (fainted)
+	ld b, BATTLE_HUD_FAINTED_BALL_TILE
 	jr z, .doneFainted
 .alive
 	inc hl
 	inc hl
 	ld a, [hl] ; status
 	and a
-	ld b, $32 ; black ball (status)
+	ld b, BATTLE_HUD_STATUS_BALL_TILE
 	jr nz, .done
 	dec b ; regular ball
 	jr .done
@@ -140,6 +145,7 @@ PlayerBattleMonHUDGraphicsTiles:
 	db "<LEFT_TRIANGLE>" ; lower-left triangle tile of the HUD
 
 PlaceEnemyHUDTiles:
+	call DrawOwnedWildMonIcon ; marcelnote - caught mon icon
 	ld hl, EnemyBattleHUDGraphicsTiles
 	ld de, wHUDGraphicsTiles
 	ld bc, 2
@@ -192,6 +198,41 @@ SetupPlayerAndEnemyPokeballs:
 	ld [hl], $68
 	ld hl, wShadowOAMSprite06
 	jp WritePokeballOAMData
+
+DrawOwnedWildMonIcon: ; marcelnote - caught mon icon
+; Draws the caught icon beside the enemy HUD if the current wild mon is owned.
+	ld a, [wIsInBattle]
+	dec a
+	ret nz
+	ld a, [wBattleType]
+	cp BATTLE_TYPE_OLD_MAN
+	ret z
+
+	; Convert the enemy species to a Pokédex number and test the owned flag.
+	ld a, [wPokedexNum]
+	push af
+	ld a, [wEnemyMonSpecies2]
+	ld [wPokedexNum], a
+	predef IndexToPokedex
+	ld a, [wPokedexNum]
+	dec a
+	ld c, a
+	ld b, FLAG_TEST
+	ld hl, wPokedexOwned
+	predef FlagActionPredef
+	pop af
+	ld [wPokedexNum], a
+	ld a, c
+	and a
+	ret z
+
+	; Place the caught icon.
+	hlcoord 1, 1
+	ld a, $eb
+	ld [hl], a
+	ret
+
+CaughtIconTileGraphics:: INCBIN "gfx/battle/caught_icon.1bpp"
 
 ; four tiles: pokeball, black pokeball (status ailment), crossed out pokeball (fainted) and pokeball slot (no mon)
 PokeballTileGraphics:: INCBIN "gfx/battle/balls.2bpp"
