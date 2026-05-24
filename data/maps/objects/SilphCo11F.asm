@@ -11,7 +11,6 @@ SilphCo11F_Object:
 	def_warp_events
 	warp_event  9,  0, ANY_DIR, SILPH_CO_10F, 2
 	warp_event 13,  0, ANY_DIR, SILPH_CO_ELEVATOR, 1
-	warp_event  5,  5, ANY_DIR, LAST_MAP, 10
 	warp_event  3,  2, ANY_DIR, SILPH_CO_7F, 4
 
 	def_bg_events
