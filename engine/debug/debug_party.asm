@@ -86,7 +86,7 @@ AddDebugBoxMon:
 
 	ld hl, wBoxMonOT
 	ld a, [wPlayerMonNumber]
-	call SkipFixedLengthTextEntries
+	call SkipNameEntries
 	ld d, h
 	ld e, l
 	ld hl, wPlayerName
@@ -95,7 +95,7 @@ AddDebugBoxMon:
 
 	ld hl, wBoxMonNicks
 	ld a, [wPlayerMonNumber]
-	call SkipFixedLengthTextEntries
+	call SkipNameEntries
 	ld d, h
 	ld e, l
 	ld hl, wEnemyMonNick
