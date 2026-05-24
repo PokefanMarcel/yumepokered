@@ -1657,7 +1657,7 @@ LoadBattleMonFromParty:
 	call GetMonHeader
 	ld hl, wPartyMonNicks
 	ld a, [wPlayerMonNumber]
-	call SkipFixedLengthTextEntries
+	call SkipNameEntries
 	ld de, wBattleMonNick
 	ld bc, NAME_LENGTH
 	call CopyData
@@ -1701,7 +1701,7 @@ LoadEnemyMonFromParty:
 	call GetMonHeader
 	ld hl, wEnemyMonNicks
 	ld a, [wWhichPokemon]
-	call SkipFixedLengthTextEntries
+	call SkipNameEntries
 	ld de, wEnemyMonNick
 	ld bc, NAME_LENGTH
 	call CopyData
