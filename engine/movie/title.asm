@@ -204,8 +204,7 @@ ENDC
 	ld h, d
 	ld l, 64
 	call ScrollTitleScreenGameVersion
-	ld h, 0
-	ld l, 80
+	lb hl, 0, 80
 	call ScrollTitleScreenGameVersion
 	ld a, d
 	add 4

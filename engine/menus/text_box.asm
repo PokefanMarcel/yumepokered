@@ -136,8 +136,7 @@ DisplayMoneyBox:
 	ld [wTextBoxID], a
 	call DisplayTextBoxID
 	hlcoord 13, 1
-	ld b, 1
-	ld c, 6
+	lb bc, 1, 6
 	call ClearScreenArea
 	hlcoord 12, 1
 	ld de, wPlayerMoney
@@ -396,8 +395,7 @@ DisplayFieldMoveMonMenu:
 
 ; no field moves
 	hlcoord 11, 11
-	ld b, 5
-	ld c, 7
+	lb bc, 5, 7
 	call TextBoxBorder
 	call UpdateSprites
 	ld a, 12

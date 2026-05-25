@@ -112,8 +112,7 @@ ScrollCreditsMonLeft:
 	ld h, b
 	ld l, $20
 	call ScrollCreditsMonLeft_SetSCX
-	ld h, $0
-	ld l, $70
+	lb hl, $0, $70
 	call ScrollCreditsMonLeft_SetSCX
 	ld a, b
 	add $8

@@ -221,8 +221,7 @@ VictoryRoad2FGrampsText: ; marcelnote - new, adapted from Silph Co Lapras guy
 	rst TextScriptEnd
 .giveHitmon
 	CheckEvent EVENT_GOT_HITMONCHAN
-	ld c, 40
-	ld b, HITMONLEE
+	lb bc, HITMONLEE, 40
 	ld hl, .GiveHitmonleeText
 	jr nz, .gotTextAndMon
 	ld b, HITMONCHAN

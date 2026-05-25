@@ -163,8 +163,7 @@ PrintSafariZoneSteps::
 	cp SUMMER_BEACH_HOUSE ; marcelnote - was CERULEAN_CAVE_2F, changed to account for new map_constants order
 	ret nc
 	hlcoord 0, 0
-	ld b, 3
-	ld c, 7
+	lb bc, 3, 7
 	call TextBoxBorder
 	hlcoord 1, 1
 	ld de, wSafariSteps

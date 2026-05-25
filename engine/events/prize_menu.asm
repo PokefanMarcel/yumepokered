@@ -23,8 +23,7 @@ CeladonPrizeMenu::
 	ld [wTopMenuItemX], a
 	call PrintPrizePrice
 	hlcoord 0, 2
-	ld b, 8
-	ld c, 16
+	lb bc, 8, 16
 	call TextBoxBorder
 	call GetPrizeMenuId
 	call UpdateSprites

@@ -1876,8 +1876,7 @@ AnimationWavyScreen:
 	ldh [hAutoBGTransferEnabled], a
 	ld a, SCREEN_HEIGHT_PX
 	ldh [hWY], a
-	ld d, $80 ; terminator
-	ld e, SCREEN_HEIGHT_PX - 1
+	lb de, $80, SCREEN_HEIGHT_PX - 1 ; d = terminator, e = last line
 	ld c, $ff
 	ld hl, WavyScreenLineOffsets
 .loop

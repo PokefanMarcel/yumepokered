@@ -162,8 +162,7 @@ CitrusFerryRoomsScientistText: ; marcelnote - optimized
 	jr nz, .printText
 	ld hl, .TakeThisText
 	call PrintText
-	ld c, 1
-	ld b, HELIX_FOSSIL
+	lb bc, HELIX_FOSSIL, 1
 	CheckEvent EVENT_GOT_DOME_FOSSIL
 	jr nz, .loadedFossil
 	ld b, DOME_FOSSIL

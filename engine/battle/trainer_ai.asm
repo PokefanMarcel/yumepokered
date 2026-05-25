@@ -487,8 +487,7 @@ AIMoveChoiceAdept:
 	ld a, [wEnemyMoveType]
 	ld d, a
 	ld hl, wEnemyMonMoves
-	ld b, NUM_MOVES + 1
-	ld c, 0
+	lb bc, NUM_MOVES + 1, 0
 .loopMoves
 	dec b
 	jr z, .doneSearch

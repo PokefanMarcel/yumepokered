@@ -53,8 +53,7 @@ PrintMoveType: ; marcelnote - modified to be right-aligned
 ;	jr z, .leftAligned
 	ld h, d
 	ld l, e
-	ld c, 9 ; max number of spaces + 1
-	ld b, '@'
+	lb bc, '@', 9 ; b = terminator, c = max spaces + 1
 .loop
 	dec c
 	ld a, [hli]

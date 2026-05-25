@@ -81,8 +81,7 @@ MainSlotMachineLoop:
 	ld [wLastMenuItem], a
 	ld [wMenuWatchMovingOutOfBounds], a
 	hlcoord 14, 11
-	ld b, 5
-	ld c, 4
+	lb bc, 5, 4
 	call TextBoxBorder
 	hlcoord 16, 12
 	ld de, CoinMultiplierSlotMachineText

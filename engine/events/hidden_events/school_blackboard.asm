@@ -26,8 +26,7 @@ LinkCableHelp::
 	ld hl, wStatusFlags5
 	set BIT_NO_TEXT_DELAY, [hl]
 	hlcoord 0, 0
-	ld b, 8
-	ld c, 13
+	lb bc, 8, 13
 	call TextBoxBorder
 	hlcoord 2, 2
 	ld de, HowToLinkText

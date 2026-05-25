@@ -273,8 +273,7 @@ ENDC
 
 .printAreaUnknown
 	hlcoord 2, 7
-	ld b, 2
-	ld c, 14
+	lb bc, 2, 14
 	call TextBoxBorder
 	hlcoord 3, 9
 	ld de, AreaUnknownText
@@ -427,8 +426,7 @@ LoadTownMap:
 	call ClearScreen
 	call UpdateSprites
 	hlcoord 0, 0
-	ld b, $12
-	ld c, $12
+	lb bc, $12, $12
 	call TextBoxBorder
 	call DisableLCD
 	ld hl, WorldMapTileGraphics

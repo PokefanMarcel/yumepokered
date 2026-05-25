@@ -111,8 +111,7 @@ PrintEXPBar:
 
 	ldh a, [hQuotient + 3] ; pixel length
 	ld [wEXPBarPixelLength], a
-	ld b, $8 ; number of tiles to place
-	ld c, $8 ; constant for subtraction
+	lb bc, $8, $8 ; b = number of tiles, c = subtraction constant
 	hlcoord 17, 11
 .loopFullTiles
 	sub c

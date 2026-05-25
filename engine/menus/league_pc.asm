@@ -91,16 +91,14 @@ LeaguePCShowMon:
 	ld de, wNameBuffer
 	ld bc, NAME_LENGTH
 	call CopyData
-	ld b, SET_PAL_POKEMON_WHOLE_SCREEN
-	ld c, 0
+	lb bc, SET_PAL_POKEMON_WHOLE_SCREEN, 0
 	call RunPaletteCommand
 	hlcoord 12, 5
 	call GetMonHeader
 	call LoadFrontSpriteByMonIndex
 	call GBPalNormal
 	hlcoord 0, 13
-	ld b, 2
-	ld c, $12
+	lb bc, 2, $12
 	call TextBoxBorder
 	hlcoord 1, 15
 	ld de, HallOfFameNoText

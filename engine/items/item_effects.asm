@@ -2484,8 +2484,7 @@ RestoreBonusPP:
 	ld de, wNormalMaxPPList - 1
 	predef LoadMovePPs ; loads the normal max PP of each of the pokemon's moves to wNormalMaxPPList
 	pop hl
-	ld c, MON_PP - MON_MOVES
-	ld b, 0
+	ld bc, MON_PP - MON_MOVES
 	add hl, bc ; hl now points to move 1 PP
 	ld de, wNormalMaxPPList
 	ld b, 0 ; initialize move counter to zero
@@ -2998,8 +2997,7 @@ FindWildWaterLocationsOfMon: ; marcelnote - modified version of FindWildLocation
 	jr z, .noGrassMons
 	; skip grass Mons
 	push bc ; save c = map ID tracker
-	ld b, 0
-	ld c, 2 * NUM_WILDMONS
+	ld bc, 2 * NUM_WILDMONS
 	add hl, bc
 	pop bc  ; restore c = map ID tracker
 .noGrassMons

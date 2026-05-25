@@ -14,19 +14,16 @@ DisplayTextIDInit::
 	CheckEvent EVENT_GOT_POKEDEX
 ; start menu with pokedex
 	hlcoord 10, 0
-	ld b, $0e
-	ld c, $08
+	lb bc, $0e, $08
 	jr nz, .drawTextBoxBorder
 ; start menu without pokedex
 	hlcoord 10, 0
-	ld b, $0c
-	ld c, $08
+	lb bc, $0c, $08
 	jr .drawTextBoxBorder
 ; if text ID is not 0 (i.e. not the start menu) then do a standard dialogue text box
 .notStartMenu
 	hlcoord 0, 12
-	ld b, $04
-	ld c, $12
+	lb bc, $04, $12
 .drawTextBoxBorder
 	call TextBoxBorder
 .skipDrawingTextBoxBorder

@@ -3,13 +3,11 @@ DrawStartMenu::
 	CheckEvent EVENT_GOT_POKEDEX
 ; menu with pokedex
 	hlcoord 10, 0
-	ld b, $0e
-	ld c, $08
+	lb bc, $0e, $08
 	jr nz, .drawTextBoxBorder
 ; shorter menu if the player doesn't have the pokedex
 	hlcoord 10, 0
-	ld b, $0c
-	ld c, $08
+	lb bc, $0c, $08
 .drawTextBoxBorder
 	call TextBoxBorder
 	ld a, PAD_DOWN | PAD_UP | PAD_START | PAD_B | PAD_A

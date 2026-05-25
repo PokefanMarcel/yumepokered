@@ -47,8 +47,7 @@ BikeShopClerkText: ; marcelnote - optimized
 	ld hl, wStatusFlags5
 	set BIT_NO_TEXT_DELAY, [hl]
 	hlcoord 0, 0
-	ld b, 4
-	ld c, 15
+	lb bc, 4, 15
 	call TextBoxBorder
 	call UpdateSprites
 	hlcoord 2, 2

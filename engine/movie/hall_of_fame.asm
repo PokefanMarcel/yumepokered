@@ -122,8 +122,7 @@ HoFShowMonOrPlayer:
 	ldh [hStartTileID], a
 	hlcoord 12, 5
 	predef CopySpriteToTilemap ; marcelnote - modified to remove sprite compression
-	ld d, $a0
-	ld e, 4
+	lb de, $a0, 4
 	ld a, [wOnSGB]
 	and a
 	jr z, .next2
@@ -135,8 +134,7 @@ HoFShowMonOrPlayer:
 	ldh [hStartTileID], a ; front pic
 	hlcoord 12, 5
 	predef CopySpriteToTilemap ; marcelnote - modified to remove sprite compression
-	ld d, 0
-	ld e, -4
+	lb de, 0, -4
 ; scroll front pic right
 
 .ScrollPic

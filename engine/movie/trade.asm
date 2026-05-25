@@ -233,8 +233,7 @@ Trade_ShowPlayerMon:
 	xor a
 	ldh [hAutoBGTransferEnabled], a
 	hlcoord 4, 0
-	ld b, 6
-	ld c, 10
+	lb bc, 6, 10
 	call TextBoxBorder
 	call Trade_PrintPlayerMonInfoText
 	ld b, HIGH(vBGMap0)
@@ -356,8 +355,7 @@ Trade_ShowEnemyMon:
 	call Trade_ShowAnimation
 	call Trade_ShowClearedWindow
 	hlcoord 4, 10
-	ld b, 6
-	ld c, 10
+	lb bc, 6, 10
 	call TextBoxBorder
 	call Trade_PrintEnemyMonInfoText
 	call Trade_CopyTileMapToVRAM
@@ -481,8 +479,7 @@ Trade_DrawLeftGameboy:
 
 ; draw text box with player name below gameboy pic
 	hlcoord 4, 12
-	ld b, 2
-	ld c, 7
+	lb bc, 2, 7
 	call TextBoxBorder
 	hlcoord 5, 14
 	ld de, wPlayerName
@@ -528,8 +525,7 @@ Trade_DrawRightGameboy:
 
 ; draw text box with enemy name above link cable
 	hlcoord 6, 0
-	ld b, 2
-	ld c, 7
+	lb bc, 2, 7
 	call TextBoxBorder
 	hlcoord 7, 2
 	ld de, wLinkEnemyTrainerName
@@ -740,8 +736,7 @@ Trade_LoadMonSprite:
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
 	ld [wWholeScreenPaletteMonSpecies], a
-	ld b, SET_PAL_POKEMON_WHOLE_SCREEN
-	ld c, 0
+	lb bc, SET_PAL_POKEMON_WHOLE_SCREEN, 0
 	call RunPaletteCommand
 	ldh a, [hAutoBGTransferEnabled]
 	xor $1

@@ -892,7 +892,7 @@ ENDC
 	call GetMoveName
 	call PlaceString
 	pop hl ; restore hl = screen tile
-	lb bc, 0, SCREEN_WIDTH
+	ld bc, SCREEN_WIDTH
 	add hl, bc
 	ld d, h
 	ld e, l
@@ -965,8 +965,7 @@ ENDC
 	call PlaceString
 
 	pop hl ; restore de = screen tile
-	ld b, 0
-	ld c, SCREEN_WIDTH
+	ld bc, SCREEN_WIDTH
 	add hl, bc
 	ld d, h
 	ld e, l
@@ -984,8 +983,7 @@ ENDC
 	ld [hli], a
 
 	pop hl ; restore de = screen tile
-	ld b, 0
-	ld c, SCREEN_WIDTH
+	ld bc, SCREEN_WIDTH
 	add hl, bc
 	ld d, h
 	ld e, l

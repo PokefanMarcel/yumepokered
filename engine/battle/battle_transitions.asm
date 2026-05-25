@@ -586,8 +586,7 @@ BattleTransition_Circle:
 	lb bc, 0, SCREEN_WIDTH / 2
 	ld hl, BattleTransition_HalfCircle1
 	call BattleTransition_Circle_Sub1
-	ld c, SCREEN_WIDTH / 2
-	ld b, 1
+	lb bc, 1, SCREEN_WIDTH / 2
 	ld hl, BattleTransition_HalfCircle2
 	call BattleTransition_Circle_Sub1
 	jp BattleTransition_BlackScreen

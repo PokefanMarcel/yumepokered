@@ -85,8 +85,7 @@ BillsHousePokemonList::
 	ld hl, wStatusFlags5
 	set BIT_NO_TEXT_DELAY, [hl]
 	hlcoord 0, 0
-	ld b, 10
-	ld c, 9
+	lb bc, 10, 9
 	call TextBoxBorder
 	hlcoord 2, 2
 	ld de, BillsMonListText

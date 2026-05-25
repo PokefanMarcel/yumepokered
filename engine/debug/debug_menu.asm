@@ -20,8 +20,7 @@ IF DEF(_DEBUG)
 	call RunDefaultPaletteCommand
 
 	hlcoord 5, 6
-	ld b, 3
-	ld c, 9
+	lb bc, 3, 9
 	call TextBoxBorder
 
 	hlcoord 7, 7

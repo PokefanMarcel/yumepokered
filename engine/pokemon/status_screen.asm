@@ -283,8 +283,7 @@ StatusScreenMovesPage:
 	call CalcExpToLevelUp ; this restores [wLoadedMonExp] to current Total Exp
 
 	hlcoord 0, 8
-	ld b, 8  ; y
-	ld c, 12 ; x
+	lb bc, 8, 12 ; y, x
 	call TextBoxBorder ; Draw move container
 
 	hlcoord 1, 9
@@ -547,16 +546,14 @@ PrintStatsBox:
 	and a ; a is 0 for the status screen
 	jr nz, .LevelUpBox
 	hlcoord 0, 8
-	ld b, 8 ; y
-	ld c, 8 ; x
+	lb bc, 8, 8 ; y, x
 	call TextBoxBorder ; Draws the box
 	hlcoord 1, 9 ; Start printing stats from here
 	ld bc, SCREEN_WIDTH + 3 ; Number offset
 	jr .PrintStatsNames
 .LevelUpBox
 	hlcoord 9, 2
-	ld b, 8 ; y
-	ld c, 9 ; x
+	lb bc, 8, 9 ; y, x
 	call TextBoxBorder
 	hlcoord 11, 3
 	ld bc, SCREEN_WIDTH + 2

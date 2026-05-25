@@ -239,15 +239,13 @@ DisplayListMenuIDLoop::
 DisplayChooseQuantityMenu::
 ; text box dimensions/coordinates for just quantity
 	hlcoord 15, 9
-	ld b, 1 ; height
-	ld c, 3 ; width
+	lb bc, 1, 3 ; height, width
 	ld a, [wListMenuID]
 	cp PRICEDITEMLISTMENU
 	jr nz, .drawTextBox
 ; text box dimensions/coordinates for quantity and price
 	hlcoord 7, 9
-	ld b, 1  ; height
-	ld c, 11 ; width
+	lb bc, 1, 11 ; height, width
 .drawTextBox
 	call TextBoxBorder
 	hlcoord 16, 10
@@ -407,8 +405,7 @@ ExitListMenu::
 
 PrintListMenuEntries::
 	hlcoord 5, 3
-	ld b, 9
-	ld c, 14
+	lb bc, 9, 14
 	call ClearScreenArea
 	ld a, [wListPointer]
 	ld e, a
