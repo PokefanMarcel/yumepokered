@@ -119,23 +119,8 @@ SSAnne1FRoomsCooltrainerFAfterBattleText:
 	text_far _SSAnne1FRoomsCooltrainerFAfterBattleText
 	text_end
 
-SSAnne1FRoomsGirl1Text: ; marcelnote - modified for girl player
-	text_asm
-	ld a, [wStatusFlags4]
-	bit BIT_IS_GIRL, a
-	ld hl, .WaiterText
-	jr z, .printText
-	ld hl, .WaitressText
-.printText
-	call PrintText
-	rst TextScriptEnd
-
-.WaiterText
+SSAnne1FRoomsGirl1Text:
 	text_far _SSAnne1FRoomsGirl1WaiterText
-	text_end
-
-.WaitressText
-	text_far _SSAnne1FRoomsGirl1WaitressText
 	text_end
 
 SSAnne1FRoomsMiddleAgedManText:

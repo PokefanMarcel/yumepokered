@@ -111,12 +111,21 @@ _SSAnne1FRoomsCooltrainerFAfterBattleText::
 	done
 
 _SSAnne1FRoomsGirl1WaiterText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Serveur,"
 	line "amenez-moi une"
 	cont "tarte aux poires!"
 	done
 
-_SSAnne1FRoomsGirl1WaitressText:: ; marcelnote - new for girl player
+.GirlText ; marcelnote - new for girl player
 	text "Serveuse,"
 	line "amenez-moi une"
 	cont "tarte aux poires!"

@@ -76,12 +76,21 @@ _SSAnne1FRoomsCooltrainerFAfterBattleText::
 	done
 
 _SSAnne1FRoomsGirl1WaiterText::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Waiter, I would"
 	line "like a cherry pie"
 	cont "please!"
 	done
 
-_SSAnne1FRoomsGirl1WaitressText:: ; marcelnote - new for girl player
+.GirlText ; marcelnote - new for girl player
 	text "Waitress, I would"
 	line "like a cherry pie"
 	cont "please!"
