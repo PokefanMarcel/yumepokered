@@ -234,13 +234,13 @@ GetSpriteMovementByte1Pointer::
 
 ; returns the sprite movement byte 2 pointer for sprite [hSpriteIndex] in hl
 GetSpriteMovementByte2Pointer::
-	push de
 	ld hl, wMapSpriteData
 	ldh a, [hSpriteIndex]
 	dec a
 	add a
-	ld d, 0
-	ld e, a
-	add hl, de
-	pop de
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a ; hl = hl + a
 	ret

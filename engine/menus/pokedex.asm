@@ -786,18 +786,18 @@ PokedexToIndex:
 
 IndexToPokedex:
 	; converts the index number at [wPokedexNum] to a Pokédex number
-	push bc
 	push hl
 	ld a, [wPokedexNum]
 	dec a
 	ld hl, PokedexOrder
-	ld b, 0
-	ld c, a
-	add hl, bc
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a ; hl = hl + a
 	ld a, [hl]
 	ld [wPokedexNum], a
 	pop hl
-	pop bc
 	ret
 
 

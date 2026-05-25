@@ -1245,25 +1245,28 @@ CopyFlippedBillsPCBoxIconTile:
 .loop
 	ld a, [hl]
 	push hl
-	push bc
 	ld e, a
 	and $f
-	ld c, a
-	ld b, 0
 	ld hl, BillsPCBoxReversedNibbles
-	add hl, bc
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a ; hl = hl + a
 	ld a, [hl]
 	swap a
 	ld d, a
 	ld a, e
 	swap a
 	and $f
-	ld c, a
 	ld hl, BillsPCBoxReversedNibbles
-	add hl, bc
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a ; hl = hl + a
 	ld a, [hl]
 	or d
-	pop bc
 	pop hl
 	ld [hli], a
 	dec b

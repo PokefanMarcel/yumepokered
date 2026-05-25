@@ -705,13 +705,13 @@ AIMoveChoiceExpert:
 	push af
 	ld a, [wEnemyMoveType]
 	push hl
-	push bc
-	ld c, a
-	ld b, 0
 	ld hl, SpecialTypesList
-	add hl, bc
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a ; hl = hl + a
 	ld a, [hl]
-	pop bc
 	pop hl
 	and a                       ; nz = special type, z = physical type
 	jr nz, .specialMove

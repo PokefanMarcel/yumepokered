@@ -349,12 +349,12 @@ NextTextCommand::
 	cp TX_SOUND_POKEDEX_RATING
 	jp nc, TextCommand_SOUND
 	ld hl, TextCommandJumpTable
-	push bc
 	add a
-	ld b, 0
-	ld c, a
-	add hl, bc
-	pop bc
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a ; hl = hl + a
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
