@@ -149,7 +149,7 @@ _CeladonGymBattleText2::
 	line "par ici!"
 	done
 
-.GirlText
+.GirlText ; marcelnote - new for girl player
 	text "Hé toi!"
 
 	para "T'es nouvelle"

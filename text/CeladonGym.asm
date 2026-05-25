@@ -86,10 +86,26 @@ _CeladonGymTM21NoRoomText::
 	done
 
 _CeladonGymBattleText2::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Hey!"
 
 	para "You are not"
 	line "allowed in here!"
+	done
+
+.GirlText ; marcelnote - new for girl player
+	text "Hey!"
+
+	para "You are new"
+	line "around here!"
 	done
 
 _CeladonGymEndBattleText2::
@@ -124,8 +140,22 @@ _CeladonGymAfterBattleText3::
 	done
 
 _CeladonGymBattleText4::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Aren't you the"
 	line "peeping Tom?"
+	done
+
+.GirlText ; marcelnote - new for girl player
+	text "Oh!"
+	line "You startled me!"
 	done
 
 _CeladonGymEndBattleText4::
@@ -134,9 +164,23 @@ _CeladonGymEndBattleText4::
 	prompt
 
 _CeladonGymAfterBattleText4::
+	text_asm
+	ld a, [wStatusFlags4]
+	bit BIT_IS_GIRL, a
+	ld hl, .BoyText
+	ret z
+	ld hl, .GirlText
+	ret
+
+.BoyText
 	text "Oh, you weren't"
 	line "peeping? We get a"
 	cont "lot of gawkers!"
+	done
+
+.GirlText ; marcelnote - new for girl player
+	text "Sorry, we get a"
+	line "lot of gawkers!"
 	done
 
 _CeladonGymBattleText5::
