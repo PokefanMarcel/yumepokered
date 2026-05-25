@@ -191,31 +191,6 @@ HallOfFameCongratulationsScript:
 	ld a, TOGGLE_CINNABAR_GYM_BLAINE_REMATCH     ; show rematch Blaine
 	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
-	; marcelnote - switch E4 to their rematch counterparts
-	ld a, TOGGLE_LORELEIS_ROOM_LORELEI         ; hide original Lorelei
-	ld [wToggleableObjectIndex], a
-	predef HideObjectCont
-	ld a, TOGGLE_LORELEIS_ROOM_LORELEI_REMATCH ; show rematch Lorelei
-	ld [wToggleableObjectIndex], a
-	predef ShowObjectCont
-	ld a, TOGGLE_BRUNOS_ROOM_BRUNO             ; hide original Bruno
-	ld [wToggleableObjectIndex], a
-	predef HideObjectCont
-	ld a, TOGGLE_BRUNOS_ROOM_BRUNO_REMATCH     ; show rematch Bruno
-	ld [wToggleableObjectIndex], a
-	predef ShowObjectCont
-	ld a, TOGGLE_AGATHAS_ROOM_AGATHA           ; hide original Agatha
-	ld [wToggleableObjectIndex], a
-	predef HideObjectCont
-	ld a, TOGGLE_AGATHAS_ROOM_AGATHA_REMATCH   ; show rematch Agatha
-	ld [wToggleableObjectIndex], a
-	predef ShowObjectCont
-	ld a, TOGGLE_LANCES_ROOM_LANCE             ; hide original Lance
-	ld [wToggleableObjectIndex], a
-	predef HideObjectCont
-	ld a, TOGGLE_LANCES_ROOM_LANCE_REMATCH     ; show rematch Lance
-	ld [wToggleableObjectIndex], a
-	predef ShowObjectCont
 	jr .done
 .rematch3
 	ld a, TOGGLE_CHAMPIONS_ROOM_RIVAL          ; make Rival reappear since he walked out

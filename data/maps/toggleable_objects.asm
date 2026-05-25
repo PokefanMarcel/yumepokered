@@ -221,10 +221,10 @@ ToggleableObjectMapPointers:
 	dw VictoryRoad2FToggleData             ; VICTORY_ROAD_2F
 	dw VictoryRoad3FToggleData             ; VICTORY_ROAD_3F
 	dw IndigoPlateauLobbyToggleData        ; INDIGO_PLATEAU_LOBBY ; marcelnote - added for girl blocking E4 entrance
-	dw LoreleisRoomToggleData              ; LORELEIS_ROOM        ; marcelnote - added for Lorelei rematch
-	dw BrunosRoomToggleData                ; BRUNOS_ROOM          ; marcelnote - added for Bruno rematch
-	dw AgathasRoomToggleData               ; AGATHAS_ROOM         ; marcelnote - added for Agatha rematch
-	dw LancesRoomToggleData                ; LANCES_ROOM          ; marcelnote - added for Lance rematch
+	dw NoToggleData                        ; LORELEIS_ROOM
+	dw NoToggleData                        ; BRUNOS_ROOM
+	dw NoToggleData                        ; AGATHAS_ROOM
+	dw NoToggleData                        ; LANCES_ROOM
 	dw ChampionsRoomToggleData             ; CHAMPIONS_ROOM
 	dw HallOfFameToggleData                ; HALL_OF_FAME         ; marcelnote - added for Rival rematch
 	dw NoToggleData                        ; TRADE_CENTER
@@ -665,18 +665,18 @@ IndigoPlateauLobbyToggleData:
 	db INDIGO_PLATEAU_LOBBY, INDIGOPLATEAULOBBY_COOLTRAINER_F, ON
 	db INDIGO_PLATEAU_LOBBY, INDIGOPLATEAULOBBY_COOLTRAINER_F2, OFF
 	db INDIGO_PLATEAU_LOBBY, INDIGOPLATEAULOBBY_RIVAL, OFF ; marcelnote - appears after E4 reopens
-LoreleisRoomToggleData:
+
+; Temporary save compatibility: preserve the 8 retired E4 rematch toggle slots
+; so later wToggleableObjectFlagsCont bits keep their saved meanings.
 	db LORELEIS_ROOM, LORELEISROOM_LORELEI, ON
-	db LORELEIS_ROOM, LORELEISROOM_LORELEI_REMATCH, OFF
-BrunosRoomToggleData:
+	db LORELEIS_ROOM, LORELEISROOM_LORELEI + 1, OFF
 	db BRUNOS_ROOM, BRUNOSROOM_BRUNO, ON
-	db BRUNOS_ROOM, BRUNOSROOM_BRUNO_REMATCH, OFF
-AgathasRoomToggleData:
+	db BRUNOS_ROOM, BRUNOSROOM_BRUNO + 1, OFF
 	db AGATHAS_ROOM, AGATHASROOM_AGATHA, ON
-	db AGATHAS_ROOM, AGATHASROOM_AGATHA_REMATCH, OFF
-LancesRoomToggleData:
+	db AGATHAS_ROOM, AGATHASROOM_AGATHA + 1, OFF
 	db LANCES_ROOM, LANCESROOM_LANCE, ON
-	db LANCES_ROOM, LANCESROOM_LANCE_REMATCH, OFF
+	db LANCES_ROOM, LANCESROOM_LANCE + 1, OFF
+
 ChampionsRoomToggleData:
 	db CHAMPIONS_ROOM, CHAMPIONSROOM_OAK, OFF
 	db CHAMPIONS_ROOM, CHAMPIONSROOM_RIVAL, ON ; marcelnote - added for Rival rematch

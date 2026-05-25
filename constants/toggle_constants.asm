@@ -258,7 +258,7 @@
 	const TOGGLE_MT_SILVER_2F_FULL_RESTORE          ; marcelnote - Full Restore
 DEF NUM_TOGGLEABLE_OBJECTS EQU const_value
 	; max objects = 256
-	; current total = 263 – 11 – 5 (end - start - commented out) = 247
+	; current total = 258 – 8 – 3 (end - start - commented out) = 247
 
 ; marcelnote - the list continues here to allow for more than 256 HideShow objects
 ;              but cannot put items which can be picked up
@@ -316,14 +316,7 @@ DEF NUM_TOGGLEABLE_OBJECTS EQU const_value
 	const TOGGLE_INDIGO_PLATEAU_LOBBY_GIRL1      ; now moves after first defeating E4
 	const TOGGLE_INDIGO_PLATEAU_LOBBY_GIRL2      ; blocks way after first defeating E4
 	const TOGGLE_INDIGO_PLATEAU_LOBBY_RIVAL      ; appears after E4 reopens
-	const TOGGLE_LORELEIS_ROOM_LORELEI           ; added for Lorelei rematch
-	const TOGGLE_LORELEIS_ROOM_LORELEI_REMATCH   ; added for Lorelei rematch
-	const TOGGLE_BRUNOS_ROOM_BRUNO               ; added for Bruno rematch
-	const TOGGLE_BRUNOS_ROOM_BRUNO_REMATCH       ; added for Bruno rematch
-	const TOGGLE_AGATHAS_ROOM_AGATHA             ; added for Agatha rematch
-	const TOGGLE_AGATHAS_ROOM_AGATHA_REMATCH     ; added for Agatha rematch
-	const TOGGLE_LANCES_ROOM_LANCE               ; added for Lance rematch
-	const TOGGLE_LANCES_ROOM_LANCE_REMATCH       ; added for Lance rematch
+	const_skip 8 ; previously E4 toggle, keep offsets for save compatibility
 	const TOGGLE_CHAMPIONS_ROOM_OAK              ;
 	const TOGGLE_CHAMPIONS_ROOM_RIVAL            ; added for Rival rematch
 	const TOGGLE_HALL_OF_FAME_OAK                ; first victory only
@@ -331,4 +324,4 @@ DEF NUM_TOGGLEABLE_OBJECTS EQU const_value
 	const TOGGLE_MT_SILVER_3F_YELLOW             ; for Yellow battle
 DEF NUM_TOGGLEABLE_OBJECTS_CONT EQU const_value
 	; max objects = 256
-	; current total = 336 – 270 = 66
+	; current total = 324 – 265 + 7 = 66

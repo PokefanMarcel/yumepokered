@@ -1,5 +1,5 @@
 BrunosRoom_Script:
-	call BrunoShowOrHideExitBlock
+	call BrunoHideExitBlock
 	call EnableAutoTextBoxDrawing
 	ld hl, BrunosRoomTrainerHeaders
 	ld de, BrunosRoom_ScriptPointers
@@ -8,17 +8,14 @@ BrunosRoom_Script:
 	ld [wBrunosRoomCurScript], a
 	ret
 
-BrunoShowOrHideExitBlock: ; marcelnote - optimized
+BrunoHideExitBlock: ; marcelnote - optimized and modified for Bruno rematch
 	ld hl, wCurrentMapScriptFlags
 	bit BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
 	res BIT_CUR_MAP_LOADED_1, [hl]
-;	CheckEvent EVENT_BEAT_BRUNOS_ROOM_TRAINER_0 ; marcelnote - Bruno rematch
 	CheckEitherEventSet EVENT_BEAT_BRUNOS_ROOM_TRAINER_0, EVENT_BEAT_BRUNOS_ROOM_TRAINER_1
-	ld a, $24 ; closed
-	jr z, .setExitBlock
+	ret z
 	ld a, $5  ; open
-.setExitBlock
 	ld [wNewTileBlockID], a
 	lb bc, 0, 2
 	predef_jump ReplaceTileBlock
@@ -105,20 +102,13 @@ BrunosRoomBrunoEndBattleScript:
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, ResetBrunoScript
-	;;;;;; marcelnote - added for Bruno rematch
-	CheckEvent EVENT_BECAME_CHAMPION
-	ld a, TEXT_BRUNOSROOM_BRUNO_REMATCH
-	jr nz, .rematch
 	ld a, TEXT_BRUNOSROOM_BRUNO
-.rematch
-	;;;;;;
 	ldh [hTextID], a
 	jp DisplayTextID
 
 BrunosRoom_TextPointers:
 	def_text_pointers
 	dw_const BrunosRoomBrunoText,            TEXT_BRUNOSROOM_BRUNO
-	dw_const BrunosRoomBrunoRematchText,     TEXT_BRUNOSROOM_BRUNO_REMATCH ; marcelnote - Bruno rematch
 	dw_const BrunosRoomBrunoDontRunAwayText, TEXT_BRUNOSROOM_BRUNO_DONT_RUN_AWAY
 
 BrunosRoomTrainerHeaders:
@@ -129,9 +119,15 @@ BrunosRoomTrainerHeader1: ; marcelnote - Bruno rematch
 	trainer EVENT_BEAT_BRUNOS_ROOM_TRAINER_1, 0, BrunosRoomBrunoRematchBeforeBattleText, BrunosRoomBrunoRematchEndBattleText, BrunosRoomBrunoRematchAfterBattleText
 	db -1 ; end
 
-BrunosRoomBrunoText:
+BrunosRoomBrunoText: ; marcelnote - modified for Bruno rematch
 	text_asm
+	CheckEvent EVENT_BECAME_CHAMPION
 	ld hl, BrunosRoomTrainerHeader0
+	jr z, .gotTrainer
+	ld hl, BrunosRoomTrainerHeader1
+	ld a, 2
+	ld [wMapSpriteExtraData + (BRUNOSROOM_BRUNO - 1) * 2 + 1], a ; overwrite trainer id
+.gotTrainer
 	call TalkToTrainer
 	rst TextScriptEnd
 
@@ -150,13 +146,6 @@ BrunosRoomBrunoAfterBattleText: ; marcelnote - added map name to text label
 BrunosRoomBrunoDontRunAwayText:
 	text_far _BrunosRoomBrunoDontRunAwayText
 	text_end
-
-; marcelnote - Bruno rematch texts
-BrunosRoomBrunoRematchText:
-	text_asm
-	ld hl, BrunosRoomTrainerHeader1
-	call TalkToTrainer
-	rst TextScriptEnd
 
 BrunosRoomBrunoRematchBeforeBattleText:
 	text_far _BrunosRoomBrunoRematchBeforeBattleText

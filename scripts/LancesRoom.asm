@@ -43,7 +43,7 @@ LancesRoom_ScriptPointers:
 	dw_const DoRet,                                 SCRIPT_LANCESROOM_NOOP ; PureRGB - DoRet
 
 LancesRoomDefaultScript:
-	CheckEvent EVENT_BEAT_LANCE
+	CheckEitherEventSet EVENT_BEAT_LANCES_ROOM_TRAINER_0, EVENT_BEAT_LANCES_ROOM_TRAINER_1
 	ret nz
 	ld hl, LanceTriggerMovementCoords
 	call ArePlayerCoordsInArray
@@ -53,13 +53,7 @@ LancesRoomDefaultScript:
 	ld a, [wCoordIndex]
 	cp $3  ; Is player standing next to Lance's sprite?
 	jr nc, .notStandingNextToLance
-	;;;;;; marcelnote - added for Lance rematch
-	CheckEvent EVENT_BECAME_CHAMPION
-	ld a, TEXT_LANCESROOM_LANCE_REMATCH
-	jr nz, .rematch
 	ld a, TEXT_LANCESROOM_LANCE
-.rematch
-	;;;;;;
 	ldh [hTextID], a
 	jp DisplayTextID
 .notStandingNextToLance
@@ -86,13 +80,7 @@ LancesRoomLanceEndBattleScript:
 	ld a, [wIsInBattle]
 	cp $ff
 	jr z, ResetLanceScript
-	;;;;;; marcelnote - added for Lance rematch
-	CheckEvent EVENT_BECAME_CHAMPION
-	ld a, TEXT_LANCESROOM_LANCE_REMATCH
-	jr nz, .rematch
 	ld a, TEXT_LANCESROOM_LANCE
-.rematch
-	;;;;;;
 	ldh [hTextID], a
 	jp DisplayTextID
 
@@ -132,7 +120,6 @@ LancesRoomPlayerIsMovingScript:
 LancesRoom_TextPointers:
 	def_text_pointers
 	dw_const LancesRoomLanceText,        TEXT_LANCESROOM_LANCE
-	dw_const LancesRoomLanceRematchText, TEXT_LANCESROOM_LANCE_REMATCH
 
 LancesRoomTrainerHeaders:
 	def_trainers
@@ -142,9 +129,15 @@ LancesRoomTrainerHeader1: ; marcelnote - Lance rematch
 	trainer EVENT_BEAT_LANCES_ROOM_TRAINER_1, 0, LancesRoomLanceRematchBeforeBattleText, LancesRoomLanceRematchEndBattleText, LancesRoomLanceRematchAfterBattleText
 	db -1 ; end
 
-LancesRoomLanceText:
+LancesRoomLanceText: ; marcelnote - modified for Lance rematch
 	text_asm
+	CheckEvent EVENT_BECAME_CHAMPION
 	ld hl, LancesRoomTrainerHeader0
+	jr z, .gotTrainer
+	ld hl, LancesRoomTrainerHeader1
+	ld a, 2
+	ld [wMapSpriteExtraData + (LANCESROOM_LANCE - 1) * 2 + 1], a ; overwrite trainer id
+.gotTrainer
 	call TalkToTrainer
 	rst TextScriptEnd
 
@@ -158,16 +151,7 @@ LancesRoomLanceEndBattleText:
 
 LancesRoomLanceAfterBattleText:
 	text_far _LancesRoomLanceAfterBattleText
-	text_asm
-	SetEvent EVENT_BEAT_LANCE
-	rst TextScriptEnd
-
-; marcelnote - Lance rematch texts
-LancesRoomLanceRematchText:
-	text_asm
-	ld hl, LancesRoomTrainerHeader1
-	call TalkToTrainer
-	rst TextScriptEnd
+	text_end
 
 LancesRoomLanceRematchBeforeBattleText:
 	text_far _LancesRoomLanceRematchBeforeBattleText
@@ -179,6 +163,4 @@ LancesRoomLanceRematchEndBattleText:
 
 LancesRoomLanceRematchAfterBattleText:
 	text_far _LancesRoomLanceRematchAfterBattleText
-	text_asm
-	SetEvent EVENT_BEAT_LANCE
-	rst TextScriptEnd
+	text_end

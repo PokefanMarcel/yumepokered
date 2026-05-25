@@ -1,5 +1,5 @@
 LoreleisRoom_Script:
-	call LoreleiShowOrHideExitBlock
+	call LoreleiHideExitBlock
 	call EnableAutoTextBoxDrawing
 	ld hl, LoreleisRoomTrainerHeaders
 	ld de, LoreleisRoom_ScriptPointers
@@ -8,18 +8,15 @@ LoreleisRoom_Script:
 	ld [wLoreleisRoomCurScript], a
 	ret
 
-LoreleiShowOrHideExitBlock: ; marcelnote - optimized
+LoreleiHideExitBlock: ; marcelnote - optimized and modified for Lorelei rematch
 	ld hl, wCurrentMapScriptFlags
 	bit BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
 	res BIT_CUR_MAP_LOADED_1, [hl]
 	SetEvent EVENT_STARTED_ELITE_4
-;	CheckEvent EVENT_BEAT_LORELEIS_ROOM_TRAINER_0 ; marcelnote - Lorelei rematch
 	CheckEitherEventSet EVENT_BEAT_LORELEIS_ROOM_TRAINER_0, EVENT_BEAT_LORELEIS_ROOM_TRAINER_1
-	ld a, $24 ; closed
-	jr z, .setExitBlock
+	ret z
 	ld a, $5  ; open
-.setExitBlock
 	ld [wNewTileBlockID], a
 	lb bc, 0, 2
 	predef_jump ReplaceTileBlock
@@ -106,20 +103,13 @@ LoreleisRoomLoreleiEndBattleScript:
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, ResetLoreleiScript
-	;;;;;; marcelnote - Lorelei rematch
-	CheckEvent EVENT_BECAME_CHAMPION
-	ld a, TEXT_LORELEISROOM_LORELEI_REMATCH
-	jr nz, .rematch
 	ld a, TEXT_LORELEISROOM_LORELEI
-.rematch
-	;;;;;;
 	ldh [hTextID], a
 	jp DisplayTextID
 
 LoreleisRoom_TextPointers:
 	def_text_pointers
 	dw_const LoreleisRoomLoreleiText,            TEXT_LORELEISROOM_LORELEI
-	dw_const LoreleisRoomLoreleiRematchText,     TEXT_LORELEISROOM_LORELEI_REMATCH ; marcelnote - Lorelei rematch
 	dw_const LoreleisRoomLoreleiDontRunAwayText, TEXT_LORELEISROOM_DONT_RUN_AWAY
 
 LoreleisRoomTrainerHeaders:
@@ -130,9 +120,15 @@ LoreleisRoomTrainerHeader1: ; marcelnote - Lorelei rematch
 	trainer EVENT_BEAT_LORELEIS_ROOM_TRAINER_1, 0, LoreleisRoomLoreleiRematchBeforeBattleText, LoreleisRoomLoreleiRematchEndBattleText, LoreleisRoomLoreleiRematchAfterBattleText
 	db -1 ; end
 
-LoreleisRoomLoreleiText:
+LoreleisRoomLoreleiText: ; marcelnote - modified for Lorelei rematch
 	text_asm
+	CheckEvent EVENT_BECAME_CHAMPION
 	ld hl, LoreleisRoomTrainerHeader0
+	jr z, .gotTrainer
+	ld hl, LoreleisRoomTrainerHeader1
+	ld a, 2
+	ld [wMapSpriteExtraData + (LORELEISROOM_LORELEI - 1) * 2 + 1], a ; overwrite trainer id
+.gotTrainer
 	call TalkToTrainer
 	rst TextScriptEnd
 
@@ -151,13 +147,6 @@ LoreleisRoomLoreleiAfterBattleText:
 LoreleisRoomLoreleiDontRunAwayText:
 	text_far _LoreleisRoomLoreleiDontRunAwayText
 	text_end
-
-; marcelnote - Lorelei rematch texts
-LoreleisRoomLoreleiRematchText:
-	text_asm
-	ld hl, LoreleisRoomTrainerHeader1
-	call TalkToTrainer
-	rst TextScriptEnd
 
 LoreleisRoomLoreleiRematchBeforeBattleText:
 	text_far _LoreleisRoomLoreleiRematchBeforeBattleText

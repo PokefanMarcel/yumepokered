@@ -1,5 +1,5 @@
 AgathasRoom_Script:
-	call AgathaShowOrHideExitBlock
+	call AgathaHideExitBlock
 	call EnableAutoTextBoxDrawing
 	ld hl, AgathasRoomTrainerHeaders
 	ld de, AgathasRoom_ScriptPointers
@@ -8,17 +8,14 @@ AgathasRoom_Script:
 	ld [wAgathasRoomCurScript], a
 	ret
 
-AgathaShowOrHideExitBlock: ; marcelnote - optimized
+AgathaHideExitBlock: ; marcelnote - optimized and modified for Agatha rematch
 	ld hl, wCurrentMapScriptFlags
 	bit BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
 	res BIT_CUR_MAP_LOADED_1, [hl]
-;	CheckEvent EVENT_BEAT_AGATHAS_ROOM_TRAINER_0 ; marcelnote - Agatha rematch
 	CheckEitherEventSet EVENT_BEAT_AGATHAS_ROOM_TRAINER_0, EVENT_BEAT_AGATHAS_ROOM_TRAINER_1
-	ld a, $3b ; closed
-	jr z, .setExitBlock
+	ret z
 	ld a, $e  ; open
-.setExitBlock
 	ld [wNewTileBlockID], a
 	lb bc, 0, 2
 	predef_jump ReplaceTileBlock
@@ -105,13 +102,7 @@ AgathasRoomAgathaEndBattleScript:
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, ResetAgathaScript
-	;;;;;; marcelnote - added for Agatha rematch
-	CheckEvent EVENT_BECAME_CHAMPION
-	ld a, TEXT_AGATHASROOM_AGATHA_REMATCH
-	jr nz, .rematch
 	ld a, TEXT_AGATHASROOM_AGATHA
-.rematch
-	;;;;;;
 	ldh [hTextID], a
 	call DisplayTextID
 	ld a, SCRIPT_CHAMPIONSROOM_PLAYER_ENTERS
@@ -121,7 +112,6 @@ AgathasRoomAgathaEndBattleScript:
 AgathasRoom_TextPointers:
 	def_text_pointers
 	dw_const AgathasRoomAgathaText,            TEXT_AGATHASROOM_AGATHA
-	dw_const AgathasRoomAgathaRematchText,     TEXT_AGATHASROOM_AGATHA_REMATCH ; marcelnote - Agatha rematch
 	dw_const AgathasRoomAgathaDontRunAwayText, TEXT_AGATHASROOM_AGATHA_DONT_RUN_AWAY
 
 AgathasRoomTrainerHeaders:
@@ -132,9 +122,15 @@ AgathasRoomTrainerHeader1: ; marcelnote - Agatha rematch
 	trainer EVENT_BEAT_AGATHAS_ROOM_TRAINER_1, 0, AgathasRoomAgathaRematchBeforeBattleText, AgathasRoomAgathaRematchEndBattleText, AgathasRoomAgathaRematchAfterBattleText
 	db -1 ; end
 
-AgathasRoomAgathaText:
+AgathasRoomAgathaText: ; marcelnote - modified for Agatha rematch
 	text_asm
+	CheckEvent EVENT_BECAME_CHAMPION
 	ld hl, AgathasRoomTrainerHeader0
+	jr z, .gotTrainer
+	ld hl, AgathasRoomTrainerHeader1
+	ld a, 2
+	ld [wMapSpriteExtraData + (AGATHASROOM_AGATHA - 1) * 2 + 1], a ; overwrite trainer id
+.gotTrainer
 	call TalkToTrainer
 	rst TextScriptEnd
 
@@ -153,13 +149,6 @@ AgathasRoomAgathaAfterBattleText: ; marcelnote - added map name to text label
 AgathasRoomAgathaDontRunAwayText:
 	text_far _AgathasRoomAgathaDontRunAwayText
 	text_end
-
-; marcelnote - Agatha rematch texts
-AgathasRoomAgathaRematchText:
-	text_asm
-	ld hl, AgathasRoomTrainerHeader1
-	call TalkToTrainer
-	rst TextScriptEnd
 
 AgathasRoomAgathaRematchBeforeBattleText:
 	text_far _AgathasRoomAgathaRematchBeforeBattleText

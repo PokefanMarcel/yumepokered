@@ -817,8 +817,7 @@ DEF INDIGO_PLATEAU_EVENTS_START EQU const_value
 	const_skip 2
 	const EVENT_BEAT_LANCES_ROOM_TRAINER_0
 	const EVENT_BEAT_LANCES_ROOM_TRAINER_1 ; marcelnote - Lance rematch
-	const_skip 2                           ; marcelnote - adjusted down
-	const EVENT_BEAT_LANCE
+	const_skip 3                           ; marcelnote - adjusted down
 	const EVENT_LANCES_ROOM_LOCK_DOOR
 	const EVENT_BEAT_CHAMPION_RIVAL
 	; marcelnote - 7 new events for Gym Leader rematches
