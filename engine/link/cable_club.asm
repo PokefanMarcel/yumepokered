@@ -9,9 +9,10 @@ CableClub_DoBattleOrTrade:
 	call LoadFontTilePatterns
 	call LoadHpBarAndStatusTilePatterns
 	call LoadTrainerInfoTextBoxTiles
+	ld b, SET_PAL_GENERIC ; marcelnote - added SGB palette to Mon selection screen
+	call RunPaletteCommand
 	hlcoord 3, 8
-	ld b, 2
-	ld c, 12
+	lb bc, 2, 12
 	call CableClub_TextBoxBorder
 	hlcoord 4, 10
 	ld de, PleaseWaitString
@@ -20,7 +21,7 @@ CableClub_DoBattleOrTrade:
 	xor a
 	ld [hli], a
 	ld [hl], $50
-	; fall through
+	; fallthrough
 
 ; This is called after completing a trade.
 CableClub_DoBattleOrTradeAgain:
@@ -215,14 +216,13 @@ CableClub_DoBattleOrTradeAgain:
 	cp SERIAL_PATCH_LIST_PART_TERMINATOR
 	jr z, .finishedPartyMonsPatchListPart
 	push hl
-	push bc
-	ld b, 0
 	dec a
-	ld c, a
-	add hl, bc
-	ld a, SERIAL_NO_DATA_BYTE
-	ld [hl], a
-	pop bc
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a ; hl = hl + a
+	ld [hl], SERIAL_NO_DATA_BYTE
 	pop hl
 	jr .unpatchPartyMonsLoop
 .finishedPartyMonsPatchListPart
@@ -244,14 +244,13 @@ CableClub_DoBattleOrTradeAgain:
 	cp SERIAL_PATCH_LIST_PART_TERMINATOR
 	jr z, .finishedEnemyMonsPatchListPart
 	push hl
-	push bc
-	ld b, 0
 	dec a
-	ld c, a
-	add hl, bc
-	ld a, SERIAL_NO_DATA_BYTE
-	ld [hl], a
-	pop bc
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a ; hl = hl + a
+	ld [hl], SERIAL_NO_DATA_BYTE
 	pop hl
 	jr .unpatchEnemyMonsLoop
 .finishedEnemyMonsPatchListPart
@@ -468,8 +467,7 @@ TradeCenter_SelectMon:
 .displayStatsTradeMenu
 	push af
 	hlcoord 0, 14
-	ld b, 2
-	ld c, 18
+	lb bc, 2, 18
 	call CableClub_TextBoxBorder
 	hlcoord 2, 16
 	ld de, .statsTrade
@@ -577,7 +575,7 @@ TradeCenter_SelectMon:
 	ld a, [wSerialSyncAndExchangeNybbleReceiveData]
 	cp $f ; did the other person choose Cancel too?
 	jr nz, .cancelMenuItem_Loop
-	; fall through
+	; fallthrough
 
 ReturnToCableClubRoom:
 	call GBPalWhiteOutWithDelay3
@@ -603,8 +601,7 @@ TradeCenter_DrawCancelBox:
 	ld bc, 2 * SCREEN_WIDTH + 9
 	call FillMemory
 	hlcoord 0, 15
-	ld b, 1
-	ld c, 9
+	lb bc, 1, 9
 	call CableClub_TextBoxBorder
 	hlcoord 2, 16
 	ld de, CancelTextString
@@ -626,18 +623,18 @@ TradeCenter_DisplayStats:
 	ld [wWhichPokemon], a
 	predef StatusScreen
 	call GBPalNormal
+	ld b, SET_PAL_GENERIC ; marcelnote - added SGB palette to Mon selection screen
+	call RunPaletteCommand
 	call LoadTrainerInfoTextBoxTiles
 	call TradeCenter_DrawPartyLists
 	jr TradeCenter_DrawCancelBox
 
 TradeCenter_DrawPartyLists:
 	hlcoord 0, 0
-	ld b, 6
-	ld c, 18
+	lb bc, 6, 18
 	call CableClub_TextBoxBorder
 	hlcoord 0, 8
-	ld b, 6
-	ld c, 18
+	lb bc, 6, 18
 	call CableClub_TextBoxBorder
 	hlcoord 5, 0
 	ld de, wPlayerName
@@ -650,7 +647,7 @@ TradeCenter_DrawPartyLists:
 	call TradeCenter_PrintPartyListNames
 	hlcoord 2, 9
 	ld de, wEnemyPartySpecies
-	; fall through
+	; fallthrough
 
 TradeCenter_PrintPartyListNames:
 	ld c, $0
@@ -662,11 +659,9 @@ TradeCenter_PrintPartyListNames:
 	push bc
 	push hl
 	push de
-	push hl
 ;	ld a, c
 ;	ldh [hPastLeadingZeros], a ; marcelnote - what is that for? deleted these hram registers
 	call GetMonName
-	pop hl
 	call PlaceString
 	pop de
 	inc de
@@ -686,8 +681,7 @@ TradeCenter_Trade:
 	ld [wMenuWatchMovingOutOfBounds], a
 	ld [wMenuJoypadPollCount], a
 	hlcoord 0, 12
-	ld b, 4
-	ld c, 18
+	lb bc, 4, 18
 	call CableClub_TextBoxBorder
 	ld a, [wTradingWhichPlayerMon]
 	ld hl, wPartySpecies
@@ -728,8 +722,7 @@ TradeCenter_Trade:
 	ld a, $1
 	ld [wSerialExchangeNybbleSendData], a
 	hlcoord 0, 12
-	ld b, 4
-	ld c, 18
+	lb bc, 4, 18
 	call CableClub_TextBoxBorder
 	hlcoord 1, 14
 	ld de, TradeCanceled
@@ -745,8 +738,7 @@ TradeCenter_Trade:
 	jr nz, .doTrade
 ; if the other person cancelled
 	hlcoord 0, 12
-	ld b, 4
-	ld c, 18
+	lb bc, 4, 18
 	call CableClub_TextBoxBorder
 	hlcoord 1, 14
 	ld de, TradeCanceled
@@ -834,8 +826,8 @@ TradeCenter_Trade:
 	call DelayFrames
 	call ClearScreen
 	call LoadHpBarAndStatusTilePatterns
-	;xor a
-	;ld [wUnusedFlag], a
+;	xor a
+;	ld [wUnusedFlag], a
 	ldh a, [hSerialConnectionStatus]
 	cp USING_EXTERNAL_CLOCK
 	jr z, .usingExternalClock
@@ -847,12 +839,13 @@ TradeCenter_Trade:
 	callfar TryEvolvingMon
 	call ClearScreen
 	call LoadTrainerInfoTextBoxTiles
+	ld b, SET_PAL_GENERIC ; marcelnote - added SGB palette to Mon selection screen
+	call RunPaletteCommand
 	call Serial_PrintWaitingTextAndSyncAndExchangeNybble
 	ld c, 40
 	call DelayFrames
 	hlcoord 0, 12
-	ld b, 4
-	ld c, 18
+	lb bc, 4, 18
 	call CableClub_TextBoxBorder
 	hlcoord 1, 14
 	ld de, TradeCompleted
