@@ -1358,7 +1358,6 @@ _SafariZoneAngryText::
 	line "is angry!"
 	prompt
 
-; money related
 _PickUpPayDayMoneyText::
 	text "<PLAYER> picked up"
 	line "¥@"

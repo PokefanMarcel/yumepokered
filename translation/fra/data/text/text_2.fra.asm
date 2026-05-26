@@ -1449,7 +1449,6 @@ _SafariZoneAngryText::
 	line "sauvage se fâche!"
 	prompt
 
-; money related
 _PickUpPayDayMoneyText::
 	text "<PLAYER> ramasse:"
 	line "¥@"
