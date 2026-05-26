@@ -442,7 +442,7 @@ DisplayChangeBoxMenu:
 	ld a, 1
 	ld [wTopMenuItemY], a
 
-IF DEF(_FRA) || DEF(_ESP) ; marcelnote - different layout in French and Spanish
+IF DEF(_FRA) || DEF(_ESP) ; marcelnote - different layout in French/Spanish
 	ld a, 10
 	ld [wTopMenuItemX], a
 ELSE
@@ -458,7 +458,7 @@ ENDC
 	ld [wLastMenuItem], a
 	hlcoord 0, 0
 
-IF DEF(_FRA) ; marcelnote - different layout in French
+IF DEF(_FRA) || DEF(_ESP) ; marcelnote - different layout in French/Spanish
 	lb bc, 2, 7
 ELSE
 	lb bc, 2, 9
@@ -468,7 +468,7 @@ ENDC
 	ld hl, ChooseABoxText
 	call PrintText
 
-IF DEF(_FRA) || DEF(_ESP) ; marcelnote - different layout in French and Spanish
+IF DEF(_FRA) || DEF(_ESP) ; marcelnote - different layout in French/Spanish
 	hlcoord 9, 0
 	lb bc, 12, 9
 ELSE
@@ -481,7 +481,7 @@ ENDC
 	set BIT_SINGLE_SPACED_LINES, [hl]
 	ld de, BoxNames
 
-IF DEF(_FRA) || DEF(_ESP) ; marcelnote - different layout in French and Spanish
+IF DEF(_FRA) || DEF(_ESP) ; marcelnote - different layout in French/Spanish
 	hlcoord 11, 1
 ELSE
 	hlcoord 13, 1
@@ -496,7 +496,7 @@ ENDC
 	jr c, .singleDigitBoxNum
 	sub 10
 
-IF DEF(_FRA) ; marcelnote - different layout in French
+IF DEF(_FRA) || DEF(_ESP) ; marcelnote - different layout in French/Spanish
 	hlcoord 6, 2
 ELSE
 	hlcoord 8, 2
@@ -506,7 +506,7 @@ ENDC
 .singleDigitBoxNum
 	add '1'
 
-IF DEF(_FRA) ; marcelnote - different layout in French
+IF DEF(_FRA) || DEF(_ESP) ; marcelnote - different layout in French/Spanish
 	ldcoord_a 7, 2
 ELSE
 	ldcoord_a 9, 2

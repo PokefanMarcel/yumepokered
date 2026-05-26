@@ -14,4 +14,4 @@ BoxNames:
 	next "CAJA 12@"
 
 BoxNoText:
-	db "CAJA Nº@"
+	db "CAJA @" ; marcelnote - modified from "CAJA Nº@"
