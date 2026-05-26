@@ -159,20 +159,19 @@ CopyVideoDataDouble::
 	ldh [hAutoBGTransferEnabled], a
 	ret
 
-ClearScreenArea::
+ClearScreenArea:: ; marcelnote - optimized
 ; Clear tilemap area bxc at hl.
+	ld a, SCREEN_WIDTH
+	sub c
+	ld e, a    ; e = SCREEN_WIDTH - c
 	ld a, ' '
-	ld de, SCREEN_WIDTH
 .loopRows
-	push hl
-	push bc
+	ld d, c
 .loopTiles
 	ld [hli], a
-	dec c
+	dec d
 	jr nz, .loopTiles
-	pop bc
-	pop hl
-	add hl, de
+	add hl, de ; d = 0
 	dec b
 	jr nz, .loopRows
 	ret
