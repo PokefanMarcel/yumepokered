@@ -40,5 +40,5 @@ _CinnabarIslandGymSignText::
 	done
 
 _CinnabarIslandVolcanoSignText:: ; marcelnote - Cinnabar Volcano
-	text "CINNABAR VOLCANO"
+	text "VOLCÁN CANELA"
 	done
