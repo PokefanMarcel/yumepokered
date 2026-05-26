@@ -17,6 +17,7 @@ _PewterGymBrockPreBattleText::
 	cont "bien! ¡Enséñame"
 	cont "lo que vales!"
 	done
+
 _PewterGymBrockPostBattleAdviceText::
 	text "¡En el mundo hay"
 	line "todo tipo de"
@@ -171,6 +172,8 @@ _PewterGymGuidePostBattleText::
 	line "¡Tienes madera"
 	cont "de campeón!"
 	done
+
+; TODO - Spanish translation
 _PewterGymBrockRematchPreBattleText:: ; marcelnote - Brock rematch
 	text "Welcome back,"
 	line "<PLAYER>."

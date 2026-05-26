@@ -142,6 +142,8 @@ _CeruleanGymGymGuideBeatMistyText::
 	line "un equipo súper"
 	cont "fuerte!"
 	done
+
+; TODO - Spanish translation
 _CeruleanGymMistyRematchPreBattleText:: ; marcelnote - Misty rematch
 	text "Welcome back,"
 	line "<PLAYER>."
