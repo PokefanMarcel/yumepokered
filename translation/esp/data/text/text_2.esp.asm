@@ -1280,7 +1280,10 @@ _BuildingRageText::
 	prompt
 
 _MirrorMoveFailedText::
-	text "¡El MOVIMIENTO en"
+;	text "¡El MOVIMIENTO en" ; original
+;	next "ESPEJO falló!"
+
+	text "¡El movimiento" ; marcelnote - adapted for new name
 	next "ESPEJO falló!"
 	prompt
 

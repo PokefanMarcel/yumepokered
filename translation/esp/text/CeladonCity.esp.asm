@@ -55,7 +55,7 @@ _CeladonCityGramps3ReceivedTM41Text::
 
 _CeladonCityGramps3TM41ExplanationText::
 	text "¡La MT41 enseña"
-	line "el AMORTIGUADOR!"
+	line "la OVOCURACIÓN!" ; marcelnote - was "el AMORTIGUADOR!"
 
 	para "¡Éste sólo puede"
 	line "ser usado por un"

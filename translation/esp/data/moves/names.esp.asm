@@ -21,7 +21,7 @@ MoveNames::
 	li "REMOLINO"
 	li "VUELO"
 	li "ATADURA"
-	li "PORTAZO"
+	li "ATIZAR" ; marcelnote - was PORTAZO
 	li "LÁTIGO CEPA"
 	li "PISOTÓN"
 	li "DOBLE PATADA"
@@ -35,9 +35,9 @@ MoveNames::
 	li "PERFORADOR"
 	li "PLACAJE"
 	li "GOLPE CUERPO"
-	li "REPETICIÓN"
+	li "CONSTRICCIÓN" ; marcelnote - was REPETICIÓN
 	li "DERRIBO"
-	li "GOLPE"
+	li "SAñA" ; marcelnote - was GOLPE
 	li "DOBLE FILO"
 	li "LÁTIGO"
 	li "PICOTAZO VEN."
@@ -68,8 +68,8 @@ MoveNames::
 	li "PICO TALADRO"
 	li "SUMISIÓN"
 	li "PATADA BAJA"
-	li "CONTADOR"
-	li "MOV. SÍSMICO"
+	li "CONTRAATAQUE" ; marcelnote - was CONTADOR
+	li "SÍSMICO"      ; marcelnote - was MOV. SÍSMICO
 	li "FUERZA"
 	li "ABSORBER"
 	li "MEGA AGOTAR"
@@ -119,7 +119,7 @@ MoveNames::
 	li "FOCO ENERGÍA"
 	li "VENGANZA"
 	li "METRÓNOMO"
-	li "MOV. ESPEJO"
+	li "ESPEJO" ; marcenote - was MOV. ESPEJO
 	li "AUTODESTRUC."
 	li "BOMBA HUEVO"
 	li "LENGÜETAZO"
@@ -129,18 +129,18 @@ MoveNames::
 	li "LLAMARADA"
 	li "CASCADA"
 	li "TENAZA"
-	li "RAPIDEZ"
+	li "METEOROS" ; marcelnote - was RAPIDEZ
 	li "CABEZAZO"
 	li "CLAVO CAñÓN"
 	li "RESTRICCIÓN"
 	li "AMNESIA"
 	li "KINÉTICO"
-	li "AMORTIGUADOR"
+	li "OVOCURACIÓN" ; marcelnote - was AMORTIGUADOR
 	li "PATADA S.ALTA"
 	li "DESLUMBRAR"
 	li "COME SUEñOS"
 	li "GAS VENENOSO"
-	li "PRESA"
+	li "BOMBARDEO" ; marcelnote - was PRESA
 	li "CHUPA VIDAS"
 	li "BESO AMOROSO"
 	li "ATAQUE AÉREO"
@@ -168,5 +168,5 @@ MoveNames::
 	li "BOLA VOLTIO"  ; marcelnote - new move
 	li "FUEGO FATUO"  ; marcelnote - new move
 	li "INFORTUNIO"   ; marcelnote - new move
-	li "COMBATE"
+	li "FORCEJEO"     ; marcelnote - was COMBATE
 	assert_list_length NUM_ATTACKS

@@ -23,7 +23,7 @@ _Route12Gate2FBrunetteGirlReceivedTM39Text::
 _Route12Gate2FBrunetteGirlTM39ExplanationText::
 	text "¡La MT39 es un"
 	line "ataque que se"
-	cont "llama RAPIDEZ!"
+	cont "llama METEOROS!" ; marcelnote - was RAPIDEZ
 
 	para "Es muy preciso."
 	line "Úsalo en aquellas"

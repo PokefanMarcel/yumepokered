@@ -85,8 +85,9 @@ _CeladonMart3FClerkReceivedTM18Text::
 	text_end
 
 _CeladonMart3FClerkTM18ExplanationText::
-	text "MT18 es CONTADOR."
-	line "¡Venga vamos!..."
+	text "MT18 es" ; marcelnote - modified from CONTADOR
+	line "CONTRAATAQUE."
+	cont "¡Venga vamos!..."
 	cont "¡Buena suerte!"
 	done
 

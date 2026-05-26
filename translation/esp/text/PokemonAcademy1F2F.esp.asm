@@ -32,7 +32,7 @@ _PokemonAcademy1FCooltrainerFText::
 _PokemonAcademy1FYoungsterText::
 	text "I'm trying to"
 	line "learn about"
-	cont "the move SLAM."
+	cont "the move SLAM." ; ATIZAR
 
 	para "I thought it was"
 	line "normal, but my"
