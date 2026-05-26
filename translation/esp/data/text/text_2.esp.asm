@@ -167,14 +167,17 @@ _GymStatueText2::
 	done
 
 _GymStatueText3:: ; marcelnote - added for Yellow
+	text "LÍDER GIMNASIO"
+	line "#MON de"
+	cont "@"
 	text_ram wGymCityName
-	text_start
-	line "#MON GYM"
-	cont "LEADER: @"
+	text ":"
+	cont "@"
 	text_ram wGymLeaderName
 	text_start
 
-	para "WINNING TRAINERS:"
+	para "ENTRENADORES"
+	line "GANADORES:"
 	line "<RIVAL>"
 	cont "<PLAYER>"
 	cont "YELLOW"
@@ -191,6 +194,7 @@ _NewBicycleText::
 	line "y reluciente!"
 	done
 
+; TODO - Spanish translation
 _NewSurfboardText::  ; marcelnote - new for Mandarin Surf Shop
 	text "A shiny new"
 	line "SURFBOARD!"
@@ -555,12 +559,12 @@ _Route12GateRightBinocularsText::
 	done
 
 _Route15GateLeftBinocularsArticunoText:: ; marcelnote - added alternative text after Articuno is fought
-	text "Looked into the"
-	line "binoculars..."
+	text "Miraste por los"
+	line "prismáticos..."
 
-	para "A large, shining"
-	line "bird is flying"
-	cont "toward the sea."
+	para "Un pájaro grande"
+	line "y brillante vuela"
+	cont "hacia el mar."
 	done
 
 ; TODO - Spanish translation
@@ -572,13 +576,12 @@ _Route15GateLeftBinocularsNoArticunoText:: ; marcelnote - added alternative text
 	line "under the sun."
 	done
 
-; TODO - Spanish translation
 _Route15GateRightBinocularsText::
-	text "Looked into the"
-	line "binoculars."
+	text "Miraste por los"
+	line "prismáticos."
 
-	para "It looks like a"
-	line "small island!"
+	para "¡Parece una"
+	line "pequeña isla!"
 	done
 
 _Route16GateLeftBinocularsText::
@@ -864,9 +867,16 @@ _PokemonBooksText::
 	cont "los #MON!"
 	done
 
+; TODO - Spanish translation
 _DiglettSculptureText::
-	text "Es una escultura"
-	line "de DIGLETT."
+;	text "Es una escultura" ; original Red/Blue
+;	line "de DIGLETT."
+;	text "It's a statue of" ; translation from shinpokered of original Japanese
+;	line "a fat Buddha."
+	text "It's an altar with" ; new version
+	line "a small statue."
+;	text "An altar with a" ; variant
+;	line "peaceful statue."
 	done
 
 _ElevatorText::
@@ -1184,7 +1194,7 @@ _ActorNameText::
 
 _UsedText:: ; marcelnote - merged _Used1Text and _Used2Text
 	text_start
-	line "used @"
+	line "usó @"
 	text_end
 
 _UsedInsteadText::
@@ -1300,6 +1310,7 @@ _GainedText::
 	line "@"
 	text_end
 
+; TODO - Spanish translation
 _ExpAllSharedText:: ; marcelnote - shortened ExpAll messages
 	text "EXP.ALL shared"
 	line "@"
@@ -1436,7 +1447,6 @@ _SafariZoneAngryText::
 	cont "enfadado!"
 	prompt
 
-; money related
 _PickUpPayDayMoneyText::
 	text "¡<PLAYER> recogió"
 	line "@"
@@ -1650,6 +1660,7 @@ _TossHowManyText::
 	text "¿Cuántos?"
 	done
 
+; TODO - Spanish translation
 _TMItContainsText:: ; marcelnote - new for TM printing
 	text "It contains"
 	line "@"
@@ -1803,6 +1814,7 @@ _LinkCanceledText::
 	line "cancelado."
 	done
 
+; TODO - Spanish translation
 _ColosseumUnavailableText:: ; marcelnote - disable Colosseum
 	text "I'm sorry."
 	line "The COLOSSEUM is"
@@ -1874,6 +1886,7 @@ _OakSpeechText3::
 	cont "¡Adelante!"
 	done
 
+; TODO - Spanish translation
 _BoyGirlText:: ;joenote - add female player
 	text "Are you a boy or"
 	line "a girl?"
