@@ -9,7 +9,7 @@ FuchsiaCityName:     db "CIUDAD FUCSIA@"
 CinnabarIslandName:  db "ISLA CANELA@"
 IndigoPlateauName:   db "MESETA AñIL@"
 SaffronCityName:     db "CIUDAD AZAFRÁN@"
-MandarinIslandName:  db "MANDARIN ISLAND@" ; marcelnote - new location
+MandarinIslandName:  db "ISLA MANDARINA@" ; marcelnote - new location
 Route1Name:          db "RUTA 1@"
 Route2Name:          db "RUTA 2@"
 Route3Name:          db "RUTA 3@"
@@ -53,16 +53,10 @@ PokemonMansionName:  db "MANSIÓN PKMN@"
 SafariZoneName:      db "ZONA SAFARI@"
 CeruleanCaveName:    db "MAZMORRA RARA@"
 PowerPlantName:      db "CENTRAL ENERGÍA@"
-CinnabarVolcanoName: db "CINNABAR VOLCANO@" ; marcelnote - new location
-; TODO - Spanish translation
-MtMoonSquareName:    db "MT.MOON SQUARE@"   ; marcelnote - new location
-; TODO - Spanish translation
-PokemonAcademyName:  db "#MON ACADEMY@"     ; marcelnote - new location
-; TODO - Spanish translation
-CeladonGroveName:    db "CELADON GROVE@"    ; marcelnote - new location
-; TODO - Spanish translation
-SilphFactoryName:    db "SILPH CO.FACTORY@" ; marcelnote - new location
-; TODO - Spanish translation
-MtSilverName:        db "MT.SILVER@"        ; marcelnote - new location
-; TODO - Spanish translation
-CitrusFerryName:     db "CITRUS FERRIES@"   ; marcelnote - new location
+CinnabarVolcanoName: db "VOLCÁN CANELA@"    ; marcelnote - new location
+MtMoonSquareName:    db "PLAZA MT. MOON@"   ; marcelnote - new location
+PokemonAcademyName:  db "#MON ACADEMY@"     ; marcelnote - new location ; TODO - Spanish translation
+CeladonGroveName:    db "CELADON GROVE@"    ; marcelnote - new location ; TODO - Spanish translation
+SilphFactoryName:    db "SILPH CO.FACTORY@" ; marcelnote - new location ; TODO - Spanish translation
+MtSilverName:        db "MT. PLATEADO@"     ; marcelnote - new location
+CitrusFerryName:     db "CITRUS FERRIES@"   ; marcelnote - new location ; TODO - Spanish translation
