@@ -6936,6 +6936,8 @@ LoadMonBackPic:
 
 IF DEF(_FRA)
 	INCLUDE "translation/fra/data/text/battle.fra.asm"
+ELIF DEF(_ESP)
+	INCLUDE "translation/esp/data/text/battle.esp.asm"
 ELSE
 	INCLUDE "data/text/battle.asm"
 ENDC
