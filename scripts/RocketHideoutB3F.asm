@@ -1,6 +1,6 @@
 RocketHideoutB3F_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, RocketHideout3TrainerHeaders
+	ld hl, RocketHideoutB3FTrainerHeaders
 	ld de, RocketHideoutB3F_ScriptPointers
 	ld a, [wRocketHideoutB3FCurScript]
 	call ExecuteCurMapScriptInTable
@@ -27,17 +27,17 @@ RocketHideoutB3F_TextPointers:
 	dw_const PickUpItemText,              TEXT_ROCKETHIDEOUTB3F_TM_DOUBLE_EDGE
 	dw_const PickUpItemText,              TEXT_ROCKETHIDEOUTB3F_RARE_CANDY
 
-RocketHideout3TrainerHeaders:
+RocketHideoutB3FTrainerHeaders:
 	def_trainers
-RocketHideout3TrainerHeader0:
-	trainer EVENT_BEAT_ROCKET_HIDEOUT_3_TRAINER_0, 2, RocketHideoutB3FRocket1BattleText, RocketHideoutB3FRocket1EndBattleText, RocketHideoutB3FRocket1AfterBattleText
-RocketHideout3TrainerHeader1:
-	trainer EVENT_BEAT_ROCKET_HIDEOUT_3_TRAINER_1, 4, RocketHideoutB3FRocket2BattleText, RocketHideoutB3FRocket2EndBattleText, RocketHideoutB3FRocket2AfterBattleText
+RocketHideoutB3FTrainerHeader0:
+	trainer EVENT_BEAT_ROCKET_HIDEOUT_B3F_TRAINER_0, 2, RocketHideoutB3FRocket1BattleText, RocketHideoutB3FRocket1EndBattleText, RocketHideoutB3FRocket1AfterBattleText
+RocketHideoutB3FTrainerHeader1:
+	trainer EVENT_BEAT_ROCKET_HIDEOUT_B3F_TRAINER_1, 4, RocketHideoutB3FRocket2BattleText, RocketHideoutB3FRocket2EndBattleText, RocketHideoutB3FRocket2AfterBattleText
 	db -1 ; end
 
 RocketHideoutB3FRocket1Text:
 	text_asm
-	ld hl, RocketHideout3TrainerHeader0
+	ld hl, RocketHideoutB3FTrainerHeader0
 	call TalkToTrainer
 	rst TextScriptEnd
 
@@ -55,7 +55,7 @@ RocketHideoutB3FRocket1AfterBattleText:
 
 RocketHideoutB3FRocket2Text:
 	text_asm
-	ld hl, RocketHideout3TrainerHeader1
+	ld hl, RocketHideoutB3FTrainerHeader1
 	call TalkToTrainer
 	rst TextScriptEnd
 

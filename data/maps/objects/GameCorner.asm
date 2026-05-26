@@ -17,7 +17,7 @@ GameCorner_Object:
 	def_warp_events
 	warp_event 15, 13, WARP_DOWN, LAST_MAP, 8
 	warp_event 16, 13, WARP_DOWN, LAST_MAP, 8
-	warp_event 17,  0, ANY_DIR,   ROCKET_HIDEOUT_B1F, 2
+	warp_event 17,  0, ANY_DIR,   ROCKET_HIDEOUT_B1F, 1 ; marcelnote - reorganized Rocket hideout warps
 
 	def_bg_events
 	bg_event  9,  0, TEXT_GAMECORNER_POSTER

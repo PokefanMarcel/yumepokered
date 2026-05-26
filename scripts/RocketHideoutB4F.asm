@@ -1,31 +1,28 @@
 RocketHideoutB4F_Script:
 	call RocketHideoutB4FDoorCallbackScript
 	call EnableAutoTextBoxDrawing
-	ld hl, RocketHideout4TrainerHeaders
+	ld hl, RocketHideoutB4FTrainerHeaders
 	ld de, RocketHideoutB4F_ScriptPointers
 	ld a, [wRocketHideoutB4FCurScript]
 	call ExecuteCurMapScriptInTable
 	ld [wRocketHideoutB4FCurScript], a
 	ret
 
-RocketHideoutB4FDoorCallbackScript:
+RocketHideoutB4FDoorCallbackScript: ; marcelnote - modified
 	ld hl, wCurrentMapScriptFlags
 	bit BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
 	res BIT_CUR_MAP_LOADED_1, [hl]
-	CheckEvent EVENT_ROCKET_HIDEOUT_4_DOOR_UNLOCKED
-	jr nz, .doorAlreadyUnlocked
-	CheckBothEventsSet EVENT_BEAT_ROCKET_HIDEOUT_4_TRAINER_0, EVENT_BEAT_ROCKET_HIDEOUT_4_TRAINER_1, 1
-	jr z, .unlockDoor
-	ld a, $2d ; Door block
-	jr .setBlock
-.unlockDoor
+	CheckEvent EVENT_ROCKET_HIDEOUT_B4F_DOOR_UNLOCKED
+	ret nz
+	CheckBothEventsSet EVENT_BEAT_ROCKET_HIDEOUT_B4F_TRAINER_0, EVENT_BEAT_ROCKET_HIDEOUT_B4F_TRAINER_1, 1
+	ld a, $2d ; door
+	jr nz, .placeBlock
+	SetEvent EVENT_ROCKET_HIDEOUT_B4F_DOOR_UNLOCKED
 	ld a, SFX_GO_INSIDE
 	call PlaySound
-	SetEvent EVENT_ROCKET_HIDEOUT_4_DOOR_UNLOCKED
-.doorAlreadyUnlocked
-	ld a, $e ; Floor block
-.setBlock
+	ld a, $0e ; floor
+.placeBlock
 	ld [wNewTileBlockID], a
 	lb bc, 5, 12
 	predef_jump ReplaceTileBlock
@@ -86,14 +83,14 @@ RocketHideoutB4F_TextPointers:
 	dw_const PickUpItemText,                              TEXT_ROCKETHIDEOUTB4F_LIFT_KEY
 	dw_const RocketHideoutB4FGiovanniHopeWeMeetAgainText, TEXT_ROCKETHIDEOUTB4F_GIOVANNI_HOPE_WE_MEET_AGAIN
 
-RocketHideout4TrainerHeaders:
+RocketHideoutB4FTrainerHeaders:
 	def_trainers 2
-RocketHideout4TrainerHeader0:
-	trainer EVENT_BEAT_ROCKET_HIDEOUT_4_TRAINER_0, 0, RocketHideoutB4FRocket1BattleText, RocketHideoutB4FRocket1EndBattleText, RocketHideoutB4FRocket1AfterBattleText
-RocketHideout4TrainerHeader1:
-	trainer EVENT_BEAT_ROCKET_HIDEOUT_4_TRAINER_1, 0, RocketHideoutB4FRocket2BattleText, RocketHideoutB4FRocket2EndBattleText, RocketHideoutB4FRocket2AfterBattleText
-RocketHideout4TrainerHeader2:
-	trainer EVENT_BEAT_ROCKET_HIDEOUT_4_TRAINER_2, 1, RocketHideoutB4FRocket3BattleText, RocketHideoutB4FRocket3EndBattleText, RocketHideoutB4FRocket3AfterBattleText
+RocketHideoutB4FTrainerHeader0:
+	trainer EVENT_BEAT_ROCKET_HIDEOUT_B4F_TRAINER_0, 0, RocketHideoutB4FRocket1BattleText, RocketHideoutB4FRocket1EndBattleText, RocketHideoutB4FRocket1AfterBattleText
+RocketHideoutB4FTrainerHeader1:
+	trainer EVENT_BEAT_ROCKET_HIDEOUT_B4F_TRAINER_1, 0, RocketHideoutB4FRocket2BattleText, RocketHideoutB4FRocket2EndBattleText, RocketHideoutB4FRocket2AfterBattleText
+RocketHideoutB4FTrainerHeader2:
+	trainer EVENT_BEAT_ROCKET_HIDEOUT_B4F_TRAINER_2, 1, RocketHideoutB4FRocket3BattleText, RocketHideoutB4FRocket3EndBattleText, RocketHideoutB4FRocket3AfterBattleText
 	db -1 ; end
 
 RocketHideoutB4FGiovanniText:
@@ -137,7 +134,7 @@ RocketHideoutB4FGiovanniHopeWeMeetAgainText:
 
 RocketHideoutB4FRocket1Text:
 	text_asm
-	ld hl, RocketHideout4TrainerHeader0
+	ld hl, RocketHideoutB4FTrainerHeader0
 	call TalkToTrainer
 	rst TextScriptEnd
 
@@ -155,7 +152,7 @@ RocketHideoutB4FRocket1AfterBattleText:
 
 RocketHideoutB4FRocket2Text:
 	text_asm
-	ld hl, RocketHideout4TrainerHeader1
+	ld hl, RocketHideoutB4FTrainerHeader1
 	call TalkToTrainer
 	rst TextScriptEnd
 
@@ -173,7 +170,7 @@ RocketHideoutB4FRocket2AfterBattleText:
 
 RocketHideoutB4FRocket3Text:
 	text_asm
-	ld hl, RocketHideout4TrainerHeader2
+	ld hl, RocketHideoutB4FTrainerHeader2
 	call TalkToTrainer
 	rst TextScriptEnd
 

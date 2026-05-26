@@ -1,7 +1,7 @@
 _RocketHideoutB1FRocket5EndBattleText::
 	text_start
-	line "¿Por qué...?@"
-	text_end
+	line "¿Por qué...?"
+	prompt
 
 _RocketHideoutB1FRocket1BattleText::
 	text "¿Quién eres tú?"

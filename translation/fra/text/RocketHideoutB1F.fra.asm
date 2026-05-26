@@ -1,6 +1,6 @@
 _RocketHideoutB1FRocket5EndBattleText::
-	text "Quoi...?@"
-	text_end
+	text "Quoi...?"
+	prompt
 
 _RocketHideoutB1FRocket1BattleText::
 	text_asm

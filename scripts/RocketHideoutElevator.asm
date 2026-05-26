@@ -14,25 +14,21 @@ RocketHideoutElevator_Script:
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	ret
 
-RocketHideoutElevatorStoreWarpEntriesScript:
-	ld hl, wWarpEntries
-	ld a, [wWarpedFromWhichWarp]
-	ld b, a
+RocketHideoutElevatorStoreWarpEntriesScript: ; marcelnote - reorganized Rocket hideout warps
+	ld hl, wWarpEntries + 2
 	ld a, [wWarpedFromWhichMap]
 	ld c, a
+	ld b, (ANY_DIR << 6) | (4 - 1) ; floors B1F and B2F use warps 4-5
+	cp ROCKET_HIDEOUT_B4F
+	jr nz, .gotWarpID
+	ld b, (ANY_DIR << 6) | (2 - 1) ; floor B4F uses warps 2-3
+.gotWarpID
 	call .StoreWarpEntry
-	; fallthrough
+	inc hl
+	inc hl
+	inc b ; next warp
 .StoreWarpEntry:
-	inc hl
-	inc hl
 	ld a, b
-	;;;;;; marcelnote - refactored warp engine, preserve warp direction
-	and WARP_ID_MASK
-	ld b, a
-	ld a, [hl]
-	and WARP_DIR_MASK
-	or b
-	;;;;;;
 	ld [hli], a
 	ld a, c
 	ld [hli], a
@@ -56,9 +52,9 @@ RocketHideoutElevatorFloors:
 ; These specify where the player goes after getting out of the elevator.
 RocketHideoutElevatorWarpMaps:
 	; warp number, map id
-	db 4, ROCKET_HIDEOUT_B1F
-	db 4, ROCKET_HIDEOUT_B2F
-	db 2, ROCKET_HIDEOUT_B4F
+	db 4 - 1, ROCKET_HIDEOUT_B1F
+	db 4 - 1, ROCKET_HIDEOUT_B2F
+	db 2 - 1, ROCKET_HIDEOUT_B4F
 .End:
 
 RocketHideoutElevatorShakeScript:
