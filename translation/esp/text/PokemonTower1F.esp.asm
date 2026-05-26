@@ -33,6 +33,7 @@ _PokemonTower1FChannelerText::
 	cont "muy turbados!"
 	done
 
+; TODO - Spanish translation
 _PokemonTower1FLittleBoyText:: ; marcelnote - added 7FChanneler
 	text "I saw a lady on"
 	line "the top floor"

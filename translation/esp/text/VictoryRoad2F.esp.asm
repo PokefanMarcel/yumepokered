@@ -87,6 +87,7 @@ _VictoryRoad2FSuperNerd3AfterBattleText::
 	cont "se rinden aquí!"
 	done
 
+; TODO - Spanish translation
 _VictoryRoad2FGrampsIntroText:: ; marcelnote - new
 	text "The journey of a"
 	line "#MON trainer"
