@@ -410,13 +410,13 @@ PrintGameVersionOnTitleScreen:
 
 ; these point to special tiles specifically loaded for that purpose and are not usual text
 VersionOnTitleScreenText:
-IF DEF(_RED) && !DEF(_FRA)
+IF DEF(_RED) && !DEF(_FRA) && !DEF(_ESP)
 	;db $60,$61,$7F,$65,$66,$67,$68,$69,"@" ; "Red Version" ; marcelnote - for original png file
 	db $61,$62,$63,$64,$65,$66,$67,$68,"@" ; "Red Version"
-ELIF DEF(_GREEN) && !DEF(_FRA)
+ELIF DEF(_GREEN) && !DEF(_FRA) && !DEF(_ESP)
 	;db $62,$63,$64,$7F,$65,$66,$67,$68,$69,"@" ; "Green Version" ; marcelnote - for original png file
 	db $60,$61,$62,$63,$64,$65,$66,$67,$68,"@" ; "Green Version"
-ELIF DEF(_BLUE) && !DEF(_FRA)
+ELIF DEF(_BLUE) && !DEF(_FRA) && !DEF(_ESP)
 	db $61,$62,$63,$64,$65,$66,$67,$68,"@" ; "Blue Version" ; marcelnote - this one is unchanged
 ELIF DEF(_RED) && DEF(_FRA)
 	db $60,$61,$62,$63,$64,$65,$66,$67,$68,"@" ; "Version Rouge"
@@ -424,6 +424,12 @@ ELIF DEF(_GREEN) && DEF(_FRA)
 	db $60,$61,$62,$63,$64,$65,$66,$67,$68,"@" ; "Version Verte"
 ELIF DEF(_BLUE) && DEF(_FRA)
 	db $60,$61,$62,$63,$64,$65,$66,$67,$68,"@" ; "Version Bleue"
+ELIF DEF(_RED) && DEF(_ESP)
+	db $60,$61,$62,$63,$64,$65,$66,$67,"@" ; "Edición Roja"
+ELIF DEF(_GREEN) && DEF(_ESP)
+	db $60,$61,$62,$63,$64,$65,$66,$67,$68,"@" ; "Green Version"
+ELIF DEF(_BLUE) && DEF(_ESP)
+	db $61,$62,$63,$64,$65,$66,$67,$68,"@" ; "Edición Azul"
 ENDC
 
 DebugNewGamePlayerName:

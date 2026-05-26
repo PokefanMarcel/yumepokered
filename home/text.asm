@@ -186,6 +186,8 @@ PlaceCommandCharacter::
 
 IF DEF(_FRA)
 	INCLUDE "translation/fra/data/text/home_strings.fra.asm"
+ELIF DEF(_ESP)
+	INCLUDE "translation/esp/data/text/home_strings.esp.asm"
 ELSE
 	INCLUDE "data/text/home_strings.asm"
 ENDC

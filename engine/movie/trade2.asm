@@ -45,6 +45,8 @@ Trade_PrintEnemyMonInfoText:
 
 IF DEF(_FRA)
 	INCLUDE "translation/fra/data/text/trade2.fra.asm"
+ELIF DEF(_ESP)
+	INCLUDE "translation/esp/data/text/trade2.esp.asm"
 ELSE
 	INCLUDE "data/text/trade2.asm"
 ENDC

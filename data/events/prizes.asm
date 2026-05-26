@@ -6,6 +6,8 @@ PrizeDifferentMenuPtrs:
 NoThanksText:
 IF DEF(_FRA)
 	db "NON MERCI@"
+ELIF DEF(_ESP)
+	db "NO GRACIAS@"
 ELSE
 	db "NO THANKS@"
 ENDC

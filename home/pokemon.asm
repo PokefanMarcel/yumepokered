@@ -306,6 +306,8 @@ PrintStatusCondition::
 ; if the pokemon's HP is 0, print "FNT"
 IF DEF(_FRA)
 	ld_hli_a_string "KO"
+ELIF DEF(_ESP)
+	ld_hli_a_string "DEB"
 ELSE
 	ld_hli_a_string "FNT"
 ENDC

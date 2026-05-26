@@ -229,6 +229,8 @@ PartyMenuMessagePointers:
 
 IF DEF(_FRA)
 	INCLUDE "translation/fra/data/text/party_menu.fra.asm"
+ELIF DEF(_ESP)
+	INCLUDE "translation/esp/data/text/party_menu.esp.asm"
 ELSE
 	INCLUDE "data/text/party_menu.asm"
 ENDC

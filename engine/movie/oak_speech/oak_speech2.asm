@@ -209,12 +209,16 @@ DisplayIntroNameTextBox:
 .namestring
 IF DEF(_FRA)
 	db "─NOM@"
+ELIF DEF(_ESP)
+	db "NOMBRE@"
 ELSE
 	db "NAME@"
 ENDC
 
 IF DEF(_FRA)
 	INCLUDE "translation/fra/data/text/player_names.fra.asm"
+ELIF DEF(_ESP)
+	INCLUDE "translation/esp/data/text/player_names.esp.asm"
 ELSE
 	INCLUDE "data/text/player_names.asm" ; marcelnote - investigate redundancy player_names and player_names_list
 ENDC
@@ -245,6 +249,8 @@ GetDefaultName:
 
 IF DEF(_FRA)
 	INCLUDE "translation/fra/data/text/player_names_list.fra.asm"
+ELIF DEF(_ESP)
+	INCLUDE "translation/esp/data/text/player_names_list.esp.asm"
 ELSE
 	INCLUDE "data/text/player_names_list.asm"
 ENDC

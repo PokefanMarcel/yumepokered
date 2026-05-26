@@ -116,6 +116,8 @@ AccessedHoFPCText:
 
 IF DEF(_FRA)
 	INCLUDE "translation/fra/data/text/league_pc.fra.asm"
+ELIF DEF(_ESP)
+	INCLUDE "translation/esp/data/text/league_pc.esp.asm"
 ELSE
 	INCLUDE "data/text/league_pc.asm"
 ENDC

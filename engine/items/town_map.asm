@@ -754,6 +754,9 @@ TownMapSpriteBlinkingAnimation::
 IF DEF(_FRA)
 	INCLUDE "translation/fra/data/text/town_map.fra.asm"
 	INCLUDE "translation/fra/data/maps/names.fra.asm"
+ELIF DEF(_ESP)
+	INCLUDE "translation/esp/data/text/town_map.esp.asm"
+	INCLUDE "translation/esp/data/maps/names.esp.asm"
 ELSE
 	INCLUDE "data/text/town_map.asm"
 	INCLUDE "data/maps/names.asm"

@@ -701,6 +701,8 @@ GetTMHMContent: ; marcelnote - new for bag pockets and TM printing
 
 IF DEF(_FRA) ; marcelnote - added for translation
 	INCLUDE "translation/fra/data/text/list_menu.fra.asm"
+ELIF DEF(_ESP)
+	INCLUDE "translation/esp/data/text/list_menu.esp.asm"
 ELSE
 	INCLUDE "data/text/list_menu.asm"
 ENDC

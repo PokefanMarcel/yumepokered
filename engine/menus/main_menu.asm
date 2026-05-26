@@ -134,7 +134,7 @@ VersionText:
 InitOptions:
 	ld a, 1 << BIT_FAST_TEXT_DELAY
 	ld [wLetterPrintingDelayFlags], a
-IF DEF(_FRA) ; metric by default in French
+IF DEF(_FRA) || DEF(_ESP) ; metric by default in European translations
 	ld a, TEXT_DELAY_FAST | SPRITE_STYLE_BLUE | (1 << BIT_UNITS_METRIC)
 ELSE
 	ld a, TEXT_DELAY_FAST | SPRITE_STYLE_BLUE ; marcelnote - was TEXT_DELAY_MEDIUM
@@ -483,6 +483,8 @@ CheckForPlayerNameInSRAM:
 
 IF DEF(_FRA)
 	INCLUDE "translation/fra/data/text/main_menu.fra.asm"
+ELIF DEF(_ESP)
+	INCLUDE "translation/esp/data/text/main_menu.esp.asm"
 ELSE
 	INCLUDE "data/text/main_menu.asm"
 ENDC

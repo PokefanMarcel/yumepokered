@@ -1436,6 +1436,8 @@ VitaminNoEffectText:
 
 IF DEF(_FRA)
 	INCLUDE "translation/fra/data/battle/stat_names.fra.asm"
+ELIF DEF(_ESP)
+	INCLUDE "translation/esp/data/battle/stat_names.esp.asm"
 ELSE
 	INCLUDE "data/battle/stat_names.asm"
 ENDC

@@ -26,6 +26,11 @@ IF DEF(_FRA)
 	db "CARMIN SUR MER@"
 .LeaderName:
 	db "MAJOR BOB@"
+ELIF DEF(_ESP)
+.CityName:
+	db "CIUDAD CARMÍN@"
+.LeaderName:
+	db "LT.SURGE@"
 ELSE
 .CityName:
 	db "VERMILION CITY@"

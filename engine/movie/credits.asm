@@ -291,6 +291,19 @@ INCLUDE "translation/fra/data/credits/credits_text.fra.asm"
 TheEndGfx: INCBIN "translation/fra/gfx/credits/the_end.fra.2bpp"
 TheEndGfxEnd:
 
+ELIF DEF(_ESP)
+
+TheEndTextString:
+; "T H E  E N D"
+	db $60," ",$62," ",$64,"  ",$64," ",$66," ",$68,"@"
+	db $61," ",$63," ",$65,"  ",$65," ",$67," ",$69,"@"
+
+INCLUDE "translation/esp/data/credits/credits_order.esp.asm"
+INCLUDE "translation/esp/data/credits/credits_text.esp.asm"
+
+TheEndGfx: INCBIN "translation/esp/gfx/credits/the_end.esp.2bpp"
+TheEndGfxEnd:
+
 ELSE
 
 TheEndTextString:

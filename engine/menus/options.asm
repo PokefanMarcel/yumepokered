@@ -356,6 +356,8 @@ OptionsControl:
 
 IF DEF(_FRA)
 	INCLUDE "translation/fra/data/text/options.fra.asm"
+ELIF DEF(_ESP)
+	INCLUDE "translation/esp/data/text/options.esp.asm"
 ELSE
 	INCLUDE "data/text/options.asm"
 ENDC

@@ -12,6 +12,18 @@ IF DEF(_FRA)
 
 	PokedexTileGraphics: INCBIN "translation/fra/gfx/pokedex.fra.2bpp"
 	PokedexTileGraphicsEnd:
+ELIF DEF(_ESP)
+	FontGraphics:: INCBIN "translation/esp/gfx/font.esp.1bpp"
+	FontGraphicsEnd::
+
+	HpBarAndStatusGraphics:: INCBIN "translation/esp/gfx/font_battle_extra.esp.2bpp"
+	HpBarAndStatusGraphicsEnd::
+
+	NamingScreenTiles: INCBIN "translation/esp/gfx/naming_screen.esp.1bpp" ; marcelnote - reorganized Naming screen tiles
+	NamingScreenTilesEnd:
+
+	PokedexTileGraphics: INCBIN "translation/esp/gfx/pokedex.esp.2bpp"
+	PokedexTileGraphicsEnd:
 ELSE
 	FontGraphics:: INCBIN "gfx/font/font.1bpp"
 	FontGraphicsEnd::
@@ -41,6 +53,9 @@ TextBoxGraphicsEnd::
 IF DEF(_FRA)
 	BillsPCChangeBoxGraphics: INCBIN "translation/fra/gfx/font/change_box.fra.1bpp"
 	BillsPCChangeBoxGraphicsEnd::
+ELIF DEF(_ESP)
+	BillsPCChangeBoxGraphics: INCBIN "translation/esp/gfx/font/change_box.esp.1bpp"
+	BillsPCChangeBoxGraphicsEnd::
 ELSE
 	BillsPCChangeBoxGraphics: INCBIN "gfx/font/change_box.1bpp"
 	BillsPCChangeBoxGraphicsEnd::
@@ -57,6 +72,9 @@ WorldMapTileGraphicsEnd:
 
 IF DEF(_FRA)
 	MonNestOptionsTileGraphics: INCBIN "translation/fra/gfx/town_map/mon_nest_options.fra.2bpp" ; marcelnote - new
+	MonNestOptionsTileGraphicsEnd:
+ELIF DEF(_ESP)
+	MonNestOptionsTileGraphics: INCBIN "translation/esp/gfx/town_map/mon_nest_options.esp.2bpp" ; marcelnote - new
 	MonNestOptionsTileGraphicsEnd:
 ELSE
 	MonNestOptionsTileGraphics: INCBIN "gfx/town_map/mon_nest_options.2bpp" ; marcelnote - new

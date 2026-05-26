@@ -36,6 +36,11 @@ IF DEF(_FRA)
 	db "SAFRANIA@"
 .LeaderName:
 	db "MORGANE@"
+ELIF DEF(_ESP)
+.CityName:
+	db "CIUDAD AZAFRÁN@"
+.LeaderName:
+	db "SABRINA@"
 ELSE
 .CityName:
 	db "SAFFRON CITY@"

@@ -152,6 +152,8 @@ GetMachineName::
 
 IF DEF(_FRA)
 	INCLUDE "translation/fra/data/text/tm_hm_prefix.fra.asm"
+ELIF DEF(_ESP)
+	INCLUDE "translation/esp/data/text/tm_hm_prefix.esp.asm"
 ELSE
 	INCLUDE "data/text/tm_hm_prefix.asm"
 ENDC

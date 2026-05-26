@@ -161,6 +161,8 @@ PrintPrizePrice:
 .CoinString:
 IF DEF(_FRA)
 	db "JETONS@"
+ELIF DEF(_ESP)
+	db "FICHAS@"
 ELSE
 	db "COINS@" ; marcelnote - added S
 ENDC

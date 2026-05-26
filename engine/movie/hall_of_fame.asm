@@ -298,6 +298,8 @@ HoFFadeOutScreenAndMusic:
 
 IF DEF(_FRA)
 	INCLUDE "translation/fra/data/text/hall_of_fame.fra.asm"
+ELIF DEF(_ESP)
+	INCLUDE "translation/esp/data/text/hall_of_fame.esp.asm"
 ELSE
 	INCLUDE "data/text/hall_of_fame.asm"
 ENDC

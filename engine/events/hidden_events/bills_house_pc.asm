@@ -123,6 +123,8 @@ BillsHousePokemonListText1:
 
 IF DEF(_FRA)
 	INCLUDE "translation/fra/data/text/bills_house_pc.fra.asm"
+ELIF DEF(_ESP)
+	INCLUDE "translation/esp/data/text/bills_house_pc.esp.asm"
 ELSE
 	INCLUDE "data/text/bills_house_pc.asm"
 ENDC

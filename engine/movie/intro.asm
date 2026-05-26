@@ -438,6 +438,8 @@ IntroNidorinoAnimation7:
 GameFreakIntro:
 IF DEF(_FRA)
 	INCBIN "translation/fra/gfx/gamefreak_presents.fra.2bpp"
+ELIF DEF(_ESP)
+	INCBIN "translation/esp/gfx/gamefreak_presents.esp.2bpp"
 ELSE
 	INCBIN "gfx/splash/gamefreak_presents.2bpp"
 ENDC

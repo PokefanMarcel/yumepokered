@@ -132,6 +132,8 @@ INCLUDE "data/items/vending_prices.asm"
 
 IF DEF(_FRA)
 	INCLUDE "translation/fra/data/text/vending_machine.fra.asm"
+ELIF DEF(_ESP)
+	INCLUDE "translation/esp/data/text/vending_machine.esp.asm"
 ELSE
 	INCLUDE "data/text/vending_machine.asm"
 ENDC

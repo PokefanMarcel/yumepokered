@@ -1,0 +1,13 @@
+; marcelnote - new location
+; TODO - Spanish translation
+_CeladonGroveNorthGateHikerText::
+	text "The grove is a"
+	line "handy shortcut"
+	cont "from CELADON to"
+	cont "MT.MOON."
+
+	para "But my rock"
+	line "#MON really"
+	cont "had a rough time"
+	cont "getting through!"
+	done

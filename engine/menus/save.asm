@@ -442,7 +442,7 @@ DisplayChangeBoxMenu:
 	ld a, 1
 	ld [wTopMenuItemY], a
 
-IF DEF(_FRA) ; marcelnote - different layout in French
+IF DEF(_FRA) || DEF(_ESP) ; marcelnote - different layout in French and Spanish
 	ld a, 10
 	ld [wTopMenuItemX], a
 ELSE
@@ -468,7 +468,7 @@ ENDC
 	ld hl, ChooseABoxText
 	call PrintText
 
-IF DEF(_FRA) ; marcelnote - different layout in French
+IF DEF(_FRA) || DEF(_ESP) ; marcelnote - different layout in French and Spanish
 	hlcoord 9, 0
 	lb bc, 12, 9
 ELSE
@@ -481,7 +481,7 @@ ENDC
 	set BIT_SINGLE_SPACED_LINES, [hl]
 	ld de, BoxNames
 
-IF DEF(_FRA) ; marcelnote - different layout in French
+IF DEF(_FRA) || DEF(_ESP) ; marcelnote - different layout in French and Spanish
 	hlcoord 11, 1
 ELSE
 	hlcoord 13, 1
@@ -748,6 +748,8 @@ ClearAllSRAMBanks:
 
 IF DEF(_FRA)
 	INCLUDE "translation/fra/data/text/save.fra.asm"
+ELIF DEF(_ESP)
+	INCLUDE "translation/esp/data/text/save.esp.asm"
 ELSE
 	INCLUDE "data/text/save.asm"
 ENDC

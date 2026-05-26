@@ -17,6 +17,9 @@ INCLUDE "macros/scripts/text.asm"
 IF DEF(_FRA)
 	INCLUDE "translation/fra/constants/charmap.fra.asm"
 	INCLUDE "translation/fra/constants/credits_constants.fra.asm"
+ELIF DEF(_ESP)
+	INCLUDE "translation/esp/constants/charmap.esp.asm"
+	INCLUDE "translation/esp/constants/credits_constants.esp.asm"
 ELSE
 	INCLUDE "constants/charmap.asm"
 	INCLUDE "constants/credits_constants.asm"

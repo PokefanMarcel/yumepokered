@@ -20,6 +20,8 @@ SaveTrainerName::
 
 IF DEF(_FRA)
 	INCLUDE "translation/fra/data/trainers/name_pointers.fra.asm"
+ELIF DEF(_ESP)
+	INCLUDE "translation/esp/data/trainers/name_pointers.esp.asm"
 ELSE
 	INCLUDE "data/trainers/name_pointers.asm"
 ENDC

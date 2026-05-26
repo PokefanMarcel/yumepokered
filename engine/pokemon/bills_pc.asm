@@ -23,7 +23,7 @@ DisplayPCMainMenu::
 .metBill
 	call PlaceString
 
-IF DEF(_FRA) ; French: PC DE <PLAYER>
+IF DEF(_FRA) || DEF(_ESP) ; French/Spanish: PC DE <PLAYER>
 	hlcoord 2, 4
 	ld de, PlayersPCText
 	call PlaceString
@@ -1356,6 +1356,8 @@ JustAMomentText::
 
 IF DEF(_FRA)
 	INCLUDE "translation/fra/data/text/bills_pc.fra.asm"
+ELIF DEF(_ESP)
+	INCLUDE "translation/esp/data/text/bills_pc.esp.asm"
 ELSE
 	INCLUDE "data/text/bills_pc.asm"
 ENDC

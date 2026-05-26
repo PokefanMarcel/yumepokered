@@ -125,6 +125,8 @@ GetAddressOfScreenCoords:
 
 IF DEF(_FRA)
 	INCLUDE "translation/fra/data/text_boxes.fra.asm"
+ELIF DEF(_ESP)
+	INCLUDE "translation/esp/data/text_boxes.esp.asm"
 ELSE
 	INCLUDE "data/text_boxes.asm"
 ENDC
@@ -588,6 +590,11 @@ IF DEF(_FRA)
 	INCLUDE "translation/fra/data/moves/field_move_names.fra.asm"
 	INCLUDE "translation/fra/data/two_option_menus.fra.asm"
 	INCLUDE "translation/fra/data/text/pokemon_menu_entries.fra.asm"
+ELIF DEF(_ESP)
+	INCLUDE "translation/esp/data/moves/field_moves.esp.asm"
+	INCLUDE "translation/esp/data/moves/field_move_names.esp.asm"
+	INCLUDE "translation/esp/data/two_option_menus.esp.asm"
+	INCLUDE "translation/esp/data/text/pokemon_menu_entries.esp.asm"
 ELSE
 	INCLUDE "data/moves/field_moves.asm"
 	INCLUDE "data/moves/field_move_names.asm"

@@ -101,6 +101,8 @@ BadgeTextPointers:
 
 IF DEF(_FRA)
 	INCLUDE "translation/fra/data/text/badge_names.fra.asm"
+ELIF DEF(_ESP)
+	INCLUDE "translation/esp/data/text/badge_names.esp.asm"
 ELSE
 	INCLUDE "data/text/badge_names.asm"
 ENDC

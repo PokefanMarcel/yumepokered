@@ -134,6 +134,8 @@ TrainerInfo_FarCopyData:
 
 IF DEF(_FRA)
 	INCLUDE "translation/fra/data/text/menus/trainer_menu.fra.asm"
+ELIF DEF(_ESP)
+	INCLUDE "translation/esp/data/text/menus/trainer_menu.esp.asm"
 ELSE
 	INCLUDE "data/text/menus/trainer_menu.asm"
 ENDC

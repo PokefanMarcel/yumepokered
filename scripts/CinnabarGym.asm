@@ -28,6 +28,11 @@ IF DEF(_FRA)
 	db "CRAMOIS'ILE@"
 .LeaderName:
 	db "AUGUSTE@"
+ELIF DEF(_ESP)
+.CityName:
+	db "ISLA CANELA@"
+.LeaderName:
+	db "BLAINE@"
 ELSE
 .CityName:
 	db "CINNABAR ISLAND@"

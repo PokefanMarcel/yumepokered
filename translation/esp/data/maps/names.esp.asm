@@ -1,0 +1,68 @@
+PalletTownName:      db "PUEBLO PALETA@"
+ViridianCityName:    db "CIUDAD VERDE@"
+PewterCityName:      db "CIUDAD PLATEADA@"
+CeruleanCityName:    db "CIUDAD CELESTE@"
+LavenderTownName:    db "PUEBLO LAVANDA@"
+VermilionCityName:   db "CIUDAD CARMÍN@"
+CeladonCityName:     db "CIUDAD AZULONA@"
+FuchsiaCityName:     db "CIUDAD FUCSIA@"
+CinnabarIslandName:  db "ISLA CANELA@"
+IndigoPlateauName:   db "MESETA AñIL@"
+SaffronCityName:     db "CIUDAD AZAFRÁN@"
+MandarinIslandName:  db "MANDARIN ISLAND@" ; marcelnote - new location
+Route1Name:          db "RUTA 1@"
+Route2Name:          db "RUTA 2@"
+Route3Name:          db "RUTA 3@"
+Route4Name:          db "RUTA 4@"
+Route5Name:          db "RUTA 5@"
+Route6Name:          db "RUTA 6@"
+Route7Name:          db "RUTA 7@"
+Route8Name:          db "RUTA 8@"
+Route9Name:          db "RUTA 9@"
+Route10Name:         db "RUTA 10@"
+Route11Name:         db "RUTA 11@"
+Route12Name:         db "RUTA 12@"
+Route13Name:         db "RUTA 13@"
+Route14Name:         db "RUTA 14@"
+Route15Name:         db "RUTA 15@"
+Route16Name:         db "RUTA 16@"
+Route17Name:         db "RUTA 17@"
+Route18Name:         db "RUTA 18@"
+Route19Name:         db "RUTA 19@"
+Route20Name:         db "RUTA 20@"
+Route21Name:         db "RUTA 21@"
+Route22Name:         db "RUTA 22@"
+Route23Name:         db "RUTA 23@"
+Route24Name:         db "RUTA 24@"
+Route25Name:         db "RUTA 25@"
+Route28Name:         db "ROUTE 28@" ; marcelnote - new location
+ViridianForestName:  db "BOSQUE VERDE@"
+MountMoonName:       db "MT. MOON@"
+RockTunnelName:      db "TÚNEL ROCA@"
+SeaCottageName:      db "CASA DEL MAR@"
+SSAnneName:          db "S.S. ANNE@"
+PokemonLeagueName:   db "LIGA PKMN@"
+UndergroundPathName: db "VÍA SUBTERRÁNEA@"
+PokemonTowerName:    db "TORRE POKéMON@"
+SeafoamIslandsName:  db "ISLAS ESPUMA@"
+VictoryRoadName:     db "CALLE VICTORIA@"
+DiglettsCaveName:    db "CUEVA DIGLETT@"
+RocketHQName:        db "GUARIDA ROCKET/CG@"
+SilphCoName:         db "SILPH S.A.@"
+PokemonMansionName:  db "MANSIÓN PKMN@"
+SafariZoneName:      db "ZONA SAFARI@"
+CeruleanCaveName:    db "MAZMORRA RARA@"
+PowerPlantName:      db "CENTRAL ENERGÍA@"
+CinnabarVolcanoName: db "CINNABAR VOLCANO@" ; marcelnote - new location
+; TODO - Spanish translation
+MtMoonSquareName:    db "MT.MOON SQUARE@"   ; marcelnote - new location
+; TODO - Spanish translation
+PokemonAcademyName:  db "#MON ACADEMY@"     ; marcelnote - new location
+; TODO - Spanish translation
+CeladonGroveName:    db "CELADON GROVE@"    ; marcelnote - new location
+; TODO - Spanish translation
+SilphFactoryName:    db "SILPH CO.FACTORY@" ; marcelnote - new location
+; TODO - Spanish translation
+MtSilverName:        db "MT.SILVER@"        ; marcelnote - new location
+; TODO - Spanish translation
+CitrusFerryName:     db "CITRUS FERRIES@"   ; marcelnote - new location

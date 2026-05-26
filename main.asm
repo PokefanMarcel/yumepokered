@@ -8,6 +8,8 @@ INCLUDE "engine/pokemon/load_mon_data.asm"
 INCLUDE "data/items/prices.asm"
 IF DEF(_FRA)
 	INCLUDE "translation/fra/data/items/names.fra.asm"
+ELIF DEF(_ESP)
+	INCLUDE "translation/esp/data/items/names.esp.asm"
 ELSE
 	INCLUDE "data/items/names.asm"
 ENDC
@@ -122,6 +124,8 @@ SECTION "Pokémon Names", ROMX
 
 IF DEF(_FRA)
 	INCLUDE "translation/fra/data/pokemon/names.fra.asm"
+ELIF DEF(_ESP)
+	INCLUDE "translation/esp/data/pokemon/names.esp.asm"
 ELSE
 	INCLUDE "data/pokemon/names.asm"
 ENDC

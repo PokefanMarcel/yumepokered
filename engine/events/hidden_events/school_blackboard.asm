@@ -171,6 +171,8 @@ ViridianSchoolBlackboardText2:
 
 IF DEF(_FRA)
 	INCLUDE "translation/fra/data/text/school_blackboard.fra.asm"
+ELIF DEF(_ESP)
+	INCLUDE "translation/esp/data/text/school_blackboard.esp.asm"
 ELSE
 	INCLUDE "data/text/school_blackboard.asm"
 ENDC

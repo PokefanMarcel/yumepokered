@@ -845,6 +845,8 @@ PlaceStringWithHyphen: ; to print field moves with hyphen after 4 letters (won't
 
 IF DEF(_FRA) ; marcelnote - added for translation
 	INCLUDE "translation/fra/data/text/status_screen.fra.asm"
+ELIF DEF(_ESP)
+	INCLUDE "translation/esp/data/text/status_screen.esp.asm"
 ELSE
 	INCLUDE "data/text/status_screen.asm"
 ENDC

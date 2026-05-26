@@ -68,6 +68,8 @@ PrintMoveType: ; marcelnote - modified to be right-aligned
 
 IF DEF(_FRA)
 	INCLUDE "translation/fra/data/types/names.fra.asm"
+ELIF DEF(_ESP)
+	INCLUDE "translation/esp/data/types/names.esp.asm"
 ELSE
 	INCLUDE "data/types/names.asm"
 ENDC

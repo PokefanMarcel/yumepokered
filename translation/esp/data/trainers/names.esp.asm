@@ -1,0 +1,57 @@
+TrainerNames::
+	list_start TRAINER_NAME_LENGTH - 1
+	li "JOVEN"
+	li "CAZABICHOS"
+	li "CHICA"
+	li "MARINERO"
+	li "ENTRENAD.JR♂"
+	li "ENTRENAD.JR♀"
+	li "POKéMANÍACO"
+	li "SÚPER NECIO"
+	li "MONTAÑERO"
+	li "MOTORISTA"
+	li "LADRÓN"
+	li "MECÁNICO"
+	li "MALABARISTA"
+	li "NADADOR"
+	li "CALVO"
+	li "JUGADOR"
+	li "BELLA"
+	li "MÉDIUM"
+	li "ROCKERO"
+	li "MALABARISTA"
+	li "DOMADOR"
+	li "ORNITÓLOGO"
+	li "KARATEKA"
+	li "RIVAL1"
+	li "PROF.OAK"
+	li "CHIEF"
+	li "CIENTÍFICO"
+	li "GIOVANNI"
+	li "ROCKET"
+	li "ENTREN.GUAY♂"
+	li "ENTREN.GUAY♀"
+	li "BRUNO"
+	li "BROCK"
+	li "MISTY"
+	li "LT.SURGE"
+	li "ERIKA"
+	li "KOGA"
+	li "BLAINE"
+	li "SABRINA"
+	li "CABALLERO"
+	li "RIVAL2"
+	li "RIVAL2"
+	li "LORELEI"
+	li "EXORCISTA"
+	li "AGATHA"
+	li "LANCE"
+	; TODO - Spanish translation
+	li "YELLOW"  ; marcelnote - new trainer class
+	; TODO - Spanish translation
+	li "WILL"    ; marcelnote - new trainer class
+	; TODO - Spanish translation
+	li "<PKMN>TRAINER"    ; Red   ; marcelnote - new trainer class
+	; TODO - Spanish translation
+	li "<PKMN>TRAINER"    ; Green ; marcelnote - new trainer class
+	assert_list_length NUM_TRAINERS

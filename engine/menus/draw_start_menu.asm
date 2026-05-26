@@ -68,6 +68,8 @@ PrintStartMenuItem:
 
 IF DEF(_FRA)
 	INCLUDE "translation/fra/data/text/draw_start_menu.fra.asm"
+ELIF DEF(_ESP)
+	INCLUDE "translation/esp/data/text/draw_start_menu.esp.asm"
 ELSE
 	INCLUDE "data/text/draw_start_menu.asm"
 ENDC

@@ -898,6 +898,14 @@ IF DEF(_FRA)
 	ELIF DEF(_GREEN) ; PureRGBnote: GREENBUILD: use the green slots visuals on green version
 		INCBIN "translation/fra/gfx/slots/green_slots_1.fra.2bpp"
 	ENDC
+ELIF DEF(_ESP)
+	IF DEF(_RED)
+		INCBIN "translation/esp/gfx/slots/red_slots_1.esp.2bpp"
+	ELIF DEF(_BLUE)
+		INCBIN "translation/esp/gfx/slots/blue_slots_1.esp.2bpp"
+	ELIF DEF(_GREEN) ; PureRGBnote: GREENBUILD: use the green slots visuals on green version
+		INCBIN "translation/esp/gfx/slots/green_slots_1.esp.2bpp"
+	ENDC
 ELSE
 	IF DEF(_RED)
 		INCBIN "gfx/slots/red_slots_1.2bpp"

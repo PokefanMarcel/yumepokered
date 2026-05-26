@@ -95,6 +95,8 @@ DiplomaTextPointersAndCoords:
 
 IF DEF(_FRA)
 	INCLUDE "translation/fra/data/text/diploma.fra.asm"
+ELIF DEF(_ESP)
+	INCLUDE "translation/esp/data/text/diploma.esp.asm"
 ELSE
 	INCLUDE "data/text/diploma.asm"
 ENDC

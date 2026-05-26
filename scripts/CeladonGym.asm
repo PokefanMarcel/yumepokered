@@ -21,6 +21,11 @@ IF DEF(_FRA)
 	db "CELADOPOLE@"
 .LeaderName:
 	db "ERIKA@"
+ELIF DEF(_ESP)
+.CityName:
+	db "CIUDAD AZULONA@"
+.LeaderName:
+	db "ERIKA@"
 ELSE
 .CityName:
 	db "CELADON CITY@"
