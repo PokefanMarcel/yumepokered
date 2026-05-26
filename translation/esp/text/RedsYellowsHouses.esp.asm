@@ -51,6 +51,7 @@ _RedsHouse1FTVStandByMeMovieText::
 	para "¡Debería irme!"
 	done
 
+; TODO - Spanish translation
 _RedsHouse1FTVWizardOfOzMovieText:: ; marcelnote - FRLG text option for girl
 	text "There's a movie"
 	line "on TV. A girl"
@@ -64,6 +65,8 @@ _RedsHouse1FTVWrongSideText::
 	text "¡Ay! Me equivoqué"
 	line "de lado."
 	done
+
+; TODO - Spanish translation
 _RedsHouse1FPhoneText:: ; marcelnote - new for pay phones
 	text "It's the phone."
 
@@ -71,13 +74,13 @@ _RedsHouse1FPhoneText:: ; marcelnote - new for pay phones
 	line "when I can."
 	done
 
-; TODO - Spanish translation
 _RedsHouse2FSNESText:: ; marcelnote - moved from hidden_objects
-	text "<PLAYER> is"
-	line "playing the SNES!"
+	text "¡<PLAYER> está"
+	line "jugando a la"
+	cont "Super Nintendo!"
 
-	para "...Okay!" ; marcelnote - added paragraph break
-	line "It's time to go!"
+	para "...¡Bien!" ; marcelnote - added paragraph break
+	line "¡Mejor irse!"
 	done
 
 ; TODO - Spanish translation

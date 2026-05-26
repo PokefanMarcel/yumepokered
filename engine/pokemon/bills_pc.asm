@@ -398,7 +398,7 @@ RedrawBillsPCBoxScreenCommon:
 	call TextBoxBorder
 
 	; draw "START ▶ CHANGE BOX" gfx
-IF DEF(_FRA)
+IF DEF(_FRA) || DEF(_ESP)
 	hlcoord 10, 0
 ELSE
 	hlcoord 11, 0

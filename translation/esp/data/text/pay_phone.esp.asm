@@ -176,7 +176,7 @@ _PayPhoneMomMandarinText::
 _PayPhoneDaisyOldRodText::
 	text "..."
 
-	para "DAISY: Hello?"
+	para "DAISY: Hello?" ; DALIA
 	line "Hi <PLAYER>!"
 
 	para "You're in VIRIDIAN?"
@@ -196,7 +196,7 @@ _PayPhoneDaisyOldRodText::
 _PayPhoneDaisyDexAreaText::
 	text "..."
 
-	para "DAISY: Hello?"
+	para "DAISY: Hello?" ; DALIA
 	line "Hi <PLAYER>!"
 
 	para "Did you check the"
@@ -219,7 +219,7 @@ _PayPhoneDaisyDexAreaText::
 _PayPhoneDaisyGravelerEvoText::
 	text "..."
 
-	para "DAISY: Hello?"
+	para "DAISY: Hello?" ; DALIA
 	line "Hi <PLAYER>!"
 
 	para "Did you see a"
@@ -240,7 +240,7 @@ _PayPhoneDaisyGravelerEvoText::
 _PayPhoneDaisyRoute6AideText::
 	text "..."
 
-	para "DAISY: Hello?"
+	para "DAISY: Hello?" ; DALIA
 	line "Hi <PLAYER>!"
 
 	para "Grandpa told me"
@@ -260,7 +260,7 @@ _PayPhoneDaisyRoute6AideText::
 _PayPhoneDaisyMachokeEvoText::
 	text "..."
 
-	para "DAISY: Hello?"
+	para "DAISY: Hello?" ; DALIA
 	line "Hi <PLAYER>!"
 
 	para "I heard there's"
@@ -281,7 +281,7 @@ _PayPhoneDaisyMachokeEvoText::
 _PayPhoneDaisyDynamicTMSellerText::
 	text "..."
 
-	para "DAISY: Hello?"
+	para "DAISY: Hello?" ; DALIA
 	line "Hi <PLAYER>!"
 
 	para "I just learned"
@@ -304,7 +304,7 @@ _PayPhoneDaisyDynamicTMSellerText::
 _PayPhoneDaisyKadabraEvoText::
 	text "..."
 
-	para "DAISY: Hello?"
+	para "DAISY: Hello?" ; DALIA
 	line "Hi <PLAYER>!"
 
 	para "Did you visit the"
@@ -328,7 +328,7 @@ _PayPhoneDaisyKadabraEvoText::
 _PayPhoneDaisyHaunterEvoText::
 	text "..."
 
-	para "DAISY: Hello?"
+	para "DAISY: Hello?" ; DALIA
 	line "Hi <PLAYER>!"
 
 	para "<RIVAL> told me"
@@ -351,7 +351,7 @@ _PayPhoneDaisyHaunterEvoText::
 _PayPhoneDaisySaffronGuardsText::
 	text "..."
 
-	para "DAISY: Hello?"
+	para "DAISY: Hello?" ; DALIA
 	line "Hi <PLAYER>!"
 
 	para "I heard the guards"
@@ -373,7 +373,7 @@ _PayPhoneDaisySaffronGuardsText::
 _PayPhoneDaisyFishingGuideText::
 	text "..."
 
-	para "DAISY: Hello?"
+	para "DAISY: Hello?" ; DALIA
 	line "Hi <PLAYER>!"
 
 	para "Have you found"
@@ -394,7 +394,7 @@ _PayPhoneDaisyFishingGuideText::
 _PayPhoneDaisyPostgameLoreleiText::
 	text "..."
 
-	para "DAISY: Hello?"
+	para "DAISY: Hello?" ; DALIA
 	line "Hi <PLAYER>!"
 
 	para "MANDARIN ISLAND"
@@ -416,7 +416,7 @@ _PayPhoneDaisyPostgameLoreleiText::
 _PayPhoneDaisyPostgameBrunoText::
 	text "..."
 
-	para "DAISY: Hello?"
+	para "DAISY: Hello?" ; DALIA
 	line "Hi <PLAYER>!"
 
 	para "BRUNO was on the"
@@ -437,7 +437,7 @@ _PayPhoneDaisyPostgameBrunoText::
 _PayPhoneDaisyPostgameAgathaText::
 	text "..."
 
-	para "DAISY: Hello?"
+	para "DAISY: Hello?" ; DALIA
 	line "Hi <PLAYER>!"
 
 	para "I heard a story"
@@ -459,7 +459,7 @@ _PayPhoneDaisyPostgameAgathaText::
 _PayPhoneDaisyPostgameLanceText::
 	text "..."
 
-	para "DAISY: Hello?"
+	para "DAISY: Hello?" ; DALIA
 	line "Hi <PLAYER>!"
 
 	para "I just heard news"
@@ -506,7 +506,7 @@ _PayPhoneDaisyPostgameRivalText::
 _PayPhoneDaisyRivalAtIndigoText::
 	text "..."
 
-	para "DAISY: Hello?"
+	para "DAISY: Hello?" ; DALIA
 	line "Hi <PLAYER>!"
 
 	para "<RIVAL> told me he"
@@ -528,7 +528,7 @@ _PayPhoneDaisyRivalAtIndigoText::
 _PayPhoneDaisyOakRoute1Text::
 	text "..."
 
-	para "DAISY: Hello?"
+	para "DAISY: Hello?" ; DALIA
 	line "Hi <PLAYER>!"
 
 	para "Grandpa is looking"

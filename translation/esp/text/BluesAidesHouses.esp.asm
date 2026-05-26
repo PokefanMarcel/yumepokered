@@ -32,21 +32,22 @@ _BluesHouseDaisyUseMapText::
 	done
 
 _BluesHouseDaisyWalkingLivingThingsText::
-;	text "#MON are living" ; original
-;	line "things! If they"
-;	cont "get tired, give"
-;	cont "them a rest!"
+;	text "¡Los #MON" ; original
+;	line "son seres vivos!"
+;	cont "¡Si se cansan,"
+;	cont "déjalos reposar!"
 
-	text "DAISY: #MON are" ; marcelnote - new to add Daisy's name
-	line "living things!"
+	text "DALIA: ¡Los" ; marcelnote - new to add Daisy's name
+	line "#MON son"
+	cont "seres vivos!"
 
-	para "If they get tired,"
-	line "give them a rest!"
+	para "¡Si se cansan,"
+	line "déjalos reposar!"
 	done
 
 ; TODO - Spanish translation
 _BluesHouseDaisyWalkingPhoneText:: ; marcelnote - new for pay phones
-	text "DAISY: Grandpa got"
+	text "DAISY: Grandpa got" ; DALIA
 	line "me a new phone!"
 
 	para "Call me when you"
@@ -57,8 +58,10 @@ _BluesHouseTownMapText::
 	text "¡Es un gran mapa!"
 	line "¡Es muy útil!"
 	done
+
+; TODO - Spanish translation
 _BluesHousePhoneText:: ; marcelnote - new for pay phones
-	text "It's DAISY's phone."
+	text "It's DAISY's phone." ; DALIA
 	line "Still shiny!"
 	done
 

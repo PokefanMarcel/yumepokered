@@ -70,6 +70,6 @@ SwitchStatsCancelText:
 	next "SALIR@"
 
 MomDaisyCancelText: ; marcelnote - new for pay phones
-	db   "MOM"
-	next "DAISY"
-	next "CANCEL@"
+	db   "MAMÁ"
+	next "DALIA"
+	next "SALIR@"
