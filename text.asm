@@ -4,7 +4,6 @@ IF DEF(_FRA)
 	INCLUDE "translation/fra/data/text/text_1.fra.asm"
 	INCLUDE "translation/fra/text/ViridianForest.fra.asm"
 	INCLUDE "translation/fra/text/MtMoon1F.fra.asm"
-	INCLUDE "translation/fra/text/MtMoonB1F.fra.asm"
 	INCLUDE "translation/fra/text/MtMoonB2F.fra.asm"
 	INCLUDE "translation/fra/text/MtMoonSquare.fra.asm" ; marcelnote - new location
 	INCLUDE "translation/fra/text/SSAnne1F.fra.asm"
@@ -29,7 +28,6 @@ ELIF DEF(_ESP)
 	INCLUDE "translation/esp/data/text/text_1.esp.asm"
 	INCLUDE "translation/esp/text/ViridianForest.esp.asm"
 	INCLUDE "translation/esp/text/MtMoon1F.esp.asm"
-	INCLUDE "translation/esp/text/MtMoonB1F.esp.asm"
 	INCLUDE "translation/esp/text/MtMoonB2F.esp.asm"
 	INCLUDE "translation/esp/text/MtMoonSquare.esp.asm" ; marcelnote - new location
 	INCLUDE "translation/esp/text/SSAnne1F.esp.asm"
@@ -54,7 +52,6 @@ ELSE
 	INCLUDE "data/text/text_1.asm"
 	INCLUDE "text/ViridianForest.asm"
 	INCLUDE "text/MtMoon1F.asm"
-	INCLUDE "text/MtMoonB1F.asm"
 	INCLUDE "text/MtMoonB2F.asm"
 	INCLUDE "text/MtMoonSquare.asm" ; marcelnote - new location
 	INCLUDE "text/SSAnne1F.asm"
