@@ -15,6 +15,7 @@ _CardKeyFailText::
 	cont "MAGNÉTICA!"
 	done
 
+; TODO - Spanish translation
 _CardKeyNeedsUpdateText:: ; marcelnote - added for SilphFactory2F
 	text "<PLAYER> used"
 	line "the CARD KEY!"

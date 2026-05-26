@@ -105,6 +105,7 @@ _MonsStatsRoseText::
 	cont "@"
 	text_end
 
+; TODO - Spanish translation
 _GreatlyText::
 	text "<SCROLL>greatly@"
 	text_end

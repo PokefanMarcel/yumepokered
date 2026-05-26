@@ -25,6 +25,7 @@ _RepelWoreOffText::
 	cont "se agotó."
 	done
 
+; TODO - Spanish translation
 _RepelUseAnotherText:: ; marcelnote - added prompt to reuse repel
 	text "Use another?"
 	done
@@ -124,6 +125,7 @@ _LearnedMove1Text::
 	text "!@"
 	text_end
 
+; TODO - Spanish translation
 _CanUseMoveText:: ; marcelnote - for temporary field moves
 	text_ram wLearnMoveMonName
 	text " can use"

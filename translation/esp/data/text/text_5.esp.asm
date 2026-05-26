@@ -39,6 +39,7 @@ _CurrentTooFastText::
 	line "demasiado rápida!"
 	prompt
 
+; TODO - Spanish translation
 _CurrentTooFastOverworldText:: ; marcelnote - HM overworld use
 	text "The current is"
 	line "too fast to SURF!"
@@ -50,6 +51,7 @@ _CyclingIsFunText::
 	cont "el SURF!"
 	prompt
 
+; TODO - Spanish translation
 _CyclingIsFunOverworldText:: ; marcelnote - HM overworld use
 	text "Cycling is fun!"
 	line "Forget SURFing!"
@@ -66,6 +68,7 @@ _WarpToLastPokemonCenterText::
 	line "CENTRO #MON."
 	done
 
+; TODO - Spanish translation
 _GoHomeConfirmText:: ; marcelnote - option to Go Home
 	text "Are you sure you"
 	line "want to go back"
@@ -106,6 +109,7 @@ _CannotGetOffHereText::
 	line "aquí."
 	prompt
 
+; TODO - Spanish translation
 _ItemWasAssignedToSelectText:: ; marcelnote - use items with Select
 	text_ram wStringBuffer
 	text " was"

@@ -201,6 +201,8 @@ _UsedCutText::
 	text " lo"
 	line "CORTA todo!"
 	prompt
+
+; TODO - Spanish translation
 _MonCouldSurfText::
 	text "A #MON could"
 	line "SURF here."

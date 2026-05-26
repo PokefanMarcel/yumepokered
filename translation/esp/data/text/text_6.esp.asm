@@ -134,6 +134,7 @@ _ItemfinderFoundNothingText::
 	cont "no responde."
 	prompt
 
+; TODO - Spanish translation
 _ExpAllActivatedText:: ; marcelnote - ExpAll can be activated/deactivated
 	text "<PLAYER> switched"
 	line "on EXP.ALL."
@@ -247,6 +248,7 @@ _ItemUseNotYoursToUseText::
 	line "porque no es tuyo"
 	prompt
 
+; TODO - Spanish translation
 _ItemUseFujisNotesText:: ; marcelnote - new
 	text "It's filled with"
 	line "complex formulas."
