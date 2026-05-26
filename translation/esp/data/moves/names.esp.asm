@@ -165,11 +165,8 @@ MoveNames::
 	li "SUPER DIENTE"
 	li "CUCHILLADA"
 	li "SUSTITUTO"
-	; TODO - Spanish translation
-	li "ELECTRO BALL" ; marcelnote - new move
-	; TODO - Spanish translation
-	li "WILL-O-WISP"  ; marcelnote - new move
-	; TODO - Spanish translation
-	li "HEX"          ; marcelnote - new move
+	li "BOLA VOLTIO"  ; marcelnote - new move
+	li "FUEGO FATUO"  ; marcelnote - new move
+	li "INFORTUNIO"   ; marcelnote - new move
 	li "COMBATE"
 	assert_list_length NUM_ATTACKS

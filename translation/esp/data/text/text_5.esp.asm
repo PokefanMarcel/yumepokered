@@ -9,6 +9,7 @@ _CableClubNPCMakingPreparationsText::
 	cont "Espera por favor."
 	done
 
+; TODO - Spanish translation
 _CableClubNPCNewMovesNotAllowedText:: ; marcelnote - ban new moves from Cable Club
 	text "I'm sorry. #MON"
 	line "with the moves"
@@ -17,6 +18,9 @@ _CableClubNPCNewMovesNotAllowedText:: ; marcelnote - ban new moves from Cable Cl
 	cont "cannot enter the"
 	cont "Cable Club."
 	prompt
+	; "BOLA VOLTIO"  ; marcelnote - new move
+	; "FUEGO FATUO"  ; marcelnote - new move
+	; "INFORTUNIO"   ; marcelnote - new move
 
 _UsedStrengthText::
 	text_ram wNameBuffer

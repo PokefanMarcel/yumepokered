@@ -256,19 +256,27 @@ _CinnabarQuizQuestionsText1::
 	cont "BUTTERFREE?"
 	done
 
-_CinnabarQuizQuestionsText2::
+; TODO - Spanish translation
+_CinnabarQuizQuestionsText2:: ; marcelnote - new quiz question for 2nd trainer
+	text "VULPIX and"
+	line "NINETALES are"
+	cont "able to learn"
+	cont "WILL-O-WISP?" ; FUEGO FATUO
+	done
+
+_CinnabarQuizQuestionsText3:: ; marcelnote - reindexed from 2
 	text "¿Hay 9 MEDALLAS"
 	line "oficiales de la"
 	cont "LIGA #MON?"
 	done
 
-_CinnabarQuizQuestionsText3::
+_CinnabarQuizQuestionsText4:: ; marcelnote - reindexed from 3
 	text "¿POLIWAG se"
 	line "transforma"
 	cont "3 veces?"
 	done
 
-_CinnabarQuizQuestionsText4::
+_CinnabarQuizQuestionsText5:: ; marcelnote - reindexed from 4
 	text "¿Los movimientos"
 	line "del tipo-trueno"
 	cont "afectan a los"
@@ -276,21 +284,16 @@ _CinnabarQuizQuestionsText4::
 	cont "tipo-tierra?"
 	done
 
-_CinnabarQuizQuestionsText5::
+_CinnabarQuizQuestionsText6:: ; marcelnote - reindexed from 5
 	text "¿Son distintos"
 	line "los #MON"
 	cont "del mismo tipo y"
 	cont "del mismo nivel?"
 	done
 
-_CinnabarQuizQuestionsText6::
+_CinnabarQuizQuestionsText7:: ; marcelnote - reindexed from 6
 	text "¿La MT28 contiene"
 	line "una TUMBAPIEDRA?"
-	done
-
-_CinnabarQuizQuestionsText7:: ; marcelnote - reindexed from 6
-	text "TM28 contains"
-	line "TOMBSTONER?"
 	done
 
 _CinnabarGymQuizCorrectText::
