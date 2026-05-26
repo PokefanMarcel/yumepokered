@@ -322,7 +322,6 @@ INCLUDE "engine/events/cinnabar_lab.asm"
 SECTION "Hidden Events 4", ROMX
 
 INCLUDE "engine/events/hidden_events/gym_statues.asm"
-INCLUDE "engine/events/hidden_events/blues_room.asm"
 INCLUDE "engine/events/hidden_events/pokecenter_pc.asm"
 
 
