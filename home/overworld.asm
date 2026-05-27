@@ -1139,7 +1139,6 @@ IsSpriteInFrontOfPlayer2::
 .checkIfPlayerFacingUp
 	cp SPRITE_FACING_UP
 	jr nz, .checkIfPlayerFacingDown
-; facing up
 	ld a, b
 	sub d
 	ld b, a
@@ -1149,7 +1148,6 @@ IsSpriteInFrontOfPlayer2::
 .checkIfPlayerFacingDown
 	cp SPRITE_FACING_DOWN
 	jr nz, .checkIfPlayerFacingRight
-; facing down
 	ld a, b
 	add d
 	ld b, a
@@ -1159,7 +1157,6 @@ IsSpriteInFrontOfPlayer2::
 .checkIfPlayerFacingRight
 	cp SPRITE_FACING_RIGHT
 	jr nz, .playerFacingLeft
-; facing right
 	ld a, c
 	add d
 	ld c, a
@@ -1167,7 +1164,6 @@ IsSpriteInFrontOfPlayer2::
 	jr .doneCheckingDirection
 
 .playerFacingLeft
-; facing left
 	ld a, c
 	sub d
 	ld c, a
