@@ -1367,60 +1367,55 @@ CheckForTilePairCollisions::
 INCLUDE "data/tilesets/pair_collision_tile_ids.asm"
 
 ; this builds a tile map from the tile block map based on the current X/Y coordinates of the player's character
-LoadCurrentMapView::
+LoadCurrentMapView:: ; marcelnote - optimized
 	ldh a, [hLoadedROMBank]
 	push af
 	ld a, [wTilesetBank]
 	ldh [hLoadedROMBank], a
 	ld [rROMB], a
-	ld a, [wCurrentTileBlockMapViewPointer] ; address of upper left corner of current map view
-	ld e, a
-	ld a, [wCurrentTileBlockMapViewPointer + 1]
-	ld d, a
-	ld hl, wSurroundingTiles
+	ld hl, wCurrentTileBlockMapViewPointer
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a ; hl = address of upper-left block in the current map view
+	ld de, wSurroundingTiles
 	ld b, SCREEN_BLOCK_HEIGHT
 .rowLoop ; each loop iteration fills in one row of tile blocks
-	push hl
-	push de
 	ld c, SCREEN_BLOCK_WIDTH
 .rowInnerLoop ; loop to draw each tile block of the current row
 	push bc
-	push de
+	ld a, [hli]
 	push hl
-	ld a, [de]
 	ld c, a ; tile block number
 	call DrawTileBlock
 	pop hl
-	pop de
 	pop bc
-	inc hl
-	inc hl
-	inc hl
-	inc hl
-	inc de
 	dec c
 	jr nz, .rowInnerLoop
 ; update tile block map pointer to next row's address
-	pop de
+	; hl = [wCurrentTileBlockMapViewPointer] + SCREEN_BLOCK_WIDTH
+	ASSERT SCREEN_BLOCK_WIDTH == MAP_BORDER * 2
 	ld a, [wCurMapWidth]
-	add MAP_BORDER * 2
-	add e
-	ld e, a
-	jr nc, .noCarry
-	inc d
-.noCarry
-; update tile map pointer to next row's address
-	pop hl
-	ld a, SURROUNDING_WIDTH * BLOCK_HEIGHT
 	add l
 	ld l, a
-	jr nc, .noCarry2
-	inc h
-.noCarry2
+	adc h
+	sub l
+	ld h, a ; hl = address of left block in next row
+; update tile map pointer to next row's address
+	; de = wSurroundingTiles + SCREEN_BLOCK_WIDTH * BLOCK_WIDTH
+	ld a, SURROUNDING_WIDTH * BLOCK_HEIGHT - SCREEN_BLOCK_WIDTH * BLOCK_WIDTH
+	add e
+	ld e, a
+	adc d
+	sub e
+	ld d, a ; de = wSurroundingTiles + SURROUNDING_WIDTH * BLOCK_HEIGHT
 	dec b
 	jr nz, .rowLoop
+
+; The block map view is larger than the screen so scrolling within a 2x2 block
+; can copy from the right half or lower half of the already-expanded buffer.
+; Point hl at the screen-sized tile area inside wSurroundingTiles, then copy it
+; to wTileMap for V-blank transfer.
 	ld hl, wSurroundingTiles
-	ld bc, 0
 .adjustForYCoordWithinTileBlock
 	ld a, [wYBlockCoord]
 	and a
@@ -1447,9 +1442,9 @@ LoadCurrentMapView::
 	ld a, SURROUNDING_WIDTH - SCREEN_WIDTH
 	add l
 	ld l, a
-	jr nc, .noCarry3
-	inc h
-.noCarry3
+	adc h
+	sub l
+	ld h, a ; hl += SURROUNDING_WIDTH - SCREEN_WIDTH
 	dec b
 	jr nz, .rowLoop2
 	pop af
@@ -1734,42 +1729,45 @@ ScheduleWestColumnRedraw::
 	ldh [hRedrawRowOrColumnMode], a
 	ret
 
-; function to write the tiles that make up a tile block to memory
-; Input: c = tile block ID, hl = destination address
-DrawTileBlock::
-	push hl
-	ld a, [wTilesetBlocksPtr] ; pointer to tiles
+; Write the 4x4 tiles that make up a tile block to memory.
+; Input: c = tile block ID, de = destination address in wSurroundingTiles.
+; Output: de = destination address for the next horizontal tile block.
+DrawTileBlock:: ; marcelnote - optimized
+	ld hl, wTilesetBlocksPtr
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld a, [wTilesetBlocksPtr + 1]
-	ld h, a
+	; Each block is 16 bytes, so the table offset is c * $10.
 	ld a, c
 	swap a
 	ld b, a
 	and $f0
 	ld c, a
-	ld a, b
-	and $0f
-	ld b, a ; bc = tile block ID * 0x10
-	add hl, bc
-	ld d, h
-	ld e, l ; de = address of the tile block's tiles
-	pop hl
-	ld c, BLOCK_HEIGHT ; 4 loop iterations
+	xor b
+	ld b, a ; bc = c * $10
+	add hl, bc ; hl += c * $10
+	lb bc, BLOCK_HEIGHT, SURROUNDING_WIDTH - BLOCK_WIDTH
 .loop ; each loop iteration, write 4 tile numbers
-	push bc
-REPT BLOCK_WIDTH - 1
-	ld a, [de]
-	ld [hli], a
+REPT BLOCK_WIDTH
+	ld a, [hli]
+	ld [de], a
 	inc de
 ENDR
-	ld a, [de]
-	ld [hl], a
-	inc de
-	ld bc, SURROUNDING_WIDTH - (BLOCK_WIDTH - 1)
-	add hl, bc
-	pop bc
-	dec c
+	ld a, c ; a = SURROUNDING_WIDTH - BLOCK_WIDTH
+	add e
+	ld e, a
+	adc d
+	sub e
+	ld d, a ; de += SURROUNDING_WIDTH - BLOCK_WIDTH
+	dec b
 	jr nz, .loop
+	; de = original destination + SURROUNDING_WIDTH * BLOCK_HEIGHT
+	; but we want to return: de = original destination + BLOCK_WIDTH
+	ld a, e
+	sub SURROUNDING_WIDTH * BLOCK_HEIGHT - BLOCK_WIDTH
+	ld e, a
+	ret nc
+	dec d
 	ret
 
 ; function to update joypad state and simulate button presses
