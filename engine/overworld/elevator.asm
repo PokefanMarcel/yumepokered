@@ -1,5 +1,5 @@
 ShakeElevator::
-	ld de, -$40 ; marcelnote - was -$20, Engeze bug fix
+	ld de, -$40 ; marcelnote - was -$20, Engezerstorung bug fix
 	call ShakeElevatorRedrawRow
 	ld de, SCREEN_HEIGHT * $20
 	call ShakeElevatorRedrawRow

@@ -21,7 +21,7 @@ UpdateSpriteFacingOffsetAndDelayMovement::
 	ASSERT SPRITESTATEDATA1_INTRAANIMFRAMECOUNTER > SPRITESTATEDATA1_IMAGEINDEX
 	ld l, a
 	ld a, [hl] ; x#SPRITESTATEDATA1_IMAGEINDEX
-	and $f0 ; Engeze fix
+	and $f0 ; Engezerstorung fix
 	or b ; or in the facing direction
 	ld [hld], a ; x#SPRITESTATEDATA1_IMAGEINDEX
 	; marcelnote - this last Movement Status load was causing problems with Oak's pathfinding in Pallet,

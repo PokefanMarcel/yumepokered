@@ -137,7 +137,7 @@ CheckForFourTileSprite:
 	scf
 	ret
 
-LoadMapSpriteTilePatterns: ; marcelnote - Engezer optim
+LoadMapSpriteTilePatterns: ; marcelnote - Engezerstorung optim
 	xor a
 .loop
 	ldh [hVRAMSlot], a

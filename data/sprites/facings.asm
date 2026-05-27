@@ -19,7 +19,7 @@ SpriteFacingAndAnimationTable:
 ; The rest of this table is used for sprites $a and $b.
 ; All orientation and animation parameters lead to the same result.
 ; Used for immobile sprites like items on the ground.
-; marcelnote - Engezer optim by forcing still sprite to first table entry
+; marcelnote - Engezerstorung optim by forcing still sprite to first table entry
 ;	dw .StandingDown, .NormalOAM  ; facing down, walk animation frame 0
 ;	dw .StandingDown, .NormalOAM  ; facing down, walk animation frame 1
 ;	dw .StandingDown, .NormalOAM  ; facing down, walk animation frame 2
