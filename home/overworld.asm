@@ -885,19 +885,12 @@ LoadTilesetTilePatternData::
 
 ; this loads the current map's complete tile map (which references blocks, not individual tiles) to wOverworldMap
 ; it can also load partial tile maps of connected maps into a border of length 3 around the current map
-LoadTileBlockMap::
+LoadTileBlockMap:: ; marcelnote - optimized
 ; fill wOverworldMap-wOverworldMapEnd with the background tile
 	ld hl, wOverworldMap
-	ld a, [wMapBackgroundTile]
-	ld d, a
 	ld bc, wOverworldMapEnd - wOverworldMap
-.backgroundTileLoop
-	ld a, d
-	ld [hli], a
-	dec bc
-	ld a, c
-	or b
-	jr nz, .backgroundTileLoop
+	ld a, [wMapBackgroundTile]
+	call FillMemory ; returns bc = 0
 ; load tile map of current map (made of tile block IDs)
 ; a 3-byte border at the edges of the map is kept so that there is space for map connections
 	ld hl, wOverworldMap
@@ -905,7 +898,6 @@ LoadTileBlockMap::
 	ldh [hMapWidth], a
 	add MAP_BORDER * 2 ; east and west
 	ldh [hMapStride], a ; map width + border
-	ld b, 0
 	ld c, a
 ; make space for north border (next 3 lines)
 	add hl, bc
@@ -920,7 +912,6 @@ LoadTileBlockMap::
 	ld a, [wCurMapHeight]
 	ld b, a
 .rowLoop ; copy one row each iteration
-	push hl
 	ldh a, [hMapWidth] ; map width (without border)
 	ld c, a
 .rowInnerLoop
@@ -929,14 +920,13 @@ LoadTileBlockMap::
 	ld [hli], a
 	dec c
 	jr nz, .rowInnerLoop
-; add the map width plus the border to the base address of the current row to get the next row's address
-	pop hl
-	ldh a, [hMapStride] ; map width + border
+; get to the next row's address
+	ld a, MAP_BORDER * 2
 	add l
 	ld l, a
-	jr nc, .noCarry
-	inc h
-.noCarry
+	adc h
+	sub l
+	ld h, a ; hl += MAP_BORDER * 2
 	dec b
 	jr nz, .rowLoop
 .northConnection
@@ -944,72 +934,72 @@ LoadTileBlockMap::
 	cp $ff
 	jr z, .southConnection
 	call SwitchToMapRomBank
-	ld a, [wNorthConnectionStripSrc]
-	ld l, a
-	ld a, [wNorthConnectionStripSrc + 1]
-	ld h, a
-	ld a, [wNorthConnectionStripDest]
-	ld e, a
-	ld a, [wNorthConnectionStripDest + 1]
-	ld d, a
-	ld a, [wNorthConnectionStripLength]
-	ldh [hNorthSouthConnectionStripWidth], a
-	ld a, [wNorthConnectedMapWidth]
+	ld hl, wNorthConnectedMapWidth
+	ld a, [hld]
 	ldh [hNorthSouthConnectedMapWidth], a
+	ld a, [hld] ; wNorthConnectionStripLength
+	ldh [hNorthSouthConnectionStripWidth], a
+	ld a, [hld] ; wNorthConnectionStripDest + 1
+	ld d, a
+	ld a, [hld] ; wNorthConnectionStripDest
+	ld e, a
+	ld a, [hld] ; wNorthConnectionStripSrc + 1
+	ld l, [hl]  ; wNorthConnectionStripSrc
+	ld h, a
 	call LoadNorthSouthConnectionsTileMap
 .southConnection
 	ld a, [wSouthConnectedMap]
 	cp $ff
 	jr z, .westConnection
 	call SwitchToMapRomBank
-	ld a, [wSouthConnectionStripSrc]
-	ld l, a
-	ld a, [wSouthConnectionStripSrc + 1]
-	ld h, a
-	ld a, [wSouthConnectionStripDest]
-	ld e, a
-	ld a, [wSouthConnectionStripDest + 1]
-	ld d, a
-	ld a, [wSouthConnectionStripLength]
-	ldh [hNorthSouthConnectionStripWidth], a
-	ld a, [wSouthConnectedMapWidth]
+	ld hl, wSouthConnectedMapWidth
+	ld a, [hld]
 	ldh [hNorthSouthConnectedMapWidth], a
+	ld a, [hld] ; wSouthConnectionStripLength
+	ldh [hNorthSouthConnectionStripWidth], a
+	ld a, [hld] ; wSouthConnectionStripDest + 1
+	ld d, a
+	ld a, [hld] ; wSouthConnectionStripDest
+	ld e, a
+	ld a, [hld] ; wSouthConnectionStripSrc + 1
+	ld l, [hl]  ; wSouthConnectionStripSrc
+	ld h, a
 	call LoadNorthSouthConnectionsTileMap
 .westConnection
 	ld a, [wWestConnectedMap]
 	cp $ff
 	jr z, .eastConnection
 	call SwitchToMapRomBank
-	ld a, [wWestConnectionStripSrc]
-	ld l, a
-	ld a, [wWestConnectionStripSrc + 1]
-	ld h, a
-	ld a, [wWestConnectionStripDest]
-	ld e, a
-	ld a, [wWestConnectionStripDest + 1]
-	ld d, a
-	ld a, [wWestConnectionStripLength]
-	ld b, a
-	ld a, [wWestConnectedMapWidth]
+	ld hl, wWestConnectedMapWidth
+	ld a, [hld]
 	ldh [hEastWestConnectedMapWidth], a
+	ld a, [hld] ; wWestConnectionStripLength
+	ld b, a
+	ld a, [hld] ; wWestConnectionStripDest + 1
+	ld d, a
+	ld a, [hld] ; wWestConnectionStripDest
+	ld e, a
+	ld a, [hld] ; wWestConnectionStripSrc + 1
+	ld l, [hl]  ; wWestConnectionStripSrc
+	ld h, a
 	call LoadEastWestConnectionsTileMap
 .eastConnection
 	ld a, [wEastConnectedMap]
 	cp $ff
 	jr z, .applyTemporaryTileBlockReplacements ; marcelnote - modified cut trees engine
 	call SwitchToMapRomBank
-	ld a, [wEastConnectionStripSrc]
-	ld l, a
-	ld a, [wEastConnectionStripSrc + 1]
-	ld h, a
-	ld a, [wEastConnectionStripDest]
-	ld e, a
-	ld a, [wEastConnectionStripDest + 1]
-	ld d, a
-	ld a, [wEastConnectionStripLength]
-	ld b, a
-	ld a, [wEastConnectedMapWidth]
+	ld hl, wEastConnectedMapWidth
+	ld a, [hld]
 	ldh [hEastWestConnectedMapWidth], a
+	ld a, [hld] ; wEastConnectionStripLength
+	ld b, a
+	ld a, [hld] ; wEastConnectionStripDest + 1
+	ld d, a
+	ld a, [hld] ; wEastConnectionStripDest
+	ld e, a
+	ld a, [hld] ; wEastConnectionStripSrc + 1
+	ld l, [hl]  ; wEastConnectionStripSrc
+	ld h, a
 	call LoadEastWestConnectionsTileMap
 .applyTemporaryTileBlockReplacements
 	jpfar ApplyTemporaryTileBlockReplacements ; marcelnote - modified cut trees engine
@@ -1028,27 +1018,23 @@ LoadNorthSouthConnectionsTileMap::
 	dec b
 	jr nz, .innerLoop
 	pop hl
-	pop de
 	ldh a, [hNorthSouthConnectedMapWidth]
-	add l
-	ld l, a
-	jr nc, .noCarry1
-	inc h
-.noCarry1
-	ld a, [wCurMapWidth]
-	add MAP_BORDER * 2
+	ld e, a
+	ld d, b
+	add hl, de ; hl += [hNorthSouthConnectedMapWidth]
+	pop de
+	ldh a, [hMapStride]
 	add e
 	ld e, a
-	jr nc, .noCarry2
-	inc d
-.noCarry2
+	adc d
+	sub e
+	ld d, a ; de += [wCurMapWidth] + MAP_BORDER * 2
 	dec c
 	jr nz, .loop
 	ret
 
 LoadEastWestConnectionsTileMap::
 	push hl
-	push de
 	ld c, MAP_BORDER
 .innerLoop
 	ld a, [hli]
@@ -1056,21 +1042,20 @@ LoadEastWestConnectionsTileMap::
 	inc de
 	dec c
 	jr nz, .innerLoop
-	pop de
 	pop hl
 	ldh a, [hEastWestConnectedMapWidth]
 	add l
 	ld l, a
-	jr nc, .noCarry1
-	inc h
-.noCarry1
-	ld a, [wCurMapWidth]
-	add MAP_BORDER * 2
+	adc h
+	sub l
+	ld h, a ; hl += [hEastWestConnectedMapWidth]
+	ldh a, [hMapWidth]
+	add MAP_BORDER
 	add e
 	ld e, a
-	jr nc, .noCarry2
-	inc d
-.noCarry2
+	adc d
+	sub e
+	ld d, a ; de += [wCurMapWidth] + MAP_BORDER * 2
 	dec b
 	jr nz, LoadEastWestConnectionsTileMap
 	ret

@@ -6,7 +6,7 @@ SECTION "HRAM", HRAM
 ; Soft reset when 0 is reached.
 hSoftReset:: db
 
-UNION
+UNION ; this union is 4 bytes
 hBaseTileID:: ; base tile ID to which offsets are added
 hWarpDestinationMap::
 ;hOAMTile:: ; marcelnote - now unused
@@ -51,11 +51,12 @@ hDownArrowBlinkCount1:: db
 hDownArrowBlinkCount2:: db
 
 NEXTU
-hMapStride::
+; marcelnote - reordered for LoadTileBlockMap optim
+hMapStride:: db
+hMapWidth:: db
 hEastWestConnectedMapWidth::
 hNorthSouthConnectionStripWidth::
 	db
-hMapWidth::
 hNorthSouthConnectedMapWidth::
 	db
 
