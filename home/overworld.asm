@@ -874,10 +874,10 @@ INCLUDE "data/tilesets/bike_riding_tilesets.asm"
 
 ; load the tile pattern data of the current tileset into VRAM
 LoadTilesetTilePatternData::
-	ld a, [wTilesetGfxPtr]
-	ld l, a
-	ld a, [wTilesetGfxPtr + 1]
-	ld h, a
+	ld hl, wTilesetGfxPtr
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a    ; hl = tileset graphics pointer
 	ld de, vTileset
 	ld bc, $600
 	ld a, [wTilesetBank]
