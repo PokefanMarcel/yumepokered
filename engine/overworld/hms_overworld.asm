@@ -20,7 +20,7 @@ CheckForSurf:: ; marcelnote - could be improved if there is a wram bit which che
 	res BIT_SURF_ALLOWED, [hl]
 	ld hl, TilePairCollisionsWater
 	call CheckForTilePairCollisions
-	ret z
+	ret c
 ; there is no blocking tile
 	ld a, 1
 	ldh [hOverworldHMUseFound], a

@@ -1295,20 +1295,16 @@ CheckTilePassable::
 CheckForJumpingAndTilePairCollisions::
 	push hl
 	predef GetTileAndCoordsInFrontOfPlayer
-	push de
-	push bc
+;	push de
+;	push bc
 	callfar HandleLedges ; check if the player is trying to jump a ledge
-	pop bc
-	pop de
+;	pop bc
+;	pop de
 	ld hl, wMovementFlags
 	bit BIT_CLIMBING_LEDGE, [hl]
-	jr z, .notClimbingLedge
 	res BIT_CLIMBING_LEDGE, [hl]
 	pop hl
-	scf
-	ret
-.notClimbingLedge
-	pop hl
+	jr nz, CheckForTilePairCollisions.foundMatch
 	and a
 	ld a, [wMovementFlags]
 	bit BIT_LEDGE_OR_FISHING, a
@@ -1319,49 +1315,44 @@ CheckForTilePairCollisions2::
 	lda_coord 8, 9 ; tile the player is on
 	ld [wTilePlayerStandingOn], a
 
-CheckForTilePairCollisions::
+CheckForTilePairCollisions:: ; marcelnote - optimized
+	ld a, [wTilePlayerStandingOn]
+	ld b, a
 	ld a, [wTileInFrontOfPlayer]
 	ld c, a
-.tilePairCollisionLoop
 	ld a, [wCurMapTileset]
-	ld b, a
+	ld e, a
+.tilePairCollisionLoop
 	ld a, [hli]
 	cp $ff
-	jr z, .noMatch
-	cp b
+	ret z  ; no match, return with carry flag unset
+	cp e
 	jr z, .tilesetMatches
-	inc hl
-.retry
+	inc hl ; skip two tile entries
 	inc hl
 	jr .tilePairCollisionLoop
 .tilesetMatches
-	ld a, [wTilePlayerStandingOn]
-	ld b, a
-	ld a, [hl]
+	ld a, [hli]
 	cp b
 	jr z, .currentTileMatchesFirstInPair
-	inc hl
 	ld a, [hl]
 	cp b
 	jr z, .currentTileMatchesSecondInPair
-	jr .retry
-.currentTileMatchesFirstInPair
 	inc hl
-	ld a, [hli]	;joenote - bug: this should be [hli] instead of [hl]
+	jr .tilePairCollisionLoop
+.currentTileMatchesFirstInPair
+	ld a, [hli]
 	cp c
 	jr z, .foundMatch
 	jr .tilePairCollisionLoop
 .currentTileMatchesSecondInPair
 	dec hl
 	ld a, [hli]
-	cp c
 	inc hl
+	cp c
 	jr nz, .tilePairCollisionLoop
 .foundMatch
 	scf
-	ret
-.noMatch
-	and a
 	ret
 
 INCLUDE "data/tilesets/pair_collision_tile_ids.asm"
