@@ -1457,170 +1457,160 @@ LoadCurrentMapView::
 	ld [rROMB], a
 	ret
 
-AdvancePlayerSprite::
-	ld a, [wSpritePlayerStateData1YStepVector]
+AdvancePlayerSprite:: ; marcelnote - optim by Engezerstorung
+; Cache the player's step vector in b/c for the coordinate, map view, and scroll
+; updates below.
+	ld hl, wSpritePlayerStateData1YStepVector
+	ld a, [hli]
 	ld b, a
-	ld a, [wSpritePlayerStateData1XStepVector]
-	ld c, a
+	inc l
+	ld c, [hl] ; wSpritePlayerStateData1XStepVector
+
+; Advance the walk animation. On the last animation frame, commit the movement
+; to the player's map coordinates.
 	ld hl, wWalkCounter
 	dec [hl]
 	jr nz, .afterUpdateMapCoords
-; if it's the end of the animation, update the player's map coordinates
-	ld a, [wYCoord]
+	ld de, wYCoord
+	ld a, [de]
 	add b
-	ld [wYCoord], a
-	ld a, [wXCoord]
+	ld [de], a
+	inc de
+	ld a, [de] ; wXCoord
 	add c
-	ld [wXCoord], a
+	ld [de], a
 .afterUpdateMapCoords
-	ld a, [wWalkCounter]
+	ld a, [hl]
 	cp $07
 	jp nz, .scrollBackgroundAndSprites
-; if this is the first iteration of the animation
+	push bc ; save step vectors
+
+; On the first animation frame, move the visible BG tilemap origin in VRAM.
+; Horizontal movement wraps within the 32-tile row by updating only the low
+; 5 bits of wMapViewVRAMPointer.
+	ld hl, wMapViewVRAMPointer
+	ld e, [hl]
 	ld a, c
-	cp $01
-	jr nz, .checkIfMovingWest
-; moving east
-	ld a, [wMapViewVRAMPointer]
-	ld e, a
-	and $e0
-	ld d, a
-	ld a, e
-	add $02
+	add a
+	jr z, .checkIfMovingVertically
+; moving horizontally
+	add e
+	xor e
 	and $1f
-	or d
-	ld [wMapViewVRAMPointer], a
+	xor e
+	ld [hl], a
 	jr .adjustXCoordWithinBlock
-.checkIfMovingWest
-	cp $ff
-	jr nz, .checkIfMovingSouth
-; moving west
-	ld a, [wMapViewVRAMPointer]
-	ld e, a
-	and $e0
-	ld d, a
-	ld a, e
-	sub $02
-	and $1f
-	or d
-	ld [wMapViewVRAMPointer], a
-	jr .adjustXCoordWithinBlock
-.checkIfMovingSouth
+.checkIfMovingVertically
+; Vertical movement adds or subtracts $40 from the low byte. If that crosses a
+; $100 boundary, wrap the high byte within $98-$9b.
 	ld a, b
-	cp $01
-	jr nz, .checkIfMovingNorth
-; moving south
-	ld a, [wMapViewVRAMPointer]
-	add $40
-	ld [wMapViewVRAMPointer], a
+	rrca ; carry set if b is 1 or -1
 	jr nc, .adjustXCoordWithinBlock
-	ld a, [wMapViewVRAMPointer + 1]
-	inc a
-	and $03
-	or $98
-	ld [wMapViewVRAMPointer + 1], a
-	jr .adjustXCoordWithinBlock
-.checkIfMovingNorth
-	cp $ff
-	jr nz, .adjustXCoordWithinBlock
-; moving north
-	ld a, [wMapViewVRAMPointer]
-	sub $40
-	ld [wMapViewVRAMPointer], a
+	rrca
+	and $c0 ; $40 for south, $c0 for north
+	add e
+	bit 7, b ; check if Y vector is negative
+	jr z, .yVectorIsPositive
+	cp e
+	ccf ; convert the north borrow test into the carry state used below
+.yVectorIsPositive
+	ld [hli], a
 	jr nc, .adjustXCoordWithinBlock
-	ld a, [wMapViewVRAMPointer + 1]
-	dec a
-	and $03
-	or $98
-	ld [wMapViewVRAMPointer + 1], a
-.adjustXCoordWithinBlock
-	ld a, c
-	and a
-	jr z, .pointlessJump ; mistake?
-.pointlessJump
-	ld hl, wXBlockCoord
-	ld a, [hl]
-	add c
-	ld [hl], a
-	cp $02
-	jr nz, .checkForMoveToWestBlock
-; moved into the tile block to the east
-	xor a
-	ld [hl], a
-	ld hl, wXOffsetSinceLastSpecialWarp
-	inc [hl]
-	ld de, wCurrentTileBlockMapViewPointer
-	call MoveTileBlockMapPointerEast
-	jr .updateMapView
-.checkForMoveToWestBlock
-	cp $ff
-	jr nz, .adjustYCoordWithinBlock
-; moved into the tile block to the west
-	ld a, $01
-	ld [hl], a
-	ld hl, wXOffsetSinceLastSpecialWarp
-	dec [hl]
-	ld de, wCurrentTileBlockMapViewPointer
-	call MoveTileBlockMapPointerWest
-	jr .updateMapView
-.adjustYCoordWithinBlock
-	ld hl, wYBlockCoord
 	ld a, [hl]
 	add b
+	and $03 ; keep the high byte in the $98-$9b BG map range
+	or $98
 	ld [hl], a
-	cp $02
-	jr nz, .checkForMoveToNorthBlock
-; moved into the tile block to the south
-	xor a
-	ld [hl], a
-	ld hl, wYOffsetSinceLastSpecialWarp
+.adjustXCoordWithinBlock
+; Update the player's 2x2-block position. If X crosses a block boundary,
+; update the special-warp offset and the tile block map view pointer.
+	ld de, wXBlockCoord
+	ld hl, wXOffsetSinceLastSpecialWarp
+	ld a, [de]
+	add c
+	ld [de], a
+
+	ld c, 1 ; value to add or sub when adjusting wCurrentTileBlockMapViewPointer
+
+	inc a ; z if -1 ($ff)
+	jr z, .decTileBlockMapPointer ; z if moved into the tile block to the west
+	sub $03 ; z if 2
+	jr z, .incTileBlockMapPointer ; z if moved into the tile block to the east
+.adjustYCoordWithinBlock
+; If X stayed within the same block, check Y instead. Vertical pointer changes
+; are one row of blocks, which is map width plus both border columns.
+	dec de ; wYBlockCoord
+	dec hl ; wYOffsetSinceLastSpecialWarp
+
+	ld a, [wCurMapWidth]
+	add MAP_BORDER * 2
+	ld c, a ; value to add or sub when adjusting wCurrentTileBlockMapViewPointer
+
+	ld a, [de]
+	add b
+	ld [de], a
+
+	inc a ; z if -1 ($ff)
+	jr z, .decTileBlockMapPointer ; z if moved into the tile block to the north
+	sub $03 ; z if 2
+	jr nz, .updateMapView ; nz if haven't moved into the tile block to the south
+	; fallthrough
+
+; Move the pointer to the upper-left corner of the visible tile block map in
+; the direction of motion.
+
+.incTileBlockMapPointer
+	ld [de], a ; a = 0
 	inc [hl]
-	ld de, wCurrentTileBlockMapViewPointer
-	ld a, [wCurMapWidth]
-	call MoveTileBlockMapPointerSouth
+	ld hl, wCurrentTileBlockMapViewPointer
+	ld a, [hl]
+	add c
+	ld [hli], a
+	jr nc, .updateMapView
+	inc [hl]
 	jr .updateMapView
-.checkForMoveToNorthBlock
-	cp $ff
-	jr nz, .updateMapView
-; moved into the tile block to the north
-	ld a, $01
-	ld [hl], a
-	ld hl, wYOffsetSinceLastSpecialWarp
+
+.decTileBlockMapPointer
+	inc a
+	ld [de], a ; a = 1
 	dec [hl]
-	ld de, wCurrentTileBlockMapViewPointer
-	ld a, [wCurMapWidth]
-	call MoveTileBlockMapPointerNorth
+	ld hl, wCurrentTileBlockMapViewPointer
+	ld a, [hl]
+	sub c
+	ld [hli], a
+	jr nc, .updateMapView
+	dec [hl]
 .updateMapView
+; Reload the cached visible map view and schedule the row or column that V-blank
+; needs to redraw for the newly exposed edge.
 	call LoadCurrentMapView
 	ld a, [wSpritePlayerStateData1YStepVector]
-	cp $01
+	cp $01 ; moving south?
 	jr nz, .checkIfMovingNorth2
-; if moving south
 	call ScheduleSouthRowRedraw
-	jr .scrollBackgroundAndSprites
+	jr .reloadAndScrollBackgroundAndSprites
 .checkIfMovingNorth2
-	cp $ff
+	cp $ff ; moving north?
 	jr nz, .checkIfMovingEast2
-; if moving north
 	call ScheduleNorthRowRedraw
-	jr .scrollBackgroundAndSprites
+	jr .reloadAndScrollBackgroundAndSprites
 .checkIfMovingEast2
 	ld a, [wSpritePlayerStateData1XStepVector]
-	cp $01
+	cp $01 ; moving east?
 	jr nz, .checkIfMovingWest2
-; if moving east
 	call ScheduleEastColumnRedraw
-	jr .scrollBackgroundAndSprites
+	jr .reloadAndScrollBackgroundAndSprites
 .checkIfMovingWest2
-	cp $ff
-	jr nz, .scrollBackgroundAndSprites
-; if moving west
+	cp $ff ; moving west?
+	jr nz, .reloadAndScrollBackgroundAndSprites
 	call ScheduleWestColumnRedraw
+	; fallthrough
+
+.reloadAndScrollBackgroundAndSprites
+	pop bc ; restore steps vectors
 .scrollBackgroundAndSprites
-	ld a, [wSpritePlayerStateData1YStepVector]
-	ld b, a
-	ld a, [wSpritePlayerStateData1XStepVector]
-	ld c, a
+; Scroll the background and shift all on-screen sprites in the opposite
+; direction so the player appears to move through the world.
 	sla b
 	sla c
 	ldh a, [hSCY]
@@ -1629,78 +1619,26 @@ AdvancePlayerSprite::
 	ldh a, [hSCX]
 	add c
 	ldh [hSCX], a ; update background scroll X
-; shift all the sprites in the direction opposite of the player's motion
-; so that the player appears to move relative to them
+; Shift all sprites in the direction opposite of the player's motion
+; so that the player appears to move relative to them.
 	ld hl, wSprite01StateData1YPixels
 	ld a, [wNumSprites]
 	and a ; are there any sprites?
-	jr z, .done
+	ret z
 	ld e, a
 .spriteShiftLoop
-	ld a, [hl]
+	ld a, [hl] ; wSprite<n>StateData1YPixels
 	sub b
 	ld [hli], a
 	inc l
-	ld a, [hl]
+	ld a, [hl] ; wSprite<n>StateData1XPixels
 	sub c
 	ld [hl], a
-	ld a, $0e
+	ld a, SPRITESTATEDATA1_LENGTH - (SPRITESTATEDATA1_XPIXELS - SPRITESTATEDATA1_YPIXELS)
 	add l
 	ld l, a
 	dec e
 	jr nz, .spriteShiftLoop
-.done
-	ret
-
-; the following four functions are used to move the pointer to the upper left
-; corner of the tile block map in the direction of motion
-
-MoveTileBlockMapPointerEast::
-	ld a, [de]
-	add $01
-	ld [de], a
-	ret nc
-	inc de
-	ld a, [de]
-	inc a
-	ld [de], a
-	ret
-
-MoveTileBlockMapPointerWest::
-	ld a, [de]
-	sub $01
-	ld [de], a
-	ret nc
-	inc de
-	ld a, [de]
-	dec a
-	ld [de], a
-	ret
-
-MoveTileBlockMapPointerSouth::
-	add MAP_BORDER * 2
-	ld b, a
-	ld a, [de]
-	add b
-	ld [de], a
-	ret nc
-	inc de
-	ld a, [de]
-	inc a
-	ld [de], a
-	ret
-
-MoveTileBlockMapPointerNorth::
-	add MAP_BORDER * 2
-	ld b, a
-	ld a, [de]
-	sub b
-	ld [de], a
-	ret nc
-	inc de
-	ld a, [de]
-	dec a
-	ld [de], a
 	ret
 
 ; the following 6 functions are used to tell the V-blank handler to redraw
