@@ -46,12 +46,10 @@ TrainerNames::
 	li "EXORCISTA"
 	li "AGATHA"
 	li "LANCE"
-	; TODO - Spanish translation
-	li "YELLOW"  ; marcelnote - new trainer class
-	; TODO - Spanish translation
-	li "WILL"    ; marcelnote - new trainer class
-	; TODO - Spanish translation
+	li "AMARILLO"  ; marcelnote - new trainer class
+	li "MENTO"     ; marcelnote - new trainer class
+	; TODO - Spanish translation, see Gen2
 	li "<PKMN>TRAINER"    ; Red   ; marcelnote - new trainer class
-	; TODO - Spanish translation
+	; TODO - Spanish translation, see Gen2
 	li "<PKMN>TRAINER"    ; Green ; marcelnote - new trainer class
 	assert_list_length NUM_TRAINERS
