@@ -17,7 +17,7 @@ _PalletTownOakItsUnsafeText::
 	line "me!"
 	done
 
-_PalletTownGirl1Text::
+_PalletTownGirl1Text:: ; marcelnote - was _PalletTownGirlText
 	text "I'm raising"
 	line "#MON too!"
 
@@ -48,11 +48,11 @@ _PalletTownSignText::
 	done
 
 _PalletTownPlayersHouseSignText::
-	text "<PLAYER>'s house "
+	text "<PLAYER>'s house"
 	done
 
 _PalletTownRivalsHouseSignText::
-	text "<RIVAL>'s house "
+	text "<RIVAL>'s house"
 	done
 
 _PalletTownGirl2Text:: ; marcelnote - new

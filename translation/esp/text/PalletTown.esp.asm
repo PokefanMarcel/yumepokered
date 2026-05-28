@@ -17,13 +17,14 @@ _PalletTownOakItsUnsafeText::
 	para "¡Ven conmigo!"
 	done
 
-_PalletTownGirl1Text::
-	text "I'm raising"
-	line "#MON too!"
+_PalletTownGirl1Text:: ; marcelnote - was _PalletTownGirlText
+	text "¡Yo también"
+	line "entreno a mis"
+	cont "#MON!"
 
-	para "When they get"
-	line "strong, they can"
-	cont "protect me!"
+	para "¡Cuando se hagan"
+	line "fuertes me"
+	cont "protegerán!"
 	done
 
 _PalletTownFisherText::
@@ -58,26 +59,25 @@ _PalletTownPlayersHouseSignText::
 _PalletTownRivalsHouseSignText::
 	text "Casa de <RIVAL>"
 	done
+
 _PalletTownGirl2Text:: ; marcelnote - new
-	text "Life is peaceful"
-	line "here in PALLET."
+	text "La vida es" ; traduccion por NunWinter
+	line "pacífica aquí."
 
-	para "But the spirit of"
-	line "adventure is al-"
-	cont "ways in the air."
+	para "Pero el espíritu"
+	line "aventurero"
+	cont "está en el aire."
 	done
 
-; TODO - Spanish translation
-_PalletTownYellowsHouseSignJustMovedInText:: ; marcelnote - added Yellow's house
-	text "..."
+_PalletTownYellowsHouseSignJustMovedInText:: ; marcelnote - new
+ 	text "..." ; traduccion por NunWinter
 
-	para "A new family just"
-	line "moved in."
-	cont "They didn't put up"
-	cont "their name yet."
+	para "Una nueva familia"
+	line "se mudó aquí."
+	cont "Aún no ponen"
+	cont "su nombre."
 	done
 
-; TODO - Spanish translation
-_PalletTownYellowsHouseSignText:: ; marcelnote - added Yellow's house
-	text "YELLOW's house"
+_PalletTownYellowsHouseSignText:: ; marcelnote - new
+	text "Casa de AMARILLO" ; traduccion por NunWinter
 	done

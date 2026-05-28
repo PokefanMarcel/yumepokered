@@ -18,7 +18,7 @@ _PalletTownOakItsUnsafeText::
 	para "Suis-moi!"
 	done
 
-_PalletTownGirl1Text::
+_PalletTownGirl1Text:: ; marcelnote - was _PalletTownGirlText
 	text "J'élève des"
 	line "#MON, moi"
 	cont "aussi!"
