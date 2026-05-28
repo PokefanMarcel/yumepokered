@@ -1,7 +1,7 @@
-; TODO - Spanish translation
 _SilphCo8FSilphWorkerMSilphIsFinishedText::
-	text "I wonder if SILPH"
-	line "is finished..."
+	text "Me pregunto si"
+	line "SILPH estará"
+	cont "acabada."
 	done
 
 _SilphCo8FSilphWorkerMThanksForSavingUsText::
@@ -56,6 +56,7 @@ _SilphCo8FRocket2AfterBattleText::
 	line "encargarán de ti!"
 	done
 
+; TODO - Spanish translation
 _SilphCo8FBaldingGuyShutMeDownText:: ; marcelnote - new for EXP.ALL boost
 	text "Do you have"
 	line "EXP.ALL? It's"
