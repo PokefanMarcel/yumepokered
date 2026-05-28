@@ -10,14 +10,10 @@ PokedexContentsText:
 
 PokedexMenuItemsText:
 	db   "INFO"
-	next "GRIT"
+	next "MOVS" ; marcelnote - reorganized for learnset page
 	next "ÁREA"
-	next "SALE@"
+	next "GRIT@"
 
-; tests if a pokemon's bit is set in the seen or owned pokemon bit fields
-; INPUT:
-; [wPokedexNum] = pokedex number
-; hl = address of bit field
 PokedexTypeText:
 	db   "TIPO/@"
 
@@ -29,13 +25,12 @@ PokedexStatsText:
 	next "ESPECIAL@"
 
 HeightWeightText:
+	db   "AL  ?′??″"
+	next "PE   ???<l><b>@"
+
+HeightWeightMetricText:
 	db   "AL   ???<m>"
 	next "PE   ???<k><g>@"
 
-; leftover from JPN Pokedex, where species have the suffix "Pokemon"
-HeightWeightMetricText:
-	db   "HT   ???<m>"
-	next "WT   ???<k><g>@"
-
 ; TODO - Spanish translation
-PokedexMovesHeader: db "'s MOVES@"
+PokedexMovesHeader: db "MOVS.@"

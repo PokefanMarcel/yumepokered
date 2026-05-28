@@ -842,6 +842,13 @@ IF DEF(_FRA) ; in French: CAPA. BULBIZARRE
 	call GetMonName
 	hlcoord 8, 1
 	call PlaceString ; Pokémon name
+ELIF DEF(_ESP) ; in Spanish: MOVS. BULBASAUR
+	hlcoord 2, 1
+	ld de, PokedexMovesHeader
+	call PlaceString
+	call GetMonName
+	hlcoord 8, 1
+	call PlaceString ; Pokémon name
 ELSE         ; in English: BULBASAUR's MOVES
 	call GetMonName
 	hlcoord 2, 1
