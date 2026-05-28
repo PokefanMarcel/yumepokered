@@ -3,11 +3,11 @@ AllOptionsText:
 	db   "VELOCIDAD TEXTO"
 	next "ANIMACIÓN BATALLA"
 	next "ESTILO BATALLA"
-	next "SPRITE STYLE" ; TODO - Spanish translation
-	next "MEASURE UNITS" ; TODO - Spanish translation
+	next "ESTILO SPRITE"
+	next "UNIDADES MEDIDA"
 	next ""
-	next "GO HOME" ; TODO - Spanish translation ; marcelnote - option to Go Home
-	next "SALIR@" ; marcelnote - changed from CANCEL@
+	next "IR A CASA" ; marcelnote - option to Go Home
+	next "SALIR@"
 
 OptionsColonsText:
 	db   ":"
@@ -16,15 +16,14 @@ OptionsColonsText:
 	next ":"
 	next ":@"
 
-; TODO - Spanish translation
 InstantText:
-	db "INSTANT@"
+	db "INSTANTÁNEA@"
 FastText:
-	db "RÁP.   @"
+	db "RÁPIDA     @"
 MediumText:
-	db "MED.   @"
+	db "MEDIA      @"
 SlowText:
-	db "LEN.   @"
+	db "LENTA      @"
 
 AnimationOnText:
 	db "SÍ@"
@@ -36,19 +35,14 @@ BattleStyleShiftText:
 BattleStyleSetText:
 	db "MANTENER@"
 
-; TODO - Spanish translation
 MeasureUnitsImperialText:
-	db "IMPERIAL@"
-; TODO - Spanish translation
+	db "IMPERIALES@"
 MeasureUnitsMetricText:
-	db "METRIC  @"
+	db "MÉTRICAS  @"
 
-; TODO - Spanish translation
 SpriteStyleGreenText:
-	db "GREEN  @"
-; TODO - Spanish translation
+	db "VERDE  @"
 SpriteStyleBlueText:
-	db "BLUE   @"
-; TODO - Spanish translation
+	db "AZUL   @"
 SpriteStyleCrystalText:
-	db "CRYSTAL@"
+	db "CRISTAL@"
