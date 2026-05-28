@@ -121,14 +121,21 @@ LoadTownMap_Nest: ; marcelnote - completely modified for fishing guide
 	push af
 	ld [hl], $ff
 
-IF DEF(_FRA) ; in French: NID DE BULBIZARRE
+IF DEF(_FRA)   ; in French: NID DE BULBIZARRE
 	hlcoord 1, 0
 	ld de, MonsNestText
 	call PlaceString
 	call GetMonName
 	hlcoord 8, 0
 	call PlaceString
-ELSE         ; in English: BULBASAUR's NEST
+ELIF DEF(_ESP) ; in Spanish: NIDO DE BULBASAUR
+	hlcoord 1, 0
+	ld de, MonsNestText
+	call PlaceString
+	call GetMonName
+	hlcoord 9, 0
+	call PlaceString
+ELSE           ; in English: BULBASAUR's NEST
 	call GetMonName
 	hlcoord 1, 0
 	call PlaceString
