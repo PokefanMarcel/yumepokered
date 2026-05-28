@@ -101,9 +101,19 @@ DrawTrainerInfo: ; marcelnote - modified
 	hlcoord 19, 10
 	call TrainerInfo_DrawVerticalLine
 	; Badges text
+IF DEF(_FRA) ; BADGES
 	hlcoord 6, 9
 	ld de, TrainerInfo_BadgesText
 	call PlaceString
+ELIF DEF(_ESP) ; MEDALLAS
+	hlcoord 5, 9
+	ld de, TrainerInfo_BadgesText
+	call PlaceString
+ELSE ; BADGES
+	hlcoord 6, 9
+	ld de, TrainerInfo_BadgesText
+	call PlaceString
+ENDC
 	; "Name" "Money" and "Time"
 	hlcoord 2, 2
 	ld de, TrainerInfo_NameMoneyTimeText
@@ -140,9 +150,20 @@ ELSE
 	INCLUDE "data/text/menus/trainer_menu.asm"
 ENDC
 
+IF DEF(_FRA)
 ; $75 is a circle tile
 TrainerInfo_BadgesText:
 	db $75,"BADGES",$75,"@"
+ELIF DEF(_ESP)
+; $75 is a circle tile
+TrainerInfo_BadgesText:
+	db $75,"MEDALLAS",$75,"@"
+ELSE
+; $75 is a circle tile
+TrainerInfo_BadgesText:
+	db $75,"BADGES",$75,"@"
+ENDC
+
 
 ; draws a text box on the trainer info screen
 ; height is always 6
