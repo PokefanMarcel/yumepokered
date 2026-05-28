@@ -18,7 +18,7 @@ PokedexTypeText:
 	db   "TYPE/@"
 
 PokedexStatsText:
-	db   "HP"
+	db   "HEALTH"
 	next "ATTACK"
 	next "DEFENSE"
 	next "SPEED"

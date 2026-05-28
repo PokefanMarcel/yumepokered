@@ -22,7 +22,7 @@ PokedexTypeText:
 	db   "TIPO/@"
 
 PokedexStatsText:
-	db   "PS"
+	db   "SALUD"
 	next "ATAQUE"
 	next "DEFENSA"
 	next "VELOCID."

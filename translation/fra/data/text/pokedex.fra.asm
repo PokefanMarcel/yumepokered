@@ -17,7 +17,7 @@ PokedexTypeText:
 	db   "TYPE/@"
 
 PokedexStatsText:
-	db   "PV"
+	db   "VIE"
 	next "ATTAQUE"
 	next "DEFENSE"
 	next "VITESSE"
