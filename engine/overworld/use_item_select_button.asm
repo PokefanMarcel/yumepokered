@@ -7,6 +7,8 @@ UseSelectButtonItem::
 	call IsItemInBag
 	ret z ; if associated item is not in bag, do nothing
 
+	predef GetTileAndCoordsInFrontOfPlayer ; update tile in front of player for rods
+
 	; initialize a text box without drawing anything special
 	ld a, 1
 	ld [wAutoTextBoxDrawingControl], a
@@ -27,7 +29,6 @@ UseSelectButtonItem::
 CheckIfSelectItem:: ; sets z flag if item in [wCurItem] cannot be associated with Select button
 	ld hl, SelectItemsList
 	ld a, [wCurItem]
-	;ld de, 1 ; size of array entries
 	jp IsInList ; returns carry if found
 
 SelectItemsList:
