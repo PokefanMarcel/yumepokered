@@ -67,6 +67,7 @@ _ViridianForestYoungster4AfterBattleText::
 	cont "dejé caer!"
 	done
 
+; TODO - Spanish translation
 _ViridianForestYoungster6BattleText:: ; marcelnote - new trainer based on Samurai
 	text "Are you the"
 	line "#MON trainer"
