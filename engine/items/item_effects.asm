@@ -1872,21 +1872,18 @@ ItemUseOldRod:
 	call FishingInit
 	jp c, ItemUseNotTime
 	call ReadOldRodData
-	;ld a, e
 	jr RodResponse
 
 ItemUseGoodRod:
 	call FishingInit
 	jp c, ItemUseNotTime
 	call ReadGoodRodData
-	;ld a, e
 	jr RodResponse
 
 ItemUseSuperRod:
 	call FishingInit
 	jp c, ItemUseNotTime
 	call ReadSuperRodData
-;	ld a, e
 RodResponse:
 	ld a, e ; marcelnote - moved after jr
 	ld [wRodResponse], a
