@@ -35,10 +35,8 @@ UpdateNonPlayerSprite:
 	ld b, a
 	ldh a, [hCurrentSpriteOffset]
 	cp b
-	jr nz, .unequal
+	jp nz, UpdateNPCSprite
 	jp DoScriptedNPCMovement
-.unequal
-	jp UpdateNPCSprite
 
 ; This detects if the current sprite (whose offset is at hCurrentSpriteOffset)
 ; is going to collide with another sprite by looping over the other sprites.
@@ -72,9 +70,8 @@ DetectCollisionBetweenSprites:
 	ld a, [hli] ; a = [i#SPRITESTATEDATA1_YPIXELS]
 	add 4 ; align with multiple of $10
 
-; The effect of the following 3 lines is to
-; add 7 to a if moving south or
-; subtract 7 from a if moving north.
+; The effect of the following 3 lines is to add 7 to a if moving south
+; or subtract 7 from a if moving north.
 	add b
 	and $f0
 	or c
@@ -85,9 +82,8 @@ DetectCollisionBetweenSprites:
 	call SetSpriteCollisionValues
 	ld a, [hl] ; a = [i#SPRITESTATEDATA1_XPIXELS]
 
-; The effect of the following 3 lines is to
-; add 7 to a if moving east or
-; subtract 7 from a if moving west.
+; The effect of the following 3 lines is to add 7 to a if moving east
+; or subtract 7 from a if moving west.
 	add b
 	and $f0
 	or c
@@ -300,9 +296,9 @@ DetectCollisionBetweenSprites:
 	add a
 	add e
 	ld e, a
-	jr nc, .noCarry3
-	inc d
-.noCarry3
+	adc d
+	sub e
+	ld d, a ; de = SpriteCollisionBitTable + 2 * [hCollidingSpriteOffset]
 	ld a, [de]
 	or [hl]
 	ld [hli], a
