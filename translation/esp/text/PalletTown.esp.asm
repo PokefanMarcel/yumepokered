@@ -61,7 +61,8 @@ _PalletTownRivalsHouseSignText::
 	done
 
 _PalletTownGirl2Text:: ; marcelnote - new
-	text "La vida es" ; traduccion por NunWinter
+	; traduccion por NunWinter
+	text "La vida es"
 	line "pacífica aquí."
 
 	para "Pero el espíritu"
@@ -70,7 +71,8 @@ _PalletTownGirl2Text:: ; marcelnote - new
 	done
 
 _PalletTownYellowsHouseSignJustMovedInText:: ; marcelnote - new
- 	text "..." ; traduccion por NunWinter
+	; traduccion por NunWinter
+	text "..."
 
 	para "Una nueva familia"
 	line "se mudó aquí."
@@ -79,5 +81,6 @@ _PalletTownYellowsHouseSignJustMovedInText:: ; marcelnote - new
 	done
 
 _PalletTownYellowsHouseSignText:: ; marcelnote - new
-	text "Casa de AMARILLO" ; traduccion por NunWinter
+	; traduccion por NunWinter
+	text "Casa de AMARILLO"
 	done

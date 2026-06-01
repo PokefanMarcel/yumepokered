@@ -51,13 +51,18 @@ _RockTunnel1FHiker3AfterBattleText::
 	done
 
 _RockTunnel1FSuperNerdBattleText::
-	text "¡Lucha #MON!"
+;	text "¡Lucha #MON!"
+;	line "¿Listo? ¡YA!"
+	; traduccion por NunWinter - Combate more common than Lucha
+	text "¡Combate #MON!"
 	line "¿Listo? ¡YA!"
 	done
 
 _RockTunnel1FSuperNerdEndBattleText::
 	text_start
-	line "¡Final del"
+;	line "¡Final del"
+	; traduccion por NunWinter - more appropriate in Spanish
+	line "¡Fin del"
 	cont "juego!"
 	prompt
 
@@ -160,17 +165,16 @@ _RockTunnel1FBlackbeltFlashOnText::   ; marcelnote - added Blackbelt
 	cont "this FLASH on."
 	done
 
-; TODO - Spanish translation
 _RockTunnel1FBlackbeltTrainingText::   ; marcelnote - added Blackbelt
+	; traduccion por NunWinter
 	text "@"
 	text_ram wStringBuffer
-	text " shuts"
-	line "its eyes and"
-	cont "focuses on its"
-	cont "inner power."
+	text " cierra"
+	line "los ojos y se"
+	cont "concentra en su"
+	cont "fuerza interior."
 	done
 
-; TODO - Spanish translation
 _RockTunnel1FBlackbeltDotsText::    ; marcelnote - added Blackbelt
 	text "..."
 	line "..."

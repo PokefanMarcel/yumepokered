@@ -32,12 +32,14 @@ _HallOfFameOakText::
 	done
 
 _HallOfFameRivalText:: ; marcelnote - new text for E4 rematches
-	text "<RIVAL>: Well,"
-	line "you know how"
-	cont "this works."
+	; traduccion por NunWinter
+	text "<RIVAL>: Bien,"
+	line "ya sabes cómo"
+	cont "funciona esto."
 
-	para "Time to register"
-	line "your #MON in"
-	cont "the HALL OF FAME,"
+	para "Es hora de"
+	line "registrar tus"
+	cont "#MON en el"
+	cont "HALL de la FAMA,"
 	cont "<PLAYER>!"
 	done
