@@ -24,8 +24,8 @@ _UpdateSprites:: ; marcelnote - optimized
 
 .updateCurrentSprite
 	dec a
-	jr nz, UpdateNonPlayerSprite
-	jp UpdatePlayerSprite
+	jp z, UpdatePlayerSprite
+	; fallthrough
 
 
 UpdateNonPlayerSprite:
