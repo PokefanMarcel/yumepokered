@@ -98,16 +98,12 @@ UpdatePlayerSprite:
 	ld [wSpritePlayerStateData2GrassPriority], a
 	ret
 
-UnusedReadSpriteDataFunction:
-	push bc
-	push af
-	ldh a, [hCurrentSpriteOffset]
-	ld c, a
-	pop af
-	add c
-	ld l, a
-	pop bc
-	ret
+;UnusedReadSpriteDataFunction: ; marcelnote - optimized
+;	ld l, a
+;	ldh a, [hCurrentSpriteOffset]
+;	add l
+;	ld l, a
+;	ret
 
 UpdateNPCSprite:
 	ldh a, [hCurrentSpriteOffset]
@@ -117,11 +113,9 @@ UpdateNPCSprite:
 	ld hl, wMapSpriteData
 	add l
 	ld l, a
-;;;;;;;;;;; marcelnote - fixes bug with wrong NPC walking behavior (pokered Wiki)
-	jr nc, .nc
-	inc h
-.nc
-;;;;;;;;;;;
+	adc h
+	sub l
+	ld h, a ; hl += a ; marcelnote - fixes bug with wrong NPC walking behavior (pokered Wiki)
 	ld a, [hl]        ; read movement byte 2
 	ld [wCurSpriteMovement2], a
 	ld h, HIGH(wSpriteStateData1)
@@ -188,7 +182,7 @@ UpdateNPCSprite:
 	cp WALK
 	jr nz, .determineDirection
 ; current NPC movement data is WALK ($fe). this seems buggy
-	ld [hl], $1     ; set movement byte 1 to $1
+	ld [hl], 1     ; set movement byte 1 to 1
 	ld de, wNPCMovementDirections
 	call LoadDEPlusA ; a = [wNPCMovementDirections + $fe] (?)
 	jr .determineDirection
@@ -256,7 +250,7 @@ UpdateNPCSprite:
 ; changes facing direction by zeroing the movement delta and calling TryWalking
 ChangeFacingDirection:
 	ld de, $0
-	; fall through
+	; fallthrough
 
 ; b: direction (1,2,4 or 8)
 ; c: new facing direction (0,4,8 or $c)
@@ -264,15 +258,14 @@ ChangeFacingDirection:
 ; e: X movement delta (-1, 0 or 1)
 ; hl: pointer to tile the sprite would walk onto
 ; set carry on failure, clears carry on success
-TryWalking:
+TryWalking: ; marcelnote - small optim
 	push hl
 	ld h, HIGH(wSpriteStateData1)
 	ldh a, [hCurrentSpriteOffset]
 	add SPRITESTATEDATA1_FACINGDIRECTION ; = $9
 	ld l, a
 	ld [hl], c          ; x#SPRITESTATEDATA1_FACINGDIRECTION
-	sub SPRITESTATEDATA1_FACINGDIRECTION - SPRITESTATEDATA1_YSTEPVECTOR
-	assert SPRITESTATEDATA1_FACINGDIRECTION > SPRITESTATEDATA1_YSTEPVECTOR
+	add SPRITESTATEDATA1_YSTEPVECTOR - SPRITESTATEDATA1_FACINGDIRECTION
 	ld l, a
 	ld [hl], d          ; x#SPRITESTATEDATA1_YSTEPVECTOR
 	inc l
@@ -286,7 +279,7 @@ TryWalking:
 	ret c               ; cannot walk there (reinitialization of delay values already done)
 	ld h, HIGH(wSpriteStateData2)
 	ldh a, [hCurrentSpriteOffset]
-	add SPRITESTATEDATA2_MAPY ; = $4
+	add SPRITESTATEDATA2_MAPY
 	ld l, a
 	ld a, [hl]          ; x#SPRITESTATEDATA2_MAPY
 	add d
@@ -297,9 +290,9 @@ TryWalking:
 	ldh a, [hCurrentSpriteOffset]
 	ld l, a
 	ld [hl], $10        ; [x#SPRITESTATEDATA2_WALKANIMATIONCOUNTER] = 16
-	dec h
+	dec h               ; HIGH(wSpriteStateData1)
 	inc l
-	ld [hl], $3         ; x#SPRITESTATEDATA1_MOVEMENTSTATUS
+	ld [hl], 3          ; x#SPRITESTATEDATA1_MOVEMENTSTATUS
 	jp UpdateSpriteImage
 
 ; update the walking animation parameters for a sprite that is currently walking
@@ -398,7 +391,7 @@ NotYetMoving:
 	ld [hl], 0              ; [x#SPRITESTATEDATA1_ANIMFRAMECOUNTER] = 0 (walk animation frame)
 	jp UpdateSpriteImage
 
-MakeNPCFacePlayer:
+MakeNPCFacePlayer: ; marcelnote - optimized
 ; Make an NPC face the player if the player has spoken to him or her.
 
 ; Check if the behaviour of the NPC facing the player when spoken to is
@@ -406,40 +399,35 @@ MakeNPCFacePlayer:
 	ld a, [wStatusFlags3]
 	bit BIT_NO_NPC_FACE_PLAYER, a
 	jr nz, NotYetMoving
+
 	res BIT_FACE_PLAYER, [hl]
 	ld a, [wPlayerDirection]
-	bit PLAYER_DIR_BIT_UP, a
-	jr z, .notFacingDown
-	ld c, SPRITE_FACING_DOWN
-	jr .facingDirectionDetermined
-.notFacingDown
-	bit PLAYER_DIR_BIT_DOWN, a
-	jr z, .notFacingUp
-	ld c, SPRITE_FACING_UP
-	jr .facingDirectionDetermined
-.notFacingUp
-	bit PLAYER_DIR_BIT_LEFT, a
-	jr z, .notFacingRight
-	ld c, SPRITE_FACING_RIGHT
-	jr .facingDirectionDetermined
-.notFacingRight
+	rra ; PLAYER_DIR_BIT_RIGHT?
 	ld c, SPRITE_FACING_LEFT
-.facingDirectionDetermined
-	ldh a, [hCurrentSpriteOffset]
-	add SPRITESTATEDATA1_FACINGDIRECTION ; = $9
+	jr c, .gotFacingDirection
+	rra ; PLAYER_DIR_BIT_LEFT?
+	ld c, SPRITE_FACING_RIGHT
+	jr c, .gotFacingDirection
+	rra ; PLAYER_DIR_BIT_DOWN?
+	ld c, SPRITE_FACING_UP
+	jr c, .gotFacingDirection
+	ld c, SPRITE_FACING_DOWN
+.gotFacingDirection
+	ld a, l    ; x#SPRITESTATEDATA1_MOVEMENTSTATUS
+	add SPRITESTATEDATA1_FACINGDIRECTION - SPRITESTATEDATA1_MOVEMENTSTATUS
 	ld l, a
-	ld [hl], c              ; [x#SPRITESTATEDATA1_FACINGDIRECTION]: set facing direction
+	ld [hl], c ; [x#SPRITESTATEDATA1_FACINGDIRECTION]: set facing direction
 	jr NotYetMoving
 
 InitializeSpriteStatus:
-	ld [hl], $1   ; [x#SPRITESTATEDATA1_MOVEMENTSTATUS] = ready
+	ld [hl], 1    ; [x#SPRITESTATEDATA1_MOVEMENTSTATUS] = ready
 	inc l
 	ld [hl], $ff  ; [x#SPRITESTATEDATA1_IMAGEINDEX] = invisible/off screen
 	inc h ; HIGH(wSpriteStateData2)
-	ldh a, [hCurrentSpriteOffset]
-	add SPRITESTATEDATA2_YDISPLACEMENT ; = $2
+	ld a, l
+	add SPRITESTATEDATA2_YDISPLACEMENT - SPRITESTATEDATA1_IMAGEINDEX
 	ld l, a
-	ld a, $8
+	ld a, 8
 	ld [hli], a   ; [x#SPRITESTATEDATA2_YDISPLACEMENT] = 8
 	ld [hl], a    ; [x#SPRITESTATEDATA2_XDISPLACEMENT] = 8
 	ret
@@ -455,7 +443,7 @@ InitializeSpriteScreenPosition:
 	ld a, [hl]      ; x#SPRITESTATEDATA2_MAPY
 	sub b           ; relative to player position
 	swap a          ; * 16
-	sub $4          ; - 4
+	sub 4           ; - 4
 	dec h
 	ld [hli], a     ; [x#SPRITESTATEDATA1_YPIXELS]
 	inc h
@@ -549,21 +537,19 @@ CheckSpriteAvailability:
 	and a
 	ret
 
-UpdateSpriteImage:
+UpdateSpriteImage: ; marcelnote - optimized
 	ld h, HIGH(wSpriteStateData1)
 	ldh a, [hCurrentSpriteOffset]
-	add SPRITESTATEDATA1_ANIMFRAMECOUNTER ; = $8
+	add SPRITESTATEDATA1_ANIMFRAMECOUNTER
 	ld l, a
 	ld a, [hli]        ; x#SPRITESTATEDATA1_ANIMFRAMECOUNTER
-	ld b, a
-	ld a, [hl]         ; x#SPRITESTATEDATA1_FACINGDIRECTION
-	add b
+	add [hl]           ; x#SPRITESTATEDATA1_FACINGDIRECTION
 	ld b, a
 	ldh a, [hTilePlayerStandingOn]
 	add b
 	ld b, a
-	ldh a, [hCurrentSpriteOffset]
-	add SPRITESTATEDATA1_IMAGEINDEX ; = $2
+	ld a, l
+	add SPRITESTATEDATA1_IMAGEINDEX - SPRITESTATEDATA1_FACINGDIRECTION
 	ld l, a
 	ld [hl], b         ; x#SPRITESTATEDATA1_IMAGEINDEX
 	ret
@@ -574,7 +560,7 @@ UpdateSpriteImage:
 ; d: Y movement delta (-1, 0 or 1)
 ; e: X movement delta (-1, 0 or 1)
 ; set carry on failure, clears carry on success
-CanWalkOntoTile:
+CanWalkOntoTile: ; marcelnote - small optim
 	ld h, HIGH(wSpriteStateData2)
 	ldh a, [hCurrentSpriteOffset]
 	add SPRITESTATEDATA2_MOVEMENTBYTE1
@@ -598,7 +584,7 @@ CanWalkOntoTile:
 	jr nz, .tilePassableLoop
 	ld h, HIGH(wSpriteStateData2)
 	ldh a, [hCurrentSpriteOffset]
-	add SPRITESTATEDATA2_MOVEMENTBYTE1 ; = $6
+	add SPRITESTATEDATA2_MOVEMENTBYTE1
 	ld l, a
 	ld a, [hl]         ; x#SPRITESTATEDATA2_MOVEMENTBYTE1
 	inc a
@@ -671,7 +657,7 @@ CanWalkOntoTile:
 	ldh a, [hCurrentSpriteOffset]
 	inc a
 	ld l, a
-	ld [hl], $2        ; [x#SPRITESTATEDATA1_MOVEMENTSTATUS] = 2 (delayed)
+	ld [hl], 2         ; [x#SPRITESTATEDATA1_MOVEMENTSTATUS] = 2 (delayed)
 	inc l
 	inc l
 	xor a
@@ -680,10 +666,9 @@ CanWalkOntoTile:
 	ld [hl], a         ; [x#SPRITESTATEDATA1_XSTEPVECTOR] = 0
 	inc h              ; HIGH(wSpriteStateData2)
 	ldh a, [hCurrentSpriteOffset]
-	add SPRITESTATEDATA2_MOVEMENTDELAY ; = $8
+	add SPRITESTATEDATA2_MOVEMENTDELAY
 	ld l, a
 	call Random
-	ldh a, [hRandomAdd]
 	and $7f
 	ld [hl], a         ; [x#SPRITESTATEDATA2_MOVEMENTDELAY] = random value in [0,$7f] (again with delay $100 if value is 0)
 	scf                ; set carry (marking failure to walk)
@@ -692,45 +677,44 @@ CanWalkOntoTile:
 ; calculates the tile pointer pointing to the tile the current sprite stands on
 ; this is always the lower left tile of the 2x2 tile blocks all sprites are snapped to
 ; hl: output pointer
-GetTileSpriteStandsOn:
+GetTileSpriteStandsOn: ; marcelnote - small optim
 	ld h, HIGH(wSpriteStateData1)
 	ldh a, [hCurrentSpriteOffset]
 	add SPRITESTATEDATA1_YPIXELS
 	ld l, a
-	ld a, [hli]     ; x#SPRITESTATEDATA1_YPIXELS
-	add $4          ; align to 2*2 tile blocks (Y position is always off 4 pixels to the top)
-	and $f0         ; in case object is currently moving
-	srl a           ; screen Y tile * 4
+	ld a, [hli]      ; x#SPRITESTATEDATA1_YPIXELS
+	add 4            ; align to 2*2 tile blocks (Y position is always off 4 pixels to the top)
+	and $f0          ; in case object is currently moving
+	srl a            ; screen Y tile * 4
 	ld c, a
-	ld b, $0
+	ld b, 0
 	inc l
-	ld a, [hl]      ; x#SPRITESTATEDATA1_XPIXELS
+	ld a, [hl]       ; x#SPRITESTATEDATA1_XPIXELS
 	srl a
 	srl a
 	srl a            ; screen X tile
 	add SCREEN_WIDTH ; screen X tile + 20
-	ld d, $0
-	ld e, a
 	hlcoord 0, 0
 	add hl, bc
 	add hl, bc
 	add hl, bc
 	add hl, bc
 	add hl, bc
-	add hl, de     ; wTileMap + 20*(screen Y tile + 1) + screen X tile
+	ld c, a
+	add hl, bc       ; wTileMap + 20*(screen Y tile + 1) + screen X tile
 	ret
 
 ; loads [de+a] into a
-LoadDEPlusA:
+LoadDEPlusA: ; marcelnote - adjusted
 	add e
 	ld e, a
-	jr nc, .noCarry
-	inc d
-.noCarry
+	adc d
+	sub e
+	ld d, a ; de += a
 	ld a, [de]
 	ret
 
-DoScriptedNPCMovement:
+DoScriptedNPCMovement: ; marcelnote - small optim
 ; This is an alternative method of scripting an NPC's movement and is only used
 ; a few times in the game. It is used when the NPC and player must walk together
 ; in sync, such as when the player is following the NPC somewhere. An NPC can't
@@ -744,11 +728,9 @@ DoScriptedNPCMovement:
 	jr z, InitScriptedNPCMovement
 	ld hl, wNPCMovementDirections2
 	ld a, [wNPCMovementDirections2Index]
-	add l
-	ld l, a
-	jr nc, .noCarry
-	inc h
-.noCarry
+	ld c, a
+	ld b, 0
+	add hl, bc ; hl += a
 	ld a, [hl]
 ; check if moving up
 	cp NPC_MOVEMENT_UP
@@ -777,17 +759,11 @@ DoScriptedNPCMovement:
 	call GetSpriteScreenXPointer
 	ld c, SPRITE_FACING_RIGHT
 	ld a, 2
-	jr .move
-.noMatch
-	cp $ff
-	ret
 .move
-	ld b, a
-	ld a, [hl]
-	add b
+	add [hl]
 	ld [hl], a
 	ldh a, [hCurrentSpriteOffset]
-	add SPRITESTATEDATA1_FACINGDIRECTION ; = $9
+	add SPRITESTATEDATA1_FACINGDIRECTION
 	ld l, a
 	ld [hl], c    ; x#SPRITESTATEDATA1_FACINGDIRECTION
 	call AnimScriptedNPCMovement
@@ -799,30 +775,31 @@ DoScriptedNPCMovement:
 	ld hl, wNPCMovementDirections2Index
 	inc [hl]
 	ret
+.noMatch
+	cp $ff
+	ret
+
+GetSpriteScreenYPointer: ; marcelnote - optimized
+	ld b, SPRITESTATEDATA1_YPIXELS
+	jr GetSpriteScreenXYPointerCommon
+
+GetSpriteScreenXPointer: ; marcelnote - optimized
+	ld b, SPRITESTATEDATA1_XPIXELS
+	; fallthrough
+
+GetSpriteScreenXYPointerCommon: ; marcelnote - optimized
+	ld h, HIGH(wSpriteStateData1)
+	ldh a, [hCurrentSpriteOffset]
+	add b
+	ld l, a
+	ret
 
 InitScriptedNPCMovement:
 	xor a
 	ld [wNPCMovementDirections2Index], a
 	ld a, 8
 	ld [wScriptedNPCWalkCounter], a
-	jr AnimScriptedNPCMovement
-
-GetSpriteScreenYPointer:
-	ld a, SPRITESTATEDATA1_YPIXELS
-	ld b, a
-	jr GetSpriteScreenXYPointerCommon
-
-GetSpriteScreenXPointer:
-	ld a, SPRITESTATEDATA1_XPIXELS
-	ld b, a
-
-GetSpriteScreenXYPointerCommon:
-	ld hl, wSpriteStateData1
-	ldh a, [hCurrentSpriteOffset]
-	add l
-	add b
-	ld l, a
-	ret
+	; fallthrough
 
 AnimScriptedNPCMovement:
 	ld hl, wSpriteStateData2
@@ -863,15 +840,14 @@ AnimScriptedNPCMovement:
 	ld [hl], a
 	ret
 
-AdvanceScriptedNPCAnimFrameCounter:
+AdvanceScriptedNPCAnimFrameCounter: ; marcelnote - small optim
 	ldh a, [hCurrentSpriteOffset]
 	add SPRITESTATEDATA1_INTRAANIMFRAMECOUNTER ; = $7
 	ld l, a
 	inc [hl]             ; [x#SPRITESTATEDATA1_INTRAANIMFRAMECOUNTER]++
 	ld a, [hl]
-	cp $4
+	sub 4
 	ret nz
-	xor a
 	ld [hli], a          ; [x#SPRITESTATEDATA1_INTRAANIMFRAMECOUNTER] = 0
 	ld a, [hl]           ; x#SPRITESTATEDATA1_ANIMFRAMECOUNTER
 	inc a
