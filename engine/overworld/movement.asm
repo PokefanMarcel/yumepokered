@@ -303,15 +303,14 @@ TryWalking:
 	jp UpdateSpriteImage
 
 ; update the walking animation parameters for a sprite that is currently walking
-UpdateSpriteInWalkingAnimation:
+UpdateSpriteInWalkingAnimation: ; marcelnote - optimized
 	ldh a, [hCurrentSpriteOffset]
 	add SPRITESTATEDATA1_INTRAANIMFRAMECOUNTER ; = $7
 	ld l, a
 	inc [hl]                         ; [x#SPRITESTATEDATA1_INTRAANIMFRAMECOUNTER]++
 	ld a, [hl]
-	cp $4
+	sub 4
 	jr nz, .noNextAnimationFrame
-	xor a
 	ld [hli], a                      ; [x#SPRITESTATEDATA1_INTRAANIMFRAMECOUNTER] = 0
 	ld a, [hl]                       ; x#SPRITESTATEDATA1_ANIMFRAMECOUNTER
 	inc a
@@ -322,61 +321,54 @@ UpdateSpriteInWalkingAnimation:
 	add SPRITESTATEDATA1_YSTEPVECTOR ; = $3
 	ld l, a
 	ld a, [hli]                      ; x#SPRITESTATEDATA1_YSTEPVECTOR
-	ld b, a
-	ld a, [hl]                       ; x#SPRITESTATEDATA1_YPIXELS
-	add b
-	ld [hli], a                      ; update [x#SPRITESTATEDATA1_YPIXELS]
+	add [hl]
+	ld [hli], a                      ; [x#SPRITESTATEDATA1_YPIXELS] += [x#SPRITESTATEDATA1_YSTEPVECTOR]
 	ld a, [hli]                      ; x#SPRITESTATEDATA1_XSTEPVECTOR
-	ld b, a
-	ld a, [hl]                       ; x#SPRITESTATEDATA1_XPIXELS
-	add b
-	ld [hl], a                       ; update [x#SPRITESTATEDATA1_XPIXELS]
+	add [hl]
+	ld [hl], a                       ; [x#SPRITESTATEDATA1_XPIXELS] += [x#SPRITESTATEDATA1_XSTEPVECTOR]
 	ldh a, [hCurrentSpriteOffset]
 	ld l, a
-	inc h
-	ld a, [hl]                       ; x#SPRITESTATEDATA2_WALKANIMATIONCOUNTER
-	dec a
-	ld [hl], a                       ; update walk animation counter
+	inc h                            ; x#SPRITESTATEDATA2_WALKANIMATIONCOUNTER
+	dec [hl]                         ; update walk animation counter
 	ret nz
-	ld a, $6                         ; walking finished, update state
+	; walking finished, update state
+	ld a, SPRITESTATEDATA2_MOVEMENTBYTE1 - SPRITESTATEDATA2_WALKANIMATIONCOUNTER
 	add l
 	ld l, a
 	ld a, [hl]                       ; x#SPRITESTATEDATA2_MOVEMENTBYTE1
 	cp WALK
 	jr nc, .initNextMovementCounter  ; values WALK or STAY
-	ldh a, [hCurrentSpriteOffset]
-	inc a
+	ld a, SPRITESTATEDATA1_MOVEMENTSTATUS - SPRITESTATEDATA2_MOVEMENTBYTE1
+	add l
 	ld l, a
 	dec h
-	ld [hl], $1                      ; [x#SPRITESTATEDATA1_MOVEMENTSTATUS] = 1 (movement status ready)
+	ld [hl], 1                       ; [x#SPRITESTATEDATA1_MOVEMENTSTATUS] = 1 (movement status ready)
 	ret
 .initNextMovementCounter
+	ld a, SPRITESTATEDATA2_MOVEMENTDELAY - SPRITESTATEDATA2_MOVEMENTBYTE1
+	add l
+	ld l, a
 	call Random
-	ldh a, [hCurrentSpriteOffset]
-	add SPRITESTATEDATA2_MOVEMENTDELAY ; = $8
-	ld l, a
-	ldh a, [hRandomAdd]
 	and $7f
-	ld [hl], a                       ; x#SPRITESTATEDATA2_MOVEMENTDELAY:
-	                                 ; set next movement delay to a random value in [0,$7f]
-	                                 ; note that value 0 actually makes the delay $100 (bug?)
+	ld [hl], a                       ; [x#SPRITESTATEDATA2_MOVEMENTDELAY] = random value in [0,$7f]
+	                                 ; if this stores 0, the next delay tick wraps it to $ff before checking for 0
 	dec h ; HIGH(wSpriteStateData1)
-	ldh a, [hCurrentSpriteOffset]
-	inc a
+	ld a, SPRITESTATEDATA1_MOVEMENTSTATUS - SPRITESTATEDATA2_MOVEMENTDELAY
+	add l
 	ld l, a
-	ld [hl], $2                      ; [x#SPRITESTATEDATA1_MOVEMENTSTATUS] = 2 (movement status)
+	ld [hl], 2                       ; [x#SPRITESTATEDATA1_MOVEMENTSTATUS] = 2 (movement status)
 	inc l
 	inc l
 	xor a
-	ld b, [hl]                       ; x#SPRITESTATEDATA1_YSTEPVECTOR
+;	ld b, [hl]                       ; x#SPRITESTATEDATA1_YSTEPVECTOR
 	ld [hli], a                      ; [x#SPRITESTATEDATA1_YSTEPVECTOR] = 0
 	inc l
-	ld c, [hl]                       ; x#SPRITESTATEDATA1_XSTEPVECTOR
+;	ld c, [hl]                       ; x#SPRITESTATEDATA1_XSTEPVECTOR
 	ld [hl], a                       ; [x#SPRITESTATEDATA1_XSTEPVECTOR] = 0
 	ret
 
 ; update [x#SPRITESTATEDATA2_MOVEMENTDELAY] for sprites in the delayed state (x#SPRITESTATEDATA1_MOVEMENTSTATUS)
-UpdateSpriteMovementDelay:
+UpdateSpriteMovementDelay: ; marcelnote - optimized
 	ld h, HIGH(wSpriteStateData2)
 	ldh a, [hCurrentSpriteOffset]
 	add SPRITESTATEDATA2_MOVEMENTBYTE1 ; = $6
@@ -385,24 +377,25 @@ UpdateSpriteMovementDelay:
 	inc l
 	cp WALK
 	jr nc, .tickMoveCounter ; values WALK or STAY
-	ld [hl], $0
+	ld [hl], 0              ; x#SPRITESTATEDATA2_MOVEMENTDELAY
 	jr .moving
 .tickMoveCounter
 	dec [hl]                ; x#SPRITESTATEDATA2_MOVEMENTDELAY
 	jr nz, NotYetMoving
 .moving
-	dec h
-	ldh a, [hCurrentSpriteOffset]
-	inc a
+	dec h ; HIGH(wSpriteStateData1)
+	ld a, SPRITESTATEDATA1_MOVEMENTSTATUS - SPRITESTATEDATA2_MOVEMENTDELAY
+	add l
 	ld l, a
-	ld [hl], $1             ; [x#SPRITESTATEDATA1_MOVEMENTSTATUS] = 1 (mark as ready to move)
+	ld [hl], 1              ; [x#SPRITESTATEDATA1_MOVEMENTSTATUS] = 1 (mark as ready to move)
 	; fallthrough
+
 NotYetMoving:
 	ld h, HIGH(wSpriteStateData1)
 	ldh a, [hCurrentSpriteOffset]
 	add SPRITESTATEDATA1_ANIMFRAMECOUNTER
 	ld l, a
-	ld [hl], $0             ; [x#SPRITESTATEDATA1_ANIMFRAMECOUNTER] = 0 (walk animation frame)
+	ld [hl], 0              ; [x#SPRITESTATEDATA1_ANIMFRAMECOUNTER] = 0 (walk animation frame)
 	jp UpdateSpriteImage
 
 MakeNPCFacePlayer:
