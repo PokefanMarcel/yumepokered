@@ -1252,7 +1252,7 @@ CopyFlippedBillsPCBoxIconTile:
 	ld l, a
 	adc h
 	sub l
-	ld h, a ; hl = hl + a
+	ld h, a ; hl += a
 	ld a, [hl]
 	swap a
 	ld d, a
@@ -1264,7 +1264,7 @@ CopyFlippedBillsPCBoxIconTile:
 	ld l, a
 	adc h
 	sub l
-	ld h, a ; hl = hl + a
+	ld h, a ; hl += a
 	ld a, [hl]
 	or d
 	pop hl

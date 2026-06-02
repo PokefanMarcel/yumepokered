@@ -710,7 +710,7 @@ AIMoveChoiceExpert:
 	ld l, a
 	adc h
 	sub l
-	ld h, a ; hl = hl + a
+	ld h, a ; hl += a
 	ld a, [hl]
 	pop hl
 	and a                       ; nz = special type, z = physical type

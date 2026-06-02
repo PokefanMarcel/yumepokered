@@ -356,7 +356,7 @@ NextTextCommand::
 	ld l, a
 	adc h
 	sub l
-	ld h, a ; hl = hl + a
+	ld h, a ; hl += a
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a

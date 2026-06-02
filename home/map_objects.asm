@@ -242,5 +242,5 @@ GetSpriteMovementByte2Pointer::
 	ld l, a
 	adc h
 	sub l
-	ld h, a ; hl = hl + a
+	ld h, a ; hl += a
 	ret

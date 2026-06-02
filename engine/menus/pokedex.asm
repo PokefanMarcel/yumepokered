@@ -794,7 +794,7 @@ IndexToPokedex:
 	ld l, a
 	adc h
 	sub l
-	ld h, a ; hl = hl + a
+	ld h, a ; hl += a
 	ld a, [hl]
 	ld [wPokedexNum], a
 	pop hl

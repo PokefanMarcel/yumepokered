@@ -221,7 +221,7 @@ CableClub_DoBattleOrTradeAgain:
 	ld l, a
 	adc h
 	sub l
-	ld h, a ; hl = hl + a
+	ld h, a ; hl += a
 	ld [hl], SERIAL_NO_DATA_BYTE
 	pop hl
 	jr .unpatchPartyMonsLoop
@@ -249,7 +249,7 @@ CableClub_DoBattleOrTradeAgain:
 	ld l, a
 	adc h
 	sub l
-	ld h, a ; hl = hl + a
+	ld h, a ; hl += a
 	ld [hl], SERIAL_NO_DATA_BYTE
 	pop hl
 	jr .unpatchEnemyMonsLoop
