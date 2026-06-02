@@ -19,13 +19,13 @@ CinnabarVolcano1FB1F_Object:
 	db $3 ; border block
 
 	def_warp_events
-	warp_event 27, 11, WARP_RIGHT, LAST_MAP, 6
-	warp_event 27, 12, WARP_RIGHT, LAST_MAP, 6
-	warp_event  2,  2, ANY_DIR,    CINNABAR_VOLCANO_1FB1F, 5
-	warp_event  3, 13, ANY_DIR,    CINNABAR_VOLCANO_1FB1F, 6
-	warp_event  2, 21, ANY_DIR,    CINNABAR_VOLCANO_1FB1F, 3
-	warp_event  3, 34, ANY_DIR,    CINNABAR_VOLCANO_1FB1F, 4
-	warp_event 26, 23, ANY_DIR,    CINNABAR_VOLCANO_2F, 1
+	warp_event 24, 13, WARP_DOWN, LAST_MAP, 6
+	warp_event 25, 13, WARP_DOWN, LAST_MAP, 6
+	warp_event  2,  2, ANY_DIR,   CINNABAR_VOLCANO_1FB1F, 5
+	warp_event  3, 13, ANY_DIR,   CINNABAR_VOLCANO_1FB1F, 6
+	warp_event  2, 21, ANY_DIR,   CINNABAR_VOLCANO_1FB1F, 3
+	warp_event  3, 34, ANY_DIR,   CINNABAR_VOLCANO_1FB1F, 4
+	warp_event 26, 23, ANY_DIR,   CINNABAR_VOLCANO_2F, 1
 
 	def_bg_events
 	bg_event  5, 25, TEXT_CINNABARVOLCANOB1F_LAVA_SIGN
