@@ -18,7 +18,7 @@ PrintLetterDelay:: ; marcelnote - small optimization
 	and TEXT_DELAY_MASK ; marcelnote - replaced $f
 	jr z, .loadWaitFrames
 ; marcelnote - 1-2-3 into 1-3-5 with 2a - 1
-	rla
+	add a
 	dec a
 .loadWaitFrames
 	ldh [hFrameCounter], a
