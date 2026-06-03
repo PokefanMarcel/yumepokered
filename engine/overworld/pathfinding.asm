@@ -118,7 +118,21 @@ ConvertNPCMovementDirectionsToJoypadMasks: ; marcelnote - optimized
 	ld de, wSimulatedJoypadStatesEnd
 .loop
 	ld a, [hld]
-	call ConvertNPCMovementDirectionToJoypadMask
+	and a ; NPC_MOVEMENT_DOWN?
+	ld b, PAD_DOWN
+	jr z, .gotJoypadMask
+	cp NPC_MOVEMENT_UP
+	ld b, PAD_UP
+	jr z, .gotJoypadMask
+	cp NPC_MOVEMENT_LEFT
+	ld b, PAD_LEFT
+	jr z, .gotJoypadMask
+	cp NPC_MOVEMENT_RIGHT
+	ld b, PAD_RIGHT
+	jr z, .gotJoypadMask
+	ld b, $ff
+.gotJoypadMask
+	ld a, b
 	ld [de], a
 	inc de
 	ldh a, [hNPCMovementDirections2Index]
@@ -126,28 +140,3 @@ ConvertNPCMovementDirectionsToJoypadMasks: ; marcelnote - optimized
 	ldh [hNPCMovementDirections2Index], a
 	jr nz, .loop
 	ret
-
-ConvertNPCMovementDirectionToJoypadMask:
-	push hl
-	ld b, a
-	ld hl, NPCMovementDirectionsToJoypadMasksTable
-.loop
-	ld a, [hli]
-	cp $ff
-	jr z, .done
-	cp b
-	jr z, .loadJoypadMask
-	inc hl
-	jr .loop
-.loadJoypadMask
-	ld a, [hl]
-.done
-	pop hl
-	ret
-
-NPCMovementDirectionsToJoypadMasksTable:
-	db NPC_MOVEMENT_UP, PAD_UP
-	db NPC_MOVEMENT_DOWN, PAD_DOWN
-	db NPC_MOVEMENT_LEFT, PAD_LEFT
-	db NPC_MOVEMENT_RIGHT, PAD_RIGHT
-	db $ff
