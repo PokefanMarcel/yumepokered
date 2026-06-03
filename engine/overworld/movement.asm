@@ -560,35 +560,26 @@ UpdateSpriteImage: ; marcelnote - optimized
 ; d: Y movement delta (-1, 0 or 1)
 ; e: X movement delta (-1, 0 or 1)
 ; set carry on failure, clears carry on success
-CanWalkOntoTile: ; marcelnote - small optim
+CanWalkOntoTile: ; marcelnote - optimized
 	ld h, HIGH(wSpriteStateData2)
 	ldh a, [hCurrentSpriteOffset]
 	add SPRITESTATEDATA2_MOVEMENTBYTE1
 	ld l, a
 	ld a, [hl]         ; x#SPRITESTATEDATA2_MOVEMENTBYTE1
 	cp WALK
-	jr nc, .notScripted    ; values WALK or STAY
-; always allow walking if the movement is scripted
-	and a
-	ret
-.notScripted
-	ld a, [wTilesetCollisionPtr]
+	jr c, .scripted    ; not WALK or STAY
+	inc a ; STAY?
+	jr z, .impassable  ; if STAY = $ff, no movement allowed (however, changing direction is)
+	ld hl, wTilesetCollisionPtr
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld a, [wTilesetCollisionPtr+1]
-	ld h, a
 .tilePassableLoop
 	ld a, [hli]
 	cp $ff
 	jr z, .impassable
 	cp c
 	jr nz, .tilePassableLoop
-	ld h, HIGH(wSpriteStateData2)
-	ldh a, [hCurrentSpriteOffset]
-	add SPRITESTATEDATA2_MOVEMENTBYTE1
-	ld l, a
-	ld a, [hl]         ; x#SPRITESTATEDATA2_MOVEMENTBYTE1
-	inc a
-	jr z, .impassable  ; if $ff, no movement allowed (however, changing direction is)
 	ld h, HIGH(wSpriteStateData1)
 	ldh a, [hCurrentSpriteOffset]
 	add SPRITESTATEDATA1_YPIXELS
@@ -612,44 +603,34 @@ CanWalkOntoTile: ; marcelnote - small optim
 	pop de
 	ld h, HIGH(wSpriteStateData1)
 	ldh a, [hCurrentSpriteOffset]
-	add SPRITESTATEDATA1_COLLISIONDATA ; = $c
+	add SPRITESTATEDATA1_COLLISIONDATA
 	ld l, a
 	ld a, [hl]         ; x#SPRITESTATEDATA1_COLLISIONDATA (directions in which sprite collision would occur)
 	and b              ; check against chosen direction (1,2,4 or 8)
 	jr nz, .impassable ; collision between sprites, don't go there
-	ld h, HIGH(wSpriteStateData2)
-	ldh a, [hCurrentSpriteOffset]
-	add SPRITESTATEDATA2_YDISPLACEMENT
+	inc h ; HIGH(wSpriteStateData2)
+	ld a, l
+	add SPRITESTATEDATA2_YDISPLACEMENT - SPRITESTATEDATA1_COLLISIONDATA
 	ld l, a
-	ld a, [hli]        ; x#SPRITESTATEDATA2_YDISPLACEMENT (initialized at $8, keep track of where a sprite did go)
-	bit 7, d           ; check if going upwards (d == -1)
-	jr nz, .upwards
-	add d
-	; bug: these tests against $5 probably were supposed to prevent
-	; sprites from walking out too far, but this line makes sprites get
-	; stuck whenever they walked upwards 5 steps
-	; on the other hand, the amount a sprite can walk out to the
-	; right of bottom is not limited (until the counter overflows)
+	; marcelnote - code below until .passable fixes stuck sprite bug and restores likely intended behavior
+	ld a, [hli]        ; x#SPRITESTATEDATA2_YDISPLACEMENT (initialized at $8)
+	add d              ; d = -1, 0, or 1
 	cp $5
-	jr c, .impassable  ; if [x#SPRITESTATEDATA2_YDISPLACEMENT]+d < 5, don't go
-	jr .checkHorizontal
-.upwards
-	sub $1
-	jr c, .impassable  ; if [x#SPRITESTATEDATA2_YDISPLACEMENT] == 0, don't go
-.checkHorizontal
+	jr c, .impassable  ; don't go if displacement <= 4
+	cp $c
+	jr nc, .impassable ; don't go if displacement >= 12
 	ld d, a
-	ld a, [hl]         ; x#SPRITESTATEDATA2_XDISPLACEMENT (initialized at $8, keep track of where a sprite did go)
-	bit 7, e           ; check if going left (e == -1)
-	jr nz, .left
-	add e
-	cp $5              ; compare, but no conditional jump like in the vertical check above (bug?)
-	jr .passable
-.left
-	sub $1
-	jr c, .impassable  ; if [x#SPRITESTATEDATA2_XDISPLACEMENT] == 0, don't go
+
+	ld a, [hl]         ; x#SPRITESTATEDATA2_XDISPLACEMENT (initialized at $8)
+	add e              ; e = -1, 0, or 1
+	cp $5
+	jr c, .impassable  ; don't go if displacement <= 4
+	cp $c
+	jr nc, .impassable ; don't go if displacement >= 12
 .passable
 	ld [hld], a        ; update x#SPRITESTATEDATA2_XDISPLACEMENT
 	ld [hl], d         ; update x#SPRITESTATEDATA2_YDISPLACEMENT
+.scripted ; always allow walking if the movement is scripted
 	and a              ; clear carry (marking success)
 	ret
 .impassable
@@ -663,11 +644,10 @@ CanWalkOntoTile: ; marcelnote - small optim
 	xor a
 	ld [hli], a        ; [x#SPRITESTATEDATA1_YSTEPVECTOR] = 0
 	inc l
-	ld [hl], a         ; [x#SPRITESTATEDATA1_XSTEPVECTOR] = 0
+	ld [hli], a        ; [x#SPRITESTATEDATA1_XSTEPVECTOR] = 0
 	inc h              ; HIGH(wSpriteStateData2)
-	ldh a, [hCurrentSpriteOffset]
-	add SPRITESTATEDATA2_MOVEMENTDELAY
-	ld l, a
+	inc l
+	inc l
 	call Random
 	and $7f
 	ld [hl], a         ; [x#SPRITESTATEDATA2_MOVEMENTDELAY] = random value in [0,$7f] (again with delay $100 if value is 0)
@@ -801,21 +781,21 @@ InitScriptedNPCMovement:
 	ld [wScriptedNPCWalkCounter], a
 	; fallthrough
 
-AnimScriptedNPCMovement:
-	ld hl, wSpriteStateData2
+AnimScriptedNPCMovement: ; marcelnote - optimized
+	ld h, HIGH(wSpriteStateData2)
 	ldh a, [hCurrentSpriteOffset]
 	add SPRITESTATEDATA2_IMAGEBASEOFFSET
 	ld l, a
-	ld a, [hl] ; VRAM slot
+	ld a, [hl] ; x#SPRITESTATEDATA2_IMAGEBASEOFFSET
 	dec a
 	swap a
 	ld b, a
-	ld hl, wSpriteStateData1
-	ldh a, [hCurrentSpriteOffset]
-	add SPRITESTATEDATA1_FACINGDIRECTION
+	dec h ; HIGH(wSpriteStateData1)
+	ld a, l
+	add SPRITESTATEDATA1_FACINGDIRECTION - SPRITESTATEDATA2_IMAGEBASEOFFSET
 	ld l, a
-	ld a, [hl] ; facing direction
-	cp SPRITE_FACING_DOWN
+	ld a, [hld] ; x#SPRITESTATEDATA1_FACINGDIRECTION
+	and a ; SPRITE_FACING_DOWN?
 	jr z, .anim
 	cp SPRITE_FACING_UP
 	jr z, .anim
@@ -827,31 +807,25 @@ AnimScriptedNPCMovement:
 .anim
 	add b
 	ld b, a
-	ldh [hSpriteVRAMSlotAndFacing], a
-	call AdvanceScriptedNPCAnimFrameCounter
-	ld hl, wSpriteStateData1
-	ldh a, [hCurrentSpriteOffset]
-	add SPRITESTATEDATA1_IMAGEINDEX
-	ld l, a
-	ldh a, [hSpriteVRAMSlotAndFacing]
-	ld b, a
-	ldh a, [hSpriteAnimFrameCounter]
-	add b
-	ld [hl], a
-	ret
 
-AdvanceScriptedNPCAnimFrameCounter: ; marcelnote - small optim
-	ldh a, [hCurrentSpriteOffset]
-	add SPRITESTATEDATA1_INTRAANIMFRAMECOUNTER ; = $7
-	ld l, a
+	; Advance scripted NPC anim frame counter.
+	dec l
 	inc [hl]             ; [x#SPRITESTATEDATA1_INTRAANIMFRAMECOUNTER]++
 	ld a, [hl]
 	sub 4
-	ret nz
+	jr nz, .doneAnim
 	ld [hli], a          ; [x#SPRITESTATEDATA1_INTRAANIMFRAMECOUNTER] = 0
 	ld a, [hl]           ; x#SPRITESTATEDATA1_ANIMFRAMECOUNTER
 	inc a
 	and $3
-	ld [hl], a
+	ld [hld], a
 	ldh [hSpriteAnimFrameCounter], a
+.doneAnim
+
+	ld a, l
+	add SPRITESTATEDATA1_IMAGEINDEX - SPRITESTATEDATA1_INTRAANIMFRAMECOUNTER
+	ld l, a
+	ldh a, [hSpriteAnimFrameCounter]
+	add b
+	ld [hl], a
 	ret

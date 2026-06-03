@@ -1,11 +1,10 @@
 ; calculates the difference |a-b|, setting carry flag if a<b
-CalcDifference::
+CalcDifference:: ; marcelnote - optimized
 	sub b
 	ret nc  ; return if a ≥ b, no carry
 	cpl
-	add $1  ; a - b < 0 so switch to b - a
-	scf     ; and set carry
-	ret
+	inc a   ; a - b < 0 so switch to b - a
+	ret     ; carry set
 
 MoveSprite::
 ; move the sprite [hSpriteIndex] with the movement pointed to by de

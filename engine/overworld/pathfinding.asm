@@ -72,62 +72,50 @@ FindPathToPlayer:
 	ret
 
 
-CalcPositionOfPlayerRelativeToNPC:
-	xor a
-	ldh [hNPCPlayerRelativePosFlags], a
-	ld hl, wSpriteStateData1
+CalcPositionOfPlayerRelativeToNPC: ; marcelnote - optimized
+	ld h, HIGH(wSpriteStateData1)
 	ldh a, [hNPCSpriteOffset]
-	add l
 	add SPRITESTATEDATA1_YPIXELS
 	ld l, a
-	jr nc, .noCarry
-	inc h                        ; hl = x#SPRITESTATEDATA1_YPIXELS
-.noCarry
+	ld c, 0
 
 	ld a, [wSpritePlayerStateData1YPixels]
 	ld b, a                      ; b = player sprite screen Y position in pixels
 	ld a, [hli]                  ; a = NPC sprite screen Y position in pixels
 	call CalcDifference          ; a = |a-b|, sets carry if a < b
-	ld c, a                      ; dividend = |player Y -  NPC Y|
-	ldh a, [hNPCPlayerRelativePosFlags]
-	set BIT_NPC_LOWER_Y, a       ; NPC north of player
-	jr c, .divideYDistance       ; carry if a < b, i.e. NPC has lower Y (NPC north of player)
-	res BIT_NPC_LOWER_Y, a       ; NPC south of or aligned with player
+	jr nc, .divideYDistance      ; carry if a < b, i.e. NPC has lower Y (NPC north of player)
+	set BIT_NPC_LOWER_Y, c       ; NPC north of player
 .divideYDistance
-	ldh [hNPCPlayerRelativePosFlags], a
-	ld d, 16                     ; divisor = 16
-	call DivideBytes ; divide c = Y absolute distance, by d = 16
-	ld a, c                      ; c = quotient
+	swap a
+	and $0f                      ; divide |player Y -  NPC Y| by 16
 	ldh [hNPCPlayerYDistance], a
-	inc hl                       ; hl = x#SPRITESTATEDATA1_XPIXELS
+	inc l                        ; hl = x#SPRITESTATEDATA1_XPIXELS
 
 	ld a, [wSpritePlayerStateData1XPixels]
 	ld b, a                      ; b = player sprite screen X position in pixels
 	ld a, [hl]                   ; a = NPC sprite screen X position in pixels
 	call CalcDifference          ; a = |a-b|, sets carry if a < b
-	ld c, a                      ; dividend = |player X -  NPC X|
-	ldh a, [hNPCPlayerRelativePosFlags]
-	set BIT_NPC_LOWER_X, a       ; NPC west of player
-	jr c, .divideXDistance       ; carry if a < b, i.e. NPC has lower X (NPC west of player)
-	res BIT_NPC_LOWER_X, a       ; NPC east of or aligned with player
+	jr nc, .divideXDistance      ; carry if a < b, i.e. NPC has lower X (NPC west of player)
+	set BIT_NPC_LOWER_X, c       ; NPC west of player
 .divideXDistance
-	ldh [hNPCPlayerRelativePosFlags], a
-	call DivideBytes ; divide c = X absolute distance, by d = 16
-	ld a, c                      ; c = quotient
+	swap a
+	and $0f                      ; divide |player X -  NPC X| by 16
 	ldh [hNPCPlayerXDistance], a
+
+	ld a, c
+	ldh [hNPCPlayerRelativePosFlags], a
 	ret
 
 
-ConvertNPCMovementDirectionsToJoypadMasks:
+ConvertNPCMovementDirectionsToJoypadMasks: ; marcelnote - optimized
 	ldh a, [hNPCMovementDirections2Index]
 	ld [wNPCMovementDirections2Index], a
 	dec a
-	ld de, wSimulatedJoypadStatesEnd
 	ld hl, wNPCMovementDirections2
-	add l
-	ld l, a
-	jr nc, .loop
-	inc h
+	ld d, 0
+	ld e, a
+	add hl, de
+	ld de, wSimulatedJoypadStatesEnd
 .loop
 	ld a, [hld]
 	call ConvertNPCMovementDirectionToJoypadMask

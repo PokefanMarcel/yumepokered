@@ -1,77 +1,73 @@
-_GetSpritePosition1::
-	ld hl, wSpriteStateData1
-	ld de, SPRITESTATEDATA1_YPIXELS
+_GetSpritePosition1:: ; marcelnote - optimized
+	ld h, HIGH(wSpriteStateData1)
 	ld a, [wSpriteIndex]
-	ldh [hSpriteIndex], a
-	call GetSpriteDataPointer
+	swap a
+	add SPRITESTATEDATA1_YPIXELS
+	ld l, a
 	ld a, [hli] ; x#SPRITESTATEDATA1_YPIXELS
 	ldh [hSpriteScreenYCoord], a
-	inc hl
-	ld a, [hl] ; x#SPRITESTATEDATA1_XPIXELS
+	inc l
+	ld a, [hld] ; x#SPRITESTATEDATA1_XPIXELS
 	ldh [hSpriteScreenXCoord], a
-	ld de, wSpritePlayerStateData2MapY - wSpritePlayerStateData1XPixels
-	add hl, de
-	ld a, [hli] ; x#SPRITESTATEDATA2_MAPY
-	ldh [hSpriteMapYCoord], a
-	ld a, [hl] ; x#SPRITESTATEDATA2_MAPX
+	inc h ; HIGH(wSpriteStateData2)
+	ld a, [hld] ; x#SPRITESTATEDATA2_MAPX
 	ldh [hSpriteMapXCoord], a
+	ld a, [hl]  ; x#SPRITESTATEDATA2_MAPY
+	ldh [hSpriteMapYCoord], a
 	ret
 
-_GetSpritePosition2::
-	ld hl, wSpriteStateData1
-	ld de, SPRITESTATEDATA1_YPIXELS
+_GetSpritePosition2:: ; marcelnote - optimized
+	ld h, HIGH(wSpriteStateData1)
 	ld a, [wSpriteIndex]
-	ldh [hSpriteIndex], a
-	call GetSpriteDataPointer
+	swap a
+	add SPRITESTATEDATA1_YPIXELS
+	ld l, a
 	ld a, [hli] ; x#SPRITESTATEDATA1_YPIXELS
 	ld [wSavedSpriteScreenY], a
-	inc hl
-	ld a, [hl] ; x#SPRITESTATEDATA1_XPIXELS
+	inc l
+	ld a, [hld] ; x#SPRITESTATEDATA1_XPIXELS
 	ld [wSavedSpriteScreenX], a
-	ld de, wSpritePlayerStateData2MapY - wSpritePlayerStateData1XPixels
-	add hl, de
-	ld a, [hli] ; x#SPRITESTATEDATA2_MAPY
-	ld [wSavedSpriteMapY], a
-	ld a, [hl] ; x#SPRITESTATEDATA2_MAPX
+	inc h ; HIGH(wSpriteStateData2)
+	ld a, [hld] ; x#SPRITESTATEDATA2_MAPX
 	ld [wSavedSpriteMapX], a
+	ld a, [hl]  ; x#SPRITESTATEDATA2_MAPY
+	ld [wSavedSpriteMapY], a
 	ret
 
-_SetSpritePosition1::
-	ld hl, wSpriteStateData1
-	ld de, SPRITESTATEDATA1_YPIXELS
+_SetSpritePosition1:: ; marcelnote - optimized
+	ld h, HIGH(wSpriteStateData1)
 	ld a, [wSpriteIndex]
-	ldh [hSpriteIndex], a
-	call GetSpriteDataPointer
+	swap a
+	add SPRITESTATEDATA1_YPIXELS
+	ld l, a
 	ldh a, [hSpriteScreenYCoord] ; x#SPRITESTATEDATA1_YPIXELS
 	ld [hli], a
-	inc hl
+	inc l
 	ldh a, [hSpriteScreenXCoord] ; x#SPRITESTATEDATA1_XPIXELS
-	ld [hl], a
-	ld de, wSpritePlayerStateData2MapY - wSpritePlayerStateData1XPixels
-	add hl, de
-	ldh a, [hSpriteMapYCoord] ; x#SPRITESTATEDATA2_MAPY
-	ld [hli], a
+	ld [hld], a
+	inc h ; HIGH(wSpriteStateData2)
 	ldh a, [hSpriteMapXCoord] ; x#SPRITESTATEDATA2_MAPX
+	ld [hld], a
+	ldh a, [hSpriteMapYCoord] ; x#SPRITESTATEDATA2_MAPY
 	ld [hl], a
 	ret
 
-_SetSpritePosition2::
-	ld hl, wSpriteStateData1
-	ld de, SPRITESTATEDATA1_YPIXELS
+_SetSpritePosition2:: ; marcelnote - optimized
+	ld h, HIGH(wSpriteStateData1)
 	ld a, [wSpriteIndex]
-	ldh [hSpriteIndex], a
-	call GetSpriteDataPointer
+	swap a
+	add SPRITESTATEDATA1_YPIXELS
+	ld l, a
 	ld a, [wSavedSpriteScreenY]
 	ld [hli], a ; x#SPRITESTATEDATA1_YPIXELS
-	inc hl
+	inc l
 	ld a, [wSavedSpriteScreenX]
-	ld [hl], a ; x#SPRITESTATEDATA1_XPIXELS
-	ld de, wSpritePlayerStateData2MapY - wSpritePlayerStateData1XPixels
-	add hl, de
-	ld a, [wSavedSpriteMapY]
-	ld [hli], a ; x#SPRITESTATEDATA2_MAPY
+	ld [hld], a ; x#SPRITESTATEDATA1_XPIXELS
+	inc h ; HIGH(wSpriteStateData2)
 	ld a, [wSavedSpriteMapX]
-	ld [hl], a ; x#SPRITESTATEDATA2_MAPX
+	ld [hld], a ; x#SPRITESTATEDATA2_MAPX
+	ld a, [wSavedSpriteMapY]
+	ld [hl], a  ; x#SPRITESTATEDATA2_MAPY
 	ret
 
 TrainerWalkUpToPlayer::
@@ -147,40 +143,20 @@ TrainerWalkUpToPlayer::
 	ldh [hSpriteIndex], a
 	jp MoveSprite_
 
-; input: de = offset within sprite entry
-; output: hl = pointer to sprite data
-GetSpriteDataPointer:
-	push de
-	add hl, de
-	ldh a, [hSpriteIndex]
-	swap a
-	ld d, $0
-	ld e, a
-	add hl, de
-	pop de
-	ret
-
 ; tests if this trainer is in the right position to engage the player and do so if she is.
-TrainerEngage:
+TrainerEngage: ; marcelnote - optimized
 	push hl
 	push de
 	ld a, [wTrainerSpriteOffset]
 	add SPRITESTATEDATA1_IMAGEINDEX
-	ld d, $0
-	ld e, a
-	ld hl, wSpriteStateData1
-	add hl, de
+	ld h, HIGH(wSpriteStateData1)
+	ld l, a
 	ld a, [hl]             ; x#SPRITESTATEDATA1_IMAGEINDEX
-	sub $ff
-	jr nz, .spriteOnScreen ; test if sprite is on screen
-	jr .noEngage
-.spriteOnScreen
-	ld a, [wTrainerSpriteOffset]
-	add SPRITESTATEDATA1_FACINGDIRECTION
-	ld d, $0
-	ld e, a
-	ld hl, wSpriteStateData1
-	add hl, de
+	inc a ; test if sprite is on screen
+	jr z, .noEngage
+	ld a, l
+	add SPRITESTATEDATA1_FACINGDIRECTION - SPRITESTATEDATA1_IMAGEINDEX
+	ld l, a
 	ld a, [hl]             ; x#SPRITESTATEDATA1_FACINGDIRECTION
 	ld [wTrainerFacingDirection], a
 	call ReadTrainerScreenPosition
@@ -232,21 +208,14 @@ TrainerEngage:
 	ret
 
 ; reads trainer's Y position to wTrainerScreenY and X position to wTrainerScreenX
-ReadTrainerScreenPosition:
+ReadTrainerScreenPosition: ; marcelnote - optimized
+	ld h, HIGH(wSpriteStateData1)
 	ld a, [wTrainerSpriteOffset]
 	add SPRITESTATEDATA1_YPIXELS
-	ld d, $0
-	ld e, a
-	ld hl, wSpriteStateData1
-	add hl, de
-	ld a, [hl] ; x#SPRITESTATEDATA1_YPIXELS
+	ld l, a
+	ld a, [hli] ; x#SPRITESTATEDATA1_YPIXELS
 	ld [wTrainerScreenY], a
-	ld a, [wTrainerSpriteOffset]
-	add SPRITESTATEDATA1_XPIXELS
-	ld d, $0
-	ld e, a
-	ld hl, wSpriteStateData1
-	add hl, de
+	inc l
 	ld a, [hl] ; x#SPRITESTATEDATA1_XPIXELS
 	ld [wTrainerScreenX], a
 	ret
@@ -290,28 +259,21 @@ CheckSpriteCanSeePlayer:
 	ret
 
 ; tests if the player is in front of the sprite (rather than behind it)
-CheckPlayerIsInFrontOfSprite:
+CheckPlayerIsInFrontOfSprite: ; marcelnote - small optim
 	ld a, [wCurMap]
 	cp POWER_PLANT
 	jr z, .engage       ; bypass this for power plant to get voltorb fake items to work
+	ld h, HIGH(wSpriteStateData1)
 	ld a, [wTrainerSpriteOffset]
 	add SPRITESTATEDATA1_YPIXELS
-	ld d, $0
-	ld e, a
-	ld hl, wSpriteStateData1
-	add hl, de
-	ld a, [hl]          ; x#SPRITESTATEDATA1_YPIXELS
+	ld l, a
+	ld a, [hli]         ; x#SPRITESTATEDATA1_YPIXELS
 	cp $fc
 	jr nz, .notOnTopmostTile ; special case if sprite is on topmost tile (Y = $fc (-4)), make it come down a block
 	ld a, $c
 .notOnTopmostTile
 	ld [wTrainerScreenY], a
-	ld a, [wTrainerSpriteOffset]
-	add SPRITESTATEDATA1_XPIXELS
-	ld d, $0
-	ld e, a
-	ld hl, wSpriteStateData1
-	add hl, de
+	inc l
 	ld a, [hl]          ; x#SPRITESTATEDATA1_XPIXELS
 	ld [wTrainerScreenX], a
 	ld a, [wTrainerFacingDirection]       ; facing direction

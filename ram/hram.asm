@@ -338,7 +338,7 @@ hIsToggleableObjectOff:: db
 
 hMapROMBank:: db
 
-hSpriteVRAMSlotAndFacing:: db
+	ds 1 ; marcelnote - was hSpriteVRAMSlotAndFacing
 
 hCoordsInFrontOfPlayerMatch::
 hSpriteAnimFrameCounter::
