@@ -64,7 +64,7 @@ CheckForceBikeOrSurf::
 	set BIT_ALWAYS_ON_BIKE, [hl]
 	ld a, BIKING
 	ld [wWalkBikeSurfState], a
-	ld [wWalkBikeSurfStateCopy], a
+;	ld [wWalkBikeSurfStateCopy], a
 	jp ForceBikeOrSurf
 .incorrectMap
 	inc hl
@@ -74,7 +74,7 @@ CheckForceBikeOrSurf::
 .forceSurfing
 	ld a, SURFING
 	ld [wWalkBikeSurfState], a
-	ld [wWalkBikeSurfStateCopy], a
+;	ld [wWalkBikeSurfStateCopy], a
 	jp ForceBikeOrSurf
 
 INCLUDE "data/maps/force_bike_surf.asm"

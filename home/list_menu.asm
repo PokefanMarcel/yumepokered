@@ -119,10 +119,10 @@ DisplayListMenuIDLoop::
 ; if it's an item menu
 	sla c ; item entries are 2 bytes long, so multiply by 2
 .skipMultiplying
-	ld a, [wListPointer]
+	ld hl, wListPointer ; marcelnote - small optim
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld a, [wListPointer + 1]
-	ld h, a
 	inc hl ; hl = beginning of list entries
 	ld b, 0
 	add hl, bc
@@ -406,10 +406,10 @@ PrintListMenuEntries::
 	hlcoord 5, 3
 	lb bc, 9, 14
 	call ClearScreenArea
-	ld a, [wListPointer]
+	ld hl, wListPointer ; marcelnote - small optim
+	ld a, [hli]
+	ld d, [hl]
 	ld e, a
-	ld a, [wListPointer + 1]
-	ld d, a
 	inc de ; de = beginning of list entries
 	ld a, [wListScrollOffset]
 	ld c, a
@@ -417,16 +417,15 @@ PrintListMenuEntries::
 	cp ITEMLISTMENU
 	ld a, c
 	jr nz, .skipMultiplying
-; if it's an item menu
-; item entries are 2 bytes long, so multiply by 2
+; item menu entries are 2 bytes long, so multiply by 2
 	add a
 	sla c
 .skipMultiplying
 	add e
 	ld e, a
-	jr nc, .noCarry
-	inc d
-.noCarry
+	adc d
+	sub e
+	ld d, a ; de += a
 	hlcoord 6, 4 ; coordinates of first list entry name
 	ld b, 4 ; print 4 names
 .loop
@@ -505,10 +504,8 @@ PrintListMenuEntries::
 .next
 	ld [wMonDataLocation], a
 	ld hl, wWhichPokemon
-	ld a, [hl]
-	ld b, a
-	ld a, $04
-	sub b
+	ld a, 4 ; marcelnote - small optim
+	sub [hl]
 	ld b, a
 	ld a, [wListScrollOffset]
 	add b

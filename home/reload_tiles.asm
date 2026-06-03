@@ -41,7 +41,7 @@ ReloadMapAfterSurfingMinigame:: ; marcelnote - Pikachu Surfing minigame
 	ldh [hSCX], a
 	ld [wWalkCounter], a
 	ld [wSpriteSetID], a
-	ld [wWalkBikeSurfStateCopy], a
+;	ld [wWalkBikeSurfStateCopy], a
 	ld a, [wCurMap]
 	call SwitchToMapRomBank
 	call LoadTileBlockMap

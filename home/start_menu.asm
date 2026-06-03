@@ -2,8 +2,8 @@ DisplayStartMenu::
 	ld a, BANK(StartMenu_Pokedex)
 	ldh [hLoadedROMBank], a
 	ld [rROMB], a
-	ld a, [wWalkBikeSurfState]
-	ld [wWalkBikeSurfStateCopy], a
+;	ld a, [wWalkBikeSurfState]
+;	ld [wWalkBikeSurfStateCopy], a
 	ld a, SFX_START_MENU
 	call PlaySound
 
@@ -62,17 +62,17 @@ RedisplayStartMenu::
 	jr nz, .displayMenuItem
 	inc a ; adjust position to account for missing pokedex menu item
 .displayMenuItem
-	cp 0
+	and a ; 0?
 	jp z, StartMenu_Pokedex
-	cp 1
+	dec a ; 1?
 	jp z, StartMenu_Pokemon
-	cp 2
+	dec a ; 2?
 	jp z, StartMenu_Item
-	cp 3
+	dec a ; 3?
 	jp z, StartMenu_TrainerInfo
-	cp 4
+	dec a ; 4?
 	jp z, StartMenu_SaveReset
-	cp 5
+	dec a ; 5?
 	jp z, StartMenu_Option
 
 ; EXIT falls through to here

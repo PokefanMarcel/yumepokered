@@ -64,18 +64,14 @@ RedrawRowOrColumn::
 	ld a, TILEMAP_WIDTH - 1
 	add e
 	ld e, a
-	jr nc, .noCarry
-	inc d
-.noCarry
-; the following 4 lines wrap us from bottom to top if necessary
-	ld a, d
+	adc d
+	sub e
+; the following 3 lines wrap us from bottom to top if necessary
 	and HIGH(TILEMAP_AREA - 1)
 	or HIGH(vBGMap0)
 	ld d, a
 	dec c
 	jr nz, .loop1
-	xor a
-	ldh [hRedrawRowOrColumnMode], a
 	ret
 .redrawRow
 	ld hl, wRedrawRowOrColumnSrcTiles
@@ -89,7 +85,7 @@ RedrawRowOrColumn::
 	ld a, TILEMAP_WIDTH
 	add e
 	ld e, a
-	; fall through and draw lower half
+	; fallthrough and draw lower half
 
 .DrawHalf
 	ld c, SCREEN_WIDTH / 2

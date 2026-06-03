@@ -306,17 +306,19 @@ CheckForEngagingTrainers::
 
 ; hl = text if the player wins
 ; de = text if the player loses
-SaveEndBattleTextPointers::
+SaveEndBattleTextPointers:: ; marcelnote - optimized, could directly input bc = text if the player wins
+	ld b, h
+	ld c, l
+	ld hl, wEndBattleTextRomBank
 	ldh a, [hLoadedROMBank]
-	ld [wEndBattleTextRomBank], a
-	ld a, h
-	ld [wEndBattleWinTextPointer], a
-	ld a, l
-	ld [wEndBattleWinTextPointer + 1], a
+	ld [hli], a ; wEndBattleTextRomBank
+	ld a, b
+	ld [hli], a ; wEndBattleWinTextPointer
+	ld a, c
+	ld [hli], a ; wEndBattleWinTextPointer + 1
 	ld a, d
-	ld [wEndBattleLoseTextPointer], a
-	ld a, e
-	ld [wEndBattleLoseTextPointer + 1], a
+	ld [hli], a ; wEndBattleLoseTextPointer
+	ld [hl], e  ; wEndBattleLoseTextPointer + 1
 	ret
 
 ; loads data of some trainer on the current map and plays pre-battle music

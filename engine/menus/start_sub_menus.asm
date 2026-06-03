@@ -121,7 +121,7 @@ StartMenu_Pokemon::
 .outOfBattleMovePointers
 	dw .cut
 	dw .fly
-	dw .surf
+	dw .surf ; unused (ANIM_B4 slot)
 	dw .surf
 	dw .strength
 	dw .flash
@@ -585,17 +585,15 @@ SwitchPartyMon_InitVarOrSwapData:
 	ld d, h
 	ld e, l
 	ld a, [wCurrentMenuItem]
-	add l
-	ld l, a
-	jr nc, .noCarry
-	inc h
-.noCarry
+	ld b, 0
+	ld c, a
+	add hl, bc ; hl += a
 	ld a, [wMenuItemToSwap]
 	add e
 	ld e, a
-	jr nc, .noCarry2
-	inc d
-.noCarry2
+	adc d
+	sub e
+	ld d, a ; de += a
 	ld c, [hl] ; marcelnote - small optim
 	ld a, [de]
 	ld [hl], a
@@ -681,8 +679,7 @@ SwapTempFieldMoves:	; handles swapping Mons in party
 	ld e, l ; de points to field move of first Mon
 
 	ld a, [wMenuItemToSwap]
-	ld c, a
-	;ld b, 0 ; b = 0 already
+	ld c, a ; b = 0
 	ld hl, wTempFieldMoves
 	add hl, bc ; hl points to field move of second Mon
 

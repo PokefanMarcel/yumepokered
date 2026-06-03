@@ -650,7 +650,7 @@ ItemUseBicycle:
 	jp nz, ItemUseFailed
 	;;;;;;;;;;
 	ld a, [wWalkBikeSurfState]
-	ld [wWalkBikeSurfStateCopy], a
+;	ld [wWalkBikeSurfStateCopy], a
 	cp SURFING
 	jp z, ItemUseNotTime
 	dec a ; BIKING?
@@ -678,7 +678,7 @@ ItemUseBicycle:
 ; indirectly used by SURF in StartMenu_Pokemon.surf
 ItemUseSurfboard:
 	ld a, [wWalkBikeSurfState]
-	ld [wWalkBikeSurfStateCopy], a
+;	ld [wWalkBikeSurfStateCopy], a
 	cp SURFING
 	jr z, .tryToStopSurfing
 ; try to Surf
@@ -1899,7 +1899,7 @@ RodResponse:
 	ld [wCurOpponent], a
 
 .next
-	ld hl, wWalkBikeSurfState ; marcelnote - could use wWalkBikeSurfStateCopy instead?
+	ld hl, wWalkBikeSurfState
 	ld a, [hl] ; store the value in a
 	push af
 	push hl

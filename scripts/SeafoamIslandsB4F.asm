@@ -123,7 +123,7 @@ SeafoamIslandsB4FObjectMoving2Script:
 
 .doneForcedSurfMovement:
 	ld [wWalkBikeSurfState], a ; a = 0 = WALKING
-	ld [wWalkBikeSurfStateCopy], a
+;	ld [wWalkBikeSurfStateCopy], a
 	jp ForceBikeOrSurf
 
 SeafoamIslandsB4F_TextPointers:

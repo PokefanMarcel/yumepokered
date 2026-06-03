@@ -1558,12 +1558,11 @@ wSubAnimTransform::
 	db
 ENDU
 
+wEndBattleTextRomBank:: db ; marcelnote - reorganized
 wEndBattleWinTextPointer:: dw
 wEndBattleLoseTextPointer:: dw
-	ds 2
-wEndBattleTextRomBank:: db
 
-	ds 1
+	ds 3
 
 ; the address _of the address_ of the current subanimation entry
 wSubAnimAddrPtr:: dw
@@ -1716,8 +1715,7 @@ wMovesString:: ds NUM_MOVES * MOVE_NAME_LENGTH
 
 ;wUnusedCurMapTilesetCopy:: db ; marcelnote - removed
 
-; wWalkBikeSurfState is sometimes copied here, but it doesn't seem to be used for anything
-wWalkBikeSurfStateCopy:: db
+	ds 1 ; marcelnote - was wWalkBikeSurfStateCopy
 
 ; the type of list for InitList to init
 wInitListType:: db

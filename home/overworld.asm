@@ -1785,9 +1785,9 @@ JoypadOverworld::
 	ld hl, wSimulatedJoypadStatesEnd
 	add l
 	ld l, a
-	jr nc, .noCarry
-	inc h
-.noCarry
+	adc h
+	sub l
+	ld h, a ; hl += a
 	ld a, [hl]
 	ldh [hJoyHeld], a ; store simulated button press in joypad state
 	and a
@@ -1870,10 +1870,9 @@ CollisionCheckOnWater::
 	call PlaySound ; play collision sound (if it's not already playing)
 .setCarry
 	scf
-	jr .done
+	ret
 .noCollision
 	and a
-.done
 	ret
 .stopSurfing
 	xor a
@@ -1981,9 +1980,9 @@ LoadPlayerSpriteGraphicsCommon::
 	ld a, $c0
 	add e
 	ld e, a
-	jr nc, .noCarry
-	inc d
-.noCarry
+	adc d
+	sub e
+	ld d, a ; de += a
 	set 3, h ; add $800 ($80 tiles) to hl (1 << 3 == $8)
 	lb bc, BANK(RedSprite), $0c
 	jp CopyVideoData
@@ -2010,9 +2009,9 @@ LoadMapHeader::
 .noCarry1
 	add l
 	ld l, a
-	jr nc, .noCarry2
-	inc h
-.noCarry2
+	adc h
+	sub l
+	ld h, a ; hl += a
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a ; hl = base of map header
@@ -2247,7 +2246,7 @@ LoadMapHeader::
 	ld [wCurrentMapWidth2], a ; map width in 2x2 tile blocks
 	ld a, [wCurMap]
 	ld c, a
-	ld b, $00
+	ld b, 0
 	ldh a, [hLoadedROMBank]
 	push af
 	ld a, BANK(MapSongBanks)
@@ -2319,12 +2318,12 @@ LoadMapData::
 	ld a, TILEMAP_WIDTH - SCREEN_WIDTH
 	add e
 	ld e, a
-	jr nc, .noCarry
-	inc d
-.noCarry
+	adc d
+	sub e
+	ld d, a ; de += a
 	dec b
 	jr nz, .vramCopyLoop
-	ld a, $01
+	ld a, 1
 	ld [wUpdateSpritesEnabled], a
 	call EnableLCD
 	ld b, SET_PAL_OVERWORLD
@@ -2350,7 +2349,7 @@ SwitchToMapRomBank::
 	push hl
 	push bc
 	ld c, a
-	ld b, $00
+	ld b, 0
 	ld a, BANK(MapHeaderBanks)
 	call BankswitchHome
 	ld hl, MapHeaderBanks
