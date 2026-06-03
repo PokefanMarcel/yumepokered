@@ -140,17 +140,16 @@ CheckCoords::
 ; sets carry if the coordinates are in the array, clears carry if not
 CheckBoulderCoords::
 	push hl
-	ld hl, wSpritePlayerStateData2MapY
+	ld h, HIGH(wSpriteStateData2)
 	ldh a, [hSpriteIndex]
 	swap a
-	ld d, $0
-	ld e, a
-	add hl, de
-	ld a, [hli]
-	sub $4 ; because sprite coordinates are offset by 4
+	add SPRITESTATEDATA2_MAPY
+	ld l, a
+	ld a, [hli] ; x#SPRITESTATEDATA2_MAPY
+	sub 4 ; because sprite coordinates are offset by 4
 	ld b, a
-	ld a, [hl]
-	sub $4 ; because sprite coordinates are offset by 4
+	ld a, [hl]  ; x#SPRITESTATEDATA2_MAPX
+	sub 4 ; because sprite coordinates are offset by 4
 	ld c, a
 	pop hl
 	jr CheckCoords
