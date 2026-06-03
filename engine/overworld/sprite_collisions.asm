@@ -1,9 +1,7 @@
 _UpdateSprites:: ; marcelnote - optimized
-	push de
 	ld h, HIGH(wSpriteStateData2)
 	xor a
 .spriteLoop
-	ld c, a
 	ldh [hCurrentSpriteOffset], a
 	add SPRITESTATEDATA2_IMAGEBASEOFFSET
 	ld l, a
@@ -11,15 +9,12 @@ _UpdateSprites:: ; marcelnote - optimized
 	and a
 	jr z, .skipSprite   ; tests SPRITESTATEDATA2_IMAGEBASEOFFSET
 	push hl
-	push bc
 	call .updateCurrentSprite
-	pop bc
 	pop hl
 .skipSprite
-	ld a, c
-	add $10             ; move to next sprite
+	ld a, l
+	add $10 - SPRITESTATEDATA2_IMAGEBASEOFFSET ; move to next sprite
 	jr nz, .spriteLoop  ; back at beginning?
-	pop de
 	ret
 
 .updateCurrentSprite
