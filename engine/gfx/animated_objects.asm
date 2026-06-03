@@ -20,7 +20,7 @@ RunObjectAnimations:
 	call UpdateCurrentAnimatedObjectFrame
 	pop de
 	pop hl
-	jr c, .quit
+	ret c
 .next
 	ld bc, $10
 	add hl, bc
@@ -32,13 +32,10 @@ RunObjectAnimations:
 .deinitUnusedOamLoop
 	ld a, l
 	cp LOW(wShadowOAMEnd)
-	jr nc, .quit
+	ret nc
 	xor a
 	ld [hli], a
 	jr .deinitUnusedOamLoop
-
-.quit
-	ret
 
 SpawnAnimatedObject:
 	push de

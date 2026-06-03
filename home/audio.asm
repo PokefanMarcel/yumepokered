@@ -68,12 +68,9 @@ PlayDefaultMusicCommon::
 ; if no fade, play immediately
 	ld a, [wMusicFade]
 	and a
-	jr nz, .next5
+	ret nz
 	ld a, b
-	call PlayMusic
-.next5
-
-	ret
+	jp PlayMusic
 
 ;UpdateMusic6Times::
 ;CompareMapMusicBankWithCurrentBank:

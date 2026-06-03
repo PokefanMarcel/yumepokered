@@ -106,9 +106,9 @@ RemoveItemFromInventory_::
 	add a
 	add l
 	ld l, a
-	jr nc, .noCarry
-	inc h
-.noCarry
+	adc h
+	sub l
+	ld h, a ; hl += a
 	inc hl
 	ld a, [wItemQuantity] ; quantity being removed
 	ld e, a
@@ -137,15 +137,13 @@ RemoveItemFromInventory_::
 	ld [wBagSavedMenuItem], a
 	ld [wSavedListScrollOffset], a
 	pop hl
-	ld a, [hl] ; a = number of items in inventory
-	dec a ; decrement the number of items
-	ld [hl], a ; store new number of items
-	ld [wListCount], a
+	dec [hl] ; decrement the number of items
+	ld a, [hl]
+	ld [wListCount], a ; store new number of items
 	cp 2
-	jr c, .done
+	ret c
 	ld [wMaxMenuItem], a
-	jr .done
+	ret
 .skipMovingUpSlots
 	pop hl
-.done
 	ret

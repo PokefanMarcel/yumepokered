@@ -53,14 +53,13 @@ SearchTextBoxTable:
 .loop
 	ld a, [hli]
 	cp $ff
-	jr z, .notFound
+	ret z ; not found
 	cp c
 	jr z, .found
 	add hl, de
 	jr .loop
 .found
 	scf
-.notFound
 	ret
 
 ; function to load coordinates from the TextBoxCoordTable or the TextBoxTextAndCoordTable
@@ -557,7 +556,7 @@ GetMonFieldMoves: ; marcelnote - modified for temporary field moves, from shinpo
 
 .tempFieldMove	; marcelnote - for temporary field moves, adapted from shinpokered
 	ld a, d ; de points to wPartyMon<n>Moves
-	cp $FF
+	cp $ff
 	jr z, .done
 
 	;ld a, [wNumFieldMoves] ; this prevents to display more than 4 field moves
@@ -580,7 +579,7 @@ GetMonFieldMoves: ; marcelnote - modified for temporary field moves, from shinpo
 	ld a, [hl]
 	ld b, a ; a = temporary field move
 	ld c, 1
-	ld d, $FF
+	ld d, $ff
 	ld hl, FieldMoveDisplayData
 	jr .fieldMoveLoop
 

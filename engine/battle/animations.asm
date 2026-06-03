@@ -181,7 +181,7 @@ PlayAnimation:
 	vc_hook_blue Stop_reducing_move_anim_flashing_Self_Destruct
 	cp -1
 	vc_hook_blue Stop_reducing_move_anim_flashing_Reflect
-	jr z, .AnimationOver
+	ret z
 	cp FIRST_SE_ID ; is this subanimation or a special effect?
 	jr c, .playSubanimation
 ; do Special Effect
@@ -263,8 +263,6 @@ PlayAnimation:
 	pop hl
 	vc_hook Stop_reducing_move_anim_flashing_Guillotine
 	jr .animationLoop
-.AnimationOver
-	ret
 
 LoadSubanimation:
 	vc_hook Reduce_move_anim_flashing_Guillotine

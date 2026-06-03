@@ -5828,7 +5828,6 @@ EnemyCheckIfMirrorMoveEffect:
 .notMetronomeEffect
 	ld a, [wEnemyMoveEffect]
 	ld hl, ResidualEffects2
-	;ld de, $1
 	call IsInList
 	jp c, JumpMoveEffect
 	ld a, [wMoveMissed]
@@ -5848,7 +5847,6 @@ EnemyCheckIfMirrorMoveEffect:
 .handleExplosionMiss
 	ld a, [wEnemyMoveEffect]
 	ld hl, AlwaysHappenSideEffects
-	;ld de, $1
 	call IsInList
 	call c, JumpMoveEffect
 	ld hl, wBattleMonHP
@@ -5875,18 +5873,17 @@ EnemyCheckIfMirrorMoveEffect:
 	and a
 	jr z, ExecuteEnemyMoveDone
 	ld hl, SpecialEffects
-	;ld de, $1
 	call IsInList
 	call nc, JumpMoveEffect
-	jr ExecuteEnemyMoveDone
-
-HitXTimesText:
-	text_far _HitXTimesText
-	text_end
+	; fallthrough
 
 ExecuteEnemyMoveDone:
 	ld b, $1
 	ret
+
+HitXTimesText:
+	text_far _HitXTimesText
+	text_end
 
 ; checks for various status conditions affecting the enemy mon
 ; stores whether the mon cannot use a move this turn in Z flag

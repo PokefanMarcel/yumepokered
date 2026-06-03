@@ -404,12 +404,10 @@ ENDC
 	cp HM01
 	jr nc, .useItemPartyMenu
 	ld hl, UsableItems_CloseMenu
-	;ld de, 1
 	call IsInList
 	jr c, .useItemCloseMenu
 	ld a, [wCurItem]
 	ld hl, UsableItems_PartyMenu
-	;ld de, 1
 	call IsInList
 	jr c, .useItemPartyMenu
 	call UseItem
