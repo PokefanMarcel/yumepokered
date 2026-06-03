@@ -583,10 +583,10 @@ CheckMapConnections::
 	add c
 	ld c, a
 	ld [wYCoord], a
-	ld a, [wWestConnectedMapViewPointer] ; pointer to upper left corner of map without adjustment for Y position
+	ld hl, wWestConnectedMapViewPointer ; pointer to upper left corner of map without adjustment for Y position
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld a, [wWestConnectedMapViewPointer + 1]
-	ld h, a
 	srl c
 	jr z, .savePointer1
 .pointerAdjustmentLoop1
@@ -620,10 +620,10 @@ CheckMapConnections::
 	add c
 	ld c, a
 	ld [wYCoord], a
-	ld a, [wEastConnectedMapViewPointer] ; pointer to upper left corner of map without adjustment for Y position
+	ld hl, wEastConnectedMapViewPointer ; pointer to upper left corner of map without adjustment for Y position
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld a, [wEastConnectedMapViewPointer + 1]
-	ld h, a
 	srl c
 	jr z, .savePointer2
 .pointerAdjustmentLoop2
@@ -656,10 +656,10 @@ CheckMapConnections::
 	add c
 	ld c, a
 	ld [wXCoord], a
-	ld a, [wNorthConnectedMapViewPointer] ; pointer to upper left corner of map without adjustment for X position
+	ld hl, wNorthConnectedMapViewPointer ; pointer to upper left corner of map without adjustment for X position
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld a, [wNorthConnectedMapViewPointer + 1]
-	ld h, a
 	ld b, 0
 	srl c
 	add hl, bc
@@ -684,10 +684,10 @@ CheckMapConnections::
 	add c
 	ld c, a
 	ld [wXCoord], a
-	ld a, [wSouthConnectedMapViewPointer] ; pointer to upper left corner of map without adjustment for X position
+	ld hl, wSouthConnectedMapViewPointer ; pointer to upper left corner of map without adjustment for X position
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld a, [wSouthConnectedMapViewPointer + 1]
-	ld h, a
 	ld b, 0
 	srl c
 	add hl, bc
@@ -1634,10 +1634,10 @@ CopyToRedrawRowOrColumnSrcTiles::
 ScheduleSouthRowRedraw::
 	hlcoord 0, 16
 	call CopyToRedrawRowOrColumnSrcTiles
-	ld a, [wMapViewVRAMPointer]
+	ld hl, wMapViewVRAMPointer
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld a, [wMapViewVRAMPointer + 1]
-	ld h, a
 	ld bc, $200
 	add hl, bc
 	ld a, h
@@ -2058,10 +2058,10 @@ LoadMapHeader::
 	ld a, [hli]
 	ld [wObjectDataPointerTemp + 1], a
 	push hl
-	ld a, [wObjectDataPointerTemp]
-	ld l, a
-	ld a, [wObjectDataPointerTemp + 1]
-	ld h, a ; hl = base of object data
+	ld hl, wObjectDataPointerTemp
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a ; hl = base of object data
 	ld de, wMapBackgroundTile
 	ld a, [hli]
 	ld [de], a

@@ -196,20 +196,20 @@ PlaceMenuCursor:: ; marcelnote - small optim
 ; this is used to mark the item that was first chosen to be swapped.
 PlaceUnfilledArrowMenuCursor::
 	ld b, a
-	ld a, [wMenuCursorLocation]
+	ld hl, wMenuCursorLocation
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld a, [wMenuCursorLocation + 1]
-	ld h, a
 	ld [hl], '▷'
 	ld a, b
 	ret
 
 ; Replaces the menu cursor with a blank space.
 EraseMenuCursor::
-	ld a, [wMenuCursorLocation]
+	ld hl, wMenuCursorLocation
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld a, [wMenuCursorLocation + 1]
-	ld h, a
 	ld [hl], ' '
 	ret
 
