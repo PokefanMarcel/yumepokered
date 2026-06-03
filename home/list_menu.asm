@@ -20,11 +20,10 @@ DisplayListMenuID::
 	set BIT_NO_TEXT_DELAY, [hl]
 	xor a
 	ld [wMenuItemToSwap], a ; 0 means no item is currently being swapped
-	;ld [wListCount], a ; marcelnote - deleted, this is overwitten just below
-	ld a, [wListPointer]
-	ld l, a
-	ld a, [wListPointer + 1]
-	ld h, a ; hl = address of the list
+	ld hl, wListPointer ; marcelnote - small optim
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a ; hl = address of the list
 	ld a, [hl] ; the first byte is the number of entries in the list
 	ld [wListCount], a
 	ld a, LIST_MENU_BOX

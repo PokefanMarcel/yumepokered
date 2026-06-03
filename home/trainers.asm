@@ -70,11 +70,11 @@ ReadTrainerHeaderInfo::
 	jr z, .readPointer ; read after battle text
 	cp $8
 	jr z, .readPointer ; read end battle text
-	cp $a
-	jr nz, .done
-	ld a, [hli]        ; read end battle text (2) but override the result afterwards (XXX why, bug?)
-	ld d, [hl]
-	ld e, a
+;	cp $a
+;	jr nz, .done
+;	ld a, [hli]        ; read end battle text (2) but override the result afterwards (XXX why, bug?)
+;	ld d, [hl]
+;	ld e, a
 	jr .done
 .readPointer
 	ld a, [hli]
@@ -104,12 +104,12 @@ TalkToTrainer::
 	ld a, $4
 	call ReadTrainerHeaderInfo     ; print before battle text
 	call PrintText
-	ld a, $a
-	call ReadTrainerHeaderInfo     ; (?) does nothing apparently (maybe bug in ReadTrainerHeaderInfo)
-	push de
+;	ld a, $a
+;	call ReadTrainerHeaderInfo     ; (?) does nothing apparently (maybe bug in ReadTrainerHeaderInfo)
+;	push de
 	ld a, $8
 	call ReadTrainerHeaderInfo     ; read end battle text
-	pop de
+;	pop de
 	call SaveEndBattleTextPointers
 	ld hl, wStatusFlags7
 	set BIT_USE_CUR_MAP_SCRIPT, [hl] ; activate map script index override (index is set below)
@@ -361,18 +361,13 @@ PrintEndBattleText::
 GetSavedEndBattleTextPointer::
 	ld a, [wBattleResult]
 	and a
-	jr nz, .lostBattle
-; won battle
-	ld a, [wEndBattleWinTextPointer]
+	ld hl, wEndBattleWinTextPointer
+	jr z, .gotPointer
+	ld hl, wEndBattleLoseTextPointer
+.gotPointer
+	ld a, [hli]
+	ld l, [hl]
 	ld h, a
-	ld a, [wEndBattleWinTextPointer + 1]
-	ld l, a
-	ret
-.lostBattle
-	ld a, [wEndBattleLoseTextPointer]
-	ld h, a
-	ld a, [wEndBattleLoseTextPointer + 1]
-	ld l, a
 	ret
 
 TrainerEndBattleText::

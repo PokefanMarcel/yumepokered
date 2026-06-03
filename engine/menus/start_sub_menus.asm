@@ -596,11 +596,10 @@ SwitchPartyMon_InitVarOrSwapData:
 	jr nc, .noCarry2
 	inc d
 .noCarry2
-	ld a, [hl]
-	ldh [hSwapTemp], a
+	ld c, [hl] ; marcelnote - small optim
 	ld a, [de]
 	ld [hl], a
-	ldh a, [hSwapTemp]
+	ld a, c
 	ld [de], a
 	ld hl, wPartyMons
 	ld bc, PARTYMON_STRUCT_LENGTH

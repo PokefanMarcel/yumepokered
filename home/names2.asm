@@ -39,10 +39,10 @@ GetName::
 	jr nz, .notMonsterName
 	; 1 = MONSTER_NAME
 	call GetMonName
-	;ld hl, NAME_LENGTH
-	;add hl, de
-	;ld e, l
-	;ld d, h
+;	ld hl, NAME_LENGTH
+;	add hl, de
+;	ld e, l
+;	ld d, h
 	jr .finish
 .notMonsterName
 	; 2-7 = other names
@@ -60,12 +60,7 @@ GetName::
 	ld hl, NamePointers
 	add hl, de
 	ld a, [hli]
-	ldh [hSwapTemp + 1], a
-	ld a, [hl]
-	ldh [hSwapTemp], a
-	ldh a, [hSwapTemp]
-	ld h, a
-	ldh a, [hSwapTemp + 1]
+	ld h, [hl] ; marcelnote - optimized
 	ld l, a
 	ld a, [wNameListIndex]
 	ld b, a ; wanted entry
@@ -87,10 +82,10 @@ GetName::
 	ld bc, NAME_BUFFER_LENGTH
 	call CopyData
 .finish
-	;ld a, e
-	;ld [wUnusedNamePointer], a
-	;ld a, d
-	;ld [wUnusedNamePointer + 1], a
+;	ld a, e
+;	ld [wUnusedNamePointer], a
+;	ld a, d
+;	ld [wUnusedNamePointer + 1], a
 	pop de
 	pop bc
 	pop hl
@@ -130,15 +125,13 @@ GetMachineName::
 	inc b
 	jr .FirstDigit
 .SecondDigit
-	add 10 ; a is equal to second digit of TM name
-	push af ; save a
-	ld a, b ; first digit
+	ASSERT '9' == $ff ; because digits are $f6-$ff, we landed on the right second digit directly
+	ld c, a    ; save second digit
+	ld a, b    ; first digit
 	ld [de], a ; write first digit in wNameBuffer after "TM" or "HM"
 	inc de
-	pop af
-	ld b, '0'
-	add b
-	ld [de], a
+	ld a, c
+	ld [de], a ; write second digit
 	inc de
 	ld a, '@'
 	ld [de], a

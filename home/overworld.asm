@@ -1250,10 +1250,8 @@ CollisionCheckOnLand::
 
 ; function that checks if the tile in front of the player is passable
 ; clears carry if it is, sets carry if not
-CheckTilePassable::
-	predef GetTileAndCoordsInFrontOfPlayer
-	ld a, [wTileInFrontOfPlayer]
-	ld c, a
+CheckTilePassable:: ; marcelnote - small optim
+	predef GetTileAndCoordsInFrontOfPlayer ; get tile in front of player into c
 	ld hl, wTilesetCollisionPtr ; pointer to list of passable tiles
 	ld a, [hli]
 	ld h, [hl]
@@ -1831,13 +1829,13 @@ CollisionCheckOnWater::
 	ld d, a
 	ld a, [wSpritePlayerStateData1CollisionData]
 	and d ; check if a sprite is in the direction the player is trying to go
-	;jr nz, .checkIfNextTileIsPassable ; bug?
+;	jr nz, .checkIfNextTileIsPassable ; bug?
     jr nz, .collision ; joenote - this fixes the aforementioned bug
 	ld hl, TilePairCollisionsWater
 	call CheckForJumpingAndTilePairCollisions
 	jr c, .collision
 	predef GetTileAndCoordsInFrontOfPlayer ; get tile in front of player (puts it in c and [wTileInFrontOfPlayer])
-	ld a, [wTileInFrontOfPlayer] ; tile in front of player
+	ld a, c ; tile in front of player
 	cp $14 ; water tile
 	jr z, .noCollision ; keep surfing if it's a water tile
 	cp $32 ; either the left tile of the S.S. Anne boarding platform or the tile on eastern coastlines (depending on the current tileset)

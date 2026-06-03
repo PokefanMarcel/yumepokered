@@ -152,8 +152,7 @@ hMutateWY:: db
 hMutateWX:: db
 
 NEXTU
-; temp value used when swapping bytes or words
-hSwapTemp:: db
+	ds 1 ; marcelnote - was hSwapTemp
 hExperience:: ds 3 ; big endian
 ENDU
 
