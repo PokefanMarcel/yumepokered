@@ -18,7 +18,7 @@ DisplayTextID::
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a ; hl = map text pointer
-	ld d, $00
+	ld d, 0
 	ldh a, [hTextID]
 	ld [wSpriteIndex], a
 
@@ -31,7 +31,7 @@ DisplayTextID::
 
 	; joenote - close if $FF is the textID or sprite index
 	; marcelnote - used for using items with Select
-	cp $FF
+	cp $ff
 	jr z, CloseTextDisplay
 
 	ld a, [wNumSprites]
@@ -54,11 +54,8 @@ DisplayTextID::
 	ldh a, [hSpriteIndex]
 	dec a
 	add a
-	add l
-	ld l, a
-	jr nc, .noCarry
-	inc h
-.noCarry
+	ld e, a
+	add hl, de ; marcelnote - small optim
 	inc hl
 	ld a, [hl] ; a = text ID of the sprite
 	pop hl
