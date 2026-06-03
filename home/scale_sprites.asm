@@ -98,7 +98,7 @@ ScaleSpriteByTwo::
 	; Least significant byte, left nibble
 	ld a, [de]
 	swap a
-	and $0F
+	and $0f
 	call .duplicateBitsInNibble
 	ld [hli], a ; duplicate horizontally
 	inc hl
@@ -107,7 +107,7 @@ ScaleSpriteByTwo::
 	inc de
 	ld a, [de]
 	swap a
-	and $0F
+	and $0f
 	call .duplicateBitsInNibble
 	ld [hli], a ; duplicate horizontally
 	inc hl
@@ -118,7 +118,7 @@ ScaleSpriteByTwo::
 .duplicateRight4Pixels
 	; Least significant byte, right nibble
 	ld a, [de]
-	and $0F
+	and $0f
 	call .duplicateBitsInNibble
 	ld [hli], a ; duplicate horizontally
 	inc hl
@@ -126,7 +126,7 @@ ScaleSpriteByTwo::
 	; Most significant byte, right nibble
 	inc de
 	ld a, [de]
-	and $0F
+	and $0f
 	call .duplicateBitsInNibble
 	ld [hli], a ; duplicate horizontally
 	inc hl
@@ -139,9 +139,9 @@ ScaleSpriteByTwo::
 	ld hl, DuplicateBitsTable
 	add l
 	ld l, a
-	jr nc, .noCarry
-	inc h
-.noCarry
+	adc h
+	sub l
+	ld h, a ; hl += a
 	ld a, [hl]
 	pop hl
 	ret
