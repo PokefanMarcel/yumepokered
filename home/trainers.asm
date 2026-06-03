@@ -84,9 +84,6 @@ ReadTrainerHeaderInfo::
 	pop de
 	ret
 
-TrainerFlagAction::
-	predef_jump FlagActionPredef
-
 TalkToTrainer::
 	call StoreTrainerHeaderPointer
 	xor a
@@ -96,7 +93,7 @@ TalkToTrainer::
 	ld a, [wTrainerHeaderFlagBit]
 	ld c, a
 	ld b, FLAG_TEST
-	call TrainerFlagAction      ; read trainer's flag
+	predef FlagActionPredef        ; read trainer's flag
 	ld a, c
 	and a
 	jr z, .trainerNotYetFought     ; test trainer's flag
@@ -198,7 +195,7 @@ EndTrainerBattle::
 	ld a, [wTrainerHeaderFlagBit]
 	ld c, a
 	ld b, FLAG_SET
-	call TrainerFlagAction   ; flag trainer as fought
+	predef FlagActionPredef  ; flag trainer as fought
 	ld a, [wEnemyMonOrTrainerClass]
 	cp OPP_ID_OFFSET
 	jr nc, .skipRemoveSprite ; test if trainer was fought (in that case skip removing the corresponding sprite)
@@ -278,7 +275,7 @@ CheckForEngagingTrainers::
 	ld b, FLAG_TEST
 	ld a, [wTrainerHeaderFlagBit]
 	ld c, a
-	call TrainerFlagAction           ; read trainer flag
+	predef FlagActionPredef          ; read trainer flag
 	ld a, c
 	and a ; has the trainer already been defeated?
 	jr nz, .continue
