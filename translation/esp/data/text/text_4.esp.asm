@@ -210,15 +210,11 @@ _PokemonCenterWelcomeText::
 	text "¡Bienvenido a"
 	line "nuestro CENTRO"
 	cont "#MON!"
-
-	para "¡Nosotros curamos"
-	line "a tus #MON!"
 	prompt
 
 _PokemonCenterPerfectHealthText:: ; marcelnote - broke down WelcomeText to skip this
-	text "We heal your"
-	line "#MON back to"
-	cont "perfect health!"
+	text "¡Nosotros curamos"
+	line "a tus #MON!"
 	prompt
 
 _ShallWeHealYourPokemonText::

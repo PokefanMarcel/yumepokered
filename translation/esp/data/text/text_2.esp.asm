@@ -620,8 +620,8 @@ _Route18GateRightBinocularsText::
 
 ; TODO - Spanish translation
 _Route22GateLeftBinocularsText:: ; marcelnote - new
-	text "Looked into the"
-	line "binoculars."
+	text "Miraste por los"
+	line "prismáticos."
 
 	para "A remote mountain"
 	line "rises above"
@@ -630,8 +630,8 @@ _Route22GateLeftBinocularsText:: ; marcelnote - new
 
 ; TODO - Spanish translation
 _Route22GateRightBinocularsText:: ; marcelnote - new
-	text "Looked into the"
-	line "binoculars."
+	text "Miraste por los"
+	line "prismáticos."
 
 	para "A winding path"
 	line "leads to the"
@@ -894,6 +894,7 @@ _PokemonStuffText::
 	cont "los #MON!"
 	done
 
+; TODO - Spanish translation
 _HotSnacksText:: ; marcelnote - new for Marts
 	text "A sale on hot"
 	line "snacks! Yummy!"
