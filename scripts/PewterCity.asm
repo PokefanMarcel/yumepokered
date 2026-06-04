@@ -257,7 +257,7 @@ PewterCitySuperNerd2Text: ; marcelnote - optimized
 	call PrintText
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
-	cp 0
+	and a
 	ld hl, .ImSprayingRepelText
 	jr nz, .saidNo
 	ld hl, .ThatsRightText
