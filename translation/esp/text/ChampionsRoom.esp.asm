@@ -89,6 +89,7 @@ _ChampionsRoomRivalAfterBattleText::
 	line "guste admitirlo."
 	done
 
+; TODO - Spanish translation
 _ChampionsRoomRivalRematchIntroText:: ; marcelnote - new text for rematches
 	text "<RIVAL>: Hey,"
 	line "<PLAYER>!"

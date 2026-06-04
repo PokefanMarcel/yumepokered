@@ -25,6 +25,7 @@ _ViridianCityGambler1GymLeaderReturnedText::
 	cont "GIMNASIO VERDE!"
 	done
 
+; TODO - Spanish translation
 _ViridianCityGambler1GymLeaderWasBossText:: ; marcelnote - new
 	text "The GYM LEADER"
 	line "was the boss of"
@@ -183,6 +184,7 @@ _ViridianCityTrainerTips2Text::
 	cont "CENTRO #MON!"
 	done
 
+; TODO - Spanish translation
 _ViridianCityTrainerTips3Text:: ; marcelnote - new
 	text "TRAINER TIPS"
 

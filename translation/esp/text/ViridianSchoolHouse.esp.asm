@@ -12,6 +12,7 @@ _ViridianSchoolHouseCooltrainerFText::
 	cont "mucha atención!"
 	done
 
+; TODO - Spanish translation
 _ViridianSchoolHouseYoungsterText:: ; marcelnote - new NPC
     text "If I study hard,"
     line "I could enter the"

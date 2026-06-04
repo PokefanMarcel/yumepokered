@@ -74,6 +74,7 @@ _PokemonTower5FPurifiedZoneText::
 	cont "curados!"
 	done
 
+; TODO - Spanish translation
 _PokemonTower5FGhostBattleText:: ; marcelnote - postgame Agatha event
 	text "Heh heh..."
 	line "All must fade..."

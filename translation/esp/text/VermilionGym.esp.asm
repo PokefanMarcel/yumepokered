@@ -177,6 +177,8 @@ _VermilionGymGymGuideBeatLTSurgeText::
 	text "¡Uau! ¡Vaya pelea"
 	line "tan eléctrica!"
 	done
+
+; TODO - Spanish translation
 _VermilionGymLTSurgeRematchPreBattleText:: ; marcelnote - Lt.Surge rematch
 	text "Welcome back,"
 	line "<PLAYER>."

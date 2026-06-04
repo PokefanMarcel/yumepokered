@@ -47,6 +47,7 @@ _CeladonMart2FGirlText::
 	cont "comprar REVIVIR."
 	done
 
+; TODO - Spanish translation
 _CeladonMart2FBrunetteGirlText:: ; marcelnote - new NPC
 	text "Here each BADGE"
 	line "allows you to"

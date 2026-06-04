@@ -24,6 +24,7 @@ _GameCornerClerk1ThanksHereAre50CoinsText::
 	line "tus 50 fichas!"
 	done
 
+; TODO - Spanish translation
 _GameCornerClerk1WantMoreCoinsText:: ; marcelnote - new for buying coins faster
 	text "More? It's ¥1000"
 	line "for 50 coins."

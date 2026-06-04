@@ -6,6 +6,7 @@ _PowerPlantZapdosBattleText::
 	text "¡Zap Zap!@"
 	text_end
 
+; TODO - Spanish translation
 _PowerPlantComputerText:: ; marcelnote - new
 	text "A damaged console."
 

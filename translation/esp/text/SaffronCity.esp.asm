@@ -161,6 +161,7 @@ _SaffronCitySilphCoLatestProductSignText::
 	line "decisivo..."
 	done
 
+; TODO - Spanish translation
 _SaffronCityPokemonAcademySignText:: ; marcelnote - added Pokemon Academy
 	text "#MON ACADEMY"
 	done

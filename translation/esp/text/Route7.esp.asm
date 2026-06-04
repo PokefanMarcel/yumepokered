@@ -4,6 +4,7 @@ _Route7UndergroundPathSignText::
 	cont "PUEBLO LAVANDA"
 	done
 
+; TODO - Spanish translation
 _Route7FishingPondSignText:: ; marcelnote - new for fishing pond
 	text "UNDER CONSTRUCTION"
 	line "FISHING POND"

@@ -44,6 +44,7 @@ _SafariZoneSecretHouseFishingGuruHM03NoRoomText::
 	cont "tan fabuloso!"
 	done
 
+; TODO - Spanish translation
 _SafariZoneSecretHousePosterText:: ; marcelnote - new
 	text "SURF lovers, come"
 	line "visit our shop on"

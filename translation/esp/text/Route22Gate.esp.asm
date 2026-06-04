@@ -21,6 +21,7 @@ _Route22GateGuardGoRightAheadText::
 	cont "¡Puedes pasar!@"
 	text_end
 
+; TODO - Spanish translation
 _Route22GateGuard2ScaryStrongText:: ; marcelnote - new guard
 	text "Some scary-strong"
 	line "#MON live"

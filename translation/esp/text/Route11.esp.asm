@@ -168,6 +168,7 @@ _Route11Youngster4AfterBattleText::
 	line "unos más fuertes!"
 	done
 
+; TODO - Spanish translation
 _Route11Youngster5BattleText:: ; marcelnote - new trainer based on A.J.
 	text "This is my 99th"
 	line "straight victory,"

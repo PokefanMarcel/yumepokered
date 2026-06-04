@@ -22,8 +22,9 @@ _BrunosRoomBrunoBeforeBattleText::
 	done
 
 _BrunosRoomBrunoEndBattleText:: ; marcelnote - added map name to label
-	text "Why?"
-	line "How could I lose?"
+	text "¿Qué?"
+	line "¿Cómo he"
+	cont "podido perder?"
 	prompt
 
 _BrunosRoomBrunoAfterBattleText::
@@ -33,6 +34,7 @@ _BrunosRoomBrunoAfterBattleText::
 	cont "próximo desafío!"
 	done
 
+; TODO - Spanish translation
 _BrunosRoomBrunoRematchBeforeBattleText:: ; marcelnote - Bruno rematch text
 	text "Ready for another"
 	line "round, champ?"

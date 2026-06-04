@@ -45,6 +45,7 @@ _PokemonTower3FChanneler3AfterBattleText::
 	cont "poseídos!"
 	done
 
+; TODO - Spanish translation
 _PokemonTower3FGhostBattleText:: ; marcelnote - postgame Agatha event
 	text "This presence..."
 	line "Angers us..."

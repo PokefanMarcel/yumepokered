@@ -62,6 +62,7 @@ _PokemonTower6FBeGoneText::
 	line "Intrusos..."
 	done
 
+; TODO - Spanish translation
 _PokemonTower6FAgathaText:: ; marcelnote - postgame Agatha event
 	text "So, you made it"
 	line "past the spirits."

@@ -72,6 +72,7 @@ _LancesRoomLanceAfterBattleText::
 	cont "LIGA #MON!@"
 	text_end
 
+; TODO - Spanish translation
 _LancesRoomLanceRematchBeforeBattleText:: ; marcelnote - Lance rematch text
 	text "Ah, <PLAYER>!"
 	line "I have been"

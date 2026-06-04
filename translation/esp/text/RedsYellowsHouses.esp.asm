@@ -25,6 +25,7 @@ _RedsHouse1FMomLookingGreatText::
 	cont "¡Cuídate!"
 	done
 
+; TODO - Spanish translation
 _RedsHouse1FMomShortOnMoneyText:: ; marcelnote - Mom gives money to prevent softlocks
 	text "MOM: Oh, <PLAYER>!"
 	line "Aren't you short"

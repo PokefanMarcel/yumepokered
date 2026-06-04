@@ -171,6 +171,8 @@ _CeladonCityGameCornerSignText::
 	line "¡El parque de"
 	cont "los adultos!"
 	done
+
+; TODO - Spanish translation
 _CeladonCityCeladonGroveSignText:: ; marcelnote - for Celadon Grove
 	text "CELADON GROVE"
 	done

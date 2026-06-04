@@ -228,6 +228,8 @@ _FuchsiaGymGymGuideBeatKogaText::
 	cont "pueden ser los"
 	cont "ninjas!"
 	done
+
+; TODO - Spanish translation
 _FuchsiaGymKogaRematchPreBattleText:: ; marcelnote - Koga rematch
 	text "Welcome back,"
 	line "<PLAYER>."

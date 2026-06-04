@@ -69,8 +69,8 @@ _MrFujisHouseMrFujiPokeFluteExplanationText::
 	done
 
 _MrFujisHouseMrFujiMakeRoomText::
-	text "You must make"
-	line "room for this!"
+	text "¡No tienes sitio"
+	line "para esto!"
 	done
 
 _MrFujisHouseMrFujiHasMyFluteHelpedYouText::
@@ -90,6 +90,8 @@ _MrFujisHouseMrFujiPokedexText::
 	para "¡Magnífico! ¡Ya"
 	line "no está!"
 	done
+
+; TODO - Spanish translation
 _MrFujisHouseMrFujiPlayerGaveNotesText:: ; marcelnote - new
 	text "MR.FUJI: <PLAYER>,"
 	line "is your quest"

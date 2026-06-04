@@ -81,7 +81,7 @@ _CeladonMartRoofLittleGirlTM49ExplanationText::
 	text_end
 
 _CeladonMartRoofLittleGirlReceivedTMText:: ; marcelnote - now common to all 3 TMs
-	text "<PLAYER> received"
+	text "¡<PLAYER> recibió"
 	line "@"
 	text_ram wStringBuffer
 	text "!@"
@@ -138,6 +138,8 @@ _VendingMachineText6::
 _VendingMachineText7::
 	text "¡No tengo sed!"
 	done
+
+; TODO - Spanish translation
 _VendingMachineWrongSideText:: ; marcelnote - new
 	text "Wrong side!"
 	done

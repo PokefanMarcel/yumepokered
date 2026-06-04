@@ -126,6 +126,7 @@ _RockTunnel1FSignText::
 	cont "PUEBLO LAVANDA"
 	done
 
+; TODO - Spanish translation
 _RockTunnel1FBlackbeltIntroText::   ; marcelnote - added Blackbelt
 	text "Training in dark-"
 	line "ness sharpens a"

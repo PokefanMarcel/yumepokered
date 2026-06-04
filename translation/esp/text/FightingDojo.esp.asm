@@ -133,6 +133,7 @@ _FightingDojoBetterNotGetGreedyText::
 	line "avaricioso..."
 	done
 
+; TODO - Spanish translation
 _FightingDojoBrunoOhChampText:: ; marcelnote - postgame Bruno
 	text "Oh, champ!"
 

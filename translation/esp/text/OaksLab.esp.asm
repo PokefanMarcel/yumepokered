@@ -66,78 +66,75 @@ _OaksLabLastMonText::
 	done
 
 _OaksLabOakWhichPokemonDoYouWantText::
-	text "OAK: Now, <PLAYER>,"
-	line "which #MON do"
-	cont "you want?"
-	done
-
-; TODO - Spanish translation
-_OaksLabOakYourPokemonCanFightText::
-	text "OAK: If a wild"
-	line "#MON appears,"
-	cont "your #MON can"
-	cont "fight against it!"
-	done
-
-; TODO - Spanish translation
-_OaksLabOakRaiseYourYoungPokemonText::
 	text "OAK: <PLAYER>,"
-	line "raise your young"
-	cont "#MON by making"
-	cont "it fight!"
+	line "¿Qué #MON"
+	cont "quieres?"
 	done
 
-; TODO - Spanish translation
-_OaksLabOakDeliverParcelText::
-	text "OAK: Oh, <PLAYER>!"
+_OaksLabOakYourPokemonCanFightText::
+	text "OAK: ¡Si aparece"
+	line "un #MON"
+	cont "salvaje, tu"
+	cont "#MON podrá"
+	cont "luchar contra él!"
+	done
 
-	para "How is my old"
+_OaksLabOakRaiseYourYoungPokemonText::
+	text "OAK: ¡<PLAYER>,"
+	line "entrena a tu"
+	cont "joven #MON"
+	cont "luchando!"
+	done
+
+_OaksLabOakDeliverParcelText::
+	text "OAK: ¡<PLAYER>!"
+
+	para "¿Cómo va tu"
 	line "#MON?"
 
-	para "Well, it seems to"
-	line "like you a lot."
+	para "¡Creo que te"
+	line "quiere mucho!"
 
-	para "You must be"
-	line "talented as a"
-	cont "#MON trainer!"
+	para "¡Pareces ser"
+	line "muy hábil como"
+	cont "entrenador de"
+	cont "#MON!"
 
-	para "What? You have"
-	line "something for me?"
+	para "¿Qué? ¿Tienes"
+	line "algo para mí?"
 
-	para "<PLAYER> delivered"
-	line "OAK's PARCEL.@"
+	para "<PLAYER> entregó"
+	line "el CORREO de OAK.@"
 	text_end
 
-; TODO - Spanish translation
 _OaksLabOakParcelThanksText::
 	text_start
-	para "Ah! This is the"
-	line "custom # BALL"
-	cont "I ordered!"
-	cont "Thank you!"
+
+	para "¡Ah, sí! ¡Es la"
+	line "# BALL que"
+	cont "había encargado!"
+	cont "¡Gracias!"
 	done
 
-; TODO - Spanish translation
 _OaksLabOakPokemonAroundTheWorldText::
-	text "#MON around the"
-	line "world wait for"
-	cont "you, <PLAYER>!"
+	text "¡<PLAYER>, los"
+	line "#MON del"
+	cont "mundo te esperan!"
 	done
 
-; TODO - Spanish translation
 _OaksLabOakReceivedPokeballsText::
-	text "OAK: You can't get"
-	line "detailed data on"
-	cont "#MON by just"
-	cont "seeing them."
+	text "OAK: ¡No sabrás"
+	line "más cosas sobre"
+	cont "los #MON"
+	cont "con sólo verlos!"
 
-	para "You must catch"
-	line "them! Use these"
-	cont "to capture wild"
-	cont "#MON."
+	para "¡Tienes que"
+	line "atraparlos! Usa"
+	cont "las # BALL"
+	cont "para atraparlos."
 
-	para "<PLAYER> got 5"
-	line "# BALLs!@"
+	para "¡<PLAYER> tiene"
+	line "5 # BALL!@"
 	text_end
 
 _OaksLabGivePokeballsExplanationText::
@@ -162,21 +159,20 @@ _OaksLabGivePokeballsExplanationText::
 	done
 
 _OaksLabOakComeSeeMeSometimesText::
-	text "OAK: Come see me"
-	line "sometimes."
+	text "OAK: Ven a verme"
+	line "de vez en cuando."
 
-	para "I want to know how"
-	line "your #DEX is"
-	cont "coming along."
+	para "¡Tenme informado"
+	line "sobre cómo te va"
+	cont "con tu #DEX!"
 	done
 
-; TODO - Spanish translation
 _OaksLabOakHowIsYourPokedexComingText::
-	text "OAK: Good to see"
-	line "you! How is your"
-	cont "#DEX coming?"
-	cont "Here, let me take"
-	cont "a look!"
+	text "OAK: ¡Encantado"
+	line "de verte! ¿Cómo"
+	cont "va tu #DEX?"
+	cont "¡Déjame que le"
+	cont "eche un vistazo!"
 	prompt
 
 _OaksLabPokedexText::
@@ -392,6 +388,8 @@ _OaksLabScientistText::
 	cont "ayudante del"
 	cont "PROF. OAK!"
 	done
+
+; TODO - Spanish translation
 _OaksLabScientistOakWentForWalkText:: ; marcelnote - new for Oak battle
 	text "PROF.OAK went out"
 	line "for a walk."

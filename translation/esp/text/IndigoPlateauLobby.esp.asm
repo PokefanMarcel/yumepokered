@@ -15,6 +15,7 @@ _IndigoPlateauLobbyGymGuideChampInMakingText::
 	cont "¡A por ellos!"
 	done
 
+; TODO - Spanish translation
 _IndigoPlateauLobbyGymGuideTrueChampText:: ; marcelnote - new after becoming champ
 	text "Yo! You're the"
 	line "champ now!"
@@ -40,6 +41,7 @@ _IndigoPlateauLobbyCooltrainerFBeforeChampionText::
 	cont "¡Buena suerte!"
 	done
 
+; TODO - Spanish translation
 _IndigoPlateauLobbyCooltrainerFEliteFourAwayText:: ; marcelnote - new text
 	text "The ELITE FOUR"
 	line "are currently"

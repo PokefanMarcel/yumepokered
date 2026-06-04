@@ -39,6 +39,7 @@ _LoreleisRoomLoreleiAfterBattleText::
 	cont "sorpresas!"
 	done
 
+; TODO - Spanish translation
 _LoreleisRoomLoreleiRematchBeforeBattleText:: ; marcelnote - Lorelei rematch text
 	text "Welcome back to"
 	line "#MON LEAGUE,"

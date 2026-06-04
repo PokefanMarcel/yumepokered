@@ -235,6 +235,8 @@ _CinnabarGymGymGuideBeatBlaineText::
 	line "a esa antorcha"
 	cont "de fuego!"
 	done
+
+; TODO - Spanish translation
 _CinnabarGymBlaineRematchPreBattleText:: ; marcelnote - Blaine rematch
 	text "Welcome back,"
 	line "<PLAYER>."

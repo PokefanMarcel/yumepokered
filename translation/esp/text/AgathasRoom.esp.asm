@@ -25,6 +25,7 @@ _AgathasRoomAgathaBeforeBattleText::
 	cont "entrenador!"
 	done
 
+; TODO - Spanish translation
 _AgathasRoomAgathaEndBattleText:: ; marcelnote - added map name to label
 	text "Oh ho!"
 	line "You're something"
@@ -42,6 +43,7 @@ _AgathasRoomAgathaAfterBattleText::
 	cont "¡Vete ya niño!"
 	done
 
+; TODO - Spanish translation
 _AgathasRoomAgathaRematchBeforeBattleText:: ; marcelnote - Agatha rematch text
 	text "Back so soon,"
 	line "are you?"

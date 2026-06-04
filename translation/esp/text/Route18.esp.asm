@@ -49,6 +49,7 @@ _Route18CooltrainerM3AfterBattleText::
 	cont "preferida!"
 	done
 
+; TODO - Spanish translation
 _Route18CooltrainerM4BattleText:: ; marcelnote - new trainer
 	text "You scared off"
 	line "that DODUO"

@@ -101,6 +101,8 @@ _CeladonMansion3FDevRoomSignText::
 	text "GAME FREAK"
 	line "Sala Desarrollo"
 	done
+
+; TODO - Spanish translation
 _CeladonMansion4FHackerText:: ; marcelnote - new
 	text "I'm the hacker!"
 	line "I made changes"

@@ -237,6 +237,8 @@ _CeladonGymAfterBattleText8::
 	para "¡Ya verás la"
 	line "próxima vez!"
 	done
+
+; TODO - Spanish translation
 _CeladonGymErikaRematchPreBattleText:: ; marcelnote - Erika rematch
 	text "Welcome back,"
 	line "<PLAYER>."

@@ -57,6 +57,7 @@ _PokemonTower2FChannelerText::
 	cont "desenmascararlos."
 	done
 
+; TODO - Spanish translation
 _PokemonTower2FGhostBattleText:: ; marcelnote - postgame Agatha event
 	text "Intruders..."
 	line "In our home..."

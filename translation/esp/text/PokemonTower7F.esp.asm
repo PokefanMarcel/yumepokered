@@ -85,6 +85,7 @@ _PokemonTower7FRocket3AfterBattleText::
 	cont "como así!"
 	done
 
+; TODO - Spanish translation
 _PokemonTower7FChannelerIntroText::   ; marcelnote - added 7FChanneler
 	text "The spiritual"
 	line "energies which"

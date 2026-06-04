@@ -157,6 +157,7 @@ _Route19Swimmer8AfterBattleText::
 	cont "y no te mojarás."
 	done
 
+; TODO - Spanish translation
 _Route19Swimmer9BattleText:: ; marcelnote - new trainer, Swimmer9
 	text "The current"
 	line "carried me away"
@@ -238,6 +239,7 @@ _Route19SignText::
 	cont "ISLAS ESPUMA"
 	done
 
+; TODO - Spanish translation
 _Route19BeachHouseSignText:: ; marcelnote - new sign for Beach house from pokeyellow
 	text "BEACH HOUSE"
 	line "#MON welcome!"

@@ -46,6 +46,7 @@ _PokemonTower4FChanneler3AfterBattleText::
 	cont "descansen en paz!"
 	done
 
+; TODO - Spanish translation
 _PokemonTower4FGhostBattleText:: ; marcelnote - postgame Agatha event
 	text "Our home..."
 	line "In danger..."

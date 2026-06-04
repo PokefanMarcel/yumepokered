@@ -251,6 +251,8 @@ _SaffronGymYoungster4AfterBattleText::
 	cont "para leer tu"
 	cont "mente!"
 	done
+
+; TODO - Spanish translation
 _SaffronGymWillWelcomeText:: ; marcelnote - postgame Will
 	text "Champion! It is"
 	line "an honor to"

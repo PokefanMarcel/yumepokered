@@ -51,6 +51,8 @@ _Route1SignText::
 	line "PUEBLO PALETA -"
 	cont "CIUDAD VERDE"
 	done
+
+; TODO - Spanish translation
 _Route1OakBeforeBattleText:: ; marcelnote - postgame Oak fight
 	text "OAK: Oh,"
 	line "<PLAYER>!"

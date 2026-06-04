@@ -92,6 +92,7 @@ _Route6Youngster2AfterBattleText::
 	cont "yo muy malo?"
 	done
 
+; TODO - Spanish translation
 _Route6LassBattleText:: ; marcelnote - new trainer
 	text "The guard won't"
 	line "let anyone"

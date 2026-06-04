@@ -130,6 +130,8 @@ _MtMoonB2FRocket4AfterBattleText::
 	cont "antes de que"
 	cont "llegara la gente."
 	done
+
+; TODO - Spanish translation
 _MtMoonB2FMtMoonSquareSignText:: ; marcelnote - added Mt Moon Square
 	text "To MT.MOON SQUARE"
 	done

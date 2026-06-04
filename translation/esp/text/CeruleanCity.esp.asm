@@ -235,18 +235,17 @@ _CeruleanCityTrainerTipsText::
 	done
 
 _CeruleanCityBikeShopSignText::
-	text "Grass and caves"
-	line "handled easily!"
-	;cont "BIKE SHOP"
-	cont "MIRACLE CYCLE" ; marcelnote - Japanese name
+	text "¡Hierbas y cuevas"
+	line "bajo control!"
+	cont "TIENDA-BICIS"
 	done
 
-; TODO - Spanish translation
 _CeruleanCityGymSignText::
-	text "CERULEAN CITY"
-	line "#MON GYM"
-	cont "LEADER: MISTY"
+	text "LÍDER del GIMNASIO"
+	line "#MON de la"
+	cont "CIUDAD CELESTE:"
+	cont "MISTY"
 
-	para "The Tomboyish"
-	line "Mermaid!"
+	para "¡La sirena"
+	line "distorsionada!"
 	done

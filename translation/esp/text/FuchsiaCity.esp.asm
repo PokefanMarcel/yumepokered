@@ -30,6 +30,7 @@ _FuchsiaCityYoungster2Text::
 	cont "es un #MON."
 	done
 
+; TODO - Spanish translation
 _FuchsiaCityBlackbeltText:: ; marcelnote - new NPC
 	text "People used to"
 	line "have to go all"

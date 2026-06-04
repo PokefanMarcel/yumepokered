@@ -62,6 +62,8 @@ _CeladonMart5FSailorText::
 _CeladonMart5FCurrentFloorSignText::
 	text "P4: FARMACIA"
 	done
+
+; TODO - Spanish translation
 _CeladonMart6FClerkNoInventoryText:: ; marcelnote - new floor
 	text "Sorry, we're"
 	line "currently out of"

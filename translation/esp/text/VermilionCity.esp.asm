@@ -55,6 +55,7 @@ _VermilionCitySailor1YouNeedATicketText::
 	cont "subir a bordo."
 	done
 
+; TODO - Spanish translation
 _VermilionCitySailor3WelcomeToFerriesText:: ; marcelnote - new for ferry
 	text "Welcome to"
 	line "CITRUS FERRIES!"
@@ -163,6 +164,7 @@ _VermilionCityHarborSignText::
 	text "PUERTO CARMÍN"
 	done
 
+; TODO - Spanish translation
 _VermilionCityCooltrainerFText:: ; marcelnote - new
 	text "The S.S.ANNE party"
 	line "was amazing!"

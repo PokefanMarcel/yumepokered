@@ -94,11 +94,13 @@ _SSAnne1FRoomsGirl1WaiterText::
 	ret
 
 .BoyText
-	text "Waiter, I would"
-	line "like a cherry pie"
-	cont "please!"
+	text "¡Camarero, me"
+	line "gustaría tomar"
+	cont "una tarta de"
+	cont "cerezas!"
 	done
 
+; TODO - Spanish translation
 .GirlText ; marcelnote - new for girl player
 	text "Waitress, I would"
 	line "like a cherry pie"
@@ -131,6 +133,7 @@ _SSAnne1FRoomsGentleman3Text::
 	cont "TEAM ROCKET!"
 	done
 
+; TODO - Spanish translation
 _SSAnne1FRoomsNurseAreYouTiredText:: ; marcelnote - new nurse room
 	text "Are you tired?"
 	line "You can rest"

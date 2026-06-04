@@ -30,6 +30,7 @@ _PokemonMansionB1FScientistAfterBattleText::
 	cont "mis estudios!"
 	done
 
+; TODO - Spanish translation
 _PokemonMansionB1FDiarySept1Text::
 	text "Diary: Sept. 1" ; marcelnote - changed ; to : to align with other diaries
 	line "MEWTWO is far too"
