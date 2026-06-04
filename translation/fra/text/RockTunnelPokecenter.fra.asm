@@ -12,7 +12,7 @@ _RockTunnelPokecenterFisherText::
 	cont "5000¥!"
 	done
 
-_RockTunnelPokecenterBenchGuyText::
+_RockTunnelPokecenterBenchGuyText:: ; marcelnote - BenchGuy has a sprite
 	text "On m'a dit qu'il"
 	line "y a des SPECTRES"
 	cont "à LAVANVILLE!"

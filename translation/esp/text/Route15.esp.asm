@@ -66,8 +66,10 @@ _Route15CooltrainerM2EndBattleText::
 	prompt
 
 _Route15CooltrainerM2AfterBattleText::
+	; marcelnote - avoid ambiguity between "type" and "like"
 	text "¿Sabías que los"
-	line "movimientos tipo"
+;	line "movimientos tipo" ; original
+	line "movimientos como" ; new
 	cont "TERREMOTO no"
 	cont "afectan a los"
 	cont "pájaros?"
@@ -176,4 +178,3 @@ _Route15SignText::
 	line "CIUDAD FUCSIA"
 	cont "al oeste"
 	done
-

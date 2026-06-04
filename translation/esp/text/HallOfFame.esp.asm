@@ -32,7 +32,7 @@ _HallOfFameOakText::
 	done
 
 _HallOfFameRivalText:: ; marcelnote - new text for E4 rematches
-	; traduccion por NunWinter
+	; traducción por NunWinter
 	text "<RIVAL>: Bien,"
 	line "ya sabes cómo"
 	cont "funciona esto."
