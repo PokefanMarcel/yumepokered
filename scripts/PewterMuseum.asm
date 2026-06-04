@@ -52,9 +52,9 @@ PewterMuseum1FScientist1Text: ; marcelnote - optimized
 	text_asm
 	ld a, [wYCoord]
 	cp 16
-	jr c, .behindCounter                  ; then y=15
+	jr c, .behindCounter               ; then y=15
 	jr nz, .inVisitorSectionWrongSide  ; then y=18
-	ld a, [wXCoord]                        ; else y=16
+	ld a, [wXCoord]                    ; else y=16
 	cp 13
 	jr nz, .inVisitorSectionRightSide
 .behindCounter
@@ -62,7 +62,7 @@ PewterMuseum1FScientist1Text: ; marcelnote - optimized
 	call PrintText
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
-	cp $0
+	and a
 	ld hl, .AmberIsFossilizedTreeSapText
 	jr nz, .saidNo
 	ld hl, .TheresALabSomewhereText
