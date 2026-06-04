@@ -7,15 +7,13 @@ OaksAideScript:
 	jr nz, .saidNo
 	ld hl, wPokedexOwned
 	ld b, wPokedexOwnedEnd - wPokedexOwned
-	call CountSetBits
-	ld a, [wNumSetBits]
+	call CountSetBits ; marcelnote - returns count in a
 	ldh [hOaksAideNumMonsOwned], a
 	ld b, a
+	inc b
 	ldh a, [hOaksAideRequirement]
 	cp b
-	jr z, .giveItem
-	jr nc, .notEnoughOwnedMons
-.giveItem
+	jr nc, .notEnoughOwnedMons ; refuse if requirement ≥ num mons owned + 1
 	ld hl, OaksAideHereYouGoText
 	call PrintText
 	ldh a, [hOaksAideRewardItem]

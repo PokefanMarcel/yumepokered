@@ -74,8 +74,7 @@ CeladonMansion3FGameDesignerText:
 	text_asm
 	ld hl, wPokedexOwned
 	ld b, wPokedexOwnedEnd - wPokedexOwned
-	call CountSetBits
-	ld a, [wNumSetBits]
+	call CountSetBits ; marcelnote - returns count in a
 	cp NUM_POKEMON - 1 ; discount Mew
 	ld hl, .CompletedDexText
 	jr nc, .printText

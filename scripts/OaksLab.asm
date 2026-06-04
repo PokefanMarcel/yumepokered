@@ -1118,8 +1118,7 @@ OaksLabOakText: ; marcelnote - this was changed to make Balls more accessible
 	jr nz, .justGotPokeballs
 	ld hl, wPokedexOwned
 	ld b, wPokedexOwnedEnd - wPokedexOwned
-	call CountSetBits
-	ld a, [wNumSetBits]
+	call CountSetBits ; marcelnote - returns count in a
 	cp 2
 	jr c, .givePokeBalls ; if only 1 Mon caught
 	; fallthrough
