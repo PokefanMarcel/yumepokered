@@ -51,18 +51,17 @@ _RockTunnel1FHiker3AfterBattleText::
 	done
 
 _RockTunnel1FSuperNerdBattleText::
-;	text "¡Lucha #MON!"
-;	line "¿Listo? ¡YA!"
-	; traduccion por NunWinter - Combate more common than Lucha
-	text "¡Combate #MON!"
+	; traducción por NunWinter
+;	text "¡Lucha #MON!"   ; original
+	text "¡Combate #MON!" ; new: Combate more common than Lucha
 	line "¿Listo? ¡YA!"
 	done
 
 _RockTunnel1FSuperNerdEndBattleText::
+	; traducción por NunWinter
 	text_start
-;	line "¡Final del"
-	; traduccion por NunWinter - more appropriate in Spanish
-	line "¡Fin del"
+;	line "¡Final del" ; original
+	line "¡Fin del"   ; new: more appropriate in Spanish
 	cont "juego!"
 	prompt
 
@@ -167,7 +166,7 @@ _RockTunnel1FBlackbeltFlashOnText::   ; marcelnote - added Blackbelt
 	done
 
 _RockTunnel1FBlackbeltTrainingText::   ; marcelnote - added Blackbelt
-	; traduccion por NunWinter
+	; traducción por NunWinter
 	text "@"
 	text_ram wStringBuffer
 	text " cierra"
