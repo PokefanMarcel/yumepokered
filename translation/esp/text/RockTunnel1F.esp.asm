@@ -125,44 +125,47 @@ _RockTunnel1FSignText::
 	cont "PUEBLO LAVANDA"
 	done
 
-; TODO - Spanish translation
 _RockTunnel1FBlackbeltIntroText::   ; marcelnote - added Blackbelt
-	text "Training in dark-"
-	line "ness sharpens a"
-	cont "warrior's"
-	cont "instinct!"
+	; traducción por NunWinter
+	text "Entrenar en la"
+	line "oscuridad agudiza"
+	cont "el instinto"
+	cont "de un guerrero!"
 
-	para "My fighting-type"
-	line "#MON have"
-	cont "reached new"
-	cont "heights here."
+	para "Mis #MON de"
+	line "tipo LUCHA han"
+	cont "crecido mucho"
+	cont "aquí."
 	done
 
-; TODO - Spanish translation
 _RockTunnel1FBlackbeltTruePotentialText::   ; marcelnote - added Blackbelt, could be KARATE KING
-	text "Ah! Your"
+	; traducción por NunWinter
+	text "¡Ah! Tu"
 	line "@"
 	text_ram wStringBuffer
-	text " seems"
-	cont "eager to learn."
+	text " está"
+	cont "ansioso por"
+	cont "aprender."
 
-	para "With my training,"
-	line "it could reach"
-	cont "its true"
-	cont "potential."
+	para "Con mi ayuda,"
+	line "podrá lograr"
+	cont "su máximo"
+	cont "potencial."
 	done
 
-; TODO - Spanish translation
 _RockTunnel1FBlackbeltFlashOnText::   ; marcelnote - added Blackbelt
-	text "Ah! Your"
+	; traducción por NunWinter
+	text "¡Ah! Tu"
 	line "@"
 	text_ram wStringBuffer
-	text " seems"
-	cont "eager to learn."
+	text " está"
+	cont "ansioso por"
+	cont "aprender."
 
-	para "But I can't train"
-	line "it properly with"
-	cont "this FLASH on."
+	para "Pero no puedo"
+	line "entrenarlo bien"
+	cont "mientras uses"
+	cont "DESTELLO."
 	done
 
 _RockTunnel1FBlackbeltTrainingText::   ; marcelnote - added Blackbelt
