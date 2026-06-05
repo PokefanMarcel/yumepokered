@@ -31,9 +31,7 @@ AskName:
 	call DisplayNamingScreen
 	ld a, [wIsInBattle]
 	and a
-	jr nz, .inBattle
-	call ReloadMapSpriteTilePatterns
-.inBattle
+	call z, ReloadMapSpriteTilePatterns ; overworld only, battles reload HUD tiles
 	call LoadScreenTilesFromBuffer1
 	pop hl
 	pop af
