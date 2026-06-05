@@ -259,21 +259,21 @@ BattleTransition_InwardSpiral_:
 	pop bc
 	ret
 
-BattleTransition_OutwardSpiral_:
+BattleTransition_OutwardSpiral_: ; marcelnote - small optims
 	ld bc, -SCREEN_WIDTH
 	ld de, SCREEN_WIDTH
-	ld a, [wOutwardSpiralTileMapPointer + 1]
-	ld l, a
-	ld a, [wOutwardSpiralTileMapPointer]
+	ld hl, wOutwardSpiralTileMapPointer
+	ld a, [hli]
+	ld l, [hl]
 	ld h, a
 	ld a, [wOutwardSpiralCurrentDirection]
-	cp $0
+	and a ; 0?
 	jr z, .up
-	cp $1
+	dec a ; 1?
 	jr z, .left
-	cp $2
+	dec a ; 2
 	jr z, .down
-	cp $3
+	dec a ; 3?
 	jr z, .right
 .keepSameDirection
 	ld [hl], $ff
@@ -286,7 +286,7 @@ BattleTransition_OutwardSpiral_:
 .up
 	dec hl
 	ld a, [hl]
-	cp $ff
+	inc a ; $ff?
 	jr nz, .changeDirection
 	inc hl
 	add hl, bc
@@ -294,7 +294,7 @@ BattleTransition_OutwardSpiral_:
 .left
 	add hl, de
 	ld a, [hl]
-	cp $ff
+	inc a ; $ff?
 	jr nz, .changeDirection
 	add hl, bc
 	dec hl
@@ -302,7 +302,7 @@ BattleTransition_OutwardSpiral_:
 .down
 	inc hl
 	ld a, [hl]
-	cp $ff
+	inc a ; $ff?
 	jr nz, .changeDirection
 	dec hl
 	add hl, de
@@ -310,7 +310,7 @@ BattleTransition_OutwardSpiral_:
 .right
 	add hl, bc
 	ld a, [hl]
-	cp $ff
+	inc a ; $ff?
 	jr nz, .changeDirection
 	add hl, de
 	inc hl
@@ -319,10 +319,7 @@ BattleTransition_OutwardSpiral_:
 	ld [hl], $ff
 	ld a, [wOutwardSpiralCurrentDirection]
 	inc a
-	cp $4
-	jr nz, .skip
-	xor a
-.skip
+	and $3
 	ld [wOutwardSpiralCurrentDirection], a
 	jr .done
 

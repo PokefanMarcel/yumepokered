@@ -427,7 +427,7 @@ MoveAnimation:
 	call WaitForSoundToFinish
 	xor a
 	ld [wSubAnimSubEntryAddr], a
-	;ld [wUnusedMoveAnimByte], a
+;	ld [wUnusedMoveAnimByte], a ; marcelnote - used as wOutwardSpiralTileMapPointer + 1?
 	ld [wSubAnimTransform], a
 	dec a ; NO_MOVE - 1
 	ld [wAnimSoundID], a

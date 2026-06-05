@@ -1581,6 +1581,7 @@ ENDU
 
 	ds 2
 
+; marcelnote - db but uses next byte as well
 wOutwardSpiralTileMapPointer:: db
 
 wPartyMenuAnimMonEnabled::
