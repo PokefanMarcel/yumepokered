@@ -30,7 +30,7 @@ PlayIntroScene:
 	ldh [hSCX], a
 	ld b, TILEMAP_GENGAR_INTRO_1
 	call IntroCopyTiles
-	ld a, 0
+	xor a
 	ld [wBaseCoordX], a
 	ld a, 80
 	ld [wBaseCoordY], a
