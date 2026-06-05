@@ -34,8 +34,7 @@ CeladonPrizeMenu::
 	jr nz, .noChoice
 	ld a, [wCurrentMenuItem]
 	cp 3 ; "NO,THANKS" choice
-	jr z, .noChoice
-	call HandlePrizeChoice
+	call nz, HandlePrizeChoice
 .noChoice
 	ld hl, wStatusFlags5
 	res BIT_NO_TEXT_DELAY, [hl]
