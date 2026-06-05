@@ -1,7 +1,7 @@
 ; copies a string from de to wStringBuffer
 CopyToStringBuffer::
 	ld hl, wStringBuffer
-	; fall through
+	; fallthrough
 
 ; copies a string from de to hl
 CopyString::

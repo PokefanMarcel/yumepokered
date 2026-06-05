@@ -164,7 +164,7 @@ DisplayEnemyTrainerTextAndStartBattle::
 	ld a, [wSpriteIndex]
 	ldh [hSpriteIndex], a
 	call DisplayTextID
-	; fall through
+	; fallthrough
 
 StartTrainerBattle::
 	xor a

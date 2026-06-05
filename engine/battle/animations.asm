@@ -2295,12 +2295,12 @@ CopyDownscaledMonTiles:
 	jr CopyTileIDs_NoBGTransfer
 .smallerSize
 	ld de, DownscaledMonTiles_3x3
-; fall through
+	; fallthrough
 
 CopyTileIDs_NoBGTransfer:
 	xor a
 	ldh [hAutoBGTransferEnabled], a
-; fall through
+	; fallthrough
 
 ; b = number of rows
 ; c = number of columns
@@ -2324,7 +2324,7 @@ CopyTileIDs:
 	pop bc
 	dec b
 	jr nz, .rowLoop
-	ld a, $1
+	ld a, 1
 	ldh [hAutoBGTransferEnabled], a
 	pop hl
 	ret
@@ -2561,7 +2561,7 @@ AnimationShakeEnemyHUD:
 	call Delay3
 	call LoadScreenTilesFromBuffer1
 	ld hl, vBGMap1
-	;fallthrough
+	; fallthrough
 
 BattleAnimCopyTileMapToVRAM:
 	ld a, h

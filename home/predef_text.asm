@@ -5,6 +5,7 @@ PrintPredefTextID::
 	ld hl, wTextPredefFlag
 	set BIT_TEXT_PREDEF, [hl]
 	call DisplayTextID
+	; fallthrough
 
 RestoreMapTextPointer::
 	ld hl, wCurMapTextPtr
