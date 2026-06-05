@@ -295,7 +295,7 @@ HandlePokedexListMenu:
 	ld [wPokedexNum], a
 	dec d
 	jr nz, .printPokemonLoop
-	ld a, 01
+	ld a, 1
 	ldh [hAutoBGTransferEnabled], a
 	call Delay3
 	call GBPalNormal
