@@ -807,23 +807,22 @@ FaintEnemyPokemon:
 	ld a, SFX_FAINT_THUD
 	call PlaySound
 	call WaitForSoundToFinish
-	jr .sfxplayed
+	jr .sfxPlayed
 .wildWin
 	call EndLowHealthAlarm
 	ld a, MUSIC_DEFEATED_WILD_MON
 	call PlayBattleVictoryMusic
-.sfxplayed
+.sfxPlayed
 ; bug: win sfx is played for wild battles before checking for player mon HP
 ; this can lead to odd scenarios where both player and enemy faint, as the win sfx plays yet the player never won the battle
 	ld hl, wBattleMonHP
 	ld a, [hli]
 	or [hl]
-	jr nz, .playermonnotfaint
+	jr nz, .playerMonNotFaint
 	ld a, [wInHandlePlayerMonFainted]
 	and a ; was this called by HandlePlayerMonFainted?
-	jr nz, .playermonnotfaint ; if so, don't call RemoveFaintedPlayerMon twice
-	call RemoveFaintedPlayerMon
-.playermonnotfaint
+	call z, RemoveFaintedPlayerMon ; skip if already called by HandlePlayerMonFainted
+.playerMonNotFaint
 	call AnyPartyAlive
 	ld a, d
 	and a
@@ -1736,9 +1735,7 @@ SendOutMon:
 	ld hl, wEnemyMonHP
 	ld a, [hli]
 	or [hl] ; is enemy mon HP zero?
-	jr z, .skipDrawingEnemyHUDAndHPBar ; if HP is zero, skip drawing the HUD and HP bar
-	call DrawEnemyHUDAndHPBar
-.skipDrawingEnemyHUDAndHPBar
+	call nz, DrawEnemyHUDAndHPBar ; if yes, skip drawing the HUD and HP bar
 	call DrawPlayerHUDAndHPBar
 	predef LoadMonBackPic
 	xor a
@@ -2581,7 +2578,7 @@ BattleMenu_RunWasSelected:
 	ld hl, wBattleMonSpeed
 	ld de, wEnemyMonSpeed
 	call TryRunningFromBattle
-	ld a, 0
+	ld a, 0 ; preserve C flag
 	ld [wForcePlayerToChooseMon], a
 	ret c
 	ld a, [wActionResultOrTookBattleTurn]
