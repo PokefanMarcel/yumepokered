@@ -139,7 +139,7 @@ OverworldLoopLessDelay::
 	and a
 	jr z, .checkForOpponent
 	dec a
-	ld a, 0
+	ld a, 0 ; preserve Z flag
 	ld [wEnteringCableClub], a
 	jr z, .changeMap
 ; XXX can this code be reached?
