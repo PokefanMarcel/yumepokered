@@ -213,7 +213,7 @@ Serial_ExchangeLinkMenuSelection::
 	inc hl
 	ldh a, [hSerialIgnoringInitialData]
 	and a
-	ld a, 0
+	ld a, 0 ; preserve Z flag
 	ldh [hSerialIgnoringInitialData], a
 	jr nz, .loop
 	ld a, b
