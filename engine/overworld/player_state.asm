@@ -307,8 +307,7 @@ CheckForCollisionWhenPushingBoulder:
 	ld a, [wTileInFrontOfBoulderAndBoulderCollisionResult]
 	cp $15 ; stairs tile
 	ld a, $ff
-	jr z, .done ; if the tile two steps ahead is stairs
-	call CheckForBoulderCollisionWithSprites
+	call nz, CheckForBoulderCollisionWithSprites ; skip if the tile two steps ahead is stairs
 .done
 	ld [wTileInFrontOfBoulderAndBoulderCollisionResult], a
 	ret
