@@ -9,20 +9,18 @@ StoreTrainerHeaderPointer::
 ; executes the current map script from the function pointer array provided in de.
 ; a: map script index to execute (unless overridden by [wStatusFlags7] BIT_USE_CUR_MAP_SCRIPT)
 ; hl: trainer header pointer
-ExecuteCurMapScriptInTable::
-	push af
-	push de
+ExecuteCurMapScriptInTable:: ; marcelnote - optimized
+	push de ; save de = map script pointer
+	ld d, a ; save d = map script index
 	call StoreTrainerHeaderPointer
-	pop hl
-	pop af
-	push hl
+	ld a, d ; restore a = map script index
 	ld hl, wStatusFlags7
 	bit BIT_USE_CUR_MAP_SCRIPT, [hl]
-	res BIT_USE_CUR_MAP_SCRIPT, [hl]
 	jr z, .useProvidedIndex ; test if map script index was overridden manually
+	res BIT_USE_CUR_MAP_SCRIPT, [hl]
 	ld a, [wCurMapScript]
 .useProvidedIndex
-	pop hl
+	pop hl  ; restore hl = map script pointer
 	ld [wCurMapScript], a
 	call CallFunctionInTable
 	ld a, [wCurMapScript]
@@ -268,7 +266,7 @@ CheckForEngagingTrainers::
 	ld a, [de]
 	ld [wSpriteIndex], a             ; store trainer flag's bit
 	ld [wTrainerHeaderFlagBit], a
-	cp -1
+	inc a ; $ff?
 	ret z
 	ld a, $2
 	call ReadTrainerHeaderInfo       ; read trainer flag's byte ptr
@@ -381,16 +379,16 @@ TrainerEndBattleText::
 
 ; only engage with the trainer if the player is not already
 ; engaged with another trainer
-; XXX unused?
-CheckIfAlreadyEngaged::
-	ld a, [wMiscFlags]
-	bit BIT_SEEN_BY_TRAINER, a
-	ret nz
-	call EngageMapTrainer
-	xor a
-	ret
+; XXX unused? ; marcelnote - removed
+;CheckIfAlreadyEngaged::
+;	ld a, [wMiscFlags]
+;	bit BIT_SEEN_BY_TRAINER, a
+;	ret nz
+;	call EngageMapTrainer
+;	xor a
+;	ret
 
-PlayTrainerMusic::
+PlayTrainerMusic:: ; marcelnote - optimized
 	ld a, [wEngagedTrainerClass]
 	cp OPP_RIVAL1
 	ret z
@@ -411,29 +409,18 @@ PlayTrainerMusic::
 ;	ld [wAudioROMBank], a
 ;	ld [wAudioSavedROMBank], a
 	ld a, [wEngagedTrainerClass]
-	ld b, a
 	ld hl, EvilTrainerList
-.evilTrainerListLoop
-	ld a, [hli]
-	cp $ff
-	jr z, .noEvilTrainer
-	cp b
-	jr nz, .evilTrainerListLoop
-	ld a, MUSIC_MEET_EVIL_TRAINER
-	jr .PlaySound
-.noEvilTrainer
+	call IsInList
+	ld b, MUSIC_MEET_EVIL_TRAINER
+	jr c, .playSound
+	ld a, e ; e = [wEngagedTrainerClass] from IsInList
 	ld hl, FemaleTrainerList
-.femaleTrainerListLoop
-	ld a, [hli]
-	cp $ff
-	jr z, .maleTrainer
-	cp b
-	jr nz, .femaleTrainerListLoop
-	ld a, MUSIC_MEET_FEMALE_TRAINER
-	jr .PlaySound
-.maleTrainer
-	ld a, MUSIC_MEET_MALE_TRAINER
-.PlaySound
+	call IsInList
+	inc b ; MUSIC_MEET_FEMALE_TRAINER
+	jr c, .playSound
+	inc b ; MUSIC_MEET_MALE_TRAINER
+.playSound
+	ld a, b
 ;	ld [wNewSoundID], a
 	jp PlayMusic
 
