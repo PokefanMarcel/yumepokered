@@ -73,9 +73,9 @@ ReloadMapAfterSurfingMinigame:: ; marcelnote - Pikachu Surfing minigame
 	ld a, TILEMAP_WIDTH - SCREEN_WIDTH
 	add e
 	ld e, a
-	jr nc, .noCarry
-	inc d
-.noCarry
+	adc d
+	sub e
+	ld d, a ; de += a
 	dec b
 	jr nz, .vramCopyLoop
 	ret

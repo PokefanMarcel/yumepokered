@@ -2412,10 +2412,10 @@ FallingObjects_UpdateOAMEntry:
 	ld de, FallingObjects_DeltaXs
 	and $7f
 	add e
-	jr nc, .noCarry
-	inc d
-.noCarry
 	ld e, a
+	adc d
+	sub e
+	ld d, a ; de += a
 	ld a, b
 	and $80
 	jr nz, .movingLeft

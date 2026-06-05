@@ -52,7 +52,7 @@ EndNPCMovementScript::
 	jpfar _EndNPCMovementScript
 
 IF DEF(_DEBUG)
-DebugPressedOrHeldB:: ; dummy except in _DEBUG
+DebugPressedOrHeldB:: ; marcelnote - moved fully to _DEBUG
 ; This is used to skip Trainer battles, the
 ; Safari Game step counter, and some NPC scripts.
 	ld a, [wStatusFlags6]
