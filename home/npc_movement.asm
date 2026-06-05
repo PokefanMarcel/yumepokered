@@ -14,7 +14,6 @@ IsPlayerCharacterBeingControlledByGame::
 RunNPCMovementScript::
 	ld hl, wMovementFlags
 	bit BIT_STANDING_ON_DOOR, [hl]
-	res BIT_STANDING_ON_DOOR, [hl]
 	jr nz, .playerStepOutFromDoor
 	ld a, [wNPCMovementScriptPointerTableNum]
 	and a
@@ -40,20 +39,22 @@ RunNPCMovementScript::
 	ld [rROMB], a
 	ret
 
+.playerStepOutFromDoor
+	res BIT_STANDING_ON_DOOR, [hl]
+	jpfar PlayerStepOutFromDoor
+
 .NPCMovementScriptPointerTables
 	dw PalletMovementScriptPointerTable
 	dw PewterMuseumGuyMovementScriptPointerTable
 	dw PewterGymGuyMovementScriptPointerTable
-.playerStepOutFromDoor
-	jpfar PlayerStepOutFromDoor
 
 EndNPCMovementScript::
 	jpfar _EndNPCMovementScript
 
+IF DEF(_DEBUG)
 DebugPressedOrHeldB:: ; dummy except in _DEBUG
 ; This is used to skip Trainer battles, the
 ; Safari Game step counter, and some NPC scripts.
-IF DEF(_DEBUG)
 	ld a, [wStatusFlags6]
 	bit BIT_DEBUG_MODE, a
 	ret z
@@ -62,5 +63,5 @@ IF DEF(_DEBUG)
 	ret nz
 	ldh a, [hJoyPressed]
 	bit B_PAD_B, a
-ENDC
 	ret
+ENDC
