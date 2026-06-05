@@ -91,7 +91,7 @@ UpdatePlayerSprite:
 	ld c, a
 	ld a, [wGrassTile]
 	cp c
-	ld a, 0
+	ld a, 0 ; preserve Z flag
 	jr nz, .next2
 	ld a, OAM_PRIO
 .next2
@@ -529,7 +529,7 @@ CheckSpriteAvailability:
 	ld l, a
 	ld a, [wGrassTile]
 	cp c
-	ld a, 0
+	ld a, 0 ; preserve Z flag
 	jr nz, .notInGrass
 	ld a, OAM_PRIO
 .notInGrass
@@ -802,8 +802,7 @@ AnimScriptedNPCMovement: ; marcelnote - optimized
 	cp SPRITE_FACING_LEFT
 	jr z, .anim
 	cp SPRITE_FACING_RIGHT
-	jr z, .anim
-	ret
+	ret nz
 .anim
 	add b
 	ld b, a
