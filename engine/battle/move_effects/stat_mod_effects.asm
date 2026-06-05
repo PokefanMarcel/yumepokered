@@ -242,9 +242,7 @@ UpdateLoweredStatDone:
 	inc c               ; c = stat offset + 1 for list search
 	call BufferStatText ; uses c as counter
 	pop af              ; restore c flag (set = side effect)
-	jr c, .printMonStatsFellTest ; don't play move animation if only side effect
-	call PlayCurrentMoveAnimation2
-.printMonStatsFellTest
+	call nc, PlayCurrentMoveAnimation2 ; don't play move animation if only side effect
 ; marcelnote - fixed those glitches with calls after UpdateStat above
 ;	ldh a, [hWhoseTurn]
 ;	and a
