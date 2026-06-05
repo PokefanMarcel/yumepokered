@@ -48,7 +48,7 @@ LoadGymLeaderAndCityName::
 ReadTrainerHeaderInfo::
 	push de
 	push af
-	ld d, $0
+	ld d, 0
 	ld e, a
 	ld hl, wTrainerHeaderPtr
 	ld a, [hli]
@@ -325,7 +325,7 @@ SaveEndBattleTextPointers:: ; marcelnote - optimized, could directly input bc = 
 ; [wSpriteIndex]: sprite ID of trainer who is engaged
 EngageMapTrainer::
 	ld hl, wMapSpriteExtraData
-	ld d, $0
+	ld d, 0
 	ld a, [wSpriteIndex]
 	dec a
 	add a
