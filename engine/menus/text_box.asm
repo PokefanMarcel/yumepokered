@@ -191,8 +191,7 @@ DoBuySellQuitMenu:
 	ld b, a
 	ld a, [wMaxMenuItem]
 	cp b
-	jr z, .quit
-	ret
+	ret nz
 .quit
 	ld a, CANCELLED_MENU
 	ld [wMenuExitMethod], a
