@@ -144,9 +144,7 @@ DrawFrameBlock:
 	ret z ; skip cleaning OAM buffer and don't advance the frame block destination address
 	ld a, [wAnimationID]
 	cp GROWL
-	jr z, .resetFrameBlockDestAddr
-	call AnimationCleanOAM
-.resetFrameBlockDestAddr
+	call nz, AnimationCleanOAM ; GROWL reuses the previous OAM entries
 	ld hl, wShadowOAM
 	ld a, l
 	ld [wFBDestAddr + 1], a
@@ -1116,13 +1114,13 @@ AnimationWaterDropletsEverywhere:
 .loop
 	ld a, 16
 	ld [wBaseCoordY], a
-	;ld a, 0
-	;ld [wUnusedWaterDropletsByte], a
+;	ld a, 0
+;	ld [wUnusedWaterDropletsByte], a
 	call _AnimationWaterDroplets
 	ld a, 24
 	ld [wBaseCoordY], a
-	;ld a, 32
-	;ld [wUnusedWaterDropletsByte], a
+;	ld a, 32
+;	ld [wUnusedWaterDropletsByte], a
 	call _AnimationWaterDroplets
 	dec d
 	jr nz, .loop
@@ -1597,7 +1595,7 @@ _AnimationSquishMonPic:
 	push hl
 	ld c, 3
 	ld a, [wSquishMonCurrentDirection]
-	cp 0
+	and a
 	jr nz, .right
 	call AnimCopyRowLeft
 	dec hl
@@ -2253,11 +2251,11 @@ GetMoveSound:
 	ld a, [hli]
 	add $80
 	ld e, a
-	ld a, 0
-	adc 0
-	ld d, a
+	adc b   ; b = 0
+	sub e
+	ld d, a ; d = 1 if carry, 0 otherwise
 	pop af
-.done
+;.done
 	and a
 	ret
 
