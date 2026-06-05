@@ -601,7 +601,7 @@ SlotReward300Func:
 	call PlaySound
 	call Random
 	cp $80
-	ld a, 0
+	ld a, 0 ; preserve C flag
 	jr c, .skip
 	ld [wSlotMachineFlags], a
 .skip
