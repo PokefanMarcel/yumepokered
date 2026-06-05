@@ -51,15 +51,15 @@ DisplayTitleScreen:
 	call FarCopyData2
 	ld hl, PokemonLogoGraphics
 	ld de, vTitleLogo
-	;ld bc, $60 tiles
+;	ld bc, $60 tiles
 	ld bc, $70 tiles ; marcelnote - copy all tiles of the logo together
 	ld a, BANK(PokemonLogoGraphics)
 	call FarCopyData2          ; first chunk ; marcelnote - copy all tiles of the logo together
-	;ld hl, PokemonLogoGraphics tile $60
-	;ld de, vTitleLogo2
-	;ld bc, $10 tiles
-	;ld a, BANK(PokemonLogoGraphics)
-	;call FarCopyData2          ; second chunk
+;	ld hl, PokemonLogoGraphics tile $60
+;	ld de, vTitleLogo2
+;	ld bc, $10 tiles
+;	ld a, BANK(PokemonLogoGraphics)
+;	call FarCopyData2          ; second chunk
 	ld hl, Version_GFX
 	ld de, vChars2 tile $60 + (10 tiles - (Version_GFXEnd - Version_GFX) * 2) / 2
 	ld bc, Version_GFXEnd - Version_GFX

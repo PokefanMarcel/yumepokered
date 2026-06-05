@@ -39,7 +39,7 @@ HealParty:
 	call AddNTimes
 	ld de, wMoveData
 	ld a, BANK(Moves)
-	call FarCopyData
+	call FarCopyData2
 	ld a, [wMoveData + MOVE_PP]
 
 	pop bc

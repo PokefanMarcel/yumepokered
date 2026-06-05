@@ -1,6 +1,5 @@
+; Copy bc bytes from a:hl to de, uses hROMBankTemp as scratch.
 FarCopyData2::
-; Identical to FarCopyData, but uses hROMBankTemp
-; as temp space instead of wBuffer.
 	ldh [hROMBankTemp], a
 	ldh a, [hLoadedROMBank]
 	push af

@@ -1,16 +1,16 @@
-FarCopyData::
 ; Copy bc bytes from a:hl to de.
-	ld [wBuffer], a
-	ldh a, [hLoadedROMBank]
-	push af
-	ld a, [wBuffer]
-	ldh [hLoadedROMBank], a
-	ld [rROMB], a
-	call CopyData
-	pop af
-	ldh [hLoadedROMBank], a
-	ld [rROMB], a
-	ret
+;FarCopyData::
+;	ld [wBuffer], a
+;	ldh a, [hLoadedROMBank]
+;	push af
+;	ld a, [wBuffer]
+;	ldh [hLoadedROMBank], a
+;	ld [rROMB], a
+;	call CopyData
+;	pop af
+;	ldh [hLoadedROMBank], a
+;	ld [rROMB], a
+;	ret
 
 CopyData:: ; marcelnote - Engezerstorung optim
 ; Copy bc bytes from hl to de.
@@ -61,4 +61,4 @@ CopyVideoDataAlternate:: ; marcelnote - optimized from pokeyellow but currently 
 	ld c, a ; bc = c * 16 (TILE_SIZE)
 	ld a, d
 	pop de
-	jr FarCopyData ; copy bc bytes from a:hl to de
+	jp FarCopyData2 ; copy bc bytes from a:hl to de
