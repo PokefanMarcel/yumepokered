@@ -62,7 +62,7 @@ UpdateHPBar:
 	ld a, d
 	ld [wHPBarHPDifference], a
 	pop bc  ; restore bc = old HP
-	pop de  ; restore  de = new HP
+	pop de  ; restore de = new HP
 	call UpdateHPBar_CompareNewHPToOldHP
 	ret z
 	ld a, $ff
@@ -106,9 +106,7 @@ UpdateHPBar:
 .ok
 	call UpdateHPBar_PrintHPNumber
 	and a
-	jr z, .noPixelDifference
-	call UpdateHPBar_AnimateHPBar
-.noPixelDifference
+	call nz, UpdateHPBar_AnimateHPBar ; update only if pixel difference
 	ld a, [wHPBarNewHP]
 	ld [wHPBarOldHP], a
 	ld a, [wHPBarNewHP+1]
