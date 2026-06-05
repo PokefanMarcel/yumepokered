@@ -1,5 +1,5 @@
-; Copy bc bytes from a:hl to de, uses hROMBankTemp as scratch.
 FarCopyData::
+; Copy bc bytes from a:hl to de, uses hROMBankTemp as scratch.
 	ldh [hROMBankTemp], a
 	ldh a, [hLoadedROMBank]
 	push af
