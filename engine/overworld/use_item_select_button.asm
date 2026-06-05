@@ -21,12 +21,12 @@ UseSelectButtonItem::
 	call CopyToStringBuffer
 	call UseItem
 
-	; load $FF into hTextID to make DisplayTextID close the text box
-	ld a, $FF
+	; load $ff into hTextID to make DisplayTextID close the text box
+	ld a, $ff
 	ldh [hTextID], a
 	jp DisplayTextID
 
-CheckIfSelectItem:: ; sets z flag if item in [wCurItem] cannot be associated with Select button
+CheckIfSelectItem:: ; sets carry flag if item in [wCurItem] can be associated with Select button
 	ld hl, SelectItemsList
 	ld a, [wCurItem]
 	jp IsInList ; returns carry if found

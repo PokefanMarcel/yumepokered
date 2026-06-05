@@ -20,7 +20,7 @@ CallFunctionInTable::
 	pop hl
 	ret
 
-IsInArray::
+IsInArray:: ; marcelnote - small optim
 ; Search an array at hl for the value in a.
 ; Entry size is de bytes.
 ; Return index b and carry if found.
@@ -31,16 +31,12 @@ IsInRestOfArray::
 .loop
 	ld a, [hl]
 	cp -1
-	jr z, .notfound
+	ret z ; not found, carry flag clear
 	cp c
 	jr z, .found
 	inc b
 	add hl, de
 	jr .loop
-
-.notfound
-	and a
-	ret
 
 .found
 	scf
@@ -50,13 +46,12 @@ IsInRestOfArray::
 IsInList:: ; marcelnote - simpler, uses e only, for arrays with entry size 1
 ; Search the list at hl for the value in a.
 ; Returns carry if found.
-; If found, then also returns hl the address at which a was found.
 	ld e, a
 .loop
-	ld a, [hl]
+	ld a, [hli]
 	cp -1
-	jr z, IsInRestOfArray.notfound
+	ret z ; not found, carry flag clear
 	cp e
-	jr z, IsInRestOfArray.found
-	inc hl
-	jr .loop
+	jr nz, .loop
+	scf
+	ret
