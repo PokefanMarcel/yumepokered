@@ -464,9 +464,7 @@ LoadSGB:
 	ld [wOnSGB], a
 	ld a, [wOnCGB]
 	and a
-	jr z, .notCGB
-	ret
-.notCGB
+	ret nz
 	di
 	call PrepareSuperNintendoVRAMTransfer
 	ei
