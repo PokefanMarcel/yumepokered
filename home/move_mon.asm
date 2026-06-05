@@ -30,7 +30,7 @@ AddPartyMon::
 
 ; calculates all 5 stats of current mon and writes them to [de]
 CalcStats::
-	ld c, $0
+	ld c, 0
 .statsLoop
 	inc c
 	call CalcStat
