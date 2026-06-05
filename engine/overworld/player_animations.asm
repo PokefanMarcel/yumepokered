@@ -525,7 +525,7 @@ _HandleMidJump::
 	ret
 .finishedJump
 	ld a, [wWalkCounter]
-	cp 0
+	and a
 	ret nz
 	call UpdateSprites
 	call Delay3
