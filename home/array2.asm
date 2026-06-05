@@ -1,9 +1,5 @@
-CallFunctionInTable::
+CallFunctionInTable:: ; marcelnote - optimized (but no preserved registers anymore)
 ; Call function a in jumptable hl.
-; de is not preserved.
-	push hl
-	push de
-	push bc
 	add a
 	ld d, 0
 	ld e, a
@@ -11,14 +7,7 @@ CallFunctionInTable::
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld de, .returnAddress
-	push de
 	jp hl
-.returnAddress
-	pop bc
-	pop de
-	pop hl
-	ret
 
 IsInArray:: ; marcelnote - small optim
 ; Search an array at hl for the value in a.
