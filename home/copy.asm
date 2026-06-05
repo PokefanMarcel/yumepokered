@@ -44,23 +44,21 @@ CopyDataDEtoHL:: ; marcelnote - new
 	jr nz, .loop
 	ret
 
-; marcelnote - new from pokeyellow
-CopyVideoDataAlternate::
+CopyVideoDataAlternate:: ; marcelnote - optimized from pokeyellow but currently unused
 	ldh a, [rLCDC]
-	bit 7, a ; LCD enabled?
-	jp nz, CopyVideoData ; if yes, then copy video data
+	bit B_LCDC_ENABLE, a ; LCD enabled?
+	jp nz, CopyVideoData ; if yes, copy c tiles from b:de to hl
 	push hl
 	ld h, d
 	ld l, e
-	pop de
-	ld a, b ; save bank
-	push af
+	ld d, b ; save bank
+	; multiply c by 16
 	swap c
-	ld a, $f
-	and c
+	ld a, c
+	and $0f
 	ld b, a
-	ld a, $f0
-	and c
-	ld c, a
-	pop af
-	jr FarCopyData
+	xor c
+	ld c, a ; bc = c * 16 (TILE_SIZE)
+	ld a, d
+	pop de
+	jr FarCopyData ; copy bc bytes from a:hl to de
