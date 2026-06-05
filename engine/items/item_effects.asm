@@ -2593,7 +2593,7 @@ GetMaxPP:
 	call AddNTimes
 	ld de, wMoveData
 	ld a, BANK(Moves)
-	call FarCopyData2
+	call FarCopyData
 	ld de, wMoveData + MOVE_PP
 	ld a, [de]
 	ld b, a ; b = normal max PP

@@ -440,17 +440,17 @@ LoadTownMap:
 	ld de, vChars2 tile $60
 	ld bc, WorldMapTileGraphicsEnd - WorldMapTileGraphics
 	ld a, BANK(WorldMapTileGraphics)
-	call FarCopyData2
+	call FarCopyData
 	ld hl, MonNestOptionsTileGraphics ; marcelnote - new gfx for nests
 	ld de, vChars2 tile $70
 	ld bc, MonNestOptionsTileGraphicsEnd - MonNestOptionsTileGraphics
 	ld a, BANK(MonNestOptionsTileGraphics)
-	call FarCopyData2
+	call FarCopyData
 	ld hl, MonNestIcon
 	ld de, vSprites tile $04
 	ld bc, MonNestIconEnd - MonNestIcon
 	ld a, BANK(MonNestIcon)
-	call FarCopyData2 ; marcelnote - eye color for mon nest icon
+	call FarCopyData ; marcelnote - eye color for mon nest icon
 	hlcoord 0, 0
 	ld de, CompressedMap
 .nextTile

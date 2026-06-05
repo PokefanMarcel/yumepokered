@@ -160,12 +160,12 @@ LoadTradingGFXAndMonNames:
 	ld de, vChars2 tile $31
 	ld bc, TradingAnimationGraphicsEnd - TradingAnimationGraphics
 	ld a, BANK(TradingAnimationGraphics)
-	call FarCopyData2
+	call FarCopyData
 	ld hl, TradingAnimationGraphics2
 	ld de, vSprites tile $7c
 	ld bc, TradingAnimationGraphics2End - TradingAnimationGraphics2
 	ld a, BANK(TradingAnimationGraphics2)
-	call FarCopyData2
+	call FarCopyData
 	ld hl, vBGMap0
 	ld bc, 2 * TILEMAP_AREA
 	ld a, ' '

@@ -151,7 +151,7 @@ LoadMonPartySpriteGfxWithLCDDisabled:
 	inc hl
 	ld d, [hl]
 	pop hl
-	call FarCopyData2
+	call FarCopyData
 	pop hl
 	pop bc
 	ld a, $6

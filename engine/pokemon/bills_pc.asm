@@ -1231,12 +1231,12 @@ LoadBillsPCBoxIconTilePatterns:
 CopyFlippedBillsPCBoxIconTile:
 	push hl
 
-	; FarCopyData2 needs hl = source and de = destination buffer.
+	; FarCopyData needs hl = source and de = destination buffer.
 	ld h, d
 	ld l, e
 	ld de, wTextBoxBuffer
 	ld bc, TILE_SIZE
-	call FarCopyData2
+	call FarCopyData
 
 	; Reverse the pixel order in every row byte. b is the remaining byte count;
 	; c indexes the nibble lookup table, and d/e hold the partially reversed byte.

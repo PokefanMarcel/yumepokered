@@ -3012,7 +3012,7 @@ PrintMenuItem: ; marcelnote - this menu was revamped to also show power and accu
 	ld bc, MOVE_LENGTH
 	call AddNTimes ; adds bc to hl a times
 	ld a, BANK(Moves)
-	call FarCopyData2 ; copies bc bytes from a:hl to de
+	call FarCopyData ; copies bc bytes from a:hl to de
 
 ; print TYPE/<type> and <curPP>/<maxPP> ; marcelnote - changed the contents, now also Power and Accuracy
 	hlcoord 1, 9
@@ -5241,7 +5241,7 @@ ReloadMoveData:
 	ld bc, MOVE_LENGTH
 	call AddNTimes
 	ld a, BANK(Moves)
-	call FarCopyData2 ; copy the move's stats
+	call FarCopyData ; copy the move's stats
 	call IncrementMovePP
 ; the follow two function calls are used to reload the move name
 	call GetMoveName
@@ -6190,7 +6190,7 @@ GetCurrentMove:
 	ld bc, MOVE_LENGTH
 	call AddNTimes
 	ld a, BANK(Moves)
-	call FarCopyData2
+	call FarCopyData
 
 	ld a, BANK(MoveNames)
 	ld [wPredefBank], a

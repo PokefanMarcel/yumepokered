@@ -1967,7 +1967,7 @@ AnimationSubstitute:
 CopyMonsterSpriteData:
 	ld bc, TILE_SIZE
 	ld a, BANK(MonsterSprite)
-	jp FarCopyData2
+	jp FarCopyData
 
 HideSubstituteShowMonAnim:
 	ldh a, [hWhoseTurn]

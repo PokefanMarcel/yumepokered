@@ -53,10 +53,10 @@ DrawTrainerInfo: ; marcelnote - modified
 	jr nc, .loadFace
 	; load badge
 	add hl, bc
-	call FarCopyData2
+	call FarCopyData
 	jr .continue
 .loadFace
-	call FarCopyData2
+	call FarCopyData
 	ld bc, 4 tiles
 	add hl, bc
 .continue
@@ -140,7 +140,7 @@ ENDC
 
 TrainerInfo_FarCopyData:
 	ld a, BANK(TrainerInfoTextBoxTileGraphics)
-	jp FarCopyData2
+	jp FarCopyData
 
 IF DEF(_FRA)
 	INCLUDE "translation/fra/data/text/menus/trainer_menu.fra.asm"

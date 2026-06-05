@@ -857,18 +857,18 @@ LoadSlotMachineTiles:
 	;ld bc, $1c tiles ; should be SlotMachineTiles2End - SlotMachineTiles2, or $18 tiles
 	ld bc, SlotMachineTiles2End - SlotMachineTiles2 ; marcelnote - fixes aforementioned bug (pokered Wiki)
 	ld a, BANK(SlotMachineTiles2)
-	call FarCopyData2
+	call FarCopyData
 	ld hl, SlotMachineTiles1
 	ld de, vChars2
 	ld bc, SlotMachineTiles1End - SlotMachineTiles1
 	ld a, BANK(SlotMachineTiles1)
-	call FarCopyData2
+	call FarCopyData
 	ld hl, SlotMachineTiles2
 	ld de, vChars2 tile $25
 	;ld bc, $1c tiles ; should be SlotMachineTiles2End - SlotMachineTiles2, or $18 tiles
 	ld bc, SlotMachineTiles2End - SlotMachineTiles2 ; marcelnote - fixes aforementioned bug (pokered Wiki)
 	ld a, BANK(SlotMachineTiles2)
-	call FarCopyData2
+	call FarCopyData
 	ld hl, SlotMachineMap
 	decoord 0, 0
 	ld bc, SlotMachineMapEnd - SlotMachineMap

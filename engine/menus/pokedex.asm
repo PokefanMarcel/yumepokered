@@ -877,7 +877,7 @@ ENDC
 	ld de, wMoveBuffer
 	ld a, BANK(BaseStats)
 	ld bc, NUM_MOVES
-	call FarCopyData2 ; copy 4 base moves at wMoveBuffer
+	call FarCopyData ; copy 4 base moves at wMoveBuffer
 
 	decoord  2, 4
 	ld hl, wMoveBuffer
@@ -919,7 +919,7 @@ ENDC
 	ld de, wMoveBuffer
 	ld a, BANK(EvosMovesPointerTable)
 	ld bc, 2
-	call FarCopyData2 ; copy [Mon]EvosMoves pointer at wMoveBuffer
+	call FarCopyData ; copy [Mon]EvosMoves pointer at wMoveBuffer
 
 	ld hl, wMoveBuffer
 	ld a, [hli]
@@ -928,7 +928,7 @@ ENDC
 	ld de, wMoveBuffer
 	ld a, BANK(EvosMovesPointerTable)
 	ld bc, 32         ; big enough to copy all [Mon]EvosMoves data
-	call FarCopyData2 ; copy [Mon]EvosMoves data at wMoveBuffer
+	call FarCopyData ; copy [Mon]EvosMoves data at wMoveBuffer
 
 	pop de ; restore de = screen tile
 	ld hl, wMoveBuffer

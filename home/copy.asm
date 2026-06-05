@@ -1,17 +1,3 @@
-; Copy bc bytes from a:hl to de.
-;FarCopyData::
-;	ld [wBuffer], a
-;	ldh a, [hLoadedROMBank]
-;	push af
-;	ld a, [wBuffer]
-;	ldh [hLoadedROMBank], a
-;	ld [rROMB], a
-;	call CopyData
-;	pop af
-;	ldh [hLoadedROMBank], a
-;	ld [rROMB], a
-;	ret
-
 CopyData:: ; marcelnote - Engezerstorung optim
 ; Copy bc bytes from hl to de.
 ; No bc = 0 guard.
@@ -44,21 +30,21 @@ CopyDataDEtoHL:: ; marcelnote - new
 	jr nz, .loop
 	ret
 
-CopyVideoDataAlternate:: ; marcelnote - optimized from pokeyellow but currently unused
-	ldh a, [rLCDC]
-	bit B_LCDC_ENABLE, a ; LCD enabled?
-	jp nz, CopyVideoData ; if yes, copy c tiles from b:de to hl
-	push hl
-	ld h, d
-	ld l, e
-	ld d, b ; save bank
-	; multiply c by 16
-	swap c
-	ld a, c
-	and $0f
-	ld b, a
-	xor c
-	ld c, a ; bc = c * 16 (TILE_SIZE)
-	ld a, d
-	pop de
-	jp FarCopyData2 ; copy bc bytes from a:hl to de
+;CopyVideoDataAlternate:: ; marcelnote - optimized from pokeyellow but currently unused
+;	ldh a, [rLCDC]
+;	bit B_LCDC_ENABLE, a ; LCD enabled?
+;	jp nz, CopyVideoData ; if yes, copy c tiles from b:de to hl
+;	push hl
+;	ld h, d
+;	ld l, e
+;	ld d, b ; save bank
+;	; multiply c by 16
+;	swap c
+;	ld a, c
+;	and $0f
+;	ld b, a
+;	xor c
+;	ld c, a ; bc = c * 16 (TILE_SIZE)
+;	ld a, d
+;	pop de
+;	jp FarCopyData ; copy bc bytes from a:hl to de

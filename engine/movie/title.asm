@@ -43,23 +43,23 @@ DisplayTitleScreen:
 	ld de, vTitleLogo2 tile 16
 	ld bc, 5 tiles
 	ld a, BANK(NintendoCopyrightLogoGraphics)
-	call FarCopyData2
+	call FarCopyData
 	ld hl, GameFreakLogoGraphics
 	ld de, vTitleLogo2 tile (16 + 5)
 	ld bc, 9 tiles
 	ld a, BANK(GameFreakLogoGraphics)
-	call FarCopyData2
+	call FarCopyData
 	ld hl, PokemonLogoGraphics
 	ld de, vTitleLogo
 ;	ld bc, $60 tiles
 	ld bc, $70 tiles ; marcelnote - copy all tiles of the logo together
 	ld a, BANK(PokemonLogoGraphics)
-	call FarCopyData2          ; first chunk ; marcelnote - copy all tiles of the logo together
+	call FarCopyData          ; first chunk ; marcelnote - copy all tiles of the logo together
 ;	ld hl, PokemonLogoGraphics tile $60
 ;	ld de, vTitleLogo2
 ;	ld bc, $10 tiles
 ;	ld a, BANK(PokemonLogoGraphics)
-;	call FarCopyData2          ; second chunk
+;	call FarCopyData          ; second chunk
 	ld hl, Version_GFX
 	ld de, vChars2 tile $60 + (10 tiles - (Version_GFXEnd - Version_GFX) * 2) / 2
 	ld bc, Version_GFXEnd - Version_GFX
@@ -324,7 +324,7 @@ DrawPlayerCharacter: ; marcelnote - this always draws the boy (used in title scr
 	ld hl, PlayerCharacterTitleGraphics
 	ld bc, PlayerCharacterTitleGraphicsEnd - PlayerCharacterTitleGraphics
 	ld a, BANK(PlayerCharacterTitleGraphics)
-	call FarCopyData2
+	call FarCopyData
 	call ClearSprites
 	xor a
 	ld [wPlayerCharacterOAMTile], a

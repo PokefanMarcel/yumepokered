@@ -284,22 +284,22 @@ LoadIntroGraphics:
 	ld de, vChars2
 	ld bc, FightIntroBackMonEnd - FightIntroBackMon
 	ld a, BANK(FightIntroBackMon)
-	call FarCopyData2
+	call FarCopyData
 	ld hl, GameFreakIntro
 	ld de, vChars2 + (FightIntroBackMonEnd - FightIntroBackMon)
 	ld bc, GameFreakIntroEnd - GameFreakIntro
 	ld a, BANK(GameFreakIntro)
-	call FarCopyData2
+	call FarCopyData
 	ld hl, GameFreakIntro
 	ld de, vChars1
 	ld bc, GameFreakIntroEnd - GameFreakIntro
 	ld a, BANK(GameFreakIntro)
-	call FarCopyData2
+	call FarCopyData
 	ld hl, FightIntroFrontMon
 	ld de, vChars0
 	ld bc, FightIntroFrontMonEnd - FightIntroFrontMon
 	ld a, BANK(FightIntroFrontMon)
-	jp FarCopyData2
+	jp FarCopyData
 
 PlayShootingStar:
 	ld b, SET_PAL_GAME_FREAK_INTRO

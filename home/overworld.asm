@@ -881,7 +881,7 @@ LoadTilesetTilePatternData::
 	ld de, vTileset
 	ld bc, $600
 	ld a, [wTilesetBank]
-	jp FarCopyData2
+	jp FarCopyData
 
 ; this loads the current map's complete tile map (which references blocks, not individual tiles) to wOverworldMap
 ; it can also load partial tile maps of connected maps into a border of length 3 around the current map
