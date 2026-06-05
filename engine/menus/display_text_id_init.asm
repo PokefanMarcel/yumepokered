@@ -32,9 +32,7 @@ DisplayTextIDInit::
 	ld hl, wMiscFlags
 	bit BIT_NO_SPRITE_UPDATES, [hl]
 	res BIT_NO_SPRITE_UPDATES, [hl]
-	jr nz, .skipMovingSprites
-	call UpdateSprites
-.skipMovingSprites
+	call z, UpdateSprites
 ; loop to copy [x#SPRITESTATEDATA1_FACINGDIRECTION] to
 ; [x#SPRITESTATEDATA2_ORIGFACINGDIRECTION] for each non-player sprite
 ; this is done because when you talk to an NPC, they turn to look your way
