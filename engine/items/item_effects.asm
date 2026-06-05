@@ -2053,7 +2053,7 @@ ItemUsePPRestore:
 	xor a
 	ld [wPlayerMoveListIndex], a
 	callfar MoveSelectionMenu ; move selection menu
-	ld a, 0
+	ld a, 0 ; preserve Z flag
 	ld [wPlayerMoveListIndex], a
 	jr nz, .chooseMon
 	ld hl, wPartyMon1Moves
