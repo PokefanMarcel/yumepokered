@@ -63,7 +63,7 @@ _RivalVictoryText::
 	cont "para ti!"
 
 	para "¡Lograste llegar"
-	line "a mi, <RIVAL>,"
+	line "a mí, <RIVAL>," ; marcelnote - fixed accent
 	cont "el genio de"
 	cont "los #MON!"
 
@@ -230,4 +230,3 @@ _ChampionsRoomOakComeWithMeText::
 	para "¡<PLAYER>!"
 	line "¡Ven conmigo!"
 	done
-

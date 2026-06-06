@@ -6,7 +6,7 @@ _LavenderPokecenterGentlemanText::
 	done
 
 _LavenderPokecenterLittleGirlText::
-	text "¡Vi como moría la"
+	text "¡Vi cómo moría la" ; marcelnote - fixed accent
 	line "madre de CUBONE"
 	cont "al intentar huir"
 	cont "del TEAM ROCKET!"
@@ -54,4 +54,3 @@ _LavenderMartCooltrainerMNuggetText::
 	line "nada, pero la"
 	cont "vendí por 5000¥!"
 	done
-

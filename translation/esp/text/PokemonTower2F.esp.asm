@@ -20,7 +20,7 @@ _PokemonTower2FRivalDefeatedText::
 
 _PokemonTower2FRivalVictoryText::
 	text "<RIVAL>: ¡Mira"
-	line "que canijos son"
+	line "qué canijos son" ; marcelnote - fixed accent
 	cont "tus #MON!"
 
 	para "¡Fortalécelos"

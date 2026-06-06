@@ -5,7 +5,7 @@ _FuchsiaBillsGrandpasHouseMiddleAgedWomanText::
 	cont "sigue en activo!"
 
 	para "¡Aunque todos"
-	line "sus dientes "
+	line "sus dientes"
 	cont "son postizos!"
 	done
 
@@ -22,11 +22,10 @@ _FuchsiaBillsGrandpasHouseBillsGrandpaText::
 
 _FuchsiaBillsGrandpasHouseYoungsterText::
 	text "¡BILL registra"
-	line "los datos de sus "
+	line "los datos de sus"
 	cont "#MON en"
 	cont "su PC!"
 
 	para "¿Te los ha"
 	line "enseñado?"
 	done
-

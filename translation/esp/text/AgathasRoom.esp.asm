@@ -39,7 +39,7 @@ _AgathasRoomAgathaAfterBattleText::
 	cont "tanto!"
 
 	para "¡No tengo nada"
-	line "más que decir! " 
+	line "más que decir!"
 	cont "¡Vete ya niño!"
 	done
 

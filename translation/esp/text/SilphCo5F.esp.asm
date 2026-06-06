@@ -2,7 +2,7 @@ _SilphCo5FSilphWorkerMThatsYouRightText::
 	text "El TEAM ROCKET"
 	line "está buscando a"
 	cont "un intruso. Te"
-	cont "buscan a ti ¿no?"
+	cont "buscan a ti, ¿no?" ; marcelnote - fixed punctuation
 	done
 
 _SilphCo5FSilphWorkerMYoureOurHeroText::
@@ -116,4 +116,3 @@ _SilphCo5FPokemonReport3Text::
 	cont "se intercambian"
 	cont "vía cable-link!"
 	done
-

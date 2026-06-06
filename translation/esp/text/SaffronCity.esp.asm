@@ -26,7 +26,7 @@ _SaffronCityRocket5Text::
 
 _SaffronCityRocket6Text::
 	text "¡Au! ¡Cuidado por"
-	line "donde caminas!"
+	line "dónde caminas!" ; marcelnote - fixed accent
 	done
 
 _SaffronCityRocket7Text::

@@ -9,7 +9,7 @@ _CeladonHotelGrannyText::
 _CeladonHotelBeautyText::
 	text "Estoy de"
 	line "vacaciones con mi"
-	cont "hermano y con "
+	cont "hermano y con"
 	cont "mi novio."
 
 	para "¡AZULONA es una"
@@ -25,4 +25,3 @@ _CeladonHotelBenchGuyText:: ; marcelnote - BenchGuy has a sprite
 	line "me trajo de"
 	cont "vacaciones!"
 	done
-

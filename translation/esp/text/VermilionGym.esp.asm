@@ -120,7 +120,7 @@ _VermilionGymSuperNerdAfterBattleText::
 	line "que ocultaría los"
 	cont "botones de la"
 	cont "puerta dentro"
-	cont "de algo! "
+	cont "de algo!"
 	done
 
 _VermilionGymSailorBattleText::

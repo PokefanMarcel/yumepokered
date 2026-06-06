@@ -63,7 +63,7 @@ _Route20Swimmer4AfterBattleText::
 	done
 
 _Route20Swimmer5BattleText::
-	text "¡Mira que"
+	text "¡Mira qué" ; marcelnote - fixed accent
 	line "cuerpazo tengo!"
 	done
 
@@ -167,4 +167,3 @@ _Route20Swimmer9AfterBattleText::
 _Route20SeafoamIslandsSignText::
 	text "ISLAS ESPUMA"
 	done
-

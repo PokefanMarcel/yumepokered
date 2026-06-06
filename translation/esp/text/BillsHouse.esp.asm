@@ -76,7 +76,7 @@ _BillsHouseBillWhyDontYouGoInsteadOfMeText::
 	line "fiesta, pero yo"
 	cont "las odio. ¿Por"
 	cont "qué no vas tú"
-	cont "en mi lugar? " ; This space might be off
+	cont "en mi lugar?"
 	done
 
 _BillsHouseBillCheckOutMyRarePokemonText::

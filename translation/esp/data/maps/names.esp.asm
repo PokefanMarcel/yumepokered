@@ -7,7 +7,7 @@ VermilionCityName:   db "CIUDAD CARMÍN@"
 CeladonCityName:     db "CIUDAD AZULONA@"
 FuchsiaCityName:     db "CIUDAD FUCSIA@"
 CinnabarIslandName:  db "ISLA CANELA@"
-IndigoPlateauName:   db "MESETA AñIL@"
+IndigoPlateauName:   db "MESETA AÑIL@" ; marcelnote - was AñIL
 SaffronCityName:     db "CIUDAD AZAFRÁN@"
 MandarinIslandName:  db "ISLA MANDARINA@" ; marcelnote - new location
 Route1Name:          db "RUTA 1@"
