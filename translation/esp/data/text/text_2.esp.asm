@@ -567,13 +567,12 @@ _Route15GateLeftBinocularsArticunoText:: ; marcelnote - added alternative text a
 	cont "hacia el mar."
 	done
 
-; TODO - Spanish translation
 _Route15GateLeftBinocularsNoArticunoText:: ; marcelnote - added alternative text after Articuno is fought
-	text "Looked into the"
-	line "binoculars."
+	text "Miraste por los"
+	line "prismáticos."
 
-	para "The sea glimmers"
-	line "under the sun."
+	para "El mar brilla"
+	line "bajo el sol."
 	done
 
 _Route15GateRightBinocularsText::
@@ -1323,7 +1322,7 @@ _BoostedText::
 	text_end
 
 _ExpPointsText::
-	text_decimal wStringBuffer, 2, 4
+	text_decimal wExpAmountGained, 2, 4
 	text " Puntos EXP.!"
 	prompt
 

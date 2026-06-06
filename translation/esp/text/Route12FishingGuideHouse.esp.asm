@@ -1,38 +1,40 @@
 ; marcelnote - from Super Rod to Fishing Guide on Route 12
-; TODO - Spanish translation
 _Route12FishingGuideHouseItsAFishingGuideText::
-	text "It's a FISHING"
-	line "GUIDE!"
+	; traducción por NunWinter
+	text "Es una GUÍA de"
+	line "PESCA!"
 
-	para "There is a note"
-	line "inside."
+	para "Hay una nota"
+	line "dentro."
 
-	para "To all travelers."
-	line "Cast your line,"
-	cont "reel in glory!"
+	para "A todos los"
+	line "viajeros."
+	cont "Lanza tu caña,"
+	cont "alcanza la gloria!"
 
-	para "FISHING GURU"
+	para "GURÚ PESCADOR"
 	prompt
 
-; TODO - Spanish translation
 _Route12FishingGuideHouseAddedToPokedexText::
-	text "<PLAYER> added the"
-	line "FISHING GUIDE to"
-	cont "the #DEX!"
+	; traducción por NunWinter
+	text "<PLAYER> añadió la"
+	line "GUÍA de PESCA a"
+	cont "la #DEX!"
 	done
 
-; TODO - Spanish translation
 _Route12FishingGuideHouseAreaUpgradedText::
-	text "The #DEX's AREA"
-	line "functionality was"
-	cont "upgraded to show"
-	cont "fishing spots."
+	; traducción por NunWinter
+	text "La función AREA"
+	line "de la #DEX"
+	cont "ahora muestra"
+	cont "zonas de pesca."
 	done
 
-; TODO - Spanish translation
 _Route12FishingGuideHouseToAllTravelersText::
-	text "To all travelers."
-	line "Cast your line,"
-	cont "reel in glory!"
-	cont "FISHING GURU"
+	; traducción por NunWinter
+	text "A todos los"
+	line "viajeros."
+	cont "Lanza tu caña,"
+	cont "alcanza la gloria!"
+	cont "GURÚ PESCADOR"
 	done

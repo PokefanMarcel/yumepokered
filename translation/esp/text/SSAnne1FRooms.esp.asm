@@ -94,17 +94,20 @@ _SSAnne1FRoomsGirl1WaiterText::
 	ret
 
 .BoyText
+	; traducción por NunWinter
 	text "¡Camarero, me"
-	line "gustaría tomar"
+;	line "gustaría tomar" ; original
+	line "gustaría comer" ; new: "tomar" refers to drinking in the context of a meal
 	cont "una tarta de"
 	cont "cerezas!"
 	done
 
-; TODO - Spanish translation
 .GirlText ; marcelnote - new for girl player
-	text "Waitress, I would"
-	line "like a cherry pie"
-	cont "please!"
+	; traducción por NunWinter
+	text "¡Camarera, me"
+	line "gustaría comer"
+	cont "una tarta de"
+	cont "cerezas!"
 	done
 
 _SSAnne1FRoomsMiddleAgedManText::
@@ -133,14 +136,15 @@ _SSAnne1FRoomsGentleman3Text::
 	cont "TEAM ROCKET!"
 	done
 
-; TODO - Spanish translation
 _SSAnne1FRoomsNurseAreYouTiredText:: ; marcelnote - new nurse room
-	text "Are you tired?"
-	line "You can rest"
-	cont "here for a bit."
+	; traducción por NunWinter
+	text "Si estás cansado," ; TODO - gendered text
+	line "puedes descansar"
+	cont "un poco aquí."
 	prompt
 
-; TODO - Spanish translation
 _SSAnne1FRoomsNurseEnjoyThePartyText:: ; marcelnote - new nurse room
-	text "Enjoy the party!"
+	; traducción por NunWinter
+	text "Disfruta de"
+	line "la fiesta!"
 	done

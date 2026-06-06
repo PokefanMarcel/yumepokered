@@ -44,10 +44,11 @@ _SafariZoneSecretHouseFishingGuruHM03NoRoomText::
 	cont "tan fabuloso!"
 	done
 
-; TODO - Spanish translation
 _SafariZoneSecretHousePosterText:: ; marcelnote - new
-	text "SURF lovers, come"
-	line "visit our shop on"
-	cont "MANDARIN ISLAND!"
-	cont "WAVE CRAZE"
+	; traducción por NunWinter
+	text "Amantes del SURF,"
+	line "visiten nuestra"
+	cont "tienda en ISLA"
+	cont "MANDARINA!"
+	cont "SURFMANIA"
 	done
