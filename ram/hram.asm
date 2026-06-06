@@ -112,6 +112,9 @@ hNumDigitsToPrint:: db ; marcelnote - used in PrintNumber concurrently with Divi
 NEXTU
 hQuotient:: ds 4
 hRemainder:: db
+NEXTU
+	ds 1 ; marcelnote - was hSwapTemp
+hExperience:: ds 3 ; big endian
 ENDU
 
 NEXTU
@@ -150,10 +153,6 @@ NEXTU
 	ds 1
 hMutateWY:: db
 hMutateWX:: db
-
-NEXTU
-	ds 1 ; marcelnote - was hSwapTemp
-hExperience:: ds 3 ; big endian
 ENDU
 
 UNION

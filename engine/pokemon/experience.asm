@@ -28,7 +28,13 @@ CalcLevelFromExperience::
 	ret
 
 ; calculates the amount of experience needed for level d
-CalcExperience::
+CalcExperience:: ; marcelnote - optimized
+; hExperience = floor(cubic_coeff * d^3) + signed_square_coeff * d^2 + linear_coeff * d - constant
+; GrowthRateTable entries are:
+;   byte 0: high nybble = cubic numerator, low nybble = cubic divisor
+;   byte 1: square coefficient, signed magnitude ($80 = negative)
+;   byte 2: linear coefficient
+;   byte 3: constant
 	ld a, [wMonHGrowthRate]
 	add a
 	add a
@@ -36,103 +42,124 @@ CalcExperience::
 	ld b, 0
 	ld hl, GrowthRateTable
 	add hl, bc
+
+; Calculate d^2 and keep it in bc. The low 3 bytes of hProduct also alias
+; hMultiplicand, and CalcDSquared leaves hMultiplier = d, so the next Multiply
+; turns d^2 into d^3.
 	call CalcDSquared
-	ld a, d
-	ldh [hMultiplier], a
-	call Multiply
+	ldh a, [hProduct + 2]
+	ld b, a
+	ldh a, [hProduct + 3]
+	ld c, a                ; bc = d^2
+	call Multiply          ; [hProduct] = d^3
+
+; Apply the cubic fraction. Divide's quotient aliases hExperience, so zero-term
+; growth rates can return immediately after this.
 	ld a, [hl]
 	and $f0
-	swap a
+	swap a                 ; a = cubic numerator
 	ldh [hMultiplier], a
 	call Multiply
 	ld a, [hli]
-	and $f
+	and $0f                ; a = cubic denominator
 	ldh [hDivisor], a
-	call Divide
-	ldh a, [hQuotient + 1]
+	call Divide            ; [hExperience] = floor(cubic_coeff * d^3)
+
+	ld a, [hli]
+	and a
+	ret z ; remaining coefficients are zero for the zero-square growth rates
+	ld e, a                ; e = signed square coeff
+
+; Save the cubic term before using the math buffers for the square and linear
+; terms. The stack order is low-to-high when popping below.
+	ldh a, [hExperience]
 	push af
-	ldh a, [hQuotient + 2]
+	ldh a, [hExperience + 1]
 	push af
-	ldh a, [hQuotient + 3]
-	push af
-	call CalcDSquared
-	ld a, [hl]
-	and $7f
+	ldh a, [hExperience + 2]
+	push af                ; save high/mid/low of floor(cubic_coeff * d^3)
+
+; Calculate |square coeff| * d^2 from the copy of d^2 in bc.
+	xor a
+	ldh [hMultiplicand], a
+	ld a, b
+	ldh [hMultiplicand + 1], a
+	ld a, c
+	ldh [hMultiplicand + 2], a
+	ld a, e
+	and $7f                ; a = |square coeff|
 	ldh [hMultiplier], a
 	call Multiply
+
+; Save the square term above the cubic term so it is popped first.
 	ldh a, [hProduct + 1]
 	push af
 	ldh a, [hProduct + 2]
-	push af
+	ld b, a
 	ldh a, [hProduct + 3]
-	push af
-	ld a, [hli]
-	push af
+	ld c, a                ; save high/mid/low of |square coeff| * d^2
+
+; Calculate linear * n - constant in hExperience.
 	xor a
 	ldh [hMultiplicand], a
 	ldh [hMultiplicand + 1], a
-	ld a, d
+	ld a, d                ; last time we need d = level
 	ldh [hMultiplicand + 2], a
-	ld a, [hli]
+	ld a, [hli]            ; a = linear_coeff
 	ldh [hMultiplier], a
 	call Multiply
-	ld b, [hl]
-	ldh a, [hProduct + 3]
-	sub b
-	ldh [hProduct + 3], a
-	ld b, $0
-	ldh a, [hProduct + 2]
-	sbc b
-	ldh [hProduct + 2], a
-	ldh a, [hProduct + 1]
-	sbc b
-	ldh [hProduct + 1], a
-; The difference of the linear term and the constant term consists of 3 bytes
-; starting at hProduct + 1. Below, hExperience (an alias of that address) will
-; be used instead for the further work of adding or subtracting the squared
-; term and adding the cubed term.
-	pop af
-	and $80
-	jr nz, .subtractSquaredTerm ; check sign
-	pop bc
-	ldh a, [hExperience + 2]
-	add b
-	ldh [hExperience + 2], a
-	pop bc
-	ldh a, [hExperience + 1]
+	ld d, [hl]             ; d = constant
+	ld hl, hExperience + 2 ; = hProduct + 3
+	ld a, [hl]
+	sub d
+	ld [hld], a
+	ld a, [hl]             ; hExperience + 1
+	sbc 0
+	ld [hld], a
+	ld a, [hl]             ; hExperience
+	sbc 0
+	ld [hli], a            ; [hExperience] = linear_coeff * n - constant
+
+; Add or subtract the square term according to its signed-magnitude bit.
+	bit 7, e               ; is signed_square_coeff negative?
+	inc hl                 ; hl = hExperience + 2
+	ld a, [hl]  ; hExperience + 2
+	jr nz, .subtractSquaredTerm
+	add c
+	ld [hld], a
+	ld a, [hl]  ; hExperience + 1
 	adc b
-	ldh [hExperience + 1], a
+	ld [hld], a
 	pop bc
-	ldh a, [hExperience]
+	ld a, [hl]  ; hExperience
 	adc b
-	ldh [hExperience], a
+	ld [hli], a ; hl = hExperience + 1
 	jr .addCubedTerm
 .subtractSquaredTerm
-	pop bc
-	ldh a, [hExperience + 2]
-	sub b
-	ldh [hExperience + 2], a
-	pop bc
-	ldh a, [hExperience + 1]
+	sub c
+	ld [hld], a
+	ld a, [hl]  ; hExperience + 1
 	sbc b
-	ldh [hExperience + 1], a
+	ld [hld], a
 	pop bc
-	ldh a, [hExperience]
+	ld a, [hl]  ; hExperience
 	sbc b
-	ldh [hExperience], a
+	ld [hli], a ; hl hExperience + 1
 .addCubedTerm
+; Finally add the saved cubic term back into hExperience.
+	inc hl ; hl = hExperience + 2
 	pop bc
-	ldh a, [hExperience + 2]
+	ld a, [hl]
 	add b
-	ldh [hExperience + 2], a
+	ld [hld], a ; hExperience + 2
 	pop bc
-	ldh a, [hExperience + 1]
+	ld a, [hl]
 	adc b
-	ldh [hExperience + 1], a
+	ld [hld], a ; hExperience + 1
 	pop bc
-	ldh a, [hExperience]
+	ld a, [hl]
 	adc b
-	ldh [hExperience], a
+	ld [hl], a  ; hExperience
 	ret
 
 ; calculates d*d
