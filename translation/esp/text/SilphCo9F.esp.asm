@@ -1,19 +1,16 @@
-; TODO - Spanish translation
 _SilphCo9FNurseYouLookTiredText::
-	text "You look tired!"
-	line "You should take a"
-	cont "quick nap!"
+	text "¡Pareces cansado!"
+	line "¡Deberías echarte"
+	cont "una siestecita!"
 	prompt
 
-; TODO - Spanish translation
 _SilphCo9FNurseDontGiveUpText::
-	text "Don't give up!"
+	text "¡No te rindas!"
 	done
 
-; TODO - Spanish translation
 _SilphCo9FNurseThankYouText::
-	text "Thank you so"
-	line "much!"
+	text "¡Muchísimas"
+	line "gracias!"
 	done
 
 _SilphCo9FRocket1BattleText::

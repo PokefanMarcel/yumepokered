@@ -25,11 +25,10 @@ _AgathasRoomAgathaBeforeBattleText::
 	cont "entrenador!"
 	done
 
-; TODO - Spanish translation
 _AgathasRoomAgathaEndBattleText:: ; marcelnote - added map name to label
-	text "Oh ho!"
-	line "You're something"
-	cont "special, child!"
+	text "¡Oh oh!"
+	line "¡Eres bastante"
+	cont "especial, chico!"
 	prompt
 
 _AgathasRoomAgathaAfterBattleText::

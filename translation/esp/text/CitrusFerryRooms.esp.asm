@@ -78,11 +78,10 @@ _CitrusFerryRoomsCooltrainerFAfterBattleText::
 ;	cont "are deeper!"
 ;	done
 
-; TODO - Spanish translation
 _CitrusFerryRoomsNurseYouLookTiredText::
-	text "You look tired!"
-	line "You should take a"
-	cont "quick nap!"
+	text "¡Pareces cansado!"
+	line "¡Deberías echarte"
+	cont "una siestecita!"
 	prompt
 
 ; TODO - Spanish translation
