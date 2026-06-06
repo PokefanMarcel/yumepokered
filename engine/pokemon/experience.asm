@@ -3,7 +3,7 @@ CalcLevelFromExperience::
 	ld a, [wLoadedMonSpecies]
 	ld [wCurSpecies], a
 	call GetMonHeader
-	ld d, $1 ; init level to 1
+	ld d, 1 ; init level to 1
 .loop
 	inc d ; increment level
 	call CalcExperience
