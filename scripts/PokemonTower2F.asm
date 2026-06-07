@@ -37,7 +37,7 @@ ENDC
 	call PlayMusic
 	ResetEvent EVENT_POKEMON_TOWER_RIVAL_ON_LEFT
 	ld a, [wCoordIndex]
-	cp $1
+	dec a
 	ld a, PLAYER_DIR_UP
 	ld b, SPRITE_FACING_DOWN
 	jr nz, .playerBelowRival
