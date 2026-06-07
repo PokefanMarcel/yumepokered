@@ -30,7 +30,6 @@ BattleHallMovePlayerScript:
 	ld de, .SpriteOnTopMovement
 .decodeList
 	call DecodeRLEList
-	dec a
 	ld [wSimulatedJoypadStatesIndex], a
 	call StartSimulatingJoypadStates
 	ld a, SCRIPT_BATTLEHALL_END_MOVEMENT
@@ -39,23 +38,23 @@ BattleHallMovePlayerScript:
 	ret
 
 .SpriteOnRightMovement:
-	db PAD_RIGHT, 2
+	db 2, PAD_RIGHT
 	db -1 ; end
 
 .SpriteOnLeftMovement:
-	db PAD_DOWN, 1
-	db PAD_RIGHT, 4
-	db PAD_UP, 1
+	db 1, PAD_DOWN
+	db 4, PAD_RIGHT
+	db 1, PAD_UP
 	db -1 ; end
 
 .SpriteOnTopMovement:
-	db PAD_DOWN, 1
-	db PAD_RIGHT, 3
+	db 1, PAD_DOWN
+	db 3, PAD_RIGHT
 	db -1 ; end
 
 .SpriteOnBottomMovement:
-	db PAD_UP, 1
-	db PAD_RIGHT, 3
+	db 1, PAD_UP
+	db 3, PAD_RIGHT
 	db -1 ; end
 
 BattleHallEndMovementScript:

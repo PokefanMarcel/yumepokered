@@ -540,9 +540,7 @@ wNPCMovementDirections2:: ds 10
 ; used in Pallet Town scripted movement
 wNumStepsToTake:: db
 
-	ds 48
-
-wRLEByteCount:: db
+	ds 49 ; marcelnote - added now-unused wRLEByteCount
 
 wParentMenuItem::
 ; 0 = not added

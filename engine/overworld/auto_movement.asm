@@ -112,7 +112,6 @@ PalletMovementScript_WalkToLab:
 	ld hl, wSimulatedJoypadStatesEnd
 	ld de, RLEList_PlayerWalkToLab
 	call DecodeRLEList
-	dec a
 	ld [wSimulatedJoypadStatesIndex], a
 	ld hl, wNPCMovementDirections2
 	ld de, RLEList_ProfOakWalkToLab
@@ -126,20 +125,20 @@ PalletMovementScript_WalkToLab:
 	ret
 
 RLEList_ProfOakWalkToLab:
-	db NPC_MOVEMENT_DOWN, 5
-	db NPC_MOVEMENT_LEFT, 1
-	db NPC_MOVEMENT_DOWN, 5
-	db NPC_MOVEMENT_RIGHT, 3
-	db NPC_MOVEMENT_UP, 1
-	db NPC_CHANGE_FACING, 1
+	db 5, NPC_MOVEMENT_DOWN
+	db 1, NPC_MOVEMENT_LEFT
+	db 5, NPC_MOVEMENT_DOWN
+	db 3, NPC_MOVEMENT_RIGHT
+	db 1, NPC_MOVEMENT_UP
+	db 1, NPC_CHANGE_FACING
 	db -1 ; end
 
 RLEList_PlayerWalkToLab:
-	db PAD_UP, 2
-	db PAD_RIGHT, 3
-	db PAD_DOWN, 5
-	db PAD_LEFT, 1
-	db PAD_DOWN, 6
+	db 2, PAD_UP
+	db 3, PAD_RIGHT
+	db 5, PAD_DOWN
+	db 1, PAD_LEFT
+	db 6, PAD_DOWN
 	db -1 ; end
 
 PalletMovementScript_Done:
@@ -173,7 +172,6 @@ PewterMovementScript_WalkToMuseum:
 	ld hl, wSimulatedJoypadStatesEnd
 	ld de, RLEList_PewterMuseumPlayer
 	call DecodeRLEList
-	dec a
 	ld [wSimulatedJoypadStatesIndex], a
 	xor a
 	ld [wWhichPewterGuy], a
@@ -188,17 +186,17 @@ PewterMovementScript_WalkToMuseum:
 	ret
 
 RLEList_PewterMuseumPlayer:
-	db NO_INPUT, 1
-	db PAD_UP, 3
-	db PAD_LEFT, 13
-	db PAD_UP, 6
+	db  1, NO_INPUT
+	db  3, PAD_UP
+	db 13, PAD_LEFT
+	db  6, PAD_UP
 	db -1 ; end
 
 RLEList_PewterMuseumGuy:
-	db NPC_MOVEMENT_UP, 6
-	db NPC_MOVEMENT_LEFT, 13
-	db NPC_MOVEMENT_UP, 3
-	db NPC_MOVEMENT_LEFT, 1
+	db  6, NPC_MOVEMENT_UP
+	db 13, NPC_MOVEMENT_LEFT
+	db  3, NPC_MOVEMENT_UP
+	db  1, NPC_MOVEMENT_LEFT
 	db -1 ; end
 
 PewterMovementScript_Done:
@@ -230,7 +228,6 @@ PewterMovementScript_WalkToGym:
 	ld hl, wSimulatedJoypadStatesEnd
 	ld de, RLEList_PewterGymPlayer
 	call DecodeRLEList
-	dec a
 	ld [wSimulatedJoypadStatesIndex], a
 	ld a, 1
 	ld [wWhichPewterGuy], a
@@ -247,21 +244,21 @@ PewterMovementScript_WalkToGym:
 	ret
 
 RLEList_PewterGymPlayer:
-	db NO_INPUT, 1
-	db PAD_RIGHT, 2
-	db PAD_DOWN, 5
-	db PAD_LEFT, 10 ; marcelnote - was 11
-	db PAD_UP, 5
-	db PAD_LEFT, 15
+	db  1, NO_INPUT
+	db  2, PAD_RIGHT
+	db  5, PAD_DOWN
+	db 10, PAD_LEFT ; marcelnote - was 11
+	db  5, PAD_UP
+	db 15, PAD_LEFT
 	db -1 ; end
 
 RLEList_PewterGymGuy:
-	db NPC_MOVEMENT_DOWN, 2
-	db NPC_MOVEMENT_LEFT, 15
-	db NPC_MOVEMENT_UP, 5
-	db NPC_MOVEMENT_LEFT, 10 ; marcelnote - was 11
-	db NPC_MOVEMENT_DOWN, 5
-	db NPC_MOVEMENT_RIGHT, 3
+	db  2, NPC_MOVEMENT_DOWN
+	db 15, NPC_MOVEMENT_LEFT
+	db  5, NPC_MOVEMENT_UP
+	db 10, NPC_MOVEMENT_LEFT ; marcelnote - was 11
+	db  5, NPC_MOVEMENT_DOWN
+	db  3, NPC_MOVEMENT_RIGHT
 	db -1 ; end
 
 SetEnemyTrainerToStayAndFaceAnyDirection::

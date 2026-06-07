@@ -24,20 +24,17 @@ ViridianMartDefaultScript:
 	ld a, TEXT_VIRIDIANMART_CLERK_YOU_CAME_FROM_PALLET_TOWN
 	ldh [hTextID], a
 	call DisplayTextID
-	ld hl, wSimulatedJoypadStatesEnd
-	ld de, .PlayerMovement
-	call DecodeRLEList
-	dec a
+	ld hl, wSimulatedJoypadStatesEnd + 2
+	ld a, PAD_UP
+	ld [hld], a
+	ld [hld], a
+	ld [hl], PAD_LEFT
+	ld a, 3
 	ld [wSimulatedJoypadStatesIndex], a
 	call StartSimulatingJoypadStates
 	ld a, SCRIPT_VIRIDIANMART_OAKS_PARCEL
 	ld [wViridianPokecenterMartCurScript], a
 	ret
-
-.PlayerMovement:
-	db PAD_LEFT, 1
-	db PAD_UP, 2
-	db -1 ; end
 
 ViridianMartOaksParcelScript:
 	ld a, [wSimulatedJoypadStatesIndex]

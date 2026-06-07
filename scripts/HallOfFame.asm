@@ -68,7 +68,6 @@ HallOfFameDefaultScript:
 	ld hl, wSimulatedJoypadStatesEnd
 	ld de, HallOfFameEntryMovement
 	call DecodeRLEList
-	dec a
 	ld [wSimulatedJoypadStatesIndex], a
 	call StartSimulatingJoypadStates
 	ld a, SCRIPT_HALLOFFAME_CONGRATULATIONS
@@ -76,7 +75,7 @@ HallOfFameDefaultScript:
 	ret
 
 HallOfFameEntryMovement:
-	db PAD_UP, 5
+	db 5, PAD_UP
 	db -1 ; end
 
 HallOfFameCongratulationsScript:

@@ -82,7 +82,6 @@ OaksLabPlayerEntersLabScript:
 	ld hl, wSimulatedJoypadStatesEnd
 	ld de, PlayerEntryMovementRLE
 	call DecodeRLEList
-	dec a
 	ld [wSimulatedJoypadStatesIndex], a
 	call StartSimulatingJoypadStates
 	ld a, OAKSLAB_RIVAL
@@ -101,7 +100,7 @@ OaksLabPlayerEntersLabScript:
 	ret
 
 PlayerEntryMovementRLE:
-	db PAD_UP, 8
+	db 8, PAD_UP
 	db -1 ; end
 
 OaksLabFollowedOakScript:

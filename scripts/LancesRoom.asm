@@ -91,7 +91,6 @@ WalkToLance:
 	ld hl, wSimulatedJoypadStatesEnd
 	ld de, WalkToLance_RLEList
 	call DecodeRLEList
-	dec a
 	ld [wSimulatedJoypadStatesIndex], a
 	call StartSimulatingJoypadStates
 	ld a, SCRIPT_LANCESROOM_PLAYER_IS_MOVING
@@ -100,10 +99,10 @@ WalkToLance:
 	ret
 
 WalkToLance_RLEList:
-	db PAD_UP, 12
-	db PAD_LEFT, 12
-	db PAD_DOWN, 7
-	db PAD_LEFT, 6
+	db 12, PAD_UP
+	db 12, PAD_LEFT
+	db  7, PAD_DOWN
+	db  6, PAD_LEFT
 	db -1 ; end
 
 LancesRoomPlayerIsMovingScript:

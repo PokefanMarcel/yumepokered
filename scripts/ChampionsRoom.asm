@@ -33,7 +33,6 @@ ChampionsRoomPlayerEntersScript:
 	ld hl, wSimulatedJoypadStatesEnd
 	ld de, RivalEntrance_RLEMovement
 	call DecodeRLEList
-	dec a
 	ld [wSimulatedJoypadStatesIndex], a
 	call StartSimulatingJoypadStates
 	ld a, SCRIPT_CHAMPIONSROOM_RIVAL_READY_TO_BATTLE
@@ -41,9 +40,9 @@ ChampionsRoomPlayerEntersScript:
 	ret
 
 RivalEntrance_RLEMovement:
-	db PAD_UP, 1
-	db PAD_RIGHT, 1
-	db PAD_UP, 3
+	db 1, PAD_UP
+	db 1, PAD_RIGHT
+	db 3, PAD_UP
 	db -1 ; end
 
 ChampionsRoomRivalReadyToBattleScript:
@@ -262,7 +261,6 @@ ChampionsRoomPlayerFollowsOakScript:
 	ld hl, wSimulatedJoypadStatesEnd
 	ld de, WalkToHallOfFame_RLEMovement
 	call DecodeRLEList
-	dec a
 	ld [wSimulatedJoypadStatesIndex], a
 	call StartSimulatingJoypadStates
 	ld a, SCRIPT_CHAMPIONSROOM_CLEANUP_SCRIPT
@@ -270,8 +268,8 @@ ChampionsRoomPlayerFollowsOakScript:
 	ret
 
 WalkToHallOfFame_RLEMovement:
-	db PAD_UP, 4
-	db PAD_LEFT, 1
+	db 4, PAD_UP
+	db 1, PAD_LEFT
 	db -1 ; end
 
 ChampionsRoomPlayerFollowsRivalScript: ; marcelnote - added for Rival rematch
@@ -280,7 +278,6 @@ ChampionsRoomPlayerFollowsRivalScript: ; marcelnote - added for Rival rematch
 	ld hl, wSimulatedJoypadStatesEnd
 	ld de, WalkToHallOfFame_RLEMovement
 	call DecodeRLEList
-	dec a
 	ld [wSimulatedJoypadStatesIndex], a
 	call StartSimulatingJoypadStates
 	ld a, SCRIPT_CHAMPIONSROOM_CLEANUP_SCRIPT

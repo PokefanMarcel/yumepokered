@@ -84,7 +84,6 @@ SeafoamIslandsB4FMoveObjectScript:
 .forceSurfMovement
 	ld hl, wSimulatedJoypadStatesEnd
 	call DecodeRLEList
-	dec a
 	ld [wSimulatedJoypadStatesIndex], a
 	call StartSimulatingJoypadStates
 	ld a, SCRIPT_SEAFOAMISLANDSB4F_OBJECT_MOVING2
@@ -98,15 +97,15 @@ SeafoamIslandsB4FMoveObjectScript:
 	db -1 ; end
 
 .RLEList_StrongCurrentNearRightBoulder:
-	db PAD_UP, 3
-	db PAD_RIGHT, 2
-	db PAD_UP, 1
+	db 3, PAD_UP
+	db 2, PAD_RIGHT
+	db 1, PAD_UP
 	db -1 ; end
 
 .RLEList_StrongCurrentNearLeftBoulder:
-	db PAD_UP, 3
-	db PAD_RIGHT, 3
-	db PAD_UP, 1
+	db 3, PAD_UP
+	db 3, PAD_RIGHT
+	db 1, PAD_UP
 	db -1 ; end
 
 SeafoamIslandsB4FObjectMoving2Script:

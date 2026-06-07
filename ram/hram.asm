@@ -12,7 +12,7 @@ hWarpDestinationMap::
 ;hOAMTile:: ; marcelnote - now unused
 hROMBankTemp::
 hPreviousTileset::
-hRLEByteValue::
+;hRLEByteValue:: ; marcelnote - now unused
 	db
 
 hTextID:: ; DisplayTextID's argument

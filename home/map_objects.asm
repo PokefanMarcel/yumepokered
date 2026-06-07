@@ -2,29 +2,28 @@
 ; and if so, decodes the RLE movement data
 ; b = player Y
 ; c = player X
-DecodeArrowMovementRLE::
-	ld a, [hli]
-	cp $ff
-	ret z ; no match in the list
-	cp b
-	jr nz, .nextArrowMovementTileEntry1
-	ld a, [hli]
-	cp c
-	jr nz, .nextArrowMovementTileEntry2
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
-	ld hl, wSimulatedJoypadStatesEnd
-	call DecodeRLEList
-	dec a
-	ld [wSimulatedJoypadStatesIndex], a
-	ret
-.nextArrowMovementTileEntry1
-	inc hl
-.nextArrowMovementTileEntry2
-	inc hl
-	inc hl
-	jr DecodeArrowMovementRLE
+;DecodeArrowMovementRLE:: ; marcelnote - unused
+;	ld a, [hli]
+;	cp $ff
+;	ret z ; no match in the list
+;	cp b
+;	jr nz, .nextArrowMovementTileEntry1
+;	ld a, [hli]
+;	cp c
+;	jr nz, .nextArrowMovementTileEntry2
+;	ld a, [hli]
+;	ld d, [hl]
+;	ld e, a
+;	ld hl, wSimulatedJoypadStatesEnd
+;	call DecodeRLEList
+;	ld [wSimulatedJoypadStatesIndex], a
+;	ret
+;.nextArrowMovementTileEntry1
+;	inc hl
+;.nextArrowMovementTileEntry2
+;	inc hl
+;	inc hl
+;	jr DecodeArrowMovementRLE
 
 TextScript_ItemStoragePC::
 	call SaveScreenTilesToBuffer2
@@ -171,34 +170,30 @@ _GetPointerWithinSpriteStateData:
 	ret
 
 ; decodes a $ff-terminated RLEncoded list
-; each entry is a pair of bytes <byte value> <repetitions>
-; the final $ff will be replicated in the output list and a contains the number of bytes written
+; each entry is a pair of bytes <repetitions> <byte value>
+; the final $ff is replicated in the output list, and a returns the expanded byte count excluding it
 ; de: input list
 ; hl: output list
-DecodeRLEList::
-	xor a
-	ld [wRLEByteCount], a     ; count written bytes here
+DecodeRLEList:: ; marcelnote - optimized
+	ld b, 0    ; b = total bytes written
 .listLoop
-	ld a, [de]
+	ld a, [de] ; number of bytes to be written
 	cp $ff
 	jr z, .endOfList
-	ldh [hRLEByteValue], a ; store byte value to be written
+	ld c, a
+	add b
+	ld b, a    ; update total
 	inc de
-	ld a, [de]
-	ld b, $0
-	ld c, a                      ; number of bytes to be written
-	ld a, [wRLEByteCount]
-	add c
-	ld [wRLEByteCount], a     ; update total number of written bytes
-	ldh a, [hRLEByteValue]
-	call FillMemory              ; write a c-times to output
+	ld a, [de] ; value to be written
+.entryLoop
+	ld [hli], a
+	dec c
+	jr nz, .entryLoop
 	inc de
 	jr .listLoop
 .endOfList
-	ld a, $ff
-	ld [hl], a                   ; write final $ff
-	ld a, [wRLEByteCount]
-	inc a                        ; include sentinel in counting
+	ld [hl], a ; write final $ff
+	ld a, b
 	ret
 
 ; sets movement byte 1 for sprite [hSpriteIndex] to $FE and byte 2 to [hSpriteMovementByte2]

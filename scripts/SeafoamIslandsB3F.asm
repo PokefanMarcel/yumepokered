@@ -66,7 +66,6 @@ SeafoamIslandsB3FDefaultScript:
 	ld hl, wSimulatedJoypadStatesEnd
 	ld de, RLEList_ForcedSurfingStrongCurrentNearSteps
 	call DecodeRLEList
-	dec a
 	ld [wSimulatedJoypadStatesIndex], a
 	call StartSimulatingJoypadStates
 	ld hl, wStatusFlags7
@@ -76,9 +75,9 @@ SeafoamIslandsB3FDefaultScript:
 	ret
 
 RLEList_ForcedSurfingStrongCurrentNearSteps:
-	db PAD_DOWN, 7 ; marcelnote - refactored warp engine
-	db PAD_RIGHT, 5
-	db PAD_DOWN, 3
+	db 7, PAD_DOWN ; marcelnote - refactored warp engine
+	db 5, PAD_RIGHT
+	db 3, PAD_DOWN
 	db -1 ; end
 
 SeafoamIslandsB3FObjectMoving1Script:
@@ -103,7 +102,6 @@ SeafoamIslandsB3FMoveObjectScript:
 .forceSurfMovement
 	ld hl, wSimulatedJoypadStatesEnd
 	call DecodeRLEList
-	dec a
 	ld [wSimulatedJoypadStatesIndex], a
 	xor a
 	ld [wSpritePlayerStateData2MovementByte1], a
@@ -117,15 +115,15 @@ SeafoamIslandsB3FMoveObjectScript:
 	ret
 
 .RLEList_StrongCurrentNearRightBoulder:
-	db PAD_DOWN, 7 ; marcelnote - refactored warp engine
-	db PAD_RIGHT, 1
-	db PAD_DOWN, 4
+	db 7, PAD_DOWN ; marcelnote - refactored warp engine
+	db 1, PAD_RIGHT
+	db 4, PAD_DOWN
 	db -1 ; end
 
 .RLEList_StrongCurrentNearLeftBoulder:
-	db PAD_DOWN, 7 ; marcelnote - refactored warp engine
-	db PAD_RIGHT, 2
-	db PAD_DOWN, 4
+	db 7, PAD_DOWN ; marcelnote - refactored warp engine
+	db 2, PAD_RIGHT
+	db 4, PAD_DOWN
 	db -1 ; end
 
 SeafoamIslandsB3FObjectMoving2Script:
