@@ -35,14 +35,13 @@ ENDC
 	ld c, 0 ; BANK(Music_MeetRival)
 	ld a, MUSIC_MEET_RIVAL
 	call PlayMusic
-	ResetEvent EVENT_POKEMON_TOWER_RIVAL_ON_LEFT
 	ld a, [wCoordIndex]
+	ld [wSavedCoordIndex], a
 	dec a
 	ld a, PLAYER_DIR_UP
 	ld b, SPRITE_FACING_DOWN
 	jr nz, .playerBelowRival
 ; the rival is on the left side and the player is on the right side
-	SetEvent EVENT_POKEMON_TOWER_RIVAL_ON_LEFT
 	ld a, PLAYER_DIR_LEFT
 	ld b, SPRITE_FACING_RIGHT
 .playerBelowRival
@@ -63,7 +62,7 @@ ENDC
 PokemonTower2FRivalEncounterEventCoords:
 	dbmapcoord 15,  5
 	dbmapcoord 14,  6
-	db -1 ; end? (should be $ff?) ; marcelnote - fixed from $0F
+	db -1 ; end ; marcelnote - fixed from $0f
 
 PokemonTower2FDefeatedRivalScript:
 	ld a, [wIsInBattle]
@@ -76,8 +75,9 @@ PokemonTower2FDefeatedRivalScript:
 	ldh [hTextID], a
 	call DisplayTextID
 	ld de, PokemonTower2FRivalDownThenRightMovement
-	CheckEvent EVENT_POKEMON_TOWER_RIVAL_ON_LEFT
-	jr nz, .gotMovement
+	ld a, [wSavedCoordIndex]
+	dec a
+	jr z, .gotMovement
 	ld de, PokemonTower2FRivalRightThenDownMovement
 .gotMovement
 	ld a, POKEMONTOWER2F_RIVAL

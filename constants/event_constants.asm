@@ -69,7 +69,7 @@
 
 ; Lavender Town events
 	const_next $F0 - 2
-	const EVENT_POKEMON_TOWER_RIVAL_ON_LEFT
+	const_skip ; marcelnote - removed EVENT_POKEMON_TOWER_RIVAL_ON_LEFT
 	const EVENT_BEAT_POKEMON_TOWER_RIVAL
 	const_skip
 	const EVENT_BEAT_POKEMONTOWER_3_TRAINER_0
