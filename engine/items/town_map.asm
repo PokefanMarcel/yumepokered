@@ -159,6 +159,13 @@ IF DEF(_FRA)
 	ld [hli], a
 	ld a, $73 ; third "Terre" tile
 	ld [hl], a
+ELIF DEF(_ESP)
+	ld a, $71 ; first "Tierra" tile
+	ld [hli], a
+	ld a, $72 ; second "Tierra" tile
+	ld [hli], a
+	ld a, $73 ; third "Tierra" tile
+	ld [hl], a
 ELSE
 	ld a, $71 ; first "Land" tile
 	ld [hli], a
@@ -193,6 +200,13 @@ ENDC
 	ld a, $70 ; A button tile
 	ld [hli], a
 IF DEF(_FRA)
+	ld a, $74 ; first "Surf" tile
+	ld [hli], a
+	ld a, $75 ; second "Surf" tile
+	ld [hli], a
+	ld a, $64 ; background water tile
+	ld [hl], a
+ELIF DEF(_ESP)
 	ld a, $74 ; first "Surf" tile
 	ld [hli], a
 	ld a, $75 ; second "Surf" tile
@@ -261,6 +275,13 @@ IF DEF(_FRA)
 	ld a, $72 ; second "Terre" tile
 	ld [hli], a
 	ld a, $73 ; third "Terre" tile
+	ld [hl], a
+ELIF DEF(_ESP)
+	ld a, $71 ; first "Tierra" tile
+	ld [hli], a
+	ld a, $72 ; second "Tierra" tile
+	ld [hli], a
+	ld a, $73 ; third "Tierra" tile
 	ld [hl], a
 ELSE
 	ld a, $71 ; first "Land" tile
