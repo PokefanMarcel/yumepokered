@@ -3,9 +3,7 @@
 ; bc: set to NAME_LENGTH
 SkipNameEntries::
 	ld bc, NAME_LENGTH
-	and a
-	ret z
-	jr AddNTimes.loop
+	; fallthrough
 
 AddNTimes::
 ; add bc to hl a times
