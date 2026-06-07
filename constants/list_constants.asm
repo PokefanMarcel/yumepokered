@@ -2,7 +2,7 @@
 	const_def
 	const NOLISTMENU         ; $00 ; marcelnote - added new constant
 	const PCPOKEMONLISTMENU  ; $01 ; PC pokemon withdraw/deposit lists
-	const MOVESLISTMENU      ; $02 ; XXX where is this used?
+	const_skip               ; $02 ; marcelnote - was MOVESLISTMENU
 	const PRICEDITEMLISTMENU ; $03 ; Pokemart buy menu / Pokemart buy/sell choose quantity menu
 	const ITEMLISTMENU       ; $04 ; Start menu Item menu / Pokemart sell menu
 	const SPECIALLISTMENU    ; $05 ; list of special "items" e.g. floor list in elevators / list of badges

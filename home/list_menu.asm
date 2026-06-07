@@ -94,9 +94,9 @@ DisplayListMenuIDLoop::
 	call PlaceUnfilledArrowMenuCursor
 
 ; pointless because both values are overwritten before they are read ; marcelnote - removed
-	;ld a, $01
-	;ld [wMenuExitMethod], a
-	;ld [wChosenMenuItem], a
+;	ld a, $01
+;	ld [wMenuExitMethod], a
+;	ld [wChosenMenuItem], a
 
 	xor a
 	ld [wMenuWatchMovingOutOfBounds], a
@@ -137,10 +137,6 @@ DisplayListMenuIDLoop::
 	call GetItemPrice
 	pop hl
 	ld a, [wListMenuID]
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - pokered Move Deleter/Relearner tutorial
-	cp MOVESLISTMENU
-	jr z, .skipStoringItemName
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	cp ITEMLISTMENU
 	jr nz, .skipGettingQuantity
 	inc hl
@@ -169,7 +165,6 @@ DisplayListMenuIDLoop::
 .storeChosenEntry ; store the menu entry that the player chose and return
 	ld de, wNameBuffer
 	call CopyToStringBuffer
-.skipStoringItemName	; marcelnote - pokered Move Deleter/Relearner tutorial
 	ld a, CHOSE_MENU_ITEM
 	ld [wMenuExitMethod], a
 	ld a, [wCurrentMenuItem]
@@ -443,8 +438,6 @@ PrintListMenuEntries::
 	ld a, [wListMenuID]
 	cp PCPOKEMONLISTMENU
 	jr z, .pokemonPCMenu
-	cp MOVESLISTMENU
-	jr z, .movesMenu
 ; item menu
 	call GetItemName
 	jr .placeNameString
@@ -466,9 +459,6 @@ PrintListMenuEntries::
 	add b
 	call GetPartyMonName
 	pop hl ; hl coordinates
-	jr .placeNameString
-.movesMenu
-	call GetMoveName
 .placeNameString
 	call PlaceString
 	pop de
@@ -479,7 +469,7 @@ PrintListMenuEntries::
 ; print item price
 	push hl
 	ld a, [de]
-	ld de, ItemPrices
+;	ld de, ItemPrices ; marcelnote - not used and clobbered in GetItemPrice
 	ld [wCurItem], a
 	call GetItemPrice
 	pop hl
