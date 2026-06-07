@@ -96,6 +96,7 @@ SetSpriteImageIndexAfterSettingFacingDirection::
 ; OUTPUT:
 ; [wCoordIndex] = if there is match, the matching array index
 ; sets carry if the coordinates are in the array, clears carry if not
+; preserves d
 ArePlayerCoordsInArray::
 	ld a, [wYCoord]
 	ld b, a
@@ -103,17 +104,13 @@ ArePlayerCoordsInArray::
 	ld c, a
 	; fallthrough
 
-CheckCoords::
-	xor a
-	ld [wCoordIndex], a
+CheckCoords:: ; marcelnote - optimized
+	ld e, 0
 .loop
 	ld a, [hli]
 	cp $ff ; reached terminator?
-	jr z, .notInArray
-	push hl
-	ld hl, wCoordIndex
-	inc [hl]
-	pop hl
+	ret z  ; not in array, return with carry cleared
+	inc e
 ; compare Y coord
 	cp b
 	jr z, .compareXCoord
@@ -124,10 +121,9 @@ CheckCoords::
 	cp c
 	jr nz, .loop
 ; in array
+	ld a, e
+	ld [wCoordIndex], a
 	scf
-	ret
-.notInArray
-	and a
 	ret
 
 ; tests if a boulder's coordinates are in a specified array
@@ -137,20 +133,19 @@ CheckCoords::
 ; OUTPUT:
 ; [wCoordIndex] = if there is match, the matching array index
 ; sets carry if the coordinates are in the array, clears carry if not
-CheckBoulderCoords::
-	push hl
-	ld h, HIGH(wSpriteStateData2)
+CheckBoulderCoords:: ; marcelnote - optimized
+	ld d, HIGH(wSpriteStateData2)
 	ldh a, [hSpriteIndex]
 	swap a
 	add SPRITESTATEDATA2_MAPY
-	ld l, a
-	ld a, [hli] ; x#SPRITESTATEDATA2_MAPY
+	ld e, a
+	ld a, [de] ; x#SPRITESTATEDATA2_MAPY
 	sub 4 ; because sprite coordinates are offset by 4
 	ld b, a
-	ld a, [hl]  ; x#SPRITESTATEDATA2_MAPX
+	inc de
+	ld a, [de] ; x#SPRITESTATEDATA2_MAPX
 	sub 4 ; because sprite coordinates are offset by 4
 	ld c, a
-	pop hl
 	jr CheckCoords
 
 GetPointerWithinSpriteStateData1::
