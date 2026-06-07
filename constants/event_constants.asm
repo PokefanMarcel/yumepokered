@@ -559,7 +559,7 @@
 
 ; Route 25 events
 	const_next $550
-	const EVENT_MET_BILL
+	const_skip ; marcelnote - was EVENT_MET_BILL
 	const EVENT_BEAT_ROUTE_25_TRAINER_0
 	const EVENT_BEAT_ROUTE_25_TRAINER_1
 	const EVENT_BEAT_ROUTE_25_TRAINER_2
@@ -572,7 +572,7 @@
 	const_skip
 	const EVENT_USED_CELL_SEPARATOR_ON_BILL
 	const EVENT_GOT_SS_TICKET
-	const EVENT_MET_BILL_2
+	const EVENT_MET_BILL ; marcelnote - replaced EVENT_MET_BILL_2
 	const EVENT_BILL_SAID_USE_CELL_SEPARATOR
 	const EVENT_LEFT_BILLS_HOUSE_AFTER_HELPING
 

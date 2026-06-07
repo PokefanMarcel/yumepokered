@@ -99,7 +99,6 @@ BillsHouseCleanupScript:
 	ret nz
 	xor a
 	ld [wJoyIgnore], a
-	SetEvent EVENT_MET_BILL_2 ; this event seems redundant
 	SetEvent EVENT_MET_BILL
 	ld a, SCRIPT_BILLSHOUSE_DEFAULT
 	ld [wBillsHouseCurScript], a
