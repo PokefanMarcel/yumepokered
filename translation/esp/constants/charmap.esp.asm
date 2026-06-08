@@ -26,36 +26,38 @@
 	charmap "<ROCKET>",  $5e ; "ROCKET"
 	charmap "<DEXEND>",  $5f
 
-; Actual characters (from gfx/font/font_extra.png)
+; Actual characters (from gfx/font/font_extra.png) ; marcelnote - removed
 
-	;charmap "<BOLD_A>",  $60 ; unused
-	;charmap "<BOLD_B>",  $61 ; unused
-	;charmap "<BOLD_C>",  $62 ; unused
-	;charmap "<BOLD_D>",  $63 ; unused
-	;charmap "<BOLD_E>",  $64 ; unused
-	;charmap "<BOLD_F>",  $65 ; unused
-	;charmap "<BOLD_G>",  $66 ; unused
-	;charmap "<BOLD_H>",  $67 ; unused
-	;charmap "<BOLD_I>",  $68 ; unused
-	;charmap "<BOLD_V>",  $69
-	;charmap "<BOLD_S>",  $6a
-	;charmap "<BOLD_L>",  $6b ; unused
-	;charmap "<BOLD_M>",  $6c ; unused
-	;charmap "<COLON>",   $6d ; colon with tinier dots than ":"
-	;charmap "ぃ",         $6e ; hiragana small i, unused
-	;charmap "ぅ",         $6f ; hiragana small u, unused
-	;charmap "‘",         $70 ; opening single quote
-	;charmap "’",         $71 ; closing single quote
-	;charmap "“",         $72 ; opening quote
-	;charmap "”",         $73 ; closing quote
-	;charmap "·",         $74 ; middle dot, unused
-	charmap "…",         $75 ; ellipsis
-	;charmap "ぁ",         $76 ; hiragana small a, unused
-	;charmap "ぇ",         $77 ; hiragana small e, unused
-	;charmap "ぉ",         $78 ; hiragana small o, unused
+;	charmap "<BOLD_A>",  $60 ; unused
+;	charmap "<BOLD_B>",  $61 ; unused
+;	charmap "<BOLD_C>",  $62 ; unused
+;	charmap "<BOLD_D>",  $63 ; unused
+;	charmap "<BOLD_E>",  $64 ; unused
+;	charmap "<BOLD_F>",  $65 ; unused
+;	charmap "<BOLD_G>",  $66 ; unused
+;	charmap "<BOLD_H>",  $67 ; unused
+;	charmap "<BOLD_I>",  $68 ; unused
+;	charmap "<BOLD_V>",  $69
+;	charmap "<BOLD_S>",  $6a
+;	charmap "<BOLD_L>",  $6b ; unused
+;	charmap "<BOLD_M>",  $6c ; unused
+;	charmap "<COLON>",   $6d ; colon with tinier dots than ":"
+;	charmap "ぃ",         $6e ; hiragana small i, unused
+;	charmap "ぅ",         $6f ; hiragana small u, unused
+;	charmap "‘",         $70 ; opening single quote
+;	charmap "’",         $71 ; closing single quote
+;	charmap "“",         $72 ; opening quote
+;	charmap "”",         $73 ; closing quote
+;	charmap "·",         $74 ; middle dot, unused
+;	charmap "…",         $75 ; ellipsis
+;	charmap "ぁ",         $76 ; hiragana small a, unused
+;	charmap "ぇ",         $77 ; hiragana small e, unused
+;	charmap "ぉ",         $78 ; hiragana small o, unused
 
-	charmap "<BOLD_V>",  $77
+	charmap "<BOLD_V>",  $77 ; marcelnote - now point to something else
 	charmap "<BOLD_S>",  $78
+
+; Text box gfx (from gfx/font/text_box.png)
 
 	charmap "┌",         $79
 	charmap "─",         $7a
@@ -65,7 +67,7 @@
 	charmap "┘",         $7e
 	charmap " ",         $7f
 
-; Actual characters (from gfx/font/font_battle_extra.png) ; marcelnote - reorganized tiles
+; Actual characters (from gfx/font/hp_bar_status.png) ; marcelnote - reorganized tiles
 
 	charmap "<HP>",      $62
 
@@ -104,7 +106,7 @@
 	charmap "<m>",       $72 ; gfx/pokedex/pokedex.png
 	charmap "<k>",       $73 ; gfx/pokedex/pokedex.png
 	charmap "<g>",       $74 ; gfx/pokedex/pokedex.png
-;	charmap "№",         $75 ; defined in gfx/font/font_battle_extra.png
+;	charmap "№",         $75 ; defined in gfx/font/hp_bar_status.png
 	charmap "<l>",       $76 ; gfx/pokedex/pokedex.png
 	charmap "<b>",       $77 ; gfx/pokedex/pokedex.png
 

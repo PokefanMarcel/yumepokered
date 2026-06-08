@@ -4,7 +4,9 @@ IF DEF(_FRA)
 	FontGraphics:: INCBIN "translation/fra/gfx/font.fra.1bpp"
 	FontGraphicsEnd::
 
-	HpBarAndStatusGraphics:: INCBIN "translation/fra/gfx/font_battle_extra.fra.2bpp"
+	HpBarAndStatusGraphics:: ; marcelnote - downsized, split and renamed
+	HpBarGraphics::        INCBIN "translation/fra/gfx/font/hp_bar.fra.2bpp"
+	StatusScreenGraphics:: INCBIN "translation/fra/gfx/font/status_screen.fra.2bpp"
 	HpBarAndStatusGraphicsEnd::
 
 	NamingScreenTiles: INCBIN "translation/fra/gfx/naming_screen.fra.1bpp" ; marcelnote - reorganized Naming screen tiles
@@ -16,7 +18,9 @@ ELIF DEF(_ESP)
 	FontGraphics:: INCBIN "translation/esp/gfx/font.esp.1bpp"
 	FontGraphicsEnd::
 
-	HpBarAndStatusGraphics:: INCBIN "translation/esp/gfx/font_battle_extra.esp.2bpp"
+	HpBarAndStatusGraphics:: ; marcelnote - downsized, split and renamed
+	HpBarGraphics::        INCBIN "translation/esp/gfx/font/hp_bar.esp.2bpp"
+	StatusScreenGraphics:: INCBIN "translation/esp/gfx/font/status_screen.esp.2bpp"
 	HpBarAndStatusGraphicsEnd::
 
 	NamingScreenTiles: INCBIN "translation/esp/gfx/naming_screen.esp.1bpp" ; marcelnote - reorganized Naming screen tiles
@@ -28,7 +32,9 @@ ELSE
 	FontGraphics:: INCBIN "gfx/font/font.1bpp"
 	FontGraphicsEnd::
 
-	HpBarAndStatusGraphics:: INCBIN "gfx/font/font_battle_extra.2bpp"
+	HpBarAndStatusGraphics:: ; marcelnote - downsized, split and renamed
+	HpBarGraphics::        INCBIN "gfx/font/hp_bar.2bpp"
+	StatusScreenGraphics:: INCBIN "gfx/font/status_screen.2bpp"
 	HpBarAndStatusGraphicsEnd::
 
 	NamingScreenTiles: INCBIN "gfx/font/naming_screen.1bpp" ; marcelnote - reorganized Naming screen tiles
