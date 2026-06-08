@@ -518,8 +518,8 @@ WarpFound2:: ; marcelnote - refactored warp engine
 ; this is for handling "outside" maps that can't have the 0xFF destination map
 	ld a, [wCurMap]
 	ld [wLastMap], a
-	;ld a, [wCurMapWidth]
-	;ld [wUnusedLastMapWidth], a ; marcelnote - removed wUnusedLastMapWidth
+;	ld a, [wCurMapWidth]
+;	ld [wUnusedLastMapWidth], a ; marcelnote - removed wUnusedLastMapWidth
 	ldh a, [hWarpDestinationMap]
 	ld [wCurMap], a
 	cp ROCK_TUNNEL_1F
