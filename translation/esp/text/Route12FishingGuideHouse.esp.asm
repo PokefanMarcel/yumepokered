@@ -9,8 +9,8 @@ _Route12FishingGuideHouseItsAFishingGuideText::
 
 	para "A todos los"
 	line "viajeros."
-	cont "Lanza tu caña,"
-	cont "alcanza la gloria!"
+	cont "Echa la caña,"
+	cont "pesca la gloria!"
 
 	para "GURÚ PESCADOR"
 	prompt
@@ -34,7 +34,7 @@ _Route12FishingGuideHouseToAllTravelersText::
 	; traducción por NunWinter
 	text "A todos los"
 	line "viajeros."
-	cont "Lanza tu caña,"
-	cont "alcanza la gloria!"
+	cont "Echa la caña,"
+	cont "pesca la gloria!"
 	cont "GURÚ PESCADOR"
 	done
