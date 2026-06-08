@@ -27,7 +27,7 @@ CalcLevelFromExperience::
 	dec d ; since the exp was too high on the last loop iteration, go back to the previous value and return
 	ret
 
-; calculates the amount of experience needed for level d
+; calculates the amount of experience needed for level d, preserves d
 CalcExperience:: ; marcelnote - optimized
 ; hExperience = floor(cubic_coeff * d^3) + signed_square_coeff * d^2 + linear_coeff * d - constant
 ; GrowthRateTable entries are:
@@ -95,9 +95,9 @@ CalcExperience:: ; marcelnote - optimized
 	ldh a, [hProduct + 1]
 	push af
 	ldh a, [hProduct + 2]
-	ld b, a
+	push af
 	ldh a, [hProduct + 3]
-	ld c, a                ; save high/mid/low of |square coeff| * d^2
+	push af                ; save high/mid/low of |square coeff| * d^2
 
 ; Calculate linear * n - constant in hExperience.
 	xor a
@@ -108,10 +108,10 @@ CalcExperience:: ; marcelnote - optimized
 	ld a, [hli]            ; a = linear_coeff
 	ldh [hMultiplier], a
 	call Multiply
-	ld d, [hl]             ; d = constant
+	ld b, [hl]             ; b = constant
 	ld hl, hExperience + 2 ; = hProduct + 3
 	ld a, [hl]
-	sub d
+	sub b
 	ld [hld], a
 	ld a, [hl]             ; hExperience + 1
 	sbc 0
@@ -123,10 +123,12 @@ CalcExperience:: ; marcelnote - optimized
 ; Add or subtract the square term according to its signed-magnitude bit.
 	bit 7, e               ; is signed_square_coeff negative?
 	inc hl                 ; hl = hExperience + 2
+	pop bc
 	ld a, [hl]  ; hExperience + 2
 	jr nz, .subtractSquaredTerm
-	add c
+	add b
 	ld [hld], a
+	pop bc
 	ld a, [hl]  ; hExperience + 1
 	adc b
 	ld [hld], a
@@ -136,8 +138,9 @@ CalcExperience:: ; marcelnote - optimized
 	ld [hli], a ; hl = hExperience + 1
 	jr .addCubedTerm
 .subtractSquaredTerm
-	sub c
+	sub b
 	ld [hld], a
+	pop bc
 	ld a, [hl]  ; hExperience + 1
 	sbc b
 	ld [hld], a
