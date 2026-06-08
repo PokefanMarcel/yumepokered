@@ -879,7 +879,7 @@ LoadTilesetTilePatternData::
 	ld h, [hl]
 	ld l, a    ; hl = tileset graphics pointer
 	ld de, vTileset
-	ld bc, MAP_TILESET_SIZE * TILE_SIZE
+	ld bc, MAP_TILESET_SIZE tiles
 	ld a, [wTilesetBank]
 	jp FarCopyData
 
