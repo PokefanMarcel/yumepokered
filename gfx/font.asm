@@ -46,7 +46,7 @@ NintendoCopyrightLogoGraphics: INCBIN "gfx/splash/copyright.2bpp"
 GameFreakLogoGraphics: INCBIN "gfx/title/gamefreak_inc.2bpp"
 GameFreakLogoGraphicsEnd:
 
-TextBoxGraphics:: INCBIN "gfx/font/font_extra.2bpp"
+TextBoxGraphics:: INCBIN "gfx/font/textbox.1bpp" ; marcelnote - removed unused tiles and changed to 1bpp
 TextBoxGraphicsEnd::
 
 ; marcelnote - revamped Bill's PC

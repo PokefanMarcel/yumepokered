@@ -20,15 +20,15 @@ LoadTextBoxTilePatterns::
 	jr nz, .on
 ; off
 	ld hl, TextBoxGraphics
-	ld de, vChars2 tile $60
+	ld de, vChars2 tile $79 ; marcelnote - removed unused tiles and changed to 1bpp
 	ld bc, TextBoxGraphicsEnd - TextBoxGraphics
 	ld a, BANK(TextBoxGraphics)
-	jp FarCopyData ; if LCD is off, transfer all at once
+	jp FarCopyDataDouble ; if LCD is off, transfer all at once
 .on
 	ld de, TextBoxGraphics
-	ld hl, vChars2 tile $60
-	lb bc, BANK(TextBoxGraphics), (TextBoxGraphicsEnd - TextBoxGraphics) / TILE_SIZE
-	jp CopyVideoData ; if LCD is on, transfer during V-blank
+	ld hl, vChars2 tile $79 ; marcelnote - removed unused tiles and changed to 1bpp
+	lb bc, BANK(TextBoxGraphics), (TextBoxGraphicsEnd - TextBoxGraphics) / TILE_1BPP_SIZE
+	jp CopyVideoDataDouble ; if LCD is on, transfer during V-blank
 
 LoadHpBarAndStatusTilePatterns::
 	ldh a, [rLCDC]

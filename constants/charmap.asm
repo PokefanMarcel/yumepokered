@@ -92,9 +92,9 @@
 	charmap "<HUD_VERTI_BAR_HP_TIP>",  $78 ; HUD vertical bar tile
 
 	; loaded in naming screem (see engine/menus/naming_screen.asm, from gfx/font/naming_screen.png)
-	charmap "<ED>",                $74
-	charmap "<UNDERSCORE>",        $75
-	charmap "<UNDERSCORE_RAISED>", $76
+	charmap "<ED>",                $76
+	charmap "<UNDERSCORE>",        $77
+	charmap "<UNDERSCORE_RAISED>", $78
 
 ; Actual characters (from other graphics files)
 

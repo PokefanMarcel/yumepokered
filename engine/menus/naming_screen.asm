@@ -318,7 +318,7 @@ DisplayNamingScreen:
 
 LoadNamingScreenTiles:
 	ld de, NamingScreenTiles
-	ld hl, vChars2 tile $74
+	ld hl, vChars2 tile $76
 	lb bc, BANK(NamingScreenTiles), (NamingScreenTilesEnd - NamingScreenTiles) / TILE_1BPP_SIZE
 	jp CopyVideoDataDouble
 
