@@ -46,6 +46,7 @@ SummerBeachHouseSurfinDudeText:
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	CheckEvent EVENT_GOT_SURF_VOUCHER
 	ld hl, .ComeAnytimeText
+	jr .printText ; marcelnote - this blocks the 4000+ score reward for now
 	jr nz, .printText
 	ld a, [wSurfingMinigameHiScore + 1]
 	cp $40 ; is high score < 4000?
