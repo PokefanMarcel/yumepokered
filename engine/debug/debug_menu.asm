@@ -15,7 +15,7 @@ IF DEF(_DEBUG)
 	call CopyData
 
 	call LoadFontTilePatterns
-	call LoadHpBarAndStatusTilePatterns
+	call LoadTextBoxTilePatterns ; marcelnote - only load text box patterns
 	call ClearSprites
 	call RunDefaultPaletteCommand
 
