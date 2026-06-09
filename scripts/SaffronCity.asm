@@ -75,10 +75,12 @@ SaffronCityGentlemanText:
 	text_far _SaffronCityGentlemanText
 	text_end
 
-SaffronCityPidgeotText:
+SaffronCityPidgeotText: ; marcelnote - removed sound_cry_pidgeot
 	text_far _SaffronCityPidgeotText
-	sound_cry_pidgeot
-	text_end
+	text_asm
+	ld a, PIDGEOT
+	call PlayCry
+	rst TextScriptEnd
 
 SaffronCityRockerText:
 	text_far _SaffronCityRockerText

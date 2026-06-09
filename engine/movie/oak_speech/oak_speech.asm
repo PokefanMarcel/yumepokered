@@ -206,10 +206,14 @@ OakSpeechText1:
 	text_far _OakSpeechText1
 	text_end
 
-OakSpeechText2:
+OakSpeechText2: ; marcelnote - fixed Nidorina bug and removed sound_cry_nidorina
 	text_far _OakSpeechText2A
-	; BUG: The cry played does not match the sprite displayed.
-	sound_cry_nidorino   ; marcelnote - fixed from NIDORINA (pokered wiki)
+	text_asm
+	ld a, NIDORINO
+	call PlayCry
+	ld hl, .Text2B
+	ret
+.Text2B
 	text_far _OakSpeechText2B
 	text_end
 

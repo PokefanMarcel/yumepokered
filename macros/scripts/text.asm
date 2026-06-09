@@ -116,63 +116,43 @@ ENDM
 DEF TX_SOUND_LEVEL_UP EQU TX_SOUND_GET_ITEM_1
 DEF sound_level_up EQUS "sound_get_item_1"
 
-;	const TX_DOTS ; $0c ; marcelnote - unused, removed
+;	const TX_DOTS ; marcelnote - unused, removed
 ;MACRO text_dots
 ;	db TX_DOTS
 ;	db \1 ; number of ellipses to draw
 ;ENDM
 
-	const TX_WAIT_BUTTON ; $0d
+	const TX_WAIT_BUTTON ; $0c
 MACRO text_waitbutton
 	db TX_WAIT_BUTTON
 ENDM
 
-	const TX_SOUND_POKEDEX_RATING ; $0e
+	const TX_SOUND_POKEDEX_RATING ; $0d
 MACRO sound_pokedex_rating
 	db TX_SOUND_POKEDEX_RATING
 ENDM
 
-	const TX_SOUND_GET_ITEM_1_DUPLICATE ; $0f
-MACRO sound_get_item_1_duplicate
-	db TX_SOUND_GET_ITEM_1_DUPLICATE
-ENDM
-
-	const TX_SOUND_GET_ITEM_2 ; $10
+	const TX_SOUND_GET_ITEM_2 ; $0e
 MACRO sound_get_item_2
 	db TX_SOUND_GET_ITEM_2
 ENDM
 
-	const TX_SOUND_GET_KEY_ITEM ; $11
+	const TX_SOUND_GET_KEY_ITEM ; $0f
 MACRO sound_get_key_item
 	db TX_SOUND_GET_KEY_ITEM
 ENDM
 
-	const TX_SOUND_CAUGHT_MON ; $12
+	const TX_SOUND_CAUGHT_MON ; $10
 MACRO sound_caught_mon
 	db TX_SOUND_CAUGHT_MON
 ENDM
 
-	const TX_SOUND_DEX_PAGE_ADDED ; $13
+	const TX_SOUND_DEX_PAGE_ADDED ; $11
 MACRO sound_dex_page_added
 	db TX_SOUND_DEX_PAGE_ADDED
 ENDM
 
-	const TX_SOUND_CRY_NIDORINO ; $14  ; marcelnote - fixed from NIDORINA (pokered wiki)
-MACRO sound_cry_nidorino
-	db TX_SOUND_CRY_NIDORINO
-ENDM
-
-	const TX_SOUND_CRY_PIDGEOT ; $15
-MACRO sound_cry_pidgeot
-	db TX_SOUND_CRY_PIDGEOT
-ENDM
-
-	const TX_SOUND_CRY_DEWGONG ; $16
-MACRO sound_cry_dewgong
-	db TX_SOUND_CRY_DEWGONG
-ENDM
-
-	const TX_FAR ; $17
+	const TX_FAR ; $12
 MACRO text_far
 	db TX_FAR
 	dab \1 ; address of text commands
