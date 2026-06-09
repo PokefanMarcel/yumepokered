@@ -26,7 +26,7 @@ PrintBCDNumber:: ; marcelnote - optimized
 	jr nz, .loop
 	bit BIT_LEADING_ZEROES, c ; have we printed something?
 
-IF DEF (_FRA)
+IF DEF(_FRA) | DEF(_ESP)
 	jr z, .checkCurrencySymbol ; if so, check currency symbol
 	bit BIT_LEFT_ALIGN, c
 	jr nz, .skipRightAlignmentAdjustment
@@ -72,7 +72,7 @@ PrintBCDDigit:: ; marcelnote - optimized
 	res BIT_LEADING_ZEROES, c
 .checkCurrencySign
 
-IF DEF(_FRA)
+IF DEF(_FRA) | DEF(_ESP)
 	; do nothing, sign at the end
 ELSE
 	bit BIT_MONEY_SIGN, c
