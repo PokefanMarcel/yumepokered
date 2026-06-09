@@ -62,11 +62,11 @@ SpawnAnimatedObject:
 	ld hl, wNumLoadedAnimatedObjects
 	inc [hl]
 	ld e, a
-	ld d, $0
-	ld a, [wAnimatedObjectSpawnStateDataPointer]
+	ld d, 0
+	ld hl, wAnimatedObjectSpawnStateDataPointer
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld a, [wAnimatedObjectSpawnStateDataPointer + 1]
-	ld h, a
 	add hl, de
 	add hl, de
 	add hl, de
@@ -94,7 +94,6 @@ SpawnAnimatedObject:
 	xor a
 	ld [hli], a
 	ld [hli], a
-	xor a
 	ld [hli], a
 	ld [hli], a
 	dec a
@@ -263,11 +262,11 @@ SetCurrentAnimatedObjectOAMAttributes:
 
 GetCurrentAnimatedObjectOAMDataPointer:
 	ld e, a
-	ld d, $0
-	ld a, [wAnimatedObjectOAMDataPointer]
+	ld d, 0
+	ld hl, wAnimatedObjectOAMDataPointer
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld a, [wAnimatedObjectOAMDataPointer + 1]
-	ld h, a
 	add hl, de
 	add hl, de
 	add hl, de
@@ -356,20 +355,20 @@ GetPointerToCurrentAnimatedObjectFrameScript:
 	ld hl, $1
 	add hl, bc
 	ld e, [hl]
-	ld d, $0
-	ld a, [wAnimatedObjectFramesDataPointer]
+	ld d, 0
+	ld hl, wAnimatedObjectFramesDataPointer
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld a, [wAnimatedObjectFramesDataPointer + 1]
-	ld h, a
 	add hl, de
 	add hl, de
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
+	ld e, a
 	ld d, [hl]
 	ld hl, $a
 	add hl, bc
 	ld l, [hl]
-	ld h, $0
+	ld h, 0
 	add hl, hl
 	add hl, de
 	ret
@@ -378,11 +377,11 @@ ExecuteCurrentAnimatedObjectCallback:
 	ld hl, $2
 	add hl, bc
 	ld e, [hl]
-	ld d, $0
-	ld a, [wAnimatedObjectJumptablePointer]
+	ld d, 0
+	ld hl, wAnimatedObjectJumptablePointer
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld a, [wAnimatedObjectJumptablePointer + 1]
-	ld h, a
 	add hl, de
 	add hl, de
 	ld a, [hli]
