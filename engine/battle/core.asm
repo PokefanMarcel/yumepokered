@@ -1311,8 +1311,10 @@ EnemySendOutFirstMon:
 	ld hl, wPlayerUsedMove
 	ld [hli], a
 	ld [hl], a
+	ld [wAILayer2Encouragement], a
 	dec a
 	ld [wAICount], a
+	ld [wAILastMovePower], a
 	ld hl, wPlayerBattleStatus1
 	res USING_TRAPPING_MOVE, [hl]
 	hlcoord 18, 0
@@ -5699,11 +5701,11 @@ ExecuteEnemyMove:
 	bit CHARGING_UP, [hl] ; is the enemy charging up for attack?
 	jr nz, EnemyCanExecuteChargingMove ; if so, jump
 	call GetCurrentMove
-	ld a, [wEnemyMovePower] ; marcelnote - revised trainer AI
-	ld [wAILastMovePower], a
 	; fallthrough
 
 CheckIfEnemyNeedsToChargeUp:
+	ld a, [wEnemyMovePower] ; marcelnote - revised trainer AI
+	ld [wAILastMovePower], a
 	ld a, [wEnemyMoveEffect]
 	cp CHARGE_EFFECT
 	jp z, JumpMoveEffect
