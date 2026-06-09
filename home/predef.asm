@@ -22,10 +22,7 @@ Predef::
 	ldh [hLoadedROMBank], a
 	ld [rROMB], a
 
-	ld de, .done
-	push de
-	jp hl
-.done
+	call _hl_
 
 	pop af
 	ldh [hLoadedROMBank], a

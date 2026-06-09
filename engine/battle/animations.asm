@@ -659,9 +659,7 @@ DoSpecialEffectByAnimationId:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld de, .done
-	push de
-	jp hl
+	call _hl_
 .done
 	pop bc
 	pop de
@@ -943,10 +941,7 @@ CallWithTurnFlipped:
 	push af
 	xor 1
 	ldh [hWhoseTurn], a
-	ld de, .returnAddress
-	push de
-	jp hl
-.returnAddress
+	call _hl_
 	pop af
 	ldh [hWhoseTurn], a
 	ret

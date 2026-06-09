@@ -24,10 +24,7 @@ Bankswitch::
 	ld a, b
 	ldh [hLoadedROMBank], a
 	ld [rROMB], a
-	ld bc, .Return
-	push bc
-	jp hl
-.Return
+	call _hl_
 	pop bc
 	ld a, b
 	ldh [hLoadedROMBank], a

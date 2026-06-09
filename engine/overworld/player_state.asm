@@ -96,10 +96,7 @@ IsPlayerFacingEdgeOfMap::
 	ld b, a
 	ld a, [wXCoord]
 	ld c, a
-	ld de, .return
-	push de
-	jp hl
-.return
+	call _hl_
 	pop bc
 	pop de
 	pop hl

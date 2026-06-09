@@ -16,15 +16,12 @@ DisplayTextBoxID_::
 	ld de, 9
 	call SearchTextBoxTable
 	jr c, .textAndCoordTableMatch
-.done
 	ret
 
 .functionTableMatch
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a ; hl = address of function
-	ld de, .done
-	push de
 	jp hl ; jump to the function
 .coordTableMatch
 	call GetTextBoxIDCoords

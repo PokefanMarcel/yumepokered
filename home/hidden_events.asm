@@ -15,10 +15,7 @@ CheckForHiddenEventOrBookshelfOrCardKeyDoor::
 	ld a, [wHiddenEventFunctionRomBank]
 	ld [rROMB], a
 	ldh [hLoadedROMBank], a
-	ld de, .returnAddress
-	push de
-	jp hl
-.returnAddress
+	call _hl_
 	xor a
 	jr .done
 .hiddenEventNotFound

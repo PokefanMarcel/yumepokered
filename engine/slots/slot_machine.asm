@@ -451,10 +451,7 @@ SlotMachine_CheckForMatches:
 	ld bc, 4 ; every SlotReward*Text is at most 4 bytes
 	call CopyData
 	pop hl
-	ld de, .flashScreenLoop
-	push de
-	jp hl
-
+	call _hl_
 .flashScreenLoop
 	ldh a, [rBGP]
 	xor $40

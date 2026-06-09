@@ -1909,10 +1909,7 @@ RunMapScript::
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld de, .return
-	push de
-	jp hl ; jump to script
-.return
+	call _hl_
 	; marcelnote - smarter block replacing
 	ld hl, wCurrentMapScriptFlags
 	res BIT_REPLACE_TILE_BLOCK_BATCHING, [hl]
