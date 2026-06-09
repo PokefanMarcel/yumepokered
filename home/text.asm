@@ -167,7 +167,7 @@ IF DEF(_FRA) ; French: BULBIZARRE ennemi
 	ld h, b
 	ld l, c
 	ld de, EnemyText
-ELSE         ; English: Enemy BULBASAUR
+ELSE         ; English: Enemy CHARMANDER, Spanish: !Enem.CHARMANDER
 	ld de, EnemyText
 	call PlaceString
 	ld h, b
