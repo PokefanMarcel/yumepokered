@@ -254,12 +254,12 @@ ItemUseBall:
 
 ; Determine BallFactor. It's 8 for Great Balls and 12 for the others.
 	ld a, [wCurItem]
-	cp SAFARI_BALL  ; joenote - Great balls now have factor of 12 and Safari balls a factor of 8
-	ld a, 12		; This is because a lower ball factor helps catch pokemon that have fuller HP
-	jr nz, .skip1	; So this was probably intended for the safari zone since pokemon there can't be weakened
+	cp SAFARI_BALL        ; joenote - Great balls now have factor of 12 and Safari balls a factor of 8
+	ld a, 12              ; This is because a lower ball factor helps catch pokemon that have fuller HP
+	jr nz, .gotBallFactor ; So this was probably intended for the safari zone since pokemon there can't be weakened
 	ld a, 8
 
-.skip1
+.gotBallFactor
 ; Note that the results of all division operations are floored.
 
 ; Calculate (MaxHP * 255) / BallFactor.
@@ -278,10 +278,10 @@ ItemUseBall:
 	srl b
 	rra
 	and a
-	jr nz, .skip2
+	jr nz, .gotDivisor
 	inc a
 
-.skip2
+.gotDivisor
 ; Let W = ((MaxHP * 255) / BallFactor) / max(HP / 4, 1). Calculate W.
 	ldh [hDivisor], a
 	call Divide
@@ -290,11 +290,11 @@ ItemUseBall:
 ; Let X = min(W, 255) = [hQuotient + 3].
 	ldh a, [hQuotient + 2]
 	and a
-	jr z, .skip3
+	jr z, .noClamp
 	ld a, 255
 	ldh [hQuotient + 3], a
 
-.skip3
+.noClamp
 	pop bc ; b = Rand1 - Status
 
 ; If Rand1 - Status > CatchRate, the ball fails to capture the Pokémon.
@@ -340,16 +340,16 @@ ItemUseBall:
 	ld a, [wCurItem]
 	ld b, 255
 	cp POKE_BALL
-	jr z, .skip4
+	jr z, .gotBallFactor2
 	ld b, 200
 	cp GREAT_BALL
-	jr z, .skip4
+	jr z, .gotBallFactor2
 	ld b, 150
 	cp ULTRA_BALL
-	jr z, .skip4
+	jr z, .gotBallFactor2
 	ld b, 125 ; marcelnote - for Safari balls
 
-.skip4
+.gotBallFactor2
 ; Let Y = (CatchRate * 100) / BallFactor2. Calculate Y.
 	ld a, b
 	ldh [hDivisor], a
@@ -379,7 +379,7 @@ ItemUseBall:
 ; Freeze/Sleep:          Status2 = 10
 	ld a, [wEnemyMonStatus]
 	and a
-	jr z, .skip5
+	jr z, .noStatusAilment
 	and (1 << FRZ) | SLP_MASK
 	ld b, 5
 	jr z, .addAilmentValue
@@ -391,7 +391,7 @@ ItemUseBall:
 	add b
 	ldh [hQuotient + 3], a
 
-.skip5
+.noStatusAilment
 ; Finally determine the number of shakes.
 ; Let Z = ((X * Y) / 255) + Status2 = [hQuotient + 3].
 ; The number of shakes depend on the range Z is in.
@@ -473,12 +473,11 @@ ItemUseBall:
 ; Mirror Move even though the only wild Pokémon that knows Transform is Ditto.
 	ld hl, wEnemyBattleStatus3
 	bit TRANSFORMED, [hl]
-	jr z, .notTransformed
-	;ld a, DITTO ; marcelnote - fixes bug above
-	;ld [wEnemyMonSpecies2], a
-	jr .skip6
+	jr nz, .skip6
+;	ld a, DITTO ; marcelnote - fixes bug above
+;	ld [wEnemyMonSpecies2], a
+;	jr .skip6
 
-.notTransformed
 ; If the Pokémon is not transformed, set the transformed bit and copy the
 ; DVs to wTransformedEnemyMonOriginalDVs so that LoadEnemyMonData won't generate
 ; new DVs.
@@ -527,16 +526,14 @@ ItemUseBall:
 	ld hl, wPokedexOwned
 	predef FlagActionPredef
 	ld a, c
-	push af
+	and a ; was the Pokémon already in the Pokédex?
+	jr nz, .skipShowingPokedexData ; if so, don't show the Pokédex data
+
 	ld a, [wPokedexNum]
 	dec a
 	ld c, a
 	ld b, FLAG_SET
 	predef FlagActionPredef
-	pop af
-
-	and a ; was the Pokémon already in the Pokédex?
-	jr nz, .skipShowingPokedexData ; if so, don't show the Pokédex data
 
 	ld hl, ItemUseBallText06
 	call PrintText
@@ -562,8 +559,8 @@ ItemUseBall:
 	ld hl, wStatusFlags2
 	set BIT_POKE_BEEPER_ALERT, [hl]
 	;;;;;;;;;;
-	ld hl, ItemUseBallText07
 	CheckEvent EVENT_MET_BILL
+	ld hl, ItemUseBallText07
 	jr nz, .printTransferredToPCText
 	ld hl, ItemUseBallText08
 .printTransferredToPCText
