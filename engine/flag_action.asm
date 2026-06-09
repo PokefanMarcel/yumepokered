@@ -18,9 +18,9 @@ FlagAction: ; marcelnote - optimized
 	srl a
 	add l
 	ld l, a
-	jr nc, .noCarry
-	inc h         ; hl is the byte to target
-.noCarry
+	adc h
+	sub l
+	ld h, a       ; hl += c/8 is the byte to target
 
 	; bit
 	ld a, c
@@ -38,9 +38,9 @@ FlagAction: ; marcelnote - optimized
 	ld c, a       ; c = 1 << c
 
 	ld a, b
-	and a         ; b = 0 (reset) ?
+	and a         ; FLAG_RESET?
 	jr z, .reset
-	dec a         ; b = 1 (set) ?
+	dec a         ; FLAG_SET?
 	jr nz, .read
 
 ; set
