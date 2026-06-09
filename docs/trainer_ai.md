@@ -36,12 +36,13 @@ Novice heavily discourages a move when one of these conditions is true:
 
 Prefer Setup only runs on the first move-choice cycle after the enemy Pokemon is sent out.
 
-It slightly encourages moves whose effect ID is in either of these vanilla setup ranges:
+It slightly encourages non-damaging moves whose effect ID is in either of these vanilla setup ranges:
 
 - `ATTACK_UP1_EFFECT` through `HAZE_EFFECT`
 - `ATTACK_UP2_EFFECT` through `REFLECT_EFFECT`
 
-This includes stat-stage moves, Conversion, Haze, Heal, Transform, and screens. The rule is based on effect ID, so any move in those ranges can be affected.
+This includes stat-stage moves, Conversion, Haze, Heal, Transform, and screens.
+The rule is based on effect ID after excluding damaging moves.
 
 ## Adept
 
