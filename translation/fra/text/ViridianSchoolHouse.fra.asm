@@ -13,12 +13,12 @@ _ViridianSchoolHouseCooltrainerFText::
 	done
 
 _ViridianSchoolHouseYoungsterText:: ; marcelnote - new NPC
-    text "Si je travaille"
-    line "dur, je pourrai"
-    cont "aller étudier à"
-    cont "l'ACADEMIE #MON"
-    cont "à SAFRANIA!"
+	text "Si je travaille"
+	line "dur, je pourrai"
+	cont "aller étudier à"
+	cont "l'ACADEMIE #MON"
+	cont "à SAFRANIA!"
 
-    para "C'est ma maman"
-    line "qui me l'a dit!"
-    done
+	para "C'est ma maman"
+	line "qui me l'a dit!"
+	done
