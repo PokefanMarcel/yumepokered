@@ -25,11 +25,12 @@ _ViridianCityGambler1GymLeaderReturnedText::
 	cont "GIMNASIO VERDE!"
 	done
 
-; TODO - Spanish translation
 _ViridianCityGambler1GymLeaderWasBossText:: ; marcelnote - new
-	text "The GYM LEADER"
-	line "was the boss of"
-	cont "TEAM ROCKET!?"
+	; traducción por NunWinter
+	text "¡¿El LÍDER del"
+	line "GIMNASIO era el"
+	cont "jefe del TEAM"
+	cont "ROCKET!?"
 	done
 
 _ViridianCityYoungster2YouWantToKnowAboutText::
@@ -184,12 +185,12 @@ _ViridianCityTrainerTips2Text::
 	cont "CENTRO #MON!"
 	done
 
-; TODO - Spanish translation
 _ViridianCityTrainerTips3Text:: ; marcelnote - new
-	text "TRAINER TIPS"
+	; traducción por NunWinter
+	text "PISTAS ENTRENADOR"
 
-	para "Press the B"
-	line "Button to run!"
+	para "¡Pulsa el botón B"
+	line "para correr!"
 	done
 
 _ViridianCityGymSignText::
@@ -202,4 +203,3 @@ _ViridianCityGymLockedText::
 	line "GIMNASIO están"
 	cont "cerradas..."
 	done
-

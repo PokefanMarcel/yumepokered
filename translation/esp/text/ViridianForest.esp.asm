@@ -67,28 +67,28 @@ _ViridianForestYoungster4AfterBattleText::
 	cont "dejé caer!"
 	done
 
-; TODO - Spanish translation
 _ViridianForestYoungster6BattleText:: ; marcelnote - new trainer based on Samurai
-	text "Are you the"
-	line "#MON trainer"
-	cont "who comes from"
-	cont "PALLET?"
+	; traducción por NunWinter
+	text "¿Eres tú el"
+	line "entrenador"
+	cont "#MON que"
+	cont "viene de"
+	cont "PUEBLO PALETA?"
 	done
-	; Are you by chance the Pokmn trainer who comes from Pallet?
-	; Am I addressing the pokemon trainer who comes from pallet? I have found you at last
+	; Saludos, eres tú el gran entrenador Pokemon que viene del Pueblo Paleta?
 
-; TODO - Spanish translation
 _ViridianForestYoungster6EndBattleText:: ; marcelnote - new trainer based on Samurai
-	text "A"
-	line "fine battle."
-	prompt ; Clever, quite clever
+	; traducción por NunWinter
+	text "Un"
+	line "gran combate."
+	prompt ; Eres muy inteligente
 
-; TODO - Spanish translation
 _ViridianForestYoungster6AfterBattleText:: ; marcelnote - new trainer based on Samurai
-	text "I was defeated by"
-	line "another trainer"
-	cont "from PALLET TOWN"
-	cont "earlier."
+	; traducción por NunWinter
+	text "Ya perdí contra"
+	line "otro entrenador"
+	cont "de PUEBLO"
+	cont "PALETA."
 	done
 
 _ViridianForestYoungster5Text::
@@ -158,4 +158,3 @@ _ViridianForestLeavingSignText::
 	cont "CIUDAD PLATEADA"
 	cont "ESTÁ ENFRENTE."
 	done
-

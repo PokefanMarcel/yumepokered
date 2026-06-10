@@ -175,20 +175,16 @@ _VermilionCityCooltrainerFText:: ; marcelnote - new
 	cont "there regularly."
 	done
 
-; TODO - Spanish translation
 _VermilionCityCooltrainerMText:: ; marcelnote - to explain temporary field moves
-;	text "If you won't use"
-;	line "an HM in battle,"
-;	cont "teach a #MON"
-;	cont "to use it only"
-;	cont "outside battles!"
-	text "If you don't need"
-	line "an HM in battle,"
-	cont "just teach it as"
-	cont "a SKILL to use"
-	cont "outside battles!"
+	; traducción por NunWinter
+	text "Si no necesitas"
+	line "una MO en combate,"
+	cont "enséñala como"
+	cont "HABILIDAD para"
+	cont "usarla fuera."
 
-	para "It also works for"
-	line "moves like DIG or"
-	cont "TELEPORT."
+	para "También sirve"
+	line "para movimientos"
+	cont "como EXCAVAR o"
+	cont "TELETRANSPORTE."
 	done

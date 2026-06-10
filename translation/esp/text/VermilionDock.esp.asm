@@ -1,21 +1,20 @@
 ; marcelnote - new text
-; TODO - Spanish translation
 _VermilionDockSailorCantSurfHereText::
-	text "Whoa! You can't"
-	line "SURF here!"
+	; traducción por NunWinter
+	text "¡Eh! ¡No puedes"
+	line "usar SURF aquí!"
 	done
 
-; TODO - Spanish translation
 _VermilionDockSailorAreYouReadyText::
-	text "Final call for"
-	line "MANDARIN ISLAND!"
+	; traducción por NunWinter
+	text "¡Última llamada"
+	line "a ISLA MANDARINA!"
 
-	para "Are you ready"
-	line "to leave?"
+	para "¿Soltamos amarras?"
 	done
 
-; TODO - Spanish translation
 _VermilionDockSailorAllAboardText::
-	text "Aye aye, hop on!"
-	line "All aboard!"
+	; traducción por NunWinter
+	text "¡Muy bien, sube!"
+	line "¡Todos a bordo!"
 	prompt

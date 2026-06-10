@@ -55,7 +55,7 @@ CeruleanCaveName:    db "MAZMORRA RARA@"
 PowerPlantName:      db "CENTRAL ENERGÍA@"
 CinnabarVolcanoName: db "VOLCÁN CANELA@"    ; marcelnote - new location
 MtMoonSquareName:    db "PLAZA MT. MOON@"   ; marcelnote - new location
-PokemonAcademyName:  db "#MON ACADEMY@"     ; marcelnote - new location ; TODO - Spanish translation
+PokemonAcademyName:  db "ACADEMIA #MON@"    ; marcelnote - new location
 CeladonGroveName:    db "CELADON GROVE@"    ; marcelnote - new location ; TODO - Spanish translation
 SilphFactoryName:    db "SILPH CO.FACTORY@" ; marcelnote - new location ; TODO - Spanish translation
 MtSilverName:        db "MT. PLATEADO@"     ; marcelnote - new location

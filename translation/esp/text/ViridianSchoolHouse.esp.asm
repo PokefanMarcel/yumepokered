@@ -12,10 +12,11 @@ _ViridianSchoolHouseCooltrainerFText::
 	cont "mucha atención!"
 	done
 
-; TODO - Spanish translation
 _ViridianSchoolHouseYoungsterText:: ; marcelnote - new NPC
-    text "If I study hard,"
-    line "I could enter the"
-    cont "#MON ACADEMY"
-    cont "in SAFFRON CITY!"
-    done
+	; traducción por NunWinter
+	text "¡Si estudio mucho,"
+	line "podré entrar en"
+	cont "la ACADEMIA"
+	cont "#MON de"
+	cont "CIUDAD AZAFRÁN!"
+	done
