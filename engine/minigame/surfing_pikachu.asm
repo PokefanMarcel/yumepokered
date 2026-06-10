@@ -261,14 +261,10 @@ SurfingPikachuMinigame_LoadGFXAndLayout:
 SurfingPikachuMinigame_SetBGPals:
 	ld a, [wOnSGB]
 	and a
+	ld a, $e4
 	jr nz, .sgb
 	ld a, $d0
-	ldh [rBGP], a
-;	call SurfingMinigame_UpdatePalettes
-	ret
-
 .sgb
-	ld a, $e4
 	ldh [rBGP], a
 ;	call SurfingMinigame_UpdatePalettes
 	ret
@@ -2410,7 +2406,7 @@ PrepareSurfingMinigameHighScoreScreen::
 	call Delay3
 	jp GBPalNormal
 
-	.PlaceRowAlternatingTiles
+.PlaceRowAlternatingTiles
 	ld c, SCREEN_WIDTH / 2
 .rowLoop
 	ld [hl], $0
@@ -2478,10 +2474,10 @@ INCBIN "gfx/surfing_pikachu/high_score_2.tilemap"
 
 .PikachusBeachString:
 	db "Pikachu's Beach@"
-	.HiScoreString:
-		db "'s Hi-Score@"
-	.PointsString:
-		db "Points@"
+.HiScoreString:
+	db "'s Hi-Score@"
+.PointsString:
+	db "Points@"
 
 DisplaySurfingMinigameHighScoreScreen::
 	ld hl, wStatusFlags5
