@@ -56,7 +56,7 @@ PowerPlantName:      db "CENTRAL ENERGÍA@"
 CinnabarVolcanoName: db "VOLCÁN CANELA@"    ; marcelnote - new location
 MtMoonSquareName:    db "PLAZA MT. MOON@"   ; marcelnote - new location
 PokemonAcademyName:  db "ACADEMIA #MON@"    ; marcelnote - new location
-CeladonGroveName:    db "SOTO AZULONA@"     ; marcelnote - new location
+CeladonGroveName:    db "ARBOLEDA AZULONA@" ; marcelnote - new location
 SilphFactoryName:    db "FÁBRICA SILPH@"    ; marcelnote - new location
 MtSilverName:        db "MT. PLATEADO@"     ; marcelnote - new location
 CitrusFerryName:     db "CITRUS FERRIES@"   ; marcelnote - new location ; TODO - Spanish translation, FERRIS CITRUS?

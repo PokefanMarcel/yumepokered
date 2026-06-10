@@ -123,7 +123,7 @@ _CeladonGroveEntranceSignText::
 
 ; TODO - Spanish translation
 _CeladonGroveShrineSignText::
-	text "CELADON GROVE" ; SOTO AZULONA
+	text "CELADON GROVE" ; ARBOLEDA AZULONA
 	line "SHRINE"
 	done
 
