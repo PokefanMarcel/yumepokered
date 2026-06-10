@@ -610,8 +610,7 @@ CopyGfxToSuperNintendoVRAM:
 	call SendSGBPacket
 	xor a
 	ldh [rBGP], a
-	ei
-	ret
+	reti
 
 Wait7000:
 ; Each loop takes 9 cycles so this routine actually waits 63000 cycles.

@@ -256,8 +256,7 @@ SurfingPikachuMinigame_LoadGFXAndLayout:
 	ld a, $e0
 	ldh [rOBP1], a
 ;	call SurfingMinigame_UpdatePalettes
-	ei
-	ret
+	reti
 
 SurfingPikachuMinigame_SetBGPals:
 	ld a, [wOnSGB]
