@@ -35,7 +35,7 @@ Route22Name:         db "RUTA 22@"
 Route23Name:         db "RUTA 23@"
 Route24Name:         db "RUTA 24@"
 Route25Name:         db "RUTA 25@"
-Route28Name:         db "ROUTE 28@" ; marcelnote - new location
+Route28Name:         db "RUTA 28@" ; marcelnote - new location
 ViridianForestName:  db "BOSQUE VERDE@"
 MountMoonName:       db "MT. MOON@"
 RockTunnelName:      db "TÚNEL ROCA@"
@@ -56,7 +56,7 @@ PowerPlantName:      db "CENTRAL ENERGÍA@"
 CinnabarVolcanoName: db "VOLCÁN CANELA@"    ; marcelnote - new location
 MtMoonSquareName:    db "PLAZA MT. MOON@"   ; marcelnote - new location
 PokemonAcademyName:  db "ACADEMIA #MON@"    ; marcelnote - new location
-CeladonGroveName:    db "CELADON GROVE@"    ; marcelnote - new location ; TODO - Spanish translation
-SilphFactoryName:    db "SILPH CO.FACTORY@" ; marcelnote - new location ; TODO - Spanish translation
+CeladonGroveName:    db "SOTO AZULONA@"     ; marcelnote - new location
+SilphFactoryName:    db "FÁBRICA SILPH@"    ; marcelnote - new location
 MtSilverName:        db "MT. PLATEADO@"     ; marcelnote - new location
-CitrusFerryName:     db "CITRUS FERRIES@"   ; marcelnote - new location ; TODO - Spanish translation
+CitrusFerryName:     db "CITRUS FERRIES@"   ; marcelnote - new location ; TODO - Spanish translation, FERRIS CITRUS?

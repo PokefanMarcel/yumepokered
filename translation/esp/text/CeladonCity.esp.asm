@@ -172,16 +172,15 @@ _CeladonCityGameCornerSignText::
 	cont "los adultos!"
 	done
 
-; TODO - Spanish translation
 _CeladonCityCeladonGroveSignText:: ; marcelnote - for Celadon Grove
-	text "CELADON GROVE"
+	text "SOTO AZULONA"
 	done
 
 ; TODO - Spanish translation
 _CeladonCityCooltrainerFText:: ; marcelnote - new NPC who mentions Celadon Grove
 	text "I made a wish"
 	line "at the old shrine"
-	cont "in CELADON GROVE."
+	cont "in CELADON GROVE." ; SOTO AZULONA
 
 	para "I hope it"
 	line "comes true!"

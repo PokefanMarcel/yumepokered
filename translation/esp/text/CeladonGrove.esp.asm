@@ -34,7 +34,7 @@ _CeladonGroveChanneler2ReceivedTM51Text::
 ; TODO - Spanish translation
 _CeladonGroveChanneler2TM51ExplanationText::
 	text "TM51 contains"
-	line "HEX!"
+	line "HEX!" ; INFORTUNIO
 
 	para "This ghost move"
 	line "hits harder when"
@@ -123,7 +123,7 @@ _CeladonGroveEntranceSignText::
 
 ; TODO - Spanish translation
 _CeladonGroveShrineSignText::
-	text "CELADON GROVE"
+	text "CELADON GROVE" ; SOTO AZULONA
 	line "SHRINE"
 	done
 
@@ -136,13 +136,3 @@ _CeladonGroveMelodyEchoesText::
 _MewBattleText::
 	text "¡Mew!@"
 	text_end
-
-;	text "You can take"
-;	line "was built to"
-;	cont "honor"
-;	done
-
-	;text "Many come here"
-	;line "to pay their"
-	;line "respects at the"
-	;cont "CELADON GROVE SHRINE."
