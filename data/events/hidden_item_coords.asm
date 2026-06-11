@@ -48,10 +48,10 @@ HiddenItemCoords:
 	hidden_item ROUTE_17,                      17,  72
 	hidden_item ROUTE_17,                       4,  91
 	hidden_item ROUTE_17,                       8, 121
-	hidden_item UNDERGROUND_PATH_NORTH_SOUTH,   5,   5
-	hidden_item UNDERGROUND_PATH_NORTH_SOUTH,   6,  35
-	hidden_item UNDERGROUND_PATH_WEST_EAST,    12,   3
-	hidden_item UNDERGROUND_PATH_WEST_EAST,    21,   5
+	hidden_item UNDERGROUND_PATH_NORTH_SOUTH,   5,   5 ; marcelnote - updated Underground, was  3,  4
+	hidden_item UNDERGROUND_PATH_NORTH_SOUTH,   6,  35 ; marcelnote - updated Underground, was  4, 34
+	hidden_item UNDERGROUND_PATH_WEST_EAST,    12,   3 ; marcelnote - updated Underground, was 12,  2
+	hidden_item UNDERGROUND_PATH_WEST_EAST,    21,   5 ; marcelnote - updated Underground, unchanged
 	hidden_item CELADON_CITY,                  48,  15
 	hidden_item ROUTE_25,                      10,   1
 	hidden_item MT_MOON_B2F,                   33,   9
