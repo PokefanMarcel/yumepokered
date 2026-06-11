@@ -173,22 +173,20 @@ _PewterGymGuidePostBattleText::
 	cont "de campeón!"
 	done
 
-; TODO - Spanish translation
 _PewterGymBrockRematchPreBattleText:: ; marcelnote - Brock rematch
-	text "Welcome back,"
+	text "Has vuelto,"
 	line "<PLAYER>."
 
-	para "How about a"
-	line "friendly rematch?"
+	para "¿Qué tal una"
+	line "revancha amistosa?"
 
-	para "I won't hold back"
-	line "this time."
+	para "Esta vez no me"
+	line "contendré."
 	done
 
-; TODO - Spanish translation
 _PewterGymBrockRematchRefusedBattleText:: ; marcelnote - Brock rematch
-	text "Very well. Come"
-	line "back anytime."
+	text "Muy bien. Vuelve"
+	line "cuando quieras."
 	done
 
 ; TODO - Spanish translation
