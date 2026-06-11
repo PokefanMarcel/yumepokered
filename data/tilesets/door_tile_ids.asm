@@ -4,6 +4,7 @@ DoorTileIDPointers:
 	dbw POKECENTER,  .PokecenterDoorTileIDs ; marcelnote - was MART, replaced
 	dbw HOUSE,       .HouseDoorTileIDs
 	dbw GATE,        .GateDoorTileIDs ; marcelnote - changed from .TilesetMuseumDoorTileIDs
+	dbw UNDERGROUND, .UndergroundDoorTileIDs ; marcelnote - stairs exit
 	dbw SHIP,        .ShipDoorTileIDs
 	dbw LOBBY,       .LobbyDoorTileIDs
 	dbw MANSION,     .MansionDoorTileIDs
@@ -34,6 +35,7 @@ ENDM
 .LabDoorTileIDs: ; marcelnote - reorganized tileset
 .GameDoorTileIDs:
 .PokecenterDoorTileIDs: ; marcelnote - was MartDoorTileIDs, replaced
+.UndergroundDoorTileIDs: ; marcelnote - stairs exit
 	door_tiles $5e
 
 .HouseDoorTileIDs:

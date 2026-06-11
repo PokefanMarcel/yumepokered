@@ -64,8 +64,6 @@ INCLUDE "data/maps/headers/Route1.asm"
 INCLUDE "data/maps/objects/Route1.asm"
 Route1_Blocks: INCBIN "maps/Route1.blk"
 
-UndergroundPathRoute8_Blocks: INCBIN "maps/UndergroundPathRoute8.blk"
-
 OaksLab_Blocks: INCBIN "maps/OaksLab.blk"
 
 MrPsychicsHouse_Blocks:
@@ -199,10 +197,6 @@ INCLUDE "data/maps/headers/Route8Gate.asm"
 INCLUDE "scripts/Route8Gate.asm"
 INCLUDE "data/maps/objects/Route8Gate.asm"
 Route8Gate_Blocks: INCBIN "maps/Route8Gate.blk"
-
-INCLUDE "data/maps/headers/UndergroundPathRoute8.asm"
-INCLUDE "scripts/UndergroundPathRoute8.asm"
-INCLUDE "data/maps/objects/UndergroundPathRoute8.asm"
 
 INCLUDE "data/maps/headers/PowerPlant.asm"
 INCLUDE "scripts/PowerPlant.asm"
@@ -785,11 +779,6 @@ RockTunnelPokecenter_Blocks:    ; marcelnote - use same blk as other Pokecenters
 MtMoonPokecenter_Blocks:        ; marcelnote - use same blk as other Pokecenters
 MandarinPokecenterMart_Blocks:: INCBIN "maps/MandarinPokecenterMart.blk"
 
-
-UndergroundPathRoute7_Blocks:
-UndergroundPathRoute6_Blocks:
-UndergroundPathRoute5_Blocks: INCBIN "maps/UndergroundPathRoute5.blk"
-
 Route2Gate_Blocks:
 ViridianForestSouthGate_Blocks:
 ViridianForestNorthGate_Blocks: INCBIN "maps/ViridianForestNorthGate.blk"
@@ -849,6 +838,15 @@ INCLUDE "data/maps/objects/UndergroundPathRoute6.asm"
 INCLUDE "data/maps/headers/UndergroundPathRoute7.asm"
 INCLUDE "scripts/UndergroundPathRoute7.asm"
 INCLUDE "data/maps/objects/UndergroundPathRoute7.asm"
+
+INCLUDE "data/maps/headers/UndergroundPathRoute8.asm"
+INCLUDE "scripts/UndergroundPathRoute8.asm"
+INCLUDE "data/maps/objects/UndergroundPathRoute8.asm"
+
+UndergroundPathRoute8_Blocks:
+UndergroundPathRoute7_Blocks:
+UndergroundPathRoute6_Blocks:
+UndergroundPathRoute5_Blocks: INCBIN "maps/UndergroundPathRoute5.blk"
 
 
 SECTION "Maps 17", ROMX

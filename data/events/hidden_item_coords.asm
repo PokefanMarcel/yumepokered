@@ -48,9 +48,9 @@ HiddenItemCoords:
 	hidden_item ROUTE_17,                      17,  72
 	hidden_item ROUTE_17,                       4,  91
 	hidden_item ROUTE_17,                       8, 121
-	hidden_item UNDERGROUND_PATH_NORTH_SOUTH,   3,   4
-	hidden_item UNDERGROUND_PATH_NORTH_SOUTH,   4,  34
-	hidden_item UNDERGROUND_PATH_WEST_EAST,    12,   2
+	hidden_item UNDERGROUND_PATH_NORTH_SOUTH,   5,   5
+	hidden_item UNDERGROUND_PATH_NORTH_SOUTH,   6,  35
+	hidden_item UNDERGROUND_PATH_WEST_EAST,    12,   3
 	hidden_item UNDERGROUND_PATH_WEST_EAST,    21,   5
 	hidden_item CELADON_CITY,                  48,  15
 	hidden_item ROUTE_25,                      10,   1
