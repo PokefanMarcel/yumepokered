@@ -105,9 +105,8 @@ _MonsStatsRoseText::
 	cont "@"
 	text_end
 
-; TODO - Spanish translation
 _GreatlyText::
-	text "<SCROLL>greatly@"
+	text "<SCROLL>mucho @"
 	text_end
 
 _RoseText::
@@ -332,4 +331,3 @@ _TradeCenterOpponentText::
 _ColosseumOpponentText::
 	text "!"
 	done
-
