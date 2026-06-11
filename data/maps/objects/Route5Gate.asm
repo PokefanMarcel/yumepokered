@@ -6,7 +6,7 @@
 	const_export ROUTE5GATE_GUARD
 
 Route5Gate_Object:
-	db $a ; border block
+	db $0 ; border block
 
 	def_warp_events
 	warp_event  3,  5, WARP_DOWN, LAST_MAP, 3

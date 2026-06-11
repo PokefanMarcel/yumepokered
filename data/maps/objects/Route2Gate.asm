@@ -3,7 +3,7 @@
 	const_export ROUTE2GATE_YOUNGSTER
 
 Route2Gate_Object:
-	db $a ; border block
+	db $0 ; border block
 
 	def_warp_events
 	warp_event  4,  0, ANY_DIR,   LAST_MAP, 4 ; unreachable

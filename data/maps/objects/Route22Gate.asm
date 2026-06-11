@@ -7,7 +7,7 @@
 	const_export ROUTE22GATE_RECEPTIONIST  ; marcelnote - new NPC
 
 Route22Gate_Object:
-	db $a ; border block
+	db $0 ; border block
 
 	def_warp_events
 	warp_event 12,  7, WARP_DOWN, ROUTE_22, 1 ; marcelnote - adjusted coords, was LAST_MAP

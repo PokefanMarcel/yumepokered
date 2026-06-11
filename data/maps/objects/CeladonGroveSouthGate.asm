@@ -4,7 +4,7 @@
 	const_export CELADONGROVESOUTHGATE_CHANNELER
 
 CeladonGroveSouthGate_Object:
-	db $a ; border block
+	db $0 ; border block
 
 	def_warp_events
 	warp_event  5,  0, WARP_UP,   CELADON_GROVE, 1

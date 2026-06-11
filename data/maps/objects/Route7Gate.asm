@@ -4,7 +4,7 @@
 	const_export ROUTE7GATE_GUARD
 
 Route7Gate_Object:
-	db $a ; border block
+	db $0 ; border block
 
 	def_warp_events
 	warp_event  0,  3, WARP_LEFT,  LAST_MAP, 4

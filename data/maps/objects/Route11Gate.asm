@@ -5,7 +5,7 @@
 	const_export ROUTE11GATE2F_OAKS_AIDE
 
 Route11Gate_Object:
-	db $a ; border block
+	db $0 ; border block
 
 	def_warp_events
 	warp_event  0,  4, WARP_LEFT,  LAST_MAP, 1

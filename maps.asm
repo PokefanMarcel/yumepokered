@@ -779,9 +779,31 @@ RockTunnelPokecenter_Blocks:    ; marcelnote - use same blk as other Pokecenters
 MtMoonPokecenter_Blocks:        ; marcelnote - use same blk as other Pokecenters
 MandarinPokecenterMart_Blocks:: INCBIN "maps/MandarinPokecenterMart.blk"
 
+INCLUDE "data/maps/headers/Route2Gate.asm"
+INCLUDE "scripts/Route2Gate.asm"
+INCLUDE "data/maps/objects/Route2Gate.asm"
+
+INCLUDE "data/maps/headers/CeladonGroveNorthGate.asm" ; marcelnote - new location
+INCLUDE "scripts/CeladonGroveNorthGate.asm"
+INCLUDE "data/maps/objects/CeladonGroveNorthGate.asm"
+
+INCLUDE "data/maps/headers/CeladonGroveSouthGate.asm" ; marcelnote - new location
+INCLUDE "scripts/CeladonGroveSouthGate.asm"
+INCLUDE "data/maps/objects/CeladonGroveSouthGate.asm"
+
+INCLUDE "data/maps/headers/ViridianForestNorthGate.asm"
+INCLUDE "scripts/ViridianForestNorthGate.asm"
+INCLUDE "data/maps/objects/ViridianForestNorthGate.asm"
+
+INCLUDE "data/maps/headers/ViridianForestSouthGate.asm"
+INCLUDE "scripts/ViridianForestSouthGate.asm"
+INCLUDE "data/maps/objects/ViridianForestSouthGate.asm"
+
+CeladonGroveNorthGate_Blocks::
+CeladonGroveSouthGate_Blocks:
 Route2Gate_Blocks:
-ViridianForestSouthGate_Blocks:
-ViridianForestNorthGate_Blocks: INCBIN "maps/ViridianForestNorthGate.blk"
+ViridianForestNorthGate_Blocks:
+ViridianForestSouthGate_Blocks: INCBIN "maps/ViridianForestSouthGate.blk"
 
 
 SECTION "Maps 16", ROMX
@@ -814,18 +836,6 @@ INCLUDE "data/maps/headers/SaffronGym.asm"
 INCLUDE "scripts/SaffronGym.asm"
 INCLUDE "data/maps/objects/SaffronGym.asm"
 SaffronGym_Blocks: INCBIN "maps/SaffronGym.blk"
-
-INCLUDE "data/maps/headers/ViridianForestNorthGate.asm"
-INCLUDE "scripts/ViridianForestNorthGate.asm"
-INCLUDE "data/maps/objects/ViridianForestNorthGate.asm"
-
-INCLUDE "data/maps/headers/Route2Gate.asm"
-INCLUDE "scripts/Route2Gate.asm"
-INCLUDE "data/maps/objects/Route2Gate.asm"
-
-INCLUDE "data/maps/headers/ViridianForestSouthGate.asm"
-INCLUDE "scripts/ViridianForestSouthGate.asm"
-INCLUDE "data/maps/objects/ViridianForestSouthGate.asm"
 
 INCLUDE "data/maps/headers/UndergroundPathRoute5.asm"
 INCLUDE "scripts/UndergroundPathRoute5.asm"
@@ -1119,16 +1129,6 @@ INCLUDE "data/maps/headers/CeladonGrove.asm" ; marcelnote - new location
 INCLUDE "scripts/CeladonGrove.asm"
 INCLUDE "data/maps/objects/CeladonGrove.asm"
 CeladonGrove_Blocks:: INCBIN "maps/CeladonGrove.blk"
-
-INCLUDE "data/maps/headers/CeladonGroveSouthGate.asm" ; marcelnote - new location
-INCLUDE "scripts/CeladonGroveSouthGate.asm"
-INCLUDE "data/maps/objects/CeladonGroveSouthGate.asm"
-
-INCLUDE "data/maps/headers/CeladonGroveNorthGate.asm" ; marcelnote - new location
-INCLUDE "scripts/CeladonGroveNorthGate.asm"
-INCLUDE "data/maps/objects/CeladonGroveNorthGate.asm"
-CeladonGroveSouthGate_Blocks:
-CeladonGroveNorthGate_Blocks:: INCBIN "maps/ViridianForestSouthGate.blk"
 
 INCLUDE "data/maps/headers/MtSilver1F.asm" ; marcelnote - new location
 INCLUDE "scripts/MtSilver1F.asm"

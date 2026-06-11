@@ -5,7 +5,7 @@
 	;const_export UNDERGROUNDPATHROUTE7COPY_UNUSED_MIDDLE_AGED_MAN
 
 UndergroundPathRoute7_Object:
-	db $a ; border block
+	db $0 ; border block
 
 	def_warp_events
 	warp_event  3,  7, WARP_DOWN, LAST_MAP, 5

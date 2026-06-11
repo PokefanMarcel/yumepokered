@@ -14,7 +14,7 @@
 	const_export PEWTERMUSEUM2F_HIKER
 
 PewterMuseum_Object:
-	db $a ; border block
+	db $0 ; border block
 
 	def_warp_events
 	; 1F

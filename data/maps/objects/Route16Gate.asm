@@ -6,7 +6,7 @@
 	const_export ROUTE16GATE2F_LITTLE_GIRL
 
 Route16Gate_Object:
-	db $a ; border block
+	db $0 ; border block
 
 	def_warp_events
 	warp_event  0,  8, WARP_LEFT,  LAST_MAP, 1

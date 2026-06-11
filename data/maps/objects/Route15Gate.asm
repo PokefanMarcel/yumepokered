@@ -4,7 +4,7 @@
 	const_export ROUTE15GATE2F_OAKS_AIDE
 
 Route15Gate_Object:
-	db $a ; border block
+	db $0 ; border block
 
 	def_warp_events
 	warp_event  0,  4, WARP_LEFT,  LAST_MAP, 1

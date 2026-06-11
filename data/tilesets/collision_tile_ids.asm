@@ -43,7 +43,13 @@ House_Coll::
 	coll_tiles $01, $12, $14, $28, $37, $44, $54
 
 Gate_Coll::
-	coll_tiles $01, $12, $14, $1a, $1c, $37, $38, $3b, $3c, $5e
+	coll_tiles $01, \ ; tiled floor
+	           $12, \ ; chair
+	           $14, \ ; carpet
+	           $53, $54, $55, \ ; carpet
+	           $5a, \ ; door
+	           $5c, \ ; upstairs
+	           $5e    ; downstairs
 
 Ship_Coll::
 	coll_tiles $04, $0d, $17, $1d, $1e, $23, $34, $37, $39, $4a

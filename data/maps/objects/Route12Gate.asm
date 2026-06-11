@@ -4,7 +4,7 @@
 	const_export ROUTE12GATE2F_BRUNETTE_GIRL
 
 Route12Gate_Object:
-	db $a ; border block
+	db $0 ; border block
 
 	def_warp_events
 	warp_event  4,  0, ANY_DIR,   LAST_MAP, 1

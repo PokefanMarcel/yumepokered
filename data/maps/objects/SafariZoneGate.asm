@@ -3,7 +3,7 @@
 	const_export SAFARIZONEGATE_SAFARI_ZONE_WORKER2
 
 SafariZoneGate_Object:
-	db $a ; border block
+	db $0 ; border block
 
 	def_warp_events
 	warp_event  3,  5, WARP_DOWN, LAST_MAP, 5

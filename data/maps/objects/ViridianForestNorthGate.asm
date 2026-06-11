@@ -3,7 +3,7 @@
 	const_export VIRIDIANFORESTNORTHGATE_GRAMPS
 
 ViridianForestNorthGate_Object:
-	db $a ; border block
+	db $0 ; border block
 
 	def_warp_events
 	warp_event  4,  0, ANY_DIR,   LAST_MAP, 2 ; unreachable

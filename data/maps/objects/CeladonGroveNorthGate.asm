@@ -3,7 +3,7 @@
 	const_export CELADONGROVENORTHGATE_HIKER
 
 CeladonGroveNorthGate_Object:
-	db $a ; border block
+	db $0 ; border block
 
 	def_warp_events
 	warp_event  5,  0, WARP_UP,   ROUTE_3, 1

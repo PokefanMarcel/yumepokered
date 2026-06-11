@@ -2,7 +2,7 @@
 	const_export UNDERGROUNDPATHROUTE6_GIRL
 
 UndergroundPathRoute6_Object:
-	db $a ; border block
+	db $0 ; border block
 
 	def_warp_events
 	warp_event  3,  7, WARP_DOWN, LAST_MAP, 4

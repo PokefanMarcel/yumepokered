@@ -5,7 +5,7 @@
 	const_export ROUTE8GATE_GUARD
 
 Route8Gate_Object:
-	db $a ; border block
+	db $0 ; border block
 
 	def_warp_events
 	warp_event  0,  3, WARP_LEFT,  LAST_MAP, 1

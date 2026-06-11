@@ -3,7 +3,7 @@
 	const_export VIRIDIANFORESTSOUTHGATE_LITTLE_GIRL
 
 ViridianForestSouthGate_Object:
-	db $a ; border block
+	db $0 ; border block
 
 	def_warp_events
 	warp_event  4,  0, ANY_DIR,   VIRIDIAN_FOREST, 4 ; unreachable

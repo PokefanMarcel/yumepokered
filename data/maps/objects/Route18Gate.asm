@@ -4,7 +4,7 @@
 	const_export ROUTE18GATE2F_YOUNGSTER ; marcelnote - merged 2nd floor
 
 Route18Gate_Object:
-	db $a ; border block
+	db $0 ; border block
 
 	def_warp_events
 	warp_event  0,  4, WARP_LEFT,  LAST_MAP, 1
