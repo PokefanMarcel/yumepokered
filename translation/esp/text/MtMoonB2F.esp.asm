@@ -131,7 +131,6 @@ _MtMoonB2FRocket4AfterBattleText::
 	cont "llegara la gente."
 	done
 
-; TODO - Spanish translation
 _MtMoonB2FMtMoonSquareSignText:: ; marcelnote - added Mt Moon Square
-	text "To MT.MOON SQUARE"
+	text "A PLAZA MT. MOON"
 	done
