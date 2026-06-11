@@ -52,96 +52,111 @@ _Route1SignText::
 	cont "CIUDAD VERDE"
 	done
 
-; TODO - Spanish translation
 _Route1OakBeforeBattleText:: ; marcelnote - postgame Oak fight
-	text "OAK: Oh,"
+	; traducción por NunWinter
+	text "OAK: ¡Oh,"
 	line "<PLAYER>!"
-	cont "You caught me"
-	cont "on my afternoon"
-	cont "stroll."
+	cont "Me pillas en"
+	cont "mi paseo de la"
+	cont "tarde."
 
-	para "Actually, I've"
-	line "been wanting"
-	cont "to see you."
+	para "De hecho,"
+	line "quería verte."
 
-	para "You know, I was"
-	line "quite the trainer"
-	cont "too, back in"
-	cont "my day."
+	para "Sabes, yo"
+	line "también fui un"
+	cont "gran entrenador"
+	cont "en mis tiempos."
 
-	para "Witnessing your"
-	line "journey from"
-	cont "PALLET TOWN to"
-	cont "becoming the"
-	cont "#MON LEAGUE"
-	cont "champion..."
+	para "Ver tu viaje"
+	line "desde PUEBLO"
+	cont "PALETA hasta"
+	cont "convertirte en"
+	cont "CAMPEÓN de la"
+	cont "LIGA #MON..."
 
-	para "It made me feel"
-	line "young again!"
+	para "¡Me hizo sentir"
+	line "joven otra vez!"
 
-	para "What do you say,"
+	para "¿Qué dices,"
 	line "<PLAYER>?"
-	cont "Would you indulge"
-	cont "this old man in a"
-	cont "friendly battle?"
+	cont "¿Le darías a este"
+	cont "viejo una batalla"
+	cont "amistosa?"
 	done
 
-; TODO - Spanish translation
 _Route1OakRefusedBattleText:: ; marcelnote - postgame Oak battle
-	text "Perhaps another"
-	line "time, then!"
+	; traducción por NunWinter
+	text "¡Quizá en otra"
+	line "ocasión, entonces!"
 	done
 
-; TODO - Spanish translation
 _Route1OakAcceptedBattleText:: ; marcelnote - postgame Oak battle
-	text "Excellent!"
-	line "Let's put those"
-	cont "old reflexes"
-	cont "to the test!"
+	; traducción por NunWinter
+	text "¡Excelente!"
+	line "¡Pongamos estos"
+	cont "viejos reflejos"
+	cont "a prueba!"
 	done
 
 _Route1OakDefeatText:: ; marcelnote - postgame Oak battle
-; TODO - Spanish translation
-_Route1OakVictoryText:: ; marcelnote - postgame Oak battle
-	text "Truly"
-	line "exhilarating!"
+	; traducción por NunWinter
+	text "De las"
+	line "derrotas también"
+	cont "se aprende,"
+	cont "<PLAYER>!"
+
+	para "¡Incluso siendo"
+	line "el CAMPEÓN!"
 	prompt
 
-; TODO - Spanish translation
+_Route1OakVictoryText:: ; marcelnote - postgame Oak battle
+	; traducción por NunWinter
+	text "¡Qué"
+	line "emocionante!"
+	prompt
+
 _Route1OakPostBattleText:: ; marcelnote - postgame Oak battle
-	text "OAK: Thank you,"
+	; traducción por NunWinter
+	text "OAK: Gracias,"
 	line "<PLAYER>."
 
-	para "I hadn't felt"
-	line "that rush in"
-	cont "a long time!"
+	para "¡Hacía mucho que"
+	line "no sentía esa"
+	cont "emoción!"
 
-	para "Well, back to"
-	line "work now!"
+	para "Bueno, ¡es hora"
+	line "de volver al"
+	cont "trabajo!"
 	done
 
-; TODO - Spanish translation
 _Route1OakOneMoreThingText:: ; marcelnote - postgame Oak battle
-	text "Oh, one more"
-	line "thing!"
+	; traducción por NunWinter
+	text "¡Oh, una cosa"
+	line "más!"
 
-	para "Given your recent"
-	line "feats, I've"
-	cont "instructed the"
-	cont "guard at ROUTE 22"
-	cont "to let you pass."
+	para "Por tus recientes"
+	line "hazañas, di"
+	cont "instrucciones al"
+	cont "guarda de la"
+	cont "RUTA 22."
 
-	para "Actually, I just"
-	line "authorized"
-	cont "another trainer"
-	cont "from PALLET, too."
+	para "Ahora te dejará"
+	line "pasar."
 
-	para "She defeated the"
-	line "ELITE FOUR and"
-	cont "<RIVAL> at the"
-	cont "INDIGO PLATEAU!"
+	para "De hecho,"
+	line "también autoricé"
+	cont "a otra"
+	cont "entrenadora de"
+	cont "PUEBLO PALETA."
 
-	para "I bet she'd like"
-	line "to face the"
-	cont "true champion!"
+	para "¡Ella derrotó al"
+	line "ALTO MANDO y a"
+	cont "<RIVAL> en la"
+	cont "MESETA AÑIL!"
+
+	para "¡Apuesto a que"
+	line "querría"
+	cont "enfrentarse al"
+	cont "verdadero campeón!"
 	done
