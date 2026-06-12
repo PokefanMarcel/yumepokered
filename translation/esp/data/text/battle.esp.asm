@@ -3,7 +3,7 @@ WhichTechniqueString:
 	next "                 @"
 
 OldManName:
-	db "OLD MAN@"
+	db "ANCIANO@"
 
 DisabledText:
 	db "¡Anulado!@"
