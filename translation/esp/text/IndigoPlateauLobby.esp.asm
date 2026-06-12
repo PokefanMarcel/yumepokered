@@ -15,17 +15,18 @@ _IndigoPlateauLobbyGymGuideChampInMakingText::
 	cont "¡A por ellos!"
 	done
 
-; TODO - Spanish translation
 _IndigoPlateauLobbyGymGuideTrueChampText:: ; marcelnote - new after becoming champ
-	text "Yo! You're the"
-	line "champ now!"
-	cont "I always knew you"
-	cont "had it in you!"
+	; traducción por NunWinter
+	text "¡Eh! ¡Ahora eres"
+	line "el CAMPEÓN!"
+	cont "¡Siempre supe"
+	cont "que lo lograrías!"
 
-	para "Just remember,"
-	line "a true champ"
-	cont "keeps dreaming"
-	cont "big!"
+	para "Pero recuerda:"
+	line "¡un verdadero"
+	cont "campeón siempre"
+	cont "sigue soñando"
+	cont "en grande!"
 	done
 
 _IndigoPlateauLobbyCooltrainerFBeforeChampionText::
@@ -41,80 +42,71 @@ _IndigoPlateauLobbyCooltrainerFBeforeChampionText::
 	cont "¡Buena suerte!"
 	done
 
-; TODO - Spanish translation
 _IndigoPlateauLobbyCooltrainerFEliteFourAwayText:: ; marcelnote - new text
-	text "The ELITE FOUR"
-	line "are currently"
-	cont "away on duty."
+	; traducción por NunWinter
+	text "El ALTO MANDO"
+	line "está fuera por"
+	cont "asuntos de"
+	cont "servicio."
 
-	para "You can challenge"
-	line "them again when"
-	cont "they return."
+	para "Podrás volver a"
+	line "desafiarlos"
+	cont "cuando regresen."
 	done
 
-; TODO - Spanish translation
 _IndigoPlateauLobbyCooltrainerFAfterChampionText:: ; marcelnote - new text
-	text "Welcome, champ!"
-	line "The ELITE FOUR"
-	cont "are back and rea-"
-	cont "dy for a rematch!"
+	; traducción por NunWinter
+	text "¡Bienvenido,"
+	line "CAMPEÓN!"
+	cont "El ALTO MANDO"
+	cont "ha vuelto."
+
+	para "¡Ya están listos"
+	line "para la revancha!"
 	done
 
-; TODO - Spanish translation
 _IndigoPlateauLobbyRivalText:: ; marcelnote - new text
-	text "<RIVAL>: Yo,"
+	; traducción por NunWinter
+	text "<RIVAL>: ¡Eh,"
 	line "<PLAYER>!"
 
-	para "Ready to take"
-	line "your seat as the"
-	cont "#MON LEAGUE"
-	cont "champion?"
+	para "¿Listo para"
+	line "tomar tu lugar"
+	cont "como CAMPEÓN de"
+	cont "la LIGA #MON?"
 
-	para "No?"
+	para "¿No?"
 	line "..."
-	cont "Wait, what?"
+	cont "Espera, ¿qué?"
 
-	;para "But as champion,"
-	;line "you must defend"
-	;cont "your rank against"
-	;cont "challengers!"
-	para "But it is the"
-	line "champion's job"
-	cont "to take on any"
-	cont "#MON LEAGUE"
-	cont "challenger!"
-	;cont "anyone who bests"
-	;cont "the ELITE FOUR!"
+	para "¡Pero es deber"
+	line "del campeón"
+	cont "defender su"
+	cont "título ante"
+	cont "retadores de la"
+	cont "LIGA #MON!"
 
-	;para "Really? You think"
-	;line "I should hold the"
-	;cont "champion's seat"
-	;cont "for now?"
+	para "¿En serio? ¿Yo?"
+	line "Vale, <PLAYER>."
+	cont "Si eso es lo"
+	cont "que quieres,"
+	cont "ocuparé el"
+	cont "puesto mientras"
+	cont "estés fuera."
 
-	para "Seriously? Me?"
-	line "Okay, <PLAYER>."
-	cont "If that's what"
-	cont "you want,"
-	cont "I'll keep the seat"
-	cont "while you're away."
-	;cont "I'll hold onto the"
-	;cont "champion's seat"
-	;cont "for now."
-	;cont "I'll stay as the"
-	;cont "acting champion"
-	;cont "while you're away."
+	para "¡Enfrentarme a"
+	line "los mejores me"
+	cont "ayudará a"
+	cont "aprender cómo"
+	cont "vencerte!"
 
-	para "Facing the best"
-	line "trainers will"
-	cont "help me learn"
-	cont "how to beat you!"
+	para "¡Esperaré"
+	line "nuestra revancha"
+	cont "y la oportunidad"
+	cont "de recuperar"
+	cont "mi título!"
 
-	para "I'll wait for"
-	line "our rematch and"
-	cont "the chance to win"
-	cont "my title back!"
-
-	para "Smell ya in the"
-	line "champion's room,"
+	para "¡Nos vemos en la"
+	line "sala del CAMPEÓN,"
 	cont "<PLAYER>!"
 	done
