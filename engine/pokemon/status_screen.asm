@@ -126,7 +126,9 @@ StatusScreenStatsPage:
 	lb bc, 8, 7
 	call DrawLineBox ; Draws the box around name, HP and status
 
-	ld d, STATUS_SCREEN_STATS_BOX ; d=0 for status screen, d=1 for level up
+	xor a ; STATUS_SCREEN_STATS_BOX and STATUS_SCREEN_INFO_STATS
+	ld [wStatusScreenInfoPage], a
+	ld d, a ; d=0 for status screen, d=1 for level up
 	call PrintStatsBox
 
 	ld a, 1
@@ -164,22 +166,11 @@ StatusScreenStatsPage:
 	jr z, .waitButtonPress ; only visible after passing Senior test at Pokémon Academy
 	ld a, SFX_TINK
 	call PlaySound
-If DEF(_FRA)
-	hlcoord 11, 16 ; first letter of current text
-	ld a, [hl]
-	cp 'S' ; text currently saying "STATS"?
-	jp z, SwitchToDVs ; if yes, switch to DVs
-	cp 'V' ; text currently saying "VDS"?
-	jp z, SwitchToStatExp ; if yes, switch to StatExp
-ELSE
-	hlcoord 15, 16 ; fifth letter of current text
-	ld a, [hl]
-	cp 'S' ; text currently saying "STATS"?
-	jp z, SwitchToDVs ; if yes, switch to DVs
-	cp ' ' ; text currently saying "DVS"?
-	jp z, SwitchToStatExp ; if yes, switch to StatExp
-ENDC
-	; if neither then switch to Stats
+	ld a, [wStatusScreenInfoPage]
+	and a ; STATUS_SCREEN_INFO_STATS?
+	jp z, SwitchToDVs
+	dec a ; STATUS_SCREEN_INFO_DVS?
+	jp z, SwitchToStatExp
 	jp SwitchToStats
 
 .tryPreviousPartyMon ; marcelnote - for switching up and down
@@ -584,6 +575,8 @@ PrintStat:
 
 
 SwitchToStats:
+	xor a ; STATUS_SCREEN_INFO_STATS
+	ld [wStatusScreenInfoPage], a
 	call ClearStatsLines
 	hlcoord 11, 4
 	ld de, wLoadedMonHP
@@ -602,6 +595,8 @@ SwitchToStats:
 
 
 SwitchToDVs: ; we'll use wTempByteValue to store DVs
+	ld a, STATUS_SCREEN_INFO_DVS
+	ld [wStatusScreenInfoPage], a
 	call ClearStatsLines
 	hlcoord 4, 10
 	lb bc, 1, 5 ; for PrintNumber, b = 1 byte and c = 5 digits
@@ -660,6 +655,8 @@ SwitchToDVs: ; we'll use wTempByteValue to store DVs
 
 
 SwitchToStatExp:
+	ld a, STATUS_SCREEN_INFO_STAT_EXP
+	ld [wStatusScreenInfoPage], a
 	call ClearStatsLines
 ;	hlcoord 5, 10 ; code to print numbers instead
 ;	lb bc, 2, 5 ; for PrintNumber, b = 2 byte and c = 5 digits

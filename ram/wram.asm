@@ -1049,6 +1049,9 @@ wStatusScreenCurrentPP:: db
 	ds 6
 ; list of normal max PP (without PP up) values
 wNormalMaxPPList:: ds NUM_MOVES
+
+; marcelnote - new to alternate Stats/DVs/StatExp in status screen
+wStatusScreenInfoPage:: db
 ENDU
 
 UNION

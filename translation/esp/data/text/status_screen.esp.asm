@@ -21,13 +21,11 @@ StatusScreenInfoText:
 StatusScreenStatsText:
 	db "ESTAD.  @"
 
-; TODO - Spanish translation
 StatusScreenDVsText:
-	db "DVS     @"
+	db "FOR.IND.@"
 
-; TODO - Spanish translation
 StatusScreenStatExpText:
-	db "STAT.EXP@"
+	db "PTS.ESF.@"
 
 StatusScreenExpText:
 	db   "PUNTOS EXP"

@@ -96,3 +96,9 @@ DEF FIRST_PARTY_MENU_TEXT_ID EQU const_value
 	const_def
 	const STATUS_SCREEN_STATS_BOX ; 0
 	const LEVEL_UP_STATS_BOX      ; 1
+
+; Status screen info pages ; marcelnote - new for Stats page
+	const_def
+	const STATUS_SCREEN_INFO_STATS    ; 0
+	const STATUS_SCREEN_INFO_DVS      ; 1
+	const STATUS_SCREEN_INFO_STAT_EXP ; 2
