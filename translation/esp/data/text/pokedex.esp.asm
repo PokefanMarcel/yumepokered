@@ -32,5 +32,4 @@ HeightWeightMetricText:
 	db   "AL   ???<m>"
 	next "PE   ???<k><g>@"
 
-; TODO - Spanish translation
 PokedexMovesHeader: db "MOVS.@"
