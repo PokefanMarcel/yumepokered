@@ -31,10 +31,10 @@ Loosely inspired by the anime, manga, and later Pokémon generations, Yume featu
 ### Gameplay updates
 
 **Moves**
-- Several moves have been parsimoniously reworked in order to increase their viability while trying to maintain the original feeling of the game. Three moves from later generations have been added.
+- Several moves have been selectively reworked to increase their viability while preserving the original feel of the game. Three moves from later generations have been added.
 - Consult the [complete list of move changes](docs/move_changes.md) for more info!
 - Ghost is now a Special type, and Dragon a Physical type.
-- Fix for Focus energy and Dire hit. (Quadruple critical hit rate instead of dividing it by 4.)
+- Fixed Focus Energy and Dire Hit. (Quadruple critical hit rate instead of dividing it by 4.)
 
 **Learnsets**
 - Pokémon learnsets have been revamped in the same spirit: to give more options while trying to maintain Gen 1 authenticity.
@@ -68,7 +68,7 @@ Loosely inspired by the anime, manga, and later Pokémon generations, Yume featu
 **Maps**
 - New zones including Mandarin Island, Cinnabar Volcano, Saffron Pokémon Academy, Mt. Moon square, Celadon Grove... and more.
 - Take the brand-new Citrus ferries from Vermilion to Mandarin Island.
-- Refurbished Pokécenters! Modern layout with the PC next to the nurse, sleeker design.
+- Refurbished Pokécenters! Modern layout with the PC next to the nurse and a sleeker design.
 - New Celadon Mart floor where PP-related items are sold in the postgame (Ether, Elixir, PP Up...).
 - Power Plant has updated mechanics and graphics.
 
@@ -80,7 +80,8 @@ Loosely inspired by the anime, manga, and later Pokémon generations, Yume featu
 
 **Visuals**
 - Several maps have updated graphics and new animations.
-- Gym leaders have their own sprites.
+- Gym Leaders have their own overworld sprites.
+- Pokémon sprites can be switched between Japanese Red/Green, international Red/Blue, and Gen 2 variants. Several Red/Blue backsprites have been updated.
 - New player sprites when surfing or running.
 - In Super Game Boy mode, the town color palettes have been adjusted to better reflect the original Japanese town names.
 - Restored gym leader names in trainer card.
@@ -98,19 +99,18 @@ Loosely inspired by the anime, manga, and later Pokémon generations, Yume featu
 - Prompt to reuse Repel after finishing one.
 - Haunter, Graveler, Kadabra and Machoke can evolve by interacting with new dedicated NPCs.
 - Move deleter and Move reminder in Fuchsia.
-- Experience bar in battle.
-- Improved move info box in battle.
-- Pressing B during wild battles now shortcuts directly to 'Run' on the main menu.
+- Revamped Bill's PC with a modern grid layout.
+- Experience bar and improved move info box in battle.
+- Pressing B during wild battles shortcuts directly to 'Run' on the main menu.
 - Exp.All reworked and can be turned on and off from the bag.
 - Faster dialogue to buy coins at the Game Corner.
-- New nurse room in the SS.Anne.
+- New nurse room in the S.S. Anne.
 - Pokémon base stats can be consulted directly in the Pokédex.
 - Unlock the ability to view DVs and Stat.Exp (the Gen 1 equivalents of IVs and EVs) at the new Pokémon Academy.
 - Obtain the *Poké Beeper* from Oak's aide on Route 6 to get alerts when your box is almost full.
+- Link cable trading works with original games, but link battles are not supported.
 
 There are also many other smaller tweaks to the original game, and still more to come!
-
-Link cable functionalities have not been tested yet – try it at your own risk.
 
 
 ## Screenshots
@@ -154,7 +154,7 @@ Unless you’re after an easier hunt for a specific version-exclusive Pokémon, 
 
 ## Credits
 
-This project owes a lot to existing works, and above all to the pret [pokered](https://github.com/pret/pokered) disassemby project, but also:
+This project owes a lot to existing works, and above all to the pret [pokered](https://github.com/pret/pokered) disassembly project, but also:
 
 - [Shinpokered](https://github.com/jojobear13/shinpokered): initial inspiration, including the kanji name; girl player, experience bar, temporary field moves, revamped trainer AI, improved spinner engine, many bug fixes,
 - [PureRGB](https://github.com/Vortyne/pureRGB): overworld HM use, ROM space management, repel reuse prompt, use items with Select, some gfx, improved spinner engine, many other code snippets,
