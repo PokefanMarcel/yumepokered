@@ -1,4 +1,5 @@
 IF DEF(_RED)
+
 	DefaultNamesPlayer:
 		db "NUEVO N."
 		next "ROJO"
@@ -14,6 +15,7 @@ IF DEF(_RED)
 		db   "@"
 
 ELIF DEF(_BLUE)
+
 	DefaultNamesPlayer:
 		db "NUEVO N."
 		next "AZUL"
@@ -29,6 +31,7 @@ ELIF DEF(_BLUE)
 		db   "@"
 
 ELIF DEF(_GREEN) ; PureRGBnote: GREENBUILD: default names specific to pokemon green
+
 	DefaultNamesPlayer:
 		db   "NUEVO N."
 		next "VERDE"
