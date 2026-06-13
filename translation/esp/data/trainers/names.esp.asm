@@ -48,8 +48,6 @@ TrainerNames::
 	li "LANCE"
 	li "AMARILLO"  ; marcelnote - new trainer class
 	li "MENTO"     ; marcelnote - new trainer class
-	; TODO - Spanish translation, see Gen2
-	li "<PKMN>TRAINER"    ; Red   ; marcelnote - new trainer class
-	; TODO - Spanish translation, see Gen2
-	li "<PKMN>TRAINER"    ; Green ; marcelnote - new trainer class
+	li "ENTRENADOR"    ; Red   ; marcelnote - new trainer class, see Gen2
+	li "ENTRENADOR"    ; Green ; marcelnote - new trainer class, see Gen2
 	assert_list_length NUM_TRAINERS
