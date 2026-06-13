@@ -11,13 +11,13 @@ DisabledText:
 TypeText:
 	db "TIPO@"
 
-PowerText:    ; marcelnote - new ; TODO - Spanish translation
-	db "PWR@"
+PowerText:    ; marcelnote - new
+	db "POT@"
 
-AccuracyText: ; marcelnote - new ; TODO - Spanish translation
-	db "ACC@"
+AccuracyText: ; marcelnote - new
+	db "PRE@"
 
-PPText:       ; marcelnote - new ; TODO - Spanish translation
+PPText:       ; marcelnote - new
 	db "PP@"
 
 NoPowerText:  ; marcelnote - new
