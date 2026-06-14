@@ -20,12 +20,13 @@ ExternalClockTradeAnim:
 TradeAnimCommon:
 	ld a, [wOptions]
 	push af
+	and SPRITE_STYLE_MASK ; marcelnote - preserve sprite style option
+	ld [wOptions], a
 	ldh a, [hSCY]
 	push af
 	ldh a, [hSCX]
 	push af
 	xor a
-	ld [wOptions], a
 	ldh [hSCY], a
 	ldh [hSCX], a
 	push de
