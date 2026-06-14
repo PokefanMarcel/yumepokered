@@ -181,7 +181,7 @@ BillsHouseBillSSTicketText: ; marcelnote - optimized
 .SSTicketReceivedText:
 	text_far _SSTicketReceivedText
 	sound_get_key_item
-	text_promptbutton
+;	text_promptbutton ; marcelnote - removed
 	text_end
 
 .SSTicketNoRoomText:
