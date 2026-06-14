@@ -361,16 +361,6 @@ RedrawBillsPCBoxScreenForSelectedMessage:
 	call PrepareBillsPCSelectedRedraw
 	jr FinishRedrawingBillsPCBoxScreen
 
-; Used between the two halves of the deposit/withdraw flash; uses a partial
-; transfer + 2-frame delay instead of the idle Delay3.
-RedrawBillsPCBoxScreenForSelectedMessageShort:
-	call PrepareBillsPCSelectedRedraw
-	call ApplyBillsPCBoxPalette
-	xor a ; TRANSFERTOP
-	ldh [hAutoBGTransferPortion], a
-	ld c, 2
-	jp DelayFrames
-
 PrepareBillsPCSelectedRedraw:
 	call RedrawBillsPCBoxScreenCommon
 	call DrawBillsPCCursorOnly
@@ -413,13 +403,11 @@ ENDC
 	jr nz, .changeBoxGfxLoop
 
 	call DrawBillsPCPartyMons
-	call DrawBillsPCBoxMons
-
-	ld a, 1
-	ldh [hAutoBGTransferEnabled], a
-	ret
+	jp DrawBillsPCBoxMons
 
 FinishRedrawingBillsPCBoxScreen:
+	ld a, 1
+	ldh [hAutoBGTransferEnabled], a
 	call ApplyBillsPCBoxPalette
 	jp Delay3
 
@@ -763,7 +751,7 @@ DepositBillsPCSelectedPartyMon:
 	ld [hl], a
 	ld a, SFX_WITHDRAW_DEPOSIT
 	call PlaySound
-	call RedrawBillsPCBoxScreenForSelectedMessageShort
+	call RedrawBillsPCBoxScreenForSelectedMessage
 	pop af
 	pop hl
 	ld [hl], a
@@ -885,7 +873,7 @@ WithdrawBillsPCSelectedBoxMon:
 	ld [hl], a
 	ld a, SFX_WITHDRAW_DEPOSIT
 	call PlaySound
-	call RedrawBillsPCBoxScreenForSelectedMessageShort
+	call RedrawBillsPCBoxScreenForSelectedMessage
 	pop af
 	pop hl
 	ld [hli], a
