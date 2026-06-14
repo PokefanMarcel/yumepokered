@@ -142,7 +142,7 @@ HiddenEventPointers:
 	dw SaffronPokecenterHiddenEvents
 	dw PokemonTower5FHiddenEvents
 	dw Route13HiddenEvents
-	dw SafariZoneEntranceHiddenEvents
+	dw SafariZoneGateHiddenEvents
 	dw SafariZoneWestHiddenEvents
 	dw SilphCo5FHiddenEvents
 	dw SilphCo9FHiddenEvents
@@ -461,7 +461,7 @@ Route13HiddenEvents:
 	hidden_event 16, 13, CALCIUM, HiddenItems
 	db -1 ; end
 
-SafariZoneEntranceHiddenEvents:
+SafariZoneGateHiddenEvents:
 	hidden_event 10,  1, NUGGET, HiddenItems ; inaccessible
 	db -1 ; end
 

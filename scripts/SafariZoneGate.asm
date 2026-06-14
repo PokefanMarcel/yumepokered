@@ -37,7 +37,7 @@ SafariZoneGateDefaultScript:
 .playerNotNextToWorker
 	ld a, PAD_RIGHT
 	ld c, 1
-	call SafariZoneEntranceAutoWalk
+	call SafariZoneGateAutoWalk
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	ld a, SCRIPT_SAFARIZONEGATE_PLAYER_MOVING_RIGHT
@@ -89,16 +89,14 @@ SafariZoneGateLeavingSafariScript:
 	ld [wNumSafariBalls], a
 	ld a, PAD_DOWN
 	ld c, 3
-	call SafariZoneEntranceAutoWalk
+	call SafariZoneGateAutoWalk
 	ld a, SCRIPT_SAFARIZONEGATE_PLAYER_MOVING_DOWN
 	ld [wSafariZoneGateCurScript], a
-	jr .return
+	ret
 .leavingEarly
 	ld a, TEXT_SAFARIZONEGATE_SAFARI_ZONE_WORKER1_LEAVING_EARLY
 	ldh [hTextID], a
-	call DisplayTextID
-.return
-	ret
+	jp DisplayTextID
 
 SafariZoneGatePlayerMovingDownScript:
 	call SafariZoneGateReturnSimulatedJoypadStateScript
@@ -117,7 +115,7 @@ SafariZoneGateSetScriptAfterMoveScript:
 	ld [wSafariZoneGateCurScript], a
 	ret
 
-SafariZoneEntranceAutoWalk:
+SafariZoneGateAutoWalk:
 	push af
 	ld b, 0
 	ld a, c
@@ -191,7 +189,7 @@ SafariZoneGateSafariZoneWorker1WouldYouLikeToJoinText:
 	ld [wSafariSteps + 1], a
 	ld a, PAD_UP
 	ld c, 3
-	call SafariZoneEntranceAutoWalk
+	call SafariZoneGateAutoWalk
 	SetEvent EVENT_IN_SAFARI_ZONE
 	ResetEventReuseHL EVENT_SAFARI_GAME_OVER
 	ld a, SCRIPT_SAFARIZONEGATE_PLAYER_MOVING
@@ -204,7 +202,7 @@ SafariZoneGateSafariZoneWorker1WouldYouLikeToJoinText:
 .CantPayWalkDown
 	ld a, PAD_DOWN
 	ld c, 1
-	call SafariZoneEntranceAutoWalk
+	call SafariZoneGateAutoWalk
 	ld a, SCRIPT_SAFARIZONEGATE_PLAYER_MOVING_DOWN
 	ld [wSafariZoneGateCurScript], a
 	rst TextScriptEnd
@@ -236,7 +234,7 @@ SafariZoneGateSafariZoneWorker1LeavingEarlyText:
 	ld [wSpritePlayerStateData1FacingDirection], a
 	ld a, PAD_DOWN
 	ld c, 3
-	call SafariZoneEntranceAutoWalk
+	call SafariZoneGateAutoWalk
 	ResetEvents EVENT_SAFARI_GAME_OVER, EVENT_IN_SAFARI_ZONE
 	ld a, SCRIPT_SAFARIZONEGATE_DEFAULT
 	ld [wNextSafariZoneGateScript], a
@@ -248,7 +246,7 @@ SafariZoneGateSafariZoneWorker1LeavingEarlyText:
 	ld [wSpritePlayerStateData1FacingDirection], a
 	ld a, PAD_UP
 	ld c, 1
-	call SafariZoneEntranceAutoWalk
+	call SafariZoneGateAutoWalk
 	ld a, SCRIPT_SAFARIZONEGATE_LEAVING_SAFARI
 	ld [wNextSafariZoneGateScript], a
 .setCurrentScript
