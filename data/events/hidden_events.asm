@@ -629,13 +629,13 @@ Route17HiddenEvents:
 	db -1 ; end
 
 UndergroundPathNsHiddenEvents:
-	hidden_event  3,  4, FULL_RESTORE, HiddenItems
-	hidden_event  4, 34, X_SPECIAL, HiddenItems
+	hidden_event  5,  5, FULL_RESTORE, HiddenItems ; marcelnote - updated Underground, was  3,  4
+	hidden_event  6, 35, X_SPECIAL, HiddenItems    ; marcelnote - updated Underground, was  4, 34
 	db -1 ; end
 
 UndergroundPathWeHiddenEvents:
-	hidden_event 12,  2, NUGGET, HiddenItems
-	hidden_event 21,  5, ELIXIR, HiddenItems
+	hidden_event 12,  3, NUGGET, HiddenItems ; marcelnote - updated Underground, was 12,  2
+	hidden_event 21,  5, ELIXIR, HiddenItems ; marcelnote - updated Underground, unchanged
 	db -1 ; end
 
 CeladonCityHiddenEvents:
