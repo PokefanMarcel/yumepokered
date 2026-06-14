@@ -32,6 +32,7 @@ ENDM
 
 .MountainDoorTileIDs:   ; marcelnote - new tileset
 	db $5c
+.GateDoorTileIDs: ; marcelnote - changed from .TilesetMuseumDoorTileIDs
 .LabDoorTileIDs: ; marcelnote - reorganized tileset
 .GameDoorTileIDs:
 .PokecenterDoorTileIDs: ; marcelnote - was MartDoorTileIDs, replaced
@@ -40,9 +41,6 @@ ENDM
 
 .HouseDoorTileIDs:
 	door_tiles $54
-
-.GateDoorTileIDs: ; marcelnote - changed from .TilesetMuseumDoorTileIDs
-	door_tiles $3b
 
 .ShipDoorTileIDs:
 	door_tiles $1e

@@ -24,7 +24,7 @@ Tilesets:
 	tileset Gym,         $3A, -1, -1,  -1, TILEANIM_WATER_FLOWER
 	tileset House,        -1, -1, -1,  -1, TILEANIM_NONE
 	tileset Underground,  -1, -1, -1,  -1, TILEANIM_NONE
-	tileset Gate,        $17,$32, -1,  -1, TILEANIM_NONE
+	tileset Gate,        $30,$33, -1,  -1, TILEANIM_NONE      ; marcelnote - modified tileset
 	tileset Ship,         -1, -1, -1,  -1, TILEANIM_WATER
 	tileset ShipPort,     -1, -1, -1,  -1, TILEANIM_WATER_WBOLLARD ; marcelnote - was TILEANIM_WATER
 	tileset Cemetery,    $12, -1, -1,  -1, TILEANIM_LANTERN ; marcelnote - was TILEANIM_NONE
