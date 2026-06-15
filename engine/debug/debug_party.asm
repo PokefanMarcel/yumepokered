@@ -114,6 +114,7 @@ DebugNewGameBox1:
 	db ABRA, 28
 	db MACHOP, 30
 	db SNORLAX, 30
+	db GASTLY, 23
 	db -1 ; end
 
 PrepareNewGameDebug: ; dummy except in _DEBUG
