@@ -2322,6 +2322,9 @@ LoadMapData::
 	jr nz, .vramCopyLoop
 	ld a, 1
 	ld [wUpdateSpritesEnabled], a
+	ld a, SCREEN_HEIGHT_PX ; marcelnote - moved from ClearVariablesOnEnterMap to hide the window before EnableLCD
+	ldh [hWY], a
+	ldh [rWY], a
 	call EnableLCD
 	ld b, SET_PAL_OVERWORLD
 	call RunPaletteCommand

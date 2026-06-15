@@ -70,7 +70,6 @@ EndOfBattle:
 	set BIT_WILD_ENCOUNTER_COOLDOWN, [hl]
 	call WaitForSoundToFinish
 	call GBPalWhiteOut
-	call ClearScreen ; marcelnote - fix visual glitch when returning to overworld
 	ld a, $ff
 	ld [wDestinationWarpID], a
 	ret

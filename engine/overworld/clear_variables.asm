@@ -1,7 +1,7 @@
 ClearVariablesOnEnterMap::
-	ld a, SCREEN_HEIGHT_PX
-	ldh [hWY], a
-	ldh [rWY], a
+;	ld a, SCREEN_HEIGHT_PX ; marcelnote - moved to LoadMapData to prevent ...
+;	ldh [hWY], a
+;	ldh [rWY], a
 	xor a
 	ldh [hAutoBGTransferEnabled], a
 	ld [wStepCounter], a
