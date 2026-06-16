@@ -1,10 +1,10 @@
-_SaffronPidgeyHouseBrunetteGirlText::
-	text "Thank you for"
-	line "writing. I hope"
-	cont "to see you soon!"
+_SaffronPidgeyHouseBrunetteGirlText:: ; marcelnote - swapped with PaperText
+	text "I was given a PP"
+	line "UP as a gift."
 
-	para "Hey! Don't look"
-	line "at my letter!"
+	para "It's used for"
+	line "increasing the PP"
+	cont "of techniques!"
 	done
 
 _SaffronPidgeyHousePidgeyText::
@@ -17,11 +17,11 @@ _SaffronPidgeyHouseYoungsterText::
 	cont "her a # DOLL!"
 	done
 
-_SaffronPidgeyHousePaperText::
-	text "I was given a PP"
-	line "UP as a gift."
+_SaffronPidgeyHousePaperText:: ; marcelnote - swapped with BrunetteGirlText
+	text "Thank you for"
+	line "writing. I hope"
+	cont "to see you soon!"
 
-	para "It's used for"
-	line "increasing the PP"
-	cont "of techniques!"
+	para "Hey! Don't look"
+	line "at my letter!"
 	done

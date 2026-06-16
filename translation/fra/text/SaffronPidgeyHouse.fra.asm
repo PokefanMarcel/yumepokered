@@ -1,11 +1,13 @@
-_SaffronPidgeyHouseBrunetteGirlText::
-	text "Merci pour cette"
-	line "belle lettre, à"
-	cont "bientôt!"
+_SaffronPidgeyHouseBrunetteGirlText:: ; marcelnote - swapped with PaperText
+	text "J'ai reçu comme"
+	line "récompense un"
+	cont "PP PLUS."
 
-	para "Hé! R'garde pas"
-	line "c'que j'écris!"
-	cont "J'suis amoureuse!"
+	para "Je l'ai utilisé"
+	line "pour augmenter"
+	cont "les PP des"
+	cont "attaques de mes"
+	cont "#MON!"
 	done
 
 _SaffronPidgeyHousePidgeyText::
@@ -19,14 +21,12 @@ _SaffronPidgeyHouseYoungsterText::
 	cont "#POUPEE!"
 	done
 
-_SaffronPidgeyHousePaperText::
-	text "J'ai reçu comme"
-	line "récompense un"
-	cont "PP PLUS."
+_SaffronPidgeyHousePaperText:: ; marcelnote - swapped with BrunetteGirlText
+	text "Merci pour cette"
+	line "belle lettre, à"
+	cont "bientôt!"
 
-	para "Je l'ai utilisé"
-	line "pour augmenter"
-	cont "les PP des"
-	cont "attaques de mes"
-	cont "#MON!"
+	para "Hé! R'garde pas"
+	line "c'que j'écris!"
+	cont "J'suis amoureuse!"
 	done
