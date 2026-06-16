@@ -1,6 +1,6 @@
 GainExperience: ; marcelnote - refactored
-; without ExpAll, exp is split across battle participants as in vanilla
-; with ExpAll, exp is split into equal shares so that battle participants get two shares and nonparticipants one
+; Without ExpAll, exp is split across battle participants as in vanilla
+; With ExpAll, exp is split into equal shares so that battle participants get two shares and nonparticipants one
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
 	ret z ; return if link battle
@@ -8,7 +8,7 @@ GainExperience: ; marcelnote - refactored
 	cp RED
 	ret nc ; marcelnote - no exp if Battle Hall battle
 
-; Compute total exp obtained from opponent, store it, and print it if ExpAll is activated
+; Compute total exp obtained from opponent and store it.
 	xor a
 	ld [wGainBoostedExp], a
 	ldh [hMultiplicand], a
@@ -21,13 +21,16 @@ GainExperience: ; marcelnote - refactored
 	ld a, 7
 	ldh [hDivisor], a
 	call Divide                  ; (base exp) * level / 7
+	ld a, [wIsInBattle]
+	dec a
+	call nz, BoostExp            ; boost total exp if trainer battle
 	ld a, [wStatusFlags1]
 	bit BIT_EXP_ALL_ACTIVE, a
 	jr z, .skipExpAllBoost
 	CheckEvent EVENT_BOOSTED_EXP_ALL
 	jr z, .skipExpAllBoost
-	ld a, 2
-	ld [wGainBoostedExp], a
+	ld a, 1
+	ld [wGainBoostedExp], a      ; write [wGainBoostedExp] = 1 as indicator and to trigger 'boosted' messages
 	call BoostExp                ; boost total exp if ExpAll activated and upgraded
 .skipExpAllBoost
 	ld hl, wExpAmountGained
@@ -36,7 +39,7 @@ GainExperience: ; marcelnote - refactored
 	ldh a, [hQuotient + 3]
 	ld [hl], a
 	ld a, [wStatusFlags1]        ; if ExpAll is activated, print a single message
-	bit BIT_EXP_ALL_ACTIVE, a ; saying how much total Exp there is to share
+	bit BIT_EXP_ALL_ACTIVE, a    ; saying how much total Exp there is to share
 	jr z, .skipPrintTotalExp
 	ld hl, ExpAllSharedText
 	call PrintText
@@ -194,10 +197,6 @@ GainExperience: ; marcelnote - refactored
 .checkExpBoosts   ; hl = wPartyMon<n>SpecialExp + 1
 	ld de, wPartyMon1OTID - (wPartyMon1SpecialExp + 1)
 	add hl, de    ; hl = wPartyMon<n>OTID
-	; trainer battle?
-	ld a, [wIsInBattle]
-	dec a             ; is it a wild battle?
-	call nz, BoostExp ; if not (trainer battle), boost exp
 	; upgraded exp all?
 	ld a, [wGainBoostedExp]
 	dec a                     ; have we already boosted exp at beginning for exp all?
