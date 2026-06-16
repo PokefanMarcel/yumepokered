@@ -34,7 +34,14 @@ Gym_Coll::
 	           $4d    ; spinner stop
 
 Forest_Coll::
-	coll_tiles $01, $02, $10, $11, $12, $20, $4b, $1e, $5d, $5e
+	coll_tiles $01, \ ; grassy ground
+	           $02, \ ; wood pavement
+	           $10, \ ; ground
+	           $11, \ ; grass
+	           $12, \ ; flower
+	           $20, \ ; small rock
+	           $4b, $5e \ ; platform
+	           $1e, $5d   ; stairs
 
 Safari_Coll::
 	coll_tiles $1e, $20, $2e, $30, $34, $37, $39, $3a, $40, $51, $52, $5a, $5c, $5e, $5f
