@@ -93,6 +93,8 @@ SaffronGymSabrinaReceiveTM46Script:
 	ld hl, wObtainedBadges
 	set BIT_MARSHBADGE, [hl]
 	SetEventRange EVENT_BEAT_SAFFRON_GYM_TRAINER_0, EVENT_BEAT_SAFFRON_GYM_TRAINER_6
+	ld a, SFX_TELEPORT_EXIT_1
+	call PlaySound
 	call UpdateSaffronGymTileBlocks ; marcelnote - open Saffron Gym gate
 	jr SaffronGymResetScripts
 
