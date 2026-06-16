@@ -15,7 +15,14 @@ Underground_Coll::
 	           $5e    ; stairs
 
 Overworld_Coll::
-	coll_tiles $00, $10, $1b, $20, $21, $2c, $2d, $30, $31, $33, $39, $3c, $3e, $52, $54, $58, $5b ; marcelnote - removed $23, $2e
+	coll_tiles $00, \ ; plain white (road)
+	           $10, $20, $21, \ ; cables
+	           $1b, \ ; door
+	           $2c, $30, $39, \ ; grassy ground
+	           $3c, \ ; dock
+	           $52, \ ; grass
+	           $58, \ ; cavern entrance
+	           $5b    ; pavement
 
 BigHouse_Coll::
 	coll_tiles $01, $02, $03, $04, $11, $12, $13, $14, $1c, $1a
@@ -40,8 +47,8 @@ Forest_Coll::
 	           $11, \ ; grass
 	           $12, \ ; flower
 	           $20, \ ; small rock
-	           $4b, $5e \ ; platform
-	           $1e, $5d   ; stairs
+	           $4b, $5e, \ ; platform
+	           $1e, $5d    ; stairs
 
 Safari_Coll::
 	coll_tiles $1e, $20, $2e, $30, $34, $37, $39, $3a, $40, $51, $52, $5a, $5c, $5e, $5f
