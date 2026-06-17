@@ -4,7 +4,7 @@ RestoreScreenTilesAndReloadTilePatterns::
 	ld [wUpdateSpritesEnabled], a
 	call ReloadMapSpriteTilePatterns
 	call LoadScreenTilesFromBuffer2
-	call LoadTextBoxTilePatterns
+;	call LoadTextBoxTilePatterns ; marcelnote - this restore path no longer clobbers textbox tiles ($79-$7f)
 	call RunDefaultPaletteCommand
 	jr Delay3
 
