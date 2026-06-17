@@ -1,5 +1,5 @@
 DiplomaText:
-	db CIRCLE_TILE_ID, "Diplôme", CIRCLE_TILE_ID, "@"
+	db DIPLOMA_TEXTBOX_BULLET, "Diplôme", DIPLOMA_TEXTBOX_BULLET, "@"
 
 DiplomaPlayer:
 	db "Joueur@"

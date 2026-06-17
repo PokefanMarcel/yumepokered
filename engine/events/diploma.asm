@@ -1,17 +1,49 @@
-DEF CIRCLE_TILE_ID EQU $75
+; marcelnote - moved tileset in VRAM and added labels
+DEF DIPLOMA_TEXTBOX_BASE         EQU $60
+DEF DIPLOMA_TEXTBOX_BULLET       EQU DIPLOMA_TEXTBOX_BASE + 0
+DEF DIPLOMA_TEXTBOX_BOTTOM_EDGE  EQU DIPLOMA_TEXTBOX_BASE + 1
+DEF DIPLOMA_TEXTBOX_RIGHT_EDGE   EQU DIPLOMA_TEXTBOX_BASE + 2
+DEF DIPLOMA_TEXTBOX_UPPER_LEFT   EQU DIPLOMA_TEXTBOX_BASE + 3
+DEF DIPLOMA_TEXTBOX_TOP_EDGE     EQU DIPLOMA_TEXTBOX_BASE + 4
+DEF DIPLOMA_TEXTBOX_UPPER_RIGHT  EQU DIPLOMA_TEXTBOX_BASE + 5
+DEF DIPLOMA_TEXTBOX_LEFT_EDGE    EQU DIPLOMA_TEXTBOX_BASE + 6
+DEF DIPLOMA_TEXTBOX_LOWER_LEFT   EQU DIPLOMA_TEXTBOX_BASE + 7
+DEF DIPLOMA_TEXTBOX_LOWER_RIGHT  EQU DIPLOMA_TEXTBOX_BASE + 8
+DEF DIPLOMA_TEXTBOX_BG           EQU DIPLOMA_TEXTBOX_BASE + 9
 
-DisplayDiploma::
+DisplayDiploma:: ; marcelnote - modified for new VRAM layout
 	call SaveScreenTilesToBuffer2
 	call GBPalWhiteOutWithDelay3
 	call ClearScreen
-	xor a
+	ld a, $ff ; marcelnote - preserve manually drawn diploma OAM
 	ld [wUpdateSpritesEnabled], a
 	ld hl, wStatusFlags5
 	set BIT_NO_TEXT_DELAY, [hl]
 	call DisableLCD
 	hlcoord 0, 0
 	lb bc, 16, 18
-	predef Diploma_TextBoxBorder ; loads the border and circle tiles
+
+	; Draw frame.
+	ld a, DIPLOMA_TEXTBOX_UPPER_LEFT
+	ld [hli], a
+	ld a, DIPLOMA_TEXTBOX_TOP_EDGE
+	call Diploma_DrawHorizontalLine
+	ld a, DIPLOMA_TEXTBOX_UPPER_RIGHT
+	ld [hli], a
+.loop
+	ld a, DIPLOMA_TEXTBOX_LEFT_EDGE
+	ld [hli], a
+	ld a, ' '
+	call Diploma_DrawHorizontalLine
+	ld a, DIPLOMA_TEXTBOX_RIGHT_EDGE
+	ld [hli], a
+	dec b
+	jr nz, .loop
+	ld a, DIPLOMA_TEXTBOX_LOWER_LEFT
+	ld [hli], a
+	ld a, DIPLOMA_TEXTBOX_BOTTOM_EDGE
+	call Diploma_DrawHorizontalLine
+	ld [hl], DIPLOMA_TEXTBOX_LOWER_RIGHT
 
 	ld hl, DiplomaTextPointersAndCoords
 	ld c, $5
@@ -52,7 +84,11 @@ DisplayDiploma::
 	jr nz, .adjustPlayerGfxLoop
 
 	call EnableLCD
-	callfar LoadTrainerInfoTextBoxTiles
+	ld de, TrainerInfoTextBoxTileGraphics
+	ld hl, vChars2 tile DIPLOMA_TEXTBOX_BASE ; marcelnote - moved tileset in VRAM from $75
+	lb bc, BANK(TrainerInfoTextBoxTileGraphics), (TrainerInfoTextBoxTileGraphicsEnd - TrainerInfoTextBoxTileGraphics) / TILE_SIZE
+	call CopyVideoData
+
 	ld b, SET_PAL_GENERIC
 	call RunPaletteCommand
 	call Delay3
@@ -66,6 +102,15 @@ DisplayDiploma::
 	call RestoreScreenTilesAndReloadTilePatterns
 	call Delay3
 	jp GBPalNormal
+
+; c = width
+Diploma_DrawHorizontalLine:
+	ld d, c
+.loop
+	ld [hli], a
+	dec d
+	jr nz, .loop
+	ret
 
 UnusedPlayerNameLengthFunc:
 ; Unused function that performs bc = -(player name's length)

@@ -1,6 +1,6 @@
 ; marcelnote - moved from engine/events/diploma.asm
 DiplomaText:
-	db CIRCLE_TILE_ID, "Diploma", CIRCLE_TILE_ID, "@"
+	db DIPLOMA_TEXTBOX_BULLET, "Diploma", DIPLOMA_TEXTBOX_BULLET, "@"
 
 DiplomaPlayer:
 	db "Player@"
