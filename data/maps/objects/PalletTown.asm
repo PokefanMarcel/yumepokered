@@ -15,6 +15,7 @@ PalletTown_Object:
 	warp_event 21, 13, ANY_DIR,   BLUES_AIDES_HOUSES, 3 ; marcelnote - new Aide's house
 IF DEF(_DEBUG) ; marcelnote - added for debug
 	warp_event 12,  7, WARP_DOWN, CHAMPIONS_ROOM, 1
+	warp_event 14,  7, WARP_DOWN, MT_SILVER_3F, 1
 ENDC
 
 	def_bg_events
