@@ -91,5 +91,3 @@ MtSilver3FYellowText:
 MtSilver3FYellowPostBattleText:
 	text_far _MtSilver3FYellowPostBattleText
 	text_end
-
-
