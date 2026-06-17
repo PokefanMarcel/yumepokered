@@ -76,7 +76,6 @@ Loosely inspired by the anime, manga, and later Pokémon generations, Yume featu
 - Postgame quests around each Elite 4 member to unlock their rematches.
 - A hidden location and adversary to unlock after battling Prof. Oak.
 - New secrets in the Cinnabar Mansion could lead you to meet the Mythical Pokémon, Mew.
-- Plenty of extra dialogue woven naturally into old and new locations.
 
 **Visuals**
 - Several maps have updated graphics and new animations.
