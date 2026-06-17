@@ -227,6 +227,8 @@ SaffronGymBrunoInspiringScript: ; marcelnote - postgame Bruno event
 	predef ShowObjectCont
 .end
 	call GBFadeInFromBlack
+	ld a, SFX_TELEPORT_EXIT_1
+	call PlaySound
 	call UpdateSaffronGymTileBlocks ; marcelnote - open Saffron Gym gate
 	jp SaffronGymResetScripts
 
