@@ -27,7 +27,7 @@ PrepareTitleScreen::
 
 DisplayTitleScreen:
 	call GBPalWhiteOut
-	ld a, $1
+	ld a, 1
 	ldh [hAutoBGTransferEnabled], a
 	xor a
 	ldh [hTileAnimations], a
@@ -396,40 +396,69 @@ CopyrightTextString:
 
 INCLUDE "data/pokemon/title_mons.asm"
 
-; prints version text (red, blue)
+; prints version text (red, blue, green)
 PrintGameVersionOnTitleScreen:
-	IF DEF(_RED)
-		hlcoord 6, 8
-	ELIF DEF(_GREEN)
-		hlcoord 6, 8
-	ELIF DEF(_BLUE)
-		hlcoord 6, 8
-	ENDC
+IF DEF(_FRA) ; French
+IF DEF(_RED)
+	hlcoord 6, 8
+ELIF DEF(_GREEN)
+	hlcoord 6, 8
+ELIF DEF(_BLUE)
+	hlcoord 6, 8
+ENDC
+ELIF DEF(_ESP) ; Spanish
+IF DEF(_RED)
+	hlcoord 6, 8
+ELIF DEF(_GREEN)
+	hlcoord 6, 8
+ELIF DEF(_BLUE)
+	hlcoord 6, 8
+ENDC
+ELSE ; English
+IF DEF(_RED)
+	hlcoord 6, 8
+ELIF DEF(_GREEN)
+	hlcoord 6, 8
+ELIF DEF(_BLUE)
+	hlcoord 6, 8
+ENDC
+ENDC
 	ld de, VersionOnTitleScreenText
 	jp PlaceString
 
 ; these point to special tiles specifically loaded for that purpose and are not usual text
 VersionOnTitleScreenText:
-IF DEF(_RED) && !DEF(_FRA) && !DEF(_ESP)
-	;db $60,$61,$7F,$65,$66,$67,$68,$69,"@" ; "Red Version" ; marcelnote - for original png file
-	db $61,$62,$63,$64,$65,$66,$67,$68,"@" ; "Red Version"
-ELIF DEF(_GREEN) && !DEF(_FRA) && !DEF(_ESP)
-	;db $62,$63,$64,$7F,$65,$66,$67,$68,$69,"@" ; "Green Version" ; marcelnote - for original png file
-	db $60,$61,$62,$63,$64,$65,$66,$67,$68,"@" ; "Green Version"
-ELIF DEF(_BLUE) && !DEF(_FRA) && !DEF(_ESP)
-	db $61,$62,$63,$64,$65,$66,$67,$68,"@" ; "Blue Version" ; marcelnote - this one is unchanged
-ELIF DEF(_RED) && DEF(_FRA)
+
+IF DEF(_FRA) ; French
+
+IF DEF(_RED)
 	db $60,$61,$62,$63,$64,$65,$66,$67,$68,"@" ; "Version Rouge"
-ELIF DEF(_GREEN) && DEF(_FRA)
+ELIF DEF(_GREEN)
 	db $60,$61,$62,$63,$64,$65,$66,$67,$68,"@" ; "Version Verte"
-ELIF DEF(_BLUE) && DEF(_FRA)
+ELIF DEF(_BLUE)
 	db $60,$61,$62,$63,$64,$65,$66,$67,$68,"@" ; "Version Bleue"
-ELIF DEF(_RED) && DEF(_ESP)
-	db $60,$61,$62,$63,$64,$65,$66,$67,"@" ; "Edición Roja"
-ELIF DEF(_GREEN) && DEF(_ESP)
+ENDC
+
+ELIF DEF(_ESP) ; Spanish
+
+IF DEF(_RED)
+	db $61,$62,$63,$64,$65,$66,$67,$68,"@"  ; "Edición Roja"
+ELIF DEF(_GREEN)
+	db $60,$61,$62,$63,$64,$65,$66,$67,$68,"@" ; "Edición Verde"
+ELIF DEF(_BLUE)
+	db $61,$62,$63,$64,$65,$66,$67,$68,"@"     ; "Edición Azul"
+ENDC
+
+ELSE ; English
+
+IF DEF(_RED)
+	db $61,$62,$63,$64,$65,$66,$67,$68,"@"     ; "Red Version"
+ELIF DEF(_GREEN)
 	db $60,$61,$62,$63,$64,$65,$66,$67,$68,"@" ; "Green Version"
-ELIF DEF(_BLUE) && DEF(_ESP)
-	db $61,$62,$63,$64,$65,$66,$67,$68,"@" ; "Edición Azul"
+ELIF DEF(_BLUE)
+	db $61,$62,$63,$64,$65,$66,$67,$68,"@"     ; "Blue Version"
+ENDC
+
 ENDC
 
 DebugNewGamePlayerName:
