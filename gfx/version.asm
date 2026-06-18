@@ -12,9 +12,9 @@ IF DEF(_FRA)
 ELIF DEF(_ESP)
 
 	IF DEF(_RED)
-		INCBIN "translation/esp/gfx/version_roja.esp.1bpp" ; 10 tiles
+		INCBIN "translation/esp/gfx/version_roja.esp.1bpp" ; 8 tiles
 	ELIF DEF(_GREEN)
-		INCBIN "translation/esp/gfx/version_verde.esp.1bpp" ; 9 tiles
+		INCBIN "translation/esp/gfx/version_verde.esp.1bpp" ; 10 tiles
 	ELIF DEF(_BLUE)
 		INCBIN "translation/esp/gfx/version_azul.esp.1bpp" ; 8 tiles
 	ENDC
