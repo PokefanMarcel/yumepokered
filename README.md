@@ -171,4 +171,4 @@ If you think your work should be credited here, please reach out – I'll be hap
 ## Contact
 
 Enjoy this project? Help make it even better!
-I’m looking for creative contributions like new music, fresh graphics (especially Pokémon backsprites), and translations into other languages — please reach out via [GitHub](https://github.com/PokefanMarcel/yumepokered/issues), [Discord server](https://discord.gg/AHbQ8vZ6FG), or [Reddit](https://www.reddit.com/message/compose/?to=wdpk_phoenix)!
+I’m looking for creative contributions like new music, fresh graphics (especially Pokémon backsprites), and translations into other languages — please reach out via [GitHub](https://github.com/PokefanMarcel/yumepokered/issues), [Discord](https://discord.gg/AHbQ8vZ6FG), or [Reddit](https://www.reddit.com/message/compose/?to=wdpk_phoenix)!
