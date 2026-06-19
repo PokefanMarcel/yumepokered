@@ -129,7 +129,7 @@ MainMenu:
 
 VersionText:
 	db "<PKMN>Yume "
-	db "v1.3beta@"
+	db "v1.3@"
 
 InitOptions:
 	ld a, 1 << BIT_FAST_TEXT_DELAY
