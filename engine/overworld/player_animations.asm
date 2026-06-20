@@ -386,7 +386,7 @@ FishingAnim:
 	ld a, [wStatusFlags4]
 	bit BIT_IS_GIRL, a
 	ld de, RedSprite
-	lb bc, BANK(RedSprite), $c
+	lb bc, BANK(RedSprite), $0c
 	jr z, .gotSprite
 	ld de, GreenSprite
 	ld bc, (BANK(GreenSprite) << 8) + $0c
@@ -484,12 +484,12 @@ ItsABiteText:
 	text_far _ItsABiteText
 	text_end
 
-FishingRodOAM:
+FishingRodOAM: ; marcelnote - moved tiles in VRAM
 ; specifies how the fishing rod should be drawn on the screen
-	dbsprite  9, 11,  4,  3, $fd, 0         ; down
-	dbsprite  9,  8,  4,  4, $fd, 0         ; up
-	dbsprite  8, 10,  0,  0, $fe, 0         ; left
-	dbsprite 11, 10,  0,  0, $fe, OAM_XFLIP ; right
+	dbsprite  9, 11,  4,  3, $fa, 0         ; down
+	dbsprite  9,  8,  4,  4, $fa, 0         ; up
+	dbsprite  8, 10,  0,  0, $fb, 0         ; left
+	dbsprite 11, 10,  0,  0, $fb, OAM_XFLIP ; right
 
 MACRO fishing_gfx
 	dw \1
@@ -502,13 +502,13 @@ RedFishingTiles:
 	fishing_gfx RedFishingTilesFront, 2, $02
 	fishing_gfx RedFishingTilesBack,  2, $06
 	fishing_gfx RedFishingTilesSide,  2, $0a
-	fishing_gfx RedFishingRodTiles,   3, $fd
+	fishing_gfx FishingRodTiles,      2, $fa ; marcelnote - moved in VRAM and removed third unused tile
 
 GreenFishingTiles:
 	fishing_gfx GreenFishingTilesFront, 2, $02
 	fishing_gfx GreenFishingTilesBack,  2, $06
 	fishing_gfx GreenFishingTilesSide,  2, $0a
-	fishing_gfx RedFishingRodTiles,     3, $fd
+	fishing_gfx FishingRodTiles,        2, $fa ; marcelnote - moved in VRAM and removed third unused tile
 
 _HandleMidJump::
 	ld a, [wPlayerJumpingYScreenCoordsIndex]
