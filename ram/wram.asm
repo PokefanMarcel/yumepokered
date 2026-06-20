@@ -737,9 +737,11 @@ UNION
 wTradedPlayerMonSpecies:: db
 wTradedEnemyMonSpecies:: db
 	ds 2
-wTradedPlayerMonOT:: ds NAME_LENGTH
+wTradedPlayerMonOT:: ds PLAYER_NAME_LENGTH ; marcelnote - was NAME_LENGTH
+	ds 3 ; reclaim 3 bytes
 wTradedPlayerMonOTID:: dw
-wTradedEnemyMonOT:: ds NAME_LENGTH
+wTradedEnemyMonOT:: ds PLAYER_NAME_LENGTH ; marcelnote - was NAME_LENGTH
+	ds 3 ; reclaim 3 bytes
 wTradedEnemyMonOTID:: dw
 
 NEXTU
@@ -1865,7 +1867,9 @@ wEvoStoneItemID:: db
 
 wSavedNPCMovementDirections2Index:: db
 
-wPlayerName:: ds NAME_LENGTH
+wPlayerName:: ds PLAYER_NAME_LENGTH ; marcelnote - was NAME_LENGTH
+
+	ds 3 ; reclaim 3 bytes
 
 
 SECTION "Party Data", WRAM0
@@ -1884,7 +1888,8 @@ ENDR
 wPartyMonOT::
 ; wPartyMon1OT - wPartyMon6OT
 FOR n, 1, PARTY_LENGTH + 1
-wPartyMon{d:n}OT:: ds NAME_LENGTH
+wPartyMon{d:n}OT:: ds PLAYER_NAME_LENGTH ; marcelnote - was NAME_LENGTH
+	ds 3 ; reclaim 3 bytes per Mon
 ENDR
 
 wPartyMonNicks::
@@ -1930,7 +1935,9 @@ wPlayerMoney:: ds 3 ; BCD
 
 wPlayerCoins:: dw ; BCD
 
-wRivalName:: ds NAME_LENGTH
+wRivalName:: ds PLAYER_NAME_LENGTH ; marcelnote - was NAME_LENGTH
+
+	ds 3 ; reclaim 3 bytes
 
 wOptions:: db
 
@@ -2333,7 +2340,9 @@ wWaterMons:: ds WILDDATA_LENGTH - 1
 
 NEXTU
 ; linked game's trainer name
-wLinkEnemyTrainerName:: ds NAME_LENGTH
+wLinkEnemyTrainerName:: ds PLAYER_NAME_LENGTH ; marcelnote - was NAME_LENGTH
+
+	ds 3 ; reclaim 3 bytes
 
 ;	ds 1
 
@@ -2353,7 +2362,8 @@ ENDR
 wEnemyMonOT::
 ; wEnemyMon1OT - wEnemyMon6OT
 FOR n, 1, PARTY_LENGTH + 1
-wEnemyMon{d:n}OT:: ds NAME_LENGTH
+wEnemyMon{d:n}OT:: ds PLAYER_NAME_LENGTH ; marcelnote - was NAME_LENGTH
+	ds 3 ; reclaim 3 bytes per Mon
 ENDR
 
 wEnemyMonNicks::
@@ -2395,7 +2405,9 @@ wNumSafariBalls:: db
 wDayCareInUse:: db
 
 wDayCareMonName:: ds NAME_LENGTH
-wDayCareMonOT::   ds NAME_LENGTH
+wDayCareMonOT::   ds PLAYER_NAME_LENGTH ; marcelnote - was NAME_LENGTH
+
+	ds 3 ; reclaim 3 bytes
 
 wDayCareMon:: box_struct wDayCareMon
 
@@ -2418,7 +2430,8 @@ ENDR
 wBoxMonOT::
 ; wBoxMon1OT - wBoxMon20OT
 FOR n, 1, MONS_PER_BOX + 1
-wBoxMon{d:n}OT:: ds NAME_LENGTH
+wBoxMon{d:n}OT:: ds PLAYER_NAME_LENGTH ; marcelnote - was NAME_LENGTH
+	ds 3 ; reclaim 3 bytes per Mon
 ENDR
 
 wBoxMonNicks::
