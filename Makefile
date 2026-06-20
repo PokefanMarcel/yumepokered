@@ -88,6 +88,8 @@ RGBGFXFLAGS  ?= -Weverything
 	clean \
 	tidy \
 	compare \
+	check-pngs \
+	normalize-pngs \
 	tools
 
 all: $(roms)
@@ -144,6 +146,15 @@ compare: $(roms) $(patches)
 
 tools:
 	$(MAKE) -C tools/
+
+# Explicit maintenance commands; normal builds never invoke these.
+normalize-pngs:
+	$(MAKE) -C tools png_normalize
+	tools/png_normalize .
+
+check-pngs:
+	$(MAKE) -C tools png_normalize
+	tools/png_normalize --check .
 
 
 RGBASMFLAGS += -Q8 -P includes.asm

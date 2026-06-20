@@ -158,3 +158,39 @@ If you have different projects that require different versions of `rgbds`, it mi
 ```bash
 make RGBDS=rgbds-1.0.1/
 ```
+
+### Normalize PNG sources
+
+Some image editors export grayscale artwork as full RGB or RGBA PNGs. These
+can be converted to the same four fixed shade bins used by `rgbgfx --colors
+dmg`: `0–63`, `64–127`, `128–191`, and `192–255`. Images using only the outer
+black and white bins become 1-bit grayscale; all other valid images become
+2-bit grayscale.
+
+```bash
+make normalize-pngs
+```
+
+This command is optional and is never run by a normal `make`. To report files
+that need normalization without changing them:
+
+```bash
+make check-pngs
+```
+
+Opaque colored PNGs and transparent colored PNGs are left unchanged.
+Transparent grayscale PNGs are reported as invalid because 1bpp/2bpp graphics
+have no alpha channel. Opaque grayscale images with more than four distinct
+shades, or multiple distinct shades in the same DMG bin, are also reported as
+invalid, just as `rgbgfx --colors dmg` rejects them.
+
+The utility can also be run directly on selected files or directories:
+
+```bash
+tools/png_normalize [--check] [--quiet] [path ...]
+```
+
+- `--check` (`-c`): report files without modifying them; exit with status 1
+  when normalization is needed.
+- `--quiet` (`-q`): suppress per-file and summary output.
+- With no paths, the current directory is scanned recursively.
