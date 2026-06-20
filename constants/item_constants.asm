@@ -239,8 +239,8 @@ ASSERT NUM_TMS == const_value - TM01, "NUM_TMS ({d:NUM_TMS}) does not match the 
 
 DEF NUM_TM_HM EQU NUM_TMS + NUM_HMS
 
-; 50 TMs + 5 HMs = 55 learnable TM/HM flags per Pokémon.
-; These fit in 7 bytes, with one unused bit left over.
+; 51 TMs + 5 HMs = 56 learnable TM/HM flags per Pokémon. ; marcelnote - added one TM
+; These fill all 7 bytes.
 ;DEF __tmhm_value__ = NUM_TM_HM + 1      ; marcelnote - HEX takes the one unused bit instead of UNUSED
 ;DEF UNUSED_TMNUM EQU __tmhm_value__     ;              so must remove this
 
