@@ -1,10 +1,16 @@
 ; marcelnote - Pikachu Surfing minigame
-SurfingPikachu1Graphics1::      INCBIN "gfx/surfing_pikachu/surfing_pikachu_1a.2bpp"
-SurfingPikachu1Graphics2::      INCBIN "gfx/surfing_pikachu/surfing_pikachu_1b.2bpp"
-SurfingPikachu1Graphics3::
+SurfingPikachuBGGraphics::      INCBIN "gfx/surfing_pikachu/background.2bpp"
+
+SurfingPikachuGameplayGraphics::
+SurfingPikachuSurfingGraphics::         INCBIN "gfx/surfing_pikachu/surfing_pikachu.2bpp"
+SurfingPikachuGameplayEffectsGraphics:: INCBIN "gfx/surfing_pikachu/gameplay_effects.2bpp"
+SurfingPikachuGameplayGraphicsEnd::
+
 SurfingPikachuIntroPikachuGFX:: INCBIN "gfx/surfing_pikachu/pikachu_intro.2bpp"
 SurfingPikachuTitleGFX::        INCBIN "gfx/surfing_pikachu/title.2bpp"
+
 SurfingPikachuBeachGFX::        INCBIN "gfx/surfing_pikachu/beach.2bpp"
 SurfingPikachuFrameGFX::        INCBIN "gfx/surfing_pikachu/frame.2bpp"
-SurfingPikachu2Graphics::       INCBIN "gfx/surfing_pikachu/surfing_pikachu_2.2bpp"
-SurfingPikachu2GraphicsEnd::
+
+SurfingPikachuPrinterGraphics:: INCBIN "gfx/surfing_pikachu/printer_sunset.2bpp"
+SurfingPikachuPrinterGraphicsEnd::

@@ -1,4 +1,6 @@
 ; marcelnote - Pikachu Surfing minigame
+; Some sprites were moved in VRAM.
+
 SurfingPikachuOAMData:
 	dbw $00, .SingleTile ; referenced but unused
 	dbw $00, .SurfingPikachu
@@ -17,21 +19,21 @@ SurfingPikachuOAMData:
 	dbw $69, .SurfingPikachu
 	dbw $6c, .UnusedFrontPikachu
 	dbw $9c, .UnusedBackPikachu
-	dbw $a0, .ResultsPikachu
-	dbw $a3, .ResultsPikachu
+	dbw $6c, .ResultsPikachu1
+	dbw $0f, .ResultsPikachu2
 	dbw $a7, .SmallSplash
 	dbw $a8, .LargeSplash
-	dbw $98, .EmptySurfboard
-	dbw $e0, .StartText
-	dbw $e6, .GoalText ; referenced but unused
-	dbw $ca, .OhNoText
+	dbw $d6, .EmptySurfboard
+	dbw $90, .StartText
+	dbw $b0, .GoalText ; marcelnote - restored GOAL anim
+	dbw $d0, .OhNoText
 	dbw $a7, .WaterSpray
-	dbw $00, .Plus50Pts
-	dbw $00, .Plus150Pts
-	dbw $00, .Plus350Pts
-	dbw $00, .Plus750Pts
-	dbw $00, .Plus180Pts
-	dbw $00, .Plus500Pts
+	dbw $f0, .Plus50Pts
+	dbw $f0, .Plus150Pts
+	dbw $f0, .Plus350Pts
+	dbw $f0, .Plus750Pts
+	dbw $f0, .Plus180Pts
+	dbw $f0, .Plus500Pts
 	dbw $00, .IntroPikachu ; marcelnote - minus $80 since moved Pikachu in VRAM
 	dbw $04, .IntroPikachu
 	dbw $08, .IntroPikachu
@@ -44,7 +46,7 @@ SurfingPikachuOAMData:
 .SurfingPikachu:
 .UnusedFrontPikachu:
 .UnusedBackPikachu:
-.ResultsPikachu:
+.ResultsPikachu1:
 	db 9
 	db -12, -12, $00, 0
 	db -12,  -4, $01, 0
@@ -55,6 +57,18 @@ SurfingPikachuOAMData:
 	db   4, -12, $20, 0
 	db   4,  -4, $21, 0
 	db   4,   4, $22, 0
+
+.ResultsPikachu2:
+	db 9
+	db -12, -12, $00, 0
+	db -12,  -4, $30, 0
+	db -12,   4, $60, 0
+	db  -4, -12, $10, 0
+	db  -4,  -4, $40, 0
+	db  -4,   4, $70, 0
+	db   4, -12, $20, 0
+	db   4,  -4, $50, 0
+	db   4,   4, $80, 0
 
 .StartText:
 .GoalText:
@@ -111,44 +125,44 @@ SurfingPikachuOAMData:
 
 .Plus50Pts:
 	db 3
-	db  -4, -12, $bf, 0
-	db  -4,  -4, $d5, 0
-	db  -4,   4, $d0, 0
+	db  -4, -12, $0a, 0
+	db  -4,  -4, $05, 0
+	db  -4,   4, $00, 0
 
 .Plus150Pts:
 	db 4
-	db  -4, -16, $bf, 0
-	db  -4,  -8, $d1, 0
-	db  -4,   0, $d5, 0
-	db  -4,   8, $d0, 0
+	db  -4, -16, $0a, 0
+	db  -4,  -8, $01, 0
+	db  -4,   0, $05, 0
+	db  -4,   8, $00, 0
 
 .Plus350Pts:
 	db 4
-	db  -4, -16, $bf, 0
-	db  -4,  -8, $d3, 0
-	db  -4,   0, $d5, 0
-	db  -4,   8, $d0, 0
+	db  -4, -16, $0a, 0
+	db  -4,  -8, $03, 0
+	db  -4,   0, $05, 0
+	db  -4,   8, $00, 0
 
 .Plus750Pts:
 	db 4
-	db  -4, -16, $bf, 0
-	db  -4,  -8, $d7, 0
-	db  -4,   0, $d5, 0
-	db  -4,   8, $d0, 0
+	db  -4, -16, $0a, 0
+	db  -4,  -8, $07, 0
+	db  -4,   0, $05, 0
+	db  -4,   8, $00, 0
 
 .Plus180Pts:
 	db 4
-	db  -4, -16, $bf, 0
-	db  -4,  -8, $d1, 0
-	db  -4,   0, $d8, 0
-	db  -4,   8, $d0, 0
+	db  -4, -16, $0a, 0
+	db  -4,  -8, $01, 0
+	db  -4,   0, $08, 0
+	db  -4,   8, $00, 0
 
 .Plus500Pts:
 	db 4
-	db  -4, -16, $bf, 0
-	db  -4,  -8, $d5, 0
-	db  -4,   0, $d0, 0
-	db  -4,   8, $d0, 0
+	db  -4, -16, $0a, 0
+	db  -4,  -8, $05, 0
+	db  -4,   0, $00, 0
+	db  -4,   8, $00, 0
 
 .IntroPikachu:
 	db 12

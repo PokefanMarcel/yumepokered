@@ -191,7 +191,7 @@ UpdateCurrentAnimatedObjectFrame:
 	inc de
 	call SetCurrentAnimatedObjectOAMAttributes
 	ld b, a
-	ld a, [wc634]
+	ld a, [wSurfingMinigameMusicTempoEnabled] ; marcelnote - actually alias only used in pokeyellow, need to clean this up
 	cp $7
 	ld a, b
 	jr z, .skipLoad
