@@ -5,54 +5,54 @@ TrainerAIPointers:
 	; next two bytes, pointer to AI subroutine for trainer class
 	; subroutines are defined in engine/battle/trainer_ai.asm
 	; marcelnote - this is just for Item use, for moves check TrainerClassMoveChoiceModifications
-	dbw 3, GenericAI      ; Youngster
-	dbw 3, GenericAI      ; Bug Catcher
-	dbw 3, GenericAI      ; Lass
-	dbw 3, GenericAI      ; Sailor
-	dbw 1, JrTrainerAI    ; JrTrainerM     ; 25% chance of Potion if HP < 1/5 HPMax
-	dbw 1, JrTrainerAI    ; JrTrainerF     ; 25% chance of Potion if HP < 1/5 HPMax
-	dbw 3, GenericAI      ; Pokemaniac
-	dbw 3, GenericAI      ; Supernerd
-	dbw 3, GenericAI      ; Hiker
-	dbw 1, BikerAI        ; Biker     ; 13% chance of XSpeed
-	dbw 3, GenericAI      ; Burglar
-	dbw 1, EngineerAI     ; Engineer  ; 13% chance of XDefend
-	dbw 3, GenericAI      ; Fisher
-	dbw 3, GenericAI      ; Swimmer
-	dbw 3, GenericAI      ; Cue Ball
-	dbw 3, GenericAI      ; Gambler
-	dbw 3, GenericAI      ; Beauty
-	dbw 1, PsychicAI      ; Psychic   ; 13% chance of XSpecial
-	dbw 3, GenericAI      ; Rocker
-	dbw 3, JugglerAI      ; Juggler   ; 25% chance to switch Mon
-	dbw 1, TamerAI        ; Tamer     ; 13% chance of XAccuracy
-	dbw 3, GenericAI      ; Bird Keeper
-	dbw 1, BlackbeltAI    ; Blackbelt ; 13% chance of XAttack, was 2
-	dbw 3, GenericAI      ; Rival1
-	dbw 1, Rival3AI       ; Prof.Oak  ; marcelnote - was 3, GenericAI
-	dbw 1, GenericAI      ; Chief
-	dbw 3, GenericAI      ; Scientist
-	dbw 1, GiovanniAI     ; Giovanni  ; 25% chance of GuardSpec and 13% chance of XSpecial
-	dbw 3, GenericAI      ; Rocket
-	dbw 2, CooltrainerMAI ; CooltrainerM  ; 25% chance of XAttack
-	dbw 1, CooltrainerFAI ; CooltrainerF  ; 25% chance of Hyper Potion if HP<1/10HPMax, else 25% chance to switch if HP<1/5HPMax
-	dbw 2, BrunoAI        ; Bruno     ; 50% chance of Hyper Potion if HP < 1/3 HPMax, else 25% of Dire Hit
-	dbw 5, BrockAI        ; Brock     ; Full Heal if status condition
-	dbw 1, MistyAI        ; Misty     ; 25% chance of XDefend
-	dbw 1, LtSurgeAI      ; Lt.Surge  ; 25% chance of XSpeed
-	dbw 1, ErikaAI        ; Erika     ; 50% chance of Super Potion if HP < 1/5 HPMax
-	dbw 2, KogaAI         ; Koga      ; 25% chance of XAttack
-	dbw 1, BlaineAI       ; Blaine    ; 50% chance of Hyper Potion if HP < 1/5 HPMax
-	dbw 1, SabrinaAI      ; Sabrina   ; 50% chance of Hyper Potion if HP < 1/5 HPMax
-	dbw 3, GenericAI      ; Gentleman
-	dbw 1, Rival2AI       ; Rival2    ; 25% chance of Potion if HP < 1/5 HPMax
-	dbw 1, Rival3AI       ; Rival3    ; 50% chance of Full Restore if HP < 1/3 HPMax, otherwise 25% if status condition
-	dbw 1, LoreleiAI      ; Lorelei   ; 50% chance of Hyper Potion if HP < 1/3 HPMax
-	dbw 3, GenericAI      ; Channeler
-	dbw 1, AgathaAI       ; Agatha    ; 8% chance to switch, 42% chance of Hyper Potion if HP < 1/4 HPMax
-	dbw 1, LanceAI        ; Lance     ; 50% chance of Hyper Potion if HP < 1/3 HPMax, otherwise 25% of Full Heal if status condition
-	dbw 1, Rival3AI       ; Yellow ; marcelnote - new trainer class
-	dbw 1, LoreleiAI      ; Will   ; marcelnote - new trainer class
-	dbw 3, GenericAI      ; Red    ; marcelnote - new trainer class
-	dbw 3, GenericAI      ; Green  ; marcelnote - new trainer class
+	dbw 3, GenericAI      ; YOUNGSTER
+	dbw 3, GenericAI      ; BUG_CATCHER
+	dbw 3, GenericAI      ; LASS
+	dbw 3, GenericAI      ; SAILOR
+	dbw 1, JrTrainerAI    ; JR_TRAINER_M     ; 25% chance of Potion if HP < 1/5 HPMax
+	dbw 1, JrTrainerAI    ; JR_TRAINER_F     ; 25% chance of Potion if HP < 1/5 HPMax
+	dbw 3, GenericAI      ; POKEMANIAC
+	dbw 3, GenericAI      ; SUPER_NERD
+	dbw 3, GenericAI      ; HIKER
+	dbw 1, BikerAI        ; BIKER      ; 13% chance of XSpeed
+	dbw 3, GenericAI      ; BURGLAR
+	dbw 1, EngineerAI     ; ENGINEER   ; 13% chance of XDefend
+	dbw 3, GenericAI      ; FISHER
+	dbw 3, GenericAI      ; SWIMMER
+	dbw 3, GenericAI      ; CUE_BALL
+	dbw 3, GenericAI      ; GAMBLER
+	dbw 3, GenericAI      ; BEAUTY
+	dbw 1, PsychicAI      ; PSYCHIC_TR ; 13% chance of XSpecial
+	dbw 3, GenericAI      ; ROCKER
+	dbw 3, JugglerAI      ; JUGGLER    ; 25% chance to switch Mon
+	dbw 1, TamerAI        ; TAMER      ; 13% chance of XAccuracy
+	dbw 3, GenericAI      ; BIRD_KEEPER
+	dbw 1, BlackbeltAI    ; BLACKBELT  ; 13% chance of XAttack, was 2
+	dbw 3, GenericAI      ; RIVAL1
+	dbw 1, Rival3AI       ; PROF_OAK   ; marcelnote - was 3, GenericAI
+	dbw 1, GenericAI      ; CHIEF
+	dbw 3, GenericAI      ; SCIENTIST
+	dbw 1, GiovanniAI     ; GIOVANNI  ; 25% chance of GuardSpec and 13% chance of XSpecial
+	dbw 3, GenericAI      ; ROCKET
+	dbw 2, CooltrainerMAI ; COOLTRAINER_M ; 25% chance of XAttack
+	dbw 1, CooltrainerFAI ; COOLTRAINER_F ; 25% chance of Hyper Potion if HP<1/10HPMax, else 25% chance to switch if HP<1/5HPMax
+	dbw 2, BrunoAI        ; BRUNO     ; 50% chance of Hyper Potion if HP < 1/3 HPMax, else 25% of Dire Hit
+	dbw 5, BrockAI        ; BROCK     ; Full Heal if status condition
+	dbw 1, MistyAI        ; MISTY     ; 25% chance of XDefend
+	dbw 1, LtSurgeAI      ; LT_SURGE  ; 25% chance of XSpeed
+	dbw 1, ErikaAI        ; ERIKA     ; 50% chance of Super Potion if HP < 1/5 HPMax
+	dbw 2, KogaAI         ; KOGA      ; 25% chance of XAttack
+	dbw 1, BlaineAI       ; BLAINE    ; 50% chance of Hyper Potion if HP < 1/5 HPMax
+	dbw 1, SabrinaAI      ; SABRINA   ; 50% chance of Hyper Potion if HP < 1/5 HPMax
+	dbw 3, GenericAI      ; GENTLEMAN
+	dbw 1, Rival2AI       ; RIVAL2    ; 25% chance of Potion if HP < 1/5 HPMax
+	dbw 1, Rival3AI       ; RIVAL3    ; 50% chance of Full Restore if HP < 1/3 HPMax, otherwise 25% if status condition
+	dbw 1, LoreleiAI      ; LORELEI   ; 50% chance of Hyper Potion if HP < 1/3 HPMax
+	dbw 3, GenericAI      ; CHANNELER
+	dbw 1, AgathaAI       ; AGATHA    ; 8% chance to switch, 42% chance of Hyper Potion if HP < 1/4 HPMax
+	dbw 1, LanceAI        ; LANCE     ; 50% chance of Hyper Potion if HP < 1/3 HPMax, otherwise 25% of Full Heal if status condition
+	dbw 1, Rival3AI       ; YELLOW ; marcelnote - new trainer class
+	dbw 1, LoreleiAI      ; WILL   ; marcelnote - new trainer class
+	dbw 3, GenericAI      ; RED    ; marcelnote - new trainer class
+	dbw 3, GenericAI      ; GREEN  ; marcelnote - new trainer class
 	assert_table_length NUM_TRAINERS
