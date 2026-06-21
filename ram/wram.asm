@@ -249,7 +249,7 @@ wAnimatedObjectsDataEnd::
 ; Surfing minigame
 wSurfingMinigameData:: db
 wSurfingMinigameRoutineNumber:: db
-wc5d2:: db
+wSurfingMinigamePikachuState:: db
 wSurfingMinigameWaveFunctionNumber:: dw
 wSurfingMinigameWaveRandomValue:: db
 wSurfingMinigamePikachuHP:: dw ; little-endian BCD
@@ -257,9 +257,9 @@ wSurfingMinigameUnusedC5D8:: db ; unused
 wSurfingMinigameRadnessMeter:: db
 wSurfingMinigameRadnessScore:: dw ; little-endian BCD
 wSurfingMinigameTotalScore:: dw ; little-endian BCD
-wc5de:: db
-wc5df:: db
-wc5e0:: db
+wSurfingMinigameBoardAngleOffset:: db
+wSurfingMinigameBoardAngleDecreasing:: db
+wSurfingMinigameBoardAngleTimer:: db
 wSurfingMinigameCrashTimer:: db
 wSurfingMinigameUnusedToggle:: db ; only used in unused function
 wSurfingMinigamePikachuSpeed:: dw ; little-endian
