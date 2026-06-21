@@ -873,6 +873,7 @@ SurfingMinigame_DPadAction:
 SurfingMinigame_TileInteraction:
 	ld hl, ANIM_OBJ_FRAME_SET
 	add hl, bc
+	ld d, [hl]
 	ld a, [wSurfingMinigameBGMapReadBuffer]
 	cp $6
 	jr z, .risingSlope
@@ -882,75 +883,71 @@ SurfingMinigame_TileInteraction:
 	jr z, .tile12
 	cp $7
 	jr z, .fallingSlope
-	ld a, [hl]
-	dec a ; 1?
+	dec d ; 1?
 	jr z, .wipeout
-	dec a ; 2?
+	dec d ; 2?
 	jr z, .hardLanding
-	dec a ; 3?
+	dec d ; 3?
 	jr z, .roughLanding
-	dec a ; 4?
+	dec d ; 4?
 	jr z, .cleanLanding
-	dec a ; 5?
+	dec d ; 5?
 	jr z, .roughLanding
-	dec a ; 6?
+	dec d ; 6?
 	jr z, .hardLanding
-	dec a ; 7?
+	dec d ; 7?
 	jr z, .wipeout
 	jr .wipeout
 
 .risingSlope
-	ld a, [hl]
-	dec a ; 1?
+	dec d ; 1?
 	jr z, .wipeout
-	dec a ; 2?
+	dec d ; 2?
 	jr z, .wipeout
-	dec a ; 3?
+	dec d ; 3?
 	jr z, .wipeout
-	dec a ; 4?
+	dec d ; 4?
 	jr z, .hardLanding
-	dec a ; 5?
+	dec d ; 5?
 	jr z, .roughLanding
-	dec a ; 6?
+	dec d ; 6?
 	jr z, .cleanLanding
-	dec a ; 7?
+	dec d ; 7?
 	jr z, .roughLanding
 	jr .wipeout
 
 .fallingSlope
-	ld a, [hl]
-	dec a ; 1?
+	dec d ; 1?
 	jr z, .roughLanding
-	dec a ; 2?
+	dec d ; 2?
 	jr z, .cleanLanding
-	dec a ; 3?
+	dec d ; 3?
 	jr z, .roughLanding
-	dec a ; 4?
+	dec d ; 4?
 	jr z, .hardLanding
-	dec a ; 5?
+	dec d ; 5?
 	jr z, .wipeout
-	dec a ; 6?
+	dec d ; 6?
 	jr z, .wipeout
-	dec a ; 7?
+	dec d ; 7?
 	jr z, .wipeout
 	jr .wipeout
 
 .tile12
 .tile14
-	ld a, [hl]
-	dec a ; 1?
+	dec d ; 1?
 	jr z, .wipeout
-	dec a ; 2?
+	dec d ; 2?
 	jr z, .hardLanding
-	dec a ; 3?
+	dec d ; 3?
 	jr z, .roughLanding
-	dec a ; 4?
+	dec d ; 4?
 	jr z, .cleanLanding
-	dec a ; 5?
+	dec d ; 5?
 	jr z, .cleanLanding
-	dec a ; 6?
+	dec d ; 6?
 	jr z, .roughLanding
-	dec a ; 7?
+	dec d ; 7?
 	jr z, .hardLanding
 	jr .wipeout
 
@@ -961,22 +958,25 @@ SurfingMinigame_TileInteraction:
 .roughLanding
 	ld de, -64
 .reduceSpeed
-	ld a, [wSurfingMinigamePikachuSpeed]
+	ld hl, wSurfingMinigamePikachuSpeed
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld a, [wSurfingMinigamePikachuSpeed + 1]
-	ld h, a
 	add hl, de
+	ld de, wSurfingMinigamePikachuSpeed
 	jr nc, .stop
 	ld a, l
-	ld [wSurfingMinigamePikachuSpeed], a
+	ld [de], a
+	inc de
 	ld a, h
-	ld [wSurfingMinigamePikachuSpeed + 1], a
+	ld [de], a
 	jr .cleanLanding
 
 .stop
 	xor a
-	ld [wSurfingMinigamePikachuSpeed], a
-	ld [wSurfingMinigamePikachuSpeed + 1], a
+	ld [de], a
+	inc de
+	ld [de], a
 .cleanLanding
 	ld a, SFX_SURFING_LAND
 	call PlaySound
@@ -984,10 +984,12 @@ SurfingMinigame_TileInteraction:
 	ret
 
 .wipeout
+	ld de, wSurfingMinigamePikachuSpeed
 	ld a, $40
-	ld [wSurfingMinigamePikachuSpeed], a
+	ld [de], a
+	inc de
 	xor a
-	ld [wSurfingMinigamePikachuSpeed + 1], a
+	ld [de], a
 	scf
 	ret
 
