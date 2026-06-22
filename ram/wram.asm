@@ -1716,7 +1716,7 @@ wMovesString:: ds NUM_MOVES * MOVE_NAME_LENGTH
 
 ;wUnusedCurMapTilesetCopy:: db ; marcelnote - removed
 
-	ds 1 ; marcelnote - was wWalkBikeSurfStateCopy
+wSurfingMinigamePlayerSpecies:: db ; marcelnote - was wWalkBikeSurfStateCopy
 
 ; the type of list for InitList to init
 wInitListType:: db

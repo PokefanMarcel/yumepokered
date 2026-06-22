@@ -42,6 +42,7 @@ SummerBeachHouseSurfinDudeText:
 	; The minigame reload path restores the map for the overworld, but not the
 	; active NPC dialogue window.
 	callfar DisplayTextIDInit
+;	callfar IsSurfingPikachuInParty ; refresh wNameBuffer after the minigame
 	xor a
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	CheckEvent EVENT_GOT_SURF_VOUCHER

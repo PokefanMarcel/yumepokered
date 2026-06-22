@@ -296,6 +296,11 @@ SetPal_SurfingPikachuHiscore: ; marcelnote - Pikachu Surfing minigame
 	ld de, BlkPacket_WholeScreen
 	ret
 
+SetPal_SurfingRaichu:
+	ld hl, PalPacket_SurfingRaichu
+	ld de, BlkPacket_WholeScreen
+	ret
+
 SetPal_BillsPC: ; marcelnote - revamped Bill's PC
 	ld hl, PalPacket_BillsPC
 	ld de, BlkPacket_BillsPC
@@ -321,6 +326,7 @@ SetPalFunctions:
 ;	dw SetPal_PikachusBeachTitle
 	dw SetPal_PikachusBeach
 	dw SetPal_SurfingPikachuHiscore
+	dw SetPal_SurfingRaichu
 	dw SetPal_BillsPC ; marcelnote - revamped Bill's PC
 
 ; The length of the blk data of each badge on the Trainer Card.

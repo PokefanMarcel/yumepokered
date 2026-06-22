@@ -325,34 +325,49 @@ IsMoveInParty::
 
 ; marcelnote - new function adapted from pokeyellow
 IsSurfingPikachuInParty::
-; sets nz if Pikachu with Surf in party
+; Sets nz if Pikachu or Raichu with Surf is in the party.
+; Stores its species in wSurfingMinigamePlayerSpecies and nickname in wNameBuffer.
+	xor a
+	ld [wSurfingMinigamePlayerSpecies], a
 	ld a, [wPartyCount]
 	and a
 	ret z	; if party count is 0
-	ld c, a ; = party count
+	ld b, a ; b = party count
+	ld c, 0 ; c = party index
 	ld hl, wPartyMon1
 .loop
 	ld a, [hl]
 	cp PIKACHU
-	jr nz, .notPikachu
+	jr z, .checkMoves
+	cp RAICHU
+	jr nz, .nextPokemon
+.checkMoves
 	push hl
 	ld de, wPartyMon1Moves - wPartyMon1
 	add hl, de
-	ld b, NUM_MOVES
+	ld d, NUM_MOVES
 .nextMove
 	ld a, [hli]
-	sub SURF
+	cp SURF
 	jr z, .hasSurf
-	dec b
+	dec d
 	jr nz, .nextMove
 	pop hl
-.notPikachu
+.nextPokemon
 	ld de, wPartyMon2 - wPartyMon1
 	add hl, de
-	dec c
+	inc c
+	dec b
 	jr nz, .loop
 	ret  ; z flag set
-.hasSurf ; a = 0 here
+.hasSurf
 	pop hl
-	inc a ; clear z flag
+	ld a, [hl]
+	ld [wSurfingMinigamePlayerSpecies], a
+	ld a, c
+	ld hl, wPartyMon1Nick
+	call SkipNameEntries
+	ld de, wNameBuffer
+	call CopyData ; returns b = 0
+	inc b       ; so clears z flag
 	ret

@@ -12,7 +12,9 @@ _SummerBeachHouseSurfinDudeWhoaText::
 ;
 ;	para "Give it a go?"
 	text "Wait... Your"
-	line "PIKACHU knows"
+	line "@"
+	text_ram wNameBuffer ; marcelnote - print nickname of Mon instead
+	text " knows"
 	cont "how to SURF!"
 
 	para "So I'm not the"
@@ -32,8 +34,11 @@ _SummerBeachHouseSurfinDudeComeAnytimeText::
 	done
 
 _SummerBeachHouseSurfinDudeImpressedText::
-	text "Whoa! Your PIKACHU"
-	line "really has a feel"
+	text "Whoa! Your"
+	line "@"
+	text_ram wNameBuffer
+	text " really"
+	cont "has a feel"
 	cont "for the waves!"
 
 	para "Here, take this."

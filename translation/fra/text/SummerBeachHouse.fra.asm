@@ -12,7 +12,9 @@ _SummerBeachHouseSurfinDudeWhoaText::
 ;
 ;	para "Ca te tente?"
 	text "Mais... Ton"
-	line "PIKACHU aussi"
+	line "@"
+	text_ram wNameBuffer
+	text " aussi"
 	cont "sait SURFER!"
 
 	para "Je ne suis donc"
@@ -33,8 +35,11 @@ _SummerBeachHouseSurfinDudeComeAnytimeText::
 	done
 
 _SummerBeachHouseSurfinDudeImpressedText::
-	text "Wah! Ton PIKACHU"
-	line "a le SURF dans"
+	text "Wah! Ton"
+	line "@"
+	text_ram wNameBuffer
+	text_start
+	cont "a le SURF dans"
 	cont "la peau!"
 
 	para "Tiens, prends ça."

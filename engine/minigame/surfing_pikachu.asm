@@ -183,9 +183,14 @@ SurfingPikachuMinigame_LoadGFXAndLayout:
 	ld bc, 54 tiles
 	call CopyData
 
-	ld hl, SurfingPikachuGameplayGraphics
+	call SurfingPikachu_GetGameplayMonGFX ; marcelnote - load Mon-specific assets
 	ld de, vChars0
-	ld bc, SurfingPikachuGameplayGraphicsEnd - SurfingPikachuGameplayGraphics
+	ld bc, SurfingPikachuGameplayMonGFXEnd - SurfingPikachuGameplayMonGFX
+	call FarCopyData
+
+	ld hl, SurfingPikachuGameplayEffectsGraphics ; marcelnote - load common assets
+	ld de, vChars0 + (SurfingPikachuGameplayMonGFXEnd - SurfingPikachuGameplayMonGFX)
+	ld bc, SurfingPikachuGameplayEffectsGraphicsEnd - SurfingPikachuGameplayEffectsGraphics
 	call CopyData
 
 	ld a, LOW(SurfingPikachuObjectSpawnData)
@@ -2223,10 +2228,10 @@ SurfingPikachuMinigameIntro:
 	xor a
 	ldh [hAutoBGTransferEnabled], a
 	call ClearObjectAnimationBuffers
-	ld hl, SurfingPikachuIntroPikachuGFX
+	call SurfingPikachu_GetIntroGFX
 	ld de, vSprites
-	ld bc, 48 tiles
-	call CopyData
+	ld bc, SurfingPikachuIntroGFXEnd - SurfingPikachuIntroGFX
+	call FarCopyData
 	ld hl, SurfingPikachuTitleGFX
 	ld de, vTileset
 	ld bc, 78 tiles
@@ -2260,7 +2265,7 @@ SurfingPikachuMinigameIntro:
 	ldh [hSCY], a
 	ld a, $90
 	ldh [hWY], a
-	ld b, SET_PAL_SURFING_PIKACHU_MINIGAME ; was SET_PAL_SURFING_PIKACHU_TITLE
+	call SurfingPikachu_GetPaletteCommand
 	call RunPaletteCommand
 	ld a, $e3
 	ldh [rLCDC], a
@@ -2290,6 +2295,36 @@ SurfingPikachuMinigameIntro:
 	call RunObjectAnimations
 	call DelayFrame
 	jr .loop
+
+SurfingPikachu_GetGameplayMonGFX: ; marcelnote - new for different player Mons
+	ld a, [wSurfingMinigamePlayerSpecies]
+	cp PIKACHU
+	ld hl, SurfingPikachuGameplayMonGFX
+	ld a, BANK(SurfingPikachuGameplayMonGFX)
+	ret z
+	; RAICHU
+	ld hl, SurfingRaichuGameplayMonGFX
+	ld a, BANK(SurfingRaichuGameplayMonGFX)
+	ret
+
+SurfingPikachu_GetIntroGFX: ; marcelnote - new for different player Mons
+	ld a, [wSurfingMinigamePlayerSpecies]
+	cp PIKACHU
+	ld hl, SurfingPikachuIntroGFX
+	ld a, BANK(SurfingPikachuIntroGFX)
+	ret z
+	; RAICHU
+	ld hl, SurfingRaichuIntroGFX
+	ld a, BANK(SurfingRaichuIntroGFX)
+	ret
+
+SurfingPikachu_GetPaletteCommand: ; marcelnote - new for different player Mons
+	ld a, [wSurfingMinigamePlayerSpecies]
+	cp PIKACHU
+	ld b, SET_PAL_SURFING_PIKACHU_MINIGAME
+	ret z
+	ld b, SET_PAL_SURFING_RAICHU
+	ret
 
 PrepareSurfingMinigameHighScoreScreen::
 	call GBPalWhiteOutWithDelay3

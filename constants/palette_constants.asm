@@ -16,9 +16,10 @@
 	const SET_PAL_GAME_FREAK_INTRO     ; $0C
 	const SET_PAL_TRAINER_CARD         ; $0D
 	; marcelnote - Pikachu Surfing minigame
-;	const SET_PAL_SURFING_PIKACHU_TITLE    ; $0E
-	const SET_PAL_SURFING_PIKACHU_MINIGAME ; $0F
-	const SET_PAL_SURFING_PIKACHU_HISCORE  ; $10
+;	const SET_PAL_SURFING_PIKACHU_TITLE
+	const SET_PAL_SURFING_PIKACHU_MINIGAME ; $0E
+	const SET_PAL_SURFING_PIKACHU_HISCORE  ; $0F
+	const SET_PAL_SURFING_RAICHU           ; $10
 	; marcelnote - revamped Bill's PC
 	const SET_PAL_BILLS_PC                 ; $11
 
@@ -73,4 +74,5 @@ DEF SET_PAL_DEFAULT EQU $ff
 	const PAL_PIKACHU_PORTRAIT     ; $27
 	const PAL_PIKACHUS_BEACH_TITLE ; $28
 	const PAL_SURFING_HISCORE      ; $29
+	const PAL_SURFING_RAICHU       ; $2A
 DEF NUM_SGB_PALS EQU const_value
