@@ -9,7 +9,7 @@ INCLUDE "macros/coords.asm"
 INCLUDE "macros/vc.asm"
 
 ;INCLUDE "macros/scripts/audio.asm"
-INCLUDE "macros/scripts/gfx_anims.asm" ; marcelnote - Pikachu Surfing minigame
+INCLUDE "macros/scripts/gfx_anims.asm" ; marcelnote - Pikachu's Beach minigame
 INCLUDE "macros/scripts/maps.asm"
 INCLUDE "macros/scripts/events.asm"
 INCLUDE "macros/scripts/text.asm"
@@ -45,7 +45,7 @@ INCLUDE "constants/player_constants.asm"
 INCLUDE "constants/trainer_constants.asm"
 INCLUDE "constants/icon_constants.asm"
 INCLUDE "constants/sprite_constants.asm"
-INCLUDE "constants/sprite_anim_constants.asm" ; marcelnote - Pikachu Surfing minigame
+INCLUDE "constants/sprite_anim_constants.asm" ; marcelnote - Pikachu's Beach minigame
 INCLUDE "constants/sprite_data_constants.asm"
 INCLUDE "constants/palette_constants.asm"
 INCLUDE "constants/list_constants.asm"

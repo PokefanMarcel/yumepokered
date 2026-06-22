@@ -15,10 +15,10 @@
 	const SET_PAL_POKEMON_WHOLE_SCREEN ; $0B
 	const SET_PAL_GAME_FREAK_INTRO     ; $0C
 	const SET_PAL_TRAINER_CARD         ; $0D
-	; marcelnote - Pikachu Surfing minigame
-;	const SET_PAL_SURFING_PIKACHU_TITLE
-	const SET_PAL_SURFING_PIKACHU_MINIGAME ; $0E
-	const SET_PAL_SURFING_PIKACHU_HISCORE  ; $0F
+	; marcelnote - Pikachu's Beach minigame
+;	const SET_PAL_PIKACHUS_BEACH_TITLE
+	const SET_PAL_PIKACHUS_BEACH ; $0E
+	const SET_PAL_PIKACHUS_BEACH_HISCORE  ; $0F
 	const SET_PAL_SURFING_RAICHU           ; $10
 	; marcelnote - revamped Bill's PC
 	const SET_PAL_BILLS_PC                 ; $11
@@ -69,7 +69,7 @@ DEF SET_PAL_DEFAULT EQU $ff
 	const PAL_CAVE      ; $23
 	const PAL_VOLCANO   ; $24 ; marcelnote - new
 	const PAL_GAMEFREAK ; $25
-	; marcelnote - Pikachu Surfing minigame
+	; marcelnote - Pikachu's Beach minigame
 	const PAL_PIKACHUS_BEACH       ; $26
 	const PAL_PIKACHU_PORTRAIT     ; $27
 	const PAL_PIKACHUS_BEACH_TITLE ; $28

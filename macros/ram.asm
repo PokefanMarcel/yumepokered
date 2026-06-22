@@ -101,7 +101,7 @@ MACRO sprite_oam_struct
 \1Attributes:: db
 ENDM
 
-MACRO animated_object ; marcelnote - Pikachu Surfing minigame
+MACRO animated_object ; marcelnote - Pikachu's Beach minigame
 \1Index::          db
 \1FramesetID::     db
 \1AnimSeqID::      db

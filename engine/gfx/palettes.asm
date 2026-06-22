@@ -281,18 +281,18 @@ SetPal_TrainerCard:
 	ld de, wTrainerCardBlkPacket
 	ret
 
-SetPal_PikachusBeach: ; marcelnote - Pikachu Surfing minigame
+SetPal_PikachusBeach: ; marcelnote - Pikachu's Beach minigame
 	ld hl, PalPacket_PikachusBeach
 	ld de, BlkPacket_WholeScreen
 	ret
 
-;SetPal_PikachusBeachTitle: ; marcelnote - Pikachu Surfing minigame
+;SetPal_PikachusBeachTitle: ; marcelnote - Pikachu's Beach minigame
 ;	ld hl, PalPacket_PikachusBeachTitle
 ;	ld de, BlkPacket_PikachusBeachTitle
 ;	ret
 
-SetPal_SurfingPikachuHiscore: ; marcelnote - Pikachu Surfing minigame
-	ld hl, PalPacket_SurfingPikachuHiscore
+SetPal_PikachusBeachHiscore: ; marcelnote - Pikachu's Beach minigame
+	ld hl, PalPacket_PikachusBeachHiscore
 	ld de, BlkPacket_WholeScreen
 	ret
 
@@ -322,10 +322,10 @@ SetPalFunctions:
 	dw SetPal_PokemonWholeScreen
 	dw SetPal_GameFreakIntro
 	dw SetPal_TrainerCard
-	; marcelnote - Pikachu Surfing minigame
+	; marcelnote - Pikachu's Beach minigame
 ;	dw SetPal_PikachusBeachTitle
 	dw SetPal_PikachusBeach
-	dw SetPal_SurfingPikachuHiscore
+	dw SetPal_PikachusBeachHiscore
 	dw SetPal_SurfingRaichu
 	dw SetPal_BillsPC ; marcelnote - revamped Bill's PC
 

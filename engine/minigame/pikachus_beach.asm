@@ -1,6 +1,6 @@
-; marcelnote - Pikachu Surfing minigame
-SurfingPikachuMinigame::
-	call SurfingPikachuMinigame_BlankPals
+; marcelnote - Pikachu's Beach minigame
+PikachusBeach::
+	call PikachusBeach_BlankPals
 	call DelayFrame
 	call DelayFrame
 	call DelayFrame
@@ -24,8 +24,8 @@ SurfingPikachuMinigame::
 	push af
 	ld a, HIGH(vBGMap0)
 	ldh [hAutoBGTransferDest + 1], a
-	call SurfingPikachuMinigameIntro
-	call SurfingPikachuLoop
+	call PikachusBeachIntro
+	call PikachusBeachLoop
 	xor a
 	ldh [rBGP], a
 	ldh [rOBP0], a
@@ -58,16 +58,16 @@ SurfingPikachuMinigame::
 	ldh [hTileAnimations], a
 	ret
 
-SurfingPikachuLoop:
-	call SurfingPikachuMinigame_LoadGFXAndLayout
+PikachusBeachLoop:
+	call PikachusBeach_LoadGFXAndLayout
 	call DelayFrame
-;	ld b, SET_PAL_SURFING_PIKACHU_MINIGAME
+;	ld b, SET_PAL_PIKACHUS_BEACH
 ;	call RunPaletteCommand
 .loop
 	ld a, [wSurfingMinigameRoutineNumber]
 	bit 7, a
 	ret nz
-	call SurfingPikachu_GetJoypad_3FrameBuffer
+	call PikachusBeach_GetJoypad_3FrameBuffer
 	ldh a, [hJoyPressed]
 	and PAD_SELECT
 	ret nz ; if pressed Select, exit the minigame
@@ -80,7 +80,7 @@ SurfingPikachuLoop:
 	call SurfingMinigame_UpdateMusicTempo
 	jr .loop
 
-;SurfingPikachu_ToggleStartFlag: ; unused
+;PikachusBeach_ToggleStartFlag: ; unused
 ;	ldh a, [hJoyPressed]
 ;	and PAD_START
 ;	ret z
@@ -161,9 +161,9 @@ SurfingMinigame_ApplyMusicTempo:
 	ld [wChannel3Field16], a
 	ret
 
-SurfingPikachuMinigame_LoadGFXAndLayout:
+PikachusBeach_LoadGFXAndLayout:
 	di
-	call SurfingPikachu_ClearTileMap
+	call PikachusBeach_ClearTileMap
 	call ClearSprites
 	call DisableLCD
 	ld hl, wSurfingMinigameData
@@ -178,39 +178,39 @@ SurfingPikachuMinigame_LoadGFXAndLayout:
 	ldh [hAutoBGTransferEnabled], a
 	call ClearObjectAnimationBuffers
 
-	ld hl, SurfingPikachuBGGraphics
+	ld hl, PikachusBeachBGGraphics
 	ld de, vChars2
 	ld bc, 54 tiles
 	call CopyData
 
-	call SurfingPikachu_GetGameplayMonGFX ; marcelnote - load Mon-specific assets
+	call PikachusBeach_GetGameplayMonGFX ; marcelnote - load Mon-specific assets
 	ld de, vChars0
 	ld bc, SurfingPikachuGameplayMonGFXEnd - SurfingPikachuGameplayMonGFX
 	call FarCopyData
 
-	ld hl, SurfingPikachuGameplayEffectsGraphics ; marcelnote - load common assets
+	ld hl, PikachusBeachGameplayEffectsGraphics ; marcelnote - load common assets
 	ld de, vChars0 + (SurfingPikachuGameplayMonGFXEnd - SurfingPikachuGameplayMonGFX)
-	ld bc, SurfingPikachuGameplayEffectsGraphicsEnd - SurfingPikachuGameplayEffectsGraphics
+	ld bc, PikachusBeachGameplayEffectsGraphicsEnd - PikachusBeachGameplayEffectsGraphics
 	call CopyData
 
-	ld a, LOW(SurfingPikachuObjectSpawnData)
+	ld a, LOW(PikachusBeachObjectSpawnData)
 	ld [wAnimatedObjectSpawnStateDataPointer], a
-	ld a, HIGH(SurfingPikachuObjectSpawnData)
+	ld a, HIGH(PikachusBeachObjectSpawnData)
 	ld [wAnimatedObjectSpawnStateDataPointer + 1], a
 
-	ld a, LOW(SurfingPikachuObjectCallbacks)
+	ld a, LOW(PikachusBeachObjectCallbacks)
 	ld [wAnimatedObjectJumptablePointer], a
-	ld a, HIGH(SurfingPikachuObjectCallbacks)
+	ld a, HIGH(PikachusBeachObjectCallbacks)
 	ld [wAnimatedObjectJumptablePointer + 1], a
 
-	ld a, LOW(SurfingPikachuOAMData)
+	ld a, LOW(PikachusBeachOAMData)
 	ld [wAnimatedObjectOAMDataPointer], a
-	ld a, HIGH(SurfingPikachuOAMData)
+	ld a, HIGH(PikachusBeachOAMData)
 	ld [wAnimatedObjectOAMDataPointer + 1], a
 
-	ld a, LOW(SurfingPikachuFrames)
+	ld a, LOW(PikachusBeachFrames)
 	ld [wAnimatedObjectFramesDataPointer], a
-	ld a, HIGH(SurfingPikachuFrames)
+	ld a, HIGH(PikachusBeachFrames)
 	ld [wAnimatedObjectFramesDataPointer + 1], a
 
 	ld hl, vBGMap0
@@ -251,11 +251,11 @@ SurfingPikachuMinigame_LoadGFXAndLayout:
 	ld bc, $14
 	ld a, $74
 	call FillMemory
-	call SurfingPikachuMinigame_InitStaticSpriteLayout
-	call SurfingPikachuMinigame_DrawStaticTilemapLayout
+	call PikachusBeach_InitStaticSpriteLayout
+	call PikachusBeach_DrawStaticTilemapLayout
 	ld a, $e3
 	ldh [rLCDC], a
-	call SurfingPikachuMinigame_SetBGPals
+	call PikachusBeach_SetBGPals
 	ld a, $e4
 	ldh [rOBP0], a
 	ld a, $e0
@@ -263,7 +263,7 @@ SurfingPikachuMinigame_LoadGFXAndLayout:
 ;	call SurfingMinigame_UpdatePalettes
 	reti
 
-SurfingPikachuMinigame_SetBGPals:
+PikachusBeach_SetBGPals:
 	ld a, [wOnSGB]
 	and a
 	ld a, $e4
@@ -274,26 +274,26 @@ SurfingPikachuMinigame_SetBGPals:
 ;	call SurfingMinigame_UpdatePalettes
 	ret
 
-SurfingPikachuMinigame_InitStaticSpriteLayout:
+PikachusBeach_InitStaticSpriteLayout:
 	ld hl, wSpriteDataEnd
-	ld de, SurfingPikachuHPDigitTiles
+	ld de, PikachusBeachHPDigitTiles
 	lb bc, $97, $80
 	ld a, 4
-	call SurfingPikachuMinigame_PlaceSpriteRowFromTiles
-	ld de, SurfingPikachuMiniPikachuTile
+	call PikachusBeach_PlaceSpriteRowFromTiles
+	ld de, PikachusBeachMiniPikachuTile
 	lb bc, $96, $50
 	ld a, 1
-	call SurfingPikachuMinigame_PlaceSpriteRowFromTiles
-	ld de, SurfingPikachuWideCloudTiles
+	call PikachusBeach_PlaceSpriteRowFromTiles
+	ld de, PikachusBeachWideCloudTiles
 	lb bc, $14, $20
 	ld a, 5
-	call SurfingPikachuMinigame_PlaceSpriteRowFromTiles
-	ld de, SurfingPikachuNarrowCloudTiles
+	call PikachusBeach_PlaceSpriteRowFromTiles
+	ld de, PikachusBeachNarrowCloudTiles
 	lb bc, $20, $80
 	ld a, 4
-	jp SurfingPikachuMinigame_PlaceSpriteRowFromTiles
+	jp PikachusBeach_PlaceSpriteRowFromTiles
 
-SurfingPikachuMinigame_PlaceSpriteRowFromTiles:
+PikachusBeach_PlaceSpriteRowFromTiles:
 .loop
 	push af
 	ld a, b
@@ -313,28 +313,28 @@ SurfingPikachuMinigame_PlaceSpriteRowFromTiles:
 	jr nz, .loop
 	ret
 
-SurfingPikachuMiniPikachuTile:
+PikachusBeachMiniPikachuTile:
 	db $d9
 
-SurfingPikachuHPDigitTiles:
+PikachusBeachHPDigitTiles:
 	REPT 4
 		db $f0
 	ENDR
 
-SurfingPikachuWideCloudTiles:
+PikachusBeachWideCloudTiles:
 	db $96
 	db $97
 	db $97
 	db $98
 	db $99
 
-SurfingPikachuNarrowCloudTiles:
+PikachusBeachNarrowCloudTiles:
 	db $96
 	db $97
 	db $98
 	db $99
 
-SurfingPikachuMinigame_DrawStaticTilemapLayout:
+PikachusBeach_DrawStaticTilemapLayout:
 	bgcoord de, 1, 1, vBGMap1
 	ld hl, .StatusBarTiles
 	ld c, 9
@@ -727,7 +727,7 @@ SurfingMinigame_UpdateLandingPikachu:
 	ld d, $4
 	add d
 	ld [hl], a
-	call SurfingPikachu_Sine
+	call PikachusBeach_Sine
 	ld hl, ANIM_OBJ_Y_OFFSET
 	add hl, bc
 	ld [hl], a
@@ -789,7 +789,7 @@ SurfingMinigame_UpdateResultsPikachu:
 	cp $20
 	jr c, .resetOffset
 	ld d, $10
-	call SurfingPikachu_Sine
+	call PikachusBeach_Sine
 	ld hl, ANIM_OBJ_Y_OFFSET
 	add hl, bc
 	ld [hl], a
@@ -1194,7 +1194,7 @@ SurfingMinigameAnimatedObjectFn_FlippingPika:
 	add hl, bc
 	ld a, [hl]
 	inc [hl]
-	call SurfingPikachu_Sine
+	call PikachusBeach_Sine
 	cp $80
 	jr nc, .positive
 	xor $ff
@@ -1481,10 +1481,10 @@ SurfingMinigame_BCDPrintHPLeft:
 	hlcoord 10, 2
 	ld de, wSurfingMinigamePikachuHP + 1
 	ld a, [de]
-	call SurfingPikachu_PlaceBCDNumber
+	call PikachusBeach_PlaceBCDNumber
 	inc hl
 	ld a, [de]
-	call SurfingPikachu_PlaceBCDNumber
+	call PikachusBeach_PlaceBCDNumber
 	inc hl
 	inc hl
 	ld [hl], $1d ; P
@@ -1541,10 +1541,10 @@ SurfingMinigame_AddRadnessToTotal:
 SurfingMinigame_BCDPrintRadness:
 	ld a, [wSurfingMinigameRadnessScore + 1]
 	hlcoord 10, 4
-	call SurfingPikachu_PlaceBCDNumber
+	call PikachusBeach_PlaceBCDNumber
 	ld a, [wSurfingMinigameRadnessScore]
 	hlcoord 12, 4
-	call SurfingPikachu_PlaceBCDNumber
+	call PikachusBeach_PlaceBCDNumber
 	inc hl
 	inc hl
 	ld [hl], $1d ; P
@@ -1573,10 +1573,10 @@ SurfingMinigame_AddPointsToTotal:
 SurfingMinigame_BCDPrintTotalScore:
 	ld a, [wSurfingMinigameTotalScore + 1]
 	hlcoord 10, 6
-	call SurfingPikachu_PlaceBCDNumber
+	call PikachusBeach_PlaceBCDNumber
 	ld a, [wSurfingMinigameTotalScore]
 	hlcoord 12, 6
-	call SurfingPikachu_PlaceBCDNumber
+	call PikachusBeach_PlaceBCDNumber
 	inc hl
 	inc hl
 	ld [hl], $1d ; P
@@ -2221,51 +2221,51 @@ SurfingMinigame_ResetWaveSequence:
 	ld [wSurfingMinigameWaveFunctionNumber], a
 	ret
 
-SurfingPikachuMinigameIntro:
-	call SurfingPikachu_ClearTileMap
+PikachusBeachIntro:
+	call PikachusBeach_ClearTileMap
 	call ClearSprites
 	call DisableLCD
 	xor a
 	ldh [hAutoBGTransferEnabled], a
 	call ClearObjectAnimationBuffers
-	call SurfingPikachu_GetIntroGFX
+	call PikachusBeach_GetIntroGFX
 	ld de, vSprites
 	ld bc, SurfingPikachuIntroGFXEnd - SurfingPikachuIntroGFX
 	call FarCopyData
-	ld hl, SurfingPikachuTitleGFX
+	ld hl, PikachusBeachTitleGFX
 	ld de, vTileset
 	ld bc, 78 tiles
 	call CopyData
-	ld hl, SurfingPikachuBeachGFX
+	ld hl, PikachusBeachGFX
 	ld de, vTileset + $50 tiles
-	ld bc, 6 tiles + 6 tiles ; also SurfingPikachuFrameGFX
+	ld bc, 6 tiles + 6 tiles ; also PikachusBeachFrameGFX
 	call CopyData
-	ld a, LOW(SurfingPikachuObjectSpawnData)
+	ld a, LOW(PikachusBeachObjectSpawnData)
 	ld [wAnimatedObjectSpawnStateDataPointer], a
-	ld a, HIGH(SurfingPikachuObjectSpawnData)
+	ld a, HIGH(PikachusBeachObjectSpawnData)
 	ld [wAnimatedObjectSpawnStateDataPointer + 1], a
-	ld a, LOW(SurfingPikachuObjectCallbacks)
+	ld a, LOW(PikachusBeachObjectCallbacks)
 	ld [wAnimatedObjectJumptablePointer], a
-	ld a, HIGH(SurfingPikachuObjectCallbacks)
+	ld a, HIGH(PikachusBeachObjectCallbacks)
 	ld [wAnimatedObjectJumptablePointer + 1], a
-	ld a, LOW(SurfingPikachuOAMData)
+	ld a, LOW(PikachusBeachOAMData)
 	ld [wAnimatedObjectOAMDataPointer], a
-	ld a, HIGH(SurfingPikachuOAMData)
+	ld a, HIGH(PikachusBeachOAMData)
 	ld [wAnimatedObjectOAMDataPointer + 1], a
-	ld a, LOW(SurfingPikachuFrames)
+	ld a, LOW(PikachusBeachFrames)
 	ld [wAnimatedObjectFramesDataPointer], a
-	ld a, HIGH(SurfingPikachuFrames)
+	ld a, HIGH(PikachusBeachFrames)
 	ld [wAnimatedObjectFramesDataPointer + 1], a
 	ld a, $c ; intro Pikachu
 	lb de, $74, $58
 	call SpawnAnimatedObject
-	call DrawSurfingPikachuMinigameIntroBackground
+	call DrawPikachusBeachIntroBackground
 	xor a
 	ldh [hSCX], a
 	ldh [hSCY], a
 	ld a, $90
 	ldh [hWY], a
-	call SurfingPikachu_GetPaletteCommand
+	call PikachusBeach_GetPaletteCommand
 	call RunPaletteCommand
 	ld a, $e3
 	ldh [rLCDC], a
@@ -2274,15 +2274,15 @@ SurfingPikachuMinigameIntro:
 	call Delay3
 ;	call DelayFrame
 ;	call DelayFrame
-	call SurfingPikachuMinigame_SetBGPals
+	call PikachusBeach_SetBGPals
 	ld a, $e4
 	ldh [rOBP0], a
 	ld a, $e0
 	ldh [rOBP1], a
 ;	call SurfingMinigame_UpdatePalettes
 	call DelayFrame
-	ld a, MUSIC_SURFING_PIKACHU
-	ld c, BANK(Music_SurfingPikachu)
+	ld a, MUSIC_PIKACHUS_BEACH
+	ld c, BANK(Music_PikachusBeach)
 	call PlayMusic
 	xor a
 	ld [wSurfingMinigameIntroAnimationFinished], a
@@ -2296,7 +2296,7 @@ SurfingPikachuMinigameIntro:
 	call DelayFrame
 	jr .loop
 
-SurfingPikachu_GetGameplayMonGFX: ; marcelnote - new for different player Mons
+PikachusBeach_GetGameplayMonGFX: ; marcelnote - new for different player Mons
 	ld a, [wSurfingMinigamePlayerSpecies]
 	cp PIKACHU
 	ld hl, SurfingPikachuGameplayMonGFX
@@ -2307,7 +2307,7 @@ SurfingPikachu_GetGameplayMonGFX: ; marcelnote - new for different player Mons
 	ld a, BANK(SurfingRaichuGameplayMonGFX)
 	ret
 
-SurfingPikachu_GetIntroGFX: ; marcelnote - new for different player Mons
+PikachusBeach_GetIntroGFX: ; marcelnote - new for different player Mons
 	ld a, [wSurfingMinigamePlayerSpecies]
 	cp PIKACHU
 	ld hl, SurfingPikachuIntroGFX
@@ -2318,10 +2318,10 @@ SurfingPikachu_GetIntroGFX: ; marcelnote - new for different player Mons
 	ld a, BANK(SurfingRaichuIntroGFX)
 	ret
 
-SurfingPikachu_GetPaletteCommand: ; marcelnote - new for different player Mons
+PikachusBeach_GetPaletteCommand: ; marcelnote - new for different player Mons
 	ld a, [wSurfingMinigamePlayerSpecies]
 	cp PIKACHU
-	ld b, SET_PAL_SURFING_PIKACHU_MINIGAME
+	ld b, SET_PAL_PIKACHUS_BEACH
 	ret z
 	ld b, SET_PAL_SURFING_RAICHU
 	ret
@@ -2329,9 +2329,9 @@ SurfingPikachu_GetPaletteCommand: ; marcelnote - new for different player Mons
 PrepareSurfingMinigameHighScoreScreen::
 	call GBPalWhiteOutWithDelay3
 	call ClearScreen
-	ld de, SurfingPikachuPrinterGraphics
+	ld de, PikachusBeachPrinterGraphics
 	ld hl, vChars2
-	lb bc, BANK(SurfingPikachuPrinterGraphics), (SurfingPikachuPrinterGraphicsEnd - SurfingPikachuPrinterGraphics) / TILE_SIZE
+	lb bc, BANK(PikachusBeachPrinterGraphics), (PikachusBeachPrinterGraphicsEnd - PikachusBeachPrinterGraphics) / TILE_SIZE
 	call CopyVideoData
 	hlcoord 0, 0
 	call .PlaceRowAlternatingTiles
@@ -2385,7 +2385,7 @@ PrepareSurfingMinigameHighScoreScreen::
 	add hl, bc
 	call PlaceString
 	call .CopyHighScore
-	ld b, SET_PAL_SURFING_PIKACHU_HISCORE
+	ld b, SET_PAL_PIKACHUS_BEACH_HISCORE
 	call RunPaletteCommand
 	ld a, $1
 	ldh [hAutoBGTransferEnabled], a
@@ -2453,10 +2453,10 @@ PrepareSurfingMinigameHighScoreScreen::
 	ret
 
 .Tilemap1:
-INCBIN "gfx/surfing_pikachu/high_score_1.tilemap"
+INCBIN "gfx/pikachus_beach/high_score_1.tilemap"
 
 .Tilemap2:
-INCBIN "gfx/surfing_pikachu/high_score_2.tilemap"
+INCBIN "gfx/pikachus_beach/high_score_2.tilemap"
 
 .PikachusBeachString:
 	db "Pikachu's Beach@"
@@ -2502,7 +2502,7 @@ DisplaySurfingMinigameHighScoreScreen::
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	ret
 
-DrawSurfingPikachuMinigameIntroBackground:
+DrawPikachusBeachIntroBackground:
 	ld hl, wTileMap
 	ld bc, 16 * SCREEN_WIDTH
 	ld a, $7f ; blank tile
@@ -2576,7 +2576,7 @@ SurfingMinigame_InitScanlineOverrides:
 	jr nz, .loop
 	ret
 
-SurfingPikachu_GetJoypad_3FrameBuffer:
+PikachusBeach_GetJoypad_3FrameBuffer:
 	call Joypad
 	ldh a, [hFrameCounter]
 	and a
@@ -2592,7 +2592,7 @@ SurfingPikachu_GetJoypad_3FrameBuffer:
 	ldh [hJoy5], a
 	ret
 
-SurfingPikachuMinigame_BlankPals:
+PikachusBeach_BlankPals:
 	xor a
 	ldh [rBGP], a
 	ldh [rOBP0], a
@@ -2600,7 +2600,7 @@ SurfingPikachuMinigame_BlankPals:
 ;	call SurfingMinigame_UpdatePalettes
 	ret
 
-SurfingPikachuMinigame_NormalPals:
+PikachusBeach_NormalPals:
 	ld a, $e4
 	ldh [rBGP], a
 	ldh [rOBP0], a
@@ -2615,7 +2615,7 @@ SurfingPikachuMinigame_NormalPals:
 ;SurfingMinigame_UpdatePalettes:
 ;	ret
 
-SurfingPikachu_ClearTileMap:
+PikachusBeach_ClearTileMap:
 	ld hl, wTileMap
 	ld bc, SCREEN_AREA
 	xor a
@@ -2767,7 +2767,7 @@ SurfingMinigame_NTimesDE:
 	jr nz, .loop
 	ret
 
-SurfingPikachu_PlaceBCDNumber:
+PikachusBeach_PlaceBCDNumber:
 	ld c, a
 	swap a
 	or $f0
@@ -2778,9 +2778,9 @@ SurfingPikachu_PlaceBCDNumber:
 	dec de
 	ret
 
-SurfingPikachu_Cosine: ; cosine
+PikachusBeach_Cosine: ; cosine
 	add $10
-SurfingPikachu_Sine: ; sine
+PikachusBeach_Sine: ; sine
 	and $3f
 	cp $20
 	jr nc, .positive
@@ -2811,7 +2811,7 @@ SurfingPikachu_Sine: ; sine
 .SineWave:
 	sine_table 32
 
-SurfingPikachuObjectSpawnData:
+PikachusBeachObjectSpawnData:
 	; frameset, callback, tile offset
 	db $00, $00, $00 ; 0: unused
 	db $04, $01, $00 ; 1: surfing Pikachu
@@ -2827,7 +2827,7 @@ SurfingPikachuObjectSpawnData:
 	db $13, $03, $00 ; b: Oh no...
 	db $1b, $04, $00 ; c: intro Pikachu
 
-SurfingPikachuObjectCallbacks:
+PikachusBeachObjectCallbacks:
 	dw SurfingMinigameAnimatedObjectFn_nop ; 0
 	dw SurfingMinigameAnimatedObjectFn_Pikachu ; 1
 	dw SurfingMinigame_MoveBannerToCenter ; 2
@@ -2837,8 +2837,8 @@ SurfingPikachuObjectCallbacks:
 SurfingMinigameAnimatedObjectFn_nop:
 	ret
 
-INCLUDE "data/sprite_anims/surfing_pikachu_frames.asm"
-INCLUDE "data/sprite_anims/surfing_pikachu_oam.asm"
+INCLUDE "data/sprite_anims/pikachus_beach_frames.asm"
+INCLUDE "data/sprite_anims/pikachus_beach_oam.asm"
 
 SurfingMinigame_LYOverridesInitialSineWave:
 ; a sine wave with amplitude 2
@@ -2933,8 +2933,8 @@ SurfingMinigameBeachPattern:
 	db $00, $00, $00, $12, $13, $13, $13, $13
 
 
-;SurfingMinigame_TitleTilemap:         INCBIN "gfx/surfing_pikachu/title.tilemap"
-SurfingMinigame_BeachIntroTilemap:    INCBIN "gfx/surfing_pikachu/beach_intro.tilemap"
-SurfingMinigame_UseControlPadTilemap: INCBIN "gfx/surfing_pikachu/use_control_pad.tilemap"
-SurfingMinigame_ToSurfRadTilemap:     INCBIN "gfx/surfing_pikachu/to_surf_rad.tilemap"
-SurfingMinigame_BeachOutroTilemap:    INCBIN "gfx/surfing_pikachu/beach_outro.tilemap"
+;SurfingMinigame_TitleTilemap:         INCBIN "gfx/pikachus_beach/title.tilemap"
+SurfingMinigame_BeachIntroTilemap:    INCBIN "gfx/pikachus_beach/beach_intro.tilemap"
+SurfingMinigame_UseControlPadTilemap: INCBIN "gfx/pikachus_beach/use_control_pad.tilemap"
+SurfingMinigame_ToSurfRadTilemap:     INCBIN "gfx/pikachus_beach/to_surf_rad.tilemap"
+SurfingMinigame_BeachOutroTilemap:    INCBIN "gfx/pikachus_beach/beach_outro.tilemap"

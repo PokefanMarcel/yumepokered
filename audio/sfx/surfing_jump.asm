@@ -1,4 +1,4 @@
-; marcelnote - Pikachu Surfing minigame
+; marcelnote - Pikachu's Beach minigame
 SFX_Surfing_Jump_Ch8:
 	noise_note 6, 15, 1, 17
 	noise_note 7, 15, 2, 34

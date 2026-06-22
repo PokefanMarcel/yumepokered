@@ -39,7 +39,7 @@ Music:
 	dba Music_JigglypuffSong
 	dba Music_BikeRiding
 	dba Music_Surfing
-	dba Music_SurfingPikachu ; marcelnote - Pikachu Surfing minigame
+	dba Music_PikachusBeach ; marcelnote - Pikachu's Beach minigame
 	dba Music_RBYGameCorner
 	dba Music_IntroBattle
 	dba Music_Dungeon1
@@ -51,5 +51,5 @@ Music:
 	dba Music_MeetEvilTrainer
 	dba Music_MeetFemaleTrainer
 	dba Music_MeetMaleTrainer
-	dba Music_Printer ; marcelnote - Pikachu Surfing minigame
+	dba Music_Printer ; marcelnote - Pikachu's Beach minigame
 	assert_table_length NUM_MUSIC_SONGS

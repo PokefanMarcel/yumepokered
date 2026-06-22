@@ -1,4 +1,4 @@
-; marcelnote - Pikachu Surfing minigame
+; marcelnote - Pikachu's Beach minigame
 
 ; pic + oam animations
 

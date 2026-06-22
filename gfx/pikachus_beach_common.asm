@@ -1,12 +1,12 @@
 ; marcelnote - Pikachu's Beach minigame common gfx assets
-SurfingPikachuBGGraphics::      INCBIN "gfx/surfing_pikachu/background.2bpp"
+PikachusBeachBGGraphics::      INCBIN "gfx/pikachus_beach/background.2bpp"
 
-SurfingPikachuTitleGFX:: INCBIN "gfx/surfing_pikachu/title.2bpp"
-SurfingPikachuBeachGFX:: INCBIN "gfx/surfing_pikachu/beach.2bpp"
-SurfingPikachuFrameGFX:: INCBIN "gfx/surfing_pikachu/frame.2bpp"
+PikachusBeachTitleGFX:: INCBIN "gfx/pikachus_beach/title.2bpp"
+PikachusBeachGFX::      INCBIN "gfx/pikachus_beach/beach.2bpp"
+PikachusBeachFrameGFX:: INCBIN "gfx/pikachus_beach/frame.2bpp"
 
-SurfingPikachuGameplayEffectsGraphics:: INCBIN "gfx/surfing_pikachu/gameplay_effects.2bpp"
-SurfingPikachuGameplayEffectsGraphicsEnd::
+PikachusBeachGameplayEffectsGraphics:: INCBIN "gfx/pikachus_beach/gameplay_effects.2bpp"
+PikachusBeachGameplayEffectsGraphicsEnd::
 
-SurfingPikachuPrinterGraphics:: INCBIN "gfx/surfing_pikachu/printer_sunset.2bpp"
-SurfingPikachuPrinterGraphicsEnd::
+PikachusBeachPrinterGraphics:: INCBIN "gfx/pikachus_beach/printer_sunset.2bpp"
+PikachusBeachPrinterGraphicsEnd::

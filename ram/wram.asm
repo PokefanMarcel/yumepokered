@@ -216,7 +216,7 @@ wSerialPartyMonsPatchList:: ds 200
 wSerialEnemyMonsPatchList:: ds 200
 
 NEXTU
-; marcelnote - Pikachu Surfing minigame, new union
+; marcelnote - Pikachu's Beach minigame, new union
 ; Yellow-style animated object buffers reused by the surfing minigame.
 wAnimatedObjectsData::
 
@@ -299,7 +299,7 @@ NEXTU
 wTempPic:: ds PIC_SIZE tiles
 
 NEXTU
-; marcelnote - Pikachu Surfing minigame, new union
+; marcelnote - Pikachu's Beach minigame, new union
 	; Page-align scanline override buffers so the Yellow LCDC handler can index
 	; them via HIGH(wLYOverrides) and rLY.
 	ds $18
@@ -2251,7 +2251,7 @@ wFossilItem:: db
 ; mon that will result from the item
 wFossilMon:: db
 
-; marcelnote - Pikachu Surfing minigame
+; marcelnote - Pikachu's Beach minigame
 wSurfingMinigameHiScore:: dw ; little-endian BCD
 ;	ds 2
 

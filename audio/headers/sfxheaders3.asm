@@ -39,18 +39,18 @@ SFX_Shooting_Star::
 	channel_count 1
 	channel 5, SFX_Shooting_Star_Ch5
 
-SFX_Surfing_Jump:: ; marcelnote - Pikachu Surfing minigame
+SFX_Surfing_Jump:: ; marcelnote - Pikachu's Beach minigame
 	channel_count 1
 	channel 8, SFX_Surfing_Jump_Ch8
 
-SFX_Surfing_Flip:: ; marcelnote - Pikachu Surfing minigame
+SFX_Surfing_Flip:: ; marcelnote - Pikachu's Beach minigame
 	channel_count 1
 	channel 5, SFX_Surfing_Flip_Ch5
 
-SFX_Surfing_Crash:: ; marcelnote - Pikachu Surfing minigame
+SFX_Surfing_Crash:: ; marcelnote - Pikachu's Beach minigame
 	channel_count 1
 	channel 8, SFX_Surfing_Crash_Ch8
 
-SFX_Surfing_Land:: ; marcelnote - Pikachu Surfing minigame
+SFX_Surfing_Land:: ; marcelnote - Pikachu's Beach minigame
 	channel_count 1
 	channel 8, SFX_Surfing_Land_Ch8

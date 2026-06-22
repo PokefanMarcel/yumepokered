@@ -1,5 +1,5 @@
-; marcelnote - Pikachu Surfing minigame
-SurfingPikachuFrames:
+; marcelnote - Pikachu's Beach minigame
+PikachusBeachFrames:
 	dw .SingleTile
 	dw .SurfingAngle00
 	dw .SurfingAngle01

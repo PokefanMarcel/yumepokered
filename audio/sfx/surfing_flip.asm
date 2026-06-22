@@ -1,4 +1,4 @@
-; marcelnote - Pikachu Surfing minigame
+; marcelnote - Pikachu's Beach minigame
 SFX_Surfing_Flip_Ch5:
 	duty_cycle 2
 	square_note 3, 12, 4, 1888

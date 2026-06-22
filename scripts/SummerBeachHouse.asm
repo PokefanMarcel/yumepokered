@@ -29,16 +29,16 @@ SummerBeachHouseSurfinDudeText:
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr z, .StartSurfingPikachuMinigame
+	jr z, .StartPikachusBeach
 	ld hl, .ComeAnytimeText
 .printText
 	call PrintText
 	rst TextScriptEnd
 
-.StartSurfingPikachuMinigame
+.StartPikachusBeach
 	ld a, 1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-	callfar SurfingPikachuMinigame
+	callfar PikachusBeach
 	; The minigame reload path restores the map for the overworld, but not the
 	; active NPC dialogue window.
 	callfar DisplayTextIDInit
@@ -124,7 +124,7 @@ SummerBeachHouseSurfinDudeText:
 ;	jr nz, .asm_f226b
 ;	ld a, 1
 ;	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-;	callfar SurfingPikachuMinigame
+;	callfar PikachusBeach
 ;	ld hl, wd492
 ;	set 1, [hl]
 ;	jr .done

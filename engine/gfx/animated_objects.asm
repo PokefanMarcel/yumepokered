@@ -1,4 +1,4 @@
-; marcelnote - Pikachu Surfing minigame
+; marcelnote - Pikachu's Beach minigame
 ClearObjectAnimationBuffers:
 	ld hl, wAnimatedObjectsData
 	ld bc, wAnimatedObjectsDataEnd - wAnimatedObjectsData

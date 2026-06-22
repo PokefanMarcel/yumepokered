@@ -1,4 +1,4 @@
-; marcelnote - Pikachu Surfing minigame
+; marcelnote - Pikachu's Beach minigame
 SFX_Surfing_Land_Ch8:
 	noise_note 2, 15, 1, 50
 	noise_note 2, 0, 0, 0

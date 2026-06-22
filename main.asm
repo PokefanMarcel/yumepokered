@@ -391,14 +391,14 @@ SECTION "GFX engine", ROMX ; marcelnote - new
 INCLUDE "engine/gfx/animated_tiles.asm"
 
 
-SECTION "Surfing Minigame", ROMX ; marcelnote - Pikachu Surfing minigame
+SECTION "Pikachu's Beach", ROMX ; marcelnote - Pikachu's Beach minigame
 
-INCLUDE "engine/minigame/surfing_pikachu.asm"
+INCLUDE "engine/minigame/pikachus_beach.asm"
 INCLUDE "engine/gfx/animated_objects.asm"
 INCLUDE "gfx/pikachus_beach_common.asm"
 
 
-SECTION "Surfing Mons Graphics", ROMX ; marcelnote - Pikachu Surfing minigame
+SECTION "Pikachu's Beach Mons Graphics", ROMX ; marcelnote - Pikachu's Beach minigame
 
 INCLUDE "gfx/pikachus_beach_mons.asm"
 

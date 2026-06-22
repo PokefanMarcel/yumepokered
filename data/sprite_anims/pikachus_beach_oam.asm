@@ -1,7 +1,7 @@
-; marcelnote - Pikachu Surfing minigame
+; marcelnote - Pikachu's Beach minigame
 ; Some sprites were moved in VRAM.
 
-SurfingPikachuOAMData:
+PikachusBeachOAMData:
 	dbw $00, .SingleTile ; referenced but unused
 	dbw $00, .SurfingPikachu
 	dbw $36, .SurfingPikachu

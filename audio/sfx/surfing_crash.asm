@@ -1,4 +1,4 @@
-; marcelnote - Pikachu Surfing minigame
+; marcelnote - Pikachu's Beach minigame
 SFX_Surfing_Crash_Ch8:
 	noise_note 3, 15, 3, 102
 	noise_note 3, 3, 3, 83

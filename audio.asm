@@ -132,7 +132,7 @@ INCLUDE "audio/sfx/slots_stop_wheel.asm"
 INCLUDE "audio/sfx/slots_reward.asm"
 INCLUDE "audio/sfx/slots_new_spin.asm"
 INCLUDE "audio/sfx/shooting_star.asm"
-; marcelnote - Pikachu Surfing minigame
+; marcelnote - Pikachu's Beach minigame
 INCLUDE "audio/sfx/surfing_jump.asm"
 INCLUDE "audio/sfx/surfing_flip.asm"
 INCLUDE "audio/sfx/surfing_crash.asm"
@@ -374,7 +374,7 @@ INCLUDE "crysaudio/music/RBY/credits.asm"
 SECTION "RBY Songs 4", ROMX
 
 INCLUDE "crysaudio/music/RBY/yellowintro.asm"
-INCLUDE "crysaudio/music/RBY/surfingpikachu.asm"
+INCLUDE "crysaudio/music/RBY/pikachusbeach.asm"
 INCLUDE "crysaudio/music/RBY/yellowunusedsong.asm"
 INCLUDE "crysaudio/music/RBY/meetjessiejames.asm"
 

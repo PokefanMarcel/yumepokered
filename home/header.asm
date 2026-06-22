@@ -62,7 +62,7 @@ SECTION "vblank", ROM0[$0040]
 	ds $48 - @, 0 ; unused
 
 SECTION "lcd", ROM0[$0048]
-	jp LCDC ; marcelnote - Pikachu Surfing minigame
+	jp LCDC ; marcelnote - Pikachu's Beach minigame
 
 	ds $50 - @, 0 ; unused
 
