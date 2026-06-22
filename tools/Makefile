@@ -20,8 +20,15 @@ clean:
 
 PNG_CFLAGS := $(shell pkg-config --cflags libpng 2>/dev/null || libpng-config --cflags 2>/dev/null)
 PNG_LIBS := $(shell pkg-config --libs libpng 2>/dev/null || libpng-config --ldflags 2>/dev/null || echo -lpng)
+PNG_LIBDIR := $(shell pkg-config --variable=libdir libpng 2>/dev/null || libpng-config --libdir 2>/dev/null)
+
+ifeq ($(shell uname -s),Darwin)
+ifneq ($(PNG_LIBDIR),)
+PNG_LIBS += -Wl,-rpath,$(PNG_LIBDIR)
+endif
+endif
 
 # Optional maintenance tool. It is intentionally not part of $(tools), so
 # normal builds and `make tools` do not build or run it.
-png_normalize: png_normalize.c common.h
+png_normalize: png_normalize.c common.h Makefile
 	$(CC) $(CFLAGS) $(PNG_CFLAGS) -o $@ $< $(PNG_LIBS)
