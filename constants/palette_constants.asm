@@ -17,11 +17,11 @@
 	const SET_PAL_TRAINER_CARD         ; $0D
 	; marcelnote - Pikachu's Beach minigame
 ;	const SET_PAL_PIKACHUS_BEACH_TITLE
-	const SET_PAL_PIKACHUS_BEACH ; $0E
-	const SET_PAL_PIKACHUS_BEACH_HISCORE  ; $0F
-	const SET_PAL_SURFING_RAICHU           ; $10
+	const SET_PAL_PIKACHUS_BEACH         ; $0E
+	const SET_PAL_PIKACHUS_BEACH_HISCORE ; $0F
+	const SET_PAL_SURFING_RAICHU         ; $10
 	; marcelnote - revamped Bill's PC
-	const SET_PAL_BILLS_PC                 ; $11
+	const SET_PAL_BILLS_PC             ; $11
 
 DEF SET_PAL_PARTY_MENU_HP_BARS EQU $fc
 DEF SET_PAL_DEFAULT EQU $ff

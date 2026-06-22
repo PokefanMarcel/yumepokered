@@ -369,5 +369,5 @@ IsSurfingPikachuInParty::
 	call SkipNameEntries
 	ld de, wNameBuffer
 	call CopyData ; returns b = 0
-	inc b       ; so clears z flag
+	inc b         ; so clears z flag
 	ret

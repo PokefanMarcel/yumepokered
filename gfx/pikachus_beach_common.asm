@@ -1,5 +1,5 @@
 ; marcelnote - Pikachu's Beach minigame common gfx assets
-PikachusBeachBGGraphics::      INCBIN "gfx/pikachus_beach/background.2bpp"
+PikachusBeachBGGraphics:: INCBIN "gfx/pikachus_beach/background.2bpp"
 
 PikachusBeachTitleGFX:: INCBIN "gfx/pikachus_beach/title.2bpp"
 PikachusBeachGFX::      INCBIN "gfx/pikachus_beach/beach.2bpp"
