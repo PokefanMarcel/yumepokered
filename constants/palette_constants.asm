@@ -40,7 +40,7 @@ DEF SET_PAL_DEFAULT EQU $ff
 	const PAL_SAFFRON   ; $0B ; marcelnote - changed order to reflect new map constants
 	const PAL_FUCHSIA   ; $08
 	const PAL_CINNABAR  ; $09
-	const PAL_MANDARIN  ; $0Bbis ; mareclnote - added Mandarin Island
+	const PAL_MANDARIN  ; $0Bbis ; marcelnote - added Mandarin Island
 	const PAL_INDIGO    ; $0A
 	const PAL_TOWNMAP   ; $0C
 	const PAL_LOGO1     ; $0D
