@@ -180,7 +180,7 @@ PikachusBeach_LoadGFXAndLayout:
 
 	ld hl, PikachusBeachBGGraphics
 	ld de, vChars2
-	ld bc, 54 tiles
+	ld bc, PikachusBeachBGGraphicsEnd - PikachusBeachBGGraphics
 	call CopyData
 
 	call PikachusBeach_GetGameplayMonGFX ; marcelnote - load Mon-specific assets
@@ -220,7 +220,7 @@ PikachusBeach_LoadGFXAndLayout:
 
 	bgcoord hl, 0, 6
 	ld bc, 12 * TILEMAP_WIDTH
-	ld a, $55 ; water tile
+	ld a, $65 ; water tile
 	call FillMemory
 
 	ld a, $1 ; surfing Pikachu
@@ -1394,19 +1394,19 @@ SurfingMinigame_DrawResultsScreen:
 .PlaceTextbox:
 	ld de, SCREEN_WIDTH - 17
 ; top row
-	ld a, $56 ; northwest corner
+	ld a, $66 ; northwest corner
 	ld [hli], a
 	ld c, 16
-	ld a, $5b ; horizontal bar
+	ld a, $6b ; horizontal bar
 .placeTopRow
 	ld [hli], a
 	dec c
 	jr nz, .placeTopRow
-	ld a, $57 ; northeast corner
+	ld a, $67 ; northeast corner
 	ld [hl], a
 ; intermediate rows
 	add hl, de
-	ld a, $5a ; vertical bar
+	ld a, $6a ; vertical bar
 	ld b, 7   ; 7 rows
 .placeRows
 	ld [hli], a
@@ -1416,21 +1416,21 @@ SurfingMinigame_DrawResultsScreen:
 	ld [hli], a
 	dec c
 	jr nz, .fillBlanks
-	ld a, $5a ; vertical bar
+	ld a, $6a ; vertical bar
 	ld [hl], a
 	add hl, de
 	dec b
 	jr nz, .placeRows
 ; bottom row
-	ld a, $58 ; southwest corner
+	ld a, $68 ; southwest corner
 	ld [hli], a
 	ld c, 16
-	ld a, $5b ; horizontal bar
+	ld a, $6b ; horizontal bar
 .placeBottomRow
 	ld [hli], a
 	dec c
 	jr nz, .placeBottomRow
-	ld a, $59 ; southeast corner
+	ld a, $69 ; southeast corner
 	ld [hl], a
 	ret
 
@@ -2236,9 +2236,9 @@ PikachusBeachIntro:
 	ld de, vTileset
 	ld bc, 78 tiles
 	call CopyData
-	ld hl, PikachusBeachGFX
-	ld de, vTileset + $50 tiles
-	ld bc, 6 tiles + 6 tiles ; also PikachusBeachFrameGFX
+	ld hl, PikachusBeachBeachAndFrameGFX
+	ld de, vTileset + $60 tiles
+	ld bc, PikachusBeachBeachAndFrameGFXEnd - PikachusBeachBeachAndFrameGFX
 	call CopyData
 	ld a, LOW(PikachusBeachObjectSpawnData)
 	ld [wAnimatedObjectSpawnStateDataPointer], a
@@ -2512,29 +2512,17 @@ DrawPikachusBeachIntroBackground:
 	ld bc, 12 * SCREEN_WIDTH
 	call CopyData
 	hlcoord 4, 0
-	lb bc, 6, 13
 	xor a ; intro splash starts at tile $00
-	call .PlaceIntroTitle
-	ld hl, SurfingMinigame_UseControlPadTilemap
-	decoord 3, 7
-	ld bc, 15
-	call CopyData
-	ld hl, SurfingMinigame_ToSurfRadTilemap
-	decoord 4, 9
-	ld bc, 12
-	jp CopyData
-
-.PlaceIntroTitle
 	ld de, SCREEN_WIDTH - 13
+	ld b, 6
 .rowLoop
-	push bc
+	ld c, 13
 .tileLoop
 	ld [hli], a
 	inc a
 	dec c
 	jr nz, .tileLoop
 	add hl, de
-	pop bc
 	dec b
 	jr nz, .rowLoop
 	ret
@@ -2849,26 +2837,26 @@ SurfingMinigame_LYOverridesInitialSineWave:
 
 SurfingMinigame_BGMetatileTable: ; metatiles of 2x2 tiles
 	db $7f, $7f, $7f, $7f ; 00 ; sky block (blank)
-	db $55, $55, $55, $55 ; 01 ; water block
-	db $55, $02, $02, $06 ; 02
-	db $03, $55, $07, $03 ; 03
+	db $65, $65, $65, $65 ; 01 ; water block
+	db $65, $02, $02, $06 ; 02
+	db $03, $65, $07, $03 ; 03
 	db $06, $06, $06, $06 ; 04
 	db $07, $07, $07, $07 ; 05
 	db $06, $02, $02, $00 ; 06
 	db $03, $07, $00, $03 ; 07
-	db $55, $55, $11, $12 ; 08
-	db $55, $55, $13, $03 ; 09
+	db $65, $65, $11, $12 ; 08
+	db $65, $65, $13, $03 ; 09
 	db $14, $12, $02, $00 ; 0a
 	db $13, $07, $00, $03 ; 0b
 	db $06, $14, $06, $14 ; 0c ; unused, identical to 11
 	db $13, $07, $13, $07 ; 0d
 	db $00, $00, $00, $00 ; 0e ; solid blue
 	db $14, $12, $14, $12 ; 0f
-	db $55, $11, $02, $14 ; 10
+	db $65, $11, $02, $14 ; 10
 	db $06, $14, $06, $14 ; 11
-	db $50, $50, $53, $53 ; 12 ; beach top block
-	db $53, $53, $53, $53 ; 13 ; beach sand block
-	db $51, $52, $54, $55 ; 14 ; beach shore block
+	db $60, $60, $63, $63 ; 12 ; beach top block
+	db $63, $63, $63, $63 ; 13 ; beach sand block
+	db $61, $62, $64, $65 ; 14 ; beach shore block
 	db $12, $13, $12, $13 ; 15
 
 SurfingMinigameWavePattern00:
@@ -2935,6 +2923,4 @@ SurfingMinigameBeachPattern:
 
 ;SurfingMinigame_TitleTilemap:         INCBIN "gfx/pikachus_beach/title.tilemap"
 SurfingMinigame_BeachIntroTilemap:    INCBIN "gfx/pikachus_beach/beach_intro.tilemap"
-SurfingMinigame_UseControlPadTilemap: INCBIN "gfx/pikachus_beach/use_control_pad.tilemap"
-SurfingMinigame_ToSurfRadTilemap:     INCBIN "gfx/pikachus_beach/to_surf_rad.tilemap"
 SurfingMinigame_BeachOutroTilemap:    INCBIN "gfx/pikachus_beach/beach_outro.tilemap"
