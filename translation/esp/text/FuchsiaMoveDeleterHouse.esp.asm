@@ -33,7 +33,7 @@ _MoveDeleterConfirmText::
 
 _MoveDeleterForgotText::
 	; traducción por NunWinter
-	text "¡"
+	text "¡@"
 	text_ram wStringBuffer
 	text " fue"
 	line "olvidado!"

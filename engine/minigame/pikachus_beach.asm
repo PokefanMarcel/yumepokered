@@ -314,7 +314,7 @@ PikachusBeach_PlaceSpriteRowFromTiles:
 	ret
 
 PikachusBeachMiniPikachuTile:
-	db $7f
+	db $8b
 
 PikachusBeachHPDigitTiles:
 	REPT 4
