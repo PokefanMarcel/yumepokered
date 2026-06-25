@@ -97,32 +97,29 @@ _FireDefrostedText::
 	line "se desheló!"
 	prompt
 
-_MonsStatsRoseText::
+_MonsStatsRoseText:: ; marcelnote - modified to "creció mucho!"
 	text "¡@"
 	text_ram wStringBuffer
 	text " de"
 	line "<USER>"
-	cont "@"
+	cont "creció@"
 	text_end
 
 _GreatlyText::
-	text "<SCROLL>mucho @"
+	text " mucho@"
 	text_end
 
 _RoseText::
-	text "creció!"
-	prompt
-
 _FellText::
-	text "bajó!"
+	text "!"
 	prompt
 
-_MonsStatsFellText::
+_MonsStatsFellText:: ; marcelnote - modified to "bajó mucho!"
 	text "¡@"
 	text_ram wStringBuffer
 	text " de"
 	line "<TARGET>"
-	cont "@"
+	cont "bajó@"
 	text_end
 
 _RanFromBattleText::

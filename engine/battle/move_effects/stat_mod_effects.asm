@@ -281,7 +281,9 @@ MonsStatsRoseText:
 	ret
 
 GreatlyRoseText:
+IF !DEF(_ESP)
 	text_pause
+ENDC
 	text_far _GreatlyText
 ; fallthrough
 RoseText:
@@ -305,7 +307,9 @@ MonsStatsFellText:
 	ret
 
 GreatlyFellText:
+IF !DEF(_ESP)
 	text_pause
+ENDC
 	text_far _GreatlyText
 ; fallthrough
 FellText:
