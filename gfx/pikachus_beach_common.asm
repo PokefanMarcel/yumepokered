@@ -12,5 +12,5 @@ PikachusBeachBeachAndFrameGFXEnd::
 PikachusBeachGameplayEffectsGraphics:: INCBIN "gfx/pikachus_beach/gameplay_effects.2bpp"
 PikachusBeachGameplayEffectsGraphicsEnd::
 
-PikachusBeachPrinterGraphics:: INCBIN "gfx/pikachus_beach/printer_sunset.2bpp"
-PikachusBeachPrinterGraphicsEnd::
+PikachusBeachPrinterCommonGraphics:: INCBIN "gfx/pikachus_beach/printer_common.2bpp"
+PikachusBeachPrinterCommonGraphicsEnd::

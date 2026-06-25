@@ -1618,6 +1618,8 @@ DidPlayerGetAHighScore:
 	ld [wSurfingMinigameHiScore], a
 	ld a, [wSurfingMinigameTotalScore + 1]
 	ld [wSurfingMinigameHiScore + 1], a
+	ld a, [wSurfingMinigamePlayerSpecies] ; marcelnote - also store hi score species
+	ld [wSurfingMinigameHiScoreMon], a
 	call WaitForSoundToFinish
 	ld a, SFX_GET_ITEM_2
 	call PlaySound
@@ -2326,38 +2328,60 @@ PikachusBeach_GetPaletteCommand: ; marcelnote - new for different player Mons
 	ld b, SET_PAL_SURFING_RAICHU
 	ret
 
-PrepareSurfingMinigameHighScoreScreen::
+PrepareSurfingMinigameHighScoreScreen:: ; marcelnote - modified for reorganized tileset and switching displayed Mon
 	call GBPalWhiteOutWithDelay3
 	call ClearScreen
-	ld de, PikachusBeachPrinterGraphics
+
+	ld de, PikachusBeachPrinterCommonGraphics
 	ld hl, vChars2
-	lb bc, BANK(PikachusBeachPrinterGraphics), (PikachusBeachPrinterGraphicsEnd - PikachusBeachPrinterGraphics) / TILE_SIZE
+	lb bc, BANK(PikachusBeachPrinterCommonGraphics), (PikachusBeachPrinterCommonGraphicsEnd - PikachusBeachPrinterCommonGraphics) / TILE_SIZE
 	call CopyVideoData
+
+	; Load Pikachu or Raichu graphics depending on who has the high score.
+	ld a, [wSurfingMinigameHiScoreMon]
+	cp RAICHU
+	ld de, PikachusBeachPrinterPikachuGraphics
+	ld hl, vChars2 + (PikachusBeachPrinterCommonGraphicsEnd - PikachusBeachPrinterCommonGraphics)
+	lb bc, BANK(PikachusBeachPrinterPikachuGraphics), (PikachusBeachPrinterPikachuGraphicsEnd - PikachusBeachPrinterPikachuGraphics) / TILE_SIZE
+	ASSERT BANK(PikachusBeachPrinterPikachuGraphics) == BANK(PikachusBeachPrinterRaichuGraphics)
+	jr nz, .gotGraphics
+	ld de, PikachusBeachPrinterRaichuGraphics
+.gotGraphics
+	call CopyVideoData
+
+	; Place frame.
 	hlcoord 0, 0
-	call .PlaceRowAlternatingTiles
-	hlcoord 0, 17
-	call .PlaceRowAlternatingTiles
+	ld a, $2a
+	ld [hli], a                       ; north-west corner
+	call .PlaceRowAlternatingTiles    ; north border
+	ld [hl], $2a                      ; north-east corner
+	call .PlaceColumnAlternatingTiles ; east border
 	hlcoord 0, 0
-	call .PlaceColumnAlternatingTiles
-	hlcoord 19, 0
-	call .PlaceColumnAlternatingTiles
-	ld a, $4
-	hlcoord 0, 0
-	ld [hl], a
-	hlcoord 0, 17
-	ld [hl], a
-	hlcoord 19, 0
-	ld [hl], a
-	hlcoord 19, 17
-	ld [hl], a
-	ld de, .Tilemap1
-	hlcoord 10, 8
-	lb bc, 3, 8
-	call .CopyBox
-	ld de, .Tilemap2
-	hlcoord 2, 11
-	lb bc, 6, 16
-	call .CopyBox
+	call .PlaceColumnAlternatingTiles ; west border
+	ld a, $2a
+	ld [hli], a                       ; south-west corner
+	call .PlaceRowAlternatingTiles    ; south border
+	ld [hl], $2a                      ; south-east corner
+
+	; Place the image of Pikachu or Raichu on the beach.
+	ld de, .Tilemap
+	hlcoord 2, 8
+	lb bc, 9, 16 ; tilemap is 9 rows by 16 columns
+.copyRows
+	push bc
+.copyTiles
+	ld a, [de]
+	inc de
+	ld [hli], a
+	dec c
+	jr nz, .copyTiles
+	ld bc, SCREEN_WIDTH - 16
+	add hl, bc
+	pop bc
+	dec b
+	jr nz, .copyRows
+
+	; Place text strings.
 	ld de, .PikachusBeachString
 	hlcoord 3, 2
 	call PlaceString
@@ -2393,44 +2417,27 @@ PrepareSurfingMinigameHighScoreScreen::
 	jp GBPalNormal
 
 .PlaceRowAlternatingTiles
-	ld c, SCREEN_WIDTH / 2
+	ld c, (SCREEN_WIDTH - 2) / 2
 .rowLoop
-	ld [hl], 0
-	inc hl
-	ld [hl], 1
-	inc hl
+	ld a, $2d
+	ld [hli], a
+	dec a
+	ld [hli], a
 	dec c
 	jr nz, .rowLoop
 	ret
 
 .PlaceColumnAlternatingTiles
-	ld c, SCREEN_HEIGHT / 2
+	ld c, (SCREEN_HEIGHT - 2) / 2
 	ld de, SCREEN_WIDTH
-.columnLoop
-	ld [hl], $2
 	add hl, de
-	ld [hl], $3
+.columnLoop
+	ld [hl], $2f
+	add hl, de
+	ld [hl], $2e
 	add hl, de
 	dec c
 	jr nz, .columnLoop
-	ret
-
-.CopyBox
-.copyBoxY
-	push bc
-	push hl
-.copyBoxX
-	ld a, [de]
-	inc de
-	ld [hli], a
-	dec c
-	jr nz, .copyBoxX
-	pop hl
-	ld bc, SCREEN_WIDTH
-	add hl, bc
-	pop bc
-	dec b
-	jr nz, .copyBoxY
 	ret
 
 .CopyHighScore
@@ -2452,11 +2459,8 @@ PrepareSurfingMinigameHighScoreScreen::
 	dec de
 	ret
 
-.Tilemap1:
-INCBIN "gfx/pikachus_beach/high_score_1.tilemap"
-
-.Tilemap2:
-INCBIN "gfx/pikachus_beach/high_score_2.tilemap"
+.Tilemap:
+INCBIN "gfx/pikachus_beach/printer_hi_score.tilemap"
 
 .PikachusBeachString:
 	db "Pikachu's Beach@"

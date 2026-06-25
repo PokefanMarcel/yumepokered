@@ -2284,7 +2284,7 @@ wTileInFrontOfBoulderAndBoulderCollisionResult:: db
 ; index into DungeonWarpData ; marcelnote - refactored warp engine
 wDungeonWarpID:: db
 
-	ds 1
+wSurfingMinigameHiScoreMon:: db ; species of the Mon that set the high score in Pikachu's Beach
 
 ;wUnusedCardKeyGateID:: db ; marcelnote - removed
 

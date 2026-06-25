@@ -12,3 +12,10 @@ ASSERT SurfingPikachuGameplayMonGFXEnd - SurfingPikachuGameplayMonGFX == 144 til
 SurfingRaichuGameplayMonGFX::  INCBIN "gfx/pikachus_beach/surfing_raichu.2bpp"
 SurfingRaichuGameplayMonGFXEnd::
 ASSERT SurfingRaichuGameplayMonGFXEnd - SurfingRaichuGameplayMonGFX == 144 tiles
+
+PikachusBeachPrinterPikachuGraphics:: INCBIN "gfx/pikachus_beach/printer_pikachu.2bpp"
+PikachusBeachPrinterPikachuGraphicsEnd::
+ASSERT PikachusBeachPrinterPikachuGraphicsEnd - PikachusBeachPrinterPikachuGraphics == 30 tiles
+PikachusBeachPrinterRaichuGraphics:: INCBIN "gfx/pikachus_beach/printer_raichu.2bpp"
+PikachusBeachPrinterRaichuGraphicsEnd::
+ASSERT PikachusBeachPrinterRaichuGraphicsEnd - PikachusBeachPrinterRaichuGraphics == 30 tiles
