@@ -2300,32 +2300,33 @@ PikachusBeachIntro:
 
 PikachusBeach_GetGameplayMonGFX: ; marcelnote - new for different player Mons
 	ld a, [wSurfingMinigamePlayerSpecies]
-	cp PIKACHU
-	ld hl, SurfingPikachuGameplayMonGFX
-	ld a, BANK(SurfingPikachuGameplayMonGFX)
-	ret z
-	; RAICHU
+	cp RAICHU
 	ld hl, SurfingRaichuGameplayMonGFX
 	ld a, BANK(SurfingRaichuGameplayMonGFX)
+	ret z
+	; PIKACHU
+	ld hl, SurfingPikachuGameplayMonGFX
+	ASSERT BANK(SurfingPikachuGameplayMonGFX) == BANK(SurfingRaichuGameplayMonGFX)
 	ret
 
 PikachusBeach_GetIntroGFX: ; marcelnote - new for different player Mons
 	ld a, [wSurfingMinigamePlayerSpecies]
-	cp PIKACHU
-	ld hl, SurfingPikachuIntroGFX
-	ld a, BANK(SurfingPikachuIntroGFX)
-	ret z
-	; RAICHU
+	cp RAICHU
 	ld hl, SurfingRaichuIntroGFX
 	ld a, BANK(SurfingRaichuIntroGFX)
+	ret z
+	; PIKACHU
+	ld hl, SurfingPikachuIntroGFX
+	ASSERT BANK(SurfingPikachuIntroGFX) == BANK(SurfingRaichuIntroGFX)
 	ret
 
 PikachusBeach_GetPaletteCommand: ; marcelnote - new for different player Mons
 	ld a, [wSurfingMinigamePlayerSpecies]
-	cp PIKACHU
-	ld b, SET_PAL_PIKACHUS_BEACH
-	ret z
+	cp RAICHU
 	ld b, SET_PAL_SURFING_RAICHU
+	ret z
+	; PIKACHU
+	ld b, SET_PAL_PIKACHUS_BEACH
 	ret
 
 PrepareSurfingMinigameHighScoreScreen:: ; marcelnote - modified for reorganized tileset and switching displayed Mon
