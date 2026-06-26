@@ -16,24 +16,24 @@ PikachusBeachOAMData:
 	dbw $30, .SurfingPikachu
 	dbw $66, .SurfingPikachu
 	dbw $33, .SurfingPikachu
-	dbw $69, .SurfingPikachuLast
+	dbw $69, .SurfingPikachu
 	dbw $6c, .UnusedFrontPikachu
 	dbw $9c, .UnusedBackPikachu
-	dbw $6c, .ResultsPikachu1
-	dbw $0f, .ResultsPikachu2
-	dbw $a7, .SmallSplash
-	dbw $a8, .LargeSplash
+	dbw $6c, .ResultsPikachu
+	dbw $90, .ResultsPikachu
+	dbw $d3, .SmallSplash
+	dbw $c0, .LargeSplash
 	dbw $6f, .EmptySurfboard
-	dbw $90, .StartText
-	dbw $b0, .GoalText ; marcelnote - restored GOAL anim
-	dbw $d0, .OhNoText
-	dbw $a7, .WaterSpray
-	dbw $f0, .Plus50Pts
-	dbw $f0, .Plus150Pts
-	dbw $f0, .Plus350Pts
-	dbw $f0, .Plus750Pts
-	dbw $f0, .Plus180Pts
-	dbw $f0, .Plus500Pts
+	dbw $d4, .StartText
+	dbw $ca, .GoalText ; marcelnote - restored GOAL anim
+	dbw $ea, .OhNoText
+	dbw $d3, .WaterSpray
+	dbw $00, .Plus50Pts
+	dbw $00, .Plus150Pts
+	dbw $00, .Plus350Pts
+	dbw $00, .Plus750Pts
+	dbw $00, .Plus180Pts
+	dbw $00, .Plus500Pts
 	dbw $00, .IntroPikachu ; marcelnote - minus $80 since moved Pikachu in VRAM
 	dbw $04, .IntroPikachu
 	dbw $08, .IntroPikachu
@@ -46,7 +46,7 @@ PikachusBeachOAMData:
 .SurfingPikachu:
 .UnusedFrontPikachu:
 .UnusedBackPikachu:
-.ResultsPikachu1:
+.ResultsPikachu:
 	db 9
 	db -12, -12, $00, 0
 	db -12,  -4, $01, 0
@@ -57,30 +57,6 @@ PikachusBeachOAMData:
 	db   4, -12, $20, 0
 	db   4,  -4, $21, 0
 	db   4,   4, $22, 0
-
-.SurfingPikachuLast
-	db 9
-	db -12, -12, $00, 0
-	db -12,  -4, $01, 0
-	db -12,   4, $02, 0
-	db  -4, -12, $10, 0
-	db  -4,  -4, $11, 0
-	db  -4,   4, $12, 0
-	db   4, -12, $20, 0
-	db   4,  -4, $21, 0
-	db   4,   4, $ec, 0 ; $55 - $69 ; marcelnote - reuse empty tile from 1st frame
-
-.ResultsPikachu2:
-	db 9
-	db -12, -12, $00, 0
-	db -12,  -4, $30, 0
-	db -12,   4, $5f, 0 ; marcelnote - reuse tiles from 1st frame for surfboard
-	db  -4, -12, $10, 0
-	db  -4,  -4, $40, 0
-	db  -4,   4, $6f, 0 ; marcelnote - reuse tiles from 1st frame for surfboard
-	db   4, -12, $20, 0
-	db   4,  -4, $50, 0
-	db   4,   4, $7f, 0 ; marcelnote - reuse tiles from 1st frame for surfboard
 
 .StartText:
 .GoalText:
@@ -137,44 +113,44 @@ PikachusBeachOAMData:
 
 .Plus50Pts:
 	db 3
-	db  -4, -12, $0a, 0
-	db  -4,  -4, $05, 0
-	db  -4,   4, $00, 0
+	db  -4, -12, $d2, 0
+	db  -4,  -4, $f5, 0
+	db  -4,   4, $f0, 0
 
 .Plus150Pts:
 	db 4
-	db  -4, -16, $0a, 0
-	db  -4,  -8, $01, 0
-	db  -4,   0, $05, 0
-	db  -4,   8, $00, 0
+	db  -4, -16, $d2, 0
+	db  -4,  -8, $f1, 0
+	db  -4,   0, $f5, 0
+	db  -4,   8, $f0, 0
 
 .Plus350Pts:
 	db 4
-	db  -4, -16, $0a, 0
-	db  -4,  -8, $03, 0
-	db  -4,   0, $05, 0
-	db  -4,   8, $00, 0
+	db  -4, -16, $d2, 0
+	db  -4,  -8, $f3, 0
+	db  -4,   0, $f5, 0
+	db  -4,   8, $f0, 0
 
 .Plus750Pts:
 	db 4
-	db  -4, -16, $0a, 0
-	db  -4,  -8, $07, 0
-	db  -4,   0, $05, 0
-	db  -4,   8, $00, 0
+	db  -4, -16, $d2, 0
+	db  -4,  -8, $f7, 0
+	db  -4,   0, $f5, 0
+	db  -4,   8, $f0, 0
 
 .Plus180Pts:
 	db 4
-	db  -4, -16, $0a, 0
-	db  -4,  -8, $01, 0
-	db  -4,   0, $08, 0
-	db  -4,   8, $00, 0
+	db  -4, -16, $d2, 0
+	db  -4,  -8, $f1, 0
+	db  -4,   0, $f8, 0
+	db  -4,   8, $f0, 0
 
 .Plus500Pts:
 	db 4
-	db  -4, -16, $0a, 0
-	db  -4,  -8, $05, 0
-	db  -4,   0, $00, 0
-	db  -4,   8, $00, 0
+	db  -4, -16, $d2, 0
+	db  -4,  -8, $f5, 0
+	db  -4,   0, $f0, 0
+	db  -4,   8, $f0, 0
 
 .IntroPikachu:
 	db 12

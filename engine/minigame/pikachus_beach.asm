@@ -1,9 +1,10 @@
 ; marcelnote - Pikachu's Beach minigame
 PikachusBeach::
 	call PikachusBeach_BlankPals
-	call DelayFrame
-	call DelayFrame
-	call DelayFrame
+	call Delay3
+;	call DelayFrame
+;	call DelayFrame
+;	call DelayFrame
 	ldh a, [hTileAnimations]
 	push af
 	xor a
@@ -314,27 +315,22 @@ PikachusBeach_PlaceSpriteRowFromTiles:
 	ret
 
 PikachusBeachMiniPikachuTile:
-	db $8b
+	db $0f
 
 PikachusBeachHPDigitTiles:
-	REPT 4
-		db $f0
-	ENDR
+	db $f0, $f0, $f0, $f0
 
 PikachusBeachWideCloudTiles:
-	db $96
-	db $97
-	db $97
-	db $98
-	db $99
+	db $93, $94, $94, $95, $96
 
 PikachusBeachNarrowCloudTiles:
-	db $96
-	db $97
-	db $98
-	db $99
+	db $93, $94, $95, $96
 
 PikachusBeach_DrawStaticTilemapLayout:
+	bgcoord hl, 1, 0, vBGMap1
+	ld [hl], $15
+	bgcoord hl, 2, 0, vBGMap1
+	ld [hl], $16
 	bgcoord de, 1, 1, vBGMap1
 	ld hl, .StatusBarTiles
 	ld c, 9
@@ -344,10 +340,6 @@ PikachusBeach_DrawStaticTilemapLayout:
 	inc de
 	dec c
 	jr nz, .copyTileRow
-	bgcoord hl, 1, 0, vBGMap1
-	ld [hl], $15
-	bgcoord hl, 2, 0, vBGMap1
-	ld [hl], $16
 	bgcoord hl, 12, 1, vBGMap1
 	ld [hl], $1b
 	bgcoord hl, 13, 1, vBGMap1
@@ -1451,7 +1443,7 @@ SurfingMinigame_WriteHPLeft:
 	jp SurfingMinigame_BCDPrintHPLeft
 
 .HP_Left:
-	db $20,$21,$ff,$22,$23,$24,$25 ; HP Left
+	db $20,$21,$7f,$22,$23,$24,$25 ; HP Left
 
 SurfingMinigame_AddRemainingHPToTotal:
 	ld c, 99
