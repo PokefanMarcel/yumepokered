@@ -326,28 +326,33 @@ PikachusBeachWideCloudTiles:
 PikachusBeachNarrowCloudTiles:
 	db $93, $94, $95, $96
 
-PikachusBeach_DrawStaticTilemapLayout:
+PikachusBeach_DrawStaticTilemapLayout: ; marcelnote - modified to exploit contiguous tiles
+	; palm tree and progression bar
 	bgcoord hl, 1, 0, vBGMap1
-	ld [hl], $15
-	bgcoord hl, 2, 0, vBGMap1
-	ld [hl], $16
-	bgcoord de, 1, 1, vBGMap1
-	ld hl, .StatusBarTiles
-	ld c, 9
-.copyTileRow
-	ld a, [hli]
-	ld [de], a
-	inc de
-	dec c
-	jr nz, .copyTileRow
-	bgcoord hl, 12, 1, vBGMap1
-	ld [hl], $1b
-	bgcoord hl, 13, 1, vBGMap1
-	ld [hl], $1c
+	ld a, $10   ; first palm tree tile
+	ld [hli], a
+	inc a
+	ld [hl], a
+	ld de, TILEMAP_WIDTH - 1
+	add hl, de
+	inc a
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc a
+	ld e, 7
+.placeProgressionBar
+	ld [hli], a
+	dec e
+	jr nz, .placeProgressionBar
+	inc hl
+	inc hl ; skip two tiles
+	; HP:
+	inc a
+	ld [hli], a
+	inc a
+	ld [hl], a
 	ret
-
-.StatusBarTiles:
-	db $17, $18, $19, $19, $19, $19, $19, $19, $19
 
 RunSurfingMinigameRoutine:
 	ld a, [wSurfingMinigameRoutineNumber]
@@ -872,13 +877,13 @@ SurfingMinigame_TileInteraction:
 	add hl, bc
 	ld d, [hl]
 	ld a, [wSurfingMinigameBGMapReadBuffer]
-	cp $6
+	cp $3 ; rising slope
 	jr z, .risingSlope
-	cp $14
-	jr z, .tile14
-	cp $12
-	jr z, .tile12
-	cp $7
+	cp $8 ; wave crest
+	jr z, .waveCrest
+	cp $6 ; wave face
+	jr z, .waveFace
+	cp $4 ; falling slope
 	jr z, .fallingSlope
 	dec d ; 1?
 	jr z, .wipeout
@@ -930,8 +935,8 @@ SurfingMinigame_TileInteraction:
 	jr z, .wipeout
 	jr .wipeout
 
-.tile12
-.tile14
+.waveFace
+.waveCrest
 	dec d ; 1?
 	jr z, .wipeout
 	dec d ; 2?
@@ -1013,7 +1018,7 @@ SurfingMinigame_TryStartJump:
 	cp $5
 	jr nc, .noJump
 	ld a, [wSurfingMinigameBGMapReadBuffer]
-	cp $14
+	cp $8 ; wave crest
 	jr nz, .noJump
 	call SurfingMinigame_GetSpeedDividedBy32
 	cp $a
@@ -1035,11 +1040,11 @@ SurfingMinigame_UpdateSurfingFrame:
 	cp $5
 	ret nc
 	ld a, [wSurfingMinigameBGMapReadBuffer]
-	cp $6
+	cp $3 ; rising slope
 	jr z, .risingSlope
-	cp $14
-	jr z, .risingSlope
-	cp $7
+	cp $8 ; wave crest
+	jr z, .waveCrest
+	cp $4 ; falling slope
 	jr z, .fallingSlope
 	call SurfingMinigame_UpdateBoardAngle
 	ld a, $4
@@ -1049,6 +1054,7 @@ SurfingMinigame_UpdateSurfingFrame:
 	ret
 
 .risingSlope
+.waveCrest
 	ld a, $6
 	jr .selectFrame
 
@@ -1137,16 +1143,17 @@ SurfingMinigame_SpawnWaterSpray:
 	ld hl, wSurfingMinigameWaveHeight + 9
 .gotHL
 	ld a, [wSurfingMinigameBGMapReadBuffer + 1]
-	cp $6
-	jr z, .sixOrTwenty
-	cp $14
-	jr z, .sixOrTwenty
-	cp $7
-	jr z, .seven
+	cp $3 ; rising slope
+	jr z, .risingSlope
+	cp $8 ; wave crest
+	jr z, .waveCrest
+	cp $4 ; falling slope
+	jr z, .fallingSlope
 	ld a, [hl]
 	ret
 
-.sixOrTwenty
+.risingSlope
+.waveCrest
 	ldh a, [hSCX]
 	and $7
 	ld e, a
@@ -1154,7 +1161,7 @@ SurfingMinigame_SpawnWaterSpray:
 	sub e
 	ret
 
-.seven
+.fallingSlope
 	ldh a, [hSCX]
 	and $7
 	add [hl]
@@ -1295,17 +1302,18 @@ SurfingMinigame_SetPikachuHeight:
 	ld hl, wSurfingMinigameWaveHeight + 8
 .gotWaveHeight
 	ld a, [wSurfingMinigameBGMapReadBuffer]
-	cp $6
+	cp $3 ; rising slope
 	jr z, .risingSlope
-	cp $14
-	jr z, .risingSlope
-	cp $7
+	cp $8 ; wave crest
+	jr z, .waveCrest
+	cp $4 ; falling slope
 	jr z, .fallingSlope
 	ld a, [hl]
 	ld [wSurfingMinigamePikachuObjectHeight], a
 	ret
 
 .risingSlope
+.waveCrest
 	ldh a, [hSCX]
 	and $7
 	ld e, a
@@ -1433,7 +1441,7 @@ SurfingMinigame_PrintTextHiScore:
 	jp CopyData
 
 .Hi_Score:
-	db $20,$2e,$2f,$30,$31,$32,$34,$35,$33 ; HI-SCORE!!
+	db $17,$19,$1a,$1b,$1c,$1d,$1e,$1f,$0f ; HI-SCORE!!
 
 SurfingMinigame_WriteHPLeft:
 	ld hl, .HP_Left
@@ -1443,7 +1451,7 @@ SurfingMinigame_WriteHPLeft:
 	jp SurfingMinigame_BCDPrintHPLeft
 
 .HP_Left:
-	db $20,$21,$7f,$22,$23,$24,$25 ; HP Left
+	db $17,$18,$7f,$22,$23,$24,$25 ; HP Left
 
 SurfingMinigame_AddRemainingHPToTotal:
 	ld c, 99
@@ -1479,10 +1487,10 @@ SurfingMinigame_BCDPrintHPLeft:
 	call PikachusBeach_PlaceBCDNumber
 	inc hl
 	inc hl
-	ld [hl], $1d ; P
-	inc hl
-	ld [hl], $25 ; t
-	inc hl
+	ld a, $21    ; P
+	ld [hli], a
+	ld a, $25    ; t
+	ld [hli], a
 	ld [hl], $26 ; s
 	ret
 
@@ -1539,10 +1547,10 @@ SurfingMinigame_BCDPrintRadness:
 	call PikachusBeach_PlaceBCDNumber
 	inc hl
 	inc hl
-	ld [hl], $1d ; P
-	inc hl
-	ld [hl], $25 ; t
-	inc hl
+	ld a, $21    ; P
+	ld [hli], a
+	ld a, $25    ; t
+	ld [hli], a
 	ld [hl], $26 ; s
 	ret
 
@@ -1571,10 +1579,10 @@ SurfingMinigame_BCDPrintTotalScore:
 	call PikachusBeach_PlaceBCDNumber
 	inc hl
 	inc hl
-	ld [hl], $1d ; P
-	inc hl
-	ld [hl], $25 ; t
-	inc hl
+	ld a, $21    ; P
+	ld [hli], a
+	ld a, $25    ; t
+	ld [hli], a
 	ld [hl], $26 ; s
 	ret
 
@@ -2835,26 +2843,26 @@ SurfingMinigame_LYOverridesInitialSineWave:
 SurfingMinigame_BGMetatileTable: ; metatiles of 2x2 tiles
 	db $7f, $7f, $7f, $7f ; 00 ; sky block (blank)
 	db $65, $65, $65, $65 ; 01 ; water block
-	db $65, $02, $02, $06 ; 02
-	db $03, $65, $07, $03 ; 03
-	db $06, $06, $06, $06 ; 04
-	db $07, $07, $07, $07 ; 05
-	db $06, $02, $02, $00 ; 06
-	db $03, $07, $00, $03 ; 07
-	db $65, $65, $11, $12 ; 08
-	db $65, $65, $13, $03 ; 09
-	db $14, $12, $02, $00 ; 0a
-	db $13, $07, $00, $03 ; 0b
-	db $06, $14, $06, $14 ; 0c ; unused, identical to 11
-	db $13, $07, $13, $07 ; 0d
+	db $65, $01, $01, $03 ; 02
+	db $02, $65, $04, $02 ; 03
+	db $03, $03, $03, $03 ; 04
+	db $04, $04, $04, $04 ; 05
+	db $03, $01, $01, $00 ; 06
+	db $02, $04, $00, $02 ; 07
+	db $65, $65, $05, $06 ; 08
+	db $65, $65, $07, $02 ; 09
+	db $08, $06, $01, $00 ; 0a
+	db $07, $04, $00, $02 ; 0b
+	db $03, $08, $03, $08 ; 0c ; unused, identical to 11
+	db $07, $04, $07, $04 ; 0d
 	db $00, $00, $00, $00 ; 0e ; solid blue
-	db $14, $12, $14, $12 ; 0f
-	db $65, $11, $02, $14 ; 10
-	db $06, $14, $06, $14 ; 11
+	db $08, $06, $08, $06 ; 0f
+	db $65, $05, $01, $08 ; 10
+	db $03, $08, $03, $08 ; 11
 	db $60, $60, $63, $63 ; 12 ; beach top block
 	db $63, $63, $63, $63 ; 13 ; beach sand block
 	db $61, $62, $64, $65 ; 14 ; beach shore block
-	db $12, $13, $12, $13 ; 15
+	db $06, $07, $06, $07 ; 15
 
 SurfingMinigameWavePattern00:
 	db $00, $00, $00, $01, $01, $01, $01, $01
