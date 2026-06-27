@@ -24,3 +24,5 @@
 
 
 I received additional help and feedback on some designs from people on the pokered discord, most notably Mauve, FrenchOrange, NunWinter, Kester Henrick.
+
+A big thank you to everyone who made these graphics!
