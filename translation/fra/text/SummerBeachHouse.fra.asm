@@ -73,7 +73,7 @@ _SummerBeachHouseBagFullText::
 	done
 
 _SummerBeachHouseSurfinDudeWannaGoSurfText::
-	text "Tu veux surfer?"
+	text "Tu veux SURFER?"
 	done
 
 _SummerBeachHouseSurfinDudeDogsBurgersText::

@@ -1436,22 +1436,48 @@ SurfingMinigame_DrawResultsScreen:
 
 SurfingMinigame_PrintTextHiScore:
 	ld hl, .Hi_Score
+IF DEF(_FRA)
+	decoord 7, 8
+	ld bc, 7
+ELIF DEF(_ESP) ; TODO - Spanish translation
 	decoord 6, 8
-	ld bc, $9
+	ld bc, 9
+ELSE
+	decoord 6, 8
+	ld bc, 9
+ENDC
 	jp CopyData
 
 .Hi_Score:
+IF DEF(_FRA)
+	db $19,$1a,$1b,$1c,$1d,$1e,$1f ; RECORD!!
+ELIF DEF(_ESP) ; TODO - Spanish translation
 	db $17,$19,$1a,$1b,$1c,$1d,$1e,$1f,$0f ; HI-SCORE!!
+ELSE
+	db $17,$19,$1a,$1b,$1c,$1d,$1e,$1f,$0f ; HI-SCORE!!
+ENDC
 
 SurfingMinigame_WriteHPLeft:
 	ld hl, .HP_Left
 	decoord 2, 2
-	ld bc, $7
+IF DEF(_FRA)
+	ld bc, 2
+ELIF DEF(_ESP)
+	ld bc, 7 ; TODO - Spanish translation
+ELSE
+	ld bc, 7
+ENDC
 	call CopyData
 	jp SurfingMinigame_BCDPrintHPLeft
 
 .HP_Left:
+IF DEF(_FRA)
+	db $17,$18 ; PV
+ELIF DEF(_ESP)
+	db $17,$18,$7f,$22,$23,$24,$25 ; HP Left ; TODO - Spanish translation
+ELSE
 	db $17,$18,$7f,$22,$23,$24,$25 ; HP Left
+ENDC
 
 SurfingMinigame_AddRemainingHPToTotal:
 	ld c, 99
@@ -1485,24 +1511,53 @@ SurfingMinigame_BCDPrintHPLeft:
 	inc hl
 	ld a, [de]
 	call PikachusBeach_PlaceBCDNumber
+	; fallthrough
+
+PikachusBeach_WritePts:
 	inc hl
 	inc hl
+IF DEF(_FRA)
+	ld a, $28    ; P
+	ld [hli], a
+	ld a, $21    ; t
+	ld [hli], a
+	ld [hl], $29 ; s
+ELIF DEF(_ESP) ; TODO - Spanish translation
 	ld a, $21    ; P
 	ld [hli], a
 	ld a, $25    ; t
 	ld [hli], a
 	ld [hl], $26 ; s
+ELSE
+	ld a, $21    ; P
+	ld [hli], a
+	ld a, $25    ; t
+	ld [hli], a
+	ld [hl], $26 ; s
+ENDC
 	ret
 
 SurfingMinigame_WriteRadness:
 	ld hl, .Radness
 	decoord 2, 4
-	ld bc, $7
+IF DEF(_FRA)
+	ld bc, 5
+ELIF DEF(_ESP) ; TODO - Spanish translation
+	ld bc, 7
+ELSE
+	ld bc, 7
+ENDC
 	call CopyData
 	jp SurfingMinigame_BCDPrintRadness
 
 .Radness:
+IF DEF(_FRA)
+	db $20,$21,$22,$23,$24         ; Style
+ELIF DEF(_ESP)
+	db $27,$28,$29,$2a,$23,$26,$26 ; Radness ; TODO - Spanish translation
+ELSE
 	db $27,$28,$29,$2a,$23,$26,$26 ; Radness
+ENDC
 
 SurfingMinigame_AddRadnessToTotal:
 	ld c, 99
@@ -1545,14 +1600,7 @@ SurfingMinigame_BCDPrintRadness:
 	ld a, [wSurfingMinigameRadnessScore]
 	hlcoord 12, 4
 	call PikachusBeach_PlaceBCDNumber
-	inc hl
-	inc hl
-	ld a, $21    ; P
-	ld [hli], a
-	ld a, $25    ; t
-	ld [hli], a
-	ld [hl], $26 ; s
-	ret
+	jp PikachusBeach_WritePts
 
 SurfingMinigame_AddPointsToTotal:
 	ld a, [wSurfingMinigameTotalScore]
@@ -1577,25 +1625,24 @@ SurfingMinigame_BCDPrintTotalScore:
 	ld a, [wSurfingMinigameTotalScore]
 	hlcoord 12, 6
 	call PikachusBeach_PlaceBCDNumber
-	inc hl
-	inc hl
-	ld a, $21    ; P
-	ld [hli], a
-	ld a, $25    ; t
-	ld [hli], a
-	ld [hl], $26 ; s
-	ret
+	jp PikachusBeach_WritePts
 
 SurfingMinigame_WriteTotal:
 	ld hl, .Total
 	decoord 2, 6
-	ld bc, $5
+	ld bc, 5
 	call CopyData
 	call SurfingMinigame_BCDPrintRadness
 	jp SurfingMinigame_BCDPrintTotalScore
 
 .Total:
+IF DEF(_FRA)
+	db $25,$26,$21,$27,$23 ; Total
+ELIF DEF(_ESP)
+	db $2b,$2c,$25,$28,$2d ; Total ; TODO - Spanish translation
+ELSE
 	db $2b,$2c,$25,$28,$2d ; Total
+ENDC
 
 DidPlayerGetAHighScore:
 	ld hl, wSurfingMinigameHiScore + 1
@@ -2384,22 +2431,23 @@ PrepareSurfingMinigameHighScoreScreen:: ; marcelnote - modified for reorganized 
 
 	; Place text strings.
 	ld de, .PikachusBeachString
+IF DEF(_FRA)
+	hlcoord 2, 2
+ELIF DEF(_ESP) ; TODO - Spanish translation
 	hlcoord 3, 2
+ELSE
+	hlcoord 3, 2
+ENDC
 	call PlaceString
-	ld de, .HiScoreString
-	hlcoord 9, 4
-	call PlaceString
-	ld de, .PointsString
-	hlcoord 12, 6
-	call PlaceString
-	ld de, wPlayerName
+
+IF DEF(_FRA) ; 'Score de NINTEND', right-aligned
 	ld hl, wPlayerName
 	ld bc, 0
-.findEndOfName
+.findNameLength
 	ld a, [hli]
 	inc c
 	cp '@'
-	jr nz, .findEndOfName
+	jr nz, .findNameLength
 	ld a, 8
 	sub c
 	jr nc, .gotNameLength
@@ -2408,6 +2456,58 @@ PrepareSurfingMinigameHighScoreScreen:: ; marcelnote - modified for reorganized 
 	ld c, a
 	hlcoord 2, 4
 	add hl, bc
+	ld de, .HiScoreString
+	call PlaceString
+	ld de, wPlayerName
+	ld bc, 9 ; length of 'Score de '
+	add hl, bc
+	call PlaceString
+ELIF DEF(_ESP) ; TODO - Spanish translation
+	ld de, .HiScoreString
+	hlcoord 9, 4
+	call PlaceString
+	ld hl, wPlayerName
+	ld bc, 0
+.findNameLength
+	ld a, [hli]
+	inc c
+	cp '@'
+	jr nz, .findNameLength
+	ld a, 8
+	sub c
+	jr nc, .gotNameLength
+	xor a
+.gotNameLength
+	ld c, a
+	hlcoord 2, 4
+	add hl, bc
+	ld de, wPlayerName
+	call PlaceString
+ELSE ; English: 'NINTEND's Hi-score', right-aligned
+	ld de, .HiScoreString
+	hlcoord 9, 4
+	call PlaceString
+	ld hl, wPlayerName
+	ld bc, 0
+.findNameLength
+	ld a, [hli]
+	inc c
+	cp '@'
+	jr nz, .findNameLength
+	ld a, 8
+	sub c
+	jr nc, .gotNameLength
+	xor a
+.gotNameLength
+	ld c, a
+	hlcoord 2, 4
+	add hl, bc
+	ld de, wPlayerName
+	call PlaceString
+ENDC
+
+	ld de, .PointsString
+	hlcoord 12, 6
 	call PlaceString
 	call .CopyHighScore
 	ld b, SET_PAL_PIKACHUS_BEACH_HISCORE
@@ -2464,9 +2564,21 @@ PrepareSurfingMinigameHighScoreScreen:: ; marcelnote - modified for reorganized 
 INCBIN "gfx/pikachus_beach/printer_hi_score.tilemap"
 
 .PikachusBeachString:
+IF DEF(_FRA)
+	db "Plage de Pikachu@"
+ELIF DEF(_ESP)
+	db "Pikachu's Beach@" ; TODO - Spanish translation
+ELSE
 	db "Pikachu's Beach@"
+ENDC
 .HiScoreString:
+IF DEF(_FRA)
+	db "Score de @"
+ELIF DEF(_ESP)
+	db "'s Hi-Score@" ; TODO - Spanish translation
+ELSE
 	db "'s Hi-Score@"
+ENDC
 .PointsString:
 	db "Points@"
 
@@ -2927,5 +3039,11 @@ SurfingMinigameBeachPattern:
 
 
 ;SurfingMinigame_TitleTilemap:         INCBIN "gfx/pikachus_beach/title.tilemap"
-SurfingMinigame_BeachIntroTilemap:    INCBIN "gfx/pikachus_beach/beach_intro.tilemap"
-SurfingMinigame_BeachOutroTilemap:    INCBIN "gfx/pikachus_beach/beach_outro.tilemap"
+IF DEF(_FRA)
+	SurfingMinigame_BeachIntroTilemap: INCBIN "translation/fra/gfx/pikachus_beach/beach_intro.fra.tilemap"
+ELIF DEF(_ESP)
+	SurfingMinigame_BeachIntroTilemap: INCBIN "gfx/pikachus_beach/beach_intro.tilemap" ; TODO - Spanish translation
+ELSE
+	SurfingMinigame_BeachIntroTilemap: INCBIN "gfx/pikachus_beach/beach_intro.tilemap"
+ENDC
+SurfingMinigame_BeachOutroTilemap:     INCBIN "gfx/pikachus_beach/beach_outro.tilemap"
