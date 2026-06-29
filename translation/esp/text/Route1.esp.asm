@@ -101,6 +101,12 @@ _Route1OakAcceptedBattleText:: ; marcelnote - postgame Oak battle
 
 _Route1OakDefeatText:: ; marcelnote - postgame Oak battle
 	; traducción por NunWinter
+	text "¡Qué"
+	line "emocionante!"
+	prompt
+
+_Route1OakVictoryText:: ; marcelnote - postgame Oak battle
+	; traducción por NunWinter
 	text "De las"
 	line "derrotas también"
 	cont "se aprende,"
@@ -108,12 +114,6 @@ _Route1OakDefeatText:: ; marcelnote - postgame Oak battle
 
 	para "¡Incluso siendo"
 	line "el CAMPEÓN!"
-	prompt
-
-_Route1OakVictoryText:: ; marcelnote - postgame Oak battle
-	; traducción por NunWinter
-	text "¡Qué"
-	line "emocionante!"
 	prompt
 
 _Route1OakPostBattleText:: ; marcelnote - postgame Oak battle
