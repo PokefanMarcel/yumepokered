@@ -2919,6 +2919,9 @@ SwapMovesInMenu:
 	add b
 	ld [hl], a
 .swapMovesInPartyMon
+	ld a, [wPlayerBattleStatus3] ; marcelnote - fixed bug with swapping move while Transformed
+	bit TRANSFORMED, a
+	jr nz, .doneSwappingMoves
 	ld hl, wPartyMon1Moves
 	ld a, [wPlayerMonNumber]
 	ld bc, PARTYMON_STRUCT_LENGTH
@@ -2929,9 +2932,15 @@ SwapMovesInMenu:
 	ld bc, MON_PP - MON_MOVES
 	add hl, bc
 	call .swapBytes ; swap move PP
+.doneSwappingMoves
 	xor a
 	ld [wMenuItemToSwap], a ; deselect the item
 	jp MoveSelectionMenu
+.noMenuItemSelected
+	ld a, [wCurrentMenuItem]
+	ld [wMenuItemToSwap], a ; select the current menu item for swapping
+	jp MoveSelectionMenu
+
 .swapBytes
 	push hl
 	ld a, [wMenuItemToSwap]
@@ -2953,10 +2962,6 @@ SwapMovesInMenu:
 	ld a, b
 	ld [de], a
 	ret
-.noMenuItemSelected
-	ld a, [wCurrentMenuItem]
-	ld [wMenuItemToSwap], a ; select the current menu item for swapping
-	jp MoveSelectionMenu
 
 PrintMenuItem: ; marcelnote - this menu was revamped to also show power and accuracy
 	xor a
