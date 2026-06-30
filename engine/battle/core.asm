@@ -2882,61 +2882,54 @@ NoMovesLeftText:
 	text_far _NoMovesLeftText
 	text_end
 
-SwapMovesInMenu:
+SwapMovesInMenu: ; marcelnote - optimized and fixed Transform move swap bug
 	ld a, [wMenuItemToSwap]
-	and a
-	jr z, .noMenuItemSelected
+	and a ; is an item already selected for swapping?
+	jr z, .setMenuItemToSwap
+; Swap the active battle move slots.
 	ld hl, wBattleMonMoves
 	call .swapBytes ; swap moves
 	ld hl, wBattleMonPP
 	call .swapBytes ; swap move PP
-; update the index of the disabled move if necessary
-	ld hl, wPlayerDisabledMove
+; Update the disabled move slot if needed.
+	ld hl, wPlayerDisabledMove ; high nybble = disabled move slot (1-4); low nybble = disable counter.
 	ld a, [hl]
+	and $f0
 	swap a
-	and $f
-	ld b, a
+	ld b, a ; b = disabled move slot
 	ld a, [wCurrentMenuItem]
-	cp b
-	jr nz, .next
-	ld a, [hl]
-	and $f
-	ld b, a
+	cp b                            ; is the current move disabled?
 	ld a, [wMenuItemToSwap]
+	jr z, .swapDisabledMoveSlot     ; if yes, set disabled move slot to [wMenuItemToSwap]
+	cp b                            ; is the move to swap disabled?
+	jr nz, .swapMovesInPartyMonData ; if not, no need to touch wPlayerDisabledMove
+	ld a, [wCurrentMenuItem]        ; if yes, set disabled move slot to [wCurrentMenuItem]
+.swapDisabledMoveSlot
 	swap a
-	add b
+	add [hl] ; a = new_slot + old_slot | counter
+	swap b
+	sub b    ; a = new_slot | counter
 	ld [hl], a
-	jr .swapMovesInPartyMon
-.next
-	ld a, [wMenuItemToSwap]
-	cp b
-	jr nz, .swapMovesInPartyMon
-	ld a, [hl]
-	and $f
-	ld b, a
-	ld a, [wCurrentMenuItem]
-	swap a
-	add b
-	ld [hl], a
-.swapMovesInPartyMon
-	ld a, [wPlayerBattleStatus3] ; marcelnote - fixed bug with swapping move while Transformed
+.swapMovesInPartyMonData
+; Mirror the swap to the active party mon data so move reordering persists.
+	ld a, [wPlayerBattleStatus3]
 	bit TRANSFORMED, a
 	jr nz, .doneSwappingMoves
 	ld hl, wPartyMon1Moves
 	ld a, [wPlayerMonNumber]
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	call AddNTimes  ; hl = wPartyMon[n]Moves
 	push hl
 	call .swapBytes ; swap moves
-	pop hl
+	pop hl          ; hl = wPartyMon[n]Moves
 	ld bc, MON_PP - MON_MOVES
-	add hl, bc
+	add hl, bc      ; hl = wPartyMon[n]PP
 	call .swapBytes ; swap move PP
 .doneSwappingMoves
 	xor a
 	ld [wMenuItemToSwap], a ; deselect the item
 	jp MoveSelectionMenu
-.noMenuItemSelected
+.setMenuItemToSwap
 	ld a, [wCurrentMenuItem]
 	ld [wMenuItemToSwap], a ; select the current menu item for swapping
 	jp MoveSelectionMenu
@@ -2949,13 +2942,13 @@ SwapMovesInMenu:
 	ld b, 0
 	add hl, bc
 	ld d, h
-	ld e, l
+	ld e, l    ; de = first byte address
 	pop hl
 	ld a, [wCurrentMenuItem]
 	dec a
 	ld c, a
 	ld b, 0
-	add hl, bc
+	add hl, bc ; hl = second byte address
 	ld a, [de]
 	ld b, [hl]
 	ld [hl], a
