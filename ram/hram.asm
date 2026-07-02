@@ -147,9 +147,6 @@ hSwapItemID:: db
 hSwapItemQuantity:: db
 
 NEXTU
-hSignCoordPointer:: dw
-
-NEXTU
 	ds 1
 hMutateWY:: db
 hMutateWX:: db

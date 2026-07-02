@@ -1981,11 +1981,10 @@ LoadMapHeader:: ; marcelnote - optimized
 	ld a, [wCurMap]
 	call SwitchToMapRomBank
 	ld a, [wCurMapTileset]
-	ld b, a
+	bit BIT_NO_PREVIOUS_MAP, a
 	res BIT_NO_PREVIOUS_MAP, a
 	ld [wCurMapTileset], a
 	ldh [hPreviousTileset], a
-	bit BIT_NO_PREVIOUS_MAP, b
 	ret nz
 	ld hl, MapHeaderPointers
 	ld a, [wCurMap]
@@ -2038,60 +2037,48 @@ LoadMapHeader:: ; marcelnote - optimized
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a ; hl = base of object data
-	ld de, wMapBackgroundTile
 	ld a, [hli]
-	ld [de], a
-; load warp data
+	ld [wMapBackgroundTile], a
+
+; Load warp data.
 	ld a, [hli]
 	ld [wNumberOfWarps], a
 	and a
 	jr z, .loadSignData
+	add a
+	add a ; 4 bytes per warp
+	ASSERT MAX_WARP_EVENTS * 4 < $100
 	ld c, a
 	ld de, wWarpEntries
-.warpLoop ; one warp per loop iteration
-	ld b, 4
-.warpInnerLoop
+.warpLoop
 	ld a, [hli]
 	ld [de], a
 	inc de
-	dec b
-	jr nz, .warpInnerLoop
 	dec c
 	jr nz, .warpLoop
+
 .loadSignData
 	ld a, [hli] ; number of signs
 	ld [wNumSigns], a
-	and a ; are there any signs?
-	jr z, .loadSpriteData ; if not, skip this
-	ld c, a
+	and a
+	jr z, .loadSpriteData
+	ld bc, wSignCoords
 	ld de, wSignTextIDs
-	ld a, d
-	ldh [hSignCoordPointer], a
-	ld a, e
-	ldh [hSignCoordPointer + 1], a
-	ld de, wSignCoords
 .signLoop
-	ld a, [hli]
+	push af
+	ld a, [hli] ; sign Y coord
+	ld [bc], a
+	inc bc
+	ld a, [hli] ; sign X coord
+	ld [bc], a
+	inc bc
+	ld a, [hli] ; sign text ID
 	ld [de], a
 	inc de
-	ld a, [hli]
-	ld [de], a
-	inc de
-	push de ; save de = next wSignCoords destination
-	ldh a, [hSignCoordPointer]
-	ld d, a
-	ldh a, [hSignCoordPointer + 1]
-	ld e, a
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, d
-	ldh [hSignCoordPointer], a
-	ld a, e
-	ldh [hSignCoordPointer + 1], a
-	pop de ; restore de = next wSignCoords destination
-	dec c
+	pop af
+	dec a
 	jr nz, .signLoop
+
 .loadSpriteData
 	ld a, [wStatusFlags4]
 	bit BIT_BATTLE_OVER_OR_BLACKOUT, a
@@ -2153,16 +2140,26 @@ LoadMapHeader:: ; marcelnote - optimized
 	ldh a, [hLoadSpriteTemp1]
 	ld [hli], a ; store movement byte 2 in byte 0 of sprite entry
 	ldh a, [hLoadSpriteTemp2]
-	ldh [hLoadSpriteTemp1], a
 	and $3f
 	ld [hl], a ; store text ID in byte 1 of sprite entry
 	pop hl ; restore hl = object data cursor after text ID and flags byte
-	ldh a, [hLoadSpriteTemp1]
+	ldh a, [hLoadSpriteTemp2]
 	bit BIT_TRAINER, a
 	jr nz, .trainerSprite
 	bit BIT_ITEM, a
-	jr nz, .itemBallSprite
-	jr .regularSprite
+	jr z, .regularSprite
+.itemBallSprite
+	ld a, [hli]
+	ldh [hLoadSpriteTemp1], a ; save item number
+	push hl ; save hl = object data cursor after item number
+	ld hl, wMapSpriteExtraData
+	add hl, bc
+	ldh a, [hLoadSpriteTemp1]
+	ld [hli], a ; store item number in byte 0 of the entry
+	xor a
+	ld [hl], a ; zero byte 1, since it is not used
+	pop hl ; restore hl = object data cursor after item number
+	jr .nextSprite
 .trainerSprite
 	ld a, [hli]
 	ldh [hLoadSpriteTemp1], a ; save trainer class
@@ -2176,18 +2173,6 @@ LoadMapHeader:: ; marcelnote - optimized
 	ldh a, [hLoadSpriteTemp2]
 	ld [hl], a ; store trainer number in byte 1 of the entry
 	pop hl ; restore hl = object data cursor after trainer class/number
-	jr .nextSprite
-.itemBallSprite
-	ld a, [hli]
-	ldh [hLoadSpriteTemp1], a ; save item number
-	push hl ; save hl = object data cursor after item number
-	ld hl, wMapSpriteExtraData
-	add hl, bc
-	ldh a, [hLoadSpriteTemp1]
-	ld [hli], a ; store item number in byte 0 of the entry
-	xor a
-	ld [hl], a ; zero byte 1, since it is not used
-	pop hl ; restore hl = object data cursor after item number
 	jr .nextSprite
 .regularSprite
 	push hl ; save hl = object data cursor for next sprite
@@ -2208,6 +2193,7 @@ LoadMapHeader:: ; marcelnote - optimized
 	inc c
 	dec b
 	jr nz, .loadSpriteLoop
+
 .finishUp
 	predef LoadTilesetHeader
 	callfar LoadWildData
