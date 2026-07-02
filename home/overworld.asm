@@ -2090,7 +2090,7 @@ LoadMapHeader:: ; marcelnote - optimized
 	ld hl, wSprite01StateData1
 	ld de, wSprite01StateData2
 	xor a
-	ld b, $f0
+	ld b, (NUM_SPRITESTATEDATA_STRUCTS - 1) * SPRITESTATEDATA1_LENGTH
 .zeroSpriteDataLoop
 	ld [hli], a
 	ld [de], a
@@ -2099,12 +2099,12 @@ LoadMapHeader:: ; marcelnote - optimized
 	jr nz, .zeroSpriteDataLoop
 ; disable SPRITESTATEDATA1_IMAGEINDEX (set to $ff) for sprites 01-15
 	ld hl, wSprite01StateData1ImageIndex
-	ld de, SPRITESTATEDATA1_LENGTH
-	ld c, NUM_SPRITESTATEDATA_STRUCTS - 1
+	ld c, SPRITESTATEDATA1_LENGTH ; b = 0 here
+	lb de, $ff, NUM_SPRITESTATEDATA_STRUCTS - 1
 .disableSpriteEntriesLoop
-	ld [hl], $ff
-	add hl, de
-	dec c
+	ld [hl], d
+	add hl, bc
+	dec e
 	jr nz, .disableSpriteEntriesLoop
 	pop hl ; restore hl = object data cursor at first sprite entry
 	ld de, wSprite01StateData1
@@ -2150,11 +2150,9 @@ LoadMapHeader:: ; marcelnote - optimized
 	jr z, .regularSprite
 .itemBallSprite
 	ld a, [hli]
-	ldh [hLoadSpriteTemp1], a ; save item number
 	push hl ; save hl = object data cursor after item number
 	ld hl, wMapSpriteExtraData
 	add hl, bc
-	ldh a, [hLoadSpriteTemp1]
 	ld [hli], a ; store item number in byte 0 of the entry
 	xor a
 	ld [hl], a ; zero byte 1, since it is not used
