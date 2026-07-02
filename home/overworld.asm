@@ -50,10 +50,13 @@ OverworldLoopLessDelay::
 	and a
 	jp nz, .moveAhead ; if the player sprite has not yet completed the walking animation
 	call JoypadOverworld ; get joypad state (which is possibly simulated)
+	CheckEvent EVENT_IN_SAFARI_ZONE
+	jr z, .skipSafariZoneCheck
 	callfar SafariZoneCheck
 	ld a, [wSafariZoneGameOver]
 	and a
 	jp nz, WarpFound2
+.skipSafariZoneCheck
 	ld hl, wStatusFlags3
 	bit BIT_WARP_FROM_CUR_SCRIPT, [hl]
 	res BIT_WARP_FROM_CUR_SCRIPT, [hl]

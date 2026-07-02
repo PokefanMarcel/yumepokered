@@ -1,6 +1,4 @@
 SafariZoneCheck::
-	CheckEventHL EVENT_IN_SAFARI_ZONE ; if we are not in the Safari Zone,
-	jr z, SafariZoneGameStillGoing ; don't bother printing game over text
 	ld a, [wNumSafariBalls]
 	and a
 	jr z, SafariZoneGameOver
