@@ -1066,20 +1066,16 @@ LoadEastWestConnectionsTileMap::
 ; function to check if there is a sign or sprite in front of the player
 ; if so, it is stored in [hTextID]
 ; if not, [hTextID] is set to 0
-IsSpriteOrSignInFrontOfPlayer::
+IsSpriteOrSignInFrontOfPlayer:: ; marcelnote - optimized
 	xor a
 	ldh [hTextID], a
+	predef GetTileAndCoordsInFrontOfPlayer ; get the tile in front of the player in c and coordinates in de
 	ld a, [wNumSigns]
 	and a
-	jr z, .extendRangeOverCounter
-; if there are signs
-	predef GetTileAndCoordsInFrontOfPlayer ; get the coordinates in front of the player in de
+	jr z, .checkSprites
 	ld hl, wSignCoords
-	ld a, [wNumSigns]
 	ld b, a
-	ld c, 0
 .signLoop
-	inc c
 	ld a, [hli] ; sign Y
 	cp d
 	jr z, .yCoordMatched
@@ -1090,38 +1086,35 @@ IsSpriteOrSignInFrontOfPlayer::
 	cp e
 	jr nz, .retry
 ; X coord matched: found sign
-	push hl
-	push bc
+	ld a, [wNumSigns]
+	sub b
 	ld hl, wSignTextIDs
 	ld b, 0
-	dec c
+	ld c, a
 	add hl, bc
 	ld a, [hl]
 	ldh [hTextID], a ; store sign text ID
-	pop bc
-	pop hl
 	ret
 .retry
 	dec b
 	jr nz, .signLoop
-; check if the player is front of a counter in a pokemon center, pokemart, etc. and if so, extend the range at which he can talk to the NPC
-.extendRangeOverCounter
-	predef GetTileAndCoordsInFrontOfPlayer ; get the tile in front of the player in c
+.checkSprites
+; check if the player is front of a counter in a pokemon center, pokemart, etc.
 	ld hl, wTilesetTalkingOverTiles ; list of tiles that extend talking range (counter tiles)
-	ld b, 3
-	ld d, $20 ; talking range in pixels (long range)
+	lb de, $20, 3 ; d = talking range in pixels (long range), e = counter
 .counterTilesLoop
 	ld a, [hli]
-	cp c
-	jr z, IsSpriteInFrontOfPlayer2 ; jumps if the tile in front of the player is a counter tile
-	dec b
+	cp c ; is the tile in front of the player is a counter tile?
+	jr z, IsSpriteInFrontOfPlayer.gotRange
+	dec e
 	jr nz, .counterTilesLoop
+	; fallthrough
 
-; part of the above function, but sometimes its called on its own, when signs are irrelevant
+; part of the above function, but sometimes is called on its own, when signs are irrelevant
 ; the caller must zero [hTextID]
 IsSpriteInFrontOfPlayer::
 	ld d, $10 ; talking range in pixels (normal range)
-IsSpriteInFrontOfPlayer2::
+.gotRange
 	lb bc, $3c, $40 ; Y and X position of player sprite
 	ld a, [wSpritePlayerStateData1FacingDirection]
 .checkIfPlayerFacingUp
@@ -1166,7 +1159,6 @@ IsSpriteInFrontOfPlayer2::
 	ld d, a
 	ld e, $01
 .spriteLoop
-	push hl
 	ld a, [hli] ; image (0 if no sprite)
 	and a
 	jr z, .nextSprite
@@ -1183,8 +1175,8 @@ IsSpriteInFrontOfPlayer2::
 	cp c
 	jr z, .foundSpriteInFrontOfPlayer
 .nextSprite
-	pop hl
 	ld a, l
+	and $f0
 	add SPRITESTATEDATA1_LENGTH
 	ld l, a
 	inc e
@@ -1192,7 +1184,6 @@ IsSpriteInFrontOfPlayer2::
 	jr nz, .spriteLoop
 	ret
 .foundSpriteInFrontOfPlayer
-	pop hl
 	ld a, l
 	and $f0
 	inc a

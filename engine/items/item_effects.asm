@@ -696,12 +696,13 @@ ItemUseSurfboard:
 .tryToStopSurfing
 	xor a
 	ldh [hSpriteIndex], a
-	ld d, 16 ; talking range in pixels (normal range)
-	call IsSpriteInFrontOfPlayer2
-	res BIT_FACE_PLAYER, [hl]
+	call IsSpriteInFrontOfPlayer ; marcelnote - modified this passage
 	ldh a, [hSpriteIndex]
 	and a ; is there a sprite in the way?
-	jr nz, .cannotStopSurfing
+	jr z, .noSpriteInTheWay
+	res BIT_FACE_PLAYER, [hl]
+	jr .cannotStopSurfing
+.noSpriteInTheWay
 	ld hl, TilePairCollisionsWater
 	call CheckForTilePairCollisions
 	jr c, .cannotStopSurfing
