@@ -1976,10 +1976,8 @@ LoadPlayerSpriteGraphicsCommon::
 	jp CopyVideoData
 
 ; function to load data from the map header
-LoadMapHeader::
+LoadMapHeader:: ; marcelnote - optimized
 	callfar MarkTownVisitedAndLoadToggleableObjects
-;	ld a, [wCurMapTileset]
-;	ld [wUnusedCurMapTilesetCopy], a
 	ld a, [wCurMap]
 	call SwitchToMapRomBank
 	ld a, [wCurMapTileset]
@@ -1992,14 +1990,10 @@ LoadMapHeader::
 	ld hl, MapHeaderPointers
 	ld a, [wCurMap]
 	add a
-	jr nc, .noCarry1
-	inc h
-.noCarry1
-	add l
-	ld l, a
-	adc h
-	sub l
-	ld h, a ; hl += a
+	ld c, a
+	ld b, 0
+	rl b
+	add hl, bc
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a ; hl = base of map header
@@ -2042,12 +2036,6 @@ LoadMapHeader::
 	call CopyMapConnectionHeader
 .getObjectDataPointer
 	ld a, [hli]
-	ld [wObjectDataPointerTemp], a
-	ld a, [hli]
-	ld [wObjectDataPointerTemp + 1], a
-	push hl
-	ld hl, wObjectDataPointerTemp
-	ld a, [hli]
 	ld h, [hl]
 	ld l, a ; hl = base of object data
 	ld de, wMapBackgroundTile
@@ -2089,7 +2077,7 @@ LoadMapHeader::
 	ld a, [hli]
 	ld [de], a
 	inc de
-	push de
+	push de ; save de = next wSignCoords destination
 	ldh a, [hSignCoordPointer]
 	ld d, a
 	ldh a, [hSignCoordPointer + 1]
@@ -2101,7 +2089,7 @@ LoadMapHeader::
 	ldh [hSignCoordPointer], a
 	ld a, e
 	ldh [hSignCoordPointer + 1], a
-	pop de
+	pop de ; restore de = next wSignCoords destination
 	dec c
 	jr nz, .signLoop
 .loadSpriteData
@@ -2110,7 +2098,7 @@ LoadMapHeader::
 	jp nz, .finishUp ; if so, skip this because battles don't destroy this data
 	ld a, [hli]
 	ld [wNumSprites], a ; save the number of sprites
-	push hl
+	push hl ; save hl = object data cursor at first sprite entry
 ; zero out sprite state data for sprites 01-15
 	ld hl, wSprite01StateData1
 	ld de, wSprite01StateData2
@@ -2131,7 +2119,7 @@ LoadMapHeader::
 	add hl, de
 	dec c
 	jr nz, .disableSpriteEntriesLoop
-	pop hl
+	pop hl ; restore hl = object data cursor at first sprite entry
 	ld de, wSprite01StateData1
 	ld a, [wNumSprites] ; number of sprites
 	and a ; are there any sprites?
@@ -2157,20 +2145,18 @@ LoadMapHeader::
 	ldh [hLoadSpriteTemp1], a ; save movement byte 2
 	ld a, [hli]
 	ldh [hLoadSpriteTemp2], a ; save text ID and flags byte
-	push bc
-	push hl
-	ld b, $00
+	push bc ; save b = remaining sprites, c = sprite extra data offset
+	push hl ; save hl = object data cursor after text ID and flags byte
+	ld b, 0
 	ld hl, wMapSpriteData
 	add hl, bc
 	ldh a, [hLoadSpriteTemp1]
 	ld [hli], a ; store movement byte 2 in byte 0 of sprite entry
 	ldh a, [hLoadSpriteTemp2]
-	ld [hl], a ; this appears pointless, since the value is overwritten immediately after
-	ldh a, [hLoadSpriteTemp2]
 	ldh [hLoadSpriteTemp1], a
 	and $3f
 	ld [hl], a ; store text ID in byte 1 of sprite entry
-	pop hl
+	pop hl ; restore hl = object data cursor after text ID and flags byte
 	ldh a, [hLoadSpriteTemp1]
 	bit BIT_TRAINER, a
 	jr nz, .trainerSprite
@@ -2182,38 +2168,38 @@ LoadMapHeader::
 	ldh [hLoadSpriteTemp1], a ; save trainer class
 	ld a, [hli]
 	ldh [hLoadSpriteTemp2], a ; save trainer number (within class)
-	push hl
+	push hl ; save hl = object data cursor after trainer class/number
 	ld hl, wMapSpriteExtraData
 	add hl, bc
 	ldh a, [hLoadSpriteTemp1]
 	ld [hli], a ; store trainer class in byte 0 of the entry
 	ldh a, [hLoadSpriteTemp2]
 	ld [hl], a ; store trainer number in byte 1 of the entry
-	pop hl
+	pop hl ; restore hl = object data cursor after trainer class/number
 	jr .nextSprite
 .itemBallSprite
 	ld a, [hli]
 	ldh [hLoadSpriteTemp1], a ; save item number
-	push hl
+	push hl ; save hl = object data cursor after item number
 	ld hl, wMapSpriteExtraData
 	add hl, bc
 	ldh a, [hLoadSpriteTemp1]
 	ld [hli], a ; store item number in byte 0 of the entry
 	xor a
 	ld [hl], a ; zero byte 1, since it is not used
-	pop hl
+	pop hl ; restore hl = object data cursor after item number
 	jr .nextSprite
 .regularSprite
-	push hl
+	push hl ; save hl = object data cursor for next sprite
 	ld hl, wMapSpriteExtraData
 	add hl, bc
 ; zero both bytes, since regular sprites don't use this extra space
 	xor a
 	ld [hli], a
 	ld [hl], a
-	pop hl
+	pop hl ; restore hl = object data cursor for next sprite
 .nextSprite
-	pop bc
+	pop bc ; restore b = remaining sprites, c = sprite extra data offset
 	dec d
 	ld a, $0a
 	add e
@@ -2225,7 +2211,6 @@ LoadMapHeader::
 .finishUp
 	predef LoadTilesetHeader
 	callfar LoadWildData
-	pop hl ; restore hl from before going to the warp/sign/sprite data (this value was saved for seemingly no purpose)
 	ld a, [wCurMapHeight] ; map height in 4x4 tile blocks
 	add a ; double it
 	ld [wCurrentMapHeight2], a ; store map height in 2x2 tile blocks
@@ -2245,7 +2230,6 @@ LoadMapHeader::
 	add hl, bc
 	ld a, [hli]
 	ld [wMapMusicSoundID], a ; music 1
-	ld a, [hl]
 
 ; give vanilla red a fair shot at running our savs
 	ld a, BANK("Audio Engine 1")

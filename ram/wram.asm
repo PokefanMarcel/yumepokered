@@ -1997,7 +1997,7 @@ wSpriteSetID:: db
 ; marcelnote - was wSavedSpriteImageIndex, saved copy of SPRITESTATEDATA1_IMAGEINDEX (used for sprite facing/anim)
 wSavedSpriteOffset:: db
 
-wObjectDataPointerTemp:: dw
+	ds 2 ; marcelnote - was wObjectDataPointerTemp
 
 ; marcelnote - use SELECT for key items
 wSelectButtonItem:: db
