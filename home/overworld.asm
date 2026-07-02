@@ -1684,9 +1684,9 @@ ScheduleColumnRedrawHelper::
 	ld a, SCREEN_WIDTH - 1
 	add l
 	ld l, a
-	jr nc, .noCarry
-	inc h
-.noCarry
+	adc h
+	sub l
+	ld h, a ; hl += a
 	dec c
 	jr nz, .loop
 	ret
