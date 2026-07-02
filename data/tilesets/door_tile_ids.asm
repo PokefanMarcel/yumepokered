@@ -24,7 +24,7 @@ MACRO door_tiles
 	db 0 ; end
 ENDM
 
-.OverworldDoorTileIDs:
+.OverworldDoorTileIDs: ; marcelnote - see also PlayMapChangeSound
 	door_tiles $1B, $58
 
 .SafariDoorTileIDs: ; marcelnote - new tileset from FOREST
