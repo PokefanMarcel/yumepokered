@@ -1921,17 +1921,15 @@ RunMapScript::
 	res BIT_REDRAW_MAP_VIEW_PENDING, [hl]
 	jpfar RedrawMapView
 
-LoadWalkingPlayerSpriteGraphics::
+LoadWalkingPlayerSpriteGraphics:: ; marcelnote - add female player
 	ld hl, wStatusFlags6
 	res BIT_RUNNING, [hl]
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
 	ld a, [wStatusFlags4]
 	bit BIT_IS_GIRL, a
 	ld de, RedSprite
 	jr z, .gotSprite
 	ld de, GreenSprite
 .gotSprite
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld hl, vNPCSprites
 	jr LoadPlayerSpriteGraphicsCommon
 
@@ -1947,7 +1945,7 @@ LoadRunningPlayerSpriteGraphics:: ; marcelnote - running sprites
 	ld hl, vNPCSprites
 	jr LoadPlayerSpriteGraphicsCommon
 
-LoadSurfingPlayerSpriteGraphics:: ; marcelnote - add female player, running sprites, and new surfing sprites
+LoadSurfingPlayerSpriteGraphics:: ; marcelnote - add female player and new surfing sprites
 	ld hl, wStatusFlags6
 	res BIT_RUNNING, [hl]
 	ld a, [wStatusFlags4]
@@ -1969,6 +1967,7 @@ LoadBikePlayerSpriteGraphics:: ; marcelnote - add female player and running spri
 	ld de, GreenBikeSprite
 .gotBikeSprite
 	ld hl, vNPCSprites
+	; fallthrough
 
 LoadPlayerSpriteGraphicsCommon::
 	push de
