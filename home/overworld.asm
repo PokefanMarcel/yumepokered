@@ -592,12 +592,11 @@ CheckMapConnections::
 	ld l, a
 	srl c
 	jr z, .savePointer1
-.pointerAdjustmentLoop1
 	ld a, [wWestConnectedMapWidth]
 	add MAP_BORDER * 2
 	ld e, a
 	ld d, 0
-	ld b, 0
+.pointerAdjustmentLoop1
 	add hl, de
 	dec c
 	jr nz, .pointerAdjustmentLoop1
@@ -629,12 +628,11 @@ CheckMapConnections::
 	ld l, a
 	srl c
 	jr z, .savePointer2
-.pointerAdjustmentLoop2
 	ld a, [wEastConnectedMapWidth]
 	add MAP_BORDER * 2
 	ld e, a
 	ld d, 0
-	ld b, 0
+.pointerAdjustmentLoop2
 	add hl, de
 	dec c
 	jr nz, .pointerAdjustmentLoop2
