@@ -2111,13 +2111,13 @@ LoadMapHeader:: ; marcelnote - optimized
 	ld a, [wNumSprites] ; number of sprites
 	and a ; are there any sprites?
 	jr z, .finishUp ; if there are no sprites, skip the rest
-	ld b, a
-	ld c, $00
+	ld b, a ; b = number of sprites
+	ld c, 0 ; c = sprite data offset
 .loadSpriteLoop
 	ld a, [hli]
 	ld [de], a ; x#SPRITESTATEDATA1_PICTUREID
 	inc d
-	ld a, $04
+	ld a, SPRITESTATEDATA2_MAPY - SPRITESTATEDATA1_PICTUREID
 	add e
 	ld e, a
 	ld a, [hli]
@@ -2128,25 +2128,23 @@ LoadMapHeader:: ; marcelnote - optimized
 	inc e
 	ld a, [hli]
 	ld [de], a ; x#SPRITESTATEDATA2_MOVEMENTBYTE1
-	ld a, [hli]
-	ldh [hLoadSpriteTemp1], a ; save movement byte 2
-	ld a, [hli]
-	ldh [hLoadSpriteTemp2], a ; save text ID and flags byte
 	push bc ; save b = remaining sprites, c = sprite extra data offset
+	push de ; save de = current sprite's SPRITESTATEDATA2_MOVEMENTBYTE1 pointer
+	ld a, [hli] ; movement byte 2
+	ld e, [hl]  ; text ID and flags byte
+	inc hl
 	push hl ; save hl = object data cursor after text ID and flags byte
 	ld b, 0
 	ld hl, wMapSpriteData
 	add hl, bc
-	ldh a, [hLoadSpriteTemp1]
 	ld [hli], a ; store movement byte 2 in byte 0 of sprite entry
-	ldh a, [hLoadSpriteTemp2]
+	ld a, e
 	and $3f
 	ld [hl], a ; store text ID in byte 1 of sprite entry
 	pop hl ; restore hl = object data cursor after text ID and flags byte
-	ldh a, [hLoadSpriteTemp2]
-	bit BIT_TRAINER, a
+	bit BIT_TRAINER, e
 	jr nz, .trainerSprite
-	bit BIT_ITEM, a
+	bit BIT_ITEM, e
 	jr z, .regularSprite
 .itemBallSprite
 	ld a, [hli]
@@ -2154,23 +2152,17 @@ LoadMapHeader:: ; marcelnote - optimized
 	ld hl, wMapSpriteExtraData
 	add hl, bc
 	ld [hli], a ; store item number in byte 0 of the entry
-	xor a
-	ld [hl], a ; zero byte 1, since it is not used
-	pop hl ; restore hl = object data cursor after item number
+	ld [hl], 0  ; zero byte 1, since it is not used
 	jr .nextSprite
 .trainerSprite
-	ld a, [hli]
-	ldh [hLoadSpriteTemp1], a ; save trainer class
-	ld a, [hli]
-	ldh [hLoadSpriteTemp2], a ; save trainer number (within class)
+	ld a, [hli] ; trainer class
+	ld e, [hl]  ; trainer number (within class)
+	inc hl
 	push hl ; save hl = object data cursor after trainer class/number
 	ld hl, wMapSpriteExtraData
 	add hl, bc
-	ldh a, [hLoadSpriteTemp1]
 	ld [hli], a ; store trainer class in byte 0 of the entry
-	ldh a, [hLoadSpriteTemp2]
-	ld [hl], a ; store trainer number in byte 1 of the entry
-	pop hl ; restore hl = object data cursor after trainer class/number
+	ld [hl], e ; store trainer number in byte 1 of the entry
 	jr .nextSprite
 .regularSprite
 	push hl ; save hl = object data cursor for next sprite
@@ -2180,11 +2172,12 @@ LoadMapHeader:: ; marcelnote - optimized
 	xor a
 	ld [hli], a
 	ld [hl], a
-	pop hl ; restore hl = object data cursor for next sprite
 .nextSprite
+	pop hl ; restore hl = object data cursor for next sprite
+	pop de ; restore de = current sprite's SPRITESTATEDATA2_MOVEMENTBYTE1 pointer
 	pop bc ; restore b = remaining sprites, c = sprite extra data offset
 	dec d
-	ld a, $0a
+	ld a, SPRITESTATEDATA1_LENGTH - SPRITESTATEDATA2_MOVEMENTBYTE1
 	add e
 	ld e, a
 	inc c

@@ -70,11 +70,6 @@ hSpriteMovementByte2::
 
 NEXTU
 	ds 2
-hLoadSpriteTemp1:: db
-hLoadSpriteTemp2:: db
-
-NEXTU
-	ds 2
 hEnemySpeed:: dw
 ENDU
 
