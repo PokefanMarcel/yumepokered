@@ -1,3 +1,3 @@
 ; marcelnote - new location
-	map_header MandarinSurfShop, MANDARIN_SURF_SHOP, CLUB, 0
+	map_header MandarinSurfShop, MANDARIN_SURF_SHOP, CLUB
 	end_map_header

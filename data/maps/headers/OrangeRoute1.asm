@@ -1,4 +1,4 @@
 ; marcelnote - new location
-	map_header OrangeRoute1, ORANGE_ROUTE_1, OVERWORLD, SOUTH
+	map_header OrangeRoute1, ORANGE_ROUTE_1, OVERWORLD
 	connection south, MandarinIsland, MANDARIN_ISLAND, -13
 	end_map_header
