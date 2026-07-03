@@ -68,28 +68,23 @@ HandleItemListSwapping::
 	add a
 	add e
 	ld e, a
-	jr nc, .noCarry
-	inc d
-.noCarry ; de = address of first item to swap
+	adc d
+	sub e
+	ld d, a ; de = address of first item to swap
 	ld a, [de]
-	ld b, a
-	ld a, [hli]
+	ld b, a     ; b = first item ID
+	ld a, [hli] ; a = second item ID
 	cp b
 	jr z, .swapSameItemType
 ; swap different items
-	ldh [hSwapItemID], a ; save second item ID
-	ld a, [hld]
-	ldh [hSwapItemQuantity], a ; save second item quantity
-	ld a, [de]
-	ld [hli], a ; put first item ID in second item slot
+	ld [de], a  ; replace first item ID
 	inc de
-	ld a, [de]
-	ld [hl], a ; put first item quantity in second item slot
-	ldh a, [hSwapItemQuantity]
-	ld [de], a ; put second item quantity in first item slot
-	dec de
-	ldh a, [hSwapItemID]
-	ld [de], a ; put second item ID in first item slot
+	ld a, [de]  ; a = first item quantity
+	ld c, [hl]  ; c = second item quantity
+	ld [hld], a ; replace second item quantity
+	ld [hl], b  ; replace second item ID
+	ld a, c
+	ld [de], a  ; replace first item quantity
 	xor a
 	ld [wMenuItemToSwap], a ; 0 means no item is currently being swapped
 	pop de
@@ -97,17 +92,16 @@ HandleItemListSwapping::
 	jp DisplayListMenuIDLoop
 .swapSameItemType
 	inc de
-	ld a, [hl]
-	ld b, a
-	ld a, [de]
+	ld b, [hl] ; second item quantity
+	ld a, [de] ; first item quantity
 	add b ; a = sum of both item quantities
 	cp 100 ; is the sum too big for one item slot?
 	jr c, .combineItemSlots
 ; swap enough items from the first slot to max out the second slot if they can't be combined
-	sub 99
+	ld b, 99
+	sub b
 	ld [de], a
-	ld a, 99
-	ld [hl], a
+	ld [hl], b
 	jr .done
 .combineItemSlots
 	ld [hl], a ; put the sum in the second item slot

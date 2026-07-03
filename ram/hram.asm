@@ -138,10 +138,6 @@ hFindPathXProgress:: db
 hNPCPlayerRelativePosFlags:: db
 
 NEXTU
-hSwapItemID:: db
-hSwapItemQuantity:: db
-
-NEXTU
 	ds 1
 hMutateWY:: db
 hMutateWX:: db
