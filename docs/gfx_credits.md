@@ -16,8 +16,9 @@
 - Pokémon BLUE backsprites for Horsea, Weedle, Zubat, Golbat by NunWinter.
 
 **Pikachu's Beach**
-- Sprites for Raichu as playable character by Kester Henrick (on the pokered discord).
-- Updated Pikachu's Beach logo and banners (Start, Goal, Oh no) by me.
+- Sprites for Raichu as playable character by Kester Henrick.
+- Hi-score screen Raichu sprite by Kester Henrick and FrenchOrange.
+- Updated Pikachu's Beach logo and banners (Start, Oh no...) by me.
 
 **Tilesets**
 - Custom tilesets were largely made by me. Exceptions include: a few Power Plant gfx (from the Spaceworld 97 demo), the lava graphics and animations (from [PureRGB](https://github.com/Vortyne/pureRGB)), some Underground tiles (from mauvesea).
