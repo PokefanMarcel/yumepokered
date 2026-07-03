@@ -1,70 +1,46 @@
-HandleItemListSwapping::
+HandleItemListSwapping:: ; marcelnote - optimized
 	ld a, [wListMenuID]
 	cp ITEMLISTMENU
-	jp nz, DisplayListMenuIDLoop ; only rearrange item list menus
-	push hl
+	jr nz, .exit ; only rearrange item list menus
 	ld hl, wListPointer
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	inc hl ; hl = beginning of list entries
-	ld a, [wCurrentMenuItem]
-	ld b, a
-	ld a, [wListScrollOffset]
-	add b
-	add a
-	ld c, a
-	ld b, 0
-	add hl, bc ; hl = address of currently selected item entry
-	ld a, [hl]
-	pop hl
-	inc a
-	jp z, DisplayListMenuIDLoop ; ignore attempts to swap the Cancel menu item
-	ld a, [wMenuItemToSwap] ; ID of item chosen for swapping (counts from 1)
-	and a ; has the first item to swap already been chosen?
-	jr nz, .swapItems
-; if not, set the currently selected item as the first item
-	ld a, [wCurrentMenuItem]
-	inc a
-	ld b, a
-	ld a, [wListScrollOffset] ; index of top (visible) menu item within the list
-	add b
-	ld [wMenuItemToSwap], a ; ID of item chosen for swapping (counts from 1)
-	ld c, 20
-	call DelayFrames
-	jp DisplayListMenuIDLoop
-.swapItems
-	ld a, [wCurrentMenuItem]
-	inc a
-	ld b, a
-	ld a, [wListScrollOffset]
-	add b
-	ld b, a
-	ld a, [wMenuItemToSwap] ; ID of item chosen for swapping (counts from 1)
-	cp b ; is the currently selected item the same as the first item to swap?
-	jp z, DisplayListMenuIDLoop ; ignore attempts to swap an item with itself
-	dec a
-	ld [wMenuItemToSwap], a ; ID of item chosen for swapping (counts from 1)
-	ld c, 20
-	call DelayFrames
-	push hl
-	push de
-	ld hl, wListPointer
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	inc hl ; hl = beginning of list entries
+	inc hl  ; hl = beginning of list entries
 	ld d, h
 	ld e, l ; de = beginning of list entries
 	ld a, [wCurrentMenuItem]
 	ld b, a
 	ld a, [wListScrollOffset]
 	add b
-	add a
-	ld c, a
-	ld b, 0
-	add hl, bc ; hl = address of currently selected item entry
+	ld b, a
+	inc b ; b = currently selected item index (counts from 1)
+	add a  ; each item entry is two bytes
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a ; hl = address of currently selected item entry
+	ld a, [hl]
+	inc a
+	jr z, .exit ; ignore attempts to swap the Cancel menu item
 	ld a, [wMenuItemToSwap] ; ID of item chosen for swapping (counts from 1)
+	and a ; has the first item to swap already been chosen?
+	jr nz, .swapItems
+; if not, set the currently selected item as the first item
+	ld a, b
+	ld [wMenuItemToSwap], a ; ID of item chosen for swapping (counts from 1)
+	ld c, 20
+	call DelayFrames
+.exit
+	jp DisplayListMenuIDLoop
+.swapItems
+	cp b ; is the currently selected item the same as the first item to swap?
+	jr z, .exit ; ignore attempts to swap an item with itself
+	ld c, 20
+	call DelayFrames
+	ld a, [wMenuItemToSwap] ; ID of item chosen for swapping (counts from 1)
+	dec a
 	add a
 	add e
 	ld e, a
@@ -87,9 +63,7 @@ HandleItemListSwapping::
 	ld [de], a  ; replace first item quantity
 	xor a
 	ld [wMenuItemToSwap], a ; 0 means no item is currently being swapped
-	pop de
-	pop hl
-	jp DisplayListMenuIDLoop
+	jr .exit
 .swapSameItemType
 	inc de
 	ld b, [hl] ; second item quantity
@@ -138,9 +112,7 @@ HandleItemListSwapping::
 .done
 	xor a
 	ld [wMenuItemToSwap], a ; 0 means no item is currently being swapped
-	pop de
-	pop hl
-	jp DisplayListMenuIDLoop
+	jr .exit
 
 
 HandleItemListSorting:: ; marcelnote - new to autosort items
