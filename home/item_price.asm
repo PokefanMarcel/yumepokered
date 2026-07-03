@@ -6,14 +6,9 @@ GetItemPrice:: ; marcelnote - optimized
 	ldh a, [hLoadedROMBank]
 	push af
 	ld a, BANK(ItemPrices)
-	; wItemPrices is a RAM pointer to the active 3-byte price table,
-	; normally ItemPrices. Switch to its bank before dereferencing it.
 	ldh [hLoadedROMBank], a
 	ld [rROMB], a
-	ld hl, wItemPrices
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+	ld hl, ItemPrices
 	ld a, [wCurItem]
 	cp HM01
 	jr nc, .getTMPrice

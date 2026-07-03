@@ -19,13 +19,6 @@ DisplayPokemartDialogue_::
 	ld [wTextBoxID], a
 	call DisplayTextBoxID
 
-; This code is useless. It copies the address of the pokemart's inventory to hl,
-; but the address is never used.
-;	ld hl, wItemListPointer ; marcelnote - removed
-;	ld a, [hli]
-;	ld l, [hl]
-;	ld h, a
-
 	ld a, [wMenuExitMethod]
 	cp CANCELLED_MENU
 	jp z, .done
@@ -39,13 +32,6 @@ DisplayPokemartDialogue_::
 	; fallthrough
 
 .sellMenu
-; the same variables are set again below, so this code has no effect
-;	xor a
-;	ld [wPrintItemPrices], a ; marcelnote - removed those
-	ld a, INIT_BAG_ITEM_LIST  ; but those lines seem to prevent a bug when computing selling prices
-	ld [wInitListType], a
-	callfar InitList
-
 	ld a, [wNumBagItems]
 	and a
 	jp z, .bagEmpty ; marcelnote - not checking that Key Items pocket is not empty since cannot sell them
@@ -108,12 +94,6 @@ DisplayPokemartDialogue_::
 	cp CHOSE_SECOND_ITEM
 	jr z, .sellMenuLoop ; if the player chose No or pressed the B button
 
-; The following code is supposed to check if the player chose No, but the above
-; check already catches it.
-;	ld a, [wChosenMenuItem] ; marcelnote - removed
-;	dec a
-;	jr z, .sellMenuLoop
-
 ; sell item
 	ld a, [wBoughtOrSoldItemInMart]
 	and a
@@ -136,13 +116,6 @@ DisplayPokemartDialogue_::
 	jp .returnToMainPokemartMenu
 
 .buyMenu
-; the same variables are set again below, so this code has no effect
-	ld a, 1
-	ld [wPrintItemPrices], a
-	ld a, INIT_OTHER_ITEM_LIST
-	ld [wInitListType], a
-	callfar InitList
-
 	ld hl, PokemartBuyingGreetingText
 	call PrintText
 	call SaveTextBoxTilesToBuffer ; marcelnote - for TM printing
@@ -192,12 +165,6 @@ DisplayPokemartDialogue_::
 	ld a, [wMenuExitMethod]
 	cp CHOSE_SECOND_ITEM
 	jr z, .buyMenuLoop ; if the player chose No or pressed the B button
-
-; The following code is supposed to check if the player chose No, but the above
-; check already catches it.
-;	ld a, [wChosenMenuItem] ; marcelnote - removed
-;	dec a
-;	jr z, .buyMenuLoop
 
 ; buy item
 	call .isThereEnoughMoney
@@ -250,6 +217,7 @@ DisplayPokemartDialogue_::
 	ld a, [wSavedListScrollOffset]
 	ld [wListScrollOffset], a
 	ret
+
 
 PokemartBuyingGreetingText:
 	text_far _PokemartBuyingGreetingText

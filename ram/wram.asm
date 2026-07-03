@@ -1241,7 +1241,7 @@ wListPointer:: dw
 ; used to store pointers, but never read
 ;wUnusedNamePointer:: dw ; marcelnote - removed
 
-wItemPrices:: dw
+	ds 2 ; marcelnote - was wItemPrices
 
 wCurPartySpecies::
 wCurItem::
@@ -1718,8 +1718,7 @@ wMovesString:: ds NUM_MOVES * MOVE_NAME_LENGTH
 
 wSurfingMinigamePlayerSpecies:: db ; marcelnote - was wWalkBikeSurfStateCopy
 
-; the type of list for InitList to init
-wInitListType:: db
+	ds 1 ; marcelnote - was wInitListType
 
 ; 0 if no mon was captured
 wCapturedMonSpecies:: db

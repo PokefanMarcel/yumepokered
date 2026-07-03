@@ -16,10 +16,3 @@
 	const PLAYEROT_NAME ; 5
 	const ENEMYOT_NAME  ; 6
 	const TRAINER_NAME  ; 7
-
-	const_def 1
-	const INIT_ENEMYOT_LIST    ; 1
-	const INIT_BAG_ITEM_LIST   ; 2
-	const INIT_OTHER_ITEM_LIST ; 3
-	const INIT_PLAYEROT_LIST   ; 4
-	const INIT_MON_LIST        ; 5
