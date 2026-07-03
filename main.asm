@@ -5,14 +5,6 @@ INCLUDE "engine/events/black_out.asm"
 INCLUDE "engine/battle/safari_zone.asm"
 INCLUDE "engine/movie/title.asm"
 INCLUDE "engine/pokemon/load_mon_data.asm"
-INCLUDE "data/items/prices.asm"
-IF DEF(_FRA)
-	INCLUDE "translation/fra/data/items/names.fra.asm"
-ELIF DEF(_ESP)
-	INCLUDE "translation/esp/data/items/names.esp.asm"
-ELSE
-	INCLUDE "data/items/names.asm"
-ENDC
 ;INCLUDE "data/text/unused_names.asm" ; marcelnote - removed
 INCLUDE "engine/gfx/sprite_oam.asm"
 INCLUDE "engine/gfx/oam_dma.asm"
@@ -406,3 +398,15 @@ INCLUDE "gfx/pikachus_beach_mons.asm"
 SECTION "Pay phones", ROMX
 
 INCLUDE "engine/events/pay_phone.asm" ; marcelnote - new for pay phones
+
+
+SECTION "Item data", ROMX ; marcelnote - new
+
+INCLUDE "data/items/prices.asm"
+IF DEF(_FRA)
+	INCLUDE "translation/fra/data/items/names.fra.asm"
+ELIF DEF(_ESP)
+	INCLUDE "translation/esp/data/items/names.esp.asm"
+ELSE
+	INCLUDE "data/items/names.asm"
+ENDC

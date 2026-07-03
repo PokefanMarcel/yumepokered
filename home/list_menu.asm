@@ -50,10 +50,11 @@ DisplayListMenuID::
 	ld [wTopMenuItemY], a
 	ld a, 5
 	ld [wTopMenuItemX], a
-	ld a, PAD_A | PAD_B | PAD_SELECT | PAD_RIGHT | PAD_LEFT ; marcelnote - added PAD_RIGHT | PAD_LEFT for bag pockets
+	ld a, PAD_A | PAD_B | PAD_SELECT | PAD_START | PAD_RIGHT | PAD_LEFT ; marcelnote - added PAD_RIGHT | PAD_LEFT for bag pockets, PAD_START for autosort
 	ld [wMenuWatchedKeys], a
 	ld c, 10
 	call DelayFrames
+	; fallthrough
 
 DisplayListMenuIDLoop::
 	xor a
@@ -177,6 +178,8 @@ DisplayListMenuIDLoop::
 .checkOtherKeys ; check B, SELECT, Up, and Down keys
 	bit B_PAD_B, a
 	jp nz, ExitListMenu ; if so, exit the menu
+	bit B_PAD_START, a
+	jp nz, HandleItemListSorting ; if so, sort item list menus ; marcelnote - added bag autosort
 	bit B_PAD_SELECT, a
 	jp nz, HandleItemListSwapping ; if so, allow the player to swap menu entries
 	;;;;;;;;;; marcelnote - for bag pockets
@@ -185,10 +188,9 @@ DisplayListMenuIDLoop::
 	bit B_PAD_LEFT, a
 	jr nz, .switchBagPocket
 	;;;;;;;;;;
-	;ld b, a
-	bit B_PAD_DOWN, a ; marcelnote - changed from bit BIT_D_DOWN, b (no point in using b)
+	bit B_PAD_DOWN, a
 	ld hl, wListScrollOffset
-	ld a, [hl] ; marcelnote - moved from below since unconditional
+	ld a, [hl]
 	jr z, .upPressed
 ; down pressed
 	add 3

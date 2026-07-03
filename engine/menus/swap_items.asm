@@ -147,3 +147,119 @@ HandleItemListSwapping::
 	pop de
 	pop hl
 	jp DisplayListMenuIDLoop
+
+
+HandleItemListSorting:: ; marcelnote - new to autosort items
+	ld a, [wListMenuID]
+	cp ITEMLISTMENU
+	jr nz, .exit ; only sort item list menus
+
+; Sort only main bag items, key items, or the player's PC item box.
+	ASSERT LOW(wNumBagItems) != LOW(wNumBagKeyItems)
+	ASSERT LOW(wNumBagItems) != LOW(wNumBoxItems)
+	ASSERT LOW(wNumBagKeyItems) != LOW(wNumBoxItems)
+	ASSERT HIGH(wNumBagItems) == HIGH(wNumBagKeyItems)
+	ASSERT HIGH(wNumBagItems) == HIGH(wNumBoxItems)
+	ld hl, wListPointer
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	cp LOW(wNumBagItems)
+	jr z, .checkHighByte
+	cp LOW(wNumBagKeyItems)
+	jr z, .checkHighByte
+	cp LOW(wNumBoxItems)
+	jr nz, .exit
+.checkHighByte
+	ld a, h
+	cp HIGH(wNumBagItems)
+	jr nz, .exit
+
+; Sort list.
+.sortList
+	ld a, [hli] ; number of items in bag
+	cp 2
+	jr c, .exit ; nothing to sort if there are fewer than 2 entries
+
+; Gnome sort over adjacent item/quantity pairs:
+; When the current item belongs after the previous item, step forward.
+; When the current item belongs before the previous item, swap the pair and step back.
+	ld d, h
+	ld e, l ; de = pointer to previous item
+	inc hl
+	inc hl  ; hl = pointer to current item
+.clampAndLoop
+	ld b, 1 ; b = current item index, start at the second item, comparing it with the first
+.loop
+	ld a, [hl]
+	cp $ff
+	jr z, .done
+	ld c, a    ; c = current item ID
+	ld a, [de] ; a = previous item ID
+	call ItemSortsBefore ; does the current item sort before the previous item?
+	jr c, .swapItems
+	; pair is already in order, so step forward
+	inc b
+	ld d, h
+	ld e, l
+	inc hl
+	inc hl
+	jr .loop
+
+; Swap the two-byte item/quantity pair.
+.swapItems ; c = ID of current item
+	ld a, [de]
+	ld [hli], a
+	ld a, c
+	ld [de], a
+	inc de
+	ld c, [hl] ; c = quantity of current item
+	ld a, [de]
+	ld [hld], a
+	ld a, c
+	ld [de], a
+	dec de
+	dec b
+	jr z, .clampAndLoop ; if swap happened against the first item, stay at the second item
+	; otherwise step back
+	ld h, d
+	ld l, e
+	dec de
+	dec de
+	jr .loop
+
+.done
+	xor a
+	ld [wMenuItemToSwap], a
+	ld [wCurrentMenuItem], a
+	ld [wListScrollOffset], a
+	ld [wBagSavedMenuItem], a
+.exit
+	jp DisplayListMenuIDLoop
+
+
+ItemSortsBefore:
+; Return carry if item c has a lower autosort rank than item a.
+	push hl
+	push bc
+	call .getItemSortRank
+	ld b, a ; b = rank of previous item
+	ld a, c
+	call .getItemSortRank ; a = rank of current item
+	cp b
+	pop bc
+	pop hl
+	ret
+
+.getItemSortRank
+; Return an item's autosort rank in a.
+	ld hl, ItemSortRanks
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a
+	ld a, [hl]
+	ret
+
+INCLUDE "data/items/item_sort_order.asm"
