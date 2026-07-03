@@ -2,6 +2,8 @@ HandleItemListSwapping:: ; marcelnote - optimized
 	ld a, [wListMenuID]
 	cp ITEMLISTMENU
 	jr nz, .exit ; only rearrange item list menus
+
+; Compute address of current selected item.
 	ld hl, wListPointer
 	ld a, [hli]
 	ld h, [hl]
@@ -20,25 +22,32 @@ HandleItemListSwapping:: ; marcelnote - optimized
 	ld l, a
 	adc h
 	sub l
-	ld h, a ; hl = address of currently selected item entry
+	ld h, a ; hl = address of current selected item
+
+; Guard against swapping the Cancel button.
 	ld a, [hl]
 	inc a
 	jr z, .exit ; ignore attempts to swap the Cancel menu item
+
+; Check if first or second selected item.
 	ld a, [wMenuItemToSwap] ; ID of item chosen for swapping (counts from 1)
 	and a ; has the first item to swap already been chosen?
 	jr nz, .swapItems
-; if not, set the currently selected item as the first item
+	; if not, set the current selected item as the first item to swap
 	ld a, b
-	ld [wMenuItemToSwap], a ; ID of item chosen for swapping (counts from 1)
+	ld [wMenuItemToSwap], a
 	ld c, 20
 	call DelayFrames
 .exit
 	jp DisplayListMenuIDLoop
+
 .swapItems
 	cp b ; is the currently selected item the same as the first item to swap?
 	jr z, .exit ; ignore attempts to swap an item with itself
 	ld c, 20
 	call DelayFrames
+
+; Compute address of first selected item.
 	ld a, [wMenuItemToSwap] ; ID of item chosen for swapping (counts from 1)
 	dec a
 	add a
@@ -47,6 +56,8 @@ HandleItemListSwapping:: ; marcelnote - optimized
 	adc d
 	sub e
 	ld d, a ; de = address of first item to swap
+
+; Swap items.
 	ld a, [de]
 	ld b, a     ; b = first item ID
 	ld a, [hli] ; a = second item ID
@@ -61,9 +72,7 @@ HandleItemListSwapping:: ; marcelnote - optimized
 	ld [hl], b  ; replace second item ID
 	ld a, c
 	ld [de], a  ; replace first item quantity
-	xor a
-	ld [wMenuItemToSwap], a ; 0 means no item is currently being swapped
-	jr .exit
+	jr .done
 .swapSameItemType
 	inc de
 	ld b, [hl] ; second item quantity
@@ -90,11 +99,10 @@ HandleItemListSwapping:: ; marcelnote - optimized
 	jr nz, .skipSettingMaxMenuItemID
 	ld [wMaxMenuItem], a ; if the number of items is only one now, update the max menu item ID
 .skipSettingMaxMenuItemID
-	dec de
 	ld h, d
 	ld l, e
-	inc hl
-	inc hl ; hl = address of item after first item to swap
+	dec de ; de = address of first item
+	inc hl ; hl = address of item after first item
 .moveItemsUpLoop ; erase the first item slot and move up all the following item slots to fill the gap
 	ld a, [hli]
 	ld [de], a
