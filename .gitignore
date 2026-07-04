@@ -34,5 +34,8 @@
 # macOS
 .DS_Store
 
+# local planning notes
+docs/todo/
+
 # DataSpell
 .idea/
