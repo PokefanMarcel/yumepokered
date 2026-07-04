@@ -452,16 +452,14 @@ CinnabarVolcanoB1FLanceTogetherText:
 CinnabarVolcanoB1FLancePokeBallText:
 	text_far _CinnabarVolcanoB1FLancePokeBallText
 	text_end
-	;text_asm
-	;ld a, SFX_BALL_TOSS ; marcelnote - to add after crysaudio
-	;ld c, BANK(SFX_Ball_Toss)
-	;call PlaySound
-	;call WaitForSoundToFinish
-	;rst TextScriptEnd
 
 CinnabarVolcanoB1FCharizardCaughtText:
 	text_far _CinnabarVolcanoB1FCharizardCaughtText
-	text_end
+	text_asm
+	ld a, SFX_GET_ITEM_1
+	call PlaySound
+	call WaitForSoundToFinish
+	rst TextScriptEnd
 
 CinnabarVolcanoB1FLanceGreatJobText:
 	text_far _CinnabarVolcanoB1FLanceGreatJobText
