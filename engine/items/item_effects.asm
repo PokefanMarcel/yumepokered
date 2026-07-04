@@ -1957,6 +1957,7 @@ ItemUseItemfinder:
 	call PlaySoundWaitForCurrent
 	dec c
 	jr nz, .loop
+	call UpdateSprites ; marcelnote - added player facing hidden items
 	ld hl, ItemfinderFoundItemText
 .printText
 	jp PrintText
