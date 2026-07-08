@@ -182,9 +182,7 @@ SilphCo7FRivalExitScript:
 	ld [wToggleableObjectIndex], a
 	predef HideObject
 	call PlayDefaultMusic
-	xor a
-	ld [wJoyIgnore], a
-	jp SilphCo7FSetCurScript
+	jp SilphCo7FSetDefaultScript
 
 SilphCo7F_TextPointers:
 	def_text_pointers
@@ -199,7 +197,6 @@ SilphCo7F_TextPointers:
 	dw_const SilphCo7FRivalText,              TEXT_SILPHCO7F_RIVAL
 	dw_const PickUpItemText,                  TEXT_SILPHCO7F_CALCIUM
 	dw_const PickUpItemText,                  TEXT_SILPHCO7F_TM_SWORDS_DANCE
-	dw_const PickUpItemText,                  TEXT_SILPHCO7F_UNREFERENCED_ITEM ; unreferenced
 	dw_const SilphCo7FRivalWaitedHereText,    TEXT_SILPHCO7F_RIVAL_WAITED_HERE
 	dw_const SilphCo7FRivalDefeatedText,      TEXT_SILPHCO7F_RIVAL_DEFEATED
 	dw_const SilphCo7FRivalGoodLuckToYouText, TEXT_SILPHCO7F_RIVAL_GOOD_LUCK_TO_YOU
