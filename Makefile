@@ -112,6 +112,7 @@ clean: tidy
 	find gfx \
 	     \( -iname '*.1bpp' \
 	        -o -iname '*.2bpp' \
+	        -o -iname '*.4bpp' \
 	        -o -iname '*.pic' \) \
 	     -delete
 
@@ -283,6 +284,9 @@ gfx/trade/game_boy.2bpp: tools/gfx += --remove-duplicates
 
 
 ### Catch-all graphics rules
+
+gfx/sgb/%_border.4bpp: gfx/sgb/%_border.png
+	tools/sgb_border_gfx -o $@ $<
 
 %.2bpp: %.png
 	$(RGBGFX) --colors dmg $(RGBGFXFLAGS) -o $@ $<

@@ -474,18 +474,18 @@ LoadSGB:
 	di
 	call PrepareSuperNintendoVRAMTransfer
 	ei
-	ld a, 1
-	ld [wCopyingSGBTileData], a
+;	ld a, 1
+;	ld [wCopyingSGBTileData], a
 	ld de, ChrTrnPacket
 	ld hl, SGBBorderGraphics
 	call CopyGfxToSuperNintendoVRAM
-	xor a
-	ld [wCopyingSGBTileData], a
+;	xor a
+;	ld [wCopyingSGBTileData], a
 	ld de, PctTrnPacket
 	ld hl, BorderPalettes
 	call CopyGfxToSuperNintendoVRAM
-	xor a
-	ld [wCopyingSGBTileData], a
+;	xor a
+;	ld [wCopyingSGBTileData], a
 	ld de, PalTrnPacket
 	ld hl, SuperPalettes
 	call CopyGfxToSuperNintendoVRAM
@@ -587,15 +587,15 @@ CopyGfxToSuperNintendoVRAM:
 	ld a, $e4
 	ldh [rBGP], a
 	ld de, vChars1
-	ld a, [wCopyingSGBTileData]
-	and a
-	jr z, .notCopyingTileData
-	call CopySGBBorderTiles
-	jr .next
-.notCopyingTileData
+;	ld a, [wCopyingSGBTileData]
+;	and a
+;	jr z, .notCopyingTileData
+;	call CopySGBBorderTiles
+;	jr .next
+;.notCopyingTileData
 	ld bc, 256 tiles
 	call CopyData
-.next
+;.next
 	ld hl, vBGMap0
 	ld de, TILEMAP_WIDTH - SCREEN_WIDTH
 	ld a, $80
@@ -667,35 +667,36 @@ InitCGBPalettes:
 	jr nz, .loop
 	ret
 
-CopySGBBorderTiles:
-; SGB tile data is stored in a 4BPP planar format.
-; Each tile is 32 bytes. The first 16 bytes contain bit planes 1 and 2, while
-; the second 16 bytes contain bit planes 3 and 4.
-; This function converts 2BPP planar data into this format by mapping
-; 2BPP colors 0-3 to 4BPP colors 0-3. 4BPP colors 4-15 are not used.
-	ld b, 128
-.tileLoop
-; Copy bit planes 1 and 2 of the tile data.
-	ld c, TILE_SIZE
-.copyLoop
-	ld a, [hli]
-	ld [de], a
-	inc de
-	dec c
-	jr nz, .copyLoop
-
-; Zero bit planes 3 and 4.
-	ld c, 16
-	xor a
-.zeroLoop
-	ld [de], a
-	inc de
-	dec c
-	jr nz, .zeroLoop
-
-	dec b
-	jr nz, .tileLoop
-	ret
+; marcelnote - removed, we now use 4bpp gfx directly
+;CopySGBBorderTiles:
+;; SGB tile data is stored in a 4BPP planar format.
+;; Each tile is 32 bytes. The first 16 bytes contain bit planes 1 and 2, while
+;; the second 16 bytes contain bit planes 3 and 4.
+;; This function converts 2BPP planar data into this format by mapping
+;; 2BPP colors 0-3 to 4BPP colors 0-3. 4BPP colors 4-15 are not used.
+;	ld b, 128
+;.tileLoop
+;; Copy bit planes 1 and 2 of the tile data.
+;	ld c, TILE_SIZE
+;.copyLoop
+;	ld a, [hli]
+;	ld [de], a
+;	inc de
+;	dec c
+;	jr nz, .copyLoop
+;
+;; Zero bit planes 3 and 4.
+;	ld c, 16
+;	xor a
+;.zeroLoop
+;	ld [de], a
+;	inc de
+;	dec c
+;	jr nz, .zeroLoop
+;
+;	dec b
+;	jr nz, .tileLoop
+;	ret
 
 INCLUDE "data/sgb/sgb_packets.asm"
 

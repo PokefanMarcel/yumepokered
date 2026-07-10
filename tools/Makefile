@@ -7,7 +7,8 @@ tools := \
 	gfx \
 	make_patch \
 	pkmncompress \
-	scan_includes
+	scan_includes \
+	sgb_border_gfx
 
 all: $(tools)
 	@:
@@ -31,4 +32,7 @@ endif
 # Optional maintenance tool. It is intentionally not part of $(tools), so
 # normal builds and `make tools` do not build or run it.
 png_normalize: png_normalize.c common.h Makefile
+	$(CC) $(CFLAGS) $(PNG_CFLAGS) -o $@ $< $(PNG_LIBS)
+
+sgb_border_gfx: sgb_border_gfx.c common.h Makefile
 	$(CC) $(CFLAGS) $(PNG_CFLAGS) -o $@ $< $(PNG_LIBS)

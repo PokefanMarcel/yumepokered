@@ -1207,7 +1207,6 @@ wStatusScreenHPBarColor:: db
 
 	ds 7
 
-wCopyingSGBTileData::
 wWhichPartyMenuHPBar::
 wPalPacket::
 	db
