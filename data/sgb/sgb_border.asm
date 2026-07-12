@@ -114,13 +114,13 @@ IF DEF(_RED)
 	RGB 24,24,24 ; index  4: dark blue -> gray
 	RGB 24,24,24 ; index  5: gray
 	RGB 24,24,24 ; index  6: Yume pink -> gray
-	RGB 00,00,00 ; index  7: unused
-	RGB 00,00,00 ; index  8: unused
-	RGB 00,00,00 ; index  9: unused
-	RGB 00,00,00 ; index 10: unused
+	RGB 30,26,28 ; index  7: light pink (Mew skin)
+	RGB 00,00,00 ; index  8: black
+	RGB 14,19,27 ; index  9: light blue
+	RGB 26,23,25 ; index 10: dark pink (Mew shadow)
 	RGB 00,00,00 ; index 11: unused
 	RGB 00,00,00 ; index 12: unused
-	RGB 00,00,00 ; index 13: unused
+	RGB 13,24,28 ; index 13: cyan (Mew eyes)
 	RGB 31,14,13 ; index 14: deep pink marker -> light red
 	RGB 31,14,13 ; index 15: deep purple marker -> light red
 ELIF DEF(_GREEN)
@@ -131,13 +131,13 @@ ELIF DEF(_GREEN)
 	RGB 24,24,24 ; index  4: dark red -> gray
 	RGB 24,24,24 ; index  5: gray
 	RGB 24,24,24 ; index  6: Yume pink -> gray
-	RGB 00,00,00 ; index  7: unused
-	RGB 00,00,00 ; index  8: unused
-	RGB 00,00,00 ; index  9: unused
-	RGB 00,00,00 ; index 10: unused
+	RGB 30,26,28 ; index  7: light pink (Mew skin)
+	RGB 00,00,00 ; index  8: black
+	RGB 14,19,27 ; index  9: light blue
+	RGB 26,23,25 ; index 10: dark pink (Mew shadow)
 	RGB 00,00,00 ; index 11: unused
 	RGB 00,00,00 ; index 12: unused
-	RGB 00,00,00 ; index 13: unused
+	RGB 13,24,28 ; index 13: cyan (Mew eyes)
 	RGB 11,21,15 ; index 14: deep pink marker -> light green
 	RGB 11,21,15 ; index 15: deep purple marker -> light green
 ELIF DEF(_BLUE)
@@ -148,13 +148,13 @@ ELIF DEF(_BLUE)
 	RGB 24,24,24 ; index  4: dark green -> gray
 	RGB 24,24,24 ; index  5: gray
 	RGB 24,24,24 ; index  6: Yume pink -> gray
-	RGB 00,00,00 ; index  7: unused
-	RGB 00,00,00 ; index  8: unused
-	RGB 00,00,00 ; index  9: unused
-	RGB 00,00,00 ; index 10: unused
+	RGB 30,26,28 ; index  7: light pink (Mew skin)
+	RGB 00,00,00 ; index  8: black
+	RGB 14,19,27 ; index  9: light blue
+	RGB 26,23,25 ; index 10: dark pink (Mew shadow)
 	RGB 00,00,00 ; index 11: unused
 	RGB 00,00,00 ; index 12: unused
-	RGB 00,00,00 ; index 13: unused
+	RGB 13,24,28 ; index 13: cyan (Mew eyes)
 	RGB 14,19,27 ; index 14: deep pink marker -> light blue
 	RGB 14,19,27 ; index 15: deep purple marker -> light blue
 ENDC
