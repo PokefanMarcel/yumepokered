@@ -449,7 +449,8 @@ wPredefBC:: dw
 
 wTrainerHeaderFlagBit:: db
 
-	ds 1
+; marcelnote - dynamic SGB border
+wReloadSGBBorder:: db
 
 ; which NPC movement script pointer is being used
 ; 0 if an NPC movement script is not running

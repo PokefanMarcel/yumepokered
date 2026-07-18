@@ -31,8 +31,22 @@ CeladonGrove_ScriptPointers:
 	def_script_pointers
 	dw_const CheckFightingMapTrainers,              SCRIPT_CELADONGROVE_DEFAULT
 	dw_const DisplayEnemyTrainerTextAndStartBattle, SCRIPT_CELADONGROVE_START_BATTLE
-	dw_const EndTrainerBattle,                      SCRIPT_CELADONGROVE_END_BATTLE
+	dw_const CeladonGroveEndTrainerBattle,          SCRIPT_CELADONGROVE_END_BATTLE
 	dw_const CeladonGroveMewAppearsScript,          SCRIPT_CELADONGROVE_MEW_APPEARS
+
+; marcelnote - dynamic SGB border
+; Plan a SGB border update if beat Mew; doing it here would overwrite VRAM.
+CeladonGroveEndTrainerBattle:
+	call EndTrainerBattle ; sets EVENT_BEAT_MEW if relevant
+	ld a, [wEnemyMonOrTrainerClass]
+	cp MEW
+	ret nz
+	CheckEvent EVENT_BEAT_MEW
+	ret z
+	; Ask EnterMap to reload the border during the next hidden map transition.
+	ld a, 1
+	ld [wReloadSGBBorder], a
+	ret
 
 CeladonGrove_TextPointers:
 	def_text_pointers

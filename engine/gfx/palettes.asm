@@ -471,27 +471,50 @@ LoadSGB:
 	ld a, [wOnCGB]
 	and a
 	ret nz
+	; marcelnote - dynamic SGB border
+	; Fetch sticker events before the first border transfer.
+	; The full save still loads later from the main menu, as in vanilla.
+	call LoadSGBBorderEventsFromSave
 	di
 	call PrepareSuperNintendoVRAMTransfer
 	ei
-;	ld a, 1
-;	ld [wCopyingSGBTileData], a
 	ld de, ChrTrnPacket
 	ld hl, SGBBorderGraphics
 	call CopyGfxToSuperNintendoVRAM
-;	xor a
-;	ld [wCopyingSGBTileData], a
+	; PCT_TRN includes the border tilemap, so the transfer routine can
+	; patch in stickers here when LoadSGBBorderEventsFromSave seeded their events.
 	ld de, PctTrnPacket
 	ld hl, BorderPalettes
 	call CopyGfxToSuperNintendoVRAM
-;	xor a
-;	ld [wCopyingSGBTileData], a
 	ld de, PalTrnPacket
 	ld hl, SuperPalettes
 	call CopyGfxToSuperNintendoVRAM
 	call ClearVram
 	ld hl, MaskEnCancelPacket
 	jp SendSGBPacket
+
+; Cosmetic boot-time save probe for the SGB border. This intentionally does not
+; load or validate the full save: if SRAM is bad, the worst case is a wrong
+; sticker on the intro border until the real save load runs later.
+LoadSGBBorderEventsFromSave:
+	ResetEvent EVENT_BEAT_MEW
+	ld a, RAMG_SRAM_ENABLE
+	ld [rRAMG], a
+	ld a, BMODE_ADVANCED
+	ld [rBMODE], a
+	ASSERT BANK("Save Data") == BMODE_ADVANCED
+	ld [rRAMB], a
+	; For now only Mew has a sticker. Add future sticker events here.
+	ld a, [sMainData + (wEventFlags - wMainDataStart) + (EVENT_BEAT_MEW / 8)]
+	bit EVENT_BEAT_MEW % 8, a
+	jr z, .done
+	SetEvent EVENT_BEAT_MEW
+.done
+	ld a, BMODE_SIMPLE
+	ld [rBMODE], a
+	ASSERT RAMG_SRAM_DISABLE == BMODE_SIMPLE
+	ld [rRAMG], a
+	ret
 
 PrepareSuperNintendoVRAMTransfer:
 	ld hl, .packetPointers
@@ -575,27 +598,72 @@ CheckSGB:
 	scf
 	ret
 
-SendMltReq1Packet:
-	ld hl, MltReq1Packet
+; Reload the SGB border while preserving the current GB palette. Map transitions
+; can therefore keep their blackout/whiteout while the transfer uses VRAM as a
+; staging area. Sticker patches are selected from the current event flags.
+ReloadSGBBorderWithStickers::
+	ld a, [wOnSGB]
+	and a
+	ret z
+	ld a, [wOnCGB]
+	and a
+	ret nz
+	; A border update needs the CHR_TRN graphics and PCT_TRN tilemap/palettes.
+	ld hl, MaskEnFreezePacket
 	call SendSGBPacket
-	jr Wait7000
+	ld de, ChrTrnPacket
+	ld hl, SGBBorderGraphics
+	call CopyGfxToSuperNintendoVRAM
+	ld de, PctTrnPacket
+	ld hl, BorderPalettes
+	call CopyGfxToSuperNintendoVRAM
+	ld hl, MaskEnCancelPacket
+	jp SendSGBPacket
 
+; Stage 256 tiles of SGB data through GB VRAM and send the requested transfer
+; packet. If the packet is PCT_TRN, patch the staged border tilemap first so
+; stickers appear according to the current event flags. Interrupts are disabled
+; while staging the transfer and re-enabled on return.
 CopyGfxToSuperNintendoVRAM:
 	di
 	push de
+
+	; Detect PCT_TRN so only the border tilemap transfer gets the sticker patch.
+	ld a, e
+	sub LOW(PctTrnPacket)
+	jr nz, .notSGBBorderTilemap
+	ld a, d
+	sub HIGH(PctTrnPacket)
+.notSGBBorderTilemap
+	push af ; save Z flag if border tilemap, NZ otherwise
+	; Reuse the screen backup buffer while the SGB transfer staging screen is active.
+	ldh a, [hSCX]
+	ld [wTileMapBackup], a
+	ldh a, [hSCY]
+	ld [wTileMapBackup + 1], a
+	ldh a, [rBGP]
+	ld [wTileMapBackup + 2], a
+	ldh a, [rLCDC]
+	ld [wTileMapBackup + 3], a
+
 	call DisableLCD
 	ld a, $e4
 	ldh [rBGP], a
 	ld de, vChars1
-;	ld a, [wCopyingSGBTileData]
-;	and a
-;	jr z, .notCopyingTileData
-;	call CopySGBBorderTiles
-;	jr .next
-;.notCopyingTileData
 	ld bc, 256 tiles
 	call CopyData
-;.next
+
+	pop af
+	jr nz, .skipStickerPatches
+; Apply small tile/attribute replacements to the staged PCT_TRN data.
+	CheckEvent EVENT_BEAT_MEW
+	ld hl, SGBBorderMewStickerTilemapPatch
+	call nz, ApplySGBBorderStickerPatch
+;	CheckEvent EVENT_...
+;	ld hl, SGBBorder...StickerTilemapPatch
+;	call nz, ...
+.skipStickerPatches
+
 	ld hl, vBGMap0
 	ld de, TILEMAP_WIDTH - SCREEN_WIDTH
 	ld a, $80
@@ -610,13 +678,53 @@ CopyGfxToSuperNintendoVRAM:
 	add hl, de
 	dec c
 	jr nz, .loop
-	ld a, LCDC_DEFAULT
+
+	xor a
+	ldh [hSCX], a
+	ldh [rSCX], a
+	ldh [hSCY], a
+	ldh [rSCY], a
+	ld a, LCDC_ON | LCDC_BLOCK21 | LCDC_BG_9800 | LCDC_BG_ON
 	ldh [rLCDC], a
 	pop hl
 	call SendSGBPacket
-	xor a
+	; The staging screen lives in GB VRAM, so clear it before restoring state.
+	; Callers that still need a viewport must reload the map/UI graphics after.
+	call DisableLCD
+	call ClearVram
+	ld hl, wTileMapBackup
+	ld a, [hli]
+	ldh [hSCX], a
+	ldh [rSCX], a
+	ld a, [hli]
+	ldh [hSCY], a
+	ldh [rSCY], a
+	ld a, [hli]
 	ldh [rBGP], a
+	ld a, [hl]
+	ldh [rLCDC], a
 	reti
+
+ApplySGBBorderStickerPatch:
+	ld b, SGB_BORDER_STICKER_TILE_COUNT
+.loop
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
+	ld a, [hli]
+	ld [de], a ; tile
+	inc de
+	ld a, [hli]
+	ld [de], a ; attributes
+	dec b
+	jr nz, .loop
+	ret
+
+SendMltReq1Packet:
+	ld hl, MltReq1Packet
+	call SendSGBPacket
+	; fallthrough
 
 Wait7000:
 ; Each loop takes 9 cycles so this routine actually waits 63000 cycles.

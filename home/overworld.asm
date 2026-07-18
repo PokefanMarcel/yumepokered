@@ -7,6 +7,7 @@ EnterMap::
 ; Load a new map.
 	ld a, PAD_BUTTONS | PAD_CTRL_PAD
 	ld [wJoyIgnore], a
+	call ReloadSGBBorder ; marcelnote - dynamic SGB border, reload while transition still hidden
 	call LoadMapData
 	callfar ClearVariablesOnEnterMap
 	ld hl, wStatusFlags2
@@ -37,9 +38,12 @@ EnterMap::
 	set BIT_CUR_MAP_LOADED_2, [hl]
 	xor a
 	ld [wJoyIgnore], a
+	; fallthrough
 
 OverworldLoop::
 	call DelayFrame
+	; fallthrough
+
 OverworldLoopLessDelay::
 	call DelayFrame
 	call LoadGBPal
@@ -2390,4 +2394,17 @@ LoadDestinationWarpPosition::
 	pop af
 	ldh [hLoadedROMBank], a
 	ld [rROMB], a
+	ret
+
+; marcelnote - dynamic SGB border
+; If a script requested an SGB border reload, do it at the start of EnterMap.
+; This is before LoadMapData rebuilds GB VRAM, so the SGB transfer staging
+; screen can freely overwrite and clear VRAM without leaving visible damage.
+ReloadSGBBorder:
+	ld a, [wReloadSGBBorder]
+	dec a
+	ret nz
+	ld [wReloadSGBBorder], a
+	; The reload preserves the current GB palette, keeping the transition hidden.
+	callfar ReloadSGBBorderWithStickers
 	ret

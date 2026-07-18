@@ -226,6 +226,40 @@ ENDC
 ;	RGB 15,15,15 ; mid gray
 ;	ds 12 * 2 ; unused space for 12 more RGB colors
 
+
+DEF SGB_BORDER_STICKER_TILE_COUNT EQU 9
+
+MACRO sgbbordercoord
+; x, y
+	validate_coords \1, \2, TILEMAP_WIDTH, TILEMAP_HEIGHT
+	dw vChars1 + (((\2) * TILEMAP_WIDTH + (\1)) * 2)
+ENDM
+
+; Tilemap patch applied to the staged PCT_TRN data when EVENT_BEAT_MEW is set.
+SGBBorderMewStickerTilemapPatch:
+	; Add the 3x3 Mew sticker block at border tile coords x=28..30, y=11..13.
+	; Each entry is:
+	;   dw destination in the 32x32 border tilemap staged at vChars1
+	;   db tile id, attributes
+	sgbbordercoord 28, 11
+	db 092, $10
+	sgbbordercoord 29, 11
+	db 093, $10
+	sgbbordercoord 30, 11
+	db 094, $10
+	sgbbordercoord 28, 12
+	db 108, $10
+	sgbbordercoord 29, 12
+	db 109, $10
+	sgbbordercoord 30, 12
+	db 110, $10
+	sgbbordercoord 28, 13
+	db 124, $10
+	sgbbordercoord 29, 13
+	db 125, $10
+	sgbbordercoord 30, 13
+	db 126, $10
+
 SGBBorderGraphics:
 IF DEF(_RED)
 	INCBIN "gfx/sgb/red_border.4bpp"
