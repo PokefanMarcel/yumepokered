@@ -19,7 +19,7 @@ PikachusBeach::
 	ldh [rIF], a
 	ld a, IE_VBLANK | IE_STAT | IE_TIMER | IE_SERIAL
 	ldh [rIE], a
-	ld a, $8
+	ld a, STAT_MODE_0 ; request an interrupt at the start of each HBlank
 	ldh [rSTAT], a
 	ldh a, [hAutoBGTransferDest + 1]
 	push af
@@ -38,7 +38,7 @@ PikachusBeach::
 	ldh [hLCDCPointer], a
 	ldh [hSCX], a
 	ldh [hSCY], a
-	ld a, $90
+	ld a, SCREEN_HEIGHT_PX ; keep the window below the visible screen
 	ldh [hWY], a
 	call DelayFrame
 	pop af
@@ -249,17 +249,17 @@ PikachusBeach_LoadGFXAndLayout:
 	ld a, $60
 	ld [wSurfingMinigamePikachuHP + 1], a
 	ld hl, wSurfingMinigameWaveHeight
-	ld bc, $14
+	ld bc, SCREEN_WIDTH
 	ld a, $74
 	call FillMemory
 	call PikachusBeach_InitStaticSpriteLayout
 	call PikachusBeach_DrawStaticTilemapLayout
-	ld a, $e3
+	ld a, LCDC_ON | LCDC_WIN_9C00 | LCDC_WIN_ON | LCDC_OBJ_ON | LCDC_BG_ON
 	ldh [rLCDC], a
 	call PikachusBeach_SetBGPals
-	ld a, $e4
+	ldpal a, SHADE_BLACK, SHADE_DARK, SHADE_LIGHT, SHADE_WHITE
 	ldh [rOBP0], a
-	ld a, $e0
+	ldpal a, SHADE_BLACK, SHADE_DARK, SHADE_WHITE, SHADE_WHITE
 	ldh [rOBP1], a
 ;	call SurfingMinigame_UpdatePalettes
 	reti
@@ -267,9 +267,9 @@ PikachusBeach_LoadGFXAndLayout:
 PikachusBeach_SetBGPals:
 	ld a, [wOnSGB]
 	and a
-	ld a, $e4
+	ldpal a, SHADE_BLACK, SHADE_DARK, SHADE_LIGHT, SHADE_WHITE
 	jr nz, .sgb
-	ld a, $d0
+	ldpal a, SHADE_BLACK, SHADE_LIGHT, SHADE_WHITE, SHADE_WHITE
 .sgb
 	ldh [rBGP], a
 ;	call SurfingMinigame_UpdatePalettes
@@ -306,7 +306,7 @@ PikachusBeach_PlaceSpriteRowFromTiles:
 	xor a
 	ld [hli], a
 	ld a, c
-	add $8
+	add TILE_WIDTH
 	ld c, a
 	inc de
 	pop af
@@ -1012,7 +1012,7 @@ SurfingMinigame_SpeedUpPikachu:
 
 SurfingMinigame_TryStartJump:
 	ldh a, [hSCX]
-	and $7
+	and TILE_WIDTH - 1
 	cp $3
 	jr c, .noJump
 	cp $5
@@ -1034,7 +1034,7 @@ SurfingMinigame_TryStartJump:
 
 SurfingMinigame_UpdateSurfingFrame:
 	ldh a, [hSCX]
-	and $7
+	and TILE_WIDTH - 1
 	cp $3
 	ret c
 	cp $5
@@ -1134,7 +1134,7 @@ SurfingMinigame_SpawnWaterSpray:
 
 .GetYCoord:
 	ldh a, [hSCX]
-	and $8
+	and TILE_WIDTH
 	jr nz, .getHeightPlus9
 	ld hl, wSurfingMinigameWaveHeight + 8
 	jr .gotHL
@@ -1155,7 +1155,7 @@ SurfingMinigame_SpawnWaterSpray:
 .risingSlope
 .waveCrest
 	ldh a, [hSCX]
-	and $7
+	and TILE_WIDTH - 1
 	ld e, a
 	ld a, [hl]
 	sub e
@@ -1163,7 +1163,7 @@ SurfingMinigame_SpawnWaterSpray:
 
 .fallingSlope
 	ldh a, [hSCX]
-	and $7
+	and TILE_WIDTH - 1
 	add [hl]
 	ret
 
@@ -1171,7 +1171,7 @@ SurfingMinigame_MoveBannerToCenter:
 	ld hl, ANIM_OBJ_X_COORD
 	add hl, bc
 	ld a, [hl]
-	cp $58
+	cp SCREEN_WIDTH_PX / 2 + OAM_X_OFS
 	ret z
 	add $4
 	ld [hl], a
@@ -1251,7 +1251,7 @@ SurfingMinigame_MoveClouds:
 
 SurfingMinigame_ReadBGMapBuffer:
 	ldh a, [hSCX]
-	add $48
+	add 9 * TILE_WIDTH
 	ld e, a
 	srl e
 	srl e
@@ -1272,8 +1272,8 @@ SurfingMinigame_ReadBGMapBuffer:
 	ld de, TILEMAP_WIDTH
 	add hl, de
 	ld a, h
-	and $3
-	or $98
+	and HIGH(TILEMAP_AREA - 1)
+	or HIGH(vBGMap0)
 	ld h, a
 	jr .loop
 
@@ -1293,7 +1293,7 @@ SurfingMinigame_ReadBGMapBuffer:
 
 SurfingMinigame_SetPikachuHeight:
 	ldh a, [hSCX]
-	and $8
+	and TILE_WIDTH
 	jr nz, .rightHalf
 	ld hl, wSurfingMinigameWaveHeight + 7
 	jr .gotWaveHeight
@@ -1315,7 +1315,7 @@ SurfingMinigame_SetPikachuHeight:
 .risingSlope
 .waveCrest
 	ldh a, [hSCX]
-	and $7
+	and TILE_WIDTH - 1
 	ld e, a
 	ld a, [hl]
 	sub e
@@ -1324,7 +1324,7 @@ SurfingMinigame_SetPikachuHeight:
 
 .fallingSlope
 	ldh a, [hSCX]
-	and $7
+	and TILE_WIDTH - 1
 	add [hl]
 	ld [wSurfingMinigamePikachuObjectHeight], a
 	ret
@@ -1857,7 +1857,7 @@ SurfingMinigame_GenerateBGMap:
 	ld [hl], a
 	pop de
 	ld hl, wRedrawRowOrColumnSrcTiles
-	ld c, $8
+	ld c, SurfingMinigameWavePattern01 - SurfingMinigameWavePattern00
 .loop
 	ld a, [de]
 	call .CopyRedrawSrcTiles
@@ -2312,11 +2312,11 @@ PikachusBeachIntro:
 	xor a
 	ldh [hSCX], a
 	ldh [hSCY], a
-	ld a, $90
+	ld a, SCREEN_HEIGHT_PX ; keep the window below the visible screen
 	ldh [hWY], a
 	call PikachusBeach_GetPaletteCommand
 	call RunPaletteCommand
-	ld a, $e3
+	ld a, LCDC_ON | LCDC_WIN_9C00 | LCDC_WIN_ON | LCDC_OBJ_ON | LCDC_BG_ON
 	ldh [rLCDC], a
 	ld a, $1
 	ldh [hAutoBGTransferEnabled], a
@@ -2324,9 +2324,9 @@ PikachusBeachIntro:
 ;	call DelayFrame
 ;	call DelayFrame
 	call PikachusBeach_SetBGPals
-	ld a, $e4
+	ldpal a, SHADE_BLACK, SHADE_DARK, SHADE_LIGHT, SHADE_WHITE
 	ldh [rOBP0], a
-	ld a, $e0
+	ldpal a, SHADE_BLACK, SHADE_DARK, SHADE_WHITE, SHADE_WHITE
 	ldh [rOBP1], a
 ;	call SurfingMinigame_UpdatePalettes
 	call DelayFrame
@@ -2645,9 +2645,9 @@ DrawPikachusBeachIntroBackground:
 	ret
 
 SurfingMinigame_UpdateLYOverrides:
-	ld hl, wLYOverrides + $10
-	ld de, wLYOverrides + $11
-	ld c, $80
+	ld hl, wLYOverrides + 2 * TILE_HEIGHT
+	ld de, wLYOverrides + 2 * TILE_HEIGHT + 1
+	ld c, SCREEN_HEIGHT_PX - 2 * TILE_HEIGHT
 	ld a, [hl]
 	push af
 .loop
@@ -2706,10 +2706,10 @@ PikachusBeach_BlankPals:
 	ret
 
 PikachusBeach_NormalPals:
-	ld a, $e4
+	ldpal a, SHADE_BLACK, SHADE_DARK, SHADE_LIGHT, SHADE_WHITE
 	ldh [rBGP], a
 	ldh [rOBP0], a
-	ld a, $e0
+	ldpal a, SHADE_BLACK, SHADE_DARK, SHADE_WHITE, SHADE_WHITE
 	ldh [rOBP1], a
 ;	call SurfingMinigame_UpdatePalettes
 	ret
@@ -2801,7 +2801,7 @@ SurfingMinigame_UpdatePikachuHeight:
 	ld hl, ANIM_OBJ_Y_COORD
 	add hl, bc
 	ld a, [hl]
-	cp $90
+	cp SCREEN_HEIGHT_PX
 	jr nc, .okay
 	cp e
 	jr nc, .reset
