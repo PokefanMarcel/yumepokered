@@ -1037,6 +1037,8 @@ OaksLabMonChoiceMenu:
 	ld [wPokedexNum], a
 	call AddPartyMon
 	SetEvent EVENT_GOT_STARTER
+	ld a, 1 ; marcelnote - dynamic SGB border, add starter sticker during the next map transition
+	ld [wReloadSGBBorder], a
 	ld a, PAD_SELECT | PAD_START | PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	ld a, SCRIPT_OAKSLAB_CHOSE_STARTER_SCRIPT

@@ -461,6 +461,10 @@ SendSGBPacket:
 ; else send 16 more bytes
 	jr .loop2
 
+DEF SGB_TRANSFER_PAL EQU 0
+DEF SGB_TRANSFER_CHR EQU 1
+DEF SGB_TRANSFER_PCT EQU 2
+
 LoadSGB:
 	xor a
 	ld [wOnSGB], a
@@ -478,17 +482,25 @@ LoadSGB:
 	di
 	call PrepareSuperNintendoVRAMTransfer
 	ei
+
+	; Transfer the border graphics.
+	ld a, SGB_TRANSFER_CHR
 	ld de, ChrTrnPacket
 	ld hl, SGBBorderGraphics
 	call CopyGfxToSuperNintendoVRAM
-	; PCT_TRN includes the border tilemap, so the transfer routine can
-	; patch in stickers here when LoadSGBBorderEventsFromSave seeded their events.
+
+	; Transfer the border tilemap and its palettes.
+	ld a, SGB_TRANSFER_PCT
 	ld de, PctTrnPacket
 	ld hl, BorderPalettes
 	call CopyGfxToSuperNintendoVRAM
+
+	; Transfer the palettes used to color the GB screen.
+	ld a, SGB_TRANSFER_PAL
 	ld de, PalTrnPacket
 	ld hl, SuperPalettes
 	call CopyGfxToSuperNintendoVRAM
+
 	call ClearVram
 	ld hl, MaskEnCancelPacket
 	jp SendSGBPacket
@@ -497,18 +509,25 @@ LoadSGB:
 ; load or validate the full save: if SRAM is bad, the worst case is a wrong
 ; sticker on the intro border until the real save load runs later.
 LoadSGBBorderEventsFromSave:
-	ResetEvent EVENT_BEAT_MEW
+	ResetEvents EVENT_BEAT_MEW, EVENT_GOT_STARTER
 	ld a, RAMG_SRAM_ENABLE
 	ld [rRAMG], a
 	ld a, BMODE_ADVANCED
 	ld [rBMODE], a
 	ASSERT BANK("Save Data") == BMODE_ADVANCED
 	ld [rRAMB], a
-	; For now only Mew has a sticker. Add future sticker events here.
+	; Seed each event that controls a boot-time border sticker.
 	ld a, [sMainData + (wEventFlags - wMainDataStart) + (EVENT_BEAT_MEW / 8)]
 	bit EVENT_BEAT_MEW % 8, a
-	jr z, .done
+	jr z, .checkStarter
 	SetEvent EVENT_BEAT_MEW
+.checkStarter
+	ld a, [sMainData + (wEventFlags - wMainDataStart) + (EVENT_GOT_STARTER / 8)]
+	bit EVENT_GOT_STARTER % 8, a
+	jr z, .done
+	SetEvent EVENT_GOT_STARTER
+	ld a, [sMainData + (wPlayerStarter - wMainDataStart)]
+	ld [wPlayerStarter], a
 .done
 	ld a, BMODE_SIMPLE
 	ld [rBMODE], a
@@ -611,31 +630,28 @@ ReloadSGBBorderWithStickers::
 	; A border update needs the CHR_TRN graphics and PCT_TRN tilemap/palettes.
 	ld hl, MaskEnFreezePacket
 	call SendSGBPacket
+	; Transfer the border graphics.
+	ld a, SGB_TRANSFER_CHR
 	ld de, ChrTrnPacket
 	ld hl, SGBBorderGraphics
 	call CopyGfxToSuperNintendoVRAM
+	; Transfer the border tilemap and its palettes.
+	ld a, SGB_TRANSFER_PCT
 	ld de, PctTrnPacket
 	ld hl, BorderPalettes
 	call CopyGfxToSuperNintendoVRAM
 	ld hl, MaskEnCancelPacket
 	jp SendSGBPacket
 
-; Stage 256 tiles of SGB data through GB VRAM and send the requested transfer
-; packet. If the packet is PCT_TRN, patch the staged border tilemap first so
-; stickers appear according to the current event flags. Interrupts are disabled
-; while staging the transfer and re-enabled on return.
+; marcelnote - modified for dynamic SGB border
+; Copy border data to GB VRAM, then transfer it to the SGB.
+; a specifies whether this is CHR, PCT, or PAL data, so sticker graphics can be
+; added to CHR data and sticker tilemap entries can be added to PCT data.
+; Interrupts are disabled during the transfer and re-enabled on return.
 CopyGfxToSuperNintendoVRAM:
 	di
 	push de
-
-	; Detect PCT_TRN so only the border tilemap transfer gets the sticker patch.
-	ld a, e
-	sub LOW(PctTrnPacket)
-	jr nz, .notSGBBorderTilemap
-	ld a, d
-	sub HIGH(PctTrnPacket)
-.notSGBBorderTilemap
-	push af ; save Z flag if border tilemap, NZ otherwise
+	push af ; save a = transfer type
 	; Reuse the screen backup buffer while the SGB transfer staging screen is active.
 	ldh a, [hSCX]
 	ld [wTileMapBackup], a
@@ -650,18 +666,25 @@ CopyGfxToSuperNintendoVRAM:
 	ld a, $e4
 	ldh [rBGP], a
 	ld de, vChars1
-	ld bc, 256 tiles
+	ld bc, 128 * SGB_BORDER_4BPP_TILE_SIZE ; 128 SNES 4bpp tiles
 	call CopyData
 
-	pop af
+	pop af ; restore a = transfer type
+	cp SGB_TRANSFER_CHR
+	jr z, .patchStarterTiles
+	cp SGB_TRANSFER_PCT
 	jr nz, .skipStickerPatches
 ; Apply small tile/attribute replacements to the staged PCT_TRN data.
+	CheckEvent EVENT_GOT_STARTER
+	ld hl, SGBBorderStarterStickerTilemapPatch
+	call nz, ApplySGBBorderStickerPatch
 	CheckEvent EVENT_BEAT_MEW
 	ld hl, SGBBorderMewStickerTilemapPatch
 	call nz, ApplySGBBorderStickerPatch
-;	CheckEvent EVENT_...
-;	ld hl, SGBBorder...StickerTilemapPatch
-;	call nz, ...
+	jr .skipStickerPatches
+.patchStarterTiles
+	CheckEvent EVENT_GOT_STARTER
+	call nz, PatchSGBBorderStarterTiles ; copy 9 tiles into tileset corresponding to picked starter
 .skipStickerPatches
 
 	ld hl, vBGMap0
@@ -704,6 +727,20 @@ CopyGfxToSuperNintendoVRAM:
 	ld a, [hl]
 	ldh [rLCDC], a
 	reti
+
+PatchSGBBorderStarterTiles:
+	ld a, [wPlayerStarter]
+	ld hl, SGBBorderBulbasaurStickerGraphics
+	cp STARTER3
+	jr z, .copy
+	ld hl, SGBBorderCharmanderStickerGraphics
+	cp STARTER1
+	jr z, .copy
+	ld hl, SGBBorderSquirtleStickerGraphics
+.copy
+	ld de, vChars1 + SGB_BORDER_STARTER_FIRST_TILE * SGB_BORDER_4BPP_TILE_SIZE
+	ld bc, SGB_BORDER_STICKER_TILE_COUNT * SGB_BORDER_4BPP_TILE_SIZE
+	jp CopyData
 
 ApplySGBBorderStickerPatch:
 	ld b, SGB_BORDER_STICKER_TILE_COUNT
@@ -763,7 +800,7 @@ InitCGBPalettes:
 	inc hl
 	add a
 	add a
-	add a
+	add a ; a *= 8
 	ld de, SuperPalettes
 	add e
 	jr nc, .noCarry

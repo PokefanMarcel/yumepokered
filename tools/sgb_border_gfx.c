@@ -1,5 +1,5 @@
 #define PROGRAM_NAME "sgb_border_gfx"
-#define USAGE_OPTS "[-h|--help] -o outfile gfx/sgb/*_border.png"
+#define USAGE_OPTS "[-h|--help] -o outfile gfx/sgb/{*_border,starter_stickers}.png"
 
 #include "common.h"
 
@@ -58,6 +58,10 @@ bool is_sgb_border_png(const char *path) {
 	return ends_with(path, "gfx/sgb/red_border.png")
 	    || ends_with(path, "gfx/sgb/blue_border.png")
 	    || ends_with(path, "gfx/sgb/green_border.png");
+}
+
+bool is_starter_stickers_png(const char *path) {
+	return ends_with(path, "gfx/sgb/starter_stickers.png");
 }
 
 void png_error_callback(png_structp png, png_const_charp message) {
@@ -224,8 +228,8 @@ int main(int argc, char *argv[]) {
 	}
 
 	const char *infile = argv[0];
-	if (!is_sgb_border_png(infile)) {
-		error_exit("This tool is only for gfx/sgb/*_border.png files\n");
+	if (!is_sgb_border_png(infile) && !is_starter_stickers_png(infile)) {
+		error_exit("This tool is only for SGB border and sticker artwork\n");
 	}
 
 	struct Image image = read_png_indices(infile);
@@ -236,12 +240,19 @@ int main(int argc, char *argv[]) {
 	png_uint_32 width_tiles = image.width / 8;
 	png_uint_32 height_tiles = image.height / 8;
 	png_uint_32 num_tiles = width_tiles * height_tiles;
+	if (is_starter_stickers_png(infile) && (width_tiles != 3 || height_tiles != 9)) {
+		error_exit("\"%s\" must contain three vertically stacked 3x3 stickers, not %ux%u tiles\n",
+			infile, width_tiles, height_tiles);
+	}
 	if (num_tiles > SGB_BORDER_MAX_TILES) {
 		error_exit("\"%s\" has %u tiles; SGB CHR_TRN supports at most %u\n",
 			infile, num_tiles, SGB_BORDER_MAX_TILES);
 	}
 
-	uint8_t *output = xcalloc(SGB_BORDER_OUTPUT_SIZE);
+	size_t output_size = is_starter_stickers_png(infile)
+		? num_tiles * SNES_4BPP_TILE_SIZE
+		: SGB_BORDER_OUTPUT_SIZE;
+	uint8_t *output = xcalloc(output_size);
 	for (png_uint_32 tile_y = 0; tile_y < height_tiles; tile_y++) {
 		for (png_uint_32 tile_x = 0; tile_x < width_tiles; tile_x++) {
 			int tile_index = tile_y * width_tiles + tile_x;
@@ -249,7 +260,7 @@ int main(int argc, char *argv[]) {
 		}
 	}
 
-	write_u8(options.outfile, output, SGB_BORDER_OUTPUT_SIZE);
+	write_u8(options.outfile, output, output_size);
 	free(output);
 	free(image.pixels);
 	return 0;

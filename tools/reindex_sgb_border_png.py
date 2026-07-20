@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Reindex SGB border PNGs to the palette order used by ASM."""
+"""Reindex SGB border artwork to the palette order used by ASM."""
 
 from __future__ import annotations
 
@@ -80,16 +80,36 @@ RED_BORDER_ALIASES = {
     (255, 165, 140): 2, # previous light red preview
 }
 
+STARTER_STICKER_PALETTE = (
+    ("white", (238, 247, 255)),
+    ("dark blue marker", (16, 49, 156)),
+    ("eye blue", (114, 153, 220)),
+    ("red mouth", (220, 67, 27)),
+    ("bulb dark green", (76, 104, 67)),
+    ("gray", (194, 195, 199)),
+    ("mouth pink", (255, 119, 168)),
+    ("Charmander orange", (240, 123, 7)),
+    ("black", (0, 0, 0)),
+    ("bulb green", (94, 173, 123)),
+    ("Charmander shadow", (214, 82, 0)),
+    ("unused", (0, 0, 0)),
+    ("Bulbasaur teal", (130, 190, 182)),
+    ("Squirtle light blue", (110, 199, 231)),
+    ("Squirtle dark blue", (66, 111, 134)),
+    ("Bulbasaur shadow", (83, 130, 115)),
+)
+
 BORDER_PALETTES = {
     "blue_border.png": (BLUE_BORDER_PALETTE, {}),
     "red_border.png": (RED_BORDER_PALETTE, RED_BORDER_ALIASES),
     "green_border.png": (GREEN_BORDER_PALETTE, GREEN_BORDER_ALIASES),
+    "starter_stickers.png": (STARTER_STICKER_PALETTE, {}),
 }
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Reindex an SGB border PNG with fixed color indexes."
+        description="Reindex SGB border artwork with fixed color indexes."
     )
     parser.add_argument(
         "png",
@@ -117,7 +137,7 @@ def palette_for_path(path: Path) -> tuple[tuple[tuple[str, tuple[int, int, int]]
         return BORDER_PALETTES[path.name]
     except KeyError:
         supported = ", ".join(sorted(BORDER_PALETTES))
-        raise SystemExit(f"{path}: unsupported SGB border PNG; expected one of: {supported}")
+        raise SystemExit(f"{path}: unsupported SGB artwork PNG; expected one of: {supported}")
 
 
 def expected_flat_palette(palette: tuple[tuple[str, tuple[int, int, int]], ...]) -> list[int]:
@@ -138,7 +158,9 @@ def indexed_pixels(
     palette: tuple[tuple[str, tuple[int, int, int]], ...],
     aliases: dict[tuple[int, int, int], int],
 ) -> list[int]:
-    index_by_rgb = {rgb: index for index, (_name, rgb) in enumerate(palette)}
+    index_by_rgb: dict[tuple[int, int, int], int] = {}
+    for index, (_name, rgb) in enumerate(palette):
+        index_by_rgb.setdefault(rgb, index)
     rgba_image = image.convert("RGBA")
     output: list[int] = []
     unknown: Counter[tuple[int, int, int]] = Counter()
@@ -210,7 +232,7 @@ def main() -> int:
     output = Image.new("P", image.size)
     output.putpalette(expected_flat_palette(palette))
     output.putdata(pixels)
-    output.save(args.png)
+    output.save(args.png, bits=4)
     print(f"{args.png}: reindexed")
     return 0
 

@@ -227,6 +227,10 @@ ENDC
 ;	ds 12 * 2 ; unused space for 12 more RGB colors
 
 
+; Sticker tilemaps. Each entry is:
+;   dw destination in the 32x32 border tilemap staged at vChars1
+;   db tile id, attributes
+
 DEF SGB_BORDER_STICKER_TILE_COUNT EQU 9
 
 MACRO sgbbordercoord
@@ -235,30 +239,54 @@ MACRO sgbbordercoord
 	dw vChars1 + (((\2) * TILEMAP_WIDTH + (\1)) * 2)
 ENDM
 
-; Tilemap patch applied to the staged PCT_TRN data when EVENT_BEAT_MEW is set.
+; SGB border palettes occupy SNES BG palettes 4-7 in tile attributes.
+DEF PAL_SGB1 EQU 4 << 2
+DEF PAL_SGB2 EQU 5 << 2
+DEF PAL_SGB3 EQU 6 << 2
+DEF PAL_SGB4 EQU 7 << 2
+
+; Tilemap patch applied when EVENT_BEAT_MEW is set.
 SGBBorderMewStickerTilemapPatch:
-	; Add the 3x3 Mew sticker block at border tile coords x=28..30, y=11..13.
-	; Each entry is:
-	;   dw destination in the 32x32 border tilemap staged at vChars1
-	;   db tile id, attributes
 	sgbbordercoord 28, 11
-	db 092, $10
+	db $4d, PAL_SGB1
 	sgbbordercoord 29, 11
-	db 093, $10
+	db $4e, PAL_SGB1
 	sgbbordercoord 30, 11
-	db 094, $10
+	db $4f, PAL_SGB1
 	sgbbordercoord 28, 12
-	db 108, $10
+	db $5d, PAL_SGB1
 	sgbbordercoord 29, 12
-	db 109, $10
+	db $5e, PAL_SGB1
 	sgbbordercoord 30, 12
-	db 110, $10
+	db $5f, PAL_SGB1
 	sgbbordercoord 28, 13
-	db 124, $10
+	db $6d, PAL_SGB1
 	sgbbordercoord 29, 13
-	db 125, $10
+	db $6e, PAL_SGB1
 	sgbbordercoord 30, 13
-	db 126, $10
+	db $6f, PAL_SGB1
+
+; Tilemap patch applied when EVENT_GOT_STARTER is set.
+SGBBorderStarterStickerTilemapPatch:
+	sgbbordercoord 1, 8
+	db $77, PAL_SGB2
+	sgbbordercoord 2, 8
+	db $78, PAL_SGB2
+	sgbbordercoord 3, 8
+	db $79, PAL_SGB2
+	sgbbordercoord 1, 9
+	db $7a, PAL_SGB2
+	sgbbordercoord 2, 9
+	db $7b, PAL_SGB2
+	sgbbordercoord 3, 9
+	db $7c, PAL_SGB2
+	sgbbordercoord 1, 10
+	db $7d, PAL_SGB2
+	sgbbordercoord 2, 10
+	db $7e, PAL_SGB2
+	sgbbordercoord 3, 10
+	db $7f, PAL_SGB2
+
 
 SGBBorderGraphics:
 IF DEF(_RED)
@@ -268,3 +296,14 @@ ELIF DEF(_GREEN)
 ELIF DEF(_BLUE)
 	INCBIN "gfx/sgb/blue_border.4bpp"
 ENDC
+
+
+DEF SGB_BORDER_4BPP_TILE_SIZE     EQU 32
+DEF SGB_BORDER_STARTER_FIRST_TILE EQU $77
+
+SGBBorderBulbasaurStickerGraphics:
+	INCBIN "gfx/sgb/starter_stickers.4bpp", 0, 9 * SGB_BORDER_4BPP_TILE_SIZE
+SGBBorderCharmanderStickerGraphics:
+	INCBIN "gfx/sgb/starter_stickers.4bpp", 9 * SGB_BORDER_4BPP_TILE_SIZE, 9 * SGB_BORDER_4BPP_TILE_SIZE
+SGBBorderSquirtleStickerGraphics:
+	INCBIN "gfx/sgb/starter_stickers.4bpp", 18 * SGB_BORDER_4BPP_TILE_SIZE, 9 * SGB_BORDER_4BPP_TILE_SIZE
