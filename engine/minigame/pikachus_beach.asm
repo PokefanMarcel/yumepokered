@@ -1,4 +1,17 @@
 ; marcelnote - Pikachu's Beach minigame
+
+DEF SURFING_MINIGAME_FLAT_WATER_Y EQU $74
+DEF SURFING_MINIGAME_CENTER_X     EQU SCREEN_WIDTH_PX / 2 + OAM_X_OFS
+
+	const_def
+	const SURFING_MINIGAME_PIKACHU_STATE_RIDING       ; 0
+	const SURFING_MINIGAME_PIKACHU_STATE_JUMPING      ; 1
+	const SURFING_MINIGAME_PIKACHU_STATE_LANDING      ; 2
+	const SURFING_MINIGAME_PIKACHU_STATE_CRASHED      ; 3
+	const SURFING_MINIGAME_PIKACHU_STATE_GAME_END     ; 4
+	const SURFING_MINIGAME_PIKACHU_STATE_INIT_RESULTS ; 5
+	const SURFING_MINIGAME_PIKACHU_STATE_RESULTS      ; 6
+
 PikachusBeach::
 	call PikachusBeach_BlankPals
 	call Delay3
@@ -225,10 +238,10 @@ PikachusBeach_LoadGFXAndLayout:
 	call FillMemory
 
 	ld a, $1 ; surfing Pikachu
-	lb de, $74, $58
+	lb de, SURFING_MINIGAME_FLAT_WATER_Y, SURFING_MINIGAME_CENTER_X
 	call SpawnAnimatedObject
 
-	ld a, $74
+	ld a, SURFING_MINIGAME_FLAT_WATER_Y
 	ld [wSurfingMinigamePikachuObjectHeight], a
 
 	call SurfingMinigame_InitScanlineOverrides
@@ -236,21 +249,21 @@ PikachusBeach_LoadGFXAndLayout:
 	xor a
 	ldh [hSCX], a
 	ldh [hSCY], a
-	ld a, $7e
+	ld a, $7e ; place the HP window just below Pikachu's waterline
 	ldh [hWY], a
 	ld a, rSCY - $ff00
 	ldh [hLCDCPointer], a
-	ld a, $40
+	ld a, 0.25 ; initial speed
 	ld [wSurfingMinigamePikachuSpeed], a
 	xor a
 	ld [wSurfingMinigamePikachuSpeed + 1], a
 	xor a
 	ld [wSurfingMinigamePikachuHP], a
-	ld a, $60
+	ld a, $60 ; initial HP: $6000 in little-endian BCD
 	ld [wSurfingMinigamePikachuHP + 1], a
 	ld hl, wSurfingMinigameWaveHeight
 	ld bc, SCREEN_WIDTH
-	ld a, $74
+	ld a, SURFING_MINIGAME_FLAT_WATER_Y
 	call FillMemory
 	call PikachusBeach_InitStaticSpriteLayout
 	call PikachusBeach_DrawStaticTilemapLayout
@@ -429,7 +442,7 @@ SurfingMinigame_RunGame:
 	ld a, $80
 	ld [wSurfingMinigameGameOverDelay], a
 	ld a, $b ; Oh no...
-	lb de, $88, $58
+	lb de, $88, SURFING_MINIGAME_CENTER_X
 	call SpawnAnimatedObject
 	ld hl, ANIM_OBJ_Y_OFFSET
 	add hl, bc
@@ -460,10 +473,10 @@ SurfingMinigame_WaitToShowResults:
 	inc [hl]
 	ld a, $90
 	ldh [hSCX], a
-	ld a, $72
+	ld a, $72 ; flat water before the beach sequence
 	ld [wSurfingMinigameWaveFunctionNumber], a
-	ld a, $4
-	ld [wSurfingMinigamePikachuState], a ; game over
+	ld a, SURFING_MINIGAME_PIKACHU_STATE_GAME_END
+	ld [wSurfingMinigamePikachuState], a
 	xor a
 	ldh [hLCDCPointer], a
 	ld hl, wSurfingMinigameSCX
@@ -482,7 +495,7 @@ SurfingMinigame_ScrollToResultsScreen:
 	ldh a, [hSCX]
 	sub $4
 	ldh [hSCX], a
-	ld a, $e0
+	ld a, TILEMAP_WIDTH_PX - 32 ; generate tiles 32 pixels behind the viewport
 	ld [wSurfingMinigameXOffset], a
 	jp SurfingMinigame_GenerateBGMap
 
@@ -493,8 +506,8 @@ SurfingMinigame_ScrollToResultsScreen:
 	ld [hl], a
 	ld hl, wSurfingMinigameRoutineNumber
 	inc [hl]
-	ld a, $5
-	ld [wSurfingMinigamePikachuState], a ; initialize results pose
+	ld a, SURFING_MINIGAME_PIKACHU_STATE_INIT_RESULTS
+	ld [wSurfingMinigamePikachuState], a
 	ret
 
 SurfingMinigame_DrawResultsScreenAndWait:
@@ -547,8 +560,8 @@ SurfingMinigame_AddRadnessToTotalAndWait:
 	call DidPlayerGetAHighScore
 	ret nc
 	call SurfingMinigame_PrintTextHiScore
-	ld a, $6
-	ld [wSurfingMinigamePikachuState], a ; animate results pose
+	ld a, SURFING_MINIGAME_PIKACHU_STATE_RESULTS
+	ld [wSurfingMinigamePikachuState], a
 	ret
 
 SurfingMinigame_SetDelayAndAdvanceRoutine:
@@ -645,7 +658,7 @@ SurfingMinigameAnimatedObjectFn_Pikachu:
 	dw SurfingMinigame_UpdateJumpingPikachu
 	dw SurfingMinigame_UpdateLandingPikachu
 	dw SurfingMinigame_UpdateCrashedPikachu
-	dw SurfingMinigame_UpdateGameOverPikachu
+	dw SurfingMinigame_UpdateGameEndPikachu
 	dw SurfingMinigame_InitResultsPikachu
 	dw SurfingMinigame_UpdateResultsPikachu
 
@@ -665,7 +678,7 @@ SurfingMinigame_UpdateRidingPikachu:
 
 .startedJump
 	call SurfingMinigame_UpdateSurfingFrame
-	ld a, $1 ; jumping
+	ld a, SURFING_MINIGAME_PIKACHU_STATE_JUMPING
 	ld [wSurfingMinigamePikachuState], a
 	xor a
 	ld hl, ANIM_OBJ_FIELD_C
@@ -687,7 +700,7 @@ SurfingMinigame_UpdateRidingPikachu:
 	ld hl, wSurfingMinigamePikachuSpeed
 	ld [hli], a
 	ld [hl], a
-	ld a, $4
+	ld a, SURFING_MINIGAME_PIKACHU_STATE_GAME_END
 	ld [wSurfingMinigamePikachuState], a
 	jp SurfingMinigame_UpdateSurfingFrame
 
@@ -701,12 +714,12 @@ SurfingMinigame_UpdateJumpingPikachu:
 	ld hl, ANIM_OBJ_FIELD_C
 	add hl, bc
 	ld [hl], $0
-	ld a, $2
+	ld a, SURFING_MINIGAME_PIKACHU_STATE_LANDING
 	ld [wSurfingMinigamePikachuState], a
 	ret
 
 .crash
-	ld a, $3
+	ld a, SURFING_MINIGAME_PIKACHU_STATE_CRASHED
 	ld [wSurfingMinigamePikachuState], a
 	ld a, $60
 	ld [wSurfingMinigameCrashTimer], a
@@ -761,7 +774,7 @@ SurfingMinigame_UpdateCrashedPikachu:
 	ld a, $4
 	jp SetCurrentAnimatedObjectCallbackAndResetFrameStateRegisters
 
-SurfingMinigame_UpdateGameOverPikachu:
+SurfingMinigame_UpdateGameEndPikachu:
 	ld a, [wSurfingMinigamePikachuObjectHeight]
 	ld hl, ANIM_OBJ_Y_COORD
 	add hl, bc
@@ -1177,7 +1190,7 @@ SurfingMinigame_MoveBannerToCenter:
 	ld [hl], a
 	ret
 
-;Func_f8807: ; unreferenced
+;SurfingMinigame_MaskCurrentAnimatedObject: ; unreferenced
 ;	jp MaskCurrentAnimatedObjectStruct
 
 SurfingMinigameAnimatedObjectFn_FlippingPika:
@@ -2083,7 +2096,7 @@ SurfingMinigame_ChooseNextWaveSequence:
 .gotNextFn
 	ld [wSurfingMinigameWaveFunctionNumber], a
 .gotWave
-	lb bc, $74, $74
+	lb bc, SURFING_MINIGAME_FLAT_WATER_Y, SURFING_MINIGAME_FLAT_WATER_Y
 	ld de, SurfingMinigameWavePattern00
 	ret
 
@@ -2091,167 +2104,167 @@ SurfingMinigame_WaveSequenceStarts:
 	db $01,$0e,$1a,$29,$32,$40,$4d,$5c
 
 SurfingMinigame_LoadWavePattern00AndAdvance:
-	lb bc, $74, $74
+	lb bc, SURFING_MINIGAME_FLAT_WATER_Y, SURFING_MINIGAME_FLAT_WATER_Y
 	ld de, SurfingMinigameWavePattern00
 	jp SurfingMinigame_AdvanceWaveFunction
 
 SurfingMinigame_LoadWavePattern01AndAdvance:
-	lb bc, $74, $6c
+	lb bc, SURFING_MINIGAME_FLAT_WATER_Y, SURFING_MINIGAME_FLAT_WATER_Y - 1 * TILE_HEIGHT
 	ld de, SurfingMinigameWavePattern01
 	jp SurfingMinigame_AdvanceWaveFunction
 
 SurfingMinigame_LoadWavePattern02AndAdvance:
-	lb bc, $64, $5c
+	lb bc, SURFING_MINIGAME_FLAT_WATER_Y - 2 * TILE_HEIGHT, SURFING_MINIGAME_FLAT_WATER_Y - 3 * TILE_HEIGHT
 	ld de, SurfingMinigameWavePattern02
 	jp SurfingMinigame_AdvanceWaveFunction
 
 SurfingMinigame_LoadWavePattern03AndAdvance:
-	lb bc, $54, $4c
+	lb bc, SURFING_MINIGAME_FLAT_WATER_Y - 4 * TILE_HEIGHT, SURFING_MINIGAME_FLAT_WATER_Y - 5 * TILE_HEIGHT
 	ld de, SurfingMinigameWavePattern03
 	jp SurfingMinigame_AdvanceWaveFunction
 
 SurfingMinigame_LoadWavePattern04AndAdvance:
-	lb bc, $44, $44
+	lb bc, SURFING_MINIGAME_FLAT_WATER_Y - 6 * TILE_HEIGHT, SURFING_MINIGAME_FLAT_WATER_Y - 6 * TILE_HEIGHT
 	ld de, SurfingMinigameWavePattern04
 	jp SurfingMinigame_AdvanceWaveFunction
 
 SurfingMinigame_LoadWavePattern05AndAdvance:
-	lb bc, $44, $4c
+	lb bc, SURFING_MINIGAME_FLAT_WATER_Y - 6 * TILE_HEIGHT, SURFING_MINIGAME_FLAT_WATER_Y - 5 * TILE_HEIGHT
 	ld de, SurfingMinigameWavePattern05
 	jp SurfingMinigame_AdvanceWaveFunction
 
 SurfingMinigame_LoadWavePattern06AndAdvance:
-	lb bc, $54, $5c
+	lb bc, SURFING_MINIGAME_FLAT_WATER_Y - 4 * TILE_HEIGHT, SURFING_MINIGAME_FLAT_WATER_Y - 3 * TILE_HEIGHT
 	ld de, SurfingMinigameWavePattern06
 	jp SurfingMinigame_AdvanceWaveFunction
 
 SurfingMinigame_LoadWavePattern07AndAdvance:
-	lb bc, $64, $6c
+	lb bc, SURFING_MINIGAME_FLAT_WATER_Y - 2 * TILE_HEIGHT, SURFING_MINIGAME_FLAT_WATER_Y - 1 * TILE_HEIGHT
 	ld de, SurfingMinigameWavePattern07
 	jp SurfingMinigame_AdvanceWaveFunction
 
 SurfingMinigame_LoadWavePattern08AndAdvance:
-	lb bc, $74, $6c
+	lb bc, SURFING_MINIGAME_FLAT_WATER_Y, SURFING_MINIGAME_FLAT_WATER_Y - 1 * TILE_HEIGHT
 	ld de, SurfingMinigameWavePattern08
 	jp SurfingMinigame_AdvanceWaveFunction
 
 SurfingMinigame_LoadWavePattern09AndAdvance:
-	lb bc, $64, $5c
+	lb bc, SURFING_MINIGAME_FLAT_WATER_Y - 2 * TILE_HEIGHT, SURFING_MINIGAME_FLAT_WATER_Y - 3 * TILE_HEIGHT
 	ld de, SurfingMinigameWavePattern09
 	jp SurfingMinigame_AdvanceWaveFunction
 
 SurfingMinigame_LoadWavePattern0AAndAdvance:
-	lb bc, $54, $4c
+	lb bc, SURFING_MINIGAME_FLAT_WATER_Y - 4 * TILE_HEIGHT, SURFING_MINIGAME_FLAT_WATER_Y - 5 * TILE_HEIGHT
 	ld de, SurfingMinigameWavePattern0A
 	jp SurfingMinigame_AdvanceWaveFunction
 
 SurfingMinigame_LoadWavePattern0BAndAdvance:
-	lb bc, $4c, $4c
+	lb bc, SURFING_MINIGAME_FLAT_WATER_Y - 5 * TILE_HEIGHT, SURFING_MINIGAME_FLAT_WATER_Y - 5 * TILE_HEIGHT
 	ld de, SurfingMinigameWavePattern0B
 	jp SurfingMinigame_AdvanceWaveFunction
 
 SurfingMinigame_LoadWavePattern0CAndAdvance:
-	lb bc, $54, $5c
+	lb bc, SURFING_MINIGAME_FLAT_WATER_Y - 4 * TILE_HEIGHT, SURFING_MINIGAME_FLAT_WATER_Y - 3 * TILE_HEIGHT
 	ld de, SurfingMinigameWavePattern0C
 	jp SurfingMinigame_AdvanceWaveFunction
 
 SurfingMinigame_LoadWavePattern0DAndAdvance:
-	lb bc, $64, $6c
+	lb bc, SURFING_MINIGAME_FLAT_WATER_Y - 2 * TILE_HEIGHT, SURFING_MINIGAME_FLAT_WATER_Y - 1 * TILE_HEIGHT
 	ld de, SurfingMinigameWavePattern0D
 	jp SurfingMinigame_AdvanceWaveFunction
 
 SurfingMinigame_LoadWavePattern0EAndAdvance:
-	lb bc, $74, $6c
+	lb bc, SURFING_MINIGAME_FLAT_WATER_Y, SURFING_MINIGAME_FLAT_WATER_Y - 1 * TILE_HEIGHT
 	ld de, SurfingMinigameWavePattern0E
 	jp SurfingMinigame_AdvanceWaveFunction
 
 SurfingMinigame_LoadWavePattern0FAndAdvance:
-	lb bc, $64, $5c
+	lb bc, SURFING_MINIGAME_FLAT_WATER_Y - 2 * TILE_HEIGHT, SURFING_MINIGAME_FLAT_WATER_Y - 3 * TILE_HEIGHT
 	ld de, SurfingMinigameWavePattern0F
 	jp SurfingMinigame_AdvanceWaveFunction
 
 SurfingMinigame_LoadWavePattern10AndAdvance:
-	lb bc, $54, $54
+	lb bc, SURFING_MINIGAME_FLAT_WATER_Y - 4 * TILE_HEIGHT, SURFING_MINIGAME_FLAT_WATER_Y - 4 * TILE_HEIGHT
 	ld de, SurfingMinigameWavePattern10
 	jp SurfingMinigame_AdvanceWaveFunction
 
 SurfingMinigame_LoadWavePattern11AndAdvance:
-	lb bc, $54, $5c
+	lb bc, SURFING_MINIGAME_FLAT_WATER_Y - 4 * TILE_HEIGHT, SURFING_MINIGAME_FLAT_WATER_Y - 3 * TILE_HEIGHT
 	ld de, SurfingMinigameWavePattern11
 	jp SurfingMinigame_AdvanceWaveFunction
 
 SurfingMinigame_LoadWavePattern12AndAdvance:
-	lb bc, $64, $6c
+	lb bc, SURFING_MINIGAME_FLAT_WATER_Y - 2 * TILE_HEIGHT, SURFING_MINIGAME_FLAT_WATER_Y - 1 * TILE_HEIGHT
 	ld de, SurfingMinigameWavePattern12
 	jp SurfingMinigame_AdvanceWaveFunction
 
 SurfingMinigame_LoadWavePattern13AndAdvance:
-	lb bc, $74, $6c
+	lb bc, SURFING_MINIGAME_FLAT_WATER_Y, SURFING_MINIGAME_FLAT_WATER_Y - 1 * TILE_HEIGHT
 	ld de, SurfingMinigameWavePattern13
 	jp SurfingMinigame_AdvanceWaveFunction
 
 SurfingMinigame_LoadWavePattern14AndAdvance:
-	lb bc, $64, $5c
+	lb bc, SURFING_MINIGAME_FLAT_WATER_Y - 2 * TILE_HEIGHT, SURFING_MINIGAME_FLAT_WATER_Y - 3 * TILE_HEIGHT
 	ld de, SurfingMinigameWavePattern14
 	jp SurfingMinigame_AdvanceWaveFunction
 
 SurfingMinigame_LoadWavePattern15AndAdvance:
-	lb bc, $5c, $5c
+	lb bc, SURFING_MINIGAME_FLAT_WATER_Y - 3 * TILE_HEIGHT, SURFING_MINIGAME_FLAT_WATER_Y - 3 * TILE_HEIGHT
 	ld de, SurfingMinigameWavePattern15
 	jp SurfingMinigame_AdvanceWaveFunction
 
 SurfingMinigame_LoadWavePattern16AndAdvance:
-	lb bc, $64, $6c
+	lb bc, SURFING_MINIGAME_FLAT_WATER_Y - 2 * TILE_HEIGHT, SURFING_MINIGAME_FLAT_WATER_Y - 1 * TILE_HEIGHT
 	ld de, SurfingMinigameWavePattern16
 	jp SurfingMinigame_AdvanceWaveFunction
 
 SurfingMinigame_LoadWavePattern17AndAdvance:
-	lb bc, $74, $6c
+	lb bc, SURFING_MINIGAME_FLAT_WATER_Y, SURFING_MINIGAME_FLAT_WATER_Y - 1 * TILE_HEIGHT
 	ld de, SurfingMinigameWavePattern17
 	jp SurfingMinigame_AdvanceWaveFunction
 
 SurfingMinigame_LoadWavePattern18AndAdvance:
-	lb bc, $64, $64
+	lb bc, SURFING_MINIGAME_FLAT_WATER_Y - 2 * TILE_HEIGHT, SURFING_MINIGAME_FLAT_WATER_Y - 2 * TILE_HEIGHT
 	ld de, SurfingMinigameWavePattern18
 	jp SurfingMinigame_AdvanceWaveFunction
 
 SurfingMinigame_LoadWavePattern19AndAdvance:
-	lb bc, $64, $6c
+	lb bc, SURFING_MINIGAME_FLAT_WATER_Y - 2 * TILE_HEIGHT, SURFING_MINIGAME_FLAT_WATER_Y - 1 * TILE_HEIGHT
 	ld de, SurfingMinigameWavePattern19
 	jp SurfingMinigame_AdvanceWaveFunction
 
 SurfingMinigame_LoadWavePattern1AAndAdvance:
-	lb bc, $74, $6c
+	lb bc, SURFING_MINIGAME_FLAT_WATER_Y, SURFING_MINIGAME_FLAT_WATER_Y - 1 * TILE_HEIGHT
 	ld de, SurfingMinigameWavePattern1A
 	jp SurfingMinigame_AdvanceWaveFunction
 
 SurfingMinigame_LoadWavePattern1BAndAdvance:
-	lb bc, $6c, $6c
+	lb bc, SURFING_MINIGAME_FLAT_WATER_Y - 1 * TILE_HEIGHT, SURFING_MINIGAME_FLAT_WATER_Y - 1 * TILE_HEIGHT
 	ld de, SurfingMinigameWavePattern1B
 	jp SurfingMinigame_AdvanceWaveFunction
 
 SurfingMinigame_LoadWavePattern1CAndAdvance:
-	lb bc, $74, $74
+	lb bc, SURFING_MINIGAME_FLAT_WATER_Y, SURFING_MINIGAME_FLAT_WATER_Y
 	ld de, SurfingMinigameWavePattern1C
 	jp SurfingMinigame_AdvanceWaveFunction
 
 SurfingMinigame_LoadBeachPatternAndAdvance:
-	lb bc, $74, $74
+	lb bc, SURFING_MINIGAME_FLAT_WATER_Y, SURFING_MINIGAME_FLAT_WATER_Y
 	ld de, SurfingMinigameBeachPattern
 	jp SurfingMinigame_AdvanceWaveFunction
 
 SurfingMinigame_LoadBeachPatternAndReset:
-	lb bc, $74, $74
+	lb bc, SURFING_MINIGAME_FLAT_WATER_Y, SURFING_MINIGAME_FLAT_WATER_Y
 	ld de, SurfingMinigameBeachPattern
 	jp SurfingMinigame_ResetWaveSequence
 
 SurfingMinigame_LoadFlatWaveAndReset:
-	lb bc, $74, $74
+	lb bc, SURFING_MINIGAME_FLAT_WATER_Y, SURFING_MINIGAME_FLAT_WATER_Y
 	ld de, SurfingMinigameWavePattern00
 	jp SurfingMinigame_ResetWaveSequence
 
 SurfingMinigame_LoadFlatWave:
-	lb bc, $74, $74
+	lb bc, SURFING_MINIGAME_FLAT_WATER_Y, SURFING_MINIGAME_FLAT_WATER_Y
 	ld de, SurfingMinigameWavePattern00
 	ret
 
@@ -2306,7 +2319,7 @@ PikachusBeachIntro:
 	ld a, HIGH(PikachusBeachFrames)
 	ld [wAnimatedObjectFramesDataPointer + 1], a
 	ld a, $c ; intro Pikachu
-	lb de, $74, $58
+	lb de, SURFING_MINIGAME_FLAT_WATER_Y, SURFING_MINIGAME_CENTER_X
 	call SpawnAnimatedObject
 	call DrawPikachusBeachIntroBackground
 	xor a
@@ -3046,4 +3059,8 @@ ELIF DEF(_ESP)
 ELSE
 	SurfingMinigame_BeachIntroTilemap: INCBIN "gfx/pikachus_beach/beach_intro.tilemap"
 ENDC
+SurfingMinigame_BeachIntroTilemapEnd:
+	ASSERT SurfingMinigame_BeachIntroTilemapEnd - SurfingMinigame_BeachIntroTilemap == 12 * SCREEN_WIDTH
 SurfingMinigame_BeachOutroTilemap:     INCBIN "gfx/pikachus_beach/beach_outro.tilemap"
+SurfingMinigame_BeachOutroTilemapEnd:
+	ASSERT SurfingMinigame_BeachOutroTilemapEnd - SurfingMinigame_BeachOutroTilemap == 10 * SCREEN_WIDTH
