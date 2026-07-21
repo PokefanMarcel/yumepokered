@@ -207,25 +207,25 @@ PikachusBeach_LoadGFXAndLayout:
 	ld bc, PikachusBeachGameplayEffectsGraphicsEnd - PikachusBeachGameplayEffectsGraphics
 	call CopyData
 
+	ld hl, wAnimatedObjectSpawnStateDataPointer ; marcelnote - optimized pointer loads
 	ld a, LOW(PikachusBeachObjectSpawnData)
-	ld [wAnimatedObjectSpawnStateDataPointer], a
-	ld a, HIGH(PikachusBeachObjectSpawnData)
-	ld [wAnimatedObjectSpawnStateDataPointer + 1], a
+	ld [hli], a
+	ld [hl], HIGH(PikachusBeachObjectSpawnData)
 
+	ld hl, wAnimatedObjectJumptablePointer
 	ld a, LOW(PikachusBeachObjectCallbacks)
-	ld [wAnimatedObjectJumptablePointer], a
-	ld a, HIGH(PikachusBeachObjectCallbacks)
-	ld [wAnimatedObjectJumptablePointer + 1], a
+	ld [hli], a
+	ld [hl], HIGH(PikachusBeachObjectCallbacks)
 
+	ld hl, wAnimatedObjectOAMDataPointer
 	ld a, LOW(PikachusBeachOAMData)
-	ld [wAnimatedObjectOAMDataPointer], a
-	ld a, HIGH(PikachusBeachOAMData)
-	ld [wAnimatedObjectOAMDataPointer + 1], a
+	ld [hli], a
+	ld [hl], HIGH(PikachusBeachOAMData)
 
+	ld hl, wAnimatedObjectFramesDataPointer
 	ld a, LOW(PikachusBeachFrames)
-	ld [wAnimatedObjectFramesDataPointer], a
-	ld a, HIGH(PikachusBeachFrames)
-	ld [wAnimatedObjectFramesDataPointer + 1], a
+	ld [hli], a
+	ld [hl], HIGH(PikachusBeachFrames)
 
 	ld hl, vBGMap0
 	ld bc, 2 * TILEMAP_AREA
@@ -2302,22 +2302,27 @@ PikachusBeachIntro:
 	ld de, vTileset + $60 tiles
 	ld bc, PikachusBeachBeachAndFrameGFXEnd - PikachusBeachBeachAndFrameGFX
 	call CopyData
+
+	ld hl, wAnimatedObjectSpawnStateDataPointer ; marcelnote - optimized pointer loads
 	ld a, LOW(PikachusBeachObjectSpawnData)
-	ld [wAnimatedObjectSpawnStateDataPointer], a
-	ld a, HIGH(PikachusBeachObjectSpawnData)
-	ld [wAnimatedObjectSpawnStateDataPointer + 1], a
+	ld [hli], a
+	ld [hl], HIGH(PikachusBeachObjectSpawnData)
+
+	ld hl, wAnimatedObjectJumptablePointer
 	ld a, LOW(PikachusBeachObjectCallbacks)
-	ld [wAnimatedObjectJumptablePointer], a
-	ld a, HIGH(PikachusBeachObjectCallbacks)
-	ld [wAnimatedObjectJumptablePointer + 1], a
+	ld [hli], a
+	ld [hl], HIGH(PikachusBeachObjectCallbacks)
+
+	ld hl, wAnimatedObjectOAMDataPointer
 	ld a, LOW(PikachusBeachOAMData)
-	ld [wAnimatedObjectOAMDataPointer], a
-	ld a, HIGH(PikachusBeachOAMData)
-	ld [wAnimatedObjectOAMDataPointer + 1], a
+	ld [hli], a
+	ld [hl], HIGH(PikachusBeachOAMData)
+
+	ld hl, wAnimatedObjectFramesDataPointer
 	ld a, LOW(PikachusBeachFrames)
-	ld [wAnimatedObjectFramesDataPointer], a
-	ld a, HIGH(PikachusBeachFrames)
-	ld [wAnimatedObjectFramesDataPointer + 1], a
+	ld [hli], a
+	ld [hl], HIGH(PikachusBeachFrames)
+
 	ld a, $c ; intro Pikachu
 	lb de, SURFING_MINIGAME_FLAT_WATER_Y, SURFING_MINIGAME_CENTER_X
 	call SpawnAnimatedObject
