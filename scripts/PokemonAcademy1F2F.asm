@@ -336,11 +336,10 @@ PokemonAcademy2FBlackboard:
 	call PrintText
 	ld hl, .TypeItemList
 	call LoadItemList
-	ld hl, wItemList
-	ld a, l
-	ld [wListPointer], a
-	ld a, h
-	ld [wListPointer + 1], a
+	ld hl, wListPointer ; marcelnote - optimized load into wListPointer
+	ld a, LOW(wItemList)
+	ld [hli], a
+	ld [hl], HIGH(wItemList)
 	xor a
 	ld [wPrintItemPrices], a
 	ld [wMenuItemToSwap], a
