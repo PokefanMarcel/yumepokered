@@ -126,11 +126,10 @@ DisplayPokemartDialogue_::
 	ld a, MONEY_BOX
 	ld [wTextBoxID], a
 	call DisplayTextBoxID
-	ld hl, wItemList
-	ld a, l
-	ld [wListPointer], a
-	ld a, h
-	ld [wListPointer + 1], a
+	ld hl, wListPointer ; marcelnote - optimized load into wListPointer
+	ld a, LOW(wItemList)
+	ld [hli], a
+	ld [hl], HIGH(wItemList)
 	xor a
 	ld [wCurrentMenuItem], a
 	inc a
