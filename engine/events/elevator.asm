@@ -1,11 +1,10 @@
 DisplayElevatorFloorMenu: ; marcelnote - refactored warp engine
 	ld hl, WhichFloorText
 	call PrintText
-	ld hl, wItemList
-	ld a, l
-	ld [wListPointer], a
-	ld a, h
-	ld [wListPointer + 1], a
+	ld hl, wListPointer ; marcelnote - optimized load into wListPointer
+	ld a, LOW(wItemList)
+	ld [hli], a
+	ld [hl], HIGH(wItemList)
 	ld a, [wListScrollOffset]
 	push af
 	xor a
@@ -29,18 +28,17 @@ DisplayElevatorFloorMenu: ; marcelnote - refactored warp engine
 	add hl, de
 	ld a, [hli]
 	and WARP_ID_MASK
-	ld b, a ; warp ID
-	ld a, [hl]
-	ld c, a ; warp map
+	ld b, a    ; warp ID
+	ld c, [hl] ; warp map
 	ld hl, wWarpEntries + 2
-	call .UpdateWarp
+	call .updateWarp
 	inc hl
 	inc hl
 	ld a, [wCurMap]
 	cp ROCKET_HIDEOUT_ELEVATOR
-	jr nz, .UpdateWarp
+	jr nz, .updateWarp
 	inc b ; Rocket Hideout elevator has 2 exit warps
-.UpdateWarp
+.updateWarp
 	ld a, [hl]
 	and WARP_DIR_MASK ; preserve warp direction
 	or b
