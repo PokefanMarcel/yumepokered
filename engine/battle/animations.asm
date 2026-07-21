@@ -116,7 +116,7 @@ DrawFrameBlock:
 	ld a, [hli]
 	bit B_OAM_XFLIP, a
 	jr nz, .disableHorizontalFlip
-.enableHorizontalFlip
+	; enable horizontal flip
 	set B_OAM_XFLIP, a
 	jr .storeFlags2
 .disableHorizontalFlip
@@ -145,17 +145,12 @@ DrawFrameBlock:
 	ld a, [wAnimationID]
 	cp GROWL
 	call nz, AnimationCleanOAM ; GROWL reuses the previous OAM entries
-	ld hl, wShadowOAM
-	ld a, l
-	ld [wFBDestAddr + 1], a
-	ld a, h
-	ld [wFBDestAddr], a ; set destination address to beginning of OAM buffer
-	ret
-.advanceFrameBlockDestAddr
-	ld a, e
-	ld [wFBDestAddr + 1], a
+	ld de, wShadowOAM
+.advanceFrameBlockDestAddr ; marcelnote - optimized common tail
+	ld hl, wFBDestAddr
 	ld a, d
-	ld [wFBDestAddr], a
+	ld [hli], a
+	ld [hl], e ; store destination address
 	ret
 
 PlayAnimation:
@@ -565,38 +560,37 @@ SetAnimationPalette:
 	ldh [rOBP1], a
 	ret
 
-PlaySubanimation:
+PlaySubanimation: ; marcelnote - optimized
 	ld a, [wAnimSoundID]
 	cp NO_MOVE - 1
 	jr z, .skipPlayingSound
 	call GetMoveSound
 	call nc, PlayBattleSound
 .skipPlayingSound
-	ld hl, wShadowOAM
-	ld a, l
-	ld [wFBDestAddr + 1], a
-	ld a, h
-	ld [wFBDestAddr], a
-	ld a, [wSubAnimSubEntryAddr + 1]
-	ld h, a
-	ld a, [wSubAnimSubEntryAddr]
+	ld hl, wFBDestAddr ; marcelnote - optimized load in wFBDestAddr
+	ld a, HIGH(wShadowOAM)
+	ld [hli], a
+	ld [hl], LOW(wShadowOAM)
+	ld hl, wSubAnimSubEntryAddr ; marcelnote - optimized load from wSubAnimSubEntryAddr
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
 .loop
-	push hl
-	ld c, [hl] ; frame block ID
+	ld a, [hli]
+	ld c, a ; frame block ID
 	ld b, 0
+	push hl
 	ld hl, FrameBlockPointers
 	add hl, bc
 	add hl, bc
 	ld a, [hli]
 	ld c, a
-	ld a, [hli]
-	ld b, a
+	ld b, [hl]
 	pop hl
-	inc hl
-	push hl
-	ld e, [hl] ; base coordinate ID
+	ld a, [hli]
+	ld e, a ; base coordinate ID
 	ld d, 0
+	push hl
 	ld hl, FrameBlockBaseCoords  ; base coordinate table
 	add hl, de
 	add hl, de
@@ -605,7 +599,6 @@ PlaySubanimation:
 	ld a, [hl]
 	ld [wBaseCoordX], a
 	pop hl
-	inc hl
 	ld a, [hl] ; frame block mode
 	ld [wFBMode], a
 	call DrawFrameBlock
@@ -614,9 +607,9 @@ PlaySubanimation:
 	dec a
 	ld [wSubAnimCounter], a
 	ret z
-	ld a, [wSubAnimSubEntryAddr + 1]
-	ld h, a
-	ld a, [wSubAnimSubEntryAddr]
+	ld hl, wSubAnimSubEntryAddr ; marcelnote - optimized load from wSubAnimSubEntryAddr
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
 	ld a, [wSubAnimTransform]
 	cp SUBANIMTYPE_REVERSE
