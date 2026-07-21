@@ -180,11 +180,10 @@ PlayerPCWithdraw:
 	ld hl, WhatToWithdrawText
 	call PrintText
 	call SaveTextBoxTilesToBuffer ; marcelnote - for TM printing
-	ld hl, wNumBoxItems
-	ld a, l
-	ld [wListPointer], a
-	ld a, h
-	ld [wListPointer + 1], a
+	ld hl, wListPointer ; marcelnote - optimized load into wListPointer
+	ld a, LOW(wNumBoxItems)
+	ld [hli], a
+	ld [hl], HIGH(wNumBoxItems)
 	xor a
 	ld [wPrintItemPrices], a
 	ld a, ITEMLISTMENU
