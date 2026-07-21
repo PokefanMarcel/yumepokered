@@ -1,19 +1,13 @@
-CeruleanBadgeHouse_Script:
-	ld a, 1 << BIT_NO_AUTO_TEXT_BOX
-	ld [wAutoTextBoxDrawingControl], a
-	ASSERT BIT_NO_AUTO_TEXT_BOX == 0
-	dec a ; a = 0
-	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-	ret
+CeruleanBadgeHouse_Script: ; marcelnote - simplified script
+	jp EnableAutoTextBoxDrawing
 
 CeruleanBadgeHouse_TextPointers:
 	def_text_pointers
 	dw_const CeruleanBadgeHouseMiddleAgedManText, TEXT_CERULEANBADGEHOUSE_MIDDLE_AGED_MAN
 
 CeruleanBadgeHouseMiddleAgedManText:
+	text_far _CeruleanBadgeHouseMiddleAgedManText ; marcelnote - simplified script
 	text_asm
-	ld hl, .Text
-	call PrintText
 	xor a
 	ld [wCurrentMenuItem], a
 	ld [wListScrollOffset], a
@@ -66,10 +60,6 @@ CeruleanBadgeHouseMiddleAgedManText:
 	db EARTHBADGE
 	assert_table_length NUM_BADGES
 	db -1 ; end
-
-.Text:
-	text_far _CeruleanBadgeHouseMiddleAgedManText
-	text_end
 
 .WhichBadgeText:
 	text_far _CeruleanBadgeHouseMiddleAgedManWhichBadgeText
