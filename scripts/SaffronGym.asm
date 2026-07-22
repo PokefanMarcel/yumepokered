@@ -275,13 +275,10 @@ SaffronGymSabrinaText:
 	CheckEvent EVENT_BEAT_SABRINA
 	jr z, .beforeBeat
 	CheckEventReuseA EVENT_GOT_TM46
-	jr nz, .afterBeat
-	call z, SaffronGymSabrinaReceiveTM46Script
-	call DisableWaitingAfterTextDisplay
-	rst TextScriptEnd
-.afterBeat
 	ld hl, .PostBattleAdviceText
-	call PrintText
+	ret nz
+	call SaffronGymSabrinaReceiveTM46Script
+	call DisableWaitingAfterTextDisplay
 	rst TextScriptEnd
 .beforeBeat
 	ld hl, .Text
@@ -376,11 +373,9 @@ SaffronGymGymGuideText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_BEAT_SABRINA
 	ld hl, .BeatSabrinaText
-	jr nz, .beatSabrina
+	ret nz
 	ld hl, .ChampInMakingText
-.beatSabrina
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .ChampInMakingText:
 	text_far _SaffronGymGuideChampInMakingText
@@ -477,11 +472,8 @@ SaffronGymYoungster4AfterBattleText:
 SaffronGymWillText: ; marcelnote - postgame Will
 	text_asm
 	CheckHideShow TOGGLE_FIGHTING_DOJO_BRUNO
-	jr z, .battle
 	ld hl, .PostBattleText
-	call PrintText
-	rst TextScriptEnd
-.battle
+	ret nz
 	ld hl, .WelcomeText
 	call PrintText
 	ld hl, wStatusFlags3
@@ -521,11 +513,8 @@ SaffronGymBrunoInspiringText: ; marcelnote - postgame Bruno
 SaffronGymSabrinaRematchText: ; marcelnote - Sabrina rematch
 	text_asm
 	CheckEvent EVENT_BEAT_SABRINA_REMATCH
-	jr z, .beforeBeat
 	ld hl, SaffronGymAfterRematchText
-	call PrintText
-	rst TextScriptEnd
-.beforeBeat
+	ret nz
 	ld hl, .PreBattleText
 	call PrintText
 	call YesNoChoice
