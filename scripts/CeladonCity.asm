@@ -46,7 +46,7 @@ CeladonCityGramps3Text: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_TM41
 	ld hl, .TM41ExplanationText
-	jr nz, .printText
+	ret nz
 	ld hl, .Text
 	call PrintText
 	lb bc, TM_SOFTBOILED, 1
