@@ -89,8 +89,8 @@ CeladonMansion3FGameDesignerText: ; marcelnote - modified to not count Mew
 	jr nc, .printText
 	ld hl, .GameDesignerText
 .printText
-	call PrintText
-	rst TextScriptEnd
+	bccoord 1, 14 ; restore text destination
+	ret
 
 .GameDesignerText:
 	text_far _CeladonMansion3FGameDesignerText
