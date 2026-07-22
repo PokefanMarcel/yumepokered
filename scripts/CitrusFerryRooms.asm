@@ -118,7 +118,7 @@ CitrusFerryRoomsNurseText:
 	text_asm
 	CheckEvent EVENT_FERRY_ARRIVED
 	ld hl, .GoodLuckText
-	jr nz, .arrived
+	ret nz
 	ld hl, .YouLookTiredText
 	call PrintText
 	predef HealParty
@@ -128,7 +128,6 @@ CitrusFerryRoomsNurseText:
 	ld hl, .TakeCareText
 	ld a, SCRIPT_CITRUSFERRYROOMS_CHECK_IF_ARRIVED
 	ld [wCitrusFerryRoomsCurScript], a
-.arrived
 	call PrintText
 	rst TextScriptEnd
 
@@ -159,7 +158,7 @@ CitrusFerryRoomsScientistText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_FERRY_FOSSIL
 	ld hl, .SoMuchToLearnText
-	jr nz, .printText
+	ret nz
 	ld hl, .TakeThisText
 	call PrintText
 	lb bc, HELIX_FOSSIL, 1
