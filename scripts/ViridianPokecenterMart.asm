@@ -116,14 +116,11 @@ ViridianPokecenterBenchGuyText: ; marcelnote - BenchGuy has a sprite
 ViridianMartClerkText: ; marcelnote - moved Mart inventories
 	text_asm
 	CheckEvent EVENT_GOT_POKEDEX
-	jr z, .NoPokedex
+	ld hl, .SayHiToOakText
+	ret z
 	call ViridianMartClerkDialogue
 ;	ld hl, .NormalClerkText
 ;	call TextCommandProcessor
-	rst TextScriptEnd
-.NoPokedex
-	ld hl, .SayHiToOakText
-	call PrintText
 	rst TextScriptEnd
 
 .SayHiToOakText:
