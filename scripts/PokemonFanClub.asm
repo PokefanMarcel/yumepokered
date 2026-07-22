@@ -26,12 +26,10 @@ PokemonFanClubPikachuFanText: ; marcelnote - optimized
 	text_asm
 	CheckAndResetEvent EVENT_PIKACHU_FAN_BOAST
 	ld hl, .BetterText
-	jr nz, .mineIsBetter
+	ret nz
 	SetEvent EVENT_SEEL_FAN_BOAST
 	ld hl, .NormalText
-.mineIsBetter
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .NormalText:
 	text_far _PokemonFanClubPikachuFanNormalText
@@ -45,12 +43,10 @@ PokemonFanClubSeelFanText: ; marcelnote - optimized
 	text_asm
 	CheckAndResetEvent EVENT_SEEL_FAN_BOAST
 	ld hl, .BetterText
-	jr nz, .mineIsBetter
+	ret nz
 	SetEvent EVENT_PIKACHU_FAN_BOAST
 	ld hl, .NormalText
-.mineIsBetter
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .NormalText:
 	text_far _PokemonFanClubSeelFanNormalText
@@ -88,10 +84,9 @@ PokemonFanClubSeelText:
 
 PokemonFanClubChairmanText: ; marcelnote - optimized
 	text_asm
-	;call PokemonFanClub_CheckBikeInBag ; marcelnote - seems useless
 	CheckEvent EVENT_GOT_BIKE_VOUCHER
 	ld hl, .FinalText
-	jr nz, .printText
+	ret nz
 	ld hl, .IntroText
 	call PrintText
 	call YesNoChoice
