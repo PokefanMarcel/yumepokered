@@ -132,11 +132,9 @@ IndigoPlateauLobbyGymGuideText:
 	text_asm
 	CheckEvent EVENT_BECAME_CHAMPION
 	ld hl, .AfterChampionText
-    jr nz, .isChampion
+	ret nz
 	ld hl, .BeforeChampionText
-.isChampion
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .BeforeChampionText
 	text_far _IndigoPlateauLobbyGymGuideChampInMakingText
@@ -150,11 +148,9 @@ IndigoPlateauLobbyCooltrainerFText: ; marcelnote - modified to say something dif
 	text_asm
 	CheckEvent EVENT_BECAME_CHAMPION
 	ld hl, .AfterChampionText
-    jr nz, .isChampion
+	ret nz
 	ld hl, .BeforeChampionText
-.isChampion
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .BeforeChampionText:
 	text_far _IndigoPlateauLobbyCooltrainerFBeforeChampionText
