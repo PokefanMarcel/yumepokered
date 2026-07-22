@@ -11,7 +11,7 @@ BikeShopClerkText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_BICYCLE
 	ld hl, BikeShopClerkHowDoYouLikeYourBicycleText
-	jr nz, .printText
+	ret nz
 ; don't have bike
 	ld b, BIKE_VOUCHER
 	call IsItemInBag
@@ -113,12 +113,6 @@ BikeShopBagFullText:
 	text_end
 
 BikeShopMiddleAgedWomanText:
-	text_asm
-	ld hl, .Text
-	call PrintText
-	rst TextScriptEnd
-
-.Text:
 	text_far _BikeShopMiddleAgedWomanText
 	text_end
 
@@ -126,11 +120,9 @@ BikeShopYoungsterText:
 	text_asm
 	CheckEvent EVENT_GOT_BICYCLE
 	ld hl, .CoolBikeText
-	jr nz, .gotBike
+	ret nz
 	ld hl, .TheseBikesAreExpensiveText
-.gotBike
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .TheseBikesAreExpensiveText:
 	text_far _BikeShopYoungsterTheseBikesAreExpensiveText
