@@ -24,6 +24,18 @@ FightingDojo_ScriptPointers:
 FightingDojoDefaultScript:
 	CheckEvent EVENT_DEFEATED_FIGHTING_DOJO
 	ret nz
+	CheckEvent EVENT_BEAT_KARATE_MASTER
+	jr z, .checkTrainers
+	; marcelnote - don't draw the textbox automatically when looking at the prize Poké Balls
+	predef GetTileAndCoordsInFrontOfPlayer
+	ld a, d
+	cp 1 ; prize Poké Balls' Y coordinate
+	jr nz, .checkTrainers
+	ld a, e
+	sub 4 ; first prize Poké Ball's X coordinate
+	cp 2 ; number of prize Poké Balls
+	call c, DisableAutoTextBoxDrawing
+.checkTrainers
 	call CheckFightingMapTrainers
 	ld a, [wTrainerHeaderFlagBit]
 	and a
@@ -107,12 +119,16 @@ FightingDojoKarateMasterText:
 	text_asm
 	CheckEvent EVENT_DEFEATED_FIGHTING_DOJO
 	ld hl, .StayAndTrainWithUsText
-	jr nz, .printText
+	ret nz
 	CheckEventReuseA EVENT_BEAT_KARATE_MASTER
 	ld hl, .IWillGiveYouAPokemonText
-	jr nz, .printText
+	ret nz
 	ld hl, .Text
-	call PrintText
+	ret
+
+.Text:
+	text_far _FightingDojoKarateMasterText
+	text_asm
 	ld hl, wStatusFlags3
 	set BIT_TALKED_TO_TRAINER, [hl]
 	set BIT_PRINT_END_BATTLE_TEXT, [hl]
@@ -127,13 +143,6 @@ FightingDojoKarateMasterText:
 	ld [wFightingDojoCurScript], a
 	ld [wCurMapScript], a
 	rst TextScriptEnd
-.printText
-	call PrintText
-	rst TextScriptEnd
-
-.Text:
-	text_far _FightingDojoKarateMasterText
-	text_end
 
 .DefeatedText:
 	text_far _FightingDojoKarateMasterDefeatedText
@@ -222,11 +231,10 @@ FightingDojoBlackbelt4AfterBattleText:
 FightingDojoHitmonleePokeBallText:
 	text_asm
 	CheckEitherEventSet EVENT_GOT_HITMONLEE, EVENT_GOT_HITMONCHAN
-	jr z, .GetMon
+	jr z, .getMon
 	ld hl, FightingDojoBetterNotGetGreedyText
-	call PrintText
-	rst TextScriptEnd
-.GetMon
+	ret
+.getMon
 	ld a, HITMONLEE
 	call DisplayPokedex
 	ld hl, .Text
@@ -256,11 +264,10 @@ FightingDojoHitmonleePokeBallText:
 FightingDojoHitmonchanPokeBallText:
 	text_asm
 	CheckEitherEventSet EVENT_GOT_HITMONLEE, EVENT_GOT_HITMONCHAN
-	jr z, .GetMon
+	jr z, .getMon
 	ld hl, FightingDojoBetterNotGetGreedyText
-	call PrintText
-	rst TextScriptEnd
-.GetMon
+	ret
+.getMon
 	ld a, HITMONCHAN
 	call DisplayPokedex
 	ld hl, .Text
@@ -294,21 +301,18 @@ FightingDojoBetterNotGetGreedyText:
 FightingDojoBrunoText: ; marcelnote - postgame Bruno
 	text_asm
 	CheckHideShowCont TOGGLE_SAFFRON_GYM_WILL
-	jr z, .alreadySpoke
 	ld hl, .OhChampText
-	call PrintText
+	ret nz
+	ld hl, .UsedToTrainHereText
+	ret
+
+.OhChampText
+	text_far _FightingDojoBrunoOhChampText
+	text_asm
 	ld a, TOGGLE_SAFFRON_GYM_WILL
 	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
 	rst TextScriptEnd
-.alreadySpoke
-	ld hl, .UsedToTrainHereText
-	call PrintText
-	rst TextScriptEnd
-
-.OhChampText
-	text_far _FightingDojoBrunoOhChampText
-	text_end
 
 .UsedToTrainHereText
 	text_far _FightingDojoBrunoUsedToTrainHereText
