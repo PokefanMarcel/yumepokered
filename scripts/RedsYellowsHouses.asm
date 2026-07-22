@@ -38,12 +38,10 @@ RedsYellowsHouses_TextPointers:
 
 RedsHouse1FMomText: ; marcelnote - modified
 	text_asm
-	CheckEvent EVENT_GOT_STARTER ; received a Pokemon from Oak?
-	jr nz, .gotStarter
+	CheckEvent EVENT_GOT_STARTER
 	ld hl, .WakeUpText
-	jr .printText
-.gotStarter ; marcelnote - Mom gives money to prevent softlocks
-	xor a
+	ret z
+	xor a ; marcelnote - Mom gives money to prevent softlocks
 	ldh [hMoney], a
 	ldh [hMoney + 2], a
 	ld a, $05
@@ -101,15 +99,13 @@ RedsHouse1FTVText:
 	ld a, [wSpritePlayerStateData1FacingDirection]
 	cp SPRITE_FACING_UP
 	ld hl, .WrongSideText
-	jr nz, .gotText
+	ret nz
 	ld hl, .StandByMeMovieText
 	ld a, [wStatusFlags4]
 	bit BIT_IS_GIRL, a
-	jr z, .gotText
+	ret z
 	ld hl, .WizardOfOzMovieText ; marcelnote - FRLG text option for girl
-.gotText
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .StandByMeMovieText:
 	text_far _RedsHouse1FTVStandByMeMovieText
@@ -143,14 +139,12 @@ YellowsHouse1FDadSittingText: ; marcelnote - new for Yellow's House
 	text_asm
 	CheckEvent EVENT_BEAT_YELLOW
 	ld hl, .YellowIsBackText
-	jr nz, .printText
+	ret nz
 	CheckEvent EVENT_BEAT_BROCK
 	ld hl, .RunIntoHerText
-	jr nz, .printText
+	ret nz
 	ld hl, .JustMissedHerText
-.printText
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .JustMissedHerText:
 	text_far _YellowsHouse1FDadJustMissedHerText
