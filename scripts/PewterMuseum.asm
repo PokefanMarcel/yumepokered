@@ -46,11 +46,15 @@ PewterMuseum_TextPointers:
 
 PewterMuseum1FScientist1Text: ; marcelnote - optimized
 	text_asm
+	CheckEvent EVENT_BOUGHT_MUSEUM_TICKET
+	ld hl, .TakePlentyOfTimeText
+	ret nz
 	ld a, [wYCoord]
 	cp 16
-	jr c, .behindCounter               ; then y=15
-	jr nz, .inVisitorSectionWrongSide  ; then y=18
-	ld a, [wXCoord]                    ; else y=16
+	jr c, .behindCounter                 ; then y=15
+	ld hl, .GoToOtherSideText
+	ret nz ; visitor section wrong side  ; then y=18
+	ld a, [wXCoord]                      ; else y=16
 	cp 13
 	jr nz, .inVisitorSectionRightSide
 .behindCounter
@@ -66,16 +70,7 @@ PewterMuseum1FScientist1Text: ; marcelnote - optimized
 	call PrintText
 	rst TextScriptEnd
 
-.inVisitorSectionWrongSide
-	CheckEvent EVENT_BOUGHT_MUSEUM_TICKET
-	ld hl, .TakePlentyOfTimeText
-	ret nz
-	ld hl, .GoToOtherSideText
-	ret
-
 .inVisitorSectionRightSide
-	CheckEvent EVENT_BOUGHT_MUSEUM_TICKET
-	jr nz, .alreadyBoughtTicket
 	ld a, MONEY_BOX
 	ld [wTextBoxID], a
 	call DisplayTextBoxID
