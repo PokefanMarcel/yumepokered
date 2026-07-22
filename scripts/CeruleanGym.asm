@@ -120,13 +120,10 @@ CeruleanGymMistyText:
 	CheckEvent EVENT_BEAT_MISTY
 	jr z, .beforeBeat
 	CheckEventReuseA EVENT_GOT_TM11
-	jr nz, .afterBeat
-	call z, CeruleanGymReceiveTM11
-	call DisableWaitingAfterTextDisplay
-	rst TextScriptEnd
-.afterBeat
 	ld hl, .TM11ExplanationText
-	call PrintText
+	ret nz
+	call CeruleanGymReceiveTM11
+	call DisableWaitingAfterTextDisplay
 	rst TextScriptEnd
 .beforeBeat
 	ld hl, .PreBattleText
@@ -216,11 +213,9 @@ CeruleanGymGymGuideText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_BEAT_MISTY
 	ld hl, .BeatMistyText
-	jr nz, .beatMisty
+	ret nz
 	ld hl, .ChampInMakingText
-.beatMisty
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .ChampInMakingText:
 	text_far _CeruleanGymGymGuideChampInMakingText
@@ -234,11 +229,8 @@ CeruleanGymGymGuideText: ; marcelnote - optimized
 CeruleanGymMistyRematchText: ; marcelnote - Misty rematch
 	text_asm
 	CheckEvent EVENT_BEAT_MISTY_REMATCH
-	jr z, .beforeBeat
 	ld hl, CeruleanGymAfterRematchText
-	call PrintText
-	rst TextScriptEnd
-.beforeBeat
+	ret nz
 	ld hl, .PreBattleText
 	call PrintText
 	call YesNoChoice
