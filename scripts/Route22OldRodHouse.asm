@@ -10,7 +10,7 @@ Route22OldRodHouseFishingGuruText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_OLD_ROD
 	ld hl, .HowAreTheFishBitingText
-	jr nz, .printText
+	ret nz
 	ld hl, .DoYouLikeToFishText
 	call PrintText
 	call YesNoChoice
