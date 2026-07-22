@@ -213,15 +213,11 @@ IntroClearMiddleOfScreen:
 ; clear the area of the tile map between the black bars on the top and bottom
 	hlcoord 0, 4
 	ld bc, SCREEN_WIDTH * 10
+	; fallthrough
 
 IntroClearCommon:
-	ld [hl], 0
-	inc hl
-	dec bc
-	ld a, b
-	or c
-	jr nz, IntroClearCommon
-	ret
+	xor a
+	jp FillMemory
 
 IntroPlaceBlackTiles:
 	ld a, 1
