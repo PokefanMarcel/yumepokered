@@ -153,13 +153,11 @@ PalletTownOakText: ; marcelnote - optimized
 	ld a, [wOakWalkedToPlayer]
 	and a
 	ld hl, .ItsUnsafeText
-	jr nz, .printText
+	ret nz
 	ld a, 1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	ld hl, .HeyWaitDontGoOutText
-.printText
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .HeyWaitDontGoOutText:
 	text_far _PalletTownOakHeyWaitDontGoOutText
@@ -210,11 +208,9 @@ PalletTownYellowsHouseSignText: ; marcelnote - added Yellow's house
 	text_asm
 	ld hl, .YellowsHouseText
 	CheckEvent EVENT_BEAT_MISTY
-	jr nz, .textLoaded
+	ret nz
 	ld hl, .JustMovedInText
-.textLoaded
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .YellowsHouseText:
 	text_far _PalletTownYellowsHouseSignText
