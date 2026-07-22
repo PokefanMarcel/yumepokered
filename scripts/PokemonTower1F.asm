@@ -126,15 +126,13 @@ PokemonTower1FGentlemanText: ; marcelnote - postgame Agatha event
 	text_asm
 	CheckEvent EVENT_POSTGAME_AGATHA
 	ld hl, .GentlemanThankYouText
-	jr nz, .textLoaded
+	ret nz
 	CheckEvent EVENT_SPOKE_DIRECTOR
 	ld hl, .GentlemanSpokenYetText
-	jr nz, .textLoaded
+	ret nz
 	SetEvent EVENT_SPOKE_DIRECTOR
 	ld hl, .GentlemanIntroText
-.textLoaded
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .GentlemanIntroText:
 	text_far _PokemonTower1FGentlemanIntroText
