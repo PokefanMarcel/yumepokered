@@ -54,29 +54,24 @@ CeruleanGymMistyPostBattleScript:
 	jr z, CeruleanGymResetScripts
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
+	; fallthrough
 
-CeruleanGymReceiveTM11:
+CeruleanGymReceiveTM11: ; marcelnote - optimized
 	ld a, TEXT_CERULEANGYM_MISTY_CASCADE_BADGE_INFO
 	ldh [hTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_MISTY
 	lb bc, TM_BUBBLEBEAM, 1
 	call GiveItem
-	jr nc, .BagFull
-	ld a, TEXT_CERULEANGYM_MISTY_RECEIVED_TM11
-	ldh [hTextID], a
-	call DisplayTextID
-	SetEvent EVENT_GOT_TM11
-	jr .gymVictory
-.BagFull
 	ld a, TEXT_CERULEANGYM_MISTY_TM11_NO_ROOM
+	jr nc, .displayTMText
+	SetEvent EVENT_GOT_TM11
+	ld a, TEXT_CERULEANGYM_MISTY_RECEIVED_TM11
+.displayTMText
 	ldh [hTextID], a
 	call DisplayTextID
-.gymVictory
 	ld hl, wObtainedBadges
 	set BIT_CASCADEBADGE, [hl]
-	;ld hl, wBeatGymFlags     ; marcelnote - removed redundant wBeatGymFlags
-	;set BIT_CASCADEBADGE, [hl]
 
 	; deactivate gym trainers
 	SetEvents EVENT_BEAT_CERULEAN_GYM_TRAINER_0, EVENT_BEAT_CERULEAN_GYM_TRAINER_1
@@ -131,8 +126,8 @@ CeruleanGymMistyText:
 	ld hl, wStatusFlags3
 	set BIT_TALKED_TO_TRAINER, [hl]
 	set BIT_PRINT_END_BATTLE_TEXT, [hl]
-	ld hl, CeruleanGymMistyReceivedCascadeBadgeText
-	ld de, CeruleanGymMistyReceivedCascadeBadgeText
+	ld hl, .ReceivedCascadeBadgeText
+	ld de, .ReceivedCascadeBadgeText
 	call SaveEndBattleTextPointers
 	ldh a, [hSpriteIndex]
 	ld [wSpriteIndex], a
@@ -144,10 +139,17 @@ CeruleanGymMistyText:
 	ldh [hJoyHeld], a
 	ld a, SCRIPT_CERULEANGYM_MISTY_POST_BATTLE
 	ld [wCeruleanGymCurScript], a
+	; wCurMapScript is refreshed from the map-specific value on the next script pass.
 	rst TextScriptEnd
 
 .PreBattleText:
 	text_far _CeruleanGymMistyPreBattleText
+	text_end
+
+.ReceivedCascadeBadgeText:
+	text_far _CeruleanGymMistyReceivedCascadeBadgeText
+	sound_get_key_item ; actually plays the second channel of SFX_BALL_POOF due to the wrong music bank being loaded
+	text_promptbutton
 	text_end
 
 .TM11ExplanationText:
@@ -165,12 +167,6 @@ CeruleanGymMistyReceivedTM11Text:
 
 CeruleanGymMistyTM11NoRoomText:
 	text_far _CeruleanGymMistyTM11NoRoomText
-	text_end
-
-CeruleanGymMistyReceivedCascadeBadgeText:
-	text_far _CeruleanGymMistyReceivedCascadeBadgeText
-	sound_get_key_item ; actually plays the second channel of SFX_BALL_POOF due to the wrong music bank being loaded
-	text_promptbutton
 	text_end
 
 CeruleanGymCooltrainerFText:

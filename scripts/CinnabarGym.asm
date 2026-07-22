@@ -356,26 +356,24 @@ CinnabarGymBlainePostBattleScript:
 	ld [wJoyIgnore], a
 	; fallthrough
 
-CinnabarGymReceiveTM38:
+CinnabarGymReceiveTM38: ; marcelnote - optimized
 	ld a, TEXT_CINNABARGYM_BLAINE_VOLCANO_BADGE_INFO
 	ldh [hTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_BLAINE
 	lb bc, TM_FIRE_BLAST, 1
 	call GiveItem
-	jr nc, .bagFull
-	ld a, TEXT_CINNABARGYM_BLAINE_RECEIVED_TM38
-	ldh [hTextID], a
-	call DisplayTextID
-	SetEvent EVENT_GOT_TM38
-	jr .gymVictory
-.bagFull
 	ld a, TEXT_CINNABARGYM_BLAINE_TM38_NO_ROOM
+	jr nc, .displayTMText
+	SetEvent EVENT_GOT_TM38
+	ld a, TEXT_CINNABARGYM_BLAINE_RECEIVED_TM38
+.displayTMText
 	ldh [hTextID], a
 	call DisplayTextID
-.gymVictory
 	ld hl, wObtainedBadges
 	set BIT_VOLCANOBADGE, [hl]
+
+	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_CINNABAR_GYM_TRAINER_0, EVENT_BEAT_CINNABAR_GYM_TRAINER_6
 	ld hl, wCurrentMapScriptFlags
 	set BIT_CUR_MAP_LOADED_1, [hl]
@@ -396,13 +394,13 @@ CinnabarGymBlaineRematchPostBattleScript: ; marcelnote - Blaine rematch
 CinnabarGym_TextPointers:
 	def_text_pointers
 	dw_const CinnabarGymBlaineText,                 TEXT_CINNABARGYM_BLAINE
-	dw_const CinnabarGymSuperNerd1,                 TEXT_CINNABARGYM_SUPER_NERD1
-	dw_const CinnabarGymSuperNerd2,                 TEXT_CINNABARGYM_SUPER_NERD2
-	dw_const CinnabarGymSuperNerd3,                 TEXT_CINNABARGYM_SUPER_NERD3
-	dw_const CinnabarGymSuperNerd4,                 TEXT_CINNABARGYM_SUPER_NERD4
-	dw_const CinnabarGymSuperNerd5,                 TEXT_CINNABARGYM_SUPER_NERD5
-	dw_const CinnabarGymSuperNerd6,                 TEXT_CINNABARGYM_SUPER_NERD6
-	dw_const CinnabarGymSuperNerd7,                 TEXT_CINNABARGYM_SUPER_NERD7
+	dw_const CinnabarGymSuperNerd1Text,             TEXT_CINNABARGYM_SUPER_NERD1
+	dw_const CinnabarGymSuperNerd2Text,             TEXT_CINNABARGYM_SUPER_NERD2
+	dw_const CinnabarGymSuperNerd3Text,             TEXT_CINNABARGYM_SUPER_NERD3
+	dw_const CinnabarGymSuperNerd4Text,             TEXT_CINNABARGYM_SUPER_NERD4
+	dw_const CinnabarGymSuperNerd5Text,             TEXT_CINNABARGYM_SUPER_NERD5
+	dw_const CinnabarGymSuperNerd6Text,             TEXT_CINNABARGYM_SUPER_NERD6
+	dw_const CinnabarGymSuperNerd7Text,             TEXT_CINNABARGYM_SUPER_NERD7
 	dw_const CinnabarGymBlaineRematchText,          TEXT_CINNABARGYM_BLAINE_REMATCH ; marcelnote - Blaine rematch
 	dw_const CinnabarGymGymGuideText,               TEXT_CINNABARGYM_GYM_GUIDE
 	dw_const CinnabarGymBlaineVolcanoBadgeInfoText, TEXT_CINNABARGYM_BLAINE_VOLCANO_BADGE_INFO
@@ -426,6 +424,7 @@ CinnabarGymStartBattleScript:
 .gotScript
 	ld [wCinnabarGymCurScript], a
 	ld [wCurMapScript], a
+	; hJoyHeld is intentionally left unchanged because quiz trainers use this common path too.
 	rst TextScriptEnd
 
 CinnabarGymBlaineText:
@@ -444,7 +443,7 @@ CinnabarGymBlaineText:
 	ld hl, .ReceivedVolcanoBadgeText
 	ld de, .ReceivedVolcanoBadgeText
 	call SaveEndBattleTextPointers
-	ld a, 7
+	ld a, $7
 	ld [wGymLeaderNo], a
 	jr CinnabarGymStartBattleScript
 
@@ -505,25 +504,25 @@ MACRO cinnabar_gym_trainer_text
 	text_end
 ENDM
 
-CinnabarGymSuperNerd1:
+CinnabarGymSuperNerd1Text:
 	cinnabar_gym_trainer_text EVENT_BEAT_CINNABAR_GYM_TRAINER_0, _CinnabarGymSuperNerd1BattleText, _CinnabarGymSuperNerd1EndBattleText, _CinnabarGymSuperNerd1AfterBattleText
 
-CinnabarGymSuperNerd2:
+CinnabarGymSuperNerd2Text:
 	cinnabar_gym_trainer_text EVENT_BEAT_CINNABAR_GYM_TRAINER_1, _CinnabarGymSuperNerd2BattleText, _CinnabarGymSuperNerd2EndBattleText, _CinnabarGymSuperNerd2AfterBattleText
 
-CinnabarGymSuperNerd3:
+CinnabarGymSuperNerd3Text:
 	cinnabar_gym_trainer_text EVENT_BEAT_CINNABAR_GYM_TRAINER_2, _CinnabarGymSuperNerd3BattleText, _CinnabarGymSuperNerd3EndBattleText, _CinnabarGymSuperNerd3AfterBattleText
 
-CinnabarGymSuperNerd4:
+CinnabarGymSuperNerd4Text:
 	cinnabar_gym_trainer_text EVENT_BEAT_CINNABAR_GYM_TRAINER_3, _CinnabarGymSuperNerd4BattleText, _CinnabarGymSuperNerd4EndBattleText, _CinnabarGymSuperNerd4AfterBattleText
 
-CinnabarGymSuperNerd5:
+CinnabarGymSuperNerd5Text:
 	cinnabar_gym_trainer_text EVENT_BEAT_CINNABAR_GYM_TRAINER_4, _CinnabarGymSuperNerd5BattleText, _CinnabarGymSuperNerd5EndBattleText, _CinnabarGymSuperNerd5AfterBattleText
 
-CinnabarGymSuperNerd6:
+CinnabarGymSuperNerd6Text:
 	cinnabar_gym_trainer_text EVENT_BEAT_CINNABAR_GYM_TRAINER_5, _CinnabarGymSuperNerd6BattleText, _CinnabarGymSuperNerd6EndBattleText, _CinnabarGymSuperNerd6AfterBattleText
 
-CinnabarGymSuperNerd7:
+CinnabarGymSuperNerd7Text:
 	cinnabar_gym_trainer_text EVENT_BEAT_CINNABAR_GYM_TRAINER_6, _CinnabarGymSuperNerd7BattleText, _CinnabarGymSuperNerd7EndBattleText, _CinnabarGymSuperNerd7AfterBattleText
 
 CinnabarGymGymGuideText: ; marcelnote - optimized
@@ -566,7 +565,7 @@ CinnabarGymBlaineRematchText: ; marcelnote - Blaine rematch
 	ld [wSpriteIndex], a
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
-	ld a, 7
+	ld a, $7
 	ld [wGymLeaderNo], a
 	xor a
 	ldh [hJoyHeld], a

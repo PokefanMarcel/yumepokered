@@ -35,7 +35,7 @@ ENDC
 
 
 ViridianGymResetScripts:
-	xor a
+	xor a ; SCRIPT_VIRIDIANGYM_DEFAULT
 	ld [wJoyIgnore], a
 	ld [wViridianGymCurScript], a
 	ld [wCurMapScript], a
@@ -46,7 +46,7 @@ ViridianGym_ScriptPointers:
 	dw_const ViridianGymDefaultScript,              SCRIPT_VIRIDIANGYM_DEFAULT
 	dw_const DisplayEnemyTrainerTextAndStartBattle, SCRIPT_VIRIDIANGYM_START_BATTLE
 	dw_const EndTrainerBattle,                      SCRIPT_VIRIDIANGYM_END_BATTLE
-	dw_const ViridianGymGiovanniPostBattle,         SCRIPT_VIRIDIANGYM_GIOVANNI_POST_BATTLE
+	dw_const ViridianGymGiovanniPostBattleScript,   SCRIPT_VIRIDIANGYM_GIOVANNI_POST_BATTLE
 
 ViridianGymDefaultScript: ; marcelnote - modified spinners engine
 	callfar CheckStartStopSpinning
@@ -55,13 +55,14 @@ ViridianGymDefaultScript: ; marcelnote - modified spinners engine
 	jp z, CheckFightingMapTrainers
 	jpfar LoadSpinnerArrowTiles
 
-ViridianGymGiovanniPostBattle:
+ViridianGymGiovanniPostBattleScript:
 	ld a, [wIsInBattle]
 	cp $ff
-	jp z, ViridianGymResetScripts
+	jr z, ViridianGymResetScripts
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
-; fallthrough
+	; fallthrough
+
 ViridianGymReceiveTM27: ; marcelnote - optimized
 	ld a, TEXT_VIRIDIANGYM_GIOVANNI_EARTH_BADGE_INFO
 	ldh [hTextID], a
@@ -70,14 +71,16 @@ ViridianGymReceiveTM27: ; marcelnote - optimized
 	lb bc, TM_FISSURE, 1
 	call GiveItem
 	ld a, TEXT_VIRIDIANGYM_GIOVANNI_TM27_NO_ROOM
-	jr nc, .bagFull
+	jr nc, .displayTMText
 	SetEvent EVENT_GOT_TM27
 	ld a, TEXT_VIRIDIANGYM_GIOVANNI_RECEIVED_TM27
-.bagFull
+.displayTMText
 	ldh [hTextID], a
 	call DisplayTextID
 	ld hl, wObtainedBadges
 	set BIT_EARTHBADGE, [hl]
+
+	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_VIRIDIAN_GYM_TRAINER_0, EVENT_BEAT_VIRIDIAN_GYM_TRAINER_7
 	ld a, TOGGLE_ROUTE_22_RIVAL_2
 	ld [wToggleableObjectIndex], a
@@ -128,7 +131,7 @@ ViridianGymGiovanniText:
 	jr z, .beforeBeat
 	CheckEventReuseA EVENT_GOT_TM27
 	jr nz, .afterBeat
-	call z, ViridianGymReceiveTM27
+	call ViridianGymReceiveTM27
 	call DisableWaitingAfterTextDisplay
 	rst TextScriptEnd
 .afterBeat
@@ -159,8 +162,10 @@ ViridianGymGiovanniText:
 	call InitBattleEnemyParameters
 	ld a, $8
 	ld [wGymLeaderNo], a
+	; hJoyHeld is intentionally left unchanged here to preserve the existing battle transition.
 	ld a, SCRIPT_VIRIDIANGYM_GIOVANNI_POST_BATTLE
 	ld [wViridianGymCurScript], a
+	; wCurMapScript is refreshed from the map-specific value on the next script pass.
 	rst TextScriptEnd
 
 .PreBattleText:

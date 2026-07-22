@@ -1,5 +1,8 @@
 FuchsiaGym_Script:
-	call .LoadNames
+	ld hl, wCurrentMapScriptFlags
+	bit BIT_CUR_MAP_LOADED_2, [hl]
+	res BIT_CUR_MAP_LOADED_2, [hl]
+	call nz, .LoadNames
 	call EnableAutoTextBoxDrawing
 	ld hl, FuchsiaGymTrainerHeaders
 	ld de, FuchsiaGym_ScriptPointers
@@ -9,10 +12,6 @@ FuchsiaGym_Script:
 	ret
 
 .LoadNames:
-	ld hl, wCurrentMapScriptFlags
-	bit BIT_CUR_MAP_LOADED_2, [hl]
-	res BIT_CUR_MAP_LOADED_2, [hl]
-	ret z
 	ld hl, .CityName
 	ld de, .LeaderName
 	jp LoadGymLeaderAndCityName
@@ -55,29 +54,24 @@ FuchsiaGymKogaPostBattleScript:
 	jr z, FuchsiaGymResetScripts
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
-; fallthrough
-FuchsiaGymReceiveTM06:
+	; fallthrough
+
+FuchsiaGymReceiveTM06: ; marcelnote - optimized
 	ld a, TEXT_FUCHSIAGYM_KOGA_SOUL_BADGE_INFO
 	ldh [hTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_KOGA
 	lb bc, TM_TOXIC, 1
 	call GiveItem
-	jr nc, .BagFull
-	ld a, TEXT_FUCHSIAGYM_KOGA_RECEIVED_TM06
-	ldh [hTextID], a
-	call DisplayTextID
-	SetEvent EVENT_GOT_TM06
-	jr .gymVictory
-.BagFull
 	ld a, TEXT_FUCHSIAGYM_KOGA_TM06_NO_ROOM
+	jr nc, .displayTMText
+	SetEvent EVENT_GOT_TM06
+	ld a, TEXT_FUCHSIAGYM_KOGA_RECEIVED_TM06
+.displayTMText
 	ldh [hTextID], a
 	call DisplayTextID
-.gymVictory
 	ld hl, wObtainedBadges
 	set BIT_SOULBADGE, [hl]
-	;ld hl, wBeatGymFlags     ; marcelnote - removed redundant wBeatGymFlags
-	;set BIT_SOULBADGE, [hl]
 
 	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_FUCHSIA_GYM_TRAINER_0, EVENT_BEAT_FUCHSIA_GYM_TRAINER_5
@@ -139,7 +133,7 @@ FuchsiaGymKogaText:
 	call DisableWaitingAfterTextDisplay
 	rst TextScriptEnd
 .beforeBeat
-	ld hl, .BeforeBattleText
+	ld hl, .PreBattleText
 	call PrintText
 	ld hl, wStatusFlags3
 	set BIT_TALKED_TO_TRAINER, [hl]
@@ -157,9 +151,10 @@ FuchsiaGymKogaText:
 	ldh [hJoyHeld], a
 	ld a, SCRIPT_FUCHSIAGYM_KOGA_POST_BATTLE
 	ld [wFuchsiaGymCurScript], a
+	; wCurMapScript is refreshed from the map-specific value on the next script pass.
 	rst TextScriptEnd
 
-.BeforeBattleText:
+.PreBattleText:
 	text_far _FuchsiaGymKogaBeforeBattleText
 	text_end
 
@@ -177,7 +172,7 @@ FuchsiaGymKogaSoulBadgeInfoText:
 
 FuchsiaGymKogaReceivedTM06Text:
 	text_far _FuchsiaGymKogaReceivedTM06Text
-	sound_get_key_item
+	sound_get_key_item ; differs from most Gym TMs; kept to preserve the existing SFX
 	text_far _FuchsiaGymKogaTM06ExplanationText
 	text_end
 
@@ -293,7 +288,7 @@ FuchsiaGymRocker6AfterBattleText:
 	text_far _FuchsiaGymRocker6AfterBattleText
 	text_end
 
-FuchsiaGymGymGuideText: ; marcelnote - adjusted
+FuchsiaGymGymGuideText: ; marcelnote - optimized and adjusted
 	text_asm
 	CheckEvent EVENT_BEAT_KOGA
 	ld hl, .BeatKogaText

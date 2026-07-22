@@ -53,7 +53,7 @@ VermilionGymSetDoorTile:
 	predef_jump ReplaceTileBlock
 
 VermilionGymResetScripts:
-	xor a
+	xor a ; SCRIPT_VERMILIONGYM_DEFAULT
 	ld [wJoyIgnore], a
 	ld [wVermilionGymCurScript], a
 	ld [wCurMapScript], a
@@ -64,10 +64,10 @@ VermilionGym_ScriptPointers:
 	dw_const CheckFightingMapTrainers,                   SCRIPT_VERMILIONGYM_DEFAULT
 	dw_const DisplayEnemyTrainerTextAndStartBattle,      SCRIPT_VERMILIONGYM_START_BATTLE
 	dw_const EndTrainerBattle,                           SCRIPT_VERMILIONGYM_END_BATTLE
-	dw_const VermilionGymLTSurgeAfterBattleScript,       SCRIPT_VERMILIONGYM_LT_SURGE_AFTER_BATTLE
+	dw_const VermilionGymLTSurgePostBattleScript,        SCRIPT_VERMILIONGYM_LT_SURGE_POST_BATTLE
 	dw_const VermilionGymLTSurgeRematchPostBattleScript, SCRIPT_VERMILIONGYM_LT_SURGE_REMATCH_POST_BATTLE ; marcelnote - Lt.Surge rematch
 
-VermilionGymLTSurgeAfterBattleScript:
+VermilionGymLTSurgePostBattleScript:
 	ld a, [wIsInBattle]
 	cp $ff ; did we lose?
 	jr z, VermilionGymResetScripts
@@ -75,7 +75,7 @@ VermilionGymLTSurgeAfterBattleScript:
 	ld [wJoyIgnore], a
 	; fallthrough
 
-VermilionGymLTSurgeReceiveTM24Script: ; marcelnote - optimized
+VermilionGymReceiveTM24: ; marcelnote - optimized
 	ld a, TEXT_VERMILIONGYM_LT_SURGE_THUNDER_BADGE_INFO
 	ldh [hTextID], a
 	call DisplayTextID
@@ -83,14 +83,16 @@ VermilionGymLTSurgeReceiveTM24Script: ; marcelnote - optimized
 	lb bc, TM_THUNDERBOLT, 1
 	call GiveItem
 	ld a, TEXT_VERMILIONGYM_LT_SURGE_TM24_NO_ROOM
-	jr nc, .bagFull
+	jr nc, .displayTMText
 	SetEvent EVENT_GOT_TM24
 	ld a, TEXT_VERMILIONGYM_LT_SURGE_RECEIVED_TM24
-.bagFull
+.displayTMText
 	ldh [hTextID], a
 	call DisplayTextID
 	ld hl, wObtainedBadges
 	set BIT_THUNDERBADGE, [hl]
+
+	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_VERMILION_GYM_TRAINER_0, EVENT_BEAT_VERMILION_GYM_TRAINER_2
 	jr VermilionGymResetScripts
 
@@ -136,7 +138,7 @@ VermilionGymLTSurgeText: ; marcelnote - optimized
 	CheckEventReuseA EVENT_GOT_TM24
 	ld hl, .PostBattleAdviceText
 	ret nz
-	call VermilionGymLTSurgeReceiveTM24Script
+	call VermilionGymReceiveTM24
 	call DisableWaitingAfterTextDisplay
 	rst TextScriptEnd
 .beforeBeat
@@ -145,8 +147,8 @@ VermilionGymLTSurgeText: ; marcelnote - optimized
 	ld hl, wStatusFlags3
 	set BIT_TALKED_TO_TRAINER, [hl]
 	set BIT_PRINT_END_BATTLE_TEXT, [hl]
-	ld hl, VermilionGymLTSurgeReceivedThunderBadgeText
-	ld de, VermilionGymLTSurgeReceivedThunderBadgeText
+	ld hl, .ReceivedThunderBadgeText
+	ld de, .ReceivedThunderBadgeText
 	call SaveEndBattleTextPointers
 	ldh a, [hSpriteIndex]
 	ld [wSpriteIndex], a
@@ -156,13 +158,17 @@ VermilionGymLTSurgeText: ; marcelnote - optimized
 	ld [wGymLeaderNo], a
 	xor a
 	ldh [hJoyHeld], a
-	ld a, SCRIPT_VERMILIONGYM_LT_SURGE_AFTER_BATTLE
+	ld a, SCRIPT_VERMILIONGYM_LT_SURGE_POST_BATTLE
 	ld [wVermilionGymCurScript], a
 	ld [wCurMapScript], a
 	rst TextScriptEnd
 
 .PreBattleText:
 	text_far _VermilionGymLTSurgePreBattleText
+	text_end
+
+.ReceivedThunderBadgeText:
+	text_far _VermilionGymLTSurgeReceivedThunderBadgeText
 	text_end
 
 .PostBattleAdviceText:
@@ -175,16 +181,12 @@ VermilionGymLTSurgeThunderBadgeInfoText:
 
 VermilionGymLTSurgeReceivedTM24Text:
 	text_far _VermilionGymLTSurgeReceivedTM24Text
-	sound_get_key_item
+	sound_get_key_item ; differs from most Gym TMs; kept to preserve the existing SFX
 	text_far _TM24ExplanationText
 	text_end
 
 VermilionGymLTSurgeTM24NoRoomText:
 	text_far _VermilionGymLTSurgeTM24NoRoomText
-	text_end
-
-VermilionGymLTSurgeReceivedThunderBadgeText:
-	text_far _VermilionGymLTSurgeReceivedThunderBadgeText
 	text_end
 
 VermilionGymGentlemanText:

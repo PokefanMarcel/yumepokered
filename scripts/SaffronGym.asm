@@ -60,38 +60,37 @@ SaffronGym_ScriptPointers:
 	dw_const CheckFightingMapTrainers,                 SCRIPT_SAFFRONGYM_DEFAULT
 	dw_const DisplayEnemyTrainerTextAndStartBattle,    SCRIPT_SAFFRONGYM_START_BATTLE
 	dw_const EndTrainerBattle,                         SCRIPT_SAFFRONGYM_END_BATTLE
-	dw_const SaffronGymSabrinaPostBattle,              SCRIPT_SAFFRONGYM_SABRINA_POST_BATTLE
+	dw_const SaffronGymSabrinaPostBattleScript,        SCRIPT_SAFFRONGYM_SABRINA_POST_BATTLE
 	dw_const SaffronGymBrunoArrivesScript,             SCRIPT_SAFFRONGYM_BRUNO_ARRIVES   ; marcelnote - postgame Bruno event
 	dw_const SaffronGymBrunoInspiringScript,           SCRIPT_SAFFRONGYM_BRUNO_INSPIRING ; marcelnote - postgame Bruno event
 	dw_const SaffronGymSabrinaRematchPostBattleScript, SCRIPT_SAFFRONGYM_SABRINA_REMATCH_POST_BATTLE ; marcelnote - Sabrina rematch
 
-SaffronGymSabrinaPostBattle:
+SaffronGymSabrinaPostBattleScript:
 	ld a, [wIsInBattle]
 	cp $ff
 	jr z, SaffronGymResetScripts
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
+	; fallthrough
 
-SaffronGymSabrinaReceiveTM46Script:
+SaffronGymReceiveTM46: ; marcelnote - optimized
 	ld a, TEXT_SAFFRONGYM_SABRINA_MARSH_BADGE_INFO
 	ldh [hTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_SABRINA
 	lb bc, TM_PSYWAVE, 1
 	call GiveItem
-	jr nc, .BagFull
-	ld a, TEXT_SAFFRONGYM_SABRINA_RECEIVED_TM46
-	ldh [hTextID], a
-	call DisplayTextID
-	SetEvent EVENT_GOT_TM46
-	jr .gymVictory
-.BagFull
 	ld a, TEXT_SAFFRONGYM_SABRINA_TM46_NO_ROOM
+	jr nc, .displayTMText
+	SetEvent EVENT_GOT_TM46
+	ld a, TEXT_SAFFRONGYM_SABRINA_RECEIVED_TM46
+.displayTMText
 	ldh [hTextID], a
 	call DisplayTextID
-.gymVictory
 	ld hl, wObtainedBadges
 	set BIT_MARSHBADGE, [hl]
+
+	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_SAFFRON_GYM_TRAINER_0, EVENT_BEAT_SAFFRON_GYM_TRAINER_6
 	ld a, SFX_TELEPORT_EXIT_1
 	call PlaySound
@@ -277,11 +276,11 @@ SaffronGymSabrinaText:
 	CheckEventReuseA EVENT_GOT_TM46
 	ld hl, .PostBattleAdviceText
 	ret nz
-	call SaffronGymSabrinaReceiveTM46Script
+	call SaffronGymReceiveTM46
 	call DisableWaitingAfterTextDisplay
 	rst TextScriptEnd
 .beforeBeat
-	ld hl, .Text
+	ld hl, .PreBattleText
 	call PrintText
 	ld hl, wStatusFlags3
 	set BIT_TALKED_TO_TRAINER, [hl]
@@ -295,11 +294,13 @@ SaffronGymSabrinaText:
 	call InitBattleEnemyParameters
 	ld a, $6
 	ld [wGymLeaderNo], a
+	; hJoyHeld is intentionally left unchanged here to preserve the existing battle transition.
 	ld a, SCRIPT_SAFFRONGYM_SABRINA_POST_BATTLE
 	ld [wSaffronGymCurScript], a
+	; wCurMapScript is refreshed from the map-specific value on the next script pass.
 	rst TextScriptEnd
 
-.Text:
+.PreBattleText:
 	text_far _SaffronGymSabrinaText
 	text_end
 
@@ -562,6 +563,6 @@ SaffronGymSabrinaRematchText: ; marcelnote - Sabrina rematch
 	text_far _SaffronGymSabrinaRematchDefeatedText
 	text_end
 
-SaffronGymAfterRematchText: ; marcelnote - Erika rematch
+SaffronGymAfterRematchText: ; marcelnote - Sabrina rematch
 	text_far _SaffronGymAfterRematchText
 	text_end

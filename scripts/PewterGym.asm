@@ -34,7 +34,7 @@ ELSE
 ENDC
 
 PewterGymResetScripts:
-	xor a
+	xor a ; SCRIPT_PEWTERGYM_DEFAULT
 	ld [wJoyIgnore], a
 	ld [wPewterGymCurScript], a
 	ld [wCurMapScript], a
@@ -54,29 +54,26 @@ PewterGymBrockPostBattleScript:
 	jr z, PewterGymResetScripts
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
-; fallthrough
-PewterGymScriptReceiveTM34:
+	; fallthrough
+
+PewterGymReceiveTM34: ; marcelnote - optimized
+	; Brock's badge information is already part of the end-battle text,
+	; so his TM offer starts with a separate prompt.
 	ld a, TEXT_PEWTERGYM_BROCK_WAIT_TAKE_THIS
 	ldh [hTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_BROCK
 	lb bc, TM_BIDE, 1
 	call GiveItem
-	jr nc, .BagFull
-	ld a, TEXT_PEWTERGYM_RECEIVED_TM34
-	ldh [hTextID], a
-	call DisplayTextID
+	ld a, TEXT_PEWTERGYM_BROCK_TM34_NO_ROOM
+	jr nc, .displayTMText
 	SetEvent EVENT_GOT_TM34
-	jr .gymVictory
-.BagFull
-	ld a, TEXT_PEWTERGYM_TM34_NO_ROOM
+	ld a, TEXT_PEWTERGYM_BROCK_RECEIVED_TM34
+.displayTMText
 	ldh [hTextID], a
 	call DisplayTextID
-.gymVictory
 	ld hl, wObtainedBadges
 	set BIT_BOULDERBADGE, [hl]
-	;ld hl, wBeatGymFlags     ; marcelnote - removed redundant wBeatGymFlags
-	;set BIT_BOULDERBADGE, [hl]
 
 	ld a, TOGGLE_GYM_GUY
 	ld [wToggleableObjectIndex], a
@@ -102,17 +99,17 @@ PewterGymBrockRematchPostBattleScript: ; marcelnote - Brock rematch
 	ldh [hTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_BROCK_REMATCH
-	jp PewterGymResetScripts
+	jr PewterGymResetScripts
 
 PewterGym_TextPointers:
 	def_text_pointers
 	dw_const PewterGymBrockText,             TEXT_PEWTERGYM_BROCK
 	dw_const PewterGymBrockRematchText,      TEXT_PEWTERGYM_BROCK_REMATCH
 	dw_const PewterGymCooltrainerMText,      TEXT_PEWTERGYM_COOLTRAINER_M
-	dw_const PewterGymGuideText,             TEXT_PEWTERGYM_GYM_GUIDE
+	dw_const PewterGymGymGuideText,          TEXT_PEWTERGYM_GYM_GUIDE
 	dw_const PewterGymBrockWaitTakeThisText, TEXT_PEWTERGYM_BROCK_WAIT_TAKE_THIS
-	dw_const PewterGymReceivedTM34Text,      TEXT_PEWTERGYM_RECEIVED_TM34
-	dw_const PewterGymTM34NoRoomText,        TEXT_PEWTERGYM_TM34_NO_ROOM
+	dw_const PewterGymBrockReceivedTM34Text, TEXT_PEWTERGYM_BROCK_RECEIVED_TM34
+	dw_const PewterGymBrockTM34NoRoomText,   TEXT_PEWTERGYM_BROCK_TM34_NO_ROOM
 	dw_const PewterGymAfterRematchText,      TEXT_PEWTERGYM_AFTER_REMATCH ; marcelnote - Brock rematch
 
 PewterGymTrainerHeaders:
@@ -128,7 +125,7 @@ PewterGymBrockText:
 	CheckEventReuseA EVENT_GOT_TM34
 	ld hl, .PostBattleAdviceText
 	ret nz
-	call PewterGymScriptReceiveTM34
+	call PewterGymReceiveTM34
 	call DisableWaitingAfterTextDisplay
 	rst TextScriptEnd
 .beforeBeat
@@ -171,13 +168,13 @@ PewterGymBrockWaitTakeThisText:
 	text_far _PewterGymBrockWaitTakeThisText
 	text_end
 
-PewterGymReceivedTM34Text:
+PewterGymBrockReceivedTM34Text:
 	text_far _PewterGymReceivedTM34Text
 	sound_get_item_1
 	text_far _TM34ExplanationText
 	text_end
 
-PewterGymTM34NoRoomText:
+PewterGymBrockTM34NoRoomText:
 	text_far _PewterGymTM34NoRoomText
 	text_end
 
@@ -199,7 +196,7 @@ PewterGymCooltrainerMAfterBattleText:
 	text_far _PewterGymCooltrainerMAfterBattleText
 	text_end
 
-PewterGymGuideText: ; marcelnote - optimized
+PewterGymGymGuideText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_BEAT_BROCK
 	ld hl, PewterGymGuidePostBattleText

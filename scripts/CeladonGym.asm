@@ -54,29 +54,24 @@ CeladonGymErikaPostBattleScript:
 	jr z, CeladonGymResetScripts
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
+	; fallthrough
 
-CeladonGymReceiveTM21:
-	ld a, TEXT_CELADONGYM_RAINBOWBADGE_INFO
+CeladonGymReceiveTM21: ; marcelnote - optimized
+	ld a, TEXT_CELADONGYM_ERIKA_RAINBOW_BADGE_INFO
 	ldh [hTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_ERIKA
 	lb bc, TM_MEGA_DRAIN, 1
 	call GiveItem
-	jr nc, .BagFull
-	ld a, TEXT_CELADONGYM_RECEIVED_TM21
-	ldh [hTextID], a
-	call DisplayTextID
+	ld a, TEXT_CELADONGYM_ERIKA_TM21_NO_ROOM
+	jr nc, .displayTMText
 	SetEvent EVENT_GOT_TM21
-	jr .gymVictory
-.BagFull
-	ld a, TEXT_CELADONGYM_TM21_NO_ROOM
+	ld a, TEXT_CELADONGYM_ERIKA_RECEIVED_TM21
+.displayTMText
 	ldh [hTextID], a
 	call DisplayTextID
-.gymVictory
 	ld hl, wObtainedBadges
 	set BIT_RAINBOWBADGE, [hl]
-	;ld hl, wBeatGymFlags     ; marcelnote - removed redundant wBeatGymFlags
-	;set BIT_RAINBOWBADGE, [hl]
 
 	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_CELADON_GYM_TRAINER_0, EVENT_BEAT_CELADON_GYM_TRAINER_6
@@ -106,9 +101,9 @@ CeladonGym_TextPointers:
 	dw_const CeladonGymCooltrainerF3Text,    TEXT_CELADONGYM_COOLTRAINER_F3
 	dw_const CeladonGymBeauty3Text,          TEXT_CELADONGYM_BEAUTY3
 	dw_const CeladonGymCooltrainerF4Text,    TEXT_CELADONGYM_COOLTRAINER_F4
-	dw_const CeladonGymRainbowBadgeInfoText, TEXT_CELADONGYM_RAINBOWBADGE_INFO
-	dw_const CeladonGymReceivedTM21Text,     TEXT_CELADONGYM_RECEIVED_TM21
-	dw_const CeladonGymTM21NoRoomText,       TEXT_CELADONGYM_TM21_NO_ROOM
+	dw_const CeladonGymErikaRainbowBadgeInfoText, TEXT_CELADONGYM_ERIKA_RAINBOW_BADGE_INFO
+	dw_const CeladonGymErikaReceivedTM21Text,     TEXT_CELADONGYM_ERIKA_RECEIVED_TM21
+	dw_const CeladonGymErikaTM21NoRoomText,       TEXT_CELADONGYM_ERIKA_TM21_NO_ROOM
 	dw_const CeladonGymAfterRematchText,     TEXT_CELADONGYM_AFTER_REMATCH ; marcelnote - Erika rematch
 
 CeladonGymTrainerHeaders:
@@ -154,6 +149,7 @@ CeladonGymErikaText:
 	call InitBattleEnemyParameters
 	ld a, $4
 	ld [wGymLeaderNo], a
+	; hJoyHeld is intentionally left unchanged here to preserve the existing battle transition.
 	ld a, SCRIPT_CELADONGYM_ERIKA_POST_BATTLE
 	ld [wCeladonGymCurScript], a
 	ld [wCurMapScript], a
@@ -171,17 +167,17 @@ CeladonGymErikaText:
 	text_far _CeladonGymErikaPostBattleAdviceText
 	text_end
 
-CeladonGymRainbowBadgeInfoText:
+CeladonGymErikaRainbowBadgeInfoText:
 	text_far _CeladonGymRainbowBadgeInfoText
 	text_end
 
-CeladonGymReceivedTM21Text:
+CeladonGymErikaReceivedTM21Text:
 	text_far _CeladonGymReceivedTM21Text
 	sound_get_item_1
 	text_far _TM21ExplanationText
 	text_end
 
-CeladonGymTM21NoRoomText:
+CeladonGymErikaTM21NoRoomText:
 	text_far _CeladonGymTM21NoRoomText
 	text_end
 
