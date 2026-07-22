@@ -134,13 +134,10 @@ VermilionGymLTSurgeText: ; marcelnote - optimized
 	CheckEvent EVENT_BEAT_LT_SURGE
 	jr z, .beforeBeat
 	CheckEventReuseA EVENT_GOT_TM24
-	jr nz, .gotTM24Already
-	call z, VermilionGymLTSurgeReceiveTM24Script
-	call DisableWaitingAfterTextDisplay
-	rst TextScriptEnd
-.gotTM24Already
 	ld hl, .PostBattleAdviceText
-	call PrintText
+	ret nz
+	call VermilionGymLTSurgeReceiveTM24Script
+	call DisableWaitingAfterTextDisplay
 	rst TextScriptEnd
 .beforeBeat
 	ld hl, .PreBattleText
@@ -248,11 +245,9 @@ VermilionGymGymGuideText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_BEAT_LT_SURGE
 	ld hl, .BeatLTSurgeText
-	jr nz, .beatLtSurge
+	ret nz
 	ld hl, .ChampInMakingText
-.beatLtSurge
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .ChampInMakingText:
 	text_far _VermilionGymGymGuideChampInMakingText
@@ -265,11 +260,8 @@ VermilionGymGymGuideText: ; marcelnote - optimized
 VermilionGymLTSurgeRematchText: ; marcelnote - Lt.Surge rematch
 	text_asm
 	CheckEvent EVENT_BEAT_LT_SURGE_REMATCH
-	jr z, .beforeBeat
 	ld hl, VermilionGymAfterRematchText
-	call PrintText
-	rst TextScriptEnd
-.beforeBeat
+	ret nz
 	ld hl, .PreBattleText
 	call PrintText
 	call YesNoChoice
