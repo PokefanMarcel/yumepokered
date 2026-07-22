@@ -27,7 +27,7 @@ MtMoonPokecenterMagikarpSalesmanText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_BOUGHT_MAGIKARP
 	ld hl, .NoRefundsText
-	jr nz, .printText
+	ret nz
 	ld hl, .IGotADealText
 	call PrintText
 	ld a, MONEY_BOX
