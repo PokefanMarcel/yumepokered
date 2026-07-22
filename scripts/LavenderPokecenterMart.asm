@@ -43,11 +43,9 @@ LavenderMartCooltrainerMText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_RESCUED_MR_FUJI
 	ld hl, .NuggetText
-	jr nz, .printText
+	ret nz
 	ld hl, .ReviveText
-.printText
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .ReviveText
 	text_far _LavenderMartCooltrainerMReviveText
