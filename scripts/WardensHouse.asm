@@ -13,7 +13,7 @@ WardensHouseWardenText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_HM04
 	ld hl, .HM04ExplanationText
-	jr nz, .printText
+	ret nz
 	ld b, GOLD_TEETH
 	call IsItemInBag
 	jr nz, .haveGoldTeeth
@@ -90,11 +90,9 @@ WardensHouseDisplayText:
 	ldh a, [hTextID]
 	cp TEXT_WARDENSHOUSE_DISPLAY_LEFT
 	ld hl, .MerchandiseText
-	jr nz, .printText
+	ret nz
 	ld hl, .PhotosAndFossilsText
-.printText
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .PhotosAndFossilsText:
 	text_far _WardensHouseDisplayPhotosAndFossilsText
