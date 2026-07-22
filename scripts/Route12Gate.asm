@@ -17,7 +17,7 @@ Route12Gate2FBrunetteGirlText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_TM39
 	ld hl, .TM39ExplanationText
-	jr nz, .gotText
+	ret nz
 	ld hl, .YouCanHaveThisText
 	call PrintText
 	lb bc, TM_SWIFT, 1
