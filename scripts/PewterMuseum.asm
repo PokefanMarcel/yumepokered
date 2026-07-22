@@ -1,9 +1,5 @@
 ; marcelnote - merged Pewter Museum floors
 PewterMuseum_Script:
-	;ld a, 1 << BIT_NO_AUTO_TEXT_BOX
-	;ld [wAutoTextBoxDrawingControl], a
-	;xor a
-	;ld [wDoNotWaitForButtonPressAfterDisplayingText], a ; marcelnote - all this is DisableAutoTextBoxDrawing (why?)
 	call EnableAutoTextBoxDrawing
 	ld hl, PewterMuseum_ScriptPointers
 	ld a, [wPewterMuseumCurScript]
@@ -72,15 +68,10 @@ PewterMuseum1FScientist1Text: ; marcelnote - optimized
 
 .inVisitorSectionWrongSide
 	CheckEvent EVENT_BOUGHT_MUSEUM_TICKET
-	jr nz, .alreadyBoughtTicket
-	ld hl, .GoToOtherSideText
-	call PrintText
-	rst TextScriptEnd
-
-.alreadyBoughtTicket
 	ld hl, .TakePlentyOfTimeText
-	call PrintText
-	rst TextScriptEnd
+	ret nz
+	ld hl, .GoToOtherSideText
+	ret
 
 .inVisitorSectionRightSide
 	CheckEvent EVENT_BOUGHT_MUSEUM_TICKET
@@ -182,19 +173,19 @@ PewterMuseum1FScientist2Text: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_OLD_AMBER
 	ld hl, .GetTheOldAmberCheckText
-	jr nz, .done
+	ret nz
 	ld hl, .TakeThisToAPokemonLabText
 	call PrintText
 	lb bc, OLD_AMBER, 1
 	call GiveItem
 	ld hl, .YouDontHaveSpaceText
-	jr nc, .done
+	jr nc, .printText
 	SetEvent EVENT_GOT_OLD_AMBER
 	ld a, TOGGLE_OLD_AMBER
 	ld [wToggleableObjectIndex], a
 	predef HideObject
 	ld hl, .ReceivedOldAmberText
-.done
+.printText
 	call PrintText
 	rst TextScriptEnd
 
