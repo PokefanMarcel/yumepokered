@@ -38,10 +38,10 @@ BluesHouseDaisySittingText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_TOWN_MAP
 	ld hl, BluesHouseDaisyUseMapText
-	jr nz, .printText
+	ret nz
 	CheckEvent EVENT_GOT_POKEDEX
 	ld hl, BluesHouseDaisyRivalAtLabText
-	jr z, .printText
+	ret z
 	ld hl, BluesHouseDaisyOfferMapText
 	call PrintText
 	lb bc, TOWN_MAP, 1
@@ -81,13 +81,11 @@ BluesHouseDaisyUseMapText:
 BluesHouseDaisyWalkingText: ; marcelnote - modified for pay phones
 	text_asm
 	ldh a, [hRandomAdd]
-	ld hl, .LivingThingsText
 	cp 85 ; 85/256 chance of 1st dialogue
-	jr c, .printText
+	ld hl, .LivingThingsText
+	ret c
 	ld hl, .PhoneText
-.printText
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .LivingThingsText
 	text_far _BluesHouseDaisyWalkingLivingThingsText
