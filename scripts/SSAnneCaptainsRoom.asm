@@ -19,7 +19,7 @@ SSAnneCaptainsRoomCaptainText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_HM01
 	ld hl, SSAnneCaptainsRoomCaptainNotSickAnymoreText
-	jr nz, .printText
+	ret nz
 	ld hl, SSAnneCaptainsRoomRubCaptainsBackText
 	call PrintText
 	ld hl, SSAnneCaptainsRoomCaptainIFeelMuchBetterText
