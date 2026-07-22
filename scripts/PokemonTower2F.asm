@@ -215,11 +215,8 @@ PokemonTower2F_TextPointers:
 PokemonTower2FRivalText:
 	text_asm
 	CheckEvent EVENT_BEAT_POKEMON_TOWER_RIVAL
-	jr z, .doBattle
 	ld hl, .HowsYourDexText
-	call PrintText
-	rst TextScriptEnd
-.doBattle
+	ret nz
 	ld hl, .WhatBringsYouHereText
 	call PrintText
 	ld hl, wStatusFlags3
