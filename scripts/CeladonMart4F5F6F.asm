@@ -48,11 +48,9 @@ CeladonMart6FBeautyText: ; marcelnote - new floor
 	text_asm
 	CheckEvent EVENT_BEAT_SILPH_FACTORY_2F_TRAINER_0 ; is Silph Factory event cleared?
 	ld hl, .AlwaysComeHereText
-	jr nz, .EventCleared
+	ret nz
 	ld hl, .UsuallyStocksText
-.EventCleared
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .UsuallyStocksText
 	text_far _CeladonMart6FBeautyUsuallyStocksText
@@ -90,8 +88,7 @@ CeladonMart6FClerkText: ; marcelnote - new floor
 	rst TextScriptEnd
 .NoInventory
 	ld hl, .NoInventoryText
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .NoInventoryText:
 	text_far _CeladonMart6FClerkNoInventoryText
