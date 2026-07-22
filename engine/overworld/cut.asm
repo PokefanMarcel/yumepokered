@@ -343,10 +343,10 @@ GetCutTreeBlock:
 
 ; Convert target block coordinates to a source pointer in the map's block data.
 	push bc
-	ld a, [wCurMapDataPtr]
+	ld hl, wCurMapDataPtr ; marcelnote - optimized load from wCurMapDataPtr
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld a, [wCurMapDataPtr + 1]
-	ld h, a
 	ld a, b
 	and a
 	jr z, .gotSourceRow
@@ -482,14 +482,15 @@ ApplyTemporaryTileBlockReplacementToCurrentMap:
 	add hl, de ; skip north and west borders
 	ld d, h
 	ld e, l
-	ld a, [wCurMapDataPtr]
+	ld hl, wCurMapHeight ; marcelnote - optimized load from wCurMapHeight and wCurMapWidth
+	ld a, [hli]
+	ld b, a    ; b = wCurMapHeight
+	ld c, [hl] ; c = wCurMapWidth
+	ASSERT wCurMapHeight + 1 == wCurMapWidth
+	ld hl, wCurMapDataPtr ; marcelnote - optimized load from wCurMapDataPtr
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld a, [wCurMapDataPtr + 1]
-	ld h, a
-	ld a, [wCurMapHeight]
-	ld b, a
-	ld a, [wCurMapWidth]
-	ld c, a
 	jr ApplyTemporaryTileBlockReplacementToRegion
 
 ApplyTemporaryTileBlockReplacementToNorthSouthConnection:
