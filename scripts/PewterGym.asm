@@ -127,7 +127,7 @@ PewterGymBrockText:
 	jr z, .beforeBeat
 	CheckEventReuseA EVENT_GOT_TM34
 	ld hl, .PostBattleAdviceText
-	ret nz ; after beat
+	ret nz
 	call PewterGymScriptReceiveTM34
 	call DisableWaitingAfterTextDisplay
 	rst TextScriptEnd
@@ -137,8 +137,8 @@ PewterGymBrockText:
 	ld hl, wStatusFlags3
 	set BIT_TALKED_TO_TRAINER, [hl]
 	set BIT_PRINT_END_BATTLE_TEXT, [hl]
-	ld hl, PewterGymBrockReceivedBoulderBadgeText
-	ld de, PewterGymBrockReceivedBoulderBadgeText
+	ld hl, .ReceivedBoulderBadgeText
+	ld de, .ReceivedBoulderBadgeText
 	call SaveEndBattleTextPointers
 	ldh a, [hSpriteIndex]
 	ld [wSpriteIndex], a
@@ -157,6 +157,12 @@ PewterGymBrockText:
 	text_far _PewterGymBrockPreBattleText
 	text_end
 
+.ReceivedBoulderBadgeText:
+	text_far _PewterGymBrockReceivedBoulderBadgeText
+	sound_level_up ; probably supposed to play SFX_GET_ITEM_1 but the wrong music bank is loaded
+	text_far _PewterGymBrockBoulderBadgeInfoText ; Text to tell that the flash technique can be used
+	text_end
+
 .PostBattleAdviceText:
 	text_far _PewterGymBrockPostBattleAdviceText
 	text_end
@@ -173,12 +179,6 @@ PewterGymReceivedTM34Text:
 
 PewterGymTM34NoRoomText:
 	text_far _PewterGymTM34NoRoomText
-	text_end
-
-PewterGymBrockReceivedBoulderBadgeText:
-	text_far _PewterGymBrockReceivedBoulderBadgeText
-	sound_level_up ; probably supposed to play SFX_GET_ITEM_1 but the wrong music bank is loaded
-	text_far _PewterGymBrockBoulderBadgeInfoText ; Text to tell that the flash technique can be used
 	text_end
 
 PewterGymCooltrainerMText:
