@@ -121,7 +121,7 @@ Route1Youngster1Text: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_POTION_SAMPLE
 	ld hl, .AlsoGotPokeballsText
-	jr nz, .printText
+	ret nz
 	ld hl, .MartSampleText
 	call PrintText
 	lb bc, POTION, 1
