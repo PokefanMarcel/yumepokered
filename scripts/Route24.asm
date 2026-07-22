@@ -113,7 +113,7 @@ Route24CooltrainerM1Text: ; marcelnote - optimized
 	ResetEvent EVENT_NUGGET_REWARD_AVAILABLE
 	CheckEvent EVENT_GOT_NUGGET
 	ld hl, .YouCouldBecomeATopLeaderText
-	jr nz, .printText
+	ret nz
 	ld hl, .YouBeatOurContestText
 	call PrintText
 	lb bc, NUGGET, 1
@@ -143,7 +143,6 @@ Route24CooltrainerM1Text: ; marcelnote - optimized
 .bagFull
 	SetEvent EVENT_NUGGET_REWARD_AVAILABLE
 	ld hl, .NoRoomText
-.printText
 	call PrintText
 	rst TextScriptEnd
 
