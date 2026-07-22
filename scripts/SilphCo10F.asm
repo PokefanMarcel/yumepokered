@@ -57,11 +57,9 @@ SilphCo10FSilphWorkerFText:
 	text_asm
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
 	ld hl, .QuietAboutMyCryingText
-	jr nz, .printText
+	ret nz
 	ld hl, .ImScaredText
-.printText
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .ImScaredText:
 	text_far _SilphCo10FSilphWorkerFImScaredText
