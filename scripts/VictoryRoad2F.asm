@@ -210,13 +210,12 @@ VictoryRoad2FGrampsText: ; marcelnote - new, adapted from Silph Co Lapras guy
 	text_asm
 	CheckEvent EVENT_VICTORY_ROAD_2F_GOT_HITMON
 	ld hl, .GreatFirebirdText
-	jr nz, .printText
+	ret nz
 	ld hl, .IntroText
 	call PrintText
 	CheckEitherEventSet EVENT_GOT_HITMONLEE, EVENT_GOT_HITMONCHAN
 	ld hl, .HaveYouTestedText
 	jr nz, .giveHitmon
-.printText
 	call PrintText
 	rst TextScriptEnd
 .giveHitmon
