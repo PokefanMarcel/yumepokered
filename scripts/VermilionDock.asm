@@ -80,9 +80,9 @@ VermilionDockSSAnneLeavesScript:
 	ld a, 88
 	ld [wSSAnneSmokeX], a
 	ld hl, wMapViewVRAMPointer
-	ld c, [hl]
-	inc hl
+	ld a, [hli]
 	ld b, [hl]
+	ld c, a
 	push bc
 	push hl
 	ld a, SFX_SS_ANNE_HORN
@@ -91,13 +91,13 @@ VermilionDockSSAnneLeavesScript:
 	ld [wUpdateSpritesEnabled], a
 	lb de, $0, $8
 .shiftColumnsUp
-	ld hl, $2
-	add hl, bc
-	ld a, l
-	ld [wMapViewVRAMPointer], a
-	ld a, h
-	ld [wMapViewVRAMPointer + 1], a
-	push hl
+	inc bc
+	inc bc
+	ld hl, wMapViewVRAMPointer ; marcelnote - optimized load into wMapViewVRAMPointer
+	ld a, c
+	ld [hli], a
+	ld [hl], b
+	push bc
 	push de
 	call ScheduleEastColumnRedraw
 	call VermilionDock_EmitSmokePuff
