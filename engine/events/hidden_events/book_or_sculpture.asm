@@ -3,14 +3,12 @@ BookOrSculptureText::
 	ld hl, PokemonBooksText
 	ld a, [wCurMapTileset]
 	cp MANSION ; Celadon Mansion tileset
-	jr nz, .ok
+	ret nz
 	lda_coord 8, 6
 	cp $38
-	jr nz, .ok
+	ret nz
 	ld hl, DiglettSculptureText
-.ok
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 PokemonBooksText:
 	text_far _PokemonBooksText
