@@ -14,11 +14,9 @@ MrFujisHouseSuperNerdText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_RESCUED_MR_FUJI
 	ld hl, .MrFujiHadBeenPrayingText
-	jr nz, .rescuedMrFuji
+	ret nz
 	ld hl, .MrFujiIsntHereText
-.rescuedMrFuji
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .MrFujiIsntHereText:
 	text_far _MrFujisHouseSuperNerdMrFujiIsntHereText
@@ -32,11 +30,9 @@ MrFujisHouseLittleGirlText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_RESCUED_MR_FUJI
 	ld hl, .PokemonAreNiceToHugText
-	jr nz, .rescuedMrFuji
+	ret nz
 	ld hl, .ThisIsMrFujisHouseText
-.rescuedMrFuji
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .ThisIsMrFujisHouseText:
 	text_far _MrFujisHouseLittleGirlThisIsMrFujisHouseText
@@ -64,7 +60,7 @@ MrFujisHouseMrFujiText: ; marcelnote - optimized and added Citrus pass dialogue
 	text_asm
 	CheckEvent EVENT_GOT_CITRUS_PASS
 	ld hl, .BeCarefulText
-	jr nz, .printText
+	ret nz
 	CheckEvent EVENT_GAVE_FUJIS_NOTES
 	ld hl, .TakeThisText
 	jr nz, .gaveFujisNotes ; this jump should never happen because giving the Notes frees up one spot in the bag
