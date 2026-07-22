@@ -81,11 +81,9 @@ MandarinHotel2FGentlemanAfterBattleText:
 	ld a, [wStatusFlags4]
 	bit BIT_IS_GIRL, a
 	ld hl, .GirlText
-	jr nz, .printText
+	ret nz
 	ld hl, .BoyText
-.printText
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .GirlText
 	text_far _MandarinHotel2FGentlemanAfterBattleGirlText
