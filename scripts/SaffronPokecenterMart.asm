@@ -34,11 +34,9 @@ SaffronPokecenterBenchGuyText: ; marcelnote - BenchGuy has a sprite
 	text_asm
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
 	ld hl, .GoOutAgainText
-	jr nz, .printText
+	ret nz
 	ld hl, .WouldBeGreatText
-.printText
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .WouldBeGreatText:
 	text_far _SaffronPokecenterBenchGuyWouldBeGreatText
