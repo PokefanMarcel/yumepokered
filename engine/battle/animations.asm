@@ -734,16 +734,13 @@ DoBallShakeSpecialEffects:
 	ld [wNumShakes], a
 	ret z
 ; if there are shakes left, restart the subanimation
-	ld a, [wSubAnimSubEntryAddr]
-	ld l, a
-	ld a, [wSubAnimSubEntryAddr + 1]
-	ld h, a
-	ld de, -(4 * 3) ; 4 subentries and 3 bytes per subentry
-	add hl, de
-	ld a, l
-	ld [wSubAnimSubEntryAddr], a
-	ld a, h
-	ld [wSubAnimSubEntryAddr + 1], a
+	ld hl, wSubAnimSubEntryAddr ; marcelnote - optimized
+	ld a, [hl]
+	sub 4 * 3 ; 4 subentries and 3 bytes per subentry
+	ld [hli], a
+	jr nc, .noBorrow
+	dec [hl]
+.noBorrow
 	ld a, 5 ; number of subentries in the ball shaking subanimation plus one
 	ld [wSubAnimCounter], a
 	ret
