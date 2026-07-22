@@ -10,7 +10,7 @@ FuchsiaSuperRodHouseFishingGuruText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_SUPER_ROD
 	ld hl, .TryFishingText
-	jr nz, .printText
+	ret nz
 	ld hl, .DoYouLikeToFishText
 	call PrintText
 	call YesNoChoice
