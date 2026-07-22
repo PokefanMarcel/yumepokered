@@ -101,15 +101,13 @@ BattleHallReceptionistText:
 	text_asm
 	CheckEvent EVENT_BATTLED_BATTLE_HALL_TRAINER
 	ld hl, .WhatABattleText
-	jr nz, .printText
+	ret nz
 	ld a, [wPartyCount]
 	cp 3
 	ld hl, .TeamReadyText
-	jr z, .printText
+	ret z
 	ld hl, .NeedThreeMonText
-.printText
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .NeedThreeMonText:
 	text_far _BattleHallReceptionistNeedThreeMonText
@@ -126,11 +124,8 @@ BattleHallReceptionistText:
 BattleHallTrainerText:
 	text_asm
 	CheckEvent EVENT_BATTLED_BATTLE_HALL_TRAINER
-	jr z, .beforeBeat
 	ld hl, .PostBattleText
-	call PrintText
-	rst TextScriptEnd
-.beforeBeat
+	ret nz
 	ld hl, .PreBattleText
 	call PrintText
 	ld a, [wPartyCount]
@@ -144,11 +139,9 @@ BattleHallTrainerText:
 	call SaveEndBattleTextPointers
 	ldh a, [hSpriteIndex]
 	ld [wSpriteIndex], a
-
 	ld a, SCRIPT_BATTLEHALL_MOVE_PLAYER
 	ld [wBattleHallCurScript], a
 	ld [wCurMapScript], a
-
 .textScriptEnd
 	rst TextScriptEnd
 
