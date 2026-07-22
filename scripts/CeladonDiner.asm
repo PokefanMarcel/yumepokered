@@ -29,7 +29,7 @@ CeladonDinerGymGuideText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_COIN_CASE
 	ld hl, .WinItBackText
-	jr nz, .printText
+	ret nz
 	ld hl, .ImFlatOutBustedText
 	call PrintText
 	lb bc, COIN_CASE, 1
