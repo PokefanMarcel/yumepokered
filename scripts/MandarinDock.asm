@@ -56,7 +56,7 @@ MandarinDockSailorText:
 	ld a, [wSpritePlayerStateData1FacingDirection]
 	cp SPRITE_FACING_DOWN
 	ld hl, .CantSurfHereText
-	jr nz, .printText
+	ret nz
 	ld hl, .AreYouReadyText
 	call PrintText
 	ld a, $01
@@ -70,7 +70,6 @@ MandarinDockSailorText:
 	ld a, SCRIPT_MANDARINDOCK_ALL_ABOARD
 	ld [wMandarinDockCurScript], a
 	ld hl, .AllAboardText
-.printText
 	call PrintText
 .no
 	rst TextScriptEnd
