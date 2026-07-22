@@ -262,7 +262,7 @@ VermilionDockSailorText:
 	ld a, [wSpritePlayerStateData1FacingDirection]
 	cp SPRITE_FACING_DOWN
 	ld hl, .CantSurfHereText
-	jr nz, .printText
+	ret nz
 	ld hl, .AreYouReadyText
 	call PrintText
 	ld a, 1
@@ -276,7 +276,6 @@ VermilionDockSailorText:
 	ld a, SCRIPT_VERMILIONDOCK_ALL_ABOARD
 	ld [wVermilionDockCurScript], a
 	ld hl, .AllAboardText
-.printText
 	call PrintText
 .saidNo
 	rst TextScriptEnd
