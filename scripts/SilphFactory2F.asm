@@ -282,11 +282,9 @@ SilphFactory2FScientist2Text:
 	text_asm
 	CheckEvent EVENT_POSTGAME_LORELEI
 	ld hl, .AfterEventText
-	jr nz, .EventFinished
+	ret nz
 	ld hl, .DuringEventText
-.EventFinished
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .DuringEventText:
 	text_far _SilphFactory2FScientist2DuringEventText
@@ -300,11 +298,9 @@ SilphFactory2FScientist3Text:
 	text_asm
 	CheckEvent EVENT_POSTGAME_LORELEI
 	ld hl, .AfterEventText
-	jr nz, .EventFinished
+	ret nz
 	ld hl, .DuringEventText
-.EventFinished
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .DuringEventText:
 	text_far _SilphFactory2FScientist3DuringEventText
@@ -317,7 +313,8 @@ SilphFactory2FScientist3Text:
 SilphFactory2FSilphWorkerMText:
 	text_asm
 	CheckEvent EVENT_SILPH_FACTORY_2F_CARD_KEY_UPDATED
-	jr nz, .alreadyUpdated
+	ld hl, .HidHereText
+	ret nz
 	ld hl, .UpdateCardText
 	call PrintText
 	ld b, CARD_KEY
@@ -327,8 +324,6 @@ SilphFactory2FSilphWorkerMText:
 	SetEvent EVENT_SILPH_FACTORY_2F_CARD_KEY_UPDATED
 	ld hl, .CardWasUpdatedText
 	jr .printText
-.alreadyUpdated
-	ld hl, .HidHereText
 .printText
 	call PrintText
 	rst TextScriptEnd
@@ -352,13 +347,13 @@ SilphFactory2FSilphWorkerMText:
 
 SilphFactory2FLoreleiGladToSeeYouText: ; marcelnote - postgame Lorelei
 	text_asm
-	ld hl, .text
-	call PrintText
 	ld a, SCRIPT_SILPHFACTORY2F_LORELEI_GOES_UPSTAIRS
 	ld [wSilphFactory2FCurScript], a
 	ld [wCurMapScript], a
-	rst TextScriptEnd
-.text
+	ld hl, .GladToSeeYouText
+	ret
+
+.GladToSeeYouText
 	text_far _SilphFactory2FLoreleiGladToSeeYouText
 	text_end
 
