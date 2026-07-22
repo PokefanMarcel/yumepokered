@@ -315,11 +315,9 @@ ChampionsRoomRivalText:
 	text_asm
 	CheckEvent EVENT_BEAT_CHAMPION_RIVAL
 	ld hl, .IntroText
-	jr z, .printText
+	ret z
 	ld hl, ChampionsRoomRivalAfterBattleText
-.printText
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .IntroText:
 	text_far _ChampionsRoomRivalIntroText
@@ -341,11 +339,9 @@ ChampionsRoomRivalRematchText: ; marcelnote - Rival rematch
 	text_asm
 	CheckEvent EVENT_BEAT_CHAMPION_RIVAL
 	ld hl, .IntroText
-	jr z, .printText
+	ret z
 	ld hl, ChampionsRoomRivalRematchAfterBattleText
-.printText
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .IntroText: ; marcelnote - Rival rematch
 	text_far _ChampionsRoomRivalRematchIntroText
@@ -373,8 +369,8 @@ ChampionsRoomOakCongratulatesPlayerText:
 	ld [wNamedObjectIndex], a
 	call GetMonName
 	ld hl, .Text
-	call PrintText
-	rst TextScriptEnd
+	bccoord 1, 14 ; restore text destination
+	ret
 
 .Text:
 	text_far _ChampionsRoomOakCongratulatesPlayerText
