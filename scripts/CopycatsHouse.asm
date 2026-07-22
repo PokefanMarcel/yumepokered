@@ -37,7 +37,7 @@ CopycatsHouse2FCopycatText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_TM31
 	ld hl, .TM31Explanation2Text
-	jr nz, .printText
+	ret nz
 	ld a, TRUE
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	ld hl, .DoYouLikePokemonText
