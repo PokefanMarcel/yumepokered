@@ -81,7 +81,8 @@ CeladonGroveGrampsText:
 CeladonGroveChanneler2Text:
 	text_asm
 	CheckEvent EVENT_GOT_TM51
-	jr nz, .alreadyHaveTM
+	ld hl, .TM51ExplanationText
+	ret nz
 	ld hl, .TakeThisText
 	call PrintText
 	lb bc, TM_HEX, 1
@@ -90,9 +91,6 @@ CeladonGroveChanneler2Text:
 	jr nc, .printText
 	SetEvent EVENT_GOT_TM51
 	ld hl, .ReceivedTM51Text
-	jr .printText
-.alreadyHaveTM
-	ld hl, .TM51ExplanationText
 .printText
 	call PrintText
 	rst TextScriptEnd
