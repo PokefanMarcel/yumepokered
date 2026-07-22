@@ -188,16 +188,10 @@ CopyScreenTileBufferToVRAM::
 	ldh [hVBlankCopyBGSource], a
 	ret
 
-ClearScreen::
+ClearScreen:: ; marcelnote - optimized
 ; Clear wTileMap, then wait for the bg map to update.
-	ld bc, SCREEN_AREA + $0100 ; marcelnote - adding $0100 avoids inc b
-;	inc b
+	ld bc, SCREEN_AREA
 	hlcoord 0, 0
 	ld a, ' '
-.loop
-	ld [hli], a
-	dec c
-	jr nz, .loop
-	dec b
-	jr nz, .loop
+	call FillMemory
 	jp Delay3
