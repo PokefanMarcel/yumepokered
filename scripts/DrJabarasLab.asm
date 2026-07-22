@@ -41,6 +41,7 @@ DrJabarasLabJabaraText:
 	SetEvent EVENT_JABARA_RUNNING_TESTS
 	ld hl, .GaveFluteText
 	call PrintText
+.runningTests
 	ld hl, .NeedTimeText
 .printText
 	call PrintText
