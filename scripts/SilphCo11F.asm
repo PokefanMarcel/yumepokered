@@ -256,7 +256,7 @@ SilphCo11FSilphPresidentText:
 	text_asm
 	CheckEvent EVENT_GOT_MASTER_BALL
 	ld hl, .MasterBallDescriptionText
-	jr nz, .printText
+	ret nz
 	ld hl, .ThankYouText
 	call PrintText
 	lb bc, MASTER_BALL, 1
