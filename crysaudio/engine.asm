@@ -1153,12 +1153,11 @@ ReadNoiseSample:
 
 	; de = [wNoiseSampleAddress]
 	ld hl, wNoiseSampleAddress
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
 	ld d, [hl]
+	ld e, a
 
 	; is it empty?
-	ld a, e
 	or d
 	jr z, .quit
 
@@ -1181,8 +1180,8 @@ ReadNoiseSample:
 	ld [wCurTrackFrequency + 1], a
 
 	ld hl, wNoiseSampleAddress
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 
 	ld hl, CHANNEL_NOTE_FLAGS
