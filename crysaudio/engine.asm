@@ -39,36 +39,9 @@ _InitSound::
 	jr nz, .clearsound
 
 	ld hl, wAudio
-	ld de, wAudioEnd - wAudio
-.clearaudio
+	ld bc, wAudioEnd - wAudio
 	xor a
-	ld [hli], a
-	dec de
-	ld a, e
-	or d
-	jr nz, .clearaudio
-
-; channels 5 and 6
-	ld hl, wChannel5
-	ld de, CHANNEL_STRUCT_LENGTH * 2
-.clearaudio2
-	xor a
-	ld [hli], a
-	dec de
-	ld a, e
-	or d
-	jr nz, .clearaudio2
-
-; channels 7 and 8
-	ld hl, wChannel7
-	ld de, CHANNEL_STRUCT_LENGTH * 2
-.clearaudio3
-	xor a
-	ld [hli], a
-	dec de
-	ld a, e
-	or d
-	jr nz, .clearaudio3
+	call FillMemory
 
 	ld a, MAX_VOLUME
 	ld [wVolume], a
