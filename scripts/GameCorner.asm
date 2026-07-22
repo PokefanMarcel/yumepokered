@@ -235,7 +235,7 @@ GameCornerFishingGuruText:
 	text_asm
 	CheckEvent EVENT_GOT_10_COINS
 	ld hl, .WinsComeAndGoText
-	jr nz, .printText ; already got coins
+	ret nz ; already got coins
 	ld hl, .WantToPlayText
 	call PrintText
 	ld b, COIN_CASE
@@ -283,15 +283,13 @@ GameCornerMiddleAgedWomanText:
 	text_far _GameCornerMiddleAgedWomanText
 	text_end
 
-GameCornerGymGuideText: ; marcelnote - adjusted
+GameCornerGymGuideText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_BEAT_ERIKA
 	ld hl, GameCornerGymGuideTheyOfferRarePokemonText
-	jr nz, .beatErika
+	ret nz
 	ld hl, GameCornerGymGuideChampInMakingText
-.beatErika
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 GameCornerGymGuideChampInMakingText:
 	text_far _GameCornerGymGuideChampInMakingText
@@ -309,7 +307,7 @@ GameCornerClerk2Text:
 	text_asm
 	CheckEvent EVENT_GOT_20_COINS_2
 	ld hl, .INeedMoreCoinsText
-	jr nz, .printText ; already got coins
+	ret nz ; already got coins
 	ld hl, .WantSomeCoinsText
 	call PrintText
 	ld b, COIN_CASE
@@ -355,7 +353,7 @@ GameCornerGentlemanText:
 	text_asm
 	CheckEvent EVENT_GOT_20_COINS
 	ld hl, .CloselyWatchTheReelsText
-	jr nz, .printText ; already got coins
+	ret nz ; already got coins
 	ld hl, .ThrowingMeOffText
 	call PrintText
 	ld b, COIN_CASE
