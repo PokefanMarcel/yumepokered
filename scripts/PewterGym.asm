@@ -126,13 +126,10 @@ PewterGymBrockText:
 	CheckEvent EVENT_BEAT_BROCK
 	jr z, .beforeBeat
 	CheckEventReuseA EVENT_GOT_TM34
-	jr nz, .afterBeat
-	call z, PewterGymScriptReceiveTM34
-	call DisableWaitingAfterTextDisplay
-	rst TextScriptEnd
-.afterBeat
 	ld hl, .PostBattleAdviceText
-	call PrintText
+	ret nz ; after beat
+	call PewterGymScriptReceiveTM34
+	call DisableWaitingAfterTextDisplay
 	rst TextScriptEnd
 .beforeBeat
 	ld hl, .PreBattleText
@@ -206,7 +203,7 @@ PewterGymGuideText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_BEAT_BROCK
 	ld hl, PewterGymGuidePostBattleText
-	jr nz, .beatBrock
+	ret nz
 	ld hl, PewterGymGuidePreAdviceText
 	call PrintText
 	call YesNoChoice
@@ -218,7 +215,6 @@ PewterGymGuideText: ; marcelnote - optimized
 .saidNo
 	call PrintText
 	ld hl, PewterGymGuideAdviceText
-.beatBrock
 	call PrintText
 	rst TextScriptEnd
 
@@ -246,11 +242,8 @@ PewterGymGuidePostBattleText:
 PewterGymBrockRematchText: ; marcelnote - Brock rematch
 	text_asm
 	CheckEvent EVENT_BEAT_BROCK_REMATCH
-	jr z, .beforeBeat
 	ld hl, PewterGymAfterRematchText
-	call PrintText
-	rst TextScriptEnd
-.beforeBeat
+	ret nz
 	ld hl, .PreBattleText
 	call PrintText
 	call YesNoChoice
