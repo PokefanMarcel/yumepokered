@@ -133,13 +133,10 @@ FuchsiaGymKogaText:
 	CheckEvent EVENT_BEAT_KOGA
 	jr z, .beforeBeat
 	CheckEventReuseA EVENT_GOT_TM06
-	jr nz, .afterBeat
-	call z, FuchsiaGymReceiveTM06
-	call DisableWaitingAfterTextDisplay
-	rst TextScriptEnd
-.afterBeat
 	ld hl, .PostBattleAdviceText
-	call PrintText
+	ret nz
+	call FuchsiaGymReceiveTM06
+	call DisableWaitingAfterTextDisplay
 	rst TextScriptEnd
 .beforeBeat
 	ld hl, .BeforeBattleText
@@ -300,11 +297,9 @@ FuchsiaGymGymGuideText: ; marcelnote - adjusted
 	text_asm
 	CheckEvent EVENT_BEAT_KOGA
 	ld hl, .BeatKogaText
-	jr nz, .beatKoga
+	ret nz
 	ld hl, .ChampInMakingText
-.beatKoga
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .ChampInMakingText:
 	text_far _FuchsiaGymGymGuideChampInMakingText
@@ -318,11 +313,8 @@ FuchsiaGymGymGuideText: ; marcelnote - adjusted
 FuchsiaGymKogaRematchText: ; marcelnote - Koga rematch
 	text_asm
 	CheckEvent EVENT_BEAT_KOGA_REMATCH
-	jr z, .beforeBeat
 	ld hl, FuchsiaGymAfterRematchText
-	call PrintText
-	rst TextScriptEnd
-.beforeBeat
+	ret nz
 	ld hl, .PreBattleText
 	call PrintText
 	call YesNoChoice
