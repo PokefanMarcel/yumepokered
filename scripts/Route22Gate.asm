@@ -102,10 +102,9 @@ Route22GateGuardText: ; marcelnote - adapted for additions to Route22Gate
 	ld [wRoute22GateCurScript], a
 	rst TextScriptEnd
 .hasBoulderBadge
-	ld hl, Route22GateGuardGoRightAheadText
-	call PrintText
 	SetEvent EVENT_ROUTE22GATE_PRESENTED_BOULDER_BADGE ; marcelnote - new event instead of separate script
-	rst TextScriptEnd
+	ld hl, Route22GateGuardGoRightAheadText
+	ret
 
 Route22GateGuardNoBoulderbadgeText:
 	text_far _Route22GateGuardNoBoulderbadgeText
@@ -127,8 +126,8 @@ Route22GateGuardGoRightAheadText:
 
 Route22GateGuard2Text: ; marcelnote - new guard
 	text_asm
-	ld a, [wObtainedBadges]
 IF DEF(_DEBUG) ; marcelnote - added for debug
+	ld a, [wObtainedBadges]
 	bit BIT_VOLCANOBADGE, a
 ELSE
 	CheckEvent EVENT_BEAT_ROUTE_1_OAK ; real condition
@@ -142,10 +141,9 @@ ENDC
 	ld [wRoute22GateCurScript], a
 	rst TextScriptEnd
 .beatOak
-	ld hl, Route22GateGuard2WelcomeChampionText
-	call PrintText
 	SetEvent EVENT_ROUTE22GATE_WELCOME_CHAMPION
-	rst TextScriptEnd
+	ld hl, Route22GateGuard2WelcomeChampionText
+	ret
 
 Route22GateGuard2ScaryStrongText: ; marcelnote - new guard
 	text_far _Route22GateGuard2ScaryStrongText
@@ -172,11 +170,10 @@ Route22GateReceptionistText: ; marcelnote - new receptionist
 	ld a, [wSpritePlayerStateData1FacingDirection]
 	cp SPRITE_FACING_UP
 	ld hl, Route22GateReceptionistOpponentWaitingForYouText
-	jr z, .printText
+	ret z
 	ld hl, Route22GateReceptionistWelcomeText
 	call PrintText
 	ld hl, .PleaseStepAroundText
-.printText
 	call PrintText
 	rst TextScriptEnd
 
