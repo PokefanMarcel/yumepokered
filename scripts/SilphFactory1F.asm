@@ -154,11 +154,9 @@ SilphFactory1FRocket5AfterBattleText:
 	text_asm
 	CheckEvent EVENT_BEAT_SILPH_FACTORY_2F_TRAINER_0
 	ld hl, .PostEventText
-	jr nz, .ArcherDefeated
+	ret nz
 	ld hl, .AfterBattleText
-.ArcherDefeated
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .AfterBattleText:
 	text_far _SilphFactory1FRocket5AfterBattleText
@@ -186,11 +184,9 @@ SilphFactory1FRocket6AfterBattleText:
 	text_asm
 	CheckEvent EVENT_BEAT_SILPH_FACTORY_2F_TRAINER_0
 	ld hl, .PostEventText
-	jr nz, .ArcherDefeated
+	ret nz
 	ld hl, .AfterBattleText
-.ArcherDefeated
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .AfterBattleText:
 	text_far _SilphFactory1FRocket6AfterBattleText
