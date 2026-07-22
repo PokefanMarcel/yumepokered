@@ -147,8 +147,7 @@ FuchsiaCityFossilSignText: ; marcelnote - optimized
 	CheckEventReuseA EVENT_GOT_HELIX_FOSSIL
 	jr nz, .gotHelixFossil
 	ld hl, .UndeterminedText
-	call PrintText
-	rst TextScriptEnd
+	ret
 .gotDomeFossil
 	ld hl, .OmanyteText
 	call PrintText
