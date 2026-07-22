@@ -10,7 +10,7 @@ SafariZoneSecretHouseFishingGuruText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_HM03
 	ld hl, .HM03ExplanationText
-	jr nz, .printText
+	ret nz
 	ld hl, .YouHaveWonText
 	call PrintText
 	lb bc, HM_SURF, 1
