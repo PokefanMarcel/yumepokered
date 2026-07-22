@@ -9,7 +9,7 @@ MrPsychicsHouseMrPsychicText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_TM29
 	ld hl, .TM29ExplanationText
-	jr nz, .printText
+	ret nz
 	ld hl, .YouWantedThisText
 	call PrintText
 	lb bc, TM_PSYCHIC_M, 1
