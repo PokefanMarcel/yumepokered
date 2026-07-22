@@ -48,7 +48,7 @@ SilphCo9FNurseText:
 	text_asm
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
 	ld hl, .ThankYouText
-	jr nz, .printText
+	ret nz
 	ld hl, .YouLookTiredText
 	call PrintText
 	predef HealParty
@@ -56,7 +56,6 @@ SilphCo9FNurseText:
 	call Delay3
 	call GBFadeInFromWhite
 	ld hl, .DontGiveUpText
-.printText
 	call PrintText
 	rst TextScriptEnd
 
