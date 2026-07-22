@@ -10,7 +10,7 @@ Route16FlyHouseBrunetteGirlText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_HM02
 	ld hl, .HM02ExplanationText
-	jr nz, .printText
+	ret nz
 	ld hl, .Text
 	call PrintText
 	lb bc, HM_FLY, 1
