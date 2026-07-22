@@ -96,7 +96,8 @@ RocketHideoutB4FTrainerHeader2:
 RocketHideoutB4FGiovanniText:
 	text_asm
 	CheckEvent EVENT_BEAT_ROCKET_HIDEOUT_GIOVANNI
-	jr nz, .beatGiovanni
+	ld hl, RocketHideoutB4FGiovanniHopeWeMeetAgainText
+	ret nz
 	ld hl, .ImpressedYouGotHereText
 	call PrintText
 	ld hl, wStatusFlags3
@@ -114,10 +115,6 @@ RocketHideoutB4FGiovanniText:
 	ld a, SCRIPT_ROCKETHIDEOUTB4F_BEAT_GIOVANNI
 	ld [wRocketHideoutB4FCurScript], a
 	ld [wCurMapScript], a
-	rst TextScriptEnd
-.beatGiovanni
-	ld hl, RocketHideoutB4FGiovanniHopeWeMeetAgainText
-	call PrintText
 	rst TextScriptEnd
 
 .ImpressedYouGotHereText:
