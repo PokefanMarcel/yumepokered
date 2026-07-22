@@ -341,11 +341,9 @@ ViridianGymGymGuideText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_BEAT_VIRIDIAN_GYM_GIOVANNI
 	ld hl, ViridianGymGuidePostBattleText
-	jr nz, .afterBeat
+	ret nz
 	ld hl, ViridianGymGuidePreBattleText
-.afterBeat
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 ViridianGymGuidePreBattleText:
 	text_far _ViridianGymGuidePreBattleText
