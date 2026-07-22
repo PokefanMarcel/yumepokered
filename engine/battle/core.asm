@@ -2290,7 +2290,7 @@ BagWasSelected:
 	ld a, [wBattleType]
 	dec a ; is it the old man tutorial?
 	jr nz, DisplayPlayerBag ; no, it is a normal battle
-	ld hl, OldManItemList
+	ld bc, OldManItemList
 	jr DisplayBagMenu
 
 OldManItemList:
@@ -2298,22 +2298,20 @@ OldManItemList:
 	db POKE_BALL, 5 ; marcelnote - was 50
 	db -1 ; end
 
-DisplayPlayerBag:
+DisplayPlayerBag: ; marcelnote - modified for bag pockets
 	; get the pointer to player's bag when in a normal battle
-	ld hl, wNumBagItems
-	;;;;;;;;;; marcelnote - check which pocket we were last in, new for bag pockets
 	ld a, [wBagPocketsFlags]
 	bit BIT_KEY_ITEMS_POCKET, a
+	ld bc, wNumBagItems
 	jr z, DisplayBagMenu
-	ld hl, wNumBagKeyItems
-	;;;;;;;;;;
+	ld bc, wNumBagKeyItems
 	; fallthrough
 
 DisplayBagMenu:
-	ld a, l
-	ld [wListPointer], a
-	ld a, h
-	ld [wListPointer + 1], a
+	ld hl, wListPointer ; marcelnote - optimized load into wListPointer
+	ld a, c
+	ld [hli], a
+	ld [hl], b
 	xor a
 	ld [wPrintItemPrices], a
 	;;;;;;;;;; marcelnote - display bag info box, new for bag pockets
@@ -6811,10 +6809,10 @@ _LoadTrainerPic: ; marcelnote - refactored for removing sprite compression
 
 ; animates the mon "growing" out of the pokeball
 AnimateSendingOutMon:
-	ld a, [wPredefHL]
+	ld hl, wPredefHL ; marcelnote - optimized load from wPredefHL
+	ld a, [hli]
+	ld l, [hl]
 	ld h, a
-	ld a, [wPredefHL + 1]
-	ld l, a
 	ldh a, [hStartTileID]
 	ldh [hBaseTileID], a
 	ld b, $4c
@@ -6852,10 +6850,10 @@ AnimateSendingOutMon:
 
 
 CopySpriteToTilemap: ; marcelnote - refactored to remove sprite compression
-	ld a, [wPredefHL]
+	ld hl, wPredefHL
+	ld a, [hli]
+	ld l, [hl]
 	ld h, a
-	ld a, [wPredefHL + 1]
-	ld l, a
 	ldh a, [hStartTileID]
 CopySpriteToHL::
 	ld de, SCREEN_WIDTH - 7
