@@ -433,13 +433,10 @@ CinnabarGymBlaineText:
 	CheckEvent EVENT_BEAT_BLAINE
 	jr z, .beforeBeat
 	CheckEventReuseA EVENT_GOT_TM38
-	jr nz, .afterBeat
-	call z, CinnabarGymReceiveTM38
-	call DisableWaitingAfterTextDisplay
-	rst TextScriptEnd
-.afterBeat
 	ld hl, .PostBattleAdviceText
-	call PrintText
+	ret nz
+	call CinnabarGymReceiveTM38
+	call DisableWaitingAfterTextDisplay
 	rst TextScriptEnd
 .beforeBeat
 	ld hl, .PreBattleText
@@ -492,8 +489,8 @@ MACRO cinnabar_gym_trainer_text
 	jp CinnabarGymStartBattleScript
 .defeated
 	ld hl, .AfterBattleText
-	call PrintText
-	rst TextScriptEnd
+	bccoord 1, 14 ; restore text destination
+	ret
 
 .BattleText:
 	text_far \2
@@ -533,11 +530,9 @@ CinnabarGymGymGuideText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_BEAT_BLAINE
 	ld hl, .BeatBlaineText
-	jr nz, .beatBlaine
+	ret nz
 	ld hl, .ChampInMakingText
-.beatBlaine
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .ChampInMakingText:
 	text_far _CinnabarGymGymGuideChampInMakingText
@@ -551,11 +546,8 @@ CinnabarGymGymGuideText: ; marcelnote - optimized
 CinnabarGymBlaineRematchText: ; marcelnote - Blaine rematch
 	text_asm
 	CheckEvent EVENT_BEAT_BLAINE_REMATCH
-	jr z, .beforeBeat
 	ld hl, CinnabarGymAfterRematchText
-	call PrintText
-	rst TextScriptEnd
-.beforeBeat
+	ret nz
 	ld hl, .PreBattleText
 	call PrintText
 	call YesNoChoice
