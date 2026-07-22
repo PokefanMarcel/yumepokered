@@ -71,7 +71,8 @@ Route5Gate_TextPointers:
 SaffronGateGuardText:
 	text_asm
 	CheckEvent EVENT_GAVE_SAFFRON_GUARDS_DRINK
-	jr nz, .thanksForDrink
+	ld hl, SaffronGateGuardThanksForTheDrinkText
+	ret nz
 	callfar RemoveGuardDrink
 	ldh a, [hItemToRemoveID]
 	and a
@@ -84,15 +85,10 @@ SaffronGateGuardText:
 	rst TextScriptEnd
 
 .haveDrink
-	ld hl, SaffronGateGuardGiveDrinkText
-	call PrintText
 	SetEvent EVENT_GAVE_SAFFRON_GUARDS_DRINK
-	rst TextScriptEnd
-
-.thanksForDrink
-	ld hl, SaffronGateGuardThanksForTheDrinkText
-	call PrintText
-	rst TextScriptEnd
+	ld hl, SaffronGateGuardGiveDrinkText
+	bccoord 1, 14 ; restore text destination
+	ret
 
 SaffronGateGuardGeeImThirstyText:
 	text_far _SaffronGateGuardGeeImThirstyText
