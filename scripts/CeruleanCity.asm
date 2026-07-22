@@ -253,17 +253,10 @@ CeruleanCity_TextPointers:
 CeruleanCityRivalText:
 	text_asm
 	CheckEvent EVENT_BEAT_CERULEAN_RIVAL
-	; do pre-battle text
-	jr z, .PreBattle
-	; or talk about bill
-	ld hl, CeruleanCityRivalIWentToBillsText
-	call PrintText
-	jr .end
-.PreBattle
 	ld hl, .PreBattleText
-	call PrintText
-.end
-	rst TextScriptEnd
+	ret z
+	ld hl, CeruleanCityRivalIWentToBillsText
+	ret
 
 .PreBattleText:
 	text_far _CeruleanCityRivalPreBattleText
@@ -371,15 +364,13 @@ CeruleanCityCooltrainerF1Text: ; marcelnote - optimized and modified probs sligh
 	ldh a, [hRandomAdd]
 	ld hl, .SlowbroUseSonicboomText
 	cp 85 ; 85/256 chance of 1st dialogue, was 76/256
-	jr c, .printText
+	ret c
 	ld hl, .SlowbroPunchText
 	cp 170 ; 85/256 chance of 2nd dialogue, was 80/256
-	jr c, .printText
+	ret c
 	; 86/256 chance of 3rd dialogue, was 100/256
 	ld hl, .SlowbroWithdrawText
-.printText
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .SlowbroUseSonicboomText:
 	text_far _CeruleanCityCooltrainerF1SlowbroUseSonicboomText
@@ -398,18 +389,16 @@ CeruleanCitySlowbroText: ; marcelnote - optimized and modified probs slightly
 	ldh a, [hRandomAdd]
 	ld hl, .TookASnoozeText
 	cp 64 ; 64/256 chance of 1st dialogue, was 76/256
-	jr c, .printText
+	ret c
 	ld hl, .IsLoafingAroundText
 	cp 128 ; 64/256 chance of 2nd dialogue, was 60/256
-	jr c, .printText
+	ret c
 	ld hl, .TurnedAwayText
 	cp 192 ; 64/256 chance of 3rd dialogue, was 60/256
-	jr c, .printText
+	ret c
 	; 64/256 chance of 4th dialogue, was 60/256
 	ld hl, .IgnoredOrdersText
-.printText
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .TookASnoozeText:
 	text_far _CeruleanCitySlowbroTookASnoozeText
