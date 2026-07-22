@@ -27,7 +27,8 @@ PokemonAcademy3F4F_TextPointers:
 PokemonAcademy3FTeacherText:
 	text_asm
 	CheckEvent EVENT_PASSED_SENIOR_TEST
-    jp nz, .passed
+	ld hl, .ComeBackAnytime
+	ret nz
 	ld hl, .Presentation
 	call PrintText
 	CheckEvent EVENT_PASSED_JUNIOR_TEST
@@ -74,13 +75,12 @@ PokemonAcademy3FTeacherText:
 	call PlaySound
 	call WaitForSoundToFinish
 	ld hl, .Congratulations
-    call PrintText
-   	ld a, SFX_GET_ITEM_2
-   	call PlaySound
-   	call WaitForSoundToFinish
-.passed
+	call PrintText
+	ld a, SFX_GET_ITEM_2
+	call PlaySound
+	call WaitForSoundToFinish
 	ld hl, .ComeBackAnytime
-    jr .printText
+	jr .printText
 .fail
 	ld a, SFX_DENIED
 	call PlaySoundWaitForCurrent
@@ -90,8 +90,8 @@ PokemonAcademy3FTeacherText:
 .refused
 	ld hl, .ComeBackWhenReady
 .printText
-    call PrintText
-    rst TextScriptEnd
+	call PrintText
+	rst TextScriptEnd
 
 .Presentation
 	text_far _PokemonAcademy3FTeacherPresentationText
