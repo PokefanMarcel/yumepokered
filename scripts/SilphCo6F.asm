@@ -51,11 +51,9 @@ SilphCo6FSilphWorkerM1Text:
 	text_asm
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
 	ld hl, .BackToWorkText
-	jr nz, .printText
+	ret nz
 	ld hl, .TookOverTheBuildingText
-.printText
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .TookOverTheBuildingText:
 	text_far _SilphCo6FSilphWorkerM1TookOverTheBuildingText
@@ -69,11 +67,9 @@ SilphCo6FSilphWorkerM2Text:
 	text_asm
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
 	ld hl, .WeGotEngagedText
-	jr nz, .printText
+	ret nz
 	ld hl, .HelpMePleaseText
-.printText
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .HelpMePleaseText:
 	text_far _SilphCo6FSilphWorkerMHelpMePleaseText
@@ -87,11 +83,9 @@ SilphCo6FSilphWorkerF1Text:
 	text_asm
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
 	ld hl, .HaveToMarryHimText
-	jr nz, .printText
+	ret nz
 	ld hl, .SuchACowardText
-.printText
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .SuchACowardText:
 	text_far _SilphCo6FSilphWorkerF1SuchACowardText
@@ -105,11 +99,9 @@ SilphCo6FSilphWorkerF2Text:
 	text_asm
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
 	ld hl, .TeamRocketRanText
-	jr nz, .printText
+	ret nz
 	ld hl, .TeamRocketConquerWorldText
-.printText
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .TeamRocketConquerWorldText:
 	text_far _SilphCo6FSilphWorkerF2TeamRocketConquerWorldText
@@ -123,11 +115,9 @@ SilphCo6FSilphWorkerM3Text:
 	text_asm
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
 	ld hl, .WorkForSilphText
-	jr nz, .printText
+	ret nz
 	ld hl, .TargetedSilphText
-.printText
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .TargetedSilphText:
 	text_far _SilphCo6FSilphWorkerM3TargetedSilphText
