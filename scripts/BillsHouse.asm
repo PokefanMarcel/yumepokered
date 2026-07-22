@@ -155,7 +155,7 @@ BillsHouseBillSSTicketText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_SS_TICKET
 	ld hl, .WhyDontYouGoInsteadOfMeText
-	jr nz, .printText
+	ret nz
 	ld hl, .ThankYouText
 	call PrintText
 	lb bc, S_S_TICKET, 1
