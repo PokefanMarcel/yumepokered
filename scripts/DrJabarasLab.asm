@@ -15,11 +15,11 @@ DrJabarasLabJabaraText:
 	text_asm
 	CheckEvent EVENT_JABARA_RETURNED_FLUTE
 	ld hl, .FinalText
-    jr nz, .printText
-    CheckEvent EVENT_JABARA_RUNNING_TESTS
-   	jr nz, .runningTests
-    CheckEvent EVENT_GAVE_JABARA_FLUTE
-    jr nz, .gaveFlute
+	ret nz
+	CheckEvent EVENT_JABARA_RUNNING_TESTS
+	jr nz, .runningTests
+	CheckEvent EVENT_GAVE_JABARA_FLUTE
+	jr nz, .gaveFlute
 	ld hl, .IntroText
 	call PrintText
 	ld b, POKE_FLUTE
@@ -41,7 +41,6 @@ DrJabarasLabJabaraText:
 	SetEvent EVENT_JABARA_RUNNING_TESTS
 	ld hl, .GaveFluteText
 	call PrintText
-.runningTests
 	ld hl, .NeedTimeText
 .printText
 	call PrintText
@@ -105,14 +104,12 @@ DrJabarasLabNotesText:
 DrJabarasLabEmailsText:
 	text_asm
 	ld hl, .ReceivedEmailText
-    CheckEvent EVENT_GAVE_JABARA_FLUTE ; Checkevent does not use hl
-    jr z, .printText
+    CheckEvent EVENT_GAVE_JABARA_FLUTE ; preserves hl
+	ret z
     CheckEvent EVENT_JABARA_RUNNING_TESTS
-    jr nz, .printText
+	ret nz
     ld hl, .EmailDraftText
-.printText
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .ReceivedEmailText:
 	text_far _DrJabarasLabReceivedEmailText
