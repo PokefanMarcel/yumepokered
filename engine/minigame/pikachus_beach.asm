@@ -1118,10 +1118,10 @@ SurfingMinigame_UpdateBoardAngle:
 	ret
 
 SurfingMinigame_GetSpeedDividedBy32:
-	ld a, [wSurfingMinigamePikachuSpeed]
+	ld hl, wSurfingMinigamePikachuSpeed ; marcelnote - optimized load from wSurfingMinigamePikachuSpeed
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld a, [wSurfingMinigamePikachuSpeed + 1]
-	ld h, a
 	add hl, hl
 	add hl, hl
 	add hl, hl
@@ -1241,10 +1241,10 @@ SurfingMinigame_MoveClouds:
 	ld a, [wSurfingMinigameCloudScrollFraction]
 	ld e, a
 	ld d, 0
-	ld a, [wSurfingMinigamePikachuSpeed]
+	ld hl, wSurfingMinigamePikachuSpeed ; marcelnote - optimized load from wSurfingMinigamePikachuSpeed
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld a, [wSurfingMinigamePikachuSpeed + 1]
-	ld h, a
 	add hl, de
 	ld a, l
 	ld [wSurfingMinigameCloudScrollFraction], a
