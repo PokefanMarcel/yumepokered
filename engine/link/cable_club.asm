@@ -32,44 +32,42 @@ CableClub_DoBattleOrTradeAgain:
 	ld [hli], a
 	dec b
 	jr nz, .writePlayerDataBlockPreambleLoop
+
 	ld hl, wSerialRandomNumberListBlock
-	ld a, SERIAL_PREAMBLE_BYTE
+	; a = SERIAL_PREAMBLE_BYTE
 	ld b, 7
 .writeRandomNumberListPreambleLoop
 	ld [hli], a
 	dec b
 	jr nz, .writeRandomNumberListPreambleLoop
-	ld b, 10
+
+	lb bc, 10, SERIAL_PREAMBLE_BYTE
 .generateRandomNumberListLoop
 	call Random
-	cp SERIAL_PREAMBLE_BYTE ; all the random numbers have to be less than the preamble byte
+	cp c ; all the random numbers have to be less than the preamble byte
 	jr nc, .generateRandomNumberListLoop
 	ld [hli], a
 	dec b
 	jr nz, .generateRandomNumberListLoop
+
 	ld hl, wSerialPartyMonsPatchList
 	ld a, SERIAL_PREAMBLE_BYTE
 	ld [hli], a
 	ld [hli], a
 	ld [hli], a
-	ld b, $c8
+
 	xor a
+	ld b, $c8
 .zeroPlayerDataPatchListLoop
 	ld [hli], a
 	dec b
 	jr nz, .zeroPlayerDataPatchListLoop
 	ld hl, wLinkEnemyTrainerName
 	ld bc, wTrainerHeaderPtr - wLinkEnemyTrainerName
-.zeroEnemyPartyLoop
-	xor a
-	ld [hli], a
-	dec bc
-	ld a, b
-	or c
-	jr nz, .zeroEnemyPartyLoop
-	ld hl, wPartyMons - 1
+	call FillMemory ; zero enemy party
+	ld hl, wPartyMons ; marcelnote - small loop optimization
 	ld de, wSerialPartyMonsPatchList + 10
-	ld bc, 0
+	; bc = 0 after FillMemory
 .patchPartyMonsLoop
 	inc c
 	ld a, c
@@ -83,15 +81,17 @@ CableClub_DoBattleOrTradeAgain:
 	cp (wPartyMonOT - (wPartyMons - 1)) - (SERIAL_PREAMBLE_BYTE - 1)
 	jr z, .finishedPatchingPlayerData
 .checkPlayerDataByte
-	inc hl
-	ld a, [hl]
+	ld a, [hli]
 	cp SERIAL_NO_DATA_BYTE
 	jr nz, .patchPartyMonsLoop
 ; if the player data byte matches SERIAL_NO_DATA_BYTE, patch it with $FF and record the offset in the patch list
+	ASSERT SERIAL_NO_DATA_BYTE + 1 == $ff
+	dec hl
+	inc a ; a = $ff
+	ld [hli], a
 	ld a, c
 	ld [de], a
 	inc de
-	ld [hl], $ff
 	jr .patchPartyMonsLoop
 .startPatchListPart2
 	ld a, SERIAL_PATCH_LIST_PART_TERMINATOR
@@ -102,6 +102,7 @@ CableClub_DoBattleOrTradeAgain:
 .finishedPatchingPlayerData
 	ld a, SERIAL_PATCH_LIST_PART_TERMINATOR
 	ld [de], a ; end of part 2
+
 	call Serial_SyncAndExchangeNybble
 	ldh a, [hSerialConnectionStatus]
 	cp USING_INTERNAL_CLOCK
@@ -122,6 +123,7 @@ CableClub_DoBattleOrTradeAgain:
 	call Delay3
 	ld a, IE_SERIAL
 	ldh [rIE], a
+
 	ld hl, wSerialRandomNumberListBlock
 	ld de, wSerialOtherGameboyRandomNumberListBlock
 	ld bc, SERIAL_RN_PREAMBLE_LENGTH + SERIAL_RNS_LENGTH
@@ -129,6 +131,7 @@ CableClub_DoBattleOrTradeAgain:
 	call Serial_ExchangeBytes
 	ld a, SERIAL_NO_DATA_BYTE
 	ld [de], a
+
 	ld hl, wSerialPlayerDataBlock
 	ld de, wSerialEnemyDataBlock
 	ld bc, SERIAL_PREAMBLE_LENGTH + NAME_LENGTH + 1 + PARTY_LENGTH + 1 + (PARTYMON_STRUCT_LENGTH + NAME_LENGTH * 2) * PARTY_LENGTH + 3
@@ -136,6 +139,7 @@ CableClub_DoBattleOrTradeAgain:
 	call Serial_ExchangeBytes
 	ld a, SERIAL_NO_DATA_BYTE
 	ld [de], a
+
 	ld hl, wSerialPartyMonsPatchList
 	ld de, wSerialEnemyMonsPatchList
 	ld bc, 200
@@ -257,10 +261,6 @@ CableClub_DoBattleOrTradeAgain:
 	ld hl, wEnemyMons + (SERIAL_PREAMBLE_BYTE - 1)
 	dec c
 	jr nz, .unpatchEnemyMonsLoop
-	;ld a, LOW(wEnemyMonOT)
-	;ld [wUnusedNamePointer], a
-	;ld a, HIGH(wEnemyMonOT)
-	;ld [wUnusedNamePointer + 1], a
 	xor a
 	ld [wTradeCenterPointerTableIndex], a
 	ld a, SFX_STOP_ALL_MUSIC
@@ -289,10 +289,7 @@ CableClub_DoBattleOrTradeAgain:
 	ld c, 0 ; BANK(Music_GameCorner)
 	ld a, MUSIC_GAME_CORNER
 	call PlayMusic
-	jr CallCurrentTradeCenterFunction
-
-PleaseWaitString:
-	db "PLEASE WAIT!@"
+	; fallthrough
 
 CallCurrentTradeCenterFunction:
 	ld hl, TradeCenterPointerTable
@@ -368,10 +365,10 @@ TradeCenter_SelectMon:
 ; if Left pressed, switch back to the player mon menu
 	xor a ; player mon menu
 	ld [wWhichTradeMonSelectionMenu], a
-	ld a, [wMenuCursorLocation]
+	ld hl, wMenuCursorLocation ; marcelnote - optimized load from wMenuCursorLocation
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld a, [wMenuCursorLocation + 1]
-	ld h, a
 	ld a, [wTileBehindCursor]
 	ld [hl], a
 	ld a, [wCurrentMenuItem]
@@ -396,7 +393,6 @@ TradeCenter_SelectMon:
 	ld [wMaxMenuItem], a
 	ld a, 1
 	ld [wTopMenuItemY], a
-	ld a, 1
 	ld [wTopMenuItemX], a
 	hlcoord 1, 1
 	lb bc, 6, 1
@@ -420,10 +416,10 @@ TradeCenter_SelectMon:
 ; if Right pressed, switch to the enemy mon menu
 	ld a, $1 ; enemy mon menu
 	ld [wWhichTradeMonSelectionMenu], a
-	ld a, [wMenuCursorLocation]
+	ld hl, wMenuCursorLocation ; marcelnote - optimized load from wMenuCursorLocation
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld a, [wMenuCursorLocation + 1]
-	ld h, a
 	ld a, [wTileBehindCursor]
 	ld [hl], a
 	ld a, [wCurrentMenuItem]
@@ -529,12 +525,11 @@ TradeCenter_SelectMon:
 	ld a, [wMaxMenuItem]
 	cp b
 	jp nz, .getNewInput
-	ld a, [wMenuCursorLocation]
+	ld hl, wMenuCursorLocation ; marcelnote - optimized load from wMenuCursorLocation
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld a, [wMenuCursorLocation + 1]
-	ld h, a
-	ld a, ' '
-	ld [hl], a
+	ld [hl], ' '
 .cancelMenuItem_Loop
 	ld a, '▶' ; filled arrow cursor
 	ldcoord_a 1, 16
@@ -570,7 +565,6 @@ ReturnToCableClubRoom:
 	ld hl, wFontLoaded
 	ld a, [hl]
 	push af
-	push hl
 	res BIT_FONT_LOADED, [hl]
 	xor a
 	ld [wStatusFlags3], a ; clears BIT_INIT_TRADE_CENTER_FACING
@@ -578,9 +572,8 @@ ReturnToCableClubRoom:
 	ld [wDestinationWarpID], a
 	call LoadMapData
 	callfar ClearVariablesOnEnterMap
-	pop hl
 	pop af
-	ld [hl], a
+	ld [wFontLoaded], a
 	jp GBFadeInFromWhite
 
 TradeCenter_DrawCancelBox:
@@ -875,7 +868,6 @@ CableClub_Run:
 	jr z, .doBattleOrTrade
 	cp LINK_STATE_RESET ; this is never used
 	ret nz
-	predef EmptyFunc
 	jp Init
 .doBattleOrTrade
 	call CableClub_DoBattleOrTrade
@@ -903,9 +895,6 @@ CableClub_Run:
 	ld a, MUSIC_CELADON
 	ld [wMusicFadeID], a
 ;	jp PlayMusic
-	ret
-
-EmptyFunc:
 	ret
 
 ; marcelnote - moved tileset in VRAM and added labels
@@ -970,3 +959,7 @@ LoadTrainerInfoTextBoxTiles:
 	ld hl, vChars2 tile CABLE_CLUB_TEXTBOX_BASE ; marcelnote - moved tileset in VRAM from $75
 	lb bc, BANK(TrainerInfoTextBoxTileGraphics), (TrainerInfoTextBoxTileGraphicsEnd - TrainerInfoTextBoxTileGraphics) / TILE_SIZE
 	jp CopyVideoData
+
+
+PleaseWaitString:
+	db "PLEASE WAIT!@"
