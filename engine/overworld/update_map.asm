@@ -86,10 +86,10 @@ RedrawMapView::
 	ld a, h
 	and $3
 	or HIGH(vBGMap0)
-	ld a, l
-	ld [wBuffer], a
-	ld a, h
-	ld [wBuffer + 1], a ; this copy of the address is not used
+;	ld a, l
+;	ld [wBuffer], a
+;	ld a, h
+;	ld [wBuffer + 1], a ; this copy of the address is not used
 	ld a, 2
 	ldh [hRedrawMapViewRowOffset], a
 	ld c, SCREEN_HEIGHT / 2 ; number of rows of 2x2 tiles (this covers the whole screen)
