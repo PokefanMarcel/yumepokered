@@ -220,11 +220,9 @@ SilphCo7FSilphWorkerM1Text:
 	jr z, .giveLapras
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
 	ld hl, .SavedText
-	jr nz, .printText
+	ret nz
 	ld hl, .IsOurPresidentOkText
-.printText
-	call PrintText
-	rst TextScriptEnd
+	ret
 .giveLapras
 	ld hl, .HaveThisPokemonText
 	call PrintText
@@ -261,11 +259,9 @@ SilphCo7FSilphWorkerM2Text:
 	text_asm
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
 	ld hl, .CancelledTheMasterBallText
-	jr nz, .printText
+	ret nz
 	ld hl, .AfterTheMasterBallText
-.printText
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .AfterTheMasterBallText
 	text_far _SilphCo7FSilphWorkerM2AfterTheMasterBallText
@@ -279,11 +275,9 @@ SilphCo7FSilphWorkerM3Text:
 	text_asm
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
 	ld hl, .YouChasedOffTeamRocketText
-	jr nz, .printText
+	ret nz
 	ld hl, .ItWouldBeBadText
-.printText
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .ItWouldBeBadText
 	text_far _SilphCo7FSilphWorkerM3ItWouldBeBadText
@@ -297,11 +291,9 @@ SilphCo7FSilphWorkerM4Text:
 	text_asm
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
 	ld hl, .SafeAtLastText
-	jr nz, .printText
+	ret nz
 	ld hl, .ItsReallyDangerousHereText
-.printText
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .ItsReallyDangerousHereText
 	text_far _SilphCo7FSilphWorkerM4ItsReallyDangerousHereText
