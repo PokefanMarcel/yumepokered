@@ -44,11 +44,9 @@ SilphCo3FSilphWorkerMText:
 	text_asm
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
 	ld hl, .YouSavedUsText
-	jr nz, .printText
+	ret nz
 	ld hl, .WhatShouldIDoText
-.printText
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .WhatShouldIDoText:
 	text_far _SilphCo3FSilphWorkerMWhatShouldIDoText
