@@ -48,15 +48,15 @@ DisplayPokemartDialogue_::
 	;;;;;;;;;; marcelnote - check which pocket we were last in, new for bag pockets
 	ld a, [wBagPocketsFlags]
 	bit BIT_KEY_ITEMS_POCKET, a
-	ld hl, wNumBagItems
+	ld bc, wNumBagItems
 	jr z, .gotBagPocket
-	ld hl, wNumBagKeyItems
+	ld bc, wNumBagKeyItems
 .gotBagPocket
 	;;;;;;;;;;
-	ld a, l
-	ld [wListPointer], a
-	ld a, h
-	ld [wListPointer + 1], a
+	ld hl, wListPointer ; marcelnote - optimized load into wListPointer
+	ld a, c
+	ld [hli], a
+	ld [hl], b
 	xor a
 	ld [wPrintItemPrices], a
 	ld [wCurrentMenuItem], a
