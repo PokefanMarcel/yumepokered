@@ -101,8 +101,8 @@ Route18Gate1FGuardText: ; marcelnote - optimized
 	jr z, .gotText
 	ld hl, .CyclingRoadUphillText
 .gotText
-	call PrintText
-	rst TextScriptEnd
+	bccoord 1, 14 ; restore text destination
+	ret
 
 .YouNeedABicycleText:
 	text_far _Route18Gate1FGuardYouNeedABicycleText
