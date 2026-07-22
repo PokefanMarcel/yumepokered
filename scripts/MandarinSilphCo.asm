@@ -34,12 +34,12 @@ MandarinSilphCo3FScientistText:
 
 MandarinSilphCo4FDirectorText:
 	text_asm
-	ld hl, .FromNowOnText
 	CheckEvent EVENT_GOT_MANDARIN_SILPH_DIRECTOR_NUGGET
-	jr nz, .print
-	ld hl, .BusyText
+	ld hl, .FromNowOnText
+	ret nz
 	CheckEvent EVENT_POSTGAME_LORELEI
-	jr z, .print
+	ld hl, .BusyText
+	ret z
 	ld hl, .PleaseTakeThisText
 	call PrintText
 	lb bc, NUGGET, 1
@@ -48,7 +48,6 @@ MandarinSilphCo4FDirectorText:
 	jr nc, .print
 	SetEvent EVENT_GOT_MANDARIN_SILPH_DIRECTOR_NUGGET
 	ld hl, .ReceivedNuggetText
-	jr .print
 .print
 	call PrintText
 	rst TextScriptEnd
