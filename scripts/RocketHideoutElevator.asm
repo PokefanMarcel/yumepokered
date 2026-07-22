@@ -76,8 +76,8 @@ RocketHideoutElevatorText:
 	rst TextScriptEnd
 .noKey
 	ld hl, .AppearsToNeedKeyText
-	call PrintText
-	rst TextScriptEnd
+	bccoord 1, 14 ; restore text destination
+	ret
 
 .AppearsToNeedKeyText:
 	text_far _RocketHideoutElevatorAppearsToNeedKeyText
