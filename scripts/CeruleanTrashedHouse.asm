@@ -16,8 +16,8 @@ CeruleanTrashedHouseFishingGuruText: ; marcelnote - optimized
 	jr z, .noDigTM
 	ld hl, .WhatsLostIsLostText
 .noDigTM
-	call PrintText
-	rst TextScriptEnd
+	bccoord 1, 14 ; restore text destination
+	ret
 
 .TheyStoleATMText:
 	text_far _CeruleanTrashedHouseFishingGuruTheyStoleATMText
