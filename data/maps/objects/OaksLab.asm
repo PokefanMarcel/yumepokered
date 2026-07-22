@@ -1,8 +1,8 @@
 	object_const_def
 	const_export OAKSLAB_RIVAL
-	const_export OAKSLAB_CHARMANDER_POKE_BALL
-	const_export OAKSLAB_SQUIRTLE_POKE_BALL
-	const_export OAKSLAB_BULBASAUR_POKE_BALL
+	const_export OAKSLAB_STARTER_BALL_1
+	const_export OAKSLAB_STARTER_BALL_2
+	const_export OAKSLAB_STARTER_BALL_3
 	const_export OAKSLAB_OAK
 	const_export OAKSLAB_POKEDEX1
 	const_export OAKSLAB_POKEDEX2

@@ -150,17 +150,17 @@ CheckBoulderCoords:: ; marcelnote - optimized
 
 GetPointerWithinSpriteStateData1::
 	ld h, HIGH(wSpriteStateData1)
-	jr _GetPointerWithinSpriteStateData
+	jr GetPointerWithinSpriteStateDataCommon
 
 GetPointerWithinSpriteStateData2::
 	ld h, HIGH(wSpriteStateData2)
 
-_GetPointerWithinSpriteStateData:
+GetPointerWithinSpriteStateDataCommon:
 	ldh a, [hSpriteDataOffset]
-	ld b, a
+	ld l, a
 	ldh a, [hSpriteIndex]
 	swap a
-	add b
+	add l
 	ld l, a
 	ret
 
