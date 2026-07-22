@@ -173,11 +173,9 @@ VermilionCityGambler1Text:
 	text_asm
 	CheckEvent EVENT_SS_ANNE_LEFT
 	ld hl, .SSAnneDepartedText
-	jr nz, .printText
+	ret nz
 	ld hl, .DidYouSeeText
-.printText
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .DidYouSeeText:
 	text_far _VermilionCityGambler1DidYouSeeText
@@ -191,14 +189,15 @@ VermilionCitySailor1Text: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_SS_ANNE_LEFT
 	ld hl, .ShipSetSailText
-	jr nz, .printText
+	ret nz
 	ld hl, .inFrontOfOrBehindGuardCoords
 	call ArePlayerCoordsInArray
+	bccoord 1, 14 ; restore text destination
 	ld hl, .WelcomeToSSAnneText
-	jr c, .printText
+	ret c
 	ld a, [wSpritePlayerStateData1FacingDirection]
 	cp SPRITE_FACING_RIGHT
-	jr z, .printText
+	ret z
 	ld hl, .DoYouHaveATicketText
 	call PrintText
 	ld b, S_S_TICKET
@@ -298,8 +297,8 @@ VermilionCitySailor3Text: ; marcelnote - new for ferry
 	ld a, SCRIPT_VERMILIONCITY_PLAYER_ALLOWED_TO_PASS
 	ld [wVermilionCityCurScript], a
 .printText
-	call PrintText
-	rst TextScriptEnd
+	bccoord 1, 14 ; restore text destination
+	ret
 
 .inFrontOfOrBehindGuardCoords
 	dbmapcoord 33, 29 ; in front of guard
