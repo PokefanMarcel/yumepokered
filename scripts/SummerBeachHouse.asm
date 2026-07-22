@@ -169,8 +169,8 @@ SummerBeachHousePoster2Text: ; marcelnote - shuffled poster texts
 	jr z, .printText
 	ld hl, .SurfingTip1Text
 .printText
-	call PrintText
-	rst TextScriptEnd
+	bccoord 1, 14 ; restore text destination
+	ret
 
 .ScribblesText
 	text_far _SummerBeachHousePosterScribblesText
@@ -187,8 +187,8 @@ SummerBeachHousePoster3Text: ; marcelnote - shuffled poster texts
 	jr z, .printText
 	ld hl, .SurfingTip2Text
 .printText
-	call PrintText
-	rst TextScriptEnd
+	bccoord 1, 14 ; restore text destination
+	ret
 
 .SeaUnitesAllText
 	text_far _SummerBeachHousePosterSeaUnitesAllText
@@ -201,12 +201,8 @@ SummerBeachHousePoster3Text: ; marcelnote - shuffled poster texts
 SummerBeachHousePrinterText:
 	text_asm
 	CheckEvent EVENT_SURFIN_DUDE_WHOA
-	jr nz, .checkHiScore
 	ld hl, .SummerBeachHouseSomeMachineText
-	call PrintText
-	rst TextScriptEnd
-
-.checkHiScore
+	ret z
 	ld hl, .SummerBeachHousePrinterCheckItOutText
 	call PrintText
 	call YesNoChoice
