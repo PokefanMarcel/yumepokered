@@ -44,7 +44,8 @@ PokemonAcademy1FSignText:
 PokemonAcademy2FTeacherText:
 	text_asm
 	CheckEvent EVENT_PASSED_JUNIOR_TEST
-    jr nz, .passed
+	ld hl, .WellDone
+	ret nz
 	ld hl, .DoYouWantToTakeTheTest
 	call PrintText
 	call YesNoChoice
@@ -85,9 +86,8 @@ PokemonAcademy2FTeacherText:
 	ld a, SFX_GET_ITEM_1
 	call PlaySound
 	call WaitForSoundToFinish
-.passed
 	ld hl, .WellDone
-    jr .printText
+	jr .printText
 .fail
 	ld a, SFX_DENIED
 	call PlaySoundWaitForCurrent
