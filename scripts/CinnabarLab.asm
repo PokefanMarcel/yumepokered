@@ -77,7 +77,7 @@ CinnabarLabMetronomeRoomScientist1Text: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_TM35
 	ld hl, .TM35ExplanationText
-	jr nz, .printText
+	ret nz
 	ld hl, .Text
 	call PrintText
 	lb bc, TM_METRONOME, 1
@@ -169,19 +169,17 @@ CinnabarLabFossilRoomScientist1Text: ; marcelnote - optimized
 	call CinnabarLabScript_GetFossilsInBag
 	ld a, [wFilteredBagItemsCount]
 	and a
-	ld hl, .NoFossilsText
-	jr z, .printText
+	jr z, .noFossils
 	callfar GiveFossilToCinnabarLab
+	rst TextScriptEnd
+.noFossils
+	ld hl, .NoFossilsText
+	call PrintText
 	rst TextScriptEnd
 .checkDoneReviving
 	CheckEventAfterBranchReuseA EVENT_LAB_STILL_REVIVING_FOSSIL, EVENT_GAVE_FOSSIL_TO_LAB
-	jr z, .doneReviving
 	ld hl, .GoForAWalkText
-.printText
-	call PrintText
-.textScriptEnd
-	rst TextScriptEnd
-.doneReviving
+	ret nz
 	call LoadFossilItemAndMonNameBank1D
 	ld hl, .FossilIsBackToLifeText
 	call PrintText
@@ -192,6 +190,7 @@ CinnabarLabFossilRoomScientist1Text: ; marcelnote - optimized
 	call GivePokemon
 	jr nc, .textScriptEnd
 	ResetEvents EVENT_GAVE_FOSSIL_TO_LAB, EVENT_LAB_STILL_REVIVING_FOSSIL, EVENT_LAB_HANDING_OVER_FOSSIL_MON
+.textScriptEnd
 	rst TextScriptEnd
 
 .Text:
