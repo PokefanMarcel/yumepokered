@@ -162,8 +162,8 @@ MandarinIslandSailorFerriesText:
 	ld a, SCRIPT_MANDARINISLAND_PLAYER_ALLOWED_TO_PASS
 	ld [wMandarinIslandCurScript], a
 .printText
-	call PrintText
-	rst TextScriptEnd
+	bccoord 1, 14 ; restore text destination
+	ret
 
 .inFrontOfOrBehindGuardCoords
 	dbmapcoord 27, 25 ; in front of guard
