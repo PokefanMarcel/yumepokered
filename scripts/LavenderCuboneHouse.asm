@@ -17,11 +17,9 @@ LavenderCuboneHouseBrunetteGirlText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_RESCUED_MR_FUJI
 	ld hl, .TheGhostIsGoneText
-	jr nz, .rescuedMrFuji
+	ret nz
 	ld hl, .PoorCubonesMotherText
-.rescuedMrFuji
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .PoorCubonesMotherText:
 	text_far _LavenderCuboneHouseBrunetteGirlPoorCubonesMotherText
