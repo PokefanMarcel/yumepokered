@@ -134,13 +134,10 @@ CeladonGymErikaText:
 	CheckEvent EVENT_BEAT_ERIKA
 	jr z, .beforeBeat
 	CheckEventReuseA EVENT_GOT_TM21
-	jr nz, .afterBeat
-	call z, CeladonGymReceiveTM21
-	call DisableWaitingAfterTextDisplay
-	rst TextScriptEnd
-.afterBeat
 	ld hl, .PostBattleAdviceText
-	call PrintText
+	ret nz
+	call CeladonGymReceiveTM21
+	call DisableWaitingAfterTextDisplay
 	rst TextScriptEnd
 .beforeBeat
 	ld hl, .PreBattleText
@@ -318,11 +315,8 @@ CeladonGymAfterBattleText8:
 CeladonGymErikaRematchText: ; marcelnote - Erika rematch
 	text_asm
 	CheckEvent EVENT_BEAT_ERIKA_REMATCH
-	jr z, .beforeBeat
 	ld hl, CeladonGymAfterRematchText
-	call PrintText
-	rst TextScriptEnd
-.beforeBeat
+	ret nz
 	ld hl, .PreBattleText
 	call PrintText
 	call YesNoChoice
