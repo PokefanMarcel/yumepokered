@@ -19,13 +19,8 @@ SlidePlayerAndEnemySilhouettesOnScreen:
 	call LoadHudAndHpBarAndStatusTilePatterns
 	ld hl, vBGMap0
 	ld bc, TILEMAP_AREA
-.clearBackgroundLoop
 	ld a, ' '
-	ld [hli], a
-	dec bc
-	ld a, b
-	or c
-	jr nz, .clearBackgroundLoop
+	call FillMemory
 ; copy the work RAM tile map to VRAM
 	hlcoord 0, 0
 	ld de, vBGMap0
