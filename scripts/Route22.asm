@@ -386,21 +386,17 @@ Route22Rival1Text: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_BEAT_ROUTE22_RIVAL_1ST_BATTLE
 	ld hl, Route22RivalBeforeBattleText1
-	jr z, .printText
+	ret z
 	ld hl, Route22RivalAfterBattleText1
-.printText
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 Route22Rival2Text: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_BEAT_ROUTE22_RIVAL_2ND_BATTLE
 	ld hl, Route22RivalBeforeBattleText2
-	jr z, .printText
+	ret z
 	ld hl, Route22RivalAfterBattleText2
-.printText
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 Route22RivalBeforeBattleText1:
 	text_far _Route22RivalBeforeBattleText1
