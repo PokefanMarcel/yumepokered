@@ -12,7 +12,7 @@ MandarinSurfShopClerkText:
 	text_asm
 	CheckEvent EVENT_GOT_SURFBOARD
 	ld hl, MandarinSurfShopClerkHowDoYouLikeYourSurfboardText
-	jr nz, .printText
+	ret nz
 ; don't have surfboard
 	ld b, SURF_VOUCHER
 	call IsItemInBag
