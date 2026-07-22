@@ -153,15 +153,13 @@ ViridianCityGambler1Text: ; marcelnote - reorganized for new text
 	text_asm
 	CheckEvent EVENT_BEAT_VIRIDIAN_GYM_GIOVANNI
 	ld hl, .GymLeaderWasBossText
-	jr nz, .printText
+	ret nz
 	ld a, [wObtainedBadges]
 	cp ~(1 << BIT_EARTHBADGE) ; checks whether got all other badges
 	ld hl, .GymLeaderReturnedText
-	jr z, .printText
+	ret z
 	ld hl, .GymAlwaysClosedText
-.printText
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .GymAlwaysClosedText:
 	text_far _ViridianCityGambler1GymAlwaysClosedText
@@ -205,11 +203,9 @@ ViridianCityGirlText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_POKEDEX
 	ld hl, .WhenIGoShopText
-	jr nz, .gotPokedex
+	ret nz
 	ld hl, .HasntHadHisCoffeeYetText
-.gotPokedex
-	call PrintText
-	rst TextScriptEnd
+	ret
 
 .HasntHadHisCoffeeYetText:
 	text_far _ViridianCityGirlHasntHadHisCoffeeYetText
@@ -236,7 +232,7 @@ ViridianCityFisherText: ; marcelnote - optimized
 	text_asm
 	CheckEvent EVENT_GOT_TM42
 	ld hl, .TM42ExplanationText
-	jr nz, .printText
+	ret nz
 	ld hl, .YouCanHaveThisText
 	call PrintText
 	lb bc, TM_DREAM_EATER, 1
