@@ -104,8 +104,8 @@ Route16Gate1FGuardText: ; marcelnote - optimized
 	jr z, .gotText
 	ld hl, .CyclingRoadExplanationText
 .gotText
-	call PrintText
-	rst TextScriptEnd
+	bccoord 1, 14 ; restore text destination
+	ret
 
 .NoPedestriansAllowedText:
 	text_far _Route16Gate1FGuardNoPedestriansAllowedText
