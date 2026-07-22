@@ -1,8 +1,5 @@
-SSAnne2FRooms_Script:
-	ld a, 1 << BIT_NO_AUTO_TEXT_BOX
-	ld [wAutoTextBoxDrawingControl], a
-	xor a
-	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+SSAnne2FRooms_Script: ; marcelnote - simplified script
+	call EnableAutoTextBoxDrawing
 	ld hl, SSAnne9TrainerHeaders
 	ld de, SSAnne2FRooms_ScriptPointers
 	ld a, [wSSAnne2FRoomsCurScript]
@@ -69,76 +66,33 @@ SSAnne2FRoomsCooltrainerFText:
 	rst TextScriptEnd
 
 SSAnne2FRoomsGentleman3Text:
+	text_far _SSAnne2FRoomsGentleman3Text
 	text_asm
-	call SaveScreenTilesToBuffer1
-	ld hl, .Text
-	call PrintText
-	call LoadScreenTilesFromBuffer1
 	ld a, SNORLAX
 	call DisplayPokedex
 	rst TextScriptEnd
 
-.Text:
-	text_far _SSAnne2FRoomsGentleman3Text
-	text_end
-
 SSAnne2FRoomsGentleman4Text:
-	text_asm
-	ld hl, .Text
-	call PrintText
-	rst TextScriptEnd
-
-.Text:
 	text_far _SSAnne2FRoomsGentleman4Text
 	text_end
 
 SSAnne2FRoomsGrampsText:
-	text_asm
-	ld hl, .Text
-	call PrintText
-	rst TextScriptEnd
-
-.Text:
 	text_far _SSAnne2FRoomsGrampsText
 	text_end
 
 SSAnne2FRoomsGentleman5Text:
-	text_asm
-	ld hl, .Text
-	call PrintText
-	rst TextScriptEnd
-
-.Text:
 	text_far _SSAnne2FRoomsGentleman5Text
 	text_end
 
 SSAnne2FRoomsLittleBoyText:
-	text_asm
-	ld hl, .Text
-	call PrintText
-	rst TextScriptEnd
-
-.Text:
 	text_far _SSAnne2FRoomsLittleBoyText
 	text_end
 
 SSAnne2FRoomsBrunetteGirlText:
-	text_asm
-	ld hl, .Text
-	call PrintText
-	rst TextScriptEnd
-
-.Text:
 	text_far _SSAnne2FRoomsBrunetteGirlText
 	text_end
 
 SSAnne2FRoomsBeautyText:
-	text_asm
-	ld hl, .Text
-	call PrintText
-	rst TextScriptEnd
-
-.Text:
 	text_far _SSAnne2FRoomsBeautyText
 	text_end
 
