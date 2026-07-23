@@ -539,12 +539,13 @@ TextCommand_SOUND::
 	jp NextTextCommand
 
 TextCommandSounds::
-	db TX_SOUND_GET_ITEM_1,           SFX_GET_ITEM_1 ; actually plays SFX_LEVEL_UP when the battle music engine is loaded
+	db TX_SOUND_GET_ITEM_1,           SFX_GET_ITEM_1
 	db TX_SOUND_CAUGHT_MON,           SFX_CAUGHT_MON
 	db TX_SOUND_POKEDEX_RATING,       SFX_POKEDEX_RATING ; unused
 	db TX_SOUND_GET_ITEM_2,           SFX_GET_ITEM_2
 	db TX_SOUND_GET_KEY_ITEM,         SFX_GET_KEY_ITEM
 	db TX_SOUND_DEX_PAGE_ADDED,       SFX_DEX_PAGE_ADDED
+	db TX_SOUND_LEVEL_UP,             SFX_LEVEL_UP ; marcelnote - new, was an alias for TX_SOUND_GET_ITEM_1
 
 ;TextCommand_DOTS:: ; marcelnote - unused, removed
 ;; wait for button press or 30 frames while printing "…"s

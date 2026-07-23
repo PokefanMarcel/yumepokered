@@ -209,9 +209,22 @@ TryingToLearn:
 	scf
 	ret
 
-LearnedMove1Text:
+LearnedMove1Text: ; marcelnote - modified for crysaudio
 	text_far _LearnedMove1Text
-	sound_get_item_1 ; plays SFX_GET_ITEM_1 in the party menu (rare candy) and plays SFX_LEVEL_UP in battle
+	text_asm
+	ld a, [wIsInBattle]
+	and a
+	ld hl, .GetItemSound
+	ret z
+	ld hl, .LevelUpSound
+	ret
+; Due to a bank inconsistency, vanilla does not play the same sound in and outside battles.
+.GetItemSound ; sound_get_item_1 outside battles
+	sound_get_item_1
+	text_promptbutton
+	text_end
+.LevelUpSound ; sound_level_up in battles
+	sound_level_up
 	text_promptbutton
 	text_end
 

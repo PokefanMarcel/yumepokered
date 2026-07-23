@@ -113,9 +113,6 @@ MACRO sound_get_item_1
 	db TX_SOUND_GET_ITEM_1
 ENDM
 
-DEF TX_SOUND_LEVEL_UP EQU TX_SOUND_GET_ITEM_1
-DEF sound_level_up EQUS "sound_get_item_1"
-
 ;	const TX_DOTS ; marcelnote - unused, removed
 ;MACRO text_dots
 ;	db TX_DOTS
@@ -158,6 +155,10 @@ MACRO text_far
 	dab \1 ; address of text commands
 ENDM
 
+	const TX_SOUND_LEVEL_UP ; $13 ; marcelnote - new, was an alias for TX_SOUND_GET_ITEM_1
+MACRO sound_level_up
+	db TX_SOUND_LEVEL_UP
+ENDM
 
 	const_next $50
 
