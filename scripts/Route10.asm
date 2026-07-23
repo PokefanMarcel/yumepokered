@@ -2,10 +2,8 @@ Route10_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, Route10TrainerHeaders
 	ld de, Route10_ScriptPointers
-	ld a, [wRoute10CurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wRoute10CurScript], a
-	ret
+	ld bc, wRoute10CurScript
+	jp ExecuteCurMapScriptInTable
 
 Route10_ScriptPointers:
 	def_script_pointers

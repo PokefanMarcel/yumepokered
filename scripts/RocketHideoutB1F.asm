@@ -3,10 +3,8 @@ RocketHideoutB1F_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, RocketHideoutB1FTrainerHeaders
 	ld de, RocketHideoutB1F_ScriptPointers
-	ld a, [wRocketHideoutB1FCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wRocketHideoutB1FCurScript], a
-	ret
+	ld bc, wRocketHideoutB1FCurScript
+	jp ExecuteCurMapScriptInTable
 
 RocketHideoutB1FDoorCallbackScript: ; marcelnote - modified and fixed bug
 	ld hl, wCurrentMapScriptFlags

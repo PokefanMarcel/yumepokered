@@ -3,10 +3,8 @@ CitrusFerryOutside_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, CitrusFerryOutsideTrainerHeaders
 	ld de, CitrusFerryOutside_ScriptPointers
-	ld a, [wCitrusFerryOutsideCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wCitrusFerryOutsideCurScript], a
-	ret
+	ld bc, wCitrusFerryOutsideCurScript
+	jp ExecuteCurMapScriptInTable
 
 CitrusFerryOutside_ScriptPointers:
 	def_script_pointers

@@ -459,7 +459,8 @@ wNPCMovementScriptPointerTableNum:: db
 ; ROM bank of current NPC movement script
 wNPCMovementScriptBank:: db
 
-	ds 2
+; pointer to the current map's canonical map script index
+wCurMapScriptStatePtr:: dw
 
 ; This union spans 180 bytes.
 UNION
@@ -2379,9 +2380,7 @@ wTrainerHeaderPtr:: dw
 ; gym quiz
 wOpponentAfterWrongAnswer:: db
 
-; index of current map script, mostly used as index for function pointer array
-; mostly copied from map-specific map script pointer and written back later
-wCurMapScript:: db
+	ds 1 ; marcelnote - was wCurMapScript
 
 ;	ds 7
 

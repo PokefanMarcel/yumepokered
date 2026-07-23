@@ -3,10 +3,8 @@ PokemonMansion3F_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, Mansion3TrainerHeaders
 	ld de, PokemonMansion3F_ScriptPointers
-	ld a, [wPokemonMansion3FCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wPokemonMansion3FCurScript], a
-	ret
+	ld bc, wPokemonMansion3FCurScript
+	jp ExecuteCurMapScriptInTable
 
 Mansion3CheckReplaceSwitchDoorBlocks: ; marcelnote - modified for new special warp engine
 	ld hl, wCurrentMapScriptFlags

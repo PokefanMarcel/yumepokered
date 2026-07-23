@@ -3,10 +3,8 @@ SSAnneB1F_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, SSAnneB1FTrainerHeaders
 	ld de, SSAnneB1F_ScriptPointers
-	ld a, [wSSAnneB1FCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wSSAnneB1FCurScript], a
-	ret
+	ld bc, wSSAnneB1FCurScript
+	jp ExecuteCurMapScriptInTable
 
 SSAnneB1F_ScriptPointers:
 	def_script_pointers

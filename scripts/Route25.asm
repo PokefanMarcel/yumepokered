@@ -3,10 +3,8 @@ Route25_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, Route25TrainerHeaders
 	ld de, Route25_ScriptPointers
-	ld a, [wRoute25CurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wRoute25CurScript], a
-	ret
+	ld bc, wRoute25CurScript
+	jp ExecuteCurMapScriptInTable
 
 Route25ToggleBillsScript:
 	ld hl, wCurrentMapScriptFlags

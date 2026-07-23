@@ -2,16 +2,13 @@ PokemonTower6F_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, PokemonTower6TrainerHeaders
 	ld de, PokemonTower6F_ScriptPointers
-	ld a, [wPokemonTower6FCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wPokemonTower6FCurScript], a
-	ret
+	ld bc, wPokemonTower6FCurScript
+	jp ExecuteCurMapScriptInTable
 
 PokemonTower6FSetDefaultScript:
 	xor a
 	ld [wJoyIgnore], a
 	ld [wPokemonTower6FCurScript], a ; SCRIPT_POKEMONTOWER6F_DEFAULT
-	ld [wCurMapScript], a ; SCRIPT_POKEMONTOWER6F_DEFAULT
 	ret
 
 PokemonTower6F_ScriptPointers:
@@ -44,7 +41,6 @@ ENDC
 	ld [wCurEnemyLevel], a
 	ld a, SCRIPT_POKEMONTOWER6F_MAROWAK_BATTLE
 	ld [wPokemonTower6FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 PokemonTower6FMarowakCoords:
@@ -74,7 +70,6 @@ PokemonTower6FMarowakBattleScript:
 	ld [wJoyIgnore], a
 	ld a, SCRIPT_POKEMONTOWER6F_DEFAULT
 	ld [wPokemonTower6FCurScript], a
-	ld [wCurMapScript], a
 	ret
 .didNotDefeat
 	ld a, 1
@@ -88,7 +83,6 @@ PokemonTower6FMarowakBattleScript:
 	set BIT_SCRIPTED_MOVEMENT_STATE, [hl]
 	ld a, SCRIPT_POKEMONTOWER6F_PLAYER_MOVING
 	ld [wPokemonTower6FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 PokemonTower6FPlayerMovingScript:
@@ -98,7 +92,6 @@ PokemonTower6FPlayerMovingScript:
 	call Delay3
 	xor a
 	ld [wPokemonTower6FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 PokemonTower6FCheckGhostEncounterScript: ; marcelnote - postgame Agatha event
@@ -120,7 +113,6 @@ PokemonTower6FCheckGhostEncounterScript: ; marcelnote - postgame Agatha event
 	ld [wCurEnemyLevel], a
 	ld a, SCRIPT_POKEMONTOWER6F_GHOST_BATTLE
 	ld [wPokemonTower6FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 PokemonTower6FGhostBattleCoords: ; marcelnote - postgame Agatha event
@@ -150,7 +142,6 @@ PokemonTower6FGhostBattleScript: ; marcelnote - postgame Agatha event
 	ld [wJoyIgnore], a
 	ld a, SCRIPT_POKEMONTOWER6F_DEFAULT
 	ld [wPokemonTower6FCurScript], a
-	ld [wCurMapScript], a
 	ret
 .didNotDefeat
 	ld a, 1
@@ -164,7 +155,6 @@ PokemonTower6FGhostBattleScript: ; marcelnote - postgame Agatha event
 	set BIT_SCRIPTED_MOVEMENT_STATE, [hl]
 	ld a, SCRIPT_POKEMONTOWER6F_PLAYER_MOVING
 	ld [wPokemonTower6FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 PokemonTower6F_TextPointers:

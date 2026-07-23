@@ -10,10 +10,8 @@ VictoryRoad2F_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, VictoryRoad2TrainerHeaders
 	ld de, VictoryRoad2F_ScriptPointers
-	ld a, [wVictoryRoad2FCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wVictoryRoad2FCurScript], a
-	ret
+	ld bc, wVictoryRoad2FCurScript
+	jp ExecuteCurMapScriptInTable
 
 VictoryRoad2FResetBoulderEventScript:
 	ResetEvent EVENT_VICTORY_ROAD_1_BOULDER_ON_SWITCH

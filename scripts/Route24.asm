@@ -2,17 +2,8 @@ Route24_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, Route24TrainerHeaders
 	ld de, Route24_ScriptPointers
-	ld a, [wRoute24CurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wRoute24CurScript], a
-	ret
-
-Route24SetDefaultScript:
-	xor a ; SCRIPT_ROUTE24_DEFAULT
-	ld [wJoyIgnore], a
-	ld [wRoute24CurScript], a
-	ld [wCurMapScript], a
-	ret
+	ld bc, wRoute24CurScript
+	jp ExecuteCurMapScriptInTable
 
 Route24_ScriptPointers:
 	def_script_pointers
@@ -46,7 +37,6 @@ ENDC
 	call StartSimulatingJoypadStates
 	ld a, SCRIPT_ROUTE24_PLAYER_MOVING
 	ld [wRoute24CurScript], a
-	ld [wCurMapScript], a
 	ret
 
 .PlayerCoordsArray:
@@ -58,15 +48,14 @@ Route24PlayerMovingScript:
 	and a
 	ret nz
 	call Delay3
-	ld a, SCRIPT_ROUTE24_DEFAULT
+	xor a ; SCRIPT_ROUTE24_DEFAULT
 	ld [wRoute24CurScript], a
-	ld [wCurMapScript], a
 	ret
 
 Route24AfterRocketBattleScript:
 	ld a, [wIsInBattle]
 	cp $ff
-	jr z, Route24SetDefaultScript
+	jr z, .lostBattle
 	call UpdateSprites
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
@@ -74,11 +63,10 @@ Route24AfterRocketBattleScript:
 	ld a, TEXT_ROUTE24_COOLTRAINER_M1
 	ldh [hTextID], a
 	call DisplayTextID
-	xor a
+.lostBattle
+	xor a ; SCRIPT_ROUTE24_DEFAULT
 	ld [wJoyIgnore], a
-	ld a, SCRIPT_ROUTE24_DEFAULT
 	ld [wRoute24CurScript], a
-	ld [wCurMapScript], a
 	ret
 
 Route24_TextPointers:
@@ -135,7 +123,6 @@ Route24CooltrainerM1Text: ; marcelnote - optimized
 	call InitBattleEnemyParameters
 	ld a, SCRIPT_ROUTE24_AFTER_ROCKET_BATTLE
 	ld [wRoute24CurScript], a
-	ld [wCurMapScript], a
 	rst TextScriptEnd
 .bagFull
 	ld hl, .NoRoomText

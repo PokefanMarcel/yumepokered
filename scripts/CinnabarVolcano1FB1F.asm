@@ -6,10 +6,9 @@ CinnabarVolcano1FB1F_Script:
 	call nz, CinnabarVolcano1FB1FCheckBoulderEventScript
 	call EnableAutoTextBoxDrawing
 	ld hl, CinnabarVolcano1FB1FTrainerHeaders
-    ld de, CinnabarVolcano1FB1F_ScriptPointers
-    ld a, [wCinnabarVolcano1FB1FCurScript]
-    call ExecuteCurMapScriptInTable
-	ld [wCinnabarVolcano1FB1FCurScript], a
+	ld de, CinnabarVolcano1FB1F_ScriptPointers
+	ld bc, wCinnabarVolcano1FB1FCurScript
+	call ExecuteCurMapScriptInTable
 	ld d, DUNGEON_WARP_CINNABAR_VOLCANO_1F
 	ld hl, .HolesCoords
 	jp IsPlayerOnDungeonWarp
@@ -109,7 +108,6 @@ CinnabarVolcano1FLanceGoesInScript: ; marcelnote - adapted from PokemonTower2F r
 	call MoveSprite
 	ld a, SCRIPT_CINNABARVOLCANO1F_LANCE_EXITS
 	ld [wCinnabarVolcano1FB1FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 .LanceGoesInMovementFacingRight:
@@ -139,7 +137,6 @@ CinnabarVolcano1FLanceExitsScript:
 	ld [wJoyIgnore], a
 	ld a, SCRIPT_CINNABARVOLCANO1FB1F_DEFAULT
 	ld [wCinnabarVolcano1FB1FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 CinnabarVolcanoB1FLanceTogetherScript:
@@ -148,7 +145,6 @@ CinnabarVolcanoB1FLanceTogetherScript:
 	call DisplayTextID
 	ld a, SCRIPT_CINNABARVOLCANOB1F_PLAYER_MOVES_TO_CHARIZARD
 	ld [wCinnabarVolcano1FB1FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 CinnabarVolcanoB1FPlayerMovesToCharizardScript:
@@ -174,7 +170,6 @@ CinnabarVolcanoB1FPlayerMovesToCharizardScript:
 	call StartSimulatingJoypadStates
 	ld a, SCRIPT_CINNABARVOLCANOB1F_CHARIZARD_BATTLE_STARTS
 	ld [wCinnabarVolcano1FB1FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 CinnabarVolcanoB1FCharizardBattleStartsScript:
@@ -189,7 +184,6 @@ CinnabarVolcanoB1FCharizardBattleStartsScript:
 	ld [wCurEnemyLevel], a
 	ld a, SCRIPT_CINNABARVOLCANOB1F_CHARIZARD_BATTLE
 	ld [wCinnabarVolcano1FB1FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 CinnabarVolcanoB1FCharizardBattleScript:
@@ -211,7 +205,6 @@ CinnabarVolcanoB1FCharizardBattleScript:
 	call MoveSprite
 	ld a, SCRIPT_CINNABARVOLCANOB1F_LANCE_GREAT_JOB
 	ld [wCinnabarVolcano1FB1FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 .LanceMovement:
@@ -261,7 +254,6 @@ CinnabarVolcanoB1FLanceGreatJobScript:
 	ldh [hJoyPressed], a
 	ld a, SCRIPT_CINNABARVOLCANO1FB1F_DEFAULT
 	ld [wCinnabarVolcano1FB1FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 CinnabarVolcano1FB1F_TextPointers:

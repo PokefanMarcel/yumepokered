@@ -7,23 +7,34 @@ StoreTrainerHeaderPointer::
 	ret
 
 ; executes the current map script from the function pointer array provided in de.
-; a: map script index to execute (unless overridden by [wStatusFlags7] BIT_USE_CUR_MAP_SCRIPT)
+; bc: pointer to the current map's map script index
 ; hl: trainer header pointer
 ExecuteCurMapScriptInTable:: ; marcelnote - optimized
-	push de ; save de = map script pointer
-	ld d, a ; save d = map script index
 	call StoreTrainerHeaderPointer
-	ld a, d ; restore a = map script index
-	ld hl, wStatusFlags7
-	bit BIT_USE_CUR_MAP_SCRIPT, [hl]
-	jr z, .useProvidedIndex ; test if map script index was overridden manually
-	res BIT_USE_CUR_MAP_SCRIPT, [hl]
-	ld a, [wCurMapScript]
-.useProvidedIndex
-	pop hl  ; restore hl = map script pointer
-	ld [wCurMapScript], a
-	call CallFunctionInTable
-	ld a, [wCurMapScript]
+	ld hl, wCurMapScriptStatePtr
+	ld a, c
+	ld [hli], a
+	ld [hl], b
+	ld a, [bc] ; a = current map's script
+	ld h, d
+	ld l, e
+	jp CallFunctionInTable
+
+SetCurMapScript::
+	ld c, a
+	ld hl, wCurMapScriptStatePtr
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld [hl], c
+	ret
+
+IncrementCurMapScript::
+	ld hl, wCurMapScriptStatePtr
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	inc [hl]
 	ret
 
 LoadGymLeaderAndCityName::
@@ -109,15 +120,12 @@ TalkToTrainer::
 	call ReadTrainerHeaderInfo     ; read end battle text
 ;	pop de
 	call SaveEndBattleTextPointers
-	ld hl, wStatusFlags7
-	set BIT_USE_CUR_MAP_SCRIPT, [hl] ; activate map script index override (index is set below)
 	ld hl, wMiscFlags
 	bit BIT_SEEN_BY_TRAINER, [hl]  ; test if player is already engaging the trainer (because the trainer saw the player)
 	ret nz
 ; if the player talked to the trainer of his own volition
 	call EngageMapTrainer
-	ld hl, wCurMapScript
-	inc [hl]      ; increment map script index before StartTrainerBattle increments it again (next script function is usually EndTrainerBattle)
+	call IncrementCurMapScript ; advance once before StartTrainerBattle advances to EndTrainerBattle
 	jr StartTrainerBattle
 
 ; checks if any trainers are seeing the player and wanting to fight
@@ -149,9 +157,7 @@ ENDC
 	xor a
 	ldh [hJoyHeld], a
 	call TrainerWalkUpToPlayer_Bank0
-	ld hl, wCurMapScript
-	inc [hl] ; increment map script index (next script function is usually DisplayEnemyTrainerTextAndStartBattle)
-	ret
+	jp IncrementCurMapScript ; next script function is usually DisplayEnemyTrainerTextAndStartBattle
 
 ; display the before battle text after the enemy trainer has walked up to the player's sprite
 DisplayEnemyTrainerTextAndStartBattle::
@@ -173,9 +179,7 @@ StartTrainerBattle::
 	set BIT_PRINT_END_BATTLE_TEXT, [hl]
 ;	ld hl, wStatusFlags4
 ;	set BIT_UNKNOWN_4_1, [hl] ; marcelnote - never read
-	ld hl, wCurMapScript
-	inc [hl] ; increment map script index (next script function is usually EndTrainerBattle)
-	ret
+	jp IncrementCurMapScript ; next script function is usually EndTrainerBattle
 
 EndTrainerBattle::
 	ld hl, wCurrentMapScriptFlags
@@ -217,8 +221,7 @@ ResetButtonPressedAndMapScript::
 	ldh [hJoyHeld], a
 	ldh [hJoyPressed], a
 	ldh [hJoyReleased], a
-	ld [wCurMapScript], a               ; reset battle status
-	ret
+	jp SetCurMapScript
 
 ; calls TrainerWalkUpToPlayer
 TrainerWalkUpToPlayer_Bank0::

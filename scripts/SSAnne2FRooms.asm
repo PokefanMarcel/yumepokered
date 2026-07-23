@@ -2,10 +2,8 @@ SSAnne2FRooms_Script: ; marcelnote - simplified script
 	call EnableAutoTextBoxDrawing
 	ld hl, SSAnne9TrainerHeaders
 	ld de, SSAnne2FRooms_ScriptPointers
-	ld a, [wSSAnne2FRoomsCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wSSAnne2FRoomsCurScript], a
-	ret
+	ld bc, wSSAnne2FRoomsCurScript
+	jp ExecuteCurMapScriptInTable
 
 SSAnne2FRooms_ScriptPointers:
 	def_script_pointers

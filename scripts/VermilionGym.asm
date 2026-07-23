@@ -11,10 +11,8 @@ VermilionGym_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, VermilionGymTrainerHeaders
 	ld de, VermilionGym_ScriptPointers
-	ld a, [wVermilionGymCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wVermilionGymCurScript], a
-	ret
+	ld bc, wVermilionGymCurScript
+	jp ExecuteCurMapScriptInTable
 
 .LoadNames:
 	ld hl, .CityName
@@ -56,7 +54,6 @@ VermilionGymResetScripts:
 	xor a ; SCRIPT_VERMILIONGYM_DEFAULT
 	ld [wJoyIgnore], a
 	ld [wVermilionGymCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 VermilionGym_ScriptPointers:

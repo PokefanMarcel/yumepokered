@@ -2,16 +2,13 @@ Route12_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, Route12TrainerHeaders
 	ld de, Route12_ScriptPointers
-	ld a, [wRoute12CurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wRoute12CurScript], a
-	ret
+	ld bc, wRoute12CurScript
+	jp ExecuteCurMapScriptInTable
 
 Route12ResetScripts:
 	xor a
 	ld [wJoyIgnore], a
 	ld [wRoute12CurScript], a
-	ld [wCurMapScript], a
 	ret
 
 Route12_ScriptPointers:
@@ -39,7 +36,6 @@ Route12DefaultScript:
 	predef HideObject
 	ld a, SCRIPT_ROUTE12_SNORLAX_POST_BATTLE
 	ld [wRoute12CurScript], a
-	ld [wCurMapScript], a
 	ret
 
 Route12SnorlaxPostBattleScript:
@@ -58,7 +54,6 @@ Route12SnorlaxPostBattleScript:
 	call Delay3
 	ld a, SCRIPT_ROUTE12_DEFAULT
 	ld [wRoute12CurScript], a
-	ld [wCurMapScript], a
 	ret
 
 Route12_TextPointers:

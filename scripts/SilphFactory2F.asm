@@ -4,16 +4,13 @@ SilphFactory2F_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, SilphFactory2FTrainerHeaders
 	ld de, SilphFactory2F_ScriptPointers
-	ld a, [wSilphFactory2FCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wSilphFactory2FCurScript], a
-	ret
+	ld bc, wSilphFactory2FCurScript
+	jp ExecuteCurMapScriptInTable
 
 SilphFactory2FResetScripts:
 	xor a
 	ld [wJoyIgnore], a
 	ld [wSilphFactory2FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 SilphFactory2FGateCallbackScript: ; marcelnote - adapted from SilphCo9FGateCallbackScript
@@ -57,7 +54,6 @@ SilphFactory2FLoreleiGoesUpstairsScript: ; marcelnote - adapted from PokemonTowe
 	call MoveSprite
 	ld a, SCRIPT_SILPHFACTORY2F_LORELEI_HIDE
 	ld [wSilphFactory2FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 .LoreleiMovement:
@@ -78,7 +74,6 @@ SilphFactory2FLoreleiHideScript:
 	ld [wJoyIgnore], a
 	ld a, SCRIPT_SILPHFACTORY2F_DEFAULT
 	ld [wSilphFactory2FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 SilphFactory2FRocketPostBattle:
@@ -135,7 +130,6 @@ SilphFactory2FRocketPostBattle:
 	call MoveSprite
 	ld a, SCRIPT_SILPHFACTORY2F_LORELEI_AFTER_BATTLE
 	ld [wSilphFactory2FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 .LoreleiArrivesMovementShort:
@@ -175,7 +169,6 @@ SilphFactory2FLoreleiAfterBattleScript:
 	call MoveSprite
 	ld a, SCRIPT_SILPHFACTORY2F_LORELEI_LEAVES
 	ld [wSilphFactory2FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 .LoreleiDepartsMovementShort:
@@ -221,7 +214,6 @@ SilphFactory2FLoreleiLeavesScript:
 	ld [wJoyIgnore], a
 	ld a, SCRIPT_SILPHFACTORY2F_DEFAULT
 	ld [wSilphFactory2FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 

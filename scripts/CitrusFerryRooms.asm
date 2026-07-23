@@ -3,10 +3,8 @@ CitrusFerryRooms_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, CitrusFerryRoomsTrainerHeaders
 	ld de, CitrusFerryRooms_ScriptPointers
-	ld a, [wCitrusFerryRoomsCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wCitrusFerryRoomsCurScript], a
-	ret
+	ld bc, wCitrusFerryRoomsCurScript
+	jp ExecuteCurMapScriptInTable
 
 CitrusFerryRooms_ScriptPointers:
 	def_script_pointers
@@ -33,7 +31,6 @@ CitrusFerryRoomsCheckIfArrivedScript:
 .notArrived
 	ld a, SCRIPT_CITRUSFERRYROOMS_DEFAULT
 	ld [wCitrusFerryRoomsCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 CitrusFerryRooms_TextPointers:

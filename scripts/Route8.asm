@@ -2,10 +2,8 @@ Route8_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, Route8TrainerHeaders
 	ld de, Route8_ScriptPointers
-	ld a, [wRoute8CurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wRoute8CurScript], a
-	ret
+	ld bc, wRoute8CurScript
+	jp ExecuteCurMapScriptInTable
 
 Route8_ScriptPointers:
 	def_script_pointers

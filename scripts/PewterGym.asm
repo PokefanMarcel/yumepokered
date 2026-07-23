@@ -6,10 +6,8 @@ PewterGym_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, PewterGymTrainerHeaders
 	ld de, PewterGym_ScriptPointers
-	ld a, [wPewterGymCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wPewterGymCurScript], a
-	ret
+	ld bc, wPewterGymCurScript
+	jp ExecuteCurMapScriptInTable
 
 .LoadNames:
 	ld hl, .CityName
@@ -37,7 +35,6 @@ PewterGymResetScripts:
 	xor a ; SCRIPT_PEWTERGYM_DEFAULT
 	ld [wJoyIgnore], a
 	ld [wPewterGymCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 PewterGym_ScriptPointers:

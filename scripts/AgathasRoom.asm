@@ -3,10 +3,8 @@ AgathasRoom_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, AgathasRoomTrainerHeaders
 	ld de, AgathasRoom_ScriptPointers
-	ld a, [wAgathasRoomCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wAgathasRoomCurScript], a
-	ret
+	ld bc, wAgathasRoomCurScript
+	jp ExecuteCurMapScriptInTable
 
 AgathaHideExitBlock: ; marcelnote - optimized and modified for Agatha rematch
 	ld hl, wCurrentMapScriptFlags
@@ -48,7 +46,6 @@ AgathaScriptWalkIntoRoom:
 	call StartSimulatingJoypadStates
 	ld a, SCRIPT_AGATHASROOM_PLAYER_IS_MOVING
 	ld [wAgathasRoomCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 AgathasRoomDefaultScript:
@@ -76,7 +73,6 @@ AgathasRoomDefaultScript:
 	call StartSimulatingJoypadStates
 	ld a, SCRIPT_AGATHASROOM_PLAYER_IS_MOVING
 	ld [wAgathasRoomCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 AgathaEntranceCoords:
@@ -94,7 +90,6 @@ AgathasRoomPlayerIsMovingScript:
 	xor a
 	ld [wJoyIgnore], a
 	ld [wAgathasRoomCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 AgathasRoomAgathaEndBattleScript:

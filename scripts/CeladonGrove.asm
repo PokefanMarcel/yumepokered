@@ -3,10 +3,8 @@ CeladonGrove_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, CeladonGroveTrainerHeaders
 	ld de, CeladonGrove_ScriptPointers
-	ld a, [wCeladonGroveCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wCeladonGroveCurScript], a
-	ret
+	ld bc, wCeladonGroveCurScript
+	jp ExecuteCurMapScriptInTable
 
 CeladonGroveMewAppearsScript:: ; used in ItemUsePokeFlute
 	ld a, $1
@@ -24,7 +22,6 @@ CeladonGroveMewAppearsScript:: ; used in ItemUsePokeFlute
 	call GBFadeInFromWhite
 	ld a, SCRIPT_CELADONGROVE_DEFAULT
 	ld [wCeladonGroveCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 CeladonGrove_ScriptPointers:

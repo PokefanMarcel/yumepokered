@@ -2,10 +2,8 @@ SSAnneBow_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, SSAnne5TrainerHeaders
 	ld de, SSAnneBow_ScriptPointers
-	ld a, [wSSAnneBowCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wSSAnneBowCurScript], a
-	ret
+	ld bc, wSSAnneBowCurScript
+	jp ExecuteCurMapScriptInTable
 
 SSAnneBow_ScriptPointers:
 	def_script_pointers

@@ -3,10 +3,8 @@ PokemonMansion2F_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, Mansion2TrainerHeaders
 	ld de, PokemonMansion2F_ScriptPointers
-	ld a, [wPokemonMansion2FCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wPokemonMansion2FCurScript], a
-	ret
+	ld bc, wPokemonMansion2FCurScript
+	jp ExecuteCurMapScriptInTable
 
 Mansion2CheckReplaceSwitchDoorBlocks:
 	ld hl, wCurrentMapScriptFlags

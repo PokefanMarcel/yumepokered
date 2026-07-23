@@ -3,10 +3,8 @@ MandarinHotel_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, MandarinHotelTrainerHeaders
 	ld de, MandarinHotel_ScriptPointers
-	ld a, [wMandarinHotelCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wMandarinHotelCurScript], a
-	ret
+	ld bc, wMandarinHotelCurScript
+	jp ExecuteCurMapScriptInTable
 
 MandarinHotel_ScriptPointers:
 	def_script_pointers

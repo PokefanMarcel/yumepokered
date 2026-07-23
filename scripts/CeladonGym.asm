@@ -6,10 +6,8 @@ CeladonGym_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, CeladonGymTrainerHeaders
 	ld de, CeladonGym_ScriptPointers
-	ld a, [wCeladonGymCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wCeladonGymCurScript], a
-	ret
+	ld bc, wCeladonGymCurScript
+	jp ExecuteCurMapScriptInTable
 
 .LoadNames:
 	ld hl, .CityName
@@ -37,7 +35,6 @@ CeladonGymResetScripts:
 	xor a ; SCRIPT_CELADONGYM_DEFAULT
 	ld [wJoyIgnore], a
 	ld [wCeladonGymCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 CeladonGym_ScriptPointers:

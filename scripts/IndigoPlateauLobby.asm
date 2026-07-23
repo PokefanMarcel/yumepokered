@@ -2,10 +2,8 @@ IndigoPlateauLobby_Script: ; marcelnote - script was extensively modified for po
 	call Serial_TryEstablishingExternallyClockedConnection
 	call EnableAutoTextBoxDrawing
 	ld de, IndigoPlateauLobby_ScriptPointers
-	ld a, [wIndigoPlateauLobbyCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wIndigoPlateauLobbyCurScript], a
-	ret
+	ld bc, wIndigoPlateauLobbyCurScript
+	jp ExecuteCurMapScriptInTable
 
 IndigoPlateauLobby_ScriptPointers:
 	def_script_pointers
@@ -66,7 +64,6 @@ IndigoPlateauLobbyDefaultScript:
 	call MoveSprite
 	ld a, SCRIPT_INDIGOPLATEAULOBBY_RIVAL_LEAVES
 	ld [wIndigoPlateauLobbyCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 .RivalCoords:
@@ -112,7 +109,6 @@ IndigoPlateauLobbyRivalLeavesScript: ; marcelnote - postgame Rival
 	call PlayDefaultMusic
 	ld a, SCRIPT_INDIGOPLATEAULOBBY_DEFAULT
 	ld [wIndigoPlateauLobbyCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 IndigoPlateauLobby_TextPointers:

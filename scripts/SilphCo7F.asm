@@ -3,10 +3,8 @@ SilphCo7F_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, SilphCo7TrainerHeaders
 	ld de, SilphCo7F_ScriptPointers
-	ld a, [wSilphCo7FCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wSilphCo7FCurScript], a
-	ret
+	ld bc, wSilphCo7FCurScript
+	jp ExecuteCurMapScriptInTable
 
 SilphCo7F_GateCallbackScript: ; marcelnote - simplify Silph Co gates scripts
 	ld hl, .GateCoordinates
@@ -26,7 +24,6 @@ SilphCo7FSetDefaultScript:
 	; fallthrough
 SilphCo7FSetCurScript:
 	ld [wSilphCo7FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 SilphCo7F_ScriptPointers:

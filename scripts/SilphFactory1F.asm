@@ -4,10 +4,8 @@ SilphFactory1F_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, SilphFactory1FTrainerHeaders
 	ld de, SilphFactory1F_ScriptPointers
-	ld a, [wSilphFactory1FCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wSilphFactory1FCurScript], a
-	ret
+	ld bc, wSilphFactory1FCurScript
+	jp ExecuteCurMapScriptInTable
 
 SilphFactory1FDoorCallbackScript: ; marcelnote - adapted from RocketHideoutB4FDoorCallbackScript
 	ld hl, wCurrentMapScriptFlags

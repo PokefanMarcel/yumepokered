@@ -2,16 +2,13 @@ PokemonTower5F_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, PokemonTower5TrainerHeaders
 	ld de, PokemonTower5F_ScriptPointers
-	ld a, [wPokemonTower5FCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wPokemonTower5FCurScript], a
-	ret
+	ld bc, wPokemonTower5FCurScript
+	jp ExecuteCurMapScriptInTable
 
 PokemonTower5FSetDefaultScript: ; marcelnote - postgame Agatha event
 	xor a
 	ld [wJoyIgnore], a
 	ld [wPokemonTower5FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 PokemonTower5F_ScriptPointers:
@@ -77,7 +74,6 @@ PokemonTower5FCheckGhostEncounterScript: ; marcelnote - postgame Agatha event
 	ld [wCurEnemyLevel], a
 	ld a, SCRIPT_POKEMONTOWER5F_GHOST_BATTLE
 	ld [wPokemonTower5FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 PokemonTower5FGhostBattleCoords: ; marcelnote - postgame Agatha event
@@ -110,7 +106,6 @@ PokemonTower5FGhostBattleScript: ; marcelnote - postgame Agatha event
 	ld [wJoyIgnore], a
 	ld a, SCRIPT_POKEMONTOWER5F_DEFAULT
 	ld [wPokemonTower5FCurScript], a
-	ld [wCurMapScript], a
 	ret
 .didNotDefeat
 	ld a, $1
@@ -124,7 +119,6 @@ PokemonTower5FGhostBattleScript: ; marcelnote - postgame Agatha event
 	set BIT_SCRIPTED_MOVEMENT_STATE, [hl]
 	ld a, SCRIPT_POKEMONTOWER5F_PLAYER_MOVING
 	ld [wPokemonTower5FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 PokemonTower5FPlayerMovingScript: ; marcelnote - postgame Agatha event
@@ -134,7 +128,6 @@ PokemonTower5FPlayerMovingScript: ; marcelnote - postgame Agatha event
 	call Delay3
 	xor a
 	ld [wPokemonTower5FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 PokemonTower5F_TextPointers:

@@ -2,16 +2,13 @@ FightingDojo_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, FightingDojoTrainerHeaders
 	ld de, FightingDojo_ScriptPointers
-	ld a, [wFightingDojoCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wFightingDojoCurScript], a
-	ret
+	ld bc, wFightingDojoCurScript
+	jp ExecuteCurMapScriptInTable
 
 FightingDojoResetScripts:
 	xor a ; SCRIPT_FIGHTINGDOJO_DEFAULT
 	ld [wJoyIgnore], a
 	ld [wFightingDojoCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 FightingDojo_ScriptPointers:
@@ -88,7 +85,6 @@ FightingDojoKarateMasterPostBattleScript:
 	xor a ; SCRIPT_FIGHTINGDOJO_DEFAULT
 	ld [wJoyIgnore], a
 	ld [wFightingDojoCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 FightingDojo_TextPointers:
@@ -141,7 +137,6 @@ FightingDojoKarateMasterText:
 	call InitBattleEnemyParameters
 	ld a, SCRIPT_FIGHTINGDOJO_KARATE_MASTER_POST_BATTLE
 	ld [wFightingDojoCurScript], a
-	ld [wCurMapScript], a
 	rst TextScriptEnd
 
 .DefeatedText:

@@ -3,10 +3,8 @@ RocketHideoutB4F_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, RocketHideoutB4FTrainerHeaders
 	ld de, RocketHideoutB4F_ScriptPointers
-	ld a, [wRocketHideoutB4FCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wRocketHideoutB4FCurScript], a
-	ret
+	ld bc, wRocketHideoutB4FCurScript
+	jp ExecuteCurMapScriptInTable
 
 RocketHideoutB4FDoorCallbackScript: ; marcelnote - modified
 	ld hl, wCurrentMapScriptFlags
@@ -31,7 +29,6 @@ RocketHideoutB4FSetDefaultScript:
 	xor a
 	ld [wJoyIgnore], a
 	ld [wRocketHideoutB4FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 RocketHideoutB4F_ScriptPointers:
@@ -67,7 +64,6 @@ RocketHideoutB4FBeatGiovanniScript:
 	set BIT_CUR_MAP_LOADED_1, [hl]
 	ld a, SCRIPT_ROCKETHIDEOUTB4F_DEFAULT
 	ld [wRocketHideoutB4FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 RocketHideoutB4F_TextPointers:

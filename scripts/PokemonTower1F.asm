@@ -2,10 +2,8 @@
 PokemonTower1F_Script:
 	call EnableAutoTextBoxDrawing
 	ld de, PokemonTower1F_ScriptPointers
-	ld a, [wPokemonTower1FCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wPokemonTower1FCurScript], a
-	ret
+	ld bc, wPokemonTower1FCurScript
+	jp ExecuteCurMapScriptInTable
 
 PokemonTower1F_ScriptPointers:
 	def_script_pointers
@@ -44,7 +42,6 @@ PokemonTower1FAgathaHowDareYouScript:
 	call MoveSprite
 	ld a, SCRIPT_POKEMONTOWER1F_AGATHA_LEAVES
 	ld [wPokemonTower1FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 .AgathaLeavesMovementLeft:
@@ -80,7 +77,6 @@ PokemonTower1FAgathaLeavesScript: ; marcelnote - postgame Agatha event
 	ld [wJoyIgnore], a
 	ld a, SCRIPT_POKEMONTOWER1F_DEFAULT
 	ld [wPokemonTower1FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 PokemonTower1F_TextPointers:

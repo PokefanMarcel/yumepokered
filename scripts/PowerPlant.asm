@@ -2,9 +2,8 @@ PowerPlant_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, PowerPlantTrainerHeaders
 	ld de, PowerPlant_ScriptPointers
-	ld a, [wPowerPlantCurScript]
+	ld bc, wPowerPlantCurScript
 	call ExecuteCurMapScriptInTable
-	ld [wPowerPlantCurScript], a
 	; fallthrough
 
 PowerPlantSetWaterBlocksScript:
@@ -132,8 +131,6 @@ ZapdosTrainerHeader:
 
 PowerPlantInitBattleScript:
 	call TalkToTrainer
-	ld a, [wCurMapScript]
-	ld [wPowerPlantCurScript], a
 	rst TextScriptEnd
 
 PowerPlantVoltorb1Text:

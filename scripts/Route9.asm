@@ -2,10 +2,8 @@ Route9_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, Route9TrainerHeaders
 	ld de, Route9_ScriptPointers
-	ld a, [wRoute9CurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wRoute9CurScript], a
-	ret
+	ld bc, wRoute9CurScript
+	jp ExecuteCurMapScriptInTable
 
 Route9_ScriptPointers:
 	def_script_pointers

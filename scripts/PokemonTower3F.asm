@@ -2,16 +2,13 @@ PokemonTower3F_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, PokemonTower3TrainerHeaders
 	ld de, PokemonTower3F_ScriptPointers
-	ld a, [wPokemonTower3FCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wPokemonTower3FCurScript], a
-	ret
+	ld bc, wPokemonTower3FCurScript
+	jp ExecuteCurMapScriptInTable
 
 PokemonTower3FSetDefaultScript:
 	xor a
 	ld [wJoyIgnore], a
 	ld [wPokemonTower3FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 PokemonTower3F_ScriptPointers:
@@ -41,7 +38,6 @@ PokemonTower3FDefaultScript: ; marcelnote - postgame Agatha event
 	ld [wCurEnemyLevel], a
 	ld a, SCRIPT_POKEMONTOWER3F_GHOST_BATTLE
 	ld [wPokemonTower3FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 PokemonTower3FGhostBattleCoords: ; marcelnote - postgame Agatha event
@@ -72,7 +68,6 @@ PokemonTower3FGhostBattleScript: ; marcelnote - postgame Agatha event
 	ld [wJoyIgnore], a
 	ld a, SCRIPT_POKEMONTOWER3F_DEFAULT
 	ld [wPokemonTower3FCurScript], a
-	ld [wCurMapScript], a
 	ret
 .didNotDefeat
 	ld a, $1
@@ -86,7 +81,6 @@ PokemonTower3FGhostBattleScript: ; marcelnote - postgame Agatha event
 	set BIT_SCRIPTED_MOVEMENT_STATE, [hl]
 	ld a, SCRIPT_POKEMONTOWER3F_PLAYER_MOVING
 	ld [wPokemonTower3FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 PokemonTower3FPlayerMovingScript: ; marcelnote - postgame Agatha event
@@ -96,7 +90,6 @@ PokemonTower3FPlayerMovingScript: ; marcelnote - postgame Agatha event
 	call Delay3
 	xor a
 	ld [wPokemonTower3FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 PokemonTower3F_TextPointers:

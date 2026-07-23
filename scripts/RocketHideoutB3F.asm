@@ -2,10 +2,8 @@ RocketHideoutB3F_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, RocketHideoutB3FTrainerHeaders
 	ld de, RocketHideoutB3F_ScriptPointers
-	ld a, [wRocketHideoutB3FCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wRocketHideoutB3FCurScript], a
-	ret
+	ld bc, wRocketHideoutB3FCurScript
+	jp ExecuteCurMapScriptInTable
 
 RocketHideoutB3F_ScriptPointers:
 	def_script_pointers

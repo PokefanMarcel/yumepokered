@@ -6,10 +6,8 @@ ViridianGym_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, ViridianGymTrainerHeaders
 	ld de, ViridianGym_ScriptPointers
-	ld a, [wViridianGymCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wViridianGymCurScript], a
-	ret
+	ld bc, wViridianGymCurScript
+	jp ExecuteCurMapScriptInTable
 
 .LoadNames:
 	ld hl, .CityName
@@ -38,7 +36,6 @@ ViridianGymResetScripts:
 	xor a ; SCRIPT_VIRIDIANGYM_DEFAULT
 	ld [wJoyIgnore], a
 	ld [wViridianGymCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 ViridianGym_ScriptPointers:

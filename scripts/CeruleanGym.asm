@@ -6,10 +6,8 @@ CeruleanGym_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, CeruleanGymTrainerHeaders
 	ld de, CeruleanGym_ScriptPointers
-	ld a, [wCeruleanGymCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wCeruleanGymCurScript], a
-	ret
+	ld bc, wCeruleanGymCurScript
+	jp ExecuteCurMapScriptInTable
 
 .LoadNames:
 	ld hl, .CityName
@@ -37,7 +35,6 @@ CeruleanGymResetScripts:
 	xor a ; SCRIPT_CERULEANGYM_DEFAULT
 	ld [wJoyIgnore], a
 	ld [wCeruleanGymCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 CeruleanGym_ScriptPointers:

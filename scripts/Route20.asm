@@ -4,10 +4,8 @@ Route20_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, Route20TrainerHeaders
 	ld de, Route20_ScriptPointers
-	ld a, [wRoute20CurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wRoute20CurScript], a
-	ret
+	ld bc, wRoute20CurScript
+	jp ExecuteCurMapScriptInTable
 
 Route20BoulderScript:
 	call Route20SeafoamBoulderCompatibilityScript ; marcelnote - for save compatibility

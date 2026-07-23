@@ -3,10 +3,8 @@ BrunosRoom_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, BrunosRoomTrainerHeaders
 	ld de, BrunosRoom_ScriptPointers
-	ld a, [wBrunosRoomCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wBrunosRoomCurScript], a
-	ret
+	ld bc, wBrunosRoomCurScript
+	jp ExecuteCurMapScriptInTable
 
 BrunoHideExitBlock: ; marcelnote - optimized and modified for Bruno rematch
 	ld hl, wCurrentMapScriptFlags
@@ -48,7 +46,6 @@ BrunoScriptWalkIntoRoom:
 	call StartSimulatingJoypadStates
 	ld a, SCRIPT_BRUNOSROOM_PLAYER_IS_MOVING
 	ld [wBrunosRoomCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 BrunosRoomDefaultScript:
@@ -76,7 +73,6 @@ BrunosRoomDefaultScript:
 	call StartSimulatingJoypadStates
 	ld a, SCRIPT_BRUNOSROOM_PLAYER_IS_MOVING
 	ld [wBrunosRoomCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 BrunoEntranceCoords:
@@ -94,7 +90,6 @@ BrunosRoomPlayerIsMovingScript:
 	xor a ; SCRIPT_BRUNOSROOM_DEFAULT
 	ld [wJoyIgnore], a
 	ld [wBrunosRoomCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 BrunosRoomBrunoEndBattleScript:

@@ -6,10 +6,8 @@ FuchsiaGym_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, FuchsiaGymTrainerHeaders
 	ld de, FuchsiaGym_ScriptPointers
-	ld a, [wFuchsiaGymCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wFuchsiaGymCurScript], a
-	ret
+	ld bc, wFuchsiaGymCurScript
+	jp ExecuteCurMapScriptInTable
 
 .LoadNames:
 	ld hl, .CityName
@@ -37,7 +35,6 @@ FuchsiaGymResetScripts:
 	xor a ; SCRIPT_FUCHSIAGYM_DEFAULT
 	ld [wJoyIgnore], a
 	ld [wFuchsiaGymCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 FuchsiaGym_ScriptPointers:

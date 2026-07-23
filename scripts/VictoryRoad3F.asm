@@ -3,10 +3,8 @@ VictoryRoad3F_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, VictoryRoad3TrainerHeaders
 	ld de, VictoryRoad3F_ScriptPointers
-	ld a, [wVictoryRoad3FCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wVictoryRoad3FCurScript], a
-	ret
+	ld bc, wVictoryRoad3FCurScript
+	jp ExecuteCurMapScriptInTable
 
 VictoryRoad3FCheckBoulderEventScript:
 	ld hl, wCurrentMapScriptFlags

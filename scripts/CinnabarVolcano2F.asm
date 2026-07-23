@@ -13,10 +13,8 @@ CinnabarVolcano2F_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, CinnabarVolcano2FTrainerHeaders
 	ld de, CinnabarVolcano2F_ScriptPointers
-	ld a, [wCinnabarVolcano2FCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wCinnabarVolcano2FCurScript], a
-	ret
+	ld bc, wCinnabarVolcano2FCurScript
+	jp ExecuteCurMapScriptInTable
 
 CinnabarVolcano2FCheckBoulder1EventScript:
 	CheckEvent EVENT_CINNABAR_VOLCANO_2F_BOULDER1_ON_SWITCH

@@ -3,10 +3,8 @@ LoreleisRoom_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, LoreleisRoomTrainerHeaders
 	ld de, LoreleisRoom_ScriptPointers
-	ld a, [wLoreleisRoomCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wLoreleisRoomCurScript], a
-	ret
+	ld bc, wLoreleisRoomCurScript
+	jp ExecuteCurMapScriptInTable
 
 LoreleiHideExitBlock: ; marcelnote - optimized and modified for Lorelei rematch
 	ld hl, wCurrentMapScriptFlags
@@ -49,7 +47,6 @@ LoreleiScriptWalkIntoRoom:
 	call StartSimulatingJoypadStates
 	ld a, SCRIPT_LORELEISROOM_PLAYER_IS_MOVING
 	ld [wLoreleisRoomCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 LoreleisRoomDefaultScript:
@@ -77,7 +74,6 @@ LoreleisRoomDefaultScript:
 	call StartSimulatingJoypadStates
 	ld a, SCRIPT_LORELEISROOM_PLAYER_IS_MOVING
 	ld [wLoreleisRoomCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 LoreleiEntranceCoords:
@@ -95,7 +91,6 @@ LoreleisRoomPlayerIsMovingScript:
 	xor a
 	ld [wJoyIgnore], a
 	ld [wLoreleisRoomCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 LoreleisRoomLoreleiEndBattleScript:

@@ -3,10 +3,8 @@ SaffronGym_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, SaffronGymTrainerHeaders
 	ld de, SaffronGym_ScriptPointers
-	ld a, [wSaffronGymCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wSaffronGymCurScript], a
-	ret
+	ld bc, wSaffronGymCurScript
+	jp ExecuteCurMapScriptInTable
 
 SaffronGymSetMapAndTiles: ; marcelnote - open Saffron Gym gate
 	ld hl, wCurrentMapScriptFlags
@@ -52,7 +50,6 @@ SaffronGymResetScripts:
 	xor a ; SCRIPT_SAFFRONGYM_DEFAULT
 	ld [wJoyIgnore], a
 	ld [wSaffronGymCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 SaffronGym_ScriptPointers:
@@ -158,7 +155,6 @@ SaffronGymBrunoArrivesScript: ; marcelnote - postgame Bruno event
 	call MoveSprite
 	ld a, SCRIPT_SAFFRONGYM_BRUNO_INSPIRING
 	ld [wSaffronGymCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 .BrunoArrivesMovementRight:

@@ -2,16 +2,13 @@ PokemonTower7F_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, PokemonTower7TrainerHeaders
 	ld de, PokemonTower7F_ScriptPointers
-	ld a, [wPokemonTower7FCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wPokemonTower7FCurScript], a
-	ret
+	ld bc, wPokemonTower7FCurScript
+	jp ExecuteCurMapScriptInTable
 
 PokemonTower7FSetDefaultScript:
 	xor a
 	ld [wJoyIgnore], a
 	ld [wPokemonTower7FCurScript], a ; SCRIPT_POKEMONTOWER7F_DEFAULT
-	ld [wCurMapScript], a ; SCRIPT_POKEMONTOWER7F_DEFAULT
 	ret
 
 PokemonTower7F_ScriptPointers:
@@ -37,7 +34,6 @@ PokemonTower7FEndBattleScript:
 	call PokemonTower7FRocketLeaveMovementScript
 	ld a, SCRIPT_POKEMONTOWER7F_HIDE_NPC
 	ld [wPokemonTower7FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 PokemonTower7FHideNPCScript:
@@ -61,7 +57,6 @@ PokemonTower7FHideNPCScript:
 	ld [wOpponentAfterWrongAnswer], a ; not used here; likely a mistake copied from maps/CinnabarGym.asm
 	ld a, SCRIPT_POKEMONTOWER7F_DEFAULT
 	ld [wPokemonTower7FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 PokemonTower7FWarpToMrFujiHouseScript:
@@ -82,7 +77,6 @@ PokemonTower7FWarpToMrFujiHouseScript:
 	set BIT_WARP_FROM_CUR_SCRIPT, [hl]
 	ld a, SCRIPT_POKEMONTOWER7F_DEFAULT
 	ld [wPokemonTower7FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 PokemonTower7FRocketLeaveMovementScript:

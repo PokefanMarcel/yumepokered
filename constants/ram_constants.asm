@@ -142,8 +142,7 @@ DEF NUM_BADGES EQU const_value
 	const BIT_NO_MAP_MUSIC       ; 1
 	const BIT_FORCED_WARP        ; 2
 	const BIT_TRAINER_BATTLE     ; 3
-	const BIT_USE_CUR_MAP_SCRIPT ; 4
-	const_skip 2                 ; 5-6 ; unused
+	const_skip 3                 ; 4-6 ; unused
 	const BIT_USED_FLY           ; 7
 
 ; wElite4Flags

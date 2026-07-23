@@ -2,16 +2,13 @@ Route16_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, Route16TrainerHeaders
 	ld de, Route16_ScriptPointers
-	ld a, [wRoute16CurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wRoute16CurScript], a
-	ret
+	ld bc, wRoute16CurScript
+	jp ExecuteCurMapScriptInTable
 
 Route16ResetScripts:
 	xor a ; SCRIPT_ROUTE16_DEFAULT
 	ld [wJoyIgnore], a
 	ld [wRoute16CurScript], a
-	ld [wCurMapScript], a
 	ret
 
 Route16_ScriptPointers:
@@ -40,7 +37,6 @@ Route16DefaultScript:
 	call UpdateSprites
 	ld a, SCRIPT_ROUTE16_SNORLAX_POST_BATTLE
 	ld [wRoute16CurScript], a
-	ld [wCurMapScript], a
 	ret
 
 Route16SnorlaxPostBattleScript:
@@ -59,7 +55,6 @@ Route16SnorlaxPostBattleScript:
 	call Delay3
 	ld a, SCRIPT_ROUTE16_DEFAULT
 	ld [wRoute16CurScript], a
-	ld [wCurMapScript], a
 	ret
 
 Route16_TextPointers:

@@ -2,9 +2,8 @@ MtMoonB2F_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, MtMoon3TrainerHeaders
 	ld de, MtMoonB2F_ScriptPointers
-	ld a, [wMtMoonB2FCurScript]
+	ld bc, wMtMoonB2FCurScript
 	call ExecuteCurMapScriptInTable
-	ld [wMtMoonB2FCurScript], a
 	CheckEvent EVENT_BEAT_MT_MOON_EXIT_SUPER_NERD
 	ret z
 	ld hl, MtMoonB2FFossilAreaCoords
@@ -41,7 +40,6 @@ MtMoonB2FResetScripts:
 	xor a ; SCRIPT_MTMOONB2F_DEFAULT
 	ld [wJoyIgnore], a
 	ld [wMtMoonB2FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 MtMoonB2F_ScriptPointers:
@@ -84,7 +82,6 @@ MtMoonB2FDefeatedSuperNerdScript:
 	ld [wJoyIgnore], a
 	ld a, SCRIPT_MTMOONB2F_DEFAULT
 	ld [wMtMoonB2FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 MtMoonB2FMoveSuperNerdScript:
@@ -107,7 +104,6 @@ MtMoonB2FMoveSuperNerdScript:
 	call MoveSprite
 	ld a, SCRIPT_MTMOONB2F_SUPER_NERD_TAKES_OTHER_FOSSIL
 	ld [wMtMoonB2FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 MtMoonB2FPlayerNearDomeFossilCoords:
@@ -150,7 +146,6 @@ MtMoonB2FSuperNerdTakesOtherFossilScript: ; marcelnote - optimized
 	ld [wJoyIgnore], a
 	ld a, SCRIPT_MTMOONB2F_DEFAULT
 	ld [wMtMoonB2FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 MtMoonB2F_TextPointers:
@@ -203,7 +198,6 @@ MtMoonB2FSuperNerdText: ; marcelnote - optimized
 	call InitBattleEnemyParameters
 	ld a, SCRIPT_MTMOONB2F_DEFEATED_SUPER_NERD
 	ld [wMtMoonB2FCurScript], a
-	ld [wCurMapScript], a
 	rst TextScriptEnd
 
 MtMoonB2FRocket1Text:

@@ -3,10 +3,8 @@ LancesRoom_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, LancesRoomTrainerHeaders
 	ld de, LancesRoom_ScriptPointers
-	ld a, [wLancesRoomCurScript]
-	call ExecuteCurMapScriptInTable
-	ld [wLancesRoomCurScript], a
-	ret
+	ld bc, wLancesRoomCurScript
+	jp ExecuteCurMapScriptInTable
 
 LanceShowOrHideEntranceBlocks: ; marcelnote - optimized
 	ld hl, wCurrentMapScriptFlags
@@ -95,7 +93,6 @@ WalkToLance:
 	call StartSimulatingJoypadStates
 	ld a, SCRIPT_LANCESROOM_PLAYER_IS_MOVING
 	ld [wLancesRoomCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 WalkToLance_RLEList:
@@ -113,7 +110,6 @@ LancesRoomPlayerIsMovingScript:
 	xor a ; SCRIPT_LANCESROOM_DEFAULT
 	ld [wJoyIgnore], a
 	ld [wLancesRoomCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 LancesRoom_TextPointers:
