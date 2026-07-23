@@ -24,7 +24,7 @@ LoreleisRoom_ScriptPointers:
 	dw_const LoreleisRoomDefaultScript,             SCRIPT_LORELEISROOM_DEFAULT
 	dw_const DisplayEnemyTrainerTextAndStartBattle, SCRIPT_LORELEISROOM_LORELEI_START_BATTLE
 	dw_const LoreleisRoomLoreleiEndBattleScript,    SCRIPT_LORELEISROOM_LORELEI_END_BATTLE
-	dw_const LoreleisRoomPlayerIsMovingScript,      SCRIPT_LORELEISROOM_PLAYER_IS_MOVING
+	dw_const LoreleisRoomPlayerMovingScript,        SCRIPT_LORELEISROOM_PLAYER_MOVING
 	dw_const DoRet,                                 SCRIPT_LORELEISROOM_NOOP ; PureRGB - DoRet
 
 LoreleiScriptWalkIntoRoom:
@@ -40,7 +40,7 @@ LoreleiScriptWalkIntoRoom:
 	ld a, $6
 	ld [wSimulatedJoypadStatesIndex], a
 	call StartSimulatingJoypadStates
-	ld a, SCRIPT_LORELEISROOM_PLAYER_IS_MOVING
+	ld a, SCRIPT_LORELEISROOM_PLAYER_MOVING
 	ld [wLoreleisRoomCurScript], a
 	ret
 
@@ -67,7 +67,7 @@ LoreleisRoomDefaultScript:
 	ld a, $1
 	ld [wSimulatedJoypadStatesIndex], a
 	call StartSimulatingJoypadStates
-	ld a, SCRIPT_LORELEISROOM_PLAYER_IS_MOVING
+	ld a, SCRIPT_LORELEISROOM_PLAYER_MOVING
 	ld [wLoreleisRoomCurScript], a
 	ret
 
@@ -78,7 +78,7 @@ LoreleiEntranceCoords:
 	dbmapcoord  5, 11
 	db -1 ; end
 
-LoreleisRoomPlayerIsMovingScript:
+LoreleisRoomPlayerMovingScript:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz

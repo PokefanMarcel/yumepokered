@@ -32,7 +32,7 @@ LancesRoom_ScriptPointers:
 	dw_const LancesRoomDefaultScript,               SCRIPT_LANCESROOM_DEFAULT
 	dw_const DisplayEnemyTrainerTextAndStartBattle, SCRIPT_LANCESROOM_LANCE_START_BATTLE
 	dw_const LancesRoomLanceEndBattleScript,        SCRIPT_LANCESROOM_LANCE_END_BATTLE
-	dw_const LancesRoomPlayerIsMovingScript,        SCRIPT_LANCESROOM_PLAYER_IS_MOVING
+	dw_const LancesRoomPlayerMovingScript,          SCRIPT_LANCESROOM_PLAYER_MOVING
 	dw_const DoRet,                                 SCRIPT_LANCESROOM_NOOP ; PureRGB - DoRet
 
 LancesRoomDefaultScript:
@@ -86,7 +86,7 @@ WalkToLance:
 	call DecodeRLEList
 	ld [wSimulatedJoypadStatesIndex], a
 	call StartSimulatingJoypadStates
-	ld a, SCRIPT_LANCESROOM_PLAYER_IS_MOVING
+	ld a, SCRIPT_LANCESROOM_PLAYER_MOVING
 	ld [wLancesRoomCurScript], a
 	ret
 
@@ -97,7 +97,7 @@ WalkToLance_RLEList:
 	db  6, PAD_LEFT
 	db -1 ; end
 
-LancesRoomPlayerIsMovingScript:
+LancesRoomPlayerMovingScript:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz

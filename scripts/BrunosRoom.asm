@@ -23,7 +23,7 @@ BrunosRoom_ScriptPointers:
 	dw_const BrunosRoomDefaultScript,               SCRIPT_BRUNOSROOM_DEFAULT
 	dw_const DisplayEnemyTrainerTextAndStartBattle, SCRIPT_BRUNOSROOM_BRUNO_START_BATTLE
 	dw_const BrunosRoomBrunoEndBattleScript,        SCRIPT_BRUNOSROOM_BRUNO_END_BATTLE
-	dw_const BrunosRoomPlayerIsMovingScript,        SCRIPT_BRUNOSROOM_PLAYER_IS_MOVING
+	dw_const BrunosRoomPlayerMovingScript,          SCRIPT_BRUNOSROOM_PLAYER_MOVING
 	dw_const DoRet,                                 SCRIPT_BRUNOSROOM_NOOP ; PureRGB - DoRet
 
 BrunoScriptWalkIntoRoom:
@@ -39,7 +39,7 @@ BrunoScriptWalkIntoRoom:
 	ld a, $6
 	ld [wSimulatedJoypadStatesIndex], a
 	call StartSimulatingJoypadStates
-	ld a, SCRIPT_BRUNOSROOM_PLAYER_IS_MOVING
+	ld a, SCRIPT_BRUNOSROOM_PLAYER_MOVING
 	ld [wBrunosRoomCurScript], a
 	ret
 
@@ -66,7 +66,7 @@ BrunosRoomDefaultScript:
 	ld a, $1
 	ld [wSimulatedJoypadStatesIndex], a
 	call StartSimulatingJoypadStates
-	ld a, SCRIPT_BRUNOSROOM_PLAYER_IS_MOVING
+	ld a, SCRIPT_BRUNOSROOM_PLAYER_MOVING
 	ld [wBrunosRoomCurScript], a
 	ret
 
@@ -77,7 +77,7 @@ BrunoEntranceCoords:
 	dbmapcoord  5, 11
 	db -1 ; end
 
-BrunosRoomPlayerIsMovingScript:
+BrunosRoomPlayerMovingScript:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz

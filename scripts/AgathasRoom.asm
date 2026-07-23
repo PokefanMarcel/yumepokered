@@ -23,7 +23,7 @@ AgathasRoom_ScriptPointers:
 	dw_const AgathasRoomDefaultScript,              SCRIPT_AGATHASROOM_DEFAULT
 	dw_const DisplayEnemyTrainerTextAndStartBattle, SCRIPT_AGATHASROOM_AGATHA_START_BATTLE
 	dw_const AgathasRoomAgathaEndBattleScript,      SCRIPT_AGATHASROOM_AGATHA_END_BATTLE
-	dw_const AgathasRoomPlayerIsMovingScript,       SCRIPT_AGATHASROOM_PLAYER_IS_MOVING
+	dw_const AgathasRoomPlayerMovingScript,         SCRIPT_AGATHASROOM_PLAYER_MOVING
 	dw_const DoRet,                                 SCRIPT_AGATHASROOM_NOOP ; PureRGB - DoRet
 
 AgathaScriptWalkIntoRoom:
@@ -39,7 +39,7 @@ AgathaScriptWalkIntoRoom:
 	ld a, $6
 	ld [wSimulatedJoypadStatesIndex], a
 	call StartSimulatingJoypadStates
-	ld a, SCRIPT_AGATHASROOM_PLAYER_IS_MOVING
+	ld a, SCRIPT_AGATHASROOM_PLAYER_MOVING
 	ld [wAgathasRoomCurScript], a
 	ret
 
@@ -66,7 +66,7 @@ AgathasRoomDefaultScript:
 	ld a, $1
 	ld [wSimulatedJoypadStatesIndex], a
 	call StartSimulatingJoypadStates
-	ld a, SCRIPT_AGATHASROOM_PLAYER_IS_MOVING
+	ld a, SCRIPT_AGATHASROOM_PLAYER_MOVING
 	ld [wAgathasRoomCurScript], a
 	ret
 
@@ -77,7 +77,7 @@ AgathaEntranceCoords:
 	dbmapcoord  5, 11
 	db -1 ; end
 
-AgathasRoomPlayerIsMovingScript:
+AgathasRoomPlayerMovingScript:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
