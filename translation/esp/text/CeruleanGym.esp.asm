@@ -70,8 +70,8 @@ _CeruleanGymMistyReceivedCascadeBadgeText::
 	para "¡Toma la MEDALLA"
 	line "CASCADA para que"
 	cont "todos sepan que"
-	cont "me ganaste!@"
-	text_end
+	cont "me ganaste!"
+	prompt
 
 _CeruleanGymBattleText1::
 	text "¡Soy demasiado"

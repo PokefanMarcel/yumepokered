@@ -169,6 +169,7 @@ VermilionGymLTSurgeText: ; marcelnote - optimized
 
 .ReceivedThunderBadgeText:
 	text_far _VermilionGymLTSurgeReceivedThunderBadgeText
+	; marcelnote - no badge-specific SFX for Thunder badge
 	text_end
 
 .PostBattleAdviceText:

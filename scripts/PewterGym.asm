@@ -156,8 +156,8 @@ PewterGymBrockText:
 
 .ReceivedBoulderBadgeText:
 	text_far _PewterGymBrockReceivedBoulderBadgeText
-	sound_level_up ; probably supposed to play SFX_GET_ITEM_1 but the wrong music bank is loaded
-	text_far _PewterGymBrockBoulderBadgeInfoText ; Text to tell that the flash technique can be used
+	sound_get_item_1 ; marcelnote - had sound_level_up due to the battle audio bank, but probably intended sound_get_item_1
+	text_far _PewterGymBrockBoulderBadgeInfoText
 	text_end
 
 .PostBattleAdviceText:

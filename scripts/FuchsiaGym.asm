@@ -160,6 +160,7 @@ FuchsiaGymKogaText:
 
 .ReceivedSoulBadgeText:
 	text_far _FuchsiaGymKogaReceivedSoulBadgeText
+	; marcelnote - no badge-specific SFX for Soul badge
 	text_end
 
 .PostBattleAdviceText:

@@ -148,8 +148,7 @@ CeruleanGymMistyText:
 
 .ReceivedCascadeBadgeText:
 	text_far _CeruleanGymMistyReceivedCascadeBadgeText
-	sound_get_key_item ; actually plays the second channel of SFX_BALL_POOF due to the wrong music bank being loaded
-	text_promptbutton
+	; marcelnote - had sound_get_key_item but played only the SFX_BALL_POOF 2nd channel due to the battle audio bank
 	text_end
 
 .TM11ExplanationText:

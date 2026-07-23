@@ -18,8 +18,8 @@ _CinnabarGymBlaineReceivedVolcanoBadgeText::
 	line "burnt out!"
 
 	para "You have earned"
-	line "the VOLCANOBADGE!@"
-	text_end
+	line "the VOLCANOBADGE!"
+	prompt
 
 _CinnabarGymBlainePostBattleAdviceText::
 	text "FIRE BLAST is the"

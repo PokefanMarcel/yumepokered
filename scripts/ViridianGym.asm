@@ -174,7 +174,8 @@ ViridianGymGiovanniText:
 
 .ReceivedEarthBadgeText:
 	text_far _ViridianGymGiovanniReceivedEarthBadgeText
-	sound_level_up ; probably supposed to play SFX_GET_ITEM_1 but the wrong music bank is loaded
+	sound_get_item_1 ; marcelnote - had sound_level_up due to the battle audio bank, but probably intended sound_get_item_1
+	text_promptbutton
 	text_end
 
 .PostBattleAdviceText:

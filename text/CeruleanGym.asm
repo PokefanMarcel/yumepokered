@@ -63,8 +63,8 @@ _CeruleanGymMistyReceivedCascadeBadgeText::
 
 	para "You can have the"
 	line "CASCADEBADGE to"
-	cont "show you beat me!@"
-	text_end
+	cont "show you beat me!"
+	prompt
 
 _CeruleanGymBattleText1::
 	text "I'm more than good"

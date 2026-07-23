@@ -33,8 +33,8 @@ _SaffronGymSabrinaReceivedMarshBadgeText::
 	cont "victoire!"
 
 	para "Tu gagnes le"
-	line "BADGE MARAIS!@"
-	text_end
+	line "BADGE MARAIS!"
+	prompt
 
 _SaffronGymSabrinaPostBattleAdviceText::
 	text "Tout le monde est"

@@ -108,8 +108,8 @@ _CeruleanGymMistyReceivedCascadeBadgeText::
 
 	para "Je te donne le"
 	line "BADGECASCADE pour"
-	cont "m'avoir battue!@"
-	text_end
+	cont "m'avoir battue!"
+	prompt
 
 .GirlText
 	text "Whouha!"
@@ -119,8 +119,8 @@ _CeruleanGymMistyReceivedCascadeBadgeText::
 
 	para "Je te donne le"
 	line "BADGECASCADE pour"
-	cont "m'avoir battue!@"
-	text_end
+	cont "m'avoir battue!"
+	prompt
 
 _CeruleanGymBattleText1::
 	text "Je suis très"
@@ -292,4 +292,3 @@ _CeruleanGymAfterRematchText:: ; marcelnote - Misty rematch
 
 ; Zut, voilà qu'on a perdu ! Je vais aller piquer une tête pour me changer les idées.
 ; Mais je te préviens, la prochaine fois, la victoire sera mienne !
-

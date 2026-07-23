@@ -22,8 +22,8 @@ _CinnabarGymBlaineReceivedVolcanoBadgeText::
 	line "machacado!"
 
 	para "¡Has ganado la"
-	line "MEDALLA-VOLCÁN!@"
-	text_end
+	line "MEDALLA-VOLCÁN!"
+	prompt
 
 _CinnabarGymBlainePostBattleAdviceText::
 	text "¡El FUEGO es lo"

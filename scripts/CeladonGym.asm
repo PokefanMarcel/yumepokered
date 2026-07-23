@@ -161,6 +161,7 @@ CeladonGymErikaText:
 
 .ReceivedRainbowBadgeText:
 	text_far _CeladonGymErikaReceivedRainbowBadgeText
+	; marcelnote - no badge-specific SFX for Rainbow badge
 	text_end
 
 .PostBattleAdviceText:

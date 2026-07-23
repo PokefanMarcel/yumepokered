@@ -28,8 +28,8 @@ _SaffronGymSabrinaReceivedMarshBadgeText::
 
 	para "¡Has ganado la"
 	line "MEDALLA del"
-	cont "PANTANO!@"
-	text_end
+	cont "PANTANO!"
+	prompt
 
 _SaffronGymSabrinaPostBattleAdviceText::
 	text "¡Todo el mundo"

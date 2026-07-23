@@ -25,8 +25,8 @@ _CinnabarGymBlaineReceivedVolcanoBadgeText::
 	cont "vaporiser!"
 
 	para "Tu as gagné le"
-	line "BADGE VOLCAN!@"
-	text_end
+	line "BADGE VOLCAN!"
+	prompt
 
 _CinnabarGymBlainePostBattleAdviceText::
 	text "DEFLAGRATION est"

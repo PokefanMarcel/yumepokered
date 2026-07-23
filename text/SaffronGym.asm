@@ -27,8 +27,8 @@ _SaffronGymSabrinaReceivedMarshBadgeText::
 	cont "to win!"
 
 	para "You earned the"
-	line "MARSHBADGE!@"
-	text_end
+	line "MARSHBADGE!"
+	prompt
 
 _SaffronGymSabrinaPostBattleAdviceText::
 	text "Everyone has"
