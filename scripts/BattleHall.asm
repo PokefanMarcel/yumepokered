@@ -9,7 +9,7 @@ BattleHall_ScriptPointers:
 	def_script_pointers
 	dw_const DoRet,                          SCRIPT_BATTLEHALL_DEFAULT ; PureRGB - DoRet
 	dw_const BattleHallMovePlayerScript,     SCRIPT_BATTLEHALL_MOVE_PLAYER
-	dw_const BattleHallEndMovementScript,    SCRIPT_BATTLEHALL_END_MOVEMENT
+	dw_const BattleHallPlayerMovingScript,   SCRIPT_BATTLEHALL_PLAYER_MOVING
 	dw_const BattleHallStartBattleScript,    SCRIPT_BATTLEHALL_START_BATTLE
 	dw_const BattleHallPostBattleScript,     SCRIPT_BATTLEHALL_POST_BATTLE
 
@@ -32,7 +32,7 @@ BattleHallMovePlayerScript:
 	call DecodeRLEList
 	ld [wSimulatedJoypadStatesIndex], a
 	call StartSimulatingJoypadStates
-	ld a, SCRIPT_BATTLEHALL_END_MOVEMENT
+	ld a, SCRIPT_BATTLEHALL_PLAYER_MOVING
 	ld [wBattleHallCurScript], a
 	ret
 
@@ -56,7 +56,7 @@ BattleHallMovePlayerScript:
 	db 3, PAD_RIGHT
 	db -1 ; end
 
-BattleHallEndMovementScript:
+BattleHallPlayerMovingScript:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
