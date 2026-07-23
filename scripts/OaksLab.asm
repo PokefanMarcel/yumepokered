@@ -192,11 +192,9 @@ OaksLabPlayerForcedToWalkBackScript:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
-	call Delay3
-
 	ld a, SCRIPT_OAKSLAB_PLAYER_DONT_GO_AWAY_SCRIPT
 	ld [wOaksLabCurScript], a
-	ret
+	jp Delay3
 
 OaksLabChoseStarterScript:
 	ld a, [wPlayerStarter]
