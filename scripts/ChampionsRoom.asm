@@ -8,7 +8,7 @@ ChampionsRoom_ScriptPointers:
 	def_script_pointers
 	dw_const DoRet,                                       SCRIPT_CHAMPIONSROOM_DEFAULT ; PureRGB - DoRet
 	dw_const ChampionsRoomPlayerEntersScript,             SCRIPT_CHAMPIONSROOM_PLAYER_ENTERS
-	dw_const ChampionsRoomRivalReadyToBattleScript,       SCRIPT_CHAMPIONSROOM_RIVAL_READY_TO_BATTLE
+	dw_const ChampionsRoomPlayerMovingToRivalScript,      SCRIPT_CHAMPIONSROOM_PLAYER_MOVING_TO_RIVAL
 	dw_const ChampionsRoomRivalDefeatedScript,            SCRIPT_CHAMPIONSROOM_RIVAL_DEFEATED
 	dw_const ChampionsRoomOakArrivesScript,               SCRIPT_CHAMPIONSROOM_OAK_ARRIVES
 	dw_const ChampionsRoomOakCongratulatesPlayerScript,   SCRIPT_CHAMPIONSROOM_OAK_CONGRATULATES_PLAYER
@@ -19,7 +19,7 @@ ChampionsRoom_ScriptPointers:
 	dw_const ChampionsRoomRivalComeWithMeScript,          SCRIPT_CHAMPIONSROOM_RIVAL_COME_WITH_ME
 	dw_const ChampionsRoomRivalExitsScript,               SCRIPT_CHAMPIONSROOM_RIVAL_EXITS
 	dw_const ChampionsRoomPlayerFollowsRivalScript,       SCRIPT_CHAMPIONSROOM_PLAYER_FOLLOWS_RIVAL
-	dw_const ChampionsRoomCleanupScript,                  SCRIPT_CHAMPIONSROOM_CLEANUP_SCRIPT
+	dw_const ChampionsRoomPlayerMovingToHallOfFameScript, SCRIPT_CHAMPIONSROOM_PLAYER_MOVING_TO_HALL_OF_FAME
 
 ChampionsRoomPlayerEntersScript:
 	ld a, PAD_BUTTONS | PAD_CTRL_PAD
@@ -29,7 +29,7 @@ ChampionsRoomPlayerEntersScript:
 	call DecodeRLEList
 	ld [wSimulatedJoypadStatesIndex], a
 	call StartSimulatingJoypadStates
-	ld a, SCRIPT_CHAMPIONSROOM_RIVAL_READY_TO_BATTLE
+	ld a, SCRIPT_CHAMPIONSROOM_PLAYER_MOVING_TO_RIVAL
 	ld [wChampionsRoomCurScript], a
 	ret
 
@@ -39,7 +39,7 @@ RivalEntrance_RLEMovement:
 	db 3, PAD_UP
 	db -1 ; end
 
-ChampionsRoomRivalReadyToBattleScript:
+ChampionsRoomPlayerMovingToRivalScript:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
@@ -256,7 +256,7 @@ ChampionsRoomPlayerFollowsOakScript:
 	call DecodeRLEList
 	ld [wSimulatedJoypadStatesIndex], a
 	call StartSimulatingJoypadStates
-	ld a, SCRIPT_CHAMPIONSROOM_CLEANUP_SCRIPT
+	ld a, SCRIPT_CHAMPIONSROOM_PLAYER_MOVING_TO_HALL_OF_FAME
 	ld [wChampionsRoomCurScript], a
 	ret
 
@@ -273,11 +273,11 @@ ChampionsRoomPlayerFollowsRivalScript: ; marcelnote - added for Rival rematch
 	call DecodeRLEList
 	ld [wSimulatedJoypadStatesIndex], a
 	call StartSimulatingJoypadStates
-	ld a, SCRIPT_CHAMPIONSROOM_CLEANUP_SCRIPT
+	ld a, SCRIPT_CHAMPIONSROOM_PLAYER_MOVING_TO_HALL_OF_FAME
 	ld [wChampionsRoomCurScript], a
 	ret
 
-ChampionsRoomCleanupScript:
+ChampionsRoomPlayerMovingToHallOfFameScript:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
