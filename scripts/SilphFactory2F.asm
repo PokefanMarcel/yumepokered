@@ -349,7 +349,6 @@ SilphFactory2FLoreleiGladToSeeYouText: ; marcelnote - postgame Lorelei
 	text_asm
 	ld a, SCRIPT_SILPHFACTORY2F_LORELEI_GOES_UPSTAIRS
 	ld [wSilphFactory2FCurScript], a
-	ld [wCurMapScript], a
 	ld hl, .GladToSeeYouText
 	ret
 

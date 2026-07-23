@@ -8,7 +8,6 @@ PokemonTower2FSetDefaultScript: ; marcelnote - was PokemonTower2FResetRivalEncou
 	xor a ; SCRIPT_POKEMONTOWER2F_DEFAULT
 	ld [wJoyIgnore], a
 	ld [wPokemonTower2FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 PokemonTower2F_ScriptPointers:
@@ -89,7 +88,6 @@ PokemonTower2FDefeatedRivalScript:
 	callfar Music_RivalAlternateStart
 	ld a, SCRIPT_POKEMONTOWER2F_RIVAL_EXITS
 	ld [wPokemonTower2FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 PokemonTower2FRivalRightThenDownMovement:
@@ -126,7 +124,6 @@ PokemonTower2FRivalExitsScript:
 	call PlayDefaultMusic
 	ld a, SCRIPT_POKEMONTOWER2F_DEFAULT
 	ld [wPokemonTower2FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 PokemonTower2FCheckGhostEncounterScript: ; marcelnote - postgame Agatha event
@@ -148,7 +145,6 @@ PokemonTower2FCheckGhostEncounterScript: ; marcelnote - postgame Agatha event
 	ld [wCurEnemyLevel], a
 	ld a, SCRIPT_POKEMONTOWER2F_GHOST_BATTLE
 	ld [wPokemonTower2FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 PokemonTower2FGhostBattleCoords: ; marcelnote - postgame Agatha event
@@ -178,7 +174,6 @@ PokemonTower2FGhostBattleScript: ; marcelnote - postgame Agatha event
 	ld [wJoyIgnore], a
 	ld a, SCRIPT_POKEMONTOWER2F_DEFAULT
 	ld [wPokemonTower2FCurScript], a
-	ld [wCurMapScript], a
 	ret
 .didNotDefeat
 	ld a, $1
@@ -192,7 +187,6 @@ PokemonTower2FGhostBattleScript: ; marcelnote - postgame Agatha event
 	set BIT_SCRIPTED_MOVEMENT_STATE, [hl]
 	ld a, SCRIPT_POKEMONTOWER2F_PLAYER_MOVING
 	ld [wPokemonTower2FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 PokemonTower2FPlayerMovingScript: ; marcelnote - postgame Agatha event
@@ -202,7 +196,6 @@ PokemonTower2FPlayerMovingScript: ; marcelnote - postgame Agatha event
 	call Delay3
 	xor a
 	ld [wPokemonTower2FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 PokemonTower2F_TextPointers:
@@ -243,7 +236,6 @@ PokemonTower2FRivalText:
 
 	ld a, SCRIPT_POKEMONTOWER2F_DEFEATED_RIVAL
 	ld [wPokemonTower2FCurScript], a
-	ld [wCurMapScript], a
 	rst TextScriptEnd
 
 .WhatBringsYouHereText:

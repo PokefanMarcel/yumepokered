@@ -242,7 +242,6 @@ PokemonTower7FMrFujiText:
 	predef HideObjectCont
 	ld a, SCRIPT_POKEMONTOWER7F_WARP_TO_MR_FUJI_HOUSE
 	ld [wPokemonTower7FCurScript], a
-	ld [wCurMapScript], a
 	rst TextScriptEnd
 
 .RescueText:

@@ -301,7 +301,6 @@ PokemonTower6FAgathaText: ; marcelnote - postgame Agatha event
 	call GBFadeInFromBlack
 	ld a, SCRIPT_POKEMONTOWER6F_DEFAULT
 	ld [wPokemonTower6FCurScript], a
-	ld [wCurMapScript], a
 	rst TextScriptEnd
 
 .text

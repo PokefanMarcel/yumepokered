@@ -48,7 +48,6 @@ MtSilver3FYellowPostBattleScript:
 .lost
 	xor a ; SCRIPT_MTSILVER3F_DEFAULT
 	ld [wMtSilver3FCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 MtSilver3F_TextPointers:
@@ -77,7 +76,6 @@ MtSilver3FYellowText:
 	ldh [hJoyHeld], a
 	ld a, SCRIPT_MTSILVER3F_YELLOW_POST_BATTLE
 	ld [wMtSilver3FCurScript], a
-	ld [wCurMapScript], a
 	rst TextScriptEnd
 
 .PreBattleText:

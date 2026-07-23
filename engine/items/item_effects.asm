@@ -1729,7 +1729,6 @@ ItemUsePokeFlute: ; marcelnote - added Mew
 	call PrintText
 	ld a, 3 ; SCRIPT_CELADONGROVE_MEW_APPEARS
 	ld [wCeladonGroveCurScript], a
-	ld [wCurMapScript], a
 	ret
 .noMewToCall
 	ld hl, PlayedFluteNoEffectText

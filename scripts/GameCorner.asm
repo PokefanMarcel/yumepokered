@@ -39,7 +39,6 @@ GameCornerReenterMapAfterPlayerLoss:
 	xor a ; SCRIPT_GAMECORNER_DEFAULT
 	ld [wJoyIgnore], a
 	ld [wGameCornerCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 GameCorner_ScriptPointers:

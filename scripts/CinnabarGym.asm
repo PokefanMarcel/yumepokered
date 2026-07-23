@@ -44,7 +44,6 @@ CinnabarGymResetScripts:
 	xor a ; SCRIPT_CINNABARGYM_DEFAULT
 	ld [wJoyIgnore], a
 	ld [wCinnabarGymCurScript], a
-	ld [wCurMapScript], a
 	ld [wOpponentAfterWrongAnswer], a
 	ret
 
@@ -78,7 +77,6 @@ CinnabarGymDefaultScript:
 	call MoveSprite
 	ld a, SCRIPT_CINNABARGYM_GET_OPPONENT_TEXT
 	ld [wCinnabarGymCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 MovementNpcToLeftAndUp:

@@ -61,7 +61,6 @@ Route7PlayerMovingScript:
 	xor a
 	ld [wJoyIgnore], a
 	ld [wRoute7GateCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 Route7Gate_TextPointers:

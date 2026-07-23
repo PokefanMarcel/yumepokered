@@ -34,7 +34,6 @@ BattleHallMovePlayerScript:
 	call StartSimulatingJoypadStates
 	ld a, SCRIPT_BATTLEHALL_END_MOVEMENT
 	ld [wBattleHallCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 .SpriteOnRightMovement:
@@ -68,7 +67,6 @@ BattleHallEndMovementScript:
 	ld [wPlayerMovingDirection], a ; marcelnote - this requires switching script to take effect
 	ld a, SCRIPT_BATTLEHALL_START_BATTLE
 	ld [wBattleHallCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 BattleHallStartBattleScript:
@@ -80,7 +78,6 @@ BattleHallStartBattleScript:
 	ldh [hJoyHeld], a
 	ld a, SCRIPT_BATTLEHALL_POST_BATTLE
 	ld [wBattleHallCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 BattleHallPostBattleScript:
@@ -88,7 +85,6 @@ BattleHallPostBattleScript:
 	SetEvent EVENT_BATTLED_BATTLE_HALL_TRAINER
 	xor a ; SCRIPT_BATTLEHALL_DEFAULT
 	ld [wBattleHallCurScript], a
-	ld [wCurMapScript], a
 	ret
 
 BattleHall_TextPointers:
@@ -141,7 +137,6 @@ BattleHallTrainerText:
 	ld [wSpriteIndex], a
 	ld a, SCRIPT_BATTLEHALL_MOVE_PLAYER
 	ld [wBattleHallCurScript], a
-	ld [wCurMapScript], a
 .textScriptEnd
 	rst TextScriptEnd
 

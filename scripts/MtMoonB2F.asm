@@ -250,7 +250,6 @@ MtMoonB2FDomeFossilText:
 	SetEvent EVENT_GOT_DOME_FOSSIL
 	ld a, SCRIPT_MTMOONB2F_MOVE_SUPER_NERD
 	ld [wMtMoonB2FCurScript], a
-	ld [wCurMapScript], a
 .done
 	rst TextScriptEnd
 
@@ -278,7 +277,6 @@ MtMoonB2FHelixFossilText:
 	SetEvent EVENT_GOT_HELIX_FOSSIL
 	ld a, SCRIPT_MTMOONB2F_MOVE_SUPER_NERD
 	ld [wMtMoonB2FCurScript], a
-	ld [wCurMapScript], a
 .done
 	rst TextScriptEnd
 
