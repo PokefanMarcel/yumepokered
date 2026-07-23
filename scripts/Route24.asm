@@ -37,6 +37,8 @@ ENDC
 	ld a, TEXT_ROUTE24_COOLTRAINER_M1
 	ldh [hTextID], a
 	call DisplayTextID
+	CheckEvent EVENT_GOT_NUGGET
+	ret nz
 	ld a, PAD_DOWN
 	ld [wSimulatedJoypadStatesEnd], a
 	ld a, 1
