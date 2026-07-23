@@ -139,7 +139,6 @@ CeruleanGymMistyText:
 	ldh [hJoyHeld], a
 	ld a, SCRIPT_CERULEANGYM_MISTY_POST_BATTLE
 	ld [wCeruleanGymCurScript], a
-	; wCurMapScript is refreshed from the map-specific value on the next script pass.
 	rst TextScriptEnd
 
 .PreBattleText:
