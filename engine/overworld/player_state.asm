@@ -41,7 +41,7 @@ CheckForceBikeOrSurf::
 .loop
 	ld a, [hli]
 	cp $ff
-	ret z ; if we reach FF then it's not part of the list
+	ret z
 	cp d ; compare to current map
 	jr nz, .incorrectMap
 	ld a, [hli]
@@ -51,20 +51,14 @@ CheckForceBikeOrSurf::
 	cp c ; compare x-coord
 	jr nz, .loop ; incorrect x-coord, check next item
 	ld a, [wCurMap]
-	cp SEAFOAM_ISLANDS_B3F
-	ld a, SCRIPT_SEAFOAMISLANDSB3F_MOVE_OBJECT
-	ld [wSeafoamIslandsB3FCurScript], a
+	cp SEAFOAM_ISLANDS_B3F ; marcelnote - map script starts strong current
 	jr z, .forceSurfing
-	ld a, [wCurMap]
-	cp SEAFOAM_ISLANDS_B4F
-	ld a, SCRIPT_SEAFOAMISLANDSB4F_MOVE_OBJECT
-	ld [wSeafoamIslandsB4FCurScript], a
+	cp SEAFOAM_ISLANDS_B4F ; marcelnote - map script starts strong current
 	jr z, .forceSurfing
 	ld hl, wStatusFlags6
 	set BIT_ALWAYS_ON_BIKE, [hl]
 	ld a, BIKING
 	ld [wWalkBikeSurfState], a
-;	ld [wWalkBikeSurfStateCopy], a
 	jp ForceBikeOrSurf
 .incorrectMap
 	inc hl
@@ -74,7 +68,6 @@ CheckForceBikeOrSurf::
 .forceSurfing
 	ld a, SURFING
 	ld [wWalkBikeSurfState], a
-;	ld [wWalkBikeSurfStateCopy], a
 	jp ForceBikeOrSurf
 
 INCLUDE "data/maps/force_bike_surf.asm"

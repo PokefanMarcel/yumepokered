@@ -1,4 +1,4 @@
-SeafoamIslandsB3F_Script: ; marcelnote - modified for new special warp engine
+SeafoamIslandsB3F_Script: ; marcelnote - refactored map script and modified for new special warp engine
 	call EnableAutoTextBoxDrawing
 	ld hl, wMiscFlags
 	bit BIT_PUSHED_BOULDER, [hl]
@@ -48,71 +48,46 @@ SeafoamIslandsB3F_Script: ; marcelnote - modified for new special warp engine
 
 SeafoamIslandsB3F_ScriptPointers:
 	def_script_pointers
-	dw_const SeafoamIslandsB3FDefaultScript,       SCRIPT_SEAFOAMISLANDSB3F_DEFAULT
-	dw_const SeafoamIslandsB3FObjectMoving1Script, SCRIPT_SEAFOAMISLANDSB3F_OBJECT_MOVING1
-	dw_const SeafoamIslandsB3FMoveObjectScript,    SCRIPT_SEAFOAMISLANDSB3F_MOVE_OBJECT
-	dw_const SeafoamIslandsB3FObjectMoving2Script, SCRIPT_SEAFOAMISLANDSB3F_OBJECT_MOVING2
-	EXPORT SCRIPT_SEAFOAMISLANDSB3F_MOVE_OBJECT ; used by engine/overworld/player_state.asm
+	dw_const SeafoamIslandsB3FDefaultScript,      SCRIPT_SEAFOAMISLANDSB3F_DEFAULT
+	dw_const SeafoamIslandsB3FPlayerMovingScript, SCRIPT_SEAFOAMISLANDSB3F_PLAYER_MOVING
 
 SeafoamIslandsB3FDefaultScript:
 	CheckEvent EVENT_SEAFOAM_B3F_BOULDERS_DOWN
 	ret nz
-	ld a, [wYCoord]
-	cp 8
-	ret nz
-	ld a, [wXCoord]
-	cp 15
-	ret nz
-	ld hl, wSimulatedJoypadStatesEnd
-	ld de, RLEList_ForcedSurfingStrongCurrentNearSteps
-	call DecodeRLEList
-	ld [wSimulatedJoypadStatesIndex], a
-	call StartSimulatingJoypadStates
-	ld hl, wStatusFlags7
-	set BIT_FORCED_WARP, [hl]
-	ld a, SCRIPT_SEAFOAMISLANDSB3F_OBJECT_MOVING1
-	ld [wSeafoamIslandsB3FCurScript], a
-	ret
-
-RLEList_ForcedSurfingStrongCurrentNearSteps:
-	db 7, PAD_DOWN ; marcelnote - refactored warp engine
-	db 5, PAD_RIGHT
-	db 3, PAD_DOWN
-	db -1 ; end
-
-SeafoamIslandsB3FObjectMoving1Script:
-	ld a, [wSimulatedJoypadStatesIndex]
-	and a
-	ret nz
-	; a = 0 = SCRIPT_SEAFOAMISLANDSB3F_DEFAULT
-	ld [wSeafoamIslandsB3FCurScript], a
-	ret
-
-SeafoamIslandsB3FMoveObjectScript:
-	CheckEvent EVENT_SEAFOAM_B3F_BOULDERS_DOWN
-	ret nz
-	ld a, [wXCoord]
-	cp 18
+	ld hl, .Coords
+	call ArePlayerCoordsInArray
+	ld hl, wCurrentMapScriptFlags  ; marcelnote - preserving vanilla behavior,
+	bit BIT_CUR_MAP_LOADED_1, [hl] ;  the automovement triggers from the boulder
+	res BIT_CUR_MAP_LOADED_1, [hl] ;  positions only if we just fell down from B2F
+	ret nc
+	jr nz, .gotMapLoadedState
+	ccf ; unset C flag if map is already loaded
+.gotMapLoadedState
+	ld a, [wCoordIndex]
+	dec a
+	ld de, .RLEList_StrongCurrentNearSteps
+	jr z, .forceSurfMovement
+	ret nc
+	dec a
 	ld de, .RLEList_StrongCurrentNearLeftBoulder
 	jr z, .forceSurfMovement
-	cp 19
-	ld a, SCRIPT_SEAFOAMISLANDSB3F_DEFAULT
-	jr nz, .playerNotInStrongCurrent
 	ld de, .RLEList_StrongCurrentNearRightBoulder
 .forceSurfMovement
 	ld hl, wSimulatedJoypadStatesEnd
 	call DecodeRLEList
 	ld [wSimulatedJoypadStatesIndex], a
-	xor a
-	ld [wSpritePlayerStateData2MovementByte1], a
-	ld hl, wStatusFlags5
-	set BIT_SCRIPTED_MOVEMENT_STATE, [hl]
+	call StartSimulatingJoypadStates
 	ld hl, wStatusFlags7
 	set BIT_FORCED_WARP, [hl]
-	ld a, SCRIPT_SEAFOAMISLANDSB3F_OBJECT_MOVING2
-.playerNotInStrongCurrent
+	ld a, SCRIPT_SEAFOAMISLANDSB3F_PLAYER_MOVING
 	ld [wSeafoamIslandsB3FCurScript], a
 	ret
+
+.RLEList_StrongCurrentNearSteps:
+	db 7, PAD_DOWN ; marcelnote - refactored warp engine
+	db 5, PAD_RIGHT
+	db 3, PAD_DOWN
+	db -1 ; end
 
 .RLEList_StrongCurrentNearRightBoulder:
 	db 7, PAD_DOWN ; marcelnote - refactored warp engine
@@ -126,12 +101,17 @@ SeafoamIslandsB3FMoveObjectScript:
 	db 4, PAD_DOWN
 	db -1 ; end
 
-SeafoamIslandsB3FObjectMoving2Script:
+.Coords
+	dbmapcoord 15,  8 ; near steps
+	dbmapcoord 18,  7 ; near left boulder
+	dbmapcoord 19,  7 ; near right boulder
+	db -1 ; end
+
+SeafoamIslandsB3FPlayerMovingScript:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
-	; a = 0 = SCRIPT_SEAFOAMISLANDSB3F_DEFAULT
-	ld [wSeafoamIslandsB3FCurScript], a
+	ld [wSeafoamIslandsB3FCurScript], a ; SCRIPT_SEAFOAMISLANDSB3F_DEFAULT (a = 0)
 	ret
 
 SeafoamIslandsB3F_TextPointers:
