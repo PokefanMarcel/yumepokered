@@ -27,11 +27,6 @@ LanceShowOrHideEntranceBlocks: ; marcelnote - optimized
 .setBlock
 	predef_jump ReplaceTileBlock
 
-ResetLanceScript:
-	xor a ; SCRIPT_LANCESROOM_DEFAULT
-	ld [wLancesRoomCurScript], a
-	ret
-
 LancesRoom_ScriptPointers:
 	def_script_pointers
 	dw_const LancesRoomDefaultScript,               SCRIPT_LANCESROOM_DEFAULT
@@ -74,10 +69,10 @@ LanceTriggerMovementCoords:
 	db -1 ; end
 
 LancesRoomLanceEndBattleScript:
-	call EndTrainerBattle
+	call EndTrainerBattle ; resets script to default
 	ld a, [wIsInBattle]
-	cp $ff
-	jr z, ResetLanceScript
+	inc a ; lost battle?
+	ret z
 	ld a, TEXT_LANCESROOM_LANCE
 	ldh [hTextID], a
 	jp DisplayTextID

@@ -4,12 +4,6 @@ HallOfFame_Script:
 	ld a, [wHallOfFameCurScript]
 	jp CallFunctionInTable
 
-HallofFameRoomClearScripts: ; unreferenced
-	xor a
-	ld [wJoyIgnore], a
-	ld [wHallOfFameCurScript], a
-	ret
-
 HallOfFame_ScriptPointers:
 	def_script_pointers
 	dw_const HallOfFameDefaultScript,            SCRIPT_HALLOFFAME_DEFAULT

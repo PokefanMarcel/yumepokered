@@ -5,12 +5,6 @@ PokemonTower4F_Script:
 	ld bc, wPokemonTower4FCurScript
 	jp ExecuteCurMapScriptInTable
 
-PokemonTower4FSetDefaultScript:
-	xor a
-	ld [wJoyIgnore], a
-	ld [wPokemonTower4FCurScript], a
-	ret
-
 PokemonTower4F_ScriptPointers:
 	def_script_pointers
 	dw_const PokemonTower4FDefaultScript,           SCRIPT_POKEMONTOWER4F_DEFAULT ; marcelnote - was CheckFightingMapTrainers
@@ -48,8 +42,8 @@ PokemonTower4FGhostBattleCoords: ; marcelnote - postgame Agatha event
 
 PokemonTower4FGhostBattleScript: ; marcelnote - postgame Agatha event
 	ld a, [wIsInBattle]
-	cp $ff
-	jr z, PokemonTower4FSetDefaultScript
+	inc a ; lost battle?
+	jr z, .resetScript ; SCRIPT_POKEMONTOWER4F_DEFAULT
 	ld a, PAD_BUTTONS | PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	ld a, [wStatusFlags3]
@@ -67,7 +61,7 @@ PokemonTower4FGhostBattleScript: ; marcelnote - postgame Agatha event
 	call DisplayTextID
 	xor a
 	ld [wJoyIgnore], a
-	ld a, SCRIPT_POKEMONTOWER4F_DEFAULT
+.resetScript
 	ld [wPokemonTower4FCurScript], a
 	ret
 .didNotDefeat

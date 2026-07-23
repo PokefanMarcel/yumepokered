@@ -4,12 +4,6 @@ SSAnne2F_Script:
 	ld a, [wSSAnne2FCurScript]
 	jp CallFunctionInTable
 
-SSAnne2FResetScripts:
-	xor a
-	ld [wJoyIgnore], a
-	ld [wSSAnne2FCurScript], a
-	ret
-
 SSAnne2F_ScriptPointers:
 	def_script_pointers
 	dw_const SSAnne2FDefaultScript,          SCRIPT_SSANNE2F_DEFAULT
@@ -121,8 +115,8 @@ SSAnne2FRivalStartBattleScript:
 
 SSAnne2FRivalAfterBattleScript:
 	ld a, [wIsInBattle]
-	cp $ff
-	jp z, SSAnne2FResetScripts
+	inc a ; lost battle?
+	jr z, .setScript ; SCRIPT_SSANNE2F_DEFAULT
 	call SSAnne2FSetFacingDirectionScript
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
@@ -148,6 +142,7 @@ SSAnne2FRivalAfterBattleScript:
 	call PlaySound
 	callfar Music_RivalAlternateStart
 	ld a, SCRIPT_SSANNE2F_RIVAL_EXIT
+.setScript
 	ld [wSSAnne2FCurScript], a
 	ret
 

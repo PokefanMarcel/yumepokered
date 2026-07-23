@@ -5,12 +5,6 @@ Route12_Script:
 	ld bc, wRoute12CurScript
 	jp ExecuteCurMapScriptInTable
 
-Route12ResetScripts:
-	xor a
-	ld [wJoyIgnore], a
-	ld [wRoute12CurScript], a
-	ret
-
 Route12_ScriptPointers:
 	def_script_pointers
 	dw_const Route12DefaultScript,                  SCRIPT_ROUTE12_DEFAULT
@@ -40,8 +34,8 @@ Route12DefaultScript:
 
 Route12SnorlaxPostBattleScript:
 	ld a, [wIsInBattle]
-	cp $ff
-	jr z, Route12ResetScripts
+	inc a ; lost battle?
+	jr z, .setScript ; SCRIPT_ROUTE12_DEFAULT
 	call UpdateSprites
 	ld a, [wBattleResult]
 	cp $2
@@ -53,6 +47,7 @@ Route12SnorlaxPostBattleScript:
 	SetEvent EVENT_BEAT_ROUTE12_SNORLAX
 	call Delay3
 	ld a, SCRIPT_ROUTE12_DEFAULT
+.setScript
 	ld [wRoute12CurScript], a
 	ret
 

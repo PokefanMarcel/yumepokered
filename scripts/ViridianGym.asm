@@ -32,9 +32,10 @@ ELSE
 ENDC
 
 
-ViridianGymResetScripts:
-	xor a ; SCRIPT_VIRIDIANGYM_DEFAULT
+ViridianGymSetDefaultScript:
+	xor a
 	ld [wJoyIgnore], a
+ViridianGymSetScript:
 	ld [wViridianGymCurScript], a
 	ret
 
@@ -54,8 +55,8 @@ ViridianGymDefaultScript: ; marcelnote - modified spinners engine
 
 ViridianGymGiovanniPostBattleScript:
 	ld a, [wIsInBattle]
-	cp $ff
-	jr z, ViridianGymResetScripts
+	inc a ; lost battle?
+	jr z, ViridianGymSetScript ; SCRIPT_VIRIDIANGYM_DEFAULT
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	; fallthrough
@@ -83,7 +84,7 @@ ViridianGymReceiveTM27: ; marcelnote - optimized
 	ld [wToggleableObjectIndex], a
 	predef ShowObject
 	SetEvents EVENT_2ND_ROUTE22_RIVAL_BATTLE, EVENT_ROUTE22_RIVAL_WANTS_BATTLE
-	jr ViridianGymResetScripts
+	jr ViridianGymSetDefaultScript
 
 ViridianGym_TextPointers:
 	def_text_pointers

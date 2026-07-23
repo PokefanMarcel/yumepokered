@@ -40,9 +40,10 @@ CinnabarGymSetMapAndTiles:
 	res BIT_CUR_MAP_LOADED_1, [hl]
 	jp UpdateCinnabarGymGateTileBlocks
 
-CinnabarGymResetScripts:
-	xor a ; SCRIPT_CINNABARGYM_DEFAULT
+CinnabarGymSetDefaultScript:
+	xor a
 	ld [wJoyIgnore], a
+CinnabarGymSetScript:
 	ld [wCinnabarGymCurScript], a
 	ld [wOpponentAfterWrongAnswer], a
 	ret
@@ -298,8 +299,8 @@ CinnabarGymGateCoords:
 
 CinnabarGymOpenGateScript:
 	ld a, [wIsInBattle]
-	cp $ff
-	jp z, CinnabarGymResetScripts
+	inc a ; lost battle?
+	jp z, CinnabarGymSetScript ; SCRIPT_CINNABARGYM_DEFAULT
 	ld a, [wTrainerHeaderFlagBit]
 	dec a ; marcelnote - adjusted from sub $2 for new quiz question
 	ldh [hGymGateIndex], a
@@ -326,7 +327,7 @@ CinnabarGymOpenGateScript:
 	call CinnabarGymCurrentGateFlagAction
 	call UpdateCinnabarGymGateTileBlock
 .done
-	jp CinnabarGymResetScripts
+	jp CinnabarGymSetDefaultScript
 
 CinnabarGymFinishOpenGateScript:
 	ld b, FLAG_TEST
@@ -343,12 +344,12 @@ CinnabarGymFinishOpenGateScript:
 	ld hl, wCurrentMapScriptFlags
 	set BIT_CUR_MAP_LOADED_1, [hl]
 .done
-	jp CinnabarGymResetScripts
+	jp CinnabarGymSetDefaultScript
 
 CinnabarGymBlainePostBattleScript:
 	ld a, [wIsInBattle]
-	cp $ff
-	jp z, CinnabarGymResetScripts
+	inc a ; lost battle?
+	jp z, CinnabarGymSetScript ; SCRIPT_CINNABARGYM_DEFAULT
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	; fallthrough
@@ -369,24 +370,22 @@ CinnabarGymReceiveTM38: ; marcelnote - optimized
 	call DisplayTextID
 	ld hl, wObtainedBadges
 	set BIT_VOLCANOBADGE, [hl]
-
-	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_CINNABAR_GYM_TRAINER_0, EVENT_BEAT_CINNABAR_GYM_TRAINER_6
 	ld hl, wCurrentMapScriptFlags
 	set BIT_CUR_MAP_LOADED_1, [hl]
-	jp CinnabarGymResetScripts
+	jp CinnabarGymSetDefaultScript
 
 CinnabarGymBlaineRematchPostBattleScript: ; marcelnote - Blaine rematch
 	ld a, [wIsInBattle]
-	cp $ff
-	jp z, CinnabarGymResetScripts
+	inc a ; lost battle?
+	jp z, CinnabarGymSetScript ; SCRIPT_CINNABARGYM_DEFAULT
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	ld a, TEXT_CINNABARGYM_AFTER_REMATCH
 	ldh [hTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_BLAINE_REMATCH
-	jp CinnabarGymResetScripts
+	jp CinnabarGymSetDefaultScript
 
 CinnabarGym_TextPointers:
 	def_text_pointers

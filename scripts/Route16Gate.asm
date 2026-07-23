@@ -80,12 +80,10 @@ Route16GatePlayerMovingRightScript:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
-	xor a
 	ld [wJoyIgnore], a
+	ld [wRoute16GateCurScript], a ; SCRIPT_ROUTE16GATE_DEFAULT
 	ld hl, wStatusFlags5
 	res BIT_SCRIPTED_MOVEMENT_STATE, [hl]
-	ld a, SCRIPT_ROUTE16GATE_DEFAULT
-	ld [wRoute16GateCurScript], a
 	ret
 
 Route16Gate_TextPointers:

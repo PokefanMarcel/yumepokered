@@ -7,12 +7,6 @@ SilphFactory2F_Script:
 	ld bc, wSilphFactory2FCurScript
 	jp ExecuteCurMapScriptInTable
 
-SilphFactory2FResetScripts:
-	xor a
-	ld [wJoyIgnore], a
-	ld [wSilphFactory2FCurScript], a
-	ret
-
 SilphFactory2FGateCallbackScript: ; marcelnote - adapted from SilphCo9FGateCallbackScript
 	ld hl, .GateCoordinates
 	EventFlagAddress de, EVENT_SILPH_FACTORY_2F_UNLOCKED_DOOR1
@@ -78,8 +72,8 @@ SilphFactory2FLoreleiHideScript:
 
 SilphFactory2FRocketPostBattle:
 	ld a, [wIsInBattle]
-	cp $ff
-	jp z, SilphFactory2FResetScripts
+	inc a ; lost battle?
+	jr z, .setScript ; SCRIPT_SILPHFACTORY2F_DEFAULT
 	call UpdateSprites
 	ld a, TEXT_SILPHFACTORY2F_SILPH_ROCKET1_AFTER_BATTLE
 	ldh [hTextID], a
@@ -129,6 +123,7 @@ SilphFactory2FRocketPostBattle:
 	ldh [hSpriteIndex], a
 	call MoveSprite
 	ld a, SCRIPT_SILPHFACTORY2F_LORELEI_AFTER_BATTLE
+.setScript
 	ld [wSilphFactory2FCurScript], a
 	ret
 

@@ -188,8 +188,8 @@ CinnabarVolcanoB1FCharizardBattleStartsScript:
 
 CinnabarVolcanoB1FCharizardBattleScript:
 	ld a, [wIsInBattle]
-	cp $ff
-	jp z, CinnabarVolcano1FB1FDefaultScript
+	inc a ; lost battle?
+	jr z, .setScript ; SCRIPT_CINNABARVOLCANO1FB1F_DEFAULT
 	ld a, TEXT_CINNABARVOLCANOB1F_LANCE_POKE_BALL
 	ldh [hTextID], a
 	call DisplayTextID
@@ -204,6 +204,7 @@ CinnabarVolcanoB1FCharizardBattleScript:
 	ldh [hSpriteIndex], a
 	call MoveSprite
 	ld a, SCRIPT_CINNABARVOLCANOB1F_LANCE_GREAT_JOB
+.setScript
 	ld [wCinnabarVolcano1FB1FCurScript], a
 	ret
 
@@ -252,8 +253,7 @@ CinnabarVolcanoB1FLanceGreatJobScript:
 	xor a
 	ldh [hJoyHeld], a ; marcelnote - BUG: there is a slight twitch at the end, why?
 	ldh [hJoyPressed], a
-	ld a, SCRIPT_CINNABARVOLCANO1FB1F_DEFAULT
-	ld [wCinnabarVolcano1FB1FCurScript], a
+	ld [wCinnabarVolcano1FB1FCurScript], a ; SCRIPT_CINNABARVOLCANO1FB1F_DEFAULT
 	ret
 
 CinnabarVolcano1FB1F_TextPointers:

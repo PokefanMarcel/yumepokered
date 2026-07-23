@@ -31,9 +31,10 @@ ELSE
 	db "ERIKA@"
 ENDC
 
-CeladonGymResetScripts:
-	xor a ; SCRIPT_CELADONGYM_DEFAULT
+CeladonGymSetDefaultScript:
+	xor a
 	ld [wJoyIgnore], a
+CeladonGymSetScript:
 	ld [wCeladonGymCurScript], a
 	ret
 
@@ -47,8 +48,8 @@ CeladonGym_ScriptPointers:
 
 CeladonGymErikaPostBattleScript:
 	ld a, [wIsInBattle]
-	cp $ff
-	jr z, CeladonGymResetScripts
+	inc a ; lost battle?
+	jr z, CeladonGymSetScript ; SCRIPT_CELADONGYM_DEFAULT
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	; fallthrough
@@ -69,23 +70,20 @@ CeladonGymReceiveTM21: ; marcelnote - optimized
 	call DisplayTextID
 	ld hl, wObtainedBadges
 	set BIT_RAINBOWBADGE, [hl]
-
-	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_CELADON_GYM_TRAINER_0, EVENT_BEAT_CELADON_GYM_TRAINER_6
-
-	jr CeladonGymResetScripts
+	jr CeladonGymSetDefaultScript
 
 CeladonGymErikaRematchPostBattleScript: ; marcelnote - Erika rematch
 	ld a, [wIsInBattle]
-	cp $ff
-	jr z, CeladonGymResetScripts
+	inc a ; lost battle?
+	jr z, CeladonGymSetScript ; SCRIPT_CELADONGYM_DEFAULT
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	ld a, TEXT_CELADONGYM_AFTER_REMATCH
 	ldh [hTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_ERIKA_REMATCH
-	jr CeladonGymResetScripts
+	jr CeladonGymSetDefaultScript
 
 CeladonGym_TextPointers:
 	def_text_pointers

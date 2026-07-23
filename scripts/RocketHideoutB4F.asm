@@ -25,12 +25,6 @@ RocketHideoutB4FDoorCallbackScript: ; marcelnote - modified
 	lb bc, 5, 12
 	predef_jump ReplaceTileBlock
 
-RocketHideoutB4FSetDefaultScript:
-	xor a
-	ld [wJoyIgnore], a
-	ld [wRocketHideoutB4FCurScript], a
-	ret
-
 RocketHideoutB4F_ScriptPointers:
 	def_script_pointers
 	dw_const CheckFightingMapTrainers,              SCRIPT_ROCKETHIDEOUTB4F_DEFAULT
@@ -40,8 +34,8 @@ RocketHideoutB4F_ScriptPointers:
 
 RocketHideoutB4FBeatGiovanniScript:
 	ld a, [wIsInBattle]
-	cp $ff
-	jr z, RocketHideoutB4FSetDefaultScript
+	inc a ; lost battle?
+	jr z, .setScript ; SCRIPT_ROCKETHIDEOUTB4F_DEFAULT
 	call UpdateSprites
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
@@ -63,6 +57,7 @@ RocketHideoutB4FBeatGiovanniScript:
 	ld hl, wCurrentMapScriptFlags
 	set BIT_CUR_MAP_LOADED_1, [hl]
 	ld a, SCRIPT_ROCKETHIDEOUTB4F_DEFAULT
+.setScript
 	ld [wRocketHideoutB4FCurScript], a
 	ret
 

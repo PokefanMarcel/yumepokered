@@ -5,12 +5,6 @@ FightingDojo_Script:
 	ld bc, wFightingDojoCurScript
 	jp ExecuteCurMapScriptInTable
 
-FightingDojoResetScripts:
-	xor a ; SCRIPT_FIGHTINGDOJO_DEFAULT
-	ld [wJoyIgnore], a
-	ld [wFightingDojoCurScript], a
-	ret
-
 FightingDojo_ScriptPointers:
 	def_script_pointers
 	dw_const FightingDojoDefaultScript,                SCRIPT_FIGHTINGDOJO_DEFAULT
@@ -63,8 +57,8 @@ FightingDojoDefaultScript:
 
 FightingDojoKarateMasterPostBattleScript:
 	ld a, [wIsInBattle]
-	cp $ff
-	jr z, FightingDojoResetScripts
+	inc a ; lost battle?
+	jr z, .setScript ; SCRIPT_FIGHTINGDOJO_DEFAULT
 	ld a, [wSavedCoordIndex]
 	and a ; nz if the player was at (4, 3), left of the Karate Master
 	jr z, .alreadyFacing
@@ -82,8 +76,9 @@ FightingDojoKarateMasterPostBattleScript:
 	ld a, TEXT_FIGHTINGDOJO_KARATE_MASTER_I_WILL_GIVE_YOU_A_POKEMON
 	ldh [hTextID], a
 	call DisplayTextID
-	xor a ; SCRIPT_FIGHTINGDOJO_DEFAULT
+	xor a
 	ld [wJoyIgnore], a
+.setScript
 	ld [wFightingDojoCurScript], a
 	ret
 

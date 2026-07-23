@@ -72,7 +72,6 @@ Route22GatePlayerMovingScript:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
-	xor a
 	ld [wJoyIgnore], a
 	call Delay3
 	ld a, SCRIPT_ROUTE22GATE_CHECK_COORDS

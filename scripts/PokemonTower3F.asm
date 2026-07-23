@@ -5,12 +5,6 @@ PokemonTower3F_Script:
 	ld bc, wPokemonTower3FCurScript
 	jp ExecuteCurMapScriptInTable
 
-PokemonTower3FSetDefaultScript:
-	xor a
-	ld [wJoyIgnore], a
-	ld [wPokemonTower3FCurScript], a
-	ret
-
 PokemonTower3F_ScriptPointers:
 	def_script_pointers
 	dw_const PokemonTower3FDefaultScript,           SCRIPT_POKEMONTOWER3F_DEFAULT ; marcelnote - was CheckFightingMapTrainers
@@ -47,8 +41,8 @@ PokemonTower3FGhostBattleCoords: ; marcelnote - postgame Agatha event
 
 PokemonTower3FGhostBattleScript: ; marcelnote - postgame Agatha event
 	ld a, [wIsInBattle]
-	cp $ff
-	jr z, PokemonTower3FSetDefaultScript
+	inc a ; lost battle?
+	jr z, .resetScript ; SCRIPT_POKEMONTOWER3F_DEFAULT
 	ld a, PAD_BUTTONS | PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	ld a, [wStatusFlags3]
@@ -66,7 +60,7 @@ PokemonTower3FGhostBattleScript: ; marcelnote - postgame Agatha event
 	call DisplayTextID
 	xor a
 	ld [wJoyIgnore], a
-	ld a, SCRIPT_POKEMONTOWER3F_DEFAULT
+.resetScript
 	ld [wPokemonTower3FCurScript], a
 	ret
 .didNotDefeat

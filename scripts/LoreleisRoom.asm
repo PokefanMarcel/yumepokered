@@ -19,11 +19,6 @@ LoreleiHideExitBlock: ; marcelnote - optimized and modified for Lorelei rematch
 	lb bc, 0, 2
 	predef_jump ReplaceTileBlock
 
-ResetLoreleiScript:
-	xor a ; SCRIPT_LORELEISROOM_DEFAULT
-	ld [wLoreleisRoomCurScript], a
-	ret
-
 LoreleisRoom_ScriptPointers:
 	def_script_pointers
 	dw_const LoreleisRoomDefaultScript,             SCRIPT_LORELEISROOM_DEFAULT
@@ -94,10 +89,10 @@ LoreleisRoomPlayerIsMovingScript:
 	ret
 
 LoreleisRoomLoreleiEndBattleScript:
-	call EndTrainerBattle
+	call EndTrainerBattle ; resets script to default
 	ld a, [wIsInBattle]
-	cp $ff
-	jp z, ResetLoreleiScript
+	inc a ; lost battle?
+	ret z
 	ld a, TEXT_LORELEISROOM_LORELEI
 	ldh [hTextID], a
 	jp DisplayTextID

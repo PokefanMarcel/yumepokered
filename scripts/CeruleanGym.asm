@@ -31,9 +31,10 @@ ELSE
 	db "MISTY@"
 ENDC
 
-CeruleanGymResetScripts:
-	xor a ; SCRIPT_CERULEANGYM_DEFAULT
+CeruleanGymSetDefaultScript:
+	xor a
 	ld [wJoyIgnore], a
+CeruleanGymSetScript:
 	ld [wCeruleanGymCurScript], a
 	ret
 
@@ -47,8 +48,8 @@ CeruleanGym_ScriptPointers:
 
 CeruleanGymMistyPostBattleScript:
 	ld a, [wIsInBattle]
-	cp $ff
-	jr z, CeruleanGymResetScripts
+	inc a ; lost battle?
+	jr z, CeruleanGymSetScript ; SCRIPT_CERULEANGYM_DEFAULT
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	; fallthrough
@@ -69,23 +70,20 @@ CeruleanGymReceiveTM11: ; marcelnote - optimized
 	call DisplayTextID
 	ld hl, wObtainedBadges
 	set BIT_CASCADEBADGE, [hl]
-
-	; deactivate gym trainers
 	SetEvents EVENT_BEAT_CERULEAN_GYM_TRAINER_0, EVENT_BEAT_CERULEAN_GYM_TRAINER_1
-
-	jr CeruleanGymResetScripts
+	jr CeruleanGymSetDefaultScript
 
 CeruleanGymMistyRematchPostBattleScript: ; marcelnote - Misty rematch
 	ld a, [wIsInBattle]
-	cp $ff
-	jr z, CeruleanGymResetScripts
+	inc a ; lost battle?
+	jr z, CeruleanGymSetScript ; SCRIPT_CERULEANGYM_DEFAULT
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	ld a, TEXT_CERULEANGYM_AFTER_REMATCH
 	ldh [hTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_MISTY_REMATCH
-	jr CeruleanGymResetScripts
+	jr CeruleanGymSetDefaultScript
 
 CeruleanGym_TextPointers:
 	def_text_pointers

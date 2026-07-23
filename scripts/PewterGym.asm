@@ -31,9 +31,10 @@ ELSE
 	db "BROCK@"
 ENDC
 
-PewterGymResetScripts:
-	xor a ; SCRIPT_PEWTERGYM_DEFAULT
+PewterGymSetDefaultScript:
+	xor a
 	ld [wJoyIgnore], a
+PewterGymSetScript:
 	ld [wPewterGymCurScript], a
 	ret
 
@@ -47,8 +48,8 @@ PewterGym_ScriptPointers:
 
 PewterGymBrockPostBattleScript:
 	ld a, [wIsInBattle]
-	cp $ff
-	jr z, PewterGymResetScripts
+	inc a ; lost battle?
+	jr z, PewterGymSetScript ; SCRIPT_PEWTERGYM_DEFAULT
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	; fallthrough
@@ -71,32 +72,27 @@ PewterGymReceiveTM34: ; marcelnote - optimized
 	call DisplayTextID
 	ld hl, wObtainedBadges
 	set BIT_BOULDERBADGE, [hl]
-
 	ld a, TOGGLE_GYM_GUY
 	ld [wToggleableObjectIndex], a
 	predef HideObject
 	ld a, TOGGLE_ROUTE_22_RIVAL_1
 	ld [wToggleableObjectIndex], a
 	predef HideObject
-
 	ResetEvents EVENT_1ST_ROUTE22_RIVAL_BATTLE, EVENT_ROUTE22_RIVAL_WANTS_BATTLE
-
-	; deactivate gym trainers
 	SetEvent EVENT_BEAT_PEWTER_GYM_TRAINER_0
-
-	jr PewterGymResetScripts
+	jr PewterGymSetDefaultScript
 
 PewterGymBrockRematchPostBattleScript: ; marcelnote - Brock rematch
 	ld a, [wIsInBattle]
-	cp $ff
-	jr z, PewterGymResetScripts
+	inc a ; lost battle?
+	jr z, PewterGymSetScript ; SCRIPT_PEWTERGYM_DEFAULT
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	ld a, TEXT_PEWTERGYM_AFTER_REMATCH
 	ldh [hTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_BROCK_REMATCH
-	jr PewterGymResetScripts
+	jr PewterGymSetDefaultScript
 
 PewterGym_TextPointers:
 	def_text_pointers

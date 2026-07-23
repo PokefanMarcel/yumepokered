@@ -54,8 +54,8 @@ Route24PlayerMovingScript:
 
 Route24AfterRocketBattleScript:
 	ld a, [wIsInBattle]
-	cp $ff
-	jr z, .lostBattle
+	inc a ; lost battle?
+	jr z, .setScript ; SCRIPT_ROUTE24_DEFAULT
 	call UpdateSprites
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
@@ -63,9 +63,9 @@ Route24AfterRocketBattleScript:
 	ld a, TEXT_ROUTE24_COOLTRAINER_M1
 	ldh [hTextID], a
 	call DisplayTextID
-.lostBattle
-	xor a ; SCRIPT_ROUTE24_DEFAULT
+	xor a
 	ld [wJoyIgnore], a
+.setScript
 	ld [wRoute24CurScript], a
 	ret
 

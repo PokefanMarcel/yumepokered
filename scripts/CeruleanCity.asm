@@ -4,9 +4,7 @@ CeruleanCity_Script:
 	ld a, [wCeruleanCityCurScript]
 	jp CallFunctionInTable
 
-CeruleanCityClearScripts:
-	xor a ; SCRIPT_CERULEANCITY_DEFAULT
-	ld [wJoyIgnore], a
+CeruleanCitySetScript:
 	ld [wCeruleanCityCurScript], a
 	ld a, TOGGLE_CERULEAN_RIVAL
 	ld [wToggleableObjectIndex], a
@@ -22,8 +20,8 @@ CeruleanCity_ScriptPointers:
 
 CeruleanCityRocketDefeatedScript:
 	ld a, [wIsInBattle]
-	cp $ff
-	jr z, CeruleanCityClearScripts
+	inc a ; lost battle?
+	jr z, CeruleanCitySetScript ; SCRIPT_CERULEANCITY_DEFAULT
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	SetEvent EVENT_BEAT_CERULEAN_ROCKET_THIEF
@@ -162,8 +160,8 @@ CeruleanCityRivalBattleScript:
 
 CeruleanCityRivalDefeatedScript:
 	ld a, [wIsInBattle]
-	cp $ff
-	jp z, CeruleanCityClearScripts
+	inc a ; lost battle?
+	jp z, CeruleanCitySetScript ; SCRIPT_CERULEANCITY_DEFAULT
 	call CeruleanCityFaceRivalScript
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a

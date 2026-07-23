@@ -15,12 +15,6 @@ Route22_ScriptPointers:
 	dw_const Route22Rival2ExitScript,        SCRIPT_ROUTE22_RIVAL2_EXIT
 	dw_const DoRet,                          SCRIPT_ROUTE22_NOOP ; PureRGB - DoRet
 
-Route22SetDefaultScript:
-	xor a ; SCRIPT_ROUTE22_DEFAULT
-	ld [wJoyIgnore], a
-	ld [wRoute22CurScript], a
-	ret
-
 Route22MoveRivalRightScript:
 	ld de, Route22RivalMovementData
 	ld a, [wSavedCoordIndex]
@@ -140,8 +134,8 @@ Route22Rival1StartBattleScript:
 
 Route22Rival1AfterBattleScript:
 	ld a, [wIsInBattle]
-	cp $ff
-	jp z, Route22SetDefaultScript
+	inc a ; lost battle?
+	jr z, .setScript ; SCRIPT_ROUTE22_DEFAULT
 	ld a, [wSpritePlayerStateData1FacingDirection]
 	and a ; cp SPRITE_FACING_DOWN
 	jr nz, .notFacingDown
@@ -173,6 +167,7 @@ Route22Rival1AfterBattleScript:
 	call .RivalExit2Script
 .nextScript
 	ld a, SCRIPT_ROUTE22_RIVAL1_EXIT
+.setScript
 	ld [wRoute22CurScript], a
 	ret
 
@@ -302,8 +297,8 @@ Route22Rival2StartBattleScript:
 
 Route22Rival2AfterBattleScript:
 	ld a, [wIsInBattle]
-	cp $ff
-	jp z, Route22SetDefaultScript
+	inc a ; lost battle?
+	jr z, .setScript ; SCRIPT_ROUTE22_DEFAULT
 	ld a, ROUTE22_RIVAL2
 	ldh [hSpriteIndex], a
 	ld a, [wSavedCoordIndex]
@@ -339,10 +334,11 @@ Route22Rival2AfterBattleScript:
 	call .RivalExit2Script
 .nextScript
 	ld a, SCRIPT_ROUTE22_RIVAL2_EXIT
+.setScript
 	ld [wRoute22CurScript], a
 	ret
 
-.RivalExit1Script:
+.RivalExit1Script: ; remove those
 	ld de, Route22Rival2ExitMovementData1
 	jr Route22MoveRival2
 

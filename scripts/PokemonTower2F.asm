@@ -4,9 +4,9 @@ PokemonTower2F_Script:
 	ld a, [wPokemonTower2FCurScript]
 	jp CallFunctionInTable
 
-PokemonTower2FSetDefaultScript: ; marcelnote - was PokemonTower2FResetRivalEncounter:
-	xor a ; SCRIPT_POKEMONTOWER2F_DEFAULT
-	ld [wJoyIgnore], a
+PokemonTower2FSetDefaultScript:
+	xor a
+PokemonTower2FSetScript:
 	ld [wPokemonTower2FCurScript], a
 	ret
 
@@ -61,8 +61,8 @@ PokemonTower2FRivalEncounterEventCoords:
 
 PokemonTower2FDefeatedRivalScript:
 	ld a, [wIsInBattle]
-	cp $ff
-	jr z, PokemonTower2FSetDefaultScript ; marcelnote - was PokemonTower2FResetRivalEncounter
+	inc a ; lost battle?
+	jr z, PokemonTower2FSetScript ; SCRIPT_POKEMONTOWER2F_DEFAULT
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	SetEvent EVENT_BEAT_POKEMON_TOWER_RIVAL
@@ -149,8 +149,8 @@ PokemonTower2FGhostBattleCoords: ; marcelnote - postgame Agatha event
 
 PokemonTower2FGhostBattleScript: ; marcelnote - postgame Agatha event
 	ld a, [wIsInBattle]
-	cp $ff
-	jp z, PokemonTower2FSetDefaultScript
+	inc a ; lost battle?
+	jp z, PokemonTower2FSetScript ; SCRIPT_POKEMONTOWER2F_DEFAULT
 	ld a, PAD_BUTTONS | PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	ld a, [wStatusFlags3]

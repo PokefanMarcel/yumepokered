@@ -21,8 +21,7 @@ SilphCo7F_GateCallbackScript: ; marcelnote - simplify Silph Co gates scripts
 SilphCo7FSetDefaultScript:
 	xor a
 	ld [wJoyIgnore], a
-	; fallthrough
-SilphCo7FSetCurScript:
+SilphCo7FSetScript:
 	ld [wSilphCo7FCurScript], a
 	ret
 
@@ -74,7 +73,7 @@ ENDC
 	ldh [hSpriteIndex], a
 	call MoveSprite
 	ld a, SCRIPT_SILPHCO7F_RIVAL_START_BATTLE
-	jr SilphCo7FSetCurScript
+	jr SilphCo7FSetScript
 
 .RivalEncounterCoordinates:
 	dbmapcoord  3,  2
@@ -121,12 +120,12 @@ SilphCo7FRivalStartBattleScript:
 	ld [wTrainerNo], a
 
 	ld a, SCRIPT_SILPHCO7F_RIVAL_AFTER_BATTLE
-	jp SilphCo7FSetCurScript
+	jp SilphCo7FSetScript
 
 SilphCo7FRivalAfterBattleScript:
 	ld a, [wIsInBattle]
-	cp $ff
-	jp z, SilphCo7FSetDefaultScript
+	inc a ; lost battle?
+	jp z, SilphCo7FSetScript ; SCRIPT_SILPHCO7F_DEFAULT
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	SetEvent EVENT_BEAT_SILPH_CO_RIVAL
@@ -154,7 +153,7 @@ SilphCo7FRivalAfterBattleScript:
 	ldh [hSpriteIndex], a
 	call MoveSprite
 	ld a, SCRIPT_SILPHCO7F_RIVAL_EXIT
-	jp SilphCo7FSetCurScript
+	jp SilphCo7FSetScript
 
 .RivalExitRightMovement:
 	db NPC_MOVEMENT_RIGHT

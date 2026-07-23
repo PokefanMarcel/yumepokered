@@ -50,9 +50,10 @@ VermilionGymSetDoorTile:
 	lb bc, 2, 2
 	predef_jump ReplaceTileBlock
 
-VermilionGymResetScripts:
-	xor a ; SCRIPT_VERMILIONGYM_DEFAULT
+VermilionGymSetDefaultScript:
+	xor a
 	ld [wJoyIgnore], a
+VermilionGymSetScript:
 	ld [wVermilionGymCurScript], a
 	ret
 
@@ -66,8 +67,8 @@ VermilionGym_ScriptPointers:
 
 VermilionGymLTSurgePostBattleScript:
 	ld a, [wIsInBattle]
-	cp $ff ; did we lose?
-	jr z, VermilionGymResetScripts
+	inc a ; lost battle?
+	jr z, VermilionGymSetScript ; SCRIPT_VERMILIONGYM_DEFAULT
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	; fallthrough
@@ -88,22 +89,20 @@ VermilionGymReceiveTM24: ; marcelnote - optimized
 	call DisplayTextID
 	ld hl, wObtainedBadges
 	set BIT_THUNDERBADGE, [hl]
-
-	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_VERMILION_GYM_TRAINER_0, EVENT_BEAT_VERMILION_GYM_TRAINER_2
-	jr VermilionGymResetScripts
+	jr VermilionGymSetDefaultScript
 
 VermilionGymLTSurgeRematchPostBattleScript: ; marcelnote - Lt.Surge rematch
 	ld a, [wIsInBattle]
-	cp $ff
-	jr z, VermilionGymResetScripts
+	inc a ; lost battle?
+	jr z, VermilionGymSetScript ; SCRIPT_VERMILIONGYM_DEFAULT
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	ld a, TEXT_VERMILIONGYM_AFTER_REMATCH
 	ldh [hTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_LT_SURGE_REMATCH
-	jr VermilionGymResetScripts
+	jr VermilionGymSetDefaultScript
 
 VermilionGym_TextPointers:
 	def_text_pointers

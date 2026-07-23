@@ -31,9 +31,10 @@ ELSE
 	db "KOGA@"
 ENDC
 
-FuchsiaGymResetScripts:
-	xor a ; SCRIPT_FUCHSIAGYM_DEFAULT
+FuchsiaGymSetDefaultScript:
+	xor a
 	ld [wJoyIgnore], a
+FuchsiaGymSetScript:
 	ld [wFuchsiaGymCurScript], a
 	ret
 
@@ -47,8 +48,8 @@ FuchsiaGym_ScriptPointers:
 
 FuchsiaGymKogaPostBattleScript:
 	ld a, [wIsInBattle]
-	cp $ff
-	jr z, FuchsiaGymResetScripts
+	inc a ; lost battle?
+	jr z, FuchsiaGymSetScript ; SCRIPT_FUCHSIAGYM_DEFAULT
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	; fallthrough
@@ -69,23 +70,20 @@ FuchsiaGymReceiveTM06: ; marcelnote - optimized
 	call DisplayTextID
 	ld hl, wObtainedBadges
 	set BIT_SOULBADGE, [hl]
-
-	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_FUCHSIA_GYM_TRAINER_0, EVENT_BEAT_FUCHSIA_GYM_TRAINER_5
-
-	jr FuchsiaGymResetScripts
+	jr FuchsiaGymSetDefaultScript
 
 FuchsiaGymKogaRematchPostBattleScript: ; marcelnote - Koga rematch
 	ld a, [wIsInBattle]
-	cp $ff
-	jr z, FuchsiaGymResetScripts
+	inc a ; lost battle?
+	jr z, FuchsiaGymSetScript ; SCRIPT_FUCHSIAGYM_DEFAULT
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	ld a, TEXT_FUCHSIAGYM_AFTER_REMATCH
 	ldh [hTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_KOGA_REMATCH
-	jr FuchsiaGymResetScripts
+	jr FuchsiaGymSetDefaultScript
 
 FuchsiaGym_TextPointers:
 	def_text_pointers

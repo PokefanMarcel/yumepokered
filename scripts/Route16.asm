@@ -5,12 +5,6 @@ Route16_Script:
 	ld bc, wRoute16CurScript
 	jp ExecuteCurMapScriptInTable
 
-Route16ResetScripts:
-	xor a ; SCRIPT_ROUTE16_DEFAULT
-	ld [wJoyIgnore], a
-	ld [wRoute16CurScript], a
-	ret
-
 Route16_ScriptPointers:
 	def_script_pointers
 	dw_const Route16DefaultScript,                  SCRIPT_ROUTE16_DEFAULT
@@ -41,8 +35,8 @@ Route16DefaultScript:
 
 Route16SnorlaxPostBattleScript:
 	ld a, [wIsInBattle]
-	cp $ff
-	jr z, Route16ResetScripts
+	inc a ; lost battle?
+	jr z, .setScript ; SCRIPT_ROUTE16_DEFAULT
 	call UpdateSprites
 	ld a, [wBattleResult]
 	cp $2
@@ -54,6 +48,7 @@ Route16SnorlaxPostBattleScript:
 	SetEvent EVENT_BEAT_ROUTE16_SNORLAX
 	call Delay3
 	ld a, SCRIPT_ROUTE16_DEFAULT
+.setScript
 	ld [wRoute16CurScript], a
 	ret
 

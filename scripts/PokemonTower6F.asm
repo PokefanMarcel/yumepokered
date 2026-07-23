@@ -5,12 +5,6 @@ PokemonTower6F_Script:
 	ld bc, wPokemonTower6FCurScript
 	jp ExecuteCurMapScriptInTable
 
-PokemonTower6FSetDefaultScript:
-	xor a
-	ld [wJoyIgnore], a
-	ld [wPokemonTower6FCurScript], a ; SCRIPT_POKEMONTOWER6F_DEFAULT
-	ret
-
 PokemonTower6F_ScriptPointers:
 	def_script_pointers
 	dw_const PokemonTower6FDefaultScript,           SCRIPT_POKEMONTOWER6F_DEFAULT
@@ -49,8 +43,8 @@ PokemonTower6FMarowakCoords:
 
 PokemonTower6FMarowakBattleScript:
 	ld a, [wIsInBattle]
-	cp $ff
-	jr z, PokemonTower6FSetDefaultScript
+	inc a ; lost battle?
+	jr z, .setScript ; SCRIPT_POKEMONTOWER6F_DEFAULT
 	ld a, PAD_BUTTONS | PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	ld a, [wStatusFlags3]
@@ -69,6 +63,7 @@ PokemonTower6FMarowakBattleScript:
 	xor a
 	ld [wJoyIgnore], a
 	ld a, SCRIPT_POKEMONTOWER6F_DEFAULT
+.setScript
 	ld [wPokemonTower6FCurScript], a
 	ret
 .didNotDefeat
@@ -121,8 +116,8 @@ PokemonTower6FGhostBattleCoords: ; marcelnote - postgame Agatha event
 
 PokemonTower6FGhostBattleScript: ; marcelnote - postgame Agatha event
 	ld a, [wIsInBattle]
-	cp $ff
-	jp z, PokemonTower6FSetDefaultScript
+	inc a ; lost battle?
+	jr z, .setScript ; SCRIPT_POKEMONTOWER6F_DEFAULT
 	ld a, PAD_BUTTONS | PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	ld a, [wStatusFlags3]
@@ -141,6 +136,7 @@ PokemonTower6FGhostBattleScript: ; marcelnote - postgame Agatha event
 	xor a
 	ld [wJoyIgnore], a
 	ld a, SCRIPT_POKEMONTOWER6F_DEFAULT
+.setScript
 	ld [wPokemonTower6FCurScript], a
 	ret
 .didNotDefeat

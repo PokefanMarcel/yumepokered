@@ -46,9 +46,10 @@ ELSE
 	db "SABRINA@"
 ENDC
 
-SaffronGymResetScripts:
-	xor a ; SCRIPT_SAFFRONGYM_DEFAULT
+SaffronGymSetDefaultScript:
+	xor a
 	ld [wJoyIgnore], a
+SaffronGymSetScript:
 	ld [wSaffronGymCurScript], a
 	ret
 
@@ -64,8 +65,8 @@ SaffronGym_ScriptPointers:
 
 SaffronGymSabrinaPostBattleScript:
 	ld a, [wIsInBattle]
-	cp $ff
-	jr z, SaffronGymResetScripts
+	inc a ; lost battle?
+	jr z, SaffronGymSetScript ; SCRIPT_SAFFRONGYM_DEFAULT
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	; fallthrough
@@ -86,13 +87,11 @@ SaffronGymReceiveTM46: ; marcelnote - optimized
 	call DisplayTextID
 	ld hl, wObtainedBadges
 	set BIT_MARSHBADGE, [hl]
-
-	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_SAFFRON_GYM_TRAINER_0, EVENT_BEAT_SAFFRON_GYM_TRAINER_6
 	ld a, SFX_TELEPORT_EXIT_1
 	call PlaySound
 	call UpdateSaffronGymTileBlocks ; marcelnote - open Saffron Gym gate
-	jr SaffronGymResetScripts
+	jr SaffronGymSetDefaultScript
 
 UpdateSaffronGymTileBlocks: ; marcelnote - open Saffron Gym gate
 	ld hl, wCurrentMapScriptFlags
@@ -112,20 +111,20 @@ UpdateSaffronGymTileBlocks: ; marcelnote - open Saffron Gym gate
 
 SaffronGymSabrinaRematchPostBattleScript: ; marcelnote - Sabrina rematch
 	ld a, [wIsInBattle]
-	cp $ff
-	jp z, SaffronGymResetScripts
+	inc a ; lost battle?
+	jp z, SaffronGymSetScript ; SCRIPT_SAFFRONGYM_DEFAULT
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	ld a, TEXT_SAFFRONGYM_AFTER_REMATCH
 	ldh [hTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_SABRINA_REMATCH
-	jp SaffronGymResetScripts
+	jp SaffronGymSetDefaultScript
 
 SaffronGymBrunoArrivesScript: ; marcelnote - postgame Bruno event
 	ld a, [wIsInBattle]
-	cp $ff
-	jp z, CheckFightingMapTrainers
+	inc a ; lost battle?
+	jp z, SaffronGymSetScript ; SCRIPT_SAFFRONGYM_DEFAULT
 	ld a, TOGGLE_SAFFRON_GYM_BRUNO
 	ld [wToggleableObjectIndex], a
 	predef ShowObjectCont
@@ -225,7 +224,7 @@ SaffronGymBrunoInspiringScript: ; marcelnote - postgame Bruno event
 	ld a, SFX_TELEPORT_EXIT_1
 	call PlaySound
 	call UpdateSaffronGymTileBlocks ; marcelnote - open Saffron Gym gate
-	jp SaffronGymResetScripts
+	jp SaffronGymSetDefaultScript
 
 SaffronGym_TextPointers:
 	def_text_pointers

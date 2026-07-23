@@ -12,8 +12,8 @@ MtSilver3F_ScriptPointers:
 
 MtSilver3FYellowPostBattleScript:
 	ld a, [wIsInBattle]
-	cp $ff
-	jr z, .lost
+	inc a ; lost battle?
+	jr z, .setScript ; SCRIPT_MTSILVER3F_DEFAULT
 	call UpdateSprites
 	ld a, TEXT_MTSILVER3F_YELLOW_POST_BATTLE
 	ldh [hTextID], a
@@ -45,8 +45,8 @@ MtSilver3FYellowPostBattleScript:
 	predef EmotionBubble
 	ld c, 100
 	call DelayFrames
-.lost
-	xor a ; SCRIPT_MTSILVER3F_DEFAULT
+	xor a
+.setScript
 	ld [wMtSilver3FCurScript], a
 	ret
 

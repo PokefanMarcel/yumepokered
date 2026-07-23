@@ -4,12 +4,6 @@ ChampionsRoom_Script:
 	ld a, [wChampionsRoomCurScript]
 	jp CallFunctionInTable
 
-ResetRivalScript:
-	xor a ; SCRIPT_CHAMPIONSROOM_DEFAULT
-	ld [wJoyIgnore], a
-	ld [wChampionsRoomCurScript], a
-	ret
-
 ChampionsRoom_ScriptPointers:
 	def_script_pointers
 	dw_const DoRet,                                       SCRIPT_CHAMPIONSROOM_DEFAULT ; PureRGB - DoRet
@@ -107,8 +101,8 @@ ChampionsRoomRivalReadyToBattleScript:
 
 ChampionsRoomRivalDefeatedScript:
 	ld a, [wIsInBattle]
-	cp $ff
-	jp z, ResetRivalScript
+	inc a ; lost battle?
+	jr z, .setScript ; SCRIPT_CHAMPIONSROOM_DEFAULT
 	call UpdateSprites
 	SetEvent EVENT_BEAT_CHAMPION_RIVAL
 	ld a, PAD_CTRL_PAD
@@ -122,6 +116,7 @@ ChampionsRoomRivalDefeatedScript:
 	ldh [hSpriteIndex], a
 	call SetSpriteMovementBytesToFF
 	ld a, SCRIPT_CHAMPIONSROOM_OAK_ARRIVES
+.setScript
 	ld [wChampionsRoomCurScript], a
 	ret
 .rematch ; marcelnote - added for Rival rematch
@@ -286,10 +281,8 @@ ChampionsRoomCleanupScript:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
-	xor a
 	ld [wJoyIgnore], a
-	ld a, SCRIPT_CHAMPIONSROOM_DEFAULT
-	ld [wChampionsRoomCurScript], a
+	ld [wChampionsRoomCurScript], a ; SCRIPT_CHAMPIONSROOM_DEFAULT
 	ret
 
 ChampionsRoom_DisplayTextID_AllowABSelectStart:

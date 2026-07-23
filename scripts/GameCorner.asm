@@ -35,12 +35,6 @@ GameCornerSetRocketHideoutDoorTile:
 	lb bc, 0, 8 ; marcelnote - reduced map size
 	predef_jump ReplaceTileBlock
 
-GameCornerReenterMapAfterPlayerLoss:
-	xor a ; SCRIPT_GAMECORNER_DEFAULT
-	ld [wJoyIgnore], a
-	ld [wGameCornerCurScript], a
-	ret
-
 GameCorner_ScriptPointers:
 	def_script_pointers
 	dw_const DoRet,                        SCRIPT_GAMECORNER_DEFAULT ; PureRGB - DoRet
@@ -49,8 +43,8 @@ GameCorner_ScriptPointers:
 
 GameCornerRocketBattleScript: ; marcelnote - adjusted for reduced map size
 	ld a, [wIsInBattle]
-	cp $ff
-	jr z, GameCornerReenterMapAfterPlayerLoss
+	inc a ; lost battle?
+	jr z, .setScript ; SCRIPT_GAMECORNER_DEFAULT
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	ld a, TEXT_GAMECORNER_ROCKET_AFTER_BATTLE
@@ -69,6 +63,7 @@ GameCornerRocketBattleScript: ; marcelnote - adjusted for reduced map size
 	ldh [hSpriteIndex], a
 	call MoveSprite
 	ld a, SCRIPT_GAMECORNER_ROCKET_EXIT
+.setScript
 	ld [wGameCornerCurScript], a
 	ret
 

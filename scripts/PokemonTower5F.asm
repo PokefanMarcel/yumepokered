@@ -5,12 +5,6 @@ PokemonTower5F_Script:
 	ld bc, wPokemonTower5FCurScript
 	jp ExecuteCurMapScriptInTable
 
-PokemonTower5FSetDefaultScript: ; marcelnote - postgame Agatha event
-	xor a
-	ld [wJoyIgnore], a
-	ld [wPokemonTower5FCurScript], a
-	ret
-
 PokemonTower5F_ScriptPointers:
 	def_script_pointers
 	dw_const PokemonTower5FDefaultScript,           SCRIPT_POKEMONTOWER5F_DEFAULT
@@ -85,8 +79,8 @@ PokemonTower5FGhostBattleCoords: ; marcelnote - postgame Agatha event
 
 PokemonTower5FGhostBattleScript: ; marcelnote - postgame Agatha event
 	ld a, [wIsInBattle]
-	cp $ff
-	jp z, PokemonTower5FSetDefaultScript
+	inc a ; lost battle?
+	jr z, .setScript ; SCRIPT_POKEMONTOWER5F_DEFAULT
 	ld a, PAD_BUTTONS | PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	ld a, [wStatusFlags3]
@@ -104,7 +98,7 @@ PokemonTower5FGhostBattleScript: ; marcelnote - postgame Agatha event
 	call DisplayTextID
 	xor a
 	ld [wJoyIgnore], a
-	ld a, SCRIPT_POKEMONTOWER5F_DEFAULT
+.setScript
 	ld [wPokemonTower5FCurScript], a
 	ret
 .didNotDefeat

@@ -128,11 +128,9 @@ VermilionCityPlayerMovingUp2Script:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
-	xor a
 	ld [wJoyIgnore], a
 	ldh [hJoyHeld], a
-	ld a, SCRIPT_VERMILIONCITY_DEFAULT
-	ld [wVermilionCityCurScript], a
+	ld [wVermilionCityCurScript], a ; SCRIPT_VERMILIONCITY_DEFAULT
 	ret
 
 VermilionCityPlayerMovingUp1Script:

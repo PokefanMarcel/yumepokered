@@ -18,11 +18,6 @@ BrunoHideExitBlock: ; marcelnote - optimized and modified for Bruno rematch
 	lb bc, 0, 2
 	predef_jump ReplaceTileBlock
 
-ResetBrunoScript:
-	xor a ; SCRIPT_BRUNOSROOM_DEFAULT
-	ld [wBrunosRoomCurScript], a
-	ret
-
 BrunosRoom_ScriptPointers:
 	def_script_pointers
 	dw_const BrunosRoomDefaultScript,               SCRIPT_BRUNOSROOM_DEFAULT
@@ -93,10 +88,10 @@ BrunosRoomPlayerIsMovingScript:
 	ret
 
 BrunosRoomBrunoEndBattleScript:
-	call EndTrainerBattle
+	call EndTrainerBattle ; resets script to default
 	ld a, [wIsInBattle]
-	cp $ff
-	jp z, ResetBrunoScript
+	inc a ; lost battle?
+	ret z
 	ld a, TEXT_BRUNOSROOM_BRUNO
 	ldh [hTextID], a
 	jp DisplayTextID

@@ -79,12 +79,10 @@ Route18GatePlayerMovingRightScript:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
-	xor a
 	ld [wJoyIgnore], a
+	ld [wRoute18GateCurScript], a ; SCRIPT_ROUTE18GATE_DEFAULT
 	ld hl, wStatusFlags5
 	res BIT_SCRIPTED_MOVEMENT_STATE, [hl]
-	ld a, SCRIPT_ROUTE18GATE_DEFAULT
-	ld [wRoute18GateCurScript], a
 	ret
 
 Route18Gate_TextPointers:

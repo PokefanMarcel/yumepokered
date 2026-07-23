@@ -14,8 +14,8 @@ Route1_ScriptPointers:
 
 Route1OakPostBattleScript: ; marcelnote - postgame Oak battle
 	ld a, [wIsInBattle]
-	cp $ff
-	jr z, .lost
+	inc a ; lost battle?
+	jr z, .setScript ; SCRIPT_ROUTE1_DEFAULT
 	call UpdateSprites
 	ld a, TEXT_ROUTE1_OAK_POST_BATTLE
 	ldh [hTextID], a
@@ -31,11 +31,7 @@ Route1OakPostBattleScript: ; marcelnote - postgame Oak battle
 .movementLoaded
 	call MoveSprite
 	ld a, SCRIPT_ROUTE1_OAK_FALSE_START
-	ld [wRoute1CurScript], a
-	ret
-
-.lost
-	ld a, SCRIPT_ROUTE1_DEFAULT
+.setScript
 	ld [wRoute1CurScript], a
 	ret
 

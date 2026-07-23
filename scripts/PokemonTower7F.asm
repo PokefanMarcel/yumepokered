@@ -5,12 +5,6 @@ PokemonTower7F_Script:
 	ld bc, wPokemonTower7FCurScript
 	jp ExecuteCurMapScriptInTable
 
-PokemonTower7FSetDefaultScript:
-	xor a
-	ld [wJoyIgnore], a
-	ld [wPokemonTower7FCurScript], a ; SCRIPT_POKEMONTOWER7F_DEFAULT
-	ret
-
 PokemonTower7F_ScriptPointers:
 	def_script_pointers
 	dw_const CheckFightingMapTrainers,              SCRIPT_POKEMONTOWER7F_DEFAULT
@@ -23,8 +17,8 @@ PokemonTower7FEndBattleScript:
 	ld hl, wMiscFlags
 	res BIT_SEEN_BY_TRAINER, [hl]
 	ld a, [wIsInBattle]
-	cp $ff
-	jr z, PokemonTower7FSetDefaultScript
+	inc a ; lost battle?
+	jr z, .setScript ; SCRIPT_POKEMONTOWER7F_DEFAULT
 	call EndTrainerBattle
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
@@ -33,6 +27,7 @@ PokemonTower7FEndBattleScript:
 	call DisplayTextID
 	call PokemonTower7FRocketLeaveMovementScript
 	ld a, SCRIPT_POKEMONTOWER7F_HIDE_NPC
+.setScript
 	ld [wPokemonTower7FCurScript], a
 	ret
 

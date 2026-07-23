@@ -36,12 +36,6 @@ MtMoonB2FFossilAreaCoords:
 	dbmapcoord 14,  8
 	db -1 ; end
 
-MtMoonB2FResetScripts:
-	xor a ; SCRIPT_MTMOONB2F_DEFAULT
-	ld [wJoyIgnore], a
-	ld [wMtMoonB2FCurScript], a
-	ret
-
 MtMoonB2F_ScriptPointers:
 	def_script_pointers
 	dw_const MtMoonB2FDefaultScript,                   SCRIPT_MTMOONB2F_DEFAULT
@@ -73,14 +67,14 @@ MtMoonB2FCheckGotAFossil:
 
 MtMoonB2FDefeatedSuperNerdScript:
 	ld a, [wIsInBattle]
-	cp $ff
-	jr z, MtMoonB2FResetScripts
+	inc a ; lost battle?
+	jr z, .setScript ; SCRIPT_MTMOONB2F_DEFAULT
 	call UpdateSprites
 	call Delay3
 	SetEvent EVENT_BEAT_MT_MOON_EXIT_SUPER_NERD
 	xor a
 	ld [wJoyIgnore], a
-	ld a, SCRIPT_MTMOONB2F_DEFAULT
+.setScript
 	ld [wMtMoonB2FCurScript], a
 	ret
 

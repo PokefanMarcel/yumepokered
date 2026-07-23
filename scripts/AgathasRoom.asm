@@ -18,11 +18,6 @@ AgathaHideExitBlock: ; marcelnote - optimized and modified for Agatha rematch
 	lb bc, 0, 2
 	predef_jump ReplaceTileBlock
 
-ResetAgathaScript:
-	xor a ; SCRIPT_AGATHASROOM_DEFAULT
-	ld [wAgathasRoomCurScript], a
-	ret
-
 AgathasRoom_ScriptPointers:
 	def_script_pointers
 	dw_const AgathasRoomDefaultScript,              SCRIPT_AGATHASROOM_DEFAULT
@@ -93,16 +88,13 @@ AgathasRoomPlayerIsMovingScript:
 	ret
 
 AgathasRoomAgathaEndBattleScript:
-	call EndTrainerBattle
+	call EndTrainerBattle ; resets script to default
 	ld a, [wIsInBattle]
-	cp $ff
-	jp z, ResetAgathaScript
+	inc a ; lost battle?
+	ret z
 	ld a, TEXT_AGATHASROOM_AGATHA
 	ldh [hTextID], a
-	call DisplayTextID
-	ld a, SCRIPT_CHAMPIONSROOM_PLAYER_ENTERS
-	ld [wChampionsRoomCurScript], a
-	ret
+	jp DisplayTextID
 
 AgathasRoom_TextPointers:
 	def_text_pointers

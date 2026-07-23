@@ -107,14 +107,6 @@ SilphCo11FTeamRocketLeavesScript:
 	db TOGGLE_SAFFRON_CITY_F
 	db -1 ; end
 
-SilphCo11FResetCurScript:
-	xor a
-	ld [wJoyIgnore], a
-	; fallthrough
-SilphCo11FSetCurScript:
-	ld [wSilphCo11FCurScript], a
-	ret
-
 SilphCo11F_ScriptPointers:
 	def_script_pointers
 	dw_const SilphCo11FDefaultScript,               SCRIPT_SILPHCO11F_DEFAULT
@@ -145,7 +137,8 @@ SilphCo11FDefaultScript:
 	ld de, .GiovanniMovement
 	call MoveSprite
 	ld a, SCRIPT_SILPHCO11F_GIOVANNI_FACING
-	jr SilphCo11FSetCurScript
+	ld [wSilphCo11FCurScript], a
+	ret
 
 .PlayerCoordsArray:
 	dbmapcoord  6, 13
@@ -168,8 +161,8 @@ SilphCo11FSetPlayerAndSpriteFacingDirectionScript:
 
 SilphCo11FGiovanniAfterBattleScript:
 	ld a, [wIsInBattle]
-	cp $ff
-	jr z, SilphCo11FResetCurScript
+	inc a ; lost battle?
+	jr z, .setScript ; SCRIPT_SILPHCO11F_DEFAULT
 	ld a, [wSavedCoordIndex]
 	cp 1 ; index of second, upper-right entry in SilphCo11FDefaultScript.PlayerCoordsArray
 	jr z, .facePlayerUp
@@ -194,7 +187,9 @@ SilphCo11FGiovanniAfterBattleScript:
 	SetEvent EVENT_BEAT_SILPH_CO_GIOVANNI
 	xor a
 	ld [wJoyIgnore], a
-	jp SilphCo11FSetCurScript
+.setScript
+	ld [wSilphCo11FCurScript], a
+	ret
 
 SilphCo11FGiovanniBattleFacingScript:
 	ld a, [wStatusFlags5]
@@ -214,7 +209,8 @@ SilphCo11FGiovanniBattleFacingScript:
 	call SilphCo11FSetPlayerAndSpriteFacingDirectionScript
 	call Delay3
 	ld a, SCRIPT_SILPHCO11F_GIOVANNI_START_BATTLE
-	jp SilphCo11FSetCurScript
+	ld [wSilphCo11FCurScript], a
+	ret
 
 SilphCo11FGiovanniStartBattleScript:
 	ld hl, wStatusFlags3
@@ -230,7 +226,8 @@ SilphCo11FGiovanniStartBattleScript:
 	xor a
 	ld [wJoyIgnore], a
 	ld a, SCRIPT_SILPHCO11F_GIOVANNI_AFTER_BATTLE
-	jp SilphCo11FSetCurScript
+	ld [wSilphCo11FCurScript], a
+	ret
 
 SilphCo11F_TextPointers:
 	def_text_pointers
