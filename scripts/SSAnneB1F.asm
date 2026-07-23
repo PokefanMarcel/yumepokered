@@ -1,7 +1,7 @@
 ; marcelnote - merged SS Anne B1F and B1FRooms
 SSAnneB1F_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, SSAnneB1FTrainerHeaders
+	ld hl, SSAnneB1F_TrainerHeaders
 	ld de, SSAnneB1F_ScriptPointers
 	ld bc, wSSAnneB1FCurScript
 	jp ExecuteCurMapScriptInTable
@@ -26,7 +26,7 @@ SSAnneB1F_TextPointers:
 	dw_const PickUpItemText,              TEXT_SSANNEB1FROOMS_TM_REST
 	dw_const PickUpItemText,              TEXT_SSANNEB1FROOMS_MAX_POTION
 
-SSAnneB1FTrainerHeaders:
+SSAnneB1F_TrainerHeaders:
 	def_trainers
 SSAnneB1FTrainerHeader0:
 	trainer EVENT_BEAT_SS_ANNE_B1F_TRAINER_0, 2, SSAnneB1FRoomsSailor1BattleText, SSAnneB1FRoomsSailor1EndBattleText, SSAnneB1FRoomsSailor1AfterBattleText

@@ -1,6 +1,6 @@
 Route17_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, Route17TrainerHeaders
+	ld hl, Route17_TrainerHeaders
 	ld de, Route17_ScriptPointers
 	ld bc, wRoute17CurScript
 	jp ExecuteCurMapScriptInTable
@@ -31,7 +31,7 @@ Route17_TextPointers:
 	dw_const Route17CyclingRoadEndsSignText, TEXT_ROUTE17_CYCLING_ROAD_ENDS_SIGN
 	dw_const Route17Route16SignText,         TEXT_ROUTE17_ROUTE16SIGN ; marcelnote - fixed non-readable sign from Route 17
 
-Route17TrainerHeaders:
+Route17_TrainerHeaders:
 	def_trainers
 Route17TrainerHeader0:
 	trainer EVENT_BEAT_ROUTE_17_TRAINER_0, 3, Route17Biker1BattleText, Route17Biker1EndBattleText, Route17Biker1AfterBattleText

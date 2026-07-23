@@ -1,43 +1,43 @@
 PokemonMansionB1F_Script:
-	call MansionB1FCheckReplaceSwitchDoorBlocks
+	call PokemonMansionB1FCheckReplaceSwitchDoorBlocks
 	call EnableAutoTextBoxDrawing
-	ld hl, Mansion4TrainerHeaders
+	ld hl, PokemonMansionB1F_TrainerHeaders
 	ld de, PokemonMansionB1F_ScriptPointers
 	ld bc, wPokemonMansionB1FCurScript
 	jp ExecuteCurMapScriptInTable
 
-MansionB1FCheckReplaceSwitchDoorBlocks:
+PokemonMansionB1FCheckReplaceSwitchDoorBlocks:
 	ld hl, wCurrentMapScriptFlags
 	bit BIT_CUR_MAP_LOADED_1, [hl]
 	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
-	CheckEvent EVENT_MANSION_SWITCH_ON
+	CheckEvent EVENT_POKEMON_MANSION_SWITCH_ON
 	jr nz, .switchTurnedOn
 	ld a, $e
 	lb bc, 8, 13
-	call Mansion2ReplaceBlock
+	call PokemonMansion2FReplaceBlock
 	ld a, $e
 	lb bc, 11, 6
-	call Mansion2ReplaceBlock
+	call PokemonMansion2FReplaceBlock
 	ld a, $5f
 	lb bc, 3, 4
-	call Mansion2ReplaceBlock
+	call PokemonMansion2FReplaceBlock
 	ld a, $54
 	lb bc, 8, 8
-	jp Mansion2ReplaceBlock
+	jp PokemonMansion2FReplaceBlock
 .switchTurnedOn
 	ld a, $2d
 	lb bc, 8, 13
-	call Mansion2ReplaceBlock
+	call PokemonMansion2FReplaceBlock
 	ld a, $5f
 	lb bc, 11, 6
-	call Mansion2ReplaceBlock
+	call PokemonMansion2FReplaceBlock
 	ld a, $e
 	lb bc, 3, 4
-	call Mansion2ReplaceBlock
+	call PokemonMansion2FReplaceBlock
 	ld a, $e
 	lb bc, 8, 8
-	jp Mansion2ReplaceBlock
+	jp PokemonMansion2FReplaceBlock
 
 PokemonMansionB1FScript_Switches::
 	ld a, [wSpritePlayerStateData1FacingDirection]
@@ -74,23 +74,23 @@ PokemonMansionB1F_TextPointers:
 	; other
 	dw_const PokemonMansion2FSwitchText,      TEXT_POKEMONMANSIONB1F_SWITCH ; This switch uses the text script from the 2F.
 
-Mansion4TrainerHeaders:
+PokemonMansionB1F_TrainerHeaders:
 	def_trainers
-Mansion4TrainerHeader0:
-	trainer EVENT_BEAT_MANSION_4_TRAINER_0, 0, PokemonMansionB1FBurglarBattleText, PokemonMansionB1FBurglarEndBattleText, PokemonMansionB1FBurglarAfterBattleText
-Mansion4TrainerHeader1:
-	trainer EVENT_BEAT_MANSION_4_TRAINER_1, 3, PokemonMansionB1FScientistBattleText, PokemonMansionB1FScientistEndBattleText, PokemonMansionB1FScientistAfterBattleText
+PokemonMansionB1FTrainerHeader0:
+	trainer EVENT_BEAT_POKEMON_MANSION_B1F_TRAINER_0, 0, PokemonMansionB1FBurglarBattleText, PokemonMansionB1FBurglarEndBattleText, PokemonMansionB1FBurglarAfterBattleText
+PokemonMansionB1FTrainerHeader1:
+	trainer EVENT_BEAT_POKEMON_MANSION_B1F_TRAINER_1, 3, PokemonMansionB1FScientistBattleText, PokemonMansionB1FScientistEndBattleText, PokemonMansionB1FScientistAfterBattleText
 	db -1 ; end
 
 PokemonMansionB1FBurglarText:
 	text_asm
-	ld hl, Mansion4TrainerHeader0
+	ld hl, PokemonMansionB1FTrainerHeader0
 	call TalkToTrainer
 	rst TextScriptEnd
 
 PokemonMansionB1FScientistText:
 	text_asm
-	ld hl, Mansion4TrainerHeader1
+	ld hl, PokemonMansionB1FTrainerHeader1
 	call TalkToTrainer
 	rst TextScriptEnd
 

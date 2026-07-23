@@ -4,7 +4,7 @@ ViridianGym_Script:
 	res BIT_CUR_MAP_LOADED_2, [hl]
 	call nz, .LoadNames
 	call EnableAutoTextBoxDrawing
-	ld hl, ViridianGymTrainerHeaders
+	ld hl, ViridianGym_TrainerHeaders
 	ld de, ViridianGym_ScriptPointers
 	ld bc, wViridianGymCurScript
 	jp ExecuteCurMapScriptInTable
@@ -102,7 +102,7 @@ ViridianGym_TextPointers:
 	dw_const ViridianGymGiovanniReceivedTM27Text,   TEXT_VIRIDIANGYM_GIOVANNI_RECEIVED_TM27
 	dw_const ViridianGymGiovanniTM27NoRoomText,     TEXT_VIRIDIANGYM_GIOVANNI_TM27_NO_ROOM
 
-ViridianGymTrainerHeaders:
+ViridianGym_TrainerHeaders:
 	def_trainers 2
 ViridianGymTrainerHeader0:
 	trainer EVENT_BEAT_VIRIDIAN_GYM_TRAINER_0, 4, ViridianGymCooltrainerM1BattleText, ViridianGymCooltrainerM1EndBattleText, ViridianGymCooltrainerM1AfterBattleText

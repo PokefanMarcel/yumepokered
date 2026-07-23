@@ -1,7 +1,7 @@
 SilphCo6F_Script:
 	call SilphCo6F_GateCallbackScript
 	call EnableAutoTextBoxDrawing
-	ld hl, SilphCo6TrainerHeaders
+	ld hl, SilphCo6F_TrainerHeaders
 	ld de, SilphCo6F_ScriptPointers
 	ld bc, wSilphCo6FCurScript
 	jp ExecuteCurMapScriptInTable
@@ -35,13 +35,13 @@ SilphCo6F_TextPointers:
 	dw_const PickUpItemText,             TEXT_SILPHCO6F_HP_UP
 	dw_const PickUpItemText,             TEXT_SILPHCO6F_X_ACCURACY
 
-SilphCo6TrainerHeaders:
+SilphCo6F_TrainerHeaders:
 	def_trainers 6
-SilphCo6TrainerHeader0:
+SilphCo6FTrainerHeader0:
 	trainer EVENT_BEAT_SILPH_CO_6F_TRAINER_0, 2, SilphCo6FRocket1BattleText, SilphCo6FRocket1EndBattleText, SilphCo6FRocket1AfterBattleText
-SilphCo6TrainerHeader1:
+SilphCo6FTrainerHeader1:
 	trainer EVENT_BEAT_SILPH_CO_6F_TRAINER_1, 3, SilphCo6FScientistBattleText, SilphCo6FScientistEndBattleText, SilphCo6FScientistAfterBattleText
-SilphCo6TrainerHeader2:
+SilphCo6FTrainerHeader2:
 	trainer EVENT_BEAT_SILPH_CO_6F_TRAINER_2, 2, SilphCo6FRocket2BattleText, SilphCo6FRocket2EndBattleText, SilphCo6FRocket2AfterBattleText
 	db -1 ; end
 
@@ -127,7 +127,7 @@ SilphCo6FSilphWorkerM3Text:
 
 SilphCo6FRocket1Text:
 	text_asm
-	ld hl, SilphCo6TrainerHeader0
+	ld hl, SilphCo6FTrainerHeader0
 	call TalkToTrainer
 	rst TextScriptEnd
 
@@ -145,7 +145,7 @@ SilphCo6FRocket1AfterBattleText:
 
 SilphCo6FScientistText:
 	text_asm
-	ld hl, SilphCo6TrainerHeader1
+	ld hl, SilphCo6FTrainerHeader1
 	call TalkToTrainer
 	rst TextScriptEnd
 
@@ -163,7 +163,7 @@ SilphCo6FScientistAfterBattleText:
 
 SilphCo6FRocket2Text:
 	text_asm
-	ld hl, SilphCo6TrainerHeader2
+	ld hl, SilphCo6FTrainerHeader2
 	call TalkToTrainer
 	rst TextScriptEnd
 

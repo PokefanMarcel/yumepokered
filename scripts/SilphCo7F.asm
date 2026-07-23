@@ -1,7 +1,7 @@
 SilphCo7F_Script:
 	call SilphCo7F_GateCallbackScript
 	call EnableAutoTextBoxDrawing
-	ld hl, SilphCo7TrainerHeaders
+	ld hl, SilphCo7F_TrainerHeaders
 	ld de, SilphCo7F_ScriptPointers
 	ld bc, wSilphCo7FCurScript
 	jp ExecuteCurMapScriptInTable
@@ -198,15 +198,15 @@ SilphCo7F_TextPointers:
 	dw_const SilphCo7FRivalDefeatedText,      TEXT_SILPHCO7F_RIVAL_DEFEATED
 	dw_const SilphCo7FRivalGoodLuckToYouText, TEXT_SILPHCO7F_RIVAL_GOOD_LUCK_TO_YOU
 
-SilphCo7TrainerHeaders:
+SilphCo7F_TrainerHeaders:
 	def_trainers 5
-SilphCo7TrainerHeader0:
+SilphCo7FTrainerHeader0:
 	trainer EVENT_BEAT_SILPH_CO_7F_TRAINER_0, 2, SilphCo7FRocket1BattleText, SilphCo7FRocket1EndBattleText, SilphCo7FRocket1AfterBattleText
-SilphCo7TrainerHeader1:
+SilphCo7FTrainerHeader1:
 	trainer EVENT_BEAT_SILPH_CO_7F_TRAINER_1, 3, SilphCo7FScientistBattleText, SilphCo7FScientistEndBattleText, SilphCo7FScientistAfterBattleText
-SilphCo7TrainerHeader2:
+SilphCo7FTrainerHeader2:
 	trainer EVENT_BEAT_SILPH_CO_7F_TRAINER_2, 3, SilphCo7FRocket2BattleText, SilphCo7FRocket2EndBattleText, SilphCo7FRocket2AfterBattleText
-SilphCo7TrainerHeader3:
+SilphCo7FTrainerHeader3:
 	trainer EVENT_BEAT_SILPH_CO_7F_TRAINER_3, 4, SilphCo7FRocket3BattleText, SilphCo7FRocket3EndBattleText, SilphCo7FRocket3AfterBattleText
 	db -1 ; end
 
@@ -302,7 +302,7 @@ SilphCo7FSilphWorkerM4Text:
 
 SilphCo7FRocket1Text:
 	text_asm
-	ld hl, SilphCo7TrainerHeader0
+	ld hl, SilphCo7FTrainerHeader0
 	call TalkToTrainer
 	rst TextScriptEnd
 
@@ -320,7 +320,7 @@ SilphCo7FRocket1AfterBattleText:
 
 SilphCo7FScientistText:
 	text_asm
-	ld hl, SilphCo7TrainerHeader1
+	ld hl, SilphCo7FTrainerHeader1
 	call TalkToTrainer
 	rst TextScriptEnd
 
@@ -338,7 +338,7 @@ SilphCo7FScientistAfterBattleText:
 
 SilphCo7FRocket2Text:
 	text_asm
-	ld hl, SilphCo7TrainerHeader2
+	ld hl, SilphCo7FTrainerHeader2
 	call TalkToTrainer
 	rst TextScriptEnd
 
@@ -356,7 +356,7 @@ SilphCo7FRocket2AfterBattleText:
 
 SilphCo7FRocket3Text:
 	text_asm
-	ld hl, SilphCo7TrainerHeader3
+	ld hl, SilphCo7FTrainerHeader3
 	call TalkToTrainer
 	rst TextScriptEnd
 

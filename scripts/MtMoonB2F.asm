@@ -1,6 +1,6 @@
 MtMoonB2F_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, MtMoon3TrainerHeaders
+	ld hl, MtMoonB2F_TrainerHeaders
 	ld de, MtMoonB2F_ScriptPointers
 	ld bc, wMtMoonB2FCurScript
 	call ExecuteCurMapScriptInTable
@@ -94,10 +94,10 @@ MtMoonB2FMoveSuperNerdScript:
 	ld hl, MtMoonB2FPlayerNearHelixFossilCoords
 	call ArePlayerCoordsInArray
 	jp nc, CheckFightingMapTrainers
-	ld de, MtMoon3FSuperNerdMoveUpMovementData
+	ld de, MtMoonB2FSuperNerdMoveUpMovementData
 	jr .continue
 .playerNearDomeFossil
-	ld de, MtMoon3FSuperNerdMoveRightMovementData
+	ld de, MtMoonB2FSuperNerdMoveRightMovementData
 .continue
 	ld a, MTMOONB2F_SUPER_NERD
 	ldh [hSpriteIndex], a
@@ -118,9 +118,9 @@ MtMoonB2FPlayerNearHelixFossilCoords:
 	dbmapcoord 14,  5
 	db -1 ; end
 
-MtMoon3FSuperNerdMoveRightMovementData:
+MtMoonB2FSuperNerdMoveRightMovementData:
 	db NPC_MOVEMENT_RIGHT
-MtMoon3FSuperNerdMoveUpMovementData:
+MtMoonB2FSuperNerdMoveUpMovementData:
 	db NPC_MOVEMENT_UP
 	db -1 ; end
 
@@ -162,16 +162,16 @@ MtMoonB2F_TextPointers:
 	dw_const MtMoonB2FSuperNerdThenThisIsMineText, TEXT_MTMOONB2F_SUPER_NERD_THEN_THIS_IS_MINE
 	dw_const MtMoonB2FMtMoonSquareSignText,        TEXT_MTMOONB2F_MT_MOON_SQUARE_SIGN ; marcelnote - added Mt Moon Square
 
-MtMoon3TrainerHeaders:
+MtMoonB2F_TrainerHeaders:
 	def_trainers 2
-MtMoon3TrainerHeader0:
-	trainer EVENT_BEAT_MT_MOON_3_TRAINER_0, 4, MtMoonB2FRocket1BattleText, MtMoonB2FRocket1EndBattleText, MtMoonB2FRocket1AfterBattleText
-MtMoon3TrainerHeader1:
-	trainer EVENT_BEAT_MT_MOON_3_TRAINER_1, 4, MtMoonB2FRocket2BattleText, MtMoonB2FRocket2EndBattleText, MtMoonB2FRocket2AfterBattleText
-MtMoon3TrainerHeader2:
-	trainer EVENT_BEAT_MT_MOON_3_TRAINER_2, 4, MtMoonB2FRocket3BattleText, MtMoonB2FRocket3EndBattleText, MtMoonB2FRocket3AfterBattleText
-MtMoon3TrainerHeader3:
-	trainer EVENT_BEAT_MT_MOON_3_TRAINER_3, 4, MtMoonB2FRocket4BattleText, MtMoonB2FRocket4EndBattleText, MtMoonB2FRocket4AfterBattleText
+MtMoonB2FTrainerHeader0:
+	trainer EVENT_BEAT_MT_MOON_B2F_TRAINER_0, 4, MtMoonB2FRocket1BattleText, MtMoonB2FRocket1EndBattleText, MtMoonB2FRocket1AfterBattleText
+MtMoonB2FTrainerHeader1:
+	trainer EVENT_BEAT_MT_MOON_B2F_TRAINER_1, 4, MtMoonB2FRocket2BattleText, MtMoonB2FRocket2EndBattleText, MtMoonB2FRocket2AfterBattleText
+MtMoonB2FTrainerHeader2:
+	trainer EVENT_BEAT_MT_MOON_B2F_TRAINER_2, 4, MtMoonB2FRocket3BattleText, MtMoonB2FRocket3EndBattleText, MtMoonB2FRocket3AfterBattleText
+MtMoonB2FTrainerHeader3:
+	trainer EVENT_BEAT_MT_MOON_B2F_TRAINER_3, 4, MtMoonB2FRocket4BattleText, MtMoonB2FRocket4EndBattleText, MtMoonB2FRocket4AfterBattleText
 	db -1 ; end
 
 MtMoonB2FSuperNerdText: ; marcelnote - optimized
@@ -202,25 +202,25 @@ MtMoonB2FSuperNerdText: ; marcelnote - optimized
 
 MtMoonB2FRocket1Text:
 	text_asm
-	ld hl, MtMoon3TrainerHeader0
+	ld hl, MtMoonB2FTrainerHeader0
 	call TalkToTrainer
 	rst TextScriptEnd
 
 MtMoonB2FRocket2Text:
 	text_asm
-	ld hl, MtMoon3TrainerHeader1
+	ld hl, MtMoonB2FTrainerHeader1
 	call TalkToTrainer
 	rst TextScriptEnd
 
 MtMoonB2FRocket3Text:
 	text_asm
-	ld hl, MtMoon3TrainerHeader2
+	ld hl, MtMoonB2FTrainerHeader2
 	call TalkToTrainer
 	rst TextScriptEnd
 
 MtMoonB2FRocket4Text:
 	text_asm
-	ld hl, MtMoon3TrainerHeader3
+	ld hl, MtMoonB2FTrainerHeader3
 	call TalkToTrainer
 	rst TextScriptEnd
 

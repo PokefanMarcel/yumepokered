@@ -1,6 +1,6 @@
 Route12_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, Route12TrainerHeaders
+	ld hl, Route12_TrainerHeaders
 	ld de, Route12_ScriptPointers
 	ld bc, wRoute12CurScript
 	jp ExecuteCurMapScriptInTable
@@ -73,7 +73,7 @@ Route12_TextPointers:
 	dw_const Route12SnorlaxWokeUpText,     TEXT_ROUTE12_SNORLAX_WOKE_UP
 	dw_const Route12SnorlaxCalmedDownText, TEXT_ROUTE12_SNORLAX_CALMED_DOWN
 
-Route12TrainerHeaders:
+Route12_TrainerHeaders:
 	def_trainers 2
 Route12TrainerHeader0:
 	trainer EVENT_BEAT_ROUTE_12_TRAINER_0, 4, Route12Fisher1BattleText, Route12Fisher1EndBattleText, Route12Fisher1AfterBattleText

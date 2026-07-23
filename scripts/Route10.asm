@@ -1,6 +1,6 @@
 Route10_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, Route10TrainerHeaders
+	ld hl, Route10_TrainerHeaders
 	ld de, Route10_ScriptPointers
 	ld bc, wRoute10CurScript
 	jp ExecuteCurMapScriptInTable
@@ -24,7 +24,7 @@ Route10_TextPointers:
 	dw_const Route10RockTunnelSignText, TEXT_ROUTE10_ROCKTUNNEL_SOUTH_SIGN
 	dw_const Route10PowerPlantSignText, TEXT_ROUTE10_POWERPLANT_SIGN
 
-Route10TrainerHeaders:
+Route10_TrainerHeaders:
 	def_trainers
 Route10TrainerHeader0:
 	trainer EVENT_BEAT_ROUTE_10_TRAINER_0, 4, Route10SuperNerd1BattleText, Route10SuperNerd1EndBattleText, Route10SuperNerd1AfterBattleText

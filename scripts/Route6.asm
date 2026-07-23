@@ -1,6 +1,6 @@
 Route6_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, Route6TrainerHeaders
+	ld hl, Route6_TrainerHeaders
 	ld de, Route6_ScriptPointers
 	ld bc, wRoute6CurScript
 	jp ExecuteCurMapScriptInTable
@@ -22,7 +22,7 @@ Route6_TextPointers:
 	dw_const Route6LassText,                TEXT_ROUTE6_LASS ; marcelnote - new trainer
 	dw_const Route6UndergroundPathSignText, TEXT_ROUTE6_UNDERGROUND_PATH_SIGN
 
-Route6TrainerHeaders:
+Route6_TrainerHeaders:
 	def_trainers
 Route6TrainerHeader0:
 	trainer EVENT_BEAT_ROUTE_6_TRAINER_0, 0, Route6CooltrainerM1BattleText, Route6CooltrainerM1EndBattleText, Route6CooltrainerAfterBattleText

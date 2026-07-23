@@ -1,18 +1,18 @@
 SilphCo11F_Script:
 	call SilphCo11FGateCallbackScript
 	call EnableAutoTextBoxDrawing
-	ld hl, SilphCo11TrainerHeaders
+	ld hl, SilphCo11F_TrainerHeaders
 	ld de, SilphCo11F_ScriptPointers
 	ld bc, wSilphCo11FCurScript
 	jp ExecuteCurMapScriptInTable
 
 SilphCo11FGateCallbackScript: ; marcelnote - simplify Silph Co gates scripts
-	ld hl, SilphCo11GateCoords
+	ld hl, SilphCo11FGateCoords
 	EventFlagAddress de, EVENT_SILPH_CO_11_UNLOCKED_DOOR
 	EventFlagBit c, EVENT_SILPH_CO_11_UNLOCKED_DOOR
 	jp SilphCoGateCallback
 
-SilphCo11GateCoords:
+SilphCo11FGateCoords:
 	dbgatecoord 3, 6, INTERIOR_CARD_KEY_GATE_BLOCK
 	db -1 ; end
 
@@ -241,11 +241,11 @@ SilphCo11F_TextPointers:
 	dw_const SilphCo11FRocket2Text,                   TEXT_SILPHCO11F_ROCKET2
 	dw_const SilphCo11FGiovanniYouRuinedOurPlansText, TEXT_SILPHCO11F_GIOVANNI_YOU_RUINED_OUR_PLANS
 
-SilphCo11TrainerHeaders:
+SilphCo11F_TrainerHeaders:
 	def_trainers 4
-SilphCo11TrainerHeader0:
+SilphCo11FTrainerHeader0:
 	trainer EVENT_BEAT_SILPH_CO_11F_TRAINER_0, 4, SilphCo11FRocket1BattleText, SilphCo11FRocket1EndBattleText, SilphCo11FRocket1AfterBattleText
-SilphCo11TrainerHeader1:
+SilphCo11FTrainerHeader1:
 	trainer EVENT_BEAT_SILPH_CO_11F_TRAINER_1, 3, SilphCo11FRocket2BattleText, SilphCo11FRocket2EndBattleText, SilphCo11FRocket2AfterBattleText
 	db -1 ; end
 
@@ -301,7 +301,7 @@ SilphCo11FGiovanniYouRuinedOurPlansText:
 
 SilphCo11FRocket1Text:
 	text_asm
-	ld hl, SilphCo11TrainerHeader0
+	ld hl, SilphCo11FTrainerHeader0
 	call TalkToTrainer
 	rst TextScriptEnd
 
@@ -319,7 +319,7 @@ SilphCo11FRocket1AfterBattleText:
 
 SilphCo11FRocket2Text:
 	text_asm
-	ld hl, SilphCo11TrainerHeader1
+	ld hl, SilphCo11FTrainerHeader1
 	call TalkToTrainer
 	rst TextScriptEnd
 

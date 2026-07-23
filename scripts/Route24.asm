@@ -1,6 +1,6 @@
 Route24_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, Route24TrainerHeaders
+	ld hl, Route24_TrainerHeaders
 	ld de, Route24_ScriptPointers
 	ld bc, wRoute24CurScript
 	jp ExecuteCurMapScriptInTable
@@ -80,7 +80,7 @@ Route24_TextPointers:
 	dw_const Route24Youngster2Text,    TEXT_ROUTE24_YOUNGSTER2
 	dw_const PickUpItemText,           TEXT_ROUTE24_TM_THUNDER_WAVE
 
-Route24TrainerHeaders:
+Route24_TrainerHeaders:
 	def_trainers 2
 Route24TrainerHeader0:
 	trainer EVENT_BEAT_ROUTE_24_TRAINER_0, 4, Route24CooltrainerM2BattleText, Route24CooltrainerM2EndBattleText, Route24CooltrainerM2AfterBattleText

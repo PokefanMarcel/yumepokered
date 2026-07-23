@@ -4,7 +4,7 @@ CeruleanGym_Script:
 	res BIT_CUR_MAP_LOADED_2, [hl]
 	call nz, .LoadNames
 	call EnableAutoTextBoxDrawing
-	ld hl, CeruleanGymTrainerHeaders
+	ld hl, CeruleanGym_TrainerHeaders
 	ld de, CeruleanGym_ScriptPointers
 	ld bc, wCeruleanGymCurScript
 	jp ExecuteCurMapScriptInTable
@@ -99,7 +99,7 @@ CeruleanGym_TextPointers:
 	dw_const CeruleanGymMistyTM11NoRoomText,       TEXT_CERULEANGYM_MISTY_TM11_NO_ROOM
 	dw_const CeruleanGymAfterRematchText,          TEXT_CERULEANGYM_AFTER_REMATCH ; marcelnote - Misty rematch
 
-CeruleanGymTrainerHeaders:
+CeruleanGym_TrainerHeaders:
 	def_trainers 3 ; marcelnote - added 1 to accomodate Misty rematch
 CeruleanGymTrainerHeader0:
 	trainer EVENT_BEAT_CERULEAN_GYM_TRAINER_0, 3, CeruleanGymBattleText1, CeruleanGymEndBattleText1, CeruleanGymAfterBattleText1

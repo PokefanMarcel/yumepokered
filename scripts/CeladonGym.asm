@@ -4,7 +4,7 @@ CeladonGym_Script:
 	res BIT_CUR_MAP_LOADED_2, [hl]
 	call nz, .LoadNames
 	call EnableAutoTextBoxDrawing
-	ld hl, CeladonGymTrainerHeaders
+	ld hl, CeladonGym_TrainerHeaders
 	ld de, CeladonGym_ScriptPointers
 	ld bc, wCeladonGymCurScript
 	jp ExecuteCurMapScriptInTable
@@ -103,7 +103,7 @@ CeladonGym_TextPointers:
 	dw_const CeladonGymErikaTM21NoRoomText,       TEXT_CELADONGYM_ERIKA_TM21_NO_ROOM
 	dw_const CeladonGymAfterRematchText,     TEXT_CELADONGYM_AFTER_REMATCH ; marcelnote - Erika rematch
 
-CeladonGymTrainerHeaders:
+CeladonGym_TrainerHeaders:
 	def_trainers 3 ; marcelnote - added 1 to accomodate Erika rematch
 CeladonGymTrainerHeader0:
 	trainer EVENT_BEAT_CELADON_GYM_TRAINER_0, 2, CeladonGymBattleText2, CeladonGymEndBattleText2, CeladonGymAfterBattleText2

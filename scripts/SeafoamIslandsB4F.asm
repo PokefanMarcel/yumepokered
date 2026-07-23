@@ -105,7 +105,7 @@ SeafoamIslandsB4F_TextPointers:
 ; Articuno is object 3, but its event flag is bit 2.
 ; This is not a problem because its sight range is 0, and
 ; this map never checks for engaging trainers by sight.
-SeafoamIslandsB4FTrainerHeaders:
+SeafoamIslandsB4F_TrainerHeaders:
 	def_trainers 2
 ArticunoTrainerHeader:
 	trainer EVENT_BEAT_ARTICUNO, 0, SeafoamIslandsB4FArticunoBattleText, SeafoamIslandsB4FArticunoBattleText, SeafoamIslandsB4FArticunoBattleText

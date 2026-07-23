@@ -2,7 +2,7 @@
 SilphFactory2F_Script:
 	call SilphFactory2FGateCallbackScript
 	call EnableAutoTextBoxDrawing
-	ld hl, SilphFactory2FTrainerHeaders
+	ld hl, SilphFactory2F_TrainerHeaders
 	ld de, SilphFactory2F_ScriptPointers
 	ld bc, wSilphFactory2FCurScript
 	jp ExecuteCurMapScriptInTable
@@ -230,7 +230,7 @@ SilphFactory2F_TextPointers:
 	dw_const SilphFactory2FRocket1AfterBattleText,   TEXT_SILPHFACTORY2F_SILPH_ROCKET1_AFTER_BATTLE
 	;dw_const PickUpItemText,                        TEXT_ROCKETHIDEOUTB1F_ESCAPE_ROPE
 
-SilphFactory2FTrainerHeaders:
+SilphFactory2F_TrainerHeaders:
 	def_trainers
 ;SilphFactory2FTrainerHeader0:
 ;	trainer EVENT_BEAT_SILPH_FACTORY_2F_TRAINER_0, 0, SilphFactory2FRocket1BattleText, SilphFactory2FRocket1EndBattleText, SilphFactory2FRocket1AfterBattleText

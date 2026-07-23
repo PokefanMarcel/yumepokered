@@ -5,7 +5,7 @@ CinnabarVolcano1FB1F_Script:
 	res BIT_CUR_MAP_LOADED_1, [hl]
 	call nz, CinnabarVolcano1FB1FCheckBoulderEventScript
 	call EnableAutoTextBoxDrawing
-	ld hl, CinnabarVolcano1FB1FTrainerHeaders
+	ld hl, CinnabarVolcano1FB1F_TrainerHeaders
 	ld de, CinnabarVolcano1FB1F_ScriptPointers
 	ld bc, wCinnabarVolcano1FB1FCurScript
 	call ExecuteCurMapScriptInTable
@@ -281,7 +281,7 @@ CinnabarVolcano1FB1F_TextPointers:
 	dw_const CinnabarVolcanoB1FCharizardCaughtText, TEXT_CINNABARVOLCANOB1F_CHARIZARD_CAUGHT
 	dw_const CinnabarVolcanoB1FLanceGreatJobText,   TEXT_CINNABARVOLCANOB1F_LANCE_GREAT_JOB
 
-CinnabarVolcano1FB1FTrainerHeaders:
+CinnabarVolcano1FB1F_TrainerHeaders:
 	def_trainers
 CinnabarVolcanoB1FTrainerHeader0:
 	trainer EVENT_BEAT_CINNABAR_VOLCANO_B1F_TRAINER_0, 2, CinnabarVolcanoB1FScientistBattleText, CinnabarVolcanoB1FScientistEndBattleText, CinnabarVolcanoB1FScientistAfterBattleText

@@ -1,7 +1,7 @@
 SilphCo4F_Script:
 	call SilphCo4FGateCallbackScript
 	call EnableAutoTextBoxDrawing
-	ld hl, SilphCo4TrainerHeaders
+	ld hl, SilphCo4F_TrainerHeaders
 	ld de, SilphCo4F_ScriptPointers
 	ld bc, wSilphCo4FCurScript
 	jp ExecuteCurMapScriptInTable
@@ -33,13 +33,13 @@ SilphCo4F_TextPointers:
 	dw_const PickUpItemText,            TEXT_SILPHCO4F_MAX_REVIVE
 	dw_const PickUpItemText,            TEXT_SILPHCO4F_ESCAPE_ROPE
 
-SilphCo4TrainerHeaders:
+SilphCo4F_TrainerHeaders:
 	def_trainers 2
-SilphCo4TrainerHeader0:
+SilphCo4FTrainerHeader0:
 	trainer EVENT_BEAT_SILPH_CO_4F_TRAINER_0, 4, SilphCo4FRocket1BattleText, SilphCo4FRocket1EndBattleText, SilphCo4FRocket1AfterBattleText
-SilphCo4TrainerHeader1:
+SilphCo4FTrainerHeader1:
 	trainer EVENT_BEAT_SILPH_CO_4F_TRAINER_1, 3, SilphCo4FScientistBattleText, SilphCo4FScientistEndBattleText, SilphCo4FScientistAfterBattleText
-SilphCo4TrainerHeader2:
+SilphCo4FTrainerHeader2:
 	trainer EVENT_BEAT_SILPH_CO_4F_TRAINER_2, 4, SilphCo4FRocket2BattleText, SilphCo4FRocket2EndBattleText, SilphCo4FRocket2AfterBattleText
 	db -1 ; end
 
@@ -61,7 +61,7 @@ SilphCo4FSilphWorkerMText:
 
 SilphCo4FRocket1Text:
 	text_asm
-	ld hl, SilphCo4TrainerHeader0
+	ld hl, SilphCo4FTrainerHeader0
 	call TalkToTrainer
 	rst TextScriptEnd
 
@@ -79,7 +79,7 @@ SilphCo4FRocket1AfterBattleText:
 
 SilphCo4FScientistText:
 	text_asm
-	ld hl, SilphCo4TrainerHeader1
+	ld hl, SilphCo4FTrainerHeader1
 	call TalkToTrainer
 	rst TextScriptEnd
 
@@ -97,7 +97,7 @@ SilphCo4FScientistAfterBattleText:
 
 SilphCo4FRocket2Text:
 	text_asm
-	ld hl, SilphCo4TrainerHeader2
+	ld hl, SilphCo4FTrainerHeader2
 	call TalkToTrainer
 	rst TextScriptEnd
 

@@ -1,7 +1,7 @@
 SilphCo3F_Script:
 	call SilphCo3FGateCallbackScript
 	call EnableAutoTextBoxDrawing
-	ld hl, SilphCo3TrainerHeaders
+	ld hl, SilphCo3F_TrainerHeaders
 	ld de, SilphCo3F_ScriptPointers
 	ld bc, wSilphCo3FCurScript
 	jp ExecuteCurMapScriptInTable
@@ -30,11 +30,11 @@ SilphCo3F_TextPointers:
 	dw_const SilphCo3FScientistText,    TEXT_SILPHCO3F_SCIENTIST
 	dw_const PickUpItemText,            TEXT_SILPHCO3F_HYPER_POTION
 
-SilphCo3TrainerHeaders:
+SilphCo3F_TrainerHeaders:
 	def_trainers 2
-SilphCo3TrainerHeader0:
+SilphCo3FTrainerHeader0:
 	trainer EVENT_BEAT_SILPH_CO_3F_TRAINER_0, 2, SilphCo3FRocketBattleText, SilphCo3FRocketEndBattleText, SilphCo3FRocketAfterBattleText
-SilphCo3TrainerHeader1:
+SilphCo3FTrainerHeader1:
 	trainer EVENT_BEAT_SILPH_CO_3F_TRAINER_1, 3, SilphCo3FScientistBattleText, SilphCo3FScientistEndBattleText, SilphCo3FScientistAfterBattleText
 	db -1 ; end
 
@@ -56,7 +56,7 @@ SilphCo3FSilphWorkerMText:
 
 SilphCo3FRocketText:
 	text_asm
-	ld hl, SilphCo3TrainerHeader0
+	ld hl, SilphCo3FTrainerHeader0
 	call TalkToTrainer
 	rst TextScriptEnd
 
@@ -74,7 +74,7 @@ SilphCo3FRocketAfterBattleText:
 
 SilphCo3FScientistText:
 	text_asm
-	ld hl, SilphCo3TrainerHeader1
+	ld hl, SilphCo3FTrainerHeader1
 	call TalkToTrainer
 	rst TextScriptEnd
 

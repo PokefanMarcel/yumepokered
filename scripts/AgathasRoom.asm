@@ -1,7 +1,7 @@
 AgathasRoom_Script:
 	call AgathaHideExitBlock
 	call EnableAutoTextBoxDrawing
-	ld hl, AgathasRoomTrainerHeaders
+	ld hl, AgathasRoom_TrainerHeaders
 	ld de, AgathasRoom_ScriptPointers
 	ld bc, wAgathasRoomCurScript
 	jp ExecuteCurMapScriptInTable
@@ -109,7 +109,7 @@ AgathasRoom_TextPointers:
 	dw_const AgathasRoomAgathaText,            TEXT_AGATHASROOM_AGATHA
 	dw_const AgathasRoomAgathaDontRunAwayText, TEXT_AGATHASROOM_AGATHA_DONT_RUN_AWAY
 
-AgathasRoomTrainerHeaders:
+AgathasRoom_TrainerHeaders:
 	def_trainers
 AgathasRoomTrainerHeader0: ; marcelnote - added map name to text labels
 	trainer EVENT_BEAT_AGATHAS_ROOM_TRAINER_0, 0, AgathasRoomAgathaBeforeBattleText, AgathasRoomAgathaEndBattleText, AgathasRoomAgathaAfterBattleText

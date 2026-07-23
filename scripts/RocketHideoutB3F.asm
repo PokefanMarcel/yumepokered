@@ -1,6 +1,6 @@
 RocketHideoutB3F_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, RocketHideoutB3FTrainerHeaders
+	ld hl, RocketHideoutB3F_TrainerHeaders
 	ld de, RocketHideoutB3F_ScriptPointers
 	ld bc, wRocketHideoutB3FCurScript
 	jp ExecuteCurMapScriptInTable
@@ -25,7 +25,7 @@ RocketHideoutB3F_TextPointers:
 	dw_const PickUpItemText,              TEXT_ROCKETHIDEOUTB3F_TM_DOUBLE_EDGE
 	dw_const PickUpItemText,              TEXT_ROCKETHIDEOUTB3F_RARE_CANDY
 
-RocketHideoutB3FTrainerHeaders:
+RocketHideoutB3F_TrainerHeaders:
 	def_trainers
 RocketHideoutB3FTrainerHeader0:
 	trainer EVENT_BEAT_ROCKET_HIDEOUT_B3F_TRAINER_0, 2, RocketHideoutB3FRocket1BattleText, RocketHideoutB3FRocket1EndBattleText, RocketHideoutB3FRocket1AfterBattleText

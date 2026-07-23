@@ -1,45 +1,45 @@
 PokemonMansion1F_Script:
-	call Mansion1CheckReplaceSwitchDoorBlocks
+	call PokemonMansion1FCheckReplaceSwitchDoorBlocks
 	call EnableAutoTextBoxDrawing
-	ld hl, Mansion1TrainerHeaders
+	ld hl, PokemonMansion1F_TrainerHeaders
 	ld de, PokemonMansion1F_ScriptPointers
 	ld bc, wPokemonMansion1FCurScript
 	jp ExecuteCurMapScriptInTable
 
-Mansion1CheckReplaceSwitchDoorBlocks:
+PokemonMansion1FCheckReplaceSwitchDoorBlocks:
 	ld hl, wCurrentMapScriptFlags
 	bit BIT_CUR_MAP_LOADED_1, [hl]
 	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
-	CheckEvent EVENT_MANSION_SWITCH_ON
+	CheckEvent EVENT_POKEMON_MANSION_SWITCH_ON
 	jr nz, .switchTurnedOn
 	lb bc, 6, 12
-	call Mansion1LoadEmptyFloorTileBlock
+	call PokemonMansion1FLoadEmptyFloorTileBlock
 	lb bc, 3, 8
-	call Mansion1LoadHorizontalGateBlock
+	call PokemonMansion1FLoadHorizontalGateBlock
 	lb bc, 8, 10
-	call Mansion1LoadHorizontalGateBlock
+	call PokemonMansion1FLoadHorizontalGateBlock
 	lb bc, 13, 13
-	jr Mansion1LoadHorizontalGateBlock
+	jr PokemonMansion1FLoadHorizontalGateBlock
 .switchTurnedOn
 	lb bc, 6, 12
-	call Mansion1LoadHorizontalGateBlock
+	call PokemonMansion1FLoadHorizontalGateBlock
 	lb bc, 3, 8
-	call Mansion1LoadEmptyFloorTileBlock
+	call PokemonMansion1FLoadEmptyFloorTileBlock
 	lb bc, 8, 10
-	call Mansion1LoadEmptyFloorTileBlock
+	call PokemonMansion1FLoadEmptyFloorTileBlock
 	lb bc, 13, 13
-	jr Mansion1LoadEmptyFloorTileBlock
+	jr PokemonMansion1FLoadEmptyFloorTileBlock
 
-Mansion1LoadHorizontalGateBlock:
+PokemonMansion1FLoadHorizontalGateBlock:
 	ld a, $2d
 	ld [wNewTileBlockID], a
-	jr Mansion1ReplaceBlock
+	jr PokemonMansion1FReplaceBlock
 
-Mansion1LoadEmptyFloorTileBlock:
+PokemonMansion1FLoadEmptyFloorTileBlock:
 	ld a, $e
 	ld [wNewTileBlockID], a
-Mansion1ReplaceBlock:
+PokemonMansion1FReplaceBlock:
 	predef ReplaceTileBlock
 	ret
 
@@ -66,15 +66,15 @@ PokemonMansion1F_TextPointers:
 	dw_const PickUpItemText,                TEXT_POKEMONMANSION1F_CARBOS
 	dw_const PokemonMansion1FSwitchText,    TEXT_POKEMONMANSION1F_SWITCH
 
-Mansion1TrainerHeaders:
+PokemonMansion1F_TrainerHeaders:
 	def_trainers
-Mansion1TrainerHeader0:
-	trainer EVENT_BEAT_MANSION_1_TRAINER_0, 3, PokemonMansion1FScientistBattleText, PokemonMansion1FScientistEndBattleText, PokemonMansion1FScientistAfterBattleText
+PokemonMansion1FTrainerHeader0:
+	trainer EVENT_BEAT_POKEMON_MANSION_1F_TRAINER_0, 3, PokemonMansion1FScientistBattleText, PokemonMansion1FScientistEndBattleText, PokemonMansion1FScientistAfterBattleText
 	db -1 ; end
 
 PokemonMansion1FScientistText:
 	text_asm
-	ld hl, Mansion1TrainerHeader0
+	ld hl, PokemonMansion1FTrainerHeader0
 	call TalkToTrainer
 	rst TextScriptEnd
 
@@ -106,9 +106,9 @@ PokemonMansion1FSwitchText:
 	call PrintText
 	ld a, SFX_GO_INSIDE
 	call PlaySound
-	CheckAndSetEvent EVENT_MANSION_SWITCH_ON
+	CheckAndSetEvent EVENT_POKEMON_MANSION_SWITCH_ON
 	jr z, .done
-	ResetEventReuseHL EVENT_MANSION_SWITCH_ON
+	ResetEventReuseHL EVENT_POKEMON_MANSION_SWITCH_ON
 .done
 	rst TextScriptEnd
 .notPressed

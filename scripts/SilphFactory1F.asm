@@ -2,7 +2,7 @@
 SilphFactory1F_Script:
 	call SilphFactory1FDoorCallbackScript
 	call EnableAutoTextBoxDrawing
-	ld hl, SilphFactory1FTrainerHeaders
+	ld hl, SilphFactory1F_TrainerHeaders
 	ld de, SilphFactory1F_ScriptPointers
 	ld bc, wSilphFactory1FCurScript
 	jp ExecuteCurMapScriptInTable
@@ -46,7 +46,7 @@ SilphFactory1F_TextPointers:
 	dw_const PickUpItemText,            TEXT_SILPHFACTORY1F_RARE_CANDY
 	dw_const PickUpItemText,            TEXT_SILPHFACTORY1F_CARBOS
 
-SilphFactory1FTrainerHeaders:
+SilphFactory1F_TrainerHeaders:
 	def_trainers
 SilphFactory1FTrainerHeader0:
 	trainer EVENT_BEAT_SILPH_FACTORY_1F_TRAINER_0, 2, SilphFactory1FRocket1BattleText, SilphFactory1FRocket1EndBattleText, SilphFactory1FRocket1AfterBattleText

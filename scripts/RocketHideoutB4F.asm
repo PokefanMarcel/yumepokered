@@ -1,7 +1,7 @@
 RocketHideoutB4F_Script:
 	call RocketHideoutB4FDoorCallbackScript
 	call EnableAutoTextBoxDrawing
-	ld hl, RocketHideoutB4FTrainerHeaders
+	ld hl, RocketHideoutB4F_TrainerHeaders
 	ld de, RocketHideoutB4F_ScriptPointers
 	ld bc, wRocketHideoutB4FCurScript
 	jp ExecuteCurMapScriptInTable
@@ -79,7 +79,7 @@ RocketHideoutB4F_TextPointers:
 	dw_const PickUpItemText,                              TEXT_ROCKETHIDEOUTB4F_LIFT_KEY
 	dw_const RocketHideoutB4FGiovanniHopeWeMeetAgainText, TEXT_ROCKETHIDEOUTB4F_GIOVANNI_HOPE_WE_MEET_AGAIN
 
-RocketHideoutB4FTrainerHeaders:
+RocketHideoutB4F_TrainerHeaders:
 	def_trainers 2
 RocketHideoutB4FTrainerHeader0:
 	trainer EVENT_BEAT_ROCKET_HIDEOUT_B4F_TRAINER_0, 0, RocketHideoutB4FRocket1BattleText, RocketHideoutB4FRocket1EndBattleText, RocketHideoutB4FRocket1AfterBattleText

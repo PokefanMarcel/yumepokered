@@ -1,6 +1,6 @@
 PokemonTower6F_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, PokemonTower6TrainerHeaders
+	ld hl, PokemonTower6F_TrainerHeaders
 	ld de, PokemonTower6F_ScriptPointers
 	ld bc, wPokemonTower6FCurScript
 	jp ExecuteCurMapScriptInTable
@@ -171,31 +171,31 @@ PokemonTower6F_TextPointers:
 	dw_const PokemonTower6FGhostBattleText,     TEXT_POKEMONTOWER6F_GHOST_BATTLE   ; marcelnote - postgame Agatha event
 	dw_const PokemonTower6FGhostVanishedText,   TEXT_POKEMONTOWER6F_GHOST_VANISHED ; marcelnote - postgame Agatha event
 
-PokemonTower6TrainerHeaders:
+PokemonTower6F_TrainerHeaders:
 	def_trainers
-PokemonTower6TrainerHeader0:
-	trainer EVENT_BEAT_POKEMONTOWER_6_TRAINER_0, 3, PokemonTower6FChanneler1BattleText, PokemonTower6FChanneler1EndBattleText, PokemonTower6FChanneler1AfterBattleText
-PokemonTower6TrainerHeader1:
-	trainer EVENT_BEAT_POKEMONTOWER_6_TRAINER_1, 3, PokemonTower6FChanneler2BattleText, PokemonTower6FChanneler2EndBattleText, PokemonTower6FChanneler2AfterBattleText
-PokemonTower6TrainerHeader2:
-	trainer EVENT_BEAT_POKEMONTOWER_6_TRAINER_2, 2, PokemonTower6FChanneler3BattleText, PokemonTower6FChanneler3EndBattleText, PokemonTower6FChanneler3AfterBattleText
+PokemonTower6FTrainerHeader0:
+	trainer EVENT_BEAT_POKEMON_TOWER_6F_TRAINER_0, 3, PokemonTower6FChanneler1BattleText, PokemonTower6FChanneler1EndBattleText, PokemonTower6FChanneler1AfterBattleText
+PokemonTower6FTrainerHeader1:
+	trainer EVENT_BEAT_POKEMON_TOWER_6F_TRAINER_1, 3, PokemonTower6FChanneler2BattleText, PokemonTower6FChanneler2EndBattleText, PokemonTower6FChanneler2AfterBattleText
+PokemonTower6FTrainerHeader2:
+	trainer EVENT_BEAT_POKEMON_TOWER_6F_TRAINER_2, 2, PokemonTower6FChanneler3BattleText, PokemonTower6FChanneler3EndBattleText, PokemonTower6FChanneler3AfterBattleText
 	db -1 ; end
 
 PokemonTower6FChanneler1Text:
 	text_asm
-	ld hl, PokemonTower6TrainerHeader0
+	ld hl, PokemonTower6FTrainerHeader0
 	call TalkToTrainer
 	rst TextScriptEnd
 
 PokemonTower6FChanneler2Text:
 	text_asm
-	ld hl, PokemonTower6TrainerHeader1
+	ld hl, PokemonTower6FTrainerHeader1
 	call TalkToTrainer
 	rst TextScriptEnd
 
 PokemonTower6FChanneler3Text:
 	text_asm
-	ld hl, PokemonTower6TrainerHeader2
+	ld hl, PokemonTower6FTrainerHeader2
 	call TalkToTrainer
 	rst TextScriptEnd
 

@@ -1,6 +1,6 @@
 RockTunnelB1F_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, RockTunnel2TrainerHeaders
+	ld hl, RockTunnelB1F_TrainerHeaders
 	ld de, RockTunnelB1F_ScriptPointers
 	ld bc, wRockTunnelB1FCurScript
 	jp ExecuteCurMapScriptInTable
@@ -22,71 +22,71 @@ RockTunnelB1F_TextPointers:
 	dw_const RockTunnelB1FHiker3Text,        TEXT_ROCKTUNNELB1F_HIKER3
 	dw_const RockTunnelB1FSuperNerd3Text,    TEXT_ROCKTUNNELB1F_SUPER_NERD3
 
-RockTunnel2TrainerHeaders:
+RockTunnelB1F_TrainerHeaders:
 	def_trainers
-RockTunnel2TrainerHeader0:
-	trainer EVENT_BEAT_ROCK_TUNNEL_2_TRAINER_0, 4, RockTunnelB1FCooltrainerF1BattleText, RockTunnelB1FCooltrainerF1EndBattleText, RockTunnelB1FCooltrainerF1AfterBattleText
-RockTunnel2TrainerHeader1:
-	trainer EVENT_BEAT_ROCK_TUNNEL_2_TRAINER_1, 3, RockTunnelB1FHiker1BattleText, RockTunnelB1FHiker1EndBattleText, RockTunnelB1FHiker1AfterBattleText
-RockTunnel2TrainerHeader2:
-	trainer EVENT_BEAT_ROCK_TUNNEL_2_TRAINER_2, 3, RockTunnelB1FSuperNerd1BattleText, RockTunnelB1FSuperNerd1EndBattleText, RockTunnelB1FSuperNerd1AfterBattleText
-RockTunnel2TrainerHeader3:
-	trainer EVENT_BEAT_ROCK_TUNNEL_2_TRAINER_3, 4, RockTunnelB1FSuperNerd2BattleText, RockTunnelB1FSuperNerd2EndBattleText, RockTunnelB1FSuperNerd2AfterBattleText
-RockTunnel2TrainerHeader4:
-	trainer EVENT_BEAT_ROCK_TUNNEL_2_TRAINER_4, 3, RockTunnelB1FHiker2BattleText, RockTunnelB1FHiker2EndBattleText, RockTunnelB1FHiker2AfterBattleText
-RockTunnel2TrainerHeader5:
-	trainer EVENT_BEAT_ROCK_TUNNEL_2_TRAINER_5, 4, RockTunnelB1FCooltrainerF2BattleText, RockTunnelB1FCooltrainerF2EndBattleText, RockTunnelB1FCooltrainerF2AfterBattleText
-RockTunnel2TrainerHeader6:
-	trainer EVENT_BEAT_ROCK_TUNNEL_2_TRAINER_6, 3, RockTunnelB1FHiker3BattleText, RockTunnelB1FHiker3EndBattleText, RockTunnelB1FHiker3AfterBattleText
-RockTunnel2TrainerHeader7:
-	trainer EVENT_BEAT_ROCK_TUNNEL_2_TRAINER_7, 3, RockTunnelB1FSuperNerd3BattleText, RockTunnelB1FSuperNerd3EndBattleText, RockTunnelB1FSuperNerd3AfterBattleText
+RockTunnelB1FTrainerHeader0:
+	trainer EVENT_BEAT_ROCK_TUNNEL_B1F_TRAINER_0, 4, RockTunnelB1FCooltrainerF1BattleText, RockTunnelB1FCooltrainerF1EndBattleText, RockTunnelB1FCooltrainerF1AfterBattleText
+RockTunnelB1FTrainerHeader1:
+	trainer EVENT_BEAT_ROCK_TUNNEL_B1F_TRAINER_1, 3, RockTunnelB1FHiker1BattleText, RockTunnelB1FHiker1EndBattleText, RockTunnelB1FHiker1AfterBattleText
+RockTunnelB1FTrainerHeader2:
+	trainer EVENT_BEAT_ROCK_TUNNEL_B1F_TRAINER_2, 3, RockTunnelB1FSuperNerd1BattleText, RockTunnelB1FSuperNerd1EndBattleText, RockTunnelB1FSuperNerd1AfterBattleText
+RockTunnelB1FTrainerHeader3:
+	trainer EVENT_BEAT_ROCK_TUNNEL_B1F_TRAINER_3, 4, RockTunnelB1FSuperNerd2BattleText, RockTunnelB1FSuperNerd2EndBattleText, RockTunnelB1FSuperNerd2AfterBattleText
+RockTunnelB1FTrainerHeader4:
+	trainer EVENT_BEAT_ROCK_TUNNEL_B1F_TRAINER_4, 3, RockTunnelB1FHiker2BattleText, RockTunnelB1FHiker2EndBattleText, RockTunnelB1FHiker2AfterBattleText
+RockTunnelB1FTrainerHeader5:
+	trainer EVENT_BEAT_ROCK_TUNNEL_B1F_TRAINER_5, 4, RockTunnelB1FCooltrainerF2BattleText, RockTunnelB1FCooltrainerF2EndBattleText, RockTunnelB1FCooltrainerF2AfterBattleText
+RockTunnelB1FTrainerHeader6:
+	trainer EVENT_BEAT_ROCK_TUNNEL_B1F_TRAINER_6, 3, RockTunnelB1FHiker3BattleText, RockTunnelB1FHiker3EndBattleText, RockTunnelB1FHiker3AfterBattleText
+RockTunnelB1FTrainerHeader7:
+	trainer EVENT_BEAT_ROCK_TUNNEL_B1F_TRAINER_7, 3, RockTunnelB1FSuperNerd3BattleText, RockTunnelB1FSuperNerd3EndBattleText, RockTunnelB1FSuperNerd3AfterBattleText
 	db -1 ; end
 
 RockTunnelB1FCooltrainerF1Text:
 	text_asm
-	ld hl, RockTunnel2TrainerHeader0
+	ld hl, RockTunnelB1FTrainerHeader0
 	call TalkToTrainer
 	rst TextScriptEnd
 
 RockTunnelB1FHiker1Text:
 	text_asm
-	ld hl, RockTunnel2TrainerHeader1
+	ld hl, RockTunnelB1FTrainerHeader1
 	call TalkToTrainer
 	rst TextScriptEnd
 
 RockTunnelB1FSuperNerd1Text:
 	text_asm
-	ld hl, RockTunnel2TrainerHeader2
+	ld hl, RockTunnelB1FTrainerHeader2
 	call TalkToTrainer
 	rst TextScriptEnd
 
 RockTunnelB1FSuperNerd2Text:
 	text_asm
-	ld hl, RockTunnel2TrainerHeader3
+	ld hl, RockTunnelB1FTrainerHeader3
 	call TalkToTrainer
 	rst TextScriptEnd
 
 RockTunnelB1FHiker2Text:
 	text_asm
-	ld hl, RockTunnel2TrainerHeader4
+	ld hl, RockTunnelB1FTrainerHeader4
 	call TalkToTrainer
 	rst TextScriptEnd
 
 RockTunnelB1FCooltrainerF2Text:
 	text_asm
-	ld hl, RockTunnel2TrainerHeader5
+	ld hl, RockTunnelB1FTrainerHeader5
 	call TalkToTrainer
 	rst TextScriptEnd
 
 RockTunnelB1FHiker3Text:
 	text_asm
-	ld hl, RockTunnel2TrainerHeader6
+	ld hl, RockTunnelB1FTrainerHeader6
 	call TalkToTrainer
 	rst TextScriptEnd
 
 RockTunnelB1FSuperNerd3Text:
 	text_asm
-	ld hl, RockTunnel2TrainerHeader7
+	ld hl, RockTunnelB1FTrainerHeader7
 	call TalkToTrainer
 	rst TextScriptEnd
 

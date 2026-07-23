@@ -1,7 +1,7 @@
 SilphCo5F_Script:
 	call SilphCo5FGateCallbackScript
 	call EnableAutoTextBoxDrawing
-	ld hl, SilphCo5TrainerHeaders
+	ld hl, SilphCo5F_TrainerHeaders
 	ld de, SilphCo5F_ScriptPointers
 	ld bc, wSilphCo5FCurScript
 	jp ExecuteCurMapScriptInTable
@@ -38,15 +38,15 @@ SilphCo5F_TextPointers:
 	dw_const SilphCo5FPokemonReport2Text, TEXT_SILPHCO5F_POKEMON_REPORT2
 	dw_const SilphCo5FPokemonReport3Text, TEXT_SILPHCO5F_POKEMON_REPORT3
 
-SilphCo5TrainerHeaders:
+SilphCo5F_TrainerHeaders:
 	def_trainers 2
-SilphCo5TrainerHeader0:
+SilphCo5FTrainerHeader0:
 	trainer EVENT_BEAT_SILPH_CO_5F_TRAINER_0, 1, SilphCo5FRocket1BattleText, SilphCo5FRocket1EndBattleText, SilphCo5FRocket1AfterBattleText
-SilphCo5TrainerHeader1:
+SilphCo5FTrainerHeader1:
 	trainer EVENT_BEAT_SILPH_CO_5F_TRAINER_1, 2, SilphCo5FScientistBattleText, SilphCo5FScientistEndBattleText, SilphCo5FScientistAfterBattleText
-SilphCo5TrainerHeader2:
+SilphCo5FTrainerHeader2:
 	trainer EVENT_BEAT_SILPH_CO_5F_TRAINER_2, 4, SilphCo5FRockerBattleText, SilphCo5FRockerEndBattleText, SilphCo5FRockerAfterBattleText
-SilphCo5TrainerHeader3:
+SilphCo5FTrainerHeader3:
 	trainer EVENT_BEAT_SILPH_CO_5F_TRAINER_3, 3, SilphCo5FRocket2BattleText, SilphCo5FRocket2EndBattleText, SilphCo5FRocket2AfterBattleText
 	db -1 ; end
 
@@ -68,7 +68,7 @@ SilphCo5FSilphWorkerMText:
 
 SilphCo5FRocket1Text:
 	text_asm
-	ld hl, SilphCo5TrainerHeader0
+	ld hl, SilphCo5FTrainerHeader0
 	call TalkToTrainer
 	rst TextScriptEnd
 
@@ -86,7 +86,7 @@ SilphCo5FRocket1AfterBattleText:
 
 SilphCo5FScientistText:
 	text_asm
-	ld hl, SilphCo5TrainerHeader1
+	ld hl, SilphCo5FTrainerHeader1
 	call TalkToTrainer
 	rst TextScriptEnd
 
@@ -104,7 +104,7 @@ SilphCo5FScientistAfterBattleText:
 
 SilphCo5FRockerText:
 	text_asm
-	ld hl, SilphCo5TrainerHeader2
+	ld hl, SilphCo5FTrainerHeader2
 	call TalkToTrainer
 	rst TextScriptEnd
 
@@ -122,7 +122,7 @@ SilphCo5FRockerAfterBattleText:
 
 SilphCo5FRocket2Text:
 	text_asm
-	ld hl, SilphCo5TrainerHeader3
+	ld hl, SilphCo5FTrainerHeader3
 	call TalkToTrainer
 	rst TextScriptEnd
 

@@ -1,6 +1,6 @@
 Route14_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, Route14TrainerHeaders
+	ld hl, Route14_TrainerHeaders
 	ld de, Route14_ScriptPointers
 	ld bc, wRoute14CurScript
 	jp ExecuteCurMapScriptInTable
@@ -25,7 +25,7 @@ Route14_TextPointers:
 	dw_const Route14Biker4Text,        TEXT_ROUTE14_BIKER4
 	dw_const Route14SignText,          TEXT_ROUTE14_SIGN
 
-Route14TrainerHeaders:
+Route14_TrainerHeaders:
 	def_trainers
 Route14TrainerHeader0:
 	trainer EVENT_BEAT_ROUTE_14_TRAINER_0, 2, Route14CooltrainerM1BattleText, Route14CooltrainerM1EndBattleText, Route14CooltrainerM1AfterBattleText

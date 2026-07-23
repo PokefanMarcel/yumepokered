@@ -1,6 +1,6 @@
 SSAnne2FRooms_Script: ; marcelnote - simplified script
 	call EnableAutoTextBoxDrawing
-	ld hl, SSAnne9TrainerHeaders
+	ld hl, SSAnne2FRooms_TrainerHeaders
 	ld de, SSAnne2FRooms_ScriptPointers
 	ld bc, wSSAnne2FRoomsCurScript
 	jp ExecuteCurMapScriptInTable
@@ -27,39 +27,39 @@ SSAnne2FRooms_TextPointers:
 	dw_const SSAnne2FRoomsBrunetteGirlText, TEXT_SSANNE2FROOMS_BRUNETTE_GIRL
 	dw_const SSAnne2FRoomsBeautyText,       TEXT_SSANNE2FROOMS_BEAUTY
 
-SSAnne9TrainerHeaders:
+SSAnne2FRooms_TrainerHeaders:
 	def_trainers
-SSAnne9TrainerHeader0:
-	trainer EVENT_BEAT_SS_ANNE_9_TRAINER_0, 2, SSAnne2FRoomsGentleman1BattleText, SSAnne2FRoomsGentleman1EndBattleText, SSAnne2FRoomsGentleman1AfterBattleText
-SSAnne9TrainerHeader1:
-	trainer EVENT_BEAT_SS_ANNE_9_TRAINER_1, 3, SSAnne2FRoomsFisherBattleText, SSAnne2FRoomsFisherEndBattleText, SSAnne2FRoomsFisherAfterBattleText
-SSAnne9TrainerHeader2:
-	trainer EVENT_BEAT_SS_ANNE_9_TRAINER_2, 3, SSAnne2FRoomsGentleman2BattleText, SSAnne2FRoomsGentleman2EndBattleText, SSAnne2FRoomsGentleman2AfterBattleText
-SSAnne9TrainerHeader3:
-	trainer EVENT_BEAT_SS_ANNE_9_TRAINER_3, 2, SSAnne2FRoomsCooltrainerFBattleText, SSAnne2FRoomsCooltrainerFEndBattleText, SSAnne2FRoomsCooltrainerFAfterBattleText
+SSAnne2FRoomsTrainerHeader0:
+	trainer EVENT_BEAT_SS_ANNE_2F_ROOMS_TRAINER_0, 2, SSAnne2FRoomsGentleman1BattleText, SSAnne2FRoomsGentleman1EndBattleText, SSAnne2FRoomsGentleman1AfterBattleText
+SSAnne2FRoomsTrainerHeader1:
+	trainer EVENT_BEAT_SS_ANNE_2F_ROOMS_TRAINER_1, 3, SSAnne2FRoomsFisherBattleText, SSAnne2FRoomsFisherEndBattleText, SSAnne2FRoomsFisherAfterBattleText
+SSAnne2FRoomsTrainerHeader2:
+	trainer EVENT_BEAT_SS_ANNE_2F_ROOMS_TRAINER_2, 3, SSAnne2FRoomsGentleman2BattleText, SSAnne2FRoomsGentleman2EndBattleText, SSAnne2FRoomsGentleman2AfterBattleText
+SSAnne2FRoomsTrainerHeader3:
+	trainer EVENT_BEAT_SS_ANNE_2F_ROOMS_TRAINER_3, 2, SSAnne2FRoomsCooltrainerFBattleText, SSAnne2FRoomsCooltrainerFEndBattleText, SSAnne2FRoomsCooltrainerFAfterBattleText
 	db -1 ; end
 
 SSAnne2FRoomsGentleman1Text:
 	text_asm
-	ld hl, SSAnne9TrainerHeader0
+	ld hl, SSAnne2FRoomsTrainerHeader0
 	call TalkToTrainer
 	rst TextScriptEnd
 
 SSAnne2FRoomsFisherText:
 	text_asm
-	ld hl, SSAnne9TrainerHeader1
+	ld hl, SSAnne2FRoomsTrainerHeader1
 	call TalkToTrainer
 	rst TextScriptEnd
 
 SSAnne2FRoomsGentleman2Text:
 	text_asm
-	ld hl, SSAnne9TrainerHeader2
+	ld hl, SSAnne2FRoomsTrainerHeader2
 	call TalkToTrainer
 	rst TextScriptEnd
 
 SSAnne2FRoomsCooltrainerFText:
 	text_asm
-	ld hl, SSAnne9TrainerHeader3
+	ld hl, SSAnne2FRoomsTrainerHeader3
 	call TalkToTrainer
 	rst TextScriptEnd
 

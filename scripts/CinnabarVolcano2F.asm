@@ -11,7 +11,7 @@ CinnabarVolcano2F_Script:
 	res BIT_CUR_MAP_LOADED_1, [hl]
 	call nz, CinnabarVolcano2FCheckBouldersEventScript
 	call EnableAutoTextBoxDrawing
-	ld hl, CinnabarVolcano2FTrainerHeaders
+	ld hl, CinnabarVolcano2F_TrainerHeaders
 	ld de, CinnabarVolcano2F_ScriptPointers
 	ld bc, wCinnabarVolcano2FCurScript
 	jp ExecuteCurMapScriptInTable
@@ -79,7 +79,7 @@ CinnabarVolcano2F_TextPointers:
 	dw_const BoulderText,                   TEXT_CINNABARVOLCANO2F_BOULDER2
 	dw_const CinnabarVolcano2FSignText,     TEXT_CINNABARVOLCANO2F_SIGN
 
-CinnabarVolcano2FTrainerHeaders:
+CinnabarVolcano2F_TrainerHeaders:
 	def_trainers
 MoltresTrainerHeader:
 	trainer EVENT_BEAT_MOLTRES, 0, CinnabarVolcano2FMoltresBattleText, CinnabarVolcano2FMoltresBattleText, CinnabarVolcano2FMoltresBattleText

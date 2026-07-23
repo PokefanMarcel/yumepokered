@@ -4,7 +4,7 @@ PewterGym_Script:
 	res BIT_CUR_MAP_LOADED_2, [hl]
 	call nz, .LoadNames
 	call EnableAutoTextBoxDrawing
-	ld hl, PewterGymTrainerHeaders
+	ld hl, PewterGym_TrainerHeaders
 	ld de, PewterGym_ScriptPointers
 	ld bc, wPewterGymCurScript
 	jp ExecuteCurMapScriptInTable
@@ -109,7 +109,7 @@ PewterGym_TextPointers:
 	dw_const PewterGymBrockTM34NoRoomText,   TEXT_PEWTERGYM_BROCK_TM34_NO_ROOM
 	dw_const PewterGymAfterRematchText,      TEXT_PEWTERGYM_AFTER_REMATCH ; marcelnote - Brock rematch
 
-PewterGymTrainerHeaders:
+PewterGym_TrainerHeaders:
 	def_trainers 3 ; marcelnote - added 1 to accomodate Brock rematch
 PewterGymTrainerHeader0:
 	trainer EVENT_BEAT_PEWTER_GYM_TRAINER_0, 5, PewterGymCooltrainerMBattleText, PewterGymCooltrainerMEndBattleText, PewterGymCooltrainerMAfterBattleText

@@ -1,6 +1,6 @@
 PowerPlant_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, PowerPlantTrainerHeaders
+	ld hl, PowerPlant_TrainerHeaders
 	ld de, PowerPlant_ScriptPointers
 	ld bc, wPowerPlantCurScript
 	call ExecuteCurMapScriptInTable
@@ -107,7 +107,7 @@ PowerPlant_TextPointers:
 	dw_const PowerPlantComputerText,   TEXT_POWERPLANT_COMPUTER1 ; marcelnote - new
 	dw_const PowerPlantComputerText,   TEXT_POWERPLANT_COMPUTER2 ; marcelnote - new
 
-PowerPlantTrainerHeaders:
+PowerPlant_TrainerHeaders:
 	def_trainers
 Voltorb0TrainerHeader:
 	trainer EVENT_BEAT_POWER_PLANT_VOLTORB_0, 0, PowerPlantVoltorbBattleText, PowerPlantVoltorbBattleText, PowerPlantVoltorbBattleText

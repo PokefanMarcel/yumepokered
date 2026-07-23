@@ -1,6 +1,6 @@
 Route15_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, Route15TrainerHeaders
+	ld hl, Route15_TrainerHeaders
 	ld de, Route15_ScriptPointers
 	ld bc, wRoute15CurScript
 	jp ExecuteCurMapScriptInTable
@@ -26,7 +26,7 @@ Route15_TextPointers:
 	dw_const PickUpItemText,           TEXT_ROUTE15_TM_RAGE
 	dw_const Route15SignText,          TEXT_ROUTE15_SIGN
 
-Route15TrainerHeaders:
+Route15_TrainerHeaders:
 	def_trainers
 Route15TrainerHeader0:
 	trainer EVENT_BEAT_ROUTE_15_TRAINER_0, 2, Route15CooltrainerF1BattleText, Route15CooltrainerF1EndBattleText, Route15CooltrainerF1AfterBattleText

@@ -1,7 +1,7 @@
 SilphCo8F_Script:
 	call SilphCo8FGateCallbackScript
 	call EnableAutoTextBoxDrawing
-	ld hl, SilphCo8TrainerHeaders
+	ld hl, SilphCo8F_TrainerHeaders
 	ld de, SilphCo8F_ScriptPointers
 	ld bc, wSilphCo8FCurScript
 	jp ExecuteCurMapScriptInTable
@@ -30,13 +30,13 @@ SilphCo8F_TextPointers:
 	dw_const SilphCo8FScientistText,    TEXT_SILPHCO8F_SCIENTIST
 	dw_const SilphCo8FRocket2Text,      TEXT_SILPHCO8F_ROCKET2
 
-SilphCo8TrainerHeaders:
+SilphCo8F_TrainerHeaders:
 	def_trainers 3 ; marcelnote - modified for new EXP.ALL boost, was 2
-SilphCo8TrainerHeader0:
+SilphCo8FTrainerHeader0:
 	trainer EVENT_BEAT_SILPH_CO_8F_TRAINER_0, 4, SilphCo8FRocket1BattleText, SilphCo8FRocket1EndBattleText, SilphCo8FRocket1AfterBattleText
-SilphCo8TrainerHeader1:
+SilphCo8FTrainerHeader1:
 	trainer EVENT_BEAT_SILPH_CO_8F_TRAINER_1, 4, SilphCo8FScientistBattleText, SilphCo8FScientistEndBattleText, SilphCo8FScientistAfterBattleText
-SilphCo8TrainerHeader2:
+SilphCo8FTrainerHeader2:
 	trainer EVENT_BEAT_SILPH_CO_8F_TRAINER_2, 4, SilphCo8FRocket2BattleText, SilphCo8FRocket2EndBattleText, SilphCo8FRocket2AfterBattleText
 	db -1 ; end
 
@@ -118,19 +118,19 @@ SilphCo8FSilphWorkerMText:
 
 SilphCo8FRocket1Text:
 	text_asm
-	ld hl, SilphCo8TrainerHeader0
+	ld hl, SilphCo8FTrainerHeader0
 	call TalkToTrainer
 	rst TextScriptEnd
 
 SilphCo8FScientistText:
 	text_asm
-	ld hl, SilphCo8TrainerHeader1
+	ld hl, SilphCo8FTrainerHeader1
 	call TalkToTrainer
 	rst TextScriptEnd
 
 SilphCo8FRocket2Text:
 	text_asm
-	ld hl, SilphCo8TrainerHeader2
+	ld hl, SilphCo8FTrainerHeader2
 	call TalkToTrainer
 	rst TextScriptEnd
 

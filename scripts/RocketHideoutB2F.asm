@@ -1,6 +1,6 @@
 RocketHideoutB2F_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, RocketHideoutB2FTrainerHeaders
+	ld hl, RocketHideoutB2F_TrainerHeaders
 	ld de, RocketHideoutB2F_ScriptPointers
 	ld bc, wRocketHideoutB2FCurScript
 	jp ExecuteCurMapScriptInTable
@@ -28,7 +28,7 @@ RocketHideoutB2F_TextPointers:
 	dw_const PickUpItemText,             TEXT_ROCKETHIDEOUTB2F_TM_HORN_DRILL
 	dw_const PickUpItemText,             TEXT_ROCKETHIDEOUTB2F_SUPER_POTION
 
-RocketHideoutB2FTrainerHeaders:
+RocketHideoutB2F_TrainerHeaders:
 	def_trainers
 RocketHideoutB2FTrainerHeader0:
 	trainer EVENT_BEAT_ROCKET_HIDEOUT_B2F_TRAINER_0, 4, RocketHideoutB2FRocketBattleText, RocketHideoutB2FRocketEndBattleText, RocketHideoutB2FRocketAfterBattleText

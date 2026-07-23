@@ -1,7 +1,7 @@
 ; marcelnote - new location
 CitrusFerryOutside_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, CitrusFerryOutsideTrainerHeaders
+	ld hl, CitrusFerryOutside_TrainerHeaders
 	ld de, CitrusFerryOutside_ScriptPointers
 	ld bc, wCitrusFerryOutsideCurScript
 	jp ExecuteCurMapScriptInTable
@@ -21,7 +21,7 @@ CitrusFerryOutside_TextPointers:
 	dw_const CitrusFerryOutsideGrampsText,       TEXT_CITRUSFERRYOUTSIDE_GRAMPS
 	dw_const CitrusFerryOutsideGirlText,         TEXT_CITRUSFERRYOUTSIDE_GIRL
 
-CitrusFerryOutsideTrainerHeaders:
+CitrusFerryOutside_TrainerHeaders:
 	def_trainers
 CitrusFerryOutsideTrainerHeader0:
 	trainer EVENT_BEAT_CITRUS_FERRY_OUTSIDE_TRAINER_0, 3, CitrusFerryOutsideSailor1BattleText, CitrusFerryOutsideSailor1EndBattleText, CitrusFerryOutsideSailor1AfterBattleText

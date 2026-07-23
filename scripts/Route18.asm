@@ -1,6 +1,6 @@
 Route18_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, Route18TrainerHeaders
+	ld hl, Route18_TrainerHeaders
 	ld de, Route18_ScriptPointers
 	ld bc, wRoute18CurScript
 	jp ExecuteCurMapScriptInTable
@@ -20,7 +20,7 @@ Route18_TextPointers:
 	dw_const Route18SignText,            TEXT_ROUTE18_SIGN
 	dw_const Route18CyclingRoadSignText, TEXT_ROUTE18_CYCLING_ROAD_SIGN
 
-Route18TrainerHeaders:
+Route18_TrainerHeaders:
 	def_trainers
 Route18TrainerHeader0:
 	trainer EVENT_BEAT_ROUTE_18_TRAINER_0, 3, Route18CooltrainerM1BattleText, Route18CooltrainerM1EndBattleText, Route18CooltrainerM1AfterBattleText

@@ -1,6 +1,6 @@
 PokemonTower4F_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, PokemonTower4TrainerHeaders
+	ld hl, PokemonTower4F_TrainerHeaders
 	ld de, PokemonTower4F_ScriptPointers
 	ld bc, wPokemonTower4FCurScript
 	jp ExecuteCurMapScriptInTable
@@ -104,31 +104,31 @@ PokemonTower4F_TextPointers:
 	dw_const PokemonTower4FGhostBattleText,   TEXT_POKEMONTOWER4F_GHOST_BATTLE   ; marcelnote - postgame Agatha event
 	dw_const PokemonTower4FGhostVanishedText, TEXT_POKEMONTOWER4F_GHOST_VANISHED ; marcelnote - postgame Agatha event
 
-PokemonTower4TrainerHeaders:
+PokemonTower4F_TrainerHeaders:
 	def_trainers
-PokemonTower4TrainerHeader0:
-	trainer EVENT_BEAT_POKEMONTOWER_4_TRAINER_0, 2, PokemonTower4FChanneler1BattleText, PokemonTower4FChanneler1EndBattleText, PokemonTower4FChanneler1AfterBattleText
-PokemonTower4TrainerHeader1:
-	trainer EVENT_BEAT_POKEMONTOWER_4_TRAINER_1, 2, PokemonTower4FChanneler2BattleText, PokemonTower4FChanneler2EndBattleText, PokemonTower4FChanneler2AfterBattleText
-PokemonTower4TrainerHeader2:
-	trainer EVENT_BEAT_POKEMONTOWER_4_TRAINER_2, 2, PokemonTower4FChanneler3BattleText, PokemonTower4FChanneler3EndBattleText, PokemonTower4FChanneler3AfterBattleText
+PokemonTower4FTrainerHeader0:
+	trainer EVENT_BEAT_POKEMON_TOWER_4F_TRAINER_0, 2, PokemonTower4FChanneler1BattleText, PokemonTower4FChanneler1EndBattleText, PokemonTower4FChanneler1AfterBattleText
+PokemonTower4FTrainerHeader1:
+	trainer EVENT_BEAT_POKEMON_TOWER_4F_TRAINER_1, 2, PokemonTower4FChanneler2BattleText, PokemonTower4FChanneler2EndBattleText, PokemonTower4FChanneler2AfterBattleText
+PokemonTower4FTrainerHeader2:
+	trainer EVENT_BEAT_POKEMON_TOWER_4F_TRAINER_2, 2, PokemonTower4FChanneler3BattleText, PokemonTower4FChanneler3EndBattleText, PokemonTower4FChanneler3AfterBattleText
 	db -1 ; end
 
 PokemonTower4FChanneler1Text:
 	text_asm
-	ld hl, PokemonTower4TrainerHeader0
+	ld hl, PokemonTower4FTrainerHeader0
 	call TalkToTrainer
 	rst TextScriptEnd
 
 PokemonTower4FChanneler2Text:
 	text_asm
-	ld hl, PokemonTower4TrainerHeader1
+	ld hl, PokemonTower4FTrainerHeader1
 	call TalkToTrainer
 	rst TextScriptEnd
 
 PokemonTower4FChanneler3Text:
 	text_asm
-	ld hl, PokemonTower4TrainerHeader2
+	ld hl, PokemonTower4FTrainerHeader2
 	call TalkToTrainer
 	rst TextScriptEnd
 

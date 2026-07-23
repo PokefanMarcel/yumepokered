@@ -1,6 +1,6 @@
 Route9_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, Route9TrainerHeaders
+	ld hl, Route9_TrainerHeaders
 	ld de, Route9_ScriptPointers
 	ld bc, wRoute9CurScript
 	jp ExecuteCurMapScriptInTable
@@ -25,7 +25,7 @@ Route9_TextPointers:
 	dw_const PickUpItemText,          TEXT_ROUTE9_TM_TELEPORT
 	dw_const Route9SignText,          TEXT_ROUTE9_SIGN
 
-Route9TrainerHeaders:
+Route9_TrainerHeaders:
 	def_trainers
 Route9TrainerHeader0:
 	trainer EVENT_BEAT_ROUTE_9_TRAINER_0, 3, Route9CooltrainerF1BattleText, Route9CooltrainerF1EndBattleText, Route9CooltrainerF1AfterBattleText

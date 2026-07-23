@@ -1,6 +1,6 @@
 Route19_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, Route19TrainerHeaders
+	ld hl, Route19_TrainerHeaders
 	ld de, Route19_ScriptPointers
 	ld bc, wRoute19CurScript
 	jp ExecuteCurMapScriptInTable
@@ -30,7 +30,7 @@ Route19_TextPointers:
 	dw_const Route19SignText,          TEXT_ROUTE19_SIGN
 	dw_const Route19BeachHouseSignText, TEXT_ROUTE19_BEACH_HOUSE_SIGN ; marcelnote - new sign
 
-Route19TrainerHeaders:
+Route19_TrainerHeaders:
 	def_trainers
 Route19TrainerHeader0:
 	trainer EVENT_BEAT_ROUTE_19_TRAINER_0, 4, Route19CooltrainerM1BattleText, Route19CooltrainerM1EndBattleText, Route19CooltrainerM1AfterBattleText

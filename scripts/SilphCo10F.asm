@@ -1,7 +1,7 @@
 SilphCo10F_Script:
 	call SilphCo10FGateCallbackScript
 	call EnableAutoTextBoxDrawing
-	ld hl, SilphCo10TrainerHeaders
+	ld hl, SilphCo10F_TrainerHeaders
 	ld de, SilphCo10F_ScriptPointers
 	ld bc, wSilphCo10FCurScript
 	jp ExecuteCurMapScriptInTable
@@ -31,23 +31,23 @@ SilphCo10F_TextPointers:
 	dw_const PickUpItemText,             TEXT_SILPHCO10F_RARE_CANDY
 	dw_const PickUpItemText,             TEXT_SILPHCO10F_CARBOS
 
-SilphCo10TrainerHeaders:
+SilphCo10F_TrainerHeaders:
 	def_trainers
-SilphCo10TrainerHeader0:
+SilphCo10FTrainerHeader0:
 	trainer EVENT_BEAT_SILPH_CO_10F_TRAINER_0, 3, SilphCo10FRocketBattleText, SilphCo10FRocketEndBattleText, SilphCo10FRocketAfterBattleText
-SilphCo10TrainerHeader1:
+SilphCo10FTrainerHeader1:
 	trainer EVENT_BEAT_SILPH_CO_10F_TRAINER_1, 4, SilphCo10FScientistBattleText, SilphCo10FScientistEndBattleText, SilphCo10FScientistAfterBattleText
 	db -1 ; end
 
 SilphCo10FRocketText:
 	text_asm
-	ld hl, SilphCo10TrainerHeader0
+	ld hl, SilphCo10FTrainerHeader0
 	call TalkToTrainer
 	rst TextScriptEnd
 
 SilphCo10FScientistText:
 	text_asm
-	ld hl, SilphCo10TrainerHeader1
+	ld hl, SilphCo10FTrainerHeader1
 	call TalkToTrainer
 	rst TextScriptEnd
 

@@ -1,7 +1,7 @@
 LancesRoom_Script:
 	call LanceShowOrHideEntranceBlocks
 	call EnableAutoTextBoxDrawing
-	ld hl, LancesRoomTrainerHeaders
+	ld hl, LancesRoom_TrainerHeaders
 	ld de, LancesRoom_ScriptPointers
 	ld bc, wLancesRoomCurScript
 	jp ExecuteCurMapScriptInTable
@@ -116,7 +116,7 @@ LancesRoom_TextPointers:
 	def_text_pointers
 	dw_const LancesRoomLanceText,        TEXT_LANCESROOM_LANCE
 
-LancesRoomTrainerHeaders:
+LancesRoom_TrainerHeaders:
 	def_trainers
 LancesRoomTrainerHeader0:
 	trainer EVENT_BEAT_LANCES_ROOM_TRAINER_0, 0, LancesRoomLanceBeforeBattleText, LancesRoomLanceEndBattleText, LancesRoomLanceAfterBattleText

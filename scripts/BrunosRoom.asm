@@ -1,7 +1,7 @@
 BrunosRoom_Script:
 	call BrunoHideExitBlock
 	call EnableAutoTextBoxDrawing
-	ld hl, BrunosRoomTrainerHeaders
+	ld hl, BrunosRoom_TrainerHeaders
 	ld de, BrunosRoom_ScriptPointers
 	ld bc, wBrunosRoomCurScript
 	jp ExecuteCurMapScriptInTable
@@ -106,7 +106,7 @@ BrunosRoom_TextPointers:
 	dw_const BrunosRoomBrunoText,            TEXT_BRUNOSROOM_BRUNO
 	dw_const BrunosRoomBrunoDontRunAwayText, TEXT_BRUNOSROOM_BRUNO_DONT_RUN_AWAY
 
-BrunosRoomTrainerHeaders:
+BrunosRoom_TrainerHeaders:
 	def_trainers
 BrunosRoomTrainerHeader0: ; marcelnote - added map name to text labels
 	trainer EVENT_BEAT_BRUNOS_ROOM_TRAINER_0, 0, BrunosRoomBrunoBeforeBattleText, BrunosRoomBrunoEndBattleText, BrunosRoomBrunoAfterBattleText

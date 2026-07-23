@@ -2,7 +2,7 @@ Route20_Script:
 	CheckAndResetEvent EVENT_IN_SEAFOAM_ISLANDS
 	call nz, Route20BoulderScript
 	call EnableAutoTextBoxDrawing
-	ld hl, Route20TrainerHeaders
+	ld hl, Route20_TrainerHeaders
 	ld de, Route20_ScriptPointers
 	ld bc, wRoute20CurScript
 	jp ExecuteCurMapScriptInTable
@@ -94,7 +94,7 @@ Route20_TextPointers:
 	dw_const Route20SeafoamIslandsSignText, TEXT_ROUTE20_SEAFOAM_ISLANDS_WEST_SIGN
 	dw_const Route20SeafoamIslandsSignText, TEXT_ROUTE20_SEAFOAM_ISLANDS_EAST_SIGN
 
-Route20TrainerHeaders:
+Route20_TrainerHeaders:
 	def_trainers
 Route20TrainerHeader0:
 	trainer EVENT_BEAT_ROUTE_20_TRAINER_0, 4, Route20Swimmer1BattleText, Route20Swimmer1EndBattleText, Route20Swimmer1AfterBattleText

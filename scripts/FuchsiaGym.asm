@@ -4,7 +4,7 @@ FuchsiaGym_Script:
 	res BIT_CUR_MAP_LOADED_2, [hl]
 	call nz, .LoadNames
 	call EnableAutoTextBoxDrawing
-	ld hl, FuchsiaGymTrainerHeaders
+	ld hl, FuchsiaGym_TrainerHeaders
 	ld de, FuchsiaGym_ScriptPointers
 	ld bc, wFuchsiaGymCurScript
 	jp ExecuteCurMapScriptInTable
@@ -103,7 +103,7 @@ FuchsiaGym_TextPointers:
 	dw_const FuchsiaGymKogaTM06NoRoomText,    TEXT_FUCHSIAGYM_KOGA_TM06_NO_ROOM
 	dw_const FuchsiaGymAfterRematchText,      TEXT_FUCHSIAGYM_AFTER_REMATCH ; marcelnote - Koga rematch
 
-FuchsiaGymTrainerHeaders:
+FuchsiaGym_TrainerHeaders:
 	def_trainers 3 ; marcelnote - added 1 to accomodate Koga rematch
 FuchsiaGymTrainerHeader0:
 	trainer EVENT_BEAT_FUCHSIA_GYM_TRAINER_0, 2, FuchsiaGymRocker1BattleText, FuchsiaGymRocker1EndBattleText, FuchsiaGymRocker1AfterBattleText

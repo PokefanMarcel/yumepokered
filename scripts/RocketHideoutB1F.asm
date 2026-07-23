@@ -1,7 +1,7 @@
 RocketHideoutB1F_Script:
 	call RocketHideoutB1FDoorCallbackScript
 	call EnableAutoTextBoxDrawing
-	ld hl, RocketHideoutB1FTrainerHeaders
+	ld hl, RocketHideoutB1F_TrainerHeaders
 	ld de, RocketHideoutB1F_ScriptPointers
 	ld bc, wRocketHideoutB1FCurScript
 	jp ExecuteCurMapScriptInTable
@@ -41,7 +41,7 @@ RocketHideoutB1F_TextPointers:
 	dw_const PickUpItemText,              TEXT_ROCKETHIDEOUTB1F_ESCAPE_ROPE
 	dw_const PickUpItemText,              TEXT_ROCKETHIDEOUTB1F_HYPER_POTION
 
-RocketHideoutB1FTrainerHeaders:
+RocketHideoutB1F_TrainerHeaders:
 	def_trainers
 RocketHideoutB1FTrainerHeader0:
 	trainer EVENT_BEAT_ROCKET_HIDEOUT_B1F_TRAINER_0, 3, RocketHideoutB1FRocket1BattleText, RocketHideoutB1FRocket1EndBattleText, RocketHideoutB1FRocket1AfterBattleText

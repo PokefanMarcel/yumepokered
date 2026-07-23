@@ -1,7 +1,7 @@
 SilphCo2F_Script:
 	call SilphCo2FGateCallbackScript
 	call EnableAutoTextBoxDrawing
-	ld hl, SilphCo2TrainerHeaders
+	ld hl, SilphCo2F_TrainerHeaders
 	ld de, SilphCo2F_ScriptPointers
 	ld bc, wSilphCo2FCurScript
 	jp ExecuteCurMapScriptInTable
@@ -31,15 +31,15 @@ SilphCo2F_TextPointers:
 	dw_const SilphCo2FRocket1Text,      TEXT_SILPHCO2F_ROCKET1
 	dw_const SilphCo2FRocket2Text,      TEXT_SILPHCO2F_ROCKET2
 
-SilphCo2TrainerHeaders:
+SilphCo2F_TrainerHeaders:
 	def_trainers 2
-SilphCo2TrainerHeader0:
+SilphCo2FTrainerHeader0:
 	trainer EVENT_BEAT_SILPH_CO_2F_TRAINER_0, 3, SilphCo2FScientist1BattleText, SilphCo2FScientist1EndBattleText, SilphCo2FScientist1AfterBattleText
-SilphCo2TrainerHeader1:
+SilphCo2FTrainerHeader1:
 	trainer EVENT_BEAT_SILPH_CO_2F_TRAINER_1, 4, SilphCo2FScientist2BattleText, SilphCo2FScientist2EndBattleText, SilphCo2FScientist2AfterBattleText
-SilphCo2TrainerHeader2:
+SilphCo2FTrainerHeader2:
 	trainer EVENT_BEAT_SILPH_CO_2F_TRAINER_2, 3, SilphCo2FRocket1BattleText, SilphCo2FRocket1EndBattleText, SilphCo2FRocket1AfterBattleText
-SilphCo2TrainerHeader3:
+SilphCo2FTrainerHeader3:
 	trainer EVENT_BEAT_SILPH_CO_2F_TRAINER_3, 3, SilphCo2FRocket2BattleText, SilphCo2FRocket2EndBattleText, SilphCo2FRocket2AfterBattleText
 	db -1 ; end
 
@@ -79,25 +79,25 @@ SilphCo2FSilphWorkerFText:
 
 SilphCo2FScientist1Text:
 	text_asm
-	ld hl, SilphCo2TrainerHeader0
+	ld hl, SilphCo2FTrainerHeader0
 	call TalkToTrainer
 	rst TextScriptEnd
 
 SilphCo2FScientist2Text:
 	text_asm
-	ld hl, SilphCo2TrainerHeader1
+	ld hl, SilphCo2FTrainerHeader1
 	call TalkToTrainer
 	rst TextScriptEnd
 
 SilphCo2FRocket1Text:
 	text_asm
-	ld hl, SilphCo2TrainerHeader2
+	ld hl, SilphCo2FTrainerHeader2
 	call TalkToTrainer
 	rst TextScriptEnd
 
 SilphCo2FRocket2Text:
 	text_asm
-	ld hl, SilphCo2TrainerHeader3
+	ld hl, SilphCo2FTrainerHeader3
 	call TalkToTrainer
 	rst TextScriptEnd
 

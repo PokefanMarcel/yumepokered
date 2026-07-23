@@ -1,6 +1,6 @@
 Route8_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, Route8TrainerHeaders
+	ld hl, Route8_TrainerHeaders
 	ld de, Route8_ScriptPointers
 	ld bc, wRoute8CurScript
 	jp ExecuteCurMapScriptInTable
@@ -24,7 +24,7 @@ Route8_TextPointers:
 	dw_const Route8CooltrainerF4Text,   TEXT_ROUTE8_COOLTRAINER_F4
 	dw_const Route8UndergroundSignText, TEXT_ROUTE8_UNDERGROUND_SIGN
 
-Route8TrainerHeaders:
+Route8_TrainerHeaders:
 	def_trainers
 Route8TrainerHeader0:
 	trainer EVENT_BEAT_ROUTE_8_TRAINER_0, 4, Route8SuperNerd1BattleText, Route8SuperNerd1EndBattleText, Route8SuperNerd1AfterBattleText

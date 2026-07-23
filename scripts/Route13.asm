@@ -1,6 +1,6 @@
 Route13_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, Route13TrainerHeaders
+	ld hl, Route13_TrainerHeaders
 	ld de, Route13_ScriptPointers
 	ld bc, wRoute13CurScript
 	jp ExecuteCurMapScriptInTable
@@ -27,7 +27,7 @@ Route13_TextPointers:
 	dw_const Route13TrainerTips2Text,  TEXT_ROUTE13_TRAINER_TIPS2
 	dw_const Route13SignText,          TEXT_ROUTE13_SIGN
 
-Route13TrainerHeaders:
+Route13_TrainerHeaders:
 	def_trainers
 Route13TrainerHeader0:
 	trainer EVENT_BEAT_ROUTE_13_TRAINER_0, 2, Route13CooltrainerM1BattleText, Route13CooltrainerM1EndBattleText, Route13CooltrainerM1AfterBattleText

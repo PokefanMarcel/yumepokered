@@ -1,6 +1,6 @@
 Route21_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, Route21TrainerHeaders
+	ld hl, Route21_TrainerHeaders
 	ld de, Route21_ScriptPointers
 	ld bc, wRoute21CurScript
 	jp ExecuteCurMapScriptInTable
@@ -23,7 +23,7 @@ Route21_TextPointers:
 	dw_const Route21Fisher3Text,  TEXT_ROUTE21_FISHER3
 	dw_const Route21Fisher4Text,  TEXT_ROUTE21_FISHER4
 
-Route21TrainerHeaders:
+Route21_TrainerHeaders:
 	def_trainers
 Route21TrainerHeader0:
 	trainer EVENT_BEAT_ROUTE_21_TRAINER_0, 0, Route21Fisher1BattleText, Route21Fisher1EndBattleText, Route21Fisher1AfterBattleText

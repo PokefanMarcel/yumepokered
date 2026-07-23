@@ -1,6 +1,6 @@
 Route11_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, Route11TrainerHeaders
+	ld hl, Route11_TrainerHeaders
 	ld de, Route11_ScriptPointers
 	ld bc, wRoute11CurScript
 	jp ExecuteCurMapScriptInTable
@@ -26,7 +26,7 @@ Route11_TextPointers:
 	dw_const Route11Youngster5Text,       TEXT_ROUTE11_YOUNGSTER5 ; marcelnote - new trainer based on A.J.
 	dw_const Route11DiglettsCaveSignText, TEXT_ROUTE11_DIGLETTSCAVE_SIGN
 
-Route11TrainerHeaders:
+Route11_TrainerHeaders:
 	def_trainers
 Route11TrainerHeader0:
 	trainer EVENT_BEAT_ROUTE_11_TRAINER_0, 3, Route11Gambler1BattleText, Route11Gambler1EndBattleText, Route11Gambler1AfterBattleText

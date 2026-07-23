@@ -1,7 +1,7 @@
 SaffronGym_Script:
 	call SaffronGymSetMapAndTiles
 	call EnableAutoTextBoxDrawing
-	ld hl, SaffronGymTrainerHeaders
+	ld hl, SaffronGym_TrainerHeaders
 	ld de, SaffronGym_ScriptPointers
 	ld bc, wSaffronGymCurScript
 	jp ExecuteCurMapScriptInTable
@@ -247,7 +247,7 @@ SaffronGym_TextPointers:
 	dw_const SaffronGymBrunoArrivesText,          TEXT_SAFFRONGYM_BRUNO_ARRIVES  ; marcelnote - postgame Bruno event
 	dw_const SaffronGymAfterRematchText,          TEXT_SAFFRONGYM_AFTER_REMATCH ; marcelnote - Sabrina rematch
 
-SaffronGymTrainerHeaders:
+SaffronGym_TrainerHeaders:
 	def_trainers 3 ; marcelnote - added 1 to accomodate Sabrina rematch
 SaffronGymTrainerHeader0:
 	trainer EVENT_BEAT_SAFFRON_GYM_TRAINER_0, 3, SaffronGymChanneler1BattleText, SaffronGymChanneler1EndBattleText, SaffronGymChanneler1AfterBattleText

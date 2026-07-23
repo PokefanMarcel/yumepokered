@@ -1,7 +1,7 @@
 SilphCo9F_Script:
 	call SilphCo9FGateCallbackScript
 	call EnableAutoTextBoxDrawing
-	ld hl, SilphCo9TrainerHeaders
+	ld hl, SilphCo9F_TrainerHeaders
 	ld de, SilphCo9F_ScriptPointers
 	ld bc, wSilphCo9FCurScript
 	jp ExecuteCurMapScriptInTable
@@ -32,13 +32,13 @@ SilphCo9F_TextPointers:
 	dw_const SilphCo9FScientistText, TEXT_SILPHCO9F_SCIENTIST
 	dw_const SilphCo9FRocket2Text,   TEXT_SILPHCO9F_ROCKET2
 
-SilphCo9TrainerHeaders:
+SilphCo9F_TrainerHeaders:
 	def_trainers 2
-SilphCo9TrainerHeader0:
+SilphCo9FTrainerHeader0:
 	trainer EVENT_BEAT_SILPH_CO_9F_TRAINER_0, 4, SilphCo9FRocket1BattleText, SilphCo9FRocket1EndBattleText, SilphCo9FRocket1AfterBattleText
-SilphCo9TrainerHeader1:
+SilphCo9FTrainerHeader1:
 	trainer EVENT_BEAT_SILPH_CO_9F_TRAINER_1, 2, SilphCo9FScientistBattleText, SilphCo9FScientistEndBattleText, SilphCo9FScientistAfterBattleText
-SilphCo9TrainerHeader2:
+SilphCo9FTrainerHeader2:
 	trainer EVENT_BEAT_SILPH_CO_9F_TRAINER_2, 4, SilphCo9FRocket2BattleText, SilphCo9FRocket2EndBattleText, SilphCo9FRocket2AfterBattleText
 	db -1 ; end
 
@@ -71,19 +71,19 @@ SilphCo9FNurseText:
 
 SilphCo9FRocket1Text:
 	text_asm
-	ld hl, SilphCo9TrainerHeader0
+	ld hl, SilphCo9FTrainerHeader0
 	call TalkToTrainer
 	rst TextScriptEnd
 
 SilphCo9FScientistText:
 	text_asm
-	ld hl, SilphCo9TrainerHeader1
+	ld hl, SilphCo9FTrainerHeader1
 	call TalkToTrainer
 	rst TextScriptEnd
 
 SilphCo9FRocket2Text:
 	text_asm
-	ld hl, SilphCo9TrainerHeader2
+	ld hl, SilphCo9FTrainerHeader2
 	call TalkToTrainer
 	rst TextScriptEnd
 

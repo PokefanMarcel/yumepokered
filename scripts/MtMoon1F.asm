@@ -1,6 +1,6 @@
 MtMoon1F_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, MtMoon1TrainerHeaders
+	ld hl, MtMoon1F_TrainerHeaders
 	ld de, MtMoon1F_ScriptPointers
 	ld bc, wMtMoon1FCurScript
 	jp ExecuteCurMapScriptInTable
@@ -28,63 +28,63 @@ MtMoon1F_TextPointers:
 	dw_const PickUpItemText,            TEXT_MTMOON1F_TM_WATER_GUN
 	dw_const MtMoon1FBewareZubatSign,   TEXT_MTMOON1F_BEWARE_ZUBAT_SIGN
 
-MtMoon1TrainerHeaders:
+MtMoon1F_TrainerHeaders:
 	def_trainers
-MtMoon1TrainerHeader0:
-	trainer EVENT_BEAT_MT_MOON_1_TRAINER_0, 2, MtMoon1FHikerBattleText, MtMoon1FHikerEndBattleText, MtMoon1FHikerAfterBattleText
-MtMoon1TrainerHeader1:
-	trainer EVENT_BEAT_MT_MOON_1_TRAINER_1, 3, MtMoon1FYoungster1BattleText, MtMoon1FYoungster1EndBattleText, MtMoon1FYoungster1AfterBattleText
-MtMoon1TrainerHeader2:
-	trainer EVENT_BEAT_MT_MOON_1_TRAINER_2, 3, MtMoon1FCooltrainerF1BattleText, MtMoon1FCooltrainerF1EndBattleText, MtMoon1FCooltrainerF1AfterBattleText
-MtMoon1TrainerHeader3:
-	trainer EVENT_BEAT_MT_MOON_1_TRAINER_3, 3, MtMoon1FSuperNerdBattleText, MtMoon1FSuperNerdEndBattleText, MtMoon1FSuperNerdAfterBattleText
-MtMoon1TrainerHeader4:
-	trainer EVENT_BEAT_MT_MOON_1_TRAINER_4, 3, MtMoon1FCooltrainerF2BattleText, MtMoon1FCooltrainerF2EndBattleText, MtMoon1FCooltrainerF2AfterBattleText
-MtMoon1TrainerHeader5:
-	trainer EVENT_BEAT_MT_MOON_1_TRAINER_5, 3, MtMoon1FYoungster2BattleText, MtMoon1FYoungster2EndBattleText, MtMoon1FYoungster2AfterBattleText
-MtMoon1TrainerHeader6:
-	trainer EVENT_BEAT_MT_MOON_1_TRAINER_6, 3, MtMoon1FYoungster3BattleText, MtMoon1FYoungster3EndBattleText, MtMoon1FYoungster3AfterBattleText
+MtMoon1FTrainerHeader0:
+	trainer EVENT_BEAT_MT_MOON_1F_TRAINER_0, 2, MtMoon1FHikerBattleText, MtMoon1FHikerEndBattleText, MtMoon1FHikerAfterBattleText
+MtMoon1FTrainerHeader1:
+	trainer EVENT_BEAT_MT_MOON_1F_TRAINER_1, 3, MtMoon1FYoungster1BattleText, MtMoon1FYoungster1EndBattleText, MtMoon1FYoungster1AfterBattleText
+MtMoon1FTrainerHeader2:
+	trainer EVENT_BEAT_MT_MOON_1F_TRAINER_2, 3, MtMoon1FCooltrainerF1BattleText, MtMoon1FCooltrainerF1EndBattleText, MtMoon1FCooltrainerF1AfterBattleText
+MtMoon1FTrainerHeader3:
+	trainer EVENT_BEAT_MT_MOON_1F_TRAINER_3, 3, MtMoon1FSuperNerdBattleText, MtMoon1FSuperNerdEndBattleText, MtMoon1FSuperNerdAfterBattleText
+MtMoon1FTrainerHeader4:
+	trainer EVENT_BEAT_MT_MOON_1F_TRAINER_4, 3, MtMoon1FCooltrainerF2BattleText, MtMoon1FCooltrainerF2EndBattleText, MtMoon1FCooltrainerF2AfterBattleText
+MtMoon1FTrainerHeader5:
+	trainer EVENT_BEAT_MT_MOON_1F_TRAINER_5, 3, MtMoon1FYoungster2BattleText, MtMoon1FYoungster2EndBattleText, MtMoon1FYoungster2AfterBattleText
+MtMoon1FTrainerHeader6:
+	trainer EVENT_BEAT_MT_MOON_1F_TRAINER_6, 3, MtMoon1FYoungster3BattleText, MtMoon1FYoungster3EndBattleText, MtMoon1FYoungster3AfterBattleText
 	db -1 ; end
 
 MtMoon1FHikerText:
 	text_asm
-	ld hl, MtMoon1TrainerHeader0
+	ld hl, MtMoon1FTrainerHeader0
 	call TalkToTrainer
 	rst TextScriptEnd
 
 MtMoon1FYoungster1Text:
 	text_asm
-	ld hl, MtMoon1TrainerHeader1
+	ld hl, MtMoon1FTrainerHeader1
 	call TalkToTrainer
 	rst TextScriptEnd
 
 MtMoon1FCooltrainerF1Text:
 	text_asm
-	ld hl, MtMoon1TrainerHeader2
+	ld hl, MtMoon1FTrainerHeader2
 	call TalkToTrainer
 	rst TextScriptEnd
 
 MtMoon1FSuperNerdText:
 	text_asm
-	ld hl, MtMoon1TrainerHeader3
+	ld hl, MtMoon1FTrainerHeader3
 	call TalkToTrainer
 	rst TextScriptEnd
 
 MtMoon1FCooltrainerF2Text:
 	text_asm
-	ld hl, MtMoon1TrainerHeader4
+	ld hl, MtMoon1FTrainerHeader4
 	call TalkToTrainer
 	rst TextScriptEnd
 
 MtMoon1FYoungster2Text:
 	text_asm
-	ld hl, MtMoon1TrainerHeader5
+	ld hl, MtMoon1FTrainerHeader5
 	call TalkToTrainer
 	rst TextScriptEnd
 
 MtMoon1FYoungster3Text:
 	text_asm
-	ld hl, MtMoon1TrainerHeader6
+	ld hl, MtMoon1FTrainerHeader6
 	call TalkToTrainer
 	rst TextScriptEnd
 

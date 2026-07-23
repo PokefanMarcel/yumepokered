@@ -8,16 +8,16 @@ VictoryRoad2F_Script:
 	res BIT_CUR_MAP_LOADED_1, [hl]
 	call nz, VictoryRoad2FCheckBoulderEventScript
 	call EnableAutoTextBoxDrawing
-	ld hl, VictoryRoad2TrainerHeaders
+	ld hl, VictoryRoad2F_TrainerHeaders
 	ld de, VictoryRoad2F_ScriptPointers
 	ld bc, wVictoryRoad2FCurScript
 	jp ExecuteCurMapScriptInTable
 
 VictoryRoad2FResetBoulderEventScript:
-	ResetEvent EVENT_VICTORY_ROAD_1_BOULDER_ON_SWITCH
+	ResetEvent EVENT_VICTORY_ROAD_1F_BOULDER_ON_SWITCH
 ; fallthrough
 VictoryRoad2FCheckBoulderEventScript:
-	CheckEvent EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH1
+	CheckEvent EVENT_VICTORY_ROAD_2F_BOULDER_ON_SWITCH1
 	jr z, .notOnSwitch
 	push af
 	ld a, $15
@@ -25,7 +25,7 @@ VictoryRoad2FCheckBoulderEventScript:
 	call VictoryRoad2FReplaceTileBlockScript
 	pop af
 .notOnSwitch
-	CheckEventReuseA EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH2
+	CheckEventReuseA EVENT_VICTORY_ROAD_2F_BOULDER_ON_SWITCH2
 	ret z
 	ld a, $1d
 	lb bc, 7, 11
@@ -44,17 +44,17 @@ VictoryRoad2FDefaultScript:
 	ld hl, .SwitchCoords
 	call CheckBoulderCoords
 	jp nc, CheckFightingMapTrainers
-	EventFlagAddress hl, EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH1
+	EventFlagAddress hl, EVENT_VICTORY_ROAD_2F_BOULDER_ON_SWITCH1
 	ld a, [wCoordIndex]
 	cp $2
 	jr z, .secondSwitch
-	CheckEventReuseHL EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH1
-	SetEventReuseHL EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH1
+	CheckEventReuseHL EVENT_VICTORY_ROAD_2F_BOULDER_ON_SWITCH1
+	SetEventReuseHL EVENT_VICTORY_ROAD_2F_BOULDER_ON_SWITCH1
 	ret nz
 	jr .setScriptFlag
 .secondSwitch
-	CheckEventAfterBranchReuseHL EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH2, EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH1
-	SetEventReuseHL EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH2
+	CheckEventAfterBranchReuseHL EVENT_VICTORY_ROAD_2F_BOULDER_ON_SWITCH2, EVENT_VICTORY_ROAD_2F_BOULDER_ON_SWITCH1
+	SetEventReuseHL EVENT_VICTORY_ROAD_2F_BOULDER_ON_SWITCH2
 	ret nz
 .setScriptFlag
 	ld hl, wCurrentMapScriptFlags
@@ -83,49 +83,49 @@ VictoryRoad2F_TextPointers:
 	dw_const BoulderText,                   TEXT_VICTORYROAD2F_BOULDER2
 	dw_const BoulderText,                   TEXT_VICTORYROAD2F_BOULDER3
 
-VictoryRoad2TrainerHeaders:
+VictoryRoad2F_TrainerHeaders:
 	def_trainers
-VictoryRoad2TrainerHeader0:
-	trainer EVENT_BEAT_VICTORY_ROAD_2_TRAINER_0, 4, VictoryRoad2FBlackbeltBattleText, VictoryRoad2FBlackbeltEndBattleText, VictoryRoad2FBlackbeltAfterBattleText
-VictoryRoad2TrainerHeader1:
-	trainer EVENT_BEAT_VICTORY_ROAD_2_TRAINER_1, 3, VictoryRoad2FSuperNerd1BattleText, VictoryRoad2FSuperNerd1EndBattleText, VictoryRoad2FSuperNerd1AfterBattleText
-VictoryRoad2TrainerHeader2:
-	trainer EVENT_BEAT_VICTORY_ROAD_2_TRAINER_2, 3, VictoryRoad2FCooltrainerMBattleText, VictoryRoad2FCooltrainerMEndBattleText, VictoryRoad2FCooltrainerMAfterBattleText
-VictoryRoad2TrainerHeader3:
-	trainer EVENT_BEAT_VICTORY_ROAD_2_TRAINER_3, 1, VictoryRoad2FSuperNerd2BattleText, VictoryRoad2FSuperNerd2EndBattleText, VictoryRoad2FSuperNerd2AfterBattleText
-VictoryRoad2TrainerHeader4:
-	trainer EVENT_BEAT_VICTORY_ROAD_2_TRAINER_4, 3, VictoryRoad2FSuperNerd3BattleText, VictoryRoad2FSuperNerd3EndBattleText, VictoryRoad2FSuperNerd3AfterBattleText
+VictoryRoad2FTrainerHeader0:
+	trainer EVENT_BEAT_VICTORY_ROAD_2F_TRAINER_0, 4, VictoryRoad2FBlackbeltBattleText, VictoryRoad2FBlackbeltEndBattleText, VictoryRoad2FBlackbeltAfterBattleText
+VictoryRoad2FTrainerHeader1:
+	trainer EVENT_BEAT_VICTORY_ROAD_2F_TRAINER_1, 3, VictoryRoad2FSuperNerd1BattleText, VictoryRoad2FSuperNerd1EndBattleText, VictoryRoad2FSuperNerd1AfterBattleText
+VictoryRoad2FTrainerHeader2:
+	trainer EVENT_BEAT_VICTORY_ROAD_2F_TRAINER_2, 3, VictoryRoad2FCooltrainerMBattleText, VictoryRoad2FCooltrainerMEndBattleText, VictoryRoad2FCooltrainerMAfterBattleText
+VictoryRoad2FTrainerHeader3:
+	trainer EVENT_BEAT_VICTORY_ROAD_2F_TRAINER_3, 1, VictoryRoad2FSuperNerd2BattleText, VictoryRoad2FSuperNerd2EndBattleText, VictoryRoad2FSuperNerd2AfterBattleText
+VictoryRoad2FTrainerHeader4:
+	trainer EVENT_BEAT_VICTORY_ROAD_2F_TRAINER_4, 3, VictoryRoad2FSuperNerd3BattleText, VictoryRoad2FSuperNerd3EndBattleText, VictoryRoad2FSuperNerd3AfterBattleText
 ;MoltresTrainerHeader:   ; marcelnote - removed Moltres from Victory Road
 ;	trainer EVENT_BEAT_MOLTRES, 0, VictoryRoad2FMoltresBattleText, VictoryRoad2FMoltresBattleText, VictoryRoad2FMoltresBattleText
 	db -1 ; end
 
 VictoryRoad2FBlackbeltText:
 	text_asm
-	ld hl, VictoryRoad2TrainerHeader0
+	ld hl, VictoryRoad2FTrainerHeader0
 	call TalkToTrainer
 	rst TextScriptEnd
 
 VictoryRoad2FSuperNerd1Text:
 	text_asm
-	ld hl, VictoryRoad2TrainerHeader1
+	ld hl, VictoryRoad2FTrainerHeader1
 	call TalkToTrainer
 	rst TextScriptEnd
 
 VictoryRoad2FCooltrainerMText:
 	text_asm
-	ld hl, VictoryRoad2TrainerHeader2
+	ld hl, VictoryRoad2FTrainerHeader2
 	call TalkToTrainer
 	rst TextScriptEnd
 
 VictoryRoad2FSuperNerd2Text:
 	text_asm
-	ld hl, VictoryRoad2TrainerHeader3
+	ld hl, VictoryRoad2FTrainerHeader3
 	call TalkToTrainer
 	rst TextScriptEnd
 
 VictoryRoad2FSuperNerd3Text:
 	text_asm
-	ld hl, VictoryRoad2TrainerHeader4
+	ld hl, VictoryRoad2FTrainerHeader4
 	call TalkToTrainer
 	rst TextScriptEnd
 

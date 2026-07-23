@@ -1,7 +1,7 @@
 LoreleisRoom_Script:
 	call LoreleiHideExitBlock
 	call EnableAutoTextBoxDrawing
-	ld hl, LoreleisRoomTrainerHeaders
+	ld hl, LoreleisRoom_TrainerHeaders
 	ld de, LoreleisRoom_ScriptPointers
 	ld bc, wLoreleisRoomCurScript
 	jp ExecuteCurMapScriptInTable
@@ -107,7 +107,7 @@ LoreleisRoom_TextPointers:
 	dw_const LoreleisRoomLoreleiText,            TEXT_LORELEISROOM_LORELEI
 	dw_const LoreleisRoomLoreleiDontRunAwayText, TEXT_LORELEISROOM_DONT_RUN_AWAY
 
-LoreleisRoomTrainerHeaders:
+LoreleisRoom_TrainerHeaders:
 	def_trainers
 LoreleisRoomTrainerHeader0:
 	trainer EVENT_BEAT_LORELEIS_ROOM_TRAINER_0, 0, LoreleisRoomLoreleiBeforeBattleText, LoreleisRoomLoreleiEndBattleText, LoreleisRoomLoreleiAfterBattleText

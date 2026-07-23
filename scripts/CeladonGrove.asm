@@ -1,7 +1,7 @@
 ; marcelnote - new location
 CeladonGrove_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, CeladonGroveTrainerHeaders
+	ld hl, CeladonGrove_TrainerHeaders
 	ld de, CeladonGrove_ScriptPointers
 	ld bc, wCeladonGroveCurScript
 	jp ExecuteCurMapScriptInTable
@@ -59,7 +59,7 @@ CeladonGrove_TextPointers:
 	dw_const CeladonGroveShrineSignText,        TEXT_CELADONGROVE_SHRINESIGN
 	dw_const CeladonGroveMelodyEchoesText,      TEXT_CELADONGROVE_MELODY_ECHOES
 
-CeladonGroveTrainerHeaders:
+CeladonGrove_TrainerHeaders:
 	def_trainers
 CeladonGroveTrainerHeader0:
 	trainer EVENT_BEAT_CELADON_GROVE_TRAINER_0, 3, CeladonGroveYoungsterBattleText, CeladonGroveYoungsterEndBattleText, CeladonGroveYoungsterAfterBattleText

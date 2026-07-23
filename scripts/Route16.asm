@@ -1,6 +1,6 @@
 Route16_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, Route16TrainerHeaders
+	ld hl, Route16_TrainerHeaders
 	ld de, Route16_ScriptPointers
 	ld bc, wRoute16CurScript
 	jp ExecuteCurMapScriptInTable
@@ -71,7 +71,7 @@ Route16_TextPointers:
 	dw_const Route16SnorlaxWokeUpText,              TEXT_ROUTE16_SNORLAX_WOKE_UP
 	dw_const Route16SnorlaxReturnedToMountainsText, TEXT_ROUTE16_SNORLAX_RETURNED_TO_MOUNTAINS
 
-Route16TrainerHeaders:
+Route16_TrainerHeaders:
 	def_trainers
 Route16TrainerHeader0:
 	trainer EVENT_BEAT_ROUTE_16_TRAINER_0, 3, Route16Biker1BattleText, Route16Biker1EndBattleText, Route16Biker1AfterBattleText

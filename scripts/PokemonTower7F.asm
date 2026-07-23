@@ -1,6 +1,6 @@
 PokemonTower7F_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, PokemonTower7TrainerHeaders
+	ld hl, PokemonTower7F_TrainerHeaders
 	ld de, PokemonTower7F_ScriptPointers
 	ld bc, wPokemonTower7FCurScript
 	jp ExecuteCurMapScriptInTable
@@ -189,31 +189,31 @@ PokemonTower7F_TextPointers:
 	dw_const PokemonTower7FMrFujiText,    TEXT_POKEMONTOWER7F_MR_FUJI
 	dw_const PokemonTower7FChannelerText, TEXT_POKEMONTOWER7F_CHANNELER ; marcelnote - added High Channeler
 
-PokemonTower7TrainerHeaders:
+PokemonTower7F_TrainerHeaders:
 	def_trainers
-PokemonTower7TrainerHeader0:
-	trainer EVENT_BEAT_POKEMONTOWER_7_TRAINER_0, 3, PokemonTower7FRocket1BattleText, PokemonTower7FRocket1EndBattleText, PokemonTower7FRocket1AfterBattleText
-PokemonTower7TrainerHeader1:
-	trainer EVENT_BEAT_POKEMONTOWER_7_TRAINER_1, 3, PokemonTower7FRocket2BattleText, PokemonTower7FRocket2EndBattleText, PokemonTower7FRocket2AfterBattleText
-PokemonTower7TrainerHeader2:
-	trainer EVENT_BEAT_POKEMONTOWER_7_TRAINER_2, 3, PokemonTower7FRocket3BattleText, PokemonTower7FRocket3EndBattleText, PokemonTower7FRocket3AfterBattleText
+PokemonTower7FTrainerHeader0:
+	trainer EVENT_BEAT_POKEMON_TOWER_7F_TRAINER_0, 3, PokemonTower7FRocket1BattleText, PokemonTower7FRocket1EndBattleText, PokemonTower7FRocket1AfterBattleText
+PokemonTower7FTrainerHeader1:
+	trainer EVENT_BEAT_POKEMON_TOWER_7F_TRAINER_1, 3, PokemonTower7FRocket2BattleText, PokemonTower7FRocket2EndBattleText, PokemonTower7FRocket2AfterBattleText
+PokemonTower7FTrainerHeader2:
+	trainer EVENT_BEAT_POKEMON_TOWER_7F_TRAINER_2, 3, PokemonTower7FRocket3BattleText, PokemonTower7FRocket3EndBattleText, PokemonTower7FRocket3AfterBattleText
 	db -1 ; end
 
 PokemonTower7FRocket1Text:
 	text_asm
-	ld hl, PokemonTower7TrainerHeader0
+	ld hl, PokemonTower7FTrainerHeader0
 	call TalkToTrainer
 	rst TextScriptEnd
 
 PokemonTower7FRocket2Text:
 	text_asm
-	ld hl, PokemonTower7TrainerHeader1
+	ld hl, PokemonTower7FTrainerHeader1
 	call TalkToTrainer
 	rst TextScriptEnd
 
 PokemonTower7FRocket3Text:
 	text_asm
-	ld hl, PokemonTower7TrainerHeader2
+	ld hl, PokemonTower7FTrainerHeader2
 	call TalkToTrainer
 	rst TextScriptEnd
 

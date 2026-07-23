@@ -15,7 +15,7 @@ IndigoPlateauLobbyDefaultScript:
 	bit BIT_CUR_MAP_LOADED_2, [hl] ; marcelnote - maybe could be a preliminary script instead
 	jr z, .checkRivalCoords
 	res BIT_CUR_MAP_LOADED_2, [hl]
-	ResetEvent EVENT_VICTORY_ROAD_1_BOULDER_ON_SWITCH
+	ResetEvent EVENT_VICTORY_ROAD_1F_BOULDER_ON_SWITCH
 	; Reset Elite Four events if the player started challenging them before
 	CheckEvent EVENT_STARTED_ELITE_4
 	jr z, .checkRivalCoords

@@ -1,7 +1,7 @@
 ; marcelnote - new location
 MandarinHotel_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, MandarinHotelTrainerHeaders
+	ld hl, MandarinHotel_TrainerHeaders
 	ld de, MandarinHotel_ScriptPointers
 	ld bc, wMandarinHotelCurScript
 	jp ExecuteCurMapScriptInTable
@@ -34,7 +34,7 @@ MandarinHotel_TextPointers:
 	dw_const MandarinHotel3FRoom22SignText,   TEXT_MANDARINHOTEL3F_ROOM_22
 	dw_const MandarinHotel4FSuiteSignText,    TEXT_MANDARINHOTEL4F_SUITE
 
-MandarinHotelTrainerHeaders:
+MandarinHotel_TrainerHeaders:
 	def_trainers
 MandarinHotelTrainerHeader0:
 	trainer EVENT_BEAT_MANDARIN_HOTEL_TRAINER_0, 2, MandarinHotel2FGentlemanBattleText, MandarinHotel2FGentlemanEndBattleText, MandarinHotel2FGentlemanAfterBattleText

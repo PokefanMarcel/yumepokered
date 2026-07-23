@@ -1,6 +1,6 @@
 Route4_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, Route4TrainerHeaders
+	ld hl, Route4_TrainerHeaders
 	ld de, Route4_ScriptPointers
 	ld bc, wRoute4CurScript
 	jp ExecuteCurMapScriptInTable
@@ -20,7 +20,7 @@ Route4_TextPointers:
 	dw_const Route4MtMoonSignText,    TEXT_ROUTE4_MT_MOON_SIGN
 	dw_const Route4SignText,          TEXT_ROUTE4_SIGN
 
-Route4TrainerHeaders:
+Route4_TrainerHeaders:
 	def_trainers 2
 Route4TrainerHeader0:
 	trainer EVENT_BEAT_ROUTE_4_TRAINER_0, 3, Route4CooltrainerF2BattleText, Route4CooltrainerF2EndBattleText, Route4CooltrainerF2AfterBattleText

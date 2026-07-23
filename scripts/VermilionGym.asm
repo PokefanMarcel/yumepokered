@@ -9,7 +9,7 @@ VermilionGym_Script:
 	res BIT_CUR_MAP_LOADED_2, [hl]
 	call nz, VermilionGymSetDoorTile
 	call EnableAutoTextBoxDrawing
-	ld hl, VermilionGymTrainerHeaders
+	ld hl, VermilionGym_TrainerHeaders
 	ld de, VermilionGym_ScriptPointers
 	ld bc, wVermilionGymCurScript
 	jp ExecuteCurMapScriptInTable
@@ -118,7 +118,7 @@ VermilionGym_TextPointers:
 	dw_const VermilionGymLTSurgeTM24NoRoomText,       TEXT_VERMILIONGYM_LT_SURGE_TM24_NO_ROOM
 	dw_const VermilionGymAfterRematchText,            TEXT_VERMILIONGYM_AFTER_REMATCH ; marcelnote - Lt.Surge rematch
 
-VermilionGymTrainerHeaders:
+VermilionGym_TrainerHeaders:
 	def_trainers 3 ; marcelnote - added 1 to accomodate Lt.Surge rematch
 VermilionGymTrainerHeader0:
 	trainer EVENT_BEAT_VERMILION_GYM_TRAINER_0, 3, VermilionGymGentlemanBattleText, VermilionGymGentlemanEndBattleText, VermilionGymGentlemanAfterBattleText

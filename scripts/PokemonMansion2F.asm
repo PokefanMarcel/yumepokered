@@ -1,39 +1,39 @@
 PokemonMansion2F_Script:
-	call Mansion2CheckReplaceSwitchDoorBlocks
+	call PokemonMansion2FCheckReplaceSwitchDoorBlocks
 	call EnableAutoTextBoxDrawing
-	ld hl, Mansion2TrainerHeaders
+	ld hl, PokemonMansion2F_TrainerHeaders
 	ld de, PokemonMansion2F_ScriptPointers
 	ld bc, wPokemonMansion2FCurScript
 	jp ExecuteCurMapScriptInTable
 
-Mansion2CheckReplaceSwitchDoorBlocks:
+PokemonMansion2FCheckReplaceSwitchDoorBlocks:
 	ld hl, wCurrentMapScriptFlags
 	bit BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
 	res BIT_CUR_MAP_LOADED_1, [hl]
-	CheckEvent EVENT_MANSION_SWITCH_ON
+	CheckEvent EVENT_POKEMON_MANSION_SWITCH_ON
 	jr nz, .switchTurnedOn
 	ld a, $e
 	lb bc, 2, 4
-	call Mansion2ReplaceBlock
+	call PokemonMansion2FReplaceBlock
 	ld a, $54
 	lb bc, 4, 9
-	call Mansion2ReplaceBlock
+	call PokemonMansion2FReplaceBlock
 	ld a, $5f
 	lb bc, 11, 3
-	jr Mansion2ReplaceBlock
+	jr PokemonMansion2FReplaceBlock
 .switchTurnedOn
 	ld a, $5f
 	lb bc, 2, 4
-	call Mansion2ReplaceBlock
+	call PokemonMansion2FReplaceBlock
 	ld a, $e
 	lb bc, 4, 9
-	call Mansion2ReplaceBlock
+	call PokemonMansion2FReplaceBlock
 	ld a, $e
 	lb bc, 11, 3
-	jr Mansion2ReplaceBlock
+	jr PokemonMansion2FReplaceBlock
 
-Mansion2ReplaceBlock:
+PokemonMansion2FReplaceBlock:
 	ld [wNewTileBlockID], a
 	predef_jump ReplaceTileBlock
 
@@ -61,15 +61,15 @@ PokemonMansion2F_TextPointers:
 	dw_const PokemonMansion2FDiary2Text,    TEXT_POKEMONMANSION2F_DIARY2
 	dw_const PokemonMansion2FSwitchText,    TEXT_POKEMONMANSION2F_SWITCH
 
-Mansion2TrainerHeaders:
+PokemonMansion2F_TrainerHeaders:
 	def_trainers
-Mansion2TrainerHeader0:
-	trainer EVENT_BEAT_MANSION_2_TRAINER_0, 0, PokemonMansion2FSuperNerdBattleText, PokemonMansion2FSuperNerdEndBattleText, PokemonMansion2FSuperNerdAfterBattleText
+PokemonMansion2FTrainerHeader0:
+	trainer EVENT_BEAT_POKEMON_MANSION_2F_TRAINER_0, 0, PokemonMansion2FSuperNerdBattleText, PokemonMansion2FSuperNerdEndBattleText, PokemonMansion2FSuperNerdAfterBattleText
 	db -1 ; end
 
 PokemonMansion2FSuperNerdText:
 	text_asm
-	ld hl, Mansion2TrainerHeader0
+	ld hl, PokemonMansion2FTrainerHeader0
 	call TalkToTrainer
 	rst TextScriptEnd
 
@@ -109,9 +109,9 @@ PokemonMansion2FSwitchText: ; marcelnote - optimized
 	call PrintText
 	ld a, SFX_GO_INSIDE
 	call PlaySound
-	CheckAndSetEvent EVENT_MANSION_SWITCH_ON
+	CheckAndSetEvent EVENT_POKEMON_MANSION_SWITCH_ON
 	jr z, .done
-	ResetEventReuseHL EVENT_MANSION_SWITCH_ON
+	ResetEventReuseHL EVENT_POKEMON_MANSION_SWITCH_ON
 .done
 	rst TextScriptEnd
 .notPressed

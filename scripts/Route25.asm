@@ -1,7 +1,7 @@
 Route25_Script:
 	call Route25ToggleBillsScript
 	call EnableAutoTextBoxDrawing
-	ld hl, Route25TrainerHeaders
+	ld hl, Route25_TrainerHeaders
 	ld de, Route25_ScriptPointers
 	ld bc, wRoute25CurScript
 	jp ExecuteCurMapScriptInTable
@@ -53,7 +53,7 @@ Route25_TextPointers:
 	dw_const PickUpItemText,           TEXT_ROUTE25_TM_SEISMIC_TOSS
 	dw_const Route25BillSignText,      TEXT_ROUTE25_BILL_SIGN
 
-Route25TrainerHeaders:
+Route25_TrainerHeaders:
 	def_trainers
 Route25TrainerHeader0:
 	trainer EVENT_BEAT_ROUTE_25_TRAINER_0, 2, Route25Youngster1BattleText, Route25Youngster1EndBattleText, Route25Youngster1AfterBattleText

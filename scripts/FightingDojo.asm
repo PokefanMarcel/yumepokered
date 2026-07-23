@@ -1,6 +1,6 @@
 FightingDojo_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, FightingDojoTrainerHeaders
+	ld hl, FightingDojo_TrainerHeaders
 	ld de, FightingDojo_ScriptPointers
 	ld bc, wFightingDojoCurScript
 	jp ExecuteCurMapScriptInTable
@@ -99,7 +99,7 @@ FightingDojo_TextPointers:
 	dw_const FightingDojoHitmonchanPokeBallText,                    TEXT_FIGHTINGDOJO_HITMONCHAN_POKE_BALL
 	dw_const FightingDojoKarateMasterText.IWillGiveYouAPokemonText, TEXT_FIGHTINGDOJO_KARATE_MASTER_I_WILL_GIVE_YOU_A_POKEMON
 
-FightingDojoTrainerHeaders:
+FightingDojo_TrainerHeaders:
 	def_trainers 2
 FightingDojoTrainerHeader0:
 	trainer EVENT_BEAT_FIGHTING_DOJO_TRAINER_0, 4, FightingDojoBlackbelt1BattleText, FightingDojoBlackbelt1EndBattleText, FightingDojoBlackbelt1AfterBattleText

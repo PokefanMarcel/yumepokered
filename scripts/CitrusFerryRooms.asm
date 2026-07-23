@@ -1,7 +1,7 @@
 ; marcelnote - new location
 CitrusFerryRooms_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, CitrusFerryRoomsTrainerHeaders
+	ld hl, CitrusFerryRooms_TrainerHeaders
 	ld de, CitrusFerryRooms_ScriptPointers
 	ld bc, wCitrusFerryRoomsCurScript
 	jp ExecuteCurMapScriptInTable
@@ -47,7 +47,7 @@ CitrusFerryRooms_TextPointers:
 	dw_const CitrusFerryRoomsCaptainsBookText,    TEXT_CITRUSFERRYROOMS_CAPTAINS_BOOK
 	dw_const CitrusFerryRoomsSpeakerArrivedText,  TEXT_CITRUSFERRYROOMS_SPEAKER_ARRIVED
 
-CitrusFerryRoomsTrainerHeaders:
+CitrusFerryRooms_TrainerHeaders:
 	def_trainers
 CitrusFerryRoomsTrainerHeader0:
 	trainer EVENT_BEAT_CITRUS_FERRY_ROOMS_TRAINER_0, 2, CitrusFerryRoomsGentlemanBattleText, CitrusFerryRoomsGentlemanEndBattleText, CitrusFerryRoomsGentlemanAfterBattleText

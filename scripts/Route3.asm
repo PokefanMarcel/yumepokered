@@ -1,6 +1,6 @@
 Route3_Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, Route3TrainerHeaders
+	ld hl, Route3_TrainerHeaders
 	ld de, Route3_ScriptPointers
 	ld bc, wRoute3CurScript
 	jp ExecuteCurMapScriptInTable
@@ -24,7 +24,7 @@ Route3_TextPointers:
 	dw_const Route3CooltrainerF3Text, TEXT_ROUTE3_COOLTRAINER_F3
 	dw_const Route3SignText,          TEXT_ROUTE3_SIGN
 
-Route3TrainerHeaders:
+Route3_TrainerHeaders:
 	def_trainers 2
 Route3TrainerHeader0:
 	trainer EVENT_BEAT_ROUTE_3_TRAINER_0, 2, Route3Youngster1BattleText, Route3Youngster1EndBattleText, Route3Youngster1AfterBattleText
