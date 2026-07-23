@@ -232,6 +232,8 @@ CinnabarVolcanoB1FLanceGreatJobScript:
 	ld a, TOGGLE_CINNABAR_VOLCANO_B1F_LANCE
 	ld [wToggleableObjectIndex], a
 	predef HideObject
+	xor a
+	ld [wPlayerMovingDirection], a
 	call UpdateSprites
 	call Delay3
 	SetEvent EVENT_POSTGAME_LANCE
@@ -251,8 +253,6 @@ CinnabarVolcanoB1FLanceGreatJobScript:
 .end
 	call GBFadeInFromBlack
 	xor a
-	ldh [hJoyHeld], a ; marcelnote - BUG: there is a slight twitch at the end, why?
-	ldh [hJoyPressed], a
 	ld [wCinnabarVolcano1FB1FCurScript], a ; SCRIPT_CINNABARVOLCANO1FB1F_DEFAULT
 	ret
 
