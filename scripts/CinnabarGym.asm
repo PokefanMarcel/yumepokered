@@ -1,22 +1,15 @@
 ; marcelnote - script was extensively modified to reduce map loading time
 ;              for map redraws when removing gates
 CinnabarGym_Script:
+	ld hl, wCurrentMapScriptFlags
+	bit BIT_CUR_MAP_LOADED_2, [hl]
+	res BIT_CUR_MAP_LOADED_2, [hl]
+	call nz, .LoadNames
 	call CinnabarGymSetMapAndTiles
 	call EnableAutoTextBoxDrawing
 	ld hl, CinnabarGym_ScriptPointers
 	ld a, [wCinnabarGymCurScript]
 	jp CallFunctionInTable
-
-CinnabarGymSetMapAndTiles:
-	ld hl, wCurrentMapScriptFlags
-	bit BIT_CUR_MAP_LOADED_2, [hl]
-	res BIT_CUR_MAP_LOADED_2, [hl]
-	call nz, .LoadNames
-	ld hl, wCurrentMapScriptFlags
-	bit BIT_CUR_MAP_LOADED_1, [hl]
-	ret z
-	res BIT_CUR_MAP_LOADED_1, [hl]
-	jp UpdateCinnabarGymGateTileBlocks
 
 .LoadNames:
 	ld hl, .CityName
@@ -39,6 +32,13 @@ ELSE
 .LeaderName:
 	db "BLAINE@"
 ENDC
+
+CinnabarGymSetMapAndTiles:
+	ld hl, wCurrentMapScriptFlags
+	bit BIT_CUR_MAP_LOADED_1, [hl]
+	ret z
+	res BIT_CUR_MAP_LOADED_1, [hl]
+	jp UpdateCinnabarGymGateTileBlocks
 
 CinnabarGymResetScripts:
 	xor a ; SCRIPT_CINNABARGYM_DEFAULT
