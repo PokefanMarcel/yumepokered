@@ -9,7 +9,7 @@ SafariZoneGate_ScriptPointers:
 	dw_const SafariZoneGateDefaultScript,                SCRIPT_SAFARIZONEGATE_DEFAULT
 	dw_const SafariZoneGatePlayerMovingRightScript,      SCRIPT_SAFARIZONEGATE_PLAYER_MOVING_RIGHT
 	dw_const SafariZoneGateWouldYouLikeToJoinScript,     SCRIPT_SAFARIZONEGATE_WOULD_YOU_LIKE_TO_JOIN
-	dw_const SafariZoneGatePlayerMovingUpScript,         SCRIPT_SAFARIZONEGATE_PLAYER_MOVING
+	dw_const SafariZoneGatePlayerMovingUpScript,         SCRIPT_SAFARIZONEGATE_PLAYER_MOVING_UP
 	dw_const SafariZoneGatePlayerMovingDownScript,       SCRIPT_SAFARIZONEGATE_PLAYER_MOVING_DOWN
 	dw_const SafariZoneGateLeavingSafariScript,          SCRIPT_SAFARIZONEGATE_LEAVING_SAFARI
 	dw_const SafariZoneGateSetScriptAfterMoveScript,     SCRIPT_SAFARIZONEGATE_SET_SCRIPT_AFTER_MOVE
@@ -103,17 +103,15 @@ SafariZoneGatePlayerMovingDownScript:
 	ret nz
 	xor a
 	ld [wJoyIgnore], a
-	ld a, SCRIPT_SAFARIZONEGATE_DEFAULT
-	ld [wSafariZoneGateCurScript], a
+	ld [wSafariZoneGateCurScript], a ; SCRIPT_SAFARIZONEGATE_DEFAULT
 	ret
 
 SafariZoneGateSetScriptAfterMoveScript:
 	call SafariZoneGateReturnSimulatedJoypadStateScript
 	ret nz
-	call Delay3
 	ld a, [wNextSafariZoneGateScript]
 	ld [wSafariZoneGateCurScript], a
-	ret
+	jp Delay3
 
 SafariZoneGateAutoWalk:
 	push af
@@ -192,7 +190,7 @@ SafariZoneGateSafariZoneWorker1WouldYouLikeToJoinText:
 	call SafariZoneGateAutoWalk
 	SetEvent EVENT_IN_SAFARI_ZONE
 	ResetEventReuseHL EVENT_SAFARI_GAME_OVER
-	ld a, SCRIPT_SAFARIZONEGATE_PLAYER_MOVING
+	ld a, SCRIPT_SAFARIZONEGATE_PLAYER_MOVING_UP
 	ld [wSafariZoneGateCurScript], a
 	rst TextScriptEnd
 
