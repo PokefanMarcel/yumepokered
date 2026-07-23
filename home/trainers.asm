@@ -37,15 +37,19 @@ IncrementCurMapScript::
 	inc [hl]
 	ret
 
-LoadGymLeaderAndCityName::
-	push de
-	ld de, wGymCityName
-	ld bc, GYM_CITY_LENGTH
-	call CopyData ; load city name
-	pop hl
+LoadGymLeaderAndCityName:: ; marcelnote - modified to reuse existing names
+; a is the gym leader's trainer class
+	ld [wNameListIndex], a
+	ld a, TRAINER_NAME
+	ld [wNameListType], a
+	ld a, BANK(TrainerNames)
+	ld [wPredefBank], a
+	call GetName ; stores name in wNameBuffer
+	ld hl, wNameBuffer
 	ld de, wGymLeaderName
 	ld bc, NAME_LENGTH
-	jp CopyData   ; load gym leader name
+	call CopyData ; copy from wNameBuffer into wGymLeaderName
+	jpfar LoadGymCityName
 
 ; reads specific information from trainer header (pointed to at wTrainerHeaderPtr)
 ; a: offset in header data

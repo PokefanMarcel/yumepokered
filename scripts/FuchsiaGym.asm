@@ -10,26 +10,8 @@ FuchsiaGym_Script:
 	jp ExecuteCurMapScriptInTable
 
 .LoadNames:
-	ld hl, .CityName
-	ld de, .LeaderName
+	ld a, KOGA
 	jp LoadGymLeaderAndCityName
-
-IF DEF(_FRA)
-.CityName:
-	db "PARMANIE@"
-.LeaderName:
-	db "KOGA@"
-ELIF DEF(_ESP)
-.CityName:
-	db "CIUDAD FUCSIA@"
-.LeaderName:
-	db "KOGA@"
-ELSE
-.CityName:
-	db "FUCHSIA CITY@"
-.LeaderName:
-	db "KOGA@"
-ENDC
 
 FuchsiaGymSetDefaultScript:
 	xor a

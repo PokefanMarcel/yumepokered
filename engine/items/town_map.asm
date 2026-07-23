@@ -743,6 +743,14 @@ LoadTownMapEntry:
 	ld l, a
 	ret
 
+LoadGymCityName:: ; marcelnote - new for gym city and leader names
+	ld a, [wCurMap]
+	ld de, wGymCityName   ; LoadTownMapEntry needs to store town map coordinates at de
+	call LoadTownMapEntry ; hl = address of name
+	ld de, wGymCityName
+	ld bc, GYM_CITY_LENGTH
+	jp CopyData
+
 INCLUDE "data/maps/town_map_entries.asm"
 
 MonNestIcon:

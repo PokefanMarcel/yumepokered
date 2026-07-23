@@ -10,26 +10,8 @@ CeladonGym_Script:
 	jp ExecuteCurMapScriptInTable
 
 .LoadNames:
-	ld hl, .CityName
-	ld de, .LeaderName
+	ld a, ERIKA
 	jp LoadGymLeaderAndCityName
-
-IF DEF(_FRA)
-.CityName:
-	db "CELADOPOLE@"
-.LeaderName:
-	db "ERIKA@"
-ELIF DEF(_ESP)
-.CityName:
-	db "CIUDAD AZULONA@"
-.LeaderName:
-	db "ERIKA@"
-ELSE
-.CityName:
-	db "CELADON CITY@"
-.LeaderName:
-	db "ERIKA@"
-ENDC
 
 CeladonGymSetDefaultScript:
 	xor a

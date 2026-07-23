@@ -10,26 +10,8 @@ PewterGym_Script:
 	jp ExecuteCurMapScriptInTable
 
 .LoadNames:
-	ld hl, .CityName
-	ld de, .LeaderName
+	ld a, BROCK
 	jp LoadGymLeaderAndCityName
-
-IF DEF(_FRA)
-.CityName:
-	db "ARGENTA@"
-.LeaderName:
-	db "PIERRE@"
-ELIF DEF(_ESP)
-.CityName:
-	db "CIUDAD PLATEADA@"
-.LeaderName:
-	db "BROCK@"
-ELSE
-.CityName:
-	db "PEWTER CITY@"
-.LeaderName:
-	db "BROCK@"
-ENDC
 
 PewterGymSetDefaultScript:
 	xor a

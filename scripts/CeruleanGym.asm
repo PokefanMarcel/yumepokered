@@ -10,26 +10,8 @@ CeruleanGym_Script:
 	jp ExecuteCurMapScriptInTable
 
 .LoadNames:
-	ld hl, .CityName
-	ld de, .LeaderName
+	ld a, MISTY
 	jp LoadGymLeaderAndCityName
-
-IF DEF(_FRA)
-.CityName:
-	db "AZURIA@"
-.LeaderName:
-	db "ONDINE@"
-ELIF DEF(_ESP)
-.CityName:
-	db "CIUDAD CELESTE@"
-.LeaderName:
-	db "MISTY@"
-ELSE
-.CityName:
-	db "CERULEAN CITY@"
-.LeaderName:
-	db "MISTY@"
-ENDC
 
 CeruleanGymSetDefaultScript:
 	xor a

@@ -378,9 +378,3 @@ _ViridianGymGuidePostBattleText::
 	cont "CHAMPION?"
 	cont "Ben ça alors!"
 	done
-
-
-
-
-
-

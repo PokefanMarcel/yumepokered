@@ -12,26 +12,8 @@ CinnabarGym_Script:
 	jp CallFunctionInTable
 
 .LoadNames:
-	ld hl, .CityName
-	ld de, .LeaderName
+	ld a, BLAINE
 	jp LoadGymLeaderAndCityName
-
-IF DEF(_FRA)
-.CityName:
-	db "CRAMOIS'ILE@"
-.LeaderName:
-	db "AUGUSTE@"
-ELIF DEF(_ESP)
-.CityName:
-	db "ISLA CANELA@"
-.LeaderName:
-	db "BLAINE@"
-ELSE
-.CityName:
-	db "CINNABAR ISLAND@"
-.LeaderName:
-	db "BLAINE@"
-ENDC
 
 CinnabarGymSetMapAndTiles:
 	ld hl, wCurrentMapScriptFlags

@@ -25,26 +25,8 @@ SaffronGymSetMapAndTiles: ; marcelnote - open Saffron Gym gate
 	jp UpdateSaffronGymTileBlocks
 
 .LoadNames:
-	ld hl, .CityName
-	ld de, .LeaderName
+	ld a, SABRINA
 	jp LoadGymLeaderAndCityName
-
-IF DEF(_FRA)
-.CityName:
-	db "SAFRANIA@"
-.LeaderName:
-	db "MORGANE@"
-ELIF DEF(_ESP)
-.CityName:
-	db "CIUDAD AZAFRÁN@"
-.LeaderName:
-	db "SABRINA@"
-ELSE
-.CityName:
-	db "SAFFRON CITY@"
-.LeaderName:
-	db "SABRINA@"
-ENDC
 
 SaffronGymSetDefaultScript:
 	xor a

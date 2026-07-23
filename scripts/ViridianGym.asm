@@ -10,27 +10,8 @@ ViridianGym_Script:
 	jp ExecuteCurMapScriptInTable
 
 .LoadNames:
-	ld hl, .CityName
-	ld de, .LeaderName
+	ld a, GIOVANNI
 	jp LoadGymLeaderAndCityName
-
-IF DEF(_FRA)
-.CityName:
-	db "JADIELLE@"
-.LeaderName:
-	db "GIOVANNI@"
-ELIF DEF(_ESP)
-.CityName:
-	db "CIUDAD VERDE@"
-.LeaderName:
-	db "GIOVANNI@"
-ELSE
-.CityName:
-	db "VIRIDIAN CITY@"
-.LeaderName:
-	db "GIOVANNI@"
-ENDC
-
 
 ViridianGymSetDefaultScript:
 	xor a
