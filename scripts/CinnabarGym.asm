@@ -420,7 +420,6 @@ CinnabarGymStartBattleScript:
 	ld a, SCRIPT_CINNABARGYM_OPEN_GATE
 .gotScript
 	ld [wCinnabarGymCurScript], a
-	; hJoyHeld is intentionally left unchanged because quiz trainers use this common path too.
 	rst TextScriptEnd
 
 CinnabarGymBlaineText:
@@ -562,8 +561,6 @@ CinnabarGymBlaineRematchText: ; marcelnote - Blaine rematch
 	call InitBattleEnemyParameters
 	ld a, $7
 	ld [wGymLeaderNo], a
-	xor a
-	ldh [hJoyHeld], a
 	ld a, SCRIPT_CINNABARGYM_BLAINE_REMATCH_POST_BATTLE
 	ld [wCinnabarGymCurScript], a
 	rst TextScriptEnd

@@ -156,8 +156,6 @@ VermilionGymLTSurgeText: ; marcelnote - optimized
 	call InitBattleEnemyParameters
 	ld a, $3
 	ld [wGymLeaderNo], a
-	xor a
-	ldh [hJoyHeld], a
 	ld a, SCRIPT_VERMILIONGYM_LT_SURGE_POST_BATTLE
 	ld [wVermilionGymCurScript], a
 	rst TextScriptEnd
@@ -284,8 +282,6 @@ VermilionGymLTSurgeRematchText: ; marcelnote - Lt.Surge rematch
 	call InitBattleEnemyParameters
 	ld a, $3
 	ld [wGymLeaderNo], a
-	xor a
-	ldh [hJoyHeld], a
 	ld a, SCRIPT_VERMILIONGYM_LT_SURGE_REMATCH_POST_BATTLE
 	ld [wVermilionGymCurScript], a
 	rst TextScriptEnd

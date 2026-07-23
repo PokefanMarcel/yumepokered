@@ -155,8 +155,6 @@ CeruleanCityRivalBattleScript:
 	ld a, b
 	ld [wTrainerNo], a
 
-	xor a
-	ldh [hJoyHeld], a
 	call CeruleanCityFaceRivalScript
 	ld a, SCRIPT_CERULEANCITY_RIVAL_DEFEATED
 	ld [wCeruleanCityCurScript], a

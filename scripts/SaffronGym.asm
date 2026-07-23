@@ -294,7 +294,6 @@ SaffronGymSabrinaText:
 	call InitBattleEnemyParameters
 	ld a, $6
 	ld [wGymLeaderNo], a
-	; hJoyHeld is intentionally left unchanged here to preserve the existing battle transition.
 	ld a, SCRIPT_SAFFRONGYM_SABRINA_POST_BATTLE
 	ld [wSaffronGymCurScript], a
 	rst TextScriptEnd
@@ -534,8 +533,6 @@ SaffronGymSabrinaRematchText: ; marcelnote - Sabrina rematch
 	call InitBattleEnemyParameters
 	ld a, $6
 	ld [wGymLeaderNo], a
-	xor a
-	ldh [hJoyHeld], a
 	ld a, SCRIPT_SAFFRONGYM_SABRINA_REMATCH_POST_BATTLE
 	ld [wSaffronGymCurScript], a
 	rst TextScriptEnd

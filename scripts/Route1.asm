@@ -193,8 +193,6 @@ Route1OakText: ; marcelnote - postgame Oak fight
 .saveTrainerId
 	ld a, b
 	ld [wTrainerNo], a
-	xor a
-	ldh [hJoyHeld], a
 	ld a, SCRIPT_ROUTE1_OAK_POST_BATTLE
 	ld [wRoute1CurScript], a
 	rst TextScriptEnd

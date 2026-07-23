@@ -408,10 +408,6 @@ GameCornerRocketText:
 	ld [wSpriteIndex], a
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
-	xor a
-	ldh [hJoyHeld], a
-	ldh [hJoyPressed], a
-	ldh [hJoyReleased], a
 	ld a, SCRIPT_GAMECORNER_ROCKET_BATTLE
 	ld [wGameCornerCurScript], a
 	rst TextScriptEnd

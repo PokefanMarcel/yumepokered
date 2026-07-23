@@ -162,7 +162,6 @@ ViridianGymGiovanniText:
 	call InitBattleEnemyParameters
 	ld a, $8
 	ld [wGymLeaderNo], a
-	; hJoyHeld is intentionally left unchanged here to preserve the existing battle transition.
 	ld a, SCRIPT_VIRIDIANGYM_GIOVANNI_POST_BATTLE
 	ld [wViridianGymCurScript], a
 	rst TextScriptEnd

@@ -134,8 +134,6 @@ Route24CooltrainerM1Text: ; marcelnote - optimized
 	ld [wSpriteIndex], a
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
-	xor a
-	ldh [hJoyHeld], a
 	ld a, SCRIPT_ROUTE24_AFTER_ROCKET_BATTLE
 	ld [wRoute24CurScript], a
 	ld [wCurMapScript], a

@@ -52,11 +52,7 @@ ENDC
 	call SetSpriteFacingDirectionAndDelay
 	ld a, TEXT_POKEMONTOWER2F_RIVAL
 	ldh [hTextID], a
-	call DisplayTextID
-	xor a
-	ldh [hJoyHeld], a
-	ldh [hJoyPressed], a
-	ret
+	jp DisplayTextID
 
 PokemonTower2FRivalEncounterEventCoords:
 	dbmapcoord 15,  5

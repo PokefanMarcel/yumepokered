@@ -149,7 +149,6 @@ CeladonGymErikaText:
 	call InitBattleEnemyParameters
 	ld a, $4
 	ld [wGymLeaderNo], a
-	; hJoyHeld is intentionally left unchanged here to preserve the existing battle transition.
 	ld a, SCRIPT_CELADONGYM_ERIKA_POST_BATTLE
 	ld [wCeladonGymCurScript], a
 	rst TextScriptEnd
@@ -333,8 +332,6 @@ CeladonGymErikaRematchText: ; marcelnote - Erika rematch
 	call InitBattleEnemyParameters
 	ld a, $4
 	ld [wGymLeaderNo], a
-	xor a
-	ldh [hJoyHeld], a
 	ld a, SCRIPT_CELADONGYM_ERIKA_REMATCH_POST_BATTLE
 	ld [wCeladonGymCurScript], a
 	rst TextScriptEnd

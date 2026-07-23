@@ -101,8 +101,6 @@ ChampionsRoomRivalReadyToBattleScript:
 ;;;;;;
 	ld [wTrainerNo], a
 
-	xor a
-	ldh [hJoyHeld], a
 	ld a, SCRIPT_CHAMPIONSROOM_RIVAL_DEFEATED
 	ld [wChampionsRoomCurScript], a
 	ret

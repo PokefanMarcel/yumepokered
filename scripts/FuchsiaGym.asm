@@ -147,8 +147,6 @@ FuchsiaGymKogaText:
 	call InitBattleEnemyParameters
 	ld a, $5
 	ld [wGymLeaderNo], a
-	xor a
-	ldh [hJoyHeld], a
 	ld a, SCRIPT_FUCHSIAGYM_KOGA_POST_BATTLE
 	ld [wFuchsiaGymCurScript], a
 	rst TextScriptEnd
@@ -330,8 +328,6 @@ FuchsiaGymKogaRematchText: ; marcelnote - Koga rematch
 	call InitBattleEnemyParameters
 	ld a, $5
 	ld [wGymLeaderNo], a
-	xor a
-	ldh [hJoyHeld], a
 	ld a, SCRIPT_FUCHSIAGYM_KOGA_REMATCH_POST_BATTLE
 	ld [wFuchsiaGymCurScript], a
 	rst TextScriptEnd

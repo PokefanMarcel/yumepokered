@@ -74,8 +74,6 @@ BattleHallStartBattleScript:
 	call DelayFrames
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
-	xor a
-	ldh [hJoyHeld], a
 	ld a, SCRIPT_BATTLEHALL_POST_BATTLE
 	ld [wBattleHallCurScript], a
 	ret

@@ -72,8 +72,6 @@ MtSilver3FYellowText:
 	ld [wSpriteIndex], a
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
-	xor a
-	ldh [hJoyHeld], a
 	ld a, SCRIPT_MTSILVER3F_YELLOW_POST_BATTLE
 	ld [wMtSilver3FCurScript], a
 	rst TextScriptEnd

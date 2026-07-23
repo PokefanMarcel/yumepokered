@@ -143,8 +143,6 @@ PewterGymBrockText:
 	call InitBattleEnemyParameters
 	ld a, $1
 	ld [wGymLeaderNo], a
-	xor a
-	ldh [hJoyHeld], a
 	ld a, SCRIPT_PEWTERGYM_BROCK_POST_BATTLE
 	ld [wPewterGymCurScript], a
 	rst TextScriptEnd
@@ -260,8 +258,6 @@ PewterGymBrockRematchText: ; marcelnote - Brock rematch
 	call InitBattleEnemyParameters
 	ld a, $1
 	ld [wGymLeaderNo], a
-	xor a
-	ldh [hJoyHeld], a
 	ld a, SCRIPT_PEWTERGYM_BROCK_REMATCH_POST_BATTLE
 	ld [wPewterGymCurScript], a
 	rst TextScriptEnd

@@ -110,8 +110,6 @@ RocketHideoutB4FGiovanniText:
 	ld [wSpriteIndex], a
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
-	xor a
-	ldh [hJoyHeld], a
 	ld a, SCRIPT_ROCKETHIDEOUTB4F_BEAT_GIOVANNI
 	ld [wRocketHideoutB4FCurScript], a
 	rst TextScriptEnd
