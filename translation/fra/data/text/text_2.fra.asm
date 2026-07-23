@@ -161,7 +161,7 @@ _GymStatueText2::
 	cont "<PLAYER>"
 	done
 
-_GymStatueText3::
+_GymStatueText3:: ; marcelnote - added for Yellow
 	text "ARENE #MON"
 	line "de @"
 	text_ram wGymCityName
