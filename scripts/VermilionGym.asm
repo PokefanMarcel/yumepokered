@@ -181,7 +181,7 @@ VermilionGymLTSurgeThunderBadgeInfoText:
 
 VermilionGymLTSurgeReceivedTM24Text:
 	text_far _VermilionGymLTSurgeReceivedTM24Text
-	sound_get_item_1 ; marcelnote - harmoized from sound_get_key_item
+	sound_get_item_1 ; marcelnote - harmonized from sound_get_key_item
 	text_far _TM24ExplanationText
 	text_end
 
