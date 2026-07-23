@@ -160,7 +160,6 @@ VermilionGymLTSurgeText: ; marcelnote - optimized
 	ldh [hJoyHeld], a
 	ld a, SCRIPT_VERMILIONGYM_LT_SURGE_POST_BATTLE
 	ld [wVermilionGymCurScript], a
-	ld [wCurMapScript], a
 	rst TextScriptEnd
 
 .PreBattleText:
@@ -289,7 +288,6 @@ VermilionGymLTSurgeRematchText: ; marcelnote - Lt.Surge rematch
 	ldh [hJoyHeld], a
 	ld a, SCRIPT_VERMILIONGYM_LT_SURGE_REMATCH_POST_BATTLE
 	ld [wVermilionGymCurScript], a
-	ld [wCurMapScript], a
 	rst TextScriptEnd
 .refused
 	ld hl, .RefusedBattleText

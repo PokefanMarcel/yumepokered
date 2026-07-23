@@ -167,7 +167,6 @@ CinnabarGymQuiz::
 	call PrintText
 	ld a, SCRIPT_CINNABARGYM_FINISH_OPEN_GATE
 	ld [wCinnabarGymCurScript], a
-	ld [wCurMapScript], a
 	rst TextScriptEnd
 .wrongAnswer
 	call WaitForSoundToFinish
@@ -423,7 +422,6 @@ CinnabarGymStartBattleScript:
 	ld a, SCRIPT_CINNABARGYM_OPEN_GATE
 .gotScript
 	ld [wCinnabarGymCurScript], a
-	ld [wCurMapScript], a
 	; hJoyHeld is intentionally left unchanged because quiz trainers use this common path too.
 	rst TextScriptEnd
 
@@ -570,7 +568,6 @@ CinnabarGymBlaineRematchText: ; marcelnote - Blaine rematch
 	ldh [hJoyHeld], a
 	ld a, SCRIPT_CINNABARGYM_BLAINE_REMATCH_POST_BATTLE
 	ld [wCinnabarGymCurScript], a
-	ld [wCurMapScript], a
 	rst TextScriptEnd
 .refused
 	ld hl, .RefusedBattleText

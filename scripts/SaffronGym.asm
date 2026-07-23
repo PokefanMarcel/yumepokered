@@ -297,7 +297,6 @@ SaffronGymSabrinaText:
 	; hJoyHeld is intentionally left unchanged here to preserve the existing battle transition.
 	ld a, SCRIPT_SAFFRONGYM_SABRINA_POST_BATTLE
 	ld [wSaffronGymCurScript], a
-	; wCurMapScript is refreshed from the map-specific value on the next script pass.
 	rst TextScriptEnd
 
 .PreBattleText:
@@ -539,7 +538,6 @@ SaffronGymSabrinaRematchText: ; marcelnote - Sabrina rematch
 	ldh [hJoyHeld], a
 	ld a, SCRIPT_SAFFRONGYM_SABRINA_REMATCH_POST_BATTLE
 	ld [wSaffronGymCurScript], a
-	ld [wCurMapScript], a
 	rst TextScriptEnd
 .refused
 	ld hl, .RefusedBattleText

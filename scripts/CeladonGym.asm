@@ -152,7 +152,6 @@ CeladonGymErikaText:
 	; hJoyHeld is intentionally left unchanged here to preserve the existing battle transition.
 	ld a, SCRIPT_CELADONGYM_ERIKA_POST_BATTLE
 	ld [wCeladonGymCurScript], a
-	ld [wCurMapScript], a
 	rst TextScriptEnd
 
 .PreBattleText:
@@ -338,7 +337,6 @@ CeladonGymErikaRematchText: ; marcelnote - Erika rematch
 	ldh [hJoyHeld], a
 	ld a, SCRIPT_CELADONGYM_ERIKA_REMATCH_POST_BATTLE
 	ld [wCeladonGymCurScript], a
-	ld [wCurMapScript], a
 	rst TextScriptEnd
 .refused
 	ld hl, .RefusedBattleText

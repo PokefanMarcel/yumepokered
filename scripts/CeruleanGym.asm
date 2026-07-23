@@ -250,7 +250,6 @@ CeruleanGymMistyRematchText: ; marcelnote - Misty rematch
 	ldh [hJoyHeld], a
 	ld a, SCRIPT_CERULEANGYM_MISTY_REMATCH_POST_BATTLE
 	ld [wCeruleanGymCurScript], a
-	ld [wCurMapScript], a
 	rst TextScriptEnd
 .refused
 	ld hl, .RefusedBattleText

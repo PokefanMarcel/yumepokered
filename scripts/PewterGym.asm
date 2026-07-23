@@ -147,7 +147,6 @@ PewterGymBrockText:
 	ldh [hJoyHeld], a
 	ld a, SCRIPT_PEWTERGYM_BROCK_POST_BATTLE
 	ld [wPewterGymCurScript], a
-	ld [wCurMapScript], a
 	rst TextScriptEnd
 
 .PreBattleText:
@@ -265,7 +264,6 @@ PewterGymBrockRematchText: ; marcelnote - Brock rematch
 	ldh [hJoyHeld], a
 	ld a, SCRIPT_PEWTERGYM_BROCK_REMATCH_POST_BATTLE
 	ld [wPewterGymCurScript], a
-	ld [wCurMapScript], a
 	rst TextScriptEnd
 .refused
 	ld hl, .RefusedBattleText

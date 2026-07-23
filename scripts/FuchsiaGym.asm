@@ -151,7 +151,6 @@ FuchsiaGymKogaText:
 	ldh [hJoyHeld], a
 	ld a, SCRIPT_FUCHSIAGYM_KOGA_POST_BATTLE
 	ld [wFuchsiaGymCurScript], a
-	; wCurMapScript is refreshed from the map-specific value on the next script pass.
 	rst TextScriptEnd
 
 .PreBattleText:
@@ -335,7 +334,6 @@ FuchsiaGymKogaRematchText: ; marcelnote - Koga rematch
 	ldh [hJoyHeld], a
 	ld a, SCRIPT_FUCHSIAGYM_KOGA_REMATCH_POST_BATTLE
 	ld [wFuchsiaGymCurScript], a
-	ld [wCurMapScript], a
 	rst TextScriptEnd
 .refused
 	ld hl, .RefusedBattleText
