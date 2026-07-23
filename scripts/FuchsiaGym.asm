@@ -172,7 +172,7 @@ FuchsiaGymKogaSoulBadgeInfoText:
 
 FuchsiaGymKogaReceivedTM06Text:
 	text_far _FuchsiaGymKogaReceivedTM06Text
-	sound_get_key_item ; differs from most Gym TMs; kept to preserve the existing SFX
+	sound_get_item_1 ; marcelnote - harmoized from sound_get_key_item
 	text_far _FuchsiaGymKogaTM06ExplanationText
 	text_end
 
