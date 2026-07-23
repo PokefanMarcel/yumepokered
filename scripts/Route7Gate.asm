@@ -6,8 +6,8 @@ Route7Gate_Script:
 
 Route7Gate_ScriptPointers:
 	def_script_pointers
-	dw_const Route7DefaultScript,      SCRIPT_ROUTE7GATE_DEFAULT
-	dw_const Route7PlayerMovingScript, SCRIPT_ROUTE7GATE_PLAYER_MOVING
+	dw_const Route7GateDefaultScript,      SCRIPT_ROUTE7GATE_DEFAULT
+	dw_const Route7GatePlayerMovingScript, SCRIPT_ROUTE7GATE_PLAYER_MOVING
 
 Route7GateMovePlayerLeftScript:
 	ld hl, wStatusFlags5
@@ -21,7 +21,7 @@ Route7GateMovePlayerLeftScript:
 	ld [wOverrideSimulatedJoypadStatesMask], a
 	ret
 
-Route7DefaultScript:
+Route7GateDefaultScript:
 	CheckEvent EVENT_GAVE_SAFFRON_GUARDS_DRINK
 	ret nz
 	ld hl, .PlayerInCoordsArray
@@ -53,7 +53,7 @@ Route7DefaultScript:
 	dbmapcoord  3,  4
 	db -1 ; end
 
-Route7PlayerMovingScript:
+Route7GatePlayerMovingScript:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
