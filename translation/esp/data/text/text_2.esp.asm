@@ -163,7 +163,8 @@ _GymStatueText2::
 
 	para "ENTRENADORES"
 	line "GANADORES:"
-	cont "<RIVAL>, <PLAYER>"
+	cont "<RIVAL>"
+	cont "<PLAYER>"
 	done
 
 _GymStatueText3:: ; marcelnote - added for Yellow
@@ -178,7 +179,7 @@ _GymStatueText3:: ; marcelnote - added for Yellow
 
 	para "ENTRENADORES"
 	line "GANADORES:"
-	line "<RIVAL>"
+	cont "<RIVAL>"
 	cont "<PLAYER>"
 	cont "YELLOW"
 	done
