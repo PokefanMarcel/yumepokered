@@ -218,7 +218,7 @@ MtMoonB2FRocket4Text:
 	call TalkToTrainer
 	rst TextScriptEnd
 
-MtMoonB2FDomeFossilText:
+MtMoonB2FDomeFossilText: ; marcelnote - modified
 	text_asm
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
@@ -230,8 +230,13 @@ MtMoonB2FDomeFossilText:
 	jr nz, .done
 	lb bc, DOME_FOSSIL, 1
 	call GiveItem
-	jr nc, MtMoonB2FYouHaveNoRoomText
-	call MtMoonB2FReceivedFossilText
+	jr c, .receivedFossil
+	ld hl, MtMoonB2FYouHaveNoRoomText
+	call PrintText
+	rst TextScriptEnd
+.receivedFossil
+	ld hl, MtMoonB2FReceivedFossilText
+	call PrintText
 	ld a, TOGGLE_MT_MOON_B2F_FOSSIL_1
 	ld [wToggleableObjectIndex], a
 	predef HideObject
@@ -245,7 +250,7 @@ MtMoonB2FDomeFossilText:
 	text_far _MtMoonB2FDomeFossilYouWantText
 	text_end
 
-MtMoonB2FHelixFossilText:
+MtMoonB2FHelixFossilText: ; marcelnote - modified
 	text_asm
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
@@ -257,8 +262,13 @@ MtMoonB2FHelixFossilText:
 	jr nz, .done
 	lb bc, HELIX_FOSSIL, 1
 	call GiveItem
-	jr nc, MtMoonB2FYouHaveNoRoomText
-	call MtMoonB2FReceivedFossilText
+	jr c, .receivedFossil
+	ld hl, MtMoonB2FYouHaveNoRoomText
+	call PrintText
+	rst TextScriptEnd
+.receivedFossil
+	ld hl, MtMoonB2FReceivedFossilText
+	call PrintText
 	ld a, TOGGLE_MT_MOON_B2F_FOSSIL_2
 	ld [wToggleableObjectIndex], a
 	predef HideObject
@@ -273,21 +283,12 @@ MtMoonB2FHelixFossilText:
 	text_end
 
 MtMoonB2FReceivedFossilText:
-	ld hl, .Text
-	jp PrintText
-
-.Text:
 	text_far _MtMoonB2FReceivedFossilText
 	sound_get_key_item
 	text_waitbutton
 	text_end
 
 MtMoonB2FYouHaveNoRoomText:
-	ld hl, .Text
-	call PrintText
-	rst TextScriptEnd
-
-.Text:
 	text_far _MtMoonB2FYouHaveNoRoomText
 	text_waitbutton
 	text_end
