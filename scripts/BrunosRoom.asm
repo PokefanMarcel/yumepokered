@@ -81,11 +81,9 @@ BrunosRoomPlayerIsMovingScript:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
-	call Delay3
-	xor a ; SCRIPT_BRUNOSROOM_DEFAULT
 	ld [wJoyIgnore], a
-	ld [wBrunosRoomCurScript], a
-	ret
+	ld [wBrunosRoomCurScript], a ; SCRIPT_BRUNOSROOM_DEFAULT
+	jp Delay3
 
 BrunosRoomBrunoEndBattleScript:
 	call EndTrainerBattle ; resets script to default

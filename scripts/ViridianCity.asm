@@ -109,10 +109,8 @@ ViridianCityPlayerMovingDownScript:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
-	call Delay3
-	ld a, SCRIPT_VIRIDIANCITY_DEFAULT
-	ld [wViridianCityCurScript], a
-	ret
+	ld [wViridianCityCurScript], a ; SCRIPT_VIRIDIANCITY_DEFAULT
+	jp Delay3
 
 ViridianCityMovePlayerDownScript:
 	call StartSimulatingJoypadStates

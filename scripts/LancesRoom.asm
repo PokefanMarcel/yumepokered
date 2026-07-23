@@ -101,11 +101,9 @@ LancesRoomPlayerIsMovingScript:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
-	call Delay3
-	xor a ; SCRIPT_LANCESROOM_DEFAULT
 	ld [wJoyIgnore], a
-	ld [wLancesRoomCurScript], a
-	ret
+	ld [wLancesRoomCurScript], a ; SCRIPT_LANCESROOM_DEFAULT
+	jp Delay3
 
 LancesRoom_TextPointers:
 	def_text_pointers

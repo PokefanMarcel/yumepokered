@@ -57,11 +57,9 @@ Route8GatePlayerMovingScript:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
-	call Delay3
-	xor a
 	ld [wJoyIgnore], a
-	ld [wRoute8GateCurScript], a
-	ret
+	ld [wRoute8GateCurScript], a ; SCRIPT_ROUTE8GATE_DEFAULT
+	jp Delay3
 
 Route8Gate_TextPointers:
 	def_text_pointers

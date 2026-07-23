@@ -56,10 +56,8 @@ CinnabarIslandPlayerMovingScript:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
-	call Delay3
-	ld a, SCRIPT_CINNABARISLAND_DEFAULT
-	ld [wCinnabarIslandCurScript], a
-	ret
+	ld [wCinnabarIslandCurScript], a ; SCRIPT_CINNABARISLAND_DEFAULT
+	jp Delay3
 
 CinnabarIsland_TextPointers:
 	def_text_pointers

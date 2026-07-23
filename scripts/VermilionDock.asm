@@ -247,11 +247,9 @@ VermilionDockPlayerMovingDownScript:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
+	ld [wVermilionDockCurScript], a ; SCRIPT_VERMILIONDOCK_DEFAULT
 	ld c, 10
-	call DelayFrames
-	ld a, SCRIPT_VERMILIONDOCK_DEFAULT
-	ld [wVermilionDockCurScript], a
-	ret
+	jp DelayFrames
 
 VermilionDock_TextPointers:
 	def_text_pointers

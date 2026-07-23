@@ -81,11 +81,9 @@ AgathasRoomPlayerIsMovingScript:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
-	call Delay3
-	xor a
 	ld [wJoyIgnore], a
-	ld [wAgathasRoomCurScript], a
-	ret
+	ld [wAgathasRoomCurScript], a ; SCRIPT_AGATHASROOM_DEFAULT
+	jp Delay3
 
 AgathasRoomAgathaEndBattleScript:
 	call EndTrainerBattle ; resets script to default

@@ -66,11 +66,9 @@ MandarinIslandPlayerMovingUpScript:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
+	ld [wMandarinIslandCurScript], a ; SCRIPT_MANDARINISLAND_DEFAULT
 	ld c, 10
-	call DelayFrames
-	ld a, SCRIPT_MANDARINISLAND_DEFAULT
-	ld [wMandarinIslandCurScript], a
-	ret
+	jp DelayFrames
 
 MandarinIsland_TextPointers:
 	def_text_pointers

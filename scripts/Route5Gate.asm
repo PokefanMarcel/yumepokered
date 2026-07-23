@@ -52,11 +52,9 @@ Route5GatePlayerMovingScript:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
-	call Delay3
-	xor a
 	ld [wJoyIgnore], a
-	ld [wRoute5GateCurScript], a
-	ret
+	ld [wRoute5GateCurScript], a ; SCRIPT_ROUTE5GATE_DEFAULT
+	jp Delay3
 
 Route5Gate_TextPointers:
 	def_text_pointers

@@ -51,11 +51,9 @@ CitrusFerryDeckPlayerMovingDownScript:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
+	ld [wCitrusFerryDeckCurScript], a ; SCRIPT_CITRUSFERRYDECK_DEFAULT
 	ld c, 10
-	call DelayFrames
-	ld a, SCRIPT_CITRUSFERRYDECK_DEFAULT
-	ld [wCitrusFerryDeckCurScript], a
-	ret
+	jp DelayFrames
 
 CitrusFerryDeckEntranceScript:
 	ld a, [wSimulatedJoypadStatesIndex]

@@ -137,11 +137,9 @@ VermilionCityPlayerMovingUp1Script:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
+	ld [wVermilionCityCurScript], a ; SCRIPT_VERMILIONCITY_DEFAULT
 	ld c, 10
-	call DelayFrames
-	ld a, SCRIPT_VERMILIONCITY_DEFAULT
-	ld [wVermilionCityCurScript], a
-	ret
+	jp DelayFrames
 
 VermilionCity_TextPointers:
 	def_text_pointers

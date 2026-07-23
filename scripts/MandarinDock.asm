@@ -41,11 +41,9 @@ MandarinDockPlayerMovingDownScript:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
+	ld [wMandarinDockCurScript], a ; SCRIPT_MANDARINDOCK_DEFAULT
 	ld c, 10
-	call DelayFrames
-	ld a, SCRIPT_MANDARINDOCK_DEFAULT
-	ld [wMandarinDockCurScript], a
-	ret
+	jp DelayFrames
 
 MandarinDock_TextPointers:
 	def_text_pointers

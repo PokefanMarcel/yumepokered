@@ -82,11 +82,9 @@ LoreleisRoomPlayerIsMovingScript:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
-	call Delay3
-	xor a
 	ld [wJoyIgnore], a
-	ld [wLoreleisRoomCurScript], a
-	ret
+	ld [wLoreleisRoomCurScript], a ; SCRIPT_LORELEISROOM_DEFAULT
+	jp Delay3
 
 LoreleisRoomLoreleiEndBattleScript:
 	call EndTrainerBattle ; resets script to default

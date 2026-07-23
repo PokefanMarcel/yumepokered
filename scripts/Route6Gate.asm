@@ -45,11 +45,9 @@ Route6GatePlayerMovingScript:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
-	call Delay3
-	xor a
 	ld [wJoyIgnore], a
-	ld [wRoute6GateCurScript], a
-	ret
+	ld [wRoute6GateCurScript], a ; SCRIPT_ROUTE6GATE_DEFAULT
+	jp Delay3
 
 Route6GateMovePlayerDownScript:
 	ld hl, wStatusFlags5
