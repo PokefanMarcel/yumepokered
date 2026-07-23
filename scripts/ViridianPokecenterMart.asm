@@ -118,39 +118,20 @@ ViridianMartClerkText: ; marcelnote - moved Mart inventories
 	CheckEvent EVENT_GOT_POKEDEX
 	ld hl, .SayHiToOakText
 	ret z
-	call ViridianMartClerkDialogue
-;	ld hl, .NormalClerkText
-;	call TextCommandProcessor
+	ld hl, .MartItems
+	call LoadItemList
+	ld hl, PokemartGreetingText
+	call PrintText
+	ld a, PRICEDITEMLISTMENU
+	ld [wListMenuID], a
+	callfar DisplayPokemartDialogue_
 	rst TextScriptEnd
 
 .SayHiToOakText:
 	text_far _ViridianMartClerkSayHiToOakText
 	text_end
 
-;.NormalClerkText:
-;	script_mart POKE_BALL, ANTIDOTE, PARLYZ_HEAL, BURN_HEAL
-
-ViridianMartClerkDialogue:
-; marcelnote - recreating item list manually because I do not know
-;              how to integrate script_mart in text_asm
-	;script_mart POKE_BALL, ANTIDOTE, PARLYZ_HEAL, BURN_HEAL
-	ld a, 1
-	ld [wUpdateSpritesEnabled], a
-	ld hl, wItemList
-	ld a, 4 ; 1st entry = total number of items in the list
-	ld [hli], a
-	ld a, POKE_BALL
-	ld [hli], a
-	ld a, ANTIDOTE
-	ld [hli], a
-	ld a, PARLYZ_HEAL
-	ld [hli], a
-	ld a, BURN_HEAL
-	ld [hli], a
-	ld a, -1 ; ends the list
-	ld [hl], a
-   	ld hl, PokemartGreetingText
-   	call PrintText
-   	ld a, PRICEDITEMLISTMENU
-   	ld [wListMenuID], a
-	jpfar DisplayPokemartDialogue_
+.MartItems:
+	db 4  ; #
+	db POKE_BALL, ANTIDOTE, PARLYZ_HEAL, BURN_HEAL
+	db -1 ; end

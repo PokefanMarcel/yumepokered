@@ -81,46 +81,22 @@ CeladonMart5FClerk2Text: ; marcelnote - moved Mart inventories
 CeladonMart6FClerkText: ; marcelnote - new floor
 	text_asm
 	CheckEvent EVENT_BEAT_SILPH_FACTORY_2F_TRAINER_0 ; is Silph Factory event cleared?
-	jr z, .NoInventory
-	call CeladonMart6FClerkDialogue
-;	ld hl, .NormalClerkText
-;	call TextCommandProcessor
-	rst TextScriptEnd
-.NoInventory
 	ld hl, .NoInventoryText
-	ret
+	ret z
+	ld hl, .MartItems
+	call LoadItemList
+	ld hl, PokemartGreetingText
+	call PrintText
+	ld a, PRICEDITEMLISTMENU
+	ld [wListMenuID], a
+	callfar DisplayPokemartDialogue_
+	rst TextScriptEnd
 
 .NoInventoryText:
 	text_far _CeladonMart6FClerkNoInventoryText
 	text_end
 
-;.NormalClerkText:
-;	script_mart RARE_CANDY, PP_UP, ETHER, MAX_ETHER, ELIXIR, MAX_ELIXIR
-
-CeladonMart6FClerkDialogue:
-; marcelnote - recreating item list manually because I do not know
-;              how to integrate script_mart in text_asm
-	ld a, 1
-	ld [wUpdateSpritesEnabled], a
-	ld hl, wItemList
-	ld a, 6 ; 1st entry = total number of items in the list
-	ld [hli], a
-	ld a, RARE_CANDY
-	ld [hli], a
-	ld a, PP_UP
-	ld [hli], a
-	ld a, ETHER
-	ld [hli], a
-	ld a, MAX_ETHER
-	ld [hli], a
-	ld a, ELIXIR
-	ld [hli], a
-	ld a, MAX_ELIXIR
-	ld [hli], a
-	ld a, -1 ; ends the list
-	ld [hl], a
-   	ld hl, PokemartGreetingText
-   	call PrintText
-   	ld a, PRICEDITEMLISTMENU
-   	ld [wListMenuID], a
-	jpfar DisplayPokemartDialogue_
+.MartItems:
+	db 6  ; #
+	db RARE_CANDY, PP_UP, ETHER, MAX_ETHER, ELIXIR, MAX_ELIXIR
+	db -1 ; end
