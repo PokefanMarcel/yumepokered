@@ -37,8 +37,6 @@ ENDC
 	ld a, TEXT_ROUTE24_COOLTRAINER_M1
 	ldh [hTextID], a
 	call DisplayTextID
-	CheckAndResetEvent EVENT_NUGGET_REWARD_AVAILABLE
-	ret z
 	ld a, PAD_DOWN
 	ld [wSimulatedJoypadStatesEnd], a
 	ld a, 1
@@ -70,7 +68,7 @@ Route24AfterRocketBattleScript:
 	call UpdateSprites
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
-	SetEvent EVENT_BEAT_ROUTE24_ROCKET
+	SetEvent EVENT_BEAT_ROUTE_24_ROCKET ; never read
 	ld a, TEXT_ROUTE24_COOLTRAINER_M1
 	ldh [hTextID], a
 	call DisplayTextID
@@ -110,8 +108,7 @@ Route24TrainerHeader5:
 
 Route24CooltrainerM1Text: ; marcelnote - optimized
 	text_asm
-	ResetEvent EVENT_NUGGET_REWARD_AVAILABLE
-	CheckEvent EVENT_GOT_NUGGET
+	CheckEvent EVENT_GOT_NUGGET ; losing to this Rocket still makes him unfightable
 	ld hl, .YouCouldBecomeATopLeaderText
 	ret nz
 	ld hl, .YouBeatOurContestText
@@ -139,7 +136,6 @@ Route24CooltrainerM1Text: ; marcelnote - optimized
 	ld [wCurMapScript], a
 	rst TextScriptEnd
 .bagFull
-	SetEvent EVENT_NUGGET_REWARD_AVAILABLE
 	ld hl, .NoRoomText
 	call PrintText
 	rst TextScriptEnd
