@@ -82,19 +82,17 @@ Route22FirstRivalBattleScript:
 	ld [wRoute22CurScript], a
 	ret
 
-Route22Rival1StartBattleScript:
+Route22Rival1StartBattleScript: ; marcelnote - optimized
 	ld a, [wStatusFlags5]
 	bit BIT_SCRIPTED_NPC_MOVEMENT, a
 	ret nz
 	ld a, [wSavedCoordIndex]
-	cp 1 ; index of second, lower entry in Route22DefaultScript.Route22RivalBattleCoords
-	jr nz, .setRivalFacingRight
+	dec a
+	ld a, SPRITE_FACING_RIGHT
+	jr nz, .setRivalFacingDirection
 	ld a, PLAYER_DIR_DOWN
 	ld [wPlayerMovingDirection], a
 	ld a, SPRITE_FACING_UP
-	jr .setRivalFacingDirection
-.setRivalFacingRight
-	ld a, SPRITE_FACING_RIGHT
 .setRivalFacingDirection
 	ldh [hSpriteFacingDirection], a
 	ld a, ROUTE22_RIVAL1
@@ -132,16 +130,14 @@ Route22Rival1StartBattleScript:
 	ret
 
 
-Route22Rival1AfterBattleScript:
+Route22Rival1AfterBattleScript: ; marcelnote - optimized
 	ld a, [wIsInBattle]
 	inc a ; lost battle?
 	jr z, .setScript ; SCRIPT_ROUTE22_DEFAULT
 	ld a, [wSpritePlayerStateData1FacingDirection]
-	and a ; cp SPRITE_FACING_DOWN
-	jr nz, .notFacingDown
+	and a ; SPRITE_FACING_DOWN?
 	ld a, SPRITE_FACING_UP
-	jr .setRivalFacing
-.notFacingDown
+	jr z, .setRivalFacing
 	ld a, SPRITE_FACING_RIGHT
 .setRivalFacing
 	ldh [hSpriteFacingDirection], a
@@ -159,30 +155,20 @@ Route22Rival1AfterBattleScript:
 	call PlaySound
 	callfar Music_RivalAlternateStart
 	ld a, [wSavedCoordIndex]
-	cp 1 ; index of second, lower entry in Route22DefaultScript.Route22RivalBattleCoords
-	jr nz, .exitMovement2
-	call .RivalExit1Script
-	jr .nextScript
-.exitMovement2
-	call .RivalExit2Script
-.nextScript
+	dec a
+	ld de, .ExitMovementData1
+	jr z, .gotExitMovement
+	ld de, .ExitMovementData2
+.gotExitMovement
+	ld a, ROUTE22_RIVAL1
+	ldh [hSpriteIndex], a
+	call MoveSprite
 	ld a, SCRIPT_ROUTE22_RIVAL1_EXIT
 .setScript
 	ld [wRoute22CurScript], a
 	ret
 
-.RivalExit1Script:
-	ld de, Route22Rival1ExitMovementData1
-	jr Route22MoveRival1
-
-.RivalExit2Script:
-	ld de, Route22Rival1ExitMovementData2
-Route22MoveRival1:
-	ld a, ROUTE22_RIVAL1
-	ldh [hSpriteIndex], a
-	jp MoveSprite
-
-Route22Rival1ExitMovementData1:
+.ExitMovementData1:
 	db NPC_MOVEMENT_RIGHT
 	db NPC_MOVEMENT_RIGHT
 	db NPC_MOVEMENT_DOWN
@@ -192,7 +178,7 @@ Route22Rival1ExitMovementData1:
 	db NPC_MOVEMENT_DOWN
 	db -1 ; end
 
-Route22Rival1ExitMovementData2:
+.ExitMovementData2:
 	db NPC_MOVEMENT_UP
 	db NPC_MOVEMENT_RIGHT
 	db NPC_MOVEMENT_RIGHT
@@ -244,24 +230,22 @@ Route22SecondRivalBattleScript:
 	ld [wRoute22CurScript], a
 	ret
 
-Route22Rival2StartBattleScript:
+Route22Rival2StartBattleScript: ; marcelnote - optimized
 	ld a, [wStatusFlags5]
 	bit BIT_SCRIPTED_NPC_MOVEMENT, a
 	ret nz
 	ld a, ROUTE22_RIVAL2
 	ldh [hSpriteIndex], a
 	ld a, [wSavedCoordIndex]
-	cp 1 ; index of second, lower entry in Route22DefaultScript.Route22RivalBattleCoords
-	jr nz, .setPlayerDirectionLeft
+	dec a
 	ld a, PLAYER_DIR_DOWN
-	ld [wPlayerMovingDirection], a
-	ld a, SPRITE_FACING_UP
-	jr .setRivalFacingDirection
-.setPlayerDirectionLeft
+	ld b, SPRITE_FACING_UP
+	jr z, .setFacingDirections
 	ld a, PLAYER_DIR_LEFT
+	ld b, SPRITE_FACING_RIGHT
+.setFacingDirections
 	ld [wPlayerMovingDirection], a
-	ld a, SPRITE_FACING_RIGHT
-.setRivalFacingDirection
+	ld a, b
 	ldh [hSpriteFacingDirection], a
 	call SetSpriteFacingDirectionAndDelay
 	xor a
@@ -295,24 +279,22 @@ Route22Rival2StartBattleScript:
 	ld [wRoute22CurScript], a
 	ret
 
-Route22Rival2AfterBattleScript:
+Route22Rival2AfterBattleScript: ; marcelnote - optimized
 	ld a, [wIsInBattle]
 	inc a ; lost battle?
 	jr z, .setScript ; SCRIPT_ROUTE22_DEFAULT
 	ld a, ROUTE22_RIVAL2
 	ldh [hSpriteIndex], a
 	ld a, [wSavedCoordIndex]
-	cp 1 ; index of second, lower entry in Route22DefaultScript.Route22RivalBattleCoords
-	jr nz, .setPlayerDirectionLeft
+	dec a
 	ld a, PLAYER_DIR_DOWN
-	ld [wPlayerMovingDirection], a
-	ld a, SPRITE_FACING_UP
-	jr .setRivalFacingDirection
-.setPlayerDirectionLeft
+	ld b, SPRITE_FACING_UP
+	jr z, .setFacingDirections
 	ld a, PLAYER_DIR_LEFT
+	ld b, SPRITE_FACING_RIGHT
+.setFacingDirections
 	ld [wPlayerMovingDirection], a
-	ld a, SPRITE_FACING_RIGHT
-.setRivalFacingDirection
+	ld a, b
 	ldh [hSpriteFacingDirection], a
 	call SetSpriteFacingDirectionAndDelay
 	ld a, PAD_CTRL_PAD
@@ -326,32 +308,22 @@ Route22Rival2AfterBattleScript:
 	call PlaySound
 	callfar Music_RivalAlternateStartAndTempo
 	ld a, [wSavedCoordIndex]
-	cp 1 ; index of second, lower entry in Route22DefaultScript.Route22RivalBattleCoords
-	jr nz, .exitMovement2
-	call .RivalExit1Script
-	jr .nextScript
-.exitMovement2
-	call .RivalExit2Script
-.nextScript
+	dec a
+	ld de, .ExitMovementData1
+	jr z, .gotExitMovement
+	ld de, .ExitMovementData2
+.gotExitMovement
+	ld a, ROUTE22_RIVAL2
+	ldh [hSpriteIndex], a
+	call MoveSprite
 	ld a, SCRIPT_ROUTE22_RIVAL2_EXIT
 .setScript
 	ld [wRoute22CurScript], a
 	ret
 
-.RivalExit1Script: ; remove those
-	ld de, Route22Rival2ExitMovementData1
-	jr Route22MoveRival2
-
-.RivalExit2Script:
-	ld de, Route22Rival2ExitMovementData2
-Route22MoveRival2:
-	ld a, ROUTE22_RIVAL2
-	ldh [hSpriteIndex], a
-	jp MoveSprite
-
-Route22Rival2ExitMovementData1:
+.ExitMovementData1:
 	db NPC_MOVEMENT_LEFT
-Route22Rival2ExitMovementData2:
+.ExitMovementData2:
 	db NPC_MOVEMENT_LEFT
 	db NPC_MOVEMENT_LEFT
 	db NPC_MOVEMENT_LEFT
