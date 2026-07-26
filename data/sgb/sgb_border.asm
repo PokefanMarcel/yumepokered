@@ -9,10 +9,14 @@ ENDC
 
 	ds $100
 
-; marcelnote - new 16-color SGB border palettes
+
+ASSERT BorderPalettesData - BorderPalettes == $800
+DEF SGB_BORDER_CHAMPION_COLOR      EQU $4f3c ; RGB 28,25,19 ; inspired by AV Famicom color, replaces grey when champion
+
+BorderPalettesData: ; marcelnote - new 16-color SGB border palettes
 
 ; PAL_SGB1 holds the richer/default background and Mew sticker colors.
-; Index 14 is a source-art marker that renders as gray here.
+BorderPalette1Data:
 IF DEF(_RED)
 	RGB 30,29,29 ; index  0: white
 	RGB 24,05,05 ; index  1: dark red
@@ -67,26 +71,27 @@ ELIF DEF(_BLUE)
 ENDC
 
 ; PAL_SGB2 holds the Bulbasaur, Charmander and Squirtle sticker colors.
-; Since they don't use dark blue, alias it to light blue to optimize tile count.
-	RGB 29,30,31 ; index  0: starter white (#EEF7FF)
-	RGB 14,19,27 ; index  1: dark blue -> light blue (#7299DC)
-	RGB 14,19,27 ; index  2: eye blue (#7299DC)
-	RGB 27,08,03 ; index  3: red mouth (#DC431B)
-	RGB 09,13,08 ; index  4: bulb dark green (#4C6843)
-	RGB 24,24,24 ; index  5: starter gray (#C2C3C7)
-	RGB 31,14,20 ; index  6: mouth pink (#FF77A8)
-	RGB 29,15,01 ; index  7: Charmander orange (#F07B07)
-	RGB 00,00,00 ; index  8: black (#000000)
-	RGB 11,21,15 ; index  9: bulb green (#5EAD7B)
-	RGB 26,10,00 ; index 10: Charmander shadow (#D65200)
+BorderPalette2Data:
+	RGB 29,30,31 ; index  0: white
+	RGB 00,00,00 ; index  1: dark blue -> unused
+	RGB 14,19,27 ; index  2: eye blue
+	RGB 27,08,03 ; index  3: red mouth
+	RGB 09,13,08 ; index  4: bulb dark green
+	RGB 24,24,24 ; index  5: gray
+	RGB 31,14,20 ; index  6: mouth pink
+	RGB 29,15,01 ; index  7: Charmander orange
+	RGB 00,00,00 ; index  8: black
+	RGB 11,21,15 ; index  9: bulb green
+	RGB 26,10,00 ; index 10: Charmander shadow
 	RGB 00,00,00 ; index 11: unused
-	RGB 16,23,22 ; index 12: Bulbasaur teal (#82BEB6)
-	RGB 13,24,28 ; index 13: Squirtle light blue (#6EC7E7)
-	RGB 08,13,16 ; index 14: Squirtle dark blue (#426F86)
-	RGB 10,16,14 ; index 15: Bulbasaur shadow (#538273)
+	RGB 16,23,22 ; index 12: Bulbasaur teal
+	RGB 13,24,28 ; index 13: Squirtle light blue
+	RGB 08,13,16 ; index 14: Squirtle dark blue
+	RGB 10,16,14 ; index 15: Bulbasaur shadow
 
 ; PAL_SGB3 is unused for now.
-	RGB 00,00,00 ; index 0: unused
+BorderPalette3Data:
+	RGB 00,00,00 ; index  0: unused
 	RGB 00,00,00 ; index  1: unused
 	RGB 00,00,00 ; index  2: unused
 	RGB 00,00,00 ; index  3: unused
@@ -106,6 +111,7 @@ ENDC
 ; PAL_SGB4 reduces the border pattern to gray, white, and the version highlight color.
 ; Dark blue, dark green, Yume pink, and dark red source colors map to gray.
 ; The source-art markers map to the version highlight color.
+BorderPalette4Data:
 IF DEF(_RED)
 	RGB 29,30,31 ; index  0: white
 	RGB 24,24,24 ; index  1: dark red -> gray
@@ -116,7 +122,7 @@ IF DEF(_RED)
 	RGB 24,24,24 ; index  6: Yume pink -> gray
 	RGB 30,26,28 ; index  7: light pink (Mew skin)
 	RGB 00,00,00 ; index  8: black
-	RGB 14,19,27 ; index  9: light blue
+	RGB 00,00,00 ; index  9: unused
 	RGB 26,23,25 ; index 10: dark pink (Mew shadow)
 	RGB 00,00,00 ; index 11: unused
 	RGB 00,00,00 ; index 12: unused
@@ -133,7 +139,7 @@ ELIF DEF(_GREEN)
 	RGB 24,24,24 ; index  6: Yume pink -> gray
 	RGB 30,26,28 ; index  7: light pink (Mew skin)
 	RGB 00,00,00 ; index  8: black
-	RGB 14,19,27 ; index  9: light blue
+	RGB 00,00,00 ; index  9: unused
 	RGB 26,23,25 ; index 10: dark pink (Mew shadow)
 	RGB 00,00,00 ; index 11: unused
 	RGB 00,00,00 ; index 12: unused
@@ -150,7 +156,7 @@ ELIF DEF(_BLUE)
 	RGB 24,24,24 ; index  6: Yume pink -> gray
 	RGB 30,26,28 ; index  7: light pink (Mew skin)
 	RGB 00,00,00 ; index  8: black
-	RGB 14,19,27 ; index  9: light blue
+	RGB 00,00,00 ; index  9: unused
 	RGB 26,23,25 ; index 10: dark pink (Mew shadow)
 	RGB 00,00,00 ; index 11: unused
 	RGB 00,00,00 ; index 12: unused

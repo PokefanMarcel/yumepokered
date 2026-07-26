@@ -476,7 +476,7 @@ LoadSGB:
 	and a
 	ret nz
 	; marcelnote - dynamic SGB border
-	; Fetch sticker events before the first border transfer.
+	; Fetch border appearance events before the first transfer.
 	; The full save still loads later from the main menu, as in vanilla.
 	call LoadSGBBorderEventsFromSave
 	di
@@ -506,17 +506,17 @@ LoadSGB:
 	jp SendSGBPacket
 
 ; Cosmetic boot-time save probe for the SGB border. This intentionally does not
-; load or validate the full save: if SRAM is bad, the worst case is a wrong
-; sticker on the intro border until the real save load runs later.
+; load or validate the full save: if SRAM is bad, the worst case is an incorrect
+; border appearance until the real save load runs later.
 LoadSGBBorderEventsFromSave:
-	ResetEvents EVENT_BEAT_MEW, EVENT_GOT_STARTER
+	ResetEvents EVENT_BEAT_MEW, EVENT_GOT_STARTER, EVENT_BECAME_CHAMPION
 	ld a, RAMG_SRAM_ENABLE
 	ld [rRAMG], a
 	ld a, BMODE_ADVANCED
 	ld [rBMODE], a
 	ASSERT BANK("Save Data") == BMODE_ADVANCED
 	ld [rRAMB], a
-	; Seed each event that controls a boot-time border sticker.
+	; Seed each event that controls the boot-time border appearance.
 	ld a, [sMainData + (wEventFlags - wMainDataStart) + (EVENT_BEAT_MEW / 8)]
 	bit EVENT_BEAT_MEW % 8, a
 	jr z, .checkStarter
@@ -524,10 +524,15 @@ LoadSGBBorderEventsFromSave:
 .checkStarter
 	ld a, [sMainData + (wEventFlags - wMainDataStart) + (EVENT_GOT_STARTER / 8)]
 	bit EVENT_GOT_STARTER % 8, a
-	jr z, .done
+	jr z, .checkChampion
 	SetEvent EVENT_GOT_STARTER
 	ld a, [sMainData + (wPlayerStarter - wMainDataStart)]
 	ld [wPlayerStarter], a
+.checkChampion
+	ld a, [sMainData + (wEventFlags - wMainDataStart) + (EVENT_BECAME_CHAMPION / 8)]
+	bit EVENT_BECAME_CHAMPION % 8, a
+	jr z, .done
+	SetEvent EVENT_BECAME_CHAMPION
 .done
 	ld a, BMODE_SIMPLE
 	ld [rBMODE], a
@@ -674,6 +679,9 @@ CopyGfxToSuperNintendoVRAM:
 	jr z, .patchStarterTiles
 	cp SGB_TRANSFER_PCT
 	jr nz, .skipStickerPatches
+; Replace the shared border background with the Champion beige/gold.
+	CheckEvent EVENT_BECAME_CHAMPION
+	call nz, PatchSGBBorderChampionPalettes
 ; Apply small tile/attribute replacements to the staged PCT_TRN data.
 	CheckEvent EVENT_GOT_STARTER
 	ld hl, SGBBorderStarterStickerTilemapPatch
@@ -756,6 +764,30 @@ ApplySGBBorderStickerPatch:
 	ld [de], a ; attributes
 	dec b
 	jr nz, .loop
+	ret
+
+; replace background grey with beige/gold
+PatchSGBBorderChampionPalettes:
+	ld de, SGB_BORDER_CHAMPION_COLOR
+	ld a, e
+	ld hl, vChars1 + (BorderPalette1Data - BorderPalettes) + 5 * 2
+	call .patchColor
+	ld hl, vChars1 + (BorderPalette1Data - BorderPalettes) + 14 * 2
+	call .patchColor
+	ld hl, vChars1 + (BorderPalette2Data - BorderPalettes) + 5 * 2
+	call .patchColor
+	ld hl, vChars1 + (BorderPalette4Data - BorderPalettes) + 1 * 2
+	call .patchColor
+	ld hl, vChars1 + (BorderPalette4Data - BorderPalettes) + 3 * 2
+	call .patchColor
+	ld hl, vChars1 + (BorderPalette4Data - BorderPalettes) + 4 * 2
+	call .patchColor
+	ld hl, vChars1 + (BorderPalette4Data - BorderPalettes) + 5 * 2
+	call .patchColor
+	ld hl, vChars1 + (BorderPalette4Data - BorderPalettes) + 6 * 2
+.patchColor
+	ld [hli], a
+	ld [hl], d
 	ret
 
 SendMltReq1Packet:
