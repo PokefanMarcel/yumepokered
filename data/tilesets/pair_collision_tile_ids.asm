@@ -9,6 +9,7 @@ TilePairCollisionsLand::
 	db CAVERN,   $41, $20 ; marcelnote - new, ground to floor
 	db CAVERN,   $2A, $05 ; marcelnote - ground to floor
 	db CAVERN,   $05, $21 ; marcelnote - carpet to floor
+	db CAVERN,   $18, $41 ; marcelnote - stairs to elevated floor
 	db SAFARI,   $30, $2E ; marcelnote - new tileset from FOREST
 	db SAFARI,   $52, $2E
 	db SAFARI,   $55, $2E
