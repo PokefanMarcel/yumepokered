@@ -6797,8 +6797,8 @@ _LoadTrainerPic: ; marcelnote - refactored for removing sprite compression
 ; unreferenced : marcelnote - removed
 ;ResetCryModifiers:
 ;	xor a
-;;	ld [wFrequencyModifier], a
-;;	ld [wTempoModifier], a
+;	ld [wFrequencyModifier], a
+;	ld [wTempoModifier], a
 ;	jp PlaySound
 
 

@@ -934,7 +934,7 @@ LoadTileBlockMap:: ; marcelnote - optimized
 	ld h, a ; hl += MAP_BORDER * 2
 	dec b
 	jr nz, .rowLoop
-.northConnection
+; north connection
 	ld a, [wNorthConnectedMap]
 	cp $ff
 	jr z, .southConnection
@@ -1119,7 +1119,7 @@ IsSpriteInFrontOfPlayer::
 .gotRange
 	lb bc, $3c, $40 ; Y and X position of player sprite
 	ld a, [wSpritePlayerStateData1FacingDirection]
-.checkIfPlayerFacingUp
+; check if player facing up
 	cp SPRITE_FACING_UP
 	jr nz, .checkIfPlayerFacingDown
 	ld a, b
@@ -1382,7 +1382,7 @@ LoadCurrentMapView:: ; marcelnote - optimized
 ; Point hl at the screen-sized tile area inside wSurroundingTiles, then copy it
 ; to wTileMap for V-blank transfer.
 	ld hl, wSurroundingTiles
-.adjustForYCoordWithinTileBlock
+; adjust for Y coord within tile block
 	ld a, [wYBlockCoord]
 	and a
 	jr z, .adjustForXCoordWithinTileBlock
@@ -1882,7 +1882,6 @@ CollisionCheckOnWater::
 	jr nz, .noCollision ; keep surfing if it's not the boarding platform tile
 	jr .stopSurfing ; if it is the boarding platform tile, stop surfing
 
-; function to run the current map's script
 RunMapScript::
 	push hl
 	push de
@@ -1897,8 +1896,8 @@ RunMapScript::
 	pop de
 	pop hl
 	call RunNPCMovementScript
-	ld a, [wCurMap] ; current map number
-	call SwitchToMapRomBank ; change to the ROM bank the map's data is in
+	ld a, [wCurMap]
+	call SwitchToMapRomBank
 	ld hl, wCurrentMapScriptFlags ; marcelnote - smarter block replacing
 	set BIT_REPLACE_TILE_BLOCK_BATCHING, [hl]
 	ld hl, wCurMapScriptPtr

@@ -63,8 +63,8 @@ DisplayPokemartDialogue_::
 	ld a, ITEMLISTMENU
 	ld [wListMenuID], a
 	call DisplayListMenuID
-	jp c, .returnToMainPokemartMenu ; player closed the menu
-.confirmItemSale ; if the player is trying to sell a specific item
+	jp c, .returnToMainPokemartMenu ; if the player closed the menu
+; if the player is trying to sell a specific item, confirm the sale
 	ld hl, wStatusFlags5
 	set BIT_NO_TEXT_DELAY, [hl]
 	call IsKeyItem ; item already loaded in [wCurItem]?
