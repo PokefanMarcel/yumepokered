@@ -103,7 +103,7 @@ _SilphCo11FGiovanniText::
 	line "Déguste!"
 	done
 
-_SilphCo10FGiovanniILostAgainText::
+_SilphCo11FGiovanniILostAgainText::
 	text "Arrgh!!"
 	line "Encore perdu!?"
 	prompt

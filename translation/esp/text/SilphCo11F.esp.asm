@@ -78,7 +78,7 @@ _SilphCo11FGiovanniText::
 	line "mi ira!"
 	done
 
-_SilphCo10FGiovanniILostAgainText::
+_SilphCo11FGiovanniILostAgainText::
 	text "¡¡Arr!!"
 	line "¿¡He vuelto a"
 	cont "perder!?"
