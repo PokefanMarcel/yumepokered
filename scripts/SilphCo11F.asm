@@ -161,7 +161,7 @@ SilphCo11FSetPlayerAndSpriteFacingDirectionScript:
 
 SilphCo11FGiovanniAfterBattleScript:
 	ld a, [wIsInBattle]
-	inc a ; lost battle?
+	inc a ; LOST_BATTLE?
 	jr z, .setScript ; SCRIPT_SILPHCO11F_DEFAULT
 	ld a, [wSavedCoordIndex]
 	cp 1 ; index of second, upper-right entry in SilphCo11FDefaultScript.PlayerCoordsArray

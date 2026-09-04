@@ -101,7 +101,7 @@ ChampionsRoomPlayerMovingToRivalScript:
 
 ChampionsRoomRivalDefeatedScript:
 	ld a, [wIsInBattle]
-	inc a ; lost battle?
+	inc a ; LOST_BATTLE?
 	jr z, .setScript ; SCRIPT_CHAMPIONSROOM_DEFAULT
 	call UpdateSprites
 	SetEvent EVENT_BEAT_CHAMPION_RIVAL

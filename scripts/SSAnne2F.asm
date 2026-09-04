@@ -115,7 +115,7 @@ SSAnne2FRivalStartBattleScript:
 
 SSAnne2FRivalAfterBattleScript:
 	ld a, [wIsInBattle]
-	inc a ; lost battle?
+	inc a ; LOST_BATTLE?
 	jr z, .setScript ; SCRIPT_SSANNE2F_DEFAULT
 	call SSAnne2FSetFacingDirectionScript
 	ld a, PAD_CTRL_PAD

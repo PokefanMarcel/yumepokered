@@ -30,7 +30,7 @@ CeruleanGym_ScriptPointers:
 
 CeruleanGymMistyPostBattleScript:
 	ld a, [wIsInBattle]
-	inc a ; lost battle?
+	inc a ; LOST_BATTLE?
 	jr z, CeruleanGymSetScript ; SCRIPT_CERULEANGYM_DEFAULT
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a

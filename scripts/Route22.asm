@@ -132,7 +132,7 @@ Route22Rival1StartBattleScript: ; marcelnote - optimized
 
 Route22Rival1AfterBattleScript: ; marcelnote - optimized
 	ld a, [wIsInBattle]
-	inc a ; lost battle?
+	inc a ; LOST_BATTLE?
 	jr z, .setScript ; SCRIPT_ROUTE22_DEFAULT
 	ld a, [wSpritePlayerStateData1FacingDirection]
 	and a ; SPRITE_FACING_DOWN?
@@ -281,7 +281,7 @@ Route22Rival2StartBattleScript: ; marcelnote - optimized
 
 Route22Rival2AfterBattleScript: ; marcelnote - optimized
 	ld a, [wIsInBattle]
-	inc a ; lost battle?
+	inc a ; LOST_BATTLE?
 	jr z, .setScript ; SCRIPT_ROUTE22_DEFAULT
 	ld a, ROUTE22_RIVAL2
 	ldh [hSpriteIndex], a

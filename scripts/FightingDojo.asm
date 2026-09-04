@@ -57,7 +57,7 @@ FightingDojoDefaultScript:
 
 FightingDojoKarateMasterPostBattleScript:
 	ld a, [wIsInBattle]
-	inc a ; lost battle?
+	inc a ; LOST_BATTLE?
 	jr z, .setScript ; SCRIPT_FIGHTINGDOJO_DEFAULT
 	ld a, [wSavedCoordIndex]
 	and a ; nz if the player was at (4, 3), left of the Karate Master

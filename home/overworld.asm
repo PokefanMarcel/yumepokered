@@ -411,7 +411,7 @@ OverworldLoopLessDelay::
 	call DelayFrames
 	jp EnterMap
 .allPokemonFainted
-	ld a, $ff
+	ld a, LOST_BATTLE
 	ld [wIsInBattle], a
 	call RunMapScript
 	jp HandleBlackOut

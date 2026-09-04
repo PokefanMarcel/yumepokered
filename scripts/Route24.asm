@@ -54,7 +54,7 @@ Route24PlayerMovingScript:
 
 Route24AfterRocketBattleScript:
 	ld a, [wIsInBattle]
-	inc a ; lost battle?
+	inc a ; LOST_BATTLE?
 	jr z, .setScript ; SCRIPT_ROUTE24_DEFAULT
 	call UpdateSprites
 	ld a, PAD_CTRL_PAD

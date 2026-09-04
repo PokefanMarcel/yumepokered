@@ -67,7 +67,7 @@ MtMoonB2FCheckGotAFossil:
 
 MtMoonB2FDefeatedSuperNerdScript:
 	ld a, [wIsInBattle]
-	inc a ; lost battle?
+	inc a ; LOST_BATTLE?
 	jr z, .setScript ; SCRIPT_MTMOONB2F_DEFAULT
 	call UpdateSprites
 	call Delay3

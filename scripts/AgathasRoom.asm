@@ -88,7 +88,7 @@ AgathasRoomPlayerMovingScript:
 AgathasRoomAgathaEndBattleScript:
 	call EndTrainerBattle ; resets script to default
 	ld a, [wIsInBattle]
-	inc a ; lost battle?
+	inc a ; LOST_BATTLE?
 	ret z
 	ld a, TEXT_AGATHASROOM_AGATHA
 	ldh [hTextID], a

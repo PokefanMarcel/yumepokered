@@ -36,7 +36,7 @@ ViridianGymDefaultScript: ; marcelnote - modified spinners engine
 
 ViridianGymGiovanniPostBattleScript:
 	ld a, [wIsInBattle]
-	inc a ; lost battle?
+	inc a ; LOST_BATTLE?
 	jr z, ViridianGymSetScript ; SCRIPT_VIRIDIANGYM_DEFAULT
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a

@@ -47,7 +47,7 @@ SaffronGym_ScriptPointers:
 
 SaffronGymSabrinaPostBattleScript:
 	ld a, [wIsInBattle]
-	inc a ; lost battle?
+	inc a ; LOST_BATTLE?
 	jr z, SaffronGymSetScript ; SCRIPT_SAFFRONGYM_DEFAULT
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a

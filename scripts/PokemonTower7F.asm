@@ -17,7 +17,7 @@ PokemonTower7FEndBattleScript:
 	ld hl, wMiscFlags
 	res BIT_SEEN_BY_TRAINER, [hl]
 	ld a, [wIsInBattle]
-	inc a ; lost battle?
+	inc a ; LOST_BATTLE?
 	jr z, .setScript ; SCRIPT_POKEMONTOWER7F_DEFAULT
 	call EndTrainerBattle
 	ld a, PAD_CTRL_PAD

@@ -30,7 +30,7 @@ PewterGym_ScriptPointers:
 
 PewterGymBrockPostBattleScript:
 	ld a, [wIsInBattle]
-	inc a ; lost battle?
+	inc a ; LOST_BATTLE?
 	jr z, PewterGymSetScript ; SCRIPT_PEWTERGYM_DEFAULT
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a

@@ -34,7 +34,7 @@ Route12DefaultScript:
 
 Route12SnorlaxPostBattleScript:
 	ld a, [wIsInBattle]
-	inc a ; lost battle?
+	inc a ; LOST_BATTLE?
 	jr z, .setScript ; SCRIPT_ROUTE12_DEFAULT
 	call UpdateSprites
 	ld a, [wBattleResult]

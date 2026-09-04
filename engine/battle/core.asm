@@ -6208,7 +6208,7 @@ LoadEnemyMonData:
 	ld b, [hl]
 	jr nz, .storeDVs
 	ld a, [wIsInBattle]
-	cp $2 ; is it a trainer battle?
+	cp TRAINER_BATTLE
 ; fixed DVs for trainer mon
 	ld a, ATKDEFDV_TRAINER
 	ld b, SPDSPCDV_TRAINER
@@ -6231,7 +6231,7 @@ LoadEnemyMonData:
 	call CalcStats
 	pop hl
 	ld a, [wIsInBattle]
-	cp $2 ; is it a trainer battle?
+	cp TRAINER_BATTLE
 	jr z, .copyHPAndStatusFromPartyData
 	ld a, [wEnemyBattleStatus3]
 	bit TRANSFORMED, a ; is enemy mon transformed?
@@ -6274,7 +6274,7 @@ LoadEnemyMonData:
 	ld [de], a
 	inc de
 	ld a, [wIsInBattle]
-	cp $2 ; is it a trainer battle?
+	cp TRAINER_BATTLE
 	jr nz, .copyStandardMoves
 ; if it's a trainer battle, copy moves from enemy party data
 	ld hl, wEnemyMon1Moves
@@ -6674,12 +6674,12 @@ InitBattleCommon:
 	call CopySpriteToHL
 	ld a, $ff
 	ld [wEnemyMonPartyPos], a
-	ld a, 2
+	ld a, TRAINER_BATTLE
 	ld [wIsInBattle], a
 	jp _InitBattleCommon
 
 InitWildBattle:
-	ld a, 1
+	ld a, WILD_BATTLE
 	ld [wIsInBattle], a
 	call LoadEnemyMonData
 	call DoBattleTransitionAndInitBattleVariables

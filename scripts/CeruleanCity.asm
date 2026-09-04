@@ -20,7 +20,7 @@ CeruleanCity_ScriptPointers:
 
 CeruleanCityRocketDefeatedScript:
 	ld a, [wIsInBattle]
-	inc a ; lost battle?
+	inc a ; LOST_BATTLE?
 	jr z, CeruleanCitySetScript ; SCRIPT_CERULEANCITY_DEFAULT
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
@@ -160,7 +160,7 @@ CeruleanCityRivalBattleScript:
 
 CeruleanCityRivalDefeatedScript:
 	ld a, [wIsInBattle]
-	inc a ; lost battle?
+	inc a ; LOST_BATTLE?
 	jp z, CeruleanCitySetScript ; SCRIPT_CERULEANCITY_DEFAULT
 	call CeruleanCityFaceRivalScript
 	ld a, PAD_CTRL_PAD

@@ -35,7 +35,7 @@ Route16DefaultScript:
 
 Route16SnorlaxPostBattleScript:
 	ld a, [wIsInBattle]
-	inc a ; lost battle?
+	inc a ; LOST_BATTLE?
 	jr z, .setScript ; SCRIPT_ROUTE16_DEFAULT
 	call UpdateSprites
 	ld a, [wBattleResult]

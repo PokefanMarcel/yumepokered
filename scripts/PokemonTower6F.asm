@@ -43,7 +43,7 @@ PokemonTower6FMarowakCoords:
 
 PokemonTower6FMarowakBattleScript:
 	ld a, [wIsInBattle]
-	inc a ; lost battle?
+	inc a ; LOST_BATTLE?
 	jr z, .setScript ; SCRIPT_POKEMONTOWER6F_DEFAULT
 	ld a, PAD_BUTTONS | PAD_CTRL_PAD
 	ld [wJoyIgnore], a
