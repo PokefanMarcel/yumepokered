@@ -39,6 +39,7 @@ Run setup and leave the default settings. At the "**Select Packages**" step, cho
 - `make`
 - `git`
 - `gcc-core`
+- `libpng-devel`
 
 Double click on the text that says "**Skip**" next to each package to select the most recent version to install.
 
@@ -67,6 +68,12 @@ Install [**Homebrew**](https://brew.sh/). Follow the official instructions.
 
 Open **Terminal** and prepare to enter commands.
 
+Install the library required by the PNG conversion tools:
+
+```bash
+brew install libpng pkg-config
+```
+
 Then follow the [**rgbds** instructions](https://rgbds.gbdev.io/install#pre-built) for macOS to install **rgbds 1.0.3**.
 
 Now you're ready to [build **pokered**](#build-pokered).
@@ -81,7 +88,7 @@ Open **Terminal** and enter the following commands, depending on which distro yo
 To install the software required for **pokered**:
 
 ```bash
-sudo apt-get install make gcc git
+sudo apt-get install make gcc git libpng-dev pkg-config
 ```
 
 Then follow the [**rgbds** instructions](https://rgbds.gbdev.io/install#building-from-source) to build **rgbds 1.0.3** from source.
@@ -91,7 +98,7 @@ Then follow the [**rgbds** instructions](https://rgbds.gbdev.io/install#building
 To install the software required for **pokered**:
 
 ```bash
-sudo zypper install make gcc git
+sudo zypper install make gcc git libpng16-devel pkg-config
 ```
 
 Then follow the [**rgbds** instructions](https://rgbds.gbdev.io/install#building-from-source) to build **rgbds 1.0.3** from source.
@@ -101,7 +108,7 @@ Then follow the [**rgbds** instructions](https://rgbds.gbdev.io/install#building
 To install the software required for **pokered**:
 
 ```bash
-sudo pacman -S make gcc git rgbds
+sudo pacman -S make gcc git libpng pkgconf rgbds
 ```
 
 If you want to compile and install **rgbds** yourself instead, then follow the [**rgbds** instructions](https://rgbds.gbdev.io/install#building-from-source) to build **rgbds 1.0.3** from source.
@@ -111,7 +118,7 @@ If you want to compile and install **rgbds** yourself instead, then follow the [
 To install the software required for **pokered**:
 
 ```bash
-pkg install make clang git sed
+pkg install make clang git sed libpng pkg-config
 ```
 
 To install **rgbds**:
@@ -129,6 +136,8 @@ If your distro is not listed here, try to find the required software in its repo
 - `make`
 - `gcc` (or `clang`)
 - `git`
+- `libpng` development files
+- `pkg-config` (or `libpng-config`)
 - `rgbds`
 
 If `rgbds` is not available, you'll need to follow the [**rgbds** instructions](https://rgbds.gbdev.io/install#building-from-source) to build **rgbds 1.0.3** from source.

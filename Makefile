@@ -189,7 +189,10 @@ rgbdscheck.o: rgbdscheck.asm
 # This has to happen before the rules are processed, since that's when scan_includes is run.
 ifeq (,$(filter clean tidy tools,$(MAKECMDGOALS)))
 
-$(info $(shell $(MAKE) -C tools))
+tools_status := $(shell $(MAKE) -C tools 1>&2; echo $$?)
+ifneq ($(tools_status),0)
+$(error Failed to build required tools; check the errors above and INSTALL.md for dependencies)
+endif
 
 # The dep rules have to be explicit or else missing files won't be reported.
 # As a side effect, they're evaluated immediately instead of when the rule is invoked.
