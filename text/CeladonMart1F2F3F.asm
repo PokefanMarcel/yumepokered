@@ -98,7 +98,7 @@ _CeladonMart3FClerkTM18NoRoomText::
 	line "of items!"
 	done
 
-_CeladonMart3FGameBoyKid1Text::
+_CeladonMart3FGameboyKid1Text::
 	text "Captured #MON"
 	line "are registered"
 	cont "with an ID No."
@@ -108,7 +108,7 @@ _CeladonMart3FGameBoyKid1Text::
 	cont "caught it!"
 	done
 
-_CeladonMart3FGameBoyKid2Text::
+_CeladonMart3FGameboyKid2Text::
 	text "All right!"
 
 	para "My buddy's going"
@@ -117,7 +117,7 @@ _CeladonMart3FGameBoyKid2Text::
 	cont "GRAVELER!"
 	done
 
-_CeladonMart3FGameBoyKid3Text::
+_CeladonMart3FGameboyKid3Text::
 	text "Come on GRAVELER!"
 
 	para "I love GRAVELER!"

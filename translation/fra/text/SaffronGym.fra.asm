@@ -83,7 +83,7 @@ _SaffronGymSabrinaTM46NoRoomText::
 	line "est plein!"
 	done
 
-_SaffronGymGuideChampInMakingText::
+_SaffronGymGymGuideChampInMakingText::
 	text_asm
 	ld a, [wStatusFlags4]
 	bit BIT_IS_GIRL, a
@@ -130,7 +130,7 @@ _SaffronGymGuideChampInMakingText::
 	cont "un coup!"
 	done
 
-_SaffronGymGuideBeatSabrinaText::
+_SaffronGymGymGuideBeatSabrinaText::
 	text "Pouvoirs psy?"
 	line "Hmmm..."
 

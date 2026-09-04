@@ -302,15 +302,15 @@ VermilionCitySailor3Text: ; marcelnote - new for ferry
 	db -1 ; end
 
 .WelcomeToFerriesText:
-	text_far _MandarinIslandSailorWelcomeToFerriesText
+	text_far _VermilionCitySailor3WelcomeToFerriesText
 	text_end
 
 .YouNeedPassText:
-	text_far _MandarinIslandSailorYouNeedPassText
+	text_far _VermilionCitySailor3YouNeedPassText
 	text_end
 
 .ShowedPassText:
-	text_far _MandarinIslandSailorShowedPassText
+	text_far _VermilionCitySailor3ShowedPassText
 	text_end
 
 VermilionCityCooltrainerFText: ; marcelnote - new

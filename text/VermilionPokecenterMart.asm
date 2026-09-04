@@ -1,4 +1,4 @@
-; marcelnote - merged Lavender Pokecenter and Mart
+; marcelnote - merged Vermilion Pokecenter and Mart
 _VermilionPokecenterFishingGuruText::
 	text "Even if they are"
 	line "the same level,"

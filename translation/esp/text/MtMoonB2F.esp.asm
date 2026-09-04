@@ -34,7 +34,7 @@ _MtMoonB2FSuperNerdOkIllShareText::
 	cont "¡Los compartiré!"
 	prompt
 
-_MtMoonB2fSuperNerdEachTakeOneText::
+_MtMoonB2FSuperNerdEachTakeOneText::
 	text "¡Uno para cada"
 	line "uno! ¡No seamos"
 	cont "avariciosos!"

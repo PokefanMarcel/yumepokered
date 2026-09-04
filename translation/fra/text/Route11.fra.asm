@@ -77,7 +77,7 @@ _Route11Youngster2EndBattleText::
 	cont "nuls! Beuh..."
 	prompt
 
-_Route11Youngster2AfterBattleText5::
+_Route11Youngster2AfterBattleText::
 	text "Laisse-moi!"
 	done
 

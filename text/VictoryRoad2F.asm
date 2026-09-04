@@ -104,7 +104,7 @@ _VictoryRoad2FGrampsHaveYouTestedText:: ; marcelnote - new
 	cont "balance."
 	done
 
-_VictoryRoad2FGrampsGiveHimonleeText:: ; marcelnote - new
+_VictoryRoad2FGrampsGiveHitmonleeText:: ; marcelnote - new
 	text "I see you've chosen"
 	line "defense and"
 	cont "fortitude before."
@@ -115,7 +115,7 @@ _VictoryRoad2FGrampsGiveHimonleeText:: ; marcelnote - new
 	cont "warrior."
 	prompt
 
-_VictoryRoad2FGrampsGiveHimonchanText:: ; marcelnote - new
+_VictoryRoad2FGrampsGiveHitmonchanText:: ; marcelnote - new
 	text "I see you've chosen"
 	line "offense and"
 	cont "speed before."

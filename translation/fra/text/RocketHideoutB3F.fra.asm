@@ -17,18 +17,18 @@ _RocketHideoutB3FRocket1AfterBattleText::
 	cont "quelque part..."
 	done
 
-_RocketHideout3BattleText::
+_RocketHideoutB3FRocket2BattleText::
 	text "On nous a"
 	line "prévenus de ton"
 	cont "arrivée!"
 	done
 
-_RocketHideout3EndBattleText3::
+_RocketHideoutB3FRocket2EndBattleText::
 	text "Quoi?"
 	line "J'ai perdu? NON!"
 	prompt
 
-_RocketHide3AfterBattleText3::
+_RocketHideoutB3FRocket2AfterBattleText::
 	text "Allez, continue!"
 	line "Mais il te faut"
 	cont "la CLE ASC. pour"

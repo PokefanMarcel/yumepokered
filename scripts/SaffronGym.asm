@@ -353,11 +353,11 @@ SaffronGymGymGuideText: ; marcelnote - optimized
 	ret
 
 .ChampInMakingText:
-	text_far _SaffronGymGuideChampInMakingText
+	text_far _SaffronGymGymGuideChampInMakingText
 	text_end
 
 .BeatSabrinaText:
-	text_far _SaffronGymGuideBeatSabrinaText
+	text_far _SaffronGymGymGuideBeatSabrinaText
 	text_end
 
 SaffronGymChanneler1BattleText:

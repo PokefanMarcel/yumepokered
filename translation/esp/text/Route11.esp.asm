@@ -78,7 +78,7 @@ _Route11Youngster2EndBattleText::
 	cont "perdieron!"
 	prompt
 
-_Route11Youngster2AfterBattleText5::
+_Route11Youngster2AfterBattleText::
 	text "¿Qué quieres?"
 	line "¡Déjame en paz!"
 	done

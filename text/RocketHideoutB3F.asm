@@ -16,18 +16,18 @@ _RocketHideoutB3FRocket1AfterBattleText::
 	cont "here somewhere."
 	done
 
-_RocketHideout3BattleText::
+_RocketHideoutB3FRocket2BattleText::
 	text "We got word from"
 	line "upstairs that you"
 	cont "were coming!"
 	done
 
-_RocketHideout3EndBattleText3::
+_RocketHideoutB3FRocket2EndBattleText::
 	text "What?"
 	line "I lost? No!"
 	prompt
 
-_RocketHide3AfterBattleText3::
+_RocketHideoutB3FRocket2AfterBattleText::
 	text "Go ahead and go!"
 	line "But, you need the"
 	cont "LIFT KEY to run"

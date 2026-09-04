@@ -34,7 +34,7 @@ _PokemonTower1FChannelerText::
 	cont "esprits!"
 	done
 
-_PokemonTower1FLittleBoyText:: ; marcelnote - added 7FChanneler
+_PokemonTower1FLittleBoyText:: ; marcelnote - added 1F little boy
 	text "Au dernier étage,"
 	line "j'ai vu une dame"
 	cont "qui parlait avec"

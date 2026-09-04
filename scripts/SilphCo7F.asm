@@ -185,7 +185,7 @@ SilphCo7F_TextPointers:
 	dw_const SilphCo7FSilphWorkerM1Text,      TEXT_SILPHCO7F_SILPH_WORKER_M1
 	dw_const SilphCo7FSilphWorkerM2Text,      TEXT_SILPHCO7F_SILPH_WORKER_M2
 	dw_const SilphCo7FSilphWorkerM3Text,      TEXT_SILPHCO7F_SILPH_WORKER_M3
-	dw_const SilphCo7FSilphWorkerM4Text,      TEXT_SILPHCO7F_SILPH_WORKER_M4
+	dw_const SilphCo7FSilphWorkerFText,       TEXT_SILPHCO7F_SILPH_WORKER_F
 	dw_const SilphCo7FRocket1Text,            TEXT_SILPHCO7F_ROCKET1
 	dw_const SilphCo7FScientistText,          TEXT_SILPHCO7F_SCIENTIST
 	dw_const SilphCo7FRocket2Text,            TEXT_SILPHCO7F_ROCKET2
@@ -283,7 +283,7 @@ SilphCo7FSilphWorkerM3Text:
 	text_far _SilphCo7FSilphWorkerM3YouChasedOffTeamRocketText
 	text_end
 
-SilphCo7FSilphWorkerM4Text:
+SilphCo7FSilphWorkerFText:
 	text_asm
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
 	ld hl, .SafeAtLastText
@@ -292,11 +292,11 @@ SilphCo7FSilphWorkerM4Text:
 	ret
 
 .ItsReallyDangerousHereText
-	text_far _SilphCo7FSilphWorkerM4ItsReallyDangerousHereText
+	text_far _SilphCo7FSilphWorkerFItsReallyDangerousHereText
 	text_end
 
 .SafeAtLastText
-	text_far _SilphCo7FSilphWorkerM4SafeAtLastText
+	text_far _SilphCo7FSilphWorkerFSafeAtLastText
 	text_end
 
 SilphCo7FRocket1Text:

@@ -66,14 +66,14 @@ _SilphCo7FSilphWorkerM3YouChasedOffTeamRocketText::
 	cont "all by yourself?"
 	done
 
-_SilphCo7FSilphWorkerM4ItsReallyDangerousHereText::
+_SilphCo7FSilphWorkerFItsReallyDangerousHereText::
 	text "You! It's really"
 	line "dangerous here!"
 	cont "You came to save"
 	cont "me? You can't!"
 	done
 
-_SilphCo7FSilphWorkerM4SafeAtLastText::
+_SilphCo7FSilphWorkerFSafeAtLastText::
 	text "Safe at last!"
 	line "Oh thank you!"
 	done

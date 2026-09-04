@@ -73,7 +73,7 @@ _SilphCo7FSilphWorkerM3YouChasedOffTeamRocketText::
 	cont "tú solo?"
 	done
 
-_SilphCo7FSilphWorkerM4ItsReallyDangerousHereText::
+_SilphCo7FSilphWorkerFItsReallyDangerousHereText::
 	text "¡Oye! ¡Este lugar"
 	line "es muy peligroso!"
 	cont "¿Has venido a"
@@ -81,7 +81,7 @@ _SilphCo7FSilphWorkerM4ItsReallyDangerousHereText::
 	cont "no puedes!"
 	done
 
-_SilphCo7FSilphWorkerM4SafeAtLastText::
+_SilphCo7FSilphWorkerFSafeAtLastText::
 	text "¡Por fin a salvo!"
 	line "¡Muchas gracias!"
 	done
@@ -222,4 +222,3 @@ _SilphCo7FRivalGoodLuckToYouText::
 	cont "¡No sudes tanto!"
 	cont "¡Hasta luego!"
 	done
-

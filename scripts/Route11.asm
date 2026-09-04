@@ -139,7 +139,7 @@ Route11Youngster2EndBattleText:
 	text_end
 
 Route11Youngster2AfterBattleText:
-	text_far _Route11Youngster2AfterBattleText5
+	text_far _Route11Youngster2AfterBattleText
 	text_end
 
 Route11Gambler3Text:

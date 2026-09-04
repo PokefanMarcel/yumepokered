@@ -187,7 +187,7 @@ _CinnabarLabFossilRoomScientist1TakesFossilText::
 	text "!"
 	prompt
 
-_CinnabarLabFossilRoomScientist1GoForAWalkText2::
+_CinnabarLabFossilRoomScientist1GoForAWalkAfterTakingFossilText::
 	text "Ca va prendre un"
 	line "peu de temps!"
 

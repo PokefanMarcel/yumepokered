@@ -109,10 +109,10 @@ _VictoryRoad2FGrampsHaveYouTestedText:: ; marcelnote - new
 	done
 
 ; TODO - Spanish translation
-_VictoryRoad2FGrampsGiveHimonleeText:: ; marcelnote - new
 	text "I see you've chosen"
 	line "defense and"
 	cont "fortitude before."
+_VictoryRoad2FGrampsGiveHitmonleeText:: ; marcelnote - new
 
 	para "To balance your"
 	line "training, I offer"
@@ -121,10 +121,10 @@ _VictoryRoad2FGrampsGiveHimonleeText:: ; marcelnote - new
 	prompt
 
 ; TODO - Spanish translation
-_VictoryRoad2FGrampsGiveHimonchanText:: ; marcelnote - new
 	text "I see you've chosen"
 	line "offense and"
 	cont "speed before."
+_VictoryRoad2FGrampsGiveHitmonchanText:: ; marcelnote - new
 
 	para "To balance your"
 	line "training, I offer"

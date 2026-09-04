@@ -33,7 +33,7 @@ _MtMoonB2FSuperNerdOkIllShareText::
 	line "I'll share!"
 	prompt
 
-_MtMoonB2fSuperNerdEachTakeOneText::
+_MtMoonB2FSuperNerdEachTakeOneText::
 	text "We'll each take"
 	line "one!"
 	cont "No being greedy!"

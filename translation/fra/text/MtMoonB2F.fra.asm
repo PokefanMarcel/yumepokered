@@ -34,7 +34,7 @@ _MtMoonB2FSuperNerdOkIllShareText::
 	line "On partage!"
 	prompt
 
-_MtMoonB2fSuperNerdEachTakeOneText::
+_MtMoonB2FSuperNerdEachTakeOneText::
 	text "Chacun le sien!"
 	line "Comme ça,"
 	cont "pas de jaloux!"

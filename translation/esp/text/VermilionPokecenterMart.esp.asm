@@ -1,4 +1,4 @@
-; marcelnote - merged Lavender Pokecenter and Mart
+; marcelnote - merged Vermilion Pokecenter and Mart
 _VermilionPokecenterFishingGuruText::
 	text "Aunque sean del"
 	line "mismo nivel, los"
@@ -61,4 +61,3 @@ _VermilionMartCooltrainerFText::
 	cont "depende del"
 	cont "entrenador."
 	done
-

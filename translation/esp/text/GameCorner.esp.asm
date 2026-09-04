@@ -202,4 +202,3 @@ _GameCornerOopsForgotCoinCaseText::
 	text "¡Ups! ¡Olvidé"
 	line "el MONEDERO!"
 	done
-

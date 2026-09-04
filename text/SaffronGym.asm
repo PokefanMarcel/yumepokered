@@ -74,7 +74,7 @@ _SaffronGymSabrinaTM46NoRoomText::
 	line "of other items!"
 	done
 
-_SaffronGymGuideChampInMakingText::
+_SaffronGymGymGuideChampInMakingText::
 	text "Yo! Champ in"
 	line "making!"
 
@@ -91,7 +91,7 @@ _SaffronGymGuideChampInMakingText::
 	cont "even aim a punch!"
 	done
 
-_SaffronGymGuideBeatSabrinaText::
+_SaffronGymGymGuideBeatSabrinaText::
 	text "Psychic power,"
 	line "huh?"
 

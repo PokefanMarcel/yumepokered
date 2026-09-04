@@ -58,13 +58,13 @@ RocketHideoutB3FRocket2Text:
 	rst TextScriptEnd
 
 RocketHideoutB3FRocket2BattleText:
-	text_far _RocketHideout3BattleText
+	text_far _RocketHideoutB3FRocket2BattleText
 	text_end
 
 RocketHideoutB3FRocket2EndBattleText:
-	text_far _RocketHideout3EndBattleText3
+	text_far _RocketHideoutB3FRocket2EndBattleText
 	text_end
 
 RocketHideoutB3FRocket2AfterBattleText:
-	text_far _RocketHide3AfterBattleText3
+	text_far _RocketHideoutB3FRocket2AfterBattleText
 	text_end

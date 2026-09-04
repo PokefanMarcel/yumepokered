@@ -246,11 +246,11 @@ VictoryRoad2FGrampsText: ; marcelnote - new, adapted from Silph Co Lapras guy
 	text_end
 
 .GiveHitmonchanText:
-	text_far _VictoryRoad2FGrampsGiveHimonchanText
+	text_far _VictoryRoad2FGrampsGiveHitmonchanText
 	text_end
 
 .GiveHitmonleeText:
-	text_far _VictoryRoad2FGrampsGiveHimonleeText
+	text_far _VictoryRoad2FGrampsGiveHitmonleeText
 	text_end
 
 .GreatFirebirdText:

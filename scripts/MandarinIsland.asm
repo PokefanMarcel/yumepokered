@@ -169,13 +169,13 @@ MandarinIslandSailorFerriesText:
 	db -1 ; end
 
 .WelcomeToFerriesText:
-	text_far _VermilionCitySailor3WelcomeToFerriesText
+	text_far _MandarinIslandSailorWelcomeToFerriesText
 	text_end
 
 .YouNeedPassText:
-	text_far _VermilionCitySailor3YouNeedPassText
+	text_far _MandarinIslandSailorYouNeedPassText
 	text_end
 
 .ShowedPassText:
-	text_far _VermilionCitySailor3ShowedPassText
+	text_far _MandarinIslandSailorShowedPassText
 	text_end

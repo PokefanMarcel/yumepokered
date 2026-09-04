@@ -97,7 +97,7 @@ _CeladonMart3FClerkTM18NoRoomText::
 	line "llena de cosas!"
 	done
 
-_CeladonMart3FGameBoyKid1Text::
+_CeladonMart3FGameboyKid1Text::
 	text "¡Todo #MON"
 	line "capturado tiene"
 	cont "un Nº IDENTIDAD y"
@@ -107,7 +107,7 @@ _CeladonMart3FGameBoyKid1Text::
 	cont "capturó!"
 	done
 
-_CeladonMart3FGameBoyKid2Text::
+_CeladonMart3FGameboyKid2Text::
 	text "¡Muy bien!"
 
 	para "¡Mi compañero va"
@@ -116,7 +116,7 @@ _CeladonMart3FGameBoyKid2Text::
 	cont "mi GRAVELER!"
 	done
 
-_CeladonMart3FGameBoyKid3Text::
+_CeladonMart3FGameboyKid3Text::
 	text "¡Un GRAVELER!"
 
 	para "¡Me gustan los"

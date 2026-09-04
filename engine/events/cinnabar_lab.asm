@@ -80,7 +80,7 @@ GiveFossilToCinnabarLab::
 	text_end
 
 .GoForAWalkText:
-	text_far _CinnabarLabFossilRoomScientist1GoForAWalkText2
+	text_far _CinnabarLabFossilRoomScientist1GoForAWalkAfterTakingFossilText
 	text_end
 
 .ComeAgainText:

@@ -17,21 +17,20 @@ _RocketHideoutB3FRocket1AfterBattleText::
 	cont "por aquí."
 	done
 
-_RocketHideout3BattleText::
+_RocketHideoutB3FRocket2BattleText::
 	text "¡Nos dijeron"
 	line "desde arriba"
 	cont "que venías!"
 	done
 
-_RocketHideout3EndBattleText3::
+_RocketHideoutB3FRocket2EndBattleText::
 	text "¿Qué?"
 	line "¿He perdido? ¡NO!"
 	prompt
 
-_RocketHide3AfterBattleText3::
+_RocketHideoutB3FRocket2AfterBattleText::
 	text "¡Venga, adelante!"
 	line "¡Pero necesitarás"
 	cont "la LLAVE DEL"
 	cont "ASCENSOR!"
 	done
-

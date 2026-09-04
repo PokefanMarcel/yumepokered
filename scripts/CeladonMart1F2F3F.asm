@@ -12,9 +12,9 @@ CeladonMart1F2F3F_TextPointers:
 	dw_const CeladonMart2FGirlText,             TEXT_CELADONMART2F_GIRL
 	dw_const CeladonMart2FBrunetteGirlText,     TEXT_CELADONMART2F_BRUNETTE_GIRL ; marcelnote - new NPC
 	dw_const CeladonMart3FClerkText,            TEXT_CELADONMART3F_CLERK
-	dw_const CeladonMart3FGameBoyKid1Text,      TEXT_CELADONMART3F_GAMEBOY_KID1
-	dw_const CeladonMart3FGameBoyKid2Text,      TEXT_CELADONMART3F_GAMEBOY_KID2
-	dw_const CeladonMart3FGameBoyKid3Text,      TEXT_CELADONMART3F_GAMEBOY_KID3
+	dw_const CeladonMart3FGameboyKid1Text,      TEXT_CELADONMART3F_GAMEBOY_KID1
+	dw_const CeladonMart3FGameboyKid2Text,      TEXT_CELADONMART3F_GAMEBOY_KID2
+	dw_const CeladonMart3FGameboyKid3Text,      TEXT_CELADONMART3F_GAMEBOY_KID3
 	dw_const CeladonMart3FLittleBoyText,        TEXT_CELADONMART3F_LITTLE_BOY
 	; background events
 	dw_const CeladonMart1FDirectorySignText,    TEXT_CELADONMART1F_DIRECTORY_SIGN
@@ -101,16 +101,16 @@ CeladonMart3FClerkText: ; marcelnote - optimized
 	text_far _CeladonMart3FClerkTM18NoRoomText
 	text_end
 
-CeladonMart3FGameBoyKid1Text:
-	text_far _CeladonMart3FGameBoyKid1Text
+CeladonMart3FGameboyKid1Text:
+	text_far _CeladonMart3FGameboyKid1Text
 	text_end
 
-CeladonMart3FGameBoyKid2Text:
-	text_far _CeladonMart3FGameBoyKid2Text
+CeladonMart3FGameboyKid2Text:
+	text_far _CeladonMart3FGameboyKid2Text
 	text_end
 
-CeladonMart3FGameBoyKid3Text:
-	text_far _CeladonMart3FGameBoyKid3Text
+CeladonMart3FGameboyKid3Text:
+	text_far _CeladonMart3FGameboyKid3Text
 	text_end
 
 CeladonMart3FLittleBoyText:

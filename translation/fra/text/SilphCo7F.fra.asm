@@ -114,7 +114,7 @@ _SilphCo7FSilphWorkerM3YouChasedOffTeamRocketText::
 	cont "toute seule?"
 	done
 
-_SilphCo7FSilphWorkerM4ItsReallyDangerousHereText::
+_SilphCo7FSilphWorkerFItsReallyDangerousHereText::
 	text_asm
 	ld a, [wStatusFlags4]
 	bit BIT_IS_GIRL, a
@@ -139,7 +139,7 @@ _SilphCo7FSilphWorkerM4ItsReallyDangerousHereText::
 	cont "Impossible!"
 	done
 
-_SilphCo7FSilphWorkerM4SafeAtLastText::
+_SilphCo7FSilphWorkerFSafeAtLastText::
 	text "Enfin libre!"
 	line "Merci merci!"
 	done

@@ -121,7 +121,7 @@ _CeladonMart3FClerkTM18NoRoomText::
 	line "à craquer!"
 	done
 
-_CeladonMart3FGameBoyKid1Text::
+_CeladonMart3FGameboyKid1Text::
 	text "Tous les #MON"
 	line "capturés ont un"
 	cont "numéro d'immatri-"
@@ -131,7 +131,7 @@ _CeladonMart3FGameBoyKid1Text::
 	cont "d'Origine)!"
 	done
 
-_CeladonMart3FGameBoyKid2Text::
+_CeladonMart3FGameboyKid2Text::
 	text "Ouaiiis!"
 
 	para "Mon pote va"
@@ -140,7 +140,7 @@ _CeladonMart3FGameBoyKid2Text::
 	cont "mon GRAVALANCH!"
 	done
 
-_CeladonMart3FGameBoyKid3Text::
+_CeladonMart3FGameboyKid3Text::
 	text "Cool! Un"
 	line "GRAVALANCH!"
 

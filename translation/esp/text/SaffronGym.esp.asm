@@ -79,7 +79,7 @@ _SaffronGymSabrinaTM46NoRoomText::
 	cont "objetos!"
 	done
 
-_SaffronGymGuideChampInMakingText::
+_SaffronGymGymGuideChampInMakingText::
 	text "¡Hola, posible"
 	line "campeón!"
 
@@ -100,7 +100,7 @@ _SaffronGymGuideChampInMakingText::
 	cont "preparar!"
 	done
 
-_SaffronGymGuideBeatSabrinaText::
+_SaffronGymGymGuideBeatSabrinaText::
 	text "¿Poder mental?"
 
 	para "¡Si yo lo tuviera"

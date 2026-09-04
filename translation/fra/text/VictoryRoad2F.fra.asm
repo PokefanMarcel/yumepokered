@@ -145,7 +145,7 @@ _VictoryRoad2FGrampsHaveYouTestedText:: ; marcelnote - new
 	cont "ver l'équilibre."
 	done
 
-_VictoryRoad2FGrampsGiveHimonleeText:: ; marcelnote - new
+_VictoryRoad2FGrampsGiveHitmonleeText:: ; marcelnote - new
 	text "Ainsi tu as misé"
 	line "sur la défense"
 	cont "et la tenacité."
@@ -156,7 +156,7 @@ _VictoryRoad2FGrampsGiveHimonleeText:: ; marcelnote - new
 	cont "guerrier agile."
 	prompt
 
-_VictoryRoad2FGrampsGiveHimonchanText:: ; marcelnote - new
+_VictoryRoad2FGrampsGiveHitmonchanText:: ; marcelnote - new
 	text "Ainsi tu as misé"
 	line "sur l'offensive"
 	cont "et la vitesse."

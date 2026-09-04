@@ -175,7 +175,7 @@ MtMoonB2FSuperNerdText: ; marcelnote - optimized
 	CheckEitherEventSet EVENT_GOT_DOME_FOSSIL, EVENT_GOT_HELIX_FOSSIL, 1
 	ld hl, MtMoonB2FSuperNerdTheresAPokemonLabText
 	ret nz
-	ld hl, MtMoonB2fSuperNerdEachTakeOneText
+	ld hl, MtMoonB2FSuperNerdEachTakeOneText
 	ret
 .beatSuperNerd
 	ld hl, MtMoonB2FSuperNerdTheyreBothMineText
@@ -301,8 +301,8 @@ MtMoonB2FSuperNerdOkIllShareText:
 	text_far _MtMoonB2FSuperNerdOkIllShareText
 	text_end
 
-MtMoonB2fSuperNerdEachTakeOneText:
-	text_far _MtMoonB2fSuperNerdEachTakeOneText
+MtMoonB2FSuperNerdEachTakeOneText:
+	text_far _MtMoonB2FSuperNerdEachTakeOneText
 	text_end
 
 MtMoonB2FSuperNerdTheresAPokemonLabText:
