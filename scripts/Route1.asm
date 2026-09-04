@@ -14,7 +14,7 @@ Route1_ScriptPointers:
 
 Route1OakPostBattleScript: ; marcelnote - postgame Oak battle
 	ld a, [wIsInBattle]
-	inc a ; lost battle?
+	inc a ; LOST_BATTLE?
 	jr z, .setScript ; SCRIPT_ROUTE1_DEFAULT
 	call UpdateSprites
 	ld a, TEXT_ROUTE1_OAK_POST_BATTLE

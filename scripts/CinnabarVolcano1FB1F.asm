@@ -188,7 +188,7 @@ CinnabarVolcanoB1FCharizardBattleStartsScript:
 
 CinnabarVolcanoB1FCharizardBattleScript:
 	ld a, [wIsInBattle]
-	inc a ; lost battle?
+	inc a ; LOST_BATTLE?
 	jr z, .setScript ; SCRIPT_CINNABARVOLCANO1FB1F_DEFAULT
 	ld a, TEXT_CINNABARVOLCANOB1F_LANCE_POKE_BALL
 	ldh [hTextID], a

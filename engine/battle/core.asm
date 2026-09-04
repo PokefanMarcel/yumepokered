@@ -2107,7 +2107,7 @@ ENDC
 	ld a, $1
 	ld [hli], a ; wMaxMenuItem
 	ld a, [wIsInBattle]
-	cp $2 ; trainer battle?
+	cp TRAINER_BATTLE
 	ld a, PAD_RIGHT | PAD_A
 	jr z, .leftColumn_TrainerBattle
 	or PAD_B ; also watch B outside trainer battles
@@ -2159,7 +2159,7 @@ ENDC
 	ld a, $1
 	ld [hli], a ; wMaxMenuItem
 	ld a, [wIsInBattle]
-	cp $2 ; trainer battle?
+	cp TRAINER_BATTLE
 	ld a, PAD_LEFT | PAD_A
 	jr z, .rightColumn_TrainerBattle
 	or PAD_B ; also watch B outside trainer battles

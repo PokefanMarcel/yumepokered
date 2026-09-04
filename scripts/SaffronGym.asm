@@ -93,7 +93,7 @@ UpdateSaffronGymTileBlocks: ; marcelnote - open Saffron Gym gate
 
 SaffronGymSabrinaRematchPostBattleScript: ; marcelnote - Sabrina rematch
 	ld a, [wIsInBattle]
-	inc a ; lost battle?
+	inc a ; LOST_BATTLE?
 	jp z, SaffronGymSetScript ; SCRIPT_SAFFRONGYM_DEFAULT
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
@@ -105,7 +105,7 @@ SaffronGymSabrinaRematchPostBattleScript: ; marcelnote - Sabrina rematch
 
 SaffronGymBrunoArrivesScript: ; marcelnote - postgame Bruno event
 	ld a, [wIsInBattle]
-	inc a ; lost battle?
+	inc a ; LOST_BATTLE?
 	jp z, SaffronGymSetScript ; SCRIPT_SAFFRONGYM_DEFAULT
 	ld a, TOGGLE_SAFFRON_GYM_BRUNO
 	ld [wToggleableObjectIndex], a

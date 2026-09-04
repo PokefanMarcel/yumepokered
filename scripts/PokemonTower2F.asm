@@ -149,7 +149,7 @@ PokemonTower2FGhostBattleCoords: ; marcelnote - postgame Agatha event
 
 PokemonTower2FGhostBattleScript: ; marcelnote - postgame Agatha event
 	ld a, [wIsInBattle]
-	inc a ; lost battle?
+	inc a ; LOST_BATTLE?
 	jp z, PokemonTower2FSetScript ; SCRIPT_POKEMONTOWER2F_DEFAULT
 	ld a, PAD_BUTTONS | PAD_CTRL_PAD
 	ld [wJoyIgnore], a

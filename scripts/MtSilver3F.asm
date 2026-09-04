@@ -12,7 +12,7 @@ MtSilver3F_ScriptPointers:
 
 MtSilver3FYellowPostBattleScript:
 	ld a, [wIsInBattle]
-	inc a ; lost battle?
+	inc a ; LOST_BATTLE?
 	jr z, .setScript ; SCRIPT_MTSILVER3F_DEFAULT
 	call UpdateSprites
 	ld a, TEXT_MTSILVER3F_YELLOW_POST_BATTLE

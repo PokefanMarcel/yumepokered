@@ -359,7 +359,7 @@ CinnabarGymReceiveTM38: ; marcelnote - optimized
 
 CinnabarGymBlaineRematchPostBattleScript: ; marcelnote - Blaine rematch
 	ld a, [wIsInBattle]
-	inc a ; lost battle?
+	inc a ; LOST_BATTLE?
 	jp z, CinnabarGymSetScript ; SCRIPT_CINNABARGYM_DEFAULT
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a

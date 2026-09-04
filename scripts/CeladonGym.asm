@@ -57,7 +57,7 @@ CeladonGymReceiveTM21: ; marcelnote - optimized
 
 CeladonGymErikaRematchPostBattleScript: ; marcelnote - Erika rematch
 	ld a, [wIsInBattle]
-	inc a ; lost battle?
+	inc a ; LOST_BATTLE?
 	jr z, CeladonGymSetScript ; SCRIPT_CELADONGYM_DEFAULT
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a

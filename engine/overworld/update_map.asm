@@ -66,7 +66,7 @@ ReplaceTileBlockInOverworldMap: ; marcelnote - smarter block replacing
 
 RedrawMapView::
 	ld a, [wIsInBattle]
-	inc a
+	inc a ; LOST_BATTLE?
 	ret z
 	ldh a, [hAutoBGTransferEnabled]
 	push af

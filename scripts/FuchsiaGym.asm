@@ -57,7 +57,7 @@ FuchsiaGymReceiveTM06: ; marcelnote - optimized
 
 FuchsiaGymKogaRematchPostBattleScript: ; marcelnote - Koga rematch
 	ld a, [wIsInBattle]
-	inc a ; lost battle?
+	inc a ; LOST_BATTLE?
 	jr z, FuchsiaGymSetScript ; SCRIPT_FUCHSIAGYM_DEFAULT
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a

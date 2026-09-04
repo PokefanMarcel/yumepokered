@@ -66,7 +66,7 @@ PewterGymReceiveTM34: ; marcelnote - optimized
 
 PewterGymBrockRematchPostBattleScript: ; marcelnote - Brock rematch
 	ld a, [wIsInBattle]
-	inc a ; lost battle?
+	inc a ; LOST_BATTLE?
 	jr z, PewterGymSetScript ; SCRIPT_PEWTERGYM_DEFAULT
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a

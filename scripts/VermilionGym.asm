@@ -76,7 +76,7 @@ VermilionGymReceiveTM24: ; marcelnote - optimized
 
 VermilionGymLTSurgeRematchPostBattleScript: ; marcelnote - Lt.Surge rematch
 	ld a, [wIsInBattle]
-	inc a ; lost battle?
+	inc a ; LOST_BATTLE?
 	jr z, VermilionGymSetScript ; SCRIPT_VERMILIONGYM_DEFAULT
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a

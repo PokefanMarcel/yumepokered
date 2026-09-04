@@ -72,7 +72,7 @@ SilphFactory2FLoreleiHideScript:
 
 SilphFactory2FRocketPostBattle:
 	ld a, [wIsInBattle]
-	inc a ; lost battle?
+	inc a ; LOST_BATTLE?
 	jr z, .setScript ; SCRIPT_SILPHFACTORY2F_DEFAULT
 	call UpdateSprites
 	ld a, TEXT_SILPHFACTORY2F_SILPH_ROCKET1_AFTER_BATTLE
