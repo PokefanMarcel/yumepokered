@@ -457,7 +457,7 @@ TradeCenter_SelectMon:
 	lb bc, 2, 18
 	call CableClub_TextBoxBorder
 	hlcoord 2, 16
-	ld de, .statsTrade
+	ld de, StatsTradeString ; marcelnote - moved to text file
 	call PlaceString
 	xor a
 	ld [wCurrentMenuItem], a
@@ -517,8 +517,6 @@ TradeCenter_SelectMon:
 	ld a, $1 ; TradeCenter_Trade
 	ld [wTradeCenterPointerTableIndex], a
 	jp CallCurrentTradeCenterFunction
-.statsTrade
-	db "STATS     TRADE@"
 .selectedCancelMenuItem
 	ld a, [wCurrentMenuItem]
 	ld b, a
@@ -587,9 +585,6 @@ TradeCenter_DrawCancelBox:
 	hlcoord 2, 16
 	ld de, CancelTextString
 	jp PlaceString
-
-CancelTextString:
-	db "CANCEL@"
 
 TradeCenter_PlaceSelectedEnemyMonMenuCursor:
 	ld a, [wSerialSyncAndExchangeNybbleReceiveData]
@@ -849,13 +844,6 @@ WillBeTradedText:
 	text_far _WillBeTradedText
 	text_end
 
-TradeCompleted:
-	db "Trade completed!@"
-
-TradeCanceled:
-	db   "Too bad! The trade"
-	next "was canceled!@"
-
 TradeCenterPointerTable:
 	dw TradeCenter_SelectMon
 	dw TradeCenter_Trade
@@ -960,6 +948,29 @@ LoadTrainerInfoTextBoxTiles:
 	lb bc, BANK(TrainerInfoTextBoxTileGraphics), (TrainerInfoTextBoxTileGraphicsEnd - TrainerInfoTextBoxTileGraphics) / TILE_SIZE
 	jp CopyVideoData
 
+PrintWaitingText::
+	hlcoord 3, 10
+	lb bc, 1, 11
+	ld a, [wIsInBattle]
+	and a
+	jr z, .trade
+; battle
+	call TextBoxBorder
+	jr .borderDone
+.trade
+	call CableClub_TextBoxBorder
+.borderDone
+	hlcoord 4, 11
+	ld de, WaitingText
+	call PlaceString
+	ld c, 50
+	jp DelayFrames
 
-PleaseWaitString:
-	db "PLEASE WAIT!@"
+; marcelnote - moved strings to separate file
+IF DEF(_FRA)
+	INCLUDE "translation/fra/data/text/cable_club.fra.asm"
+ELIF DEF(_ESP)
+	INCLUDE "translation/esp/data/text/cable_club.esp.asm"
+ELSE
+	INCLUDE "data/text/cable_club.asm"
+ENDC

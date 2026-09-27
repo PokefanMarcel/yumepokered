@@ -8,7 +8,6 @@ INCLUDE "engine/pokemon/load_mon_data.asm"
 ;INCLUDE "data/text/unused_names.asm" ; marcelnote - removed
 INCLUDE "engine/gfx/sprite_oam.asm"
 INCLUDE "engine/gfx/oam_dma.asm"
-INCLUDE "engine/link/print_waiting_text.asm"
 INCLUDE "engine/overworld/sprite_collisions.asm"
 INCLUDE "engine/debug/debug_menu.asm"
 INCLUDE "engine/events/pick_up_item.asm"
