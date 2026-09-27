@@ -1402,16 +1402,16 @@ ItemUseMedicine:
 	pop de
 	ld a, d
 	ld [wWhichPokemon], a
-	ld a, e
-	ld [wPokedexNum], a
+;	ld a, e
+;	ld [wPokedexNum], a ; marcelnote - modified LearnMoveFromLevelUp
 	xor a ; PLAYER_PARTY_DATA
 	ld [wMonDataLocation], a
 	call LoadMonData
 	ld d, LEVEL_UP_STATS_BOX
 	callfar PrintStatsBox
 	call WaitForTextScrollButtonPress
-	xor a ; PLAYER_PARTY_DATA
-	ld [wMonDataLocation], a
+;	xor a ; PLAYER_PARTY_DATA
+;	ld [wMonDataLocation], a ; marcelnote - modified LearnMoveFromLevelUp
 	predef LearnMoveFromLevelUp
 	xor a
 	ld [wForceEvolution], a

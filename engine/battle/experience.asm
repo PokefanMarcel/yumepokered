@@ -390,10 +390,10 @@ GainExperience: ; marcelnote - refactored
 	callfar PrintStatsBox
 	call WaitForTextScrollButtonPress
 	call LoadScreenTilesFromBuffer1
-	xor a ; PLAYER_PARTY_DATA
-	ld [wMonDataLocation], a
-	ld a, [wCurSpecies]
-	ld [wPokedexNum], a
+;	xor a ; PLAYER_PARTY_DATA ; marcelnote - modified LearnMoveFromLevelUp
+;	ld [wMonDataLocation], a
+;	ld a, [wCurSpecies]
+;	ld [wPokedexNum], a
 	predef LearnMoveFromLevelUp
 	ld hl, wCanEvolveFlags
 	ld a, [wWhichPokemon]

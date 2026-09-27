@@ -155,8 +155,8 @@ Evolution_PartyMonLoop: ; loop over party mons
 	call DelayFrames
 	call ClearScreen
 	call RenameEvolvedMon
-	ld a, [wPokedexNum]
-	push af
+;	ld a, [wPokedexNum]
+;	push af
 	ld a, [wCurSpecies]
 	ld [wPokedexNum], a
 	predef IndexToPokedex
@@ -169,8 +169,8 @@ Evolution_PartyMonLoop: ; loop over party mons
 	call CopyData
 	ld a, [wCurSpecies]
 	ld [wMonHIndex], a
-	pop af
-	ld [wPokedexNum], a
+;	pop af
+;	ld [wPokedexNum], a
 	ld hl, wLoadedMonHPExp - 1
 	ld de, wLoadedMonStats
 	ld b, $1
@@ -205,12 +205,14 @@ Evolution_PartyMonLoop: ; loop over party mons
 	dec hl
 	pop bc
 	call CopyData
-	ld a, [wCurSpecies]
-	ld [wPokedexNum], a
-	xor a
-	ld [wMonDataLocation], a
+;	ld a, [wCurSpecies] ; marcelnote - modified LearnMoveFromLevelUp
+;	ld [wPokedexNum], a
+;	xor a
+;	ld [wMonDataLocation], a
 	call LearnMoveFromLevelUp
 	pop hl
+	ld a, [wLoadedMonSpecies] ; marcelnote - wPokedexNum needed for evolution
+	ld [wPokedexNum], a
 	predef SetPartyMonTypes
 	ld a, [wIsInBattle]
 	and a
@@ -319,51 +321,40 @@ Evolution_ReloadTilesetTilePatterns:
 	ret z
 	jp ReloadTilesetTilePatterns
 
-LearnMoveFromLevelUp:
-	ld hl, EvosMovesPointerTable
-	ld a, [wPokedexNum] ; species
-	ld [wCurPartySpecies], a
+LearnMoveFromLevelUp: ; marcelnote - optimized
+	ld a, [wCurSpecies]
 	dec a
-	ld bc, 0
-	ld hl, EvosMovesPointerTable
-	add a
-	rl b
+	ld b, 0
 	ld c, a
+	ld hl, EvosMovesPointerTable
+	add hl, bc
 	add hl, bc
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-.skipEvolutionDataLoop ; loop to skip past the evolution data, which comes before the move data
+.skipEvolutionDataLoop ; evolution data comes before the move data
 	ld a, [hli]
-	and a ; have we reached the end of the evolution data?
-	jr nz, .skipEvolutionDataLoop ; if not, jump back up
-.learnSetLoop ; loop over the learn set until we reach a move that is learnt at the current level or the end of the list
+	and a ; end of evolution data?
+	jr nz, .skipEvolutionDataLoop
+.learnSetLoop ; find move learnt at the current level
 	ld a, [hli]
-	and a ; have we reached the end of the learn set?
-	jr z, .done ; if we've reached the end of the learn set, jump
-	ld b, a ; level the move is learnt at
+	and a ; end of the learnset?
+	ret z
+	ld b, a ; b = level the move is learnt at
 	ld a, [wLevelUpLevel]
 	cp b ; is the move learnt at the mon's current level?
 	ld a, [hli] ; move ID
 	jr nz, .learnSetLoop
-	ld d, a ; ID of move to learn
-	ld a, [wMonDataLocation]
-	and a
-	jr nz, .next
-; If [wMonDataLocation] is 0 (PLAYER_PARTY_DATA), get the address of the mon's
-; current moves in party data. Every call to this function sets
-; [wMonDataLocation] to 0 because other data locations are not supported.
-; If it is not 0, this function will not work properly.
+	ld d, a ; d = ID of move to learn
 	ld hl, wPartyMon1Moves
 	ld a, [wWhichPokemon]
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call AddNTimes
-.next
 	ld b, NUM_MOVES
 .checkCurrentMovesLoop ; check if the move to learn is already known
 	ld a, [hli]
 	cp d
-	jr z, .done ; if already known, jump
+	ret z ; if already known, stop
 	dec b
 	jr nz, .checkCurrentMovesLoop
 	ld a, d
@@ -371,11 +362,7 @@ LearnMoveFromLevelUp:
 	ld [wNamedObjectIndex], a
 	call GetMoveName
 	call CopyToStringBuffer
-	predef LearnMove
-.done
-	ld a, [wCurPartySpecies]
-	ld [wPokedexNum], a
-	ret
+	predef_jump LearnMove
 
 ; writes the moves a mon has at level [wCurEnemyLevel] to [de]
 ; move slots are being filled up sequentially and shifted if all slots are full

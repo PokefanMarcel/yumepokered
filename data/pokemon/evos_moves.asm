@@ -2133,7 +2133,7 @@ OmanyteEvosMoves:
 	db 31, LEER
 	db 35, HEADBUTT
 	db 41, SPIKE_CANNON
-	db 41, CLAMP
+	db 42, CLAMP
 	db 45, HYDRO_PUMP
 	db 0
 
@@ -2160,7 +2160,7 @@ KabutoEvosMoves:
 	db 31, LEER
 	db 35, SLASH
 	db 41, SWORDS_DANCE
-	db 41, ROCK_SLIDE
+	db 42, ROCK_SLIDE
 	db 45, HYDRO_PUMP
 	db 0
 
