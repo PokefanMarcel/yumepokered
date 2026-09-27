@@ -72,12 +72,34 @@ BikeShopClerkText: ; marcelnote - optimized
 	ld hl, BikeShopCantAffordText
 	jr .printText
 
+IF DEF(_FRA)
+
+BikeShopMenuText:
+	db   "BICYCLETTE"
+	next "RETOUR@"
+
+BikeShopMenuPrice:
+	db "1000000¥@"
+
+ELIF DEF(_ESP)
+
+BikeShopMenuText:
+	db   "BICICLETA"
+	next "SALIR@"
+
+BikeShopMenuPrice:
+	db "1000000¥@"
+
+ELSE
+
 BikeShopMenuText:
 	db   "BICYCLE"
 	next "CANCEL@"
 
 BikeShopMenuPrice:
 	db "¥1000000@"
+
+ENDC
 
 BikeShopClerkWelcomeText:
 	text_far _BikeShopClerkWelcomeText
