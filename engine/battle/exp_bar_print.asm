@@ -181,21 +181,21 @@ CalcEXPBarPixelLength:
 	ld b, BANK(CalcExperience)
 	rst _Bankswitch
 
-	; get the address of the active Pokemon's current experience
-	ld hl, wPartyMon1Exp
+	; get the low-byte address of the active Pokemon's current experience
+	ld hl, wPartyMon1Exp + 2
 	call BattleMonPartyAttr
 
 	; current exp - base exp
 	ld b, h
 	ld c, l
-	ld hl, wEXPBarBaseEXP
-	ld de, wEXPBarCurEXP
+	ld hl, wEXPBarBaseEXP + 2
+	ld de, wEXPBarCurEXP + 2
 	call SubThreeByteNum
 
 	; exp needed - base exp
-	ld bc, hMultiplicand
-	ld hl, wEXPBarBaseEXP
-	ld de, wEXPBarNeededEXP
+	ld bc, hMultiplicand + 2
+	ld hl, wEXPBarBaseEXP + 2
+	ld de, wEXPBarNeededEXP + 2
 	call SubThreeByteNum
 
 	; make the divisor an 8-bit number
@@ -276,27 +276,20 @@ CalcEXPBarPixelLength:
 	ldh [hDivisor], a
 	ret
 
-; calculates the three byte number starting at [bc]
-; minus the three byte number starting at [hl]
-; and stores it into the three bytes starting at [de]
-; assumes that [hl] is smaller than [bc]
+; subtracts three-byte big-endian numbers: [bc] - [hl] -> [de]
+; bc, hl, and de point to the low bytes
+; assumes the number at hl is smaller than the number at bc
 SubThreeByteNum:
+	and a ; start at the low bytes with no borrow
 	call .subByte
 	call .subByte
 .subByte
 	ld a, [bc]
-	inc bc
-	sub [hl]
-	inc hl
+	sbc [hl]
 	ld [de], a
-	jr nc, .noCarry
+	dec bc ; preserves carry
+	dec hl
 	dec de
-	ld a, [de]
-	dec a
-	ld [de], a
-	inc de
-.noCarry
-	inc de
 	ret
 
 ; return the address of the BattleMon's party struct attribute in hl
