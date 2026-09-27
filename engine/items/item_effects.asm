@@ -826,14 +826,10 @@ ItemUseMedicine:
 	call GoBackToPartyMenu
 	jr .getPartyMonDataAddress
 .emptyParty
-	ld hl, .emptyPartyText
-	xor a
+	ld hl, EmptyPartyText
+	ld a, 2 ; marcelnote - no party menu was displayed, so skip cleanup
 	ld [wActionResultOrTookBattleTurn], a ; item use failed
 	jp PrintText
-.emptyPartyText
-	text "You don't have"
-	line "any #MON!"
-	prompt
 .notUsingSoftboiled
 	call DisplayPartyMenu
 .getPartyMonDataAddress
@@ -1423,6 +1419,10 @@ ItemUseMedicine:
 	pop af
 	ld [wWhichPokemon], a
 	jp RemoveUsedItem
+
+EmptyPartyText: ; marcelnote - moved from inline text
+	text_far _EmptyPartyText
+	text_end
 
 VitaminStatRoseText:
 	text_far _VitaminStatRoseText

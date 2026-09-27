@@ -73,6 +73,11 @@ _SurfingNoPlaceToGetOffText::
 	line "por donde salir!"
 	prompt
 
+_EmptyPartyText:: ; marcelnote - moved from inline text
+	text "No tienes ningún"
+	line "#MON."
+	prompt
+
 _VitaminStatRoseText::
 	text_ram wStringBuffer
 	text " de"

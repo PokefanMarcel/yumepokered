@@ -68,6 +68,11 @@ _SurfingNoPlaceToGetOffText::
 	line "to get off!"
 	prompt
 
+_EmptyPartyText:: ; marcelnote - moved from inline text
+	text "You don't have"
+	line "any #MON!"
+	prompt
+
 _VitaminStatRoseText::
 	text_ram wNameBuffer
 	text "'s"

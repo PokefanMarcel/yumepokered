@@ -67,6 +67,11 @@ _SurfingNoPlaceToGetOffText::
 	line "descendre!"
 	prompt
 
+_EmptyPartyText:: ; marcelnote - moved from inline text
+	text "Vous n'avez pas"
+	line "de #MON!"
+	prompt
+
 _VitaminStatRoseText::
 	text_ram wStringBuffer
 	text " de"
