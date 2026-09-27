@@ -482,11 +482,31 @@ GameCornerDrawCoinBox:
 	res BIT_NO_TEXT_DELAY, [hl]
 	ret
 
+IF DEF(_FRA)
+
+GameCornerMoneyText:
+	db "ARGENT@"
+
+GameCornerCoinText:
+	db "JETONS@"
+
+ELIF DEF(_ESP)
+
+GameCornerMoneyText:
+	db "DINERO@"
+
+GameCornerCoinText:
+	db "FICHAS@"
+
+ELSE
+
 GameCornerMoneyText:
 	db "MONEY@"
 
 GameCornerCoinText:
 	db "COINS@" ; marcelnote - added S
+
+ENDC
 
 ;GameCornerBlankText: ; marcelnote - useless?
 ;	db "       @"
