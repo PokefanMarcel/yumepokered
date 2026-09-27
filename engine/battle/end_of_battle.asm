@@ -74,15 +74,15 @@ EndOfBattle:
 	ld [wDestinationWarpID], a
 	ret
 
-YouWinText:
-	db "YOU WIN@"
-
-YouLoseText:
-	db "YOU LOSE@"
-
-DrawText:
-	db "  DRAW@"
-
 PickUpPayDayMoneyText:
 	text_far _PickUpPayDayMoneyText
 	text_end
+
+; marcelnote - moved strings to separate file
+IF DEF(_FRA)
+	INCLUDE "translation/fra/data/text/end_of_battle.fra.asm"
+ELIF DEF(_ESP)
+	INCLUDE "translation/esp/data/text/end_of_battle.esp.asm"
+ELSE
+	INCLUDE "data/text/end_of_battle.asm"
+ENDC
