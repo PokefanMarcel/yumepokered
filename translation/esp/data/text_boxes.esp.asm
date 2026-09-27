@@ -50,7 +50,7 @@ UseTossText:
 	next "TIRAR@"
 
 UseSlctText: ; marcelnote - use items with SELECT
-	db   "USE"
+	db   "USAR"
 	next "SLCT@"
 
 MoneyText:
