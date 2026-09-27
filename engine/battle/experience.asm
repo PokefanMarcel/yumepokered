@@ -273,7 +273,6 @@ GainExperience: ; marcelnote - refactored
 	ld [hld], a
 	dec hl
 .noClamp
-	push hl            ; save hl = wPartyMon<n>Exp
 	ld a, [wWhichPokemon]
 	ld hl, wPartyMonNicks
 	call GetPartyMonName
@@ -283,29 +282,70 @@ GainExperience: ; marcelnote - refactored
 	ld hl, GainedText
 	call PrintText
 .skipIndividualText
+	call ProcessExperienceLevels
+
+.nextMon
+	ld a, [wPartyCount]
+	ld b, a
+	ld a, [wWhichPokemon]
+	inc a
+	cp b
+	jr z, .done
+	ld [wWhichPokemon], a
+	ld bc, PARTYMON_STRUCT_LENGTH
+	ld hl, wPartyMon1HP
+	call AddNTimes
+	jp .partyMonLoop
+.done
+	ld hl, wPartyGainExpFlags
+	ld [hl], 0 ; clear gain exp flags
+	ld a, [wPlayerMonNumber]
+	ld c, a
+	ld b, FLAG_SET
+	push bc
+	predef FlagActionPredef ; set the gain exp flag for the mon that is currently out
+	ld hl, wPartyFoughtCurrentEnemyFlags
+	ld [hl], 0
+	pop bc
+	predef_jump FlagActionPredef ; set the fought current enemy flag for the mon that is currently out
+
+
+; EXP and stat EXP have already been awarded once. Keep the final EXP total,
+; but finish each crossed level (including move learning) before the next one.
+ProcessExperienceLevels: ; marcelnote - new
+	ld a, [wCurEnemyLevel] ; wLevelUpLevel aliases this byte
+	push af
 	xor a ; PLAYER_PARTY_DATA
 	ld [wMonDataLocation], a
-	callfar AnimateEXPBar	; joenote - ADDED: animate the exp bar
 	call LoadMonData
-	pop hl             ; restore hl = wPartyMon<n>Exp
-	ld bc, MON_LEVEL - MON_EXP
-	add hl, bc
-	push hl            ; save hl = wPartyMon<n>Level
-	callfar CalcLevelFromExperience ; outputs level d
-	pop hl             ; restore hl = wPartyMon<n>Level
-	ld a, [hl]         ; a = current level
+	callfar CalcLevelFromExperience ; d = final level
+.levelLoop
+	push de ; preserve the target across animation, stats and move-learning calls
+	callfar AnimateEXPBar ; full at a crossed threshold, partial at the final level
+	ld a, [wWhichPokemon]
+	ld hl, wPartyMon1Level
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call AddNTimes
+	pop de
+	ld a, [hl]
 	cp d
-	jp z, .nextMon ; if level didn't change, go to next mon
-;;;;;;;;;;;;;;;; joenote - ADDED: animate the exp bar
-	push hl
-	callfar KeepEXPBarFull
-	pop hl
-;;;;;;;;;;;;;;;;
-	ld a, [wCurEnemyLevel]
-	push af
-	ld a, d            ; a = new level
+	jr nc, .done
+	push de
+	call LevelUpPartyMon
+	callfar ResetEXPBar
+	pop de
+	jr .levelLoop
+.done
+	pop af
+	ld [wCurEnemyLevel], a
+	ret
+
+
+; Complete one level for wWhichPokemon. hl points to its party level.
+LevelUpPartyMon: ; marcelnote - new
+	inc [hl]
+	ld a, [hl]
 	ld [wLevelUpLevel], a
-	ld [hl], a
 	ld bc, MON_SPECIES - MON_LEVEL
 	add hl, bc         ; hl = wPartyMon<n>Species
 	ld a, [hl]
@@ -346,7 +386,7 @@ GainExperience: ; marcelnote - refactored
 	ld b, a
 	ld a, [wWhichPokemon]
 	cp b ; is the current mon in battle?
-	jr nz, .printGrewLevelText
+	jr nz, .showLevelUp
 ; current mon is in battle
 	ld de, wBattleMonHP
 ; copy party mon HP to battle mon HP
@@ -376,57 +416,32 @@ GainExperience: ; marcelnote - refactored
 	callfar CalculateModifiedStats
 	callfar ApplyBurnAndParalysisPenaltiesToPlayer
 	callfar ApplyBadgeStatBoosts
+	ld a, 1
+	ld [wEXPBarKeepFullFlag], a ; hold the full bar through the level-up UI
 	callfar DrawPlayerHUDAndHPBar
+
+.showLevelUp
 	callfar PrintEmptyString
 	call SaveScreenTilesToBuffer1
-.printGrewLevelText
+	ld a, [wWhichPokemon]
+	ld hl, wPartyMonNicks
+	call GetPartyMonName ; earlier move-learning messages can overwrite the name
 	ld hl, GrewLevelText
 	call PrintText
 	xor a ; PLAYER_PARTY_DATA
 	ld [wMonDataLocation], a
-	callfar AnimateEXPBarAgain	; joenote - ADDED: animate the exp bar
-	call LoadMonData
+	call LoadMonData ; restore party stats/species after drawing the battle HUD
 	ld d, LEVEL_UP_STATS_BOX
 	callfar PrintStatsBox
 	call WaitForTextScrollButtonPress
 	call LoadScreenTilesFromBuffer1
-;	xor a ; PLAYER_PARTY_DATA ; marcelnote - modified LearnMoveFromLevelUp
-;	ld [wMonDataLocation], a
-;	ld a, [wCurSpecies]
-;	ld [wPokedexNum], a
+	call Delay3 ; refresh all screen thirds before the next EXP animation
 	predef LearnMoveFromLevelUp
 	ld hl, wCanEvolveFlags
 	ld a, [wWhichPokemon]
 	ld c, a
 	ld b, FLAG_SET
-	predef FlagActionPredef
-	pop af
-	ld [wCurEnemyLevel], a
-
-.nextMon
-	ld a, [wPartyCount]
-	ld b, a
-	ld a, [wWhichPokemon]
-	inc a
-	cp b
-	jr z, .done
-	ld [wWhichPokemon], a
-	ld bc, PARTYMON_STRUCT_LENGTH
-	ld hl, wPartyMon1HP
-	call AddNTimes
-	jp .partyMonLoop
-.done
-	ld hl, wPartyGainExpFlags
-	ld [hl], 0 ; clear gain exp flags
-	ld a, [wPlayerMonNumber]
-	ld c, a
-	ld b, FLAG_SET
-	push bc
-	predef FlagActionPredef ; set the gain exp flag for the mon that is currently out
-	ld hl, wPartyFoughtCurrentEnemyFlags
-	ld [hl], 0
-	pop bc
-	predef_jump FlagActionPredef ; set the fought current enemy flag for the mon that is currently out
+	predef_jump FlagActionPredef
 
 
 ; multiplies exp by 1.5
