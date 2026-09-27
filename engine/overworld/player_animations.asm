@@ -20,7 +20,6 @@ EnterMapAnim::
 	ld a, SFX_TELEPORT_ENTER_2
 	call PlaySound
 	call IsPlayerStandingOnWarpPadOrHole
-	ld a, b
 	and a
 	jr nz, .done
 ; if the player is not standing on a warp pad or hole
@@ -94,7 +93,6 @@ PlayerSpinWhileMovingDown:
 _LeaveMapAnim::
 	call InitFacingDirectionList
 	call IsPlayerStandingOnWarpPadOrHole
-	ld a, b
 	and a
 	jr z, .playerNotStandingOnWarpPadOrHole
 	dec a
@@ -112,7 +110,6 @@ _LeaveMapAnim::
 	ld hl, wFacingDirectionList ; marcelnote - DMG/SGB Escape Rope visual big (fix from pokered Wiki)
 	call PlayerSpinWhileMovingUpOrDown
 	call IsPlayerStandingOnWarpPadOrHole
-	ld a, b
 	dec a
 	jr z, .playerStandingOnWarpPad
 ; if not standing on a warp pad, there is an extra delay
@@ -349,29 +346,28 @@ GetPlayerTeleportAnimFrameDelay:
 	inc a
 	ret
 
-IsPlayerStandingOnWarpPadOrHole::
-	ld b, 0
+IsPlayerStandingOnWarpPadOrHole:: ; marcelnote - optimized
 	ld hl, WarpPadAndHoleData
+	lda_coord 8, 9
+	ld b, a
 	ld a, [wCurMapTileset]
 	ld c, a
 .loop
 	ld a, [hli]
-	cp $ff
-	jr z, .done
 	cp c
-	jr nz, .nextEntry
-	lda_coord 8, 9
-	cp [hl]
-	jr z, .foundMatch
+	jr z, .checkTile
+	inc a ; $ff?
+	jr z, .done
 .nextEntry
 	inc hl
 	inc hl
 	jr .loop
-.foundMatch
-	inc hl
-	ld b, [hl]
+.checkTile
+	ld a, [hli]
+	cp b
+	ld a, [hli]
+	jr nz, .loop
 .done
-	ld a, b
 	ld [wStandingOnWarpPadOrHole], a
 	ret
 
@@ -428,9 +424,9 @@ FishingAnim:
 	ld b, 10
 .loop
 	ld hl, wSpritePlayerStateData1YPixels
-	call .ShakePlayerSprite
+	call .shakePlayerSprite
 	ld hl, wShadowOAMSprite39
-	call .ShakePlayerSprite
+	call .shakePlayerSprite
 	call Delay3
 	dec b
 	jr nz, .loop
@@ -466,7 +462,7 @@ FishingAnim:
 	res BIT_LEDGE_OR_FISHING, [hl]
 	jp LoadFontTilePatterns
 
-.ShakePlayerSprite
+.shakePlayerSprite
 	ld a, [hl]
 	xor $1
 	ld [hl], a
