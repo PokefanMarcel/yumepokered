@@ -1774,6 +1774,7 @@ wTextBoxID:: db
 ; bit 7: set when using an elevator map's menu; triggers the shaking animation
 wCurrentMapScriptFlags:: db
 
+wLevelUpLevel:: ; marcelnote - new alias for level-up
 wCurEnemyLevel:: db
 
 ; pointer to list of items terminated by $FF

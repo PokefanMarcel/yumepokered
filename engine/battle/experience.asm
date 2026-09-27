@@ -304,7 +304,7 @@ GainExperience: ; marcelnote - refactored
 	ld a, [wCurEnemyLevel]
 	push af
 	ld a, d            ; a = new level
-	ld [wCurEnemyLevel], a
+	ld [wLevelUpLevel], a
 	ld [hl], a
 	ld bc, MON_SPECIES - MON_LEVEL
 	add hl, bc         ; hl = wPartyMon<n>Species

@@ -1245,11 +1245,12 @@ _ExpPointsText::
 	text " EXP. Points!"
 	prompt
 
+_RareCandyText::
 _GrewLevelText::
 	text_ram wNameBuffer
 	text " grew"
 	line "to level @"
-	text_decimal wCurEnemyLevel, 1, 3
+	text_decimal wLevelUpLevel, 1, 3
 	text "!@"
 	text_end
 
@@ -1449,14 +1450,6 @@ _ReviveText::
 	text_start
 	line "is revitalized!"
 	done
-
-_RareCandyText::
-	text_ram wNameBuffer
-	text " grew"
-	line "to level @"
-	text_decimal wCurEnemyLevel, 1, 3
-	text "!@"
-	text_end
 
 _TurnedOnPC1Text::
 	text "<PLAYER> turned on"

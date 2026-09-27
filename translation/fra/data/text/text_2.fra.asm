@@ -1331,11 +1331,12 @@ _ExpPointsText::
 	text " points d'EXP!"
 	prompt
 
+_RareCandyText::
 _GrewLevelText::
 	text_ram wNameBuffer
 	text " monte"
 	line "au niveau @"
-	text_decimal wCurEnemyLevel, 1, 3
+	text_decimal wLevelUpLevel, 1, 3
 	text "!@"
 	text_end
 
@@ -1538,14 +1539,6 @@ _ReviveText::
 	text_start
 	line "revient à lui!"
 	done
-
-_RareCandyText::
-	text_ram wNameBuffer
-	text " monte"
-	line "au niveau @"
-	text_decimal wCurEnemyLevel, $1,$3
-	text "!@"
-	text_end
 
 _TurnedOnPC1Text::
 	text "<PLAYER> allume"

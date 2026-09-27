@@ -1345,7 +1345,7 @@ ItemUseMedicine:
 	jr z, .vitaminNoEffect ; can't raise level above 100
 	inc a
 	ld [hl], a ; store incremented level
-	ld [wCurEnemyLevel], a
+	ld [wLevelUpLevel], a
 	push hl
 	push de
 	ld d, a
