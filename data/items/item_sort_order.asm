@@ -105,8 +105,8 @@ ENDM
 	item_sort_rank THUNDER_STONE
 
 	item_sort_rank NUGGET
+	item_sort_rank BOTTLE_CAP
 
-	item_sort_rank ITEM_18
 	item_sort_rank ITEM_19
 	item_sort_rank ITEM_1A
 	item_sort_rank ITEM_1B

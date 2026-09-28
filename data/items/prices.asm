@@ -23,7 +23,7 @@ ItemPrices::
 	bcd3 0     ; BAIT
 	bcd3 0     ; ROCK
 	bcd3 0     ; SURF_VOUCHER ; marcelnote - new for Surfboard
-	bcd3 0     ; ITEM_18
+	bcd3 0     ; BOTTLE_CAP   ; marcelnote - new for Bottle Caps
 	bcd3 0     ; ITEM_19
 	bcd3 0     ; ITEM_1A
 	bcd3 0     ; ITEM_1B

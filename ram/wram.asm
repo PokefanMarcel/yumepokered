@@ -983,6 +983,7 @@ wSwappedMenuItem::
 ; 0 = no bite
 ; 1 = bite
 ; 2 = no fish on map
+; 3 = bottle cap ; marcelnote - new for Bottle Caps
 wRodResponse::
 	db
 ENDU

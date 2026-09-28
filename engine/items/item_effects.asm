@@ -40,7 +40,7 @@ ItemUsePtrTable:
 	dw ItemUseBait       ; SAFARI_BAIT
 	dw ItemUseRock       ; SAFARI_ROCK
 	dw UnusableItem      ; SURF_VOUCHER ; marcelnote - new for Surfboard
-	dw UnusableItem      ; ITEM_18
+	dw UnusableItem      ; BOTTLE_CAP ; marcelnote - new for Bottle Caps
 	dw UnusableItem      ; ITEM_19
 	dw UnusableItem      ; ITEM_1A
 	dw UnusableItem      ; ITEM_1B

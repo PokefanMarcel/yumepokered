@@ -20,14 +20,14 @@ ItemNames::
 	li "HYPER POTION"
 	li "SUPER POTION"
 	li "POTION"
-	li "BAIT"    ; marcelnote - cleaned badges
-	li "ROCK"    ; marcelnote - cleaned badges
+	li "BAIT"         ; marcelnote - cleaned badges
+	li "ROCK"         ; marcelnote - cleaned badges
 	li "SURF VOUCHER" ; marcelnote - new for Surfboard
-	li "ITEM18"  ; marcelnote - cleaned badges
-	li "ITEM19"  ; marcelnote - cleaned badges
-	li "ITEM1A"  ; marcelnote - cleaned badges
-	li "ITEM1B"  ; marcelnote - cleaned badges
-	li "POKé BEEPER" ; "POKé BELL"  ; marcelnote - new for Poké Beeper (ポケベル)
+	li "BOTTLE CAP"   ; marcelnote - new for Bottle Caps
+	li "ITEM19"       ; marcelnote - cleaned badges
+	li "ITEM1A"       ; marcelnote - cleaned badges
+	li "ITEM1B"       ; marcelnote - cleaned badges
+	li "POKé BEEPER"  ; "POKé BELL"  ; marcelnote - new for Poké Beeper (ポケベル)
 	li "ESCAPE ROPE"
 	li "REPEL"
 	li "OLD AMBER"

@@ -23,7 +23,7 @@ ItemNames::
 	li "CEBO"    ; marcelnote - cleaned badges
 	li "ROCA"    ; marcelnote - cleaned badges
 	li "SURF VOUCHER" ; marcelnote - new for Surfboard ; TODO - Spanish translation
-	li "ITEM18"  ; marcelnote - cleaned badges
+	li "CHAPA PLATA" ; marcelnote - new for Bottle Caps
 	li "ITEM19"  ; marcelnote - cleaned badges
 	li "ITEM1A"  ; marcelnote - cleaned badges
 	li "ITEM1B"  ; marcelnote - cleaned badges
