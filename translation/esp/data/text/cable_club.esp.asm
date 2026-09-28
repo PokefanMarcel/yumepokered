@@ -4,7 +4,7 @@ StatsTradeString:
 	db "ESTAD.    TRATO@"
 
 CancelTextString:
-	db "Trato Cancelado@"
+	db "CANCELAR@" ; marcelnote - was "Trato Cancelado@"
 
 TradeCompleted:
 	db "Trato Completado@"

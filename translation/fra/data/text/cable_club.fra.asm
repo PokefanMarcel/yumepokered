@@ -7,14 +7,14 @@ CancelTextString:
 	db "ANNULER@"
 
 TradeCompleted:
-	db "ECHANGE TERMINE!@"
+	db "Echange terminé!@" ; marcelnote - was "ECHANGE TERMINE!@"
 
 TradeCanceled:
 	db   "Dommage! L'échange"
 	next "est annulé!@"
 
 WaitingText:
-	db "UN MOMENT!@" ; marcelnote - was UN MOMENT…
+	db "Un moment!@" ; marcelnote - was "UN MOMENT…@"
 
 PleaseWaitString:
 	db "ATTENDEZ SVP@"
