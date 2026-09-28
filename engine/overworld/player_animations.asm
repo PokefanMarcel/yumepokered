@@ -373,7 +373,7 @@ IsPlayerStandingOnWarpPadOrHole:: ; marcelnote - optimized
 
 INCLUDE "data/tilesets/warp_pad_hole_tile_ids.asm"
 
-FishingAnim:
+FishingAnim: ; marcelnote - adjusted for Bottle Caps
 	ld c, 10
 	call DelayFrames
 	ld hl, wMovementFlags
@@ -414,12 +414,18 @@ FishingAnim:
 	and a
 	ld hl, NoNibbleText
 	jr z, .done
-	cp $2
+	dec a
+	jr z, .bite
+	dec a
+	jr z, .bottleCap
 	ld hl, NothingHereText
-	jr z, .done
+.done
+	call PrintText
+	ld hl, wMovementFlags
+	res BIT_LEDGE_OR_FISHING, [hl]
+	jp LoadFontTilePatterns
 
-; there was a bite
-
+.bite
 ; shake the player's sprite vertically
 	ld b, 10
 .loop
@@ -430,7 +436,30 @@ FishingAnim:
 	call Delay3
 	dec b
 	jr nz, .loop
+	call .displayEmotionBubble ; b = 0 = EXCLAMATION_BUBBLE
+	ld hl, ItsABiteText
+	jr .done
 
+.bottleCap ; marcelnote - new for Bottle Caps
+	ld b, QUESTION_BUBBLE
+	call .displayEmotionBubble
+	lb bc, BOTTLE_CAP, 1
+	call GiveItem
+	ld hl, FoundBottleCapText
+	jr c, .done
+	call GetItemName ; GiveItem only loads the name on success
+	ld hl, FoundBottleCapNoRoomText
+	call PrintText
+	ld hl, FishingNoRoomText
+	jr .done
+
+.shakePlayerSprite
+	ld a, [hl]
+	xor $1
+	ld [hl], a
+	ret
+
+.displayEmotionBubble
 ; If the player is facing up, hide the fishing rod so it doesn't overlap with
 ; the exclamation bubble that will be shown next.
 	ld a, [wSpritePlayerStateData1ImageIndex] ; (image index is locked to standing images)
@@ -438,34 +467,18 @@ FishingAnim:
 	jr nz, .skipHidingFishingRod
 	ld a, SCREEN_HEIGHT_PX + OAM_Y_OFS
 	ld [wShadowOAMSprite39YCoord], a
-
 .skipHidingFishingRod
 	ld hl, wEmotionBubbleSpriteIndex
 	xor a
 	ld [hli], a ; player's sprite
-	ld [hl], a ; EXCLAMATION_BUBBLE
+	ld [hl], b ; EXCLAMATION_BUBBLE (bite) or QUESTION_BUBBLE (bottle cap)
 	predef EmotionBubble
-
 ; If the player is facing up, unhide the fishing rod.
 	ld a, [wSpritePlayerStateData1ImageIndex] ; (image index is locked to standing images)
 	cp SPRITE_FACING_UP
-	jr nz, .skipUnhidingFishingRod
+	ret nz ; skip unhiding fishing rod
 	ld a, $44
 	ld [wShadowOAMSprite39YCoord], a
-
-.skipUnhidingFishingRod
-	ld hl, ItsABiteText
-
-.done
-	call PrintText
-	ld hl, wMovementFlags
-	res BIT_LEDGE_OR_FISHING, [hl]
-	jp LoadFontTilePatterns
-
-.shakePlayerSprite
-	ld a, [hl]
-	xor $1
-	ld [hl], a
 	ret
 
 NoNibbleText:
@@ -478,6 +491,21 @@ NothingHereText:
 
 ItsABiteText:
 	text_far _ItsABiteText
+	text_end
+
+FoundBottleCapText: ; marcelnote - new for Bottle Caps
+	text_far _FoundItemText
+	sound_get_item_1
+	text_end
+
+FoundBottleCapNoRoomText: ; marcelnote - new for Bottle Caps
+	text_far _FoundHiddenItemText
+	text_promptbutton
+	text_end
+
+FishingNoRoomText: ; marcelnote - new for Bottle Caps
+	text_far _HiddenItemBagFullText
+	text_promptbutton
 	text_end
 
 FishingRodOAM: ; marcelnote - moved tiles in VRAM

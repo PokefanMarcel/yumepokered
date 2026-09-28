@@ -982,8 +982,8 @@ wCoordIndex::
 wSwappedMenuItem::
 ; 0 = no bite
 ; 1 = bite
-; 2 = no fish on map
-; 3 = bottle cap ; marcelnote - new for Bottle Caps
+; 2 = bottle cap ; marcelnote - new for Bottle Caps
+; 3 = no fish on map
 wRodResponse::
 	db
 ENDU

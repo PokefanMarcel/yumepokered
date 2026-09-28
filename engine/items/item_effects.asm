@@ -1868,21 +1868,24 @@ CoinCaseNumCoinsText:
 ItemUseOldRod:
 	call FishingInit
 	jp c, ItemUseNotTime
-	call ReadOldRodData
+	ld hl, OldRodData
 	jr RodResponse
 
 ItemUseGoodRod:
 	call FishingInit
 	jp c, ItemUseNotTime
-	call ReadGoodRodData
+	ld hl, GoodRodData
 	jr RodResponse
 
 ItemUseSuperRod:
 	call FishingInit
 	jp c, ItemUseNotTime
-	call ReadSuperRodData
+	ld hl, SuperRodData
+	; fallthrough
+
 RodResponse:
-	ld a, e ; marcelnote - moved after jr
+	call ReadRodData ; marcelnote - moved after jr
+	ld a, e
 	ld [wRodResponse], a
 
 	dec a ; is there a bite?
@@ -1900,7 +1903,7 @@ RodResponse:
 	ld a, [hl] ; store the value in a
 	push af
 	push hl
-	ld [hl], 0
+	ld [hl], 0 ; WALKING
 	callfar FishingAnim
 	pop hl
 	pop af
@@ -2884,61 +2887,60 @@ WaterTile:
 
 INCLUDE "data/tilesets/water_tilesets.asm"
 
-; return e = 2 if no fish on this map
+ ; marcelnote - modified for specific Rod encounters and Bottle Caps
+; return e = 3 if no fish on this map
+; return e = 2 if a bottle cap
 ; return e = 1 if a bite, bc = level,species
 ; return e = 0 if no bite
-ReadOldRodData: ; marcelnote - new for Old Rod encounters
-	ld hl, OldRodData
-	jr ReadSuperRodData.gotFishingData
-ReadGoodRodData: ; marcelnote - new for Good Rod encounters
-	ld hl, GoodRodData
-	jr ReadSuperRodData.gotFishingData
-ReadSuperRodData:
-	ld hl, SuperRodData
-.gotFishingData
+ReadRodData:
+	; One roll: 0-4 bottle cap, 5-63 no bite, 64-255 Pokémon.
+	call Random
+	ld e, 2 ; e = 2 if bottle cap, even on maps without fish
+	cp 5
+	ret c
+	push af ; save a = random roll
+
 	ld a, [wCurMap]
 	ld de, 3 ; each fishing group is three bytes wide
 	call IsInArray
-	jr c, .ReadFishingGroup
-	ld e, $2 ; $2 if no fishing groups found
-	ret
+	jr c, .readFishingGroup
+	pop af ; clean stack
+	ret ; here e = 3 if no fishing group, always show "nothing here"
 
-.ReadFishingGroup
+.readFishingGroup
 ; hl points to the fishing group entry in the index
-	inc hl ; skip map id
-
-	; read fishing group address
+	inc hl  ; skip map id
 	ld a, [hli]
 	ld h, [hl]
-	ld l, a
+	ld l, a ; hl = fishing group address
 
-	ld b, [hl] ; how many mons in group
-	inc hl ; point to data
-	ld e, $0 ; no bite yet
+	ld a, [hli]
+	ld b, a ; b = how many mons in group
+	ld e, 0 ; e = 0 if no bite
+	pop af  ; restore a = random roll
+	cp 64 ; bite?
+	ret c
 
-.RandomLoop
-	; marcelnote - check two bits instead of srl, and 75% chance of battle (50% before)
-	call Random
-	bit 7, a
-	jr nz, .gotBite
-	bit 6, a
-	ret z ; no bite if both bits 6 and 7 are 0
-
-.gotBite
+.chooseMon
+	; In 64-255, each low-three-bit value occurs equally often.
 	and %111 ; marcelnote - changed from 2-bit to 3-bit to have up to 8 different encounters
 	cp b
-	jr nc, .RandomLoop ; if a is greater than the number of mons, regenerate
+	jr nc, .retryMon
 
 	; get the mon
 	add a
 	ld c, a
-	ld b, $0
+	ld b, 0
 	add hl, bc
-	ld b, [hl] ; level
-	inc hl
+	ld a, [hli] ; level
+	ld b, a
 	ld c, [hl] ; species
-	ld e, $1 ; $1 if there's a bite
+	inc e ; e = 1 if there's a bite
 	ret
+
+.retryMon
+	call Random
+	jr .chooseMon
 
 INCLUDE "data/wild/old_rod.asm"   ; marcelnote - new for Old Rod encounters
 INCLUDE "data/wild/good_rod.asm"   ; marcelnote - new for Good Rod encounters
