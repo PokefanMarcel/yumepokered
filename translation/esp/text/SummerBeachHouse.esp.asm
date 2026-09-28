@@ -1,5 +1,6 @@
+; TODO - Spanish translation, full file
+
 ; marcelnote - new location from pokeyellow
-; TODO - Spanish translation
 _SummerBeachHouseSurfinDudeWhoaText::
 ;	text "Whoa!"
 ;
@@ -12,87 +13,71 @@ _SummerBeachHouseSurfinDudeWhoaText::
 ;	cont "with the DUDE!"
 ;
 ;	para "Give it a go?"
-	text "Wait... Your"
-	line "PIKACHU knows"
-	cont "how to SURF!"
+	text "Espera... ¡Tu"
+	line "@"
+	text_ram wNameBuffer
+	text " sabe"
+	cont "hacer SURF!"
 
-	para "So I'm not the"
-	line "only one..."
-	cont "Alright then!"
+	para "Así que no soy"
+	line "el único..."
+	cont "¡Muy bien!"
 
-	para "Just for you, I'll"
-	line "arrange a special"
-	cont "SURF session."
+	para "Solo por ti,"
+	line "prepararé una"
+	cont "sesión especial"
+	cont "de SURF."
 
-	para "What do you say?"
+	para "¿Qué me dices?"
 	done
 
-; TODO - Spanish translation
 _SummerBeachHouseSurfinDudeComeAnytimeText::
-	text "Come SURF anytime,"
-	line "my friend!"
+	text "¡Ven a hacer SURF"
+	line "cuando quieras,"
+	cont "colega!"
 	done
 
-; TODO - Spanish translation
-_SummerBeachHouseSurfinDudeImpressedText::
-	text "Whoa! Your PIKACHU"
-	line "really has a feel"
-	cont "for the waves!"
-
-	para "Here, take this."
-	line "You've earned it."
+_SummerBeachHouseSurfinDudeFoundBottleCapText:: ; marcelnote - new for Bottle caps
+	text "¡Vaya! ¡Tu"
+	line "@"
+	text_ram wNameBuffer
+	text_start
+	cont "encontró algo"
+	cont "en la playa!"
 	prompt
 
-_SummerBeachHouseReceivedSurfVoucherText::
+_SummerBeachHouseReceivedBottleCapText:: ; marcelnote - new for Bottle caps
 	text "¡<PLAYER> recibió"
 	line "@"
 	text_ram wStringBuffer
 	text "!@"
 	text_end
 
-; TODO - Spanish translation
-_SummerBeachHouseExplainSurfVoucherText::
-	text_start
-
-	para "Ever been to"
-	line "MANDARIN ISLAND?"
-
-	para "Their shop has the"
-	line "best SURFBOARDs!"
-
-	para "Tell them I sent"
-	line "you, they'll set"
-	cont "you up nicely."
+_SummerBeachHouseBagFullText:: ; marcelnote - new for Bottle caps
+	text "No puedes llevar"
+	line "más objetos."
 	done
 
-_SummerBeachHouseBagFullText::
-	text "¡No tienes sitio"
-	line "para esto!"
-	done
-
-; TODO - Spanish translation
 _SummerBeachHouseSurfinDudeWannaGoSurfText::
-	text "Wanna go SURF?"
+	text "¿Quieres hacer"
+	line "SURF?"
 	done
 
-; TODO - Spanish translation
 _SummerBeachHouseSurfinDudeDogsBurgersText::
-	text "Dogs and burgers" ; marcelnote - ramen and yakisoba in Japanese
-	line "on special today!"
+	text "¡Perritos y" ; marcelnote - ramen and yakisoba in Japanese
+	line "hamburguesas"
+	cont "de oferta hoy!"
 	done
 
-; TODO - Spanish translation
 _SummerBeachHousePikachuText::
-	text "PIKACHU: Pikaa!" ; marcelnote - added "!"
+	text "PIKACHU: ¡Pikaa!" ; marcelnote - added "!"
 	done
 
-; TODO - Spanish translation
 _SummerBeachHousePoster30YearsOfWavesText::
-	text "30 years of waves!"
-	line "SURFING MASTER"
+	text "¡30 años de olas!"
+	line "MAESTRO SURF"
 	done
 
-; TODO - Spanish translation
 _SummerBeachHousePosterScribblesText::
 	;text "SURFIN' DUDE's"
 	;line "scribbles..."
@@ -100,27 +85,26 @@ _SummerBeachHousePosterScribblesText::
 	;para "When I shoot the"
 	;line "tube, the tunes"
 	;cont "hit the groove!"
-	text "SURFING MASTER's"
-	line "scribbles..."
+	text "Garabatos del"
+	line "MAESTRO SURF..."
 
-	para "Speed up, and"
-	line "the tunes crank"
-	cont "up too! Groovy!"
+	para "¡Acelera, y la"
+	line "música también"
+	cont "sube! ¡Genial!"
 	done
 
-; TODO - Spanish translation
 _SummerBeachHousePosterSeaUnitesAllText::
 	;text "The sea unites"
 	;line "all in surfdom!"
 
 	; marcelnote - from Japanese: The sea is pure romance!
-	text "The sea is the"
-	line "soul's horizon!"
+	text "¡El mar es el"
+	line "horizonte"
+	cont "del alma!"
 	done
 
-; TODO - Spanish translation
 _SummerBeachHousePosterSurfingTip1Text::
-	text "SURFING TIP 1!"
+	text "¡CONSEJO SURF 1!"
 
 ;	para "After flips, line"
 ;	line "the board up with"
@@ -128,30 +112,29 @@ _SummerBeachHousePosterSurfingTip1Text::
 ;	cont "effect!"
 
 	; marcelnote - from Japanese: After a spin, land your board flat on the water for a stylish finish!
-	para "After a flip, land"
-	line "the board flat on"
-	cont "the water for a"
-	cont "stylish finish!"
+	para "Tras un giro,"
+	line "aterriza la tabla"
+	cont "plana en el agua"
+	cont "para acabar con"
+	cont "estilo."
 	done
 
-; TODO - Spanish translation
 _SummerBeachHousePosterSurfingTip2Text::
-	text "SURFING TIP 2!"
+	text "¡CONSEJO SURF 2!"
 
 ;	para "Pulling flips in"
 ;	line "a jump is totally"
 ;	cont "rad!"
 
 	; marcelnote - from Japanese: Spin repeatedly during a jump—it looks super cool!
-	para "Pull flips during"
-	line "jumps, it looks"
-	cont "super cool!"
+	para "Haz giros durante"
+	line "los saltos. ¡Queda"
+	cont "superguay!"
 	done
 
-; TODO - Spanish translation
 _SummerBeachHouseSomeMachineText::
-	text "It's some sort of"
-	line "a machine..."
+	text "Es algún tipo"
+	line "de máquina..."
 	done
 
 ;_SummerBeachHousePrinterText2::
@@ -166,15 +149,13 @@ _SummerBeachHouseSomeMachineText::
 ;	para "Check it out?@"
 ;	text_end
 
-; TODO - Spanish translation
 _SummerBeachHousePrinterCheckItOutText::
-	text "BEACH HOUSE"
-	line "PRINTER, it says."
+	text "Dice: IMPRESORA"
+	line "DE CASA PLAYA."
 
-	para "The Hi-Score is"
-	line "shown."
+	para "Muestra el récord."
 
-	para "Check it out?@"
+	para "¿Mirarlo?@"
 	text_end
 
 ;_SummerBeachHousePrinterText5::
@@ -185,8 +166,8 @@ _SummerBeachHousePrinterCheckItOutText::
 ;	text "Couldn't show it!@"
 ;	text_end
 
-; TODO - Spanish translation
 _SummerBeachHousePokemonSurfboardText::
-	text "It's a PIKACHU-"
-	line "sized SURFBOARD!"
+	text "¡Es una TABLA SURF"
+	line "del tamaño de"
+	cont "PIKACHU!"
 	done

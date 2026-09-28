@@ -183,6 +183,8 @@ PikachusBeach_LoadGFXAndLayout:
 	ld hl, wSurfingMinigameData
 	ld bc, wSurfingMinigameDataEnd - wSurfingMinigameData
 	xor a
+	ld [wSurfingMinigameLastScore], a ; marcelnote - new for Bottle caps
+	ld [wSurfingMinigameLastScore + 1], a
 	call FillMemory
 	ld hl, wLYOverrides
 	ld bc, wLYOverridesBufferEnd - wLYOverrides
@@ -584,6 +586,11 @@ SurfingMinigame_ExitOnPressA:
 	ret z
 	ld hl, wSurfingMinigameRoutineNumber
 	set 7, [hl]
+	; marcelnote - new for Bottle caps
+	ld a, [wSurfingMinigameTotalScore]
+	ld [wSurfingMinigameLastScore], a
+	ld a, [wSurfingMinigameTotalScore + 1]
+	ld [wSurfingMinigameLastScore + 1], a
 	ret
 
 SurfingMinigame_GameOver:

@@ -33,42 +33,51 @@ _SummerBeachHouseSurfinDudeComeAnytimeText::
 	line "my friend!"
 	done
 
-_SummerBeachHouseSurfinDudeImpressedText::
-	text "Whoa! Your"
+;_SummerBeachHouseSurfinDudeImpressedText::
+;	text "Whoa! Your"
+;	line "@"
+;	text_ram wNameBuffer
+;	text " really"
+;	cont "has a feel"
+;	cont "for the waves!"
+;
+;	para "Here, take this."
+;	line "You've earned it."
+;	prompt
+
+;_SummerBeachHouseExplainSurfVoucherText::
+;	text_start
+;
+;	para "Ever been to"
+;	line "MANDARIN ISLAND?"
+;
+;	para "Their shop has the"
+;	line "best SURFBOARDs!"
+;
+;	para "Tell them I sent"
+;	line "you, they'll set"
+;	cont "you up nicely."
+;	done
+
+_SummerBeachHouseSurfinDudeFoundBottleCapText:: ; marcelnote - new for Bottle caps
+	text "Oh! Your"
 	line "@"
 	text_ram wNameBuffer
-	text " really"
-	cont "has a feel"
-	cont "for the waves!"
-
-	para "Here, take this."
-	line "You've earned it."
+	text " found"
+	cont "something on"
+	cont "the beach!"
 	prompt
 
-_SummerBeachHouseReceivedSurfVoucherText::
+_SummerBeachHouseReceivedBottleCapText:: ; marcelnote - new for Bottle caps
 	text "<PLAYER> received"
 	line "a @"
 	text_ram wStringBuffer
 	text "!@"
 	text_end
 
-_SummerBeachHouseExplainSurfVoucherText::
-	text_start
-
-	para "Ever been to"
-	line "MANDARIN ISLAND?"
-
-	para "Their shop has the"
-	line "best SURFBOARDs!"
-
-	para "Tell them I sent"
-	line "you, they'll set"
-	cont "you up nicely."
-	done
-
-_SummerBeachHouseBagFullText::
-	text "You need to make"
-	line "room for this!"
+_SummerBeachHouseBagFullText:: ; marcelnote - new for Bottle caps
+	text "You can't carry"
+	line "any more items."
 	done
 
 _SummerBeachHouseSurfinDudeWannaGoSurfText::

@@ -1698,7 +1698,8 @@ wMonHeaderEnd::
 ; saved at the start of a battle and then written back at the end of the battle
 wSavedTileAnimations:: db
 
-	ds 2
+; marcelnote - Pikachu's Beach minigame, for Bottle caps
+wSurfingMinigameLastScore:: dw ; little-endian BCD
 
 wDamage:: dw
 

@@ -42,24 +42,19 @@ SummerBeachHouseSurfinDudeText:
 	; The minigame reload path restores the map for the overworld, but not the
 	; active NPC dialogue window.
 	callfar DisplayTextIDInit
-;	callfar IsSurfingPikachuInParty ; refresh wNameBuffer after the minigame
 	xor a
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-	CheckEvent EVENT_GOT_SURF_VOUCHER
+	call SummerBeachHouseRollBottleCap
 	ld hl, .ComeAnytimeText
-	jr .printText ; marcelnote - this blocks the 4000+ score reward for now
-	jr nz, .printText
-	ld a, [wSurfingMinigameHiScore + 1]
-	cp $40 ; is high score < 4000?
-	jr c, .printText
-	ld hl, .ImpressedText
+	jr nc, .printText
+	callfar IsSurfingPikachuInParty ; refresh the surfer mon's nickname in wNameBuffer
+	ld hl, .FoundBottleCapText
 	call PrintText
-	lb bc, SURF_VOUCHER, 1
+	lb bc, BOTTLE_CAP, 1
 	call GiveItem
 	ld hl, .BagFullText
 	jr nc, .printText
-	SetEvent EVENT_GOT_SURF_VOUCHER
-	ld hl, .ReceivedVoucherText
+	ld hl, .ReceivedBottleCapText
 	jr .printText
 
 .DogsBurgersText
@@ -78,19 +73,45 @@ SummerBeachHouseSurfinDudeText:
 	text_far _SummerBeachHouseSurfinDudeComeAnytimeText
 	text_end
 
-.ImpressedText
-	text_far _SummerBeachHouseSurfinDudeImpressedText
+.FoundBottleCapText ; marcelnote - new for Bottle caps
+	text_far _SummerBeachHouseSurfinDudeFoundBottleCapText
 	text_end
 
-.ReceivedVoucherText
-	text_far _SummerBeachHouseReceivedSurfVoucherText
-	sound_get_key_item
-	text_far _SummerBeachHouseExplainSurfVoucherText
+.ReceivedBottleCapText ; marcelnote - new for Bottle caps
+	text_far _SummerBeachHouseReceivedBottleCapText
+	sound_get_item_1
 	text_end
 
-.BagFullText
+.BagFullText ; marcelnote - new for Bottle caps
 	text_far _SummerBeachHouseBagFullText
 	text_end
+
+SummerBeachHouseRollBottleCap: ; marcelnote - new for Bottle caps
+; Return carry on success. Chance = floor(last score / 100)%.
+	ld a, [wSurfingMinigameLastScore + 1]
+	and a
+	ret z
+
+	; Convert a from BCD (16 * tens + units) to binary by subtracting 6 * tens.
+	ld b, a
+	swap a
+	and $f ; a = tens
+	ld c, a
+	add a ; a = 2 * tens
+	add c ; a = 3 * tens
+	add a ; a = 6 * tens
+	ld c, a
+	ld a, b
+	sub c ; a = percent chance in binary
+
+	add a
+	ld b, a ; twice the percentage, for a roll out of 200
+.roll
+	call Random
+	cp 200
+	jr nc, .roll
+	cp b
+	ret
 
 ; pokeyellow original
 ;SummerBeachHouseSurfinDudeText:

@@ -34,42 +34,50 @@ _SummerBeachHouseSurfinDudeComeAnytimeText::
 	line "quand tu veux!"
 	done
 
-_SummerBeachHouseSurfinDudeImpressedText::
-	text "Wah! Ton"
-	line "@"
+;_SummerBeachHouseSurfinDudeImpressedText::
+;	text "Wah! Ton"
+;	line "@"
+;	text_ram wNameBuffer
+;	text_start
+;	cont "a le SURF dans"
+;	cont "la peau!"
+;
+;	para "Tiens, prends ça."
+;	line "C'est mérité!"
+;	prompt
+
+;_SummerBeachHouseExplainSurfVoucherText::
+;	text_start
+;
+;	para "L'ILE MANDARINE,"
+;	line "tu connais?"
+;
+;	para "Leur boutique vend"
+;	line "les meilleures"
+;	cont "PLANCHES DE SURF!"
+;
+;	para "Dis-leur que tu"
+;	line "viens de ma part."
+;	done
+
+_SummerBeachHouseSurfinDudeFoundBottleCapText:: ; marcelnote - new for Bottle caps
+	text "Oh! Ton @"
 	text_ram wNameBuffer
 	text_start
-	cont "a le SURF dans"
-	cont "la peau!"
-
-	para "Tiens, prends ça."
-	line "C'est mérité!"
+	line "a trouvé un objet"
+	cont "sur la plage!"
 	prompt
 
-_SummerBeachHouseReceivedSurfVoucherText::
+_SummerBeachHouseReceivedBottleCapText:: ; marcelnote - new for Bottle caps
 	text "<PLAYER> reçoit"
-	line "un @"
+	line "une @"
 	text_ram wStringBuffer
 	text "!@"
 	text_end
 
-_SummerBeachHouseExplainSurfVoucherText::
-	text_start
-
-	para "L'ILE MANDARINE,"
-	line "tu connais?"
-
-	para "Leur boutique vend"
-	line "les meilleures"
-	cont "PLANCHES DE SURF!"
-
-	para "Dis-leur que tu"
-	line "viens de ma part."
-	done
-
-_SummerBeachHouseBagFullText::
-	text "Tu dois faire"
-	line "de la place!"
+_SummerBeachHouseBagFullText:: ; marcelnote - new for Bottle caps
+	text "Ton inventaire"
+	line "est plein."
 	done
 
 _SummerBeachHouseSurfinDudeWannaGoSurfText::
