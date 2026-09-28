@@ -7,6 +7,7 @@
 ; - Learnset (in increasing level order):
 ;    * db level, move
 ; - db 0 ; no more level-up moves
+; marcelnote - the engine does not support learning two moves at the same level
 
 EvosMovesPointerTable:
 	table_width 2
