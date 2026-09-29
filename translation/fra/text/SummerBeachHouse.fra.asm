@@ -186,7 +186,7 @@ _SummerBeachHousePrinterCheckItOutText::
 ;	text_end
 
 _SummerBeachHousePokemonSurfboardText::
-	text "Une PLANCHE DE"
+	text "Une planche de"
 	line "SURF à la taille"
 	cont "de PIKACHU!"
 	done

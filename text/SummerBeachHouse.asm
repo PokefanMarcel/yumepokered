@@ -187,5 +187,5 @@ _SummerBeachHousePrinterCheckItOutText::
 
 _SummerBeachHousePokemonSurfboardText::
 	text "It's a PIKACHU-"
-	line "sized SURFBOARD!"
+	line "sized SURFboard!"
 	done

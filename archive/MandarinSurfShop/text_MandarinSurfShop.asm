@@ -63,6 +63,11 @@ _MandarinSurfShopGirlText::
 	cont "CERULEAN CITY."
 	done
 
+_NewSurfboardText::
+	text "A shiny new"
+	line "SURFBOARD!"
+	done
+
 _MandarinPokecenterCooltrainerFText::
 	text "SURFBOARDs are"
 	line "so cool!"

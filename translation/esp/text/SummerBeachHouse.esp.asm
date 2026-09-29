@@ -167,7 +167,7 @@ _SummerBeachHousePrinterCheckItOutText::
 ;	text_end
 
 _SummerBeachHousePokemonSurfboardText::
-	text "¡Es una TABLA SURF"
+	text "¡Es una tabla SURF"
 	line "del tamaño de"
 	cont "PIKACHU!"
 	done

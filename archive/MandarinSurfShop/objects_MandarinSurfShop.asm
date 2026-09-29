@@ -28,3 +28,12 @@ MandarinSurfShop_Object:
 ;	hidden_event  1,  5,  $0, PrintNewSurfboardText
 ;	hidden_event  7,  4,  $0, PrintNewSurfboardText
 ;	db -1 ; end
+
+; in new_bike.asm
+;PrintNewSurfboardText:  ; marcelnote - new for Mandarin Surf Shop
+;	call EnableAutoTextBoxDrawing
+;	tx_pre_jump NewSurfboardText
+
+;NewSurfboardText:: ; marcelnote - new for Mandarin Surf Shop
+;	text_far _NewSurfboardText
+;	text_end

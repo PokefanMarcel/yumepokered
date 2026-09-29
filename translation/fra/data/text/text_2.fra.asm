@@ -187,11 +187,6 @@ _NewBicycleText::
 	line "toute neuve! Top!"
 	done
 
-_NewSurfboardText::
-	text "Une PLANCHE DE"
-	line "SURF toute neuve!"
-	done
-
 _PushStartText::
 	text "START et...paf!"
 	line "V'là le MENU!"

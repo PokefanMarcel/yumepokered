@@ -195,12 +195,6 @@ _NewBicycleText::
 	line "y reluciente!"
 	done
 
-; TODO - Spanish translation
-_NewSurfboardText::  ; marcelnote - new for Mandarin Surf Shop
-	text "A shiny new"
-	line "SURFBOARD!"
-	done
-
 _PushStartText::
 	text "¡Pulsa START para"
 	line "abrir el MENÚ!"

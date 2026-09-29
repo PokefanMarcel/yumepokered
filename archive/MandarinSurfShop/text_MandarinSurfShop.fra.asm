@@ -65,6 +65,10 @@ _MandarinSurfShopGirlText::
 	cont "AZURIA."
 	done
 
+_NewSurfboardText::
+	text "Une PLANCHE DE"
+	line "SURF toute neuve!"
+	done
 
 _MandarinPokecenterCooltrainerFText::
 	text "Je veux une"

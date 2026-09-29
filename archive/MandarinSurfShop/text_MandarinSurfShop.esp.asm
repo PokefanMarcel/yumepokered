@@ -63,6 +63,11 @@ _MandarinSurfShopGirlText::
 	cont "CIUDAD CELESTE."
 	done
 
+_NewSurfboardText::
+	text "¡Una TABLA SURF"
+	line "nueva y brillante!"
+	done
+
 _MandarinIslandSurfShopSignText::
 	text "¡Surca el océano!"
 	line "FIEBRE DE OLAS"
