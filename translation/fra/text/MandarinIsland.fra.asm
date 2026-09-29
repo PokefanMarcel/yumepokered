@@ -115,7 +115,7 @@ _MandarinIslandSignText::
 	done
 
 _MandarinIslandMrHyperHouseSignText::
-	text "MAISON de"
+	text "MAISON DE"
 	line "PAPI ULTIME"
 	done
 

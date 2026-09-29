@@ -1,6 +1,6 @@
 ; marcelnote - new location
 
-_MrHyperIntroText:: ; marcelnote - Hyper Training
+_MandarinMrHypersHouseMrHyperIntroText:: ; marcelnote - Hyper Training
 	text "Appelle-moi"
 	line "PAPI ULTIME!"
 
@@ -16,18 +16,18 @@ _MrHyperIntroText:: ; marcelnote - Hyper Training
 	para "Ca te tente?"
 	prompt
 
-_MrHyperOfferText::
+_MandarinMrHypersHouseMrHyperOfferText::
 	text "Un entraînement"
 	line "ULTIME contre"
 	cont "une CAPSULE ARG.?"
 	done
 
-_MrHyperNoCapsText::
+_MandarinMrHypersHouseMrHyperNoCapsText::
 	text "Oh, t'as pas de"
 	line "CAPSULE ARG.?"
 	done
 
-_MrHyperTooYoungText::
+_MandarinMrHypersHouseMrHyperTooYoungText::
 	text "Mon entraînement"
 	line "est trop ULTIME"
 	cont "pour les #MON"
@@ -35,29 +35,29 @@ _MrHyperTooYoungText::
 	cont "inférieur à 50!"
 	prompt
 
-_MrHyperAlreadyPerfectText::
+_MandarinMrHypersHouseMrHyperAlreadyPerfectText::
 	text "Ce #MON est"
 	line "déjà parfait!"
 	prompt
 
-_MrHyperStatAlreadyMaxedText::
+_MandarinMrHypersHouseMrHyperStatAlreadyMaxedText::
 	text "Cette stat a déjà"
 	line "atteint son pot-"
 	cont "entiel maximum!"
 	prompt
 
-_MrHyperWhichStatText::
+_MandarinMrHypersHouseMrHyperWhichStatText::
 	text "Quelle stat veux-"
 	line "tu entraîner?"
 	done
 
-_MrHyperTrainingText::
+_MandarinMrHypersHouseMrHyperTrainingText::
 	text "Prépare-toi à"
 	line "l'entraînement"
 	cont "ULTIME!"
 	prompt
 
-_MrHyperTrainedText::
+_MandarinMrHypersHouseMrHyperTrainedText::
 	text "Ton @"
 	text_ram wNameBuffer
 	text " est"
@@ -66,8 +66,24 @@ _MrHyperTrainedText::
 	para "On continue?"
 	done
 
-_MrHyperByeText::
+_MandarinMrHypersHouseMrHyperByeText::
 	text "Reviens quand tu"
 	line "veux! Je serai"
 	cont "toujours ULTIME!"
+	done
+
+_MandarinMrHypersHouseBookText::
+	text "Ce sont les notes"
+	line "de PAPI ULTIME!"
+
+	para "La stat de VIE"
+	line "ne peut pas être"
+	cont "entraînée"
+	cont "directement."
+
+	para "Mais pas de souci!"
+	line "L'entraînement"
+	cont "ULTIME des autres"
+	cont "stats fera aussi"
+	cont "monter la VIE!"
 	done

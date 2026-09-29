@@ -12,6 +12,7 @@ MandarinMrHyperHouse_Object:
 	def_bg_events
 
 	def_object_events
-	object_event  1,  5, SPRITE_GRAMPS, STAY, RIGHT, TEXT_MANDARINMRHYPERHOUSE_MR_HYPER
+	object_event  2,  3, SPRITE_GRAMPS, STAY, RIGHT, TEXT_MANDARINMRHYPERHOUSE_MR_HYPER
+	object_event  4,  4, SPRITE_POKEDEX, STAY, NONE, TEXT_MANDARINMRHYPERHOUSE_BOOK
 
 	def_warps_to MANDARIN_MR_HYPER_HOUSE

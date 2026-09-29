@@ -4,9 +4,10 @@ MandarinMrHyperHouse_Script:
 
 MandarinMrHyperHouse_TextPointers:
 	def_text_pointers
-	dw_const MandarinMrHyperHouseMrHyperText,      TEXT_MANDARINMRHYPERHOUSE_MR_HYPER
+	dw_const MandarinMrHypersHouseMrHyperText,      TEXT_MANDARINMRHYPERHOUSE_MR_HYPER
+	dw_const MandarinMrHypersHouseBookText,         TEXT_MANDARINMRHYPERHOUSE_BOOK
 
-MandarinMrHyperHouseMrHyperText: ; marcelnote - Mr. Hyper trades one Bottle Cap for one maximized DV
+MandarinMrHypersHouseMrHyperText: ; marcelnote - Mr. Hyper trades one Bottle Cap for one maximized DV
 	text_asm
 	call SaveScreenTilesToBuffer2 ; used in RestoreScreenTilesAndReloadTilePatterns
 	CheckAndSetEvent EVENT_MET_MR_HYPER
@@ -185,41 +186,45 @@ MandarinMrHyperHouseMrHyperText: ; marcelnote - Mr. Hyper trades one Bottle Cap 
 	jp LoadGBPal
 
 .IntroText
-	text_far _MrHyperIntroText
+	text_far _MandarinMrHypersHouseMrHyperIntroText
 	text_end
 
 .OfferText
-	text_far _MrHyperOfferText
+	text_far _MandarinMrHypersHouseMrHyperOfferText
 	text_end
 
 .NoCapsText
-	text_far _MrHyperNoCapsText
+	text_far _MandarinMrHypersHouseMrHyperNoCapsText
 	text_end
 
 .TooYoungText
-	text_far _MrHyperTooYoungText
+	text_far _MandarinMrHypersHouseMrHyperTooYoungText
 	text_end
 
 .AlreadyPerfectText
-	text_far _MrHyperAlreadyPerfectText
+	text_far _MandarinMrHypersHouseMrHyperAlreadyPerfectText
 	text_end
 
 .StatAlreadyMaxedText
-	text_far _MrHyperStatAlreadyMaxedText
+	text_far _MandarinMrHypersHouseMrHyperStatAlreadyMaxedText
 	text_end
 
 .WhichStatText
-	text_far _MrHyperWhichStatText
+	text_far _MandarinMrHypersHouseMrHyperWhichStatText
 	text_end
 
 .TrainingText
-	text_far _MrHyperTrainingText
+	text_far _MandarinMrHypersHouseMrHyperTrainingText
 	text_end
 
 .TrainedText
-	text_far _MrHyperTrainedText
+	text_far _MandarinMrHypersHouseMrHyperTrainedText
 	text_end
 
 .ByeText
-	text_far _MrHyperByeText
+	text_far _MandarinMrHypersHouseMrHyperByeText
+	text_end
+
+MandarinMrHypersHouseBookText:
+	text_far _MandarinMrHypersHouseBookText
 	text_end

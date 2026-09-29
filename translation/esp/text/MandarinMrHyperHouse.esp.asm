@@ -1,6 +1,6 @@
 ; marcelnote - new location
 
-_MrHyperIntroText:: ; marcelnote - Hyper Training
+_MandarinMrHypersHouseMrHyperIntroText:: ; marcelnote - Hyper Training
 	; TODO - Spanish translation
 	text "Call me MR.HYPER!"
 
@@ -16,52 +16,52 @@ _MrHyperIntroText:: ; marcelnote - Hyper Training
 	para "How about it?"
 	prompt
 
-_MrHyperOfferText::
+_MandarinMrHypersHouseMrHyperOfferText::
 	; TODO - Spanish translation
 	text "Want me to HYPER"
 	line "TRAIN a #MON"
 	cont "for a BOTTLE CAP?"
 	done
 
-_MrHyperNoCapsText::
+_MandarinMrHypersHouseMrHyperNoCapsText::
 	; TODO - Spanish translation
 	text "No BOTTLE CAP?"
 	line "Not even one?"
 	done
 
-_MrHyperTooYoungText::
+_MandarinMrHypersHouseMrHyperTooYoungText::
 	; TODO - Spanish translation
 	text "Only #MON above"
 	line "L50 can handle"
 	cont "HYPER TRAINING!"
 	prompt
 
-_MrHyperAlreadyPerfectText::
+_MandarinMrHypersHouseMrHyperAlreadyPerfectText::
 	; TODO - Spanish translation
 	text "This #MON is"
 	line "already perfect!"
 	prompt
 
-_MrHyperStatAlreadyMaxedText::
+_MandarinMrHypersHouseMrHyperStatAlreadyMaxedText::
 	; TODO - Spanish translation
 	text "That stat is"
 	line "already at its"
 	cont "full potential!"
 	prompt
 
-_MrHyperWhichStatText::
+_MandarinMrHypersHouseMrHyperWhichStatText::
 	; TODO - Spanish translation
 	text "Which stat should"
 	line "I train?"
 	done
 
-_MrHyperTrainingText::
+_MandarinMrHypersHouseMrHyperTrainingText::
 	; TODO - Spanish translation
 	text "Get ready for some"
 	line "HYPER TRAINING!"
 	prompt
 
-_MrHyperTrainedText::
+_MandarinMrHypersHouseMrHyperTrainedText::
 	; TODO - Spanish translation
 	text "@"
 	text_ram wNameBuffer
@@ -71,8 +71,23 @@ _MrHyperTrainedText::
 	para "Train some more?"
 	done
 
-_MrHyperByeText::
+_MandarinMrHypersHouseMrHyperByeText::
 	; TODO - Spanish translation
 	text "Come back anytime!"
 	line "I'll be HYPER!"
+	done
+
+_MandarinMrHypersHouseBookText::
+	; TODO - Spanish translation
+	text "MR.HYPER's"
+	line "TRAINING NOTES!"
+
+	para "HEALTH can't be"
+	line "trained directly."
+
+	para "But don't worry!"
+	line "HYPER TRAINING"
+	cont "the other stats"
+	cont "will make HEALTH"
+	cont "rise as well!"
 	done

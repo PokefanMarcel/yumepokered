@@ -52,12 +52,12 @@ _PalletTownSignText::
 	done
 
 _PalletTownPlayersHouseSignText::
-	text "Maison de"
+	text "MAISON DE" ; marcelnote - was "Maison de"
 	line "<PLAYER>"
 	done
 
 _PalletTownRivalsHouseSignText::
-	text "Maison de"
+	text "MAISON DE" ; marcelnote - was "Maison de"
 	line "<RIVAL>"
 	done
 
@@ -83,6 +83,6 @@ _PalletTownYellowsHouseSignJustMovedInText:: ; marcelnote - added Yellow's house
 	done
 
 _PalletTownYellowsHouseSignText:: ; marcelnote - added Yellow's house
-	text "Maison de"
+	text "MAISON DE"
 	line "YELLOW"
 	done
