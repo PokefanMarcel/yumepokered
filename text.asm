@@ -616,7 +616,7 @@ SECTION "Text 11", ROMX
 IF DEF(_FRA)
 	INCLUDE "translation/fra/text/MandarinIsland.fra.asm"         ; marcelnote - new location
 	INCLUDE "translation/fra/text/MandarinPokecenterMart.fra.asm" ; marcelnote - new location
-	INCLUDE "translation/fra/text/MandarinMrHyperHouse.fra.asm"   ; marcelnote - new location
+	INCLUDE "translation/fra/text/MandarinMrHypersHouse.fra.asm"  ; marcelnote - new location
 	INCLUDE "translation/fra/text/MandarinHotel.fra.asm"          ; marcelnote - new location
 	INCLUDE "translation/fra/text/MandarinSilphCo.fra.asm"        ; marcelnote - new location
 	INCLUDE "translation/fra/text/SilphFactory1F.fra.asm"         ; marcelnote - new location
@@ -626,7 +626,7 @@ IF DEF(_FRA)
 ELIF DEF(_ESP)
 	INCLUDE "translation/esp/text/MandarinIsland.esp.asm"         ; marcelnote - new location
 	INCLUDE "translation/esp/text/MandarinPokecenterMart.esp.asm" ; marcelnote - new location
-	INCLUDE "translation/esp/text/MandarinMrHyperHouse.esp.asm"   ; marcelnote - new location
+	INCLUDE "translation/esp/text/MandarinMrHypersHouse.esp.asm"  ; marcelnote - new location
 	INCLUDE "translation/esp/text/MandarinHotel.esp.asm"          ; marcelnote - new location
 	INCLUDE "translation/esp/text/MandarinSilphCo.esp.asm"        ; marcelnote - new location
 	INCLUDE "translation/esp/text/SilphFactory1F.esp.asm"         ; marcelnote - new location
@@ -636,7 +636,7 @@ ELIF DEF(_ESP)
 ELSE
 	INCLUDE "text/MandarinIsland.asm"           ; marcelnote - new location
 	INCLUDE "text/MandarinPokecenterMart.asm"   ; marcelnote - new location
-	INCLUDE "text/MandarinMrHyperHouse.asm"     ; marcelnote - new location
+	INCLUDE "text/MandarinMrHypersHouse.asm"    ; marcelnote - new location
 	INCLUDE "text/MandarinHotel.asm"            ; marcelnote - new location
 	INCLUDE "text/MandarinSilphCo.asm"          ; marcelnote - new location
 	INCLUDE "text/SilphFactory1F.asm"           ; marcelnote - new location

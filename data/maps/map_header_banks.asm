@@ -199,7 +199,7 @@ MapHeaderBanks::
 	db BANK(CinnabarVolcano1FB1F_h)     ; marcelnote - new location
 	db BANK(CinnabarVolcano2F_h)        ; marcelnote - new location
 	db BANK(MandarinPokecenterMart_h)   ; marcelnote - new location
-	db BANK(MandarinMrHyperHouse_h)     ; marcelnote - new location
+	db BANK(MandarinMrHypersHouse_h)    ; marcelnote - new location
 	db BANK(MandarinHotel_h)            ; marcelnote - new location
 	db BANK(MandarinSilphCo_h)          ; marcelnote - new location
 	db BANK(DrJabarasLab_h)             ; marcelnote - new location

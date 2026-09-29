@@ -199,7 +199,7 @@ MapHeaderPointers::
 	dw CinnabarVolcano1FB1F_h    ; marcelnote - new location
 	dw CinnabarVolcano2F_h       ; marcelnote - new location
 	dw MandarinPokecenterMart_h  ; marcelnote - new location
-	dw MandarinMrHyperHouse_h    ; marcelnote - new location
+	dw MandarinMrHypersHouse_h   ; marcelnote - new location
 	dw MandarinHotel_h           ; marcelnote - new location
 	dw MandarinSilphCo_h         ; marcelnote - new location
 	dw DrJabarasLab_h            ; marcelnote - new location

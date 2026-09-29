@@ -114,7 +114,7 @@ _MandarinIslandSignText::
 	cont "soleil doré"
 	done
 
-_MandarinIslandMrHyperHouseSignText::
+_MandarinIslandMrHypersHouseSignText::
 	text "MAISON DE"
 	line "PAPI ULTIME"
 	done

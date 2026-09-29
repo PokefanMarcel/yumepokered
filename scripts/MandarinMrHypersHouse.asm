@@ -1,11 +1,11 @@
 ; marcelnote - new location
-MandarinMrHyperHouse_Script:
+MandarinMrHypersHouse_Script:
 	jp EnableAutoTextBoxDrawing
 
-MandarinMrHyperHouse_TextPointers:
+MandarinMrHypersHouse_TextPointers:
 	def_text_pointers
-	dw_const MandarinMrHypersHouseMrHyperText,      TEXT_MANDARINMRHYPERHOUSE_MR_HYPER
-	dw_const MandarinMrHypersHouseBookText,         TEXT_MANDARINMRHYPERHOUSE_BOOK
+	dw_const MandarinMrHypersHouseMrHyperText,      TEXT_MANDARINMRHYPERSHOUSE_MR_HYPER
+	dw_const MandarinMrHypersHouseBookText,         TEXT_MANDARINMRHYPERSHOUSE_BOOK
 
 MandarinMrHypersHouseMrHyperText: ; marcelnote - Mr. Hyper trades one Bottle Cap for one maximized DV
 	text_asm

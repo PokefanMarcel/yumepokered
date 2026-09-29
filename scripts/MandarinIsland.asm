@@ -73,23 +73,23 @@ MandarinIslandPlayerMovingUpScript:
 MandarinIsland_TextPointers:
 	def_text_pointers
 	; objects
-	dw_const MandarinIslandFisherText,         TEXT_MANDARINISLAND_FISHER
-	dw_const MandarinIslandLittleGirlText,     TEXT_MANDARINISLAND_LITTLE_GIRL
-	dw_const MandarinIslandRockerText,         TEXT_MANDARINISLAND_ROCKER
-	dw_const MandarinIslandSwimmerText,        TEXT_MANDARINISLAND_SWIMMER
-	dw_const MandarinIslandSwimmerFText,       TEXT_MANDARINISLAND_SWIMMER_F
-	dw_const MandarinIslandCooltrainerMText,   TEXT_MANDARINISLAND_COOLTRAINER_M
-	dw_const MandarinIslandSilphWorkerFText,   TEXT_MANDARINISLAND_SILPH_WORKER_F
-	dw_const MandarinIslandGirlText,           TEXT_MANDARINISLAND_GIRL
-	dw_const MandarinIslandSailorFerriesText,  TEXT_MANDARINISLAND_SAILOR_FERRIES
+	dw_const MandarinIslandFisherText,            TEXT_MANDARINISLAND_FISHER
+	dw_const MandarinIslandLittleGirlText,        TEXT_MANDARINISLAND_LITTLE_GIRL
+	dw_const MandarinIslandRockerText,            TEXT_MANDARINISLAND_ROCKER
+	dw_const MandarinIslandSwimmerText,           TEXT_MANDARINISLAND_SWIMMER
+	dw_const MandarinIslandSwimmerFText,          TEXT_MANDARINISLAND_SWIMMER_F
+	dw_const MandarinIslandCooltrainerMText,      TEXT_MANDARINISLAND_COOLTRAINER_M
+	dw_const MandarinIslandSilphWorkerFText,      TEXT_MANDARINISLAND_SILPH_WORKER_F
+	dw_const MandarinIslandGirlText,              TEXT_MANDARINISLAND_GIRL
+	dw_const MandarinIslandSailorFerriesText,     TEXT_MANDARINISLAND_SAILOR_FERRIES
 	; bg
-	dw_const MandarinIslandSignText,           TEXT_MANDARINISLAND_SIGN
-	dw_const MartSignText,                     TEXT_MANDARINISLAND_MART_SIGN
-	dw_const PokeCenterSignText,               TEXT_MANDARINISLAND_POKECENTER_SIGN
-	dw_const MandarinIslandMrHyperHouseSignText, TEXT_MANDARINISLAND_MR_HYPER_HOUSE_SIGN
-	dw_const MandarinIslandSilphCoSignText,    TEXT_MANDARINISLAND_SILPH_CO_SIGN
-	dw_const MandarinIslandHotelSignText,      TEXT_MANDARINISLAND_HOTEL_SIGN
-	dw_const MandarinIslandPhoneText,          TEXT_MANDARINISLAND_PHONE
+	dw_const MandarinIslandSignText,              TEXT_MANDARINISLAND_SIGN
+	dw_const MartSignText,                        TEXT_MANDARINISLAND_MART_SIGN
+	dw_const PokeCenterSignText,                  TEXT_MANDARINISLAND_POKECENTER_SIGN
+	dw_const MandarinIslandMrHypersHouseSignText, TEXT_MANDARINISLAND_MR_HYPERS_HOUSE_SIGN
+	dw_const MandarinIslandSilphCoSignText,       TEXT_MANDARINISLAND_SILPH_CO_SIGN
+	dw_const MandarinIslandHotelSignText,         TEXT_MANDARINISLAND_HOTEL_SIGN
+	dw_const MandarinIslandPhoneText,             TEXT_MANDARINISLAND_PHONE
 
 
 MandarinIslandFisherText:
@@ -128,8 +128,8 @@ MandarinIslandSignText:
 	text_far _MandarinIslandSignText
 	text_end
 
-MandarinIslandMrHyperHouseSignText:
-	text_far _MandarinIslandMrHyperHouseSignText
+MandarinIslandMrHypersHouseSignText:
+	text_far _MandarinIslandMrHypersHouseSignText
 	text_end
 
 MandarinIslandSilphCoSignText:

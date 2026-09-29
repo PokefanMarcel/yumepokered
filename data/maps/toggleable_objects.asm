@@ -201,7 +201,7 @@ ToggleableObjectMapPointers:
 	dw CinnabarVolcano1FB1FToggleData      ; CINNABAR_VOLCANO_1FB1F
 	dw CinnabarVolcano2FToggleData         ; CINNABAR_VOLCANO_2F
 	dw NoToggleData                        ; MANDARIN_POKECENTER_MART
-	dw NoToggleData                        ; MANDARIN_MR_HYPER_HOUSE
+	dw NoToggleData                        ; MANDARIN_MR_HYPERS_HOUSE
 	dw MandarinHotelToggleData             ; MANDARIN_HOTEL
 	dw MandarinSilphCoToggleData           ; MANDARIN_SILPH_CO
 	dw NoToggleData                        ; DR_JABARAS_LAB

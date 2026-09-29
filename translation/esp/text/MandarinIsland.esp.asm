@@ -124,7 +124,7 @@ _MandarinIslandSignText::
 	cont "Orange Haven"
 	done
 
-_MandarinIslandMrHyperHouseSignText::
+_MandarinIslandMrHypersHouseSignText::
 	text "CASA de"
 	line "DON EXTREMO"
 	done

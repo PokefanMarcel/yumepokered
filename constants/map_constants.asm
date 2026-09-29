@@ -221,7 +221,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const CINNABAR_VOLCANO_1FB1F,        14, 18 ; marcelnote - new map
 	map_const CINNABAR_VOLCANO_2F,           17, 15 ; marcelnote - new map
 	map_const MANDARIN_POKECENTER_MART,      12,  4 ; marcelnote - new map
-	map_const MANDARIN_MR_HYPER_HOUSE,        4,  4 ; marcelnote - new map
+	map_const MANDARIN_MR_HYPERS_HOUSE,       4,  4 ; marcelnote - new map
 	map_const MANDARIN_HOTEL,                33,  6 ; marcelnote - new map
 	map_const MANDARIN_SILPH_CO,              4, 25 ; marcelnote - new map
 	map_const DR_JABARAS_LAB,                 6,  4 ; marcelnote - new map
