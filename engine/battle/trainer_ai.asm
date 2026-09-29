@@ -1540,7 +1540,11 @@ SwitchEnemyMon:
 	; switching in a new mon in response to this switch.
 	ld a, 1
 	ld [wFirstMonsNotOutYet], a
+	ld a, [wCurrentMenuItem] ; marcelnote - preserve the player's selected move slot for Mimic
+	push af
 	callfar EnemySendOut
+	pop af
+	ld [wCurrentMenuItem], a
 	xor a
 	ld [wFirstMonsNotOutYet], a
 
