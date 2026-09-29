@@ -19,3 +19,12 @@ MandarinSurfShop_Object:
 	object_event  2,  2, SPRITE_GIRL, STAY, UP, TEXT_MANDARINSURFSHOP_GIRL
 
 	def_warps_to MANDARIN_SURF_SHOP
+
+; in hidden_events.asm
+;MandarinSurfShopHiddenEvents:
+;	hidden_event  1,  4,  $0, PrintNewSurfboardText
+;	hidden_event  3,  1,  $0, PrintNewSurfboardText
+;	hidden_event  1,  3,  $0, PrintNewSurfboardText
+;	hidden_event  1,  5,  $0, PrintNewSurfboardText
+;	hidden_event  7,  4,  $0, PrintNewSurfboardText
+;	db -1 ; end

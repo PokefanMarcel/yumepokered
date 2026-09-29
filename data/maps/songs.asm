@@ -201,7 +201,7 @@ MapSongBanks::
 	db MUSIC_DUNGEON2, 0          ; CINNABAR_VOLCANO_1FB1F   ; marcelnote - new location
 	db MUSIC_DUNGEON2, 0          ; CINNABAR_VOLCANO_2F      ; marcelnote - new location
 	db MUSIC_POKECENTER, 0        ; MANDARIN_POKECENTER_MART ; marcelnote - new location
-	db MUSIC_CINNABAR, 0          ; MANDARIN_SURF_SHOP       ; marcelnote - new location
+	db MUSIC_CINNABAR, 0          ; MANDARIN_MR_HYPER_HOUSE ; marcelnote - new location
 	db MUSIC_CINNABAR, 0          ; MANDARIN_HOTEL           ; marcelnote - new location
 	db MUSIC_CINNABAR, 0          ; MANDARIN_SILPH_CO        ; marcelnote - new location
 	db MUSIC_CINNABAR_MANSION, 0  ; DR_JABARAS_LAB           ; marcelnote - new location

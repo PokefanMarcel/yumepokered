@@ -86,7 +86,7 @@ MandarinIsland_TextPointers:
 	dw_const MandarinIslandSignText,           TEXT_MANDARINISLAND_SIGN
 	dw_const MartSignText,                     TEXT_MANDARINISLAND_MART_SIGN
 	dw_const PokeCenterSignText,               TEXT_MANDARINISLAND_POKECENTER_SIGN
-	dw_const MandarinIslandSurfShopSignText,   TEXT_MANDARINISLAND_SURFSHOP_SIGN
+	dw_const MandarinIslandMrHyperHouseSignText, TEXT_MANDARINISLAND_MR_HYPER_HOUSE_SIGN
 	dw_const MandarinIslandSilphCoSignText,    TEXT_MANDARINISLAND_SILPH_CO_SIGN
 	dw_const MandarinIslandHotelSignText,      TEXT_MANDARINISLAND_HOTEL_SIGN
 	dw_const MandarinIslandPhoneText,          TEXT_MANDARINISLAND_PHONE
@@ -128,8 +128,8 @@ MandarinIslandSignText:
 	text_far _MandarinIslandSignText
 	text_end
 
-MandarinIslandSurfShopSignText:
-	text_far _MandarinIslandSurfShopSignText
+MandarinIslandMrHyperHouseSignText:
+	text_far _MandarinIslandMrHyperHouseSignText
 	text_end
 
 MandarinIslandSilphCoSignText:

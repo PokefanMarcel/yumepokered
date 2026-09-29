@@ -2893,10 +2893,10 @@ INCLUDE "data/tilesets/water_tilesets.asm"
 ; return e = 1 if a bite, bc = level,species
 ; return e = 0 if no bite
 ReadRodData:
-	; One roll: 0-4 bottle cap, 5-63 no bite, 64-255 Pokémon.
+	; One roll: 0-9 bottle cap, 10-63 no bite, 64-255 Pokémon.
 	call Random
 	ld e, 2 ; e = 2 if bottle cap, even on maps without fish
-	cp 5
+	cp 10
 	ret c
 	push af ; save a = random roll
 

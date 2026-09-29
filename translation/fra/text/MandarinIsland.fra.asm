@@ -114,10 +114,9 @@ _MandarinIslandSignText::
 	cont "soleil doré"
 	done
 
-_MandarinIslandSurfShopSignText::
-	text "Glisse sur les"
-	line "flots!"
-	cont "...SURF A GOGO"
+_MandarinIslandMrHyperHouseSignText::
+	text "MAISON de"
+	line "PAPI ULTIME"
 	done
 
 _MandarinIslandSilphCoSignText::

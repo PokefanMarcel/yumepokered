@@ -67,6 +67,7 @@ _SafariZoneSecretHouseFishingGuruHM03NoRoomText::
 	done
 
 _SafariZoneSecretHousePosterText:: ; marcelnote - new
+	; TODO - advertised Mandarin Surf Shop is currently disabled
 	text "Fans de SURF,"
 	line "venez visiter"
 	cont "notre magasin sur"

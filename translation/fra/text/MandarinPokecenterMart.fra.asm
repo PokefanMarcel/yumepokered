@@ -15,12 +15,14 @@ _MandarinPokecenterSuperNerdText::
 	done
 
 _MandarinPokecenterCooltrainerFText::
-	text "Je veux une"
-	line "PLANCHE DE SURF!"
+	text "Les gens viennent"
+	line "de loin pour voir"
+	cont "PAPI ULTIME."
 
-	para "Si seulement elles"
-	line "étaient moins"
-	cont "chères..."
+	para "Son entraînement"
+	line "ULTIME pousse les"
+	cont "#MON au-delà"
+	cont "de leurs limites!"
 	done
 
 _MandarinPokecenterBenchGuyText::

@@ -198,7 +198,7 @@ WildDataPointers:
 	dw CinnabarVolcano1FB1FWildMons    ; CINNABAR_VOLCANO_1FB1F       ; marcelnote - new location
 	dw CinnabarVolcano2FWildMons       ; CINNABAR_VOLCANO_2F          ; marcelnote - new location
 	dw NothingWildMons                 ; MANDARIN_POKECENTER_MART     ; marcelnote - new location
-	dw NothingWildMons                 ; MANDARIN_SURF_SHOP           ; marcelnote - new location
+	dw NothingWildMons                 ; MANDARIN_MR_HYPER_HOUSE     ; marcelnote - new location
 	dw NothingWildMons                 ; MANDARIN_HOTEL               ; marcelnote - new location
 	dw NothingWildMons                 ; MANDARIN_SILPH_CO            ; marcelnote - new location
 	dw NothingWildMons                 ; DR_JABARAS_LAB               ; marcelnote - new location

@@ -90,7 +90,6 @@ HiddenEventMaps:
 	db CINNABAR_VOLCANO_2F       ; marcelnote - new
 	db POKEMON_ACADEMY_3F4F      ; marcelnote - new
 	db MANDARIN_POKECENTER_MART  ; marcelnote - new
-	db MANDARIN_SURF_SHOP        ; marcelnote - new
 	db SILPH_FACTORY_1F          ; marcelnote - new
 	db SILPH_FACTORY_2F          ; marcelnote - new
 	db MT_SILVER_1F              ; marcelnote - new
@@ -192,7 +191,6 @@ HiddenEventPointers:
 	dw CinnabarVolcano2FHiddenEvents      ; marcelnote - new
 	dw PokemonAcademy3F4FHiddenEvents     ; marcelnote - new
 	dw MandarinPokecenterMartHiddenEvents ; marcelnote - new
-	dw MandarinSurfShopHiddenEvents       ; marcelnote - new
 	dw SilphFactory1FHiddenEvents         ; marcelnote - new
 	dw SilphFactory2FHiddenEvents         ; marcelnote - new
 	dw MtSilver1FHiddenEvents             ; marcelnote - new
@@ -671,14 +669,6 @@ CinnabarVolcano2FHiddenEvents:  ; marcelnote - new
 
 PokemonAcademy3F4FHiddenEvents:  ; marcelnote - new
 	hidden_event 24,  0,  $0, OpenPokemonCenterPC
-	db -1 ; end
-
-MandarinSurfShopHiddenEvents:  ; marcelnote - new
-	hidden_event  1,  4,  $0, PrintNewSurfboardText
-	hidden_event  3,  1,  $0, PrintNewSurfboardText
-	hidden_event  1,  3,  $0, PrintNewSurfboardText
-	hidden_event  1,  5,  $0, PrintNewSurfboardText
-	hidden_event  7,  4,  $0, PrintNewSurfboardText
 	db -1 ; end
 
 SilphFactory1FHiddenEvents:  ; marcelnote - new

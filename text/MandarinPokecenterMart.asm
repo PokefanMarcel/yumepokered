@@ -15,11 +15,13 @@ _MandarinPokecenterSuperNerdText::
 	done
 
 _MandarinPokecenterCooltrainerFText::
-	text "SURFBOARDs are"
-	line "so cool!"
+	text "Many trainers come"
+	line "to our island to"
+	cont "visit MR.HYPER."
 
-	para "If only they were"
-	line "less expensive..."
+	para "His HYPER TRAINING"
+	line "pushes #MON"
+	cont "to their limits!"
 	done
 
 _MandarinPokecenterBenchGuyText::

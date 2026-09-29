@@ -40,8 +40,9 @@ StatusScreenToNextLevelText:
 StatusScreenFieldMoveText:
 	db "COMP.@"
 
-StatsText:
+StatsText::
 	db   "ATTAQUE"
 	next "DEFENSE"
 	next "VITESSE"
 	next "SPECIAL@"
+StatsTextEnd::

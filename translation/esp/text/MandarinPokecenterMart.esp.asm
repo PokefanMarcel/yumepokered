@@ -17,11 +17,15 @@ _MandarinPokecenterSuperNerdText::
 
 ; TODO - Spanish translation
 _MandarinPokecenterCooltrainerFText::
-	text "SURFBOARDs are"
-	line "so cool!"
+	text "Vienen muchos"
+	line "entrenadores a"
+	cont "nuestra isla para"
+	cont "ver a DON EXTREMO."
 
-	para "If only they were"
-	line "less expensive..."
+	para "¡Su ENTRENAMIENTO"
+	line "EXTREMO lleva a"
+	cont "los #MON al"
+	cont "límite!"
 	done
 
 ; TODO - Spanish translation

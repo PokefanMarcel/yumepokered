@@ -62,3 +62,16 @@ _MandarinSurfShopGirlText::
 	cont "CYCLE store in"
 	cont "CERULEAN CITY."
 	done
+
+_MandarinPokecenterCooltrainerFText::
+	text "SURFBOARDs are"
+	line "so cool!"
+
+	para "If only they were"
+	line "less expensive..."
+	done
+
+_MandarinIslandSurfShopSignText::
+	text "Ride the ocean!"
+	line "WAVE CRAZE"
+	done

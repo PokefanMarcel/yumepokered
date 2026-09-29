@@ -41,8 +41,9 @@ StatusScreenToNextLevelText:
 StatusScreenFieldMoveText:
 	db "SKILL@"
 
-StatsText:
+StatsText::
 	db   "ATAQUE"
 	next "DEFENSA"
 	next "VELOCID."
 	next "ESPECIAL@"
+StatsTextEnd::

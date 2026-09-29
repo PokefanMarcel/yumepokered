@@ -124,10 +124,9 @@ _MandarinIslandSignText::
 	cont "Orange Haven"
 	done
 
-; TODO - Spanish translation
-_MandarinIslandSurfShopSignText::
-	text "Ride the ocean!"
-	line "WAVE CRAZE"
+_MandarinIslandMrHyperHouseSignText::
+	text "CASA de"
+	line "DON EXTREMO"
 	done
 
 ; TODO - Spanish translation

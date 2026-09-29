@@ -68,4 +68,8 @@ _MandarinSurfShopGirlText::
 	line "runs the MIRACLE"
 	cont "CYCLE store in"
 	cont "CERULEAN CITY."
+
+_MandarinIslandSurfShopSignText::
+	text "¡Surca el océano!"
+	line "FIEBRE DE OLAS"
 	done

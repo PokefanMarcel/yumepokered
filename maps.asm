@@ -1085,10 +1085,10 @@ INCLUDE "scripts/OrangeRoute1.asm"
 INCLUDE "data/maps/objects/OrangeRoute1.asm"
 OrangeRoute1_Blocks:: INCBIN "maps/OrangeRoute1.blk"
 
-INCLUDE "data/maps/headers/MandarinSurfShop.asm" ; marcelnote - new location
-INCLUDE "scripts/MandarinSurfShop.asm"
-INCLUDE "data/maps/objects/MandarinSurfShop.asm"
-MandarinSurfShop_Blocks:: INCBIN "maps/MandarinSurfShop.blk"
+INCLUDE "data/maps/headers/MandarinMrHyperHouse.asm" ; marcelnote - new location
+INCLUDE "scripts/MandarinMrHyperHouse.asm"
+INCLUDE "data/maps/objects/MandarinMrHyperHouse.asm"
+MandarinMrHyperHouse_Blocks:: INCBIN "maps/MandarinMrHyperHouse.blk"
 
 INCLUDE "data/maps/headers/MandarinHotel.asm" ; marcelnote - new location
 INCLUDE "scripts/MandarinHotel.asm"

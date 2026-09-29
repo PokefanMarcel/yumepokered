@@ -46,6 +46,7 @@ _SafariZoneSecretHouseFishingGuruHM03NoRoomText::
 
 _SafariZoneSecretHousePosterText:: ; marcelnote - new
 	; traducción por NunWinter
+	; TODO - advertised Mandarin Surf Shop is currently disabled
 	text "Amantes del SURF,"
 	line "visiten nuestra"
 	cont "tienda en ISLA"

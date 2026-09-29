@@ -112,9 +112,8 @@ _MandarinIslandSignText::
 	cont "Orange Haven"
 	done
 
-_MandarinIslandSurfShopSignText::
-	text "Ride the ocean!"
-	line "WAVE CRAZE"
+_MandarinIslandMrHyperHouseSignText::
+	text "MR.HYPER's HOUSE"
 	done
 
 _MandarinIslandSilphCoSignText::

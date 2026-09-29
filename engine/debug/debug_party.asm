@@ -320,6 +320,7 @@ DebugNewGameItemsList: ; marcelnote - moved some to key items pocket
 	db FULL_HEAL, 99
 	db ESCAPE_ROPE, 99
 	db MAX_ELIXIR, 99 ; marcelnote - added
+	db BOTTLE_CAP, 10 ; marcelnote - added
 ;	db TOWN_MAP, 1
 ;	db SECRET_KEY, 1
 ;	db CARD_KEY, 1

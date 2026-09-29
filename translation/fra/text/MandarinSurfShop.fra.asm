@@ -64,3 +64,19 @@ _MandarinSurfShopGirlText::
 	cont "CYCLES A GOGO à"
 	cont "AZURIA."
 	done
+
+
+_MandarinPokecenterCooltrainerFText::
+	text "Je veux une"
+	line "PLANCHE DE SURF!"
+
+	para "Si seulement elles"
+	line "étaient moins"
+	cont "chères..."
+	done
+
+_MandarinIslandSurfShopSignText::
+	text "Glisse sur les"
+	line "flots!"
+	cont "...SURF A GOGO"
+	done

@@ -848,7 +848,7 @@ DEF INDIGO_PLATEAU_EVENTS_END EQU const_value - 1
 	const EVENT_JABARA_RUNNING_TESTS
 	const EVENT_JABARA_RETURNED_FLUTE
 	const EVENT_CALLED_MOM_MANDARIN
-	const EVENT_GOT_SURFBOARD ; marcelnote - new for Surfboard
+	const EVENT_MET_MR_HYPER ; marcelnote - new for Bottle caps
 
 ; Silph Factory events ; marcelnote - new
 	const_next $930
