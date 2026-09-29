@@ -38,7 +38,6 @@ ENDM
 	item_sort_rank SECRET_KEY
 
 	item_sort_rank BIKE_VOUCHER
-	item_sort_rank SURF_VOUCHER
 
 	item_sort_rank DOME_FOSSIL
 	item_sort_rank HELIX_FOSSIL
@@ -107,6 +106,7 @@ ENDM
 	item_sort_rank NUGGET
 	item_sort_rank BOTTLE_CAP
 
+	item_sort_rank ITEM_17
 	item_sort_rank ITEM_19
 	item_sort_rank ITEM_1A
 	item_sort_rank ITEM_1B

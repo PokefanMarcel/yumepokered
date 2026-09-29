@@ -22,7 +22,7 @@ ItemNames::
 	li "POTION"
 	li "BAIT"
 	li "ROCK"
-	li "BON CADEAU" ; marcelnote - new for Surfboard
+	li "ITEM17"
 	li "CAPSULE ARG." ; marcelnote - new for Bottle Caps
 	li "ITEM19"
 	li "ITEM1A"

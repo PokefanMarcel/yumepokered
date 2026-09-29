@@ -22,7 +22,7 @@ KeyItemFlags:
 	dbit FALSE ; POTION
 	dbit TRUE  ; SAFARI_BAIT  ; marcelnote - cleaned badges
 	dbit TRUE  ; SAFARI_ROCK  ; marcelnote - cleaned badges
-	dbit TRUE  ; SURF_VOUCHER ; marcelnote - new for Surfboard
+	dbit TRUE  ; ITEM_17      ; marcelnote - cleaned badges
 	dbit FALSE ; BOTTLE_CAP   ; marcelnote - new for Bottle Caps
 	dbit TRUE  ; ITEM_19      ; marcelnote - cleaned badges
 	dbit TRUE  ; ITEM_1A      ; marcelnote - cleaned badges
