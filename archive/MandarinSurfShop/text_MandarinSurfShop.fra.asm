@@ -80,3 +80,11 @@ _MandarinIslandSurfShopSignText::
 	line "flots!"
 	cont "...SURF A GOGO"
 	done
+
+_SafariZoneSecretHousePosterText::
+	text "Fans de SURF,"
+	line "venez visiter"
+	cont "notre magasin sur"
+	cont "l'ILE MANDARINE!"
+	cont "SURF A GOGO"
+	done

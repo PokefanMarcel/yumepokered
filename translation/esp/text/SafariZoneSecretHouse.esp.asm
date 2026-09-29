@@ -44,12 +44,14 @@ _SafariZoneSecretHouseFishingGuruHM03NoRoomText::
 	cont "tan fabuloso!"
 	done
 
+; TODO - Spanish translation
 _SafariZoneSecretHousePosterText:: ; marcelnote - new
-	; traducción por NunWinter
-	; TODO - advertised Mandarin Surf Shop is currently disabled
-	text "Amantes del SURF,"
-	line "visiten nuestra"
-	cont "tienda en ISLA"
-	cont "MANDARINA!"
-	cont "SURFMANIA"
+	text "Calling all"
+	line "SURF lovers to"
+	cont "the BEACH HOUSE!"
+
+	para "Let's see your"
+	line "coolest flips!"
+
+	para "SURFING MASTER"
 	done

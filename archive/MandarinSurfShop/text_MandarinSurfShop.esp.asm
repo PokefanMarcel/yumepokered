@@ -67,3 +67,12 @@ _MandarinIslandSurfShopSignText::
 	text "¡Surca el océano!"
 	line "FIEBRE DE OLAS"
 	done
+
+_SafariZoneSecretHousePosterText::
+	; traducción por NunWinter
+	text "Amantes del SURF,"
+	line "visiten nuestra"
+	cont "tienda en ISLA"
+	cont "MANDARINA!"
+	cont "SURFMANIA"
+	done

@@ -75,3 +75,10 @@ _MandarinIslandSurfShopSignText::
 	text "Ride the ocean!"
 	line "WAVE CRAZE"
 	done
+
+_SafariZoneSecretHousePosterText::
+	text "SURF lovers, come"
+	line "visit our shop on"
+	cont "MANDARIN ISLAND!"
+	cont "WAVE CRAZE"
+	done
