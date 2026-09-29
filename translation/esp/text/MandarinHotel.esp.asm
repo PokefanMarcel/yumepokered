@@ -156,17 +156,12 @@ _MandarinHotel4FSilphWorkerMText::
 
 ; TODO - Spanish translation
 _MandarinHotel4FSilphWorkerFText::
-	text "I bought a"
-	line "SURFBOARD from"
-	cont "the shop."
+	text "I taught RAICHU"
+	line "to SURF."
 
-	para "But it's RAICHU"
-	line "who is using it"
-	cont "the most!"
-
-	para "I had no idea"
-	line "RAICHU was good"
-	cont "at SURFing!"
+	para "You should see it"
+	line "catch the waves,"
+	cont "it's quite a show!"
 	done
 
 ; TODO - Spanish translation

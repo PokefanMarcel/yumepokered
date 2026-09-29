@@ -136,17 +136,12 @@ _MandarinHotel4FSilphWorkerMText::
 	done
 
 _MandarinHotel4FSilphWorkerFText::
-	text "J'ai acheté une"
-	line "PLANCHE DE SURF"
-	cont "à la boutique."
+	text "J'ai appris SURF"
+	line "à mon RAICHU."
 
-	para "Mais c'est RAICHU"
-	line "qui s'en sert le"
-	cont "plus!"
-
-	para "Je ne savais pas"
-	line "que RAICHU était"
-	cont "doué en SURF!"
+	para "Tu devrais le voir"
+	line "sur les vagues,"
+	cont "quel spectacle!"
 	done
 
 _MandarinHotel4FRaichuText::
