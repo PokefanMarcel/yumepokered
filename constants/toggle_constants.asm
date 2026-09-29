@@ -256,9 +256,10 @@
 	const TOGGLE_MT_SILVER_2F_ULTRA_BALL            ; marcelnote - Ultra Ball
 	const TOGGLE_MT_SILVER_2F_MAX_REVIVE            ; marcelnote - Max Revive
 	const TOGGLE_MT_SILVER_2F_FULL_RESTORE          ; marcelnote - Full Restore
+	const TOGGLE_ROUTE_28_BOTTLE_CAP                ; marcelnote - Bottle Cap
 DEF NUM_TOGGLEABLE_OBJECTS EQU const_value
 	; max objects = 256
-	; current total = 258 – 8 – 3 (end - start - commented out) = 247
+	; current total = 259 – 8 – 3 (end - start - commented out) = 248
 
 ; marcelnote - the list continues here to allow for more than 256 HideShow objects
 ;              but cannot put items which can be picked up

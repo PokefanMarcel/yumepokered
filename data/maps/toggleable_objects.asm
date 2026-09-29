@@ -40,7 +40,7 @@ ToggleableObjectMapPointers:
 	dw NoToggleData            ; ROUTE_23
 	dw Route24ToggleData       ; ROUTE_24
 	dw Route25ToggleData       ; ROUTE_25
-	dw NoToggleData            ; ROUTE_28 ; marcelnote - new location
+	dw Route28ToggleData       ; ROUTE_28 ; marcelnote - new location
 	dw NoToggleData            ; ORANGE_ROUTE_1 ; marcelnote - new location
 	dw RedsYellowsHousesToggleData         ; REDS_YELLOWS_HOUSES ; marcelnote - added to hide Yellow asleep
 	dw BluesAidesHousesToggleData          ; BLUES_AIDES_HOUSES  ; marcelnote - merged Blue's house with new Aide's house
@@ -579,6 +579,8 @@ MtSilver2FToggleData:
 	db MT_SILVER_2F, MTSILVER2F_ULTRA_BALL, ON
 	db MT_SILVER_2F, MTSILVER2F_MAX_REVIVE, ON
 	db MT_SILVER_2F, MTSILVER2F_FULL_RESTORE, ON
+Route28ToggleData:
+	db ROUTE_28, ROUTE28_BOTTLE_CAP, ON
 	assert_table_length NUM_TOGGLEABLE_OBJECTS
 	db -1, 1, ON ; end
 

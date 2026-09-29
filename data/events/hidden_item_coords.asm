@@ -66,5 +66,8 @@ HiddenItemCoords:
 	hidden_item MT_SILVER_1F,                  19,  13 ; marcelnote - new, Ultra Ball
 	hidden_item MT_SILVER_1F,                  18,  23 ; marcelnote - new, Dire Hit
 	hidden_item MT_SILVER_2F,                  14,  29 ; marcelnote - new, Max Potion
+	hidden_item ROUTE_28,                      64,   3 ; marcelnote - new, Rare Candy
+	hidden_item ROUTE_19,                       3,  17 ; marcelnote - new, Bottle Cap
+	hidden_item ORANGE_ROUTE_1,                12,   5 ; marcelnote - new, Bottle Cap
 	assert_max_table_length MAX_HIDDEN_ITEMS
 	db -1 ; end

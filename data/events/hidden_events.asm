@@ -92,6 +92,9 @@ HiddenEventMaps:
 	db MANDARIN_POKECENTER_MART  ; marcelnote - new
 	db SILPH_FACTORY_1F          ; marcelnote - new
 	db SILPH_FACTORY_2F          ; marcelnote - new
+	db ROUTE_19                  ; marcelnote - new
+	db ROUTE_28                  ; marcelnote - new
+	db ORANGE_ROUTE_1            ; marcelnote - new
 	db MT_SILVER_1F              ; marcelnote - new
 	db MT_SILVER_2F              ; marcelnote - new
 	db BATTLE_HALL               ; marcelnote - new
@@ -193,6 +196,9 @@ HiddenEventPointers:
 	dw MandarinPokecenterMartHiddenEvents ; marcelnote - new
 	dw SilphFactory1FHiddenEvents         ; marcelnote - new
 	dw SilphFactory2FHiddenEvents         ; marcelnote - new
+	dw Route19HiddenEvents                ; marcelnote - new
+	dw Route28HiddenEvents                ; marcelnote - new
+	dw OrangeRoute1HiddenEvents           ; marcelnote - new
 	dw MtSilver1FHiddenEvents             ; marcelnote - new
 	dw MtSilver2FHiddenEvents             ; marcelnote - new
 	dw BattleHallHiddenEvents             ; marcelnote - new
@@ -678,6 +684,18 @@ SilphFactory1FHiddenEvents:  ; marcelnote - new
 
 SilphFactory2FHiddenEvents:  ; marcelnote - new
 	hidden_event 28, 14, PP_UP, HiddenItems
+	db -1 ; end
+
+Route19HiddenEvents: ; marcelnote - new
+	hidden_event  3, 17, BOTTLE_CAP, HiddenItems
+	db -1 ; end
+
+Route28HiddenEvents: ; marcelnote - new
+	hidden_event 64,  3, RARE_CANDY, HiddenItems
+	db -1 ; end
+
+OrangeRoute1HiddenEvents: ; marcelnote - new
+	hidden_event 12,  5, BOTTLE_CAP, HiddenItems
 	db -1 ; end
 
 MtSilver1FHiddenEvents:  ; marcelnote - new

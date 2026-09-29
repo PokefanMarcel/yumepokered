@@ -4,6 +4,7 @@ Route28_Script:
 
 Route28_TextPointers:
 	def_text_pointers
+	dw_const PickUpItemText, TEXT_ROUTE28_BOTTLE_CAP
 	dw_const Route28SignText, TEXT_ROUTE28_SIGN
 
 Route28SignText:
