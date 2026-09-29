@@ -30,6 +30,7 @@ SummerBeachHouseSurfinDudeText:
 	ld a, [wCurrentMenuItem]
 	and a
 	jr z, .StartPikachusBeach
+.goodbye
 	ld hl, .ComeAnytimeText
 .printText
 	call PrintText
@@ -55,7 +56,8 @@ SummerBeachHouseSurfinDudeText:
 	ld hl, .BagFullText
 	jr nc, .printText
 	ld hl, .ReceivedBottleCapText
-	jr .printText
+	call PrintText
+	jr .goodbye
 
 .DogsBurgersText
 	text_far _SummerBeachHouseSurfinDudeDogsBurgersText
