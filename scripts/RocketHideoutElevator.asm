@@ -2,12 +2,13 @@ RocketHideoutElevator_Script:
 	ld hl, wCurrentMapScriptFlags
 	bit BIT_CUR_MAP_LOADED_1, [hl]
 	res BIT_CUR_MAP_LOADED_1, [hl]
-	push hl
 	call nz, RocketHideoutElevatorStoreWarpEntriesScript
-	pop hl
+	ld hl, wCurrentMapScriptFlags
 	bit BIT_CUR_MAP_USED_ELEVATOR, [hl]
+	jr z, .skipElevatorShake
 	res BIT_CUR_MAP_USED_ELEVATOR, [hl]
-	call nz, RocketHideoutElevatorShakeScript
+	callfar ShakeElevator
+.skipElevatorShake
 	xor a
 	ld [wAutoTextBoxDrawingControl], a
 	inc a
@@ -56,10 +57,6 @@ RocketHideoutElevatorWarpMaps:
 	db 4 - 1, ROCKET_HIDEOUT_B2F
 	db 2 - 1, ROCKET_HIDEOUT_B4F
 .End:
-
-RocketHideoutElevatorShakeScript:
-	call Delay3
-	jpfar ShakeElevator
 
 RocketHideoutElevator_TextPointers:
 	def_text_pointers

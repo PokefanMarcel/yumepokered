@@ -2,12 +2,13 @@ CeladonMartElevator_Script:
 	ld hl, wCurrentMapScriptFlags
 	bit BIT_CUR_MAP_LOADED_1, [hl]
 	res BIT_CUR_MAP_LOADED_1, [hl]
-	push hl
 	call nz, CeladonMartElevatorStoreWarpEntriesScript
-	pop hl
+	ld hl, wCurrentMapScriptFlags
 	bit BIT_CUR_MAP_USED_ELEVATOR, [hl]
+	jr z, .skipElevatorShake
 	res BIT_CUR_MAP_USED_ELEVATOR, [hl]
-	call nz, CeladonMartElevatorShakeScript
+	callfar ShakeElevator
+.skipElevatorShake
 	xor a
 	ld [wAutoTextBoxDrawingControl], a
 	inc a
@@ -16,8 +17,9 @@ CeladonMartElevator_Script:
 
 CeladonMartElevatorStoreWarpEntriesScript:
 	ld hl, wWarpEntries
-	ld a, [wWarpedFromWhichWarp]
-	ld b, a
+	ld a, [wWarpedFromWhichWarp] ; destination warp ID only
+	or WARP_DOWN << WARP_DIR_SHIFT ; marcelnote - refactored warp engine, add warp direction
+	ld b, a ; packed direction and destination warp ID
 	ld a, [wWarpedFromWhichMap]
 	ld c, a
 	call .StoreWarpEntry
@@ -26,13 +28,6 @@ CeladonMartElevatorStoreWarpEntriesScript:
 	inc hl
 	inc hl
 	ld a, b
-	;;;;;; marcelnote - refactored warp engine, preserve warp direction
-	and WARP_ID_MASK
-	ld b, a
-	ld a, [hl]
-	and WARP_DIR_MASK
-	or b
-	;;;;;;
 	ld [hli], a
 	ld a, c
 	ld [hli], a
@@ -66,9 +61,6 @@ CeladonMartElevatorWarpMaps:
 	db  5, CELADON_MART_4F5F6F
 	db  8, CELADON_MART_4F5F6F ; marcelnote - new 6th floor
 .End:
-
-CeladonMartElevatorShakeScript:
-	jpfar ShakeElevator
 
 CeladonMartElevator_TextPointers:
 	def_text_pointers
