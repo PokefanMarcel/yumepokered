@@ -130,8 +130,8 @@ DisplayListMenuIDLoop::
 	ld a, [hli]
 	ld [wCurListMenuItem], a
 	ld a, [wListMenuID]
-	cp PCPOKEMONLISTMENU
-	jr z, .pokemonList
+;	cp PCPOKEMONLISTMENU ; marcelnote - revamped Bill's PC
+;	jr z, .pokemonList
 ; if it's an item menu
 	cp SPECIALLISTMENU ; marcelnote - these lists don't need price or quantity
 	jr z, .skipGettingQuantityAndPrice
@@ -150,19 +150,19 @@ DisplayListMenuIDLoop::
 	ld a, BANK(ItemNames)
 	ld [wPredefBank], a
 	call GetName ; stores name in wNameBuffer
-	jr .storeChosenEntry
-.pokemonList
-	ASSERT wCurListMenuItem == wCurPartySpecies
-	ld hl, wPartyCount
-	ld a, [wListPointer]
-	cp l ; is it a list of party pokemon or box pokemon?
-	ld hl, wPartyMonNicks
-	jr z, .getPokemonName
-	ld hl, wBoxMonNicks ; box pokemon names
-.getPokemonName
-	ld a, [wWhichPokemon]
-	call GetPartyMonName ; stores name in wNameBuffer
-.storeChosenEntry ; store the menu entry that the player chose and return
+;	jr .storeChosenEntry
+;.pokemonList ; marcelnote - revamped Bill's PC
+;	ASSERT wCurListMenuItem == wCurPartySpecies
+;	ld hl, wPartyCount
+;	ld a, [wListPointer]
+;	cp l ; is it a list of party pokemon or box pokemon?
+;	ld hl, wPartyMonNicks
+;	jr z, .getPokemonName
+;	ld hl, wBoxMonNicks ; box pokemon names
+;.getPokemonName
+;	ld a, [wWhichPokemon]
+;	call GetPartyMonName ; stores name in wNameBuffer
+;.storeChosenEntry ; store the menu entry that the player chose and return
 	ld de, wNameBuffer
 	call CopyToStringBuffer
 	ld a, CHOSE_MENU_ITEM
@@ -425,8 +425,8 @@ PrintListMenuEntries::
 	hlcoord 6, 4 ; coordinates of first list entry name
 	ld b, 4 ; print 4 names
 .loop
-	ld a, b
-	ld [wWhichPokemon], a
+;	ld a, b ; marcelnote - revamped Bill's PC
+;	ld [wWhichPokemon], a
 	ld a, [de]
 	ld [wNamedObjectIndex], a
 	cp $ff
@@ -436,31 +436,31 @@ PrintListMenuEntries::
 	push hl
 	push hl
 	push de ; de = list entries
-	ld a, [wListMenuID]
-	cp PCPOKEMONLISTMENU
-	jr z, .pokemonPCMenu
+;	ld a, [wListMenuID] ; marcelnote - revamped Bill's PC
+;	cp PCPOKEMONLISTMENU
+;	jr z, .pokemonPCMenu
 ; item menu
 	call GetItemName
-	jr .placeNameString
-.pokemonPCMenu
-	push hl ; hl coordinates
-	ld hl, wPartyCount
-	ld a, [wListPointer]
-	cp l ; is it a list of party pokemon or box pokemon?
-	ld hl, wPartyMonNicks
-	jr z, .getPokemonName
-	ld hl, wBoxMonNicks ; box pokemon names
-.getPokemonName
-	ld a, [wWhichPokemon]
-	ld b, a
-	ld a, 4
-	sub b
-	ld b, a
-	ld a, [wListScrollOffset]
-	add b
-	call GetPartyMonName
-	pop hl ; hl coordinates
-.placeNameString
+;	jr .placeNameString
+;.pokemonPCMenu ; marcelnote - revamped Bill's PC
+;	push hl ; hl coordinates
+;	ld hl, wPartyCount
+;	ld a, [wListPointer]
+;	cp l ; is it a list of party pokemon or box pokemon?
+;	ld hl, wPartyMonNicks
+;	jr z, .getPokemonName
+;	ld hl, wBoxMonNicks ; box pokemon names
+;.getPokemonName
+;	ld a, [wWhichPokemon]
+;	ld b, a
+;	ld a, 4
+;	sub b
+;	ld b, a
+;	ld a, [wListScrollOffset]
+;	add b
+;	call GetPartyMonName
+;	pop hl ; hl coordinates
+;.placeNameString
 	call PlaceString
 	pop de
 	pop hl
@@ -479,43 +479,43 @@ PrintListMenuEntries::
 	ld c, 3 | LEADING_ZEROES | MONEY_SIGN
 	call PrintBCDNumber
 .skipPrintingItemPrice
-	ld a, [wListMenuID]
-	cp PCPOKEMONLISTMENU
-	jr nz, .skipPrintingPokemonLevel
-; print Pokemon level
-	ld a, [wNamedObjectIndex]
-	push af
-	push hl
-	ld hl, wPartyCount
-	ld a, [wListPointer]
-	cp l ; is it a list of party pokemon or box pokemon?
-	ld a, PLAYER_PARTY_DATA
-	jr z, .next
-	ld a, BOX_DATA
-.next
-	ld [wMonDataLocation], a
-	ld hl, wWhichPokemon
-	ld a, 4 ; marcelnote - small optim
-	sub [hl]
-	ld b, a
-	ld a, [wListScrollOffset]
-	add b
-	ld [hl], a
-	call LoadMonData
-	ld a, [wMonDataLocation]
-	and a ; is it a list of party pokemon or box pokemon?
-	jr z, .skipCopyingLevel
-; copy level
-	ld a, [wLoadedMonBoxLevel]
-	ld [wLoadedMonLevel], a
-.skipCopyingLevel
-	pop hl
-	ld bc, SCREEN_WIDTH + 8 ; 1 row down and 8 columns right
-	add hl, bc
-	call PrintLevel
-	pop af
-	ld [wNamedObjectIndex], a
-.skipPrintingPokemonLevel
+;	ld a, [wListMenuID] ; marcelnote - revamped Bill's PC
+;	cp PCPOKEMONLISTMENU
+;	jr nz, .skipPrintingPokemonLevel
+;; print Pokemon level
+;	ld a, [wNamedObjectIndex]
+;	push af
+;	push hl
+;	ld hl, wPartyCount
+;	ld a, [wListPointer]
+;	cp l ; is it a list of party pokemon or box pokemon?
+;	ld a, PLAYER_PARTY_DATA
+;	jr z, .next
+;	ld a, BOX_DATA
+;.next
+;	ld [wMonDataLocation], a
+;	ld hl, wWhichPokemon
+;	ld a, 4 ; marcelnote - small optim
+;	sub [hl]
+;	ld b, a
+;	ld a, [wListScrollOffset]
+;	add b
+;	ld [hl], a
+;	call LoadMonData
+;	ld a, [wMonDataLocation]
+;	and a ; is it a list of party pokemon or box pokemon?
+;	jr z, .skipCopyingLevel
+;; copy level
+;	ld a, [wLoadedMonBoxLevel]
+;	ld [wLoadedMonLevel], a
+;.skipCopyingLevel
+;	pop hl
+;	ld bc, SCREEN_WIDTH + 8 ; 1 row down and 8 columns right
+;	add hl, bc
+;	call PrintLevel
+;	pop af
+;	ld [wNamedObjectIndex], a
+;.skipPrintingPokemonLevel
 	pop hl
 	pop de
 	inc de
