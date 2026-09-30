@@ -36,6 +36,7 @@ TextBoxTextAndCoordTable:
 	text_box_text MOM_DAISY_CANCEL_MENU_TEMPLATE,    11,  5, 19, 11, MomDaisyCancelText,      13,  6 ; marcelnote - new for pay phones
 	text_box_text BUY_SELL_QUIT_MENU_TEMPLATE,        0,  0, 10,  6, BuySellQuitText,          2,  1
 	text_box_text MONEY_BOX_TEMPLATE,                11,  0, 19,  2, MoneyText,               13,  0
+	text_box_text CURRENT_FLOOR_BOX_TEMPLATE,         0,  0,  8,  2, FloorText,                2,  0 ; marcelnote - new for elevator current floor
 ;	text_box_text JP_AH_MENU_TEMPLATE,                7,  6, 11, 10, JapaneseAhText,           8,  8
 ;	text_box_text JP_POKEDEX_MENU_TEMPLATE,          11,  8, 19, 17, JapanesePokedexMenu,     12, 10
 
@@ -55,6 +56,9 @@ UseSlctText: ; marcelnote - use items with SELECT
 
 MoneyText:
 	db "MONEY@"
+
+FloorText: ; marcelnote - new for elevator current floor
+	db "FLOOR@"
 
 BattleMenuText:
 	db   "FIGHT <PK><MN>"

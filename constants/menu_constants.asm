@@ -33,6 +33,7 @@ DEF PC_ITEM_CAPACITY  EQU 50
 	const SAFARI_BATTLE_MENU_TEMPLATE       ; $1b
 	const BAG_INFO_BOX                      ; $1c ; marcelnote - new for bag pockets
 	const MOM_DAISY_CANCEL_MENU_TEMPLATE    ; $1d ; marcelnote - new for pay phones
+	const CURRENT_FLOOR_BOX_TEMPLATE        ; $1f ; marcelnote - new for elevator current floor
 
 ; two option menu constants
 ; TwoOptionMenuStrings indexes (see data/yes_no_menu_strings.asm)
