@@ -1,25 +1,21 @@
 ; formats a string at wMovesString that lists the moves at wMoves
-FormatMovesString::
-	ld hl, wMoves
-	ld de, wMovesString
+FormatMovesString:: ; marcelnote - optimized
+	ld de, wMoves
+	ld hl, wMovesString
 	ld b, NUM_MOVES
 .printMoveNameLoop
-	ld a, [hli]
+	ld a, [de]
 	and a ; end of move list?
 	jr z, .printDashLoop ; print dashes when no moves are left
-	push hl
-	ld [wNameListIndex], a
-	ld a, BANK(MoveNames)
-	ld [wPredefBank], a
-	ld a, MOVE_NAME
-	ld [wNameListType], a
-	call GetName ; stores name in wNameBuffer
-	ld hl, wNameBuffer
+	inc de
+	push de ; save de = next move
+	ld [wNamedObjectIndex], a
+	call GetMoveName ; stores name in wNameBuffer and leaves de -> wNameBuffer
 .copyNameLoop
-	ld a, [hli]
+	ld a, [de]
 	cp '@'
 	jr z, .doneCopyingName
-	ld [de], a
+	ld [hli], a
 	inc de
 	jr .copyNameLoop
 
@@ -28,28 +24,24 @@ FormatMovesString::
 	sub b
 	ld [wNumMovesMinusOne], a
 	ld a, '<NEXT>'
-	ld [de], a
-	inc de
-	pop hl
+	ld [hli], a
+	pop de ; restore de = next move
 	dec b
-	jr z, .done
-	jr .printMoveNameLoop
+	jr nz, .printMoveNameLoop
+.done
+	ld a, '@'
+	ld [hl], a
+	ret
 
 .printDashLoop
 	ld a, '-'
-	ld [de], a
-	inc de
+	ld [hli], a
 	dec b
 	jr z, .done
 	ld a, '<NEXT>'
-	ld [de], a
-	inc de
+	ld [hli], a
 	jr .printDashLoop
 
-.done
-	ld a, '@'
-	ld [de], a
-	ret
 
 ; get species of mon e in list [wMonDataLocation] for LoadMonData
 GetMonSpecies:

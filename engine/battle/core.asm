@@ -5708,13 +5708,8 @@ EnemyCanExecuteChargingMove:
 	res CHARGING_UP, [hl] ; no longer charging up for attack
 	res INVULNERABLE, [hl] ; no longer invulnerable to typical attacks
 	ld a, [wEnemyMoveNum]
-	ld [wNameListIndex], a
-	ld a, BANK(MoveNames)
-	ld [wPredefBank], a
-	ld a, MOVE_NAME
-	ld [wNameListType], a
-	call GetName ; stores name in wNameBuffer
-	ld de, wNameBuffer
+	ld [wNamedObjectIndex], a ; marcelnote - use GetMoveName directly
+	call GetMoveName ; stores name in wNameBuffer and leaves de -> wNameBuffer
 	call CopyToStringBuffer
 EnemyCanExecuteMove:
 	xor a
@@ -6177,7 +6172,7 @@ GetCurrentMove:
 	jr nz, .gotPointers
 	ld a, [wPlayerSelectedMove]
 .gotPointers
-	ld [wNameListIndex], a
+	ld [wNamedObjectIndex], a ; save move ID for GetMoveName
 	dec a
 	ld hl, Moves
 	ld bc, MOVE_LENGTH
@@ -6185,12 +6180,7 @@ GetCurrentMove:
 	ld a, BANK(Moves)
 	call FarCopyData
 
-	ld a, BANK(MoveNames)
-	ld [wPredefBank], a
-	ld a, MOVE_NAME
-	ld [wNameListType], a
-	call GetName ; stores name in wNameBuffer
-	ld de, wNameBuffer
+	call GetMoveName ; stores name in wNameBuffer and leaves de -> wNameBuffer
 	jp CopyToStringBuffer
 
 LoadEnemyMonData:

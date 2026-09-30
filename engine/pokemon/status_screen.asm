@@ -252,10 +252,10 @@ StatusScreenMovesPage:
 	ld a, [wLoadedMonLevel]
 	push af
 	cp MAX_LEVEL
-	jr z, .Level100
+	jr z, .level100
 	inc a
 	ld [wLoadedMonLevel], a ; Increase temporarily if not 100
-.Level100
+.level100
 	hlcoord 16, 6
 	call PrintLevel ; Next level
 	pop af
@@ -292,18 +292,18 @@ StatusScreenMovesPage:
 	call StatusScreen_PrintPP ; Print "PP"
 	ld a, b
 	and a
-	jr z, .InitPP
+	jr z, .initPP
 	ld c, a
 	ld a, '-'
 	call StatusScreen_PrintPP ; Fill the rest with --
-.InitPP
+.initPP
 	ld hl, wLoadedMonMoves
 	decoord 8, 10
 	ld b, 0
-.PrintPP
+.printPP
 	ld a, [hli]
 	and a
-	jr z, .PPDone
+	jr z, .PPdone
 	push bc
 	push hl
 	push de
@@ -345,8 +345,8 @@ StatusScreenMovesPage:
 	inc b
 	ld a, b
 	cp NUM_MOVES
-	jr nz, .PrintPP
-.PPDone
+	jr nz, .printPP
+.PPdone
 
 	hlcoord 14, 9
 	ld de, StatusScreenFieldMoveText
@@ -356,7 +356,7 @@ StatusScreenMovesPage:
 	ld [hl], '-' ; by default write "-" for field move
 	ld a, [wMonDataLocation]
 	cp PLAYER_PARTY_DATA ; no field move if not in party
-	jr nz, .FieldMoveDone
+	jr nz, .fieldMoveDone
 	ld a, [wWhichPokemon]
 	ld c, a
 	ld b, 0
@@ -364,17 +364,12 @@ StatusScreenMovesPage:
 	add hl, bc
 	ld a, [hl]
 	and a
-	jr z, .FieldMoveDone
-	ld [wNameListIndex], a
-	ld a, BANK(MoveNames)
-	ld [wPredefBank], a
-	ld a, MOVE_NAME
-	ld [wNameListType], a
-	call GetName
+	jr z, .fieldMoveDone
+	ld [wNamedObjectIndex], a
+	call GetMoveName ; stores name in wNameBuffer and leaves de -> wNameBuffer
 	hlcoord 14, 11
-	ld de, wNameBuffer
 	call PlaceStringWithHyphen ; Field move
-.FieldMoveDone
+.fieldMoveDone
 
 	ld a, 1
 	ldh [hAutoBGTransferEnabled], a
