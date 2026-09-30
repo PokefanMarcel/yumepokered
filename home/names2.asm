@@ -2,9 +2,10 @@ NamePointers::
 ; entries correspond to *_NAME constants
 	dw MoveNames
 	dw ItemNames
-	dw wPartyMonOT ; player's OT names list
-	dw wEnemyMonOT ; enemy's OT names list
 	dw TrainerNames
+;	dw MonsterNames ; marcelnote - now handled directly by GetMonName
+;	dw wPartyMonOT ; player's OT names list ; unused
+;	dw wEnemyMonOT ; enemy's OT names list  ; unused
 
 GetName::
 ; arguments:
