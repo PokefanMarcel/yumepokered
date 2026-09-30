@@ -26,8 +26,10 @@ GetMonName::
 GetItemName::
 ; given an item ID at [wNamedObjectIndex], store the item's name in wNameBuffer
 ; and make de point to wNameBuffer
-; marcelnote - removed check for Machine because it is done in GetName
+; marcelnote - now handles TM/HM directly
 	ld a, [wNamedObjectIndex]
+	cp HM01 ; TM/HM?
+	jp nc, GetMachineName
 	ld [wNameListIndex], a
 	ld a, ITEM_NAME
 	ld [wNameListType], a
