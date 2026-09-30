@@ -14,7 +14,7 @@ GetName::
 ; [wPredefBank] = bank of list
 ;
 ; stores name in wNameBuffer and returns de pointing to wNameBuffer
-; marcelnote - moved TM/HM handling to GetItemName, and Mon handling to GetMonName
+; marcelnote - optimized, moved TM/HM handling to GetItemName, and Mon handling to GetMonName
 	ld a, [wNameListIndex]
 	ld [wNamedObjectIndex], a
 
@@ -30,27 +30,22 @@ GetName::
 	ld hl, NamePointers
 	add hl, de
 	ld a, [hli]
-	ld h, [hl] ; marcelnote - optimized
+	ld h, [hl]
 	ld l, a
 	ld a, [wPredefBank]
 	ldh [hLoadedROMBank], a
 	ld [rROMB], a
 	ld a, [wNameListIndex]
-	ld b, a ; wanted entry
-	ld c, 0 ; entry counter
-.nextName
-	ld d, h
-	ld e, l
-.nextChar
+	ld b, a ; wanted entry, one-based
+	dec b
+	jr z, .copyName
+.skipName
 	ld a, [hli]
 	cp '@'
-	jr nz, .nextChar
-	inc c
-	ld a, b
-	cp c
-	jr nz, .nextName
-	ld h, d
-	ld l, e
+	jr nz, .skipName
+	dec b
+	jr nz, .skipName
+.copyName
 	ld de, wNameBuffer
 	push de
 	ld bc, NAME_BUFFER_LENGTH
