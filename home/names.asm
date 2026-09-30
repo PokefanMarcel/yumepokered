@@ -27,8 +27,6 @@ GetItemName::
 ; given an item ID at [wNamedObjectIndex], store the item's name in wNameBuffer
 ; and make de point to wNameBuffer
 ; marcelnote - removed check for Machine because it is done in GetName
-	push hl
-	push bc
 	ld a, [wNamedObjectIndex]
 	ld [wNameListIndex], a
 	ld a, ITEM_NAME
@@ -37,8 +35,6 @@ GetItemName::
 	ld [wPredefBank], a
 	call GetName ; stores name in wNameBuffer
 	ld de, wNameBuffer
-	pop bc
-	pop hl
 	ret
 
 ; sets carry if item is HM, clears carry if item is not HM

@@ -144,12 +144,8 @@ DisplayListMenuIDLoop::
 	call GetItemPrice
 .skipGettingQuantityAndPrice
 	ld a, [wCurItem]
-	ld [wNameListIndex], a
-	ld a, ITEM_NAME ; marcelnote - added for robustness (needed for TM printing)
-	ld [wNameListType], a
-	ld a, BANK(ItemNames)
-	ld [wPredefBank], a
-	call GetName ; stores name in wNameBuffer
+	ld [wNamedObjectIndex], a
+	call GetItemName ; stores name in wNameBuffer and returns de pointing to it
 ;	jr .storeChosenEntry
 ;.pokemonList ; marcelnote - revamped Bill's PC
 ;	ASSERT wCurListMenuItem == wCurPartySpecies
@@ -163,7 +159,6 @@ DisplayListMenuIDLoop::
 ;	ld a, [wWhichPokemon]
 ;	call GetPartyMonName ; stores name in wNameBuffer
 ;.storeChosenEntry ; store the menu entry that the player chose and return
-	ld de, wNameBuffer
 	call CopyToStringBuffer
 	ld a, CHOSE_MENU_ITEM
 	ld [wMenuExitMethod], a
