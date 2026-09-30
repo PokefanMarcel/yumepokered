@@ -9,13 +9,12 @@ GetMonName::
 	dec a
 	ld hl, MonsterNames
 	ld bc, NAME_LENGTH - 1
-	call AddNTimes
+	call AddNTimes ; preserves bc
 	ld de, wNameBuffer
 	push de
-	ld bc, NAME_LENGTH - 1
 	call CopyData
-	ld hl, wNameBuffer + NAME_LENGTH - 1
-	ld [hl], '@'
+	ld a, '@'
+	ld [de], a
 	pop de
 	pop af
 	ldh [hLoadedROMBank], a
