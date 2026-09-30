@@ -64,35 +64,34 @@ GetName::
 	ret
 
 
-GetMachineName::
+GetMachineName:: ; marcelnote - small optim
 ; copies the name of the TM/HM in [wNamedObjectIndex] to wNameBuffer
 	push hl
 	push bc
 	ld a, [wNamedObjectIndex]
-	push af
 	cp TM01 ; is this a TM? [not HM]
 	ld hl, TechnicalPrefix ; points to "TM"
-	jr nc, .WriteMachinePrefix
+	jr nc, .writeMachinePrefix
 ; if HM, then write "HM" and add NUM_HMS to the item ID,
 ; so we can reuse the TM printing code
 	add NUM_HMS
-	ld [wNamedObjectIndex], a
 	ld hl, HiddenPrefix ; points to "HM"
-.WriteMachinePrefix
+.writeMachinePrefix
+	sub TM01 - 1 ; convert item ID to machine number
+	push af ; marcelnote - keep on the stack instead of changing wNamedObjectIndex
 	ld bc, 2
 	ld de, wNameBuffer
 	call CopyData
+	pop af
 
-; now get the machine number and convert it to text
-	ld a, [wNamedObjectIndex]
-	sub TM01 - 1
+; Convert the machine number to text.
 	ld b, '0'
-.FirstDigit
+.firstDigit
 	sub 10
-	jr c, .SecondDigit
+	jr c, .secondDigit
 	inc b
-	jr .FirstDigit
-.SecondDigit
+	jr .firstDigit
+.secondDigit
 	ASSERT '9' == $ff ; because digits are $f6-$ff, we landed on the right second digit directly
 	ld c, a    ; save second digit
 	ld a, b    ; first digit
@@ -103,8 +102,6 @@ GetMachineName::
 	inc de
 	ld a, '@'
 	ld [de], a
-	pop af
-	ld [wNamedObjectIndex], a
 	pop bc
 	pop hl
 	ld de, wNameBuffer
