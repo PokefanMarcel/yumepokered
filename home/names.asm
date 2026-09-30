@@ -57,14 +57,12 @@ IsMoveHM::
 HMMoves:: INCLUDE "data/moves/hm_moves.asm"
 
 GetMoveName::
-	push hl
-	ld a, MOVE_NAME
-	ld [wNameListType], a
 	ld a, [wNamedObjectIndex]
 	ld [wNameListIndex], a
+	ld a, MOVE_NAME
+	ld [wNameListType], a
 	ld a, BANK(MoveNames)
 	ld [wPredefBank], a
 	call GetName ; stores name in wNameBuffer
 	ld de, wNameBuffer
-	pop hl
 	ret
