@@ -13,7 +13,7 @@ GetName::
 ; [wNameListType] = which list
 ; [wPredefBank] = bank of list
 ;
-; stores name in wNameBuffer
+; stores name in wNameBuffer and returns de pointing to wNameBuffer
 ; marcelnote - moved TM/HM handling to GetItemName, and Mon handling to GetMonName
 	ld a, [wNameListIndex]
 	ld [wNamedObjectIndex], a
@@ -22,7 +22,6 @@ GetName::
 	push af
 	push hl
 	push bc
-	push de
 	ld a, [wNameListType]
 	dec a ; one-based name type
 	add a
@@ -53,6 +52,7 @@ GetName::
 	ld h, d
 	ld l, e
 	ld de, wNameBuffer
+	push de
 	ld bc, NAME_BUFFER_LENGTH
 	call CopyData
 	pop de

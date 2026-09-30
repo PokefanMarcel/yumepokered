@@ -35,9 +35,7 @@ GetItemName::
 	ld [wNameListType], a
 	ld a, BANK(ItemNames)
 	ld [wPredefBank], a
-	call GetName ; stores name in wNameBuffer
-	ld de, wNameBuffer
-	ret
+	jp GetName
 
 ; sets carry if item is HM, clears carry if item is not HM
 ; Input: a = item ID
@@ -65,6 +63,4 @@ GetMoveName::
 	ld [wNameListType], a
 	ld a, BANK(MoveNames)
 	ld [wPredefBank], a
-	call GetName ; stores name in wNameBuffer
-	ld de, wNameBuffer
-	ret
+	jp GetName
