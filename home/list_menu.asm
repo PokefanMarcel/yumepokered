@@ -127,23 +127,22 @@ DisplayListMenuIDLoop::
 	inc hl ; hl = beginning of list entries
 	ld b, 0
 	add hl, bc
-	ld a, [hl]
+	ld a, [hli]
 	ld [wCurListMenuItem], a
 	ld a, [wListMenuID]
 	cp PCPOKEMONLISTMENU
 	jr z, .pokemonList
 ; if it's an item menu
-	ASSERT wCurListMenuItem == wCurItem
-	push hl
-	call GetItemPrice
-	pop hl
-	ld a, [wListMenuID]
+	cp SPECIALLISTMENU ; marcelnote - these lists don't need price or quantity
+	jr z, .skipGettingQuantityAndPrice
 	cp ITEMLISTMENU
 	jr nz, .skipGettingQuantity
-	inc hl
 	ld a, [hl] ; a = item quantity
 	ld [wMaxItemQuantity], a
 .skipGettingQuantity
+	ASSERT wCurListMenuItem == wCurItem
+	call GetItemPrice
+.skipGettingQuantityAndPrice
 	ld a, [wCurItem]
 	ld [wNameListIndex], a
 	ld a, ITEM_NAME ; marcelnote - added for robustness (needed for TM printing)
