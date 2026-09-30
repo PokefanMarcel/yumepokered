@@ -8,9 +8,9 @@
 
 ; NamePointers indexes (see home/names2.asm)
 	const_def 1
-	const MONSTER_NAME  ; 1
-	const MOVE_NAME     ; 2
-	const ITEM_NAME     ; 3
-	const PLAYEROT_NAME ; 4
-	const ENEMYOT_NAME  ; 5
-	const TRAINER_NAME  ; 6
+	const MOVE_NAME     ; 1
+	const ITEM_NAME     ; 2
+	const TRAINER_NAME  ; 3
+;	const MONSTER_NAME  ; marcelnote - now handled directly by GetMonName
+;	const PLAYEROT_NAME ; unused
+;	const ENEMYOT_NAME  ; unused
