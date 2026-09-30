@@ -140,11 +140,8 @@ Evolution_PartyMonLoop: ; loop over party mons
 	ld [wCurSpecies], a
 	ld [wLoadedMonSpecies], a
 	ld [wEvoNewSpecies], a  ; marcelnote - this two line seems redundant because already loaded above
-	ld a, MONSTER_NAME
-	ld [wNameListType], a
-	ld a, BANK(MonsterNames) ; bank is not used for monster names ; marcelnote - changed from TrainerNames
-	ld [wPredefBank], a
-	call GetName ; stores name in wNameBuffer for IntoText
+	ld [wNamedObjectIndex], a ; marcelnote - use GetMonName directly
+	call GetMonName ; stores name in wNameBuffer for IntoText
 	push hl
 	ld hl, IntoText ; uses wNameBuffer
 	call PrintText_NoCreatingTextBox
@@ -264,14 +261,9 @@ Evolution_PartyMonLoop: ; loop over party mons
 RenameEvolvedMon:
 ; Renames the mon to its new, evolved form's standard name unless it had a
 ; nickname, in which case the nickname is kept.
-	ASSERT wCurSpecies == wNameListIndex ; save+restore wCurSpecies while using wNameListIndex
-	ld a, [wCurSpecies]
-	push af
 	ld a, [wMonHIndex]
-	ld [wNameListIndex], a
-	call GetName ; stores name in wNameBuffer
-	pop af
-	ld [wCurSpecies], a
+	ld [wNamedObjectIndex], a ; marcelnote - use GetMonName directly
+	call GetMonName ; name of the species before evolution
 	ld hl, wNameBuffer
 	ld de, wStringBuffer
 .compareNamesLoop
@@ -286,8 +278,11 @@ RenameEvolvedMon:
 	ld hl, wPartyMonNicks
 	call SkipNameEntries
 	push hl
-	call GetName ; stores name in wNameBuffer
+	ld a, [wCurSpecies]
+	ld [wNamedObjectIndex], a ; marcelnote - use GetMonName directly
+	call GetMonName ; name of the evolved species
 	ld hl, wNameBuffer
+	ld bc, NAME_LENGTH ; GetMonName clobbers bc
 	pop de
 	jp CopyData
 

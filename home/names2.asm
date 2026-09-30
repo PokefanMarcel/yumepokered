@@ -34,11 +34,7 @@ GetName::
 	push bc
 	push de
 	ld a, [wNameListType]
-	dec a ; MONSTER_NAME?
-	jr nz, .notMonsterName
-	call GetMonName
-	jr .finish
-.notMonsterName
+	dec a ; one-based name type
 	add a
 	ld e, a
 	ld d, 0
@@ -69,7 +65,6 @@ GetName::
 	ld de, wNameBuffer
 	ld bc, NAME_BUFFER_LENGTH
 	call CopyData
-.finish
 	pop de
 	pop bc
 	pop hl
