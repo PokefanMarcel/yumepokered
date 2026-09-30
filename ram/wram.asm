@@ -1780,7 +1780,9 @@ wLevelUpLevel:: ; marcelnote - new alias for level-up
 wCurEnemyLevel:: db
 
 ; pointer to list of items terminated by $FF
-wItemListPointer:: dw
+;wItemListPointer:: dw ; marcelnote - never read
+
+	ds 2
 
 ; number of entries in a list
 wListCount:: db
