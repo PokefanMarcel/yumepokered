@@ -10,8 +10,7 @@
 	const_def 1
 	const MONSTER_NAME  ; 1
 	const MOVE_NAME     ; 2
-	const UNUSED_NAME   ; 3
-	const ITEM_NAME     ; 4
-	const PLAYEROT_NAME ; 5
-	const ENEMYOT_NAME  ; 6
-	const TRAINER_NAME  ; 7
+	const ITEM_NAME     ; 3
+	const PLAYEROT_NAME ; 4
+	const ENEMYOT_NAME  ; 5
+	const TRAINER_NAME  ; 6

@@ -2,7 +2,6 @@ NamePointers::
 ; entries correspond to *_NAME constants
 	dw MonsterNames
 	dw MoveNames
-	dw 0 ; marcelnote - replaced UnusedBadgeNames
 	dw ItemNames
 	dw wPartyMonOT ; player's OT names list
 	dw wEnemyMonOT ; enemy's OT names list
@@ -35,33 +34,22 @@ GetName::
 	push bc
 	push de
 	ld a, [wNameListType]
-	dec a
+	dec a ; MONSTER_NAME?
 	jr nz, .notMonsterName
-	; 1 = MONSTER_NAME
 	call GetMonName
-;	ld hl, NAME_LENGTH
-;	add hl, de
-;	ld e, l
-;	ld d, h
 	jr .finish
 .notMonsterName
-	; 2-7 = other names
-	ld a, [wPredefBank]
-	ldh [hLoadedROMBank], a
-	ld [rROMB], a
-	ld a, [wNameListType]
-	dec a
 	add a
-	ld d, 0
 	ld e, a
-	jr nc, .skip
-	inc d
-.skip
+	ld d, 0
 	ld hl, NamePointers
 	add hl, de
 	ld a, [hli]
 	ld h, [hl] ; marcelnote - optimized
 	ld l, a
+	ld a, [wPredefBank]
+	ldh [hLoadedROMBank], a
+	ld [rROMB], a
 	ld a, [wNameListIndex]
 	ld b, a ; wanted entry
 	ld c, 0 ; entry counter
@@ -82,10 +70,6 @@ GetName::
 	ld bc, NAME_BUFFER_LENGTH
 	call CopyData
 .finish
-;	ld a, e
-;	ld [wUnusedNamePointer], a
-;	ld a, d
-;	ld [wUnusedNamePointer + 1], a
 	pop de
 	pop bc
 	pop hl
