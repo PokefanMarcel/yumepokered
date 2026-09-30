@@ -190,9 +190,10 @@ TryingToLearn:
 	add hl, bc
 	ld a, [hl]
 	push af
-	;push bc
-	call IsMoveHM
-	;pop bc
+;	push bc
+	ld hl, HMMoves
+	call IsInList
+;	pop bc
 	pop de ; pop af into de to not affect z and c flags
 	ld a, d
 	jr c, .hm
@@ -208,6 +209,8 @@ TryingToLearn:
 .cancel
 	scf
 	ret
+
+INCLUDE "data/moves/hm_moves.asm" ; marcelnote - moved from home/names.asm
 
 LearnedMove1Text: ; marcelnote - modified for crysaudio
 	text_far _LearnedMove1Text

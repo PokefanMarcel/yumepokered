@@ -48,14 +48,6 @@ IsItemHM::
 	and a
 	ret
 
-; sets carry if move is an HM, clears carry if move is not an HM
-; Input: a = move ID
-IsMoveHM::
-	ld hl, HMMoves
-	jp IsInList
-
-HMMoves:: INCLUDE "data/moves/hm_moves.asm"
-
 GetMoveName::
 	ld a, [wNamedObjectIndex]
 	ld [wNameListIndex], a
