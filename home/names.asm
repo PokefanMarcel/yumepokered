@@ -1,11 +1,9 @@
-GetName::
+GetName:: ; marcelnote - optimized, moved TM/HM handling to GetItemName, and Mon handling to GetMonName
 ; arguments:
 ; [wNamedObjectIndex] = which name
 ; [wNameListType] = which list
 ; [wPredefBank] = bank of list
-;
 ; stores name in wNameBuffer and returns de pointing to wNameBuffer
-; marcelnote - optimized, moved TM/HM handling to GetItemName, and Mon handling to GetMonName
 	ldh a, [hLoadedROMBank]
 	push af
 	push hl
@@ -45,36 +43,12 @@ GetName::
 	ld [rROMB], a
 	ret
 
-GetMonName::
-	push hl
-	ldh a, [hLoadedROMBank]
-	push af
-	ld a, BANK(MonsterNames)
-	ldh [hLoadedROMBank], a
-	ld [rROMB], a
-	ld a, [wNamedObjectIndex]
-	dec a
-	ld hl, MonsterNames
-	ld bc, NAME_LENGTH - 1
-	call AddNTimes ; preserves bc
-	ld de, wNameBuffer
-	push de
-	call CopyData
-	ld a, '@'
-	ld [de], a
-	pop de
-	pop af
-	ldh [hLoadedROMBank], a
-	ld [rROMB], a
-	pop hl
-	ret
-
 GetMoveName::
 	ld a, MOVE_NAME
 	ld [wNameListType], a
 	ld a, BANK(MoveNames)
 	ld [wPredefBank], a
-	jp GetName
+	jr GetName
 
 GetItemName:: ; marcelnote - now handles TM/HM directly
 ; given an item ID at [wNamedObjectIndex], store the item's name in wNameBuffer
@@ -86,7 +60,7 @@ GetItemName:: ; marcelnote - now handles TM/HM directly
 	ld [wNameListType], a
 	ld a, BANK(ItemNames)
 	ld [wPredefBank], a
-	jp GetName
+	jr GetName
 
 .getMachineName
 ; copies the name of the TM/HM in [wNamedObjectIndex] to wNameBuffer
@@ -130,6 +104,28 @@ GetItemName:: ; marcelnote - now handles TM/HM directly
 	ld de, wNameBuffer
 	ret
 
+GetMonName::
+	push hl
+	ldh a, [hLoadedROMBank]
+	push af
+	ld a, BANK(MonsterNames)
+	ldh [hLoadedROMBank], a
+	ld [rROMB], a
+	ld a, [wNamedObjectIndex]
+	dec a
+	ld hl, MonsterNames
+	ld bc, NAME_LENGTH - 1
+	call AddNTimes ; preserves bc
+	ld de, wNameBuffer
+	push de
+	call CopyData
+	ld a, '@'
+	ld [de], a
+	pop de
+	pop af
+	ldh [hLoadedROMBank], a
+	ld [rROMB], a
+	pop hl
 	ret
 
 NamePointers::
