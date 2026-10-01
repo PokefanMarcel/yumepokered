@@ -21,10 +21,6 @@ PlayerPCMenu:
 	ld [wCurrentMenuItem], a
 	ld hl, wMiscFlags
 	set BIT_NO_MENU_BUTTON_SOUND, [hl]
-	;;;;;;;;;; marcelnote - flag if withdrawing from PC (to prevent switching bag pocket), new for bag pockets
-	ld hl, wBagPocketsFlags
-	res BIT_PC_WITHDRAWING, [hl]
-	;;;;;;;;;;
 	call LoadScreenTilesFromBuffer2
 	hlcoord 0, 0
 	lb bc, $8, $e
@@ -169,10 +165,6 @@ PlayerPCWithdraw:
 	call PrintText
 	jp PlayerPCMenu
 .loop
-	;;;;;;;;;; marcelnote - flag if withdrawing from PC (to prevent switching bag pocket), new for bag pockets
-	ld hl, wBagPocketsFlags
-	set BIT_PC_WITHDRAWING, [hl]
-	;;;;;;;;;;
 	ld hl, WhatToWithdrawText
 	call PrintText
 	call SaveTextBoxTilesToBuffer ; marcelnote - for TM printing

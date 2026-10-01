@@ -188,14 +188,23 @@ DisplayListMenuIDLoop::
 	dec [hl]
 	jp DisplayListMenuIDLoop
 .switchBagPocket ; marcelnote - new for bag pockets
-	ld a, SFX_TINK
-	call PlaySound
 	ld a, [wListMenuID]
 	cp ITEMLISTMENU
 	jp nz, DisplayListMenuIDLoop
-	ld hl, wBagPocketsFlags
-	bit BIT_PC_WITHDRAWING, [hl] ; if withdrawing from PC then cannot switch pocket
+; Switch pockets in bag only, not PC storage and other lists.
+	ld hl, wListPointer
+	ld a, [hli]
+	cp LOW(wNumBagItems)
+	jr z, .checkBagPointerHighByte
+	cp LOW(wNumBagKeyItems)
 	jp nz, DisplayListMenuIDLoop
+.checkBagPointerHighByte
+	ASSERT HIGH(wNumBagItems) == HIGH(wNumBagKeyItems)
+	ld a, [hl]
+	cp HIGH(wNumBagItems)
+	jp nz, DisplayListMenuIDLoop
+	ld a, SFX_TINK
+	call PlaySound
 	ld bc, wNumBagItems
 	ld a, [wBagPocketsFlags]
 	bit BIT_KEY_ITEMS_POCKET, a
