@@ -14,7 +14,6 @@ GetName::
 	push hl
 	push bc
 	ld a, [wNameListType]
-	dec a ; one-based name type
 	add a
 	ld e, a
 	ld d, 0
