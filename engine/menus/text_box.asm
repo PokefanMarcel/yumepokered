@@ -5,15 +5,15 @@ DisplayTextBoxID_::
 	jp z, DisplayTwoOptionMenu
 	ld c, a
 	ld hl, TextBoxFunctionTable
-	ld de, 3
+	ld de, 3 - 1
 	call SearchTextBoxTable
 	jr c, .functionTableMatch
 	ld hl, TextBoxCoordTable
-	ld de, 5
+	ld de, 5 - 1
 	call SearchTextBoxTable
 	jr c, .coordTableMatch
 	ld hl, TextBoxTextAndCoordTable
-	ld de, 9
+	ld de, 9 - 1
 	call SearchTextBoxTable
 	jr c, .textAndCoordTableMatch
 	ret
@@ -43,18 +43,16 @@ DisplayTextBoxID_::
 	ld [wStatusFlags5], a
 	jp UpdateSprites
 
-; function to search a table terminated with $ff for a byte matching c in increments of de
+; function to search a table terminated with $ff for a byte matching c in increments of de + 1
 ; sets carry flag if a match is found and clears carry flag if not
 SearchTextBoxTable:
-	dec de
-.loop
 	ld a, [hli]
 	cp $ff
 	ret z ; not found
 	cp c
 	jr z, .found
 	add hl, de
-	jr .loop
+	jr SearchTextBoxTable
 .found
 	scf
 	ret
@@ -90,9 +88,8 @@ GetTextBoxIDText:
 	ld d, a ; de = address of text
 	push de ; save text address
 	ld a, [hli]
-	ld e, a ; column of upper left corner of text
-	ld a, [hl]
-	ld d, a ; row of upper left corner of text
+	ld e, a    ; column of upper left corner of text
+	ld d, [hl] ; row of upper left corner of text
 	call GetAddressOfScreenCoords
 	pop de ; restore text address
 	ret
@@ -107,13 +104,13 @@ GetAddressOfScreenCoords:
 	push bc
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH
-.loop ; loop to add d rows to the base address
 	ld a, d
 	and a
 	jr z, .addedRows
+.loop ; add d rows to the base address
 	add hl, bc
 	dec d
-	jr .loop
+	jr nz, .loop
 .addedRows
 	pop bc
 	add hl, de
@@ -192,12 +189,6 @@ DisplayTwoOptionMenu:
 	ld a, [wStatusFlags5]
 	set BIT_NO_TEXT_DELAY, a
 	ld [wStatusFlags5], a
-
-; pointless because both values are overwritten before they are read
-	xor a
-	ld [wChosenMenuItem], a
-	ld [wMenuExitMethod], a
-
 	ld a, PAD_A | PAD_B
 	ld [wMenuWatchedKeys], a
 	ld a, $1
@@ -275,7 +266,6 @@ DisplayTwoOptionMenu:
 	push af
 	push hl
 	ld hl, wMiscFlags
-	bit BIT_NO_MENU_BUTTON_SOUND, [hl]
 	set BIT_NO_MENU_BUTTON_SOUND, [hl]
 	pop hl
 .noYesMenuInputLoop
@@ -312,7 +302,7 @@ DisplayTwoOptionMenu:
 	ld a, 1
 	ld [wCurrentMenuItem], a
 	ld [wChosenMenuItem], a
-	ld a, CHOSE_SECOND_ITEM
+	inc a ; CHOSE_SECOND_ITEM
 	ld [wMenuExitMethod], a
 	ld c, 15
 	call DelayFrames
