@@ -221,11 +221,9 @@ EraseMenuCursor::
 ; initialized with a down arrow, this function does nothing.
 ; That allows this to be called without worrying about if a down arrow should
 ; be blinking.
-HandleDownArrowBlinkTiming::
+HandleDownArrowBlinkTiming:: ; marcelnote - small optim
 	ld a, [hl]
-	ld b, a
-	ld a, '▼'
-	cp b
+	cp '▼'
 	jr nz, .downArrowOff
 .downArrowOn
 	ldh a, [hDownArrowBlinkCount1]
@@ -236,9 +234,8 @@ HandleDownArrowBlinkTiming::
 	dec a
 	ldh [hDownArrowBlinkCount2], a
 	ret nz
-	ld a, ' '
-	ld [hl], a
-	ld a, $ff
+	ld [hl], ' '
+	dec a ; a = $ff
 	ldh [hDownArrowBlinkCount1], a
 	ld a, $06
 	ldh [hDownArrowBlinkCount2], a
