@@ -8,12 +8,10 @@ DisplayListMenuID::
 	ldh [hJoy7], a ; joypad state update flag
 	ld a, [wBattleType]
 	and a ; is it the Old Man battle?
-	jr nz, .specialBattleType
+	ld a, BANK(DisplayBattleMenu)
+	jr nz, .bankswitch
 	call PrintBagInfoText ; marcelnote - new for bag pockets
 	ld a, $01 ; hardcoded bank
-	jr .bankswitch
-.specialBattleType ; Old Man battle
-	ld a, BANK(DisplayBattleMenu)
 .bankswitch
 	call BankswitchHome
 	ld hl, wStatusFlags5
@@ -100,6 +98,8 @@ DisplayListMenuIDLoop::
 	ld [wCurItem], a          ; returned by DisplayListMenuID
 	ld [wNamedObjectIndex], a ; for GetItemName
 	ld a, [wListMenuID]
+	cp SPECIALLISTMENU ; marcelnote - names are displayed by PrintListMenuEntries
+	jr z, .skipGettingQuantityAndName
 	cp ITEMLISTMENU ; marcelnote - only these lists need quantity
 	jr nz, .skipGettingQuantity
 	ld a, [hl] ; a = item quantity
@@ -107,6 +107,7 @@ DisplayListMenuIDLoop::
 .skipGettingQuantity
 	call GetItemName ; stores name in wNameBuffer and returns de pointing to it
 	call CopyToStringBuffer
+.skipGettingQuantityAndName
 	ld a, CHOSE_MENU_ITEM
 	ld [wMenuExitMethod], a
 	ld a, [wCurrentMenuItem]
@@ -124,12 +125,11 @@ DisplayListMenuIDLoop::
 	bit B_PAD_SELECT, a
 	jp nz, HandleItemListSwapping ; if so, allow the player to swap menu entries
 	;;;;;;;;;; marcelnote - for bag pockets
-	bit B_PAD_RIGHT, a
-	jr nz, .switchBagPocket
-	bit B_PAD_LEFT, a
+	ld b, a
+	and PAD_LEFT | PAD_RIGHT
 	jr nz, .switchBagPocket
 	;;;;;;;;;;
-	bit B_PAD_DOWN, a
+	bit B_PAD_DOWN, b
 	ld hl, wListScrollOffset
 	ld a, [hl]
 	jr z, .upPressed
@@ -223,41 +223,33 @@ DisplayChooseQuantityMenu::
 	jr nz, .decrementQuantityBy10
 	jr .waitForKeyPressLoop
 .incrementQuantity
-	ld a, [wMaxItemQuantity]
-	inc a
-	ld b, a
 	ld hl, wItemQuantity ; current quantity
 	inc [hl]
-	ld a, [hl]
-	cp b
-	jr nz, .handleNewQuantity
+	ld a, [wMaxItemQuantity]
+	cp [hl] ; max quantity < new quantity?
+	jr nc, .handleNewQuantity
 ; wrap to 1 if the player goes above the max quantity
-	ld a, 1
-	ld [hl], a
+	ld [hl], 1
 	jr .handleNewQuantity
 .incrementQuantityBy10
-	ld a, [wMaxItemQuantity]
-	inc a
-	ld b, a
 	ld hl, wItemQuantity ; current quantity
 	ld a, [hl]
 	add 10
 	ld [hl], a
-	cp b ; a < max + 1?
-	jr c, .handleNewQuantity
-	ld a, b
-	dec a
+	ld a, [wMaxItemQuantity]
+	cp [hl] ; max quantity < new quantity?
+	jr nc, .handleNewQuantity
 	ld [hl], a
 	jr .handleNewQuantity
 .decrementQuantityBy10
 	ld hl, wItemQuantity ; current quantity
 	ld a, [hl]
-	sub 10
+	sub 11
+	jr nc, .noClamp
+	xor a ; clamp to 0
+.noClamp
+	inc a
 	ld [hl], a
-	jr z, .clampTo1
-	jr nc, .handleNewQuantity
-.clampTo1
-	ld [hl], 1
 	jr .handleNewQuantity
 .decrementQuantity
 	ld hl, wItemQuantity ; current quantity
@@ -366,7 +358,15 @@ PrintListMenuEntries:: ; marcelnote - optimized
 	ld [wCurItem], a
 	inc a ; $ff?
 	jr z, .printCancelMenuItem
-	push bc ; save b = remaining rows, c = item's entry index
+	inc c ; current item's entry (1-based)
+	ld a, [wMenuItemToSwap] ; ID of item chosen for swapping (1-based)
+	cp c ; is it this item? also rejects if no item to swap (a=0)
+	jr nz, .printEntry
+	dec hl
+	ld a, '▷'
+	ld [hli], a
+.printEntry
+	push bc ; save b = remaining rows, c = next entry index
 	push de ; save de = list entry pointer
 ; item menu
 	call GetItemName ; reads from wNamedObjectIndex
@@ -403,19 +403,10 @@ PrintListMenuEntries:: ; marcelnote - optimized
 	pop hl  ; restore hl = coordinates of current entry's name
 .skipPrintingItemQuantity
 	inc de
-	pop bc  ; restore b = remaining rows, c = item's entry index
-	inc c   ; c = next item's entry index
-	push bc ; save b = remaining rows, c = next item's entry index
-	ld a, [wMenuItemToSwap] ; ID of item chosen for swapping (counts from 1)
-	cp c ; is it this item? also rejects if no item to swap (a=0)
-	jr nz, .nextListEntry
-	dec hl
-	ld a, '▷'
-	ld [hli], a
 .nextListEntry
 	ld bc, 2 * SCREEN_WIDTH ; 2 rows
 	add hl, bc
-	pop bc  ; restore b = remaining rows, c = saved entry index
+	pop bc  ; restore b = remaining rows, c = next entry index
 	dec b
 	jr nz, .loop
 	ld bc, -8
