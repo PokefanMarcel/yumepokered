@@ -40,6 +40,7 @@ TextScript_ItemStoragePC::
 TextScript_GameCornerPrizeMenu::
 	ld b, BANK(CeladonPrizeMenu)
 	ld hl, CeladonPrizeMenu
+	; fallthrough
 BankswitchAndContinue::
 	rst _Bankswitch ; marcelnote - free space in Home bank, changed from call Bankswitch
 	jp HoldTextDisplayOpen        ; continue to main text-engine function
