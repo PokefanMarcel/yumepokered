@@ -167,14 +167,12 @@ GetPointerWithinSpriteStateDataCommon:
 ; de: input list
 ; hl: output list
 DecodeRLEList:: ; marcelnote - optimized
-	ld b, 0    ; b = total bytes written
+	ld b, l    ; b = initial l
 .listLoop
 	ld a, [de] ; number of bytes to be written
 	cp $ff
 	jr z, .endOfList
 	ld c, a
-	add b
-	ld b, a    ; update total
 	inc de
 	ld a, [de] ; value to be written
 .entryLoop
@@ -185,7 +183,8 @@ DecodeRLEList:: ; marcelnote - optimized
 	jr .listLoop
 .endOfList
 	ld [hl], a ; write final $ff
-	ld a, b
+	ld a, l
+	sub b ; a = total number of bytes written (except $ff)
 	ret
 
 ; marcelnote - unused
