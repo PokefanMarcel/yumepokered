@@ -139,7 +139,7 @@ CheckBoulderCoords:: ; marcelnote - optimized
 	ld a, [de] ; x#SPRITESTATEDATA2_MAPY
 	sub 4 ; because sprite coordinates are offset by 4
 	ld b, a
-	inc de
+	inc e
 	ld a, [de] ; x#SPRITESTATEDATA2_MAPX
 	sub 4 ; because sprite coordinates are offset by 4
 	ld c, a
@@ -220,13 +220,11 @@ GetSpriteMovementByte1Pointer::
 	ret
 
 ; returns the sprite movement byte 2 pointer for sprite [hSpriteIndex] in hl
-GetSpriteMovementByte2Pointer::
-	ld hl, wMapSpriteData - 2 ; marcelnote - hSpriteIndex is 1-based so start from earlier
+GetSpriteMovementByte2Pointer:: ; marcelnote - only need low byte arithmetic
+	ASSERT HIGH(wMapSpriteData) == HIGH(wMapSpriteData + MAX_OBJECT_EVENTS * 2 - 1)
+	ld h, HIGH(wMapSpriteData)
 	ldh a, [hSpriteIndex]
 	add a
-	add l
+	add LOW(wMapSpriteData - 2)
 	ld l, a
-	adc h
-	sub l
-	ld h, a ; hl += a
 	ret
