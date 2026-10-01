@@ -1,8 +1,9 @@
 HandleMenuInput::
 	xor a
 	ld [wPartyMenuAnimMonEnabled], a
+	; fallthrough
 
-HandleMenuInput_:: ; marcelnote - small optim
+HandleMenuInput_:: ; marcelnote - optimized
 	ldh a, [hDownArrowBlinkCount1]
 	push af
 	ldh a, [hDownArrowBlinkCount2]
@@ -36,19 +37,12 @@ HandleMenuInput_:: ; marcelnote - small optim
 	dec a
 	jr nz, .loop2
 	; if a key wasn't pressed within the specified number of checks
-	pop af
-	ldh [hDownArrowBlinkCount2], a
-	pop af
-	ldh [hDownArrowBlinkCount1], a ; restore previous values
-	xor a
-	ld [wMenuWrappingEnabled], a ; disable menu wrapping
-	ret
+	jr .skipPlayingSound
 .keyPressed
+	ld b, a ; b = button state
 	xor a
 	ld [wTurnInPlaceDelay], a
-	ldh a, [hJoy5]
-	ld b, a
-	bit B_PAD_UP, a
+	bit B_PAD_UP, b
 	jr z, .checkIfDownPressed
 ; Up pressed
 	ld a, [wCurrentMenuItem] ; selected menu item
@@ -56,35 +50,30 @@ HandleMenuInput_:: ; marcelnote - small optim
 	jr z, .alreadyAtTop
 ; not at top
 	dec a
-	ld [wCurrentMenuItem], a ; move selected menu item up one space
-	push bc
-	call PrintBagInfoText ; marcelnote - for bag pockets and TM printing
-	pop bc
-	jr .checkOtherKeys
+	jr .updateCurrentMenuItem
 .alreadyAtTop
 	ld a, [wMenuWrappingEnabled]
 	and a ; is wrapping around enabled?
 	jr z, .noWrappingAround
-	ld a, [wMaxMenuItem]
-	ld [wCurrentMenuItem], a ; wrap to the bottom of the menu
-	jr .checkOtherKeys
+	ld a, [wMaxMenuItem] ; wrap to the bottom of the menu
+	jr .updateCurrentMenuItem
 .checkIfDownPressed
-	bit B_PAD_DOWN, a
+	bit B_PAD_DOWN, b
 	jr z, .checkOtherKeys
 ; Down pressed
-	ld a, [wCurrentMenuItem]
-	inc a
-	ld c, a
 	ld a, [wMaxMenuItem]
+	ld c, a
+	ld a, [wCurrentMenuItem]
 	cp c
-	jr nc, .notAtBottom
+	jr c, .notAtBottom
 ; already at bottom
 	ld a, [wMenuWrappingEnabled]
 	dec a ; is wrapping around enabled?
 	jr nz, .noWrappingAround
-	ld c, a ; c = 0, wrap from bottom to top
+	jr .updateCurrentMenuItem ; a = 0, wrap from bottom to top
 .notAtBottom
-	ld a, c
+	inc a
+.updateCurrentMenuItem
 	ld [wCurrentMenuItem], a
 	push bc
 	call PrintBagInfoText ; marcelnote - for bag pockets and TM printing
@@ -92,9 +81,9 @@ HandleMenuInput_:: ; marcelnote - small optim
 .checkOtherKeys
 	ld a, [wMenuWatchedKeys]
 	and b ; does the menu care about any of the pressed keys?
-	jp z, .loop1
+	jr z, .loop1
 .checkIfAButtonOrBButtonPressed
-	ldh a, [hJoy5]
+	ld a, b
 	and PAD_A | PAD_B
 	jr z, .skipPlayingSound
 ; A or B pressed
