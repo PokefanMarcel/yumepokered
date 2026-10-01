@@ -30,14 +30,6 @@ DisplayListMenuID::
 	ld [wTextBoxID], a
 	call DisplayTextBoxID ; draw the menu text box
 	call UpdateSprites ; disable sprites behind the text box
-; the code up to .skipMovingSprites appears to be useless            ; marcelnote - removed it
-;	hlcoord 4, 2 ; coordinates of upper left corner of menu text box
-;	lb de, 9, 14 ; height and width of menu text box
-;	ld a, [wListMenuID]
-;	and a ; PCPOKEMONLISTMENU?
-;	jr nz, .skipMovingSprites
-;	call UpdateSprites
-;.skipMovingSprites
 	ld a, 1 ; max menu item ID is 1 if the list has less than 2 entries
 	ld [wMenuWatchMovingOutOfBounds], a
 	ld a, [wListCount]
@@ -105,20 +97,14 @@ DisplayListMenuIDLoop::
 	ld [wWhichPokemon], a
 	call GetListMenuEntryAddress
 	ld a, [hli]
-	ld [wCurListMenuItem], a
+	ld [wCurItem], a          ; returned by DisplayListMenuID
+	ld [wNamedObjectIndex], a ; for GetItemName
 	ld a, [wListMenuID]
-	cp SPECIALLISTMENU ; marcelnote - these lists don't need price or quantity
-	jr z, .skipGettingQuantityAndPrice
-	cp ITEMLISTMENU
+	cp ITEMLISTMENU ; marcelnote - only these lists need quantity
 	jr nz, .skipGettingQuantity
 	ld a, [hl] ; a = item quantity
 	ld [wMaxItemQuantity], a
 .skipGettingQuantity
-	ASSERT wCurListMenuItem == wCurItem
-	call GetItemPrice
-.skipGettingQuantityAndPrice
-	ld a, [wCurItem]
-	ld [wNamedObjectIndex], a
 	call GetItemName ; stores name in wNameBuffer and returns de pointing to it
 	call CopyToStringBuffer
 	ld a, CHOSE_MENU_ITEM
@@ -198,12 +184,13 @@ DisplayListMenuIDLoop::
 
 DisplayChooseQuantityMenu::
 ; text box dimensions/coordinates for just quantity
-	hlcoord 15, 9
-	lb bc, 1, 3 ; height, width
 	ld a, [wListMenuID]
 	cp PRICEDITEMLISTMENU
+	hlcoord 15, 9
+	lb bc, 1, 3 ; height, width
 	jr nz, .drawTextBox
 ; text box dimensions/coordinates for quantity and price
+	call GetItemPrice ; marcelnote - moved from DisplayListMenuIDLoop
 	hlcoord 7, 9
 	lb bc, 1, 11 ; height, width
 .drawTextBox
