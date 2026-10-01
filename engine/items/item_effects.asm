@@ -2326,7 +2326,7 @@ ItemUseTMHM:
 	cp c     ; c=1 if move was learnt as field move
 	ret c    ; joenote - treat learning a field move from a TM the same as a HM
 	ld a, [wCurItem]
-	call IsItemHM
+	cp TM01  ; carry if HM
 	ret c
 	jr RemoveUsedItem
 
@@ -2711,17 +2711,6 @@ IsKeyItem_:: ; marcelnote - now tests ROM flags directly, return result in Z
 .machine
 	cp TM01
 	sbc a ; $ff for HMs (nz), 0 for TMs (z)
-	ret
-
-; sets carry if item is HM, clears carry if item is not HM
-; Input: a = item ID
-IsItemHM:: ; marcelnote - moved from home/names.asm
-	cp HM01
-	jr c, .notHM
-	cp TM01
-	ret
-.notHM
-	and a
 	ret
 
 INCLUDE "data/items/key_items.asm"
