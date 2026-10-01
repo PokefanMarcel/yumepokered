@@ -215,7 +215,7 @@ GetSpriteMovementByte1Pointer::
 	ld h, HIGH(wSpriteStateData2)
 	ldh a, [hSpriteIndex]
 	swap a
-	add 6
+	add SPRITESTATEDATA2_MOVEMENTBYTE1
 	ld l, a
 	ret
 
