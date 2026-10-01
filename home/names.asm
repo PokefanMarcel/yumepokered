@@ -82,13 +82,12 @@ GetMoveName::
 	ld [wPredefBank], a
 	jp GetName
 
-GetItemName::
+GetItemName:: ; marcelnote - now handles TM/HM directly
 ; given an item ID at [wNamedObjectIndex], store the item's name in wNameBuffer
 ; and make de point to wNameBuffer
-; marcelnote - now handles TM/HM directly
 	ld a, [wNamedObjectIndex]
 	cp HM01 ; TM/HM?
-	jr nc, GetMachineName
+	jr nc, .getMachineName
 	ld [wNameListIndex], a
 	ld a, ITEM_NAME
 	ld [wNameListType], a
@@ -96,11 +95,10 @@ GetItemName::
 	ld [wPredefBank], a
 	jp GetName
 
-GetMachineName:: ; marcelnote - small optim
+.getMachineName
 ; copies the name of the TM/HM in [wNamedObjectIndex] to wNameBuffer
 	push hl
 	push bc
-	ld a, [wNamedObjectIndex]
 	cp TM01 ; is this a TM? [not HM]
 	ld hl, TechnicalPrefix ; points to "TM"
 	jr nc, .writeMachinePrefix
