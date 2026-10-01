@@ -93,34 +93,20 @@ DisplayListMenuIDLoop::
 	res BIT_PRINT_INFO_BOX, [hl]
 	ld a, [wCurrentMenuItem]
 	call PlaceUnfilledArrowMenuCursor
-
-; pointless because both values are overwritten before they are read ; marcelnote - removed
-;	ld a, $01
-;	ld [wMenuExitMethod], a
-;	ld [wChosenMenuItem], a
-
 	xor a
 	ld [wMenuWatchMovingOutOfBounds], a
 	ld a, [wCurrentMenuItem]
 	ld c, a
 	ld a, [wListScrollOffset]
-	add c
-	ld c, a
-	ld a, [wListCount]
-	and a ; is the list empty?
-	jp z, ExitListMenu ; if so, exit the menu
-	dec a
-	cp c ; did the player select Cancel?
-	jp c, ExitListMenu ; if so, exit the menu
-	ld a, c
+	add c ; a = entry index (0-based)
+	ld hl, wListCount
+	cp [hl]
+	jp nc, ExitListMenu ; if player selected Cancel or, somehow, something larger
 	ld [wWhichPokemon], a
 	call GetListMenuEntryAddress
 	ld a, [hli]
 	ld [wCurListMenuItem], a
 	ld a, [wListMenuID]
-;	cp PCPOKEMONLISTMENU ; marcelnote - revamped Bill's PC
-;	jr z, .pokemonList
-; if it's an item menu
 	cp SPECIALLISTMENU ; marcelnote - these lists don't need price or quantity
 	jr z, .skipGettingQuantityAndPrice
 	cp ITEMLISTMENU
@@ -134,19 +120,6 @@ DisplayListMenuIDLoop::
 	ld a, [wCurItem]
 	ld [wNamedObjectIndex], a
 	call GetItemName ; stores name in wNameBuffer and returns de pointing to it
-;	jr .storeChosenEntry
-;.pokemonList ; marcelnote - revamped Bill's PC
-;	ASSERT wCurListMenuItem == wCurPartySpecies
-;	ld hl, wPartyCount
-;	ld a, [wListPointer]
-;	cp l ; is it a list of party pokemon or box pokemon?
-;	ld hl, wPartyMonNicks
-;	jr z, .getPokemonName
-;	ld hl, wBoxMonNicks ; box pokemon names
-;.getPokemonName
-;	ld a, [wWhichPokemon]
-;	call GetPartyMonName ; stores name in wNameBuffer
-;.storeChosenEntry ; store the menu entry that the player chose and return
 	call CopyToStringBuffer
 	ld a, CHOSE_MENU_ITEM
 	ld [wMenuExitMethod], a
