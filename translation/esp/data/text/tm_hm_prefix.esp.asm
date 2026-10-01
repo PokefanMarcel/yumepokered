@@ -1,4 +1,4 @@
-; marcelnote - moved from home/names2.asm
+; marcelnote - moved from home/names.asm
 TechnicalPrefix::
 	db "MT"
 HiddenPrefix::

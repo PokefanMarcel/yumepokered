@@ -6,7 +6,7 @@
 	const ITEMLISTMENU       ; $02 ; Start menu Item menu / Pokemart sell menu
 	const SPECIALLISTMENU    ; $03 ; list of special "items" e.g. floor list in elevators / list of badges
 
-; NamePointers indexes (see home/names2.asm)
+; NamePointers indexes (see home/names.asm)
 	const_def 1
 	const MOVE_NAME     ; 1
 	const ITEM_NAME     ; 2
