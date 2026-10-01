@@ -77,16 +77,15 @@ DisplayListMenuIDLoop::
 	call PlaceMenuCursor
 	pop af
 	bit B_PAD_A, a
-	jp z, .checkOtherKeys
+	jr z, .checkOtherKeys
 .buttonAPressed
 	ld hl, wBagPocketsFlags ; marcelnote - for bag pockets and TM printing
 	res BIT_PRINT_INFO_BOX, [hl]
-	ld a, [wCurrentMenuItem]
-	call PlaceUnfilledArrowMenuCursor
 	xor a
 	ld [wMenuWatchMovingOutOfBounds], a
 	ld a, [wCurrentMenuItem]
 	ld c, a
+	call PlaceUnfilledArrowMenuCursor
 	ld a, [wListScrollOffset]
 	add c ; a = entry index (0-based)
 	ld hl, wListCount
@@ -423,8 +422,7 @@ PrintBagInfoText: ; marcelnote - new for bag pockets and TM printing
 	bit BIT_PRINT_INFO_BOX, [hl]
 	jr z, .notBag
 	ld de, BagItemsText
-	ld a, [wBagPocketsFlags]
-	bit BIT_KEY_ITEMS_POCKET, a
+	bit BIT_KEY_ITEMS_POCKET, [hl]
 	jr z, .mainPocket
 	ld de, BagKeyItemsText
 .mainPocket
@@ -469,6 +467,9 @@ PrintBagInfoText: ; marcelnote - new for bag pockets and TM printing
 	; restore the saved text from wTextBoxBuffer (2 rows × 18 tiles at x=1,y=14)
 	ld de, wTextBoxBuffer
 	hlcoord 1, 14
+	call .restoreRow
+	hlcoord 1, 16
+.restoreRow
 	ld b, 18
 .placeTiles
 	ld a, [de]
@@ -476,14 +477,6 @@ PrintBagInfoText: ; marcelnote - new for bag pockets and TM printing
 	ld [hli], a
 	dec b
 	jr nz, .placeTiles
-	hlcoord 1, 16
-	ld b, 18
-.placeTiles2
-	ld a, [de]
-	inc de
-	ld [hli], a
-	dec b
-	jr nz, .placeTiles2
 	ret
 
 
