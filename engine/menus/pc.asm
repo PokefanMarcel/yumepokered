@@ -114,7 +114,7 @@ RemoveItemByID::
 	ldh a, [hItemToRemoveID]
 	ld b, a
 	;;;;;;;;;; marcelnote - new for bag pockets
-	ld [wCurItem], a ; should we save what's in wCurItem before?
+	ld [wCurItem], a
 	call IsKeyItem
 	jr z, .notKeyItem
 	ld hl, wBagKeyItems
