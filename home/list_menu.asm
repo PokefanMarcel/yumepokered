@@ -368,9 +368,9 @@ PrintListMenuEntries:: ; marcelnote - optimized
 	lb bc, 9, 14
 	call ClearScreenArea
 	ld a, [wListScrollOffset]
-	call GetListMenuEntryAddress
+	call GetListMenuEntryAddress ; c = first item's entry index (0-based)
 	ld d, h
-	ld e, l ; de = first visible entry, c = its byte offset for the swap marker
+	ld e, l ; de = first visible entry
 	hlcoord 6, 4 ; coordinates of first list entry name
 	ld b, 4 ; print 4 names
 .loop
@@ -379,7 +379,7 @@ PrintListMenuEntries:: ; marcelnote - optimized
 	ld [wCurItem], a
 	inc a ; $ff?
 	jr z, .printCancelMenuItem
-	push bc ; save b = remaining rows, c = swap-marker byte offset
+	push bc ; save b = remaining rows, c = item's entry index
 	push de ; save de = list entry pointer
 ; item menu
 	call GetItemName ; reads from wNamedObjectIndex
@@ -416,12 +416,10 @@ PrintListMenuEntries:: ; marcelnote - optimized
 	pop hl  ; restore hl = coordinates of current entry's name
 .skipPrintingItemQuantity
 	inc de
-	pop bc  ; restore b = remaining rows, c = swap-marker byte offset
-	inc c
-	inc c   ; c = next item ID offset
-	push bc ; save b = remaining rows, c = next item ID offset
+	pop bc  ; restore b = remaining rows, c = item's entry index
+	inc c   ; c = next item's entry index
+	push bc ; save b = remaining rows, c = next item's entry index
 	ld a, [wMenuItemToSwap] ; ID of item chosen for swapping (counts from 1)
-	add a
 	cp c ; is it this item? also rejects if no item to swap (a=0)
 	jr nz, .nextListEntry
 	dec hl
@@ -430,7 +428,7 @@ PrintListMenuEntries:: ; marcelnote - optimized
 .nextListEntry
 	ld bc, 2 * SCREEN_WIDTH ; 2 rows
 	add hl, bc
-	pop bc  ; restore b = remaining rows, c = swap-marker byte offset
+	pop bc  ; restore b = remaining rows, c = saved entry index
 	dec b
 	jr nz, .loop
 	ld bc, -8
@@ -523,21 +521,20 @@ GetCurrentMenuItem:: ; marcelnote - new for bag pockets and TM printing
 
 GetListMenuEntryAddress:: ; marcelnote - optimized getting list entry
 ; Input: a = zero-based entry index, wListPointer points to the list count.
-; Output: hl = entry address, c = byte offset within entries.
+; Output: hl = entry address, c = entry index.
 ; Preserves de; clobbers a, b, and flags.
+	ld b, 0
 	ld c, a
-	ld a, [wListMenuID]
-	cp ITEMLISTMENU
-	jr nz, .singleByteEntry
-	sla c ; item/quantity pairs are two bytes; other list entries are one byte
-.singleByteEntry
 	ld hl, wListPointer
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	inc hl ; hl = beginning of list entries
-	ld b, 0
 	add hl, bc
+	ld a, [wListMenuID]
+	cp ITEMLISTMENU
+	ret nz
+	add hl, bc ; item/quantity pairs are two bytes, other list entries are one byte
 	ret
 
 

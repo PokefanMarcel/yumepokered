@@ -4,8 +4,7 @@ HandleItemListSwapping:: ; marcelnote - optimized
 	jr nz, .exit ; only rearrange item list menus
 
 ; Compute address of current selected item.
-	call GetCurrentMenuItem ; hl = address of current selected item, a = item ID, c = byte offset
-	rrc c ; c is a multiple of two so low bit is 0
+	call GetCurrentMenuItem ; hl = address of current selected item, a = item ID, c = item index
 	inc c ; c = currently selected item index (counts from 1)
 
 ; Guard against swapping the Cancel button.
