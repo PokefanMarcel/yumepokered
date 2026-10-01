@@ -1,14 +1,11 @@
 GetName::
 ; arguments:
-; [wNameListIndex] = which name
+; [wNamedObjectIndex] = which name
 ; [wNameListType] = which list
 ; [wPredefBank] = bank of list
 ;
 ; stores name in wNameBuffer and returns de pointing to wNameBuffer
 ; marcelnote - optimized, moved TM/HM handling to GetItemName, and Mon handling to GetMonName
-	ld a, [wNameListIndex]
-	ld [wNamedObjectIndex], a
-
 	ldh a, [hLoadedROMBank]
 	push af
 	push hl
@@ -25,7 +22,7 @@ GetName::
 	ld a, [wPredefBank]
 	ldh [hLoadedROMBank], a
 	ld [rROMB], a
-	ld a, [wNameListIndex]
+	ld a, [wNamedObjectIndex]
 	ld b, a ; wanted entry, one-based
 	dec b
 	jr z, .copyName
@@ -73,8 +70,6 @@ GetMonName::
 	ret
 
 GetMoveName::
-	ld a, [wNamedObjectIndex]
-	ld [wNameListIndex], a
 	ld a, MOVE_NAME
 	ld [wNameListType], a
 	ld a, BANK(MoveNames)
@@ -87,7 +82,6 @@ GetItemName:: ; marcelnote - now handles TM/HM directly
 	ld a, [wNamedObjectIndex]
 	cp HM01 ; TM/HM?
 	jr nc, .getMachineName
-	ld [wNameListIndex], a
 	ld a, ITEM_NAME
 	ld [wNameListType], a
 	ld a, BANK(ItemNames)

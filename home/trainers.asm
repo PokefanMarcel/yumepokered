@@ -38,7 +38,7 @@ IncrementCurMapScript::
 
 LoadGymLeaderAndCityName:: ; marcelnote - modified to reuse existing names
 ; a is the gym leader's trainer class
-	ld [wNameListIndex], a
+	ld [wNamedObjectIndex], a ; marcelnote - GetName optim
 	ld a, TRAINER_NAME
 	ld [wNameListType], a
 	ld a, BANK(TrainerNames)

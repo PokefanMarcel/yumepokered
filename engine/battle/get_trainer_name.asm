@@ -11,7 +11,7 @@ GetTrainerName_::
 	jr z, .foundName
 	cp RIVAL3
 	jr z, .foundName
-	ld [wNameListIndex], a
+	ld [wNamedObjectIndex], a ; marcelnote - GetName optim
 	ld a, TRAINER_NAME
 	ld [wNameListType], a
 	ld a, BANK(TrainerNames)

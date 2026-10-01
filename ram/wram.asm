@@ -1660,10 +1660,9 @@ wSpriteFlipped:: db
 ; pointer to differential decoding table (assuming initial value 1)
 ;wSpriteDecodeTable1Ptr:: dw
 
+;wNameListIndex:: ; marcelnote - GetName optim
 ; input for GetMonHeader
-wCurSpecies::
-; input for GetName
-wNameListIndex:: db
+wCurSpecies:: db
 wNameListType:: db
 
 wPredefBank:: db
