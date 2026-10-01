@@ -8,6 +8,7 @@ FlagAction: ; marcelnote - optimized
 ;  b = 1: set
 ;  b = 2: read
 ; Returns the result in c.
+; Read action: z if the bit is clear, nz if it is set.
 
 	push hl
 

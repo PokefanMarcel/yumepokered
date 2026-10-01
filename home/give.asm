@@ -9,9 +9,7 @@ GiveItem::
 	ld [wItemQuantity], a
 	ld hl, wNumBagItems
 	;;;;;;;;;; marcelnote - new for bag pockets
-	call IsKeyItem ; b already loaded in [wCurItem]
-	ld a, [wIsKeyItem]
-	and a
+	call IsKeyItem ; reads wCurItem
 	jr z, .notKeyItem
 	ld hl, wNumBagKeyItems
 .notKeyItem

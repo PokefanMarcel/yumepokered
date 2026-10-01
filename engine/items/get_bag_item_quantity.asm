@@ -11,8 +11,6 @@ GetQuantityOfItemInBag:
 	call IsKeyItem
 	ld a, c
 	ld [wCurItem], a ; restore [wCurItem], else issues with wild Silph Scope encounters
-	ld a, [wIsKeyItem]
-	and a
 	jr z, .loop
 	ld hl, wNumBagKeyItems
 	;;;;;;;;;;
@@ -30,8 +28,7 @@ GetQuantityOfItemInBag:
 	ld b, 0
 	ret
 
-; marcelnote - copied from PureRGB, for Repel reuse prompt
-; PureRGBnote: ADDED: function for determining what index an item is in the player's bag.
+; marcelnote - from PureRGB, for Repel reuse prompt
 GetIndexOfItemInBag:
 ; In: b = item ID
 ; Out: b = index of item in bag (FF if not)
@@ -42,8 +39,6 @@ GetIndexOfItemInBag:
 	ld a, b
 	ld [wCurItem], a
 	call IsKeyItem
-	ld a, [wIsKeyItem]
-	and a
 	jr z, .loop
 	ld hl, wBagKeyItems - 1
 	;;;;;;;;;;

@@ -40,7 +40,7 @@ _ThrewAwayItemText::
 _IsItOKToTossItemText::
 	text "Is it OK to toss"
 	line "@"
-	text_ram wStringBuffer
+	text_ram wNameBuffer ; marcelnote - was wStringBuffer
 	text "?"
 	prompt
 

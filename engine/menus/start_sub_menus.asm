@@ -447,8 +447,6 @@ ENDC
 ;;;;;;;;;;;;;;;;;;;;;
 	; toss item
 	call IsKeyItem
-	ld a, [wIsKeyItem]
-	and a
 	jr nz, .skipAskingQuantity
 	call DisplayChooseQuantityMenu
 	inc a

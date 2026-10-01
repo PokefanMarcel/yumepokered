@@ -296,7 +296,7 @@ hDexRatingNumMonsOwned:: db
 
 NEXTU
 hItemToRemoveID:: db
-hItemToRemoveIndex:: db
+;hItemToRemoveIndex:: db ; marcelnote - removed
 
 NEXTU
 hItemCounter::

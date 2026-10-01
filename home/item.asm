@@ -35,15 +35,12 @@ TossItem::
 ; INPUT:
 ; [wCurItem] = item ID
 ; OUTPUT:
-; [wIsKeyItem] = result
-; 00: item is not key item
-; 01: item is key item
-IsKeyItem::
+; z: ordinary item; nz: key item (including HMs)
+; Preserves bc, de, hl; clobbers a.
+IsKeyItem:: ; marcelnote - optimized IsKeyItem_
 	push hl
-	push de
 	push bc
 	callfar IsKeyItem_
 	pop bc
-	pop de
 	pop hl
 	ret

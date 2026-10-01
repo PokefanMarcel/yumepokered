@@ -1764,7 +1764,9 @@ wVBlankSavedROMBank:: db
 wDelayFrameBank:: db ; joenote - added for bank backing-up during DelayFrame
 ;	ds 1
 
-wIsKeyItem:: db
+;wIsKeyItem:: db ; marcelnote - IsKeyItem now returns its result in Z
+
+	ds 1
 
 wTextBoxID:: db
 

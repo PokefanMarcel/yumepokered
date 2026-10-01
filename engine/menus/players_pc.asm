@@ -126,8 +126,6 @@ PlayerPCDeposit:
 	call IsKeyItem
 	ld a, 1
 	ld [wItemQuantity], a
-	ld a, [wIsKeyItem]
-	and a
 	jr nz, .next
 ; if it's not a key item, there can be more than one of the item
 	ld hl, DepositHowManyText
@@ -191,8 +189,6 @@ PlayerPCWithdraw:
 	call IsKeyItem
 	ld a, 1
 	ld [wItemQuantity], a
-	ld a, [wIsKeyItem]
-	and a
 	ld hl, wNumBagKeyItems ; marcelnote - new for bag pockets
 	jr nz, .next
 ; if it's not a key item, there can be more than one of the item
@@ -246,17 +242,10 @@ PlayerPCToss:
 	call DisplayListMenuID
 	pop hl
 	jp c, PlayerPCMenu
-	push hl
 	call IsKeyItem
-	pop hl
 	ld a, 1
 	ld [wItemQuantity], a
-	ld a, [wIsKeyItem]
-	and a
 	jr nz, .next
-	;ld a, [wCurItem] ; marcelnote - IsKeyItem already detects if it is an HM
-	;call IsItemHM
-	;jr c, .next
 ; if it's not a key item, there can be more than one of the item
 	push hl
 	ld hl, TossHowManyText

@@ -116,14 +116,11 @@ RemoveItemByID::
 	;;;;;;;;;; marcelnote - new for bag pockets
 	ld [wCurItem], a ; should we save what's in wCurItem before?
 	call IsKeyItem
-	ld a, [wIsKeyItem]
-	and a
 	jr z, .notKeyItem
 	ld hl, wBagKeyItems
 .notKeyItem
 	;;;;;;;;;;
-	xor a
-	ldh [hItemToRemoveIndex], a
+	ld c, 0 ; index of item to remove
 .loop
 	ld a, [hli]
 	cp -1 ; reached terminator?
@@ -131,21 +128,21 @@ RemoveItemByID::
 	cp b
 	jr z, .foundItem
 	inc hl
-	ldh a, [hItemToRemoveIndex]
-	inc a
-	ldh [hItemToRemoveIndex], a
+	inc c
 	jr .loop
 .foundItem
 	ld a, $1
 	ld [wItemQuantity], a
-	ldh a, [hItemToRemoveIndex]
+	ld a, c
 	ld [wWhichPokemon], a
-	ld hl, wNumBagItems
 	;;;;;;;;;; marcelnote - new for bag pockets
-	ld a, [wIsKeyItem]
-	and a
-	jr z, .notKeyItem2
-	ld hl, wNumBagKeyItems
-.notKeyItem2
+	; recover inventory count with hl = hl - 2 * (c + 1)
+	ASSERT wBagItems - 1 == wNumBagItems
+	ASSERT wBagKeyItems - 1 == wNumBagKeyItems
+	cpl
+	add a ; a = -2 * (c + 1)
+	ld c, a
+	ld b, $ff
+	add hl, bc ; hl = inventory count
 	;;;;;;;;;;
 	jp RemoveItemFromInventory

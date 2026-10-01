@@ -68,12 +68,7 @@ DisplayPokemartDialogue_::
 	ld hl, wStatusFlags5
 	set BIT_NO_TEXT_DELAY, [hl]
 	call IsKeyItem ; item already loaded in [wCurItem]?
-	ld a, [wIsKeyItem]
-	and a
 	jr nz, .unsellableItem
-;	ld a, [wCurItem] ; marcelnote - removed, IsKeyItem already recognizes HMs as Key items
-;	call IsItemHM
-;	jr c, .unsellableItem
 	ld a, PRICEDITEMLISTMENU
 	ld [wListMenuID], a
 	ldh [hHalveItemPrices], a ; halve prices when selling (PRICEDITEMLISTMENU > 0) ; marcelnote - modified list constants

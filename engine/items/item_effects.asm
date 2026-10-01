@@ -2643,21 +2643,11 @@ GetSelectedMoveOffset2:
 ; clears carry flag if the item is tossed, sets carry flag if not
 TossItem_::
 	push hl
-	ld a, [wCurItem]
-	call IsItemHM
-	pop hl
-	jr c, .tooImportantToToss
-	push hl
 	call IsKeyItem_
-	ld a, [wIsKeyItem]
-	pop hl
-	and a
 	jr nz, .tooImportantToToss
-	push hl
 	ld a, [wCurItem]
 	ld [wNamedObjectIndex], a
 	call GetItemName
-	call CopyToStringBuffer
 	ld hl, IsItOKToTossItemText
 	call PrintText
 	hlcoord 14, 7
@@ -2684,7 +2674,6 @@ TossItem_::
 	and a
 	ret
 .tooImportantToToss
-	push hl
 	ld hl, TooImportantToTossText
 	call PrintText
 	pop hl
@@ -2707,36 +2696,21 @@ TooImportantToTossText:
 ; INPUT:
 ; [wCurItem] = item ID
 ; OUTPUT:
-; [wIsKeyItem] = result
-; 00: item is not key item
-; 01: item is key item
-IsKeyItem_::
-	ld a, $01
-	ld [wIsKeyItem], a
+; z: ordinary item; nz: key item (including HMs)
+; Preserves de; clobbers a, bc, hl. Other flags are unspecified.
+IsKeyItem_:: ; marcelnote - now tests ROM flags directly, return result in Z
 	ld a, [wCurItem]
 	cp HM01 ; is the item an HM or TM?
-	jr nc, .checkIfItemIsHM
-; if the item is not an HM or TM
-	push af
-	ld hl, KeyItemFlags
-	ld de, wBuffer
-	ld bc, 15 ; only 11 bytes are actually used
-	ASSERT 15 >= (NUM_ITEMS + 7) / 8
-	call CopyData
-	pop af
+	jr nc, .machine
 	dec a
 	ld c, a
-	ld hl, wBuffer
 	ld b, FLAG_TEST
-	predef FlagActionPredef
-	ld a, c
-	and a
-	ret nz
-.checkIfItemIsHM
-	call IsItemHM
-	ret c
-	xor a
-	ld [wIsKeyItem], a
+	ld hl, KeyItemFlags
+	ASSERT BANK(IsKeyItem_) == BANK(FlagAction)
+	jp FlagAction ; nz if KeyItemFlags is TRUE
+.machine
+	cp TM01
+	sbc a ; $ff for HMs (nz), 0 for TMs (z)
 	ret
 
 ; sets carry if item is HM, clears carry if item is not HM
