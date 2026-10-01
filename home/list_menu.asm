@@ -394,65 +394,53 @@ PrintListMenuEntries:: ; marcelnote - optimized
 .loop
 	ld a, [de]
 	ld [wNamedObjectIndex], a
-	cp $ff
+	ld [wCurItem], a
+	inc a ; $ff?
 	jr z, .printCancelMenuItem
-	push bc
-	push de
-	push hl
-	push de ; de = list entries
+	push bc ; save b = remaining rows, c = swap-marker byte offset
+	push de ; save de = list entry pointer
 ; item menu
-	call GetItemName
+	call GetItemName ; reads from wNamedObjectIndex
 	call PlaceString
-	pop de
 	ld a, [wPrintItemPrices]
-	and a ; should prices be printed?
+	and a
 	jr z, .skipPrintingItemPrice
 ; print item price
-	push hl
-	ld a, [de]
-;	ld de, ItemPrices ; marcelnote - not used and clobbered in GetItemPrice
-	ld [wCurItem], a
-	call GetItemPrice
-	pop hl
+	push hl ; save hl = coordinates of current entry's name
+	call GetItemPrice ; reads from wCurItem
+	pop hl  ; restore hl = coordinates of current entry's name
+	push hl ; save hl = coordinates of current entry's name
 	ld bc, SCREEN_WIDTH + 5 ; 1 row down and 5 columns right
 	add hl, bc
 	ld c, 3 | LEADING_ZEROES | MONEY_SIGN
 	call PrintBCDNumber
+	pop hl  ; restore hl = coordinates of current entry's name
 .skipPrintingItemPrice
-	pop hl
-	pop de
+	pop de  ; restore de = list entry pointer
 	inc de
 	ld a, [wListMenuID]
 	cp ITEMLISTMENU
 	jr nz, .nextListEntry
 ; print item quantity
-	ld a, [wNamedObjectIndex]
-	ld [wCurItem], a
-	call IsKeyItem ; check if item is unsellable
-	ld a, [wIsKeyItem]
-	and a ; is the item unsellable?
-	jr nz, .skipPrintingItemQuantity ; if so, don't print the quantity
-	push hl
+	call IsKeyItem ; reads from wCurItem
+	jr nz, .skipPrintingItemQuantity ; don't print the quantity for Key items
+	push hl ; save hl = coordinates of current entry's name
 	ld bc, SCREEN_WIDTH + 8 ; 1 row down and 8 columns right
 	add hl, bc
 	ld a, '×'
 	ld [hli], a
-	ld a, [de]
-	ld [wMaxItemQuantity], a
 	lb bc, 1, 2
 	call PrintNumber ; preserves de since b=1
-	pop hl
+	pop hl  ; restore hl = coordinates of current entry's name
 .skipPrintingItemQuantity
 	inc de
-	pop bc
+	pop bc  ; restore b = remaining rows, c = swap-marker byte offset
 	inc c
-	push bc
-	inc c
+	inc c   ; c = next item ID offset
+	push bc ; save b = remaining rows, c = next item ID offset
 	ld a, [wMenuItemToSwap] ; ID of item chosen for swapping (counts from 1)
-	and a ; is an item being swapped?
-	jr z, .nextListEntry
 	add a
-	cp c ; is it this item?
+	cp c ; is it this item? also rejects if no item to swap (a=0)
 	jr nz, .nextListEntry
 	dec hl
 	ld a, '▷'
@@ -460,14 +448,12 @@ PrintListMenuEntries:: ; marcelnote - optimized
 .nextListEntry
 	ld bc, 2 * SCREEN_WIDTH ; 2 rows
 	add hl, bc
-	pop bc
-	inc c
+	pop bc  ; restore b = remaining rows, c = swap-marker byte offset
 	dec b
 	jr nz, .loop
 	ld bc, -8
 	add hl, bc
-	ld a, '▼'
-	ld [hl], a
+	ld [hl], '▼'
 	ret
 .printCancelMenuItem
 	ld de, ListMenuCancelText
