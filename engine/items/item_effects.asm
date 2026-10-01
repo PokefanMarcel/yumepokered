@@ -2739,6 +2739,17 @@ IsKeyItem_::
 	ld [wIsKeyItem], a
 	ret
 
+; sets carry if item is HM, clears carry if item is not HM
+; Input: a = item ID
+IsItemHM:: ; marcelnote - moved from home/names.asm
+	cp HM01
+	jr c, .notHM
+	cp TM01
+	ret
+.notHM
+	and a
+	ret
+
 INCLUDE "data/items/key_items.asm"
 
 ; marcelnote - revamped Bill's PC

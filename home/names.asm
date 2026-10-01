@@ -130,15 +130,6 @@ GetItemName:: ; marcelnote - now handles TM/HM directly
 	ld de, wNameBuffer
 	ret
 
-; sets carry if item is HM, clears carry if item is not HM
-; Input: a = item ID
-IsItemHM::
-	cp HM01
-	jr c, .notHM
-	cp TM01
-	ret
-.notHM
-	and a
 	ret
 
 NamePointers::
