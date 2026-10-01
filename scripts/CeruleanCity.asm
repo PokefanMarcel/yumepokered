@@ -109,12 +109,6 @@ CeruleanCityCoords2:
 	dbmapcoord 21,  6
 	db -1 ; end
 
-CeruleanCityMovement1:
-	db NPC_MOVEMENT_DOWN
-	db NPC_MOVEMENT_DOWN
-	db NPC_MOVEMENT_DOWN
-	db -1 ; end
-
 CeruleanCityFaceRivalScript:
 	ld a, CERULEANCITY_RIVAL
 	ldh [hSpriteIndex], a
@@ -173,17 +167,12 @@ CeruleanCityRivalDefeatedScript:
 ;	ld [wNewSoundID], a
 	call PlaySound
 	callfar Music_RivalAlternateStart
-	ld a, CERULEANCITY_RIVAL
-	ldh [hSpriteIndex], a
-	call SetSpriteMovementBytesToFF
 	ld a, [wXCoord]
 	cp 20 ; is the player standing on the right side of the bridge?
-	jr nz, .playerOnRightSideOfBridge
-	ld de, CeruleanCityMovement4
-	jr .skip
-.playerOnRightSideOfBridge
 	ld de, CeruleanCityMovement3
-.skip
+	jr nz, .gotMovement
+	ld de, CeruleanCityMovement4
+.gotMovement
 	ld a, CERULEANCITY_RIVAL
 	ldh [hSpriteIndex], a
 	call MoveSprite
@@ -196,6 +185,7 @@ CeruleanCityMovement3:
 	db NPC_MOVEMENT_DOWN
 	db NPC_MOVEMENT_DOWN
 	db NPC_MOVEMENT_DOWN
+CeruleanCityMovement1:
 	db NPC_MOVEMENT_DOWN
 	db NPC_MOVEMENT_DOWN
 	db NPC_MOVEMENT_DOWN

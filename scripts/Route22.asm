@@ -309,10 +309,10 @@ Route22Rival2AfterBattleScript: ; marcelnote - optimized
 	callfar Music_RivalAlternateStartAndTempo
 	ld a, [wSavedCoordIndex]
 	dec a
-	ld de, .ExitMovementData1
-	jr z, .gotExitMovement
-	ld de, .ExitMovementData2
-.gotExitMovement
+	ld de, .ExitMovementData
+	jr z, .gotMovement
+	inc de ; skip first step
+.gotMovement
 	ld a, ROUTE22_RIVAL2
 	ldh [hSpriteIndex], a
 	call MoveSprite
@@ -321,9 +321,8 @@ Route22Rival2AfterBattleScript: ; marcelnote - optimized
 	ld [wRoute22CurScript], a
 	ret
 
-.ExitMovementData1:
+.ExitMovementData:
 	db NPC_MOVEMENT_LEFT
-.ExitMovementData2:
 	db NPC_MOVEMENT_LEFT
 	db NPC_MOVEMENT_LEFT
 	db NPC_MOVEMENT_LEFT

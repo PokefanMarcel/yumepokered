@@ -59,13 +59,10 @@ ENDC
 	ld a, TEXT_SILPHCO7F_RIVAL
 	ldh [hTextID], a
 	call DisplayTextID
-	ld a, SILPHCO7F_RIVAL
-	ldh [hSpriteIndex], a
-	call SetSpriteMovementBytesToFF
 	ld de, .RivalMovementUp
 	ld a, [wCoordIndex]
 	ld [wSavedCoordIndex], a
-	cp 1 ; index of second, lower entry in .RivalEncounterCoordinates
+	dec a
 	jr z, .fullRivalMovement
 	inc de
 .fullRivalMovement

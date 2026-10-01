@@ -84,17 +84,13 @@ MtMoonB2FMoveSuperNerdScript:
 	call SetSpriteMovementBytesToFF
 	ld hl, MtMoonB2FPlayerNearDomeFossilCoords
 	call ArePlayerCoordsInArray
-	jr c, .playerNearDomeFossil
+	ld de, MtMoonB2FSuperNerdMoveRightMovementData
+	jr c, .continue
 	ld hl, MtMoonB2FPlayerNearHelixFossilCoords
 	call ArePlayerCoordsInArray
 	jp nc, CheckFightingMapTrainers
 	ld de, MtMoonB2FSuperNerdMoveUpMovementData
-	jr .continue
-.playerNearDomeFossil
-	ld de, MtMoonB2FSuperNerdMoveRightMovementData
 .continue
-	ld a, MTMOONB2F_SUPER_NERD
-	ldh [hSpriteIndex], a
 	call MoveSprite
 	ld a, SCRIPT_MTMOONB2F_SUPER_NERD_TAKES_OTHER_FOSSIL
 	ld [wMtMoonB2FCurScript], a

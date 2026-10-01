@@ -137,10 +137,7 @@ ChampionsRoomOakArrivesScript:
 	call ChampionsRoom_DisplayTextID_AllowABSelectStart
 	ld a, CHAMPIONSROOM_OAK
 	ldh [hSpriteIndex], a
-	call SetSpriteMovementBytesToFF
 	ld de, OakEntranceAfterVictoryMovement
-	ld a, CHAMPIONSROOM_OAK
-	ldh [hSpriteIndex], a
 	call MoveSprite
 	ld a, TOGGLE_CHAMPIONS_ROOM_OAK
 	ld [wToggleableObjectIndex], a
@@ -153,6 +150,8 @@ OakEntranceAfterVictoryMovement:
 	db NPC_MOVEMENT_UP
 	db NPC_MOVEMENT_UP
 	db NPC_MOVEMENT_UP
+RivalExitChampionsRoomMovement: ; marcelnote - Rival rematch
+OakExitChampionsRoomMovement:
 	db NPC_MOVEMENT_UP
 	db NPC_MOVEMENT_UP
 	db -1 ; end
@@ -209,12 +208,6 @@ ChampionsRoomOakComeWithMeScript:
 	ld a, SCRIPT_CHAMPIONSROOM_OAK_EXITS
 	ld [wChampionsRoomCurScript], a
 	ret
-
-RivalExitChampionsRoomMovement: ; marcelnote - Rival rematch
-OakExitChampionsRoomMovement:
-	db NPC_MOVEMENT_UP
-	db NPC_MOVEMENT_UP
-	db -1 ; end
 
 ChampionsRoomOakExitsScript:
 	ld a, [wStatusFlags5]

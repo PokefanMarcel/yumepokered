@@ -89,8 +89,8 @@ PokemonTower7FRocketLeaveMovementScript:
 .loop
 	ld a, [hli]
 	cp b
-	jr nz, .incAndSkip
 	ld a, [hli]
+	jr nz, .skip
 	cp c
 	jr nz, .skip
 	ld a, [hli]
@@ -99,8 +99,6 @@ PokemonTower7FRocketLeaveMovementScript:
 	ld a, [wSpriteIndex]
 	ldh [hSpriteIndex], a
 	jp MoveSprite
-.incAndSkip
-	inc hl
 .skip
 	inc hl
 	inc hl
@@ -139,17 +137,10 @@ PokemonTower7FRocket1ExitDownRightMovement:
 	db NPC_MOVEMENT_DOWN
 	db -1 ; end
 
-PokemonTower7FRocketExitDownMovement:
-	db NPC_MOVEMENT_DOWN
-	db NPC_MOVEMENT_DOWN
-	db NPC_MOVEMENT_DOWN
-	db NPC_MOVEMENT_DOWN
-	db NPC_MOVEMENT_DOWN
-	db -1 ; end
-
 PokemonTower7FRocket2ExitLeftDownMovement:
 	db NPC_MOVEMENT_LEFT
 	db NPC_MOVEMENT_DOWN
+PokemonTower7FRocketExitDownMovement:
 	db NPC_MOVEMENT_DOWN
 	db NPC_MOVEMENT_DOWN
 	db NPC_MOVEMENT_DOWN

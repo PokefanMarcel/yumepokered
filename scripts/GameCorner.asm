@@ -50,9 +50,6 @@ GameCornerRocketBattleScript: ; marcelnote - adjusted for reduced map size
 	ld a, TEXT_GAMECORNER_ROCKET_AFTER_BATTLE
 	ldh [hTextID], a
 	call DisplayTextID
-	ld a, GAMECORNER_ROCKET
-	ldh [hSpriteIndex], a
-	call SetSpriteMovementBytesToFF
 	ld a, [wXCoord]
 	cp 10
 	ld de, .AroundPlayerMovement

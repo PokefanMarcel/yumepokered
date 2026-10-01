@@ -691,17 +691,16 @@ OaksLabRivalBackToIndigoScript: ; marcelnote - postgame Rival event
 	ld a, OAKSLAB_RIVAL
 	ldh [hSpriteIndex], a
 	ld de, .RivalExitMovement
-	jr nz, .movementLoaded
-	ld de, .RivalExitMovementRight
+	jr z, .movementLoaded
+	inc de ; skip first step
 .movementLoaded
 	call MoveSprite
 	ld a, SCRIPT_OAKSLAB_RIVAL_LEAVES_FOR_INDIGO
 	ld [wOaksLabCurScript], a
 	ret
 
-.RivalExitMovementRight
-	db NPC_MOVEMENT_RIGHT
 .RivalExitMovement
+	db NPC_MOVEMENT_RIGHT
 	db NPC_MOVEMENT_DOWN
 	db NPC_MOVEMENT_DOWN
 	db NPC_MOVEMENT_DOWN

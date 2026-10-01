@@ -153,12 +153,12 @@ SilphFactory2FLoreleiAfterBattleScript:
 	call Delay3
 	ld a, PAD_BUTTONS | PAD_CTRL_PAD
 	ld [wJoyIgnore], a
-	ld de, .LoreleiDepartsMovementLong
 	ld a, [wXCoord]
 	cp 26
-	jr nz, .MoveLorelei
+	ld de, .LoreleiDepartsMovementLong
+	jr nz, .gotMovement
 	ld de, .LoreleiDepartsMovementShort
-.MoveLorelei
+.gotMovement
 	ld a, SILPHFACTORY2F_LORELEI2
 	ldh [hSpriteIndex], a
 	call MoveSprite
@@ -166,15 +166,10 @@ SilphFactory2FLoreleiAfterBattleScript:
 	ld [wSilphFactory2FCurScript], a
 	ret
 
-.LoreleiDepartsMovementShort:
-	db NPC_MOVEMENT_UP
-	db NPC_MOVEMENT_UP
-	db NPC_MOVEMENT_UP
-	db -1 ; end
-
 .LoreleiDepartsMovementLong:
 	db NPC_MOVEMENT_RIGHT
 	db NPC_MOVEMENT_UP
+.LoreleiDepartsMovementShort:
 	db NPC_MOVEMENT_UP
 	db NPC_MOVEMENT_UP
 	db NPC_MOVEMENT_UP

@@ -26,18 +26,17 @@ Route1OakPostBattleScript: ; marcelnote - postgame Oak battle
 	ld a, [wXCoord]
 	cp 8 ; if player on Oak's right, do a step down first
 	ld de, .OakMovement
-	jr nz, .movementLoaded
-	ld de, .OakMovementDown
-.movementLoaded
+	jr z, .gotMovement
+	inc de ; skip first step
+.gotMovement
 	call MoveSprite
 	ld a, SCRIPT_ROUTE1_OAK_FALSE_START
 .setScript
 	ld [wRoute1CurScript], a
 	ret
 
-.OakMovementDown
-	db NPC_MOVEMENT_DOWN
 .OakMovement
+	db NPC_MOVEMENT_DOWN
 	db NPC_MOVEMENT_RIGHT
 	db NPC_MOVEMENT_RIGHT
 	db -1 ; end

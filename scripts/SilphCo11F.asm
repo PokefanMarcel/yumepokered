@@ -133,7 +133,6 @@ SilphCo11FDefaultScript:
 	call DisplayTextID
 	ld a, SILPHCO11F_GIOVANNI
 	ldh [hSpriteIndex], a
-	call SetSpriteMovementBytesToFF
 	ld de, .GiovanniMovement
 	call MoveSprite
 	ld a, SCRIPT_SILPHCO11F_GIOVANNI_FACING

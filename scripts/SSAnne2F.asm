@@ -32,33 +32,22 @@ ENDC
 	ld [wToggleableObjectIndex], a
 	predef ShowObject
 	call Delay3
-	ld a, SSANNE2F_RIVAL
-	ldh [hSpriteIndex], a
-	call SetSpriteMovementBytesToFF
 	xor a
 	ldh [hJoyHeld], a
 	ld a, PAD_CTRL_PAD
 	ld [wJoyIgnore], a
 	ldh a, [hSavedCoordIndex]
-	cp $2
-	jr nz, .playerStandingRight
-	ld de, .RivalDownFourMovement
-	jr .moveSprite
-.playerStandingRight
-	ld de, .RivalDownThreeMovement
-.moveSprite
+	cp 2
+	ld de, RivalFourDownMovement
+	jr z, .gotMovement
+	inc de ; skip a step
+.gotMovement
+	ld a, SSANNE2F_RIVAL
+	ldh [hSpriteIndex], a
 	call MoveSprite
 	ld a, SCRIPT_SSANNE2F_RIVAL_START_BATTLE
 	ld [wSSAnne2FCurScript], a
 	ret
-
-.RivalDownFourMovement:
-	db NPC_MOVEMENT_DOWN
-.RivalDownThreeMovement:
-	db NPC_MOVEMENT_DOWN
-	db NPC_MOVEMENT_DOWN
-	db NPC_MOVEMENT_DOWN
-	db -1 ; end
 
 .PlayerCoordinatesArray:
 	dbmapcoord 36,  8
@@ -123,17 +112,12 @@ SSAnne2FRivalAfterBattleScript:
 	ld a, TEXT_SSANNE2F_RIVAL_CUT_MASTER
 	ldh [hTextID], a
 	call DisplayTextID
-	ld a, SSANNE2F_RIVAL
-	ldh [hSpriteIndex], a
-	call SetSpriteMovementBytesToFF
 	ld a, [wXCoord]
 	cp 37
-	jr nz, .playerStandingLeft
-	ld de, .RivalDownFourMovement
-	jr .moveSprite
-.playerStandingLeft
-	ld de, .RivalWalkAroundPlayerMovement
-.moveSprite
+	ld de, RivalWalkAroundPlayerMovement
+	jr nz, .gotMovement
+	ld de, RivalFourDownMovement
+.gotMovement
 	ld a, SSANNE2F_RIVAL
 	ldh [hSpriteIndex], a
 	call MoveSprite
@@ -146,10 +130,10 @@ SSAnne2FRivalAfterBattleScript:
 	ld [wSSAnne2FCurScript], a
 	ret
 
-.RivalWalkAroundPlayerMovement:
+RivalWalkAroundPlayerMovement:
 	db NPC_MOVEMENT_RIGHT
 	db NPC_MOVEMENT_DOWN
-.RivalDownFourMovement:
+RivalFourDownMovement:
 	db NPC_MOVEMENT_DOWN
 	db NPC_MOVEMENT_DOWN
 	db NPC_MOVEMENT_DOWN

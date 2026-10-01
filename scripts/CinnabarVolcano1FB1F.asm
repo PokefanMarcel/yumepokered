@@ -99,9 +99,9 @@ CinnabarVolcano1FLanceGoesInScript: ; marcelnote - adapted from PokemonTower2F r
 	ld [wJoyIgnore], a
 	ld a, [wPlayerMovingDirection]
 	cp PLAYER_DIR_LEFT
-	ld de, .LanceGoesInMovementFacingDown
-	jr nz, .LanceFacingDown
-	ld de, .LanceGoesInMovementFacingRight
+	ld de, .LanceGoesInMovement
+	jr z, .LanceFacingDown
+	inc de ; skip first step
 .LanceFacingDown
 	ld a, CINNABARVOLCANO1F_LANCE
 	ldh [hSpriteIndex], a
@@ -110,9 +110,8 @@ CinnabarVolcano1FLanceGoesInScript: ; marcelnote - adapted from PokemonTower2F r
 	ld [wCinnabarVolcano1FB1FCurScript], a
 	ret
 
-.LanceGoesInMovementFacingRight:
+.LanceGoesInMovement:
 	db NPC_MOVEMENT_UP
-.LanceGoesInMovementFacingDown:
 	db NPC_MOVEMENT_UP
 	db NPC_MOVEMENT_LEFT
 	db NPC_MOVEMENT_LEFT
