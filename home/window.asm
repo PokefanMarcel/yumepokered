@@ -122,10 +122,10 @@ HandleMenuInput_:: ; marcelnote - small optim
 
 PlaceMenuCursor:: ; marcelnote - small optim
 	ld b, 0
+	hlcoord 0, 0
 	ld a, [wTopMenuItemY]
 	and a ; is the y coordinate 0?
 	jr z, .adjustForXCoord
-	hlcoord 0, 0
 	ld c, SCREEN_WIDTH
 .topMenuItemLoop
 	add hl, bc
@@ -136,17 +136,15 @@ PlaceMenuCursor:: ; marcelnote - small optim
 	ld c, a
 	add hl, bc ; hl = position of top menu item
 	push hl ; save hl = position of top menu item
-	ld a, [wLastMenuItem]
-	and a ; was the previous menu id 0?
-	jr z, .checkForArrow1
-	push af
 	ldh a, [hUILayoutFlags]
 	bit BIT_SINGLE_SPACED_MENU, a
 	ld c, SCREEN_WIDTH * 2
-	jr z, .getLastMenuItemScreenPosition
+	jr z, .gotLineSpace
 	srl c ; c = SCREEN_WIDTH
-.getLastMenuItemScreenPosition
-	pop af
+.gotLineSpace
+	ld a, [wLastMenuItem]
+	and a ; was the previous menu id 0?
+	jr z, .checkForArrow1
 .lastMenuItemLoop
 	add hl, bc
 	dec a
@@ -163,14 +161,6 @@ PlaceMenuCursor:: ; marcelnote - small optim
 	ld a, [wCurrentMenuItem]
 	and a
 	jr z, .checkForArrow2
-	push af
-	ldh a, [hUILayoutFlags]
-	bit BIT_SINGLE_SPACED_MENU, a
-	ld c, SCREEN_WIDTH * 2
-	jr z, .getCurrentMenuItemScreenPosition
-	srl c ; c = SCREEN_WIDTH
-.getCurrentMenuItemScreenPosition
-	pop af
 .currentMenuItemLoop
 	add hl, bc
 	dec a
