@@ -195,13 +195,13 @@ PlaceMenuCursor:: ; marcelnote - small optim
 ; the menu cursor in the parent menu. In the case of swapping items in list,
 ; this is used to mark the item that was first chosen to be swapped.
 PlaceUnfilledArrowMenuCursor::
+; Output: b = original a, hl = cursor address.
 	ld b, a
 	ld hl, wMenuCursorLocation
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	ld [hl], '▷'
-	ld a, b
 	ret
 
 ; Replaces the menu cursor with a blank space.

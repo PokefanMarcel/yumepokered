@@ -227,8 +227,7 @@ HandlePartyMenuInput::
 	ld a, $40
 	ld [wPartyMenuAnimMonEnabled], a
 	call HandleMenuInput_
-	call PlaceUnfilledArrowMenuCursor
-	ld b, a
+	call PlaceUnfilledArrowMenuCursor ; leaves button state in b
 	xor a
 	ld [wPartyMenuAnimMonEnabled], a
 	ld a, [wCurrentMenuItem]

@@ -388,7 +388,7 @@ ENDC
 	ld [hl], a ; old menu item id
 	call HandleMenuInput
 	call PlaceUnfilledArrowMenuCursor
-	bit B_PAD_B, a
+	bit B_PAD_B, b ; marcelnote - button state returned in b
 	jp nz, ItemMenuLoop
 ; if the player made the choice to use / toss / select the item
 	ld a, [wCurItem]

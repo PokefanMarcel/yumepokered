@@ -173,28 +173,21 @@ DoBuySellQuitMenu:
 	ld [wStatusFlags5], a
 	call HandleMenuInput
 	call PlaceUnfilledArrowMenuCursor
-	bit B_PAD_A, a
-	jr nz, .pressedA
-	bit B_PAD_B, a ; always true since only A/B are watched
-	jr z, .pressedA
-	ld a, CANCELLED_MENU
-	ld [wMenuExitMethod], a
-	jr .quit
-.pressedA
-	ld a, CHOSE_MENU_ITEM
-	ld [wMenuExitMethod], a
+	bit B_PAD_A, b ; marcelnote - button state returned in b
 	ld a, [wCurrentMenuItem]
 	ld [wChosenMenuItem], a
+	jr z, .quit
+	; pressed A
 	ld b, a
 	ld a, [wMaxMenuItem]
 	cp b
-	ret nz
+	ld a, CHOSE_MENU_ITEM
+	jr nz, .storeExitMethod
 .quit
 	ld a, CANCELLED_MENU
-	ld [wMenuExitMethod], a
-	ld a, [wCurrentMenuItem]
-	ld [wChosenMenuItem], a
 	scf
+.storeExitMethod
+	ld [wMenuExitMethod], a
 	ret
 
 ; displays a menu with two options to choose from
