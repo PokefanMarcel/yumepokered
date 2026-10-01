@@ -65,7 +65,7 @@ hSpriteDataOffset:: db
 hSpriteIndex:: db
 hSpriteImageIndex::
 hSpriteFacingDirection::
-hSpriteMovementByte2::
+;hSpriteMovementByte2:: ; marcelnote - unused
 	db
 
 NEXTU

@@ -112,14 +112,10 @@ CheckCoords:: ; marcelnote - optimized
 	cp $ff ; reached terminator?
 	ret z  ; not in array, return with carry cleared
 	inc e
-; compare Y coord
-	cp b
-	jr z, .compareXCoord
-	inc hl
-	jr .loop
-.compareXCoord
+	cp b ; compare Y
 	ld a, [hli]
-	cp c
+	jr nz, .loop
+	cp c ; compare X
 	jr nz, .loop
 ; in array
 	ld a, e
@@ -192,16 +188,17 @@ DecodeRLEList:: ; marcelnote - optimized
 	ld a, b
 	ret
 
+; marcelnote - unused
 ; sets movement byte 1 for sprite [hSpriteIndex] to $FE and byte 2 to [hSpriteMovementByte2]
-SetSpriteMovementBytesToFE::
-	push hl
-	call GetSpriteMovementByte1Pointer
-	ld [hl], $fe
-	call GetSpriteMovementByte2Pointer
-	ldh a, [hSpriteMovementByte2]
-	ld [hl], a
-	pop hl
-	ret
+;SetSpriteMovementBytesToFE::
+;	push hl
+;	call GetSpriteMovementByte1Pointer
+;	ld [hl], $fe
+;	call GetSpriteMovementByte2Pointer
+;	ldh a, [hSpriteMovementByte2]
+;	ld [hl], a
+;	pop hl
+;	ret
 
 ; sets both movement bytes for sprite [hSpriteIndex] to $FF
 SetSpriteMovementBytesToFF::
@@ -224,9 +221,8 @@ GetSpriteMovementByte1Pointer::
 
 ; returns the sprite movement byte 2 pointer for sprite [hSpriteIndex] in hl
 GetSpriteMovementByte2Pointer::
-	ld hl, wMapSpriteData
+	ld hl, wMapSpriteData - 2 ; marcelnote - hSpriteIndex is 1-based so start from earlier
 	ldh a, [hSpriteIndex]
-	dec a
 	add a
 	add l
 	ld l, a
