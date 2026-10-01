@@ -7,10 +7,10 @@
 ;	cp $ff
 ;	ret z ; no match in the list
 ;	cp b
-;	jr nz, .nextArrowMovementTileEntry1
 ;	ld a, [hli]
+;	jr nz, .nextArrowMovementTileEntry
 ;	cp c
-;	jr nz, .nextArrowMovementTileEntry2
+;	jr nz, .nextArrowMovementTileEntry
 ;	ld a, [hli]
 ;	ld d, [hl]
 ;	ld e, a
@@ -18,9 +18,7 @@
 ;	call DecodeRLEList
 ;	ld [wSimulatedJoypadStatesIndex], a
 ;	ret
-;.nextArrowMovementTileEntry1
-;	inc hl
-;.nextArrowMovementTileEntry2
+;.nextArrowMovementTileEntry
 ;	inc hl
 ;	inc hl
 ;	jr DecodeArrowMovementRLE
