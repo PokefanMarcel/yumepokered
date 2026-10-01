@@ -27,11 +27,12 @@ HandleMenuInput_:: ; marcelnote - optimized
 .getJoypadState
 	call JoypadLowSensitivity
 	ldh a, [hJoy5]
+	ld b, a ; b = button state
 	and a ; was a key pressed?
 	jr nz, .keyPressed
 	push hl
 	hlcoord 18, 11 ; coordinates of blinking down arrow in some menus
-	call HandleDownArrowBlinkTiming ; blink down arrow (if any)
+	call HandleDownArrowBlinkTiming ; blink down arrow (if any), preserves b
 	pop hl
 	ld a, [wMenuJoypadPollCount]
 	dec a
@@ -39,7 +40,6 @@ HandleMenuInput_:: ; marcelnote - optimized
 	; if a key wasn't pressed within the specified number of checks
 	jr .skipPlayingSound
 .keyPressed
-	ld b, a ; b = button state
 	xor a
 	ld [wTurnInPlaceDelay], a
 	bit B_PAD_UP, b
@@ -101,7 +101,7 @@ HandleMenuInput_:: ; marcelnote - optimized
 	ldh [hDownArrowBlinkCount1], a ; restore previous values
 	xor a
 	ld [wMenuWrappingEnabled], a ; disable menu wrapping
-	ldh a, [hJoy5]
+	ld a, b
 	ret
 .noWrappingAround
 	ld a, [wMenuWatchMovingOutOfBounds]
@@ -111,19 +111,19 @@ HandleMenuInput_:: ; marcelnote - optimized
 
 PlaceMenuCursor:: ; marcelnote - small optim
 	ld b, 0
+	ld hl, wTopMenuItemY
+	ld a, [hli] ; wTopMenuItemY
+	ld c, [hl]  ; wTopMenuItemX
 	hlcoord 0, 0
-	ld a, [wTopMenuItemY]
+	add hl, bc ; hl = top-row position at X
 	and a ; is the y coordinate 0?
-	jr z, .adjustForXCoord
+	jr z, .gotTopMenuPosition
 	ld c, SCREEN_WIDTH
 .topMenuItemLoop
 	add hl, bc
 	dec a
 	jr nz, .topMenuItemLoop
-.adjustForXCoord
-	ld a, [wTopMenuItemX]
-	ld c, a
-	add hl, bc ; hl = position of top menu item
+.gotTopMenuPosition
 	push hl ; save hl = position of top menu item
 	ldh a, [hUILayoutFlags]
 	bit BIT_SINGLE_SPACED_MENU, a
@@ -148,6 +148,7 @@ PlaceMenuCursor:: ; marcelnote - small optim
 .skipClearingArrow
 	pop hl  ; restore hl = position of top menu item
 	ld a, [wCurrentMenuItem]
+	ld [wLastMenuItem], a
 	and a
 	jr z, .checkForArrow2
 .currentMenuItemLoop
@@ -165,8 +166,6 @@ PlaceMenuCursor:: ; marcelnote - small optim
 	ld [wMenuCursorLocation], a
 	ld a, h
 	ld [wMenuCursorLocation + 1], a
-	ld a, [wCurrentMenuItem]
-	ld [wLastMenuItem], a
 	ret
 
 ; This is used to mark a menu cursor other than the one currently being
