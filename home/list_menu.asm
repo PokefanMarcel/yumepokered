@@ -114,19 +114,7 @@ DisplayListMenuIDLoop::
 	jp c, ExitListMenu ; if so, exit the menu
 	ld a, c
 	ld [wWhichPokemon], a
-	ld a, [wListMenuID]
-	cp ITEMLISTMENU
-	jr nz, .skipMultiplying
-; if it's an item menu
-	sla c ; item entries are 2 bytes long, so multiply by 2
-.skipMultiplying
-	ld hl, wListPointer ; marcelnote - small optim
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	inc hl ; hl = beginning of list entries
-	ld b, 0
-	add hl, bc
+	call GetListMenuEntryAddress
 	ld a, [hli]
 	ld [wCurListMenuItem], a
 	ld a, [wListMenuID]
@@ -393,72 +381,29 @@ ExitListMenu::
 	scf
 	ret
 
-PrintListMenuEntries::
+PrintListMenuEntries:: ; marcelnote - optimized
 	hlcoord 5, 3
 	lb bc, 9, 14
 	call ClearScreenArea
-	ld hl, wListPointer ; marcelnote - small optim
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
-	inc de ; de = beginning of list entries
 	ld a, [wListScrollOffset]
-	ld c, a
-	ld a, [wListMenuID]
-	cp ITEMLISTMENU
-	ld a, c
-	jr nz, .skipMultiplying
-; item menu entries are 2 bytes long, so multiply by 2
-	add a
-	sla c
-.skipMultiplying
-	add e
-	ld e, a
-	adc d
-	sub e
-	ld d, a ; de += a
+	call GetListMenuEntryAddress
+	ld d, h
+	ld e, l ; de = first visible entry, c = its byte offset for the swap marker
 	hlcoord 6, 4 ; coordinates of first list entry name
 	ld b, 4 ; print 4 names
 .loop
-;	ld a, b ; marcelnote - revamped Bill's PC
-;	ld [wWhichPokemon], a
 	ld a, [de]
 	ld [wNamedObjectIndex], a
 	cp $ff
-	jp z, .printCancelMenuItem
+	jr z, .printCancelMenuItem
 	push bc
 	push de
 	push hl
-	push hl
 	push de ; de = list entries
-;	ld a, [wListMenuID] ; marcelnote - revamped Bill's PC
-;	cp PCPOKEMONLISTMENU
-;	jr z, .pokemonPCMenu
 ; item menu
 	call GetItemName
-;	jr .placeNameString
-;.pokemonPCMenu ; marcelnote - revamped Bill's PC
-;	push hl ; hl coordinates
-;	ld hl, wPartyCount
-;	ld a, [wListPointer]
-;	cp l ; is it a list of party pokemon or box pokemon?
-;	ld hl, wPartyMonNicks
-;	jr z, .getPokemonName
-;	ld hl, wBoxMonNicks ; box pokemon names
-;.getPokemonName
-;	ld a, [wWhichPokemon]
-;	ld b, a
-;	ld a, 4
-;	sub b
-;	ld b, a
-;	ld a, [wListScrollOffset]
-;	add b
-;	call GetPartyMonName
-;	pop hl ; hl coordinates
-;.placeNameString
 	call PlaceString
 	pop de
-	pop hl
 	ld a, [wPrintItemPrices]
 	and a ; should prices be printed?
 	jr z, .skipPrintingItemPrice
@@ -474,43 +419,6 @@ PrintListMenuEntries::
 	ld c, 3 | LEADING_ZEROES | MONEY_SIGN
 	call PrintBCDNumber
 .skipPrintingItemPrice
-;	ld a, [wListMenuID] ; marcelnote - revamped Bill's PC
-;	cp PCPOKEMONLISTMENU
-;	jr nz, .skipPrintingPokemonLevel
-;; print Pokemon level
-;	ld a, [wNamedObjectIndex]
-;	push af
-;	push hl
-;	ld hl, wPartyCount
-;	ld a, [wListPointer]
-;	cp l ; is it a list of party pokemon or box pokemon?
-;	ld a, PLAYER_PARTY_DATA
-;	jr z, .next
-;	ld a, BOX_DATA
-;.next
-;	ld [wMonDataLocation], a
-;	ld hl, wWhichPokemon
-;	ld a, 4 ; marcelnote - small optim
-;	sub [hl]
-;	ld b, a
-;	ld a, [wListScrollOffset]
-;	add b
-;	ld [hl], a
-;	call LoadMonData
-;	ld a, [wMonDataLocation]
-;	and a ; is it a list of party pokemon or box pokemon?
-;	jr z, .skipCopyingLevel
-;; copy level
-;	ld a, [wLoadedMonBoxLevel]
-;	ld [wLoadedMonLevel], a
-;.skipCopyingLevel
-;	pop hl
-;	ld bc, SCREEN_WIDTH + 8 ; 1 row down and 8 columns right
-;	add hl, bc
-;	call PrintLevel
-;	pop af
-;	ld [wNamedObjectIndex], a
-;.skipPrintingPokemonLevel
 	pop hl
 	pop de
 	inc de
@@ -529,18 +437,10 @@ PrintListMenuEntries::
 	add hl, bc
 	ld a, '×'
 	ld [hli], a
-	ld a, [wNamedObjectIndex]
-	push af
 	ld a, [de]
 	ld [wMaxItemQuantity], a
-	push de
-	ld de, wTempByteValue
-	ld [de], a
 	lb bc, 1, 2
-	call PrintNumber
-	pop de
-	pop af
-	ld [wNamedObjectIndex], a
+	call PrintNumber ; preserves de since b=1
 	pop hl
 .skipPrintingItemQuantity
 	inc de
@@ -563,7 +463,7 @@ PrintListMenuEntries::
 	pop bc
 	inc c
 	dec b
-	jp nz, .loop
+	jr nz, .loop
 	ld bc, -8
 	add hl, bc
 	ld a, '▼'
@@ -643,27 +543,33 @@ PrintBagInfoText: ; marcelnote - new for bag pockets and TM printing
 	ret
 
 
-GetCurrentMenuItem: ; marcelnote - new for bag pockets and TM printing
+GetCurrentMenuItem:: ; marcelnote - new for bag pockets and TM printing
 	; hovered index = wListScrollOffset + wCurrentMenuItem
 	ld a, [wListScrollOffset]
 	ld c, a
 	ld a, [wCurrentMenuItem]
 	add c
+	call GetListMenuEntryAddress
+	ld a, [hl] ; item id under cursor
+	ret
+
+GetListMenuEntryAddress:: ; marcelnote - optimized getting list entry
+; Input: a = zero-based entry index, wListPointer points to the list count.
+; Output: hl = entry address, c = byte offset within entries.
+; Preserves de; clobbers a, b, and flags.
 	ld c, a
-	; hl = list start + 2*index
+	ld a, [wListMenuID]
+	cp ITEMLISTMENU
+	jr nz, .singleByteEntry
+	sla c ; item/quantity pairs are two bytes; other list entries are one byte
+.singleByteEntry
 	ld hl, wListPointer
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	inc hl ; hl = beginning of list entries
 	ld b, 0
-	ld a, [wListMenuID]
-	cp PRICEDITEMLISTMENU
-	jr z, .continue
-	sla c
-.continue
 	add hl, bc
-	ld a, [hl] ; item id under cursor
 	ret
 
 

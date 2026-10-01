@@ -4,28 +4,11 @@ HandleItemListSwapping:: ; marcelnote - optimized
 	jr nz, .exit ; only rearrange item list menus
 
 ; Compute address of current selected item.
-	ld hl, wListPointer
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	inc hl  ; hl = beginning of list entries
-	ld d, h
-	ld e, l ; de = beginning of list entries
-	ld a, [wCurrentMenuItem]
-	ld b, a
-	ld a, [wListScrollOffset]
-	add b
-	ld b, a
-	inc b ; b = currently selected item index (counts from 1)
-	add a  ; each item entry is two bytes
-	add l
-	ld l, a
-	adc h
-	sub l
-	ld h, a ; hl = address of current selected item
+	call GetCurrentMenuItem ; hl = address of current selected item, a = item ID, c = byte offset
+	rrc c ; c is a multiple of two so low bit is 0
+	inc c ; c = currently selected item index (counts from 1)
 
 ; Guard against swapping the Cancel button.
-	ld a, [hl]
 	inc a
 	jr z, .exit ; ignore attempts to swap the Cancel menu item
 
@@ -34,7 +17,7 @@ HandleItemListSwapping:: ; marcelnote - optimized
 	and a ; has the first item to swap already been chosen?
 	jr nz, .swapItems
 	; if not, set the current selected item as the first item to swap
-	ld a, b
+	ld a, c
 	ld [wMenuItemToSwap], a
 	ld c, 20
 	call DelayFrames
@@ -42,20 +25,27 @@ HandleItemListSwapping:: ; marcelnote - optimized
 	jp DisplayListMenuIDLoop
 
 .swapItems
-	cp b ; is the currently selected item the same as the first item to swap?
+	sub c ; is the currently selected item the same as the first item to swap?
 	jr z, .exit ; ignore attempts to swap an item with itself
-	ld c, 20
-	call DelayFrames
 
 ; Compute address of first selected item.
-	ld a, [wMenuItemToSwap] ; ID of item chosen for swapping (counts from 1)
-	dec a
-	add a
-	add e
+	; a = first index - current index, hl = second item address
+	; We compute de = first item address with de = hl + 2a.
+	add a ; doubled offset, carry indicates negative
+	ld e, a
+	sbc a ; $00 for positive, $ff for negative
+	add h
+	ld d, a ; high byte of hl adjusted for sign
+
+	ld a, e
+	add l
 	ld e, a
 	adc d
 	sub e
-	ld d, a ; de = address of first item to swap
+	ld d, a ; de = first item address; hl remains second item's address
+
+	ld c, 20
+	call DelayFrames
 
 ; Swap items.
 	ld a, [de]
