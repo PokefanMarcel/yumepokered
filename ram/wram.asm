@@ -769,7 +769,7 @@ NEXTU
 wFieldMoves:: ds NUM_MOVES + 1 ; marcelnote - +1 spot for temporary field move
 wNumFieldMoves:: db
 wFieldMovesLeftmostXCoord:: db
-wLastFieldMoveID:: db ; unused
+;wLastFieldMoveID:: db ; unused ; marcelnote - removed
 
 NEXTU
 wBoxNumString:: ds 3

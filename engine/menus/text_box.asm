@@ -214,13 +214,8 @@ DisplayTwoOptionMenu:
 	call TwoOptionMenu_SaveScreenTiles
 	ld a, [wTwoOptionMenuID]
 	ld hl, TwoOptionMenuStrings
-	ld e, a
-	ld d, $0
-	ld a, $5
-.menuStringLoop
-	add hl, de
-	dec a
-	jr nz, .menuStringLoop
+	ld bc, 5 ; bytes per entry
+	call AddNTimes ; marcelnote - small optim
 	ld a, [hli]
 	ld c, a
 	ld a, [hli]
@@ -246,9 +241,8 @@ DisplayTwoOptionMenu:
 	ld bc, 2 * SCREEN_WIDTH + 2
 .noBlankLine
 	ld a, [hli]
+	ld d, [hl]
 	ld e, a
-	ld a, [hli]
-	ld d, a
 	pop hl
 	add hl, bc
 	call PlaceString
@@ -436,7 +430,7 @@ DisplayFieldMoveMonMenu:
 	ld [wNumFieldMoves], a
 	ld de, wFieldMoves
 .printNamesLoop
-	push hl
+	push hl ; save hl = current field-move row position
 	ld hl, FieldMoveNames
 	ld a, [de]
 	and a
@@ -454,26 +448,20 @@ DisplayFieldMoveMonMenu:
 .reachedName
 	ld b, h
 	ld c, l
-	pop hl
+	pop hl  ; restore hl = current field-move row position
 	push de
 	ld d, b
 	ld e, c
 	call PlaceString
 	ld bc, SCREEN_WIDTH * 2
-	add hl, bc
+	add hl, bc ; hl = next row position
 	pop de
 	jr .printNamesLoop
 
 .donePrintingNames
-	pop hl
+	pop hl ; restore hl = back to first ordinary menu entry position (STATS)
 	ld a, [wFieldMovesLeftmostXCoord]
 	ldh [hFieldMoveMonMenuTopMenuItemX], a
-	hlcoord 0, 12
-	ld a, [wFieldMovesLeftmostXCoord]
-	inc a
-	ld e, a
-	ld d, 0
-	add hl, de
 	ld de, PokemonMenuEntries
 	jp PlaceString
 
@@ -491,13 +479,11 @@ GetMonFieldMoves: ; marcelnote - modified for temporary field moves, from shinpo
 	push hl
 .nextMove
 	dec c ; did we check 4 moves already?
-	;jr z, .done
 	jr z, .tempFieldMove ; marcelnote - for temporary field moves
 	ld a, [de] ; move ID
 	and a ; is the move slot empty (NO_MOVE)?
-	;jr z, .done
 	jr z, .tempFieldMove ; marcelnote - for temporary field moves
-	ld b, a
+	ld b, a ; b = move ID
 	inc de
 	ld hl, FieldMoveDisplayData
 .fieldMoveLoop
@@ -510,8 +496,6 @@ GetMonFieldMoves: ; marcelnote - modified for temporary field moves, from shinpo
 	inc hl
 	jr .fieldMoveLoop
 .foundFieldMove
-	ld a, b
-	ld [wLastFieldMoveID], a
 	ld a, [hli] ; field move name index (in FieldMoveDisplayData: 1,2,..)
 	ld b, [hl] ; field move leftmost X coordinate
 	pop hl
@@ -521,12 +505,9 @@ GetMonFieldMoves: ; marcelnote - modified for temporary field moves, from shinpo
 	ld [wNumFieldMoves], a
 	ld a, [wFieldMovesLeftmostXCoord]
 	cp b
-	jr c, .skipUpdatingLeftmostXCoord
+	jr c, .loop
 	ld a, b
 	ld [wFieldMovesLeftmostXCoord], a
-.skipUpdatingLeftmostXCoord
-	ld a, [wLastFieldMoveID]
-	ld b, a
 	jr .loop
 .done
 	pop hl
