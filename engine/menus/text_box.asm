@@ -147,30 +147,23 @@ DisplayMoneyBox:
 CurrencyString:
 	db "      ¥@"
 
-DoBuySellQuitMenu:
-	ld a, [wStatusFlags5]
-	set BIT_NO_TEXT_DELAY, a
-	ld [wStatusFlags5], a
-	xor a
-	ld [wChosenMenuItem], a
+DoBuySellQuitMenu: ; marcelnote - small optim
 	ld a, BUY_SELL_QUIT_MENU_TEMPLATE
 	ld [wTextBoxID], a
 	call DisplayTextBoxID
 	ld a, PAD_A | PAD_B
 	ld [wMenuWatchedKeys], a
-	ld a, $2
-	ld [wMaxMenuItem], a
-	ld a, $1
-	ld [wTopMenuItemY], a
-	ld a, $1
-	ld [wTopMenuItemX], a
 	xor a
 	ld [wCurrentMenuItem], a
 	ld [wLastMenuItem], a
 	ld [wMenuWatchMovingOutOfBounds], a
-	ld a, [wStatusFlags5]
-	res BIT_NO_TEXT_DELAY, a
-	ld [wStatusFlags5], a
+	inc a ; a = 1
+	ld [wTopMenuItemY], a
+	ld [wTopMenuItemX], a
+	inc a ; a = 2
+	ld [wMaxMenuItem], a
+	ld hl, wStatusFlags5
+	res BIT_NO_TEXT_DELAY, [hl]
 	call HandleMenuInput
 	call PlaceUnfilledArrowMenuCursor
 	bit B_PAD_A, b ; marcelnote - button state returned in b
