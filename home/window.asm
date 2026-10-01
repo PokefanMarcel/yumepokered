@@ -271,6 +271,7 @@ EnableAutoTextBoxDrawing::
 
 DisableAutoTextBoxDrawing::
 	ld a, 1 << BIT_NO_AUTO_TEXT_BOX
+	; fallthrough
 
 AutoTextBoxDrawingCommon::
 	ld [wAutoTextBoxDrawingControl], a
