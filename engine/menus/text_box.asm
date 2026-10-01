@@ -314,40 +314,46 @@ DisplayTwoOptionMenu:
 ; they cover be fully saved/restored by the two functions below.
 ; The bottom and right edges of the menu may remain after the function returns.
 
-TwoOptionMenu_SaveScreenTiles:
+TwoOptionMenu_SaveScreenTiles: ; marcelnote - small optim
 	ld de, wBuffer
-	lb bc, 5, 6
-.loop
+	ld b, 5
+.rowsLoop
+	ld c, 6
+.colsLoop
 	ld a, [hli]
 	ld [de], a
 	inc de
 	dec c
-	jr nz, .loop
-	push bc
-	ld bc, SCREEN_WIDTH - 6
-	add hl, bc
-	pop bc
-	ld c, $6
+	jr nz, .colsLoop
+	ld a, SCREEN_WIDTH - 6
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a ; hl += SCREEN_WIDTH - 6
 	dec b
-	jr nz, .loop
-	ret
+	jr nz, .rowsLoop
+	ret ; returns bc = 0
 
-TwoOptionMenu_RestoreScreenTiles:
+TwoOptionMenu_RestoreScreenTiles: ; marcelnote - small optim
 	ld de, wBuffer
-	lb bc, 5, 6
-.loop
+	ld b, 5
+.rowsLoop
+	ld c, 6
+.colsLoop
 	ld a, [de]
 	inc de
 	ld [hli], a
 	dec c
-	jr nz, .loop
-	push bc
-	ld bc, SCREEN_WIDTH - 6
-	add hl, bc
-	pop bc
-	ld c, 6
+	jr nz, .colsLoop
+	ld a, SCREEN_WIDTH - 6
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a ; hl += SCREEN_WIDTH - 6
 	dec b
-	jr nz, .loop
+	jr nz, .rowsLoop
 	jp UpdateSprites
 
 
