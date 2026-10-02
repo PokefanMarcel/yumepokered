@@ -5,7 +5,7 @@ DEF TOWN_MAP_CURSOR_TILE   EQU $04
 DEF BIRD_BASE_TILE         EQU TOWN_MAP_CURSOR_TILE
 DEF MON_NEST_ICON_TILE     EQU $08
 
-DisplayTownMap:
+DisplayTownMap: ; marcelnote - optimized
 	call LoadTownMap
 	ld hl, wUpdateSpritesEnabled
 	ld a, [hl]
@@ -19,12 +19,7 @@ DisplayTownMap:
 	ld b, $0
 	call DrawPlayerOrBirdSprite
 	hlcoord 1, 0
-	ld de, wNameBuffer
 	call PlaceString
-;	ld hl, wShadowOAMSprite00 ; marcelnote - already backed up by DrawPlayerOrBirdSprite
-;	ld de, wShadowOAMBackupSprite00
-;	ld bc, OBJ_SIZE * 4
-;	call CopyData
 	ld hl, vSprites tile TOWN_MAP_CURSOR_TILE
 	ld de, TownMapCursor
 	lb bc, BANK(TownMapCursor), (TownMapCursorEnd - TownMapCursor) / TILE_1BPP_SIZE
@@ -35,7 +30,27 @@ DisplayTownMap:
 	pop af
 	jr .enterLoop
 
+.pressedUp
+	hlcoord 18, 0 ; marcelnote - added up/down arrows
+	ld [hl], ' '
+	ld a, [wWhichTownMapLocation]
+	inc a
+	cp TownMapOrderEnd - TownMapOrder ; number of list items + 1
+	jr nz, .townMapLoop ; no overflow
+	xor a
+	jr .townMapLoop
+.pressedDown
+	hlcoord 19, 0 ; marcelnote - added up/down arrows
+	ld [hl], ' '
+	ld a, [wWhichTownMapLocation]
+	dec a
+	cp -1
+	jr nz, .townMapLoop ; no underflow
+	ld a, TownMapOrderEnd - TownMapOrder - 1 ; number of list items
+	; fallthrough
+
 .townMapLoop
+	ld [wWhichTownMapLocation], a
 	hlcoord 0, 0
 	lb bc, 1, 18 ; marcelnote - added up/down arrows
 	call ClearScreenArea
@@ -89,28 +104,6 @@ DisplayTownMap:
 	pop af
 	ld [hl], a
 	ret
-.pressedUp
-	hlcoord 18, 0 ; marcelnote - added up/down arrows
-	ld [hl], ' '
-	ld a, [wWhichTownMapLocation]
-	inc a
-	cp TownMapOrderEnd - TownMapOrder ; number of list items + 1
-	jr nz, .noOverflow
-	xor a
-.noOverflow
-	ld [wWhichTownMapLocation], a
-	jp .townMapLoop
-.pressedDown
-	hlcoord 19, 0 ; marcelnote - added up/down arrows
-	ld [hl], ' '
-	ld a, [wWhichTownMapLocation]
-	dec a
-	cp -1
-	jr nz, .noUnderflow
-	ld a, TownMapOrderEnd - TownMapOrder - 1 ; number of list items
-.noUnderflow
-	ld [wWhichTownMapLocation], a
-	jp .townMapLoop
 
 INCLUDE "data/maps/town_map_order.asm"
 
@@ -334,7 +327,7 @@ LoadTownMap_Fly::
 	ld de, ToText
 	call PlaceString
 	ld a, [wCurMap]
-	ld b, $0
+	ld b, 0
 	call DrawPlayerOrBirdSprite
 	ld hl, wFlyLocationsList
 	decoord 18, 0
@@ -351,7 +344,6 @@ LoadTownMap_Fly::
 	ld b, BIRD_BASE_TILE
 	call DrawPlayerOrBirdSprite
 	hlcoord 3, 0
-	ld de, wNameBuffer
 	call PlaceString
 	ld c, 15
 	call DelayFrames
@@ -435,8 +427,7 @@ BuildFlyLocationsList:
 	jr nc, .notVisited
 	ld a, b ; store the map number of the town if it has been visited
 .notVisited
-	ld [hl], a
-	inc hl
+	ld [hli], a
 	inc b
 	dec c
 	jr nz, .loop
@@ -517,8 +508,8 @@ ExitTownMap:
 	jp RunDefaultPaletteCommand
 
 DrawPlayerOrBirdSprite:
-; a = map number
-; b = OAM base tile
+; in: a = map number, b = OAM base tile
+; out: de = map-name pointer
 	push af
 	ld a, b
 	ld [wOAMBaseTile], a
@@ -529,18 +520,12 @@ DrawPlayerOrBirdSprite:
 	push hl
 	call TownMapCoordsToOAMCoords
 	call WritePlayerOrBirdSpriteOAM
-	pop hl
-	ld de, wNameBuffer
-.loop
-	ld a, [hli]
-	ld [de], a
-	inc de
-	cp '@'
-	jr nz, .loop
 	ld hl, wShadowOAM
 	ld de, wShadowOAMBackup
 	ld bc, OAM_COUNT * 4
-	jp CopyData
+	call CopyData
+	pop de ; marcelnote - return name address directly
+	ret
 
 DisplayWildRodsLocations: ; marcelnote - new
 	callfar FindWildRodsLocationsOfMon ; builds list of map coords at wBuffer
@@ -601,12 +586,12 @@ DisplayWildLocations:
 TownMapCoordsToOAMCoords: ; marcelnote - removed hl writes to ROM space
 ; in: lower nybble of a = x, upper nybble of a = y
 ; out: b = (y * 8) + 24, c = (x * 8) + 24; preserves hl and de
-	push af
+	ld c, a
 	and $f0
 	srl a
 	add 24
 	ld b, a
-	pop af
+	ld a, c
 	and $0f
 	swap a
 	srl a
