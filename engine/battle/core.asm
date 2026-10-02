@@ -6357,7 +6357,7 @@ DoBattleTransitionAndInitBattleVariables:
 .next
 	call DelayFrame
 	predef BattleTransition
-	callfar LoadHudAndHpBarAndStatusTilePatterns
+	call LoadHudAndHpBarAndStatusTilePatterns
 	ld a, 1
 	ldh [hAutoBGTransferEnabled], a
 	ld a, $ff
