@@ -54,8 +54,7 @@ DisplayTownMap: ; marcelnote - optimized
 	call ClearScreenArea
 	ld hl, TownMapOrder
 	ld a, [wWhichTownMapLocation]
-	ld c, a
-	ld b, 0
+	ld c, a ; b = 0 after ClearScreenArea
 	add hl, bc
 	ld a, [hl]
 .enterLoop
@@ -144,7 +143,7 @@ ENDC
 	ld a, 3   ; 3 tries before printing Area Unknown
 	ld [wAreaUnknownCountdown], a
 	call DisplayWildLandLocations
-	jr nc, .switchToWaterCountdown ; didn't find any Land location
+	jr z, .switchToWaterCountdown ; didn't find any Land location
 	hlcoord 0, 17
 	ld a, $70 ; A button tile
 	ld [hli], a
@@ -189,7 +188,7 @@ ENDC
 .switchToWater
 	call Delay3
 	call DisplayWildWaterLocations
-	jr nc, .switchToRodsCountdown ; didn't find any Water location
+	jr z, .switchToRodsCountdown ; didn't find any Water location
 	xor a
 	ld [wAreaUnknownCountdown], a ; reset countdown
 	hlcoord 0, 17
@@ -232,7 +231,7 @@ ENDC
 	jr z, .switchToLandCountdown
 	call Delay3
 	call DisplayWildRodsLocations
-	jr nc, .switchToLandCountdown ; didn't find any Rods location
+	jr z, .switchToLandCountdown ; didn't find any Rods location
 	xor a
 	ld [wAreaUnknownCountdown], a ; reset countdown
 	hlcoord 0, 17
@@ -259,7 +258,7 @@ ENDC
 .switchToLand
 	call Delay3
 	call DisplayWildLandLocations
-	jr nc, .switchToWaterCountdown
+	jr z, .switchToWaterCountdown
 	xor a
 	ld [wAreaUnknownCountdown], a ; reset countdown
 	hlcoord 1, 17
@@ -530,10 +529,10 @@ DisplayWildLandLocations: ; marcelnote - new
 
 DisplayWildLocations:
 	ld hl, wShadowOAM
-	ld b, NUM_SPRITE_OAM_STRUCTS - 4
+	lb bc, NUM_SPRITE_OAM_STRUCTS - 4, $a0
 	ld de, $4
 .hideSpritesLoop
-	ld [hl], $a0
+	ld [hl], c
 	add hl, de
 	dec b
 	jr nz, .hideSpritesLoop
@@ -561,15 +560,13 @@ DisplayWildLocations:
 .exitLoop
 	ld a, l
 	and a   ; were any OAM entries written?
-	push af ; save z flag and cleared carry flag
+	push af ; save z flag
 	ld hl, wShadowOAM
 	ld de, wShadowOAMBackup
 	ld bc, OAM_COUNT * 4
 	call CopyData ; Copy bc bytes from hl to de, i.e. copy wShadowOAM into wShadowOAMBackup
 	pop af
-	ret z ; if list was empty, return with clear carry flag
-	scf
-	ret   ; if the list wasn't empty, return with carry flag set
+	ret ; if list was empty, return Z, else NZ
 
 
 TownMapCoordsToOAMCoords: ; marcelnote - removed hl writes to ROM space
@@ -595,24 +592,22 @@ WritePlayerOrBirdSpriteOAM:
 	jr z, WriteTownMapSpriteOAM
 	ld hl, wShadowOAMSprite32 ; for bird sprite
 
-WriteTownMapSpriteOAM:
-	push hl
-
-; Subtract 4 from c (X coord) and 4 from b (Y coord). However, the carry from c
-; is added to b, so the net result is that only 3 is subtracted from b.
-	lb hl, -4, -4
-	add hl, bc
-
-	ld b, h
-	ld c, l
-	pop hl
+WriteTownMapSpriteOAM: ; marcelnote - optimized
+; Subtract 4 from c (X coord) and 3 from b (Y coord), subtracting one extra from Y if X underflows.
+	ld a, c
+	sub 4
+	ld c, a
+	ld a, b
+	sbc 3
+	ld b, a
+	; fallthrough
 
 WriteAsymmetricMonPartySpriteOAM:
 ; Writes 4 OAM blocks for a helix mon party sprite, since it does not have
 ; a vertical line of symmetry.
-	lb de, 2, 2
+	ld d, 2
 .loop
-	push de
+	ld e, 2
 	push bc
 .innerLoop
 	ld a, b
@@ -625,14 +620,12 @@ WriteAsymmetricMonPartySpriteOAM:
 	ld [wOAMBaseTile], a
 	xor a
 	ld [hli], a
-	inc d
 	ld a, 8
 	add c
 	ld c, a
 	dec e
 	jr nz, .innerLoop
 	pop bc
-	pop de
 	ld a, 8
 	add b
 	ld b, a
@@ -647,9 +640,9 @@ WriteSymmetricMonPartySpriteOAM:
 ; needed.
 	xor a
 	ld [wSymmetricSpriteOAMAttributes], a
-	lb de, 2, 2
+	ld d, 2
 .loop
-	push de
+	ld e, 2
 	push bc
 .innerLoop
 	ld a, b
@@ -662,7 +655,6 @@ WriteSymmetricMonPartySpriteOAM:
 	ld [hli], a ; attributes
 	xor OAM_XFLIP
 	ld [wSymmetricSpriteOAMAttributes], a
-	inc d
 	ld a, 8
 	add c
 	ld c, a
