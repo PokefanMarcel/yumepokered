@@ -8,23 +8,11 @@ GetTrainerInformation::
 	ld a, [wTrainerClass]
 	dec a
 	ld hl, TrainerPicAndMoneyPointers
-	ld bc, $6 ; marcelnote - added trainer picture bank
+	ld bc, 6 ; marcelnote - added trainer picture bank
 	call AddNTimes
 	ld de, wTrainerPicPointer
-	ld a, [hli] ; trainer pic pointer
-	ld [de], a
-	inc de
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hli] ; trainer pic bank
-	ld [de], a  ; wTrainerPicBank
-	inc de
-	ld a, [hli] ; trainer base money
-	ld [de], a  ; wTrainerBaseMoney
-	inc de
-	ld a, [hl]
-	ld [de], a
+	dec c ; bc = 5: trainer pic pointer (2), trainer pic bank, trainer base money (2)
+	call CopyData
 	jp BankswitchBack
 .linkBattle
 	ld hl, wTrainerPicPointer
