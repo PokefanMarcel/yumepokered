@@ -21,10 +21,10 @@ DisplayTownMap:
 	hlcoord 1, 0
 	ld de, wNameBuffer
 	call PlaceString
-	ld hl, wShadowOAMSprite00
-	ld de, wShadowOAMBackupSprite00
-	ld bc, OBJ_SIZE * 4
-	call CopyData
+;	ld hl, wShadowOAMSprite00 ; marcelnote - already backed up by DrawPlayerOrBirdSprite
+;	ld de, wShadowOAMBackupSprite00
+;	ld bc, OBJ_SIZE * 4
+;	call CopyData
 	ld hl, vSprites tile TOWN_MAP_CURSOR_TILE
 	ld de, TownMapCursor
 	lb bc, BANK(TownMapCursor), (TownMapCursorEnd - TownMapCursor) / TILE_1BPP_SIZE
@@ -49,22 +49,16 @@ DisplayTownMap:
 	ld de, wTownMapCoords
 	call LoadTownMapEntry
 	ld a, [de]
-	push hl
+	push hl ; hl = pointer to the map name
 	call TownMapCoordsToOAMCoords
 	ld a, TOWN_MAP_CURSOR_TILE
 	ld [wOAMBaseTile], a
 	ld hl, wShadowOAMSprite04
 	call WriteTownMapSpriteOAM ; town map cursor sprite
-	pop hl
-	ld de, wNameBuffer
-.copyMapName
-	ld a, [hli]
-	ld [de], a
-	inc de
-	cp '@'
-	jr nz, .copyMapName
+	pop hl ; hl = pointer to the map name
+	ld d, h
+	ld e, l
 	hlcoord 1, 0
-	ld de, wNameBuffer
 	call PlaceString
 	ld hl, wShadowOAMSprite04
 	ld de, wShadowOAMBackupSprite04
@@ -87,7 +81,7 @@ DisplayTownMap:
 	bit B_PAD_DOWN, b
 	jr nz, .pressedDown
 	xor a
-	ld [wTownMapSpriteBlinkingEnabled], a
+;	ld [wTownMapSpriteBlinkingEnabled], a ; marcelnote - cleared by ExitTownMap below
 	ldh [hJoy7], a
 	ld [wAnimCounter], a
 	call ExitTownMap
