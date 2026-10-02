@@ -153,18 +153,7 @@ OakSpeech:
 	ld [rROMB], a
 	ld c, 4
 	call DelayFrames
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
-	ld a, [wStatusFlags4]
-	bit BIT_IS_GIRL, a
-	ASSERT BANK(GreenSprite) == BANK(RedSprite)
-	lb bc, BANK(RedSprite), $0C
-	ld de, RedSprite
-	jr z, .gotSprite
-	ld de, GreenSprite
-.gotSprite
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-	ld hl, vSprites
-	call CopyVideoData
+	call LoadStandingPlayerSpriteGraphics ; marcelnote - PrepareOakSpeech sets WALKING
 	ld de, ShrinkPic1
 	lb bc, BANK(ShrinkPic1), 0
 	call IntroDisplayPicCenteredOrUpperRight

@@ -374,18 +374,7 @@ FishingAnim: ; marcelnote - adjusted for Bottle Caps
 	call DelayFrames
 	ld hl, wMovementFlags
 	set BIT_LEDGE_OR_FISHING, [hl] ; reserve the last 4 OAM entries
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
-	ld a, [wStatusFlags4]
-	bit BIT_IS_GIRL, a
-	ld de, RedSprite
-	lb bc, BANK(RedSprite), $0c
-	jr z, .gotSprite
-	ld de, GreenSprite
-	ld bc, (BANK(GreenSprite) << 8) + $0c
-.gotSprite
-	ld hl, vNPCSprites
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-	call CopyVideoData
+	call LoadStandingPlayerSpriteGraphics ; marcelnote - RodResponse sets WALKING
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; marcelnote - add female player
 	ld a, [wStatusFlags4]
 	bit BIT_IS_GIRL, a
