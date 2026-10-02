@@ -10,12 +10,12 @@ ReloadMapSpriteTilePatterns::
 	ld [wSpriteSetID], a
 	call DisableLCD
 	callfar InitMapSprites
+	call LoadFontTilePatterns ; marcelnote - load while LCD is off
 	call EnableLCD
 	pop hl
 	pop af
 	ld [hl], a
-	call LoadPlayerSpriteGraphics
-	call LoadFontTilePatterns
+	call LoadStandingPlayerSpriteGraphics ; marcelnote - doesn't overwrite font
 	jp UpdateSprites
 
 
