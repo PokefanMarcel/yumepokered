@@ -313,11 +313,10 @@ ENDC
 LoadTownMap_Fly::
 	call ClearSprites
 	call LoadTownMap
-	call LoadPlayerSpriteGraphics
-	call LoadFontTilePatterns
+	call LoadStandingPlayerSpriteGraphics ; marcelnote - load standing sprites only
 	ld de, BirdSprite
 	ld hl, vSprites tile BIRD_BASE_TILE
-	lb bc, BANK(BirdSprite), 12
+	lb bc, BANK(BirdSprite), 4 ; marcelnote - map bird only uses the first frame
 	call CopyVideoData
 	ld de, TownMapUpArrow
 	ld hl, vChars1 tile $6d
@@ -513,8 +512,7 @@ ExitTownMap:
 	call GBPalWhiteOut
 	call ClearScreen
 	call ClearSprites
-	call LoadPlayerSpriteGraphics
-	call LoadFontTilePatterns
+	call LoadStandingPlayerSpriteGraphics ; marcelnote - load standing sprites only
 	call UpdateSprites
 	jp RunDefaultPaletteCommand
 
