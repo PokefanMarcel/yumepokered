@@ -143,7 +143,7 @@ DivideBCD_divDivisorBy10:
 	ret
 
 DivideBCD_getNextDigit:
-	ld bc, $3
+	lb bc, 0, 3
 .loop
 	ld de, hMoney ; the dividend
 	ld hl, hDivideBCDDivisor

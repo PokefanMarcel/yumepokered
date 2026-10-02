@@ -271,5 +271,5 @@ BoyGirlChoice::	; joenote - add female player
 	ld a, BOY_GIRL_MENU
 	ld [wTwoOptionMenuID], a
 	coord hl,  6, 5
-	ld bc, $0607 ; marcelnote - yx cursor position
+	lb bc, 6, 7 ; marcelnote - yx cursor position
 	jp DisplayYesNoChoice

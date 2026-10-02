@@ -82,7 +82,7 @@ DisplayCreditsMon:
 	ldh [rBGP], a
 
 ; scroll the mon left by one tile 7 times
-	ld bc, 7
+	lb bc, 0, 7
 .scrollLoop1
 	call ScrollCreditsMonLeft
 	dec c
