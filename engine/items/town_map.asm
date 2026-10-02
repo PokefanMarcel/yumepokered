@@ -149,21 +149,21 @@ ENDC
 	ld a, $70 ; A button tile
 	ld [hli], a
 IF DEF(_FRA)
-	ld a, $71 ; first "Terre" tile
+	inc a     ; first "Terre" tile
 	ld [hli], a
 	inc a     ; second "Terre" tile
 	ld [hli], a
 	inc a     ; third "Terre" tile
 	ld [hl], a
 ELIF DEF(_ESP)
-	ld a, $71 ; first "Tierra" tile
+	inc a     ; first "Tierra" tile
 	ld [hli], a
 	inc a     ; second "Tierra" tile
 	ld [hli], a
 	inc a     ; third "Tierra" tile
 	ld [hl], a
 ELSE
-	ld a, $71 ; first "Land" tile
+	inc a     ; first "Land" tile
 	ld [hli], a
 	inc a     ; second "Land" tile
 	ld [hl], a
@@ -384,36 +384,30 @@ LoadTownMap_Fly::
 	decoord 18, 0
 	inc hl
 	ld a, [hl]
-	cp $ff
-	jr z, .wrapToStartOfList
 	cp NOT_VISITED
+	jr c, .townMapFlyLoop
 	jr z, .pressedUp ; skip past unvisited towns
-	jr .townMapFlyLoop
-.wrapToStartOfList
-	ld hl, wFlyLocationsList
+	ld hl, wFlyLocationsList ; $ff so wrap to start of list
 	jr .townMapFlyLoop
 .pressedDown
 	decoord 19, 0
 	dec hl
 	ld a, [hl]
-	cp $ff
-	jr z, .wrapToEndOfList
 	cp NOT_VISITED
+	jr c, .townMapFlyLoop
 	jr z, .pressedDown ; skip past unvisited towns
-	jp .townMapFlyLoop
-.wrapToEndOfList
-	ld hl, wFlyLocationsList + NUM_CITY_MAPS
+	ld hl, wFlyLocationsList + NUM_CITY_MAPS ; $ff so wrap to end of list
 	jr .pressedDown
 
 
 BuildFlyLocationsList:
-	ld hl, wFlyAnimUsingCoordList
-	ld [hl], $ff
-	inc hl
-	ld a, [wTownVisitedFlag]
+	ld hl, wTownVisitedFlag
+	ld a, [hli]
+	ld d, [hl]
 	ld e, a
-	ld a, [wTownVisitedFlag + 1]
-	ld d, a
+	ld hl, wFlyAnimUsingCoordList
+	ld a, $ff
+	ld [hli], a
 	lb bc, 0, NUM_CITY_MAPS
 .loop
 	srl d
@@ -751,7 +745,7 @@ TownMapSpriteBlinkingAnimation::
 	call CopyData ; copy wShadowOAMBackup backup in wShadowOAM
 	xor a
 	jr .done
-.hideSprites
+.hideSprites ; a = 25
 	ld hl, wShadowOAMSprite00YCoord
 	ld b, OAM_COUNT - 4
 	ld de, OBJ_SIZE
@@ -760,7 +754,6 @@ TownMapSpriteBlinkingAnimation::
 	add hl, de
 	dec b
 	jr nz, .hideSpritesLoop
-	ld a, 25
 .done
 	ld [wAnimCounter], a
 	jp DelayFrame
