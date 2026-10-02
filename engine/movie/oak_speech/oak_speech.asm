@@ -135,22 +135,10 @@ OakSpeech:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	call IntroDisplayPicCenteredOrUpperRight
 	call GBFadeInFromWhite
-	ld a, [wStatusFlags3]
-;	and a ; ???
-;	jr nz, .next
 	ld hl, OakSpeechText3
 	call PrintText
-;.next
-	ldh a, [hLoadedROMBank]
-	push af
 	ld a, SFX_SHRINK
 	call PlaySound
-	pop af
-; bug: switching ROM Bank should not happen outside of Home Bank
-; This code does nothing, as PlaySound does all necessary Bank switch
-; It looks like a leftover from an early development stage
-	ldh [hLoadedROMBank], a
-	ld [rROMB], a
 	ld c, 4
 	call DelayFrames
 	call LoadStandingPlayerSpriteGraphics ; marcelnote - PrepareOakSpeech sets WALKING
