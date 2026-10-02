@@ -1,6 +1,6 @@
 PrintPredefTextID::
 	ldh [hTextID], a
-	ld hl, TextPredefs
+	ld de, TextPredefs
 	call SetMapTextPointer
 	ld hl, wTextPredefFlag
 	set BIT_TEXT_PREDEF, [hl]
@@ -15,15 +15,15 @@ RestoreMapTextPointer::
 	ld [hl], a
 	ret
 
-SetMapTextPointer::
-	ld a, [wCurMapTextPtr]
-	ldh [hSavedMapTextPtr], a
-	ld a, [wCurMapTextPtr + 1]
-	ldh [hSavedMapTextPtr + 1], a
-	ld a, l
-	ld [wCurMapTextPtr], a
-	ld a, h
-	ld [wCurMapTextPtr + 1], a
+SetMapTextPointer:: ; marcelnote - optimized
+	ld hl, wCurMapTextPtr
+	ld a, [hli]
+	ldh [hSavedMapTextPtr], a     ; [wCurMapTextPtr]
+	ld a, [hl]
+	ldh [hSavedMapTextPtr + 1], a ; [wCurMapTextPtr + 1]
+	ld a, d
+	ld [hld], a ; [wCurMapTextPtr + 1]
+	ld [hl], e  ; [wCurMapTextPtr]
 	ret
 
 INCLUDE "data/text_predef_pointers.asm"

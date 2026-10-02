@@ -393,7 +393,7 @@ ChangeBox::
 	ld [de], a
 	call RestoreMapTextPointer
 	call SaveGameData
-	ld hl, wChangeBoxSavedMapTextPointer
+	ld de, wChangeBoxSavedMapTextPointer
 	call SetMapTextPointer
 	ld a, SFX_SAVE
 	call PlaySoundWaitForCurrent
