@@ -20,11 +20,9 @@ PrintNumber:: ; marcelnote - optimized
 
 	push hl ; save hl = coord of rightmost tile to write
 
-	ld a, b ; a = number of bytes to print + printing flags
-	and $3  ; remove flags
-	dec a   ; print 1 byte?
+	bit 1, b ; print 1 byte?
 	jr z, .byte
-	dec a   ; print 2 bytes?
+	bit 0, b ; print 2 bytes?
 	jr z, .word
 	; print 3 bytes
 	ld a, [de]
