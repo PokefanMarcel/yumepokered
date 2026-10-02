@@ -575,6 +575,10 @@ DisplayWildLocations:
 	cp $70       ; marcelnote - new, Route 28 and Mt Silver's town map coordinates (x=0, y=7)
 	jr z, .loop  ; skip Route 28 and Mt Silver
 	call TownMapCoordsToOAMCoords
+	ld a, b
+	ld [hli], a ; nest icon Y
+	ld a, c
+	ld [hli], a ; nest icon X
 	ld a, MON_NEST_ICON_TILE
 	ld [hli], a
 	xor a
@@ -594,22 +598,20 @@ DisplayWildLocations:
 	ret   ; if the list wasn't empty, return with carry flag set
 
 
-TownMapCoordsToOAMCoords:
+TownMapCoordsToOAMCoords: ; marcelnote - removed hl writes to ROM space
 ; in: lower nybble of a = x, upper nybble of a = y
-; out: b and [hl] = (y * 8) + 24, c and [hl+1] = (x * 8) + 24
+; out: b = (y * 8) + 24, c = (x * 8) + 24; preserves hl and de
 	push af
 	and $f0
 	srl a
 	add 24
 	ld b, a
-	ld [hli], a
 	pop af
-	and $f
+	and $0f
 	swap a
 	srl a
 	add 24
 	ld c, a
-	ld [hli], a
 	ret
 
 WritePlayerOrBirdSpriteOAM:
