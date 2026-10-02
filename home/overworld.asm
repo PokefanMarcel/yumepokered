@@ -841,33 +841,6 @@ HandleFlyWarpOrDungeonWarp::
 LeaveMapAnim::
 	jpfar _LeaveMapAnim
 
-LoadPlayerSpriteGraphics:: ; marcelnote - modified to not use hTileAnimations
-; Load sprite graphics based on whether the player is walking, biking, or surfing.
-; wWalkBikeSurfState: 0 = walking, 1 = biking, 2 = surfing
-	ld a, [wWalkBikeSurfState]
-	dec a ; BIKING?
-	jr z, .checkIfBikingAllowed
-	dec a ; SURFING?
-	jp z, LoadSurfingPlayerSpriteGraphics
-	jp LoadWalkingPlayerSpriteGraphics ; defaults to walking, including unexpected values
-
-.checkIfBikingAllowed
-	call IsBikingAllowed
-	jp c, LoadBikePlayerSpriteGraphics
-	xor a
-	ld [wWalkBikeSurfState], a
-;	ld [wWalkBikeSurfStateCopy], a ; unused?
-	jp LoadWalkingPlayerSpriteGraphics
-
-SwitchRunningToWalkingSprites: ; marcelnote - running sprites
-	ld a, [wWalkBikeSurfState]
-	and a ; WALKING?
-	ret nz ; if not walking, do nothing
-	ld hl, wStatusFlags6
-	bit BIT_RUNNING, [hl]
-	ret z ; if wasn't running, do nothing
-	jp LoadWalkingPlayerSpriteGraphics
-
 IsBikingAllowed:: ; marcelnote - simplified
 ; The bike can be used on maps with tilesets in BikeRidingTilesets.
 ; Return carry if biking is allowed.
@@ -1912,71 +1885,6 @@ RunMapScript::
 	ret z
 	res BIT_REDRAW_MAP_VIEW_PENDING, [hl]
 	jpfar RedrawMapView
-
-LoadWalkingPlayerSpriteGraphics:: ; marcelnote - add female player
-	ld hl, wStatusFlags6
-	res BIT_RUNNING, [hl]
-	ld a, [wStatusFlags4]
-	bit BIT_IS_GIRL, a
-	ld de, RedSprite
-	jr z, .gotSprite
-	ld de, GreenSprite
-.gotSprite
-	ld hl, vNPCSprites
-	jr LoadPlayerSpriteGraphicsCommon
-
-LoadRunningPlayerSpriteGraphics:: ; marcelnote - running sprites
-	ld hl, wStatusFlags6
-	set BIT_RUNNING, [hl]
-	ld a, [wStatusFlags4]
-	bit BIT_IS_GIRL, a
-	ld de, RedRunSprite
-	jr z, .gotSprite
-	ld de, GreenRunSprite
-.gotSprite
-	ld hl, vNPCSprites
-	jr LoadPlayerSpriteGraphicsCommon
-
-LoadSurfingPlayerSpriteGraphics:: ; marcelnote - add female player and new surfing sprites
-	ld hl, wStatusFlags6
-	res BIT_RUNNING, [hl]
-	ld a, [wStatusFlags4]
-	bit BIT_IS_GIRL, a
-	ld de, RedSurfSprite
-	jr z, .gotSprite
-	ld de, GreenSurfSprite
-.gotSprite
-	ld hl, vNPCSprites
-	jr LoadPlayerSpriteGraphicsCommon
-
-LoadBikePlayerSpriteGraphics:: ; marcelnote - add female player and running sprites
-	ld hl, wStatusFlags6
-	res BIT_RUNNING, [hl]
-	ld a, [wStatusFlags4]
-	bit BIT_IS_GIRL, a
-	ld de, RedBikeSprite
-	jr z, .gotBikeSprite
-	ld de, GreenBikeSprite
-.gotBikeSprite
-	ld hl, vNPCSprites
-	; fallthrough
-
-LoadPlayerSpriteGraphicsCommon::
-	push de
-	push hl
-	lb bc, BANK(RedSprite), $0c
-	call CopyVideoData
-	pop hl
-	pop de
-	ld a, $c0
-	add e
-	ld e, a
-	adc d
-	sub e
-	ld d, a ; de += a
-	set 3, h ; add $800 ($80 tiles) to hl (1 << 3 == $8)
-	lb bc, BANK(RedSprite), $0c
-	jp CopyVideoData
 
 ; function to load data from the map header
 LoadMapHeader:: ; marcelnote - optimized
