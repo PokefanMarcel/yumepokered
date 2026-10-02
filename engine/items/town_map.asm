@@ -16,7 +16,7 @@ DisplayTownMap: ; marcelnote - optimized
 	ldh [hJoy7], a
 	ld a, [wCurMap]
 	push af
-	ld b, $0
+	ld b, 0
 	call DrawPlayerOrBirdSprite
 	hlcoord 1, 0
 	call PlaceString
@@ -32,7 +32,6 @@ DisplayTownMap: ; marcelnote - optimized
 
 .pressedUp
 	hlcoord 18, 0 ; marcelnote - added up/down arrows
-	ld [hl], ' '
 	ld a, [wWhichTownMapLocation]
 	inc a
 	cp TownMapOrderEnd - TownMapOrder ; number of list items + 1
@@ -41,7 +40,6 @@ DisplayTownMap: ; marcelnote - optimized
 	jr .townMapLoop
 .pressedDown
 	hlcoord 19, 0 ; marcelnote - added up/down arrows
-	ld [hl], ' '
 	ld a, [wWhichTownMapLocation]
 	sub 1
 	jr nc, .townMapLoop ; no underflow
@@ -49,6 +47,7 @@ DisplayTownMap: ; marcelnote - optimized
 	; fallthrough
 
 .townMapLoop
+	ld [hl], ' '
 	ld [wWhichTownMapLocation], a
 	hlcoord 0, 0
 	lb bc, 1, 18 ; marcelnote - added up/down arrows
@@ -152,21 +151,21 @@ ENDC
 IF DEF(_FRA)
 	ld a, $71 ; first "Terre" tile
 	ld [hli], a
-	ld a, $72 ; second "Terre" tile
+	inc a     ; second "Terre" tile
 	ld [hli], a
-	ld a, $73 ; third "Terre" tile
+	inc a     ; third "Terre" tile
 	ld [hl], a
 ELIF DEF(_ESP)
 	ld a, $71 ; first "Tierra" tile
 	ld [hli], a
-	ld a, $72 ; second "Tierra" tile
+	inc a     ; second "Tierra" tile
 	ld [hli], a
-	ld a, $73 ; third "Tierra" tile
+	inc a     ; third "Tierra" tile
 	ld [hl], a
 ELSE
 	ld a, $71 ; first "Land" tile
 	ld [hli], a
-	ld a, $72 ; second "Land" tile
+	inc a     ; second "Land" tile
 	ld [hl], a
 ENDC
 	call WaitForTextScrollButtonPress
@@ -197,25 +196,23 @@ ENDC
 	ld a, $70 ; A button tile
 	ld [hli], a
 IF DEF(_FRA)
-	ld a, $74 ; first "Surf" tile
+	ld a, $74    ; first "Surf" tile
 	ld [hli], a
-	ld a, $75 ; second "Surf" tile
+	inc a        ; second "Surf" tile
 	ld [hli], a
-	ld a, $64 ; background water tile
-	ld [hl], a
+	ld [hl], $64 ; background water tile
 ELIF DEF(_ESP)
-	ld a, $74 ; first "Surf" tile
+	ld a, $74    ; first "Surf" tile
 	ld [hli], a
-	ld a, $75 ; second "Surf" tile
+	inc a        ; second "Surf" tile
 	ld [hli], a
-	ld a, $64 ; background water tile
-	ld [hl], a
+	ld [hl], $64 ; background water tile
 ELSE
 	ld a, $73 ; first "Water" tile
 	ld [hli], a
-	ld a, $74 ; second "Water" tile
+	inc a     ; second "Water" tile
 	ld [hli], a
-	ld a, $75 ; third "Water" tile
+	inc a     ; third "Water" tile
 	ld [hl], a
 ENDC
 	call WaitForTextScrollButtonPress
@@ -243,9 +240,9 @@ ENDC
 	ld [hli], a
 	ld a, $76 ; first "Rods" tile
 	ld [hli], a
-	ld a, $77 ; second "Rods" tile
+	inc a     ; second "Rods" tile
 	ld [hli], a
-	ld a, $78 ; third "Rods" tile
+	inc a     ; third "Rods" tile
 	ld [hl], a
 	call WaitForTextScrollButtonPress
 	ldh a, [hJoy5]
@@ -269,24 +266,23 @@ ENDC
 IF DEF(_FRA)
 	ld a, $71 ; first "Terre" tile
 	ld [hli], a
-	ld a, $72 ; second "Terre" tile
+	inc a     ; second "Terre" tile
 	ld [hli], a
-	ld a, $73 ; third "Terre" tile
+	inc a     ; third "Terre" tile
 	ld [hl], a
 ELIF DEF(_ESP)
 	ld a, $71 ; first "Tierra" tile
 	ld [hli], a
-	ld a, $72 ; second "Tierra" tile
+	inc a     ; second "Tierra" tile
 	ld [hli], a
-	ld a, $73 ; third "Tierra" tile
+	inc a     ; third "Tierra" tile
 	ld [hl], a
 ELSE
-	ld a, $71 ; first "Land" tile
+	ld a, $71    ; first "Land" tile
 	ld [hli], a
-	ld a, $72 ; second "Land" tile
+	inc a        ; second "Land" tile
 	ld [hli], a
-	ld a, $64 ; background water tile
-	ld [hl], a
+	ld [hl], $64 ; background water tile
 ENDC
 	call WaitForTextScrollButtonPress
 	ldh a, [hJoy5]
@@ -509,10 +505,10 @@ ExitTownMap:
 DrawPlayerOrBirdSprite:
 ; in: a = map number, b = OAM base tile
 ; out: de = map-name pointer
-	push af
+	ld c, a
 	ld a, b
 	ld [wOAMBaseTile], a
-	pop af
+	ld a, c
 	ld de, wTownMapCoords
 	call LoadTownMapEntry
 	ld a, [de]
@@ -730,8 +726,7 @@ LoadTownMapEntry:
 LoadGymCityName:: ; marcelnote - new for gym city and leader names
 	ld a, [wCurMap]
 	ld de, wGymCityName   ; LoadTownMapEntry needs to store town map coordinates at de
-	call LoadTownMapEntry ; hl = address of name
-	ld de, wGymCityName
+	call LoadTownMapEntry ; hl = address of name, preserves de
 	ld bc, GYM_CITY_LENGTH
 	jp CopyData
 
