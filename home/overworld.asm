@@ -2242,9 +2242,7 @@ ResetUsingStrengthOutOfBattleBit:
 	ret
 
 ForceBikeOrSurf::
-	ld b, BANK(RedSprite)
-	ld hl, LoadPlayerSpriteGraphics ; in bank 0
-	rst _Bankswitch ; marcelnote - free space in Home bank, changed from call Bankswitch
+	call LoadPlayerSpriteGraphics
 	jp PlayDefaultMusic ; update map/player state?
 
 CheckForUserInterruption::
