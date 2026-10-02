@@ -126,7 +126,7 @@ CableClubNPC::
 	xor a
 	ld [hld], a
 	ld [hl], a
-	jpfar LinkMenu
+	jp LinkMenu
 
 CableClubNPCAreaReservedFor2FriendsLinkedByCableText:
 	text_far _CableClubNPCAreaReservedFor2FriendsLinkedByCableText
