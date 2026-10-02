@@ -3,8 +3,7 @@ DEF NOT_VISITED EQU $fe
 ; marcelnote - object gfx share the player's standing tiles; we restore them on exit
 DEF TOWN_MAP_CURSOR_TILE   EQU $04
 DEF BIRD_BASE_TILE         EQU TOWN_MAP_CURSOR_TILE
-DEF TOWN_MAP_UP_ARROW_TILE EQU BIRD_BASE_TILE + 4
-DEF MON_NEST_ICON_TILE     EQU TOWN_MAP_UP_ARROW_TILE ; nest maps don't display the up/down arrows
+DEF MON_NEST_ICON_TILE     EQU $08
 
 DisplayTownMap:
 	call LoadTownMap
@@ -30,6 +29,7 @@ DisplayTownMap:
 	ld de, TownMapCursor
 	lb bc, BANK(TownMapCursor), (TownMapCursorEnd - TownMapCursor) / TILE_1BPP_SIZE
 	call CopyVideoDataDouble
+	call LoadTownMapUpArrowGraphics ; marcelnote - added up/down arrows
 	xor a
 	ld [wWhichTownMapLocation], a
 	pop af
@@ -37,7 +37,7 @@ DisplayTownMap:
 
 .townMapLoop
 	hlcoord 0, 0
-	lb bc, 1, 20
+	lb bc, 1, 18 ; marcelnote - added up/down arrows
 	call ClearScreenArea
 	ld hl, TownMapOrder
 	ld a, [wWhichTownMapLocation]
@@ -70,6 +70,9 @@ DisplayTownMap:
 	ld de, wShadowOAMBackupSprite04
 	ld bc, OBJ_SIZE * 4
 	call CopyData
+	ld c, 15 ; marcelnote - blink only the pressed arrow while changing locations, as in Fly
+	call DelayFrames
+	call DrawTownMapArrows
 .inputLoop
 	call TownMapSpriteBlinkingAnimation
 	call JoypadLowSensitivity
@@ -93,6 +96,8 @@ DisplayTownMap:
 	ld [hl], a
 	ret
 .pressedUp
+	hlcoord 18, 0 ; marcelnote - added up/down arrows
+	ld [hl], ' '
 	ld a, [wWhichTownMapLocation]
 	inc a
 	cp TownMapOrderEnd - TownMapOrder ; number of list items + 1
@@ -102,6 +107,8 @@ DisplayTownMap:
 	ld [wWhichTownMapLocation], a
 	jp .townMapLoop
 .pressedDown
+	hlcoord 19, 0 ; marcelnote - added up/down arrows
+	ld [hl], ' '
 	ld a, [wWhichTownMapLocation]
 	dec a
 	cp -1
@@ -322,10 +329,7 @@ LoadTownMap_Fly::
 	ld hl, vSprites tile BIRD_BASE_TILE
 	lb bc, BANK(BirdSprite), 4 ; marcelnote - map bird only uses the first frame
 	call CopyVideoData
-	ld de, TownMapUpArrow
-	ld hl, vChars1 tile $6d
-	lb bc, BANK(TownMapUpArrow), (TownMapUpArrowEnd - TownMapUpArrow) / TILE_1BPP_SIZE
-	call CopyVideoDataDouble
+	call LoadTownMapUpArrowGraphics
 	call BuildFlyLocationsList
 	ld hl, wUpdateSpritesEnabled
 	ld a, [hl]
@@ -357,10 +361,7 @@ LoadTownMap_Fly::
 	call PlaceString
 	ld c, 15
 	call DelayFrames
-	hlcoord 18, 0
-	ld [hl], '▲'
-	hlcoord 19, 0
-	ld [hl], '▼'
+	call DrawTownMapArrows
 	pop hl
 .inputLoop
 	push hl
@@ -451,6 +452,7 @@ BuildFlyLocationsList:
 TownMapUpArrow:
 	INCBIN "gfx/town_map/up_arrow.1bpp"
 TownMapUpArrowEnd:
+ASSERT (TownMapUpArrowEnd - TownMapUpArrow) / TILE_1BPP_SIZE == 1
 
 LoadTownMap:
 	call GBPalWhiteOutWithDelay3
@@ -787,6 +789,20 @@ TownMapSpriteBlinkingAnimation::
 .done
 	ld [wAnimCounter], a
 	jp DelayFrame
+
+LoadTownMapUpArrowGraphics:
+; Town/Fly maps only: overwrite the unused nest A-button.
+	ld de, TownMapUpArrow
+	ld hl, vChars2 tile '▲'
+	lb bc, BANK(TownMapUpArrow), (TownMapUpArrowEnd - TownMapUpArrow) / TILE_1BPP_SIZE
+	jp CopyVideoDataDouble
+
+DrawTownMapArrows:
+	hlcoord 18, 0
+	ld a, '▲'
+	ld [hli], a
+	ld [hl], '▼'
+	ret
 
 
 IF DEF(_FRA)

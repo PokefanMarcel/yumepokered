@@ -109,8 +109,8 @@
 	charmap "<l>",       $76 ; gfx/pokedex/pokedex.png
 	charmap "<b>",       $77 ; gfx/pokedex/pokedex.png
 
-	; needed for LoadTownMap_Fly (see engine/items/town_map.asm)
-	charmap "▲",         $ed ; gfx/town_map/up_arrow.1bpp
+	; needed for Town/Fly maps (see engine/items/town_map.asm)
+	charmap "▲",         $70 ; gfx/town_map/up_arrow.1bpp
 
 ; Actual characters (from gfx/font/font.png)
 
