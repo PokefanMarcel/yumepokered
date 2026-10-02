@@ -43,9 +43,8 @@ DisplayTownMap: ; marcelnote - optimized
 	hlcoord 19, 0 ; marcelnote - added up/down arrows
 	ld [hl], ' '
 	ld a, [wWhichTownMapLocation]
-	dec a
-	cp -1
-	jr nz, .townMapLoop ; no underflow
+	sub 1
+	jr nc, .townMapLoop ; no underflow
 	ld a, TownMapOrderEnd - TownMapOrder - 1 ; number of list items
 	; fallthrough
 
