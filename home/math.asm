@@ -27,7 +27,7 @@ Divide::
 	push hl
 	push de
 	push bc
-	homecall _Divide
+	callfar _Divide
 	pop bc
 	pop de
 	pop hl
