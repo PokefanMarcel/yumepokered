@@ -1,6 +1,10 @@
 DEF NOT_VISITED EQU $fe
 
-DEF BIRD_BASE_TILE EQU $04
+; marcelnote - object gfx share the player's standing tiles; we restore them on exit
+DEF TOWN_MAP_CURSOR_TILE   EQU $04
+DEF BIRD_BASE_TILE         EQU TOWN_MAP_CURSOR_TILE
+DEF TOWN_MAP_UP_ARROW_TILE EQU BIRD_BASE_TILE + 4
+DEF MON_NEST_ICON_TILE     EQU TOWN_MAP_UP_ARROW_TILE ; nest maps don't display the up/down arrows
 
 DisplayTownMap:
 	call LoadTownMap
@@ -22,7 +26,7 @@ DisplayTownMap:
 	ld de, wShadowOAMBackupSprite00
 	ld bc, OBJ_SIZE * 4
 	call CopyData
-	ld hl, vSprites tile BIRD_BASE_TILE
+	ld hl, vSprites tile TOWN_MAP_CURSOR_TILE
 	ld de, TownMapCursor
 	lb bc, BANK(TownMapCursor), (TownMapCursorEnd - TownMapCursor) / TILE_1BPP_SIZE
 	call CopyVideoDataDouble
@@ -47,7 +51,7 @@ DisplayTownMap:
 	ld a, [de]
 	push hl
 	call TownMapCoordsToOAMCoords
-	ld a, $4
+	ld a, TOWN_MAP_CURSOR_TILE
 	ld [wOAMBaseTile], a
 	ld hl, wShadowOAMSprite04
 	call WriteTownMapSpriteOAM ; town map cursor sprite
@@ -467,7 +471,7 @@ LoadTownMap:
 	ld a, BANK(MonNestOptionsTileGraphics)
 	call FarCopyData
 	ld hl, MonNestIcon
-	ld de, vSprites tile $04
+	ld de, vSprites tile MON_NEST_ICON_TILE
 	ld bc, MonNestIconEnd - MonNestIcon
 	ld a, BANK(MonNestIcon)
 	call FarCopyData ; marcelnote - eye color for mon nest icon
@@ -575,7 +579,7 @@ DisplayWildLocations:
 	cp $70       ; marcelnote - new, Route 28 and Mt Silver's town map coordinates (x=0, y=7)
 	jr z, .loop  ; skip Route 28 and Mt Silver
 	call TownMapCoordsToOAMCoords
-	ld a, $4     ; nest icon tile
+	ld a, MON_NEST_ICON_TILE
 	ld [hli], a
 	xor a
 	ld [hli], a
