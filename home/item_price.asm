@@ -5,21 +5,20 @@ GetItemPrice:: ; marcelnote - optimized
 ; For TMs/HMs, calls GetMachinePrice, since their prices are stored separately.
 	ldh a, [hLoadedROMBank]
 	push af
-	ld a, BANK(ItemPrices)
-	ldh [hLoadedROMBank], a
-	ld [rROMB], a
-	ld hl, ItemPrices
 	ld a, [wCurItem]
 	cp HM01
 	jr nc, .getTMPrice
 	; Item IDs are 1-based and each price entry is 3 bytes, so the last
 	; byte of the entry is at ItemPrices + item_id * 3 - 1.
+	ld hl, ItemPrices - 1
 	ld b, 0
 	ld c, a
+	ld a, BANK(ItemPrices)
+	ldh [hLoadedROMBank], a
+	ld [rROMB], a
 	add hl, bc
 	add hl, bc
 	add hl, bc
-	dec hl
 	ld a, [hld]
 	ldh [hItemPrice + 2], a
 	ld a, [hld]
