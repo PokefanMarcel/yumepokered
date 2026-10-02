@@ -21,6 +21,16 @@ ReloadMapSpriteTilePatterns::
 
 ; marcelnote - those functions have been modified and mmoved here from home/overworld.asm
 
+; Keep all player sheets and the Fly bird in the same bank.
+ASSERT BANK(GreenSprite) == BANK(RedSprite)
+ASSERT BANK(RedRunSprite) == BANK(RedSprite)
+ASSERT BANK(GreenRunSprite) == BANK(RedSprite)
+ASSERT BANK(RedBikeSprite) == BANK(RedSprite)
+ASSERT BANK(GreenBikeSprite) == BANK(RedSprite)
+ASSERT BANK(RedSurfSprite) == BANK(RedSprite)
+ASSERT BANK(GreenSurfSprite) == BANK(RedSprite)
+ASSERT BANK(BirdSprite) == BANK(RedSprite)
+
 SwitchRunningToWalkingSprites: ; marcelnote - running sprites
 	ld a, [wWalkBikeSurfState]
 	and a ; WALKING?
@@ -78,7 +88,7 @@ GetPlayerSpriteGraphics:
 	jr z, .checkIfBikingAllowed
 	dec a ; SURFING?
 	jr z, GetSurfingPlayerSpriteGraphics
-	jr GetWalkingPlayerSpriteGraphics ; defaults to walking, including unexpected values
+	jr GetWalkingPlayerSpriteGraphics ; defaults to walking
 .checkIfBikingAllowed
 	call IsBikingAllowed
 	jr c, GetBikePlayerSpriteGraphics
