@@ -94,12 +94,14 @@ ENDM
 	ld a, [wDoNotWaitForButtonPressAfterDisplayingText]
 	and a
 	jr nz, HoldTextDisplayOpen
+	; fallthrough
 
 AfterDisplayingTextID::
 	ld a, [wEnteringCableClub]
 	and a
 	jr nz, HoldTextDisplayOpen
 	call WaitForTextScrollButtonPress
+	; fallthrough
 
 ; loop to hold the dialogue box open as long as the player keeps holding down the A button
 HoldTextDisplayOpen::
@@ -107,6 +109,7 @@ HoldTextDisplayOpen::
 	ldh a, [hJoyHeld]
 	bit B_PAD_A, a
 	jr nz, HoldTextDisplayOpen
+	; fallthrough
 
 CloseTextDisplay::
 	ld a, [wCurMap]
@@ -153,7 +156,7 @@ DisplayPokemartDialogue::
 	call LoadItemList
 	ld a, PRICEDITEMLISTMENU
 	ld [wListMenuID], a
-	homecall DisplayPokemartDialogue_
+	callfar DisplayPokemartDialogue_
 	jr AfterDisplayingTextID
 
 PokemartGreetingText::
@@ -182,13 +185,11 @@ DisplayPokemonCenterDialogue::
 	ldh [hItemPrice], a
 	ldh [hItemPrice + 1], a
 	ldh [hItemPrice + 2], a
-
-	inc hl
-	homecall DisplayPokemonCenterDialogue_
+	callfar DisplayPokemonCenterDialogue_
 	jp AfterDisplayingTextID
 
 DisplayPayPhoneDialogue:: ; marcelnote - new for pay phones
-	homecall DisplayPayPhoneDialogue_
+	callfar DisplayPayPhoneDialogue_
 	ld a, [wCurrentMenuItem]
 	cp 2 ; cancel or B
 	jp z, CloseTextDisplay
