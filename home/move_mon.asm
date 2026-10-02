@@ -202,9 +202,7 @@ CalcStat::
 	ret
 
 AddEnemyMonToPlayerParty::
-	homecall_sf _AddEnemyMonToPlayerParty
-	ret
+	jpfar _AddEnemyMonToPlayerParty
 
 CopyMonDaycare:: ; marcelnote - revamped Bill's PC
-	homecall_sf _CopyMonDaycare
-	ret
+	jpfar _CopyMonDaycare
