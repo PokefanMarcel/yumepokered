@@ -44,10 +44,6 @@ EnterMapAnim::
 	jr .done
 .flyAnimation
 	pop hl
-	ld de, BirdSprite
-	ld hl, vNPCSprites
-	lb bc, BANK(BirdSprite), $0c
-	call CopyVideoData
 	call LoadBirdSpriteGraphics
 	ld a, SFX_FLY
 	call PlaySound
