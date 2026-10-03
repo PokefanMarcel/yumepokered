@@ -133,9 +133,8 @@ UpdateHPBar:
 ; stops prematurely if bar is filled up
 ; e: current health (in pixels) to start with
 UpdateHPBar_AnimateHPBar:
-	push hl
-.barAnimationLoop
-	push af
+	ld d, a
+.loop
 	push de
 	ld d, $6
 	call DrawHPBar ; marcelnote - [wHPBarType] must already be set
@@ -145,16 +144,10 @@ UpdateHPBar_AnimateHPBar:
 	ld a, [wHPBarDelta] ; +1 or -1
 	add e
 	cp $31
-	jr nc, .barFilledUp
+	ret nc ; bar filled up
 	ld e, a
-	pop af
-	dec a
-	jr nz, .barAnimationLoop
-	pop hl
-	ret
-.barFilledUp
-	pop af
-	pop hl
+	dec d
+	jr nz, .loop
 	ret
 
 ; compares old HP and new HP and sets c and z flags accordingly
