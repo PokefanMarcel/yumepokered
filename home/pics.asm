@@ -17,14 +17,13 @@ LoadMonFrontPic::
 	rra
 	rra
 	ld c, a ; c = 1 (Yellow) or 2 (Green)
-	swap d ; multiply by 16 to get sprite dim in bytes
-	ld e, d
-	ld a, $0F
-	and d
-	ld d, a
-	ld a, $F0
-	and e
-	ld e, a  ; de = sprite dim in bytes
+	; multiply d by 16 to get sprite dim in bytes
+	swap d
+	ld a, d
+	and $f0
+	ld e, a
+	xor d
+	ld d, a ; de = sprite dim in bytes
 	add hl, de
 	dec c
 	jr z, .gotPicAddress
@@ -183,7 +182,26 @@ CopyFlippedRow:
 .loopTile
 	ld a, [de]
 	inc de
-	call ReverseByte ; flips a, preserves hl, bc, de
+
+	; reverse byte in a, for instance: %01010011 -> %11001010 ; from Polished Crystal
+	and a
+	jr z, .skip
+	; rearrange alternating bits
+	ld c, a     ; abcdefgh
+	rlca
+	rlca        ; cdefghab
+	xor c
+	and $aa     ; 10101010
+	xor c       ; cbedgfah
+	; rearrange bit pairs, then rotate into reversed order
+	ld c, a     ; cbedgfah
+	swap c      ; c = gfahcbed
+	xor c
+	and $33     ; 00110011
+	xor c       ; gfedcbah
+	rrca        ; hgfedcba
+.skip
+
 	ld [hli], a
 	dec b
 	jr nz, .loopTile
@@ -193,47 +211,6 @@ CopyFlippedRow:
 	dec c
 	jr nz, CopyFlippedRow
 	ret
-
-
-; Reverses byte in a, for instance: %01010011 -> %11001010
-ReverseByte:
-	push hl
-	push bc
-	ld b, a
-	and $0F
-	jr z, .emptyNybble1 ; no need to reverse empty nybbles
-	; reverse nybble a (inlined ReverseNybble)
-	ld hl, NybbleReverseTable
-	add l
-	ld l, a
-	jr nc, .noCarry1
-	inc h
-.noCarry1
-	ld a, [hl]
-.emptyNybble1
-	ld c, a
-	swap c ; c holds the first reversed nybble
-	ld a, b
-	swap a
-	and $0F
-	jr z, .emptyNybble2 ; no need to reverse empty nybbles
-	; reverse nybble a (inlined ReverseNybble)
-	ld hl, NybbleReverseTable
-	add l
-	ld l, a
-	jr nc, .noCarry2
-	inc h
-.noCarry2
-	ld a, [hl]
-.emptyNybble2
-	or c
-	pop bc
-	pop hl
-	ret
-
-; maps each nybble to its reverse
-NybbleReverseTable::
-	db $0, $8, $4, $c, $2, $a, $6, $e, $1, $9, $5, $d, $3, $b, $7, $f
 
 
 CenterHiResSprite::
