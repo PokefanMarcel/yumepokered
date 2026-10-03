@@ -48,11 +48,9 @@ PewterPokecenterJigglypuffText:
 	jr nz, .findMatchingFacingDirectionLoop
 	dec hl
 
-	push hl
 	ld c, 0 ; BANK(Music_JigglypuffSong)
 	ld a, MUSIC_JIGGLYPUFF_SONG
 	call PlayMusic
-	pop hl
 
 .spinMovementLoop
 	ld a, [hl]
@@ -69,9 +67,7 @@ PewterPokecenterJigglypuffText:
 	ld c, 24
 	call DelayFrames
 
-	push hl
 	call IsSongPlaying
-	pop hl
 	jr c, .spinMovementLoop
 ;	ld a, [wChannelSoundIDs]
 ;	ld b, a
