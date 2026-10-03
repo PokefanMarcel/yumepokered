@@ -12,7 +12,7 @@ VBlank::
 	ld a, [wDelayFrameBank]
 	and a
 	jr z, .noDelayBank
-	ld [hLoadedROMBank], a
+	ldh [hLoadedROMBank], a
 	ld [rROMB], a
 .noDelayBank
 
@@ -49,13 +49,8 @@ VBlank::
 
 	call Random
 
-	ldh a, [hVBlankOccurred]
-	and a
-	jr z, .skipZeroing
 	xor a
 	ldh [hVBlankOccurred], a
-
-.skipZeroing
 	ldh a, [hFrameCounter]
 	and a
 	jr z, .skipDec
