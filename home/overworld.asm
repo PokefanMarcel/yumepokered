@@ -1607,8 +1607,8 @@ ScheduleSouthRowRedraw::
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld bc, $200
-	add hl, bc
+	inc h
+	inc h ; hl += $200 (16 BG rows)
 	ld a, h
 	and $03
 	or $98
@@ -2214,13 +2214,12 @@ SwitchToMapRomBank::
 	ld c, a
 	ld b, 0
 	ld a, BANK(MapHeaderBanks)
-	call BankswitchHome
+    ldh [hLoadedROMBank], a ; marcelnote - removed extra bankswitching
+    ld [rROMB], a
 	ld hl, MapHeaderBanks
 	add hl, bc
 	ld a, [hl]
 	ldh [hMapROMBank], a
-	call BankswitchBack
-	ldh a, [hMapROMBank]
 	ldh [hLoadedROMBank], a
 	ld [rROMB], a
 	pop bc
