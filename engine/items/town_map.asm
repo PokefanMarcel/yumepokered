@@ -638,8 +638,6 @@ WriteSymmetricMonPartySpriteOAM:
 ; sprites other than the helix one have a vertical line of symmetry which allows
 ; the X-flip OAM bit to be used so that only 2 rather than 4 tile patterns are
 ; needed.
-	xor a
-	ld [wSymmetricSpriteOAMAttributes], a
 	ld d, 2
 .loop
 	ld e, 2
@@ -651,10 +649,14 @@ WriteSymmetricMonPartySpriteOAM:
 	ld [hli], a ; X
 	ld a, [wOAMBaseTile]
 	ld [hli], a ; tile
-	ld a, [wSymmetricSpriteOAMAttributes]
-	ld [hli], a ; attributes
-	xor OAM_XFLIP
-	ld [wSymmetricSpriteOAMAttributes], a
+
+	; marcelnote - store 0 on first turn, OAM_XFLIP on second
+	ld a, e
+	rrca          ; carry = column: 0 left, 1 right
+	sbc a         ; a = $00 left, $ff right
+	and OAM_XFLIP
+	ld [hli], a   ; attributes
+
 	ld a, 8
 	add c
 	ld c, a

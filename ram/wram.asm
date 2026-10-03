@@ -995,7 +995,9 @@ wStandingOnWarpPadOrHole::
 wOAMBaseTile::
 wGymTrashCanIndex:: db
 
-wSymmetricSpriteOAMAttributes:: db
+;wSymmetricSpriteOAMAttributes:: db ; marcelnote - now unused
+
+	ds 1
 
 wMonPartySpriteSpecies:: db
 
