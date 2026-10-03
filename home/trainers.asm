@@ -52,9 +52,8 @@ LoadGymLeaderAndCityName:: ; marcelnote - modified to reuse existing names
 
 ; reads specific information from trainer header (pointed to at wTrainerHeaderPtr)
 ; a: offset in header data
-ReadTrainerHeaderInfo::
+ReadTrainerHeaderInfo:: ; marcelnote - small optim
 	push de
-	push af
 	ld d, 0
 	ld e, a
 	ld hl, wTrainerHeaderPtr
@@ -62,7 +61,7 @@ ReadTrainerHeaderInfo::
 	ld l, [hl]
 	ld h, a
 	add hl, de
-	pop af
+	ld a, e
 	and a
 	jr nz, .nonZeroOffset
 	ld a, [hl]
@@ -279,12 +278,10 @@ CheckForEngagingTrainers::
 	jr nz, .continue
 	push hl
 	push de
-	push hl
 	xor a ; TRAINER_EVENT_FLAG_BIT
 	call ReadTrainerHeaderInfo
 	inc hl
 	ld a, [hl]
-	pop hl
 	ld [wTrainerEngageDistance], a
 	ld a, [wSpriteIndex]
 	swap a
