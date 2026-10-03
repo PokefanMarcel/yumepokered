@@ -1,8 +1,5 @@
 Serial::
 	push af
-	push bc
-	push de
-	push hl
 	ldh a, [hSerialConnectionStatus]
 	inc a
 	jr z, .connectionNotYetEstablished
@@ -43,9 +40,6 @@ Serial::
 	ldh [hSerialReceivedNewData], a
 	ld a, SERIAL_NO_DATA_BYTE
 	ldh [hSerialSendData], a
-	pop hl
-	pop de
-	pop bc
 	pop af
 	reti
 
