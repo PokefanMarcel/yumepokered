@@ -34,7 +34,6 @@ INCLUDE "home/init.asm"
 INCLUDE "home/vblank.asm"
 INCLUDE "home/fade.asm"
 INCLUDE "home/serial.asm"
-INCLUDE "home/timer.asm"
 INCLUDE "home/audio.asm"
 INCLUDE "home/update_sprites.asm"
 

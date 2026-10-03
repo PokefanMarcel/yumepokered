@@ -67,7 +67,7 @@ SECTION "lcd", ROM0[$0048]
 	ds $50 - @, 0 ; unused
 
 SECTION "timer", ROM0[$0050]
-	jp Timer
+	reti ; marcelnote - moved here from its own file
 
 	ds $58 - @, 0 ; unused
 
