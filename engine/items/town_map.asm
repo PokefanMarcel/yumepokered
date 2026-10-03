@@ -83,9 +83,9 @@ DisplayTownMap: ; marcelnote - optimized
 	call TownMapSpriteBlinkingAnimation
 	call JoypadLowSensitivity
 	ldh a, [hJoy5]
-	ld b, a
 	and PAD_A | PAD_B | PAD_UP | PAD_DOWN
 	jr z, .inputLoop
+	ld b, a
 	ld a, SFX_TINK
 	call PlaySound
 	bit B_PAD_UP, b
@@ -661,12 +661,9 @@ WriteSymmetricMonPartySpriteOAM:
 	dec e
 	jr nz, .innerLoop
 	pop bc
-	pop de
-	push hl
-	ld hl, wOAMBaseTile
-	inc [hl]
-	inc [hl]
-	pop hl
+	ld a, [wOAMBaseTile]
+	add 2
+	ld [wOAMBaseTile], a
 	ld a, 8
 	add b
 	ld b, a
@@ -739,10 +736,10 @@ TownMapSpriteBlinkingAnimation::
 	jr .done
 .hideSprites ; a = 25
 	ld hl, wShadowOAMSprite00YCoord
-	ld b, OAM_COUNT - 4
+	lb bc, OAM_COUNT - 4, SCREEN_HEIGHT_PX + OAM_Y_OFS
 	ld de, OBJ_SIZE
 .hideSpritesLoop
-	ld [hl], SCREEN_HEIGHT_PX + OAM_Y_OFS
+	ld [hl], c
 	add hl, de
 	dec b
 	jr nz, .hideSpritesLoop
