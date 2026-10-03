@@ -119,19 +119,14 @@ AutoBgMapTransfer::
 	ldh a, [hAutoBGTransferEnabled]
 	and a
 	ret z
-	ld hl, sp + 0
-	ld a, h
-	ldh [hSPTemp], a
-	ld a, l
-	ldh [hSPTemp + 1], a ; save stack pointer
+	ld [hSPTemp], sp
 	ldh a, [hAutoBGTransferPortion]
 	and a
 	jr z, .transferTopThird
 	dec a
 	jr z, .transferMiddleThird
 .transferBottomThird
-	hlcoord 0, 2 * SCREEN_HEIGHT / 3
-	ld sp, hl
+	coord sp, 0, 2 * SCREEN_HEIGHT / 3
 	ldh a, [hAutoBGTransferDest + 1]
 	ld h, a
 	ldh a, [hAutoBGTransferDest]
@@ -141,8 +136,7 @@ AutoBgMapTransfer::
 	xor a ; TRANSFERTOP
 	jr .doTransfer
 .transferTopThird
-	hlcoord 0, 0
-	ld sp, hl
+	coord sp, 0, 0
 	ldh a, [hAutoBGTransferDest + 1]
 	ld h, a
 	ldh a, [hAutoBGTransferDest]
@@ -150,8 +144,7 @@ AutoBgMapTransfer::
 	ld a, TRANSFERMIDDLE
 	jr .doTransfer
 .transferMiddleThird
-	hlcoord 0, SCREEN_HEIGHT / 3
-	ld sp, hl
+	coord sp, 0, SCREEN_HEIGHT / 3
 	ldh a, [hAutoBGTransferDest + 1]
 	ld h, a
 	ldh a, [hAutoBGTransferDest]
@@ -162,6 +155,7 @@ AutoBgMapTransfer::
 .doTransfer
 	ldh [hAutoBGTransferPortion], a ; store next portion
 	ld b, SCREEN_HEIGHT / 3
+	; fallthrough
 
 TransferBgRows::
 ; unrolled loop and using pop for speed
@@ -186,10 +180,8 @@ ENDR
 	dec b
 	jr nz, TransferBgRows
 
-	ldh a, [hSPTemp]
-	ld h, a
-	ldh a, [hSPTemp + 1]
-	ld l, a
+	ld sp, hSPTemp
+	pop hl
 	ld sp, hl
 	ret
 
@@ -199,12 +191,7 @@ VBlankCopyBgMap::
 	ldh a, [hVBlankCopyBGSource] ; doubles as enabling byte
 	and a
 	ret z
-	ld hl, sp + 0
-	ld a, h
-	ldh [hSPTemp], a
-	ld a, l
-	ldh [hSPTemp + 1], a ; save stack pointer
-	ldh a, [hVBlankCopyBGSource]
+	ld [hSPTemp], sp ; save stack pointer
 	ld l, a
 	ldh a, [hVBlankCopyBGSource + 1]
 	ld h, a
@@ -231,17 +218,12 @@ VBlankCopyDouble::
 	ldh a, [hVBlankCopyDoubleSize]
 	and a
 	ret z
+	ld b, a ; b = tile count
 
-	ld hl, sp + 0
-	ld a, h
-	ldh [hSPTemp], a
-	ld a, l
-	ldh [hSPTemp + 1], a
+	ld [hSPTemp], sp
 
-	ldh a, [hVBlankCopyDoubleSource]
-	ld l, a
-	ldh a, [hVBlankCopyDoubleSource + 1]
-	ld h, a
+	ld sp, hVBlankCopyDoubleSource
+	pop hl
 	ld sp, hl
 
 	ldh a, [hVBlankCopyDoubleDest]
@@ -249,8 +231,6 @@ VBlankCopyDouble::
 	ldh a, [hVBlankCopyDoubleDest + 1]
 	ld h, a
 
-	ldh a, [hVBlankCopyDoubleSize]
-	ld b, a
 	xor a ; transferred
 	ldh [hVBlankCopyDoubleSize], a
 
@@ -283,16 +263,10 @@ ENDR
 	ld a, h
 	ldh [hVBlankCopyDoubleDest + 1], a
 
-	ld hl, sp + 0
-	ld a, l
-	ldh [hVBlankCopyDoubleSource], a
-	ld a, h
-	ldh [hVBlankCopyDoubleSource + 1], a
+	ld [hVBlankCopyDoubleSource], sp
 
-	ldh a, [hSPTemp]
-	ld h, a
-	ldh a, [hSPTemp + 1]
-	ld l, a
+	ld sp, hSPTemp
+	pop hl
 	ld sp, hl
 
 	ret
@@ -308,17 +282,12 @@ VBlankCopy::
 	ldh a, [hVBlankCopySize]
 	and a
 	ret z
+	ld b, a ; b = tile count
 
-	ld hl, sp + 0
-	ld a, h
-	ldh [hSPTemp], a
-	ld a, l
-	ldh [hSPTemp + 1], a
+	ld [hSPTemp], sp
 
-	ldh a, [hVBlankCopySource]
-	ld l, a
-	ldh a, [hVBlankCopySource + 1]
-	ld h, a
+	ld sp, hVBlankCopySource
+	pop hl
 	ld sp, hl
 
 	ldh a, [hVBlankCopyDest]
@@ -326,8 +295,6 @@ VBlankCopy::
 	ldh a, [hVBlankCopyDest + 1]
 	ld h, a
 
-	ldh a, [hVBlankCopySize]
-	ld b, a
 	xor a ; transferred
 	ldh [hVBlankCopySize], a
 
@@ -352,16 +319,10 @@ ENDR
 	ld a, h
 	ldh [hVBlankCopyDest + 1], a
 
-	ld hl, sp + 0
-	ld a, l
-	ldh [hVBlankCopySource], a
-	ld a, h
-	ldh [hVBlankCopySource + 1], a
+	ld [hVBlankCopySource], sp
 
-	ldh a, [hSPTemp]
-	ld h, a
-	ldh a, [hSPTemp + 1]
-	ld l, a
+	ld sp, hSPTemp
+	pop hl
 	ld sp, hl
 
 	ret
