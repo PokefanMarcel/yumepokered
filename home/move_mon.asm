@@ -85,28 +85,39 @@ CalcStat::
 	pop hl              ; restore hl = base pointer to stat exp values
 
 ; get base stat
-	push hl
-	ld hl, wMonHeader
-	ld d, $0
-	ld e, c
-	add hl, de          ; hl = wMonHBase<Stat>
-	ld a, [hl]          ; a = base value of stat
-	pop hl
+	ld a, c
+	add LOW(wMonHeader)
+	ld e, a
+	adc HIGH(wMonHeader)
+	sub e
+	ld d, a             ; de = wMonHBase<Stat>
+	ld a, [de]          ; a = base value of stat
 
 ; get stat IV
 	ld de, MON_DVS - (MON_HP_EXP - 1) ; also wEnemyMonDVs - wEnemyMonHP
 	add hl, de
 	ld e, a             ; e = base value of stat
 	ld a, c
-	cp $2
-	jr z, .getAttackIV
-	cp $3
-	jr z, .getDefenseIV
-	cp $4
-	jr z, .getSpeedIV
-	cp $5
-	jr z, .getSpecialIV
-; get HP IV ; c = $1
+	dec a ; Health?
+	jr z, .getHealthIV
+	dec a ; Attack?
+	jr z, .getHighNybble
+	dec a ; Defense?
+	jr z, .getLowNybble
+	inc hl
+	dec a ; Speed?
+	jr z, .getHighNybble
+	; Special
+.getLowNybble
+	ld a, [hl]
+	and $f
+	jr .calcStatFromIV
+.getHighNybble
+	ld a, [hl]
+	swap a
+	and $f
+	jr .calcStatFromIV
+.getHealthIV
 	ld a, [hl]  ; Atk IV
 	swap a
 	and $1
@@ -126,32 +137,10 @@ CalcStat::
 	rl d        ; rotate LSB of Spc IV into d
 
 	ld a, d     ; HP IV: Least Significant Bit of the other 4 IVs (Atk|Def|Spd|Spc)
-	jr .calcStatFromIV
-.getAttackIV
-	ld a, [hl]  ; Atk IV (high nibble)
-	swap a
-	and $f
-	jr .calcStatFromIV
-.getDefenseIV
-	ld a, [hl]  ; Def IV (low nibble)
-	and $f
-	jr .calcStatFromIV
-.getSpeedIV
-	inc hl
-	ld a, [hl]  ; Spd IV (high nibble)
-	swap a
-	and $f
-	jr .calcStatFromIV
-.getSpecialIV
-	inc hl
-	ld a, [hl]  ; Spc IV (low nibble)
-	and $f
 .calcStatFromIV
-	ld d, $0
+	ld d, 0
 	add e                     ; a = stat IV + base stat (missing carry)
-	jr nc, .addedBaseStat
-	inc d                     ; da = stat IV + base stat
-.addedBaseStat
+	rl d                      ; da = stat IV + base stat
 	add a
 	rl d                      ; da = 2 * (Base + IV)
 	srl b
@@ -185,9 +174,9 @@ CalcStat::
 	ldh a, [hQuotient + 2]
 	inc a                     ; non-HP: [2 * (Base + IV) + ceil(Sqrt(stat exp)) / 4] * Level / 100 + 5
 	ldh [hQuotient + 2], a    ; HP: [2 * (Base + IV) + ceil(Sqrt(stat exp)) / 4] * Level / 100 + Level + 10
+	ldh a, [hQuotient + 3]
 .addedExtraPoints
-	ldh a, [hQuotient + 3]    ; check for overflow (> MAX_STAT_VALUE = 999)
-	sub LOW(MAX_STAT_VALUE) + 1
+	sub LOW(MAX_STAT_VALUE) + 1 ; check for overflow (> MAX_STAT_VALUE = 999)
 	ldh a, [hQuotient + 2]
 	sbc HIGH(MAX_STAT_VALUE)
 	jr c, .noOverflow
