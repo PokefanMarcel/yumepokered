@@ -67,9 +67,7 @@ DisplayTownMap: ; marcelnote - optimized
 	ld [wOAMBaseTile], a
 	ld hl, wShadowOAMSprite04
 	call WriteTownMapSpriteOAM ; town map cursor sprite
-	pop hl ; hl = pointer to the map name
-	ld d, h
-	ld e, l
+	pop de ; de = pointer to the map name
 	hlcoord 1, 0
 	call PlaceString
 	ld hl, wShadowOAMSprite04
@@ -411,10 +409,10 @@ BuildFlyLocationsList:
 .loop
 	srl d
 	rr e
-	ld a, NOT_VISITED
-	jr nc, .notVisited
 	ld a, b ; store the map number of the town if it has been visited
-.notVisited
+	jr c, .storeLocation
+	ld a, NOT_VISITED
+.storeLocation
 	ld [hli], a
 	inc b
 	dec c
