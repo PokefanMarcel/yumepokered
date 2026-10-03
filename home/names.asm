@@ -63,10 +63,10 @@ GetItemName:: ; marcelnote - now handles TM/HM directly
 	jr GetName
 
 .getMachineName
-; copies the name of the TM/HM in [wNamedObjectIndex] to wNameBuffer
+; Copy the name of the TM/HM to wNameBuffer.
 	push hl
 	push bc
-	cp TM01 ; is this a TM? [not HM]
+	sub TM01 ; is this a TM? [not HM]
 	ld hl, TechnicalPrefix ; points to "TM"
 	jr nc, .writeMachinePrefix
 ; if HM, then write "HM" and add NUM_HMS to the item ID,
@@ -74,12 +74,15 @@ GetItemName:: ; marcelnote - now handles TM/HM directly
 	add NUM_HMS
 	ld hl, HiddenPrefix ; points to "HM"
 .writeMachinePrefix
-	sub TM01 - 1 ; convert item ID to machine number
-	push af ; marcelnote - keep on the stack instead of changing wNamedObjectIndex
-	ld bc, 2
+	inc a   ; convert item ID to machine number
+	ld b, a ; save machine number
 	ld de, wNameBuffer
-	call CopyData
-	pop af
+REPT 2      ; copy "TM" or "HM"
+	ld a, [hli]
+	ld [de], a
+	inc de
+ENDR
+	ld a, b ; restore machine number
 
 ; Convert the machine number to text.
 	ld b, '0'
