@@ -21,15 +21,18 @@ FarCopyDataDouble::
 	ldh a, [hROMBankTemp]
 	ldh [hLoadedROMBank], a
 	ld [rROMB], a
+	dec bc
+	inc c
+	inc b
 .loop
 	ld a, [hli]
 	ld [de], a
 	inc de
 	ld [de], a
 	inc de
-	dec bc
-	ld a, c
-	or b
+	dec c
+	jr nz, .loop
+	dec b
 	jr nz, .loop
 	pop af
 	ldh [hLoadedROMBank], a
