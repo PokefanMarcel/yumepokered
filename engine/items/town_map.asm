@@ -496,10 +496,8 @@ ExitTownMap:
 DrawPlayerOrBirdSprite:
 ; in: a = map number, b = OAM base tile
 ; out: de = map-name pointer
-	ld c, a
-	ld a, b
-	ld [wOAMBaseTile], a
-	ld a, c
+	ld hl, wOAMBaseTile
+	ld [hl], b
 	ld de, wTownMapCoords
 	call LoadTownMapEntry
 	ld a, [de]
