@@ -1,51 +1,11 @@
 ; marcelnote - new animations
-AnimateTiles::
-	ldh a, [hTileAnimations]
-	and a
-	ret z
-
-	ldh a, [hMovingBGTilesCounter1]
-	inc a
-	ldh [hMovingBGTilesCounter1], a
-	cp 10  ; no animation for tick < 10
-	ret c
-	cp 22  ; maintain a h-tick period of 22 to keep original speed
-	jr nc, .reset
-	; animations on ticks 10–21
-	sub 10 ; a = 0–9
-	ld hl, AnimationsTable
-	add a
-	ld c, a
-	ld b, 0
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
-
-.reset
-	ldh a, [hMovingBGTilesCounter2] ; increment w-counter
-	inc a
-	and $7 ; %00000111 ; a mod 8 (8 is the period of the animations)
-	ldh [hMovingBGTilesCounter2], a
-
-	xor a
-	ldh [hMovingBGTilesCounter1], a ; reset h-counter at tick 22
-	ret
-
-AnimationsTable: ; each animation happens on a different counter tick
-	dw AnimateWaterTile        ; 10
-	dw AnimateWaterBollardTile ; 11
-	dw AnimateFlowerTile       ; 12
-	dw AnimateRicePlantTile    ; 13
-	dw AnimateLanternLeftTile  ; 14
-	dw AnimateLanternRightTile ; 15
-	dw AnimateLavaTile         ; 16
-	dw AnimateLavaBubble1Tile  ; 17
-	dw AnimateLavaBubble2Tile  ; 18
-	dw AnimateSlowWaterTile    ; 19
-	dw AnimateLiveWaterTile    ; 20
-	dw AnimateWaterfallTile    ; 21
+; Functions in this file are called by UpdateMovingBgTiles.
+; There are two counters:
+; hMovingBGTilesCounter1 counts VBlanks within a 22-frame cycle.
+;   Ticks 10–21 each select one animation routine; tick 22 resets it to 0.
+; hMovingBGTilesCounter2 is the animation phase (0–7).
+;   It advances when counter 1 resets and determines each tile's frame or motion.
+; Both counters pause when hTileAnimations is 0.
 
 
 ;AnimateWaterTile: ; marcelnote - original function, scrolled water tile left and right
@@ -62,10 +22,7 @@ AnimationsTable: ; each animation happens on a different counter tick
 ;	jp ScrollTileLeft     ; scroll left when counter is 4 5 6 7
 
 
-AnimateWaterTile: ; marcelnote - modified this function to synchronize with water bollards
-	ldh a, [hTileAnimations]
-	bit BIT_ANIM_WATER, a
-	ret z
+AnimateWaterTile:: ; marcelnote - modified this function to synchronize with water bollards
 	ld hl, WaterTilesTable
 	ld a, [wCurMapTileset]
 	and a ; OVERWORLD?
@@ -98,10 +55,7 @@ WaterAltTilesTable:
 	dw WaterAltTile2 ; 7
 
 
-AnimateWaterBollardTile:
-	ldh a, [hTileAnimations]
-	bit BIT_ANIM_WBOLLARD, a
-	ret z
+AnimateWaterBollardTile::
 	ld hl, WaterBollardTilesTable
 	ld a, [wCurMapTileset]
 	and a ; OVERWORLD?
@@ -134,17 +88,11 @@ WaterBollardAltTilesTable:
 	dw WaterBollardAltTile2 ; 7
 
 
-AnimateSlowWaterTile:
-	ldh a, [hTileAnimations]
-	bit BIT_ANIM_LIVEWATER, a
-	ret z
+AnimateSlowWaterTile::
 	ld hl, vTileset tile $14 ; water tile
 	jr AnimateLavaTile.gotTile
 
-AnimateLavaTile: ; marcelnote - reuse function initially used for water
-	ldh a, [hTileAnimations]
-	bit BIT_ANIM_LAVA, a
-	ret z
+AnimateLavaTile:: ; marcelnote - reuse function initially used for water
 	ld hl, vTileset tile $4B ; lava tile
 .gotTile
 	ldh a, [hMovingBGTilesCounter2]
@@ -155,19 +103,12 @@ AnimateLavaTile: ; marcelnote - reuse function initially used for water
 	jp ScrollTileLeft     ; scroll left when counter is 4 5 6 7
 
 
-AnimateWaterfallTile:
-	ldh a, [hTileAnimations]
-	bit BIT_ANIM_WATERFALL, a
-	ret z
+AnimateWaterfallTile::
 	ld hl, vTileset tile $48 ; waterfall tile
 	jp ScrollTileDown
 
 
-AnimateFlowerTile:
-	ldh a, [hTileAnimations]
-	bit BIT_ANIM_FLOWER, a
-	ret z
-
+AnimateFlowerTile::
 	ldh a, [hMovingBGTilesCounter2]
 	and $3 ; = %00000011 ; a modulo 4
 	cp 2
@@ -181,13 +122,9 @@ AnimateFlowerTile:
 	jp AnimateCopyTile
 
 
-AnimateRicePlantTile:
-	ldh a, [hTileAnimations]
-	bit BIT_ANIM_RICEPLANT, a
-	ret z
-
+AnimateRicePlantTile::
 	ldh a, [hMovingBGTilesCounter2]
-	and $7 ; = %00000111 ; a modulo 8
+;	and $7 ; = %00000111 ; a modulo 8
 	cp 4
 	ld hl, RicePlantTile1 ; if counter is 0,1,2,3,4
 	jr nc, .copy
@@ -197,20 +134,14 @@ AnimateRicePlantTile:
 	jp AnimateCopyTile
 
 
-AnimateLavaBubble1Tile: ; first lava tile
-	ldh a, [hTileAnimations]
-	bit BIT_ANIM_LAVA, a
-	ret z
+AnimateLavaBubble1Tile:: ; first lava tile
 	ld hl, LavaBubbleTilesTable
 	ldh a, [hMovingBGTilesCounter2]
 	srl a ; divide a by 2
 	ld de, vTileset tile $4A ; first lava bubble tile
 	jp AnimateFindPointerInTable
 
-AnimateLavaBubble2Tile: ; second lava tile
-	ldh a, [hTileAnimations]
-	bit BIT_ANIM_LAVA, a
-	ret z
+AnimateLavaBubble2Tile:: ; second lava tile
 	ld hl, LavaBubbleTilesTable
 	ldh a, [hMovingBGTilesCounter2]
 	add $3
@@ -226,13 +157,10 @@ LavaBubbleTilesTable:
 	dw LavaBubbleTile4
 
 
-AnimateLanternLeftTile:
-	ldh a, [hTileAnimations]
-	bit BIT_ANIM_LANTERN, a
-	ret z
+AnimateLanternLeftTile::
 	; left tile
 	ldh a, [hMovingBGTilesCounter2]
-	;and $7 ; = %00000111 ; a modulo 8
+;	and $7 ; = %00000111 ; a modulo 8
 	cp 5
 	ld hl, LanternLeftTile1 ; if counter is 0 1 2 3 4
 	jr c, .copy
@@ -245,13 +173,10 @@ AnimateLanternLeftTile:
 	jp AnimateCopyTile
 
 
-AnimateLanternRightTile:
-	ldh a, [hTileAnimations]
-	bit BIT_ANIM_LANTERN, a
-	ret z
+AnimateLanternRightTile::
 	; right tile
 	ldh a, [hMovingBGTilesCounter2]
-	;and $7 ; = %00000111 ; a modulo 8
+;	and $7 ; = %00000111 ; a modulo 8
 	cp 6
 	ld hl, LanternRightTile1 ; if counter is 0 1 2 3 4 5
 	jr c, .copy
@@ -261,10 +186,7 @@ AnimateLanternRightTile:
 	jp AnimateCopyTile
 
 
-AnimateLiveWaterTile:
-	ldh a, [hTileAnimations]
-	bit BIT_ANIM_LIVEWATER, a
-	ret z
+AnimateLiveWaterTile::
 	ld hl, LiveWaterTilesTable
 	ldh a, [hMovingBGTilesCounter2]
 	ld de, vTileset tile $15 ; livewater tile

@@ -285,6 +285,68 @@ ENDR
 	ret
 
 
-UpdateMovingBgTiles:: ; marcelnote - moved this to its own file, added more animations
-; Animate water and flower tiles in the overworld.
-	jpfar AnimateTiles
+UpdateMovingBgTiles:: ; marcelnote - added more animations
+; Animate tiles in the overworld.
+	ldh a, [hTileAnimations]
+	and a
+	ret z
+	ld b, a
+	ldh a, [hMovingBGTilesCounter1]
+	inc a
+	ldh [hMovingBGTilesCounter1], a
+	sub 10  ; no animation for tick < 10
+	ret c
+	cp 12  ; maintain a h-tick period of 22 to keep original speed
+	jr nc, .reset
+	; animations on ticks 10–21, a = 0–11 animation offset
+	ld hl, AnimationsTable
+	ld e, a
+	add a
+	add e
+	ld e, a
+	ld d, 0
+	add hl, de
+	ld a, [hli]
+	and b ; b = [hTileAnimations]
+	ret z
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a ; hl =
+	ld b, BANK(AnimateWaterTile)
+	rst _Bankswitch
+	ret
+
+.reset
+	ldh a, [hMovingBGTilesCounter2] ; increment w-counter
+	inc a
+	and $7 ; %00000111 ; a mod 8 (8 is the period of the animations)
+	ldh [hMovingBGTilesCounter2], a
+	xor a
+	ldh [hMovingBGTilesCounter1], a ; reset h-counter at tick 22
+	ret
+
+AnimationsTable: ; each animation happens on a different counter tick
+	db 1 << BIT_ANIM_WATER
+	dw AnimateWaterTile        ; 10
+	db 1 << BIT_ANIM_WBOLLARD
+	dw AnimateWaterBollardTile ; 11
+	db 1 << BIT_ANIM_FLOWER
+	dw AnimateFlowerTile       ; 12
+	db 1 << BIT_ANIM_RICEPLANT
+	dw AnimateRicePlantTile    ; 13
+	db 1 << BIT_ANIM_LANTERN
+	dw AnimateLanternLeftTile  ; 14
+	db 1 << BIT_ANIM_LANTERN
+	dw AnimateLanternRightTile ; 15
+	db 1 << BIT_ANIM_LAVA
+	dw AnimateLavaTile         ; 16
+	db 1 << BIT_ANIM_LAVA
+	dw AnimateLavaBubble1Tile  ; 17
+	db 1 << BIT_ANIM_LAVA
+	dw AnimateLavaBubble2Tile  ; 18
+	db 1 << BIT_ANIM_LIVEWATER
+	dw AnimateSlowWaterTile    ; 19
+	db 1 << BIT_ANIM_LIVEWATER
+	dw AnimateLiveWaterTile    ; 20
+	db 1 << BIT_ANIM_WATERFALL
+	dw AnimateWaterfallTile    ; 21
