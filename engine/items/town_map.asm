@@ -455,11 +455,10 @@ LoadTownMap:
 	and a
 	jr z, .done
 	ld b, a
-	and $f
+	and $0f
 	ld c, a
-	ld a, b
+	xor b
 	swap a
-	and $f
 	add $60
 .writeRunLoop
 	ld [hli], a
