@@ -183,7 +183,8 @@ CopyFlippedRow:
 	ld a, [de]
 	inc de
 
-	; reverse byte in a, for instance: %01010011 -> %11001010 ; from Polished Crystal
+	; reverse byte in a, for instance: %01010011 -> %11001010
+	; https://github.com/pret/pokecrystal/wiki/Optimizing-assembly-code#reverse-the-bits-of-a
 	and a
 	jr z, .skip
 	; rearrange alternating bits
