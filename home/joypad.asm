@@ -4,7 +4,7 @@ ReadJoypad::
 ; presses are indicated by a set bit.
 
 	ld a, 1 << 5 ; select direction keys
-	ld c, 0
+;	ld c, 0 ; marcelnote - unused
 
 	ldh [rJOYP], a
 REPT 6
