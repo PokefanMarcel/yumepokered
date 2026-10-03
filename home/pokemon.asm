@@ -17,7 +17,7 @@ DrawHPBar::
 	; If e = 0 but c is nonzero, draw a pixel anyway.
 	or c
 	jr z, .emptyHPTiles
-	ld e, 1
+	inc e ; e = 1
 .fullHPTiles
 	ld a, e
 	sub 8
@@ -26,13 +26,12 @@ DrawHPBar::
 	ld a, $6c ; full HP bar tile
 	ld [hli], a
 	dec d
-	jr z, .rightTip
-	jr .fullHPTiles
+	jr nz, .fullHPTiles
+	jr .rightTip
 
 .partialHPTile
 	; Fill remaining pixels at the end if necessary.
-	ld a, $64 ; empty HP bar tile
-	add e
+	add $64 + 8 ; convert remaining pixels to HP bar tile
 	ld [hli], a
 	dec d
 	jr z, .rightTip
@@ -393,8 +392,7 @@ GetMonHeader::
 	ld hl, BaseStats
 	call AddNTimes
 	ld de, wMonHeader
-	ld bc, BASE_DATA_SIZE
-	call CopyData
+	call CopyData ; bc = BASE_DATA_SIZE still
 	jr .done
 .specialID
 	ld hl, wMonHFrontPicDim
@@ -425,16 +423,14 @@ GetMonHeader::
 GetPartyMonName2::
 	ld a, [wWhichPokemon] ; index within party
 	ld hl, wPartyMonNicks
-
-; this is called more often
+	; fallthrough
 GetPartyMonName::
 	push hl
 	push bc
 	call SkipNameEntries ; add NAME_LENGTH to hl, a times
 	ld de, wNameBuffer
 	push de
-	ld bc, NAME_LENGTH
-	call CopyData
+	call CopyData ; bc = NAME_LENGTH set by SkipNameEntries
 	pop de
 	pop bc
 	pop hl
