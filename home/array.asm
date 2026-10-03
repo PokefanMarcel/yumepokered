@@ -5,12 +5,19 @@ SkipNameEntries::
 	ld bc, NAME_LENGTH
 	; fallthrough
 
-AddNTimes::
-; add bc to hl a times
+AddNTimes:: ; marcelnote - optimized
+; add a*bc to hl
 	and a
 	ret z
+	push bc
 .loop
+	rra ; no carry here so a = a/2
+	jr nc, .skip
 	add hl, bc
-	dec a
+.skip
+	sla c
+	rl b ; double bc
+	and a
 	jr nz, .loop
+	pop bc
 	ret
