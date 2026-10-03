@@ -61,15 +61,11 @@ PlayDefaultMusicCommon::
 .next4
 	ld a, c
 	ld [wMusicFade], a
+	and a ; fade?
 	ld a, b
 	ld [wLastMusicSoundID], a
 	ld [wMusicFadeID], a
-
-; if no fade, play immediately
-	ld a, [wMusicFade]
-	and a
-	ret nz
-	ld a, b
+	ret nz ; return if fade
 	jp PlayMusic
 
 ;UpdateMusic6Times::
@@ -249,14 +245,14 @@ PlayCry::
 	ld [rROMB], a
 
 	ld hl, PokemonCries
-rept 6 ; MON_CRY_LENGTH
+REPT 6 ; MON_CRY_LENGTH
 	add hl, de
-endr
+ENDR
 
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	inc hl
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
 
 	ld a, [hli]
 	ld [wCryPitch], a
@@ -292,14 +288,14 @@ PlayBattleSound::
 	push af
 
 	push af
+	ld hl, wCryPitch
 	ld a, c
-	ld [wCryPitch], a
+	ld [hli], a ; wCryPitch
 	ld a, b
-	ld [wCryPitch + 1], a
+	ld [hli], a ; wCryPitch + 1
 	ld a, e
-	ld [wCryLength], a
-	ld a, d
-	ld [wCryLength + 1], a
+	ld [hli], a ; wCryLength
+	ld [hl], d  ; wCryLength + 1
 	pop af
 
 	ld e, a
@@ -368,7 +364,6 @@ PlaySFX::
 	ret
 
 PlaySoundWaitForCurrent::
-WaitPlaySFX::
 	push af
 	call WaitForSoundToFinish
 	pop af
@@ -376,7 +371,6 @@ WaitPlaySFX::
 
 ; Wait for sound to finish playing
 WaitForSoundToFinish::
-WaitSFX::
 	ld a, [wLowHealthAlarm]
 	and a
 	ret nz
@@ -385,48 +379,37 @@ WaitSFX::
 	ret nz
 
 ; infinite loop until sfx is done playing
-
-	push hl
-
 .wait
-	ld hl, wChannel5Flags1
-	bit 0, [hl]
-	jr nz, .wait
-	ld hl, wChannel6Flags1
-	bit 0, [hl]
-	jr nz, .wait
-	ld hl, wChannel7Flags1
-	bit 0, [hl]
-	jr nz, .wait
-	ld hl, wChannel8Flags1
-	bit 0, [hl]
-	jr nz, .wait
-
-	pop hl
+	ld a, [wChannel5Flags1]
+	rra
+	jr c, .wait
+	ld a, [wChannel6Flags1]
+	rra
+	jr c, .wait
+	ld a, [wChannel7Flags1]
+	rra
+	jr c, .wait
+	ld a, [wChannel8Flags1]
+	rra
+	jr c, .wait
 	ret
 
 WaitForSongToFinish::
-.loop
 	call IsSongPlaying
-	jr c, .loop
+	jr c, WaitForSongToFinish
 	ret
 
 IsSongPlaying::
 ; Return carry if any song channels are active.
 	ld a, [wChannel1Flags1]
-	bit 0, a
-	jr nz, .playing
+	rra
+	ret c
 	ld a, [wChannel2Flags1]
-	bit 0, a
-	jr nz, .playing
+	rra
+	ret c
 	ld a, [wChannel3Flags1]
-	bit 0, a
-	jr nz, .playing
+	rra
+	ret c
 	ld a, [wChannel4Flags1]
-	bit 0, a
-	jr nz, .playing
-	and a
-	ret
-.playing
-	scf
+	rra
 	ret
