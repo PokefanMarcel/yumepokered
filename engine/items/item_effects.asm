@@ -2293,9 +2293,7 @@ ItemUseTMHM:
 	jp LoadScreenTilesFromBuffer1 ; restore saved screen
 .checkIfAbleToLearnMove
 	predef CanLearnTM ; check if the pokemon can learn the move
-	push bc
-	call GetSelectedPartyMonName
-	pop bc
+	call GetSelectedPartyMonName ; preserves c
 	ld a, c
 	and a ; can the pokemon learn the move?
 	jr nz, .checkIfAlreadyLearnedMove
