@@ -46,16 +46,16 @@ RedrawRowOrColumn::
 	ld b, a
 	xor a
 	ldh [hRedrawRowOrColumnMode], a
-	dec b
-	jr nz, .redrawRow
-.redrawColumn
 	ld hl, wRedrawRowOrColumnSrcTiles
 	ldh a, [hRedrawRowOrColumnDest]
 	ld e, a
 	ldh a, [hRedrawRowOrColumnDest + 1]
 	ld d, a
+	dec b
+	jr nz, .redrawRow
+; redraw column
 	ld c, SCREEN_HEIGHT
-.loop1
+.loopRow
 	ld a, [hli]
 	ld [de], a
 	inc de
@@ -71,25 +71,21 @@ RedrawRowOrColumn::
 	or HIGH(vBGMap0)
 	ld d, a
 	dec c
-	jr nz, .loop1
+	jr nz, .loopRow
 	ret
+
 .redrawRow
-	ld hl, wRedrawRowOrColumnSrcTiles
-	ldh a, [hRedrawRowOrColumnDest]
-	ld e, a
-	ldh a, [hRedrawRowOrColumnDest + 1]
-	ld d, a
 	push de
-	call .DrawHalf ; draw upper half
+	call .drawHalf ; draw upper half
 	pop de
 	ld a, TILEMAP_WIDTH
 	add e
 	ld e, a
 	; fallthrough and draw lower half
 
-.DrawHalf
+.drawHalf
 	ld c, SCREEN_WIDTH / 2
-.loop2
+.loopColumn
 	ld a, [hli]
 	ld [de], a
 	inc de
@@ -97,15 +93,13 @@ RedrawRowOrColumn::
 	ld [de], a
 	ld a, e
 	inc a
-; the following 6 lines wrap us from the right edge to the left edge if necessary
-	and %11111
-	ld b, a
-	ld a, e
-	and %11100000
-	or b
+; the following 4 lines wrap us from the right edge to the left edge if necessary
+	xor e
+	and %00011111
+	xor e
 	ld e, a
 	dec c
-	jr nz, .loop2
+	jr nz, .loopColumn
 	ret
 
 ; This function automatically transfers tile number data from the tile map at
@@ -120,44 +114,36 @@ AutoBgMapTransfer::
 	and a
 	ret z
 	ld [hSPTemp], sp
+	ld sp, hAutoBGTransferDest
+	pop hl ; hl = destination base
 	ldh a, [hAutoBGTransferPortion]
-	and a
+	and a ; TRANSFERTOP?
 	jr z, .transferTopThird
-	dec a
+	dec a ; TRANSFERMIDDLE?
 	jr z, .transferMiddleThird
-.transferBottomThird
+; transfer bottom third
 	coord sp, 0, 2 * SCREEN_HEIGHT / 3
-	ldh a, [hAutoBGTransferDest + 1]
-	ld h, a
-	ldh a, [hAutoBGTransferDest]
-	ld l, a
 	ld de, 12 * TILEMAP_WIDTH
-	add hl, de
 	xor a ; TRANSFERTOP
-	jr .doTransfer
+	jr .addAndDoTransfer
 .transferTopThird
 	coord sp, 0, 0
-	ldh a, [hAutoBGTransferDest + 1]
-	ld h, a
-	ldh a, [hAutoBGTransferDest]
-	ld l, a
-	ld a, TRANSFERMIDDLE
+	inc a ; TRANSFERMIDDLE
 	jr .doTransfer
 .transferMiddleThird
 	coord sp, 0, SCREEN_HEIGHT / 3
-	ldh a, [hAutoBGTransferDest + 1]
-	ld h, a
-	ldh a, [hAutoBGTransferDest]
-	ld l, a
 	ld de, 6 * TILEMAP_WIDTH
-	add hl, de
 	ld a, TRANSFERBOTTOM
+.addAndDoTransfer
+	add hl, de
 .doTransfer
 	ldh [hAutoBGTransferPortion], a ; store next portion
-	ld b, SCREEN_HEIGHT / 3
+	ld a, SCREEN_HEIGHT / 3
 	; fallthrough
 
 TransferBgRows::
+	ld bc, TILEMAP_WIDTH - (SCREEN_WIDTH - 1)
+.loop
 ; unrolled loop and using pop for speed
 REPT SCREEN_WIDTH / 2 - 1
 	pop de
@@ -170,16 +156,9 @@ ENDR
 	ld [hl], e
 	inc l
 	ld [hl], d
-
-	ld a, TILEMAP_WIDTH - (SCREEN_WIDTH - 1)
-	add l
-	ld l, a
-	jr nc, .ok
-	inc h
-.ok
-	dec b
-	jr nz, TransferBgRows
-
+	add hl, bc
+	dec a
+	jr nz, .loop
 	ld sp, hSPTemp
 	pop hl
 	ld sp, hl
@@ -192,18 +171,16 @@ VBlankCopyBgMap::
 	and a
 	ret z
 	ld [hSPTemp], sp ; save stack pointer
-	ld l, a
-	ldh a, [hVBlankCopyBGSource + 1]
-	ld h, a
-	ld sp, hl
-	ldh a, [hVBlankCopyBGDest]
-	ld l, a
-	ldh a, [hVBlankCopyBGDest + 1]
-	ld h, a
-	ldh a, [hVBlankCopyBGNumRows]
-	ld b, a
+	ld sp, hVBlankCopyBGSource
+	ASSERT hVBlankCopyBGDest == hVBlankCopyBGSource + 2
+	pop hl    ; hl = [hVBlankCopyBGSource]
+	pop de    ; de = [hVBlankCopyBGDest]
+	ld sp, hl ; sp = [hVBlankCopyBGSource]
+	ld h, d
+	ld l, e   ; hl = [hVBlankCopyBGDest]
 	xor a
 	ldh [hVBlankCopyBGSource], a ; disable transfer so it doesn't continue next V-blank
+	ldh a, [hVBlankCopyBGNumRows]
 	jr TransferBgRows
 
 
@@ -218,21 +195,14 @@ VBlankCopyDouble::
 	ldh a, [hVBlankCopyDoubleSize]
 	and a
 	ret z
-	ld b, a ; b = tile count
-
 	ld [hSPTemp], sp
-
 	ld sp, hVBlankCopyDoubleSource
-	pop hl
-	ld sp, hl
-
-	ldh a, [hVBlankCopyDoubleDest]
-	ld l, a
-	ldh a, [hVBlankCopyDoubleDest + 1]
-	ld h, a
-
-	xor a ; transferred
-	ldh [hVBlankCopyDoubleSize], a
+	ASSERT hVBlankCopyDoubleDest == hVBlankCopyDoubleSource + 2
+	pop hl    ; hl = [hVBlankCopyDoubleSource]
+	pop de    ; de = [hVBlankCopyDoubleDest]
+	ld sp, hl ; sp = [hVBlankCopyDoubleSource]
+	ld h, d
+	ld l, e   ; hl = [hVBlankCopyDoubleDest]
 
 .loop
 REPT TILE_SIZE / 4 - 1
@@ -255,20 +225,17 @@ ENDR
 	inc l
 	ld [hl], d
 	inc hl
-	dec b
+	dec a
 	jr nz, .loop
 
-	ld a, l
-	ldh [hVBlankCopyDoubleDest], a
-	ld a, h
-	ldh [hVBlankCopyDoubleDest + 1], a
-
+	ldh [hVBlankCopyDoubleSize], a ; a = 0
 	ld [hVBlankCopyDoubleSource], sp
+	ld sp, hl
+	ld [hVBlankCopyDoubleDest], sp
 
 	ld sp, hSPTemp
 	pop hl
 	ld sp, hl
-
 	ret
 
 
@@ -282,21 +249,14 @@ VBlankCopy::
 	ldh a, [hVBlankCopySize]
 	and a
 	ret z
-	ld b, a ; b = tile count
-
 	ld [hSPTemp], sp
-
 	ld sp, hVBlankCopySource
-	pop hl
-	ld sp, hl
-
-	ldh a, [hVBlankCopyDest]
-	ld l, a
-	ldh a, [hVBlankCopyDest + 1]
-	ld h, a
-
-	xor a ; transferred
-	ldh [hVBlankCopySize], a
+	ASSERT hVBlankCopyDest == hVBlankCopySource + 2
+	pop hl    ; hl = [hVBlankCopySource]
+	pop de    ; de = [hVBlankCopyDest]
+	ld sp, hl ; sp = [hVBlankCopySource]
+	ld h, d
+	ld l, e   ; hl = [hVBlankCopyDest]
 
 .loop
 REPT TILE_SIZE / 2 - 1
@@ -311,25 +271,20 @@ ENDR
 	inc l
 	ld [hl], d
 	inc hl
-	dec b
+	dec a
 	jr nz, .loop
 
-	ld a, l
-	ldh [hVBlankCopyDest], a
-	ld a, h
-	ldh [hVBlankCopyDest + 1], a
-
+	ldh [hVBlankCopySize], a ; a = 0
 	ld [hVBlankCopySource], sp
+	ld sp, hl
+	ld [hVBlankCopyDest], sp
 
 	ld sp, hSPTemp
 	pop hl
 	ld sp, hl
-
 	ret
 
 
-UpdateMovingBgTiles:: ; marcelnote - moved this to its own file
-; Animate water and flower
-; tiles in the overworld.
-; marcelnote - now more animations
+UpdateMovingBgTiles:: ; marcelnote - moved this to its own file, added more animations
+; Animate water and flower tiles in the overworld.
 	jpfar AnimateTiles
