@@ -273,9 +273,7 @@ GainExperience: ; marcelnote - refactored
 	ld [hld], a
 	dec hl
 .noClamp
-	ld a, [wWhichPokemon]
-	ld hl, wPartyMonNicks
-	call GetPartyMonName
+	call GetSelectedPartyMonName
 	ld a, [wStatusFlags1]
 	bit BIT_EXP_ALL_ACTIVE, a
 	jr nz, .skipIndividualText ; skip individual Exp gain messages if ExpAll is on
@@ -423,9 +421,7 @@ LevelUpPartyMon: ; marcelnote - new
 .showLevelUp
 	callfar PrintEmptyString
 	call SaveScreenTilesToBuffer1
-	ld a, [wWhichPokemon]
-	ld hl, wPartyMonNicks
-	call GetPartyMonName ; earlier move-learning messages can overwrite the name
+	call GetSelectedPartyMonName ; earlier move-learning messages can overwrite the name
 	ld hl, GrewLevelText
 	call PrintText
 	xor a ; PLAYER_PARTY_DATA

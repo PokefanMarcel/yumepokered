@@ -41,9 +41,7 @@ DaycareGentlemanText:
 ;	jp c, .printText
 	xor a
 	ld [wPartyAndBillsPCSavedMenuItem], a
-	ld a, [wWhichPokemon]
-	ld hl, wPartyMonNicks
-	call GetPartyMonName
+	call GetSelectedPartyMonName
 	ld hl, .WillLookAfterMonText
 	call PrintText
 	ld a, 1

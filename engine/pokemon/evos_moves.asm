@@ -113,9 +113,7 @@ Evolution_PartyMonLoop: ; loop over party mons
 	push hl
 	ld a, [hl]
 	ld [wEvoNewSpecies], a
-	ld a, [wWhichPokemon]
-	ld hl, wPartyMonNicks
-	call GetPartyMonName
+	call GetSelectedPartyMonName
 	call CopyToStringBuffer
 	ld hl, IsEvolvingText
 	call PrintText

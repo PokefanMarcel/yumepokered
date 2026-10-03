@@ -2294,9 +2294,7 @@ ItemUseTMHM:
 .checkIfAbleToLearnMove
 	predef CanLearnTM ; check if the pokemon can learn the move
 	push bc
-	ld a, [wWhichPokemon]
-	ld hl, wPartyMonNicks
-	call GetPartyMonName
+	call GetSelectedPartyMonName
 	pop bc
 	ld a, c
 	and a ; can the pokemon learn the move?

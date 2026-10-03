@@ -160,7 +160,7 @@ MandarinMrHypersHouseMrHyperText: ; marcelnote - Mr. Hyper trades one Bottle Cap
 	ld c, 20
 	call DelayFrames
 	call GBFadeInFromWhite
-	call GetPartyMonName2
+	call GetSelectedPartyMonName
 	ld hl, .TrainedText
 	call PrintText
 	call YesNoChoice

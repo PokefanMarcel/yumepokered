@@ -60,7 +60,7 @@ NameRatersHouseNameRaterText:
 	call LoadGBPal
 	pop af
 	jr c, .didNotRename
-	call GetPartyMonName2
+	call GetSelectedPartyMonName
 	call NameRatersHouseCheckMonOTScript
 	ld hl, .ATrulyImpeccableNameText
 	jr c, .printText

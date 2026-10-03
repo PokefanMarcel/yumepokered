@@ -420,11 +420,15 @@ GetMonHeader::
 	ret
 
 ; copy party pokemon's name to wNameBuffer
-GetPartyMonName2::
+GetSelectedPartyMonName::
+; Input: wWhichPokemon = zero-based index in the player's party.
+; Output: de = wNameBuffer, hl = wPartyMonNicks. Preserves bc.
 	ld a, [wWhichPokemon] ; index within party
 	ld hl, wPartyMonNicks
 	; fallthrough
 GetPartyMonName::
+; Input: a = zero-based index, hl = fixed-length nickname list.
+; Output: de = wNameBuffer. Preserves bc and hl.
 	push hl
 	push bc
 	call SkipNameEntries ; add NAME_LENGTH to hl, a times
