@@ -11,7 +11,7 @@ TextBoxBorder::
 	ld [hl], a
 	pop hl
 
-	ld de, SCREEN_WIDTH
+	ld e, SCREEN_WIDTH ; d = 0 after .PlaceChars
 	add hl, de
 
 	; middle rows
@@ -24,8 +24,7 @@ TextBoxBorder::
 	ld [hl], '│'
 	pop hl
 
-	ld de, SCREEN_WIDTH
-	add hl, de
+	add hl, de ; de = SCREEN_WIDTH still
 	dec b
 	jr nz, .next
 
