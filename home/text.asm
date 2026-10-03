@@ -50,16 +50,18 @@ PlaceString::
 
 PlaceNextChar::
 	ld a, [de]
+	cp $60            ; marcelnote - control codes are below $60
+	jp nc, .printChar ;              so we can print letters, numbers and symbols directly
 	cp '@'
-	jr nz, .NotTerminator
+	jr nz, .notTerminator
 	ld b, h
 	ld c, l
 	pop hl
 	ret
 
-.NotTerminator
+.notTerminator
 	cp '<NEXT>'
-	jr nz, .NotNext
+	jr nz, .notNext
 	ld bc, 2 * SCREEN_WIDTH
 	ldh a, [hUILayoutFlags]
 	bit BIT_SINGLE_SPACED_LINES, a
@@ -71,16 +73,15 @@ PlaceNextChar::
 	push hl
 	jr NextChar
 
-.NotNext
+.notNext
 	cp '<LINE>'
-	jr nz, .NotLine
+	jr nz, .notLine
 	pop hl
 	hlcoord 1, 16
 	push hl
 	jr NextChar
 
-.NotLine
-
+.notLine
 ; Check against a dictionary
 	dict '<NULL>',    NullChar
 	dict '<SCROLL>',  _ContTextNoPause
@@ -103,8 +104,10 @@ PlaceNextChar::
 	dict '<TARGET>',  PlaceMoveTargetsName
 	dict '<USER>',    PlaceMoveUsersName
 
+.printChar
 	ld [hli], a
 	call PrintLetterDelay
+	; fallthrough
 
 NextChar::
 	inc de
