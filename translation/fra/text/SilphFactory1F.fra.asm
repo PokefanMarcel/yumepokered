@@ -153,8 +153,8 @@ _SilphFactory1FRocket5PostEventText::
 	done
 
 _SilphFactory1FRocket6BattleText::
-	text "Toi! T'as fait"
-	line "rater nos plans"
+	text "Toi! T'as fichu"
+	line "nos plans en l'air"
 	cont "à CELADOPOLE!"
 	done
 
