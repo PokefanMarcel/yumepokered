@@ -21,10 +21,9 @@ UseSelectButtonItem::
 	call CopyToStringBuffer
 	call UseItem
 
-	; load $ff into hTextID to make DisplayTextID close the text box
-	ld a, $ff
-	ldh [hTextID], a
-	jp DisplayTextID
+	ldh a, [hLoadedROMBank]
+	push af
+	jp CloseTextDisplay
 
 CheckIfSelectItem:: ; sets carry flag if item in [wCurItem] can be associated with Select button
 	ld hl, SelectItemsList
