@@ -31,7 +31,13 @@ HandleMenuInput_:: ; marcelnote - optimized
 	and a ; was a key pressed?
 	jr nz, .keyPressed
 	push hl
-	hlcoord 18, 11 ; coordinates of blinking down arrow in some menus
+	; marcelnote - elevator lists have different layout
+	ld a, [wListMenuID]
+	cp ELEVATORLISTMENU
+	hlcoord 18, 11 ; default blinking-arrow position
+	jr nz, .blinkDownArrow
+	hlcoord 18,  9 ; elevator list's blinking-arrow position
+.blinkDownArrow
 	call HandleDownArrowBlinkTiming ; blink down arrow (if any), preserves b
 	pop hl
 	ld a, [wMenuJoypadPollCount]

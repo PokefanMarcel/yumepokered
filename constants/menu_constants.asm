@@ -1,6 +1,6 @@
-DEF BAG_ITEM_CAPACITY EQU 30     ; marcelnote - increased from 20
+DEF BAG_ITEM_CAPACITY     EQU 30 ; marcelnote - increased from 20
 DEF BAG_KEY_ITEM_CAPACITY EQU 30 ; marcelnote - new for bag pockets, a bit less than 30 key items currently
-DEF PC_ITEM_CAPACITY  EQU 50
+DEF PC_ITEM_CAPACITY      EQU 50
 
 ; text box IDs
 	const_def 1
@@ -33,7 +33,8 @@ DEF PC_ITEM_CAPACITY  EQU 50
 	const SAFARI_BATTLE_MENU_TEMPLATE       ; $1b
 	const BAG_INFO_BOX                      ; $1c ; marcelnote - new for bag pockets
 	const MOM_DAISY_CANCEL_MENU_TEMPLATE    ; $1d ; marcelnote - new for pay phones
-	const CURRENT_FLOOR_BOX_TEMPLATE        ; $1f ; marcelnote - new for elevator current floor
+	const CURRENT_FLOOR_BOX_TEMPLATE        ; $1e ; marcelnote - new for elevator current floor
+	const ELEVATOR_MENU_BOX                 ; $1f ; marcelnote - elevator lists have different layout
 
 ; two option menu constants
 ; TwoOptionMenuStrings indexes (see data/yes_no_menu_strings.asm)

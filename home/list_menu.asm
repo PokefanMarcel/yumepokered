@@ -24,9 +24,15 @@ DisplayListMenuID::
 	ld l, a ; hl = address of the list
 	ld a, [hl] ; the first byte is the number of entries in the list
 	ld [wListCount], a
+	; marcelnote - elevator lists have different layout
+	ld a, [wListMenuID]
+	cp ELEVATORLISTMENU
 	ld a, LIST_MENU_BOX
+	jr nz, .drawListBox
+	ld a, ELEVATOR_MENU_BOX
+.drawListBox
 	ld [wTextBoxID], a
-	call DisplayTextBoxID ; draw the menu text box
+	call DisplayTextBoxID
 	call UpdateSprites ; disable sprites behind the text box
 	ld a, 1 ; max menu item ID is 1 if the list has less than 2 entries
 	ld [wMenuWatchMovingOutOfBounds], a
@@ -36,10 +42,17 @@ DisplayListMenuID::
 	ld a, 2 ; max menu item ID is 2 if the list has at least 2 entries
 .setMenuVariables
 	ld [wMaxMenuItem], a
-	ld a, 4
-	ld [wTopMenuItemY], a
-	ld a, 5
-	ld [wTopMenuItemX], a
+	; marcelnote - elevator lists have different layout
+	ld a, [wListMenuID]
+	cp ELEVATORLISTMENU
+	lb bc, 4, 5 ; first entry's cursor Y, X
+	jr nz, .setMenuCoordinates
+	lb bc, 2, 11
+.setMenuCoordinates
+	ld hl, wTopMenuItemY
+	ld a, b
+	ld [hli], a ; wTopMenuItemY
+	ld [hl], c  ; wTopMenuItemX
 	ld a, PAD_A | PAD_B | PAD_SELECT | PAD_START | PAD_RIGHT | PAD_LEFT ; marcelnote - added PAD_RIGHT | PAD_LEFT for bag pockets, PAD_START for autosort
 	ld [wMenuWatchedKeys], a
 	ld c, 10
@@ -98,7 +111,7 @@ DisplayListMenuIDLoop::
 	ld [wNamedObjectIndex], a ; for GetItemName
 	ld a, [wListMenuID]
 	cp SPECIALLISTMENU ; marcelnote - names are displayed by PrintListMenuEntries
-	jr z, .skipGettingQuantityAndName
+	jr nc, .skipGettingQuantityAndName ; both special-list types are >= SPECIALLISTMENU
 	cp ITEMLISTMENU ; marcelnote - only these lists need quantity
 	jr nz, .skipGettingQuantity
 	ld a, [hl] ; a = item quantity
@@ -342,14 +355,27 @@ ExitListMenu::
 	ret
 
 PrintListMenuEntries:: ; marcelnote - optimized
+	; marcelnote - elevator lists have different layout
+	ld a, [wListMenuID]
+	cp ELEVATORLISTMENU
 	hlcoord 5, 3
 	lb bc, 9, 14
+	jr nz, .clearArea
+	hlcoord 11, 1
+	ld c, 8
+.clearArea
 	call ClearScreenArea
 	ld a, [wListScrollOffset]
 	call GetListMenuEntryAddress ; c = first item's entry index (0-based)
 	ld d, h
 	ld e, l ; de = first visible entry
+	; marcelnote - elevator lists have different layout
+	ld a, [wListMenuID]
+	cp ELEVATORLISTMENU
 	hlcoord 6, 4 ; coordinates of first list entry name
+	jr nz, .printEntries
+	hlcoord 12, 2
+.printEntries
 	ld b, 4 ; print 4 names
 .loop
 	ld a, [de]
@@ -408,8 +434,13 @@ PrintListMenuEntries:: ; marcelnote - optimized
 	pop bc  ; restore b = remaining rows, c = next entry index
 	dec b
 	jr nz, .loop
-	ld bc, -8
-	add hl, bc
+	; marcelnote - elevator lists have different layout
+	ld a, [wListMenuID]
+	cp ELEVATORLISTMENU
+	hlcoord 18, 11
+	jr nz, .placeScrollArrow
+	hlcoord 18, 9
+.placeScrollArrow
 	ld [hl], '▼'
 	ret
 .printCancelMenuItem

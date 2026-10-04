@@ -12,7 +12,7 @@ DisplayElevatorFloorMenu: ; marcelnote - refactored warp engine
 	ld [wCurrentMenuItem], a
 	ld [wListScrollOffset], a
 	ld [wPrintItemPrices], a
-	ld a, SPECIALLISTMENU
+	ld a, ELEVATORLISTMENU ; marcelnote - elevator lists have different layout
 	ld [wListMenuID], a
 	call DisplayListMenuID
 	pop bc

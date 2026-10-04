@@ -7,13 +7,14 @@ TextBoxFunctionTable:
 
 TextBoxCoordTable:
 	; text box ID, upper-left X, upper-left Y, lower-right X, lower-right Y
-	db MESSAGE_BOX,       0, 12, 19, 17
-	db MENU_TEMPLATE_03,  0,  0, 19, 14
-	;db MENU_TEMPLATE_07,  0,  0, 11,  6 ; marcelnote - replaced with USE_SLCT_MENU_TEMPLATE
-	db LIST_MENU_BOX,     4,  2, 19, 12
-	db MENU_TEMPLATE_10,  7,  0, 19, 17
-	db MON_SPRITE_POPUP,  6,  4, 14, 13
-	db BAG_INFO_BOX,      4, 13, 19, 15 ; marcelnote - new for bag pockets
+	db MESSAGE_BOX,        0, 12, 19, 17
+	db MENU_TEMPLATE_03,   0,  0, 19, 14
+;	db MENU_TEMPLATE_07,   0,  0, 11,  6 ; marcelnote - replaced with USE_SLCT_MENU_TEMPLATE
+	db LIST_MENU_BOX,      4,  2, 19, 12
+	db ELEVATOR_MENU_BOX, 10,  0, 19, 10 ; marcelnote - elevator lists have different layout
+	db MENU_TEMPLATE_10,   7,  0, 19, 17
+	db MON_SPRITE_POPUP,   6,  4, 14, 13
+	db BAG_INFO_BOX,       4, 13, 19, 15 ; marcelnote - new for bag pockets
 	db -1 ; end
 
 MACRO text_box_text
