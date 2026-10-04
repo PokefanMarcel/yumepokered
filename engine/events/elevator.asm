@@ -55,10 +55,11 @@ DisplayCurrentFloorBox: ; marcelnote - adapted from PureRGB's current-floor disp
 	ld [wTextBoxID], a
 	; Read the floor reached when entering or using the elevator.
 	call DisplayTextBoxID
-	ld hl, wWarpedFromWhichWarp
+	ld hl, wWarpEntries + 2
 	ld a, [hli]
-	ld c, [hl] ; c = [wWarpedFromWhichMap]
-	ld b, a    ; b = [wWarpedFromWhichWarp]
+	and WARP_ID_MASK
+	ld c, [hl] ; current floor map
+	ld b, a    ; current floor warp ID
 	ld hl, wElevatorWarpMaps ; list of (warp number, map id), e.g. SilphCoElevatorWarpMaps
 	ld de, wItemList + 1     ; floor list, e.g. SilphCoElevatorFloors
 	; Find current floor by looking for a map/warp match.
