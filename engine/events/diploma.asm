@@ -100,6 +100,7 @@ DisplayDiploma:: ; marcelnote - modified for new VRAM layout
 	res BIT_NO_TEXT_DELAY, [hl]
 	call GBPalWhiteOutWithDelay3
 	call RestoreScreenTilesAndReloadTilePatterns
+	call LoadCurrentMapView ; marcelnote - remove the saved text box before going back to overworld
 	call Delay3
 	jp GBPalNormal
 
