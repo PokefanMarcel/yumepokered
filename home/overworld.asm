@@ -1727,7 +1727,7 @@ JoypadOverworld::
 	jr z, .checkOnWaterfall
 	jr .notForcedDownwards
 .checkOnWaterfall
-	ld a, [wTileInFrontOfPlayer] ; tile in front of player
+	lda_coord 8, 9 ; tile under player
 	cp $48 ; waterfall tile
 	jr nz, .notForcedDownwards
 .checkButtonPress
