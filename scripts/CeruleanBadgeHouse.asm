@@ -8,6 +8,7 @@ CeruleanBadgeHouse_TextPointers:
 CeruleanBadgeHouseMiddleAgedManText:
 	text_far _CeruleanBadgeHouseMiddleAgedManText ; marcelnote - simplified script
 	text_asm
+	call SaveScreenTilesToBuffer1 ; marcelnote - restore the screen when leaving the badge menu
 	xor a
 	ld [wCurrentMenuItem], a
 	ld [wListScrollOffset], a
@@ -40,6 +41,7 @@ CeruleanBadgeHouseMiddleAgedManText:
 	call PrintText
 	jr .loop
 .done
+	call LoadScreenTilesFromBuffer1 ; marcelnote - remove the badge menu before the farewell text
 	xor a
 	ld [wListScrollOffset], a
 	ld hl, .VisitAnyTimeText
