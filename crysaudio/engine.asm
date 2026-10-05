@@ -1528,6 +1528,9 @@ MusicF8:
 	ld [hl], a
 	ret
 
+MusicF9: ; unused
+	ret
+
 Music_Ret:
 ; called when $ff is encountered w/ subroutine flag set
 ; end music stream
