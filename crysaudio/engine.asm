@@ -2530,7 +2530,10 @@ _PlayCry::
 	ld [wSFXPriority], a
 	jp MusicOn
 
-_PlayBattleSound::
+LoadSFX:
+; Stop active SFX channels and read the new header.
+; input: de = SFX id; output: a = channel count, de = channel headers
+; Preserves bc and the existing hardware-register write order.
 ; clear channels if they aren't already
 	call MusicOff
 	ld hl, wChannel5Flags1
@@ -2614,6 +2617,10 @@ _PlayBattleSound::
 	rlca ; bits
 	maskbits NUM_MUSIC_CHANS
 	inc a ; # channels -> # loops
+	ret
+
+_PlayBattleSound::
+	call LoadSFX
 .startchannels
 	push af
 	call LoadChannel ; bc = current channel
@@ -2656,89 +2663,7 @@ _PlayBattleSound::
 	ret
 
 _PlaySFX::
-; clear channels if they aren't already
-	call MusicOff
-	ld hl, wChannel5Flags1
-	bit SOUND_CHANNEL_ON, [hl] ; ch5 on?
-	jr z, .ch6
-	res SOUND_CHANNEL_ON, [hl] ; turn it off
-	xor a
-	ldh [rNR11], a ; length/wavepattern = 0
-	ld a, $8
-	ldh [rNR12], a ; envelope = 0
-	xor a
-	ldh [rNR13], a ; frequency lo = 0
-	ld a, $80
-	ldh [rNR14], a ; restart sound (freq hi = 0)
-	xor a
-	ld [wPitchSweep], a ; pitch sweep off
-	ldh [rNR10], a ; pitch sweep off
-.ch6
-	ld hl, wChannel6Flags1
-	bit SOUND_CHANNEL_ON, [hl]
-	jr z, .ch7
-	res SOUND_CHANNEL_ON, [hl] ; turn it off
-	xor a
-	ldh [rNR21], a ; length/wavepattern = 0
-	ld a, $8
-	ldh [rNR22], a ; envelope = 0
-	xor a
-	ldh [rNR23], a ; frequency lo = 0
-	ld a, $80
-	ldh [rNR24], a ; restart sound (freq hi = 0)
-.ch7
-	ld hl, wChannel7Flags1
-	bit SOUND_CHANNEL_ON, [hl]
-	jr z, .ch8
-	res SOUND_CHANNEL_ON, [hl] ; turn it off
-	xor a
-	ldh [rNR30], a ; sound mode #3 off
-	ldh [rNR31], a ; length/wavepattern = 0
-	ld a, $8
-	ldh [rNR32], a ; envelope = 0
-	xor a
-	ldh [rNR33], a ; frequency lo = 0
-	ld a, $80
-	ldh [rNR34], a ; restart sound (freq hi = 0)
-.ch8
-	ld hl, wChannel8Flags1
-	bit SOUND_CHANNEL_ON, [hl]
-	jr z, .chscleared
-	res SOUND_CHANNEL_ON, [hl] ; turn it off
-	xor a
-	ldh [rNR41], a ; length/wavepattern = 0
-	ld a, $8
-	ldh [rNR42], a ; envelope = 0
-	xor a
-	ldh [rNR43], a ; frequency lo = 0
-	ld a, $80
-	ldh [rNR44], a ; restart sound (freq hi = 0)
-	xor a
-	ld [wNoiseSampleAddress], a
-	ld [wNoiseSampleAddress + 1], a
-.chscleared
-; start reading sfx header for # chs
-	ld hl, wMusicID
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	ld hl, SFX
-	add hl, de ; three
-	add hl, de ; byte
-	add hl, de ; pointers
-	; get bank
-	ld a, [hli]
-	ld [wMusicBank], a
-	; get address
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	; get # channels
-	call LoadMusicByte
-	rlca ; top 2
-	rlca ; bits
-	maskbits NUM_MUSIC_CHANS
-	inc a ; # channels -> # loops
+	call LoadSFX
 .startchannels
 	push af
 	call LoadChannel ; bc = current channel
