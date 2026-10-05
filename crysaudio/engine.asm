@@ -449,11 +449,11 @@ UpdateChannels:
 	ld l, a
 	ld h, 0
 	; hl << 4
-	; each wavepattern is $f bytes long
+	; each wavepattern is 16 bytes long
 	; so seeking is done in $10s
-rept 4
+REPT 4
 	add hl, hl
-endr
+ENDR
 	ld de, WaveSamples
 	add hl, de
 	cp $f
