@@ -52,22 +52,19 @@ wMusicID:: dw
 wMusicBank:: db
 wNoiseSampleAddress:: dw
 wNoiseSampleDelay:: db
-	ds 1
 wMusicNoiseSampleSet:: db
 wSFXNoiseSampleSet:: db
 
-wLowHealthAlarm::
 ; bit 7: on/off
 ; bit 4: pitch
 ; bit 0-3: counter
-	db
+wLowHealthAlarm:: db
 
-wMusicFade::
 ; fades volume over x frames
 ; bit 7: fade in/out
 ; bit 0-5: number of frames for each volume level
 ; $00 = none (default)
-	db
+wMusicFade:: db
 wMusicFadeCount:: db
 wMusicFadeID:: dw
 
@@ -77,11 +74,9 @@ wCryPitch:: dw
 wCryLength:: dw
 
 wLastVolume:: db
-wUnusedMusicF9Flag:: db
 
-wSFXPriority::
 ; if nonzero, turn off music when playing sfx
-	db
+wSFXPriority:: db
 
 	ds 1
 
@@ -92,15 +87,13 @@ wChannel4JumpCondition:: db
 
 wStereoPanningMask:: db
 
-wCryTracks::
 ; plays only in left or right track depending on what side the monster is on
 ; both tracks active outside of battle
-	db
+wCryTracks:: db
 
 wSFXDuration:: db
-wCurSFX::
 ; id of sfx currently playing
-	db
+wCurSFX:: db
 
 wSFXDontWait:: ds 1
 

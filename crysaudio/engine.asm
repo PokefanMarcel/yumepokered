@@ -2448,15 +2448,16 @@ _PlayMusic::
 	dec a
 	jr nz, .loop
 	xor a
-	ld [wUnusedMusicF9Flag], a
-	ld [wChannel1JumpCondition], a
-	ld [wChannel2JumpCondition], a
-	ld [wChannel3JumpCondition], a
-	ld [wChannel4JumpCondition], a
-	ld [wNoiseSampleAddress], a
-	ld [wNoiseSampleAddress + 1], a
-	ld [wNoiseSampleDelay], a
-	ld [wMusicNoiseSampleSet], a
+	ld hl, wChannel1JumpCondition
+	ld [hli], a ; wChannel1JumpCondition
+	ld [hli], a ; wChannel2JumpCondition
+	ld [hli], a ; wChannel3JumpCondition
+	ld [hl], a  ; wChannel4JumpCondition
+	ld hl, wNoiseSampleAddress
+	ld [hli], a ; wNoiseSampleAddress
+	ld [hli], a ; wNoiseSampleAddress + 1
+	ld [hli], a ; wNoiseSampleDelay
+	ld [hl], a  ; wMusicNoiseSampleSet
 	jp MusicOn
 
 _PlayCry::
