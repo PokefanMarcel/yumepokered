@@ -2889,6 +2889,17 @@ StereoTracks:
 	db $11, $22, $44, $88
 
 ChannelPointers:
+	; _UpdateSound uses the struct stride instead of looking up each pointer.
+FOR audio_channel, 1, NUM_CHANNELS + 1
+	ASSERT wChannel{d:audio_channel} - wChannel1 == (audio_channel - 1) * CHANNEL_STRUCT_LENGTH
+ENDR
+	ASSERT CHANNEL_MUSIC_ID == 0 ; ChannelInit clears from the struct's base
+	ASSERT CHANNEL_MUSIC_BANK == CHANNEL_MUSIC_ID + 2 ; LoadChannel writes id then bank
+FOR audio_channel, 1, NUM_MUSIC_CHANS + 1
+	ASSERT wChannel{d:audio_channel}JumpCondition - wChannel1JumpCondition == audio_channel - 1
+ENDR
+	ASSERT wNoiseSampleDelay == wNoiseSampleAddress + 2
+	ASSERT wMusicNoiseSampleSet == wNoiseSampleDelay + 1
 	table_width 2, ChannelPointers
 ; music channels
 	dw wChannel1
