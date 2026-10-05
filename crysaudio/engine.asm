@@ -2901,29 +2901,25 @@ ChannelInit:
 ; set default tempo and note length in case nothing is loaded
 ; input:
 ;   bc = channel struct pointer
-	push de
+	push bc
+	ld h, b
+	ld l, c
+	ld b, CHANNEL_STRUCT_LENGTH
 	xor a
-	; get channel struct location and length
-	ld hl, CHANNEL_MUSIC_ID ; start
-	add hl, bc
-	ld e, CHANNEL_STRUCT_LENGTH ; channel struct length
-	; clear channel
 .loop
 	ld [hli], a
-	dec e
+	dec b
 	jr nz, .loop
+	pop bc ; restore channel pointer
 	; set tempo to default ($100)
-	ld hl, CHANNEL_TEMPO
+	ld hl, CHANNEL_TEMPO + 1
 	add hl, bc
-	xor a
-	ld [hli], a
-	inc a
+	inc a ; a = 1; tempo low byte is already cleared
 	ld [hl], a
-	; set note length to default ($1) (fast)
+	; set note length to default (1 = fast)
 	ld hl, CHANNEL_NOTE_LENGTH
 	add hl, bc
 	ld [hl], a
-	pop de
 	ret
 
 LoadMusicByte::
