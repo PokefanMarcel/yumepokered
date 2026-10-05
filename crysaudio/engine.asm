@@ -1769,14 +1769,6 @@ MusicEE:
 	ld [hl], d
 	ret
 
-MusicF9:
-; unused
-; sets some flag
-; params: 0
-	ld a, TRUE
-	ld [wUnusedMusicF9Flag], a
-	ret
-
 MusicE2:
 ; unused
 ; params: 1
