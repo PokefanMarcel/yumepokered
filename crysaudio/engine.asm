@@ -24,17 +24,7 @@ _InitSound::
 	ld hl, rNR10 ; sound channel registers
 	ld e, NUM_MUSIC_CHANS
 .clearsound
-;   sound channel   1      2      3      4
-	xor a
-	ld [hli], a ; rNR10, rNR20, rNR30, rNR40 ; sweep = 0
-
-	ld [hli], a ; rNR11, rNR21, rNR31, rNR41 ; length/wavepattern = 0
-	ld a, $8
-	ld [hli], a ; rNR12, rNR22, rNR32, rNR42 ; envelope = 0
-	xor a
-	ld [hli], a ; rNR13, rNR23, rNR33, rNR43 ; frequency lo = 0
-	ld a, $80
-	ld [hli], a ; rNR14, rNR24, rNR34, rNR44 ; restart sound (freq hi = 0)
+	call ClearChannel
 	dec e
 	jr nz, .clearsound
 
