@@ -155,23 +155,8 @@ _UpdateSound::
 	cp NUM_MUSIC_CHANS
 	jr nc, .sfx_channel
 
-	push af
-	push bc
-	add 4 ; corresponding sfx channel
-	ld c, a
-	ld b, 0
-	ld hl, ChannelPointers
+	ld hl, CHANNEL_STRUCT_LENGTH * NUM_MUSIC_CHANS + CHANNEL_FLAGS1
 	add hl, bc
-	add hl, bc
-	ld c, [hl]
-	inc hl
-	ld b, [hl] ; bc = channel pointer
-	ld hl, CHANNEL_FLAGS1
-	add hl, bc
-	pop bc
-	pop af
-;	ld hl, CHANNEL_STRUCT_LENGTH * NUM_MUSIC_CHANS + CHANNEL_FLAGS1
-;	add hl, bc
 
 	bit SOUND_CHANNEL_ON, [hl]
 	jr nz, .sound_channel_on
