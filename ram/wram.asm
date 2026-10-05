@@ -104,6 +104,10 @@ wCurSFX::
 
 wSFXDontWait:: ds 1
 
+; marcelnote - save the custom waveform
+; Instrument $f now restores these 32 packed samples on each new note.
+wMusicCustomWave:: ds 16
+
 wAudioEnd::
 
 ; crysaudio end

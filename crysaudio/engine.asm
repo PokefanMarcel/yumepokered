@@ -445,53 +445,32 @@ UpdateChannels:
 .load_wave_pattern
 	push hl
 	ld a, [wCurTrackVolumeEnvelope]
-	and $f ; only 0-9 are valid
-	ld l, a
-	ld h, 0
-	; hl << 4
-	; each wavepattern is 16 bytes long
-	; so seeking is done in $10s
-REPT 4
-	add hl, hl
-ENDR
-	ld de, WaveSamples
-	add hl, de
+	and $f
+	;;;;;;;;;;;;;;;;;;;;;;
+	; marcelnote - instrument $f must restore the saved custom wave, because
+	; a channel 3 SFX (e.g. Get Key Item) may have overwritten hardware wave RAM.
+	; The caller has disabled the wave DAC, so either source can be copied safely.
+	ld hl, wMusicCustomWave
 	cp $f
-	jr z, .skip
+	jr z, .copy_wave_pattern
+	;;;;;;;;;;;;;;;;;;;;;;
+	; each wavepattern is 16 bytes long
+	swap a ; a = 16 * a since a < $10
+	ld e, a
+	ld d, 0
+	ld hl, WaveSamples
+	add hl, de
+.copy_wave_pattern
 	; load wavepattern into rWave_0-rWave_f
+	push bc
+	lb bc, 16, LOW(rWave_0)
+.copy_wave_byte
 	ld a, [hli]
-	ldh [rWave_0], a
-	ld a, [hli]
-	ldh [rWave_1], a
-	ld a, [hli]
-	ldh [rWave_2], a
-	ld a, [hli]
-	ldh [rWave_3], a
-	ld a, [hli]
-	ldh [rWave_4], a
-	ld a, [hli]
-	ldh [rWave_5], a
-	ld a, [hli]
-	ldh [rWave_6], a
-	ld a, [hli]
-	ldh [rWave_7], a
-	ld a, [hli]
-	ldh [rWave_8], a
-	ld a, [hli]
-	ldh [rWave_9], a
-	ld a, [hli]
-	ldh [rWave_a], a
-	ld a, [hli]
-	ldh [rWave_b], a
-	ld a, [hli]
-	ldh [rWave_c], a
-	ld a, [hli]
-	ldh [rWave_d], a
-	ld a, [hli]
-	ldh [rWave_e], a
-	ld a, [hli]
-	ldh [rWave_f], a
-.skip
+	ldh [c], a
+	inc c
+	dec b
+	jr nz, .copy_wave_byte
+	pop bc
 	pop hl
 	ld a, [wCurTrackVolumeEnvelope]
 	and $f0
@@ -1477,9 +1456,10 @@ MusicCommands:
 MusicF1:
 MusicF2:
 MusicF3:
-;custom waveform
+; marcelnote - save the custom waveform
+; Channel 3 restores it for instrument $f after an SFX borrows the channel.
 	ld e, 16
-	ld hl, rWave_0
+	ld hl, wMusicCustomWave
 .read
 	call GetMusicByte
 	ld [hli], a
