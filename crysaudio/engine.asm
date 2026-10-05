@@ -175,22 +175,12 @@ _UpdateSound::
 	ld [hl], a
 .nextchannel
 	; next channel
-;	ld hl, CHANNEL_STRUCT_LENGTH
-;	add hl, bc
-;	ld c, l
-;	ld b, h
+	ld hl, CHANNEL_STRUCT_LENGTH
+	add hl, bc
+	ld c, l
+	ld b, h
 	ld a, [wCurChannel]
 	inc a
-
-	ld c, a
-	ld b, 0
-	ld hl, ChannelPointers
-	add hl, bc
-	add hl, bc
-	ld c, [hl]
-	inc hl
-	ld b, [hl] ; bc = channel pointer
-
 	ld [wCurChannel], a
 	cp NUM_CHANNELS ; are we done?
 	jp nz, .loop ; do it all again
