@@ -895,6 +895,16 @@ HandleTrackVibrato:
 	inc hl
 	ld [hl], d
 .vibrato
+	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	; marcelnote - match Red/Blue vibrato timing, notably for Sing.
+	; NOTE_NOISE_SAMPLING also marks a fresh tone note, despite its name.
+	; Red/Blue starts that note without advancing vibrato until the next frame.
+	; Keep this after pitch offsets, which must apply on the first frame.
+	ld hl, CHANNEL_NOTE_FLAGS
+	add hl, bc
+	bit NOTE_NOISE_SAMPLING, [hl]
+	ret nz
+	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	; is vibrato on?
 	ld hl, CHANNEL_FLAGS2
 	add hl, bc
