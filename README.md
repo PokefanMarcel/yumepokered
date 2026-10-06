@@ -102,6 +102,7 @@ Loosely inspired by the anime, manga, and later Pokémon generations, Yume featu
 - Experience bar and improved move info box in battle.
 - Pressing B during wild battles shortcuts directly to 'Run' on the main menu.
 - Exp.All reworked and can be turned on and off from the bag.
+- Vitamins can raise Stat.Exp all the way to the maximum.
 - Faster dialogue to buy coins at the Game Corner.
 - New nurse room in the S.S. Anne.
 - Pokémon base stats can be consulted directly in the Pokédex.
