@@ -1273,27 +1273,26 @@ ItemUseMedicine:
 	ld a, [wCurItem]
 	cp RARE_CANDY
 	jr z, .useRareCandy
-	push hl
-	sub HP_UP
+	push hl ; save hl = party mon base
 	add a
-	ld bc, MON_HP_EXP
-	add hl, bc
-	add l
-	ld l, a
+	add MON_HP_EXP - 2 * HP_UP ; a = MON_HP_EXP + 2 * (item - HP_UP)
+	ld c, a    ; b = 0 still since GetMonHeader and GetPartyMonName preserve bc
+	add hl, bc ; hl = MSB of the appropriate stat experience
+	; marcelnote - vitamins can raise stat experience to $ffff
+	ld a, [hli]
+	and [hl]
+	inc a      ; both stat experience bytes are $ff?
+	jr z, .vitaminNoEffect
+	dec hl
+	ld a, [hl]
+	add 10    ; add 2560 (10 * 256) stat experience
 	jr nc, .noCarry2
-	inc h
+	ld a, $ff ; cap both bytes at $ffff on overflow
+	inc hl
+	ld [hld], a
 .noCarry2
-	ld a, 10
-	ld b, a
-	ld a, [hl] ; a = MSB of stat experience of the appropriate stat
-	cp 100 ; is there already at least 25600 (256 * 100) stat experience?
-	jr nc, .vitaminNoEffect ; if so, vitamins can't add any more
-	add b ; add 2560 (256 * 10) stat experience
-	jr nc, .noCarry3 ; a carry should be impossible here, so this will always jump
-	ld a, 255
-.noCarry3
 	ld [hl], a
-	pop hl
+	pop hl ; restore hl = party mon base
 	call .recalculateStats
 	ld hl, VitaminStats
 	ld a, [wCurItem]
