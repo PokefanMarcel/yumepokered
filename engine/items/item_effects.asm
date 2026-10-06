@@ -932,26 +932,22 @@ ItemUseMedicine:
 	ld a, [wIsInBattle]
 	and a
 	jr z, .compareCurrentHPToMaxHP
-	push hl
-	push de
-	push bc
-	ld a, [wUsedItemOnWhichPokemon]
-	ld c, a
-	ld hl, wPartyFoughtCurrentEnemyFlags
-	ld b, FLAG_TEST
-	predef FlagActionPredef
-	ld a, c
-	and a
-	jr z, .next
-	ld a, [wUsedItemOnWhichPokemon]
-	ld c, a
-	ld hl, wPartyGainExpFlags
-	ld b, FLAG_SET
-	predef FlagActionPredef
-.next
-	pop bc
-	pop de
-	pop hl
+	ld c, d ; target party index
+	inc c
+	ld a, 1 << 7
+.reviveMaskLoop
+	rlca
+	dec c
+	jr nz, .reviveMaskLoop
+	ld b, a ; b = 1 << party index
+	ld a, [wPartyFoughtCurrentEnemyFlags]
+	and b
+	jr z, .reviveFlagsDone
+	ld a, [wPartyGainExpFlags]
+	or b
+	ld [wPartyGainExpFlags], a
+.reviveFlagsDone
+	ld b, c ; c = 0, restore bc = current HP = 0
 	jr .compareCurrentHPToMaxHP
 .notFainted
 	ld a, [wCurItem]
@@ -1283,7 +1279,7 @@ ItemUseMedicine:
 	ld a, [hl]
 	add 10    ; add 2560 (10 * 256) stat experience
 	jr nc, .noCarry2
-	ld a, $ff ; cap both bytes at $ffff on overflow
+	sbc a ; a = $ff, cap both bytes at $ffff on overflow
 	inc hl
 	ld [hld], a
 .noCarry2
