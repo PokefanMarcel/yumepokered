@@ -1292,16 +1292,15 @@ ItemUseMedicine:
 	call .recalculateStats
 	ld hl, VitaminStats
 	ld a, [wCurItem]
-	sub HP_UP - 1
-	ld c, a
-.statNameLoop ; loop to get the address of the name of the stat the vitamin increases
-	dec c
+	sub HP_UP
 	jr z, .gotStatName
-.statNameInnerLoop
+	ld c, a
+.skipNamesLoop
 	ld a, [hli]
 	cp '@'
-	jr nz, .statNameInnerLoop
-	jr .statNameLoop
+	jr nz, .skipNamesLoop
+	dec c
+	jr nz, .skipNamesLoop
 .gotStatName
 	ld de, wStringBuffer
 	ld bc, STAT_NAME_LENGTH
