@@ -834,16 +834,15 @@ ItemUseMedicine:
 	call DisplayPartyMenu
 .getPartyMonDataAddress
 	jp c, .canceledItemUse
-	ld hl, wPartyMons
-	ld bc, PARTYMON_STRUCT_LENGTH
-	ld a, [wWhichPokemon]
-	call AddNTimes
+	ld a, [wCurPartySpecies]
+	ld [wCurSpecies], a
+	ld e, a ; e = species
 	ld a, [wWhichPokemon]
 	ld [wUsedItemOnWhichPokemon], a
-	ld d, a
-	ld a, [wCurPartySpecies]
-	ld e, a
-	ld [wCurSpecies], a
+	ld d, a ; d = party index
+	ld hl, wPartyMons
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call AddNTimes ; preserves de
 	pop af
 	ld [wCurItem], a
 	pop af
@@ -1300,9 +1299,7 @@ ItemUseMedicine:
 	jr z, .gotStatName
 .statNameInnerLoop
 	ld a, [hli]
-	ld b, a
-	ld a, '@'
-	cp b
+	cp '@'
 	jr nz, .statNameInnerLoop
 	jr .statNameLoop
 .gotStatName
