@@ -1098,15 +1098,12 @@ ItemUseMedicine:
 	add b
 	ld [hld], a
 	ld [wHPBarNewHP], a
-	ld a, [hl]
-	ld [wHPBarNewHP+1], a
 	jr nc, .noCarry
 	inc [hl]
-	ld a, [hl]
-	ld [wHPBarNewHP + 1], a
 .noCarry
+	ld a, [hli]
+	ld [wHPBarNewHP+1], a
 	push de
-	inc hl
 	ld d, h
 	ld e, l ; de now points to current HP
 	ld hl, (MON_MAXHP + 1) - (MON_HP + 1)
