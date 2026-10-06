@@ -1,5 +1,6 @@
 LedgeTiles: ; marcelnote - modified
 	; SPRITE_FACING_DOWN, tile below the player (northwest), tile below the player (southwest), input required
+	db SPRITE_FACING_DOWN,  $2C, $36, PAD_DOWN
 	db SPRITE_FACING_DOWN,  $2C, $37, PAD_DOWN
 	db SPRITE_FACING_DOWN,  $39, $37, PAD_DOWN
 	db SPRITE_FACING_DOWN,  $39, $36, PAD_DOWN
