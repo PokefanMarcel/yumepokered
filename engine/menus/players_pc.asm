@@ -41,10 +41,9 @@ PlayerPCMenu:
 	ld a, PAD_A | PAD_B
 	ld [hli], a ; wMenuWatchedKeys
 	xor a
-	ld [hl], a
-	ld hl, wListScrollOffset
-	ld [hli], a ; wListScrollOffset
-	ld [hl], a ; wMenuWatchMovingOutOfBounds
+	ld [hl], a  ; wLastMenuItem
+	ld [wListScrollOffset], a
+	ld [wMenuWatchMovingOutOfBounds], a
 	ld [wPlayerMonNumber], a
 	ld hl, WhatDoYouWantText
 	call PrintText

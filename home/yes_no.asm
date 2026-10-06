@@ -1,29 +1,22 @@
 ; displays yes/no choice
-; yes -> set carry
+; Yes clears carry; No or B sets carry.
 YesNoChoice::
-	call SaveScreenTilesToBuffer1
-	xor a ; YES_NO_MENU
+	ld a, YES_NO_MENU
+	ld [wTextBoxID], a
 	hlcoord 14, 7
-	lb bc, 8, 15
-	jr DisplayYesNoChoice
-
-;WideYesNoChoice:: ; unreferenced ; marcelnote - removed
-;	call SaveScreenTilesToBuffer1
-;	ld a, WIDE_YES_NO_MENU
-;	hlcoord 12, 7
-;	lb bc, 8, 13
-;	jr DisplayYesNoChoice
+	jp DisplayTextBoxID
 
 YesNoChoicePokeCenter::
 	call SaveScreenTilesToBuffer1
 	ld a, HEAL_CANCEL_MENU
-	hlcoord 11, 6
-	lb bc, 8, 12
+	hlcoord 11, 7
 	; fallthrough
 
 DisplayYesNoChoice::
-	ld [wTwoOptionMenuID], a
-	ld a, TWO_OPTION_MENU
 	ld [wTextBoxID], a
 	call DisplayTextBoxID
-	jp LoadScreenTilesFromBuffer1
+	call LoadScreenTilesFromBuffer1
+	ld a, [wChoiceMenuFlags]
+	bit BIT_CHOICE_BACKUP_TILES, a
+	ret nz ; local restoration already updated sprites
+	jp UpdateSprites ; wider choices update sprites after the full-screen restore

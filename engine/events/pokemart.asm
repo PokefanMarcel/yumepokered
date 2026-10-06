@@ -79,10 +79,9 @@ DisplayPokemartDialogue_::
 	ld hl, PokemartTellSellPriceText
 	call PrintText
 	hlcoord 14, 7
-	lb bc, 8, 15
 	xor a               ; NOLISTMENU
 	ld [wListMenuID], a ; marcelnote - for TM printing
-	ld a, TWO_OPTION_MENU
+	ld a, YES_NO_MENU
 	ld [wTextBoxID], a
 	call DisplayTextBoxID ; yes/no menu
 	ld a, [wMenuExitMethod]
@@ -150,10 +149,9 @@ DisplayPokemartDialogue_::
 	ld hl, PokemartTellBuyPriceText
 	call PrintText
 	hlcoord 14, 7
-	lb bc, 8, 15
 	xor a               ; NOLISTMENU
 	ld [wListMenuID], a ; marcelnote - for TM printing
-	ld a, TWO_OPTION_MENU
+	ld a, YES_NO_MENU
 	ld [wTextBoxID], a
 	call DisplayTextBoxID ; yes/no menu
 	ld a, [wMenuExitMethod]

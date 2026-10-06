@@ -1,33 +1,27 @@
-; function to draw various text boxes
+; Draw a definition selected by wTextBoxID. Choices also use HL as box origin.
 DisplayTextBoxID_::
 	ld a, [wTextBoxID]
-	cp TWO_OPTION_MENU
-	jp z, DisplayTwoOptionMenu
-	ld c, a
-	ld hl, TextBoxFunctionTable
-	ld de, 3 - 1
-	call SearchTextBoxTable
-	jr c, .functionTableMatch
-	ld hl, TextBoxCoordTable
-	ld de, 5 - 1
-	call SearchTextBoxTable
-	jr c, .coordTableMatch
-	ld hl, TextBoxTextAndCoordTable
-	ld de, 9 - 1
-	call SearchTextBoxTable
-	jr c, .textAndCoordTableMatch
-	ret
-
-.functionTableMatch
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a ; hl = address of function
-	jp hl ; jump to the function
-.coordTableMatch
+	and ~(1 << BIT_SECOND_MENU_OPTION_DEFAULT)
+	ret z ; NOLISTMENU
+	cp NUM_MENU_IDS
+	ret nc
+	push hl ; caller-supplied origin, used only by choices
+	call GetMenuDefinition
+	ld a, [hli] ; definition kind
+	cp MENU_KIND_CHOICE
+	jr z, .choice
+	pop de ; discard caller origin
+	cp MENU_KIND_LIST
+	jp z, DrawListMenuBox
+	cp MENU_KIND_CUSTOM
+	jr z, .custom
+	cp MENU_KIND_TEXT
+	jr z, .text
+.box
 	call GetTextBoxIDCoords
 	call GetAddressOfScreenCoords
 	jp TextBoxBorder
-.textAndCoordTableMatch
+.text
 	call GetTextBoxIDCoords
 	push hl
 	call GetAddressOfScreenCoords
@@ -42,22 +36,75 @@ DisplayTextBoxID_::
 	pop af
 	ld [wStatusFlags5], a
 	jp UpdateSprites
-
-; function to search a table terminated with $ff for a byte matching c in increments of de + 1
-; sets carry flag if a match is found and clears carry flag if not
-SearchTextBoxTable:
+.custom
 	ld a, [hli]
-	cp $ff
-	ret z ; not found
-	cp c
-	jr z, .found
+	ld h, [hl]
+	ld l, a
+	jp hl
+.choice
+	ld d, h
+	ld e, l ; DE = choice data
+	pop hl  ; HL = caller's box origin
+	jp DisplayTwoOptionMenu
+
+; A = common box/menu ID. Returns HL = definition, preserves BC.
+GetMenuDefinition:
+	ld hl, MenuDefinitions
+	ld e, a
+	ld d, 0
 	add hl, de
-	jr SearchTextBoxTable
-.found
-	scf
+	add hl, de
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
 	ret
 
-; function to load coordinates from the TextBoxCoordTable or the TextBoxTextAndCoordTable
+; Draw the list and derive its cursor, interior, and scroll-arrow positions.
+; HL points to the list's coordinates, followed by its behavior flags.
+DrawListMenuBox:
+	call GetTextBoxIDCoords
+	push hl ; flags pointer
+	push bc ; inner height/width
+	push de ; upper-left Y/X
+	call GetAddressOfScreenCoords
+	push hl
+	call TextBoxBorder
+	pop hl
+	ld bc, SCREEN_WIDTH + 1
+	add hl, bc ; first interior tile
+	ld a, l
+	ld [wListMenuOrigin], a
+	ld a, h
+	ld [wListMenuOrigin + 1], a
+	pop de
+	pop bc
+	ld a, b
+	ld [wListMenuHeight], a
+	ld a, c
+	ld [wListMenuWidth], a
+	pop hl
+	ld a, [hl]
+	ld [wListMenuFlags], a
+	ld a, d
+	add 2
+	ld [wTopMenuItemY], a
+	ld a, e
+	inc a
+	ld [wTopMenuItemX], a
+	ld a, d
+	add b
+	ld d, a ; last interior row
+	ld a, e
+	add c
+	ld e, a ; last interior column
+	call GetAddressOfScreenCoords
+	ld a, l
+	ld [wListMenuScrollArrow], a
+	ld a, h
+	ld [wListMenuScrollArrow + 1], a
+	ret
+
+; Load the four corner coordinates shared by box, text, and list definitions.
 ; INPUT:
 ; hl = address of coordinates
 ; OUTPUT:
@@ -80,7 +127,7 @@ GetTextBoxIDCoords:
 	ld b, a     ; b = height
 	ret
 
-; function to load a text address and text coordinates from the TextBoxTextAndCoordTable
+; Load the text pointer and coordinates following a text definition's corners.
 GetTextBoxIDText:
 	ld a, [hli]
 	ld e, a
@@ -123,6 +170,8 @@ ELIF DEF(_ESP)
 ELSE
 	INCLUDE "data/text_boxes.asm"
 ENDC
+
+INCLUDE "data/menu_definitions.asm"
 
 DisplayMoneyBox:
 	ld hl, wStatusFlags5
@@ -180,135 +229,155 @@ DoBuySellQuitMenu: ; marcelnote - small optim
 	ld [wMenuExitMethod], a
 	ret
 
+; Previous caller contract:
 ; displays a menu with two options to choose from
 ; b = Y of upper left corner of text region
 ; c = X of upper left corner of text region
 ; hl = address where the text box border should be drawn
+; HL = caller-supplied box origin, DE = choice definition after its kind.
+; Carry is clear for the first choice, set for the second choice or B.
 DisplayTwoOptionMenu:
+	push hl ; save origin until the covered tiles are restored
 	push hl
+	push de
+	call GetMenuOriginCoords
+	pop hl ; definition
+	ld a, [hli] ; inner width
+	add 2
+	ld [wChoiceMenuWidth], a
+	ld a, [hli] ; inner height
+	add 2
+	ld [wChoiceMenuHeight], a
+	ld a, [hli] ; first choice's row relative to box origin
+	add b
+	ld [wTopMenuItemY], a
+	ld a, c
+	inc a ; cursor column is one tile inside the box
+	ld [wTopMenuItemX], a
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a ; text pointer
+	ld a, [hl]
+	ld [wChoiceMenuFlags], a
+	pop hl ; box origin
+	push de ; text pointer
+	push hl
+	bit BIT_CHOICE_BACKUP_TILES, a ; a still holds the definition's flags
+	call nz, TwoOptionMenu_SaveScreenTiles
+	pop hl
+	ld a, [wChoiceMenuWidth]
+	sub 2
+	ld c, a
+	ld a, [wChoiceMenuHeight]
+	sub 2
+	ld b, a
+	ld a, [wChoiceMenuFlags]
+	bit BIT_CHOICE_CABLE_BORDER, a
+	jr z, .ordinaryBorder
+	call CableClub_TextBoxBorder
+	jr .borderDrawn
+.ordinaryBorder
+	call TextBoxBorder
+.borderDrawn
+	call UpdateSprites
+	ld a, [wTopMenuItemY]
+	ld d, a
+	ld a, [wTopMenuItemX]
+	inc a ; text is one tile to the right of the cursor
+	ld e, a
+	call GetAddressOfScreenCoords
+	pop de ; text pointer
 	ld a, [wStatusFlags5]
 	set BIT_NO_TEXT_DELAY, a
 	ld [wStatusFlags5], a
-	ld a, PAD_A | PAD_B
-	ld [wMenuWatchedKeys], a
-	ld a, $1
-	ld [wMaxMenuItem], a
-	ld a, b
-	ld [wTopMenuItemY], a
-	ld a, c
-	ld [wTopMenuItemX], a
-	xor a
-	ld [wLastMenuItem], a
-	ld [wMenuWatchMovingOutOfBounds], a
-	push hl
-	ld hl, wTwoOptionMenuID
-	bit BIT_SECOND_MENU_OPTION_DEFAULT, [hl]
-	res BIT_SECOND_MENU_OPTION_DEFAULT, [hl]
-	jr z, .storeCurrentMenuItem
-	inc a
-.storeCurrentMenuItem
-	ld [wCurrentMenuItem], a
-	pop hl
-	push hl
-	push hl
-	call TwoOptionMenu_SaveScreenTiles
-	ld a, [wTwoOptionMenuID]
-	ld hl, TwoOptionMenuStrings
-	ld bc, 5 ; bytes per entry
-	call AddNTimes ; marcelnote - small optim
-	ld a, [hli]
-	ld c, a
-	ld a, [hli]
-	ld b, a
-	ld e, l
-	ld d, h
-	pop hl
-	push de
-	ld a, [wTwoOptionMenuID]
-	cp TRADE_CANCEL_MENU
-	jr nz, .notTradeCancelMenu
-	call CableClub_TextBoxBorder
-	jr .afterTextBoxBorder
-.notTradeCancelMenu
-	call TextBoxBorder
-.afterTextBoxBorder
-	call UpdateSprites
-	pop hl
-	ld a, [hli]
-	and a ; put blank line before first menu item?
-	ld bc, SCREEN_WIDTH + 2
-	jr z, .noBlankLine
-	ld bc, 2 * SCREEN_WIDTH + 2
-.noBlankLine
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
-	pop hl
-	add hl, bc
 	call PlaceString
 	ld hl, wStatusFlags5
 	res BIT_NO_TEXT_DELAY, [hl]
-	ld a, [wTwoOptionMenuID]
-	cp NO_YES_MENU
-	jr nz, .notNoYesMenu
-; No/Yes menu
-; this menu type ignores the B button
-; it only seems to be used when confirming the deletion of a save file
+	ld a, PAD_A | PAD_B
+	ld [wMenuWatchedKeys], a
+	ld a, 1
+	ld [wMaxMenuItem], a
 	xor a
-	ld [wTwoOptionMenuID], a
+	ld [wLastMenuItem], a
+	ld [wMenuWatchMovingOutOfBounds], a
+	ld hl, wTextBoxID
+	bit BIT_SECOND_MENU_OPTION_DEFAULT, [hl]
+	jr z, .storeInitialChoice
+	res BIT_SECOND_MENU_OPTION_DEFAULT, [hl]
+	inc a
+.storeInitialChoice
+	ld [wCurrentMenuItem], a
+	ld a, [wChoiceMenuFlags]
+	bit BIT_CHOICE_IGNORE_B, a
+	jr z, .allowB
 	ld a, [wMiscFlags]
 	push af
-	push hl
 	ld hl, wMiscFlags
 	set BIT_NO_MENU_BUTTON_SOUND, [hl]
-	pop hl
-.noYesMenuInputLoop
+.ignoreBLoop
 	call HandleMenuInput
 	bit B_PAD_B, a
-	jr nz, .noYesMenuInputLoop ; try again if B was not pressed
+	jr nz, .ignoreBLoop
 	pop af
-	pop hl
 	ld [wMiscFlags], a
 	ld a, SFX_PRESS_AB
 	call PlaySound
-	jr .pressedAButton
-.notNoYesMenu
-	xor a
-	ld [wTwoOptionMenuID], a
+	jr .pressedA
+.allowB
 	call HandleMenuInput
-	pop hl
 	bit B_PAD_B, a
-	jr nz, .choseSecondMenuItem ; automatically choose the second option if B is pressed
-.pressedAButton
+	jr nz, .secondChoice
+.pressedA
 	ld a, [wCurrentMenuItem]
-	ld [wChosenMenuItem], a
+	ld [wChosenMenuItem], a ; choosing with A updates the chosen-item result
 	and a
-	jr nz, .choseSecondMenuItem
-; chose first menu item
-	ld a, CHOSE_FIRST_ITEM
+	jr nz, .secondChoice
+	inc a ; CHOSE_FIRST_ITEM
 	ld [wMenuExitMethod], a
 	ld c, 15
 	call DelayFrames
-	call TwoOptionMenu_RestoreScreenTiles
+	pop hl ; saved box origin
+	ld a, [wChoiceMenuFlags]
+	bit BIT_CHOICE_BACKUP_TILES, a
+	call nz, TwoOptionMenu_RestoreScreenTiles
 	and a
 	ret
-.choseSecondMenuItem
+.secondChoice
 	ld a, 1
 	ld [wCurrentMenuItem], a
-	ld [wChosenMenuItem], a
+	ld [wChosenMenuItem], a ; B also returns the second choice, as before
 	inc a ; CHOSE_SECOND_ITEM
 	ld [wMenuExitMethod], a
 	ld c, 15
 	call DelayFrames
-	call TwoOptionMenu_RestoreScreenTiles
+	pop hl ; saved box origin
+	ld a, [wChoiceMenuFlags]
+	bit BIT_CHOICE_BACKUP_TILES, a
+	call nz, TwoOptionMenu_RestoreScreenTiles
 	scf
 	ret
 
-; Some of the wider/taller two option menus will not have the screen areas
-; they cover be fully saved/restored by the two functions below.
-; The bottom and right edges of the menu may remain after the function returns.
+; HL = tilemap address. Returns B/C = its Y/X coordinates.
+; Called once when a choice opens, so callers only specify the box origin.
+GetMenuOriginCoords:
+	ld de, -wTileMap
+	add hl, de
+	ld de, -SCREEN_WIDTH
+	ld b, -1
+.loop
+	inc b
+	add hl, de ; subtract one row; carry means a whole row remained
+	jr c, .loop
+	ld de, SCREEN_WIDTH
+	add hl, de
+	ld c, l
+	ret
 
-TwoOptionMenu_SaveScreenTiles: ; marcelnote - small optim
+; Only choices marked BIT_CHOICE_BACKUP_TILES use this fixed 6x5 backup.
+; Yes/No fits exactly in wBuffer's 30 bytes. Wider choices restore externally.
+ASSERT 6 * 5 <= wBufferEnd - wBuffer
+TwoOptionMenu_SaveScreenTiles:
 	ld de, wBuffer
 	ld b, 5
 .rowsLoop
@@ -329,7 +398,7 @@ TwoOptionMenu_SaveScreenTiles: ; marcelnote - small optim
 	jr nz, .rowsLoop
 	ret ; returns bc = 0
 
-TwoOptionMenu_RestoreScreenTiles: ; marcelnote - small optim
+TwoOptionMenu_RestoreScreenTiles:
 	ld de, wBuffer
 	ld b, 5
 .rowsLoop

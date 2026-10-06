@@ -91,8 +91,7 @@ AbandonLearning:
 	ld hl, AbandonLearningText
 	call PrintText
 	hlcoord 14, 7
-	lb bc, 8, 15
-	ld a, TWO_OPTION_MENU
+	ld a, YES_NO_MENU
 	ld [wTextBoxID], a
 	call DisplayTextBoxID ; yes/no menu
 	ld a, [wCurrentMenuItem]
@@ -119,8 +118,7 @@ TryingToLearn:
 	ld hl, TryingToLearnText
 	call PrintText
 	hlcoord 14, 7
-	lb bc, 8, 15
-	ld a, TWO_OPTION_MENU
+	ld a, YES_NO_MENU
 	ld [wTextBoxID], a
 	call DisplayTextBoxID ; yes/no menu
 	pop hl

@@ -185,8 +185,7 @@ SaveMenu:
 SaveTheGame_YesOrNo:
 	call PrintText
 	hlcoord 0, 7
-	lb bc, 8, 1
-	ld a, TWO_OPTION_MENU
+	ld a, YES_NO_MENU
 	ld [wTextBoxID], a
 	call DisplayTextBoxID
 	ld a, [wCurrentMenuItem]

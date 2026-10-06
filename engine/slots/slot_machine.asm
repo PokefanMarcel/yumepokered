@@ -134,10 +134,7 @@ MainSlotMachineLoop:
 	ld hl, OneMoreGoSlotMachineText
 	call PrintText
 	hlcoord 14, 12
-	lb bc, 13, 15
-	xor a ; YES_NO_MENU
-	ld [wTwoOptionMenuID], a
-	ld a, TWO_OPTION_MENU
+	ld a, YES_NO_MENU
 	ld [wTextBoxID], a
 	call DisplayTextBoxID
 	ld a, [wCurrentMenuItem]

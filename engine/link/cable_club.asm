@@ -684,13 +684,11 @@ TradeCenter_Trade:
 	call TextCommandProcessor
 	call SaveScreenTilesToBuffer1
 	hlcoord 10, 7
-	lb bc, 8, 11
 	ld a, TRADE_CANCEL_MENU
-	ld [wTwoOptionMenuID], a
-	ld a, TWO_OPTION_MENU
 	ld [wTextBoxID], a
 	call DisplayTextBoxID
 	call LoadScreenTilesFromBuffer1
+	call UpdateSprites ; marcelnote - Trade/Cancel menu relies on this full-screen restore
 	ld a, [wCurrentMenuItem]
 	and a
 	jr z, .tradeConfirmed

@@ -269,7 +269,5 @@ IntroDisplayPicCenteredOrUpperRight: ; marcelnote - refactored to remove sprite 
 BoyGirlChoice::	; joenote - add female player
 	call SaveScreenTilesToBuffer1
 	ld a, BOY_GIRL_MENU
-	ld [wTwoOptionMenuID], a
-	coord hl,  6, 5
-	lb bc, 6, 7 ; marcelnote - yx cursor position
+	hlcoord 6, 5
 	jp DisplayYesNoChoice

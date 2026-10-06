@@ -205,12 +205,26 @@ wShadowOAMBackupSprite{02d:n}:: sprite_oam_struct wShadowOAMBackupSprite{02d:n}
 ENDR
 wShadowOAMBackupEnd::
 
-NEXTU
+NEXTU ; 400 + 9 bytes
 ; list of indexes to patch with SERIAL_NO_DATA_BYTE after transfer
 wSerialPartyMonsPatchList:: ds 200
 
 ; list of indexes to patch with SERIAL_NO_DATA_BYTE after transfer
 wSerialEnemyMonsPatchList:: ds 200
+
+UNION ; 7 bytes
+wListMenuHeight:: db
+wListMenuWidth:: db
+wListMenuOrigin:: dw ; first interior tile
+wListMenuScrollArrow:: dw
+wListMenuFlags:: db
+NEXTU
+wChoiceMenuHeight:: db ; full height, including borders
+wChoiceMenuWidth:: db  ; full width, including borders
+wChoiceMenuFlags:: db
+ENDU
+; Input is active during both lists and choices, so this cannot overlap them.
+wMenuScrollArrow:: dw
 
 NEXTU
 ; marcelnote - Pikachu's Beach minigame, new union
@@ -368,9 +382,7 @@ wMenuJoypadPollCount:: db
 ; id of menu item selected for swapping (counts from 1) (0 means that no menu item has been selected for swapping)
 wMenuItemToSwap:: db
 
-; offset of the current top menu item from the beginning of the list
-; keeps track of what section of the list is on screen
-wListScrollOffset:: db
+	ds 1
 
 ; If non-zero, then when wrapping is disabled and the player tries to go past
 ; the top or bottom of the menu, return from HandleMenuInput. This is useful for
@@ -1073,6 +1085,7 @@ ENDU
 UNION
 ; Temporary storage area
 wBuffer:: ds 30
+wBufferEnd::
 
 NEXTU ; marcelnote - simplify Silph Co gates scripts
 wSilphCoGateEventFlagBit:: db
@@ -1237,12 +1250,17 @@ wGymLeaderName:: ds NAME_LENGTH
 ;ds 16 ; PureRGBnote: CHANGED: used to be wItemList but now the item list for marts is expanded in size and reuses a bigger space in wMovesString
 ;NEXTU
 
-wListPointer:: dw
 
-; used to store pointers, but never read
-;wUnusedNamePointer:: dw ; marcelnote - removed
-
-	ds 2 ; marcelnote - was wItemPrices
+; type of HP bar
+; $00 = enemy HUD in battle
+; $01 = player HUD in battle / status screen
+; $02 = party menu
+wHPBarType::
+; Persistent list data.
+wListMenuID:: db
+wListPointer:: dw ; points to the list's entry count
+wListCount:: db
+wPrintItemPrices:: db
 
 wCurPartySpecies::
 wCurItem::
@@ -1252,16 +1270,7 @@ wCurListMenuItem::
 ; which pokemon you selected
 wWhichPokemon:: db
 
-; if non-zero, then print item prices when displaying lists
-wPrintItemPrices:: db
-
-; type of HP bar
-; $00 = enemy HUD in battle
-; $01 = player HUD in battle / status screen
-; $02 = party menu
-wHPBarType::
-; ID used by DisplayListMenuID
-wListMenuID:: db
+	ds 1
 
 ;wRemoveMonFromBox:: ; marcelnote - revamped Bill's PC, now unused
 ; 0 = copy from daycare to party
@@ -1497,9 +1506,12 @@ wTempTilesetNumTiles:: db
 
 ; used by the pokemart code to save the existing value of wListScrollOffset
 ; so that it can be restored when the player is done with the pokemart NPC
-wSavedListScrollOffset:: db
+; Keep the two persistent offsets together in this existing three-byte slot.
+wListScrollStateStart::
+wListScrollOffset:: db ; first visible entry; also used by the Pokedex
+wSavedListScrollOffset:: db ; preserved while talking to a mart NPC
 
-	ds 2
+	ds 1
 
 ; base coordinates of frame block
 wBaseCoordX:: db
@@ -1761,7 +1773,6 @@ wEvolutionOccurred:: db
 wVBlankSavedROMBank:: db
 
 wDelayFrameBank:: db ; joenote - added for bank backing-up during DelayFrame
-;	ds 1
 
 ;wIsKeyItem:: db ; marcelnote - IsKeyItem now returns its result in Z
 
@@ -1782,14 +1793,13 @@ wCurEnemyLevel:: db
 ; pointer to list of items terminated by $FF
 ;wItemListPointer:: dw ; marcelnote - never read
 
-	ds 2
-
-; number of entries in a list
-wListCount:: db
+	ds 3
 
 wLinkState:: db
 
-wTwoOptionMenuID:: db
+;wTwoOptionMenuID:: db ; marcelnote - removed, list engine refactor
+
+	ds 1
 
 ; the id of the menu item the player ultimately chose
 wChosenMenuItem::

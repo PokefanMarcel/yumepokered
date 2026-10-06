@@ -4,6 +4,21 @@ HandleMenuInput::
 	; fallthrough
 
 HandleMenuInput_:: ; marcelnote - optimized
+	ld a, LOW(wTileMap + 11 * SCREEN_WIDTH + 18)
+	ld [wMenuScrollArrow], a
+	ld a, HIGH(wTileMap + 11 * SCREEN_WIDTH + 18)
+	ld [wMenuScrollArrow + 1], a
+	jr HandleMenuInputCommon
+
+; HL = scrolling-arrow tile. List menus supply their derived position here.
+HandleMenuInputWithScrollArrow::
+	ld a, l
+	ld [wMenuScrollArrow], a
+	ld a, h
+	ld [wMenuScrollArrow + 1], a
+	; fallthrough
+
+HandleMenuInputCommon:
 	ldh a, [hDownArrowBlinkCount1]
 	push af
 	ldh a, [hDownArrowBlinkCount2]
@@ -31,13 +46,10 @@ HandleMenuInput_:: ; marcelnote - optimized
 	and a ; was a key pressed?
 	jr nz, .keyPressed
 	push hl
-	; marcelnote - elevator lists have different layout
-	ld a, [wListMenuID]
-	cp ELEVATORLISTMENU
-	hlcoord 18, 11 ; default blinking-arrow position
-	jr nz, .blinkDownArrow
-	hlcoord 18,  9 ; elevator list's blinking-arrow position
-.blinkDownArrow
+	ld hl, wMenuScrollArrow
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
 	call HandleDownArrowBlinkTiming ; blink down arrow (if any), preserves b
 	pop hl
 	ld a, [wMenuJoypadPollCount]

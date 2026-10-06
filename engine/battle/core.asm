@@ -1043,8 +1043,7 @@ DoUseNextMonDialogue:
 	call PrintText
 .displayYesNoBox
 	hlcoord 13, 9
-	lb bc, 10, 14
-	ld a, TWO_OPTION_MENU
+	ld a, YES_NO_MENU
 	ld [wTextBoxID], a
 	call DisplayTextBoxID
 	ld a, [wMenuExitMethod]
@@ -1387,8 +1386,7 @@ EnemySendOutFirstMon:
 	ld hl, TrainerAboutToUseText
 	call PrintText
 	hlcoord 0, 7
-	lb bc, 8, 1
-	ld a, TWO_OPTION_MENU
+	ld a, YES_NO_MENU
 	ld [wTextBoxID], a
 	call DisplayTextBoxID
 	ld a, [wCurrentMenuItem]

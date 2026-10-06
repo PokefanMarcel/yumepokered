@@ -2,55 +2,61 @@ DEF BAG_ITEM_CAPACITY     EQU 30 ; marcelnote - increased from 20
 DEF BAG_KEY_ITEM_CAPACITY EQU 30 ; marcelnote - new for bag pockets, a bit less than 30 key items currently
 DEF PC_ITEM_CAPACITY      EQU 50
 
-; text box IDs
-	const_def 1
-	const MESSAGE_BOX                       ; $01
-	const_skip                              ; $02
-	const MENU_TEMPLATE_03                  ; $03 unused
-	const FIELD_MOVE_MON_MENU               ; $04
-	const JP_MOCHIMONO_MENU_TEMPLATE        ; $05
-	const USE_TOSS_MENU_TEMPLATE            ; $06
-	const USE_SLCT_MENU_TEMPLATE            ; $07 ; marcelnote - was unused, use items with Select
-	const JP_SAVE_MESSAGE_MENU_TEMPLATE     ; $08
-	const JP_SPEED_OPTIONS_MENU_TEMPLATE    ; $09
-	const_skip                              ; $0a
-	const BATTLE_MENU_TEMPLATE              ; $0b
-	const SWITCH_STATS_CANCEL_MENU_TEMPLATE ; $0c
-	const LIST_MENU_BOX                     ; $0d
-	const BUY_SELL_QUIT_MENU_TEMPLATE       ; $0e
-	const MONEY_BOX_TEMPLATE                ; $0f
-	const MENU_TEMPLATE_10                  ; $10 unused
-	const MON_SPRITE_POPUP                  ; $11
-	const JP_AH_MENU_TEMPLATE               ; $12
-	const MONEY_BOX                         ; $13
-	const TWO_OPTION_MENU                   ; $14
-	const BUY_SELL_QUIT_MENU                ; $15
-	const_skip                              ; $16
-	const_skip                              ; $17
-	const_skip                              ; $18
-	const_skip                              ; $19
-	const JP_POKEDEX_MENU_TEMPLATE          ; $1a
-	const SAFARI_BATTLE_MENU_TEMPLATE       ; $1b
-	const BAG_INFO_BOX                      ; $1c ; marcelnote - new for bag pockets
-	const MOM_DAISY_CANCEL_MENU_TEMPLATE    ; $1d ; marcelnote - new for pay phones
-	const CURRENT_FLOOR_BOX_TEMPLATE        ; $1e ; marcelnote - new for elevator current floor
-	const ELEVATOR_MENU_BOX                 ; $1f ; marcelnote - elevator lists have different layout
-
-; two option menu constants
-; TwoOptionMenuStrings indexes (see data/yes_no_menu_strings.asm)
+; Box and menu IDs index MenuDefinitions directly. List IDs remain first so
+; existing list-format comparisons keep their meaning.
 	const_def
-	const YES_NO_MENU       ; 0
-	const BOY_GIRL_MENU     ; 1 ; marcelnote - add female player
-	const SOUTH_EAST_MENU   ; 2
-	const WIDE_YES_NO_MENU  ; 3
-	const NORTH_EAST_MENU   ; 4
-	const TRADE_CANCEL_MENU ; 5
-	const HEAL_CANCEL_MENU  ; 6
-	const NO_YES_MENU       ; 7
-DEF NUM_TWO_OPTION_MENUS EQU const_value
+	const NOLISTMENU
+	const PRICEDITEMLISTMENU
+	const ITEMLISTMENU
+	const SPECIALLISTMENU
+	const ELEVATORLISTMENU
+	const MESSAGE_BOX
+;	const MENU_TEMPLATE_03 ; unused
+;	const MENU_TEMPLATE_10 ; unused
+	const MON_SPRITE_POPUP
+	const BAG_INFO_BOX
+	const USE_TOSS_MENU_TEMPLATE
+	const USE_SLCT_MENU_TEMPLATE
+	const BATTLE_MENU_TEMPLATE
+	const SAFARI_BATTLE_MENU_TEMPLATE
+	const SWITCH_STATS_CANCEL_MENU_TEMPLATE
+	const MOM_DAISY_CANCEL_MENU_TEMPLATE
+	const BUY_SELL_QUIT_MENU_TEMPLATE
+	const MONEY_BOX_TEMPLATE
+	const CURRENT_FLOOR_BOX_TEMPLATE
+	const YES_NO_MENU
+	const BOY_GIRL_MENU
+;	const SOUTH_EAST_MENU  ; marcelnote - unused
+;	const WIDE_YES_NO_MENU ; marcelnote - unused
+;	const NORTH_EAST_MENU  ; marcelnote - unused
+	const TRADE_CANCEL_MENU
+	const HEAL_CANCEL_MENU
+	const NO_YES_MENU
+	const MONEY_BOX
+	const BUY_SELL_QUIT_MENU
+	const FIELD_MOVE_MON_MENU
+DEF NUM_MENU_IDS EQU const_value
 
-; wTwoOptionMenuID
+; Definition kinds: drawing and input remain separate routines.
+	const_def
+	const MENU_KIND_BOX
+	const MENU_KIND_TEXT
+	const MENU_KIND_CHOICE
+	const MENU_KIND_LIST
+	const MENU_KIND_CUSTOM
+
+; Choice flags stored in the definition, independently of its ID.
+DEF BIT_CHOICE_CABLE_BORDER EQU 0
+DEF BIT_CHOICE_IGNORE_B     EQU 1
+DEF BIT_CHOICE_BACKUP_TILES EQU 2 ; use wBuffer; wider choices restore externally
+
+; Callers may set this bit in wTextBoxID to start on the second choice.
 DEF BIT_SECOND_MENU_OPTION_DEFAULT EQU 7
+ASSERT NUM_MENU_IDS <= (1 << BIT_SECOND_MENU_OPTION_DEFAULT)
+
+; List behavior cached alongside the layout when the list is opened.
+DEF BIT_LIST_SPECIAL_NAMES EQU 0
+DEF BIT_LIST_HAS_QUANTITY  EQU 1
 
 ; menu exit method constants for list menus and the buy/sell/quit menu
 DEF CHOSE_MENU_ITEM   EQU 1 ; pressed A
