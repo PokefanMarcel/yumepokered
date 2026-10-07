@@ -1222,24 +1222,23 @@ wStatusScreenHPBarColor:: db
 
 	ds 7
 
-wWhichPartyMenuHPBar::
-wPalPacket::
-	db
+UNION ; 50 bytes
+wPalPacket:: ds 16
 
-; This union spans 49 bytes.
-UNION
-wPartyMenuBlkPacket:: ds $30
+	ds 8
 
-NEXTU
-; the total amount of exp a mon gained
 ; marcelnote - moved into same union as wStringBuffer because gets clobbered when a Mon learns a move
+; EXP state must not overlap wPalPacket: HP-bar color changes during level-ups rebuild the packet.
 wExpAmountGained:: dw
 wGainBoostedExp:: db
 wExpAmountPerShare:: dw  ; marcelnote - new for ExpAll
 wNumSharesExp:: db       ; marcelnote - new for ExpAll
-	ds 23
-; storage buffer for various strings
+
 wStringBuffer:: ds NAME_BUFFER_LENGTH
+
+NEXTU
+wWhichPartyMenuHPBar:: db
+wPartyMenuBlkPacket:: ds $30
 ENDU
 
 wGymCityName:: ds GYM_CITY_LENGTH
