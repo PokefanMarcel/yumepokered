@@ -1349,25 +1349,17 @@ SurfingMinigame_SetPikachuHeight:
 	ld [wSurfingMinigamePikachuObjectHeight], a
 	ret
 
-SurfingMinigame_Deduct1HP:
+SurfingMinigame_Deduct1HP: ; marcelnote - optimized
 	ld hl, wSurfingMinigamePikachuHP
-	ld e, $99
-	call .BCD_Deduct
-	ret nc
-	inc hl
-.BCD_Deduct:
 	ld a, [hl]
-	and a
-	jr z, .rollOver
-	sub $1
+	sub 1
+	daa
+	ld [hli], a
+	ret nc
+	ld a, [hl]
+	sbc 0
 	daa
 	ld [hl], a
-	and a
-	ret
-
-.rollOver
-	ld [hl], e
-	scf
 	ret
 
 SurfingMinigame_DrawHP:
