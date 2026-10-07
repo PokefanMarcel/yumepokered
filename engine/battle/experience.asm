@@ -76,9 +76,6 @@ GainExperience: ; marcelnote - refactored
 	dec b
 	jr nz, .countNonFaintedLoop
 .gotNumberShares
-	dec c
-	jr z, .setExpPerShare   ; skip divisions if only one share
-	inc c
 
 ; Divide Stat Exp in place by number of shares
 	ld hl, wEnemyMonBaseStats
