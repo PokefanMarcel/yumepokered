@@ -142,17 +142,19 @@ GainExperience: ; marcelnote - refactored
 	and a          ; does mon have at least one share of Exp?
 	jp z, .nextMon ; if no share of Exp, go to next mon
 	ld [wNumSharesExp], a
+	ld c, a        ; c = 1 or 2 shares for all five stats
 
 	ld de, (MON_HP_EXP + 1) - (MON_HP + 1)
 	add hl, de     ; hl = wPartyMon<n>HPExp + 1
 	ld de, wEnemyMonBaseStats
 	ld b, NUM_STATS
-.gainStatExpOuterLoop
-	ld a, [wNumSharesExp] ; a = 1 or 2
-	ld c, a
-.gainStatExpInnerLoop
+.gainStatExpLoop
 	ld a, [de]     ; a = [wEnemyMonBaseStats + (NUM_STATS - b)]
-	add [hl]       ; add enemy mon base stat to stat exp (low byte)
+	bit 1, c       ; does this mon get two shares?
+	jr z, .addStatExp
+	add a          ; with two shares, a was at most 127 after division
+.addStatExp
+	add [hl]       ; add the stat exp contribution (low byte)
 	ld [hl], a
 	jr nc, .nextBaseStat
 	dec hl         ; hl = stat exp (high byte)
@@ -163,14 +165,12 @@ GainExperience: ; marcelnote - refactored
 	ld [hld], a    ; low byte
 	ld [hli], a    ; high byte
 .nextBaseStat
-	dec c
-	jr nz, .gainStatExpInnerLoop ; would it be better to double stat to add directly instead of doing two passes?
 	dec b
 	jr z, .statExpDone
 	inc de     ; move to next enemy mon base stat
 	inc hl
 	inc hl     ; move to next stat exp (low byte)
-	jr .gainStatExpOuterLoop
+	jr .gainStatExpLoop
 
 .statExpDone   ; hl = wPartyMon<n>SpecialExp + 1
 	ld a, [wNumSharesExp]
