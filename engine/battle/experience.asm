@@ -121,26 +121,25 @@ GainExperience: ; marcelnote - refactored
 	ld a, [hli]    ; a = [wPartyMon<n>HP]
 	or [hl]        ; OR [wPartyMon<n>HP + 1], is mon's HP 0?
 	jp z, .nextMon ; if so, go to next mon
-	push hl        ; save hl = wPartyMon<n>HP + 1
 
-	ld hl, wPartyGainExpFlags
-	ld a, [wWhichPokemon]
+	ld a, [wStatusFlags1]
 	ld c, a
-	ld b, FLAG_TEST
-	predef FlagActionPredef ; perform action b on bit c at hl ('bit c, [hl]')
-	ld a, c        ; c = result
-	and a          ; is mon's gain exp flag set?
-	jr z, .checkForExpAll ; if not, get zero share of exp
-	ld a, 1        ; if yes, get one share of exp
+	ld a, [wWhichPokemon]
+	ld b, a
+	inc b
+	ld a, [wPartyGainExpFlags]
+.testParticipationLoop
+	rrca
+	dec b
+	jr nz, .testParticipationLoop
+	ld a, b        ; b = 0 here
+	adc a          ; a = 1 if Mon participated
 
-.checkForExpAll
-	ld hl, wStatusFlags1
-	bit BIT_EXP_ALL_ACTIVE, [hl] ; is ExpAll activated?
+	bit BIT_EXP_ALL_ACTIVE, c ; is ExpAll activated?
 	jr z, .noExpAll
 	inc a          ; if yes, any nonfainted Mon gets one more share of Exp
 .noExpAll
 	and a          ; does mon have at least one share of Exp?
-	pop hl         ; restore hl = wPartyMon<n>HP + 1
 	jp z, .nextMon ; if no share of Exp, go to next mon
 	ld [wNumSharesExp], a
 
