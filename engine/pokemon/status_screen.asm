@@ -4,10 +4,10 @@ StatusScreen:
 	set BIT_NO_AUDIO_FADE_OUT, [hl]
 	ld a, $33
 	ldh [rNR50], a ; Reduce the volume
-	;call GBPalWhiteOutWithDelay3
-	;call ClearScreen
-	;call UpdateSprites
-	;call LoadHpBarAndStatusTilePatterns ; marcelnote - reorganized Battle HUD tiles, no need to load tiles here anymore
+;	call GBPalWhiteOutWithDelay3
+;	call ClearScreen
+;	call UpdateSprites
+;	call LoadHpBarAndStatusTilePatterns ; marcelnote - reorganized Battle HUD tiles, no need to load tiles here anymore
 	ldh a, [hTileAnimations]
 	push af
 	xor a
