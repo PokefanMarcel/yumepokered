@@ -47,7 +47,7 @@ CalcStats::
 
 ; calculates stat c of current mon
 ; c: stat to calc (HP=1,Atk=2,Def=3,Spd=4,Spc=5)
-; b: consider stat exp?
+; b: consider stat exp? 0 = no, 1 = yes
 ; hl: base ptr to stat exp values ([hl + 2*c - 1] and [hl + 2*c])
 CalcStat::
 	push hl
@@ -56,10 +56,8 @@ CalcStat::
 
 ; get stat exp bonus
 	push hl             ; save hl = base pointer to stat exp values
-	ld a, b             ; a = consider stat exp?
-	and a
-	jr z, .statExpDone  ; consider stat exp? if not, b = 0
-	dec b               ; b = 0 for add hl, bc and sqrtLoop
+	srl b               ; consider stat exp? and sets b = 0
+	jr nc, .statExpDone
 	sla c
 	add hl, bc          ; move hl to corresponding stat exp value
 	srl c
