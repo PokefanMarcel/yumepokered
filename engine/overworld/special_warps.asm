@@ -14,8 +14,8 @@ PrepareForSpecialWarp::
 	; loads the first warp event for the specified map index.
 	ld a, PALLET_TOWN
 .next
-;	ld b, a ; marcelnote - this wrote wStatusFlags3 to wLastMap when any bit was set
-;	ld a, [wStatusFlags3]
+;	ld b, a ; marcelnote - this wrote wCableClubDestinationMap to wLastMap when any bit was set
+;	ld a, [wCableClubDestinationMap]
 ;	and a
 ;	jr nz, .next2
 ;	ld a, b
