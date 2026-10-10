@@ -1,120 +1,231 @@
-MACRO outdoor_map
-	dn \2, \1
-	dw \3
-ENDM
-
-; the appearance of towns and routes in the town map
-; marcelnote - many entries were adjusted for the new town map
-ExternalMapEntries:
-	table_width 3
-	; x, y, name
-	outdoor_map  3, 11, PalletTownName
-	outdoor_map  3,  8, ViridianCityName
-	outdoor_map  3,  3, PewterCityName
-	outdoor_map 10,  2, CeruleanCityName
-	outdoor_map 14,  5, LavenderTownName
-	outdoor_map 10,  9, VermilionCityName
-	outdoor_map  7,  5, CeladonCityName
-	outdoor_map 10,  5, SaffronCityName
-	outdoor_map  9, 13, FuchsiaCityName
-	outdoor_map  3, 15, CinnabarIslandName
-	outdoor_map 15, 15, MandarinIslandName ; marcelnote - new map
-	outdoor_map  1,  2, IndigoPlateauName
-	outdoor_map  3, 10, Route1Name
-	outdoor_map  3,  6, Route2Name
-	outdoor_map  5,  3, Route3Name
-	outdoor_map  8,  2, Route4Name
-	outdoor_map 10,  3, Route5Name
-	outdoor_map 10,  7, Route6Name
-	outdoor_map  8,  5, Route7Name
-	outdoor_map 12,  5, Route8Name
-	outdoor_map 12,  2, Route9Name
-	outdoor_map 14,  2, Route10Name
-	outdoor_map 12,  9, Route11Name
-	outdoor_map 14,  9, Route12Name
-	outdoor_map 13, 11, Route13Name
-	outdoor_map 12, 12, Route14Name
-	outdoor_map 11, 13, Route15Name
-	outdoor_map  6,  5, Route16Name
-	outdoor_map  5,  8, Route17Name
-	outdoor_map  7, 13, Route18Name
-	outdoor_map  8, 15, Route19Name
-	outdoor_map  5, 15, Route20Name
-	outdoor_map  3, 13, Route21Name
-	outdoor_map  2,  8, Route22Name
-	outdoor_map  1,  6, Route23Name
-	outdoor_map 10,  1, Route24Name
-	outdoor_map 11,  0, Route25Name
-	outdoor_map  0,  7, Route28Name ; marcelnote - new location
-	outdoor_map 15, 15, MandarinIslandName ; OrangeRoute1 ; marcelnote - new location
-	assert_table_length FIRST_INDOOR_MAP
-
-
-MACRO indoor_map
-	db \1 + 1
-	dn \3, \2
-	dw \4
-ENDM
-
-; the appearance of buildings and dungeons in the town map
-InternalMapEntries:
-	table_width 4
-	; maximum map id subject to this rule, x, y, name
-	indoor_map OAKS_LAB,                       3, 11, PalletTownName
-	indoor_map VIRIDIAN_GYM,                   3,  8, ViridianCityName
-	indoor_map ROUTE_2_GATE,                   3,  6, Route2Name
-	indoor_map VIRIDIAN_FOREST,                3,  5, ViridianForestName
-	indoor_map ROUTE_2_TRADE_HOUSE,            3,  4, Route2Name
-	indoor_map DIGLETTS_CAVE_ROUTE_2,          4,  4, DiglettsCaveName
-	indoor_map PEWTER_GYM,                     3,  3, PewterCityName
-	indoor_map CELADON_GROVE_NORTH_GATE,       6,  3, Route3Name ; marcelnote - new location
-	indoor_map MT_MOON_POKECENTER,             6,  2, Route4Name
-	indoor_map MT_MOON_B2F,                    7,  2, MountMoonName
-	indoor_map MT_MOON_SQUARE,                 7,  2, MtMoonSquareName ; marcelnote - new location
-	indoor_map CERULEAN_GYM,                  10,  2, CeruleanCityName
-	indoor_map CERULEAN_CAVE_B1F,              9,  1, CeruleanCaveName
-	indoor_map BILLS_HOUSE,                   12,  0, SeaCottageName
-	indoor_map DAYCARE,                       10,  4, Route5Name
-	indoor_map UNDERGROUND_PATH_ROUTE_6,      10,  7, Route6Name
-	indoor_map UNDERGROUND_PATH_ROUTE_7,       8,  5, Route7Name
-	indoor_map UNDERGROUND_PATH_ROUTE_8,      12,  5, Route8Name
-	indoor_map UNDERGROUND_PATH_WEST_EAST,    10,  5, UndergroundPathName
-	indoor_map VERMILION_DOCK,                10,  9, VermilionCityName
-	indoor_map SS_ANNE_2F_ROOMS,               9, 10, SSAnneName
-	indoor_map DIGLETTS_CAVE_ROUTE_11,        11,  8, DiglettsCaveName
-	indoor_map ROUTE_11_GATE,                 13,  9, Route11Name ; marcelnote - merged ROUTE_11_GATE floors
-	indoor_map ROCK_TUNNEL_POKECENTER,        14,  2, Route10Name
-	indoor_map ROCK_TUNNEL_B1F,               14,  3, RockTunnelName
-	indoor_map POWER_PLANT,                   15,  3, PowerPlantName
-	indoor_map LAVENDER_CUBONE_HOUSE,         14,  5, LavenderTownName
-	indoor_map POKEMON_TOWER_7F,              15,  5, PokemonTowerName
-	indoor_map ROUTE_12_GATE,                 14,  7, Route12Name ; marcelnote - merged ROUTE_12_GATE floors
-	indoor_map ROUTE_12_FISHING_GUIDE_HOUSE,  14, 10, Route12Name ; marcelnote - from Super Rod to Fishing Guide
-	indoor_map CELADON_GYM,                    7,  5, CeladonCityName
-	indoor_map ROCKET_HIDEOUT_ELEVATOR,        7,  5, RocketHQName     ; marcelnote - adjusted
-	indoor_map CELADON_GROVE,                  7,  4, CeladonGroveName ; marcelnote - new location
-	indoor_map ROUTE_15_GATE,                 10, 13, Route15Name      ; marcelnote - merged Route15Gate floors
-	indoor_map ROUTE_16_GATE,                  6,  5, Route16Name
-	indoor_map ROUTE_16_FLY_HOUSE,             5,  5, Route16Name
-	indoor_map ROUTE_18_GATE,                  7, 13, Route18Name ; marcelnote - merged Route18Gate floors
-	indoor_map SAFFRON_GYM,                   10,  5, SaffronCityName
-	indoor_map POKEMON_ACADEMY_3F4F,          10,  5, PokemonAcademyName  ; marcelnote - new location
-	indoor_map SILPH_CO_ELEVATOR,             10,  5, SilphCoName
-	indoor_map FUCHSIA_GYM,                    9, 13, FuchsiaCityName
-	indoor_map SAFARI_ZONE_NORTH_REST_HOUSE,   9, 12, SafariZoneName
-	indoor_map SUMMER_BEACH_HOUSE,             8, 15, Route19Name ; marcelnote - new location from pokeyellow
-	indoor_map SEAFOAM_ISLANDS_B4F,            6, 15, SeafoamIslandsName
-	indoor_map CINNABAR_GYM,                   3, 15, CinnabarIslandName
-	indoor_map POKEMON_MANSION_B1F,            3, 15, PokemonMansionName
-	indoor_map CINNABAR_VOLCANO_2F,            2, 15, CinnabarVolcanoName ; marcelnote - new location
-	indoor_map MANDARIN_DOCK,                 15, 15, MandarinIslandName  ; marcelnote - new location
-	indoor_map CITRUS_FERRY_ROOMS,            12, 15, CitrusFerryName     ; marcelnote - new location
-	indoor_map SILPH_FACTORY_2F,              15, 15, SilphFactoryName    ; marcelnote - new location
-	indoor_map ROUTE_22_OLD_ROD_HOUSE,         2,  8, Route22Name         ; marcelnote - new location
-	indoor_map BATTLE_HALL,                    1,  7, Route22Name         ; marcelnote - new location
-	indoor_map MT_SILVER_3F,                   0,  7, MtSilverName        ; marcelnote - new location
-	indoor_map VICTORY_ROAD_3F,                1,  4, VictoryRoadName
-	indoor_map INDIGO_PLATEAU_LOBBY,           1,  2, IndigoPlateauName
-	indoor_map HALL_OF_FAME,                   1,  2, PokemonLeagueName
-	indoor_map COLOSSEUM,                      0,  0, PokemonLeagueName   ; marcelnote - not supposed to see this
-	db -1 ; end
+; One entry per playable map, in constants/map_constants.asm order.
+; LAST_MAP resolves through wCableClubSourceMap instead of naming a fixed location.
+TownMapEntries:
+	table_width 1
+	db TOWNMAP_PALLET_TOWN                ; PALLET_TOWN
+	db TOWNMAP_VIRIDIAN_CITY              ; VIRIDIAN_CITY
+	db TOWNMAP_PEWTER_CITY                ; PEWTER_CITY
+	db TOWNMAP_CERULEAN_CITY              ; CERULEAN_CITY
+	db TOWNMAP_LAVENDER_TOWN              ; LAVENDER_TOWN
+	db TOWNMAP_VERMILION_CITY             ; VERMILION_CITY
+	db TOWNMAP_CELADON_CITY               ; CELADON_CITY
+	db TOWNMAP_SAFFRON_CITY               ; SAFFRON_CITY
+	db TOWNMAP_FUCHSIA_CITY               ; FUCHSIA_CITY
+	db TOWNMAP_CINNABAR_ISLAND            ; CINNABAR_ISLAND
+	db TOWNMAP_MANDARIN_ISLAND            ; MANDARIN_ISLAND
+	db TOWNMAP_INDIGO_PLATEAU             ; INDIGO_PLATEAU
+	db TOWNMAP_ROUTE_1                    ; ROUTE_1
+	db TOWNMAP_ROUTE_2                    ; ROUTE_2
+	db TOWNMAP_ROUTE_3                    ; ROUTE_3
+	db TOWNMAP_ROUTE_4                    ; ROUTE_4
+	db TOWNMAP_ROUTE_5                    ; ROUTE_5
+	db TOWNMAP_ROUTE_6                    ; ROUTE_6
+	db TOWNMAP_ROUTE_7                    ; ROUTE_7
+	db TOWNMAP_ROUTE_8                    ; ROUTE_8
+	db TOWNMAP_ROUTE_9                    ; ROUTE_9
+	db TOWNMAP_ROUTE_10                   ; ROUTE_10
+	db TOWNMAP_ROUTE_11                   ; ROUTE_11
+	db TOWNMAP_ROUTE_12                   ; ROUTE_12
+	db TOWNMAP_ROUTE_13                   ; ROUTE_13
+	db TOWNMAP_ROUTE_14                   ; ROUTE_14
+	db TOWNMAP_ROUTE_15                   ; ROUTE_15
+	db TOWNMAP_ROUTE_16                   ; ROUTE_16
+	db TOWNMAP_ROUTE_17                   ; ROUTE_17
+	db TOWNMAP_ROUTE_18                   ; ROUTE_18
+	db TOWNMAP_ROUTE_19                   ; ROUTE_19
+	db TOWNMAP_ROUTE_20                   ; ROUTE_20
+	db TOWNMAP_ROUTE_21                   ; ROUTE_21
+	db TOWNMAP_ROUTE_22                   ; ROUTE_22
+	db TOWNMAP_ROUTE_23                   ; ROUTE_23
+	db TOWNMAP_ROUTE_24                   ; ROUTE_24
+	db TOWNMAP_ROUTE_25                   ; ROUTE_25
+	db TOWNMAP_ROUTE_28                   ; ROUTE_28
+	db TOWNMAP_MANDARIN_ISLAND            ; ORANGE_ROUTE_1
+	db TOWNMAP_PALLET_TOWN                ; REDS_YELLOWS_HOUSES
+	db TOWNMAP_PALLET_TOWN                ; BLUES_AIDES_HOUSES
+	db TOWNMAP_PALLET_TOWN                ; OAKS_LAB
+	db TOWNMAP_VIRIDIAN_CITY              ; VIRIDIAN_POKECENTER_MART
+	db TOWNMAP_VIRIDIAN_CITY              ; VIRIDIAN_SCHOOL_HOUSE
+	db TOWNMAP_VIRIDIAN_CITY              ; VIRIDIAN_NICKNAME_HOUSE
+	db TOWNMAP_VIRIDIAN_CITY              ; VIRIDIAN_GYM
+	db TOWNMAP_ROUTE_2                    ; VIRIDIAN_FOREST_SOUTH_GATE
+	db TOWNMAP_ROUTE_2                    ; ROUTE_2_GATE
+	db TOWNMAP_VIRIDIAN_FOREST            ; VIRIDIAN_FOREST
+	db TOWNMAP_VIRIDIAN_FOREST_NORTH_GATE ; VIRIDIAN_FOREST_NORTH_GATE
+	db TOWNMAP_VIRIDIAN_FOREST_NORTH_GATE ; ROUTE_2_TRADE_HOUSE
+	db TOWNMAP_DIGLETTS_CAVE_ROUTE_2      ; DIGLETTS_CAVE_ROUTE_2
+	db TOWNMAP_PEWTER_CITY                ; PEWTER_POKECENTER_MART
+	db TOWNMAP_PEWTER_CITY                ; PEWTER_MUSEUM
+	db TOWNMAP_PEWTER_CITY                ; PEWTER_NIDORAN_HOUSE
+	db TOWNMAP_PEWTER_CITY                ; PEWTER_SPEECH_HOUSE
+	db TOWNMAP_PEWTER_CITY                ; PEWTER_GYM
+	db TOWNMAP_CELADON_GROVE_NORTH_GATE   ; CELADON_GROVE_NORTH_GATE
+	db TOWNMAP_MT_MOON_POKECENTER         ; MT_MOON_POKECENTER
+	db TOWNMAP_MT_MOON                    ; MT_MOON_1F
+	db TOWNMAP_MT_MOON                    ; MT_MOON_B1F
+	db TOWNMAP_MT_MOON                    ; MT_MOON_B2F
+	db TOWNMAP_MT_MOON_SQUARE             ; MT_MOON_SQUARE
+	db TOWNMAP_CERULEAN_CITY              ; CERULEAN_POKECENTER_MART
+	db TOWNMAP_CERULEAN_CITY              ; CERULEAN_TRASHED_HOUSE
+	db TOWNMAP_CERULEAN_CITY              ; CERULEAN_TRADE_HOUSE
+	db TOWNMAP_CERULEAN_CITY              ; CERULEAN_BADGE_HOUSE
+	db TOWNMAP_CERULEAN_CITY              ; BIKE_SHOP
+	db TOWNMAP_CERULEAN_CITY              ; CERULEAN_GYM
+	db TOWNMAP_CERULEAN_CAVE              ; CERULEAN_CAVE_1F
+	db TOWNMAP_CERULEAN_CAVE              ; CERULEAN_CAVE_2F
+	db TOWNMAP_CERULEAN_CAVE              ; CERULEAN_CAVE_B1F
+	db TOWNMAP_BILLS_HOUSE                ; BILLS_HOUSE
+	db TOWNMAP_DAYCARE                    ; ROUTE_5_GATE
+	db TOWNMAP_DAYCARE                    ; UNDERGROUND_PATH_ROUTE_5
+	db TOWNMAP_DAYCARE                    ; DAYCARE
+	db TOWNMAP_ROUTE_6                    ; ROUTE_6_GATE
+	db TOWNMAP_ROUTE_6                    ; UNDERGROUND_PATH_ROUTE_6
+	db TOWNMAP_ROUTE_7                    ; ROUTE_7_GATE
+	db TOWNMAP_ROUTE_7                    ; UNDERGROUND_PATH_ROUTE_7
+	db TOWNMAP_ROUTE_8                    ; ROUTE_8_GATE
+	db TOWNMAP_ROUTE_8                    ; UNDERGROUND_PATH_ROUTE_8
+	db TOWNMAP_UNDERGROUND_PATH           ; UNDERGROUND_PATH_NORTH_SOUTH
+	db TOWNMAP_UNDERGROUND_PATH           ; UNDERGROUND_PATH_WEST_EAST
+	db TOWNMAP_VERMILION_CITY             ; VERMILION_POKECENTER_MART
+	db TOWNMAP_VERMILION_CITY             ; VERMILION_GOOD_ROD_HOUSE
+	db TOWNMAP_VERMILION_CITY             ; POKEMON_FAN_CLUB
+	db TOWNMAP_VERMILION_CITY             ; VERMILION_PIDGEY_HOUSE
+	db TOWNMAP_VERMILION_CITY             ; VERMILION_TRADE_HOUSE
+	db TOWNMAP_VERMILION_CITY             ; VERMILION_GYM
+	db TOWNMAP_VERMILION_CITY             ; VERMILION_DOCK
+	db TOWNMAP_SS_ANNE                    ; SS_ANNE_1F
+	db TOWNMAP_SS_ANNE                    ; SS_ANNE_2F
+	db TOWNMAP_SS_ANNE                    ; SS_ANNE_3F
+	db TOWNMAP_SS_ANNE                    ; SS_ANNE_B1F
+	db TOWNMAP_SS_ANNE                    ; SS_ANNE_BOW
+	db TOWNMAP_SS_ANNE                    ; SS_ANNE_KITCHEN
+	db TOWNMAP_SS_ANNE                    ; SS_ANNE_CAPTAINS_ROOM
+	db TOWNMAP_SS_ANNE                    ; SS_ANNE_1F_ROOMS
+	db TOWNMAP_SS_ANNE                    ; SS_ANNE_2F_ROOMS
+	db TOWNMAP_DIGLETTS_CAVE              ; DIGLETTS_CAVE
+	db TOWNMAP_DIGLETTS_CAVE              ; DIGLETTS_CAVE_ROUTE_11
+	db TOWNMAP_ROUTE_11_GATE              ; ROUTE_11_GATE
+	db TOWNMAP_ROUTE_10                   ; ROCK_TUNNEL_POKECENTER
+	db TOWNMAP_ROCK_TUNNEL                ; ROCK_TUNNEL_1F
+	db TOWNMAP_ROCK_TUNNEL                ; ROCK_TUNNEL_B1F
+	db TOWNMAP_POWER_PLANT                ; POWER_PLANT
+	db TOWNMAP_LAVENDER_TOWN              ; LAVENDER_POKECENTER_MART
+	db TOWNMAP_LAVENDER_TOWN              ; MR_FUJIS_HOUSE
+	db TOWNMAP_LAVENDER_TOWN              ; NAME_RATERS_HOUSE
+	db TOWNMAP_LAVENDER_TOWN              ; LAVENDER_CUBONE_HOUSE
+	db TOWNMAP_POKEMON_TOWER              ; POKEMON_TOWER_1F
+	db TOWNMAP_POKEMON_TOWER              ; POKEMON_TOWER_2F
+	db TOWNMAP_POKEMON_TOWER              ; POKEMON_TOWER_3F
+	db TOWNMAP_POKEMON_TOWER              ; POKEMON_TOWER_4F
+	db TOWNMAP_POKEMON_TOWER              ; POKEMON_TOWER_5F
+	db TOWNMAP_POKEMON_TOWER              ; POKEMON_TOWER_6F
+	db TOWNMAP_POKEMON_TOWER              ; POKEMON_TOWER_7F
+	db TOWNMAP_ROUTE_12_GATE              ; ROUTE_12_GATE
+	db TOWNMAP_ROUTE_12_FISHING_GUIDE_HOUSE; ROUTE_12_FISHING_GUIDE_HOUSE
+	db TOWNMAP_CELADON_CITY               ; CELADON_POKECENTER
+	db TOWNMAP_CELADON_CITY               ; CELADON_MART_1F2F3F
+	db TOWNMAP_CELADON_CITY               ; CELADON_MART_4F5F6F
+	db TOWNMAP_CELADON_CITY               ; CELADON_MART_ROOF
+	db TOWNMAP_CELADON_CITY               ; CELADON_MART_ELEVATOR
+	db TOWNMAP_CELADON_CITY               ; CELADON_MANSION
+	db TOWNMAP_CELADON_CITY               ; CELADON_MANSION_ROOF
+	db TOWNMAP_CELADON_CITY               ; CELADON_MANSION_ROOF_HOUSE
+	db TOWNMAP_CELADON_CITY               ; GAME_CORNER
+	db TOWNMAP_CELADON_CITY               ; GAME_CORNER_PRIZE_ROOM
+	db TOWNMAP_CELADON_CITY               ; CELADON_DINER
+	db TOWNMAP_CELADON_CITY               ; CELADON_CHIEF_HOUSE
+	db TOWNMAP_CELADON_CITY               ; CELADON_HOTEL
+	db TOWNMAP_CELADON_CITY               ; CELADON_GROVE_SOUTH_GATE
+	db TOWNMAP_CELADON_CITY               ; CELADON_GYM
+	db TOWNMAP_ROCKET_HIDEOUT             ; ROCKET_HIDEOUT_B1F
+	db TOWNMAP_ROCKET_HIDEOUT             ; ROCKET_HIDEOUT_B2F
+	db TOWNMAP_ROCKET_HIDEOUT             ; ROCKET_HIDEOUT_B3F
+	db TOWNMAP_ROCKET_HIDEOUT             ; ROCKET_HIDEOUT_B4F
+	db TOWNMAP_ROCKET_HIDEOUT             ; ROCKET_HIDEOUT_ELEVATOR
+	db TOWNMAP_CELADON_GROVE              ; CELADON_GROVE
+	db TOWNMAP_ROUTE_15_GATE              ; ROUTE_15_GATE
+	db TOWNMAP_ROUTE_16                   ; ROUTE_16_GATE
+	db TOWNMAP_ROUTE_16_FLY_HOUSE         ; ROUTE_16_FLY_HOUSE
+	db TOWNMAP_ROUTE_18                   ; ROUTE_18_GATE
+	db TOWNMAP_SAFFRON_CITY               ; SAFFRON_POKECENTER_MART
+	db TOWNMAP_SAFFRON_CITY               ; COPYCATS_HOUSE
+	db TOWNMAP_SAFFRON_CITY               ; FIGHTING_DOJO
+	db TOWNMAP_SAFFRON_CITY               ; SAFFRON_PIDGEY_HOUSE
+	db TOWNMAP_SAFFRON_CITY               ; MR_PSYCHICS_HOUSE
+	db TOWNMAP_SAFFRON_CITY               ; SAFFRON_GYM
+	db TOWNMAP_POKEMON_ACADEMY            ; POKEMON_ACADEMY_1F2F
+	db TOWNMAP_POKEMON_ACADEMY            ; POKEMON_ACADEMY_3F4F
+	db TOWNMAP_SILPH_CO                   ; SILPH_CO_1F
+	db TOWNMAP_SILPH_CO                   ; SILPH_CO_2F
+	db TOWNMAP_SILPH_CO                   ; SILPH_CO_3F
+	db TOWNMAP_SILPH_CO                   ; SILPH_CO_4F
+	db TOWNMAP_SILPH_CO                   ; SILPH_CO_5F
+	db TOWNMAP_SILPH_CO                   ; SILPH_CO_6F
+	db TOWNMAP_SILPH_CO                   ; SILPH_CO_7F
+	db TOWNMAP_SILPH_CO                   ; SILPH_CO_8F
+	db TOWNMAP_SILPH_CO                   ; SILPH_CO_9F
+	db TOWNMAP_SILPH_CO                   ; SILPH_CO_10F
+	db TOWNMAP_SILPH_CO                   ; SILPH_CO_11F
+	db TOWNMAP_SILPH_CO                   ; SILPH_CO_ELEVATOR
+	db TOWNMAP_FUCHSIA_CITY               ; FUCHSIA_POKECENTER_MART
+	db TOWNMAP_FUCHSIA_CITY               ; FUCHSIA_BILLS_GRANDPAS_HOUSE
+	db TOWNMAP_FUCHSIA_CITY               ; WARDENS_HOUSE
+	db TOWNMAP_FUCHSIA_CITY               ; FUCHSIA_MEETING_ROOM
+	db TOWNMAP_FUCHSIA_CITY               ; FUCHSIA_SUPER_ROD_HOUSE
+	db TOWNMAP_FUCHSIA_CITY               ; FUCHSIA_MOVE_DELETER_HOUSE
+	db TOWNMAP_FUCHSIA_CITY               ; FUCHSIA_GYM
+	db TOWNMAP_SAFARI_ZONE                ; SAFARI_ZONE_GATE
+	db TOWNMAP_SAFARI_ZONE                ; SAFARI_ZONE_EAST
+	db TOWNMAP_SAFARI_ZONE                ; SAFARI_ZONE_NORTH
+	db TOWNMAP_SAFARI_ZONE                ; SAFARI_ZONE_WEST
+	db TOWNMAP_SAFARI_ZONE                ; SAFARI_ZONE_CENTER
+	db TOWNMAP_SAFARI_ZONE                ; SAFARI_ZONE_CENTER_REST_HOUSE
+	db TOWNMAP_SAFARI_ZONE                ; SAFARI_ZONE_SECRET_HOUSE
+	db TOWNMAP_SAFARI_ZONE                ; SAFARI_ZONE_WEST_REST_HOUSE
+	db TOWNMAP_SAFARI_ZONE                ; SAFARI_ZONE_EAST_REST_HOUSE
+	db TOWNMAP_SAFARI_ZONE                ; SAFARI_ZONE_NORTH_REST_HOUSE
+	db TOWNMAP_ROUTE_19                   ; SUMMER_BEACH_HOUSE
+	db TOWNMAP_SEAFOAM_ISLANDS            ; SEAFOAM_ISLANDS_1F
+	db TOWNMAP_SEAFOAM_ISLANDS            ; SEAFOAM_ISLANDS_B1F
+	db TOWNMAP_SEAFOAM_ISLANDS            ; SEAFOAM_ISLANDS_B2F
+	db TOWNMAP_SEAFOAM_ISLANDS            ; SEAFOAM_ISLANDS_B3F
+	db TOWNMAP_SEAFOAM_ISLANDS            ; SEAFOAM_ISLANDS_B4F
+	db TOWNMAP_CINNABAR_ISLAND            ; CINNABAR_POKECENTER_MART
+	db TOWNMAP_CINNABAR_ISLAND            ; CINNABAR_LAB
+	db TOWNMAP_CINNABAR_ISLAND            ; CINNABAR_GYM
+	db TOWNMAP_POKEMON_MANSION            ; POKEMON_MANSION_1F
+	db TOWNMAP_POKEMON_MANSION            ; POKEMON_MANSION_2F
+	db TOWNMAP_POKEMON_MANSION            ; POKEMON_MANSION_3F
+	db TOWNMAP_POKEMON_MANSION            ; POKEMON_MANSION_B1F
+	db TOWNMAP_CINNABAR_VOLCANO           ; CINNABAR_VOLCANO_1FB1F
+	db TOWNMAP_CINNABAR_VOLCANO           ; CINNABAR_VOLCANO_2F
+	db TOWNMAP_MANDARIN_ISLAND            ; MANDARIN_POKECENTER_MART
+	db TOWNMAP_MANDARIN_ISLAND            ; MANDARIN_MR_HYPERS_HOUSE
+	db TOWNMAP_MANDARIN_ISLAND            ; MANDARIN_HOTEL
+	db TOWNMAP_MANDARIN_ISLAND            ; MANDARIN_SILPH_CO
+	db TOWNMAP_MANDARIN_ISLAND            ; DR_JABARAS_LAB
+	db TOWNMAP_MANDARIN_ISLAND            ; MANDARIN_DOCK
+	db TOWNMAP_CITRUS_FERRY               ; CITRUS_FERRY_DECK
+	db TOWNMAP_CITRUS_FERRY               ; CITRUS_FERRY_OUTSIDE
+	db TOWNMAP_CITRUS_FERRY               ; CITRUS_FERRY_ROOMS
+	db TOWNMAP_SILPH_FACTORY              ; SILPH_FACTORY_1F
+	db TOWNMAP_SILPH_FACTORY              ; SILPH_FACTORY_2F
+	db TOWNMAP_ROUTE_22                   ; ROUTE_22_OLD_ROD_HOUSE
+	db TOWNMAP_ROUTE_22_GATE              ; ROUTE_22_GATE
+	db TOWNMAP_ROUTE_22_GATE              ; BATTLE_HALL
+	db TOWNMAP_MT_SILVER                  ; MT_SILVER_1F
+	db TOWNMAP_MT_SILVER                  ; MT_SILVER_2F
+	db TOWNMAP_MT_SILVER                  ; MT_SILVER_3F
+	db TOWNMAP_VICTORY_ROAD               ; VICTORY_ROAD_1F
+	db TOWNMAP_VICTORY_ROAD               ; VICTORY_ROAD_2F
+	db TOWNMAP_VICTORY_ROAD               ; VICTORY_ROAD_3F
+	db TOWNMAP_INDIGO_PLATEAU             ; INDIGO_PLATEAU_LOBBY
+	db TOWNMAP_POKEMON_LEAGUE             ; LORELEIS_ROOM
+	db TOWNMAP_POKEMON_LEAGUE             ; BRUNOS_ROOM
+	db TOWNMAP_POKEMON_LEAGUE             ; AGATHAS_ROOM
+	db TOWNMAP_POKEMON_LEAGUE             ; LANCES_ROOM
+	db TOWNMAP_POKEMON_LEAGUE             ; CHAMPIONS_ROOM
+	db TOWNMAP_POKEMON_LEAGUE             ; HALL_OF_FAME
+	db LAST_MAP                           ; TRADE_CENTER
+	db LAST_MAP                           ; COLOSSEUM
+	assert_table_length NUM_MAPS

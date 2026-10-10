@@ -9,72 +9,55 @@ DisplayTownMap: ; marcelnote - optimized
 	call LoadTownMap
 	ld hl, wUpdateSpritesEnabled
 	ld a, [hl]
-	push af
+	push af ; save [wUpdateSpritesEnabled]
 	ld [hl], $ff
-	push hl
 	ld a, $1
 	ldh [hJoy7], a
-	ld a, [wCurMap]
-	push af
-	ld b, 0
-	call DrawPlayerOrBirdSprite
-	hlcoord 1, 0
-	call PlaceString
+
 	ld hl, vSprites tile TOWN_MAP_CURSOR_TILE
 	ld de, TownMapCursor
 	lb bc, BANK(TownMapCursor), (TownMapCursorEnd - TownMapCursor) / TILE_1BPP_SIZE
 	call CopyVideoDataDouble
 	call LoadTownMapUpArrowGraphics ; marcelnote - added up/down arrows
-	xor a
-	ld [wWhichTownMapLocation], a
-	pop af
-	jr .enterLoop
 
-.pressedUp
-	hlcoord 18, 0 ; marcelnote - added up/down arrows
-	ld a, [wWhichTownMapLocation]
-	inc a
-	cp TownMapOrderEnd - TownMapOrder ; number of list items + 1
-	jr nz, .townMapLoop ; no overflow
-	xor a
-	jr .townMapLoop
-.pressedDown
-	hlcoord 19, 0 ; marcelnote - added up/down arrows
-	ld a, [wWhichTownMapLocation]
-	sub 1
-	jr nc, .townMapLoop ; no underflow
-	ld a, TownMapOrderEnd - TownMapOrder - 1 ; number of list items
-	; fallthrough
+	ld a, [wCurMap]
+	call GetTownMapLocation
+	push af ; save location ID
+	inc hl  ; coordinates
+	push hl ; save hl = location's coordinates pointer
+	ld a, [hl]
+	ld b, 0
+	call DrawPlayerOrBirdSprite
 
-.townMapLoop
-	ld [hl], ' '
-	ld [wWhichTownMapLocation], a
-	hlcoord 0, 0
+.redraw
+	hlcoord 0, 0 ; clear top row with location name
 	lb bc, 1, 18 ; marcelnote - added up/down arrows
 	call ClearScreenArea
-	ld hl, TownMapOrder
-	ld a, [wWhichTownMapLocation]
-	ld c, a ; b = 0 after ClearScreenArea
-	add hl, bc
+
+	pop hl  ; restore hl = location's coordinates pointer
+	push hl ; save hl = location's coordinates pointer
 	ld a, [hl]
-.enterLoop
-	ld de, wTownMapCoords
-	call LoadTownMapEntry
-	ld a, [de]
-	push hl ; hl = pointer to the map name
 	call TownMapCoordsToOAMCoords
 	ld a, TOWN_MAP_CURSOR_TILE
 	ld [wOAMBaseTile], a
 	ld hl, wShadowOAMSprite04
 	call WriteTownMapSpriteOAM ; town map cursor sprite
-	pop de ; de = pointer to the map name
+
+	pop hl  ; restore hl = location's coordinates pointer
+	push hl ; save hl = location's coordinates pointer
+	inc hl  ; name pointer
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
 	hlcoord 1, 0
 	call PlaceString
+
 	ld hl, wShadowOAMSprite04
 	ld de, wShadowOAMBackupSprite04
 	ld bc, OBJ_SIZE * 4
 	call CopyData
-	ld c, 15 ; marcelnote - blink only the pressed arrow while changing locations, as in Fly
+
+	ld c, 10 ; marcelnote - blink only the pressed arrow while changing locations, as in Fly
 	call DelayFrames
 	call DrawTownMapArrows
 .inputLoop
@@ -86,6 +69,9 @@ DisplayTownMap: ; marcelnote - optimized
 	ld b, a
 	ld a, SFX_TINK
 	call PlaySound
+	pop hl  ; restore hl = location's coordinates pointer
+	dec hl  ; hl = location's selectable flag pointer
+	pop af  ; restore location ID
 	bit B_PAD_UP, b
 	jr nz, .pressedUp
 	bit B_PAD_DOWN, b
@@ -95,12 +81,48 @@ DisplayTownMap: ; marcelnote - optimized
 	ldh [hJoy7], a
 	ld [wAnimCounter], a
 	call ExitTownMap
-	pop hl
-	pop af
-	ld [hl], a
+	pop af ; restore [wUpdateSpritesEnabled]
+	ld [wUpdateSpritesEnabled], a
 	ret
 
-INCLUDE "data/maps/town_map_order.asm"
+.pressedUp
+	ld bc, 4
+.nextLocation
+	add hl, bc
+	inc a
+	cp NUM_TOWN_MAP_LOCATIONS
+	jr c, .checkUpLocation
+	xor a
+	ld hl, TownMapLocations ; first location's address
+.checkUpLocation
+	bit 0, [hl] ; selectable flag
+	jr z, .nextLocation
+	bccoord 18, 0 ; marcelnote - added up/down arrows
+	jr .selectLocation
+
+.pressedDown
+	ld bc, -4
+.previousLocation
+	add hl, bc
+	sub 1
+	jr nc, .checkDownLocation
+	ld a, NUM_TOWN_MAP_LOCATIONS - 1
+	ld hl, TownMapLocationsEnd - 4 ; last location's address
+.checkDownLocation
+	bit 0, [hl] ; selectable flag
+	jr z, .previousLocation
+	bccoord 19, 0 ; marcelnote - added up/down arrows
+	; fallthrough
+
+.selectLocation
+	push af ; save location ID
+	inc hl  ; coordinates
+	push hl ; save hl = location's coordinates pointer
+	ld a, ' '
+	ld [bc], a
+	jp .redraw
+
+INCLUDE "data/maps/town_map_locations.asm"
 
 TownMapCursor:
 	INCBIN "gfx/town_map/town_map_cursor.1bpp"
@@ -312,44 +334,49 @@ LoadTownMap_Fly::
 	call BuildFlyLocationsList
 	ld hl, wUpdateSpritesEnabled
 	ld a, [hl]
-	push af
+	push af ; save [wUpdateSpritesEnabled]
 	ld [hl], $ff
-	push hl
 	hlcoord 0, 0
 	ld de, ToText
 	call PlaceString
 	ld a, [wCurMap]
-	ld b, 0
+	call GetTownMapLocation ; sets b = 0
+	inc hl ; coordinates
+	ld a, [hl]
 	call DrawPlayerOrBirdSprite
-	ld hl, wFlyLocationsList
-	decoord 18, 0
-.townMapFlyLoop
-	ld a, ' '
-	ld [de], a
-	push hl
-	push hl
+	ld hl, wFlyLocationsList + 1 ; first town
+.redraw
+	push hl ; selected entry in the Fly destination list
+	ld a, [hl]
+	call GetTownMapLocation
+	push hl ; resolved location record
 	hlcoord 3, 0
 	lb bc, 1, 15
 	call ClearScreenArea
 	pop hl
+	inc hl ; coordinates
+	push hl
 	ld a, [hl]
 	ld b, BIRD_BASE_TILE
 	call DrawPlayerOrBirdSprite
+	pop hl
+	inc hl ; name pointer
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
 	hlcoord 3, 0
 	call PlaceString
 	ld c, 15
 	call DelayFrames
 	call DrawTownMapArrows
-	pop hl
 .inputLoop
-	push hl
 	call DelayFrame
 	call JoypadLowSensitivity
 	ldh a, [hJoy5]
-	ld b, a
-	pop hl
 	and PAD_A | PAD_B | PAD_UP | PAD_DOWN
 	jr z, .inputLoop
+	ld b, a
+	pop hl ; restore selected entry in the Fly destination list
 	bit B_PAD_A, b
 	jr nz, .pressedA
 	ld a, SFX_TINK
@@ -373,28 +400,33 @@ LoadTownMap_Fly::
 	xor a
 	ld [wTownMapSpriteBlinkingEnabled], a
 	call GBPalWhiteOutWithDelay3
-	pop hl
-	pop af
-	ld [hl], a
+	pop af ; restore [wUpdateSpritesEnabled]
+	ld [wUpdateSpritesEnabled], a
 	ret
-.pressedUp
-	decoord 18, 0
-	inc hl
-	ld a, [hl]
-	cp NOT_VISITED
-	jr c, .townMapFlyLoop
-	jr z, .pressedUp ; skip past unvisited towns
-	ld hl, wFlyLocationsList ; $ff so wrap to start of list
-	jr .townMapFlyLoop
 .pressedDown
 	decoord 19, 0
+.previousDestination
 	dec hl
 	ld a, [hl]
 	cp NOT_VISITED
-	jr c, .townMapFlyLoop
-	jr z, .pressedDown ; skip past unvisited towns
-	ld hl, wFlyLocationsList + NUM_CITY_MAPS ; $ff so wrap to end of list
-	jr .pressedDown
+	jr c, .selectLocation
+	jr z, .previousDestination ; skip past unvisited towns
+	ld hl, wFlyLocationsList + NUM_CITY_MAPS + 1 ; $ff so wrap to last town
+	jr .previousDestination
+.pressedUp
+	decoord 18, 0
+.nextDestination
+	inc hl
+	ld a, [hl]
+	cp NOT_VISITED
+	jr c, .selectLocation
+	jr z, .nextDestination ; skip past unvisited towns
+	ld hl, wFlyLocationsList + 1 ; $ff so wrap to first town
+	; fallthrough
+.selectLocation
+	ld a, ' '
+	ld [de], a
+	jp .redraw
 
 
 BuildFlyLocationsList:
@@ -402,7 +434,7 @@ BuildFlyLocationsList:
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
-	ld hl, wFlyAnimUsingCoordList
+	ld hl, wFlyLocationsList ; leading $ff sentinel
 	ld a, $ff
 	ld [hli], a
 	lb bc, 0, NUM_CITY_MAPS
@@ -493,22 +525,15 @@ ExitTownMap:
 	jp RunDefaultPaletteCommand
 
 DrawPlayerOrBirdSprite:
-; in: a = map number, b = OAM base tile
-; out: de = map-name pointer
+; in: a = packed Town Map coordinates, b = OAM base tile
 	ld hl, wOAMBaseTile
 	ld [hl], b
-	ld de, wTownMapCoords
-	call LoadTownMapEntry
-	ld a, [de]
-	push hl
 	call TownMapCoordsToOAMCoords
 	call WritePlayerOrBirdSpriteOAM
 	ld hl, wShadowOAM
 	ld de, wShadowOAMBackup
 	ld bc, OAM_COUNT * 4
-	call CopyData
-	pop de ; marcelnote - return name address directly
-	ret
+	jp CopyData
 
 DisplayWildRodsLocations: ; marcelnote - new
 	callfar FindWildRodsLocationsOfMon ; builds list of map coords at wBuffer
@@ -668,45 +693,44 @@ WriteSymmetricMonPartySpriteOAM:
 	jr nz, .loop
 	ret
 
-LoadTownMapEntryFar: ; marcelnote - new
+GetTownMapCoordsFar:
+; in: [wMapCoordsTemp] = map ID; out: [wMapCoordsTemp] = packed coordinates
 	ld a, [wMapCoordsTemp]
-	; fallthrough
+	call GetTownMapLocation
+	inc hl ; coordinates
+	ld a, [hl]
+	ld [wMapCoordsTemp], a
+	ret
 
-LoadTownMapEntry:
-; in: a = map number
-; out: lower nybble of [de] = x, upper nybble of [de] = y, hl = address of name
-	cp FIRST_INDOOR_MAP
-	jr c, .external
-	ld bc, 4
-	ld hl, InternalMapEntries
-.loop
-	cp [hl]
-	jr c, .foundEntry
-	add hl, bc
-	jr .loop
-.foundEntry
-	inc hl
-	jr .readEntry
-.external
-	ld hl, ExternalMapEntries
+GetTownMapLocation:
+; in: a = map ID; out: a = location ID, hl = location record
+	ld hl, TownMapEntries
 	ld c, a
 	ld b, 0
 	add hl, bc
+	ld a, [hl] ; location ID
+	cp LAST_MAP
+	jr nz, .location
+	ld a, [wLastMap] ; link rooms inherit the source Pokemon Center, to correct
+	jr GetTownMapLocation
+.location
+	ld hl, TownMapLocations
+	ld c, a
 	add hl, bc
 	add hl, bc
-.readEntry
-	ld a, [hli]
-	ld [de], a
-	ld [wMapCoordsTemp], a
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+	add hl, bc
+	add hl, bc
 	ret
 
 LoadGymCityName:: ; marcelnote - new for gym city and leader names
 	ld a, [wCurMap]
-	ld de, wGymCityName   ; LoadTownMapEntry needs to store town map coordinates at de
-	call LoadTownMapEntry ; hl = address of name, preserves de
+	call GetTownMapLocation
+	inc hl
+	inc hl ; name pointer
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld de, wGymCityName
 	ld bc, GYM_CITY_LENGTH
 	jp CopyData
 

@@ -2989,7 +2989,7 @@ CheckMapForMon: ; marcelnote - modified
 	ld [wMapCoordsTemp], a
 	push bc ; save c = map ID tracker
 	push de
-	callfar LoadTownMapEntryFar ; transforms [wMapCoordsTemp] from map ID into map coords
+	callfar GetTownMapCoordsFar ; transforms [wMapCoordsTemp] from map ID into map coords
 	pop de
 	call AddIfNotDuplicate
 	pop bc  ; restore c = map ID tracker
@@ -3039,7 +3039,7 @@ FindWildRodsLocationsOfMon: ; marcelnote - new
 	pop af  ; restore a = map ID
 	ld [wMapCoordsTemp], a
 	push de
-	callfar LoadTownMapEntryFar ; transforms [wMapCoordsTemp] from map ID into map coords
+	callfar GetTownMapCoordsFar ; transforms [wMapCoordsTemp] from map ID into map coords
 	pop de
 	call AddIfNotDuplicate
 	pop hl ; restore hl -> first byte of fishing group pointer

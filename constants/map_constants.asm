@@ -16,7 +16,7 @@ ENDM
 ; - MapSongBanks (see data/maps/songs.asm)
 ; - MapHSPointers (see data/maps/toggleable_objects.asm)
 ; - WildDataPointers (see data/wild/grass_water.asm)
-; - ExternalMapEntries (see data/maps/town_map_entries.asm)
+; - TownMapEntries (see data/maps/town_map_entries.asm)
 ; - MapSpriteSets (see data/maps/sprite_sets.asm)
 ; Each map also has associated data in maps.asm.
 ; Order: towns/cities, then routes, then indoor/dungeon maps

@@ -824,7 +824,7 @@ wRivalStarterBallSpriteIndex:: db
 wDexWeight:: dw ; marcelnote - new, with rival starter variables to avoid interaction when choosing starter
 
 NEXTU
-wFlyAnimUsingCoordList:: db
+	ds 1
 ; $ff sentinel values at each end
 wFlyLocationsList:: ds NUM_CITY_MAPS + 2
 
@@ -835,7 +835,7 @@ wMapCoordsTemp:: db
 wAreaUnknownCountdown:: db
 
 NEXTU
-wWhichTownMapLocation:: db
+wFlyAnimUsingCoordList:: db
 wFlyAnimCounter:: db
 wFlyAnimBirdSpriteImageIndex:: db
 
@@ -1121,12 +1121,9 @@ wHPBarTempHP:: dw
 wHPBarHPDifference:: dw
 
 NEXTU
-; lower nybble is x, upper nybble is y
-wTownMapCoords::
 ; whether WriteMonMoves is being used to make a mon learn moves from day care
 ; non-zero if so
-wLearningMovesFromDayCare::
-	db
+wLearningMovesFromDayCare:: db
 
 	ds 27
 
