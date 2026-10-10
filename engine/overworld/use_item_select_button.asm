@@ -7,12 +7,20 @@ UseSelectButtonItem::
 	call IsItemInBag
 	ret z ; if associated item is not in bag, do nothing
 
-	predef GetTileAndCoordsInFrontOfPlayer ; update tile in front of player for rods
-
 	; initialize a text box without drawing anything special
 	ld a, 1
 	ld [wAutoTextBoxDrawingControl], a
 	callfar DisplayTextIDInit
+
+	ld a, [wLinkState]
+	cp LINK_STATE_IN_CABLE_CLUB
+	jr nz, .continue
+	ld hl, .CannotUseItemsHereText
+	call PrintText
+	jr .closeTextDisplay
+.continue
+
+	predef GetTileAndCoordsInFrontOfPlayer ; update tile in front of player for rods
 
 	ld a, [wSelectButtonItem]
 	ld [wCurItem], a	      ; load item to be used
@@ -21,9 +29,14 @@ UseSelectButtonItem::
 	call CopyToStringBuffer
 	call UseItem
 
+.closeTextDisplay
 	ldh a, [hLoadedROMBank]
 	push af
 	jp CloseTextDisplay
+
+.CannotUseItemsHereText:
+	text_far _CannotUseItemsHereText
+	text_end
 
 CheckIfSelectItem:: ; sets carry flag if item in [wCurItem] can be associated with Select button
 	ld hl, SelectItemsList

@@ -1,5 +1,4 @@
 ; One entry per playable map, in constants/map_constants.asm order.
-; LAST_MAP resolves through wCableClubSourceMap instead of naming a fixed location.
 TownMapEntries:
 	table_width 1
 	db TOWNMAP_PALLET_TOWN                ; PALLET_TOWN
@@ -226,6 +225,6 @@ TownMapEntries:
 	db TOWNMAP_POKEMON_LEAGUE             ; LANCES_ROOM
 	db TOWNMAP_POKEMON_LEAGUE             ; CHAMPIONS_ROOM
 	db TOWNMAP_POKEMON_LEAGUE             ; HALL_OF_FAME
-	db LAST_MAP                           ; TRADE_CENTER
-	db LAST_MAP                           ; COLOSSEUM
+	db TOWNMAP_PALLET_TOWN                ; TRADE_CENTER ; cannot use items in those maps
+	db TOWNMAP_PALLET_TOWN                ; COLOSSEUM
 	assert_table_length NUM_MAPS

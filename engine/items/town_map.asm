@@ -709,11 +709,6 @@ GetTownMapLocation:
 	ld b, 0
 	add hl, bc
 	ld a, [hl] ; location ID
-	cp LAST_MAP
-	jr nz, .location
-	ld a, [wLastMap] ; link rooms inherit the source Pokemon Center, to correct
-	jr GetTownMapLocation
-.location
 	ld hl, TownMapLocations
 	ld c, a
 	add hl, bc
