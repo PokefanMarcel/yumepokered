@@ -6,12 +6,12 @@ PrepareTitleScreen::
 	; These debug names are already copied later in PrepareOakSpeech.
 	; Removing the unused copies below has no apparent impact.
 	; CopyDebugName can also be safely deleted afterwards.
-	;ld hl, DebugNewGamePlayerName ; marcelnote - removed
-	;ld de, wPlayerName
-	;call CopyDebugName
-	;ld hl, DebugNewGameRivalName
-	;ld de, wRivalName
-	;call CopyDebugName
+;	ld hl, DebugNewGamePlayerName ; marcelnote - removed
+;	ld de, wPlayerName
+;	call CopyDebugName
+;	ld hl, DebugNewGameRivalName
+;	ld de, wRivalName
+;	call CopyDebugName
 	xor a
 	ldh [hWY], a
 	ld [wLetterPrintingDelayFlags], a
@@ -38,14 +38,14 @@ DisplayTitleScreen:
 	ldh [hWY], a
 	call ClearScreen
 	call DisableLCD
-	call LoadFontTilePatterns
+;	call LoadFontTilePatterns ; marcelnote - useless, directly overwritten
 	ld hl, NintendoCopyrightLogoGraphics
-	ld de, vTitleLogo2 tile 16
+	ld de, vTitleLogo2 ; marcelnote - moved just after the title mon's 49 tiles
 	ld bc, 5 tiles
 	ld a, BANK(NintendoCopyrightLogoGraphics)
 	call FarCopyData
 	ld hl, GameFreakLogoGraphics
-	ld de, vTitleLogo2 tile (16 + 5)
+	ld de, vTitleLogo2 tile 5
 	ld bc, 9 tiles
 	ld a, BANK(GameFreakLogoGraphics)
 	call FarCopyData
@@ -70,17 +70,15 @@ DisplayTitleScreen:
 ; place tiles for pokemon logo (except for the last row) ; marcelnote - copy all tiles of the logo together
 	hlcoord 2, 1
 	ld a, $80
-	ld de, SCREEN_WIDTH
+	ld de, SCREEN_WIDTH - $10
 	ld c, 7 ; marcelnote - was 6 for first 6 rows only
 .pokemonLogoTileLoop
 	ld b, $10
-	push hl
 .pokemonLogoTileRowLoop ; place tiles for one row
 	ld [hli], a
 	inc a
 	dec b
 	jr nz, .pokemonLogoTileRowLoop
-	pop hl
 	add hl, de
 	dec c
 	jr nz, .pokemonLogoTileLoop
@@ -98,9 +96,8 @@ DisplayTitleScreen:
 	call DrawPlayerCharacter
 
 ; put a pokeball in the player's hand
-	ld hl, wShadowOAMSprite10
 	ld a, $74
-	ld [hl], a
+	ld [wShadowOAMSprite10], a
 
 ; place tiles for title screen copyright
 	hlcoord 2, 17
@@ -116,12 +113,12 @@ DisplayTitleScreen:
 	jr .next
 
 .tileScreenCopyrightTiles
-	db $41,$42,$43,$42,$44,$42,$45,$46,$47,$48,$49,$4A,$4B,$4C,$4D,$4E ; ©'95.'96.'98 GAME FREAK inc.
+	db $31,$32,$33,$32,$34,$32,$35,$36,$37,$38,$39,$3A,$3B,$3C,$3D,$3E ; ©'95.'96.'98 GAME FREAK inc.
 .tileScreenCopyrightTilesEnd
 
 .next
 	call SaveScreenTilesToBuffer2
-	call LoadScreenTilesFromBuffer2
+;	call LoadScreenTilesFromBuffer2 ; marcelnote - useless, we just saved
 	call EnableLCD
 
 IF DEF(_RED)
@@ -219,10 +216,10 @@ ENDC
 	call Delay3
 	call WaitForSoundToFinish
 	ld a, MUSIC_TITLE_SCREEN
-	;ld [wNewSoundID], a
+;	ld [wNewSoundID], a
 	call PlayMusic
-	;xor a
-	;ld [wUnusedFlag], a
+;	xor a
+;	ld [wUnusedFlag], a
 
 ; Keep scrolling in new mons indefinitely until the user performs input.
 .awaitUserInterruptionLoop
@@ -253,15 +250,13 @@ ENDC
 	ld a, HIGH(vBGMap1)
 	call TitleScreenCopyTileMapToVRAM
 	call Delay3
-	;call LoadGBPal
+;	call LoadGBPal
 	call GBPalNormal ; marcelnote - fix for title screen when saving in Rock Tunnel
 	ldh a, [hJoyHeld]
-	ld b, a
 	and PAD_UP | PAD_SELECT | PAD_B
 	cp PAD_UP | PAD_SELECT | PAD_B
 	jr z, .doClearSaveDialogue
 IF DEF(_DEBUG)
-	ld a, b
 	bit B_PAD_SELECT, a
 	jp nz, DebugMenu
 ENDC
@@ -349,8 +344,8 @@ DrawPlayerCharacter: ; marcelnote - this always draws the boy (used in title scr
 	dec c
 	jr nz, .innerLoop
 	pop de
-	ld a, 8
-	add d
+	ld a, d
+	add 8
 	ld d, a
 	dec b
 	jr nz, .loop
@@ -377,7 +372,8 @@ LoadCopyrightAndTextBoxTiles:
 	xor a
 	ldh [hWY], a
 	call ClearScreen
-	call LoadTextBoxTilePatterns
+;	call LoadTextBoxTilePatterns ; marcelnote - useless, overwritten just after
+	; fallthrough
 
 LoadCopyrightTiles:
 	ld de, NintendoCopyrightLogoGraphics
