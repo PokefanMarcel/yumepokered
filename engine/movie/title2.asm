@@ -40,8 +40,7 @@ _TitleScroll:
 	ld b, a
 	and $f
 	ld c, a
-	ld a, b
-	and $f0
+	xor b
 	swap a
 	ld b, a
 
@@ -98,17 +97,15 @@ TitleScreenAnimateBallIfStarterOut:
 	lb de, 0, 1 ; animate titleball
 	jr _TitleScroll
 
-GetTitleBallY:
+GetTitleBallY: ; marcelnote - small optim
 ; Get position e from TitleBallYTable
-	push de
-	push hl
-	xor a
-	ld d, a
-	ld hl, TitleBallYTable
-	add hl, de
+	ld a, e
+	add LOW(TitleBallYTable)
+	ld l, a
+	adc HIGH(TitleBallYTable)
+	sub l
+	ld h, a
 	ld a, [hl]
-	pop hl
-	pop de
 	and a
 	ret z
 	ld [wShadowOAMSprite10YCoord], a
