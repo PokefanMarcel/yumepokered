@@ -287,6 +287,11 @@ OptionsMenu_GoHome: ; marcelnote - option to Go Home
 	ldh a, [hJoy5]
 	and PAD_A ; clears carry
 	ret z
+	CheckEvent EVENT_GOT_POKEDEX
+	jr z, .notUsable
+	ld a, [wCurMap]
+	cp TRADE_CENTER ; Cable Club rooms are the last two map IDs
+	jr nc, .notUsable
 	ld hl, GoHomeConfirmText
 	call PrintText
 	call YesNoChoice
@@ -296,6 +301,8 @@ OptionsMenu_GoHome: ; marcelnote - option to Go Home
 	inc a ; a = 1 so nz
 	scf ; set carry flag but not zero flag to warp home
 	ret
+.notUsable
+	callfar ItemUseNotTime
 .popAndJump
 	pop hl ; pop the 'call GetOptionPointer' return address
 	jp DisplayOptionMenu

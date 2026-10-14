@@ -495,9 +495,14 @@ StartMenu_Option::
 	ld [wLastBlackoutMap], a
 	ld hl, wStatusFlags6
 	set BIT_FLY_WARP, [hl]
+	res BIT_DUNGEON_WARP, [hl]
 	set BIT_ESCAPE_WARP, [hl]
 	ld hl, wStatusFlags4
 	res BIT_NO_BATTLES, [hl]
+	ResetEvent EVENT_IN_SAFARI_ZONE
+	xor a
+	ld [wNumSafariBalls], a
+	ld [wSafariZoneGateCurScript], a ; SCRIPT_SAFARIZONEGATE_DEFAULT
 	call GBPalWhiteOutWithDelay3
 	call RestoreScreenTilesAndReloadTilePatterns
 	jp CloseTextDisplay
