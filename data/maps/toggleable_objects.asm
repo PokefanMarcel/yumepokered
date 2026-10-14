@@ -151,8 +151,7 @@ ToggleableObjectMapPointers:
 	dw NoToggleData                        ; SAFFRON_POKECENTER_MART ; marcelnote - merged Saffron Pokecenter and Mart
 	dw NoToggleData                        ; COPYCATS_HOUSE ; marcelnote - merged Copycat's house floors
 	dw FightingDojoToggleData              ; FIGHTING_DOJO
-	dw NoToggleData                        ; SAFFRON_PIDGEY_HOUSE
-	dw NoToggleData                        ; MR_PSYCHICS_HOUSE
+	dw NoToggleData                        ; SAFFRON_HOUSES ; marcelnote - merged Pidgey house and Mr Psychic's house
 	dw SaffronGymToggleData                ; SAFFRON_GYM ; marcelnote - postgame Bruno event, Sabrina rematch
 	dw NoToggleData                        ; POKEMON_ACADEMY_1F2F
 	dw NoToggleData                        ; POKEMON_ACADEMY_3F4F

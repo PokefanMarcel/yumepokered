@@ -14,7 +14,7 @@ ENDM
 ; - MapHeaderBanks (see data/maps/map_header_banks.asm)
 ; - MapHeaderPointers (see data/maps/map_header_pointers.asm)
 ; - MapSongBanks (see data/maps/songs.asm)
-; - MapHSPointers (see data/maps/toggleable_objects.asm)
+; - ToggleableObjectMapPointers (see data/maps/toggleable_objects.asm)
 ; - WildDataPointers (see data/wild/grass_water.asm)
 ; - TownMapEntries (see data/maps/town_map_entries.asm)
 ; - MapSpriteSets (see data/maps/sprite_sets.asm)
@@ -171,8 +171,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const SAFFRON_POKECENTER_MART,       12,  4 ; marcelnote - merged Saffron Pokecenter and Mart
 	map_const COPYCATS_HOUSE,                11,  4 ; marcelnote - merged Copycat's house floors
 	map_const FIGHTING_DOJO,                  5,  6
-	map_const SAFFRON_PIDGEY_HOUSE,           4,  4
-	map_const MR_PSYCHICS_HOUSE,              4,  4
+	map_const SAFFRON_HOUSES,                11,  4 ; marcelnote - merged Pidgey house and Mr Psychic's house
 	map_const SAFFRON_GYM,                   10,  9
 	map_const POKEMON_ACADEMY_1F2F,          19,  6 ; marcelnote - new map
 	map_const POKEMON_ACADEMY_3F4F,          17,  6 ; marcelnote - new map

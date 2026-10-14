@@ -149,8 +149,7 @@ MapHeaderPointers::
 	dw SaffronPokecenterMart_h ; marcelnote - merged Saffron Pokecenter and Mart
 	dw CopycatsHouse_h         ; marcelnote - merged Copycat's house floors
 	dw FightingDojo_h
-	dw SaffronPidgeyHouse_h
-	dw MrPsychicsHouse_h
+	dw SaffronHouses_h         ; marcelnote - merged Pidgey house and Mr Psychic's house
 	dw SaffronGym_h
 	dw PokemonAcademy1F2F_h ; $CD ; marcelnote - new location
 	dw PokemonAcademy3F4F_h ; $CE ; marcelnote - new location

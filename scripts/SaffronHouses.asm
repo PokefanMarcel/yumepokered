@@ -1,9 +1,36 @@
-MrPsychicsHouse_Script:
+SaffronHouses_Script:
 	jp EnableAutoTextBoxDrawing
 
-MrPsychicsHouse_TextPointers:
+SaffronHouses_TextPointers:
 	def_text_pointers
+	; Pidgey house
+	dw_const SaffronPidgeyHouseBrunetteGirlText, TEXT_SAFFRONPIDGEYHOUSE_BRUNETTE_GIRL
+	dw_const SaffronPidgeyHousePidgeyText,       TEXT_SAFFRONPIDGEYHOUSE_PIDGEY
+	dw_const SaffronPidgeyHouseYoungsterText,    TEXT_SAFFRONPIDGEYHOUSE_YOUNGSTER
+	dw_const SaffronPidgeyHousePaperText,        TEXT_SAFFRONPIDGEYHOUSE_PAPER
+	; Mr Psychic's house
 	dw_const MrPsychicsHouseMrPsychicText, TEXT_MRPSYCHICSHOUSE_MR_PSYCHIC
+
+
+SaffronPidgeyHouseBrunetteGirlText:
+	text_far _SaffronPidgeyHouseBrunetteGirlText
+	text_end
+
+SaffronPidgeyHousePidgeyText:
+	text_far _SaffronPidgeyHousePidgeyText
+	text_asm
+	ld a, PIDGEY
+	call PlayCry
+	rst TextScriptEnd
+
+SaffronPidgeyHouseYoungsterText:
+	text_far _SaffronPidgeyHouseYoungsterText
+	text_end
+
+SaffronPidgeyHousePaperText:
+	text_far _SaffronPidgeyHousePaperText
+	text_end
+
 
 MrPsychicsHouseMrPsychicText: ; marcelnote - optimized
 	text_asm

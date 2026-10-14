@@ -151,8 +151,7 @@ MapSongBanks::
 	db MUSIC_POKECENTER, 0        ; SAFFRON_POKECENTER_MART      ; marcelnote - merged Saffron Pokecenter and Mart
 	db MUSIC_CITIES1, 0           ; COPYCATS_HOUSE               ; marcelnote - merged Copycat's house floors
 	db MUSIC_CITIES1, 0           ; FIGHTING_DOJO
-	db MUSIC_CITIES1, 0           ; SAFFRON_PIDGEY_HOUSE
-	db MUSIC_CITIES1, 0           ; MR_PSYCHICS_HOUSE
+	db MUSIC_CITIES1, 0           ; SAFFRON_HOUSES               ; marcelnote - merged Pidgey house and Mr Psychic's house
 	db MUSIC_GYM, 0               ; SAFFRON_GYM
 	db MUSIC_CITIES1, 0           ; POKEMON_ACADEMY_1F2F ; marcelnote - new location
 	db MUSIC_CITIES1, 0           ; POKEMON_ACADEMY_3F4F ; marcelnote - new location

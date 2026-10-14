@@ -148,8 +148,7 @@ WildDataPointers:
 	dw NothingWildMons                 ; SAFFRON_POKECENTER_MART ; marcelnote - merged Saffron Pokecenter and Mart
 	dw NothingWildMons                 ; COPYCATS_HOUSE ; marcelnote - merged Copycat's house floors
 	dw NothingWildMons                 ; FIGHTING_DOJO
-	dw NothingWildMons                 ; SAFFRON_PIDGEY_HOUSE
-	dw NothingWildMons                 ; MR_PSYCHICS_HOUSE
+	dw NothingWildMons                 ; SAFFRON_HOUSES ; marcelnote - merged Pidgey house and Mr Psychic's house
 	dw NothingWildMons                 ; SAFFRON_GYM
 	dw NothingWildMons                 ; POKEMON_ACADEMY_1F2F
 	dw NothingWildMons                 ; POKEMON_ACADEMY_3F4F

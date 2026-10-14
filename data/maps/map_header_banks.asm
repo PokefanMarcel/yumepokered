@@ -149,8 +149,7 @@ MapHeaderBanks::
 	db BANK(SaffronPokecenterMart_h) ; marcelnote - merged Saffron Pokecenter and Mart
 	db BANK(CopycatsHouse_h)         ; marcelnote - merged Copycat's house floors
 	db BANK(FightingDojo_h)
-	db BANK(SaffronPidgeyHouse_h)
-	db BANK(MrPsychicsHouse_h)
+	db BANK(SaffronHouses_h)         ; marcelnote - merged Pidgey house and Mr Psychic's house
 	db BANK(SaffronGym_h)
 	db BANK(PokemonAcademy1F2F_h) ; $CD ; marcelnote - new location
 	db BANK(PokemonAcademy3F4F_h) ; $CE ; marcelnote - new location

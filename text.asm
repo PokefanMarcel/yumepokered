@@ -535,28 +535,25 @@ IF DEF(_FRA)
 	INCLUDE "translation/fra/text/CopycatsHouse.fra.asm"          ; marcelnote - merged Copycat's house floors
 	INCLUDE "translation/fra/text/FightingDojo.fra.asm"
 	INCLUDE "translation/fra/text/SaffronGym.fra.asm"
-	INCLUDE "translation/fra/text/SaffronPidgeyHouse.fra.asm"
+	INCLUDE "translation/fra/text/SaffronHouses.fra.asm"
 	INCLUDE "translation/fra/text/SilphCo1F.fra.asm"
 	INCLUDE "translation/fra/text/SaffronPokecenterMart.fra.asm"  ; marcelnote - merged Saffron Pokecenter and Mart
-	INCLUDE "translation/fra/text/MrPsychicsHouse.fra.asm"
 ELIF DEF(_ESP)
 	INCLUDE "translation/esp/text/IndigoPlateauLobby.esp.asm"
 	INCLUDE "translation/esp/text/CopycatsHouse.esp.asm"          ; marcelnote - merged Copycat's house floors
 	INCLUDE "translation/esp/text/FightingDojo.esp.asm"
 	INCLUDE "translation/esp/text/SaffronGym.esp.asm"
-	INCLUDE "translation/esp/text/SaffronPidgeyHouse.esp.asm"
+	INCLUDE "translation/esp/text/SaffronHouses.esp.asm"
 	INCLUDE "translation/esp/text/SilphCo1F.esp.asm"
 	INCLUDE "translation/esp/text/SaffronPokecenterMart.esp.asm"  ; marcelnote - merged Saffron Pokecenter and Mart
-	INCLUDE "translation/esp/text/MrPsychicsHouse.esp.asm"
 ELSE
 	INCLUDE "text/IndigoPlateauLobby.asm"
 	INCLUDE "text/CopycatsHouse.asm"          ; marcelnote - merged Copycat's house floors
 	INCLUDE "text/FightingDojo.asm"
 	INCLUDE "text/SaffronGym.asm"
-	INCLUDE "text/SaffronPidgeyHouse.asm"
+	INCLUDE "text/SaffronHouses.asm"
 	INCLUDE "text/SilphCo1F.asm"
 	INCLUDE "text/SaffronPokecenterMart.asm"  ; marcelnote - merged Saffron Pokecenter and Mart
-	INCLUDE "text/MrPsychicsHouse.asm"
 ENDC
 
 
