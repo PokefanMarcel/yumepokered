@@ -14,8 +14,8 @@ SafariZoneWest_Object:
 	warp_event 27,  0, WARP_UP,    SAFARI_ZONE_NORTH, 4
 	warp_event 29, 22, WARP_RIGHT, SAFARI_ZONE_CENTER, 3
 	warp_event 29, 23, WARP_RIGHT, SAFARI_ZONE_CENTER, 4
-	warp_event  3,  3, ANY_DIR,    SAFARI_ZONE_SECRET_HOUSE, 1
-	warp_event 11, 11, ANY_DIR,    SAFARI_ZONE_WEST_REST_HOUSE, 1
+	warp_event  3,  3, ANY_DIR,    SAFARI_ZONE_HOUSES, 9 ; Secret house    ; marcelnote - merged Safari Zone houses
+	warp_event 11, 11, ANY_DIR,    SAFARI_ZONE_HOUSES, 3 ; West rest house ; marcelnote - merged Safari Zone houses
 
 	def_bg_events
 	bg_event 12, 12, TEXT_SAFARIZONEWEST_REST_HOUSE_SIGN

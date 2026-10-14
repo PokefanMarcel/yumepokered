@@ -177,11 +177,7 @@ MapHeaderBanks::
 	db BANK(SafariZoneNorth_h)
 	db BANK(SafariZoneWest_h)
 	db BANK(SafariZoneCenter_h)
-	db BANK(SafariZoneCenterRestHouse_h)
-	db BANK(SafariZoneSecretHouse_h)
-	db BANK(SafariZoneWestRestHouse_h)
-	db BANK(SafariZoneEastRestHouse_h)
-	db BANK(SafariZoneNorthRestHouse_h)
+	db BANK(SafariZoneHouses_h)         ; marcelnote - merged Safari Zone houses
 	db BANK(SummerBeachHouse_h)         ; marcelnote - new location from pokeyellow
 	db BANK(SeafoamIslands1F_h)
 	db BANK(SeafoamIslandsB1F_h)

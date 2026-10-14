@@ -177,11 +177,7 @@ MapHeaderPointers::
 	dw SafariZoneNorth_h
 	dw SafariZoneWest_h
 	dw SafariZoneCenter_h
-	dw SafariZoneCenterRestHouse_h
-	dw SafariZoneSecretHouse_h
-	dw SafariZoneWestRestHouse_h
-	dw SafariZoneEastRestHouse_h
-	dw SafariZoneNorthRestHouse_h
+	dw SafariZoneHouses_h        ; marcelnote - merged Safari Zone houses
 	dw SummerBeachHouse_h        ; marcelnote - new location from pokeyellow
 	dw SeafoamIslands1F_h
 	dw SeafoamIslandsB1F_h

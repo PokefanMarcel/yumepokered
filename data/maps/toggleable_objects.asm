@@ -179,11 +179,7 @@ ToggleableObjectMapPointers:
 	dw SafariZoneNorthToggleData           ; SAFARI_ZONE_NORTH
 	dw SafariZoneWestToggleData            ; SAFARI_ZONE_WEST
 	dw SafariZoneCenterToggleData          ; SAFARI_ZONE_CENTER
-	dw NoToggleData                        ; SAFARI_ZONE_CENTER_REST_HOUSE
-	dw NoToggleData                        ; SAFARI_ZONE_SECRET_HOUSE
-	dw NoToggleData                        ; SAFARI_ZONE_WEST_REST_HOUSE
-	dw NoToggleData                        ; SAFARI_ZONE_EAST_REST_HOUSE
-	dw NoToggleData                        ; SAFARI_ZONE_NORTH_REST_HOUSE
+	dw NoToggleData                        ; SAFARI_ZONE_HOUSES   ; marcelnote - merged Safari Zone houses
 	dw NoToggleData                        ; SUMMER_BEACH_HOUSE   ; marcelnote - new location from pokeyellow
 	dw SeafoamIslands1FToggleData          ; SEAFOAM_ISLANDS_1F
 	dw SeafoamIslandsB1FToggleData         ; SEAFOAM_ISLANDS_B1F

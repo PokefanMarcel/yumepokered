@@ -684,11 +684,7 @@ IF DEF(_FRA)
 	INCLUDE "translation/fra/text/SafariZoneNorth.fra.asm"
 	INCLUDE "translation/fra/text/SafariZoneWest.fra.asm"
 	INCLUDE "translation/fra/text/SafariZoneCenter.fra.asm"
-	INCLUDE "translation/fra/text/SafariZoneCenterRestHouse.fra.asm"
-	INCLUDE "translation/fra/text/SafariZoneSecretHouse.fra.asm"
-	INCLUDE "translation/fra/text/SafariZoneWestRestHouse.fra.asm"
-	INCLUDE "translation/fra/text/SafariZoneEastRestHouse.fra.asm"
-	INCLUDE "translation/fra/text/SafariZoneNorthRestHouse.fra.asm"
+	INCLUDE "translation/fra/text/SafariZoneHouses.fra.asm"
 ELIF DEF(_ESP)
 	INCLUDE "translation/esp/text/FuchsiaMeetingRoom.esp.asm"
 	INCLUDE "translation/esp/text/FuchsiaSuperRodHouse.esp.asm"   ; marcelnote - from Good to Super Rod
@@ -696,11 +692,7 @@ ELIF DEF(_ESP)
 	INCLUDE "translation/esp/text/SafariZoneNorth.esp.asm"
 	INCLUDE "translation/esp/text/SafariZoneWest.esp.asm"
 	INCLUDE "translation/esp/text/SafariZoneCenter.esp.asm"
-	INCLUDE "translation/esp/text/SafariZoneCenterRestHouse.esp.asm"
-	INCLUDE "translation/esp/text/SafariZoneSecretHouse.esp.asm"
-	INCLUDE "translation/esp/text/SafariZoneWestRestHouse.esp.asm"
-	INCLUDE "translation/esp/text/SafariZoneEastRestHouse.esp.asm"
-	INCLUDE "translation/esp/text/SafariZoneNorthRestHouse.esp.asm"
+	INCLUDE "translation/esp/text/SafariZoneHouses.esp.asm"
 ELSE
 	INCLUDE "text/FuchsiaMeetingRoom.asm"
 	INCLUDE "text/FuchsiaSuperRodHouse.asm"   ; marcelnote - from Good to Super Rod
@@ -708,11 +700,7 @@ ELSE
 	INCLUDE "text/SafariZoneNorth.asm"
 	INCLUDE "text/SafariZoneWest.asm"
 	INCLUDE "text/SafariZoneCenter.asm"
-	INCLUDE "text/SafariZoneCenterRestHouse.asm"
-	INCLUDE "text/SafariZoneSecretHouse.asm"
-	INCLUDE "text/SafariZoneWestRestHouse.asm"
-	INCLUDE "text/SafariZoneEastRestHouse.asm"
-	INCLUDE "text/SafariZoneNorthRestHouse.asm"
+	INCLUDE "text/SafariZoneHouses.asm"
 ENDC
 
 

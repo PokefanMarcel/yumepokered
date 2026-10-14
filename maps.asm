@@ -271,26 +271,10 @@ INCLUDE "scripts/SafariZoneCenter.asm"
 INCLUDE "data/maps/objects/SafariZoneCenter.asm"
 SafariZoneCenter_Blocks: INCBIN "maps/SafariZoneCenter.blk"
 
-INCLUDE "data/maps/headers/SafariZoneCenterRestHouse.asm"
-INCLUDE "scripts/SafariZoneCenterRestHouse.asm"
-INCLUDE "data/maps/objects/SafariZoneCenterRestHouse.asm"
-
-INCLUDE "data/maps/headers/SafariZoneWestRestHouse.asm"
-INCLUDE "scripts/SafariZoneWestRestHouse.asm"
-INCLUDE "data/maps/objects/SafariZoneWestRestHouse.asm"
-
-INCLUDE "data/maps/headers/SafariZoneEastRestHouse.asm"
-INCLUDE "scripts/SafariZoneEastRestHouse.asm"
-INCLUDE "data/maps/objects/SafariZoneEastRestHouse.asm"
-
-INCLUDE "data/maps/headers/SafariZoneNorthRestHouse.asm"
-INCLUDE "scripts/SafariZoneNorthRestHouse.asm"
-INCLUDE "data/maps/objects/SafariZoneNorthRestHouse.asm"
-
-SafariZoneCenterRestHouse_Blocks:
-SafariZoneWestRestHouse_Blocks:
-SafariZoneEastRestHouse_Blocks:
-SafariZoneNorthRestHouse_Blocks: INCBIN "maps/SafariZoneCenterRestHouse.blk"
+INCLUDE "data/maps/headers/SafariZoneHouses.asm" ; marcelnote - merged Safari Zone houses
+INCLUDE "scripts/SafariZoneHouses.asm"
+INCLUDE "data/maps/objects/SafariZoneHouses.asm"
+SafariZoneHouses_Blocks: INCBIN "maps/SafariZoneHouses.blk"
 
 INCLUDE "data/maps/headers/CeruleanCave2F.asm"
 INCLUDE "scripts/CeruleanCave2F.asm"
@@ -506,11 +490,6 @@ INCLUDE "data/maps/headers/SafariZoneWest.asm"
 INCLUDE "scripts/SafariZoneWest.asm"
 INCLUDE "data/maps/objects/SafariZoneWest.asm"
 SafariZoneWest_Blocks: INCBIN "maps/SafariZoneWest.blk"
-
-INCLUDE "data/maps/headers/SafariZoneSecretHouse.asm"
-INCLUDE "scripts/SafariZoneSecretHouse.asm"
-INCLUDE "data/maps/objects/SafariZoneSecretHouse.asm"
-SafariZoneSecretHouse_Blocks: INCBIN "maps/SafariZoneSecretHouse.blk"
 
 
 SECTION "Maps 9", ROMX

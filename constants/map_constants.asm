@@ -199,11 +199,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const SAFARI_ZONE_NORTH,             20, 18
 	map_const SAFARI_ZONE_WEST,              15, 13
 	map_const SAFARI_ZONE_CENTER,            15, 13
-	map_const SAFARI_ZONE_CENTER_REST_HOUSE,  4,  4
-	map_const SAFARI_ZONE_SECRET_HOUSE,       4,  4
-	map_const SAFARI_ZONE_WEST_REST_HOUSE,    4,  4
-	map_const SAFARI_ZONE_EAST_REST_HOUSE,    4,  4
-	map_const SAFARI_ZONE_NORTH_REST_HOUSE,   4,  4
+	map_const SAFARI_ZONE_HOUSES,            32,  4 ; marcelnote - merged Safari Zone houses
 	map_const SUMMER_BEACH_HOUSE,             7,  4 ; marcelnote - new location from pokeyellow
 	map_const SEAFOAM_ISLANDS_1F,            15,  9
 	map_const SEAFOAM_ISLANDS_B1F,           15,  9

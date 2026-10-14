@@ -176,11 +176,7 @@ WildDataPointers:
 	dw SafariZoneNorthWildMons         ; SAFARI_ZONE_NORTH
 	dw SafariZoneWestWildMons          ; SAFARI_ZONE_WEST
 	dw SafariZoneCenterWildMons        ; SAFARI_ZONE_CENTER
-	dw NothingWildMons                 ; SAFARI_ZONE_CENTER_REST_HOUSE
-	dw NothingWildMons                 ; SAFARI_ZONE_SECRET_HOUSE
-	dw NothingWildMons                 ; SAFARI_ZONE_WEST_REST_HOUSE
-	dw NothingWildMons                 ; SAFARI_ZONE_EAST_REST_HOUSE
-	dw NothingWildMons                 ; SAFARI_ZONE_NORTH_REST_HOUSE
+	dw NothingWildMons                 ; SAFARI_ZONE_HOUSES ; marcelnote - merged Safari Zone houses
 	dw NothingWildMons                 ; SUMMER_BEACH_HOUSE ; marcelnote - new location from pokeyellow
 	dw SeafoamIslands1FWildMons        ; SEAFOAM_ISLANDS_1F
 	dw SeafoamIslandsB1FWildMons       ; SEAFOAM_ISLANDS_B1F
