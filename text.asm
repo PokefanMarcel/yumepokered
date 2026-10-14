@@ -461,6 +461,7 @@ SECTION "Text 8", ROMX
 
 IF DEF(_FRA)
 	INCLUDE "translation/fra/text/VermilionPidgeyHouse.fra.asm"
+	INCLUDE "translation/fra/text/VermilionTradeHouse.fra.asm"
 	INCLUDE "translation/fra/text/VermilionDock.fra.asm"
 	INCLUDE "translation/fra/text/VermilionGoodRodHouse.fra.asm" ; marcelnote - from Old to Good Rod
 	INCLUDE "translation/fra/text/CeladonMart1F2F3F.fra.asm"     ; marcelnote - merged 1F 2F 3F
@@ -483,6 +484,7 @@ IF DEF(_FRA)
 	INCLUDE "translation/fra/text/FuchsiaGym.fra.asm"
 ELIF DEF(_ESP)
 	INCLUDE "translation/esp/text/VermilionPidgeyHouse.esp.asm"
+	INCLUDE "translation/esp/text/VermilionTradeHouse.esp.asm"
 	INCLUDE "translation/esp/text/VermilionDock.esp.asm"
 	INCLUDE "translation/esp/text/VermilionGoodRodHouse.esp.asm" ; marcelnote - from Old to Good Rod
 	INCLUDE "translation/esp/text/CeladonMart1F2F3F.esp.asm"     ; marcelnote - merged 1F 2F 3F
@@ -505,6 +507,7 @@ ELIF DEF(_ESP)
 	INCLUDE "translation/esp/text/FuchsiaGym.esp.asm"
 ELSE
 	INCLUDE "text/VermilionPidgeyHouse.asm"
+	INCLUDE "text/VermilionTradeHouse.asm"
 	INCLUDE "text/VermilionDock.asm"
 	INCLUDE "text/VermilionGoodRodHouse.asm" ; marcelnote - from Old to Good Rod
 	INCLUDE "text/CeladonMart1F2F3F.asm"     ; marcelnote - merged 1F 2F 3F

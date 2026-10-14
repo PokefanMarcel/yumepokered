@@ -170,16 +170,3 @@ _VermilionCityCooltrainerFText:: ; marcelnote - new
 	cont "Le ferry s'y rend"
 	cont "régulièrement."
 	done
-
-_VermilionCityCooltrainerMText:: ; marcelnote - to explain temporary field moves
-	text "Si tu ne te sers"
-	line "pas d'une CS en"
-	cont "combat, apprends-"
-	cont "là plutôt comme"
-	cont "COMPETENCE!"
-
-	para "Ca marche aussi"
-	line "avec des attaques"
-	cont "comme TUNNEL"
-	cont "et TELEPORT."
-	done
