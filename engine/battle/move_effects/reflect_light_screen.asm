@@ -29,9 +29,12 @@ ReflectLightScreenEffect_:
 .moveFailed
 	ld c, 50
 	call DelayFrames
-	ld hl, PrintButItFailedText_
 	; fallthrough
 
+EffectPrintButItFailedText:
+	ld hl, PrintButItFailedText_
+	ASSERT BANK(PrintButItFailedText_) == BANK(BattleCore)
+	; fallthrough
 EffectCallBattleCore:
 	ld b, BANK(BattleCore)
 	jp Bankswitch

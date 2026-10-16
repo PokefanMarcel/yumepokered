@@ -106,8 +106,7 @@ HealEffect_:
 .failed
 	ld c, 50
 	call DelayFrames
-	ld hl, PrintButItFailedText_
-	jp EffectCallBattleCore
+	jp EffectPrintButItFailedText
 
 StartedSleepingEffect:
 	text_far _StartedSleepingEffect
