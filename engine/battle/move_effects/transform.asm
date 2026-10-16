@@ -1,4 +1,4 @@
-TransformEffect_: ; marcelnote - optimized and fixed bugs
+TransformEffect: ; marcelnote - optimized and fixed bugs
 	ldh a, [hWhoseTurn]
 	and a ; player turn?
 	ld hl, wPlayerBattleStatus2
@@ -18,13 +18,12 @@ TransformEffect_: ; marcelnote - optimized and fixed bugs
 	ld a, [wOptions]
 	ASSERT BIT_BATTLE_ANIM_OFF == 7
 	add a ; battle animations off?
-	ld hl, PlayCurrentMoveAnimation
-	ld b, BANK(PlayCurrentMoveAnimation)
-	jr nc, .gotAnimToPlay
-	ld hl, AnimationTransformMon
-	ld b, BANK(AnimationTransformMon)
-.gotAnimToPlay
-	rst _Bankswitch ; marcelnote - free space in Home bank, changed from call Bankswitch
+	jr c, .animationDisabled
+	call PlayCurrentMoveAnimation
+	jr .animationDone
+.animationDisabled
+	callfar AnimationTransformMon
+.animationDone
 	pop af  ; restore substitute flag
 	ld hl, ReshowSubstituteAnim
 	ld b, BANK(ReshowSubstituteAnim)

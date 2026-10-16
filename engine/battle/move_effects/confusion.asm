@@ -44,7 +44,7 @@ ConfusionEffectFailed:
 	ld c, 50
 	call DelayFrames
 ;	jp ConditionalPrintButItFailed ; why conditional?
-	jp PrintButItFailedText_
+	jp PrintButItFailedText
 
 BecameConfusedText:
 	text_far _BecameConfusedText

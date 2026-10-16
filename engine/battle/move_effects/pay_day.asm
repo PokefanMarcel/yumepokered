@@ -1,4 +1,4 @@
-PayDayEffect_:
+PayDayEffect:
 	xor a
 	ld hl, wPayDayMoney
 	ld [hli], a ; [wPayDayMoney] = 0

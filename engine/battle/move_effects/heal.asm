@@ -1,4 +1,4 @@
-HealEffect_:
+HealEffect:
 	ldh a, [hWhoseTurn]
 	and a
 	ld de, wBattleMonHP
@@ -87,8 +87,7 @@ HealEffect_:
 	ld [de], a
 	ld [wHPBarNewHP], a
 .playAnim
-	ld hl, PlayCurrentMoveAnimation
-	call CallBattleCore
+	call PlayCurrentMoveAnimation
 	ldh a, [hWhoseTurn]
 	and a
 	hlcoord 10, 9
@@ -99,8 +98,7 @@ HealEffect_:
 .updateHPBar
 	ld [wHPBarType], a
 	predef UpdateHPBar
-	ld hl, DrawHUDsAndHPBars
-	call CallBattleCore
+	call DrawHUDsAndHPBars
 	ld hl, RegainedHealthText
 	jp PrintText
 .failed

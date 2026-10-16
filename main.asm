@@ -161,7 +161,6 @@ SECTION "Battle Engine 5", ROMX
 
 INCLUDE "engine/battle/display_effectiveness.asm"
 INCLUDE "engine/items/tmhm.asm"
-INCLUDE "engine/battle/move_effects/pay_day.asm"
 
 
 SECTION "Battle Engine 6", ROMX
@@ -241,11 +240,6 @@ INCLUDE "engine/predefs.asm"
 SECTION "Battle Engine 8", ROMX
 
 INCLUDE "engine/battle/init_battle_variables.asm"
-INCLUDE "engine/battle/move_effects/heal.asm"                 ; marcelnote - moved from Battle Engine 7
-INCLUDE "engine/battle/move_effects/transform.asm"            ; marcelnote - moved from Battle Engine 7
-INCLUDE "engine/battle/move_effects/reflect_light_screen.asm" ; marcelnote - moved from Battle Engine 7
-INCLUDE "engine/battle/move_effects/conversion.asm"           ; marcelnote - moved from Battle Engine 1
-INCLUDE "engine/battle/move_effects/haze.asm"                 ; marcelnote - moved from Battle Engine 1
 INCLUDE "engine/battle/link_battle_versus_text.asm"  ; marcelnote - moved from Slot Machines
 
 

@@ -1,4 +1,4 @@
-HazeEffect_:
+HazeEffect:
 	ld a, $7
 ; store 7 on every stat mod
 	ld hl, wPlayerMonAttackMod
@@ -41,8 +41,7 @@ HazeEffect_:
 	call CureVolatileStatuses
 	ld hl, wEnemyBattleStatus1
 	call CureVolatileStatuses
-	ld hl, PlayCurrentMoveAnimation
-	call CallBattleCore
+	call PlayCurrentMoveAnimation
 	ld hl, StatusChangesEliminatedText
 	jp PrintText
 

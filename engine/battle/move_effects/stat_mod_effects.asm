@@ -156,7 +156,7 @@ StatModifierDownEffect: ; marcelnote - optimized
 .butItFailed
 	pop af     ; restore c flag (set = side effect)
 	ret c      ; don't print anything if only side effect
-	jp PrintButItFailedText_
+	jp PrintButItFailedText
 
 .nothingHappened
 	pop af     ; restore c flag (set = side effect)

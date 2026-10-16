@@ -15,7 +15,7 @@ MistEffect_:
 .butItFailed
 	ld c, 50
 	call DelayFrames
-	jpfar PrintButItFailedText_
+	jpfar PrintButItFailedText
 
 ShroudedInMistText:
 	text_far _ShroudedInMistText

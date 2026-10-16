@@ -1,4 +1,4 @@
-ConversionEffect_:
+ConversionEffect:
 	ldh a, [hWhoseTurn]
 	and a
 	ld a, [wEnemyBattleStatus1]
@@ -12,15 +12,14 @@ ConversionEffect_:
 	pop de  ; de = wEnemyMonType1
 .playerTurn
 	bit INVULNERABLE, a ; is mon immune to typical attacks (dig/fly)
-	jr nz, PrintButItFailedText
+	jp nz, PrintButItFailedText
 ; copy target's types to user
 	ld a, [hli]
 	ld [de], a
 	inc de
 	ld a, [hl]
 	ld [de], a
-	ld hl, PlayCurrentMoveAnimation
-	call CallBattleCore
+	call PlayCurrentMoveAnimation
 	ld hl, ConvertedTypeText
 	jp PrintText
 

@@ -28,7 +28,7 @@ SleepEffect:
 	pop hl
 	ld a, [wMoveMissed]
 	and a
-	jp nz, PrintButItFailedText_ ; marcelnote - changed from PrintDidntAffectText
+	jp nz, PrintButItFailedText ; marcelnote - changed from PrintDidntAffectText
 	; success
 	res NEEDS_TO_RECHARGE, [hl] ; target no longer needs to recharge
 .setSleepCounter

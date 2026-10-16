@@ -166,7 +166,7 @@ SwitchAndTeleportEffect: ; marcelnote - optimized
 	ld hl, DidntAffectText ; marcelnote - was IsUnaffectedText for fail in trainer battles
 	cp TELEPORT
 	jr nz, .printText
-	jp PrintButItFailedText_ ; was ConditionalPrintButItFailed, but accuracy check prevents effect to run anyway?
+	jp PrintButItFailedText ; was ConditionalPrintButItFailed, but accuracy check prevents effect to run anyway?
 
 RanFromBattleText:
 	text_far _RanFromBattleText
@@ -493,7 +493,7 @@ MimicEffect: ; marcelnote - optimized
 	jp PrintText
 
 .butItFailed
-	jp PrintButItFailedText_
+	jp PrintButItFailedText
 
 MimicLearnedMoveText:
 	text_far _MimicLearnedMoveText
@@ -588,7 +588,7 @@ DisableEffect: ; marcelnote - optimized
 .butItFailedPopHL
 	pop hl
 .butItFailed
-	jr PrintButItFailedText_
+	jr PrintButItFailedText
 
 MoveWasDisabledText:
 	text_far _MoveWasDisabledText
@@ -611,24 +611,6 @@ HexEffect:  ; marcelnote - new effect for HEX: gets to 90 base power if opponent
 	ret
 
 
-PayDayEffect:
-	jpfar PayDayEffect_
-
-ConversionEffect:
-	jpfar ConversionEffect_
-
-HazeEffect:
-	jpfar HazeEffect_
-
-HealEffect:
-	jpfar HealEffect_
-
-TransformEffect:
-	jpfar TransformEffect_
-
-ReflectLightScreenEffect:
-	jpfar ReflectLightScreenEffect_
-
 NothingHappenedText:
 	text_far _NothingHappenedText
 	text_end
@@ -647,7 +629,7 @@ ConditionalPrintButItFailed:
 	ret nz ; return if the side effect failed, yet the attack was successful
 	; fallthrough
 
-PrintButItFailedText_:
+PrintButItFailedText:
 	ld hl, ButItFailedText
 	jp PrintText
 
@@ -734,3 +716,12 @@ PlayBattleAnimationGotID:
 	pop de
 	pop hl
 	ret
+
+
+; marcelnote - keep these move effects in Battle Core to avoid bank switching
+INCLUDE "engine/battle/move_effects/pay_day.asm"
+INCLUDE "engine/battle/move_effects/conversion.asm"
+INCLUDE "engine/battle/move_effects/haze.asm"
+INCLUDE "engine/battle/move_effects/heal.asm"
+INCLUDE "engine/battle/move_effects/transform.asm"
+INCLUDE "engine/battle/move_effects/reflect_light_screen.asm"

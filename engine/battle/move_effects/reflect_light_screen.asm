@@ -1,4 +1,4 @@
-ReflectLightScreenEffect_:
+ReflectLightScreenEffect:
 	ld hl, wPlayerBattleStatus3
 	ld de, wPlayerMoveEffect
 	ldh a, [hWhoseTurn]
@@ -22,22 +22,13 @@ ReflectLightScreenEffect_:
 	ld hl, ReflectGainedArmorText
 .playAnim
 	push hl
-	ld hl, PlayCurrentMoveAnimation
-	call CallBattleCore
+	call PlayCurrentMoveAnimation
 	pop hl
 	jp PrintText
 .moveFailed
 	ld c, 50
 	call DelayFrames
-	; fallthrough
-
-PrintButItFailedText:
-	ld hl, PrintButItFailedText_
-	ASSERT BANK(PrintButItFailedText_) == BANK(BattleCore)
-	; fallthrough
-CallBattleCore:
-	ld b, BANK(BattleCore)
-	jp Bankswitch
+	jp PrintButItFailedText
 
 LightScreenProtectedText:
 	text_far _LightScreenProtectedText
