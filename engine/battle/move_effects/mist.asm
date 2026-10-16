@@ -1,4 +1,4 @@
-MistEffect_:
+MistEffect:
 	ldh a, [hWhoseTurn]
 	and a
 	ld hl, wPlayerBattleStatus2
@@ -8,14 +8,14 @@ MistEffect_:
 	bit PROTECTED_BY_MIST, [hl] ; is mon protected by mist?
 	jr nz, .butItFailed
 	set PROTECTED_BY_MIST, [hl] ; mon is now protected by mist
-	callfar PlayCurrentMoveAnimation
+	call PlayCurrentMoveAnimation
 	ld hl, ShroudedInMistText
 	jp PrintText
 
 .butItFailed
 	ld c, 50
 	call DelayFrames
-	jpfar PrintButItFailedText
+	jp PrintButItFailedText
 
 ShroudedInMistText:
 	text_far _ShroudedInMistText

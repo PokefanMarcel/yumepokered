@@ -1,4 +1,4 @@
-RecoilEffect_: ; marcelnote - optimized
+RecoilEffect: ; marcelnote - optimized
 	ldh a, [hWhoseTurn]
 	and a
 	ld a, [wPlayerMoveNum]

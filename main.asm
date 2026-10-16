@@ -29,7 +29,6 @@ INCLUDE "engine/menus/display_text_id_init.asm"
 INCLUDE "engine/menus/draw_start_menu.asm"
 INCLUDE "engine/link/cable_club_npc.asm"
 INCLUDE "engine/menus/text_box.asm"
-INCLUDE "engine/battle/move_effects/drain_hp.asm"
 INCLUDE "engine/menus/players_pc.asm"
 INCLUDE "engine/pokemon/remove_mon.asm"
 INCLUDE "engine/events/display_pokedex.asm"
@@ -81,7 +80,6 @@ INCLUDE "engine/menus/trainer_menu.asm" ; marcelnote - moved stuff from start_su
 INCLUDE "engine/items/tms.asm"
 INCLUDE "engine/battle/end_of_battle.asm"
 INCLUDE "engine/battle/wild_encounters.asm"
-INCLUDE "engine/battle/move_effects/recoil.asm"
 INCLUDE "engine/battle/get_trainer_name.asm"
 INCLUDE "engine/math/random.asm"
 
@@ -92,7 +90,6 @@ INCLUDE "engine/gfx/load_pokedex_tiles.asm"
 INCLUDE "engine/overworld/map_sprites.asm"
 INCLUDE "engine/overworld/emotion_bubbles.asm"
 INCLUDE "engine/events/evolve_trade.asm"
-INCLUDE "engine/battle/move_effects/substitute.asm"
 INCLUDE "engine/menus/pc.asm"
 
 
@@ -149,24 +146,12 @@ SECTION "Battle Engine 3", ROMX
 
 INCLUDE "engine/battle/print_type.asm"
 INCLUDE "engine/battle/save_trainer_name.asm"
-INCLUDE "engine/battle/move_effects/focus_energy.asm"
 
 
 SECTION "Battle Engine 4", ROMX
 
-INCLUDE "engine/battle/move_effects/leech_seed.asm"
-
-
-SECTION "Battle Engine 5", ROMX
-
 INCLUDE "engine/battle/display_effectiveness.asm"
 INCLUDE "engine/items/tmhm.asm"
-
-
-SECTION "Battle Engine 6", ROMX
-
-INCLUDE "engine/battle/move_effects/mist.asm"
-INCLUDE "engine/battle/move_effects/one_hit_ko.asm"
 
 
 SECTION "Slot Machines", ROMX

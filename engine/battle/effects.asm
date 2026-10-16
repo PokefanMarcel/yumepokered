@@ -24,10 +24,6 @@ _JumpMoveEffect:
 INCLUDE "data/moves/effects_pointers.asm"
 
 
-DrainHPEffect:
-	jpfar DrainHPEffect_
-
-
 ExplodeEffect:
 	ldh a, [hWhoseTurn]
 	and a
@@ -250,10 +246,6 @@ FlinchSideEffect:
 	jp ClearHyperBeam
 
 
-OneHitKOEffect:
-	jpfar OneHitKOEffect_
-
-
 ChargeEffect: ; marcelnote - adjusted for removing FLY_EFFECT
 	ld b, XSTATITEM_ANIM
 	ldh a, [hWhoseTurn]
@@ -377,19 +369,6 @@ TrappingEffect: ; marcelnote - added immunity check
 	ld [de], a
 	ret
 
-MistEffect:
-	jpfar MistEffect_
-
-FocusEnergyEffect:
-	jpfar FocusEnergyEffect_
-
-RecoilEffect:
-	jpfar RecoilEffect_
-
-
-SubstituteEffect:
-	jpfar SubstituteEffect_
-
 HyperBeamEffect:
 	ldh a, [hWhoseTurn]
 	and a
@@ -499,9 +478,6 @@ MimicLearnedMoveText:
 	text_far _MimicLearnedMoveText
 	text_end
 
-
-LeechSeedEffect:
-	jpfar LeechSeedEffect_
 
 SplashEffect:
 	call PlayCurrentMoveAnimation
@@ -723,3 +699,10 @@ INCLUDE "engine/battle/move_effects/haze.asm"
 INCLUDE "engine/battle/move_effects/heal.asm"
 INCLUDE "engine/battle/move_effects/transform.asm"
 INCLUDE "engine/battle/move_effects/reflect_light_screen.asm"
+INCLUDE "engine/battle/move_effects/drain_hp.asm"
+INCLUDE "engine/battle/move_effects/one_hit_ko.asm"
+INCLUDE "engine/battle/move_effects/mist.asm"
+INCLUDE "engine/battle/move_effects/focus_energy.asm"
+INCLUDE "engine/battle/move_effects/recoil.asm"
+INCLUDE "engine/battle/move_effects/substitute.asm"
+INCLUDE "engine/battle/move_effects/leech_seed.asm"

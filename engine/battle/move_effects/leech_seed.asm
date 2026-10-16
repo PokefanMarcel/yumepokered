@@ -1,5 +1,5 @@
-LeechSeedEffect_:
-	callfar MoveHitTest ; why is this here? main effect
+LeechSeedEffect:
+	call MoveHitTest ; why is this here? main effect
 	ld a, [wMoveMissed]
 	and a
 	jr nz, .evadedAttack
@@ -22,7 +22,7 @@ LeechSeedEffect_:
 	bit SEEDED, [hl]
 	jr nz, .didntAffect
 	set SEEDED, [hl]
-	callfar PlayCurrentMoveAnimation
+	call PlayCurrentMoveAnimation
 	ld hl, WasSeededText
 	jp PrintText
 
@@ -35,7 +35,7 @@ LeechSeedEffect_:
 .didntAffect ; marcelnote - new for immunity
 	ld c, 50
 	call DelayFrames
-	jpfar PrintDidntAffectText
+	jp PrintDidntAffectText
 
 
 WasSeededText:

@@ -1,4 +1,4 @@
-FocusEnergyEffect_:
+FocusEnergyEffect:
 	ldh a, [hWhoseTurn]
 	and a
 	ld hl, wPlayerBattleStatus2
@@ -8,13 +8,13 @@ FocusEnergyEffect_:
 	bit GETTING_PUMPED, [hl] ; is mon already using focus energy?
 	jr nz, .alreadyUsing
 	set GETTING_PUMPED, [hl] ; mon is now using focus energy
-	callfar PlayCurrentMoveAnimation
+	call PlayCurrentMoveAnimation
 	ld hl, GettingPumpedText
 	jp PrintText
 .alreadyUsing
 	ld c, 50
 	call DelayFrames
-	jpfar PrintButItFailedText
+	jp PrintButItFailedText
 
 GettingPumpedText:
 	text_pause

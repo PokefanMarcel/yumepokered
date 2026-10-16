@@ -1,4 +1,4 @@
-DrainHPEffect_: ; marcelnote - optimized
+DrainHPEffect: ; marcelnote - optimized
 	ld hl, wDamage ; wDamage takes two bytes: wDamage is high byte and wDamage + 1 is low byte
 	srl [hl]       ; divide high byte by 2
 	ld a, [hli]    ; store high byte and move hl to low byte
@@ -73,7 +73,7 @@ DrainHPEffect_: ; marcelnote - optimized
 	predef UpdateHPBar
 	predef DrawPlayerHUDAndHPBar
 	predef DrawEnemyHUDAndHPBar
-	callfar ReadPlayerMonCurHPAndStatus
+	call ReadPlayerMonCurHPAndStatus
 	pop af ; restore a = move effect and z flag for turn
 	cp DREAM_EATER_EFFECT
 	ld hl, SuckedHealthText

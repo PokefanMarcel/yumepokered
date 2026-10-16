@@ -1,4 +1,4 @@
-SubstituteEffect_:
+SubstituteEffect:
 	ld c, 50
 	call DelayFrames
 	ld hl, wBattleMonMaxHP
@@ -46,17 +46,15 @@ SubstituteEffect_:
 	set HAS_SUBSTITUTE_UP, [hl]
 	ld a, [wOptions]
 	bit BIT_BATTLE_ANIM_OFF, a
-	ld hl, PlayCurrentMoveAnimation
-	ld b, BANK(PlayCurrentMoveAnimation)
-	jr z, .animationEnabled
-	ld hl, AnimationSubstitute
-	ld b, BANK(AnimationSubstitute)
-.animationEnabled
-	rst _Bankswitch ; marcelnote - free space in Home bank, changed from call Bankswitch
-	; jump to routine depending on animation setting
+	jr nz, .animationDisabled
+	call PlayCurrentMoveAnimation
+	jr .animationDone
+.animationDisabled
+	callfar AnimationSubstitute
+.animationDone
 	ld hl, SubstituteText
 	call PrintText
-	jpfar DrawHUDsAndHPBars
+	jp DrawHUDsAndHPBars
 .alreadyHasSubstitute
 	ld hl, HasSubstituteText
 	jr .printText

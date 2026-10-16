@@ -1,4 +1,4 @@
-OneHitKOEffect_: ; marcelnote - optimized
+OneHitKOEffect: ; marcelnote - optimized
 	ldh a, [hWhoseTurn]
 	and a
 	ld hl, wBattleMonSpeed + 1
