@@ -649,16 +649,14 @@ IsUnaffectedText:
 	text_far _IsUnaffectedText
 	text_end
 
-CheckTargetSubstitute:
-	push hl
+CheckTargetSubstitute: ; marcelnote - small optim
 	ldh a, [hWhoseTurn]
 	and a
-	ld hl, wEnemyBattleStatus2
+	ld a, [wEnemyBattleStatus2]
 	jr z, .playerTurn
-	ld hl, wPlayerBattleStatus2
+	ld a, [wPlayerBattleStatus2]
 .playerTurn
-	bit HAS_SUBSTITUTE_UP, [hl]
-	pop hl
+	bit HAS_SUBSTITUTE_UP, a
 	ret
 
 
