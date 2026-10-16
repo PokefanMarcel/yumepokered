@@ -82,8 +82,6 @@ INCLUDE "engine/items/tms.asm"
 INCLUDE "engine/battle/end_of_battle.asm"
 INCLUDE "engine/battle/wild_encounters.asm"
 INCLUDE "engine/battle/move_effects/recoil.asm"
-INCLUDE "engine/battle/move_effects/conversion.asm"
-INCLUDE "engine/battle/move_effects/haze.asm"
 INCLUDE "engine/battle/get_trainer_name.asm"
 INCLUDE "engine/math/random.asm"
 
@@ -246,6 +244,8 @@ INCLUDE "engine/battle/init_battle_variables.asm"
 INCLUDE "engine/battle/move_effects/heal.asm"                 ; marcelnote - moved from Battle Engine 7
 INCLUDE "engine/battle/move_effects/transform.asm"            ; marcelnote - moved from Battle Engine 7
 INCLUDE "engine/battle/move_effects/reflect_light_screen.asm" ; marcelnote - moved from Battle Engine 7
+INCLUDE "engine/battle/move_effects/conversion.asm"           ; marcelnote - moved from Battle Engine 1
+INCLUDE "engine/battle/move_effects/haze.asm"                 ; marcelnote - moved from Battle Engine 1
 INCLUDE "engine/battle/link_battle_versus_text.asm"  ; marcelnote - moved from Slot Machines
 
 

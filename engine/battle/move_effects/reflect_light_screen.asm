@@ -23,7 +23,7 @@ ReflectLightScreenEffect_:
 .playAnim
 	push hl
 	ld hl, PlayCurrentMoveAnimation
-	call EffectCallBattleCore
+	call CallBattleCore
 	pop hl
 	jp PrintText
 .moveFailed
@@ -31,11 +31,11 @@ ReflectLightScreenEffect_:
 	call DelayFrames
 	; fallthrough
 
-EffectPrintButItFailedText:
+PrintButItFailedText:
 	ld hl, PrintButItFailedText_
 	ASSERT BANK(PrintButItFailedText_) == BANK(BattleCore)
 	; fallthrough
-EffectCallBattleCore:
+CallBattleCore:
 	ld b, BANK(BattleCore)
 	jp Bankswitch
 

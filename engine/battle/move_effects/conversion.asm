@@ -20,16 +20,10 @@ ConversionEffect_:
 	ld a, [hl]
 	ld [de], a
 	ld hl, PlayCurrentMoveAnimation
-	call CallBankF
+	call CallBattleCore
 	ld hl, ConvertedTypeText
 	jp PrintText
 
 ConvertedTypeText:
 	text_far _ConvertedTypeText
 	text_end
-
-PrintButItFailedText:
-	ld hl, PrintButItFailedText_
-CallBankF:
-	ld b, BANK(PrintButItFailedText_)
-	jp Bankswitch

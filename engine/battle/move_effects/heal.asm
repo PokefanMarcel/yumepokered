@@ -88,7 +88,7 @@ HealEffect_:
 	ld [wHPBarNewHP], a
 .playAnim
 	ld hl, PlayCurrentMoveAnimation
-	call EffectCallBattleCore
+	call CallBattleCore
 	ldh a, [hWhoseTurn]
 	and a
 	hlcoord 10, 9
@@ -100,13 +100,13 @@ HealEffect_:
 	ld [wHPBarType], a
 	predef UpdateHPBar
 	ld hl, DrawHUDsAndHPBars
-	call EffectCallBattleCore
+	call CallBattleCore
 	ld hl, RegainedHealthText
 	jp PrintText
 .failed
 	ld c, 50
 	call DelayFrames
-	jp EffectPrintButItFailedText
+	jp PrintButItFailedText
 
 StartedSleepingEffect:
 	text_far _StartedSleepingEffect

@@ -8,7 +8,7 @@ TransformEffect_: ; marcelnote - optimized and fixed bugs
 	ld a, [wPlayerBattleStatus1]
 .hitTest
 	bit INVULNERABLE, a
-	jp nz, EffectPrintButItFailedText
+	jp nz, PrintButItFailedText
 ; animation(s) played are different if user has Substitute up
 	bit HAS_SUBSTITUTE_UP, [hl]
 	push af ; save substitute flag

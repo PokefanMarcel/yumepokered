@@ -42,7 +42,7 @@ HazeEffect_:
 	ld hl, wEnemyBattleStatus1
 	call CureVolatileStatuses
 	ld hl, PlayCurrentMoveAnimation
-	call CallBankF
+	call CallBattleCore
 	ld hl, StatusChangesEliminatedText
 	jp PrintText
 
