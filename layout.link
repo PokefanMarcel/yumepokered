@@ -76,10 +76,8 @@ ROMX $A
 	"Battle Engine 4"
 ROMX $B
 ;	"Pics 3"
-	"Battle Engine 5"
 ROMX $C
 ;	"Pics 4"
-	"Battle Engine 6"
 ROMX $D
 ;	"Pics 5"
 	"Slot Machines"
