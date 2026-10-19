@@ -212,12 +212,11 @@ FlinchSideEffect:
 	ldh a, [hWhoseTurn]
 	and a
 	ld hl, wEnemyBattleStatus1
-	ld de, wPlayerMoveEffect
+	ld a, [wPlayerMoveEffect]
 	jr z, .gotPointers ; jump on player's turn
 	ld hl, wPlayerBattleStatus1
-	ld de, wEnemyMoveEffect
+	ld a, [wEnemyMoveEffect]
 .gotPointers
-	ld a, [de]
 	cp FLINCH_SIDE_EFFECT1
 	ld b, 10 percent + 1 ; chance for FLINCH_SIDE_EFFECT1
 	jr z, .gotEffectChance
