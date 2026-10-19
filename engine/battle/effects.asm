@@ -229,34 +229,31 @@ FlinchSideEffect:
 	jp ClearHyperBeam
 
 
-ChargeEffect: ; marcelnote - adjusted for removing FLY_EFFECT
-	ld b, XSTATITEM_ANIM
+ChargeEffect: ; marcelnote - optimized and adjusted for removing FLY_EFFECT
 	ldh a, [hWhoseTurn]
 	and a
 	ld hl, wPlayerBattleStatus1
-	ld de, wPlayerMoveNum
+	ld a, [wPlayerMoveNum]
 	jr z, .gotPointers
 	ld hl, wEnemyBattleStatus1
-	ld de, wEnemyMoveNum
+	ld a, [wEnemyMoveNum]
 .gotPointers
+	ld [wChargeMoveNum], a ; for ChargeMoveEffectText
 	set CHARGING_UP, [hl]
-	ld a, [de]
+	ld b, TELEPORT         ; Fly animation
 	cp FLY
-	jr nz, .notFly
-	set INVULNERABLE, [hl] ; mon is now invulnerable to typical attacks (fly/dig)
-	ld b, TELEPORT ; load Teleport's animation
-.notFly
+	jr z, .invulnerable
+	ld b, XSTATITEM_ANIM   ; animation for other charging moves
 	cp DIG
-	jr nz, .notDig
+	jr nz, .playAnimation
+	ld b, SLIDE_DOWN_ANIM  ; Dig animation
+.invulnerable
 	set INVULNERABLE, [hl] ; mon is now invulnerable to typical attacks (fly/dig)
-	ld b, SLIDE_DOWN_ANIM
-.notDig
+.playAnimation
 	xor a
 	ld [wAnimationType], a
 	ld a, b
 	call PlayBattleAnimation
-	ld a, [de]
-	ld [wChargeMoveNum], a
 	ld hl, ChargeMoveEffectText
 	jp PrintText
 
@@ -283,9 +280,9 @@ ChargeMoveEffectText:   ; marcelnote - replaced jr z, .gotText by ret z
 	ld hl, LoweredItsHeadText
 	ret
 
-MadeWhirlwindText:
-	text_far _MadeWhirlwindText
-	text_end
+;MadeWhirlwindText:
+;	text_far _MadeWhirlwindText
+;	text_end
 
 TookInSunlightText:
 	text_far _TookInSunlightText
@@ -387,7 +384,7 @@ RageEffect:
 MimicEffect: ; marcelnote - optimized
 	ld c, 50
 	call DelayFrames
-	call MoveHitTest ; why is this here? this is a main effect
+	call MoveHitTest ; ResidualEffects1 bypasses the normal accuracy check
 	ld a, [wMoveMissed]
 	and a
 	jr nz, .butItFailed
