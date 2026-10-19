@@ -1,9 +1,4 @@
 JumpMoveEffect:
-	call _JumpMoveEffect
-	ld b, $1
-	ret
-
-_JumpMoveEffect:
 	ldh a, [hWhoseTurn]
 	and a
 	ld a, [wPlayerMoveEffect]
@@ -11,7 +6,8 @@ _JumpMoveEffect:
 	ld a, [wEnemyMoveEffect]
 .next
 	dec a ; subtract 1, there is no special effect for 00
-	add a ; x2, 16bit pointers
+	ASSERT NUM_MOVE_EFFECTS <= $80
+	add a
 	ld hl, MoveEffectPointerTable
 	ld b, 0
 	ld c, a
@@ -19,7 +15,9 @@ _JumpMoveEffect:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	jp hl ; jump to special effect handler
+	call _hl_ ; call special effect handler
+	ld b, $1
+	ret
 
 INCLUDE "data/moves/effects_pointers.asm"
 
