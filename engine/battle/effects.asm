@@ -90,28 +90,23 @@ ThrashPetalDanceEffect: ; marcelnote - optimized
 
 SwitchAndTeleportEffect: ; marcelnote - optimized
 	ldh a, [hWhoseTurn]
-	and a
-	push af ; save z flag for turn
-	jr z, .playerTurn
-; Enemy turn
-	ld a, [wIsInBattle] ; wild battle = 1, trainer battle = 2
-	dec a
-	jr nz, .fail ; fail if not wild battle
-	ld a, [wBattleMonLevel]
-	ld b, a
-	ld a, [wCurEnemyLevel]
-	jr .checkSuccess
-
-.playerTurn
-	ld a, [wIsInBattle] ; wild battle = 1, trainer battle = 2
-	dec a
-	jr nz, .fail ; fail if not wild battle
+	and a ; player turn?
 	ld a, [wCurEnemyLevel]
 	ld b, a
 	ld a, [wBattleMonLevel]
-	; fallthrough
-
-.checkSuccess ; a = level of user, b = level of opponent
+	ld c, a
+	ld a, [wPlayerMoveNum]
+	jr z, .gotMoveAndLevels
+	ld a, b ; swap b and c
+	ld b, c
+	ld c, a
+	ld a, [wEnemyMoveNum]
+.gotMoveAndLevels ; b = level of opponent, c = level of user
+	push af ; save a = move ID
+	ld a, [wIsInBattle] ; wild battle = 1, trainer battle = 2
+	dec a
+	jr nz, .fail ; fail if not wild battle
+	ld a, c ; a = level of user, b = level of opponent
 	cp b
 	jr nc, .success ; if user has higher level
 	add b
@@ -131,37 +126,26 @@ SwitchAndTeleportEffect: ; marcelnote - optimized
 	ld [wAnimationType], a
 	inc a
 	ld [wEscapedFromBattle], a
-	pop af ; restore z flag for turn
-	ld a, [wPlayerMoveNum]
-	jr z, .gotMoveSuccess
-	ld a, [wEnemyMoveNum]
-.gotMoveSuccess
-	push af ; save move
-	call PlayBattleAnimation
-	ld c, 20
-	call DelayFrames
-	pop af ; restore move
+	pop af ; restore a = move ID
 	ld hl, RanFromBattleText
 	cp TELEPORT
-	jr z, .printText
+	jr z, .animate
 	ld hl, RanAwayScaredText
 	cp ROAR
-	jr z, .printText
+	jr z, .animate
 	ld hl, WasBlownAwayText ; WHIRLWIND
-.printText
+.animate
+	call PlayBattleAnimation ; preserves hl
+	ld c, 20
+	call DelayFrames
 	jp PrintText
 
 .fail
 	ld c, 50
 	call DelayFrames
-	pop af ; restore z flag for turn
-	ld a, [wPlayerMoveNum]
-	jr z, .gotMoveFail
-	ld a, [wEnemyMoveNum]
-.gotMoveFail
-	ld hl, DidntAffectText ; marcelnote - was IsUnaffectedText for fail in trainer battles
+	pop af ; restore a = move ID
 	cp TELEPORT
-	jr nz, .printText
+	jp nz, PrintDidntAffectText ; marcelnote - was IsUnaffectedText for fail in trainer battles
 	jp PrintButItFailedText ; was ConditionalPrintButItFailed, but accuracy check prevents effect to run anyway?
 
 RanFromBattleText:
