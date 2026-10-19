@@ -71,8 +71,7 @@ DrainHPEffect: ; marcelnote - optimized
 .next2
 	ld [wHPBarType], a
 	predef UpdateHPBar
-	predef DrawPlayerHUDAndHPBar
-	predef DrawEnemyHUDAndHPBar
+	call DrawHUDsAndHPBars
 	call ReadPlayerMonCurHPAndStatus
 	pop af ; restore a = move effect and z flag for turn
 	cp DREAM_EATER_EFFECT
