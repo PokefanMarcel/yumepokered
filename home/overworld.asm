@@ -1772,7 +1772,7 @@ JoypadOverworld::
 	ldh [hJoyHeld], a
 	ld hl, wMovementFlags
 	ld a, [hl]
-	and (1 << BIT_SPINNING) | (1 << BIT_LEDGE_OR_FISHING) | (1 << BIT_CLIMBING_LEDGE) | (1 << 4) | (1 << 3)
+	and (1 << BIT_SPINNING) | (1 << BIT_LEDGE_OR_FISHING) | (1 << BIT_CLIMBING_LEDGE) | (1 << 4) | (1 << 3) ; bits 3 and 4 are unused
 	ld [hl], a
 	ld hl, wStatusFlags5
 	res BIT_SCRIPTED_MOVEMENT_STATE, [hl]
