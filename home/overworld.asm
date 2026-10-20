@@ -500,11 +500,6 @@ TryWarpAtPlayerCoord: ; marcelnote - refactored warp engine
 	and a
 	ret
 
-CheckDirectionalWarpAtPlayerCoord: ; marcelnote - refactored warp engine
-	call TryWarpAtPlayerCoord
-	ret nc
-	jp CheckDirectionalWarpEventDirection
-
 WarpFound2:: ; marcelnote - refactored warp engine
 	ld a, [wDestinationWarpID]
 	cp $ff
@@ -742,6 +737,11 @@ CheckIfInOutsideMap::
 	ret z
 	cp PLATEAU ; Route 23 / Indigo Plateau
 	ret
+
+CheckDirectionalWarpAtPlayerCoord: ; marcelnote - refactored warp engine
+	call TryWarpAtPlayerCoord
+	ret nc
+	; fallthrough
 
 CheckDirectionalWarpEventDirection: ; marcelnote - refactored warp engine
 	ld a, [wDestinationWarpID]
@@ -1721,9 +1721,7 @@ JoypadOverworld::
 	cp ROUTE_17 ; Cycling Road
 	jr z, .checkButtonPress
 	cp MT_SILVER_2F ; for now only map with waterfall
-	jr z, .checkOnWaterfall
-	jr .notForcedDownwards
-.checkOnWaterfall
+	jr nz, .notForcedDownwards
 	lda_coord 8, 9 ; tile under player
 	cp $48 ; waterfall tile
 	jr nz, .notForcedDownwards
@@ -2264,9 +2262,7 @@ ENDC
 
 	dec c
 	jr nz, CheckForUserInterruption
-
-	and a
-	ret
+	ret ; carry clear
 
 .input
 	scf
