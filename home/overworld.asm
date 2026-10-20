@@ -1250,9 +1250,8 @@ CheckForJumpingAndTilePairCollisions::
 	res BIT_CLIMBING_LEDGE, [hl]
 	pop hl
 	jr nz, CheckForTilePairCollisions.foundMatch
-	and a
 	ld a, [wMovementFlags]
-	bit BIT_LEDGE_OR_FISHING, a
+	and 1 << BIT_LEDGE_OR_FISHING ; clears carry
 	ret nz
 	; if not jumping
 
