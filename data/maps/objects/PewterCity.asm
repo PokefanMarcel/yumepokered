@@ -12,9 +12,9 @@ PewterCity_Object:
 	warp_event 14,  7, ANY_DIR, PEWTER_MUSEUM, 1 ; marcelnote - merged Pewter Museum floors
 	warp_event 19,  5, ANY_DIR, PEWTER_MUSEUM, 3 ; marcelnote - merged Pewter Museum floors
 	warp_event 16, 17, ANY_DIR, PEWTER_GYM, 1
-	warp_event 29, 13, ANY_DIR, PEWTER_NIDORAN_HOUSE, 1
+	warp_event 29, 13, ANY_DIR, PEWTER_HOUSES, 1 ; Nidoran house ; marcelnote - merged Pewter houses
 	warp_event 23, 17, ANY_DIR, PEWTER_POKECENTER_MART, 3 ; marcelnote - merged Pewter Pokecenter and Mart
-	warp_event  7, 29, ANY_DIR, PEWTER_SPEECH_HOUSE, 1
+	warp_event  7, 29, ANY_DIR, PEWTER_HOUSES, 3 ; Speech house ; marcelnote - merged Pewter houses
 	warp_event 13, 25, ANY_DIR, PEWTER_POKECENTER_MART, 1 ; marcelnote - merged Pewter Pokecenter and Mart
 
 	def_bg_events

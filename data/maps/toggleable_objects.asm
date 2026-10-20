@@ -57,8 +57,7 @@ ToggleableObjectMapPointers:
 	dw NoToggleData                        ; DIGLETTS_CAVE_ROUTE_2
 	dw NoToggleData                        ; PEWTER_POKECENTER_MART ; marcelnote - merged Pewter Pokecenter and Mart
 	dw PewterMuseumToggleData              ; PEWTER_MUSEUM ; marcelnote - merged Pewter Museum floors
-	dw NoToggleData                        ; PEWTER_NIDORAN_HOUSE
-	dw NoToggleData                        ; PEWTER_SPEECH_HOUSE
+	dw NoToggleData                        ; PEWTER_HOUSES ; marcelnote - merged Pewter houses
 	dw PewterGymToggleData                 ; PEWTER_GYM              ; marcelnote - Brock rematch
 	dw NoToggleData                        ; CELADON_GROVE_NORTH_GATE
 	dw NoToggleData                        ; MT_MOON_POKECENTER

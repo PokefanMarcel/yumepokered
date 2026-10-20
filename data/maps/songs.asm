@@ -57,8 +57,7 @@ MapSongBanks::
 	db MUSIC_DUNGEON2, 0          ; DIGLETTS_CAVE_ROUTE_2
 	db MUSIC_POKECENTER, 0        ; PEWTER_POKECENTER_MART ; marcelnote - merged Pewter Pokecenter and Mart
 	db MUSIC_CITIES1, 0           ; PEWTER_MUSEUM ; marcelnote - merged Pewter Museum floors
-	db MUSIC_CITIES1, 0           ; PEWTER_NIDORAN_HOUSE
-	db MUSIC_CITIES1, 0           ; PEWTER_SPEECH_HOUSE
+	db MUSIC_CITIES1, 0           ; PEWTER_HOUSES ; marcelnote - merged Pewter houses
 	db MUSIC_GYM, 0               ; PEWTER_GYM
 	db MUSIC_CITIES1, 0           ; CELADON_GROVE_NORTH_GATE  ; marcelnote - new location
 	db MUSIC_POKECENTER, 0        ; MT_MOON_POKECENTER

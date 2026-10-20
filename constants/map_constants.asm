@@ -77,8 +77,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const DIGLETTS_CAVE_ROUTE_2,          3,  3 ; marcelnote - was 4, 4
 	map_const PEWTER_POKECENTER_MART,        12,  4 ; marcelnote - merged Pewter Pokecenter and Mart
 	map_const PEWTER_MUSEUM,                 10, 10 ; marcelnote - merged Pewter Museum floors
-	map_const PEWTER_NIDORAN_HOUSE,           4,  4
-	map_const PEWTER_SPEECH_HOUSE,            4,  4
+	map_const PEWTER_HOUSES,                 11,  4 ; marcelnote - merged Pewter houses
 	map_const PEWTER_GYM,                     5,  7
 	map_const CELADON_GROVE_NORTH_GATE,       5,  4 ; marcelnote - new map
 	map_const MT_MOON_POKECENTER,            12,  4 ; marcelnote - use same blk as other Pokecenters

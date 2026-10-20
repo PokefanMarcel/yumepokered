@@ -74,11 +74,10 @@ Route2TradeHouse_Blocks:
 VermilionPidgeyHouse_Blocks:
 LavenderCuboneHouse_Blocks:
 CeruleanTradeHouse_Blocks:
-PewterNidoranHouse_Blocks:
-PewterSpeechHouse_Blocks:
 FuchsiaMoveDeleterHouse_Blocks: ; marcelnote - new location
 ViridianNicknameHouse_Blocks: INCBIN "maps/ViridianNicknameHouse.blk"
 
+PewterHouses_Blocks: ; marcelnote - merged Pewter houses
 SaffronHouses_Blocks: INCBIN "maps/SaffronHouses.blk" ; marcelnote - merged Pidgey house and Mr Psychic's house
 
 CeladonMansionRoofHouse_Blocks:
@@ -108,13 +107,9 @@ INCLUDE "data/maps/headers/ViridianNicknameHouse.asm"
 INCLUDE "scripts/ViridianNicknameHouse.asm"
 INCLUDE "data/maps/objects/ViridianNicknameHouse.asm"
 
-INCLUDE "data/maps/headers/PewterNidoranHouse.asm"
-INCLUDE "scripts/PewterNidoranHouse.asm"
-INCLUDE "data/maps/objects/PewterNidoranHouse.asm"
-
-INCLUDE "data/maps/headers/PewterSpeechHouse.asm"
-INCLUDE "scripts/PewterSpeechHouse.asm"
-INCLUDE "data/maps/objects/PewterSpeechHouse.asm"
+INCLUDE "data/maps/headers/PewterHouses.asm" ; marcelnote - merged Pewter houses
+INCLUDE "scripts/PewterHouses.asm"
+INCLUDE "data/maps/objects/PewterHouses.asm"
 
 INCLUDE "data/maps/headers/CeruleanTrashedHouse.asm"
 INCLUDE "scripts/CeruleanTrashedHouse.asm"

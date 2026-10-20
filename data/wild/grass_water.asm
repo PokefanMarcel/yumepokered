@@ -54,8 +54,7 @@ WildDataPointers:
 	dw NothingWildMons                 ; DIGLETTS_CAVE_ROUTE_2
 	dw NothingWildMons                 ; PEWTER_POKECENTER_MART ; marcelnote - merged Pewter Pokecenter and Mart
 	dw NothingWildMons                 ; PEWTER_MUSEUM ; marcelnote - merged Pewter Museum floors
-	dw NothingWildMons                 ; PEWTER_NIDORAN_HOUSE
-	dw NothingWildMons                 ; PEWTER_SPEECH_HOUSE
+	dw NothingWildMons                 ; PEWTER_HOUSES ; marcelnote - merged Pewter houses
 	dw NothingWildMons                 ; PEWTER_GYM
 	dw NothingWildMons                 ; CELADON_GROVE_NORTH_GATE
 	dw NothingWildMons                 ; MT_MOON_POKECENTER

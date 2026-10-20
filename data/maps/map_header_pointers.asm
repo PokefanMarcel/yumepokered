@@ -55,8 +55,7 @@ MapHeaderPointers::
 	dw DiglettsCaveRoute2_h
 	dw PewterPokecenterMart_h ; marcelnote - merged Pewter Pokecenter and Mart
 	dw PewterMuseum_h ; marcelnote - merged Pewter Museum floors
-	dw PewterNidoranHouse_h
-	dw PewterSpeechHouse_h
+	dw PewterHouses_h ; marcelnote - merged Pewter houses
 	dw PewterGym_h
 	dw CeladonGroveNorthGate_h ; marcelnote - new location
 	dw MtMoonPokecenter_h

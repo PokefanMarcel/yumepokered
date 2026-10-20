@@ -55,8 +55,7 @@ MapHeaderBanks::
 	db BANK(DiglettsCaveRoute2_h)
 	db BANK(PewterPokecenterMart_h) ; marcelnote - merged Pewter Pokecenter and Mart
 	db BANK(PewterMuseum_h) ; marcelnote - merged Pewter Museum floors
-	db BANK(PewterNidoranHouse_h)
-	db BANK(PewterSpeechHouse_h)
+	db BANK(PewterHouses_h) ; marcelnote - merged Pewter houses
 	db BANK(PewterGym_h)
 	db BANK(CeladonGroveNorthGate_h) ; marcelnote - new location
 	db BANK(MtMoonPokecenter_h)

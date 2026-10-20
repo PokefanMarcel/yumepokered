@@ -358,8 +358,7 @@ ENDC
 SECTION "Text 7", ROMX
 
 IF DEF(_FRA)
-	INCLUDE "translation/fra/text/PewterNidoranHouse.fra.asm"
-	INCLUDE "translation/fra/text/PewterSpeechHouse.fra.asm"
+	INCLUDE "translation/fra/text/PewterHouses.fra.asm"           ; marcelnote - merged Pewter houses
 	INCLUDE "translation/fra/text/PewterPokecenterMart.fra.asm"   ; marcelnote - merged Pewter Pokecenter and Mart
 	INCLUDE "translation/fra/text/CeruleanTrashedHouse.fra.asm"
 	INCLUDE "translation/fra/text/CeruleanTradeHouse.fra.asm"
@@ -379,8 +378,7 @@ IF DEF(_FRA)
 	INCLUDE "translation/fra/text/LavenderCuboneHouse.fra.asm"
 	INCLUDE "translation/fra/text/NameRatersHouse.fra.asm"
 ELIF DEF(_ESP)
-	INCLUDE "translation/esp/text/PewterNidoranHouse.esp.asm"
-	INCLUDE "translation/esp/text/PewterSpeechHouse.esp.asm"
+	INCLUDE "translation/esp/text/PewterHouses.esp.asm"           ; marcelnote - merged Pewter houses
 	INCLUDE "translation/esp/text/PewterPokecenterMart.esp.asm"   ; marcelnote - merged Pewter Pokecenter and Mart
 	INCLUDE "translation/esp/text/CeruleanTrashedHouse.esp.asm"
 	INCLUDE "translation/esp/text/CeruleanTradeHouse.esp.asm"
@@ -400,8 +398,7 @@ ELIF DEF(_ESP)
 	INCLUDE "translation/esp/text/LavenderCuboneHouse.esp.asm"
 	INCLUDE "translation/esp/text/NameRatersHouse.esp.asm"
 ELSE
-	INCLUDE "text/PewterNidoranHouse.asm"
-	INCLUDE "text/PewterSpeechHouse.asm"
+	INCLUDE "text/PewterHouses.asm"           ; marcelnote - merged Pewter houses
 	INCLUDE "text/PewterPokecenterMart.asm"   ; marcelnote - merged Pewter Pokecenter and Mart
 	INCLUDE "text/CeruleanTrashedHouse.asm"
 	INCLUDE "text/CeruleanTradeHouse.asm"
