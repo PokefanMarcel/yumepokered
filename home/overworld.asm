@@ -2272,13 +2272,6 @@ ENDC
 ; a = ID of destination warp within destination map
 LoadDestinationWarpPosition::
 	and WARP_ID_MASK ; marcelnote - refactored warp engine
-	ld b, a
-	ldh a, [hLoadedROMBank]
-	push af
-	ld a, [wPredefParentBank]
-	ldh [hLoadedROMBank], a
-	ld [rROMB], a
-	ld a, b
 	add a
 	add a
 	ld c, a
@@ -2286,6 +2279,11 @@ LoadDestinationWarpPosition::
 	add hl, bc
 	ld bc, 4
 	ld de, wCurrentTileBlockMapViewPointer
+	ldh a, [hLoadedROMBank]
+	push af
+	ld a, [wPredefParentBank]
+	ldh [hLoadedROMBank], a
+	ld [rROMB], a
 	call CopyData
 	pop af
 	ldh [hLoadedROMBank], a
