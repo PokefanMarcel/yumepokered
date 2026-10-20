@@ -446,15 +446,11 @@ DoBikeSpeedup::
 	jr z, .checkMtSilver2F
 .goFaster
 	jp AdvancePlayerSprite
-.checkRoute17
-	ldh a, [hJoyHeld]
-	and PAD_UP | PAD_LEFT | PAD_RIGHT
-	ret nz
-	jr .goFaster
 .checkMtSilver2F
 	ld a, [wTileInFrontOfPlayer] ; tile in front of player
 	cp $48 ; waterfall tile
 	jr nz, .goFaster
+.checkRoute17
 	ldh a, [hJoyHeld]
 	and PAD_UP | PAD_LEFT | PAD_RIGHT
 	ret nz
