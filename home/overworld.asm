@@ -211,7 +211,8 @@ OverworldLoopLessDelay::
 	jr z, .noDirectionButtonsPressed
 	ld a, 1
 	ld [wSpritePlayerStateData1XStepVector], a
-
+	ASSERT PLAYER_DIR_RIGHT == 1
+	; fallthrough
 
 .handleDirectionButtonPress
 	ld [wPlayerDirection], a ; new direction
@@ -1768,7 +1769,7 @@ JoypadOverworld::
 ; if done simulating button presses
 .doneSimulating
 	xor a
-	;ld [wUnusedOverrideSimulatedJoypadStatesIndex], a
+;	ld [wUnusedOverrideSimulatedJoypadStatesIndex], a
 	ld [wSimulatedJoypadStatesIndex], a
 	ld [wSimulatedJoypadStatesEnd], a
 	ld [wJoyIgnore], a
