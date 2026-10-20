@@ -1615,17 +1615,15 @@ ScheduleSouthRowRedraw::
 	ldh [hRedrawRowOrColumnMode], a
 	ret
 
-ScheduleEastColumnRedraw::
+ScheduleEastColumnRedraw:: ; marcelnote - small optim
 	hlcoord 18, 0
 	call ScheduleColumnRedrawHelper
 	ld a, [wMapViewVRAMPointer]
-	ld c, a
-	and $e0
-	ld b, a
-	ld a, c
+	ld b, a ; add 18 to the column modulo 32
 	add 18
+	xor b
 	and $1f
-	or b
+	xor b
 	ldh [hRedrawRowOrColumnDest], a
 	ld a, [wMapViewVRAMPointer + 1]
 	ldh [hRedrawRowOrColumnDest + 1], a
