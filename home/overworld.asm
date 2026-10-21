@@ -1089,7 +1089,8 @@ CollisionCheckOnLand::
 ; function that checks if the tile in front of the player is passable
 ; clears carry if it is, sets carry if not
 CheckTilePassable:: ; marcelnote - small optim
-	predef GetTileAndCoordsInFrontOfPlayer ; get tile in front of player into c
+	ld a, [wTileInFrontOfPlayer] ; fetched by CheckForJumpingAndTilePairCollisions
+	ld c, a
 	ld hl, wTilesetCollisionPtr ; pointer to list of passable tiles
 	ld a, [hli]
 	ld h, [hl]
@@ -1672,8 +1673,8 @@ CollisionCheckOnWater::
 	ld hl, TilePairCollisionsWater
 	call CheckForJumpingAndTilePairCollisions
 	jr c, .collision
-	predef GetTileAndCoordsInFrontOfPlayer ; get tile in front of player (puts it in c and [wTileInFrontOfPlayer])
-	ld a, c ; tile in front of player
+	ld a, [wTileInFrontOfPlayer] ; fetched by CheckForJumpingAndTilePairCollisions
+	ld c, a
 	cp $14 ; water tile
 	jr z, .noCollision ; keep surfing if it's a water tile
 	cp $32 ; either the left tile of the S.S. Anne boarding platform or the tile on eastern coastlines (depending on the current tileset)
