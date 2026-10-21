@@ -140,23 +140,25 @@ OverworldLoopLessDelay::
 	lda_coord 8, 9
 	ld [wTilePlayerStandingOn], a ; checked when using Surf for forbidden tile pairs
 	call DisplayTextID ; display either the start menu or the NPC/sign text
-	ld a, [wEnteringCableClub]
-	and a
-	jr z, .checkForOpponent
+	ld a, [wEnteringCableClub] ; 0 or 1
 	dec a
-	ld a, 0 ; preserve Z flag
+	jr nz, .checkForOpponent
+	; marcelnote - removed below unreachable code
+;	dec a ; 1?
+;	ld a, 0 ; preserve Z flag
+;	ld [wEnteringCableClub], a
+;	jr z, .changeMap
+;; XXX can this code be reached?
+;	predef TryLoadSaveFile
+;	ld a, [wCurMap]
+;	ld [wDestinationMap], a
+;	call PrepareForSpecialWarp
+;	ld a, [wCurMap]
+;	call SwitchToMapRomBank
+;	ld hl, wCurMapTileset
+;	set BIT_NO_PREVIOUS_MAP, [hl]
+;.changeMap
 	ld [wEnteringCableClub], a
-	jr z, .changeMap
-; XXX can this code be reached?
-	predef TryLoadSaveFile
-	ld a, [wCurMap]
-	ld [wDestinationMap], a
-	call PrepareForSpecialWarp
-	ld a, [wCurMap]
-	call SwitchToMapRomBank
-	ld hl, wCurMapTileset
-	set BIT_NO_PREVIOUS_MAP, [hl]
-.changeMap
 	jp EnterMap
 .checkForOpponent
 	ld a, [wCurOpponent]
