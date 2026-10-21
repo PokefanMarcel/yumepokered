@@ -216,14 +216,13 @@ OverworldLoopLessDelay::
 
 .handleDirectionButtonPress
 	ld [wPlayerDirection], a ; new direction
+	ld b, a
 	ld a, [wStatusFlags5]
 	bit BIT_SCRIPTED_MOVEMENT_STATE, a
-	jr nz, .noDirectionChange ; ignore direction changes if we are
+	jr nz, .noDirectionChange ; ignore direction changes during scripted movement
 	ld a, [wTurnInPlaceDelay]
 	and a
 	jr z, .noDirectionChange
-	ld a, [wPlayerDirection] ; new direction
-	ld b, a
 	ld a, [wPlayerLastStopDirection] ; old direction
 	cp b
 	jr z, .noDirectionChange
@@ -268,14 +267,14 @@ OverworldLoopLessDelay::
 ;	ld hl, wCheckFor180DegreeTurn
 ;	dec [hl]
 ;	jr nz, .holdIntermediateDirectionLoop
-	ld a, [wPlayerDirection]
+	ld a, b
 	ld [wPlayerMovingDirection], a
 	call NewBattle
 	jp c, .battleOccurred
 	jp OverworldLoop
 
 .noDirectionChange ; marcelnote - refactored warp engine
-	ld a, [wPlayerDirection] ; current direction
+	ld a, b
 	ld [wPlayerMovingDirection], a ; save direction
 	call UpdateSprites
 	call CheckDirectionalWarpAtPlayerCoord
@@ -1032,17 +1031,16 @@ IsSpriteInFrontOfPlayer::
 	jr z, .foundSpriteInFrontOfPlayer
 .nextSprite
 	ld a, l
-	and $f0
-	add SPRITESTATEDATA1_LENGTH
-	ld l, a
+	or $0f
+	inc a
+	ld l, a ; hl = (x+1)#SPRITESTATEDATA1_PICTUREID
 	inc e
 	dec d
 	jr nz, .spriteLoop
 	ret
 .foundSpriteInFrontOfPlayer
 	ld a, l
-	and $f0
-	inc a
+	sub SPRITESTATEDATA1_XPIXELS - SPRITESTATEDATA1_MOVEMENTSTATUS
 	ld l, a ; hl = x#SPRITESTATEDATA1_MOVEMENTSTATUS
 	set BIT_FACE_PLAYER, [hl]
 	ld a, e
@@ -1649,8 +1647,7 @@ JoypadOverworld::
 	ret
 
 ; if done simulating button presses
-.doneSimulating
-	xor a
+.doneSimulating ; a = 0
 ;	ld [wUnusedOverrideSimulatedJoypadStatesIndex], a
 	ld [wSimulatedJoypadStatesEnd], a
 	ld [wJoyIgnore], a
