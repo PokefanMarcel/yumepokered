@@ -1936,37 +1936,21 @@ LoadMapHeader:: ; marcelnote - optimized
 	ld a, e
 	and $3f
 	ld [hl], a ; store text ID in byte 1 of sprite entry
-	pop hl ; restore hl = object data cursor after text ID and flags byte
-	bit BIT_TRAINER, e
-	jr nz, .trainerSprite
-	bit BIT_ITEM, e
-	jr z, .regularSprite
-; item ball sprite
-	ld a, [hli]
-	push hl ; save hl = object data cursor after item number
-	ld hl, wMapSpriteExtraData
-	add hl, bc
-	ld [hli], a ; store item number in byte 0 of the entry
-	ld [hl], b  ; b = 0, zero byte 1, since it is not used
-	jr .nextSprite
-.trainerSprite
-	ld a, [hli] ; trainer class
-	ld e, [hl]  ; trainer number (within class)
+	pop hl  ; restore hl = object data cursor after text ID and flags byte
+	xor e   ; a = trainer/item flags
+	ld e, b ; default second extra-data byte = 0
+	jr z, .storeSpriteExtraData ; regular NPC: a = e = 0
+	bit BIT_TRAINER, a
+	ld a, [hli] ; item ID or trainer class
+	jr z, .storeSpriteExtraData ; item: e = 0
+	ld e, [hl] ; trainer number
 	inc hl
-	push hl ; save hl = object data cursor after trainer class/number
-	ld hl, wMapSpriteExtraData
-	add hl, bc
-	ld [hli], a ; store trainer class in byte 0 of the entry
-	ld [hl], e ; store trainer number in byte 1 of the entry
-	jr .nextSprite
-.regularSprite
+.storeSpriteExtraData
 	push hl ; save hl = object data cursor for next sprite
 	ld hl, wMapSpriteExtraData
 	add hl, bc
-; zero both bytes, since regular sprites don't use this extra space
-	xor a
 	ld [hli], a
-	ld [hl], a
+	ld [hl], e
 .nextSprite
 	pop hl ; restore hl = object data cursor for next sprite
 	pop de ; restore de = current sprite's SPRITESTATEDATA2_MOVEMENTBYTE1 pointer
