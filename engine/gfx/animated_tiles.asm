@@ -131,7 +131,7 @@ AnimateRicePlantTile::
 	ld hl, RicePlantTile2 ; if counter is 5,6,7
 .copy
 	ld de, vTileset tile $23 ; rice plant tile
-	jp AnimateCopyTile
+	jr AnimateCopyTile
 
 
 AnimateLavaBubble1Tile:: ; first lava tile
@@ -139,7 +139,7 @@ AnimateLavaBubble1Tile:: ; first lava tile
 	ldh a, [hMovingBGTilesCounter2]
 	srl a ; divide a by 2
 	ld de, vTileset tile $4A ; first lava bubble tile
-	jp AnimateFindPointerInTable
+	jr AnimateFindPointerInTable
 
 AnimateLavaBubble2Tile:: ; second lava tile
 	ld hl, LavaBubbleTilesTable
@@ -148,7 +148,7 @@ AnimateLavaBubble2Tile:: ; second lava tile
 	and $7
 	srl a ; divide a by 2
 	ld de, vTileset tile $49 ; second lava bubble tile
-	jp AnimateFindPointerInTable
+	jr AnimateFindPointerInTable
 
 LavaBubbleTilesTable:
 	dw LavaBubbleTile1
@@ -170,7 +170,7 @@ AnimateLanternLeftTile::
 	ld hl, LanternLeftTile1 ; if counter is 7
 .copy
 	ld de, vTileset tile $3A ; left lantern tile
-	jp AnimateCopyTile
+	jr AnimateCopyTile
 
 
 AnimateLanternRightTile::
@@ -183,14 +183,14 @@ AnimateLanternRightTile::
 	ld hl, LanternRightTile2 ; if counter is 6 7
 .copy
 	ld de, vTileset tile $3B ; right lantern tile
-	jp AnimateCopyTile
+	jr AnimateCopyTile
 
 
 AnimateLiveWaterTile::
 	ld hl, LiveWaterTilesTable
 	ldh a, [hMovingBGTilesCounter2]
 	ld de, vTileset tile $15 ; livewater tile
-	jp AnimateFindPointerInTable
+	jr AnimateFindPointerInTable
 
 LiveWaterTilesTable:
 	dw LiveWaterTile1 ; 0

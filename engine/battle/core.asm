@@ -174,7 +174,7 @@ StartBattle:
 	ld a, [wEnemyMonSpeed + 1]
 	add a
 	ld b, a ; init b (which is later compared with random value) to (enemy speed % 256) * 2
-	jp c, EnemyRan ; if (enemy speed % 256) > 127, the enemy runs
+	jr c, EnemyRan ; if (enemy speed % 256) > 127, the enemy runs
 	ld a, [wSafariBaitFactor]
 	and a ; is bait factor 0?
 	jr z, .checkEscapeFactor
@@ -2404,7 +2404,7 @@ PartyMenuOrRockOrRun:
 ; safari battle
 	ld a, SAFARI_ROCK
 	ld [wCurItem], a
-	jp UseBagItem
+	jr UseBagItem
 .partyMenuWasSelected
 	call LoadScreenTilesFromBuffer1
 	xor a ; NORMAL_PARTY_MENU
@@ -2729,7 +2729,7 @@ SelectMenuItem:
 	ld hl, hUILayoutFlags
 	res BIT_SINGLE_SPACED_MENU, [hl]
 	bit B_PAD_UP, a
-	jp nz, SelectMenuItem_CursorUp
+	jr nz, SelectMenuItem_CursorUp
 	bit B_PAD_DOWN, a
 	jp nz, SelectMenuItem_CursorDown
 	bit B_PAD_SELECT, a
@@ -3369,7 +3369,7 @@ MirrorMoveCheck:
 	ld a, [wPlayerMoveEffect]
 	cp EXPLODE_EFFECT ; even if Explosion or Selfdestruct missed, its effect still needs to be activated
 	jr z, .notDone
-	jp ExecutePlayerMoveDone ; otherwise, we're done if the move missed
+	jr ExecutePlayerMoveDone ; otherwise, we're done if the move missed
 .moveDidNotMiss
 	call ApplyAttackToEnemyPokemon
 	call PrintCriticalOHKOText
@@ -3404,14 +3404,14 @@ MirrorMoveCheck:
 .executeOtherEffects
 	ld a, [wPlayerMoveEffect]
 	and a
-	jp z, ExecutePlayerMoveDone
+	jr z, ExecutePlayerMoveDone
 	ld hl, SpecialEffects
 	call IsInList
 	call nc, JumpMoveEffect ; move effects not included in SpecialEffects or in either of the ResidualEffect arrays,
 	; which are the effects not covered yet. Rage effect will be executed for a second time (though it's irrelevant).
 	; Includes side effects that only need to be called if the target didn't faint.
 	; Responsible for executing Twineedle's second side effect (poison).
-	jp ExecutePlayerMoveDone
+	jr ExecutePlayerMoveDone
 
 MultiHitText:
 	text_far _MultiHitText
@@ -5010,7 +5010,7 @@ ApplyDamageToPlayerPokemon:
 	jr z, ApplyAttackToPlayerPokemonDone ; we're done if damage is 0
 	ld a, [wPlayerBattleStatus2]
 	bit HAS_SUBSTITUTE_UP, a ; does the player have a substitute?
-	jp nz, AttackSubstitute
+	jr nz, AttackSubstitute
 ; subtract the damage from the pokemon's current HP
 ; also, save the current HP at wHPBarOldHP and the new HP at wHPBarNewHP
 	ld a, [hld]
@@ -5726,7 +5726,7 @@ EnemyCalcMoveDamage:
 	ld a, [wEnemyMoveEffect]
 	ld hl, SetDamageEffects
 	call IsInList
-	jp c, EnemyMoveHitTest
+	jr c, EnemyMoveHitTest
 	call CriticalHitTest
 	call HandleCounterMove
 	jr z, HandleIfEnemyMoveMissed
@@ -5734,7 +5734,7 @@ EnemyCalcMoveDamage:
 	call GetDamageVarsForEnemyAttack
 	call SwapPlayerAndEnemyLevels
 	call CalculateDamage
-	jp z, EnemyCheckIfFlyOrChargeEffect
+	jr z, EnemyCheckIfFlyOrChargeEffect
 	call AdjustDamageForMoveType
 	call RandomizeDamage
 
@@ -5801,7 +5801,7 @@ EnemyCheckIfMirrorMoveEffect:
 	cp MIRROR_MOVE_EFFECT
 	jr nz, .notMirrorMoveEffect
 	call MirrorMoveCopyMove
-	jp z, ExecuteEnemyMoveDone
+	jr z, ExecuteEnemyMoveDone
 	jp CheckIfEnemyNeedsToChargeUp
 .notMirrorMoveEffect
 	cp METRONOME_EFFECT
@@ -5820,7 +5820,7 @@ EnemyCheckIfMirrorMoveEffect:
 	ld a, [wEnemyMoveEffect]
 	cp EXPLODE_EFFECT
 	jr z, .handleExplosionMiss
-	jp ExecuteEnemyMoveDone
+	jr ExecuteEnemyMoveDone
 .moveDidNotMiss
 	call ApplyAttackToPlayerPokemon
 	call PrintCriticalOHKOText
@@ -6647,7 +6647,7 @@ InitBattleCommon:
 	callfar InitBattleVariables
 	ld a, [wEnemyMonSpecies2]
 	sub OPP_ID_OFFSET
-	jp c, InitWildBattle
+	jr c, InitWildBattle
 	ld [wTrainerClass], a
 	call GetTrainerInformation
 	callfar ReadTrainer
@@ -6664,7 +6664,7 @@ InitBattleCommon:
 	ld [wEnemyMonPartyPos], a
 	ld a, TRAINER_BATTLE
 	ld [wIsInBattle], a
-	jp _InitBattleCommon
+	jr _InitBattleCommon
 
 InitWildBattle:
 	ld a, WILD_BATTLE

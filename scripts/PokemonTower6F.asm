@@ -23,7 +23,7 @@ ENDC
 	jp nz, PokemonTower6FCheckGhostEncounterScript ; marcelnote - postgame Agatha event, was jp nz, CheckFightingMapTrainers
 	ld hl, PokemonTower6FMarowakCoords
 	call ArePlayerCoordsInArray
-	jp nc, PokemonTower6FCheckGhostEncounterScript ; marcelnote - postgame Agatha event, was jp nc, CheckFightingMapTrainers
+	jr nc, PokemonTower6FCheckGhostEncounterScript ; marcelnote - postgame Agatha event, was jp nc, CheckFightingMapTrainers
 	xor a
 	ldh [hJoyHeld], a
 	ld a, TEXT_POKEMONTOWER6F_BEGONE

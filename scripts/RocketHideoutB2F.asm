@@ -16,7 +16,7 @@ RocketHideoutB2FDefaultScript: ; marcelnote - modified spinners engine
 	ld hl, wMovementFlags
 	bit BIT_SPINNING, [hl]
 	jp z, CheckFightingMapTrainers
-	jp LoadSpinnerArrowTiles
+	jr LoadSpinnerArrowTiles
 
 INCLUDE "engine/overworld/spinners.asm"
 

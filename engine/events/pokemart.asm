@@ -102,7 +102,7 @@ DisplayPokemartDialogue_::
 .unsellableItem
 	ld hl, PokemartUnsellableItemText
 	call PrintText
-	jp .sellMenuLoop ; marcelnote - was returnToMainPokemartMenu
+	jr .sellMenuLoop ; marcelnote - was returnToMainPokemartMenu
 .bagEmpty
 	ld hl, PokemartItemBagEmptyText
 	call PrintText

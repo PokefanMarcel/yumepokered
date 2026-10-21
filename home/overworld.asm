@@ -106,7 +106,7 @@ OverworldLoopLessDelay::
 ; if A is pressed
 	ld a, [wStatusFlags5]
 	bit BIT_UNKNOWN_5_2, a
-	jp nz, .noDirectionButtonsPressed
+	jr nz, .noDirectionButtonsPressed
 	call IsPlayerCharacterBeingControlledByGame
 	jr nz, .checkForOpponent
 	callfar CheckForCut ; jp OverworldLoop if succeeds ; this causes to cut before finding potion in Viridian
@@ -377,14 +377,14 @@ OverworldLoopLessDelay::
 .notSafariZone
 	ld a, [wIsInBattle]
 	and a
-	jp nz, CheckWarpsNoCollision
+	jr nz, CheckWarpsNoCollision
 	predef ApplyOutOfBattlePoisonDamage ; also increment daycare mon exp
 	ld a, [wOutOfBattleBlackout]
 	and a
 	jp nz, HandleBlackOut ; if all pokemon fainted
 .newBattle
 	call NewBattle
-	jp nc, CheckWarpsNoCollision ; check for warps if there was no battle
+	jr nc, CheckWarpsNoCollision ; check for warps if there was no battle
 .battleOccurred
 	ld hl, wStatusFlags3
 	res BIT_TALKED_TO_TRAINER, [hl]
@@ -1867,7 +1867,7 @@ LoadMapHeader:: ; marcelnote - optimized
 .loadSpriteData
 	ld a, [wStatusFlags4]
 	bit BIT_BATTLE_OVER_OR_BLACKOUT, a
-	jp nz, .finishUp ; if so, skip this because battles don't destroy this data
+	jr nz, .finishUp ; if so, skip this because battles don't destroy this data
 	ld a, [hli]
 	ld [wNumSprites], a ; save the number of sprites
 	push hl ; save hl = object data cursor at first sprite entry

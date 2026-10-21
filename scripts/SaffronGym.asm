@@ -19,10 +19,10 @@ SaffronGymSetMapAndTiles: ; marcelnote - open Saffron Gym gate
 	bit BIT_MARSHBADGE, a
 	ret z  ; gate closed before getting Marsh Badge
 	CheckEvent EVENT_BECAME_CHAMPION
-	jp z, UpdateSaffronGymTileBlocks ; gate open before being champion
+	jr z, UpdateSaffronGymTileBlocks ; gate open before being champion
 	CheckHideShow TOGGLE_FIGHTING_DOJO_BRUNO
 	ret z ; gate closed while Bruno is at Fighting Dojo
-	jp UpdateSaffronGymTileBlocks
+	jr UpdateSaffronGymTileBlocks
 
 .LoadNames:
 	ld a, SABRINA

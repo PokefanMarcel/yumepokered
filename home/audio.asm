@@ -66,7 +66,7 @@ PlayDefaultMusicCommon::
 	ld [wLastMusicSoundID], a
 	ld [wMusicFadeID], a
 	ret nz ; return if fade
-	jp PlayMusic
+	jr PlayMusic
 
 ;UpdateMusic6Times::
 ;CompareMapMusicBankWithCurrentBank:

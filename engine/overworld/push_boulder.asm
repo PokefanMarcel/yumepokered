@@ -22,7 +22,7 @@ TryPushingBoulder::
 	call GetSpriteMovementByte2Pointer
 	ld a, [hl]
 	cp BOULDER_MOVEMENT_BYTE_2
-	jp nz, ResetBoulderPushFlags
+	jr nz, ResetBoulderPushFlags
 	ld hl, wMiscFlags
 	bit BIT_TRIED_PUSH_BOULDER, [hl]
 	set BIT_TRIED_PUSH_BOULDER, [hl]

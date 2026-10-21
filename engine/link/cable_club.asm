@@ -322,7 +322,7 @@ TradeCenter_SelectMon:
 	ld [wMenuJoypadPollCount], a
 	inc a
 	ld [wSerialExchangeNybbleSendData], a
-	jp .playerMonMenu
+	jr .playerMonMenu
 .enemyMonMenu
 	xor a
 	ld [wMenuWatchMovingOutOfBounds], a

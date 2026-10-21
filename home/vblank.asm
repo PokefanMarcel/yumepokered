@@ -117,7 +117,7 @@ DEF NOT_VBLANKED EQU 1
 
 	ldh a, [rLCDC]
 	bit B_LCDC_ENABLE, a
-	jp z, VBlank ;You will never enter the vblank interrupt if the LCD is disabled, so call it manually
+	jr z, VBlank ;You will never enter the vblank interrupt if the LCD is disabled, so call it manually
 
 .halt
 	halt

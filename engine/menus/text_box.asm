@@ -12,7 +12,7 @@ DisplayTextBoxID_::
 	jr z, .choice
 	pop de ; discard caller origin
 	cp MENU_KIND_LIST
-	jp z, DrawListMenuBox
+	jr z, DrawListMenuBox
 	cp MENU_KIND_CUSTOM
 	jr z, .custom
 	cp MENU_KIND_TEXT

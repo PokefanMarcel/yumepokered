@@ -12,7 +12,7 @@ ResetEXPBar:
 	ld bc, 8
 	ld a, '<HUD_HORIZ_BAR>'
 	call FillMemory
-	jp SaveEXPBarToBuffer
+	jr SaveEXPBarToBuffer
 
 
 ; Animate the active mon toward its EXP total at its current battle level.
@@ -128,10 +128,10 @@ PrintEXPBar:
 CalcEXPBarPixelLength:
 	ld a, [wEXPBarKeepFullFlag]
 	and a
-	jp nz, .full ; held until ResetEXPBar finishes the current level-up sequence
+	jr nz, .full ; held until ResetEXPBar finishes the current level-up sequence
 	ld a, [wBattleMonLevel]
 	cp MAX_LEVEL
-	jp nc, .empty ; there is no next-level interval at level 100
+	jr nc, .empty ; there is no next-level interval at level 100
 
 	; Always use the actual party species, including when transformed.
 	ld hl, wPartyMon1Species
