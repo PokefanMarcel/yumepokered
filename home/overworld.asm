@@ -433,29 +433,6 @@ NewBattle::
 	and a
 	ret
 
-; function to make bikes twice as fast as walking
-DoBikeSpeedup::
-	ld a, [wNPCMovementScriptPointerTableNum]
-	and a
-	ret nz
-	; marcelnote - added new checks to prevent speed up when going up waterfalls
-	ld a, [wCurMap]
-	cp ROUTE_17 ; Cycling Road
-	jr z, .checkRoute17
-	cp MT_SILVER_2F
-	jr z, .checkMtSilver2F
-.goFaster
-	jp AdvancePlayerSprite
-.checkMtSilver2F
-	ld a, [wTileInFrontOfPlayer] ; tile in front of player
-	cp $48 ; waterfall tile
-	jr nz, .goFaster
-.checkRoute17
-	ldh a, [hJoyHeld]
-	and PAD_UP | PAD_LEFT | PAD_RIGHT
-	ret nz
-	jr .goFaster
-
 ; check if the player has stepped onto a warp after having not collided
 CheckWarpsNoCollision:: ; marcelnote - refactored warp engine
 	call TryWarpAtPlayerCoord
@@ -1286,6 +1263,25 @@ LoadCurrentMapView:: ; marcelnote - optimized
 	ldh [hLoadedROMBank], a
 	ld [rROMB], a
 	ret
+
+; function to make bikes twice as fast as walking
+DoBikeSpeedup:: ; marcelnote - optimized and added new checks for waterfalls
+	ld a, [wNPCMovementScriptPointerTableNum]
+	and a
+	ret nz
+	ld a, [wCurMap]
+	cp ROUTE_17 ; Cycling Road
+	jr z, .checkDirection
+	cp MT_SILVER_2F
+	jr nz, AdvancePlayerSprite
+	ld a, [wTileInFrontOfPlayer]
+	cp $48 ; waterfall tile
+	jr nz, AdvancePlayerSprite
+.checkDirection
+	ldh a, [hJoyHeld]
+	and PAD_UP | PAD_LEFT | PAD_RIGHT
+	ret nz
+	; fallthrough
 
 AdvancePlayerSprite:: ; marcelnote - optim by Engezerstorung
 ; Cache the player's step vector in b/c for the coordinate, map view, and scroll
