@@ -419,19 +419,16 @@ OverworldLoopLessDelay::
 
 ; function to determine if there will be a battle and execute it (either a trainer battle or wild battle)
 ; sets carry if a battle occurred and unsets carry if not
-NewBattle::
+NewBattle:: ; marcelnote - optimized
 	ld a, [wStatusFlags6]
-	bit BIT_DUNGEON_WARP, a
-	jr nz, .noBattle
-	call IsPlayerCharacterBeingControlledByGame
-	jr nz, .noBattle ; no battle if the player character is under the game's control
+	and 1 << BIT_DUNGEON_WARP
+	ret nz ; no battle during a dungeon warp
+	call IsPlayerCharacterBeingControlledByGame ; returns carry clear
+	ret nz ; no battle during scripted movement
 	ld a, [wStatusFlags4]
-	bit BIT_NO_BATTLES, a
-	jr nz, .noBattle
+	and 1 << BIT_NO_BATTLES
+	ret nz
 	jpfar InitBattle
-.noBattle
-	and a
-	ret
 
 ; check if the player has stepped onto a warp after having not collided
 CheckWarpsNoCollision:: ; marcelnote - refactored warp engine
