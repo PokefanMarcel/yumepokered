@@ -727,16 +727,6 @@ HandleBlackOut::
 	call PlayDefaultMusicFadeOutCurrent
 	jp SpecialEnterMap
 
-StopMusic::
-	ld [wMusicFade], a
-	xor a
-	ld [wMusicFadeID], a
-.wait
-	ld a, [wMusicFade]
-	and a
-	jr nz, .wait
-	jp StopAllSounds
-
 HandleFlyWarpOrDungeonWarp::
 	call UpdateSprites
 	call Delay3

@@ -157,6 +157,16 @@ ClearVram::
 	xor a
 	jp FillMemory
 
+StopMusic::
+	ld hl, wMusicFade
+	ld [hl], a
+	xor a
+	ld [wMusicFadeID], a
+.wait
+	ld a, [hl]
+	and a
+	jr nz, .wait
+	; fallthrough
 
 StopAllSounds::
 ;	ld a, 0 ; BANK("Audio Engine 1")
