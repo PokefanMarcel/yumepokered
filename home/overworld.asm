@@ -480,19 +480,17 @@ TryWarpAtPlayerCoord: ; marcelnote - refactored warp engine
 .loop
 	ld a, [hli] ; Y coordinate of warp
 	cp d
-	jr nz, .retry1
 	ld a, [hli] ; X coordinate of warp
+	jr nz, .retry
 	cp e
-	jr nz, .retry2
+	jr nz, .retry
 	ld a, [hli]
 	ld [wDestinationWarpID], a
 	ld a, [hl]
 	ldh [hWarpDestinationMap], a
 	scf
 	ret
-.retry1
-	inc hl
-.retry2
+.retry
 	inc hl
 	inc hl
 	dec c
@@ -1016,14 +1014,11 @@ IsSpriteOrSignInFrontOfPlayer:: ; marcelnote - optimized
 .signLoop
 	ld a, [hli] ; sign Y
 	cp d
-	jr z, .yCoordMatched
-	inc hl
-	jr .retry
-.yCoordMatched
 	ld a, [hli] ; sign X
+	jr nz, .retry ; Y does not match
 	cp e
-	jr nz, .retry
-; X coord matched: found sign
+	jr nz, .retry ; X does not match
+; found sign
 	ld a, [wNumSigns]
 	sub b
 	ld hl, wSignTextIDs
@@ -1323,22 +1318,20 @@ LoadCurrentMapView:: ; marcelnote - optimized
 	add hl, bc
 .copyToVisibleAreaBuffer
 	decoord 0, 0 ; base address for the tiles that are directly transferred to VRAM during V-blank
-	ld b, SCREEN_HEIGHT
+	ld c, SCREEN_HEIGHT
 .rowLoop2
-	ld c, SCREEN_WIDTH
+	ld b, SCREEN_WIDTH
 .rowInnerLoop2
 	ld a, [hli]
 	ld [de], a
 	inc de
-	dec c
-	jr nz, .rowInnerLoop2
-	ld a, SURROUNDING_WIDTH - SCREEN_WIDTH
-	add l
-	ld l, a
-	adc h
-	sub l
-	ld h, a ; hl += SURROUNDING_WIDTH - SCREEN_WIDTH
 	dec b
+	jr nz, .rowInnerLoop2
+	ld a, c ; save c = remaining rows
+	ld c, SURROUNDING_WIDTH - SCREEN_WIDTH ; b = 0
+	add hl, bc
+	ld c, a ; restore c = remaining rows
+	dec c
 	jr nz, .rowLoop2
 	pop af
 	ldh [hLoadedROMBank], a
@@ -2048,12 +2041,13 @@ LoadMapHeader:: ; marcelnote - optimized
 .finishUp
 	predef LoadTilesetHeader
 	callfar LoadWildData
-	ld a, [wCurMapHeight] ; map height in 4x4 tile blocks
-	add a ; double it
+	ld hl, wCurMapHeight
+	ld a, [hli]                ; map height in 4x4 tile blocks
+	add a                      ; double it
 	ld [wCurrentMapHeight2], a ; store map height in 2x2 tile blocks
-	ld a, [wCurMapWidth] ; map width in 4x4 tile blocks
-	add a ; double it
-	ld [wCurrentMapWidth2], a ; map width in 2x2 tile blocks
+	ld a, [hl]                 ; map width in 4x4 tile blocks
+	add a                      ; double it
+	ld [wCurrentMapWidth2], a  ; map width in 2x2 tile blocks
 	ld a, [wCurMap]
 	ld c, a
 	ld b, 0
