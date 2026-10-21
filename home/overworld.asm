@@ -525,9 +525,8 @@ WarpFound2:: ; marcelnote - refactored warp engine
 	call PlayMapChangeSound
 .skipMapChangeSound
 	ld hl, wMovementFlags
-	res BIT_STANDING_ON_DOOR, [hl]
 	res BIT_EXITING_DOOR, [hl]
-	jr .done
+	jr .setStandingOnDoor
 .goBackOutside
 	ld a, [wLastMap]
 	ld [wCurMap], a
@@ -536,6 +535,7 @@ WarpFound2:: ; marcelnote - refactored warp engine
 	ld [wMapPalOffset], a
 .done
 	ld hl, wMovementFlags
+.setStandingOnDoor
 	set BIT_STANDING_ON_DOOR, [hl] ; have the player's sprite step out from the door (if there is one)
 	call IgnoreInputForHalfSecond
 	jp EnterMap
