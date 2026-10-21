@@ -359,10 +359,10 @@ OverworldLoopLessDelay::
 ; step counting
 	ld hl, wStepCounter
 	dec [hl]
-	ld a, [wStatusFlags2]
-	bit BIT_WILD_ENCOUNTER_COOLDOWN, a
+	inc hl ; wNumberOfNoRandomBattleStepsLeft
+	ld a, [hl]
+	and a
 	jr z, .doneStepCounting
-	ld hl, wNumberOfNoRandomBattleStepsLeft
 	dec [hl]
 	jr nz, .doneStepCounting
 	ld hl, wStatusFlags2
