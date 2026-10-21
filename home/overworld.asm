@@ -472,10 +472,10 @@ TryWarpAtPlayerCoord: ; marcelnote - refactored warp engine
 	and a
 	ret z
 	ld c, a
-	ld a, [wYCoord]
-	ld d, a
-	ld a, [wXCoord]
-	ld e, a
+	ld hl, wYCoord
+	ld a, [hli]
+	ld e, [hl] ; e = wXCoord
+	ld d, a    ; d = wYCoord
 	ld hl, wWarpEntries
 .loop
 	ld a, [hli] ; Y coordinate of warp
@@ -999,22 +999,22 @@ IsSpriteInFrontOfPlayer::
 .gotRange
 	lb bc, $3c, $40 ; Y and X position of player sprite
 	ld a, [wSpritePlayerStateData1FacingDirection]
-; check if player facing up
-	cp SPRITE_FACING_UP
-	jr nz, .checkIfPlayerFacingDown
-	ld a, b
-	sub d
-	ld b, a
-	ld a, PLAYER_DIR_UP
-	jr .doneCheckingDirection
-
-.checkIfPlayerFacingDown
-	cp SPRITE_FACING_DOWN
-	jr nz, .checkIfPlayerFacingRight
+; check if player facing down
+	and a ; SPRITE_FACING_DOWN?
+	jr nz, .checkIfPlayerFacingUp
 	ld a, b
 	add d
 	ld b, a
 	ld a, PLAYER_DIR_DOWN
+	jr .doneCheckingDirection
+
+.checkIfPlayerFacingUp
+	cp SPRITE_FACING_UP
+	jr nz, .checkIfPlayerFacingRight
+	ld a, b
+	sub d
+	ld b, a
+	ld a, PLAYER_DIR_UP
 	jr .doneCheckingDirection
 
 .checkIfPlayerFacingRight
@@ -1039,7 +1039,7 @@ IsSpriteInFrontOfPlayer::
 ; if there are sprites
 	ld hl, wSprite01StateData1
 	ld d, a
-	ld e, $01
+	ld e, 1 ; one-based NPC index/text ID
 .spriteLoop
 	ld a, [hli] ; image (0 if no sprite)
 	and a
@@ -1257,15 +1257,15 @@ LoadCurrentMapView:: ; marcelnote - optimized
 	ld a, [wYBlockCoord]
 	and a
 	jr z, .adjustForXCoordWithinTileBlock
-	ld bc, SURROUNDING_WIDTH * 2
+	ld c, SURROUNDING_WIDTH * 2 ; b = 0
 	add hl, bc
 .adjustForXCoordWithinTileBlock
-	ld a, [wXBlockCoord]
-	and a
-	jr z, .copyToVisibleAreaBuffer
-	ld bc, BLOCK_WIDTH / 2
-	add hl, bc
-.copyToVisibleAreaBuffer
+	ld a, [wXBlockCoord] ; always 0 or 1 here
+	ASSERT BLOCK_WIDTH / 2 == 2
+	add a
+	ld c, a
+	add hl, bc ; b = 0
+; copy to visible area buffer
 	decoord 0, 0 ; base address for the tiles that are directly transferred to VRAM during V-blank
 	ld c, SCREEN_HEIGHT
 .rowLoop2
@@ -1817,25 +1817,21 @@ LoadMapHeader:: ; marcelnote - optimized
 	ld b, a
 ; check north
 	bit NORTH_F, b
-	jr z, .checkSouth
 	ld de, wNorthConnectionHeader
-	call CopyMapConnectionHeader
-.checkSouth
+	call nz, CopyMapConnectionHeader
+; check south
 	bit SOUTH_F, b
-	jr z, .checkWest
 	ld de, wSouthConnectionHeader
-	call CopyMapConnectionHeader
-.checkWest
+	call nz, CopyMapConnectionHeader
+; check west
 	bit WEST_F, b
-	jr z, .checkEast
 	ld de, wWestConnectionHeader
-	call CopyMapConnectionHeader
-.checkEast
+	call nz, CopyMapConnectionHeader
+; check east
 	bit EAST_F, b
-	jr z, .getObjectDataPointer
 	ld de, wEastConnectionHeader
-	call CopyMapConnectionHeader
-.getObjectDataPointer
+	call nz, CopyMapConnectionHeader
+
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a ; hl = base of object data
@@ -1913,8 +1909,8 @@ LoadMapHeader:: ; marcelnote - optimized
 	ld a, [wNumSprites] ; number of sprites
 	and a ; are there any sprites?
 	jr z, .finishUp ; if there are no sprites, skip the rest
+	ld c, b ; c = 0 = sprite data offset
 	ld b, a ; b = number of sprites
-	ld c, 0 ; c = sprite data offset
 .loadSpriteLoop
 	ld a, [hli]
 	ld [de], a ; x#SPRITESTATEDATA1_PICTUREID
@@ -2066,12 +2062,10 @@ LoadMapData::
 	inc e
 	dec c
 	jr nz, .vramCopyInnerLoop
-	ld a, TILEMAP_WIDTH - SCREEN_WIDTH
-	add e
+	ld a, e
+	or TILEMAP_WIDTH - 1
 	ld e, a
-	adc d
-	sub e
-	ld d, a ; de += a
+	inc de ; column 31 -> column 0 of next row, carrying into d
 	dec b
 	jr nz, .vramCopyLoop
 	ld a, 1
