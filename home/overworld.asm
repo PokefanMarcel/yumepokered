@@ -565,127 +565,76 @@ WarpFound2:: ; marcelnote - refactored warp engine
 	jp EnterMap
 
 ; if no matching warp was found
-CheckMapConnections::
+CheckMapConnections:: ; marcelnote - optimized
 ; check west map
 	ld a, [wXCoord]
-	cp $ff
-	jr nz, .checkEastMap
-	ld a, [wWestConnectedMap]
-	ld [wCurMap], a
-	ld a, [wWestConnectedMapXAlignment] ; new X coordinate upon entering west map
-	ld [wXCoord], a
-	ld a, [wYCoord]
-	ld c, a
-	ld a, [wWestConnectedMapYAlignment] ; Y adjustment upon entering west map
-	add c
-	ld c, a
-	ld [wYCoord], a
-	ld hl, wWestConnectedMapViewPointer ; pointer to upper left corner of map without adjustment for Y position
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	srl c
-	jr z, .savePointer1
-	ld a, [wWestConnectedMapWidth]
-	add MAP_BORDER * 2
-	ld e, a
-	ld d, 0
-.pointerAdjustmentLoop1
-	add hl, de
-	dec c
-	jr nz, .pointerAdjustmentLoop1
-.savePointer1
-	ld a, l
-	ld [wCurrentTileBlockMapViewPointer], a ; pointer to upper left corner of current tile block map section
-	ld a, h
-	ld [wCurrentTileBlockMapViewPointer + 1], a
-	jp .loadNewMap
-
-.checkEastMap
 	ld b, a
+	ld hl, wWestConnectedMap
+	inc a ; $ff?
+	jr z, .westEast
+; check east map
 	ld a, [wCurrentMapWidth2]
 	cp b
 	jr nz, .checkNorthMap
-	ld a, [wEastConnectedMap]
+	ld hl, wEastConnectedMap
+.westEast
+	ld a, [hli] ; connected map ID
 	ld [wCurMap], a
-	ld a, [wEastConnectedMapXAlignment] ; new X coordinate upon entering east map
-	ld [wXCoord], a
+	ld bc, wWestConnectedMapYAlignment - wWestConnectedMapWidth
+	ASSERT wWestConnectedMapYAlignment - wWestConnectedMapWidth == MAP_BORDER * 2
+	ld a, [hl] ; connected map width
+	add c      ; c = MAP_BORDER * 2
+	ld e, a
+	ld d, b    ; de = connected map stride
+	add hl, bc ; skip strip fields
 	ld a, [wYCoord]
-	ld c, a
-	ld a, [wEastConnectedMapYAlignment] ; Y adjustment upon entering east map
-	add c
-	ld c, a
+	add [hl] ; Y alignment
 	ld [wYCoord], a
-	ld hl, wEastConnectedMapViewPointer ; pointer to upper left corner of map without adjustment for Y position
-	ld a, [hli]
+	srl a ; rows to add; preserve Z through the remaining header reads
+	ld c, a
+	inc hl
+	ld a, [hli] ; new X coordinate
+	ld [wXCoord], a
+	ld a, [hli] ; unadjusted view pointer
 	ld h, [hl]
 	ld l, a
-	srl c
-	jr z, .savePointer2
-	ld a, [wEastConnectedMapWidth]
-	add MAP_BORDER * 2
-	ld e, a
-	ld d, 0
-.pointerAdjustmentLoop2
+	jr z, .savePointer
+.pointerAdjustmentLoop
 	add hl, de
 	dec c
-	jr nz, .pointerAdjustmentLoop2
-.savePointer2
-	ld a, l
-	ld [wCurrentTileBlockMapViewPointer], a ; pointer to upper left corner of current tile block map section
-	ld a, h
-	ld [wCurrentTileBlockMapViewPointer + 1], a
-	jr .loadNewMap
+	jr nz, .pointerAdjustmentLoop
+	jr .savePointer
 
 .checkNorthMap
 	ld a, [wYCoord]
-	cp $ff
-	jr nz, .checkSouthMap
-	ld a, [wNorthConnectedMap]
-	ld [wCurMap], a
-	ld a, [wNorthConnectedMapYAlignment] ; new Y coordinate upon entering north map
-	ld [wYCoord], a
-	ld a, [wXCoord]
-	ld c, a
-	ld a, [wNorthConnectedMapXAlignment] ; X adjustment upon entering north map
-	add c
-	ld c, a
-	ld [wXCoord], a
-	ld hl, wNorthConnectedMapViewPointer ; pointer to upper left corner of map without adjustment for X position
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld b, 0
-	srl c
-	add hl, bc
-	ld a, l
-	ld [wCurrentTileBlockMapViewPointer], a ; pointer to upper left corner of current tile block map section
-	ld a, h
-	ld [wCurrentTileBlockMapViewPointer + 1], a
-	jr .loadNewMap
-
-.checkSouthMap
 	ld b, a
+	ld hl, wNorthConnectedMap
+	inc a ; $ff?
+	jr z, .northSouth
+; check south map
 	ld a, [wCurrentMapHeight2]
 	cp b
 	jp nz, OverworldLoop ; did not enter connected map
-	ld a, [wSouthConnectedMap]
+	ld hl, wSouthConnectedMap
+.northSouth
+	ld a, [hl] ; connected map ID
 	ld [wCurMap], a
-	ld a, [wSouthConnectedMapYAlignment] ; new Y coordinate upon entering south map
+	ld bc, wNorthConnectedMapYAlignment - wNorthConnectedMap ; b = 0
+	add hl, bc ; skip to alignment fields
+	ld a, [hli] ; new Y coordinate
 	ld [wYCoord], a
 	ld a, [wXCoord]
-	ld c, a
-	ld a, [wSouthConnectedMapXAlignment] ; X adjustment upon entering south map
-	add c
-	ld c, a
+	add [hl] ; X alignment
 	ld [wXCoord], a
-	ld hl, wSouthConnectedMapViewPointer ; pointer to upper left corner of map without adjustment for X position
-	ld a, [hli]
+	srl a
+	ld c, a ; b = 0 still
+	inc hl
+	ld a, [hli] ; unadjusted view pointer
 	ld h, [hl]
 	ld l, a
-	ld b, 0
-	srl c
 	add hl, bc
+
+.savePointer
 	ld a, l
 	ld [wCurrentTileBlockMapViewPointer], a ; pointer to upper left corner of current tile block map section
 	ld a, h
