@@ -1242,23 +1242,15 @@ CheckForTilePairCollisions:: ; marcelnote - optimized
 	inc hl
 	jr .tilePairCollisionLoop
 .tilesetMatches
-	ld a, [hli]
+	ld a, [hli] ; first tile
+	ld d, a
 	cp b
-	jr z, .currentTileMatchesFirstInPair
-	ld a, [hl]
+	ld a, [hli] ; second tile
+	jr z, .compareOtherTile
 	cp b
-	jr z, .currentTileMatchesSecondInPair
-	inc hl
-	jr .tilePairCollisionLoop
-.currentTileMatchesFirstInPair
-	ld a, [hli]
-	cp c
-	jr z, .foundMatch
-	jr .tilePairCollisionLoop
-.currentTileMatchesSecondInPair
-	dec hl
-	ld a, [hli]
-	inc hl
+	jr nz, .tilePairCollisionLoop
+	ld a, d
+.compareOtherTile
 	cp c
 	jr nz, .tilePairCollisionLoop
 .foundMatch
@@ -1599,7 +1591,7 @@ ScheduleEastColumnRedraw:: ; marcelnote - small optim
 
 ScheduleColumnRedrawHelper::
 	ld de, wRedrawRowOrColumnSrcTiles
-	ld c, SCREEN_HEIGHT
+	lb bc, SCREEN_WIDTH - 1, SCREEN_HEIGHT
 .loop
 	ld a, [hli]
 	ld [de], a
@@ -1607,12 +1599,12 @@ ScheduleColumnRedrawHelper::
 	ld a, [hl]
 	ld [de], a
 	inc de
-	ld a, SCREEN_WIDTH - 1
+	ld a, b
 	add l
 	ld l, a
 	adc h
 	sub l
-	ld h, a ; hl += a
+	ld h, a ; hl to next row
 	dec c
 	jr nz, .loop
 	ret
@@ -1857,10 +1849,9 @@ LoadMapHeader:: ; marcelnote - optimized
 	ret nz
 	ld hl, MapHeaderPointers
 	ld a, [wCurMap]
-	add a
 	ld c, a
 	ld b, 0
-	rl b
+	add hl, bc
 	add hl, bc
 	ld a, [hli]
 	ld h, [hl]
@@ -2015,13 +2006,13 @@ LoadMapHeader:: ; marcelnote - optimized
 	jr nz, .trainerSprite
 	bit BIT_ITEM, e
 	jr z, .regularSprite
-.itemBallSprite
+; item ball sprite
 	ld a, [hli]
 	push hl ; save hl = object data cursor after item number
 	ld hl, wMapSpriteExtraData
 	add hl, bc
 	ld [hli], a ; store item number in byte 0 of the entry
-	ld [hl], 0  ; zero byte 1, since it is not used
+	ld [hl], b  ; b = 0, zero byte 1, since it is not used
 	jr .nextSprite
 .trainerSprite
 	ld a, [hli] ; trainer class
@@ -2237,7 +2228,7 @@ LoadDestinationWarpPosition::
 	ld c, a
 	ld b, 0
 	add hl, bc
-	ld bc, 4
+	ld c, 4 ; b = 0
 	ld de, wCurrentTileBlockMapViewPointer
 	ldh a, [hLoadedROMBank]
 	push af
