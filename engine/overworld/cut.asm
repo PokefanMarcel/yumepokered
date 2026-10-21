@@ -9,21 +9,6 @@ UsedCut:
 	ld a, [wTileInFrontOfPlayer]
 	cp $50 ; gym cut tree
 	jr nz, .nothingToCut
-	jr .canCut
-.overworld
-	ld a, [wTileInFrontOfPlayer]
-	cp $3d ; cut tree
-	jr z, .canCut
-	cp $52 ; grass
-	jr z, .canCut
-.nothingToCut
-	ld hl, .NothingToCutText
-	jp PrintText
-
-.NothingToCutText
-	text_far _NothingToCutText
-	text_end
-
 .canCut
 	ld [wCutTile], a
 	ld a, 1
@@ -62,6 +47,19 @@ UsedCut:
 	ldh [hWY], a
 	call UpdateSprites
 	jp RedrawMapView
+.overworld
+	ld a, [wTileInFrontOfPlayer]
+	cp $3d ; cut tree
+	jr z, .canCut
+	cp $52 ; grass
+	jr z, .canCut
+.nothingToCut
+	ld hl, .NothingToCutText
+	jp PrintText
+
+.NothingToCutText
+	text_far _NothingToCutText
+	text_end
 
 InitCutAnimOAM: ; marcelnote - modified cut/boulder dust animation
 ; Load the tiles used by the 2x2 cut animation, then write four OAM entries.
@@ -122,11 +120,11 @@ AnimCut: ; marcelnote - modified cut/boulder dust animation
 	; Move the upper row right and the lower row left.
 	ld hl, wShadowOAMSprite36XCoord
 	inc [hl]
-	add hl, de
+	add hl, de ; hl = wShadowOAMSprite37XCoord
 	inc [hl]
-	ld hl, wShadowOAMSprite38XCoord
+	add hl, de ; hl = wShadowOAMSprite38XCoord
 	dec [hl]
-	add hl, de
+	add hl, de ; hl = wShadowOAMSprite39XCoord
 	dec [hl]
 	ldh a, [rOBP1]
 	xor $64
@@ -141,18 +139,19 @@ AnimCut: ; marcelnote - modified cut/boulder dust animation
 	push bc
 	ld b, 2 ; spread, swap, spread back
 .cutGrassPhaseLoop
+	ld de, OBJ_SIZE
 	ld c, 8
 .cutGrassSpreadLoop
 	; Spread the four leaf sprites outward horizontally.
 	ld hl, wShadowOAMSprite36XCoord
 	inc [hl]
-	ld hl, wShadowOAMSprite37XCoord
+	add hl, de ; wShadowOAMSprite37XCoord
 	inc [hl]
 	inc [hl]
-	ld hl, wShadowOAMSprite38XCoord
+	add hl, de ; wShadowOAMSprite38XCoord
 	dec [hl]
 	dec [hl]
-	ld hl, wShadowOAMSprite39XCoord
+	add hl, de ; wShadowOAMSprite39XCoord
 	dec [hl]
 	ldh a, [rOBP1]
 	xor $64
@@ -163,17 +162,17 @@ AnimCut: ; marcelnote - modified cut/boulder dust animation
 	; Swap left/right pairs so the same four sprites fold back inward next phase.
 	push bc
 	ld hl, wShadowOAMSprite36
-	ld de, wBuffer
-	ld bc, 2 * OBJ_SIZE
-	call CopyData
-	ld hl, wShadowOAMSprite38
-	ld de, wShadowOAMSprite36
-	ld bc, 2 * OBJ_SIZE
-	call CopyData
-	ld hl, wBuffer
 	ld de, wShadowOAMSprite38
-	ld bc, 2 * OBJ_SIZE
-	call CopyData
+	ld b, 2 * OBJ_SIZE
+.swapLoop
+	ld c, [hl]
+	ld a, [de]
+	ld [hli], a
+	ld a, c
+	ld [de], a
+	inc de
+	dec b
+	jr nz, .swapLoop
 	pop bc
 	dec b
 	jr nz, .cutGrassPhaseLoop
@@ -340,45 +339,40 @@ GetCutTreeBlock:
 	srl c
 
 ; Convert target block coordinates to a source pointer in the map's block data.
-	push bc
-	ld hl, wCurMapDataPtr ; marcelnote - optimized load from wCurMapDataPtr
+	ld hl, wCurMapWidth ; marcelnote - optimized
+	ld a, [hli]
+	ld e, a
+	ld d, 0
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	ld a, b
 	and a
 	jr z, .gotSourceRow
-	ld a, [wCurMapWidth]
-	ld e, a
-	ld d, 0
 .sourceRowLoop
 	add hl, de
 	dec b
 	jr nz, .sourceRowLoop
 .gotSourceRow ; b = 0
 	add hl, bc
+	ld b, a ; restore the original block row
 	ld a, l
 	ld [wBuffer + 1], a
 	ld a, h
 	ld [wBuffer + 2], a
-	pop bc
 
 ; Convert target block coordinates to the matching destination in wOverworldMap.
-	ld a, [wCurMapWidth]
+	ld a, e
 	add MAP_BORDER * 2
-	ld e, a
-	ld d, 0        ; de = row size
-	ld hl, wOverworldMap
+	ld e, a        ; de = row size
+	ld hl, wOverworldMap + MAP_BORDER
 	ld a, b
 	add MAP_BORDER ; also skip 3 border rows
 .destRow
 	add hl, de
 	dec a
 	jr nz, .destRow
-	ld a, c
-	add MAP_BORDER
-	ld e, a
-	ld d, 0
+	ld e, c
 	add hl, de
 	scf
 	ret
@@ -472,21 +466,18 @@ ApplyTemporaryTileBlockReplacementToCurrentMap:
 	ld [wBuffer + 5], a ; destination stride
 	ld e, a
 	ld d, 0
-	ld hl, wOverworldMap
+	ld hl, wOverworldMap + MAP_BORDER
 	add hl, de
 	add hl, de
-	add hl, de
-	ld e, MAP_BORDER
 	add hl, de ; skip north and west borders
 	ld d, h
 	ld e, l
 	ld hl, wCurMapHeight ; marcelnote - optimized load from wCurMapHeight and wCurMapWidth
-	ld a, [hli]
-	ld b, a    ; b = wCurMapHeight
-	ld c, [hl] ; c = wCurMapWidth
-	ASSERT wCurMapHeight + 1 == wCurMapWidth
-	ld hl, wCurMapDataPtr ; marcelnote - optimized load from wCurMapDataPtr
-	ld a, [hli]
+	ld a, [hli] ; wCurMapHeight
+	ld b, a
+	ld a, [hli] ; wCurMapWidth
+	ld c, a
+	ld a, [hli] ; wCurMapDataPtr
 	ld h, [hl]
 	ld l, a
 	jr ApplyTemporaryTileBlockReplacementToRegion
