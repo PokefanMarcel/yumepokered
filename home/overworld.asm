@@ -1639,16 +1639,14 @@ JoypadOverworld::
 	and b
 	ret nz ; return if the simulated button presses are overridden
 	ld hl, wSimulatedJoypadStatesIndex
-	dec [hl]
 	ld a, [hl]
-	cp $ff
+	and a
 	jr z, .doneSimulating ; if the end of the simulated button presses has been reached
-	ld hl, wSimulatedJoypadStatesEnd
-	add l
-	ld l, a
-	adc h
-	sub l
-	ld h, a ; hl += a
+	dec [hl]
+	ld hl, wSimulatedJoypadStatesEnd - 1 ; index is 1-based
+	ld b, 0
+	ld c, a
+	add hl, bc
 	ld a, [hl]
 	ldh [hJoyHeld], a ; store simulated button press in joypad state
 	and a
@@ -1661,7 +1659,6 @@ JoypadOverworld::
 .doneSimulating
 	xor a
 ;	ld [wUnusedOverrideSimulatedJoypadStatesIndex], a
-	ld [wSimulatedJoypadStatesIndex], a
 	ld [wSimulatedJoypadStatesEnd], a
 	ld [wJoyIgnore], a
 	ldh [hJoyHeld], a
