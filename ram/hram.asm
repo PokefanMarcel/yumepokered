@@ -320,11 +320,7 @@ hNewPartyLength:: db
 
 hIsToggleableObjectOff:: db
 
-	ds 2
-
-hMapROMBank:: db
-
-	ds 1 ; marcelnote - was hSpriteVRAMSlotAndFacing
+	ds 4 ; marcelnote - removed hSpriteVRAMSlotAndFacing and hMapROMBank
 
 hCoordsInFrontOfPlayerMatch::
 hSpriteAnimFrameCounter::

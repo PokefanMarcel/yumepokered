@@ -2200,21 +2200,20 @@ LoadMapData::
 
 ; function to switch to the ROM bank that a map is stored in
 ; Input: a = map number
-SwitchToMapRomBank::
+SwitchToMapRomBank:: ; marcelnote - optimized
 	push hl
-	push bc
-	ld c, a
-	ld b, 0
-	ld a, BANK(MapHeaderBanks)
-    ldh [hLoadedROMBank], a ; marcelnote - removed extra bankswitching
-    ld [rROMB], a
 	ld hl, MapHeaderBanks
-	add hl, bc
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a ; hl += map number
+	ld a, BANK(MapHeaderBanks)
+	ldh [hLoadedROMBank], a ; marcelnote - removed extra bankswitching
+	ld [rROMB], a
 	ld a, [hl]
-	ldh [hMapROMBank], a
 	ldh [hLoadedROMBank], a
 	ld [rROMB], a
-	pop bc
 	pop hl
 	ret
 
