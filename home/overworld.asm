@@ -2103,12 +2103,11 @@ LoadMapData::
 	ldh a, [hLoadedROMBank]
 	push af
 	call DisableLCD
+	ld hl, wMapViewVRAMPointer
 	xor a
+	ld [hli], a            ; wMapViewVRAMPointer
+	ld [hl], HIGH(vBGMap0) ; wMapViewVRAMPointer + 1
 	ld [wTemporaryTileBlockReplacementsCount], a ; marcelnote - modified cut trees engine
-	ld a, HIGH(vBGMap0)
-	ld [wMapViewVRAMPointer + 1], a
-	xor a
-	ld [wMapViewVRAMPointer], a
 	ldh [hSCY], a
 	ldh [hSCX], a
 	ld [wWalkCounter], a
