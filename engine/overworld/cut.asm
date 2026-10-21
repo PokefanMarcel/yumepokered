@@ -493,48 +493,42 @@ ApplyTemporaryTileBlockReplacementToCurrentMap:
 
 ApplyTemporaryTileBlockReplacementToNorthSouthConnection:
 ; Set up the visible 3-row strip for a north or south connection.
-	inc hl ; connected map
-	ld a, [hli] ; strip source
-	ld e, a
-	ld a, [hli]
-	ld d, a
-	push de
+	inc hl      ; skip connected map
+	ld a, [hli] ; connected map width
+	ld [wBuffer + 4], a ; source stride
+	ld a, [hli] ; strip width
+	ld c, a
 	ld a, [hli] ; strip destination
 	ld e, a
 	ld a, [hli]
 	ld d, a
-	ld a, [hli] ; strip width
-	ld c, a
-	ld a, [hl] ; connected map width
-	ld [wBuffer + 4], a ; source stride
+	ld a, [hli] ; strip source
+	ld h, [hl]
+	ld l, a
 	ld a, [wCurMapWidth]
 	add MAP_BORDER * 2
 	ld [wBuffer + 5], a ; destination stride
 	ld b, MAP_BORDER
-	pop hl
 	jr ApplyTemporaryTileBlockReplacementToRegion
 
 ApplyTemporaryTileBlockReplacementToEastWestConnection:
 ; Set up the visible 3-column strip for a west or east connection.
-	inc hl ; connected map
-	ld a, [hli] ; strip source
-	ld e, a
-	ld a, [hli]
-	ld d, a
-	push de
+	inc hl      ; skip connected map
+	ld a, [hli] ; connected map width
+	ld [wBuffer + 4], a ; source stride
+	ld a, [hli] ; strip height
+	ld b, a
 	ld a, [hli] ; strip destination
 	ld e, a
 	ld a, [hli]
 	ld d, a
-	ld a, [hli] ; strip height
-	ld b, a
-	ld a, [hl] ; connected map width
-	ld [wBuffer + 4], a ; source stride
+	ld a, [hli] ; strip source
+	ld h, [hl]
+	ld l, a
 	ld a, [wCurMapWidth]
 	add MAP_BORDER * 2
 	ld [wBuffer + 5], a ; destination stride
 	ld c, MAP_BORDER
-	pop hl
 	; fallthrough
 
 ApplyTemporaryTileBlockReplacementToRegion:

@@ -53,11 +53,8 @@ hDownArrowBlinkCount2:: db
 NEXTU
 ; marcelnote - reordered for LoadTileBlockMap optim
 hMapStride:: db
-hMapWidth:: db
-hEastWestConnectedMapWidth::
-hNorthSouthConnectionStripWidth::
-	db
-hNorthSouthConnectedMapWidth::
+hNorthSouthConnectedMapSkip::
+hEastWestConnectedMapSkip::
 	db
 
 NEXTU

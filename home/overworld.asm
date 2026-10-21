@@ -867,172 +867,138 @@ LoadTileBlockMap:: ; marcelnote - optimized
 	ld a, [wMapBackgroundTile]
 	call FillMemory ; returns bc = 0
 ; load tile map of current map (made of tile block IDs)
-; a 3-byte border at the edges of the map is kept so that there is space for map connections
-	ld hl, wOverworldMap
-	ld a, [wCurMapWidth]
-	ldh [hMapWidth], a
-	add MAP_BORDER * 2 ; east and west
+	ld hl, wCurMapWidth
+	ld a, [hli]
+	push af ; save a = width
+	add MAP_BORDER * 2  ; east and west
 	ldh [hMapStride], a ; map width + border
 	ld c, a
-; make space for north border (next 3 lines)
+	ld a, [hli] ; wCurMapDataPtr
+	ld d, [hl]  ; wCurMapDataPtr + 1
+	ld e, a     ; de = tile map pointer
+; a 3-block border at the edges of the map is kept so that there is space for map connections
+	ld hl, wOverworldMap + MAP_BORDER ; offset puts us past the west border
+	add hl, bc ; c = map stride
 	add hl, bc
-	add hl, bc
-	add hl, bc
-	ld c, MAP_BORDER
-	add hl, bc ; this puts us past the (west) border
-	ld a, [wCurMapDataPtr] ; tile map pointer
-	ld e, a
-	ld a, [wCurMapDataPtr + 1]
-	ld d, a ; de = tile map pointer
+	add hl, bc ; make space for north border (3 lines)
+	pop bc ; restore b = width
 	ld a, [wCurMapHeight]
-	ld b, a
-.rowLoop ; copy one row each iteration
-	ldh a, [hMapWidth] ; map width (without border)
 	ld c, a
-.rowInnerLoop
+.rowLoop ; copy one row each iteration
+	push bc ; save b = width, c = rows remaining
+.blockLoop
 	ld a, [de]
 	inc de
 	ld [hli], a
-	dec c
-	jr nz, .rowInnerLoop
-; get to the next row's address
-	ld a, MAP_BORDER * 2
-	add l
-	ld l, a
-	adc h
-	sub l
-	ld h, a ; hl += MAP_BORDER * 2
 	dec b
+	jr nz, .blockLoop
+; get to the next row's address
+	ld c, MAP_BORDER * 2 ; b = 0
+	add hl, bc
+	pop bc  ; restore b = width, c = rows remaining
+	dec c
 	jr nz, .rowLoop
 ; north connection
-	ld a, [wNorthConnectedMap]
+	ld hl, wNorthConnectedMap
+	ld a, [hli]
 	cp $ff
-	jr z, .southConnection
-	call SwitchToMapRomBank
-	ld hl, wNorthConnectedMapWidth
-	ld a, [hld]
-	ldh [hNorthSouthConnectedMapWidth], a
-	ld a, [hld] ; wNorthConnectionStripLength
-	ldh [hNorthSouthConnectionStripWidth], a
-	ld a, [hld] ; wNorthConnectionStripDest + 1
-	ld d, a
-	ld a, [hld] ; wNorthConnectionStripDest
-	ld e, a
-	ld a, [hld] ; wNorthConnectionStripSrc + 1
-	ld l, [hl]  ; wNorthConnectionStripSrc
-	ld h, a
-	call LoadNorthSouthConnectionsTileMap
-.southConnection
-	ld a, [wSouthConnectedMap]
+	call nz, LoadNorthSouthConnection
+; south connection
+	ld hl, wSouthConnectedMap
+	ld a, [hli]
 	cp $ff
-	jr z, .westConnection
-	call SwitchToMapRomBank
-	ld hl, wSouthConnectedMapWidth
-	ld a, [hld]
-	ldh [hNorthSouthConnectedMapWidth], a
-	ld a, [hld] ; wSouthConnectionStripLength
-	ldh [hNorthSouthConnectionStripWidth], a
-	ld a, [hld] ; wSouthConnectionStripDest + 1
-	ld d, a
-	ld a, [hld] ; wSouthConnectionStripDest
-	ld e, a
-	ld a, [hld] ; wSouthConnectionStripSrc + 1
-	ld l, [hl]  ; wSouthConnectionStripSrc
-	ld h, a
-	call LoadNorthSouthConnectionsTileMap
-.westConnection
-	ld a, [wWestConnectedMap]
+	call nz, LoadNorthSouthConnection
+; west connection
+	ld hl, wWestConnectedMap
+	ld a, [hli]
 	cp $ff
-	jr z, .eastConnection
-	call SwitchToMapRomBank
-	ld hl, wWestConnectedMapWidth
-	ld a, [hld]
-	ldh [hEastWestConnectedMapWidth], a
-	ld a, [hld] ; wWestConnectionStripLength
-	ld b, a
-	ld a, [hld] ; wWestConnectionStripDest + 1
-	ld d, a
-	ld a, [hld] ; wWestConnectionStripDest
-	ld e, a
-	ld a, [hld] ; wWestConnectionStripSrc + 1
-	ld l, [hl]  ; wWestConnectionStripSrc
-	ld h, a
-	call LoadEastWestConnectionsTileMap
-.eastConnection
-	ld a, [wEastConnectedMap]
+	call nz, LoadEastWestConnection
+; east connection
+	ld hl, wEastConnectedMap
+	ld a, [hli]
 	cp $ff
-	jr z, .applyTemporaryTileBlockReplacements ; marcelnote - modified cut trees engine
-	call SwitchToMapRomBank
-	ld hl, wEastConnectedMapWidth
-	ld a, [hld]
-	ldh [hEastWestConnectedMapWidth], a
-	ld a, [hld] ; wEastConnectionStripLength
-	ld b, a
-	ld a, [hld] ; wEastConnectionStripDest + 1
-	ld d, a
-	ld a, [hld] ; wEastConnectionStripDest
-	ld e, a
-	ld a, [hld] ; wEastConnectionStripSrc + 1
-	ld l, [hl]  ; wEastConnectionStripSrc
-	ld h, a
-	call LoadEastWestConnectionsTileMap
-.applyTemporaryTileBlockReplacements
+	call nz, LoadEastWestConnection
 	jpfar ApplyTemporaryTileBlockReplacements ; marcelnote - modified cut trees engine
 
-LoadNorthSouthConnectionsTileMap::
-	ld c, MAP_BORDER
-.loop
-	push de
-	push hl
-	ldh a, [hNorthSouthConnectionStripWidth]
+; Inputs: a = connected map ID
+;         hl = connection header's ConnectedMapWidth
+LoadNorthSouthConnection:
+	call SwitchToMapRomBank
+	ld a, [hli] ; map width
+	sub [hl]
+	ldh [hNorthSouthConnectedMapSkip], a
+	ld a, [hli] ; strip length
 	ld b, a
-.innerLoop
+	ld a, [hli] ; destination low byte
+	ld e, a
+	ld a, [hli] ; destination high byte
+	ld d, a
+	ld a, [hli] ; source low byte
+	ld h, [hl]  ; source high byte
+	ld l, a
+	ld c, MAP_BORDER
+.rowLoop
+	push bc ; save b = strip length, c = rows remaining
+.blockLoop
 	ld a, [hli]
 	ld [de], a
 	inc de
 	dec b
-	jr nz, .innerLoop
-	pop hl
-	ldh a, [hNorthSouthConnectedMapWidth]
-	ld e, a
-	ld d, b
-	add hl, de ; hl += [hNorthSouthConnectedMapWidth]
-	pop de
+	jr nz, .blockLoop
+	ldh a, [hNorthSouthConnectedMapSkip]
+	ld c, a    ; b = 0
+	add hl, bc ; advance source to next row
+	pop bc ; restore b = strip length, c = rows remaining
 	ldh a, [hMapStride]
+	sub b
 	add e
 	ld e, a
 	adc d
 	sub e
-	ld d, a ; de += [wCurMapWidth] + MAP_BORDER * 2
+	ld d, a ; de += [hMapStride] - strip length
 	dec c
-	jr nz, .loop
+	jr nz, .rowLoop
 	ret
 
-LoadEastWestConnectionsTileMap::
-	push hl
+; Inputs: a = connected map ID
+;         hl = connection header's ConnectedMapWidth
+LoadEastWestConnection:
+	call SwitchToMapRomBank
+	ld a, [hli] ; map width
+	sub MAP_BORDER
+	ldh [hEastWestConnectedMapSkip], a
+	ld a, [hli] ; strip length
+	ld b, a
+	ld a, [hli] ; destination low byte
+	ld e, a
+	ld a, [hli] ; destination high byte
+	ld d, a
+	ld a, [hli] ; source low byte
+	ld h, [hl]  ; source high byte
+	ld l, a
+.rowLoop
 	ld c, MAP_BORDER
-.innerLoop
+.blockLoop
 	ld a, [hli]
 	ld [de], a
 	inc de
 	dec c
-	jr nz, .innerLoop
-	pop hl
-	ldh a, [hEastWestConnectedMapWidth]
+	jr nz, .blockLoop
+	ldh a, [hEastWestConnectedMapSkip]
 	add l
 	ld l, a
 	adc h
 	sub l
-	ld h, a ; hl += [hEastWestConnectedMapWidth]
-	ldh a, [hMapWidth]
-	add MAP_BORDER
+	ld h, a ; hl += [hEastWestConnectedMapSkip]
+	ldh a, [hMapStride]
+	sub MAP_BORDER
 	add e
 	ld e, a
 	adc d
 	sub e
-	ld d, a ; de += [wCurMapWidth] + MAP_BORDER * 2
+	ld d, a ; de += [wCurMapWidth] + MAP_BORDER
 	dec b
-	jr nz, LoadEastWestConnectionsTileMap
+	jr nz, .rowLoop
 	ret
 
 ; function to check if there is a sign or sprite in front of the player
@@ -2201,20 +2167,18 @@ LoadMapData::
 ; function to switch to the ROM bank that a map is stored in
 ; Input: a = map number
 SwitchToMapRomBank:: ; marcelnote - optimized
-	push hl
-	ld hl, MapHeaderBanks
-	add l
-	ld l, a
-	adc h
-	sub l
-	ld h, a ; hl += map number
+	ld bc, MapHeaderBanks
+	add c
+	ld c, a
+	adc b
+	sub c
+	ld b, a ; bc += map number
 	ld a, BANK(MapHeaderBanks)
-	ldh [hLoadedROMBank], a ; marcelnote - removed extra bankswitching
-	ld [rROMB], a
-	ld a, [hl]
 	ldh [hLoadedROMBank], a
 	ld [rROMB], a
-	pop hl
+	ld a, [bc]
+	ldh [hLoadedROMBank], a
+	ld [rROMB], a
 	ret
 
 IgnoreInputForHalfSecond:

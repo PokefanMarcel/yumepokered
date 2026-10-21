@@ -236,11 +236,12 @@ MACRO connection
 		fail "Invalid direction for 'connection'."
 	ENDC
 
+	; marcelnote - optimized order
 	db \3
-	dw \2_Blocks + _blk
-	dw wOverworldMap + _map
-	db _len - _src
 	db \3_WIDTH
+	db _len - _src
+	dw wOverworldMap + _map
+	dw \2_Blocks + _blk
 	db _y, _x
 	dw wOverworldMap + _win
 ENDM

@@ -122,11 +122,11 @@ MACRO animated_object ; marcelnote - Pikachu's Beach minigame
 ENDM
 
 MACRO map_connection_struct
-\1ConnectedMap::            db
-\1ConnectionStripSrc::      dw
-\1ConnectionStripDest::     dw
-\1ConnectionStripLength::   db
+\1ConnectedMap::            db ; marcelnote - optimized order
 \1ConnectedMapWidth::       db
+\1ConnectionStripLength::   db
+\1ConnectionStripDest::     dw
+\1ConnectionStripSrc::      dw
 \1ConnectedMapYAlignment::  db
 \1ConnectedMapXAlignment::  db
 \1ConnectedMapViewPointer:: dw
