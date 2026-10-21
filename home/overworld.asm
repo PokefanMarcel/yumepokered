@@ -135,9 +135,7 @@ OverworldLoopLessDelay::
 	predef GetTileAndCoordsInFrontOfPlayer
 	call UpdateSprites
 	ld a, [wMiscFlags]
-	bit BIT_TURNING, a
-	jr nz, .checkForOpponent
-	bit BIT_SEEN_BY_TRAINER, a
+	and (1 << BIT_TURNING) | (1 << BIT_SEEN_BY_TRAINER)
 	jr nz, .checkForOpponent
 	lda_coord 8, 9
 	ld [wTilePlayerStandingOn], a ; checked when using Surf for forbidden tile pairs
