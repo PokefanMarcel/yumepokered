@@ -1832,8 +1832,8 @@ LoadMapHeader:: ; marcelnote - optimized
 	inc e
 	ld a, [hli]
 	ld [de], a ; x#SPRITESTATEDATA2_MOVEMENTBYTE1
-	push bc ; save b = remaining sprites, c = sprite extra data offset
 	push de ; save de = current sprite's SPRITESTATEDATA2_MOVEMENTBYTE1 pointer
+	ld d, b ; save b = remaining sprites
 	ld a, [hli] ; movement byte 2
 	ld e, [hl]  ; text ID and flags byte
 	inc hl
@@ -1862,14 +1862,14 @@ LoadMapHeader:: ; marcelnote - optimized
 	ld [hl], e
 .nextSprite
 	pop hl ; restore hl = object data cursor for next sprite
+	ld b, d ; restore b = remaining sprites
 	pop de ; restore de = current sprite's SPRITESTATEDATA2_MOVEMENTBYTE1 pointer
-	pop bc ; restore b = remaining sprites, c = sprite extra data offset
 	dec d
 	ld a, SPRITESTATEDATA1_LENGTH - SPRITESTATEDATA2_MOVEMENTBYTE1
 	add e
 	ld e, a
 	inc c
-	inc c
+	inc c ; next sprite data offset
 	dec b
 	jr nz, .loadSpriteLoop
 
