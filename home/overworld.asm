@@ -1445,7 +1445,7 @@ AdvancePlayerSprite:: ; marcelnote - optim by Engezerstorung
 .reloadAndScrollBackgroundAndSprites
 	pop bc ; restore steps vectors
 .scrollBackgroundAndSprites
-; Scroll the background and shift all on-screen sprites in the opposite
+; Scroll the background and shift all sprites in the opposite
 ; direction so the player appears to move through the world.
 	sla b
 	sla c
