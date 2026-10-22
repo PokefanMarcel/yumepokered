@@ -1123,17 +1123,16 @@ CollisionCheckOnWater::
 	jr z, .stopSurfing ; stop surfing if the tile is passable
 	jr .loop
 
+.checkIfVermilionDockTileset
+	ld a, [wCurMapTileset]
+	cp SHIP_PORT ; Vermilion Dock tileset
+	jr nz, CollisionCheckOnLand.noCollision ; keep surfing if it's not the boarding platform tile
 .stopSurfing
 	xor a
 	ld [wWalkBikeSurfState], a
 	call LoadPlayerSpriteGraphics
 	call PlayDefaultMusic
 	jr CollisionCheckOnLand.noCollision
-.checkIfVermilionDockTileset
-	ld a, [wCurMapTileset]
-	cp SHIP_PORT ; Vermilion Dock tileset
-	jr nz, CollisionCheckOnLand.noCollision ; keep surfing if it's not the boarding platform tile
-	jr .stopSurfing ; if it is the boarding platform tile, stop surfing
 
 ; function that checks if the tile in front of the player is passable
 ; clears carry if it is, sets carry if not
@@ -1232,9 +1231,8 @@ LoadCurrentMapView:: ; marcelnote - optimized
 	ld c, SCREEN_BLOCK_WIDTH
 .rowInnerLoop ; loop to draw each tile block of the current row
 	push bc
-	ld a, [hli]
+	ld a, [hli] ; tile block number
 	push hl
-	ld c, a ; tile block number
 	call DrawTileBlock
 	pop hl
 	pop bc
@@ -1589,22 +1587,20 @@ ScheduleColumnRedrawHelper::
 	ret
 
 ; Write the 4x4 tiles that make up a tile block to memory.
-; Input: c = tile block ID, de = destination address in wSurroundingTiles.
+; Input: a = tile block ID, de = destination address in wSurroundingTiles.
 ; Output: de = destination address for the next horizontal tile block.
 DrawTileBlock:: ; marcelnote - optimized
-	ld hl, wTilesetBlocksPtr
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	; Each block is 16 bytes, so the table offset is c * $10.
-	ld a, c
-	swap a
+	swap a ; each block is 16 bytes, so the table offset is a * $10
 	ld b, a
 	and $f0
 	ld c, a
 	xor b
-	ld b, a ; bc = c * $10
-	add hl, bc ; hl += c * $10
+	ld b, a ; bc = a * $10
+	ld hl, wTilesetBlocksPtr
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	add hl, bc ; hl += a * $10
 	lb bc, BLOCK_HEIGHT, SURROUNDING_WIDTH - BLOCK_WIDTH
 .loop ; each loop iteration, write 4 tile numbers
 REPT BLOCK_WIDTH
