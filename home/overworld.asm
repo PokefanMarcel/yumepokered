@@ -1066,13 +1066,11 @@ CollisionCheckOnLand::
 ;	ld a, [wChannelSoundIDs + CHAN5]
 ;	cp SFX_COLLISION ; check if collision sound is already playing
 ;	jr z, .setCarry
-	; ch5 on?
-	ld hl, wChannel5 + wChannel1Flags1 - wChannel1 ; + CHANNEL_FLAGS1
-	bit 0, [hl]
-	jr nz, .setCarry
+	ld a, [wChannel5Flags1]
+	rrca  ; channel 5 on?
+	ret c ; return collision if already on
 	ld a, SFX_COLLISION
-	call PlaySound ; play collision sound (if it's not already playing)
-.setCarry
+	call PlaySound ; play collision sound if it's not already playing
 	scf
 	ret
 .noCollision
