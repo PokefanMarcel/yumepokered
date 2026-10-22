@@ -1462,9 +1462,10 @@ AdvancePlayerSprite:: ; marcelnote - optim by Engezerstorung
 ScheduleNorthRowRedraw::
 	hlcoord 0, 0
 	call CopyToRedrawRowOrColumnSrcTiles
-	ld a, [wMapViewVRAMPointer]
+	ld hl, wMapViewVRAMPointer
+	ld a, [hli]
 	ldh [hRedrawRowOrColumnDest], a
-	ld a, [wMapViewVRAMPointer + 1]
+	ld a, [hl]
 	ldh [hRedrawRowOrColumnDest + 1], a
 	ld a, REDRAW_ROW
 	ldh [hRedrawRowOrColumnMode], a
@@ -1481,21 +1482,19 @@ CopyToRedrawRowOrColumnSrcTiles::
 	jr nz, .loop
 	ret
 
-ScheduleSouthRowRedraw::
+ScheduleSouthRowRedraw:: ; marcelnote - small optim
 	hlcoord 0, 16
 	call CopyToRedrawRowOrColumnSrcTiles
+; The BG map has 32 bytes per row, so row 16 starts 32 * 16 = $200 bytes
+; past the view origin. The map occupies $400 bytes at $9800-$9bff.
+; Adding $200 modulo $400 toggles address bit 9: bit 1 of the high byte.
+; The low byte stays unchanged; the high byte maps $98 <-> $9a and $99 <-> $9b.
 	ld hl, wMapViewVRAMPointer
 	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	inc h
-	inc h ; hl += $200 (16 BG rows)
-	ld a, h
-	and $03
-	or $98
-	ldh [hRedrawRowOrColumnDest + 1], a
-	ld a, l
 	ldh [hRedrawRowOrColumnDest], a
+	ld a, [hl]
+	xor $02 ; toggle bit 1 of high byte
+	ldh [hRedrawRowOrColumnDest + 1], a
 	ld a, REDRAW_ROW
 	ldh [hRedrawRowOrColumnMode], a
 	ret
@@ -1503,14 +1502,17 @@ ScheduleSouthRowRedraw::
 ScheduleEastColumnRedraw:: ; marcelnote - small optim
 	hlcoord 18, 0
 	call ScheduleColumnRedrawHelper
-	ld a, [wMapViewVRAMPointer]
-	ld b, a ; add 18 to the column modulo 32
+	ld hl, wMapViewVRAMPointer
+	ld a, [hli]
+; The BG map has 32 bytes per row, so bits 0-4 select the column.
+; The view origin is on an even BG row: bit 5 of its low byte is clear.
+; Adding 18 gives a column offset in 18-49, which can overflow into bit 5
+; but no higher. Clearing bit 5 wraps the column modulo 32 without changing
+; the row bits or the high byte.
 	add 18
-	xor b
-	and $1f
-	xor b
+	and ~(1 << 5)
 	ldh [hRedrawRowOrColumnDest], a
-	ld a, [wMapViewVRAMPointer + 1]
+	ld a, [hl]
 	ldh [hRedrawRowOrColumnDest + 1], a
 	ld a, REDRAW_COL
 	ldh [hRedrawRowOrColumnMode], a
@@ -1539,9 +1541,10 @@ ScheduleColumnRedrawHelper::
 ScheduleWestColumnRedraw::
 	hlcoord 0, 0
 	call ScheduleColumnRedrawHelper
-	ld a, [wMapViewVRAMPointer]
+	ld hl, wMapViewVRAMPointer
+	ld a, [hli]
 	ldh [hRedrawRowOrColumnDest], a
-	ld a, [wMapViewVRAMPointer + 1]
+	ld a, [hl]
 	ldh [hRedrawRowOrColumnDest + 1], a
 	ld a, REDRAW_COL
 	ldh [hRedrawRowOrColumnMode], a
