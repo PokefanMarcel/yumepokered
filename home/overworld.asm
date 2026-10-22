@@ -429,45 +429,13 @@ NewBattle:: ; marcelnote - optimized
 	ret nz
 	jpfar InitBattle
 
-; destination warp/map for WarpFound2
-TryWarpAtPlayerCoord: ; marcelnote - refactored warp engine
-	ld a, [wNumberOfWarps]
-	and a
-	ret z
-	ld c, a
-	ld hl, wYCoord
-	ld a, [hli]
-	ld e, [hl] ; e = wXCoord
-	ld d, a    ; d = wYCoord
-	ld hl, wWarpEntries
-.loop
-	ld a, [hli] ; Y coordinate of warp
-	cp d
-	ld a, [hli] ; X coordinate of warp
-	jr nz, .retry
-	cp e
-	jr nz, .retry
-	ld a, [hli]
-	ld [wDestinationWarpID], a
-	ld a, [hl]
-	ldh [hWarpDestinationMap], a
-	scf
-	ret
-.retry
-	inc hl
-	inc hl
-	dec c
-	jr nz, .loop
-	and a
-	ret
-
 ; check if the player has stepped onto a warp after having not collided
 CheckWarpsNoCollision:: ; marcelnote - refactored warp engine
 	call TryWarpAtPlayerCoord
 	jp nc, CheckMapConnections
 	ld a, [wDestinationWarpID]
 	and WARP_DIR_MASK ; ANY_DIR?
-	jp nz, CheckMapConnections
+	jr nz, CheckMapConnections
 	; fallthrough
 
 WarpFound2:: ; marcelnote - refactored warp engine
@@ -621,6 +589,39 @@ CheckMapConnections:: ; marcelnote - optimized
 	callfar InitMapSprites
 	call LoadTileBlockMap
 	jp OverworldLoopLessDelay
+
+; returns carry if the player's coordinates match a warp, and copies the
+; destination warp/map for WarpFound2
+TryWarpAtPlayerCoord: ; marcelnote - refactored warp engine
+	ld a, [wNumberOfWarps]
+	and a
+	ret z
+	ld c, a
+	ld hl, wYCoord
+	ld a, [hli]
+	ld e, [hl] ; e = wXCoord
+	ld d, a    ; d = wYCoord
+	ld hl, wWarpEntries
+.loop
+	ld a, [hli] ; Y coordinate of warp
+	cp d
+	ld a, [hli] ; X coordinate of warp
+	jr nz, .retry
+	cp e
+	jr nz, .retry
+	ld a, [hli]
+	ld [wDestinationWarpID], a
+	ld a, [hl]
+	ldh [hWarpDestinationMap], a
+	scf
+	ret
+.retry
+	inc hl
+	inc hl
+	dec c
+	jr nz, .loop
+	and a
+	ret
 
 ; function to play a sound when changing maps
 PlayMapChangeSound::
@@ -1884,19 +1885,13 @@ LoadMapHeader:: ; marcelnote - optimized
 	ld b, 0
 	ldh a, [hLoadedROMBank]
 	push af
-	ld a, BANK(MapSongBanks)
+	ld a, BANK(MapSongs)
 	ldh [hLoadedROMBank], a
 	ld [rROMB], a
-	ld hl, MapSongBanks
-	add hl, bc
+	ld hl, MapSongs
 	add hl, bc
 	ld a, [hli]
-	ld [wMapMusicSoundID], a ; music 1
-
-; give vanilla red a fair shot at running our savs
-	ld a, BANK("Audio Engine 1")
-
-	ld [wMapMusicROMBank], a ; music 2
+	ld [wMapMusicSoundID], a
 	pop af
 	ldh [hLoadedROMBank], a
 	ld [rROMB], a
