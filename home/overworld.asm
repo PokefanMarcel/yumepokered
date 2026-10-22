@@ -429,7 +429,6 @@ NewBattle:: ; marcelnote - optimized
 	ret nz
 	jpfar InitBattle
 
-; returns carry if the player's coordinates match a warp, and copies the
 ; destination warp/map for WarpFound2
 TryWarpAtPlayerCoord: ; marcelnote - refactored warp engine
 	ld a, [wNumberOfWarps]

@@ -13,7 +13,7 @@ ENDM
 ; indexes for:
 ; - MapHeaderBanks (see data/maps/map_header_banks.asm)
 ; - MapHeaderPointers (see data/maps/map_header_pointers.asm)
-; - MapSongBanks (see data/maps/songs.asm)
+; - MapSongs (see data/maps/songs.asm)
 ; - ToggleableObjectMapPointers (see data/maps/toggleable_objects.asm)
 ; - WildDataPointers (see data/wild/grass_water.asm)
 ; - TownMapEntries (see data/maps/town_map_entries.asm)

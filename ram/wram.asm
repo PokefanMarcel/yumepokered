@@ -1963,7 +1963,8 @@ wLetterPrintingDelayFlags:: db
 wPlayerID:: dw
 
 wMapMusicSoundID:: db
-wMapMusicROMBank:: db
+
+	ds 1 ; marcelnote - was wMapMusicROMBank
 
 ; offset subtracted from FadePal4 to get the background and object palettes for the current map
 ; normally, it is 0. it is 6 when Flash is needed, causing FadePal2 to be used instead of FadePal4
