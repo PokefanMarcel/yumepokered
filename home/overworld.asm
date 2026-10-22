@@ -429,15 +429,6 @@ NewBattle:: ; marcelnote - optimized
 	ret nz
 	jpfar InitBattle
 
-; check if the player has stepped onto a warp after having not collided
-CheckWarpsNoCollision:: ; marcelnote - refactored warp engine
-	call TryWarpAtPlayerCoord
-	jp nc, CheckMapConnections
-	ld a, [wDestinationWarpID]
-	and WARP_DIR_MASK ; ANY_DIR?
-	jp nz, CheckMapConnections
-	jr WarpFound2
-
 ; returns carry if the player's coordinates match a warp, and copies the
 ; destination warp/map for WarpFound2
 TryWarpAtPlayerCoord: ; marcelnote - refactored warp engine
@@ -470,6 +461,15 @@ TryWarpAtPlayerCoord: ; marcelnote - refactored warp engine
 	jr nz, .loop
 	and a
 	ret
+
+; check if the player has stepped onto a warp after having not collided
+CheckWarpsNoCollision:: ; marcelnote - refactored warp engine
+	call TryWarpAtPlayerCoord
+	jp nc, CheckMapConnections
+	ld a, [wDestinationWarpID]
+	and WARP_DIR_MASK ; ANY_DIR?
+	jp nz, CheckMapConnections
+	; fallthrough
 
 WarpFound2:: ; marcelnote - refactored warp engine
 	ld a, [wDestinationWarpID]
