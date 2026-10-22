@@ -1367,39 +1367,32 @@ AdvancePlayerSprite:: ; marcelnote - optim by Engezerstorung
 	or $98
 	ld [hl], a
 .adjustXCoordWithinBlock
-; Update the player's 2x2-block position. If X crosses a block boundary,
+; Update the player's position within the 4×4-tile block. On crossing a block boundary,
 ; update the special-warp offset and the tile block map view pointer.
 	ld de, wXBlockCoord
 	ld hl, wXOffsetSinceLastSpecialWarp
-	ld a, [de]
-	add c
-	ld [de], a
-
-	ld c, 1 ; value to add or sub when adjusting wCurrentTileBlockMapViewPointer
-
-	inc a ; z if -1 ($ff)
-	jr z, .decTileBlockMapPointer ; z if moved into the tile block to the west
-	sub $03 ; z if 2
-	jr z, .incTileBlockMapPointer ; z if moved into the tile block to the east
-.adjustYCoordWithinBlock
-; If X stayed within the same block, check Y instead. Vertical pointer changes
-; are one row of blocks, which is map width plus both border columns.
+	ld a, c ; c = X step vector: -1 west, +1 east, 0 vertical movement
+	and a
+	jr nz, .horizontalBlockMovement
+; vertical block movement
 	dec de ; wYBlockCoord
 	dec hl ; wYOffsetSinceLastSpecialWarp
-
 	ld a, [wCurMapWidth]
 	add MAP_BORDER * 2
-	ld c, a ; value to add or sub when adjusting wCurrentTileBlockMapViewPointer
-
+	ld c, a ; vertical pointer stride
+	jr .adjustBlockCoord
+.horizontalBlockMovement
+	ld b, c ; selected axis's step vector
+	ld c, 1 ; horizontal pointer stride
+.adjustBlockCoord
 	ld a, [de]
 	add b
 	ld [de], a
-
-	inc a ; z if -1 ($ff)
-	jr z, .decTileBlockMapPointer ; z if moved into the tile block to the north
-	sub $03 ; z if 2
-	jr nz, .updateMapView ; nz if haven't moved into the tile block to the south
-	; fallthrough
+	inc a ; $ff?
+	jr z, .decTileBlockMapPointer ; crossed north/west
+	sub $03 ; 2?
+	jr nz, .updateMapView ; still within the current tile block
+	; fallthrough if crossed south/east
 
 ; Move the pointer to the upper-left corner of the visible tile block map in
 ; the direction of motion.
@@ -1435,7 +1428,7 @@ AdvancePlayerSprite:: ; marcelnote - optim by Engezerstorung
 	call ScheduleSouthRowRedraw
 	jr .reloadAndScrollBackgroundAndSprites
 .checkIfMovingNorth2
-	cp $ff ; moving north?
+	inc a ; $ff, moving north?
 	jr nz, .checkIfMovingEast2
 	call ScheduleNorthRowRedraw
 	jr .reloadAndScrollBackgroundAndSprites
@@ -1446,7 +1439,7 @@ AdvancePlayerSprite:: ; marcelnote - optim by Engezerstorung
 	call ScheduleEastColumnRedraw
 	jr .reloadAndScrollBackgroundAndSprites
 .checkIfMovingWest2
-	cp $ff ; moving west?
+	inc a ; $ff, moving west?
 	jr nz, .reloadAndScrollBackgroundAndSprites
 	call ScheduleWestColumnRedraw
 	; fallthrough
