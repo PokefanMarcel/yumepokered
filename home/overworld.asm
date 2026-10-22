@@ -1692,7 +1692,6 @@ JoypadOverworld::
 	ret
 
 RunMapScript::
-	push hl
 	push de
 	push bc
 	callfar TryPushingBoulder
@@ -1703,7 +1702,6 @@ RunMapScript::
 .afterBoulderEffect
 	pop bc
 	pop de
-	pop hl
 	call RunNPCMovementScript
 	ld a, [wCurMap]
 	call SwitchToMapRomBank
