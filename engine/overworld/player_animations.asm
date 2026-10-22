@@ -86,7 +86,7 @@ PlayerSpinWhileMovingDown:
 	ld hl, wFacingDirectionList ; marcelnote - DMG/SGB Escape Rope visual big (fix from pokered Wiki)
 	jp PlayerSpinWhileMovingUpOrDown
 
-_LeaveMapAnim::
+LeaveMapAnim::
 	call InitFacingDirectionList
 	call IsPlayerStandingOnWarpPadOrHole
 	and a

@@ -516,7 +516,7 @@ WarpFound2:: ; marcelnote - refactored warp engine
 ; if the player is on a warp pad
 	ld hl, wStatusFlags6
 	set BIT_FLY_WARP, [hl]
-	call LeaveMapAnim
+	callfar LeaveMapAnim
 	jr .skipMapChangeSound
 .notWarpPad
 	call PlayMapChangeSound
@@ -731,15 +731,12 @@ HandleFlyWarpOrDungeonWarp::
 	ld hl, wStatusFlags6
 	set BIT_SPECIAL_WARP, [hl]
 	res BIT_ALWAYS_ON_BIKE, [hl]
-	call LeaveMapAnim
+	callfar LeaveMapAnim
 	ld a, BANK(PrepareForSpecialWarp)
 	ldh [hLoadedROMBank], a
 	ld [rROMB], a
 	call PrepareForSpecialWarp
 	jp SpecialEnterMap
-
-LeaveMapAnim::
-	jpfar _LeaveMapAnim
 
 IsBikingAllowed:: ; marcelnote - simplified
 ; The bike can be used on maps with tilesets in BikeRidingTilesets.
