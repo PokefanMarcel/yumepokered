@@ -2,7 +2,17 @@ EnterMap::
 ; Load a new map.
 	ld a, PAD_BUTTONS | PAD_CTRL_PAD
 	ld [wJoyIgnore], a
-	call ReloadSGBBorder ; marcelnote - dynamic SGB border, reload while transition still hidden
+;;;;;;;;;;;;;;;;;;;;;;; marcelnote - dynamic SGB border
+; This is before LoadMapData rebuilds GB VRAM, so the SGB transfer staging
+; screen can freely overwrite and clear VRAM without leaving visible damage.
+; The reload preserves the current GB palette, keeping the transition hidden.
+	ld a, [wReloadSGBBorder]
+	dec a
+	jr nz, .noSGBBorderReload
+	ld [wReloadSGBBorder], a
+	callfar ReloadSGBBorder
+.noSGBBorderReload
+;;;;;;;;;;;;;;;;;;;;;;;
 	call LoadMapData
 	callfar ClearVariablesOnEnterMap
 	ld hl, wStatusFlags2
@@ -2039,15 +2049,3 @@ LoadDestinationWarpPosition::
 	ldh [hLoadedROMBank], a
 	ld [rROMB], a
 	ret
-
-; marcelnote - dynamic SGB border
-; If a script requested an SGB border reload, do it at the start of EnterMap.
-; This is before LoadMapData rebuilds GB VRAM, so the SGB transfer staging
-; screen can freely overwrite and clear VRAM without leaving visible damage.
-ReloadSGBBorder:
-	ld a, [wReloadSGBBorder]
-	dec a
-	ret nz
-	ld [wReloadSGBBorder], a
-	; The reload preserves the current GB palette, keeping the transition hidden.
-	jpfar ReloadSGBBorderWithStickers

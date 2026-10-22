@@ -625,7 +625,7 @@ CheckSGB:
 ; Reload the SGB border while preserving the current GB palette. Map transitions
 ; can therefore keep their blackout/whiteout while the transfer uses VRAM as a
 ; staging area. Sticker patches are selected from the current event flags.
-ReloadSGBBorderWithStickers::
+ReloadSGBBorder::
 	ld a, [wOnSGB]
 	and a
 	ret z
