@@ -1872,7 +1872,6 @@ LoadMapHeader:: ; marcelnote - optimized
 
 .finishUp
 	predef LoadTilesetHeader
-	callfar LoadWildData
 	ld hl, wCurMapHeight
 	ld a, [hli]                ; map height in 4x4 tile blocks
 	add a                      ; double it
@@ -1880,15 +1879,17 @@ LoadMapHeader:: ; marcelnote - optimized
 	ld a, [hl]                 ; map width in 4x4 tile blocks
 	add a                      ; double it
 	ld [wCurrentMapWidth2], a  ; map width in 2x2 tile blocks
-	ld a, [wCurMap]
-	ld c, a
-	ld b, 0
 	ldh a, [hLoadedROMBank]
 	push af
 	ld a, BANK(MapSongs)
 	ldh [hLoadedROMBank], a
 	ld [rROMB], a
+	ASSERT BANK(MapSongs) == BANK(LoadWildData)
+	call LoadWildData
 	ld hl, MapSongs
+	ld a, [wCurMap]
+	ld c, a
+	ld b, 0
 	add hl, bc
 	ld a, [hli]
 	ld [wMapMusicSoundID], a
