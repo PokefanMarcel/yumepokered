@@ -1462,11 +1462,24 @@ AdvancePlayerSprite:: ; marcelnote - optim by Engezerstorung
 ScheduleNorthRowRedraw::
 	hlcoord 0, 0
 	call CopyToRedrawRowOrColumnSrcTiles
-	ld hl, wMapViewVRAMPointer
-	ld a, [hli]
-	ldh [hRedrawRowOrColumnDest], a
-	ld a, [hl]
+	ld hl, wMapViewVRAMPointer + 1
+	ld a, [hld]
+	jr ScheduleSouthRowRedraw.common
+
+ScheduleSouthRowRedraw:: ; marcelnote - small optim
+	hlcoord 0, 16
+	call CopyToRedrawRowOrColumnSrcTiles
+; The BG map has 32 bytes per row, so row 16 starts 32 * 16 = $200 bytes
+; past the view origin. The map occupies $400 bytes at $9800-$9bff.
+; Adding $200 modulo $400 toggles address bit 9: bit 1 of the high byte.
+; The low byte stays unchanged; the high byte maps $98 <-> $9a and $99 <-> $9b.
+	ld hl, wMapViewVRAMPointer + 1
+	ld a, [hld]
+	xor $02 ; toggle bit 1 of high byte
+.common
 	ldh [hRedrawRowOrColumnDest + 1], a
+	ld a, [hl]
+	ldh [hRedrawRowOrColumnDest], a
 	ld a, REDRAW_ROW
 	ldh [hRedrawRowOrColumnMode], a
 	ret
@@ -1482,22 +1495,12 @@ CopyToRedrawRowOrColumnSrcTiles::
 	jr nz, .loop
 	ret
 
-ScheduleSouthRowRedraw:: ; marcelnote - small optim
-	hlcoord 0, 16
-	call CopyToRedrawRowOrColumnSrcTiles
-; The BG map has 32 bytes per row, so row 16 starts 32 * 16 = $200 bytes
-; past the view origin. The map occupies $400 bytes at $9800-$9bff.
-; Adding $200 modulo $400 toggles address bit 9: bit 1 of the high byte.
-; The low byte stays unchanged; the high byte maps $98 <-> $9a and $99 <-> $9b.
+ScheduleWestColumnRedraw::
+	hlcoord 0, 0
+	call ScheduleColumnRedrawHelper
 	ld hl, wMapViewVRAMPointer
 	ld a, [hli]
-	ldh [hRedrawRowOrColumnDest], a
-	ld a, [hl]
-	xor $02 ; toggle bit 1 of high byte
-	ldh [hRedrawRowOrColumnDest + 1], a
-	ld a, REDRAW_ROW
-	ldh [hRedrawRowOrColumnMode], a
-	ret
+	jr ScheduleEastColumnRedraw.common
 
 ScheduleEastColumnRedraw:: ; marcelnote - small optim
 	hlcoord 18, 0
@@ -1511,6 +1514,7 @@ ScheduleEastColumnRedraw:: ; marcelnote - small optim
 ; the row bits or the high byte.
 	add 18
 	and ~(1 << 5)
+.common
 	ldh [hRedrawRowOrColumnDest], a
 	ld a, [hl]
 	ldh [hRedrawRowOrColumnDest + 1], a
@@ -1536,18 +1540,6 @@ ScheduleColumnRedrawHelper::
 	ld h, a ; hl to next row
 	dec c
 	jr nz, .loop
-	ret
-
-ScheduleWestColumnRedraw::
-	hlcoord 0, 0
-	call ScheduleColumnRedrawHelper
-	ld hl, wMapViewVRAMPointer
-	ld a, [hli]
-	ldh [hRedrawRowOrColumnDest], a
-	ld a, [hl]
-	ldh [hRedrawRowOrColumnDest + 1], a
-	ld a, REDRAW_COL
-	ldh [hRedrawRowOrColumnMode], a
 	ret
 
 ; Write the 4x4 tiles that make up a tile block to memory.
