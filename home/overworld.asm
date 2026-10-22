@@ -1177,10 +1177,10 @@ CheckForTilePairCollisions:: ; marcelnote - optimized
 	ld e, a
 .tilePairCollisionLoop
 	ld a, [hli]
-	cp $ff
-	ret z  ; no match, return with carry flag unset
 	cp e
 	jr z, .tilesetMatches
+	inc a  ; $ff?
+	ret z  ; no match, return with carry flag unset since $ff >= e
 	inc hl ; skip two tile entries
 	inc hl
 	jr .tilePairCollisionLoop
@@ -1420,29 +1420,7 @@ AdvancePlayerSprite:: ; marcelnote - optim by Engezerstorung
 ; Reload the cached visible map view and schedule the row or column that V-blank
 ; needs to redraw for the newly exposed edge.
 	call LoadCurrentMapView
-	ld a, [wSpritePlayerStateData1YStepVector]
-	cp $01 ; moving south?
-	jr nz, .checkIfMovingNorth2
-	call ScheduleSouthRowRedraw
-	jr .reloadAndScrollBackgroundAndSprites
-.checkIfMovingNorth2
-	inc a ; $ff, moving north?
-	jr nz, .checkIfMovingEast2
-	call ScheduleNorthRowRedraw
-	jr .reloadAndScrollBackgroundAndSprites
-.checkIfMovingEast2
-	ld a, [wSpritePlayerStateData1XStepVector]
-	cp $01 ; moving east?
-	jr nz, .checkIfMovingWest2
-	call ScheduleEastColumnRedraw
-	jr .reloadAndScrollBackgroundAndSprites
-.checkIfMovingWest2
-	inc a ; $ff, moving west?
-	jr nz, .reloadAndScrollBackgroundAndSprites
-	call ScheduleWestColumnRedraw
-	; fallthrough
-
-.reloadAndScrollBackgroundAndSprites
+	call SchedulePlayerMovementRedraw
 	pop bc ; restore steps vectors
 .scrollBackgroundAndSprites
 ; Scroll the background and shift all sprites in the opposite
@@ -1477,8 +1455,21 @@ AdvancePlayerSprite:: ; marcelnote - optim by Engezerstorung
 	jr nz, .spriteShiftLoop
 	ret
 
-; the following 6 functions are used to tell the V-blank handler to redraw
+; the following routines are used to tell the V-blank handler to redraw
 ; the portion of the map that was newly exposed due to the player's movement
+
+SchedulePlayerMovementRedraw: ; marcelnote - new
+	ld a, [wSpritePlayerStateData1YStepVector]
+	cp 1 ; moving south?
+	jr z, ScheduleSouthRowRedraw
+	inc a ; $ff, moving north?
+	jr z, ScheduleNorthRowRedraw
+	ld a, [wSpritePlayerStateData1XStepVector]
+	cp 1 ; moving east?
+	jr z, ScheduleEastColumnRedraw
+	inc a ; $ff, moving west?
+	jr z, ScheduleWestColumnRedraw
+	ret
 
 ScheduleNorthRowRedraw::
 	hlcoord 0, 0
