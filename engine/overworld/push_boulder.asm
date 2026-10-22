@@ -1,22 +1,25 @@
-TryPushingBoulder::
-	ld a, [wStatusFlags1]
-	bit BIT_STRENGTH_ACTIVE, a
-	ret z
+ResetBoulderPushFlags:
+	ld hl, wMiscFlags
+	res BIT_BOULDER_DUST, [hl]
+	res BIT_TRIED_PUSH_BOULDER, [hl]
+	ret
+
+HandlePushingBoulder::
 	ld a, [wMiscFlags]
 	bit BIT_BOULDER_DUST, a
-	ret nz
+	jr nz, DoBoulderDustAnimation
 	xor a
 	ldh [hSpriteIndex], a
 	call IsSpriteInFrontOfPlayer
 	ldh a, [hSpriteIndex]
 	ld [wBoulderSpriteIndex], a
 	and a
-	jp z, ResetBoulderPushFlags
+	jr z, ResetBoulderPushFlags
 	ld hl, wSpritePlayerStateData1MovementStatus
-	ld d, $0
 	ldh a, [hSpriteIndex]
 	swap a
 	ld e, a
+	ld d, 0
 	add hl, de
 	res BIT_FACE_PLAYER, [hl]
 	call GetSpriteMovementByte2Pointer
@@ -68,23 +71,7 @@ TryPushingBoulder::
 	call PlaySound
 	ld hl, wMiscFlags
 	set BIT_BOULDER_DUST, [hl]
-	ret
-
-PushBoulderUpMovementData:
-	db NPC_MOVEMENT_UP
-	db -1 ; end
-
-PushBoulderDownMovementData:
-	db NPC_MOVEMENT_DOWN
-	db -1 ; end
-
-PushBoulderLeftMovementData:
-	db NPC_MOVEMENT_LEFT
-	db -1 ; end
-
-PushBoulderRightMovementData:
-	db NPC_MOVEMENT_RIGHT
-	db -1 ; end
+	; fallthrough
 
 DoBoulderDustAnimation::
 	ld a, [wStatusFlags5]
@@ -102,8 +89,18 @@ DoBoulderDustAnimation::
 	ld a, SFX_CUT
 	jp PlaySound
 
-ResetBoulderPushFlags:
-	ld hl, wMiscFlags
-	res BIT_BOULDER_DUST, [hl]
-	res BIT_TRIED_PUSH_BOULDER, [hl]
-	ret
+PushBoulderUpMovementData:
+	db NPC_MOVEMENT_UP
+	db -1 ; end
+
+PushBoulderDownMovementData:
+	db NPC_MOVEMENT_DOWN
+	db -1 ; end
+
+PushBoulderLeftMovementData:
+	db NPC_MOVEMENT_LEFT
+	db -1 ; end
+
+PushBoulderRightMovementData:
+	db NPC_MOVEMENT_RIGHT
+	db -1 ; end

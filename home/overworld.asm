@@ -1653,16 +1653,11 @@ JoypadOverworld::
 	ret
 
 RunMapScript::
-	push de
-	push bc
-	callfar TryPushingBoulder
-	ld a, [wMiscFlags]
-	bit BIT_BOULDER_DUST, a
+	ld a, [wStatusFlags1] ; marcelnote - modified boulder push handling
+	bit BIT_STRENGTH_ACTIVE, a
 	jr z, .afterBoulderEffect
-	callfar DoBoulderDustAnimation
+	callfar HandlePushingBoulder
 .afterBoulderEffect
-	pop bc
-	pop de
 	call RunNPCMovementScript
 	ld a, [wCurMap]
 	call SwitchToMapRomBank
