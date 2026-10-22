@@ -14,10 +14,10 @@ EnterMap::
 	ld hl, wStatusFlags4
 	bit BIT_BATTLE_OVER_OR_BLACKOUT, [hl]
 	res BIT_BATTLE_OVER_OR_BLACKOUT, [hl]
-	jr nz, .afterStrengthReset
+	jr nz, .skipStrengthReset
 	ld hl, wStatusFlags1
 	res BIT_STRENGTH_ACTIVE, [hl]
-.afterStrengthReset
+.skipStrengthReset
 	call nz, MapEntryAfterBattle
 	ld hl, wStatusFlags6
 	ld a, [hl]
