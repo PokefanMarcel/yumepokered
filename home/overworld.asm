@@ -1,8 +1,3 @@
-HandleMidJump::
-; Handle the player jumping down
-; a ledge in the overworld.
-	jpfar _HandleMidJump
-
 EnterMap::
 ; Load a new map.
 	ld a, PAD_BUTTONS | PAD_CTRL_PAD
@@ -52,7 +47,9 @@ OverworldLoopLessDelay::
 	call LoadGBPal
 	ld a, [wMovementFlags]
 	bit BIT_LEDGE_OR_FISHING, a
-	call nz, HandleMidJump
+	jr z, .checkWalkAnimation
+	callfar HandleMidJump
+.checkWalkAnimation
 	ld a, [wWalkCounter]
 	and a
 	jp nz, .moveAhead ; if the player sprite has not yet completed the walking animation

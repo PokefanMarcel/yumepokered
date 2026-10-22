@@ -519,7 +519,7 @@ GreenFishingTiles:
 	fishing_gfx GreenFishingTilesSide,  2, $0a
 	fishing_gfx FishingRodTiles,        2, $fa ; marcelnote - moved in VRAM and removed third unused tile
 
-_HandleMidJump::
+HandleMidJump::
 	ld a, [wPlayerJumpingYScreenCoordsIndex]
 	ld c, a
 	inc a
@@ -538,6 +538,10 @@ _HandleMidJump::
 	ret nz
 	call UpdateSprites
 	call Delay3
+	ld hl, wMovementFlags
+	res BIT_LEDGE_OR_FISHING, [hl]
+	ld hl, wStatusFlags5
+	res BIT_SCRIPTED_MOVEMENT_STATE, [hl]
 	xor a
 	ldh [hJoyHeld], a
 	ldh [hJoyPressed], a
@@ -545,11 +549,6 @@ _HandleMidJump::
 	ld [wPlayerJumpingYScreenCoordsIndex], a
 	ld [wSimulatedJoypadStatesIndex], a ; marcelnote - free ledge tile
 	ld [wSimulatedJoypadStatesEnd], a
-	ld hl, wMovementFlags
-	res BIT_LEDGE_OR_FISHING, [hl]
-	ld hl, wStatusFlags5
-	res BIT_SCRIPTED_MOVEMENT_STATE, [hl]
-	xor a
 	ld [wJoyIgnore], a
 	ret
 
