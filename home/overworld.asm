@@ -1350,23 +1350,19 @@ AdvancePlayerSprite:: ; marcelnote - optim by Engezerstorung
 	ld [hl], a
 	jr .adjustXCoordWithinBlock
 .checkIfMovingVertically
-; Vertical movement adds or subtracts $40 from the low byte. If that crosses a
-; $100 boundary, wrap the high byte within $98-$9b.
+; Add the signed 16-bit offset b * $40 to the BG pointer.
+; Build its high byte in d and low byte in a, then add with carry.
+; Wrap the resulting address within $9800-$9bff.
+	ld d, b ; b = 1 for south, -1 for north, 0 for stationary
+	sra d ; d = offset high byte: $00 south/stationary, $ff north
 	ld a, b
-	rrca ; carry set if b is 1 or -1
-	jr nc, .adjustXCoordWithinBlock
 	rrca
-	and $c0 ; $40 for south, $c0 for north
-	add e
-	bit 7, b ; check if Y vector is negative
-	jr z, .yVectorIsPositive
-	cp e
-	ccf ; convert the north borrow test into the carry state used below
-.yVectorIsPositive
+	rrca
+	and $c0 ; a = offset low byte: $40 south, $c0 north, $00 stationary
+	add e   ; e = original pointer's low byte
 	ld [hli], a
-	jr nc, .adjustXCoordWithinBlock
 	ld a, [hl]
-	add b
+	adc d
 	and $03 ; keep the high byte in the $98-$9b BG map range
 	or $98
 	ld [hl], a
