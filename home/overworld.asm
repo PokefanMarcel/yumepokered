@@ -1074,12 +1074,10 @@ CollisionCheckOnLand::
 ;	ld a, [wChannelSoundIDs + CHAN5]
 ;	cp SFX_COLLISION ; check if collision sound is already playing
 ;	jr z, .setCarry
-
 	; ch5 on?
 	ld hl, wChannel5 + wChannel1Flags1 - wChannel1 ; + CHANNEL_FLAGS1
 	bit 0, [hl]
 	jr nz, .setCarry
-
 	ld a, SFX_COLLISION
 	call PlaySound ; play collision sound (if it's not already playing)
 .setCarry
@@ -1088,6 +1086,54 @@ CollisionCheckOnLand::
 .noCollision
 	and a
 	ret
+
+; function to check the tile ahead to determine if the character should get on land or keep surfing
+; sets carry if there is a collision and clears carry otherwise
+CollisionCheckOnWater::
+	ld a, [wStatusFlags5]
+	bit BIT_SCRIPTED_MOVEMENT_STATE, a
+	jr nz, CollisionCheckOnLand.noCollision ; return and clear carry if button presses are being simulated
+	ld a, [wPlayerDirection] ; the direction that the player is trying to go in
+	ld d, a
+	ld a, [wSpritePlayerStateData1CollisionData]
+	and d ; check if a sprite is in the direction the player is trying to go
+    jr nz, CollisionCheckOnLand.collision ; joenote - fixes collision bug
+	ld hl, TilePairCollisionsWater
+	call CheckForJumpingAndTilePairCollisions
+	jr c, CollisionCheckOnLand.collision
+	ld a, [wTileInFrontOfPlayer] ; fetched by CheckForJumpingAndTilePairCollisions
+	ld c, a
+	cp $14 ; water tile
+	jr z, CollisionCheckOnLand.noCollision ; keep surfing if it's a water tile
+	cp $32 ; either the left tile of the S.S. Anne boarding platform or the tile on eastern coastlines (depending on the current tileset)
+	jr z, .checkIfVermilionDockTileset
+	cp $48 ; tile on right on coast lines in Safari Zone ; marcelnote - now also waterfall
+	jr z, CollisionCheckOnLand.noCollision ; keep surfing
+; check if the [land] tile in front of the player is passable
+.checkIfNextTileIsPassable
+	ld hl, wTilesetCollisionPtr ; pointer to list of passable tiles
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+.loop
+	ld a, [hli]
+	cp $ff
+	jr z, CollisionCheckOnLand.collision
+	cp c
+	jr z, .stopSurfing ; stop surfing if the tile is passable
+	jr .loop
+
+.stopSurfing
+	xor a
+	ld [wWalkBikeSurfState], a
+	call LoadPlayerSpriteGraphics
+	call PlayDefaultMusic
+	jr CollisionCheckOnLand.noCollision
+.checkIfVermilionDockTileset
+	ld a, [wCurMapTileset]
+	cp SHIP_PORT ; Vermilion Dock tileset
+	jr nz, CollisionCheckOnLand.noCollision ; keep surfing if it's not the boarding platform tile
+	jr .stopSurfing ; if it is the boarding platform tile, stop surfing
 
 ; function that checks if the tile in front of the player is passable
 ; clears carry if it is, sets carry if not
@@ -1122,11 +1168,11 @@ CheckForJumpingAndTilePairCollisions::
 ;	pop bc
 ;	pop de
 	ld hl, wMovementFlags
-	bit BIT_CLIMBING_LEDGE, [hl]
+	ld a, [hl]
+	bit BIT_CLIMBING_LEDGE, a
 	res BIT_CLIMBING_LEDGE, [hl]
 	pop hl
 	jr nz, CheckForTilePairCollisions.foundMatch
-	ld a, [wMovementFlags]
 	and 1 << BIT_LEDGE_OR_FISHING ; clears carry
 	ret nz
 	; if not jumping
@@ -1649,80 +1695,6 @@ JoypadOverworld::
 	res BIT_SCRIPTED_MOVEMENT_STATE, [hl]
 	ret
 
-; function to check the tile ahead to determine if the character should get on land or keep surfing
-; sets carry if there is a collision and clears carry otherwise
-; It seems that this function has a bug in it, but due to luck, it doesn't
-; show up. After detecting a sprite collision, it jumps to the code that
-; checks if the next tile is passable instead of just directly jumping to the
-; "collision detected" code. However, it doesn't store the next tile in c,
-; so the old value of c is used. 2429 is always called before this function,
-; and 2429 always sets c to 0xF0. There is no 0xF0 background tile, so it
-; is considered impassable and it is detected as a collision.
-CollisionCheckOnWater::
-	ld a, [wStatusFlags5]
-	bit BIT_SCRIPTED_MOVEMENT_STATE, a
-	jr nz, .noCollision ; return and clear carry if button presses are being simulated
-	ld a, [wPlayerDirection] ; the direction that the player is trying to go in
-	ld d, a
-	ld a, [wSpritePlayerStateData1CollisionData]
-	and d ; check if a sprite is in the direction the player is trying to go
-;	jr nz, .checkIfNextTileIsPassable ; bug?
-    jr nz, .collision ; joenote - this fixes the aforementioned bug
-	ld hl, TilePairCollisionsWater
-	call CheckForJumpingAndTilePairCollisions
-	jr c, .collision
-	ld a, [wTileInFrontOfPlayer] ; fetched by CheckForJumpingAndTilePairCollisions
-	ld c, a
-	cp $14 ; water tile
-	jr z, .noCollision ; keep surfing if it's a water tile
-	cp $32 ; either the left tile of the S.S. Anne boarding platform or the tile on eastern coastlines (depending on the current tileset)
-	jr z, .checkIfVermilionDockTileset
-	cp $48 ; tile on right on coast lines in Safari Zone ; marcelnote - now also waterfall
-	jr z, .noCollision ; keep surfing
-; check if the [land] tile in front of the player is passable
-.checkIfNextTileIsPassable
-	ld hl, wTilesetCollisionPtr ; pointer to list of passable tiles
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-.loop
-	ld a, [hli]
-	cp $ff
-	jr z, .collision
-	cp c
-	jr z, .stopSurfing ; stop surfing if the tile is passable
-	jr .loop
-.collision
-
-;	ld a, [wChannelSoundIDs + CHAN5]
-;	cp SFX_COLLISION ; check if collision sound is already playing
-;	jr z, .setCarry
-
-	; ch5 on?
-	ld hl, wChannel5 + wChannel1Flags1 - wChannel1 ; + CHANNEL_FLAGS1
-	bit 0, [hl]
-	jr nz, .setCarry
-
-	ld a, SFX_COLLISION
-	call PlaySound ; play collision sound (if it's not already playing)
-.setCarry
-	scf
-	ret
-.noCollision
-	and a
-	ret
-.stopSurfing
-	xor a
-	ld [wWalkBikeSurfState], a
-	call LoadPlayerSpriteGraphics
-	call PlayDefaultMusic
-	jr .noCollision
-.checkIfVermilionDockTileset
-	ld a, [wCurMapTileset]
-	cp SHIP_PORT ; Vermilion Dock tileset
-	jr nz, .noCollision ; keep surfing if it's not the boarding platform tile
-	jr .stopSurfing ; if it is the boarding platform tile, stop surfing
-
 RunMapScript::
 	push hl
 	push de
@@ -2143,5 +2115,4 @@ ReloadSGBBorder:
 	ret nz
 	ld [wReloadSGBBorder], a
 	; The reload preserves the current GB palette, keeping the transition hidden.
-	callfar ReloadSGBBorderWithStickers
-	ret
+	jpfar ReloadSGBBorderWithStickers
