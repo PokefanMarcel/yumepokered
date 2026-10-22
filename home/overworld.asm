@@ -280,7 +280,7 @@ OverworldLoopLessDelay::
 	ld a, b
 	ld [wPlayerMovingDirection], a ; save direction
 	call UpdateSprites
-	call CheckDirectionalWarpAtPlayerCoord
+	call CheckWarpAtPlayerCoord
 	jp c, WarpFound2
 	ld a, [wWalkBikeSurfState]
 	cp SURFING
@@ -661,22 +661,15 @@ CheckIfInOutsideMap::
 	cp PLATEAU ; Route 23 / Indigo Plateau
 	ret
 
-CheckDirectionalWarpAtPlayerCoord: ; marcelnote - refactored warp engine
+CheckWarpAtPlayerCoord: ; marcelnote - refactored warp engine
 	call TryWarpAtPlayerCoord
 	ret nc
 	; fallthrough
 
-CheckDirectionalWarpEventDirection: ; marcelnote - refactored warp engine
-	ld a, [wDestinationWarpID]
-	and WARP_DIR_MASK ; ANY_DIR?
-	ret z
-	jr CheckWarpEventDirection.gotDirection
-
 CheckWarpEventDirection: ; marcelnote - refactored warp engine
 	ld a, [wDestinationWarpID]
 	and WARP_DIR_MASK ; ANY_DIR?
-	jr z, .setCarry
-.gotDirection
+	ret z
 	cp WARP_DOWN << WARP_DIR_SHIFT
 	jr z, .down
 	cp WARP_UP << WARP_DIR_SHIFT
@@ -1052,11 +1045,10 @@ CollisionCheckOnLand::
 ; if not jumping a ledge
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
-	ret nz ; no collisions when the player's movements are being controlled by the game
-	ld a, [wPlayerDirection] ; the direction that the player is trying to go in
-	ld d, a
+	ret nz ; carry clear, no collisions when the player's movements are being controlled by the game
+	ld hl, wPlayerDirection ; the direction that the player is trying to go in
 	ld a, [wSpritePlayerStateData1CollisionData]
-	and d ; check if a sprite is in the direction the player is trying to go
+	and [hl] ; check if a sprite is in the direction the player is trying to go
 	jr nz, .collision
 	xor a
 	ldh [hTextID], a
@@ -1093,24 +1085,23 @@ CollisionCheckOnWater::
 	ld a, [wStatusFlags5]
 	bit BIT_SCRIPTED_MOVEMENT_STATE, a
 	jr nz, CollisionCheckOnLand.noCollision ; return and clear carry if button presses are being simulated
-	ld a, [wPlayerDirection] ; the direction that the player is trying to go in
-	ld d, a
+	ld hl, wPlayerDirection ; the direction that the player is trying to go in
 	ld a, [wSpritePlayerStateData1CollisionData]
-	and d ; check if a sprite is in the direction the player is trying to go
+	and [hl] ; check if a sprite is in the direction the player is trying to go
     jr nz, CollisionCheckOnLand.collision ; joenote - fixes collision bug
 	ld hl, TilePairCollisionsWater
 	call CheckForJumpingAndTilePairCollisions
 	jr c, CollisionCheckOnLand.collision
 	ld a, [wTileInFrontOfPlayer] ; fetched by CheckForJumpingAndTilePairCollisions
-	ld c, a
 	cp $14 ; water tile
-	jr z, CollisionCheckOnLand.noCollision ; keep surfing if it's a water tile
+	ret z ; carry clear, keep surfing if it's a water tile
 	cp $32 ; either the left tile of the S.S. Anne boarding platform or the tile on eastern coastlines (depending on the current tileset)
 	jr z, .checkIfVermilionDockTileset
 	cp $48 ; tile on right on coast lines in Safari Zone ; marcelnote - now also waterfall
-	jr z, CollisionCheckOnLand.noCollision ; keep surfing
+	ret z ; carry clear, keep surfing
 ; check if the [land] tile in front of the player is passable
 .checkIfNextTileIsPassable
+	ld c, a
 	ld hl, wTilesetCollisionPtr ; pointer to list of passable tiles
 	ld a, [hli]
 	ld h, [hl]
@@ -1119,17 +1110,16 @@ CollisionCheckOnWater::
 	ld a, [hli]
 	cp $ff
 	jr z, CollisionCheckOnLand.collision
-	cp c
+	sub c
 	jr z, .stopSurfing ; stop surfing if the tile is passable
 	jr .loop
 
 .checkIfVermilionDockTileset
 	ld a, [wCurMapTileset]
-	cp SHIP_PORT ; Vermilion Dock tileset
+	sub SHIP_PORT ; Vermilion Dock tileset
 	jr nz, CollisionCheckOnLand.noCollision ; keep surfing if it's not the boarding platform tile
 .stopSurfing
-	xor a
-	ld [wWalkBikeSurfState], a
+	ld [wWalkBikeSurfState], a ; a = 0
 	call LoadPlayerSpriteGraphics
 	call PlayDefaultMusic
 	jr CollisionCheckOnLand.noCollision
@@ -1655,10 +1645,9 @@ JoypadOverworld::
 	bit BIT_SCRIPTED_MOVEMENT_STATE, a
 	ret z
 ; if simulating button presses
+	ld hl, wOverrideSimulatedJoypadStatesMask ; bit mask for button presses that override simulated ones
 	ldh a, [hJoyHeld]
-	ld b, a
-	ld a, [wOverrideSimulatedJoypadStatesMask] ; bit mask for button presses that override simulated ones
-	and b
+	and [hl]
 	ret nz ; return if the simulated button presses are overridden
 	ld hl, wSimulatedJoypadStatesIndex
 	ld a, [hl]
