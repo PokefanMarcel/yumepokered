@@ -667,34 +667,24 @@ CheckWarpEventDirection: ; marcelnote - refactored warp engine
 	ld a, [wDestinationWarpID]
 	and WARP_DIR_MASK ; ANY_DIR?
 	ret z
-	cp WARP_DOWN << WARP_DIR_SHIFT
-	jr z, .down
-	cp WARP_UP << WARP_DIR_SHIFT
-	jr z, .up
-	cp WARP_LEFT << WARP_DIR_SHIFT
-	jr z, .left
-	cp WARP_RIGHT << WARP_DIR_SHIFT
-	jr z, .right
-	and a
-	ret
-.down
+	swap a
+	rrca ; clears carry, a = 1..4
+	ld b, PLAYER_DIR_DOWN
+	dec a ; WARP_DOWN?
+	jr z, .checkDirection
+	ld b, PLAYER_DIR_UP
+	dec a ; WARP_UP?
+	jr z, .checkDirection
+	ld b, PLAYER_DIR_LEFT
+	dec a ; WARP_LEFT?
+	jr z, .checkDirection
+	ld b, PLAYER_DIR_RIGHT
+	dec a ; WARP_RIGHT?
+	ret nz ; carry is still clear
+.checkDirection
 	ld a, [wPlayerMovingDirection]
-	and PLAYER_DIR_DOWN
-	jr .done
-.up
-	ld a, [wPlayerMovingDirection]
-	and PLAYER_DIR_UP
-	jr .done
-.left
-	ld a, [wPlayerMovingDirection]
-	and PLAYER_DIR_LEFT
-	jr .done
-.right
-	ld a, [wPlayerMovingDirection]
-	and PLAYER_DIR_RIGHT
-.done
+	and b
 	ret z
-.setCarry
 	scf
 	ret
 
