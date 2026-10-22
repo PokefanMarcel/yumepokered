@@ -1786,16 +1786,14 @@ LoadMapHeader:: ; marcelnote - optimized
 	ld hl, wSprite01StateData1
 	ld de, wSprite01StateData2
 	xor a
-	ld b, (NUM_SPRITESTATEDATA_STRUCTS - 1) * SPRITESTATEDATA1_LENGTH
 .zeroSpriteDataLoop
 	ld [hli], a
 	ld [de], a
-	inc e
-	dec b
+	inc e ; wSpriteStateData2 fills one aligned page, so e wraps to $00 after the last byte of sprite 15
 	jr nz, .zeroSpriteDataLoop
 ; disable SPRITESTATEDATA1_IMAGEINDEX (set to $ff) for sprites 01-15
 	ld hl, wSprite01StateData1ImageIndex
-	ld c, SPRITESTATEDATA1_LENGTH ; b = 0 here
+	ld bc, SPRITESTATEDATA1_LENGTH
 	lb de, $ff, NUM_SPRITESTATEDATA_STRUCTS - 1
 .disableSpriteEntriesLoop
 	ld [hl], d
