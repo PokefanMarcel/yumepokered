@@ -171,29 +171,21 @@ SerialDisconnected::
 
 ; This is used to exchange the button press and selected menu item on the link menu.
 ; The data is sent thrice and read twice to increase reliability.
-Serial_ExchangeLinkMenuSelection::
+Serial_ExchangeLinkMenuSelection:: ; marcelnote - optimized
 	ld hl, wLinkMenuSelectionSendBuffer
 	ld de, wLinkMenuSelectionReceiveBuffer
-	ld c, 2 ; number of bytes to save
-	ld a, 1
-	ldh [hSerialIgnoringInitialData], a
+	ld c, %110 ; discard first byte, store next two
 .loop
 	call DelayFrame
 	ld a, [hl]
 	ldh [hSerialSendData], a
 	call Serial_ExchangeByte
-	ld b, a
 	inc hl
-	ldh a, [hSerialIgnoringInitialData]
-	and a
-	ld a, 0 ; preserve Z flag
-	ldh [hSerialIgnoringInitialData], a
-	jr nz, .loop
-	ld a, b
+	srl c
+	jr nc, .loop ; store byte only if carry set
 	ld [de], a
 	inc de
-	dec c
-	jr nz, .loop
+	jr nz, .loop ; finish when c = 0
 	ret
 
 Serial_PrintWaitingTextAndSyncAndExchangeNybble::
