@@ -80,7 +80,10 @@ Serial_ExchangeByte::
 	jr nz, .notPlayer1OrTimedOut
 	call CheckLinkTimeoutFramesNonzero
 	jr z, .notPlayer1OrTimedOut
-	call WaitLoop_15Iterations
+	ld a, 18 ; marcelnote - increased from 15 to offset removed helper call
+.wait18
+	dec a
+	jr nz, .wait18
 	push hl
 	ld hl, wLinkTimeoutFrames + 1
 	inc [hl]
@@ -109,9 +112,9 @@ Serial_ExchangeByte::
 	cp USING_EXTERNAL_CLOCK
 	jr z, .ok
 	ld a, 255
-.waitLoop
+.wait255
 	dec a
-	jr nz, .waitLoop
+	jr nz, .wait255
 .ok
 	xor a
 	ldh [hSerialReceivedNewData], a
@@ -151,13 +154,6 @@ Serial_ExchangeByte::
 	ldh [hSerialSendData], a
 	call DelayFrame
 	jp Serial_ExchangeByte
-
-WaitLoop_15Iterations::
-	ld a, 15
-.waitLoop
-	dec a
-	jr nz, .waitLoop
-	ret
 
 CheckLinkTimeoutFramesNonzero::
 	push hl
