@@ -38,7 +38,6 @@ Serial_ExchangeBytes::
 	ldh [hSerialSendData], a
 	call Serial_ExchangeByte
 	push af
-	inc hl
 	ld a, 48
 .waitLoop
 	dec a
@@ -47,7 +46,6 @@ Serial_ExchangeBytes::
 	and a
 	jr z, .storeReceivedByte
 	pop af
-	dec hl
 	sub SERIAL_PREAMBLE_BYTE
 	jr nz, .loop
 	ldh [hSerialIgnoringInitialData], a ; a = 0
@@ -56,6 +54,7 @@ Serial_ExchangeBytes::
 	pop af
 	ld [de], a
 	inc de
+	inc hl
 	dec bc
 	ld a, b
 	or c
