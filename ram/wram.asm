@@ -413,8 +413,6 @@ wEnteringCableClub::
 wLinkTimeoutCounter:: db
 
 NEXTU
-; temporary nybble used by Serial_ExchangeNybble
-wSerialExchangeNybbleTempReceiveData::
 ; the final received nybble is stored here by Serial_SyncAndExchangeNybble
 wSerialSyncAndExchangeNybbleReceiveData:: db
 ; the final received nybble is stored here by Serial_ExchangeNybble

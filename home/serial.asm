@@ -255,13 +255,13 @@ Serial_ExchangeNybble::
 	ldh [rSC], a
 .doExchange
 	ldh a, [hSerialReceiveData]
-	ld [wSerialExchangeNybbleTempReceiveData], a
+	ld c, a
 	and $f0
 	sub $60
 	ret nz
 	ldh [hSerialReceiveData], a ; a = 0
-	ld a, [wSerialExchangeNybbleTempReceiveData]
-	and $f
+	ld a, c
+	and $0f
 	ld [wSerialExchangeNybbleReceiveData], a
 	ret
 
