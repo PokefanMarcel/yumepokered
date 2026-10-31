@@ -66,10 +66,9 @@ Serial_ExchangeBytes::
 	pop bc
 	jr z, .storeReceivedByte
 	dec hl
-	cp SERIAL_PREAMBLE_BYTE
+	sub SERIAL_PREAMBLE_BYTE
 	jr nz, .loop
-	xor a
-	ldh [hSerialIgnoringInitialData], a
+	ldh [hSerialIgnoringInitialData], a ; a = 0
 	jr .loop
 .storeReceivedByte
 	ld [de], a
