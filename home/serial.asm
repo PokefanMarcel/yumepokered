@@ -27,8 +27,8 @@ Serial:: ; marcelnote - optimized
 	xor a
 	jr .writeSB
 
-; hl = send data
-; de = receive data
+; de = send data
+; hl = receive data
 ; bc = length of data
 Serial_ExchangeBytes:: ; marcelnote - optimized
 	call .exchange
@@ -36,9 +36,8 @@ Serial_ExchangeBytes:: ; marcelnote - optimized
 	jr nz, Serial_ExchangeBytes
 .loop
 	call .exchange
-	ld [de], a
+	ld [hli], a
 	inc de
-	inc hl
 	dec bc
 	ld a, b
 	or c
@@ -46,7 +45,7 @@ Serial_ExchangeBytes:: ; marcelnote - optimized
 	ret
 
 .exchange
-	ld a, [hl]
+	ld a, [de]
 	ldh [hSerialSendData], a
 	call Serial_ExchangeByte
 	push af
@@ -57,6 +56,7 @@ Serial_ExchangeBytes:: ; marcelnote - optimized
 	pop af
 	ret
 
+; de = send data
 Serial_ExchangeByte::
 	xor a
 	ldh [hSerialReceivedNewData], a
@@ -144,7 +144,7 @@ Serial_ExchangeByte::
 	cp IE_SERIAL
 	ld a, SERIAL_NO_DATA_BYTE
 	ret z
-	ld a, [hl]
+	ld a, [de]
 	ldh [hSerialSendData], a
 	call DelayFrame
 	jp Serial_ExchangeByte
@@ -168,19 +168,18 @@ SerialDisconnected::
 ; This is used to exchange the button press and selected menu item on the link menu.
 ; The data is sent thrice and read twice to increase reliability.
 Serial_ExchangeLinkMenuSelection:: ; marcelnote - optimized
-	ld hl, wLinkMenuSelectionSendBuffer
-	ld de, wLinkMenuSelectionReceiveBuffer
+	ld de, wLinkMenuSelectionSendBuffer
+	ld hl, wLinkMenuSelectionReceiveBuffer
 	ld c, %110 ; discard first byte, store next two
 .loop
 	call DelayFrame
-	ld a, [hl]
+	ld a, [de]
 	ldh [hSerialSendData], a
 	call Serial_ExchangeByte
-	inc hl
+	inc de
 	srl c
 	jr nc, .loop ; store byte only if carry set
-	ld [de], a
-	inc de
+	ld [hli], a
 	jr nz, .loop ; finish when c = 0
 	ret
 

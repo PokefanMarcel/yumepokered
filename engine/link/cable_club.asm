@@ -125,24 +125,24 @@ CableClub_DoBattleOrTradeAgain:
 	ld a, IE_SERIAL
 	ldh [rIE], a
 
-	ld hl, wSerialRandomNumberListBlock
-	ld de, wSerialOtherGameboyRandomNumberListBlock
+	ld de, wSerialRandomNumberListBlock
+	ld hl, wSerialOtherGameboyRandomNumberListBlock
 	ld bc, SERIAL_RN_PREAMBLE_LENGTH + SERIAL_RNS_LENGTH
 	vc_hook Wireless_ExchangeBytes_RNG_state_unknown_Type5
 	call Serial_ExchangeBytes
 	ld a, SERIAL_NO_DATA_BYTE
-	ld [de], a
+	ld [hl], a
 
-	ld hl, wSerialPlayerDataBlock
-	ld de, wSerialEnemyDataBlock
+	ld de, wSerialPlayerDataBlock
+	ld hl, wSerialEnemyDataBlock
 	ld bc, SERIAL_PREAMBLE_LENGTH + NAME_LENGTH + 1 + PARTY_LENGTH + 1 + (PARTYMON_STRUCT_LENGTH + NAME_LENGTH * 2) * PARTY_LENGTH + 3
 	vc_hook Wireless_ExchangeBytes_party_structs
 	call Serial_ExchangeBytes
 	ld a, SERIAL_NO_DATA_BYTE
-	ld [de], a
+	ld [hl], a
 
-	ld hl, wSerialPartyMonsPatchList
-	ld de, wSerialEnemyMonsPatchList
+	ld de, wSerialPartyMonsPatchList
+	ld hl, wSerialEnemyMonsPatchList
 	ld bc, 200
 	vc_hook Wireless_ExchangeBytes_patch_lists
 	call Serial_ExchangeBytes
