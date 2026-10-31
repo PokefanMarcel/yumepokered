@@ -161,7 +161,7 @@ hSerialReceivedNewData:: db
 ; $02 = using internal clock
 ; $ff = establishing connection
 hSerialConnectionStatus:: db
-hSerialIgnoringInitialData:: db
+	ds 1 ; marcelnote - was hSerialIgnoringInitialData
 hSerialSendData:: db
 hSerialReceiveData:: db
 

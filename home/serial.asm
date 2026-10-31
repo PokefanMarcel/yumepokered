@@ -30,10 +30,22 @@ Serial:: ; marcelnote - optimized
 ; hl = send data
 ; de = receive data
 ; bc = length of data
-Serial_ExchangeBytes::
-	ld a, 1
-	ldh [hSerialIgnoringInitialData], a
+Serial_ExchangeBytes:: ; marcelnote - optimized
+	call .exchange
+	cp SERIAL_PREAMBLE_BYTE
+	jr nz, Serial_ExchangeBytes
 .loop
+	call .exchange
+	ld [de], a
+	inc de
+	inc hl
+	dec bc
+	ld a, b
+	or c
+	jr nz, .loop
+	ret
+
+.exchange
 	ld a, [hl]
 	ldh [hSerialSendData], a
 	call Serial_ExchangeByte
@@ -42,23 +54,7 @@ Serial_ExchangeBytes::
 .waitLoop
 	dec a
 	jr nz, .waitLoop
-	ldh a, [hSerialIgnoringInitialData]
-	and a
-	jr z, .storeReceivedByte
 	pop af
-	sub SERIAL_PREAMBLE_BYTE
-	jr nz, .loop
-	ldh [hSerialIgnoringInitialData], a ; a = 0
-	jr .loop
-.storeReceivedByte
-	pop af
-	ld [de], a
-	inc de
-	inc hl
-	dec bc
-	ld a, b
-	or c
-	jr nz, .loop
 	ret
 
 Serial_ExchangeByte::
