@@ -1,4 +1,4 @@
-GetTrainerName_::
+GetTrainerName::
 	ld hl, wLinkEnemyTrainerName
 	ld a, [wLinkState]
 	and a

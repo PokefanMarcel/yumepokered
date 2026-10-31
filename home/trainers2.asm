@@ -1,5 +1,5 @@
 GetTrainerInformation::
-	call GetTrainerName
+	callfar GetTrainerName
 	ld a, [wLinkState]
 	and a
 	jr nz, .linkBattle
@@ -23,6 +23,3 @@ GetTrainerInformation::
 	ld [hli], a
 	ld [hl], BANK(RedPicFront) ; marcelnote - added for trainer picture bank
 	ret
-
-GetTrainerName::
-	jpfar GetTrainerName_
