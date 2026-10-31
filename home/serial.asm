@@ -1,47 +1,31 @@
-Serial::
+Serial:: ; marcelnote - optimized
 	push af
 	ldh a, [hSerialConnectionStatus]
 	inc a
-	jr z, .connectionNotYetEstablished
 	ldh a, [rSB]
 	ldh [hSerialReceiveData], a
+	jr z, .connectionNotYetEstablished
 	ldh a, [hSerialSendData]
+.writeSB
 	ldh [rSB], a
 	ldh a, [hSerialConnectionStatus]
 	cp USING_INTERNAL_CLOCK
 	jr z, .done
-; using external clock
 	ld a, SC_START | SC_EXTERNAL
 	ldh [rSC], a
-	jr .done
-.connectionNotYetEstablished
-	ldh a, [rSB]
-	ldh [hSerialReceiveData], a
-	ldh [hSerialConnectionStatus], a
-	cp USING_INTERNAL_CLOCK
-	jr z, .usingInternalClock
-; using external clock
-	xor a
-	ldh [rSB], a
-	ld a, $3
-	ldh [rDIV], a
-.waitLoop
-	ldh a, [rDIV]
-	bit 7, a ; wait until rDIV has incremented from $3 to $80 or more
-	jr nz, .waitLoop
-	ld a, SC_START | SC_EXTERNAL
-	ldh [rSC], a
-	jr .done
-.usingInternalClock
-	xor a
-	ldh [rSB], a
 .done
-	ld a, $1
+	ld a, 1
 	ldh [hSerialReceivedNewData], a
-	ld a, SERIAL_NO_DATA_BYTE
+	ASSERT SERIAL_NO_DATA_BYTE == $ff ^ 1
+	cpl ; a = SERIAL_NO_DATA_BYTE
 	ldh [hSerialSendData], a
 	pop af
 	reti
+
+.connectionNotYetEstablished
+	ldh [hSerialConnectionStatus], a
+	xor a
+	jr .writeSB
 
 ; hl = send data
 ; de = receive data
