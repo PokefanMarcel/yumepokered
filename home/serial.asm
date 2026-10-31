@@ -257,10 +257,9 @@ Serial_ExchangeNybble::
 	ldh a, [hSerialReceiveData]
 	ld [wSerialExchangeNybbleTempReceiveData], a
 	and $f0
-	cp $60
+	sub $60
 	ret nz
-	xor a
-	ldh [hSerialReceiveData], a
+	ldh [hSerialReceiveData], a ; a = 0
 	ld a, [wSerialExchangeNybbleTempReceiveData]
 	and $f
 	ld [wSerialExchangeNybbleReceiveData], a
