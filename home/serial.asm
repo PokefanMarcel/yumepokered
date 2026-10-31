@@ -108,7 +108,7 @@ Serial_ExchangeByte::
 	pop hl
 	call CheckLinkTimeoutFramesNonzero
 	jr nz, .loop
-	jp SerialDisconnected
+	jr SerialDisconnected
 .notPlayer1OrTimedOut
 	ldh a, [rIE]
 	and IE_SERIAL | IE_TIMER | IE_STAT | IE_VBLANK

@@ -383,7 +383,7 @@ OverworldLoopLessDelay::
 	callfar SafariZoneCheckSteps
 	ld a, [wSafariZoneGameOver]
 	and a
-	jp nz, WarpFound2
+	jr nz, WarpFound2
 .notSafariZone
 	ld a, [wIsInBattle]
 	and a
@@ -1323,7 +1323,7 @@ AdvancePlayerSprite:: ; marcelnote - optim by Engezerstorung
 .afterUpdateMapCoords
 	ld a, [hl]
 	cp $07
-	jp nz, .scrollBackgroundAndSprites
+	jr nz, .scrollBackgroundAndSprites
 	push bc ; save step vectors
 
 ; On the first animation frame, move the visible BG tilemap origin in VRAM.
