@@ -197,20 +197,19 @@ Serial_SyncAndExchangeNybble::
 	call Serial_ExchangeNybble
 	call DelayFrame
 	call CheckLinkTimeoutFramesNonzero
-	jr z, .next1
+	jr z, .next
 	push hl
 	ld hl, wLinkTimeoutFrames + 1
+	ld a, [hl]
+	sub 1
+	ld [hld], a
+	jr nc, .noBorrow
 	dec [hl]
-	jr nz, .next2
-	dec hl
-	dec [hl]
-	jr nz, .next2
+.noBorrow
+	or [hl]
 	pop hl
-	xor a
-	jr SerialDisconnected
-.next2
-	pop hl
-.next1
+	jr z, SerialDisconnected
+.next
 	ld a, [wSerialExchangeNybbleReceiveData]
 	inc a
 	jr z, .loop1
