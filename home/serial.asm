@@ -74,19 +74,19 @@ Serial_ExchangeByte::
 	jr nz, .notPlayer1OrTimedOut
 	call CheckLinkTimeoutFramesNonzero
 	jr z, .notPlayer1OrTimedOut
-	ld a, 18 ; marcelnote - increased from 15 to offset removed helper call
-.wait18
+	ld a, 23 ; compensate for the faster counter update below
+.wait23
 	dec a
-	jr nz, .wait18
+	jr nz, .wait23
 	push hl
 	ld hl, wLinkTimeoutFrames + 1
 	inc [hl]
+	ld a, [hld]
 	jr nz, .noCarry
-	dec hl
 	inc [hl]
 .noCarry
+	or [hl]
 	pop hl
-	call CheckLinkTimeoutFramesNonzero
 	jr nz, .loop
 	jr SerialDisconnected
 .notPlayer1OrTimedOut
@@ -129,14 +129,13 @@ Serial_ExchangeByte::
 	push hl
 	ld hl, wLinkTimeoutFrames + 1
 	ld a, [hl]
-	dec a
+	sub 1
 	ld [hld], a
-	inc a
-	jr nz, .noBorrow
+	jr nc, .noBorrow
 	dec [hl]
 .noBorrow
+	or [hl]
 	pop hl
-	call CheckLinkTimeoutFramesNonzero
 	jr z, SerialDisconnected
 .done
 	ldh a, [rIE]
