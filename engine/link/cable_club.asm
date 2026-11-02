@@ -28,18 +28,16 @@ CableClub_DoBattleOrTrade:
 CableClub_DoBattleOrTradeAgain:
 	ld hl, wSerialPlayerDataBlock
 	ld a, SERIAL_PREAMBLE_BYTE
-	ld b, 6
+	lb bc, 6, 7
 .writePlayerDataBlockPreambleLoop
 	ld [hli], a
 	dec b
 	jr nz, .writePlayerDataBlockPreambleLoop
 
 	ld hl, wSerialRandomNumberListBlock
-	; a = SERIAL_PREAMBLE_BYTE
-	ld b, 7
 .writeRandomNumberListPreambleLoop
-	ld [hli], a
-	dec b
+	ld [hli], a ; SERIAL_PREAMBLE_BYTE
+	dec c
 	jr nz, .writeRandomNumberListPreambleLoop
 
 	lb bc, 10, SERIAL_PREAMBLE_BYTE
@@ -52,20 +50,22 @@ CableClub_DoBattleOrTradeAgain:
 	jr nz, .generateRandomNumberListLoop
 
 	ld hl, wSerialPartyMonsPatchList
-	ld a, SERIAL_PREAMBLE_BYTE
+	ld a, c ; SERIAL_PREAMBLE_BYTE
 	ld [hli], a
 	ld [hli], a
 	ld [hli], a
 
 	xor a
-	ld b, $c8
+	ld b, 200 - 3 ; marcelnote - clear the remaining bytes after the 3-byte preamble
 .zeroPlayerDataPatchListLoop
 	ld [hli], a
 	dec b
 	jr nz, .zeroPlayerDataPatchListLoop
+
 	ld hl, wLinkEnemyTrainerName
 	ld bc, wTrainerHeaderPtr - wLinkEnemyTrainerName
 	call FillMemory ; zero enemy party
+
 	ld hl, wPartyMons ; marcelnote - small loop optimization
 	ld de, wSerialPartyMonsPatchList + 10
 	; bc = 0 after FillMemory
@@ -74,12 +74,10 @@ CableClub_DoBattleOrTradeAgain:
 	ld a, c
 	cp SERIAL_PREAMBLE_BYTE
 	jr z, .startPatchListPart2
+	cp (wPartyMonOT - (wPartyMons - 1)) - (SERIAL_PREAMBLE_BYTE - 1)
+	jr nz, .checkPlayerDataByte
 	ld a, b
 	dec a ; are we in part 2 of the patch list?
-	jr nz, .checkPlayerDataByte ; jump if in part 1
-; if we're in part 2
-	ld a, c
-	cp (wPartyMonOT - (wPartyMons - 1)) - (SERIAL_PREAMBLE_BYTE - 1)
 	jr z, .finishedPatchingPlayerData
 .checkPlayerDataByte
 	ld a, [hli]
@@ -100,8 +98,9 @@ CableClub_DoBattleOrTradeAgain:
 	inc de
 	lb bc, 1, 0
 	jr .patchPartyMonsLoop
-.finishedPatchingPlayerData
-	ld a, SERIAL_PATCH_LIST_PART_TERMINATOR
+.finishedPatchingPlayerData ; a = 0
+	ASSERT SERIAL_PATCH_LIST_PART_TERMINATOR == $ff
+	dec a ; SERIAL_PATCH_LIST_PART_TERMINATOR
 	ld [de], a ; end of part 2
 
 	call Serial_SyncAndExchangeNybble
@@ -130,16 +129,14 @@ CableClub_DoBattleOrTradeAgain:
 	ld bc, SERIAL_RN_PREAMBLE_LENGTH + SERIAL_RNS_LENGTH
 	vc_hook Wireless_ExchangeBytes_RNG_state_unknown_Type5
 	call Serial_ExchangeBytes
-	ld a, SERIAL_NO_DATA_BYTE
-	ld [hl], a
+	ld [hl], SERIAL_NO_DATA_BYTE
 
 	ld de, wSerialPlayerDataBlock
 	ld hl, wSerialEnemyDataBlock
 	ld bc, SERIAL_PREAMBLE_LENGTH + NAME_LENGTH + 1 + PARTY_LENGTH + 1 + (PARTYMON_STRUCT_LENGTH + NAME_LENGTH * 2) * PARTY_LENGTH + 3
 	vc_hook Wireless_ExchangeBytes_party_structs
 	call Serial_ExchangeBytes
-	ld a, SERIAL_NO_DATA_BYTE
-	ld [hl], a
+	ld [hl], SERIAL_NO_DATA_BYTE
 
 	ld de, wSerialPartyMonsPatchList
 	ld hl, wSerialEnemyMonsPatchList
