@@ -57,28 +57,24 @@ Serial_ExchangeBytes:: ; marcelnote - optimized
 	ret
 
 ; de = send data
-Serial_ExchangeByte::
+Serial_ExchangeByte:: ; marcelnote - optimized
 	xor a
 	ldh [hSerialReceivedNewData], a
-	ldh a, [hSerialConnectionStatus]
-	cp USING_INTERNAL_CLOCK
-	jr nz, .loop
-	ld a, SC_START | SC_INTERNAL
-	ldh [rSC], a
+	call Serial_StartTransfer
+	push hl
 .loop
 	ldh a, [hSerialReceivedNewData]
-	and a
-	jr nz, .ok
+	dec a ; did the serial interrupt signal a completed byte transfer?
+	jr z, .ok
 	ldh a, [hSerialConnectionStatus]
-	cp USING_EXTERNAL_CLOCK
+	dec a ; USING_EXTERNAL_CLOCK?
 	jr nz, .notPlayer1OrTimedOut
 	call CheckLinkTimeoutFramesNonzero
 	jr z, .notPlayer1OrTimedOut
-	ld a, 23 ; compensate for the faster counter update below
-.wait23
+	ld a, 25 ; compensate for the faster counter update below
+.wait25
 	dec a
-	jr nz, .wait23
-	push hl
+	jr nz, .wait25
 	ld hl, wLinkTimeoutFrames + 1
 	inc [hl]
 	ld a, [hld]
@@ -86,41 +82,39 @@ Serial_ExchangeByte::
 	inc [hl]
 .noCarry
 	or [hl]
-	pop hl
 	jr nz, .loop
+	pop hl
 	jr SerialDisconnected
 .notPlayer1OrTimedOut
 	ldh a, [rIE]
 	and IE_SERIAL | IE_TIMER | IE_STAT | IE_VBLANK
 	cp IE_SERIAL
 	jr nz, .loop
-	ld a, [wLinkByteTimeout]
-	dec a
-	ld [wLinkByteTimeout], a
+	ld hl, wLinkByteTimeout
+	dec [hl]
 	jr nz, .loop
-	ld a, [wLinkByteTimeout + 1]
-	dec a
-	ld [wLinkByteTimeout + 1], a
+	inc hl
+	dec [hl]
 	jr nz, .loop
 	ldh a, [hSerialConnectionStatus]
-	cp USING_EXTERNAL_CLOCK
+	dec a ; USING_EXTERNAL_CLOCK?
 	jr z, .ok
 	ld a, 255
 .wait255
 	dec a
 	jr nz, .wait255
 .ok
-	xor a
-	ldh [hSerialReceivedNewData], a
+	ldh [hSerialReceivedNewData], a ; a = 0
 	ldh a, [rIE]
 	and IE_SERIAL | IE_TIMER | IE_STAT | IE_VBLANK
 	sub IE_SERIAL
 	jr nz, .nonSerialInterruptsEnabled
 	ASSERT LOW(SERIAL_LINK_BYTE_TIMEOUT) == 0
-	ld [wLinkByteTimeout], a ; a = 0
-	ld a, HIGH(SERIAL_LINK_BYTE_TIMEOUT)
-	ld [wLinkByteTimeout + 1], a
+	ld hl, wLinkByteTimeout
+	ld [hli], a ; LOW(SERIAL_LINK_BYTE_TIMEOUT)
+	ld [hl], HIGH(SERIAL_LINK_BYTE_TIMEOUT)
 .nonSerialInterruptsEnabled
+	pop hl
 	ldh a, [hSerialReceiveData]
 	cp SERIAL_NO_DATA_BYTE
 	ret nz
@@ -146,7 +140,7 @@ Serial_ExchangeByte::
 	ld a, [de]
 	ldh [hSerialSendData], a
 	call DelayFrame
-	jp Serial_ExchangeByte
+	jr Serial_ExchangeByte
 
 CheckLinkTimeoutFramesNonzero::
 	push hl
@@ -260,6 +254,7 @@ Serial_SendZeroByte::
 	xor a
 Serial_SendByte::
 	ldh [hSerialSendData], a
+Serial_StartTransfer::
 	ldh a, [hSerialConnectionStatus]
 	cp USING_INTERNAL_CLOCK
 	ret nz
