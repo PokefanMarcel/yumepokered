@@ -243,30 +243,24 @@ ENDC
 	vc_hook Wireless_WaitLinkTransfer_ret
 	ret
 
-Serial_ExchangeNybble::
+Serial_ExchangeNybble:: ; marcelnote - optimized
 	call .doExchange
 	ld a, [wSerialExchangeNybbleSendData]
 	add $60
-	ldh [hSerialSendData], a
-	ldh a, [hSerialConnectionStatus]
-	cp USING_INTERNAL_CLOCK
-	jr nz, .doExchange
-	ld a, SC_START | SC_INTERNAL
-	ldh [rSC], a
+	call Serial_SendByte
 .doExchange
 	ldh a, [hSerialReceiveData]
-	ld c, a
-	and $f0
 	sub $60
-	ret nz
-	ldh [hSerialReceiveData], a ; a = 0
-	ld a, c
-	and $0f
+	cp $10
+	ret nc ; original byte wasn't $60–$6f
 	ld [wSerialExchangeNybbleReceiveData], a
+	xor a
+	ldh [hSerialReceiveData], a
 	ret
 
 Serial_SendZeroByte::
 	xor a
+Serial_SendByte::
 	ldh [hSerialSendData], a
 	ldh a, [hSerialConnectionStatus]
 	cp USING_INTERNAL_CLOCK
