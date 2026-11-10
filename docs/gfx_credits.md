@@ -7,8 +7,9 @@
 - Will's battle sprite by Corra (on the pokered discord).
 
 **Battle sprites**
-- The high-res backsprite for the male character is also from Madame Frog/Hatuntun.
-- The high-res Old Man backsprite is from [PureRGB](https://github.com/Vortyne/pureRGB).
+- Trainer sprites for the female player character are from [LouLilie](https://www.deviantart.com/loulilie/art/Gen-1-2-Female-Player-Sprites-1332312626), with the CRYSTAL backsprite adapted by Kester Henrick.
+- The CRYSTAL backsprite for the male character is from Madame Frog/Hatuntun.
+- The CRYSTAL Old Man backsprite was made by [SteppoBlazer](https://www.deviantart.com/steppoblazer) and recovered from [Shinpokered](https://github.com/jojobear13/shinpokered/blob/master/pic/swtrainerback/oldman.png).
 - Yellow's sprites are adapted by me from [LouLilie's](https://www.deviantart.com/loulilie/art/PokemonSpecial-Sprites-Yellow-302559354).
 - Pokémon CRYSTAL sprites are a mix of original sprites from Gold/Silver, and reworked sprites from [Polished Crystal](https://github.com/Rangi42/polishedcrystal).
 - The CRYSTAL Lavender Tower Ghost sprite is from [RacieBeep](https://www.deviantart.com/racieb).
