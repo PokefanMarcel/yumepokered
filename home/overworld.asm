@@ -303,9 +303,11 @@ OverworldLoopLessDelay::
 	jp c, OverworldLoop
 
 .noCollision
+	ld hl, wMiscFlags
+	res BIT_TURNING, [hl]
 	ld a, $08
 	ld [wWalkCounter], a
-	jr .moveAhead2
+	jr .moveAhead2 ; carry is clear on both successful collision checks
 
 .moveAhead
 	ld a, [wMovementFlags]
@@ -314,10 +316,8 @@ OverworldLoopLessDelay::
 	callfar LoadSpinnerArrowTiles
 .noSpinning
 	call UpdateSprites
-
+	scf ; continuing an existing step
 .moveAhead2 ; marcelnote - changes to handle running, faster swimming, and faster spinning
-	ld hl, wMiscFlags
-	res BIT_TURNING, [hl]
 	ld a, [wMovementFlags]
 	bit BIT_LEDGE_OR_FISHING, a ; jumping a ledge?
 	jr nz, .normalPlayerSpriteAdvancement
@@ -329,28 +329,27 @@ OverworldLoopLessDelay::
 	dec a ; SURFING?
 	jr z, .checkSurfSpeed
 ; walking
-	ld hl, wStatusFlags6
-	ld a, [wWalkCounter]
-	cp $08
-	jr nz, .checkWalkingSpeed
-; Only switch walking/running graphics at the start of a step. BIT_RUNNING means
-; that running graphics are loaded and this whole step should be fast.
+	ASSERT BIT_RUNNING == 7
+	ld a, [wStatusFlags6]
+	jr nc, .startWalkingStep ; carry clear = new step, carry set = continuing step
+	add a ; keep the speed selected at the start of the step
+	jr nc, .normalPlayerSpriteAdvancement
+	jr .speedUp
+
+.startWalkingStep
+; Only switch walking/running graphics at the start of a step.
+	add a ; BIT_RUNNING into carry
 	ldh a, [hJoyHeld]
-	and PAD_B
-	jr nz, .startOrContinueRunning
-	bit BIT_RUNNING, [hl]
-	jr z, .normalPlayerSpriteAdvancement
+	bit B_PAD_B, a ; preserves carry
+	jr nz, .runHeld
+	jr nc, .normalPlayerSpriteAdvancement
 	call LoadWalkingPlayerSpriteGraphics
 	jr .normalPlayerSpriteAdvancement
-.startOrContinueRunning
-	bit BIT_RUNNING, [hl]
-	jr nz, .speedUp
+.runHeld
+	jr c, .speedUp
 	call LoadRunningPlayerSpriteGraphics
 	jr .speedUp
-.checkWalkingSpeed
-	bit BIT_RUNNING, [hl]
-	jr nz, .speedUp
-	jr .normalPlayerSpriteAdvancement
+
 .checkSurfSpeed
 	ldh a, [hJoyHeld]
 	and PAD_B
