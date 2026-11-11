@@ -800,28 +800,29 @@ LoadTileBlockMap:: ; marcelnote - optimized
 ; north connection
 	ld hl, wNorthConnectedMap
 	ld a, [hli]
-	cp $ff
+	inc a ; $ff?
 	call nz, LoadNorthSouthConnection
 ; south connection
 	ld hl, wSouthConnectedMap
 	ld a, [hli]
-	cp $ff
+	inc a ; $ff?
 	call nz, LoadNorthSouthConnection
 ; west connection
 	ld hl, wWestConnectedMap
 	ld a, [hli]
-	cp $ff
+	inc a ; $ff?
 	call nz, LoadEastWestConnection
 ; east connection
 	ld hl, wEastConnectedMap
 	ld a, [hli]
-	cp $ff
+	inc a ; $ff?
 	call nz, LoadEastWestConnection
 	jpfar ApplyTemporaryTileBlockReplacements ; marcelnote - modified cut trees engine
 
-; Inputs: a = connected map ID
+; Inputs: a = connected map ID + 1
 ;         hl = connection header's ConnectedMapWidth
 LoadNorthSouthConnection:
+	dec a ; restore map ID
 	call SwitchToMapRomBank
 	ld a, [hli] ; map width
 	sub [hl]
@@ -859,9 +860,10 @@ LoadNorthSouthConnection:
 	jr nz, .rowLoop
 	ret
 
-; Inputs: a = connected map ID
+; Inputs: a = connected map ID + 1
 ;         hl = connection header's ConnectedMapWidth
 LoadEastWestConnection:
+	dec a ; restore map ID
 	call SwitchToMapRomBank
 	ld a, [hli] ; map width
 	sub MAP_BORDER
