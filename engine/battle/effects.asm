@@ -196,10 +196,10 @@ TwoToFiveAttacksEffect: ; marcelnote - optimized
 
 .attackTwiceOrTwineedle
 	cp ATTACK_TWICE_EFFECT
-	ld a, $2 ; number of hits
+	ld a, 2 ; number of hits
 	jr z, .saveNumberOfHits
 	; TWINEEDLE_EFFECT left, so set Twineedle's secondary side effect
-	ASSERT POISON_SIDE_EFFECT1 == $2
+	ASSERT POISON_SIDE_EFFECT1 == 2
 	ld [hl], a ; [w<User>MoveEffect] = POISON_SIDE_EFFECT1
 	jr .saveNumberOfHits
 
