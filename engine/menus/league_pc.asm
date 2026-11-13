@@ -31,7 +31,7 @@ PKMNLeaguePC:
 	callfar LoadHallOfFameTeams
 	call LeaguePCShowTeam
 	pop bc
-	jr c, .doneShowingTeams
+	jr nz, .doneShowingTeams
 	ld hl, wHoFTeamIndex2
 	inc [hl]
 	ld a, [hl]
@@ -49,37 +49,34 @@ PKMNLeaguePC:
 	call RunDefaultPaletteCommand
 	jp GBPalNormal
 
-LeaguePCShowTeam:
+; Return nz if B was pressed, z if the team is finished.
+LeaguePCShowTeam: ; marcelnote - optimized
 	ld c, PARTY_LENGTH
+	ld hl, wHallOfFame
 .loop
+	push hl
 	push bc
 	call LeaguePCShowMon
 	call WaitForTextScrollButtonPress
+	pop bc
+	pop hl
 	ldh a, [hJoyHeld]
 	bit B_PAD_B, a
-	jr nz, .exit
-	ld hl, wHallOfFame + HOF_MON
-	ld de, wHallOfFame
-	ld bc, HOF_TEAM - HOF_MON
-	call CopyData
-	pop bc
-	ld a, [wHallOfFame]
-	cp $ff
-	jr z, .done
+	ret nz
 	dec c
+	ret z
+	ld de, HOF_MON
+	add hl, de
+	ld a, [hl]
+	inc a ; $ff?
 	jr nz, .loop
-.done
-	and a
-	ret
-.exit
-	pop bc
-	scf
 	ret
 
 LeaguePCShowMon:
+	push hl ; save hl = Hall of Fame mon record
 	call GBPalWhiteOutWithDelay3
 	call ClearScreen
-	ld hl, wHallOfFame
+	pop hl  ; restore hl = Hall of Fame mon record
 	ld a, [hli]
 	ld [wHoFMonSpecies], a
 	ld [wCurPartySpecies], a
