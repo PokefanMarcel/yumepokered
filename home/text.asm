@@ -215,6 +215,47 @@ PlaceDexEnd::
 	pop hl
 	ret
 
+WaitForTextScrollButtonPress:: ; marcelnote - small optim
+	push hl
+	ld hl, hDownArrowBlinkCount1
+	ASSERT hDownArrowBlinkCount2 == hDownArrowBlinkCount1 + 1
+	ld a, [hli] ; hDownArrowBlinkCount1
+	push af
+	ld a, [hld] ; hDownArrowBlinkCount2
+	push af
+	xor a
+	ld [hli], a ; hDownArrowBlinkCount1
+	ld [hl], 6  ; hDownArrowBlinkCount2
+.loop
+	ld a, [wTownMapSpriteBlinkingEnabled]
+	and a
+	call nz, TownMapSpriteBlinkingAnimation
+	hlcoord 18, 16
+	call HandleDownArrowBlinkTiming
+	call JoypadLowSensitivity
+	predef CableClub_Run
+	ldh a, [hJoy5]
+	and PAD_A | PAD_B
+	jr z, .loop
+	pop af
+	ldh [hDownArrowBlinkCount2], a
+	pop af
+	ldh [hDownArrowBlinkCount1], a
+	pop hl
+	ret
+
+; (unless in link battle) waits for A or B being pressed and outputs the scrolling sound effect
+ManualTextScroll::
+	ld a, [wLinkState]
+	cp LINK_STATE_BATTLING
+	jr z, .inLinkBattle
+	call WaitForTextScrollButtonPress
+	ld a, SFX_PRESS_AB
+	jp PlaySound
+.inLinkBattle
+	ld c, 65
+	jp DelayFrames
+
 PromptText::
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
