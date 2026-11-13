@@ -13,8 +13,15 @@
 ;    report only one button press.
 ; 3. Same as 2, but report no buttons as pressed if A or B is held down.
 ;    ([hJoy7] == 1, [hJoy6] == 0)
-JoypadLowSensitivity::
+JoypadLowSensitivity:: ; marcelnote - optimized
 	call Joypad
+	ldh a, [hJoyPressed] ; newly pressed buttons
+	and a ; have any buttons been newly pressed since last check?
+	jr z, .noNewlyPressedButtons
+; newly pressed buttons
+	ld a, 30 ; half a second delay
+	ldh [hFrameCounter], a
+.selectButtons
 	ldh a, [hJoy7] ; flag
 	and a ; get all currently pressed buttons or only newly pressed buttons?
 	ldh a, [hJoyPressed] ; newly pressed buttons
@@ -22,53 +29,44 @@ JoypadLowSensitivity::
 	ldh a, [hJoyHeld] ; all currently pressed buttons
 .storeButtonState
 	ldh [hJoy5], a
-	ldh a, [hJoyPressed] ; newly pressed buttons
-	and a ; have any buttons been newly pressed since last check?
-	jr z, .noNewlyPressedButtons
-; newly pressed buttons
-	ld a, 30 ; half a second delay
-	ldh [hFrameCounter], a
 	ret
+
 .noNewlyPressedButtons
 	ldh a, [hFrameCounter]
 	and a ; is the delay over?
-	jr z, .delayOver
-; delay not over
-	xor a
-	ldh [hJoy5], a ; report no buttons as pressed
-	ret
-.delayOver
+	jr nz, .clearButtonState ; if not, report no buttons as pressed
+	ld a, 5 ; 1/12 of a second delay
+	ldh [hFrameCounter], a
 ; if [hJoy6] = 0 and A or B is pressed, report no buttons as pressed
 	ldh a, [hJoyHeld]
 	and PAD_A | PAD_B
-	jr z, .setShortDelay
+	jr z, .selectButtons
 	ldh a, [hJoy6] ; flag
 	and a
-	jr nz, .setShortDelay
+	jr nz, .selectButtons
+.clearButtonState
 	xor a
 	ldh [hJoy5], a
-.setShortDelay
-	ld a, 5 ; 1/12 of a second delay
-	ldh [hFrameCounter], a
 	ret
 
-WaitForTextScrollButtonPress::
-	ldh a, [hDownArrowBlinkCount1]
+
+WaitForTextScrollButtonPress:: ; marcelnote - small optim
+	push hl
+	ld hl, hDownArrowBlinkCount1
+	ASSERT hDownArrowBlinkCount2 == hDownArrowBlinkCount1 + 1
+	ld a, [hli] ; hDownArrowBlinkCount1
 	push af
-	ldh a, [hDownArrowBlinkCount2]
+	ld a, [hld] ; hDownArrowBlinkCount2
 	push af
 	xor a
-	ldh [hDownArrowBlinkCount1], a
-	ld a, $6
-	ldh [hDownArrowBlinkCount2], a
+	ld [hli], a ; hDownArrowBlinkCount1
+	ld [hl], 6  ; hDownArrowBlinkCount2
 .loop
-	push hl
 	ld a, [wTownMapSpriteBlinkingEnabled]
 	and a
 	call nz, TownMapSpriteBlinkingAnimation
 	hlcoord 18, 16
 	call HandleDownArrowBlinkTiming
-	pop hl
 	call JoypadLowSensitivity
 	predef CableClub_Run
 	ldh a, [hJoy5]
@@ -78,6 +76,7 @@ WaitForTextScrollButtonPress::
 	ldh [hDownArrowBlinkCount2], a
 	pop af
 	ldh [hDownArrowBlinkCount1], a
+	pop hl
 	ret
 
 ; (unless in link battle) waits for A or B being pressed and outputs the scrolling sound effect
