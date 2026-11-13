@@ -36,7 +36,6 @@ INCLUDE "engine/events/display_pokedex.asm"
 
 SECTION "bank3", ROMX
 
-INCLUDE "engine/joypad.asm"
 INCLUDE "data/maps/songs.asm"
 INCLUDE "data/maps/map_header_banks.asm"
 INCLUDE "engine/overworld/clear_variables.asm"
