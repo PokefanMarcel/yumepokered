@@ -63,7 +63,7 @@ LeaguePCShowTeam:
 	ld bc, HOF_TEAM - HOF_MON
 	call CopyData
 	pop bc
-	ld a, [wHallOfFame + 0]
+	ld a, [wHallOfFame]
 	cp $ff
 	jr z, .done
 	dec c
