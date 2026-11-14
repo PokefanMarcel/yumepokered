@@ -843,13 +843,10 @@ SurfingMinigame_DPadAction:
 	ld hl, ANIM_OBJ_FRAME_SET
 	add hl, bc
 	ld a, [hl]
-	cp $e
-	jr nc, .dLeftReset
 	inc [hl]
-	ret
-
-.dLeftReset
-	ld [hl], 1
+	cp $e
+	ret c
+	ld [hl], 1 ; wrap around
 	ret
 
 .dRight
@@ -868,14 +865,9 @@ SurfingMinigame_DPadAction:
 .dRightSkip
 	ld hl, ANIM_OBJ_FRAME_SET
 	add hl, bc
-	ld a, [hl]
-	dec a
-	jr z, .dRightReset
-	ld [hl], a
-	ret
-
-.dRightReset
-	ld [hl], $e
+	dec [hl]
+	ret nz
+	ld [hl], $e ; wrap around
 	ret
 
 .StartTrick:
