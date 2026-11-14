@@ -1,10 +1,6 @@
 SECTION "HRAM", HRAM
 
-; Initialized to 16.
-; Decremented each input iteration if the player
-; presses the reset sequence (A+B+SEL+START).
-; Soft reset when 0 is reached.
-hSoftReset:: db
+	ds 1 ; marcelnote - moved hSoftReset to WRAM
 
 UNION ; this union is 4 bytes
 hBaseTileID:: ; base tile ID to which offsets are added

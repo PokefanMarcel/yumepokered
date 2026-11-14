@@ -32,7 +32,7 @@ TrySoftReset:
 	call DelayFrame
 ;	ld a, JOYP_GET_NONE ; deselect keys (redundant)
 ;	ldh [rJOYP], a
-	ld hl, hSoftReset
+	ld hl, wSoftReset
 	dec [hl]
 	jp z, SoftReset
 	; fallthrough

@@ -1629,7 +1629,11 @@ wDisableVBlankWYUpdate:: db ; if non-zero, don't update WY during V-blank
 ; Saves SP while VBlank tile transfers use POP to read their source data.
 wSPTemp:: dw ; marcelnote - moved from HRAM
 
-	ds 4
+; Starts at 16 and counts down while A+B+SELECT+START is sampled.
+; At 0, the game soft resets.
+wSoftReset:: db ; marcelnote - moved from HRAM
+
+	ds 3
 
 ; marcelnote - all this was used for decompression, now unused
 ;wSpriteCurPosX:: db

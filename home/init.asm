@@ -119,7 +119,7 @@ Init::
 	ld a, LCDC_DEFAULT
 	ldh [rLCDC], a
 	ld a, 16
-	ldh [hSoftReset], a
+	ld [wSoftReset], a
 	call StopAllSounds
 
 	ei
