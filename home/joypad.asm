@@ -1,42 +1,37 @@
-ReadJoypad::
+ReadJoypad:: ; marcelnote - optimized
 ; Poll joypad input.
 ; Unlike the hardware register, button
 ; presses are indicated by a set bit.
+	ld c, LOW(rJOYP)
 
 	ld a, 1 << 5 ; select direction keys
-;	ld c, 0 ; marcelnote - unused
-
-	ldh [rJOYP], a
-REPT 6
-	ldh a, [rJOYP]
+	ldh [c], a
+REPT 4 ; aligned on GB programming manual, 9 to keep same timing as vanilla
+	ldh a, [c]
 ENDR
-	cpl
-	and %1111
+	and $0f
 	swap a
 	ld b, a
 
 	ld a, 1 << 4 ; select button keys
-	ldh [rJOYP], a
-REPT 10
-	ldh a, [rJOYP]
+	ldh [c], a
+REPT 12 ; aligned on GB programming manual, 15 to keep same timing as vanilla
+	ldh a, [c]
 ENDR
-	cpl
-	and %1111
+	and $0f
 	or b
 
+	cpl
 	ldh [hJoyInput], a
 
 	ld a, 1 << 4 + 1 << 5 ; deselect keys
-	ldh [rJOYP], a
+	ldh [c], a
 	ret
 
 TrySoftReset:
 	call DelayFrame
-
-	; deselect (redundant)
-	ld a, $30
-	ldh [rJOYP], a
-
+;	ld a, 1 << 4 + 1 << 5 ; deselect keys (redundant)
+;	ldh [rJOYP], a
 	ld hl, hSoftReset
 	dec [hl]
 	jp z, SoftReset
