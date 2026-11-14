@@ -26,19 +26,16 @@ Init::
 
 	ld a, LCDC_ON
 	ldh [rLCDC], a
-	call DisableLCD
+	call DisableLCD ; returns a = 0 because rIE was cleared
 
 	ld sp, wStack
 
+	ASSERT STARTOF(WRAM0) == $c000 && SIZEOF(WRAM0) == $2000
 	ld hl, STARTOF(WRAM0)
-	ld bc, SIZEOF(WRAM0)
-.loop
-	ld [hl], 0
-	inc hl
-	dec bc
-	ld a, b
-	or c
-	jr nz, .loop
+.clearWRAM
+	ld [hli], a ; 0
+	bit 5, h ; first set when hl = $e000
+	jr z, .clearWRAM
 
 ;;;;;;;;;;;;;;;;;;;; marcelnote - shinpokered xorshift RNG
 ;joenote - implement xorshift RNG
