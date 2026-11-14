@@ -4,33 +4,33 @@ ReadJoypad:: ; marcelnote - optimized
 ; presses are indicated by a set bit.
 	ld c, LOW(rJOYP)
 
-	ld a, 1 << 5 ; select direction keys
+	ld a, JOYP_GET_CTRL_PAD
 	ldh [c], a
 REPT 4 ; aligned on GB programming manual, 9 to keep same timing as vanilla
 	ldh a, [c]
 ENDR
-	and $0f
+	and JOYP_INPUTS
 	swap a
 	ld b, a
 
-	ld a, 1 << 4 ; select button keys
+	ld a, JOYP_GET_BUTTONS
 	ldh [c], a
 REPT 12 ; aligned on GB programming manual, 15 to keep same timing as vanilla
 	ldh a, [c]
 ENDR
-	and $0f
+	and JOYP_INPUTS
 	or b
 
 	cpl
 	ldh [hJoyInput], a
 
-	ld a, 1 << 4 + 1 << 5 ; deselect keys
+	ld a, JOYP_GET_NONE
 	ldh [c], a
 	ret
 
 TrySoftReset:
 	call DelayFrame
-;	ld a, 1 << 4 + 1 << 5 ; deselect keys (redundant)
+;	ld a, JOYP_GET_NONE ; deselect keys (redundant)
 ;	ldh [rJOYP], a
 	ld hl, hSoftReset
 	dec [hl]
