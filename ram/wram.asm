@@ -1626,8 +1626,12 @@ wSlideMonUpBottomRowLeftTile::
 
 wDisableVBlankWYUpdate:: db ; if non-zero, don't update WY during V-blank
 
+; Saves SP while VBlank tile transfers use POP to read their source data.
+wSPTemp:: dw ; marcelnote - moved from HRAM
+
+	ds 4
+
 ; marcelnote - all this was used for decompression, now unused
-	ds 6
 ;wSpriteCurPosX:: db
 ;wSpriteCurPosY:: db
 ;wSpriteWidth:: db

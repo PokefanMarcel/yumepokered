@@ -113,7 +113,7 @@ AutoBgMapTransfer::
 	ldh a, [hAutoBGTransferEnabled]
 	and a
 	ret z
-	ld [hSPTemp], sp
+	ld [wSPTemp], sp
 	ld sp, hAutoBGTransferDest
 	pop hl ; hl = destination base
 	ldh a, [hAutoBGTransferPortion]
@@ -159,7 +159,7 @@ ENDR
 	add hl, bc
 	dec a
 	jr nz, .loop
-	ld sp, hSPTemp
+	ld sp, wSPTemp
 	pop hl
 	ld sp, hl
 	ret
@@ -170,7 +170,7 @@ VBlankCopyBgMap::
 	ldh a, [hVBlankCopyBGSource] ; doubles as enabling byte
 	and a
 	ret z
-	ld [hSPTemp], sp ; save stack pointer
+	ld [wSPTemp], sp ; save stack pointer
 	ld sp, hVBlankCopyBGSource
 	ASSERT hVBlankCopyBGDest == hVBlankCopyBGSource + 2
 	pop hl    ; hl = [hVBlankCopyBGSource]
@@ -195,7 +195,7 @@ VBlankCopyDouble::
 	ldh a, [hVBlankCopyDoubleSize]
 	and a
 	ret z
-	ld [hSPTemp], sp
+	ld [wSPTemp], sp
 	ld sp, hVBlankCopyDoubleSource
 	ASSERT hVBlankCopyDoubleDest == hVBlankCopyDoubleSource + 2
 	pop hl    ; hl = [hVBlankCopyDoubleSource]
@@ -233,7 +233,7 @@ ENDR
 	ld sp, hl
 	ld [hVBlankCopyDoubleDest], sp
 
-	ld sp, hSPTemp
+	ld sp, wSPTemp
 	pop hl
 	ld sp, hl
 	ret
@@ -249,7 +249,7 @@ VBlankCopy::
 	ldh a, [hVBlankCopySize]
 	and a
 	ret z
-	ld [hSPTemp], sp
+	ld [wSPTemp], sp
 	ld sp, hVBlankCopySource
 	ASSERT hVBlankCopyDest == hVBlankCopySource + 2
 	pop hl    ; hl = [hVBlankCopySource]
@@ -279,7 +279,7 @@ ENDR
 	ld sp, hl
 	ld [hVBlankCopyDest], sp
 
-	ld sp, hSPTemp
+	ld sp, wSPTemp
 	pop hl
 	ld sp, hl
 	ret

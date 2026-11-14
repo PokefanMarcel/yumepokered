@@ -196,9 +196,7 @@ hAutoBGTransferDest:: dw
 
 hRedrawMapViewRowOffset:: db
 
-; temporary storage for stack pointer during memory transfers that use pop
-; to increase speed
-hSPTemp:: dw
+	ds 2 ; marcelnote - moved hSPTemp to WRAM
 
 ; source address for VBlankCopyBgMap function
 ; the first byte doubles as the byte that enabled the transfer.
