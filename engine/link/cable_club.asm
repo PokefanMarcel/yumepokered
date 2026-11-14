@@ -531,7 +531,6 @@ TradeCenter_SelectMon:
 	ldcoord_a 1, 16
 .cancelMenuItem_JoypadLoop
 	call JoypadLowSensitivity
-	ldh a, [hJoy5]
 	and a ; pressed anything?
 	jr z, .cancelMenuItem_JoypadLoop
 	bit B_PAD_A, a

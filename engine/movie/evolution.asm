@@ -142,7 +142,6 @@ Evolution_ChangeMonPic:
 Evolution_CheckForCancel:
 	call DelayFrame
 	call JoypadLowSensitivity ; preserves bc
-	ldh a, [hJoy5]
 	and PAD_B
 	jr nz, .pressedB
 .notAllowedToCancel

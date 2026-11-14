@@ -41,7 +41,6 @@ HandleMenuInputCommon:
 	pop hl
 .getJoypadState
 	call JoypadLowSensitivity
-	ldh a, [hJoy5]
 	ld b, a ; b = button state
 	and a ; was a key pressed?
 	jr nz, .keyPressed

@@ -823,7 +823,6 @@ SlotMachine_AnimWheel:
 SlotMachine_HandleInputWhileWheelsSpin:
 	call DelayFrame
 	call JoypadLowSensitivity
-	ldh a, [hJoy5]
 	and PAD_A
 	ret z
 	ld hl, wStoppingWhichSlotMachineWheel

@@ -77,7 +77,7 @@ DiscardButtonPresses::
 
 
 ; this function is used when lower button sensitivity is wanted (e.g. menus)
-; OUTPUT: [hJoy5] = pressed buttons in usual format
+; OUTPUT: [hJoy5] = a = filtered button mask
 ; there are two flags that control its functionality, [hJoy6] and [hJoy7]
 ; there are essentially three modes of operation
 ; 1. Get newly pressed buttons only

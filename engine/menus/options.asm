@@ -34,7 +34,6 @@ DisplayOptionMenu: ; marcelnote - modified
 	call Delay3
 .optionMenuLoop
 	call JoypadLowSensitivity
-	ldh a, [hJoy5]
 	and PAD_START | PAD_B
 	ret nz ; exit option menu
 	call OptionsControl

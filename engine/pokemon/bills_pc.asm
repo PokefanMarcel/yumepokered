@@ -122,7 +122,6 @@ BillsPC:: ; marcelnote - revamped Bill's PC
 
 .inputLoop
 	call JoypadLowSensitivity
-	ldh a, [hJoy5]
 	and a
 	jr z, .inputLoop
 	ld b, a

@@ -629,7 +629,6 @@ ShowPokedexDataInternal:
 	jr z, .waitForButtonPress ; don't display more pages if showing starters in Oak's lab
 .waitForButtonPress2
 	call JoypadLowSensitivity
-	ldh a, [hJoy5]
 	and PAD_A | PAD_B
 	jr z, .waitForButtonPress2
 	ld a, SFX_PRESS_AB
@@ -650,7 +649,6 @@ ShowPokedexDataInternal:
 	call PrintBaseStats
 .waitForButtonPress
 	call JoypadLowSensitivity
-	ldh a, [hJoy5]
 	and PAD_A | PAD_B
 	jr z, .waitForButtonPress
 	pop af
@@ -999,7 +997,6 @@ ENDC
 
 .waitForButtonPress
 	call JoypadLowSensitivity
-	ldh a, [hJoy5]
 	and PAD_A | PAD_B
 	jr z, .waitForButtonPress
 

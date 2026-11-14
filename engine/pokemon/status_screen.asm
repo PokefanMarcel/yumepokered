@@ -148,7 +148,6 @@ StatusScreenStatsPage:
 
 .waitButtonPress
 	call JoypadLowSensitivity
-	ldh a, [hJoy5]
 	bit B_PAD_B, a
 	jp nz, StatusScreenExit
 	bit B_PAD_START, a ; marcelnote - switch between Stats and DVs
@@ -377,7 +376,6 @@ StatusScreenMovesPage:
 
 .waitButtonPress
 	call JoypadLowSensitivity
-	ldh a, [hJoy5]
 	bit B_PAD_UP, a
 	jr nz, .tryPreviousPartyMon
 	bit B_PAD_DOWN, a

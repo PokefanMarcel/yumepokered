@@ -63,7 +63,6 @@ DisplayTownMap: ; marcelnote - optimized
 .inputLoop
 	call TownMapSpriteBlinkingAnimation
 	call JoypadLowSensitivity
-	ldh a, [hJoy5]
 	and PAD_A | PAD_B | PAD_UP | PAD_DOWN
 	jr z, .inputLoop
 	ld b, a
@@ -372,7 +371,6 @@ LoadTownMap_Fly::
 .inputLoop
 	call DelayFrame
 	call JoypadLowSensitivity
-	ldh a, [hJoy5]
 	and PAD_A | PAD_B | PAD_UP | PAD_DOWN
 	jr z, .inputLoop
 	ld b, a
