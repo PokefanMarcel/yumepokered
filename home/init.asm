@@ -37,53 +37,37 @@ Init::
 	bit 5, h ; first set when hl = $e000
 	jr z, .clearWRAM
 
-;;;;;;;;;;;;;;;;;;;; marcelnote - shinpokered xorshift RNG
-;joenote - implement xorshift RNG
-;Initialize the RNG state. It can be initialized to anything but zero; this is just a simple way of doing it.
-;Initialize with whatever random garbage is in hram to get an initial seed.
-	ldh a, [hJoyLast]
-	and a
-	push af
-	ldh a, [hFrameCounter]
-	and a
-	push af
-	ldh a, [hDividend]
-	and a
-	push af
-	ldh a, [hSpriteAnimFrameCounter]
-	and a
-	push af
-;;;;;;;;;;;;;;;;;;;;
+	; marcelnote - xorshift RNG adapted from shinpokered
+	; Obtain the xorshift seed before clearing HRAM.
+	ld hl, .seedSources
+	ld de, wRandomSeed
+	ld b, 4 ; number of seeds
+.sampleSeed
+	ld a, [hli]
+	ld c, a
+	ldh a, [c]
+	ld [de], a
+	inc de
+	dec b
+	jr nz, .sampleSeed
 
-	call ClearVram
+	call ClearVram ; returns a = 0 for the HRAM clear
 
 	ld hl, STARTOF(HRAM)
 	ld bc, SIZEOF(HRAM)
 	call FillMemory
 
-	call ClearSprites
-
-;;;;;;;;;;;;;;;;;;;; marcelnote - shinpokered xorshift RNG
-;finish initializing RNG
-;joenote - added lines to save the RNG seed
-	ld hl, wRandomSeed ; $DEF0 in shinpokered
-	pop af
-	call z, .inc_a
+	; Initialize the live RNG state from the saved seed.
+	ld hl, wRandomSeed
+	set 0, [hl] ; ensure the 32-bit seed is nonzero
+	ld a, [hli]
 	ldh [hRandomAdd], a
-	ld [hli], a
-	pop af
-	call z, .inc_a
+	ld a, [hli]
 	ldh [hRandomSub], a
-	ld [hli], a
-	pop af
-	call z, .inc_a
+	ld a, [hli]
 	ldh [hRandomLast], a
-	ld [hli], a
-	pop af
-	call z, .inc_a
+	ld a, [hli]
 	ldh [hRandomLast + 1], a
-	ld [hli], a
-;;;;;;;;;;;;;;;;;;;;
 
 	ld a, BANK(WriteDMACodeToHRAM)
 	ldh [hLoadedROMBank], a
@@ -144,9 +128,11 @@ Init::
 
 	jp PrepareTitleScreen
 
-.inc_a ; marcelnote - shinpokered xorshift RNG
-	inc a
-	ret
+.seedSources
+	db LOW(hSpriteAnimFrameCounter)
+	db LOW(hDividend)
+	db LOW(hFrameCounter)
+	db LOW(hJoyLast)
 
 ClearVram::
 	ld hl, STARTOF(VRAM)
