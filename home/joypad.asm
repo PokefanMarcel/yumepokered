@@ -37,46 +37,34 @@ TrySoftReset:
 	jp z, SoftReset
 	; fallthrough
 
-Joypad::
+Joypad:: ; marcelnote - optimized
 ; Update the joypad state variables:
 ; [hJoyReleased]  keys released since last time
 ; [hJoyPressed]   keys pressed since last time
-; [hJoyHeld] currently pressed keys
+; [hJoyHeld]      currently pressed keys
 	ldh a, [hJoyInput]
-	cp PAD_BUTTONS ; soft reset
+	cp PAD_BUTTONS
 	jr z, TrySoftReset
 
-	ld b, a
-	ldh a, [hJoyLast]
-	ld e, a
-	xor b
 	ld d, a
-	and e
+	ldh a, [hJoyLast]
+	xor d
+	ld e, a ; keys that changed state
+	and d   ; newly pressed keys
+	xor e   ; newly released keys
 	ldh [hJoyReleased], a
 	ld a, d
-	and b
-	ldh [hJoyPressed], a
-	ld a, b
 	ldh [hJoyLast], a
 
 	ld a, [wStatusFlags5]
 	bit BIT_DISABLE_JOYPAD, a
 	jr nz, DiscardButtonPresses
 
-	ldh a, [hJoyLast]
-	ldh [hJoyHeld], a
-
 	ld a, [wJoyIgnore]
-	and a
-	ret z
-
 	cpl
-	ld b, a
-	ldh a, [hJoyHeld]
-	and b
+	and d
 	ldh [hJoyHeld], a
-	ldh a, [hJoyPressed]
-	and b
+	and e
 	ldh [hJoyPressed], a
 	ret
 

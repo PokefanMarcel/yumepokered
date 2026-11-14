@@ -141,17 +141,14 @@ Evolution_ChangeMonPic:
 
 Evolution_CheckForCancel:
 	call DelayFrame
-	push bc
-	call JoypadLowSensitivity
+	call JoypadLowSensitivity ; preserves bc
 	ldh a, [hJoy5]
-	pop bc
 	and PAD_B
 	jr nz, .pressedB
 .notAllowedToCancel
 	dec c
 	jr nz, Evolution_CheckForCancel
-	and a
-	ret
+	ret ; carry clear
 .pressedB
 	ld a, [wForceEvolution]
 	and a

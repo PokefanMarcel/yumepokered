@@ -2001,13 +2001,10 @@ CheckForUserInterruption::
 ; Return carry if Up+Select+B, Start or A are pressed in c frames.
 ; Used only in the intro and title screen.
 	call DelayFrame
-
-	push bc
-	call JoypadLowSensitivity
-	pop bc
+	call JoypadLowSensitivity ; preserves bc
 
 	ldh a, [hJoyHeld]
-	cp PAD_UP + PAD_SELECT + PAD_B
+	cp PAD_UP | PAD_SELECT | PAD_B
 	jr z, .input
 
 	ldh a, [hJoy5]

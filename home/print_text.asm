@@ -10,7 +10,6 @@ PrintLetterDelay:: ; marcelnote - small optimization
 	ret z
 	push hl
 	push de
-	push bc
 	bit BIT_FAST_TEXT_DELAY, a
 	ld a, 1
 	jr z, .loadWaitFrames
@@ -23,7 +22,7 @@ PrintLetterDelay:: ; marcelnote - small optimization
 .loadWaitFrames
 	ldh [hFrameCounter], a
 .checkButtons
-	call Joypad
+	call Joypad ; preserves bc
 	ldh a, [hJoyHeld]
 	and PAD_A | PAD_B
 	jr z, .buttonsNotPressed
@@ -34,7 +33,6 @@ PrintLetterDelay:: ; marcelnote - small optimization
 	and a
 	jr nz, .checkButtons
 .done
-	pop bc
 	pop de
 	pop hl
 	ret
