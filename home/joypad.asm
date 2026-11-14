@@ -77,12 +77,12 @@ DiscardButtonPresses::
 
 
 ; this function is used when lower button sensitivity is wanted (e.g. menus)
-; OUTPUT: [hJoy5] = a = filtered button mask
+; OUTPUT: [hJoyFiltered] = a = filtered button mask
 ; there are two flags that control its functionality, [hJoy6] and [hJoy7]
 ; there are essentially three modes of operation
 ; 1. Get newly pressed buttons only
 ;    ([hJoy7] == 0, [hJoy6] == any)
-;    Just copies [hJoyPressed] to [hJoy5].
+;    Just copies [hJoyPressed] to [hJoyFiltered].
 ; 2. Get currently pressed buttons at low sample rate with delay
 ;    ([hJoy7] == 1, [hJoy6] != 0)
 ;    If the user holds down buttons for more than half a second,
@@ -106,7 +106,7 @@ JoypadLowSensitivity:: ; marcelnote - optimized
 	jr z, .storeButtonState
 	ldh a, [hJoyHeld] ; all currently pressed buttons
 .storeButtonState
-	ldh [hJoy5], a
+	ldh [hJoyFiltered], a
 	ret
 
 .noNewlyPressedButtons
@@ -124,5 +124,5 @@ JoypadLowSensitivity:: ; marcelnote - optimized
 	jr nz, .selectButtons
 .clearButtonState
 	xor a
-	ldh [hJoy5], a
+	ldh [hJoyFiltered], a
 	ret

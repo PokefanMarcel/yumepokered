@@ -868,9 +868,10 @@ CableClub_Run:
 	ld [wTilesetCollisionPtr], a
 	xor a
 	ld [wGrassRate], a
-	inc a ; LINK_STATE_IN_CABLE_CLUB
-	ld [wLinkState], a
-	ldh [hJoy5], a
+	ASSERT LINK_STATE_IN_CABLE_CLUB == 1 && PAD_A == 1
+	inc a
+	ld [wLinkState], a    ; LINK_STATE_IN_CABLE_CLUB
+	ldh [hJoyFiltered], a ; PAD_A, simulate A to end the text wait
 	ld a, 10
 	ld [wMusicFade], a
 ;	ld a, 0 ; BANK(Music_Celadon)

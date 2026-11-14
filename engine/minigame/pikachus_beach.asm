@@ -819,11 +819,9 @@ SurfingMinigame_UpdateResultsPikachu:
 	ret
 
 SurfingMinigame_DPadAction:
-	ld de, hJoy5
-	ld a, [de]
-	and PAD_LEFT
+	ldh a, [hJoyFiltered]
+	bit B_PAD_LEFT, a
 	jr nz, .dLeft
-	ld a, [de]
 	and PAD_RIGHT
 	jr nz, .dRight
 	ret
@@ -2632,7 +2630,7 @@ DisplaySurfingMinigameHighScoreScreen::
 	ldh [hJoyReleased], a
 	ldh [hJoyPressed], a
 	ldh [hJoyHeld], a
-	ldh [hJoy5], a
+	ldh [hJoyFiltered], a
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	ret
 
@@ -2704,14 +2702,14 @@ PikachusBeach_GetJoypad_3FrameBuffer:
 	and a
 	jr nz, .delayed
 	ldh a, [hJoyHeld]
-	ldh [hJoy5], a
-	ld a, $2
+	ldh [hJoyFiltered], a
+	ld a, 2
 	ldh [hFrameCounter], a
 	ret
 
 .delayed
 	xor a
-	ldh [hJoy5], a
+	ldh [hJoyFiltered], a
 	ret
 
 PikachusBeach_BlankPals:

@@ -87,8 +87,8 @@ OptionMenuJumpTable:
 
 
 OptionsMenu_TextSpeed:
-	call GetTextSpeed ; c = 0 (instant), 1 (fast), 2 (medium), 3 (slow),
-	ldh a, [hJoy5]    ; d = left speed, e = right speed
+	call GetTextSpeed     ; c = 0 (instant), 1 (fast), 2 (medium), 3 (slow),
+	ldh a, [hJoyFiltered] ; d = left speed, e = right speed
 	bit B_PAD_RIGHT, a
 	jr nz, .pressedRight
 	bit B_PAD_LEFT, a
@@ -156,7 +156,7 @@ TextSpeedStringsPointerTable:
 
 
 OptionsMenu_BattleAnimations: ; bit set = animations off
-	ldh a, [hJoy5]
+	ldh a, [hJoyFiltered]
 	and PAD_RIGHT | PAD_LEFT
 	ld a, [wOptions]
 	jr z, .keep
@@ -175,7 +175,7 @@ OptionsMenu_BattleAnimations: ; bit set = animations off
 
 
 OptionsMenu_BattleStyle: ; bit set = set battle
-	ldh a, [hJoy5]
+	ldh a, [hJoyFiltered]
 	and PAD_LEFT | PAD_RIGHT
 	ld a, [wOptions]
 	jr z, .keep
@@ -194,7 +194,7 @@ OptionsMenu_BattleStyle: ; bit set = set battle
 
 
 OptionsMenu_MeasureUnits: ; bit set = metric
-	ldh a, [hJoy5]
+	ldh a, [hJoyFiltered]
 	and PAD_LEFT | PAD_RIGHT
 	ld a, [wOptions]
 	jr z, .keep
@@ -213,8 +213,8 @@ OptionsMenu_MeasureUnits: ; bit set = metric
 
 
 OptionsMenu_SpriteStyle:
-	call GetSpriteStyle ; c = 0 (SPRITE_STYLE_BLUE), 1 (SPRITE_STYLE_CRYSTAL), 2 (SPRITE_STYLE_GREEN)
-	ldh a, [hJoy5]      ; d = left style, e = right style
+	call GetSpriteStyle   ; c = 0 (SPRITE_STYLE_BLUE), 1 (SPRITE_STYLE_CRYSTAL), 2 (SPRITE_STYLE_GREEN)
+	ldh a, [hJoyFiltered] ; d = left style, e = right style
 	bit B_PAD_RIGHT, a
 	jr nz, .pressedRight
 	bit B_PAD_LEFT, a
@@ -283,7 +283,7 @@ OptionsMenu_Dummy:
 
 
 OptionsMenu_GoHome: ; marcelnote - option to Go Home
-	ldh a, [hJoy5]
+	ldh a, [hJoyFiltered]
 	and PAD_A ; clears carry
 	ret z
 	CheckEvent EVENT_GOT_POKEDEX
@@ -312,7 +312,7 @@ GoHomeConfirmText: ; marcelnote - option to Go Home
 
 
 OptionsMenu_Cancel:
-	ldh a, [hJoy5]
+	ldh a, [hJoyFiltered]
 	and PAD_A ; clears carry
 	ret z
 	xor a ; set zero flag ; marcelnote - option to Go Home
@@ -322,7 +322,7 @@ OptionsMenu_Cancel:
 
 OptionsControl:
 	ld hl, wOptionsCursorLocation
-	ldh a, [hJoy5]
+	ldh a, [hJoyFiltered]
 	cp PAD_DOWN
 	jr z, .pressedDown
 	cp PAD_UP

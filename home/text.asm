@@ -234,7 +234,7 @@ WaitForTextScrollButtonPress:: ; marcelnote - small optim
 	call HandleDownArrowBlinkTiming
 	call JoypadLowSensitivity
 	predef CableClub_Run
-	ldh a, [hJoy5]
+	ldh a, [hJoyFiltered]
 	and PAD_A | PAD_B
 	jr z, .loop
 	pop af

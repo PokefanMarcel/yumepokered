@@ -359,7 +359,7 @@ SpecialEnterMap::
 	xor a
 	ldh [hJoyPressed], a
 	ldh [hJoyHeld], a
-	ldh [hJoy5], a
+	ldh [hJoyFiltered], a
 	ld [wCableClubDestinationMap], a
 	ld hl, wStatusFlags6
 	set BIT_GAME_TIMER_COUNTING, [hl]

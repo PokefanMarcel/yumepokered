@@ -187,7 +187,7 @@ ELSE
 	ld [hl], a
 ENDC
 	call WaitForTextScrollButtonPress
-	ldh a, [hJoy5]
+	ldh a, [hJoyFiltered]
 	and PAD_A
 	jr z, .exit
 	ld a, SFX_TINK
@@ -234,7 +234,7 @@ ELSE
 	ld [hl], a
 ENDC
 	call WaitForTextScrollButtonPress
-	ldh a, [hJoy5]
+	ldh a, [hJoyFiltered]
 	and PAD_A
 	jr z, .exit
 	ld a, SFX_TINK
@@ -263,7 +263,7 @@ ENDC
 	inc a     ; third "Rods" tile
 	ld [hl], a
 	call WaitForTextScrollButtonPress
-	ldh a, [hJoy5]
+	ldh a, [hJoyFiltered]
 	and PAD_A
 	jr z, .exit
 	ld a, SFX_TINK
@@ -303,7 +303,7 @@ ELSE
 	ld [hl], $64 ; background water tile
 ENDC
 	call WaitForTextScrollButtonPress
-	ldh a, [hJoy5]
+	ldh a, [hJoyFiltered]
 	and PAD_A
 	jp z, .exit
 	ld a, SFX_TINK

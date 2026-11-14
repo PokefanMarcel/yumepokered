@@ -421,7 +421,7 @@ WaitBillsPCButtonsReleased:
 	and PAD_A | PAD_B | PAD_START
 	jr nz, WaitBillsPCButtonsReleased
 	xor a
-	ldh [hJoy5], a
+	ldh [hJoyFiltered], a
 	ldh [hJoyPressed], a
 	ret
 

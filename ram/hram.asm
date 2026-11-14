@@ -174,7 +174,7 @@ hJoyLast::     db
 hJoyReleased:: db
 hJoyPressed::  db
 hJoyHeld::     db
-hJoy5::        db
+hJoyFiltered:: db
 hJoy6::        db
 hJoy7::        db
 
