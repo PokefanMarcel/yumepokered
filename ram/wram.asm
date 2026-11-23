@@ -1115,8 +1115,13 @@ wHPBarOldHP:: dw
 wHPBarNewHP:: dw
 wHPBarDelta:: db
 wHPBarTempHP:: dw
-	ds 11
 wHPBarHPDifference:: dw
+
+; type of HP bar
+; $00 = plain bar (enemy HUD, party menu, or status screen)
+; $01 = player HUD in battle
+; $02 = party menu HP animation
+wHPBarType:: db ; marcelnote - list engine refactor, moved from shared wListMenuID byte
 
 NEXTU
 ; whether WriteMonMoves is being used to make a mon learn moves from day care
@@ -1245,11 +1250,6 @@ wGymLeaderName:: ds NAME_LENGTH
 ;NEXTU
 
 
-; type of HP bar
-; $00 = enemy HUD in battle
-; $01 = player HUD in battle / status screen
-; $02 = party menu
-wHPBarType::
 ; Persistent list data.
 wListMenuID:: db
 wListPointer:: dw ; points to the list's entry count
