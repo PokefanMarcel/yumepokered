@@ -56,8 +56,7 @@ _PokemonTower1FAgathaHowDareYouText:: ; marcelnote - postgame Agatha event
 	cont "fichue radio!?"
 
 	para "DIRECTEUR: C'est"
-	line "le progrès qui"
-	cont "est en marche!"
+	line "ça, le progrès!"
 	cont "La nouvelle TOUR"
 	cont "RADIO profitera"
 	cont "à tous!"

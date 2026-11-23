@@ -55,10 +55,10 @@ _PokemonTower1FAgathaHowDareYouText:: ; marcelnote - postgame Agatha event
 	cont "a noisy station!?"
 
 	para "DIRECTOR: But"
-	line "progress must"
-	cont "be made! The new"
+	line "we cannot stop"
+	cont "progress! The new"
 	cont "RADIO TOWER will"
-	cont "benefit all!"
+	cont "benefit everyone!"
 
 	para "AGATHA: Hmph!"
 	line "You speak of"
