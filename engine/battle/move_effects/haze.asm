@@ -1,6 +1,6 @@
 HazeEffect:
-	ld a, $7
-; store 7 on every stat mod
+	ld a, BASE_STAT_LEVEL
+; reset every stat mod to neutral
 	ld hl, wPlayerMonAttackMod
 	call ResetStatMods
 	ld hl, wEnemyMonAttackMod

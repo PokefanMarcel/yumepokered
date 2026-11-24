@@ -945,7 +945,7 @@ IsHazeWasted:
 	ld hl, wPlayerMonStatMods
 .checkPlayerStats
 	ld a, [hli]
-	cp 8                       ; player has a positive stat mod
+	cp BASE_STAT_LEVEL + 1     ; player has a positive stat mod
 	jr nc, .useful
 	dec b
 	jr nz, .checkPlayerStats
@@ -953,7 +953,7 @@ IsHazeWasted:
 	ld hl, wEnemyMonStatMods
 .checkEnemyStats
 	ld a, [hli]
-	cp 7                       ; enemy has a negative stat mod
+	cp BASE_STAT_LEVEL         ; enemy has a negative stat mod
 	jr c, .useful
 	dec b
 	jr nz, .checkEnemyStats

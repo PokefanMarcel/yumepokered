@@ -5568,10 +5568,9 @@ CalcHitChance:
 	ld a, [wPlayerMonEvasionMod]
 	ld c, a
 .next
-	ld a, $0e
+	ld a, 2 * BASE_STAT_LEVEL
 	sub c
-	ld c, a ; c = 14 - EVASIONMOD (this "reflects" the value over 7, so that an increase in the target's evasion
-	       ; decreases the hit chance instead of increasing the hit chance)
+	ld c, a ; reflect evasion around the neutral stage so higher evasion lowers hit chance
 ; zero the high bytes of the multiplicand
 	xor a
 	ldh [hMultiplicand], a

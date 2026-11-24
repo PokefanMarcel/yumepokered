@@ -16,11 +16,11 @@ StatModifierUpEffect: ; marcelnote - optimized
 	ld b, $0   ;                                  3=Special, 4=Accuracy, 5=Evasion
 	add hl, bc ; hl = w<User>Mon<Stat>Mod
 	ld b, [hl]                     ; b = [w<User>Mon<Stat>Mod], current stat modifier
-	ld a, $d - 1                   ; can't raise stat mod past +6 ($d or 13)
-	cp b                           ; is b ≥ $d already?
+	ld a, MAX_STAT_LEVEL - 1       ; carry when b reaches the cap
+	cp b                           ; is b already at the cap?
 	jp c, PrintNothingHappenedText ; if yes, do nothing
 	inc b                          ; else +1
-	cp b                           ; is b ≥ $d now?
+	cp b                           ; did b reach the cap?
 	jr c, .doneIncreasing          ; if yes, stop
 	ld a, [de]
 	cp ATTACK_UP2_EFFECT           ; else, is it a +2 effect?
