@@ -1,36 +1,32 @@
 StatModifierUpEffect: ; marcelnote - optimized
 	ldh a, [hWhoseTurn]
-	and a
+	and a ; player turn?
 	ld hl, wPlayerMonStatMods ; stat mod between 1 and 13 (-6 to +6)
-	ld de, wPlayerMoveEffect
-	jr z, .playerTurn
+	ld a, [wPlayerMoveEffect]
+	jr z, .gotMoveEffect
 	ld hl, wEnemyMonStatMods  ; stat mod between 1 and 13 (-6 to +6)
-	ld de, wEnemyMoveEffect
-.playerTurn
-	ld a, [de]  ; a = [w<User>MoveEffect]
+	ld a, [wEnemyMoveEffect]
+.gotMoveEffect
+	ld e, 1 ; extra boost for +2 effects
 	sub ATTACK_UP2_EFFECT                     ; a = stat offset for +2 effects
 	jr nc, .gotStatOffset                     ; +2 effects are after +1 effects
 	add ATTACK_UP2_EFFECT - ATTACK_UP1_EFFECT ; a = stat offset for +1 effects
+	dec e
 .gotStatOffset
 	ld c, a    ; c = offset for stat to increase: 0=Attack, 1=Defense, 2=Speed,
-	ld b, $0   ;                                  3=Special, 4=Accuracy, 5=Evasion
+	ld b, 0    ;                                  3=Special, 4=Accuracy, 5=Evasion
 	add hl, bc ; hl = w<User>Mon<Stat>Mod
-	ld b, [hl]                     ; b = [w<User>Mon<Stat>Mod], current stat modifier
-	ld a, MAX_STAT_LEVEL - 1       ; carry when b reaches the cap
-	cp b                           ; is b already at the cap?
-	jp c, PrintNothingHappenedText ; if yes, do nothing
-	inc b                          ; else +1
-	cp b                           ; did b reach the cap?
-	jr c, .doneIncreasing          ; if yes, stop
-	ld a, [de]
-	cp ATTACK_UP2_EFFECT           ; else, is it a +2 effect?
-	jr c, .doneIncreasing
-	inc b                          ; if yes, +1 again
-.doneIncreasing
-	ld [hl], b ; [w<User>Mon<Stat>Mod] = updated stat mod
-	ld a, c    ; a = stat offset
-	cp $4
-	jr nc, UpdateUppedStatDone ; jump if stat affected is Accuracy/Evasion
+	ld a, [hl] ; a = [w<User>Mon<Stat>Mod], current stat modifier
+	cp MAX_STAT_LEVEL - 1           ; stat just below cap?
+	jr z, .increaseOnce             ; one below the cap
+	jp nc, PrintNothingHappenedText ; at cap already
+	add e
+.increaseOnce
+	inc a
+	ld [hl], a ; [w<User>Mon<Stat>Mod] = updated stat mod
+	bit 2, c   ; MOD_ACCURACY or MOD_EVASION?
+	jr nz, UpdateUppedStatDone ; jump if stat affected is Accuracy/Evasion
+	ld b, a                    ; save updated stat mod for UpdateStat
 
 ;	push hl ; save hl = w<User>Mon<Stat>Mod (for RestoreOriginalStatModifier)
 	ldh a, [hWhoseTurn]
@@ -43,7 +39,7 @@ StatModifierUpEffect: ; marcelnote - optimized
 .pointToStats
 	push bc    ; save b = stat mod, c = stat offset
 	sla c      ; multiply c by 2
-	ld b, $0
+	ld b, 0
 	add hl, bc ; hl = w<User>Mon<Stat> + 1
 	ld a, c    ; the next lines effectively do 'add de, bc' (not an actual command)
 	add e
@@ -66,10 +62,10 @@ StatModifierUpEffect: ; marcelnote - optimized
 	and a           ; apply badge boost only if player increased own stats
 	call z, ApplyBadgeBoostToSelectedStat ; preserves c = stat offset and hl = w<User>Mon<Stat>
 	ld a, c
-	and a   ; stat offset = attack?
+	and a ; MOD_ATTACK?
 	call z, HalveOwnAttackDueToBurn       ; preserves c = stat offset
 	ld a, c
-	cp 2    ; stat offset = speed?
+	cp MOD_SPEED
 	call z, QuarterOwnSpeedDueToParalysis ; preserves c = stat offset
 	; fallthrough
 
