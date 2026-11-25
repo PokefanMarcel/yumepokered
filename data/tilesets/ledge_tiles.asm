@@ -9,6 +9,7 @@ LedgeTiles: ; marcelnote - modified
 	db SPRITE_FACING_LEFT,  $39, $27, PAD_LEFT
 	; SPRITE_FACING_RIGHT, tile right of player (southwest), tile right of the player (southeast), input required
 	db SPRITE_FACING_RIGHT, $2C, $24, PAD_RIGHT
+	db SPRITE_FACING_RIGHT, $39, $24, PAD_RIGHT
 	db -1 ; end
 
 LedgeTilesCavern: ; marcelnote - new for Cavern ledges
